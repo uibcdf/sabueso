@@ -45,6 +45,20 @@ These are stored as lists of objects with `location`, `description`, and `eviden
 For the exact, verified enumerations, see:
 - `dev_guide/UNIPROT_ENUMS.md`
 
+## Location Model (Sequence + Structure)
+Positional features must support **both**:
+- **Sequence‑based locations** (start/end indices, sequence ID, 1‑based indexing)
+- **Structure‑based locations** (PDB ID, chain ID, residue numbers, optional atom IDs)
+
+This is required for TopoMT integration and visualization.
+
+## Disease Section (ProteinCard)
+Protein cards include a `disease` section with disease associations and evidence links.
+
+## Ligands with Roles (ProteinCard)
+Protein cards include a `ligands` section. Each ligand has a `role` attribute
+(e.g., inhibitor, activator, substrate) and evidence links.
+
 ## Clinical Layer (Small Molecules)
 The schema includes a dedicated `clinical` section for:
 - pharmacology, ADMET, clinical trials, pharmacovigilance,

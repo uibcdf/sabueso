@@ -6,7 +6,9 @@
 - **Field Path**: Canonical string identifying a field (e.g., `properties.physchem.molecular_weight`).
 - **Selection Rule**: A rule that picks a canonical value among multiple evidences for a field.
 - **Conflict**: Disagreement among evidence objects for the same field.
+- **Deck**: A collection of Cards with operations for filtering, sorting, comparing, and expansion.
 - **Clinical Layer**: Dedicated section with pharmacology, ADMET, clinical trials, pharmacovigilance, etc.
-- **Connector**: Source‑specific adapter that fetches and normalizes data from one database.
+- **Database Module (tools.db)**: A per‑database module that exposes public functions for fetching and extracting data.
 - **Resolver**: Component that classifies inputs and normalizes identifiers.
-
+- **Ligand Role**: The functional role assigned to a ligand (e.g., inhibitor, activator, substrate).
+- **Ambiguous Input**: Input that maps to multiple plausible entities; should return a Deck.

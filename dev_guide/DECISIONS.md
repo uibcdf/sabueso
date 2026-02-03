@@ -11,6 +11,7 @@
 ## Core Data Model
 - Output is a **card** with nested sections and strict field ordering.
 - Card types: **ProteinCard**, **PeptideCard**, **SmallMoleculeCard**.
+ - **Deck** is a first‑class object for collections of cards.
 
 ## Evidence and Provenance (Critical)
 - **Uniform evidence model** for all fields, no exceptions.
@@ -33,7 +34,37 @@
   - contraindications
   - interactions
 
+## ProteinCard Enhancements
+- Protein cards include a **disease** section with disease associations and evidence.
+- Protein cards include **ligands** with a `role` attribute (e.g., inhibitor, activator, substrate).
+- Protein cards provide an operation to **extract a Deck of inhibitor cards**.
+
+## Positional Location Model
+- Positional features support both **sequence‑based** and **structure‑based** locations.
+- This is required for interoperability with TopoMT and visualization tools.
+
+## Ambiguity Handling
+- Ambiguous inputs should return a **Deck** rather than a single Card.
+- Ambiguity must be explicit in the output (metadata or quality section).
+
+## Tools API (Public)
+- Tools are organized into:
+  - `tools.db.*` (per‑database modules)
+  - `tools.card.*` (operate on Card)
+  - `tools.deck.*` (operate on Deck)
+- Tools are intentionally **ad‑hoc** and **heterogeneous** (no common protocol).
+
+## Versioning (Pending Decision)
+- A formal **schema versioning policy** is required.
+- Card and tool versioning must be defined before stable releases.
+
+## Cache/Store Policy (Pending Decision)
+- Decide whether local cache stores **raw source data**, **cards only**, or **both**.
+- This must respect licensing constraints.
+
+## Core Ops (Pending Decision)
+- Define a minimal, consistent set of **CardOps** and **DeckOps** (compare, filter, sort, expand, etc.).
+
 ## Online‑First
 - Sabueso is **online‑first**.
 - Local card caching is optional and does not replace live queries.
-

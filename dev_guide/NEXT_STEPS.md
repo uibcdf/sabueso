@@ -6,12 +6,11 @@
 3) Decide how to represent `location` for positional features (range model).
 
 ## Short Term
-4) Draft connector interfaces (input/output contracts).
-5) Implement UniProt connector prototype and evidence extraction.
-6) Implement PDB connector prototype and evidence extraction.
+4) Draft database module interfaces (input/output contracts).
+5) Implement UniProt database module prototype and evidence extraction.
+6) Implement PDB database module prototype and evidence extraction.
 
 ## Medium Term
 7) Implement aggregator for at least ProteinCard.
 8) Implement selection rules for a minimal subset of fields.
 9) Add caching strategy and local storage format.
-

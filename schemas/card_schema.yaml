@@ -129,27 +129,37 @@ protein_card:
     caution: { value: [string], evidence_ids: [string] }
     web_resource: { value: [string], evidence_ids: [string] }
 
+  disease:
+    associations:
+      value: [ { disease_id: string, name: string, source: string } ]
+      evidence_ids: [string]
+
+  ligands:
+    value:
+      - { ligand_id: string, name: string, role: string }
+    evidence_ids: [string]
+
   features_positional:
     # Types observed in UniProt JSON for P52789, P35372, A0A140VJM9
-    active_site: [ { location: string, description: string, evidence_ids: [string] } ]
-    alternative_sequence: [ { location: string, description: string, evidence_ids: [string] } ]
-    beta_strand: [ { location: string, description: string, evidence_ids: [string] } ]
-    binding_site: [ { location: string, description: string, evidence_ids: [string] } ]
-    chain: [ { location: string, description: string, evidence_ids: [string] } ]
-    disulfide_bond: [ { location: string, description: string, evidence_ids: [string] } ]
-    domain: [ { location: string, description: string, evidence_ids: [string] } ]
-    glycosylation: [ { location: string, description: string, evidence_ids: [string] } ]
-    helix: [ { location: string, description: string, evidence_ids: [string] } ]
-    lipidation: [ { location: string, description: string, evidence_ids: [string] } ]
-    modified_residue: [ { location: string, description: string, evidence_ids: [string] } ]
-    motif: [ { location: string, description: string, evidence_ids: [string] } ]
-    mutagenesis: [ { location: string, description: string, evidence_ids: [string] } ]
-    natural_variant: [ { location: string, description: string, evidence_ids: [string] } ]
-    region: [ { location: string, description: string, evidence_ids: [string] } ]
-    sequence_conflict: [ { location: string, description: string, evidence_ids: [string] } ]
-    topological_domain: [ { location: string, description: string, evidence_ids: [string] } ]
-    transmembrane: [ { location: string, description: string, evidence_ids: [string] } ]
-    turn: [ { location: string, description: string, evidence_ids: [string] } ]
+    active_site: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    alternative_sequence: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    beta_strand: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    binding_site: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    chain: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    disulfide_bond: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    domain: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    glycosylation: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    helix: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    lipidation: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    modified_residue: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    motif: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    mutagenesis: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    natural_variant: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    region: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    sequence_conflict: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    topological_domain: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    transmembrane: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    turn: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
 
   pdb_structure:
     entry_metadata:
@@ -217,4 +227,3 @@ small_molecule_card:
     vendors: { value: [string], evidence_ids: [string] }
     catalog_ids: { value: [string], evidence_ids: [string] }
     packaging: { value: [string], evidence_ids: [string] }
-

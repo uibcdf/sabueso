@@ -8,9 +8,9 @@
    - Determine entity type.
    - Normalize input to canonical identifiers where possible.
 
-3) **Connectors**
+3) **Database Modules (tools.db.\*)**
    - Fetch data from each source.
-   - Each connector returns:
+   - Each module returns:
      - raw source data
      - source metadata (source name, record ID, timestamps)
 
@@ -31,6 +31,10 @@
    - Return the card to the user.
    - Optionally persist to local cache.
 
+## Ambiguity Handling
+- If the input resolves to multiple plausible entities, return a **Deck**.
+- Ambiguity should be recorded explicitly in card/deck metadata.
+
 ## Evidence Creation Rules
 - Evidence objects are created **before** any selection.
 - Evidence objects must include:
@@ -46,4 +50,3 @@
 ## Conflict Handling
 - If multiple evidence objects disagree, add an entry to `quality.conflicts`.
 - Conflicts are never resolved by deleting evidence.
-
