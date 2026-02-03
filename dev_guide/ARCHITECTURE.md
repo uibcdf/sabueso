@@ -52,6 +52,10 @@ Sabueso supports a **clinical layer** for drug‑design workflows. Clinical data
 
 Tools are **ad‑hoc by design**; there is no enforced common interface or protocol.
 
+## Mappings Layer
+Mappings are the explicit translation rules from **source fields** to **canonical card fields**.
+They should live outside database modules to keep transformations consistent and maintainable.
+
 ## Design Principles
 - **Uniform Evidence Mechanism**: every field uses the same provenance model.
 - **Nested Sections**: cards are hierarchical and ordered, not flat.

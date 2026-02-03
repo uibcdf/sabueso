@@ -25,6 +25,16 @@
   - Card/Deck may expose ops as methods.
   - Tools are standalone functions grouped in modules.
 
+## Repository Layout (Phase 0)
+- `sabueso/core`: Card, Deck, EvidenceStore
+- `sabueso/resolver`: input resolution
+- `sabueso/tools`: db/card/deck tools
+- `sabueso/ops`: internal operations
+- `sabueso/mappings`: source → canonical field mappings
+- `sabueso/utils`: internal utilities only (no public API)
+- `docs`: Sphinx documentation
+- `tests`: unit/contract/snapshot tests
+
 ## Errors
 - Use explicit exception types for resolver errors, connector failures, and schema mismatches.
 - Return partial cards only if evidence is complete for the fields present.

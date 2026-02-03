@@ -2,6 +2,7 @@
 
 ## Phase 0 — Foundations
 - Freeze conceptual schema (done in `schemas/card_schema.yaml`).
+- Define minimal repository structure (core, resolver, tools, ops, mappings).
 - Write developer guidance and decisions (this folder).
 
 ## Phase 1 — Core Connectors
@@ -30,4 +31,3 @@
 - CLI or SDK entry points.
 - Sphinx documentation.
 - pytest coverage with contract tests and snapshots.
-

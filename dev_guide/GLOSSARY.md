@@ -12,3 +12,4 @@
 - **Resolver**: Component that classifies inputs and normalizes identifiers.
 - **Ligand Role**: The functional role assigned to a ligand (e.g., inhibitor, activator, substrate).
 - **Ambiguous Input**: Input that maps to multiple plausible entities; should return a Deck.
+- **Mappings**: Translation rules that map source fields to canonical card fields.
