@@ -9,6 +9,9 @@
 - `uniprot_comments.catalytic_activity`
 - `features_positional.binding_site`
 
+Canonical field path contract:
+- `dev_guide/SCHEMA.md` (Field Path Contract)
+
 ## Evidence IDs
 - Evidence IDs should be stable, unique, and deterministic if possible.
 - Format example: `E_<source>_<record>_<hash>`
@@ -19,6 +22,9 @@
 - SMILES / InChI / InChIKey
 - Common names and synonyms
 - Structure files (PDB, MOL, SDF)
+
+Location contract:
+- `dev_guide/SCHEMA.md` (Location Contract)
 
 ## API Style (Mixed)
 - The public API is **mixed OO + functional**:

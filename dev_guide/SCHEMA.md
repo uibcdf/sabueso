@@ -9,6 +9,9 @@ This is a **conceptual** schema meant to be refined into formal validation later
 ## Nested Structure
 Cards are **nested** to preserve hierarchy and order. Each card type (protein, peptide, small molecule) inherits from a shared base.
 
+## Field Path Contract (Approved)
+Canonical field paths use **dot‑separated notation**.\n\nExamples:\n- `names.canonical_name`\n- `properties.physchem.molecular_weight`\n- `uniprot_comments.catalytic_activity`\n- `features_positional.binding_site`
+
 ## Uniform Evidence Mechanism (Critical)
 All fields in all cards follow the same evidence protocol:
 
@@ -36,6 +39,25 @@ All fields in all cards follow the same evidence protocol:
 
 This mechanism is **homogeneous** across all fields and all card types. It is a core design decision.
 
+## Evidence Object Contract (Approved)
+Every evidence object stored in `evidence_store` must include:
+
+**Required**
+- `evidence_id: string`
+- `field: string` (canonical field path)
+- `value: any`
+- `source: { type: string, name: string, record_id: string }`
+- `retrieved_at: date`
+
+**Recommended**
+- `normalized_value: any`
+- `source_meta: dict`
+- `timestamps: { published_at?: date, updated_at?: date }`
+- `confidence: float`
+- `notes: string`
+
+The `source.type` must distinguish at least: `database`, `article`, `dataset`, and `llm` when applicable.
+
 ## Positional Features (Proteins/Peptides)
 The schema includes positional features observed directly in UniProt JSON examples:
 - Active site, Binding site, Disulfide bond, Glycosylation, Lipidation, Modified residue, Mutagenesis, Natural variant, Region, Motif, Topological domain, Transmembrane, etc.
@@ -51,6 +73,12 @@ Positional features must support **both**:
 - **Structure‑based locations** (PDB ID, chain ID, residue numbers, optional atom IDs)
 
 This is required for TopoMT integration and visualization.
+
+Real‑ID validation examples:
+- `dev_guide/LOCATION_EXAMPLES.md`
+
+## Location Contract (Approved)
+`location` is a typed container that supports multiple contexts:\n\n```\nlocation:\n  kind: \"sequence\" | \"structure\" | \"atom\" | \"substructure\"\n  sequence?: { sequence_id, start, end, indexing, residue_ids? }\n  structure?: { pdb_id, chain_id, residue_id?, residue_number?, atom_ids? }\n  atom?: { atom_ids, atom_id_type }\n  substructure?: { smiles?, smarts?, atom_ids? }\n```\n\nThe exact atom/residue identifier type must always be specified when relevant (e.g., PDB residue IDs, RDKit atom indices).
 
 ## Disease Section (ProteinCard)
 Protein cards include a `disease` section with disease associations and evidence links.
