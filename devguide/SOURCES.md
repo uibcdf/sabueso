@@ -26,7 +26,7 @@ From these JSONs we confirmed:
 - extensive cross‑reference lists (PDB, ChEMBL, DrugBank, IntAct, BioGRID, etc.)
 
 Verified enumerations are recorded here:
-- `dev_guide/UNIPROT_ENUMS.md`
+- `devguide/UNIPROT_ENUMS.md`
 
 ## Verified PDB Examples
 - PDB IDs:

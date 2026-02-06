@@ -6,8 +6,8 @@ Sabueso is a scientific Python library for aggregating and normalizing biomolecu
 Early design and scaffolding phase. The developer guide is the source of truth.
 
 ## Quick Start (for developers)
-- Read `dev_guide/VISION.md` and `dev_guide/ARCHITECTURE.md`.
-- Use `dev_guide/CHECKPOINT.md` for the current repo baseline.
+- Read `devguide/VISION.md` and `devguide/ARCHITECTURE.md`.
+- Use `devguide/CHECKPOINT.md` for the current repo baseline.
 - The conceptual schema lives in `schemas/card_schema.yaml`.
 
 ## Repository Layout (Phase 0)

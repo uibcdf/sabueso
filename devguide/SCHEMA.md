@@ -65,7 +65,7 @@ The schema includes positional features observed directly in UniProt JSON exampl
 These are stored as lists of objects with `location`, `description`, and `evidence_ids`.
 
 For the exact, verified enumerations, see:
-- `dev_guide/UNIPROT_ENUMS.md`
+- `devguide/UNIPROT_ENUMS.md`
 
 ## Location Model (Sequence + Structure)
 Positional features must support **both**:
@@ -75,7 +75,7 @@ Positional features must support **both**:
 This is required for TopoMT integration and visualization.
 
 Real‑ID validation examples:
-- `dev_guide/LOCATION_EXAMPLES.md`
+- `devguide/LOCATION_EXAMPLES.md`
 
 ## Location Contract (Approved)
 `location` is a typed container that supports multiple contexts:\n\n```\nlocation:\n  kind: \"sequence\" | \"structure\" | \"atom\" | \"substructure\"\n  sequence?: { sequence_id, start, end, indexing, residue_ids? }\n  structure?: { pdb_id, chain_id, residue_id?, residue_number?, atom_ids? }\n  atom?: { atom_ids, atom_id_type }\n  substructure?: { smiles?, smarts?, atom_ids? }\n```\n\nThe exact atom/residue identifier type must always be specified when relevant (e.g., PDB residue IDs, RDKit atom indices).

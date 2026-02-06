@@ -15,7 +15,7 @@ Provide a reliable, traceable, and extensible foundation for biomolecular data d
 ## Objectives (Initial)
 - Implement Protein, Peptide, and Small Molecule cards with stable, nested structure.
 - Provide public tools for database access and card/deck operations.
-- Maintain a perfect developer checkpoint in `dev_guide/`.
+- Maintain a perfect developer checkpoint in `devguide/`.
 
 ## Users
 Primary users are computational scientists in biophysics, biochemistry, computational biology, and computer‑assisted molecular design.

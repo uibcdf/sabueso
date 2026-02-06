@@ -27,8 +27,8 @@ This file records the current repository baseline so new developers can resume e
 - **Location model**: general model with `kind` and sub‑blocks (sequence / structure / atom / substructure). To be refined with real cases, but accepted conceptually.
 
 ## New Artifacts
-- `dev_guide/LOCATION_EXAMPLES.md`: real‑ID validation examples for location model.
-- `dev_guide/SCHEMA.md`: link to `LOCATION_EXAMPLES.md`.
+- `devguide/LOCATION_EXAMPLES.md`: real‑ID validation examples for location model.
+- `devguide/SCHEMA.md`: link to `LOCATION_EXAMPLES.md`.
 
 ## Pending Decisions
 - Final **schema versioning policy**.
