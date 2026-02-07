@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sabueso"
+version = "0.0.0"
+description = "Biomolecular data integration and evidence-tracked cards/decks."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "MolSysSuite" }]
+license = { text = "MIT" }
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sabueso*"]

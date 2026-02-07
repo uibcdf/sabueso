@@ -20,6 +20,7 @@ This file records the current repository baseline so new developers can resume e
 - `schemas/card_schema.yaml` remains a **conceptual** schema draft.
 - The `schemas/` directory is **temporary** until Card/Deck classes are fully defined.
 - Phase‑0 focus is on structure, interfaces, and documentation, not implementation.
+- Editable install works offline with: `pip install --no-deps --editable .`
 
 ## New Decisions (Today)
 - **Field path notation**: dot‑separated paths (e.g., `properties.physchem.molecular_weight`).
@@ -34,6 +35,12 @@ This file records the current repository baseline so new developers can resume e
   - `uniprot.py`, `pdb.py`, `pubchem.py`, `chembl.py`, `base.py`
 - `sabueso/core/evidence_store.py`: EvidenceStore implementation with deterministic IDs.
 - Mappings now emit `evidences` and `field_evidence` (minimal).
+- `sabueso/core/aggregator.py`: minimal card builder from mapping outputs.
+- `sabueso/core/card.py`: minimal Card implementation.
+- `sabueso/core/deck.py`: minimal Deck implementation.
+- `sabueso/tools/db/uniprot.py`: offline + online UniProt card creation helpers.
+- `tests/core/test_mapping_uniprot_offline.py`: offline smoke test for UniProt mapping.
+- `pyproject.toml`: minimal packaging config for editable installs.
 
 ## Pending Decisions
 - Final **schema versioning policy**.
@@ -41,6 +48,8 @@ This file records the current repository baseline so new developers can resume e
 - LLM integration policy (provider, prompts, evidence tracking).
 
 ## Next Steps
-1) Validate location model with additional real cases when ready.
-2) Expand mappings with additional fields and sources.
-3) Wire EvidenceStore into mappings/aggregator and build cards from outputs.
+1) Commit/push the latest UniProt online helper changes (if not yet done).
+2) Add `tools.db` stubs for PDB / PubChem / ChEMBL (offline + online).
+3) Add offline tests for PubChem/ChEMBL mappings.
+4) Expand mappings with additional fields and sources.
+5) Validate location model with additional real cases when ready.

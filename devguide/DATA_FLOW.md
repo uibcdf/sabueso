@@ -13,6 +13,7 @@
    - Each module returns:
      - raw source data
      - source metadata (source name, record ID, timestamps)
+   - Example: `tools.db.uniprot` now supports offline fixtures and online fetch.
 
 4) **Aggregator**
    - Map source fields to canonical field paths.
