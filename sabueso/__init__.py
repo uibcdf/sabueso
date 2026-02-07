@@ -14,6 +14,11 @@ from sabueso.tools.db.pubchem import (
     create_compound_card_from_json,
     create_compound_card_online,
 )
+from sabueso.tools.db.chembl import (
+    create_molecule_card_from_file,
+    create_molecule_card_from_json,
+    create_molecule_card_online,
+)
 
 __all__ = [
     "create_protein_card_from_file",
@@ -26,4 +31,7 @@ __all__ = [
     "create_compound_card_from_file",
     "create_compound_card_from_json",
     "create_compound_card_online",
+    "create_molecule_card_from_file",
+    "create_molecule_card_from_json",
+    "create_molecule_card_online",
 ]
