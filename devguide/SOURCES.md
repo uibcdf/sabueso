@@ -9,6 +9,35 @@
 - ChemSpider
 - DrugBank
 
+## Priority Classification (Current)
+High priority:
+- UniProt
+- PDB (RCSB)
+- ChEMBL
+- PubChem
+- DrugBank
+- GO Consortium
+- InterPro
+- STRING
+- BioGRID
+
+Medium priority:
+- CATH
+- SCOPe
+- TED
+- PhosphoSitePlus
+
+Low priority:
+- eMolecules
+- ChemSpider
+- iPPI-DB
+- PiSITE
+- IUPAC
+- CPPsite
+
+Note:
+- CPPsite is a specialized source relevant for **cell‑penetrating peptides (CPPs)** and should be mapped to PeptideCard when included.
+
 ## Verified UniProt Examples
 - UniProt IDs used for JSON verification:
   - P52789
