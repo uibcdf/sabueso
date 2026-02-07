@@ -40,6 +40,8 @@ This file records the current repository baseline so new developers can resume e
 - `sabueso/core/deck.py`: minimal Deck implementation.
 - `sabueso/tools/db/uniprot.py`: offline + online UniProt card creation helpers.
 - `tests/core/test_mapping_uniprot_offline.py`: offline smoke test for UniProt mapping.
+- `tests/core/test_online_*.py`: online smoke tests (UniProt, PDB, PubChem, ChEMBL).
+- `devguide/TESTS.md`: offline/online test strategy.
 - `pyproject.toml`: minimal packaging config for editable installs.
 
 ## Pending Decisions
@@ -50,6 +52,5 @@ This file records the current repository baseline so new developers can resume e
 ## Next Steps
 1) Commit/push the latest UniProt online helper changes (if not yet done).
 2) Add `tools.db` stubs for PDB / PubChem / ChEMBL (offline + online).
-3) Add offline tests for PubChem/ChEMBL mappings.
-4) Expand mappings with additional fields and sources.
-5) Validate location model with additional real cases when ready.
+3) Expand mappings with additional fields and sources.
+4) Validate location model with additional real cases when ready.

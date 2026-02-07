@@ -14,3 +14,8 @@ license = { text = "MIT" }
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["sabueso*"]
+
+[tool.pytest.ini_options]
+markers = [
+  "online: tests that require network access",
+]
