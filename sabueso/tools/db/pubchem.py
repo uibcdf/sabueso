@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Any, Dict
+from urllib.parse import quote
 from urllib.request import urlopen
 
 from sabueso.core.aggregator import build_card_from_mapping
@@ -29,8 +30,9 @@ def create_compound_card_from_file(path: str | Path, retrieved_at: str) -> Any:
 
 def fetch_pubchem_json(cid: str) -> Dict[str, Any]:
     """Fetch PubChem JSON online by CID (property table)."""
-    props = "MolecularWeight,CanonicalSMILES,CID"
-    url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/{props}/JSON"
+    props = "MolecularWeight,CanonicalSMILES,ConnectivitySMILES"
+    props_enc = quote(props, safe=",")
+    url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/{props_enc}/JSON"
     with urlopen(url) as resp:  # nosec - expected trusted endpoint
         return json.loads(resp.read().decode("utf-8"))
 

@@ -35,7 +35,7 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             ev['evidence_id'] = ev_id
             evidences.append(ev)
             field_evidence[fp] = [ev_id]
-        smiles = p0.get('CanonicalSMILES') or p0.get('IsomericSMILES')
+        smiles = p0.get('CanonicalSMILES') or p0.get('IsomericSMILES') or p0.get('ConnectivitySMILES')
         if smiles:
             fp = 'identifiers.smiles'
             fields[fp] = smiles

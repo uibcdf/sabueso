@@ -21,6 +21,8 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
     field_evidence: Dict[str, List[str]] = {}
 
     title = get_in(pdb_entry, ['entry', 'struct', 'title'])
+    if not title:
+        title = get_in(pdb_entry, ['struct', 'title'])
     if title:
         fp = 'structure.entry_metadata.title'
         fields[fp] = title
@@ -36,6 +38,10 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
         field_evidence[fp] = [ev_id]
 
     method = get_in(pdb_entry, ['entry', 'rcsb_entry_info', 'experimental_method'])
+    if not method:
+        method = get_in(pdb_entry, ['entry', 'exptl', 0, 'method'])
+    if not method:
+        method = get_in(pdb_entry, ['exptl', 0, 'method'])
     if method:
         fp = 'structure.entry_metadata.experimental_method'
         fields[fp] = method
@@ -51,6 +57,10 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
         field_evidence[fp] = [ev_id]
 
     res = get_in(pdb_entry, ['entry', 'rcsb_entry_info', 'resolution_combined'])
+    if res is None:
+        res = get_in(pdb_entry, ['entry', 'refine', 0, 'ls_dres_high'])
+    if res is None:
+        res = get_in(pdb_entry, ['refine', 0, 'ls_dres_high'])
     if res:
         fp = 'structure.entry_metadata.resolution'
         fields[fp] = res
