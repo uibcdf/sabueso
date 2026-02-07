@@ -58,6 +58,11 @@ Every evidence object stored in `evidence_store` must include:
 
 The `source.type` must distinguish at least: `database`, `article`, `dataset`, and `llm` when applicable.
 
+## Evidence Creation Rules (Approved)
+- Each mapped field value must generate **at least one** evidence object.
+- Evidence IDs should be **deterministic** from `(source, record_id, field, value)`.
+- Evidence creation happens **before** any selection rules are applied.
+
 ## Positional Features (Proteins/Peptides)
 The schema includes positional features observed directly in UniProt JSON examples:
 - Active site, Binding site, Disulfide bond, Glycosylation, Lipidation, Modified residue, Mutagenesis, Natural variant, Region, Motif, Topological domain, Transmembrane, etc.

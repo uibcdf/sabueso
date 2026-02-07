@@ -32,6 +32,8 @@ This file records the current repository baseline so new developers can resume e
 - `devguide/INTERFACES_MINIMAL.md`: minimal core interfaces for Card/Deck/EvidenceStore/Resolver.
 - `sabueso/mappings/` (Python mapping stubs):
   - `uniprot.py`, `pdb.py`, `pubchem.py`, `chembl.py`, `base.py`
+- `sabueso/core/evidence_store.py`: EvidenceStore implementation with deterministic IDs.
+- Mappings now emit `evidences` and `field_evidence` (minimal).
 
 ## Pending Decisions
 - Final **schema versioning policy**.
@@ -40,4 +42,5 @@ This file records the current repository baseline so new developers can resume e
 
 ## Next Steps
 1) Validate location model with additional real cases when ready.
-2) Expand mappings with evidence object creation and additional fields.
+2) Expand mappings with additional fields and sources.
+3) Wire EvidenceStore into mappings/aggregator and build cards from outputs.

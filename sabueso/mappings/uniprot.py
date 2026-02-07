@@ -4,9 +4,10 @@ from __future__ import annotations
 from typing import Any, Dict, List
 
 from .base import get_in
+from sabueso.core.evidence_store import generate_evidence_id
 
 
-def map_protein(uniprot_json: Dict[str, Any]) -> Dict[str, Any]:
+def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, Any]:
     """
     Map minimal UniProt fields into canonical card fields.
 
@@ -17,16 +18,40 @@ def map_protein(uniprot_json: Dict[str, Any]) -> Dict[str, Any]:
     """
     fields: Dict[str, Any] = {}
     features: Dict[str, Any] = {}
+    evidences: List[Dict[str, Any]] = []
+    field_evidence: Dict[str, List[str]] = {}
 
     # identifiers
     primary = uniprot_json.get('primaryAccession')
     if primary:
-        fields['identifiers.secondary_ids.uniprot'] = primary
+        fp = 'identifiers.secondary_ids.uniprot'
+        fields[fp] = primary
+        ev = {
+            'field': fp,
+            'value': primary,
+            'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('UniProt', primary, fp, primary)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
 
     # canonical name
     name = get_in(uniprot_json, ['proteinDescription', 'recommendedName', 'fullName', 'value'])
     if name:
-        fields['names.canonical_name'] = name
+        fp = 'names.canonical_name'
+        fields[fp] = name
+        ev = {
+            'field': fp,
+            'value': name,
+            'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('UniProt', primary or '', fp, name)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
 
     # function (commentType == FUNCTION)
     comments = uniprot_json.get('comments', []) or []
@@ -38,7 +63,21 @@ def map_protein(uniprot_json: Dict[str, Any]) -> Dict[str, Any]:
                 if v:
                     func_texts.append(v)
     if func_texts:
-        fields['uniprot_comments.function'] = func_texts
+        fp = 'uniprot_comments.function'
+        fields[fp] = func_texts
+        ev_ids: List[str] = []
+        for txt in func_texts:
+            ev = {
+                'field': fp,
+                'value': txt,
+                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('UniProt', primary or '', fp, txt)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            ev_ids.append(ev_id)
+        field_evidence[fp] = ev_ids
 
     # binding sites (features)
     feat_items = []
@@ -61,6 +100,20 @@ def map_protein(uniprot_json: Dict[str, Any]) -> Dict[str, Any]:
                     'description': f.get('description') or '',
                 })
     if feat_items:
-        features['features_positional.binding_site'] = feat_items
+        fp = 'features_positional.binding_site'
+        features[fp] = feat_items
+        ev_ids: List[str] = []
+        for item in feat_items:
+            ev = {
+                'field': fp,
+                'value': item,
+                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('UniProt', primary or '', fp, item)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            ev_ids.append(ev_id)
+        field_evidence[fp] = ev_ids
 
-    return {'fields': fields, 'features': features}
+    return {'fields': fields, 'features': features, 'evidences': evidences, 'field_evidence': field_evidence}

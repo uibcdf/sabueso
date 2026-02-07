@@ -1,12 +1,13 @@
 """PubChem → SmallMoleculeCard mappings (minimal)."""
 
 from __future__ import annotations
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from .base import get_in
+from sabueso.core.evidence_store import generate_evidence_id
 
 
-def map_compound(pubchem_json: Dict[str, Any]) -> Dict[str, Any]:
+def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, Any]:
     """
     Map minimal PubChem fields into canonical card fields.
 
@@ -14,19 +15,54 @@ def map_compound(pubchem_json: Dict[str, Any]) -> Dict[str, Any]:
       PropertyTable.Properties[0].MolecularWeight, CanonicalSMILES
     """
     fields: Dict[str, Any] = {}
+    evidences: List[Dict[str, Any]] = []
+    field_evidence: Dict[str, List[str]] = {}
 
     props = get_in(pubchem_json, ['PropertyTable', 'Properties']) or []
     if props:
         p0 = props[0]
         mw = p0.get('MolecularWeight')
         if mw is not None:
-            fields['properties.physchem.molecular_weight'] = mw
+            fp = 'properties.physchem.molecular_weight'
+            fields[fp] = mw
+            ev = {
+                'field': fp,
+                'value': mw,
+                'source': {'type': 'database', 'name': 'PubChem', 'record_id': str(p0.get('CID', ''))},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('PubChem', str(p0.get('CID', '')), fp, mw)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
         smiles = p0.get('CanonicalSMILES') or p0.get('IsomericSMILES')
         if smiles:
-            fields['identifiers.smiles'] = smiles
+            fp = 'identifiers.smiles'
+            fields[fp] = smiles
+            ev = {
+                'field': fp,
+                'value': smiles,
+                'source': {'type': 'database', 'name': 'PubChem', 'record_id': str(p0.get('CID', ''))},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('PubChem', str(p0.get('CID', '')), fp, smiles)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
 
     cid = get_in(pubchem_json, ['PropertyTable', 'Properties', 0, 'CID'])
     if cid is not None:
-        fields['identifiers.secondary_ids.pubchem'] = str(cid)
+        fp = 'identifiers.secondary_ids.pubchem'
+        fields[fp] = str(cid)
+        ev = {
+            'field': fp,
+            'value': str(cid),
+            'source': {'type': 'database', 'name': 'PubChem', 'record_id': str(cid)},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('PubChem', str(cid), fp, str(cid))
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
 
-    return {'fields': fields}
+    return {'fields': fields, 'evidences': evidences, 'field_evidence': field_evidence}
