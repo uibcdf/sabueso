@@ -19,5 +19,4 @@
 - How to handle **ambiguous inputs** (e.g., common names)?
 - What is the **schema versioning policy** (major/minor compatibility rules)?
 - What is the **local cache policy** (raw sources vs cards vs both) given licensing constraints?
-- What are the minimal **core ops** guaranteed on Card/Deck objects?
 - What is the **LLM integration policy** (provider, prompts, and evidence tracking)?
