@@ -68,6 +68,10 @@
 ## Core Ops (Pending Decision)
 - Define a minimal, consistent set of **CardOps** and **DeckOps** (compare, filter, sort, expand, etc.).
 
+## Resolver (In Progress)
+- Resolver contract defined in `devguide/RESOLVER.md` (0.1.0).
+- Implementation and tests pending.
+
 ## Online‑First
 - Sabueso is **online‑first**.
 - Local card caching is optional and does not replace live queries.
