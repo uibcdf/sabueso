@@ -19,6 +19,16 @@ from sabueso.tools.db.chembl import (
     create_molecule_card_from_json,
     create_molecule_card_online,
 )
+from sabueso.tools.db.go import (
+    create_go_card_from_file,
+    create_go_card_from_json,
+    create_go_card_online,
+)
+from sabueso.tools.db.interpro import (
+    create_interpro_card_from_file,
+    create_interpro_card_from_json,
+    create_interpro_card_online,
+)
 
 __all__ = [
     "create_protein_card_from_file",
@@ -34,4 +44,10 @@ __all__ = [
     "create_molecule_card_from_file",
     "create_molecule_card_from_json",
     "create_molecule_card_online",
+    "create_go_card_from_file",
+    "create_go_card_from_json",
+    "create_go_card_online",
+    "create_interpro_card_from_file",
+    "create_interpro_card_from_json",
+    "create_interpro_card_online",
 ]

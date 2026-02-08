@@ -42,11 +42,17 @@ This file records the current repository baseline so new developers can resume e
 - `sabueso/tools/db/pdb.py`: offline + online PDB card helpers.
 - `sabueso/tools/db/pubchem.py`: offline + online PubChem card helpers.
 - `sabueso/tools/db/chembl.py`: offline + online ChEMBL card helpers.
+- `sabueso/tools/db/go.py`: offline + online GO term helpers.
+- `sabueso/tools/db/interpro.py`: offline + online InterPro entry helpers.
 - `tests/core/test_mapping_uniprot_offline.py`: offline smoke test for UniProt mapping.
 - `tests/core/test_mapping_pdb_offline.py`: offline smoke test for PDB mapping.
 - `tests/core/test_mapping_pubchem_offline.py`: offline smoke test for PubChem mapping.
 - `tests/core/test_mapping_chembl_offline.py`: offline smoke test for ChEMBL mapping.
+- `tests/core/test_mapping_go_offline.py`: offline smoke test for GO mapping.
+- `tests/core/test_mapping_interpro_offline.py`: offline smoke test for InterPro mapping.
 - `tests/core/test_online_*.py`: online smoke tests (UniProt, PDB, PubChem, ChEMBL).
+- `tests/core/test_online_go.py`: online smoke test for GO.
+- `tests/core/test_online_interpro.py`: online smoke test for InterPro.
 - `devguide/TESTS.md`: offline/online test strategy.
 - `pyproject.toml`: minimal packaging config for editable installs.
 - Mappings expanded:
@@ -58,6 +64,8 @@ This file records the current repository baseline so new developers can resume e
   - ChEMBL: pref_name, molecule_type, mw_freebase, hbd, hba, tpsa, rtb,
     aromatic_rings, inchi, inchikey.
   - PDB: deposition_date, release_date, primary_citation (doi/pmid/title).
+  - GO: annotations.go_terms (id + name).
+  - InterPro: annotations.domains (id + name).
 
 ## Pending Decisions
 - Final **schema versioning policy**.
