@@ -75,4 +75,83 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
         evidences.append(ev)
         field_evidence[fp] = [ev_id]
 
+    # dates
+    deposit = get_in(pdb_entry, ['rcsb_accession_info', 'deposit_date'])
+    if deposit:
+        fp = 'structure.entry_metadata.deposition_date'
+        fields[fp] = deposit
+        ev = {
+            'field': fp,
+            'value': deposit,
+            'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, deposit)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
+    release = get_in(pdb_entry, ['rcsb_accession_info', 'initial_release_date'])
+    if release:
+        fp = 'structure.entry_metadata.release_date'
+        fields[fp] = release
+        ev = {
+            'field': fp,
+            'value': release,
+            'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, release)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
+    # primary citation
+    citation = get_in(pdb_entry, ['rcsb_primary_citation'])
+    if citation:
+        doi = citation.get('pdbx_database_id_doi')
+        if doi:
+            fp = 'structure.entry_metadata.primary_citation.doi'
+            fields[fp] = doi
+            ev = {
+                'field': fp,
+                'value': doi,
+                'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, doi)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
+
+        pmid = citation.get('pdbx_database_id_pub_med')
+        if pmid:
+            fp = 'structure.entry_metadata.primary_citation.pmid'
+            fields[fp] = pmid
+            ev = {
+                'field': fp,
+                'value': pmid,
+                'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, pmid)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
+
+        title = citation.get('title')
+        if title:
+            fp = 'structure.entry_metadata.primary_citation.title'
+            fields[fp] = title
+            ev = {
+                'field': fp,
+                'value': title,
+                'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, title)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
+
     return {'fields': fields, 'evidences': evidences, 'field_evidence': field_evidence}

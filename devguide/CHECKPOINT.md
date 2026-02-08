@@ -57,6 +57,7 @@ This file records the current repository baseline so new developers can resume e
     rotatable_bonds.
   - ChEMBL: pref_name, molecule_type, mw_freebase, hbd, hba, tpsa, rtb,
     aromatic_rings, inchi, inchikey.
+  - PDB: deposition_date, release_date, primary_citation (doi/pmid/title).
 
 ## Pending Decisions
 - Final **schema versioning policy**.
