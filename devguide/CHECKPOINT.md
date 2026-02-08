@@ -44,6 +44,8 @@ This file records the current repository baseline so new developers can resume e
 - `sabueso/tools/db/chembl.py`: offline + online ChEMBL card helpers.
 - `sabueso/tools/db/go.py`: offline + online GO term helpers.
 - `sabueso/tools/db/interpro.py`: offline + online InterPro entry helpers.
+- `sabueso/tools/db/stringdb.py`: online STRING interaction helper.
+- `sabueso/tools/db/biogrid.py`: online BioGRID interaction helper (requires access key).
 - `tests/core/test_mapping_uniprot_offline.py`: offline smoke test for UniProt mapping.
 - `tests/core/test_mapping_pdb_offline.py`: offline smoke test for PDB mapping.
 - `tests/core/test_mapping_pubchem_offline.py`: offline smoke test for PubChem mapping.
@@ -53,6 +55,10 @@ This file records the current repository baseline so new developers can resume e
 - `tests/core/test_online_*.py`: online smoke tests (UniProt, PDB, PubChem, ChEMBL).
 - `tests/core/test_online_go.py`: online smoke test for GO.
 - `tests/core/test_online_interpro.py`: online smoke test for InterPro.
+- `tests/core/test_mapping_string_offline.py`: offline smoke test for STRING mapping.
+- `tests/core/test_mapping_biogrid_offline.py`: offline smoke test for BioGRID mapping.
+- `tests/core/test_online_string.py`: online smoke test for STRING.
+- `tests/core/test_online_biogrid.py`: online smoke test for BioGRID (requires BIOGRID_ACCESS_KEY).
 - `devguide/TESTS.md`: offline/online test strategy.
 - `pyproject.toml`: minimal packaging config for editable installs.
 - Mappings expanded:
@@ -66,6 +72,8 @@ This file records the current repository baseline so new developers can resume e
   - PDB: deposition_date, release_date, primary_citation (doi/pmid/title).
   - GO: annotations.go_terms (id + name).
   - InterPro: annotations.domains (id + name).
+  - STRING: interactions.binding_partners.
+  - BioGRID: interactions.binding_partners.
 
 ## Pending Decisions
 - Final **schema versioning policy**.

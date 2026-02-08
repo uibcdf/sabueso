@@ -29,6 +29,8 @@ from sabueso.tools.db.interpro import (
     create_interpro_card_from_json,
     create_interpro_card_online,
 )
+from sabueso.tools.db.stringdb import create_string_card_online
+from sabueso.tools.db.biogrid import create_biogrid_card_online
 
 __all__ = [
     "create_protein_card_from_file",
@@ -50,4 +52,6 @@ __all__ = [
     "create_interpro_card_from_file",
     "create_interpro_card_from_json",
     "create_interpro_card_online",
+    "create_string_card_online",
+    "create_biogrid_card_online",
 ]
