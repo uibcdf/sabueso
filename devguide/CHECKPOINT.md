@@ -21,6 +21,9 @@ This file records the current repository baseline so new developers can resume e
 - The `schemas/` directory is **temporary** until Card/Deck classes are fully defined.
 - Phase‑0 focus is on structure, interfaces, and documentation, not implementation.
 - Editable install works offline with: `pip install --no-deps --editable .`
+- SCOPe and TED online fetch now use remote dumps by default (override via env vars).
+- InterPro online endpoint can be slow; online test may skip on timeout.
+- InterPro fetch tries `fields=metadata` first to reduce payload, then falls back.
 
 ## New Decisions (Today)
 - **Field path notation**: dot‑separated paths (e.g., `properties.physchem.molecular_weight`).
@@ -46,6 +49,10 @@ This file records the current repository baseline so new developers can resume e
 - `sabueso/tools/db/interpro.py`: offline + online InterPro entry helpers.
 - `sabueso/tools/db/stringdb.py`: online STRING interaction helper.
 - `sabueso/tools/db/biogrid.py`: online BioGRID interaction helper (requires access key).
+- `sabueso/tools/db/cath.py`: online CATH domain_summary helper.
+- `sabueso/tools/db/scope.py`: SCOPe dump-backed helper (remote dump or local file).
+- `sabueso/tools/db/ted.py`: TED dump-backed helper (remote dump or local file).
+- `sabueso/tools/db/phosphositeplus.py`: PSP offline-only helper.
 - `tests/core/test_mapping_uniprot_offline.py`: offline smoke test for UniProt mapping.
 - `tests/core/test_mapping_pdb_offline.py`: offline smoke test for PDB mapping.
 - `tests/core/test_mapping_pubchem_offline.py`: offline smoke test for PubChem mapping.
@@ -59,7 +66,16 @@ This file records the current repository baseline so new developers can resume e
 - `tests/core/test_mapping_biogrid_offline.py`: offline smoke test for BioGRID mapping.
 - `tests/core/test_online_string.py`: online smoke test for STRING.
 - `tests/core/test_online_biogrid.py`: online smoke test for BioGRID (requires BIOGRID_ACCESS_KEY).
+- `tests/core/test_mapping_cath_offline.py`: offline smoke test for CATH mapping.
+- `tests/core/test_mapping_scope_offline.py`: offline smoke test for SCOPe mapping.
+- `tests/core/test_mapping_ted_offline.py`: offline smoke test for TED mapping.
+- `tests/core/test_mapping_psp_offline.py`: offline smoke test for PSP mapping.
+- `tests/core/test_online_cath.py`: online smoke test for CATH.
+- `tests/core/test_online_scope.py`: online smoke test for SCOPe (dump-backed).
+- `tests/core/test_online_ted.py`: online smoke test for TED (dump-backed).
+- `tests/core/test_online_psp.py`: online smoke test for PSP (skips).
 - `devguide/TESTS.md`: offline/online test strategy.
+- `devguide/DATA_SOURCES_STATUS.md`: implemented DBs with quality/incidents report.
 - `pyproject.toml`: minimal packaging config for editable installs.
 - Mappings expanded:
   - UniProt: organism, pathway, subunit, catalytic_activity, subcellular_location,

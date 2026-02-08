@@ -31,6 +31,10 @@ from sabueso.tools.db.interpro import (
 )
 from sabueso.tools.db.stringdb import create_string_card_online
 from sabueso.tools.db.biogrid import create_biogrid_card_online
+from sabueso.tools.db.cath import create_cath_card_from_file, create_cath_card_from_json, create_cath_card_online
+from sabueso.tools.db.scope import create_scope_card_from_file, create_scope_card_from_json, create_scope_card_online
+from sabueso.tools.db.ted import create_ted_card_from_file, create_ted_card_from_json, create_ted_card_online
+from sabueso.tools.db.phosphositeplus import create_psp_card_from_file, create_psp_card_from_json
 
 __all__ = [
     "create_protein_card_from_file",
@@ -54,4 +58,15 @@ __all__ = [
     "create_interpro_card_online",
     "create_string_card_online",
     "create_biogrid_card_online",
+    "create_cath_card_from_file",
+    "create_cath_card_from_json",
+    "create_cath_card_online",
+    "create_scope_card_from_file",
+    "create_scope_card_from_json",
+    "create_scope_card_online",
+    "create_ted_card_from_file",
+    "create_ted_card_from_json",
+    "create_ted_card_online",
+    "create_psp_card_from_file",
+    "create_psp_card_from_json",
 ]
