@@ -30,6 +30,5 @@ This file documents concrete risks and mitigation strategies.
    - Cache frequently used evidence subsets.
 
 ## Open Decisions
-- Which mitigation(s) will be the default for v1?
+- Which mitigation(s) will be the default for 1.0.0?
 - How is external evidence referenced (URI, ID, local path)?
-

@@ -55,6 +55,8 @@
 - Tools are intentionally **ad‑hoc** and **heterogeneous** (no common protocol).
 
 ## Versioning (Pending Decision)
+- Version strings use **x.y.z** (no leading `v`).
+- Third‑party API URLs may include their own version segments (e.g., `/v1/`); do not change those.
 - A formal **schema versioning policy** is required.
 - Card and tool versioning must be defined before stable releases.
 
