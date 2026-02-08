@@ -1,1 +1,4 @@
 codex_session.bash
+__pycache__/
+*.egg-info/
+sandbox/

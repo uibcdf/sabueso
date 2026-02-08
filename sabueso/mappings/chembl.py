@@ -35,6 +35,36 @@ def map_molecule(chembl_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         evidences.append(ev)
         field_evidence[fp] = [ev_id]
 
+    pref_name = chembl_json.get('pref_name')
+    if pref_name:
+        fp = 'names.canonical_name'
+        fields[fp] = pref_name
+        ev = {
+            'field': fp,
+            'value': pref_name,
+            'source': {'type': 'database', 'name': 'ChEMBL', 'record_id': chembl_id or ''},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('ChEMBL', chembl_id or '', fp, pref_name)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
+    molecule_type = chembl_json.get('molecule_type')
+    if molecule_type:
+        fp = 'properties.physchem.molecule_type'
+        fields[fp] = molecule_type
+        ev = {
+            'field': fp,
+            'value': molecule_type,
+            'source': {'type': 'database', 'name': 'ChEMBL', 'record_id': chembl_id or ''},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('ChEMBL', chembl_id or '', fp, molecule_type)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
     alogp = get_in(chembl_json, ['molecule_properties', 'alogp'])
     if alogp is not None:
         fp = 'properties.physchem.logp'
@@ -46,6 +76,21 @@ def map_molecule(chembl_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             'retrieved_at': retrieved_at,
         }
         ev_id = generate_evidence_id('ChEMBL', chembl_id or '', fp, alogp)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
+    mw_freebase = get_in(chembl_json, ['molecule_properties', 'mw_freebase'])
+    if mw_freebase is not None:
+        fp = 'properties.physchem.molecular_weight'
+        fields[fp] = mw_freebase
+        ev = {
+            'field': fp,
+            'value': mw_freebase,
+            'source': {'type': 'database', 'name': 'ChEMBL', 'record_id': chembl_id or ''},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('ChEMBL', chembl_id or '', fp, mw_freebase)
         ev['evidence_id'] = ev_id
         evidences.append(ev)
         field_evidence[fp] = [ev_id]

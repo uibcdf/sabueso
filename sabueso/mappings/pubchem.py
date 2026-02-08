@@ -50,6 +50,36 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             evidences.append(ev)
             field_evidence[fp] = [ev_id]
 
+        formula = p0.get('MolecularFormula')
+        if formula:
+            fp = 'properties.physchem.formula'
+            fields[fp] = formula
+            ev = {
+                'field': fp,
+                'value': formula,
+                'source': {'type': 'database', 'name': 'PubChem', 'record_id': str(p0.get('CID', ''))},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('PubChem', str(p0.get('CID', '')), fp, formula)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
+
+        inchikey = p0.get('InChIKey')
+        if inchikey:
+            fp = 'identifiers.inchikey'
+            fields[fp] = inchikey
+            ev = {
+                'field': fp,
+                'value': inchikey,
+                'source': {'type': 'database', 'name': 'PubChem', 'record_id': str(p0.get('CID', ''))},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('PubChem', str(p0.get('CID', '')), fp, inchikey)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
+
     cid = get_in(pubchem_json, ['PropertyTable', 'Properties', 0, 'CID'])
     if cid is not None:
         fp = 'identifiers.secondary_ids.pubchem'

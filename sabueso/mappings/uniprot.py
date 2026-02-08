@@ -56,12 +56,24 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     # function (commentType == FUNCTION)
     comments = uniprot_json.get('comments', []) or []
     func_texts: List[str] = []
+    pathway_texts: List[str] = []
+    subunit_texts: List[str] = []
     for c in comments:
         if c.get('commentType') == 'FUNCTION':
             for t in c.get('texts', []) or []:
                 v = t.get('value')
                 if v:
                     func_texts.append(v)
+        if c.get('commentType') == 'PATHWAY':
+            for t in c.get('texts', []) or []:
+                v = t.get('value')
+                if v:
+                    pathway_texts.append(v)
+        if c.get('commentType') == 'SUBUNIT':
+            for t in c.get('texts', []) or []:
+                v = t.get('value')
+                if v:
+                    subunit_texts.append(v)
     if func_texts:
         fp = 'uniprot_comments.function'
         fields[fp] = func_texts
@@ -79,15 +91,66 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             ev_ids.append(ev_id)
         field_evidence[fp] = ev_ids
 
+    if pathway_texts:
+        fp = 'uniprot_comments.pathway'
+        fields[fp] = pathway_texts
+        ev_ids = []
+        for txt in pathway_texts:
+            ev = {
+                'field': fp,
+                'value': txt,
+                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('UniProt', primary or '', fp, txt)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            ev_ids.append(ev_id)
+        field_evidence[fp] = ev_ids
+
+    if subunit_texts:
+        fp = 'uniprot_comments.subunit'
+        fields[fp] = subunit_texts
+        ev_ids = []
+        for txt in subunit_texts:
+            ev = {
+                'field': fp,
+                'value': txt,
+                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('UniProt', primary or '', fp, txt)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            ev_ids.append(ev_id)
+        field_evidence[fp] = ev_ids
+
+    # organism
+    org_name = get_in(uniprot_json, ['organism', 'scientificName'])
+    if org_name:
+        fp = 'annotations.organism'
+        fields[fp] = org_name
+        ev = {
+            'field': fp,
+            'value': org_name,
+            'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('UniProt', primary or '', fp, org_name)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
     # binding sites (features)
-    feat_items = []
+    binding_items: List[Dict[str, Any]] = []
+    active_items: List[Dict[str, Any]] = []
     for f in uniprot_json.get('features', []) or []:
-        if f.get('type') == 'Binding site':
+        if f.get('type') in ('Binding site', 'Active site'):
             loc = f.get('location', {}) or {}
             start = get_in(loc, ['start', 'value'])
             end = get_in(loc, ['end', 'value'])
             if start is not None:
-                feat_items.append({
+                item = {
                     'location': {
                         'kind': 'sequence',
                         'sequence': {
@@ -98,22 +161,45 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
                         },
                     },
                     'description': f.get('description') or '',
-                })
-    if feat_items:
-        fp = 'features_positional.binding_site'
-        features[fp] = feat_items
-        ev_ids: List[str] = []
-        for item in feat_items:
-            ev = {
-                'field': fp,
-                'value': item,
-                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                'retrieved_at': retrieved_at,
-            }
-            ev_id = generate_evidence_id('UniProt', primary or '', fp, item)
-            ev['evidence_id'] = ev_id
-            evidences.append(ev)
-            ev_ids.append(ev_id)
-        field_evidence[fp] = ev_ids
+                }
+                if f.get('type') == 'Binding site':
+                    binding_items.append(item)
+                else:
+                    active_items.append(item)
+    if binding_items or active_items:
+
+        if binding_items:
+            fp = 'features_positional.binding_site'
+            features[fp] = binding_items
+            ev_ids: List[str] = []
+            for item in binding_items:
+                ev = {
+                    'field': fp,
+                    'value': item,
+                    'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
+                    'retrieved_at': retrieved_at,
+                }
+                ev_id = generate_evidence_id('UniProt', primary or '', fp, item)
+                ev['evidence_id'] = ev_id
+                evidences.append(ev)
+                ev_ids.append(ev_id)
+            field_evidence[fp] = ev_ids
+
+        if active_items:
+            fp = 'features_positional.active_site'
+            features[fp] = active_items
+            ev_ids = []
+            for item in active_items:
+                ev = {
+                    'field': fp,
+                    'value': item,
+                    'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
+                    'retrieved_at': retrieved_at,
+                }
+                ev_id = generate_evidence_id('UniProt', primary or '', fp, item)
+                ev['evidence_id'] = ev_id
+                evidences.append(ev)
+                ev_ids.append(ev_id)
+            field_evidence[fp] = ev_ids
 
     return {'fields': fields, 'features': features, 'evidences': evidences, 'field_evidence': field_evidence}

@@ -39,10 +39,20 @@ This file records the current repository baseline so new developers can resume e
 - `sabueso/core/card.py`: minimal Card implementation.
 - `sabueso/core/deck.py`: minimal Deck implementation.
 - `sabueso/tools/db/uniprot.py`: offline + online UniProt card creation helpers.
+- `sabueso/tools/db/pdb.py`: offline + online PDB card helpers.
+- `sabueso/tools/db/pubchem.py`: offline + online PubChem card helpers.
+- `sabueso/tools/db/chembl.py`: offline + online ChEMBL card helpers.
 - `tests/core/test_mapping_uniprot_offline.py`: offline smoke test for UniProt mapping.
+- `tests/core/test_mapping_pdb_offline.py`: offline smoke test for PDB mapping.
+- `tests/core/test_mapping_pubchem_offline.py`: offline smoke test for PubChem mapping.
+- `tests/core/test_mapping_chembl_offline.py`: offline smoke test for ChEMBL mapping.
 - `tests/core/test_online_*.py`: online smoke tests (UniProt, PDB, PubChem, ChEMBL).
 - `devguide/TESTS.md`: offline/online test strategy.
 - `pyproject.toml`: minimal packaging config for editable installs.
+- Mappings expanded:
+  - UniProt: organism, pathway, subunit, active_site.
+  - PubChem: molecular_formula, inchikey.
+  - ChEMBL: pref_name, molecule_type, mw_freebase.
 
 ## Pending Decisions
 - Final **schema versioning policy**.
@@ -50,7 +60,5 @@ This file records the current repository baseline so new developers can resume e
 - LLM integration policy (provider, prompts, evidence tracking).
 
 ## Next Steps
-1) Commit/push the latest UniProt online helper changes (if not yet done).
-2) Add `tools.db` stubs for PDB / PubChem / ChEMBL (offline + online).
-3) Expand mappings with additional fields and sources.
-4) Validate location model with additional real cases when ready.
+1) Expand mappings with additional fields and sources.
+2) Validate location model with additional real cases when ready.
