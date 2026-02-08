@@ -8,9 +8,10 @@ Users can choose to operate on a single Card or a Deck.
 
 ## Ops (Internal, Consistent Semantics)
 Ops are methods on Card/Deck with predictable behavior.
+Core Ops version: **0.1.0** (x.y.z).
 
 Examples:
-- CardOps: `compare`, `extract`, `expand`, `to_deck`.
+- CardOps: `compare`, `extract`, `expand`, `to_deck`, `to_dict`.
 - DeckOps: `filter`, `sort`, `compare`, `map`, `reduce`.
 
 ## Minimal Stable Ops (Approved)
@@ -18,17 +19,24 @@ These ops define the minimum stable surface for a usable Sabueso release.
 
 CardOps (minimum):
 - `get(field_path)`
+- `to_dict()`
 - `extract(field_paths)`
-- `compare(other_card, fields=None)`
-- `expand(kind)`
+- `compare(other_card, fields=None, mode="strict")` → `dict`
+- `derive_deck(kind)` → `Deck`
 - `to_deck()`
 
 DeckOps (minimum):
+- `get_card(index)` → `Card`
 - `filter(predicate)`
+- `extract(predicate)` → `Deck`
 - `sort(key)`
 - `map(fn)`
-- `compare(other_deck, key_fields)`
+- `compare(other_deck, key_fields, mode="strict")` → `dict`
 - `summarize(fields)`
+
+### Compare Modes
+- `strict`: exact equality on values, ordered list equality, no normalization.
+- `tolerant`: relaxed equality (unordered list equality, numeric tolerance, basic string normalization).
 
 ## Tools (Public, Heterogeneous)
 Tools are standalone functions grouped by module:

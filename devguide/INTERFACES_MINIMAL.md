@@ -18,7 +18,7 @@ These are contracts only (no implementation).
 - `set(field_path: str, value: Any, evidence_ids: list[str]) -> None`
 - `extract(field_paths: list[str]) -> dict`
 - `compare(other_card: Card, fields: list[str] | None = None) -> dict`
-- `expand(kind: str) -> Deck`
+- `derive_deck(kind: str) -> Deck`
 - `list_fields() -> list[str]`
 - `to_dict() -> dict`
 - `to_deck() -> Deck`
@@ -33,7 +33,9 @@ These are contracts only (no implementation).
 **Methods**
 - `add(card: Card) -> None`
 - `extend(cards: list[Card]) -> None`
+- `get_card(index: int) -> Card`
 - `filter(predicate: Callable[[Card], bool]) -> Deck`
+- `extract(predicate: Callable[[Card], bool]) -> Deck`
 - `sort(key: str) -> Deck`
 - `map(fn: Callable[[Card], Any]) -> list[Any]`
 - `compare(other_deck: Deck, key_fields: list[str]) -> dict`
