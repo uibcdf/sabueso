@@ -18,7 +18,7 @@ def _extract_terms(go_json: Dict[str, Any]) -> List[Dict[str, str]]:
         return terms
 
     # single-term GO API shape
-    term_id = go_json.get("id") or go_json.get("go_id")
+    term_id = go_json.get("id") or go_json.get("go_id") or go_json.get("goid")
     name = go_json.get("label") or go_json.get("name")
     if term_id and name:
         terms.append({"id": term_id, "name": name})

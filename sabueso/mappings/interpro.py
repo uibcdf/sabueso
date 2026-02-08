@@ -18,10 +18,16 @@ def _extract_domains(interpro_json: Dict[str, Any]) -> List[Dict[str, str]]:
         return domains
 
     # InterPro entry API shape (metadata)
-    accession = interpro_json.get("accession")
+    metadata = interpro_json.get("metadata") if isinstance(interpro_json.get("metadata"), dict) else None
+    accession = None
     name = None
-    if "metadata" in interpro_json and isinstance(interpro_json["metadata"], dict):
-        name = interpro_json["metadata"].get("name")
+    if metadata:
+        accession = metadata.get("accession")
+        name_obj = metadata.get("name")
+        if isinstance(name_obj, dict):
+            name = name_obj.get("name") or name_obj.get("short")
+        elif isinstance(name_obj, str):
+            name = name_obj
     if accession and name:
         domains.append({"id": accession, "name": name})
 
