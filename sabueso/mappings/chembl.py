@@ -80,6 +80,81 @@ def map_molecule(chembl_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         evidences.append(ev)
         field_evidence[fp] = [ev_id]
 
+    hbd = get_in(chembl_json, ['molecule_properties', 'hbd'])
+    if hbd is not None:
+        fp = 'properties.physchem.hbd'
+        fields[fp] = hbd
+        ev = {
+            'field': fp,
+            'value': hbd,
+            'source': {'type': 'database', 'name': 'ChEMBL', 'record_id': chembl_id or ''},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('ChEMBL', chembl_id or '', fp, hbd)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
+    hba = get_in(chembl_json, ['molecule_properties', 'hba'])
+    if hba is not None:
+        fp = 'properties.physchem.hba'
+        fields[fp] = hba
+        ev = {
+            'field': fp,
+            'value': hba,
+            'source': {'type': 'database', 'name': 'ChEMBL', 'record_id': chembl_id or ''},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('ChEMBL', chembl_id or '', fp, hba)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
+    psa = get_in(chembl_json, ['molecule_properties', 'psa'])
+    if psa is not None:
+        fp = 'properties.physchem.tpsa'
+        fields[fp] = psa
+        ev = {
+            'field': fp,
+            'value': psa,
+            'source': {'type': 'database', 'name': 'ChEMBL', 'record_id': chembl_id or ''},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('ChEMBL', chembl_id or '', fp, psa)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
+    rtb = get_in(chembl_json, ['molecule_properties', 'rtb'])
+    if rtb is not None:
+        fp = 'properties.physchem.rotatable_bonds'
+        fields[fp] = rtb
+        ev = {
+            'field': fp,
+            'value': rtb,
+            'source': {'type': 'database', 'name': 'ChEMBL', 'record_id': chembl_id or ''},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('ChEMBL', chembl_id or '', fp, rtb)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
+    arom = get_in(chembl_json, ['molecule_properties', 'aromatic_rings'])
+    if arom is not None:
+        fp = 'properties.physchem.aromatic_rings'
+        fields[fp] = arom
+        ev = {
+            'field': fp,
+            'value': arom,
+            'source': {'type': 'database', 'name': 'ChEMBL', 'record_id': chembl_id or ''},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('ChEMBL', chembl_id or '', fp, arom)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
     mw_freebase = get_in(chembl_json, ['molecule_properties', 'mw_freebase'])
     if mw_freebase is not None:
         fp = 'properties.physchem.molecular_weight'
@@ -106,6 +181,36 @@ def map_molecule(chembl_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             'retrieved_at': retrieved_at,
         }
         ev_id = generate_evidence_id('ChEMBL', chembl_id or '', fp, smiles)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
+    inchi = get_in(chembl_json, ['molecule_structures', 'standard_inchi'])
+    if inchi:
+        fp = 'identifiers.inchi'
+        fields[fp] = inchi
+        ev = {
+            'field': fp,
+            'value': inchi,
+            'source': {'type': 'database', 'name': 'ChEMBL', 'record_id': chembl_id or ''},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('ChEMBL', chembl_id or '', fp, inchi)
+        ev['evidence_id'] = ev_id
+        evidences.append(ev)
+        field_evidence[fp] = [ev_id]
+
+    inchikey = get_in(chembl_json, ['molecule_structures', 'standard_inchi_key'])
+    if inchikey:
+        fp = 'identifiers.inchikey'
+        fields[fp] = inchikey
+        ev = {
+            'field': fp,
+            'value': inchikey,
+            'source': {'type': 'database', 'name': 'ChEMBL', 'record_id': chembl_id or ''},
+            'retrieved_at': retrieved_at,
+        }
+        ev_id = generate_evidence_id('ChEMBL', chembl_id or '', fp, inchikey)
         ev['evidence_id'] = ev_id
         evidences.append(ev)
         field_evidence[fp] = [ev_id]

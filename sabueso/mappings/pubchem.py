@@ -80,6 +80,96 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             evidences.append(ev)
             field_evidence[fp] = [ev_id]
 
+        inchi = p0.get('InChI')
+        if inchi:
+            fp = 'identifiers.inchi'
+            fields[fp] = inchi
+            ev = {
+                'field': fp,
+                'value': inchi,
+                'source': {'type': 'database', 'name': 'PubChem', 'record_id': str(p0.get('CID', ''))},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('PubChem', str(p0.get('CID', '')), fp, inchi)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
+
+        xlogp = p0.get('XLogP')
+        if xlogp is not None:
+            fp = 'properties.physchem.logp'
+            fields[fp] = xlogp
+            ev = {
+                'field': fp,
+                'value': xlogp,
+                'source': {'type': 'database', 'name': 'PubChem', 'record_id': str(p0.get('CID', ''))},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('PubChem', str(p0.get('CID', '')), fp, xlogp)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
+
+        tpsa = p0.get('TPSA')
+        if tpsa is not None:
+            fp = 'properties.physchem.tpsa'
+            fields[fp] = tpsa
+            ev = {
+                'field': fp,
+                'value': tpsa,
+                'source': {'type': 'database', 'name': 'PubChem', 'record_id': str(p0.get('CID', ''))},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('PubChem', str(p0.get('CID', '')), fp, tpsa)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
+
+        hbd = p0.get('HBondDonorCount')
+        if hbd is not None:
+            fp = 'properties.physchem.hbd'
+            fields[fp] = hbd
+            ev = {
+                'field': fp,
+                'value': hbd,
+                'source': {'type': 'database', 'name': 'PubChem', 'record_id': str(p0.get('CID', ''))},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('PubChem', str(p0.get('CID', '')), fp, hbd)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
+
+        hba = p0.get('HBondAcceptorCount')
+        if hba is not None:
+            fp = 'properties.physchem.hba'
+            fields[fp] = hba
+            ev = {
+                'field': fp,
+                'value': hba,
+                'source': {'type': 'database', 'name': 'PubChem', 'record_id': str(p0.get('CID', ''))},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('PubChem', str(p0.get('CID', '')), fp, hba)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
+
+        rtb = p0.get('RotatableBondCount')
+        if rtb is not None:
+            fp = 'properties.physchem.rotatable_bonds'
+            fields[fp] = rtb
+            ev = {
+                'field': fp,
+                'value': rtb,
+                'source': {'type': 'database', 'name': 'PubChem', 'record_id': str(p0.get('CID', ''))},
+                'retrieved_at': retrieved_at,
+            }
+            ev_id = generate_evidence_id('PubChem', str(p0.get('CID', '')), fp, rtb)
+            ev['evidence_id'] = ev_id
+            evidences.append(ev)
+            field_evidence[fp] = [ev_id]
+
     cid = get_in(pubchem_json, ['PropertyTable', 'Properties', 0, 'CID'])
     if cid is not None:
         fp = 'identifiers.secondary_ids.pubchem'

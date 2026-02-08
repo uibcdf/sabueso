@@ -50,9 +50,13 @@ This file records the current repository baseline so new developers can resume e
 - `devguide/TESTS.md`: offline/online test strategy.
 - `pyproject.toml`: minimal packaging config for editable installs.
 - Mappings expanded:
-  - UniProt: organism, pathway, subunit, active_site.
-  - PubChem: molecular_formula, inchikey.
-  - ChEMBL: pref_name, molecule_type, mw_freebase.
+  - UniProt: organism, pathway, subunit, catalytic_activity, subcellular_location,
+    tissue_specificity, ptm, polymorphism, active_site, modified_residue,
+    glycosylation, disulfide_bond.
+  - PubChem: molecular_formula, inchi, inchikey, logp, tpsa, hbd, hba,
+    rotatable_bonds.
+  - ChEMBL: pref_name, molecule_type, mw_freebase, hbd, hba, tpsa, rtb,
+    aromatic_rings, inchi, inchikey.
 
 ## Pending Decisions
 - Final **schema versioning policy**.
