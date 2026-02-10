@@ -6,7 +6,7 @@
 
 ## Field Paths (Provisional Examples)
 - `properties.physchem.molecular_weight`
-- `uniprot_comments.catalytic_activity`
+- `annotations.catalytic_activity`
 - `features_positional.binding_site`
 
 Canonical field path contract:

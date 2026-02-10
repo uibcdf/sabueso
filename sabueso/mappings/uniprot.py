@@ -105,7 +105,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
                 if v:
                     polymorphism_texts.append(v)
     if func_texts:
-        fp = 'uniprot_comments.function'
+        fp = 'annotations.function'
         fields[fp] = func_texts
         ev_ids: List[str] = []
         for txt in func_texts:
@@ -122,7 +122,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         field_evidence[fp] = ev_ids
 
     if catalytic_texts:
-        fp = 'uniprot_comments.catalytic_activity'
+        fp = 'annotations.catalytic_activity'
         fields[fp] = catalytic_texts
         ev_ids = []
         for txt in catalytic_texts:
@@ -139,7 +139,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         field_evidence[fp] = ev_ids
 
     if pathway_texts:
-        fp = 'uniprot_comments.pathway'
+        fp = 'annotations.pathway'
         fields[fp] = pathway_texts
         ev_ids = []
         for txt in pathway_texts:
@@ -156,7 +156,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         field_evidence[fp] = ev_ids
 
     if subunit_texts:
-        fp = 'uniprot_comments.subunit'
+        fp = 'annotations.subunit'
         fields[fp] = subunit_texts
         ev_ids = []
         for txt in subunit_texts:
@@ -173,7 +173,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         field_evidence[fp] = ev_ids
 
     if subcell_texts:
-        fp = 'uniprot_comments.subcellular_location'
+        fp = 'annotations.subcellular_location'
         fields[fp] = subcell_texts
         ev_ids = []
         for txt in subcell_texts:
@@ -190,7 +190,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         field_evidence[fp] = ev_ids
 
     if tissue_texts:
-        fp = 'uniprot_comments.tissue_specificity'
+        fp = 'annotations.tissue_specificity'
         fields[fp] = tissue_texts
         ev_ids = []
         for txt in tissue_texts:
@@ -207,7 +207,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         field_evidence[fp] = ev_ids
 
     if ptm_texts:
-        fp = 'uniprot_comments.ptm'
+        fp = 'annotations.ptm'
         fields[fp] = ptm_texts
         ev_ids = []
         for txt in ptm_texts:
@@ -224,7 +224,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         field_evidence[fp] = ev_ids
 
     if polymorphism_texts:
-        fp = 'uniprot_comments.polymorphism'
+        fp = 'annotations.polymorphism'
         fields[fp] = polymorphism_texts
         ev_ids = []
         for txt in polymorphism_texts:

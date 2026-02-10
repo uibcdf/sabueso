@@ -15,7 +15,7 @@ def test_uniprot_mapping_offline():
     assert card.get("names.canonical_name") is not None
 
     # function field should exist or be None; if present, evidence IDs must exist
-    func = card.get("uniprot_comments.function")
+    func = card.get("annotations.function")
     if func is not None:
         ev_ids = func.get("evidence_ids", [])
         assert ev_ids, "function should have evidence_ids"

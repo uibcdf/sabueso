@@ -49,6 +49,7 @@ Versioning: **x.y.z** (no leading `v`).
 - `annotations.subunit`
 - `annotations.subcellular_location`
 - `annotations.tissue_specificity`
+- `annotations.organism`
 - `annotations.go_terms`
 - `annotations.domains` (non-positional summary)
 

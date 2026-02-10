@@ -15,7 +15,7 @@ Canonical field paths use **dot‑separated notation**.
 Examples:
 - `names.canonical_name`
 - `properties.physchem.molecular_weight`
-- `uniprot_comments.catalytic_activity`
+- `annotations.catalytic_activity`
 - `features_positional.binding_site`
 
 Identifier paths are **direct**:
