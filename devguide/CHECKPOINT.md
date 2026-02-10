@@ -92,6 +92,8 @@ This file records the current repository baseline so new developers can resume e
 - `tests/core/test_end_to_end_resolver_offline.py`: offline end-to-end pipeline test.
 - `devguide/FIELD_PATHS.md`: canonical field paths catalog.
 - `schemas/card_schema_0.1.0.yaml`: formal YAML schema aligned with field paths.
+- `tests/core/test_end_to_end_protein_sources_offline.py`: protein end-to-end offline test (UniProt + PDB + InterPro).
+- `devguide/CACHE_POLICY.md`: draft cache/storage policy options.
 - `pyproject.toml`: minimal packaging config for editable installs.
 - Mappings expanded:
   - UniProt: organism, pathway, subunit, catalytic_activity, subcellular_location,

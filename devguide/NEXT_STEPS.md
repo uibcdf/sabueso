@@ -1,12 +1,11 @@
 # Sabueso — Next Steps
 
 ## Immediate
-1) Add real offline datasets for end-to-end tests (ChEMBL/PubChem).
-2) Confirm the final list of canonical field paths.
-3) Define a stable field‑path naming convention for rules and evidence objects.
+1) Decide cache/storage policy (raw vs cards vs both) and document it.
+2) Define a stable field‑path naming convention for rules and evidence objects.
 
 ## Short Term
-4) Decide how to represent `location` for positional features (range model).
+3) Decide how to represent `location` for positional features (range model).
 5) Draft database module interfaces (input/output contracts).
 6) Extend resolver integration with end-to-end Card construction (real sources).
 
