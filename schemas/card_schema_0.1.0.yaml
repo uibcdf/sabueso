@@ -1,0 +1,130 @@
+# Sabueso card schema (formal draft)
+# Versioning: x.y.z (no leading v)
+
+schema:
+  name: sabueso-card
+  version: 0.1.0
+  created_at: 2026-02-10
+  note: "Formal draft aligned with devguide/FIELD_PATHS.md; enforcement via code later."
+
+card_base:
+  meta:
+    entity_type: enum[protein, peptide, small_molecule]
+    created_at: date
+    updated_at: date
+    sources: [string]
+
+  identifiers:
+    uniprot: { value: string, evidence_ids: [string] }
+    pdb: { value: string, evidence_ids: [string] }
+    chembl: { value: string, evidence_ids: [string] }
+    pubchem: { value: string, evidence_ids: [string] }
+    drugbank: { value: string, evidence_ids: [string] }
+    inchi: { value: string, evidence_ids: [string] }
+    inchikey: { value: string, evidence_ids: [string] }
+    smiles: { value: string, evidence_ids: [string] }
+    other: { value: any, evidence_ids: [string] }
+
+  names:
+    canonical_name: { value: string, evidence_ids: [string] }
+    synonyms: { value: [string], evidence_ids: [string] }
+    abbreviations: { value: [string], evidence_ids: [string] }
+
+  properties:
+    physchem:
+      formula: { value: string, evidence_ids: [string] }
+      molecular_weight: { value: number, evidence_ids: [string] }
+      logp: { value: number, evidence_ids: [string] }
+      tpsa: { value: number, evidence_ids: [string] }
+      hbd: { value: number, evidence_ids: [string] }
+      hba: { value: number, evidence_ids: [string] }
+      rotatable_bonds: { value: number, evidence_ids: [string] }
+      aromatic_rings: { value: number, evidence_ids: [string] }
+      molecule_type: { value: string, evidence_ids: [string] }
+
+  annotations:
+    function: { value: [string], evidence_ids: [string] }
+    catalytic_activity: { value: [string], evidence_ids: [string] }
+    pathway: { value: [string], evidence_ids: [string] }
+    subunit: { value: [string], evidence_ids: [string] }
+    subcellular_location: { value: [string], evidence_ids: [string] }
+    tissue_specificity: { value: [string], evidence_ids: [string] }
+    organism: { value: string, evidence_ids: [string] }
+    ptm: { value: [string], evidence_ids: [string] }
+    polymorphism: { value: [string], evidence_ids: [string] }
+    go_terms: { value: [ { id: string, name: string } ], evidence_ids: [string] }
+    domains: { value: [ { id: string, name: string } ], evidence_ids: [string] }
+
+  features_positional:
+    domains: [ { location: any, description: string, evidence_ids: [string] } ]
+    active_site: [ { location: any, description: string, evidence_ids: [string] } ]
+    binding_site: [ { location: any, description: string, evidence_ids: [string] } ]
+    modified_residue: [ { location: any, description: string, evidence_ids: [string] } ]
+    disulfide_bond: [ { location: any, description: string, evidence_ids: [string] } ]
+    glycosylation: [ { location: any, description: string, evidence_ids: [string] } ]
+
+  interactions:
+    binding_partners: { value: [string], evidence_ids: [string] }
+
+  clinical:
+    pharmacology: { value: any, evidence_ids: [string] }
+    pharmacokinetics: { value: any, evidence_ids: [string] }
+    pharmacodynamics: { value: any, evidence_ids: [string] }
+    admet: { value: any, evidence_ids: [string] }
+    clinical_trials: { value: any, evidence_ids: [string] }
+    pharmacovigilance: { value: any, evidence_ids: [string] }
+    adverse_events: { value: any, evidence_ids: [string] }
+    toxicity: { value: any, evidence_ids: [string] }
+    indications: { value: any, evidence_ids: [string] }
+    contraindications: { value: any, evidence_ids: [string] }
+    interactions: { value: any, evidence_ids: [string] }
+    dosing: { value: any, evidence_ids: [string] }
+    regulatory_status: { value: any, evidence_ids: [string] }
+
+  quality:
+    conflicts: [ { field: string, values: [any], evidence_ids: [[string]] } ]
+    notes: [string]
+
+protein_card:
+  inherits: card_base
+
+  annotations:
+    enzyme_class: { value: [string], evidence_ids: [string] }
+    family: { value: [string], evidence_ids: [string] }
+    similar_proteins: { value: [string], evidence_ids: [string] }
+    isoforms: { value: [string], evidence_ids: [string] }
+
+  disease:
+    associations: { value: [ { disease_id: string, name: string, source: string } ], evidence_ids: [string] }
+
+  ligands:
+    items: { value: [ { ligand_id: string, name: string, role: string } ], evidence_ids: [string] }
+
+  sequence:
+    primary: { value: string, evidence_ids: [string] }
+
+  structure:
+    primary: { value: any, evidence_ids: [string] }
+    secondary_structure: { value: any, evidence_ids: [string] }
+    chains: { value: [string], evidence_ids: [string] }
+    entities: { value: [string], evidence_ids: [string] }
+    entry_metadata:
+      title: { value: string, evidence_ids: [string] }
+      experimental_method: { value: string, evidence_ids: [string] }
+      resolution: { value: number, evidence_ids: [string] }
+      deposition_date: { value: date, evidence_ids: [string] }
+      release_date: { value: date, evidence_ids: [string] }
+      primary_citation:
+        doi: { value: string, evidence_ids: [string] }
+        pmid: { value: string, evidence_ids: [string] }
+        title: { value: string, evidence_ids: [string] }
+
+peptide_card:
+  inherits: protein_card
+  note: "Peptide cards may omit structure.* if not available."
+
+small_molecule_card:
+  inherits: card_base
+
+  annotations:
+    drug_class: { value: [string], evidence_ids: [string] }
