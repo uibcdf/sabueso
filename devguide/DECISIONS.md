@@ -70,7 +70,7 @@
 
 ## Resolver (In Progress)
 - Resolver contract defined in `devguide/RESOLVER.md` (0.1.0).
-- Implementation and tests pending.
+- Field-level resolver implemented in `sabueso/resolver/field_resolver.py` with tests.
 
 ## Online‑First
 - Sabueso is **online‑first**.

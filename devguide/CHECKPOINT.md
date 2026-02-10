@@ -78,6 +78,8 @@ This file records the current repository baseline so new developers can resume e
 - `devguide/DATA_SOURCES_STATUS.md`: implemented DBs with quality/incidents report.
 - `devguide/RESOLVER.md`: minimal resolver contract and selection rules 0.1.0.
 - Core Ops v0.1.0 semantics recorded in `devguide/PUBLIC_API.md` and `devguide/INTERFACES_MINIMAL.md`.
+- `sabueso/resolver/field_resolver.py`: resolver implementation (field-level selection).
+- `tests/core/test_resolver.py`: resolver unit tests (offline).
 - `pyproject.toml`: minimal packaging config for editable installs.
 - Mappings expanded:
   - UniProt: organism, pathway, subunit, catalytic_activity, subcellular_location,
