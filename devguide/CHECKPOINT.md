@@ -24,6 +24,7 @@ This file records the current repository baseline so new developers can resume e
 - SCOPe and TED online fetch now use remote dumps by default (override via env vars).
 - InterPro online endpoint can be slow; online test may skip on timeout.
 - InterPro fetch tries `fields=metadata` first to reduce payload, then falls back.
+- Offline test suite: `pytest -m "not online"` → 31 passed, 12 deselected (2026-02-10).
 
 ## New Decisions (Today)
 - **Field path notation**: dot‑separated paths (e.g., `properties.physchem.molecular_weight`).
