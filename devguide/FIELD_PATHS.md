@@ -68,12 +68,18 @@ Versioning: **x.y.z** (no leading `v`).
 
 ### clinical.*
 - `clinical.pharmacology`
+- `clinical.pharmacokinetics`
+- `clinical.pharmacodynamics`
 - `clinical.admet`
 - `clinical.clinical_trials`
 - `clinical.pharmacovigilance`
+- `clinical.adverse_events`
+- `clinical.toxicity`
 - `clinical.indications`
 - `clinical.contraindications`
 - `clinical.interactions`
+- `clinical.dosing`
+- `clinical.regulatory_status`
 
 ### quality.*
 - `quality.conflicts`
@@ -91,6 +97,9 @@ Versioning: **x.y.z** (no leading `v`).
 - `ligands.items` (each has `role` + evidence)
 - `sequence.primary`
 - `structure.primary`
+- `structure.secondary_structure`
+- `structure.chains`
+- `structure.entities`
 - `structure.entry_metadata.title`
 - `structure.entry_metadata.experimental_method`
 - `structure.entry_metadata.resolution`
