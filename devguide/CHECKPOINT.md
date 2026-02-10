@@ -94,6 +94,9 @@ This file records the current repository baseline so new developers can resume e
 - `schemas/card_schema_0.1.0.yaml`: formal YAML schema aligned with field paths.
 - `tests/core/test_end_to_end_protein_sources_offline.py`: protein end-to-end offline test (UniProt + PDB + InterPro).
 - `devguide/CACHE_POLICY.md`: draft cache/storage policy options.
+- `devguide/STORAGE_LAYOUT.md`: recommended project storage layout (no defaults).
+- `tools/validate_card.py`: basic schema validator for Card dicts.
+- `tests/core/test_card_schema_validation_offline.py`: card schema validation test.
 - `sabueso/tools/card/storage.py`: JSON and SQLite persistence for Card.
 - `sabueso/tools/deck/storage.py`: JSONL and SQLite persistence for Deck.
 - `tests/core/test_storage_offline.py`: persistence tests (offline).

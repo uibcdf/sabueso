@@ -28,6 +28,10 @@ This document defines how Sabueso stores data locally for reproducibility and pe
   - Keep **cards** for long‑term access.
   - Allow user overrides via config.
 
+## Storage Layout (Recommendation)
+See `devguide/STORAGE_LAYOUT.md` for a recommended project layout.
+There are **no default paths** in Sabueso.
+
 ## Open Questions
 - Where to store (path, DB, SQLite)?
 - How to handle licensing restrictions.
