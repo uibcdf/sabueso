@@ -90,6 +90,7 @@ This file records the current repository baseline so new developers can resume e
 - `sabueso/resolver/loader.py`: selection rules loader.
 - `sabueso/core/merge.py`: mapping merge helper.
 - `tests/core/test_end_to_end_resolver_offline.py`: offline end-to-end pipeline test.
+- `devguide/FIELD_PATHS.md`: canonical field paths catalog.
 - `pyproject.toml`: minimal packaging config for editable installs.
 - Mappings expanded:
   - UniProt: organism, pathway, subunit, catalytic_activity, subcellular_location,
