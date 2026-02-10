@@ -71,6 +71,8 @@
 ## Resolver (In Progress)
 - Resolver contract defined in `devguide/RESOLVER.md` (0.1.0).
 - Field-level resolver implemented in `sabueso/resolver/field_resolver.py` with tests.
+- Field examples documented in `devguide/SELECTION_RULES_EXAMPLES.md`.
+- Selection rules are published in docs (`docs/selection_rules.rst`) and machine-readable (`docs/selection_rules.json`).
 
 ## Online‑First
 - Sabueso is **online‑first**.

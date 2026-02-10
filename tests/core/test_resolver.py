@@ -19,6 +19,7 @@ def test_priority_sources_picks_preferred():
     out = resolver.resolve_field("annotations.domains", evidences, rules)
     assert out["selected_value"] == "B"
     assert out["evidence_ids"] == ["e2"]
+    assert out["conflict"] is not None
 
 
 def test_most_recent_strategy():
@@ -29,6 +30,7 @@ def test_most_recent_strategy():
     rules = {"field_rules": {"x": {"strategy": "most_recent"}}}
     out = resolver.resolve_field("x", evidences, rules)
     assert out["selected_value"] == "B"
+    assert out["conflict"] is not None
 
 
 def test_most_frequent_tie_conflict():

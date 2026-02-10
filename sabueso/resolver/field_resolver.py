@@ -67,6 +67,16 @@ def _most_recent_group(groups: Dict[str, List[Dict[str, Any]]]) -> Tuple[str, Li
     return best_key, groups[best_key]
 
 
+def _build_conflict(groups: Dict[str, List[Dict[str, Any]]]) -> Dict[str, Any] | None:
+    if len(groups) <= 1:
+        return None
+    return {
+        "type": "disagreement",
+        "values": [g[0].get("value") for g in groups.values()],
+        "evidence_ids": [[ev.get("evidence_id") for ev in g] for g in groups.values()],
+    }
+
+
 def resolve_field(
     field_path: str,
     evidences: List[Dict[str, Any]],
@@ -92,6 +102,7 @@ def resolve_field(
         }
 
     groups = _group_evidences(evidences, mode)
+    conflict_all = _build_conflict(groups)
 
     # Strategy: priority_sources
     if strategy == "priority_sources" and priority_sources:
@@ -107,7 +118,7 @@ def resolve_field(
                     "field": field_path,
                     "selected_value": selected_values,
                     "evidence_ids": evidence_ids,
-                    "conflict": None,
+                    "conflict": conflict_all,
                 }
             key, evs = _most_recent_group(src_groups)
             selected_value = evs[0].get("value")
@@ -116,7 +127,7 @@ def resolve_field(
                 "field": field_path,
                 "selected_value": selected_value,
                 "evidence_ids": evidence_ids,
-                "conflict": None,
+                "conflict": conflict_all,
             }
 
     # Strategy: most_recent
@@ -134,14 +145,14 @@ def resolve_field(
                 "field": field_path,
                 "selected_value": selected_values,
                 "evidence_ids": evidence_ids,
-                "conflict": None,
+                "conflict": conflict_all,
             }
         key, evs = _most_recent_group(groups)
         return {
             "field": field_path,
             "selected_value": evs[0].get("value"),
             "evidence_ids": [ev.get("evidence_id") for ev in evs],
-            "conflict": None,
+            "conflict": conflict_all,
         }
 
     # Strategy: most_frequent (default fallback)
@@ -155,16 +166,12 @@ def resolve_field(
             "field": field_path,
             "selected_value": evs[0].get("value"),
             "evidence_ids": [ev.get("evidence_id") for ev in evs],
-            "conflict": None,
+            "conflict": conflict_all,
         }
 
     # Tie
     key, evs = _most_recent_group(top_groups)
-    conflict = {
-        "type": "disagreement",
-        "values": [g[0].get("value") for g in top_groups.values()],
-        "evidence_ids": [[ev.get("evidence_id") for ev in g] for g in top_groups.values()],
-    }
+    conflict = _build_conflict(top_groups)
     return {
         "field": field_path,
         "selected_value": evs[0].get("value"),

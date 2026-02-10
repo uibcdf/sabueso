@@ -5,3 +5,4 @@ Sabueso Documentation
    :maxdepth: 2
    :caption: Contents:
 
+   selection_rules

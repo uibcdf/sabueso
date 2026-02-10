@@ -1,0 +1,26 @@
+{
+  "version": "0.1.0",
+  "priority_sources": ["InterPro", "CATH", "SCOPe", "TED"],
+  "field_rules": {
+    "annotations.domains": {
+      "strategy": "priority_sources",
+      "allow_multiple": true
+    },
+    "annotations.catalytic_activity": {
+      "strategy": "priority_sources",
+      "allow_multiple": false
+    },
+    "properties.physchem.molecular_weight": {
+      "strategy": "most_recent",
+      "allow_multiple": false
+    },
+    "properties.identifiers.smiles": {
+      "strategy": "priority_sources",
+      "allow_multiple": false
+    },
+    "features_positional.binding_site": {
+      "strategy": "priority_sources",
+      "allow_multiple": true
+    }
+  }
+}

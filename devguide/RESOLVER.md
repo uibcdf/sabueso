@@ -81,6 +81,7 @@ Resolver follows this minimal rule stack, in order:
 ```
 
 ## Conflict Handling
+- **Any discrepancy** (multiple distinct values for a field) must be reported.
 - Conflicts are surfaced in `quality.conflicts` on the Card.
 - Conflicts must retain the full set of contradictory values and evidence IDs.
 

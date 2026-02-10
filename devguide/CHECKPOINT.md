@@ -82,6 +82,10 @@ This file records the current repository baseline so new developers can resume e
 - `tests/core/test_resolver.py`: resolver unit tests (offline).
 - `sabueso/core/aggregator.py`: resolver-integrated card builder.
 - `tests/core/test_aggregator_resolver.py`: aggregator+resolver integration test.
+- `devguide/SELECTION_RULES_EXAMPLES.md`: field-level selection rules examples.
+- `tests/core/test_selection_rules_fields.py`: resolver tests using real field examples.
+- `docs/selection_rules.rst`: published documentation page for selection rules.
+- `docs/selection_rules.json`: machine-readable selection rules for agents/tools.
 - `pyproject.toml`: minimal packaging config for editable installs.
 - Mappings expanded:
   - UniProt: organism, pathway, subunit, catalytic_activity, subcellular_location,
