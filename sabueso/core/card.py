@@ -63,6 +63,16 @@ class Card:
             "quality": self.quality,
         }
 
+    def to_json(self, path: str) -> None:
+        from sabueso.tools.card.storage import save_card_json
+
+        save_card_json(self, path)
+
+    def to_sqlite(self, path: str, table: str = "cards", id_field: str | None = None) -> None:
+        from sabueso.tools.card.storage import save_card_sqlite
+
+        save_card_sqlite(self, path, table=table, id_field=id_field)
+
     def to_deck(self) -> Any:
         from .deck import Deck
 

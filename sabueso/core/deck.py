@@ -35,3 +35,13 @@ class Deck:
 
     def to_list(self) -> List[Dict[str, Any]]:
         return [c.to_dict() for c in self.cards]
+
+    def to_jsonl(self, path: str) -> None:
+        from sabueso.tools.deck.storage import save_deck_jsonl
+
+        save_deck_jsonl(self, path)
+
+    def to_sqlite(self, path: str, table: str = "cards", id_field: str | None = None) -> None:
+        from sabueso.tools.deck.storage import save_deck_sqlite
+
+        save_deck_sqlite(self, path, table=table, id_field=id_field)

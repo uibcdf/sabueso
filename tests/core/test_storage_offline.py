@@ -12,6 +12,9 @@ def test_save_card_json(tmp_path: Path):
     out = tmp_path / "card.json"
     save_card_json(card, out)
     assert out.exists()
+    out2 = tmp_path / "card2.json"
+    card.to_json(str(out2))
+    assert out2.exists()
 
 
 def test_save_deck_jsonl(tmp_path: Path):
@@ -21,6 +24,9 @@ def test_save_deck_jsonl(tmp_path: Path):
     save_deck_jsonl(deck, out)
     assert out.exists()
     assert out.read_text(encoding="utf-8").count("\n") == 2
+    out2 = tmp_path / "deck2.jsonl"
+    deck.to_jsonl(str(out2))
+    assert out2.exists()
 
 
 def test_save_card_sqlite(tmp_path: Path):
@@ -32,6 +38,9 @@ def test_save_card_sqlite(tmp_path: Path):
         cur = conn.cursor()
         cur.execute("SELECT COUNT(*) FROM cards")
         assert cur.fetchone()[0] == 1
+    out2 = tmp_path / "cards2.db"
+    card.to_sqlite(str(out2), id_field="identifiers.uniprot")
+    assert out2.exists()
 
 
 def test_save_deck_sqlite(tmp_path: Path):
@@ -44,3 +53,6 @@ def test_save_deck_sqlite(tmp_path: Path):
         cur = conn.cursor()
         cur.execute("SELECT COUNT(*) FROM cards")
         assert cur.fetchone()[0] == 2
+    out2 = tmp_path / "cards2.db"
+    deck.to_sqlite(str(out2), id_field="identifiers.uniprot")
+    assert out2.exists()

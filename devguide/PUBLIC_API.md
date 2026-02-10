@@ -20,6 +20,8 @@ These ops define the minimum stable surface for a usable Sabueso release.
 CardOps (minimum):
 - `get(field_path)`
 - `to_dict()`
+- `to_json(path)`
+- `to_sqlite(path, table="cards", id_field=None)`
 - `extract(field_paths)`
 - `compare(other_card, fields=None, mode="strict")` → `dict`
 - `derive_deck(kind)` → `Deck`
@@ -33,6 +35,8 @@ DeckOps (minimum):
 - `map(fn)`
 - `compare(other_deck, key_fields, mode="strict")` → `dict`
 - `summarize(fields)`
+- `to_jsonl(path)`
+- `to_sqlite(path, table="cards", id_field=None)`
 
 ### Compare Modes
 - `strict`: exact equality on values, ordered list equality, no normalization.
