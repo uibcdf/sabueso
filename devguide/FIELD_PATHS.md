@@ -50,6 +50,8 @@ Versioning: **x.y.z** (no leading `v`).
 - `annotations.subcellular_location`
 - `annotations.tissue_specificity`
 - `annotations.organism`
+- `annotations.ptm`
+- `annotations.polymorphism`
 - `annotations.go_terms`
 - `annotations.domains` (non-positional summary)
 
@@ -89,6 +91,14 @@ Versioning: **x.y.z** (no leading `v`).
 - `ligands.items` (each has `role` + evidence)
 - `sequence.primary`
 - `structure.primary`
+- `structure.entry_metadata.title`
+- `structure.entry_metadata.experimental_method`
+- `structure.entry_metadata.resolution`
+- `structure.entry_metadata.deposition_date`
+- `structure.entry_metadata.release_date`
+- `structure.entry_metadata.primary_citation.doi`
+- `structure.entry_metadata.primary_citation.pmid`
+- `structure.entry_metadata.primary_citation.title`
 
 ---
 
