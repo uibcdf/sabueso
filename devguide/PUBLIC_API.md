@@ -48,6 +48,8 @@ Tools are **ad‑hoc by design** and can return any output type.
 
 ### Current Tooling (Example)
 - `tools.db.uniprot` provides offline and online helpers to build a Protein Card from UniProt data.
+- `tools.card.storage` provides `save_card_json`, `save_card_sqlite`.
+- `tools.deck.storage` provides `save_deck_jsonl`, `save_deck_sqlite`.
 
 ## Mixed API Style
 The public API is mixed OO + functional:

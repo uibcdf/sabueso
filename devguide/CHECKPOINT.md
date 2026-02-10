@@ -94,6 +94,10 @@ This file records the current repository baseline so new developers can resume e
 - `schemas/card_schema_0.1.0.yaml`: formal YAML schema aligned with field paths.
 - `tests/core/test_end_to_end_protein_sources_offline.py`: protein end-to-end offline test (UniProt + PDB + InterPro).
 - `devguide/CACHE_POLICY.md`: draft cache/storage policy options.
+- `sabueso/tools/card/storage.py`: JSON and SQLite persistence for Card.
+- `sabueso/tools/deck/storage.py`: JSONL and SQLite persistence for Deck.
+- `tests/core/test_storage_offline.py`: persistence tests (offline).
+- `tools/validate_schema.py`: schema alignment validator (used in pytest).
 - `pyproject.toml`: minimal packaging config for editable installs.
 - Mappings expanded:
   - UniProt: organism, pathway, subunit, catalytic_activity, subcellular_location,
