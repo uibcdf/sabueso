@@ -2,12 +2,13 @@
 
 ## Naming
 - Use `snake_case` for fields in Python objects.
-- Field path notation is **open**. Dot‑separated paths are the current working assumption, but the final convention is not frozen yet.
+- Field path notation is **dot‑separated** and is now the frozen convention.
 
 ## Field Paths (Provisional Examples)
 - `properties.physchem.molecular_weight`
 - `annotations.catalytic_activity`
 - `features_positional.binding_site`
+- `structure.entry_metadata.experimental_method`
 
 Canonical field path contract:
 - `devguide/SCHEMA.md` (Field Path Contract)
