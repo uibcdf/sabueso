@@ -73,6 +73,22 @@ class Card:
 
         save_card_sqlite(self, path, table=table, id_field=id_field)
 
+    @classmethod
+    def from_json(cls, path: str) -> "Card":
+        from sabueso.tools.card.storage import load_card_json
+
+        data = load_card_json(path)
+        return cls(**data)
+
+    @classmethod
+    def from_sqlite(cls, path: str, table: str = "cards", card_id: str | None = None) -> "Card | None":
+        from sabueso.tools.card.storage import load_card_sqlite
+
+        data = load_card_sqlite(path, table=table, card_id=card_id)
+        if data is None:
+            return None
+        return cls(**data)
+
     def to_deck(self) -> Any:
         from .deck import Deck
 

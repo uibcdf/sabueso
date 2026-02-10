@@ -45,3 +45,17 @@ class Deck:
         from sabueso.tools.deck.storage import save_deck_sqlite
 
         save_deck_sqlite(self, path, table=table, id_field=id_field)
+
+    @classmethod
+    def from_jsonl(cls, path: str) -> "Deck":
+        from sabueso.tools.deck.storage import load_deck_jsonl
+
+        cards = load_deck_jsonl(path)
+        return cls([c for c in cards])
+
+    @classmethod
+    def from_sqlite(cls, path: str, table: str = "cards") -> "Deck":
+        from sabueso.tools.deck.storage import load_deck_sqlite
+
+        cards = load_deck_sqlite(path, table=table)
+        return cls([c for c in cards])

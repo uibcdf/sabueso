@@ -49,3 +49,28 @@ def save_card_sqlite(
             (card_id, card_json),
         )
         conn.commit()
+
+
+def load_card_json(path: str | Path) -> Any:
+    """Load a single Card from JSON (dict)."""
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    return data
+
+
+def load_card_sqlite(path: str | Path, table: str = "cards", card_id: str | None = None) -> Any:
+    """Load a single Card JSON from SQLite (latest row by default)."""
+    out = Path(path)
+    with sqlite3.connect(out) as conn:
+        cur = conn.cursor()
+        if card_id is None:
+            cur.execute(f"SELECT card_json FROM {table} ORDER BY id DESC LIMIT 1")
+            row = cur.fetchone()
+        else:
+            cur.execute(
+                f"SELECT card_json FROM {table} WHERE card_id = ? ORDER BY id DESC LIMIT 1",
+                (card_id,),
+            )
+            row = cur.fetchone()
+        if not row:
+            return None
+        return json.loads(row[0])

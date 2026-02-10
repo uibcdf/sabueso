@@ -52,3 +52,26 @@ def save_deck_sqlite(
                 (card_id, card_json),
             )
         conn.commit()
+
+
+def load_deck_jsonl(path: str | Path) -> list[dict]:
+    """Load a Deck from JSONL (list of card dicts)."""
+    out = Path(path)
+    cards = []
+    with out.open("r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            cards.append(json.loads(line))
+    return cards
+
+
+def load_deck_sqlite(path: str | Path, table: str = "cards") -> list[dict]:
+    """Load all cards from a SQLite table into a list of dicts."""
+    out = Path(path)
+    with sqlite3.connect(out) as conn:
+        cur = conn.cursor()
+        cur.execute(f"SELECT card_json FROM {table} ORDER BY id ASC")
+        rows = cur.fetchall()
+        return [json.loads(r[0]) for r in rows]

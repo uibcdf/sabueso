@@ -22,6 +22,8 @@ CardOps (minimum):
 - `to_dict()`
 - `to_json(path)`
 - `to_sqlite(path, table="cards", id_field=None)`
+- `from_json(path)`
+- `from_sqlite(path, table="cards", card_id=None)`
 - `extract(field_paths)`
 - `compare(other_card, fields=None, mode="strict")` → `dict`
 - `derive_deck(kind)` → `Deck`
@@ -37,6 +39,8 @@ DeckOps (minimum):
 - `summarize(fields)`
 - `to_jsonl(path)`
 - `to_sqlite(path, table="cards", id_field=None)`
+- `from_jsonl(path)`
+- `from_sqlite(path, table="cards")`
 
 ### Compare Modes
 - `strict`: exact equality on values, ordered list equality, no normalization.
