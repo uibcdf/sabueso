@@ -29,7 +29,7 @@ Field Rules (Examples)
 - Strategy: most_recent
 - Single value
 
-4) SmallMoleculeCard — SMILES (`properties.identifiers.smiles`)
+4) SmallMoleculeCard — SMILES (`identifiers.smiles`)
 
 - Priority sources: ChEMBL → PubChem
 - Single value

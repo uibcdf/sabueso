@@ -52,9 +52,9 @@ def test_smiles_priority_sources_single():
     rules = {
         "priority_sources": ["ChEMBL", "PubChem"],
         "field_rules": {
-            "properties.identifiers.smiles": {"strategy": "priority_sources", "allow_multiple": False}
+            "identifiers.smiles": {"strategy": "priority_sources", "allow_multiple": False}
         },
     }
-    out = resolver.resolve_field("properties.identifiers.smiles", evidences, rules)
+    out = resolver.resolve_field("identifiers.smiles", evidences, rules)
     assert out["selected_value"] == "C1CCC"
     assert out["conflict"] is not None

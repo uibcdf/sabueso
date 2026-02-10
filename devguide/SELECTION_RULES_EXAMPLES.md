@@ -54,7 +54,7 @@ Versioning follows **x.y.z**.
 }
 ```
 
-## 4) SmallMoleculeCard — SMILES (`properties.identifiers.smiles`)
+## 4) SmallMoleculeCard — SMILES (`identifiers.smiles`)
 **Goal:** prefer ChEMBL if present; otherwise PubChem.
 
 ```
@@ -62,7 +62,7 @@ Versioning follows **x.y.z**.
   "version": "0.1.0",
   "priority_sources": ["ChEMBL", "PubChem"],
   "field_rules": {
-    "properties.identifiers.smiles": {
+    "identifiers.smiles": {
       "strategy": "priority_sources",
       "allow_multiple": false
     }

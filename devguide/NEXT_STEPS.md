@@ -1,8 +1,9 @@
 # Sabueso — Next Steps
 
 ## Immediate
-1) Confirm the final list of canonical field paths.
-2) Define a stable field‑path naming convention for rules and evidence objects.
+1) Add real offline datasets for end-to-end tests (ChEMBL/PubChem).
+2) Confirm the final list of canonical field paths.
+3) Define a stable field‑path naming convention for rules and evidence objects.
 
 ## Short Term
 4) Decide how to represent `location` for positional features (range model).

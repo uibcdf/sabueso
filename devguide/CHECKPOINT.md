@@ -86,6 +86,10 @@ This file records the current repository baseline so new developers can resume e
 - `tests/core/test_selection_rules_fields.py`: resolver tests using real field examples.
 - `docs/selection_rules.rst`: published documentation page for selection rules.
 - `docs/selection_rules.json`: machine-readable selection rules for agents/tools.
+- `sabueso/resolver/selection_rules.json`: internal resolver rules for runtime use.
+- `sabueso/resolver/loader.py`: selection rules loader.
+- `sabueso/core/merge.py`: mapping merge helper.
+- `tests/core/test_end_to_end_resolver_offline.py`: offline end-to-end pipeline test.
 - `pyproject.toml`: minimal packaging config for editable installs.
 - Mappings expanded:
   - UniProt: organism, pathway, subunit, catalytic_activity, subcellular_location,
