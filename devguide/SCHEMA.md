@@ -10,7 +10,20 @@ This is a **conceptual** schema meant to be refined into formal validation later
 Cards are **nested** to preserve hierarchy and order. Each card type (protein, peptide, small molecule) inherits from a shared base.
 
 ## Field Path Contract (Approved)
-Canonical field paths use **dot‑separated notation**.\n\nExamples:\n- `names.canonical_name`\n- `properties.physchem.molecular_weight`\n- `uniprot_comments.catalytic_activity`\n- `features_positional.binding_site`
+Canonical field paths use **dot‑separated notation**.
+
+Examples:
+- `names.canonical_name`
+- `properties.physchem.molecular_weight`
+- `uniprot_comments.catalytic_activity`
+- `features_positional.binding_site`
+
+Identifier paths are **direct**:
+- `identifiers.uniprot`
+- `identifiers.pdb`
+- `identifiers.chembl`
+- `identifiers.pubchem`
+(No `secondary_ids` level.)
 
 ## Uniform Evidence Mechanism (Critical)
 All fields in all cards follow the same evidence protocol:

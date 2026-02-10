@@ -22,7 +22,7 @@ def map_molecule(chembl_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
 
     chembl_id = chembl_json.get('molecule_chembl_id')
     if chembl_id:
-        fp = 'identifiers.secondary_ids.chembl'
+        fp = 'identifiers.chembl'
         fields[fp] = chembl_id
         ev = {
             'field': fp,

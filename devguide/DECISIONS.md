@@ -12,6 +12,7 @@
 - Output is a **card** with nested sections and strict field ordering.
 - Card types: **ProteinCard**, **PeptideCard**, **SmallMoleculeCard**.
  - **Deck** is a first‑class object for collections of cards.
+- Identifiers use direct paths: `identifiers.<db>` (no `secondary_ids`).
 
 ## Evidence and Provenance (Critical)
 - **Uniform evidence model** for all fields, no exceptions.

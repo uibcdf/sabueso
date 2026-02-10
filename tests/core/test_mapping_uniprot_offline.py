@@ -11,7 +11,7 @@ def test_uniprot_mapping_offline():
     card = build_card_from_mapping(mapping, meta={"entity_type": "protein"})
 
     # basic fields exist
-    assert card.get("identifiers.secondary_ids.uniprot") is not None
+    assert card.get("identifiers.uniprot") is not None
     assert card.get("names.canonical_name") is not None
 
     # function field should exist or be None; if present, evidence IDs must exist

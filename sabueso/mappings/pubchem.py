@@ -172,7 +172,7 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
 
     cid = get_in(pubchem_json, ['PropertyTable', 'Properties', 0, 'CID'])
     if cid is not None:
-        fp = 'identifiers.secondary_ids.pubchem'
+        fp = 'identifiers.pubchem'
         fields[fp] = str(cid)
         ev = {
             'field': fp,

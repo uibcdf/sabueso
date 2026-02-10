@@ -42,4 +42,4 @@ def test_end_to_end_protein_offline():
     merged = merge_mapping_results([uni_map])
     card = build_card_from_mapping(merged, meta={"entity_type": "protein"}, selection_rules=rules)
 
-    assert card.get("identifiers.secondary_ids.uniprot") is not None
+    assert card.get("identifiers.uniprot") is not None

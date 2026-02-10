@@ -24,7 +24,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     # identifiers
     primary = uniprot_json.get('primaryAccession')
     if primary:
-        fp = 'identifiers.secondary_ids.uniprot'
+        fp = 'identifiers.uniprot'
         fields[fp] = primary
         ev = {
             'field': fp,

@@ -15,7 +15,7 @@ def test_pubchem_mapping_offline():
 
     assert card.get("properties.physchem.molecular_weight") is not None
     assert card.get("identifiers.smiles") is not None
-    assert card.get("identifiers.secondary_ids.pubchem") is not None
+    assert card.get("identifiers.pubchem") is not None
 
     mw = card.get("properties.physchem.molecular_weight")
     for ev_id in mw.get("evidence_ids", []):
