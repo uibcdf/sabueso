@@ -3,6 +3,8 @@
 ## Schema Location
 The frozen draft schema lives at:
 - `schemas/card_schema.yaml`
+The formal schema (versioned) lives at:
+- `schemas/card_schema_0.1.0.yaml`
 
 This is a **conceptual** schema meant to be refined into formal validation later.
 

@@ -91,6 +91,7 @@ This file records the current repository baseline so new developers can resume e
 - `sabueso/core/merge.py`: mapping merge helper.
 - `tests/core/test_end_to_end_resolver_offline.py`: offline end-to-end pipeline test.
 - `devguide/FIELD_PATHS.md`: canonical field paths catalog.
+- `schemas/card_schema_0.1.0.yaml`: formal YAML schema aligned with field paths.
 - `pyproject.toml`: minimal packaging config for editable installs.
 - Mappings expanded:
   - UniProt: organism, pathway, subunit, catalytic_activity, subcellular_location,
