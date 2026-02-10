@@ -21,10 +21,11 @@ This document defines how Sabueso stores data locally for reproducibility and pe
 - Allows re‑resolution when rules change.
 
 ## Draft Decision (to confirm)
-- Default: **Option C** with size‑aware pruning.
+## Decision (Confirmed)
+- Default: **Option C (Raw + Cards)** with size‑aware pruning.
 - Policy:
-  - Keep raw payloads for recent N days or N entities.
-  - Keep cards for long‑term access.
+  - Keep **raw payloads** for recent N days or N entities.
+  - Keep **cards** for long‑term access.
   - Allow user overrides via config.
 
 ## Open Questions
