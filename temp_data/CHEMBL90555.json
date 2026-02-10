@@ -1,0 +1,134 @@
+{
+  "atc_classifications": [
+    "L01CA02"
+  ],
+  "availability_type": 1,
+  "biotherapeutic": null,
+  "black_box_warning": 1,
+  "chemical_probe": 0,
+  "chirality": 1,
+  "cross_references": [],
+  "dosed_ingredient": false,
+  "first_approval": 1963,
+  "first_in_class": 0,
+  "helm_notation": null,
+  "inorganic_flag": 0,
+  "max_phase": "4.0",
+  "molecule_chembl_id": "CHEMBL90555",
+  "molecule_hierarchy": {
+    "active_chembl_id": "CHEMBL90555",
+    "molecule_chembl_id": "CHEMBL90555",
+    "parent_chembl_id": "CHEMBL90555"
+  },
+  "molecule_properties": {
+    "alogp": "3.52",
+    "aromatic_rings": 3,
+    "full_molformula": "C46H56N4O10",
+    "full_mwt": "824.97",
+    "hba": 12,
+    "hbd": 3,
+    "heavy_atoms": 60,
+    "mw_freebase": "824.97",
+    "np_likeness_score": "1.47",
+    "num_ro5_violations": 2,
+    "psa": "171.17",
+    "qed_weighted": "0.13",
+    "ro3_pass": "N",
+    "rtb": 8
+  },
+  "molecule_structures": {
+    "canonical_smiles": "CC[C@]1(O)C[C@H]2CN(CCc3c([nH]c4ccccc34)[C@@](C(=O)OC)(c3cc4c(cc3OC)N(C=O)[C@H]3[C@@](O)(C(=O)OC)[C@H](OC(C)=O)[C@]5(CC)C=CCN6CC[C@]43[C@@H]65)C2)C1",
+    "molfile": "\n     RDKit          2D\n\n 63 71  0  0  0  0  0  0  0  0999 V2000\n   -1.0316  -15.3055    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.8565  -15.3053    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.2683  -16.0188    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.6170  -16.0122    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.0224  -16.7252    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.8535  -16.7307    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.0987  -17.5193    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7631  -17.5162    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.4329  -18.0014    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.3440  -18.8216    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.5868  -19.1540    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.0044  -17.8431    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.0775  -18.6654    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.8302  -19.0028    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.5046  -18.5239    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.4185  -17.6975    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.6660  -17.3579    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n    0.3547  -16.4484    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.4347  -16.5298    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.5801  -18.4281    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0\n    0.0818  -19.4849    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.5773  -19.9790    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    0.8525  -19.9637    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.7015  -19.5553    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.1609  -18.8132    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.2212  -18.2113    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.8841  -17.7854    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -3.4974  -17.2389    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.2692  -14.5903    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n   -3.0860  -14.5902    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.7069  -11.9490    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -3.1969  -12.6097    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.8770  -13.3607    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.8875  -12.0419    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.5618  -12.7970    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.0516  -13.4684    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.5712  -14.1329    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7704  -13.0595    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7855  -13.8856    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.0762  -14.3056    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.6426  -13.9033    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.6474  -13.0753    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.3742  -12.6821    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.3836  -11.8503    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.6777  -11.4268    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.0503  -11.8267    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.1911  -12.3393    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7898  -11.6277    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.0558  -12.6425    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.6277  -14.7097    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.6314  -15.5242    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    1.3814  -11.0257    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    2.1019  -12.2642    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    2.8135  -11.8530    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.3365  -14.3023    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    1.3397  -15.9378    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.3589  -13.4832    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.2487  -20.2481    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.5314  -19.6072    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.9035  -20.3513    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.1513  -20.3843    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.1568  -21.2159    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    0.9751  -20.3839    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n  2 29  1  0\n 29 30  1  0\n  1  2  2  0\n  2  3  1  0\n  3  6  2  0\n  5  4  2  0\n  4  1  1  0\n  5  6  1  0\n  6  7  1  0\n  7  9  1  0\n  8  5  1  0\n  8  9  1  0\n  8 12  1  0\n  9 10  1  0\n 10 11  1  0\n 11 13  1  0\n 12 13  1  0\n 12 17  1  0\n 13 14  1  0\n 14 15  2  0\n 15 16  1  0\n 16 17  1  0\n 17 18  1  0\n 18 19  1  0\n  8 19  1  1\n 12 20  1  6\n 13 21  1  6\n 21 23  1  0\n 31 32  2  0\n 32 33  1  0\n 33 36  2  0\n 35 34  2  0\n 34 31  1  0\n 35 36  1  0\n 36 37  1  0\n 37 39  1  0\n 38 35  1  0\n 38 39  2  0\n 39 40  1  0\n 40 41  1  0\n 41 42  1  0\n 49 42  1  0\n 42 43  1  0\n 43 44  1  0\n 44 45  1  0\n 45 46  1  0\n 38 47  1  0\n 47 48  1  0\n 46 48  1  0\n 46 49  1  0\n 40 50  1  1\n 50 51  1  0\n 44 52  1  0\n 44 53  1  6\n 53 54  1  0\n 50 55  2  0\n 51 56  1  0\n 42 57  1  1\n  1 40  1  0\n 11 22  1  1\n 24 58  2  0\n 10 24  1  6\n 24 59  1  0\n 10 25  1  0\n 59 60  1  0\n  9 26  1  1\n 22 61  1  0\n  7 27  1  0\n 61 62  2  0\n 27 28  2  0\n 61 63  1  0\nM  END\n> <chembl_id>\nCHEMBL90555\n\n> <chembl_pref_name>\nVINCRISTINE",
+    "standard_inchi": "InChI=1S/C46H56N4O10/c1-7-42(55)22-28-23-45(40(53)58-5,36-30(14-18-48(24-28)25-42)29-12-9-10-13-33(29)47-36)32-20-31-34(21-35(32)57-4)50(26-51)38-44(31)16-19-49-17-11-15-43(8-2,37(44)49)39(60-27(3)52)46(38,56)41(54)59-6/h9-13,15,20-21,26,28,37-39,47,55-56H,7-8,14,16-19,22-25H2,1-6H3/t28-,37+,38-,39-,42+,43-,44-,45+,46+/m1/s1",
+    "standard_inchi_key": "OGWKCGZFUXNPDA-XQKSVPLYSA-N"
+  },
+  "molecule_synonyms": [
+    {
+      "molecule_synonym": "22-oxovincaleukoblastine",
+      "syn_type": "OTHER",
+      "synonyms": "22-OXOVINCALEUKOBLASTINE"
+    },
+    {
+      "molecule_synonym": "Leucristine",
+      "syn_type": "OTHER",
+      "synonyms": "LEUCRISTINE"
+    },
+    {
+      "molecule_synonym": "Leurocristine",
+      "syn_type": "OTHER",
+      "synonyms": "LEUROCRISTINE"
+    },
+    {
+      "molecule_synonym": "Oncotcs",
+      "syn_type": "OTHER",
+      "synonyms": "ONCOTCS"
+    },
+    {
+      "molecule_synonym": "Tecnocris",
+      "syn_type": "OTHER",
+      "synonyms": "TECNOCRIS"
+    },
+    {
+      "molecule_synonym": "Vincaleukoblastine, 22-oxo-",
+      "syn_type": "OTHER",
+      "synonyms": "VINCALEUKOBLASTINE, 22-OXO-"
+    },
+    {
+      "molecule_synonym": "Vincristin",
+      "syn_type": "OTHER",
+      "synonyms": "VINCRISTIN"
+    },
+    {
+      "molecule_synonym": "Vincristina",
+      "syn_type": "INN_SPANISH",
+      "synonyms": "VINCRISTINA"
+    },
+    {
+      "molecule_synonym": "Vincristine",
+      "syn_type": "ATC",
+      "synonyms": "VINCRISTINE"
+    },
+    {
+      "molecule_synonym": "Vincristine",
+      "syn_type": "BAN",
+      "synonyms": "VINCRISTINE"
+    },
+    {
+      "molecule_synonym": "Vincristine",
+      "syn_type": "INN",
+      "synonyms": "VINCRISTINE"
+    },
+    {
+      "molecule_synonym": "Vincristine",
+      "syn_type": "MERCK_INDEX",
+      "synonyms": "VINCRISTINE"
+    },
+    {
+      "molecule_synonym": "Vincristine",
+      "syn_type": "OTHER",
+      "synonyms": "VINCRISTINE"
+    },
+    {
+      "molecule_synonym": "Vinkristin",
+      "syn_type": "OTHER",
+      "synonyms": "VINKRISTIN"
+    }
+  ],
+  "molecule_type": "Small molecule",
+  "natural_product": 1,
+  "oral": false,
+  "orphan": 0,
+  "parenteral": true,
+  "polymer_flag": 0,
+  "pref_name": "VINCRISTINE",
+  "prodrug": 0,
+  "structure_type": "MOL",
+  "therapeutic_flag": true,
+  "topical": false,
+  "usan_stem": "vin-",
+  "usan_stem_definition": "vinca alkaloids",
+  "usan_substem": "vin-",
+  "usan_year": 1962,
+  "veterinary": 0,
+  "withdrawn_flag": false
+}
