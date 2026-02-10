@@ -37,6 +37,7 @@ from sabueso.tools.db.ted import create_ted_card_from_file, create_ted_card_from
 from sabueso.tools.db.phosphositeplus import create_psp_card_from_file, create_psp_card_from_json
 from sabueso.tools.card.storage import save_card_json, save_card_sqlite
 from sabueso.tools.deck.storage import save_deck_jsonl, save_deck_sqlite
+from sabueso.core.errors import SabuesoError, ResolverError, SchemaError, StorageError, ConnectorError
 
 __all__ = [
     "create_protein_card_from_file",
@@ -75,4 +76,9 @@ __all__ = [
     "save_card_sqlite",
     "save_deck_jsonl",
     "save_deck_sqlite",
+    "SabuesoError",
+    "ResolverError",
+    "SchemaError",
+    "StorageError",
+    "ConnectorError",
 ]

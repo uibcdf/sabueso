@@ -63,3 +63,12 @@ Tools are **ad‑hoc by design** and can return any output type.
 The public API is mixed OO + functional:
 - Cards/Decks expose ops as methods.
 - Tools are standalone functions.
+
+## Errors
+- Use explicit exception types for resolver errors, connector failures, schema mismatches, and storage failures.
+- Defined in `sabueso/core/errors.py`:
+  - `SabuesoError`
+  - `ResolverError`
+  - `SchemaError`
+  - `StorageError`
+  - `ConnectorError`

@@ -97,6 +97,9 @@ This file records the current repository baseline so new developers can resume e
 - `devguide/STORAGE_LAYOUT.md`: recommended project storage layout (no defaults).
 - `tools/validate_card.py`: basic schema validator for Card dicts.
 - `tests/core/test_card_schema_validation_offline.py`: card schema validation test.
+- `tools/validate_deck.py`: basic schema validator for Deck JSONL.
+- `tests/core/test_deck_schema_validation_offline.py`: deck schema validation test.
+- `sabueso/core/errors.py`: common exception types (Resolver, Schema, Storage, Connector).
 - `sabueso/tools/card/storage.py`: JSON and SQLite persistence for Card.
 - `sabueso/tools/deck/storage.py`: JSONL and SQLite persistence for Deck.
 - `tests/core/test_storage_offline.py`: persistence tests (offline).
