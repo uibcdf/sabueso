@@ -2,3 +2,5 @@ codex_session.bash
 __pycache__/
 *.egg-info/
 sandbox/
+docs/_build/
+sabueso/_version.py
