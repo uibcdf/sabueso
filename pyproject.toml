@@ -1,15 +1,15 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=68", "versioningit~=3.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "sabueso"
-version = "0.0.0"
 description = "Biomolecular data integration and evidence-tracked cards/decks."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "MolSysSuite" }]
 license = { text = "MIT" }
+dynamic = ["version"]
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -19,3 +19,20 @@ include = ["sabueso*"]
 markers = [
   "online: tests that require network access",
 ]
+
+[tool.versioningit]
+default-version = "0.0.0+unknown"
+
+[tool.versioningit.format]
+distance = "{base_version}+{distance}.{vcs}{rev}"
+dirty = "{base_version}+{distance}.{vcs}{rev}.dirty"
+distance-dirty = "{base_version}+{distance}.{vcs}{rev}.dirty"
+
+[tool.versioningit.vcs]
+method = "git"
+match = ["*"]
+default-tag = "0.0.0"
+
+[tool.versioningit.write]
+file = "sabueso/_version.py"
+

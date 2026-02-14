@@ -1,5 +1,5 @@
-Sabueso Documentation
-======================
+User
+====
 
 .. toctree::
    :maxdepth: 2
