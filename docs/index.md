@@ -69,6 +69,11 @@ In construction... Come back soon!
    :hidden:
 
    content/developer/index.md
-   
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   api/index.md
 
 ```
