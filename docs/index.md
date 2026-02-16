@@ -2,11 +2,13 @@
 :html_theme.sidebar_secondary.remove:
 ```
 
+# Sabueso
+
 :::{figure} _static/logo.svg
 :width: 50%
 :align: center
 
-Tag Line.
+From database fragments to structured molecular intelligence.
 
 
 ```{image} https://img.shields.io/badge/release-v0.11.2-white.svg
@@ -60,7 +62,7 @@ In construction... Come back soon!
    :maxdepth: 2
    :hidden:
 
-   content/user/index.rst
+   content/user/index.md
 
 .. toctree::
    :maxdepth: 2
@@ -70,4 +72,3 @@ In construction... Come back soon!
    
 
 ```
-
