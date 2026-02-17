@@ -8,13 +8,12 @@ from sabueso.core.evidence_store import generate_evidence_id
 
 
 def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, Any]:
-    """
-    Map minimal UniProt fields into canonical card fields.
+    """Map UniProt payload data into canonical Sabueso structures.
 
-    Returns a dict with:
-      - fields: canonical field_path → value
-      - features: canonical feature field_path → list of feature items
-    Evidence objects are created upstream (not here).
+    Returns a dictionary with canonical mappings, including:
+    - ``fields``: ``field_path -> value``
+    - ``features``: ``feature_field_path -> list[feature]``
+    - ``evidences`` and ``field_evidence`` links for provenance
     """
     fields: Dict[str, Any] = {}
     features: Dict[str, Any] = {}

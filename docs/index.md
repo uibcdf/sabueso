@@ -29,20 +29,18 @@ From database fragments to structured molecular intelligence.
 
 :::
 
-<br/>
-
-
-## Install it
+## Install
 
 ```bash
 conda install -c uibcdf sabueso
 ```
 
-<br/>
+## Start Here
 
-## Use it
-
-In construction... Come back soon!
+- New users: `User` section.
+- Tool-oriented tutorials: `User > Tools`.
+- API generated from code docstrings: `API` section.
+- Development process and constraints: `Developers` section.
 
 ```{eval-rst}
 
@@ -68,7 +66,7 @@ In construction... Come back soon!
    :maxdepth: 2
    :hidden:
 
-   content/developer/index.md
+   content/developers/index.md
 
 .. toctree::
    :maxdepth: 2
