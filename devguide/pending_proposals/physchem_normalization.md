@@ -37,6 +37,14 @@ default selection rules and the fixtures `temp_data/CHEMBL90555.json` and
 ChEMBL serializes `alogp`, `psa`, `mw_freebase` and `full_mwt` as strings. `hbd`, `hba`,
 `rtb` and `aromatic_rings` are integers.
 
+## Boundary
+
+Recomputing one canonical value with a chemistry toolkit is not a fix for these
+conflicts. Computing properties is modelling, which belongs to MolSysSuite, so Sabueso
+only records what sources state (`devguide/DECISIONS.md`, "Computable properties are
+recorded, not computed"; uibcdf/sabueso#25). The fix stays here: qualify each value by
+its method, and keep real disagreements visible.
+
 ## Why
 
 False conflicts hide real ones and degrade the resolved values. The fix concerns how

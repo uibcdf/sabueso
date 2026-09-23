@@ -147,3 +147,26 @@ Decided by the Sabueso owner (uibcdf/sabueso#25, `devguide/pending_proposals/mol
   `possibly_same_as`.
 - Rejected alternatives: a preferred source record (no chemistry source is universal),
   and the UniChem compound id (internal to one service).
+
+## Computable properties are recorded, not computed (2026-09-23)
+Proposed in uibcdf/sabueso#25 and accepted by the Sabueso owner. It is the boundary for
+uibcdf/sabueso#10.
+- **What Sabueso does:** it records the physicochemical properties that sources state
+  (logP, TPSA, rotatable bonds, molecular weight, ...). Each value is a SourceAssertion,
+  traceable to the source that computed it and to its method. Different methods give
+  different values, and they are qualified by method (#10), never reconciled by
+  recomputation.
+- **What Sabueso does not do:** it does not compute those properties itself. Running a
+  descriptor, a fingerprint or a similarity over a structure is modelling. Modelling
+  belongs to MolSysSuite, not to the Knowledge component of the MOLI Scientific Context.
+  A value computed by Sabueso would have no source to cite.
+- **In practice:**
+  - no module of the `sabueso` package imports a chemistry toolkit (RDKit, Open Babel,
+    OpenEye, Mordred, ...). Toolkits may be used in tests or tooling, never to feed a
+    card. `tests/core/test_boundaries_offline.py` enforces this;
+  - a computed property, if ever needed on a card, arrives as a MolSysSuite result with
+    its own derivation record. It never appears as a SourceAssertion;
+  - similarity and fingerprints are the same case, and the more tempting one: "molecules
+    similar to this inhibitor" looks like knowledge, but it is a calculation.
+- **Scope:** if this boundary starts to bind other MOLI components, it becomes a shared
+  contract to raise in `uibcdf/moli`.
