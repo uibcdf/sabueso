@@ -1,7 +1,7 @@
 ---
 summary: Resolve source subjects to Sabueso entities (EntityResolver), with a minimal traceable Relationship model, and derive card identity from entities.
 issue: uibcdf/sabueso#6
-status: open
+status: active
 opened: 2026-09-23
 closed:
 verification: measured
@@ -353,6 +353,19 @@ Fixtures to add at implementation time:
 - If the relationship vocabulary becomes a contract consumed by Nextia or Context
   Assembly, it is raised in `uibcdf/moli` (compare uibcdf/moli#3) rather than frozen
   locally.
+
+## Implementation progress
+
+1. **Relationship model and RelationshipStore** (`fcbd22e`, 2026-09-23). Done:
+   - deterministic ids, predicate vocabulary, and asserted or derived support;
+   - merged support, with `qualifier_conflicts` when sources disagree;
+   - card serialization and the `Card.relationships()` accessor;
+   - rejection of relationships that cite missing SourceAssertions.
+   Tests: `tests/core/test_relationships_offline.py`.
+2. `resolve_entity` for UniProt accessions (A1–A5, A12): pending.
+3. Name + organism with preference and trace (A6, A7, A7b): pending.
+4. `has_structure` from UniProt/RCSB and the ProteinCard `structures` view (A9–A11):
+   pending.
 
 ## Resolution
 
