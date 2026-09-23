@@ -58,7 +58,7 @@ def fetch_scope_entry(sunid: str) -> Dict[str, Any]:
     dump_path = os.environ.get("SCOPE_DUMP_PATH")
     if dump_path:
         text = Path(dump_path).read_text(encoding="utf-8")
-        return _parse_scope_dump(sunid, (l for l in text.splitlines()))
+        return _parse_scope_dump(sunid, text.splitlines())
 
     dump_url = os.environ.get("SCOPE_DUMP_URL", DEFAULT_SCOPE_DUMP_URL)
     lines = _iter_scope_dump_lines(dump_url)
