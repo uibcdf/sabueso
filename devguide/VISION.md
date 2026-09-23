@@ -37,6 +37,12 @@ Expected consumers of Sabueso knowledge:
 - **Nextia**: references versioned Sabueso knowledge; a DiscoveryProject may cite SourceAssertions as the basis of its own Evidence.
 - **MolSysSuite** components such as MolSysMT (molecular systems), TopoMT (cavities, channels), ElastNetMT (elastic networks), PharmacophoreMT (pharmacophores) and DockingMT (docking), and MolSys-AI, the MolSysSuite specialist agent.
 
+## Long-term scientific potential
+
+The initial scope deliberately remains narrow, but early design decisions should not prevent Sabueso from evolving toward composable scientific knowledge objects, first-class relationships, reproducible derived knowledge, literature-derived SourceAssertions, explicit conflicts/unknowns, and knowledge-gap discovery.
+
+See [SCIENTIFIC_POTENTIAL.md](SCIENTIFIC_POTENTIAL.md) for this non-binding long-term scientific direction. It is a vision document, not an MVP commitment or frozen API.
+
 ## Non‑Goals (for now)
 - No offline‑only mode. Sabueso is online‑first, but supports local card caching.
 - No forced selection rules until SourceAssertions are fully collected and traceable.
