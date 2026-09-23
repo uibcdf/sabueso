@@ -1,7 +1,7 @@
 # Sabueso — Public API (Conceptual)
 
 ## Core Objects
-- **Card**: single entity representation with evidence.
+- **Card**: resolved knowledge about a single entity, linked to its SourceAssertions.
 - **Deck**: collection of Cards with consistent operations.
 
 Users can choose to operate on a single Card or a Deck.

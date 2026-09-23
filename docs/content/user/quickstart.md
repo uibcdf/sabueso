@@ -100,7 +100,7 @@ pytest tests/core/test_schema_alignment.py \
 
 ## Next Steps
 
-- Read {doc}`concepts` for Card/Deck/Evidence/Resolver semantics.
+- Read {doc}`concepts` for Card/Deck/SourceAssertion/Resolver semantics.
 - Review {doc}`field_paths` for canonical paths.
 - Review {doc}`selection_rules` to understand canonical value selection.
 

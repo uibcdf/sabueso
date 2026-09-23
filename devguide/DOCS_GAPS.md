@@ -4,7 +4,7 @@ This list captures **missing deep content** for the documentation.
 
 ## Core Concepts
 - Formal definition of Card/Deck structures and expected field semantics.
-- EvidenceStore lifecycle and how evidences are created/linked.
+- SourceAssertionStore lifecycle and how SourceAssertions are created/linked.
 - Resolver logic with examples and conflict reporting.
 
 ## Field Paths

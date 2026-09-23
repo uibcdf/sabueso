@@ -7,7 +7,7 @@
 - **Clinical Data Volatility**: Clinical information changes more frequently than core physchem data.
 
 ## Architecture Risks (General)
-- **Evidence growth**: preserving all values can create very large cards and stores.
+- **SourceAssertion growth**: preserving all values can create very large cards and stores.
 - **Mapping fragility**: changes in source APIs can break field mappings.
 - **Ambiguity**: input resolution may produce multiple valid entities.
 - **Ops drift**: unstable ops contracts can break tools and downstream integrations.
@@ -19,4 +19,4 @@
 - How to handle **ambiguous inputs** (e.g., common names)?
 - What is the **schema versioning policy** (major/minor compatibility rules)?
 - What is the **local cache policy** (raw sources vs cards vs both) given licensing constraints?
-- What is the **LLM integration policy** (provider, prompts, and evidence tracking)?
+- What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?

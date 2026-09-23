@@ -4,23 +4,23 @@ This document defines the **minimal internal interfaces** for a stable Sabueso c
 These are contracts only (no implementation).
 
 ## Card
-**Purpose:** Single entity representation with evidence links.
+**Purpose:** Resolved knowledge about a single entity, linked to its SourceAssertions.
 
 **Attributes**
 - `meta: dict`
 - `sections: dict` (nested content)
-- `evidence_store: EvidenceStore`
+- `source_assertion_store: SourceAssertionStore`
 - `selection_rules: dict`
 - `quality: dict`
 
 **Methods**
 - `get(field_path: str) -> Any`
-- `set(field_path: str, value: Any, evidence_ids: list[str]) -> None`
+- `set(field_path: str, value: Any, source_assertion_ids: list[str]) -> None`
 - `extract(field_paths: list[str]) -> dict`
 - `compare(other_card: Card, fields: list[str] | None = None) -> dict`
 - `derive_deck(kind: str) -> Deck`
 - `list_fields() -> list[str]`
-- `to_dict() -> dict`
+- `to_dict() -> dict` *(includes `source_assertion_store`)*
 - `to_deck() -> Deck`
 
 ## Deck
@@ -42,16 +42,18 @@ These are contracts only (no implementation).
 - `summarize(fields: list[str]) -> list[dict]`
 - `to_list() -> list[dict]`
 
-## EvidenceStore
-**Purpose:** Registry of evidence objects referenced by cards.
+## SourceAssertionStore
+**Purpose:** Registry of the SourceAssertions referenced by a card. A SourceAssertion
+records what an external source asserts about an entity or property.
 
 **Attributes**
 - `store: dict[str, dict]`
 
 **Methods**
-- `add(evidence: dict) -> str` *(returns evidence_id)*
-- `get(evidence_id: str) -> dict | None`
-- `find_by_field(field_path: str) -> list[dict]`
+- `add(assertion: SourceAssertion) -> str` *(returns source_assertion_id)*
+- `get(source_assertion_id: str) -> SourceAssertion | None`
+- `find_by_field(field_path: str) -> list[SourceAssertion]`
+- `to_list() -> list[SourceAssertion]` *(serialized with the card)*
 
 ## Resolver
 **Purpose:** Classify inputs and normalize identifiers.

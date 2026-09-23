@@ -1,3 +1,8 @@
+> **Nota terminológica (2026-09-23):** este documento se escribió antes de la decisión
+> `SourceAssertion ≠ Evidence ≠ Provenance`. Lo que aquí se llamaba "evidence" de Sabueso
+> ahora es `SourceAssertion` (lo que una fuente externa afirma sobre una entidad o propiedad);
+> `Evidence` queda reservado para Nextia, como en el flujo *Nextia Observation → Evidence*.
+
 Sí. Después de toda la arquitectura que hemos desarrollado y de volver a leer **el Sabueso real**, ahora veo bastante mejor qué podría convertirlo en un arma importante para vuestra Molecular Intelligence company.
 
 Mi conclusión principal es: **no cambiaría radicalmente Sabueso**. El núcleo que ya existe es bueno:
@@ -11,7 +16,7 @@ mapping
   ↓
 aggregation
   ↓
-EvidenceStore
+SourceAssertionStore
   ↓
 resolver / selection rules
   ↓
@@ -20,7 +25,7 @@ Card
 Deck
 ```
 
-Ya tenéis conectores para UniProt, PDB, PubChem, ChEMBL, GO, InterPro, STRING, BioGRID, CATH, SCOPe, TED y PhosphoSitePlus; mappings, selección por campo, `EvidenceStore`, schemas, almacenamiento JSON/SQLite y tests offline/online. Eso es bastante más que un simple esqueleto.
+Ya tenéis conectores para UniProt, PDB, PubChem, ChEMBL, GO, InterPro, STRING, BioGRID, CATH, SCOPe, TED y PhosphoSitePlus; mappings, selección por campo, `SourceAssertionStore`, schemas, almacenamiento JSON/SQLite y tests offline/online. Eso es bastante más que un simple esqueleto.
 
 Lo que cambiaría es **la ambición conceptual**.
 
@@ -60,7 +65,7 @@ Yo quiero que evolucione hacia:
                        ▼
                  Knowledge Card
                        │
-                explicit evidence
+           explicit source assertions
                        │
                 relationships
                        │
@@ -72,7 +77,7 @@ La Card dejaría de ser principalmente una ficha para convertirse en **un nodo d
 
 ---
 
-# 1. Lo primero: fortalecer muchísimo `EvidenceStore`
+# 1. Lo primero: fortalecer muchísimo `SourceAssertionStore`
 
 Creo que esta es probablemente **la pieza estratégica de Sabueso**.
 
@@ -81,15 +86,15 @@ Ahora mismo ya tenéis la idea correcta:
 ```text
 field
  ├── canonical value
- └── evidence_ids
+ └── source_assertion_ids
         │
         ▼
-   EvidenceStore
+   SourceAssertionStore
 ```
 
 Yo la llevaría mucho más lejos.
 
-Cada evidencia debería poder responder:
+Cada SourceAssertion debería poder responder:
 
 ```text
 WHO says this?
@@ -104,9 +109,9 @@ WHAT version of the source?
 Por ejemplo:
 
 ```text
-Evidence E017
+SourceAssertion SA017
 
-claim:
+asserts:
 TcTIM is a homodimer
 
 source:
@@ -121,7 +126,7 @@ source_version:
 retrieved_at:
 2026-09-23
 
-evidence_type:
+assertion_type:
 database_annotation
 
 confidence:
@@ -131,9 +136,9 @@ high
 frente a:
 
 ```text
-Evidence E031
+SourceAssertion SA031
 
-claim:
+asserts:
 compound X inhibits TcTIM
 
 source:
@@ -142,7 +147,7 @@ paper
 doi:
 ...
 
-evidence_type:
+assertion_type:
 experimental_assay
 
 assay:
@@ -202,7 +207,7 @@ subject
 predicate
 object
 
-evidence_ids
+source_assertion_ids
 ```
 
 Por ejemplo:
@@ -259,7 +264,7 @@ Y podría conservar:
 query
 selection criteria
 source cards
-evidence
+source assertions
 provenance
 ```
 
@@ -313,7 +318,7 @@ relation:
 inhibited_by
 
 constraints:
-experimental evidence
+assertion_type: experimental
 ```
 
 Sabueso decide entonces:
@@ -329,7 +334,7 @@ PubChem
 y devuelve:
 
 ```text
-Deck + Evidence
+Deck + SourceAssertions
 ```
 
 Eso convierte Sabueso en **una capability semántica de conocimiento**, sin convertirlo en agente.
@@ -510,7 +515,7 @@ extract scientific statement
   ↓
 normalize entities
   ↓
-attach evidence
+record SourceAssertions
   ↓
 Card / Relationship
 ```
@@ -520,7 +525,7 @@ Por ejemplo:
 ```text
 Paper X
    │
-   └── experimental evidence
+   └── SourceAssertion (experimental assay)
           │
 TcTIM ── inhibited_by ── compound Y
           │
@@ -637,7 +642,7 @@ Terminar bien lo que ya existe:
 ```text
 Card
 Deck
-EvidenceStore
+SourceAssertionStore
 EntityResolver
 FieldResolver
 Mappings
@@ -667,14 +672,14 @@ multiple sources
       ↓
 Cards / Decks / Relationships
       ↓
-Evidence
+SourceAssertions
 ```
 
 Aquí MOLI empieza a tener una herramienta muy potente.
 
 ### Sabueso 0.4 — Literature
 
-papers → structured evidence.
+papers → structured SourceAssertions.
 
 ### Sabueso 0.5 — Proprietary/internal knowledge
 
@@ -721,7 +726,7 @@ Mutations:
 Disease context:
 ...
 
-Evidence:
+SourceAssertions:
 ...
 
 Conflicts:
@@ -765,9 +770,9 @@ No como una gran colección de conectores.
 
 Sino como:
 
-> **an evidence-aware molecular knowledge memory that transforms heterogeneous external information into structured, queryable scientific context for MOLI, Praxis and Nextia.**
+> **an assertion-aware molecular knowledge memory that transforms heterogeneous external information into structured, queryable scientific context for MOLI, Praxis and Nextia.**
 
-Y si conseguís que haga bien **entidades + relaciones + evidencia + temporalidad + conflictos + unknowns**, puede convertirse en una pieza realmente estratégica de vuestra Molecular Intelligence stack.
+Y si conseguís que haga bien **entidades + relaciones + source assertions + temporalidad + conflictos + unknowns**, puede convertirse en una pieza realmente estratégica de vuestra Molecular Intelligence stack.
 
 Porque entonces MOLI no empieza cada proyecto buscando cosas en Internet.
 

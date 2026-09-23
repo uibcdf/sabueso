@@ -6,7 +6,7 @@ This page describes the current selection behavior used by the Resolver
 ## General Policy
 
 - Any discrepancy (multiple distinct values for the same field) is always reported.
-- Resolver selects canonical values while preserving full evidence traceability.
+- Resolver selects canonical values while preserving every SourceAssertion.
 - Selection behavior is controlled by versioned `selection_rules`.
 
 ## Representative Field Rules

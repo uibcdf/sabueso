@@ -15,15 +15,15 @@
 
 4) **Aggregator**
    - Merges results, deduplicates, and aligns to canonical field paths.
-   - Preserves all values via evidence objects.
+   - Records every source value as a SourceAssertion (what the source asserts about a field).
 
 5) **Selection Layer**
    - Chooses a canonical value per field based on configurable rules.
-   - Keeps the full evidence history independent of selection.
+   - Resolves each field from its SourceAssertions; alternative and conflicting assertions are kept independent of selection.
 
 6) **Card Builder**
    - Builds the final structured card with nested sections.
-   - All fields point to evidence IDs.
+   - All fields point to the `source_assertion_ids` that support their value.
 
 7) **Cache / Store (optional)**
    - Local storage for previously generated cards.
@@ -57,7 +57,8 @@ Mappings are the explicit translation rules from **source fields** to **canonica
 They should live outside database modules to keep transformations consistent and maintainable.
 
 ## Design Principles
-- **Uniform Evidence Mechanism**: every field uses the same provenance model.
+- **Uniform SourceAssertion Mechanism**: every field is resolved from SourceAssertions through the same model.
 - **Nested Sections**: cards are hierarchical and ordered, not flat.
-- **All Values Preserved**: selection never discards evidence.
+- **All Values Preserved**: selection never discards SourceAssertions.
+- **Knowledge, not project Evidence**: `SourceAssertion ≠ Evidence ≠ Provenance`. Nextia may cite Sabueso SourceAssertions as the basis of its own Evidence; Sabueso never creates Evidence.
 - **Auditable Decisions**: selection rules and conflicts are explicit.

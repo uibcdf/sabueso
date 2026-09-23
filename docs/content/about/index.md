@@ -7,7 +7,7 @@ where users need reproducible Cards and Decks built from heterogeneous sources.
 ## Mission
 
 Convert fragmented source records into structured molecular intelligence with
-explicit evidence and deterministic field-level selection.
+explicit SourceAssertions and deterministic field-level selection.
 
 ## Vision
 

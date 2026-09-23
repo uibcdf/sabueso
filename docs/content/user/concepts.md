@@ -9,7 +9,7 @@ A `Card` represents one molecular entity (protein, peptide, or small molecule).
 Each field is stored in a structured node:
 
 ```text
-{"value": <selected_value>, "evidence_ids": [<evidence_id>, ...]}
+{"value": <selected_value>, "source_assertion_ids": [<source_assertion_id>, ...]}
 ```
 
 Cards expose core methods such as:
@@ -30,23 +30,42 @@ A `Deck` is a collection of Cards with batch operations:
 - `to_jsonl(path)`, `to_sqlite(path, ...)`
 - `from_jsonl(path)`, `from_sqlite(path, ...)`
 
-## EvidenceStore
+## SourceAssertion
 
-The `EvidenceStore` holds raw evidences referenced by `evidence_ids`.
-Sabueso keeps all available evidence values and only selects canonical values for
-Card fields. This separates:
+A `SourceAssertion` records what an external source asserts about an entity or
+property: the asserted value, the field it refers to, the source and record it comes
+from, and when it was retrieved:
 
-- field readability (selected values in Card)
-- provenance completeness (all values in evidence store)
+```text
+{"source_assertion_id": "SA_UniProt_P52789_...",
+ "field": "annotations.organism",
+ "value": "Homo sapiens",
+ "source": {"type": "database", "name": "UniProt", "record_id": "P52789"},
+ "retrieved_at": "2026-02-01"}
+```
+
+A SourceAssertion is not scientific *evidence* for a hypothesis (that concept belongs to
+the discovery layer of MolSysSuite, Nextia) and it is not provenance in general. It is an
+external knowledge claim that carries its own provenance. Qualifiers the source attaches
+to its own statements (for example, UniProt ECO codes) are kept as source metadata.
+
+## SourceAssertionStore
+
+The `SourceAssertionStore` holds every SourceAssertion referenced by
+`source_assertion_ids`. Sabueso keeps all assertions, including alternative or
+contradictory ones, and only selects canonical values for Card fields. This separates:
+
+- field readability (resolved values in the Card)
+- traceability (every source assertion in the store, serialized with the Card)
 
 ## Resolver
 
-The Resolver selects canonical values per field from evidence sets.
-Its output contains:
+The Resolver turns the SourceAssertions of each field into resolved molecular
+knowledge. Its output contains:
 
 - `selected_value`
-- `evidence_ids`
-- `conflict` (when multiple distinct values exist)
+- `source_assertion_ids` (the assertions that support the selected value)
+- `conflict` (when assertions disagree; the alternatives stay in the store)
 
 Conflicts are always reported when there is a discrepancy.
 

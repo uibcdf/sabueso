@@ -24,7 +24,7 @@ save_card_json(card, "data/cards/p52789.json")
 
 - Output file exists
 - File is valid JSON
-- Canonical fields and evidence are preserved
+- Canonical fields and their SourceAssertions are preserved
 
 ## Notes
 

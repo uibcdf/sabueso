@@ -17,10 +17,10 @@ feature:
       start: 84
       end: 89
       indexing: "1-based"
-  evidence_ids: ["E_UniProt_P52789_bs_84_89"]
+  source_assertion_ids: ["SA_UniProt_P52789_bs_84_89"]
 
-example_evidence:
-  evidence_id: "E_UniProt_P52789_bs_84_89"
+example_source_assertion:
+  source_assertion_id: "SA_UniProt_P52789_bs_84_89"
   field: "features_positional.binding_site"
   value: { start: 84, end: 89 }
   source:
@@ -45,10 +45,10 @@ feature:
       chain_id: "A"
       residue_id: "BG6"
       residue_number: 1002
-  evidence_ids: ["E_RCSB_2NZT_BG6_A_1002"]
+  source_assertion_ids: ["SA_RCSB_2NZT_BG6_A_1002"]
 
-example_evidence:
-  evidence_id: "E_RCSB_2NZT_BG6_A_1002"
+example_source_assertion:
+  source_assertion_id: "SA_RCSB_2NZT_BG6_A_1002"
   field: "structure.ligand_instances"
   value: "2NZT_BG6_A_1002"
   source:
@@ -73,10 +73,10 @@ feature:
     substructure:
       smiles: "CC12CCC3C(C1CCC2O)CCC4=CC(=C(C=C34)OC)O"
       smarts: "c1ccc(OC)cc1"  # aromatic ring with methoxy group
-  evidence_ids: ["E_PubChem_66414_substructure"]
+  source_assertion_ids: ["SA_PubChem_66414_substructure"]
 
-example_evidence:
-  evidence_id: "E_PubChem_66414_substructure"
+example_source_assertion:
+  source_assertion_id: "SA_PubChem_66414_substructure"
   field: "features_positional.substructure"
   value: "c1ccc(OC)cc1"
   source:

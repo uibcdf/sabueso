@@ -11,16 +11,16 @@
   - PDB (RCSB)
   - ChEMBL
   - PubChem
-- Define connector outputs + raw evidence objects.
+- Define connector outputs + SourceAssertions.
 
-## Phase 2 — Aggregation & Evidence Store
+## Phase 2 — Aggregation & SourceAssertion Store
 - Implement aggregator to map source fields to canonical field paths.
-- Implement `evidence_store` population.
+- Implement `source_assertion_store` population.
 - Implement uniform conflict detection.
 
 ## Phase 3 — Selection Rules
 - Implement selection engine with configurable rules per field path.
-- Keep selection rules separate from evidence store.
+- Keep selection rules separate from the SourceAssertion store.
 
 ## Phase 4 — Small Molecule Enrichment
 - Add eMolecules, ChemSpider, DrugBank.
