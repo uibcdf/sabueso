@@ -6,10 +6,24 @@ build-backend = "setuptools.build_meta"
 name = "sabueso"
 description = "Biomolecular knowledge integration into cards and decks traced to source assertions."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11,<3.15"
 authors = [{ name = "UIBCDF Lab", email = "uibcdf@gmail.com" }]
 license = { text = "MIT" }
 dynamic = ["version"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8",
+  "pyyaml>=6",
+]
 
 [tool.setuptools.packages.find]
 where = ["."]

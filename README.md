@@ -5,6 +5,8 @@ Sabueso is a scientific Python library for aggregating and normalizing biomolecu
 ## Status
 Early design and scaffolding phase. The developer guide is the source of truth.
 
+Supported Python versions: 3.11, 3.12, 3.13 and 3.14 (offline test suite in CI).
+
 ## Quick Start (for developers)
 - Read `devguide/VISION.md` and `devguide/ARCHITECTURE.md`.
 - Use `devguide/CHECKPOINT.md` for the current repo baseline.
