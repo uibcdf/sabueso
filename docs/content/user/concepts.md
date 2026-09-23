@@ -26,11 +26,13 @@ Cards expose core methods such as:
 
 A `Deck` is a collection of Cards with batch operations:
 
-- `filter(predicate)`
-- `extract(predicate)` for sub-decks
-- `compare(other, key_fields, mode="strict|tolerant")`
+- `filter(predicate)` for sub-decks
+- `sort(field_path, reverse=False)` by resolved value; cards without a value go last
+- `map(fn)`, `summarize(field_paths)`
+- `compare(other, key_fields)`
 - `to_jsonl(path)`, `to_sqlite(path, ...)`
-- `from_jsonl(path)`, `from_sqlite(path, ...)`
+- `from_jsonl(path)`, `from_sqlite(path, ...)`, which return `Card` objects with their
+  SourceAssertionStore and identity
 
 ## SourceAssertion
 
