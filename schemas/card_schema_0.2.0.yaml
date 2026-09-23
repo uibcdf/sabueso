@@ -8,6 +8,8 @@ schema:
     adds meta.card_id / meta.schema_version (stable card identity). Structured
     catalytic_activity / subcellular_location values and sequence.length /
     molecular_weight (Da) / checksums added before any release (uibcdf/sabueso#13).
+    structure.entry_metadata.* was removed because structures are has_structure
+    relationships shown through Card.structures() (uibcdf/sabueso#6, #21).
 card_base:
   meta:
     card_id:
@@ -324,40 +326,6 @@ protein_card:
       - string
       source_assertion_ids:
       - string
-    entry_metadata:
-      title:
-        value: string
-        source_assertion_ids:
-        - string
-      experimental_method:
-        value: string
-        source_assertion_ids:
-        - string
-      resolution:
-        value: number
-        source_assertion_ids:
-        - string
-      deposition_date:
-        value: date
-        source_assertion_ids:
-        - string
-      release_date:
-        value: date
-        source_assertion_ids:
-        - string
-      primary_citation:
-        doi:
-          value: string
-          source_assertion_ids:
-          - string
-        pmid:
-          value: string
-          source_assertion_ids:
-          - string
-        title:
-          value: string
-          source_assertion_ids:
-          - string
 peptide_card:
   inherits: protein_card
   note: Peptide cards may omit structure.* if not available.

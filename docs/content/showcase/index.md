@@ -14,13 +14,16 @@ card = sabueso.create_protein_card_online("P52789", retrieved_at="2026-02-04")
 print(card.get("identifiers.uniprot"))
 ```
 
-### Build a structure Card from PDB
+### Resolve a protein and list its experimental structures
 
 ```python
 import sabueso
 
-card = sabueso.create_structure_card_online("2NZT", retrieved_at="2026-02-04")
-print(card.get("structure.entry_metadata.experimental_method"))
+card, resolution = sabueso.resolve_protein_card("P52270", structures=["1TCD"])
+for item in card.structures()["items"]:
+    print(
+        item["structure_ref"], item["method"], item["coverage_class"], item["sources"]
+    )
 ```
 
 ### Build a small-molecule Card from PubChem

@@ -39,11 +39,6 @@ from sabueso.tools.db.interpro import (
     create_interpro_card_from_json,
     create_interpro_card_online,
 )
-from sabueso.tools.db.pdb import (
-    create_structure_card_from_file,
-    create_structure_card_from_json,
-    create_structure_card_online,
-)
 from sabueso.tools.db.phosphositeplus import (
     create_psp_card_from_file,
     create_psp_card_from_json,
@@ -77,9 +72,6 @@ __all__ = [
     "create_protein_card_from_json",
     "create_protein_card",
     "create_protein_card_online",
-    "create_structure_card_from_file",
-    "create_structure_card_from_json",
-    "create_structure_card_online",
     "create_compound_card_from_file",
     "create_compound_card_from_json",
     "create_compound_card_online",

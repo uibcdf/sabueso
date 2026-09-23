@@ -177,19 +177,9 @@ protein_card:
     transmembrane: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
     turn: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
 
-  pdb_structure:
-    entry_metadata:
-      classification: { value: string, source_assertion_ids: [string] }
-      experimental_method: { value: string, source_assertion_ids: [string] }
-      resolution: { value: number, source_assertion_ids: [string] }
-      deposition_date: { value: date, source_assertion_ids: [string] }
-      release_date: { value: date, source_assertion_ids: [string] }
-      primary_citation: { value: { title: string, doi: string, pmid: string }, source_assertion_ids: [string] }
-    entity_metadata:
-      chains: { value: [string], source_assertion_ids: [string] }
-      sequence_length: { value: number, source_assertion_ids: [string] }
-      uniprot_mapping: { value: [string], source_assertion_ids: [string] }
-      ec_numbers: { value: [string], source_assertion_ids: [string] }
+  # Experimental structures are has_structure relationships (relationship_store), shown
+  # through Card.structures(). There are no scalar structure fields and no PDB-entry
+  # cards (uibcdf/sabueso#6, #21).
 
 
 peptide_card:

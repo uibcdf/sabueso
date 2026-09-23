@@ -43,7 +43,7 @@ This file records the current repository baseline so new developers can resume e
 - `sabueso/core/card.py`: minimal Card implementation.
 - `sabueso/core/deck.py`: minimal Deck implementation.
 - `sabueso/tools/db/uniprot.py`: offline + online UniProt card creation helpers.
-- `sabueso/tools/db/pdb.py`: offline + online PDB card helpers.
+- `sabueso/tools/db/pdb.py`: raw RCSB entry fetch (`fetch_pdb_json`). The former PDB-entry card helpers were removed (#21); structures are `has_structure` relationships (`mappings/rcsb_structures.py`, `Card.structures()`).
 - `sabueso/tools/db/pubchem.py`: offline + online PubChem card helpers.
 - `sabueso/tools/db/chembl.py`: offline + online ChEMBL card helpers.
 - `sabueso/tools/db/go.py`: offline + online GO term helpers.

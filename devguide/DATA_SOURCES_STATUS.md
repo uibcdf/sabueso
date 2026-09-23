@@ -42,12 +42,13 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - `EntityResolver` resolves `pdb:<id>` to the structure record and its proteins.
 - **Notes**: one request per entry. Ligand lists include every non-polymer entity (buffers and solvents too); no curation yet.
 
-### PDB (RCSB)
-- **Status**: implemented
-- **Access**: online API, local JSON
-- **Quality**: green
-- **Coverage**: entry title, experimental method, resolution, deposition/release dates, primary citation metadata
-- **Notes**: stable online tests
+### PDB (RCSB) — entry metadata cards (removed)
+- **Status**: removed 2026-09-23 (uibcdf/sabueso#21)
+- **Notes**:
+  - `create_structure_card_*` and `mappings/pdb.py::map_structure` built one card per PDB entry, typed as a protein, with scalar `structure.entry_metadata.*` fields. That was a structure card in all but name, contrary to the decision "no StructureCard" (#6, #20).
+  - Structures are now `has_structure` relationships (see *RCSB PDB — polymer-entity mapping* above and the UniProt coverage).
+  - Entry title, dates and primary citation are not mapped at the moment. They can return as structure-subject SourceAssertions shown in `Card.structures()` when a real need appears.
+  - `tools/db/pdb.py::fetch_pdb_json` (raw REST entry) remains.
 
 ### PubChem
 - **Status**: implemented

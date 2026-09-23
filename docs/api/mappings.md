@@ -17,7 +17,7 @@
 ```
 
 ```{eval-rst}
-.. automodule:: sabueso.mappings.pdb
+.. automodule:: sabueso.mappings.rcsb_structures
    :members:
    :undoc-members:
 ```

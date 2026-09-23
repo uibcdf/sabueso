@@ -8,7 +8,7 @@
 - `properties.physchem.molecular_weight`
 - `annotations.catalytic_activity`
 - `features_positional.binding_site`
-- `structure.entry_metadata.experimental_method`
+- `sequence.length`
 
 Canonical field path contract:
 - `devguide/SCHEMA.md` (Field Path Contract)

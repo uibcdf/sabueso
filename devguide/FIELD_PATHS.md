@@ -105,14 +105,6 @@ Versioning: **x.y.z** (no leading `v`).
 - `structure.secondary_structure`
 - `structure.chains`
 - `structure.entities`
-- `structure.entry_metadata.title`
-- `structure.entry_metadata.experimental_method`
-- `structure.entry_metadata.resolution`
-- `structure.entry_metadata.deposition_date`
-- `structure.entry_metadata.release_date`
-- `structure.entry_metadata.primary_citation.doi`
-- `structure.entry_metadata.primary_citation.pmid`
-- `structure.entry_metadata.primary_citation.title`
 
 ---
 
