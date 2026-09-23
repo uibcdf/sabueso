@@ -63,6 +63,16 @@ When work in one component exposes a missing or limiting capability in another:
 3. cross-link local workaround or blocked work;
 4. escalate to `uibcdf/moli` when the issue changes a contract between MOLI components or requires platform policy.
 
+## MOLI engineering baseline
+
+MOLI owns the shared engineering baseline for its repositories. Applicable policies are registered in `moli.toml` and documented under `uibcdf/moli/devguide/policies/`.
+
+For repositories carrying the `python-package` capability, the baseline includes Python support, CI coverage, Ruff/pytest quality tooling, release-version semantics, repository badge evidence, and archival/DOI rules when applicable.
+
+A component may add stricter local requirements. It must not silently contradict an applicable MOLI engineering policy; deviations require a tracked exception with rationale and an exit condition.
+
+MolSysSuite inherits the MOLI engineering baseline and may add modeling-ecosystem-specific policies for its internally governed members.
+
 ## Architectural boundaries
 
 Respect the frozen MOLI distinctions, including:
