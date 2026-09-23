@@ -97,14 +97,17 @@ The relationship objects are the minimum needed to express:
 
 Richer operations (`related_to`, `shared_ligands`, Deck algebra) are out of scope here.
 
-## Draft contract (for review, 2026-09-23)
+## Contract (agreed 2026-09-23)
 
-This is a proposal to review before any implementation. Names are provisional, and the
-identifier grammar follows uibcdf/moli#3 once decided.
+The Sabueso owner reviewed and agreed this contract on 2026-09-23 (see *Decisions* below).
+Names are provisional, and the identifier grammar follows uibcdf/moli#3 once decided.
 
 ### MVP scope
 
-- **Entity types:** `protein` and `structure`.
+- **Entity type with Cards:** `protein`.
+  - Experimental structures are **structure records** (`pdb:<id>`). They are relationship
+    targets and subjects of their own SourceAssertions, shown inside the ProteinCard.
+    There is no StructureCard in the MVP (#20).
   - Small molecules come later.
   - Annotation concepts (GO terms, InterPro/CATH/SCOPe/TED classifications) stay as
     source-record references. They are not entities yet.
@@ -120,7 +123,16 @@ identifier grammar follows uibcdf/moli#3 once decided.
 - **Protein entity:** anchored on one explicitly chosen UniProtKB entry (the *anchor
   record*), with the reference `sabueso:protein:uniprot:<accession>`. This keeps the
   current `card_id` form, but its meaning becomes "the entity anchored on this record".
-- **Structure entity:** anchored on a PDB entry, `sabueso:structure:pdb:<id>`.
+  - **Anchor rule:** use the reviewed (Swiss-Prot) canonical entry when one exists.
+    Otherwise use the entry selected by the explicit, recorded preference mechanism
+    (rule 5), for example the reference-proteome entry, and keep the alternatives.
+  - **Anchor changes** never rewrite identity silently. If UniProt merges or demerges the
+    entry, or a reviewed entry appears later, the old anchor gets a `superseded_by`
+    relationship and the history stays inspectable.
+  - **Consumers treat the reference as opaque**, even though it currently embeds the
+    accession. A later move to a Sabueso-native identifier must not break them.
+- **Structure record:** a PDB entry, referenced as `pdb:<id>`. It is not a separate Card
+  in the MVP.
 - **Isoforms** are not separate entities in the MVP. An isoform accession resolves to the
   protein entity plus an `isoform` qualifier, through an `isoform_of` relationship.
 
@@ -140,6 +152,9 @@ EntityResolution
   entity_ref     when resolved
   qualifiers     e.g. {"isoform": "P60174-3"}
   candidates     when ambiguous: [{entity_ref, basis}], also returned as an ambiguity Deck
+  alternatives   when resolved by a preference policy: the non-preferred candidates with
+                 their basis (reviewed status, length, checksum, organism)
+  policy         the preference policy applied, named and versioned (e.g. prefer_reviewed@1)
   identity_links Relationships used or proposed (same_as, possibly_same_as, isoform_of)
   decision       derivation record: rule(s) applied, inputs, sources consulted with
                  retrieval time/version, Sabueso version, explicit policies
@@ -163,43 +178,66 @@ The statuses keep absence apart:
    - every match is a candidate, annotated with reviewed status, length and sequence
      checksum;
    - exactly one match: resolved;
-   - several matches: `ambiguous`;
-   - an explicit policy (e.g. `prefer_reviewed=True`) may resolve the query, and the
-     policy is recorded in `decision`. Never implicitly.
+   - several matches: resolved only when an explicit, versioned **preference policy**
+     (default `prefer_reviewed@1`) selects exactly one candidate. The non-preferred
+     candidates are kept as `alternatives`, with their basis, and stored with the Card
+     (`quality.entity_resolution`). They never feed Card fields;
+   - no policy selects exactly one candidate (e.g. two reviewed entries): `ambiguous`;
+   - preferences never choose across organisms.
 6. **Name without organism:** `unsupported` in the MVP. It is too broad to resolve
    responsibly.
 7. **Identical sequence (checksum):**
    - within the same organism: at most a derived `possibly_same_as`, never an automatic
      merge;
    - across organisms: no identity link at all.
-8. **PDB ID:** resolved to a structure entity. Its polymer entities relate to protein
-   entities through `has_structure`. They are never merged into the protein card.
+8. **PDB ID:** resolved to the structure record `pdb:<id>`, together with the protein
+   entities its polymer entities map to through `has_structure`. Structure facts are
+   never merged into protein fields.
 
 ### Relationships in the MVP
 
 - **Predicates:** `same_as`, `possibly_same_as`, `isoform_of`, `has_structure`.
   `member_of_family` and `interacts_with` come later, including the migration of the
   STRING/BioGRID partner lists.
-- **Mandatory `has_structure` qualifiers:**
+- **Mandatory `has_structure` qualifiers** (raw facts), with object `pdb:<id>`:
   - PDB id, chains and polymer entity;
   - residue range in UniProt numbering;
   - **coverage**, the fraction of the canonical length covered;
-  - experimental method and resolution.
-
-  Consumers can then tell full-length structures from fragments.
+  - experimental method and resolution;
+  - the **other polymer entities present** in the structure, which reveals complexes
+    such as 1KLG.
+- **Derived classification:** `full_length | domain | fragment_or_peptide`, recorded as
+  derived knowledge with its derivation (rule and thresholds). It is not a separate
+  predicate and not a SourceAssertion. Default views exclude fragments, say so, and let
+  the user change that.
 - **Asserted support:** each source that states the link contributes a SourceAssertion,
   for example the UniProt PDB cross-reference and the RCSB entity mapping. Agreement
   between sources stays visible.
 - **Derived support:** derived links carry a derivation record.
-- **Storage:** a RelationshipStore serialized with the subject card, like the
-  SourceAssertionStore. A shared or global store is a later decision.
+- **Identity:** each Relationship has a deterministic id, a hash of subject, predicate,
+  object and key qualifiers. The same relationship is then recognisable wherever it
+  appears.
+- **Storage:** a RelationshipStore serialized with the subject Card only, like the
+  SourceAssertionStore. Inverse navigation uses Deck-level indexing. The decision is to be
+  re-evaluated in #19.
+
+### Structures inside the ProteinCard
+
+- The ProteinCard exposes a `structures` section. It is a view built from its
+  `has_structure` Relationships, with one summary per structure: PDB id, method,
+  resolution, chains, coverage, derived classification and ligands present.
+- Structure-level facts are SourceAssertions with `subject_ref = pdb:<id>`. They are
+  displayed through the view but never merged into protein fields.
+- The scalar `structure.entry_metadata.*` fields of the protein card, which today can read
+  as "the resolution of the protein", are replaced by this view.
+- The decision to have no StructureCard is to be re-evaluated in #20.
 
 ### Interaction with the FieldResolver
 
 - Only SourceAssertions whose `subject_ref` belongs to the entity feed that entity's card
   fields. That means the anchor plus its `same_as` links.
 - `possibly_same_as` records never feed fields automatically.
-- Assertions about a structure stay on the structure entity or its relationships.
+- Assertions about a structure keep the structure record (`pdb:<id>`) as subject, or stay on its relationships.
 
 ### Acceptance cases (public data, measured 2026-09-23)
 
@@ -213,31 +251,60 @@ counts.
 | A3 | `P00938` (secondary accession of P60174) | UniProt reports it `Inactive`, `DEMERGED` into P60174 (*H. sapiens*) and P60175 (*P. troglodytes*): `ambiguous` with two candidates; with organism 9606 → resolved, decision recorded |
 | A4 | P60174 vs P60175 | identical sequence (same MD5) in different organisms: **no** identity link |
 | A5 | P60174 vs V9HWK1 (unreviewed, human, identical sequence) | derived `possibly_same_as`; V9HWK1 assertions do not feed the P60174 card |
-| A6 | name "triosephosphate isomerase" + organism 9606 | `ambiguous`: 19 UniProt matches (1 reviewed); resolved to P60174 only under an explicit `prefer_reviewed` policy, recorded |
-| A7 | same name + organism 5693 (*T. cruzi*) | resolved `P52270` (single UniProt match) |
+| A6 | name "triosephosphate isomerase" + organism 9606 | 19 UniProt matches (1 reviewed): resolved to P60174 by `prefer_reviewed@1`, with the 18 non-preferred matches recorded as `alternatives` |
+| A7 | same name + organism 5693, exact taxon | resolved `P52270` (single UniProt match at species level) |
+| A7b | same name + *T. cruzi* including strains (taxonomy subtree) | 2 matches: P52270 (reviewed) and Q4DV43 (unreviewed, strain CL Brener, same length, 4 substitutions: S90K, S161A, R162H, T201A). Resolved to P52270 by preference, with Q4DV43 recorded as an alternative. No `possibly_same_as`, because the sequences differ |
 | A8 | same name, no organism | `unsupported` (29,577 matches across UniProt) |
 | A9 | `P60174` structures | 29 `has_structure` links (all X-ray). 1HTI chains A/B 2–249 (coverage ≈ 1.0). 1KLG and 1KLU chain C 23–37 are a 15-residue TIM peptide in an HLA-DR1 complex (coverage ≈ 0.06) and must not appear as full-length TIM structures |
 | A10 | `P52270` structures | 7 `has_structure` links, e.g. 1TCD chains A/B 3–251; RCSB polymer entity 1TCD/1 maps to P52270, so the link has two agreeing SourceAssertions |
-| A11 | `pdb:1TCD` | resolved structure entity, related to `sabueso:protein:uniprot:P52270` |
+| A11 | `pdb:1TCD` | resolved structure record `pdb:1TCD`, related to `sabueso:protein:uniprot:P52270` |
 | A12 | nonexistent accession / unreachable source | `not_found` vs `error`, never collapsed |
 
 Fixtures to add at implementation time:
-- UniProt entries P60175 and V9HWK1, and the inactive record P00938;
+- UniProt entries P60175, V9HWK1 and Q4DV43, and the inactive record P00938;
 - UniProt search results for the name + organism queries;
 - RCSB polymer entities for 1HTI, 1KLG and 1TCD.
 
-### Open questions for review
+### Decisions (2026-09-23)
 
-1. **Anchor rule.** Should a protein entity anchor on the reviewed canonical UniProt entry
-   when one exists? What anchors proteins that only have unreviewed entries?
-2. **Default policy.** Should name plus organism with several matches stay `ambiguous` by
-   default, or should `prefer_reviewed` be the default?
-3. **Fragments.** Should they use one `has_structure` predicate with a mandatory coverage
-   qualifier, as proposed, or a separate predicate?
-4. **Relationship storage.** Card-attached for the MVP, as proposed, or a shared store
-   from the start?
-5. **Structures.** Are they full entities with their own cards in the MVP, or only
-   relationship targets at first?
+1. **Anchor.** Option A, the UniProt anchor record, with an explicit anchor rule,
+   `superseded_by` history and opaque references. Rejected alternatives:
+   - a Sabueso-native opaque id, which needs a persistent shared registry, premature for
+     a local-first MVP;
+   - content identity (organism + sequence checksum), which breaks on sequence
+     corrections, isoforms and variants.
+2. **Preference with trace.** Ambiguity may be resolved only by a named, versioned policy.
+   The non-preferred candidates are kept as `alternatives` on the Card and never feed
+   fields.
+3. **Fragments.** A single `has_structure` predicate with mandatory raw qualifiers,
+   including the other entities present, plus a derived classification with visible
+   thresholds.
+4. **Relationship storage.** With the subject Card, with deterministic relationship ids.
+   Re-evaluation tracked in #19.
+5. **Structures.** Managed inside the ProteinCard as a `structures` view, with structure
+   facts kept on their own subject (`pdb:<id>`). No StructureCard for now. Re-evaluation
+   tracked in #20. The reasons for avoiding a StructureCard now:
+   - a Deck mixing protein and structure cards would be confusing;
+   - a card type per source database (PDB, …) would blur the rule that Cards describe
+     scientific entities, not database outputs.
+
+### Known future risks
+
+- **Anchor churn.** UniProt merges, demerges (P00938) and new reviewed entries will
+  change anchors. `superseded_by` must be implemented before any consumer persists
+  references, together with the grammar of uibcdf/moli#3.
+- **Proteins without reviewed entries.** This is common in non-model organisms and
+  strains. The preference may then choose among close variants: for *T. cruzi*, strain
+  CL Brener Q4DV43 differs from P52270 at 4 positions. Views must surface the
+  `alternatives`, because variant differences can matter scientifically.
+- **Default preference hides options.** A default `prefer_reviewed@1` is convenient but
+  can bury relevant alternatives. They must stay visible in the Card and in any summary.
+- **Arbitrary thresholds.** The fragment/domain/full-length thresholds are arbitrary.
+  They are recorded as derivation parameters and must be revisited with real use.
+- **Card-attached relationships** may scale badly for interaction networks and dense
+  bioactivity data (#19).
+- **Protein-centric structures** duplicate complexes across protein cards, and may need a
+  structure-level entity later (#20).
 
 ## Why
 
@@ -277,6 +344,9 @@ Fixtures to add at implementation time:
   case links protein, structure and family subjects through typed relationships instead
   of merging them into one card.
 - Resolver outputs distinguish "not found" from "not queried" and "ambiguous".
+- Preference-based resolutions keep their `alternatives` and `policy` on the Card.
+- The ProteinCard has no scalar structure fields. Structures appear through the
+  `structures` view, and their facts keep `pdb:<id>` as subject.
 - Card identity follows the grammar decided in uibcdf/moli#3.
 - Offline tests cover unambiguous, ambiguous and cross-source cases, including one
   protein entity with several experimental structures (e.g. human and *T. cruzi* TIM).

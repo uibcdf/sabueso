@@ -110,3 +110,25 @@
   syntax) and `meta.schema_version`; SQLite persistence keys cards by `card_id`.
 - Sabueso is the Knowledge component of the MOLI Platform's Scientific Context, not a
   MolSysSuite member (MolSysSuite admission withdrawn, `uibcdf/molsyssuite#40`).
+
+## Entity identity, relationships and structures (2026-09-23)
+Agreed contract in `devguide/pending_proposals/entity_resolver.md` (uibcdf/sabueso#6):
+- **Protein identity:** anchored on a UniProt record. Use the reviewed canonical entry
+  when one exists; otherwise apply an explicit, recorded preference. Anchor changes are
+  recorded as `superseded_by`, never rewritten silently. Consumers treat references as
+  opaque.
+- **Ambiguity:** resolved only by a named, versioned preference policy
+  (`prefer_reviewed@1`). The non-preferred candidates are kept on the Card as
+  `alternatives` and never feed fields. Preferences never cross organisms, and identical
+  sequences in different organisms are never identity.
+- **Relationships:** first-class, with deterministic ids. They are backed by
+  SourceAssertions, or by a derivation record when inferred. They are stored with the
+  subject Card; re-evaluation in uibcdf/sabueso#19.
+- **Structures:** no StructureCard. The ProteinCard exposes a `structures` view over
+  `has_structure` relationships, which carry mandatory raw qualifiers (chains, range,
+  coverage, other entities present) and a derived classification with visible thresholds.
+  Structure facts keep `pdb:<id>` as subject. Re-evaluation in uibcdf/sabueso#20.
+- **General rule:** possible future problems of a design decision are recorded in
+  `devguide/`, and decisions that need later re-evaluation get an issue with explicit
+  triggers.
+
