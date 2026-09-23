@@ -1,0 +1,868 @@
+{
+ "query": "(protein_name:\"triosephosphate isomerase\") AND (organism_id:9606)",
+ "total": 19,
+ "release": "2026_03",
+ "results": [
+  {
+   "entryType": "UniProtKB reviewed (Swiss-Prot)",
+   "primaryAccession": "P60174",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 249,
+    "molWeight": 26669,
+    "crc64": "73844175635F858E",
+    "md5": "A8D44FC2C980A7677A3B54788D0FA323"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI000002F08E"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A0ACI8P8C7",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000524228.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 235,
+    "molWeight": 25098,
+    "crc64": "577BB70038CBF921",
+    "md5": "9E69CCA7E012123472651AB33ABCB446"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI0040317E28"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A0ACI8QBS8",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000524224.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 247,
+    "molWeight": 26470,
+    "crc64": "0BD5EB81499BD619",
+    "md5": "77A09DABF01FF704CB97B5FB23CC44AE"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI00403165B4"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A0ACI8Q263",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000524227.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 231,
+    "molWeight": 24581,
+    "crc64": "069B2CE63CFAEA97",
+    "md5": "E853AA022403D75C47F022677DB09CFA"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI004031CECF"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A0ACI8RFA7",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000524223.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDESVSQQLIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 254,
+    "molWeight": 27199,
+    "crc64": "AF3351B580C70A55",
+    "md5": "E359C25DA28A587DF964CD53FA7F72BC"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI004032671E"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A0ACI8TS92",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000604819.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 244,
+    "molWeight": 26166,
+    "crc64": "91B8A3B74DA5171F",
+    "md5": "C5F1EC8383B209BD24816F2501225785"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI004031C514"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "V9HWK1",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "EMBL",
+      "id": "ACJ13722.1"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 249,
+    "molWeight": 26669,
+    "crc64": "73844175635F858E",
+    "md5": "A8D44FC2C980A7677A3B54788D0FA323"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI000002F08E"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A0ACI8PL03",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000524225.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDEKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 245,
+    "molWeight": 26258,
+    "crc64": "B022A77F622BF612",
+    "md5": "F111C9915BBF8347A86F5822B76E32AC"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI004031D941"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A0ACI8TSC8",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000604821.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 226,
+    "molWeight": 24397,
+    "crc64": "EC67E144C526C94C",
+    "md5": "75FCEAAFCBBBF58358F9ADAD130938BA"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI0040316385"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "B4DUI5",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "EMBL",
+      "id": "BAG62347.1"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 213,
+    "molWeight": 22871,
+    "crc64": "183515EDD72D7251",
+    "md5": "2A27CC55CBC6498462A04C36D5C742EA"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI00017A7EB7"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "Q2QD09",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "EMBL",
+      "id": "ABC40670.1"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLRELVRTLNAAKVPADTEVVCTPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCRATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACTGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQDQEVHDKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPGVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 249,
+    "molWeight": 26943,
+    "crc64": "824DB75D1957BA9D",
+    "md5": "A59DBB6C15273BAEE411780814A8FAF3"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI0000140432"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "Q53HE2",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "EMBL",
+      "id": "BAD96358.1"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVRGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 249,
+    "molWeight": 26713,
+    "crc64": "73965259B19F4470",
+    "md5": "76B0191C07986552C437E17C8156EAD2"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI000050A722"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A0ACI8ULM2",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000618689.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 243,
+    "molWeight": 25976,
+    "crc64": "93DA95EA63DB4873",
+    "md5": "D662E18ED01E3D4A61C62C36133BB32E"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI0040325EA7"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "U3KPZ0",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000475364.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKS",
+    "length": 113,
+    "molWeight": 12437,
+    "crc64": "10C0AD6DECF79881",
+    "md5": "A2474D528062D943A7ADE1617065E508"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI00038BB065"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "U3KPS5",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000475184.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAE",
+    "length": 38,
+    "molWeight": 4191,
+    "crc64": "7A2CD48A1E5F25B4",
+    "md5": "860BFF5F1DCF78CB0AA534B551B60C39"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI0003F47FCB"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "U3KQF3",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000475829.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQ",
+    "length": 98,
+    "molWeight": 10646,
+    "crc64": "D97613269E840244",
+    "md5": "71B737643835ADAAC1E302C11B58033C"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI00038BAFEB"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A0ACI8ULN9",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000618690.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 204,
+    "molWeight": 21626,
+    "crc64": "58B01ADF7549F7A0",
+    "md5": "49D3AA681B75D9992545BC317F850AE7"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI004031DA66"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A0ACI8QJQ5",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000524226.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKLIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 210,
+    "molWeight": 22497,
+    "crc64": "95615BBF58ED99A7",
+    "md5": "ACE653A65300334FC4425C898C8F9B25"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI0000E5945D"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A0ACI8TSB1",
+   "organism": {
+    "scientificName": "Homo sapiens",
+    "commonName": "Human",
+    "taxonId": 9606,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Ensembl",
+      "id": "ENSP00000604820.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000005640"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metazoa",
+     "Chordata",
+     "Craniata",
+     "Vertebrata",
+     "Euteleostomi",
+     "Mammalia",
+     "Eutheria",
+     "Euarchontoglires",
+     "Primates",
+     "Haplorrhini",
+     "Catarrhini",
+     "Hominidae",
+     "Homo"
+    ]
+   },
+   "sequence": {
+    "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTDNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "length": 135,
+    "molWeight": 14460,
+    "crc64": "A4A50B97317A3EE6",
+    "md5": "E7F8E08406132C25BDCCBD16913F4071"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI004031CE4B"
+   }
+  }
+ ]
+}

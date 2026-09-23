@@ -1,9 +1,9 @@
 """EntityResolver: which molecular entity is an identifier or query talking about?
 
 MVP implementation of the contract in ``devguide/pending_proposals/entity_resolver.md``
-(uibcdf/sabueso#6). This step covers UniProtKB accessions: active primary accessions,
-merged and demerged (inactive) accessions, and isoform accessions. Name and PDB inputs are
-reported as ``unsupported`` until implemented.
+(uibcdf/sabueso#6). It covers UniProtKB accessions (active primary, merged and demerged
+inactive, isoform) and protein name + organism searches resolved by an explicit,
+recorded preference policy. PDB inputs are reported as ``unsupported`` until implemented.
 
 Principles: never choose silently, keep "not found", "unsupported" and "error" apart,
 record every decision, and never create identity from identical sequences across
@@ -35,12 +35,18 @@ UNIPROT_ACCESSION = re.compile(
 
 STATUSES = ("resolved", "ambiguous", "not_found", "unsupported", "error")
 
+# Named, versioned preference policies. A policy may pick one candidate among several
+# matches; the others are always kept as alternatives. None disables preferences.
+POLICIES = ("prefer_reviewed@1",)
+DEFAULT_POLICY = "prefer_reviewed@1"
+
 
 @dataclass
 class EntityQuery:
     identifier: Optional[str] = None
     name: Optional[str] = None
     organism: Optional[int | str] = None
+    include_subtaxa: bool = False  # e.g. strains below the queried species
     entity_type: Optional[str] = None
 
 
@@ -112,8 +118,13 @@ def sequence_identity_link(
 
 
 class EntityResolver:
-    def __init__(self, uniprot_client: Any | None = None) -> None:
+    def __init__(
+        self, uniprot_client: Any | None = None, policy: str | None = DEFAULT_POLICY
+    ) -> None:
+        if policy is not None and policy not in POLICIES:
+            raise ValueError(f"Unknown preference policy {policy!r}; known: {POLICIES}")
         self.uniprot = uniprot_client or OnlineUniProtClient()
+        self.policy = policy
 
     def resolve(self, query: EntityQuery | str) -> EntityResolution:
         if isinstance(query, str):
@@ -138,8 +149,97 @@ class EntityResolver:
                 return EntityResolution("unsupported", decision=decision)
             decision["rules"].append(f"unsupported_namespace:{namespace}")
             return EntityResolution("unsupported", decision=decision)
+        if query.name:
+            if query.organism is None:
+                # Too broad to resolve responsibly (e.g. ~30k UniProt matches for a TIM name).
+                decision["rules"].append("name_without_organism")
+                return EntityResolution("unsupported", decision=decision)
+            return self._resolve_name(query, decision)
         decision["rules"].append("unsupported_query")
         return EntityResolution("unsupported", decision=decision)
+
+    # Name + organism ----------------------------------------------------------------
+
+    def _resolve_name(
+        self, query: EntityQuery, decision: Dict[str, Any]
+    ) -> EntityResolution:
+        try:
+            found = self.uniprot.search(
+                query.name, query.organism, query.include_subtaxa
+            )
+        except ConnectorError as exc:
+            decision["sources"].append(
+                {"name": "UniProt search", "outcome": f"error: {exc}"}
+            )
+            decision["rules"].append("source_error")
+            return EntityResolution("error", decision=decision)
+        results = found.get("results", [])
+        decision["sources"].append(
+            {
+                "name": "UniProt search",
+                "query": found.get("query"),
+                "total": found.get("total"),
+                "release": found.get("release"),
+                "retrieved_at": found.get("retrieved_at"),
+            }
+        )
+        candidates = [
+            {
+                "entity_ref": protein_ref(e["primaryAccession"]),
+                "basis": uniprot_basis(e),
+            }
+            for e in results
+        ]
+        if not results:
+            decision["rules"].append("name_organism_no_match")
+            return EntityResolution("not_found", decision=decision)
+        if (found.get("total") or len(results)) > len(results):
+            # Never resolve from a partial list of matches.
+            decision["rules"].append("search_truncated")
+            return EntityResolution(
+                "ambiguous", candidates=candidates, decision=decision
+            )
+        if len(results) == 1:
+            decision["rules"].append("name_organism_single_match")
+            return EntityResolution(
+                "resolved", entity_ref=candidates[0]["entity_ref"], decision=decision
+            )
+        return self._apply_preference(results, candidates, decision)
+
+    def _apply_preference(
+        self,
+        results: List[Dict[str, Any]],
+        candidates: List[Dict[str, Any]],
+        decision: Dict[str, Any],
+    ) -> EntityResolution:
+        decision["policy"] = self.policy
+        if self.policy is None:
+            decision["rules"].append("no_preference_policy")
+            return EntityResolution(
+                "ambiguous", candidates=candidates, decision=decision
+            )
+        preferred = [i for i, c in enumerate(candidates) if c["basis"]["reviewed"]]
+        if len(preferred) != 1:
+            decision["rules"].append(f"preference_inconclusive:{self.policy}")
+            return EntityResolution(
+                "ambiguous", candidates=candidates, decision=decision
+            )
+        chosen = preferred[0]
+        decision["rules"].append(f"preference:{self.policy}")
+        resolution = EntityResolution(
+            "resolved",
+            entity_ref=candidates[chosen]["entity_ref"],
+            alternatives=[c for i, c in enumerate(candidates) if i != chosen],
+            policy=self.policy,
+            decision=decision,
+        )
+        # Make identical-sequence alternatives in the same organism explicit (derived).
+        for i, entry in enumerate(results):
+            if i != chosen:
+                link = sequence_identity_link(results[chosen], entry)
+                if link:
+                    resolution.identity_links.append(link)
+        return resolution
 
     # UniProt ------------------------------------------------------------------------
 

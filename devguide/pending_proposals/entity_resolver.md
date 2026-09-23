@@ -392,7 +392,26 @@ Fixtures to add at implementation time:
 
    Still pending from A5: V9HWK1 assertions must not feed the P60174 card. This is
    enforced when cards are built from resolved entities, in step 4.
-3. Name + organism with preference and trace (A6, A7, A7b): pending.
+3. **Name + organism with preference and trace** (A6, A7, A7b). Done:
+   - `EntityQuery(name, organism, include_subtaxa)`;
+   - the UniProt search is captured in the decision (query, total, UniProt release,
+     retrieval time);
+   - `prefer_reviewed@1` resolves only when exactly one reviewed match exists. All
+     other matches are kept as `alternatives`, and identical-sequence alternatives in
+     the same organism are surfaced as derived `possibly_same_as` links (V9HWK1 for
+     human TIM);
+   - `policy=None` keeps several matches `ambiguous`;
+   - a truncated search never resolves;
+   - a name without an organism is `unsupported`.
+
+   Clarification: with `include_subtaxa`, strain entries below the queried species (e.g.
+   Q4DV43, *T. cruzi* CL Brener) are within the requested organism scope, so the
+   preference may choose among them. The "never across organisms" rule forbids choosing
+   between organisms the query did not ask for, for example human vs chimpanzee.
+
+   Deferred: the contract says ambiguous candidates are "also returned as an ambiguity
+   Deck". They are returned as a list for now. Materializing them as a Deck of Cards
+   needs card building from resolved entities (step 4).
 4. `has_structure` from UniProt/RCSB and the ProteinCard `structures` view (A9–A11):
    pending.
 

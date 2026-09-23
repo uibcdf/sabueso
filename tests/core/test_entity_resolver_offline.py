@@ -1,7 +1,7 @@
-"""EntityResolver for UniProt accessions (uibcdf/sabueso#6, step 2).
+"""EntityResolver (uibcdf/sabueso#6, steps 2 and 3).
 
-Acceptance cases A1-A5 and A12 of devguide/pending_proposals/entity_resolver.md, on
-frozen public UniProt REST responses (retrieved 2026-09-23).
+Acceptance cases A1-A7b and A12 of devguide/pending_proposals/entity_resolver.md, on
+frozen public UniProt REST responses (retrieved 2026-09-23, UniProt release 2026_03).
 """
 
 import json
@@ -124,3 +124,107 @@ def test_identifier_contradicting_the_organism_does_not_resolve(resolver):
     res = resolver.resolve(EntityQuery(identifier="P60174", organism=10090))
     assert res.status == "not_found"
     assert res.decision["rules"] == ["organism_mismatch"]
+
+
+# Step 3: protein name + organism, resolved by an explicit preference policy (A6, A7, A7b)
+
+TIM_NAME = "triosephosphate isomerase"
+
+
+def test_a6_name_and_organism_resolved_by_preference_with_trace(resolver):
+    res = resolver.resolve(EntityQuery(name=TIM_NAME, organism=9606))
+    assert (res.status, res.entity_ref) == ("resolved", HUMAN_TIM)
+    assert res.policy == "prefer_reviewed@1"
+    assert res.decision["rules"] == ["preference:prefer_reviewed@1"]
+    assert len(res.alternatives) == 18
+    assert not any(a["basis"]["reviewed"] for a in res.alternatives)
+    (search,) = res.decision["sources"]
+    assert (search["total"], search["release"]) == (19, "2026_03")
+    # The identical-sequence human entry is surfaced as a derived possibly_same_as.
+    assert [(lk["predicate"], lk["object_ref"]) for lk in res.identity_links] == [
+        ("possibly_same_as", "uniprot:V9HWK1")
+    ]
+
+
+def test_a7_single_match_at_species_level_needs_no_policy(resolver):
+    res = resolver.resolve(EntityQuery(name=TIM_NAME, organism=5693))
+    assert (res.status, res.entity_ref) == (
+        "resolved",
+        "sabueso:protein:uniprot:P52270",
+    )
+    assert res.policy is None
+    assert res.decision["rules"] == ["name_organism_single_match"]
+
+
+def test_a7b_strain_variant_is_kept_as_alternative(resolver):
+    res = resolver.resolve(
+        EntityQuery(name=TIM_NAME, organism=5693, include_subtaxa=True)
+    )
+    assert (res.status, res.entity_ref) == (
+        "resolved",
+        "sabueso:protein:uniprot:P52270",
+    )
+    (alternative,) = res.alternatives
+    assert alternative["basis"]["accession"] == "Q4DV43"
+    assert alternative["basis"]["organism"] == 353153  # strain CL Brener
+    assert res.identity_links == []  # different sequence: no identity link
+
+
+def test_without_policy_several_matches_stay_ambiguous():
+    resolver = EntityResolver(FixtureUniProtClient("temp_data"), policy=None)
+    res = resolver.resolve(EntityQuery(name=TIM_NAME, organism=9606))
+    assert res.status == "ambiguous"
+    assert len(res.candidates) == 19
+    assert res.decision["rules"] == ["no_preference_policy"]
+
+
+def test_name_search_failure_is_an_error():
+    client = FixtureUniProtClient(
+        "temp_data", failing={"triosephosphate_isomerase__9606"}
+    )
+    res = EntityResolver(client).resolve(EntityQuery(name=TIM_NAME, organism=9606))
+    assert res.status == "error"
+
+
+class _StubSearch:
+    def __init__(self, results, total=None):
+        self.results, self.total = results, total
+
+    def search(self, name, organism, include_subtaxa=False):
+        return {
+            "query": "stub",
+            "total": self.total if self.total is not None else len(self.results),
+            "release": None,
+            "retrieved_at": "stub",
+            "results": self.results,
+        }
+
+
+def _hit(accession, reviewed):
+    return {
+        "primaryAccession": accession,
+        "entryType": "UniProtKB reviewed (Swiss-Prot)"
+        if reviewed
+        else "UniProtKB unreviewed (TrEMBL)",
+        "organism": {"taxonId": 9606, "scientificName": "Homo sapiens"},
+        "sequence": {"length": 10, "md5": accession},
+    }
+
+
+def test_truncated_search_never_resolves():
+    stub = _StubSearch([_hit("P11111", True), _hit("Q22222", False)], total=900)
+    res = EntityResolver(stub).resolve(EntityQuery(name="x", organism=9606))
+    assert res.status == "ambiguous"
+    assert res.decision["rules"] == ["search_truncated"]
+
+
+def test_preference_is_inconclusive_with_several_reviewed_matches():
+    stub = _StubSearch([_hit("P11111", True), _hit("P33333", True)])
+    res = EntityResolver(stub).resolve(EntityQuery(name="x", organism=9606))
+    assert res.status == "ambiguous"
+    assert res.decision["rules"] == ["preference_inconclusive:prefer_reviewed@1"]
+
+
+def test_unknown_policy_is_rejected():
+    with pytest.raises(ValueError):
+        EntityResolver(FixtureUniProtClient("temp_data"), policy="prefer_longest@1")

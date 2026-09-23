@@ -76,18 +76,21 @@ relationships.
 ## EntityResolver
 **Purpose:** Decide which molecular entity an identifier or query refers to, without
 silent choices. Contract: `devguide/pending_proposals/entity_resolver.md` (#6).
-Implemented in `sabueso/resolver/entity_resolver.py` for UniProt accessions (MVP step 2).
+Implemented in `sabueso/resolver/entity_resolver.py` for UniProt accessions and protein
+name + organism searches (MVP steps 2–3).
 
 **Methods**
-- `EntityResolver(uniprot_client=None)` *(defaults to `OnlineUniProtClient`;
-  `FixtureUniProtClient` serves saved REST responses)*
+- `EntityResolver(uniprot_client=None, policy="prefer_reviewed@1")` *(defaults to
+  `OnlineUniProtClient`; `FixtureUniProtClient` serves saved REST responses; `policy=None`
+  disables preferences so several matches stay ambiguous)*
 - `resolve(query: EntityQuery | str) -> EntityResolution`
 - `sequence_identity_link(entry_a, entry_b) -> Relationship | None` *(derived
   `possibly_same_as` for identical sequences within one organism; never across organisms)*
 
 **EntityQuery**
 - `identifier` *(e.g. `P60174`, `uniprot:P60174-3`)*
-- `name`, `organism` *(taxon id or scientific name)*, `entity_type`
+- `name`, `organism` *(taxon id or scientific name; required with `name`)*,
+  `include_subtaxa` *(also match strains/subtaxa of the organism)*, `entity_type`
 
 **EntityResolution**
 - `status`: `resolved | ambiguous | not_found | unsupported | error`

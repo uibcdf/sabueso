@@ -1,0 +1,36 @@
+{
+ "query": "(protein_name:\"triosephosphate isomerase\") AND (organism_id:5693)",
+ "total": 1,
+ "release": "2026_03",
+ "results": [
+  {
+   "entryType": "UniProtKB reviewed (Swiss-Prot)",
+   "primaryAccession": "P52270",
+   "organism": {
+    "scientificName": "Trypanosoma cruzi",
+    "taxonId": 5693,
+    "lineage": [
+     "Eukaryota",
+     "Discoba",
+     "Euglenozoa",
+     "Kinetoplastea",
+     "Metakinetoplastina",
+     "Trypanosomatida",
+     "Trypanosomatidae",
+     "Trypanosoma",
+     "Schizotrypanum"
+    ]
+   },
+   "sequence": {
+    "value": "MASKPQPIAAANWKCNGSESLLVPLIETLNAATFDHDVQCVVAPTFLHIPMTKARLTNPKFQIAAQNAITRSGAFTGEVSLQILKDYGISWVVLGHSERRLYYGETNEIVAEKVAQACAAGFHVIVCVGETNEEREAGRTAAVVLTQLAAVAQKLSKEAWSRVVIAYEPVWAIGTGKVATPQQAQEVHELLRRWVRSKLGTDIAAQLRILYGGSVTAKNARTLYQMRDINGFLVGGASLKPEFVEIIEATK",
+    "length": 251,
+    "molWeight": 27329,
+    "crc64": "03010B66586C186D",
+    "md5": "8B10ED90CF2DCA684CD7C8F7CC289846"
+   },
+   "extraAttributes": {
+    "uniParcId": "UPI0000110C94"
+   }
+  }
+ ]
+}

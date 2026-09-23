@@ -23,3 +23,9 @@ def test_online_entity_resolution_matches_the_offline_contract():
     assert demerged.entity_ref == human
 
     assert resolver.resolve("A0A000Z9Z9").status == "not_found"
+
+    by_name = resolver.resolve(
+        EntityQuery(name="triosephosphate isomerase", organism=9606)
+    )
+    assert (by_name.entity_ref, by_name.policy) == (human, "prefer_reviewed@1")
+    assert by_name.alternatives  # non-preferred matches are kept

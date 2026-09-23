@@ -1,8 +1,11 @@
 """UniProtKB record access for entity resolution.
 
-Two interchangeable clients return ``(entry, retrieved_at)``:
+Two interchangeable clients:
 - ``OnlineUniProtClient`` queries the UniProt REST API;
 - ``FixtureUniProtClient`` reads saved REST responses (offline tests, reproducibility).
+
+``fetch_entry(accession)`` returns ``(entry, retrieved_at)``. ``search(name, organism,
+include_subtaxa)`` returns ``{query, total, release, retrieved_at, results}``.
 
 Both raise ``RecordNotFoundError`` when UniProt holds no record and ``ConnectorError``
 when the source cannot answer, so that callers never confuse "not found" with "failed".
@@ -15,11 +18,34 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Tuple
 from urllib.error import HTTPError, URLError
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 
 UNIPROT_REST = "https://rest.uniprot.org/uniprotkb"
+SEARCH_FIELDS = "accession,reviewed,organism_name,organism_id,length,sequence"
+SEARCH_SIZE = 500
+
+
+def search_query(name: str, organism: int | str, include_subtaxa: bool = False) -> str:
+    """UniProt query for a protein name within an organism (optionally its subtree)."""
+    if isinstance(organism, int) or str(organism).isdigit():
+        field = "taxonomy_id" if include_subtaxa else "organism_id"
+        scope = f"{field}:{organism}"
+    else:
+        scope = f'organism_name:"{organism}"'
+    return f'(protein_name:"{name}") AND ({scope})'
+
+
+def search_key(name: str, organism: int | str, include_subtaxa: bool = False) -> str:
+    """File stem used for saved search responses."""
+    suffix = "_subtaxa" if include_subtaxa else ""
+    return f"{name.replace(' ', '_')}__{str(organism).replace(' ', '_')}{suffix}"
+
+
+def _now() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
 class OnlineUniProtClient:
@@ -30,7 +56,7 @@ class OnlineUniProtClient:
         request = Request(
             f"{UNIPROT_REST}/{accession}.json", headers={"Accept": "application/json"}
         )
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieved_at = _now()
         try:
             with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 return json.loads(resp.read().decode("utf-8")), retrieved_at
@@ -45,9 +71,49 @@ class OnlineUniProtClient:
                 f"UniProt request for {accession} failed: {exc}"
             ) from exc
 
+    def search(
+        self, name: str, organism: int | str, include_subtaxa: bool = False
+    ) -> Dict[str, Any]:
+        """Search entries by protein name and organism.
+
+        ``total`` may exceed ``len(results)`` when the search is truncated.
+        """
+        query = search_query(name, organism, include_subtaxa)
+        params = urlencode(
+            {
+                "query": query,
+                "fields": SEARCH_FIELDS,
+                "format": "json",
+                "size": SEARCH_SIZE,
+            }
+        )
+        retrieved_at = _now()
+        try:
+            with urlopen(  # nosec - trusted endpoint
+                f"{UNIPROT_REST}/search?{params}", timeout=self.timeout
+            ) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                results = data.get("results", [])
+                total = int(resp.headers.get("X-Total-Results", len(results)))
+                release = resp.headers.get("X-UniProt-Release")
+        except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            raise ConnectorError(f"UniProt search {query!r} failed: {exc}") from exc
+        return {
+            "query": query,
+            "total": total,
+            "release": release,
+            "retrieved_at": retrieved_at,
+            "results": results,
+        }
+
 
 class FixtureUniProtClient:
-    """Serve saved UniProt REST responses from ``<directory>/<accession>.json``."""
+    """Serve saved UniProt REST responses.
+
+    Entries come from ``<directory>/<accession>.json`` and searches from
+    ``<directory>/uniprot_search/<search_key>.json``. Identifiers or search keys listed in
+    ``failing`` simulate a source failure.
+    """
 
     def __init__(
         self,
@@ -66,3 +132,15 @@ class FixtureUniProtClient:
         if not path.is_file():
             raise RecordNotFoundError(f"UniProt has no record {accession}")
         return json.loads(path.read_text(encoding="utf-8")), self.retrieved_at
+
+    def search(
+        self, name: str, organism: int | str, include_subtaxa: bool = False
+    ) -> Dict[str, Any]:
+        key = search_key(name, organism, include_subtaxa)
+        if key in self.failing:
+            raise ConnectorError(f"UniProt search {key} failed (simulated)")
+        path = self.directory / "uniprot_search" / f"{key}.json"
+        if not path.is_file():
+            raise ConnectorError(f"No saved UniProt search response for {key}")
+        saved = json.loads(path.read_text(encoding="utf-8"))
+        return {**saved, "retrieved_at": self.retrieved_at}
