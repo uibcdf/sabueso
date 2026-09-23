@@ -28,7 +28,7 @@ The authoritative registry is `moli.toml`. Initial MOLI components are:
 
 Scientific Context is a conceptual grouping of Sabueso, Praxis, and Nextia; it is not a separate component repository.
 
-MolSysSuite is a MOLI component **with delegated internal governance**. MOLI governs MolSysSuite at the platform/component boundary; `uibcdf/molsyssuite` governs MolSysSuite's internal members, shared engineering policies, and component contracts.
+MolSysSuite is a MOLI component **with delegated internal governance**. MOLI governs MolSysSuite at the platform/component boundary and owns the shared MOLI engineering baseline. `uibcdf/molsyssuite` governs MolSysSuite's internal members, modeling-domain policies and contracts, adoption/rollout state, enforcement machinery, and explicit domain extensions of inherited engineering policy.
 
 ## Ownership rule
 
@@ -106,7 +106,7 @@ MOLI
         └── ...           governed internally by MolSysSuite
 ```
 
-Do not use MOLI governance to duplicate MolSysSuite's internal Python, CI, release, membership, or component policies.
+Do not use MOLI governance to duplicate MolSysSuite's member-level rollout, enforcement, membership, modeling-domain contracts, or repository-local implementation policy. MOLI owns the shared engineering baseline; MolSysSuite owns how that baseline is adopted and enforced across its governed ecosystem, plus any explicit domain-specific extensions.
 
 ## Before finishing cross-component work
 
