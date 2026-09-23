@@ -1,19 +1,40 @@
 # Sabueso
 
-Sabueso is a scientific Python library for aggregating and normalizing biomolecular data across multiple public databases. Given a molecular system (protein, peptide, small molecule, etc.), it produces a structured **Card** of resolved molecular knowledge in which every value is linked to the **SourceAssertions** (what each external source asserts) that support it. A **Deck** is a collection of cards with consistent operations.
+[![MOLI: Knowledge](https://img.shields.io/badge/MOLI-Knowledge-blue.svg)](https://github.com/uibcdf/moli)
+[![MOLI governance](https://github.com/uibcdf/sabueso/actions/workflows/moli-governance.yml/badge.svg)](https://github.com/uibcdf/sabueso/actions/workflows/moli-governance.yml)
+[![Python 3.11–3.14](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue.svg)](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_policy.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+Sabueso is the **Knowledge** component of the MOLI platform: a scientific Python library for aggregating and normalizing biomolecular data across multiple public databases.
+
+Given a molecular system (protein, peptide, small molecule, etc.), it produces a structured **Card** of resolved molecular knowledge in which every value is linked to the **SourceAssertions** — what each external source asserts — that support it. A **Deck** is a collection of cards with consistent operations.
 
 ## Status
-Early design and scaffolding phase. The developer guide is the source of truth.
 
-Supported Python versions: 3.11, 3.12, 3.13 and 3.14 (offline test suite in CI).
+Active early-stage implementation. Sabueso is directly governed by MOLI for shared platform and engineering contracts while retaining ownership of its implementation, scientific behavior, tests, and local API.
 
-## Quick Start (for developers)
-- Read `devguide/VISION.md` and `devguide/ARCHITECTURE.md`.
-- Use `devguide/CHECKPOINT.md` for the current repo baseline.
-- The conceptual schema lives in `schemas/card_schema.yaml`.
+Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the offline CI suite. Python 3.14 is explicitly admitted under MOLI's active Python transition.
 
-## Repository Layout (Phase 0)
+## Development
+
+Start with:
+
+- `AGENTS.md` and `MOLI_GUIDE.md` for governance;
+- `devguide/VISION.md` and `devguide/ARCHITECTURE.md` for Sabueso's scientific design;
+- `devguide/CHECKPOINT.md` for the current repository baseline;
+- `schemas/card_schema.yaml` for the current conceptual schema.
+
+Common quality gates:
+
+```bash
+ruff format --check .
+ruff check .
+pytest
 ```
+
+## Repository layout
+
+```text
 sabueso/
   core/
   resolver/
@@ -29,4 +50,11 @@ tests/
 ```
 
 ## Documentation
-Sphinx docs live in `docs/` and use the **pydata_sphinx_theme**.
+
+Sphinx documentation lives in `docs/` and uses the **pydata_sphinx_theme**.
+
+## Governance
+
+Sabueso follows MOLI's shared engineering and platform governance. Local bugs and proposals belong to this repository; shared contracts involving other MOLI components belong to `uibcdf/moli`.
+
+See `MOLI_GUIDE.md` for the concise governance contract.
