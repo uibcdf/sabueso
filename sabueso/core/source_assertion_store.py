@@ -23,6 +23,7 @@ SOURCE_NAMESPACES: Dict[str, str] = {
     "RCSB PDB": "pdb",
     "PDB CCD": "pdb.ligand",  # wwPDB Chemical Component Dictionary (served by RCSB)
     "UniChem": "unichem",
+    "PDBe-KB": "pdbekb",  # PDBe-KB records are keyed by UniProt accession
     "PubChem": "pubchem",
     "ChEMBL": "chembl",
     "GO": "go",

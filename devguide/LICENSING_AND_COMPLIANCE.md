@@ -19,6 +19,7 @@ themselves are not Sabueso's work and keep their source's licence.
 | UniProtKB | CC BY 4.0 | UniProt Consortium | Stated in the entry's own `CC` lines |
 | RCSB PDB / wwPDB (entries and Chemical Component Dictionary) | CC0 1.0 | not required | Crediting structure depositors is good practice |
 | STRING | CC BY 4.0 | STRING (string-db.org) | |
+| PDBe-KB | CC BY 4.0 | PDBe-KB consortium paper | States academic and commercial use are allowed |
 | ChEMBL | **CC BY-SA 3.0 Unported** | EMBL-EBI / ChEMBL | Share-alike: see below |
 | UniChem | EMBL-EBI adds no restrictions of its own | EMBL-EBI / UniChem | The rights of the resources it points to still apply |
 | PubChem | US public domain (NLM policy) | NCBI / NLM | Depositor contributions may carry their own terms |

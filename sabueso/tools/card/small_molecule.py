@@ -305,6 +305,15 @@ def _protein_molecule_records(protein_card: Card, structure_ligands: str | None)
             )
             entry["structures"].add(rel["object_ref"])
             entry["flags"].add(ligand.get("subject_of_investigation"))
+    # Ligands PDBe-KB reports in structures the card has not fetched: the PDB flag is
+    # unknown for them unless a fetched structure states it.
+    for rel in protein_card.relationships("has_ligand_site"):
+        code = rel["object_ref"].split(":", 1)[1]
+        if code not in seen:
+            seen[code] = {
+                "structures": set(rel["qualifiers"].get("structures") or []),
+                "flags": {None},
+            }
     if not structure_ligands:
         return chembl_ids, [], []
     codes, excluded = [], []

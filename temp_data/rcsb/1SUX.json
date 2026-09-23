@@ -10,24 +10,6 @@
     {
      "rcsb_nonpolymer_instance_validation_score": [
       {
-       "is_subject_of_investigation": "Y",
-       "is_subject_of_investigation_provenance": "RCSB"
-      }
-     ]
-    }
-   ],
-   "rcsb_nonpolymer_entity": {
-    "pdbx_description": "3-(2-BENZOTHIAZOLYLTHIO)-1-PROPANESULFONIC ACID"
-   },
-   "rcsb_nonpolymer_entity_container_identifiers": {
-    "nonpolymer_comp_id": "BTS"
-   }
-  },
-  {
-   "nonpolymer_entity_instances": [
-    {
-     "rcsb_nonpolymer_instance_validation_score": [
-      {
        "is_subject_of_investigation": "N",
        "is_subject_of_investigation_provenance": null
       }
@@ -88,6 +70,24 @@
    "rcsb_nonpolymer_entity_container_identifiers": {
     "nonpolymer_comp_id": "SO4"
    }
+  },
+  {
+   "nonpolymer_entity_instances": [
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "Y",
+       "is_subject_of_investigation_provenance": "RCSB"
+      }
+     ]
+    }
+   ],
+   "rcsb_nonpolymer_entity": {
+    "pdbx_description": "3-(2-BENZOTHIAZOLYLTHIO)-1-PROPANESULFONIC ACID"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers": {
+    "nonpolymer_comp_id": "BTS"
+   }
   }
  ],
  "polymer_entities": [
@@ -95,6 +95,216 @@
    "entity_poly": {
     "rcsb_sample_sequence_length": 251
    },
+   "polymer_entity_instances": [
+    {
+     "rcsb_ligand_neighbors": [
+      {
+       "comp_id": "ARG",
+       "distance": 2.933,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 193
+      },
+      {
+       "comp_id": "ASP",
+       "distance": 4.398,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 228
+      },
+      {
+       "comp_id": "ARG",
+       "distance": 4.863,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 196
+      },
+      {
+       "comp_id": "ARG",
+       "distance": 2.821,
+       "ligand_asym_id": "G",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 196
+      },
+      {
+       "comp_id": "ARG",
+       "distance": 2.7,
+       "ligand_asym_id": "D",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 227
+      },
+      {
+       "comp_id": "ARG",
+       "distance": 2.777,
+       "ligand_asym_id": "E",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 227
+      },
+      {
+       "comp_id": "LYS",
+       "distance": 2.865,
+       "ligand_asym_id": "D",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 4
+      },
+      {
+       "comp_id": "SER",
+       "distance": 3.002,
+       "ligand_asym_id": "D",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 3
+      },
+      {
+       "comp_id": "ALA",
+       "distance": 4.688,
+       "ligand_asym_id": "E",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 2
+      },
+      {
+       "comp_id": "SER",
+       "distance": 2.747,
+       "ligand_asym_id": "F",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 214
+      },
+      {
+       "comp_id": "GLY",
+       "distance": 2.836,
+       "ligand_asym_id": "F",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 174
+      },
+      {
+       "comp_id": "GLY",
+       "distance": 2.944,
+       "ligand_asym_id": "F",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 236
+      },
+      {
+       "comp_id": "GLY",
+       "distance": 2.984,
+       "ligand_asym_id": "F",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 235
+      },
+      {
+       "comp_id": "LYS",
+       "distance": 3.461,
+       "ligand_asym_id": "F",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 14
+      },
+      {
+       "comp_id": "ILE",
+       "distance": 3.567,
+       "ligand_asym_id": "F",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 173
+      },
+      {
+       "comp_id": "ARG",
+       "distance": 3.351,
+       "ligand_asym_id": "J",
+       "ligand_comp_id": "BTS",
+       "ligand_is_bound": null,
+       "seq_id": 71
+      },
+      {
+       "comp_id": "PHE",
+       "distance": 3.976,
+       "ligand_asym_id": "J",
+       "ligand_comp_id": "BTS",
+       "ligand_is_bound": null,
+       "seq_id": 75
+      }
+     ],
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "A",
+      "auth_asym_id": "A"
+     }
+    },
+    {
+     "rcsb_ligand_neighbors": [
+      {
+       "comp_id": "GLY",
+       "distance": 2.729,
+       "ligand_asym_id": "H",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 236
+      },
+      {
+       "comp_id": "GLY",
+       "distance": 3.544,
+       "ligand_asym_id": "H",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 235
+      },
+      {
+       "comp_id": "SER",
+       "distance": 4.027,
+       "ligand_asym_id": "H",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 214
+      },
+      {
+       "comp_id": "GLY",
+       "distance": 4.449,
+       "ligand_asym_id": "H",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 213
+      },
+      {
+       "comp_id": "ARG",
+       "distance": 2.668,
+       "ligand_asym_id": "I",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 227
+      },
+      {
+       "comp_id": "ARG",
+       "distance": 3.947,
+       "ligand_asym_id": "I",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 196
+      },
+      {
+       "comp_id": "TYR",
+       "distance": 3.127,
+       "ligand_asym_id": "J",
+       "ligand_comp_id": "BTS",
+       "ligand_is_bound": null,
+       "seq_id": 102
+      }
+     ],
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "B",
+      "auth_asym_id": "B"
+     }
+    }
+   ],
    "rcsb_id": "1SUX_1",
    "rcsb_polymer_entity": {
     "pdbx_description": "Triosephosphate isomerase, glycosomal"

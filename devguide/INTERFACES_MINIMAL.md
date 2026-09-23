@@ -133,7 +133,8 @@ exported at package root.
   - Exported at package root.
 - `Card.ligands(deck, include_indirect=False, thresholds=None)`: per molecule, the
   strongest activity class on the protein, its best pChEMBL, its structures and
-  `structures_of_interest`, and its excluded measurements. Also returns `unmatched`, the protein's molecule records that
+  `structures_of_interest`, its ligand `sites` (when the card has them), and its excluded
+  measurements. Also returns `unmatched`, the protein's molecule records that
   no deck card covers.
 - `Card.compare_ligands(deck, other, other_deck, ...)`: `shared` (side by side),
   `only_self` and `only_other`.
@@ -155,6 +156,12 @@ Implemented in `sabueso/tools/card/protein.py` (#6, step 4c); exported at packag
     for the targets cross-referenced by the entry. `Card.bioactivities(include_indirect=False,
     thresholds=None)` is the molecule-centric view, with derived activity classes
     (`bioactivity_class@1`);
+  - `ligand_sites=True` adds PDBe-KB `has_ligand_site` relationships.
+    `Card.ligand_sites()` puts each ligand's contacted residues next to the UniProt active
+    and binding sites (`annotated_site_overlap@1`: overlaps_annotated_site,
+    no_annotated_overlap, no_annotated_sites or numbering_not_comparable), with the
+    per-instance contacts of the fetched structures and `spans_chains` (`None` when no
+    instance-level data is available);
   - every enrichment outcome (`added`, `not_found`, `error`) is recorded in
     `quality.enrichments`, and a failed enrichment never prevents the card;
   - the resolution trace goes to `quality.entity_resolution`.

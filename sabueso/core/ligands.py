@@ -66,6 +66,11 @@ def ligands_view(
     for x in bio["excluded"]:
         excluded[x["molecule_ref"]] = excluded.get(x["molecule_ref"], 0) + 1
     in_structures = _structure_ligands(card)
+    sites = {}
+    if card.relationships("has_ligand_site"):
+        from .ligand_sites import ligand_sites_view
+
+        sites = {i["ligand"]: i for i in ligand_sites_view(card)["items"]}
 
     items: List[Dict[str, Any]] = []
     covered: Set[str] = set()
@@ -75,7 +80,8 @@ def ligands_view(
         seen = {s: f for r in records for s, f in in_structures.get(r, {}).items()}
         structures = sorted(seen)
         n_excluded = sum(excluded.get(r, 0) for r in records)
-        if not (measured or structures or n_excluded):
+        own_sites = [sites[r] for r in sorted(records) if r in sites]
+        if not (measured or structures or n_excluded or own_sites):
             continue
         covered |= records
         best = min(measured, key=lambda m: CLASS_ORDER.index(m["class"]), default=None)
@@ -108,11 +114,18 @@ def ligands_view(
                 "excluded_measurements": n_excluded,
                 "structures": structures,
                 "structures_of_interest": sorted(s for s, f in seen.items() if f),
+                "sites": [
+                    {
+                        k: site[k]
+                        for k in ("ligand", "positions", "site_class", "spans_chains")
+                    }
+                    for site in own_sites
+                ],
                 "observed_in": [
                     kind
                     for kind, present in (
                         ("bioactivity", bool(measured or n_excluded)),
-                        ("structure", bool(structures)),
+                        ("structure", bool(structures or own_sites)),
                     )
                     if present
                 ],
@@ -152,7 +165,13 @@ def compare_ligands(
     theirs = {i["molecule"]: i for i in view["items"]}
 
     def side(entry: Dict[str, Any]) -> Dict[str, Any]:
-        keys = ("bioactivity", "structures", "structures_of_interest", "observed_in")
+        keys = (
+            "bioactivity",
+            "structures",
+            "structures_of_interest",
+            "sites",
+            "observed_in",
+        )
         return {k: entry[k] for k in keys}
 
     shared = [

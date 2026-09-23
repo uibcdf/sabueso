@@ -29,6 +29,7 @@ PREDICATES = frozenset(
         "interacts_with",  # protein -> protein (physical interaction, e.g. IntAct)
         "functionally_associated_with",  # protein -> protein (STRING functional link)
         "has_bioactivity",  # protein -> molecule (one measured activity, e.g. ChEMBL)
+        "has_ligand_site",  # protein -> PDB ligand (residues it contacts, e.g. PDBe-KB)
     }
 )
 

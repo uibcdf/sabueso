@@ -128,7 +128,7 @@ Considered with the owner:
 - [x] The ligand of a TcTIM structure (BTS, 1SUX) and the molecule measured on TcTIM (CHEMBL1161789) resolve to one card.
 - [x] `max_phase` asserted by ChEMBL (item 5 of #25).
 - [x] Item 3: biological relevance of structure ligands, from the PDB "subject of investigation" flag.
-- [ ] Item 4: PDBe-KB binding sites.
+- [ ] Item 4: binding sites, moved to its own theme (uibcdf/sabueso#28, `devguide/pending_proposals/ligand_binding_sites.md`).
 - [ ] Item 6: further bioactivity sources, after cross-source measurement identity is designed.
 
 ## Resolution

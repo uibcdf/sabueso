@@ -73,6 +73,12 @@ class Card:
             self, include_indirect=include_indirect, thresholds=thresholds
         )
 
+    def ligand_sites(self) -> Dict[str, Any]:
+        """Residues each ligand contacts, next to the protein's annotated sites."""
+        from .ligand_sites import ligand_sites_view
+
+        return ligand_sites_view(self)
+
     def ligands(
         self,
         deck: Any,

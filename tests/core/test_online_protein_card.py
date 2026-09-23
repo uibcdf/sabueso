@@ -1,4 +1,4 @@
-"""resolve_protein_card against live UniProt, RCSB, STRING and ChEMBL (network)."""
+"""resolve_protein_card against live UniProt, RCSB, STRING, ChEMBL and PDBe-KB (network)."""
 
 import pytest
 
@@ -31,3 +31,13 @@ def test_online_protein_card_with_chembl_bioactivities():
     assert 0 < outcome["count"] <= 20
     view = card.bioactivities(include_indirect=True)
     assert sum(len(i["measurements"]) for i in view["items"]) == outcome["count"]
+
+
+@pytest.mark.online
+def test_online_ligand_sites_with_instance_contacts():
+    card, _ = resolve_protein_card("P52270", structures=["1SUX"], ligand_sites=True)
+    (outcome,) = [e for e in card.quality["enrichments"] if e["source"] == "PDBe-KB"]
+    assert outcome["status"] == "added"
+    bts = {i["ligand"]: i for i in card.ligand_sites()["items"]}["pdb.ligand:BTS"]
+    assert {71, 75, 102} <= set(bts["positions"])
+    assert bts["spans_chains"] == ["pdb:1SUX"]

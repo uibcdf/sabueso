@@ -29,6 +29,111 @@
    "entity_poly": {
     "rcsb_sample_sequence_length": 248
    },
+   "polymer_entity_instances": [
+    {
+     "rcsb_ligand_neighbors": [
+      {
+       "comp_id": "GLY",
+       "distance": 2.675,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "PGA",
+       "ligand_is_bound": null,
+       "seq_id": 232
+      },
+      {
+       "comp_id": "HIS",
+       "distance": 2.746,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "PGA",
+       "ligand_is_bound": null,
+       "seq_id": 95
+      },
+      {
+       "comp_id": "LYS",
+       "distance": 2.763,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "PGA",
+       "ligand_is_bound": null,
+       "seq_id": 13
+      },
+      {
+       "comp_id": "GLY",
+       "distance": 2.798,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "PGA",
+       "ligand_is_bound": null,
+       "seq_id": 210
+      },
+      {
+       "comp_id": "GLY",
+       "distance": 2.883,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "PGA",
+       "ligand_is_bound": null,
+       "seq_id": 233
+      },
+      {
+       "comp_id": "GLY",
+       "distance": 2.917,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "PGA",
+       "ligand_is_bound": null,
+       "seq_id": 171
+      },
+      {
+       "comp_id": "ILE",
+       "distance": 3.061,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "PGA",
+       "ligand_is_bound": null,
+       "seq_id": 170
+      },
+      {
+       "comp_id": "ASN",
+       "distance": 3.247,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "PGA",
+       "ligand_is_bound": null,
+       "seq_id": 11
+      },
+      {
+       "comp_id": "LEU",
+       "distance": 3.349,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "PGA",
+       "ligand_is_bound": null,
+       "seq_id": 230
+      },
+      {
+       "comp_id": "ALA",
+       "distance": 3.386,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "PGA",
+       "ligand_is_bound": null,
+       "seq_id": 169
+      },
+      {
+       "comp_id": "GLU",
+       "distance": 3.593,
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "PGA",
+       "ligand_is_bound": null,
+       "seq_id": 165
+      }
+     ],
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "B",
+      "auth_asym_id": "B"
+     }
+    },
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "A",
+      "auth_asym_id": "A"
+     }
+    }
+   ],
    "rcsb_id": "1HTI_1",
    "rcsb_polymer_entity": {
     "pdbx_description": "TRIOSEPHOSPHATE ISOMERASE"

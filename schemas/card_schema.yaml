@@ -158,7 +158,7 @@ protein_card:
     active_site: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
     alternative_sequence: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
     beta_strand: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
-    binding_site: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    binding_site: [ { location: { sequence: any, structure: any }, description: string, ligand: { name: string, id: string, label: string, note: string }, source_assertion_ids: [string] } ]
     chain: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
     disulfide_bond: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
     domain: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]

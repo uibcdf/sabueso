@@ -23,6 +23,7 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | `uniprot_search/*.json` | UniProtKB search responses | release 2026_03 | 2026-09-23 | CC BY 4.0 |
 | `rcsb/*.json` | RCSB PDB (wwPDB archive), GraphQL entry data | — | 2026-09-23 | CC0 1.0 |
 | `pdb_ccd/*.json` | wwPDB Chemical Component Dictionary, served by RCSB PDB | — | 2026-09-23 | CC0 1.0 |
+| `pdbe_kb/*.json` | PDBe-KB (EMBL-EBI), ligand binding sites | — | 2026-09-23 | CC BY 4.0 |
 | `string/*.json` | STRING | 12.0 | 2026-09-23 | CC BY 4.0 |
 | `chembl/*.json`, `CHEMBL90555.json` | ChEMBL (EMBL-EBI) | ChEMBL_37 (released 2026-05-01) | 2026-09-23 | **CC BY-SA 3.0** |
 | `unichem/*.json` | UniChem (EMBL-EBI) | — | 2026-09-23 | see note below |
@@ -31,8 +32,9 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 
 Modifications: the ChEMBL activity and molecule fixtures keep only the fields the clients
 request and drop the `molfile` block; the UniChem fixtures keep the compound's InChIKey,
-UCI and source list. The rest are verbatim responses, re-serialised as indented,
-key-sorted JSON.
+UCI and source list. The RCSB entries hold the fields the structure query requests, including per-instance
+ligand neighbours. The rest are verbatim responses, re-serialised as indented, key-sorted
+JSON.
 
 ## Attribution
 
@@ -41,6 +43,8 @@ key-sorted JSON.
 - **RCSB PDB / wwPDB** — data files of the PDB archive are released under CC0 1.0
   (https://creativecommons.org/publicdomain/zero/1.0/). No attribution is required;
   crediting the depositors of each structure is good practice.
+- **PDBe-KB** — PDBe-KB consortium, https://www.ebi.ac.uk/pdbe/pdbe-kb, CC BY 4.0, free for
+  academic and commercial use. PDBe-KB asks users to cite the PDBe-KB consortium paper.
 - **STRING** — https://string-db.org, CC BY 4.0.
 - **ChEMBL** — EMBL-EBI, https://www.ebi.ac.uk/chembl/, CC BY-SA 3.0 Unported
   (https://creativecommons.org/licenses/by-sa/3.0/).

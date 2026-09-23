@@ -7,6 +7,7 @@ These pages are written as practical tutorials. Each database has its own sectio
 
 chembl/index
 pdb/index
+pdbe_kb/index
 pubchem/index
 stringdb/index
 uniprot/index

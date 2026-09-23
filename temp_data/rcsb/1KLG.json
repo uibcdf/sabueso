@@ -8,63 +8,41 @@
  "polymer_entities": [
   {
    "entity_poly": {
-    "rcsb_sample_sequence_length": 190
+    "rcsb_sample_sequence_length": 177
    },
-   "rcsb_id": "1KLG_2",
+   "polymer_entity_instances": [
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "A",
+      "auth_asym_id": "A"
+     }
+    }
+   ],
+   "rcsb_id": "1KLG_1",
    "rcsb_polymer_entity": {
-    "pdbx_description": "HLA CLASS II HISTOCOMPATIBILITY ANTIGEN, DR-1 BETA CHAIN"
+    "pdbx_description": "HLA CLASS II HISTOCOMPATIBILITY ANTIGEN, DR ALPHA CHAIN"
    },
    "rcsb_polymer_entity_align": [
     {
      "aligned_regions": [
       {
        "entity_beg_seq_id": 1,
-       "length": 190,
-       "ref_beg_seq_id": 30
+       "length": 177,
+       "ref_beg_seq_id": 29
       }
      ],
-     "reference_database_accession": "P01911",
+     "reference_database_accession": "P01903",
      "reference_database_name": "UniProt"
     }
    ],
    "rcsb_polymer_entity_container_identifiers": {
     "auth_asym_ids": [
-     "B"
+     "A"
     ],
-    "entity_id": "2",
+    "entity_id": "1",
     "uniprot_ids": [
-     "P01911"
-    ]
-   }
-  },
-  {
-   "entity_poly": {
-    "rcsb_sample_sequence_length": 239
-   },
-   "rcsb_id": "1KLG_4",
-   "rcsb_polymer_entity": {
-    "pdbx_description": "ENTEROTOXIN TYPE C-3"
-   },
-   "rcsb_polymer_entity_align": [
-    {
-     "aligned_regions": [
-      {
-       "entity_beg_seq_id": 1,
-       "length": 239,
-       "ref_beg_seq_id": 28
-      }
-     ],
-     "reference_database_accession": "P0A0L5",
-     "reference_database_name": "UniProt"
-    }
-   ],
-   "rcsb_polymer_entity_container_identifiers": {
-    "auth_asym_ids": [
-     "D"
-    ],
-    "entity_id": "4",
-    "uniprot_ids": [
-     "P0A0L5"
+     "P01903"
     ]
    }
   },
@@ -72,6 +50,15 @@
    "entity_poly": {
     "rcsb_sample_sequence_length": 15
    },
+   "polymer_entity_instances": [
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "C",
+      "auth_asym_id": "C"
+     }
+    }
+   ],
    "rcsb_id": "1KLG_3",
    "rcsb_polymer_entity": {
     "pdbx_description": "Triosephosphate isomerase peptide"
@@ -101,32 +88,81 @@
   },
   {
    "entity_poly": {
-    "rcsb_sample_sequence_length": 177
+    "rcsb_sample_sequence_length": 239
    },
-   "rcsb_id": "1KLG_1",
+   "polymer_entity_instances": [
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "D",
+      "auth_asym_id": "D"
+     }
+    }
+   ],
+   "rcsb_id": "1KLG_4",
    "rcsb_polymer_entity": {
-    "pdbx_description": "HLA CLASS II HISTOCOMPATIBILITY ANTIGEN, DR ALPHA CHAIN"
+    "pdbx_description": "ENTEROTOXIN TYPE C-3"
    },
    "rcsb_polymer_entity_align": [
     {
      "aligned_regions": [
       {
        "entity_beg_seq_id": 1,
-       "length": 177,
-       "ref_beg_seq_id": 29
+       "length": 239,
+       "ref_beg_seq_id": 28
       }
      ],
-     "reference_database_accession": "P01903",
+     "reference_database_accession": "P0A0L5",
      "reference_database_name": "UniProt"
     }
    ],
    "rcsb_polymer_entity_container_identifiers": {
     "auth_asym_ids": [
-     "A"
+     "D"
     ],
-    "entity_id": "1",
+    "entity_id": "4",
     "uniprot_ids": [
-     "P01903"
+     "P0A0L5"
+    ]
+   }
+  },
+  {
+   "entity_poly": {
+    "rcsb_sample_sequence_length": 190
+   },
+   "polymer_entity_instances": [
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "B",
+      "auth_asym_id": "B"
+     }
+    }
+   ],
+   "rcsb_id": "1KLG_2",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "HLA CLASS II HISTOCOMPATIBILITY ANTIGEN, DR-1 BETA CHAIN"
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 1,
+       "length": 190,
+       "ref_beg_seq_id": 30
+      }
+     ],
+     "reference_database_accession": "P01911",
+     "reference_database_name": "UniProt"
+    }
+   ],
+   "rcsb_polymer_entity_container_identifiers": {
+    "auth_asym_ids": [
+     "B"
+    ],
+    "entity_id": "2",
+    "uniprot_ids": [
+     "P01911"
     ]
    }
   }

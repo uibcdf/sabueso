@@ -1,0 +1,977 @@
+{
+ "data": [
+  {
+   "accession": "BTS",
+   "additionalData": {
+    "chemblId": "",
+    "coFactorId": "",
+    "drugBankId": "",
+    "isSolvent": false,
+    "numAtoms": 17.0,
+    "pdbEntries": [
+     "1sux"
+    ],
+    "reactionId": "",
+    "scaffoldId": "c1ccc2scnc2c1",
+    "significance": 10,
+    "targetUniProts": [],
+    "type": null
+   },
+   "name": "3-(2-BENZOTHIAZOLYLTHIO)-1-PROPANESULFONIC ACID",
+   "residues": [
+    {
+     "allPDBEntries": [
+      "1sux"
+     ],
+     "endCode": "ARG",
+     "endIndex": 71,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1sux"
+      }
+     ],
+     "startCode": "ARG",
+     "startIndex": 71
+    },
+    {
+     "allPDBEntries": [
+      "1sux"
+     ],
+     "endCode": "PHE",
+     "endIndex": 75,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1sux"
+      }
+     ],
+     "startCode": "PHE",
+     "startIndex": 75
+    },
+    {
+     "allPDBEntries": [
+      "1sux"
+     ],
+     "endCode": "TYR",
+     "endIndex": 102,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "1sux"
+      }
+     ],
+     "startCode": "TYR",
+     "startIndex": 102
+    }
+   ]
+  },
+  {
+   "accession": "GOL",
+   "additionalData": {
+    "chemblId": "",
+    "coFactorId": "",
+    "drugBankId": "",
+    "isSolvent": false,
+    "numAtoms": 6.0,
+    "pdbEntries": [
+     "4hhp"
+    ],
+    "reactionId": "",
+    "scaffoldId": "",
+    "significance": 10,
+    "targetUniProts": [
+     "Q03181"
+    ],
+    "type": null
+   },
+   "name": "GLYCEROL",
+   "residues": [
+    {
+     "allPDBEntries": [
+      "4hhp"
+     ],
+     "endCode": "ALA",
+     "endIndex": 54,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "4hhp"
+      }
+     ],
+     "startCode": "ALA",
+     "startIndex": 54
+    },
+    {
+     "allPDBEntries": [
+      "4hhp"
+     ],
+     "endCode": "SER",
+     "endIndex": 214,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "4hhp"
+      }
+     ],
+     "startCode": "SER",
+     "startIndex": 214
+    },
+    {
+     "allPDBEntries": [
+      "4hhp"
+     ],
+     "endCode": "GLY",
+     "endIndex": 235,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "4hhp"
+      }
+     ],
+     "startCode": "GLY",
+     "startIndex": 235
+    },
+    {
+     "allPDBEntries": [
+      "4hhp"
+     ],
+     "endCode": "GLY",
+     "endIndex": 236,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "4hhp"
+      }
+     ],
+     "startCode": "GLY",
+     "startIndex": 236
+    }
+   ]
+  },
+  {
+   "accession": "PGE",
+   "additionalData": {
+    "chemblId": "",
+    "coFactorId": "",
+    "drugBankId": "",
+    "isSolvent": false,
+    "numAtoms": 10.0,
+    "pdbEntries": [
+     "2oma"
+    ],
+    "reactionId": "",
+    "scaffoldId": "",
+    "significance": 10,
+    "targetUniProts": [],
+    "type": null
+   },
+   "name": "TRIETHYLENE GLYCOL",
+   "residues": [
+    {
+     "allPDBEntries": [
+      "2oma"
+     ],
+     "endCode": "THR",
+     "endIndex": 140,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "THR",
+     "startIndex": 140
+    }
+   ]
+  },
+  {
+   "accession": "PEG",
+   "additionalData": {
+    "chemblId": "",
+    "coFactorId": "",
+    "drugBankId": "",
+    "isSolvent": false,
+    "numAtoms": 7.0,
+    "pdbEntries": [
+     "2oma"
+    ],
+    "reactionId": "",
+    "scaffoldId": "",
+    "significance": 10,
+    "targetUniProts": [],
+    "type": null
+   },
+   "name": "DI(HYDROXYETHYL)ETHER",
+   "residues": [
+    {
+     "allPDBEntries": [
+      "2oma"
+     ],
+     "endCode": "PHE",
+     "endIndex": 34,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "PHE",
+     "startIndex": 34
+    },
+    {
+     "allPDBEntries": [
+      "2oma"
+     ],
+     "endCode": "PRO",
+     "endIndex": 59,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "PRO",
+     "startIndex": 59
+    },
+    {
+     "allPDBEntries": [
+      "2oma"
+     ],
+     "endCode": "LYS",
+     "endIndex": 60,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "LYS",
+     "startIndex": 60
+    },
+    {
+     "allPDBEntries": [
+      "2oma"
+     ],
+     "endCode": "CYS",
+     "endIndex": 118,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "CYS",
+     "startIndex": 118
+    },
+    {
+     "allPDBEntries": [
+      "2oma"
+     ],
+     "endCode": "ALA",
+     "endIndex": 119,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "ALA",
+     "startIndex": 119
+    },
+    {
+     "allPDBEntries": [
+      "2oma"
+     ],
+     "endCode": "GLU",
+     "endIndex": 158,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "GLU",
+     "startIndex": 158
+    },
+    {
+     "allPDBEntries": [
+      "2oma"
+     ],
+     "endCode": "SER",
+     "endIndex": 161,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "SER",
+     "startIndex": 161
+    },
+    {
+     "allPDBEntries": [
+      "2oma"
+     ],
+     "endCode": "ARG",
+     "endIndex": 162,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "ARG",
+     "startIndex": 162
+    }
+   ]
+  },
+  {
+   "accession": "HEX",
+   "additionalData": {
+    "chemblId": "",
+    "coFactorId": "",
+    "drugBankId": "",
+    "isSolvent": false,
+    "numAtoms": 6.0,
+    "pdbEntries": [
+     "1ci1"
+    ],
+    "reactionId": "",
+    "scaffoldId": "",
+    "significance": 10,
+    "targetUniProts": [],
+    "type": null
+   },
+   "name": "HEXANE",
+   "residues": [
+    {
+     "allPDBEntries": [
+      "1ci1"
+     ],
+     "endCode": "ILE",
+     "endIndex": 69,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "1ci1"
+      }
+     ],
+     "startCode": "ILE",
+     "startIndex": 69
+    },
+    {
+     "allPDBEntries": [
+      "1ci1"
+     ],
+     "endCode": "PHE",
+     "endIndex": 75,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "1ci1"
+      }
+     ],
+     "startCode": "PHE",
+     "startIndex": 75
+    },
+    {
+     "allPDBEntries": [
+      "1ci1"
+     ],
+     "endCode": "TYR",
+     "endIndex": 102,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1ci1"
+      }
+     ],
+     "startCode": "TYR",
+     "startIndex": 102
+    },
+    {
+     "allPDBEntries": [
+      "1ci1"
+     ],
+     "endCode": "TYR",
+     "endIndex": 103,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1ci1"
+      }
+     ],
+     "startCode": "TYR",
+     "startIndex": 103
+    },
+    {
+     "allPDBEntries": [
+      "1ci1"
+     ],
+     "endCode": "GLY",
+     "endIndex": 104,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1ci1"
+      }
+     ],
+     "startCode": "GLY",
+     "startIndex": 104
+    },
+    {
+     "allPDBEntries": [
+      "1ci1"
+     ],
+     "endCode": "GLU",
+     "endIndex": 105,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1ci1"
+      }
+     ],
+     "startCode": "GLU",
+     "startIndex": 105
+    },
+    {
+     "allPDBEntries": [
+      "1ci1"
+     ],
+     "endCode": "ILE",
+     "endIndex": 109,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1ci1"
+      }
+     ],
+     "startCode": "ILE",
+     "startIndex": 109
+    },
+    {
+     "allPDBEntries": [
+      "1ci1"
+     ],
+     "endCode": "ARG",
+     "endIndex": 135,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1ci1"
+      }
+     ],
+     "startCode": "ARG",
+     "startIndex": 135
+    },
+    {
+     "allPDBEntries": [
+      "1ci1"
+     ],
+     "endCode": "THR",
+     "endIndex": 140,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1ci1"
+      }
+     ],
+     "startCode": "THR",
+     "startIndex": 140
+    },
+    {
+     "allPDBEntries": [
+      "1ci1"
+     ],
+     "endCode": "GLU",
+     "endIndex": 186,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1ci1"
+      }
+     ],
+     "startCode": "GLU",
+     "startIndex": 186
+    }
+   ]
+  },
+  {
+   "accession": "SO4",
+   "additionalData": {
+    "chemblId": "",
+    "coFactorId": "",
+    "drugBankId": "",
+    "isSolvent": false,
+    "numAtoms": 5.0,
+    "pdbEntries": [
+     "4hhp",
+     "2oma",
+     "1sux"
+    ],
+    "reactionId": "",
+    "scaffoldId": "",
+    "significance": 4,
+    "targetUniProts": [],
+    "type": null
+   },
+   "name": "SULFATE ION",
+   "residues": [
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "ALA",
+     "endIndex": 2,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "ALA",
+     "startIndex": 2
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "SER",
+     "endIndex": 3,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      },
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "1sux"
+      }
+     ],
+     "startCode": "SER",
+     "startIndex": 3
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "LYS",
+     "endIndex": 4,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1sux"
+      },
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "LYS",
+     "startIndex": 4
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "LYS",
+     "endIndex": 14,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1sux"
+      }
+     ],
+     "startCode": "LYS",
+     "startIndex": 14
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "SER",
+     "endIndex": 72,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "SER",
+     "startIndex": 72
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "GLN",
+     "endIndex": 82,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "GLN",
+     "startIndex": 82
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "THR",
+     "endIndex": 106,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "THR",
+     "startIndex": 106
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "ASN",
+     "endIndex": 107,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "ASN",
+     "startIndex": 107
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "SER",
+     "endIndex": 161,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "SER",
+     "startIndex": 161
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "ARG",
+     "endIndex": 162,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "ARG",
+     "startIndex": 162
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "ILE",
+     "endIndex": 173,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "1sux"
+      }
+     ],
+     "startCode": "ILE",
+     "startIndex": 173
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "GLY",
+     "endIndex": 174,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "1sux"
+      },
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "GLY",
+     "startIndex": 174
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "ARG",
+     "endIndex": 193,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "1sux"
+      },
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "ARG",
+     "startIndex": 193
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "ARG",
+     "endIndex": 196,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "1sux"
+      },
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "ARG",
+     "startIndex": 196
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "SER",
+     "endIndex": 214,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "1sux"
+      },
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "SER",
+     "startIndex": 214
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "ARG",
+     "endIndex": 227,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "1sux"
+      },
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      }
+     ],
+     "startCode": "ARG",
+     "startIndex": 227
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "GLY",
+     "endIndex": 235,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      },
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "4hhp"
+      },
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "1sux"
+      }
+     ],
+     "startCode": "GLY",
+     "startIndex": 235
+    },
+    {
+     "allPDBEntries": [
+      "1sux",
+      "2oma",
+      "4hhp"
+     ],
+     "endCode": "GLY",
+     "endIndex": 236,
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "chainIds": "A",
+       "entityId": 1,
+       "pdbId": "2oma"
+      },
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "4hhp"
+      },
+      {
+       "chainIds": "B",
+       "entityId": 1,
+       "pdbId": "1sux"
+      }
+     ],
+     "startCode": "GLY",
+     "startIndex": 236
+    }
+   ]
+  }
+ ],
+ "dataType": "LIGAND BINDING SITES",
+ "length": 251,
+ "processed_protein_start": null,
+ "sequence": "MASKPQPIAAANWKCNGSESLLVPLIETLNAATFDHDVQCVVAPTFLHIPMTKARLTNPKFQIAAQNAITRSGAFTGEVSLQILKDYGISWVVLGHSERRLYYGETNEIVAEKVAQACAAGFHVIVCVGETNEEREAGRTAAVVLTQLAAVAQKLSKEAWSRVVIAYEPVWAIGTGKVATPQQAQEVHELLRRWVRSKLGTDIAAQLRILYGGSVTAKNARTLYQMRDINGFLVGGASLKPEFVEIIEATK"
+}

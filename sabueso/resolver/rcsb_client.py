@@ -1,5 +1,8 @@
 """RCSB PDB structure access (entry, polymer entities, UniProt alignments, ligands).
 
+Ligands come with the PDB "subject of investigation" flag and, per polymer chain, the
+residues near each ligand instance (``rcsb_ligand_neighbors``, structure numbering).
+
 ``fetch_structure(pdb_id)`` returns ``(entry, retrieved_at)`` from one GraphQL request.
 ``OnlineRCSBClient`` queries data.rcsb.org; ``FixtureRCSBClient`` reads saved responses
 from ``<directory>/rcsb/<PDB_ID>.json``. Both raise ``RecordNotFoundError`` when RCSB holds
@@ -29,6 +32,11 @@ STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
     rcsb_polymer_entity_container_identifiers { entity_id auth_asym_ids uniprot_ids }
     rcsb_polymer_entity_align { reference_database_name reference_database_accession
       aligned_regions { entity_beg_seq_id ref_beg_seq_id length } }
+    polymer_entity_instances {
+      rcsb_polymer_entity_instance_container_identifiers { asym_id auth_asym_id }
+      rcsb_ligand_neighbors {
+        ligand_asym_id ligand_comp_id ligand_is_bound seq_id comp_id distance }
+    }
   }
   nonpolymer_entities {
     rcsb_nonpolymer_entity_container_identifiers { nonpolymer_comp_id }

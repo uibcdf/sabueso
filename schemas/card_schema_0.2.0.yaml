@@ -211,6 +211,11 @@ card_base:
       value:
       - location: any
         description: string
+        ligand:
+          name: string
+          id: string
+          label: string
+          note: string
       source_assertion_ids:
       - string
     modified_residue:

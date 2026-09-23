@@ -10,6 +10,22 @@
    "entity_poly": {
     "rcsb_sample_sequence_length": 249
    },
+   "polymer_entity_instances": [
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "B",
+      "auth_asym_id": "B"
+     }
+    },
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "A",
+      "auth_asym_id": "A"
+     }
+    }
+   ],
    "rcsb_id": "1TCD_1",
    "rcsb_polymer_entity": {
     "pdbx_description": "TRIOSEPHOSPHATE ISOMERASE"

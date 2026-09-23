@@ -44,7 +44,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - polymer entities, the other entities present, and bound ligands;
   - structure facts keep `pdb:<id>` as SourceAssertion subject;
   - `EntityResolver` resolves `pdb:<id>` to the structure record and its proteins.
-- **Notes**: one request per entry. Ligand lists include every non-polymer entity (buffers and solvents too). Each ligand carries the PDB "subject of investigation" flag and its provenance (`Author`, or `RCSB` for older entries), which `ligand_deck` uses by default (uibcdf/sabueso#25, item 3). RCSB returns entities in no fixed order, so the mapping sorts them.
+- **Notes**: one request per entry. Each ligand carries its per-instance neighbour residues (`rcsb_ligand_neighbors`), mapped to UniProt numbering through the entity alignment. Ligand lists include every non-polymer entity (buffers and solvents too). Each ligand carries the PDB "subject of investigation" flag and its provenance (`Author`, or `RCSB` for older entries), which `ligand_deck` uses by default (uibcdf/sabueso#25, item 3). RCSB returns entities in no fixed order, so the mapping sorts them.
 
 ### PDB (RCSB) — entry metadata cards (removed)
 - **Status**: removed 2026-09-23 (uibcdf/sabueso#21)
@@ -101,6 +101,18 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Quality**: green for the listed coverage, verified on BTS (UCI 336651) and 2-phosphoglycolate (UCI 118810)
 - **Coverage**: `same_as` links to the InChIKey anchor for ChEMBL, PDB (RCSB and PDBe), PubChem, DrugBank, ChEBI and BindingDB records. The full source list stays in the assertion.
 - **Notes**: an unknown key returns HTTP 200 with `"Not found"`, which the client maps to not found. One call per molecule, so it is opt-in for decks.
+
+### PDBe-KB — ligand binding sites
+- **Status**: implemented as an enricher of `resolve_protein_card` (uibcdf/sabueso#28)
+- **Access**: PDBe graph API `uniprot/ligand_sites/<accession>` (`OnlinePDBeKBClient`), saved responses (`FixturePDBeKBClient`, `temp_data/pdbe_kb/`)
+- **Quality**: green for the listed coverage, verified on TcTIM (6 ligands) and HsTIM (10 ligands)
+- **Coverage**: `has_ligand_site` relationships: residues each ligand contacts, in UniProt numbering, over all structures of the protein, with PDBe-KB's descriptors
+- **Notes**:
+  - Ligand copies are aggregated. The per-residue chain is one representative, so it cannot tell one ligand contacting two chains from two copies (in 1HTI, Asn12 is attributed to chain B and His96 to chain A, while the only PGA instance contacts chain B). Chain spanning is read from RCSB per-instance contacts instead.
+  - `is_solvent` and `significance` do not separate crystallisation additives on TIM: glycerol, PEG, sulfate and hexane are not flagged as solvents, and glycerol has the same significance as BTS. Both are kept as PDBe-KB states them.
+  - `chembl_id` is empty for every TIM ligand.
+  - An accession without data answers 404, mapped to not found.
+  - Licence: CC BY 4.0, academic and commercial use; cite the PDBe-KB consortium paper.
 
 ### STRING
 - **Status**: implemented as an enricher of `resolve_protein_card` (uibcdf/sabueso#21, part 2c)

@@ -143,6 +143,17 @@ A Relationship is first-class, traceable knowledge:
       once per assay and shared by that assay's activities.
     - Activity classes are derived by `Card.bioactivities()` (`bioactivity_class@1`), and
       only there.
+  - ligand sites (added in #28):
+    - `has_ligand_site` (protein → `pdb.ligand:<code>`), one relationship per
+      protein–ligand pair, from PDBe-KB. Qualifiers: `ligand_name`, `numbering`
+      (`uniprot`), `residues` (`start`, `end`, `residue`, `observed_in` with structure,
+      entity and chains), `structures`, and PDBe-KB's own descriptors `is_solvent`,
+      `significance`, `num_atoms`, `scaffold_id`, `cofactor_id`, `reaction_id`,
+      `chembl_id` and `drugbank_id`. PDBe-KB aggregates ligand copies, so its per-residue
+      chains do not say whether one ligand contacts several chains; that reading comes
+      from the per-instance contacts of `has_structure`.
+    - Overlap with annotated sites is derived by `Card.ligand_sites()`
+      (`annotated_site_overlap@1`), and only there.
 
   Any other predicate is rejected, and the vocabulary is extended deliberately. If
   components outside Sabueso (Nextia, MOLI Agent Context Assembly) come to depend on it,
@@ -162,7 +173,9 @@ A Relationship is first-class, traceable knowledge:
   merged. Qualifier values they disagree on are kept in `qualifier_conflicts`, never
   overwritten.
 - **SourceAssertions that support a relationship** use
-  `field_path = relationships.<predicate>`. A shared context record uses a sub-path, such as
+  `field_path = relationships.<predicate>`.
+  UniProt binding-site features keep their `ligand` (`name`, ChEBI `id`, and the `label`
+  that tells two sites of the same ligand apart). A shared context record uses a sub-path, such as
   `relationships.has_bioactivity.assay` for an assay. Their `asserted_value` is what the source
   states, i.e. the object and qualifiers as given by that source. Source property names
   are kept verbatim (e.g. UniProt's `GoEvidenceType`), while the relationship's
@@ -170,7 +183,11 @@ A Relationship is first-class, traceable knowledge:
 - **`has_structure` qualifiers:** `method`, `resolution_angstrom`, `chains`, `ranges`
   (UniProt numbering, inclusive) and `coverage` (fraction of the canonical sequence).
   From RCSB: `polymer_entities`, `other_entities` (complexes) and `ligands` (`comp_id`,
-  `description`, `subject_of_investigation`, `subject_of_investigation_provenance`). Methods are
+  `description`, `subject_of_investigation`, `subject_of_investigation_provenance`, and
+  `instances`: per ligand instance, the residues RCSB states as its neighbours, with
+  chain, structure `seq_id`, UniProt `position` mapped through the entity alignment, and
+  shortest stated distance). Instances are never merged: two copies of a ligand in two
+  chains are not one ligand contacting both (#28). Methods are
   normalized to UniProt's vocabulary (`X-RAY DIFFRACTION` → `X-ray`); raw values stay in
   the SourceAssertions. The coverage
   class (`full_length ≥ 0.9 > partial ≥ 0.3 > fragment_or_peptide`) is derived knowledge,

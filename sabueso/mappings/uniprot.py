@@ -348,6 +348,14 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             },
             "description": f.get("description") or "",
         }
+        # Binding sites name their ligand: "substrate", or a ChEBI id. ``label`` tells
+        # apart two sites of the same ligand (e.g. two ATP sites of one protein).
+        ligand = f.get("ligand") or {}
+        ligand = {
+            k: ligand[k] for k in ("name", "id", "label", "note") if ligand.get(k)
+        }
+        if ligand:
+            item["ligand"] = ligand
         feature_items[fp].append((item, _eco(f.get("evidences"))))
     for fp in _FEATURES.values():
         assert_list(fp, feature_items[fp], features)
