@@ -1,9 +1,9 @@
 ---
 summary: UniProt mapping silently drops catalytic activity, subcellular location, sequence and ECO qualifiers.
 issue: uibcdf/sabueso#13
-status: open
+status: resolved
 opened: 2026-09-23
-closed:
+closed: 2026-09-23
 verification: reproduced
 severity: high
 area: [mappings, uniprot, source-assertions]
@@ -78,4 +78,33 @@ types. The existing offline tests only check that some fields exist.
 
 ## Resolution
 
-Pending.
+Resolved on 2026-09-23 by uibcdf/sabueso#16, commit `566aa57`.
+
+- **Catalytic activity:** parsed from `reaction` into
+  `{reaction, ec_number, rhea_id, molecule?}`, with one SourceAssertion per reaction.
+- **Subcellular location:** parsed from `subcellularLocations` into
+  `{location, topology?, orientation?, molecule?}`. Isoform-restricted comments keep
+  their `molecule`, e.g. P35372 "Cytoplasm", which applies to Isoform 12 only.
+- **Sequence:** new fields `sequence.primary`, `length`, `molecular_weight` (Da) and
+  `checksums` (crc64, md5). The sequence assertion records UniProt's `sequence_version`.
+- **Evidence qualifiers:** kept on each SourceAssertion as
+  `source_metadata.eco = [{code, source, id}]`. The ontology name is used instead of the
+  UniProt key `evidences`, to keep the `SourceAssertion ≠ Evidence` vocabulary boundary.
+  They are never turned into project Evidence.
+- **Documentation:** schema, `FIELD_PATHS.md` and `DATA_SOURCES_STATUS.md` are updated.
+  The last one now lists the remaining known limits: comment and feature types still not
+  mapped, no isoform tagging for free-text comments, and repeated identical values
+  sharing one id.
+- **Fixtures:** public UniProt fixtures added for human TIM (P60174) and
+  *T. cruzi* TIM (P52270).
+
+### Verification
+
+- On the five fixtures, existing fields, features, assertion ids and links are unchanged
+  apart from the added metadata. This was checked by snapshot comparison.
+- `tests/core/test_uniprot_mapping_completeness_offline.py` derives the expected counts
+  from the raw UniProt records and fixes known values for human and *T. cruzi* TIM, such as
+  EC 5.3.1.1 with RHEA:18585 and EC 4.2.3.3 with RHEA:17937.
+- 12 of its 13 tests fail on the previous mapping.
+- Hosted CI run 35867102558 passed Ruff and the offline suite on Python 3.11–3.14, with
+  50 tests passed and 12 deselected in each job. The MOLI governance run also passed.

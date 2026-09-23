@@ -15,8 +15,19 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 ### UniProt
 - **Status**: implemented
 - **Access**: online API, local JSON
-- **Quality**: yellow — catalytic activity and subcellular location are silently dropped, the sequence is not mapped, and ECO qualifiers are discarded (uibcdf/sabueso#13)
-- **Coverage**: identifiers, canonical name, organism, comments (function, catalytic activity, pathway, subunit, subcellular location, tissue specificity, PTM, polymorphism), positional features (binding/active sites, modified residues, disulfide bonds, glycosylation)
+- **Quality**: green for the listed coverage. Offline tests on five fixtures, including HsTIM (P60174) and TcTIM (P52270), compare mapped counts against the raw records (uibcdf/sabueso#13).
+- **Coverage**:
+  - identifiers, canonical name, organism;
+  - free-text comments: function, pathway, subunit, tissue specificity, PTM, polymorphism;
+  - catalytic activity as `{reaction, ec_number, rhea_id, molecule?}`;
+  - subcellular location as `{location, topology?, orientation?, molecule?}`;
+  - sequence: primary, length, molecular weight in Da, CRC64/MD5 checksums;
+  - positional features: binding and active sites, modified residues, disulfide bonds, glycosylation;
+  - UniProt evidence qualifiers kept per SourceAssertion as `source_metadata.eco`.
+- **Known limits**:
+  - other comment types (interaction, alternative products, similarity, …) and feature types are not mapped;
+  - isoform restrictions (`molecule`) are recorded for catalytic activity and subcellular location, but not for free-text comments;
+  - identical repeated values in one record share one SourceAssertion id.
 - **Notes**: stable online tests
 
 ### PDB (RCSB)

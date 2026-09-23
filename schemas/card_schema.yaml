@@ -115,14 +115,14 @@ protein_card:
 
   uniprot_comments:
     function: { value: string, source_assertion_ids: [string] }
-    catalytic_activity: { value: [string], source_assertion_ids: [string] }
+    catalytic_activity: { value: [ { reaction: string, ec_number: string, rhea_id: string, molecule: string } ], source_assertion_ids: [string] }
     biophysicochemical_properties: { value: [string], source_assertion_ids: [string] }
     kinetics: { value: [string], source_assertion_ids: [string] }
     activity_regulation: { value: [string], source_assertion_ids: [string] }
     pathway: { value: [string], source_assertion_ids: [string] }
     subunit: { value: [string], source_assertion_ids: [string] }
     interaction: { value: [string], source_assertion_ids: [string] }
-    subcellular_location: { value: [string], source_assertion_ids: [string] }
+    subcellular_location: { value: [ { location: string, topology: string, orientation: string, molecule: string } ], source_assertion_ids: [string] }
     tissue_specificity: { value: [string], source_assertion_ids: [string] }
     ptm: { value: [string], source_assertion_ids: [string] }
     polymorphism: { value: [string], source_assertion_ids: [string] }

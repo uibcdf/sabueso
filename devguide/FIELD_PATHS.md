@@ -46,10 +46,10 @@ Versioning: **x.y.z** (no leading `v`).
 
 ### annotations.*
 - `annotations.function`
-- `annotations.catalytic_activity`
+- `annotations.catalytic_activity` (list of `{reaction, ec_number, rhea_id, molecule?}`)
 - `annotations.pathway`
 - `annotations.subunit`
-- `annotations.subcellular_location`
+- `annotations.subcellular_location` (list of `{location, topology?, orientation?, molecule?}`)
 - `annotations.tissue_specificity`
 - `annotations.organism`
 - `annotations.ptm`
@@ -98,6 +98,9 @@ Versioning: **x.y.z** (no leading `v`).
 - `disease.associations`
 - `ligands.items` (each has `role` + SourceAssertions)
 - `sequence.primary`
+- `sequence.length`
+- `sequence.molecular_weight` (Da)
+- `sequence.checksums` (`crc64`, `md5`)
 - `structure.primary`
 - `structure.secondary_structure`
 - `structure.chains`
