@@ -1,0 +1,16 @@
+{
+ "chem_comp": {
+  "formula": "C2 H5 O6 P",
+  "formula_weight": 156.031,
+  "id": "PGA",
+  "name": "2-PHOSPHOGLYCOLIC ACID",
+  "pdbx_release_status": "REL",
+  "type": "non-polymer"
+ },
+ "rcsb_chem_comp_descriptor": {
+  "InChI": "InChI=1S/C2H5O6P/c3-2(4)1-8-9(5,6)7/h1H2,(H,3,4)(H2,5,6,7)",
+  "InChIKey": "ASCFNMCAHFUBCO-UHFFFAOYSA-N",
+  "SMILES": "C(C(=O)O)OP(=O)(O)O",
+  "SMILES_stereo": "C(C(=O)O)OP(=O)(O)O"
+ }
+}

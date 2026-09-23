@@ -79,10 +79,28 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - The test concentration of single-point measurements is extracted from the assay description (derived).
   - About 2 KB per measurement. `limit` (default 5000) and truncation are recorded (card size: uibcdf/sabueso#19).
   - Report: `devguide/pending_proposals/chembl_bioactivities.md`.
+- **Molecules** (`molecules(ids)`, batched): identity (standard InChIKey, hierarchy), `max_phase` and the ChEMBL-asserted properties, for SmallMoleculeCards anchored at the InChIKey (uibcdf/sabueso#25). Fixture: `temp_data/chembl/molecules.json` (275 parent molecules measured on TcTIM or HsTIM).
 
 ---
 
 ## Interaction Sources
+
+### PDB Chemical Component Dictionary (CCD)
+- **Status**: implemented for small-molecule identity (uibcdf/sabueso#25)
+- **Access**: RCSB GraphQL `chem_comps` (`OnlineCCDClient`), saved records (`FixtureCCDClient`, `temp_data/pdb_ccd/`)
+- **Quality**: green for the listed coverage, verified on BTS, PGA and SO4
+- **Coverage**: name, formula (normalized), type, standard InChI/InChIKey (`identifiers.inchi`, `identifiers.inchikey`), and a `same_as` link of `pdb.ligand:<code>` to the InChIKey anchor
+- **Notes**:
+  - RCSB omits unknown codes from a batch without an error. The client reports them as `missing`.
+  - CCD SMILES are kept in the assertion, not in `identifiers.smiles` (a different representation from ChEMBL's; uibcdf/sabueso#10).
+  - Structure ligands are not yet filtered for crystallisation artifacts (item 3 of #25).
+
+### UniChem
+- **Status**: implemented for small-molecule identity (uibcdf/sabueso#25)
+- **Access**: REST `compounds` by InChIKey (`OnlineUniChemClient`), saved compounds (`FixtureUniChemClient`, `temp_data/unichem/`)
+- **Quality**: green for the listed coverage, verified on BTS (UCI 336651) and 2-phosphoglycolate (UCI 118810)
+- **Coverage**: `same_as` links to the InChIKey anchor for ChEMBL, PDB (RCSB and PDBe), PubChem, DrugBank, ChEBI and BindingDB records. The full source list stays in the assertion.
+- **Notes**: an unknown key returns HTTP 200 with `"Not found"`, which the client maps to not found. One call per molecule, so it is opt-in for decks.
 
 ### STRING
 - **Status**: implemented as an enricher of `resolve_protein_card` (uibcdf/sabueso#21, part 2c)

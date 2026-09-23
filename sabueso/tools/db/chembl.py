@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, Iterable
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
@@ -87,6 +87,16 @@ ACTIVITY_FIELDS = (
     "document_year",
     "document_journal",
 )
+MOLECULE_CHUNK = 50
+MOLECULE_FIELDS = (
+    "molecule_chembl_id",
+    "pref_name",
+    "molecule_type",
+    "max_phase",
+    "molecule_hierarchy",
+    "molecule_structures",
+    "molecule_properties",
+)
 ASSAY_FIELDS = (
     "assay_chembl_id",
     "confidence_score",
@@ -117,6 +127,14 @@ def _chembl_get(path: str, params: Dict[str, Any], timeout: float) -> Any:
 
 def _keep(record: Dict[str, Any], fields: tuple) -> Dict[str, Any]:
     return {k: record.get(k) for k in fields}
+
+
+def _molecule(record: Dict[str, Any]) -> Dict[str, Any]:
+    kept = _keep(record, MOLECULE_FIELDS)
+    structures = dict(kept.get("molecule_structures") or {})
+    structures.pop("molfile", None)  # coordinates for drawing, not knowledge
+    kept["molecule_structures"] = structures or None
+    return kept
 
 
 class OnlineChEMBLClient:
@@ -183,6 +201,31 @@ class OnlineChEMBLClient:
             "assays": assays,
         }
 
+    def molecules(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
+        """Molecule records by ChEMBL id: ``{version, retrieved_at, molecules, missing}``."""
+        ids = sorted({i for i in chembl_ids if i})
+        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        found: Dict[str, Any] = {}
+        for i in range(0, len(ids), MOLECULE_CHUNK):
+            chunk = ids[i : i + MOLECULE_CHUNK]
+            page = _chembl_get(
+                "molecule.json",
+                {
+                    "molecule_chembl_id__in": ",".join(chunk),
+                    "only": ",".join(MOLECULE_FIELDS),
+                    "limit": len(chunk),
+                },
+                self.timeout,
+            )
+            for record in page.get("molecules", []):
+                found[record["molecule_chembl_id"]] = _molecule(record)
+        return {
+            "version": self.version(),
+            "retrieved_at": retrieved_at,
+            "molecules": found,
+            "missing": [i for i in ids if i not in found],
+        }
+
 
 class FixtureChEMBLClient:
     def __init__(
@@ -211,4 +254,24 @@ class FixtureChEMBLClient:
             "retrieved_at": self.retrieved_at,
             "truncated": saved["total_count"] > len(activities),
             "activities": activities,
+        }
+
+    def molecules(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
+        ids = sorted({i for i in chembl_ids if i})
+        if self.failing & set(ids):
+            raise ConnectorError(
+                f"ChEMBL molecule request for {ids} failed (simulated)"
+            )
+        path = self.directory / "chembl" / "molecules.json"
+        saved = (
+            json.loads(path.read_text(encoding="utf-8"))
+            if path.is_file()
+            else {"version": None, "molecules": {}}
+        )
+        found = {i: saved["molecules"][i] for i in ids if i in saved["molecules"]}
+        return {
+            "version": saved.get("version"),
+            "retrieved_at": self.retrieved_at,
+            "molecules": found,
+            "missing": [i for i in ids if i not in found],
         }

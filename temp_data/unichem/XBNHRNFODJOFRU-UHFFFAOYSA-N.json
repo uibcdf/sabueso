@@ -1,0 +1,72 @@
+{
+ "inchi": "InChI=1S/C10H11NO3S3/c12-17(13,14)7-3-6-15-10-11-8-4-1-2-5-9(8)16-10/h1-2,4-5H,3,6-7H2,(H,12,13,14)",
+ "sources": [
+  {
+   "compoundId": "CHEMBL1161789",
+   "id": 1,
+   "shortName": "chembl"
+  },
+  {
+   "compoundId": "DB03132",
+   "id": 2,
+   "shortName": "drugbank"
+  },
+  {
+   "compoundId": "BTS",
+   "id": 3,
+   "shortName": "rcsb_pdb"
+  },
+  {
+   "compoundId": "BTS",
+   "id": 5,
+   "shortName": "pdbe"
+  },
+  {
+   "compoundId": "Q071BHM3ZE",
+   "id": 14,
+   "shortName": "fdasrs"
+  },
+  {
+   "compoundId": "292003",
+   "id": 15,
+   "shortName": "surechembl"
+  },
+  {
+   "compoundId": "30475082",
+   "id": 15,
+   "shortName": "surechembl"
+  },
+  {
+   "compoundId": "162569",
+   "id": 22,
+   "shortName": "pubchem"
+  },
+  {
+   "compoundId": "Molport-002-939-535",
+   "id": 28,
+   "shortName": "molport"
+  },
+  {
+   "compoundId": "50597989",
+   "id": 31,
+   "shortName": "bindingdb"
+  },
+  {
+   "compoundId": "DTXSID0063571",
+   "id": 32,
+   "shortName": "comptox"
+  },
+  {
+   "compoundId": "127532",
+   "id": 37,
+   "shortName": "brenda"
+  },
+  {
+   "compoundId": "PD007359",
+   "id": 49,
+   "shortName": "probes_and_drugs"
+  }
+ ],
+ "standardInchiKey": "XBNHRNFODJOFRU-UHFFFAOYSA-N",
+ "uci": 336651
+}

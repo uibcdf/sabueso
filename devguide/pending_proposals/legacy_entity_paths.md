@@ -116,4 +116,8 @@ domains and sites are not families. Tests:
   relationship object (including `go:`/`pfam:` refs) as PDB entries. It now uses
   `has_structure` only. Tests: `tests/core/test_string_associations_offline.py`.
 
-Part 3 is pending.
+Part 3 is pending. Since uibcdf/sabueso#25 (2026-09-23), small molecules have an
+identity anchor (the standard InChIKey, `resolve_molecule_card`). The legacy
+`create_molecule_card_*` (ChEMBL) and `create_compound_card_*` (PubChem) paths still
+derive `chembl:`/`pubchem:` card ids, so two identity schemes coexist for small
+molecules. Part 3 should retire or migrate them.

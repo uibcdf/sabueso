@@ -78,6 +78,7 @@ Versioning: **x.y.z** (no leading `v`).
 - `clinical.interactions`
 - `clinical.dosing`
 - `clinical.regulatory_status`
+- `clinical.max_phase` (ChEMBL highest development phase: 4 approved, 3–1 clinical, 0.5 early phase 1, -1 unknown)
 
 ### quality.*
 - `quality.conflicts`

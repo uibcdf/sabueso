@@ -111,7 +111,12 @@ A Relationship is first-class, traceable knowledge:
 - **Fields:** `id`, `subject_ref`, `predicate`, `object_ref`, `qualifiers`, and, when
   present, `qualifier_conflicts`, `source_assertion_ids` and `derivation`.
 - **Predicates (vocabulary):**
-  - identity: `same_as`, `possibly_same_as`, `isoform_of`, `superseded_by`;
+  - identity: `same_as`, `possibly_same_as`, `isoform_of`, `superseded_by`. For small
+    molecules (#25), `same_as` links a source record (`chembl:<id>`,
+    `pdb.ligand:<code>`, `pubchem:<cid>`, `drugbank:<id>`, `chebi:<id>`,
+    `bindingdb:<id>`) to the anchor `inchikey:<standard InChIKey>`. It is supported by
+    the ChEMBL, PDB CCD or UniChem statement of that key. Qualifiers: `name`, and
+    `component_type` for PDB components;
   - structures: `has_structure`;
   - knowledge (added in #21, part 2a):
     - `annotated_with` (protein → GO term). Qualifiers: `aspect`, `term`, `go_code` (GO's

@@ -17,6 +17,7 @@ from sabueso.core.errors import (
     StorageError,
 )
 from sabueso.tools.card.protein import ambiguity_deck, resolve_protein_card
+from sabueso.tools.card.small_molecule import resolve_molecule_card
 from sabueso.tools.card.storage import save_card_json, save_card_sqlite
 from sabueso.tools.db.chembl import (
     create_molecule_card_from_file,
@@ -48,6 +49,7 @@ __all__ = [
     "create_molecule_card_from_json",
     "create_molecule_card_online",
     "resolve_protein_card",
+    "resolve_molecule_card",
     "ambiguity_deck",
     "save_card_json",
     "save_card_sqlite",

@@ -132,3 +132,18 @@ Agreed contract in `devguide/archive/entity_resolver.md` (uibcdf/sabueso#6):
   `devguide/`, and decisions that need later re-evaluation get an issue with explicit
   triggers.
 
+
+## Small-molecule identity (2026-09-23)
+Decided by the Sabueso owner (uibcdf/sabueso#25, `devguide/pending_proposals/molecule_identity.md`):
+- **Anchor:** a small molecule is anchored at its standard InChIKey. Its card id is
+  `sabueso:small_molecule:inchikey:<key>`.
+- **Links:** source records (`chembl:`, `pdb.ligand:`, and the DrugBank, PubChem, ChEBI
+  and BindingDB records listed by UniChem) are linked to `inchikey:<key>` with `same_as`,
+  supported by the source that states the key.
+- **Standard keys only:** records without a standard InChIKey are reported as
+  unanchored, never guessed.
+- **Variants are not merged:** charge, salt, stereochemistry and tautomer variants have
+  different anchors. A future connectivity-level link must be a derived
+  `possibly_same_as`.
+- Rejected alternatives: a preferred source record (no chemistry source is universal),
+  and the UniChem compound id (internal to one service).

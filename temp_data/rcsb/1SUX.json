@@ -1,0 +1,66 @@
+{
+ "exptl": [
+  {
+   "method": "X-RAY DIFFRACTION"
+  }
+ ],
+ "nonpolymer_entities": [
+  {
+   "rcsb_nonpolymer_entity": {
+    "pdbx_description": "SULFATE ION"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers": {
+    "nonpolymer_comp_id": "SO4"
+   }
+  },
+  {
+   "rcsb_nonpolymer_entity": {
+    "pdbx_description": "3-(2-BENZOTHIAZOLYLTHIO)-1-PROPANESULFONIC ACID"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers": {
+    "nonpolymer_comp_id": "BTS"
+   }
+  }
+ ],
+ "polymer_entities": [
+  {
+   "entity_poly": {
+    "rcsb_sample_sequence_length": 251
+   },
+   "rcsb_id": "1SUX_1",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "Triosephosphate isomerase, glycosomal"
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 1,
+       "length": 251,
+       "ref_beg_seq_id": 1
+      }
+     ],
+     "reference_database_accession": "P52270",
+     "reference_database_name": "UniProt"
+    }
+   ],
+   "rcsb_polymer_entity_container_identifiers": {
+    "auth_asym_ids": [
+     "A",
+     "B"
+    ],
+    "entity_id": "1",
+    "uniprot_ids": [
+     "P52270"
+    ]
+   }
+  }
+ ],
+ "rcsb_entry_info": {
+  "polymer_entity_count_protein": 1,
+  "resolution_combined": [
+   2.0
+  ]
+ },
+ "rcsb_id": "1SUX"
+}

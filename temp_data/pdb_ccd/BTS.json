@@ -1,0 +1,16 @@
+{
+ "chem_comp": {
+  "formula": "C10 H11 N O3 S3",
+  "formula_weight": 289.394,
+  "id": "BTS",
+  "name": "3-(2-BENZOTHIAZOLYLTHIO)-1-PROPANESULFONIC ACID",
+  "pdbx_release_status": "REL",
+  "type": "non-polymer"
+ },
+ "rcsb_chem_comp_descriptor": {
+  "InChI": "InChI=1S/C10H11NO3S3/c12-17(13,14)7-3-6-15-10-11-8-4-1-2-5-9(8)16-10/h1-2,4-5H,3,6-7H2,(H,12,13,14)",
+  "InChIKey": "XBNHRNFODJOFRU-UHFFFAOYSA-N",
+  "SMILES": "c1ccc2c(c1)nc(s2)SCCCS(=O)(=O)O",
+  "SMILES_stereo": "c1ccc2c(c1)nc(s2)SCCCS(=O)(=O)O"
+ }
+}

@@ -21,6 +21,8 @@ from typing import Any, Dict, List, Optional, TypedDict
 SOURCE_NAMESPACES: Dict[str, str] = {
     "UniProt": "uniprot",
     "RCSB PDB": "pdb",
+    "PDB CCD": "pdb.ligand",  # wwPDB Chemical Component Dictionary (served by RCSB)
+    "UniChem": "unichem",
     "PubChem": "pubchem",
     "ChEMBL": "chembl",
     "GO": "go",

@@ -108,6 +108,21 @@ name + organism searches (MVP steps 2–3).
 - `decision`: rules applied, sources consulted (with outcome or retrieval time), query,
   Sabueso version
 
+## SmallMoleculeCards anchored at the InChIKey
+Implemented in `sabueso/tools/card/small_molecule.py` (#25); `resolve_molecule_card` is
+exported at package root.
+- `resolve_molecule_card(identifier, chembl_client=None, ccd_client=None, unichem=True, unichem_client=None) -> (Card | None, EntityResolution)`:
+  - `identifier` is `chembl:<id>` (or a bare ChEMBL id), `pdb.ligand:<code>` or
+    `inchikey:<standard key>` (the last needs UniChem);
+  - the card id is `sabueso:small_molecule:inchikey:<key>`, and records are linked to it
+    with `same_as`;
+  - statuses: `resolved`, `not_found`, `unsupported` (e.g. `no_standard_inchikey`) and
+    `error`. A UniChem failure is recorded in `quality.enrichments` and never prevents
+    the card.
+- `build_molecule_cards(chembl=None, ccd=None, unichem=()) -> (cards_by_inchikey, unanchored)`:
+  builds cards from retrieved records. It is shared with the ligand deck of a protein
+  card.
+
 ## ProteinCards from resolved entities
 Implemented in `sabueso/tools/card/protein.py` (#6, step 4c); exported at package root.
 - `resolve_protein_card(query, resolver=None, structures=(), string=None, string_client=None, chembl=None, chembl_client=None) -> (Card | None, EntityResolution)`:
