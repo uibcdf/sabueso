@@ -14,7 +14,7 @@ Tagline:
 ## What Sabueso Preserves
 
 - **Canonical values** for usability.
-- **Evidence links** for each selected field.
+- **SourceAssertion links** for each resolved field.
 - **Conflict records** whenever sources disagree.
 
 ## Core Pipeline
@@ -31,7 +31,7 @@ source payloads
 
 ## Design Principles
 
-- Traceability first: evidence is never discarded.
+- Traceability first: source assertions are never discarded.
 - Canonical schema: dot-separated field paths and versioned rules.
 - Practical interoperability: Card/Deck in memory, explicit persistence by user choice.
 

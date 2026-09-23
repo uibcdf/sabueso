@@ -9,7 +9,7 @@ These templates capture critical design choices with explicit rationale.
 - **Impact**:
 - **Open Questions**:
 
-## 2) Evidence Object Model
+## 2) SourceAssertion Object Model
 - **Decision**:
 - **Rationale**:
 - **Alternatives Considered**:

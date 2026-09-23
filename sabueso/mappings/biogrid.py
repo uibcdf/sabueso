@@ -3,7 +3,7 @@
 from __future__ import annotations
 from typing import Any, Dict, List
 
-from sabueso.core.evidence_store import generate_evidence_id
+from sabueso.core.source_assertion_store import make_source_assertion
 
 
 def _extract_partner_pairs(biogrid_json: Dict[str, Any]) -> List[Dict[str, str]]:
@@ -24,8 +24,8 @@ def _extract_partner_pairs(biogrid_json: Dict[str, Any]) -> List[Dict[str, str]]
 def map_biogrid_interactions(biogrid_json: Dict[str, Any], query_name: str, retrieved_at: str) -> Dict[str, Any]:
     """Map BioGRID interactions into interactions.binding_partners."""
     fields: Dict[str, Any] = {}
-    evidences: List[Dict[str, Any]] = []
-    field_evidence: Dict[str, List[str]] = {}
+    source_assertions: List[Dict[str, Any]] = []
+    field_source_assertions: Dict[str, List[str]] = {}
 
     partners: List[str] = []
     for pair in _extract_partner_pairs(biogrid_json):
@@ -38,18 +38,11 @@ def map_biogrid_interactions(biogrid_json: Dict[str, Any], query_name: str, retr
     if partners:
         fp = "interactions.binding_partners"
         fields[fp] = partners
-        ev_ids: List[str] = []
+        sa_ids: List[str] = []
         for p in partners:
-            ev = {
-                "field": fp,
-                "value": p,
-                "source": {"type": "database", "name": "BioGRID", "record_id": query_name},
-                "retrieved_at": retrieved_at,
-            }
-            ev_id = generate_evidence_id("BioGRID", query_name, fp, p)
-            ev["evidence_id"] = ev_id
-            evidences.append(ev)
-            ev_ids.append(ev_id)
-        field_evidence[fp] = ev_ids
+            assertion = make_source_assertion(fp, p, "BioGRID", query_name, retrieved_at)
+            source_assertions.append(assertion)
+            sa_ids.append(assertion["id"])
+        field_source_assertions[fp] = sa_ids
 
-    return {"fields": fields, "evidences": evidences, "field_evidence": field_evidence}
+    return {"fields": fields, "source_assertions": source_assertions, "field_source_assertions": field_source_assertions}

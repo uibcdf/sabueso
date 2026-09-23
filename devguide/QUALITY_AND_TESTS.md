@@ -7,10 +7,10 @@
 
 ## Offline Testing
 - Store minimal example JSONs in a `fixtures/` folder.
-- Use fixtures to test mapping and evidence creation without live API calls.
+- Use fixtures to test mapping and SourceAssertion creation without live API calls.
 
-## Evidence QA
-- Ensure every selected field has at least one `evidence_id`.
-- Ensure every `evidence_id` exists in `evidence_store`.
+## SourceAssertion QA
+- Ensure every selected field has at least one entry in `source_assertion_ids`.
+- Ensure every referenced ID exists in `source_assertion_store`.
 - Validate field path correctness.
 

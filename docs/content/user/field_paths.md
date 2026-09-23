@@ -1,7 +1,7 @@
 # Field Paths
 
 Sabueso uses canonical dot-separated field paths for mappings, resolver rules,
-evidence links, and downstream tooling.
+SourceAssertion links, and downstream tooling.
 
 ## Core Convention
 

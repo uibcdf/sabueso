@@ -23,7 +23,7 @@ print(card.get("metadata.entity_type"))
 
 - Function returns a non-empty Card
 - Canonical identifiers are populated
-- Evidence is attached to mapped values
+- Each mapped value is linked to the SourceAssertions that support it
 
 ## Notes
 

@@ -13,5 +13,5 @@ def test_interpro_mapping_offline():
 
     assert card.get("annotations.domains") is not None
     doms = card.get("annotations.domains")
-    for ev_id in doms.get("evidence_ids", []):
-        assert card.evidence_store.get(ev_id) is not None
+    for sa_id in doms.get("source_assertion_ids", []):
+        assert card.source_assertion_store.get(sa_id) is not None

@@ -78,5 +78,5 @@ Clinical data is planned as a dedicated layer:
 - interactions
 
 ## Notes
-- The schema must preserve all values and attach them to evidence objects.
+- The schema must preserve all values and record each one as a SourceAssertion.
 - Cross‑references to external databases are expected and should be stored in `identifiers` and/or `annotations` sections.

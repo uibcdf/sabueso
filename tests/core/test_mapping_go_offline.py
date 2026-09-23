@@ -14,5 +14,5 @@ def test_go_mapping_offline():
 
     assert card.get("annotations.go_terms") is not None
     terms = card.get("annotations.go_terms")
-    for ev_id in terms.get("evidence_ids", []):
-        assert card.evidence_store.get(ev_id) is not None
+    for sa_id in terms.get("source_assertion_ids", []):
+        assert card.source_assertion_store.get(sa_id) is not None

@@ -8,7 +8,7 @@ Potential LLM‑assisted features:
 
 Open decision:
 - Use **MolSys‑AI** as the LLM backend or embed a **Sabueso‑specific LLM**.
-- If LLM outputs are used, they must be stored as explicit evidence objects with source attribution.
+- If LLM outputs are used, they must be stored as explicit SourceAssertions whose source is the LLM output (model, prompt, and underlying documents), never as project Evidence.
 
 ## Ecosystem Integration
 Deeper integration with MolSysSuite tools:

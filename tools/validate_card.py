@@ -8,7 +8,7 @@ from typing import Any, Dict
 import json
 import yaml
 
-SCHEMA = Path("schemas/card_schema_0.1.0.yaml")
+SCHEMA = Path("schemas/card_schema_0.2.0.yaml")
 
 
 def _load_schema() -> Dict[str, Any]:
@@ -16,7 +16,7 @@ def _load_schema() -> Dict[str, Any]:
 
 
 def _is_leaf(node: Any) -> bool:
-    return isinstance(node, dict) and ("value" in node and "evidence_ids" in node)
+    return isinstance(node, dict) and ("value" in node and "source_assertion_ids" in node)
 
 
 def _validate_node(schema_node: Any, data_node: Any, path: str, errors: list[str]) -> None:
@@ -25,10 +25,10 @@ def _validate_node(schema_node: Any, data_node: Any, path: str, errors: list[str
 
     if _is_leaf(schema_node):
         if not isinstance(data_node, dict):
-            errors.append(f"{path}: expected dict with value/evidence_ids")
+            errors.append(f"{path}: expected dict with value/source_assertion_ids")
             return
-        if "value" not in data_node or "evidence_ids" not in data_node:
-            errors.append(f"{path}: missing value/evidence_ids")
+        if "value" not in data_node or "source_assertion_ids" not in data_node:
+            errors.append(f"{path}: missing value/source_assertion_ids")
         return
 
     if isinstance(schema_node, dict):
@@ -53,10 +53,10 @@ def _wrap_meta(card: Dict[str, Any]) -> Dict[str, Any]:
     wrapped = dict(card)
     meta = {}
     for k, v in card["meta"].items():
-        if isinstance(v, dict) and "value" in v and "evidence_ids" in v:
+        if isinstance(v, dict) and "value" in v and "source_assertion_ids" in v:
             meta[k] = v
         else:
-            meta[k] = {"value": v, "evidence_ids": []}
+            meta[k] = {"value": v, "source_assertion_ids": []}
     wrapped["meta"] = meta
     return wrapped
 

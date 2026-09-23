@@ -4,7 +4,7 @@ This document defines how Sabueso stores data locally for reproducibility and pe
 
 ## Scope
 - **Raw source payloads** (JSON/XML dumps from external DBs)
-- **Canonical Cards** (resolved, evidence-linked)
+- **Canonical Cards** (resolved, linked to SourceAssertions)
 
 ## Options
 
@@ -14,7 +14,7 @@ This document defines how Sabueso stores data locally for reproducibility and pe
 
 ### Option B — Cards only
 - Pros: fast access, compact.
-- Cons: loses raw detail unless evidence store embedded.
+- Cons: loses raw detail unless the SourceAssertion store is embedded.
 
 ### Option C — Raw + Cards (recommended)
 - Store raw payloads + resolved cards.

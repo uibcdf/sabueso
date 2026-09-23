@@ -23,7 +23,7 @@ print(card.get("metadata.entity_type"))
 
 - Input path exists and contains valid JSON
 - Returned Card preserves canonical structure
-- Evidence tracks source provenance
+- SourceAssertions record what each source asserts and where it came from
 
 ## Notes
 

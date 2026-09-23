@@ -1,11 +1,13 @@
 # Sabueso — Glossary
 
-- **Card**: A structured, nested object representing a molecular system with selected values and explicit evidence links.
-- **Evidence Object**: A record of a single value from a source, stored in `evidence_store`.
-- **Evidence Store**: Global map of all evidence objects, indexed by `evidence_id`.
+- **Card**: A structured, nested object representing a molecular system with resolved values linked to the SourceAssertions that support them.
+- **SourceAssertion**: A record of what an external source asserts about an entity or property (value, field, source record, retrieval), stored in `source_assertion_store`.
+- **SourceAssertionStore**: Map of all SourceAssertions of a card, indexed by each assertion's `id`.
+- **Evidence** *(not a Sabueso concept)*: in the MOLI Platform, project-contextual scientific information in a Nextia DiscoveryProject that supports, contradicts or informs a Question or Hypothesis. It may cite SourceAssertions as its basis.
+- **Provenance**: Cross-cutting information about origin, lineage, transformations and production context of any object; a SourceAssertion has provenance but is not provenance.
 - **Field Path**: Canonical string identifying a field (e.g., `properties.physchem.molecular_weight`).
-- **Selection Rule**: A rule that picks a canonical value among multiple evidences for a field.
-- **Conflict**: Disagreement among evidence objects for the same field.
+- **Selection Rule**: A rule that picks a canonical value among multiple SourceAssertions for a field.
+- **Conflict**: Disagreement among SourceAssertions for the same field.
 - **Deck**: A collection of Cards with operations for filtering, sorting, comparing, and expansion.
 - **Clinical Layer**: Dedicated section with pharmacology, ADMET, clinical trials, pharmacovigilance, etc.
 - **Database Module (tools.db)**: A per‑database module that exposes public functions for fetching and extracting data.

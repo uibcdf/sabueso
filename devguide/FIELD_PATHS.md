@@ -1,7 +1,7 @@
 # Sabueso — Canonical Field Paths
 
 This document defines the **canonical field paths** for Sabueso cards. These are the
-paths used by mappings, resolver rules, evidence objects, and downstream tools.
+paths used by mappings, resolver rules, SourceAssertions, and downstream tools.
 
 Versioning: **x.y.z** (no leading `v`).
 
@@ -10,6 +10,8 @@ Versioning: **x.y.z** (no leading `v`).
 ## 1) Global Base Paths (all card types)
 
 ### meta.*
+- `meta.card_id`
+- `meta.schema_version`
 - `meta.entity_type`
 - `meta.created_at`
 - `meta.updated_at`
@@ -94,7 +96,7 @@ Versioning: **x.y.z** (no leading `v`).
 - `annotations.similar_proteins`
 - `annotations.isoforms`
 - `disease.associations`
-- `ligands.items` (each has `role` + evidence)
+- `ligands.items` (each has `role` + SourceAssertions)
 - `sequence.primary`
 - `structure.primary`
 - `structure.secondary_structure`

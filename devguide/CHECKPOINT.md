@@ -4,7 +4,7 @@ This file records the current repository baseline so new developers can resume e
 
 ## Repository Structure (Created)
 - `sabueso/`
-  - `core/` (placeholders: `card.py`, `deck.py`, `evidence_store.py`)
+  - `core/` (placeholders: `card.py`, `deck.py`, `source_assertion_store.py`)
   - `resolver/` (placeholder: `base.py`)
   - `tools/db/`, `tools/card/`, `tools/deck/`
   - `ops/` (placeholders: `card_ops.py`, `deck_ops.py`)
@@ -28,17 +28,17 @@ This file records the current repository baseline so new developers can resume e
 
 ## New Decisions (Today)
 - **Field path notation**: dot‑separated paths (e.g., `properties.physchem.molecular_weight`).
-- **Evidence object**: includes `source` with `type`, `name`, `record_id`, plus optional `source_meta`.
+- **SourceAssertion object** (formerly "evidence object"): includes `source` with `type`, `name`, `record_id`, plus optional `source_metadata` (fields aligned with MOLI's conceptual schema on 2026-09-23).
 - **Location model**: general model with `kind` and sub‑blocks (sequence / structure / atom / substructure). To be refined with real cases, but accepted conceptually.
 
 ## New Artifacts
 - `devguide/LOCATION_EXAMPLES.md`: real‑ID validation examples for location model.
 - `devguide/SCHEMA.md`: link to `LOCATION_EXAMPLES.md`.
-- `devguide/INTERFACES_MINIMAL.md`: minimal core interfaces for Card/Deck/EvidenceStore/Resolver.
+- `devguide/INTERFACES_MINIMAL.md`: minimal core interfaces for Card/Deck/SourceAssertionStore/Resolver.
 - `sabueso/mappings/` (Python mapping stubs):
   - `uniprot.py`, `pdb.py`, `pubchem.py`, `chembl.py`, `base.py`
-- `sabueso/core/evidence_store.py`: EvidenceStore implementation with deterministic IDs.
-- Mappings now emit `evidences` and `field_evidence` (minimal).
+- `sabueso/core/source_assertion_store.py`: SourceAssertion records, `make_source_assertion`, and SourceAssertionStore with deterministic IDs.
+- Mappings now emit `source_assertions` and `field_source_assertions` (minimal).
 - `sabueso/core/aggregator.py`: minimal card builder from mapping outputs.
 - `sabueso/core/card.py`: minimal Card implementation.
 - `sabueso/core/deck.py`: minimal Deck implementation.
@@ -77,7 +77,7 @@ This file records the current repository baseline so new developers can resume e
 - `tests/core/test_online_psp.py`: online smoke test for PSP (skips).
 - `devguide/TESTS.md`: offline/online test strategy.
 - `devguide/DATA_SOURCES_STATUS.md`: implemented DBs with quality/incidents report.
-- `devguide/RESOLVER.md`: minimal resolver contract and selection rules 0.1.0.
+- `devguide/RESOLVER.md`: minimal resolver contract (0.2.0) and selection rules 0.1.0.
 - Core Ops 0.1.0 semantics recorded in `devguide/PUBLIC_API.md` and `devguide/INTERFACES_MINIMAL.md`.
 - `sabueso/resolver/field_resolver.py`: resolver implementation (field-level selection).
 - `tests/core/test_resolver.py`: resolver unit tests (offline).
@@ -92,7 +92,7 @@ This file records the current repository baseline so new developers can resume e
 - `sabueso/core/merge.py`: mapping merge helper.
 - `tests/core/test_end_to_end_resolver_offline.py`: offline end-to-end pipeline test.
 - `devguide/FIELD_PATHS.md`: canonical field paths catalog.
-- `schemas/card_schema_0.1.0.yaml`: formal YAML schema aligned with field paths.
+- `schemas/card_schema_0.2.0.yaml`: formal YAML schema aligned with field paths.
 - `tests/core/test_end_to_end_protein_sources_offline.py`: protein end-to-end offline test (UniProt + PDB + InterPro).
 - `devguide/CACHE_POLICY.md`: draft cache/storage policy options.
 - `devguide/STORAGE_LAYOUT.md`: recommended project storage layout (no defaults).
@@ -120,10 +120,22 @@ This file records the current repository baseline so new developers can resume e
   - STRING: interactions.binding_partners.
   - BioGRID: interactions.binding_partners.
 
+## Terminology Migration (2026-09-23)
+- Sabueso "evidence" renamed to **SourceAssertion** across code, schemas, tests and docs
+  (`SourceAssertion ≠ Evidence ≠ Provenance`; see `devguide/DECISIONS.md`).
+- Mappings build assertions with `make_source_assertion`; outputs verified identical to the
+  pre-migration outputs apart from the renamed keys and the `SA_` ID prefix.
+- `Card.to_dict()` now serializes `source_assertion_store`, so JSON/SQLite round trips keep
+  every SourceAssertion.
+- Formal schema: `schemas/card_schema_0.2.0.yaml`.
+- SourceAssertion fields aligned with MOLI Platform Architecture 1.0 (`id`, `subject_ref`,
+  `field_path`, `asserted_value`, `source_metadata`); cards carry a stable `meta.card_id`.
+- Sabueso belongs to the MOLI Platform's Scientific Context, not to MolSysSuite.
+
 ## Pending Decisions
 - Final **schema versioning policy**.
 - Local cache policy (raw sources vs cards vs both).
-- LLM integration policy (provider, prompts, evidence tracking).
+- LLM integration policy (provider, prompts, SourceAssertion tracking).
 
 ## Next Steps
 1) Expand mappings with additional fields and sources.

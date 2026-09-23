@@ -18,10 +18,10 @@
    :show-inheritance:
 ```
 
-## `sabueso.core.evidence_store`
+## `sabueso.core.source_assertion_store`
 
 ```{eval-rst}
-.. automodule:: sabueso.core.evidence_store
+.. automodule:: sabueso.core.source_assertion_store
    :members:
    :undoc-members:
    :show-inheritance:

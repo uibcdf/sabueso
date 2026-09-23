@@ -16,5 +16,5 @@ def test_chembl_mapping_offline():
     assert card.get("identifiers.smiles") is not None
 
     logp = card.get("properties.physchem.logp")
-    for ev_id in logp.get("evidence_ids", []):
-        assert card.evidence_store.get(ev_id) is not None
+    for sa_id in logp.get("source_assertion_ids", []):
+        assert card.source_assertion_store.get(sa_id) is not None

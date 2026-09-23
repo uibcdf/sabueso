@@ -14,18 +14,18 @@ def test_uniprot_mapping_offline():
     assert card.get("identifiers.uniprot") is not None
     assert card.get("names.canonical_name") is not None
 
-    # function field should exist or be None; if present, evidence IDs must exist
+    # function field should exist or be None; if present, source assertion IDs must exist
     func = card.get("annotations.function")
     if func is not None:
-        ev_ids = func.get("evidence_ids", [])
-        assert ev_ids, "function should have evidence_ids"
-        for ev_id in ev_ids:
-            assert card.evidence_store.get(ev_id) is not None
+        sa_ids = func.get("source_assertion_ids", [])
+        assert sa_ids, "function should have source_assertion_ids"
+        for sa_id in sa_ids:
+            assert card.source_assertion_store.get(sa_id) is not None
 
-    # binding site features should have evidence
+    # binding site features should have source assertions
     bs = card.get("features_positional.binding_site")
     if bs is not None:
-        ev_ids = bs.get("evidence_ids", [])
-        assert ev_ids, "binding sites should have evidence_ids"
-        for ev_id in ev_ids:
-            assert card.evidence_store.get(ev_id) is not None
+        sa_ids = bs.get("source_assertion_ids", [])
+        assert sa_ids, "binding sites should have source_assertion_ids"
+        for sa_id in sa_ids:
+            assert card.source_assertion_store.get(sa_id) is not None

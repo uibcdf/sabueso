@@ -6,12 +6,13 @@ where users need reproducible Cards and Decks built from heterogeneous sources.
 
 ## Mission
 
-Convert fragmented source records into structured molecular intelligence with
-explicit evidence and deterministic field-level selection.
+Convert fragmented source records into structured, resolved molecular knowledge with
+explicit SourceAssertions and deterministic field-level selection.
 
 ## Vision
 
-Provide a stable data layer for MolSysSuite so researchers and tools can share
+Provide the knowledge context of the MOLI Platform so researchers, MOLI Agent and
+MolSysSuite tools can share
 cards, compare results, and automate decisions with transparent provenance.
 
 Sabueso is intended to be:

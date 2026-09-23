@@ -1,4 +1,4 @@
-"""Validate FIELD_PATHS vs card_schema_0.1.0.yaml"""
+"""Validate FIELD_PATHS vs card_schema_0.2.0.yaml"""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from typing import Any, Dict, List
 import yaml
 
 FIELD_PATHS = Path("devguide/FIELD_PATHS.md")
-SCHEMA = Path("schemas/card_schema_0.1.0.yaml")
+SCHEMA = Path("schemas/card_schema_0.2.0.yaml")
 
 
 def load_schema_paths() -> List[str]:
@@ -24,7 +24,7 @@ def load_schema_paths() -> List[str]:
                 if isinstance(v, str) and v == "*":
                     paths.append(path + ".*")
                     continue
-                if isinstance(v, dict) and ("value" in v or "evidence_ids" in v):
+                if isinstance(v, dict) and ("value" in v or "source_assertion_ids" in v):
                     paths.append(path)
                 else:
                     walk(path, v)

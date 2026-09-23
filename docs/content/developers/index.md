@@ -24,7 +24,7 @@ pytest -m online
 
 ## Repository Areas
 
-- `sabueso/core`: Card, Deck, EvidenceStore, aggregation helpers.
+- `sabueso/core`: Card, Deck, SourceAssertionStore, aggregation helpers.
 - `sabueso/tools`: user-facing storage and database helpers.
 - `sabueso/mappings`: source-to-canonical transformations.
 - `sabueso/resolver`: field-level selection rules and resolver runtime.
@@ -47,7 +47,7 @@ sphinx-build -b html docs docs/_build/html
 ## Engineering Conventions
 
 - Public docs in English.
-- Evidence and resolver behavior must remain explicit and traceable.
+- SourceAssertions and resolver behavior must remain explicit and traceable.
 - Online vs offline tests are intentionally separated.
 - Version format follows `x.y.z` (no `v` prefix).
 

@@ -4,7 +4,7 @@
 The frozen draft schema lives at:
 - `schemas/card_schema.yaml`
 The formal schema (versioned) lives at:
-- `schemas/card_schema_0.1.0.yaml`
+- `schemas/card_schema_0.2.0.yaml`
 
 This is a **conceptual** schema meant to be refined into formal validation later.
 
@@ -28,62 +28,93 @@ Identifier paths are **direct**:
 - `identifiers.pubchem`
 (No `secondary_ids` level.)
 
-## Uniform Evidence Mechanism (Critical)
-All fields in all cards follow the same evidence protocol:
+## SourceAssertion Mechanism (Critical)
+**A SourceAssertion records what an external source asserts about an entity or property.**
+All fields in all cards are resolved from SourceAssertions through the same protocol:
 
-1) **Card fields store the selected value only**
-   - Each field has `value` and `evidence_ids`.
+1) **Card fields store the resolved value only**
+   - Each field has `value` and `source_assertion_ids`.
+   - `source_assertion_ids` lists the assertions that support the resolved value.
    - This keeps the card readable and deterministic.
 
-2) **All values from all sources live in `evidence_store`**
-   - Each evidence object includes:
-     - `field` (canonical field path)
-     - `value`
-     - `normalized_value`
-     - `sources`
-     - `source_records`
-     - `retrieved_at`
-     - optional timestamps (published/updated)
-     - `confidence`
+2) **All assertions from all sources live in `source_assertion_store`**
+   - One SourceAssertion per value asserted by one source record (see the contract
+     below). Alternative and contradictory assertions are kept.
+   - The store is serialized with the card.
 
 3) **Selection rules are explicit**
    - `selection_rules` is a map keyed by field path.
-   - Rules do not delete evidence.
+   - Rules never delete SourceAssertions.
 
 4) **Conflicts are explicit**
-   - `quality.conflicts` lists fields with multiple disagreeing evidences.
+   - `quality.conflicts` lists fields whose SourceAssertions disagree, with the
+     competing values and their `source_assertion_ids`.
 
 This mechanism is **homogeneous** across all fields and all card types. It is a core design decision.
 
-## Evidence Object Contract (Approved)
-Every evidence object stored in `evidence_store` must include:
+### What a SourceAssertion is not
+MOLI Platform Architecture 1.0 (`uibcdf/moli`) distinguishes `SourceAssertion ≠ Evidence ≠ Provenance`:
+- **Evidence** belongs to Nextia: project-contextual scientific information that
+  supports, contradicts or informs a Question or Hypothesis. Sabueso never produces it; a
+  DiscoveryProject may cite SourceAssertions as the basis of its own Evidence.
+- **Provenance** is cross-cutting: origin, lineage, transformations and production
+  context of any object. A SourceAssertion *has* provenance (source, record, version,
+  retrieval, mapping); it is not provenance itself.
+- Qualifiers a source attaches to its own statements (UniProt ECO codes, cited PubMed
+  IDs, ChEMBL assay descriptors) are stored in `source_metadata` under their source-native
+  names; Sabueso defines no generic `evidence` field.
+
+## SourceAssertion Contract (Approved)
+Field names follow the conceptual contract of MOLI Platform Architecture 1.0
+(`uibcdf/moli`, `schemas/sabueso_source_assertion_conceptual_schema.md`).
+Every SourceAssertion stored in `source_assertion_store` must include:
 
 **Required**
-- `evidence_id: string`
-- `field: string` (canonical field path)
-- `value: any`
-- `source: { type: string, name: string, record_id: string }`
+- `id: string` (deterministic, prefix `SA_`)
+- `subject_ref: string | null` — stable reference to what the source record describes,
+  `<namespace>:<record_id>` (e.g. `uniprot:P52789`, `pdb:2NZT`); `null` when the source
+  record has no identifier
+- `field_path: string` (canonical field path)
+- `asserted_value: any` (the value as the source asserts it)
+- `source: { type: string, name: string, record_id: string, version?: string }`
 - `retrieved_at: date`
 
-**Recommended**
-- `normalized_value: any`
-- `source_meta: dict`
+**Optional**
+- `normalized_value: any` (only when Sabueso normalization changes the asserted value;
+  the resolver then works on it)
+- `source_metadata: dict` (source-native qualifiers such as UniProt ECO codes)
+- `provenance_ref: string` (reference to a provenance record, e.g. mapping version)
 - `timestamps: { published_at?: date, updated_at?: date }`
-- `confidence: float`
-- `notes: string`
+- `confidence: float` (only when reported by the source)
 
-The `source.type` must distinguish at least: `database`, `article`, `dataset`, and `llm` when applicable.
+`source.type` is one of `database`, `literature`, `patent`, `curated`, `other`.
 
-## Evidence Creation Rules (Approved)
-- Each mapped field value must generate **at least one** evidence object.
-- Evidence IDs should be **deterministic** from `(source, record_id, field, value)`.
-- Evidence creation happens **before** any selection rules are applied.
+## Card Identity (Provisional)
+MOLI Architecture 1.0 requires important scientific objects to be serializable and
+referencable independently of process, file, database or service location. Every card
+built by the aggregator therefore carries:
+- `meta.card_id`: stable reference `sabueso:<entity_type>:<subject_ref>`, e.g.
+  `sabueso:protein:uniprot:P52789`, taken from the subject of the primary identifier
+  assertion (`identifiers.uniprot`, then `chembl`, `pubchem`, `pdb`) unless given
+  explicitly;
+- `meta.schema_version`: card schema version (`0.2.0`).
+
+The identifier syntax is provisional (MOLI freezes referencability, not the format).
+Card versions and snapshots, which Nextia needs to pin historical knowledge, are not
+implemented yet.
+
+## SourceAssertion Creation Rules (Approved)
+- Each mapped field value must generate **at least one** SourceAssertion.
+- SourceAssertion IDs are **deterministic** from `(source, record_id, field_path, asserted_value)`
+  (`generate_source_assertion_id`, prefix `SA_`).
+- Mappings create SourceAssertions with `make_source_assertion`, **before** any
+  selection rules are applied.
 
 ## Positional Features (Proteins/Peptides)
 The schema includes positional features observed directly in UniProt JSON examples:
 - Active site, Binding site, Disulfide bond, Glycosylation, Lipidation, Modified residue, Mutagenesis, Natural variant, Region, Motif, Topological domain, Transmembrane, etc.
 
-These are stored as lists of objects with `location`, `description`, and `evidence_ids`.
+These are stored as lists of objects with `location`, `description`, and `source_assertion_ids`.
 
 For the exact, verified enumerations, see:
 - `devguide/UNIPROT_ENUMS.md`
@@ -102,11 +133,11 @@ Real‑ID validation examples:
 `location` is a typed container that supports multiple contexts:\n\n```\nlocation:\n  kind: \"sequence\" | \"structure\" | \"atom\" | \"substructure\"\n  sequence?: { sequence_id, start, end, indexing, residue_ids? }\n  structure?: { pdb_id, chain_id, residue_id?, residue_number?, atom_ids? }\n  atom?: { atom_ids, atom_id_type }\n  substructure?: { smiles?, smarts?, atom_ids? }\n```\n\nThe exact atom/residue identifier type must always be specified when relevant (e.g., PDB residue IDs, RDKit atom indices).
 
 ## Disease Section (ProteinCard)
-Protein cards include a `disease` section with disease associations and evidence links.
+Protein cards include a `disease` section with disease associations linked to their SourceAssertions.
 
 ## Ligands with Roles (ProteinCard)
 Protein cards include a `ligands` section. Each ligand has a `role` attribute
-(e.g., inhibitor, activator, substrate) and evidence links.
+(e.g., inhibitor, activator, substrate) and SourceAssertion links.
 
 ## Clinical Layer (Small Molecules)
 The schema includes a dedicated `clinical` section for:

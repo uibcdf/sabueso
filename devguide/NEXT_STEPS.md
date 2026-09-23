@@ -2,7 +2,7 @@
 
 ## Immediate
 1) Decide cache/storage policy (raw vs cards vs both) and document it.
-2) Define a stable field‑path naming convention for rules and evidence objects.
+2) Define a stable field‑path naming convention for rules and SourceAssertions.
 
 ## Short Term
 3) Decide how to represent `location` for positional features (range model).

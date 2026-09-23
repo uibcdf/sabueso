@@ -24,7 +24,7 @@ print(card.get("metadata.entity_type"))
 
 - Payload is dictionary-like
 - Returned Card has canonical paths
-- Evidence metadata is available
+- SourceAssertion metadata (source, record, retrieval date) is available
 
 ## Notes
 

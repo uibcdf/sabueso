@@ -4,7 +4,7 @@ from __future__ import annotations
 from typing import Any, Dict, List
 
 from .base import get_in
-from sabueso.core.evidence_store import generate_evidence_id
+from sabueso.core.source_assertion_store import make_source_assertion
 
 
 def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, Any]:
@@ -13,44 +13,30 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     Returns a dictionary with canonical mappings, including:
     - ``fields``: ``field_path -> value``
     - ``features``: ``feature_field_path -> list[feature]``
-    - ``evidences`` and ``field_evidence`` links for provenance
+    - ``source_assertions`` and ``field_source_assertions`` links for provenance
     """
     fields: Dict[str, Any] = {}
     features: Dict[str, Any] = {}
-    evidences: List[Dict[str, Any]] = []
-    field_evidence: Dict[str, List[str]] = {}
+    source_assertions: List[Dict[str, Any]] = []
+    field_source_assertions: Dict[str, List[str]] = {}
 
     # identifiers
     primary = uniprot_json.get('primaryAccession')
     if primary:
         fp = 'identifiers.uniprot'
         fields[fp] = primary
-        ev = {
-            'field': fp,
-            'value': primary,
-            'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary},
-            'retrieved_at': retrieved_at,
-        }
-        ev_id = generate_evidence_id('UniProt', primary, fp, primary)
-        ev['evidence_id'] = ev_id
-        evidences.append(ev)
-        field_evidence[fp] = [ev_id]
+        assertion = make_source_assertion(fp, primary, 'UniProt', primary, retrieved_at)
+        source_assertions.append(assertion)
+        field_source_assertions[fp] = [assertion['id']]
 
     # canonical name
     name = get_in(uniprot_json, ['proteinDescription', 'recommendedName', 'fullName', 'value'])
     if name:
         fp = 'names.canonical_name'
         fields[fp] = name
-        ev = {
-            'field': fp,
-            'value': name,
-            'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-            'retrieved_at': retrieved_at,
-        }
-        ev_id = generate_evidence_id('UniProt', primary or '', fp, name)
-        ev['evidence_id'] = ev_id
-        evidences.append(ev)
-        field_evidence[fp] = [ev_id]
+        assertion = make_source_assertion(fp, name, 'UniProt', primary or '', retrieved_at)
+        source_assertions.append(assertion)
+        field_source_assertions[fp] = [assertion['id']]
 
     # function (commentType == FUNCTION)
     comments = uniprot_json.get('comments', []) or []
@@ -106,154 +92,91 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     if func_texts:
         fp = 'annotations.function'
         fields[fp] = func_texts
-        ev_ids: List[str] = []
+        sa_ids: List[str] = []
         for txt in func_texts:
-            ev = {
-                'field': fp,
-                'value': txt,
-                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                'retrieved_at': retrieved_at,
-            }
-            ev_id = generate_evidence_id('UniProt', primary or '', fp, txt)
-            ev['evidence_id'] = ev_id
-            evidences.append(ev)
-            ev_ids.append(ev_id)
-        field_evidence[fp] = ev_ids
+            assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
+            source_assertions.append(assertion)
+            sa_ids.append(assertion['id'])
+        field_source_assertions[fp] = sa_ids
 
     if catalytic_texts:
         fp = 'annotations.catalytic_activity'
         fields[fp] = catalytic_texts
-        ev_ids = []
+        sa_ids = []
         for txt in catalytic_texts:
-            ev = {
-                'field': fp,
-                'value': txt,
-                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                'retrieved_at': retrieved_at,
-            }
-            ev_id = generate_evidence_id('UniProt', primary or '', fp, txt)
-            ev['evidence_id'] = ev_id
-            evidences.append(ev)
-            ev_ids.append(ev_id)
-        field_evidence[fp] = ev_ids
+            assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
+            source_assertions.append(assertion)
+            sa_ids.append(assertion['id'])
+        field_source_assertions[fp] = sa_ids
 
     if pathway_texts:
         fp = 'annotations.pathway'
         fields[fp] = pathway_texts
-        ev_ids = []
+        sa_ids = []
         for txt in pathway_texts:
-            ev = {
-                'field': fp,
-                'value': txt,
-                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                'retrieved_at': retrieved_at,
-            }
-            ev_id = generate_evidence_id('UniProt', primary or '', fp, txt)
-            ev['evidence_id'] = ev_id
-            evidences.append(ev)
-            ev_ids.append(ev_id)
-        field_evidence[fp] = ev_ids
+            assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
+            source_assertions.append(assertion)
+            sa_ids.append(assertion['id'])
+        field_source_assertions[fp] = sa_ids
 
     if subunit_texts:
         fp = 'annotations.subunit'
         fields[fp] = subunit_texts
-        ev_ids = []
+        sa_ids = []
         for txt in subunit_texts:
-            ev = {
-                'field': fp,
-                'value': txt,
-                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                'retrieved_at': retrieved_at,
-            }
-            ev_id = generate_evidence_id('UniProt', primary or '', fp, txt)
-            ev['evidence_id'] = ev_id
-            evidences.append(ev)
-            ev_ids.append(ev_id)
-        field_evidence[fp] = ev_ids
+            assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
+            source_assertions.append(assertion)
+            sa_ids.append(assertion['id'])
+        field_source_assertions[fp] = sa_ids
 
     if subcell_texts:
         fp = 'annotations.subcellular_location'
         fields[fp] = subcell_texts
-        ev_ids = []
+        sa_ids = []
         for txt in subcell_texts:
-            ev = {
-                'field': fp,
-                'value': txt,
-                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                'retrieved_at': retrieved_at,
-            }
-            ev_id = generate_evidence_id('UniProt', primary or '', fp, txt)
-            ev['evidence_id'] = ev_id
-            evidences.append(ev)
-            ev_ids.append(ev_id)
-        field_evidence[fp] = ev_ids
+            assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
+            source_assertions.append(assertion)
+            sa_ids.append(assertion['id'])
+        field_source_assertions[fp] = sa_ids
 
     if tissue_texts:
         fp = 'annotations.tissue_specificity'
         fields[fp] = tissue_texts
-        ev_ids = []
+        sa_ids = []
         for txt in tissue_texts:
-            ev = {
-                'field': fp,
-                'value': txt,
-                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                'retrieved_at': retrieved_at,
-            }
-            ev_id = generate_evidence_id('UniProt', primary or '', fp, txt)
-            ev['evidence_id'] = ev_id
-            evidences.append(ev)
-            ev_ids.append(ev_id)
-        field_evidence[fp] = ev_ids
+            assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
+            source_assertions.append(assertion)
+            sa_ids.append(assertion['id'])
+        field_source_assertions[fp] = sa_ids
 
     if ptm_texts:
         fp = 'annotations.ptm'
         fields[fp] = ptm_texts
-        ev_ids = []
+        sa_ids = []
         for txt in ptm_texts:
-            ev = {
-                'field': fp,
-                'value': txt,
-                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                'retrieved_at': retrieved_at,
-            }
-            ev_id = generate_evidence_id('UniProt', primary or '', fp, txt)
-            ev['evidence_id'] = ev_id
-            evidences.append(ev)
-            ev_ids.append(ev_id)
-        field_evidence[fp] = ev_ids
+            assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
+            source_assertions.append(assertion)
+            sa_ids.append(assertion['id'])
+        field_source_assertions[fp] = sa_ids
 
     if polymorphism_texts:
         fp = 'annotations.polymorphism'
         fields[fp] = polymorphism_texts
-        ev_ids = []
+        sa_ids = []
         for txt in polymorphism_texts:
-            ev = {
-                'field': fp,
-                'value': txt,
-                'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                'retrieved_at': retrieved_at,
-            }
-            ev_id = generate_evidence_id('UniProt', primary or '', fp, txt)
-            ev['evidence_id'] = ev_id
-            evidences.append(ev)
-            ev_ids.append(ev_id)
-        field_evidence[fp] = ev_ids
+            assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
+            source_assertions.append(assertion)
+            sa_ids.append(assertion['id'])
+        field_source_assertions[fp] = sa_ids
 
     # organism
     org_name = get_in(uniprot_json, ['organism', 'scientificName'])
     if org_name:
         fp = 'annotations.organism'
         fields[fp] = org_name
-        ev = {
-            'field': fp,
-            'value': org_name,
-            'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-            'retrieved_at': retrieved_at,
-        }
-        ev_id = generate_evidence_id('UniProt', primary or '', fp, org_name)
-        ev['evidence_id'] = ev_id
-        evidences.append(ev)
-        field_evidence[fp] = [ev_id]
+        assertion = make_source_assertion(fp, org_name, 'UniProt', primary or '', retrieved_at)
+        source_assertions.append(assertion)
+        field_source_assertions[fp] = [assertion['id']]
 
     # binding sites (features)
     binding_items: List[Dict[str, Any]] = []
@@ -294,86 +217,51 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         if binding_items:
             fp = 'features_positional.binding_site'
             features[fp] = binding_items
-            ev_ids: List[str] = []
+            sa_ids: List[str] = []
             for item in binding_items:
-                ev = {
-                    'field': fp,
-                    'value': item,
-                    'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                    'retrieved_at': retrieved_at,
-                }
-                ev_id = generate_evidence_id('UniProt', primary or '', fp, item)
-                ev['evidence_id'] = ev_id
-                evidences.append(ev)
-                ev_ids.append(ev_id)
-            field_evidence[fp] = ev_ids
+                assertion = make_source_assertion(fp, item, 'UniProt', primary or '', retrieved_at)
+                source_assertions.append(assertion)
+                sa_ids.append(assertion['id'])
+            field_source_assertions[fp] = sa_ids
 
         if active_items:
             fp = 'features_positional.active_site'
             features[fp] = active_items
-            ev_ids = []
+            sa_ids = []
             for item in active_items:
-                ev = {
-                    'field': fp,
-                    'value': item,
-                    'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                    'retrieved_at': retrieved_at,
-                }
-                ev_id = generate_evidence_id('UniProt', primary or '', fp, item)
-                ev['evidence_id'] = ev_id
-                evidences.append(ev)
-                ev_ids.append(ev_id)
-            field_evidence[fp] = ev_ids
+                assertion = make_source_assertion(fp, item, 'UniProt', primary or '', retrieved_at)
+                source_assertions.append(assertion)
+                sa_ids.append(assertion['id'])
+            field_source_assertions[fp] = sa_ids
 
         if modified_items:
             fp = 'features_positional.modified_residue'
             features[fp] = modified_items
-            ev_ids = []
+            sa_ids = []
             for item in modified_items:
-                ev = {
-                    'field': fp,
-                    'value': item,
-                    'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                    'retrieved_at': retrieved_at,
-                }
-                ev_id = generate_evidence_id('UniProt', primary or '', fp, item)
-                ev['evidence_id'] = ev_id
-                evidences.append(ev)
-                ev_ids.append(ev_id)
-            field_evidence[fp] = ev_ids
+                assertion = make_source_assertion(fp, item, 'UniProt', primary or '', retrieved_at)
+                source_assertions.append(assertion)
+                sa_ids.append(assertion['id'])
+            field_source_assertions[fp] = sa_ids
 
         if glyco_items:
             fp = 'features_positional.glycosylation'
             features[fp] = glyco_items
-            ev_ids = []
+            sa_ids = []
             for item in glyco_items:
-                ev = {
-                    'field': fp,
-                    'value': item,
-                    'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                    'retrieved_at': retrieved_at,
-                }
-                ev_id = generate_evidence_id('UniProt', primary or '', fp, item)
-                ev['evidence_id'] = ev_id
-                evidences.append(ev)
-                ev_ids.append(ev_id)
-            field_evidence[fp] = ev_ids
+                assertion = make_source_assertion(fp, item, 'UniProt', primary or '', retrieved_at)
+                source_assertions.append(assertion)
+                sa_ids.append(assertion['id'])
+            field_source_assertions[fp] = sa_ids
 
         if disulfide_items:
             fp = 'features_positional.disulfide_bond'
             features[fp] = disulfide_items
-            ev_ids = []
+            sa_ids = []
             for item in disulfide_items:
-                ev = {
-                    'field': fp,
-                    'value': item,
-                    'source': {'type': 'database', 'name': 'UniProt', 'record_id': primary or ''},
-                    'retrieved_at': retrieved_at,
-                }
-                ev_id = generate_evidence_id('UniProt', primary or '', fp, item)
-                ev['evidence_id'] = ev_id
-                evidences.append(ev)
-                ev_ids.append(ev_id)
-            field_evidence[fp] = ev_ids
+                assertion = make_source_assertion(fp, item, 'UniProt', primary or '', retrieved_at)
+                source_assertions.append(assertion)
+                sa_ids.append(assertion['id'])
+            field_source_assertions[fp] = sa_ids
 
-    return {'fields': fields, 'features': features, 'evidences': evidences, 'field_evidence': field_evidence}
+    return {'fields': fields, 'features': features, 'source_assertions': source_assertions, 'field_source_assertions': field_source_assertions}

@@ -43,7 +43,7 @@ def save_deck_sqlite(
         )
         for card in deck.cards:
             card_json = json.dumps(card.to_dict())
-            card_id = None
+            card_id = card.meta.get("card_id")
             if id_field:
                 node = card.get(id_field)
                 card_id = _unwrap_value(node)

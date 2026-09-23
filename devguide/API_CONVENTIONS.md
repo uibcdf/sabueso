@@ -13,9 +13,9 @@
 Canonical field path contract:
 - `devguide/SCHEMA.md` (Field Path Contract)
 
-## Evidence IDs
-- Evidence IDs should be stable, unique, and deterministic if possible.
-- Format example: `E_<source>_<record>_<hash>`
+## SourceAssertion IDs
+- SourceAssertion IDs should be stable, unique, and deterministic if possible.
+- Format: `SA_<source>_<record>_<hash>` (see `generate_source_assertion_id`).
 
 ## Inputs (Accepted)
 - Database IDs (UniProt, PDB, ChEMBL, PubChem, DrugBank, etc.)
@@ -33,7 +33,7 @@ Location contract:
   - Tools are standalone functions grouped in modules.
 
 ## Repository Layout (Phase 0)
-- `sabueso/core`: Card, Deck, EvidenceStore
+- `sabueso/core`: Card, Deck, SourceAssertionStore
 - `sabueso/resolver`: input resolution
 - `sabueso/tools`: db/card/deck tools
 - `sabueso/ops`: internal operations
@@ -44,4 +44,4 @@ Location contract:
 
 ## Errors
 - Use explicit exception types for resolver errors, connector failures, and schema mismatches.
-- Return partial cards only if evidence is complete for the fields present.
+- Return partial cards only if SourceAssertions are complete for the fields present.
