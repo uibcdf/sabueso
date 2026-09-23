@@ -5,7 +5,9 @@ schema:
   updated_at: 2026-09-23
   note: Formal draft aligned with devguide/FIELD_PATHS.md; enforcement via code later.
     0.2.0 renames evidence_ids to source_assertion_ids (SourceAssertion terminology) and
-    adds meta.card_id / meta.schema_version (stable card identity).
+    adds meta.card_id / meta.schema_version (stable card identity). Structured
+    catalytic_activity / subcellular_location values and sequence.length /
+    molecular_weight (Da) / checksums added before any release (uibcdf/sabueso#13).
 card_base:
   meta:
     card_id:
@@ -131,7 +133,10 @@ card_base:
       - string
     catalytic_activity:
       value:
-      - string
+      - reaction: string
+        ec_number: string
+        rhea_id: string
+        molecule: string
       source_assertion_ids:
       - string
     pathway:
@@ -146,7 +151,10 @@ card_base:
       - string
     subcellular_location:
       value:
-      - string
+      - location: string
+        topology: string
+        orientation: string
+        molecule: string
       source_assertion_ids:
       - string
     tissue_specificity:
@@ -281,6 +289,20 @@ protein_card:
   sequence:
     primary:
       value: string
+      source_assertion_ids:
+      - string
+    length:
+      value: number
+      source_assertion_ids:
+      - string
+    molecular_weight:
+      value: number
+      source_assertion_ids:
+      - string
+    checksums:
+      value:
+        crc64: string
+        md5: string
       source_assertion_ids:
       - string
   structure:
