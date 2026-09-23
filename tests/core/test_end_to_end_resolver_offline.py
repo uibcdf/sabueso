@@ -16,7 +16,8 @@ def _load(path: str):
 
 def test_end_to_end_small_molecule_offline():
     chembl_path = Path("temp_data/CHEMBL90555.json")
-    pubchem_path = Path("temp_data/66414.json")
+    # Same molecule in both sources: vincristine (InChIKey OGWKCGZFUXNPDA-XQKSVPLYSA-N).
+    pubchem_path = Path("temp_data/5978.json")
     if not chembl_path.exists() or not pubchem_path.exists():
         pytest.skip("Missing temp_data for small molecule end-to-end test.")
 
@@ -32,6 +33,11 @@ def test_end_to_end_small_molecule_offline():
 
     assert card.get("identifiers.smiles") is not None
     assert card.get("properties.physchem.molecular_weight") is not None
+    assert card.id == "sabueso:small_molecule:chembl:CHEMBL90555"
+    assert card.get("identifiers.pubchem")["value"] == "5978"
+    assert card.get("identifiers.inchikey")["value"] == "OGWKCGZFUXNPDA-XQKSVPLYSA-N"
+    conflicting = {c["field"] for c in card.quality.get("conflicts", [])}
+    assert "identifiers.inchikey" not in conflicting
 
 
 def test_end_to_end_protein_offline():
