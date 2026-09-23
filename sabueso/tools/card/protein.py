@@ -8,6 +8,8 @@ the resolved protein entity:
   ``possibly_same_as``) are kept as relationships;
 - experimental structures are relationships shown through ``Card.structures()``,
   optionally enriched with RCSB polymer-entity data;
+- STRING functional associations can be added on request; every enrichment outcome is
+  recorded in ``quality.enrichments``;
 - the resolution trace (policy, alternatives, decision) is kept in
   ``quality.entity_resolution``.
 
@@ -22,9 +24,11 @@ from typing import Any, Dict, Iterable, List, Tuple
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card
 from sabueso.core.deck import Deck
+from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.core.merge import merge_mapping_results
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.mappings.rcsb_structures import map_structure_entities
+from sabueso.mappings.stringdb import map_string_partners
 from sabueso.mappings.uniprot import map_protein
 from sabueso.resolver.entity_resolver import (
     EntityQuery,
@@ -39,12 +43,17 @@ def resolve_protein_card(
     query: EntityQuery | str,
     resolver: EntityResolver | None = None,
     structures: Iterable[str] | str = (),
+    string: Dict[str, Any] | None = None,
+    string_client: Any | None = None,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
 
     ``structures`` lists PDB ids to enrich with RCSB polymer-entity data, or ``"all"``
-    for every PDB cross-reference of the entry. Returns ``(card, resolution)``;
-    ``card`` is None when the query did not resolve to a protein entity.
+    for every PDB cross-reference of the entry. ``string`` (e.g. ``{}`` or
+    ``{"required_score": 900, "limit": 20}``) adds STRING functional associations for the
+    entry's organism. Every enrichment outcome (added, not_found, error) is recorded in
+    ``quality.enrichments``. Returns ``(card, resolution)``; ``card`` is None when the
+    query did not resolve to a protein entity.
     """
     resolver = resolver or EntityResolver()
     resolution = resolver.resolve(query)
@@ -61,18 +70,63 @@ def resolve_protein_card(
         structures = [
             rel["object_ref"].split(":", 1)[1]
             for rel in protein_mapping["relationships"]
+            if rel["predicate"] == "has_structure"
         ]
     length = (entry.get("sequence") or {}).get("length")
+    enrichments: List[Dict[str, Any]] = []
     for pdb_id in structures:
-        rcsb_entry, rcsb_retrieved_at = resolver.rcsb.fetch_structure(pdb_id)
-        mappings.append(
-            map_structure_entities(
-                rcsb_entry,
-                rcsb_retrieved_at,
-                subjects={anchor},
-                reference_lengths={anchor: length} if length else None,
-            )
+        record = {"source": "RCSB PDB", "structure": pdb_id}
+        try:
+            rcsb_entry, rcsb_retrieved_at = resolver.rcsb.fetch_structure(pdb_id)
+        except RecordNotFoundError:
+            enrichments.append({**record, "status": "not_found"})
+            continue
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+            continue
+        mapped = map_structure_entities(
+            rcsb_entry,
+            rcsb_retrieved_at,
+            subjects={anchor},
+            reference_lengths={anchor: length} if length else None,
         )
+        mappings.append(mapped)
+        enrichments.append(
+            {**record, "status": "added", "count": len(mapped["relationships"])}
+        )
+
+    if string is not None:
+        from sabueso.tools.db.stringdb import OnlineStringClient
+
+        client = string_client or OnlineStringClient()
+        species = (entry.get("organism") or {}).get("taxonId")
+        record = {
+            "source": "STRING",
+            "identifier": anchor,
+            "species": species,
+            **string,
+        }
+        try:
+            response = client.partners(anchor, species, **string)
+        except RecordNotFoundError:
+            enrichments.append({**record, "status": "not_found"})
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        else:
+            mapped = map_string_partners(
+                response, anchor, response.get("retrieved_at", "")
+            )
+            mappings.append(mapped)
+            enrichments.append(
+                {
+                    **record,
+                    "required_score": response.get("query", {}).get("required_score"),
+                    "limit": response.get("query", {}).get("limit"),
+                    "status": "added",
+                    "version": response.get("version"),
+                    "count": len(mapped["relationships"]),
+                }
+            )
 
     mappings.append(
         {
@@ -93,6 +147,8 @@ def resolve_protein_card(
         card_id=entity_ref,
         entity_subjects=subjects,
     )
+    if enrichments:
+        card.quality["enrichments"] = enrichments
     card.quality["entity_resolution"] = {
         "status": resolution.status,
         "entity_ref": resolution.entity_ref,

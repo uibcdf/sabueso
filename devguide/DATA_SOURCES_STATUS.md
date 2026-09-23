@@ -73,11 +73,14 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 ## Interaction Sources
 
 ### STRING
-- **Status**: implemented
-- **Access**: online API, local JSON
-- **Quality**: green
-- **Coverage**: interaction partners into `interactions.binding_partners`
-- **Notes**: stable online tests
+- **Status**: implemented as an enricher of `resolve_protein_card` (uibcdf/sabueso#21, part 2c)
+- **Access**: online API (`OnlineStringClient`), saved responses (`FixtureStringClient`, `temp_data/string/`)
+- **Quality**: green for the listed coverage, verified on human TIM (STRING 12.0: 50 partners at score ≥ 700)
+- **Coverage**: `functionally_associated_with` relationships with the combined score, the seven evidence channels, the query parameters and the STRING version (`source.version`)
+- **Notes**:
+  - STRING edges are functional associations, not physical interactions. The channels show whether an association rests on experiments or on pathways, fusion or text mining.
+  - Partners are STRING proteins (`string:<taxon>.<id>`). They are not yet linked to UniProt entities.
+  - The species comes from the UniProt anchor. STRING has no *T. cruzi* species-level entry for P52270: it covers the strain CL Brener (e.g. Q4DV43). The enricher records `not_found` and does not attach the strain network silently.
 
 ---
 

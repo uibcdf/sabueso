@@ -110,13 +110,17 @@ name + organism searches (MVP steps 2–3).
 
 ## ProteinCards from resolved entities
 Implemented in `sabueso/tools/card/protein.py` (#6, step 4c); exported at package root.
-- `resolve_protein_card(query, resolver=None, structures=()) -> (Card | None, EntityResolution)`:
+- `resolve_protein_card(query, resolver=None, structures=(), string=None, string_client=None) -> (Card | None, EntityResolution)`:
   - builds the card of the resolved protein entity; the card is `None` when the query did
     not resolve to a protein;
   - only assertions about the entity (anchor record plus `same_as` records) feed fields,
     enforced through `build_card_from_mapping(..., entity_subjects=...)`;
   - identity links become relationships;
   - `structures=[...]` or `"all"` enriches `has_structure` with RCSB data;
+  - `string={...}` (e.g. `{"required_score": 700, "limit": 50}`) adds STRING
+    `functionally_associated_with` relationships for the entry's organism;
+  - every enrichment outcome (`added`, `not_found`, `error`) is recorded in
+    `quality.enrichments`, and a failed enrichment never prevents the card;
   - the resolution trace goes to `quality.entity_resolution`.
 - `ambiguity_deck(resolution) -> Deck`: light candidate cards (UniProt accession,
   organism, length) for the candidates of an ambiguous resolution, or for the alternatives

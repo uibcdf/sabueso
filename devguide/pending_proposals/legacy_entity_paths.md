@@ -97,7 +97,23 @@ domains and sites are not families. Tests:
   access key.
 - Not replaced yet: TED/SCOPe domain assignments, positional InterPro domains and
   PhosphoSitePlus PTM sites (noted in `DATA_SOURCES_STATUS.md`).
-- **Part 2c: pending.** STRING becomes an interaction enricher of
-  `resolve_protein_card`, with scores and channels, instead of a partner-name card.
+- **Part 2c: done.** STRING is an enricher of `resolve_protein_card`:
+  - it produces `functionally_associated_with` relationships, a new predicate, because
+    STRING edges are functional associations and not physical interactions. For
+    example, TPI1–GAPDHS scores 0.999 from pathway databases (0.978) and fusion, with
+    experiments at 0.137;
+  - it records the channels, the query parameters and the STRING version
+    (`source.version`, 12.0);
+  - `create_string_card_online` and the partner-name field
+    `interactions.binding_partners` are removed.
+
+  Every enrichment outcome, from STRING and from RCSB, is recorded in
+  `quality.enrichments`, and a failed enrichment no longer prevents the card. For
+  example, *T. cruzi* TIM is `not_found` in STRING: its strain entry Q4DV43 is not
+  attached silently.
+
+  Also fixed a regression from part 2a: `structures="all"` would have fetched every
+  relationship object (including `go:`/`pfam:` refs) as PDB entries. It now uses
+  `has_structure` only. Tests: `tests/core/test_string_associations_offline.py`.
 
 Part 3 is pending.

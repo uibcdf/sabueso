@@ -26,7 +26,8 @@ PREDICATES = frozenset(
         "has_structure",
         "annotated_with",  # protein -> GO term
         "classified_in",  # protein -> family / domain / superfamily / site entry
-        "interacts_with",  # protein -> protein
+        "interacts_with",  # protein -> protein (physical interaction, e.g. IntAct)
+        "functionally_associated_with",  # protein -> protein (STRING functional link)
     }
 )
 

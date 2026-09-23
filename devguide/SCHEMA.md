@@ -119,8 +119,14 @@ A Relationship is first-class, traceable knowledge:
     - `classified_in` (protein → family, domain, superfamily or site entry). Qualifiers:
       `classification`, `name` and `match_count`. Object namespaces are `interpro:`,
       `pfam:`, `cath:` (Gene3D), `supfam:`, `panther:`, `prosite:` and `cdd:`;
-    - `interacts_with` (protein → protein). Qualifiers: `partner_gene`, `intact_ids`,
-      `experiments`, `organism_differ` and `curated_by`.
+    - `interacts_with` (protein → protein; physical interactions, e.g. IntAct via
+      UniProt). Qualifiers: `partner_gene`, `intact_ids`, `experiments`,
+      `organism_differ` and `curated_by`;
+    - `functionally_associated_with` (protein → `string:<taxon>.<id>`; STRING functional
+      associations, not physical binding). Qualifiers: `partner_name`, `combined_score`,
+      `channels` (neighborhood, fusion, cooccurrence, coexpression, experiments,
+      databases, textmining), `string_id`, `species` and `required_score`. Supporting
+      assertions record the STRING version in `source.version`.
 
   Any other predicate is rejected, and the vocabulary is extended deliberately. If
   components outside Sabueso (Nextia, MOLI Agent Context Assembly) come to depend on it,

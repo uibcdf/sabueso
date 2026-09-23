@@ -12,7 +12,9 @@ schema:
     relationships shown through Card.structures() (uibcdf/sabueso#6, uibcdf/sabueso#21).
     annotations.go_terms was removed because GO annotations are annotated_with
     relationships (uibcdf/sabueso#21). annotations.domains stays reserved (not produced), since domain
-    classifications are classified_in relationships.
+    classifications are classified_in relationships. interactions.binding_partners was
+    removed because interactions are interacts_with (physical, IntAct) and
+    functionally_associated_with (STRING) relationships (uibcdf/sabueso#21).
 card_base:
   meta:
     card_id:
@@ -222,12 +224,6 @@ card_base:
       value:
       - location: any
         description: string
-      source_assertion_ids:
-      - string
-  interactions:
-    binding_partners:
-      value:
-      - string
       source_assertion_ids:
       - string
   clinical: "*"

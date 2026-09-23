@@ -69,9 +69,8 @@ card_base:
     domains: { value: [string], source_assertion_ids: [string] }
     families: { value: [string], source_assertion_ids: [string] }
 
-  interactions:
-    binding_partners: { value: [string], source_assertion_ids: [string] }
-    ppi_databases: { value: [string], source_assertion_ids: [string] }
+  # Interactions are relationships, not fields: interacts_with (physical, e.g. IntAct)
+  # and functionally_associated_with (STRING functional associations) (uibcdf/sabueso#21).
 
   references:
     publications: { value: [ { title: string, doi: string, pmid: string } ], source_assertion_ids: [string] }

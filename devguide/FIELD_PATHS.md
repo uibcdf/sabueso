@@ -64,9 +64,6 @@ Versioning: **x.y.z** (no leading `v`).
 - `features_positional.disulfide_bond`
 - `features_positional.glycosylation`
 
-### interactions.*
-- `interactions.binding_partners`
-
 ### clinical.*
 - `clinical.pharmacology`
 - `clinical.pharmacokinetics`

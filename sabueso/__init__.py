@@ -28,7 +28,6 @@ from sabueso.tools.db.pubchem import (
     create_compound_card_from_json,
     create_compound_card_online,
 )
-from sabueso.tools.db.stringdb import create_string_card_online
 from sabueso.tools.db.uniprot import (
     create_protein_card,
     create_protein_card_from_file,
@@ -48,7 +47,6 @@ __all__ = [
     "create_molecule_card_from_file",
     "create_molecule_card_from_json",
     "create_molecule_card_online",
-    "create_string_card_online",
     "resolve_protein_card",
     "ambiguity_deck",
     "save_card_json",
