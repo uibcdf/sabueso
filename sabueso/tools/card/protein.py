@@ -28,6 +28,7 @@ from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.core.merge import merge_mapping_results
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.mappings.chembl import map_bioactivities
+from sabueso.mappings.interpro import map_family_sites
 from sabueso.mappings.pdbe_kb import map_ligand_sites
 from sabueso.mappings.rcsb_structures import map_structure_entities
 from sabueso.mappings.stringdb import map_string_partners
@@ -51,6 +52,8 @@ def resolve_protein_card(
     chembl_client: Any | None = None,
     ligand_sites: bool = False,
     pdbe_kb_client: Any | None = None,
+    family_sites: bool = False,
+    interpro_client: Any | None = None,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
 
@@ -60,7 +63,9 @@ def resolve_protein_card(
     entry's organism. ``chembl`` (e.g. ``{}`` or ``{"limit": 1000}``) adds the ChEMBL
     bioactivities of the targets the entry cross-references (``Card.bioactivities()``).
     ``ligand_sites`` adds the residues each ligand contacts in the protein's structures,
-    from PDBe-KB (``Card.ligand_sites()``).
+    from PDBe-KB (``Card.ligand_sites()``). ``family_sites`` adds the site residues that
+    InterPro member databases place on the protein's sequence
+    (``features_positional.family_site``).
     Every enrichment outcome (added, not_found, error) is recorded in
     ``quality.enrichments``. Returns ``(card, resolution)``; ``card`` is None when the
     query did not resolve to a protein entity.
@@ -196,6 +201,29 @@ def resolve_protein_card(
             mappings.append(mapped)
             enrichments.append(
                 {**record, "status": "added", "count": len(mapped["relationships"])}
+            )
+
+    if family_sites:
+        from sabueso.tools.db.interpro import OnlineInterProClient
+
+        client = interpro_client or OnlineInterProClient()
+        record = {"source": "InterPro", "identifier": anchor}
+        try:
+            response = client.site_residues(anchor)
+        except RecordNotFoundError as exc:
+            enrichments.append({**record, "status": "not_found", "detail": str(exc)})
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        else:
+            mapped = map_family_sites(response, response.get("retrieved_at", ""))
+            mappings.append(mapped)
+            enrichments.append(
+                {
+                    **record,
+                    "status": "added",
+                    "version": response.get("version"),
+                    "count": len(mapped["source_assertions"]),
+                }
             )
 
     mappings.append(

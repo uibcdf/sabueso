@@ -22,6 +22,10 @@ Three statements now meet on a protein card:
 2. **PDBe-KB ligand sites.** `has_ligand_site` relationships (protein → `pdb.ligand:<code>`): the residues each ligand contacts in UniProt numbering, aggregated over all structures of the protein, with PDBe-KB's own descriptors.
 3. **RCSB per-instance contacts.** In the `ligands` qualifier of `has_structure`, each ligand instance keeps its neighbour residues. They are mapped from structure `seq_id` to UniProt numbering through the entity alignment the card already holds.
 
+A fourth statement came with the InterPro step:
+
+4. **InterPro family sites.** `features_positional.family_site`: the sites a member database places on the protein's own sequence from its family model. On TIM these are CDD `cd00311`'s catalytic triad, substrate binding site and dimer interface.
+
 `Card.ligand_sites()` puts them side by side. `Card.ligands(deck)` and `Card.compare_ligands(...)` carry each molecule's site, so a ligand's site can be compared between two proteins.
 
 ## How / evidence
@@ -45,6 +49,19 @@ Measured on 2026-09-23. Fixtures: `temp_data/pdbe_kb/`, and `temp_data/rcsb/` re
 
 **Also observed.** One of seven sulfate instances in 1SUX (asym F) contacts Lys14, Gly174, Ser214, Gly235 and Gly236, the phosphate-binding residues.
 
+**InterPro places family sites on each sequence.**
+- One CDD model (`cd00311`), placed by InterPro: catalytic triad 14, 96, 166 on HsTIM and 14, 96, 168 on TcTIM.
+- The substrate binding site has 9 residues on each.
+- 2-phosphoglycolate contacts all 9 on HsTIM.
+- Anions (sulfate in 1SUX, phosphate on HsTIM, glycerol in 4HHP) contact the phosphate-binding part of it.
+- BTS contacts no annotation at all, including the family's dimer interface, although one BTS instance contacts both chains. Both statements are kept.
+- InterPro answers an empty object both for "no site residues" and for an unknown accession.
+
+**M-CSA states mechanism on a reference protein only.**
+- M-CSA links HsTIM and TcTIM to entry 324.
+- Its seven catalytic residues and roles are stated only in chicken TIM numbering (P00940, 1TPH), for both.
+- Placing them on another sequence needs an alignment, which Sabueso does not compute. M-CSA is therefore not implemented. The positional part is covered by InterPro, and the mechanistic roles wait on the boundary evaluated in uibcdf/sabueso#30.
+
 **Order.** RCSB returns polymer entities and instances in no fixed order. The mapping sorts them, and a test checks that shuffled input gives the same output.
 
 **Tests.** `tests/core/test_ligand_sites_offline.py` covers these cases. The online counterpart is in `tests/core/test_online_protein_card.py`.
@@ -55,9 +72,11 @@ Knowing that a molecule is active on a target is incomplete without knowing wher
 
 ## Decisions (MVP)
 
-- **Predicate `has_ligand_site`** (protein → `pdb.ligand:<code>`). There is one relationship per protein–ligand pair, identified by the pair, as PDBe-KB aggregates per ligand. It is supported by a PDBe-KB SourceAssertion holding the ligand record verbatim. The subject namespace is `pdbekb:<accession>`, because PDBe-KB records are keyed by UniProt accession.
-- **Overlap is derived** (`annotated_site_overlap@1`): an exact residue match in UniProt numbering. The classes are `overlaps_annotated_site`, `no_annotated_overlap`, `no_annotated_sites` and `numbering_not_comparable`. "No annotated overlap" is not "binds elsewhere", because annotations are sparse; the rule's docstring says so.
+- **Predicate `has_ligand_site`** (protein → `pdb.ligand:<code>`). There is one relationship per protein–ligand pair, identified by the pair, as PDBe-KB aggregates per ligand. It is supported by a PDBe-KB SourceAssertion holding the ligand record verbatim. The SourceAssertion subject is `uniprot:<accession>`, because PDBe-KB keys its records by UniProt accession.
+- **Overlap is derived** (`annotated_site_overlap@2`; `@1` compared UniProt sites only): an exact residue match in UniProt numbering, against UniProt and InterPro family sites. Each overlap names the annotation, its source and the matched positions, because touching a catalytic triad and touching a dimer interface mean different things. The classes are `overlaps_annotated_site`, `no_annotated_overlap`, `no_annotated_sites` and `numbering_not_comparable`. "No annotated overlap" is not "binds elsewhere", because annotations are sparse; the rule's docstring says so.
 - **Chain spanning comes only from instance-level contacts.** It is `None` when unknown, never `[]`.
+- **Family sites stay apart from UniProt's** (`family_site`, not merged into `active_site`/`binding_site`): they are placed by a family model, not annotated on this protein.
+- **Explicit subjects.** InterPro and PDBe-KB SourceAssertions have subject `uniprot:<accession>`, because both key their protein records by UniProt accession.
 - **Relevance.** PDBe-KB's descriptors and the PDB flag stay separate. Neither overrides the other.
 - **Deck.** `ligand_deck` includes ligands PDBe-KB reports in structures the card has not fetched. Their PDB flag is unknown, so with the default `"of_interest"` they are listed as excluded with reason `subject_of_investigation_unknown`.
 
@@ -76,10 +95,13 @@ Knowing that a molecule is active on a target is incomplete without knowing wher
 - [x] UniProt binding sites keep their ligand.
 - [x] Chain spanning read from instance-level contacts, never from aggregated chains.
 - [x] Sites carried into `Card.ligands` and `Card.compare_ligands`.
-- [ ] M-CSA catalytic roles (why a residue is catalytic).
-- [ ] InterPro/PROSITE positional site matches.
+- [ ] M-CSA catalytic roles. Evaluated: M-CSA positions are in its reference protein's numbering only, and transferring them needs an alignment (uibcdf/sabueso#30).
+- [x] InterPro positional site residues (CDD family sites), placed by the source on each sequence.
 - [ ] BioLiP as a batch import, if a use appears.
 
 ## Resolution
 
-Partial: plan steps 1 and 2, the RCSB instance contacts of step 4, and the carrying of sites into the ligand comparison (step 3) were implemented on 2026-09-23. M-CSA, InterPro positions and BioLiP remain open in uibcdf/sabueso#28.
+Partial, all on 2026-09-23:
+- implemented: plan steps 1 and 2, the RCSB instance contacts of step 4, the carrying of sites into the ligand comparison (step 3), and InterPro family sites;
+- evaluated and held back: M-CSA, blocked on residue mapping (#30);
+- open in uibcdf/sabueso#28: BioLiP.

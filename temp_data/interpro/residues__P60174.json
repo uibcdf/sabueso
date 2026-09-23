@@ -1,0 +1,153 @@
+{
+ "residues": {
+  "cd00311": {
+   "accession": "cd00311",
+   "locations": [
+    {
+     "description": "dimer interface",
+     "fragments": [
+      {
+       "end": 12,
+       "residues": "N",
+       "start": 12
+      },
+      {
+       "end": 15,
+       "residues": "M",
+       "start": 15
+      },
+      {
+       "end": 46,
+       "residues": "T",
+       "start": 46
+      },
+      {
+       "end": 47,
+       "residues": "A",
+       "start": 47
+      },
+      {
+       "end": 48,
+       "residues": "Y",
+       "start": 48
+      },
+      {
+       "end": 50,
+       "residues": "D",
+       "start": 50
+      },
+      {
+       "end": 53,
+       "residues": "R",
+       "start": 53
+      },
+      {
+       "end": 65,
+       "residues": "Q",
+       "start": 65
+      },
+      {
+       "end": 83,
+       "residues": "M",
+       "start": 83
+      },
+      {
+       "end": 86,
+       "residues": "D",
+       "start": 86
+      },
+      {
+       "end": 87,
+       "residues": "C",
+       "start": 87
+      },
+      {
+       "end": 98,
+       "residues": "E",
+       "start": 98
+      },
+      {
+       "end": 99,
+       "residues": "R",
+       "start": 99
+      }
+     ]
+    },
+    {
+     "description": "catalytic triad",
+     "fragments": [
+      {
+       "end": 14,
+       "residues": "K",
+       "start": 14
+      },
+      {
+       "end": 96,
+       "residues": "H",
+       "start": 96
+      },
+      {
+       "end": 166,
+       "residues": "E",
+       "start": 166
+      }
+     ]
+    },
+    {
+     "description": "substrate binding site",
+     "fragments": [
+      {
+       "end": 12,
+       "residues": "N",
+       "start": 12
+      },
+      {
+       "end": 14,
+       "residues": "K",
+       "start": 14
+      },
+      {
+       "end": 96,
+       "residues": "H",
+       "start": 96
+      },
+      {
+       "end": 166,
+       "residues": "E",
+       "start": 166
+      },
+      {
+       "end": 172,
+       "residues": "G",
+       "start": 172
+      },
+      {
+       "end": 212,
+       "residues": "S",
+       "start": 212
+      },
+      {
+       "end": 231,
+       "residues": "L",
+       "start": 231
+      },
+      {
+       "end": 233,
+       "residues": "G",
+       "start": 233
+      },
+      {
+       "end": 234,
+       "residues": "G",
+       "start": 234
+      }
+     ]
+    }
+   ],
+   "name": "TIM",
+   "source_database": "cdd"
+  }
+ },
+ "retrieved_at_original": "2026-09-23T19:19:48+00:00",
+ "version": "110.0"
+}

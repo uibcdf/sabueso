@@ -72,6 +72,7 @@ def map_ligand_sites(response: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             "PDBe-KB",
             accession,
             retrieved_at,
+            subject_ref=f"uniprot:{accession}",  # PDBe-KB keys records by UniProt
         )
         source_assertions.append(assertion)
         extra = ligand.get("additionalData") or {}

@@ -23,7 +23,6 @@ SOURCE_NAMESPACES: Dict[str, str] = {
     "RCSB PDB": "pdb",
     "PDB CCD": "pdb.ligand",  # wwPDB Chemical Component Dictionary (served by RCSB)
     "UniChem": "unichem",
-    "PDBe-KB": "pdbekb",  # PDBe-KB records are keyed by UniProt accession
     "PubChem": "pubchem",
     "ChEMBL": "chembl",
     "GO": "go",
@@ -107,13 +106,19 @@ def make_source_assertion(
     record_id: str,
     retrieved_at: str,
     source_type: str = "database",
+    subject_ref: str | None = None,
 ) -> SourceAssertion:
-    """Build a SourceAssertion with its deterministic id and subject reference."""
+    """Build a SourceAssertion with its deterministic id and subject reference.
+
+    The subject defaults to ``<source namespace>:<record_id>``. Pass ``subject_ref`` when
+    the source keys its record by another namespace, e.g. InterPro and PDBe-KB protein
+    records are keyed by UniProt accession, so their subject is ``uniprot:<accession>``.
+    """
     return {
         "id": generate_source_assertion_id(
             source_name, record_id, field_path, asserted_value
         ),
-        "subject_ref": make_subject_ref(source_name, record_id),
+        "subject_ref": subject_ref or make_subject_ref(source_name, record_id),
         "field_path": field_path,
         "asserted_value": asserted_value,
         "source": {"type": source_type, "name": source_name, "record_id": record_id},

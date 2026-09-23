@@ -75,7 +75,7 @@ def test_pdbe_kb_sites_are_supported_relationships(resolver):
     assertion = card.source_assertion_store.get(sa_id)
     assert (assertion["source"]["name"], assertion["subject_ref"]) == (
         "PDBe-KB",
-        "pdbekb:P52270",
+        "uniprot:P52270",
     )
 
 
@@ -92,7 +92,7 @@ def test_two_sources_agree_on_the_human_active_site(resolver):
     # 2-phosphoglycolate, a transition-state analogue, contacts every annotated residue.
     assert [o["start"] for o in pga["annotated_overlap"]] == [12, 14, 96, 166]
     assert pga["site_class"] == "overlaps_annotated_site"
-    assert view["classification"]["rule"] == "annotated_site_overlap@1"
+    assert view["classification"]["rule"] == "annotated_site_overlap@2"
 
 
 def test_bts_binds_away_from_the_annotated_site_and_across_chains(resolver):
@@ -226,3 +226,75 @@ def test_sites_reach_the_ligand_deck_and_its_crossing(resolver):
             "spans_chains": ["pdb:1SUX"],
         }
     ]
+
+
+# InterPro family sites: positioned by the source on each protein's own sequence.
+
+
+def _with_family_sites(resolver, accession, structures=()):
+    from sabueso.tools.db.interpro import FixtureInterProClient
+
+    return _card(
+        resolver,
+        accession,
+        structures=structures,
+        family_sites=True,
+        interpro_client=FixtureInterProClient("temp_data"),
+    )
+
+
+def test_family_sites_are_placed_on_each_sequence_by_the_source(resolver):
+    def triad(card):
+        return next(
+            a["positions"]
+            for a in card.ligand_sites()["annotated_sites"]
+            if a["description"] == "catalytic triad"
+        )
+
+    human = _with_family_sites(resolver, "P60174")
+    parasite = _with_family_sites(resolver, "P52270")
+    # One CDD model (cd00311), placed by InterPro on each sequence: the parasite
+    # enzyme's catalytic glutamate is residue 168, the human one's 166.
+    assert (triad(human), triad(parasite)) == ([14, 96, 166], [14, 96, 168])
+    enrichment = next(
+        e for e in human.quality["enrichments"] if e["source"] == "InterPro"
+    )
+    assert (enrichment["status"], enrichment["version"], enrichment["count"]) == (
+        "added",
+        "110.0",
+        3,
+    )
+    (sa_id,) = [
+        i
+        for i in human.get("features_positional.family_site")["source_assertion_ids"]
+        if human.source_assertion_store.get(i)["asserted_value"]["description"]
+        == "catalytic triad"
+    ]
+    assertion = human.source_assertion_store.get(sa_id)
+    assert (
+        assertion["subject_ref"] == "uniprot:P60174"
+    )  # InterPro keys proteins by UniProt
+    assert assertion["source_metadata"] == {
+        "member_database": "cdd",
+        "signature": "cd00311",
+    }
+
+
+def test_each_overlap_names_its_annotation_and_source(resolver):
+    sites = _sites(_with_family_sites(resolver, "P52270", structures=["1SUX"]))
+    sulfate = {
+        (o["source"], o["description"] or o["kind"]): o["matched"]
+        for o in sites["pdb.ligand:SO4"]["annotated_overlap"]
+    }
+    # Sulfate sits in the phosphate-binding part of the substrate site.
+    assert sulfate[("InterPro", "substrate binding site")] == [14, 174, 214, 235, 236]
+    # BTS touches no annotation, including the family's dimer interface.
+    assert sites["pdb.ligand:BTS"]["annotated_overlap"] == []
+
+
+def test_no_site_residues_is_not_found():
+    from sabueso.core.errors import RecordNotFoundError
+    from sabueso.tools.db.interpro import FixtureInterProClient
+
+    with pytest.raises(RecordNotFoundError, match="does not know it"):
+        FixtureInterProClient("temp_data").site_residues("P00000")

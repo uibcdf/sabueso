@@ -161,6 +161,7 @@ protein_card:
     binding_site: [ { location: { sequence: any, structure: any }, description: string, ligand: { name: string, id: string, label: string, note: string }, source_assertion_ids: [string] } ]
     chain: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
     disulfide_bond: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    family_site: [ { location: { sequence: any }, description: string, signature: { accession: string, source_database: string, name: string }, source_assertion_ids: [string] } ]
     domain: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
     glycosylation: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
     helix: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]

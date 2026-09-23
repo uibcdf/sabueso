@@ -1,15 +1,20 @@
 """Ligand sites of a protein crossed with its annotated sites (uibcdf/sabueso#28).
 
-A ProteinCard can hold two independent statements about where things bind:
+A ProteinCard can hold independent statements about where things bind:
 
 - the functional sites UniProt annotates (``features_positional.active_site`` and
   ``binding_site``), each with its ECO evidence and, for binding sites, its ligand;
+- the sites InterPro member databases place on the sequence from their family models
+  (``features_positional.family_site``, e.g. CDD's catalytic triad, substrate binding site
+  and dimer interface);
 - the residues each ligand contacts in experimental structures, from PDBe-KB
   (``has_ligand_site`` relationships), in UniProt numbering.
 
 ``ligand_sites_view`` puts them side by side. Whether a ligand site overlaps an annotated
-site is derived knowledge, computed here with rule ``annotated_site_overlap@1``: an exact
-match of residue positions in UniProt numbering. It is never stored.
+site is derived knowledge, computed here with rule ``annotated_site_overlap@2``: an exact
+match of residue positions in UniProt numbering, against every annotated site. It is
+never stored. Each overlap names the annotation and its source, because overlapping a
+catalytic triad and overlapping a dimer interface mean different things.
 
 Absence states stay distinct. "No annotated overlap" is not "binds elsewhere": UniProt
 annotations are sparse (four residues for TIM), and a ligand can bind next to an annotated
@@ -28,10 +33,12 @@ from __future__ import annotations
 import json
 from typing import Any, Dict, List
 
-SITE_OVERLAP_RULE = "annotated_site_overlap@1"
+# @1 compared UniProt sites only; @2 adds InterPro family sites (uibcdf/sabueso#28).
+SITE_OVERLAP_RULE = "annotated_site_overlap@2"
 ANNOTATED_SITES = {
     "active_site": "features_positional.active_site",
     "binding_site": "features_positional.binding_site",
+    "family_site": "features_positional.family_site",
 }
 
 
@@ -51,16 +58,26 @@ def annotated_sites(card: Any) -> List[Dict[str, Any]]:
         by_value = {_key(a["asserted_value"]): a for a in assertions if a}
         for item in node.get("value") or []:
             sequence = (item.get("location") or {}).get("sequence") or {}
-            if sequence.get("start") is None:
+            spans = sequence.get("fragments") or (
+                [{"start": sequence["start"], "end": sequence.get("end")}]
+                if sequence.get("start") is not None
+                else []
+            )
+            positions = _positions(spans)
+            if not positions:
                 continue
             assertion = by_value.get(_key(item)) or {}
+            signature = item.get("signature") or {}
             out.append(
                 {
                     "kind": kind,
-                    "start": sequence["start"],
-                    "end": sequence.get("end") or sequence["start"],
+                    "start": positions[0],
+                    "end": positions[-1],
+                    "positions": positions,
                     "description": item.get("description") or None,
                     "ligand": item.get("ligand"),
+                    "source": (assertion.get("source") or {}).get("name"),
+                    "signature": signature.get("accession"),
                     "evidence": [
                         e.get("code")
                         for e in (assertion.get("source_metadata") or {}).get("eco")
@@ -69,7 +86,7 @@ def annotated_sites(card: Any) -> List[Dict[str, Any]]:
                     "source_assertion_id": assertion.get("id"),
                 }
             )
-    return sorted(out, key=lambda s: (s["start"], s["kind"]))
+    return sorted(out, key=lambda s: (s["start"], s["kind"], s["description"] or ""))
 
 
 def _positions(residues: List[Dict[str, Any]]) -> List[int]:
@@ -115,6 +132,7 @@ def site_overlap_derivation() -> Dict[str, Any]:
             "has_ligand_site.residues",
             ANNOTATED_SITES["active_site"],
             ANNOTATED_SITES["binding_site"],
+            ANNOTATED_SITES["family_site"],
         ],
         parameters={"match": "exact residue position", "numbering": "uniprot"},
     )
@@ -138,9 +156,9 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
         code = rel["object_ref"].split(":", 1)[1]
         flags, instances = _structure_statements(card, code)
         overlap = [
-            site
+            {**site, "matched": sorted(set(site["positions"]) & set(positions))}
             for site in annotated
-            if any(site["start"] <= p <= site["end"] for p in positions)
+            if set(site["positions"]) & set(positions)
         ]
         if q.get("numbering") != "uniprot":
             site_class = "numbering_not_comparable"
@@ -171,7 +189,18 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
                 "significance": q.get("significance"),
                 "subject_of_investigation": flags,
                 "annotated_overlap": [
-                    {k: site[k] for k in ("kind", "start", "end", "description")}
+                    {
+                        k: site[k]
+                        for k in (
+                            "kind",
+                            "start",
+                            "end",
+                            "description",
+                            "source",
+                            "signature",
+                            "matched",
+                        )
+                    }
                     for site in overlap
                 ],
                 "site_class": site_class,

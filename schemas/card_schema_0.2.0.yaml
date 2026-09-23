@@ -230,6 +230,16 @@ card_base:
         description: string
       source_assertion_ids:
       - string
+    family_site:
+      value:
+      - location: any
+        description: string
+        signature:
+          accession: string
+          source_database: string
+          name: string
+      source_assertion_ids:
+      - string
     glycosylation:
       value:
       - location: any

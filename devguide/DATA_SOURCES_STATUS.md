@@ -114,6 +114,21 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - An accession without data answers 404, mapped to not found.
   - Licence: CC BY 4.0, academic and commercial use; cite the PDBe-KB consortium paper.
 
+### InterPro — site residues
+- **Status**: implemented as an enricher of `resolve_protein_card` (uibcdf/sabueso#28)
+- **Access**: InterPro API `protein/uniprot/<accession>/?residues` (`OnlineInterProClient`), saved responses (`FixtureInterProClient`, `temp_data/interpro/`)
+- **Quality**: green for the listed coverage, verified on TcTIM and HsTIM (InterPro 110.0, CDD `cd00311`)
+- **Coverage**: `features_positional.family_site`: sites a member database places on the protein's sequence, with description and signature
+- **Notes**:
+  - Positions are placed by the source's family model, so Sabueso never aligns sequences. The same CDD model places TcTIM's catalytic glutamate at 168 and HsTIM's at 166.
+  - An empty answer is the same for "no site residues" and "unknown accession"; both are recorded as not_found with that caveat.
+  - The release is read from the `InterPro-Version` response header.
+  - Licence: InterPro CC0 1.0; member-database content may carry its own terms. The CDD sites are NCBI work (US public domain, NLM policy).
+
+### M-CSA — evaluated, not implemented (uibcdf/sabueso#28)
+- M-CSA links HsTIM and TcTIM to entry 324 (triosephosphate isomerase), but it states catalytic residues and roles only in the numbering of its reference protein (chicken TIM, P00940, PDB 1TPH).
+- Placing them on another sequence needs an alignment, which Sabueso does not compute (`devguide/DECISIONS.md`; boundary evaluated in uibcdf/sabueso#30). The InterPro family sites cover the positional part; M-CSA would add mechanistic roles once a source-stated mapping or a MolSysSuite/Praxis result is available.
+
 ### STRING
 - **Status**: implemented as an enricher of `resolve_protein_card` (uibcdf/sabueso#21, part 2c)
 - **Access**: online API (`OnlineStringClient`), saved responses (`FixtureStringClient`, `temp_data/string/`)

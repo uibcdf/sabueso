@@ -158,10 +158,11 @@ Implemented in `sabueso/tools/card/protein.py` (#6, step 4c); exported at packag
     (`bioactivity_class@1`);
   - `ligand_sites=True` adds PDBe-KB `has_ligand_site` relationships.
     `Card.ligand_sites()` puts each ligand's contacted residues next to the UniProt active
-    and binding sites (`annotated_site_overlap@1`: overlaps_annotated_site,
+    and binding sites and InterPro family sites (`annotated_site_overlap@2`: overlaps_annotated_site,
     no_annotated_overlap, no_annotated_sites or numbering_not_comparable), with the
     per-instance contacts of the fetched structures and `spans_chains` (`None` when no
     instance-level data is available);
+  - `family_sites=True` adds InterPro site residues (`features_positional.family_site`);
   - every enrichment outcome (`added`, `not_found`, `error`) is recorded in
     `quality.enrichments`, and a failed enrichment never prevents the card;
   - the resolution trace goes to `quality.entity_resolution`.

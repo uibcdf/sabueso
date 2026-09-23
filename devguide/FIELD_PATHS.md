@@ -60,6 +60,7 @@ Versioning: **x.y.z** (no leading `v`).
 - `features_positional.domains` (positional domains)
 - `features_positional.active_site`
 - `features_positional.binding_site`
+- `features_positional.family_site` (sites an InterPro member database places on the sequence, e.g. CDD catalytic triad; one item per site, with its signature)
 - `features_positional.modified_residue`
 - `features_positional.disulfide_bond`
 - `features_positional.glycosylation`

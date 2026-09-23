@@ -1,4 +1,4 @@
-"""resolve_protein_card against live UniProt, RCSB, STRING, ChEMBL and PDBe-KB (network)."""
+"""resolve_protein_card against live UniProt, RCSB, STRING, ChEMBL, PDBe-KB and InterPro (network)."""
 
 import pytest
 
@@ -41,3 +41,16 @@ def test_online_ligand_sites_with_instance_contacts():
     bts = {i["ligand"]: i for i in card.ligand_sites()["items"]}["pdb.ligand:BTS"]
     assert {71, 75, 102} <= set(bts["positions"])
     assert bts["spans_chains"] == ["pdb:1SUX"]
+
+
+@pytest.mark.online
+def test_online_family_sites_from_interpro():
+    card, _ = resolve_protein_card("P60174", family_sites=True)
+    (outcome,) = [e for e in card.quality["enrichments"] if e["source"] == "InterPro"]
+    assert outcome["status"] == "added" and outcome["version"]
+    descriptions = {
+        a["description"]: a["positions"]
+        for a in card.ligand_sites()["annotated_sites"]
+        if a["kind"] == "family_site"
+    }
+    assert descriptions["catalytic triad"] == [14, 96, 166]

@@ -24,6 +24,7 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | `rcsb/*.json` | RCSB PDB (wwPDB archive), GraphQL entry data | — | 2026-09-23 | CC0 1.0 |
 | `pdb_ccd/*.json` | wwPDB Chemical Component Dictionary, served by RCSB PDB | — | 2026-09-23 | CC0 1.0 |
 | `pdbe_kb/*.json` | PDBe-KB (EMBL-EBI), ligand binding sites | — | 2026-09-23 | CC BY 4.0 |
+| `interpro/*.json` | InterPro (EMBL-EBI), site residues from the CDD member database | InterPro 110.0 | 2026-09-23 | see note below |
 | `string/*.json` | STRING | 12.0 | 2026-09-23 | CC BY 4.0 |
 | `chembl/*.json`, `CHEMBL90555.json` | ChEMBL (EMBL-EBI) | ChEMBL_37 (released 2026-05-01) | 2026-09-23 | **CC BY-SA 3.0** |
 | `unichem/*.json` | UniChem (EMBL-EBI) | — | 2026-09-23 | see note below |
@@ -45,6 +46,10 @@ JSON.
   crediting the depositors of each structure is good practice.
 - **PDBe-KB** — PDBe-KB consortium, https://www.ebi.ac.uk/pdbe/pdbe-kb, CC BY 4.0, free for
   academic and commercial use. PDBe-KB asks users to cite the PDBe-KB consortium paper.
+- **InterPro** — EMBL-EBI, https://www.ebi.ac.uk/interpro/. InterPro data is CC0 1.0, but
+  InterPro notes that member-database signature collections may carry their own terms.
+  The site residues in these fixtures come from **CDD** (NCBI), a U.S. government work
+  under NLM policy, like PubChem.
 - **STRING** — https://string-db.org, CC BY 4.0.
 - **ChEMBL** — EMBL-EBI, https://www.ebi.ac.uk/chembl/, CC BY-SA 3.0 Unported
   (https://creativecommons.org/licenses/by-sa/3.0/).

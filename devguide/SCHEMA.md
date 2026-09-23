@@ -152,8 +152,9 @@ A Relationship is first-class, traceable knowledge:
       `chembl_id` and `drugbank_id`. PDBe-KB aggregates ligand copies, so its per-residue
       chains do not say whether one ligand contacts several chains; that reading comes
       from the per-instance contacts of `has_structure`.
-    - Overlap with annotated sites is derived by `Card.ligand_sites()`
-      (`annotated_site_overlap@1`), and only there.
+    - Overlap with annotated sites (UniProt and InterPro family sites) is derived by
+      `Card.ligand_sites()` (`annotated_site_overlap@2`), and only there. Each overlap names
+      the annotation, its source and the matched positions.
 
   Any other predicate is rejected, and the vocabulary is extended deliberately. If
   components outside Sabueso (Nextia, MOLI Agent Context Assembly) come to depend on it,
@@ -175,7 +176,18 @@ A Relationship is first-class, traceable knowledge:
 - **SourceAssertions that support a relationship** use
   `field_path = relationships.<predicate>`.
   UniProt binding-site features keep their `ligand` (`name`, ChEBI `id`, and the `label`
-  that tells two sites of the same ligand apart). A shared context record uses a sub-path, such as
+  that tells two sites of the same ligand apart).
+- **Family sites (#28):** `features_positional.family_site` holds the sites InterPro member
+  databases place on the protein's own sequence (e.g. CDD `cd00311`: catalytic triad,
+  substrate binding site, dimer interface). Each item has `location.sequence.fragments`,
+  the verbatim `description` and its `signature`. They are family-level annotations,
+  placed by the source's model, and stay apart from UniProt's `active_site` and
+  `binding_site`. Their SourceAssertions have subject `uniprot:<accession>` (InterPro keys
+  proteins by UniProt accession), the InterPro release in `source.version`, and the
+  member database and signature in `source_metadata`.
+- **Explicit SourceAssertion subjects:** a source that keys its records by another
+  namespace passes `subject_ref` to `make_source_assertion` (InterPro, PDBe-KB:
+  `uniprot:<accession>`). A shared context record uses a sub-path, such as
   `relationships.has_bioactivity.assay` for an assay. Their `asserted_value` is what the source
   states, i.e. the object and qualifiers as given by that source. Source property names
   are kept verbatim (e.g. UniProt's `GoEvidenceType`), while the relationship's
