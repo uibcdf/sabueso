@@ -63,6 +63,7 @@ class Card:
         return {
             "meta": self.meta,
             "sections": self.sections,
+            "source_assertion_store": self.source_assertion_store.to_list(),
             "selection_rules": self.selection_rules,
             "quality": self.quality,
         }
