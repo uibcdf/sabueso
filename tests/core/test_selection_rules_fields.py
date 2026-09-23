@@ -19,7 +19,10 @@ def test_domains_priority_sources_allow_multiple():
     rules = {
         "priority_sources": ["InterPro", "CATH", "SCOPe", "TED"],
         "field_rules": {
-            "annotations.domains": {"strategy": "priority_sources", "allow_multiple": True}
+            "annotations.domains": {
+                "strategy": "priority_sources",
+                "allow_multiple": True,
+            }
         },
     }
     out = resolver.resolve_field("annotations.domains", assertions, rules)
@@ -36,10 +39,15 @@ def test_molecular_weight_most_recent():
     ]
     rules = {
         "field_rules": {
-            "properties.physchem.molecular_weight": {"strategy": "most_recent", "allow_multiple": False}
+            "properties.physchem.molecular_weight": {
+                "strategy": "most_recent",
+                "allow_multiple": False,
+            }
         }
     }
-    out = resolver.resolve_field("properties.physchem.molecular_weight", assertions, rules)
+    out = resolver.resolve_field(
+        "properties.physchem.molecular_weight", assertions, rules
+    )
     assert out["selected_value"] == 351.0
     assert out["conflict"] is not None
 
@@ -52,7 +60,10 @@ def test_smiles_priority_sources_single():
     rules = {
         "priority_sources": ["ChEMBL", "PubChem"],
         "field_rules": {
-            "identifiers.smiles": {"strategy": "priority_sources", "allow_multiple": False}
+            "identifiers.smiles": {
+                "strategy": "priority_sources",
+                "allow_multiple": False,
+            }
         },
     }
     out = resolver.resolve_field("identifiers.smiles", assertions, rules)

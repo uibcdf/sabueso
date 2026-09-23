@@ -12,7 +12,9 @@ from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.mappings.biogrid import map_biogrid_interactions
 
 
-def fetch_biogrid_interactions(gene: str, tax_id: int = 9606, access_key: str | None = None) -> Dict[str, Any]:
+def fetch_biogrid_interactions(
+    gene: str, tax_id: int = 9606, access_key: str | None = None
+) -> Dict[str, Any]:
     """Fetch BioGRID interactions JSON by gene symbol."""
     key = access_key or os.getenv("BIOGRID_ACCESS_KEY")
     if not key:
@@ -27,7 +29,9 @@ def fetch_biogrid_interactions(gene: str, tax_id: int = 9606, access_key: str | 
         return json.loads(resp.read().decode("utf-8"))
 
 
-def create_biogrid_card_online(gene: str, retrieved_at: str, tax_id: int = 9606, access_key: str | None = None) -> Any:
+def create_biogrid_card_online(
+    gene: str, retrieved_at: str, tax_id: int = 9606, access_key: str | None = None
+) -> Any:
     data = fetch_biogrid_interactions(gene, tax_id=tax_id, access_key=access_key)
     mapping = map_biogrid_interactions(data, query_name=gene, retrieved_at=retrieved_at)
     return build_card_from_mapping(mapping, meta={"entity_type": "protein"})

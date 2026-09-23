@@ -24,7 +24,9 @@ def _keys(node):
 
 
 def test_card_round_trip_keeps_source_assertions(tmp_path: Path):
-    card = create_protein_card_from_file("temp_data/P52789.json", retrieved_at="2026-02-01")
+    card = create_protein_card_from_file(
+        "temp_data/P52789.json", retrieved_at="2026-02-01"
+    )
     out = tmp_path / "card.json"
     card.to_json(str(out))
 
@@ -42,7 +44,9 @@ def test_card_round_trip_keeps_source_assertions(tmp_path: Path):
 
 
 def test_card_has_stable_identity_from_primary_subject(tmp_path: Path):
-    card = create_protein_card_from_file("temp_data/P52789.json", retrieved_at="2026-02-01")
+    card = create_protein_card_from_file(
+        "temp_data/P52789.json", retrieved_at="2026-02-01"
+    )
     assert card.id == "sabueso:protein:uniprot:P52789"
     assert card.meta["schema_version"] == "0.2.0"
 
@@ -54,8 +58,17 @@ def test_card_has_stable_identity_from_primary_subject(tmp_path: Path):
 
 
 def test_source_assertions_follow_moli_conceptual_contract():
-    card = create_protein_card_from_file("temp_data/P52789.json", retrieved_at="2026-02-01")
-    required = {"id", "subject_ref", "field_path", "asserted_value", "source", "retrieved_at"}
+    card = create_protein_card_from_file(
+        "temp_data/P52789.json", retrieved_at="2026-02-01"
+    )
+    required = {
+        "id",
+        "subject_ref",
+        "field_path",
+        "asserted_value",
+        "source",
+        "retrieved_at",
+    }
     for assertion in card.source_assertion_store.to_list():
         assert required <= set(assertion)
         assert {"type", "name", "record_id"} <= set(assertion["source"])
@@ -73,6 +86,8 @@ def test_public_api_and_schemas_use_source_assertion_terminology():
         keys = list(_keys(yaml.safe_load(schema.read_text(encoding="utf-8"))))
         assert [key for key in keys if EVIDENCE.search(str(key))] == [], schema
 
-    card = create_protein_card_from_file("temp_data/P52789.json", retrieved_at="2026-02-01")
+    card = create_protein_card_from_file(
+        "temp_data/P52789.json", retrieved_at="2026-02-01"
+    )
     serialized = json.loads(json.dumps(card.to_dict()))
     assert [key for key in _keys(serialized) if EVIDENCE.search(str(key))] == []

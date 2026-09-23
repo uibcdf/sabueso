@@ -15,7 +15,9 @@ Create a Card from a local source JSON file.
 ```python
 from sabueso.tools.db.pdb import create_structure_card_from_file
 
-card = create_structure_card_from_file("path/to/pdb_sample.json", retrieved_at="2026-02-04")
+card = create_structure_card_from_file(
+    "path/to/pdb_sample.json", retrieved_at="2026-02-04"
+)
 print(card.get("metadata.entity_type"))
 ```
 

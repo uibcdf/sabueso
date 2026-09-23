@@ -1,12 +1,13 @@
 import json
 from pathlib import Path
+
 import pytest
 
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.merge import merge_mapping_results
-from sabueso.mappings.uniprot import map_protein
-from sabueso.mappings.pdb import map_structure as map_pdb_entry
 from sabueso.mappings.interpro import map_interpro_domains
+from sabueso.mappings.pdb import map_structure as map_pdb_entry
+from sabueso.mappings.uniprot import map_protein
 from sabueso.resolver import load_selection_rules
 
 
@@ -32,7 +33,9 @@ def test_end_to_end_protein_with_multiple_sources_offline():
     ipr_map = map_interpro_domains(interpro, retrieved_at="2026-02-03")
 
     merged = merge_mapping_results([uni_map, pdb_map, ipr_map])
-    card = build_card_from_mapping(merged, meta={"entity_type": "protein"}, selection_rules=rules)
+    card = build_card_from_mapping(
+        merged, meta={"entity_type": "protein"}, selection_rules=rules
+    )
 
     assert card.get("identifiers.uniprot") is not None
     assert card.get("structure.entry_metadata.experimental_method") is not None

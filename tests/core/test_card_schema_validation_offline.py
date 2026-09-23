@@ -4,10 +4,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 
+from validate_card import validate_card
+
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.merge import merge_mapping_results
 from sabueso.mappings.uniprot import map_protein
-from validate_card import validate_card
 
 
 def test_card_schema_validation_basic():

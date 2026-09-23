@@ -1,6 +1,7 @@
 """GO Consortium → ProteinCard mappings (minimal)."""
 
 from __future__ import annotations
+
 from typing import Any, Dict, List
 
 from sabueso.core.source_assertion_store import make_source_assertion
@@ -43,4 +44,8 @@ def map_go_terms(go_json: Dict[str, Any], retrieved_at: str) -> Dict[str, Any]:
             sa_ids.append(assertion["id"])
         field_source_assertions[fp] = sa_ids
 
-    return {"fields": fields, "source_assertions": source_assertions, "field_source_assertions": field_source_assertions}
+    return {
+        "fields": fields,
+        "source_assertions": source_assertions,
+        "field_source_assertions": field_source_assertions,
+    }

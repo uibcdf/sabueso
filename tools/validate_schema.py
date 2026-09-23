@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, List
 
 import yaml
 
@@ -24,7 +24,9 @@ def load_schema_paths() -> List[str]:
                 if isinstance(v, str) and v == "*":
                     paths.append(path + ".*")
                     continue
-                if isinstance(v, dict) and ("value" in v or "source_assertion_ids" in v):
+                if isinstance(v, dict) and (
+                    "value" in v or "source_assertion_ids" in v
+                ):
                     paths.append(path)
                 else:
                     walk(path, v)

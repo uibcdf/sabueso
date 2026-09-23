@@ -4,9 +4,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
+from sabueso.resolver import resolve_field
+
 from .card import CARD_SCHEMA_VERSION, Card, make_card_id
 from .source_assertion_store import SourceAssertionStore
-from sabueso.resolver import resolve_field
 
 # Identifier fields whose subject identifies the card, in order of preference.
 PRIMARY_IDENTIFIER_FIELDS = (
@@ -26,7 +27,9 @@ def _derive_card_id(
     candidates: List[str] = []
     for fp in PRIMARY_IDENTIFIER_FIELDS:
         candidates.extend(field_source_assertions.get(fp, []))
-    candidates.extend(sa_id for sa_ids in field_source_assertions.values() for sa_id in sa_ids)
+    candidates.extend(
+        sa_id for sa_ids in field_source_assertions.values() for sa_id in sa_ids
+    )
     for sa_id in candidates:
         assertion = store.get(sa_id)
         if assertion and assertion.get("subject_ref"):
@@ -63,7 +66,9 @@ def build_card_from_mapping(
     meta.setdefault("schema_version", CARD_SCHEMA_VERSION)
     resolved_card_id = card_id or meta.get("card_id")
     if resolved_card_id is None:
-        resolved_card_id = _derive_card_id(store, field_source_assertions, meta.get("entity_type", ""))
+        resolved_card_id = _derive_card_id(
+            store, field_source_assertions, meta.get("entity_type", "")
+        )
     if resolved_card_id is not None:
         meta["card_id"] = resolved_card_id
 
@@ -85,7 +90,11 @@ def build_card_from_mapping(
         sa_ids = field_source_assertions.get(fp, [])
         assertions = [store.get(sa_id) for sa_id in sa_ids if store.get(sa_id)]
         result = resolve_field(fp, assertions, selection_rules, mode=mode)
-        return result.get("selected_value"), result.get("source_assertion_ids", []), result.get("conflict")
+        return (
+            result.get("selected_value"),
+            result.get("source_assertion_ids", []),
+            result.get("conflict"),
+        )
 
     conflicts: List[Dict[str, Any]] = []
 
@@ -103,7 +112,12 @@ def build_card_from_mapping(
         if conflict:
             conflicts.append({"field": fp, **conflict})
 
-    card = Card(meta=meta, sections=sections, source_assertion_store=store, selection_rules=selection_rules or {})
+    card = Card(
+        meta=meta,
+        sections=sections,
+        source_assertion_store=store,
+        selection_rules=selection_rules or {},
+    )
     if conflicts:
         card.quality.setdefault("conflicts", []).extend(conflicts)
 

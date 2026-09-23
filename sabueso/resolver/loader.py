@@ -6,7 +6,6 @@ import json
 from pathlib import Path
 from typing import Any, Dict
 
-
 DEFAULT_RULES_PATH = Path(__file__).with_name("selection_rules.json")
 
 

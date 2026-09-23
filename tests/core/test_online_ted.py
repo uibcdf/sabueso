@@ -1,6 +1,7 @@
 from urllib.error import HTTPError, URLError
 
 import pytest
+
 import sabueso
 
 

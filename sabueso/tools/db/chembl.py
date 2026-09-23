@@ -16,7 +16,9 @@ def load_json(path: str | Path) -> Dict[str, Any]:
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
-def create_molecule_card_from_json(chembl_json: Dict[str, Any], retrieved_at: str) -> Any:
+def create_molecule_card_from_json(
+    chembl_json: Dict[str, Any], retrieved_at: str
+) -> Any:
     """Create a SmallMolecule Card from ChEMBL JSON (offline)."""
     mapping = map_molecule(chembl_json, retrieved_at=retrieved_at)
     return build_card_from_mapping(mapping, meta={"entity_type": "small_molecule"})

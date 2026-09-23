@@ -1,12 +1,15 @@
 """STRING → ProteinCard mappings (minimal)."""
 
 from __future__ import annotations
+
 from typing import Any, Dict, List
 
 from sabueso.core.source_assertion_store import make_source_assertion
 
 
-def map_string_interactions(string_json: List[Dict[str, Any]], query_name: str, retrieved_at: str) -> Dict[str, Any]:
+def map_string_interactions(
+    string_json: List[Dict[str, Any]], query_name: str, retrieved_at: str
+) -> Dict[str, Any]:
     """Map STRING network JSON into interactions.binding_partners."""
     fields: Dict[str, Any] = {}
     source_assertions: List[Dict[str, Any]] = []
@@ -33,4 +36,8 @@ def map_string_interactions(string_json: List[Dict[str, Any]], query_name: str, 
             sa_ids.append(assertion["id"])
         field_source_assertions[fp] = sa_ids
 
-    return {"fields": fields, "source_assertions": source_assertions, "field_source_assertions": field_source_assertions}
+    return {
+        "fields": fields,
+        "source_assertions": source_assertions,
+        "field_source_assertions": field_source_assertions,
+    }
