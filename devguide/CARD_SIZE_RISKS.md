@@ -38,6 +38,10 @@ This file documents concrete risks and mitigation strategies.
    - Index SourceAssertions by field path for quick retrieval.
    - Cache frequently used SourceAssertion subsets.
 
+## Proposal under evaluation
+- A normalized SQLite store (cards, SourceAssertions and relationships as rows, JSON/JSONL
+  kept for exchange): uibcdf/sabueso#27, `devguide/pending_proposals/native_store.md`.
+
 ## Open Decisions
 - Which mitigation(s) will be the default for 1.0.0?
 - How is an externalized SourceAssertion store referenced (URI, ID, local path)?
