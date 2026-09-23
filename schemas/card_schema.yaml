@@ -163,6 +163,10 @@ protein_card:
     binding_site: [ { location: { sequence: any, structure: any }, description: string, ligand: { name: string, id: string, label: string, note: string }, source_assertion_ids: [string] } ]
     chain: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
     disulfide_bond: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    # A variant observed in a population, and a substitution the authors made: different
+    # kinds of statement about a position, kept apart (uibcdf/sabueso#33).
+    natural_variant: [ { location: { sequence: any }, description: string, substitution: { original: string, alternatives: [string] }, feature_id: string, cross_references: [ { database: string, id: string } ], source_assertion_ids: [string] } ]
+    mutagenesis: [ { location: { sequence: any }, description: string, substitution: { original: string, alternatives: [string] }, source_assertion_ids: [string] } ]
     family_site: [ { location: { sequence: any }, description: string, signature: { accession: string, source_database: string, name: string }, source_assertion_ids: [string] } ]
     domain: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
     glycosylation: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]

@@ -231,6 +231,15 @@ included.
 - Mappings create SourceAssertions with `make_source_assertion`, **before** any
   selection rules are applied.
 
+## Variants and mutagenesis (#33)
+`features_positional.natural_variant` (observed in a population) and
+`features_positional.mutagenesis` (a substitution the authors made) are separate fields:
+they are different kinds of statement about a position. Each item keeps
+`substitution` (`original`, `alternatives` as UniProt lists them), the verbatim
+`description`, and for variants the `feature_id` (`VAR_…`) and `cross_references`
+(dbSNP). The evidence stays in the item's own SourceAssertion (`source_metadata.eco`).
+The description is never parsed into a category.
+
 ## Positional Features (Proteins/Peptides)
 The schema includes positional features observed directly in UniProt JSON examples:
 - Active site, Binding site, Disulfide bond, Glycosylation, Lipidation, Modified residue, Mutagenesis, Natural variant, Region, Motif, Topological domain, Transmembrane, etc.

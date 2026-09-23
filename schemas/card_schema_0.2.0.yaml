@@ -234,6 +234,30 @@ card_base:
         description: string
       source_assertion_ids:
       - string
+    natural_variant:
+      value:
+      - location: any
+        description: string
+        substitution:
+          original: string
+          alternatives:
+          - string
+        feature_id: string
+        cross_references:
+        - database: string
+          id: string
+      source_assertion_ids:
+      - string
+    mutagenesis:
+      value:
+      - location: any
+        description: string
+        substitution:
+          original: string
+          alternatives:
+          - string
+      source_assertion_ids:
+      - string
     family_site:
       value:
       - location: any

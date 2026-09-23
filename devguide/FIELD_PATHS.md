@@ -64,6 +64,8 @@ Versioning: **x.y.z** (no leading `v`).
 - `features_positional.family_site` (sites an InterPro member database places on the sequence, e.g. CDD catalytic triad; one item per site, with its signature)
 - `features_positional.modified_residue`
 - `features_positional.disulfide_bond`
+- `features_positional.natural_variant` (a variant observed in a population: substitution, verbatim description, `VAR_` id, dbSNP)
+- `features_positional.mutagenesis` (a substitution the authors made, with the effect they report)
 - `features_positional.glycosylation`
 
 ### clinical.*

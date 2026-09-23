@@ -20,13 +20,17 @@ _TEXT_COMMENTS = {
     "POLYMORPHISM": "annotations.polymorphism",
 }
 
-# Positional feature types → canonical field paths.
+# Positional feature types → canonical field paths. Natural variants (observed in a
+# population) and mutagenesis (an experiment the authors performed) stay apart: they are
+# different kinds of statement about a position (uibcdf/sabueso#33).
 _FEATURES = {
     "Binding site": "features_positional.binding_site",
     "Active site": "features_positional.active_site",
     "Modified residue": "features_positional.modified_residue",
     "Glycosylation": "features_positional.glycosylation",
     "Disulfide bond": "features_positional.disulfide_bond",
+    "Natural variant": "features_positional.natural_variant",
+    "Mutagenesis": "features_positional.mutagenesis",
 }
 
 
@@ -348,6 +352,26 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             },
             "description": f.get("description") or "",
         }
+        # Variants and mutagenesis state a substitution. UniProt may list several
+        # alternative residues for one item; they are kept as stated, not split.
+        substitution = f.get("alternativeSequence") or {}
+        original = substitution.get("originalSequence")
+        alternatives = [a for a in substitution.get("alternativeSequences") or [] if a]
+        if original or alternatives:
+            item["substitution"] = {
+                k: v
+                for k, v in (("original", original), ("alternatives", alternatives))
+                if v
+            }
+        if f.get("featureId"):
+            item["feature_id"] = f["featureId"]
+        cross_references = [
+            {"database": x["database"], "id": x["id"]}
+            for x in f.get("featureCrossReferences") or []
+            if x.get("database") and x.get("id")
+        ]
+        if cross_references:
+            item["cross_references"] = cross_references
         # Binding sites name their ligand: "substrate", or a ChEBI id. ``label`` tells
         # apart two sites of the same ligand (e.g. two ATP sites of one protein).
         ligand = f.get("ligand") or {}
