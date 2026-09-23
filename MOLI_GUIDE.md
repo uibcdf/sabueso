@@ -6,26 +6,29 @@ Platform architecture: https://github.com/uibcdf/moli/tree/main/architecture_1.0
 
 # MOLI component guide
 
-This guide defines the shared governance rules for repositories directly governed by the MOLI platform.
+This guide defines the shared governance rules for components of the MOLI platform.
 
 ## Where governance lives
 
-Use `uibcdf/moli` for contracts, terminology, policies, and decisions that affect two or more directly governed MOLI components or the platform boundary as a whole.
+Use `uibcdf/moli` for contracts, terminology, policies, and decisions that affect two or more MOLI components or the platform as a whole.
 
-The component repository remains authoritative for its own implementation, tests, local API, scientific evidence, releases, and component-specific development decisions.
+A component repository remains authoritative for its own implementation, tests, local API, scientific evidence, releases, and component-specific development decisions.
 
-MOLI Platform Architecture 1.0 defines what the platform concepts mean. The MOLI development guide defines how repositories coordinate. Do not use governance documents to silently redefine frozen architecture.
+MOLI Platform Architecture 1.0 defines what the platform concepts mean. The MOLI development guide defines how repositories coordinate. Governance documents must not silently redefine frozen architecture.
 
-## Directly governed components
+## MOLI components
 
-The authoritative registry is `moli.toml`. Initial directly governed repositories are:
+The authoritative registry is `moli.toml`. Initial MOLI components are:
 
 - Sabueso — Knowledge context;
 - Praxis — Methodological / Know-how context;
 - Nextia — Discovery context;
+- MolSysSuite — molecular modeling ecosystem;
 - MOLI Agent — optional scientific reasoning and agency.
 
-MolSysSuite is a delegated governance domain. Its internal component governance belongs to `uibcdf/molsyssuite`.
+Scientific Context is a conceptual grouping of Sabueso, Praxis, and Nextia; it is not a separate component repository.
+
+MolSysSuite is a MOLI component **with delegated internal governance**. MOLI governs MolSysSuite at the platform/component boundary; `uibcdf/molsyssuite` governs MolSysSuite's internal members, shared engineering policies, and component contracts.
 
 ## Ownership rule
 
@@ -38,16 +41,16 @@ Examples:
 - a Sabueso ↔ Nextia SourceAssertion/Evidence contract → `uibcdf/moli`;
 - a Praxis ↔ Nextia Capability/Protocol invocation contract → `uibcdf/moli`;
 - a TopoMT-only bug → `uibcdf/topomt`;
-- a shared MolSysSuite component contract → `uibcdf/molsyssuite`;
-- a Scientific Context ↔ MolSysSuite platform contract → `uibcdf/moli`.
+- a TopoMT ↔ MolSysMT shared contract → `uibcdf/molsyssuite`;
+- a MolSysSuite ↔ Nextia platform contract → `uibcdf/moli`.
 
 ## Reporting bugs and proposals
 
 Report a one-repository concern in the repository that owns it.
 
-Report a platform/shared-contract concern in `uibcdf/moli`. Cross-link any component-local issue needed for implementation.
+Report a shared MOLI-component/platform contract concern in `uibcdf/moli`. Cross-link component-local implementation issues where needed.
 
-Do not duplicate the same authoritative issue across repositories. Use links to express dependencies and implementation work.
+For concerns internal to MolSysSuite, follow MolSysSuite governance rather than duplicating them in MOLI.
 
 Until MOLI adopts a more elaborate reporting lifecycle, GitHub issues are the stable identity for bugs/proposals. Durable analysis or decisions may be recorded under the owning repository's `devguide/`.
 
@@ -55,12 +58,10 @@ Until MOLI adopts a more elaborate reporting lifecycle, GitHub issues are the st
 
 When work in one component exposes a missing or limiting capability in another:
 
-1. report the need to the provider repository;
+1. report the need to the provider repository or its delegated governance domain;
 2. include the consuming use case and why it matters;
-3. cross-link any local workaround or blocked work;
-4. escalate to `uibcdf/moli` only when the issue changes a shared platform contract or requires coordinated policy.
-
-Provider ownership determines implementation ownership; it does not remove the discovering component's responsibility to communicate the need.
+3. cross-link local workaround or blocked work;
+4. escalate to `uibcdf/moli` when the issue changes a contract between MOLI components or requires platform policy.
 
 ## Architectural boundaries
 
@@ -75,28 +76,36 @@ Respect the frozen MOLI distinctions, including:
 - semantic ownership ≠ visibility ≠ publication status;
 - promotion ≠ publication.
 
-If implementation pressure suggests changing one of these boundaries, open a platform proposal in `uibcdf/moli` rather than changing a component silently.
+If implementation pressure suggests changing one of these boundaries, open a platform proposal in `uibcdf/moli`.
 
 ## Visibility and confidentiality
 
 A public repository may operate on private scientific content. Do not infer publication rights from semantic ownership or open-source code.
 
-Cross-repository reports must not disclose confidential DiscoveryProjects, proprietary Protocols, molecular Candidates, unpublished Evidence, credentials, or restricted data. Use sanitized reproductions or private channels when necessary.
+Cross-repository reports must not disclose confidential DiscoveryProjects, proprietary Protocols, molecular Candidates, unpublished Evidence, credentials, or restricted data.
 
-## MolSysSuite boundary
+## MolSysSuite internal governance
 
-MolSysSuite governs its modeling ecosystem. MOLI governs only platform-level contracts crossing that domain boundary.
+MolSysSuite's status as a MOLI component does not transfer governance of MolSysMT, TopoMT, MolSysViewer, DockingMT, or other MolSysSuite members to MOLI.
 
-Do not use MOLI governance to duplicate MolSysSuite's Python, CI, release, membership, or component-level policies.
+```text
+MOLI
+  └── MolSysSuite        governed by MOLI at platform boundary
+        ├── MolSysMT
+        ├── TopoMT
+        └── ...           governed internally by MolSysSuite
+```
+
+Do not use MOLI governance to duplicate MolSysSuite's internal Python, CI, release, membership, or component policies.
 
 ## Before finishing cross-component work
 
 Ask:
 
 1. Is the implementation change in the repository that owns it?
-2. Did this expose a limitation in another component that should be reported there?
-3. Did it change a shared MOLI contract requiring a platform issue?
+2. Did this expose a provider limitation that should be reported at its owning level?
+3. Did it change a contract between MOLI components requiring a platform issue?
 4. Does it preserve architecture, provenance, visibility, and authority boundaries?
 5. Is any temporary workaround cross-linked to its owning issue?
 
-This guide should remain concise. Detailed policies belong in the canonical `uibcdf/moli/devguide/`.
+Detailed policies belong in the canonical `uibcdf/moli/devguide/`.
