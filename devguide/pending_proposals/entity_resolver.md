@@ -448,8 +448,32 @@ Fixtures to add at implementation time:
 
      Tests: `test_structures_offline.py` and `test_entity_resolver_offline.py`
      (A9–A11).
-   - **4c. Cards built from resolved entities**, with the subject boundary (A5),
-     `quality.entity_resolution` and the removal of scalar structure fields: pending.
+   - **4c. Cards built from resolved entities**. Done:
+     - `build_card_from_mapping(..., entity_subjects=...)` raises `SchemaError` if an
+       assertion about another subject would feed a field. This is the A5 boundary:
+       V9HWK1 assertions can never feed the P60174 card;
+     - `resolve_protein_card(query, resolver, structures)`: fields come only from the
+       anchor record (plus `same_as` records). Identity links are relationships,
+       structures are relationships shown through the view (no scalar structure fields),
+       and the trace lives in `quality.entity_resolution`;
+     - `ambiguity_deck(resolution)` materializes the deferred ambiguity Deck from what
+       the resolver already reported. For P00938 that is a human and a chimpanzee
+       candidate card;
+     - tests: `tests/core/test_protein_cards_offline.py`.
+
+     Known future risks, recorded per the devguide rule:
+     - **Extra requests.** `resolve_protein_card` fetches the anchor entry again after
+       resolution. Online, `structures="all"` means one RCSB request per structure (29
+       for human TIM). Consider caching once real workloads show the cost.
+     - **Legacy paths.** They still merge or mistype entities: PDB-entry cards typed as
+       protein with scalar `structure.entry_metadata.*`; annotation-only cards typed as
+       protein; unguarded multi-source merges. Tracked in uibcdf/sabueso#21, which asks
+       for a decision on the public `create_structure_card_*`.
+
+   Acceptance criteria not yet met, and where they are tracked:
+   - annotation-only sources are still typed as proteins, and the cross-source
+     end-to-end case still merges (uibcdf/sabueso#21);
+   - card identity grammar is pending uibcdf/moli#3.
 
 ## Resolution
 

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any, Dict, Iterable, List
 
 from sabueso.resolver import resolve_field
 
@@ -45,6 +45,7 @@ def build_card_from_mapping(
     selection_rules: Dict[str, Any] | None = None,
     mode: str = "strict",
     card_id: str | None = None,
+    entity_subjects: Iterable[str] | None = None,
 ) -> Card:
     """Build a Card from mapping outputs (fields/features/source_assertions).
 
@@ -63,6 +64,21 @@ def build_card_from_mapping(
     field_source_assertions = mapping_result.get("field_source_assertions", {})
 
     store = SourceAssertionStore(source_assertions)
+    if entity_subjects is not None:
+        # FieldResolver boundary (#6): only assertions about the card's entity may feed
+        # its fields. Assertions about other subjects (structures, identity-linked
+        # records) may live in the store as support for relationships, never as fields.
+        allowed = set(entity_subjects)
+        for fp in list(mapping_result.get("fields", {})) + list(
+            mapping_result.get("features", {})
+        ):
+            for sa_id in field_source_assertions.get(fp, []):
+                subject = (store.get(sa_id) or {}).get("subject_ref")
+                if subject not in allowed:
+                    raise SchemaError(
+                        f"Field {fp} would be fed by {sa_id} about {subject}, "
+                        f"outside the card entity {sorted(allowed)}"
+                    )
     relationship_store = RelationshipStore(mapping_result.get("relationships", []))
     for relationship in relationship_store.to_list():
         missing = [

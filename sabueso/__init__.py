@@ -16,6 +16,7 @@ from sabueso.core.errors import (
     SchemaError,
     StorageError,
 )
+from sabueso.tools.card.protein import ambiguity_deck, resolve_protein_card
 from sabueso.tools.card.storage import save_card_json, save_card_sqlite
 from sabueso.tools.db.biogrid import create_biogrid_card_online
 from sabueso.tools.db.cath import (
@@ -104,6 +105,8 @@ __all__ = [
     "create_ted_card_online",
     "create_psp_card_from_file",
     "create_psp_card_from_json",
+    "resolve_protein_card",
+    "ambiguity_deck",
     "save_card_json",
     "save_card_sqlite",
     "save_deck_jsonl",
