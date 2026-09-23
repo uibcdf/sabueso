@@ -63,7 +63,7 @@ Knowing that a molecule is active on a target is incomplete without knowing wher
 
 ## Risks and future problems
 
-- **Spatial proximity is not computed.** "Next to an annotated site" would need coordinates and a distance calculation. That is modelling (`devguide/DECISIONS.md`) and stays out.
+- **Spatial proximity is not computed.** "Next to an annotated site" would need coordinates and a distance calculation. That is modelling (`devguide/DECISIONS.md`) and stays out of Sabueso. Where it could be computed (MolSysSuite, as a Praxis Capability) and how a promoted result could come back as knowledge are evaluated in uibcdf/sabueso#30.
 - **Cutoffs differ.** PDBe-KB and RCSB use their own contact definitions, so residue sets do not coincide exactly (PGA: PDBe-KB lists 210 and 212; the 1HTI instance lists 170 and 234). Both are shown; neither is treated as the reference.
 - **Instance data covers only fetched structures.** A protein with many structures needs `structures="all"` to know chain spanning everywhere, and every fetch adds to the card size (#19, #27).
 - **Canonical numbering.** Positions refer to the canonical UniProt sequence. Isoform-specific or mutant constructs need the alignment, which RCSB gives; residues outside aligned regions keep `position: None`.

@@ -14,7 +14,7 @@ match of residue positions in UniProt numbering. It is never stored.
 Absence states stay distinct. "No annotated overlap" is not "binds elsewhere": UniProt
 annotations are sparse (four residues for TIM), and a ligand can bind next to an annotated
 residue without contacting it. When the card has no annotated site at all, the class says
-so instead.
+so instead. Proximity over coordinates is not computed here; see uibcdf/sabueso#30.
 
 Whether one ligand contacts more than one chain can only be read from **instance-level**
 contacts. PDBe-KB aggregates all copies of a ligand, and its per-residue chains cannot
