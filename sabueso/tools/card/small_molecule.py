@@ -278,33 +278,70 @@ def _expand(chembl_client, ccd_client, chembl, ccd, linked, enrichments):
     return chembl, ccd
 
 
-def _protein_molecule_records(protein_card: Card, structure_ligands: bool):
+STRUCTURE_LIGAND_MODES = ("of_interest", "all")
+
+
+def _parent_id(rel: Dict[str, Any]) -> str:
+    ref = rel["qualifiers"].get("parent_molecule") or rel["object_ref"]
+    return ref.split(":", 1)[1]
+
+
+def _protein_molecule_records(protein_card: Card, structure_ligands: str | None):
+    """ChEMBL parent ids, PDB component codes, and the structure ligands left out."""
+    if structure_ligands not in (*STRUCTURE_LIGAND_MODES, None, False):
+        raise ValueError(
+            f"structure_ligands must be one of {STRUCTURE_LIGAND_MODES} or None"
+        )
     chembl_ids = sorted(
-        {
-            (rel["qualifiers"].get("parent_molecule") or rel["object_ref"]).split(
-                ":", 1
-            )[1]
-            for rel in protein_card.relationships("has_bioactivity")
-        }
+        {_parent_id(rel) for rel in protein_card.relationships("has_bioactivity")}
     )
-    codes = (
-        sorted(
+    seen: Dict[str, Dict[str, Any]] = {}
+    for rel in protein_card.relationships("has_structure"):
+        for ligand in rel.get("qualifiers", {}).get("ligands") or []:
+            if not ligand.get("comp_id"):
+                continue
+            entry = seen.setdefault(
+                ligand["comp_id"], {"structures": set(), "flags": set()}
+            )
+            entry["structures"].add(rel["object_ref"])
+            entry["flags"].add(ligand.get("subject_of_investigation"))
+    if not structure_ligands:
+        return chembl_ids, [], []
+    codes, excluded = [], []
+    for code, entry in sorted(seen.items()):
+        if structure_ligands == "all" or True in entry["flags"]:
+            codes.append(code)
+            continue
+        excluded.append(
             {
-                ligand["comp_id"]
-                for rel in protein_card.relationships("has_structure")
-                for ligand in rel.get("qualifiers", {}).get("ligands") or []
-                if ligand.get("comp_id")
+                "ref": f"pdb.ligand:{code}",
+                "structures": sorted(entry["structures"]),
+                "reason": "not_subject_of_investigation"
+                if False in entry["flags"]
+                else "subject_of_investigation_unknown",
             }
         )
-        if structure_ligands
-        else []
-    )
-    return chembl_ids, codes
+    return chembl_ids, codes, excluded
+
+
+def _notes(structure_ligands: str | None) -> List[str]:
+    if structure_ligands == "of_interest":
+        return [
+            "Structure ligands: only those the PDB declares subject of investigation. "
+            "A ligand left out is not declared of interest, which does not assert that "
+            "it is irrelevant (uibcdf/sabueso#25, item 3)."
+        ]
+    if structure_ligands == "all":
+        return [
+            "Structure ligands: all, including those not declared subject of "
+            "investigation (often crystallisation additives or ions)."
+        ]
+    return []
 
 
 def ligand_deck(
     protein_card: Card,
-    structure_ligands: bool = True,
+    structure_ligands: str | None = "of_interest",
     chembl_client: Any | None = None,
     ccd_client: Any | None = None,
     unichem: bool = False,
@@ -313,13 +350,21 @@ def ligand_deck(
     """Deck of the small molecules a protein card refers to, anchored at the InChIKey.
 
     Molecules come from the card's ``has_bioactivity`` relationships (ChEMBL parent
-    molecules) and, with ``structure_ligands``, from the ligands of its structures (PDB
-    chemical components). Structure ligands are not filtered for crystallisation
-    additives or ions; ``deck.meta["notes"]`` says so. Every source outcome and every
-    record without a standard InChIKey are recorded in ``deck.meta``. UniChem is off by
-    default because it takes one request per molecule.
+    molecules) and from the ligands of its structures (PDB chemical components):
+
+    - ``"of_interest"`` (default): only ligands the PDB declares subject of investigation
+      in at least one structure (by the depositor, or by RCSB for older entries). The
+      others, mostly additives and ions, are listed in
+      ``deck.meta["excluded_structure_ligands"]`` with the reason;
+    - ``"all"``: every structure ligand;
+    - ``None``: no structure ligands.
+
+    Every source outcome and every record without a standard InChIKey are recorded in
+    ``deck.meta``. UniChem is off by default because it takes one request per molecule.
     """
-    chembl_ids, codes = _protein_molecule_records(protein_card, structure_ligands)
+    chembl_ids, codes, excluded_ligands = _protein_molecule_records(
+        protein_card, structure_ligands
+    )
     chembl_client, ccd_client, unichem_client = _clients(
         chembl_client, ccd_client, unichem_client if unichem else None
     )
@@ -382,11 +427,8 @@ def ligand_deck(
             "identity_rule": IDENTITY_RULE,
             "sources": sources,
             "unanchored": unanchored,
-            "notes": [
-                "Structure ligands are not filtered for crystallisation additives or "
-                "ions (uibcdf/sabueso#25, item 3)."
-            ]
-            if codes
-            else [],
+            "structure_ligands": structure_ligands or None,
+            "excluded_structure_ligands": excluded_ligands,
+            "notes": _notes(structure_ligands),
         },
     )

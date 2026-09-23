@@ -150,10 +150,8 @@ protein_card:
       value: [ { disease_id: string, name: string, source: string } ]
       source_assertion_ids: [string]
 
-  ligands:
-    value:
-      - { ligand_id: string, name: string, role: string }
-    source_assertion_ids: [string]
+  # Ligands are relationships, not fields: has_bioactivity (measured, e.g. ChEMBL) and
+  # the ligands of has_structure, read through Card.ligands(deck) (uibcdf/sabueso#25).
 
   features_positional:
     # Types observed in UniProt JSON for P52789, P35372, A0A140VJM9

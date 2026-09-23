@@ -44,7 +44,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - polymer entities, the other entities present, and bound ligands;
   - structure facts keep `pdb:<id>` as SourceAssertion subject;
   - `EntityResolver` resolves `pdb:<id>` to the structure record and its proteins.
-- **Notes**: one request per entry. Ligand lists include every non-polymer entity (buffers and solvents too); no curation yet.
+- **Notes**: one request per entry. Ligand lists include every non-polymer entity (buffers and solvents too). Each ligand carries the PDB "subject of investigation" flag and its provenance (`Author`, or `RCSB` for older entries), which `ligand_deck` uses by default (uibcdf/sabueso#25, item 3). RCSB returns entities in no fixed order, so the mapping sorts them.
 
 ### PDB (RCSB) — entry metadata cards (removed)
 - **Status**: removed 2026-09-23 (uibcdf/sabueso#21)
@@ -93,7 +93,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Notes**:
   - RCSB omits unknown codes from a batch without an error. The client reports them as `missing`.
   - CCD SMILES are kept in the assertion, not in `identifiers.smiles` (a different representation from ChEMBL's; uibcdf/sabueso#10).
-  - Structure ligands are not yet filtered for crystallisation artifacts (item 3 of #25).
+  - `ligand_deck` keeps, by default, only the structure ligands the PDB declares subject of investigation (item 3 of #25).
 
 ### UniChem
 - **Status**: implemented for small-molecule identity (uibcdf/sabueso#25)

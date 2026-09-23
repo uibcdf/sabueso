@@ -122,15 +122,18 @@ exported at package root.
 - `build_molecule_cards(chembl=None, ccd=None, unichem=()) -> (cards_by_inchikey, unanchored)`:
   builds cards from retrieved records. It is shared with the ligand deck of a protein
   card.
-- `ligand_deck(protein_card, structure_ligands=True, chembl_client=None, ccd_client=None, unichem=False, unichem_client=None) -> Deck`:
+- `ligand_deck(protein_card, structure_ligands="of_interest", chembl_client=None, ccd_client=None, unichem=False, unichem_client=None) -> Deck`:
   one card per standard InChIKey, for the ChEMBL parent molecules of the protein's
-  `has_bioactivity` relationships and, optionally, the ligands of its structures.
-  `deck.meta` holds `kind` (`protein_ligands`), `protein`, `identity_rule`, `sources`
-  (per-source outcomes), `unanchored` and `notes`. Structure ligands are not filtered
-  for artifacts. Exported at package root.
+  `has_bioactivity` relationships and for the ligands of its structures.
+  - `structure_ligands` is `"of_interest"` (only ligands the PDB declares subject of
+    investigation in at least one structure), `"all"` or `None`.
+  - `deck.meta` holds `kind` (`protein_ligands`), `protein`, `identity_rule`, `sources`
+    (per-source outcomes), `unanchored`, `structure_ligands`,
+    `excluded_structure_ligands` (with `reason`) and `notes`.
+  - Exported at package root.
 - `Card.ligands(deck, include_indirect=False, thresholds=None)`: per molecule, the
-  strongest activity class on the protein, its best pChEMBL, its structures, and its
-  excluded measurements. Also returns `unmatched`, the protein's molecule records that
+  strongest activity class on the protein, its best pChEMBL, its structures and
+  `structures_of_interest`, and its excluded measurements. Also returns `unmatched`, the protein's molecule records that
   no deck card covers.
 - `Card.compare_ligands(deck, other, other_deck, ...)`: `shared` (side by side),
   `only_self` and `only_other`.

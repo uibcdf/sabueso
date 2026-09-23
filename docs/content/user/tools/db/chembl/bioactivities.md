@@ -29,8 +29,8 @@ Clients: `sabueso.tools.db.chembl.OnlineChEMBLClient` and `FixtureChEMBLClient`.
 
 ## Ligand decks
 
-Each measured molecule, and optionally each ligand seen in the protein's structures,
-becomes a SmallMoleculeCard anchored at its standard InChIKey. When a structure ligand and
+Each measured molecule, and each ligand that a structure of the protein was determined
+to study, becomes a SmallMoleculeCard anchored at its standard InChIKey. When a structure ligand and
 a measured molecule have the same InChIKey, they share one card:
 
 ```python
@@ -39,7 +39,7 @@ deck = sabueso.ligand_deck(card)
 print(deck.meta["sources"], deck.meta["notes"])
 
 for item in card.ligands(deck)["items"][:5]:
-    print(item["name"], item["observed_in"], item["bioactivity"], item["structures"])
+    print(item["name"], item["bioactivity"], item["structures_of_interest"])
 
 # Two proteins side by side, e.g. a parasite enzyme and its human counterpart.
 other, _ = sabueso.resolve_protein_card("P60174", chembl={})
@@ -47,6 +47,9 @@ comparison = card.compare_ligands(deck, other, sabueso.ligand_deck(other))
 print(len(comparison["shared"]), comparison["shared"][0])
 ```
 
-Structure ligands are not filtered for crystallisation additives or ions, and
-`deck.meta["notes"]` says so. Resolve a single molecule with
+By default, the deck keeps only the structure ligands that the PDB declares subject of
+investigation: declared by the depositor, or assigned by RCSB for older entries. The
+others, mostly crystallisation additives and ions, are listed in
+`deck.meta["excluded_structure_ligands"]`. Being left out does not mean irrelevant; a
+catalytic metal may not be flagged. Pass `structure_ligands="all"` to keep every ligand. Resolve a single molecule with
 `sabueso.resolve_molecule_card("pdb.ligand:BTS")` (or `chembl:<id>`, `inchikey:<key>`).

@@ -6,6 +6,16 @@
  ],
  "nonpolymer_entities": [
   {
+   "nonpolymer_entity_instances": [
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "Y",
+       "is_subject_of_investigation_provenance": "RCSB"
+      }
+     ]
+    }
+   ],
    "rcsb_nonpolymer_entity": {
     "pdbx_description": "2-PHOSPHOGLYCOLIC ACID"
    },

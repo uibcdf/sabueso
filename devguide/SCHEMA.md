@@ -169,7 +169,8 @@ A Relationship is first-class, traceable knowledge:
   qualifiers use Sabueso's vocabulary.
 - **`has_structure` qualifiers:** `method`, `resolution_angstrom`, `chains`, `ranges`
   (UniProt numbering, inclusive) and `coverage` (fraction of the canonical sequence).
-  From RCSB: `polymer_entities`, `other_entities` (complexes) and `ligands`. Methods are
+  From RCSB: `polymer_entities`, `other_entities` (complexes) and `ligands` (`comp_id`,
+  `description`, `subject_of_investigation`, `subject_of_investigation_provenance`). Methods are
   normalized to UniProt's vocabulary (`X-RAY DIFFRACTION` → `X-ray`); raw values stay in
   the SourceAssertions. The coverage
   class (`full_length ≥ 0.9 > partial ≥ 0.3 > fragment_or_peptide`) is derived knowledge,
@@ -212,9 +213,18 @@ Real‑ID validation examples:
 ## Disease Section (ProteinCard)
 Protein cards include a `disease` section with disease associations linked to their SourceAssertions.
 
-## Ligands with Roles (ProteinCard)
-Protein cards include a `ligands` section. Each ligand has a `role` attribute
-(e.g., inhibitor, activator, substrate) and SourceAssertion links.
+## Ligands (ProteinCard)
+Ligands are not a card section (the reserved `ligands.items` field was removed, #25).
+They are relationships of the protein:
+- `has_bioactivity`: measured molecules, one relationship per measurement (#23);
+- the `ligands` qualifier of `has_structure`: the chemical components of each structure,
+  with the PDB `subject_of_investigation` flag and its provenance (`Author`, declared by
+  the depositor, or `RCSB`, assigned for older entries).
+
+`Card.ligands(deck)` crosses them with a deck of SmallMoleculeCards anchored at the
+InChIKey (`ligand_deck`). A role such as "inhibitor" is a derived activity class
+(`bioactivity_class@1`), never an asserted attribute. The mechanism ChEMBL curates, when
+present, is its `action_type`, kept in the measurement qualifiers.
 
 ## Clinical Layer (Small Molecules)
 The schema includes a dedicated `clinical` section for:

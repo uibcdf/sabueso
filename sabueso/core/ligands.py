@@ -26,17 +26,16 @@ def _records(molecule_card: Any) -> Set[str]:
     }
 
 
-def _structure_ligands(card: Any) -> Dict[str, List[str]]:
-    """``pdb.ligand:<code>`` -> structures of the card where it is observed."""
-    out: Dict[str, List[str]] = {}
+def _structure_ligands(card: Any) -> Dict[str, Dict[str, bool | None]]:
+    """``pdb.ligand:<code>`` -> {structure: subject of investigation (True/False/None)}."""
+    out: Dict[str, Dict[str, bool | None]] = {}
     for rel in card.relationships("has_structure"):
         for ligand in rel.get("qualifiers", {}).get("ligands") or []:
             if ligand.get("comp_id"):
-                ref = f"pdb.ligand:{ligand['comp_id']}"
-                out.setdefault(ref, [])
-                if rel["object_ref"] not in out[ref]:
-                    out[ref].append(rel["object_ref"])
-    return {ref: sorted(structures) for ref, structures in out.items()}
+                flags = out.setdefault(f"pdb.ligand:{ligand['comp_id']}", {})
+                flag = ligand.get("subject_of_investigation")
+                flags[rel["object_ref"]] = flags.get(rel["object_ref"]) or flag
+    return out
 
 
 def _rank(entry: Dict[str, Any]) -> tuple:
@@ -56,8 +55,10 @@ def ligands_view(
 ) -> Dict[str, Any]:
     """Per molecule of ``deck``: its bioactivity on ``card`` and its structures.
 
-    Returns ``{"items", "unmatched", "scope", "classification"}``. ``unmatched`` lists the
-    molecule records of the protein card that no card of the deck covers.
+    Returns ``{"items", "unmatched", "scope", "classification"}``. Each item lists the
+    structures where the molecule is observed and, among them, those where the PDB
+    declares it subject of investigation. ``unmatched`` lists the molecule records of the
+    protein card that no card of the deck covers.
     """
     bio = card.bioactivities(include_indirect=include_indirect, thresholds=thresholds)
     by_molecule = {item["molecule_ref"]: item for item in bio["items"]}
@@ -71,7 +72,8 @@ def ligands_view(
     for molecule_card in deck.cards:
         records = _records(molecule_card)
         measured = [by_molecule[r] for r in sorted(records) if r in by_molecule]
-        structures = sorted({s for r in records for s in in_structures.get(r, [])})
+        seen = {s: f for r in records for s, f in in_structures.get(r, {}).items()}
+        structures = sorted(seen)
         n_excluded = sum(excluded.get(r, 0) for r in records)
         if not (measured or structures or n_excluded):
             continue
@@ -105,6 +107,7 @@ def ligands_view(
                 else None,
                 "excluded_measurements": n_excluded,
                 "structures": structures,
+                "structures_of_interest": sorted(s for s, f in seen.items() if f),
                 "observed_in": [
                     kind
                     for kind, present in (
@@ -116,7 +119,10 @@ def ligands_view(
             }
         )
     items.sort(key=_rank)
-    referenced = set(by_molecule) | set(excluded) | set(in_structures)
+    # Structure ligands count as molecules of the protein only where the PDB declares them
+    # subject of investigation; additives and ions stay out of ``unmatched``.
+    of_interest = {r for r, flags in in_structures.items() if any(flags.values())}
+    referenced = set(by_molecule) | set(excluded) | of_interest
     return {
         "items": items,
         "unmatched": sorted(referenced - covered),
@@ -146,7 +152,8 @@ def compare_ligands(
     theirs = {i["molecule"]: i for i in view["items"]}
 
     def side(entry: Dict[str, Any]) -> Dict[str, Any]:
-        return {k: entry[k] for k in ("bioactivity", "structures", "observed_in")}
+        keys = ("bioactivity", "structures", "structures_of_interest", "observed_in")
+        return {k: entry[k] for k in keys}
 
     shared = [
         {

@@ -93,7 +93,6 @@ Versioning: **x.y.z** (no leading `v`).
 - `annotations.similar_proteins`
 - `annotations.isoforms`
 - `disease.associations`
-- `ligands.items` (each has `role` + SourceAssertions)
 - `sequence.primary`
 - `sequence.length`
 - `sequence.molecular_weight` (Da)

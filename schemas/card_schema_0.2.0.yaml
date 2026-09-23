@@ -15,7 +15,11 @@ schema:
     classifications are classified_in relationships. interactions.binding_partners was
     removed because interactions are interacts_with (physical, IntAct) and
     functionally_associated_with (STRING) relationships (uibcdf/sabueso#21). Measured
-    bioactivities are has_bioactivity relationships (uibcdf/sabueso#23).
+    bioactivities are has_bioactivity relationships (uibcdf/sabueso#23). ligands.items
+    was removed because ligands are has_bioactivity and has_structure relationships
+    read through Card.ligands() with a deck of small-molecule cards
+    (uibcdf/sabueso#25), and a role such as inhibitor is a derived class, never
+    asserted.
 card_base:
   meta:
     card_id:
@@ -272,14 +276,6 @@ protein_card:
       - disease_id: string
         name: string
         source: string
-      source_assertion_ids:
-      - string
-  ligands:
-    items:
-      value:
-      - ligand_id: string
-        name: string
-        role: string
       source_assertion_ids:
       - string
   sequence:

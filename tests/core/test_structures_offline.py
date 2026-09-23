@@ -161,6 +161,8 @@ def test_a9_rcsb_reveals_the_complex_and_ligands_behind_human_tim_structures():
     ]
     hti = _item(view, "pdb:1HTI")
     assert [lig["comp_id"] for lig in hti["ligands"]] == ["PGA"]
+    # 2-phosphoglycolate is what 1HTI studies (flag assigned by RCSB for this entry).
+    assert hti["ligands"][0]["subject_of_investigation"] is True
     assert hti["other_entities"] == []
 
 

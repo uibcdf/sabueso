@@ -8,6 +8,37 @@
  "polymer_entities": [
   {
    "entity_poly": {
+    "rcsb_sample_sequence_length": 190
+   },
+   "rcsb_id": "1KLG_2",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "HLA CLASS II HISTOCOMPATIBILITY ANTIGEN, DR-1 BETA CHAIN"
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 1,
+       "length": 190,
+       "ref_beg_seq_id": 30
+      }
+     ],
+     "reference_database_accession": "P01911",
+     "reference_database_name": "UniProt"
+    }
+   ],
+   "rcsb_polymer_entity_container_identifiers": {
+    "auth_asym_ids": [
+     "B"
+    ],
+    "entity_id": "2",
+    "uniprot_ids": [
+     "P01911"
+    ]
+   }
+  },
+  {
+   "entity_poly": {
     "rcsb_sample_sequence_length": 239
    },
    "rcsb_id": "1KLG_4",
@@ -65,37 +96,6 @@
     "entity_id": "3",
     "uniprot_ids": [
      "P60174"
-    ]
-   }
-  },
-  {
-   "entity_poly": {
-    "rcsb_sample_sequence_length": 190
-   },
-   "rcsb_id": "1KLG_2",
-   "rcsb_polymer_entity": {
-    "pdbx_description": "HLA CLASS II HISTOCOMPATIBILITY ANTIGEN, DR-1 BETA CHAIN"
-   },
-   "rcsb_polymer_entity_align": [
-    {
-     "aligned_regions": [
-      {
-       "entity_beg_seq_id": 1,
-       "length": 190,
-       "ref_beg_seq_id": 30
-      }
-     ],
-     "reference_database_accession": "P01911",
-     "reference_database_name": "UniProt"
-    }
-   ],
-   "rcsb_polymer_entity_container_identifiers": {
-    "auth_asym_ids": [
-     "B"
-    ],
-    "entity_id": "2",
-    "uniprot_ids": [
-     "P01911"
     ]
    }
   },

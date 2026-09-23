@@ -67,6 +67,11 @@ Measured on 2026-09-23 against RCSB (CCD), ChEMBL_37 and UniChem. The fixtures a
 - UniChem answers an unknown key with HTTP 200 and `"response": "Not found"`.
 - ChEMBL serialises `max_phase` as a string.
 
+**Biological relevance of structure ligands (item 3).** The PDB flags each ligand instance as `is_subject_of_investigation`, with a provenance. The provenance is `Author` when the depositor declared it (entries from 2019 on) and `RCSB` when RCSB assigned it for older entries. On the ligands of the 36 TIM structures, the flag separates exactly:
+
+- **Y:** PGA (1HTI by RCSB; 6UP5, 6UPF, 7T0Q and 7UXV by the authors), BTS (1SUX, RCSB), DXX (9F69, authors) and G3P (9FFC, authors). These are the substrate, analogues and an inhibitor.
+- **N:** sulfate, glycerol, PEG, triethylene glycol, hexane, isopropanol, phosphate, and Na, K, Br and Ca ions.
+
 **Tests.** `tests/core/test_molecule_identity_offline.py` covers these cases. The online counterpart is in `tests/core/test_online_molecule_card.py`.
 
 ## Why
@@ -90,6 +95,13 @@ Considered with the owner:
   - The CCD formula is normalized, e.g. `C10 H11 N O3 S3` becomes `C10H11NO3S3`.
   - `clinical.max_phase` is ChEMBL's value, normalized to a number. `-1` means unknown.
 - **UniChem is on by default** for a single molecule (one call), and opt-in for decks (one call per molecule). When it fails, the card is still built and the failure is recorded in `quality.enrichments`.
+- **Structure ligands of interest (item 3).**
+  - The PDB flag is mapped into each ligand of the `has_structure` qualifiers and into the RCSB SourceAssertion that supports them. Before this, the ligands were a qualifier without an assertion.
+  - `ligand_deck` keeps, by default, only ligands flagged in at least one structure. The others are listed in `deck.meta["excluded_structure_ligands"]` with the reason: `not_subject_of_investigation`, or `subject_of_investigation_unknown` when the entry states nothing. `structure_ligands="all"` keeps them all.
+  - `Card.ligands` reports `structures_of_interest` next to `structures`.
+  - Alternatives rejected:
+    - BioLiP: a third-party curation pipeline available as bulk downloads, not a record-level API;
+    - a Sabueso-curated artifact list: Sabueso would be asserting relevance, which it must not do.
 - **Discrepancies are reported.** A record that UniChem links but whose own InChIKey differs from the anchor is listed in `decision.discrepancies`, not merged.
 
 ## Risks and future problems
@@ -103,6 +115,9 @@ Considered with the owner:
 - **Legacy molecule cards** (`create_molecule_card_*`, `create_compound_card_*`) still derive `chembl:`/`pubchem:` card ids, so two identity schemes coexist. Retiring or migrating them belongs to uibcdf/sabueso#21, part 3.
 - **InChI version.** CCD and ChEMBL compute InChIs with their own software versions. Standard InChI is designed to be stable, but a disagreement would show up as two anchors for one molecule. `decision.discrepancies` makes it visible.
 - **Deck persistence.** Resolved in uibcdf/sabueso#26: a saved ligand deck keeps `deck.meta` (JSONL header, SQLite `deck_meta`).
+- **"Not of interest" is not "irrelevant".** A catalytic or structural metal, or a cofactor, may be left unflagged. Such ligands are excluded by default but listed, so a consumer can recover them with `structure_ligands="all"`.
+- **Provenance quality differs.** `Author` flags are declarations. `RCSB` flags for older entries are assigned by RCSB. The provenance is kept on each ligand, and a consumer can weigh the two differently.
+- **The flag is per structure.** A component can be of interest in one entry and not in another. The deck keeps a component if any structure flags it, and `structures_of_interest` says which.
 - **UniChem coverage and latency.** One call per molecule. A deck of hundreds of molecules is slow online, which is why decks default to no UniChem.
 - **Namespaces.** `pdb.ligand`, `inchikey`, `unichem`, `chebi`, `drugbank` and `bindingdb` follow Bioregistry prefixes. If other MOLI components start to exchange these references, the vocabulary becomes a shared contract to raise in `uibcdf/moli`.
 
@@ -112,10 +127,10 @@ Considered with the owner:
 - [x] `resolve_molecule_card` from `chembl:`, `pdb.ligand:` and `inchikey:`, with the statuses resolved, not_found, unsupported and error kept distinct.
 - [x] The ligand of a TcTIM structure (BTS, 1SUX) and the molecule measured on TcTIM (CHEMBL1161789) resolve to one card.
 - [x] `max_phase` asserted by ChEMBL (item 5 of #25).
-- [ ] Item 3: biological relevance of structure ligands (artifact filtering).
+- [x] Item 3: biological relevance of structure ligands, from the PDB "subject of investigation" flag.
 - [ ] Item 4: PDBe-KB binding sites.
 - [ ] Item 6: further bioactivity sources, after cross-source measurement identity is designed.
 
 ## Resolution
 
-Partial: items 1, 2 and 5 were implemented on 2026-09-23. Items 3, 4 and 6 remain open in uibcdf/sabueso#25.
+Partial: items 1, 2, 3 and 5 were implemented on 2026-09-23. Items 4 and 6 remain open in uibcdf/sabueso#25.

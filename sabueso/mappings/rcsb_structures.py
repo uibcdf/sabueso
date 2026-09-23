@@ -40,7 +40,41 @@ def _entities(entry: Dict[str, Any]) -> List[Dict[str, Any]]:
                 "ranges": ranges,
             }
         )
-    return out
+    # RCSB returns entities in no fixed order: sort, so that two retrievals of one entry
+    # state the same qualifiers.
+    return sorted(out, key=lambda e: _entity_order(e["polymer_entity"]))
+
+
+def _entity_order(entity_id: str) -> tuple:
+    return (0, int(entity_id), "") if entity_id.isdigit() else (1, 0, entity_id)
+
+
+def _ligand(entity: Dict[str, Any]) -> Dict[str, Any]:
+    """A ligand of the entry, with the PDB "subject of investigation" flag.
+
+    The flag says whether the ligand is what the structure was determined to study. It is
+    declared by the depositor (provenance ``Author``) or assigned by RCSB for older
+    entries (``RCSB``). A ligand not flagged is not declared of interest: it is often an
+    additive or an ion, but it is not asserted to be irrelevant. ``None`` means the entry
+    states nothing.
+    """
+    flags, provenance = set(), set()
+    for instance in entity.get("nonpolymer_entity_instances") or []:
+        for score in instance.get("rcsb_nonpolymer_instance_validation_score") or []:
+            if score.get("is_subject_of_investigation") in ("Y", "N"):
+                flags.add(score["is_subject_of_investigation"])
+            if score.get("is_subject_of_investigation_provenance"):
+                provenance.add(score["is_subject_of_investigation_provenance"])
+    return {
+        "comp_id": (
+            entity.get("rcsb_nonpolymer_entity_container_identifiers") or {}
+        ).get("nonpolymer_comp_id"),
+        "description": (entity.get("rcsb_nonpolymer_entity") or {}).get(
+            "pdbx_description"
+        ),
+        "subject_of_investigation": ("Y" in flags) if flags else None,
+        "subject_of_investigation_provenance": sorted(provenance) or None,
+    }
 
 
 def map_structure_entities(
@@ -58,17 +92,10 @@ def map_structure_entities(
     structure_ref = f"pdb:{pdb_id}"
     methods = [m.get("method") for m in entry.get("exptl") or []]
     resolutions = (entry.get("rcsb_entry_info") or {}).get("resolution_combined") or []
-    ligands = [
-        {
-            "comp_id": (
-                n.get("rcsb_nonpolymer_entity_container_identifiers") or {}
-            ).get("nonpolymer_comp_id"),
-            "description": (n.get("rcsb_nonpolymer_entity") or {}).get(
-                "pdbx_description"
-            ),
-        }
-        for n in entry.get("nonpolymer_entities") or []
-    ]
+    ligands = sorted(
+        (_ligand(n) for n in entry.get("nonpolymer_entities") or []),
+        key=lambda lig: (lig["comp_id"] or "", lig["description"] or ""),
+    )
     entities = _entities(entry)
     wanted = set(subjects) if subjects is not None else None
     lengths = reference_lengths or {}
@@ -96,6 +123,7 @@ def map_structure_entities(
                 | {"aligned_ranges": e["ranges"].get(acc, [])}
                 for e in mine
             ],
+            "nonpolymer_entities": ligands,
         }
         assertion = make_source_assertion(
             "relationships.has_structure", stated, "RCSB PDB", pdb_id, retrieved_at

@@ -33,6 +33,10 @@ STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
   nonpolymer_entities {
     rcsb_nonpolymer_entity_container_identifiers { nonpolymer_comp_id }
     rcsb_nonpolymer_entity { pdbx_description }
+    nonpolymer_entity_instances {
+      rcsb_nonpolymer_instance_validation_score {
+        is_subject_of_investigation is_subject_of_investigation_provenance }
+    }
   }
 } }"""
 
