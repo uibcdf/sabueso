@@ -59,6 +59,14 @@ redistributed with the git repository, and each keeps its source's licence.
   was checked to contain no `temp_data` file. Adding a `MANIFEST.in` or package data must
   not change that without revisiting this section.
 
+## Reporting terms to users (uibcdf/sabueso#29)
+This document covers what **Sabueso** may redistribute. A separate theme covers what a
+**user** may do with the knowledge Sabueso returns: source terms propagated through
+SourceAssertions, obligations per usage context (including commercial use), and which
+knowledge survives excluding the restricted sources. Sabueso reports what each source
+states about its own terms; it does not rule on what is lawful, and "no terms recorded"
+is never reported as "no restriction".
+
 ## Compliance Principles
 - Do not redistribute restricted datasets without permission.
 - Store only what is required for reproducibility when licenses allow.
