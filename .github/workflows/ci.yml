@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   pull_request:
+  schedule:
+    - cron: "23 7 * * 3"
   workflow_dispatch:
 
 permissions:
@@ -28,3 +30,18 @@ jobs:
         run: python -m pip install -e ".[test]"
       - name: Run offline tests
         run: python -m pytest -m "not online"
+
+  quality:
+    name: Ruff
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Install quality tooling
+        run: python -m pip install "ruff==0.16.5"
+      - name: Ruff format
+        run: ruff format --check .
+      - name: Ruff lint
+        run: ruff check .
