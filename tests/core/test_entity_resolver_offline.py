@@ -1,6 +1,6 @@
 """EntityResolver (uibcdf/sabueso#6, steps 2 and 3).
 
-Acceptance cases A1-A7b and A12 of devguide/pending_proposals/entity_resolver.md, on
+Acceptance cases A1-A7b and A12 of devguide/archive/entity_resolver.md, on
 frozen public UniProt REST responses (retrieved 2026-09-23, UniProt release 2026_03).
 """
 

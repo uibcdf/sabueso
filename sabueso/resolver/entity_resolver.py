@@ -1,6 +1,6 @@
 """EntityResolver: which molecular entity is an identifier or query talking about?
 
-MVP implementation of the contract in ``devguide/pending_proposals/entity_resolver.md``
+MVP implementation of the contract in ``devguide/archive/entity_resolver.md``
 (uibcdf/sabueso#6). It covers UniProtKB accessions (active primary, merged and demerged
 inactive, isoform) and protein name + organism searches resolved by an explicit,
 recorded preference policy, and PDB entry identifiers (``pdb:<id>``), which resolve to a

@@ -1,9 +1,9 @@
 ---
 summary: Resolve source subjects to Sabueso entities (EntityResolver), with a minimal traceable Relationship model, and derive card identity from entities.
 issue: uibcdf/sabueso#6
-status: active
+status: resolved
 opened: 2026-09-23
-closed:
+closed: 2026-09-23
 verification: measured
 area: [resolver, identity, entities, relationships]
 blocked_by: []
@@ -477,4 +477,36 @@ Fixtures to add at implementation time:
 
 ## Resolution
 
-Pending.
+Resolved on 2026-09-23 with the Sabueso owner's agreement. The MVP contract is implemented
+in four steps, each pushed to `main` with green CI and MOLI governance:
+
+| Step | Commit | Content |
+|---|---|---|
+| 1 | `fcbd22e` | Relationship model and RelationshipStore |
+| 2 | `94d7897` | EntityResolver for UniProt accessions (active, merged, demerged, isoform) |
+| 3 | `6f23cbd` | name + organism with the traced preference `prefer_reviewed@1` |
+| 4a | `d3b134e` | `has_structure` from UniProt cross-references and `Card.structures()` |
+| 4b | `8aaba2c` | RCSB polymer-entity mapping and `pdb:<id>` resolution |
+| 4c | `63af6c9` | ProteinCards from resolved entities, the subject boundary, `quality.entity_resolution`, ambiguity Decks |
+
+**Verification.** Acceptance cases A1–A12 (including A7b) pass on frozen public
+UniProt/RCSB fixtures (UniProt release 2026_03). Test modules:
+- `tests/core/test_relationships_offline.py`
+- `test_entity_resolver_offline.py`
+- `test_structures_offline.py`
+- `test_protein_cards_offline.py`
+
+Online checks: `test_online_entity_resolver.py`. The offline suite went from 52 to 96
+tests.
+
+**Deviations from the agreed draft**, both recorded in *Implementation progress*:
+- the coverage class `partial` replaces `domain`;
+- `has_structure` identity is the (protein, structure) pair.
+
+**Remaining criteria moved to their own issues:**
+- legacy paths that merge or mistype entities (PDB-entry cards, annotation-only cards,
+  unguarded merges): uibcdf/sabueso#21;
+- the card identity grammar: uibcdf/moli#3;
+- decisions under watch: uibcdf/sabueso#19 (relationship storage) and
+  uibcdf/sabueso#20 (structure representation);
+- card versioning and snapshots: uibcdf/sabueso#7.

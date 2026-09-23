@@ -4,7 +4,7 @@ A Relationship is first-class, traceable knowledge linking a subject to an objec
 a predicate, with qualifiers. It is supported either by the SourceAssertions of sources
 that state it, or by a derivation record when Sabueso infers it. Derived relationships
 never masquerade as SourceAssertions (see ``devguide/SCIENTIFIC_POTENTIAL.md`` and the
-EntityResolver contract in ``devguide/pending_proposals/entity_resolver.md``).
+EntityResolver contract in ``devguide/archive/entity_resolver.md``).
 """
 
 from __future__ import annotations

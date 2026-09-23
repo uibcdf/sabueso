@@ -1,7 +1,7 @@
 """Protein–structure relationships: coverage, derived classification and the card view.
 
 Structures are not Cards in the MVP. A ProteinCard exposes them through a view over its
-``has_structure`` Relationships (``devguide/pending_proposals/entity_resolver.md``, #6;
+``has_structure`` Relationships (``devguide/archive/entity_resolver.md``, #6;
 re-evaluation in #20). The coverage class is derived knowledge: it carries the rule and
 thresholds that produced it and is never stored as a SourceAssertion.
 """

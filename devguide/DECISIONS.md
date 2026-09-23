@@ -112,7 +112,7 @@
   MolSysSuite member (MolSysSuite admission withdrawn, `uibcdf/molsyssuite#40`).
 
 ## Entity identity, relationships and structures (2026-09-23)
-Agreed contract in `devguide/pending_proposals/entity_resolver.md` (uibcdf/sabueso#6):
+Agreed contract in `devguide/archive/entity_resolver.md` (uibcdf/sabueso#6):
 - **Protein identity:** anchored on a UniProt record. Use the reviewed canonical entry
   when one exists; otherwise apply an explicit, recorded preference. Anchor changes are
   recorded as `superseded_by`, never rewritten silently. Consumers treat references as

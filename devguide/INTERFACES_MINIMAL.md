@@ -75,7 +75,7 @@ relationships.
 
 ## EntityResolver
 **Purpose:** Decide which molecular entity an identifier or query refers to, without
-silent choices. Contract: `devguide/pending_proposals/entity_resolver.md` (#6).
+silent choices. Contract: `devguide/archive/entity_resolver.md` (#6).
 Implemented in `sabueso/resolver/entity_resolver.py` for UniProt accessions and protein
 name + organism searches (MVP steps 2–3).
 

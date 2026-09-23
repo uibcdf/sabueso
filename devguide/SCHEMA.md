@@ -104,7 +104,7 @@ Card versions and snapshots, which Nextia needs to pin historical knowledge, are
 implemented yet.
 
 ## Relationship Contract (MVP)
-Agreed in `devguide/pending_proposals/entity_resolver.md` (uibcdf/sabueso#6) and
+Agreed in `devguide/archive/entity_resolver.md` (uibcdf/sabueso#6) and
 implemented in `sabueso/core/relationship_store.py`.
 
 A Relationship is first-class, traceable knowledge:
