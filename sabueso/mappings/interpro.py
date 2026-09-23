@@ -48,7 +48,7 @@ def map_interpro_domains(interpro_json: Dict[str, Any], retrieved_at: str) -> Di
         for dom in domains:
             assertion = make_source_assertion(fp, dom, "InterPro", dom["id"], retrieved_at)
             source_assertions.append(assertion)
-            sa_ids.append(assertion["source_assertion_id"])
+            sa_ids.append(assertion["id"])
         field_source_assertions[fp] = sa_ids
 
     return {"fields": fields, "source_assertions": source_assertions, "field_source_assertions": field_source_assertions}

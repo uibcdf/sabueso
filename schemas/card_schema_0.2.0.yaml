@@ -4,9 +4,18 @@ schema:
   created_at: 2026-02-10
   updated_at: 2026-09-23
   note: Formal draft aligned with devguide/FIELD_PATHS.md; enforcement via code later.
-    0.2.0 renames evidence_ids to source_assertion_ids (SourceAssertion terminology).
+    0.2.0 renames evidence_ids to source_assertion_ids (SourceAssertion terminology) and
+    adds meta.card_id / meta.schema_version (stable card identity).
 card_base:
   meta:
+    card_id:
+      value: string
+      source_assertion_ids:
+      - string
+    schema_version:
+      value: string
+      source_assertion_ids:
+      - string
     entity_type:
       value: "enum[protein, peptide, small_molecule]"
       source_assertion_ids:

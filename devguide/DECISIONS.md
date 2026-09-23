@@ -93,6 +93,20 @@
   Architecture 1.0 (`uibcdf/moli`): "External knowledge does not automatically become
   project Evidence".
 - Source-native qualifiers (UniProt ECO codes, PubMed IDs, assay descriptors) stay in
-  `source_meta` under their native names; Sabueso defines no generic `evidence` field.
+  `source_metadata` under their native names; Sabueso defines no generic `evidence` field.
 - No deprecated aliases: Sabueso had no release or external consumer when renamed.
 - Formal card schema bumped to `0.2.0`; Resolver contract bumped to `0.2.0`.
+
+## SourceAssertion contract aligned with MOLI (2026-09-23)
+- SourceAssertion fields follow MOLI Platform Architecture 1.0
+  (`schemas/sabueso_source_assertion_conceptual_schema.md`): `id`, `subject_ref`,
+  `field_path`, `asserted_value`, optional `normalized_value`, `source`
+  (`type` ∈ database|literature|patent|curated|other), `retrieved_at`,
+  `source_metadata`, optional `provenance_ref`.
+- `subject_ref` is `<namespace>:<record_id>` of the source record (e.g. `uniprot:P52789`);
+  linking it to a Sabueso entity is the job of the future EntityResolver.
+- The resolver works on `normalized_value` when present, else on `asserted_value`.
+- Cards carry a stable `meta.card_id` (`sabueso:<entity_type>:<subject_ref>`, provisional
+  syntax) and `meta.schema_version`; SQLite persistence keys cards by `card_id`.
+- Sabueso is the Knowledge component of the MOLI Platform's Scientific Context, not a
+  MolSysSuite member (MolSysSuite admission withdrawn, `uibcdf/molsyssuite#40`).

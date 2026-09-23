@@ -40,8 +40,9 @@
 ## SourceAssertion Creation Rules
 - SourceAssertions are created **before** any selection.
 - A SourceAssertion records what an external source asserts about an entity or property.
-  See the contract in `devguide/SCHEMA.md` (`source_assertion_id`, `field`, `value`,
-  `source`, `retrieved_at`; optionally `normalized_value`, `source_meta`, `timestamps`,
+  See the contract in `devguide/SCHEMA.md` (`id`, `subject_ref`, `field_path`,
+  `asserted_value`, `source`, `retrieved_at`; optionally `normalized_value`,
+  `source_metadata`, `provenance_ref`, `timestamps`,
   `confidence`).
 
 ## Conflict Handling

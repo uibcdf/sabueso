@@ -28,7 +28,7 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
         fields[fp] = title
         assertion = make_source_assertion(fp, title, 'RCSB PDB', pdb_id, retrieved_at)
         source_assertions.append(assertion)
-        field_source_assertions[fp] = [assertion['source_assertion_id']]
+        field_source_assertions[fp] = [assertion['id']]
 
     method = get_in(pdb_entry, ['entry', 'rcsb_entry_info', 'experimental_method'])
     if not method:
@@ -40,7 +40,7 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
         fields[fp] = method
         assertion = make_source_assertion(fp, method, 'RCSB PDB', pdb_id, retrieved_at)
         source_assertions.append(assertion)
-        field_source_assertions[fp] = [assertion['source_assertion_id']]
+        field_source_assertions[fp] = [assertion['id']]
 
     res = get_in(pdb_entry, ['entry', 'rcsb_entry_info', 'resolution_combined'])
     if res is None:
@@ -52,7 +52,7 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
         fields[fp] = res
         assertion = make_source_assertion(fp, res, 'RCSB PDB', pdb_id, retrieved_at)
         source_assertions.append(assertion)
-        field_source_assertions[fp] = [assertion['source_assertion_id']]
+        field_source_assertions[fp] = [assertion['id']]
 
     # dates
     deposit = get_in(pdb_entry, ['rcsb_accession_info', 'deposit_date'])
@@ -61,7 +61,7 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
         fields[fp] = deposit
         assertion = make_source_assertion(fp, deposit, 'RCSB PDB', pdb_id, retrieved_at)
         source_assertions.append(assertion)
-        field_source_assertions[fp] = [assertion['source_assertion_id']]
+        field_source_assertions[fp] = [assertion['id']]
 
     release = get_in(pdb_entry, ['rcsb_accession_info', 'initial_release_date'])
     if release:
@@ -69,7 +69,7 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
         fields[fp] = release
         assertion = make_source_assertion(fp, release, 'RCSB PDB', pdb_id, retrieved_at)
         source_assertions.append(assertion)
-        field_source_assertions[fp] = [assertion['source_assertion_id']]
+        field_source_assertions[fp] = [assertion['id']]
 
     # primary citation
     citation = get_in(pdb_entry, ['rcsb_primary_citation'])
@@ -80,7 +80,7 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
             fields[fp] = doi
             assertion = make_source_assertion(fp, doi, 'RCSB PDB', pdb_id, retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
 
         pmid = citation.get('pdbx_database_id_pub_med')
         if pmid:
@@ -88,7 +88,7 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
             fields[fp] = pmid
             assertion = make_source_assertion(fp, pmid, 'RCSB PDB', pdb_id, retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
 
         title = citation.get('title')
         if title:
@@ -96,6 +96,6 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
             fields[fp] = title
             assertion = make_source_assertion(fp, title, 'RCSB PDB', pdb_id, retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
 
     return {'fields': fields, 'source_assertions': source_assertions, 'field_source_assertions': field_source_assertions}

@@ -27,14 +27,14 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             fields[fp] = mw
             assertion = make_source_assertion(fp, mw, 'PubChem', str(p0.get('CID', '')), retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
         smiles = p0.get('CanonicalSMILES') or p0.get('IsomericSMILES') or p0.get('ConnectivitySMILES')
         if smiles:
             fp = 'identifiers.smiles'
             fields[fp] = smiles
             assertion = make_source_assertion(fp, smiles, 'PubChem', str(p0.get('CID', '')), retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
 
         formula = p0.get('MolecularFormula')
         if formula:
@@ -42,7 +42,7 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             fields[fp] = formula
             assertion = make_source_assertion(fp, formula, 'PubChem', str(p0.get('CID', '')), retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
 
         inchikey = p0.get('InChIKey')
         if inchikey:
@@ -50,7 +50,7 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             fields[fp] = inchikey
             assertion = make_source_assertion(fp, inchikey, 'PubChem', str(p0.get('CID', '')), retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
 
         inchi = p0.get('InChI')
         if inchi:
@@ -58,7 +58,7 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             fields[fp] = inchi
             assertion = make_source_assertion(fp, inchi, 'PubChem', str(p0.get('CID', '')), retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
 
         xlogp = p0.get('XLogP')
         if xlogp is not None:
@@ -66,7 +66,7 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             fields[fp] = xlogp
             assertion = make_source_assertion(fp, xlogp, 'PubChem', str(p0.get('CID', '')), retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
 
         tpsa = p0.get('TPSA')
         if tpsa is not None:
@@ -74,7 +74,7 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             fields[fp] = tpsa
             assertion = make_source_assertion(fp, tpsa, 'PubChem', str(p0.get('CID', '')), retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
 
         hbd = p0.get('HBondDonorCount')
         if hbd is not None:
@@ -82,7 +82,7 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             fields[fp] = hbd
             assertion = make_source_assertion(fp, hbd, 'PubChem', str(p0.get('CID', '')), retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
 
         hba = p0.get('HBondAcceptorCount')
         if hba is not None:
@@ -90,7 +90,7 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             fields[fp] = hba
             assertion = make_source_assertion(fp, hba, 'PubChem', str(p0.get('CID', '')), retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
 
         rtb = p0.get('RotatableBondCount')
         if rtb is not None:
@@ -98,7 +98,7 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
             fields[fp] = rtb
             assertion = make_source_assertion(fp, rtb, 'PubChem', str(p0.get('CID', '')), retrieved_at)
             source_assertions.append(assertion)
-            field_source_assertions[fp] = [assertion['source_assertion_id']]
+            field_source_assertions[fp] = [assertion['id']]
 
     cid = get_in(pubchem_json, ['PropertyTable', 'Properties', 0, 'CID'])
     if cid is not None:
@@ -106,6 +106,6 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
         fields[fp] = str(cid)
         assertion = make_source_assertion(fp, str(cid), 'PubChem', str(cid), retrieved_at)
         source_assertions.append(assertion)
-        field_source_assertions[fp] = [assertion['source_assertion_id']]
+        field_source_assertions[fp] = [assertion['id']]
 
     return {'fields': fields, 'source_assertions': source_assertions, 'field_source_assertions': field_source_assertions}

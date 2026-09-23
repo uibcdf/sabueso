@@ -7,7 +7,8 @@ These are contracts only (no implementation).
 **Purpose:** Resolved knowledge about a single entity, linked to its SourceAssertions.
 
 **Attributes**
-- `meta: dict`
+- `meta: dict` (includes `card_id` and `schema_version`)
+- `id: str | None` *(property: stable card reference, `meta.card_id`)*
 - `sections: dict` (nested content)
 - `source_assertion_store: SourceAssertionStore`
 - `selection_rules: dict`
@@ -50,7 +51,7 @@ records what an external source asserts about an entity or property.
 - `store: dict[str, dict]`
 
 **Methods**
-- `add(assertion: SourceAssertion) -> str` *(returns source_assertion_id)*
+- `add(assertion: SourceAssertion) -> str` *(returns the assertion `id`)*
 - `get(source_assertion_id: str) -> SourceAssertion | None`
 - `find_by_field(field_path: str) -> list[SourceAssertion]`
 - `to_list() -> list[SourceAssertion]` *(serialized with the card)*

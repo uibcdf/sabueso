@@ -15,7 +15,7 @@ the selection-rules format is unchanged and remains 0.1.0.
 Resolver operates on a **field-level** view:
 
 - `field_path: str`
-- `assertions: list[dict]` (SourceAssertions, each with `source_assertion_id`, `value`, `source`, `retrieved_at`)
+- `assertions: list[dict]` (SourceAssertions, each with `id`, `asserted_value`, optional `normalized_value`, `source`, `retrieved_at`; the resolver compares `normalized_value` when present, else `asserted_value`)
 - `selection_rules: dict` (global + per-field overrides)
 
 ## Outputs

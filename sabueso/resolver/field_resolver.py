@@ -6,6 +6,8 @@ from collections import defaultdict
 from datetime import datetime
 from typing import Any, Dict, Iterable, List, Tuple
 
+from sabueso.core.source_assertion_store import assertion_value
+
 
 def _parse_dt(value: str | None) -> datetime | None:
     if not value:
@@ -42,7 +44,7 @@ def _values_equal(a: Any, b: Any, mode: str) -> bool:
 def _group_assertions(assertions: List[Dict[str, Any]], mode: str) -> Dict[str, List[Dict[str, Any]]]:
     groups: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
     for a in assertions:
-        val = a.get("value")
+        val = assertion_value(a)
         key = repr(val) if mode == "strict" else repr(_normalize_value(val))
         groups[key].append(a)
     return groups
@@ -72,8 +74,8 @@ def _build_conflict(groups: Dict[str, List[Dict[str, Any]]]) -> Dict[str, Any] |
         return None
     return {
         "type": "disagreement",
-        "values": [g[0].get("value") for g in groups.values()],
-        "source_assertion_ids": [[a.get("source_assertion_id") for a in g] for g in groups.values()],
+        "values": [assertion_value(g[0]) for g in groups.values()],
+        "source_assertion_ids": [[a.get("id") for a in g] for g in groups.values()],
     }
 
 
@@ -112,8 +114,8 @@ def resolve_field(
                 continue
             src_groups = _group_assertions(src_assertions, mode)
             if allow_multiple:
-                selected_values = [g[0].get("value") for g in src_groups.values()]
-                source_assertion_ids = [a.get("source_assertion_id") for group in src_groups.values() for a in group]
+                selected_values = [assertion_value(g[0]) for g in src_groups.values()]
+                source_assertion_ids = [a.get("id") for group in src_groups.values() for a in group]
                 return {
                     "field": field_path,
                     "selected_value": selected_values,
@@ -121,8 +123,8 @@ def resolve_field(
                     "conflict": conflict_all,
                 }
             key, group = _most_recent_group(src_groups)
-            selected_value = group[0].get("value")
-            source_assertion_ids = [a.get("source_assertion_id") for a in group]
+            selected_value = assertion_value(group[0])
+            source_assertion_ids = [a.get("id") for a in group]
             return {
                 "field": field_path,
                 "selected_value": selected_value,
@@ -139,8 +141,8 @@ def resolve_field(
                 key=lambda group: _parse_dt(group[0].get("retrieved_at")) or datetime.min,
                 reverse=True,
             )
-            selected_values = [group[0].get("value") for group in ordered]
-            source_assertion_ids = [a.get("source_assertion_id") for group in ordered for a in group]
+            selected_values = [assertion_value(group[0]) for group in ordered]
+            source_assertion_ids = [a.get("id") for group in ordered for a in group]
             return {
                 "field": field_path,
                 "selected_value": selected_values,
@@ -150,8 +152,8 @@ def resolve_field(
         key, group = _most_recent_group(groups)
         return {
             "field": field_path,
-            "selected_value": group[0].get("value"),
-            "source_assertion_ids": [a.get("source_assertion_id") for a in group],
+            "selected_value": assertion_value(group[0]),
+            "source_assertion_ids": [a.get("id") for a in group],
             "conflict": conflict_all,
         }
 
@@ -164,8 +166,8 @@ def resolve_field(
         group = top_groups[key]
         return {
             "field": field_path,
-            "selected_value": group[0].get("value"),
-            "source_assertion_ids": [a.get("source_assertion_id") for a in group],
+            "selected_value": assertion_value(group[0]),
+            "source_assertion_ids": [a.get("id") for a in group],
             "conflict": conflict_all,
         }
 
@@ -174,7 +176,7 @@ def resolve_field(
     conflict = _build_conflict(top_groups)
     return {
         "field": field_path,
-        "selected_value": group[0].get("value"),
-        "source_assertion_ids": [a.get("source_assertion_id") for a in group],
+        "selected_value": assertion_value(group[0]),
+        "source_assertion_ids": [a.get("id") for a in group],
         "conflict": conflict,
     }

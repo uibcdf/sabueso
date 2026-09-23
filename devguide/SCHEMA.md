@@ -61,31 +61,51 @@ MOLI Platform Architecture 1.0 (`uibcdf/moli`) distinguishes `SourceAssertion â‰
   context of any object. A SourceAssertion *has* provenance (source, record, version,
   retrieval, mapping); it is not provenance itself.
 - Qualifiers a source attaches to its own statements (UniProt ECO codes, cited PubMed
-  IDs, ChEMBL assay descriptors) are stored in `source_meta` under their source-native
+  IDs, ChEMBL assay descriptors) are stored in `source_metadata` under their source-native
   names; Sabueso defines no generic `evidence` field.
 
 ## SourceAssertion Contract (Approved)
+Field names follow the conceptual contract of MOLI Platform Architecture 1.0
+(`uibcdf/moli`, `schemas/sabueso_source_assertion_conceptual_schema.md`).
 Every SourceAssertion stored in `source_assertion_store` must include:
 
 **Required**
-- `source_assertion_id: string`
-- `field: string` (canonical field path)
-- `value: any`
+- `id: string` (deterministic, prefix `SA_`)
+- `subject_ref: string | null` â€” stable reference to what the source record describes,
+  `<namespace>:<record_id>` (e.g. `uniprot:P52789`, `pdb:2NZT`); `null` when the source
+  record has no identifier
+- `field_path: string` (canonical field path)
+- `asserted_value: any` (the value as the source asserts it)
 - `source: { type: string, name: string, record_id: string, version?: string }`
 - `retrieved_at: date`
 
-**Recommended**
-- `normalized_value: any` (when Sabueso normalization changes the asserted value)
-- `source_meta: dict` (source-native qualifiers)
+**Optional**
+- `normalized_value: any` (only when Sabueso normalization changes the asserted value;
+  the resolver then works on it)
+- `source_metadata: dict` (source-native qualifiers such as UniProt ECO codes)
+- `provenance_ref: string` (reference to a provenance record, e.g. mapping version)
 - `timestamps: { published_at?: date, updated_at?: date }`
 - `confidence: float` (only when reported by the source)
-- `notes: string`
 
-The `source.type` must distinguish at least: `database`, `article`, `dataset`, and `llm` when applicable.
+`source.type` is one of `database`, `literature`, `patent`, `curated`, `other`.
+
+## Card Identity (Provisional)
+MOLI Architecture 1.0 requires important scientific objects to be serializable and
+referencable independently of process, file, database or service location. Every card
+built by the aggregator therefore carries:
+- `meta.card_id`: stable reference `sabueso:<entity_type>:<subject_ref>`, e.g.
+  `sabueso:protein:uniprot:P52789`, taken from the subject of the primary identifier
+  assertion (`identifiers.uniprot`, then `chembl`, `pubchem`, `pdb`) unless given
+  explicitly;
+- `meta.schema_version`: card schema version (`0.2.0`).
+
+The identifier syntax is provisional (MOLI freezes referencability, not the format).
+Card versions and snapshots, which Nextia needs to pin historical knowledge, are not
+implemented yet.
 
 ## SourceAssertion Creation Rules (Approved)
 - Each mapped field value must generate **at least one** SourceAssertion.
-- SourceAssertion IDs are **deterministic** from `(source, record_id, field, value)`
+- SourceAssertion IDs are **deterministic** from `(source, record_id, field_path, asserted_value)`
   (`generate_source_assertion_id`, prefix `SA_`).
 - Mappings create SourceAssertions with `make_source_assertion`, **before** any
   selection rules are applied.

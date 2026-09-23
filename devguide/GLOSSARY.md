@@ -2,7 +2,7 @@
 
 - **Card**: A structured, nested object representing a molecular system with resolved values linked to the SourceAssertions that support them.
 - **SourceAssertion**: A record of what an external source asserts about an entity or property (value, field, source record, retrieval), stored in `source_assertion_store`.
-- **SourceAssertionStore**: Map of all SourceAssertions of a card, indexed by `source_assertion_id`.
+- **SourceAssertionStore**: Map of all SourceAssertions of a card, indexed by each assertion's `id`.
 - **Evidence** *(not a Sabueso concept)*: in the MOLI Platform, project-contextual scientific information in a Nextia DiscoveryProject that supports, contradicts or informs a Question or Hypothesis. It may cite SourceAssertions as its basis.
 - **Provenance**: Cross-cutting information about origin, lineage, transformations and production context of any object; a SourceAssertion has provenance but is not provenance.
 - **Field Path**: Canonical string identifying a field (e.g., `properties.physchem.molecular_weight`).

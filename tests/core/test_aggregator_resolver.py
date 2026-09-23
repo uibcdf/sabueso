@@ -6,16 +6,16 @@ def test_aggregator_uses_resolver_conflict():
         "fields": {"annotations.domains": "X"},
         "source_assertions": [
             {
-                "source_assertion_id": "sa1",
-                "field": "annotations.domains",
-                "value": "A",
+                "id": "sa1",
+                "field_path": "annotations.domains",
+                "asserted_value": "A",
                 "source": {"name": "UniProt"},
                 "retrieved_at": "2026-02-01",
             },
             {
-                "source_assertion_id": "sa2",
-                "field": "annotations.domains",
-                "value": "B",
+                "id": "sa2",
+                "field_path": "annotations.domains",
+                "asserted_value": "B",
                 "source": {"name": "PDB"},
                 "retrieved_at": "2026-02-02",
             },

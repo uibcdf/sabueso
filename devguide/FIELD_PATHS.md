@@ -10,6 +10,8 @@ Versioning: **x.y.z** (no leading `v`).
 ## 1) Global Base Paths (all card types)
 
 ### meta.*
+- `meta.card_id`
+- `meta.schema_version`
 - `meta.entity_type`
 - `meta.created_at`
 - `meta.updated_at`

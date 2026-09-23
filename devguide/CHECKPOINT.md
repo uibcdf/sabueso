@@ -28,7 +28,7 @@ This file records the current repository baseline so new developers can resume e
 
 ## New Decisions (Today)
 - **Field path notation**: dot‑separated paths (e.g., `properties.physchem.molecular_weight`).
-- **SourceAssertion object** (formerly "evidence object"): includes `source` with `type`, `name`, `record_id`, plus optional `source_meta`.
+- **SourceAssertion object** (formerly "evidence object"): includes `source` with `type`, `name`, `record_id`, plus optional `source_metadata` (fields aligned with MOLI's conceptual schema on 2026-09-23).
 - **Location model**: general model with `kind` and sub‑blocks (sequence / structure / atom / substructure). To be refined with real cases, but accepted conceptually.
 
 ## New Artifacts
@@ -128,6 +128,9 @@ This file records the current repository baseline so new developers can resume e
 - `Card.to_dict()` now serializes `source_assertion_store`, so JSON/SQLite round trips keep
   every SourceAssertion.
 - Formal schema: `schemas/card_schema_0.2.0.yaml`.
+- SourceAssertion fields aligned with MOLI Platform Architecture 1.0 (`id`, `subject_ref`,
+  `field_path`, `asserted_value`, `source_metadata`); cards carry a stable `meta.card_id`.
+- Sabueso belongs to the MOLI Platform's Scientific Context, not to MolSysSuite.
 
 ## Pending Decisions
 - Final **schema versioning policy**.

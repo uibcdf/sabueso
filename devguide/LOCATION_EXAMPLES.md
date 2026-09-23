@@ -20,9 +20,9 @@ feature:
   source_assertion_ids: ["SA_UniProt_P52789_bs_84_89"]
 
 example_source_assertion:
-  source_assertion_id: "SA_UniProt_P52789_bs_84_89"
-  field: "features_positional.binding_site"
-  value: { start: 84, end: 89 }
+  id: "SA_UniProt_P52789_bs_84_89"
+  field_path: "features_positional.binding_site"
+  asserted_value: { start: 84, end: 89 }
   source:
     type: "database"
     name: "UniProt"
@@ -48,9 +48,9 @@ feature:
   source_assertion_ids: ["SA_RCSB_2NZT_BG6_A_1002"]
 
 example_source_assertion:
-  source_assertion_id: "SA_RCSB_2NZT_BG6_A_1002"
-  field: "structure.ligand_instances"
-  value: "2NZT_BG6_A_1002"
+  id: "SA_RCSB_2NZT_BG6_A_1002"
+  field_path: "structure.ligand_instances"
+  asserted_value: "2NZT_BG6_A_1002"
   source:
     type: "database"
     name: "RCSB PDB"
@@ -76,14 +76,14 @@ feature:
   source_assertion_ids: ["SA_PubChem_66414_substructure"]
 
 example_source_assertion:
-  source_assertion_id: "SA_PubChem_66414_substructure"
-  field: "features_positional.substructure"
-  value: "c1ccc(OC)cc1"
+  id: "SA_PubChem_66414_substructure"
+  field_path: "features_positional.substructure"
+  asserted_value: "c1ccc(OC)cc1"
   source:
     type: "database"
     name: "PubChem"
     record_id: "66414"
-  source_meta:
+  source_metadata:
     alias_source: "Fisher Scientific"
   retrieved_at: "2026-02-04"
 ```

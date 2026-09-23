@@ -10,7 +10,7 @@
 - Use fixtures to test mapping and SourceAssertion creation without live API calls.
 
 ## SourceAssertion QA
-- Ensure every selected field has at least one `source_assertion_id`.
-- Ensure every `source_assertion_id` exists in `source_assertion_store`.
+- Ensure every selected field has at least one entry in `source_assertion_ids`.
+- Ensure every referenced ID exists in `source_assertion_store`.
 - Validate field path correctness.
 

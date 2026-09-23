@@ -91,13 +91,15 @@ card_base:
 
   source_assertion_store:
     SA1:
-      source_assertion_id: string
-      field: string
-      value: any                 # value as asserted by the source
+      id: string
+      subject_ref: string        # e.g. uniprot:P52789
+      field_path: string
+      asserted_value: any        # value as asserted by the source
       normalized_value: any      # value after Sabueso normalization, when different
-      source: { type: string, name: string, record_id: string, version: string }
+      source: { type: "enum[database, literature, patent, curated, other]", name: string, record_id: string, version: string }
       retrieved_at: date
-      source_meta: any           # source-native qualifiers (e.g., UniProt ECO codes, PubMed IDs)
+      source_metadata: any       # source-native qualifiers (e.g., UniProt ECO codes, PubMed IDs)
+      provenance_ref: string     # optional
       timestamps: { published_at: date, updated_at: date }
       confidence: number         # only when reported by the source
 

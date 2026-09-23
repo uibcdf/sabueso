@@ -27,7 +27,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         fields[fp] = primary
         assertion = make_source_assertion(fp, primary, 'UniProt', primary, retrieved_at)
         source_assertions.append(assertion)
-        field_source_assertions[fp] = [assertion['source_assertion_id']]
+        field_source_assertions[fp] = [assertion['id']]
 
     # canonical name
     name = get_in(uniprot_json, ['proteinDescription', 'recommendedName', 'fullName', 'value'])
@@ -36,7 +36,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         fields[fp] = name
         assertion = make_source_assertion(fp, name, 'UniProt', primary or '', retrieved_at)
         source_assertions.append(assertion)
-        field_source_assertions[fp] = [assertion['source_assertion_id']]
+        field_source_assertions[fp] = [assertion['id']]
 
     # function (commentType == FUNCTION)
     comments = uniprot_json.get('comments', []) or []
@@ -96,7 +96,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         for txt in func_texts:
             assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
             source_assertions.append(assertion)
-            sa_ids.append(assertion['source_assertion_id'])
+            sa_ids.append(assertion['id'])
         field_source_assertions[fp] = sa_ids
 
     if catalytic_texts:
@@ -106,7 +106,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         for txt in catalytic_texts:
             assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
             source_assertions.append(assertion)
-            sa_ids.append(assertion['source_assertion_id'])
+            sa_ids.append(assertion['id'])
         field_source_assertions[fp] = sa_ids
 
     if pathway_texts:
@@ -116,7 +116,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         for txt in pathway_texts:
             assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
             source_assertions.append(assertion)
-            sa_ids.append(assertion['source_assertion_id'])
+            sa_ids.append(assertion['id'])
         field_source_assertions[fp] = sa_ids
 
     if subunit_texts:
@@ -126,7 +126,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         for txt in subunit_texts:
             assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
             source_assertions.append(assertion)
-            sa_ids.append(assertion['source_assertion_id'])
+            sa_ids.append(assertion['id'])
         field_source_assertions[fp] = sa_ids
 
     if subcell_texts:
@@ -136,7 +136,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         for txt in subcell_texts:
             assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
             source_assertions.append(assertion)
-            sa_ids.append(assertion['source_assertion_id'])
+            sa_ids.append(assertion['id'])
         field_source_assertions[fp] = sa_ids
 
     if tissue_texts:
@@ -146,7 +146,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         for txt in tissue_texts:
             assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
             source_assertions.append(assertion)
-            sa_ids.append(assertion['source_assertion_id'])
+            sa_ids.append(assertion['id'])
         field_source_assertions[fp] = sa_ids
 
     if ptm_texts:
@@ -156,7 +156,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         for txt in ptm_texts:
             assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
             source_assertions.append(assertion)
-            sa_ids.append(assertion['source_assertion_id'])
+            sa_ids.append(assertion['id'])
         field_source_assertions[fp] = sa_ids
 
     if polymorphism_texts:
@@ -166,7 +166,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         for txt in polymorphism_texts:
             assertion = make_source_assertion(fp, txt, 'UniProt', primary or '', retrieved_at)
             source_assertions.append(assertion)
-            sa_ids.append(assertion['source_assertion_id'])
+            sa_ids.append(assertion['id'])
         field_source_assertions[fp] = sa_ids
 
     # organism
@@ -176,7 +176,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         fields[fp] = org_name
         assertion = make_source_assertion(fp, org_name, 'UniProt', primary or '', retrieved_at)
         source_assertions.append(assertion)
-        field_source_assertions[fp] = [assertion['source_assertion_id']]
+        field_source_assertions[fp] = [assertion['id']]
 
     # binding sites (features)
     binding_items: List[Dict[str, Any]] = []
@@ -221,7 +221,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             for item in binding_items:
                 assertion = make_source_assertion(fp, item, 'UniProt', primary or '', retrieved_at)
                 source_assertions.append(assertion)
-                sa_ids.append(assertion['source_assertion_id'])
+                sa_ids.append(assertion['id'])
             field_source_assertions[fp] = sa_ids
 
         if active_items:
@@ -231,7 +231,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             for item in active_items:
                 assertion = make_source_assertion(fp, item, 'UniProt', primary or '', retrieved_at)
                 source_assertions.append(assertion)
-                sa_ids.append(assertion['source_assertion_id'])
+                sa_ids.append(assertion['id'])
             field_source_assertions[fp] = sa_ids
 
         if modified_items:
@@ -241,7 +241,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             for item in modified_items:
                 assertion = make_source_assertion(fp, item, 'UniProt', primary or '', retrieved_at)
                 source_assertions.append(assertion)
-                sa_ids.append(assertion['source_assertion_id'])
+                sa_ids.append(assertion['id'])
             field_source_assertions[fp] = sa_ids
 
         if glyco_items:
@@ -251,7 +251,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             for item in glyco_items:
                 assertion = make_source_assertion(fp, item, 'UniProt', primary or '', retrieved_at)
                 source_assertions.append(assertion)
-                sa_ids.append(assertion['source_assertion_id'])
+                sa_ids.append(assertion['id'])
             field_source_assertions[fp] = sa_ids
 
         if disulfide_items:
@@ -261,7 +261,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             for item in disulfide_items:
                 assertion = make_source_assertion(fp, item, 'UniProt', primary or '', retrieved_at)
                 source_assertions.append(assertion)
-                sa_ids.append(assertion['source_assertion_id'])
+                sa_ids.append(assertion['id'])
             field_source_assertions[fp] = sa_ids
 
     return {'fields': fields, 'features': features, 'source_assertions': source_assertions, 'field_source_assertions': field_source_assertions}

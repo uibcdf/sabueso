@@ -3,10 +3,10 @@ import sabueso.resolver as resolver
 
 def _sa(value, src, retrieved_at, sa_id):
     return {
-        "value": value,
+        "asserted_value": value,
         "source": {"name": src},
         "retrieved_at": retrieved_at,
-        "source_assertion_id": sa_id,
+        "id": sa_id,
     }
 
 

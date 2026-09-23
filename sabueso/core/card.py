@@ -6,6 +6,17 @@ from typing import Any, Dict, List
 
 from .source_assertion_store import SourceAssertionStore
 
+CARD_SCHEMA_VERSION = "0.2.0"
+
+
+def make_card_id(entity_type: str, subject_ref: str) -> str:
+    """Stable, location-independent card reference, e.g. ``sabueso:protein:uniprot:P52789``.
+
+    The syntax is provisional: MOLI Architecture 1.0 freezes stable referencability,
+    not the identifier format.
+    """
+    return f"sabueso:{entity_type or 'entity'}:{subject_ref}"
+
 
 class Card:
     """Resolved knowledge about a single entity, linked to its SourceAssertions."""
@@ -25,6 +36,11 @@ class Card:
         self.source_assertion_store = source_assertion_store
         self.selection_rules = selection_rules or {}
         self.quality = quality or {}
+
+    @property
+    def id(self) -> str | None:
+        """Stable card reference (``meta.card_id``), independent of storage location."""
+        return self.meta.get("card_id")
 
     def get(self, field_path: str) -> Any:
         cur = self.sections

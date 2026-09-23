@@ -5,8 +5,10 @@ into auditable molecular objects.
 
 ## Card
 
-A `Card` represents one molecular entity (protein, peptide, or small molecule).
-Each field is stored in a structured node:
+A `Card` represents one molecular entity (protein, peptide, or small molecule). It has
+a stable reference, `card.id` (`meta.card_id`, e.g. `sabueso:protein:uniprot:P52789`),
+that does not depend on where the card is stored. Each field is stored in a structured
+node:
 
 ```text
 {"value": <selected_value>, "source_assertion_ids": [<source_assertion_id>, ...]}
@@ -37,9 +39,10 @@ property: the asserted value, the field it refers to, the source and record it c
 from, and when it was retrieved:
 
 ```text
-{"source_assertion_id": "SA_UniProt_P52789_...",
- "field": "annotations.organism",
- "value": "Homo sapiens",
+{"id": "SA_UniProt_P52789_...",
+ "subject_ref": "uniprot:P52789",
+ "field_path": "annotations.organism",
+ "asserted_value": "Homo sapiens",
  "source": {"type": "database", "name": "UniProt", "record_id": "P52789"},
  "retrieved_at": "2026-02-01"}
 ```

@@ -30,7 +30,7 @@ def map_string_interactions(string_json: List[Dict[str, Any]], query_name: str, 
         for p in partners:
             assertion = make_source_assertion(fp, p, "STRING", query_name, retrieved_at)
             source_assertions.append(assertion)
-            sa_ids.append(assertion["source_assertion_id"])
+            sa_ids.append(assertion["id"])
         field_source_assertions[fp] = sa_ids
 
     return {"fields": fields, "source_assertions": source_assertions, "field_source_assertions": field_source_assertions}

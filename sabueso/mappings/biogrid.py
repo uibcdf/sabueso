@@ -42,7 +42,7 @@ def map_biogrid_interactions(biogrid_json: Dict[str, Any], query_name: str, retr
         for p in partners:
             assertion = make_source_assertion(fp, p, "BioGRID", query_name, retrieved_at)
             source_assertions.append(assertion)
-            sa_ids.append(assertion["source_assertion_id"])
+            sa_ids.append(assertion["id"])
         field_source_assertions[fp] = sa_ids
 
     return {"fields": fields, "source_assertions": source_assertions, "field_source_assertions": field_source_assertions}
