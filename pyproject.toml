@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sabueso"
-description = "Biomolecular data integration and evidence-tracked cards/decks."
+description = "Biomolecular knowledge integration into cards and decks traced to source assertions."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "MolSysSuite" }]

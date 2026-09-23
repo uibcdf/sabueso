@@ -1,4 +1,4 @@
-"""Field-level resolver for canonical value selection."""
+"""Field-level resolver: selects a canonical value from competing SourceAssertions."""
 
 from __future__ import annotations
 
@@ -39,25 +39,25 @@ def _values_equal(a: Any, b: Any, mode: str) -> bool:
     return na == nb
 
 
-def _group_evidences(evidences: List[Dict[str, Any]], mode: str) -> Dict[str, List[Dict[str, Any]]]:
+def _group_assertions(assertions: List[Dict[str, Any]], mode: str) -> Dict[str, List[Dict[str, Any]]]:
     groups: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
-    for ev in evidences:
-        val = ev.get("value")
+    for a in assertions:
+        val = a.get("value")
         key = repr(val) if mode == "strict" else repr(_normalize_value(val))
-        groups[key].append(ev)
+        groups[key].append(a)
     return groups
 
 
 def _most_recent_group(groups: Dict[str, List[Dict[str, Any]]]) -> Tuple[str, List[Dict[str, Any]]]:
-    def group_recent(ev_list: List[Dict[str, Any]]) -> datetime:
-        dates = [_parse_dt(ev.get("retrieved_at")) for ev in ev_list]
+    def group_recent(assertion_list: List[Dict[str, Any]]) -> datetime:
+        dates = [_parse_dt(a.get("retrieved_at")) for a in assertion_list]
         dates = [d for d in dates if d]
         return max(dates) if dates else datetime.min
 
     best_key = None
     best_dt = datetime.min
-    for k, evs in groups.items():
-        dt = group_recent(evs)
+    for k, group in groups.items():
+        dt = group_recent(group)
         if dt > best_dt:
             best_key = k
             best_dt = dt
@@ -73,19 +73,19 @@ def _build_conflict(groups: Dict[str, List[Dict[str, Any]]]) -> Dict[str, Any] |
     return {
         "type": "disagreement",
         "values": [g[0].get("value") for g in groups.values()],
-        "evidence_ids": [[ev.get("evidence_id") for ev in g] for g in groups.values()],
+        "source_assertion_ids": [[a.get("source_assertion_id") for a in g] for g in groups.values()],
     }
 
 
 def resolve_field(
     field_path: str,
-    evidences: List[Dict[str, Any]],
+    assertions: List[Dict[str, Any]],
     selection_rules: Dict[str, Any],
     mode: str = "strict",
 ) -> Dict[str, Any]:
     """Resolve a canonical value for a single field.
 
-    Returns a dict with selected_value, evidence_ids, and optional conflict.
+    Returns a dict with selected_value, source_assertion_ids, and optional conflict.
     """
 
     field_rules = selection_rules.get("field_rules", {}).get(field_path, {})
@@ -93,40 +93,40 @@ def resolve_field(
     allow_multiple = field_rules.get("allow_multiple", False)
     priority_sources = selection_rules.get("priority_sources", [])
 
-    if not evidences:
+    if not assertions:
         return {
             "field": field_path,
             "selected_value": None,
-            "evidence_ids": [],
+            "source_assertion_ids": [],
             "conflict": None,
         }
 
-    groups = _group_evidences(evidences, mode)
+    groups = _group_assertions(assertions, mode)
     conflict_all = _build_conflict(groups)
 
     # Strategy: priority_sources
     if strategy == "priority_sources" and priority_sources:
         for src in priority_sources:
-            src_evs = [ev for ev in evidences if ev.get("source", {}).get("name") == src]
-            if not src_evs:
+            src_assertions = [a for a in assertions if a.get("source", {}).get("name") == src]
+            if not src_assertions:
                 continue
-            src_groups = _group_evidences(src_evs, mode)
+            src_groups = _group_assertions(src_assertions, mode)
             if allow_multiple:
                 selected_values = [g[0].get("value") for g in src_groups.values()]
-                evidence_ids = [ev.get("evidence_id") for evs in src_groups.values() for ev in evs]
+                source_assertion_ids = [a.get("source_assertion_id") for group in src_groups.values() for a in group]
                 return {
                     "field": field_path,
                     "selected_value": selected_values,
-                    "evidence_ids": evidence_ids,
+                    "source_assertion_ids": source_assertion_ids,
                     "conflict": conflict_all,
                 }
-            key, evs = _most_recent_group(src_groups)
-            selected_value = evs[0].get("value")
-            evidence_ids = [ev.get("evidence_id") for ev in evs]
+            key, group = _most_recent_group(src_groups)
+            selected_value = group[0].get("value")
+            source_assertion_ids = [a.get("source_assertion_id") for a in group]
             return {
                 "field": field_path,
                 "selected_value": selected_value,
-                "evidence_ids": evidence_ids,
+                "source_assertion_ids": source_assertion_ids,
                 "conflict": conflict_all,
             }
 
@@ -136,45 +136,45 @@ def resolve_field(
             # all values ordered by most recent
             ordered = sorted(
                 groups.values(),
-                key=lambda evs: _parse_dt(evs[0].get("retrieved_at")) or datetime.min,
+                key=lambda group: _parse_dt(group[0].get("retrieved_at")) or datetime.min,
                 reverse=True,
             )
-            selected_values = [evs[0].get("value") for evs in ordered]
-            evidence_ids = [ev.get("evidence_id") for evs in ordered for ev in evs]
+            selected_values = [group[0].get("value") for group in ordered]
+            source_assertion_ids = [a.get("source_assertion_id") for group in ordered for a in group]
             return {
                 "field": field_path,
                 "selected_value": selected_values,
-                "evidence_ids": evidence_ids,
+                "source_assertion_ids": source_assertion_ids,
                 "conflict": conflict_all,
             }
-        key, evs = _most_recent_group(groups)
+        key, group = _most_recent_group(groups)
         return {
             "field": field_path,
-            "selected_value": evs[0].get("value"),
-            "evidence_ids": [ev.get("evidence_id") for ev in evs],
+            "selected_value": group[0].get("value"),
+            "source_assertion_ids": [a.get("source_assertion_id") for a in group],
             "conflict": conflict_all,
         }
 
     # Strategy: most_frequent (default fallback)
-    max_count = max(len(evs) for evs in groups.values())
-    top_groups = {k: evs for k, evs in groups.items() if len(evs) == max_count}
+    max_count = max(len(group) for group in groups.values())
+    top_groups = {k: group for k, group in groups.items() if len(group) == max_count}
 
     if len(top_groups) == 1:
         key = next(iter(top_groups))
-        evs = top_groups[key]
+        group = top_groups[key]
         return {
             "field": field_path,
-            "selected_value": evs[0].get("value"),
-            "evidence_ids": [ev.get("evidence_id") for ev in evs],
+            "selected_value": group[0].get("value"),
+            "source_assertion_ids": [a.get("source_assertion_id") for a in group],
             "conflict": conflict_all,
         }
 
     # Tie
-    key, evs = _most_recent_group(top_groups)
+    key, group = _most_recent_group(top_groups)
     conflict = _build_conflict(top_groups)
     return {
         "field": field_path,
-        "selected_value": evs[0].get("value"),
-        "evidence_ids": [ev.get("evidence_id") for ev in evs],
+        "selected_value": group[0].get("value"),
+        "source_assertion_ids": [a.get("source_assertion_id") for a in group],
         "conflict": conflict,
     }

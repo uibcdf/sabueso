@@ -4,21 +4,25 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
+from .source_assertion_store import SourceAssertionStore
+
 
 class Card:
-    """Single entity representation with evidence links."""
+    """Resolved knowledge about a single entity, linked to its SourceAssertions."""
 
     def __init__(
         self,
         meta: Dict[str, Any] | None = None,
         sections: Dict[str, Any] | None = None,
-        evidence_store: Any | None = None,
+        source_assertion_store: SourceAssertionStore | List[Dict[str, Any]] | None = None,
         selection_rules: Dict[str, Any] | None = None,
         quality: Dict[str, Any] | None = None,
     ) -> None:
         self.meta = meta or {}
         self.sections = sections or {}
-        self.evidence_store = evidence_store
+        if not isinstance(source_assertion_store, SourceAssertionStore):
+            source_assertion_store = SourceAssertionStore(source_assertion_store)
+        self.source_assertion_store = source_assertion_store
         self.selection_rules = selection_rules or {}
         self.quality = quality or {}
 
@@ -30,14 +34,14 @@ class Card:
             cur = cur[key]
         return cur
 
-    def set(self, field_path: str, value: Any, evidence_ids: List[str]) -> None:
+    def set(self, field_path: str, value: Any, source_assertion_ids: List[str]) -> None:
         cur = self.sections
         parts = field_path.split(".")
         for key in parts[:-1]:
             if key not in cur or not isinstance(cur[key], dict):
                 cur[key] = {}
             cur = cur[key]
-        cur[parts[-1]] = {"value": value, "evidence_ids": evidence_ids}
+        cur[parts[-1]] = {"value": value, "source_assertion_ids": source_assertion_ids}
 
     def extract(self, field_paths: List[str]) -> Dict[str, Any]:
         return {fp: self.get(fp) for fp in field_paths}

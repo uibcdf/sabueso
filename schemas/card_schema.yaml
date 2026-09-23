@@ -1,10 +1,12 @@
 # Sabueso card schema (conceptual, frozen draft)
-# All fields use a uniform evidence mechanism via evidence_store + evidence_ids.
+# Every field is resolved from SourceAssertions: source_assertion_store + source_assertion_ids.
+# A SourceAssertion records what an external source asserts about an entity or property.
 
 schema:
   name: sabueso-card
-  version: 0.1.0
+  version: 0.2.0
   created_at: 2026-02-01
+  updated_at: 2026-09-23
   note: "Conceptual schema. Types are illustrative; enforcement via code later."
 
 card_base:
@@ -19,67 +21,67 @@ card_base:
   identifiers:
     primary_id:
       value: string
-      evidence_ids: [string]
+      source_assertion_ids: [string]
     secondary_ids:
-      uniprot: { value: string, evidence_ids: [string] }
-      pdb: { value: string, evidence_ids: [string] }
-      chembl: { value: string, evidence_ids: [string] }
-      pubchem: { value: string, evidence_ids: [string] }
-      drugbank: { value: string, evidence_ids: [string] }
-      chemspider: { value: string, evidence_ids: [string] }
-      emolecules: { value: string, evidence_ids: [string] }
-      other: [ { value: string, evidence_ids: [string] } ]
+      uniprot: { value: string, source_assertion_ids: [string] }
+      pdb: { value: string, source_assertion_ids: [string] }
+      chembl: { value: string, source_assertion_ids: [string] }
+      pubchem: { value: string, source_assertion_ids: [string] }
+      drugbank: { value: string, source_assertion_ids: [string] }
+      chemspider: { value: string, source_assertion_ids: [string] }
+      emolecules: { value: string, source_assertion_ids: [string] }
+      other: [ { value: string, source_assertion_ids: [string] } ]
 
   names:
-    canonical_name: { value: string, evidence_ids: [string] }
-    synonyms: { value: [string], evidence_ids: [string] }
+    canonical_name: { value: string, source_assertion_ids: [string] }
+    synonyms: { value: [string], source_assertion_ids: [string] }
 
   summary:
-    short_description: { value: string, evidence_ids: [string] }
+    short_description: { value: string, source_assertion_ids: [string] }
 
   structure:
-    sequences: { value: [string], evidence_ids: [string] }
+    sequences: { value: [string], source_assertion_ids: [string] }
     structures_3d:
       value: [ { pdb_id: string, file_ref: string, method: string, resolution: number } ]
-      evidence_ids: [string]
+      source_assertion_ids: [string]
     structures_2d:
       value: [ { format: string, file_ref: string } ]
-      evidence_ids: [string]
+      source_assertion_ids: [string]
 
   properties:
     physchem:
-      molecular_weight: { value: number, evidence_ids: [string] }
-      formula: { value: string, evidence_ids: [string] }
-      isoelectric_point: { value: number, evidence_ids: [string] }
-      logp: { value: number, evidence_ids: [string] }
-      tpsa: { value: number, evidence_ids: [string] }
-      hbd: { value: number, evidence_ids: [string] }
-      hba: { value: number, evidence_ids: [string] }
-      rotatable_bonds: { value: number, evidence_ids: [string] }
+      molecular_weight: { value: number, source_assertion_ids: [string] }
+      formula: { value: string, source_assertion_ids: [string] }
+      isoelectric_point: { value: number, source_assertion_ids: [string] }
+      logp: { value: number, source_assertion_ids: [string] }
+      tpsa: { value: number, source_assertion_ids: [string] }
+      hbd: { value: number, source_assertion_ids: [string] }
+      hba: { value: number, source_assertion_ids: [string] }
+      rotatable_bonds: { value: number, source_assertion_ids: [string] }
     bio:
-      function: { value: string, evidence_ids: [string] }
-      keywords: { value: [string], evidence_ids: [string] }
+      function: { value: string, source_assertion_ids: [string] }
+      keywords: { value: [string], source_assertion_ids: [string] }
 
   annotations:
-    pathways: { value: [string], evidence_ids: [string] }
-    targets: { value: [string], evidence_ids: [string] }
-    organism: { value: string, evidence_ids: [string] }
-    domains: { value: [string], evidence_ids: [string] }
-    families: { value: [string], evidence_ids: [string] }
+    pathways: { value: [string], source_assertion_ids: [string] }
+    targets: { value: [string], source_assertion_ids: [string] }
+    organism: { value: string, source_assertion_ids: [string] }
+    domains: { value: [string], source_assertion_ids: [string] }
+    families: { value: [string], source_assertion_ids: [string] }
 
   interactions:
-    binding_partners: { value: [string], evidence_ids: [string] }
-    ppi_databases: { value: [string], evidence_ids: [string] }
+    binding_partners: { value: [string], source_assertion_ids: [string] }
+    ppi_databases: { value: [string], source_assertion_ids: [string] }
 
   references:
-    publications: { value: [ { title: string, doi: string, pmid: string } ], evidence_ids: [string] }
+    publications: { value: [ { title: string, doi: string, pmid: string } ], source_assertion_ids: [string] }
 
   availability:
-    vendors: { value: [string], evidence_ids: [string] }
-    catalog_ids: { value: [string], evidence_ids: [string] }
+    vendors: { value: [string], source_assertion_ids: [string] }
+    catalog_ids: { value: [string], source_assertion_ids: [string] }
 
   quality:
-    conflicts: [ { field: string, evidence_ids: [string] } ]
+    conflicts: [ { field: string, source_assertion_ids: [string] } ]
     completeness_score: number
     confidence_score: number
 
@@ -87,16 +89,17 @@ card_base:
     sources_consulted: [ { source: string, retrieved_at: date } ]
     query_inputs: [ { input_type: string, value: string } ]
 
-  evidence_store:
-    E1:
+  source_assertion_store:
+    SA1:
+      source_assertion_id: string
       field: string
-      value: any
-      normalized_value: any
-      sources: [string]
-      source_records: [string]
+      value: any                 # value as asserted by the source
+      normalized_value: any      # value after Sabueso normalization, when different
+      source: { type: string, name: string, record_id: string, version: string }
       retrieved_at: date
+      source_meta: any           # source-native qualifiers (e.g., UniProt ECO codes, PubMed IDs)
       timestamps: { published_at: date, updated_at: date }
-      confidence: number
+      confidence: number         # only when reported by the source
 
   selection_rules:
     field_path:
@@ -109,71 +112,71 @@ protein_card:
   inherits: card_base
 
   uniprot_comments:
-    function: { value: string, evidence_ids: [string] }
-    catalytic_activity: { value: [string], evidence_ids: [string] }
-    biophysicochemical_properties: { value: [string], evidence_ids: [string] }
-    kinetics: { value: [string], evidence_ids: [string] }
-    activity_regulation: { value: [string], evidence_ids: [string] }
-    pathway: { value: [string], evidence_ids: [string] }
-    subunit: { value: [string], evidence_ids: [string] }
-    interaction: { value: [string], evidence_ids: [string] }
-    subcellular_location: { value: [string], evidence_ids: [string] }
-    tissue_specificity: { value: [string], evidence_ids: [string] }
-    ptm: { value: [string], evidence_ids: [string] }
-    polymorphism: { value: [string], evidence_ids: [string] }
-    sequence_caution: { value: [string], evidence_ids: [string] }
-    alternative_products: { value: [string], evidence_ids: [string] }
-    domain: { value: [string], evidence_ids: [string] }
-    similarity: { value: [string], evidence_ids: [string] }
-    miscellaneous: { value: [string], evidence_ids: [string] }
-    caution: { value: [string], evidence_ids: [string] }
-    web_resource: { value: [string], evidence_ids: [string] }
+    function: { value: string, source_assertion_ids: [string] }
+    catalytic_activity: { value: [string], source_assertion_ids: [string] }
+    biophysicochemical_properties: { value: [string], source_assertion_ids: [string] }
+    kinetics: { value: [string], source_assertion_ids: [string] }
+    activity_regulation: { value: [string], source_assertion_ids: [string] }
+    pathway: { value: [string], source_assertion_ids: [string] }
+    subunit: { value: [string], source_assertion_ids: [string] }
+    interaction: { value: [string], source_assertion_ids: [string] }
+    subcellular_location: { value: [string], source_assertion_ids: [string] }
+    tissue_specificity: { value: [string], source_assertion_ids: [string] }
+    ptm: { value: [string], source_assertion_ids: [string] }
+    polymorphism: { value: [string], source_assertion_ids: [string] }
+    sequence_caution: { value: [string], source_assertion_ids: [string] }
+    alternative_products: { value: [string], source_assertion_ids: [string] }
+    domain: { value: [string], source_assertion_ids: [string] }
+    similarity: { value: [string], source_assertion_ids: [string] }
+    miscellaneous: { value: [string], source_assertion_ids: [string] }
+    caution: { value: [string], source_assertion_ids: [string] }
+    web_resource: { value: [string], source_assertion_ids: [string] }
 
   disease:
     associations:
       value: [ { disease_id: string, name: string, source: string } ]
-      evidence_ids: [string]
+      source_assertion_ids: [string]
 
   ligands:
     value:
       - { ligand_id: string, name: string, role: string }
-    evidence_ids: [string]
+    source_assertion_ids: [string]
 
   features_positional:
     # Types observed in UniProt JSON for P52789, P35372, A0A140VJM9
-    active_site: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    alternative_sequence: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    beta_strand: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    binding_site: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    chain: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    disulfide_bond: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    domain: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    glycosylation: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    helix: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    lipidation: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    modified_residue: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    motif: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    mutagenesis: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    natural_variant: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    region: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    sequence_conflict: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    topological_domain: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    transmembrane: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
-    turn: [ { location: { sequence: any, structure: any }, description: string, evidence_ids: [string] } ]
+    active_site: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    alternative_sequence: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    beta_strand: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    binding_site: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    chain: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    disulfide_bond: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    domain: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    glycosylation: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    helix: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    lipidation: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    modified_residue: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    motif: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    mutagenesis: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    natural_variant: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    region: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    sequence_conflict: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    topological_domain: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    transmembrane: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
+    turn: [ { location: { sequence: any, structure: any }, description: string, source_assertion_ids: [string] } ]
 
   pdb_structure:
     entry_metadata:
-      classification: { value: string, evidence_ids: [string] }
-      experimental_method: { value: string, evidence_ids: [string] }
-      resolution: { value: number, evidence_ids: [string] }
-      deposition_date: { value: date, evidence_ids: [string] }
-      release_date: { value: date, evidence_ids: [string] }
-      primary_citation: { value: { title: string, doi: string, pmid: string }, evidence_ids: [string] }
+      classification: { value: string, source_assertion_ids: [string] }
+      experimental_method: { value: string, source_assertion_ids: [string] }
+      resolution: { value: number, source_assertion_ids: [string] }
+      deposition_date: { value: date, source_assertion_ids: [string] }
+      release_date: { value: date, source_assertion_ids: [string] }
+      primary_citation: { value: { title: string, doi: string, pmid: string }, source_assertion_ids: [string] }
     entity_metadata:
-      chains: { value: [string], evidence_ids: [string] }
-      sequence_length: { value: number, evidence_ids: [string] }
-      uniprot_mapping: { value: [string], evidence_ids: [string] }
-      ec_numbers: { value: [string], evidence_ids: [string] }
+      chains: { value: [string], source_assertion_ids: [string] }
+      sequence_length: { value: number, source_assertion_ids: [string] }
+      uniprot_mapping: { value: [string], source_assertion_ids: [string] }
+      ec_numbers: { value: [string], source_assertion_ids: [string] }
 
 
 peptide_card:
@@ -182,48 +185,48 @@ peptide_card:
 
   peptide_specific:
     origin:
-      parent_protein: { value: string, evidence_ids: [string] }
-      cleavage_site: { value: string, evidence_ids: [string] }
+      parent_protein: { value: string, source_assertion_ids: [string] }
+      cleavage_site: { value: string, source_assertion_ids: [string] }
     activity:
-      bioactivity: { value: [string], evidence_ids: [string] }
-      potency: { value: [string], evidence_ids: [string] }
+      bioactivity: { value: [string], source_assertion_ids: [string] }
+      potency: { value: [string], source_assertion_ids: [string] }
 
 
 small_molecule_card:
   inherits: card_base
 
   identifiers:
-    smiles: { value: string, evidence_ids: [string] }
-    inchi: { value: string, evidence_ids: [string] }
-    inchikey: { value: string, evidence_ids: [string] }
+    smiles: { value: string, source_assertion_ids: [string] }
+    inchi: { value: string, source_assertion_ids: [string] }
+    inchikey: { value: string, source_assertion_ids: [string] }
 
   properties:
     physchem:
-      molecular_weight: { value: number, evidence_ids: [string] }
-      formula: { value: string, evidence_ids: [string] }
-      logp: { value: number, evidence_ids: [string] }
-      tpsa: { value: number, evidence_ids: [string] }
-      hbd: { value: number, evidence_ids: [string] }
-      hba: { value: number, evidence_ids: [string] }
-      rotatable_bonds: { value: number, evidence_ids: [string] }
-      aromatic_rings: { value: number, evidence_ids: [string] }
-      ro5_violations: { value: number, evidence_ids: [string] }
+      molecular_weight: { value: number, source_assertion_ids: [string] }
+      formula: { value: string, source_assertion_ids: [string] }
+      logp: { value: number, source_assertion_ids: [string] }
+      tpsa: { value: number, source_assertion_ids: [string] }
+      hbd: { value: number, source_assertion_ids: [string] }
+      hba: { value: number, source_assertion_ids: [string] }
+      rotatable_bonds: { value: number, source_assertion_ids: [string] }
+      aromatic_rings: { value: number, source_assertion_ids: [string] }
+      ro5_violations: { value: number, source_assertion_ids: [string] }
 
   bioactivity:
-    targets: { value: [string], evidence_ids: [string] }
-    assays: { value: [string], evidence_ids: [string] }
-    activity_values: { value: [string], evidence_ids: [string] }
+    targets: { value: [string], source_assertion_ids: [string] }
+    assays: { value: [string], source_assertion_ids: [string] }
+    activity_values: { value: [string], source_assertion_ids: [string] }
 
   clinical:
-    pharmacology: { value: [string], evidence_ids: [string] }
-    admet: { value: [string], evidence_ids: [string] }
-    clinical_trials: { value: [string], evidence_ids: [string] }
-    pharmacovigilance: { value: [string], evidence_ids: [string] }
-    indications: { value: [string], evidence_ids: [string] }
-    contraindications: { value: [string], evidence_ids: [string] }
-    interactions: { value: [string], evidence_ids: [string] }
+    pharmacology: { value: [string], source_assertion_ids: [string] }
+    admet: { value: [string], source_assertion_ids: [string] }
+    clinical_trials: { value: [string], source_assertion_ids: [string] }
+    pharmacovigilance: { value: [string], source_assertion_ids: [string] }
+    indications: { value: [string], source_assertion_ids: [string] }
+    contraindications: { value: [string], source_assertion_ids: [string] }
+    interactions: { value: [string], source_assertion_ids: [string] }
 
   availability:
-    vendors: { value: [string], evidence_ids: [string] }
-    catalog_ids: { value: [string], evidence_ids: [string] }
-    packaging: { value: [string], evidence_ids: [string] }
+    vendors: { value: [string], source_assertion_ids: [string] }
+    catalog_ids: { value: [string], source_assertion_ids: [string] }
+    packaging: { value: [string], source_assertion_ids: [string] }

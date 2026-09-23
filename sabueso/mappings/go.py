@@ -3,7 +3,7 @@
 from __future__ import annotations
 from typing import Any, Dict, List
 
-from sabueso.core.evidence_store import generate_evidence_id
+from sabueso.core.source_assertion_store import make_source_assertion
 
 
 def _extract_terms(go_json: Dict[str, Any]) -> List[Dict[str, str]]:
@@ -29,25 +29,18 @@ def _extract_terms(go_json: Dict[str, Any]) -> List[Dict[str, str]]:
 def map_go_terms(go_json: Dict[str, Any], retrieved_at: str) -> Dict[str, Any]:
     """Map GO terms into canonical annotations.go_terms."""
     fields: Dict[str, Any] = {}
-    evidences: List[Dict[str, Any]] = []
-    field_evidence: Dict[str, List[str]] = {}
+    source_assertions: List[Dict[str, Any]] = []
+    field_source_assertions: Dict[str, List[str]] = {}
 
     terms = _extract_terms(go_json)
     if terms:
         fp = "annotations.go_terms"
         fields[fp] = terms
-        ev_ids: List[str] = []
+        sa_ids: List[str] = []
         for term in terms:
-            ev = {
-                "field": fp,
-                "value": term,
-                "source": {"type": "database", "name": "GO", "record_id": term["id"]},
-                "retrieved_at": retrieved_at,
-            }
-            ev_id = generate_evidence_id("GO", term["id"], fp, term)
-            ev["evidence_id"] = ev_id
-            evidences.append(ev)
-            ev_ids.append(ev_id)
-        field_evidence[fp] = ev_ids
+            assertion = make_source_assertion(fp, term, "GO", term["id"], retrieved_at)
+            source_assertions.append(assertion)
+            sa_ids.append(assertion["source_assertion_id"])
+        field_source_assertions[fp] = sa_ids
 
-    return {"fields": fields, "evidences": evidences, "field_evidence": field_evidence}
+    return {"fields": fields, "source_assertions": source_assertions, "field_source_assertions": field_source_assertions}

@@ -3,14 +3,14 @@
 from __future__ import annotations
 from typing import Any, Dict, List
 
-from sabueso.core.evidence_store import generate_evidence_id
+from sabueso.core.source_assertion_store import make_source_assertion
 
 
 def map_string_interactions(string_json: List[Dict[str, Any]], query_name: str, retrieved_at: str) -> Dict[str, Any]:
     """Map STRING network JSON into interactions.binding_partners."""
     fields: Dict[str, Any] = {}
-    evidences: List[Dict[str, Any]] = []
-    field_evidence: Dict[str, List[str]] = {}
+    source_assertions: List[Dict[str, Any]] = []
+    field_source_assertions: Dict[str, List[str]] = {}
 
     partners: List[str] = []
     for row in string_json or []:
@@ -26,18 +26,11 @@ def map_string_interactions(string_json: List[Dict[str, Any]], query_name: str, 
     if partners:
         fp = "interactions.binding_partners"
         fields[fp] = partners
-        ev_ids: List[str] = []
+        sa_ids: List[str] = []
         for p in partners:
-            ev = {
-                "field": fp,
-                "value": p,
-                "source": {"type": "database", "name": "STRING", "record_id": query_name},
-                "retrieved_at": retrieved_at,
-            }
-            ev_id = generate_evidence_id("STRING", query_name, fp, p)
-            ev["evidence_id"] = ev_id
-            evidences.append(ev)
-            ev_ids.append(ev_id)
-        field_evidence[fp] = ev_ids
+            assertion = make_source_assertion(fp, p, "STRING", query_name, retrieved_at)
+            source_assertions.append(assertion)
+            sa_ids.append(assertion["source_assertion_id"])
+        field_source_assertions[fp] = sa_ids
 
-    return {"fields": fields, "evidences": evidences, "field_evidence": field_evidence}
+    return {"fields": fields, "source_assertions": source_assertions, "field_source_assertions": field_source_assertions}

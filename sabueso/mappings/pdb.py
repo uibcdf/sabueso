@@ -4,7 +4,7 @@ from __future__ import annotations
 from typing import Any, Dict, List
 
 from .base import get_in
-from sabueso.core.evidence_store import generate_evidence_id
+from sabueso.core.source_assertion_store import make_source_assertion
 
 
 def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> Dict[str, Any]:
@@ -17,8 +17,8 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
       - entry.rcsb_entry_info.resolution_combined
     """
     fields: Dict[str, Any] = {}
-    evidences: List[Dict[str, Any]] = []
-    field_evidence: Dict[str, List[str]] = {}
+    source_assertions: List[Dict[str, Any]] = []
+    field_source_assertions: Dict[str, List[str]] = {}
 
     title = get_in(pdb_entry, ['entry', 'struct', 'title'])
     if not title:
@@ -26,16 +26,9 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
     if title:
         fp = 'structure.entry_metadata.title'
         fields[fp] = title
-        ev = {
-            'field': fp,
-            'value': title,
-            'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
-            'retrieved_at': retrieved_at,
-        }
-        ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, title)
-        ev['evidence_id'] = ev_id
-        evidences.append(ev)
-        field_evidence[fp] = [ev_id]
+        assertion = make_source_assertion(fp, title, 'RCSB PDB', pdb_id, retrieved_at)
+        source_assertions.append(assertion)
+        field_source_assertions[fp] = [assertion['source_assertion_id']]
 
     method = get_in(pdb_entry, ['entry', 'rcsb_entry_info', 'experimental_method'])
     if not method:
@@ -45,16 +38,9 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
     if method:
         fp = 'structure.entry_metadata.experimental_method'
         fields[fp] = method
-        ev = {
-            'field': fp,
-            'value': method,
-            'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
-            'retrieved_at': retrieved_at,
-        }
-        ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, method)
-        ev['evidence_id'] = ev_id
-        evidences.append(ev)
-        field_evidence[fp] = [ev_id]
+        assertion = make_source_assertion(fp, method, 'RCSB PDB', pdb_id, retrieved_at)
+        source_assertions.append(assertion)
+        field_source_assertions[fp] = [assertion['source_assertion_id']]
 
     res = get_in(pdb_entry, ['entry', 'rcsb_entry_info', 'resolution_combined'])
     if res is None:
@@ -64,47 +50,26 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
     if res:
         fp = 'structure.entry_metadata.resolution'
         fields[fp] = res
-        ev = {
-            'field': fp,
-            'value': res,
-            'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
-            'retrieved_at': retrieved_at,
-        }
-        ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, res)
-        ev['evidence_id'] = ev_id
-        evidences.append(ev)
-        field_evidence[fp] = [ev_id]
+        assertion = make_source_assertion(fp, res, 'RCSB PDB', pdb_id, retrieved_at)
+        source_assertions.append(assertion)
+        field_source_assertions[fp] = [assertion['source_assertion_id']]
 
     # dates
     deposit = get_in(pdb_entry, ['rcsb_accession_info', 'deposit_date'])
     if deposit:
         fp = 'structure.entry_metadata.deposition_date'
         fields[fp] = deposit
-        ev = {
-            'field': fp,
-            'value': deposit,
-            'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
-            'retrieved_at': retrieved_at,
-        }
-        ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, deposit)
-        ev['evidence_id'] = ev_id
-        evidences.append(ev)
-        field_evidence[fp] = [ev_id]
+        assertion = make_source_assertion(fp, deposit, 'RCSB PDB', pdb_id, retrieved_at)
+        source_assertions.append(assertion)
+        field_source_assertions[fp] = [assertion['source_assertion_id']]
 
     release = get_in(pdb_entry, ['rcsb_accession_info', 'initial_release_date'])
     if release:
         fp = 'structure.entry_metadata.release_date'
         fields[fp] = release
-        ev = {
-            'field': fp,
-            'value': release,
-            'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
-            'retrieved_at': retrieved_at,
-        }
-        ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, release)
-        ev['evidence_id'] = ev_id
-        evidences.append(ev)
-        field_evidence[fp] = [ev_id]
+        assertion = make_source_assertion(fp, release, 'RCSB PDB', pdb_id, retrieved_at)
+        source_assertions.append(assertion)
+        field_source_assertions[fp] = [assertion['source_assertion_id']]
 
     # primary citation
     citation = get_in(pdb_entry, ['rcsb_primary_citation'])
@@ -113,45 +78,24 @@ def map_structure(pdb_entry: Dict[str, Any], pdb_id: str, retrieved_at: str) -> 
         if doi:
             fp = 'structure.entry_metadata.primary_citation.doi'
             fields[fp] = doi
-            ev = {
-                'field': fp,
-                'value': doi,
-                'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
-                'retrieved_at': retrieved_at,
-            }
-            ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, doi)
-            ev['evidence_id'] = ev_id
-            evidences.append(ev)
-            field_evidence[fp] = [ev_id]
+            assertion = make_source_assertion(fp, doi, 'RCSB PDB', pdb_id, retrieved_at)
+            source_assertions.append(assertion)
+            field_source_assertions[fp] = [assertion['source_assertion_id']]
 
         pmid = citation.get('pdbx_database_id_pub_med')
         if pmid:
             fp = 'structure.entry_metadata.primary_citation.pmid'
             fields[fp] = pmid
-            ev = {
-                'field': fp,
-                'value': pmid,
-                'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
-                'retrieved_at': retrieved_at,
-            }
-            ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, pmid)
-            ev['evidence_id'] = ev_id
-            evidences.append(ev)
-            field_evidence[fp] = [ev_id]
+            assertion = make_source_assertion(fp, pmid, 'RCSB PDB', pdb_id, retrieved_at)
+            source_assertions.append(assertion)
+            field_source_assertions[fp] = [assertion['source_assertion_id']]
 
         title = citation.get('title')
         if title:
             fp = 'structure.entry_metadata.primary_citation.title'
             fields[fp] = title
-            ev = {
-                'field': fp,
-                'value': title,
-                'source': {'type': 'database', 'name': 'RCSB PDB', 'record_id': pdb_id},
-                'retrieved_at': retrieved_at,
-            }
-            ev_id = generate_evidence_id('RCSB PDB', pdb_id, fp, title)
-            ev['evidence_id'] = ev_id
-            evidences.append(ev)
-            field_evidence[fp] = [ev_id]
+            assertion = make_source_assertion(fp, title, 'RCSB PDB', pdb_id, retrieved_at)
+            source_assertions.append(assertion)
+            field_source_assertions[fp] = [assertion['source_assertion_id']]
 
-    return {'fields': fields, 'evidences': evidences, 'field_evidence': field_evidence}
+    return {'fields': fields, 'source_assertions': source_assertions, 'field_source_assertions': field_source_assertions}

@@ -8,7 +8,7 @@ from sabueso.tools.deck.storage import save_deck_jsonl, save_deck_sqlite, load_d
 
 
 def test_save_card_json(tmp_path: Path):
-    card = Card(sections={"identifiers": {"uniprot": {"value": "P00001", "evidence_ids": []}}})
+    card = Card(sections={"identifiers": {"uniprot": {"value": "P00001", "source_assertion_ids": []}}})
     out = tmp_path / "card.json"
     save_card_json(card, out)
     assert out.exists()
@@ -22,7 +22,7 @@ def test_save_card_json(tmp_path: Path):
 
 
 def test_save_deck_jsonl(tmp_path: Path):
-    card = Card(sections={"identifiers": {"uniprot": {"value": "P00001", "evidence_ids": []}}})
+    card = Card(sections={"identifiers": {"uniprot": {"value": "P00001", "source_assertion_ids": []}}})
     deck = Deck([card, card])
     out = tmp_path / "deck.jsonl"
     save_deck_jsonl(deck, out)
@@ -36,7 +36,7 @@ def test_save_deck_jsonl(tmp_path: Path):
 
 
 def test_save_card_sqlite(tmp_path: Path):
-    card = Card(sections={"identifiers": {"uniprot": {"value": "P00001", "evidence_ids": []}}})
+    card = Card(sections={"identifiers": {"uniprot": {"value": "P00001", "source_assertion_ids": []}}})
     out = tmp_path / "cards.db"
     save_card_sqlite(card, out, id_field="identifiers.uniprot")
     assert out.exists()
@@ -54,7 +54,7 @@ def test_save_card_sqlite(tmp_path: Path):
 
 
 def test_save_deck_sqlite(tmp_path: Path):
-    card = Card(sections={"identifiers": {"uniprot": {"value": "P00001", "evidence_ids": []}}})
+    card = Card(sections={"identifiers": {"uniprot": {"value": "P00001", "source_assertion_ids": []}}})
     deck = Deck([card, card])
     out = tmp_path / "cards.db"
     save_deck_sqlite(deck, out, id_field="identifiers.uniprot")

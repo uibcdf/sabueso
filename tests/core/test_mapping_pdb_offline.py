@@ -32,7 +32,7 @@ def test_pdb_mapping_offline():
     assert card.get("structure.entry_metadata.release_date") is not None
     assert card.get("structure.entry_metadata.primary_citation.doi") is not None
 
-    # evidence exists
+    # source assertions exist
     title = card.get("structure.entry_metadata.title")
-    for ev_id in title.get("evidence_ids", []):
-        assert card.evidence_store.get(ev_id) is not None
+    for sa_id in title.get("source_assertion_ids", []):
+        assert card.source_assertion_store.get(sa_id) is not None
