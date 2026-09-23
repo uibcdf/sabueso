@@ -15,7 +15,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 ### UniProt
 - **Status**: implemented
 - **Access**: online API, local JSON
-- **Quality**: green
+- **Quality**: yellow — catalytic activity and subcellular location are silently dropped, the sequence is not mapped, and ECO qualifiers are discarded (uibcdf/sabueso#13)
 - **Coverage**: identifiers, canonical name, organism, comments (function, catalytic activity, pathway, subunit, subcellular location, tissue specificity, PTM, polymorphism), positional features (binding/active sites, modified residues, disulfide bonds, glycosylation)
 - **Notes**: stable online tests
 
