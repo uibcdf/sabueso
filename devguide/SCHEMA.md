@@ -210,6 +210,20 @@ A Relationship is first-class, traceable knowledge:
   SourceAssertions absent from the card. The storage decision is to be re-evaluated in
   uibcdf/sabueso#19.
 
+## Quality records (#10)
+`card.quality` records how the card was resolved and enriched. Its entries are not fields
+stated by a source, so they are not `value`/`source_assertion_ids` nodes:
+- `conflicts`: `[{field, type: "disagreement", values, source_assertion_ids}]`,
+  disagreements among comparable assertions only;
+- `alternatives`: `[{field, type: "not_comparable", compare_within, values: [{within,
+  values, source_assertion_ids}]}]`, values of different methods, representations or
+  sources, reported and never compared (`devguide/SELECTION_RULES_EXAMPLES.md`);
+- `enrichments`: per-source enrichment outcomes;
+- `entity_resolution`: the resolution trace.
+
+`card.selection_rules` holds the rules the card was resolved with, the packaged defaults
+included.
+
 ## SourceAssertion Creation Rules (Approved)
 - Each mapped field value must generate **at least one** SourceAssertion.
 - SourceAssertion IDs are **deterministic** from `(source, record_id, field_path, asserted_value)`

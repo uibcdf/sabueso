@@ -179,3 +179,16 @@ Closes uibcdf/sabueso#21 (`devguide/archive/legacy_entity_paths.md`).
   conflict.
 - Small molecules have one identity scheme: every card is anchored at the standard
   InChIKey, whatever the source of its records (ChEMBL, PubChem, PDB CCD).
+
+## Resolution compares like with like (2026-09-23)
+Closes uibcdf/sabueso#10 (`devguide/archive/physchem_normalization.md`).
+- Every field is resolved from its SourceAssertions, with the packaged rules when none are
+  given. A multi-source field never takes the last value merged while citing every source.
+- Values are compared only when they measure the same thing: within one method
+  (`compare_within`), within one source for representations only a toolkit can
+  canonicalise (SMILES), and within the precision each source states
+  (`numeric_agreement: "stated_precision"`). The rest are `alternatives`, visible and never
+  conflicts; real disagreements stay `conflicts`.
+- Items of a list field are a union, not competing values.
+- A small molecule's properties describe the structure its card is anchored at (ChEMBL
+  `full_mwt`, not the parent's `mw_freebase`).

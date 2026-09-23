@@ -80,10 +80,12 @@ card_base:
     vendors: { value: [string], source_assertion_ids: [string] }
     catalog_ids: { value: [string], source_assertion_ids: [string] }
 
+  # Records of how the card was resolved and enriched, not source-stated fields (#10).
   quality:
-    conflicts: [ { field: string, source_assertion_ids: [string] } ]
-    completeness_score: number
-    confidence_score: number
+    conflicts: [ { field: string, type: string, values: [any], source_assertion_ids: [[string]] } ]
+    alternatives: [ { field: string, type: string, compare_within: [string], values: [ { within: any, values: [any], source_assertion_ids: [string] } ] } ]
+    enrichments: [ any ]
+    entity_resolution: any
 
   provenance:
     sources_consulted: [ { source: string, retrieved_at: date } ]
@@ -199,6 +201,7 @@ small_molecule_card:
 
   identifiers:
     smiles: { value: string, source_assertion_ids: [string] }
+    smiles_connectivity: { value: string, source_assertion_ids: [string] }
     inchi: { value: string, source_assertion_ids: [string] }
     inchikey: { value: string, source_assertion_ids: [string] }
 

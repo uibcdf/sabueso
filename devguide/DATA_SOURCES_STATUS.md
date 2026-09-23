@@ -58,15 +58,15 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Status**: implemented
 - **Access**: online API, local JSON
 - **Quality**: green
-- **Coverage**: formula, MW, SMILES, InChI/InChIKey, logP, TPSA, HBD/HBA, rotatable bonds
-- **Notes**: stable online tests
+- **Coverage**: formula, MW, isomeric SMILES (`identifiers.smiles`) and connectivity SMILES (`identifiers.smiles_connectivity`), InChI/InChIKey, XLogP3, TPSA, HBD/HBA, rotatable bonds; PubChem compounds are InChIKey-anchored like any small molecule (uibcdf/sabueso#25)
+- **Notes**: PubChem's `SMILES` (formerly `IsomericSMILES`) keeps stereochemistry and `ConnectivitySMILES` (formerly `CanonicalSMILES`) does not; the isomeric one used to be dropped (uibcdf/sabueso#10). XLogP3 and rotatable bonds carry their method. Stable online tests.
 
 ### ChEMBL
 - **Status**: implemented
 - **Access**: online API, local JSON
 - **Quality**: green
-- **Coverage**: identifiers, preferred name, molecule type, physchem (logP, HBD/HBA, TPSA, rotatable bonds), InChI/InChIKey, SMILES
-- **Notes**: stable online tests
+- **Coverage**: identifiers, preferred name, molecule type, formula, physchem (ALogP, HBD/HBA, TPSA, rotatable bonds, aromatic rings, molecular weight as `full_mwt`), `max_phase`, InChI/InChIKey, isomeric SMILES
+- **Notes**: numbers ChEMBL serialises as strings are normalized; logP and rotatable bonds carry their method (`ALogP`, `chembl:rtb`) and are compared only within it (uibcdf/sabueso#10). Stable online tests.
 
 ### ChEMBL bioactivities
 - **Status**: implemented as an enricher of `resolve_protein_card` (uibcdf/sabueso#23)

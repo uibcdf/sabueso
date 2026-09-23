@@ -2,14 +2,15 @@
 
 from __future__ import annotations
 
+import json
 from typing import Any, Dict, Iterable, List
 
-from sabueso.resolver import resolve_field
+from sabueso.resolver import load_selection_rules, resolve_field
 
 from .card import CARD_SCHEMA_VERSION, Card, make_card_id
 from .errors import SchemaError
 from .relationship_store import RelationshipStore
-from .source_assertion_store import SourceAssertionStore
+from .source_assertion_store import SourceAssertionStore, assertion_value
 
 # Identifier fields whose subject identifies the card, in order of preference.
 PRIMARY_IDENTIFIER_FIELDS = (
@@ -140,12 +141,30 @@ def build_card_from_mapping(
         cur[parts[-1]] = {"value": value, "source_assertion_ids": source_assertion_ids}
 
     # Helper: resolve field value if rules provided
+    # Every field is resolved from its assertions, with the packaged default rules when
+    # none are given. A field stated by several sources never takes the last one merged
+    # while citing them all (uibcdf/sabueso#10).
+    rules = selection_rules or load_selection_rules()
+    alternatives: List[Dict[str, Any]] = []
+
     def resolve_value(fp: str, val: Any) -> tuple[Any, List[str], dict | None]:
-        if not selection_rules:
-            return val, field_source_assertions.get(fp, []), None
         sa_ids = field_source_assertions.get(fp, [])
         assertions = [store.get(sa_id) for sa_id in sa_ids if store.get(sa_id)]
-        result = resolve_field(fp, assertions, selection_rules, mode=mode)
+        if not assertions:
+            return val, sa_ids, None
+        if isinstance(val, list) and not any(
+            isinstance(a.get("asserted_value"), list) for a in assertions
+        ):
+            # An itemised field: each assertion states one item (a location, a site, a
+            # reaction). Items do not compete; the field is their union, each traced.
+            items: Dict[str, Any] = {}
+            for a in assertions:
+                item = assertion_value(a)
+                items.setdefault(json.dumps(item, sort_keys=True, default=str), item)
+            return list(items.values()), [a["id"] for a in assertions], None
+        result = resolve_field(fp, assertions, rules, mode=mode)
+        if result.get("alternatives"):
+            alternatives.append({"field": fp, **result["alternatives"]})
         return (
             result.get("selected_value"),
             result.get("source_assertion_ids", []),
@@ -172,10 +191,12 @@ def build_card_from_mapping(
         meta=meta,
         sections=sections,
         source_assertion_store=store,
-        selection_rules=selection_rules or {},
+        selection_rules=rules,  # the rules actually applied, defaults included
         relationship_store=relationship_store,
     )
     if conflicts:
         card.quality.setdefault("conflicts", []).extend(conflicts)
+    if alternatives:
+        card.quality.setdefault("alternatives", []).extend(alternatives)
 
     return card

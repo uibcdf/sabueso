@@ -25,7 +25,8 @@ Versioning: **x.y.z** (no leading `v`).
 - `identifiers.drugbank`
 - `identifiers.inchi`
 - `identifiers.inchikey`
-- `identifiers.smiles`
+- `identifiers.smiles` (isomeric: keeps stereochemistry where the source defines it)
+- `identifiers.smiles_connectivity` (connectivity only, no stereochemistry)
 - `identifiers.other` (list/dict for rare IDs)
 
 ### names.*
@@ -82,8 +83,11 @@ Versioning: **x.y.z** (no leading `v`).
 - `clinical.max_phase` (ChEMBL highest development phase: 4 approved, 3–1 clinical, 0.5 early phase 1, -1 unknown)
 
 ### quality.*
-- `quality.conflicts`
-- `quality.notes`
+Records of how the card was resolved and enriched, not source-stated fields:
+- `quality.conflicts` (disagreements among comparable assertions)
+- `quality.alternatives` (values of different methods, representations or sources, not compared)
+- `quality.enrichments` (per-source enrichment outcomes)
+- `quality.entity_resolution` (resolution trace)
 
 ---
 

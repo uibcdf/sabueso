@@ -80,6 +80,10 @@ card_base:
       value: string
       source_assertion_ids:
       - string
+    smiles_connectivity:
+      value: string
+      source_assertion_ids:
+      - string
     other:
       value: any
       source_assertion_ids:
@@ -247,21 +251,10 @@ card_base:
       source_assertion_ids:
       - string
   clinical: "*"
-  quality:
-    conflicts:
-      value:
-      - field: string
-        values:
-        - any
-        source_assertion_ids:
-        - - string
-      source_assertion_ids:
-      - string
-    notes:
-      value:
-      - string
-      source_assertion_ids:
-      - string
+  # quality holds records of how the card was resolved and enriched, not fields stated by
+  # a source, so its entries are not value/source_assertion_ids nodes (uibcdf/sabueso#10).
+  # Shapes: devguide/SCHEMA.md, "Quality records".
+  quality: "*"
 protein_card:
   inherits: card_base
   annotations:

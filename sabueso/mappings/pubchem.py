@@ -12,6 +12,7 @@ from .base import get_in
 # PC_Compounds ``props`` entries (urn label, urn name) → PUG-REST property-table keys.
 _PC_PROPERTY_KEYS = {
     ("Molecular Weight", None): "MolecularWeight",
+    ("SMILES", "Absolute"): "SMILES",
     ("SMILES", "Connectivity"): "ConnectivitySMILES",
     ("Molecular Formula", None): "MolecularFormula",
     ("InChIKey", "Standard"): "InChIKey",
@@ -23,16 +24,32 @@ _PC_PROPERTY_KEYS = {
     ("Count", "Rotatable Bond"): "RotatableBondCount",
 }
 
-# Property-table key → canonical field path, in emission order.
+# Property-table key → (canonical field path, source metadata), in emission order.
+# ``method`` names what a value depends on (uibcdf/sabueso#10): PubChem's XLogP3 and
+# rotatable-bond count are not compared with other sources' logP or counts.
 _PROPERTY_FIELDS = [
-    ("MolecularFormula", "properties.physchem.formula"),
-    ("InChIKey", "identifiers.inchikey"),
-    ("InChI", "identifiers.inchi"),
-    ("XLogP", "properties.physchem.logp"),
-    ("TPSA", "properties.physchem.tpsa"),
-    ("HBondDonorCount", "properties.physchem.hbd"),
-    ("HBondAcceptorCount", "properties.physchem.hba"),
-    ("RotatableBondCount", "properties.physchem.rotatable_bonds"),
+    ("MolecularFormula", "properties.physchem.formula", None),
+    ("InChIKey", "identifiers.inchikey", None),
+    ("InChI", "identifiers.inchi", None),
+    ("XLogP", "properties.physchem.logp", {"method": "XLogP3"}),
+    ("TPSA", "properties.physchem.tpsa", None),
+    ("HBondDonorCount", "properties.physchem.hbd", None),
+    ("HBondAcceptorCount", "properties.physchem.hba", None),
+    (
+        "RotatableBondCount",
+        "properties.physchem.rotatable_bonds",
+        {"method": "pubchem:RotatableBondCount"},
+    ),
+]
+# PubChem names SMILES by what they encode: "SMILES" (formerly "IsomericSMILES") keeps
+# stereochemistry; "ConnectivitySMILES" (formerly "CanonicalSMILES") does not.
+_SMILES_FIELDS = [
+    (("SMILES", "IsomericSMILES"), "identifiers.smiles", "isomeric"),
+    (
+        ("ConnectivitySMILES", "CanonicalSMILES"),
+        "identifiers.smiles_connectivity",
+        "connectivity",
+    ),
 ]
 
 
@@ -88,10 +105,14 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
     source_assertions: List[Dict[str, Any]] = []
     field_source_assertions: Dict[str, List[str]] = {}
 
-    def add(fp: str, value: Any, normalized: Any = None) -> None:
+    def add(
+        fp: str, value: Any, normalized: Any = None, metadata: Dict | None = None
+    ) -> None:
         assertion = make_source_assertion(fp, value, "PubChem", record_id, retrieved_at)
         if normalized is not None and normalized != value:
             assertion["normalized_value"] = normalized
+        if metadata:
+            assertion["source_metadata"] = dict(metadata)
         fields[fp] = normalized if normalized is not None else value
         source_assertions.append(assertion)
         field_source_assertions[fp] = [assertion["id"]]
@@ -101,18 +122,20 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
 
     mw = p0.get("MolecularWeight")
     if mw is not None:
-        add("properties.physchem.molecular_weight", mw, _as_number(mw))
-    smiles = (
-        p0.get("CanonicalSMILES")
-        or p0.get("IsomericSMILES")
-        or p0.get("ConnectivitySMILES")
-    )
-    if smiles:
-        add("identifiers.smiles", smiles)
-    for key, fp in _PROPERTY_FIELDS:
+        add("properties.physchem.molecular_weight", mw, _as_number(mw), {"unit": "Da"})
+    for keys, fp, representation in _SMILES_FIELDS:
+        smiles = next((p0[k] for k in keys if p0.get(k)), None)
+        if smiles:
+            add(fp, smiles, metadata={"representation": representation})
+    for key, fp, metadata in _PROPERTY_FIELDS:
         value = p0.get(key)
-        if value is not None and value != "":
-            add(fp, value)
+        if value is None or value == "":
+            continue
+        numeric = (
+            fp.startswith("properties.physchem.")
+            and fp != "properties.physchem.formula"
+        )
+        add(fp, value, _as_number(value) if numeric else None, metadata)
 
     cid = p0.get("CID")
     if cid is not None:

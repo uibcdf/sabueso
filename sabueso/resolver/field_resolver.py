@@ -1,21 +1,43 @@
-"""Field-level resolver: selects a canonical value from competing SourceAssertions."""
+"""Field-level resolver: selects a canonical value from competing SourceAssertions.
+
+Two field rules decide which assertions are comparable at all (uibcdf/sabueso#10):
+
+- ``compare_within``: a list of paths into the assertion (e.g. ``"source.name"``,
+  ``"source_metadata.method"``). Assertions are compared only with those that share the
+  same values at those paths. Values computed by different methods (ALogP and XLogP3), or
+  representations that only one toolkit can canonicalise (SMILES), are different
+  quantities, not a disagreement. They are returned as ``alternatives``, never as a
+  ``conflict``.
+- ``numeric_agreement: "stated_precision"``: two numbers agree when they are equal at the
+  coarser of the precisions their sources state (``824.97`` and ``825.0`` agree at one
+  decimal; ``171.17`` and ``171`` at zero). The precision is read from the asserted value
+  as the source wrote it, never guessed.
+
+A real disagreement, within one method and beyond the stated precision, is still a
+``conflict``. Only the assertions that state the selected value support it.
+"""
 
 from __future__ import annotations
 
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Dict, List, Tuple
 
 from sabueso.core.source_assertion_store import assertion_value
+
+# Retrieval times mix timezone-aware stamps (online clients) and plain dates (fixtures);
+# naive values are read as UTC so they can be compared.
+_EARLIEST = datetime.min.replace(tzinfo=timezone.utc)
 
 
 def _parse_dt(value: str | None) -> datetime | None:
     if not value:
         return None
     try:
-        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
     except ValueError:
         return None
+    return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
 
 
 def _normalize_value(value: Any) -> Any:
@@ -44,9 +66,67 @@ def _values_equal(a: Any, b: Any, mode: str) -> bool:
     return na == nb
 
 
+def _stated_decimals(value: Any) -> int | None:
+    """Decimal places of a number as its source wrote it (``"825.0"`` -> 1)."""
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, int):
+        return 0
+    if isinstance(value, float):
+        text = repr(value)
+    elif isinstance(value, str):
+        text = value.strip()
+    else:
+        return None
+    try:
+        float(text)
+    except ValueError:
+        return None
+    if "e" in text.lower():
+        return None
+    return len(text.split(".", 1)[1]) if "." in text else 0
+
+
+def _precision_groups(
+    assertions: List[Dict[str, Any]],
+) -> Dict[str, List[Dict[str, Any]]] | None:
+    """Group numbers that agree at the coarser stated precision; None if not numeric."""
+    items = []
+    for a in assertions:
+        decimals = _stated_decimals(a.get("asserted_value"))
+        try:
+            number = float(assertion_value(a))
+        except (TypeError, ValueError):
+            return None
+        if decimals is None:
+            return None
+        items.append((number, decimals, a))
+    clusters: List[List[tuple]] = []
+    for item in sorted(items, key=lambda i: i[0]):
+        for cluster in clusters:
+            if all(
+                abs(item[0] - other[0]) <= 0.5 * 10 ** -min(item[1], other[1]) + 1e-9
+                for other in cluster
+            ):
+                cluster.append(item)
+                break
+        else:
+            clusters.append([item])
+    return {
+        f"~{c[0][0]!r}": [a for _, _, a in sorted(c, key=lambda i: -i[1])]
+        for c in clusters
+    }
+
+
 def _group_assertions(
-    assertions: List[Dict[str, Any]], mode: str
+    assertions: List[Dict[str, Any]],
+    mode: str,
+    field_rules: Dict[str, Any] | None = None,
 ) -> Dict[str, List[Dict[str, Any]]]:
+    if (field_rules or {}).get("numeric_agreement") == "stated_precision":
+        groups = _precision_groups(assertions)
+        if groups is not None:
+            return groups
     groups: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
     for a in assertions:
         val = assertion_value(a)
@@ -55,16 +135,32 @@ def _group_assertions(
     return groups
 
 
+def _at(assertion: Dict[str, Any], path: str) -> Any:
+    node: Any = assertion
+    for part in path.split("."):
+        node = node.get(part) if isinstance(node, dict) else None
+    return node
+
+
+def _partitions(
+    assertions: List[Dict[str, Any]], paths: List[str]
+) -> Dict[tuple, List[Dict[str, Any]]]:
+    parts: Dict[tuple, List[Dict[str, Any]]] = defaultdict(list)
+    for a in assertions:
+        parts[tuple(_at(a, p) for p in paths)].append(a)
+    return dict(parts)
+
+
 def _most_recent_group(
     groups: Dict[str, List[Dict[str, Any]]],
 ) -> Tuple[str, List[Dict[str, Any]]]:
     def group_recent(assertion_list: List[Dict[str, Any]]) -> datetime:
         dates = [_parse_dt(a.get("retrieved_at")) for a in assertion_list]
         dates = [d for d in dates if d]
-        return max(dates) if dates else datetime.min
+        return max(dates) if dates else _EARLIEST
 
     best_key = None
-    best_dt = datetime.min
+    best_dt = _EARLIEST
     for k, group in groups.items():
         dt = group_recent(group)
         if dt > best_dt:
@@ -84,6 +180,48 @@ def _build_conflict(groups: Dict[str, List[Dict[str, Any]]]) -> Dict[str, Any] |
         "values": [assertion_value(g[0]) for g in groups.values()],
         "source_assertion_ids": [[a.get("id") for a in g] for g in groups.values()],
     }
+
+
+def _comparable(
+    assertions: List[Dict[str, Any]], mode: str, field_rules: Dict[str, Any]
+) -> tuple:
+    """(conflict, alternatives): disagreements inside comparable partitions only."""
+    paths = field_rules.get("compare_within") or []
+    if not paths:
+        return _build_conflict(_group_assertions(assertions, mode, field_rules)), None
+    partitions = _partitions(assertions, paths)
+    conflicts = [
+        c
+        for part in partitions.values()
+        if (c := _build_conflict(_group_assertions(part, mode, field_rules)))
+    ]
+    conflict = None
+    if conflicts:
+        conflict = {
+            "type": "disagreement",
+            "values": [v for c in conflicts for v in c["values"]],
+            "source_assertion_ids": [
+                ids for c in conflicts for ids in c["source_assertion_ids"]
+            ],
+        }
+    alternatives = None
+    if len(partitions) > 1:
+        alternatives = {
+            "type": "not_comparable",
+            "compare_within": paths,
+            "values": [
+                {
+                    "within": dict(zip(paths, key)),
+                    "values": [
+                        assertion_value(g[0])
+                        for g in _group_assertions(part, mode, field_rules).values()
+                    ],
+                    "source_assertion_ids": [a.get("id") for a in part],
+                }
+                for key, part in sorted(partitions.items(), key=lambda kv: repr(kv[0]))
+            ],
+        }
+    return conflict, alternatives
 
 
 def resolve_field(
@@ -112,10 +250,24 @@ def resolve_field(
             "selected_value": None,
             "source_assertion_ids": [],
             "conflict": None,
+            "alternatives": None,
         }
 
-    groups = _group_assertions(assertions, mode)
-    conflict_all = _build_conflict(groups)
+    groups = _group_assertions(assertions, mode, field_rules)
+    conflict_all, alternatives = _comparable(assertions, mode, field_rules)
+
+    def support(selected: Dict[str, Any]) -> List[str]:
+        """Every assertion that states the selected value, within its comparable
+        partition: agreeing sources support it, other methods never do."""
+        paths = field_rules.get("compare_within") or []
+        pool = assertions
+        if paths:
+            key = tuple(_at(selected, p) for p in paths)
+            pool = [a for a in assertions if tuple(_at(a, p) for p in paths) == key]
+        for group in _group_assertions(pool, mode, field_rules).values():
+            if any(a is selected for a in group):
+                return [a.get("id") for a in group]
+        return [selected.get("id")]
 
     # Strategy: priority_sources
     if strategy == "priority_sources" and priority_sources:
@@ -125,7 +277,7 @@ def resolve_field(
             ]
             if not src_assertions:
                 continue
-            src_groups = _group_assertions(src_assertions, mode)
+            src_groups = _group_assertions(src_assertions, mode, field_rules)
             if allow_multiple:
                 selected_values = [assertion_value(g[0]) for g in src_groups.values()]
                 source_assertion_ids = [
@@ -136,15 +288,17 @@ def resolve_field(
                     "selected_value": selected_values,
                     "source_assertion_ids": source_assertion_ids,
                     "conflict": conflict_all,
+                    "alternatives": alternatives,
                 }
             key, group = _most_recent_group(src_groups)
             selected_value = assertion_value(group[0])
-            source_assertion_ids = [a.get("id") for a in group]
+            source_assertion_ids = support(group[0])
             return {
                 "field": field_path,
                 "selected_value": selected_value,
                 "source_assertion_ids": source_assertion_ids,
                 "conflict": conflict_all,
+                "alternatives": alternatives,
             }
 
     # Strategy: most_recent
@@ -153,9 +307,7 @@ def resolve_field(
             # all values ordered by most recent
             ordered = sorted(
                 groups.values(),
-                key=lambda group: (
-                    _parse_dt(group[0].get("retrieved_at")) or datetime.min
-                ),
+                key=lambda group: _parse_dt(group[0].get("retrieved_at")) or _EARLIEST,
                 reverse=True,
             )
             selected_values = [assertion_value(group[0]) for group in ordered]
@@ -165,6 +317,7 @@ def resolve_field(
                 "selected_value": selected_values,
                 "source_assertion_ids": source_assertion_ids,
                 "conflict": conflict_all,
+                "alternatives": alternatives,
             }
         key, group = _most_recent_group(groups)
         return {
@@ -172,6 +325,7 @@ def resolve_field(
             "selected_value": assertion_value(group[0]),
             "source_assertion_ids": [a.get("id") for a in group],
             "conflict": conflict_all,
+            "alternatives": alternatives,
         }
 
     # Strategy: most_frequent (default fallback)
@@ -186,14 +340,20 @@ def resolve_field(
             "selected_value": assertion_value(group[0]),
             "source_assertion_ids": [a.get("id") for a in group],
             "conflict": conflict_all,
+            "alternatives": alternatives,
         }
 
     # Tie
     key, group = _most_recent_group(top_groups)
-    conflict = _build_conflict(top_groups)
+    conflict = (
+        conflict_all
+        if field_rules.get("compare_within")
+        else _build_conflict(top_groups)
+    )
     return {
         "field": field_path,
         "selected_value": assertion_value(group[0]),
         "source_assertion_ids": [a.get("id") for a in group],
         "conflict": conflict,
+        "alternatives": alternatives,
     }

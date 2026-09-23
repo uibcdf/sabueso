@@ -14,7 +14,9 @@ def test_pubchem_mapping_offline():
     card = build_card_from_mapping(mapping, meta={"entity_type": "small_molecule"})
 
     assert card.get("properties.physchem.molecular_weight") is not None
-    assert card.get("identifiers.smiles") is not None
+    # PubChem's "CanonicalSMILES" carries no stereochemistry: a connectivity SMILES.
+    assert card.get("identifiers.smiles") is None
+    assert card.get("identifiers.smiles_connectivity")["value"] == "CC"
     assert card.get("identifiers.pubchem") is not None
 
     mw = card.get("properties.physchem.molecular_weight")
@@ -36,8 +38,13 @@ def test_pubchem_pc_compounds_record_offline():
     assert card.get("identifiers.pubchem")["value"] == "66414"
     assert card.get("identifiers.inchikey")["value"] == "CQOQDQWUFQDJMK-SSTWWWIQSA-N"
     assert card.get("properties.physchem.formula")["value"] == "C19H26O3"
+    # PubChem states both: the isomeric SMILES keeps the stereocentres.
     assert (
         card.get("identifiers.smiles")["value"]
+        == "C[C@]12CC[C@H]3[C@H]([C@@H]1CC[C@@H]2O)CCC4=CC(=C(C=C34)OC)O"
+    )
+    assert (
+        card.get("identifiers.smiles_connectivity")["value"]
         == "CC12CCC3C(C1CCC2O)CCC4=CC(=C(C=C34)OC)O"
     )
     for fp in (
