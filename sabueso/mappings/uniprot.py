@@ -4,7 +4,9 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
+from sabueso.core.relationship_store import make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
+from sabueso.core.structures import coverage
 
 from .base import get_in
 
@@ -74,6 +76,27 @@ def _subcellular_location(
     if molecule:
         item["molecule"] = molecule  # isoform/chain the comment is restricted to
     return item
+
+
+def _parse_pdb_chains(chains: str) -> tuple:
+    """UniProt PDB 'Chains' property, e.g. 'A/B=2-249' or 'A/B=3-18, A/B=44-100'."""
+    chain_ids: set = set()
+    ranges: List[List[int]] = []
+    for segment in (chains or "").split(","):
+        ids, _, span = segment.strip().partition("=")
+        chain_ids.update(c for c in ids.split("/") if c)
+        beg, _, end = span.partition("-")
+        if beg.strip().isdigit() and end.strip().isdigit():
+            ranges.append([int(beg), int(end)])
+    return sorted(chain_ids), ranges
+
+
+def _angstrom(resolution: str | None) -> float | None:
+    """'2.80 A' -> 2.8; '-' (e.g. NMR) -> None."""
+    try:
+        return float(str(resolution).split()[0])
+    except (ValueError, IndexError):
+        return None
 
 
 def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, Any]:
@@ -219,9 +242,42 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     for fp in _FEATURES.values():
         assert_list(fp, feature_items[fp], features)
 
+    # experimental structures (PDB cross-references) as has_structure relationships
+    relationships: List[Dict[str, Any]] = []
+    for xref in uniprot_json.get("uniProtKBCrossReferences", []) or []:
+        if xref.get("database") != "PDB" or not primary:
+            continue
+        props = {p.get("key"): p.get("value") for p in xref.get("properties", []) or []}
+        chain_ids, ranges = _parse_pdb_chains(props.get("Chains", ""))
+        structure_ref = f"pdb:{xref['id']}"
+        stated = {
+            "object_ref": structure_ref,
+            **{k.lower(): v for k, v in props.items()},
+        }
+        assertion = make_source_assertion(
+            "relationships.has_structure", stated, "UniProt", record_id, retrieved_at
+        )
+        source_assertions.append(assertion)
+        relationships.append(
+            make_relationship(
+                f"uniprot:{primary}",
+                "has_structure",
+                structure_ref,
+                qualifiers={
+                    "method": props.get("Method"),
+                    "resolution_angstrom": _angstrom(props.get("Resolution")),
+                    "chains": chain_ids,
+                    "ranges": ranges,
+                    "coverage": coverage(ranges, sequence.get("length")),
+                },
+                source_assertion_ids=[assertion["id"]],
+            )
+        )
+
     return {
         "fields": fields,
         "features": features,
         "source_assertions": source_assertions,
         "field_source_assertions": field_source_assertions,
+        "relationships": relationships,
     }

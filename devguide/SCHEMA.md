@@ -114,8 +114,11 @@ A Relationship is first-class, traceable knowledge:
   `superseded_by`, `has_structure`. Any other predicate is rejected. The vocabulary is
   extended deliberately.
 - **Identity:** `id = REL_<hash>`, deterministic from subject, predicate, object and the
-  predicate's identity qualifiers: `isoform` for `isoform_of`, `polymer_entity` for
-  `has_structure`. The same relationship is therefore recognisable wherever it appears.
+  predicate's identity qualifiers. `isoform_of` includes `isoform`. `has_structure` is
+  identified by the (protein, structure) pair alone: UniProt cross-references do not name
+  polymer entities, so entity-level details are qualifiers. This lets UniProt and RCSB
+  state the same relationship. The same relationship is therefore recognisable wherever
+  it appears.
 - **Support:** each relationship is supported by SourceAssertions (asserted by sources),
   by a `derivation` record (inferred by Sabueso: rule, inputs, parameters, Sabueso
   version), or by both. An unsupported relationship is rejected. A derived relationship
@@ -126,6 +129,12 @@ A Relationship is first-class, traceable knowledge:
 - **SourceAssertions that support a relationship** use
   `field_path = relationships.<predicate>`. Their `asserted_value` is what the source
   states, i.e. the object and qualifiers as given by that source.
+- **`has_structure` qualifiers:** `method`, `resolution_angstrom`, `chains`, `ranges`
+  (UniProt numbering, inclusive) and `coverage` (fraction of the canonical sequence).
+  Later: polymer entities, other entities present, and ligands from RCSB. The coverage
+  class (`full_length ≥ 0.9 > partial ≥ 0.3 > fragment_or_peptide`) is derived knowledge,
+  computed by `Card.structures()` with its rule and thresholds (`structure_coverage_class@1`).
+  It is never stored as a qualifier.
 - **Storage:** relationships live in the subject Card's `relationship_store`,
   serialized with the card. The aggregator rejects relationships that cite
   SourceAssertions absent from the card. The storage decision is to be re-evaluated in

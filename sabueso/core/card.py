@@ -55,6 +55,12 @@ class Card:
         """Relationships carried by this card, optionally filtered."""
         return self.relationship_store.find(predicate=predicate, object_ref=object_ref)
 
+    def structures(self, include_fragments: bool = False) -> Dict[str, Any]:
+        """Protein-centric view of this card's experimental structures."""
+        from .structures import structures_view
+
+        return structures_view(self, include_fragments=include_fragments)
+
     def get(self, field_path: str) -> Any:
         cur = self.sections
         for key in field_path.split("."):

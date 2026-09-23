@@ -32,12 +32,22 @@ def test_relationship_id_is_deterministic_and_uses_identity_qualifiers():
         source_assertion_ids=[sa["id"]],
     )
     a = make_relationship(qualifiers={"polymer_entity": "1", "coverage": 0.99}, **base)
-    b = make_relationship(qualifiers={"polymer_entity": "1", "coverage": 0.5}, **base)
-    c = make_relationship(qualifiers={"polymer_entity": "2"}, **base)
-
-    assert a["id"] == b["id"]  # non-identity qualifiers do not change identity
-    assert a["id"] != c["id"]  # another polymer entity is another relationship
+    b = make_relationship(qualifiers={"coverage": 0.5}, **base)
+    # has_structure is identified by the (protein, structure) pair, so sources that do
+    # and do not name polymer entities (RCSB vs UniProt) state the same relationship.
+    assert a["id"] == b["id"]
     assert a["id"].startswith("REL_")
+
+    iso = dict(
+        subject_ref="uniprot:P60174-3",
+        predicate="isoform_of",
+        object_ref="uniprot:P60174",
+        source_assertion_ids=[sa["id"]],
+    )
+    assert (
+        make_relationship(qualifiers={"isoform": "P60174-3"}, **iso)["id"]
+        != make_relationship(qualifiers={"isoform": "P60174-4"}, **iso)["id"]
+    )
 
 
 @pytest.mark.parametrize(

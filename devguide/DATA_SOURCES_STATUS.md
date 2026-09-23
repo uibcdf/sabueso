@@ -23,6 +23,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - subcellular location as `{location, topology?, orientation?, molecule?}`;
   - sequence: primary, length, molecular weight in Da, CRC64/MD5 checksums;
   - positional features: binding and active sites, modified residues, disulfide bonds, glycosylation;
+  - PDB cross-references as `has_structure` relationships (method, resolution, chains, UniProt-numbered ranges, coverage), shown through `Card.structures()`;
   - UniProt evidence qualifiers kept per SourceAssertion as `source_metadata.eco`.
 - **Known limits**:
   - other comment types (interaction, alternative products, similarity, …) and feature types are not mapped;

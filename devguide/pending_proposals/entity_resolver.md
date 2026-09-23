@@ -412,8 +412,28 @@ Fixtures to add at implementation time:
    Deferred: the contract says ambiguous candidates are "also returned as an ambiguity
    Deck". They are returned as a list for now. Materializing them as a Deck of Cards
    needs card building from resolved entities (step 4).
-4. `has_structure` from UniProt/RCSB and the ProteinCard `structures` view (A9–A11):
-   pending.
+4. **`has_structure` and the ProteinCard `structures` view** (A9–A11), in three parts.
+   - **4a. UniProt side.** Done:
+     - PDB cross-references become `has_structure` relationships backed by UniProt
+       SourceAssertions (the raw `Chains`/`Method`/`Resolution` as stated), with
+       normalized chains, ranges and coverage;
+     - `Card.structures(include_fragments=False)` returns the view, lists excluded
+       fragments, and carries the derived-classification record. HsTIM gives 24 items,
+       with its 5 peptide complexes excluded. TcTIM 3Q37, a loop-deletion construct,
+       comes out `partial` (0.805);
+     - tests: `tests/core/test_structures_offline.py`.
+
+     Two deviations from the agreed contract, found while implementing:
+     - **Class names:** `full_length | partial | fragment_or_peptide` instead of
+       `… domain …`, because a domain cannot be told from coverage alone.
+     - **`has_structure` identity:** it no longer includes `polymer_entity`. UniProt
+       cross-references do not name polymer entities, so UniProt and RCSB could never
+       agree on the same relationship. The (protein, structure) pair is the identity,
+       and polymer entities are qualifiers.
+   - **4b. RCSB entity mapping** (other entities present, ligands, second source;
+     resolving `pdb:<id>`): pending.
+   - **4c. Cards built from resolved entities**, with the subject boundary (A5),
+     `quality.entity_resolution` and the removal of scalar structure fields: pending.
 
 ## Resolution
 

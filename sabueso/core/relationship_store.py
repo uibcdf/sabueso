@@ -28,10 +28,11 @@ PREDICATES = frozenset(
 )
 
 # Qualifiers that distinguish two relationships with the same subject, predicate and
-# object, and therefore take part in the relationship id.
+# object, and therefore take part in the relationship id. has_structure is identified by
+# the (protein, structure) pair: UniProt cross-references do not name polymer entities,
+# so entity-level details are qualifiers and sources stating the pair can agree.
 IDENTITY_QUALIFIERS: Dict[str, tuple] = {
     "isoform_of": ("isoform",),
-    "has_structure": ("polymer_entity",),
 }
 
 
