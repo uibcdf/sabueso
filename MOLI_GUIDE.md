@@ -67,7 +67,13 @@ When work in one component exposes a missing or limiting capability in another:
 
 MOLI owns the shared engineering baseline for its repositories. Applicable policies are registered in `moli.toml` and documented under `uibcdf/moli/devguide/policies/`.
 
-For repositories carrying the `python-package` capability, the baseline includes Python support, CI coverage, Ruff/pytest quality tooling, release-version semantics, repository badge evidence, and archival/DOI rules when applicable.
+For repositories carrying the `python-package` capability, the baseline includes Python support, CI coverage, Ruff/pytest quality tooling, applicable UIBCDF support libraries, developer receptors, release-version semantics, repository badge evidence, and archival/DOI rules when applicable.
+
+Review public API contracts for ArgDigest, optional or heavy dependencies for DepDigest, user-facing diagnostics for SMonitor, and physical quantities for PyUnitWizard. Use each library where its boundary exists; record justified non-applicability or a bounded exception in the component's review issue. PyUnitWizard can validate and convert values internally without changing a component's persisted schema. Follow [MOLI's support-library policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_support_libraries_policy.md) for the exact applicability rule.
+
+When an agent runs Python tests, use the published pytest-receptor with `--receptor=llm`; use `--receptor=ci` in pytest CI logs. Use a published gh-run-receptor as the preferred first inspection of Actions runs, with GitHub conclusions authoritative and native `gh run view` as fallback. Follow [MOLI's developer-tools policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_developer_tools_policy.md) for versions, safeguards, and exceptions. These developer tools are not runtime dependencies.
+
+When registering a new direct Python component, declare its `python-package` capability and a `python_ecosystem_review` issue in `moli.toml`. The issue records applicability, adoption evidence, and exceptions. MOLI's registry validation and scheduled component audit guard this onboarding step.
 
 A component may add stricter local requirements. It must not silently contradict an applicable MOLI engineering policy; deviations require a tracked exception with rationale and an exit condition.
 
