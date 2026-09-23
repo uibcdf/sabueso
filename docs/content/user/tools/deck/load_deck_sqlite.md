@@ -28,4 +28,4 @@ print(len(payloads))
 ## Notes
 
 - Apply SQL filtering externally when you need subsets
-- Convert payload list into Deck/Card objects in your workflow
+- `read_deck_sqlite(path, table=...)` returns `(meta, payloads)`, and `Deck.from_sqlite(path, table=...)` a Deck with its `meta`

@@ -45,7 +45,7 @@ def test_save_deck_jsonl(tmp_path: Path):
     out = tmp_path / "deck.jsonl"
     save_deck_jsonl(deck, out)
     assert out.exists()
-    assert out.read_text(encoding="utf-8").count("\n") == 2
+    assert out.read_text(encoding="utf-8").count("\n") == 3  # header + 2 cards
     out2 = tmp_path / "deck2.jsonl"
     deck.to_jsonl(str(out2))
     assert out2.exists()

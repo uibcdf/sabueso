@@ -131,5 +131,5 @@ Tests: `tests/core/test_ligand_deck_offline.py`.
 
 **Deferred and tracked elsewhere:**
 - **Molecule → protein navigation.** A molecule card does not list its proteins, because relationships are stored with their subject (the protein). A reverse lookup over a deck of protein cards depends on the storage re-evaluation of uibcdf/sabueso#19.
-- **Deck persistence.** JSONL and SQLite do not store `deck.meta`, so a saved ligand deck loses its source outcomes (uibcdf/sabueso#26).
+- **Deck persistence.** JSONL and SQLite did not store `deck.meta`, so a saved ligand deck lost its source outcomes (uibcdf/sabueso#26; resolved later on 2026-09-23).
 - **Artifact filtering of structure ligands** (item 3 of uibcdf/sabueso#25). Sulfate appears as a ligand that was observed only in a structure, and the deck's `notes` say so.

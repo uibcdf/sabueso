@@ -2,7 +2,7 @@
 
 ## Goal
 
-Append all cards in a Deck to SQLite.
+Store a Deck in a SQLite table, with its `meta` in the `deck_meta` table.
 
 ## Steps
 
@@ -23,11 +23,14 @@ save_deck_sqlite(
 
 ## What to check
 
-- Rows are inserted for all deck cards
+- The table holds one row per deck card; saving again replaces them
 - Serialized payload is stored per row
 - `card_id` is populated when configured
+- The deck `meta` is in `deck_meta`, keyed by the table name
 
 ## Notes
 
 - Recommended for large persistent decks
-- Keep consistent table conventions across projects
+- One table holds one deck. To accumulate cards, extend the deck in memory and save it once
+- Table names must be plain identifiers; `deck_meta` is reserved
+- `Deck.from_sqlite(path, table=...)` restores the cards and the `meta`

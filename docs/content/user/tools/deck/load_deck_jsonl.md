@@ -27,5 +27,6 @@ print(len(payloads))
 
 ## Notes
 
-- Returns payloads, not a Deck object
+- Returns payloads, not a Deck object; the header line is skipped
+- `read_deck_jsonl(path)` returns `(meta, payloads)`, and `Deck.from_jsonl(path)` a Deck
 - Rebuild Deck in your application layer if required

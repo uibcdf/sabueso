@@ -102,7 +102,7 @@ Considered with the owner:
 - **ChEMBL salts.** The ligand deck anchors ChEMBL parent molecules. The salt forms actually tested stay as `has_bioactivity` objects and are not anchored separately.
 - **Legacy molecule cards** (`create_molecule_card_*`, `create_compound_card_*`) still derive `chembl:`/`pubchem:` card ids, so two identity schemes coexist. Retiring or migrating them belongs to uibcdf/sabueso#21, part 3.
 - **InChI version.** CCD and ChEMBL compute InChIs with their own software versions. Standard InChI is designed to be stable, but a disagreement would show up as two anchors for one molecule. `decision.discrepancies` makes it visible.
-- **Deck persistence.** A saved ligand deck loses `deck.meta`: its source outcomes and unanchored records (uibcdf/sabueso#26).
+- **Deck persistence.** Resolved in uibcdf/sabueso#26: a saved ligand deck keeps `deck.meta` (JSONL header, SQLite `deck_meta`).
 - **UniChem coverage and latency.** One call per molecule. A deck of hundreds of molecules is slow online, which is why decks default to no UniChem.
 - **Namespaces.** `pdb.ligand`, `inchikey`, `unichem`, `chebi`, `drugbank` and `bindingdb` follow Bioregistry prefixes. If other MOLI components start to exchange these references, the vocabulary becomes a shared contract to raise in `uibcdf/moli`.
 

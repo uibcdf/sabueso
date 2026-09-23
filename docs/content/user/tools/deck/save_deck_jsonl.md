@@ -2,7 +2,7 @@
 
 ## Goal
 
-Persist a Deck as JSONL (one card payload per line).
+Persist a Deck as JSONL: a header line with the deck `meta`, then one card payload per line.
 
 ## Steps
 
@@ -23,9 +23,10 @@ save_deck_jsonl(deck, "data/decks/ligands.jsonl")
 
 - Output file exists
 - Each line is valid JSON
-- Line count equals deck size
+- Line count equals deck size plus one (the header)
 
 ## Notes
 
 - Good for streaming and simple data exchange
+- `Deck.from_jsonl(path)` restores the cards and the `meta`
 - Prefer SQLite for relational queries
