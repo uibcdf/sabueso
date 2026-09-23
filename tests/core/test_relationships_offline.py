@@ -53,7 +53,7 @@ def test_relationship_id_is_deterministic_and_uses_identity_qualifiers():
 @pytest.mark.parametrize(
     "kwargs",
     [
-        dict(predicate="interacts_with"),  # not in the MVP vocabulary
+        dict(predicate="inhibits"),  # not in the vocabulary
         dict(object_ref=""),
         dict(source_assertion_ids=None, derivation=None),  # unsupported relationship
     ],

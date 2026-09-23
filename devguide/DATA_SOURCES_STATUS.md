@@ -24,11 +24,15 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - sequence: primary, length, molecular weight in Da, CRC64/MD5 checksums;
   - positional features: binding and active sites, modified residues, disulfide bonds, glycosylation;
   - PDB cross-references as `has_structure` relationships (method, resolution, chains, UniProt-numbered ranges, coverage), shown through `Card.structures()`;
+  - GO cross-references as `annotated_with` relationships (aspect, term, GO code, assigned by; ECO in `source_metadata`);
+  - InterPro, Pfam, Gene3D (CATH), SUPFAM, PANTHER, PROSITE and CDD cross-references as `classified_in` relationships;
+  - curated INTERACTION comments (IntAct binary interactions) as `interacts_with` relationships;
   - UniProt evidence qualifiers kept per SourceAssertion as `source_metadata.eco`.
 - **Known limits**:
   - other comment types (interaction, alternative products, similarity, …) and feature types are not mapped;
   - isoform restrictions (`molecule`) are recorded for catalytic activity and subcellular location, but not for free-text comments;
   - identical repeated values in one record share one SourceAssertion id.
+  - INTERACTION comments are UniProt's curated subset of binary interactions: 3 for human TIM, while its IntAct cross-reference reports 75. Full interaction data would need IntAct, STRING or BioGRID directly.
 - **Notes**: stable online tests
 
 ### RCSB PDB — polymer-entity mapping (GraphQL)

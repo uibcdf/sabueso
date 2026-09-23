@@ -70,4 +70,27 @@ conflict.
 - entry title, dates and citation are currently unmapped (noted in
   `DATA_SOURCES_STATUS.md`).
 
-Parts 2 and 3 are pending.
+**Part 2a: done** (2026-09-23). The additive part is the protein-centric knowledge that
+UniProt already states, as typed relationships of the protein:
+- GO cross-references become `annotated_with`, with `go_code` and `assigned_by`. This
+  exposes, for example, that all 7 GO annotations of *T. cruzi* TIM are IEA, while
+  human TIM has IDA, IPI and HDA annotations;
+- InterPro, Pfam, Gene3D, SUPFAM, PANTHER, PROSITE and CDD cross-references become
+  `classified_in`;
+- curated INTERACTION comments become `interacts_with`, e.g. TIM–HTT with 6
+  experiments.
+
+The name `classified_in` replaces the `member_of_family` of the earlier draft, because
+domains and sites are not families. Tests:
+`tests/core/test_protein_knowledge_relationships_offline.py`.
+
+**Part 2b: decision pending.** The GO, InterPro, CATH, SCOPe and TED tools fetch one
+term, family or domain by its own id and build a protein-typed card of it. STRING and
+BioGRID build protein-typed cards of partner-name lists, and PhosphoSitePlus reads a
+synthetic format with record id "PTM". Options:
+- remove the per-concept card tools, as was done for PDB, since the protein-centric
+  knowledge now comes from UniProt;
+- rework STRING/BioGRID into enrichers of `resolve_protein_card` that produce
+  `interacts_with` relationships with scores and methods.
+
+Part 3 is pending.

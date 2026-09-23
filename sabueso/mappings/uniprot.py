@@ -78,6 +78,116 @@ def _subcellular_location(
     return item
 
 
+# Classification cross-references -> namespace of the classified_in object.
+# Gene3D ids are CATH superfamilies; SUPFAM ids are SUPERFAMILY models of SCOP superfamilies.
+_CLASSIFICATIONS = {
+    "InterPro": "interpro",
+    "Pfam": "pfam",
+    "Gene3D": "cath",
+    "SUPFAM": "supfam",
+    "PANTHER": "panther",
+    "PROSITE": "prosite",
+    "CDD": "cdd",
+}
+
+_GO_ASPECTS = {
+    "C": "cellular_component",
+    "F": "molecular_function",
+    "P": "biological_process",
+}
+
+
+def _knowledge_relationships(
+    uniprot_json: Dict[str, Any], primary: str, retrieved_at: str
+) -> tuple:
+    """GO annotations, classifications and curated interactions stated by UniProt.
+
+    Each becomes a typed relationship of the protein backed by a UniProt SourceAssertion
+    whose asserted value keeps the source's own properties verbatim.
+    """
+    subject = f"uniprot:{primary}"
+    assertions: List[Dict[str, Any]] = []
+    relationships: List[Dict[str, Any]] = []
+
+    def add(predicate: str, object_ref: str, stated: Dict[str, Any], qualifiers, eco):
+        assertion = make_source_assertion(
+            f"relationships.{predicate}",
+            {"object_ref": object_ref, **stated},
+            "UniProt",
+            primary,
+            retrieved_at,
+        )
+        if eco:
+            assertion["source_metadata"] = {"eco": eco}
+        assertions.append(assertion)
+        relationships.append(
+            make_relationship(
+                subject,
+                predicate,
+                object_ref,
+                qualifiers=qualifiers,
+                source_assertion_ids=[assertion["id"]],
+            )
+        )
+
+    for xref in uniprot_json.get("uniProtKBCrossReferences", []) or []:
+        db = xref.get("database")
+        props = {p.get("key"): p.get("value") for p in xref.get("properties", []) or []}
+        eco = _eco(xref.get("evidences"))
+        if db == "GO":
+            aspect, _, term = (props.get("GoTerm") or "").partition(":")
+            code, _, assigned_by = (props.get("GoEvidenceType") or "").partition(":")
+            add(
+                "annotated_with",
+                f"go:{xref['id']}",
+                {"properties": props},
+                {
+                    "aspect": _GO_ASPECTS.get(aspect, aspect or None),
+                    "term": term or None,
+                    "go_code": code or None,  # GO's own annotation code (e.g. IDA, IEA)
+                    "assigned_by": assigned_by or None,
+                },
+                eco,
+            )
+        elif db in _CLASSIFICATIONS:
+            add(
+                "classified_in",
+                f"{_CLASSIFICATIONS[db]}:{xref['id']}",
+                {"properties": props},
+                {
+                    "classification": db,
+                    "name": props.get("EntryName"),
+                    "match_count": int(props["MatchStatus"])
+                    if str(props.get("MatchStatus", "")).isdigit()
+                    else None,
+                },
+                eco,
+            )
+
+    for comment in uniprot_json.get("comments", []) or []:
+        if comment.get("commentType") != "INTERACTION":
+            continue
+        for item in comment.get("interactions", []) or []:
+            one, two = item.get("interactantOne", {}), item.get("interactantTwo", {})
+            partner = two.get("uniProtKBAccession")
+            if not partner:
+                continue
+            add(
+                "interacts_with",
+                f"uniprot:{partner}",
+                {"interaction": item},
+                {
+                    "partner_gene": two.get("geneName"),
+                    "intact_ids": [one.get("intActId"), two.get("intActId")],
+                    "experiments": item.get("numberOfExperiments"),
+                    "organism_differ": item.get("organismDiffer"),
+                    "curated_by": "IntAct",
+                },
+                None,
+            )
+    return assertions, relationships
+
+
 def _parse_pdb_chains(chains: str) -> tuple:
     """UniProt PDB 'Chains' property, e.g. 'A/B=2-249' or 'A/B=3-18, A/B=44-100'."""
     chain_ids: set = set()
@@ -273,6 +383,14 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
                 source_assertion_ids=[assertion["id"]],
             )
         )
+
+    # GO annotations, classifications and curated interactions
+    if primary:
+        extra_assertions, extra_relationships = _knowledge_relationships(
+            uniprot_json, primary, retrieved_at
+        )
+        source_assertions.extend(extra_assertions)
+        relationships.extend(extra_relationships)
 
     return {
         "fields": fields,

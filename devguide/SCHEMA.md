@@ -110,9 +110,21 @@ implemented in `sabueso/core/relationship_store.py`.
 A Relationship is first-class, traceable knowledge:
 - **Fields:** `id`, `subject_ref`, `predicate`, `object_ref`, `qualifiers`, and, when
   present, `qualifier_conflicts`, `source_assertion_ids` and `derivation`.
-- **Predicates (MVP vocabulary):** `same_as`, `possibly_same_as`, `isoform_of`,
-  `superseded_by`, `has_structure`. Any other predicate is rejected. The vocabulary is
-  extended deliberately.
+- **Predicates (vocabulary):**
+  - identity: `same_as`, `possibly_same_as`, `isoform_of`, `superseded_by`;
+  - structures: `has_structure`;
+  - knowledge (added in #21, part 2a):
+    - `annotated_with` (protein → GO term). Qualifiers: `aspect`, `term`, `go_code` (GO's
+      own annotation code, e.g. IDA, IEA) and `assigned_by`;
+    - `classified_in` (protein → family, domain, superfamily or site entry). Qualifiers:
+      `classification`, `name` and `match_count`. Object namespaces are `interpro:`,
+      `pfam:`, `cath:` (Gene3D), `supfam:`, `panther:`, `prosite:` and `cdd:`;
+    - `interacts_with` (protein → protein). Qualifiers: `partner_gene`, `intact_ids`,
+      `experiments`, `organism_differ` and `curated_by`.
+
+  Any other predicate is rejected, and the vocabulary is extended deliberately. If
+  components outside Sabueso (Nextia, MOLI Agent Context Assembly) come to depend on it,
+  it becomes a shared contract to raise in `uibcdf/moli`.
 - **Identity:** `id = REL_<hash>`, deterministic from subject, predicate, object and the
   predicate's identity qualifiers. `isoform_of` includes `isoform`. `has_structure` is
   identified by the (protein, structure) pair alone: UniProt cross-references do not name
@@ -128,7 +140,9 @@ A Relationship is first-class, traceable knowledge:
   overwritten.
 - **SourceAssertions that support a relationship** use
   `field_path = relationships.<predicate>`. Their `asserted_value` is what the source
-  states, i.e. the object and qualifiers as given by that source.
+  states, i.e. the object and qualifiers as given by that source. Source property names
+  are kept verbatim (e.g. UniProt's `GoEvidenceType`), while the relationship's
+  qualifiers use Sabueso's vocabulary.
 - **`has_structure` qualifiers:** `method`, `resolution_angstrom`, `chains`, `ranges`
   (UniProt numbering, inclusive) and `coverage` (fraction of the canonical sequence).
   From RCSB: `polymer_entities`, `other_entities` (complexes) and `ligands`. Methods are

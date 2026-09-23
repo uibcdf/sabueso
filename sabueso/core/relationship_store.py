@@ -24,6 +24,9 @@ PREDICATES = frozenset(
         "isoform_of",
         "superseded_by",
         "has_structure",
+        "annotated_with",  # protein -> GO term
+        "classified_in",  # protein -> family / domain / superfamily / site entry
+        "interacts_with",  # protein -> protein
     }
 )
 

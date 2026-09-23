@@ -12,12 +12,17 @@ from sabueso.tools.db.uniprot import create_protein_card_from_file
 
 EVIDENCE = re.compile(r"evidence", re.IGNORECASE)
 
+# Source-native content keeps the source's own vocabulary verbatim (e.g. UniProt's
+# "GoEvidenceType"); the guard protects Sabueso's vocabulary, not what sources say.
+SOURCE_NATIVE = {"asserted_value", "normalized_value", "source_metadata"}
+
 
 def _keys(node):
     if isinstance(node, dict):
         for key, value in node.items():
             yield key
-            yield from _keys(value)
+            if key not in SOURCE_NATIVE:
+                yield from _keys(value)
     elif isinstance(node, list):
         for item in node:
             yield from _keys(item)
