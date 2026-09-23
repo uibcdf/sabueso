@@ -43,9 +43,15 @@ card = sabueso.create_molecule_card_from_file(
     "temp_data/CHEMBL90555.json",
     retrieved_at="2026-02-10",
 )
+print(card.id)  # sabueso:small_molecule:inchikey:OGWKCGZFUXNPDA-XQKSVPLYSA-N
 print(card.get("identifiers.chembl"))
 print(card.get("properties.physchem.molecular_weight"))
 ```
+
+A small molecule card is anchored at the molecule's standard InChIKey, whichever source
+the record comes from, so ChEMBL and PubChem records of the same structure give the same
+card id. To resolve an identifier and link the molecule's records across sources, use
+`sabueso.resolve_molecule_card("chembl:CHEMBL90555")`.
 
 ## Save and Load a Card
 

@@ -1,9 +1,9 @@
 ---
 summary: Retire legacy card paths that merge or mistype entities.
 issue: uibcdf/sabueso#21
-status: partial
+status: resolved
 opened: 2026-09-23
-closed:
+closed: 2026-09-23
 verification: inspected
 area: [cards, entities, mappings, api]
 blocked_by: []
@@ -116,8 +116,25 @@ domains and sites are not families. Tests:
   relationship object (including `go:`/`pfam:` refs) as PDB entries. It now uses
   `has_structure` only. Tests: `tests/core/test_string_associations_offline.py`.
 
-Part 3 is pending. Since uibcdf/sabueso#25 (2026-09-23), small molecules have an
-identity anchor (the standard InChIKey, `resolve_molecule_card`). The legacy
-`create_molecule_card_*` (ChEMBL) and `create_compound_card_*` (PubChem) paths still
-derive `chembl:`/`pubchem:` card ids, so two identity schemes coexist for small
-molecules. Part 3 should retire or migrate them.
+**Part 3: done** (2026-09-23).
+- **Guard by default.** `build_card_from_mapping` refuses fields fed by assertions about
+  several subjects unless `entity_subjects` is passed. Only callers that have resolved
+  identity pass it: `resolve_protein_card`, `build_molecule_cards`, and the UniProt
+  single-record helpers. Unguarded merging is no longer possible.
+- **One identity scheme for small molecules.**
+  - `create_molecule_card_*` (ChEMBL) and `create_compound_card_*` (PubChem) keep
+    their names, but now build the InChIKey-anchored card
+    (`single_molecule_card`), with a `same_as` link to the source record. A record
+    without a standard InChIKey raises `SchemaError`.
+  - PubChem joins the identity sources (`map_pubchem_identity`).
+  - A small-molecule card built at low level derives its id from its standard InChIKey,
+    never from a source record.
+  - The `chembl:`/`pubchem:` card ids are gone.
+- **The UniProt helpers** (`create_protein_card_*`) are labelled as single-record,
+  no-resolution paths, pointing to `resolve_protein_card`.
+- **Tests.** The vincristine end-to-end test merges ChEMBL and PubChem through their
+  shared InChIKey. Two negative tests pin the refusals: records of two subjects are not
+  merged unresolved, and records of two molecules never make one card
+  (`tests/core/test_end_to_end_resolver_offline.py`).
+
+All three parts are done. uibcdf/sabueso#21 is closed.

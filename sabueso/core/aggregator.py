@@ -24,8 +24,22 @@ def _derive_card_id(
     store: SourceAssertionStore,
     field_source_assertions: Dict[str, List[str]],
     entity_type: str,
+    fields: Dict[str, Any] | None = None,
 ) -> str | None:
-    """Derive a stable card id from the subject of the primary identifier assertion."""
+    """Derive a stable card id from the subject of the primary identifier assertion.
+
+    A small molecule is anchored at its standard InChIKey whatever the source, never at a
+    source record (uibcdf/sabueso#25). Without one it has no anchor, and no id.
+    """
+    if entity_type == "small_molecule":
+        from sabueso.mappings.molecule_identity import anchor_ref, is_standard_inchikey
+
+        key = (fields or {}).get("identifiers.inchikey")
+        return (
+            make_card_id(entity_type, anchor_ref(key))
+            if is_standard_inchikey(key)
+            else None
+        )
     candidates: List[str] = []
     for fp in PRIMARY_IDENTIFIER_FIELDS:
         candidates.extend(field_source_assertions.get(fp, []))
@@ -64,21 +78,34 @@ def build_card_from_mapping(
     field_source_assertions = mapping_result.get("field_source_assertions", {})
 
     store = SourceAssertionStore(source_assertions)
+    # FieldResolver boundary (#6, #21): only assertions about the card's entity may feed
+    # its fields. Assertions about other subjects (structures, identity-linked records)
+    # may live in the store as support for relationships, never as fields.
+    feeding = {
+        sa_id: (store.get(sa_id) or {}).get("subject_ref")
+        for fp in list(fields) + list(features)
+        for sa_id in field_source_assertions.get(fp, [])
+    }
     if entity_subjects is not None:
-        # FieldResolver boundary (#6): only assertions about the card's entity may feed
-        # its fields. Assertions about other subjects (structures, identity-linked
-        # records) may live in the store as support for relationships, never as fields.
         allowed = set(entity_subjects)
-        for fp in list(mapping_result.get("fields", {})) + list(
-            mapping_result.get("features", {})
-        ):
+        for fp in list(fields) + list(features):
             for sa_id in field_source_assertions.get(fp, []):
-                subject = (store.get(sa_id) or {}).get("subject_ref")
-                if subject not in allowed:
+                if feeding[sa_id] not in allowed:
                     raise SchemaError(
-                        f"Field {fp} would be fed by {sa_id} about {subject}, "
+                        f"Field {fp} would be fed by {sa_id} about {feeding[sa_id]}, "
                         f"outside the card entity {sorted(allowed)}"
                     )
+    else:
+        # Guard by default: records about several subjects are merged into one card only
+        # after their identity is resolved (resolve_protein_card, build_molecule_cards),
+        # which then passes ``entity_subjects``. A false entity merge is worse than an
+        # unresolved conflict (devguide/SCIENTIFIC_POTENTIAL.md).
+        subjects = {subject for subject in feeding.values() if subject}
+        if len(subjects) > 1:
+            raise SchemaError(
+                f"Fields are fed by assertions about several subjects {sorted(subjects)}. "
+                "Resolve their identity and pass entity_subjects."
+            )
     relationship_store = RelationshipStore(mapping_result.get("relationships", []))
     for relationship in relationship_store.to_list():
         missing = [
@@ -96,7 +123,7 @@ def build_card_from_mapping(
     resolved_card_id = card_id or meta.get("card_id")
     if resolved_card_id is None:
         resolved_card_id = _derive_card_id(
-            store, field_source_assertions, meta.get("entity_type", "")
+            store, field_source_assertions, meta.get("entity_type", ""), fields
         )
     if resolved_card_id is not None:
         meta["card_id"] = resolved_card_id

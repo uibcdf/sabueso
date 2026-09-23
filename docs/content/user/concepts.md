@@ -6,8 +6,11 @@ into auditable molecular objects.
 ## Card
 
 A `Card` represents one molecular entity (protein, peptide, or small molecule). It has
-a stable reference, `card.id` (`meta.card_id`, e.g. `sabueso:protein:uniprot:P52789`),
-that does not depend on where the card is stored. Each field is stored in a structured
+a stable reference, `card.id` (`meta.card_id`), that does not depend on where the card is
+stored: `sabueso:protein:uniprot:P52789` for a protein, anchored at its UniProt entry, and
+`sabueso:small_molecule:inchikey:<standard InChIKey>` for a small molecule, whatever source
+its records come from. A card never merges records of different entities: records about
+several subjects are combined only after their identity is resolved. Each field is stored in a structured
 node:
 
 ```text

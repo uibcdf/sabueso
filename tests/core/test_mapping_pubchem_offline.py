@@ -29,7 +29,10 @@ def test_pubchem_pc_compounds_record_offline():
         "temp_data/66414.json", retrieved_at="2026-02-04"
     )
 
-    assert card.id == "sabueso:small_molecule:pubchem:66414"
+    # Small molecules are anchored at the standard InChIKey, whatever the source (#25).
+    assert card.id == "sabueso:small_molecule:inchikey:CQOQDQWUFQDJMK-SSTWWWIQSA-N"
+    (link,) = card.relationships("same_as")
+    assert link["subject_ref"] == "pubchem:66414"
     assert card.get("identifiers.pubchem")["value"] == "66414"
     assert card.get("identifiers.inchikey")["value"] == "CQOQDQWUFQDJMK-SSTWWWIQSA-N"
     assert card.get("properties.physchem.formula")["value"] == "C19H26O3"

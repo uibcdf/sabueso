@@ -112,7 +112,7 @@ Considered with the owner:
 
   The MVP does not link them. A future connectivity-level link (same first InChIKey block) must be a derived `possibly_same_as` with its rule, never `same_as`.
 - **ChEMBL salts.** The ligand deck anchors ChEMBL parent molecules. The salt forms actually tested stay as `has_bioactivity` objects and are not anchored separately.
-- **Legacy molecule cards** (`create_molecule_card_*`, `create_compound_card_*`) still derive `chembl:`/`pubchem:` card ids, so two identity schemes coexist. Retiring or migrating them belongs to uibcdf/sabueso#21, part 3.
+- **Legacy molecule cards.** Resolved in uibcdf/sabueso#21, part 3. `create_molecule_card_*` and `create_compound_card_*` now build the InChIKey-anchored card, and PubChem joined the identity sources. There is one identity scheme for small molecules.
 - **InChI version.** CCD and ChEMBL compute InChIs with their own software versions. Standard InChI is designed to be stable, but a disagreement would show up as two anchors for one molecule. `decision.discrepancies` makes it visible.
 - **Deck persistence.** Resolved in uibcdf/sabueso#26: a saved ligand deck keeps `deck.meta` (JSONL header, SQLite `deck_meta`).
 - **"Not of interest" is not "irrelevant".** A catalytic or structural metal, or a cofactor, may be left unflagged. Such ligands are excluded by default but listed, so a consumer can recover them with `structure_ligands="all"`.

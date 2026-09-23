@@ -1,4 +1,12 @@
-"""UniProt database tools (minimal)."""
+"""UniProt database tools: a protein card from one UniProt record.
+
+These helpers map a single UniProt entry into a card. They do **not** resolve the
+entity: a secondary, demerged or isoform accession is taken as given, no identity links
+are added, and no enrichment runs. The card's fields come from that one record, so the
+aggregator's subject guard holds (uibcdf/sabueso#21). To resolve a query into a protein
+entity, with its identity links, structures and enrichments, use
+``resolve_protein_card``.
+"""
 
 from __future__ import annotations
 
@@ -24,9 +32,14 @@ def _now_date() -> str:
 def create_protein_card_from_json(
     uniprot_json: Dict[str, Any], retrieved_at: str | None = None
 ) -> Any:
-    """Create a Protein Card from UniProt JSON (offline)."""
+    """Create a Protein Card from one UniProt record (offline, no entity resolution)."""
     mapping = map_protein(uniprot_json, retrieved_at=retrieved_at or _now_date())
-    return build_card_from_mapping(mapping, meta={"entity_type": "protein"})
+    accession = uniprot_json.get("primaryAccession")
+    return build_card_from_mapping(
+        mapping,
+        meta={"entity_type": "protein"},
+        entity_subjects={f"uniprot:{accession}"} if accession else None,
+    )
 
 
 def create_protein_card_from_file(

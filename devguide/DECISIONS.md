@@ -170,3 +170,12 @@ uibcdf/sabueso#10.
     similar to this inhibitor" looks like knowledge, but it is a calculation.
 - **Scope:** if this boundary starts to bind other MOLI components, it becomes a shared
   contract to raise in `uibcdf/moli`.
+
+## Guard by default against entity merges (2026-09-23)
+Closes uibcdf/sabueso#21 (`devguide/archive/legacy_entity_paths.md`).
+- `build_card_from_mapping` refuses fields fed by assertions about several subjects,
+  unless the caller passes `entity_subjects` after resolving their identity.
+- There is no unguarded merge path: a false entity merge is worse than an unresolved
+  conflict.
+- Small molecules have one identity scheme: every card is anchored at the standard
+  InChIKey, whatever the source of its records (ChEMBL, PubChem, PDB CCD).

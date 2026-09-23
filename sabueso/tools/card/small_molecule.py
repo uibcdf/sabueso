@@ -22,7 +22,7 @@ from typing import Any, Dict, Iterable, List, Tuple
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card, make_card_id
 from sabueso.core.deck import Deck
-from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.errors import ConnectorError, RecordNotFoundError, SchemaError
 from sabueso.core.merge import merge_mapping_results
 from sabueso.mappings.molecule_identity import (
     anchor_ref,
@@ -30,6 +30,7 @@ from sabueso.mappings.molecule_identity import (
     linked_records,
     map_ccd_identity,
     map_chembl_identity,
+    map_pubchem_identity,
     map_unichem_identity,
 )
 from sabueso.resolver.entity_resolver import EntityResolution
@@ -46,11 +47,13 @@ def build_molecule_cards(
     chembl: Dict[str, Any] | None = None,
     ccd: Dict[str, Any] | None = None,
     unichem: Iterable[Dict[str, Any]] = (),
+    pubchem: Dict[str, Any] | None = None,
 ) -> Tuple[Dict[str, Card], List[Dict[str, Any]]]:
     """One SmallMoleculeCard per standard InChIKey, from retrieved records.
 
-    ``chembl`` is a ``molecules`` response, ``ccd`` a ``components`` response and
-    ``unichem`` a sequence of ``compound`` responses. Returns ``(cards, unanchored)``:
+    ``chembl`` is a ``molecules`` response, ``ccd`` a ``components`` response,
+    ``unichem`` a sequence of ``compound`` responses and ``pubchem``
+    ``{"retrieved_at", "compounds": {cid: record}}``. Returns ``(cards, unanchored)``:
     cards keyed by InChIKey, and the records that have no standard InChIKey.
     """
     groups: Dict[str, List[Dict[str, Any]]] = {}
@@ -72,6 +75,14 @@ def build_molecule_cards(
         else:
             unanchored.append(
                 {"ref": f"pdb.ligand:{code}", "reason": "no_standard_inchikey"}
+            )
+    for cid, record in sorted(((pubchem or {}).get("compounds") or {}).items()):
+        mapping, key = map_pubchem_identity(record, pubchem.get("retrieved_at", ""))
+        if key:
+            groups.setdefault(key, []).append(mapping)
+        else:
+            unanchored.append(
+                {"ref": f"pubchem:{cid}", "reason": "no_standard_inchikey"}
             )
     for response in unichem:
         mapping, key = map_unichem_identity(
@@ -95,6 +106,26 @@ def build_molecule_cards(
             entity_subjects=subjects,
         )
     return cards, unanchored
+
+
+def single_molecule_card(**records: Any) -> Card:
+    """The one card of a molecule built from records of one or more sources.
+
+    Raises ``SchemaError`` when a record has no standard InChIKey, or when the records
+    describe more than one molecule: a small molecule card is never built without its
+    identity anchor, and never from records that are not the same structure.
+    """
+    cards, unanchored = build_molecule_cards(**records)
+    if unanchored:
+        raise SchemaError(
+            f"{[u['ref'] for u in unanchored]} have no standard InChIKey: a small "
+            "molecule card needs one as its identity anchor"
+        )
+    if len(cards) != 1:
+        raise SchemaError(
+            f"The records describe {len(cards)} molecules ({sorted(cards)}), not one"
+        )
+    return next(iter(cards.values()))
 
 
 def _parse(identifier: str) -> Tuple[str | None, str]:

@@ -10,9 +10,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
 
-from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.mappings.chembl import map_molecule
 
 
 def load_json(path: str | Path) -> Dict[str, Any]:
@@ -23,9 +21,20 @@ def load_json(path: str | Path) -> Dict[str, Any]:
 def create_molecule_card_from_json(
     chembl_json: Dict[str, Any], retrieved_at: str
 ) -> Any:
-    """Create a SmallMolecule Card from ChEMBL JSON (offline)."""
-    mapping = map_molecule(chembl_json, retrieved_at=retrieved_at)
-    return build_card_from_mapping(mapping, meta={"entity_type": "small_molecule"})
+    """Create a SmallMolecule Card from one ChEMBL molecule record (offline).
+
+    The card is anchored at the molecule's standard InChIKey
+    (``sabueso:small_molecule:inchikey:<key>``), like every small molecule card
+    (uibcdf/sabueso#25). A record without one raises ``SchemaError``. To resolve an
+    identifier and link the molecule's records in other sources, use
+    ``resolve_molecule_card``.
+    """
+    from sabueso.tools.card.small_molecule import single_molecule_card
+
+    chembl_id = chembl_json.get("molecule_chembl_id") or ""
+    return single_molecule_card(
+        chembl={"retrieved_at": retrieved_at, "molecules": {chembl_id: chembl_json}}
+    )
 
 
 def create_molecule_card_from_file(path: str | Path, retrieved_at: str) -> Any:

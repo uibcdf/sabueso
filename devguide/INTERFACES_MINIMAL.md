@@ -119,7 +119,13 @@ exported at package root.
   - statuses: `resolved`, `not_found`, `unsupported` (e.g. `no_standard_inchikey`) and
     `error`. A UniChem failure is recorded in `quality.enrichments` and never prevents
     the card.
-- `build_molecule_cards(chembl=None, ccd=None, unichem=()) -> (cards_by_inchikey, unanchored)`:
+- `create_molecule_card_*` (ChEMBL) and `create_compound_card_*` (PubChem) build the same
+  InChIKey-anchored card from one record (`single_molecule_card`), and raise `SchemaError`
+  without a standard InChIKey. `create_protein_card_*` build a card from one UniProt record
+  without resolving the entity.
+- `build_card_from_mapping` refuses fields fed by several subjects unless
+  `entity_subjects` is passed (guard by default, #21).
+- `build_molecule_cards(chembl=None, ccd=None, unichem=(), pubchem=None) -> (cards_by_inchikey, unanchored)`:
   builds cards from retrieved records. It is shared with the ligand deck of a protein
   card.
 - `ligand_deck(protein_card, structure_ligands="of_interest", chembl_client=None, ccd_client=None, unichem=False, unichem_client=None) -> Deck`:

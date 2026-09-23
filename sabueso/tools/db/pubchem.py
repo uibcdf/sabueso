@@ -8,7 +8,6 @@ from typing import Any, Dict
 from urllib.parse import quote
 from urllib.request import urlopen
 
-from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.mappings.pubchem import map_compound
 
 
@@ -20,9 +19,21 @@ def load_json(path: str | Path) -> Dict[str, Any]:
 def create_compound_card_from_json(
     pubchem_json: Dict[str, Any], retrieved_at: str
 ) -> Any:
-    """Create a SmallMolecule Card from PubChem JSON (offline)."""
-    mapping = map_compound(pubchem_json, retrieved_at=retrieved_at)
-    return build_card_from_mapping(mapping, meta={"entity_type": "small_molecule"})
+    """Create a SmallMolecule Card from one PubChem compound record (offline).
+
+    The card is anchored at the compound's standard InChIKey
+    (``sabueso:small_molecule:inchikey:<key>``), like every small molecule card
+    (uibcdf/sabueso#25). A record without one raises ``SchemaError``.
+    """
+    from sabueso.tools.card.small_molecule import single_molecule_card
+
+    cid = str(
+        map_compound(pubchem_json, retrieved_at)["fields"].get("identifiers.pubchem")
+        or ""
+    )
+    return single_molecule_card(
+        pubchem={"retrieved_at": retrieved_at, "compounds": {cid: pubchem_json}}
+    )
 
 
 def create_compound_card_from_file(path: str | Path, retrieved_at: str) -> Any:

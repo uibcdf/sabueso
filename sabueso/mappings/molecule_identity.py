@@ -7,6 +7,7 @@ itself states:
 
 - a ChEMBL molecule record states its standard InChIKey (``chembl:<id>``);
 - a PDB chemical component states the InChIKey of its standard InChI (``pdb.ligand:<code>``);
+- a PubChem compound states its standard InChIKey (``pubchem:<cid>``);
 - UniChem states which records of other resources share one standard InChI (DrugBank,
   PubChem, ChEBI, BindingDB, and the ChEMBL and PDB records again).
 
@@ -25,6 +26,7 @@ from sabueso.core.relationship_store import make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
 
 from .chembl import map_molecule
+from .pubchem import map_compound
 
 STANDARD_INCHIKEY = re.compile(r"^[A-Z]{14}-[A-Z]{8}SA-[A-Z]$")
 
@@ -108,6 +110,35 @@ def map_chembl_identity(
             "same_as",
             anchor_ref(key),
             qualifiers={"name": record.get("pref_name")},
+            source_assertion_ids=[stated["id"]],
+        )
+    )
+    return mapping, key
+
+
+def map_pubchem_identity(
+    record: Dict[str, Any], retrieved_at: str
+) -> Tuple[Dict[str, Any], str | None]:
+    """PubChem compound (property table or PC_Compounds) -> (mapping, standard InChIKey)."""
+    mapping = map_compound(record, retrieved_at)
+    mapping.setdefault("relationships", [])
+    cid = mapping["fields"].get("identifiers.pubchem")
+    key = mapping["fields"].get("identifiers.inchikey")
+    if not cid or not is_standard_inchikey(key):
+        return mapping, None
+    stated = make_source_assertion(
+        "relationships.same_as",
+        {"object_ref": anchor_ref(key), "inchikey": key},
+        "PubChem",
+        str(cid),
+        retrieved_at,
+    )
+    mapping["source_assertions"].append(stated)
+    mapping["relationships"].append(
+        make_relationship(
+            f"pubchem:{cid}",
+            "same_as",
+            anchor_ref(key),
             source_assertion_ids=[stated["id"]],
         )
     )
