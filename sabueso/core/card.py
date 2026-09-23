@@ -61,6 +61,18 @@ class Card:
 
         return structures_view(self, include_fragments=include_fragments)
 
+    def bioactivities(
+        self,
+        include_indirect: bool = False,
+        thresholds: Dict[str, Any] | None = None,
+    ) -> Dict[str, Any]:
+        """Molecule-centric view of this card's measured bioactivities."""
+        from .bioactivities import bioactivities_view
+
+        return bioactivities_view(
+            self, include_indirect=include_indirect, thresholds=thresholds
+        )
+
     def get(self, field_path: str) -> Any:
         cur = self.sections
         for key in field_path.split("."):

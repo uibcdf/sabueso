@@ -68,6 +68,18 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: identifiers, preferred name, molecule type, physchem (logP, HBD/HBA, TPSA, rotatable bonds), InChI/InChIKey, SMILES
 - **Notes**: stable online tests
 
+### ChEMBL bioactivities
+- **Status**: implemented as an enricher of `resolve_protein_card` (uibcdf/sabueso#23)
+- **Access**: online API (`OnlineChEMBLClient`), saved responses (`FixtureChEMBLClient`, `temp_data/chembl/`)
+- **Quality**: green for the listed coverage, verified on TcTIM (CHEMBL5834) and HsTIM (CHEMBL4880), ChEMBL_37
+- **Coverage**: `has_bioactivity` relationships, one per activity record. They carry the measurement, the assay (with target-assignment confidence and assay organism), the document, the tested and parent molecule, and the ChEMBL release (`source.version`). `Card.bioactivities()` gives derived activity classes.
+- **Notes**:
+  - The target comes from the ChEMBL cross-reference of the UniProt entry. Complex or family targets are not included.
+  - Homology-assigned assays (relationship type `H`) are excluded from the default view and reported. Every HsTIM Ki in ChEMBL was measured on rabbit TIM or on TIM of unknown organism.
+  - The test concentration of single-point measurements is extracted from the assay description (derived).
+  - About 2 KB per measurement. `limit` (default 5000) and truncation are recorded (card size: uibcdf/sabueso#19).
+  - Report: `devguide/pending_proposals/chembl_bioactivities.md`.
+
 ---
 
 ## Interaction Sources

@@ -126,13 +126,25 @@ A Relationship is first-class, traceable knowledge:
       associations, not physical binding). Qualifiers: `partner_name`, `combined_score`,
       `channels` (neighborhood, fusion, cooccurrence, coexpression, experiments,
       databases, textmining), `string_id`, `species` and `required_score`. Supporting
-      assertions record the STRING version in `source.version`.
+      assertions record the STRING version in `source.version`;
+  - bioactivities (added in #23):
+    - `has_bioactivity` (protein → `chembl:<molecule>`). There is one relationship per
+      measurement, identified by the `activity_id` qualifier. Qualifiers: `activity_id`,
+      `target`, `molecule_name`, `parent_molecule`, `measurement` (type, relation, value,
+      units, pchembl, comments, flags), `assay` (id, type, description, organism,
+      confidence_score, relationship_type, variant_mutation) and `document`.
+    - Support: the verbatim activity record (`relationships.has_bioactivity`) and the
+      assay record (`relationships.has_bioactivity.assay`). The assay record is stated
+      once per assay and shared by that assay's activities.
+    - Activity classes are derived by `Card.bioactivities()` (`bioactivity_class@1`), and
+      only there.
 
   Any other predicate is rejected, and the vocabulary is extended deliberately. If
   components outside Sabueso (Nextia, MOLI Agent Context Assembly) come to depend on it,
   it becomes a shared contract to raise in `uibcdf/moli`.
 - **Identity:** `id = REL_<hash>`, deterministic from subject, predicate, object and the
-  predicate's identity qualifiers. `isoform_of` includes `isoform`. `has_structure` is
+  predicate's identity qualifiers. `isoform_of` includes `isoform`, and
+  `has_bioactivity` includes `activity_id`. `has_structure` is
   identified by the (protein, structure) pair alone: UniProt cross-references do not name
   polymer entities, so entity-level details are qualifiers. This lets UniProt and RCSB
   state the same relationship. The same relationship is therefore recognisable wherever
@@ -145,7 +157,8 @@ A Relationship is first-class, traceable knowledge:
   merged. Qualifier values they disagree on are kept in `qualifier_conflicts`, never
   overwritten.
 - **SourceAssertions that support a relationship** use
-  `field_path = relationships.<predicate>`. Their `asserted_value` is what the source
+  `field_path = relationships.<predicate>`. A shared context record uses a sub-path, such as
+  `relationships.has_bioactivity.assay` for an assay. Their `asserted_value` is what the source
   states, i.e. the object and qualifiers as given by that source. Source property names
   are kept verbatim (e.g. UniProt's `GoEvidenceType`), while the relationship's
   qualifiers use Sabueso's vocabulary.

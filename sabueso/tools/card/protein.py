@@ -8,8 +8,8 @@ the resolved protein entity:
   ``possibly_same_as``) are kept as relationships;
 - experimental structures are relationships shown through ``Card.structures()``,
   optionally enriched with RCSB polymer-entity data;
-- STRING functional associations can be added on request; every enrichment outcome is
-  recorded in ``quality.enrichments``;
+- STRING functional associations and ChEMBL bioactivities can be added on request;
+  every enrichment outcome is recorded in ``quality.enrichments``;
 - the resolution trace (policy, alternatives, decision) is kept in
   ``quality.entity_resolution``.
 
@@ -27,6 +27,7 @@ from sabueso.core.deck import Deck
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.core.merge import merge_mapping_results
 from sabueso.core.source_assertion_store import make_source_assertion
+from sabueso.mappings.chembl import map_bioactivities
 from sabueso.mappings.rcsb_structures import map_structure_entities
 from sabueso.mappings.stringdb import map_string_partners
 from sabueso.mappings.uniprot import map_protein
@@ -45,13 +46,17 @@ def resolve_protein_card(
     structures: Iterable[str] | str = (),
     string: Dict[str, Any] | None = None,
     string_client: Any | None = None,
+    chembl: Dict[str, Any] | None = None,
+    chembl_client: Any | None = None,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
 
     ``structures`` lists PDB ids to enrich with RCSB polymer-entity data, or ``"all"``
     for every PDB cross-reference of the entry. ``string`` (e.g. ``{}`` or
     ``{"required_score": 900, "limit": 20}``) adds STRING functional associations for the
-    entry's organism. Every enrichment outcome (added, not_found, error) is recorded in
+    entry's organism. ``chembl`` (e.g. ``{}`` or ``{"limit": 1000}``) adds the ChEMBL
+    bioactivities of the targets the entry cross-references (``Card.bioactivities()``).
+    Every enrichment outcome (added, not_found, error) is recorded in
     ``quality.enrichments``. Returns ``(card, resolution)``; ``card`` is None when the
     query did not resolve to a protein entity.
     """
@@ -125,6 +130,48 @@ def resolve_protein_card(
                     "status": "added",
                     "version": response.get("version"),
                     "count": len(mapped["relationships"]),
+                }
+            )
+
+    if chembl is not None:
+        from sabueso.tools.db.chembl import OnlineChEMBLClient
+
+        client = chembl_client or OnlineChEMBLClient()
+        targets = [
+            x["id"]
+            for x in entry.get("uniProtKBCrossReferences", [])
+            if x.get("database") == "ChEMBL"
+        ]
+        if not targets:
+            enrichments.append(
+                {
+                    "source": "ChEMBL",
+                    "status": "not_found",
+                    "detail": "no ChEMBL cross-reference in the UniProt entry",
+                }
+            )
+        for target in targets:
+            record = {"source": "ChEMBL", "target": target, **chembl}
+            try:
+                response = client.bioactivities(target, **chembl)
+            except RecordNotFoundError:
+                enrichments.append({**record, "status": "not_found"})
+                continue
+            except ConnectorError as exc:
+                enrichments.append({**record, "status": "error", "detail": str(exc)})
+                continue
+            mapped = map_bioactivities(
+                response, anchor, response.get("retrieved_at", "")
+            )
+            mappings.append(mapped)
+            enrichments.append(
+                {
+                    **record,
+                    "status": "added",
+                    "version": response.get("version"),
+                    "count": len(mapped["relationships"]),
+                    "total_count": response.get("total_count"),
+                    "truncated": response.get("truncated"),
                 }
             )
 

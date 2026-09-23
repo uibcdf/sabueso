@@ -14,7 +14,8 @@ schema:
     relationships (uibcdf/sabueso#21). annotations.domains stays reserved (not produced), since domain
     classifications are classified_in relationships. interactions.binding_partners was
     removed because interactions are interacts_with (physical, IntAct) and
-    functionally_associated_with (STRING) relationships (uibcdf/sabueso#21).
+    functionally_associated_with (STRING) relationships (uibcdf/sabueso#21). Measured
+    bioactivities are has_bioactivity relationships (uibcdf/sabueso#23).
 card_base:
   meta:
     card_id:

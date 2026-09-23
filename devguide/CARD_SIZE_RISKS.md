@@ -8,6 +8,15 @@ This file documents concrete risks and mitigation strategies.
 - **Memory pressure**: SourceAssertion stores can grow to thousands of entries per entity.
 - **User friction**: cards become hard to inspect interactively.
 
+## Measured growth
+- A TcTIM ProteinCard grows from about 37 KB to about 1.0 MB of compact JSON when its 493
+  ChEMBL bioactivities are added (2026-09-23; uibcdf/sabueso#23). That is about 2 KB per
+  measurement: roughly 1.1 KB for the verbatim SourceAssertion and 0.9 KB for the
+  relationship.
+  - Assay records are already shared per assay.
+  - A target with tens of thousands of activities would give cards of tens of MB.
+  - Storage re-evaluation: uibcdf/sabueso#19.
+
 ## Mitigations (Recommended)
 1) **Lazy SourceAssertion loading**
    - Store only SourceAssertion IDs in the card.

@@ -28,6 +28,7 @@ PREDICATES = frozenset(
         "classified_in",  # protein -> family / domain / superfamily / site entry
         "interacts_with",  # protein -> protein (physical interaction, e.g. IntAct)
         "functionally_associated_with",  # protein -> protein (STRING functional link)
+        "has_bioactivity",  # protein -> molecule (one measured activity, e.g. ChEMBL)
     }
 )
 
@@ -37,6 +38,9 @@ PREDICATES = frozenset(
 # so entity-level details are qualifiers and sources stating the pair can agree.
 IDENTITY_QUALIFIERS: Dict[str, tuple] = {
     "isoform_of": ("isoform",),
+    # One relationship per measurement: the same molecule is often measured several
+    # times (assays, papers), and each measurement keeps its own support and context.
+    "has_bioactivity": ("activity_id",),
 }
 
 

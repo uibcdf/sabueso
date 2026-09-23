@@ -71,6 +71,7 @@ card_base:
 
   # Interactions are relationships, not fields: interacts_with (physical, e.g. IntAct)
   # and functionally_associated_with (STRING functional associations) (uibcdf/sabueso#21).
+  # Measured bioactivities are has_bioactivity relationships (uibcdf/sabueso#23).
 
   references:
     publications: { value: [ { title: string, doi: string, pmid: string } ], source_assertion_ids: [string] }
