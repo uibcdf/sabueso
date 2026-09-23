@@ -430,8 +430,24 @@ Fixtures to add at implementation time:
        cross-references do not name polymer entities, so UniProt and RCSB could never
        agree on the same relationship. The (protein, structure) pair is the identity,
        and polymer entities are qualifiers.
-   - **4b. RCSB entity mapping** (other entities present, ligands, second source;
-     resolving `pdb:<id>`): pending.
+   - **4b. RCSB entity mapping**. Done:
+     - `resolver/rcsb_client.py` (one GraphQL request per entry, online and fixture);
+     - `mappings/rcsb_structures.py`: `has_structure` per aligned UniProt accession,
+       restricted to the card's subjects, with polymer entities, other entities and
+       ligands. Coverage is computed from reference lengths, and methods are normalized
+       to UniProt's vocabulary;
+     - `pdb:<id>` resolves to the structure record with `related` proteins.
+
+     Results:
+     - UniProt and RCSB agree on 1HTI, 1KLG and 1TCD, with two sources and no
+       conflicts;
+     - 1KLG is an HLA-DR α/β complex with staphylococcal enterotoxin C3 and the TIM
+       peptide 23–37;
+     - 1HTI carries PGA (2-phosphoglycolate);
+     - a forced range disagreement shows up in `qualifier_conflicts`.
+
+     Tests: `test_structures_offline.py` and `test_entity_resolver_offline.py`
+     (A9–A11).
    - **4c. Cards built from resolved entities**, with the subject boundary (A5),
      `quality.entity_resolution` and the removal of scalar structure fields: pending.
 

@@ -1,0 +1,49 @@
+{
+ "exptl": [
+  {
+   "method": "X-RAY DIFFRACTION"
+  }
+ ],
+ "nonpolymer_entities": null,
+ "polymer_entities": [
+  {
+   "entity_poly": {
+    "rcsb_sample_sequence_length": 249
+   },
+   "rcsb_id": "1TCD_1",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "TRIOSEPHOSPHATE ISOMERASE"
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 1,
+       "length": 249,
+       "ref_beg_seq_id": 3
+      }
+     ],
+     "reference_database_accession": "P52270",
+     "reference_database_name": "UniProt"
+    }
+   ],
+   "rcsb_polymer_entity_container_identifiers": {
+    "auth_asym_ids": [
+     "A",
+     "B"
+    ],
+    "entity_id": "1",
+    "uniprot_ids": [
+     "P52270"
+    ]
+   }
+  }
+ ],
+ "rcsb_entry_info": {
+  "polymer_entity_count_protein": 1,
+  "resolution_combined": [
+   1.83
+  ]
+ },
+ "rcsb_id": "1TCD"
+}

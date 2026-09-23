@@ -131,7 +131,9 @@ A Relationship is first-class, traceable knowledge:
   states, i.e. the object and qualifiers as given by that source.
 - **`has_structure` qualifiers:** `method`, `resolution_angstrom`, `chains`, `ranges`
   (UniProt numbering, inclusive) and `coverage` (fraction of the canonical sequence).
-  Later: polymer entities, other entities present, and ligands from RCSB. The coverage
+  From RCSB: `polymer_entities`, `other_entities` (complexes) and `ligands`. Methods are
+  normalized to UniProt's vocabulary (`X-RAY DIFFRACTION` → `X-ray`); raw values stay in
+  the SourceAssertions. The coverage
   class (`full_length ≥ 0.9 > partial ≥ 0.3 > fragment_or_peptide`) is derived knowledge,
   computed by `Card.structures()` with its rule and thresholds (`structure_coverage_class@1`).
   It is never stored as a qualifier.

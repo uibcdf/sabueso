@@ -80,7 +80,9 @@ Implemented in `sabueso/resolver/entity_resolver.py` for UniProt accessions and 
 name + organism searches (MVP steps 2–3).
 
 **Methods**
-- `EntityResolver(uniprot_client=None, policy="prefer_reviewed@1")` *(defaults to
+- `EntityResolver(uniprot_client=None, policy="prefer_reviewed@1", rcsb_client=None)`
+  *(RCSB defaults to `OnlineRCSBClient`; `FixtureRCSBClient` serves saved GraphQL
+  entries)* *(UniProt defaults to
   `OnlineUniProtClient`; `FixtureUniProtClient` serves saved REST responses; `policy=None`
   disables preferences so several matches stay ambiguous)*
 - `resolve(query: EntityQuery | str) -> EntityResolution`
@@ -88,7 +90,7 @@ name + organism searches (MVP steps 2–3).
   `possibly_same_as` for identical sequences within one organism; never across organisms)*
 
 **EntityQuery**
-- `identifier` *(e.g. `P60174`, `uniprot:P60174-3`)*
+- `identifier` *(e.g. `P60174`, `uniprot:P60174-3`, `pdb:1TCD`)*
 - `name`, `organism` *(taxon id or scientific name; required with `name`)*,
   `include_subtaxa` *(also match strains/subtaxa of the organism)*, `entity_type`
 
@@ -101,6 +103,8 @@ name + organism searches (MVP steps 2–3).
 - `policy`: named preference policy, when one was applied
 - `identity_links`: Relationships (`same_as`, `superseded_by`, `isoform_of`)
 - `source_assertions`: the UniProt SourceAssertions supporting those links
+- `related`: for a PDB entry, the protein entities its polymer entities map to
+  (`[{entity_ref, predicate: has_structure, polymer_entities}]`)
 - `decision`: rules applied, sources consulted (with outcome or retrieval time), query,
   Sabueso version
 

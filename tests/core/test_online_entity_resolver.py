@@ -29,3 +29,9 @@ def test_online_entity_resolution_matches_the_offline_contract():
     )
     assert (by_name.entity_ref, by_name.policy) == (human, "prefer_reviewed@1")
     assert by_name.alternatives  # non-preferred matches are kept
+
+    structure = resolver.resolve("pdb:1TCD")
+    assert structure.entity_ref == "pdb:1TCD"
+    assert [r["entity_ref"] for r in structure.related] == [
+        "sabueso:protein:uniprot:P52270"
+    ]

@@ -31,6 +31,17 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - identical repeated values in one record share one SourceAssertion id.
 - **Notes**: stable online tests
 
+### RCSB PDB — polymer-entity mapping (GraphQL)
+- **Status**: implemented (uibcdf/sabueso#6, step 4b)
+- **Access**: online GraphQL (`OnlineRCSBClient`), saved entries (`FixtureRCSBClient`, `temp_data/rcsb/`)
+- **Quality**: green for the listed coverage, verified on 1HTI, 1KLG and 1TCD
+- **Coverage**:
+  - `has_structure` relationships per UniProt accession aligned to polymer entities: chains, UniProt-numbered ranges, method, resolution;
+  - polymer entities, the other entities present, and bound ligands;
+  - structure facts keep `pdb:<id>` as SourceAssertion subject;
+  - `EntityResolver` resolves `pdb:<id>` to the structure record and its proteins.
+- **Notes**: one request per entry. Ligand lists include every non-polymer entity (buffers and solvents too); no curation yet.
+
 ### PDB (RCSB)
 - **Status**: implemented
 - **Access**: online API, local JSON

@@ -1,0 +1,141 @@
+{
+ "exptl": [
+  {
+   "method": "X-RAY DIFFRACTION"
+  }
+ ],
+ "nonpolymer_entities": null,
+ "polymer_entities": [
+  {
+   "entity_poly": {
+    "rcsb_sample_sequence_length": 239
+   },
+   "rcsb_id": "1KLG_4",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "ENTEROTOXIN TYPE C-3"
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 1,
+       "length": 239,
+       "ref_beg_seq_id": 28
+      }
+     ],
+     "reference_database_accession": "P0A0L5",
+     "reference_database_name": "UniProt"
+    }
+   ],
+   "rcsb_polymer_entity_container_identifiers": {
+    "auth_asym_ids": [
+     "D"
+    ],
+    "entity_id": "4",
+    "uniprot_ids": [
+     "P0A0L5"
+    ]
+   }
+  },
+  {
+   "entity_poly": {
+    "rcsb_sample_sequence_length": 15
+   },
+   "rcsb_id": "1KLG_3",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "Triosephosphate isomerase peptide"
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 1,
+       "length": 15,
+       "ref_beg_seq_id": 23
+      }
+     ],
+     "reference_database_accession": "P60174",
+     "reference_database_name": "UniProt"
+    }
+   ],
+   "rcsb_polymer_entity_container_identifiers": {
+    "auth_asym_ids": [
+     "C"
+    ],
+    "entity_id": "3",
+    "uniprot_ids": [
+     "P60174"
+    ]
+   }
+  },
+  {
+   "entity_poly": {
+    "rcsb_sample_sequence_length": 190
+   },
+   "rcsb_id": "1KLG_2",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "HLA CLASS II HISTOCOMPATIBILITY ANTIGEN, DR-1 BETA CHAIN"
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 1,
+       "length": 190,
+       "ref_beg_seq_id": 30
+      }
+     ],
+     "reference_database_accession": "P01911",
+     "reference_database_name": "UniProt"
+    }
+   ],
+   "rcsb_polymer_entity_container_identifiers": {
+    "auth_asym_ids": [
+     "B"
+    ],
+    "entity_id": "2",
+    "uniprot_ids": [
+     "P01911"
+    ]
+   }
+  },
+  {
+   "entity_poly": {
+    "rcsb_sample_sequence_length": 177
+   },
+   "rcsb_id": "1KLG_1",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "HLA CLASS II HISTOCOMPATIBILITY ANTIGEN, DR ALPHA CHAIN"
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 1,
+       "length": 177,
+       "ref_beg_seq_id": 29
+      }
+     ],
+     "reference_database_accession": "P01903",
+     "reference_database_name": "UniProt"
+    }
+   ],
+   "rcsb_polymer_entity_container_identifiers": {
+    "auth_asym_ids": [
+     "A"
+    ],
+    "entity_id": "1",
+    "uniprot_ids": [
+     "P01903"
+    ]
+   }
+  }
+ ],
+ "rcsb_entry_info": {
+  "polymer_entity_count_protein": 4,
+  "resolution_combined": [
+   2.4
+  ]
+ },
+ "rcsb_id": "1KLG"
+}

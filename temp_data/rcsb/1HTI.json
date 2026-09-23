@@ -1,0 +1,58 @@
+{
+ "exptl": [
+  {
+   "method": "X-RAY DIFFRACTION"
+  }
+ ],
+ "nonpolymer_entities": [
+  {
+   "rcsb_nonpolymer_entity": {
+    "pdbx_description": "2-PHOSPHOGLYCOLIC ACID"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers": {
+    "nonpolymer_comp_id": "PGA"
+   }
+  }
+ ],
+ "polymer_entities": [
+  {
+   "entity_poly": {
+    "rcsb_sample_sequence_length": 248
+   },
+   "rcsb_id": "1HTI_1",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "TRIOSEPHOSPHATE ISOMERASE"
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 1,
+       "length": 248,
+       "ref_beg_seq_id": 2
+      }
+     ],
+     "reference_database_accession": "P60174",
+     "reference_database_name": "UniProt"
+    }
+   ],
+   "rcsb_polymer_entity_container_identifiers": {
+    "auth_asym_ids": [
+     "A",
+     "B"
+    ],
+    "entity_id": "1",
+    "uniprot_ids": [
+     "P60174"
+    ]
+   }
+  }
+ ],
+ "rcsb_entry_info": {
+  "polymer_entity_count_protein": 1,
+  "resolution_combined": [
+   2.8
+  ]
+ },
+ "rcsb_id": "1HTI"
+}

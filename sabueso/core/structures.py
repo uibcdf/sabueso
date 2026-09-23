@@ -16,6 +16,25 @@ COVERAGE_CLASS_RULE = "structure_coverage_class@1"
 COVERAGE_THRESHOLDS = {"full_length_min": 0.9, "partial_min": 0.3}
 
 
+# Experimental-method vocabulary: RCSB spellings normalized to UniProt's, so the same
+# method stated by both sources does not look like a disagreement. Unknown methods are
+# kept verbatim (a real difference then stays visible as a qualifier conflict).
+METHOD_ALIASES = {
+    "X-RAY DIFFRACTION": "X-ray",
+    "ELECTRON MICROSCOPY": "EM",
+    "SOLUTION NMR": "NMR",
+    "SOLID-STATE NMR": "NMR",
+    "NEUTRON DIFFRACTION": "Neutron",
+    "FIBER DIFFRACTION": "Fiber",
+}
+
+
+def normalize_methods(methods: Sequence[str]) -> str | None:
+    """One method label, e.g. ['X-RAY DIFFRACTION'] -> 'X-ray'; hybrids joined by '+'."""
+    labels = sorted({METHOD_ALIASES.get(m.upper(), m) for m in methods if m})
+    return "+".join(labels) if labels else None
+
+
 def merge_ranges(ranges: Sequence[Sequence[int]]) -> List[List[int]]:
     """Sorted, non-overlapping inclusive ranges."""
     merged: List[List[int]] = []

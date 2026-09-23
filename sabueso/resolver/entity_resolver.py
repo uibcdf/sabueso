@@ -3,7 +3,8 @@
 MVP implementation of the contract in ``devguide/pending_proposals/entity_resolver.md``
 (uibcdf/sabueso#6). It covers UniProtKB accessions (active primary, merged and demerged
 inactive, isoform) and protein name + organism searches resolved by an explicit,
-recorded preference policy. PDB inputs are reported as ``unsupported`` until implemented.
+recorded preference policy, and PDB entry identifiers (``pdb:<id>``), which resolve to a
+structure record plus the protein entities its polymer entities map to.
 
 Principles: never choose silently, keep "not found", "unsupported" and "error" apart,
 record every decision, and never create identity from identical sequences across
@@ -25,6 +26,7 @@ from sabueso.core.relationship_store import (
 )
 from sabueso.core.source_assertion_store import SourceAssertion, make_source_assertion
 
+from .rcsb_client import OnlineRCSBClient
 from .uniprot_client import OnlineUniProtClient
 
 # UniProtKB accession format, optionally followed by an isoform suffix (e.g. P60174-3).
@@ -60,6 +62,9 @@ class EntityResolution:
     policy: Optional[str] = None
     identity_links: List[Relationship] = field(default_factory=list)
     source_assertions: List[SourceAssertion] = field(default_factory=list)
+    related: List[Dict[str, Any]] = field(
+        default_factory=list
+    )  # e.g. proteins in a PDB entry
     decision: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -119,11 +124,15 @@ def sequence_identity_link(
 
 class EntityResolver:
     def __init__(
-        self, uniprot_client: Any | None = None, policy: str | None = DEFAULT_POLICY
+        self,
+        uniprot_client: Any | None = None,
+        policy: str | None = DEFAULT_POLICY,
+        rcsb_client: Any | None = None,
     ) -> None:
         if policy is not None and policy not in POLICIES:
             raise ValueError(f"Unknown preference policy {policy!r}; known: {POLICIES}")
         self.uniprot = uniprot_client or OnlineUniProtClient()
+        self.rcsb = rcsb_client or OnlineRCSBClient()
         self.policy = policy
 
     def resolve(self, query: EntityQuery | str) -> EntityResolution:
@@ -147,6 +156,8 @@ class EntityResolver:
                     )
                 decision["rules"].append("invalid_identifier_format")
                 return EntityResolution("unsupported", decision=decision)
+            if namespace == "pdb" and re.fullmatch(r"[0-9][A-Za-z0-9]{3}", value):
+                return self._resolve_pdb(value.upper(), decision)
             decision["rules"].append(f"unsupported_namespace:{namespace}")
             return EntityResolution("unsupported", decision=decision)
         if query.name:
@@ -157,6 +168,47 @@ class EntityResolver:
             return self._resolve_name(query, decision)
         decision["rules"].append("unsupported_query")
         return EntityResolution("unsupported", decision=decision)
+
+    # PDB entry ----------------------------------------------------------------------
+
+    def _resolve_pdb(self, pdb_id: str, decision: Dict[str, Any]) -> EntityResolution:
+        try:
+            entry, retrieved_at = self.rcsb.fetch_structure(pdb_id)
+        except RecordNotFoundError:
+            decision["sources"].append(
+                {"name": "RCSB PDB", "record": pdb_id, "outcome": "not_found"}
+            )
+            decision["rules"].append("record_not_found")
+            return EntityResolution("not_found", decision=decision)
+        except ConnectorError as exc:
+            decision["sources"].append(
+                {"name": "RCSB PDB", "record": pdb_id, "outcome": f"error: {exc}"}
+            )
+            decision["rules"].append("source_error")
+            return EntityResolution("error", decision=decision)
+        decision["sources"].append(
+            {"name": "RCSB PDB", "record": pdb_id, "retrieved_at": retrieved_at}
+        )
+        decision["rules"].append("pdb_entry")
+        related: Dict[str, List[str]] = {}
+        for pe in entry.get("polymer_entities") or []:
+            ids = pe.get("rcsb_polymer_entity_container_identifiers") or {}
+            for acc in ids.get("uniprot_ids") or []:
+                related.setdefault(acc, []).append(str(ids.get("entity_id")))
+        return EntityResolution(
+            "resolved",
+            entity_ref=f"pdb:{pdb_id}",
+            qualifiers={"record_type": "structure"},
+            related=[
+                {
+                    "entity_ref": protein_ref(acc),
+                    "predicate": "has_structure",
+                    "polymer_entities": entities,
+                }
+                for acc, entities in sorted(related.items())
+            ],
+            decision=decision,
+        )
 
     # Name + organism ----------------------------------------------------------------
 

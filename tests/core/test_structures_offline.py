@@ -1,10 +1,21 @@
-"""has_structure relationships from UniProt and the ProteinCard structures view.
+"""has_structure relationships, the ProteinCard structures view, and RCSB mapping.
 
-uibcdf/sabueso#6, step 4a: the UniProt side of acceptance cases A9 and A10.
+uibcdf/sabueso#6, steps 4a (UniProt side) and 4b (RCSB side) of acceptance cases A9 and
+A10.
 """
 
-from sabueso.core.structures import coverage, coverage_class, merge_ranges
-from sabueso.mappings.uniprot import _parse_pdb_chains
+import json
+
+from sabueso.core.aggregator import build_card_from_mapping
+from sabueso.core.merge import merge_mapping_results
+from sabueso.core.structures import (
+    coverage,
+    coverage_class,
+    merge_ranges,
+    normalize_methods,
+)
+from sabueso.mappings.rcsb_structures import map_structure_entities
+from sabueso.mappings.uniprot import _parse_pdb_chains, map_protein
 from sabueso.tools.db.uniprot import create_protein_card_from_file
 
 HSTIM_PEPTIDE_COMPLEXES = ["pdb:1KLG", "pdb:1KLU", "pdb:2IAM", "pdb:2IAN", "pdb:4E41"]
@@ -99,3 +110,96 @@ def test_structure_relationships_are_backed_by_what_uniprot_states():
     assert assertion["asserted_value"]["chains"] == (
         "A/B/C/D=3-18, A/B/C/D=44-100, A/B/C/D=123-251"
     )
+
+
+# Step 4b: RCSB polymer-entity mapping as a second, agreeing source (A9, A10)
+
+
+def _json(path):
+    with open(path, encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+def _card_with_rcsb(accession, pdb_ids):
+    entry = _json(f"temp_data/{accession}.json")
+    mappings = [map_protein(entry, "2026-02-01")] + [
+        map_structure_entities(
+            _json(f"temp_data/rcsb/{pdb_id}.json"),
+            "2026-02-01",
+            subjects={accession},
+            reference_lengths={accession: entry["sequence"]["length"]},
+        )
+        for pdb_id in pdb_ids
+    ]
+    return build_card_from_mapping(
+        merge_mapping_results(mappings), meta={"entity_type": "protein"}
+    )
+
+
+def test_method_vocabulary_is_normalized():
+    assert normalize_methods(["X-RAY DIFFRACTION"]) == "X-ray"
+    assert normalize_methods(["X-RAY DIFFRACTION", "NEUTRON DIFFRACTION"]) == (
+        "Neutron+X-ray"
+    )
+    assert normalize_methods([]) is None
+
+
+def test_a9_rcsb_reveals_the_complex_and_ligands_behind_human_tim_structures():
+    card = _card_with_rcsb("P60174", ["1HTI", "1KLG"])
+    assert {r["subject_ref"] for r in card.relationships()} == {"uniprot:P60174"}
+
+    view = card.structures(include_fragments=True)
+    klg = _item(view, "pdb:1KLG")
+    assert klg["sources"] == ["RCSB PDB", "UniProt"]
+    assert klg["coverage_class"] == "fragment_or_peptide"
+    assert sorted(
+        uniprot for o in klg["other_entities"] for uniprot in o["uniprot"]
+    ) == [
+        "P01903",
+        "P01911",
+        "P0A0L5",
+    ]
+    hti = _item(view, "pdb:1HTI")
+    assert [lig["comp_id"] for lig in hti["ligands"]] == ["PGA"]
+    assert hti["other_entities"] == []
+
+
+def test_a10_uniprot_and_rcsb_agree_on_tcruzi_tim_1tcd():
+    card = _card_with_rcsb("P52270", ["1TCD"])
+    (rel,) = card.relationships(object_ref="pdb:1TCD")
+    sources = [
+        card.source_assertion_store.get(sa)["source"]["name"]
+        for sa in rel["source_assertion_ids"]
+    ]
+    assert sources == ["UniProt", "RCSB PDB"]
+    assert "qualifier_conflicts" not in rel
+    q = rel["qualifiers"]
+    assert (q["method"], q["chains"], q["ranges"], q["coverage"]) == (
+        "X-ray",
+        ["A", "B"],
+        [[3, 251]],
+        0.992,
+    )
+    rcsb_sa = card.source_assertion_store.get(rel["source_assertion_ids"][1])
+    assert (
+        rcsb_sa["subject_ref"] == "pdb:1TCD"
+    )  # structure facts keep their own subject
+
+
+def test_disagreeing_sources_stay_visible_as_qualifier_conflicts():
+    entry = _json("temp_data/rcsb/1TCD.json")
+    region = entry["polymer_entities"][0]["rcsb_polymer_entity_align"][0][
+        "aligned_regions"
+    ][0]
+    region["ref_beg_seq_id"] = 5  # pretend RCSB aligned 5-253 instead of 3-251
+    card = build_card_from_mapping(
+        merge_mapping_results(
+            [
+                map_protein(_json("temp_data/P52270.json"), "2026-02-01"),
+                map_structure_entities(entry, "2026-02-01", subjects={"P52270"}),
+            ]
+        ),
+        meta={"entity_type": "protein"},
+    )
+    (rel,) = card.relationships(object_ref="pdb:1TCD")
+    assert rel["qualifier_conflicts"]["ranges"] == [[[3, 251]], [[5, 253]]]

@@ -13,6 +13,7 @@ from sabueso.core.relationship_store import RelationshipStore
 from sabueso.resolver import (
     EntityQuery,
     EntityResolver,
+    FixtureRCSBClient,
     FixtureUniProtClient,
     sequence_identity_link,
 )
@@ -23,7 +24,10 @@ CHIMP_TIM = "sabueso:protein:uniprot:P60175"
 
 @pytest.fixture
 def resolver():
-    return EntityResolver(FixtureUniProtClient("temp_data", failing={"P12345"}))
+    return EntityResolver(
+        FixtureUniProtClient("temp_data", failing={"P12345"}),
+        rcsb_client=FixtureRCSBClient("temp_data", failing={"9ERR"}),
+    )
 
 
 def _entry(accession):
@@ -114,7 +118,10 @@ def test_a12_not_found_error_and_unsupported_stay_distinct(resolver):
     assert resolver.resolve("A0A000Z9Z9").status == "not_found"
     assert resolver.resolve("P12345").status == "error"
     assert resolver.resolve("XYZ").status == "unsupported"
-    assert resolver.resolve("pdb:1TCD").status == "unsupported"
+    assert resolver.resolve("chembl:CHEMBL90555").status == "unsupported"
+    assert resolver.resolve("pdb:XYZ").status == "unsupported"  # not a PDB id
+    assert resolver.resolve("pdb:0ZZZ").status == "not_found"
+    assert resolver.resolve("pdb:9ERR").status == "error"
     assert resolver.resolve(EntityQuery(name="triosephosphate isomerase")).status == (
         "unsupported"
     )
@@ -228,3 +235,29 @@ def test_preference_is_inconclusive_with_several_reviewed_matches():
 def test_unknown_policy_is_rejected():
     with pytest.raises(ValueError):
         EntityResolver(FixtureUniProtClient("temp_data"), policy="prefer_longest@1")
+
+
+# Step 4b: PDB entry identifiers (A11)
+
+
+def test_a11_pdb_entry_resolves_to_a_structure_record_and_its_proteins(resolver):
+    res = resolver.resolve("pdb:1tcd")
+    assert (res.status, res.entity_ref) == ("resolved", "pdb:1TCD")
+    assert res.qualifiers == {"record_type": "structure"}
+    assert res.related == [
+        {
+            "entity_ref": "sabueso:protein:uniprot:P52270",
+            "predicate": "has_structure",
+            "polymer_entities": ["1"],
+        }
+    ]
+
+
+def test_pdb_complex_relates_every_protein_it_contains(resolver):
+    res = resolver.resolve("pdb:1KLG")
+    assert [r["entity_ref"] for r in res.related] == [
+        "sabueso:protein:uniprot:P01903",  # HLA-DR alpha
+        "sabueso:protein:uniprot:P01911",  # HLA-DR beta
+        "sabueso:protein:uniprot:P0A0L5",  # staphylococcal enterotoxin C3
+        "sabueso:protein:uniprot:P60174",  # TIM peptide 23-37
+    ]
