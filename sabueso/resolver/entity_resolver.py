@@ -1,0 +1,335 @@
+"""EntityResolver: which molecular entity is an identifier or query talking about?
+
+MVP implementation of the contract in ``devguide/pending_proposals/entity_resolver.md``
+(uibcdf/sabueso#6). This step covers UniProtKB accessions: active primary accessions,
+merged and demerged (inactive) accessions, and isoform accessions. Name and PDB inputs are
+reported as ``unsupported`` until implemented.
+
+Principles: never choose silently, keep "not found", "unsupported" and "error" apart,
+record every decision, and never create identity from identical sequences across
+organisms.
+"""
+
+from __future__ import annotations
+
+import re
+from dataclasses import asdict, dataclass, field
+from typing import Any, Dict, List, Optional
+
+from sabueso.core.card import make_card_id
+from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.relationship_store import (
+    Relationship,
+    make_derivation,
+    make_relationship,
+)
+from sabueso.core.source_assertion_store import SourceAssertion, make_source_assertion
+
+from .uniprot_client import OnlineUniProtClient
+
+# UniProtKB accession format, optionally followed by an isoform suffix (e.g. P60174-3).
+UNIPROT_ACCESSION = re.compile(
+    r"^(?P<accession>[OPQ][0-9][A-Z0-9]{3}[0-9]"
+    r"|[A-NR-Z][0-9](?:[A-Z][A-Z0-9]{2}[0-9]){1,2})(?:-(?P<isoform>[0-9]+))?$"
+)
+
+STATUSES = ("resolved", "ambiguous", "not_found", "unsupported", "error")
+
+
+@dataclass
+class EntityQuery:
+    identifier: Optional[str] = None
+    name: Optional[str] = None
+    organism: Optional[int | str] = None
+    entity_type: Optional[str] = None
+
+
+@dataclass
+class EntityResolution:
+    status: str
+    entity_ref: Optional[str] = None
+    qualifiers: Dict[str, Any] = field(default_factory=dict)
+    candidates: List[Dict[str, Any]] = field(default_factory=list)
+    alternatives: List[Dict[str, Any]] = field(default_factory=list)
+    policy: Optional[str] = None
+    identity_links: List[Relationship] = field(default_factory=list)
+    source_assertions: List[SourceAssertion] = field(default_factory=list)
+    decision: Dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+def protein_ref(accession: str) -> str:
+    return make_card_id("protein", f"uniprot:{accession}")
+
+
+def uniprot_basis(entry: Dict[str, Any]) -> Dict[str, Any]:
+    """What a candidate is, as reported by its UniProt record."""
+    return {
+        "accession": entry.get("primaryAccession"),
+        "reviewed": str(entry.get("entryType", "")).startswith("UniProtKB reviewed"),
+        "organism": entry.get("organism", {}).get("taxonId"),
+        "organism_name": entry.get("organism", {}).get("scientificName"),
+        "length": entry.get("sequence", {}).get("length"),
+        "md5": entry.get("sequence", {}).get("md5"),
+    }
+
+
+def _organism_matches(entry: Dict[str, Any], organism: int | str | None) -> bool:
+    if organism is None:
+        return True
+    info = entry.get("organism", {})
+    if isinstance(organism, int) or str(organism).isdigit():
+        return info.get("taxonId") == int(organism)
+    return str(info.get("scientificName", "")).lower() == str(organism).lower()
+
+
+def sequence_identity_link(
+    entry_a: Dict[str, Any], entry_b: Dict[str, Any]
+) -> Optional[Relationship]:
+    """Derived ``possibly_same_as`` for identical sequences within one organism.
+
+    Identical sequences in different organisms (e.g. human P60174 and chimpanzee P60175)
+    are never an identity link, and identical sequences never merge entities automatically.
+    """
+    a, b = uniprot_basis(entry_a), uniprot_basis(entry_b)
+    if a["accession"] == b["accession"] or not a["md5"] or a["md5"] != b["md5"]:
+        return None
+    if a["organism"] is None or a["organism"] != b["organism"]:
+        return None
+    return make_relationship(
+        f"uniprot:{a['accession']}",
+        "possibly_same_as",
+        f"uniprot:{b['accession']}",
+        qualifiers={"basis": "identical_sequence", "organism": a["organism"]},
+        derivation=make_derivation(
+            "identical_sequence_same_organism",
+            inputs=[f"uniprot:{a['accession']}", f"uniprot:{b['accession']}"],
+            parameters={"checksum": "md5", "organism": a["organism"]},
+        ),
+    )
+
+
+class EntityResolver:
+    def __init__(self, uniprot_client: Any | None = None) -> None:
+        self.uniprot = uniprot_client or OnlineUniProtClient()
+
+    def resolve(self, query: EntityQuery | str) -> EntityResolution:
+        if isinstance(query, str):
+            query = EntityQuery(identifier=query)
+        from sabueso import __version__
+
+        decision: Dict[str, Any] = {
+            "query": asdict(query),
+            "rules": [],
+            "sources": [],
+            "sabueso_version": __version__,
+        }
+        if query.identifier:
+            namespace, _, value = query.identifier.rpartition(":")
+            if namespace in ("", "uniprot"):
+                match = UNIPROT_ACCESSION.match(value)
+                if match:
+                    return self._resolve_uniprot(
+                        match["accession"], match["isoform"], query, decision
+                    )
+                decision["rules"].append("invalid_identifier_format")
+                return EntityResolution("unsupported", decision=decision)
+            decision["rules"].append(f"unsupported_namespace:{namespace}")
+            return EntityResolution("unsupported", decision=decision)
+        decision["rules"].append("unsupported_query")
+        return EntityResolution("unsupported", decision=decision)
+
+    # UniProt ------------------------------------------------------------------------
+
+    def _fetch(self, accession: str, decision: Dict[str, Any]) -> Dict[str, Any]:
+        try:
+            entry, retrieved_at = self.uniprot.fetch_entry(accession)
+        except RecordNotFoundError:
+            decision["sources"].append(
+                {"name": "UniProt", "record": accession, "outcome": "not_found"}
+            )
+            raise
+        except ConnectorError as exc:
+            decision["sources"].append(
+                {"name": "UniProt", "record": accession, "outcome": f"error: {exc}"}
+            )
+            raise
+        decision["sources"].append(
+            {"name": "UniProt", "record": accession, "retrieved_at": retrieved_at}
+        )
+        return entry
+
+    def _resolve_uniprot(
+        self,
+        accession: str,
+        isoform: Optional[str],
+        query: EntityQuery,
+        decision: Dict[str, Any],
+    ) -> EntityResolution:
+        try:
+            entry = self._fetch(accession, decision)
+            if entry.get("entryType") == "Inactive":
+                return self._resolve_inactive(accession, entry, query, decision)
+            if not _organism_matches(entry, query.organism):
+                decision["rules"].append("organism_mismatch")
+                return EntityResolution("not_found", decision=decision)
+            primary = entry["primaryAccession"]
+            resolution = EntityResolution(
+                "resolved", entity_ref=protein_ref(primary), decision=decision
+            )
+            if primary != accession:
+                # The REST API answered a secondary accession with the active entry.
+                decision["rules"].append("secondary_accession_redirected")
+                self._link(resolution, accession, "same_as", primary, entry, {})
+            else:
+                decision["rules"].append("active_primary_accession")
+            if isoform:
+                return self._apply_isoform(resolution, primary, isoform, entry)
+            return resolution
+        except RecordNotFoundError:
+            decision["rules"].append("record_not_found")
+            return EntityResolution("not_found", decision=decision)
+        except ConnectorError:
+            decision["rules"].append("source_error")
+            return EntityResolution("error", decision=decision)
+
+    def _resolve_inactive(
+        self,
+        accession: str,
+        entry: Dict[str, Any],
+        query: EntityQuery,
+        decision: Dict[str, Any],
+    ) -> EntityResolution:
+        reason = entry.get("inactiveReason", {}) or {}
+        kind = reason.get("inactiveReasonType")
+        targets = reason.get("mergeDemergeTo", []) or []
+        if not targets:
+            decision["rules"].append(f"inactive_without_successor:{kind}")
+            return EntityResolution("not_found", decision=decision)
+
+        target_entries = [self._fetch(t, decision) for t in targets]
+        candidates = [
+            {
+                "entity_ref": protein_ref(t["primaryAccession"]),
+                "basis": uniprot_basis(t),
+            }
+            for t in target_entries
+        ]
+        predicate = (
+            "same_as" if kind == "MERGED" and len(targets) == 1 else "superseded_by"
+        )
+
+        matching = [
+            (t, c)
+            for t, c in zip(target_entries, candidates)
+            if _organism_matches(t, query.organism)
+        ]
+        if len(targets) == 1 and matching:
+            decision["rules"].append(f"inactive_{kind.lower()}_single_successor")
+        elif query.organism is not None and len(matching) == 1:
+            decision["rules"].append(f"inactive_{kind.lower()}_filtered_by_organism")
+        elif not matching:
+            decision["rules"].append("organism_mismatch")
+            return EntityResolution(
+                "not_found", candidates=candidates, decision=decision
+            )
+        else:
+            decision["rules"].append(f"inactive_{kind.lower()}_ambiguous")
+            return EntityResolution(
+                "ambiguous", candidates=candidates, decision=decision
+            )
+
+        chosen_entry, chosen = matching[0]
+        resolution = EntityResolution(
+            "resolved",
+            entity_ref=chosen["entity_ref"],
+            alternatives=[c for c in candidates if c is not chosen],
+            decision=decision,
+        )
+        self._link(
+            resolution,
+            accession,
+            predicate,
+            chosen_entry["primaryAccession"],
+            entry,
+            {"inactive_reason": kind},
+        )
+        return resolution
+
+    def _apply_isoform(
+        self,
+        resolution: EntityResolution,
+        canonical: str,
+        isoform: str,
+        entry: Dict[str, Any],
+    ) -> EntityResolution:
+        isoform_acc = f"{canonical}-{isoform}"
+        listed = {}
+        for comment in entry.get("comments", []) or []:
+            if comment.get("commentType") != "ALTERNATIVE PRODUCTS":
+                continue
+            for item in comment.get("isoforms", []) or []:
+                for iso_id in item.get("isoformIds", []) or []:
+                    listed[iso_id] = item
+        if isoform_acc not in listed:
+            resolution.decision["rules"].append("isoform_not_listed")
+            return EntityResolution("not_found", decision=resolution.decision)
+        item = listed[isoform_acc]
+        resolution.qualifiers["isoform"] = isoform_acc
+        resolution.decision["rules"].append("isoform_accession")
+        self._link(
+            resolution,
+            isoform_acc,
+            "isoform_of",
+            canonical,
+            entry,
+            {
+                "isoform": isoform_acc,
+                "isoform_name": (item.get("name") or {}).get("value"),
+                "sequence_status": item.get("isoformSequenceStatus"),
+            },
+        )
+        return resolution
+
+    def _link(
+        self,
+        resolution: EntityResolution,
+        subject_accession: str,
+        predicate: str,
+        object_accession: str,
+        stating_entry: Dict[str, Any],
+        qualifiers: Dict[str, Any],
+    ) -> None:
+        """Identity link asserted by the UniProt record that states it."""
+        record = stating_entry.get("primaryAccession") or subject_accession
+        retrieved_at = next(
+            (
+                s.get("retrieved_at", "")
+                for s in resolution.decision["sources"]
+                if s.get("record") == record
+            ),
+            "",
+        )
+        assertion = make_source_assertion(
+            f"relationships.{predicate}",
+            {
+                "subject_ref": f"uniprot:{subject_accession}",
+                "object_ref": f"uniprot:{object_accession}",
+                **qualifiers,
+            },
+            "UniProt",
+            record,
+            retrieved_at,
+        )
+        resolution.source_assertions.append(assertion)
+        resolution.identity_links.append(
+            make_relationship(
+                f"uniprot:{subject_accession}",
+                predicate,
+                f"uniprot:{object_accession}",
+                qualifiers=qualifiers,
+                source_assertion_ids=[assertion["id"]],
+            )
+        )

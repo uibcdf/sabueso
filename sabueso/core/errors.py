@@ -19,3 +19,10 @@ class StorageError(SabuesoError):
 
 class ConnectorError(SabuesoError):
     """External data source or connector failure."""
+
+
+class RecordNotFoundError(SabuesoError):
+    """A source was consulted and holds no record for the requested identifier.
+
+    Distinct from ConnectorError: "not found" is an answer, a connector failure is not.
+    """

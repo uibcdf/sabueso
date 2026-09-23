@@ -73,14 +73,33 @@ Helpers: `make_relationship(...)` validates the predicate and requires support;
 `make_derivation(rule, inputs, parameters)` builds the derivation record for inferred
 relationships.
 
-## Resolver
-**Purpose:** Classify inputs and normalize identifiers.
+## EntityResolver
+**Purpose:** Decide which molecular entity an identifier or query refers to, without
+silent choices. Contract: `devguide/pending_proposals/entity_resolver.md` (#6).
+Implemented in `sabueso/resolver/entity_resolver.py` for UniProt accessions (MVP step 2).
 
 **Methods**
-- `resolve(input: Any) -> dict`
+- `EntityResolver(uniprot_client=None)` *(defaults to `OnlineUniProtClient`;
+  `FixtureUniProtClient` serves saved REST responses)*
+- `resolve(query: EntityQuery | str) -> EntityResolution`
+- `sequence_identity_link(entry_a, entry_b) -> Relationship | None` *(derived
+  `possibly_same_as` for identical sequences within one organism; never across organisms)*
 
-**Return Contract (resolve)**
-- `entity_type: str` *(protein | peptide | small_molecule)*
-- `normalized_inputs: list[dict]`
-- `ambiguity: bool`
-- `candidates: list[dict]` *(optional)*
+**EntityQuery**
+- `identifier` *(e.g. `P60174`, `uniprot:P60174-3`)*
+- `name`, `organism` *(taxon id or scientific name)*, `entity_type`
+
+**EntityResolution**
+- `status`: `resolved | ambiguous | not_found | unsupported | error`
+- `entity_ref`: e.g. `sabueso:protein:uniprot:P60174`
+- `qualifiers`: e.g. `{"isoform": "P60174-3"}`
+- `candidates`: when ambiguous, `[{entity_ref, basis}]`
+- `alternatives`: non-chosen candidates when resolved
+- `policy`: named preference policy, when one was applied
+- `identity_links`: Relationships (`same_as`, `superseded_by`, `isoform_of`)
+- `source_assertions`: the UniProt SourceAssertions supporting those links
+- `decision`: rules applied, sources consulted (with outcome or retrieval time), query,
+  Sabueso version
+
+## FieldResolver
+See `devguide/RESOLVER.md` (`resolve_field`).

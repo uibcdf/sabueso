@@ -1,5 +1,10 @@
 # Sabueso — Resolver (0.2.0 Contract)
 
+> This document covers the **FieldResolver** (selecting a field value from
+> SourceAssertions). The **EntityResolver** (which entity a record or query refers to)
+> is specified in `devguide/pending_proposals/entity_resolver.md` and documented in
+> `devguide/INTERFACES_MINIMAL.md`.
+
 This document defines the minimal **Resolver** contract for selecting canonical values from
 SourceAssertions (what external sources assert about a field).
 Versioning for resolver and selection rules follows **x.y.z**. Contract 0.2.0 renames the

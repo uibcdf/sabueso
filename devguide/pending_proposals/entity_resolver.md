@@ -362,7 +362,36 @@ Fixtures to add at implementation time:
    - card serialization and the `Card.relationships()` accessor;
    - rejection of relationships that cite missing SourceAssertions.
    Tests: `tests/core/test_relationships_offline.py`.
-2. `resolve_entity` for UniProt accessions (A1–A5, A12): pending.
+2. **EntityResolver for UniProt accessions** (A1–A5, A12). Done:
+   - `sabueso/resolver/entity_resolver.py` and `uniprot_client.py` (online and fixture
+     clients);
+   - active, merged, demerged and isoform accessions;
+   - organism filtering with recorded alternatives, `not_found / unsupported / error`
+     kept apart, and derived `sequence_identity_link`.
+
+   Tests: `tests/core/test_entity_resolver_offline.py`, plus an online check in
+   `test_online_entity_resolver.py`.
+
+   Observed UniProt REST behaviour (2026-09-23):
+   - a merged secondary accession (Q6FHP9) answers HTTP 303 with an inactive `MERGED`
+     body. HTTP clients that follow the redirect receive the active entry instead.
+     Both paths resolve to the same entity with a `same_as` link, and only the recorded
+     rule differs;
+   - a demerged accession (P00938) answers 200 with an inactive `DEMERGED` body;
+   - an isoform accession has its own record, but resolution uses the canonical entry's
+     ALTERNATIVE PRODUCTS listing;
+   - an invalid format answers 400. It is rejected locally as `unsupported` before any
+     query;
+   - a well-formed but unknown accession answers 404 (`not_found`).
+
+   Implementation choices:
+   - a demerged accession relates to each successor through `superseded_by`, not
+     `same_as`, because the old record covered several proteins;
+   - an identifier that contradicts the requested organism does not resolve
+     (`not_found`, rule `organism_mismatch`).
+
+   Still pending from A5: V9HWK1 assertions must not feed the P60174 card. This is
+   enforced when cards are built from resolved entities, in step 4.
 3. Name + organism with preference and trace (A6, A7, A7b): pending.
 4. `has_structure` from UniProt/RCSB and the ProteinCard `structures` view (A9–A11):
    pending.
