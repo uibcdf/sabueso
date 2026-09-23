@@ -53,7 +53,7 @@ All fields in all cards are resolved from SourceAssertions through the same prot
 This mechanism is **homogeneous** across all fields and all card types. It is a core design decision.
 
 ### What a SourceAssertion is not
-MolSysSuite Architecture 1.0 distinguishes `SourceAssertion ≠ Evidence ≠ Provenance`:
+MOLI Platform Architecture 1.0 (`uibcdf/moli`) distinguishes `SourceAssertion ≠ Evidence ≠ Provenance`:
 - **Evidence** belongs to Nextia: project-contextual scientific information that
   supports, contradicts or informs a Question or Hypothesis. Sabueso never produces it; a
   DiscoveryProject may cite SourceAssertions as the basis of its own Evidence.

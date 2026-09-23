@@ -45,7 +45,7 @@ from, and when it was retrieved:
 ```
 
 A SourceAssertion is not scientific *evidence* for a hypothesis (that concept belongs to
-the discovery layer of MolSysSuite, Nextia) and it is not provenance in general. It is an
+Nextia, the Discovery context of the MOLI Platform) and it is not provenance in general. It is an
 external knowledge claim that carries its own provenance. Qualifiers the source attaches
 to its own statements (for example, UniProt ECO codes) are kept as source metadata.
 

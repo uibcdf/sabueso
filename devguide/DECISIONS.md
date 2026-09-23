@@ -89,8 +89,9 @@
   ID prefix `E_` → `SA_`.
 - **Evidence** is reserved for Nextia (project-contextual support, contradiction or
   information about a Question/Hypothesis). **Provenance** is cross-cutting.
-- Rationale: avoid a permanent ambiguity for humans and MOLI and protect the Architecture 1.0
-  boundary "External knowledge ≠ project Evidence".
+- Rationale: avoid a permanent ambiguity for humans and MOLI Agent, and follow MOLI Platform
+  Architecture 1.0 (`uibcdf/moli`): "External knowledge does not automatically become
+  project Evidence".
 - Source-native qualifiers (UniProt ECO codes, PubMed IDs, assay descriptors) stay in
   `source_meta` under their native names; Sabueso defines no generic `evidence` field.
 - No deprecated aliases: Sabueso had no release or external consumer when renamed.

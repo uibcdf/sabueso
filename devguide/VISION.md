@@ -3,10 +3,10 @@
 ## Definition
 Sabueso is a scientific Python library that aggregates, normalizes, and traces biomolecular data across multiple public databases. It transforms **SourceAssertions** from multiple sources into **resolved molecular knowledge**, preserving conflicts, traceability, and the original assertions. Given a molecular system (protein, peptide, small molecule, etc.), Sabueso returns a structured **card** that contains curated, ordered information in which every value is linked to the SourceAssertions that support it.
 
-**A SourceAssertion records what an external source asserts about an entity or property.** In MolSysSuite Architecture 1.0, Sabueso is the Knowledge layer (the knowledge memory): `SourceAssertion` belongs to Sabueso, `Evidence` belongs to Nextia, and `Provenance` is cross-cutting (`SourceAssertion ≠ Evidence ≠ Provenance`).
+**A SourceAssertion records what an external source asserts about an entity or property.** In MOLI Platform Architecture 1.0 (`uibcdf/moli`), Sabueso is the Knowledge component of the Scientific Context: `SourceAssertion` belongs to Sabueso, `Evidence` belongs to Nextia, and `Provenance` is cross-cutting (`SourceAssertion ≠ Evidence ≠ Provenance`).
 
 ## Mission
-Provide a reliable, traceable, and extensible foundation for biomolecular data discovery and integration, enabling downstream scientific workflows in MolSysSuite.
+Provide a reliable, traceable, and extensible foundation for biomolecular data discovery and integration, that scientists, MOLI Agent, and MolSysSuite modeling components can consume.
 
 ## Purpose
 - Provide a single entry point to query biological, biochemical, and chemical databases.
@@ -27,15 +27,15 @@ Primary users are computational scientists in biophysics, biochemistry, computat
 - Sources: **UniProt**, **PDB**, **ChEMBL**, **PubChem**, **eMolecules**, **ChemSpider**, **DrugBank**.
 - Output: one **card** per entity with nested sections and standardized field paths.
 
-## Integration Context
-Sabueso is part of the **MolSysSuite** ecosystem. It should be designed to interoperate with other scientific libraries in that suite.
+## Platform Context
+Sabueso is the Knowledge-context component of the **MOLI Platform** (`uibcdf/moli`). Together with Praxis (Know-how) and Nextia (Discovery) it forms the platform's **Scientific Context**. **Sabueso knows; it does not discover.**
 
-MolSysSuite tools explicitly referenced so far:
-- **MolSysMT**: handling molecular system models and simulation trajectories.
-- **TopoMT**: topographic analysis of molecular surfaces (cavities, channels, etc.).
-- **ElastNet**: elastic network models for proteins.
-- **PharmacophoreMT**: pharmacophore workflows.
-- **MolSys‑AI**: RAG/finetuned LLM for MolSysSuite; expected to evolve into an agent that uses Sabueso and other tools.
+Sabueso is **not** a MolSysSuite component. MolSysSuite is the platform's molecular modeling ecosystem. Its components may consume Sabueso Cards, entity mappings, annotations and relationships through stable interfaces, while Sabueso keeps semantic ownership of that knowledge. Interoperability does not require circular package dependencies.
+
+Expected consumers of Sabueso knowledge:
+- **MOLI Agent**: assembles Scientific Context (resolved knowledge, SourceAssertions, conflicts, provenance) for scientific reasoning.
+- **Nextia**: references versioned Sabueso knowledge; a DiscoveryProject may cite SourceAssertions as the basis of its own Evidence.
+- **MolSysSuite** components such as MolSysMT (molecular systems), TopoMT (cavities, channels), ElastNetMT (elastic networks), PharmacophoreMT (pharmacophores) and DockingMT (docking), and MolSys-AI, the MolSysSuite specialist agent.
 
 ## Non‑Goals (for now)
 - No offline‑only mode. Sabueso is online‑first, but supports local card caching.
