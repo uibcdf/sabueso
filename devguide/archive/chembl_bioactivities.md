@@ -1,9 +1,9 @@
 ---
 summary: ChEMBL bioactivities as measured protein–molecule relationships with a derived, parameterized activity view.
 issue: uibcdf/sabueso#23
-status: partial
+status: resolved
 opened: 2026-09-23
-closed:
+closed: 2026-09-23
 verification: measured
 area: [relationships, chembl, protein-card, derived-knowledge]
 blocked_by: []
@@ -106,9 +106,30 @@ Presenting the ChEMBL data naively would mislead:
 - [x] `Card.bioactivities()`: derived classes with the rule and parameters, exclusions reported, source bias visible (`documents`).
 - [x] `resolve_protein_card(..., chembl={...})` with recorded outcomes. A failure never blocks the card.
 - [x] Offline tests on TcTIM and HsTIM, including the 14-molecule overlap. Online test.
-- [ ] Small-molecule side: a Deck of the measured molecules (SmallMoleculeCards) and molecule-to-protein navigation. This is the `protein_card` ↔ `small_molecules_deck` interaction of the MOLI vision.
-- [ ] A selectivity view between two protein cards, e.g. TcTIM against HsTIM.
+- [x] Small-molecule side: `ligand_deck(protein_card)` gives a Deck of SmallMoleculeCards anchored at the standard InChIKey (uibcdf/sabueso#25), and `protein_card.ligands(deck)` crosses them. This is the `protein_card` ↔ `small_molecules_deck` interaction of the MOLI vision. Navigation from a molecule back to its proteins is deferred (see Resolution).
+- [x] A selectivity view between two protein cards: `card.compare_ligands(deck, other, other_deck)` and `Deck.intersect` / `Deck.difference`.
 
 ## Resolution
 
-Partial: the protein-side MVP was implemented on 2026-09-23. The remaining criteria stay open in uibcdf/sabueso#23.
+Resolved on 2026-09-23 in two steps.
+
+- **Protein side (`aaf57a0`):** `has_bioactivity` relationships, the ChEMBL clients, `Card.bioactivities()` and the `resolve_protein_card(..., chembl={...})` enricher.
+- **Molecule side**, once small molecules had an identity (uibcdf/sabueso#25):
+  - `ligand_deck(protein_card)` builds one SmallMoleculeCard per standard InChIKey. It takes the measured parent molecules and, optionally, the structure ligands, and records every source outcome and unanchored record in `deck.meta`.
+  - `protein_card.ligands(deck)` gives, per molecule, its strongest activity class on the protein, its structures and the measurements excluded by target assignment. It also lists the protein's molecule records that no deck card covers.
+  - `card.compare_ligands(deck, other, other_deck)` juxtaposes two proteins, and `Deck.intersect` / `Deck.difference` compare decks by card id, which for molecules is the InChIKey anchor.
+
+Measured with the TIM fixtures:
+
+- **TcTIM deck:** 257 molecules. That is the 256 measured molecules plus sulfate from 1SUX; BTS from 1SUX is CHEMBL1161789, one of the measured molecules.
+  - BTS / CHEMBL1161789 is the only molecule both measured on TcTIM (weak, IC50 33 µM) and observed in a TcTIM structure.
+- **HsTIM deck:** 34 molecules.
+  - Phosphoglycolohydroxamate has only homology-assigned measurements on rabbit TIM. It appears with no class and 2 excluded measurements.
+- **Shared:** the two decks share 14 molecules.
+
+Tests: `tests/core/test_ligand_deck_offline.py`.
+
+**Deferred and tracked elsewhere:**
+- **Molecule → protein navigation.** A molecule card does not list its proteins, because relationships are stored with their subject (the protein). A reverse lookup over a deck of protein cards depends on the storage re-evaluation of uibcdf/sabueso#19.
+- **Deck persistence.** JSONL and SQLite do not store `deck.meta`, so a saved ligand deck loses its source outcomes (uibcdf/sabueso#26).
+- **Artifact filtering of structure ligands** (item 3 of uibcdf/sabueso#25). Sulfate appears as a ligand that was observed only in a structure, and the deck's `notes` say so.

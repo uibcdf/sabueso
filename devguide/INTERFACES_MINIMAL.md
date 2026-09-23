@@ -122,6 +122,20 @@ exported at package root.
 - `build_molecule_cards(chembl=None, ccd=None, unichem=()) -> (cards_by_inchikey, unanchored)`:
   builds cards from retrieved records. It is shared with the ligand deck of a protein
   card.
+- `ligand_deck(protein_card, structure_ligands=True, chembl_client=None, ccd_client=None, unichem=False, unichem_client=None) -> Deck`:
+  one card per standard InChIKey, for the ChEMBL parent molecules of the protein's
+  `has_bioactivity` relationships and, optionally, the ligands of its structures.
+  `deck.meta` holds `kind` (`protein_ligands`), `protein`, `identity_rule`, `sources`
+  (per-source outcomes), `unanchored` and `notes`. Structure ligands are not filtered
+  for artifacts. Exported at package root.
+- `Card.ligands(deck, include_indirect=False, thresholds=None)`: per molecule, the
+  strongest activity class on the protein, its best pChEMBL, its structures, and its
+  excluded measurements. Also returns `unmatched`, the protein's molecule records that
+  no deck card covers.
+- `Card.compare_ligands(deck, other, other_deck, ...)`: `shared` (side by side),
+  `only_self` and `only_other`.
+- `Deck.ids()`, `Deck.intersect(other)` and `Deck.difference(other)` compare decks by
+  card id.
 
 ## ProteinCards from resolved entities
 Implemented in `sabueso/tools/card/protein.py` (#6, step 4c); exported at package root.

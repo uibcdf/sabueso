@@ -26,3 +26,27 @@ them. Pass `thresholds={"active_max_uM": 1.0}` to change the thresholds, or
 `include_indirect=True` to include measurements that ChEMBL assigned by homology.
 
 Clients: `sabueso.tools.db.chembl.OnlineChEMBLClient` and `FixtureChEMBLClient`.
+
+## Ligand decks
+
+Each measured molecule, and optionally each ligand seen in the protein's structures,
+becomes a SmallMoleculeCard anchored at its standard InChIKey. When a structure ligand and
+a measured molecule have the same InChIKey, they share one card:
+
+```python
+card, _ = sabueso.resolve_protein_card("P52270", structures=["1SUX"], chembl={})
+deck = sabueso.ligand_deck(card)
+print(deck.meta["sources"], deck.meta["notes"])
+
+for item in card.ligands(deck)["items"][:5]:
+    print(item["name"], item["observed_in"], item["bioactivity"], item["structures"])
+
+# Two proteins side by side, e.g. a parasite enzyme and its human counterpart.
+other, _ = sabueso.resolve_protein_card("P60174", chembl={})
+comparison = card.compare_ligands(deck, other, sabueso.ligand_deck(other))
+print(len(comparison["shared"]), comparison["shared"][0])
+```
+
+Structure ligands are not filtered for crystallisation additives or ions, and
+`deck.meta["notes"]` says so. Resolve a single molecule with
+`sabueso.resolve_molecule_card("pdb.ligand:BTS")` (or `chembl:<id>`, `inchikey:<key>`).

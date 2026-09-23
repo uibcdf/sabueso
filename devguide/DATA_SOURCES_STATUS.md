@@ -78,7 +78,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - Homology-assigned assays (relationship type `H`) are excluded from the default view and reported. Every HsTIM Ki in ChEMBL was measured on rabbit TIM or on TIM of unknown organism.
   - The test concentration of single-point measurements is extracted from the assay description (derived).
   - About 2 KB per measurement. `limit` (default 5000) and truncation are recorded (card size: uibcdf/sabueso#19).
-  - Report: `devguide/pending_proposals/chembl_bioactivities.md`.
+  - Report: `devguide/archive/chembl_bioactivities.md`.
 - **Molecules** (`molecules(ids)`, batched): identity (standard InChIKey, hierarchy), `max_phase` and the ChEMBL-asserted properties, for SmallMoleculeCards anchored at the InChIKey (uibcdf/sabueso#25). Fixture: `temp_data/chembl/molecules.json` (275 parent molecules measured on TcTIM or HsTIM).
 
 ---

@@ -1,7 +1,7 @@
 """Protein–molecule bioactivities: derived activity classes and the card view.
 
 A ProteinCard carries measured bioactivities as ``has_bioactivity`` Relationships, one per
-source measurement (uibcdf/sabueso#23, ``devguide/pending_proposals/chembl_bioactivities.md``).
+source measurement (uibcdf/sabueso#23, ``devguide/archive/chembl_bioactivities.md``).
 This module reads them. The activity class of a measurement ("active", "weak", ...) and the
 test concentration of a single-point measurement are derived knowledge. They are computed
 here, from the stated rule and thresholds, and never stored as SourceAssertions.

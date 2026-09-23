@@ -73,6 +73,32 @@ class Card:
             self, include_indirect=include_indirect, thresholds=thresholds
         )
 
+    def ligands(
+        self,
+        deck: Any,
+        include_indirect: bool = False,
+        thresholds: Dict[str, Any] | None = None,
+    ) -> Dict[str, Any]:
+        """This protein crossed with a deck of SmallMoleculeCards (``ligand_deck``)."""
+        from .ligands import ligands_view
+
+        return ligands_view(self, deck, include_indirect, thresholds)
+
+    def compare_ligands(
+        self,
+        deck: Any,
+        other: "Card",
+        other_deck: Any,
+        include_indirect: bool = False,
+        thresholds: Dict[str, Any] | None = None,
+    ) -> Dict[str, Any]:
+        """Molecules related to this protein and to ``other``, side by side."""
+        from .ligands import compare_ligands
+
+        return compare_ligands(
+            self, deck, other, other_deck, include_indirect, thresholds
+        )
+
     def get(self, field_path: str) -> Any:
         cur = self.sections
         for key in field_path.split("."):

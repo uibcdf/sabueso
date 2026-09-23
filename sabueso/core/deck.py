@@ -40,6 +40,21 @@ class Deck:
         ordered = sorted(present, key=value, reverse=reverse) + missing
         return Deck(ordered, meta=self.meta.copy())
 
+    def ids(self) -> List[str]:
+        return [c.id for c in self.cards]
+
+    def intersect(self, other: "Deck") -> "Deck":
+        """Cards of this deck whose id is also in ``other`` (same entity, same anchor)."""
+        wanted = set(other.ids())
+        return Deck([c for c in self.cards if c.id in wanted], meta=self.meta.copy())
+
+    def difference(self, other: "Deck") -> "Deck":
+        """Cards of this deck whose id is not in ``other``."""
+        unwanted = set(other.ids())
+        return Deck(
+            [c for c in self.cards if c.id not in unwanted], meta=self.meta.copy()
+        )
+
     def map(self, fn: Callable[[Any], Any]) -> List[Any]:
         return [fn(c) for c in self.cards]
 

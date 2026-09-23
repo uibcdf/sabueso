@@ -118,6 +118,7 @@ This file records the current repository baseline so new developers can resume e
   - STRING: `functionally_associated_with` relationships through `resolve_protein_card(..., string={...})` (#21, part 2c).
   - ChEMBL bioactivities: `has_bioactivity` relationships through `resolve_protein_card(..., chembl={...})` and the derived view `Card.bioactivities()` (#23).
   - Small-molecule identity: SmallMoleculeCards anchored at the standard InChIKey, with `same_as` links from ChEMBL, the PDB CCD and UniChem (`resolve_molecule_card`, #25).
+  - Ligand decks: `ligand_deck(protein_card)`, `Card.ligands(deck)`, `Card.compare_ligands(...)` and `Deck.intersect` / `Deck.difference` (#23, closed).
   - GO, InterPro, CATH, SCOPe, TED, PhosphoSitePlus and BioGRID card tools were removed on
     2026-09-23 (#21). GO, classification and curated-interaction knowledge now comes
     from UniProt as typed relationships.

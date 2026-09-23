@@ -11,6 +11,8 @@ card's fields (``entity_subjects`` guard).
   single-molecule resolution and by the ligand deck of a protein card.
 - ``resolve_molecule_card`` resolves one identifier (``chembl:<id>``,
   ``pdb.ligand:<code>`` or ``inchikey:<key>``) and builds the card of its molecule.
+- ``ligand_deck`` builds the deck of the molecules a protein card refers to; cross it with
+  the protein through ``Card.ligands(deck)``.
 """
 
 from __future__ import annotations
@@ -19,6 +21,7 @@ from typing import Any, Dict, Iterable, List, Tuple
 
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card, make_card_id
+from sabueso.core.deck import Deck
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.core.merge import merge_mapping_results
 from sabueso.mappings.molecule_identity import (
@@ -273,3 +276,117 @@ def _expand(chembl_client, ccd_client, chembl, ccd, linked, enrichments):
         else:
             ccd = merged
     return chembl, ccd
+
+
+def _protein_molecule_records(protein_card: Card, structure_ligands: bool):
+    chembl_ids = sorted(
+        {
+            (rel["qualifiers"].get("parent_molecule") or rel["object_ref"]).split(
+                ":", 1
+            )[1]
+            for rel in protein_card.relationships("has_bioactivity")
+        }
+    )
+    codes = (
+        sorted(
+            {
+                ligand["comp_id"]
+                for rel in protein_card.relationships("has_structure")
+                for ligand in rel.get("qualifiers", {}).get("ligands") or []
+                if ligand.get("comp_id")
+            }
+        )
+        if structure_ligands
+        else []
+    )
+    return chembl_ids, codes
+
+
+def ligand_deck(
+    protein_card: Card,
+    structure_ligands: bool = True,
+    chembl_client: Any | None = None,
+    ccd_client: Any | None = None,
+    unichem: bool = False,
+    unichem_client: Any | None = None,
+) -> Deck:
+    """Deck of the small molecules a protein card refers to, anchored at the InChIKey.
+
+    Molecules come from the card's ``has_bioactivity`` relationships (ChEMBL parent
+    molecules) and, with ``structure_ligands``, from the ligands of its structures (PDB
+    chemical components). Structure ligands are not filtered for crystallisation
+    additives or ions; ``deck.meta["notes"]`` says so. Every source outcome and every
+    record without a standard InChIKey are recorded in ``deck.meta``. UniChem is off by
+    default because it takes one request per molecule.
+    """
+    chembl_ids, codes = _protein_molecule_records(protein_card, structure_ligands)
+    chembl_client, ccd_client, unichem_client = _clients(
+        chembl_client, ccd_client, unichem_client if unichem else None
+    )
+    sources: List[Dict[str, Any]] = []
+    chembl = ccd = None
+    for name, call, requested, field in (
+        ("ChEMBL", chembl_client.molecules, chembl_ids, "molecules"),
+        ("PDB CCD", ccd_client.components, codes, "components"),
+    ):
+        if not requested:
+            continue
+        try:
+            response = call(requested)
+        except ConnectorError as exc:
+            sources.append(
+                {"source": name, "status": "error", "requested": len(requested),
+                 "detail": str(exc)}
+            )  # fmt: skip
+            continue
+        sources.append(
+            {
+                "source": name,
+                "status": "added",
+                "requested": len(requested),
+                "found": len(response.get(field) or {}),
+                "missing": response.get("missing", []),
+            }
+        )
+        if name == "ChEMBL":
+            chembl = response
+        else:
+            ccd = response
+
+    cards, unanchored = build_molecule_cards(chembl, ccd)
+    if unichem and cards:
+        responses, not_found, errors = [], [], []
+        for key in cards:
+            try:
+                responses.append(unichem_client.compound(key))
+            except RecordNotFoundError:
+                not_found.append(key)
+            except ConnectorError as exc:
+                errors.append({"inchikey": key, "detail": str(exc)})
+        sources.append(
+            {
+                "source": "UniChem",
+                "status": "added" if responses else "not_found",
+                "found": len(responses),
+                "not_found": not_found,
+                "errors": errors,
+            }
+        )
+        cards, unanchored = build_molecule_cards(chembl, ccd, responses)
+
+    return Deck(
+        [cards[key] for key in sorted(cards)],
+        meta={
+            "kind": "protein_ligands",
+            "protein": protein_card.id,
+            "identity_rule": IDENTITY_RULE,
+            "sources": sources,
+            "unanchored": unanchored,
+            "notes": [
+                "Structure ligands are not filtered for crystallisation additives or "
+                "ions (uibcdf/sabueso#25, item 3)."
+            ]
+            if codes
+            else [],
+        },
+    )
