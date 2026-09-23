@@ -5,8 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Any, Dict
-from urllib.parse import urlencode
 from urllib.error import HTTPError
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 from sabueso.core.aggregator import build_card_from_mapping
@@ -17,7 +17,9 @@ def load_json(path: str | Path) -> Dict[str, Any]:
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
-def create_interpro_card_from_json(interpro_json: Dict[str, Any], retrieved_at: str) -> Any:
+def create_interpro_card_from_json(
+    interpro_json: Dict[str, Any], retrieved_at: str
+) -> Any:
     mapping = map_interpro_domains(interpro_json, retrieved_at=retrieved_at)
     return build_card_from_mapping(mapping, meta={"entity_type": "protein"})
 
@@ -26,7 +28,9 @@ def create_interpro_card_from_file(path: str | Path, retrieved_at: str) -> Any:
     return create_interpro_card_from_json(load_json(path), retrieved_at=retrieved_at)
 
 
-def fetch_interpro_entry(ipr_id: str, fields: str | None = "metadata") -> Dict[str, Any]:
+def fetch_interpro_entry(
+    ipr_id: str, fields: str | None = "metadata"
+) -> Dict[str, Any]:
     base = f"https://www.ebi.ac.uk/interpro/api/entry/interpro/{ipr_id}"
     params = {"format": "json"}
     if fields:

@@ -25,7 +25,9 @@ class Card:
         self,
         meta: Dict[str, Any] | None = None,
         sections: Dict[str, Any] | None = None,
-        source_assertion_store: SourceAssertionStore | List[Dict[str, Any]] | None = None,
+        source_assertion_store: SourceAssertionStore
+        | List[Dict[str, Any]]
+        | None = None,
         selection_rules: Dict[str, Any] | None = None,
         quality: Dict[str, Any] | None = None,
     ) -> None:
@@ -89,7 +91,9 @@ class Card:
 
         save_card_json(self, path)
 
-    def to_sqlite(self, path: str, table: str = "cards", id_field: str | None = None) -> None:
+    def to_sqlite(
+        self, path: str, table: str = "cards", id_field: str | None = None
+    ) -> None:
         from sabueso.tools.card.storage import save_card_sqlite
 
         save_card_sqlite(self, path, table=table, id_field=id_field)
@@ -102,7 +106,9 @@ class Card:
         return cls(**data)
 
     @classmethod
-    def from_sqlite(cls, path: str, table: str = "cards", card_id: str | None = None) -> "Card | None":
+    def from_sqlite(
+        cls, path: str, table: str = "cards", card_id: str | None = None
+    ) -> "Card | None":
         from sabueso.tools.card.storage import load_card_sqlite
 
         data = load_card_sqlite(path, table=table, card_id=card_id)

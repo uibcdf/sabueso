@@ -21,18 +21,24 @@ def _now_date() -> str:
     return datetime.now(timezone.utc).date().isoformat()
 
 
-def create_protein_card_from_json(uniprot_json: Dict[str, Any], retrieved_at: str | None = None) -> Any:
+def create_protein_card_from_json(
+    uniprot_json: Dict[str, Any], retrieved_at: str | None = None
+) -> Any:
     """Create a Protein Card from UniProt JSON (offline)."""
     mapping = map_protein(uniprot_json, retrieved_at=retrieved_at or _now_date())
     return build_card_from_mapping(mapping, meta={"entity_type": "protein"})
 
 
-def create_protein_card_from_file(path: str | Path, retrieved_at: str | None = None) -> Any:
+def create_protein_card_from_file(
+    path: str | Path, retrieved_at: str | None = None
+) -> Any:
     """Create a Protein Card from a UniProt JSON file."""
     return create_protein_card_from_json(load_json(path), retrieved_at=retrieved_at)
 
 
-def create_protein_card(uniprot_id: str, retrieved_at: str | None = None, data_dir: str | Path = "temp_data") -> Any:
+def create_protein_card(
+    uniprot_id: str, retrieved_at: str | None = None, data_dir: str | Path = "temp_data"
+) -> Any:
     """
     Create a Protein Card by UniProt ID using a local JSON fixture.
 

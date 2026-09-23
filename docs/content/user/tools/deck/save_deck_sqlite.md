@@ -16,7 +16,9 @@ Append all cards in a Deck to SQLite.
 from sabueso.tools.deck import save_deck_sqlite
 
 # deck = ...
-save_deck_sqlite(deck, "data/decks.sqlite", table="cards", id_field="identifiers.uniprot")
+save_deck_sqlite(
+    deck, "data/decks.sqlite", table="cards", id_field="identifiers.uniprot"
+)
 ```
 
 ## What to check

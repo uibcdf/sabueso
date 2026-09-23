@@ -15,7 +15,9 @@ Create a Card from a local source JSON file.
 ```python
 from sabueso.tools.db.uniprot import create_protein_card_from_file
 
-card = create_protein_card_from_file("path/to/uniprot_sample.json", retrieved_at="2026-02-04")
+card = create_protein_card_from_file(
+    "path/to/uniprot_sample.json", retrieved_at="2026-02-04"
+)
 print(card.get("metadata.entity_type"))
 ```
 

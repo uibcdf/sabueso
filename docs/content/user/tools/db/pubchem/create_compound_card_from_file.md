@@ -15,7 +15,9 @@ Create a Card from a local source JSON file.
 ```python
 from sabueso.tools.db.pubchem import create_compound_card_from_file
 
-card = create_compound_card_from_file("path/to/pubchem_sample.json", retrieved_at="2026-02-04")
+card = create_compound_card_from_file(
+    "path/to/pubchem_sample.json", retrieved_at="2026-02-04"
+)
 print(card.get("metadata.entity_type"))
 ```
 

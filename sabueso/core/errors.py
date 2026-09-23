@@ -1,5 +1,6 @@
 """Core exception types for Sabueso."""
 
+
 class SabuesoError(Exception):
     """Base error for Sabueso."""
 

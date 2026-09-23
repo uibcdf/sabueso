@@ -53,7 +53,9 @@ class SourceAssertion(TypedDict, total=False):
     normalized_value: Any  # only when Sabueso normalization changes the asserted value
     source: SourceRef
     retrieved_at: str
-    source_metadata: Dict[str, Any]  # source-native qualifiers (e.g., UniProt ECO codes)
+    source_metadata: Dict[
+        str, Any
+    ]  # source-native qualifiers (e.g., UniProt ECO codes)
     provenance_ref: str
 
 
@@ -79,7 +81,9 @@ def make_subject_ref(source_name: str, record_id: str) -> Optional[str]:
     return f"{source_namespace(source_name)}:{record_id}"
 
 
-def generate_source_assertion_id(source_name: str, record_id: str, field_path: str, asserted_value: Any) -> str:
+def generate_source_assertion_id(
+    source_name: str, record_id: str, field_path: str, asserted_value: Any
+) -> str:
     """Generate a deterministic SourceAssertion id from source+record+field+value."""
     payload = "|".join(
         [
@@ -103,7 +107,9 @@ def make_source_assertion(
 ) -> SourceAssertion:
     """Build a SourceAssertion with its deterministic id and subject reference."""
     return {
-        "id": generate_source_assertion_id(source_name, record_id, field_path, asserted_value),
+        "id": generate_source_assertion_id(
+            source_name, record_id, field_path, asserted_value
+        ),
         "subject_ref": make_subject_ref(source_name, record_id),
         "field_path": field_path,
         "asserted_value": asserted_value,

@@ -8,7 +8,9 @@ from typing import Any, Callable, Dict, List
 class Deck:
     """Collection of Cards with consistent operations."""
 
-    def __init__(self, cards: List[Any] | None = None, meta: Dict[str, Any] | None = None) -> None:
+    def __init__(
+        self, cards: List[Any] | None = None, meta: Dict[str, Any] | None = None
+    ) -> None:
         self.cards = cards or []
         self.meta = meta or {}
 
@@ -28,7 +30,10 @@ class Deck:
         return [fn(c) for c in self.cards]
 
     def compare(self, other: "Deck", key_fields: List[str]) -> Dict[str, Any]:
-        return {"self": self.map(lambda c: c.extract(key_fields)), "other": other.map(lambda c: c.extract(key_fields))}
+        return {
+            "self": self.map(lambda c: c.extract(key_fields)),
+            "other": other.map(lambda c: c.extract(key_fields)),
+        }
 
     def summarize(self, fields: List[str]) -> List[Dict[str, Any]]:
         return [c.extract(fields) for c in self.cards]
@@ -41,7 +46,9 @@ class Deck:
 
         save_deck_jsonl(self, path)
 
-    def to_sqlite(self, path: str, table: str = "cards", id_field: str | None = None) -> None:
+    def to_sqlite(
+        self, path: str, table: str = "cards", id_field: str | None = None
+    ) -> None:
         from sabueso.tools.deck.storage import save_deck_sqlite
 
         save_deck_sqlite(self, path, table=table, id_field=id_field)

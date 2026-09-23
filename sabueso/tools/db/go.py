@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict
 from urllib.request import urlopen
 
 from sabueso.core.aggregator import build_card_from_mapping

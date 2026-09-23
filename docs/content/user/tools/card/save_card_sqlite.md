@@ -17,7 +17,9 @@ import sabueso
 from sabueso.tools.card import save_card_sqlite
 
 card = sabueso.create_protein_card_online("P52789", retrieved_at="2026-02-04")
-save_card_sqlite(card, "data/cards.sqlite", table="cards", id_field="identifiers.uniprot")
+save_card_sqlite(
+    card, "data/cards.sqlite", table="cards", id_field="identifiers.uniprot"
+)
 ```
 
 ## What to check

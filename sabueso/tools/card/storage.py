@@ -57,7 +57,9 @@ def load_card_json(path: str | Path) -> Any:
     return data
 
 
-def load_card_sqlite(path: str | Path, table: str = "cards", card_id: str | None = None) -> Any:
+def load_card_sqlite(
+    path: str | Path, table: str = "cards", card_id: str | None = None
+) -> Any:
     """Load a single Card JSON from SQLite (latest row by default)."""
     out = Path(path)
     with sqlite3.connect(out) as conn:

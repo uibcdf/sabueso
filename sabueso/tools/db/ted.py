@@ -13,9 +13,7 @@ from urllib.request import urlopen
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.mappings.ted import map_ted_domains
 
-DEFAULT_TED_DUMP_URL = (
-    "https://zenodo.org/records/13908086/files/novel_folds_set.domain_summary.tsv.gz?download=1"
-)
+DEFAULT_TED_DUMP_URL = "https://zenodo.org/records/13908086/files/novel_folds_set.domain_summary.tsv.gz?download=1"
 
 
 def load_json(path: str | Path) -> Dict[str, Any]:
@@ -34,7 +32,9 @@ def create_ted_card_from_file(path: str | Path, retrieved_at: str) -> Any:
 def _iter_ted_dump_lines(url: str):
     with urlopen(url) as resp:  # nosec - expected trusted endpoint
         raw = resp.read()
-    text = gzip.GzipFile(fileobj=io.BytesIO(raw)).read().decode("utf-8", errors="ignore")
+    text = (
+        gzip.GzipFile(fileobj=io.BytesIO(raw)).read().decode("utf-8", errors="ignore")
+    )
     for line in text.splitlines():
         if not line.strip():
             continue
@@ -55,7 +55,11 @@ def fetch_ted_entry(entry_id: str) -> Dict[str, Any]:
     dump_path = os.environ.get("TED_DUMP_PATH")
     if dump_path:
         raw = Path(dump_path).read_bytes()
-        text = gzip.GzipFile(fileobj=io.BytesIO(raw)).read().decode("utf-8", errors="ignore")
+        text = (
+            gzip.GzipFile(fileobj=io.BytesIO(raw))
+            .read()
+            .decode("utf-8", errors="ignore")
+        )
         return _parse_ted_dump(entry_id, text.splitlines())
 
     dump_url = os.environ.get("TED_DUMP_URL", DEFAULT_TED_DUMP_URL)

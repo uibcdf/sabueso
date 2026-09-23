@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+
 import pytest
 
 from sabueso.core.aggregator import build_card_from_mapping
@@ -29,7 +30,9 @@ def test_end_to_end_small_molecule_offline():
     pubchem_map = map_pubchem_compound(pubchem, retrieved_at="2026-02-02")
 
     merged = merge_mapping_results([chembl_map, pubchem_map])
-    card = build_card_from_mapping(merged, meta={"entity_type": "small_molecule"}, selection_rules=rules)
+    card = build_card_from_mapping(
+        merged, meta={"entity_type": "small_molecule"}, selection_rules=rules
+    )
 
     assert card.get("identifiers.smiles") is not None
     assert card.get("properties.physchem.molecular_weight") is not None
@@ -46,6 +49,8 @@ def test_end_to_end_protein_offline():
 
     uni_map = map_uniprot_protein(uniprot, retrieved_at="2026-02-01")
     merged = merge_mapping_results([uni_map])
-    card = build_card_from_mapping(merged, meta={"entity_type": "protein"}, selection_rules=rules)
+    card = build_card_from_mapping(
+        merged, meta={"entity_type": "protein"}, selection_rules=rules
+    )
 
     assert card.get("identifiers.uniprot") is not None

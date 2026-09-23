@@ -15,7 +15,9 @@ Create a Card from a local source JSON file.
 ```python
 from sabueso.tools.db.scope import create_scope_card_from_file
 
-card = create_scope_card_from_file("path/to/scope_sample.json", retrieved_at="2026-02-04")
+card = create_scope_card_from_file(
+    "path/to/scope_sample.json", retrieved_at="2026-02-04"
+)
 print(card.get("metadata.entity_type"))
 ```
 

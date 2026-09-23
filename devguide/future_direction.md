@@ -271,10 +271,7 @@ provenance
 Eso permitiría:
 
 ```python
-deck = sabueso.find(
-    entity="TcTIM",
-    relation="inhibited_by"
-)
+deck = sabueso.find(entity="TcTIM", relation="inhibited_by")
 ```
 
 conceptualmente.

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from datetime import datetime
-from typing import Any, Dict, Iterable, List, Tuple
+from typing import Any, Dict, List, Tuple
 
 from sabueso.core.source_assertion_store import assertion_value
 
@@ -28,7 +28,10 @@ def _normalize_value(value: Any) -> Any:
     if isinstance(value, list):
         return sorted((_normalize_value(v) for v in value), key=lambda x: str(x))
     if isinstance(value, dict):
-        return {k: _normalize_value(v) for k, v in sorted(value.items(), key=lambda kv: kv[0])}
+        return {
+            k: _normalize_value(v)
+            for k, v in sorted(value.items(), key=lambda kv: kv[0])
+        }
     return value
 
 
@@ -41,7 +44,9 @@ def _values_equal(a: Any, b: Any, mode: str) -> bool:
     return na == nb
 
 
-def _group_assertions(assertions: List[Dict[str, Any]], mode: str) -> Dict[str, List[Dict[str, Any]]]:
+def _group_assertions(
+    assertions: List[Dict[str, Any]], mode: str
+) -> Dict[str, List[Dict[str, Any]]]:
     groups: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
     for a in assertions:
         val = assertion_value(a)
@@ -50,7 +55,9 @@ def _group_assertions(assertions: List[Dict[str, Any]], mode: str) -> Dict[str, 
     return groups
 
 
-def _most_recent_group(groups: Dict[str, List[Dict[str, Any]]]) -> Tuple[str, List[Dict[str, Any]]]:
+def _most_recent_group(
+    groups: Dict[str, List[Dict[str, Any]]],
+) -> Tuple[str, List[Dict[str, Any]]]:
     def group_recent(assertion_list: List[Dict[str, Any]]) -> datetime:
         dates = [_parse_dt(a.get("retrieved_at")) for a in assertion_list]
         dates = [d for d in dates if d]
@@ -91,7 +98,11 @@ def resolve_field(
     """
 
     field_rules = selection_rules.get("field_rules", {}).get(field_path, {})
-    strategy = field_rules.get("strategy") or selection_rules.get("strategy") or "priority_sources"
+    strategy = (
+        field_rules.get("strategy")
+        or selection_rules.get("strategy")
+        or "priority_sources"
+    )
     allow_multiple = field_rules.get("allow_multiple", False)
     priority_sources = selection_rules.get("priority_sources", [])
 
@@ -109,13 +120,17 @@ def resolve_field(
     # Strategy: priority_sources
     if strategy == "priority_sources" and priority_sources:
         for src in priority_sources:
-            src_assertions = [a for a in assertions if a.get("source", {}).get("name") == src]
+            src_assertions = [
+                a for a in assertions if a.get("source", {}).get("name") == src
+            ]
             if not src_assertions:
                 continue
             src_groups = _group_assertions(src_assertions, mode)
             if allow_multiple:
                 selected_values = [assertion_value(g[0]) for g in src_groups.values()]
-                source_assertion_ids = [a.get("id") for group in src_groups.values() for a in group]
+                source_assertion_ids = [
+                    a.get("id") for group in src_groups.values() for a in group
+                ]
                 return {
                     "field": field_path,
                     "selected_value": selected_values,
@@ -138,7 +153,9 @@ def resolve_field(
             # all values ordered by most recent
             ordered = sorted(
                 groups.values(),
-                key=lambda group: _parse_dt(group[0].get("retrieved_at")) or datetime.min,
+                key=lambda group: (
+                    _parse_dt(group[0].get("retrieved_at")) or datetime.min
+                ),
                 reverse=True,
             )
             selected_values = [assertion_value(group[0]) for group in ordered]

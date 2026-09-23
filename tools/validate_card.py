@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 from typing import Any, Dict
 
-import json
 import yaml
 
 SCHEMA = Path("schemas/card_schema_0.2.0.yaml")
@@ -16,10 +16,14 @@ def _load_schema() -> Dict[str, Any]:
 
 
 def _is_leaf(node: Any) -> bool:
-    return isinstance(node, dict) and ("value" in node and "source_assertion_ids" in node)
+    return isinstance(node, dict) and (
+        "value" in node and "source_assertion_ids" in node
+    )
 
 
-def _validate_node(schema_node: Any, data_node: Any, path: str, errors: list[str]) -> None:
+def _validate_node(
+    schema_node: Any, data_node: Any, path: str, errors: list[str]
+) -> None:
     if schema_node == "*":
         return
 
@@ -41,7 +45,9 @@ def _validate_node(schema_node: Any, data_node: Any, path: str, errors: list[str
             if key not in data_node:
                 # optional fields are allowed to be missing
                 continue
-            _validate_node(sub, data_node[key], f"{path}.{key}" if path else key, errors)
+            _validate_node(
+                sub, data_node[key], f"{path}.{key}" if path else key, errors
+            )
         return
 
     # lists and primitives are not validated deeply in this minimal checker

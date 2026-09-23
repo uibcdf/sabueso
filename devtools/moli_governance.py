@@ -27,7 +27,10 @@ def main() -> int:
     guide = ROOT / "MOLI_GUIDE.md"
     if guide.is_file():
         text = guide.read_text(encoding="utf-8")
-        if "Canonical source: https://github.com/uibcdf/moli/blob/main/MOLI_GUIDE.md" not in text:
+        if (
+            "Canonical source: https://github.com/uibcdf/moli/blob/main/MOLI_GUIDE.md"
+            not in text
+        ):
             errors.append("MOLI_GUIDE.md: canonical-source marker missing")
     if errors:
         for error in errors:
