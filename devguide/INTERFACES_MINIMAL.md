@@ -11,6 +11,7 @@ These are contracts only (no implementation).
 - `id: str | None` *(property: stable card reference, `meta.card_id`)*
 - `sections: dict` (nested content)
 - `source_assertion_store: SourceAssertionStore`
+- `relationship_store: RelationshipStore`
 - `selection_rules: dict`
 - `quality: dict`
 
@@ -21,7 +22,8 @@ These are contracts only (no implementation).
 - `compare(other_card: Card, fields: list[str] | None = None) -> dict`
 - `derive_deck(kind: str) -> Deck`
 - `list_fields() -> list[str]`
-- `to_dict() -> dict` *(includes `source_assertion_store`)*
+- `to_dict() -> dict` *(includes `source_assertion_store` and `relationship_store`)*
+- `relationships(predicate=None, object_ref=None) -> list[Relationship]`
 - `to_deck() -> Deck`
 
 ## Deck
@@ -55,6 +57,21 @@ records what an external source asserts about an entity or property.
 - `get(source_assertion_id: str) -> SourceAssertion | None`
 - `find_by_field(field_path: str) -> list[SourceAssertion]`
 - `to_list() -> list[SourceAssertion]` *(serialized with the card)*
+
+## RelationshipStore
+**Purpose:** Registry of the Relationships carried by a card (subject side). See the
+Relationship contract in `devguide/SCHEMA.md`.
+
+**Methods**
+- `add(relationship: Relationship) -> str` *(merges support for an existing id; records
+  `qualifier_conflicts`)*
+- `get(relationship_id: str) -> Relationship | None`
+- `find(subject_ref=None, predicate=None, object_ref=None) -> list[Relationship]`
+- `to_list() -> list[Relationship]` *(serialized with the card)*
+
+Helpers: `make_relationship(...)` validates the predicate and requires support;
+`make_derivation(rule, inputs, parameters)` builds the derivation record for inferred
+relationships.
 
 ## Resolver
 **Purpose:** Classify inputs and normalize identifiers.

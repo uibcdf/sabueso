@@ -103,6 +103,34 @@ The identifier syntax is provisional (MOLI freezes referencability, not the form
 Card versions and snapshots, which Nextia needs to pin historical knowledge, are not
 implemented yet.
 
+## Relationship Contract (MVP)
+Agreed in `devguide/pending_proposals/entity_resolver.md` (uibcdf/sabueso#6) and
+implemented in `sabueso/core/relationship_store.py`.
+
+A Relationship is first-class, traceable knowledge:
+- **Fields:** `id`, `subject_ref`, `predicate`, `object_ref`, `qualifiers`, and, when
+  present, `qualifier_conflicts`, `source_assertion_ids` and `derivation`.
+- **Predicates (MVP vocabulary):** `same_as`, `possibly_same_as`, `isoform_of`,
+  `superseded_by`, `has_structure`. Any other predicate is rejected. The vocabulary is
+  extended deliberately.
+- **Identity:** `id = REL_<hash>`, deterministic from subject, predicate, object and the
+  predicate's identity qualifiers: `isoform` for `isoform_of`, `polymer_entity` for
+  `has_structure`. The same relationship is therefore recognisable wherever it appears.
+- **Support:** each relationship is supported by SourceAssertions (asserted by sources),
+  by a `derivation` record (inferred by Sabueso: rule, inputs, parameters, Sabueso
+  version), or by both. An unsupported relationship is rejected. A derived relationship
+  never masquerades as a SourceAssertion.
+- **Several sources:** when sources state the same relationship, their support is
+  merged. Qualifier values they disagree on are kept in `qualifier_conflicts`, never
+  overwritten.
+- **SourceAssertions that support a relationship** use
+  `field_path = relationships.<predicate>`. Their `asserted_value` is what the source
+  states, i.e. the object and qualifiers as given by that source.
+- **Storage:** relationships live in the subject Card's `relationship_store`,
+  serialized with the card. The aggregator rejects relationships that cite
+  SourceAssertions absent from the card. The storage decision is to be re-evaluated in
+  uibcdf/sabueso#19.
+
 ## SourceAssertion Creation Rules (Approved)
 - Each mapped field value must generate **at least one** SourceAssertion.
 - SourceAssertion IDs are **deterministic** from `(source, record_id, field_path, asserted_value)`

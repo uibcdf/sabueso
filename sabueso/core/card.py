@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
+from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
 CARD_SCHEMA_VERSION = "0.2.0"
@@ -30,12 +31,16 @@ class Card:
         | None = None,
         selection_rules: Dict[str, Any] | None = None,
         quality: Dict[str, Any] | None = None,
+        relationship_store: RelationshipStore | List[Dict[str, Any]] | None = None,
     ) -> None:
         self.meta = meta or {}
         self.sections = sections or {}
         if not isinstance(source_assertion_store, SourceAssertionStore):
             source_assertion_store = SourceAssertionStore(source_assertion_store)
         self.source_assertion_store = source_assertion_store
+        if not isinstance(relationship_store, RelationshipStore):
+            relationship_store = RelationshipStore(relationship_store)
+        self.relationship_store = relationship_store
         self.selection_rules = selection_rules or {}
         self.quality = quality or {}
 
@@ -43,6 +48,12 @@ class Card:
     def id(self) -> str | None:
         """Stable card reference (``meta.card_id``), independent of storage location."""
         return self.meta.get("card_id")
+
+    def relationships(
+        self, predicate: str | None = None, object_ref: str | None = None
+    ) -> List[Relationship]:
+        """Relationships carried by this card, optionally filtered."""
+        return self.relationship_store.find(predicate=predicate, object_ref=object_ref)
 
     def get(self, field_path: str) -> Any:
         cur = self.sections
@@ -82,6 +93,7 @@ class Card:
             "meta": self.meta,
             "sections": self.sections,
             "source_assertion_store": self.source_assertion_store.to_list(),
+            "relationship_store": self.relationship_store.to_list(),
             "selection_rules": self.selection_rules,
             "quality": self.quality,
         }

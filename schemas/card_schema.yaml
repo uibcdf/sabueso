@@ -89,6 +89,17 @@ card_base:
     sources_consulted: [ { source: string, retrieved_at: date } ]
     query_inputs: [ { input_type: string, value: string } ]
 
+  relationship_store:
+    REL1:
+      id: string                 # deterministic, REL_<hash>
+      subject_ref: string
+      predicate: "enum[same_as, possibly_same_as, isoform_of, superseded_by, has_structure]"
+      object_ref: string
+      qualifiers: any
+      qualifier_conflicts: any   # values supporting sources disagree on
+      source_assertion_ids: [string]   # when asserted by sources
+      derivation: { rule: string, inputs: [string], parameters: any, sabueso_version: string }  # when inferred
+
   source_assertion_store:
     SA1:
       id: string

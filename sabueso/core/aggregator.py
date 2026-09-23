@@ -7,6 +7,8 @@ from typing import Any, Dict, List
 from sabueso.resolver import resolve_field
 
 from .card import CARD_SCHEMA_VERSION, Card, make_card_id
+from .errors import SchemaError
+from .relationship_store import RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
 # Identifier fields whose subject identifies the card, in order of preference.
@@ -61,6 +63,17 @@ def build_card_from_mapping(
     field_source_assertions = mapping_result.get("field_source_assertions", {})
 
     store = SourceAssertionStore(source_assertions)
+    relationship_store = RelationshipStore(mapping_result.get("relationships", []))
+    for relationship in relationship_store.to_list():
+        missing = [
+            sa_id
+            for sa_id in relationship.get("source_assertion_ids", [])
+            if store.get(sa_id) is None
+        ]
+        if missing:
+            raise SchemaError(
+                f"Relationship {relationship['id']} cites unknown SourceAssertions: {missing}"
+            )
 
     meta = dict(meta or {})
     meta.setdefault("schema_version", CARD_SCHEMA_VERSION)
@@ -117,6 +130,7 @@ def build_card_from_mapping(
         sections=sections,
         source_assertion_store=store,
         selection_rules=selection_rules or {},
+        relationship_store=relationship_store,
     )
     if conflicts:
         card.quality.setdefault("conflicts", []).extend(conflicts)
