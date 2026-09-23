@@ -23,8 +23,22 @@ class Deck:
     def filter(self, predicate: Callable[[Any], bool]) -> "Deck":
         return Deck([c for c in self.cards if predicate(c)], meta=self.meta.copy())
 
-    def sort(self, key: str) -> "Deck":
-        return Deck(sorted(self.cards, key=lambda c: c.get(key)), meta=self.meta.copy())
+    def sort(self, key: str, reverse: bool = False) -> "Deck":
+        """Sort cards by the resolved value at field path ``key``.
+
+        Cards without a value for ``key`` keep their relative order and go last.
+        """
+
+        def value(card: Any) -> Any:
+            node = card.get(key)
+            if isinstance(node, dict) and "value" in node:
+                return node["value"]
+            return node
+
+        present = [c for c in self.cards if value(c) is not None]
+        missing = [c for c in self.cards if value(c) is None]
+        ordered = sorted(present, key=value, reverse=reverse) + missing
+        return Deck(ordered, meta=self.meta.copy())
 
     def map(self, fn: Callable[[Any], Any]) -> List[Any]:
         return [fn(c) for c in self.cards]
@@ -57,12 +71,16 @@ class Deck:
     def from_jsonl(cls, path: str) -> "Deck":
         from sabueso.tools.deck.storage import load_deck_jsonl
 
-        cards = load_deck_jsonl(path)
-        return cls([c for c in cards])
+        from .card import Card
+
+        return cls([Card.from_dict(data) for data in load_deck_jsonl(path)])
 
     @classmethod
     def from_sqlite(cls, path: str, table: str = "cards") -> "Deck":
         from sabueso.tools.deck.storage import load_deck_sqlite
 
-        cards = load_deck_sqlite(path, table=table)
-        return cls([c for c in cards])
+        from .card import Card
+
+        return cls(
+            [Card.from_dict(data) for data in load_deck_sqlite(path, table=table)]
+        )

@@ -99,11 +99,15 @@ class Card:
         save_card_sqlite(self, path, table=table, id_field=id_field)
 
     @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "Card":
+        """Rebuild a Card, including its SourceAssertionStore, from ``to_dict()`` output."""
+        return cls(**data)
+
+    @classmethod
     def from_json(cls, path: str) -> "Card":
         from sabueso.tools.card.storage import load_card_json
 
-        data = load_card_json(path)
-        return cls(**data)
+        return cls.from_dict(load_card_json(path))
 
     @classmethod
     def from_sqlite(
@@ -114,7 +118,7 @@ class Card:
         data = load_card_sqlite(path, table=table, card_id=card_id)
         if data is None:
             return None
-        return cls(**data)
+        return cls.from_dict(data)
 
     def to_deck(self) -> Any:
         from .deck import Deck
