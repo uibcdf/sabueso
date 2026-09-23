@@ -21,9 +21,7 @@ pytest -m online
 
 ## Notes
 
-- Some online tests are dump-backed (for example SCOPe/TED behavior).
 - Some online tests may skip if endpoint access is unavailable or slow.
-- BioGRID online execution requires `BIOGRID_ACCESS_KEY`.
 
 ## Schema Validation Tests
 

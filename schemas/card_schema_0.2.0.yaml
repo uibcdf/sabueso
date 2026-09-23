@@ -9,7 +9,10 @@ schema:
     catalytic_activity / subcellular_location values and sequence.length /
     molecular_weight (Da) / checksums added before any release (uibcdf/sabueso#13).
     structure.entry_metadata.* was removed because structures are has_structure
-    relationships shown through Card.structures() (uibcdf/sabueso#6, #21).
+    relationships shown through Card.structures() (uibcdf/sabueso#6, uibcdf/sabueso#21).
+    annotations.go_terms was removed because GO annotations are annotated_with
+    relationships (uibcdf/sabueso#21). annotations.domains stays reserved (not produced), since domain
+    classifications are classified_in relationships.
 card_base:
   meta:
     card_id:
@@ -176,12 +179,6 @@ card_base:
     polymorphism:
       value:
       - string
-      source_assertion_ids:
-      - string
-    go_terms:
-      value:
-      - id: string
-        name: string
       source_assertion_ids:
       - string
     domains:

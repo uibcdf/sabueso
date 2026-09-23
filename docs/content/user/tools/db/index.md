@@ -5,16 +5,9 @@ These pages are written as practical tutorials. Each database has its own sectio
 ```{toctree}
 :maxdepth: 1
 
-biogrid/index
-cath/index
 chembl/index
-go/index
-interpro/index
 pdb/index
-phosphositeplus/index
 pubchem/index
-scope/index
 stringdb/index
-ted/index
 uniprot/index
 ```

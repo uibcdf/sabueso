@@ -37,8 +37,9 @@ source payloads
 
 ## Current Scope
 
-Integrated sources include UniProt, PDB, ChEMBL, PubChem, GO, InterPro,
-STRING, BioGRID, CATH, SCOPe, TED, and PhosphoSitePlus.
+Integrated sources include UniProt, RCSB PDB, ChEMBL, PubChem and STRING. GO annotations,
+InterPro/Pfam/CATH/SCOP-family classifications and curated IntAct interactions reach a
+protein card as typed relationships stated by UniProt.
 
 ## See Also
 

@@ -54,8 +54,7 @@ Versioning: **x.y.z** (no leading `v`).
 - `annotations.organism`
 - `annotations.ptm`
 - `annotations.polymorphism`
-- `annotations.go_terms`
-- `annotations.domains` (non-positional summary)
+- `annotations.domains` (non-positional summary; reserved, not currently produced)
 
 ### features_positional.*
 - `features_positional.domains` (positional domains)
@@ -122,6 +121,9 @@ Versioning: **x.y.z** (no leading `v`).
 ---
 
 ## Notes
+- GO annotations, family/domain classifications, curated interactions and experimental
+  structures are **relationships**, not field paths: `annotated_with`, `classified_in`,
+  `interacts_with` and `has_structure` (see the Relationship contract in `SCHEMA.md`).
 - `annotations.domains` and `features_positional.domains` are both valid.
 - If only positional data exists, populate `features_positional.domains`.
 - If only non-positional data exists, populate `annotations.domains`.

@@ -70,21 +70,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 
 ---
 
-## Annotation / Interaction Sources
-
-### Gene Ontology (GO)
-- **Status**: implemented
-- **Access**: online API, local JSON
-- **Quality**: green
-- **Coverage**: GO term id + label into `annotations.go_terms`
-- **Notes**: stable online tests
-
-### InterPro
-- **Status**: implemented
-- **Access**: online API (with reduced fields), local JSON
-- **Quality**: yellow
-- **Coverage**: domain accessions and names into `annotations.domains`
-- **Notes**: online endpoint can be slow; test skips on timeout. Fetch attempts `fields=metadata` and falls back to full response if needed.
+## Interaction Sources
 
 ### STRING
 - **Status**: implemented
@@ -93,57 +79,30 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: interaction partners into `interactions.binding_partners`
 - **Notes**: stable online tests
 
-### BioGRID
-- **Status**: implemented
-- **Access**: online API (requires key), local JSON
-- **Quality**: yellow
-- **Coverage**: interaction partners into `interactions.binding_partners`
-- **Notes**: online test skips without `BIOGRID_ACCESS_KEY`
-
 ---
 
-## Domain Classification Sources (Dump-backed)
-
-### CATH
-- **Status**: implemented
-- **Access**: online API (domain_summary), local JSON
-- **Quality**: green
-- **Coverage**: domains into `annotations.domains` (id + name)
-- **Notes**: uses `domain_summary` endpoint (not `domain`); test uses a known good domain id (`1cukA01`)
-
-### SCOPe
-- **Status**: implemented
-- **Access**: remote dump (default Zenodo) or local file
-- **Quality**: yellow
-- **Coverage**: domains into `annotations.domains` (sunid + name)
-- **Notes**: online API not reliable; fetch uses dump. Supports `SCOPE_DUMP_URL` or `SCOPE_DUMP_PATH`.
-- **Dump**: `https://zenodo.org/records/5829561/files/dir.des.scope.2.08-stable.txt?download=1`
-
-### TED
-- **Status**: implemented
-- **Access**: remote dump (default Zenodo) or local file
-- **Quality**: yellow
-- **Coverage**: domains into `annotations.domains` (TED entry id)
-- **Notes**: no stable public API; fetch uses dump. Supports `TED_DUMP_URL` or `TED_DUMP_PATH`.
-- **Dump**: `https://zenodo.org/records/13908086/files/novel_folds_set.domain_summary.tsv.gz?download=1`
-
----
-
-## PTM Source
-
-### PhosphoSitePlus (PSP)
-- **Status**: implemented (offline only)
-- **Access**: local JSON
-- **Quality**: yellow
-- **Coverage**: PTM entries mapped to `features_positional.modified_residue`
-- **Notes**: no public API; online test is skipped.
-
----
+## Removed per-concept card tools (2026-09-23, uibcdf/sabueso#21 part 2b)
+- **What was removed:** the GO, InterPro, CATH, SCOPe, TED, PhosphoSitePlus and BioGRID
+  tools and their mappings.
+- **Why:**
+  - GO, InterPro, CATH, SCOPe and TED fetched *one term, family or domain* by its own id
+    and built a card of it typed as a protein, e.g. `sabueso:protein:go:GO:0005524`.
+  - PhosphoSitePlus read a synthetic format (record id "PTM") with no real access
+    behind it.
+  - BioGRID produced a protein-typed card holding a list of partner names.
+- **Where that knowledge comes from now:** the protein itself. GO annotations
+  (`annotated_with`), InterPro, Pfam, Gene3D/CATH, SUPFAM, PANTHER, PROSITE and CDD
+  classifications (`classified_in`) and curated interactions (`interacts_with`) are
+  typed relationships stated by UniProt (see *UniProt*).
+- **Not replaced yet:**
+  - TED domain assignments, SCOPe domain classification, and positional domain
+    boundaries from InterPro;
+  - PTM sites from PhosphoSitePlus;
+  - the BioGRID interaction enricher, which needs an access key to be verified against
+    live data.
 
 ## Summary of Open Incidents
-- **InterPro**: slow endpoint; online test may timeout (skips). Consider caching or a smaller endpoint.
-- **SCOPe/TED**: rely on dumps (no stable API confirmed). Monitor for official API availability.
-- **BioGRID**: online test requires API key.
-
-## Operational Notes
-- SCOPe/TED dumps can be large; set `SCOPE_DUMP_PATH` / `TED_DUMP_PATH` to avoid re-downloading.
+- **Selection rules:** the default `priority_sources` still lists InterPro, CATH, SCOPe and
+  TED for `annotations.domains`, a field no mapping produces now. It is harmless, since
+  no source matches and resolution falls back to frequency, but stale. Revisit with the
+  selection-rule work in uibcdf/sabueso#10.

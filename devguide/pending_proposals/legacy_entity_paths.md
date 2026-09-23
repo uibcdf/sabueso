@@ -84,13 +84,20 @@ The name `classified_in` replaces the `member_of_family` of the earlier draft, b
 domains and sites are not families. Tests:
 `tests/core/test_protein_knowledge_relationships_offline.py`.
 
-**Part 2b: decision pending.** The GO, InterPro, CATH, SCOPe and TED tools fetch one
-term, family or domain by its own id and build a protein-typed card of it. STRING and
-BioGRID build protein-typed cards of partner-name lists, and PhosphoSitePlus reads a
-synthetic format with record id "PTM". Options:
-- remove the per-concept card tools, as was done for PDB, since the protein-centric
-  knowledge now comes from UniProt;
-- rework STRING/BioGRID into enrichers of `resolve_protein_card` that produce
-  `interacts_with` relationships with scores and methods.
+**Part 2b: done** (2026-09-23, decided with the Sabueso owner):
+- The GO, InterPro, CATH, SCOPe, TED, PhosphoSitePlus and BioGRID tools and mappings are
+  removed, together with their tests, tutorials and API pages. They built protein-typed
+  cards of terms, families, domains, a synthetic PTM format, and partner-name lists.
+- The knowledge they were meant to provide now comes from the protein itself, as typed
+  relationships stated by UniProt (part 2a).
+- `annotations.go_terms` is removed from the schema, and `annotations.domains` is kept
+  as reserved.
+- The legacy end-to-end test that merged a protein and an InterPro family is removed.
+- The BioGRID enricher is deferred to uibcdf/sabueso#22, because verifying it needs an
+  access key.
+- Not replaced yet: TED/SCOPe domain assignments, positional InterPro domains and
+  PhosphoSitePlus PTM sites (noted in `DATA_SOURCES_STATUS.md`).
+- **Part 2c: pending.** STRING becomes an interaction enricher of
+  `resolve_protein_card`, with scores and channels, instead of a partner-name card.
 
 Part 3 is pending.

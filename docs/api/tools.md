@@ -52,22 +52,6 @@
    :undoc-members:
 ```
 
-### `sabueso.tools.db.go`
-
-```{eval-rst}
-.. automodule:: sabueso.tools.db.go
-   :members:
-   :undoc-members:
-```
-
-### `sabueso.tools.db.interpro`
-
-```{eval-rst}
-.. automodule:: sabueso.tools.db.interpro
-   :members:
-   :undoc-members:
-```
-
 ### `sabueso.tools.db.stringdb`
 
 ```{eval-rst}
@@ -76,42 +60,3 @@
    :undoc-members:
 ```
 
-### `sabueso.tools.db.biogrid`
-
-```{eval-rst}
-.. automodule:: sabueso.tools.db.biogrid
-   :members:
-   :undoc-members:
-```
-
-### `sabueso.tools.db.cath`
-
-```{eval-rst}
-.. automodule:: sabueso.tools.db.cath
-   :members:
-   :undoc-members:
-```
-
-### `sabueso.tools.db.scope`
-
-```{eval-rst}
-.. automodule:: sabueso.tools.db.scope
-   :members:
-   :undoc-members:
-```
-
-### `sabueso.tools.db.ted`
-
-```{eval-rst}
-.. automodule:: sabueso.tools.db.ted
-   :members:
-   :undoc-members:
-```
-
-### `sabueso.tools.db.phosphositeplus`
-
-```{eval-rst}
-.. automodule:: sabueso.tools.db.phosphositeplus
-   :members:
-   :undoc-members:
-```
