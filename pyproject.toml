@@ -22,6 +22,9 @@ classifiers = [
 [project.optional-dependencies]
 test = [
   "pytest>=8",
+  # Reporting for agents and CI logs (MOLI developer-tools policy, uibcdf/sabueso#31).
+  # Development tooling, not a runtime dependency; pinned to the published release.
+  "pytest-receptor==1.1.0",
   "pyyaml>=6",
   "ruff==0.16.5",
 ]
