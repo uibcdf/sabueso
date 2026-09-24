@@ -12,6 +12,7 @@ from pathlib import Path
 import pytest
 
 from sabueso import ligand_deck, resolve_protein_card
+from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
 from sabueso.core.card import Card
 from sabueso.core.ligand_sites import ligand_sites_view
 from sabueso.mappings.rcsb_structures import map_structure_entities
@@ -192,12 +193,13 @@ def test_outcomes_are_recorded(resolver):
         pdbe_kb_client=FixturePDBeKBClient("/nonexistent"),
     )
     assert absent.quality["enrichments"][0]["status"] == "not_found"
-    failing, _ = resolve_protein_card(
-        "P60174",
-        resolver,
-        ligand_sites=True,
-        pdbe_kb_client=FixturePDBeKBClient("temp_data", failing={"P60174"}),
-    )
+    with pytest.warns(EnrichmentFailedWarning, match="PDBe-KB could not be consulted"):
+        failing, _ = resolve_protein_card(
+            "P60174",
+            resolver,
+            ligand_sites=True,
+            pdbe_kb_client=FixturePDBeKBClient("temp_data", failing={"P60174"}),
+        )
     assert failing.quality["enrichments"][0]["status"] == "error"
     assert failing.relationships("has_ligand_site") == []
 

@@ -19,6 +19,9 @@ from __future__ import annotations
 
 from typing import Any, Dict, Iterable, List, Tuple
 
+from smonitor import signal
+
+from sabueso._private.smonitor.outcomes import report_outcomes, report_unanchored
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card, make_card_id
 from sabueso.core.deck import Deck
@@ -157,6 +160,7 @@ def _clients(chembl_client, ccd_client, unichem_client):
     return chembl_client, ccd_client, unichem_client
 
 
+@signal(tags=["api", "small_molecule"])
 def resolve_molecule_card(
     identifier: str,
     chembl_client: Any | None = None,
@@ -259,6 +263,7 @@ def resolve_molecule_card(
     ] + unanchored
     if enrichments:
         card.quality["enrichments"] = enrichments
+        report_outcomes(enrichments, subject=molecule_ref(key))
     resolution = EntityResolution(
         status="resolved",
         entity_ref=molecule_ref(key),
@@ -379,6 +384,7 @@ def _notes(structure_ligands: str | None) -> List[str]:
     return []
 
 
+@signal(tags=["api", "small_molecule", "deck"])
 def ligand_deck(
     protein_card: Card,
     structure_ligands: str | None = "of_interest",
@@ -459,6 +465,8 @@ def ligand_deck(
         )
         cards, unanchored = build_molecule_cards(chembl, ccd, responses)
 
+    report_outcomes(sources, subject=protein_card.id or "the protein card")
+    report_unanchored(unanchored, subject=protein_card.id or "the protein card")
     return Deck(
         [cards[key] for key in sorted(cards)],
         meta={

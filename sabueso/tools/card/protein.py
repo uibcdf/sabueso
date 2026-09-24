@@ -21,6 +21,9 @@ from __future__ import annotations
 
 from typing import Any, Dict, Iterable, List, Tuple
 
+from smonitor import signal
+
+from sabueso._private.smonitor.outcomes import report_outcomes
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card
 from sabueso.core.deck import Deck
@@ -42,6 +45,7 @@ from sabueso.resolver.entity_resolver import (
 UNIPROT_PREFIX = "sabueso:protein:uniprot:"
 
 
+@signal(tags=["api", "protein"])
 def resolve_protein_card(
     query: EntityQuery | str,
     resolver: EntityResolver | None = None,
@@ -247,6 +251,7 @@ def resolve_protein_card(
     )
     if enrichments:
         card.quality["enrichments"] = enrichments
+        report_outcomes(enrichments, subject=entity_ref)
     card.quality["entity_resolution"] = {
         "status": resolution.status,
         "entity_ref": resolution.entity_ref,

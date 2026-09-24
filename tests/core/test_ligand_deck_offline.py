@@ -10,6 +10,7 @@ from pathlib import Path
 import pytest
 
 from sabueso import ligand_deck, resolve_protein_card
+from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
 from sabueso.core.deck import Deck
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 from sabueso.tools.db.chembl import FixtureChEMBLClient
@@ -174,11 +175,12 @@ def test_structure_ligands_are_optional(cards, clients):
 
 
 def test_source_failures_are_recorded(cards):
-    deck = ligand_deck(
-        cards["tc"],
-        chembl_client=FixtureChEMBLClient("temp_data", failing={"CHEMBL1161789"}),
-        ccd_client=FixtureCCDClient("temp_data"),
-    )
+    with pytest.warns(EnrichmentFailedWarning, match="ChEMBL could not be consulted"):
+        deck = ligand_deck(
+            cards["tc"],
+            chembl_client=FixtureChEMBLClient("temp_data", failing={"CHEMBL1161789"}),
+            ccd_client=FixtureCCDClient("temp_data"),
+        )
     chembl = deck.meta["sources"][0]
     assert (chembl["source"], chembl["status"]) == ("ChEMBL", "error")
     # The structure ligand of interest still gets its card.

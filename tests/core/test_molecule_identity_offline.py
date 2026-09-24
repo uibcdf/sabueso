@@ -8,6 +8,7 @@ ChEMBL reports it as CHEMBL1161789, measured on TcTIM.
 import pytest
 
 from sabueso import resolve_molecule_card
+from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
 from sabueso.core.errors import ConnectorError
 from sabueso.mappings.molecule_identity import (
     is_standard_inchikey,
@@ -136,9 +137,10 @@ def test_statuses_stay_distinct():
 
 
 def test_a_unichem_failure_never_prevents_the_card():
-    card, resolution = resolve_molecule_card(
-        "pdb.ligand:BTS", **_clients(unichem={BTS_KEY})
-    )
+    with pytest.warns(EnrichmentFailedWarning, match="UniChem could not be consulted"):
+        card, resolution = resolve_molecule_card(
+            "pdb.ligand:BTS", **_clients(unichem={BTS_KEY})
+        )
     assert resolution.status == "resolved"
     assert card.quality["enrichments"] == [
         {

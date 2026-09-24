@@ -7,6 +7,10 @@ Frozen public ChEMBL_37 responses for TcTIM (CHEMBL5834, UniProt P52270) and HsT
 import pytest
 
 from sabueso import resolve_protein_card
+from sabueso._private.smonitor.warnings import (
+    EnrichmentFailedWarning,
+    EnrichmentTruncatedWarning,
+)
 from sabueso.core.bioactivities import (
     classify_measurement,
     single_point_concentration_uM,
@@ -166,12 +170,14 @@ def test_molecules_measured_on_both_tims_expose_selectivity(resolver):
 
 
 def test_chembl_outcomes_are_recorded_and_never_block_the_card(resolver):
-    card, _ = resolve_protein_card(
-        TCTIM,
-        resolver,
-        chembl={},
-        chembl_client=FixtureChEMBLClient("temp_data", failing={"CHEMBL5834"}),
-    )
+    # The failure is recorded as data and shown to the user (uibcdf/sabueso#31).
+    with pytest.warns(EnrichmentFailedWarning, match="ChEMBL could not be consulted"):
+        card, _ = resolve_protein_card(
+            TCTIM,
+            resolver,
+            chembl={},
+            chembl_client=FixtureChEMBLClient("temp_data", failing={"CHEMBL5834"}),
+        )
     (enrichment,) = card.quality["enrichments"]
     assert enrichment["status"] == "error"
     assert card.relationships("has_bioactivity") == []
@@ -183,7 +189,8 @@ def test_chembl_outcomes_are_recorded_and_never_block_the_card(resolver):
 
 
 def test_activity_limit_is_recorded_as_truncation(resolver):
-    card = _card(resolver, HSTIM, limit=10)
+    with pytest.warns(EnrichmentTruncatedWarning, match="returned 10 of 36 records"):
+        card = _card(resolver, HSTIM, limit=10)
     (enrichment,) = card.quality["enrichments"]
     assert (enrichment["count"], enrichment["total_count"]) == (10, 36)
     assert enrichment["truncated"] is True

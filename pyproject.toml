@@ -10,6 +10,12 @@ requires-python = ">=3.11,<3.15"
 authors = [{ name = "UIBCDF Lab", email = "uibcdf@gmail.com" }]
 license = { text = "MIT" }
 dynamic = ["version"]
+# Runtime dependencies, identical to the conda recipe's `requirements: run`. They are
+# published on the uibcdf conda channel, not on PyPI: install them with conda and use
+# `pip install --no-deps` for Sabueso itself (MOLI distribution policy, #34).
+dependencies = [
+  "smonitor>=0.16.0",
+]
 classifiers = [
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",

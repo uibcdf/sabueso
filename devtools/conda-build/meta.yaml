@@ -21,8 +21,9 @@ requirements:
     - versioningit ~=3.0
     - wheel
   run:
+    # Identical to pyproject.toml's project.dependencies (MOLI distribution policy).
     - python >=3.11,<3.15
-    # UIBCDF support libraries join here as #31 records each applicable use.
+    - smonitor >=0.16.0   # user-facing diagnostics (#31)
 
 test:
   imports:

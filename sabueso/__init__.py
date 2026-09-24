@@ -9,6 +9,9 @@ except PackageNotFoundError:
     except ImportError:
         __version__ = "0.0.0+unknown"
 
+from smonitor.integrations import ensure_configured as _ensure_smonitor_configured
+
+from sabueso._private.smonitor import PACKAGE_ROOT as _SMONITOR_PACKAGE_ROOT
 from sabueso.core.errors import (
     ConnectorError,
     ResolverError,
@@ -36,6 +39,9 @@ from sabueso.tools.db.uniprot import (
     create_protein_card_online,
 )
 from sabueso.tools.deck.storage import save_deck_jsonl, save_deck_sqlite
+
+# SMonitor is configured when Sabueso is imported (uibcdf/sabueso#31).
+_ensure_smonitor_configured(_SMONITOR_PACKAGE_ROOT)
 
 __all__ = [
     "create_protein_card_from_file",

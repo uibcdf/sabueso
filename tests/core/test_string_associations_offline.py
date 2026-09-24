@@ -3,6 +3,7 @@
 import pytest
 
 from sabueso import resolve_protein_card
+from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 from sabueso.tools.db.stringdb import FixtureStringClient
 
@@ -77,7 +78,10 @@ def test_protein_absent_from_string_is_recorded_not_mixed(resolver):
 
 def test_string_failure_is_recorded_and_the_card_is_still_built(resolver):
     client = FixtureStringClient("temp_data", failing={"P60174__9606"})
-    card, _ = resolve_protein_card("P60174", resolver, string={}, string_client=client)
+    with pytest.warns(EnrichmentFailedWarning, match="STRING could not be consulted"):
+        card, _ = resolve_protein_card(
+            "P60174", resolver, string={}, string_client=client
+        )
     (enrichment,) = card.quality["enrichments"]
     assert enrichment["status"] == "error"
     assert card.id == "sabueso:protein:uniprot:P60174"
