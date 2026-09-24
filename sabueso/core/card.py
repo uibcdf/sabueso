@@ -81,6 +81,12 @@ class Card:
             self, include_indirect=include_indirect, thresholds=thresholds
         )
 
+    def literature(self) -> Dict[str, Any]:
+        """The publications that support statements on this card, and what for."""
+        from .literature import literature_view
+
+        return literature_view(self)
+
     def oligomer(self) -> Dict[str, Any]:
         """What sources state about this protein's quaternary structure and interfaces."""
         from .oligomer import oligomer_view

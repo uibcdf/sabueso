@@ -24,6 +24,8 @@ RCSB_GRAPHQL = "https://data.rcsb.org/graphql"
 STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
   rcsb_id
   exptl { method }
+  rcsb_primary_citation {
+    pdbx_database_id_PubMed pdbx_database_id_DOI title journal_abbrev year }
   rcsb_entry_info { resolution_combined polymer_entity_count_protein }
   assemblies {
     rcsb_assembly_container_identifiers { assembly_id }

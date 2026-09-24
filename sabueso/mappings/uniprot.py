@@ -127,6 +127,76 @@ _GO_ASPECTS = {
 }
 
 
+def publication_ref(citation: Dict[str, Any]) -> str | None:
+    """``pubmed:<id>``, else ``doi:<doi>``, else UniProt's own citation id."""
+    xrefs = {
+        x.get("database"): x.get("id")
+        for x in citation.get("citationCrossReferences") or []
+    }
+    if xrefs.get("PubMed"):
+        return f"pubmed:{xrefs['PubMed']}"
+    if xrefs.get("DOI"):
+        return f"doi:{xrefs['DOI']}"
+    if citation.get("id"):
+        return f"uniprot.citation:{citation['id']}"
+    return None
+
+
+def _reference_relationships(
+    uniprot_json: Dict[str, Any], primary: str, retrieved_at: str
+) -> tuple:
+    """The publications a UniProt entry cites, as ``described_in`` relationships
+    (uibcdf/sabueso#41). Qualifiers keep the publication record and what UniProt cites it
+    for (``scope``, e.g. ``HOMODIMERIZATION``); the assertion keeps the reference
+    verbatim. Sequence submissions are kept too, typed as such."""
+    assertions: List[Dict[str, Any]] = []
+    relationships: List[Dict[str, Any]] = []
+    for reference in uniprot_json.get("references") or []:
+        citation = reference.get("citation") or {}
+        object_ref = publication_ref(citation)
+        if object_ref is None:
+            continue
+        xrefs = {
+            x.get("database"): x.get("id")
+            for x in citation.get("citationCrossReferences") or []
+        }
+        assertion = make_source_assertion(
+            "relationships.described_in",
+            {"object_ref": object_ref, "reference": reference},
+            "UniProt",
+            primary,
+            retrieved_at,
+        )
+        assertions.append(assertion)
+        authors = citation.get("authors") or []
+        relationships.append(
+            make_relationship(
+                f"uniprot:{primary}",
+                "described_in",
+                object_ref,
+                qualifiers={
+                    "citation_type": citation.get("citationType"),
+                    "title": citation.get("title"),
+                    "journal": citation.get("journal"),
+                    "year": citation.get("publicationDate"),
+                    "first_author": authors[0] if authors else None,
+                    "n_authors": len(authors),
+                    "pubmed": xrefs.get("PubMed"),
+                    "doi": xrefs.get("DOI"),
+                    "uniprot_citation": citation.get("id"),
+                    "reference_number": reference.get("referenceNumber"),
+                    "scope": reference.get("referencePositions") or [],
+                    "comments": [
+                        {"type": c.get("type"), "value": c.get("value")}
+                        for c in reference.get("referenceComments") or []
+                    ],
+                },
+                source_assertion_ids=[assertion["id"]],
+            )
+        )
+    return assertions, relationships
+
+
 def _knowledge_relationships(
     uniprot_json: Dict[str, Any], primary: str, retrieved_at: str
 ) -> tuple:
@@ -454,6 +524,14 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
                 source_assertion_ids=[assertion["id"]],
             )
         )
+
+    # publications the entry cites
+    if primary:
+        extra_assertions, extra_relationships = _reference_relationships(
+            uniprot_json, primary, retrieved_at
+        )
+        source_assertions.extend(extra_assertions)
+        relationships.extend(extra_relationships)
 
     # GO annotations, classifications and curated interactions
     if primary:

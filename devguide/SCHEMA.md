@@ -157,6 +157,15 @@ A Relationship is first-class, traceable knowledge:
     - Overlap with annotated sites (UniProt and InterPro family sites) is derived by
       `Card.ligand_sites()` (`annotated_site_overlap@2`), and only there. Each overlap names
       the annotation, its source and the matched positions.
+  - literature (added in #41):
+    - `described_in` (protein → `pubmed:<id>`, `doi:<doi>` or
+      `uniprot.citation:<id>`), one relationship per publication a source cites. From
+      UniProt references. Qualifiers: `citation_type`, `title`, `journal`, `year`,
+      `first_author`, `n_authors`, `pubmed`, `doi`, `uniprot_citation`,
+      `reference_number`, `scope` (what the source cites it for) and `comments` (e.g.
+      strain). The SourceAssertion keeps the reference verbatim.
+    - Which statements each publication supports is read by `Card.literature()` from the
+      ECO evidence of every SourceAssertion, and only there.
   - interfaces (added in #40):
     - `has_interface_with` (protein → `uniprot:<acc>`, or `pdbe_kb.partner:<label>` for a
       partner without a UniProt entry), one relationship per partner, from PDBe-KB.
@@ -212,6 +221,8 @@ A Relationship is first-class, traceable knowledge:
   - `chimeric_with`: other proteins the same entities map to, as in a chimera or fusion
     (#40);
   - `other_entities` (complexes);
+  - `primary_citation` (#41): `pubmed`, `doi`, `title`, `journal` and `year` of the
+    entry's primary citation, or `null`;
   - `assemblies` (#40): per biological assembly, `id`, `oligomeric_details`,
     `oligomeric_count`, `defined_by` (author, software or both), `method` (e.g. PISA),
     `oligomeric_state`, `stoichiometry` and `symmetry` as RCSB states them, or `null`

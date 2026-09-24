@@ -208,6 +208,20 @@ def map_structure_entities(
     methods = [m.get("method") for m in entry.get("exptl") or []]
     resolutions = (entry.get("rcsb_entry_info") or {}).get("resolution_combined") or []
     assemblies = _assemblies(entry)
+    citation = entry.get("rcsb_primary_citation")
+    primary_citation = (
+        {
+            "pubmed": str(citation["pdbx_database_id_PubMed"])
+            if citation.get("pdbx_database_id_PubMed")
+            else None,
+            "doi": citation.get("pdbx_database_id_DOI"),
+            "title": citation.get("title"),
+            "journal": citation.get("journal_abbrev"),
+            "year": citation.get("year"),
+        }
+        if citation
+        else None
+    )
     entities = _entities(entry)
     contacts = _ligand_contacts(entities)
     ligands = sorted(
@@ -244,6 +258,7 @@ def map_structure_entities(
             ],
             "nonpolymer_entities": ligands,
             "assemblies": assemblies,
+            "primary_citation": primary_citation,
         }
         assertion = make_source_assertion(
             "relationships.has_structure", stated, "RCSB PDB", pdb_id, retrieved_at
@@ -263,6 +278,7 @@ def map_structure_entities(
             "other_entities": others,
             "ligands": ligands,
             "assemblies": assemblies,
+            "primary_citation": primary_citation,
         }
         if lengths.get(acc):
             qualifiers["coverage"] = coverage(ranges, lengths[acc])

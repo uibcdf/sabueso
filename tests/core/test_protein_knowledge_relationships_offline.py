@@ -91,5 +91,10 @@ def test_resolved_cards_carry_the_knowledge_relationships():
     card, _ = resolve_protein_card("P52270", resolver)
     counts = Counter(r["predicate"] for r in card.relationships())
     assert counts == Counter(
-        {"classified_in": 13, "has_structure": 7, "annotated_with": 7}
+        {
+            "classified_in": 13,
+            "has_structure": 7,
+            "annotated_with": 7,
+            "described_in": 3,  # the entry's references (#41)
+        }
     )

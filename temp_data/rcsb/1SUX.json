@@ -363,5 +363,12 @@
     }
    ]
   }
- ]
+ ],
+ "rcsb_primary_citation": {
+  "pdbx_database_id_PubMed": 15321726,
+  "pdbx_database_id_DOI": "10.1016/j.jmb.2004.06.056",
+  "title": "Inactivation of triosephosphate isomerase from Trypanosoma cruzi by an agent that perturbs its dimer interface.",
+  "journal_abbrev": "J.Mol.Biol.",
+  "year": 2004
+ }
 }

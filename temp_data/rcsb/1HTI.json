@@ -192,5 +192,12 @@
     }
    ]
   }
- ]
+ ],
+ "rcsb_primary_citation": {
+  "pdbx_database_id_PubMed": 8061610,
+  "pdbx_database_id_DOI": null,
+  "title": "Crystal structure of recombinant human triosephosphate isomerase at 2.8 A resolution. Triosephosphate isomerase-related human genetic disorders and comparison with the trypanosomal enzyme.",
+  "journal_abbrev": "Protein Sci.",
+  "year": 1994
+ }
 }

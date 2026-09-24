@@ -199,5 +199,12 @@
     }
    ]
   }
- ]
+ ],
+ "rcsb_primary_citation": {
+  "pdbx_database_id_PubMed": 12051920,
+  "pdbx_database_id_DOI": "10.1016/S0022-2836(02)00370-4",
+  "title": "Minor structural changes in a mutated human melanoma antigen correspond to dramatically enhanced stimulation of a CD4+ tumor-infiltrating lymphocyte line.",
+  "journal_abbrev": "J.Mol.Biol.",
+  "year": 2002
+ }
 }

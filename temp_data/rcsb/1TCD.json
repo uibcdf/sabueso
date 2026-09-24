@@ -84,5 +84,12 @@
     }
    ]
   }
- ]
+ ],
+ "rcsb_primary_citation": {
+  "pdbx_database_id_PubMed": 9761683,
+  "pdbx_database_id_DOI": "10.1006/jmbi.1998.2094",
+  "title": "Differences in the intersubunit contacts in triosephosphate isomerase from two closely related pathogenic trypanosomes.",
+  "journal_abbrev": "J.Mol.Biol.",
+  "year": 1998
+ }
 }

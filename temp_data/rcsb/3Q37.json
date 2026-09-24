@@ -148,5 +148,12 @@
    ]
   }
  ],
- "nonpolymer_entities": null
+ "nonpolymer_entities": null,
+ "rcsb_primary_citation": {
+  "pdbx_database_id_PubMed": 21533154,
+  "pdbx_database_id_DOI": "10.1371/journal.pone.0018791",
+  "title": "Identification of amino acids that account for long-range interactions in two triosephosphate isomerases from pathogenic trypanosomes.",
+  "journal_abbrev": "Plos One",
+  "year": 2011
+ }
 }

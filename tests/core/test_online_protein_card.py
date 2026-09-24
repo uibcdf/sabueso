@@ -58,6 +58,8 @@ def test_online_interfaces_and_assemblies():
     assert partners.get("uniprot:P04789") == "chimera"
     states = {a["structure"]: a["assemblies"] for a in view["assemblies"]}
     assert states["pdb:1SUX"][0]["oligomeric_state"] == "Homo 2-mer"
+    pubs = {p["ref"]: p for p in card.literature()["publications"]}
+    assert pubs["pubmed:15321726"]["primary_citation_of"] == ["pdb:1SUX"]
 
 
 @pytest.mark.online
