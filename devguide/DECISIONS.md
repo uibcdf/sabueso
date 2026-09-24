@@ -194,7 +194,7 @@ Closes uibcdf/sabueso#10 (`devguide/archive/physchem_normalization.md`).
   `full_mwt`, not the parent's `mw_freebase`).
 
 ## Quantities travel with their units, sealed (2026-09-24)
-uibcdf/sabueso#32 (`devguide/pending_proposals/quantities.md`); the format is PyUnitWizard's
+uibcdf/sabueso#32 (`devguide/archive/quantities.md`); the format is PyUnitWizard's
 `QuantityRecord` (released in 0.27.0; design in uibcdf/pyunitwizard#83).
 - Sabueso answers quantity questions with quantities, and stores every quantity as
   `{value, unit}` in PyUnitWizard's canonical spelling.
@@ -203,4 +203,11 @@ uibcdf/sabueso#32 (`devguide/pending_proposals/quantities.md`); the format is Py
 - Bioactivity concentrations are normalized to nanomolar with explicit conversions; the
   source's value and unit are kept verbatim. pChEMBL is kept as ChEMBL states it.
 - Sabueso never sets PyUnitWizard's session policy; stored numbers do not depend on it.
+- Every place a card stores quantities, and its unit, is declared in
+  `quantities.NEGOTIATED_UNITS`. The writer refuses anything else, and the reader
+  declares those units' dimensionalities itself. It never takes its expectations from
+  the card it verifies.
+- Plausibility is checked, never corrected: `pchembl_consistency@1` and
+  `unit_scale_discrepancy@1` flag measurements, and resolver conflicts mark exact 10³ or
+  10⁶ ratios. Closes uibcdf/sabueso#32.
 

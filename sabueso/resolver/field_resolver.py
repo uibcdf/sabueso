@@ -23,6 +23,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Tuple
 
+from sabueso.core.quantities import scale_discrepancy
 from sabueso.core.source_assertion_store import assertion_value
 
 # Retrieval times mix timezone-aware stamps (online clients) and plain dates (fixtures);
@@ -172,14 +173,32 @@ def _most_recent_group(
     return best_key, groups[best_key]
 
 
+def _with_scale(conflict: Dict[str, Any]) -> Dict[str, Any]:
+    """Mark values that differ by exactly 3 or 6 orders of magnitude, the signature of a
+    unit slip (#32). A field's values share its negotiated unit, so the ratio is
+    meaningful; nothing is corrected, the conflict stays a conflict."""
+    values = conflict["values"]
+    scale = [
+        {"orders": orders, "values": [values[i], values[j]]}
+        for i in range(len(values))
+        for j in range(i + 1, len(values))
+        if (orders := scale_discrepancy(values[i], values[j]))
+    ]
+    if scale:
+        conflict["scale_discrepancy"] = scale
+    return conflict
+
+
 def _build_conflict(groups: Dict[str, List[Dict[str, Any]]]) -> Dict[str, Any] | None:
     if len(groups) <= 1:
         return None
-    return {
-        "type": "disagreement",
-        "values": [assertion_value(g[0]) for g in groups.values()],
-        "source_assertion_ids": [[a.get("id") for a in g] for g in groups.values()],
-    }
+    return _with_scale(
+        {
+            "type": "disagreement",
+            "values": [assertion_value(g[0]) for g in groups.values()],
+            "source_assertion_ids": [[a.get("id") for a in g] for g in groups.values()],
+        }
+    )
 
 
 def _comparable(
@@ -204,6 +223,9 @@ def _comparable(
                 ids for c in conflicts for ids in c["source_assertion_ids"]
             ],
         }
+        scale = [s for c in conflicts for s in c.get("scale_discrepancy", [])]
+        if scale:
+            conflict["scale_discrepancy"] = scale
     alternatives = None
     if len(partitions) > 1:
         alternatives = {

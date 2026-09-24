@@ -28,9 +28,22 @@ to change them (`active_max`, `weak_max`, `single_point_min`). A bare number is 
 because its unit would be a guess. Pass `include_indirect=True` to include measurements
 that ChEMBL assigned by homology.
 
-Each measurement keeps ChEMBL's value and unit as stated, and a `normalized` value in
-nanomolar (or percent). The test concentration of a single-point measurement is returned
-as a quantity (`test_concentration`).
+Each measurement keeps ChEMBL's value and unit as stated (`value`, `units`). It also
+carries `normalized`, a quantity in nanomolar (or percent), or None when ChEMBL's unit
+cannot be normalized. The test concentration of a single-point measurement is also
+returned as a quantity (`test_concentration`).
+
+Two consistency checks add flags to a measurement. Both rules are listed in
+`view["checks"]`:
+
+- `pchembl_inconsistent`: ChEMBL's pChEMBL does not match -log10 of the normalized molar
+  potency, to within 0.01. That is one unit of its second decimal; ChEMBL does not round
+  half up.
+- `scale_discrepancy:<orders>:<activity_id>`: another measurement of the same molecule,
+  of the same type and with relation `=`, differs by exactly 3 or 6 orders of magnitude.
+  This is the signature of a unit slip.
+
+Neither check corrects a value; they point at the measurements to look at.
 
 Clients: `sabueso.tools.db.chembl.OnlineChEMBLClient` and `FixtureChEMBLClient`.
 

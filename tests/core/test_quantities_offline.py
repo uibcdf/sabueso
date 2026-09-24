@@ -1,4 +1,4 @@
-"""Physical quantities in cards (uibcdf/sabueso#32, devguide/pending_proposals/quantities.md).
+"""Physical quantities in cards (uibcdf/sabueso#32, devguide/archive/quantities.md).
 
 No number is stored without its unit; every stored card seals its quantities with a
 PyUnitWizard QuantityRecordBundle (released in pyunitwizard 0.27.0); a change made
@@ -27,7 +27,6 @@ from sabueso.tools.card.storage import (
     save_card_sqlite,
 )
 from sabueso.tools.db.chembl import FixtureChEMBLClient
-from sabueso.tools.db.uniprot import create_protein_card_from_file
 
 
 def _load(path):
@@ -209,24 +208,86 @@ def test_the_session_unit_policy_never_changes_what_is_stored(molecule):
         assert _through_json(again)["quantities"] == reference["quantities"]
 
 
-def test_canary_a_value_reads_back_identically_through_every_path(tmp_path):
-    # Written as 33 µM by ChEMBL; every reader path must return 33000 nM, never another
-    # unit or scale (the error class of the Mars Climate Orbiter).
-    card = create_protein_card_from_file(
-        "temp_data/P52789.json", retrieved_at="2026-02-01"
+def test_canary_a_value_reads_back_identically_through_every_path(protein, tmp_path):
+    # MOLI's canary: 3 nM must never be read as 3 pM. A potency stored in nanomolar must
+    # come back as the same amount through every read path, not merely the same number.
+    from sabueso.core.deck import Deck
+    from sabueso.tools.deck.storage import (
+        load_deck_jsonl,
+        load_deck_sqlite,
+        save_deck_jsonl,
+        save_deck_sqlite,
     )
-    mw = card.quantity("sequence.molecular_weight")
-    save_card_json(card, tmp_path / "c.json")
-    save_card_sqlite(card, tmp_path / "c.db")
-    for loaded in (
-        Card.from_dict(json.loads(json.dumps(card.to_dict()))),
+
+    template = "relationships.has_bioactivity.measurement.normalized"
+    written = puw.get_value(
+        protein.quantity_columns(template)["nanomolar"], "nanomolar"
+    )
+    save_card_json(protein, tmp_path / "c.json")
+    save_card_sqlite(protein, tmp_path / "c.db")
+    save_deck_jsonl(Deck([protein]), tmp_path / "d.jsonl")
+    save_deck_sqlite(Deck([protein]), tmp_path / "d.db")
+    readers = (
+        Card.from_dict(json.loads(json.dumps(protein.to_dict()))),
         load_card_json(tmp_path / "c.json"),
-        load_card_sqlite(tmp_path / "c.db", card_id=card.id),
-    ):
-        again = loaded.quantity("sequence.molecular_weight")
-        assert puw.get_value(again, to_unit="dalton") == puw.get_value(
-            mw, to_unit="dalton"
+        load_card_sqlite(tmp_path / "c.db", card_id=protein.id),
+        load_deck_jsonl(tmp_path / "d.jsonl").cards[0],
+        load_deck_sqlite(tmp_path / "d.db").cards[0],
+    )
+    for loaded in readers:
+        column = loaded.quantity_columns(template)["nanomolar"]
+        assert list(puw.get_value(column, to_unit="nanomolar")) == list(written)
+        # The conversion adds float noise (~1e-16 relative); a scale error is 1e3.
+        assert list(puw.get_value(column, to_unit="picomolar")) == pytest.approx(
+            [v * 1000 for v in written], rel=1e-12
         )
+
+
+def _resealed(data):
+    """Seal ``data`` again with PyUnitWizard directly, bypassing Sabueso's writer: a
+    coherent edit of nodes and seal that only the reader's own expectations can catch."""
+    import numpy as np
+    from pyunitwizard import QuantityRecordBundle
+
+    from sabueso.core.quantities import _columns
+
+    data["quantities"] = QuantityRecordBundle.from_quantities(
+        {
+            key: puw.quantity(np.asarray(values), unit, form="pint")
+            for key, (unit, values) in _columns(data).items()
+        }
+    ).to_dict()
+    return data
+
+
+def _resolution(data):
+    return next(
+        r["qualifiers"]["resolution"]
+        for r in data["relationship_store"]
+        if r["predicate"] == "has_structure" and r["qualifiers"].get("resolution")
+    )
+
+
+@pytest.mark.parametrize(
+    "unit, factor",
+    [
+        ("second", 1.0),  # another dimension
+        ("nanometer", 0.1),  # the same amount, in a unit Sabueso did not negotiate
+    ],
+)
+def test_a_coherent_reseal_in_another_unit_is_refused(protein, unit, factor):
+    data = _through_json(protein)
+    node = _resolution(data)
+    node["value"], node["unit"] = node["value"] * factor, unit
+    with pytest.raises(StorageError, match="negotiated"):
+        Card.from_dict(_resealed(data))
+
+
+def test_the_writer_refuses_a_quantity_where_none_was_negotiated(protein):
+    card = Card.from_dict(_through_json(protein))
+    card.sections["sequence"]["fake"] = {"value": 1.0, "unit": "angstrom"}
+    with pytest.raises(SchemaError, match="NEGOTIATED_UNITS"):
+        card.to_dict()
 
 
 # --- guard: no bare number leaves a quantity without a stated unit ---------------------------------

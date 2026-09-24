@@ -226,9 +226,15 @@ A Relationship is first-class, traceable knowledge:
   entries are columns `"<path template>|<unit>"`. `Card.from_dict()`, and therefore every
   loader, verifies the bundle and checks every node against its column. A change made
   outside Sabueso is refused with `StorageError`. Details and design:
-  `devguide/pending_proposals/quantities.md`.
-- `Card.quantity(path)` returns a PyUnitWizard quantity; views return quantities
-  (`Card.structures()["items"][i]["resolution"]`).
+  `devguide/archive/quantities.md`.
+- Paths and units are closed: `quantities.NEGOTIATED_UNITS` lists every quantity path
+  template and its negotiated units. Writing a quantity elsewhere raises `SchemaError`.
+  Reading one refuses the card, with the reader's expected dimensionalities taken from
+  that list.
+- `Card.quantity(path)` returns a PyUnitWizard quantity, and `Card.quantity_columns(template)`
+  returns `{unit: array quantity}`. Views return quantities
+  (`Card.structures()["items"][i]["resolution"]`, `Card.bioactivities()` measurement
+  `normalized`).
 
 ## Quality records (#10)
 `card.quality` records how the card was resolved and enriched. Its entries are not fields

@@ -1,13 +1,15 @@
 ---
 summary: Physical quantities in Sabueso — inventory, negotiated units, and alignment with PyUnitWizard's QuantityRecord before schema 0.3.0.
 issue: uibcdf/sabueso#32
-status: partial
+status: resolved
 opened: 2026-09-24
-closed:
+closed: 2026-09-24
 verification: measured
 area: [schema, units, persistence, interoperability]
 blocked_by: []
 supersedes: []
+guard: tests/core/test_quantities_offline.py, tests/core/test_quantity_checks_offline.py
+normative: devguide/DECISIONS.md ("Quantities travel with their units, sealed")
 ---
 
 # Physical quantities in Sabueso
@@ -153,10 +155,8 @@ Also implemented:
   the threshold was written in. The test
   `test_the_same_threshold_in_another_unit_classifies_identically` caught it.
 
-Remaining:
-
-- the cross-source 3-or-6-orders-of-magnitude check;
-- the pChEMBL consistency check.
+The two domain checks, and the reader's own expectations, were added on closing (see
+*Resolution* below).
 
 ## Decisions on the open questions (Diego, 2026-09-24)
 
@@ -190,3 +190,73 @@ Remaining:
 - **On load**, PyUnitWizard verifies the bundle, and Sabueso checks that every node
   equals its column. This is cross-checked redundancy, never a fallback. An edit made
   outside the codec, whether to a node or to the bundle, is refused.
+
+## Resolution (2026-09-24)
+
+Closed with every acceptance criterion of #32 met. Added on closing:
+
+- **The reader declares its own expectations.** `quantities.NEGOTIATED_UNITS` lists every
+  place a card stores quantities and the unit or units negotiated there. The writer
+  (`seal`) refuses a quantity anywhere else (`SchemaError`). The reader (`verify`) refuses
+  a column outside that list. It passes PyUnitWizard the negotiated unit's
+  dimensionality as `expected`, not the card's own columns.
+  - Before this, `expected` was derived from the card being verified. A coherent edit of
+    node and seal, such as resolution in `second` or in `nanometer`, therefore passed.
+  - Guarded by `test_a_coherent_reseal_in_another_unit_is_refused` and
+    `test_the_writer_refuses_a_quantity_where_none_was_negotiated`.
+- **Columns as array quantities.** `Card.quantity_columns(template)` returns
+  `{unit: array quantity}`, one entry per stored unit, exactly as sealed. Units are never
+  mixed or converted: normalized bioactivities come back as nanomolar and percent.
+  Missing values (null) are not in the column. To relate values to relationships, use the
+  views.
+- **The bioactivity view returns quantities.** Each measurement carries `normalized`, a
+  quantity or None, next to the source's verbatim `value` and `units`.
+- **`pchembl_consistency@1`.**
+  - A stated pChEMBL must equal 9 − log10(potency/nM), to within 0.01.
+  - Measured on ChEMBL_37 (38 measurements with pChEMBL, TcTIM and HsTIM): the largest
+    deviation is 0.00503. 26000 nM gives 4.58503, which ChEMBL states as 4.58, so
+    ChEMBL does not round half up and a half-unit tolerance would be wrong.
+  - Every fixture measurement passes. A failure is flagged `pchembl_inconsistent`.
+- **`unit_scale_discrepancy@1`.**
+  - Equivalent measurements (same molecule and type, relation `=`, both in nanomolar)
+    whose ratio is exactly 10³ or 10⁶ are flagged
+    `scale_discrepancy:<orders>:<other activity_id>`.
+  - Resolver conflicts whose values show the same ratio carry `scale_discrepancy`. A
+    field's values share its negotiated unit, so the ratio is meaningful.
+  - No pair occurs in the fixtures; a synthetic unit slip is tested.
+  - Nothing is corrected.
+- **The canary follows MOLI's wording.** A nanomolar potency reads back as the same amount
+  (not just the same number) through every read path: card JSON and SQLite, deck JSONL and
+  SQLite, and `from_dict`.
+
+How each acceptance criterion was met:
+
+- **Inventory:** above.
+- **Canonical units:** PyUnitWizard's long form, as a node's `unit`.
+- **Dimensional validation:** negotiated units, checked on write and on read.
+- **Unknown units:** no normalized node, nothing guessed; the explicit `CHEMBL_UNITS`
+  vocabulary.
+- **Inequalities:** `relation` kept beside the value. The classification and both checks
+  read it, and bounds are never checked as equalities.
+- **Source precision:** `asserted_value` is verbatim, and the resolver's
+  `stated_precision` agreement uses it.
+- **Uncertainty:** no mapped source states one; deferred to #37 together with ChEMBL
+  ranges.
+- **SourceAssertion IDs:** unchanged. They hash `asserted_value`, which stays verbatim.
+- **Migration:** schema 0.3.0 shipped in release 0.1.0 (ea4149f precedes the tag), so no
+  0.2.0 card was ever published. A card without a seal is refused, with no default unit.
+- **Round trips and examples:** the tests named in `guard`, and
+  `docs/content/user/concepts.md` ("Quantities").
+- **MOLI contract:** uibcdf/moli#12. The format and codec are PyUnitWizard's
+  (uibcdf/pyunitwizard#82, #83).
+
+Possible future problems (recorded):
+
+- A new quantity path must be added to `NEGOTIATED_UNITS`, or cards containing it cannot
+  be written. That failure is loud and intended.
+- Ranges and uncertainty: #37.
+- `scale_discrepancy` only sees exact ratios. A slip combined with rounding by the
+  source (26 µM restated as 26000.5 nM) would pass unflagged.
+- pChEMBL's tolerance assumes ChEMBL keeps stating two decimals. A change in its
+  precision would need a new rule version.
+

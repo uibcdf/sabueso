@@ -27,6 +27,18 @@ By default, only assays whose target assignment is direct (ChEMBL relationship t
 ``D``) are included. Homology-assigned measurements (``H``: measured on an ortholog) and
 other assignments are excluded, and the exclusion is reported, never silent.
 
+Two consistency checks are derived as well, and reported as measurement flags (#32):
+
+- ``pchembl_consistency@1``: a stated pChEMBL must equal -log10 of the normalized molar
+  potency to within one unit of its last stated decimal (ChEMBL states two). ChEMBL does
+  not round half up: 26000 nM gives 4.58503 and ChEMBL states 4.58, so half a unit
+  would be too strict. A failure is flagged ``pchembl_inconsistent``; pChEMBL itself is
+  kept as ChEMBL states it.
+- ``unit_scale_discrepancy@1``: two equivalent measurements of one molecule (same type,
+  relation ``=``, both in nanomolar) that differ by exactly 3 or 6 orders of magnitude
+  are flagged ``scale_discrepancy:<orders>:<other activity_id>``, the signature of a unit
+  slip (ChEMBL's "Potential transcription error"). Neither value is corrected.
+
 Potencies are read from each measurement's normalized node (nanomolar, stored with the
 card), or normalized through the same explicit ChEMBL unit vocabulary when a measurement
 has none. Every conversion names its target unit; the session's unit policy plays no
@@ -35,6 +47,7 @@ part (uibcdf/moli#11).
 
 from __future__ import annotations
 
+import math
 import re
 from typing import Any, Dict, List, Tuple
 
@@ -46,9 +59,15 @@ from .quantities import (
     is_quantity_node,
     normalized_measurement,
     quantity_node,
+    scale_discrepancy,
+    to_quantity,
 )
 
 BIOACTIVITY_CLASS_RULE = "bioactivity_class@2"
+PCHEMBL_RULE = "pchembl_consistency@1"
+SCALE_RULE = "unit_scale_discrepancy@1"
+#: ChEMBL states pChEMBL with two decimals; the tolerance is one unit of the last one.
+PCHEMBL_TOLERANCE = 0.01
 #: Default thresholds. A threshold is a quantity; a bare number would leave its unit to
 #: be guessed (uibcdf/sabueso#32).
 DEFAULT_THRESHOLDS: Dict[str, Tuple[float, str]] = {
@@ -255,6 +274,68 @@ def _flags(q: Dict[str, Any]) -> List[str]:
     return flags
 
 
+def _potency_node(m: Dict[str, Any]) -> Dict[str, Any] | None:
+    """The measurement's normalized node, from the card or the explicit vocabulary."""
+    return m.get("normalized") or normalized_measurement(m.get("value"), m.get("units"))
+
+
+def pchembl_consistent(pchembl: Any, node: Dict[str, Any] | None, relation: Any):
+    """True/False when a stated pChEMBL can be checked against the normalized potency,
+    None when it cannot (no pChEMBL, no nanomolar value, or a bound)."""
+    if (
+        pchembl is None
+        or node is None
+        or node["unit"] != CONCENTRATION_UNIT
+        or (relation or "=") != "="
+        or node["value"] <= 0
+    ):
+        return None
+    expected = 9.0 - math.log10(float(node["value"]))
+    return abs(float(pchembl) - expected) <= PCHEMBL_TOLERANCE + 1e-9
+
+
+def _scale_flags(measurements: List[Dict[str, Any]], potencies: List[Any]) -> None:
+    """Flag pairs of equivalent measurements that differ by exactly 3 or 6 orders."""
+    for i, a in enumerate(measurements):
+        for j in range(i + 1, len(measurements)):
+            b = measurements[j]
+            if potencies[i] is None or potencies[j] is None:
+                continue
+            if a["type"] != b["type"] or (a["relation"] or "=") != "=":
+                continue
+            if (b["relation"] or "=") != "=":
+                continue
+            orders = scale_discrepancy(potencies[i], potencies[j])
+            if orders:
+                a["flags"].append(f"scale_discrepancy:{orders}:{b['activity_id']}")
+                b["flags"].append(f"scale_discrepancy:{orders}:{a['activity_id']}")
+
+
+def consistency_checks() -> List[Dict[str, Any]]:
+    from .relationship_store import make_derivation
+
+    return [
+        make_derivation(
+            PCHEMBL_RULE,
+            inputs=["has_bioactivity.measurement.pchembl", "measurement.normalized"],
+            parameters={
+                "expected": "9 - log10(potency / nanomolar)",
+                "tolerance": PCHEMBL_TOLERANCE,
+                "flag": "pchembl_inconsistent",
+            },
+        ),
+        make_derivation(
+            SCALE_RULE,
+            inputs=["has_bioactivity.measurement.normalized"],
+            parameters={
+                "orders": [3, 6],
+                "equivalent": "same molecule, same type, relation '=', nanomolar",
+                "flag": "scale_discrepancy:<orders>:<other activity_id>",
+            },
+        ),
+    ]
+
+
 def _stated_smiles(card: Any, rel: Dict[str, Any]) -> str | None:
     """SMILES of the tested molecule as stated in the supporting activity record."""
     for sa_id in rel.get("source_assertion_ids", []):
@@ -272,7 +353,9 @@ def bioactivities_view(
 ) -> Dict[str, Any]:
     """Molecule-centric summary of the card's ``has_bioactivity`` relationships.
 
-    Returns ``{"items", "excluded", "documents", "scope", "classification"}``. ``items`` has one
+    Returns ``{"items", "excluded", "documents", "scope", "classification", "checks"}``.
+    Each measurement keeps the source's ``value`` and ``units`` verbatim and adds
+    ``normalized``, a PyUnitWizard quantity (nanomolar or percent) or None. ``items`` has one
     entry per parent molecule, holding all its measurements and its strongest class.
     Measurements from assays that were not assigned directly to the target are excluded
     unless ``include_indirect``, and they are listed in ``excluded``.
@@ -300,6 +383,10 @@ def bioactivities_view(
             )
             continue
         derived = classify_measurement(m, assay.get("description"), thresholds)
+        node = _potency_node(m)
+        flags = _flags(q)
+        if pchembl_consistent(m.get("pchembl"), node, m.get("relation")) is False:
+            flags.append("pchembl_inconsistent")
         measurement = {
             "relationship_id": rel["id"],
             "activity_id": q.get("activity_id"),
@@ -308,6 +395,7 @@ def bioactivities_view(
             "relation": m.get("relation"),
             "value": m.get("value"),
             "units": m.get("units"),
+            "normalized": to_quantity(node) if node else None,
             "pchembl": m.get("pchembl"),
             **derived,
             "assay": assay.get("id"),
@@ -315,7 +403,7 @@ def bioactivities_view(
             "target_assignment": assignment,
             "document": doc.get("id"),
             "year": doc.get("year"),
-            "flags": _flags(q),
+            "flags": flags,
         }
         if doc.get("id"):
             documents[doc["id"]] = documents.get(doc["id"], 0) + 1
@@ -328,6 +416,7 @@ def bioactivities_view(
                 "name": None,
                 "smiles": None,
                 "measurements": [],
+                "potencies": [],
             },
         )
         entry["tested_forms"].add(rel["object_ref"])
@@ -335,9 +424,13 @@ def bioactivities_view(
             entry["name"] = q.get("molecule_name") or entry["name"]
             entry["smiles"] = _stated_smiles(card, rel) or entry["smiles"]
         entry["measurements"].append(measurement)
+        entry["potencies"].append(
+            node["value"] if node and node["unit"] == CONCENTRATION_UNIT else None
+        )
 
     items = []
     for entry in molecules.values():
+        _scale_flags(entry["measurements"], entry["potencies"])
         measurements = sorted(
             entry["measurements"], key=lambda x: x["activity_id"] or 0
         )
@@ -377,4 +470,5 @@ def bioactivities_view(
             "target_assignment": "any" if include_indirect else DIRECT_ASSIGNMENT
         },
         "classification": bioactivity_derivation(thresholds),
+        "checks": consistency_checks(),
     }

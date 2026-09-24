@@ -6,7 +6,7 @@ from typing import Any, Dict, List
 
 from sabueso._private.argdigest import arg_digest
 
-from .quantities import field_node, seal, to_quantity, verify
+from .quantities import field_node, quantity_columns, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
@@ -140,6 +140,23 @@ class Card:
         Raises SchemaError when the field holds no quantity.
         """
         return to_quantity(self.get(field_path))
+
+    def quantity_columns(self, template: str) -> Dict[str, Any]:
+        """Every quantity at ``template`` as array quantities, one per stored unit.
+
+        ``template`` names a column as the seal does, without list indices, e.g.
+        ``relationships.has_structure.resolution`` or
+        ``relationships.has_bioactivity.measurement.normalized``. Values keep their stored
+        order (relationships by id). Units are never mixed or converted: a column holding
+        nanomolar and percent returns both, keyed by unit.
+        """
+        return quantity_columns(
+            {
+                "sections": self.sections,
+                "relationship_store": self.relationship_store.to_list(),
+            },
+            template,
+        )
 
     @arg_digest()
     def extract(

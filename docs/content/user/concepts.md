@@ -75,7 +75,27 @@ knowledge. Its output contains:
 - `source_assertion_ids` (the assertions that support the selected value)
 - `conflict` (when assertions disagree; the alternatives stay in the store)
 
-Conflicts are always reported when there is a discrepancy.
+Conflicts are always reported when there is a discrepancy. When two values of a quantity
+differ by exactly 3 or 6 orders of magnitude, the conflict also carries
+`scale_discrepancy`. That pattern is the usual sign of a unit slip, such as nM written for
+µM. Neither value is corrected.
+
+## Quantities
+
+A physical quantity is always stored with its unit, as `{"value": ..., "unit": ...}`. The
+unit is the one Sabueso agreed for that place: dalton for molecular weights, ångström for
+resolutions and contact distances, nanomolar or percent for normalized bioactivities.
+Sabueso returns quantities, not bare numbers:
+
+```python
+card.quantity("sequence.molecular_weight")  # one value, a PyUnitWizard quantity
+card.quantity_columns("relationships.has_structure.resolution")
+# {"angstrom": <array quantity>}: every value at that place, one array per unit
+```
+
+A stored card seals its quantities, and loading refuses a card whose values or units were
+changed outside Sabueso. The source's own value and unit text are kept, as stated, in its
+SourceAssertion.
 
 ## Selection Rules
 
