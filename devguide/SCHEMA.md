@@ -180,6 +180,13 @@ A Relationship is first-class, traceable knowledge:
       `source_assertion_id`, `outcome` (`new`, `corroborates`, `differs`,
       `not_comparable`, `not_compared`) and `compared_with`. A `differs` on a list
       field also goes to `quality.conflicts` with `type: "curated_difference"`.
+    - Relationships of `CURATABLE_PREDICATES` (`interacts_with`,
+      `functionally_associated_with`, `annotated_with`, `classified_in`,
+      `has_ligand_site`, `has_interface_with`) can be curated too. The SourceAssertion
+      states `{object_ref, qualifiers}` under `relationships.<predicate>`. It merges with
+      the same relationship from other sources. Qualifiers stated differently become
+      `qualifier_conflicts` and a `curated_difference` with the `relationship_id`.
+      `has_bioactivity` is not curatable yet (#44).
   - interfaces (added in #40):
     - `has_interface_with` (protein → `uniprot:<acc>`, or `pdbe_kb.partner:<label>` for a
       partner without a UniProt entry), one relationship per partner, from PDBe-KB.

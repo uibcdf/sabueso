@@ -218,8 +218,9 @@ uibcdf/sabueso#41, part 2. Free-text claims are deferred to uibcdf/sabueso#43.
 - A person or an agent reads a paper and records what it states. Sabueso does not read
   papers: it checks the shape against the field, stores the claim as a literature
   SourceAssertion, and compares it mechanically.
-- Only existing knowledge fields take curated assertions. Identity, sequence and
-  metadata never do.
+- Only existing knowledge fields and relationship predicates take curated assertions.
+  Identity, sequence, metadata, identity links, `has_structure` and `described_in`
+  never do. `has_bioactivity` waits for its own identity rule (uibcdf/sabueso#44).
 - A curated assertion never takes priority automatically ("Literature" is in no priority
   list), and it is never discarded. Its outcome is always recorded (`quality.curation`).
   A difference is reported in `quality.conflicts` and warned about

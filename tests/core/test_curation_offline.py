@@ -268,3 +268,89 @@ def test_wrong_arguments_are_refused(hstim, change):
 def test_an_item_must_fit_its_field(hstim, field_path, value):
     with pytest.raises(SchemaError):
         hstim.add_literature_assertion(field_path, value, "pubmed:1", "curator-a")
+
+
+# --- relationships ---------------------------------------------------------------------
+
+
+@pytest.fixture
+def tctim():
+    from sabueso.tools.db.pdbe_kb import FixturePDBeKBClient
+
+    resolver = EntityResolver(
+        FixtureUniProtClient("temp_data"), rcsb_client=FixtureRCSBClient("temp_data")
+    )
+    card, _ = resolve_protein_card(
+        "P52270",
+        resolver,
+        interfaces=True,
+        pdbe_kb_client=FixturePDBeKBClient("temp_data"),
+    )
+    return card
+
+
+def test_a_curated_relationship_merges_with_the_same_one_from_a_database(tctim):
+    record = tctim.add_literature_relationship(
+        "has_interface_with",
+        "uniprot:P52270",
+        {"partner_name": "Triosephosphate isomerase, glycosomal"},
+        "pubmed:9761683",
+        "curator-a",
+    )
+    assert record["outcome"] == "corroborates"
+    rel = tctim.relationship_store.get(record["relationship_id"])
+    assert record["source_assertion_id"] in rel["source_assertion_ids"]
+    assert len(tctim.relationships("has_interface_with")) == 2  # merged, not added
+
+
+def test_a_qualifier_stated_differently_is_kept_and_flagged(tctim):
+    pdbe = tctim.relationships("has_interface_with", object_ref="uniprot:P52270")[0]
+    residues = pdbe["qualifiers"]["residues"]
+    with pytest.warns(CuratedDisagreementWarning):
+        record = tctim.add_literature_relationship(
+            "has_interface_with",
+            "uniprot:P52270",
+            {"residues": [{"start": 12, "end": 12}]},
+            "pubmed:9761683",
+            "curator-a",
+            locator="Table 2",
+        )
+    assert record["outcome"] == "differs"
+    rel = tctim.relationship_store.get(record["relationship_id"])
+    assert rel["qualifiers"]["residues"] == residues  # the database value stays
+    assert rel["qualifier_conflicts"]["residues"][-1] == [{"start": 12, "end": 12}]
+    (conflict,) = tctim.quality["conflicts"]
+    assert conflict["type"] == "curated_difference"
+    assert list(conflict["qualifiers"]) == ["residues"]
+
+
+def test_a_relationship_no_source_states_is_new(tctim):
+    record = tctim.add_literature_relationship(
+        "interacts_with", "uniprot:Q00001", {}, "doi:10.1000/abc", "curator-a"
+    )
+    assert record["outcome"] == "new"
+    (rel,) = tctim.relationships("interacts_with")
+    assert rel["subject_ref"] == "uniprot:P52270"
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        {"predicate": "has_bioactivity"},  # needs its own identity (#44)
+        {"predicate": "same_as"},  # identity is never curated
+        {"predicate": "has_structure"},
+        {"object_ref": "P52270"},
+        {"qualifiers": ["not", "a", "dict"]},
+    ],
+)
+def test_wrong_relationship_arguments_are_refused(tctim, change):
+    kwargs = dict(
+        predicate="interacts_with",
+        object_ref="uniprot:Q00001",
+        qualifiers={},
+        publication="pubmed:1",
+        curator="curator-a",
+    )
+    kwargs.update(change)
+    with pytest.raises(ArgumentError):
+        tctim.add_literature_relationship(**kwargs)

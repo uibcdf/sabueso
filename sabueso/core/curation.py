@@ -105,6 +105,21 @@ ITEM_IDENTITY: Dict[str, Callable[[Any], Any] | None] = {
 LIST_FIELDS = frozenset(ITEM_IDENTITY)
 CURATABLE_FIELDS = SCALAR_FIELDS | LIST_FIELDS
 
+#: Predicates a curated assertion may state. Not identity links (same_as...), not
+#: has_structure (the PDB states structures), not described_in (citing is not a claim),
+#: and not has_bioactivity yet: telling a curated measurement from the ChEMBL record of
+#: the same paper needs its own design (uibcdf/sabueso#44).
+CURATABLE_PREDICATES = frozenset(
+    {
+        "interacts_with",
+        "functionally_associated_with",
+        "annotated_with",
+        "classified_in",
+        "has_ligand_site",
+        "has_interface_with",
+    }
+)
+
 #: Keys an item must state, per list field (beyond a location for positional fields).
 REQUIRED_KEYS = {
     "features_positional.mutagenesis": ("substitution", "description"),
@@ -277,33 +292,21 @@ def add_literature_assertion(
     else:
         asserted = normalized = _item(field_path, value, subject)
 
-    assertion = make_source_assertion(
+    assertion = _literature_assertion(
         field_path,
         asserted,
-        LITERATURE,
         publication,
+        subject,
+        curator,
+        locator,
+        quote,
+        eco_code,
         curated_at,
-        source_type="literature",
-        subject_ref=subject,
-    )
-    # Two statements of the same value in two places of a paper are two assertions.
-    assertion["id"] = generate_source_assertion_id(
-        LITERATURE, publication, field_path, {"value": asserted, "locator": locator}
+        method=method,
+        decimals=decimals,
     )
     if normalized != asserted:
         assertion["normalized_value"] = normalized
-    curation = {"curator": curator, "curated_at": curated_at, "locator": locator}
-    if quote:
-        curation["quote"] = quote
-    metadata: Dict[str, Any] = {"curation": curation}
-    if method:
-        metadata["method"] = method
-    if decimals is not None:
-        metadata["stated_decimals"] = decimals  # in the field's unit
-    if eco_code:
-        metadata["eco"] = [{"code": eco_code, "source": "Literature"}]
-    assertion["source_metadata"] = metadata
-
     if card.source_assertion_store.get(assertion["id"]) is not None:
         previous = next(
             (
@@ -419,3 +422,139 @@ def _add_item(card, field_path, assertion, others) -> Dict[str, Any]:
         }
     )
     return {"outcome": "differs", "compared_with": compared}
+
+
+def _literature_assertion(
+    field_path,
+    asserted,
+    publication,
+    subject,
+    curator,
+    locator,
+    quote,
+    eco_code,
+    curated_at,
+    method=None,
+    decimals=None,
+):
+    assertion = make_source_assertion(
+        field_path,
+        asserted,
+        LITERATURE,
+        publication,
+        curated_at,
+        source_type="literature",
+        subject_ref=subject,
+    )
+    # Two statements of the same value in two places of a paper are two assertions.
+    assertion["id"] = generate_source_assertion_id(
+        LITERATURE, publication, field_path, {"value": asserted, "locator": locator}
+    )
+    curation = {"curator": curator, "curated_at": curated_at, "locator": locator}
+    if quote:
+        curation["quote"] = quote
+    metadata: Dict[str, Any] = {"curation": curation}
+    if method:
+        metadata["method"] = method
+    if decimals is not None:
+        metadata["stated_decimals"] = decimals  # in the field's unit
+    if eco_code:
+        metadata["eco"] = [{"code": eco_code, "source": "Literature"}]
+    assertion["source_metadata"] = metadata
+    return assertion
+
+
+def add_literature_relationship(
+    card: Any,
+    predicate: str,
+    object_ref: str,
+    qualifiers: Dict[str, Any] | None,
+    publication: str,
+    curator: str,
+    locator: str | None = None,
+    quote: str | None = None,
+    eco_code: str | None = None,
+    curated_at: str | None = None,
+) -> Dict[str, Any]:
+    """Record a relationship a publication states (``CURATABLE_PREDICATES``).
+
+    The relationship merges with the same relationship stated by other sources (same
+    subject, predicate and object). Qualifiers the curated assertion states differently
+    become ``qualifier_conflicts`` on the relationship, and the outcome is ``differs``;
+    nothing is overridden. Outcomes and records as in ``add_literature_assertion``.
+    """
+    from .relationship_store import make_relationship
+
+    if predicate not in CURATABLE_PREDICATES:
+        raise SchemaError(f"{predicate} cannot take curated literature assertions.")
+    subject = _subject(card)
+    curated_at = curated_at or datetime.now(timezone.utc).date().isoformat()
+    qualifiers = dict(qualifiers or {})
+    field_path = f"relationships.{predicate}"
+    assertion = _literature_assertion(
+        field_path,
+        {"object_ref": object_ref, "qualifiers": qualifiers},
+        publication,
+        subject,
+        curator,
+        locator,
+        quote,
+        eco_code,
+        curated_at,
+    )
+    base = {
+        "field": field_path,
+        "publication": publication,
+        "source_assertion_id": assertion["id"],
+    }
+    if card.source_assertion_store.get(assertion["id"]) is not None:
+        previous = next(
+            (
+                r
+                for r in card.quality.get("curation", [])
+                if r["source_assertion_id"] == assertion["id"]
+            ),
+            None,
+        )
+        return previous or {**base, "outcome": "already_recorded", "compared_with": []}
+
+    relationship = make_relationship(
+        subject,
+        predicate,
+        object_ref,
+        qualifiers,
+        source_assertion_ids=[assertion["id"]],
+    )
+    existing = card.relationship_store.get(relationship["id"])
+    before = json.loads(_key((existing or {}).get("qualifier_conflicts") or {}))
+    compared = list((existing or {}).get("source_assertion_ids") or [])
+    card.source_assertion_store.add(assertion)
+    card.relationship_store.add(relationship)
+    stored = card.relationship_store.get(relationship["id"])
+    after = stored.get("qualifier_conflicts") or {}
+    differing = {
+        k: v for k, v in after.items() if k in qualifiers and v != before.get(k)
+    }
+    if existing is None:
+        outcome = "new"
+    elif differing:
+        outcome = "differs"
+        card.quality.setdefault("conflicts", []).append(
+            {
+                "field": field_path,
+                "type": "curated_difference",
+                "relationship_id": relationship["id"],
+                "qualifiers": differing,
+                "source_assertion_ids": [compared, [assertion["id"]]],
+            }
+        )
+    else:
+        outcome = "corroborates"
+    record = {
+        **base,
+        "relationship_id": relationship["id"],
+        "outcome": outcome,
+        "compared_with": compared,
+    }
+    card.quality.setdefault("curation", []).append(record)
+    return record

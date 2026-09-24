@@ -63,6 +63,11 @@ print(record["outcome"])  # new, corroborates, differs, not_comparable or not_co
   discarded or overridden.
 - **Quantities.** Give the unit (`"0.825 kDa"`, `puw.quantity(825, "Da")`). The value is
   kept as written and compared at the precision it was stated with.
+- **Relationships.** `card.add_literature_relationship(predicate, object_ref,
+  qualifiers, publication=..., curator=...)` records an interaction, the residues at an
+  interface, and so on. It merges with the same relationship from other sources, and
+  qualifiers stated differently are kept as conflicts and flagged. Curated bioactivity
+  measurements are not supported yet (uibcdf/sabueso#44).
 - **Where it shows.** `card.literature()` lists each publication's curated assertions
   with their outcome.
 - **Scope.** How a statement bears on a project's hypotheses is not Sabueso's: that is

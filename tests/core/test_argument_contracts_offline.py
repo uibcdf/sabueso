@@ -39,6 +39,7 @@ PUBLIC_TOOLS = [
     ambiguity_deck,
     Card.bioactivities,
     Card.add_literature_assertion,
+    Card.add_literature_relationship,
     Card.structures,
     Card.ligands,
     Card.compare_ligands,
