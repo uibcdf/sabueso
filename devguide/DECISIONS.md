@@ -57,14 +57,32 @@
   - `tools.deck.*` (operate on Deck)
 - Tools are intentionally **ad‑hoc** and **heterogeneous** (no common protocol).
 
-## Versioning (Pending Decision)
-- Version strings use **x.y.z** (no leading `v`).
-- Third‑party API URLs may include their own version segments (e.g., `/v1/`); do not change those.
-- CardOps, DeckOps, and any internal Sabueso formats follow **x.y.z**.
-- A formal **schema versioning policy** is required (uibcdf/sabueso#42). Interim practice: an
-  additive optional card field bumps the patch number (0.3.0 → 0.3.1), and a change to
-  existing fields bumps the minor number.
-- Card and tool versioning must be defined before stable releases.
+## Versioning
+- Version strings use **x.y.z** (no leading `v`). Third-party API URLs may include their own
+  version segments (e.g., `/v1/`); do not change those.
+- Release, card schema, file formats, rules and profiles are separate namespaces (MOLI
+  release version policy):
+  - card schema `x.y.z`;
+  - deck file and curation store: integer `format`;
+  - derived rules and enrichment profiles: `name@N`, immutable once published;
+  - selection rules: `x.y.z`.
+- Views (`Card.structures()` and the others) are Python API, not schema. They change
+  with releases, and deprecations are warned about.
+
+## Card schema versioning (2026-09-24)
+uibcdf/sabueso#42; the rules are in `devguide/SCHEMA.md` ("Versioning policy").
+- Before 1.0, `z` grows with additive optional fields and `y` with anything else. From
+  1.0 on, semver.
+- A schema version is fixed once a release publishes it. Until then, additive changes
+  accumulate in the next version.
+- Readers:
+  - read their own line, and newer versions of it with a warning, keeping unknown keys;
+  - refuse other lines until an explicit migration exists (#51);
+  - refuse cards without a version.
+- Guards:
+  - a frozen card per published schema must stay readable;
+  - the recorded card shape must match what the code writes;
+  - a published version's shape cannot be rewritten.
 
 ## Cache/Store Policy (Pending Decision)
 - Decide whether local cache stores **raw source data**, **cards only**, or **both**.

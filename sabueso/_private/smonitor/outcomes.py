@@ -16,6 +16,7 @@ from .warnings import (
     DeprecatedUsageWarning,
     EnrichmentFailedWarning,
     EnrichmentTruncatedWarning,
+    NewerCardSchemaWarning,
     UnanchoredRecordsWarning,
 )
 
@@ -101,4 +102,11 @@ def report_deprecated(function: str, replacement: str) -> None:
     warn(
         DeprecatedUsageWarning(function=function, replacement=replacement),
         stacklevel=_user_stacklevel(),
+    )
+
+
+def report_newer_schema(card: str, schema: str) -> None:
+    """Warn that a card from a newer Sabueso was read."""
+    warn(
+        NewerCardSchemaWarning(card=card, schema=schema), stacklevel=_user_stacklevel()
     )

@@ -37,7 +37,12 @@ class Card:
         relationship_store: RelationshipStore | List[Dict[str, Any]] | None = None,
     ) -> None:
         self.meta = meta or {}
+        # A card always states its schema; a stored card keeps the one it was written with.
+        self.meta.setdefault("schema_version", CARD_SCHEMA_VERSION)
         self.sections = sections or {}
+        # Top-level keys of a newer schema this version does not know: kept, never
+        # dropped, so saving the card again does not lose them (#42).
+        self.unknown_stored: Dict[str, Any] = {}
         if not isinstance(source_assertion_store, SourceAssertionStore):
             source_assertion_store = SourceAssertionStore(source_assertion_store)
         self.source_assertion_store = source_assertion_store
@@ -280,6 +285,7 @@ class Card:
             "relationship_store": self.relationship_store.to_list(),
             "selection_rules": self.selection_rules,
             "quality": self.quality,
+            **self.unknown_stored,
         }
         data["quantities"] = seal(data)
         return data
@@ -300,12 +306,31 @@ class Card:
     def from_dict(cls, data: Dict[str, Any]) -> "Card":
         """Rebuild a Card, including its SourceAssertionStore, from ``to_dict()`` output.
 
-        The quantities seal is verified first; a card whose quantities were changed
-        outside Sabueso is refused (StorageError).
+        The card's schema version is checked first (``sabueso.core.schema_version``): a
+        card of another schema line is refused, and one of a newer version of this line is
+        read with a warning. Then the quantities seal is verified; a card whose quantities
+        were changed outside Sabueso is refused (StorageError).
         """
+        from .schema_version import check_card_schema
+
         data = dict(data)
+        newer = check_card_schema(data.get("meta"), CARD_SCHEMA_VERSION)
         verify(data, data.pop("quantities", None))
-        return cls(**data)
+        known = {
+            "meta",
+            "sections",
+            "source_assertion_store",
+            "relationship_store",
+            "selection_rules",
+            "quality",
+        }
+        card = cls(**{k: v for k, v in data.items() if k in known})
+        card.unknown_stored = {k: v for k, v in data.items() if k not in known}
+        if newer:
+            from sabueso._private.smonitor.outcomes import report_newer_schema
+
+            report_newer_schema(card.id or "", card.meta["schema_version"])
+        return card
 
     @classmethod
     def from_json(cls, path: str) -> "Card":

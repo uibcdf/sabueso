@@ -139,3 +139,26 @@ class DeprecatedUsageWarning(SabuesoWarning, FutureWarning):
             meta=META if extra else None,
             extra=extra,
         )
+
+
+class NewerCardSchemaWarning(SabuesoWarning):
+    """A card written with a newer schema of this line was read (#42)."""
+
+    catalog_key = "NewerCardSchemaWarning"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        card: str | None = None,
+        schema: str | None = None,
+    ) -> None:
+        extra = None
+        if message is None:
+            extra = {"card": card, "schema": schema}
+        super().__init__(
+            message,
+            catalog=CATALOG if extra else None,
+            meta=META if extra else None,
+            extra=extra,
+        )

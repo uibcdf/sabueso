@@ -102,6 +102,51 @@ built by the aggregator therefore carries:
   fields bumps the minor number.
 
 The identifier syntax is provisional (MOLI freezes referencability, not the format).
+
+## Versioning policy (uibcdf/sabueso#42)
+
+**What a version covers.** The card schema covers the stored form of a card:
+- `meta`;
+- sections and their fields;
+- SourceAssertion keys and `source_metadata`;
+- relationship predicates, their qualifiers and derivations;
+- `quality` records.
+
+Raw source content (`asserted_value`) and the quantities seal (PyUnitWizard's format) are
+not part of it. Views are Python API, not schema.
+
+**Numbering.**
+- Before 1.0 (`0.y.z`):
+  - `z` grows with an additive, optional field, qualifier, predicate or key, so older cards
+    stay valid (0.3.0 → 0.3.1);
+  - `y` grows with anything else: a change of meaning, shape or unit, a removal, or a
+    required field (0.2.0 → 0.3.0).
+- From 1.0: patch for clarifications without a shape change, minor for additive changes,
+  major for incompatible ones.
+- A version is **fixed once a release publishes it**. Until then, additive changes
+  accumulate in the next version. The release notes state the card schema they write.
+
+**Reading** (`sabueso.core.schema_version`, applied by every loader):
+
+| The card states | The reader |
+|---|---|
+| this version, or an older one of the same `0.y` (same major from 1.0) | reads it as is, without upgrading it |
+| a newer one of that line | reads it with `NewerCardSchemaWarning` (`SABUESO-W-SCHEMA-001`), keeping unknown keys and top-level entries for re-saving. A quantity at a path this version did not negotiate is still refused by the seal check. |
+| another line | refuses it (`StorageError`) until an explicit migration exists (#51) |
+| no version, or an invalid one | refuses it |
+
+**Guards.**
+- Frozen cards: `temp_data/frozen_cards/schema_<version>__<entity>.json` holds one card
+  per published schema, written by that release. Every one of them must stay readable
+  (`tests/core/test_card_schema_policy_offline.py`). **On each release that publishes a
+  new schema, add its frozen card.**
+- Recorded shape: `schemas/card_shape_<version>.json` records the key paths of the cards
+  the code writes from the fixtures (`tools/card_shape.py`), and a test compares them.
+  If the shape changes:
+  - for an unpublished version, run `python tools/card_shape.py --write`;
+  - for a published version (it has a frozen card), bump `CARD_SCHEMA_VERSION`, add
+    `schemas/card_schema_<version>.yaml`, and record the new shape. `--write` refuses to
+    rewrite a published shape.
 Card versions and snapshots, which Nextia needs to pin historical knowledge, are not
 implemented yet.
 

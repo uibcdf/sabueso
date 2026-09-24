@@ -41,3 +41,11 @@ uploaded.
 
 Before documenting any installation route, verify a clean installation from the public
 channel; staging and source tests alone are not publication.
+
+## Card schema at release
+
+The release notes state the card schema the release writes. If the release publishes a
+card schema no earlier release published, add its frozen card before tagging:
+`temp_data/frozen_cards/schema_<version>__P52270.json`, built by the release candidate
+(see `devguide/SCHEMA.md`, "Versioning policy", and uibcdf/sabueso#42). From then on,
+that schema's recorded shape is fixed.

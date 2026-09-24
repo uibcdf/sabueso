@@ -64,6 +64,12 @@ CATALOG = {
             "category": "identity",
             "level": "WARNING",
         },
+        "NewerCardSchemaWarning": {
+            "code": "SABUESO-W-SCHEMA-001",
+            "source": "sabueso.warning.newer_card_schema",
+            "category": "storage",
+            "level": "WARNING",
+        },
         "DeprecatedUsageWarning": {
             "code": "SABUESO-W-DEPRECATED-001",
             "source": "sabueso.warning.deprecated_usage",
@@ -115,6 +121,13 @@ CODES = {
         "user_hint": "They are listed in deck.meta['unanchored'].",
         "dev_message": "Unanchored records for {subject}: {examples}",
     },
+    "SABUESO-W-SCHEMA-001": {
+        "title": "Card from a newer Sabueso",
+        "user_message": "Card {card} was written with card schema {schema}, newer than "
+        "this Sabueso's. It was read; fields this version does not know are kept but not "
+        "interpreted.",
+        "user_hint": "Update Sabueso to use every field of the card.",
+    },
     "SABUESO-W-DEPRECATED-001": {
         "title": "Deprecated function",
         "user_message": "{function} is deprecated and will be removed before Sabueso 1.0.",
@@ -140,6 +153,7 @@ SIGNALS = {
     "sabueso.warning.unanchored_records": {
         "extra_required": ["subject", "count", "examples"]
     },
+    "sabueso.warning.newer_card_schema": {"extra_required": ["card", "schema"]},
     "sabueso.warning.deprecated_usage": {"extra_required": ["function", "replacement"]},
     "sabueso.warning.curated_disagreement": {
         "extra_required": ["subject", "field", "publication"]
