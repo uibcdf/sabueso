@@ -58,7 +58,10 @@ class Card:
         """Relationships carried by this card, optionally filtered."""
         return self.relationship_store.find(predicate=predicate, object_ref=object_ref)
 
-    def structures(self, include_fragments: bool = False) -> Dict[str, Any]:
+    @arg_digest()
+    def structures(
+        self, include_fragments: bool = False, skip_digestion: bool = False
+    ) -> Dict[str, Any]:
         """Protein-centric view of this card's experimental structures."""
         from .structures import structures_view
 
@@ -84,17 +87,20 @@ class Card:
 
         return ligand_sites_view(self)
 
+    @arg_digest()
     def ligands(
         self,
         deck: Any,
         include_indirect: bool = False,
         thresholds: Dict[str, Any] | None = None,
+        skip_digestion: bool = False,
     ) -> Dict[str, Any]:
         """This protein crossed with a deck of SmallMoleculeCards (``ligand_deck``)."""
         from .ligands import ligands_view
 
         return ligands_view(self, deck, include_indirect, thresholds)
 
+    @arg_digest()
     def compare_ligands(
         self,
         deck: Any,
@@ -102,6 +108,7 @@ class Card:
         other_deck: Any,
         include_indirect: bool = False,
         thresholds: Dict[str, Any] | None = None,
+        skip_digestion: bool = False,
     ) -> Dict[str, Any]:
         """Molecules related to this protein and to ``other``, side by side."""
         from .ligands import compare_ligands
@@ -134,7 +141,11 @@ class Card:
         """
         return to_quantity(self.get(field_path))
 
-    def extract(self, field_paths: List[str]) -> Dict[str, Any]:
+    @arg_digest()
+    def extract(
+        self, field_paths: List[str], skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """``{field_path: node}``; a single path is one field, not its characters."""
         return {fp: self.get(fp) for fp in field_paths}
 
     def list_fields(self) -> List[str]:
@@ -209,14 +220,12 @@ class Card:
         return Deck([self])
 
     def compare(self, other: "Card", fields: List[str] | None = None) -> Dict[str, Any]:
-        fields = fields or []
-        diffs: Dict[str, Any] = {}
-        for fp in fields:
-            diffs[fp] = {"self": self.get(fp), "other": other.get(fp)}
-        return diffs
+        """``{field_path: {"self": node, "other": node}}``; ``fields`` as in ``extract``."""
+        mine = self.extract([] if fields is None else fields)
+        theirs = other.extract(list(mine))
+        return {fp: {"self": mine[fp], "other": theirs[fp]} for fp in mine}
 
     def expand(self, kind: str) -> Any:
-        # Placeholder: actual expansion will be implemented in ops/tools.
-        from .deck import Deck
-
-        return Deck([])
+        """Not implemented. It used to return an empty Deck, which read as "nothing
+        related" rather than "not computed"."""
+        raise NotImplementedError("Card.expand is not implemented yet.")

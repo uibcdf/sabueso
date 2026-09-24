@@ -17,6 +17,7 @@ import re
 from dataclasses import asdict, dataclass, field
 from typing import Any, Dict, List, Optional
 
+from sabueso._private.argdigest import arg_digest
 from sabueso.core.card import make_card_id
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.core.relationship_store import (
@@ -123,14 +124,14 @@ def sequence_identity_link(
 
 
 class EntityResolver:
+    @arg_digest()
     def __init__(
         self,
         uniprot_client: Any | None = None,
         policy: str | None = DEFAULT_POLICY,
         rcsb_client: Any | None = None,
+        skip_digestion: bool = False,
     ) -> None:
-        if policy is not None and policy not in POLICIES:
-            raise ValueError(f"Unknown preference policy {policy!r}; known: {POLICIES}")
         self.uniprot = uniprot_client or OnlineUniProtClient()
         self.rcsb = rcsb_client or OnlineRCSBClient()
         self.policy = policy

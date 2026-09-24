@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import Any, Callable, Dict, List
 
+from sabueso._private.argdigest import arg_digest
+
 
 class Deck:
     """Collection of Cards with consistent operations."""
@@ -59,13 +61,17 @@ class Deck:
         return [fn(c) for c in self.cards]
 
     def compare(self, other: "Deck", key_fields: List[str]) -> Dict[str, Any]:
+        """Each deck's cards reduced to ``key_fields`` (digested by ``Card.extract``)."""
         return {
             "self": self.map(lambda c: c.extract(key_fields)),
             "other": other.map(lambda c: c.extract(key_fields)),
         }
 
-    def summarize(self, fields: List[str]) -> List[Dict[str, Any]]:
-        return [c.extract(fields) for c in self.cards]
+    @arg_digest()
+    def summarize(
+        self, fields: List[str], skip_digestion: bool = False
+    ) -> List[Dict[str, Any]]:
+        return [c.extract(fields, skip_digestion=True) for c in self.cards]
 
     def to_list(self) -> List[Dict[str, Any]]:
         return [c.to_dict() for c in self.cards]

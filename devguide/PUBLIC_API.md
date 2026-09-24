@@ -11,7 +11,7 @@ Ops are methods on Card/Deck with predictable behavior.
 Core Ops version: **0.1.0** (x.y.z).
 
 Examples:
-- CardOps: `compare`, `extract`, `expand`, `to_deck`, `to_dict`.
+- CardOps: `compare`, `extract`, `expand` (not implemented; raises `NotImplementedError`), `to_deck`, `to_dict`.
 - DeckOps: `filter`, `sort`, `compare`, `map`, `reduce`.
 
 ## Minimal Stable Ops (Approved)

@@ -18,9 +18,17 @@ from sabueso import (
     resolve_protein_card,
 )
 from sabueso.core.card import Card
+from sabueso.core.deck import Deck
 from sabueso.core.errors import ArgumentError, SabuesoError
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
+from sabueso.tools.card.storage import load_card_sqlite, save_card_sqlite
 from sabueso.tools.db.chembl import FixtureChEMBLClient
+from sabueso.tools.deck.storage import (
+    META_TABLE,
+    load_deck_sqlite,
+    read_deck_sqlite,
+    save_deck_sqlite,
+)
 
 PUBLIC_TOOLS = [
     resolve_protein_card,
@@ -28,6 +36,17 @@ PUBLIC_TOOLS = [
     ligand_deck,
     ambiguity_deck,
     Card.bioactivities,
+    Card.structures,
+    Card.ligands,
+    Card.compare_ligands,
+    Card.extract,
+    Deck.summarize,
+    EntityResolver.__init__,
+    save_card_sqlite,
+    load_card_sqlite,
+    save_deck_sqlite,
+    read_deck_sqlite,
+    load_deck_sqlite,
 ]
 
 
@@ -36,6 +55,17 @@ def resolver():
     return EntityResolver(
         FixtureUniProtClient("temp_data"), rcsb_client=FixtureRCSBClient("temp_data")
     )
+
+
+@pytest.fixture(scope="module")
+def protein(resolver):
+    card, _ = resolve_protein_card("P52270", resolver)
+    return card
+
+
+def test_every_public_tool_is_digested():
+    # The digester check above is only meaningful for functions ArgDigest wraps.
+    assert [t.__qualname__ for t in PUBLIC_TOOLS if inspect.unwrap(t) is t] == []
 
 
 def _structures_requested(card):
@@ -58,10 +88,10 @@ def test_every_parameter_of_every_public_tool_has_a_digester():
                     f"sabueso._private.argdigest.argument.{name}"
                 )
             except ModuleNotFoundError:
-                missing.append(f"{tool.__name__}({name})")
+                missing.append(f"{tool.__qualname__}({name})")
                 continue
             if not callable(getattr(module, f"digest_{name}", None)):
-                missing.append(f"{tool.__name__}({name})")
+                missing.append(f"{tool.__qualname__}({name})")
     assert missing == []
 
 
@@ -136,3 +166,66 @@ def test_skip_digestion_false_is_digested_and_a_false_non_boolean_is_refused(res
     # checks SKIP_PARAM first), so only a falsy non-boolean can reach its digester.
     with pytest.raises(ArgumentError):
         resolve_protein_card("P52270", resolver, skip_digestion=0)
+
+
+@pytest.mark.parametrize(
+    "call",
+    [
+        lambda card, db: EntityResolver(policy="prefer_reviewed"),
+        lambda card, db: EntityResolver(uniprot_client="https://rest.uniprot.org"),
+        lambda card, db: card.structures(include_fragments="yes"),
+        lambda card, db: card.ligands(card.to_deck().cards),
+        lambda card, db: card.compare_ligands(Deck(), card.to_deck(), Deck()),
+        lambda card, db: card.extract(["identifiers.uniprot", 7]),
+        lambda card, db: card.extract("identifiers..uniprot"),
+        lambda card, db: Deck([card]).summarize(None),
+        lambda card, db: save_card_sqlite(card, db, table="cards; DROP TABLE x"),
+        lambda card, db: save_card_sqlite(card, db, id_field=""),
+        lambda card, db: load_card_sqlite(db, table="two words"),
+        lambda card, db: load_card_sqlite(db, card_id=""),
+        lambda card, db: save_deck_sqlite(card.to_deck(), db, table=META_TABLE),
+        lambda card, db: save_deck_sqlite([card], db),
+        lambda card, db: read_deck_sqlite(db, table="1cards"),
+        lambda card, db: load_deck_sqlite(None),
+        lambda card, db: Card.from_sqlite(db, table="cards--"),
+        lambda card, db: Deck.from_sqlite(db, table=META_TABLE),
+    ],
+)
+def test_a_wrong_value_is_refused_at_every_digested_boundary(protein, tmp_path, call):
+    with pytest.raises(ArgumentError) as info:
+        call(protein, tmp_path / "cards.sqlite")
+    assert info.value.code == "SABUESO-E-ARG-001"
+
+
+def test_a_table_name_never_reaches_sql_unchecked(protein, tmp_path):
+    # save_card_sqlite interpolated any table name into SQL before #31.
+    db = tmp_path / "cards.sqlite"
+    save_card_sqlite(protein, db)
+    with pytest.raises(ArgumentError):
+        save_card_sqlite(protein, db, table="x (a); DROP TABLE cards; --")
+    assert load_card_sqlite(db).id == protein.id
+
+
+def test_a_single_field_path_is_one_field_not_its_characters(protein):
+    path = "identifiers.uniprot"
+    assert list(protein.extract(path)) == [path]
+    assert list(protein.compare(protein, path)) == [path]
+    assert [list(row) for row in Deck([protein]).summarize(path)] == [[path]]
+    compared = Deck([protein]).compare(Deck([protein]), path)
+    assert [list(row) for row in compared["self"]] == [[path]]
+
+
+def test_digested_storage_round_trips(protein, tmp_path):
+    db = tmp_path / "cards.sqlite"
+    save_deck_sqlite(
+        protein.to_deck(), db, table="proteins", id_field="identifiers.uniprot"
+    )
+    meta, cards = read_deck_sqlite(db, table="proteins")
+    assert [c.id for c in cards] == [protein.id]
+    assert load_deck_sqlite(db, table="proteins").ids() == [protein.id]
+
+
+def test_expand_is_not_implemented_rather_than_empty(protein):
+    # It returned an empty Deck, which read as "nothing related".
+    with pytest.raises(NotImplementedError):
+        protein.expand("structures")

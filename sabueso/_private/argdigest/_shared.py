@@ -60,3 +60,39 @@ def positive_int(value: Any) -> str | None:
     if isinstance(value, bool) or not isinstance(value, int) or value < 1:
         return "expected a positive integer"
     return None
+
+
+def a_deck(argument: str, value: Any, caller: str | None) -> Any:
+    from sabueso.core.deck import Deck
+
+    if isinstance(value, Deck):
+        return value
+    raise refuse(argument, value, caller, "expected a Deck")
+
+
+def field_path(argument: str, value: str, caller: str | None) -> str:
+    """A dotted field path such as ``identifiers.uniprot``: no empty segment."""
+    if not value or any(not part.strip() for part in value.split(".")):
+        raise refuse(argument, value, caller, "expected a dotted field path")
+    return value
+
+
+def path_list(argument: str, value: Any, caller: str | None) -> list:
+    """One field path, or an iterable of them, as a list.
+
+    A single path is wrapped: iterating the string would otherwise look up one "field"
+    per character, each silently absent, a plausible wrong result.
+    """
+    if isinstance(value, str):
+        value = [value]
+    try:
+        paths = list(value)
+    except TypeError:
+        raise refuse(
+            argument, value, caller, "expected a field path or a list of them"
+        ) from None
+    for path in paths:
+        if not isinstance(path, str):
+            raise refuse(argument, value, caller, f"not a field path: {path!r}")
+        field_path(argument, path, caller)
+    return paths
