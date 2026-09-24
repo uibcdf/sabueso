@@ -45,7 +45,7 @@ jobs:
         shell: bash -l {0}
         run: |
           cd "$RUNNER_TEMP"
-          python -c "import sabueso; from sabueso.resolver import load_selection_rules; assert 'site-packages' in sabueso.__file__, sabueso.__file__; assert load_selection_rules()['rules']"
+          python -c "import sabueso; from sabueso.resolver import load_selection_rules; assert 'site-packages' in sabueso.__file__, sabueso.__file__; assert load_selection_rules()['field_rules']"
       - name: Environment
         shell: bash -l {0}
         run: |
