@@ -199,7 +199,7 @@ def resolve_protein_card(
         from sabueso.tools.db.pdbe_kb import OnlinePDBeKBClient
 
         client = pdbe_kb_client or OnlinePDBeKBClient()
-        record = {"source": "PDBe-KB", "identifier": anchor}
+        record = {"source": "PDBe-KB", "data": "ligand_sites", "identifier": anchor}
         try:
             response = client.ligand_sites(anchor)
         except RecordNotFoundError:

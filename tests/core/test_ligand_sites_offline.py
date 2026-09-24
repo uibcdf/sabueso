@@ -65,6 +65,7 @@ def test_pdbe_kb_sites_are_supported_relationships(resolver):
     (enrichment,) = card.quality["enrichments"]
     assert enrichment == {
         "source": "PDBe-KB",
+        "data": "ligand_sites",
         "identifier": "P52270",
         "status": "added",
         "count": 6,

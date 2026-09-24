@@ -36,7 +36,9 @@ def test_online_protein_card_with_chembl_bioactivities():
 @pytest.mark.online
 def test_online_ligand_sites_with_instance_contacts():
     card, _ = resolve_protein_card("P52270", structures=["1SUX"], ligand_sites=True)
-    (outcome,) = [e for e in card.quality["enrichments"] if e["source"] == "PDBe-KB"]
+    (outcome,) = [
+        e for e in card.quality["enrichments"] if e.get("data") == "ligand_sites"
+    ]
     assert outcome["status"] == "added"
     bts = {i["ligand"]: i for i in card.ligand_sites()["items"]}["pdb.ligand:BTS"]
     assert {71, 75, 102} <= set(bts["positions"])
