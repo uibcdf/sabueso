@@ -36,7 +36,7 @@
     "rules": [
      "active_primary_accession"
     ],
-    "sabueso_version": "0.1.1+27.g4d72517",
+    "sabueso_version": "0.1.1",
     "sources": [
      {
       "name": "UniProt",

@@ -30,7 +30,7 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | `unichem/*.json` | UniChem (EMBL-EBI) | — | 2026-09-23 | see note below |
 | `5978.json`, `66414.json` | PubChem (NCBI/NLM) | — | earlier | US public domain (NLM policy) |
 | `2NZT.json` | RCSB PDB entry | — | earlier | CC0 1.0 |
-| `frozen_cards/*.json` | Sabueso cards built from the fixtures above by a published release, kept to test that later versions still read them (#42). `schema_0.3.0__P52270.json`: release 0.1.1 (card schema 0.3.0), from the UniProt, RCSB PDB and ChEMBL fixtures | — | 2026-09-24 | each part keeps its source's licence; the ChEMBL part is **CC BY-SA 3.0** |
+| `frozen_cards/*.json` | Sabueso cards built from the fixtures above by a published release, kept to test that later versions still read them (#42). `schema_0.3.0__P52270.json`: the published conda package `sabueso=0.1.1` (uibcdf channel; card schema 0.3.0), run on the UniProt, RCSB PDB and ChEMBL fixtures | — | 2026-09-24 | each part keeps its source's licence; the ChEMBL part is **CC BY-SA 3.0** |
 
 Modifications: the ChEMBL activity and molecule fixtures keep only the fields the clients
 request and drop the `molfile` block; the UniChem fixtures keep the compound's InChIKey,

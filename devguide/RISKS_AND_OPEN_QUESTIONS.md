@@ -12,6 +12,12 @@
 - **Ambiguity**: input resolution may produce multiple valid entities.
 - **Ops drift**: unstable ops contracts can break tools and downstream integrations.
 - **Schema churn**: frequent schema changes can break cards, tools, and mappings.
+- **Recorded Sabueso version in development environments**: `sabueso.__version__`, and
+  therefore the `sabueso_version` of derivation records, comes from the installed
+  distribution's metadata. If the imported code is another copy (a worktree on
+  `PYTHONPATH`, or a stale `sabueso.egg-info` at the repository root), cards record a
+  version that did not write them. Published packages are not affected. Frozen cards are
+  therefore built from the published package (#42).
 - **Concurrent curation stores** (uibcdf/sabueso#48): a `CurationStore` is rewritten
   whole on every save. The write is atomic (temporary file, then replace), but two people
   saving to the same file at the same time lose the first writer's new records: the last
