@@ -15,6 +15,7 @@ dynamic = ["version"]
 # `pip install --no-deps` for Sabueso itself (MOLI distribution policy, #34).
 dependencies = [
   "smonitor>=0.16.0",
+  "pyunitwizard>=0.27.0",
 ]
 classifiers = [
   "Programming Language :: Python :: 3",

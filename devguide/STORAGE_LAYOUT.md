@@ -31,8 +31,12 @@ decision of an `ambiguity_deck`, or the source outcomes and unanchored records o
   table and its `meta` always describe the same deck. To accumulate cards, build the
   deck in memory (`Deck.extend`) and save it once.
 - Table names must be plain identifiers, and `deck_meta` is reserved.
-- `load_deck_*` return the card payloads; `read_deck_*` return `(meta, payloads)`;
-  `Deck.from_jsonl` and `Deck.from_sqlite` restore both.
+- `load_deck_*` return a `Deck`; `read_deck_*` return `(meta, cards)`;
+  `Deck.from_jsonl` and `Deck.from_sqlite` restore both. Likewise `load_card_*` return a
+  `Card`.
+- **Every loader verifies.** A stored card's quantities are sealed (`quantities`, #32),
+  and no public function returns an unverified payload: a card changed outside Sabueso
+  is refused with `StorageError`.
 
 ## Notes
 - JSON/JSONL is recommended for transparency and version control.

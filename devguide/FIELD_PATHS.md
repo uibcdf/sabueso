@@ -36,9 +36,9 @@ Versioning: **x.y.z** (no leading `v`).
 
 ### properties.*
 - `properties.physchem.formula`
-- `properties.physchem.molecular_weight`
+- `properties.physchem.molecular_weight` (quantity node, `dalton`)
 - `properties.physchem.logp`
-- `properties.physchem.tpsa`
+- `properties.physchem.tpsa` (quantity node, `angstrom ** 2`)
 - `properties.physchem.hbd`
 - `properties.physchem.hba`
 - `properties.physchem.rotatable_bonds`
@@ -84,6 +84,10 @@ Versioning: **x.y.z** (no leading `v`).
 - `clinical.regulatory_status`
 - `clinical.max_phase` (ChEMBL highest development phase: 4 approved, 3–1 clinical, 0.5 early phase 1, -1 unknown)
 
+### quantities.*
+The seal over every quantity node of a stored card (uibcdf/sabueso#32):
+- `quantities.*` (PyUnitWizard QuantityRecordBundle; one column per path and unit)
+
 ### quality.*
 Records of how the card was resolved and enriched, not source-stated fields:
 - `quality.conflicts` (disagreements among comparable assertions)
@@ -102,7 +106,7 @@ Records of how the card was resolved and enriched, not source-stated fields:
 - `disease.associations`
 - `sequence.primary`
 - `sequence.length`
-- `sequence.molecular_weight` (Da)
+- `sequence.molecular_weight` (quantity node, `dalton`)
 - `sequence.checksums` (`crc64`, `md5`)
 - `structure.primary`
 - `structure.secondary_structure`

@@ -4,9 +4,9 @@
 
 schema:
   name: sabueso-card
-  version: 0.2.0
+  version: 0.3.0
   created_at: 2026-02-01
-  updated_at: 2026-09-23
+  updated_at: 2026-09-24
   note: "Conceptual schema. Types are illustrative; enforcement via code later."
 
 card_base:
@@ -50,11 +50,11 @@ card_base:
 
   properties:
     physchem:
-      molecular_weight: { value: number, source_assertion_ids: [string] }
+      molecular_weight: { value: number, unit: string, source_assertion_ids: [string] }   # dalton
       formula: { value: string, source_assertion_ids: [string] }
       isoelectric_point: { value: number, source_assertion_ids: [string] }
       logp: { value: number, source_assertion_ids: [string] }
-      tpsa: { value: number, source_assertion_ids: [string] }
+      tpsa: { value: number, unit: string, source_assertion_ids: [string] }   # angstrom ** 2
       hbd: { value: number, source_assertion_ids: [string] }
       hba: { value: number, source_assertion_ids: [string] }
       rotatable_bonds: { value: number, source_assertion_ids: [string] }
@@ -80,6 +80,10 @@ card_base:
     vendors: { value: [string], source_assertion_ids: [string] }
     catalog_ids: { value: [string], source_assertion_ids: [string] }
 
+  # Every physical quantity is a node {value, unit}; units never live in field names (#32).
+  # Stored cards seal all quantity nodes in `quantities` (PyUnitWizard QuantityRecordBundle).
+  quantities: "*"
+
   # Records of how the card was resolved and enriched, not source-stated fields (#10).
   quality:
     conflicts: [ { field: string, type: string, values: [any], source_assertion_ids: [[string]] } ]
@@ -97,7 +101,7 @@ card_base:
       subject_ref: string
       predicate: "enum[same_as, possibly_same_as, isoform_of, superseded_by, has_structure]"
       object_ref: string
-      qualifiers: any
+      qualifiers: any            # quantities as {value, unit}: resolution, min_distance, measurement.normalized
       qualifier_conflicts: any   # values supporting sources disagree on
       source_assertion_ids: [string]   # when asserted by sources
       derivation: { rule: string, inputs: [string], parameters: any, sabueso_version: string }  # when inferred
@@ -211,10 +215,10 @@ small_molecule_card:
 
   properties:
     physchem:
-      molecular_weight: { value: number, source_assertion_ids: [string] }
+      molecular_weight: { value: number, unit: string, source_assertion_ids: [string] }   # dalton
       formula: { value: string, source_assertion_ids: [string] }
       logp: { value: number, source_assertion_ids: [string] }
-      tpsa: { value: number, source_assertion_ids: [string] }
+      tpsa: { value: number, unit: string, source_assertion_ids: [string] }   # angstrom ** 2
       hbd: { value: number, source_assertion_ids: [string] }
       hba: { value: number, source_assertion_ids: [string] }
       rotatable_bonds: { value: number, source_assertion_ids: [string] }

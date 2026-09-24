@@ -1,12 +1,12 @@
 ---
 summary: Physical quantities in Sabueso — inventory, negotiated units, and alignment with PyUnitWizard's QuantityRecord before schema 0.3.0.
 issue: uibcdf/sabueso#32
-status: open
+status: partial
 opened: 2026-09-24
 closed:
 verification: measured
 area: [schema, units, persistence, interoperability]
-blocked_by: [uibcdf/pyunitwizard#82]
+blocked_by: []
 supersedes: []
 ---
 
@@ -119,10 +119,62 @@ Facts that bound the migration:
   question 2 below. The tagged layout is implemented in PyUnitWizard only when a consumer
   needs it.
 
-## Open questions
+## Implemented (2026-09-24, schema 0.3.0)
 
-1. Accessor API names and return forms: the session's default form, or pint only?
-2. Normalized bioactivities: homogeneous (for example nM) plus the verbatim source unit,
-   or the tagged layout? Percent-inhibition values cannot share a unit with potencies.
-3. Whether `pchembl` should be recomputed from the normalized concentration or kept as
-   ChEMBL states it (ChEMBL's value carries its own curation).
+- Quantity nodes in section fields, `resolution`, `min_distance` and
+  `measurement.normalized`. The explicit ChEMBL unit vocabulary (`CHEMBL_UNITS`) is in
+  place, and nothing is guessed.
+- Card-level seal (`quantities`) written by `Card.to_dict()` and verified by
+  `Card.from_dict()`. Every public loader now returns a verified `Card` or `Deck`.
+- `Card.quantity(path)`. The structures view returns `resolution` as a quantity.
+- Dependency on `pyunitwizard>=0.27.0` in pyproject, the recipe and the conda
+  environments; `schemas/card_schema_0.3.0.yaml`.
+- Tests (`tests/core/test_quantities_offline.py`):
+  - units on nodes;
+  - the explicit vocabulary;
+  - columns in the seal;
+  - six kinds of tampering refused;
+  - independence from the session policy;
+  - a canary through every read path;
+  - a static guard against `get_value(` without `to_unit`.
+
+Remaining:
+
+- bioactivity classification from the normalized values, with thresholds and the test
+  concentration as quantities (replacing `UNITS_TO_UM`);
+- the cross-source 3-or-6-orders-of-magnitude check;
+- the pChEMBL consistency check;
+- ArgDigest contracts on quantity arguments (#31).
+
+## Decisions on the open questions (Diego, 2026-09-24)
+
+1. **Normalized bioactivities are homogeneous.** Concentrations are normalized to
+   **nanomolar**, and percentages stay a separate quantity in `percent`. The source's value
+   and unit are kept verbatim. Units that cannot be normalized get no normalized node,
+   and nothing is guessed. The tagged layout is not needed.
+2. **pChEMBL is kept as ChEMBL states it** (it carries their curation), as a named,
+   dimensionless kind. A consistency check against the normalized concentration is a
+   derived check, never a replacement.
+3. **Accessors**: `card.quantity(path)` for scalars, and array quantities for columns, in
+   the session's default form.
+
+## Storage design for schema 0.3.0 (released dependency: PyUnitWizard 0.27.0)
+
+- **Quantity nodes** are `{"value": x, "unit": "<canonical name>"}` wherever a quantity is
+  stored:
+  - section fields (the two molecular weights, TPSA), which keep `source_assertion_ids`;
+  - `has_structure` qualifier `resolution` (was `resolution_angstrom`);
+  - contact `min_distance` (was `min_distance_angstrom`);
+  - bioactivity `measurement.normalized`.
+
+  Missing values (for example the resolution of an NMR structure) are `null`, not
+  nodes.
+- **One seal per card.** `to_dict()` writes `quantities`, a PyUnitWizard
+  `QuantityRecordBundle` whose entries are **columns**. Each column holds every value of
+  one quantity path in one unit (key `"<path template>|<unit>"`), in deterministic
+  traversal order. Relationships are visited in id order, and lists keep their order.
+  A card has about a dozen entries, at about 8 B per value. A bundle entry per scalar
+  would cost about 166 B, and a card can hold thousands of contact distances.
+- **On load**, PyUnitWizard verifies the bundle, and Sabueso checks that every node
+  equals its column. This is cross-checked redundancy, never a fallback. An edit made
+  outside the codec, whether to a node or to the bundle, is refused.

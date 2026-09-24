@@ -10,7 +10,8 @@ resolution decision (``ambiguity_deck``) or per-source outcomes and unanchored r
   keyed by that table. Saving a deck into a table replaces what the table held, so the
   table and its meta always describe the same deck.
 
-``load_deck_*`` return the card payloads; ``read_deck_*`` return ``(meta, payloads)``.
+``load_deck_*`` return a Deck; ``read_deck_*`` return ``(meta, cards)``. Every card is
+verified on the way in (#32); unverified payloads never leave this module.
 """
 
 from __future__ import annotations
@@ -51,8 +52,16 @@ def save_deck_jsonl(deck: Any, path: str | Path) -> None:
             f.write("\n")
 
 
-def read_deck_jsonl(path: str | Path) -> Tuple[Dict[str, Any], List[dict]]:
-    """``(meta, card payloads)`` from a JSONL deck; meta is empty without a header."""
+def read_deck_jsonl(path: str | Path) -> Tuple[Dict[str, Any], List[Any]]:
+    """``(meta, cards)`` from a JSONL deck; every card is verified (#32)."""
+    from sabueso.core.card import Card
+
+    meta, payloads = _read_deck_jsonl(path)
+    return meta, [Card.from_dict(data) for data in payloads]
+
+
+def _read_deck_jsonl(path: str | Path) -> Tuple[Dict[str, Any], List[dict]]:
+    """``(meta, payloads)``, unverified; meta is empty without a header."""
     meta: Dict[str, Any] = {}
     cards: List[dict] = []
     with Path(path).open("r", encoding="utf-8") as f:
@@ -68,9 +77,11 @@ def read_deck_jsonl(path: str | Path) -> Tuple[Dict[str, Any], List[dict]]:
     return meta, cards
 
 
-def load_deck_jsonl(path: str | Path) -> List[dict]:
-    """Load the card payloads of a JSONL deck."""
-    return read_deck_jsonl(path)[1]
+def load_deck_jsonl(path: str | Path) -> Any:
+    """Load a JSONL deck, with its meta; every card is verified (#32)."""
+    from sabueso.core.deck import Deck
+
+    return Deck.from_jsonl(str(path))
 
 
 def save_deck_sqlite(
@@ -122,8 +133,18 @@ def save_deck_sqlite(
 
 def read_deck_sqlite(
     path: str | Path, table: str = "cards"
+) -> Tuple[Dict[str, Any], List[Any]]:
+    """``(meta, cards)`` of the deck stored in ``table``; every card is verified (#32)."""
+    from sabueso.core.card import Card
+
+    meta, payloads = _read_deck_sqlite(path, table)
+    return meta, [Card.from_dict(data) for data in payloads]
+
+
+def _read_deck_sqlite(
+    path: str | Path, table: str = "cards"
 ) -> Tuple[Dict[str, Any], List[dict]]:
-    """``(meta, card payloads)`` of the deck stored in ``table``."""
+    """``(meta, payloads)`` of the deck stored in ``table``, unverified."""
     table = _table(table)
     with sqlite3.connect(Path(path)) as conn:
         cur = conn.cursor()
@@ -143,6 +164,8 @@ def read_deck_sqlite(
     return meta, cards
 
 
-def load_deck_sqlite(path: str | Path, table: str = "cards") -> List[dict]:
-    """Load the card payloads of the deck stored in ``table``."""
-    return read_deck_sqlite(path, table)[1]
+def load_deck_sqlite(path: str | Path, table: str = "cards") -> Any:
+    """Load the deck stored in ``table``, with its meta; every card is verified (#32)."""
+    from sabueso.core.deck import Deck
+
+    return Deck.from_sqlite(str(path), table=table)

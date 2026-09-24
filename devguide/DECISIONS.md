@@ -192,3 +192,15 @@ Closes uibcdf/sabueso#10 (`devguide/archive/physchem_normalization.md`).
 - Items of a list field are a union, not competing values.
 - A small molecule's properties describe the structure its card is anchored at (ChEMBL
   `full_mwt`, not the parent's `mw_freebase`).
+
+## Quantities travel with their units, sealed (2026-09-24)
+uibcdf/sabueso#32 (`devguide/pending_proposals/quantities.md`); the format is PyUnitWizard's
+`QuantityRecord` (released in 0.27.0; design in uibcdf/pyunitwizard#83).
+- Sabueso answers quantity questions with quantities, and stores every quantity as
+  `{value, unit}` in PyUnitWizard's canonical spelling.
+- Stored cards seal their quantities (one QuantityRecordBundle, columns by path and
+  unit); loaders verify, and there is no default unit.
+- Bioactivity concentrations are normalized to nanomolar with explicit conversions; the
+  source's value and unit are kept verbatim. pChEMBL is kept as ChEMBL states it.
+- Sabueso never sets PyUnitWizard's session policy; stored numbers do not depend on it.
+

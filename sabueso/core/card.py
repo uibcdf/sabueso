@@ -4,10 +4,11 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
+from .quantities import field_node, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
-CARD_SCHEMA_VERSION = "0.2.0"
+CARD_SCHEMA_VERSION = "0.3.0"
 
 
 def make_card_id(entity_type: str, subject_ref: str) -> str:
@@ -120,7 +121,14 @@ class Card:
             if key not in cur or not isinstance(cur[key], dict):
                 cur[key] = {}
             cur = cur[key]
-        cur[parts[-1]] = {"value": value, "source_assertion_ids": source_assertion_ids}
+        cur[parts[-1]] = field_node(field_path, value, source_assertion_ids)
+
+    def quantity(self, field_path: str) -> Any:
+        """The field's value as a PyUnitWizard quantity (session's default form).
+
+        Raises SchemaError when the field holds no quantity.
+        """
+        return to_quantity(self.get(field_path))
 
     def extract(self, field_paths: List[str]) -> Dict[str, Any]:
         return {fp: self.get(fp) for fp in field_paths}
@@ -139,7 +147,8 @@ class Card:
         return out
 
     def to_dict(self) -> Dict[str, Any]:
-        return {
+        """The stored form: every quantity node sealed by ``quantities`` (#32)."""
+        data = {
             "meta": self.meta,
             "sections": self.sections,
             "source_assertion_store": self.source_assertion_store.to_list(),
@@ -147,6 +156,8 @@ class Card:
             "selection_rules": self.selection_rules,
             "quality": self.quality,
         }
+        data["quantities"] = seal(data)
+        return data
 
     def to_json(self, path: str) -> None:
         from sabueso.tools.card.storage import save_card_json
@@ -162,22 +173,28 @@ class Card:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "Card":
-        """Rebuild a Card, including its SourceAssertionStore, from ``to_dict()`` output."""
+        """Rebuild a Card, including its SourceAssertionStore, from ``to_dict()`` output.
+
+        The quantities seal is verified first; a card whose quantities were changed
+        outside Sabueso is refused (StorageError).
+        """
+        data = dict(data)
+        verify(data, data.pop("quantities", None))
         return cls(**data)
 
     @classmethod
     def from_json(cls, path: str) -> "Card":
-        from sabueso.tools.card.storage import load_card_json
+        from sabueso.tools.card.storage import _read_card_json
 
-        return cls.from_dict(load_card_json(path))
+        return cls.from_dict(_read_card_json(path))
 
     @classmethod
     def from_sqlite(
         cls, path: str, table: str = "cards", card_id: str | None = None
     ) -> "Card | None":
-        from sabueso.tools.card.storage import load_card_sqlite
+        from sabueso.tools.card.storage import _read_card_sqlite
 
-        data = load_card_sqlite(path, table=table, card_id=card_id)
+        data = _read_card_sqlite(path, table=table, card_id=card_id)
         if data is None:
             return None
         return cls.from_dict(data)

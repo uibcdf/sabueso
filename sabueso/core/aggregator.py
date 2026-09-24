@@ -9,6 +9,7 @@ from sabueso.resolver import load_selection_rules, resolve_field
 
 from .card import CARD_SCHEMA_VERSION, Card, make_card_id
 from .errors import SchemaError
+from .quantities import field_node
 from .relationship_store import RelationshipStore
 from .source_assertion_store import SourceAssertionStore, assertion_value
 
@@ -138,7 +139,7 @@ def build_card_from_mapping(
             if key not in cur or not isinstance(cur[key], dict):
                 cur[key] = {}
             cur = cur[key]
-        cur[parts[-1]] = {"value": value, "source_assertion_ids": source_assertion_ids}
+        cur[parts[-1]] = field_node(path, value, source_assertion_ids)
 
     # Helper: resolve field value if rules provided
     # Every field is resolved from its assertions, with the packaged default rules when

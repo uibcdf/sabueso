@@ -29,8 +29,8 @@ def test_save_card_json(tmp_path: Path):
     out2 = tmp_path / "card2.json"
     card.to_json(str(out2))
     assert out2.exists()
-    data = load_card_json(out)
-    assert data["sections"]["identifiers"]["uniprot"]["value"] == "P00001"
+    loaded = load_card_json(out)  # a verified Card, not a raw payload (#32)
+    assert loaded.get("identifiers.uniprot")["value"] == "P00001"
     card2 = Card.from_json(str(out2))
     assert card2.get("identifiers.uniprot")["value"] == "P00001"
 
@@ -49,8 +49,7 @@ def test_save_deck_jsonl(tmp_path: Path):
     out2 = tmp_path / "deck2.jsonl"
     deck.to_jsonl(str(out2))
     assert out2.exists()
-    rows = load_deck_jsonl(out)
-    assert len(rows) == 2
+    assert len(load_deck_jsonl(out).cards) == 2
 
 
 def test_save_card_sqlite(tmp_path: Path):
@@ -69,8 +68,8 @@ def test_save_card_sqlite(tmp_path: Path):
     out2 = tmp_path / "cards2.db"
     card.to_sqlite(str(out2), id_field="identifiers.uniprot")
     assert out2.exists()
-    data = load_card_sqlite(out, card_id="P00001")
-    assert data["sections"]["identifiers"]["uniprot"]["value"] == "P00001"
+    loaded = load_card_sqlite(out, card_id="P00001")
+    assert loaded.get("identifiers.uniprot")["value"] == "P00001"
     card2 = Card.from_sqlite(str(out2), card_id="P00001")
     assert card2.get("identifiers.uniprot")["value"] == "P00001"
 
@@ -92,5 +91,4 @@ def test_save_deck_sqlite(tmp_path: Path):
     out2 = tmp_path / "cards2.db"
     deck.to_sqlite(str(out2), id_field="identifiers.uniprot")
     assert out2.exists()
-    rows = load_deck_sqlite(out)
-    assert len(rows) == 2
+    assert len(load_deck_sqlite(out).cards) == 2

@@ -14,6 +14,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
+from sabueso.core.quantities import normalized_measurement
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
 
@@ -159,6 +160,10 @@ def map_bioactivities(
                         "upper_value": _number(activity.get("standard_upper_value")),
                         "units": activity.get("standard_units"),
                         "text_value": activity.get("standard_text_value"),
+                        "normalized": normalized_measurement(
+                            _number(activity.get("standard_value")),
+                            activity.get("standard_units"),
+                        ),
                         "pchembl": _number(activity.get("pchembl_value")),
                         "activity_comment": activity.get("activity_comment"),
                         "data_validity_comment": activity.get("data_validity_comment"),

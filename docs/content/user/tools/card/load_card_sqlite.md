@@ -2,7 +2,7 @@
 
 ## Goal
 
-Load one serialized Card payload from SQLite.
+Load one stored Card from SQLite, verified.
 
 ## Steps
 
@@ -15,17 +15,17 @@ Load one serialized Card payload from SQLite.
 ```python
 from sabueso.tools.card import load_card_sqlite
 
-payload = load_card_sqlite("data/cards.sqlite", table="cards", card_id="P52789")
-print(payload["identifiers"]["uniprot"])
+card = load_card_sqlite("data/cards.sqlite", table="cards", card_id="P52789")
+print(card.get("identifiers.uniprot")["value"])
 ```
 
 ## What to check
 
-- Database and table are readable
-- Query returns payload (not None)
-- Payload follows canonical structure
+- The database and table are readable.
+- The query returns a Card (not `None`).
 
 ## Notes
 
-- If `card_id` is omitted, latest row is returned
-- Use deterministic IDs to avoid ambiguity
+- If `card_id` is omitted, the latest row is returned.
+- The card's quantities seal is verified; a card changed outside Sabueso is refused with
+  `StorageError`.

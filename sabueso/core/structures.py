@@ -10,6 +10,8 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Sequence
 
+from .quantities import to_quantity
+
 # Derived coverage classes. "domain" cannot be told from coverage alone (it needs domain
 # annotations), so the MVP uses "partial" for intermediate coverage.
 COVERAGE_CLASS_RULE = "structure_coverage_class@1"
@@ -88,7 +90,7 @@ def structures_view(card: Any, include_fragments: bool = False) -> Dict[str, Any
             "structure_ref": rel["object_ref"],
             "relationship_id": rel["id"],
             "method": q.get("method"),
-            "resolution_angstrom": q.get("resolution_angstrom"),
+            "resolution": to_quantity(q["resolution"]) if q.get("resolution") else None,
             "chains": q.get("chains"),
             "ranges": q.get("ranges"),
             "coverage": q.get("coverage"),

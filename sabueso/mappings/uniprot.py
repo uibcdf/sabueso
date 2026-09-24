@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
+from sabueso.core.quantities import LENGTH_UNIT, quantity_node
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.core.structures import coverage
@@ -407,7 +408,9 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
                 structure_ref,
                 qualifiers={
                     "method": props.get("Method"),
-                    "resolution_angstrom": _angstrom(props.get("Resolution")),
+                    "resolution": quantity_node(
+                        _angstrom(props.get("Resolution")), LENGTH_UNIT
+                    ),
                     "chains": chain_ids,
                     "ranges": ranges,
                     "coverage": coverage(ranges, sequence.get("length")),

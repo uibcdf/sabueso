@@ -84,18 +84,18 @@ class Deck:
 
     @classmethod
     def from_jsonl(cls, path: str) -> "Deck":
-        from sabueso.tools.deck.storage import read_deck_jsonl
+        from sabueso.tools.deck.storage import _read_deck_jsonl
 
         from .card import Card
 
-        meta, cards = read_deck_jsonl(path)
+        meta, cards = _read_deck_jsonl(path)
         return cls([Card.from_dict(data) for data in cards], meta=meta)
 
     @classmethod
     def from_sqlite(cls, path: str, table: str = "cards") -> "Deck":
-        from sabueso.tools.deck.storage import read_deck_sqlite
+        from sabueso.tools.deck.storage import _read_deck_sqlite
 
         from .card import Card
 
-        meta, cards = read_deck_sqlite(path, table=table)
+        meta, cards = _read_deck_sqlite(path, table=table)
         return cls([Card.from_dict(data) for data in cards], meta=meta)

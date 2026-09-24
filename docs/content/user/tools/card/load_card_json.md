@@ -2,30 +2,32 @@
 
 ## Goal
 
-Load one serialized Card payload from JSON.
+Load one stored Card from JSON, verified.
 
 ## Steps
 
 1. Provide the card JSON path.
 2. Call `load_card_json(path)`.
-3. Inspect key fields in the returned payload.
+3. Read fields and quantities from the returned Card.
 
 ## Example
 
 ```python
 from sabueso.tools.card import load_card_json
 
-payload = load_card_json("data/cards/p52789.json")
-print(payload["identifiers"]["uniprot"])
+card = load_card_json("data/cards/p52789.json")
+print(card.get("identifiers.uniprot")["value"])
+print(card.quantity("sequence.molecular_weight"))   # a quantity, with its unit
 ```
 
 ## What to check
 
-- Path resolves correctly
-- Returned object is dict-like
-- Required canonical sections are present
+- The path resolves correctly.
+- The returned object is a `Card`.
 
 ## Notes
 
-- This returns payload data, not a Card object
-- Wrap into Card in your application layer if needed
+- The card's quantities seal is verified on the way in. A card changed outside Sabueso
+  (a hand-edited value or unit, a removed seal) is refused with `StorageError`; there is
+  no default unit.
+- `Card.from_json(path)` does the same.

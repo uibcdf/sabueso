@@ -6,6 +6,8 @@ A10.
 
 import json
 
+import pyunitwizard as puw
+
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.merge import merge_mapping_results
 from sabueso.core.structures import (
@@ -68,11 +70,9 @@ def test_a9_human_tim_structures_exclude_peptide_complexes_visibly():
         [[2, 249]],
         0.996,
     )
-    assert (hti["coverage_class"], hti["method"], hti["resolution_angstrom"]) == (
-        "full_length",
-        "X-ray",
-        2.8,
-    )
+    assert (hti["coverage_class"], hti["method"]) == ("full_length", "X-ray")
+    # A quantity, not a number whose unit lives in the key's name (#32).
+    assert puw.get_value(hti["resolution"], to_unit="angstrom") == 2.8
     assert hti["sources"] == ["UniProt"]
 
     klg = _item(card.structures(include_fragments=True), "pdb:1KLG")

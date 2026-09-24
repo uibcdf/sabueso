@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Iterable, List
 
+from sabueso.core.quantities import LENGTH_UNIT, quantity_node
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.core.structures import coverage, merge_ranges, normalize_methods
@@ -101,13 +102,13 @@ def _ligand_contacts(entities: List[Dict[str, Any]]) -> Dict[str, List[Dict[str,
                         "residue": row.get("comp_id"),
                         "uniprot": acc,
                         "position": position,
-                        "min_distance_angstrom": distance,
+                        "min_distance": quantity_node(distance, LENGTH_UNIT),
                     }
                 elif distance is not None and (
-                    previous["min_distance_angstrom"] is None
-                    or distance < previous["min_distance_angstrom"]
+                    previous["min_distance"] is None
+                    or distance < previous["min_distance"]["value"]
                 ):
-                    previous["min_distance_angstrom"] = distance
+                    previous["min_distance"] = quantity_node(distance, LENGTH_UNIT)
     out: Dict[str, List[Dict[str, Any]]] = {}
     for (comp_id, _), found in sorted(
         by_instance.items(), key=lambda kv: (kv[0][0], str(kv[0][1]))
@@ -211,7 +212,9 @@ def map_structure_entities(
         source_assertions.append(assertion)
         qualifiers: Dict[str, Any] = {
             "method": normalize_methods(methods),
-            "resolution_angstrom": resolutions[0] if resolutions else None,
+            "resolution": quantity_node(resolutions[0], LENGTH_UNIT)
+            if resolutions
+            else None,
             "chains": sorted({c for e in mine for c in e["chains"]}),
             "ranges": ranges,
             "polymer_entities": [e["polymer_entity"] for e in mine],

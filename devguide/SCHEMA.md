@@ -4,7 +4,7 @@
 The frozen draft schema lives at:
 - `schemas/card_schema.yaml`
 The formal schema (versioned) lives at:
-- `schemas/card_schema_0.2.0.yaml`
+- `schemas/card_schema_0.3.0.yaml` (current; `card_schema_0.2.0.yaml` is kept as history)
 
 This is a **conceptual** schema meant to be refined into formal validation later.
 
@@ -192,7 +192,7 @@ A Relationship is first-class, traceable knowledge:
   states, i.e. the object and qualifiers as given by that source. Source property names
   are kept verbatim (e.g. UniProt's `GoEvidenceType`), while the relationship's
   qualifiers use Sabueso's vocabulary.
-- **`has_structure` qualifiers:** `method`, `resolution_angstrom`, `chains`, `ranges`
+- **`has_structure` qualifiers:** `method`, `resolution` (`{value, unit}`, #32), `chains`, `ranges`
   (UniProt numbering, inclusive) and `coverage` (fraction of the canonical sequence).
   From RCSB: `polymer_entities`, `other_entities` (complexes) and `ligands` (`comp_id`,
   `description`, `subject_of_investigation`, `subject_of_investigation_provenance`, and
@@ -209,6 +209,26 @@ A Relationship is first-class, traceable knowledge:
   serialized with the card. The aggregator rejects relationships that cite
   SourceAssertions absent from the card. The storage decision is to be re-evaluated in
   uibcdf/sabueso#19.
+
+## Quantities (#32)
+- Every physical quantity is stored as a node `{"value": x, "unit": "<canonical name>"}`
+  (PyUnitWizard's long spelling: `"nanomolar"`, `"angstrom ** 2"`). A unit never lives in
+  a field name, in metadata only, or in documentation only.
+- Section fields that are quantities carry `unit` next to `value`
+  (`sequence.molecular_weight`, `properties.physchem.molecular_weight`: `dalton`;
+  `properties.physchem.tpsa`: `angstrom ** 2`). Counts (`hbd`, `hba`, `rotatable_bonds`,
+  `sequence.length`) and logarithmic scores (`logp`, `pchembl`) are not quantities.
+- Relationship qualifiers: `has_structure.resolution` and contact `min_distance`
+  (`angstrom`); `has_bioactivity.measurement.normalized` (`nanomolar` for concentrations,
+  `percent` for percentages, `null` when the source unit cannot be normalized). The
+  measurement's `value` and `units` stay as ChEMBL states them.
+- `Card.to_dict()` writes `quantities`: one PyUnitWizard `QuantityRecordBundle` whose
+  entries are columns `"<path template>|<unit>"`. `Card.from_dict()`, and therefore every
+  loader, verifies the bundle and checks every node against its column. A change made
+  outside Sabueso is refused with `StorageError`. Details and design:
+  `devguide/pending_proposals/quantities.md`.
+- `Card.quantity(path)` returns a PyUnitWizard quantity; views return quantities
+  (`Card.structures()["items"][i]["resolution"]`).
 
 ## Quality records (#10)
 `card.quality` records how the card was resolved and enriched. Its entries are not fields

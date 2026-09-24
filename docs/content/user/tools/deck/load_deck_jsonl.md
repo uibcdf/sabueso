@@ -2,31 +2,30 @@
 
 ## Goal
 
-Load Deck payloads from JSONL.
+Load a stored Deck from JSONL, with its meta, every card verified.
 
 ## Steps
 
 1. Point to the JSONL file.
 2. Call `load_deck_jsonl(path)`.
-3. Validate count and payload structure.
+3. Use the returned Deck.
 
 ## Example
 
 ```python
 from sabueso.tools.deck import load_deck_jsonl
 
-payloads = load_deck_jsonl("data/decks/ligands.jsonl")
-print(len(payloads))
+deck = load_deck_jsonl("data/decks/ligands.jsonl")
+print(len(deck.cards), deck.meta.get("kind"))
 ```
 
 ## What to check
 
-- Returned value is a list
-- Each element is dict-like
-- Canonical keys are present
+- The returned value is a `Deck`.
 
 ## Notes
 
-- Returns payloads, not a Deck object; the header line is skipped
-- `read_deck_jsonl(path)` returns `(meta, payloads)`, and `Deck.from_jsonl(path)` a Deck
-- Rebuild Deck in your application layer if required
+- `read_deck_jsonl(path)` returns `(meta, cards)`; `Deck.from_jsonl(path)` is equivalent
+  to `load_deck_jsonl(path)`.
+- Every card's quantities seal is verified; a card changed outside Sabueso is refused
+  with `StorageError`.
