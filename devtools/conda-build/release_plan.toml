@@ -1,6 +1,6 @@
-version = "0.1.0"
+version = "0.1.1"
 route = "staged"
-reason = "First public Sabueso release (legacy 0.0.1-0.2.0 packages were withdrawn from the channel); clean installed-package gates with the public SMonitor, PyUnitWizard and DepDigest builds must pass before public visibility."
+reason = "Fixes 0.1.0, whose package lacked sabueso/resolver/selection_rules.json (uibcdf/sabueso#35); clean installed-package gates, now building a card from a mapping, must pass before public visibility."
 decision_by = "Diego Prada (Sabueso maintainer), 2026-09-24"
 required_workflows = [
   ".github/workflows/ci.yml",

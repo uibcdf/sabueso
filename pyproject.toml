@@ -40,6 +40,11 @@ test = [
 where = ["."]
 include = ["sabueso*"]
 
+# Non-Python files the package reads at runtime (uibcdf/sabueso#35). Every such file must
+# be listed here; tests/core/test_package_data_offline.py enforces it.
+[tool.setuptools.package-data]
+sabueso = ["resolver/*.json"]
+
 [tool.pytest.ini_options]
 markers = [
   "online: tests that require network access",

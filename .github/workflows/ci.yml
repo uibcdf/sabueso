@@ -39,6 +39,13 @@ jobs:
       - name: Install Sabueso
         shell: bash -l {0}
         run: python -m pip install --no-deps --no-build-isolation .
+      - name: Smoke the installed package outside the checkout
+        # Tests run from the repository root, where `import sabueso` finds the checkout;
+        # this step reads the installed package, which is what users get (#35).
+        shell: bash -l {0}
+        run: |
+          cd "$RUNNER_TEMP"
+          python -c "import sabueso; from sabueso.resolver import load_selection_rules; assert 'site-packages' in sabueso.__file__, sabueso.__file__; assert load_selection_rules()['rules']"
       - name: Environment
         shell: bash -l {0}
         run: |

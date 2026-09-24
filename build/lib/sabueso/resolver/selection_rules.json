@@ -1,0 +1,42 @@
+{
+  "version": "0.2.0",
+  "priority_sources": ["UniProt", "ChEMBL", "PubChem", "PDB CCD", "InterPro"],
+  "field_rules": {
+    "annotations.domains": {
+      "strategy": "priority_sources",
+      "allow_multiple": true
+    },
+    "annotations.catalytic_activity": {
+      "strategy": "priority_sources",
+      "allow_multiple": false
+    },
+    "properties.physchem.molecular_weight": {
+      "strategy": "priority_sources",
+      "numeric_agreement": "stated_precision"
+    },
+    "properties.physchem.tpsa": {
+      "strategy": "priority_sources",
+      "numeric_agreement": "stated_precision"
+    },
+    "properties.physchem.logp": {
+      "strategy": "priority_sources",
+      "compare_within": ["source_metadata.method"]
+    },
+    "properties.physchem.rotatable_bonds": {
+      "strategy": "priority_sources",
+      "compare_within": ["source_metadata.method"]
+    },
+    "identifiers.smiles": {
+      "strategy": "priority_sources",
+      "compare_within": ["source.name"]
+    },
+    "identifiers.smiles_connectivity": {
+      "strategy": "priority_sources",
+      "compare_within": ["source.name"]
+    },
+    "features_positional.binding_site": {
+      "strategy": "priority_sources",
+      "allow_multiple": true
+    }
+  }
+}

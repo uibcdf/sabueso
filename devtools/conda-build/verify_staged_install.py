@@ -158,19 +158,30 @@ def verify_installed(
 
 
 def api_smoke() -> bool:
-    """A card holding a quantity survives its own seal: to_dict() writes the
-    PyUnitWizard QuantityRecordBundle and from_dict() verifies it (#32)."""
+    """A card is built from a mapping, which reads the packaged selection rules (#35),
+    and its quantity survives its own seal: to_dict() writes the PyUnitWizard
+    QuantityRecordBundle and from_dict() verifies it (#32)."""
     import pyunitwizard as puw
 
+    from sabueso.core.aggregator import build_card_from_mapping
     from sabueso.core.card import Card
+    from sabueso.core.source_assertion_store import make_source_assertion
 
-    card = Card(meta={"card_id": "sabueso:small_molecule:smoke"})
-    card.set("properties.physchem.tpsa", 63.6, [])
-    again = Card.from_dict(card.to_dict())
-    return (
-        puw.get_value(again.quantity("properties.physchem.tpsa"), to_unit="angstrom**2")
-        == 63.6
+    field = "properties.physchem.tpsa"
+    assertion = make_source_assertion(field, 63.6, "PubChem", "5978", "2026-09-24")
+    mapping = {
+        "fields": {field: 63.6},
+        "source_assertions": [assertion],
+        "field_source_assertions": {field: [assertion["id"]]},
+        "relationships": [],
+    }
+    card = build_card_from_mapping(
+        mapping,
+        meta={"entity_type": "small_molecule"},
+        card_id="sabueso:small_molecule:smoke",
     )
+    again = Card.from_dict(card.to_dict())
+    return puw.get_value(again.quantity(field), to_unit="angstrom**2") == 63.6
 
 
 def main() -> None:
