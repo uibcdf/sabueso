@@ -177,7 +177,7 @@ def test_direct_route_retains_decision_gate_and_preflight(monkeypatch, tmp_path)
     assert evidence["candidate_sha"] == SHA
     assert evidence["gates"][0]["run_id"] == 123
     assert evidence["preflight"]["state"] == "absent"
-    assert json.loads(receipt.read_text()) == evidence
+    assert json.loads(receipt.read_text(encoding="utf-8")) == evidence
 
 
 def test_public_poststate_matches_the_exact_built_file(monkeypatch, tmp_path):
@@ -206,7 +206,10 @@ def test_public_poststate_matches_the_exact_built_file(monkeypatch, tmp_path):
         version="0.1.0", built_paths=str(package), receipt=receipt, attempts=1
     )
     assert evidence["public"]["sha256"] == digest
-    assert json.loads(receipt.read_text())["public"]["channel"] == route.PUBLIC_CHANNEL
+    assert (
+        json.loads(receipt.read_text(encoding="utf-8"))["public"]["channel"]
+        == route.PUBLIC_CHANNEL
+    )
 
 
 def test_public_poststate_rejects_checksum_mismatch(monkeypatch, tmp_path):

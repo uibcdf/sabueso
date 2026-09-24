@@ -100,7 +100,9 @@ def test_cards_match_the_recorded_shape_of_the_current_schema():
     spec = importlib.util.spec_from_file_location("card_shape", "tools/card_shape.py")
     card_shape = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(card_shape)
-    stored = json.loads(card_shape.shape_file(CARD_SCHEMA_VERSION).read_text())["paths"]
+    stored = json.loads(
+        card_shape.shape_file(CARD_SCHEMA_VERSION).read_text(encoding="utf-8")
+    )["paths"]
     current = card_shape.current_shape()
     added = sorted(set(current) - set(stored))
     removed = sorted(set(stored) - set(current))

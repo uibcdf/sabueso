@@ -23,7 +23,7 @@ Then dispatch `.github/workflows/test_staged_conda_package.yaml` with the
 same coordinates and successful staging run ID. The gate checks artifact
 digest, source channel, public dependency provenance, package version, and
 an API smoke test (a card whose quantities are sealed by `to_dict()` and verified by
-`from_dict()`) in clean Linux/macOS environments for Python 3.11–3.14, with the
+`from_dict()`) in clean Linux, macOS and Windows environments for Python 3.11–3.14, with the
 public SMonitor, PyUnitWizard and DepDigest builds.
 Do not publish a stable GitHub Release until every cell passes.
 

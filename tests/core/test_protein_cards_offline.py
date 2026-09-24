@@ -42,7 +42,9 @@ def _field_subjects(card, field_paths):
 
 
 def test_a5_other_records_can_never_feed_the_entity_fields():
-    load = lambda acc: json.loads(Path(f"temp_data/{acc}.json").read_text())  # noqa: E731
+    def load(acc):
+        return json.loads(Path(f"temp_data/{acc}.json").read_text(encoding="utf-8"))
+
     merged = merge_mapping_results(
         [
             map_protein(load("P60174"), "2026-02-01"),

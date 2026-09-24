@@ -47,11 +47,15 @@ def _sites(card):
 
 
 def test_uniprot_binding_sites_keep_their_ligand():
-    human = map_protein(json.loads(Path("temp_data/P60174.json").read_text()), "x")
+    human = map_protein(
+        json.loads(Path("temp_data/P60174.json").read_text(encoding="utf-8")), "x"
+    )
     sites = human["features"]["features_positional.binding_site"]
     assert [s["ligand"] for s in sites] == [{"name": "substrate"}] * 2
     # Hexokinase has two ATP sites: the label keeps their residues apart.
-    hexokinase = map_protein(json.loads(Path("temp_data/P52789.json").read_text()), "x")
+    hexokinase = map_protein(
+        json.loads(Path("temp_data/P52789.json").read_text(encoding="utf-8")), "x"
+    )
     atp = {
         s["ligand"]["label"]
         for s in hexokinase["features"]["features_positional.binding_site"]
@@ -118,7 +122,7 @@ def test_aggregated_chains_never_imply_one_ligand_spans_them(resolver):
     # PDBe-KB attributes Asn12 of 1HTI to chain B and His96 to chain A, but the only PGA
     # instance of 1HTI contacts chain B alone. Aggregated chains are not instance data.
     pga_record = json.loads(
-        Path("temp_data/pdbe_kb/ligand_sites__P60174.json").read_text()
+        Path("temp_data/pdbe_kb/ligand_sites__P60174.json").read_text(encoding="utf-8")
     )
     pga = next(d for d in pga_record["data"] if d["accession"] == "PGA")
     chains_1hti = {
@@ -136,7 +140,7 @@ def test_aggregated_chains_never_imply_one_ligand_spans_them(resolver):
 
 
 def test_rcsb_contacts_are_mapped_to_uniprot_numbering():
-    entry = json.loads(Path("temp_data/rcsb/1HTI.json").read_text())
+    entry = json.loads(Path("temp_data/rcsb/1HTI.json").read_text(encoding="utf-8"))
     (rel,) = map_structure_entities(entry, "x")["relationships"]
     (pga,) = rel["qualifiers"]["ligands"]
     (instance,) = pga["instances"]

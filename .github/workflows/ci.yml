@@ -13,12 +13,19 @@ permissions:
 
 jobs:
   test:
-    name: Offline tests (Python ${{ matrix.python-version }})
-    runs-on: ubuntu-latest
+    name: Offline tests (${{ matrix.os }}, Python ${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
+        # Linux and Windows on every supported Python; macOS on the routine one.
+        # Sabueso is noarch: one package for every platform, so each platform it claims
+        # needs representative evidence (MOLI Python CI policy).
+        os: [ubuntu-latest, windows-latest]
         python-version: ["3.11", "3.12", "3.13", "3.14"]
+        include:
+          - os: macos-latest
+            python-version: "3.13"
     steps:
       - uses: actions/checkout@v6
         with:
@@ -44,7 +51,11 @@ jobs:
         # this step reads the installed package, which is what users get (#35).
         shell: bash -l {0}
         run: |
-          cd "$RUNNER_TEMP"
+          if [[ "$RUNNER_OS" == "Windows" ]]; then
+            cd "$(cygpath -u "$RUNNER_TEMP")"
+          else
+            cd "$RUNNER_TEMP"
+          fi
           python -c "import sabueso; from sabueso.resolver import load_selection_rules; assert 'site-packages' in sabueso.__file__, sabueso.__file__; assert load_selection_rules()['field_rules']"
       - name: Environment
         shell: bash -l {0}

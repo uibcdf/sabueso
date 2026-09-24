@@ -133,7 +133,9 @@ def slipped(tmp_path):
     saved["activities"].append(slip)
     saved["total_count"] += 1
     (tmp_path / "chembl").mkdir()
-    (tmp_path / "chembl" / "CHEMBL4880.json").write_text(json.dumps(saved))
+    (tmp_path / "chembl" / "CHEMBL4880.json").write_text(
+        json.dumps(saved), encoding="utf-8"
+    )
     return tmp_path, (original["activity_id"], slip["activity_id"])
 
 

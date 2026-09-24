@@ -69,7 +69,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         python: ["3.11", "3.12", "3.13", "3.14"]
     steps:
       - uses: actions/checkout@v4
@@ -111,7 +111,11 @@ jobs:
         run: |
           set -euo pipefail
           checker="$GITHUB_WORKSPACE/devtools/conda-build/verify_staged_install.py"
-          cd "$RUNNER_TEMP"
+          if [[ "$RUNNER_OS" == "Windows" ]]; then
+            cd "$(cygpath -u "$RUNNER_TEMP")"
+          else
+            cd "$RUNNER_TEMP"
+          fi
           python "$checker" installed --prefix "$CONDA_PREFIX" \
             --sha256 "$EXPECTED_SHA256" --version "$CANDIDATE_VERSION" \
             --build-number "$BUILD_NUMBER" --python-version "$PYTHON_VERSION"

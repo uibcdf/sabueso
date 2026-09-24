@@ -83,9 +83,9 @@ def test_saving_twice_changes_nothing(resolver, tmp_path):
     _curate(card)
     store = sabueso.CurationStore(tmp_path / "curation.jsonl")
     store.save(card)
-    before = (tmp_path / "curation.jsonl").read_text()
+    before = (tmp_path / "curation.jsonl").read_text(encoding="utf-8")
     assert store.save(card) == {"added": 0, "updated": 0, "total": 3}
-    assert (tmp_path / "curation.jsonl").read_text() == before
+    assert (tmp_path / "curation.jsonl").read_text(encoding="utf-8") == before
 
 
 def test_a_changed_outcome_is_reported(resolver, tmp_path):
@@ -177,10 +177,10 @@ def test_a_quantity_keeps_its_id_across_rebuilds(tmp_path):
 
 def test_the_file_is_versioned_and_checked(tmp_path):
     path = tmp_path / "curation.jsonl"
-    path.write_text('{"sabueso_curations": {"format": 99}}\n')
+    path.write_text('{"sabueso_curations": {"format": 99}}\n', encoding="utf-8")
     with pytest.raises(StorageError, match="format"):
         sabueso.CurationStore(path).records()
-    path.write_text('{"something": "else"}\n')
+    path.write_text('{"something": "else"}\n', encoding="utf-8")
     with pytest.raises(StorageError, match="not a Sabueso curation store"):
         sabueso.CurationStore(path).records()
     assert sabueso.CurationStore(tmp_path / "missing.jsonl").records() == []
