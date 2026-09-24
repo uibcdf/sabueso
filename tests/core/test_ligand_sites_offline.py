@@ -43,7 +43,7 @@ def _card(resolver, accession, structures=(), **kwargs):
 
 
 def _sites(card):
-    return {i["ligand"]: i for i in card.ligand_sites()["items"]}
+    return {i["ligand_ref"]: i for i in card.ligand_sites()["items"]}
 
 
 def test_uniprot_binding_sites_keep_their_ligand():
@@ -90,7 +90,7 @@ def test_two_sources_agree_on_the_human_active_site(resolver):
         ("active_site", 166),
     ]
     assert view["annotated_sites"][0]["evidence"] == ["ECO:0000255", "ECO:0000269"]
-    pga = {i["ligand"]: i for i in view["items"]}["pdb.ligand:PGA"]
+    pga = {i["ligand_ref"]: i for i in view["items"]}["pdb.ligand:PGA"]
     # 2-phosphoglycolate, a transition-state analogue, contacts every annotated residue.
     assert [o["start"] for o in pga["annotated_overlap"]] == [12, 14, 96, 166]
     assert pga["site_class"] == "overlaps_annotated_site"
@@ -104,7 +104,7 @@ def test_bts_binds_away_from_the_annotated_site_and_across_chains(resolver):
     # One BTS instance contacts Arg71 and Phe75 of chain A and Tyr102 of chain B.
     assert bts["instances"] == [
         {
-            "structure": "pdb:1SUX",
+            "structure_ref": "pdb:1SUX",
             "asym_id": "J",
             "chains": ["A", "B"],
             "positions": [71, 75, 102],
@@ -223,7 +223,7 @@ def test_sites_reach_the_ligand_deck_and_its_crossing(resolver):
     assert bts["bioactivity"]["class"] == "weak"  # IC50 33 uM
     assert bts["sites"] == [
         {
-            "ligand": "pdb.ligand:BTS",
+            "ligand_ref": "pdb.ligand:BTS",
             "positions": [71, 75, 102],
             "site_class": "no_annotated_overlap",
             "spans_chains": ["pdb:1SUX"],

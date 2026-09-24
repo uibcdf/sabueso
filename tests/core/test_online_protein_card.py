@@ -40,7 +40,7 @@ def test_online_ligand_sites_with_instance_contacts():
         e for e in card.quality["enrichments"] if e.get("data") == "ligand_sites"
     ]
     assert outcome["status"] == "added"
-    bts = {i["ligand"]: i for i in card.ligand_sites()["items"]}["pdb.ligand:BTS"]
+    bts = {i["ligand_ref"]: i for i in card.ligand_sites()["items"]}["pdb.ligand:BTS"]
     assert {71, 75, 102} <= set(bts["positions"])
     assert bts["spans_chains"] == ["pdb:1SUX"]
 
@@ -58,9 +58,9 @@ def test_online_interfaces_and_assemblies():
     partners = {i["partner_ref"]: i["class"] for i in view["interfaces"]}
     assert partners["uniprot:P52270"] == "homomeric"
     assert partners.get("uniprot:P04789") == "chimera"
-    states = {a["structure"]: a["assemblies"] for a in view["assemblies"]}
+    states = {a["structure_ref"]: a["assemblies"] for a in view["assemblies"]}
     assert states["pdb:1SUX"][0]["oligomeric_state"] == "Homo 2-mer"
-    pubs = {p["ref"]: p for p in card.literature()["publications"]}
+    pubs = {p["publication_ref"]: p for p in card.literature()["publications"]}
     assert pubs["pubmed:15321726"]["primary_citation_of"] == ["pdb:1SUX"]
 
 

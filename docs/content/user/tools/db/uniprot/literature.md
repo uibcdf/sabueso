@@ -8,7 +8,7 @@ import sabueso
 
 card, _ = sabueso.resolve("P60174", structures="all")
 for pub in card.literature()["publications"]:
-    print(pub["ref"], pub["year"], pub["title"])
+    print(pub["publication_ref"], pub["year"], pub["title"])
     for cited in pub["cited_by"]:  # e.g. UniProt, with what it cites the paper for
         print("  cited for:", cited["scope"])
     print("  primary citation of:", pub["primary_citation_of"])  # PDB entries

@@ -48,7 +48,7 @@ def literature_view(card: Any) -> Dict[str, Any]:
         return publications.setdefault(
             ref,
             {
-                "ref": ref,
+                "publication_ref": ref,
                 "title": None,
                 "journal": None,
                 "year": None,
@@ -150,6 +150,6 @@ def literature_view(card: Any) -> Dict[str, Any]:
         pub["primary_citation_of"].sort()
         pub["supports"].sort(key=lambda s: (s["field_path"] or "", str(s["value"])))
     ordered = sorted(
-        publications.values(), key=lambda p: (p["year"] or "9999", p["ref"])
+        publications.values(), key=lambda p: (p["year"] or "9999", p["publication_ref"])
     )
     return {"publications": ordered, "unresolved_eco": unresolved}

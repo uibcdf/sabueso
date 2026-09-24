@@ -15,6 +15,7 @@ from __future__ import annotations
 from typing import Any, Dict, List, Set
 
 from .bioactivities import CLASS_ORDER
+from .labels import molecule_label
 
 
 def _records(molecule_card: Any) -> Set[str]:
@@ -43,7 +44,7 @@ def _rank(entry: Dict[str, Any]) -> tuple:
     return (
         CLASS_ORDER.index(bio["class"]) if bio else len(CLASS_ORDER),
         -((bio or {}).get("best_pchembl") or 0.0),
-        entry["molecule"],
+        entry["molecule_ref"],
     )
 
 
@@ -70,7 +71,7 @@ def ligands_view(
     if card.relationships("has_ligand_site"):
         from .ligand_sites import ligand_sites_view
 
-        sites = {i["ligand"]: i for i in ligand_sites_view(card)["items"]}
+        sites = {i["ligand_ref"]: i for i in ligand_sites_view(card)["items"]}
 
     items: List[Dict[str, Any]] = []
     covered: Set[str] = set()
@@ -86,21 +87,23 @@ def ligands_view(
         covered |= records
         best = min(measured, key=lambda m: CLASS_ORDER.index(m["class"]), default=None)
         name = molecule_card.get("names.canonical_name")
+        name = (name or {}).get("value") or next(
+            (
+                rel["qualifiers"].get("name")
+                for rel in molecule_card.relationships("same_as")
+                if (rel.get("qualifiers") or {}).get("name")
+            ),
+            None,
+        )
+        shown = sorted(r for r in records if r.startswith(("chembl:", "pdb.ligand:")))
+        text, source = molecule_label(name, shown, molecule_card.id)
         items.append(
             {
-                "molecule": molecule_card.id,
-                "name": (name or {}).get("value")
-                or next(
-                    (
-                        rel["qualifiers"].get("name")
-                        for rel in molecule_card.relationships("same_as")
-                        if (rel.get("qualifiers") or {}).get("name")
-                    ),
-                    None,
-                ),
-                "records": sorted(
-                    r for r in records if r.startswith(("chembl:", "pdb.ligand:"))
-                ),
+                "molecule_ref": molecule_card.id,
+                "label": text,
+                "label_source": source,
+                "name": name,
+                "records": shown,
                 "bioactivity": {
                     "class": best["class"],
                     "best_pchembl": max(
@@ -117,7 +120,12 @@ def ligands_view(
                 "sites": [
                     {
                         k: site[k]
-                        for k in ("ligand", "positions", "site_class", "spans_chains")
+                        for k in (
+                            "ligand_ref",
+                            "positions",
+                            "site_class",
+                            "spans_chains",
+                        )
                     }
                     for site in own_sites
                 ],
@@ -154,15 +162,15 @@ def compare_ligands(
 ) -> Dict[str, Any]:
     """Molecules related to both proteins, side by side, and those related to only one.
 
-    Returns ``{"shared", "only_self", "only_other", "classification"}``. The comparison
+    Returns ``{"self_ref", "other_ref", "shared", "only_self", "only_other", "classification"}``. The comparison
     juxtaposes the two ligand views and derives nothing new.
     """
     mine = {
-        i["molecule"]: i
+        i["molecule_ref"]: i
         for i in ligands_view(card, deck, include_indirect, thresholds)["items"]
     }
     view = ligands_view(other, other_deck, include_indirect, thresholds)
-    theirs = {i["molecule"]: i for i in view["items"]}
+    theirs = {i["molecule_ref"]: i for i in view["items"]}
 
     def side(entry: Dict[str, Any]) -> Dict[str, Any]:
         keys = (
@@ -176,7 +184,9 @@ def compare_ligands(
 
     shared = [
         {
-            "molecule": mid,
+            "molecule_ref": mid,
+            "label": mine[mid]["label"],
+            "label_source": mine[mid]["label_source"],
             "name": mine[mid]["name"] or theirs[mid]["name"],
             "self": side(mine[mid]),
             "other": side(theirs[mid]),
@@ -184,8 +194,8 @@ def compare_ligands(
         for mid in sorted(set(mine) & set(theirs))
     ]
     return {
-        "self": card.id,
-        "other": other.id,
+        "self_ref": card.id,
+        "other_ref": other.id,
         "shared": shared,
         "only_self": sorted(set(mine) - set(theirs)),
         "only_other": sorted(set(theirs) - set(mine)),

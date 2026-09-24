@@ -26,4 +26,4 @@ def test_online_ligand_deck_of_a_protein():
     }
     view = card.ligands(deck)
     pga = "sabueso:small_molecule:inchikey:ASCFNMCAHFUBCO-UHFFFAOYSA-N"
-    assert pga in {i["molecule"] for i in view["items"]}
+    assert pga in {i["molecule_ref"] for i in view["items"]}

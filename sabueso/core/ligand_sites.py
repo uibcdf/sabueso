@@ -107,7 +107,7 @@ def _structure_statements(card: Any, code: str) -> tuple:
             for instance in ligand.get("instances") or []:
                 instances.append(
                     {
-                        "structure": rel["object_ref"],
+                        "structure_ref": rel["object_ref"],
                         "asym_id": instance.get("asym_id"),
                         "chains": instance.get("chains") or [],
                         "positions": sorted(
@@ -119,7 +119,7 @@ def _structure_statements(card: Any, code: str) -> tuple:
                         ),
                     }
                 )
-    instances.sort(key=lambda i: (i["structure"], str(i["asym_id"])))
+    instances.sort(key=lambda i: (i["structure_ref"], str(i["asym_id"])))
     return dict(sorted(flags.items())), instances
 
 
@@ -171,7 +171,7 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
             )
         items.append(
             {
-                "ligand": rel["object_ref"],
+                "ligand_ref": rel["object_ref"],
                 "name": q.get("ligand_name"),
                 "positions": positions,
                 "residues": [
@@ -181,7 +181,7 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
                 "structures": q.get("structures") or [],
                 "instances": instances,
                 "spans_chains": sorted(
-                    {i["structure"] for i in instances if len(i["chains"]) > 1}
+                    {i["structure_ref"] for i in instances if len(i["chains"]) > 1}
                 )
                 if instances
                 else None,
@@ -207,7 +207,7 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
                 "relationship_id": rel["id"],
             }
         )
-    items.sort(key=lambda i: i["ligand"])
+    items.sort(key=lambda i: i["ligand_ref"])
     return {
         "items": items,
         "annotated_sites": annotated,

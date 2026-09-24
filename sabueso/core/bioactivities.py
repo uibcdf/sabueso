@@ -51,6 +51,7 @@ import math
 import re
 from typing import Any, Dict, List, Tuple
 
+from .labels import molecule_label
 from .quantities import (
     CHEMBL_UNITS,
     CONCENTRATION_UNIT,
@@ -441,6 +442,16 @@ def bioactivities_view(
         items.append(
             {
                 "molecule_ref": entry["molecule_ref"],
+                **dict(
+                    zip(
+                        ("label", "label_source"),
+                        molecule_label(
+                            entry["name"],
+                            [entry["molecule_ref"], *sorted(entry["tested_forms"])],
+                            entry["molecule_ref"],
+                        ),
+                    )
+                ),
                 "tested_forms": sorted(entry["tested_forms"]),
                 "name": entry["name"],
                 "smiles": entry["smiles"],

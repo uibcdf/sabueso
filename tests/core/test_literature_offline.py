@@ -26,7 +26,7 @@ def resolver():
 def _publications(resolver, accession):
     card, _ = resolve_protein_card(accession, resolver, structures="all")
     view = card.literature()
-    return view, {p["ref"]: p for p in view["publications"]}
+    return view, {p["publication_ref"]: p for p in view["publications"]}
 
 
 def test_every_reference_is_a_described_in_relationship_with_its_scope():

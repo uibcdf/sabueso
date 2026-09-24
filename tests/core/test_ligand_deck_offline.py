@@ -58,7 +58,7 @@ def decks(cards, clients):
 
 
 def _items(view):
-    return {i["molecule"]: i for i in view["items"]}
+    return {i["molecule_ref"]: i for i in view["items"]}
 
 
 def test_the_deck_holds_one_card_per_molecule(decks):
@@ -150,13 +150,13 @@ def test_decks_intersect_by_molecule_identity(decks):
 
 def test_compare_ligands_juxtaposes_both_proteins(cards, decks):
     comparison = cards["tc"].compare_ligands(decks["tc"], cards["hs"], decks["hs"])
-    assert (comparison["self"], comparison["other"]) == (
+    assert (comparison["self_ref"], comparison["other_ref"]) == (
         "sabueso:protein:uniprot:P52270",
         "sabueso:protein:uniprot:P60174",
     )
     assert len(comparison["shared"]) == 14
     assert (len(comparison["only_self"]), len(comparison["only_other"])) == (242, 20)
-    shared = {s["molecule"]: s for s in comparison["shared"]}
+    shared = {s["molecule_ref"]: s for s in comparison["shared"]}
     # Methyl brevifolincarboxylate: IC50 6.5 uM on TcTIM, > 1 mM on HsTIM.
     brevifolin = next(
         s for s in shared.values() if s["name"] == "METHYLBREVIFOLIN CARBOXYLATE"

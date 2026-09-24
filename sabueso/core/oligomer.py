@@ -161,7 +161,7 @@ def oligomer_view(card: Any) -> Dict[str, Any]:
         if stated is None:
             without.append(ref)
         else:
-            assemblies.append({"structure": ref, "assemblies": stated})
+            assemblies.append({"structure_ref": ref, "assemblies": stated})
 
     interfaces = []
     for rel in card.relationships("has_interface_with"):

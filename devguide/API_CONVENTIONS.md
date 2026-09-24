@@ -45,3 +45,15 @@ Location contract:
 ## Errors
 - Use explicit exception types for resolver errors, connector failures, and schema mismatches.
 - Return partial cards only if SourceAssertions are complete for the fields present.
+
+## Views (uibcdf/sabueso#47)
+- A key whose value is a reference (`<namespace>:<id>`, or a card id) ends in `_ref` in
+  every view: `molecule_ref`, `ligand_ref`, `structure_ref`, `partner_ref`,
+  `publication_ref`, `self_ref`, `other_ref`. The guard is
+  `tests/core/test_view_conventions_offline.py`.
+- Stored data keeps its schema names (qualifiers such as `observed_in.structure`,
+  enrichment records, deck meta). Renaming those is a schema change (#42).
+- Molecule items carry `label` and `label_source`. The label is the name, else the
+  ChEMBL id, else the PDB component code, else the InChIKey
+  (`sabueso.core.labels.molecule_label`).
+

@@ -223,7 +223,7 @@ def test_curation_survives_storage_and_shows_in_the_literature_view(hstim):
         )
     loaded = Card.from_dict(json.loads(json.dumps(hstim.to_dict())))
     assert loaded.quality["curation"] == hstim.quality["curation"]
-    pubs = {p["ref"]: p for p in loaded.literature()["publications"]}
+    pubs = {p["publication_ref"]: p for p in loaded.literature()["publications"]}
     (curated,) = pubs["pubmed:18562316"]["curated"]
     assert (curated["field_path"], curated["locator"], curated["outcome"]) == (
         VARIANT,

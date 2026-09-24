@@ -118,7 +118,7 @@ def test_5_bioactivities_and_shared_ligands(baseline):
 
 def test_6_literature(baseline):
     tctim = baseline[0]["TcTIM"]
-    pubs = {p["ref"]: p for p in tctim.literature()["publications"]}
+    pubs = {p["publication_ref"]: p for p in tctim.literature()["publications"]}
     assert pubs["pubmed:9761683"]["primary_citation_of"] == ["pdb:1TCD"]
     assert "HOMODIMERIZATION" in pubs["pubmed:9761683"]["cited_by"][0]["scope"]
 

@@ -59,7 +59,8 @@ deck = sabueso.ligand_deck(card)
 print(deck.meta["sources"], deck.meta["notes"])
 
 for item in card.ligands(deck)["items"][:5]:
-    print(item["name"], item["bioactivity"], item["structures_of_interest"])
+    # label: the name, else the ChEMBL id, else the PDB code (label_source says which)
+    print(item["label"], item["bioactivity"], item["structures_of_interest"])
 
 # Two proteins side by side, e.g. a parasite enzyme and its human counterpart.
 other, _ = sabueso.resolve_protein_card("P60174", chembl={})

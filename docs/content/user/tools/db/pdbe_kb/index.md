@@ -17,7 +17,9 @@ for site in view["annotated_sites"]:
     print(site["kind"], site["source"], site["description"], site["positions"])
 
 for item in view["items"]:
-    print(item["ligand"], item["positions"], item["site_class"], item["spans_chains"])
+    print(
+        item["ligand_ref"], item["positions"], item["site_class"], item["spans_chains"]
+    )
 print(view["classification"])  # rule annotated_site_overlap@2
 ```
 
@@ -50,7 +52,7 @@ view = card.oligomer()
 
 print(view["subunit"])  # UniProt SUBUNIT text, with its evidence
 for entry in view["assemblies"]:  # RCSB biological assemblies, per structure
-    print(entry["structure"], [a["oligomeric_state"] for a in entry["assemblies"]])
+    print(entry["structure_ref"], [a["oligomeric_state"] for a in entry["assemblies"]])
 print(view["without_assembly_data"])  # structures the card has not fetched from RCSB
 
 for interface in view["interfaces"]:  # PDBe-KB interface residues, per partner

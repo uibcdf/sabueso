@@ -86,7 +86,7 @@ def test_tctim_is_a_homodimer_by_every_source(tctim):
     assert homo["class"] == "homomeric"
     assert len(homo["positions"]) == 36
     states = {
-        a["structure"]: [x["oligomeric_state"] for x in a["assemblies"]]
+        a["structure_ref"]: [x["oligomeric_state"] for x in a["assemblies"]]
         for a in tctim["assemblies"]
     }
     assert states == {
