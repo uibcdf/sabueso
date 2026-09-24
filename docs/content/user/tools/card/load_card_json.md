@@ -17,7 +17,7 @@ from sabueso.tools.card import load_card_json
 
 card = load_card_json("data/cards/p52789.json")
 print(card.get("identifiers.uniprot")["value"])
-print(card.quantity("sequence.molecular_weight"))   # a quantity, with its unit
+print(card.quantity("sequence.molecular_weight"))  # a quantity, with its unit
 ```
 
 ## What to check
