@@ -59,15 +59,20 @@ Start with:
 - `AGENTS.md` and `MOLI_GUIDE.md` for governance;
 - `devguide/VISION.md` and `devguide/ARCHITECTURE.md` for Sabueso's scientific design;
 - `devguide/CHECKPOINT.md` for the current repository baseline;
-- `schemas/card_schema.yaml` for the current conceptual schema.
+- `schemas/card_schema_0.3.1.yaml` for the current card schema, and
+  `schemas/card_schema.yaml` for the conceptual draft it grew from.
 
 Common quality gates:
 
 ```bash
 ruff format --check .
 ruff check .
-pytest
+pytest -m "not online"
 ```
+
+If `sabueso.__version__` reports an old version when Python runs from the repository
+root, delete the stale `sabueso.egg-info/` left by an earlier in-tree build. Python finds
+that metadata before the metadata of the editable install.
 
 ## Repository layout
 
