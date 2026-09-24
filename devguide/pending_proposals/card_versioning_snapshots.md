@@ -1,7 +1,7 @@
 ---
 summary: Version and snapshot cards so consumers can pin reproducible knowledge references.
 issue: uibcdf/sabueso#7
-status: open
+status: partial
 opened: 2026-09-23
 closed:
 verification: inspected
@@ -54,6 +54,27 @@ timestamps, or both. Locally, and not blocked:
   following the contract decided in uibcdf/moli#3.
 - Offline tests show that a pinned reference keeps resolving to the same content after a
   newer card is stored.
+
+## Implementation progress (2026-09-24)
+
+These are local steps that uibcdf/moli#3 explicitly allows (capturing `source.version`, and
+provisional internal identities):
+
+- **Source releases.** `source.version` is filled where the source states it:
+  - UniProt: the entry version (`entryAudit.entryVersion`); sequence fields also carry
+    `source_metadata.sequence_version`;
+  - ChEMBL, InterPro, STRING and UniChem: their release.
+
+  The version is not part of the assertion id, so the same statement in two releases
+  stays one assertion (test in `tests/core/test_source_assertions_offline.py`).
+- **Curated SourceAssertions** are stable across card rebuilds through the curation store
+  (#48). Their ids derive from what was stated.
+- RCSB entry revisions (`rcsb_accession_info`) and the resolver's identity-link
+  assertions do not carry a version yet.
+
+Still open, and blocked by uibcdf/moli#3: card snapshots and pinned references. The
+minimal workflow moli#3 asked for exists now
+(`docs/content/showcase/knowledge_baseline.ipynb`).
 
 ## Resolution
 

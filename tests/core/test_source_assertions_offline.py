@@ -96,3 +96,26 @@ def test_public_api_and_schemas_use_source_assertion_terminology():
     )
     serialized = json.loads(json.dumps(card.to_dict()))
     assert [key for key in _keys(serialized) if EVIDENCE.search(str(key))] == []
+
+
+def test_uniprot_assertions_carry_the_entry_release_outside_their_id():
+    import copy
+
+    from sabueso.mappings.uniprot import map_protein
+
+    entry = json.loads(Path("temp_data/P60174.json").read_text(encoding="utf-8"))
+    mapped = map_protein(entry, "2026-09-24")
+    uniprot = [
+        a for a in mapped["source_assertions"] if a["source"]["name"] == "UniProt"
+    ]
+    assert {a["source"]["version"] for a in uniprot} == {"212"}
+    (sequence,) = [a for a in uniprot if a["field_path"] == "sequence.primary"]
+    assert sequence["source_metadata"]["sequence_version"] == 4
+    # The same statement in the next release is the same assertion (#7).
+    newer = copy.deepcopy(entry)
+    newer["entryAudit"]["entryVersion"] = 213
+    again = map_protein(newer, "2026-09-24")["source_assertions"]
+    assert [a["id"] for a in again] == [a["id"] for a in mapped["source_assertions"]]
+    assert {
+        a["source"]["version"] for a in again if a["source"]["name"] == "UniProt"
+    } == {"213"}

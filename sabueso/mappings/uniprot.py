@@ -541,6 +541,22 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         source_assertions.extend(extra_assertions)
         relationships.extend(extra_relationships)
 
+    # The entry release every assertion comes from (uibcdf/sabueso#7): UniProt's entry
+    # version, and for sequence fields the sequence version. Not part of the assertion
+    # id, so the same statement in two releases stays one assertion.
+    audit = uniprot_json.get("entryAudit") or {}
+    if audit.get("entryVersion") is not None:
+        for assertion in source_assertions:
+            if assertion["source"].get("name") != "UniProt":
+                continue
+            assertion["source"]["version"] = str(audit["entryVersion"])
+            if assertion["field_path"].startswith("sequence.") and audit.get(
+                "sequenceVersion"
+            ):
+                assertion.setdefault("source_metadata", {})["sequence_version"] = audit[
+                    "sequenceVersion"
+                ]
+
     return {
         "fields": fields,
         "features": features,
