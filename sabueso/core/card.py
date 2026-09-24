@@ -35,6 +35,7 @@ class Card:
         selection_rules: Dict[str, Any] | None = None,
         quality: Dict[str, Any] | None = None,
         relationship_store: RelationshipStore | List[Dict[str, Any]] | None = None,
+        entities: Dict[str, Any] | None = None,
     ) -> None:
         self.meta = meta or {}
         # A card always states its schema; a stored card keeps the one it was written with.
@@ -43,6 +44,17 @@ class Card:
         # Top-level keys of a newer schema this version does not know: kept, never
         # dropped, so saving the card again does not lose them (#42).
         self.unknown_stored: Dict[str, Any] = {}
+        # Resolved identities (anchor -> records), the stored part of the glossary of
+        # entities; the rest of the glossary is derived from relationships (#52).
+        self.entity_identities: Dict[str, Dict[str, Any]] = {
+            key: {
+                "entity_type": entry.get("entity_type"),
+                "records": list(entry.get("records") or []),
+                "resolved": entry["identity"],
+            }
+            for key, entry in (entities or {}).items()
+            if entry.get("identity")
+        }
         if not isinstance(source_assertion_store, SourceAssertionStore):
             source_assertion_store = SourceAssertionStore(source_assertion_store)
         self.source_assertion_store = source_assertion_store
@@ -217,6 +229,32 @@ class Card:
             report_curated_disagreement(self.id or "", record["field"], publication)
         return record
 
+    def entities(self) -> Dict[str, Any]:
+        """The glossary of molecular entities this card mentions, each once (#52)."""
+        from .entities import build_entities
+
+        return build_entities(self)
+
+    def entity(self, ref: str) -> Dict[str, Any] | None:
+        """The glossary entry of the entity a record belongs to, with its key."""
+        from .entities import resolve_ref
+
+        key, entry = resolve_ref(self, ref)
+        return None if entry is None else {"key": key, **entry}
+
+    def register_identity(
+        self,
+        anchor: str,
+        records: List[str],
+        entity_type: str,
+        resolved: Dict[str, Any],
+    ) -> None:
+        """Record that ``records`` name the entity anchored at ``anchor``."""
+        known = self.entity_identities.setdefault(
+            anchor, {"entity_type": entity_type, "records": [], "resolved": resolved}
+        )
+        known["records"] = sorted(set(known["records"]) | set(records))
+
     def literature(self) -> Dict[str, Any]:
         """The publications that support statements on this card, and what for."""
         from .literature import literature_view
@@ -335,6 +373,7 @@ class Card:
             "relationship_store": self.relationship_store.to_list(),
             "selection_rules": self.selection_rules,
             "quality": self.quality,
+            "entities": self.entities(),
             **self.unknown_stored,
         }
         data["quantities"] = seal(data)
@@ -373,6 +412,7 @@ class Card:
             "relationship_store",
             "selection_rules",
             "quality",
+            "entities",
         }
         card = cls(**{k: v for k, v in data.items() if k in known})
         card.unknown_stored = {k: v for k, v in data.items() if k not in known}

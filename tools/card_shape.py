@@ -47,6 +47,8 @@ def card_shape(data: dict) -> List[str]:
     paths.update(_paths(data.get("meta") or {}, "meta"))
     paths.update(_paths(data.get("sections") or {}, "sections"))
     paths.update(_paths(data.get("quality") or {}, "quality"))
+    for entry in (data.get("entities") or {}).values():  # keys are entity refs
+        paths.update(_paths(entry, "entities[]"))
     for assertion in data.get("source_assertion_store") or []:
         paths.update(_paths(assertion, "source_assertion_store[]"))
     for relationship in data.get("relationship_store") or []:

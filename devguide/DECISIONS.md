@@ -284,3 +284,13 @@ uibcdf/sabueso#49, `devguide/SOURCE_ACCESS.md`.
 - Sabueso retrieves knowledge records, never coordinate files; loading structures
   belongs to MolSysMT.
 
+## Glossary of entities (2026-09-24)
+uibcdf/sabueso#52 (Diego's proposal).
+- A card lists each molecular entity it mentions once (`entities`). Relationships keep
+  their source's record, which is their provenance, and the glossary resolves it to an
+  entity.
+- Identity is stated, never guessed: records merge only on a source's statement.
+- What a curator states is the molecule as given and its InChIKey. The records UniChem
+  links are identity knowledge in the glossary, so curated ids do not change when UniChem
+  learns a new record.
+

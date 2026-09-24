@@ -568,7 +568,7 @@ _NUMBER_AND_UNIT = re.compile(r"\s*([-+]?(?:\d+(?:\.\d*)?|\.\d+))\s*(.*?)\s*$")
 
 
 def molecule_identity(molecule: Any) -> Dict[str, Any]:
-    """``{"inchikey", "records"}`` of a molecule: the standard InChIKey it is anchored at
+    """``{"inchikey", "records", "as_given"}`` of a molecule: the standard InChIKey it is anchored at
     and every record linked to it (ChEMBL, PubChem, PDB component, ChEBI...).
 
     ``molecule`` is a small-molecule Card, an identity already recorded, or an
@@ -583,9 +583,12 @@ def molecule_identity(molecule: Any) -> Dict[str, Any]:
         return {
             "inchikey": molecule["inchikey"],
             "records": sorted(molecule["records"]),
+            "as_given": molecule.get("as_given"),
         }
     card = molecule
+    as_given = None
     if isinstance(molecule, str):
+        as_given = molecule
         from sabueso.tools.card.small_molecule import resolve_molecule_card
 
         card, resolution = resolve_molecule_card(molecule)
@@ -597,7 +600,7 @@ def molecule_identity(molecule: Any) -> Dict[str, Any]:
     if card.meta.get("entity_type") != "small_molecule" or not node.get("value"):
         raise SchemaError("Expected the card of a small molecule, with its InChIKey.")
     records = sorted({r["subject_ref"] for r in card.relationships("same_as")})
-    return {"inchikey": node["value"], "records": records}
+    return {"inchikey": node["value"], "records": records, "as_given": as_given}
 
 
 def _measured(value: Any) -> Tuple[Dict[str, Any], Dict[str, Any], int | None]:
@@ -695,8 +698,13 @@ def add_literature_bioactivity(
     curated_at = curated_at or datetime.now(timezone.utc).date().isoformat()
     identity = molecule_identity(molecule)
     written, normalized, decimals = _measured(value)
+    # What the curator states: the molecule as given and its InChIKey. The records
+    # UniChem links belong to the card's glossary, not to the statement (#52).
     asserted = {
-        "molecule": identity,
+        "molecule": {
+            "inchikey": identity["inchikey"],
+            "as_given": identity["as_given"],
+        },
         "measurement": {"type": measurement_type, "relation": relation, **written},
         "target_assignment": target_assignment,
         "assay_description": assay_description,
@@ -756,7 +764,7 @@ def add_literature_bioactivity(
         qualifiers={
             "activity_id": "curated:" + assertion["id"].rsplit("_", 1)[-1],
             "parent_molecule": shown,
-            "molecule_identity": identity,
+            "molecule_ref": f"inchikey:{identity['inchikey']}",
             "measurement": {
                 "type": measurement_type,
                 "relation": relation,
@@ -813,6 +821,12 @@ def add_literature_bioactivity(
     ]
     card.source_assertion_store.add(assertion)
     card.relationship_store.add(relationship)
+    card.register_identity(
+        f"inchikey:{identity['inchikey']}",
+        records,
+        "small_molecule",
+        {"by": "curation", "at": curated_at},
+    )
     compared = [r["id"] for r in same]
     if not same:
         outcome = "new"

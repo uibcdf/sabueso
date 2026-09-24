@@ -66,9 +66,14 @@ def _records_of(card: Any) -> List[Dict[str, Any]]:
         if field_path == "relationships.has_bioactivity":
             stated = assertion["asserted_value"]
             measurement = stated["measurement"]
+            anchor = f"inchikey:{stated['molecule']['inchikey']}"
+            known = card.entity_identities.get(anchor) or {}
             record.update(
                 kind="bioactivity",
-                molecule=stated["molecule"],
+                molecule={
+                    **stated["molecule"],
+                    "records": sorted(known.get("records") or []),
+                },
                 measurement_type=measurement["type"],
                 value={"value": measurement["value"], "unit": measurement["unit"]},
                 relation=measurement["relation"],

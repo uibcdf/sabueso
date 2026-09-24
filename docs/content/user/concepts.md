@@ -80,6 +80,23 @@ differ by exactly 3 or 6 orders of magnitude, the conflict also carries
 `scale_discrepancy`. That pattern is the usual sign of a unit slip, such as nM written for
 µM. Neither value is corrected.
 
+## Entities
+
+A card mentions other molecules and proteins under the records its sources use. For
+example, a ligand is `pdb.ligand:BTS` in a structure and `chembl:CHEMBL1161789` in a
+measurement. `card.entities()` lists each entity once, with every record the card
+mentions for it, its names and where it appears. `card.entity(ref)` finds the entity of
+any record:
+
+```python
+card.entity(
+    "pdb.ligand:BTS"
+)  # {"key": "inchikey:...", "records": [...], "appears_in": [...]}
+```
+
+Records are grouped into one entity only when a source says they are the same molecule,
+for example a resolved identity or UniChem's links. Otherwise they stay apart.
+
 ## Quantities
 
 A physical quantity is always stored with its unit, as `{"value": ..., "unit": ...}`. The

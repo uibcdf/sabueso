@@ -103,6 +103,25 @@ built by the aggregator therefore carries:
 
 The identifier syntax is provisional (MOLI freezes referencability, not the format).
 
+## Glossary of entities (uibcdf/sabueso#52)
+
+`entities` lists each molecular entity the card mentions once: proteins, small
+molecules (ions, lipids and cofactors included), polymers without a UniProt entry, and
+the card's own entity. Structures, publications and terms are not entities.
+
+- **Key.** The anchor when known (`uniprot:<acc>`, `inchikey:<key>`), else the first
+  record.
+- **Entry.** `entity_type`, `anchor`, `records`, `names`, `stated_types`, `parent_ref`,
+  `appears_in` and `identity` (`{by, at}` when the anchor was resolved).
+- **Merging.** Records merge only where a source states they are one entity: a
+  resolved identity, `same_as` links, or the ChEMBL and DrugBank ids PDBe-KB states for
+  a ligand.
+- **Derivation.** It is derived from the relationships and the resolved identities, and
+  rebuilt deterministically whenever the card is stored. On loading, only the resolved
+  identities are taken from it.
+- **References.** Relationships keep citing the record their source gave; curated
+  bioactivities cite `molecule_ref`. `Card.entity(ref)` finds any record's entity.
+
 ## Versioning policy (uibcdf/sabueso#42)
 
 **What a version covers.** The card schema covers the stored form of a card:
@@ -235,7 +254,8 @@ A Relationship is first-class, traceable knowledge:
       `qualifier_conflicts` and a `curated_difference` with the `relationship_id`.
       `has_bioactivity` has its own curated form (#44). Each curated measurement is a
       `has_bioactivity` relationship with `activity_id = curated:<digest>`, carrying:
-      - `molecule_identity`: the InChIKey and every linked record;
+      - `molecule_ref`: the molecule's InChIKey anchor. Its linked records live in
+        the card's glossary (`entities`, #52), not in the measurement;
       - the measurement, with `curated: true`, its value and unit as written and its
         normalized node;
       - the assay, with `curated: true` and the curator's target assignment (`D` or

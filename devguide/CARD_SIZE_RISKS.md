@@ -45,3 +45,11 @@ This file documents concrete risks and mitigation strategies.
 ## Open Decisions
 - Which mitigation(s) will be the default for 1.0.0?
 - How is an externalized SourceAssertion store referenced (URI, ID, local path)?
+
+## Glossary of entities (#52)
+
+The glossary adds one entry per molecular entity the card mentions. On TcTIM, with the
+structural baseline and 493 ChEMBL measurements, it holds 264 entities in 53 KB, about 4%
+of the card. It also removes the repetition that curated measurements would have had
+(each carried the molecule's full list of records).
+
