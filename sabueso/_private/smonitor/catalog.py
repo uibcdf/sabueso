@@ -43,6 +43,7 @@ CATALOG = {
         "RecordNotFoundError": _exception(
             "SABUESO-E-SOURCE-002", "record_not_found", "source"
         ),
+        "ArgumentError": _exception("SABUESO-E-ARG-001", "argument", "argument"),
     },
     "warnings": {
         "EnrichmentFailedWarning": {
@@ -75,6 +76,11 @@ CODES = {
     "SABUESO-E-STORAGE-001": {**_RAISE_SITE, "title": "Storage error"},
     "SABUESO-E-SOURCE-001": {**_RAISE_SITE, "title": "Source unavailable"},
     "SABUESO-E-SOURCE-002": {**_RAISE_SITE, "title": "Record not found"},
+    "SABUESO-E-ARG-001": {
+        **_RAISE_SITE,
+        "title": "Invalid argument",
+        "user_hint": "Check the documented values of this argument.",
+    },
     "SABUESO-W-ENRICH-001": {
         "title": "Source not consulted",
         "user_message": "{source} could not be consulted for {subject}; the result was "

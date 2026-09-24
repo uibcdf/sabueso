@@ -24,6 +24,7 @@ from sabueso._private.smonitor.warnings import (
     UnanchoredRecordsWarning,
 )
 from sabueso.core.errors import (
+    ArgumentError,
     ConnectorError,
     RecordNotFoundError,
     ResolverError,
@@ -102,6 +103,9 @@ def test_check3_every_code_renders_in_every_profile(profile):
         lambda: StorageError("storage"),
         lambda: ConnectorError("UniProt request for P0 failed: HTTP 500"),
         lambda: RecordNotFoundError("UniProt has no record P0"),
+        lambda: ArgumentError(
+            argument="structures", value="XYZ", caller="x", reason="not a PDB id"
+        ),
     ],
 )
 def test_check4_catalog_classes_survive_a_rebuild(build):
@@ -206,6 +210,6 @@ def test_a_diagnostic_points_at_the_line_that_called_sabueso():
     client = FixtureChEMBLClient("temp_data", failing={"CHEMBL5834"})
     with pytest.warns(EnrichmentFailedWarning) as record:
         resolve_protein_card("P52270", resolver, chembl={}, chembl_client=client)
-    assert (
-        pathlib.Path(record[0].filename).resolve() == pathlib.Path(__file__).resolve()
-    )
+    # Pick ours by type: other libraries may warn in the same call.
+    (ours,) = [w for w in record if issubclass(w.category, EnrichmentFailedWarning)]
+    assert pathlib.Path(ours.filename).resolve() == pathlib.Path(__file__).resolve()

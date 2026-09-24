@@ -21,6 +21,7 @@ from typing import Any, Dict, Iterable, List, Tuple
 
 from smonitor import signal
 
+from sabueso._private.argdigest import arg_digest
 from sabueso._private.smonitor.outcomes import report_outcomes, report_unanchored
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card, make_card_id
@@ -161,12 +162,14 @@ def _clients(chembl_client, ccd_client, unichem_client):
 
 
 @signal(tags=["api", "small_molecule"])
+@arg_digest()
 def resolve_molecule_card(
     identifier: str,
     chembl_client: Any | None = None,
     ccd_client: Any | None = None,
     unichem: bool = True,
     unichem_client: Any | None = None,
+    skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve a small-molecule identifier and build the card of its molecule.
 
@@ -385,6 +388,7 @@ def _notes(structure_ligands: str | None) -> List[str]:
 
 
 @signal(tags=["api", "small_molecule", "deck"])
+@arg_digest()
 def ligand_deck(
     protein_card: Card,
     structure_ligands: str | None = "of_interest",
@@ -392,6 +396,7 @@ def ligand_deck(
     ccd_client: Any | None = None,
     unichem: bool = False,
     unichem_client: Any | None = None,
+    skip_digestion: bool = False,
 ) -> Deck:
     """Deck of the small molecules a protein card refers to, anchored at the InChIKey.
 

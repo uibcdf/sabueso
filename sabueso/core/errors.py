@@ -60,3 +60,29 @@ class RecordNotFoundError(SabuesoError):
     """
 
     catalog_key = "RecordNotFoundError"
+
+
+class ArgumentError(SabuesoError, ValueError):
+    """An argument of a public function has a value the function cannot accept.
+
+    Raised by the ArgDigest digesters in ``sabueso/_private/argdigest/argument/``
+    (uibcdf/sabueso#31), before the function runs: a wrong value is refused rather than
+    turned into a plausible wrong result. It is also a ValueError, which is what it is.
+    """
+
+    catalog_key = "ArgumentError"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        argument: str | None = None,
+        value: Any = None,
+        caller: str | None = None,
+        reason: str | None = None,
+    ) -> None:
+        if message is None:
+            where = f" of {caller}" if caller else ""
+            why = f": {reason}" if reason else ""
+            message = f"Argument {argument!r}{where} cannot take {value!r}{why}."
+        super().__init__(message, extra={"argument": argument, "caller": caller})

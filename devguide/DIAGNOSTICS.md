@@ -30,6 +30,7 @@ replaces the recorded outcome.
 | `SABUESO-E-STORAGE-001` | `StorageError` | |
 | `SABUESO-E-SOURCE-001` | `ConnectorError` | a source could not answer |
 | `SABUESO-E-SOURCE-002` | `RecordNotFoundError` | a source answered that it holds no such record |
+| `SABUESO-E-ARG-001` | `ArgumentError` | an argument of a public function has a value it cannot accept (ArgDigest; also a `ValueError`) |
 
 The warnings are catalog warnings: they emit a structured SMonitor event and raise an
 ordinary Python warning, so `warnings.filterwarnings` and `pytest.warns` work as usual.
@@ -58,12 +59,14 @@ message.
   stream, and SMonitor's warning capture makes the normally hidden warning visible. It is
   cosmetic: exit status and verdict are unaffected. Tracked upstream in
   uibcdf/pytest-receptor#4.
-- `@signal` wraps each decorated function in one extra frame, so a warning raised inside
-  it points at `smonitor/core/decorator.py` unless the stack level counts that frame.
-  `outcomes.py` counts it by hand (`_CALLER = 4`). If SMonitor changes its wrapper depth,
-  warnings will silently blame the wrong line. Remove the constant once
-  uibcdf/smonitor#23 is resolved. Meanwhile, the attribution test in
-  `test_smonitor_integration_offline.py` would catch a change.
+- `@signal` (SMonitor) and `@arg_digest` (ArgDigest) each wrap a public function in
+  extra frames, so a warning raised inside it points at their decorator module unless the
+  stack level skips those frames. `outcomes.py` used to count them by hand
+  (`_CALLER = 4`), and it broke the day ArgDigest's wrapper was added. It now measures the
+  level: the first frame outside `sabueso`, `smonitor` and `argdigest`
+  (`_user_stacklevel`). Remove it once the libraries skip their own frames
+  (uibcdf/smonitor#23; the ArgDigest counterpart is reported too). The attribution test in
+  `test_smonitor_integration_offline.py` guards it.
 - The guide's check 2 walks only the grouped catalog shape, so on a flat catalog it
   passes while checking nothing (uibcdf/smonitor#22). Sabueso's catalog is grouped, and
   our check also asserts that it found the full set of codes.

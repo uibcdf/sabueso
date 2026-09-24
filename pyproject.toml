@@ -16,6 +16,7 @@ dynamic = ["version"]
 dependencies = [
   "smonitor>=0.16.0",
   "pyunitwizard>=0.27.0",
+  "argdigest>=0.13.0",
 ]
 classifiers = [
   "Programming Language :: Python :: 3",

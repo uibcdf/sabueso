@@ -23,6 +23,7 @@ from typing import Any, Dict, Iterable, List, Tuple
 
 from smonitor import signal
 
+from sabueso._private.argdigest import arg_digest
 from sabueso._private.smonitor.outcomes import report_outcomes
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card
@@ -46,6 +47,7 @@ UNIPROT_PREFIX = "sabueso:protein:uniprot:"
 
 
 @signal(tags=["api", "protein"])
+@arg_digest()
 def resolve_protein_card(
     query: EntityQuery | str,
     resolver: EntityResolver | None = None,
@@ -58,6 +60,7 @@ def resolve_protein_card(
     pdbe_kb_client: Any | None = None,
     family_sites: bool = False,
     interpro_client: Any | None = None,
+    skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
 
@@ -299,7 +302,8 @@ def _candidate_card(
     return card
 
 
-def ambiguity_deck(resolution: EntityResolution) -> Deck:
+@arg_digest()
+def ambiguity_deck(resolution: EntityResolution, skip_digestion: bool = False) -> Deck:
     """Deck of candidate cards: the candidates of an ambiguous resolution, or the
     non-preferred alternatives of a resolved one. Nothing is fetched again."""
     items = resolution.candidates if resolution.status == "ambiguous" else []

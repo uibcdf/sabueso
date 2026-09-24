@@ -13,6 +13,7 @@ PACKAGE = "sabueso"
 PUBLIC_DEPENDENCIES = (
     ("smonitor", "0.16.0", "py_1"),
     ("pyunitwizard", "0.27.0", "py_0"),
+    ("argdigest", "0.13.0", "py_1"),
     ("depdigest", "0.11.0", "py_2"),
 )
 STAGING_CHANNEL = "https://conda.anaconda.org/uibcdf/label/staging/noarch"

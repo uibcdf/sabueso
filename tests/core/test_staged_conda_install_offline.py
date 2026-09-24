@@ -84,6 +84,7 @@ def test_staged_matrix_uses_candidate_verifier_and_supported_lanes():
     assert "uibcdf::smonitor=0.16.0=py_1" in workflow
     assert "uibcdf::depdigest=0.11.0=py_2" in workflow
     assert "uibcdf::pyunitwizard=0.27.0=py_0" in workflow
+    assert "uibcdf::argdigest=0.13.0=py_1" in workflow
     assert "pip install" not in workflow
 
 
@@ -133,6 +134,7 @@ def _installed_records(tmp_path: Path) -> None:
         ),
         ("smonitor", "0.16.0", "py_1", verifier.PUBLIC_CHANNEL, "c" * 64),
         ("pyunitwizard", "0.27.0", "py_0", verifier.PUBLIC_CHANNEL, "e" * 64),
+        ("argdigest", "0.13.0", "py_1", verifier.PUBLIC_CHANNEL, "f" * 64),
         ("depdigest", "0.11.0", "py_2", verifier.PUBLIC_CHANNEL, "d" * 64),
     ]
     for name, version, build, channel, sha256 in records:
