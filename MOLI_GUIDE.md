@@ -46,13 +46,15 @@ Examples:
 
 ## Reporting bugs and proposals
 
+Everyone who uses, develops, maintains or operates a MOLI component or UIBCDF support tool must communicate actionable bugs, missing capabilities, improvement opportunities and new feature proposals through the owning GitHub issue. Open a new issue or add concrete evidence to an existing one. This applies equally to Sabueso, MolSysSuite members, pytest-receptor, gh-run-receptor, the Conda build/upload and Sphinx-to-Pages actions, and future repositories. If you cannot open an issue, ask the responsible maintainer to record it. Do not leave the finding only in a chat, local workaround or downstream repository. Reporting does not promise immediate implementation. Follow [MOLI's issue-feedback rule](https://github.com/uibcdf/moli/blob/main/devguide/governance/reporting_protocol.md#universal-issue-feedback-commitment); use private security reporting for exploitable or confidential findings.
+
 Report a one-repository concern in the repository that owns it.
 
 Report a shared MOLI-component/platform contract concern in `uibcdf/moli`. Cross-link component-local implementation issues where needed.
 
 For concerns internal to MolSysSuite, follow MolSysSuite governance rather than duplicating them in MOLI.
 
-Until MOLI adopts a more elaborate reporting lifecycle, GitHub issues are the stable identity for bugs/proposals. Durable analysis or decisions may be recorded under the owning repository's `devguide/`.
+GitHub issues are the stable identity for bugs/proposals. Durable analysis or decisions may be recorded under the owning repository's `devguide/`; small findings need no extra report.
 
 ## Cross-component feedback
 
@@ -62,6 +64,19 @@ When work in one component exposes a missing or limiting capability in another:
 2. include the consuming use case and why it matters;
 3. cross-link local workaround or blocked work;
 4. escalate to `uibcdf/moli` when the issue changes a contract between MOLI components or requires platform policy.
+
+## UIBCDF development infrastructure supporting MOLI
+
+UIBCDF maintains four shared resources used by MOLI development. They are [registered separately from scientific components](https://github.com/uibcdf/moli/blob/main/devguide/governance/support_infrastructure.md). Use each where its boundary applies:
+
+| Resource | Use | Report a defect or improvement |
+| --- | --- | --- |
+| [Pytest Receptor](https://github.com/uibcdf/pytest-receptor) | Python test output for agents and CI | [Provider issues](https://github.com/uibcdf/pytest-receptor/issues) |
+| [GH Run Receptor](https://github.com/uibcdf/gh-run-receptor) | Inspect Actions run evidence | [Provider issues](https://github.com/uibcdf/gh-run-receptor/issues) |
+| [Conda build/upload action](https://github.com/uibcdf/action-build-and-upload-conda-packages) | Build and publish Conda packages | [Provider issues](https://github.com/uibcdf/action-build-and-upload-conda-packages/issues) |
+| [Sphinx-to-Pages action](https://github.com/uibcdf/action-sphinx-docs-to-gh-pages) | Publish Sphinx docs to GitHub Pages | [Provider issues](https://github.com/uibcdf/action-sphinx-docs-to-gh-pages/issues) |
+
+The provider owns its tool, while MOLI owns shared usage policy and MolSysSuite owns member adoption. The receptors also remain MolSysSuite auxiliary members. Link provider issues from any blocked consumer work. A repository without the relevant test, release or documentation route need not add that tool.
 
 ## MOLI engineering baseline
 
