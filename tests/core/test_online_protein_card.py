@@ -75,3 +75,15 @@ def test_online_family_sites_from_interpro():
         if a["kind"] == "family_site"
     }
     assert descriptions["catalytic triad"] == [14, 96, 166]
+
+
+@pytest.mark.online
+def test_online_source_access_returns_raw_records_with_provenance():
+    from sabueso.tools.db import pubchem, rcsb, uniprot
+
+    entry = uniprot.get_entry("P60174")
+    assert entry["record"]["primaryAccession"] == "P60174" and entry["version"]
+    structure = rcsb.get_entry("1SUX")
+    assert structure["record"]["rcsb_id"] == "1SUX"
+    compound = pubchem.get_compound("5978")
+    assert compound["record"]["PropertyTable"]["Properties"][0]["CID"] == 5978

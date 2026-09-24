@@ -1,5 +1,9 @@
 # Tutorial: `create_molecule_card_online`
 
+```{warning}
+Deprecated: use `sabueso.resolve("chembl:<id>")`, which anchors the molecule at its standard InChIKey and links its records across sources. It warns when called, and will be removed before Sabueso 1.0.
+```
+
 ## Goal
 
 Fetch ChEMBL data and create a Sabueso Card in one call.

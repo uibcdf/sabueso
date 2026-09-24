@@ -29,7 +29,9 @@ from typing import Any, Dict
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
+from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db._record import online, source_record
 
 PDBE_GRAPH_API = "https://www.ebi.ac.uk/pdbe/graph-api"
 
@@ -103,3 +105,36 @@ class FixturePDBeKBClient:
 
     def interface_residues(self, accession: str) -> Dict[str, Any]:
         return self._read("interface_residues", accession)
+
+
+# --- Public source access (uibcdf/sabueso#49) -----------------------------------------
+
+
+@arg_digest()
+def get_ligand_sites(identifier: str, client: Any = None, skip_digestion: bool = False):
+    """The residues each ligand contacts in a UniProt protein's structures (PDBe-KB)."""
+    response = online(client, OnlinePDBeKBClient).ligand_sites(identifier)
+    return source_record(
+        "PDBe-KB",
+        "ligand_sites",
+        {"accession": identifier},
+        response.get("retrieved_at"),
+        None,
+        response.get("record"),
+    )
+
+
+@arg_digest()
+def get_interface_residues(
+    identifier: str, client: Any = None, skip_digestion: bool = False
+):
+    """The residues at a UniProt protein's interfaces, per partner chain (PDBe-KB)."""
+    response = online(client, OnlinePDBeKBClient).interface_residues(identifier)
+    return source_record(
+        "PDBe-KB",
+        "interface_residues",
+        {"accession": identifier},
+        response.get("retrieved_at"),
+        None,
+        response.get("record"),
+    )

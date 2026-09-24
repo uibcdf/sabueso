@@ -1,5 +1,9 @@
 # Tutorial: `fetch_chembl_json`
 
+```{warning}
+Deprecated: use `sabueso.tools.db.chembl.get_molecules([chembl_id])` ({doc}`../sources`). It warns when called, and will be removed before Sabueso 1.0.
+```
+
 ## Goal
 
 Fetch raw payload data from ChEMBL.

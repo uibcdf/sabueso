@@ -23,6 +23,33 @@ from sabueso.core.deck import Deck
 from sabueso.core.errors import ArgumentError, SabuesoError
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 from sabueso.tools.card.storage import load_card_sqlite, save_card_sqlite
+from sabueso.tools.db import (
+    chembl as _chembl,
+)
+from sabueso.tools.db import (
+    interpro as _interpro,
+)
+from sabueso.tools.db import (
+    pdb_ccd as _pdb_ccd,
+)
+from sabueso.tools.db import (
+    pdbe_kb as _pdbe_kb,
+)
+from sabueso.tools.db import (
+    pubchem as _pubchem,
+)
+from sabueso.tools.db import (
+    rcsb as _rcsb,
+)
+from sabueso.tools.db import (
+    stringdb as _stringdb,
+)
+from sabueso.tools.db import (
+    unichem as _unichem,
+)
+from sabueso.tools.db import (
+    uniprot as _uniprot,
+)
 from sabueso.tools.db.chembl import FixtureChEMBLClient
 from sabueso.tools.deck.storage import (
     META_TABLE,
@@ -31,7 +58,23 @@ from sabueso.tools.deck.storage import (
     save_deck_sqlite,
 )
 
+SOURCE_FUNCTIONS = [
+    _uniprot.get_entry,
+    _uniprot.search,
+    _rcsb.get_entry,
+    _chembl.get_bioactivities,
+    _chembl.get_molecules,
+    _pubchem.get_compound,
+    _interpro.get_site_residues,
+    _pdbe_kb.get_ligand_sites,
+    _pdbe_kb.get_interface_residues,
+    _pdb_ccd.get_components,
+    _unichem.get_compound,
+    _stringdb.get_partners,
+]
+
 PUBLIC_TOOLS = [
+    *SOURCE_FUNCTIONS,
     resolve,
     resolve_protein_card,
     resolve_molecule_card,

@@ -1,5 +1,9 @@
 # Tutorial: `fetch_pdb_json`
 
+```{warning}
+Deprecated: use `sabueso.tools.db.rcsb.get_entry(pdb_id)`, the RCSB entry data Sabueso maps, in a provenance envelope ({doc}`../sources`). It warns when called, and will be removed before Sabueso 1.0.
+```
+
 ## Goal
 
 Fetch raw payload data from PDB.

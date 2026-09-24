@@ -10,7 +10,9 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
 
+from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db._record import online, source_record
 
 
 def load_json(path: str | Path) -> Dict[str, Any]:
@@ -43,16 +45,33 @@ def create_molecule_card_from_file(path: str | Path, retrieved_at: str) -> Any:
 
 
 def fetch_chembl_json(chembl_id: str) -> Dict[str, Any]:
-    """Fetch ChEMBL molecule JSON online by ChEMBL ID."""
-    url = f"https://www.ebi.ac.uk/chembl/api/data/molecule/{chembl_id}.json"
-    with urlopen(url) as resp:  # nosec - expected trusted endpoint
-        return json.loads(resp.read().decode("utf-8"))
+    """Deprecated: use ``get_molecules([chembl_id])`` (#49)."""
+    from sabueso._private.smonitor.outcomes import report_deprecated
+
+    report_deprecated(
+        "sabueso.tools.db.chembl.fetch_chembl_json",
+        "sabueso.tools.db.chembl.get_molecules([chembl_id])",
+    )
+    response = OnlineChEMBLClient().molecules([chembl_id])
+    if chembl_id not in response["molecules"]:
+        raise RecordNotFoundError(f"ChEMBL has no molecule {chembl_id}")
+    return response["molecules"][chembl_id]
 
 
 def create_molecule_card_online(chembl_id: str, retrieved_at: str) -> Any:
-    """Create a SmallMolecule Card by ChEMBL ID using online fetch."""
-    data = fetch_chembl_json(chembl_id)
-    return create_molecule_card_from_json(data, retrieved_at=retrieved_at)
+    """Deprecated: use ``sabueso.resolve("chembl:<id>")``, which links the molecule's
+    records across sources (#49)."""
+    from sabueso._private.smonitor.outcomes import report_deprecated
+
+    report_deprecated(
+        "sabueso.create_molecule_card_online", 'sabueso.resolve("chembl:<id>")'
+    )
+    response = OnlineChEMBLClient().molecules([chembl_id])
+    if chembl_id not in response["molecules"]:
+        raise RecordNotFoundError(f"ChEMBL has no molecule {chembl_id}")
+    return create_molecule_card_from_json(
+        response["molecules"][chembl_id], retrieved_at=retrieved_at
+    )
 
 
 # --- Target bioactivities (uibcdf/sabueso#23) -------------------------------------------
@@ -284,3 +303,43 @@ class FixtureChEMBLClient:
             "molecules": found,
             "missing": [i for i in ids if i not in found],
         }
+
+
+# --- Public source access (uibcdf/sabueso#49) -----------------------------------------
+
+
+@arg_digest()
+def get_bioactivities(
+    identifier: str,
+    limit: int = DEFAULT_ACTIVITY_LIMIT,
+    client: Any = None,
+    skip_digestion: bool = False,
+):
+    """The activity records of a ChEMBL target (``identifier`` is its ChEMBL id)."""
+    response = online(client, OnlineChEMBLClient).bioactivities(identifier, limit=limit)
+    return source_record(
+        "ChEMBL",
+        "bioactivities",
+        {"target": identifier, "limit": limit},
+        response.get("retrieved_at"),
+        response.get("version"),
+        {
+            "total_count": response.get("total_count"),
+            "truncated": response.get("truncated"),
+            "activities": response.get("activities"),
+        },
+    )
+
+
+@arg_digest()
+def get_molecules(identifiers: Any, client: Any = None, skip_digestion: bool = False):
+    """ChEMBL molecule records by ChEMBL id; ``missing`` lists ids ChEMBL does not hold."""
+    response = online(client, OnlineChEMBLClient).molecules(identifiers)
+    return source_record(
+        "ChEMBL",
+        "molecules",
+        {"chembl_ids": list(identifiers)},
+        response.get("retrieved_at"),
+        response.get("version"),
+        {"molecules": response.get("molecules"), "missing": response.get("missing")},
+    )

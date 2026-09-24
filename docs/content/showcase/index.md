@@ -23,7 +23,7 @@ knowledge_baseline
 ```python
 import sabueso
 
-card = sabueso.create_protein_card_online("P52789", retrieved_at="2026-02-04")
+card, _ = sabueso.resolve("P52789")
 print(card.get("identifiers.uniprot"))
 ```
 

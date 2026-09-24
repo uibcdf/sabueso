@@ -23,7 +23,9 @@ from typing import Any, Dict
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db._record import online, source_record
 
 UNICHEM_API = "https://www.ebi.ac.uk/unichem/api/v1/compounds"
 SOURCE_FIELDS = ("id", "shortName", "compoundId")
@@ -83,3 +85,20 @@ class FixtureUniChemClient:
             raise RecordNotFoundError(f"UniChem has no compound {inchikey}")
         saved = json.loads(path.read_text(encoding="utf-8"))
         return {"retrieved_at": self.retrieved_at, "compound": saved}
+
+
+# --- Public source access (uibcdf/sabueso#49) -----------------------------------------
+
+
+@arg_digest()
+def get_compound(identifier: str, client: Any = None, skip_digestion: bool = False):
+    """The records other resources hold for a standard InChIKey (UniChem)."""
+    response = online(client, OnlineUniChemClient).compound(identifier)
+    return source_record(
+        "UniChem",
+        "compound",
+        {"inchikey": identifier},
+        response.get("retrieved_at"),
+        None,
+        response.get("compound"),
+    )

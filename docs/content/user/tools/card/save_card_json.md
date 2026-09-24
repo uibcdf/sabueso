@@ -16,7 +16,7 @@ Persist one Card as a JSON file.
 import sabueso
 from sabueso.tools.card import save_card_json
 
-card = sabueso.create_protein_card_online("P52789", retrieved_at="2026-02-04")
+card, _ = sabueso.resolve("P52789")
 save_card_json(card, "data/cards/p52789.json")
 ```
 

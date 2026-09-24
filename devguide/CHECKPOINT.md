@@ -125,6 +125,7 @@ This file records the current repository baseline so new developers can resume e
   - Ligand decks: `ligand_deck(protein_card)`, `Card.ligands(deck)`, `Card.compare_ligands(...)` and `Deck.intersect` / `Deck.difference` (#23, closed).
   - Oligomer and interfaces: RCSB assemblies and `chimeric_with` on `has_structure`, PDBe-KB `has_interface_with`, and `Card.oligomer()` with UniProt SUBUNIT and CDD dimer-interface agreement (#40).
   - Curated literature assertions on knowledge fields: `Card.add_literature_assertion`, compared with other sources, never prioritised or discarded, differences flagged (#41, part 2; free-text claims #43).
+  - Source access as a public layer: `sabueso.tools.db.<source>.get_*` return raw records in a provenance envelope, one client per source (UniProt and RCSB moved here; PubChem client added), legacy fetchers and online card builders deprecated (`devguide/SOURCE_ACCESS.md`, #49).
   - Enrichment profiles: `resolve(..., profile="structural_baseline@1")`, versioned and recorded on the card (#45).
   - View conventions: reference keys end in `_ref`, and molecules carry a readable `label` (#47).
   - Curation store: curated assertions survive rebuilds (`CurationStore`, `resolve(..., curations=)`), same ids, outcomes recomputed, retractions kept (#48).

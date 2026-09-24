@@ -18,7 +18,9 @@ from typing import Any, Dict, Tuple
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db._record import online, source_record
 
 RCSB_GRAPHQL = "https://data.rcsb.org/graphql"
 STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
@@ -100,3 +102,17 @@ class FixtureRCSBClient:
         if not path.is_file():
             raise RecordNotFoundError(f"RCSB has no entry {pdb_id}")
         return json.loads(path.read_text(encoding="utf-8")), self.retrieved_at
+
+
+# --- Public source access (uibcdf/sabueso#49) -----------------------------------------
+
+
+@arg_digest()
+def get_entry(identifier: str, client: Any = None, skip_digestion: bool = False):
+    """The RCSB PDB entry Sabueso maps (GraphQL: entities, UniProt alignments,
+    assemblies, ligands and primary citation), in a provenance envelope. Not the
+    coordinates: loading structures belongs to MolSysMT."""
+    entry, retrieved_at = online(client, OnlineRCSBClient).fetch_structure(identifier)
+    return source_record(
+        "RCSB PDB", "entry", {"pdb_id": identifier.upper()}, retrieved_at, None, entry
+    )

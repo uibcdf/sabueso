@@ -19,7 +19,9 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
+from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db._record import online, source_record
 
 
 def load_json(path: str | Path) -> Dict[str, Any]:
@@ -67,16 +69,26 @@ def create_protein_card(
 
 
 def fetch_uniprot_json(uniprot_id: str) -> Dict[str, Any]:
-    """Fetch UniProt JSON online by accession."""
-    url = f"https://rest.uniprot.org/uniprotkb/{uniprot_id}.json"
-    with urlopen(url) as resp:  # nosec - expected trusted endpoint
-        return json.loads(resp.read().decode("utf-8"))
+    """Deprecated: use ``get_entry(accession)["record"]`` (#49)."""
+    from sabueso._private.smonitor.outcomes import report_deprecated
+
+    report_deprecated(
+        "sabueso.tools.db.uniprot.fetch_uniprot_json",
+        'sabueso.tools.db.uniprot.get_entry(accession)["record"]',
+    )
+    entry, _ = OnlineUniProtClient().fetch_entry(uniprot_id)
+    return entry
 
 
 def create_protein_card_online(uniprot_id: str, retrieved_at: str | None = None) -> Any:
-    """Create a Protein Card by UniProt ID using online fetch."""
-    data = fetch_uniprot_json(uniprot_id)
-    return create_protein_card_from_json(data, retrieved_at=retrieved_at)
+    """Deprecated: use ``sabueso.resolve(accession)``, which resolves the entity (#49)."""
+    from sabueso._private.smonitor.outcomes import report_deprecated
+
+    report_deprecated(
+        "sabueso.create_protein_card_online", "sabueso.resolve(accession)"
+    )
+    entry, retrieved = OnlineUniProtClient().fetch_entry(uniprot_id)
+    return create_protein_card_from_json(entry, retrieved_at=retrieved_at or retrieved)
 
 
 # --- Record access (moved from sabueso.resolver.uniprot_client, uibcdf/sabueso#49) ---
@@ -203,3 +215,40 @@ class FixtureUniProtClient:
             raise ConnectorError(f"No saved UniProt search response for {key}")
         saved = json.loads(path.read_text(encoding="utf-8"))
         return {**saved, "retrieved_at": self.retrieved_at}
+
+
+# --- Public source access (uibcdf/sabueso#49) -----------------------------------------
+
+
+@arg_digest()
+def get_entry(identifier: str, client: Any = None, skip_digestion: bool = False):
+    """The UniProtKB entry of an accession, in a provenance envelope.
+
+    ``version`` is the entry version. Raises RecordNotFoundError or ConnectorError.
+    """
+    entry, retrieved_at = online(client, OnlineUniProtClient).fetch_entry(identifier)
+    version = (entry.get("entryAudit") or {}).get("entryVersion")
+    return source_record(
+        "UniProt", "entry", {"accession": identifier}, retrieved_at, version, entry
+    )
+
+
+@arg_digest()
+def search(
+    name: str,
+    organism: int | str,
+    include_subtaxa: bool = False,
+    client: Any = None,
+    skip_digestion: bool = False,
+):
+    """UniProtKB entries whose protein name matches, within an organism (NCBI taxonomy
+    id or name; ``include_subtaxa`` adds strains and other taxa below it)."""
+    result = online(client, OnlineUniProtClient).search(name, organism, include_subtaxa)
+    return source_record(
+        "UniProt",
+        "search",
+        {"name": name, "organism": organism, "include_subtaxa": include_subtaxa},
+        result.get("retrieved_at"),
+        result.get("release"),
+        {"total": result.get("total"), "results": result.get("results")},
+    )

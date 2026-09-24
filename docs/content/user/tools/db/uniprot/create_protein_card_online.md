@@ -1,5 +1,9 @@
 # Tutorial: `create_protein_card_online`
 
+```{warning}
+Deprecated: use `sabueso.resolve(accession)`, which resolves the entity (secondary and isoform accessions, identity links) before building its card. It warns when called, and will be removed before Sabueso 1.0.
+```
+
 ## Goal
 
 Fetch UniProt data and create a Sabueso Card in one call.

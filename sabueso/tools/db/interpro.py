@@ -24,7 +24,9 @@ from typing import Any, Dict
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db._record import online, source_record
 
 INTERPRO_API = "https://www.ebi.ac.uk/interpro/api"
 NO_RESIDUES = "InterPro states no site residues for {} (or does not know it)"
@@ -92,3 +94,22 @@ class FixtureInterProClient:
             "version": saved.get("version"),
             "residues": saved["residues"],
         }
+
+
+# --- Public source access (uibcdf/sabueso#49) -----------------------------------------
+
+
+@arg_digest()
+def get_site_residues(
+    identifier: str, client: Any = None, skip_digestion: bool = False
+):
+    """The site residues InterPro member databases place on a UniProt protein."""
+    response = online(client, OnlineInterProClient).site_residues(identifier)
+    return source_record(
+        "InterPro",
+        "site_residues",
+        {"accession": identifier},
+        response.get("retrieved_at"),
+        response.get("version"),
+        response.get("residues"),
+    )

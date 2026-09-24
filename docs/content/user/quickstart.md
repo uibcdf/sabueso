@@ -68,17 +68,19 @@ print(resolution.decision["profile"])  # name, the options it gave, those you ov
 - Options you pass explicitly override the profile, and the override is recorded on the
   card.
 
-## Create a Protein Card (online)
+## Query a source directly (online)
 
-The example below creates a Protein Card from UniProt ID `P52789`.
+Every database module also returns its raw records, with when they were retrieved and
+from which release, without building a card:
 
 ```python
-import sabueso
+from sabueso.tools.db import uniprot
 
-card = sabueso.create_protein_card_online("P52789")
-print(card.get("identifiers.uniprot"))
-print(card.get("names.canonical_name"))
+entry = uniprot.get_entry("P52789")
+print(entry["version"], entry["retrieved_at"], entry["record"]["primaryAccession"])
 ```
+
+See {doc}`tools/db/sources` for every source.
 
 ## Create a Small Molecule Card (offline)
 

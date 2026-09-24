@@ -113,3 +113,29 @@ class CuratedDisagreementWarning(SabuesoWarning):
             meta=META if extra else None,
             extra=extra,
         )
+
+
+class DeprecatedUsageWarning(SabuesoWarning, FutureWarning):
+    """A deprecated function was called; it will be removed before 1.0 (#49).
+
+    Also a FutureWarning, so Python shows it to end users by default.
+    """
+
+    catalog_key = "DeprecatedUsageWarning"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        function: str | None = None,
+        replacement: str | None = None,
+    ) -> None:
+        extra = None
+        if message is None:
+            extra = {"function": function, "replacement": replacement}
+        super().__init__(
+            message,
+            catalog=CATALOG if extra else None,
+            meta=META if extra else None,
+            extra=extra,
+        )

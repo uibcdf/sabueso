@@ -1,10 +1,12 @@
 # DB Tools
 
-These pages are written as practical tutorials. Each database has its own section, and each tool has a dedicated step-by-step page.
+Start with {doc}`sources`: every database module returns its raw records in a
+provenance envelope. The sections below cover each database.
 
 ```{toctree}
 :maxdepth: 1
 
+sources
 chembl/index
 pdb/index
 pdbe_kb/index

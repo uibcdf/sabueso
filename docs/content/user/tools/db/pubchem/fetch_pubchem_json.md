@@ -1,5 +1,9 @@
 # Tutorial: `fetch_pubchem_json`
 
+```{warning}
+Deprecated: use `sabueso.tools.db.pubchem.get_compound(cid)["record"]` ({doc}`../sources`). It warns when called, and will be removed before Sabueso 1.0.
+```
+
 ## Goal
 
 Fetch raw payload data from PubChem.

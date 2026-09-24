@@ -13,6 +13,7 @@ from typing import Any, Dict, Iterable, List
 from .emitter import warn
 from .warnings import (
     CuratedDisagreementWarning,
+    DeprecatedUsageWarning,
     EnrichmentFailedWarning,
     EnrichmentTruncatedWarning,
     UnanchoredRecordsWarning,
@@ -91,5 +92,13 @@ def report_curated_disagreement(subject: str, field: str, publication: str) -> N
         CuratedDisagreementWarning(
             subject=subject, field=field, publication=publication
         ),
+        stacklevel=_user_stacklevel(),
+    )
+
+
+def report_deprecated(function: str, replacement: str) -> None:
+    """Warn that a deprecated function was called, and what to use instead."""
+    warn(
+        DeprecatedUsageWarning(function=function, replacement=replacement),
         stacklevel=_user_stacklevel(),
     )

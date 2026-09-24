@@ -64,6 +64,12 @@ CATALOG = {
             "category": "identity",
             "level": "WARNING",
         },
+        "DeprecatedUsageWarning": {
+            "code": "SABUESO-W-DEPRECATED-001",
+            "source": "sabueso.warning.deprecated_usage",
+            "category": "api",
+            "level": "WARNING",
+        },
         "CuratedDisagreementWarning": {
             "code": "SABUESO-W-CURATION-001",
             "source": "sabueso.warning.curated_disagreement",
@@ -109,6 +115,11 @@ CODES = {
         "user_hint": "They are listed in deck.meta['unanchored'].",
         "dev_message": "Unanchored records for {subject}: {examples}",
     },
+    "SABUESO-W-DEPRECATED-001": {
+        "title": "Deprecated function",
+        "user_message": "{function} is deprecated and will be removed before Sabueso 1.0.",
+        "user_hint": "Use {replacement} instead.",
+    },
     "SABUESO-W-CURATION-001": {
         "title": "Curated assertion differs",
         "user_message": "The literature assertion from {publication} on {field} of "
@@ -129,6 +140,7 @@ SIGNALS = {
     "sabueso.warning.unanchored_records": {
         "extra_required": ["subject", "count", "examples"]
     },
+    "sabueso.warning.deprecated_usage": {"extra_required": ["function", "replacement"]},
     "sabueso.warning.curated_disagreement": {
         "extra_required": ["subject", "field", "publication"]
     },

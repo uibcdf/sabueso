@@ -250,3 +250,12 @@ uibcdf/sabueso#45.
 - Profiles hold Sabueso's own options only. A study's methodology, meaning why this
   baseline, belongs to Praxis.
 
+## Three public layers (2026-09-24)
+uibcdf/sabueso#49, `devguide/SOURCE_ACCESS.md`.
+- The layers are source access (raw records in a provenance envelope), mappings
+  (SourceAssertions) and cards (resolved knowledge). Each is public.
+- Each source has one module with one set of clients, shared by card building and
+  direct queries.
+- Sabueso retrieves knowledge records, never coordinate files; loading structures
+  belongs to MolSysMT.
+

@@ -1,5 +1,9 @@
 # Tutorial: `fetch_uniprot_json`
 
+```{warning}
+Deprecated: use `sabueso.tools.db.uniprot.get_entry(accession)["record"]`, which adds a timeout, catalogued errors and the retrieval date and release ({doc}`../sources`). It warns when called, and will be removed before Sabueso 1.0.
+```
+
 ## Goal
 
 Fetch raw payload data from UniProt.
