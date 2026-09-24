@@ -1,6 +1,6 @@
-version = "0.1.1"
+version = "0.1.2"
 route = "staged"
-reason = "Fixes 0.1.0, whose package lacked sabueso/resolver/selection_rules.json (uibcdf/sabueso#35); clean installed-package gates, now building a card from a mapping, must pass before public visibility."
+reason = "Code identical to 0.1.1. Zenodo never finished archiving 0.1.0 or 0.1.1 (both stuck as Received), whose metadata came from a .zenodo.json with license \"MIT\"; 0.1.2 carries only CITATION.cff, the metadata that UIBCDF components archived without trouble this week."
 decision_by = "Diego Prada (Sabueso maintainer), 2026-09-24"
 required_workflows = [
   ".github/workflows/ci.yml",
