@@ -47,6 +47,19 @@ CHEMBL_UNITS: Dict[str, str] = {
 _CONCENTRATIONS = {"picomolar", "nanomolar", "micromolar", "millimolar", "molar"}
 
 
+#: Significant digits kept after a unit conversion. pint converts through SI base units,
+#: so 20 µM becomes 19999.999999999996 nM; a measurement exactly on a threshold would
+#: then fall on either side depending on how the threshold was written, and stored
+#: values would carry the noise. No source states more than a few digits; 12 keeps every
+#: stated digit and drops the noise.
+SIGNIFICANT_DIGITS = 12
+
+
+def converted(value: float) -> float:
+    """A converted value without floating-point noise (see SIGNIFICANT_DIGITS)."""
+    return float(f"{value:.{SIGNIFICANT_DIGITS}g}")
+
+
 @lru_cache(maxsize=None)
 def canonical_unit(unit: str) -> str:
     """PyUnitWizard's canonical spelling of ``unit`` (``"nM"`` → ``"nanomolar"``)."""
@@ -94,12 +107,12 @@ def normalized_measurement(value: Any, units: Any) -> Optional[Dict[str, Any]]:
         return quantity_node(value, "percent")
     import pyunitwizard as puw
 
-    converted = puw.convert(
+    value_nM = puw.convert(
         puw.quantity(float(value), unit, form="pint"),
         to_unit=CONCENTRATION_UNIT,
         to_type="value",
     )
-    return quantity_node(float(converted), CONCENTRATION_UNIT)
+    return quantity_node(converted(float(value_nM)), CONCENTRATION_UNIT)
 
 
 def is_quantity_node(obj: Any) -> bool:

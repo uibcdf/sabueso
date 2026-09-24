@@ -116,7 +116,7 @@ def test_structure_meets_bioactivity(cards, decks):
     }
     assert SULFATE not in items
     assert view["unmatched"] == []  # additives and ions are not unmatched molecules
-    assert view["classification"]["rule"] == "bioactivity_class@1"
+    assert view["classification"]["rule"] == "bioactivity_class@2"
 
 
 def test_all_structure_ligands_on_request(cards, clients):

@@ -5,6 +5,7 @@ Frozen public ChEMBL_37 responses for TcTIM (CHEMBL5834, UniProt P52270) and HsT
 """
 
 import pytest
+import pyunitwizard as puw
 
 from sabueso import resolve_protein_card
 from sabueso._private.smonitor.warnings import (
@@ -13,7 +14,7 @@ from sabueso._private.smonitor.warnings import (
 )
 from sabueso.core.bioactivities import (
     classify_measurement,
-    single_point_concentration_uM,
+    single_point_concentration,
 )
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 from sabueso.tools.db.chembl import FixtureChEMBLClient
@@ -90,9 +91,11 @@ def test_every_activity_record_is_a_supported_relationship(resolver):
 def test_derived_classes_follow_the_stated_rule(resolver):
     view = _card(resolver, TCTIM).bioactivities()
     rule = view["classification"]
-    assert rule["rule"] == "bioactivity_class@1"
-    assert rule["parameters"]["active_max_uM"] == 10.0
-    assert rule["parameters"]["weak_max_uM"] == 100.0
+    assert rule["rule"] == "bioactivity_class@2"
+    # Thresholds are recorded as quantities, never as numbers named after a unit (#32).
+    assert rule["parameters"]["active_max"] == {"value": 10.0, "unit": "micromolar"}
+    assert rule["parameters"]["weak_max"] == {"value": 100.0, "unit": "micromolar"}
+    assert rule["parameters"]["single_point_min"] == {"value": 50.0, "unit": "percent"}
 
     molecules = _molecules(view)
     assert len(molecules) == 256
@@ -129,14 +132,23 @@ def test_measurement_classification(measurement, description, expected):
 
 def test_test_concentration_is_read_from_the_assay_text():
     text = "Inhibition of Trypanosoma cruzi triosephosphate isomerase at 400 uM after 2 hrs"
-    assert single_point_concentration_uM(text) == 400.0
-    assert single_point_concentration_uM("at 50 nM") == 0.05
-    assert single_point_concentration_uM("after 2 hrs") is None
+    # Kept in the stated unit, read through the explicit ChEMBL vocabulary.
+    assert single_point_concentration(text) == {"value": 400.0, "unit": "micromolar"}
+    assert single_point_concentration("at 50 nM") == {
+        "value": 50.0,
+        "unit": "nanomolar",
+    }
+    assert single_point_concentration("after 2 hrs") is None
 
 
 def test_thresholds_are_parameters_and_are_recorded(resolver):
-    view = _card(resolver, TCTIM).bioactivities(thresholds={"active_max_uM": 20.0})
-    assert view["classification"]["parameters"]["active_max_uM"] == 20.0
+    view = _card(resolver, TCTIM).bioactivities(
+        thresholds={"active_max": puw.quantity(20.0, "uM")}
+    )
+    assert view["classification"]["parameters"]["active_max"] == {
+        "value": 20.0,
+        "unit": "micromolar",
+    }
     assert _molecules(view)["chembl:CHEMBL1630897"]["class"] == "active"
 
 
@@ -194,3 +206,54 @@ def test_activity_limit_is_recorded_as_truncation(resolver):
     (enrichment,) = card.quality["enrichments"]
     assert (enrichment["count"], enrichment["total_count"]) == (10, 36)
     assert enrichment["truncated"] is True
+
+
+def test_the_same_threshold_in_another_unit_classifies_identically(resolver):
+    card = _card(resolver, TCTIM)
+    in_uM = card.bioactivities(thresholds={"active_max": puw.quantity(20.0, "uM")})
+    in_nM = card.bioactivities(thresholds={"active_max": puw.quantity(20000.0, "nM")})
+    assert _molecules(in_uM) == _molecules(in_nM)
+
+
+@pytest.mark.parametrize(
+    "thresholds",
+    [
+        {"active_max_uM": 20.0},  # the old unit-in-name key
+        {"active_max": 20.0},  # a bare number: its unit would be a guess
+        {"active_max": "20 nm"},  # a string quantity, but a length
+        {"single_point_min": puw.quantity(5.0, "uM")},
+    ],
+)
+def test_thresholds_must_be_quantities_of_the_right_dimension(resolver, thresholds):
+    from sabueso.core.errors import ArgumentError
+
+    with pytest.raises(ArgumentError):
+        _card(resolver, TCTIM).bioactivities(thresholds=thresholds)
+
+
+def test_a_single_point_test_concentration_is_a_quantity(resolver):
+    derived = classify_measurement(
+        {"type": "Inhibition", "value": 80.0, "units": "%", "relation": "="},
+        "Inhibition of TcTIM at 400 uM",
+    )
+    # IC50 <= 400 uM: an upper bound beyond weak_max cannot decide, so inconclusive.
+    assert derived["class"] == "inconclusive"
+    assert puw.get_value(derived["test_concentration"], to_unit="uM") == 400.0
+
+
+def test_a_threshold_may_be_any_quantity_form_including_a_string(resolver):
+    card = _card(resolver, TCTIM)
+    as_string = card.bioactivities(thresholds={"active_max": "20 uM"})
+    as_pint = card.bioactivities(thresholds={"active_max": puw.quantity(20.0, "uM")})
+    assert _molecules(as_string) == _molecules(as_pint)
+
+
+def test_conversions_carry_no_floating_point_noise():
+    from sabueso.core.quantities import normalized_measurement
+
+    assert normalized_measurement(33.0, "uM") == {"value": 33000.0, "unit": "nanomolar"}
+    assert normalized_measurement(5.0, "pM") == {"value": 0.005, "unit": "nanomolar"}
+    assert normalized_measurement(1.5, "mM") == {
+        "value": 1500000.0,
+        "unit": "nanomolar",
+    }

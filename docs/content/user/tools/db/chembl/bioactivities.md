@@ -17,13 +17,20 @@ for item in view["items"][:5]:
     print(item["molecule_ref"], item["class"], item["best_pchembl"], item["classes"])
 print(view["documents"])  # measurements per document: source bias is visible
 print(view["excluded"])  # e.g. assays assigned to the target by homology
-print(view["classification"])  # rule bioactivity_class@1 and its thresholds
+print(view["classification"])  # rule bioactivity_class@2 and its thresholds
 ```
 
 The classes (`active`, `weak`, `inactive`, `inconclusive`, `not_determined`,
 `unclassified`) are derived by Sabueso from explicit thresholds. ChEMBL does not state
-them. Pass `thresholds={"active_max_uM": 1.0}` to change the thresholds, or
-`include_indirect=True` to include measurements that ChEMBL assigned by homology.
+them. The thresholds are quantities: pass, for example,
+`thresholds={"active_max": puw.quantity(1, "uM")}` or `thresholds={"active_max": "1 uM"}`
+to change them (`active_max`, `weak_max`, `single_point_min`). A bare number is refused,
+because its unit would be a guess. Pass `include_indirect=True` to include measurements
+that ChEMBL assigned by homology.
+
+Each measurement keeps ChEMBL's value and unit as stated, and a `normalized` value in
+nanomolar (or percent). The test concentration of a single-point measurement is returned
+as a quantity (`test_concentration`).
 
 Clients: `sabueso.tools.db.chembl.OnlineChEMBLClient` and `FixtureChEMBLClient`.
 

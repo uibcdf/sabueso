@@ -7,7 +7,7 @@ A ProteinCard refers to molecules by source record: ChEMBL molecules in its
 measured on the protein and in which structures it was observed.
 
 These views only bring together what the cards already hold. Activity classes are the
-derived ones of ``Card.bioactivities()`` (rule ``bioactivity_class@1``).
+derived ones of ``Card.bioactivities()`` (rule ``bioactivity_class@2``).
 """
 
 from __future__ import annotations

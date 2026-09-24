@@ -161,7 +161,7 @@ Implemented in `sabueso/tools/card/protein.py` (#6, step 4c); exported at packag
   - `chembl={...}` (e.g. `{"limit": 5000}`) adds ChEMBL `has_bioactivity` relationships
     for the targets cross-referenced by the entry. `Card.bioactivities(include_indirect=False,
     thresholds=None)` is the molecule-centric view, with derived activity classes
-    (`bioactivity_class@1`);
+    (`bioactivity_class@2`);
   - `ligand_sites=True` adds PDBe-KB `has_ligand_site` relationships.
     `Card.ligand_sites()` puts each ligand's contacted residues next to the UniProt active
     and binding sites and InterPro family sites (`annotated_site_overlap@2`: overlaps_annotated_site,

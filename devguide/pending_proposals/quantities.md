@@ -138,13 +138,25 @@ Facts that bound the migration:
   - a canary through every read path;
   - a static guard against `get_value(` without `to_unit`.
 
+Also implemented:
+
+- Bioactivity classification (`bioactivity_class@2`) reads the normalized nanomolar node.
+  `UNITS_TO_UM` is gone. Records without the node go through the same explicit ChEMBL
+  vocabulary.
+- Thresholds (`active_max`, `weak_max`, `single_point_min`) are quantities in any form,
+  including strings such as `"20 uM"`. A bare number is refused, and the thresholds are
+  recorded as `{value, unit}` nodes.
+- The single-point test concentration is returned as a quantity.
+- Converted values are rounded to 12 significant digits (`quantities.converted`). pint
+  converts through SI base units, so 20 µM became 19999.999999999996 nM, and a
+  measurement exactly on a threshold was classified differently depending on the unit
+  the threshold was written in. The test
+  `test_the_same_threshold_in_another_unit_classifies_identically` caught it.
+
 Remaining:
 
-- bioactivity classification from the normalized values, with thresholds and the test
-  concentration as quantities (replacing `UNITS_TO_UM`);
 - the cross-source 3-or-6-orders-of-magnitude check;
-- the pChEMBL consistency check;
-- ArgDigest contracts on quantity arguments (#31).
+- the pChEMBL consistency check.
 
 ## Decisions on the open questions (Diego, 2026-09-24)
 

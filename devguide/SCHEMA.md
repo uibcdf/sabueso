@@ -141,7 +141,7 @@ A Relationship is first-class, traceable knowledge:
     - Support: the verbatim activity record (`relationships.has_bioactivity`) and the
       assay record (`relationships.has_bioactivity.assay`). The assay record is stated
       once per assay and shared by that assay's activities.
-    - Activity classes are derived by `Card.bioactivities()` (`bioactivity_class@1`), and
+    - Activity classes are derived by `Card.bioactivities()` (`bioactivity_class@2`), and
       only there.
   - ligand sites (added in #28):
     - `has_ligand_site` (protein → `pdb.ligand:<code>`), one relationship per
@@ -295,7 +295,7 @@ They are relationships of the protein:
 
 `Card.ligands(deck)` crosses them with a deck of SmallMoleculeCards anchored at the
 InChIKey (`ligand_deck`). A role such as "inhibitor" is a derived activity class
-(`bioactivity_class@1`), never an asserted attribute. The mechanism ChEMBL curates, when
+(`bioactivity_class@2`), never an asserted attribute. The mechanism ChEMBL curates, when
 present, is its `action_type`, kept in the measurement qualifiers.
 
 ## Clinical Layer (Small Molecules)

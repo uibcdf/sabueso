@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
+from sabueso._private.argdigest import arg_digest
+
 from .quantities import field_node, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
@@ -62,10 +64,12 @@ class Card:
 
         return structures_view(self, include_fragments=include_fragments)
 
+    @arg_digest()
     def bioactivities(
         self,
         include_indirect: bool = False,
         thresholds: Dict[str, Any] | None = None,
+        skip_digestion: bool = False,
     ) -> Dict[str, Any]:
         """Molecule-centric view of this card's measured bioactivities."""
         from .bioactivities import bioactivities_view

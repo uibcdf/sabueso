@@ -6,17 +6,18 @@ This module reads them. The activity class of a measurement ("active", "weak", .
 test concentration of a single-point measurement are derived knowledge. They are computed
 here, from the stated rule and thresholds, and never stored as SourceAssertions.
 
-Rule ``bioactivity_class@1``, on a potency expressed in µM:
+Rule ``bioactivity_class@2`` (the classes of ``@1``; thresholds and concentrations are
+now quantities, uibcdf/sabueso#32):
 
 - a potency measure (IC50, Ki, Kd, ...) with relation ``=`` is "active" up to
-  ``active_max_uM``, "weak" up to ``weak_max_uM`` and "inactive" beyond;
+  ``active_max``, "weak" up to ``weak_max`` and "inactive" beyond;
 - an upper bound (``<``, ``<=``) is "active" or "weak" when the bound falls in those bands,
   and "inconclusive" otherwise;
-- a lower bound (``>``, ``>=``) is "inactive" when it reaches ``weak_max_uM``, and
+- a lower bound (``>``, ``>=``) is "inactive" when it reaches ``weak_max``, and
   "inconclusive" otherwise;
 - a single-point % inhibition reads as an IC50 bound: an inhibition of at least
-  ``single_point_min_percent`` at concentration c means IC50 <= c, and less than that
-  means IC50 > c. This assumes a standard dose response. c comes from the assay
+  ``single_point_min`` at concentration c means IC50 <= c, and less than that means
+  IC50 > c. This assumes a standard dose response. c comes from the assay
   description, and a measurement without c is "inconclusive";
 - "Not Determined" measurements are "not_determined", and ChEMBL "Not Active" or
   "Inactive" comments are "inactive";
@@ -25,18 +26,40 @@ Rule ``bioactivity_class@1``, on a potency expressed in µM:
 By default, only assays whose target assignment is direct (ChEMBL relationship type
 ``D``) are included. Homology-assigned measurements (``H``: measured on an ortholog) and
 other assignments are excluded, and the exclusion is reported, never silent.
+
+Potencies are read from each measurement's normalized node (nanomolar, stored with the
+card), or normalized through the same explicit ChEMBL unit vocabulary when a measurement
+has none. Every conversion names its target unit; the session's unit policy plays no
+part (uibcdf/moli#11).
 """
 
 from __future__ import annotations
 
 import re
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
-BIOACTIVITY_CLASS_RULE = "bioactivity_class@1"
-BIOACTIVITY_THRESHOLDS: Dict[str, Any] = {
-    "active_max_uM": 10.0,
-    "weak_max_uM": 100.0,
-    "single_point_min_percent": 50.0,
+from .quantities import (
+    CHEMBL_UNITS,
+    CONCENTRATION_UNIT,
+    canonical_unit,
+    converted,
+    is_quantity_node,
+    normalized_measurement,
+    quantity_node,
+)
+
+BIOACTIVITY_CLASS_RULE = "bioactivity_class@2"
+#: Default thresholds. A threshold is a quantity; a bare number would leave its unit to
+#: be guessed (uibcdf/sabueso#32).
+DEFAULT_THRESHOLDS: Dict[str, Tuple[float, str]] = {
+    "active_max": (10.0, "micromolar"),
+    "weak_max": (100.0, "micromolar"),
+    "single_point_min": (50.0, "percent"),
+}
+_THRESHOLD_UNIT = {
+    "active_max": CONCENTRATION_UNIT,
+    "weak_max": CONCENTRATION_UNIT,
+    "single_point_min": "percent",
 }
 POTENCY_TYPES = frozenset(
     {"IC50", "Ki", "Kd", "EC50", "ED50", "AC50", "XC50", "Potency", "Kb"}
@@ -51,7 +74,6 @@ CLASS_ORDER = (
     "unclassified",
 )
 DIRECT_ASSIGNMENT = "D"
-UNITS_TO_UM = {"pM": 1e-6, "nM": 1e-3, "uM": 1.0, "µM": 1.0, "mM": 1e3, "M": 1e6}
 TEST_CONCENTRATION = re.compile(
     r"\bat\s+(?:a\s+concentration\s+of\s+)?(\d+(?:\.\d+)?|\.\d+)\s*(pM|nM|uM|µM|mM|M)\b"
 )
@@ -59,30 +81,89 @@ NOT_DETERMINED = {"not determined", "nd", "not tested"}
 INACTIVE_COMMENTS = {"not active", "inactive"}
 
 
-def single_point_concentration_uM(description: str | None) -> float | None:
-    """Single-point test concentration stated in an assay description, in µM."""
+def _value_in(node: Dict[str, Any], unit: str) -> float:
+    """A quantity node's value in ``unit``, converted explicitly."""
+    import pyunitwizard as puw
+
+    if node["unit"] == canonical_unit(unit):
+        return float(node["value"])
+    q = puw.quantity(float(node["value"]), node["unit"], form="pint")
+    return converted(float(puw.convert(q, to_unit=unit, to_type="value")))
+
+
+def resolve_thresholds(
+    thresholds: Dict[str, Any] | None = None,
+) -> Dict[str, Dict[str, Any]]:
+    """The thresholds in force, as quantity nodes: the defaults, overridden by
+    ``thresholds`` ({name: PyUnitWizard quantity or {value, unit} node}).
+
+    Raises ArgumentError for an unknown name, a bare number, or a quantity of the wrong
+    dimension.
+    """
+    import pyunitwizard as puw
+
+    from .errors import ArgumentError
+
+    resolved = {
+        name: quantity_node(value, unit)
+        for name, (value, unit) in DEFAULT_THRESHOLDS.items()
+    }
+    for name, given in (thresholds or {}).items():
+        if name not in DEFAULT_THRESHOLDS:
+            raise ArgumentError(
+                argument="thresholds",
+                value=thresholds,
+                reason=f"unknown threshold {name!r}; known: {sorted(DEFAULT_THRESHOLDS)}",
+            )
+        if is_quantity_node(given):
+            q = puw.quantity(float(given["value"]), given["unit"], form="pint")
+        elif puw.is_quantity(given):  # any form, including a string such as "20 uM"
+            q = puw.convert(given, to_form="pint")
+        else:
+            raise ArgumentError(
+                argument="thresholds",
+                value=thresholds,
+                reason=f"{name!r} must be a quantity (e.g. puw.quantity(1, 'uM')), not a bare number",
+            )
+        target = _THRESHOLD_UNIT[name]
+        try:
+            puw.convert(q, to_unit=target)
+        except Exception:
+            raise ArgumentError(
+                argument="thresholds",
+                value=thresholds,
+                reason=f"{name!r} must be convertible to {target}",
+            ) from None
+        value, unit = puw.get_value_and_unit(q)
+        resolved[name] = quantity_node(float(value), str(unit))
+    return resolved
+
+
+def single_point_concentration(description: str | None) -> Dict[str, Any] | None:
+    """The single-point test concentration stated in an assay description, as a quantity
+    node in the stated unit (read through the explicit ChEMBL vocabulary)."""
     match = TEST_CONCENTRATION.search(description or "")
     if not match:
         return None
-    return float(match.group(1)) * UNITS_TO_UM[match.group(2)]
+    return quantity_node(float(match.group(1)), CHEMBL_UNITS[match.group(2)])
 
 
-def _band(value_uM: float, t: Dict[str, Any]) -> str:
-    if value_uM <= t["active_max_uM"]:
+def _band(value_nM: float, t: Dict[str, float]) -> str:
+    if value_nM <= t["active_max"]:
         return "active"
-    if value_uM <= t["weak_max_uM"]:
+    if value_nM <= t["weak_max"]:
         return "weak"
     return "inactive"
 
 
-def _bounded(relation: str, value_uM: float, t: Dict[str, Any]) -> str:
+def _bounded(relation: str, value_nM: float, t: Dict[str, float]) -> str:
     if relation in ("=", "~"):
-        return _band(value_uM, t)
+        return _band(value_nM, t)
     if relation in ("<", "<="):
-        band = _band(value_uM, t)
+        band = _band(value_nM, t)
         return band if band != "inactive" else "inconclusive"
     if relation in (">", ">="):
-        return "inactive" if value_uM >= t["weak_max_uM"] else "inconclusive"
+        return "inactive" if value_nM >= t["weak_max"] else "inconclusive"
     return "inconclusive"
 
 
@@ -91,8 +172,18 @@ def classify_measurement(
     assay_description: str | None = None,
     thresholds: Dict[str, Any] | None = None,
 ) -> Dict[str, Any]:
-    """``{"class", "basis", "test_concentration_uM"?}`` for one measurement."""
-    t = {**BIOACTIVITY_THRESHOLDS, **(thresholds or {})}
+    """``{"class", "basis", "test_concentration"?}`` for one measurement.
+
+    ``test_concentration`` is a PyUnitWizard quantity.
+    """
+    from .quantities import to_quantity
+
+    nodes = resolve_thresholds(thresholds)
+    t = {
+        "active_max": _value_in(nodes["active_max"], CONCENTRATION_UNIT),
+        "weak_max": _value_in(nodes["weak_max"], CONCENTRATION_UNIT),
+        "single_point_min": _value_in(nodes["single_point_min"], "percent"),
+    }
     kind = measurement.get("type")
     value = measurement.get("value")
     relation = measurement.get("relation") or "="
@@ -104,25 +195,31 @@ def classify_measurement(
             return {"class": "inactive", "basis": "activity_comment"}
         return {"class": "inconclusive", "basis": "no_value"}
     if kind in POTENCY_TYPES:
-        factor = UNITS_TO_UM.get(measurement.get("units") or "")
-        if factor is None:
+        node = measurement.get("normalized") or normalized_measurement(
+            value, measurement.get("units")
+        )
+        if node is None or node["unit"] != CONCENTRATION_UNIT:
             return {"class": "inconclusive", "basis": "unknown_units"}
-        return {"class": _bounded(relation, value * factor, t), "basis": "potency"}
+        return {
+            "class": _bounded(relation, float(node["value"]), t),
+            "basis": "potency",
+        }
     if kind in SINGLE_POINT_TYPES and measurement.get("units") == "%":
-        concentration = single_point_concentration_uM(assay_description)
+        concentration = single_point_concentration(assay_description)
         if concentration is None:
             return {"class": "inconclusive", "basis": "single_point_no_concentration"}
-        if relation in ("<", "<=") and value >= t["single_point_min_percent"]:
+        c_nM = _value_in(concentration, CONCENTRATION_UNIT)
+        if relation in ("<", "<=") and value >= t["single_point_min"]:
             return {
                 "class": "inconclusive",
                 "basis": "single_point",
-                "test_concentration_uM": concentration,
+                "test_concentration": to_quantity(concentration),
             }
-        ic50_relation = "<=" if value >= t["single_point_min_percent"] else ">"
+        ic50_relation = "<=" if value >= t["single_point_min"] else ">"
         return {
-            "class": _bounded(ic50_relation, concentration, t),
+            "class": _bounded(ic50_relation, c_nM, t),
             "basis": "single_point",
-            "test_concentration_uM": concentration,
+            "test_concentration": to_quantity(concentration),
         }
     return {"class": "unclassified", "basis": "measurement_type"}
 
@@ -134,8 +231,7 @@ def bioactivity_derivation(thresholds: Dict[str, Any] | None = None) -> Dict[str
         BIOACTIVITY_CLASS_RULE,
         inputs=["has_bioactivity.measurement", "has_bioactivity.assay.description"],
         parameters={
-            **BIOACTIVITY_THRESHOLDS,
-            **(thresholds or {}),
+            **resolve_thresholds(thresholds),
             "potency_types": sorted(POTENCY_TYPES),
             "single_point_types": sorted(SINGLE_POINT_TYPES),
             "test_concentration": "assay description text",

@@ -17,6 +17,7 @@ from sabueso import (
     resolve_molecule_card,
     resolve_protein_card,
 )
+from sabueso.core.card import Card
 from sabueso.core.errors import ArgumentError, SabuesoError
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 from sabueso.tools.db.chembl import FixtureChEMBLClient
@@ -26,6 +27,7 @@ PUBLIC_TOOLS = [
     resolve_molecule_card,
     ligand_deck,
     ambiguity_deck,
+    Card.bioactivities,
 ]
 
 
@@ -49,6 +51,8 @@ def test_every_parameter_of_every_public_tool_has_a_digester():
     missing = []
     for tool in PUBLIC_TOOLS:
         for name in inspect.signature(inspect.unwrap(tool)).parameters:
+            if name == "self":
+                continue
             try:
                 module = importlib.import_module(
                     f"sabueso._private.argdigest.argument.{name}"
