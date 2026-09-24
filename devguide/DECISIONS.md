@@ -238,7 +238,14 @@ uibcdf/sabueso#41, part 2. Free-text claims are deferred to uibcdf/sabueso#43.
   SourceAssertion, and compares it mechanically.
 - Only existing knowledge fields and relationship predicates take curated assertions.
   Identity, sequence, metadata, identity links, `has_structure` and `described_in`
-  never do. `has_bioactivity` waits for its own identity rule (uibcdf/sabueso#44).
+  never do.
+- Curated bioactivities (uibcdf/sabueso#44):
+  - the molecule carries its full identity: its InChIKey and every record linked to it,
+    resolved by Sabueso rather than typed by the curator;
+  - a curated measurement is compared only with ChEMBL measurements of the same
+    publication, the same molecule and the same type, at the precision it was stated
+    with;
+  - the curator states whether it was measured on this protein or on an ortholog.
 - A curated assertion never takes priority automatically ("Literature" is in no priority
   list), and it is never discarded. Its outcome is always recorded (`quality.curation`).
   A difference is reported in `quality.conflicts` and warned about

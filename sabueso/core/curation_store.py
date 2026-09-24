@@ -63,7 +63,19 @@ def _records_of(card: Any) -> List[Dict[str, Any]]:
             "outcome": outcomes.get(assertion["id"]),
         }
         field_path = assertion["field_path"]
-        if field_path.startswith("relationships."):
+        if field_path == "relationships.has_bioactivity":
+            stated = assertion["asserted_value"]
+            measurement = stated["measurement"]
+            record.update(
+                kind="bioactivity",
+                molecule=stated["molecule"],
+                measurement_type=measurement["type"],
+                value={"value": measurement["value"], "unit": measurement["unit"]},
+                relation=measurement["relation"],
+                target_assignment=stated["target_assignment"],
+                assay_description=stated.get("assay_description"),
+            )
+        elif field_path.startswith("relationships."):
             record.update(
                 kind="relationship",
                 predicate=field_path.split(".", 1)[1],
@@ -185,7 +197,17 @@ class CurationStore:
                 eco_code=record.get("eco_code"),
                 curated_at=record.get("curated_at"),
             )
-            if record["kind"] == "relationship":
+            if record["kind"] == "bioactivity":
+                result = card.add_literature_bioactivity(
+                    record["molecule"],
+                    record["measurement_type"],
+                    record["value"],
+                    target_assignment=record["target_assignment"],
+                    relation=record["relation"],
+                    assay_description=record.get("assay_description"),
+                    **common,
+                )
+            elif record["kind"] == "relationship":
                 result = card.add_literature_relationship(
                     record["predicate"],
                     record["object_ref"],

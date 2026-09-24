@@ -155,6 +155,7 @@
   "relationship_store[has_bioactivity].qualifiers.activity_id",
   "relationship_store[has_bioactivity].qualifiers.assay",
   "relationship_store[has_bioactivity].qualifiers.assay.confidence_score",
+  "relationship_store[has_bioactivity].qualifiers.assay.curated",
   "relationship_store[has_bioactivity].qualifiers.assay.description",
   "relationship_store[has_bioactivity].qualifiers.assay.id",
   "relationship_store[has_bioactivity].qualifiers.assay.organism",
@@ -175,6 +176,7 @@
   "relationship_store[has_bioactivity].qualifiers.measurement.action_type.description",
   "relationship_store[has_bioactivity].qualifiers.measurement.action_type.parent_type",
   "relationship_store[has_bioactivity].qualifiers.measurement.activity_comment",
+  "relationship_store[has_bioactivity].qualifiers.measurement.curated",
   "relationship_store[has_bioactivity].qualifiers.measurement.data_validity_comment",
   "relationship_store[has_bioactivity].qualifiers.measurement.normalized",
   "relationship_store[has_bioactivity].qualifiers.measurement.normalized.unit",
@@ -187,6 +189,9 @@
   "relationship_store[has_bioactivity].qualifiers.measurement.units",
   "relationship_store[has_bioactivity].qualifiers.measurement.upper_value",
   "relationship_store[has_bioactivity].qualifiers.measurement.value",
+  "relationship_store[has_bioactivity].qualifiers.molecule_identity",
+  "relationship_store[has_bioactivity].qualifiers.molecule_identity.inchikey",
+  "relationship_store[has_bioactivity].qualifiers.molecule_identity.records",
   "relationship_store[has_bioactivity].qualifiers.molecule_name",
   "relationship_store[has_bioactivity].qualifiers.parent_molecule",
   "relationship_store[has_bioactivity].qualifiers.target",
@@ -513,6 +518,7 @@
   "source_assertion_store[].source_metadata.representation",
   "source_assertion_store[].source_metadata.sequence_version",
   "source_assertion_store[].source_metadata.signature",
+  "source_assertion_store[].source_metadata.stated_decimals",
   "source_assertion_store[].source_metadata.unit",
   "source_assertion_store[].subject_ref"
  ]

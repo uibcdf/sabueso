@@ -233,7 +233,19 @@ A Relationship is first-class, traceable knowledge:
       states `{object_ref, qualifiers}` under `relationships.<predicate>`. It merges with
       the same relationship from other sources. Qualifiers stated differently become
       `qualifier_conflicts` and a `curated_difference` with the `relationship_id`.
-      `has_bioactivity` is not curatable yet (#44).
+      `has_bioactivity` has its own curated form (#44). Each curated measurement is a
+      `has_bioactivity` relationship with `activity_id = curated:<digest>`, carrying:
+      - `molecule_identity`: the InChIKey and every linked record;
+      - the measurement, with `curated: true`, its value and unit as written and its
+        normalized node;
+      - the assay, with `curated: true` and the curator's target assignment (`D` or
+        `H`);
+      - the document, with the publication's PubMed id or DOI.
+
+      It is compared with the ChEMBL measurements of the same publication, the same
+      molecule (any of its records) and the same type.
+    - ChEMBL `has_bioactivity` document qualifiers carry `pubmed`, `doi` and `title` as
+      ChEMBL states them (#44).
   - interfaces (added in #40):
     - `has_interface_with` (protein → `uniprot:<acc>`, or `pdbe_kb.partner:<label>` for a
       partner without a UniProt entry), one relationship per partner, from PDBe-KB.

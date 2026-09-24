@@ -337,6 +337,14 @@ def consistency_checks() -> List[Dict[str, Any]]:
     ]
 
 
+def _activity_order(item: Dict[str, Any]) -> tuple:
+    """ChEMBL activity ids (numbers) first, in order; curated ids (text) after them."""
+    activity_id = item.get("activity_id")
+    if isinstance(activity_id, int):
+        return (0, activity_id, "")
+    return (1, 0, str(activity_id or ""))
+
+
 def _stated_smiles(card: Any, rel: Dict[str, Any]) -> str | None:
     """SMILES of the tested molecule as stated in the supporting activity record."""
     for sa_id in rel.get("source_assertion_ids", []):
@@ -405,6 +413,8 @@ def bioactivities_view(
             "document": doc.get("id"),
             "year": doc.get("year"),
             "flags": flags,
+            # Read in a paper and recorded by a curator, not a ChEMBL record (#44).
+            "curated": bool(assay.get("curated")),
         }
         if doc.get("id"):
             documents[doc["id"]] = documents.get(doc["id"], 0) + 1
@@ -432,9 +442,7 @@ def bioactivities_view(
     items = []
     for entry in molecules.values():
         _scale_flags(entry["measurements"], entry["potencies"])
-        measurements = sorted(
-            entry["measurements"], key=lambda x: x["activity_id"] or 0
-        )
+        measurements = sorted(entry["measurements"], key=_activity_order)
         classes: Dict[str, int] = {}
         for x in measurements:
             classes[x["class"]] = classes.get(x["class"], 0) + 1
@@ -475,7 +483,7 @@ def bioactivities_view(
     )
     return {
         "items": items,
-        "excluded": sorted(excluded, key=lambda x: x["activity_id"] or 0),
+        "excluded": sorted(excluded, key=_activity_order),
         "documents": dict(sorted(documents.items(), key=lambda kv: (-kv[1], kv[0]))),
         "scope": {
             "target_assignment": "any" if include_indirect else DIRECT_ASSIGNMENT

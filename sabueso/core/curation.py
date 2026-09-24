@@ -558,3 +558,283 @@ def add_literature_relationship(
     }
     card.quality.setdefault("curation", []).append(record)
     return record
+
+
+# --- Curated bioactivity measurements (uibcdf/sabueso#44) ------------------------------
+
+RELATIONS = ("=", "<", "<=", ">", ">=", "~")
+TARGET_ASSIGNMENTS = {"direct": "D", "homology": "H"}
+_NUMBER_AND_UNIT = re.compile(r"\s*([-+]?(?:\d+(?:\.\d*)?|\.\d+))\s*(.*?)\s*$")
+
+
+def molecule_identity(molecule: Any) -> Dict[str, Any]:
+    """``{"inchikey", "records"}`` of a molecule: the standard InChIKey it is anchored at
+    and every record linked to it (ChEMBL, PubChem, PDB component, ChEBI...).
+
+    ``molecule`` is a small-molecule Card, an identity already recorded, or an
+    identifier (``chembl:``, ``pubchem:``, ``pdb.ligand:``, ``inchikey:``) that Sabueso
+    resolves online.
+    """
+    if isinstance(molecule, dict):
+        if not molecule.get("inchikey") or not isinstance(
+            molecule.get("records"), list
+        ):
+            raise SchemaError("A molecule identity needs 'inchikey' and 'records'.")
+        return {
+            "inchikey": molecule["inchikey"],
+            "records": sorted(molecule["records"]),
+        }
+    card = molecule
+    if isinstance(molecule, str):
+        from sabueso.tools.card.small_molecule import resolve_molecule_card
+
+        card, resolution = resolve_molecule_card(molecule)
+        if card is None:
+            raise SchemaError(
+                f"Molecule {molecule!r} did not resolve ({resolution.status})."
+            )
+    node = card.get("identifiers.inchikey") or {}
+    if card.meta.get("entity_type") != "small_molecule" or not node.get("value"):
+        raise SchemaError("Expected the card of a small molecule, with its InChIKey.")
+    records = sorted({r["subject_ref"] for r in card.relationships("same_as")})
+    return {"inchikey": node["value"], "records": records}
+
+
+def _measured(value: Any) -> Tuple[Dict[str, Any], Dict[str, Any], int | None]:
+    """``(as written, normalized node, stated decimals in the normalized unit)`` for a
+    potency (a concentration, normalized to nanomolar) or a percentage."""
+    import pyunitwizard as puw
+
+    from .quantities import CONCENTRATION_UNIT, quantity_node
+
+    if isinstance(value, str):
+        match = _NUMBER_AND_UNIT.fullmatch(value)
+        if not match or not match.group(2):
+            raise SchemaError(f"A measured value needs its unit: {value!r}.")
+        # The number is kept as written, so its stated precision survives re-application.
+        number, unit = match.group(1), match.group(2)
+        written = {"value": number, "unit": unit}
+        text = number
+    elif (
+        isinstance(value, dict)
+        and isinstance(value.get("unit"), str)
+        and isinstance(value.get("value"), (str, int, float))
+        and not isinstance(value.get("value"), bool)
+    ):
+        written = {"value": value["value"], "unit": value["unit"]}
+        raw = value["value"]
+        text = raw if isinstance(raw, str) else repr(raw)
+    elif puw.is_quantity(value):
+        v, u = puw.get_value_and_unit(value)
+        written, text = {"value": float(v), "unit": str(u)}, repr(float(v))
+    else:
+        raise SchemaError(f"A measured value needs its unit, not {value!r}.")
+    unit = "percent" if written["unit"].strip() in ("%", "percent") else written["unit"]
+    try:
+        q = puw.quantity(float(written["value"]), unit, form="pint")
+    except Exception:
+        raise SchemaError(f"Unknown unit {written['unit']!r}.") from None
+    for target in (CONCENTRATION_UNIT, "percent"):
+        try:
+            number = converted(float(puw.convert(q, to_unit=target, to_type="value")))
+            factor = float(
+                puw.convert(
+                    puw.quantity(1.0, unit, form="pint"),
+                    to_unit=target,
+                    to_type="value",
+                )
+            )
+        except Exception:
+            continue
+        decimals = _decimals(text)
+        power = math.log10(factor) if factor > 0 else float("nan")
+        decimals = (
+            decimals - round(power)
+            if decimals is not None and abs(power - round(power)) < 1e-9
+            else None
+        )
+        return written, quantity_node(number, target), decimals
+    raise SchemaError(
+        f"{written['unit']!r} is neither a concentration nor a percentage."
+    )
+
+
+def _agrees(a: float, b: float, decimals: int | None) -> bool:
+    if decimals is None:
+        return math.isclose(a, b, rel_tol=1e-9)
+    return abs(a - b) <= 0.5 * 10.0**-decimals + 1e-9
+
+
+def add_literature_bioactivity(
+    card: Any,
+    molecule: Any,
+    measurement_type: str,
+    value: Any,
+    publication: str,
+    curator: str,
+    target_assignment: str,
+    relation: str = "=",
+    assay_description: str | None = None,
+    locator: str | None = None,
+    quote: str | None = None,
+    eco_code: str | None = None,
+    curated_at: str | None = None,
+) -> Dict[str, Any]:
+    """Record a bioactivity a publication reports, and compare it with ChEMBL.
+
+    The measurement becomes a ``has_bioactivity`` relationship of its own (its
+    ``activity_id`` is ``curated:<digest>``), carrying the molecule's identity. It is
+    compared with the ChEMBL measurements of the same publication (by PubMed id or DOI),
+    the same molecule (any of its records) and the same type: a value agreeing at the
+    precision it was stated with corroborates; none agreeing differs; none to compare
+    with is new. Nothing is overridden.
+    """
+    from .relationship_store import make_relationship
+
+    subject = _subject(card)
+    curated_at = curated_at or datetime.now(timezone.utc).date().isoformat()
+    identity = molecule_identity(molecule)
+    written, normalized, decimals = _measured(value)
+    asserted = {
+        "molecule": identity,
+        "measurement": {"type": measurement_type, "relation": relation, **written},
+        "target_assignment": target_assignment,
+        "assay_description": assay_description,
+    }
+    field_path = "relationships.has_bioactivity"
+    assertion = _literature_assertion(
+        field_path,
+        asserted,
+        publication,
+        subject,
+        curator,
+        locator,
+        quote,
+        eco_code,
+        curated_at,
+        decimals=decimals,
+    )
+    base = {
+        "field": field_path,
+        "publication": publication,
+        "source_assertion_id": assertion["id"],
+    }
+    if card.source_assertion_store.get(assertion["id"]) is not None:
+        previous = next(
+            (
+                r
+                for r in card.quality.get("curation", [])
+                if r["source_assertion_id"] == assertion["id"]
+            ),
+            None,
+        )
+        return previous or {**base, "outcome": "already_recorded", "compared_with": []}
+
+    records = identity["records"]
+    shown = next(
+        (
+            r
+            for namespace in ("chembl:", "pdb.ligand:", "pubchem:")
+            for r in records
+            if r.startswith(namespace)
+        ),
+        f"inchikey:{identity['inchikey']}",
+    )
+    kind, _, number = publication.partition(":")
+    document = {
+        "id": None,
+        "year": None,
+        "journal": None,
+        "pubmed": number if kind == "pubmed" else None,
+        "doi": number if kind == "doi" else None,
+        "title": None,
+    }
+    relationship = make_relationship(
+        subject,
+        "has_bioactivity",
+        shown,
+        qualifiers={
+            "activity_id": "curated:" + assertion["id"].rsplit("_", 1)[-1],
+            "parent_molecule": shown,
+            "molecule_identity": identity,
+            "measurement": {
+                "type": measurement_type,
+                "relation": relation,
+                "value": float(written["value"]),
+                "units": written["unit"],
+                "normalized": normalized,
+                "pchembl": None,
+                "curated": True,
+            },
+            "assay": {
+                "id": None,
+                "description": assay_description,
+                "relationship_type": TARGET_ASSIGNMENTS[target_assignment],
+                "organism": None,
+                "curated": True,
+            },
+            "document": document,
+        },
+        source_assertion_ids=[assertion["id"]],
+    )
+
+    same = []
+    for rel in card.relationships("has_bioactivity"):
+        q = rel.get("qualifiers", {})
+        if (q.get("assay") or {}).get("curated"):
+            continue
+        doc = q.get("document") or {}
+        if not (
+            (document["pubmed"] and doc.get("pubmed") == document["pubmed"])
+            or (
+                document["doi"]
+                and (doc.get("doi") or "").lower() == document["doi"].lower()
+            )
+        ):
+            continue
+        refs = {rel["object_ref"], q.get("parent_molecule")}
+        if (
+            not refs & set(records)
+            or (q.get("measurement") or {}).get("type") != measurement_type
+        ):
+            continue
+        same.append(rel)
+    agreeing = [
+        rel
+        for rel in same
+        if ((rel["qualifiers"]["measurement"].get("relation") or "=") == relation)
+        and (rel["qualifiers"]["measurement"].get("normalized") or {}).get("unit")
+        == normalized["unit"]
+        and _agrees(
+            float(rel["qualifiers"]["measurement"]["normalized"]["value"]),
+            float(normalized["value"]),
+            decimals,
+        )
+    ]
+    card.source_assertion_store.add(assertion)
+    card.relationship_store.add(relationship)
+    compared = [r["id"] for r in same]
+    if not same:
+        outcome = "new"
+    elif agreeing:
+        outcome = "corroborates"
+    else:
+        outcome = "differs"
+        card.quality.setdefault("conflicts", []).append(
+            {
+                "field": field_path,
+                "type": "curated_difference",
+                "relationship_id": relationship["id"],
+                "values": [r["qualifiers"]["measurement"]["normalized"] for r in same]
+                + [normalized],
+                "relationship_ids": [compared, [relationship["id"]]],
+            }
+        )
+    record = {
+        **base,
+        "relationship_id": relationship["id"],
+        "outcome": outcome,
+        "compared_with": compared,
+    }
+    card.quality.setdefault("curation", []).append(record)
+    return record

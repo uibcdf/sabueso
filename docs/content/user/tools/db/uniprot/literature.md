@@ -68,6 +68,16 @@ print(record["outcome"])  # new, corroborates, differs, not_comparable or not_co
   interface, and so on. It merges with the same relationship from other sources, and
   qualifiers stated differently are kept as conflicts and flagged. Curated bioactivity
   measurements are not supported yet (uibcdf/sabueso#44).
+- **Bioactivities read in a paper.** `card.add_literature_bioactivity(molecule,
+  "IC50", "33 uM", publication=..., curator=..., target_assignment="direct")`.
+  - The molecule can be a small-molecule card, an identifier (`chembl:`, `pubchem:`,
+    `pdb.ligand:` or `inchikey:`), or a recorded identity. Sabueso keeps its InChIKey
+    and every record linked to it.
+  - The measurement is compared with ChEMBL's measurements from the same paper, the
+    same molecule and the same type. ChEMBL now states each measurement's PubMed id.
+  - Curated measurements appear in `card.bioactivities()`, marked `curated`.
+    `target_assignment="homology"` (measured on an ortholog) is left out by default, as
+    ChEMBL's homology assignments are.
 - **Where it shows.** `card.literature()` lists each publication's curated assertions
   with their outcome.
 - **Scope.** How a statement bears on a project's hypotheses is not Sabueso's: that is

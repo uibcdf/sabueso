@@ -116,6 +116,15 @@ def fixture_cards() -> List[dict]:
         hstim.add_literature_relationship(
             "interacts_with", "uniprot:Q00001", {"method": "shape"}, "pubmed:1", "shape"
         )
+        hstim.add_literature_bioactivity(
+            {"inchikey": "XBNHRNFODJOFRU-UHFFFAOYSA-N", "records": ["chembl:CHEMBL1"]},
+            "IC50",
+            "33 uM",
+            "pubmed:1",
+            "shape",
+            "direct",
+            assay_description="shape",
+        )
         molecule, _ = sabueso.resolve(
             "pdb.ligand:BTS",
             chembl_client=chembl,

@@ -167,6 +167,56 @@ class Card:
             report_curated_disagreement(self.id or "", record["field"], publication)
         return record
 
+    @arg_digest()
+    def add_literature_bioactivity(
+        self,
+        molecule: Any,
+        measurement_type: str,
+        value: Any,
+        publication: str,
+        curator: str,
+        target_assignment: str,
+        relation: str = "=",
+        assay_description: str | None = None,
+        locator: str | None = None,
+        quote: str | None = None,
+        eco_code: str | None = None,
+        curated_at: str | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Record a bioactivity a publication reports, e.g. an IC50 read in a table.
+
+        ``molecule`` is a small-molecule card, an identifier Sabueso resolves
+        (``chembl:``, ``pubchem:``, ``pdb.ligand:``, ``inchikey:``) or a recorded identity
+        ``{"inchikey", "records"}``; the measurement keeps the InChIKey and every linked
+        record. ``value`` has its unit (``"33 uM"``, ``"45 %"``, a quantity).
+        ``target_assignment`` says whether it was measured on this protein ("direct") or
+        an ortholog ("homology"). It is compared with ChEMBL's measurements of the same
+        publication, never given priority. See ``sabueso.core.curation``.
+        """
+        from sabueso._private.smonitor.outcomes import report_curated_disagreement
+
+        from .curation import add_literature_bioactivity
+
+        record = add_literature_bioactivity(
+            self,
+            molecule,
+            measurement_type,
+            value,
+            publication,
+            curator,
+            target_assignment,
+            relation=relation,
+            assay_description=assay_description,
+            locator=locator,
+            quote=quote,
+            eco_code=eco_code,
+            curated_at=curated_at,
+        )
+        if record["outcome"] == "differs":
+            report_curated_disagreement(self.id or "", record["field"], publication)
+        return record
+
     def literature(self) -> Dict[str, Any]:
         """The publications that support statements on this card, and what for."""
         from .literature import literature_view

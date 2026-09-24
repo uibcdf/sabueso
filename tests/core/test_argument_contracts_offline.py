@@ -83,6 +83,7 @@ PUBLIC_TOOLS = [
     Card.bioactivities,
     Card.add_literature_assertion,
     Card.add_literature_relationship,
+    Card.add_literature_bioactivity,
     Card.structures,
     Card.ligands,
     Card.compare_ligands,
