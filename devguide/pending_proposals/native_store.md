@@ -76,7 +76,7 @@ deck_cards(deck_id, card_id, position)
 
 ## Risks and future problems
 
-- **Versions and snapshots.** How a pinned card version (#7) maps to rows: content hashing or timestamped revisions. #7 is blocked by the shared reference contract, uibcdf/moli#3.
+- **Versions and snapshots.** How a pinned card version (#7) maps to rows: content hashing or timestamped revisions. This is a local Sabueso decision; uibcdf/moli#3 reviews only the public reference form and consumer-facing guarantees before other components adopt them.
 - **Where resolved fields live.** Keeping `sections` as JSON is simpler. Making them rows allows querying resolved values across cards. Decide once real queries exist.
 - **Migration.** Existing JSON/JSONL files must import losslessly, and export must round-trip. Tests should compare `Card.to_dict()` before and after.
 - **SQLite versions.** Some platforms build Python against an older system SQLite. JSON functions must be checked in CI on Python 3.11–3.14, or the store must avoid them in required paths.
