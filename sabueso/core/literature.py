@@ -6,13 +6,14 @@ publication (``pubmed:<id>``, else ``doi:<doi>``, else UniProt's own citation id
 - a source cites it for a topic: ``described_in`` relationships, for example a UniProt
   reference with its scope (``X-RAY CRYSTALLOGRAPHY``, ``HOMODIMERIZATION``...);
 - it is the primary citation of a structure on the card (RCSB, on ``has_structure``);
+- a person curated what it states onto the card (``curated``, part 2 of #41, with the
+  outcome of comparing it with other sources);
 - a source gives it as evidence of a statement: the PubMed ids in a SourceAssertion's
   ``eco`` evidence, and UniProt's ``Ref.<n>`` evidences, resolved through the entry's
   reference numbers.
 
-Nothing here reads a paper. What a publication says beyond what a source states about it
-is a curated literature assertion (part 2 of #41), and how it bears on a project's
-hypotheses is Nextia Evidence, not Sabueso's.
+Nothing here reads a paper. How a publication bears on a project's hypotheses is Nextia
+Evidence, not Sabueso's.
 """
 
 from __future__ import annotations
@@ -39,7 +40,7 @@ def _summary(value: Any) -> Any:
 
 
 def literature_view(card: Any) -> Dict[str, Any]:
-    """``{"publications", "unresolved_evidence"}``; publications in chronological order."""
+    """``{"publications", "unresolved_eco"}``; publications in chronological order."""
     publications: Dict[str, Dict[str, Any]] = {}
     by_reference_number: Dict[Any, str] = {}
 
@@ -56,6 +57,7 @@ def literature_view(card: Any) -> Dict[str, Any]:
                 "cited_by": [],
                 "primary_citation_of": [],
                 "supports": [],
+                "curated": [],
             },
         )
 
@@ -101,8 +103,27 @@ def literature_view(card: Any) -> Dict[str, Any]:
         fill(pub, citation)
         pub["primary_citation_of"].append(rel["object_ref"])
 
+    outcomes = {
+        r["source_assertion_id"]: r for r in card.quality.get("curation", []) or []
+    }
     unresolved: List[Dict[str, Any]] = []
     for assertion in card.source_assertion_store.to_list():
+        source = assertion.get("source") or {}
+        if source.get("type") == "literature" and source.get("record_id"):
+            curation = (assertion.get("source_metadata") or {}).get("curation") or {}
+            record = outcomes.get(assertion["id"]) or {}
+            entry(source["record_id"])["curated"].append(
+                {
+                    "field_path": assertion.get("field_path"),
+                    "value": _summary(assertion.get("asserted_value")),
+                    "locator": curation.get("locator"),
+                    "quote": curation.get("quote"),
+                    "curator": curation.get("curator"),
+                    "curated_at": curation.get("curated_at"),
+                    "outcome": record.get("outcome"),
+                    "source_assertion_id": assertion["id"],
+                }
+            )
         for evidence in (assertion.get("source_metadata") or {}).get("eco") or []:
             source, identifier = evidence.get("source"), evidence.get("id")
             if source == "PubMed" and identifier:
@@ -119,7 +140,7 @@ def literature_view(card: Any) -> Dict[str, Any]:
                 {
                     "field_path": assertion.get("field_path"),
                     "value": _summary(assertion.get("asserted_value")),
-                    "evidence_code": evidence.get("code"),
+                    "eco_code": evidence.get("code"),
                     "source": (assertion.get("source") or {}).get("name"),
                     "source_assertion_id": assertion["id"],
                 }
@@ -131,4 +152,4 @@ def literature_view(card: Any) -> Dict[str, Any]:
     ordered = sorted(
         publications.values(), key=lambda p: (p["year"] or "9999", p["ref"])
     )
-    return {"publications": ordered, "unresolved_evidence": unresolved}
+    return {"publications": ordered, "unresolved_eco": unresolved}

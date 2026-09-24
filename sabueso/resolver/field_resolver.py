@@ -94,7 +94,11 @@ def _precision_groups(
     """Group numbers that agree at the coarser stated precision; None if not numeric."""
     items = []
     for a in assertions:
-        decimals = _stated_decimals(a.get("asserted_value"))
+        # A value converted from another unit carries its stated precision, expressed
+        # in the field's unit (curated quantities, sabueso.core.curation).
+        decimals = (a.get("source_metadata") or {}).get("stated_decimals")
+        if decimals is None:
+            decimals = _stated_decimals(a.get("asserted_value"))
         try:
             number = float(assertion_value(a))
         except (TypeError, ValueError):

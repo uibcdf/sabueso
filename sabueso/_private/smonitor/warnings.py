@@ -89,3 +89,27 @@ class UnanchoredRecordsWarning(SabuesoWarning):
             meta=META if extra else None,
             extra=extra,
         )
+
+
+class CuratedDisagreementWarning(SabuesoWarning):
+    """A curated literature assertion differs from other sources (uibcdf/sabueso#41)."""
+
+    catalog_key = "CuratedDisagreementWarning"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        subject: str | None = None,
+        field: str | None = None,
+        publication: str | None = None,
+    ) -> None:
+        extra = None
+        if message is None:
+            extra = {"subject": subject, "field": field, "publication": publication}
+        super().__init__(
+            message,
+            catalog=CATALOG if extra else None,
+            meta=META if extra else None,
+            extra=extra,
+        )

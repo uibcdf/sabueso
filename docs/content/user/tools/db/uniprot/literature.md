@@ -13,7 +13,7 @@ for pub in card.literature()["publications"]:
         print("  cited for:", cited["scope"])
     print("  primary citation of:", pub["primary_citation_of"])  # PDB entries
     for s in pub["supports"]:  # statements whose evidence names the paper
-        print("  supports:", s["field_path"], s["value"], s["evidence_code"])
+        print("  supports:", s["field_path"], s["value"], s["eco_code"])
 ```
 
 - A publication is named `pubmed:<id>`, or `doi:<doi>` when it has no PubMed id. If it
@@ -27,5 +27,43 @@ for pub in card.literature()["publications"]:
 - A paper cited only as evidence (for example by a GO annotation) appears with its id
   and no title.
 
-What a paper says beyond what a database states about it is not on the card yet: curated
-literature assertions are uibcdf/sabueso#41, part 2.
+## Curated literature assertions
+
+When you read a paper, record what it states on the card. Sabueso keeps where the
+statement comes from and compares it with what databases state:
+
+```python
+record = card.add_literature_assertion(
+    "features_positional.natural_variant",
+    {
+        "start": 105,
+        "substitution": {"original": "E", "alternatives": ["D"]},
+        "description": "destabilizes the dimer",
+    },
+    publication="pubmed:18562316",  # or "doi:10...."
+    curator="your-name",
+    locator="Fig. 2",  # where in the paper
+    quote="...",  # optional, a short excerpt (at most 300 characters)
+)
+print(record["outcome"])  # new, corroborates, differs, not_comparable or not_compared
+```
+
+- **Fields.** Knowledge fields only: `annotations.*`, `features_positional.*` and
+  `properties.physchem.*`. A positional item can give `start` (and `end`) in the card's
+  UniProt numbering instead of a full location.
+- **Outcomes.** The same item, identified for example by position and substitution:
+  - with the same content, it `corroborates`;
+  - with a different content, it `differs`. It is recorded in `quality.conflicts` and a
+    `CuratedDisagreementWarning` is shown.
+
+  Sabueso cannot tell whether two texts mean the same thing, so it flags the
+  difference for you to judge. Free-text fields such as `annotations.subunit` are
+  `not_compared`.
+- **Priority.** A curated assertion never takes priority automatically, and nothing is
+  discarded or overridden.
+- **Quantities.** Give the unit (`"0.825 kDa"`, `puw.quantity(825, "Da")`). The value is
+  kept as written and compared at the precision it was stated with.
+- **Where it shows.** `card.literature()` lists each publication's curated assertions
+  with their outcome.
+- **Scope.** How a statement bears on a project's hypotheses is not Sabueso's: that is
+  Evidence, in Nextia.

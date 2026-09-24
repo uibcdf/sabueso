@@ -12,6 +12,7 @@ from typing import Any, Dict, Iterable, List
 
 from .emitter import warn
 from .warnings import (
+    CuratedDisagreementWarning,
     EnrichmentFailedWarning,
     EnrichmentTruncatedWarning,
     UnanchoredRecordsWarning,
@@ -80,5 +81,15 @@ def report_unanchored(unanchored: List[Dict[str, Any]], subject: str) -> None:
     examples = ", ".join(refs[:5]) + (", ..." if len(refs) > 5 else "")
     warn(
         UnanchoredRecordsWarning(subject=subject, count=len(refs), examples=examples),
+        stacklevel=_user_stacklevel(),
+    )
+
+
+def report_curated_disagreement(subject: str, field: str, publication: str) -> None:
+    """Warn that a curated assertion disagrees; the conflict is already recorded."""
+    warn(
+        CuratedDisagreementWarning(
+            subject=subject, field=field, publication=publication
+        ),
         stacklevel=_user_stacklevel(),
     )

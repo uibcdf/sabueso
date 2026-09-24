@@ -96,3 +96,11 @@ def path_list(argument: str, value: Any, caller: str | None) -> list:
             raise refuse(argument, value, caller, f"not a field path: {path!r}")
         field_path(argument, path, caller)
     return paths
+
+
+def optional_text(argument: str, value: Any, caller: str | None) -> str | None:
+    if value is None:
+        return None
+    if isinstance(value, str) and value.strip():
+        return value.strip()
+    raise refuse(argument, value, caller, "expected a non-empty text or None")

@@ -64,6 +64,12 @@ CATALOG = {
             "category": "identity",
             "level": "WARNING",
         },
+        "CuratedDisagreementWarning": {
+            "code": "SABUESO-W-CURATION-001",
+            "source": "sabueso.warning.curated_disagreement",
+            "category": "curation",
+            "level": "WARNING",
+        },
     },
 }
 
@@ -103,6 +109,14 @@ CODES = {
         "user_hint": "They are listed in deck.meta['unanchored'].",
         "dev_message": "Unanchored records for {subject}: {examples}",
     },
+    "SABUESO-W-CURATION-001": {
+        "title": "Curated assertion differs",
+        "user_message": "The literature assertion from {publication} on {field} of "
+        "{subject} differs from what other sources state about the same item. Both are "
+        "kept; neither takes priority.",
+        "user_hint": "Whether they contradict needs a reader: see "
+        "card.quality['conflicts'] and card.literature().",
+    },
 }
 
 SIGNALS = {
@@ -114,5 +128,8 @@ SIGNALS = {
     },
     "sabueso.warning.unanchored_records": {
         "extra_required": ["subject", "count", "examples"]
+    },
+    "sabueso.warning.curated_disagreement": {
+        "extra_required": ["subject", "field", "publication"]
     },
 }

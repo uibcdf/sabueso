@@ -81,6 +81,49 @@ class Card:
             self, include_indirect=include_indirect, thresholds=thresholds
         )
 
+    @arg_digest()
+    def add_literature_assertion(
+        self,
+        field_path: str,
+        value: Any,
+        publication: str,
+        curator: str,
+        locator: str | None = None,
+        quote: str | None = None,
+        method: str | None = None,
+        eco_code: str | None = None,
+        curated_at: str | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Record what a publication states about one of this card's fields.
+
+        ``publication`` is ``pubmed:<id>`` or ``doi:<doi>``; ``locator`` says where
+        (figure, table, page) and ``quote`` is an optional short excerpt. The assertion
+        is compared with what other sources state, never given priority, and never
+        discarded; a difference is recorded in ``quality.conflicts`` and warned about.
+        Returns the curation record (``outcome``: new, corroborates, differs,
+        not_comparable or not_compared). See ``sabueso.core.curation``.
+        """
+        from sabueso._private.smonitor.outcomes import report_curated_disagreement
+
+        from .curation import add_literature_assertion
+
+        record = add_literature_assertion(
+            self,
+            field_path,
+            value,
+            publication,
+            curator,
+            locator=locator,
+            quote=quote,
+            method=method,
+            eco_code=eco_code,
+            curated_at=curated_at,
+        )
+        if record["outcome"] == "differs":
+            report_curated_disagreement(self.id or "", field_path, publication)
+        return record
+
     def literature(self) -> Dict[str, Any]:
         """The publications that support statements on this card, and what for."""
         from .literature import literature_view

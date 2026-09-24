@@ -166,6 +166,20 @@ A Relationship is first-class, traceable knowledge:
       strain). The SourceAssertion keeps the reference verbatim.
     - Which statements each publication supports is read by `Card.literature()` from the
       ECO evidence of every SourceAssertion, and only there.
+  - curated literature assertions (added in #41):
+    - A SourceAssertion with `source.type = "literature"`, `source.name = "Literature"`
+      and the publication as `record_id` (`pubmed:<id>` or `doi:<doi>`). Its
+      `source_metadata.curation` holds `curator`, `curated_at`, `locator` and an optional
+      short `quote`. It may also hold `method`, `eco` and `stated_decimals`, the stated
+      precision expressed in the field's unit. Its id hashes the value and the locator,
+      so the same value at another place in the paper is another assertion.
+    - Only knowledge fields take them (`sabueso.core.curation.CURATABLE_FIELDS`):
+      `annotations.*`, `features_positional.*` (except family sites) and
+      `properties.physchem.*`. Identity, sequence and metadata never do.
+    - `quality.curation` records each one: `field`, `publication`,
+      `source_assertion_id`, `outcome` (`new`, `corroborates`, `differs`,
+      `not_comparable`, `not_compared`) and `compared_with`. A `differs` on a list
+      field also goes to `quality.conflicts` with `type: "curated_difference"`.
   - interfaces (added in #40):
     - `has_interface_with` (protein → `uniprot:<acc>`, or `pdbe_kb.partner:<label>` for a
       partner without a UniProt entry), one relationship per partner, from PDBe-KB.

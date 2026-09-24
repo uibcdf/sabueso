@@ -213,3 +213,23 @@ uibcdf/sabueso#32 (`devguide/archive/quantities.md`); the format is PyUnitWizard
   `unit_scale_discrepancy@1` flag measurements, and resolver conflicts mark exact 10³ or
   10⁶ ratios. Closes uibcdf/sabueso#32.
 
+## Curated literature assertions (2026-09-24)
+uibcdf/sabueso#41, part 2. Free-text claims are deferred to uibcdf/sabueso#43.
+- A person or an agent reads a paper and records what it states. Sabueso does not read
+  papers: it checks the shape against the field, stores the claim as a literature
+  SourceAssertion, and compares it mechanically.
+- Only existing knowledge fields take curated assertions. Identity, sequence and
+  metadata never do.
+- A curated assertion never takes priority automatically ("Literature" is in no priority
+  list), and it is never discarded. Its outcome is always recorded (`quality.curation`).
+  A difference is reported in `quality.conflicts` and warned about
+  (`SABUESO-W-CURATION-001`).
+- On list fields, "differs" means the same item, identified by position and
+  substitution, site or disease accession, stated differently. Whether two texts
+  contradict each other needs a reader, so Sabueso flags the difference and never
+  judges it. Free-text lists are `not_compared`.
+- Quantities are compared at the precision they were stated with, converted to the
+  field's unit ("0.9 kDa" states hundreds of daltons).
+- How a curated assertion bears on a project's hypotheses is Nextia Evidence
+  (SourceAssertion ≠ Evidence).
+

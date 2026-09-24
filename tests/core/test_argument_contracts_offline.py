@@ -38,6 +38,7 @@ PUBLIC_TOOLS = [
     ligand_deck,
     ambiguity_deck,
     Card.bioactivities,
+    Card.add_literature_assertion,
     Card.structures,
     Card.ligands,
     Card.compare_ligands,

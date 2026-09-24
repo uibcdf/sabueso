@@ -85,7 +85,7 @@ def test_a_reference_evidence_resolves_to_a_publication_without_pubmed(resolver)
     view, pubs = _publications(resolver, HSTIM)
     paper = pubs["uniprot.citation:CI-9T5RN79Q9AJGF"]
     assert "annotations.disease" in {s["field_path"] for s in paper["supports"]}
-    assert view["unresolved_evidence"] == []
+    assert view["unresolved_eco"] == []
 
 
 def test_publications_are_in_chronological_order(resolver):
