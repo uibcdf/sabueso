@@ -26,9 +26,8 @@ from sabueso.core.relationship_store import (
     make_relationship,
 )
 from sabueso.core.source_assertion_store import SourceAssertion, make_source_assertion
-
-from .rcsb_client import OnlineRCSBClient
-from .uniprot_client import OnlineUniProtClient
+from sabueso.tools.db.rcsb import OnlineRCSBClient
+from sabueso.tools.db.uniprot import OnlineUniProtClient
 
 # UniProtKB accession format, optionally followed by an isoform suffix (e.g. P60174-3).
 UNIPROT_ACCESSION = re.compile(
