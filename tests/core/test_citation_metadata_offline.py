@@ -1,7 +1,8 @@
-"""Citation metadata (MOLI Zenodo policy). CITATION.cff is the only metadata source for
-GitHub and for Zenodo: releases 0.1.0 and 0.1.1, which carried a .zenodo.json, never
-finished archiving, while the components archived with CITATION.cff alone did."""
+"""Citation metadata stay in agreement (MOLI Zenodo policy: shared metadata must agree
+before publication). CITATION.cff is the GitHub-facing record; .zenodo.json feeds the
+Zenodo archive of each release."""
 
+import json
 import tomllib
 from pathlib import Path
 
@@ -14,13 +15,25 @@ def _cff():
     return yaml.safe_load((ROOT / "CITATION.cff").read_text(encoding="utf-8"))
 
 
-def test_citation_names_the_authors_with_orcid():
-    cff = _cff()
-    assert [a["family-names"] for a in cff["authors"]] == [
-        "Prada-Gracia",
-        "Moreno-Vargas",
+def _zenodo():
+    return json.loads((ROOT / ".zenodo.json").read_text(encoding="utf-8"))
+
+
+def test_citation_and_zenodo_metadata_agree():
+    cff, zenodo = _cff(), _zenodo()
+    assert [f"{a['family-names']}, {a['given-names']}" for a in cff["authors"]] == [
+        c["name"] for c in zenodo["creators"]
     ]
-    assert all(a["orcid"].startswith("https://orcid.org/") for a in cff["authors"])
+    assert [a["orcid"].rsplit("/", 1)[1] for a in cff["authors"]] == [
+        c["orcid"] for c in zenodo["creators"]
+    ]
+    assert (cff["title"], str(cff["version"]), cff["license"]) == (
+        zenodo["title"],
+        zenodo["version"],
+        zenodo["license"],
+    )
+    assert cff["keywords"] == zenodo["keywords"]
+    assert " ".join(cff["abstract"].split()) == zenodo["description"]
 
 
 def test_citation_version_is_the_planned_release():
@@ -29,9 +42,4 @@ def test_citation_version_is_the_planned_release():
             encoding="utf-8"
         )
     )
-    assert str(_cff()["version"]) == plan["version"]
-
-
-def test_there_is_no_second_metadata_file_to_disagree_with():
-    # .zenodo.json takes precedence over CITATION.cff on Zenodo; one source avoids drift.
-    assert not (ROOT / ".zenodo.json").exists()
+    assert str(_cff()["version"]) == _zenodo()["version"] == plan["version"]
