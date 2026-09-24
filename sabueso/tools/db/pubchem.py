@@ -115,8 +115,13 @@ def fetch_pubchem_json(cid: str) -> Dict[str, Any]:
 
 
 def create_compound_card_online(cid: str, retrieved_at: str) -> Any:
-    """Create a SmallMolecule Card by CID using online fetch."""
-    # PubChem CIDs are not resolved by sabueso.resolve() yet, so this stays (#49).
+    """Deprecated: use ``sabueso.resolve("pubchem:<cid>")``, which links the compound's
+    records across sources (#50)."""
+    from sabueso._private.smonitor.outcomes import report_deprecated
+
+    report_deprecated(
+        "sabueso.create_compound_card_online", 'sabueso.resolve("pubchem:<cid>")'
+    )
     data = OnlinePubChemClient().compound(cid)["record"]
     return create_compound_card_from_json(data, retrieved_at=retrieved_at)
 

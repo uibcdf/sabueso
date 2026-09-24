@@ -1,5 +1,9 @@
 # Tutorial: `create_compound_card_online`
 
+```{warning}
+Deprecated: use `sabueso.resolve("pubchem:<cid>")`, which anchors the compound at its standard InChIKey and links its records across sources. It warns when called, and will be removed before Sabueso 1.0.
+```
+
 ## Goal
 
 Fetch PubChem data and create a Sabueso Card in one call.

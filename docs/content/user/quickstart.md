@@ -42,7 +42,7 @@ from sabueso.resolver import EntityQuery
 protein, resolution = sabueso.resolve("P52270")  # a UniProt accession
 print(resolution.status, resolution.decision["route"])
 
-ligand, _ = sabueso.resolve("pdb.ligand:BTS")  # also chembl:<id> or inchikey:<key>
+ligand, _ = sabueso.resolve("pdb.ligand:BTS")  # also chembl:, pubchem:<cid>, inchikey:
 
 # A name needs an organism; if several entries match, the result is "ambiguous" and
 # lists the candidates. Sabueso never picks one silently.
@@ -53,7 +53,8 @@ card, resolution = sabueso.resolve(
 
 Options are passed to the tool that answers the query. For proteins these include
 `structures`, `chembl`, `ligand_sites`, `interfaces` and `family_sites`; for molecules,
-`unichem`. An option that does not apply is refused.
+`unichem`, and `pubchem=True` to add the PubChem records UniChem links. An option that
+does not apply is refused.
 
 A **profile** names a versioned set of options, so a study states which baseline it builds:
 

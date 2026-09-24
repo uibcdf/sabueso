@@ -27,3 +27,14 @@ def test_online_ligand_deck_of_a_protein():
     view = card.ligands(deck)
     pga = "sabueso:small_molecule:inchikey:ASCFNMCAHFUBCO-UHFFFAOYSA-N"
     assert pga in {i["molecule_ref"] for i in view["items"]}
+
+
+@pytest.mark.online
+def test_online_pubchem_cid_resolves_with_its_chembl_record():
+    import sabueso
+
+    card, resolution = sabueso.resolve("pubchem:5978")
+    assert resolution.status == "resolved"
+    assert card.id == "sabueso:small_molecule:inchikey:OGWKCGZFUXNPDA-XQKSVPLYSA-N"
+    links = {r["subject_ref"] for r in card.relationships("same_as")}
+    assert {"pubchem:5978", "chembl:CHEMBL90555"} <= links

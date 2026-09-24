@@ -41,6 +41,7 @@
   "quality.enrichments[].linked",
   "quality.enrichments[].linked.chembl",
   "quality.enrichments[].linked.pdb.ligand",
+  "quality.enrichments[].linked.pubchem",
   "quality.enrichments[].missing",
   "quality.enrichments[].records",
   "quality.enrichments[].required_score",

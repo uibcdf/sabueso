@@ -1,0 +1,2547 @@
+{
+ "inchi": "InChI=1S/C46H56N4O10/c1-7-42(55)22-28-23-45(40(53)58-5,36-30(14-18-48(24-28)25-42)29-12-9-10-13-33(29)47-36)32-20-31-34(21-35(32)57-4)50(26-51)38-44(31)16-19-49-17-11-15-43(8-2,37(44)49)39(60-27(3)52)46(38,56)41(54)59-6/h9-13,15,20-21,26,28,37-39,47,55-56H,7-8,14,16-19,22-25H2,1-6H3/t28-,37+,38-,39-,42+,43-,44-,45+,46+/m1/s1",
+ "sources": [
+  {
+   "compoundId": "CHEMBL90555",
+   "id": 1,
+   "shortName": "chembl"
+  },
+  {
+   "compoundId": "CHEBI:28445",
+   "id": 7,
+   "shortName": "chebi"
+  },
+  {
+   "compoundId": "29432555",
+   "id": 15,
+   "shortName": "surechembl"
+  },
+  {
+   "compoundId": "3709",
+   "id": 15,
+   "shortName": "surechembl"
+  },
+  {
+   "compoundId": "3999",
+   "id": 15,
+   "shortName": "surechembl"
+  },
+  {
+   "compoundId": "HMDB0014681",
+   "id": 18,
+   "shortName": "hmdb"
+  },
+  {
+   "compoundId": "5978",
+   "id": 22,
+   "shortName": "pubchem"
+  },
+  {
+   "compoundId": "Molport-006-110-124",
+   "id": 28,
+   "shortName": "molport"
+  },
+  {
+   "compoundId": "50139772",
+   "id": 31,
+   "shortName": "bindingdb"
+  },
+  {
+   "compoundId": "21719",
+   "id": 37,
+   "shortName": "brenda"
+  },
+  {
+   "compoundId": "230204",
+   "id": 37,
+   "shortName": "brenda"
+  },
+  {
+   "compoundId": "230205",
+   "id": 37,
+   "shortName": "brenda"
+  },
+  {
+   "compoundId": "49472",
+   "id": 37,
+   "shortName": "brenda"
+  },
+  {
+   "compoundId": "6613",
+   "id": 37,
+   "shortName": "brenda"
+  },
+  {
+   "compoundId": "NCT00001209",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00001339",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00001689",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00003389",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00006721",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00026208",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00031590",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00038142",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00038207",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00038610",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00041132",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00051311",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00054665",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00060346",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00074490",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00083551",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00085202",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00088530",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00088881",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00092222",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00101101",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00109837",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00115700",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00118209",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00126191",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00130195",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00131027",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00131053",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00133991",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00135499",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00136084",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00136435",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00137111",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00145002",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00165139",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00165178",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00169156",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00176462",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00184002",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00184041",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00186875",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00186888",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00186888",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00186979",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00187005",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00187083",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00187161",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00193479",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00195871",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00198978",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00198991",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00199004",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00199017",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00199056",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00199069",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00199082",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00199095",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00199186",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00201318",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00201695",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00209209",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00209222",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00211185",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00215943",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00217425",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00225173",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00250718",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00262925",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00264953",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00265031",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00267046",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00274924",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00284271",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00285389",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00290433",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00290498",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00299182",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00313053",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00313079",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00324467",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00324831",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00333008",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00335140",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00344422",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00352027",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00361621",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00379574",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00380770",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00384111",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00390793",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00411541",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00431561",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00433537",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00440726",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00441168",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00450385",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00450801",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00451178",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00461747",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00476190",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00477412",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00491946",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00494780",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00494897",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00495079",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00500890",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00503594",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00506142",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00526175",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00526305",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00526409",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00549848",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00555464",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00556127",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00562965",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00568464",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00575406",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00577993",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00581776",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00596154",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00613457",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00632827",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00634179",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00669877",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00671658",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00718757",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00719472",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00722137",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00736320",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00763763",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00770224",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00774202",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00774826",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00786669",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00787527",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00791947",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00801281",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00809341",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00825149",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00841945",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00846703",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00853008",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00866749",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00877006",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00877110",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00878254",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00887146",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00890656",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00901069",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00905034",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00928200",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00931918",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00945724",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00960063",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00968253",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00973752",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT00993044",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01000285",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01004497",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01004991",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01009970",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01014767",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01040871",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01046825",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01055496",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01096368",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01148446",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01186328",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01200758",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01251107",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01287741",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01303887",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01309789",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01313884",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01319981",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01321008",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01324180",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01332968",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01336933",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01355445",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01355445",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01356680",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01358201",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01358253",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01359592",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01370694",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01371630",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01390584",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01397825",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01399372",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01414855",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01415765",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01424982",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01427114",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01435018",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01445535",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01451515",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01463852",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01468740",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01476787",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01478542",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01483690",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01516567",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01516580",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01516580",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01523977",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01527422",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01528046",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01540812",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01540812",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01542736",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01622439",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01650701",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01659099",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01679119",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01704716",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01719835",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01724021",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01735747",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01746173",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01746992",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01760226",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01777152",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01783535",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01831505",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01837862",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01848132",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01855750",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01857934",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01864109",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01871766",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01878617",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01887587",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01889069",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01899066",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01906814",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01920737",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01925612",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01946529",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT01974440",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02003222",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02035137",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02036489",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02055820",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02063022",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02085148",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02101853",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02110069",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02112916",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02114229",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02116959",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02135874",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02137928",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02143414",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02162771",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02163356",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02212574",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02228512",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02228772",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02265770",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02265770",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02265770",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02285062",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02303821",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02306161",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02343536",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02348216",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02359162",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02398240",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02404220",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02405676",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02405676",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02406092",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02419469",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02420717",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02427620",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02428751",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02449252",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02449265",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02449278",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02455245",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02518750",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02523976",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02529852",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02531308",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02533700",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02535806",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02553460",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02566993",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02568683",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02595242",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02596971",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02611492",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02617485",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02626455",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02639650",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02660762",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02661503",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02670616",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02677116",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02684058",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02684708",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02703272",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02724579",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02752815",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02753647",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02776605",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02792491",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02809573",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02828358",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02845882",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02845882",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02855359",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02858804",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02870907",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02881086",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02889523",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02894645",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02911142",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02918747",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02951728",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT02981628",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03003520",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03017326",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03018626",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03020030",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03023358",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03117751",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03147612",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03188198",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03206671",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03225924",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03229746",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03274492",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03283202",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03286634",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03349281",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03359005",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03384654",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03407144",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03467373",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03504644",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03519984",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03536039",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03553238",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03553537",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03564704",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03571321",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03589326",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03613428",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03617432",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03643276",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03677141",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03755804",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03758989",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03786783",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03792256",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03808610",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03817320",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03817853",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03837873",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03853044",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03860844",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03864419",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03892330",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03899337",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03943901",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03952572",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03962465",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT03991884",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04025593",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04043494",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04067037",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04139304",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04181489",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04199026",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04213612",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04214626",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04216524",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04221035",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04322318",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04388839",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04402073",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04478292",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04478292",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04517435",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04529772",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04542824",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04548700",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04623541",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04625907",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04638790",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04660799",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04663347",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04663347",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04668365",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04681417",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04747912",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04752163",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04773366",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04773366",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04773366",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04796012",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04803201",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04824092",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04835870",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04884035",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04890093",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04914741",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04922567",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04933617",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04947501",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04974996",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04978584",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT04980222",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05008224",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05032183",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05046314",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05049473",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05192889",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05200312",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05201248",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05270057",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05278715",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05292664",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05303792",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05304585",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05351346",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05359237",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05371093",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05382338",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05384821",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05389423",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05422066",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05425654",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05453500",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05455697",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05457829",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05458180",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05460000",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05466175",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05476770",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05504291",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05518383",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05518383",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05518383",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05521087",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05535166",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05578976",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05594784",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05600686",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05605899",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05620862",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05645718",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05660473",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05678933",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05681260",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05681260",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05844670",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05848765",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05887726",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05934097",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT05974085",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06005870",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06023641",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06045247",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06091254",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06091865",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06097364",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06099366",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06099366",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06099366",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06124157",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06172296",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06191744",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06201507",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06207123",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06210750",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06220032",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06249191",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06251180",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06284122",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06289673",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06313996",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06317662",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06336395",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06356129",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06387121",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06390319",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06401330",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06425302",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "NCT06474481",
+   "id": 46,
+   "shortName": "clinicaltrials"
+  },
+  {
+   "compoundId": "PD009969",
+   "id": 49,
+   "shortName": "probes_and_drugs"
+  },
+  {
+   "compoundId": "Vincristine",
+   "id": 84,
+   "shortName": "wikipedia"
+  }
+ ],
+ "standardInchiKey": "OGWKCGZFUXNPDA-XQKSVPLYSA-N",
+ "uci": 833090
+}

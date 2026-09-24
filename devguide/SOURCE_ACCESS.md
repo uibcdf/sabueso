@@ -50,11 +50,11 @@ Each warns with `DeprecatedUsageWarning` (`SABUESO-W-DEPRECATED-001`, also a
 
 - `fetch_uniprot_json`, `fetch_chembl_json`, `fetch_pubchem_json` and
   `tools.db.pdb.fetch_pdb_json`: use `get_*`;
-- `create_protein_card_online` and `create_molecule_card_online`: use `sabueso.resolve`.
+- `create_protein_card_online`, `create_molecule_card_online` and
+  `create_compound_card_online`: use `sabueso.resolve`, which takes `pubchem:<cid>`
+  since #50.
 
-`create_compound_card_online` stays, because `sabueso.resolve` does not resolve PubChem
-CIDs yet. It now goes through the PubChem client. `create_*_card_from_json` and
-`create_*_card_from_file` stay, for offline work and tests.
+`create_*_card_from_json` and `create_*_card_from_file` stay, for offline work and tests.
 
 ## Boundaries
 

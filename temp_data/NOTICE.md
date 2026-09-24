@@ -26,8 +26,8 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | `pdbe_kb/*.json` | PDBe-KB (EMBL-EBI), ligand binding sites (2026-09-23) and interface residues (2026-09-24) | — | 2026-09-23 | CC BY 4.0 |
 | `interpro/*.json` | InterPro (EMBL-EBI), site residues from the CDD member database | InterPro 110.0 | 2026-09-23 | see note below |
 | `string/*.json` | STRING | 12.0 | 2026-09-23 | CC BY 4.0 |
-| `chembl/*.json`, `CHEMBL90555.json` | ChEMBL (EMBL-EBI) | ChEMBL_37 (released 2026-05-01) | 2026-09-23 | **CC BY-SA 3.0** |
-| `unichem/*.json` | UniChem (EMBL-EBI) | — | 2026-09-23 | see note below |
+| `chembl/*.json`, `CHEMBL90555.json` | ChEMBL (EMBL-EBI); CHEMBL90555 added to `chembl/molecules.json` 2026-09-24 | ChEMBL_37 (released 2026-05-01) | 2026-09-23 | **CC BY-SA 3.0** |
+| `unichem/*.json` | UniChem (EMBL-EBI); vincristine added 2026-09-24 | — | 2026-09-23 | see note below |
 | `5978.json`, `66414.json` | PubChem (NCBI/NLM) | — | earlier | US public domain (NLM policy) |
 | `2NZT.json` | RCSB PDB entry | — | earlier | CC0 1.0 |
 | `frozen_cards/*.json` | Sabueso cards built from the fixtures above by a published release, kept to test that later versions still read them (#42). `schema_0.3.0__P52270.json`: the published conda package `sabueso=0.1.1` (uibcdf channel; card schema 0.3.0), run on the UniProt, RCSB PDB and ChEMBL fixtures | — | 2026-09-24 | each part keeps its source's licence; the ChEMBL part is **CC BY-SA 3.0** |

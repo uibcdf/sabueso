@@ -135,6 +135,11 @@ def single_molecule_card(**records: Any) -> Card:
 def _parse(identifier: str) -> Tuple[str | None, str]:
     value = identifier.strip()
     namespace, _, record = value.partition(":")
+    if record and namespace.lower() == "pubchem":
+        # A PubChem CID only with its prefix: a bare number could be anything.
+        return (
+            ("pubchem", record.strip()) if record.strip().isdigit() else (None, value)
+        )
     if record and namespace.lower() in ("chembl", "pdb.ligand", "inchikey"):
         namespace = namespace.lower()
         return namespace, record if namespace == "inchikey" else record.upper()
@@ -143,6 +148,14 @@ def _parse(identifier: str) -> Tuple[str | None, str]:
     if is_standard_inchikey(value):
         return "inchikey", value
     return None, value
+
+
+def _pubchem_client(pubchem_client):
+    if pubchem_client is None:
+        from sabueso.tools.db.pubchem import OnlinePubChemClient
+
+        pubchem_client = OnlinePubChemClient()
+    return pubchem_client
 
 
 def _clients(chembl_client, ccd_client, unichem_client):
@@ -169,9 +182,16 @@ def resolve_molecule_card(
     ccd_client: Any | None = None,
     unichem: bool = True,
     unichem_client: Any | None = None,
+    pubchem: bool = False,
+    pubchem_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve a small-molecule identifier and build the card of its molecule.
+
+    ``identifier`` is ``chembl:<id>`` (or a bare ChEMBL id), ``pdb.ligand:<code>``,
+    ``pubchem:<cid>`` or ``inchikey:<key>`` (or a bare standard InChIKey). With
+    ``pubchem=True``, the PubChem compounds UniChem links are retrieved too; a
+    ``pubchem:`` identifier always brings its own compound.
 
     The anchor InChIKey comes from the record named by ``identifier`` (or is the
     identifier itself). With ``unichem`` (default), UniChem adds the records other
@@ -198,7 +218,9 @@ def resolve_molecule_card(
 
     chembl_ids = [record] if namespace == "chembl" else []
     codes = [record] if namespace == "pdb.ligand" else []
-    chembl = ccd = None
+    chembl = ccd = compounds = None
+    if namespace == "pubchem" or pubchem:
+        pubchem_client = _pubchem_client(pubchem_client)
     key = record if namespace == "inchikey" else None
     enrichments: List[Dict[str, Any]] = []
     try:
@@ -212,12 +234,22 @@ def resolve_molecule_card(
             decision["sources"].append({"name": "PDB CCD", "records": codes})
             if not ccd["components"]:
                 return outcome("not_found", "record_not_found")
+        if namespace == "pubchem":
+            try:
+                response = pubchem_client.compound(record)
+            except RecordNotFoundError:
+                return outcome("not_found", "record_not_found")
+            decision["sources"].append({"name": "PubChem", "records": [record]})
+            compounds = {
+                "retrieved_at": response["retrieved_at"],
+                "compounds": {record: response["record"]},
+            }
     except ConnectorError as exc:
         decision["detail"] = str(exc)
         return outcome("error", "source_error")
 
     if key is None:
-        cards, unanchored = build_molecule_cards(chembl, ccd)
+        cards, unanchored = build_molecule_cards(chembl, ccd, pubchem=compounds)
         if not cards:
             return outcome("unsupported", "no_standard_inchikey")
         (key,) = cards
@@ -252,8 +284,14 @@ def resolve_molecule_card(
             chembl, ccd = _expand(
                 chembl_client, ccd_client, chembl, ccd, linked, enrichments
             )
+            if pubchem:
+                compounds = _expand_pubchem(
+                    pubchem_client, compounds, linked, enrichments
+                )
 
-    cards, unanchored = build_molecule_cards(chembl, ccd, unichem_responses)
+    cards, unanchored = build_molecule_cards(
+        chembl, ccd, unichem_responses, pubchem=compounds
+    )
     card = cards.get(key)
     if card is None:
         return outcome("not_found", "no_record_for_inchikey")
@@ -279,6 +317,39 @@ def resolve_molecule_card(
         "decision": decision,
     }
     return card, resolution
+
+
+def _expand_pubchem(pubchem_client, pubchem, linked, enrichments):
+    """Retrieve the PubChem compounds UniChem links (``pubchem=True``)."""
+    have = set(((pubchem or {}).get("compounds") or {}).keys())
+    wanted = [cid for cid in linked.get("pubchem", []) if cid not in have]
+    if not wanted:
+        return pubchem
+    pubchem = pubchem or {"retrieved_at": None, "compounds": {}}
+    found, missing = [], []
+    for cid in wanted:
+        try:
+            response = pubchem_client.compound(cid)
+        except RecordNotFoundError:
+            missing.append(cid)
+            continue
+        except ConnectorError as exc:
+            enrichments.append(
+                {"source": "PubChem", "status": "error", "detail": str(exc)}
+            )
+            return pubchem
+        pubchem["compounds"][cid] = response["record"]
+        pubchem["retrieved_at"] = pubchem["retrieved_at"] or response["retrieved_at"]
+        found.append(cid)
+    enrichments.append(
+        {
+            "source": "PubChem",
+            "status": "added" if found else "not_found",
+            "records": sorted(found),
+            "missing": missing,
+        }
+    )
+    return pubchem
 
 
 def _expand(chembl_client, ccd_client, chembl, ccd, linked, enrichments):
