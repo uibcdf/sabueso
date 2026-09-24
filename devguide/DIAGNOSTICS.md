@@ -58,5 +58,14 @@ message.
   stream, and SMonitor's warning capture makes the normally hidden warning visible. It is
   cosmetic: exit status and verdict are unaffected. Tracked upstream in
   uibcdf/pytest-receptor#4.
+- `@signal` wraps each decorated function in one extra frame, so a warning raised inside
+  it points at `smonitor/core/decorator.py` unless the stack level counts that frame.
+  `outcomes.py` counts it by hand (`_CALLER = 4`). If SMonitor changes its wrapper depth,
+  warnings will silently blame the wrong line. Remove the constant once
+  uibcdf/smonitor#23 is resolved. Meanwhile, the attribution test in
+  `test_smonitor_integration_offline.py` would catch a change.
+- The guide's check 2 walks only the grouped catalog shape, so on a flat catalog it
+  passes while checking nothing (uibcdf/smonitor#22). Sabueso's catalog is grouped, and
+  our check also asserts that it found the full set of codes.
 - A development environment with an older SMonitor (before 0.16.0) is not supported;
   `devtools/conda-envs/development_env.yaml` requires `>=0.16.0`.

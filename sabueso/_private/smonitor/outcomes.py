@@ -17,7 +17,8 @@ from .warnings import (
 )
 
 # Point warnings at the user's call: report_* <- public API function <- @signal wrapper
-# <- caller.
+# <- caller. The wrapper frame is counted by hand; drop it once uibcdf/smonitor#23 lets
+# SMonitor skip its own frames.
 _CALLER = 4
 
 

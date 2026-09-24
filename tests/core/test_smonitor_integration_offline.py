@@ -55,7 +55,11 @@ def test_check1_the_configuration_is_found_inside_the_package():
 
 
 def test_check2_every_catalog_code_has_a_template():
-    orphans = sorted(set(_catalog_codes()) - set(CODES))
+    codes = set(_catalog_codes())
+    # The guide's walk reads only the grouped shape; a flat catalog would yield nothing
+    # and pass. Guard the guard (uibcdf/smonitor#22).
+    assert len(codes) >= 9, f"expected the full grouped catalog, got {sorted(codes)}"
+    orphans = sorted(codes - set(CODES))
     assert not orphans, f"emitted with no template in CODES: {orphans}"
 
 
@@ -183,3 +187,25 @@ def test_unanchored_records_are_reported_with_examples():
         report_unanchored(
             [{"ref": "chembl:CHEMBL1"}, {"ref": "pdb.ligand:XYZ"}], subject="deck"
         )
+
+
+def test_a_diagnostic_points_at_the_line_that_called_sabueso():
+    # The @signal wrapper adds a frame that outcomes.py counts by hand
+    # (uibcdf/smonitor#23). If SMonitor changes its wrapper depth, this fails.
+    from sabueso import resolve_protein_card
+    from sabueso.resolver import (
+        EntityResolver,
+        FixtureRCSBClient,
+        FixtureUniProtClient,
+    )
+    from sabueso.tools.db.chembl import FixtureChEMBLClient
+
+    resolver = EntityResolver(
+        FixtureUniProtClient("temp_data"), rcsb_client=FixtureRCSBClient("temp_data")
+    )
+    client = FixtureChEMBLClient("temp_data", failing={"CHEMBL5834"})
+    with pytest.warns(EnrichmentFailedWarning) as record:
+        resolve_protein_card("P52270", resolver, chembl={}, chembl_client=client)
+    assert (
+        pathlib.Path(record[0].filename).resolve() == pathlib.Path(__file__).resolve()
+    )
