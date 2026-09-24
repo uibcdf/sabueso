@@ -1,0 +1,72 @@
+name: Withdraw a conda package from the public label
+
+# Moves one exact, digest-verified file from the `main` label to `withdrawn`. The file is
+# kept, so the release stays traceable; `conda install -c uibcdf sabueso` can no longer
+# select it. Used for 0.1.0, whose package lacked a runtime data file (#35).
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Three-part version of the file to withdraw
+        required: true
+        type: string
+      build_number:
+        description: Exact build number
+        required: true
+        type: number
+      sha256:
+        description: SHA-256 of the exact file
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sabueso-conda-${{ inputs.version }}
+  cancel-in-progress: false
+
+jobs:
+  withdraw:
+    name: Withdraw the exact file from main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Validate the request
+        shell: bash
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+          BUILD_NUMBER: ${{ inputs.build_number }}
+          EXPECTED_SHA256: ${{ inputs.sha256 }}
+        run: |
+          test "$GITHUB_REF" = refs/heads/main
+          [[ "$RELEASE_VERSION" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]
+          [[ "$BUILD_NUMBER" =~ ^[0-9]+$ ]]
+          [[ "$EXPECTED_SHA256" =~ ^[0-9a-f]{64}$ ]]
+
+      - name: Set up the Anaconda client
+        uses: mamba-org/setup-micromamba@v3.2.1
+        with:
+          environment-file: devtools/conda-envs/build_env.yaml
+          environment-name: withdraw
+          condarc: |
+            channels:
+              - uibcdf
+              - conda-forge
+            channel_priority: strict
+          create-args: >-
+            python=3.13
+
+      - name: Withdraw and verify
+        shell: bash -l {0}
+        env:
+          ANACONDA_TOKEN: ${{ secrets.ANACONDA_UIBCDF_TOKEN }}
+          RELEASE_VERSION: ${{ inputs.version }}
+          BUILD_NUMBER: ${{ inputs.build_number }}
+          EXPECTED_SHA256: ${{ inputs.sha256 }}
+        run: |
+          python devtools/conda-build/withdraw_package.py \
+            --version "$RELEASE_VERSION" --build-number "$BUILD_NUMBER" --sha256 "$EXPECTED_SHA256"
