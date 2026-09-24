@@ -20,10 +20,9 @@ equals the package version.
 
 ## Before the first public release
 
-- **Version above 0.2.0.** The `uibcdf` channel already holds `sabueso` 0.0.1–0.2.0
-  (2019–2023, Python 3.10 or older, platform-specific builds) from a previous codebase.
-  The first release of the current Sabueso must sort after them, so that a pinned or
-  unpinned install cannot confuse the two.
+- **First version: 0.1.0.** The `uibcdf` channel held `sabueso` 0.0.1–0.2.0 (2019–2023,
+  Python 3.10 or older) from a previous codebase. They were removed on 2026-09-24, so
+  the current Sabueso starts its public versions at 0.1.0.
 - **Publication.** Uploading needs the channel token secret and a release workflow. The
   UIBCDF libraries use `uibcdf/action-build-and-upload-conda-packages`; which staging and
   promotion routes a direct MOLI component adopts is open in uibcdf/moli#7.

@@ -31,16 +31,8 @@ From database fragments to structured molecular intelligence.
 
 ## Install
 
-Sabueso is distributed through the `uibcdf` conda channel. The current Sabueso has not
-had a public release yet: the `sabueso` packages already on the channel (0.2.0 and
-earlier, Python 3.10 or older) belong to a previous codebase, so do not install them.
-Once the first release is published:
-
-```bash
-conda install -c uibcdf -c conda-forge sabueso
-```
-
-Until then, work from the repository (see `Developers`).
+Sabueso will be distributed through the `uibcdf` conda channel. It has no public release
+yet, so for now it is installed from source as a development route (see `Developers`).
 
 ## Start Here
 
