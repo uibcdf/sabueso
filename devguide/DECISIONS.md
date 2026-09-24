@@ -239,3 +239,14 @@ uibcdf/sabueso#41, part 2. Free-text claims are deferred to uibcdf/sabueso#43.
   - outcomes are recomputed, and changes are reported;
   - retractions are kept and never applied.
 
+## Enrichment profiles (2026-09-24)
+uibcdf/sabueso#45.
+- A profile names a set of card-tool options, and its version is part of the name
+  (`structural_baseline@1`). A published profile never changes: a change is a new
+  version.
+- Explicit options override a profile. The profile, the options it gave and those
+  overridden are recorded in `quality.entity_resolution.decision.profile`, so a card
+  says how it was built.
+- Profiles hold Sabueso's own options only. A study's methodology, meaning why this
+  baseline, belongs to Praxis.
+

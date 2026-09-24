@@ -1,5 +1,7 @@
 """``sabueso.resolve``: one entry point, routed by the query's namespace (uibcdf/sabueso#38)."""
 
+import re
+
 import argdigest
 import pytest
 
@@ -119,3 +121,85 @@ def test_the_admitted_options_are_those_of_the_card_tools():
     members = set(domain.members())
     assert {"resolver", "structures", "chembl", "unichem", "ccd_client"} <= members
     assert not members & {"query", "identifier", "skip_digestion"}
+
+
+# --- enrichment profiles (#45) ---------------------------------------------------------
+
+
+def test_a_profile_expands_to_its_options_and_is_recorded(resolver):
+    from sabueso.tools.db.interpro import FixtureInterProClient
+    from sabueso.tools.db.pdbe_kb import FixturePDBeKBClient
+
+    card, resolution = sabueso.resolve(
+        "P52270",
+        resolver=resolver,
+        profile="structural_baseline@1",
+        chembl_client=FixtureChEMBLClient("temp_data"),
+        pdbe_kb_client=FixturePDBeKBClient("temp_data"),
+        interpro_client=FixtureInterProClient("temp_data"),
+    )
+    sources = {(e["source"], e.get("data")) for e in card.quality["enrichments"]}
+    assert {
+        ("ChEMBL", None),
+        ("InterPro", None),
+        ("PDBe-KB", "interface_residues"),
+        ("PDBe-KB", "ligand_sites"),
+    } <= sources
+    assert len([e for e in card.quality["enrichments"] if "structure" in e]) == 7
+    profile = resolution.decision["profile"]
+    assert profile["name"] == "structural_baseline@1"
+    assert profile["overridden"] == []
+    # The card itself says how it was built, also after storage.
+    import json
+
+    from sabueso.core.card import Card
+
+    again = Card.from_dict(json.loads(json.dumps(card.to_dict())))
+    assert again.quality["entity_resolution"]["decision"]["profile"] == profile
+
+
+def test_explicit_options_override_a_profile_and_are_recorded(resolver):
+    card, resolution = sabueso.resolve(
+        "P52270",
+        resolver=resolver,
+        profile="structural_baseline@1",
+        structures=["1SUX"],
+        chembl=None,
+        interfaces=False,
+        ligand_sites=False,
+        family_sites=False,
+    )
+    assert resolution.decision["profile"]["overridden"] == [
+        "chembl",
+        "family_sites",
+        "interfaces",
+        "ligand_sites",
+        "structures",
+    ]
+    assert [e["structure"] for e in card.quality["enrichments"]] == ["1SUX"]
+
+
+def test_a_profile_applies_the_options_of_the_routed_entity_type():
+    card, resolution = sabueso.resolve(
+        "pdb.ligand:BTS", profile="structural_baseline@1", **_molecule_clients()
+    )
+    assert card.id == BTS
+    assert resolution.decision["profile"]["options"] == {"unichem": True}
+
+
+@pytest.mark.parametrize("profile", ["structural_baseline", "nonexistent@1", 1])
+def test_an_unknown_profile_is_refused(resolver, profile):
+    with pytest.raises(ArgumentError):
+        sabueso.resolve("P52270", resolver=resolver, profile=profile)
+
+
+def test_published_profiles_are_versioned_and_use_real_options():
+    from sabueso._private.argdigest.domain.card_options import domain
+    from sabueso.resolver.loader import load_enrichment_profiles
+
+    options = set(domain.members())
+    for name, profile in load_enrichment_profiles().items():
+        assert re.fullmatch(r"[a-z_]+@[1-9][0-9]*", name)
+        assert profile["description"]
+        for kind in ("protein", "small_molecule"):
+            assert set(profile[kind]) <= options, (name, kind)

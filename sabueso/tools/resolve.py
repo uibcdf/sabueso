@@ -49,6 +49,7 @@ def _route(query: EntityQuery | str, entity_type: str | None) -> Tuple[str, str]
 def resolve(
     query: EntityQuery | str,
     entity_type: str | None = None,
+    profile: str | None = None,
     curations: Any = None,
     skip_digestion: bool = False,
     **options: Any,
@@ -58,11 +59,27 @@ def resolve(
     ``card`` is None when the query does not resolve to one entity; the resolution says
     why (``status`` and ``decision``). See the module docstring for the routing.
 
+    ``profile`` names a versioned set of options, e.g. ``"structural_baseline@1"``
+    (``sabueso/resolver/enrichment_profiles.json``). Options passed explicitly override
+    it, and ``resolution.decision["profile"]`` records the name, the options it gave and
+    those overridden.
+
     ``curations`` (a ``CurationStore`` or the path of one) applies the curated literature
     assertions recorded for the entity, with their outcomes recomputed against the
     fresh sources (``card.quality["curation_store"]``).
     """
     kind, basis = _route(query, entity_type)
+    applied = None
+    if profile is not None:
+        from sabueso.resolver.loader import load_enrichment_profiles
+
+        given = dict(load_enrichment_profiles()[profile].get(kind) or {})
+        applied = {
+            "name": profile,
+            "options": given,
+            "overridden": sorted(set(given) & set(options)),
+        }
+        options = {**given, **options}
     if kind == SMALL_MOLECULE:
         from sabueso.tools.card.small_molecule import resolve_molecule_card
 
@@ -87,6 +104,13 @@ def resolve(
         card, resolution = resolve_protein_card(query, **options)
         tool = "resolve_protein_card"
     resolution.decision["route"] = {"entity_type": kind, "tool": tool, "basis": basis}
+    if applied is not None:
+        resolution.decision["profile"] = applied
+    if card is not None:
+        # The card says how it was built, also once stored and read back.
+        card.quality.setdefault("entity_resolution", {})["decision"] = (
+            resolution.decision
+        )
     if curations is not None and card is not None:
         curations.apply(card)
     return card, resolution

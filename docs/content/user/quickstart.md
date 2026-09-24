@@ -52,8 +52,21 @@ card, resolution = sabueso.resolve(
 ```
 
 Options are passed to the tool that answers the query. For proteins these include
-`structures`, `chembl`, `ligand_sites` and `family_sites`; for molecules, `unichem`. An
-option that does not apply is refused.
+`structures`, `chembl`, `ligand_sites`, `interfaces` and `family_sites`; for molecules,
+`unichem`. An option that does not apply is refused.
+
+A **profile** names a versioned set of options, so a study states which baseline it builds:
+
+```python
+card, resolution = sabueso.resolve("P52270", profile="structural_baseline@1")
+print(resolution.decision["profile"])  # name, the options it gave, those you overrode
+```
+
+- The profiles are `identity@1` and `structural_baseline@1`, listed in
+  `sabueso/resolver/enrichment_profiles.json`.
+- A published profile never changes; a change becomes a new version.
+- Options you pass explicitly override the profile, and the override is recorded on the
+  card.
 
 ## Create a Protein Card (online)
 
