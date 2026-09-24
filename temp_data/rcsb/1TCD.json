@@ -61,5 +61,28 @@
    1.83
   ]
  },
- "rcsb_id": "1TCD"
+ "rcsb_id": "1TCD",
+ "assemblies": [
+  {
+   "rcsb_assembly_container_identifiers": {
+    "assembly_id": "1"
+   },
+   "pdbx_struct_assembly": {
+    "oligomeric_details": "dimeric",
+    "oligomeric_count": 2,
+    "details": "author_and_software_defined_assembly",
+    "method_details": "PISA"
+   },
+   "rcsb_struct_symmetry": [
+    {
+     "kind": "Global Symmetry",
+     "type": "Cyclic",
+     "oligomeric_state": "Homo 2-mer",
+     "stoichiometry": [
+      "A2"
+     ]
+    }
+   ]
+  }
+ ]
 }

@@ -155,6 +155,43 @@ def _ligand(entity: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def _assemblies(entry: Dict[str, Any]) -> List[Dict[str, Any]] | None:
+    """The entry's biological assemblies as RCSB states them, or None when the entry
+    carries no assembly data (never an empty list standing for "unknown").
+
+    ``defined_by`` says who defined the assembly (author, software or both) and
+    ``method`` the software (e.g. PISA). ``oligomeric_state`` and ``stoichiometry`` are
+    RCSB's symmetry annotation, where stoichiometry letters label polymer entities.
+    """
+    if "assemblies" not in entry or entry["assemblies"] is None:
+        return None
+    out = []
+    for a in entry["assemblies"]:
+        stated = a.get("pdbx_struct_assembly") or {}
+        symmetry = [
+            s
+            for s in a.get("rcsb_struct_symmetry") or []
+            if s.get("kind") == "Global Symmetry"
+        ]
+        out.append(
+            {
+                "id": (a.get("rcsb_assembly_container_identifiers") or {}).get(
+                    "assembly_id"
+                ),
+                "oligomeric_details": stated.get("oligomeric_details"),
+                "oligomeric_count": stated.get("oligomeric_count"),
+                "defined_by": stated.get("details"),
+                "method": stated.get("method_details"),
+                "oligomeric_state": symmetry[0].get("oligomeric_state")
+                if symmetry
+                else None,
+                "stoichiometry": symmetry[0].get("stoichiometry") if symmetry else None,
+                "symmetry": symmetry[0].get("type") if symmetry else None,
+            }
+        )
+    return sorted(out, key=lambda a: str(a["id"]).zfill(4))
+
+
 def map_structure_entities(
     entry: Dict[str, Any],
     retrieved_at: str,
@@ -170,6 +207,7 @@ def map_structure_entities(
     structure_ref = f"pdb:{pdb_id}"
     methods = [m.get("method") for m in entry.get("exptl") or []]
     resolutions = (entry.get("rcsb_entry_info") or {}).get("resolution_combined") or []
+    assemblies = _assemblies(entry)
     entities = _entities(entry)
     contacts = _ligand_contacts(entities)
     ligands = sorted(
@@ -205,6 +243,7 @@ def map_structure_entities(
                 for e in mine
             ],
             "nonpolymer_entities": ligands,
+            "assemblies": assemblies,
         }
         assertion = make_source_assertion(
             "relationships.has_structure", stated, "RCSB PDB", pdb_id, retrieved_at
@@ -218,8 +257,12 @@ def map_structure_entities(
             "chains": sorted({c for e in mine for c in e["chains"]}),
             "ranges": ranges,
             "polymer_entities": [e["polymer_entity"] for e in mine],
+            # Other proteins the same polymer entities also map to: a chimera or fusion
+            # (e.g. 3Q37, a TcTIM/TbTIM chimera). Empty for an ordinary entity.
+            "chimeric_with": sorted({a for e in mine for a in e["uniprot"]} - {acc}),
             "other_entities": others,
             "ligands": ligands,
+            "assemblies": assemblies,
         }
         if lengths.get(acc):
             qualifiers["coverage"] = coverage(ranges, lengths[acc])

@@ -44,6 +44,23 @@ def test_online_ligand_sites_with_instance_contacts():
 
 
 @pytest.mark.online
+def test_online_interfaces_and_assemblies():
+    card, _ = resolve_protein_card(
+        "P52270", structures=["1SUX", "3Q37"], interfaces=True
+    )
+    (outcome,) = [
+        e for e in card.quality["enrichments"] if e.get("data") == "interface_residues"
+    ]
+    assert outcome["status"] == "added"
+    view = card.oligomer()
+    partners = {i["partner_ref"]: i["class"] for i in view["interfaces"]}
+    assert partners["uniprot:P52270"] == "homomeric"
+    assert partners.get("uniprot:P04789") == "chimera"
+    states = {a["structure"]: a["assemblies"] for a in view["assemblies"]}
+    assert states["pdb:1SUX"][0]["oligomeric_state"] == "Homo 2-mer"
+
+
+@pytest.mark.online
 def test_online_family_sites_from_interpro():
     card, _ = resolve_protein_card("P60174", family_sites=True)
     (outcome,) = [e for e in card.quality["enrichments"] if e["source"] == "InterPro"]

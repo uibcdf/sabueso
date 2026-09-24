@@ -1,0 +1,2188 @@
+{
+ "sequence": "MASKPQPIAAANWKCNGSESLLVPLIETLNAATFDHDVQCVVAPTFLHIPMTKARLTNPKFQIAAQNAITRSGAFTGEVSLQILKDYGISWVVLGHSERRLYYGETNEIVAEKVAQACAAGFHVIVCVGETNEEREAGRTAAVVLTQLAAVAQKLSKEAWSRVVIAYEPVWAIGTGKVATPQQAQEVHELLRRWVRSKLGTDIAAQLRILYGGSVTAKNARTLYQMRDINGFLVGGASLKPEFVEIIEATK",
+ "length": 251,
+ "dataType": "INTERACTION INTERFACES",
+ "data": [
+  {
+   "name": "Triosephosphate isomerase, glycosomal",
+   "accession": "P52270",
+   "residues": [
+    {
+     "startIndex": 12,
+     "endIndex": 12,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 14,
+     "endIndex": 14,
+     "startCode": "LYS",
+     "endCode": "LYS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 15,
+     "endIndex": 15,
+     "startCode": "CYS",
+     "endCode": "CYS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 16,
+     "endIndex": 16,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 17,
+     "endIndex": 17,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 18,
+     "endIndex": 18,
+     "startCode": "SER",
+     "endCode": "SER",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 19,
+     "endIndex": 19,
+     "startCode": "GLU",
+     "endCode": "GLU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 20,
+     "endIndex": 20,
+     "startCode": "SER",
+     "endCode": "SER",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 45,
+     "endIndex": 45,
+     "startCode": "THR",
+     "endCode": "THR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 46,
+     "endIndex": 46,
+     "startCode": "PHE",
+     "endCode": "PHE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 47,
+     "endIndex": 47,
+     "startCode": "LEU",
+     "endCode": "LEU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 48,
+     "endIndex": 48,
+     "startCode": "HIS",
+     "endCode": "HIS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 49,
+     "endIndex": 49,
+     "startCode": "ILE",
+     "endCode": "ILE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 50,
+     "endIndex": 50,
+     "startCode": "PRO",
+     "endCode": "PRO",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 51,
+     "endIndex": 51,
+     "startCode": "MET",
+     "endCode": "MET",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 66,
+     "endIndex": 66,
+     "startCode": "GLN",
+     "endCode": "GLN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 67,
+     "endIndex": 67,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 69,
+     "endIndex": 69,
+     "startCode": "ILE",
+     "endCode": "ILE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 72,
+     "endIndex": 72,
+     "startCode": "SER",
+     "endCode": "SER",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 73,
+     "endIndex": 73,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 74,
+     "endIndex": 74,
+     "startCode": "ALA",
+     "endCode": "ALA",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 75,
+     "endIndex": 75,
+     "startCode": "PHE",
+     "endCode": "PHE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 76,
+     "endIndex": 76,
+     "startCode": "THR",
+     "endCode": "THR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 77,
+     "endIndex": 77,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 78,
+     "endIndex": 78,
+     "startCode": "GLU",
+     "endCode": "GLU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 79,
+     "endIndex": 79,
+     "startCode": "VAL",
+     "endCode": "VAL",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 80,
+     "endIndex": 80,
+     "startCode": "SER",
+     "endCode": "SER",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 83,
+     "endIndex": 83,
+     "startCode": "ILE",
+     "endCode": "ILE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 84,
+     "endIndex": 84,
+     "startCode": "LEU",
+     "endCode": "LEU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 86,
+     "endIndex": 86,
+     "startCode": "ASP",
+     "endCode": "ASP",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 87,
+     "endIndex": 87,
+     "startCode": "TYR",
+     "endCode": "TYR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 96,
+     "endIndex": 96,
+     "startCode": "HIS",
+     "endCode": "HIS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 98,
+     "endIndex": 98,
+     "startCode": "GLU",
+     "endCode": "GLU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 99,
+     "endIndex": 99,
+     "startCode": "ARG",
+     "endCode": "ARG",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "3q37",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 102,
+     "endIndex": 102,
+     "startCode": "TYR",
+     "endCode": "TYR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    },
+    {
+     "startIndex": 103,
+     "endIndex": 103,
+     "startCode": "TYR",
+     "endCode": "TYR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1ci1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4hhp",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1tcd",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1sux",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2oma",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "1sux",
+      "2v5b",
+      "1tcd",
+      "1ci1",
+      "2oma",
+      "4hhp"
+     ]
+    }
+   ],
+   "additionalData": {
+    "scaffoldId": null,
+    "coFactorId": null,
+    "reactionId": null,
+    "chemblId": null,
+    "drugBankId": null,
+    "numAtoms": null,
+    "targetUniProts": null,
+    "pdbEntries": null,
+    "type": "UNP",
+    "significance": null,
+    "isSolvent": false
+   }
+  },
+  {
+   "name": "Triosephosphate isomerase, glycosomal",
+   "accession": "P04789",
+   "residues": [
+    {
+     "startIndex": 12,
+     "endIndex": 12,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 14,
+     "endIndex": 14,
+     "startCode": "LYS",
+     "endCode": "LYS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 15,
+     "endIndex": 15,
+     "startCode": "CYS",
+     "endCode": "CYS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 16,
+     "endIndex": 16,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 17,
+     "endIndex": 17,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 18,
+     "endIndex": 18,
+     "startCode": "SER",
+     "endCode": "SER",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 45,
+     "endIndex": 45,
+     "startCode": "THR",
+     "endCode": "THR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 46,
+     "endIndex": 46,
+     "startCode": "PHE",
+     "endCode": "PHE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 47,
+     "endIndex": 47,
+     "startCode": "LEU",
+     "endCode": "LEU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 48,
+     "endIndex": 48,
+     "startCode": "HIS",
+     "endCode": "HIS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 49,
+     "endIndex": 49,
+     "startCode": "ILE",
+     "endCode": "ILE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 50,
+     "endIndex": 50,
+     "startCode": "PRO",
+     "endCode": "PRO",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 51,
+     "endIndex": 51,
+     "startCode": "MET",
+     "endCode": "MET",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 66,
+     "endIndex": 66,
+     "startCode": "GLN",
+     "endCode": "GLN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 67,
+     "endIndex": 67,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 69,
+     "endIndex": 69,
+     "startCode": "ILE",
+     "endCode": "ILE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 72,
+     "endIndex": 72,
+     "startCode": "SER",
+     "endCode": "SER",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 73,
+     "endIndex": 73,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 74,
+     "endIndex": 74,
+     "startCode": "ALA",
+     "endCode": "ALA",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 75,
+     "endIndex": 75,
+     "startCode": "PHE",
+     "endCode": "PHE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 76,
+     "endIndex": 76,
+     "startCode": "THR",
+     "endCode": "THR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 77,
+     "endIndex": 77,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 78,
+     "endIndex": 78,
+     "startCode": "GLU",
+     "endCode": "GLU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 79,
+     "endIndex": 79,
+     "startCode": "VAL",
+     "endCode": "VAL",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 80,
+     "endIndex": 80,
+     "startCode": "SER",
+     "endCode": "SER",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 83,
+     "endIndex": 83,
+     "startCode": "ILE",
+     "endCode": "ILE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 84,
+     "endIndex": 84,
+     "startCode": "LEU",
+     "endCode": "LEU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 86,
+     "endIndex": 86,
+     "startCode": "ASP",
+     "endCode": "ASP",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 87,
+     "endIndex": 87,
+     "startCode": "TYR",
+     "endCode": "TYR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 96,
+     "endIndex": 96,
+     "startCode": "HIS",
+     "endCode": "HIS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 98,
+     "endIndex": 98,
+     "startCode": "GLU",
+     "endCode": "GLU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    },
+    {
+     "startIndex": 99,
+     "endIndex": 99,
+     "startCode": "ARG",
+     "endCode": "ARG",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "3q37",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      }
+     ],
+     "allPDBEntries": [
+      "3q37"
+     ]
+    }
+   ],
+   "additionalData": {
+    "scaffoldId": null,
+    "coFactorId": null,
+    "reactionId": null,
+    "chemblId": null,
+    "drugBankId": null,
+    "numAtoms": null,
+    "targetUniProts": null,
+    "pdbEntries": null,
+    "type": "UNP",
+    "significance": null,
+    "isSolvent": false
+   }
+  }
+ ],
+ "processed_protein_start": null
+}

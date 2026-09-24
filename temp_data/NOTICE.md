@@ -21,9 +21,9 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | --- | --- | --- | --- | --- |
 | `P00938.json`, `P35372.json`, `P52270.json`, `P52789.json`, `P60174.json`, `P60175.json`, `Q6FHP9.json`, `V9HWK1.json`, `A0A140VJM9.json` | UniProtKB (UniProt Consortium) | release 2026_03 | 2026-09-23 | CC BY 4.0 |
 | `uniprot_search/*.json` | UniProtKB search responses | release 2026_03 | 2026-09-23 | CC BY 4.0 |
-| `rcsb/*.json` | RCSB PDB (wwPDB archive), GraphQL entry data | — | 2026-09-23 | CC0 1.0 |
+| `rcsb/*.json` | RCSB PDB (wwPDB archive), GraphQL entry data; assemblies added and 3Q37 retrieved 2026-09-24 | — | 2026-09-23 | CC0 1.0 |
 | `pdb_ccd/*.json` | wwPDB Chemical Component Dictionary, served by RCSB PDB | — | 2026-09-23 | CC0 1.0 |
-| `pdbe_kb/*.json` | PDBe-KB (EMBL-EBI), ligand binding sites | — | 2026-09-23 | CC BY 4.0 |
+| `pdbe_kb/*.json` | PDBe-KB (EMBL-EBI), ligand binding sites (2026-09-23) and interface residues (2026-09-24) | — | 2026-09-23 | CC BY 4.0 |
 | `interpro/*.json` | InterPro (EMBL-EBI), site residues from the CDD member database | InterPro 110.0 | 2026-09-23 | see note below |
 | `string/*.json` | STRING | 12.0 | 2026-09-23 | CC BY 4.0 |
 | `chembl/*.json`, `CHEMBL90555.json` | ChEMBL (EMBL-EBI) | ChEMBL_37 (released 2026-05-01) | 2026-09-23 | **CC BY-SA 3.0** |

@@ -25,6 +25,11 @@ STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
   rcsb_id
   exptl { method }
   rcsb_entry_info { resolution_combined polymer_entity_count_protein }
+  assemblies {
+    rcsb_assembly_container_identifiers { assembly_id }
+    pdbx_struct_assembly { oligomeric_details oligomeric_count details method_details }
+    rcsb_struct_symmetry { kind type oligomeric_state stoichiometry }
+  }
   polymer_entities {
     rcsb_id
     rcsb_polymer_entity { pdbx_description }

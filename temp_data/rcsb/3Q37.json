@@ -1,0 +1,152 @@
+{
+ "rcsb_id": "3Q37",
+ "exptl": [
+  {
+   "method": "X-RAY DIFFRACTION"
+  }
+ ],
+ "rcsb_entry_info": {
+  "resolution_combined": [
+   1.65
+  ],
+  "polymer_entity_count_protein": 1
+ },
+ "assemblies": [
+  {
+   "rcsb_assembly_container_identifiers": {
+    "assembly_id": "1"
+   },
+   "pdbx_struct_assembly": {
+    "oligomeric_details": "dimeric",
+    "oligomeric_count": 2,
+    "details": "author_and_software_defined_assembly",
+    "method_details": "PISA"
+   },
+   "rcsb_struct_symmetry": [
+    {
+     "kind": "Global Symmetry",
+     "type": "Cyclic",
+     "oligomeric_state": "Homo 2-mer",
+     "stoichiometry": [
+      "A2"
+     ]
+    }
+   ]
+  },
+  {
+   "rcsb_assembly_container_identifiers": {
+    "assembly_id": "2"
+   },
+   "pdbx_struct_assembly": {
+    "oligomeric_details": "dimeric",
+    "oligomeric_count": 2,
+    "details": "author_and_software_defined_assembly",
+    "method_details": "PISA"
+   },
+   "rcsb_struct_symmetry": [
+    {
+     "kind": "Global Symmetry",
+     "type": "Cyclic",
+     "oligomeric_state": "Homo 2-mer",
+     "stoichiometry": [
+      "A2"
+     ]
+    }
+   ]
+  }
+ ],
+ "polymer_entities": [
+  {
+   "rcsb_id": "3Q37_1",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "TIM from Trypanosoma cruzi/ TIM from Trypanosoma brucei brucei chimera protein"
+   },
+   "entity_poly": {
+    "rcsb_sample_sequence_length": 251
+   },
+   "rcsb_polymer_entity_container_identifiers": {
+    "entity_id": "1",
+    "auth_asym_ids": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "uniprot_ids": [
+     "P04789",
+     "P52270"
+    ]
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "reference_database_name": "UniProt",
+     "reference_database_accession": "P52270",
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 3,
+       "ref_beg_seq_id": 3,
+       "length": 16
+      },
+      {
+       "entity_beg_seq_id": 44,
+       "ref_beg_seq_id": 44,
+       "length": 57
+      },
+      {
+       "entity_beg_seq_id": 123,
+       "ref_beg_seq_id": 123,
+       "length": 129
+      }
+     ]
+    },
+    {
+     "reference_database_name": "UniProt",
+     "reference_database_accession": "P04789",
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 19,
+       "ref_beg_seq_id": 18,
+       "length": 25
+      },
+      {
+       "entity_beg_seq_id": 101,
+       "ref_beg_seq_id": 100,
+       "length": 22
+      }
+     ]
+    }
+   ],
+   "polymer_entity_instances": [
+    {
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "D",
+      "auth_asym_id": "D"
+     },
+     "rcsb_ligand_neighbors": null
+    },
+    {
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "C",
+      "auth_asym_id": "C"
+     },
+     "rcsb_ligand_neighbors": null
+    },
+    {
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "B",
+      "auth_asym_id": "B"
+     },
+     "rcsb_ligand_neighbors": null
+    },
+    {
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "A",
+      "auth_asym_id": "A"
+     },
+     "rcsb_ligand_neighbors": null
+    }
+   ]
+  }
+ ],
+ "nonpolymer_entities": null
+}

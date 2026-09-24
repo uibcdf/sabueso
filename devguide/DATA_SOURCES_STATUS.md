@@ -115,6 +115,19 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - An accession without data answers 404, mapped to not found.
   - Licence: CC BY 4.0, academic and commercial use; cite the PDBe-KB consortium paper.
 
+### PDBe-KB — interface residues
+- **Status**: implemented as an enricher of `resolve_protein_card(..., interfaces=True)` (uibcdf/sabueso#40)
+- **Access**: PDBe graph API `uniprot/interface_residues/<accession>` (same clients as ligand sites)
+- **Quality**: green for the listed coverage. Verified on TcTIM (2 partners) and HsTIM (7 partners).
+- **Coverage**: `has_interface_with` relationships, one per partner chain: the interface residues of this protein in UniProt numbering, and the entries and chains where each is observed
+- **Notes**:
+  - A "partner" is any chain PDBe-KB finds at an interface, so it is not necessarily a biological partner:
+    - TcTIM lists TbTIM (P04789), only because 3Q37 is a TcTIM/TbTIM chimera whose entity maps to both;
+    - HsTIM lists HLA-DR and T-cell receptor chains, from complexes with a TIM peptide.
+    `Card.oligomer()` classifies each partner, per structure, and says so.
+  - Partners without a UniProt entry (`type` other than `UNP`) keep PDBe-KB's label.
+  - Licence: CC BY 4.0, as for ligand sites.
+
 ### InterPro — site residues
 - **Status**: implemented as an enricher of `resolve_protein_card` (uibcdf/sabueso#28)
 - **Access**: InterPro API `protein/uniprot/<accession>/?residues` (`OnlineInterProClient`), saved responses (`FixtureInterProClient`, `temp_data/interpro/`)

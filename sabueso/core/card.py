@@ -81,6 +81,12 @@ class Card:
             self, include_indirect=include_indirect, thresholds=thresholds
         )
 
+    def oligomer(self) -> Dict[str, Any]:
+        """What sources state about this protein's quaternary structure and interfaces."""
+        from .oligomer import oligomer_view
+
+        return oligomer_view(self)
+
     def ligand_sites(self) -> Dict[str, Any]:
         """Residues each ligand contacts, next to the protein's annotated sites."""
         from .ligand_sites import ligand_sites_view

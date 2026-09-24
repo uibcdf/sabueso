@@ -173,5 +173,31 @@
    2.4
   ]
  },
- "rcsb_id": "1KLG"
+ "rcsb_id": "1KLG",
+ "assemblies": [
+  {
+   "rcsb_assembly_container_identifiers": {
+    "assembly_id": "1"
+   },
+   "pdbx_struct_assembly": {
+    "oligomeric_details": "tetrameric",
+    "oligomeric_count": 4,
+    "details": "author_defined_assembly",
+    "method_details": null
+   },
+   "rcsb_struct_symmetry": [
+    {
+     "kind": "Global Symmetry",
+     "type": "Asymmetric",
+     "oligomeric_state": "Hetero 4-mer",
+     "stoichiometry": [
+      "A1",
+      "B1",
+      "C1",
+      "D1"
+     ]
+    }
+   ]
+  }
+ ]
 }

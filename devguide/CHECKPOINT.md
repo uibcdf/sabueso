@@ -123,6 +123,8 @@ This file records the current repository baseline so new developers can resume e
   - Quantities: stored as `{value, unit}` at negotiated paths, sealed with PyUnitWizard and verified on load; returned as quantities (`Card.quantity`, `Card.quantity_columns`, views); pChEMBL and unit-scale plausibility flags (`devguide/archive/quantities.md`, #32, closed 2026-09-24; ranges and uncertainty in #37).
   - Argument contracts through ArgDigest on every public tool, Card and Deck view, the resolver and SQLite storage; bioactivity units through PyUnitWizard with explicit target units; DepDigest not applicable (`devguide/ARGUMENT_CONTRACTS.md`, #31, closed 2026-09-24).
   - Ligand decks: `ligand_deck(protein_card)`, `Card.ligands(deck)`, `Card.compare_ligands(...)` and `Deck.intersect` / `Deck.difference` (#23, closed).
+  - Oligomer and interfaces: RCSB assemblies and `chimeric_with` on `has_structure`, PDBe-KB `has_interface_with`, and `Card.oligomer()` with UniProt SUBUNIT and CDD dimer-interface agreement (#40).
+  - Entry point `sabueso.resolve()` (#38); UniProt DISEASE comments as `annotations.disease` (#39, schema 0.3.1).
   - Ligand sites: PDBe-KB `has_ligand_site` relationships, RCSB per-instance ligand contacts, and `Card.ligand_sites()` against the UniProt annotated sites (#28).
   - GO, InterPro, CATH, SCOPe, TED, PhosphoSitePlus and BioGRID card tools were removed on
     2026-09-23 (#21). GO, classification and curated-interaction knowledge now comes

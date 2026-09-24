@@ -36,3 +36,40 @@ print(view["classification"])  # rule annotated_site_overlap@2
 
 Clients: `sabueso.tools.db.pdbe_kb.OnlinePDBeKBClient` and `FixturePDBeKBClient`.
 PDBe-KB data is CC BY 4.0; cite the PDBe-KB consortium paper.
+
+# Oligomer and interfaces
+
+`card.oligomer()` puts together what sources state about a protein's quaternary
+structure:
+
+```python
+card, _ = sabueso.resolve_protein_card(
+    "P52270", structures="all", interfaces=True, family_sites=True
+)
+view = card.oligomer()
+
+print(view["subunit"])  # UniProt SUBUNIT text, with its evidence
+for entry in view["assemblies"]:  # RCSB biological assemblies, per structure
+    print(entry["structure"], [a["oligomeric_state"] for a in entry["assemblies"]])
+print(view["without_assembly_data"])  # structures the card has not fetched from RCSB
+
+for interface in view["interfaces"]:  # PDBe-KB interface residues, per partner
+    print(interface["partner_ref"], interface["class"], len(interface["positions"]))
+    print(interface["basis"])  # why, structure by structure
+
+for row in view["agreement"]:  # family dimer interface vs observed interface
+    print(row["family_site"], row["both"], row["family_only"], row["observed_only"])
+```
+
+- `interfaces=True` adds `has_interface_with` relationships from PDBe-KB.
+- Each partner's `class` is derived by Sabueso (`interface_partner_class@1`):
+  - `homomeric`: another copy of the protein;
+  - `heteromeric`: seen in a structure where the protein is neither a fragment nor a
+    chimera with that partner;
+  - `chimera`: the entity maps to both proteins, so the "partner" is the protein itself.
+    For example, 3Q37 is a TcTIM/TbTIM chimera;
+  - `fragment_complex`: the protein appears only as a peptide, for example a TIM peptide
+    presented by HLA-DR;
+  - `undetermined`: the structures are not on the card. Pass `structures="all"` to fetch
+    them.
+- Interfaces are not computed from coordinates; that is modelling (uibcdf/sabueso#30).

@@ -157,6 +157,17 @@ A Relationship is first-class, traceable knowledge:
     - Overlap with annotated sites (UniProt and InterPro family sites) is derived by
       `Card.ligand_sites()` (`annotated_site_overlap@2`), and only there. Each overlap names
       the annotation, its source and the matched positions.
+  - interfaces (added in #40):
+    - `has_interface_with` (protein → `uniprot:<acc>`, or `pdbe_kb.partner:<label>` for a
+      partner without a UniProt entry), one relationship per partner, from PDBe-KB.
+      PDBe-KB derives the residues from the structures (PISA). Qualifiers:
+      `partner_name`, `partner_type` (PDBe-KB's `UNP`, `AB`...), `numbering`,
+      `residues` (as for `has_ligand_site`), and `structures`, the entries where the
+      interface is observed.
+    - What kind of partner it is (homomeric, heteromeric, a chimera of the protein with
+      itself, a peptide in a complex) is derived by `Card.oligomer()`
+      (`interface_partner_class@1`), and only there. So is the agreement with family
+      interface sites (`interface_site_agreement@1`).
 
   Any other predicate is rejected, and the vocabulary is extended deliberately. If
   components outside Sabueso (Nextia, MOLI Agent Context Assembly) come to depend on it,
@@ -196,7 +207,16 @@ A Relationship is first-class, traceable knowledge:
   qualifiers use Sabueso's vocabulary.
 - **`has_structure` qualifiers:** `method`, `resolution` (`{value, unit}`, #32), `chains`, `ranges`
   (UniProt numbering, inclusive) and `coverage` (fraction of the canonical sequence).
-  From RCSB: `polymer_entities`, `other_entities` (complexes) and `ligands` (`comp_id`,
+  From RCSB:
+  - `polymer_entities`;
+  - `chimeric_with`: other proteins the same entities map to, as in a chimera or fusion
+    (#40);
+  - `other_entities` (complexes);
+  - `assemblies` (#40): per biological assembly, `id`, `oligomeric_details`,
+    `oligomeric_count`, `defined_by` (author, software or both), `method` (e.g. PISA),
+    `oligomeric_state`, `stoichiometry` and `symmetry` as RCSB states them, or `null`
+    when the entry was not fetched with assembly data;
+  - `ligands` (`comp_id`,
   `description`, `subject_of_investigation`, `subject_of_investigation_provenance`, and
   `instances`: per ligand instance, the residues RCSB states as its neighbours, with
   chain, structure `seq_id`, UniProt `position` mapped through the entity alignment, and

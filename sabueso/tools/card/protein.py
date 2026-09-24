@@ -33,7 +33,7 @@ from sabueso.core.merge import merge_mapping_results
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.mappings.chembl import map_bioactivities
 from sabueso.mappings.interpro import map_family_sites
-from sabueso.mappings.pdbe_kb import map_ligand_sites
+from sabueso.mappings.pdbe_kb import map_interfaces, map_ligand_sites
 from sabueso.mappings.rcsb_structures import map_structure_entities
 from sabueso.mappings.stringdb import map_string_partners
 from sabueso.mappings.uniprot import map_protein
@@ -57,6 +57,7 @@ def resolve_protein_card(
     chembl: Dict[str, Any] | None = None,
     chembl_client: Any | None = None,
     ligand_sites: bool = False,
+    interfaces: bool = False,
     pdbe_kb_client: Any | None = None,
     family_sites: bool = False,
     interpro_client: Any | None = None,
@@ -70,7 +71,9 @@ def resolve_protein_card(
     entry's organism. ``chembl`` (e.g. ``{}`` or ``{"limit": 1000}``) adds the ChEMBL
     bioactivities of the targets the entry cross-references (``Card.bioactivities()``).
     ``ligand_sites`` adds the residues each ligand contacts in the protein's structures,
-    from PDBe-KB (``Card.ligand_sites()``). ``family_sites`` adds the site residues that
+    from PDBe-KB (``Card.ligand_sites()``). ``interfaces`` adds the residues PDBe-KB
+    reports at the protein's interfaces with other chains, per partner
+    (``Card.oligomer()``). ``family_sites`` adds the site residues that
     InterPro member databases place on the protein's sequence
     (``features_positional.family_site``).
     Every enrichment outcome (added, not_found, error) is recorded in
@@ -205,6 +208,28 @@ def resolve_protein_card(
             enrichments.append({**record, "status": "error", "detail": str(exc)})
         else:
             mapped = map_ligand_sites(response, response.get("retrieved_at", ""))
+            mappings.append(mapped)
+            enrichments.append(
+                {**record, "status": "added", "count": len(mapped["relationships"])}
+            )
+
+    if interfaces:
+        from sabueso.tools.db.pdbe_kb import OnlinePDBeKBClient
+
+        client = pdbe_kb_client or OnlinePDBeKBClient()
+        record = {
+            "source": "PDBe-KB",
+            "data": "interface_residues",
+            "identifier": anchor,
+        }
+        try:
+            response = client.interface_residues(anchor)
+        except RecordNotFoundError:
+            enrichments.append({**record, "status": "not_found"})
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        else:
+            mapped = map_interfaces(response, response.get("retrieved_at", ""))
             mappings.append(mapped)
             enrichments.append(
                 {**record, "status": "added", "count": len(mapped["relationships"])}

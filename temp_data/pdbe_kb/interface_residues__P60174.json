@@ -1,0 +1,7077 @@
+{
+ "sequence": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+ "length": 249,
+ "dataType": "INTERACTION INTERFACES",
+ "data": [
+  {
+   "name": "Triosephosphate isomerase",
+   "accession": "P60174",
+   "residues": [
+    {
+     "startIndex": 12,
+     "endIndex": 12,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 14,
+     "endIndex": 14,
+     "startCode": "LYS",
+     "endCode": "LYS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 15,
+     "endIndex": 15,
+     "startCode": "MET",
+     "endCode": "MET",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 16,
+     "endIndex": 16,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 17,
+     "endIndex": 17,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 18,
+     "endIndex": 18,
+     "startCode": "ARG",
+     "endCode": "ARG",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 19,
+     "endIndex": 19,
+     "startCode": "LYS",
+     "endCode": "LYS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 45,
+     "endIndex": 45,
+     "startCode": "PRO",
+     "endCode": "PRO",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 46,
+     "endIndex": 46,
+     "startCode": "THR",
+     "endCode": "THR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 47,
+     "endIndex": 47,
+     "startCode": "ALA",
+     "endCode": "ALA",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 48,
+     "endIndex": 48,
+     "startCode": "TYR",
+     "endCode": "TYR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 50,
+     "endIndex": 50,
+     "startCode": "ASP",
+     "endCode": "ASP",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 51,
+     "endIndex": 51,
+     "startCode": "PHE",
+     "endCode": "PHE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 54,
+     "endIndex": 54,
+     "startCode": "GLN",
+     "endCode": "GLN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 65,
+     "endIndex": 65,
+     "startCode": "GLN",
+     "endCode": "GLN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 68,
+     "endIndex": 68,
+     "startCode": "TYR",
+     "endCode": "TYR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 70,
+     "endIndex": 70,
+     "startCode": "VAL",
+     "endCode": "VAL",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 71,
+     "endIndex": 71,
+     "startCode": "THR",
+     "endCode": "THR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 72,
+     "endIndex": 72,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 73,
+     "endIndex": 73,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 74,
+     "endIndex": 74,
+     "startCode": "ALA",
+     "endCode": "ALA",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 75,
+     "endIndex": 75,
+     "startCode": "PHE",
+     "endCode": "PHE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 76,
+     "endIndex": 76,
+     "startCode": "THR",
+     "endCode": "THR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 77,
+     "endIndex": 77,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 78,
+     "endIndex": 78,
+     "startCode": "GLU",
+     "endCode": "GLU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 79,
+     "endIndex": 79,
+     "startCode": "ILE",
+     "endCode": "ILE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 80,
+     "endIndex": 80,
+     "startCode": "SER",
+     "endCode": "SER",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 82,
+     "endIndex": 82,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 83,
+     "endIndex": 83,
+     "startCode": "MET",
+     "endCode": "MET",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 86,
+     "endIndex": 86,
+     "startCode": "ASP",
+     "endCode": "ASP",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 87,
+     "endIndex": 87,
+     "startCode": "CYS",
+     "endCode": "CYS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 96,
+     "endIndex": 96,
+     "startCode": "HIS",
+     "endCode": "HIS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 98,
+     "endIndex": 98,
+     "startCode": "GLU",
+     "endCode": "GLU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 99,
+     "endIndex": 99,
+     "startCode": "ARG",
+     "endCode": "ARG",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 102,
+     "endIndex": 102,
+     "startCode": "VAL",
+     "endCode": "VAL",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,H,G,B,A,D"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    },
+    {
+     "startIndex": 103,
+     "endIndex": 103,
+     "startCode": "PHE",
+     "endCode": "PHE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "6nlh",
+       "entityId": 1,
+       "chainIds": "F,C,E,G,H,B,A,D"
+      },
+      {
+       "pdbId": "7uxb",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7sx1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6upf",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7uxv",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unk",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2vom",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "6d43",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "6c2g",
+       "entityId": 1,
+       "chainIds": "C,B,A,D"
+      },
+      {
+       "pdbId": "4pod",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "2jk2",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9ffc",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1hti",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4br1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7t0q",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4zvj",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up1",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up5",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "7rde",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4poc",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "4unl",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "1wyi",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "6up8",
+       "entityId": 1,
+       "chainIds": "B,A"
+      },
+      {
+       "pdbId": "9f69",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "6up8",
+      "6d43",
+      "1wyi",
+      "4unl",
+      "6upf",
+      "4pod",
+      "6up5",
+      "6nlh",
+      "6up1",
+      "9f69",
+      "7uxb",
+      "7rde",
+      "4br1",
+      "9ffc",
+      "2vom",
+      "6c2g",
+      "4poc",
+      "7t0q",
+      "7sx1",
+      "4unk",
+      "2jk2",
+      "1hti",
+      "7uxv",
+      "4zvj"
+     ]
+    }
+   ],
+   "additionalData": {
+    "scaffoldId": null,
+    "coFactorId": null,
+    "reactionId": null,
+    "chemblId": null,
+    "drugBankId": null,
+    "numAtoms": null,
+    "targetUniProts": null,
+    "pdbEntries": null,
+    "type": "UNP",
+    "significance": null,
+    "isSolvent": false
+   }
+  },
+  {
+   "name": "HLA class II histocompatibility antigen, DR alpha chain",
+   "accession": "P01903",
+   "residues": [
+    {
+     "startIndex": 23,
+     "endIndex": 23,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 1,
+       "chainIds": "F,A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 24,
+     "endIndex": 24,
+     "startCode": "GLU",
+     "endCode": "GLU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 1,
+       "chainIds": "F,A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 25,
+     "endIndex": 25,
+     "startCode": "LEU",
+     "endCode": "LEU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 1,
+       "chainIds": "F,A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 26,
+     "endIndex": 26,
+     "startCode": "ILE",
+     "endCode": "ILE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 1,
+       "chainIds": "F,A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 27,
+     "endIndex": 27,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 1,
+       "chainIds": "F,A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 28,
+     "endIndex": 28,
+     "startCode": "THR",
+     "endCode": "THR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 1,
+       "chainIds": "F,A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 29,
+     "endIndex": 29,
+     "startCode": "LEU",
+     "endCode": "LEU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 1,
+       "chainIds": "F,A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 30,
+     "endIndex": 30,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 1,
+       "chainIds": "F,A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 31,
+     "endIndex": 31,
+     "startCode": "ALA",
+     "endCode": "ALA",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 1,
+       "chainIds": "F,A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 32,
+     "endIndex": 32,
+     "startCode": "ALA",
+     "endCode": "ALA",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 1,
+       "chainIds": "F,A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 33,
+     "endIndex": 33,
+     "startCode": "LYS",
+     "endCode": "LYS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 1,
+       "chainIds": "F,A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 34,
+     "endIndex": 34,
+     "startCode": "VAL",
+     "endCode": "VAL",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 1,
+       "chainIds": "F,A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 35,
+     "endIndex": 35,
+     "startCode": "PRO",
+     "endCode": "PRO",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 37,
+     "endIndex": 37,
+     "startCode": "ASP",
+     "endCode": "ASP",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klu",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "1klg",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 1,
+       "chainIds": "A"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 1,
+       "chainIds": "F,K,P,A"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    }
+   ],
+   "additionalData": {
+    "scaffoldId": null,
+    "coFactorId": null,
+    "reactionId": null,
+    "chemblId": null,
+    "drugBankId": null,
+    "numAtoms": null,
+    "targetUniProts": null,
+    "pdbEntries": null,
+    "type": "UNP",
+    "significance": null,
+    "isSolvent": false
+   }
+  },
+  {
+   "name": "HLA class II histocompatibility antigen, DRB1 beta chain",
+   "accession": "P01911",
+   "residues": [
+    {
+     "startIndex": 24,
+     "endIndex": 24,
+     "startCode": "GLU",
+     "endCode": "GLU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klg",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "1klu",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 2,
+       "chainIds": "G,Q,B,L"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 25,
+     "endIndex": 25,
+     "startCode": "LEU",
+     "endCode": "LEU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klg",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "1klu",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 2,
+       "chainIds": "G,Q,B,L"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 2,
+       "chainIds": "G,B"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 26,
+     "endIndex": 26,
+     "startCode": "ILE",
+     "endCode": "ILE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klg",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "1klu",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 2,
+       "chainIds": "G,Q,B,L"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 2,
+       "chainIds": "G,B"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 27,
+     "endIndex": 27,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klg",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "1klu",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 2,
+       "chainIds": "G,Q,B,L"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 2,
+       "chainIds": "G,B"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 28,
+     "endIndex": 28,
+     "startCode": "THR",
+     "endCode": "THR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klg",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 2,
+       "chainIds": "G,Q,B,L"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 2,
+       "chainIds": "G,B"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 29,
+     "endIndex": 29,
+     "startCode": "LEU",
+     "endCode": "LEU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klg",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "1klu",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 2,
+       "chainIds": "G,Q,B,L"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 2,
+       "chainIds": "G,B"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 30,
+     "endIndex": 30,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klg",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "1klu",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 2,
+       "chainIds": "G,Q,B,L"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 2,
+       "chainIds": "G,B"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 31,
+     "endIndex": 31,
+     "startCode": "ALA",
+     "endCode": "ALA",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klg",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "1klu",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 2,
+       "chainIds": "G,Q,B,L"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 2,
+       "chainIds": "G,B"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 32,
+     "endIndex": 32,
+     "startCode": "ALA",
+     "endCode": "ALA",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klg",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "1klu",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 2,
+       "chainIds": "G,Q,B,L"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 2,
+       "chainIds": "G,B"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 33,
+     "endIndex": 33,
+     "startCode": "LYS",
+     "endCode": "LYS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klg",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "1klu",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 2,
+       "chainIds": "G,Q,B,L"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 2,
+       "chainIds": "G,B"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 34,
+     "endIndex": 34,
+     "startCode": "VAL",
+     "endCode": "VAL",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klg",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "1klu",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 2,
+       "chainIds": "G,Q,B,L"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 2,
+       "chainIds": "G,B"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    },
+    {
+     "startIndex": 35,
+     "endIndex": 35,
+     "startCode": "PRO",
+     "endCode": "PRO",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "1klg",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "1klu",
+       "entityId": 2,
+       "chainIds": "B"
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 2,
+       "chainIds": "G,Q,B,L"
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 2,
+       "chainIds": "G,B"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "1klu",
+      "2iam",
+      "1klg",
+      "4e41"
+     ]
+    }
+   ],
+   "additionalData": {
+    "scaffoldId": null,
+    "coFactorId": null,
+    "reactionId": null,
+    "chemblId": null,
+    "drugBankId": null,
+    "numAtoms": null,
+    "targetUniProts": null,
+    "pdbEntries": null,
+    "type": "UNP",
+    "significance": null,
+    "isSolvent": false
+   }
+  },
+  {
+   "name": "CD4+ T cell receptor E8 alpha chain",
+   "accession": "TR-alpha light chain",
+   "residues": [
+    {
+     "startIndex": 24,
+     "endIndex": 24,
+     "startCode": "GLU",
+     "endCode": "GLU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2iam",
+       "entityId": 4,
+       "chainIds": null
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 4,
+       "chainIds": null
+      }
+     ],
+     "allPDBEntries": []
+    },
+    {
+     "startIndex": 25,
+     "endIndex": 25,
+     "startCode": "LEU",
+     "endCode": "LEU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2iam",
+       "entityId": 4,
+       "chainIds": null
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 4,
+       "chainIds": null
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 4,
+       "chainIds": null
+      }
+     ],
+     "allPDBEntries": []
+    },
+    {
+     "startIndex": 26,
+     "endIndex": 26,
+     "startCode": "ILE",
+     "endCode": "ILE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2iam",
+       "entityId": 4,
+       "chainIds": null
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 4,
+       "chainIds": null
+      }
+     ],
+     "allPDBEntries": []
+    },
+    {
+     "startIndex": 27,
+     "endIndex": 27,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2ian",
+       "entityId": 4,
+       "chainIds": null
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 4,
+       "chainIds": null
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 4,
+       "chainIds": null
+      }
+     ],
+     "allPDBEntries": []
+    },
+    {
+     "startIndex": 28,
+     "endIndex": 28,
+     "startCode": "THR",
+     "endCode": "THR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2iam",
+       "entityId": 4,
+       "chainIds": null
+      },
+      {
+       "pdbId": "4e41",
+       "entityId": 4,
+       "chainIds": null
+      }
+     ],
+     "allPDBEntries": []
+    },
+    {
+     "startIndex": 30,
+     "endIndex": 30,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "4e41",
+       "entityId": 4,
+       "chainIds": null
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 4,
+       "chainIds": null
+      }
+     ],
+     "allPDBEntries": []
+    }
+   ],
+   "additionalData": {
+    "scaffoldId": null,
+    "coFactorId": null,
+    "reactionId": null,
+    "chemblId": null,
+    "drugBankId": null,
+    "numAtoms": null,
+    "targetUniProts": null,
+    "pdbEntries": null,
+    "type": "AB",
+    "significance": null,
+    "isSolvent": false
+   }
+  },
+  {
+   "name": "T cell receptor alpha chain constant",
+   "accession": "P01848",
+   "residues": [
+    {
+     "startIndex": 24,
+     "endIndex": 24,
+     "startCode": "GLU",
+     "endCode": "GLU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2ian",
+       "entityId": 4,
+       "chainIds": "I,N,S,D"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 4,
+       "chainIds": "C"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "2iam"
+     ]
+    },
+    {
+     "startIndex": 25,
+     "endIndex": 25,
+     "startCode": "LEU",
+     "endCode": "LEU",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2ian",
+       "entityId": 4,
+       "chainIds": "I,N,S,D"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 4,
+       "chainIds": "C"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "2iam"
+     ]
+    },
+    {
+     "startIndex": 26,
+     "endIndex": 26,
+     "startCode": "ILE",
+     "endCode": "ILE",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2iam",
+       "entityId": 4,
+       "chainIds": "C"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "2iam"
+     ]
+    },
+    {
+     "startIndex": 27,
+     "endIndex": 27,
+     "startCode": "GLY",
+     "endCode": "GLY",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2ian",
+       "entityId": 4,
+       "chainIds": "I,N,S,D"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 4,
+       "chainIds": "C"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "2iam"
+     ]
+    },
+    {
+     "startIndex": 28,
+     "endIndex": 28,
+     "startCode": "THR",
+     "endCode": "THR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2iam",
+       "entityId": 4,
+       "chainIds": "C"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "2iam"
+     ]
+    },
+    {
+     "startIndex": 30,
+     "endIndex": 30,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2ian",
+       "entityId": 4,
+       "chainIds": "I,N,S,D"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "2iam"
+     ]
+    }
+   ],
+   "additionalData": {
+    "scaffoldId": null,
+    "coFactorId": null,
+    "reactionId": null,
+    "chemblId": null,
+    "drugBankId": null,
+    "numAtoms": null,
+    "targetUniProts": null,
+    "pdbEntries": null,
+    "type": "UNP",
+    "significance": null,
+    "isSolvent": false
+   }
+  },
+  {
+   "name": "CD4+ T cell receptor E8 beta chain",
+   "accession": "TR-beta light chain",
+   "residues": [
+    {
+     "startIndex": 28,
+     "endIndex": 28,
+     "startCode": "THR",
+     "endCode": "THR",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "4e41",
+       "entityId": 5,
+       "chainIds": null
+      }
+     ],
+     "allPDBEntries": []
+    },
+    {
+     "startIndex": 30,
+     "endIndex": 30,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "4e41",
+       "entityId": 5,
+       "chainIds": null
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 5,
+       "chainIds": null
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 5,
+       "chainIds": null
+      }
+     ],
+     "allPDBEntries": []
+    },
+    {
+     "startIndex": 31,
+     "endIndex": 31,
+     "startCode": "ALA",
+     "endCode": "ALA",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2iam",
+       "entityId": 5,
+       "chainIds": null
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 5,
+       "chainIds": null
+      }
+     ],
+     "allPDBEntries": []
+    },
+    {
+     "startIndex": 32,
+     "endIndex": 32,
+     "startCode": "ALA",
+     "endCode": "ALA",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2ian",
+       "entityId": 5,
+       "chainIds": null
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 5,
+       "chainIds": null
+      }
+     ],
+     "allPDBEntries": []
+    },
+    {
+     "startIndex": 33,
+     "endIndex": 33,
+     "startCode": "LYS",
+     "endCode": "LYS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "4e41",
+       "entityId": 5,
+       "chainIds": null
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 5,
+       "chainIds": null
+      },
+      {
+       "pdbId": "2ian",
+       "entityId": 5,
+       "chainIds": null
+      }
+     ],
+     "allPDBEntries": []
+    }
+   ],
+   "additionalData": {
+    "scaffoldId": null,
+    "coFactorId": null,
+    "reactionId": null,
+    "chemblId": null,
+    "drugBankId": null,
+    "numAtoms": null,
+    "targetUniProts": null,
+    "pdbEntries": null,
+    "type": "AB",
+    "significance": null,
+    "isSolvent": false
+   }
+  },
+  {
+   "name": "T cell receptor beta constant 1",
+   "accession": "P01850",
+   "residues": [
+    {
+     "startIndex": 30,
+     "endIndex": 30,
+     "startCode": "ASN",
+     "endCode": "ASN",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2ian",
+       "entityId": 5,
+       "chainIds": "J,T,E,O"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 5,
+       "chainIds": "D"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "2iam"
+     ]
+    },
+    {
+     "startIndex": 31,
+     "endIndex": 31,
+     "startCode": "ALA",
+     "endCode": "ALA",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2ian",
+       "entityId": 5,
+       "chainIds": "J,T,E,O"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 5,
+       "chainIds": "D"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "2iam"
+     ]
+    },
+    {
+     "startIndex": 32,
+     "endIndex": 32,
+     "startCode": "ALA",
+     "endCode": "ALA",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2ian",
+       "entityId": 5,
+       "chainIds": "J,T,E,O"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 5,
+       "chainIds": "D"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "2iam"
+     ]
+    },
+    {
+     "startIndex": 33,
+     "endIndex": 33,
+     "startCode": "LYS",
+     "endCode": "LYS",
+     "indexType": "UNIPROT",
+     "interactingPDBEntries": [
+      {
+       "pdbId": "2ian",
+       "entityId": 5,
+       "chainIds": "J,T,E,O"
+      },
+      {
+       "pdbId": "2iam",
+       "entityId": 5,
+       "chainIds": "D"
+      }
+     ],
+     "allPDBEntries": [
+      "2ian",
+      "2iam"
+     ]
+    }
+   ],
+   "additionalData": {
+    "scaffoldId": null,
+    "coFactorId": null,
+    "reactionId": null,
+    "chemblId": null,
+    "drugBankId": null,
+    "numAtoms": null,
+    "targetUniProts": null,
+    "pdbEntries": null,
+    "type": "UNP",
+    "significance": null,
+    "isSolvent": false
+   }
+  }
+ ],
+ "processed_protein_start": null
+}
