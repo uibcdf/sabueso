@@ -11,4 +11,5 @@ STRICTNESS = "warn"
 SKIP_PARAM = "skip_digestion"
 
 FUNCTION_SOURCE = "sabueso._private.argdigest.function"
+DOMAIN_SOURCE = "sabueso._private.argdigest.domain"
 UNKNOWN_ARGUMENT = "error"

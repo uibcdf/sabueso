@@ -29,6 +29,32 @@ conda activate sabueso-dev
 pip install --no-deps --editable .
 ```
 
+## Resolve an entity (online)
+
+`sabueso.resolve` takes any supported identifier and returns the entity's card together
+with the resolution that explains it. You do not need to know which source or tool
+applies:
+
+```python
+import sabueso
+from sabueso.resolver import EntityQuery
+
+protein, resolution = sabueso.resolve("P52270")  # a UniProt accession
+print(resolution.status, resolution.decision["route"])
+
+ligand, _ = sabueso.resolve("pdb.ligand:BTS")  # also chembl:<id> or inchikey:<key>
+
+# A name needs an organism; if several entries match, the result is "ambiguous" and
+# lists the candidates. Sabueso never picks one silently.
+card, resolution = sabueso.resolve(
+    EntityQuery(name="triosephosphate isomerase", organism=5693)
+)
+```
+
+Options are passed to the tool that answers the query. For proteins these include
+`structures`, `chembl`, `ligand_sites` and `family_sites`; for molecules, `unichem`. An
+option that does not apply is refused.
+
 ## Create a Protein Card (online)
 
 The example below creates a Protein Card from UniProt ID `P52789`.

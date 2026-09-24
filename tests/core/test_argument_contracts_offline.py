@@ -14,6 +14,7 @@ import pytest
 from sabueso import (
     ambiguity_deck,
     ligand_deck,
+    resolve,
     resolve_molecule_card,
     resolve_protein_card,
 )
@@ -31,6 +32,7 @@ from sabueso.tools.deck.storage import (
 )
 
 PUBLIC_TOOLS = [
+    resolve,
     resolve_protein_card,
     resolve_molecule_card,
     ligand_deck,
@@ -80,8 +82,11 @@ def test_every_parameter_of_every_public_tool_has_a_digester():
     # STRICTNESS="warn" would only warn at call time; this makes the gap a failure.
     missing = []
     for tool in PUBLIC_TOOLS:
-        for name in inspect.signature(inspect.unwrap(tool)).parameters:
-            if name == "self":
+        for name, parameter in inspect.signature(
+            inspect.unwrap(tool)
+        ).parameters.items():
+            # **options is admitted through a declared domain (function contract).
+            if name == "self" or parameter.kind is parameter.VAR_KEYWORD:
                 continue
             try:
                 module = importlib.import_module(

@@ -39,6 +39,7 @@ from sabueso.tools.db.uniprot import (
     create_protein_card_online,
 )
 from sabueso.tools.deck.storage import save_deck_jsonl, save_deck_sqlite
+from sabueso.tools.resolve import resolve
 
 # SMonitor is configured when Sabueso is imported (uibcdf/sabueso#31).
 _ensure_smonitor_configured(_SMONITOR_PACKAGE_ROOT)
@@ -54,6 +55,7 @@ __all__ = [
     "create_molecule_card_from_file",
     "create_molecule_card_from_json",
     "create_molecule_card_online",
+    "resolve",
     "resolve_protein_card",
     "resolve_molecule_card",
     "ligand_deck",

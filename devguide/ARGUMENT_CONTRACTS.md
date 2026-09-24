@@ -14,13 +14,16 @@ support-library policy requires (uibcdf/sabueso#31) and as the sibling component
 - `sabueso/_private/argdigest/argument/<name>.py`: one digester per argument name,
   `digest_<name>(value, caller=None)`. Shared helpers live in `_shared.py`, outside the
   digester package.
-- `sabueso/_private/argdigest/function/`: function contracts (axis 1). It is empty, because
-  every decorated function has a closed signature. A public function that takes
-  `**kwargs` must declare its domain there.
+- `sabueso/_private/argdigest/function/`: function contracts (axis 1). A closed signature
+  needs none. `sabueso.resolve` takes `**options`, and its contract admits the
+  `card_options` domain (`sabueso/_private/argdigest/domain/card_options.py`). That
+  domain is the union of the options of `resolve_protein_card` and
+  `resolve_molecule_card`, read from their signatures so the two cannot drift. The tool
+  `resolve` routes to refuses an option that belongs only to the other tool.
 
 ## Decorated functions
 
-- Tools: `resolve_protein_card`, `resolve_molecule_card`, `ligand_deck`, `ambiguity_deck`.
+- Tools: `resolve`, `resolve_protein_card`, `resolve_molecule_card`, `ligand_deck`, `ambiguity_deck`.
 - Card views and operations: `Card.bioactivities`, `Card.structures`, `Card.ligands`,
   `Card.compare_ligands`, `Card.extract`. `Card.compare` and `Deck.compare` reach
   their field paths through `Card.extract`.
