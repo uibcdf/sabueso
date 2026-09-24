@@ -6,6 +6,7 @@ publication (``pubmed:<id>``, else ``doi:<doi>``, else UniProt's own citation id
 - a source cites it for a topic: ``described_in`` relationships, for example a UniProt
   reference with its scope (``X-RAY CRYSTALLOGRAPHY``, ``HOMODIMERIZATION``...);
 - it is the primary citation of a structure on the card (RCSB, on ``has_structure``);
+- measurements on the card come from it (ChEMBL documents, ``measurements``);
 - a person curated what it states onto the card (``curated``, part 2 of #41, with the
   outcome of comparing it with other sources);
 - a source gives it as evidence of a statement: the PubMed ids in a SourceAssertion's
@@ -58,6 +59,7 @@ def literature_view(card: Any) -> Dict[str, Any]:
                 "primary_citation_of": [],
                 "supports": [],
                 "curated": [],
+                "measurements": 0,
             },
         )
 
@@ -102,6 +104,18 @@ def literature_view(card: Any) -> Dict[str, Any]:
         pub = entry(ref)
         fill(pub, citation)
         pub["primary_citation_of"].append(rel["object_ref"])
+
+    for rel in card.relationships("has_bioactivity"):
+        document = rel.get("qualifiers", {}).get("document") or {}
+        if document.get("pubmed"):
+            ref = f"pubmed:{document['pubmed']}"
+        elif document.get("doi"):
+            ref = f"doi:{document['doi']}"
+        else:
+            continue
+        pub = entry(ref)
+        fill(pub, document)
+        pub["measurements"] += 1
 
     outcomes = {
         r["source_assertion_id"]: r for r in card.quality.get("curation", []) or []

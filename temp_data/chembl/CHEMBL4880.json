@@ -1136,6 +1136,89 @@
    "variant_sequence": null
   }
  },
+ "documents": {
+  "CHEMBL1135460": {
+   "document_chembl_id": "CHEMBL1135460",
+   "doi": "10.1021/jm0200299",
+   "journal": "J Med Chem",
+   "pubmed_id": 12036355,
+   "src_id": 1,
+   "title": "Simple, intuitive calculations of free energy of binding for protein-ligand complexes. 1. Models without explicit constrained water.",
+   "year": 2002
+  },
+  "CHEMBL1146280": {
+   "document_chembl_id": "CHEMBL1146280",
+   "doi": "10.1016/j.bmcl.2006.10.030",
+   "journal": "Bioorg Med Chem Lett",
+   "pubmed_id": 17088060,
+   "src_id": 1,
+   "title": "New competitive inhibitors of cytosolic (NADH-dependent) rabbit muscle glycerophosphate dehydrogenase.",
+   "year": 2007
+  },
+  "CHEMBL1156043": {
+   "document_chembl_id": "CHEMBL1156043",
+   "doi": "10.1016/j.bmcl.2009.08.055",
+   "journal": "Bioorg Med Chem Lett",
+   "pubmed_id": 19733070,
+   "src_id": 1,
+   "title": "Selective inactivation of triosephosphate isomerase from Trypanosoma cruzi by brevifolin carboxylate derivatives isolated from Geranium bellum Rose.",
+   "year": 2009
+  },
+  "CHEMBL1629474": {
+   "document_chembl_id": "CHEMBL1629474",
+   "doi": "10.1016/j.ejmech.2010.09.034",
+   "journal": "Eur J Med Chem",
+   "pubmed_id": 20889239,
+   "src_id": 1,
+   "title": "Massive screening yields novel and selective Trypanosoma cruzi triosephosphate isomerase dimer-interface-irreversible inhibitors with anti-trypanosomal activity.",
+   "year": 2010
+  },
+  "CHEMBL1770054": {
+   "document_chembl_id": "CHEMBL1770054",
+   "doi": "10.1016/j.bmcl.2010.12.066",
+   "journal": "Bioorg Med Chem Lett",
+   "pubmed_id": 21236668,
+   "src_id": 1,
+   "title": "Enediol mimics as inhibitors of the D-arabinose 5-phosphate isomerase (KdsD) from Francisella tularensis.",
+   "year": 2011
+  },
+  "CHEMBL4431335": {
+   "document_chembl_id": "CHEMBL4431335",
+   "doi": "10.1016/j.bmcl.2015.08.018",
+   "journal": "Bioorg Med Chem Lett",
+   "pubmed_id": 27503677,
+   "src_id": 1,
+   "title": "Synthesis and trypanocidal activity of novel benzimidazole derivatives.",
+   "year": 2016
+  },
+  "CHEMBL5579819": {
+   "document_chembl_id": "CHEMBL5579819",
+   "doi": "10.1016/j.ejmech.2024.116543",
+   "journal": "Eur J Med Chem",
+   "pubmed_id": 38823265,
+   "src_id": 1,
+   "title": "Dual-target inhibitors of colchicine binding site for cancer treatment.",
+   "year": 2024
+  },
+  "CHEMBL5649169": {
+   "document_chembl_id": "CHEMBL5649169",
+   "doi": "10.1002/cmdc.201800398",
+   "journal": "ChemMedChem",
+   "pubmed_id": 29928781,
+   "src_id": 72,
+   "title": "NVP-BHG712: Effects of Regioisomers on the Affinity and Selectivity toward the EPHrin Family.",
+   "year": 2018
+  },
+  "CHEMBL6127056": {
+   "document_chembl_id": "CHEMBL6127056",
+   "doi": "10.1016/j.ejmech.2024.116854",
+   "journal": "Eur J Med Chem",
+   "pubmed_id": 39276582,
+   "src_id": 1,
+   "title": "Novel mechanistic insights - A brand new Era for anti-HBV drugs.",
+   "year": 2024
+  }
+ },
  "retrieved_at_original": "2026-09-23T16:30:50+00:00",
  "total_count": 36,
  "truncated": false,

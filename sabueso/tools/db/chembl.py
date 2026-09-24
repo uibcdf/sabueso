@@ -88,6 +88,15 @@ CHEMBL_API = "https://www.ebi.ac.uk/chembl/api/data"
 DEFAULT_ACTIVITY_LIMIT = 5000
 PAGE_SIZE = 1000
 ASSAY_CHUNK = 50
+DOCUMENT_FIELDS = (
+    "document_chembl_id",
+    "pubmed_id",
+    "doi",
+    "title",
+    "year",
+    "journal",
+    "src_id",
+)
 
 ACTIVITY_FIELDS = (
     "activity_id",
@@ -219,6 +228,27 @@ class OnlineChEMBLClient:
             )
             for assay in page.get("assays", []):
                 assays[assay["assay_chembl_id"]] = _keep(assay, ASSAY_FIELDS)
+        # The documents the measurements come from, with their PubMed id and DOI, so a
+        # measurement can be matched to a publication (#44).
+        document_ids = sorted(
+            {a["document_chembl_id"] for a in activities if a.get("document_chembl_id")}
+        )
+        documents: Dict[str, Any] = {}
+        for i in range(0, len(document_ids), ASSAY_CHUNK):
+            chunk = document_ids[i : i + ASSAY_CHUNK]
+            page = _chembl_get(
+                "document.json",
+                {
+                    "document_chembl_id__in": ",".join(chunk),
+                    "only": ",".join(DOCUMENT_FIELDS),
+                    "limit": len(chunk),
+                },
+                self.timeout,
+            )
+            for document in page.get("documents", []):
+                documents[document["document_chembl_id"]] = _keep(
+                    document, DOCUMENT_FIELDS
+                )
         return {
             "query": {"target_chembl_id": target, "limit": limit},
             "version": self.version(),
@@ -227,6 +257,7 @@ class OnlineChEMBLClient:
             "truncated": total > len(activities),
             "activities": activities,
             "assays": assays,
+            "documents": documents,
         }
 
     def molecules(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:

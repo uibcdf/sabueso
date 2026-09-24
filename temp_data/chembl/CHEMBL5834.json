@@ -13000,6 +13000,53 @@
    "variant_sequence": null
   }
  },
+ "documents": {
+  "CHEMBL1156043": {
+   "document_chembl_id": "CHEMBL1156043",
+   "doi": "10.1016/j.bmcl.2009.08.055",
+   "journal": "Bioorg Med Chem Lett",
+   "pubmed_id": 19733070,
+   "src_id": 1,
+   "title": "Selective inactivation of triosephosphate isomerase from Trypanosoma cruzi by brevifolin carboxylate derivatives isolated from Geranium bellum Rose.",
+   "year": 2009
+  },
+  "CHEMBL1629474": {
+   "document_chembl_id": "CHEMBL1629474",
+   "doi": "10.1016/j.ejmech.2010.09.034",
+   "journal": "Eur J Med Chem",
+   "pubmed_id": 20889239,
+   "src_id": 1,
+   "title": "Massive screening yields novel and selective Trypanosoma cruzi triosephosphate isomerase dimer-interface-irreversible inhibitors with anti-trypanosomal activity.",
+   "year": 2010
+  },
+  "CHEMBL3352665": {
+   "document_chembl_id": "CHEMBL3352665",
+   "doi": "10.1016/j.ejmech.2014.07.092",
+   "journal": "Eur J Med Chem",
+   "pubmed_id": 25072876,
+   "src_id": 1,
+   "title": "Trends in research of antitrypanosomal agents among synthetic heterocycles.",
+   "year": 2014
+  },
+  "CHEMBL4431335": {
+   "document_chembl_id": "CHEMBL4431335",
+   "doi": "10.1016/j.bmcl.2015.08.018",
+   "journal": "Bioorg Med Chem Lett",
+   "pubmed_id": 27503677,
+   "src_id": 1,
+   "title": "Synthesis and trypanocidal activity of novel benzimidazole derivatives.",
+   "year": 2016
+  },
+  "CHEMBL5137001": {
+   "document_chembl_id": "CHEMBL5137001",
+   "doi": "10.1016/j.bmc.2021.116577",
+   "journal": "Bioorg Med Chem",
+   "pubmed_id": 35189560,
+   "src_id": 1,
+   "title": "Examination of multiple Trypanosoma cruzi targets in a new drug discovery approach for Chagas disease.",
+   "year": 2022
+  }
+ },
  "retrieved_at_original": "2026-09-23T16:30:21+00:00",
  "total_count": 493,
  "truncated": false,

@@ -257,3 +257,15 @@ def test_conversions_carry_no_floating_point_noise():
         "value": 1500000.0,
         "unit": "nanomolar",
     }
+
+
+def test_each_measurement_knows_its_publication(resolver):
+    card = _card(resolver, TCTIM)
+    documents = [
+        r["qualifiers"]["document"] for r in card.relationships("has_bioactivity")
+    ]
+    # ChEMBL_37 states a PubMed id for every document behind the TcTIM measurements.
+    assert all(d["pubmed"] and d["id"] for d in documents)
+    assert len({d["pubmed"] for d in documents}) == 5  # the five TcTIM documents
+    pubs = {p["publication_ref"]: p for p in card.literature()["publications"]}
+    assert sum(p["measurements"] for p in pubs.values()) == len(documents)
