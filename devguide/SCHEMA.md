@@ -156,9 +156,11 @@ not part of it. Views are Python API, not schema.
 
 **Guards.**
 - Frozen cards: `temp_data/frozen_cards/schema_<version>__<entity>.json` holds one card
-  per published schema, written by that release's published package, installed in a
-  clean environment. A source checkout at the tag is not enough: `sabueso.__version__`
-  may then report the metadata of another installed copy. Every one of them must stay readable
+  per published schema, written by that release's package installed in a clean
+  environment. For a new schema, it is the candidate's package (a local conda build of
+  the candidate commit with its release version), because the card must be committed
+  before tagging. A source checkout is not enough: `sabueso.__version__` may then report
+  the metadata of another installed copy. Every one of them must stay readable
   (`tests/core/test_card_schema_policy_offline.py`). **On each release that publishes a
   new schema, add its frozen card.**
 - Recorded shape: `schemas/card_shape_<version>.json` records the key paths of the cards

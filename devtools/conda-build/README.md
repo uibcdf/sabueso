@@ -46,6 +46,9 @@ channel; staging and source tests alone are not publication.
 
 The release notes state the card schema the release writes. If the release publishes a
 card schema no earlier release published, add its frozen card before tagging:
-`temp_data/frozen_cards/schema_<version>__P52270.json`, built by the release candidate
+`temp_data/frozen_cards/schema_<version>__P52270.json`. Build it with the candidate's
+package: `SABUESO_CONDA_VERSION=X.Y.Z conda build devtools/conda-build
+--no-anaconda-upload --output-folder <tmp>`, install it in a clean environment, and
+write the card from the fixtures there
 (see `devguide/SCHEMA.md`, "Versioning policy", and uibcdf/sabueso#42). From then on,
 that schema's recorded shape is fixed.

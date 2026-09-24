@@ -1,6 +1,6 @@
-version = "0.1.1"
+version = "0.2.0"
 route = "staged"
-reason = "Fixes 0.1.0, whose package lacked sabueso/resolver/selection_rules.json (uibcdf/sabueso#35); clean installed-package gates, now building a card from a mapping, must pass before public visibility."
+reason = "New direct runtime dependency (depdigest), new packaged data (sabueso/resolver/enrichment_profiles.json), an optional dependency checked at call time (pandas), and the first publication of card schema 0.3.1; clean installed-package gates must pass before public visibility."
 decision_by = "Diego Prada (Sabueso maintainer), 2026-09-24"
 required_workflows = [
   ".github/workflows/ci.yml",

@@ -182,7 +182,30 @@ def api_smoke() -> bool:
         card_id="sabueso:small_molecule:smoke",
     )
     again = Card.from_dict(card.to_dict())
-    return puw.get_value(again.quantity(field), to_unit="angstrom**2") == 63.6
+    if puw.get_value(again.quantity(field), to_unit="angstrom**2") != 63.6:
+        return False
+    # Packaged data added in 0.2.0: the enrichment profiles (#45).
+    from sabueso.resolver.loader import load_enrichment_profiles
+
+    if "structural_baseline@1" not in load_enrichment_profiles():
+        return False
+    # The glossary of entities is written and read back (#52).
+    if "smoke" not in str(again.to_dict().get("entities")):
+        return False
+    # pandas is optional: without it, the DepDigest check answers (#46).
+    import importlib.util
+
+    if importlib.util.find_spec("pandas") is None:
+        import sabueso
+        from sabueso.core.errors import LibraryNotFoundError
+
+        try:
+            sabueso.to_dataframe([])
+        except LibraryNotFoundError:
+            pass
+        else:
+            return False
+    return True
 
 
 def main() -> None:
