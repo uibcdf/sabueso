@@ -1,0 +1,37 @@
+# Conda recipe for Sabueso (uibcdf/sabueso#34), after the UIBCDF support libraries.
+# The version is the release tag. Before a first release, a local verification build can
+# pass one explicitly: SABUESO_CONDA_VERSION=X.Y.Z conda build devtools/conda-build
+# (never uploaded).
+package:
+  name: sabueso
+  version: "{{ environ.get('SABUESO_CONDA_VERSION') or environ.get('GIT_DESCRIBE_TAG', '') }}"
+
+source:
+  path: ../../   # repository root
+
+build:
+  number: "{{ environ.get('SABUESO_CONDA_BUILD_NUMBER', '0') }}"
+  noarch: python
+
+requirements:
+  host:
+    - python >=3.11,<3.15
+    - pip
+    - setuptools >=68
+    - versioningit ~=3.0
+    - wheel
+  run:
+    - python >=3.11,<3.15
+    # UIBCDF support libraries join here as #31 records each applicable use.
+
+test:
+  imports:
+    - sabueso
+  commands:
+    - python -c "import sabueso, importlib.metadata as md, os; expected = os.environ['PKG_VERSION']; assert md.version('sabueso') == expected; assert sabueso.__version__ == expected"
+
+about:
+  home: "https://github.com/uibcdf/sabueso"
+  license: "MIT"
+  license_file: LICENSE
+  summary: "Biomolecular knowledge integration into cards and decks traced to source assertions."

@@ -4,13 +4,23 @@ This section summarizes how to work on Sabueso code and documentation.
 
 ## Development Environment
 
-Install in editable mode without dependencies:
+Dependencies come from the `uibcdf` and `conda-forge` conda channels, as they do for
+users. pip is used only to install Sabueso itself, in editable mode:
 
 ```bash
+conda env create -n sabueso-dev -f devtools/conda-envs/development_env.yaml
+conda activate sabueso-dev
 pip install --no-deps --editable .
 ```
 
-Run offline tests:
+The environments live in `devtools/conda-envs/`:
+
+- `development_env.yaml`: development;
+- `test_env.yaml`: what CI tests run on;
+- `docs_env.yaml`: documentation;
+- `build_env.yaml`: building the conda package.
+
+Run offline tests (agents use `--receptor=llm`; CI uses `--receptor=ci`):
 
 ```bash
 pytest -m "not online"
@@ -21,6 +31,10 @@ Run online tests:
 ```bash
 pytest -m online
 ```
+
+## Conda package
+
+The recipe is in `devtools/conda-build/`; see its `README.md`.
 
 ## Repository Areas
 

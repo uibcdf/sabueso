@@ -9,14 +9,18 @@ This guide walks through a minimal but real Sabueso workflow:
 
 ## Prerequisites
 
-- Python 3.11+
-- A project environment with Sabueso available
+- conda or mamba, with the `uibcdf` and `conda-forge` channels
+- Python 3.11–3.14
 
-## Install (editable, no dependencies)
+## Install from the repository
 
-From the repository root:
+Sabueso is distributed through the `uibcdf` conda channel, but the current Sabueso has no
+public release yet. Until it has one, create the development environment and install
+Sabueso into it (pip is used only for this local, editable install):
 
 ```bash
+conda env create -n sabueso-dev -f devtools/conda-envs/development_env.yaml
+conda activate sabueso-dev
 pip install --no-deps --editable .
 ```
 

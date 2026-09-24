@@ -15,6 +15,21 @@ Active early-stage implementation. Sabueso is directly governed by MOLI for shar
 
 Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the offline CI suite. Python 3.14 is explicitly admitted under MOLI's active Python transition.
 
+## Installation
+
+Sabueso is distributed through the `uibcdf` conda channel, like the other UIBCDF Python
+components. The current Sabueso has not had a public release yet: the `sabueso` 0.2.0 and
+earlier packages on the channel come from a previous codebase (Python 3.10 or older).
+
+For development, dependencies come from conda and pip is used only for the local editable
+install:
+
+```bash
+conda env create -n sabueso-dev -f devtools/conda-envs/development_env.yaml
+conda activate sabueso-dev
+pip install --no-deps --editable .
+```
+
 ## Development
 
 Start with:

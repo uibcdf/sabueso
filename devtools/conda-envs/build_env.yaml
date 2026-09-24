@@ -1,0 +1,14 @@
+# Environment to build Sabueso's conda package (uibcdf/sabueso#34).
+#   conda env create -f devtools/conda-envs/build_env.yaml
+#   conda build devtools/conda-build -c uibcdf -c conda-forge
+channels:
+  - uibcdf
+  - conda-forge
+
+dependencies:
+  - conda-build
+  - anaconda-client
+  - pip
+  - setuptools >=68
+  - versioningit ~=3.0
+  - wheel
