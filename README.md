@@ -18,7 +18,14 @@ Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the o
 ## Installation
 
 Sabueso is distributed through the `uibcdf` conda channel, like the other UIBCDF Python
-components. It has not had a public release yet; the first one will be 0.1.0.
+components:
+
+```bash
+conda install -c uibcdf -c conda-forge 'sabueso>=0.1.1'
+```
+
+Use 0.1.1 or later: the 0.1.0 package lacks a data file and cannot build cards (#35).
+Sabueso is not published on PyPI.
 
 For development, dependencies come from conda and pip is used only for the local editable
 install:

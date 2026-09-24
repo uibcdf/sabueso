@@ -2,7 +2,7 @@
 
 This guide walks through a minimal but real Sabueso workflow:
 
-1. install in editable mode
+1. install
 2. build Cards from online/offline sources
 3. save/load Cards and Decks
 4. run offline tests
@@ -12,11 +12,16 @@ This guide walks through a minimal but real Sabueso workflow:
 - conda or mamba, with the `uibcdf` and `conda-forge` channels
 - Python 3.11–3.14
 
-## Install from the repository
+## Install
 
-Sabueso is distributed through the `uibcdf` conda channel, but the current Sabueso has no
-public release yet. Until it has one, create the development environment and install
-Sabueso into it (pip is used only for this local, editable install):
+Sabueso is distributed through the `uibcdf` conda channel:
+
+```bash
+conda install -c uibcdf -c conda-forge 'sabueso>=0.1.1'
+```
+
+To work on Sabueso itself, create the development environment instead and install the
+checkout into it (pip is used only for this local, editable install):
 
 ```bash
 conda env create -n sabueso-dev -f devtools/conda-envs/development_env.yaml

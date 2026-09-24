@@ -20,19 +20,21 @@ From database fragments to structured molecular intelligence.
 ```{image} https://img.shields.io/badge/install%20with-conda-white.svg
 :target: https://anaconda.org/uibcdf/sabueso
 ```
-```{image} https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-white.svg
+```{image} https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-white.svg
 :target: https://www.python.org/downloads/
-```
-```{image} https://img.shields.io/badge/DOI-10.5281/8092688-white.svg
-:target: https://zenodo.org/record/8092688
 ```
 
 :::
 
 ## Install
 
-Sabueso will be distributed through the `uibcdf` conda channel. It has no public release
-yet, so for now it is installed from source as a development route (see `Developers`).
+Sabueso is distributed through the `uibcdf` conda channel:
+
+```bash
+conda install -c uibcdf -c conda-forge 'sabueso>=0.1.1'
+```
+
+Use 0.1.1 or later. To work on Sabueso itself, see `Developers`.
 
 ## Start Here
 
