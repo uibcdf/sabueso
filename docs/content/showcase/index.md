@@ -3,6 +3,19 @@
 This page captures representative Sabueso workflows supported by the current
 architecture.
 
+## Notebooks
+
+- {doc}`knowledge_baseline`: a traceable knowledge baseline for two proteins. It covers
+  resolution, SourceAssertions, structures, oligomer and interface, ligands and
+  bioactivities, literature, a curated claim from a paper, and storage.
+
+```{toctree}
+:hidden:
+:maxdepth: 1
+
+knowledge_baseline
+```
+
 ## Typical Workflows
 
 ### Build a protein Card from UniProt

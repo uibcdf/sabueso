@@ -67,7 +67,7 @@ sphinx-build -b html docs docs/_build/html
 
 ## Next Developers Priorities
 
-1. Replace remaining placeholders in `sabueso/ops` and `sabueso/resolver/base.py`.
+1. Replace remaining placeholders in `sabueso/ops`.
 2. Expand field mappings and improve conflict-resolution coverage.
 3. Continue improving docstring quality so API reference remains high signal.
 4. Keep `devguide/` synchronized as the canonical checkpoint for team onboarding.
