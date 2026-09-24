@@ -51,6 +51,31 @@ def _eco(evidences: List[Dict[str, Any]] | None) -> List[Dict[str, str]]:
     return out
 
 
+def _disease(comment: Dict[str, Any]) -> Dict[str, Any] | None:
+    """A UniProt DISEASE comment as stated: the disease entry, and UniProt's note on how
+    this protein is involved (uibcdf/sabueso#39)."""
+    disease = comment.get("disease") or {}
+    if not disease.get("diseaseId"):
+        return None
+    item: Dict[str, Any] = {"name": disease["diseaseId"]}
+    for key, source_key in (
+        ("accession", "diseaseAccession"),
+        ("acronym", "acronym"),
+        ("description", "description"),
+    ):
+        if disease.get(source_key):
+            item[key] = disease[source_key]
+    xref = disease.get("diseaseCrossReference") or {}
+    if xref.get("database") and xref.get("id"):
+        item["cross_references"] = [{"database": xref["database"], "id": xref["id"]}]
+    notes = [
+        t["value"] for t in get_in(comment, ["note", "texts"]) or [] if t.get("value")
+    ]
+    if notes:
+        item["note"] = " ".join(notes)
+    return item
+
+
 def _reaction(reaction: Dict[str, Any], molecule: str | None) -> Dict[str, Any]:
     rhea = [
         x.get("id")
@@ -266,6 +291,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     text_items: Dict[str, List[tuple]] = {fp: [] for fp in _TEXT_COMMENTS.values()}
     reactions: List[tuple] = []
     locations: List[tuple] = []
+    diseases: List[tuple] = []
     for c in comments:
         ctype = c.get("commentType")
         if ctype in _TEXT_COMMENTS:
@@ -281,6 +307,15 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
                     _eco(c["reaction"].get("evidences")),
                 )
             )
+        elif ctype == "DISEASE":
+            item = _disease(c)
+            if item:
+                diseases.append(
+                    (
+                        item,
+                        _eco(get_in(c, ["disease", "evidences"]) or c.get("evidences")),
+                    )
+                )
         elif ctype == "SUBCELLULAR LOCATION":
             for entry in c.get("subcellularLocations", []) or []:
                 item = _subcellular_location(entry, c.get("molecule"))
@@ -294,6 +329,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     assert_list("annotations.pathway", text_items["annotations.pathway"], fields)
     assert_list("annotations.subunit", text_items["annotations.subunit"], fields)
     assert_list("annotations.subcellular_location", locations, fields)
+    assert_list("annotations.disease", diseases, fields)
     for fp in (
         "annotations.tissue_specificity",
         "annotations.ptm",

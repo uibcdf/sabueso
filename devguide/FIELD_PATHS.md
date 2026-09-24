@@ -51,6 +51,7 @@ Versioning: **x.y.z** (no leading `v`).
 - `annotations.pathway`
 - `annotations.subunit`
 - `annotations.subcellular_location` (list of `{location, topology?, orientation?, molecule?}`)
+- `annotations.disease` (list of `{name, accession?, acronym?, description?, cross_references?, note?}`; UniProt DISEASE comments, with their evidences in each SourceAssertion's `eco`)
 - `annotations.tissue_specificity`
 - `annotations.organism`
 - `annotations.ptm`

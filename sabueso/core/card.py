@@ -10,7 +10,7 @@ from .quantities import field_node, quantity_columns, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
-CARD_SCHEMA_VERSION = "0.3.0"
+CARD_SCHEMA_VERSION = "0.3.1"
 
 
 def make_card_id(entity_type: str, subject_ref: str) -> str:

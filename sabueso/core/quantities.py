@@ -223,7 +223,7 @@ def verify(card_data: Mapping[str, Any], sealed: Any) -> None:
     card_id = (card_data.get("meta") or {}).get("card_id")
     if sealed is None:
         raise StorageError(
-            f"Card {card_id} has no quantities seal; schema 0.3.0 cards are written with one, "
+            f"Card {card_id} has no quantities seal; cards since schema 0.3.0 are written with one, "
             "and there is no default unit."
         )
     columns = _columns(card_data)

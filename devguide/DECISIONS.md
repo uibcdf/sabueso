@@ -61,7 +61,9 @@
 - Version strings use **x.y.z** (no leading `v`).
 - Third‑party API URLs may include their own version segments (e.g., `/v1/`); do not change those.
 - CardOps, DeckOps, and any internal Sabueso formats follow **x.y.z**.
-- A formal **schema versioning policy** is required.
+- A formal **schema versioning policy** is required (uibcdf/sabueso#42). Interim practice: an
+  additive optional card field bumps the patch number (0.3.0 → 0.3.1), and a change to
+  existing fields bumps the minor number.
 - Card and tool versioning must be defined before stable releases.
 
 ## Cache/Store Policy (Pending Decision)
