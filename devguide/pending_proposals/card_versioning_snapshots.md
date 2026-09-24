@@ -6,7 +6,7 @@ opened: 2026-09-23
 closed:
 verification: inspected
 area: [identity, persistence, provenance]
-blocked_by: [uibcdf/moli#3]
+blocked_by: []
 supersedes: []
 ---
 
@@ -35,30 +35,36 @@ Inspected on `main` on 2026-09-23:
 ## Why
 
 - Consumers must be able to reproduce what they relied on after the sources change.
-- The reference syntax and the pinning semantics are shared with Nextia, so they are
-  decided in uibcdf/moli#3. This record owns the Sabueso implementation.
+- Sabueso owns the Card model, snapshot representation, local identifiers, storage,
+  pinned reads, tests and a proposal for the public reference form. MOLI #3 reviews
+  only the fields and guarantees another component needs to rely on.
 
 ## Alternatives
 
-Shared options are analysed in uibcdf/moli#3: content-addressed snapshots, revisions or
-timestamps, or both. Locally, and not blocked:
+Sabueso can choose content-addressed snapshots, revisions or timestamps, or a
+combination, provided a pinned historical read cannot silently return the latest
+card. This local work is not blocked by MOLI #3. Sabueso should:
 
 - fill `source.version` where sources expose it;
-- decide what a snapshot captures: card state, SourceAssertionStore, selection-rules
-  version, source versions.
+- preserve enough card state and interpretation context to recover selected values,
+  conflicts, provenance and curation outcomes;
+- implement and test pinned reads and explicit missing-pin behavior;
+- propose an external Card and SourceAssertion reference form with examples to
+  MOLI #3 before presenting it as a stable cross-component contract.
 
 ## Acceptance criteria
 
 - Mappings record `source.version` where the source provides it (UniProt at minimum).
-- Cards can be snapshotted and a pinned snapshot can be resolved from persistence,
-  following the contract decided in uibcdf/moli#3.
+- Cards can be snapshotted and a pinned snapshot can be resolved from persistence.
 - Offline tests show that a pinned reference keeps resolving to the same content after a
-  newer card is stored.
+  newer card is stored, and that an absent pin never falls back to the latest card.
+- The external reference form and its consumer-facing guarantees are proposed to
+  uibcdf/moli#3; only cross-component adoption waits for that agreement.
 
 ## Implementation progress (2026-09-24)
 
-These are local steps that uibcdf/moli#3 explicitly allows (capturing `source.version`, and
-provisional internal identities):
+These are local steps completed while public cross-component references remain
+provisional:
 
 - **Source releases.** `source.version` is filled where the source states it:
   - UniProt: the entry version (`entryAudit.entryVersion`); sequence fields also carry
@@ -72,9 +78,10 @@ provisional internal identities):
 - RCSB entry revisions (`rcsb_accession_info`) and the resolver's identity-link
   assertions do not carry a version yet.
 
-Still open, and blocked by uibcdf/moli#3: card snapshots and pinned references. The
-minimal workflow moli#3 asked for exists now
-(`docs/content/showcase/knowledge_baseline.ipynb`).
+Still open: implement card snapshots and pinned reads, and bring the resulting
+external-reference proposal to MOLI #3. The minimal workflow requested there exists
+now (`docs/content/showcase/knowledge_baseline.ipynb`). Local implementation no
+longer waits for MOLI #3; publishing a stable cross-component contract does.
 
 ## Resolution
 
