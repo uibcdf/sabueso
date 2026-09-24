@@ -7,8 +7,8 @@ contract: diagnostics are derived from outcomes that stay recorded as data.
 import ast
 import pathlib
 import pickle
-import shutil
 import subprocess
+import sys
 import warnings
 
 import pytest
@@ -43,11 +43,25 @@ def _catalog_codes():
             yield entry["code"]
 
 
+def _smonitor_cli() -> list:
+    """The smonitor CLI through its console-script entry point, run by this Python.
+
+    Portable: the Conda package installs no ``smonitor`` launcher on Windows
+    (uibcdf/smonitor#26), and ``python -m smonitor`` is not supported.
+    """
+    from importlib.metadata import entry_points
+
+    (entry,) = [
+        e for e in entry_points(group="console_scripts") if e.name == "smonitor"
+    ]
+    module, function = entry.value.split(":")
+    code = f"import sys; from {module} import {function} as main; sys.exit(main())"
+    return [sys.executable, "-c", code]
+
+
 def test_check1_the_configuration_is_found_inside_the_package():
-    executable = shutil.which("smonitor")
-    assert executable, "the smonitor CLI comes with the smonitor package"
     result = subprocess.run(
-        [executable, "--validate-config", "--config-path", str(PACKAGE)],
+        [*_smonitor_cli(), "--validate-config", "--config-path", str(PACKAGE)],
         capture_output=True,
         text=True,
     )
