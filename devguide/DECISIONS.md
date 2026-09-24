@@ -233,4 +233,9 @@ uibcdf/sabueso#41, part 2. Free-text claims are deferred to uibcdf/sabueso#43.
   field's unit ("0.9 kDa" states hundreds of daltons).
 - How a curated assertion bears on a project's hypotheses is Nextia Evidence
   (SourceAssertion ≠ Evidence).
+- Curations survive rebuilds through a `CurationStore` (uibcdf/sabueso#48):
+  - a JSONL file of what was curated, never a card;
+  - applied when a card is built, with the same content-derived SourceAssertion ids;
+  - outcomes are recomputed, and changes are reported;
+  - retractions are kept and never applied.
 

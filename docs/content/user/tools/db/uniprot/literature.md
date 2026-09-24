@@ -72,3 +72,30 @@ print(record["outcome"])  # new, corroborates, differs, not_comparable or not_co
   with their outcome.
 - **Scope.** How a statement bears on a project's hypotheses is not Sabueso's: that is
   Evidence, in Nextia.
+
+## Keep curations across rebuilds
+
+A card is rebuilt whenever you query the sources again, for example to get a newer
+UniProt release. Keep what you curated in a **curation store**, a JSONL file you own, and
+apply it when the card is built:
+
+```python
+store = sabueso.CurationStore("curation.jsonl")
+store.save(card)  # records the card's curated assertions; saving twice changes nothing
+
+# Another day: the card is rebuilt from the sources, and the curations are applied.
+card, _ = sabueso.resolve("P60174", curations=store)  # or curations="curation.jsonl"
+print(card.quality["curation_store"])  # applied, skipped_retracted, changed
+```
+
+- **Same ids.** Each curated assertion gets back the same SourceAssertion id, because the
+  id is derived from what was stated: publication, field, value and locator. A reference
+  to it keeps meaning the same thing.
+- **Recomputed outcomes.** Outcomes are compared again against the fresh sources. An
+  outcome that changed since it was last recorded is listed in `changed`, for example
+  `new` → `corroborates` when a database starts to state the same thing. Save again to
+  record the outcome last seen.
+- **Retraction.** `store.retract(source_assertion_id, reason, curator)` keeps the record,
+  with who retracted it, why and when. It is never applied again.
+- **Scope.** Records of other entities in the same store are ignored.
+

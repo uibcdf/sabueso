@@ -12,6 +12,15 @@
 - **Ambiguity**: input resolution may produce multiple valid entities.
 - **Ops drift**: unstable ops contracts can break tools and downstream integrations.
 - **Schema churn**: frequent schema changes can break cards, tools, and mappings.
+- **Concurrent curation stores** (uibcdf/sabueso#48): a `CurationStore` is rewritten
+  whole on every save. The write is atomic (temporary file, then replace), but two people
+  saving to the same file at the same time lose the first writer's new records: the last
+  writer wins. Until the native store (#27) gives records a transactional home, use one
+  store per curator or merge through version control.
+- **Stored curation values** (#48): records keep the value in its stored form, so
+  re-applying gives the same id. If a field's item shape changes in a new schema version,
+  re-application raises instead of silently changing the id. Stores then need a
+  migration.
 
 ## Open Questions
 - What are the default **selection rules** per field?

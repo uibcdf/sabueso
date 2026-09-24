@@ -12,6 +12,7 @@ except PackageNotFoundError:
 from smonitor.integrations import ensure_configured as _ensure_smonitor_configured
 
 from sabueso._private.smonitor import PACKAGE_ROOT as _SMONITOR_PACKAGE_ROOT
+from sabueso.core.curation_store import CurationStore
 from sabueso.core.errors import (
     ConnectorError,
     ResolverError,
@@ -56,6 +57,7 @@ __all__ = [
     "create_molecule_card_from_json",
     "create_molecule_card_online",
     "resolve",
+    "CurationStore",
     "resolve_protein_card",
     "resolve_molecule_card",
     "ligand_deck",

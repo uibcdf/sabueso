@@ -125,6 +125,7 @@ This file records the current repository baseline so new developers can resume e
   - Ligand decks: `ligand_deck(protein_card)`, `Card.ligands(deck)`, `Card.compare_ligands(...)` and `Deck.intersect` / `Deck.difference` (#23, closed).
   - Oligomer and interfaces: RCSB assemblies and `chimeric_with` on `has_structure`, PDBe-KB `has_interface_with`, and `Card.oligomer()` with UniProt SUBUNIT and CDD dimer-interface agreement (#40).
   - Curated literature assertions on knowledge fields: `Card.add_literature_assertion`, compared with other sources, never prioritised or discarded, differences flagged (#41, part 2; free-text claims #43).
+  - Curation store: curated assertions survive rebuilds (`CurationStore`, `resolve(..., curations=)`), same ids, outcomes recomputed, retractions kept (#48).
   - Literature: UniProt references as `described_in` relationships, PDB primary citations, and `Card.literature()` linking publications to the statements their evidence supports (#41, part 1).
   - Entry point `sabueso.resolve()` (#38); UniProt DISEASE comments as `annotations.disease` (#39, schema 0.3.1).
   - Ligand sites: PDBe-KB `has_ligand_site` relationships, RCSB per-instance ligand contacts, and `Card.ligand_sites()` against the UniProt annotated sites (#28).

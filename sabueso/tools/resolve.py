@@ -49,6 +49,7 @@ def _route(query: EntityQuery | str, entity_type: str | None) -> Tuple[str, str]
 def resolve(
     query: EntityQuery | str,
     entity_type: str | None = None,
+    curations: Any = None,
     skip_digestion: bool = False,
     **options: Any,
 ) -> Tuple[Card | None, EntityResolution]:
@@ -56,6 +57,10 @@ def resolve(
 
     ``card`` is None when the query does not resolve to one entity; the resolution says
     why (``status`` and ``decision``). See the module docstring for the routing.
+
+    ``curations`` (a ``CurationStore`` or the path of one) applies the curated literature
+    assertions recorded for the entity, with their outcomes recomputed against the
+    fresh sources (``card.quality["curation_store"]``).
     """
     kind, basis = _route(query, entity_type)
     if kind == SMALL_MOLECULE:
@@ -82,4 +87,6 @@ def resolve(
         card, resolution = resolve_protein_card(query, **options)
         tool = "resolve_protein_card"
     resolution.decision["route"] = {"entity_type": kind, "tool": tool, "basis": basis}
+    if curations is not None and card is not None:
+        curations.apply(card)
     return card, resolution
