@@ -17,17 +17,22 @@ Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the o
 
 ## Current release status
 
-- **Latest release:** [0.1.1](https://github.com/uibcdf/sabueso/releases/tag/0.1.1)
+- **Latest release:** [0.2.0](https://github.com/uibcdf/sabueso/releases/tag/0.2.0)
   (2026-09-24), distributed through the `uibcdf` conda channel.
-- **Archive:** verified on Zenodo on 2026-09-24.
-  - Version DOI: [10.5281/zenodo.22937715](https://doi.org/10.5281/zenodo.22937715).
-  - Concept DOI, which covers all versions:
+  - One `noarch` package for Linux, macOS and Windows, on Python 3.11–3.14.
+  - Before publication, the exact package was tested on all 12 combinations.
+  - It writes card schema 0.3.1.
+- **Archive of 0.2.0:** pending. Zenodo has not published its record yet. No DOI is
+  claimed until it is verified.
+- **0.1.1** is archived and verified on Zenodo:
+  - version DOI: [10.5281/zenodo.22937715](https://doi.org/10.5281/zenodo.22937715);
+  - concept DOI, which covers all versions:
     [10.5281/zenodo.22937375](https://doi.org/10.5281/zenodo.22937375).
-- **What the archive holds:** the Zenodo record contains the source snapshot of tag 0.1.1
-  only, identical to `git archive 0.1.1`. The conda package is published separately on
-  the `uibcdf` channel.
+
+  Each Zenodo record holds the source snapshot of its tag only. The conda package is
+  published separately on the `uibcdf` channel.
 - **0.1.0** is archived too ([10.5281/zenodo.22937376](https://doi.org/10.5281/zenodo.22937376)),
-  but its package cannot build cards (#35). Use 0.1.1 or later.
+  but its package cannot build cards (#35).
 
 To cite Sabueso, see [`CITATION.cff`](CITATION.cff).
 
@@ -37,11 +42,13 @@ Sabueso is distributed through the `uibcdf` conda channel, like the other UIBCDF
 components:
 
 ```bash
-conda install -c uibcdf -c conda-forge 'sabueso>=0.1.1'
+conda install -c uibcdf -c conda-forge sabueso
 ```
 
-Use 0.1.1 or later: the 0.1.0 package lacks a data file and cannot build cards (#35).
-Sabueso is not published on PyPI.
+It runs on Linux, macOS and Windows with Python 3.11–3.14. `pandas` is optional; install
+it (`conda install -c conda-forge pandas`) to turn tables into DataFrames. Avoid 0.1.0:
+its package lacks a data file and cannot build cards (#35). Sabueso is not published on
+PyPI.
 
 For development, dependencies come from conda and pip is used only for the local editable
 install:
