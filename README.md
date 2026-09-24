@@ -15,6 +15,22 @@ Active early-stage implementation. Sabueso is directly governed by MOLI for shar
 
 Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the offline CI suite. Python 3.14 is explicitly admitted under MOLI's active Python transition.
 
+## Current release status
+
+- **Latest release:** [0.1.1](https://github.com/uibcdf/sabueso/releases/tag/0.1.1)
+  (2026-09-24), distributed through the `uibcdf` conda channel.
+- **Archive:** verified on Zenodo on 2026-09-24.
+  - Version DOI: [10.5281/zenodo.22937715](https://doi.org/10.5281/zenodo.22937715).
+  - Concept DOI, which covers all versions:
+    [10.5281/zenodo.22937375](https://doi.org/10.5281/zenodo.22937375).
+- **What the archive holds:** the Zenodo record contains the source snapshot of tag 0.1.1
+  only, identical to `git archive 0.1.1`. The conda package is published separately on
+  the `uibcdf` channel.
+- **0.1.0** is archived too ([10.5281/zenodo.22937376](https://doi.org/10.5281/zenodo.22937376)),
+  but its package cannot build cards (#35). Use 0.1.1 or later.
+
+To cite Sabueso, see [`CITATION.cff`](CITATION.cff).
+
 ## Installation
 
 Sabueso is distributed through the `uibcdf` conda channel, like the other UIBCDF Python

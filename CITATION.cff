@@ -13,6 +13,14 @@ authors:
     affiliation: Hospital Infantil de México Federico Gómez (HIMFG) – UIBCDF
 version: 0.1.1
 date-released: 2026-09-24
+doi: 10.5281/zenodo.22937375
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22937375
+    description: Concept DOI, all versions (Zenodo, verified 2026-09-24)
+  - type: doi
+    value: 10.5281/zenodo.22937715
+    description: Version 0.1.1 (Zenodo, verified 2026-09-24)
 url: "https://github.com/uibcdf/sabueso"
 repository-code: "https://github.com/uibcdf/sabueso"
 license: MIT
