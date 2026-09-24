@@ -86,3 +86,25 @@ class ArgumentError(SabuesoError, ValueError):
             why = f": {reason}" if reason else ""
             message = f"Argument {argument!r}{where} cannot take {value!r}{why}."
         super().__init__(message, extra={"argument": argument, "caller": caller})
+
+
+class LibraryNotFoundError(SabuesoError, ImportError):
+    """An optional library a function needs is not installed (DepDigest, #46).
+
+    Raised by ``@dep_digest`` with the library, the caller and install hints; also an
+    ImportError, which is what it is.
+    """
+
+    catalog_key = "LibraryNotFoundError"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        library: str | None = None,
+        caller: str | None = None,
+    ) -> None:
+        if message is None:
+            where = f" for {caller}" if caller else ""
+            message = f"The optional library {library!r} is required{where}."
+        super().__init__(message, extra={"library": library, "caller": caller})

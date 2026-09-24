@@ -97,6 +97,27 @@ card.entity(
 Records are grouped into one entity only when a source says they are the same molecule,
 for example a resolved identity or UniChem's links. Otherwise they stay apart.
 
+## Tables
+
+Every view also comes as flat rows, one per structure, measurement, molecule, ligand,
+interface partner, publication or entity. `sabueso.to_dataframe` turns them into a
+pandas DataFrame. pandas is optional; install it with
+`conda install -c conda-forge pandas`.
+
+```python
+rows = card.table("bioactivities", include_indirect=True)
+df = sabueso.to_dataframe(rows)  # quantities stay quantities, each with its unit
+
+potencies = [r for r in rows if r["units"] == "nM"]
+df = sabueso.to_dataframe(potencies, units={"normalized": "micromolar"})
+# column "normalized [micromolar]", numbers; df.attrs["units"] records the unit
+```
+
+The views with a table form are `structures`, `bioactivities`, `ligands` (pass
+`deck=`), `ligand_sites`, `interfaces`, `literature` and `entities`. Asking for numbers
+in a unit a column cannot take is refused. For example, bioactivities mix
+concentrations and single-point percentages, so select the rows first.
+
 ## Quantities
 
 A physical quantity is always stored with its unit, as `{"value": ..., "unit": ...}`. The

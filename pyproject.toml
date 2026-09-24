@@ -17,6 +17,7 @@ dependencies = [
   "smonitor>=0.16.0",
   "pyunitwizard>=0.27.0",
   "argdigest>=0.13.0",
+  "depdigest>=0.11.0",
 ]
 classifiers = [
   "Programming Language :: Python :: 3",
@@ -28,6 +29,8 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
+# Optional at runtime, checked by DepDigest when a function needs it (#46).
+dataframe = ["pandas>=2"]
 test = [
   "pytest>=8",
   # Reporting for agents and CI logs (MOLI developer-tools policy, uibcdf/sabueso#31).

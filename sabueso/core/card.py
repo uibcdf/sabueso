@@ -229,6 +229,19 @@ class Card:
             report_curated_disagreement(self.id or "", record["field"], publication)
         return record
 
+    @arg_digest()
+    def table(
+        self, view: str, skip_digestion: bool = False, **options: Any
+    ) -> List[Dict[str, Any]]:
+        """A view as flat rows (#46): ``structures``, ``bioactivities``, ``ligands``,
+        ``ligand_sites``, ``interfaces``, ``literature`` or ``entities``. ``options`` go
+        to the view, e.g. ``card.table("bioactivities", include_indirect=True)`` or
+        ``card.table("ligands", deck=deck)``. Quantities stay quantities;
+        ``sabueso.to_dataframe`` makes a DataFrame."""
+        from .tables import card_table
+
+        return card_table(self, view, **options)
+
     def entities(self) -> Dict[str, Any]:
         """The glossary of molecular entities this card mentions, each once (#52)."""
         from .entities import build_entities

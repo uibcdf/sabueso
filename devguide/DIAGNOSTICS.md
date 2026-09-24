@@ -21,6 +21,7 @@ replaces the recorded outcome.
 
 | Code | Class | When |
 |---|---|---|
+| `SABUESO-E-LIBRARY-001` | `LibraryNotFoundError` | an optional library a function needs is not installed (DepDigest; also an `ImportError`), with install hints |
 | `SABUESO-W-ENRICH-001` | `EnrichmentFailedWarning` | a source failed; the result was built without it |
 | `SABUESO-W-ENRICH-002` | `EnrichmentTruncatedWarning` | a source returned fewer records than it holds |
 | `SABUESO-W-IDENTITY-001` | `UnanchoredRecordsWarning` | records without a standard InChIKey were left out of a deck |

@@ -11,6 +11,8 @@ dependencies:
   - smonitor >=0.16.0
   - pyunitwizard >=0.27.0
   - argdigest >=0.13.0
+  - depdigest >=0.11.0
+  - pandas >=2   # optional; exercised by the table tests (#46)
   - pip
   - setuptools >=68
   - versioningit ~=3.0

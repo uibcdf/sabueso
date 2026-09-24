@@ -39,6 +39,9 @@ CATALOG = {
         "ResolverError": _exception("SABUESO-E-RESOLVE-001", "resolver", "resolution"),
         "SchemaError": _exception("SABUESO-E-SCHEMA-001", "schema", "schema"),
         "StorageError": _exception("SABUESO-E-STORAGE-001", "storage", "storage"),
+        "LibraryNotFoundError": _exception(
+            "SABUESO-E-LIBRARY-001", "library_not_found", "dependency"
+        ),
         "ConnectorError": _exception("SABUESO-E-SOURCE-001", "connector", "source"),
         "RecordNotFoundError": _exception(
             "SABUESO-E-SOURCE-002", "record_not_found", "source"
@@ -92,6 +95,7 @@ CODES = {
     "SABUESO-E-RESOLVE-001": {**_RAISE_SITE, "title": "Resolution failed"},
     "SABUESO-E-SCHEMA-001": {**_RAISE_SITE, "title": "Schema error"},
     "SABUESO-E-STORAGE-001": {**_RAISE_SITE, "title": "Storage error"},
+    "SABUESO-E-LIBRARY-001": {**_RAISE_SITE, "title": "Optional library missing"},
     "SABUESO-E-SOURCE-001": {**_RAISE_SITE, "title": "Source unavailable"},
     "SABUESO-E-SOURCE-002": {**_RAISE_SITE, "title": "Record not found"},
     "SABUESO-E-ARG-001": {

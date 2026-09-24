@@ -125,6 +125,7 @@ This file records the current repository baseline so new developers can resume e
   - Ligand decks: `ligand_deck(protein_card)`, `Card.ligands(deck)`, `Card.compare_ligands(...)` and `Deck.intersect` / `Deck.difference` (#23, closed).
   - Oligomer and interfaces: RCSB assemblies and `chimeric_with` on `has_structure`, PDBe-KB `has_interface_with`, and `Card.oligomer()` with UniProt SUBUNIT and CDD dimer-interface agreement (#40).
   - Curated literature assertions on knowledge fields: `Card.add_literature_assertion`, compared with other sources, never prioritised or discarded, differences flagged (#41, part 2; free-text claims #43).
+  - Tables: `Card.table(view, **options)` flat rows with quantities kept; `sabueso.to_dataframe` (pandas optional via DepDigest, `LibraryNotFoundError`), numbers only in a named unit (#46).
   - Glossary of entities: `card.entities()` / `card.entity(ref)`, each molecular entity once, records merged only on stated identity; curated molecules cite `molecule_ref` and state no UniChem records (#52).
   - Curated bioactivities: `Card.add_literature_bioactivity`, molecule identity by InChIKey and all linked records, compared with ChEMBL measurements of the same paper (ChEMBL documents now carry PubMed ids); in the curation store (#44).
   - Small molecules resolve from PubChem CIDs (`pubchem:<cid>`); `pubchem=True` adds the PubChem records UniChem links (#50).

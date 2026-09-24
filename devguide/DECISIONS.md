@@ -294,3 +294,14 @@ uibcdf/sabueso#52 (Diego's proposal).
   links are identity knowledge in the glossary, so curated ids do not change when UniChem
   learns a new record.
 
+## Tables and optional dependencies (2026-09-24)
+uibcdf/sabueso#46.
+- `Card.table(view, **options)` gives flat rows. Quantities stay quantities. Lists
+  become `"; "`-joined text.
+- `sabueso.to_dataframe(rows, units=None)` gives numbers only in a unit the caller
+  names: the unit goes into the column name and `df.attrs["units"]`. A column holding
+  several kinds (nanomolar and percent) is refused rather than half converted.
+- pandas is optional, and DepDigest checks it at call time (`sabueso/_depdigest.py`,
+  `LibraryNotFoundError`). DepDigest therefore now applies to Sabueso, the condition
+  recorded in #31.
+

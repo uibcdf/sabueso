@@ -21,6 +21,7 @@ from sabueso import (
 from sabueso.core.card import Card
 from sabueso.core.deck import Deck
 from sabueso.core.errors import ArgumentError, SabuesoError
+from sabueso.core.tables import to_dataframe
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 from sabueso.tools.card.storage import load_card_sqlite, save_card_sqlite
 from sabueso.tools.db import (
@@ -84,6 +85,8 @@ PUBLIC_TOOLS = [
     Card.add_literature_assertion,
     Card.add_literature_relationship,
     Card.add_literature_bioactivity,
+    Card.table,
+    to_dataframe,
     Card.structures,
     Card.ligands,
     Card.compare_ligands,

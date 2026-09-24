@@ -20,6 +20,7 @@ from sabueso.core.errors import (
     SchemaError,
     StorageError,
 )
+from sabueso.core.tables import to_dataframe
 from sabueso.tools.card.protein import ambiguity_deck, resolve_protein_card
 from sabueso.tools.card.small_molecule import ligand_deck, resolve_molecule_card
 from sabueso.tools.card.storage import save_card_json, save_card_sqlite
@@ -58,6 +59,7 @@ __all__ = [
     "create_molecule_card_online",
     "resolve",
     "CurationStore",
+    "to_dataframe",
     "resolve_protein_card",
     "resolve_molecule_card",
     "ligand_deck",

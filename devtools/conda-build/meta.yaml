@@ -26,6 +26,9 @@ requirements:
     - smonitor >=0.16.0   # user-facing diagnostics (#31)
     - pyunitwizard >=0.27.0   # quantities and QuantityRecord seals (#32)
     - argdigest >=0.13.0   # argument contracts at the public API (#31)
+    - depdigest >=0.11.0   # optional dependencies, checked when needed (#46)
+  run_constrained:
+    - pandas >=2   # optional: sabueso.to_dataframe (#46)
 
 test:
   imports:
