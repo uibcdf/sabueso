@@ -76,8 +76,23 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
         {"path": "names.synonyms", "filled_by": "refresh"},
         {"path": "names.abbreviations", "filled_by": "refresh"},
         {"path": "names.gene_names", "filled_by": "refresh"},
+        {
+            "path": "relationships.has_structure.construct",
+            "filled_by": "structures",
+            "qualifier": True,
+        },
     ],
 }
+
+#: Qualifiers every relationship of their predicate has when fetched with the schema
+#: that added them, so their absence is a gap (others, such as ``isoform``, are set only
+#: when they apply, and are checked through their relationship).
+QUALIFIER_PATHS = frozenset(
+    change["path"]
+    for changes in SCHEMA_CHANGES.values()
+    for change in changes
+    if change.get("qualifier")
+)
 
 #: Steps between schema lines: ``(from line, to line) -> step(data) -> (data, notes)``,
 #: where ``notes`` is ``{"converted": [...], "gaps": [...]}``. None exists yet.
@@ -103,6 +118,9 @@ def _has(data: Dict[str, Any], path: str) -> bool:
             for r in data.get("relationship_store") or []
             if r.get("predicate") == predicate
         ]
+        if path in QUALIFIER_PATHS:
+            key = path.split(".")[2]
+            return any(key in (r.get("qualifiers") or {}) for r in rels)
         if " (" in path:
             wanted = path.split("(", 1)[1].rstrip(")")
             if predicate == "classified_in":
@@ -131,6 +149,7 @@ def _enrichment_options(data: Dict[str, Any]) -> set:
             ("NCBI Taxonomy", None): {"taxonomy"},
             ("BindingDB", None): {"bindingdb"},
             ("PubChem BioAssay", None): {"pubchem_bioassay"},
+            ("RCSB PDB", None): {"structures"},
         }.get((source, kind), set())
     return options
 

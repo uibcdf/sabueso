@@ -340,6 +340,21 @@ A Relationship is first-class, traceable knowledge:
   - `other_entities` (complexes);
   - `primary_citation` (#41): `pubmed`, `doi`, `title`, `journal` and `year` of the
     entry's primary citation, or `null`;
+  - since 0.3.4, what choosing a structure needs:
+    - `refinement`: per refinement, `method`, `r_free` and `r_work` as stated;
+    - `deposited` and `released` (dates);
+    - `construct`: per polymer entity, its sample `length`, `expression_host`
+      (`{name, taxon_id}`) and `tags`, the segments RCSB marks as artifacts (`name`, entity
+      `seq_ids` ranges);
+    - `mutations`: the residues RCSB marks as mutations, with entity `seq_id`, UniProt
+      `position` through the alignment, the `residue` in the structure, the `reference`
+      residue and RCSB's `name` (`engineered mutation`, `modified residue`);
+    - `sequence_differences`: every aligned residue that differs from the UniProt
+      sequence, stated as a mutation or not (`null` without a reference sequence);
+    - `observed`: per chain, the UniProt ranges with coordinates (aligned ranges minus
+      RCSB's unobserved residues).
+    These keys are absent from relationships fetched before 0.3.4, and the state that
+    `Card.structures()` derives from them is then unknown (`None`), never assumed.
   - `assemblies` (#40): per biological assembly, `id`, `oligomeric_details`,
     `oligomeric_count`, `defined_by` (author, software or both), `method` (e.g. PISA),
     `oligomeric_state`, `stoichiometry` and `symmetry` as RCSB states them, or `null`

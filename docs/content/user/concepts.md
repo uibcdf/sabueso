@@ -34,6 +34,40 @@ source was consulted and states nothing (`not_stated`), it was not requested
 release and the basis. An absence is reported as a fact about a source, never as
 evidence against something.
 
+## Experimental structures and the structural inventory
+
+`sabueso.resolve(..., structures="all")` fetches from RCSB every PDB entry UniProt lists
+for the protein. `card.structures()` then gives, per structure:
+
+- method, resolution, R-free and release date;
+- UniProt ranges and coverage;
+- the construct: sample length, expression host and expression tags;
+- the substitutions against the reference sequence (`N16D`, in UniProt numbering) and
+  the modified residues;
+- ligands, flagged when the PDB declares them the subject of investigation;
+- per chain, the UniProt ranges that have coordinates (`observed`).
+
+`card.structures(region=[[95, 100], 170])` adds, per chain, the residues of that region
+without coordinates (`missing_in_region`), and the chains that have them all
+(`complete_chains`).
+
+Each structure has a derived `state`, following the named rule `structure_state@1`:
+
+- method and coverage class;
+- sequence: `reference`, `mutant` (RCSB states an engineered mutation), `chimera`, or
+  `differs` (a difference no source calls engineered);
+- ligands: `ligand_of_interest`, `no_ligand_of_interest`, `no_ligands` or `unstated`;
+- oligomeric state;
+- whether other entities are present (`in_complex`).
+
+`deck.structure_inventory(regions=...)` puts the structures of several proteins side by
+side, grouped by state (rule `structure_inventory@1`). A state that every protein has is
+marked `shared`: it is where like can be compared with like, e.g. the apo wild-type
+dimers of two orthologs. Give `regions` per card (`{card.id: region}`), since numbering
+differs between proteins. Structures whose state is unknown are listed apart
+(`not_inventoried`), with the reason. The inventory states facts and groups them; it
+never chooses a structure. No single structure stands for the protein.
+
 ## Predicted structures
 
 `sabueso.resolve(..., predicted_structures=True)` adds the AlphaFold DB models of a

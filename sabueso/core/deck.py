@@ -187,6 +187,24 @@ class Deck:
             "derivation": derivation(),
         }
 
+    @arg_digest()
+    def structure_inventory(
+        self,
+        regions: Any = None,
+        include_fragments: bool = False,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """The experimental structures of the deck's protein cards, side by side and
+        grouped by state (rule ``structure_inventory@1``); see
+        ``sabueso.core.structures.structure_inventory``. ``regions``: one region (UniProt
+        positions and ``[begin, end]`` ranges) for every card, or ``{card_id: region}``."""
+        from .structures import structure_inventory
+
+        proteins = [c for c in self.cards if c.meta.get("entity_type") == "protein"]
+        return structure_inventory(
+            proteins, regions=regions, include_fragments=include_fragments
+        )
+
     def ids(self) -> List[str]:
         return [c.id for c in self.cards]
 

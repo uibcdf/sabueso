@@ -61,6 +61,11 @@ schema:
     Additive. The items of names.synonyms and names.abbreviations were described as
     strings up to 0.3.3, but no source filled them, and curated synonyms have always been
     items with a name. The description is corrected; no stored card changes.
+    It also adds has_structure qualifiers from RCSB for choosing a structure, namely
+    refinement (R-free and R-work), deposited and released dates, construct (length,
+    expression host and tags per polymer entity), mutations and sequence_differences in
+    UniProt numbering, and observed (per chain, the UniProt ranges with coordinates).
+    Additive, so a 0.3.3 card is a valid 0.3.4 card without them.
 card_base:
   meta:
     card_id:

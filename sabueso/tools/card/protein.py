@@ -117,6 +117,7 @@ def resolve_protein_card(
             if rel["predicate"] == "has_structure"
         ]
     length = (entry.get("sequence") or {}).get("length")
+    sequence = (entry.get("sequence") or {}).get("value")
     enrichments: List[Dict[str, Any]] = []
     for pdb_id in structures:
         record = {"source": "RCSB PDB", "structure": pdb_id}
@@ -133,6 +134,7 @@ def resolve_protein_card(
             rcsb_retrieved_at,
             subjects={anchor},
             reference_lengths={anchor: length} if length else None,
+            reference_sequences={anchor: sequence} if sequence else None,
         )
         mappings.append(mapped)
         enrichments.append(

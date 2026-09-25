@@ -92,7 +92,9 @@ def test_tctim_is_a_homodimer_by_every_source(tctim):
     assert states == {
         "pdb:1SUX": ["Homo 2-mer"],
         "pdb:1TCD": ["Homo 2-mer"],
+        "pdb:2OMA": ["Homo 2-mer"],
         "pdb:3Q37": ["Homo 2-mer", "Homo 2-mer"],
+        "pdb:4HHP": ["Homo 2-mer"],
     }
 
 
@@ -126,9 +128,7 @@ def test_hstim_subunit_keeps_its_evidence(hstim):
 def test_structures_without_assembly_data_are_reported_not_dropped(tctim):
     assert tctim["without_assembly_data"] == [
         "pdb:1CI1",
-        "pdb:2OMA",
         "pdb:2V5B",
-        "pdb:4HHP",
     ]
 
 

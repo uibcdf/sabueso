@@ -1,5 +1,12 @@
 """RCSB PDB structure access (entry, polymer entities, UniProt alignments, ligands).
 
+The entry also brings what choosing a structure needs: the entities' mutations and
+expression tags (``rcsb_polymer_entity_feature``), their canonical sequence and
+expression host, the residues without coordinates per chain
+(``rcsb_polymer_instance_feature``), R-free and R-work, and the deposit and release
+dates. Instance features are fetched whole and filtered by the mapping, because
+GraphQL cannot filter them by type.
+
 Ligands come with the PDB "subject of investigation" flag and, per polymer chain, the
 residues near each ligand instance (``rcsb_ligand_neighbors``, structure numbering).
 
@@ -29,6 +36,8 @@ STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
   rcsb_primary_citation {
     pdbx_database_id_PubMed pdbx_database_id_DOI title journal_abbrev year }
   rcsb_entry_info { resolution_combined polymer_entity_count_protein }
+  rcsb_accession_info { deposit_date initial_release_date }
+  refine { pdbx_refine_id ls_R_factor_R_free ls_R_factor_R_work }
   assemblies {
     rcsb_assembly_container_identifiers { assembly_id }
     pdbx_struct_assembly { oligomeric_details oligomeric_count details method_details }
@@ -36,13 +45,18 @@ STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
   }
   polymer_entities {
     rcsb_id
-    rcsb_polymer_entity { pdbx_description }
-    entity_poly { rcsb_sample_sequence_length }
+    rcsb_polymer_entity { pdbx_description pdbx_mutation }
+    entity_poly { rcsb_sample_sequence_length rcsb_mutation_count
+      pdbx_seq_one_letter_code_can }
+    rcsb_entity_host_organism { ncbi_scientific_name ncbi_taxonomy_id }
+    rcsb_polymer_entity_feature { type name
+      feature_positions { beg_seq_id end_seq_id } }
     rcsb_polymer_entity_container_identifiers { entity_id auth_asym_ids uniprot_ids }
     rcsb_polymer_entity_align { reference_database_name reference_database_accession
       aligned_regions { entity_beg_seq_id ref_beg_seq_id length } }
     polymer_entity_instances {
       rcsb_polymer_entity_instance_container_identifiers { asym_id auth_asym_id }
+      rcsb_polymer_instance_feature { type feature_positions { beg_seq_id end_seq_id } }
       rcsb_ligand_neighbors {
         ligand_asym_id ligand_comp_id ligand_is_bound seq_id comp_id distance }
     }

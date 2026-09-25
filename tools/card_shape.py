@@ -105,7 +105,7 @@ def fixture_cards() -> List[dict]:
         hstim, _ = sabueso.resolve(
             "P60174",
             resolver=resolver,
-            structures=["1HTI", "1KLG"],
+            structures=["1HTI", "1KLG", "4UNK"],
             chembl={},
             chembl_client=chembl,
             string={},

@@ -126,7 +126,21 @@
   cannot change, but its options may. `refresh_card(**options)` can override them.
 - **Gaps of qualifier-level additions** (#51): `SCHEMA_CHANGES` names relationship
   qualifiers by their relationship, so an added qualifier (for example `isoform`) is
-  reported only when the relationship itself is absent.
+  reported only when the relationship itself is absent. The exception is a qualifier
+  that every relationship fetched with its schema has (`has_structure.construct`,
+  marked `qualifier` in `SCHEMA_CHANGES`). Its absence from every relationship of the
+  predicate is a gap. A card whose older structures were never re-fetched is still
+  counted as holding it once any structure has it.
+- **Structural state is only as good as RCSB's annotations.** `structure_state@1` calls a
+  structure `mutant` when RCSB states an engineered mutation, and `differs` when the
+  sequences differ without one. A mutation the depositor did not annotate, in a region
+  the entity alignment does not cover, is invisible. The `subject_of_investigation`
+  flag decides `ligand_of_interest`. It is missing for some older entries (`unstated`)
+  and can mark a buffer component. The inventory groups by these states; it must never
+  be read as a recommendation.
+- **One request per PDB entry.** `structures="all"` fetches entries one by one. A
+  protein with hundreds of entries (kinases, proteases) will be slow and may meet rate
+  limits. RCSB GraphQL accepts `entries(entry_ids: [...])`; batch when that is felt.
 - **Claims can hide structure** (#43): free text is easy to add and cannot be
   compared, so claims could pile up where a structured field should exist. Review the
   topics periodically, and promote a recurring topic to a field.

@@ -1,4 +1,27 @@
 {
+ "assemblies": [
+  {
+   "pdbx_struct_assembly": {
+    "details": "author_and_software_defined_assembly",
+    "method_details": "PISA",
+    "oligomeric_count": 2,
+    "oligomeric_details": "dimeric"
+   },
+   "rcsb_assembly_container_identifiers": {
+    "assembly_id": "1"
+   },
+   "rcsb_struct_symmetry": [
+    {
+     "kind": "Global Symmetry",
+     "oligomeric_state": "Homo 2-mer",
+     "stoichiometry": [
+      "A2"
+     ],
+     "type": "Cyclic"
+    }
+   ]
+  }
+ ],
  "exptl": [
   {
    "method": "X-RAY DIFFRACTION"
@@ -27,9 +50,764 @@
  "polymer_entities": [
   {
    "entity_poly": {
+    "pdbx_seq_one_letter_code_can": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "rcsb_mutation_count": 0,
     "rcsb_sample_sequence_length": 248
    },
    "polymer_entity_instances": [
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "A",
+      "auth_asym_id": "A"
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 248
+        }
+       ],
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 248
+        }
+       ],
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": 248
+        }
+       ],
+       "type": "SCOP2B_SUPERFAMILY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": 248
+        }
+       ],
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": 11
+        },
+        {
+         "beg_seq_id": 37,
+         "end_seq_id": 42
+        },
+        {
+         "beg_seq_id": 60,
+         "end_seq_id": 63
+        },
+        {
+         "beg_seq_id": 90,
+         "end_seq_id": 93
+        },
+        {
+         "beg_seq_id": 122,
+         "end_seq_id": 127
+        },
+        {
+         "beg_seq_id": 160,
+         "end_seq_id": 164
+        },
+        {
+         "beg_seq_id": 206,
+         "end_seq_id": 208
+        },
+        {
+         "beg_seq_id": 228,
+         "end_seq_id": 231
+        },
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": 11
+        }
+       ],
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 17,
+         "end_seq_id": 31
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 44,
+         "end_seq_id": 46
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": 55
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 79,
+         "end_seq_id": 86
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": 101
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 105,
+         "end_seq_id": 119
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 130,
+         "end_seq_id": 136
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 138,
+         "end_seq_id": 152
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 177,
+         "end_seq_id": 196
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 197,
+         "end_seq_id": 202
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 216,
+         "end_seq_id": 222
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 233,
+         "end_seq_id": 237
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 238,
+         "end_seq_id": 245
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 246,
+         "end_seq_id": 248
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 5
+        },
+        {
+         "beg_seq_id": 12,
+         "end_seq_id": 16
+        },
+        {
+         "beg_seq_id": 32,
+         "end_seq_id": 36
+        },
+        {
+         "beg_seq_id": 43,
+         "end_seq_id": 43
+        },
+        {
+         "beg_seq_id": 56,
+         "end_seq_id": 59
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": 78
+        },
+        {
+         "beg_seq_id": 87,
+         "end_seq_id": 89
+        },
+        {
+         "beg_seq_id": 94,
+         "end_seq_id": 94
+        },
+        {
+         "beg_seq_id": 102,
+         "end_seq_id": 104
+        },
+        {
+         "beg_seq_id": 120,
+         "end_seq_id": 121
+        },
+        {
+         "beg_seq_id": 128,
+         "end_seq_id": 129
+        },
+        {
+         "beg_seq_id": 137,
+         "end_seq_id": 137
+        },
+        {
+         "beg_seq_id": 153,
+         "end_seq_id": 159
+        },
+        {
+         "beg_seq_id": 165,
+         "end_seq_id": 176
+        },
+        {
+         "beg_seq_id": 203,
+         "end_seq_id": 205
+        },
+        {
+         "beg_seq_id": 209,
+         "end_seq_id": 215
+        },
+        {
+         "beg_seq_id": 223,
+         "end_seq_id": 227
+        },
+        {
+         "beg_seq_id": 232,
+         "end_seq_id": 232
+        }
+       ],
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 16,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 21,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 25,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 28,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 32,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 36,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 41,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 55,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 58,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 66,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 71,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 83,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 88,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 93,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 112,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 114,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 126,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 131,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 134,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 143,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 150,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 153,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 157,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 163,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 165,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 167,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 170,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 177,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 180,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 185,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 188,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 191,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 193,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 195,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 197,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 199,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 204,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 207,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 220,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 225,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 228,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 240,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 248,
+         "end_seq_id": null
+        }
+       ],
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 12,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 19,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 27,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 36,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 40,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 53,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 56,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 61,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 69,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 74,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 77,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 82,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 85,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 89,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 101,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 104,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 115,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 117,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 121,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 126,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 131,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 134,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 137,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 139,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 143,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 150,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 152,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 155,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 161,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 171,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 174,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 178,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 180,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 184,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 191,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 197,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 204,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 206,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 210,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 212,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 223,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 225,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 230,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 237,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 248,
+         "end_seq_id": null
+        }
+       ],
+       "type": "ANGLE_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 33,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 43,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 78,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 100,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 115,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 127,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 146,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 150,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 166,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 170,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 185,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 195,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 204,
+         "end_seq_id": null
+        }
+       ],
+       "type": "BOND_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 248
+        }
+       ],
+       "type": "ASA"
+      }
+     ]
+    },
     {
      "rcsb_ligand_neighbors": [
       {
@@ -124,19 +902,896 @@
      "rcsb_polymer_entity_instance_container_identifiers": {
       "asym_id": "B",
       "auth_asym_id": "B"
-     }
-    },
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 248
+        }
+       ],
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 248
+        }
+       ],
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": 248
+        }
+       ],
+       "type": "SCOP2B_SUPERFAMILY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": 248
+        }
+       ],
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": 11
+        },
+        {
+         "beg_seq_id": 37,
+         "end_seq_id": 42
+        },
+        {
+         "beg_seq_id": 59,
+         "end_seq_id": 63
+        },
+        {
+         "beg_seq_id": 90,
+         "end_seq_id": 93
+        },
+        {
+         "beg_seq_id": 122,
+         "end_seq_id": 127
+        },
+        {
+         "beg_seq_id": 160,
+         "end_seq_id": 164
+        },
+        {
+         "beg_seq_id": 206,
+         "end_seq_id": 210
+        },
+        {
+         "beg_seq_id": 228,
+         "end_seq_id": 231
+        },
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": 11
+        }
+       ],
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 17,
+         "end_seq_id": 29
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 44,
+         "end_seq_id": 46
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": 55
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 79,
+         "end_seq_id": 87
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": 101
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 105,
+         "end_seq_id": 119
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 130,
+         "end_seq_id": 136
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 138,
+         "end_seq_id": 153
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 156,
+         "end_seq_id": 158
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 166,
+         "end_seq_id": 170
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 177,
+         "end_seq_id": 196
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 197,
+         "end_seq_id": 204
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 216,
+         "end_seq_id": 221
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 233,
+         "end_seq_id": 238
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 239,
+         "end_seq_id": 245
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 5
+        },
+        {
+         "beg_seq_id": 12,
+         "end_seq_id": 16
+        },
+        {
+         "beg_seq_id": 30,
+         "end_seq_id": 36
+        },
+        {
+         "beg_seq_id": 43,
+         "end_seq_id": 43
+        },
+        {
+         "beg_seq_id": 56,
+         "end_seq_id": 58
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": 78
+        },
+        {
+         "beg_seq_id": 88,
+         "end_seq_id": 89
+        },
+        {
+         "beg_seq_id": 94,
+         "end_seq_id": 94
+        },
+        {
+         "beg_seq_id": 102,
+         "end_seq_id": 104
+        },
+        {
+         "beg_seq_id": 120,
+         "end_seq_id": 121
+        },
+        {
+         "beg_seq_id": 128,
+         "end_seq_id": 129
+        },
+        {
+         "beg_seq_id": 137,
+         "end_seq_id": 137
+        },
+        {
+         "beg_seq_id": 154,
+         "end_seq_id": 155
+        },
+        {
+         "beg_seq_id": 159,
+         "end_seq_id": 159
+        },
+        {
+         "beg_seq_id": 165,
+         "end_seq_id": 165
+        },
+        {
+         "beg_seq_id": 171,
+         "end_seq_id": 176
+        },
+        {
+         "beg_seq_id": 205,
+         "end_seq_id": 205
+        },
+        {
+         "beg_seq_id": 211,
+         "end_seq_id": 215
+        },
+        {
+         "beg_seq_id": 222,
+         "end_seq_id": 227
+        },
+        {
+         "beg_seq_id": 232,
+         "end_seq_id": 232
+        },
+        {
+         "beg_seq_id": 246,
+         "end_seq_id": 248
+        }
+       ],
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 13,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 165,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 169,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 170,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 171,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 210,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 211,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 230,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 232,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 233,
+         "end_seq_id": null
+        }
+       ],
+       "type": "BINDING_SITE"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 232,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 13,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 210,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 233,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 171,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 170,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 230,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 169,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 165,
+         "end_seq_id": null
+        }
+       ],
+       "type": "LIGAND_INTERACTION"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 13,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 15,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 23,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 25,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 29,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 32,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 36,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 42,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 48,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 52,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 54,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 59,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 67,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 71,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 77,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 83,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 89,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 98,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 101,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 104,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 111,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 113,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 115,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 124,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 132,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 135,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 139,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 142,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 145,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 148,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 152,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 163,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 168,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 176,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 183,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 188,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 195,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 209,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 217,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 219,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 226,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 237,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 242,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 247,
+         "end_seq_id": null
+        }
+       ],
+       "type": "ANGLE_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 7,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 15,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 17,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 21,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 25,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 33,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 36,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 39,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 42,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 44,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 54,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 60,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 62,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 68,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 73,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 77,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 83,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 94,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 98,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 104,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 106,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 111,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 119,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 121,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 123,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 125,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 130,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 136,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 138,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 146,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 148,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 160,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 164,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 169,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 172,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 174,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 177,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 180,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 182,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 184,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 189,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 191,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 193,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 198,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 207,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 209,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 221,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 223,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 225,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 228,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 232,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 244,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 247,
+         "end_seq_id": null
+        }
+       ],
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 92,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 100,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 115,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 150,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 185,
+         "end_seq_id": null
+        }
+       ],
+       "type": "BOND_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 248
+        }
+       ],
+       "type": "ASA"
+      }
+     ]
+    }
+   ],
+   "rcsb_entity_host_organism": [
     {
-     "rcsb_ligand_neighbors": null,
-     "rcsb_polymer_entity_instance_container_identifiers": {
-      "asym_id": "A",
-      "auth_asym_id": "A"
-     }
+     "ncbi_scientific_name": null,
+     "ncbi_taxonomy_id": null
     }
    ],
    "rcsb_id": "1HTI_1",
    "rcsb_polymer_entity": {
-    "pdbx_description": "TRIOSEPHOSPHATE ISOMERASE"
+    "pdbx_description": "TRIOSEPHOSPHATE ISOMERASE",
+    "pdbx_mutation": null
    },
    "rcsb_polymer_entity_align": [
     {
@@ -160,9 +1815,55 @@
     "uniprot_ids": [
      "P60174"
     ]
-   }
+   },
+   "rcsb_polymer_entity_feature": [
+    {
+     "feature_positions": [
+      {
+       "beg_seq_id": 6,
+       "end_seq_id": 247
+      }
+     ],
+     "name": "Triosephosphate isomerase (TIM)",
+     "type": "Pfam"
+    },
+    {
+     "feature_positions": [
+      {
+       "beg_seq_id": 5,
+       "end_seq_id": null
+      }
+     ],
+     "name": "Hydropathy values",
+     "type": "hydropathy"
+    },
+    {
+     "feature_positions": [
+      {
+       "beg_seq_id": 1,
+       "end_seq_id": null
+      }
+     ],
+     "name": "Disordered binding sites",
+     "type": "disorder_binding"
+    },
+    {
+     "feature_positions": [
+      {
+       "beg_seq_id": 1,
+       "end_seq_id": null
+      }
+     ],
+     "name": "Disordered regions",
+     "type": "disorder"
+    }
+   ]
   }
  ],
+ "rcsb_accession_info": {
+  "deposit_date": "1994-10-12T00:00:00Z",
+  "initial_release_date": "1995-01-26T00:00:00Z"
+ },
  "rcsb_entry_info": {
   "polymer_entity_count_protein": 1,
   "resolution_combined": [
@@ -170,34 +1871,18 @@
   ]
  },
  "rcsb_id": "1HTI",
- "assemblies": [
-  {
-   "rcsb_assembly_container_identifiers": {
-    "assembly_id": "1"
-   },
-   "pdbx_struct_assembly": {
-    "oligomeric_details": "dimeric",
-    "oligomeric_count": 2,
-    "details": "author_and_software_defined_assembly",
-    "method_details": "PISA"
-   },
-   "rcsb_struct_symmetry": [
-    {
-     "kind": "Global Symmetry",
-     "type": "Cyclic",
-     "oligomeric_state": "Homo 2-mer",
-     "stoichiometry": [
-      "A2"
-     ]
-    }
-   ]
-  }
- ],
  "rcsb_primary_citation": {
-  "pdbx_database_id_PubMed": 8061610,
-  "pdbx_database_id_DOI": null,
-  "title": "Crystal structure of recombinant human triosephosphate isomerase at 2.8 A resolution. Triosephosphate isomerase-related human genetic disorders and comparison with the trypanosomal enzyme.",
   "journal_abbrev": "Protein Sci.",
+  "pdbx_database_id_DOI": null,
+  "pdbx_database_id_PubMed": 8061610,
+  "title": "Crystal structure of recombinant human triosephosphate isomerase at 2.8 A resolution. Triosephosphate isomerase-related human genetic disorders and comparison with the trypanosomal enzyme.",
   "year": 1994
- }
+ },
+ "refine": [
+  {
+   "ls_R_factor_R_free": null,
+   "ls_R_factor_R_work": 0.167,
+   "pdbx_refine_id": "X-RAY DIFFRACTION"
+  }
+ ]
 }

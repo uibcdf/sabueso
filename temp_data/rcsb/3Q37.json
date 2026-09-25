@@ -1,159 +1,2058 @@
 {
- "rcsb_id": "3Q37",
+ "assemblies": [
+  {
+   "pdbx_struct_assembly": {
+    "details": "author_and_software_defined_assembly",
+    "method_details": "PISA",
+    "oligomeric_count": 2,
+    "oligomeric_details": "dimeric"
+   },
+   "rcsb_assembly_container_identifiers": {
+    "assembly_id": "1"
+   },
+   "rcsb_struct_symmetry": [
+    {
+     "kind": "Global Symmetry",
+     "oligomeric_state": "Homo 2-mer",
+     "stoichiometry": [
+      "A2"
+     ],
+     "type": "Cyclic"
+    }
+   ]
+  },
+  {
+   "pdbx_struct_assembly": {
+    "details": "author_and_software_defined_assembly",
+    "method_details": "PISA",
+    "oligomeric_count": 2,
+    "oligomeric_details": "dimeric"
+   },
+   "rcsb_assembly_container_identifiers": {
+    "assembly_id": "2"
+   },
+   "rcsb_struct_symmetry": [
+    {
+     "kind": "Global Symmetry",
+     "oligomeric_state": "Homo 2-mer",
+     "stoichiometry": [
+      "A2"
+     ],
+     "type": "Cyclic"
+    }
+   ]
+  }
+ ],
  "exptl": [
   {
    "method": "X-RAY DIFFRACTION"
   }
  ],
- "rcsb_entry_info": {
-  "resolution_combined": [
-   1.65
-  ],
-  "polymer_entity_count_protein": 1
- },
- "assemblies": [
-  {
-   "rcsb_assembly_container_identifiers": {
-    "assembly_id": "1"
-   },
-   "pdbx_struct_assembly": {
-    "oligomeric_details": "dimeric",
-    "oligomeric_count": 2,
-    "details": "author_and_software_defined_assembly",
-    "method_details": "PISA"
-   },
-   "rcsb_struct_symmetry": [
-    {
-     "kind": "Global Symmetry",
-     "type": "Cyclic",
-     "oligomeric_state": "Homo 2-mer",
-     "stoichiometry": [
-      "A2"
-     ]
-    }
-   ]
-  },
-  {
-   "rcsb_assembly_container_identifiers": {
-    "assembly_id": "2"
-   },
-   "pdbx_struct_assembly": {
-    "oligomeric_details": "dimeric",
-    "oligomeric_count": 2,
-    "details": "author_and_software_defined_assembly",
-    "method_details": "PISA"
-   },
-   "rcsb_struct_symmetry": [
-    {
-     "kind": "Global Symmetry",
-     "type": "Cyclic",
-     "oligomeric_state": "Homo 2-mer",
-     "stoichiometry": [
-      "A2"
-     ]
-    }
-   ]
-  }
- ],
+ "nonpolymer_entities": null,
  "polymer_entities": [
   {
-   "rcsb_id": "3Q37_1",
-   "rcsb_polymer_entity": {
-    "pdbx_description": "TIM from Trypanosoma cruzi/ TIM from Trypanosoma brucei brucei chimera protein"
-   },
    "entity_poly": {
+    "pdbx_seq_one_letter_code_can": "MASKPQPIAAANWKCNGSQQSLSELIDLFNSTSINHDVQCVVAPTFLHIPMTKARLTNPKFQIAAQNAITRSGAFTGEVSLQILKDYGISWVVLGHSERRAYYGETNEIVADKVAAAVASGFHVIVCVGETNEEREAGRTAAVVLTQLAAVAQKLSKEAWSRVVIAYEPVWAIGTGKVATPQQAQEVHELLRRWVRSKLGTDIAAQLRILYGGSVTAKNARTLYQMRDINGFLVGGASLKPEFVEIIEATK",
+    "rcsb_mutation_count": 0,
     "rcsb_sample_sequence_length": 251
    },
+   "polymer_entity_instances": [
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "A",
+      "auth_asym_id": "A"
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": 12
+        },
+        {
+         "beg_seq_id": 39,
+         "end_seq_id": 43
+        },
+        {
+         "beg_seq_id": 61,
+         "end_seq_id": 65
+        },
+        {
+         "beg_seq_id": 91,
+         "end_seq_id": 94
+        },
+        {
+         "beg_seq_id": 123,
+         "end_seq_id": 128
+        },
+        {
+         "beg_seq_id": 163,
+         "end_seq_id": 167
+        },
+        {
+         "beg_seq_id": 208,
+         "end_seq_id": 211
+        },
+        {
+         "beg_seq_id": 231,
+         "end_seq_id": 234
+        },
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": 12
+        }
+       ],
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 18,
+         "end_seq_id": 31
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": 47
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 48,
+         "end_seq_id": 56
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 80,
+         "end_seq_id": 87
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 96,
+         "end_seq_id": 103
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 106,
+         "end_seq_id": 120
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 131,
+         "end_seq_id": 137
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 139,
+         "end_seq_id": 153
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 157,
+         "end_seq_id": 161
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 180,
+         "end_seq_id": 200
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 200,
+         "end_seq_id": 207
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 219,
+         "end_seq_id": 225
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 235,
+         "end_seq_id": 241
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 242,
+         "end_seq_id": 249
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 7
+        },
+        {
+         "beg_seq_id": 13,
+         "end_seq_id": 17
+        },
+        {
+         "beg_seq_id": 32,
+         "end_seq_id": 38
+        },
+        {
+         "beg_seq_id": 44,
+         "end_seq_id": 44
+        },
+        {
+         "beg_seq_id": 57,
+         "end_seq_id": 60
+        },
+        {
+         "beg_seq_id": 66,
+         "end_seq_id": 79
+        },
+        {
+         "beg_seq_id": 88,
+         "end_seq_id": 90
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": 95
+        },
+        {
+         "beg_seq_id": 104,
+         "end_seq_id": 105
+        },
+        {
+         "beg_seq_id": 121,
+         "end_seq_id": 122
+        },
+        {
+         "beg_seq_id": 129,
+         "end_seq_id": 130
+        },
+        {
+         "beg_seq_id": 138,
+         "end_seq_id": 138
+        },
+        {
+         "beg_seq_id": 154,
+         "end_seq_id": 156
+        },
+        {
+         "beg_seq_id": 162,
+         "end_seq_id": 162
+        },
+        {
+         "beg_seq_id": 168,
+         "end_seq_id": 179
+        },
+        {
+         "beg_seq_id": 212,
+         "end_seq_id": 218
+        },
+        {
+         "beg_seq_id": 226,
+         "end_seq_id": 230
+        },
+        {
+         "beg_seq_id": 250,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 3
+        },
+        {
+         "beg_seq_id": 173,
+         "end_seq_id": 178
+        }
+       ],
+       "type": "UNOBSERVED_RESIDUE_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 19,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 50,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 60,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 83,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 111,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 115,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 154,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 160,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 185,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 196,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 198,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 218,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 226,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 238,
+         "end_seq_id": null
+        }
+       ],
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSCC"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSR"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSRZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        }
+       ],
+       "type": "NATOMS_EDS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        }
+       ],
+       "type": "OWAB"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        }
+       ],
+       "type": "AVERAGE_OCCUPANCY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": 172
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "ASA"
+      }
+     ]
+    },
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "B",
+      "auth_asym_id": "B"
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": 12
+        },
+        {
+         "beg_seq_id": 39,
+         "end_seq_id": 43
+        },
+        {
+         "beg_seq_id": 61,
+         "end_seq_id": 65
+        },
+        {
+         "beg_seq_id": 91,
+         "end_seq_id": 94
+        },
+        {
+         "beg_seq_id": 123,
+         "end_seq_id": 128
+        },
+        {
+         "beg_seq_id": 163,
+         "end_seq_id": 167
+        },
+        {
+         "beg_seq_id": 208,
+         "end_seq_id": 211
+        },
+        {
+         "beg_seq_id": 231,
+         "end_seq_id": 234
+        },
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": 12
+        }
+       ],
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 18,
+         "end_seq_id": 32
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": 47
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 48,
+         "end_seq_id": 56
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 80,
+         "end_seq_id": 87
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 96,
+         "end_seq_id": 103
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 106,
+         "end_seq_id": 120
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 131,
+         "end_seq_id": 137
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 139,
+         "end_seq_id": 154
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 155,
+         "end_seq_id": 161
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 180,
+         "end_seq_id": 200
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 200,
+         "end_seq_id": 207
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 219,
+         "end_seq_id": 225
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 235,
+         "end_seq_id": 240
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 241,
+         "end_seq_id": 249
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 7
+        },
+        {
+         "beg_seq_id": 13,
+         "end_seq_id": 17
+        },
+        {
+         "beg_seq_id": 33,
+         "end_seq_id": 38
+        },
+        {
+         "beg_seq_id": 44,
+         "end_seq_id": 44
+        },
+        {
+         "beg_seq_id": 57,
+         "end_seq_id": 60
+        },
+        {
+         "beg_seq_id": 66,
+         "end_seq_id": 79
+        },
+        {
+         "beg_seq_id": 88,
+         "end_seq_id": 90
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": 95
+        },
+        {
+         "beg_seq_id": 104,
+         "end_seq_id": 105
+        },
+        {
+         "beg_seq_id": 121,
+         "end_seq_id": 122
+        },
+        {
+         "beg_seq_id": 129,
+         "end_seq_id": 130
+        },
+        {
+         "beg_seq_id": 138,
+         "end_seq_id": 138
+        },
+        {
+         "beg_seq_id": 162,
+         "end_seq_id": 162
+        },
+        {
+         "beg_seq_id": 168,
+         "end_seq_id": 179
+        },
+        {
+         "beg_seq_id": 212,
+         "end_seq_id": 218
+        },
+        {
+         "beg_seq_id": 226,
+         "end_seq_id": 230
+        },
+        {
+         "beg_seq_id": 250,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 2
+        },
+        {
+         "beg_seq_id": 173,
+         "end_seq_id": 178
+        }
+       ],
+       "type": "UNOBSERVED_RESIDUE_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 25,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 50,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 71,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 82,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 87,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 108,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 118,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 131,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 133,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 159,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 189,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 193,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 196,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 199,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 203,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 217,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 221,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 238,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 242,
+         "end_seq_id": null
+        }
+       ],
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSCC"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSR"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSRZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        }
+       ],
+       "type": "NATOMS_EDS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        }
+       ],
+       "type": "OWAB"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": null
+        }
+       ],
+       "type": "AVERAGE_OCCUPANCY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 172
+        },
+        {
+         "beg_seq_id": 179,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "ASA"
+      }
+     ]
+    },
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "C",
+      "auth_asym_id": "C"
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "SCOP2B_SUPERFAMILY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": 12
+        },
+        {
+         "beg_seq_id": 39,
+         "end_seq_id": 43
+        },
+        {
+         "beg_seq_id": 61,
+         "end_seq_id": 65
+        },
+        {
+         "beg_seq_id": 91,
+         "end_seq_id": 94
+        },
+        {
+         "beg_seq_id": 123,
+         "end_seq_id": 128
+        },
+        {
+         "beg_seq_id": 163,
+         "end_seq_id": 167
+        },
+        {
+         "beg_seq_id": 208,
+         "end_seq_id": 211
+        },
+        {
+         "beg_seq_id": 231,
+         "end_seq_id": 234
+        },
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": 12
+        }
+       ],
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 18,
+         "end_seq_id": 31
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": 47
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 48,
+         "end_seq_id": 56
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 80,
+         "end_seq_id": 87
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 96,
+         "end_seq_id": 103
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 106,
+         "end_seq_id": 120
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 131,
+         "end_seq_id": 137
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 139,
+         "end_seq_id": 153
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 154,
+         "end_seq_id": 155
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 156,
+         "end_seq_id": 161
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 169,
+         "end_seq_id": 173
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 180,
+         "end_seq_id": 200
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 200,
+         "end_seq_id": 207
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 219,
+         "end_seq_id": 225
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 235,
+         "end_seq_id": 241
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 242,
+         "end_seq_id": 249
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 7
+        },
+        {
+         "beg_seq_id": 13,
+         "end_seq_id": 17
+        },
+        {
+         "beg_seq_id": 32,
+         "end_seq_id": 38
+        },
+        {
+         "beg_seq_id": 44,
+         "end_seq_id": 44
+        },
+        {
+         "beg_seq_id": 57,
+         "end_seq_id": 60
+        },
+        {
+         "beg_seq_id": 66,
+         "end_seq_id": 79
+        },
+        {
+         "beg_seq_id": 88,
+         "end_seq_id": 90
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": 95
+        },
+        {
+         "beg_seq_id": 104,
+         "end_seq_id": 105
+        },
+        {
+         "beg_seq_id": 121,
+         "end_seq_id": 122
+        },
+        {
+         "beg_seq_id": 129,
+         "end_seq_id": 130
+        },
+        {
+         "beg_seq_id": 138,
+         "end_seq_id": 138
+        },
+        {
+         "beg_seq_id": 162,
+         "end_seq_id": 162
+        },
+        {
+         "beg_seq_id": 168,
+         "end_seq_id": 168
+        },
+        {
+         "beg_seq_id": 174,
+         "end_seq_id": 179
+        },
+        {
+         "beg_seq_id": 212,
+         "end_seq_id": 218
+        },
+        {
+         "beg_seq_id": 226,
+         "end_seq_id": 230
+        },
+        {
+         "beg_seq_id": 250,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 3
+        }
+       ],
+       "type": "UNOBSERVED_RESIDUE_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 13,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 20,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 25,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 50,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 70,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 87,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 99,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 103,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 108,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 112,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 116,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 127,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 167,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 173,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 185,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 187,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 189,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 217,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 221,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 225,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 238,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 242,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 247,
+         "end_seq_id": null
+        }
+       ],
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSCC"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSR"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSRZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        }
+       ],
+       "type": "NATOMS_EDS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        }
+       ],
+       "type": "OWAB"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        }
+       ],
+       "type": "AVERAGE_OCCUPANCY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "ASA"
+      }
+     ]
+    },
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "D",
+      "auth_asym_id": "D"
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 250
+        }
+       ],
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 250
+        }
+       ],
+       "type": "SCOP2B_SUPERFAMILY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 250
+        }
+       ],
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": 12
+        },
+        {
+         "beg_seq_id": 39,
+         "end_seq_id": 43
+        },
+        {
+         "beg_seq_id": 61,
+         "end_seq_id": 65
+        },
+        {
+         "beg_seq_id": 91,
+         "end_seq_id": 94
+        },
+        {
+         "beg_seq_id": 123,
+         "end_seq_id": 128
+        },
+        {
+         "beg_seq_id": 163,
+         "end_seq_id": 167
+        },
+        {
+         "beg_seq_id": 208,
+         "end_seq_id": 211
+        },
+        {
+         "beg_seq_id": 231,
+         "end_seq_id": 234
+        },
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": 12
+        }
+       ],
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 18,
+         "end_seq_id": 31
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": 47
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 48,
+         "end_seq_id": 56
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 80,
+         "end_seq_id": 88
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 96,
+         "end_seq_id": 103
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 106,
+         "end_seq_id": 120
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 131,
+         "end_seq_id": 137
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 139,
+         "end_seq_id": 154
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 155,
+         "end_seq_id": 161
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 169,
+         "end_seq_id": 173
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 180,
+         "end_seq_id": 200
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 200,
+         "end_seq_id": 207
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 219,
+         "end_seq_id": 225
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 235,
+         "end_seq_id": 240
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 241,
+         "end_seq_id": 249
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 7
+        },
+        {
+         "beg_seq_id": 13,
+         "end_seq_id": 17
+        },
+        {
+         "beg_seq_id": 32,
+         "end_seq_id": 38
+        },
+        {
+         "beg_seq_id": 44,
+         "end_seq_id": 44
+        },
+        {
+         "beg_seq_id": 57,
+         "end_seq_id": 60
+        },
+        {
+         "beg_seq_id": 66,
+         "end_seq_id": 79
+        },
+        {
+         "beg_seq_id": 89,
+         "end_seq_id": 90
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": 95
+        },
+        {
+         "beg_seq_id": 104,
+         "end_seq_id": 105
+        },
+        {
+         "beg_seq_id": 121,
+         "end_seq_id": 122
+        },
+        {
+         "beg_seq_id": 129,
+         "end_seq_id": 130
+        },
+        {
+         "beg_seq_id": 138,
+         "end_seq_id": 138
+        },
+        {
+         "beg_seq_id": 162,
+         "end_seq_id": 162
+        },
+        {
+         "beg_seq_id": 168,
+         "end_seq_id": 168
+        },
+        {
+         "beg_seq_id": 174,
+         "end_seq_id": 179
+        },
+        {
+         "beg_seq_id": 212,
+         "end_seq_id": 218
+        },
+        {
+         "beg_seq_id": 226,
+         "end_seq_id": 230
+        },
+        {
+         "beg_seq_id": 250,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 2
+        },
+        {
+         "beg_seq_id": 251,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "UNOBSERVED_RESIDUE_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 19,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 50,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 55,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 85,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 112,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 118,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 132,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 136,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 153,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 157,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 198,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 217,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 238,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 241,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 244,
+         "end_seq_id": null
+        }
+       ],
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSCC"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSR"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSRZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        }
+       ],
+       "type": "NATOMS_EDS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        }
+       ],
+       "type": "OWAB"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        }
+       ],
+       "type": "AVERAGE_OCCUPANCY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 250
+        }
+       ],
+       "type": "ASA"
+      }
+     ]
+    }
+   ],
+   "rcsb_entity_host_organism": [
+    {
+     "ncbi_scientific_name": "Escherichia coli BL21(DE3)",
+     "ncbi_taxonomy_id": 469008
+    },
+    {
+     "ncbi_scientific_name": "Escherichia coli BL21(DE3)",
+     "ncbi_taxonomy_id": 469008
+    },
+    {
+     "ncbi_scientific_name": "Escherichia coli BL21(DE3)",
+     "ncbi_taxonomy_id": 469008
+    },
+    {
+     "ncbi_scientific_name": "Escherichia coli BL21(DE3)",
+     "ncbi_taxonomy_id": 469008
+    }
+   ],
+   "rcsb_id": "3Q37_1",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "TIM from Trypanosoma cruzi/ TIM from Trypanosoma brucei brucei chimera protein",
+    "pdbx_mutation": null
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 3,
+       "length": 16,
+       "ref_beg_seq_id": 3
+      },
+      {
+       "entity_beg_seq_id": 44,
+       "length": 57,
+       "ref_beg_seq_id": 44
+      },
+      {
+       "entity_beg_seq_id": 123,
+       "length": 129,
+       "ref_beg_seq_id": 123
+      }
+     ],
+     "reference_database_accession": "P52270",
+     "reference_database_name": "UniProt"
+    },
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 19,
+       "length": 25,
+       "ref_beg_seq_id": 18
+      },
+      {
+       "entity_beg_seq_id": 101,
+       "length": 22,
+       "ref_beg_seq_id": 100
+      }
+     ],
+     "reference_database_accession": "P04789",
+     "reference_database_name": "UniProt"
+    }
+   ],
    "rcsb_polymer_entity_container_identifiers": {
-    "entity_id": "1",
     "auth_asym_ids": [
      "A",
      "B",
      "C",
      "D"
     ],
+    "entity_id": "1",
     "uniprot_ids": [
      "P04789",
      "P52270"
     ]
    },
-   "rcsb_polymer_entity_align": [
+   "rcsb_polymer_entity_feature": [
     {
-     "reference_database_name": "UniProt",
-     "reference_database_accession": "P52270",
-     "aligned_regions": [
+     "feature_positions": [
       {
-       "entity_beg_seq_id": 3,
-       "ref_beg_seq_id": 3,
-       "length": 16
-      },
-      {
-       "entity_beg_seq_id": 44,
-       "ref_beg_seq_id": 44,
-       "length": 57
-      },
-      {
-       "entity_beg_seq_id": 123,
-       "ref_beg_seq_id": 123,
-       "length": 129
+       "beg_seq_id": 1,
+       "end_seq_id": 2
       }
-     ]
+     ],
+     "name": "expression tag",
+     "type": "artifact"
     },
     {
-     "reference_database_name": "UniProt",
-     "reference_database_accession": "P04789",
-     "aligned_regions": [
+     "feature_positions": [
       {
-       "entity_beg_seq_id": 19,
-       "ref_beg_seq_id": 18,
-       "length": 25
-      },
-      {
-       "entity_beg_seq_id": 101,
-       "ref_beg_seq_id": 100,
-       "length": 22
+       "beg_seq_id": 5,
+       "end_seq_id": null
       }
-     ]
-    }
-   ],
-   "polymer_entity_instances": [
-    {
-     "rcsb_polymer_entity_instance_container_identifiers": {
-      "asym_id": "D",
-      "auth_asym_id": "D"
-     },
-     "rcsb_ligand_neighbors": null
+     ],
+     "name": "Hydropathy values",
+     "type": "hydropathy"
     },
     {
-     "rcsb_polymer_entity_instance_container_identifiers": {
-      "asym_id": "C",
-      "auth_asym_id": "C"
-     },
-     "rcsb_ligand_neighbors": null
+     "feature_positions": [
+      {
+       "beg_seq_id": 1,
+       "end_seq_id": null
+      }
+     ],
+     "name": "Disordered binding sites",
+     "type": "disorder_binding"
     },
     {
-     "rcsb_polymer_entity_instance_container_identifiers": {
-      "asym_id": "B",
-      "auth_asym_id": "B"
-     },
-     "rcsb_ligand_neighbors": null
-    },
-    {
-     "rcsb_polymer_entity_instance_container_identifiers": {
-      "asym_id": "A",
-      "auth_asym_id": "A"
-     },
-     "rcsb_ligand_neighbors": null
+     "feature_positions": [
+      {
+       "beg_seq_id": 1,
+       "end_seq_id": null
+      }
+     ],
+     "name": "Disordered regions",
+     "type": "disorder"
     }
    ]
   }
  ],
- "nonpolymer_entities": null,
+ "rcsb_accession_info": {
+  "deposit_date": "2010-12-21T00:00:00Z",
+  "initial_release_date": "2011-09-14T00:00:00Z"
+ },
+ "rcsb_entry_info": {
+  "polymer_entity_count_protein": 1,
+  "resolution_combined": [
+   1.65
+  ]
+ },
+ "rcsb_id": "3Q37",
  "rcsb_primary_citation": {
-  "pdbx_database_id_PubMed": 21533154,
-  "pdbx_database_id_DOI": "10.1371/journal.pone.0018791",
-  "title": "Identification of amino acids that account for long-range interactions in two triosephosphate isomerases from pathogenic trypanosomes.",
   "journal_abbrev": "Plos One",
+  "pdbx_database_id_DOI": "10.1371/journal.pone.0018791",
+  "pdbx_database_id_PubMed": 21533154,
+  "title": "Identification of amino acids that account for long-range interactions in two triosephosphate isomerases from pathogenic trypanosomes.",
   "year": 2011
- }
+ },
+ "refine": [
+  {
+   "ls_R_factor_R_free": 0.2204,
+   "ls_R_factor_R_work": 0.1889,
+   "pdbx_refine_id": "X-RAY DIFFRACTION"
+  }
+ ]
 }

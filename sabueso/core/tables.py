@@ -42,6 +42,24 @@ def _structures(view: Dict[str, Any]) -> List[Dict[str, Any]]:
             "coverage_class": s["coverage_class"],
             "chains": _join(s["chains"]),
             "sources": _join(s["sources"]),
+            "released": s.get("released"),
+            "r_free": s.get("r_free"),
+            "sequence_state": s["state"]["sequence"],
+            "substitutions": _join(s.get("substitutions")),
+            "modified_residues": _join(s.get("modified_residues")),
+            "ligand_state": s["state"]["ligands"],
+            "ligands_of_interest": _join(s.get("ligands_of_interest")),
+            "oligomer": s["state"]["oligomer"],
+            "in_complex": s["state"]["in_complex"],
+            "expression_host": _join(s.get("expression_host")),
+            "missing_in_region": _join(
+                [
+                    f"{chain}: {','.join(str(p) for p in gaps)}"
+                    for chain, gaps in (s.get("missing_in_region") or {}).items()
+                    if gaps
+                ]
+            ),
+            "complete_chains": _join(s.get("complete_chains")),
         }
         for s in view["items"]
     ]

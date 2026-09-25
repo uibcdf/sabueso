@@ -96,12 +96,19 @@ class Card:
 
     @arg_digest()
     def structures(
-        self, include_fragments: bool = False, skip_digestion: bool = False
+        self,
+        include_fragments: bool = False,
+        region: Any = None,
+        skip_digestion: bool = False,
     ) -> Dict[str, Any]:
-        """Protein-centric view of this card's experimental structures."""
+        """Protein-centric view of this card's experimental structures.
+
+        ``region`` (UniProt positions and ``[begin, end]`` ranges) adds, per chain, the
+        region's residues without coordinates.
+        """
         from .structures import structures_view
 
-        return structures_view(self, include_fragments=include_fragments)
+        return structures_view(self, include_fragments=include_fragments, region=region)
 
     @arg_digest()
     def bioactivities(
