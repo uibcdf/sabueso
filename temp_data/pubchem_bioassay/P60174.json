@@ -1,0 +1,1509 @@
+{
+ "aids": [
+  214625,
+  292822,
+  445518,
+  548114,
+  594834,
+  1632139,
+  1632140,
+  1803397,
+  2115908,
+  2149642,
+  2254543
+ ],
+ "summaries": [
+  {
+   "AID": 214625,
+   "SourceName": "ChEMBL",
+   "SourceID": "CHEMBL816360",
+   "Name": "Binding affinity against Triosephosphate isomerase",
+   "Description": [
+    "Title: Simple, intuitive calculations of free energy of binding for protein-ligand complexes. 1. Models without explicit constrained water.",
+    "",
+    "Abstract: The prediction of the binding affinity between a protein and ligands is one of the most challenging issues for computational biochemistry and drug discovery. While the enthalpic contribution to binding is routinely available with molecular mechanics methods, the entropic contribution is more difficult to estimate. We describe and apply a relatively simple and intuitive calculation procedure for estimating the free energy of binding for 53 protein-ligand complexes formed by 17 proteins of known three-dimensional structure and characterized by different active site polarity. HINT, a software model based on experimental LogP(o/w) values for small organic molecules, was used to evaluate and score all atom-atom hydropathic interactions between the protein and the ligands. These total scores (H(TOTAL)), which have been previously shown to correlate with DeltaG(interaction) for protein-protein interactions, correlate with DeltaG(binding) for protein-ligand complexes in the present study with a standard error of +/-2.6 kcal mol(-1) from the equation DeltaG(binding) = -0.001 95 H(TOTAL) - 5.543. A more sophisticated model, utilizing categorized (by interaction class) HINT scores, produces a superior standard error of +/-1.8 kcal mol(-1). It is shown that within families of ligands for the same protein binding site, better models can be obtained with standard errors approaching +/-1.0 kcal mol(-1). Standardized methods for preparing crystallographic models for hydropathic analysis are also described. Particular attention is paid to the relationship between the ionization state of the ligands and the pH conditions under which the binding measurements are made. Sources and potential remedies of experimental and modeling errors affecting prediction of DeltaG(binding) are discussed."
+   ],
+   "Comment": [
+    "Journal: J Med Chem",
+    "Year: 2002",
+    "Volume: 45",
+    "Issue: 12",
+    "First Page: 2469",
+    "Last Page: 2483",
+    "DOI: 10.1021/jm0200299",
+    "",
+    "Target ChEMBL ID: CHEMBL4880",
+    "ChEMBL Target Name: Triosephosphate isomerase",
+    "ChEMBL Target Type: SINGLE PROTEIN - Target is a single protein chain",
+    "Relationship Type: H - Homologous protein target assigned",
+    "Confidence: Homologous single protein target assigned"
+   ],
+   "NumberOfTIDs": 5,
+   "HasScore": false,
+   "Method": "confirmatory",
+   "Target": [
+    {
+     "Accession": "P60174",
+     "Name": "Triosephosphate isomerase"
+    }
+   ],
+   "Version": 13,
+   "Revision": 1,
+   "LastDataChange": {
+    "Year": 2022,
+    "Month": 8,
+    "Day": 30
+   },
+   "SIDCountAll": 1,
+   "SIDCountActive": 0,
+   "SIDCountInactive": 0,
+   "SIDCountInconclusive": 0,
+   "SIDCountUnspecified": 1,
+   "SIDCountProbe": 0,
+   "CIDCountAll": 1,
+   "CIDCountActive": 0,
+   "CIDCountInactive": 0,
+   "CIDCountInconclusive": 0,
+   "CIDCountUnspecified": 1,
+   "CIDCountProbe": 0
+  },
+  {
+   "AID": 292822,
+   "SourceName": "ChEMBL",
+   "SourceID": "CHEMBL889943",
+   "Name": "Inhibition of triosephosphate isomerase",
+   "Description": [
+    "Title: New competitive inhibitors of cytosolic (NADH-dependent) rabbit muscle glycerophosphate dehydrogenase.",
+    "",
+    "Abstract: We report the synthesis and biochemical evaluation of new competitive inhibitors of the cytosolic (NADH-dependent) glycerophosphate dehydrogenase. The best tested compound, phosphono-propionohydroxamic acid, with a Ki of 6 microM, might be of interest as an anti-obesity drug."
+   ],
+   "Comment": [
+    "Compounds with activity <= 10uM or explicitly reported as active by ChEMBL are flagged as active in this PubChem assay presentation.",
+    "",
+    "Journal: Bioorg Med Chem Lett",
+    "Year: 2007",
+    "Volume: 17",
+    "Issue: 2",
+    "First Page: 410",
+    "Last Page: 413",
+    "DOI: 10.1016/j.bmcl.2006.10.030",
+    "",
+    "Target ChEMBL ID: CHEMBL4880",
+    "ChEMBL Target Name: Triosephosphate isomerase",
+    "ChEMBL Target Type: SINGLE PROTEIN - Target is a single protein chain",
+    "Relationship Type: H - Homologous protein target assigned",
+    "Confidence: Homologous single protein target assigned"
+   ],
+   "NumberOfTIDs": 6,
+   "HasScore": false,
+   "Method": "confirmatory",
+   "Target": [
+    {
+     "Accession": "P60174",
+     "Name": "Triosephosphate isomerase"
+    }
+   ],
+   "Version": 10,
+   "Revision": 2,
+   "LastDataChange": {
+    "Year": 2022,
+    "Month": 8,
+    "Day": 30
+   },
+   "SIDCountAll": 6,
+   "SIDCountActive": 2,
+   "SIDCountInactive": 0,
+   "SIDCountInconclusive": 0,
+   "SIDCountUnspecified": 4,
+   "SIDCountProbe": 0,
+   "CIDCountAll": 6,
+   "CIDCountActive": 2,
+   "CIDCountInactive": 0,
+   "CIDCountInconclusive": 0,
+   "CIDCountUnspecified": 4,
+   "CIDCountProbe": 0
+  },
+  {
+   "AID": 445518,
+   "SourceName": "ChEMBL",
+   "SourceID": "CHEMBL1049666",
+   "Name": "Inhibition of human recombinant triosephosphate isomerase after 2 hrs",
+   "Description": [
+    "Title: Selective inactivation of triosephosphate isomerase from Trypanosoma cruzi by brevifolin carboxylate derivatives isolated from Geranium bellum Rose.",
+    "",
+    "Abstract: In the search of molecules that can serve as leads in the design of a new drug for the treatment of Chagas' disease, we found that some brevifolin carboxylate derivatives isolated from Geranium bellum Rose, inactivate triosephosphate isomerase from Trypanosoma cruzi (TcTIM) in a species-specific manner. After spectroscopic characterization, these compounds were identified as methylbrevifolin carboxylate (1), ethylbrevifolin carboxylate (2), butylbrevifolin carboxylate (3) and the methylated derivate methyl tri-O-methylbrevifolin carboxylate (4). The concentrations required to inactivate fifty percent the activity of TcTIM were 6.5, 8 and 14 microM of 1, 2 and 3, respectively, while compound 4 had no inhibitory effect. Molecular docking simulations of 1 on the structure of TcTIM showed that residues of both monomers interact with the compound. These compounds are very selective with respect to the parasite enzyme, since they showed no effect on the activity of human TIM at concentrations as high as 1mM. In conclusion, the brevifolin carboxylate derivatives described here are excellent leads in the search of a new chemotherapy for the treatment of this disease."
+   ],
+   "Comment": [
+    "Journal: Bioorg Med Chem Lett",
+    "Year: 2009",
+    "Volume: 19",
+    "Issue: 20",
+    "First Page: 5936",
+    "Last Page: 5939",
+    "DOI: 10.1016/j.bmcl.2009.08.055",
+    "",
+    "Target ChEMBL ID: CHEMBL4880",
+    "ChEMBL Target Name: Triosephosphate isomerase",
+    "ChEMBL Target Type: SINGLE PROTEIN - Target is a single protein chain",
+    "Relationship Type: D - Direct protein target assigned",
+    "Confidence: Direct single protein target assigned"
+   ],
+   "NumberOfTIDs": 6,
+   "HasScore": false,
+   "Method": "confirmatory",
+   "Target": [
+    {
+     "Accession": "P60174",
+     "Name": "Triosephosphate isomerase"
+    }
+   ],
+   "Version": 7,
+   "Revision": 1,
+   "LastDataChange": {
+    "Year": 2018,
+    "Month": 9,
+    "Day": 11
+   },
+   "SIDCountAll": 4,
+   "SIDCountActive": 0,
+   "SIDCountInactive": 0,
+   "SIDCountInconclusive": 0,
+   "SIDCountUnspecified": 4,
+   "SIDCountProbe": 0,
+   "CIDCountAll": 4,
+   "CIDCountActive": 0,
+   "CIDCountInactive": 0,
+   "CIDCountInconclusive": 0,
+   "CIDCountUnspecified": 4,
+   "CIDCountProbe": 0
+  },
+  {
+   "AID": 548114,
+   "SourceName": "ChEMBL",
+   "SourceID": "CHEMBL1641191",
+   "Name": "Inhibition of human triosephosphate isomerase at 100 uM after 2 hrs",
+   "Description": [
+    "Title: Massive screening yields novel and selective Trypanosoma cruzi triosephosphate isomerase dimer-interface-irreversible inhibitors with anti-trypanosomal activity.",
+    "",
+    "Abstract: Triosephosphate isomerase from Trypanosoma cruzi (TcTIM), an enzyme in the glycolytic pathway that exhibits high catalytic rates of glyceraldehyde-3-phosphate- and dihydroxyacetone-phosphate-isomerization only in its dimeric form, was screened against an in-house chemical library containing nearly 230 compounds belonging to different chemotypes. After secondary screening, twenty-six compounds from eight different chemotypes were identified as screening positives. Four compounds displayed selectivity for TcTIM over TIM from Homo sapiens and, concomitantly, in vitro activity against T. cruzi."
+   ],
+   "Comment": [
+    "Journal: Eur J Med Chem",
+    "Year: 2010",
+    "Volume: 45",
+    "Issue: 12",
+    "First Page: 5767",
+    "Last Page: 5772",
+    "DOI: 10.1016/j.ejmech.2010.09.034",
+    "",
+    "Target ChEMBL ID: CHEMBL4880",
+    "ChEMBL Target Name: Triosephosphate isomerase",
+    "ChEMBL Target Type: SINGLE PROTEIN - Target is a single protein chain",
+    "Relationship Type: D - Direct protein target assigned",
+    "Confidence: Direct single protein target assigned"
+   ],
+   "NumberOfTIDs": 5,
+   "HasScore": false,
+   "Target": [
+    {
+     "Accession": "P60174",
+     "Name": "Triosephosphate isomerase"
+    }
+   ],
+   "Version": 4,
+   "Revision": 1,
+   "LastDataChange": {
+    "Year": 2018,
+    "Month": 9,
+    "Day": 15
+   },
+   "SIDCountAll": 5,
+   "SIDCountActive": 0,
+   "SIDCountInactive": 0,
+   "SIDCountInconclusive": 1,
+   "SIDCountUnspecified": 4,
+   "SIDCountProbe": 0,
+   "CIDCountAll": 5,
+   "CIDCountActive": 0,
+   "CIDCountInactive": 0,
+   "CIDCountInconclusive": 1,
+   "CIDCountUnspecified": 4,
+   "CIDCountProbe": 0
+  },
+  {
+   "AID": 594834,
+   "SourceName": "ChEMBL",
+   "SourceID": "CHEMBL1772000",
+   "Name": "Inhibition of Triosephosphate isomerase",
+   "Description": [
+    "Title: Enediol mimics as inhibitors of the D-arabinose 5-phosphate isomerase (KdsD) from Francisella tularensis.",
+    "",
+    "Abstract: We explored the D-arabinose 5-phosphate isomerase (KdsD, E.C. 5.3.1.13) from Francisella tularensis, a highly infectious gram-negative pathogen that has raised concern as a potential bioweapon, as a target for the development of novel chemotherapeutics. F. tularensis KdsD was expressed in Escherichia coli from a synthetic gene, purified, and characterized. A group of hydroxamates designed to be mimics of the putative enediol intermediate in the enzyme's catalytic mechanism were prepared and tested as inhibitors of F. tularensis KdsD. The best inhibitor, which has an IC(50) of 7 \u03bcM, is the most potent KdsD inhibitor reported to date."
+   ],
+   "Comment": [
+    "Compounds with activity <= 10uM or explicitly reported as active by ChEMBL are flagged as active in this PubChem assay presentation.",
+    "",
+    "Journal: Bioorg Med Chem Lett",
+    "Year: 2011",
+    "Volume: 21",
+    "Issue: 9",
+    "First Page: 2679",
+    "Last Page: 2682",
+    "DOI: 10.1016/j.bmcl.2010.12.066",
+    "",
+    "Target ChEMBL ID: CHEMBL4880",
+    "ChEMBL Target Name: Triosephosphate isomerase",
+    "ChEMBL Target Type: SINGLE PROTEIN - Target is a single protein chain",
+    "Relationship Type: H - Homologous protein target assigned",
+    "Confidence: Homologous single protein target assigned"
+   ],
+   "NumberOfTIDs": 5,
+   "HasScore": false,
+   "Method": "confirmatory",
+   "Target": [
+    {
+     "Accession": "P60174",
+     "Name": "Triosephosphate isomerase"
+    }
+   ],
+   "Version": 7,
+   "Revision": 3,
+   "LastDataChange": {
+    "Year": 2022,
+    "Month": 8,
+    "Day": 30
+   },
+   "SIDCountAll": 1,
+   "SIDCountActive": 1,
+   "SIDCountInactive": 0,
+   "SIDCountInconclusive": 0,
+   "SIDCountUnspecified": 0,
+   "SIDCountProbe": 0,
+   "CIDCountAll": 1,
+   "CIDCountActive": 1,
+   "CIDCountInactive": 0,
+   "CIDCountInconclusive": 0,
+   "CIDCountUnspecified": 0,
+   "CIDCountProbe": 0
+  },
+  {
+   "AID": 1632139,
+   "SourceName": "ChEMBL",
+   "SourceID": "CHEMBL4432301",
+   "Name": "Inhibition of recombinant human triosephosphate isomerase assessed as reduction of DHAP at 100 uM after 2 hrs by measuring NADH consumption by alpha-glycerolphosphate dehydrogenase coupled assay",
+   "Description": [
+    "Title: Synthesis and trypanocidal activity of novel benzimidazole derivatives.",
+    "",
+    "Abstract: The present work reports the synthesis and biological activity of a series of 14 benzimidazole derivatives designed to act on the enzyme triosephosphate isomerase of Trypanosoma cruzi (TcTIM). This enzyme is involved in the metabolism of glucose, the only source of energy for the parasite. In this study, we found four compounds that inhibit TcTIM moderately and lack inhibitory activity against human TIM (HsTIM). In vitro studies against T. cruzi epimastigotes showed two compounds that were more active than the reference drug nifurtimox, and these presented a low cytotoxic effect in mouse macrophages (J744 cell line)."
+   ],
+   "Comment": [
+    "Journal: Bioorg Med Chem Lett",
+    "Year: 2016",
+    "Volume: 26",
+    "Issue: 17",
+    "First Page: 4377",
+    "Last Page: 4381",
+    "DOI: 10.1016/j.bmcl.2015.08.018",
+    "",
+    "Target ChEMBL ID: CHEMBL4880",
+    "ChEMBL Target Name: Triosephosphate isomerase",
+    "ChEMBL Target Type: SINGLE PROTEIN - Target is a single protein chain",
+    "Relationship Type: D - Direct protein target assigned",
+    "Confidence: Direct single protein target assigned"
+   ],
+   "NumberOfTIDs": 4,
+   "HasScore": false,
+   "Target": [
+    {
+     "Accession": "P60174",
+     "Name": "Triosephosphate isomerase"
+    }
+   ],
+   "Version": 1,
+   "Revision": 1,
+   "LastDataChange": {
+    "Year": 2021,
+    "Month": 3,
+    "Day": 2
+   },
+   "SIDCountAll": 2,
+   "SIDCountActive": 0,
+   "SIDCountInactive": 0,
+   "SIDCountInconclusive": 0,
+   "SIDCountUnspecified": 2,
+   "SIDCountProbe": 0,
+   "CIDCountAll": 2,
+   "CIDCountActive": 0,
+   "CIDCountInactive": 0,
+   "CIDCountInconclusive": 0,
+   "CIDCountUnspecified": 2,
+   "CIDCountProbe": 0
+  },
+  {
+   "AID": 1632140,
+   "SourceName": "ChEMBL",
+   "SourceID": "CHEMBL4432302",
+   "Name": "Inhibition of recombinant human triosephosphate isomerase assessed as reduction of DHAP at 200 uM after 2 hrs by measuring NADH consumption by alpha-glycerolphosphate dehydrogenase coupled assay",
+   "Description": [
+    "Title: Synthesis and trypanocidal activity of novel benzimidazole derivatives.",
+    "",
+    "Abstract: The present work reports the synthesis and biological activity of a series of 14 benzimidazole derivatives designed to act on the enzyme triosephosphate isomerase of Trypanosoma cruzi (TcTIM). This enzyme is involved in the metabolism of glucose, the only source of energy for the parasite. In this study, we found four compounds that inhibit TcTIM moderately and lack inhibitory activity against human TIM (HsTIM). In vitro studies against T. cruzi epimastigotes showed two compounds that were more active than the reference drug nifurtimox, and these presented a low cytotoxic effect in mouse macrophages (J744 cell line)."
+   ],
+   "Comment": [
+    "Journal: Bioorg Med Chem Lett",
+    "Year: 2016",
+    "Volume: 26",
+    "Issue: 17",
+    "First Page: 4377",
+    "Last Page: 4381",
+    "DOI: 10.1016/j.bmcl.2015.08.018",
+    "",
+    "Target ChEMBL ID: CHEMBL4880",
+    "ChEMBL Target Name: Triosephosphate isomerase",
+    "ChEMBL Target Type: SINGLE PROTEIN - Target is a single protein chain",
+    "Relationship Type: D - Direct protein target assigned",
+    "Confidence: Direct single protein target assigned"
+   ],
+   "NumberOfTIDs": 4,
+   "HasScore": false,
+   "Target": [
+    {
+     "Accession": "P60174",
+     "Name": "Triosephosphate isomerase"
+    }
+   ],
+   "Version": 1,
+   "Revision": 1,
+   "LastDataChange": {
+    "Year": 2021,
+    "Month": 3,
+    "Day": 2
+   },
+   "SIDCountAll": 3,
+   "SIDCountActive": 0,
+   "SIDCountInactive": 0,
+   "SIDCountInconclusive": 0,
+   "SIDCountUnspecified": 3,
+   "SIDCountProbe": 0,
+   "CIDCountAll": 3,
+   "CIDCountActive": 0,
+   "CIDCountInactive": 0,
+   "CIDCountInconclusive": 0,
+   "CIDCountUnspecified": 3,
+   "CIDCountProbe": 0
+  },
+  {
+   "AID": 1803397,
+   "SourceName": "BindingDB",
+   "SourceID": "BindingDB_8411_1",
+   "Name": "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+   "Description": [
+    "The reaction mixture (1 mL, pH 7.4) contained 100mM triethanolamine, 10mM EDTA, 0.2mM NADH, 1mM glyceraldehyde 3-phosphate (GAP) and 0.9 units of &alpha;-glycerol phosphate dehydrogenase (&alpha;-GPDH). The reaction was initiated by addition of 5 ng/mL of the corresponding TIM or the corresponding TIM pre-incubated with the studied compounds. In these cases, inhibition assays, the enzymes were pre-incubated for 2 h at 37 &deg;C with the studied compounds."
+   ],
+   "Comment": [
+    "Compounds with any of Ki, IC50, Kd, or EC50 activity value <= 10uM are labeled as \"Active\".",
+    "If multiple measurements are available for a given compound, it is labeled as \"Active\" if any of the measurements meet the criterion. Activity values are checked in the order of Ki, IC50, Kd, and EC50. The first entry that meets the above activity threshold is used to determine \"Standard Type\", \"Standard Relation\", and \"PubChem Standard Value\". Otherwise, the first non-empty entry will be used to set those values."
+   ],
+   "NumberOfTIDs": 8,
+   "HasScore": false,
+   "Method": "confirmatory",
+   "Target": [
+    {
+     "Accession": "P04789",
+     "Name": "Triosephosphate isomerase, glycosomal"
+    },
+    {
+     "Accession": "P60174",
+     "Name": "Triosephosphate isomerase"
+    }
+   ],
+   "Version": 3,
+   "Revision": 1,
+   "LastDataChange": {
+    "Year": 2024,
+    "Month": 11,
+    "Day": 12
+   },
+   "SIDCountAll": 3,
+   "SIDCountActive": 0,
+   "SIDCountInactive": 3,
+   "SIDCountInconclusive": 0,
+   "SIDCountUnspecified": 0,
+   "SIDCountProbe": 0,
+   "CIDCountAll": 3,
+   "CIDCountActive": 0,
+   "CIDCountInactive": 3,
+   "CIDCountInconclusive": 0,
+   "CIDCountUnspecified": 0,
+   "CIDCountProbe": 0
+  },
+  {
+   "AID": 2115908,
+   "SourceName": "ChEMBL",
+   "SourceID": "CHEMBL5580674",
+   "Name": "Inhibition of TPI (unknown origin)",
+   "Description": [
+    "Title: Dual-target inhibitors of colchicine binding site for cancer treatment.",
+    "",
+    "Abstract: Colchicine binding site inhibitors (CBSIs) have attracted much attention due to their antitumor efficacies and the advantages of inhibiting angiogenesis and overcoming multidrug resistance. However, no CBSI has been currently approved for cancer treatment due to the insufficient efficacies, serious toxicities and poor pharmacokinetic properties. Design of dual-target inhibitors is becoming a potential strategy for cancer treatment to improve anticancer efficacy, decrease adverse events and overcome drug resistance. Therefore, we reviewed dual-target inhibitors of colchicine binding site (CBS), summarized the design strategies and the biological activities of these dual-target inhibitors, expecting to provide inspiration for developing novel dual inhibitors based on CBS."
+   ],
+   "Comment": [
+    "Compounds with activity <= 10uM or explicitly reported as active by ChEMBL are flagged as active in this PubChem assay presentation.",
+    "",
+    "Journal: Eur J Med Chem",
+    "Year: 2024",
+    "Volume: 274",
+    "First Page: 116543",
+    "Last Page: 116543",
+    "DOI: 10.1016/j.ejmech.2024.116543",
+    "",
+    "Target ChEMBL ID: CHEMBL4880",
+    "ChEMBL Target Name: Triosephosphate isomerase",
+    "ChEMBL Target Type: SINGLE PROTEIN - Target is a single protein chain",
+    "Relationship Type: D - Direct protein target assigned",
+    "Confidence: Direct single protein target assigned"
+   ],
+   "NumberOfTIDs": 5,
+   "HasScore": false,
+   "Method": "confirmatory",
+   "Target": [
+    {
+     "Accession": "P60174",
+     "Name": "Triosephosphate isomerase"
+    }
+   ],
+   "Version": 1,
+   "Revision": 1,
+   "LastDataChange": {
+    "Year": 2025,
+    "Month": 11,
+    "Day": 25
+   },
+   "SIDCountAll": 4,
+   "SIDCountActive": 4,
+   "SIDCountInactive": 0,
+   "SIDCountInconclusive": 0,
+   "SIDCountUnspecified": 0,
+   "SIDCountProbe": 0,
+   "CIDCountAll": 4,
+   "CIDCountActive": 4,
+   "CIDCountInactive": 0,
+   "CIDCountInconclusive": 0,
+   "CIDCountUnspecified": 0,
+   "CIDCountProbe": 0
+  },
+  {
+   "AID": 2149642,
+   "SourceName": "ChEMBL",
+   "SourceID": "CHEMBL5652684",
+   "Name": "Binding affinity to human TPI1 incubated for 45 mins by Kinobead based pull down assay",
+   "Description": [
+    "Title: NVP-BHG712: Effects of Regioisomers on the Affinity and Selectivity toward the EPHrin Family.",
+    "",
+    "Abstract: Erythropoietin-producing hepatocellular (EPH) receptors are transmembrane receptor tyrosine kinases. Their extracellular domains bind specifically to ephrin A/B ligands, and this binding modulates intracellular kinase activity. EPHs are key players in bidirectional intercellular signaling, controlling cell morphology, adhesion, and migration. They are increasingly recognized as cancer drug targets. We analyzed the binding of NVP-BHG712 (NVP) to EPHA2 and EPHB4. Unexpectedly, all tested commercially available NVP samples turned out to be a regioisomer (NVPiso) of the inhibitor, initially described in a Novartis patent application. They only differ by the localization of a single methyl group on either one of two adjacent nitrogen atoms. The two compounds of identical mass revealed different binding modes. Furthermore, both in vitro and in vivo experiments showed that the isomers differ in their kinase affinity and selectivity."
+   ],
+   "Comment": [
+    "Compounds with activity <= 10uM or explicitly reported as active by ChEMBL are flagged as active in this PubChem assay presentation.",
+    "",
+    "Journal: ChemMedChem",
+    "Year: 2018",
+    "Volume: 13",
+    "Issue: 16",
+    "First Page: 1629",
+    "Last Page: 1633",
+    "DOI: 10.1002/cmdc.201800398",
+    "",
+    "Target ChEMBL ID: CHEMBL4880",
+    "ChEMBL Target Name: Triosephosphate isomerase",
+    "ChEMBL Target Type: SINGLE PROTEIN - Target is a single protein chain",
+    "Relationship Type: D - Direct protein target assigned",
+    "Confidence: Direct single protein target assigned",
+    "",
+    "Data Source: Chemical Probe data from Scientific Literature"
+   ],
+   "NumberOfTIDs": 5,
+   "HasScore": false,
+   "Method": "confirmatory",
+   "Target": [
+    {
+     "Accession": "P60174",
+     "Name": "Triosephosphate isomerase"
+    }
+   ],
+   "Version": 1,
+   "Revision": 1,
+   "LastDataChange": {
+    "Year": 2025,
+    "Month": 11,
+    "Day": 25
+   },
+   "SIDCountAll": 2,
+   "SIDCountActive": 2,
+   "SIDCountInactive": 0,
+   "SIDCountInconclusive": 0,
+   "SIDCountUnspecified": 0,
+   "SIDCountProbe": 0,
+   "CIDCountAll": 2,
+   "CIDCountActive": 2,
+   "CIDCountInactive": 0,
+   "CIDCountInconclusive": 0,
+   "CIDCountUnspecified": 0,
+   "CIDCountProbe": 0
+  },
+  {
+   "AID": 2254543,
+   "SourceName": "ChEMBL",
+   "SourceID": "CHEMBL6128719",
+   "Name": "Inhibition of TPI1 (unknown origin)",
+   "Description": [
+    "Title: Novel mechanistic insights - A brand new Era for anti-HBV drugs.",
+    "",
+    "Abstract: Hepatitis B Virus (HBV) remains a critical global health issue, with substantial morbidity and mortality. Current therapies, including interferons and nucleoside analogs, often fail to achieve complete cure or functional eradication. This review explores recent advances in anti-HBV agents, focusing on their innovative mechanisms of action. HBV entry inhibitors target the sodium taurocholate cotransporting polypeptide (NTCP) receptor, impeding viral entry, while nucleus translocation inhibitors disrupt key viral life cycle steps, preventing replication. Capsid assembly modulators inhibit covalently closed circular DNA (cccDNA) formation, aiming to eradicate the persistent viral reservoir. Transcription inhibitors targeting cccDNA and integrated DNA offer significant potential to suppress HBV replication. Immunomodulatory agents are highlighted for their ability to enhance host immune responses, facil-itating better control and possible eradication of HBV. These novel approaches represent significant advancements in HBV therapy, providing new strategies to overcome current treatment limitations. The development of cccDNA reducers is particularly critical, as they directly target the persistent viral reservoir, offering a promising pathway towards achieving a functional cure or complete viral eradication. Continued research in this area is essential to advance the effectiveness of anti-HBV therapies."
+   ],
+   "Comment": [
+    "Compounds with activity <= 10uM or explicitly reported as active by ChEMBL are flagged as active in this PubChem assay presentation.",
+    "",
+    "Journal: Eur J Med Chem",
+    "Year: 2024",
+    "Volume: 279",
+    "First Page: 116854",
+    "Last Page: 116854",
+    "DOI: 10.1016/j.ejmech.2024.116854",
+    "",
+    "Target ChEMBL ID: CHEMBL4880",
+    "ChEMBL Target Name: Triosephosphate isomerase",
+    "ChEMBL Target Type: SINGLE PROTEIN - Target is a single protein chain",
+    "Relationship Type: D - Direct protein target assigned",
+    "Confidence: Direct single protein target assigned"
+   ],
+   "NumberOfTIDs": 5,
+   "HasScore": false,
+   "Method": "confirmatory",
+   "Target": [
+    {
+     "Accession": "P60174",
+     "Name": "Triosephosphate isomerase"
+    }
+   ],
+   "Version": 1,
+   "Revision": 1,
+   "LastDataChange": {
+    "Year": 2026,
+    "Month": 6,
+    "Day": 14
+   },
+   "SIDCountAll": 6,
+   "SIDCountActive": 5,
+   "SIDCountInactive": 0,
+   "SIDCountInconclusive": 0,
+   "SIDCountUnspecified": 1,
+   "SIDCountProbe": 0,
+   "CIDCountAll": 6,
+   "CIDCountActive": 5,
+   "CIDCountInactive": 0,
+   "CIDCountInconclusive": 0,
+   "CIDCountUnspecified": 1,
+   "CIDCountProbe": 0
+  }
+ ],
+ "concise": {
+  "214625": {
+   "Columns": {
+    "Column": [
+     "AID",
+     "SID",
+     "CID",
+     "Activity Outcome",
+     "Target Accession",
+     "Target GeneID",
+     "Activity Value [uM]",
+     "Activity Name",
+     "Assay Name",
+     "Assay Type",
+     "PubMed ID",
+     "RNAi"
+    ]
+   },
+   "Row": [
+    {
+     "Cell": [
+      "214625",
+      "242581948",
+      "6323453",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "15",
+      "Ki",
+      "Binding affinity against Triosephosphate isomerase",
+      "Confirmatory",
+      "12036355",
+      ""
+     ]
+    }
+   ]
+  },
+  "292822": {
+   "Columns": {
+    "Column": [
+     "AID",
+     "SID",
+     "CID",
+     "Activity Outcome",
+     "Target Accession",
+     "Target GeneID",
+     "Activity Value [uM]",
+     "Activity Name",
+     "Assay Name",
+     "Assay Type",
+     "PubMed ID",
+     "RNAi"
+    ]
+   },
+   "Row": [
+    {
+     "Cell": [
+      "292822",
+      "103467364",
+      "4797",
+      "Active",
+      "P60174",
+      "7167",
+      "3",
+      "Ki",
+      "Inhibition of triosephosphate isomerase",
+      "Confirmatory",
+      "17088060",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "292822",
+      "103467398",
+      "10442109",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "111",
+      "Ki",
+      "Inhibition of triosephosphate isomerase",
+      "Confirmatory",
+      "17088060",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "292822",
+      "103467663",
+      "44330762",
+      "Active",
+      "P60174",
+      "7167",
+      "4.5",
+      "Ki",
+      "Inhibition of triosephosphate isomerase",
+      "Confirmatory",
+      "17088060",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "292822",
+      "103467664",
+      "16216823",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "160",
+      "Ki",
+      "Inhibition of triosephosphate isomerase",
+      "Confirmatory",
+      "17088060",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "292822",
+      "103533359",
+      "44431133",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "500",
+      "Ki",
+      "Inhibition of triosephosphate isomerase",
+      "Confirmatory",
+      "17088060",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "292822",
+      "103762083",
+      "44431131",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "1000",
+      "Ki",
+      "Inhibition of triosephosphate isomerase",
+      "Confirmatory",
+      "17088060",
+      ""
+     ]
+    }
+   ]
+  },
+  "445518": {
+   "Columns": {
+    "Column": [
+     "AID",
+     "SID",
+     "CID",
+     "Activity Outcome",
+     "Target Accession",
+     "Target GeneID",
+     "Activity Value [uM]",
+     "Activity Name",
+     "Assay Name",
+     "Assay Type",
+     "PubMed ID",
+     "RNAi"
+    ]
+   },
+   "Row": [
+    {
+     "Cell": [
+      "445518",
+      "103708354",
+      "5319518",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "1000",
+      "IC50",
+      "Inhibition of human recombinant triosephosphate isomerase after 2 hrs",
+      "Confirmatory",
+      "19733070",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "445518",
+      "103708355",
+      "5487248",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "1000",
+      "IC50",
+      "Inhibition of human recombinant triosephosphate isomerase after 2 hrs",
+      "Confirmatory",
+      "19733070",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "445518",
+      "103708365",
+      "44610757",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "1000",
+      "IC50",
+      "Inhibition of human recombinant triosephosphate isomerase after 2 hrs",
+      "Confirmatory",
+      "19733070",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "445518",
+      "103708366",
+      "45487725",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "1000",
+      "IC50",
+      "Inhibition of human recombinant triosephosphate isomerase after 2 hrs",
+      "Confirmatory",
+      "19733070",
+      ""
+     ]
+    }
+   ]
+  },
+  "548114": {
+   "Columns": {
+    "Column": [
+     "AID",
+     "SID",
+     "CID",
+     "Activity Outcome",
+     "Target Accession",
+     "Target GeneID",
+     "Activity Value [uM]",
+     "Activity Name",
+     "Assay Name",
+     "Assay Type",
+     "PubMed ID",
+     "RNAi"
+    ]
+   },
+   "Row": [
+    {
+     "Cell": [
+      "548114",
+      "103570089",
+      "135697429",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "",
+      "",
+      "Inhibition of human triosephosphate isomerase at 100 uM after 2 hrs",
+      "Other",
+      "20889239",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "548114",
+      "123083675",
+      "136032536",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "",
+      "",
+      "Inhibition of human triosephosphate isomerase at 100 uM after 2 hrs",
+      "Other",
+      "20889239",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "548114",
+      "124961364",
+      "853170",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "",
+      "",
+      "Inhibition of human triosephosphate isomerase at 100 uM after 2 hrs",
+      "Other",
+      "20889239",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "548114",
+      "124961927",
+      "10766661",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "",
+      "",
+      "Inhibition of human triosephosphate isomerase at 100 uM after 2 hrs",
+      "Other",
+      "20889239",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "548114",
+      "124972489",
+      "373938",
+      "Inconclusive",
+      "P60174",
+      "7167",
+      "",
+      "",
+      "Inhibition of human triosephosphate isomerase at 100 uM after 2 hrs",
+      "Other",
+      "20889239",
+      ""
+     ]
+    }
+   ]
+  },
+  "594834": {
+   "Columns": {
+    "Column": [
+     "AID",
+     "SID",
+     "CID",
+     "Activity Outcome",
+     "Target Accession",
+     "Target GeneID",
+     "Activity Value [uM]",
+     "Activity Name",
+     "Assay Name",
+     "Assay Type",
+     "PubMed ID",
+     "RNAi"
+    ]
+   },
+   "Row": [
+    {
+     "Cell": [
+      "594834",
+      "103467364",
+      "4797",
+      "Active",
+      "P60174",
+      "7167",
+      "4",
+      "Ki",
+      "Inhibition of Triosephosphate isomerase",
+      "Confirmatory",
+      "21236668",
+      ""
+     ]
+    }
+   ]
+  },
+  "1632139": {
+   "Columns": {
+    "Column": [
+     "AID",
+     "SID",
+     "CID",
+     "Activity Outcome",
+     "Target Accession",
+     "Target GeneID",
+     "Activity Value [uM]",
+     "Activity Name",
+     "Assay Name",
+     "Assay Type",
+     "PubMed ID",
+     "RNAi"
+    ]
+   },
+   "Row": [
+    {
+     "Cell": [
+      "1632139",
+      "440110111",
+      "155510725",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "",
+      "",
+      "Inhibition of recombinant human triosephosphate isomerase assessed as reduction of DHAP at 100 uM after 2 hrs by measuring NADH consumption by alpha-glycerolphosphate dehydrogenase coupled assay",
+      "Other",
+      "27503677",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "1632139",
+      "440141748",
+      "155531440",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "",
+      "",
+      "Inhibition of recombinant human triosephosphate isomerase assessed as reduction of DHAP at 100 uM after 2 hrs by measuring NADH consumption by alpha-glycerolphosphate dehydrogenase coupled assay",
+      "Other",
+      "27503677",
+      ""
+     ]
+    }
+   ]
+  },
+  "1632140": {
+   "Columns": {
+    "Column": [
+     "AID",
+     "SID",
+     "CID",
+     "Activity Outcome",
+     "Target Accession",
+     "Target GeneID",
+     "Activity Value [uM]",
+     "Activity Name",
+     "Assay Name",
+     "Assay Type",
+     "PubMed ID",
+     "RNAi"
+    ]
+   },
+   "Row": [
+    {
+     "Cell": [
+      "1632140",
+      "440119243",
+      "155516816",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "",
+      "",
+      "Inhibition of recombinant human triosephosphate isomerase assessed as reduction of DHAP at 200 uM after 2 hrs by measuring NADH consumption by alpha-glycerolphosphate dehydrogenase coupled assay",
+      "Other",
+      "27503677",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "1632140",
+      "440138582",
+      "155529338",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "",
+      "",
+      "Inhibition of recombinant human triosephosphate isomerase assessed as reduction of DHAP at 200 uM after 2 hrs by measuring NADH consumption by alpha-glycerolphosphate dehydrogenase coupled assay",
+      "Other",
+      "27503677",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "1632140",
+      "440190059",
+      "155553740",
+      "Unspecified",
+      "P60174",
+      "7167",
+      "",
+      "",
+      "Inhibition of recombinant human triosephosphate isomerase assessed as reduction of DHAP at 200 uM after 2 hrs by measuring NADH consumption by alpha-glycerolphosphate dehydrogenase coupled assay",
+      "Other",
+      "27503677",
+      ""
+     ]
+    }
+   ]
+  },
+  "1803397": {
+   "Columns": {
+    "Column": [
+     "AID",
+     "SID",
+     "CID",
+     "Activity Outcome",
+     "Target Accession",
+     "Target GeneID",
+     "Activity Value [uM]",
+     "Activity Name",
+     "Assay Name",
+     "Assay Type",
+     "PubMed ID",
+     "RNAi"
+    ]
+   },
+   "Row": [
+    {
+     "Cell": [
+      "1803397",
+      "341104383",
+      "73187903",
+      "Inactive",
+      "P60174",
+      "7167",
+      "100",
+      "IC50",
+      "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+      "Confirmatory",
+      "23406473",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "1803397",
+      "341104384",
+      "137241593",
+      "Inactive",
+      "P60174",
+      "7167",
+      "100",
+      "IC50",
+      "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+      "Confirmatory",
+      "23406473",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "1803397",
+      "341104385",
+      "129627013",
+      "Inactive",
+      "P04789",
+      "",
+      "34",
+      "IC50",
+      "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+      "Confirmatory",
+      "23406473",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "1803397",
+      "341104385",
+      "129627013",
+      "Inactive",
+      "P60174",
+      "7167",
+      "100",
+      "IC50",
+      "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+      "Confirmatory",
+      "23406473",
+      ""
+     ]
+    }
+   ]
+  },
+  "2115908": {
+   "Columns": {
+    "Column": [
+     "AID",
+     "SID",
+     "CID",
+     "Activity Outcome",
+     "Target Accession",
+     "Target GeneID",
+     "Activity Value [uM]",
+     "Activity Name",
+     "Assay Name",
+     "Assay Type",
+     "PubMed ID",
+     "RNAi"
+    ]
+   },
+   "Row": [
+    {
+     "Cell": [
+      "2115908",
+      "482084541",
+      "145426155",
+      "Active",
+      "P60174",
+      "",
+      "0.99",
+      "IC50",
+      "Inhibition of TPI (unknown origin)",
+      "Confirmatory",
+      "38823265",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "2115908",
+      "520002816",
+      "169494241",
+      "Active",
+      "P60174",
+      "",
+      "1.4",
+      "IC50",
+      "Inhibition of TPI (unknown origin)",
+      "Confirmatory",
+      "38823265",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "2115908",
+      "520007581",
+      "177377866",
+      "Active",
+      "P60174",
+      "",
+      "7.99",
+      "IC50",
+      "Inhibition of TPI (unknown origin)",
+      "Confirmatory",
+      "38823265",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "2115908",
+      "520011656",
+      "177377865",
+      "Active",
+      "P60174",
+      "",
+      "1.9",
+      "IC50",
+      "Inhibition of TPI (unknown origin)",
+      "Confirmatory",
+      "38823265",
+      ""
+     ]
+    }
+   ]
+  },
+  "2149642": {
+   "Columns": {
+    "Column": [
+     "AID",
+     "SID",
+     "CID",
+     "Activity Outcome",
+     "Target Accession",
+     "Target GeneID",
+     "Activity Value [uM]",
+     "Activity Name",
+     "Assay Name",
+     "Assay Type",
+     "PubMed ID",
+     "RNAi"
+    ]
+   },
+   "Row": [
+    {
+     "Cell": [
+      "2149642",
+      "336871813",
+      "16747388",
+      "Active",
+      "P60174",
+      "",
+      "0.18266",
+      "ED50",
+      "Binding affinity to human TPI1 incubated for 45 mins by Kinobead based pull down assay",
+      "Confirmatory",
+      "29928781",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "2149642",
+      "336871813",
+      "16747388",
+      "Active",
+      "P60174",
+      "",
+      "0.18266",
+      "Kd",
+      "Binding affinity to human TPI1 incubated for 45 mins by Kinobead based pull down assay",
+      "Confirmatory",
+      "29928781",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "2149642",
+      "519996070",
+      "117602383",
+      "Active",
+      "P60174",
+      "",
+      "0.06246",
+      "ED50",
+      "Binding affinity to human TPI1 incubated for 45 mins by Kinobead based pull down assay",
+      "Confirmatory",
+      "29928781",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "2149642",
+      "519996070",
+      "117602383",
+      "Active",
+      "P60174",
+      "",
+      "0.06246",
+      "Kd",
+      "Binding affinity to human TPI1 incubated for 45 mins by Kinobead based pull down assay",
+      "Confirmatory",
+      "29928781",
+      ""
+     ]
+    }
+   ]
+  },
+  "2254543": {
+   "Columns": {
+    "Column": [
+     "AID",
+     "SID",
+     "CID",
+     "Activity Outcome",
+     "Target Accession",
+     "Target GeneID",
+     "Activity Value [uM]",
+     "Activity Name",
+     "Assay Name",
+     "Assay Type",
+     "PubMed ID",
+     "RNAi"
+    ]
+   },
+   "Row": [
+    {
+     "Cell": [
+      "2254543",
+      "103274364",
+      "82146",
+      "Active",
+      "P60174",
+      "",
+      "1.89",
+      "IC50",
+      "Inhibition of TPI1 (unknown origin)",
+      "Confirmatory",
+      "39276582",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "2254543",
+      "528360533",
+      "178302699",
+      "Active",
+      "P60174",
+      "",
+      "2.2",
+      "IC50",
+      "Inhibition of TPI1 (unknown origin)",
+      "Confirmatory",
+      "39276582",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "2254543",
+      "528360542",
+      "3008194",
+      "Active",
+      "P60174",
+      "",
+      "1.1",
+      "IC50",
+      "Inhibition of TPI1 (unknown origin)",
+      "Confirmatory",
+      "39276582",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "2254543",
+      "528364384",
+      "178305645",
+      "Unspecified",
+      "P60174",
+      "",
+      "10.56",
+      "IC50",
+      "Inhibition of TPI1 (unknown origin)",
+      "Confirmatory",
+      "39276582",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "2254543",
+      "528376106",
+      "178314587",
+      "Active",
+      "P60174",
+      "",
+      "0.61",
+      "IC50",
+      "Inhibition of TPI1 (unknown origin)",
+      "Confirmatory",
+      "39276582",
+      ""
+     ]
+    },
+    {
+     "Cell": [
+      "2254543",
+      "528385018",
+      "178320158",
+      "Active",
+      "P60174",
+      "",
+      "1.7",
+      "IC50",
+      "Inhibition of TPI1 (unknown origin)",
+      "Confirmatory",
+      "39276582",
+      ""
+     ]
+    }
+   ]
+  }
+ },
+ "inchikeys": {
+  "10442109": "OTQGCPIGFCJBDI-UHFFFAOYSA-N",
+  "10766661": "IAFAANQPDPWPHK-UHFFFAOYSA-N",
+  "117602383": "MWKSRKSEWLRPBL-UHFFFAOYSA-N",
+  "129627013": "ZLBSXQXHCUJVJO-UHFFFAOYSA-N",
+  "135697429": "XXKKENPLAPXKFL-UHFFFAOYSA-N",
+  "136032536": "SPDZOGVSSSQFAS-UHFFFAOYSA-N",
+  "137241593": "NXZKDNVKTNBSHL-UHFFFAOYSA-N",
+  "145426155": "DCSUGHIXMFUMOQ-UHFFFAOYSA-N",
+  "155510725": "QFGNIGSPSBIQKC-UHFFFAOYSA-N",
+  "155516816": "IWJYZFJSMPUOPG-UHFFFAOYSA-N",
+  "155529338": "GSTNPNQEANEZKC-UHFFFAOYSA-N",
+  "155531440": "RXAQKYNTONZOAA-UHFFFAOYSA-N",
+  "155553740": "BPZPPMXJWIPQSY-UHFFFAOYSA-N",
+  "16216823": "NJYNBLZKSCNAIK-UHFFFAOYSA-N",
+  "16747388": "ZCCPLJOKGAACRT-UHFFFAOYSA-N",
+  "169494241": "HSICEIFWMLSUPK-UHFFFAOYSA-N",
+  "177377865": "DNLIYLUVPCAWIR-UHFFFAOYSA-N",
+  "177377866": "RCOQZBYKBXBZJR-MOSHPQCFSA-N",
+  "178302699": "NVNMRONAZSOLSD-AFXZRMPUSA-N",
+  "178305645": "CWBDDCQDHGWDJI-XFCLJKNHSA-N",
+  "178314587": "LCCGEVUWWBLMGC-ITQLHNLBSA-N",
+  "178320158": "NVNMRONAZSOLSD-HBWOOTDVSA-N",
+  "3008194": "GBXMNTLQBMLGFM-IHQQTPIISA-N",
+  "373938": "XEORIUZUCHZWMP-UHFFFAOYSA-N",
+  "44330762": "RGTWPXHBFMRQRP-UHFFFAOYSA-N",
+  "44431131": "IXTLPXIJEWXYCB-UHFFFAOYSA-N",
+  "44431133": "OEJXQNNCFNLFQK-UHFFFAOYSA-N",
+  "44610757": "VXJWXXXNAGXANY-UHFFFAOYSA-N",
+  "45487725": "CMUWVXAFOAEMLK-UHFFFAOYSA-N",
+  "4797": "BAXHHWZKQZIJID-UHFFFAOYSA-N",
+  "5319518": "JNWDNAASYHRXMG-UHFFFAOYSA-N",
+  "5487248": "JSEPSLOCPQODTM-UHFFFAOYSA-N",
+  "6323453": "REDPJRNIRCVACW-UGMRNKNYSA-N",
+  "73187903": "NGOHMJVVYSXVAS-UHFFFAOYSA-N",
+  "82146": "NAVMQTYZDKMPEU-UHFFFAOYSA-N",
+  "853170": "NDAURKDIFHXVHE-UHFFFAOYSA-N"
+ }
+}

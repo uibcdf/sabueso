@@ -68,6 +68,8 @@ def resolve_protein_card(
     bindingdb: Dict[str, Any] | None = None,
     bindingdb_client: Any | None = None,
     unichem_client: Any | None = None,
+    pubchem_bioassay: bool = False,
+    pubchem_bioassay_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -89,7 +91,10 @@ def resolve_protein_card(
     which makes relations between organisms exact. ``bindingdb`` (e.g. ``{}``) adds the
     affinities BindingDB holds for the entry, with each monomer anchored at its InChIKey
     through UniChem; measurements several sources state are grouped, never counted
-    twice (``sabueso.core.measurements``).
+    twice (``sabueso.core.measurements``). ``pubchem_bioassay`` adds PubChem's results
+    for the entry; results copied from ChEMBL or BindingDB are grouped with their
+    originals, and a ChEMBL assay named by a copy but missing from the card is fetched
+    from ChEMBL (#68).
     Every enrichment outcome (added, not_found, error) is recorded in
     ``quality.enrichments``. Returns ``(card, resolution)``; ``card`` is None when the
     query did not resolve to a protein entity.
@@ -355,37 +360,6 @@ def resolve_protein_card(
             identities += [
                 (i["anchor"], i["records"]) for i in resolved.values() if i is not None
             ]
-            # ChEMBL's molecules anchored at the InChIKey ChEMBL states for them, so that
-            # the same molecule is recognised in both sources (#66).
-            chembl_ids = {
-                ref.split(":", 1)[1]
-                for m in mappings
-                for rel in m["relationships"]
-                if rel["predicate"] == "has_bioactivity"
-                and not (rel.get("qualifiers") or {}).get("source")
-                for ref in (
-                    rel["object_ref"],
-                    (rel.get("qualifiers") or {}).get("parent_molecule"),
-                )
-                if ref and ref.startswith("chembl:")
-            }
-            if chembl_ids:
-                from sabueso.tools.db.chembl import OnlineChEMBLClient
-
-                try:
-                    found = (chembl_client or OnlineChEMBLClient()).molecules(
-                        chembl_ids
-                    )
-                except ConnectorError:
-                    found = {"molecules": {}}
-                for chembl_id, molecule in sorted(
-                    (found.get("molecules") or {}).items()
-                ):
-                    key = ((molecule or {}).get("molecule_structures") or {}).get(
-                        "standard_inchi_key"
-                    )
-                    if key:
-                        identities.append((f"inchikey:{key}", [f"chembl:{chembl_id}"]))
             enrichments.append(
                 {
                     **record,
@@ -396,6 +370,158 @@ def resolve_protein_card(
                     **({"unichem_errors": errors} if errors else {}),
                 }
             )
+
+    if pubchem_bioassay:
+        from sabueso.mappings.chembl import map_bioactivities as map_chembl
+        from sabueso.mappings.pubchem_bioassay import map_assays
+        from sabueso.tools.db.chembl import OnlineChEMBLClient
+        from sabueso.tools.db.pubchem_bioassay import OnlinePubChemBioAssayClient
+
+        client = pubchem_bioassay_client or OnlinePubChemBioAssayClient()
+        record = {"source": "PubChem BioAssay", "identifier": anchor}
+        try:
+            response = client.assays(anchor)
+        except RecordNotFoundError:
+            enrichments.append({**record, "status": "not_found"})
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        else:
+            mapped = map_assays(response, anchor, response.get("retrieved_at", ""))
+            mappings.append(mapped)
+            depositors: Dict[str, int] = {}
+            for s_ in response["record"].get("summaries") or []:
+                depositors[s_.get("SourceName")] = (
+                    depositors.get(s_.get("SourceName"), 0) + 1
+                )
+            copies = [
+                r
+                for r in mapped["relationships"]
+                if (r.get("qualifiers") or {}).get("copy_of")
+            ]
+            enrichments.append(
+                {
+                    **record,
+                    "status": "added",
+                    "assays": len(response["record"].get("aids") or []),
+                    "count": len(mapped["relationships"]),
+                    "copies": len(copies),
+                    "depositors": dict(sorted(depositors.items())),
+                }
+            )
+            # Copies are pointers: ChEMBL assays they name that the card lacks. An assay
+            # on the card is complete only if the target query was not truncated.
+            chembl_rels = [
+                rel
+                for m in mappings
+                for rel in m["relationships"]
+                if rel["predicate"] == "has_bioactivity"
+                and not (rel.get("qualifiers") or {}).get("source")
+            ]
+            present = {
+                (rel.get("qualifiers") or {}).get("activity_id") for rel in chembl_rels
+            }
+            truncated = any(
+                e.get("source") == "ChEMBL" and e.get("truncated") for e in enrichments
+            )
+            on_card = (
+                set()
+                if truncated
+                else {
+                    (rel.get("qualifiers") or {}).get("assay", {}).get("id")
+                    for rel in chembl_rels
+                }
+            )
+            named = sorted(
+                {
+                    r["qualifiers"]["copy_of"]["assay"]
+                    for r in copies
+                    if r["qualifiers"]["copy_of"].get("source") == "ChEMBL"
+                    and r["qualifiers"]["copy_of"].get("assay")
+                }
+                - on_card
+            )
+            if named:
+                pointer = {
+                    "source": "ChEMBL",
+                    "data": "assays named by PubChem copies",
+                    "assays": named,
+                }
+                try:
+                    followed = (chembl_client or OnlineChEMBLClient()).assay_activities(
+                        named
+                    )
+                except ConnectorError as exc:
+                    enrichments.append(
+                        {**pointer, "status": "error", "detail": str(exc)}
+                    )
+                else:
+                    followed = {
+                        **followed,
+                        "activities": [
+                            a
+                            for a in followed.get("activities") or []
+                            if a.get("activity_id") not in present
+                        ],
+                    }
+                    extra = map_chembl(
+                        followed, anchor, followed.get("retrieved_at", "")
+                    )
+                    targets = sorted(
+                        {
+                            (rel.get("qualifiers") or {}).get("target")
+                            for rel in extra["relationships"]
+                        }
+                        - {None}
+                    )
+                    for rel in extra["relationships"]:
+                        rel["qualifiers"]["retrieved_via"] = "PubChem BioAssay copy"
+                    mappings.append(extra)
+                    enrichments.append(
+                        {
+                            **pointer,
+                            "status": "added"
+                            if extra["relationships"]
+                            else "not_found",
+                            "version": followed.get("version"),
+                            "count": len(extra["relationships"]),
+                            "targets": targets,
+                        }
+                    )
+
+    if bindingdb is not None or pubchem_bioassay:
+        # ChEMBL's molecules anchored at the InChIKey ChEMBL states for them, so that the
+        # same molecule is recognised across sources (#66, #68).
+        from sabueso.tools.db.chembl import OnlineChEMBLClient
+
+        chembl_ids = {
+            ref.split(":", 1)[1]
+            for m in mappings
+            for rel in m["relationships"]
+            if rel["predicate"] == "has_bioactivity"
+            and not (rel.get("qualifiers") or {}).get("source")
+            for ref in (
+                rel["object_ref"],
+                (rel.get("qualifiers") or {}).get("parent_molecule"),
+            )
+            if ref and ref.startswith("chembl:")
+        }
+        if chembl_ids:
+            try:
+                found = (chembl_client or OnlineChEMBLClient()).molecules(chembl_ids)
+            except ConnectorError:
+                found = {"molecules": {}}
+            for chembl_id, molecule in sorted((found.get("molecules") or {}).items()):
+                key = ((molecule or {}).get("molecule_structures") or {}).get(
+                    "standard_inchi_key"
+                )
+                if key:
+                    identities.append((f"inchikey:{key}", [f"chembl:{chembl_id}"]))
+        # PubChem compounds, at the InChIKey PubChem states (in the mapping).
+        for m in mappings:
+            for rel in m["relationships"]:
+                q = rel.get("qualifiers") or {}
+                if q.get("source") == "PubChem BioAssay" and q.get("molecule_ref"):
+                    identities.append((q["molecule_ref"], [rel["object_ref"]]))
 
     if family_sites:
         from sabueso.tools.db.interpro import OnlineInterProClient

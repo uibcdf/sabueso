@@ -211,6 +211,21 @@ class OnlineChEMBLClient:
             offset += len(batch)
             if not batch or not page.get("page_meta", {}).get("next"):
                 break
+        assays, documents = self._context(activities)
+        return {
+            "query": {"target_chembl_id": target, "limit": limit},
+            "version": self.version(),
+            "retrieved_at": retrieved_at,
+            "total_count": total,
+            "truncated": total > len(activities),
+            "activities": activities,
+            "assays": assays,
+            "documents": documents,
+        }
+
+    def _context(self, activities: list) -> tuple:
+        """The assays and documents of the activities: their metadata, and PubMed ids and
+        DOIs so that a measurement can be matched to a publication (#44)."""
         assay_ids = sorted(
             {a["assay_chembl_id"] for a in activities if a.get("assay_chembl_id")}
         )
@@ -249,12 +264,43 @@ class OnlineChEMBLClient:
                 documents[document["document_chembl_id"]] = _keep(
                     document, DOCUMENT_FIELDS
                 )
+        return assays, documents
+
+    def assay_activities(
+        self, assay_ids: Iterable[str], limit: int = DEFAULT_ACTIVITY_LIMIT
+    ) -> Dict[str, Any]:
+        """The activities of named assays, whatever their target: how a PubChem copy
+        leads to a ChEMBL original a target-based query did not return (#68)."""
+        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        ids = sorted({i for i in assay_ids if i})
+        activities: list = []
+        for i in range(0, len(ids), ASSAY_CHUNK):
+            chunk = ids[i : i + ASSAY_CHUNK]
+            offset = 0
+            while len(activities) < limit:
+                page = _chembl_get(
+                    "activity.json",
+                    {
+                        "assay_chembl_id__in": ",".join(chunk),
+                        "order_by": "activity_id",
+                        "only": ",".join(ACTIVITY_FIELDS),
+                        "limit": min(PAGE_SIZE, limit - len(activities)),
+                        "offset": offset,
+                    },
+                    self.timeout,
+                )
+                batch = page.get("activities", [])
+                activities.extend(_keep(a, ACTIVITY_FIELDS) for a in batch)
+                offset += len(batch)
+                if not batch or not page.get("page_meta", {}).get("next"):
+                    break
+        assays, documents = self._context(activities)
         return {
-            "query": {"target_chembl_id": target, "limit": limit},
+            "query": {"assay_chembl_id": ids, "limit": limit},
             "version": self.version(),
             "retrieved_at": retrieved_at,
-            "total_count": total,
-            "truncated": total > len(activities),
+            "total_count": len(activities),
+            "truncated": len(activities) >= limit,
             "activities": activities,
             "assays": assays,
             "documents": documents,
@@ -313,6 +359,44 @@ class FixtureChEMBLClient:
             "retrieved_at": self.retrieved_at,
             "truncated": saved["total_count"] > len(activities),
             "activities": activities,
+        }
+
+    def assay_activities(
+        self, assay_ids: Iterable[str], limit: int = DEFAULT_ACTIVITY_LIMIT
+    ) -> Dict[str, Any]:
+        """Activities of named assays, from every saved target response."""
+        ids = {i for i in assay_ids if i}
+        if self.failing & ids:
+            raise ConnectorError(
+                f"ChEMBL assay request for {sorted(ids)} failed (simulated)"
+            )
+        activities, assays, documents, version = [], {}, {}, None
+        for path in sorted((self.directory / "chembl").glob("CHEMBL*.json")):
+            saved = json.loads(path.read_text(encoding="utf-8"))
+            if "activities" not in saved:
+                continue
+            version = version or saved.get("version")
+            for activity in saved["activities"]:
+                if activity.get("assay_chembl_id") in ids:
+                    activities.append(activity)
+                    aid, did = (
+                        activity.get("assay_chembl_id"),
+                        activity.get("document_chembl_id"),
+                    )
+                    if aid in (saved.get("assays") or {}):
+                        assays[aid] = saved["assays"][aid]
+                    if did in (saved.get("documents") or {}):
+                        documents[did] = saved["documents"][did]
+        activities = sorted(activities, key=lambda a: a["activity_id"])[:limit]
+        return {
+            "query": {"assay_chembl_id": sorted(ids), "limit": limit},
+            "version": version,
+            "retrieved_at": self.retrieved_at,
+            "total_count": len(activities),
+            "truncated": False,
+            "activities": activities,
+            "assays": assays,
+            "documents": documents,
         }
 
     def molecules(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:

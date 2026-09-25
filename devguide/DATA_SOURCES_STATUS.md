@@ -112,6 +112,13 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: `has_bioactivity` relationships with the ChEMBL layout (`source: BindingDB`, `stated_value` keeps the written precision); measurements shared with ChEMBL are grouped by `measurement_identity@1`
 - **Notes**: the REST records carry no origin (BindingDB curation or ChEMBL import) and no record id; licence treated as CC BY-SA 3.0.
 
+### PubChem BioAssay — results linked to a protein
+- **Status**: implemented as an enricher of `resolve_protein_card(..., pubchem_bioassay=True)` (uibcdf/sabueso#68)
+- **Access**: PUG REST: assays by protein accession, summaries (depositor and its assay id), concise tables, compound InChIKeys (`OnlinePubChemBioAssayClient`); saved responses (`FixturePubChemBioAssayClient`, `temp_data/pubchem_bioassay/`); `tools.db.pubchem_bioassay.get_assays`
+- **Quality**: verified on TcTIM (13 assays, all deposited by ChEMBL, 492 results) and HsTIM (11 assays: 10 by ChEMBL, 1 by BindingDB)
+- **Coverage**: `has_bioactivity` relationships with `source: PubChem BioAssay`; copies carry `copy_of` (depositor and its assay id) and are grouped with their originals by provenance; ChEMBL assays a copy names but the card lacks are fetched from ChEMBL (`retrieved_via`)
+- **Notes**: the concise table does not state the relation of a value (`>`), so copies never vote for a group's class when the original is present; PubChem's CID can carry another stereochemistry or salt form than the depositor's compound, reported as `stereo_differs`.
+
 ### NCBI Taxonomy — ranks and ancestors
 - **Status**: implemented as an enricher of `resolve_protein_card(..., taxonomy=True)` (uibcdf/sabueso#67)
 - **Access**: NCBI Datasets API `taxonomy/taxon/<ids>` in batches (`OnlineNCBITaxonomyClient`), saved records (`FixtureNCBITaxonomyClient`, `temp_data/ncbi_taxonomy/`), and `tools.db.ncbi_taxonomy.get_taxon`

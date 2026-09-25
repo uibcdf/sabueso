@@ -489,6 +489,9 @@ def bioactivities_view(
             "curated": bool(assay.get("curated")),
             "source": record_source(q),
             "group": group_of.get(rel["id"], rel["id"]),
+            # A declared copy (#68): it never votes for its group's class when the
+            # original is there, since its table may drop the relation (">").
+            "copy": bool(q.get("copy_of")),
         }
         if doc.get("id"):
             documents[doc["id"]] = documents.get(doc["id"], 0) + 1
@@ -530,7 +533,8 @@ def bioactivities_view(
             by_group.setdefault(x["group"], []).append(x)
         classes: Dict[str, int] = {}
         for members in by_group.values():
-            found = {x["class"] for x in members}
+            voters = [x for x in members if not x["copy"]] or members
+            found = {x["class"] for x in voters}
             # Sources of one measurement that classify it differently: inconclusive.
             cls = found.pop() if len(found) == 1 else "inconclusive"
             classes[cls] = classes.get(cls, 0) + 1

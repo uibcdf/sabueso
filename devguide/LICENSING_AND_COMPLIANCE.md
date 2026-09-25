@@ -26,6 +26,7 @@ themselves are not Sabueso's work and keep their source's licence.
 | BindingDB | CC BY 3.0 (own curation); **CC BY-SA 3.0** (imported from ChEMBL) | BindingDB | REST records state no origin, so Sabueso treats them as CC BY-SA 3.0 (#66) |
 | UniChem | EMBL-EBI adds no restrictions of its own | EMBL-EBI / UniChem | The rights of the resources it points to still apply |
 | PubChem | US public domain (NLM policy) | NCBI / NLM | Depositor contributions may carry their own terms |
+| PubChem BioAssay | US public domain (NLM policy); deposited data keeps its depositor's terms | NCBI / NLM and the depositor | ChEMBL-deposited assays are ChEMBL data: CC BY-SA 3.0 (#68) |
 | NCBI Taxonomy | US public domain (NLM policy) | NCBI / NLM | Ranks and ancestors of organisms (#67) |
 
 ## Known Sensitive Sources

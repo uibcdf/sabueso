@@ -18,6 +18,7 @@ from sabueso.tools.db import (
     pdb_ccd,
     pdbe_kb,
     pubchem,
+    pubchem_bioassay,
     rcsb,
     stringdb,
     unichem,
@@ -28,6 +29,9 @@ ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 BTS_KEY = "XBNHRNFODJOFRU-UHFFFAOYSA-N"
 
 CALLS = {
+    "pubchem_bioassay.get_assays": lambda: pubchem_bioassay.get_assays(
+        "P52270", client=pubchem_bioassay.FixturePubChemBioAssayClient("temp_data")
+    ),
     "bindingdb.get_affinities": lambda: bindingdb.get_affinities(
         "P60174", client=bindingdb.FixtureBindingDBClient("temp_data")
     ),

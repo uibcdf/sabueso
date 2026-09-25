@@ -113,6 +113,13 @@
 - **Censored values are not reviewed** (#66): pairs with `>` or `<` values and
   different molecules are frequent within one paper and are not listed. A real
   discrepancy among censored values goes unnoticed.
+- **PubChem standardisation** (#68): a copy's CID can lose the depositor's
+  stereochemistry or salt form. Within a named assay, grouping by connectivity is
+  accepted only when it leaves one candidate, and it is flagged; seven TcTIM copies find
+  no molecule of their assay at all, and stay unresolved.
+- **Pointers can be large** (#68): a copy can name an assay with thousands of
+  activities, all fetched from ChEMBL. That is fine for curated assays; screening
+  assays deposited through ChEMBL may need a limit.
 
 ## Open Questions
 - What are the default **selection rules** per field?

@@ -26,6 +26,11 @@ PROTEIN_ENRICHMENTS = (
     ("relationships.has_structure (entry details)", "RCSB PDB", {"source": "RCSB PDB"}),
     ("relationships.has_bioactivity", "ChEMBL", {"source": "ChEMBL"}),
     ("relationships.has_bioactivity", "BindingDB", {"source": "BindingDB"}),
+    (
+        "relationships.has_bioactivity",
+        "PubChem BioAssay",
+        {"source": "PubChem BioAssay"},
+    ),
     ("relationships.functionally_associated_with", "STRING", {"source": "STRING"}),
     (
         "relationships.has_ligand_site",

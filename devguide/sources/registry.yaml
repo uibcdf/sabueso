@@ -665,14 +665,16 @@ resources:
     name: "PubChem BioAssay"
     url: https://pubchem.ncbi.nlm.nih.gov/
     category: bioactivity
-    status: deferred
+    status: in_use
     description: "High-throughput and phenotypic screening results and dose–response curves."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    decided_by: "Sabueso maintainers, review of #25 and #28 (2026-09-25)"
-    reason: "For the test targets, every assay was deposited by ChEMBL or BindingDB, with its origin stated. Copies are to be used as pointers to measurements a card lacks, not discarded and not counted (design in #66)."
-    revisit_when: "Measurement grouping (measurement_identity@1) has been used with BindingDB, and provenance links (copy_of) are implemented."
-    links: ["#25", "#66"]
+    decided_by: "Sabueso maintainers (2026-09-25)"
+    reason: "Results PubChem links to a protein. Copies deposited by ChEMBL or BindingDB are grouped with their originals by provenance and lead to ChEMBL assays a card lacks; results of other depositors are new measurements (#68)."
+    links: ["#25", "#66", "#68"]
+    access: "PUG REST (assays by protein, summaries, concise tables, compound InChIKeys)"
+    licence: "US public domain (NLM policy); deposited data keeps its depositor terms (ChEMBL copies: CC BY-SA 3.0)"
+    module: [sabueso.tools.db.pubchem_bioassay, sabueso.mappings.pubchem_bioassay]
   - id: d3r
     name: "D3R (Drug Design Data Resource)"
     url: https://drugdesigndata.org/

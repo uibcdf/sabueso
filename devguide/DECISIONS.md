@@ -497,7 +497,7 @@ uibcdf/sabueso#67; card schema 0.3.4.
 
 ## One measurement, several sources (2026-09-25)
 uibcdf/sabueso#66; rule `measurement_identity@1`;
-`devguide/pending_proposals/measurement_identity.md`.
+`devguide/archive/measurement_identity.md`.
 - Source records are kept. A measurement is a derived group over them, and views count
   measurements.
 - Identity in layers: declared provenance (exact); then independent readings of one
@@ -510,3 +510,8 @@ uibcdf/sabueso#66; rule `measurement_identity@1`;
   discarded.
 - BindingDB is the second bioactivity source. Its monomers are anchored through
   UniChem, never from SMILES.
+- PubChem BioAssay (#68): copies deposited by ChEMBL or BindingDB are grouped with
+  their originals by provenance (assay and molecule), never vote for a group's class,
+  and lead to ChEMBL assays a card lacks. A copy whose compound PubChem standardised
+  differently is grouped only when the connectivity leaves one candidate, and is
+  flagged.

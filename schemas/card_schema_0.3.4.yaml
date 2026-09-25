@@ -49,6 +49,10 @@ schema:
     0.3.4 also adds has_bioactivity qualifiers for other sources than ChEMBL
     (uibcdf/sabueso#66), namely source, measurement.stated_value (the value as written, for its
     precision) and assay.source, with BindingDB as the first such source. Additive.
+    It also adds copy_of (a copy's declared origin, its source and assay or activity
+    id), measurement.outcome, assay.depositor and assay.depositor_id (PubChem BioAssay),
+    and retrieved_via, set on ChEMBL records fetched because a copy named their assay
+    (uibcdf/sabueso#68). Additive.
 card_base:
   meta:
     card_id:

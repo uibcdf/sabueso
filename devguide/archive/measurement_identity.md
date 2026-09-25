@@ -1,9 +1,9 @@
 ---
 summary: How Sabueso recognises one measurement stated by several bioactivity sources, so that copies never count as independent confirmations.
 issue: uibcdf/sabueso#66
-status: partial
+status: resolved
 opened: 2026-09-25
-closed:
+closed: 2026-09-25
 verification: measured
 area: [bioactivities, identity, provenance, chembl, bindingdb, pubchem]
 blocked_by: []
@@ -185,8 +185,26 @@ alone. Requiring the molecule's identity shows that some of them are not the sam
 molecule by the sources' own identity statements. These are curation discrepancies
 worth reading, and grouping them would have hidden them.
 
-Still open: provenance links for PubChem BioAssay (copies as pointers), and BindingDB's
-per-record origin, which only its bulk download states.
+PubChem BioAssay (#68, same day):
+- **Copies are grouped by provenance.** Each assay's depositor and depositor assay id
+  become `copy_of`; within the named assay, the molecule and the type select the
+  original.
+- **A copy whose compound PubChem standardised differently** (stereochemistry or salt
+  lost) is grouped when only one record of the assay shares its connectivity, and is
+  flagged `stereo_differs`.
+- **Copies never vote** for a group's class, because PubChem's table drops the relation.
+- **Pointers are followed.** ChEMBL assays a copy names but the card lacks are fetched
+  from ChEMBL. That includes assays on the card when the target query was truncated.
+- **Unresolved copies** say why: `original_not_on_card` or `molecule_not_found_in_assay`.
+
+| Target | Records (ChEMBL, BindingDB, PubChem) | Measurements |
+| --- | --- | --- |
+| TcTIM | 1002 | 505 |
+| HsTIM | 88 | 49 |
+
+With ChEMBL limited to 25 activities, TcTIM's PubChem copies led to the 468 missing
+ones, and the card equals the complete one. Still open: BindingDB's per-record origin,
+which only its bulk download states (recorded in RISKS).
 ## Resolution
 
-Partial: the common part and BindingDB are implemented (#66). PubChem BioAssay, with copies as pointers, is recorded in `devguide/sources/registry.yaml` and in its own issue.
+Resolved: the common part and BindingDB (#66), and PubChem BioAssay with copies as pointers (#68).

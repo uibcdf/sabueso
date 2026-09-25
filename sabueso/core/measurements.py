@@ -1,12 +1,13 @@
 """One measurement stated by several sources (uibcdf/sabueso#66, rule
-``measurement_identity@1``; design in devguide/pending_proposals/measurement_identity.md).
+``measurement_identity@1``; design in devguide/archive/measurement_identity.md).
 
 Every source record stays a ``has_bioactivity`` relationship with its own context. This
 module groups the records that state one measurement, so that views count
 measurements, not records, and a copy never reads as a confirmation:
 
-1. **Provenance.** A record that states it copies another (``copy_of``: source and
-   activity id) is grouped with it. This is exact.
+1. **Provenance.** A record that states it copies another (``copy_of``: the source and
+   the original's activity id, or its assay id) is grouped with it. This is exact. A
+   copy whose original is not on the card is listed as a pointer to follow (#68).
 2. **Statement.** Records of different sources are grouped when they share:
    - the publication (PubMed id or DOI);
    - the molecule, through the card's glossary of entities (identities stated by
@@ -84,6 +85,18 @@ def _agree(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
     return abs(float(na["value"]) - float(nb["value"])) <= tolerance + 1e-9
 
 
+def _blocks(keys: set) -> set:
+    """First InChIKey blocks (connectivity) of the anchored molecules."""
+    return {k[9:23] for k in keys if k.startswith("inchikey:")}
+
+
+def _relations_match(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
+    """Equal relations; a declared copy that states none (PubChem's table) matches any."""
+    if a["relation"] == b["relation"]:
+        return True
+    return any(i["copy_of"] and i["relation"] is None for i in (a, b))
+
+
 def _molecules(card: Any) -> Dict[str, str]:
     """Record → entity key, from the card's glossary."""
     from .entities import build_entities
@@ -97,7 +110,9 @@ def _molecules(card: Any) -> Dict[str, str]:
 
 
 def measurement_groups(card: Any) -> Dict[str, Any]:
-    """``{"rule", "groups", "ambiguous", "review", "group_of"}``; see the module docstring.
+    """``{"rule", "groups", "ambiguous", "unresolved_copies", "review", "group_of"}``;
+    see the module docstring. ``unresolved_copies`` are declared copies whose original
+    is not on the card: pointers to follow (#68).
 
     ``group_of`` maps every relationship id to its group id; a record stated by one
     source only is its own group.
@@ -121,33 +136,100 @@ def measurement_groups(card: Any) -> Dict[str, Any]:
             "publications": _publications(q),
             "molecules": molecules_of(rel),
             "type": m.get("type"),
-            "relation": m.get("relation") or "=",
+            # A declared copy that states no relation keeps None: it imposes nothing.
+            "relation": m.get("relation") or (None if q.get("copy_of") else "="),
             "measurement": m,
             "activity_id": q.get("activity_id"),
+            "assay": (q.get("assay") or {}).get("id"),
             "copy_of": q.get("copy_of"),
         }
 
     edges: List[Tuple[str, str, str]] = []
-    # 1. Provenance: exact.
+    ambiguous: List[Dict[str, Any]] = []
+    unresolved_copies: List[Dict[str, Any]] = []
+    review: List[Dict[str, Any]] = []
+    # 1. Provenance: exact. A copy names its original record, or the original's assay
+    #    (PubChem names the ChEMBL assay it copied); within that assay, the molecule and
+    #    the type select the record, and the value when several remain.
     by_source_activity = {
         (i["source"], i["activity_id"]): rid for rid, i in info.items()
     }
     for rid, i in info.items():
         copy = i["copy_of"] or {}
+        if not copy:
+            continue
         original = by_source_activity.get((copy.get("source"), copy.get("activity_id")))
         if original and original != rid:
             edges.append((rid, original, "provenance"))
+            continue
+        if not copy.get("assay"):
+            continue
+        in_assay = [
+            o
+            for o, j in info.items()
+            if j["source"] == copy.get("source")
+            and j["assay"] == copy["assay"]
+            and (not i["type"] or not j["type"] or i["type"] == j["type"])
+        ]
+        found = [o for o in in_assay if info[o]["molecules"] & i["molecules"]]
+        stereo = False
+        if not found:
+            # The copy's compound can be standardised differently (stereochemistry or
+            # salt lost): the same connectivity, within the named assay.
+            blocks = _blocks(i["molecules"])
+            found = [o for o in in_assay if _blocks(info[o]["molecules"]) & blocks]
+            stereo = bool(found)
+        if len(found) > 1:
+            found = [
+                o for o in found if _agree(i["measurement"], info[o]["measurement"])
+            ]
+        if len(found) == 1:
+            edges.append((rid, found[0], "provenance"))
+            if stereo:
+                review.append(
+                    {
+                        "records": sorted([rid, found[0]]),
+                        "sources": sorted({i["source"], info[found[0]]["source"]}),
+                        "reason": "stereo_differs",
+                        "molecules": sorted(
+                            i["molecules"] | info[found[0]]["molecules"]
+                        ),
+                        "note": "declared copy, grouped by provenance",
+                    }
+                )
+        elif found:
+            ambiguous.append(
+                {
+                    "record": rid,
+                    "source": copy.get("source"),
+                    "candidates": sorted(found),
+                }
+            )
+        else:
+            unresolved_copies.append(
+                {
+                    "record": rid,
+                    "copy_of": copy,
+                    "reason": "molecule_not_found_in_assay"
+                    if in_assay
+                    else "original_not_on_card",
+                }
+            )
+    copied = {a for a, _, kind in edges if kind == "provenance"}
     # 2. Statement: candidates bucketed by publication and type.
     buckets: Dict[tuple, List[str]] = {}
     for rid, i in info.items():
+        if rid in copied:
+            continue  # already joined to its original by provenance
         for pub in i["publications"]:
-            buckets.setdefault((pub, i["type"], i["relation"]), []).append(rid)
+            buckets.setdefault((pub, i["type"]), []).append(rid)
     candidates: Dict[tuple, set] = {}
-    review: List[Dict[str, Any]] = []
     for members in buckets.values():
         for a, b in combinations(sorted(set(members)), 2):
             ia, ib = info[a], info[b]
             if ia["source"] == ib["source"]:
+                continue
+            if not _relations_match(ia, ib):
                 continue
             if not _agree(ia["measurement"], ib["measurement"]):
                 continue
@@ -177,7 +259,6 @@ def measurement_groups(card: Any) -> Dict[str, Any]:
                         "molecules": sorted(ia["molecules"] | ib["molecules"]),
                     }
                 )
-    ambiguous = []
     for (rid, other_source), found in sorted(candidates.items()):
         if len(found) > 1:
             ambiguous.append(
@@ -253,6 +334,10 @@ def measurement_groups(card: Any) -> Dict[str, Any]:
         ),
         "groups": sorted(groups, key=lambda g: g["id"]),
         "ambiguous": ambiguous,
+        # A copy grouped afterwards by statement identity is resolved after all.
+        "unresolved_copies": [
+            u for u in unresolved_copies if group_of.get(u["record"]) == u["record"]
+        ],
         "review": sorted(
             {tuple(r["records"]): r for r in review}.values(),
             key=lambda r: r["records"],

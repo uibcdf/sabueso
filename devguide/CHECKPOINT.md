@@ -205,6 +205,10 @@ This file records the current repository baseline so new developers can resume e
   views count measurements, and cross-source discrepancies are reported for review.
   BindingDB is the second bioactivity source (#66).
 
+## PubChem BioAssay (2026-09-25)
+- PubChem BioAssay is the third bioactivity source. Declared copies are grouped by
+  provenance and lead to ChEMBL assays a card lacks (#68).
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

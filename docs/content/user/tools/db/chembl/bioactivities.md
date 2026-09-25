@@ -91,3 +91,17 @@ stated precision (62 and 62.46 nM agree).
   value but different molecules according to the sources. These are worth reading,
   because one of the sources may have attributed the value to the wrong compound.
 - Records are never merged or dropped: every source keeps its own record and context.
+
+## A third source: PubChem BioAssay
+
+`sabueso.resolve(..., pubchem_bioassay=True)` adds the results PubChem links to the
+protein. Most are copies of ChEMBL or BindingDB data, and PubChem says so: each
+assay names its depositor and the depositor's assay id.
+
+- A copy is grouped with its original (`copy_of`), never counted as a confirmation,
+  and never decides a class, because PubChem's table drops the relation (`>`).
+- A copy whose original the card lacks leads to it: the ChEMBL assay it names is
+  fetched from ChEMBL. This recovers measurements a truncated or target-based query
+  missed.
+- `view["measurement_identity"]["unresolved_copies"]` lists the copies whose original
+  could not be found, with the reason.

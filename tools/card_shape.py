@@ -74,6 +74,7 @@ def fixture_cards() -> List[dict]:
     from sabueso.tools.db.pdb_ccd import FixtureCCDClient
     from sabueso.tools.db.pdbe_kb import FixturePDBeKBClient
     from sabueso.tools.db.pubchem import create_compound_card_from_file
+    from sabueso.tools.db.pubchem_bioassay import FixturePubChemBioAssayClient
     from sabueso.tools.db.stringdb import FixtureStringClient
     from sabueso.tools.db.unichem import FixtureUniChemClient
 
@@ -98,6 +99,8 @@ def fixture_cards() -> List[dict]:
             bindingdb={},
             bindingdb_client=FixtureBindingDBClient(data),
             unichem_client=FixtureUniChemClient(data),
+            pubchem_bioassay=True,
+            pubchem_bioassay_client=FixturePubChemBioAssayClient(data),
         )
         hstim, _ = sabueso.resolve(
             "P60174",
