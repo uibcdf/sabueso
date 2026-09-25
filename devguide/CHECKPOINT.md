@@ -217,6 +217,17 @@ This file records the current repository baseline so new developers can resume e
 - `card.add_literature_claim` records typed free-text claims in `literature.claims`,
   never compared (#43).
 
+## Names and the Structural Inventory (2026-09-25)
+- UniProt synonyms, abbreviations and gene names (`names.*`), and `Deck.unique_names`.
+- RCSB construct, mutations, sequence differences, observed residues, R-free and dates
+  as `has_structure` qualifiers; `Card.structures(region=...)` with a derived state
+  (`structure_state@1`), and `Deck.structure_inventory` (`structure_inventory@1`).
+
+## Release 0.4.0 (2026-09-25)
+- Published on the `uibcdf` channel from the staged candidate 141a5dc (sha256
+  `ba12e2d2…2e3e`), verified by a clean public install on Python 3.14. It publishes card
+  schema 0.3.4, whose frozen card is `temp_data/frozen_cards/schema_0.3.4__P52270.json`.
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).
