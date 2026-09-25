@@ -1,7 +1,7 @@
-version = "0.2.0"
+version = "0.3.0"
 route = "staged"
-reason = "New direct runtime dependency (depdigest), new packaged data (sabueso/resolver/enrichment_profiles.json), an optional dependency checked at call time (pandas), and the first publication of card schema 0.3.1; clean installed-package gates must pass before public visibility."
-decision_by = "Diego Prada (Sabueso maintainer), 2026-09-24"
+reason = "First publication of card schema 0.3.2; new modules that persist data (the SQLite knowledge store with content-addressed snapshots, sabueso/core/knowledge_store.py and snapshot.py); a new source (AlphaFold DB); and a change of curated SourceAssertion ids with an automatic migration of curation stores (#62). Clean installed-package gates, Windows included, must pass before public visibility."
+decision_by = "Diego Prada (Sabueso maintainer), 2026-09-25"
 required_workflows = [
   ".github/workflows/ci.yml",
   ".github/workflows/moli-governance.yml",

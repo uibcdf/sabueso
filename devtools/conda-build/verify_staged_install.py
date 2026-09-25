@@ -192,6 +192,20 @@ def api_smoke() -> bool:
     # The glossary of entities is written and read back (#52).
     if "smoke" not in str(again.to_dict().get("entities")):
         return False
+    # Added in 0.3.0: the knowledge store round trip on the installed package, with its
+    # pinned reference (#7, #27), and the knowledge-state view (#56).
+    import tempfile
+
+    import sabueso
+
+    with tempfile.TemporaryDirectory() as tmp:
+        store = sabueso.KnowledgeStore(Path(tmp) / "knowledge.db")
+        ref = store.save(again, note="smoke")
+        if ref != again.pinned_ref() or store.load(ref).to_dict() != again.to_dict():
+            return False
+        del store  # every connection is closed per call; Windows can remove the file
+    if not isinstance(again.knowledge_state().get("rows"), list):
+        return False
     # pandas is optional: without it, the DepDigest check answers (#46).
     import importlib.util
 
