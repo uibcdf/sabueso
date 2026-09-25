@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 17, queued 50, deferred 7, retired 3, out of scope 4.
+Summary: in use 17, evaluating 1, queued 48, deferred 8, retired 3, out of scope 4.
 
 ## In use
 
@@ -30,6 +30,12 @@ Summary: in use 17, queued 50, deferred 7, retired 3, out of scope 4.
 | [eggNOG](http://eggnog5.embl.de/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only, through UniProt (CC BY 4.0) | 2026-09-25 |
 | [NCBI Gene / RefSeq](https://www.ncbi.nlm.nih.gov/gene/) | Targets, sequence and basic pharmacology | via UniProt cross-references | US public domain (NLM policy) | 2026-09-25 |
 | [VEuPathDB gene identifiers](https://veupathdb.org/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only | 2026-09-25 |
+
+## Being evaluated
+
+| Resource | Category | What it would bring | Since |
+| --- | --- | --- | --- |
+| [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) | Organism, orthology and biological context | Taxonomic names, ranks and lineages; would make strain–species relations exact (today they are read from UniProt names and lineages). | 2026-09-25 |
 
 ## Queued for review
 
@@ -55,7 +61,6 @@ Summary: in use 17, queued 50, deferred 7, retired 3, out of scope 4.
 | [iPPI-DB](https://ippidb.pasteur.fr/) | Protein–protein interactions and structural modulation | Non-peptide inhibitors and modulators of protein–protein interactions, with pharmacological, chemical and structural data. | 2026-09-25 |
 | [PPI3D](http://bioinformatics.ibt.lt/ppi3d/) | Protein–protein interactions and structural modulation | Search, analysis and modelling of inter-chain interfaces and complexes (Voronoi tessellation). | 2026-09-25 |
 | [SKEMPI 2.0](https://life.bsc.es/pid/skempi2/) | Protein–protein interactions and structural modulation | Changes in binding affinity (ΔΔG) and kinetics caused by mutations at protein–protein interfaces. | 2026-09-25 |
-| [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) | Organism, orthology and biological context | Taxonomic names, ranks and lineages; would make strain–species relations exact (today they are read from UniProt names and lineages). | 2026-09-25 |
 | [ASD (Allosteric Database)](http://mdl.shsmu.edu.cn/ASD/) | Binding sites, cavities and specialised families | Allosteric modulators, regulatory sites and conformational communication. | 2026-09-25 |
 | [Binding MOAD](https://bindingmoad.org/) | Binding sites, cavities and specialised families | High-resolution complexes linked to validated binding affinities. | 2026-09-25 |
 | [BRENDA](https://brenda-enzymes.org/) | Binding sites, cavities and specialised families | Enzyme information: kinetics (Km, kcat), inhibitors, cofactors and conditions. | 2026-09-25 |
@@ -84,7 +89,6 @@ Summary: in use 17, queued 50, deferred 7, retired 3, out of scope 4.
 | [Reactome](https://reactome.org/) | Target validation, genetics and functional networks | Curated human pathways, reactions and signalling networks (REST API). | 2026-09-25 |
 | [TTD (Therapeutic Target Database)](https://idrblab.org/ttd/) | Target validation, genetics and functional networks | Molecular targets, their clinical status, diseases and resistance mutations. | 2026-09-25 |
 | [Ensembl](https://www.ensembl.org/) | Targets, sequence and basic pharmacology | Gene and transcript annotation, homology and population variants. | 2026-09-25 |
-| [Guide to PHARMACOLOGY (IUPHAR/BPS)](https://www.guidetopharmacology.org/) | Targets, sequence and basic pharmacology | Expert-curated target–ligand relationships, quantitative agonist/antagonist classification and selectivity. | 2026-09-25 |
 
 ## Deferred
 
@@ -93,6 +97,7 @@ Summary: in use 17, queued 50, deferred 7, retired 3, out of scope 4.
 | [VEuPathDB services (expression by stage, phenotype screens)](https://veupathdb.org/) | A large connector; structured fields for biological context should be used first, through curation. | Curated biological-context fields are in use and a workflow needs them for many genes. | 2026-09-25 |
 | [BioGRID](https://thebiogrid.org/) | The API needs a personal access key; IntAct (via UniProt) and STRING cover current needs. | Genetic interactions are needed, or key management exists for deployments. | 2026-09-23 |
 | [DrugBank (open data)](https://go.drugbank.com/) | Licensing constrains redistribution and caching; only DrugBank ids are kept, through UniChem. | A licence compatible with Sabueso's caching and redistribution is confirmed. | 2026-09-23 |
+| [Guide to PHARMACOLOGY (IUPHAR/BPS)](https://www.guidetopharmacology.org/) | Its web services now need a personal API key (HTTP 401 without one), its data is under ODbL (share-alike), and UniProt links neither test target to it. | A target of interest has a GuidetoPHARMACOLOGY cross-reference in UniProt, and key management exists for deployments (as for BioGRID). | 2026-09-25 |
 | [BioLiP](https://zhanggroup.org/BioLiP/) | Bulk downloads of a third-party pipeline, not a per-record service; the PDB subject-of-investigation flag already separates ligands from additives, and PDBe-KB gives contacts. | A batch import exists, or a question needs curated biologically relevant sites that PDBe-KB and the PDB flag do not give. | 2026-09-23 |
 | [M-CSA (Mechanism and Catalytic Site Atlas)](https://www.ebi.ac.uk/thornton-srv/m-csa/) | Evaluated: it links both TIMs to an entry but states catalytic residues and roles only in the numbering of a reference species; placing them on another sequence needs an alignment. | A residue mapping from an alignment (MolSysMT) can be applied to curated sites (#30). | 2026-09-23 |
 | [BindingDB](https://www.bindingdb.org/) | Overlaps ChEMBL; without an identity of a measurement across sources, shared measurements would look like independent confirmations. | A design for the identity of a measurement across sources exists (#66). | 2026-09-25 |

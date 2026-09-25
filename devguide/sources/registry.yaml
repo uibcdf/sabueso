@@ -350,10 +350,15 @@ resources:
     name: "Guide to PHARMACOLOGY (IUPHAR/BPS)"
     url: https://www.guidetopharmacology.org/
     category: targets_sequence
-    status: queued
+    status: deferred
     description: "Expert-curated target–ligand relationships, quantitative agonist/antagonist classification and selectivity."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    decided_by: "Sabueso maintainers, triage (2026-09-25)"
+    reason: "Its web services now need a personal API key (HTTP 401 without one), its data is under ODbL (share-alike), and UniProt links neither test target to it."
+    revisit_when: "A target of interest has a GuidetoPHARMACOLOGY cross-reference in UniProt, and key management exists for deployments (as for BioGRID)."
+    access: "REST API with a personal key; downloads"
+    licence: "ODbL 1.0"
   - id: ensembl
     name: "Ensembl"
     url: https://www.ensembl.org/
@@ -790,7 +795,11 @@ resources:
     name: "NCBI Taxonomy"
     url: https://www.ncbi.nlm.nih.gov/taxonomy
     category: organism_context
-    status: queued
+    status: evaluating
     description: "Taxonomic names, ranks and lineages; would make strain–species relations exact (today they are read from UniProt names and lineages)."
     since: 2026-09-25
     proposed_by: "Sabueso devguide (risk recorded with #55, 2026-09-25)"
+    reason: "Checked 2026-09-25: the Datasets API gives rank and ancestor ids without a key (strain 353153 has species 5693 among its ancestors), which makes strain and species relations exact."
+    access: "NCBI Datasets REST API, no key"
+    licence: "US public domain (NLM policy)"
+    links: ["#55", "#54", "#67"]
