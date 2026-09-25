@@ -17,14 +17,15 @@ Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the o
 
 ## Current release status
 
-- **Latest release:** [0.3.0](https://github.com/uibcdf/sabueso/releases/tag/0.3.0)
+- **Latest release:** [0.3.1](https://github.com/uibcdf/sabueso/releases/tag/0.3.1)
   (2026-09-25), distributed through the `uibcdf` conda channel.
   - One `noarch` package for Linux, macOS and Windows, on Python 3.11–3.14.
   - Before publication, the exact package was tested on all 12 combinations.
-  - It writes card schema 0.3.2.
-  - Users of 0.2.0: see the release notes about curated ids (#62).
-- **Archive of 0.3.0:** pending. Zenodo has not published its record yet. No DOI is
-  claimed until it is verified.
+  - It writes card schema 0.3.3.
+  - Users of 0.3.0: upgrade; see the release notes about copies of cards (#64).
+  - Users of 0.2.0: see the 0.3.0 release notes about curated ids (#62).
+- **Archives of 0.3.0 and 0.3.1:** pending. Zenodo has not published their records yet.
+  No DOI is claimed until it is verified.
 - **0.2.0** is archived and verified on Zenodo:
   - version DOI: [10.5281/zenodo.22948384](https://doi.org/10.5281/zenodo.22948384);
   - concept DOI, which covers all versions:

@@ -4,7 +4,7 @@
 The frozen draft schema lives at:
 - `schemas/card_schema.yaml`
 The formal schema (versioned) lives at:
-- `schemas/card_schema_0.3.3.yaml` (current; `card_schema_0.3.2.yaml`, the schema of release 0.3.0, `card_schema_0.3.1.yaml`, the schema of release 0.2.0, `card_schema_0.3.0.yaml`, the schema of releases 0.1.0 and 0.1.1, and `card_schema_0.2.0.yaml` are kept as history)
+- `schemas/card_schema_0.3.3.yaml` (current, the schema of release 0.3.1; `card_schema_0.3.2.yaml`, the schema of release 0.3.0, `card_schema_0.3.1.yaml`, the schema of release 0.2.0, `card_schema_0.3.0.yaml`, the schema of releases 0.1.0 and 0.1.1, and `card_schema_0.2.0.yaml` are kept as history)
 
 This is a **conceptual** schema meant to be refined into formal validation later.
 
