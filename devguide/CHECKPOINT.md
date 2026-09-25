@@ -170,6 +170,11 @@ This file records the current repository baseline so new developers can resume e
   OrthoDB and eggNOG groups are `classified_in`. Decks filter by lineage
   (`Deck.in_lineage`) and group by a field (`Deck.group_by`) (#54).
 
+## Identity Hygiene (2026-09-25)
+- Rule `protein_identity_audit@1` flags redundant entries, strain variants,
+  fragments and paralogs by gene locus and sequence, and never merges them. Curated
+  names anchor resolution by name. Curated ids include the subject (#55, #62).
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

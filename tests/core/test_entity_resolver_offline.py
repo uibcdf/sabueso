@@ -110,7 +110,8 @@ def test_a5_identical_sequence_in_one_organism_is_only_possibly_same_as():
         "uniprot:V9HWK1",
     )
     assert "source_assertion_ids" not in link  # derived, not asserted
-    assert link["derivation"]["rule"] == "identical_sequence_same_organism"
+    assert link["derivation"]["rule"] == "protein_identity_audit@1"
+    assert link["qualifiers"]["basis"]["sequence"] == "identical"
     RelationshipStore([link])  # a valid, storable relationship
 
 
@@ -147,9 +148,11 @@ def test_a6_name_and_organism_resolved_by_preference_with_trace(resolver):
     assert not any(a["basis"]["reviewed"] for a in res.alternatives)
     (search,) = res.decision["sources"]
     assert (search["total"], search["release"]) == (19, "2026_03")
-    # The identical-sequence human entry is surfaced as a derived possibly_same_as.
+    # Entries of the same gene with an identical or near-identical sequence are
+    # surfaced as a derived possibly_same_as; fragments of the gene are not (#55).
     assert [(lk["predicate"], lk["object_ref"]) for lk in res.identity_links] == [
-        ("possibly_same_as", "uniprot:V9HWK1")
+        ("possibly_same_as", "uniprot:V9HWK1"),
+        ("possibly_same_as", "uniprot:Q53HE2"),
     ]
 
 
@@ -174,7 +177,13 @@ def test_a7b_strain_variant_is_kept_as_alternative(resolver):
     (alternative,) = res.alternatives
     assert alternative["basis"]["accession"] == "Q4DV43"
     assert alternative["basis"]["organism"] == 353153  # strain CL Brener
-    assert res.identity_links == []  # different sequence: no identity link
+    # 4 of 251 positions differ: flagged for review, never merged (#55).
+    (link,) = res.identity_links
+    assert link["qualifiers"]["basis"] == {
+        "sequence": "near_identical",
+        "differences": 4,
+        "length": 251,
+    }
 
 
 def test_without_policy_several_matches_stay_ambiguous():

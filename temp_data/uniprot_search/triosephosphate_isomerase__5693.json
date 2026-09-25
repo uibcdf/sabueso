@@ -21,6 +21,118 @@
      "Schizotrypanum"
     ]
    },
+   "uniProtKBCrossReferences": [
+    {
+     "database": "VEuPathDB",
+     "id": "TriTrypDB:BCY84_02271",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    },
+    {
+     "database": "VEuPathDB",
+     "id": "TriTrypDB:C3747_69g188",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    },
+    {
+     "database": "VEuPathDB",
+     "id": "TriTrypDB:C4B63_28g114",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    },
+    {
+     "database": "VEuPathDB",
+     "id": "TriTrypDB:ECC02_003479",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    },
+    {
+     "database": "VEuPathDB",
+     "id": "TriTrypDB:TcBrA4_0009200",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    },
+    {
+     "database": "VEuPathDB",
+     "id": "TriTrypDB:TcCL_ESM12473",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    },
+    {
+     "database": "VEuPathDB",
+     "id": "TriTrypDB:TcCLB.508647.200",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    },
+    {
+     "database": "VEuPathDB",
+     "id": "TriTrypDB:TCDM_00802",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    },
+    {
+     "database": "VEuPathDB",
+     "id": "TriTrypDB:TcG_00710",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    },
+    {
+     "database": "VEuPathDB",
+     "id": "TriTrypDB:TCSYLVIO_001494",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    },
+    {
+     "database": "VEuPathDB",
+     "id": "TriTrypDB:TcYC6_0081760",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    }
+   ],
    "sequence": {
     "value": "MASKPQPIAAANWKCNGSESLLVPLIETLNAATFDHDVQCVVAPTFLHIPMTKARLTNPKFQIAAQNAITRSGAFTGEVSLQILKDYGISWVVLGHSERRLYYGETNEIVAEKVAQACAAGFHVIVCVGETNEEREAGRTAAVVLTQLAAVAQKLSKEAWSRVVIAYEPVWAIGTGKVATPQQAQEVHELLRRWVRSKLGTDIAAQLRILYGGSVTAKNARTLYQMRDINGFLVGGASLKPEFVEIIEATK",
     "length": 251,
@@ -28,6 +140,70 @@
     "crc64": "03010B66586C186D",
     "md5": "8B10ED90CF2DCA684CD7C8F7CC289846"
    },
+   "lineages": [
+    {
+     "scientificName": "cellular organisms",
+     "taxonId": 131567,
+     "rank": "no rank",
+     "hidden": true
+    },
+    {
+     "scientificName": "Eukaryota",
+     "commonName": "eukaryotes",
+     "taxonId": 2759,
+     "rank": "domain",
+     "hidden": false
+    },
+    {
+     "scientificName": "Discoba",
+     "taxonId": 2611352,
+     "rank": "clade",
+     "hidden": false
+    },
+    {
+     "scientificName": "Euglenozoa",
+     "taxonId": 33682,
+     "rank": "phylum",
+     "hidden": false
+    },
+    {
+     "scientificName": "Kinetoplastea",
+     "commonName": "kinetoplastids",
+     "taxonId": 5653,
+     "rank": "class",
+     "hidden": false
+    },
+    {
+     "scientificName": "Metakinetoplastina",
+     "taxonId": 2704647,
+     "rank": "subclass",
+     "hidden": false
+    },
+    {
+     "scientificName": "Trypanosomatida",
+     "taxonId": 2704949,
+     "rank": "order",
+     "hidden": false
+    },
+    {
+     "scientificName": "Trypanosomatidae",
+     "taxonId": 5654,
+     "rank": "family",
+     "hidden": false
+    },
+    {
+     "scientificName": "Trypanosoma",
+     "taxonId": 5690,
+     "rank": "genus",
+     "hidden": false
+    },
+    {
+     "scientificName": "Schizotrypanum",
+     "taxonId": 47570,
+     "rank": "subgenus",
+     "hidden": false
+    }
+   ],
    "extraAttributes": {
     "uniParcId": "UPI0000110C94"
    }

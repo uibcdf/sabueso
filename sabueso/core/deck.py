@@ -80,6 +80,18 @@ class Deck:
             groups[value].add(card)
         return groups
 
+    def identity_audit(self) -> Dict[str, Any]:
+        """Redundant entries, strain variants and paralogs among the deck's protein
+        cards (rule ``protein_identity_audit@1``, #55). Nothing is merged: each finding
+        states its basis, and ``possibly_same_as`` is a flag for review."""
+        from .identity_audit import audit, basis_of_card, derivation
+
+        proteins = [c for c in self.cards if c.meta.get("entity_type") == "protein"]
+        return {
+            "findings": audit(basis_of_card(c) for c in proteins),
+            "derivation": derivation(),
+        }
+
     def ids(self) -> List[str]:
         return [c.id for c in self.cards]
 

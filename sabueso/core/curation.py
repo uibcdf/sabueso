@@ -95,6 +95,9 @@ ITEM_IDENTITY: Dict[str, Callable[[Any], Any] | None] = {
     "annotations.disease": lambda i: i.get("accession") or i.get("name", "").lower(),
     "annotations.catalytic_activity": lambda i: i.get("rhea_id") or i.get("reaction"),
     "annotations.subcellular_location": lambda i: (i.get("location") or "").lower(),
+    # A name a publication uses for the protein, e.g. a paralog's "TIM2" (#55). Resolving
+    # by that name through a curation store anchors it to this entry.
+    "names.synonyms": lambda i: (i.get("name") or "").strip().casefold(),
     "annotations.function": None,
     "annotations.pathway": None,
     "annotations.subunit": None,
@@ -127,6 +130,7 @@ REQUIRED_KEYS = {
     "annotations.disease": ("name",),
     "annotations.catalytic_activity": ("reaction",),
     "annotations.subcellular_location": ("location",),
+    "names.synonyms": ("name",),
 }
 
 
@@ -424,6 +428,37 @@ def _add_item(card, field_path, assertion, others) -> Dict[str, Any]:
     return {"outcome": "differs", "compared_with": compared}
 
 
+#: Scheme of curated SourceAssertion ids. Scheme 1 (releases up to 0.2.0) left the
+#: subject out; curation stores re-identify such records (``CurationStore``).
+CURATED_ID_SCHEME = 2
+
+
+def curated_id(
+    publication: str, field_path: str, asserted: Any, locator: Any, subject: str
+) -> str:
+    return generate_source_assertion_id(
+        LITERATURE,
+        publication,
+        field_path,
+        {"value": asserted, "locator": locator, "subject": subject},
+    )
+
+
+def legacy_curated_id(assertion: Dict[str, Any]) -> str:
+    """The scheme-1 id of a curated assertion (without its subject)."""
+    return generate_source_assertion_id(
+        LITERATURE,
+        assertion["source"]["record_id"],
+        assertion["field_path"],
+        {
+            "value": assertion["asserted_value"],
+            "locator": (
+                (assertion.get("source_metadata") or {}).get("curation") or {}
+            ).get("locator"),
+        },
+    )
+
+
 def _literature_assertion(
     field_path,
     asserted,
@@ -446,10 +481,10 @@ def _literature_assertion(
         source_type="literature",
         subject_ref=subject,
     )
-    # Two statements of the same value in two places of a paper are two assertions.
-    assertion["id"] = generate_source_assertion_id(
-        LITERATURE, publication, field_path, {"value": asserted, "locator": locator}
-    )
+    # Two statements of the same value in two places of a paper are two assertions, and
+    # so are the same statement about two entities (#55: without the subject, a review
+    # stating "homodimer" of two proteins gave one id, and the store kept one of them).
+    assertion["id"] = curated_id(publication, field_path, asserted, locator, subject)
     curation = {"curator": curator, "curated_at": curated_at, "locator": locator}
     if quote:
         curation["quote"] = quote

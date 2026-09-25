@@ -27,8 +27,9 @@ import os
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
+from .curation import CURATED_ID_SCHEME, legacy_curated_id
 from .errors import StorageError
 
 HEADER = "sabueso_curations"
@@ -39,8 +40,17 @@ def _today() -> str:
     return datetime.now(timezone.utc).date().isoformat()
 
 
-def _records_of(card: Any) -> List[Dict[str, Any]]:
-    """The curated assertions on a card, as store records."""
+def _migrate(record: Dict[str, Any], new_id: str) -> Dict[str, Any]:
+    """Re-identify a scheme-1 record in place; its old id is kept."""
+    record.setdefault("previous_ids", []).append(record["source_assertion_id"])
+    record["source_assertion_id"] = new_id
+    record["id_scheme"] = CURATED_ID_SCHEME
+    return record
+
+
+def _records_of(card: Any) -> List[Tuple[Dict[str, Any], str]]:
+    """The curated assertions on a card, as store records, each with the scheme-1 id the
+    same statement had (see ``_migrate``)."""
     outcomes = {
         r["source_assertion_id"]: r["outcome"] for r in card.quality.get("curation", [])
     }
@@ -102,7 +112,8 @@ def _records_of(card: Any) -> List[Dict[str, Any]]:
                 value=assertion["asserted_value"],
                 method=metadata.get("method"),
             )
-        records.append(record)
+        record["id_scheme"] = CURATED_ID_SCHEME
+        records.append((record, legacy_curated_id(assertion)))
     return records
 
 
@@ -153,11 +164,26 @@ class CurationStore:
 
     def save(self, card: Any) -> Dict[str, int]:
         """Record the card's curated assertions. Saving twice changes nothing but the
-        outcome last seen; a retracted record stays retracted."""
+        outcome last seen; a retracted record stays retracted.
+
+        A record written with scheme-1 ids (releases up to 0.2.0) is re-identified when
+        the card holds the same statement; its old id is kept in ``previous_ids``.
+        """
         stored = {r["source_assertion_id"]: r for r in self.records()}
-        added = updated = 0
-        for record in _records_of(card):
+        added = updated = migrated = 0
+        for record, legacy in _records_of(card):
             previous = stored.get(record["source_assertion_id"])
+            old = stored.get(legacy)
+            if (
+                previous is None
+                and old is not None
+                and old.get("id_scheme") is None
+                and old.get("entity") == record["entity"]
+            ):
+                previous = _migrate(old, record["source_assertion_id"])
+                del stored[legacy]
+                stored[record["source_assertion_id"]] = previous
+                migrated += 1
             if previous is None:
                 record["outcome_checked_at"] = _today()
                 stored[record["source_assertion_id"]] = record
@@ -167,13 +193,37 @@ class CurationStore:
                 previous["outcome_checked_at"] = _today()
                 updated += 1
         self._write(list(stored.values()))
-        return {"added": added, "updated": updated, "total": len(stored)}
+        summary = {"added": added, "updated": updated, "total": len(stored)}
+        if migrated:
+            summary["migrated"] = migrated
+        return summary
+
+    def entities_named(self, name: str) -> Dict[str, List[Dict[str, Any]]]:
+        """Entities a curated name designates: ``{entity_ref: [records]}`` (#55).
+
+        Only ``names.synonyms`` records that are not retracted count. The comparison
+        ignores case and surrounding spaces.
+        """
+        wanted = name.strip().casefold()
+        found: Dict[str, List[Dict[str, Any]]] = {}
+        for record in self.records():
+            if (
+                record.get("kind") == "field"
+                and record.get("field_path") == "names.synonyms"
+                and not record.get("retracted")
+                and str((record.get("value") or {}).get("name", "")).strip().casefold()
+                == wanted
+            ):
+                found.setdefault(record["entity"], []).append(record)
+        return found
 
     def retract(self, source_assertion_id: str, reason: str, curator: str) -> None:
         """Mark a record as retracted. It is kept, and never applied again."""
         records = self.records()
         for record in records:
-            if record["source_assertion_id"] == source_assertion_id:
+            if source_assertion_id == record["source_assertion_id"] or (
+                source_assertion_id in record.get("previous_ids", [])
+            ):
                 record["retracted"] = {
                     "reason": reason,
                     "curator": curator,
@@ -195,8 +245,9 @@ class CurationStore:
         from .curation import _subject
 
         subject = _subject(card)
-        applied, retracted, changed = 0, 0, []
-        for record in self.records():
+        applied, retracted, changed, migrated = 0, 0, [], 0
+        records = self.records()
+        for record in records:
             if record.get("entity") != subject:
                 continue
             if record.get("retracted"):
@@ -236,6 +287,14 @@ class CurationStore:
                     method=record.get("method"),
                     **common,
                 )
+            if (
+                result["source_assertion_id"] != record["source_assertion_id"]
+                and record.get("id_scheme") is None
+            ):
+                # Written with scheme-1 ids: the statement is the same, and its id now
+                # includes the subject. Re-identified, the old id kept.
+                _migrate(record, result["source_assertion_id"])
+                migrated += 1
             if result["source_assertion_id"] != record["source_assertion_id"]:
                 raise StorageError(
                     f"Re-applying {record['source_assertion_id']} produced "
@@ -257,5 +316,8 @@ class CurationStore:
             "skipped_retracted": retracted,
             "changed": changed,
         }
+        if migrated:
+            self._write(records)
+            summary["migrated"] = migrated
         card.quality["curation_store"] = summary
         return summary

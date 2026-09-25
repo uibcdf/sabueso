@@ -63,6 +63,17 @@
   still classified by its central value. If that is misleading for a project,
   classifying the whole interval, as for ranges, is a new rule version, not a change to
   `@3`.
+- **Identity audit thresholds** (#55): the near-identity bound (2% of positions,
+  equal lengths, no alignment) is a flag for review, not a biological criterion.
+  Proteins with indels, or strain variants above 2%, are not flagged. A position-level
+  comparison through a MolSysMT alignment would replace it if needed. `same_gene`
+  joins isoforms, fragments and alleles, which a reader must tell apart.
+- **Strain relations by name** (#55): a strain entry whose lineage stops above the
+  species is related through its name ("Trypanosoma cruzi (strain CL Brener)"). A
+  taxonomy service (NCBI Taxonomy) would be exact if names prove unreliable.
+- **Scheme-1 curation records** (#62): a statement dropped by the old collision cannot
+  be recovered from a store. Stores stay mixed, with scheme-1 and scheme-2 records,
+  until every entity is applied or saved once.
 
 ## Open Questions
 - What are the default **selection rules** per field?

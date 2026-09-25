@@ -22,7 +22,6 @@ from sabueso.core.card import make_card_id
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.core.relationship_store import (
     Relationship,
-    make_derivation,
     make_relationship,
 )
 from sabueso.core.source_assertion_store import SourceAssertion, make_source_assertion
@@ -99,27 +98,30 @@ def _organism_matches(entry: Dict[str, Any], organism: int | str | None) -> bool
 def sequence_identity_link(
     entry_a: Dict[str, Any], entry_b: Dict[str, Any]
 ) -> Optional[Relationship]:
-    """Derived ``possibly_same_as`` for identical sequences within one organism.
+    """Derived ``possibly_same_as`` between two UniProt entries, or None.
 
-    Identical sequences in different organisms (e.g. human P60174 and chimpanzee P60175)
-    are never an identity link, and identical sequences never merge entities automatically.
+    Rule ``protein_identity_audit@1`` (``sabueso.core.identity_audit``, #55): a shared
+    gene locus, or an identical or near-identical sequence within related organisms,
+    raises the flag; distinct loci of one genome never do (paralogs). Entries of
+    unrelated organisms (e.g. human P60174 and chimpanzee P60175) are never linked, and
+    no link merges entities.
     """
-    a, b = uniprot_basis(entry_a), uniprot_basis(entry_b)
-    if a["accession"] == b["accession"] or not a["md5"] or a["md5"] != b["md5"]:
-        return None
-    if a["organism"] is None or a["organism"] != b["organism"]:
-        return None
-    return make_relationship(
-        f"uniprot:{a['accession']}",
-        "possibly_same_as",
-        f"uniprot:{b['accession']}",
-        qualifiers={"basis": "identical_sequence", "organism": a["organism"]},
-        derivation=make_derivation(
-            "identical_sequence_same_organism",
-            inputs=[f"uniprot:{a['accession']}", f"uniprot:{b['accession']}"],
-            parameters={"checksum": "md5", "organism": a["organism"]},
-        ),
+    from sabueso.core.identity_audit import (
+        basis_of_entry,
+        compare,
+        pairs_to_relationships,
     )
+
+    found = compare(basis_of_entry(entry_a), basis_of_entry(entry_b))
+    links = pairs_to_relationships([found] if found else [])
+    return links[0] if links else None
+
+
+def identity_audit(results: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Findings among the candidates of a search (``protein_identity_audit@1``)."""
+    from sabueso.core.identity_audit import audit, basis_of_entry
+
+    return audit(basis_of_entry(e) for e in results)
 
 
 class EntityResolver:
@@ -251,6 +253,10 @@ class EntityResolver:
             return EntityResolution(
                 "ambiguous", candidates=candidates, decision=decision
             )
+        if len(results) > 1:
+            # Redundant entries, strain variants and paralogs among the candidates,
+            # each with its basis; nothing is merged (#55).
+            decision["identity_audit"] = identity_audit(results)
         if len(results) == 1:
             decision["rules"].append("name_organism_single_match")
             return EntityResolution(

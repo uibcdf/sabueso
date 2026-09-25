@@ -32,7 +32,7 @@ Versioning: **x.y.z** (no leading `v`).
 
 ### names.*
 - `names.canonical_name`
-- `names.synonyms`
+- `names.synonyms` (list of `{name}`; curatable: a name a publication uses for the entry, which anchors resolution by name through a curation store, #55)
 - `names.abbreviations`
 
 ### properties.*

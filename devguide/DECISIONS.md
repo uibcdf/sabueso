@@ -371,3 +371,30 @@ uibcdf/sabueso#54; additive, card schema 0.3.2.
 - `Deck.in_lineage(taxon)` keeps cards whose organism is or descends from the taxon.
   Cards whose lineage is not stated are listed apart, not dropped silently.
   `Deck.group_by(field_path)` groups by a resolved value.
+
+## Identity hygiene (2026-09-25)
+uibcdf/sabueso#55 and #62.
+- **Identity never comes from sequence similarity.** Paralogs can be closer in
+  sequence than redundant entries of one protein: two Trichomonas vaginalis
+  paralogs differ in 4 of 252 positions, while human P60174 and Q53HE2 differ in 1
+  of 249.
+- **Rule `protein_identity_audit@1`** (`sabueso/core/identity_audit.py`) compares two
+  entries of related organisms. Related means the same taxon, one in the other's
+  lineage, or a strain name extending the species name. The steps:
+  - a shared gene locus with an agreeing sequence gives `possibly_same_as`, and with
+    another sequence gives `same_gene` (isoforms, fragments, alleles);
+  - distinct loci of one genome give `distinct_genes`;
+  - otherwise, an identical or near-identical sequence gives `possibly_same_as`.
+    Near-identical means the same length and at most 2% of positions differing,
+    compared position by position. Different lengths are not compared: aligning
+    belongs to MolSysMT.
+- **Nothing merges.** `possibly_same_as` is a flag for review. The resolver records
+  the findings among search candidates (`decision["identity_audit"]`), and
+  `Deck.identity_audit()` among a deck's protein cards.
+- **Named anchors are curated.** A curator states a name for an entry
+  (`names.synonyms`, with a publication). `resolve(EntityQuery(name=...),
+  curations=store)` answers from that anchor before any search (rule
+  `curated_name`). A name that designates two entries is ambiguous, and a name
+  anchored in another organism does not answer the query.
+- **Curated ids include the subject** (id scheme 2, #62). Stores written earlier are
+  re-identified record by record when applied or saved, and the old id is kept.

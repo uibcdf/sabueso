@@ -44,6 +44,68 @@ def _route(query: EntityQuery | str, entity_type: str | None) -> Tuple[str, str]
     return PROTEIN, "default"
 
 
+def _curated_anchor(query: EntityQuery, curations: Any) -> Tuple[str, Any, Any] | None:
+    """A name a curator anchored to an entry (#55).
+
+    Returns None when no curated name matches, ``("ambiguous", resolution, None)`` when
+    the name designates several entries, and ``("resolved", query, record)`` otherwise.
+    """
+    named = curations.entities_named(query.name)
+    if not named:
+        return None
+    summary = {
+        ref: [
+            {
+                "source_assertion_id": r["source_assertion_id"],
+                "publication": r.get("publication"),
+                "curator": r.get("curator"),
+            }
+            for r in records
+        ]
+        for ref, records in sorted(named.items())
+    }
+    if len(named) > 1:
+        return (
+            "ambiguous",
+            EntityResolution(
+                "ambiguous",
+                candidates=[
+                    {"entity_ref": ref, "basis": {"curated_name": query.name}}
+                    for ref in sorted(named)
+                ],
+                decision={
+                    "query": str(query),
+                    "rules": ["curated_name_ambiguous"],
+                    "curated_name": {"name": query.name, "designates": summary},
+                },
+            ),
+            None,
+        )
+    ((ref, _),) = named.items()
+    accession = ref.split(":", 1)[1]
+    return (
+        "resolved",
+        EntityQuery(identifier=accession),
+        {"name": query.name, "designates": summary},
+    )
+
+
+def _organism_fits(card: Card, organism: Any) -> bool:
+    if organism is None:
+        return True
+
+    def value(path: str) -> Any:
+        node = card.get(path)
+        return node.get("value") if isinstance(node, dict) else None
+
+    if isinstance(organism, int) or str(organism).isdigit():
+        return value("annotations.taxon_id") == int(organism) or False
+    name = str(organism).casefold()
+    return (value("annotations.organism") or "").casefold() == name or name in {
+        t.casefold() for t in value("annotations.lineage") or []
+    }
+
+
 @signal(tags=["api"])
 @arg_digest()
 def resolve(
@@ -101,7 +163,26 @@ def resolve(
     else:
         from sabueso.tools.card.protein import resolve_protein_card
 
-        card, resolution = resolve_protein_card(query, **options)
+        anchored = (
+            _curated_anchor(query, curations)
+            if basis == "name_and_organism" and curations is not None
+            else None
+        )
+        if anchored is not None and anchored[0] == "ambiguous":
+            card, resolution = None, anchored[1]
+        else:
+            target = anchored[1] if anchored else query
+            card, resolution = resolve_protein_card(target, **options)
+            if anchored:
+                resolution.decision["curated_name"] = anchored[2]
+                resolution.decision.setdefault("rules", []).insert(0, "curated_name")
+                if card is not None and not _organism_fits(card, query.organism):
+                    # The curated name designates an entry of another organism: it
+                    # does not answer this query, and the search decides.
+                    card, resolution = resolve_protein_card(query, **options)
+                    resolution.decision["rules"].insert(
+                        0, "curated_name_other_organism"
+                    )
         tool = "resolve_protein_card"
     resolution.decision["route"] = {"entity_type": kind, "tool": tool, "basis": basis}
     if applied is not None:

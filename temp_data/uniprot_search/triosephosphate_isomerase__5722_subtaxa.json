@@ -1,0 +1,233 @@
+{
+ "query": "(protein_name:\"triosephosphate isomerase\") AND (taxonomy_id:5722)",
+ "total": 2,
+ "release": "2026_03",
+ "results": [
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A2FT29",
+   "organism": {
+    "scientificName": "Trichomonas vaginalis (strain ATCC PRA-98 / G3)",
+    "taxonId": 412133,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "EMBL",
+      "id": "EAX91938.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000001542"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metamonada",
+     "Parabasalia",
+     "Trichomonadida",
+     "Trichomonadidae",
+     "Trichomonas"
+    ]
+   },
+   "uniProtKBCrossReferences": [
+    {
+     "database": "VEuPathDB",
+     "id": "TrichDB:TVAG_096350",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    },
+    {
+     "database": "VEuPathDB",
+     "id": "TrichDB:TVAGG3_0815950",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    }
+   ],
+   "sequence": {
+    "value": "MRTFFVGGNWKANPKTVQEAEKLVEMLNGAKVEGNVEVVVAAPFVFLPTLQQKLRKDWKVSAENVFTKPNGAFTGEVTVPMIKSFGIEWTILGHSERRDILKEDDEFLAAKAKFALENGMKIIYCCGEHLSEREAGKASEFVSAQIEKMIPAIPAGKWDDVVIAYEPIWAIGTGKVASTQDAQEMCKVIRDILAAKVGADIANKVRILYGGSVKPNNCNELAACPDVDGFLVGGASLEAGFINIVNSNVHSK",
+    "length": 252,
+    "molWeight": 27416,
+    "crc64": "1915FF66C8072C5B",
+    "md5": "01100CF98FBB087B55DEB1AE854A54CE"
+   },
+   "lineages": [
+    {
+     "scientificName": "cellular organisms",
+     "taxonId": 131567,
+     "rank": "no rank",
+     "hidden": true
+    },
+    {
+     "scientificName": "Eukaryota",
+     "commonName": "eukaryotes",
+     "taxonId": 2759,
+     "rank": "domain",
+     "hidden": false
+    },
+    {
+     "scientificName": "Metamonada",
+     "taxonId": 2611341,
+     "rank": "clade",
+     "hidden": false
+    },
+    {
+     "scientificName": "Parabasalia",
+     "commonName": "parabasalids",
+     "taxonId": 5719,
+     "rank": "phylum",
+     "hidden": false
+    },
+    {
+     "scientificName": "Trichomonadida",
+     "commonName": "trichomonads",
+     "taxonId": 37104,
+     "rank": "order",
+     "hidden": false
+    },
+    {
+     "scientificName": "Trichomonadidae",
+     "taxonId": 181550,
+     "rank": "family",
+     "hidden": false
+    },
+    {
+     "scientificName": "Trichomonas",
+     "taxonId": 5721,
+     "rank": "genus",
+     "hidden": false
+    },
+    {
+     "scientificName": "Trichomonas vaginalis",
+     "taxonId": 5722,
+     "rank": "species",
+     "hidden": true
+    }
+   ],
+   "extraAttributes": {
+    "uniParcId": "UPI0000EEF5E3"
+   }
+  },
+  {
+   "entryType": "UniProtKB unreviewed (TrEMBL)",
+   "primaryAccession": "A2EGX9",
+   "organism": {
+    "scientificName": "Trichomonas vaginalis (strain ATCC PRA-98 / G3)",
+    "taxonId": 412133,
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "EMBL",
+      "id": "EAY08113.1"
+     },
+     {
+      "evidenceCode": "ECO:0000313",
+      "source": "Proteomes",
+      "id": "UP000001542"
+     }
+    ],
+    "lineage": [
+     "Eukaryota",
+     "Metamonada",
+     "Parabasalia",
+     "Trichomonadida",
+     "Trichomonadidae",
+     "Trichomonas"
+    ]
+   },
+   "uniProtKBCrossReferences": [
+    {
+     "database": "VEuPathDB",
+     "id": "TrichDB:TVAG_497370",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    },
+    {
+     "database": "VEuPathDB",
+     "id": "TrichDB:TVAGG3_0803410",
+     "properties": [
+      {
+       "key": "Description",
+       "value": "-"
+      }
+     ]
+    }
+   ],
+   "sequence": {
+    "value": "MRTFFVGGNWKANPKTVEEAEKLIEMLNGAKVEGNVEVVVAAPFIFLPTLQQKLRKDWKVSAENVFTKPNGAFTGEVTVPMIKSFGIEWTILGHSERRDILKEDDEFLAAKAKFALENGMKIIYCCGEHLSEREAGKASEFVSAQIEKMIPAIPAGKWDDVVIAYEPIWAIGTGKVASTQDAQEMCKVIRDILAAKVGADIANKVRILYGGSVKPNNCNELAACPDVDGFLVGGASLEPGFINIVNSNVHSK",
+    "length": 252,
+    "molWeight": 27471,
+    "crc64": "699DE5D57FAB6016",
+    "md5": "848172395E66B99AF832347B175FDDC5"
+   },
+   "lineages": [
+    {
+     "scientificName": "cellular organisms",
+     "taxonId": 131567,
+     "rank": "no rank",
+     "hidden": true
+    },
+    {
+     "scientificName": "Eukaryota",
+     "commonName": "eukaryotes",
+     "taxonId": 2759,
+     "rank": "domain",
+     "hidden": false
+    },
+    {
+     "scientificName": "Metamonada",
+     "taxonId": 2611341,
+     "rank": "clade",
+     "hidden": false
+    },
+    {
+     "scientificName": "Parabasalia",
+     "commonName": "parabasalids",
+     "taxonId": 5719,
+     "rank": "phylum",
+     "hidden": false
+    },
+    {
+     "scientificName": "Trichomonadida",
+     "commonName": "trichomonads",
+     "taxonId": 37104,
+     "rank": "order",
+     "hidden": false
+    },
+    {
+     "scientificName": "Trichomonadidae",
+     "taxonId": 181550,
+     "rank": "family",
+     "hidden": false
+    },
+    {
+     "scientificName": "Trichomonas",
+     "taxonId": 5721,
+     "rank": "genus",
+     "hidden": false
+    },
+    {
+     "scientificName": "Trichomonas vaginalis",
+     "taxonId": 5722,
+     "rank": "species",
+     "hidden": true
+    }
+   ],
+   "extraAttributes": {
+    "uniParcId": "UPI0000EEBC23"
+   }
+  }
+ ]
+}

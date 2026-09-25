@@ -95,7 +95,11 @@ def create_protein_card_online(uniprot_id: str, retrieved_at: str | None = None)
 
 
 UNIPROT_REST = "https://rest.uniprot.org/uniprotkb"
-SEARCH_FIELDS = "accession,reviewed,organism_name,organism_id,length,sequence"
+# Lineage and gene loci let the resolver tell paralogs from redundant entries (#55).
+SEARCH_FIELDS = (
+    "accession,reviewed,organism_name,organism_id,length,sequence,lineage,"
+    "xref_veupathdb,xref_geneid"
+)
 SEARCH_SIZE = 500
 
 

@@ -30,6 +30,11 @@ Cards expose core methods such as:
 A `Deck` is a collection of Cards with batch operations:
 
 - `filter(predicate)` for sub-decks
+- `in_lineage(taxon)` keeps the cards whose organism is or descends from a taxon, and
+  lists in `meta` the cards whose lineage is not stated; `group_by(field_path)` groups
+  cards by a resolved value, e.g. `annotations.taxon_id`
+- `identity_audit()` reports redundant entries, strain variants, fragments and
+  paralogs among the protein cards, each with its basis. It never merges cards.
 - `sort(field_path, reverse=False)` by resolved value; cards without a value go last
 - `map(fn)`, `summarize(field_paths)`
 - `compare(other, key_fields)`

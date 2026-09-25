@@ -70,8 +70,9 @@ def test_card_from_name_query_keeps_the_trace_and_the_boundary(resolver):
     assert (trace["policy"], len(trace["alternatives"])) == ("prefer_reviewed@1", 18)
     assert trace["decision"]["rules"] == ["preference:prefer_reviewed@1"]
 
-    (link,) = card.relationships(predicate="possibly_same_as")
-    assert link["object_ref"] == "uniprot:V9HWK1" and "derivation" in link
+    links = card.relationships(predicate="possibly_same_as")
+    assert [x["object_ref"] for x in links] == ["uniprot:V9HWK1", "uniprot:Q53HE2"]
+    assert all("derivation" in x for x in links)
 
     view = card.structures()
     assert len(view["items"]) == 24

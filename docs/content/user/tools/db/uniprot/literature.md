@@ -92,6 +92,23 @@ print(record["outcome"])  # new, corroborates, differs, not_comparable or not_co
 - **Scope.** How a statement bears on a project's hypotheses is not Sabueso's: that is
   Evidence, in Nextia.
 
+## Names that papers use
+
+A paper may call a protein by a name UniProt does not list, such as a paralog's
+"TIM2". Record it once:
+
+```python
+card.add_literature_assertion(
+    "names.synonyms", {"name": "TIM2"}, "pubmed:...", "curator"
+)
+store.save(card)
+sabueso.resolve(EntityQuery(name="TIM2", organism=5722), curations=store)
+```
+
+Resolution then uses that anchor (rule `curated_name`), with the publication in its
+decision. A name curated for two entries is reported as ambiguous. A name anchored
+in another organism does not answer the query.
+
 ## Keep curations across rebuilds
 
 A card is rebuilt whenever you query the sources again, for example to get a newer
