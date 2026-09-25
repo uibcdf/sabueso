@@ -175,6 +175,10 @@ This file records the current repository baseline so new developers can resume e
   fragments and paralogs by gene locus and sequence, and never merges them. Curated
   names anchor resolution by name. Curated ids include the subject (#55, #62).
 
+## Knowledge States (2026-09-25)
+- `card.knowledge_state()` tells known, conflicting, not stated, not queried and
+  unavailable apart, per area and source (#56).
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

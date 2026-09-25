@@ -398,3 +398,18 @@ uibcdf/sabueso#55 and #62.
   anchored in another organism does not answer the query.
 - **Curated ids include the subject** (id scheme 2, #62). Stores written earlier are
   re-identified record by record when applied or saved, and the old id is kept.
+
+## Knowledge states (2026-09-25)
+uibcdf/sabueso#56; rule `knowledge_state@1`.
+- `card.knowledge_state()` and `card.table("knowledge_state")` give one row per area
+  and source: `known`, `conflicting`, `not_stated`, `not_queried` or `unavailable`,
+  with the source release, a count and the basis.
+- `not_stated` means the source was consulted and states nothing. For UniProt this
+  covers every field and relationship its mapping can give (`STATED_FIELDS`,
+  `STATED_PREDICATES`). For enrichments it means the request answered with nothing.
+  The basis keeps the reason: "no ChEMBL cross-reference in the UniProt entry" means
+  ChEMBL was not asked, not that ChEMBL has no data.
+- `not_queried` means the enrichment was not requested; `unavailable` means a request
+  failed and nothing was stated.
+- These are facts about sources, never Evidence: what an absence means for a project
+  is Nextia's.

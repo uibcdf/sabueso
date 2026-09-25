@@ -178,6 +178,20 @@ def _entities(view: Dict[str, Any]) -> List[Dict[str, Any]]:
     ]
 
 
+def _knowledge_state(view: Dict[str, Any]) -> List[Dict[str, Any]]:
+    return [
+        {
+            "area": r["area"],
+            "source": r["source"],
+            "release": r["release"],
+            "state": r["state"],
+            "count": r["count"],
+            "basis": "; ".join(f"{k}={v}" for k, v in sorted(r["basis"].items())),
+        }
+        for r in view["rows"]
+    ]
+
+
 #: name -> (card view method, rows of its output)
 TABLES: Dict[str, tuple] = {
     "structures": ("structures", _structures),
@@ -187,6 +201,7 @@ TABLES: Dict[str, tuple] = {
     "interfaces": ("oligomer", _interfaces),
     "literature": ("literature", _literature),
     "entities": ("entities", _entities),
+    "knowledge_state": ("knowledge_state", _knowledge_state),
 }
 
 

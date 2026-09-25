@@ -25,6 +25,15 @@ Cards expose core methods such as:
 - `to_dict()`, `to_json(path)`, `to_sqlite(path, ...)`
 - `from_json(path)`, `from_sqlite(path, ...)`
 
+## What a card does not know
+
+`card.knowledge_state()` (or `card.table("knowledge_state")`) lists, per area and
+source, whether the card knows it (`known`), sources disagree (`conflicting`), the
+source was consulted and states nothing (`not_stated`), it was not requested
+(`not_queried`), or the source failed (`unavailable`). Each row carries the source
+release and the basis. An absence is reported as a fact about a source, never as
+evidence against something.
+
 ## Deck
 
 A `Deck` is a collection of Cards with batch operations:

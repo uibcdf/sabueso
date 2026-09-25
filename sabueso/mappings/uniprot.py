@@ -35,6 +35,38 @@ _FEATURES = {
 }
 
 
+#: Every field the mapping can state, and the relationships it can give: what a card
+#: built from UniProt knows, or knows UniProt does not state (knowledge states, #56).
+STATED_FIELDS = frozenset(
+    {
+        *_TEXT_COMMENTS.values(),
+        *_FEATURES.values(),
+        "identifiers.uniprot",
+        "identifiers.gene_loci",
+        "names.canonical_name",
+        "annotations.catalytic_activity",
+        "annotations.subcellular_location",
+        "annotations.disease",
+        "annotations.organism",
+        "annotations.taxon_id",
+        "annotations.lineage",
+        "sequence.primary",
+        "sequence.length",
+        "sequence.molecular_weight",
+        "sequence.checksums",
+    }
+)
+STATED_PREDICATES = frozenset(
+    {
+        "has_structure",
+        "annotated_with",
+        "classified_in",
+        "interacts_with",
+        "described_in",
+    }
+)
+
+
 def _eco(evidences: List[Dict[str, Any]] | None) -> List[Dict[str, str]]:
     """UniProt evidence qualifiers as ECO codes with their cited source, if any."""
     out: List[Dict[str, str]] = []

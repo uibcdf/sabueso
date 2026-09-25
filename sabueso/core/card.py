@@ -270,6 +270,13 @@ class Card:
 
         return card_table(self, view, **options)
 
+    def knowledge_state(self) -> Dict[str, Any]:
+        """Per area and source: known, conflicting, not stated, not queried or
+        unavailable (#56). See ``sabueso.core.knowledge_state``."""
+        from .knowledge_state import knowledge_state
+
+        return knowledge_state(self)
+
     def entities(self) -> Dict[str, Any]:
         """The glossary of molecular entities this card mentions, each once (#52)."""
         from .entities import build_entities
