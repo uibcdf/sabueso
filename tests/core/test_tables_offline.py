@@ -37,6 +37,9 @@ def tctim():
         predicted_structures=True,
         alphafold_client=FixtureAlphaFoldClient("temp_data"),
     )
+    card.add_literature_claim(  # constructed, under a placeholder DOI
+        "interface", "A constructed claim.", "doi:10.0000/tables", "tables"
+    )
     return card
 
 

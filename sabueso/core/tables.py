@@ -181,6 +181,21 @@ def _entities(view: Dict[str, Any]) -> List[Dict[str, Any]]:
     ]
 
 
+def _claims(view: Dict[str, Any]) -> List[Dict[str, Any]]:
+    return [
+        {
+            "topic": c["topic"],
+            "text": c["text"],
+            "about": _join(c["about"]),
+            "publication": c["publication"],
+            "locator": c["locator"],
+            "curator": c["curator"],
+            "outcome": c["outcome"],
+        }
+        for c in view["items"]
+    ]
+
+
 def _predicted_structures(view: Dict[str, Any]) -> List[Dict[str, Any]]:
     return [
         {
@@ -223,6 +238,7 @@ TABLES: Dict[str, tuple] = {
     "entities": ("entities", _entities),
     "knowledge_state": ("knowledge_state", _knowledge_state),
     "predicted_structures": ("predicted_structures", _predicted_structures),
+    "claims": ("claims", _claims),
 }
 
 

@@ -165,6 +165,9 @@ def fixture_cards() -> List[dict]:
             "direct",
             uncertainty={"kind": "sd", "value": "3 nM"},
         )
+        hstim.add_literature_claim(
+            "interface", "shape", "pubmed:1", "shape", about=["residues:14"]
+        )
         hstim.add_literature_engagement(
             {"inchikey": "XBNHRNFODJOFRU-UHFFFAOYSA-N", "records": ["chembl:CHEMBL1"]},
             [{"position": 12, "residue": "N"}],

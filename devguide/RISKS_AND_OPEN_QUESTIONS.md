@@ -127,6 +127,9 @@
 - **Gaps of qualifier-level additions** (#51): `SCHEMA_CHANGES` names relationship
   qualifiers by their relationship, so an added qualifier (for example `isoform`) is
   reported only when the relationship itself is absent.
+- **Claims can hide structure** (#43): free text is easy to add and cannot be
+  compared, so claims could pile up where a structured field should exist. Review the
+  topics periodically, and promote a recurring topic to a field.
 
 ## Open Questions
 - What are the default **selection rules** per field?

@@ -53,6 +53,8 @@ schema:
     id), measurement.outcome, assay.depositor and assay.depositor_id (PubChem BioAssay),
     and retrieved_via, set on ChEMBL records fetched because a copy named their assay
     (uibcdf/sabueso#68). Additive.
+    It also adds literature.claims, curated free-text claims typed by topic and never
+    compared (uibcdf/sabueso#43). Additive.
 card_base:
   meta:
     card_id:
@@ -182,6 +184,15 @@ card_base:
         value: string
         source_assertion_ids:
         - string
+  literature:
+    claims:
+      value:
+      - topic: string
+        text: string
+        about:
+        - string
+      source_assertion_ids:
+      - string
   annotations:
     function:
       value:

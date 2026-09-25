@@ -72,6 +72,7 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "path": "relationships.has_bioactivity (PubChem BioAssay)",
             "filled_by": "pubchem_bioassay",
         },
+        {"path": "literature.claims", "filled_by": "curation"},
     ],
 }
 

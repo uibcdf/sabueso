@@ -258,6 +258,70 @@ class Card:
         return record
 
     @arg_digest()
+    def add_literature_claim(
+        self,
+        topic: str,
+        text: str,
+        publication: str,
+        curator: str,
+        about: List[str] | None = None,
+        locator: str | None = None,
+        quote: str | None = None,
+        eco_code: str | None = None,
+        curated_at: str | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Record a claim a publication makes that fits no structured field (#43).
+
+        ``topic`` is one of ``curation.CLAIM_TOPICS``; ``about`` lists what the claim
+        is about (``"chembl:CHEMBL123"``, ``"pdb:1SUX"``, ``"residues:14,96"``). A
+        claim is kept with its provenance and listed by topic, but never compared:
+        whether two texts agree needs a reader. Its outcome is ``not_compared``.
+        """
+        item = {"topic": topic, "text": text}
+        if about:
+            item["about"] = list(about)
+        return self.add_literature_assertion(
+            "literature.claims",
+            item,
+            publication,
+            curator,
+            locator=locator,
+            quote=quote,
+            eco_code=eco_code,
+            curated_at=curated_at,
+        )
+
+    def claims(self, topic: str | None = None) -> Dict[str, Any]:
+        """Curated free-text claims, by topic, with their provenance (#43)."""
+        node = self.get("literature.claims") or {}
+        items = []
+        for sa_id in node.get("source_assertion_ids") or []:
+            sa = self.source_assertion_store.get(sa_id) or {}
+            value = sa.get("asserted_value") or {}
+            if topic is not None and value.get("topic") != topic:
+                continue
+            curation = (sa.get("source_metadata") or {}).get("curation") or {}
+            items.append(
+                {
+                    "topic": value.get("topic"),
+                    "text": value.get("text"),
+                    "about": value.get("about") or [],
+                    "publication": (sa.get("source") or {}).get("record_id"),
+                    "locator": curation.get("locator"),
+                    "quote": curation.get("quote"),
+                    "curator": curation.get("curator"),
+                    "curated_at": curation.get("curated_at"),
+                    "source_assertion_id": sa_id,
+                    "outcome": "not_compared",
+                }
+            )
+        by_topic: Dict[str, int] = {}
+        for item in items:
+            by_topic[item["topic"]] = by_topic.get(item["topic"], 0) + 1
+        return {"items": items, "topics": dict(sorted(by_topic.items()))}
+
+    @arg_digest()
     def add_literature_engagement(
         self,
         molecule: Any,

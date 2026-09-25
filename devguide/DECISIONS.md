@@ -533,3 +533,20 @@ uibcdf/sabueso#51; rule `card_migration@1`.
   which the sources do not state.
 - Steps between lines are functions in `migration.STEPS`. None exists: every card
   published so far is in the 0.3 line.
+
+## Free-text claims typed by topic (2026-09-25)
+uibcdf/sabueso#43.
+- `card.add_literature_claim(topic, text, publication, curator, about=..., locator=...,
+  quote=...)` records a claim that fits no structured field, in `literature.claims`,
+  as a curated SourceAssertion. The curation store keeps it across rebuilds.
+- **Never compared.** Whether two texts agree needs a reader, so the outcome is always
+  `not_compared`. `card.claims(topic=None)` and `card.table("claims")` list claims by
+  topic, with their provenance.
+- **Topics are Sabueso's own provisional vocabulary** (`curation.CLAIM_TOPICS`): a new
+  topic is an additive schema change. A vocabulary shared with Praxis or Nextia would
+  be agreed in uibcdf/moli.
+- **Promotion.** When claims of one topic recur, they should become a structured field
+  or predicate, and cards move to it with `migrate_card` (#51). Biological context may
+  be the first case (#60).
+- **Claims drafted by an agent** stay SourceAssertions, with the agent recorded as
+  curator. They are never Evidence (Nextia).

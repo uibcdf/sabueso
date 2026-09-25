@@ -213,6 +213,10 @@ This file records the current repository baseline so new developers can resume e
 - `sabueso.migrate_card` and `sabueso.refresh_card`: honest migration with recorded
   gaps, completed by rebuilding from the sources (#51).
 
+## Free-text Claims (2026-09-25)
+- `card.add_literature_claim` records typed free-text claims in `literature.claims`,
+  never compared (#43).
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

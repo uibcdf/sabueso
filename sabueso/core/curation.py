@@ -98,6 +98,8 @@ ITEM_IDENTITY: Dict[str, Callable[[Any], Any] | None] = {
     # A name a publication uses for the protein, e.g. a paralog's "TIM2" (#55). Resolving
     # by that name through a curation store anchors it to this entry.
     "names.synonyms": lambda i: (i.get("name") or "").strip().casefold(),
+    # A typed free-text claim (#43): recorded and listed by topic, never compared.
+    "literature.claims": None,
     "annotations.function": None,
     "annotations.pathway": None,
     "annotations.subunit": None,
@@ -152,8 +154,58 @@ def _sequence_id(subject: str) -> str | None:
     return f"UniProt:{record}" if namespace == "uniprot" else None
 
 
+#: Topics of free-text claims (#43). Sabueso's own, provisional vocabulary: a new topic
+#: is an additive schema change, and a vocabulary shared with Praxis or Nextia would be
+#: agreed in uibcdf/moli. When claims of one topic recur, they should become a structured
+#: field (migrated with ``migrate_card``), as biological context may (#60).
+CLAIM_TOPICS = (
+    "interface",
+    "mechanism",
+    "selectivity",
+    "stability",
+    "inhibition",
+    "structure",
+    "dynamics",
+    "localization",
+    "expression",
+    "essentiality",
+    "pathway",
+    "other",
+)
+
+
+def _claim(value: Any) -> Dict[str, Any]:
+    """A claim item ``{topic, text, about}``, or SchemaError."""
+    if not isinstance(value, dict):
+        raise SchemaError("A claim is {'topic', 'text', 'about'?}.")
+    unknown = sorted(set(value) - {"topic", "text", "about"})
+    if unknown:
+        raise SchemaError(f"A claim takes topic, text and about, not {unknown}.")
+    topic, text = value.get("topic"), value.get("text")
+    if topic not in CLAIM_TOPICS:
+        raise SchemaError(
+            f"Unknown claim topic {topic!r}; expected one of {list(CLAIM_TOPICS)}."
+        )
+    if not isinstance(text, str) or not text.strip():
+        raise SchemaError("A claim states its text.")
+    about = value.get("about") or []
+    if not isinstance(about, (list, tuple)) or not all(
+        isinstance(a, str) and ":" in a and a.strip() for a in about
+    ):
+        raise SchemaError(
+            "about lists references such as 'chembl:CHEMBL123', 'pdb:1SUX' or "
+            "'residues:14,96'."
+        )
+    item: Dict[str, Any] = {"topic": topic, "text": text.strip()}
+    if about:
+        item["about"] = sorted({a.strip() for a in about})
+    return item
+
+
 def _item(field_path: str, value: Any, subject: str) -> Any:
     """The item as it will be stored, or SchemaError if its shape does not fit."""
+    if field_path == "literature.claims":
+        return _claim(value)
     if ITEM_IDENTITY[field_path] is None:
         if not isinstance(value, str) or not value.strip():
             raise SchemaError(f"{field_path} takes a non-empty text.")

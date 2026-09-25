@@ -96,6 +96,13 @@ print(record["outcome"])  # new, corroborates, differs, not_comparable or not_co
     structures (PDBe-KB): shared residues corroborate. Different ones are "not
     comparable", not a contradiction.
   - It shows in `card.ligand_sites()["curated_engagements"]`.
+- **A claim that fits no field.** `card.add_literature_claim("interface", "…text…",
+  publication=..., curator=..., about=["residues:15"])`.
+  - The topic comes from a fixed list: interface, mechanism, selectivity, stability,
+    inhibition, structure, dynamics, localization, expression, essentiality, pathway,
+    other.
+  - Claims are kept and listed by topic (`card.claims()`, `card.table("claims")`), but
+    never compared, because two texts need a reader. Their outcome is `not_compared`.
 - **Where it shows.** `card.literature()` lists each publication's curated assertions
   with their outcome.
 - **Scope.** How a statement bears on a project's hypotheses is not Sabueso's: that is

@@ -62,6 +62,9 @@ Versioning: **x.y.z** (no leading `v`).
 - `annotations.polymorphism`
 - `annotations.domains` (non-positional summary; reserved, not currently produced)
 
+### literature.*
+- `literature.claims` (list of `{topic, text, about?}`; curated free-text claims typed by topic, never compared, #43)
+
 ### features_positional.*
 - `features_positional.domains` (positional domains)
 - `features_positional.active_site`
