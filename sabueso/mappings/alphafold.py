@@ -9,7 +9,10 @@ qualifiers are what a reader needs to judge a model:
   fractions of residues in each confidence band;
 - the UniProt range the model covers;
 - whether the modelled sequence is the entry's current sequence (``sequence_matches``,
-  by MD5). A model of an older sequence version does not describe the current one.
+  by MD5). A model of an older sequence version does not describe the current one;
+- ``isoform``: AlphaFold DB also models an entry's isoforms (``P60174-3``). Such a model
+  is of another sequence, so ``sequence_matches`` is None and the view gives no
+  coverage of the entry for it.
 """
 
 from __future__ import annotations
@@ -47,6 +50,10 @@ def map_predictions(
             assertion["source"]["version"] = str(model["latestVersion"])
         source_assertions.append(assertion)
         checksum = model.get("sequenceChecksum")
+        # AlphaFold DB also models the entry's isoforms (e.g. P60174-3). Such a model is
+        # of another sequence: its coverage and sequence check do not apply to the entry.
+        modelled = model.get("uniprotAccession") or accession
+        isoform = modelled if modelled != accession else None
         relationships.append(
             make_relationship(
                 f"uniprot:{accession}",
@@ -64,8 +71,9 @@ def map_predictions(
                         "very_low": model.get("fractionPlddtVeryLow"),
                     },
                     "range": [model.get("uniprotStart"), model.get("uniprotEnd")],
+                    "isoform": isoform,
                     "sequence_matches": None
-                    if not (checksum and sequence_md5)
+                    if isoform or not (checksum and sequence_md5)
                     else checksum.lower() == sequence_md5.lower(),
                 },
                 source_assertion_ids=[assertion["id"]],

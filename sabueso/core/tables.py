@@ -187,6 +187,7 @@ def _predicted_structures(view: Dict[str, Any]) -> List[Dict[str, Any]]:
             "mean_plddt": i["mean_plddt"],
             "fraction_very_high": (i["plddt_fractions"] or {}).get("very_high"),
             "range": "-".join(str(x) for x in i["range"] or [] if x is not None),
+            "isoform": i["isoform"],
             "coverage": i["coverage"],
             "sequence_matches": i["sequence_matches"],
         }

@@ -4,7 +4,7 @@
 The frozen draft schema lives at:
 - `schemas/card_schema.yaml`
 The formal schema (versioned) lives at:
-- `schemas/card_schema_0.3.2.yaml` (current; `card_schema_0.3.1.yaml`, the schema of release 0.2.0, `card_schema_0.3.0.yaml`, the schema of releases 0.1.0 and 0.1.1, and `card_schema_0.2.0.yaml` are kept as history)
+- `schemas/card_schema_0.3.3.yaml` (current; `card_schema_0.3.2.yaml`, the schema of release 0.3.0, `card_schema_0.3.1.yaml`, the schema of release 0.2.0, `card_schema_0.3.0.yaml`, the schema of releases 0.1.0 and 0.1.1, and `card_schema_0.2.0.yaml` are kept as history)
 
 This is a **conceptual** schema meant to be refined into formal validation later.
 
@@ -97,7 +97,7 @@ built by the aggregator therefore carries:
   `sabueso:protein:uniprot:P52789`, taken from the subject of the primary identifier
   assertion (`identifiers.uniprot`, then `chembl`, `pubchem`, `pdb`) unless given
   explicitly;
-- `meta.schema_version`: card schema version (`0.3.2`). Until a formal policy is agreed
+- `meta.schema_version`: card schema version (`0.3.3`). Until a formal policy is agreed
   (#42), an additive optional field bumps the patch number, and a change to existing
   fields bumps the minor number.
 
@@ -218,7 +218,8 @@ A Relationship is first-class, traceable knowledge:
       `alphafold:AF-P52270-F1`), one relationship per model, from AlphaFold DB.
       Qualifiers: `model_version`, `tool`, `created`, `mean_plddt` (a 0–100 confidence
       score, not a quantity), `plddt_fractions`, `range` (UniProt positions) and
-      `sequence_matches`. Never counted as an experimental structure.
+      `sequence_matches`, and `isoform` when the model is of an isoform of the entry
+      (schema 0.3.3). Never counted as an experimental structure.
   - curated engagement (added in #61):
     - `engages` (protein → the molecule's record, anchored by `molecule_ref`
       `inchikey:<key>`), one relationship per curated statement (`statement_id`).

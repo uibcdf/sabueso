@@ -1,4 +1,4 @@
-"""Validate FIELD_PATHS vs card_schema_0.3.2.yaml"""
+"""Validate FIELD_PATHS vs card_schema_0.3.3.yaml"""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from typing import Any, List
 import yaml
 
 FIELD_PATHS = Path("devguide/FIELD_PATHS.md")
-SCHEMA = Path("schemas/card_schema_0.3.2.yaml")
+SCHEMA = Path("schemas/card_schema_0.3.3.yaml")
 
 
 def load_schema_paths() -> List[str]:

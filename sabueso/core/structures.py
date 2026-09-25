@@ -124,7 +124,8 @@ def predicted_structures_view(card: Any) -> Dict[str, Any]:
 
     Each item: the model reference, version and tool, the mean pLDDT and its bands, the
     UniProt range it covers and its coverage of the sequence, and whether the modelled
-    sequence is the entry's current one.
+    sequence is the entry's current one. A model of an isoform names it (``isoform``) and
+    has no coverage of the entry.
     """
     length = (card.get("sequence.length") or {}).get("value")
     items = []
@@ -139,8 +140,9 @@ def predicted_structures_view(card: Any) -> Dict[str, Any]:
                 "mean_plddt": q.get("mean_plddt"),
                 "plddt_fractions": q.get("plddt_fractions"),
                 "range": q.get("range"),
+                "isoform": q.get("isoform"),
                 "coverage": round((end - start + 1) / length, 3)
-                if length and start and end
+                if length and start and end and not q.get("isoform")
                 else None,
                 "sequence_matches": q.get("sequence_matches"),
             }

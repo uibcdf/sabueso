@@ -103,3 +103,25 @@ def test_the_table_is_flat(resolver):
     card = _card(resolver, FixtureAlphaFoldClient("temp_data"))
     (row,) = card.table("predicted_structures")
     assert row["range"] == "1-251" and row["fraction_very_high"] == pytest.approx(0.952)
+
+
+def test_models_of_isoforms_are_named_and_not_counted_as_coverage(resolver):
+    card = _card(resolver, FixtureAlphaFoldClient("temp_data"), accession="P60174")
+    models = {m["model_ref"]: m for m in card.predicted_structures()["items"]}
+    canonical = models["alphafold:AF-P60174-F1"]
+    assert (canonical["isoform"], canonical["coverage"]) == (None, 1.0)
+    assert canonical["sequence_matches"] is True
+    isoform = models["alphafold:AF-P60174-3-F1"]  # 286 residues: longer than the entry
+    assert isoform["isoform"] == "P60174-3"
+    assert (isoform["coverage"], isoform["sequence_matches"]) == (None, None)
+
+
+def test_a_card_and_its_stored_form_are_independent(resolver):
+    card = _card(resolver, FixtureAlphaFoldClient("temp_data"))
+    copy = Card.from_dict(card.to_dict())
+    card.quality.setdefault("curation", []).append({"field": "x"})
+    card.meta["note"] = "changed after the copy"
+    assert "curation" not in copy.quality and "note" not in copy.meta
+    data = card.to_dict()
+    data["meta"]["note"] = "changed in the stored form"
+    assert card.meta["note"] == "changed after the copy"

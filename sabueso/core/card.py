@@ -10,7 +10,7 @@ from .quantities import field_node, quantity_columns, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
-CARD_SCHEMA_VERSION = "0.3.2"
+CARD_SCHEMA_VERSION = "0.3.3"
 
 
 def make_card_id(entity_type: str, subject_ref: str) -> str:
@@ -475,7 +475,12 @@ class Card:
         return out
 
     def to_dict(self) -> Dict[str, Any]:
-        """The stored form: every quantity node sealed by ``quantities`` (#32)."""
+        """The stored form: every quantity node sealed by ``quantities`` (#32).
+
+        It is independent of the card: changing one never changes the other.
+        """
+        import copy
+
         data = {
             "meta": self.meta,
             "sections": self.sections,
@@ -486,6 +491,7 @@ class Card:
             "entities": self.entities(),
             **self.unknown_stored,
         }
+        data = copy.deepcopy(data)
         data["quantities"] = seal(data)
         return data
 
@@ -510,9 +516,12 @@ class Card:
         read with a warning. Then the quantities seal is verified; a card whose quantities
         were changed outside Sabueso is refused (StorageError).
         """
+        import copy
+
         from .schema_version import check_card_schema
 
-        data = dict(data)
+        # The card owns its content: later changes to ``data`` do not reach it.
+        data = copy.deepcopy(dict(data))
         newer = check_card_schema(data.get("meta"), CARD_SCHEMA_VERSION)
         verify(data, data.pop("quantities", None))
         known = {
