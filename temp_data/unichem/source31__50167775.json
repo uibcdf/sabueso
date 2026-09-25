@@ -1,0 +1,42 @@
+{
+ "uci": 146675,
+ "standardInchiKey": "RGTWPXHBFMRQRP-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C2H7N2O5P/c3-2(4-5)1-9-10(6,7)8/h5H,1H2,(H2,3,4)(H2,6,7,8)",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL195976"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "10419587"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "44330762"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "71402250"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50167775"
+  },
+  {
+   "id": 32,
+   "shortName": "comptox",
+   "compoundId": "DTXSID40823235"
+  },
+  {
+   "id": 37,
+   "shortName": "brenda",
+   "compoundId": "57860"
+  }
+ ]
+}

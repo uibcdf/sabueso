@@ -1,0 +1,22 @@
+{
+ "uci": 200516512,
+ "standardInchiKey": "HSICEIFWMLSUPK-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C19H11FO3/c20-15-4-1-12(2-5-15)18-10-17(21)16-6-3-13(9-19(16)23-18)14-7-8-22-11-14/h1-11H",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL5592631"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "169494241"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50646371"
+  }
+ ]
+}

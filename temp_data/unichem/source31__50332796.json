@@ -1,0 +1,42 @@
+{
+ "uci": 1024944,
+ "standardInchiKey": "NDAURKDIFHXVHE-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C8H5NO2S/c10-8-11-7(9-12-8)6-4-2-1-3-5-6/h1-5H",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL1632533"
+  },
+  {
+   "id": 15,
+   "shortName": "surechembl",
+   "compoundId": "1781069"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "853170"
+  },
+  {
+   "id": 28,
+   "shortName": "molport",
+   "compoundId": "Molport-002-563-793"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50332796"
+  },
+  {
+   "id": 32,
+   "shortName": "comptox",
+   "compoundId": "DTXSID20357407"
+  },
+  {
+   "id": 50,
+   "shortName": "CCDC",
+   "compoundId": "ZIZFET"
+  }
+ ]
+}

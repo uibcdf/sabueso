@@ -67,6 +67,7 @@ def fixture_cards() -> List[dict]:
         FixtureUniProtClient,
     )
     from sabueso.tools.db.alphafold import FixtureAlphaFoldClient
+    from sabueso.tools.db.bindingdb import FixtureBindingDBClient
     from sabueso.tools.db.chembl import FixtureChEMBLClient
     from sabueso.tools.db.interpro import FixtureInterProClient
     from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
@@ -94,6 +95,9 @@ def fixture_cards() -> List[dict]:
             alphafold_client=FixtureAlphaFoldClient(data),
             taxonomy=True,
             taxonomy_client=FixtureNCBITaxonomyClient(data),
+            bindingdb={},
+            bindingdb_client=FixtureBindingDBClient(data),
+            unichem_client=FixtureUniChemClient(data),
         )
         hstim, _ = sabueso.resolve(
             "P60174",

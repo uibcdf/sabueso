@@ -12,6 +12,10 @@ connect a small molecule with its records in sources that it has not queried dir
 ``FixtureUniChemClient`` reads ``<directory>/unichem/<INCHIKEY>.json``. Both raise
 ``RecordNotFoundError`` when UniChem holds no such structure and ``ConnectorError`` on
 failures.
+
+``compound_by_source(source_id, compound_id)`` looks a structure up by a source's own
+record id instead, e.g. a BindingDB monomer (``BINDINGDB_SOURCE``, #66); the fixture
+reads ``<directory>/unichem/source<id>__<compound id>.json``.
 """
 
 from __future__ import annotations
@@ -29,6 +33,8 @@ from sabueso.tools.db._record import online, source_record
 
 UNICHEM_API = "https://www.ebi.ac.uk/unichem/api/v1/compounds"
 SOURCE_FIELDS = ("id", "shortName", "compoundId")
+#: UniChem's source ids used by Sabueso.
+BINDINGDB_SOURCE = 31
 
 
 def _compound(record: Dict[str, Any]) -> Dict[str, Any]:
@@ -65,6 +71,29 @@ class OnlineUniChemClient:
             raise RecordNotFoundError(f"UniChem has no compound {inchikey}")
         return {"retrieved_at": retrieved_at, "compound": _compound(compounds[0])}
 
+    def compound_by_source(self, source_id: int, compound_id: str) -> Dict[str, Any]:
+        body = json.dumps(
+            {
+                "type": "sourceID",
+                "compound": str(compound_id),
+                "sourceID": int(source_id),
+            }
+        ).encode("utf-8")
+        request = Request(
+            UNICHEM_API, data=body, headers={"Content-Type": "application/json"}
+        )
+        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        label = f"source {source_id} compound {compound_id}"
+        try:
+            with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
+                data = json.loads(resp.read().decode("utf-8"))
+        except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            raise ConnectorError(f"UniChem request for {label} failed: {exc}") from exc
+        compounds = data.get("compounds") or []
+        if not compounds:
+            raise RecordNotFoundError(f"UniChem has no {label}")
+        return {"retrieved_at": retrieved_at, "compound": _compound(compounds[0])}
+
 
 class FixtureUniChemClient:
     def __init__(
@@ -84,6 +113,16 @@ class FixtureUniChemClient:
         if not path.is_file():
             raise RecordNotFoundError(f"UniChem has no compound {inchikey}")
         saved = json.loads(path.read_text(encoding="utf-8"))
+        return {"retrieved_at": self.retrieved_at, "compound": saved}
+
+    def compound_by_source(self, source_id: int, compound_id: str) -> Dict[str, Any]:
+        label = f"source {source_id} compound {compound_id}"
+        if str(compound_id) in self.failing:
+            raise ConnectorError(f"UniChem request for {label} failed (simulated)")
+        path = self.directory / "unichem" / f"source{source_id}__{compound_id}.json"
+        saved = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else None
+        if not saved or saved.get("not_found"):
+            raise RecordNotFoundError(f"UniChem has no {label}")
         return {"retrieved_at": self.retrieved_at, "compound": saved}
 
 

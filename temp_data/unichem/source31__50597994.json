@@ -1,0 +1,27 @@
+{
+ "uci": 189345361,
+ "standardInchiKey": "LGVIKTLABZKXGB-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C13H13O2S3/c1-9(14)8-16-13-7-12(17-18-13)10-3-5-11(15-2)6-4-10/h3-7H,8H2,1-2H3/q+1",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL5221269"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "168268704"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50597994"
+  },
+  {
+   "id": 50,
+   "shortName": "CCDC",
+   "compoundId": "FOXGAC"
+  }
+ ]
+}

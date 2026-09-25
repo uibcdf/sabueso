@@ -25,6 +25,7 @@ KNOWLEDGE_STATE_RULE = "knowledge_state@1"
 PROTEIN_ENRICHMENTS = (
     ("relationships.has_structure (entry details)", "RCSB PDB", {"source": "RCSB PDB"}),
     ("relationships.has_bioactivity", "ChEMBL", {"source": "ChEMBL"}),
+    ("relationships.has_bioactivity", "BindingDB", {"source": "BindingDB"}),
     ("relationships.functionally_associated_with", "STRING", {"source": "STRING"}),
     (
         "relationships.has_ligand_site",

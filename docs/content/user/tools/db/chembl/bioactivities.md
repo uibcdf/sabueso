@@ -74,3 +74,20 @@ others, mostly crystallisation additives and ions, are listed in
 `deck.meta["excluded_structure_ligands"]`. Being left out does not mean irrelevant; a
 catalytic metal may not be flagged. Pass `structure_ligands="all"` to keep every ligand. Resolve a single molecule with
 `sabueso.resolve_molecule_card("pdb.ligand:BTS")` (or `chembl:<id>`, `inchikey:<key>`).
+
+
+## A second source: BindingDB
+
+`sabueso.resolve(..., chembl={}, bindingdb={})` adds BindingDB's affinities for the
+protein. Many of them restate ChEMBL measurements, so Sabueso groups the records that
+state one measurement (rule `measurement_identity@1`). Records from different sources
+are grouped when they share the publication, the molecule (anchored at its InChIKey
+through UniChem), the type, the relation, and a value that agrees at the coarser
+stated precision (62 and 62.46 nM agree).
+
+- `card.bioactivities()` counts measurements, not records: each item has
+  `measurement_count`, `record_count` and `sources`, and each record its `group`.
+- `view["measurement_identity"]["review"]` lists pairs with the same paper, type and
+  value but different molecules according to the sources. These are worth reading,
+  because one of the sources may have attributed the value to the wrong compound.
+- Records are never merged or dropped: every source keeps its own record and context.

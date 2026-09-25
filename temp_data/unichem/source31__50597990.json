@@ -1,0 +1,42 @@
+{
+ "uci": 24264007,
+ "standardInchiKey": "CTPFWVHDVOKBSN-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C21H15N3O3S3/c1-11-2-8-16-18(19(11)30(25,26)27)29-21(24-16)13-5-9-15-17(10-13)28-20(23-15)12-3-6-14(22)7-4-12/h2-10H,22H2,1H3,(H,25,26,27)",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL3990589"
+  },
+  {
+   "id": 7,
+   "shortName": "chebi",
+   "compoundId": "CHEBI:90402"
+  },
+  {
+   "id": 15,
+   "shortName": "surechembl",
+   "compoundId": "10605029"
+  },
+  {
+   "id": 18,
+   "shortName": "hmdb",
+   "compoundId": "HMDB0246993"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "79954"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50597990"
+  },
+  {
+   "id": 32,
+   "shortName": "comptox",
+   "compoundId": "DTXSID7064029"
+  }
+ ]
+}

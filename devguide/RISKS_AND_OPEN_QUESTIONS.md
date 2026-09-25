@@ -99,6 +99,20 @@
   construct or a structure, not from UniProt. The residue-code check catches most
   slips, but it cannot catch a shift that lands on the same amino acid. Curators
   should give the code whenever the paper does.
+- **UniChem lags behind BindingDB** (#66): recent monomers (5 of the HsTIM records,
+  from a 2024 paper) are not in UniChem yet, so they cannot be anchored and are
+  reported as `molecule_unresolved`. They are not grouped, even when ChEMBL states the
+  same values.
+- **One UniChem request per monomer** (#66): fine for tens of records, too slow for
+  targets with thousands (kinases). Use UniChem's source-to-source mapping files, or
+  batch lookups, before enriching such targets by default.
+- **BindingDB records state no origin through REST** (#66): the provenance layer cannot
+  tell a ChEMBL import from BindingDB's own curation. The bulk download states it. It
+  also decides the licence (CC BY-SA 3.0 for imports), so the REST records are treated
+  as CC BY-SA 3.0.
+- **Censored values are not reviewed** (#66): pairs with `>` or `<` values and
+  different molecules are frequent within one paper and are not listed. A real
+  discrepancy among censored values goes unnoticed.
 
 ## Open Questions
 - What are the default **selection rules** per field?

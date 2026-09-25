@@ -1,0 +1,27 @@
+{
+ "uci": 1005800,
+ "standardInchiKey": "IAFAANQPDPWPHK-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C22H17N3O7S/c26-21-19(13-18-11-12-20(32-18)25(28)29)22(27)24(15-17-9-5-2-6-10-17)33(30,31)23(21)14-16-7-3-1-4-8-16/h1-13H,14-15H2",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL1630897"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "10766661"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50332793"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50597991"
+  }
+ ]
+}

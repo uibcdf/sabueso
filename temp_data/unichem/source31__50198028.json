@@ -1,0 +1,12 @@
+{
+ "uci": 99877527,
+ "standardInchiKey": "JBJRSSKELLSGTI-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C3H7NO6P/c5-2(4-7)1-3(6)11(8,9)10/h7-9,11H,1H2,(H,4,5)/q-1",
+ "sources": [
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50198028"
+  }
+ ]
+}

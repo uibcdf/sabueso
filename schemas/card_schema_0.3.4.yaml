@@ -46,6 +46,9 @@ schema:
     0.3.4 adds annotations.taxonomy, the organism's taxon with its rank and its ranked
     ancestors from NCBI Taxonomy (uibcdf/sabueso#67). Additive, so a 0.3.3 card is a
     valid 0.3.4 card without it.
+    0.3.4 also adds has_bioactivity qualifiers for other sources than ChEMBL
+    (uibcdf/sabueso#66), namely source, measurement.stated_value (the value as written, for its
+    precision) and assay.source, with BindingDB as the first such source. Additive.
 card_base:
   meta:
     card_id:

@@ -643,14 +643,16 @@ resources:
     name: "BindingDB"
     url: https://www.bindingdb.org/
     category: bioactivity
-    status: deferred
+    status: in_use
     description: "Equilibrium binding affinities (Ki, Kd) and ITC data."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    decided_by: "Sabueso maintainers, review of #25 and #28 (2026-09-25)"
-    reason: "Overlaps ChEMBL; without an identity of a measurement across sources, shared measurements would look like independent confirmations."
-    revisit_when: "A design for the identity of a measurement across sources exists (#66)."
+    decided_by: "Sabueso maintainers (2026-09-25)"
+    reason: "Affinities from its own curation and from papers ChEMBL lacks for a target; measurements it shares with ChEMBL are grouped by measurement_identity@1, never counted twice (#66)."
     links: ["#25", "#66"]
+    module: [sabueso.tools.db.bindingdb, sabueso.mappings.bindingdb]
+    access: "REST getLigandsByUniprots, no key; monomers anchored through UniChem"
+    licence: "CC BY 3.0 (BindingDB curation) and CC BY-SA 3.0 (imported from ChEMBL); treated as CC BY-SA 3.0, since the REST records state no origin"
   - id: pdbbind
     name: "PDBbind-CN"
     url: http://www.pdbbind.org.cn/
@@ -668,8 +670,8 @@ resources:
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     decided_by: "Sabueso maintainers, review of #25 and #28 (2026-09-25)"
-    reason: "Overlaps ChEMBL; without an identity of a measurement across sources, shared measurements would look like independent confirmations."
-    revisit_when: "A design for the identity of a measurement across sources exists (#66)."
+    reason: "For the test targets, every assay was deposited by ChEMBL or BindingDB, with its origin stated. Copies are to be used as pointers to measurements a card lacks, not discarded and not counted (design in #66)."
+    revisit_when: "Measurement grouping (measurement_identity@1) has been used with BindingDB, and provenance links (copy_of) are implemented."
     links: ["#25", "#66"]
   - id: d3r
     name: "D3R (Drug Design Data Resource)"

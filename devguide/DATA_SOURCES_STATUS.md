@@ -105,6 +105,13 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: `same_as` links to the InChIKey anchor for ChEMBL, PDB (RCSB and PDBe), PubChem, DrugBank, ChEBI and BindingDB records. The full source list stays in the assertion.
 - **Notes**: an unknown key returns HTTP 200 with `"Not found"`, which the client maps to not found. One call per molecule, so it is opt-in for decks.
 
+### BindingDB — affinities
+- **Status**: implemented as an enricher of `resolve_protein_card(..., bindingdb={})` (uibcdf/sabueso#66)
+- **Access**: REST `getLigandsByUniprots` (`OnlineBindingDBClient`), saved responses (`FixtureBindingDBClient`, `temp_data/bindingdb/`), `tools.db.bindingdb.get_affinities`; monomers anchored at their InChIKey through UniChem (source 31)
+- **Quality**: verified on TcTIM (17 records: 16 grouped with ChEMBL, one attributed by ChEMBL to another molecule) and HsTIM (23 records: 13 grouped, 3 from a paper ChEMBL lacks for the target, 5 monomers UniChem does not hold, one with another stereochemistry than ChEMBL's)
+- **Coverage**: `has_bioactivity` relationships with the ChEMBL layout (`source: BindingDB`, `stated_value` keeps the written precision); measurements shared with ChEMBL are grouped by `measurement_identity@1`
+- **Notes**: the REST records carry no origin (BindingDB curation or ChEMBL import) and no record id; licence treated as CC BY-SA 3.0.
+
 ### NCBI Taxonomy — ranks and ancestors
 - **Status**: implemented as an enricher of `resolve_protein_card(..., taxonomy=True)` (uibcdf/sabueso#67)
 - **Access**: NCBI Datasets API `taxonomy/taxon/<ids>` in batches (`OnlineNCBITaxonomyClient`), saved records (`FixtureNCBITaxonomyClient`, `temp_data/ncbi_taxonomy/`), and `tools.db.ncbi_taxonomy.get_taxon`

@@ -11,6 +11,7 @@ from sabueso._private.smonitor.warnings import DeprecatedUsageWarning
 from sabueso.core.errors import ArgumentError, RecordNotFoundError
 from sabueso.tools.db import (
     alphafold,
+    bindingdb,
     chembl,
     interpro,
     ncbi_taxonomy,
@@ -27,6 +28,9 @@ ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 BTS_KEY = "XBNHRNFODJOFRU-UHFFFAOYSA-N"
 
 CALLS = {
+    "bindingdb.get_affinities": lambda: bindingdb.get_affinities(
+        "P60174", client=bindingdb.FixtureBindingDBClient("temp_data")
+    ),
     "ncbi_taxonomy.get_taxon": lambda: ncbi_taxonomy.get_taxon(
         "5693", client=ncbi_taxonomy.FixtureNCBITaxonomyClient("temp_data")
     ),

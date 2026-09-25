@@ -23,6 +23,7 @@ themselves are not Sabueso's work and keep their source's licence.
 | AlphaFold DB | CC BY 4.0 | Jumper et al. 2021 (AlphaFold) and Varadi et al. (AlphaFold DB) | Models are predictions; Sabueso records their metadata, not coordinates (#57) |
 | InterPro | CC0 1.0 | EMBL-EBI / InterPro | Member-database content may carry its own terms; CDD sites are NCBI (US public domain, NLM policy) |
 | ChEMBL | **CC BY-SA 3.0 Unported** | EMBL-EBI / ChEMBL | Share-alike: see below |
+| BindingDB | CC BY 3.0 (own curation); **CC BY-SA 3.0** (imported from ChEMBL) | BindingDB | REST records state no origin, so Sabueso treats them as CC BY-SA 3.0 (#66) |
 | UniChem | EMBL-EBI adds no restrictions of its own | EMBL-EBI / UniChem | The rights of the resources it points to still apply |
 | PubChem | US public domain (NLM policy) | NCBI / NLM | Depositor contributions may carry their own terms |
 | NCBI Taxonomy | US public domain (NLM policy) | NCBI / NLM | Ranks and ancestors of organisms (#67) |

@@ -1,0 +1,27 @@
+{
+ "uci": 2329581,
+ "standardInchiKey": "IRHPCJOGNMKBHW-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C12H9N5O3S2/c18-9(16-11-13-5-10(22-11)17(19)20)6-21-12-14-7-3-1-2-4-8(7)15-12/h1-5H,6H2,(H,14,15)(H,13,16,18)",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL5192352"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "3129892"
+  },
+  {
+   "id": 28,
+   "shortName": "molport",
+   "compoundId": "Molport-001-890-605"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50597988"
+  }
+ ]
+}

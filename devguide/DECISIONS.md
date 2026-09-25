@@ -494,3 +494,19 @@ uibcdf/sabueso#67; card schema 0.3.4.
 - `Deck.group_by_rank(rank)` groups cards by the taxon of a rank (genus, family…).
 - The resolver's search candidates are still compared by names, because they are not
   enriched; the audit of cards in a deck is exact once they are.
+
+## One measurement, several sources (2026-09-25)
+uibcdf/sabueso#66; rule `measurement_identity@1`;
+`devguide/pending_proposals/measurement_identity.md`.
+- Source records are kept. A measurement is a derived group over them, and views count
+  measurements.
+- Identity in layers: declared provenance (exact); then independent readings of one
+  paper (publication, molecule through the glossary, type, relation, value at the
+  coarser stated precision); ambiguity is never resolved silently.
+- Pairs with the same paper, type and exact value but different molecules are reported
+  for review (`molecule_differs`, `stereo_differs`, `molecule_unresolved`). They may be
+  curation discrepancies between sources.
+- Copies are pointers: a copy whose original is missing leads to it, and is not
+  discarded.
+- BindingDB is the second bioactivity source. Its monomers are anchored through
+  UniChem, never from SMILES.

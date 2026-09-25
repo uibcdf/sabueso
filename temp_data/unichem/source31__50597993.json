@@ -1,0 +1,82 @@
+{
+ "uci": 560489,
+ "standardInchiKey": "KYLIZBIRMBGUOP-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C10H8OS3/c1-11-8-4-2-7(3-5-8)9-6-10(12)14-13-9/h2-6H,1H3",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL178862"
+  },
+  {
+   "id": 2,
+   "shortName": "drugbank",
+   "compoundId": "DB13853"
+  },
+  {
+   "id": 7,
+   "shortName": "chebi",
+   "compoundId": "CHEBI:31221"
+  },
+  {
+   "id": 14,
+   "shortName": "fdasrs",
+   "compoundId": "QUY32964DJ"
+  },
+  {
+   "id": 15,
+   "shortName": "surechembl",
+   "compoundId": "225654"
+  },
+  {
+   "id": 18,
+   "shortName": "hmdb",
+   "compoundId": "HMDB0248420"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "2194"
+  },
+  {
+   "id": 28,
+   "shortName": "molport",
+   "compoundId": "Molport-003-986-933"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50597993"
+  },
+  {
+   "id": 32,
+   "shortName": "comptox",
+   "compoundId": "DTXSID9046651"
+  },
+  {
+   "id": 34,
+   "shortName": "drugcentral",
+   "compoundId": "218"
+  },
+  {
+   "id": 37,
+   "shortName": "brenda",
+   "compoundId": "271784"
+  },
+  {
+   "id": 49,
+   "shortName": "probes_and_drugs",
+   "compoundId": "PD012017"
+  },
+  {
+   "id": 50,
+   "shortName": "CCDC",
+   "compoundId": "DAKFUQ"
+  },
+  {
+   "id": 84,
+   "shortName": "wikipedia",
+   "compoundId": "Anethole trithione"
+  }
+ ]
+}

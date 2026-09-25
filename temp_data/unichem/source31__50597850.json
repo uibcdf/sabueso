@@ -1,0 +1,47 @@
+{
+ "uci": 170917452,
+ "standardInchiKey": "DCSUGHIXMFUMOQ-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C25H20FN5O3/c1-2-34-25(33)29-24-27-20-10-8-15(13-22(20)28-24)18-11-14(7-9-19(18)26)12-21-16-5-3-4-6-17(16)23(32)31-30-21/h3-11,13H,2,12H2,1H3,(H,31,32)(H2,27,28,29,33)",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL5222013"
+  },
+  {
+   "id": 15,
+   "shortName": "surechembl",
+   "compoundId": "21575709"
+  },
+  {
+   "id": 15,
+   "shortName": "surechembl",
+   "compoundId": "21575729"
+  },
+  {
+   "id": 15,
+   "shortName": "surechembl",
+   "compoundId": "30089641"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "145426155"
+  },
+  {
+   "id": 28,
+   "shortName": "molport",
+   "compoundId": "Molport-049-666-434"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50597850"
+  },
+  {
+   "id": 49,
+   "shortName": "probes_and_drugs",
+   "compoundId": "PD166477"
+  }
+ ]
+}

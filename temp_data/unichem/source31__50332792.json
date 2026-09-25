@@ -1,0 +1,27 @@
+{
+ "uci": 1025504,
+ "standardInchiKey": "XEORIUZUCHZWMP-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C8H7N5O5S/c9-7-5(8(10)12-19(16,17)11-7)3-4-1-2-6(18-4)13(14)15/h1-3H,(H2,9,11)(H2,10,12)",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL1630893"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "373938"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50332792"
+  },
+  {
+   "id": 37,
+   "shortName": "brenda",
+   "compoundId": "84475"
+  }
+ ]
+}

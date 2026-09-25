@@ -1,0 +1,141 @@
+{
+  "getLindsByUniprotsResponse" : {
+    "affinities" : [ {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50332792",
+      "smile" : "N=C1NS(=O)(=O)N=C(N)C1=Cc1ccc([N+](=O)[O-])o1",
+      "affinity_type" : "IC50",
+      "affinity" : "20000",
+      "pmid" : "20889239",
+      "doi" : "10.1016/j.ejmech.2010.09.034"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50332793",
+      "smile" : "O=C1C(=Cc2ccc([N+](=O)[O-])o2)C(=O)N(Cc2ccccc2)S(=O)(=O)N1Cc1ccccc1",
+      "affinity_type" : "IC50",
+      "affinity" : "13000",
+      "pmid" : "20889239",
+      "doi" : "10.1016/j.ejmech.2010.09.034"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50332794",
+      "smile" : "Oc1ccc2[n+]([O-])c3cc(Cl)c(Cl)cc3[n+]([O-])c2c1",
+      "affinity_type" : "IC50",
+      "affinity" : "26000",
+      "pmid" : "20889239",
+      "doi" : "10.1016/j.ejmech.2010.09.034"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50332795",
+      "smile" : "Cc1ccc(-c2nc(=O)s[nH]2)cc1",
+      "affinity_type" : "IC50",
+      "affinity" : "3500",
+      "pmid" : "20889239",
+      "doi" : "10.1016/j.ejmech.2010.09.034"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50332796",
+      "smile" : "O=c1oc(ns1)-c1ccccc1",
+      "affinity_type" : "IC50",
+      "affinity" : "10000",
+      "pmid" : "20889239",
+      "doi" : "10.1016/j.ejmech.2010.09.034"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50534545",
+      "smile" : "COC(=O)c1cc2nc(SCC(=O)Nc3ncc([N+](=O)[O-])s3)[nH]c2cc1Cl",
+      "affinity_type" : "IC50",
+      "affinity" : "77000",
+      "pmid" : "27503677",
+      "doi" : "10.1016/j.bmcl.2015.08.018"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50534546",
+      "smile" : "COC(=O)c1cc2nc(SCC(=O)Nc3cnccn3)[nH]c2cc1Cl",
+      "affinity_type" : "IC50",
+      "affinity" : "82000",
+      "pmid" : "27503677",
+      "doi" : "10.1016/j.bmcl.2015.08.018"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50534547",
+      "smile" : "COC(=O)c1cc2nc(SCC(=O)Nc3nccs3)[nH]c2cc1Cl",
+      "affinity_type" : "IC50",
+      "affinity" : "223000",
+      "pmid" : "27503677",
+      "doi" : "10.1016/j.bmcl.2015.08.018"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50332795",
+      "smile" : "Cc1ccc(-c2nc(=O)s[nH]2)cc1",
+      "affinity_type" : "IC50",
+      "affinity" : "3500",
+      "pmid" : "35189560",
+      "doi" : "10.7270/Q2J67MZ9"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50597987",
+      "smile" : "O=C(\\C=C\\C=C\\c1ccco1)/C=C/C=C/c1ccco1",
+      "affinity_type" : "IC50",
+      "affinity" : "3000",
+      "pmid" : "35189560",
+      "doi" : "10.7270/Q2J67MZ9"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50597988",
+      "smile" : "O=C(CSc1nc2ccccc2[nH]1)Nc1ncc([N+](=O)[O-])s1",
+      "affinity_type" : "IC50",
+      "affinity" : "3000",
+      "pmid" : "35189560",
+      "doi" : "10.7270/Q2J67MZ9"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50597989",
+      "smile" : "OS(=O)(=O)CCCSc1nc2ccccc2s1",
+      "affinity_type" : "IC50",
+      "affinity" : "33000",
+      "pmid" : "35189560",
+      "doi" : "10.7270/Q2J67MZ9"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50597990",
+      "smile" : "Cc1ccc2nc(sc2c1S(O)(=O)=O)-c1ccc2nc(sc2c1)-c1ccc(N)cc1",
+      "affinity_type" : "IC50",
+      "affinity" : "8000",
+      "pmid" : "35189560",
+      "doi" : "10.7270/Q2J67MZ9"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50597991",
+      "smile" : "O=C1C(=Cc2ccc([N+](=O)[O-])o2)C(=O)N(Cc2ccccc2)S(=O)(=O)N1Cc1ccccc1",
+      "affinity_type" : "IC50",
+      "affinity" : "13000",
+      "pmid" : "35189560",
+      "doi" : "10.7270/Q2J67MZ9"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50597992",
+      "smile" : "Oc1ccc2[NH+]([O-])c3cc(Cl)c(Cl)cc3[NH+]([O-])c2c1",
+      "affinity_type" : "IC50",
+      "affinity" : "26000",
+      "pmid" : "35189560",
+      "doi" : "10.7270/Q2J67MZ9"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50597993",
+      "smile" : "COc1ccc(cc1)-c1cc(=S)ss1",
+      "affinity_type" : "IC50",
+      "affinity" : "1200",
+      "pmid" : "35189560",
+      "doi" : "10.7270/Q2J67MZ9"
+    }, {
+      "query" : "Triosephosphate isomerase, glycosomal",
+      "monomerid" : "50597994",
+      "smile" : "COc1ccc(cc1)-c1cc(ss1)=[S+]CC(C)=O",
+      "affinity_type" : "IC50",
+      "affinity" : "11000",
+      "pmid" : "35189560",
+      "doi" : "10.7270/Q2J67MZ9"
+    } ]
+  }
+}

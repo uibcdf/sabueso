@@ -82,6 +82,8 @@ def _bioactivities(view: Dict[str, Any]) -> List[Dict[str, Any]]:
                     "basis": m["basis"],
                     "test_concentration": m.get("test_concentration"),
                     "curated": m["curated"],
+                    "source": m["source"],
+                    "group": m["group"],
                     "target_assignment": m["target_assignment"],
                     "assay": m["assay"],
                     "document": m["document"],

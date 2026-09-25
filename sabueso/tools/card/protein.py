@@ -65,6 +65,9 @@ def resolve_protein_card(
     alphafold_client: Any | None = None,
     taxonomy: bool = False,
     taxonomy_client: Any | None = None,
+    bindingdb: Dict[str, Any] | None = None,
+    bindingdb_client: Any | None = None,
+    unichem_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -83,7 +86,10 @@ def resolve_protein_card(
     DB models of the entry as ``has_predicted_structure`` relationships, apart from
     experimental structures (``Card.predicted_structures()``). ``taxonomy`` adds the
     organism's rank and ranked ancestors from NCBI Taxonomy (``annotations.taxonomy``),
-    which makes relations between organisms exact.
+    which makes relations between organisms exact. ``bindingdb`` (e.g. ``{}``) adds the
+    affinities BindingDB holds for the entry, with each monomer anchored at its InChIKey
+    through UniChem; measurements several sources state are grouped, never counted
+    twice (``sabueso.core.measurements``).
     Every enrichment outcome (added, not_found, error) is recorded in
     ``quality.enrichments``. Returns ``(card, resolution)``; ``card`` is None when the
     query did not resolve to a protein entity.
@@ -312,6 +318,85 @@ def resolve_protein_card(
         except ConnectorError as exc:
             enrichments.append({**record, "status": "error", "detail": str(exc)})
 
+    identities: List[tuple] = []
+    if bindingdb is not None:
+        from sabueso.mappings.bindingdb import map_affinities, molecule_identity
+        from sabueso.tools.db.bindingdb import OnlineBindingDBClient
+        from sabueso.tools.db.unichem import BINDINGDB_SOURCE, OnlineUniChemClient
+
+        client = bindingdb_client or OnlineBindingDBClient()
+        record = {"source": "BindingDB", "identifier": anchor, **bindingdb}
+        try:
+            response = client.ligands(anchor, **bindingdb)
+        except RecordNotFoundError:
+            enrichments.append({**record, "status": "not_found"})
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        else:
+            unichem = unichem_client or OnlineUniChemClient()
+            resolved: Dict[str, Any] = {}
+            unanchored, errors = [], []
+            for monomer in sorted(
+                {str(r.get("monomerid")) for r in response["record"]}
+            ):
+                try:
+                    found = unichem.compound_by_source(BINDINGDB_SOURCE, monomer)
+                    resolved[monomer] = molecule_identity(found["compound"], monomer)
+                except RecordNotFoundError:
+                    resolved[monomer] = None
+                    unanchored.append(f"bindingdb:{monomer}")
+                except ConnectorError:
+                    resolved[monomer] = None
+                    errors.append(f"bindingdb:{monomer}")
+            mapped = map_affinities(
+                response, anchor, response.get("retrieved_at", ""), resolved
+            )
+            mappings.append(mapped)
+            identities += [
+                (i["anchor"], i["records"]) for i in resolved.values() if i is not None
+            ]
+            # ChEMBL's molecules anchored at the InChIKey ChEMBL states for them, so that
+            # the same molecule is recognised in both sources (#66).
+            chembl_ids = {
+                ref.split(":", 1)[1]
+                for m in mappings
+                for rel in m["relationships"]
+                if rel["predicate"] == "has_bioactivity"
+                and not (rel.get("qualifiers") or {}).get("source")
+                for ref in (
+                    rel["object_ref"],
+                    (rel.get("qualifiers") or {}).get("parent_molecule"),
+                )
+                if ref and ref.startswith("chembl:")
+            }
+            if chembl_ids:
+                from sabueso.tools.db.chembl import OnlineChEMBLClient
+
+                try:
+                    found = (chembl_client or OnlineChEMBLClient()).molecules(
+                        chembl_ids
+                    )
+                except ConnectorError:
+                    found = {"molecules": {}}
+                for chembl_id, molecule in sorted(
+                    (found.get("molecules") or {}).items()
+                ):
+                    key = ((molecule or {}).get("molecule_structures") or {}).get(
+                        "standard_inchi_key"
+                    )
+                    if key:
+                        identities.append((f"inchikey:{key}", [f"chembl:{chembl_id}"]))
+            enrichments.append(
+                {
+                    **record,
+                    "status": "added",
+                    "count": len(mapped["relationships"]),
+                    "anchored": sum(1 for i in resolved.values() if i is not None),
+                    "unanchored": unanchored,
+                    **({"unichem_errors": errors} if errors else {}),
+                }
+            )
+
     if family_sites:
         from sabueso.tools.db.interpro import OnlineInterProClient
 
@@ -354,6 +439,9 @@ def resolve_protein_card(
         card_id=entity_ref,
         entity_subjects=subjects,
     )
+    for anchor_ref, records in identities:
+        # Stated by UniChem, which links the BindingDB monomer to the anchor (#66).
+        card.register_identity(anchor_ref, records, "small_molecule", {"by": "UniChem"})
     if enrichments:
         card.quality["enrichments"] = enrichments
         report_outcomes(enrichments, subject=entity_ref)

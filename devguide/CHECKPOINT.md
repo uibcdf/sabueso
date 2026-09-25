@@ -200,6 +200,11 @@ This file records the current repository baseline so new developers can resume e
 - `taxonomy=True` adds `annotations.taxonomy` (ranks and ancestors). The identity audit
   relates organisms exactly with it, and `Deck.group_by_rank` groups by rank (#67).
 
+## Measurement Identity and BindingDB (2026-09-25)
+- Records of several sources are grouped into measurements (`measurement_identity@1`),
+  views count measurements, and cross-source discrepancies are reported for review.
+  BindingDB is the second bioactivity source (#66).
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

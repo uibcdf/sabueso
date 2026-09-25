@@ -1,0 +1,22 @@
+{
+ "uci": 201147205,
+ "standardInchiKey": "RCOQZBYKBXBZJR-MOSHPQCFSA-N",
+ "inchi": "InChI=1S/C23H16BrNO3/c24-17-9-7-16(8-10-17)22(26)14-28-18-11-5-15(6-12-18)13-20-19-3-1-2-4-21(19)25-23(20)27/h1-13H,14H2,(H,25,27)/b20-13-",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL5592551"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "177377866"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50646372"
+  }
+ ]
+}

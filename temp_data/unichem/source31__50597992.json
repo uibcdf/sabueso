@@ -1,0 +1,22 @@
+{
+ "uci": 189313185,
+ "standardInchiKey": "AJGGYMWCALORIZ-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C12H8Cl2N2O3/c13-7-4-11-12(5-8(7)14)16(19)10-3-6(17)1-2-9(10)15(11)18/h1-5,15-17H",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL5169735"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "168270097"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50597992"
+  }
+ ]
+}

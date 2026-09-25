@@ -1,0 +1,17 @@
+{
+ "uci": 163503544,
+ "standardInchiKey": "NXZKDNVKTNBSHL-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C12H6Cl2N2O/c13-7-4-11-12(5-8(7)14)16-10-3-6(17)1-2-9(10)15-11/h1-5,17H",
+ "sources": [
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "137241593"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "246597"
+  }
+ ]
+}

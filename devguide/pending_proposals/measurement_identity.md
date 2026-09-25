@@ -1,7 +1,7 @@
 ---
 summary: How Sabueso recognises one measurement stated by several bioactivity sources, so that copies never count as independent confirmations.
 issue: uibcdf/sabueso#66
-status: open
+status: partial
 opened: 2026-09-25
 closed:
 verification: measured
@@ -144,14 +144,49 @@ record UniChem does not anchor stays unanchored and is reported, as in ligand de
   duplicates do not.
 - A PubChem assay deposited by ChEMBL is linked to its ChEMBL assay and never counted.
 
-## Questions for the maintainer
+## Decisions (maintainer, 2026-09-25)
 
-1. Keep records and group measurements (proposed), or merge?
-2. Is the coarser-precision rule acceptable for statement identity, with publication,
-   type and relation required?
-3. BindingDB first, PubChem BioAssay later and only for depositors that are not
-   copies?
+1. **Records are never lost.** Each source record stays a relationship; measurements
+   are derived groups over them.
+2. **Identity in layers.** Declared provenance comes first, and is exact. Independent
+   readings of one paper are grouped on publication, molecule, type, relation and
+   value at the coarser stated precision. Several candidates, or near matches, are
+   reported for a reader and never grouped.
+3. **Copies are pointers, not noise.** A copy whose original is on the card is grouped
+   with it. A copy whose original is missing leads to the original: fetch it, or keep
+   the copy with its declared origin. It can reveal measurements a target-based query
+   missed, or a different target assignment. So PubChem BioAssay copies will be used,
+   not only other depositors' assays.
 
+## Implementation (2026-09-25)
+
+- `sabueso/core/measurements.py` (rule `measurement_identity@1`): provenance
+  (`copy_of`), statement identity, ambiguity, and a **review** list. The review list
+  holds pairs with the same paper, type and exact value but different molecules
+  (`molecule_differs`, `stereo_differs` when only the stereochemistry differs, or
+  `molecule_unresolved`). Censored values are not reviewed.
+- `Card.bioactivities()` counts measurements, not records: `measurement_count`,
+  `record_count`, `sources`, a `group` per record, and a group whose sources classify
+  it differently is `inconclusive`. A BindingDB molecule joins the ChEMBL entry of the
+  same entity.
+- BindingDB enrichment (`bindingdb={}`). Monomers are anchored through UniChem. When
+  BindingDB is asked for, ChEMBL molecules are anchored at the InChIKey ChEMBL states
+  for them.
+
+Measured on the TIM fixtures, with molecule identity required:
+
+| Target | BindingDB | Grouped with ChEMBL | New (paper ChEMBL lacks) | Reported for review |
+| --- | --- | --- | --- | --- |
+| TcTIM | 17 | 16 | — | 1 pair with molecule_differs: IC50 13000 nM, PubMed 35189560, BindingDB IAFAANQPDPWPHK against ChEMBL XMRUGIFDPFFCIV (and two further pairs) |
+| HsTIM | 23 | 13 | 3 (PubMed 23406473) | 5 molecule_unresolved (monomers UniChem does not hold yet); 1 stereo_differs (REDPJRNIRCVACW, SQYZTQLGSA against UGMRNKNYSA) |
+
+The first measurement estimated 17/17 and 18/23 matches from paper, type and value
+alone. Requiring the molecule's identity shows that some of them are not the same
+molecule by the sources' own identity statements. These are curation discrepancies
+worth reading, and grouping them would have hidden them.
+
+Still open: provenance links for PubChem BioAssay (copies as pointers), and BindingDB's
+per-record origin, which only its bulk download states.
 ## Resolution
 
-Pending.
+Partial: the common part and BindingDB are implemented (#66). PubChem BioAssay, with copies as pointers, is recorded in `devguide/sources/registry.yaml` and in its own issue.

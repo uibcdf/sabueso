@@ -1,0 +1,32 @@
+{
+ "uci": 120358,
+ "standardInchiKey": "NJYNBLZKSCNAIK-UHFFFAOYSA-N",
+ "inchi": "InChI=1S/C3H8NO5P/c5-3(4-6)1-2-10(7,8)9/h6H,1-2H2,(H,4,5)(H2,7,8,9)",
+ "sources": [
+  {
+   "id": 1,
+   "shortName": "chembl",
+   "compoundId": "CHEMBL196442"
+  },
+  {
+   "id": 15,
+   "shortName": "surechembl",
+   "compoundId": "16792097"
+  },
+  {
+   "id": 22,
+   "shortName": "pubchem",
+   "compoundId": "16216823"
+  },
+  {
+   "id": 31,
+   "shortName": "bindingdb",
+   "compoundId": "50167776"
+  },
+  {
+   "id": 32,
+   "shortName": "comptox",
+   "compoundId": "DTXSID20584175"
+  }
+ ]
+}

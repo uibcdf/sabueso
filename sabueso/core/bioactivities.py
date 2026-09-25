@@ -415,9 +415,25 @@ def bioactivities_view(
     Measurements from assays that were not assigned directly to the target are excluded
     unless ``include_indirect``, and they are listed in ``excluded``.
     """
+    from .measurements import _molecules, measurement_groups, record_source
+
     molecules: Dict[str, Dict[str, Any]] = {}
     excluded: List[Dict[str, Any]] = []
     documents: Dict[str, int] = {}
+    # One measurement stated by several sources is one group (#66): classes and counts
+    # are per measurement, never per record.
+    identity = measurement_groups(card)
+    group_of = identity["group_of"]
+    # A molecule another source names differently (bindingdb:…) joins the ChEMBL entry of
+    # the same entity, through the card's glossary.
+    entity_of = _molecules(card)
+    preferred: Dict[str, str] = {}
+    for rel in card.relationships(predicate="has_bioactivity"):
+        q = rel.get("qualifiers") or {}
+        if record_source(q) != "ChEMBL":
+            continue
+        chembl_key = q.get("parent_molecule") or rel["object_ref"]
+        preferred.setdefault(entity_of.get(chembl_key, chembl_key), chembl_key)
     for rel in card.relationships(predicate="has_bioactivity"):
         q = rel.get("qualifiers", {})
         m, assay, doc = (
@@ -464,15 +480,25 @@ def bioactivities_view(
             "assay": assay.get("id"),
             "assay_organism": assay.get("organism"),
             "target_assignment": assignment,
-            "document": doc.get("id"),
+            "document": doc.get("id")
+            or (f"pubmed:{doc['pubmed']}" if doc.get("pubmed") else None)
+            or (f"doi:{doc['doi']}" if doc.get("doi") else None),
             "year": doc.get("year"),
             "flags": flags,
             # Read in a paper and recorded by a curator, not a ChEMBL record (#44).
             "curated": bool(assay.get("curated")),
+            "source": record_source(q),
+            "group": group_of.get(rel["id"], rel["id"]),
         }
         if doc.get("id"):
             documents[doc["id"]] = documents.get(doc["id"], 0) + 1
         key = q.get("parent_molecule") or rel["object_ref"]
+        if record_source(q) != "ChEMBL":
+            for ref in (q.get("molecule_ref"), rel["object_ref"]):
+                entity = entity_of.get(ref) if ref else None
+                if entity in preferred:
+                    key = preferred[entity]
+                    break
         entry = molecules.setdefault(
             key,
             {
@@ -499,9 +525,15 @@ def bioactivities_view(
     for entry in molecules.values():
         _scale_flags(entry["measurements"], entry["potencies"])
         measurements = sorted(entry["measurements"], key=_activity_order)
-        classes: Dict[str, int] = {}
+        by_group: Dict[str, List[Dict[str, Any]]] = {}
         for x in measurements:
-            classes[x["class"]] = classes.get(x["class"], 0) + 1
+            by_group.setdefault(x["group"], []).append(x)
+        classes: Dict[str, int] = {}
+        for members in by_group.values():
+            found = {x["class"] for x in members}
+            # Sources of one measurement that classify it differently: inconclusive.
+            cls = found.pop() if len(found) == 1 else "inconclusive"
+            classes[cls] = classes.get(cls, 0) + 1
         pchembls = [x["pchembl"] for x in measurements if x["pchembl"] is not None]
         items.append(
             {
@@ -524,6 +556,9 @@ def bioactivities_view(
                 "discordant": bool({"active", "weak"} & classes.keys())
                 and "inactive" in classes,
                 "best_pchembl": max(pchembls) if pchembls else None,
+                "measurement_count": len(by_group),
+                "record_count": len(measurements),
+                "sources": sorted({x["source"] for x in measurements}),
                 "documents": sorted(
                     {x["document"] for x in measurements if x["document"]}
                 ),
@@ -546,4 +581,7 @@ def bioactivities_view(
         },
         "classification": bioactivity_derivation(thresholds),
         "checks": consistency_checks(),
+        "measurement_identity": {
+            k: identity[k] for k in ("rule", "groups", "ambiguous", "review")
+        },
     }
