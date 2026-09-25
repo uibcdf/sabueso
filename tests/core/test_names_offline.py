@@ -3,6 +3,8 @@
 import pytest
 
 import sabueso
+from sabueso.core.deck import Deck
+from sabueso.core.errors import ArgumentError
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 
 
@@ -66,3 +68,50 @@ def test_a_curated_synonym_uniprot_states_corroborates_it(resolver):
     names = [i["name"].casefold() for i in _items(card, "names.synonyms")]
     assert names.count("methylglyoxal synthase") == 1
     assert not card.quality.get("conflicts")
+
+
+def test_unique_names_lists_each_name_once(resolver):
+    cards = [
+        sabueso.resolve(a, resolver=resolver)[0]
+        for a in ("P52270", "P60174", "P60175", "V9HWK1")
+    ]
+    deck = Deck(cards)
+    names = deck.unique_names()
+    # "Triose-phosphate isomerase" and "Triosephosphate isomerase" are one name, shown
+    # in the spelling used as a canonical name.
+    assert names == [
+        "HEL-S-49",
+        "Methylglyoxal synthase",
+        "TIM",
+        "TPI",
+        "TPI1",
+        "Triosephosphate isomerase",
+        "Triosephosphate isomerase, glycosomal",
+    ]
+    same, carriers = deck.unique_names(return_cards=True)
+    assert same == names
+    by_name = dict(zip(names, carriers))
+    assert by_name["TIM"] == [
+        "sabueso:protein:uniprot:P52270",
+        "sabueso:protein:uniprot:P60174",
+        "sabueso:protein:uniprot:P60175",
+    ]
+    assert len(by_name["Triosephosphate isomerase"]) == 4
+    # A card that carries a name twice (canonical and alternative) counts once.
+    assert (
+        by_name["Triosephosphate isomerase"].count("sabueso:protein:uniprot:P60174")
+        == 1
+    )
+
+
+def test_a_curated_synonym_is_a_name(resolver):
+    card, _ = sabueso.resolve("P52270", resolver=resolver)
+    card.add_literature_assertion(
+        "names.synonyms", {"name": "TcTIM"}, "pubmed:8061610", "curator-a"
+    )
+    assert "TcTIM" in Deck([card]).unique_names()
+
+
+def test_return_cards_is_checked():
+    with pytest.raises(ArgumentError):
+        Deck([]).unique_names(return_cards="yes")

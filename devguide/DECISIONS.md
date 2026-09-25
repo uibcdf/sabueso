@@ -550,3 +550,23 @@ uibcdf/sabueso#43.
   be the first case (#60).
 - **Claims drafted by an agent** stay SourceAssertions, with the agent recorded as
   curator. They are never Evidence (Nextia).
+
+## Names from UniProt, and the names of a deck (2026-09-25)
+- UniProt's other names are mapped with their kind:
+  - `names.synonyms` holds `{name, kind}`, where `kind` is `alternative_name` or
+    `submission_name`;
+  - `names.abbreviations` holds `{name, of}`, `of` being the full name shortened;
+  - `names.gene_names` holds `{name, kind, gene}`.
+- A curated `{name}` that UniProt states corroborates it. `kind` describes the item,
+  it does not state it (`curation.DESCRIPTOR_KEYS`).
+- **A name is not an identity.** Most protein names name a function: "TIM" abbreviates
+  "triosephosphate isomerase", which every organism's enzyme carries. A label such as
+  "TcTIM" is the literature's; it enters as a curated synonym with its publication.
+  Only accessions and gene loci identify an entry.
+- `deck.unique_names(return_cards=False)` lists the distinct names of a deck, as
+  `numpy.unique` does. It follows rule `unique_names@1`: spellings equal ignoring case,
+  spaces, hyphens and underscores are one name, shown in the spelling most cards use.
+  With `return_cards=True` it also returns, per name, the distinct cards that carry
+  it. It is a view for reading and review. Nothing is grouped, stored or merged by
+  name. Whether two cards with one name are paralogs or redundant entries is the
+  identity audit's question.

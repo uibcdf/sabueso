@@ -98,6 +98,12 @@ A `Deck` is a collection of Cards with batch operations:
   Taxonomy (`resolve(..., taxonomy=True)`)
 - `identity_audit()` reports redundant entries, strain variants, fragments and
   paralogs among the protein cards, each with its basis. It never merges cards.
+- `unique_names()` lists the distinct names the cards carry (canonical names, synonyms,
+  abbreviations and gene names), as `numpy.unique` lists distinct values. Spellings
+  that differ only in case, spaces or hyphens are one name. `unique_names(return_cards=True)`
+  also gives, per name, the cards that carry it. Names are shared on purpose: "TIM"
+  abbreviates the enzyme's name, so every organism's triosephosphate isomerase carries
+  it. A shared name never joins cards; accessions and gene loci identify an entry.
 - `sort(field_path, reverse=False)` by resolved value; cards without a value go last
 - `map(fn)`, `summarize(field_paths)`
 - `compare(other, key_fields)`

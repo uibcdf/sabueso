@@ -188,6 +188,21 @@ class Deck:
         }
 
     @arg_digest()
+    def unique_names(
+        self, return_cards: bool = False, skip_digestion: bool = False
+    ) -> Any:
+        """The distinct names the deck's cards carry (canonical names, synonyms,
+        abbreviations and gene names), sorted, as ``numpy.unique`` gives distinct
+        values; spellings that differ only in case, spaces or hyphens are one name.
+
+        With ``return_cards=True``, also the ids of the distinct cards that carry each
+        name: ``names, cards = deck.unique_names(return_cards=True)``. A shared name
+        never joins cards; see ``sabueso.core.names`` (rule ``unique_names@1``)."""
+        from .names import unique_names
+
+        return unique_names(self.cards, return_cards=return_cards)
+
+    @arg_digest()
     def structure_inventory(
         self,
         regions: Any = None,
