@@ -178,6 +178,22 @@ def _entities(view: Dict[str, Any]) -> List[Dict[str, Any]]:
     ]
 
 
+def _predicted_structures(view: Dict[str, Any]) -> List[Dict[str, Any]]:
+    return [
+        {
+            "model_ref": i["model_ref"],
+            "model_version": i["model_version"],
+            "tool": i["tool"],
+            "mean_plddt": i["mean_plddt"],
+            "fraction_very_high": (i["plddt_fractions"] or {}).get("very_high"),
+            "range": "-".join(str(x) for x in i["range"] or [] if x is not None),
+            "coverage": i["coverage"],
+            "sequence_matches": i["sequence_matches"],
+        }
+        for i in view["items"]
+    ]
+
+
 def _knowledge_state(view: Dict[str, Any]) -> List[Dict[str, Any]]:
     return [
         {
@@ -202,6 +218,7 @@ TABLES: Dict[str, tuple] = {
     "literature": ("literature", _literature),
     "entities": ("entities", _entities),
     "knowledge_state": ("knowledge_state", _knowledge_state),
+    "predicted_structures": ("predicted_structures", _predicted_structures),
 }
 
 

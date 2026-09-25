@@ -66,6 +66,7 @@ def fixture_cards() -> List[dict]:
         FixtureRCSBClient,
         FixtureUniProtClient,
     )
+    from sabueso.tools.db.alphafold import FixtureAlphaFoldClient
     from sabueso.tools.db.chembl import FixtureChEMBLClient
     from sabueso.tools.db.interpro import FixtureInterProClient
     from sabueso.tools.db.pdb_ccd import FixtureCCDClient
@@ -88,6 +89,8 @@ def fixture_cards() -> List[dict]:
             chembl_client=chembl,
             pdbe_kb_client=FixturePDBeKBClient(data),
             interpro_client=FixtureInterProClient(data),
+            predicted_structures=True,
+            alphafold_client=FixtureAlphaFoldClient(data),
         )
         hstim, _ = sabueso.resolve(
             "P60174",

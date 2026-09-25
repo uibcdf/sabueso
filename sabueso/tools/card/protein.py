@@ -61,6 +61,8 @@ def resolve_protein_card(
     pdbe_kb_client: Any | None = None,
     family_sites: bool = False,
     interpro_client: Any | None = None,
+    predicted_structures: bool = False,
+    alphafold_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -75,7 +77,9 @@ def resolve_protein_card(
     reports at the protein's interfaces with other chains, per partner
     (``Card.oligomer()``). ``family_sites`` adds the site residues that
     InterPro member databases place on the protein's sequence
-    (``features_positional.family_site``).
+    (``features_positional.family_site``). ``predicted_structures`` adds the AlphaFold
+    DB models of the entry as ``has_predicted_structure`` relationships, apart from
+    experimental structures (``Card.predicted_structures()``).
     Every enrichment outcome (added, not_found, error) is recorded in
     ``quality.enrichments``. Returns ``(card, resolution)``; ``card`` is None when the
     query did not resolve to a protein entity.
@@ -233,6 +237,39 @@ def resolve_protein_card(
             mappings.append(mapped)
             enrichments.append(
                 {**record, "status": "added", "count": len(mapped["relationships"])}
+            )
+
+    if predicted_structures:
+        from sabueso.mappings.alphafold import map_predictions
+        from sabueso.tools.db.alphafold import OnlineAlphaFoldClient
+
+        client = alphafold_client or OnlineAlphaFoldClient()
+        record = {"source": "AlphaFold DB", "identifier": anchor}
+        try:
+            response = client.prediction(anchor)
+        except RecordNotFoundError:
+            enrichments.append({**record, "status": "not_found"})
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        else:
+            mapped = map_predictions(
+                response,
+                anchor,
+                response.get("retrieved_at", ""),
+                sequence_md5=(entry.get("sequence") or {}).get("md5"),
+            )
+            mappings.append(mapped)
+            versions = sorted(
+                {r["qualifiers"]["model_version"] for r in mapped["relationships"]}
+                - {None}
+            )
+            enrichments.append(
+                {
+                    **record,
+                    "status": "added",
+                    "version": "; ".join(f"v{v}" for v in versions) or None,
+                    "count": len(mapped["relationships"]),
+                }
             )
 
     if family_sites:

@@ -13,6 +13,7 @@ import sabueso
 from sabueso.core.errors import ArgumentError, LibraryNotFoundError
 from sabueso.core.tables import TABLES
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
+from sabueso.tools.db.alphafold import FixtureAlphaFoldClient
 from sabueso.tools.db.chembl import FixtureChEMBLClient
 from sabueso.tools.db.interpro import FixtureInterProClient
 from sabueso.tools.db.pdb_ccd import FixtureCCDClient
@@ -33,6 +34,8 @@ def tctim():
         chembl_client=FixtureChEMBLClient("temp_data"),
         pdbe_kb_client=FixturePDBeKBClient("temp_data"),
         interpro_client=FixtureInterProClient("temp_data"),
+        predicted_structures=True,
+        alphafold_client=FixtureAlphaFoldClient("temp_data"),
     )
     return card
 

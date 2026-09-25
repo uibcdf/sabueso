@@ -10,6 +10,7 @@ import pytest
 from sabueso._private.smonitor.warnings import DeprecatedUsageWarning
 from sabueso.core.errors import ArgumentError, RecordNotFoundError
 from sabueso.tools.db import (
+    alphafold,
     chembl,
     interpro,
     pdb_ccd,
@@ -25,6 +26,9 @@ ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 BTS_KEY = "XBNHRNFODJOFRU-UHFFFAOYSA-N"
 
 CALLS = {
+    "alphafold.get_prediction": lambda: alphafold.get_prediction(
+        "P52270", client=alphafold.FixtureAlphaFoldClient("temp_data")
+    ),
     "uniprot.get_entry": lambda: uniprot.get_entry(
         "P60174", client=uniprot.FixtureUniProtClient("temp_data")
     ),

@@ -37,7 +37,8 @@ schema:
     Both are negotiated quantity paths. The change is additive, so a 0.3.1 card is a
     valid 0.3.2 card without them. 0.3.2 also adds annotations.taxon_id,
     annotations.lineage and identifiers.gene_loci, and classified_in relationships to
-    OrthoDB and eggNOG groups (uibcdf/sabueso#54), all additive.
+    OrthoDB and eggNOG groups (uibcdf/sabueso#54), and has_predicted_structure
+    relationships to AlphaFold DB models (uibcdf/sabueso#57), all additive.
 card_base:
   meta:
     card_id:

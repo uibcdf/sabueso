@@ -103,6 +103,16 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: `same_as` links to the InChIKey anchor for ChEMBL, PDB (RCSB and PDBe), PubChem, DrugBank, ChEBI and BindingDB records. The full source list stays in the assertion.
 - **Notes**: an unknown key returns HTTP 200 with `"Not found"`, which the client maps to not found. One call per molecule, so it is opt-in for decks.
 
+### AlphaFold DB — predicted structures
+- **Status**: implemented as an enricher of `resolve_protein_card(..., predicted_structures=True)` (uibcdf/sabueso#57)
+- **Access**: AlphaFold DB API `prediction/<accession>` (`OnlineAlphaFoldClient`), saved responses (`FixtureAlphaFoldClient`, `temp_data/alphafold/`), and `tools.db.alphafold.get_prediction`
+- **Quality**: green for the listed coverage, verified on TcTIM and HsTIM (model v6, mean pLDDT 97.3 and 96.7) and on an unreviewed entry with no experimental structure (A0A6A5BWU3, v6, mean pLDDT 96.2)
+- **Coverage**: `has_predicted_structure` relationships, one per model, with the model version, tool, mean pLDDT and its bands, the UniProt range, and whether the modelled sequence is the entry's current one (MD5)
+- **Notes**:
+  - Models are never experimental structures: `Card.structures()` does not count them.
+  - A missing accession answers 404, mapped to not found.
+  - Licence: CC BY 4.0; cite AlphaFold and AlphaFold DB.
+
 ### PDBe-KB — ligand binding sites
 - **Status**: implemented as an enricher of `resolve_protein_card` (uibcdf/sabueso#28)
 - **Access**: PDBe graph API `uniprot/ligand_sites/<accession>` (`OnlinePDBeKBClient`), saved responses (`FixturePDBeKBClient`, `temp_data/pdbe_kb/`)

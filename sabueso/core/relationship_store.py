@@ -24,6 +24,7 @@ PREDICATES = frozenset(
         "isoform_of",
         "superseded_by",
         "has_structure",
+        "has_predicted_structure",  # protein -> predicted model (AlphaFold DB), #57
         "annotated_with",  # protein -> GO term
         "classified_in",  # protein -> family / domain / superfamily / site entry
         "interacts_with",  # protein -> protein (physical interaction, e.g. IntAct)

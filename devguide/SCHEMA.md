@@ -213,6 +213,12 @@ A Relationship is first-class, traceable knowledge:
       once per assay and shared by that assay's activities.
     - Activity classes are derived by `Card.bioactivities()` (`bioactivity_class@3`), and
       only there.
+  - predicted structures (added in #57):
+    - `has_predicted_structure` (protein → `alphafold:<entry id>`, e.g.
+      `alphafold:AF-P52270-F1`), one relationship per model, from AlphaFold DB.
+      Qualifiers: `model_version`, `tool`, `created`, `mean_plddt` (a 0–100 confidence
+      score, not a quantity), `plddt_fractions`, `range` (UniProt positions) and
+      `sequence_matches`. Never counted as an experimental structure.
   - ligand sites (added in #28):
     - `has_ligand_site` (protein → `pdb.ligand:<code>`), one relationship per
       protein–ligand pair, from PDBe-KB. Qualifiers: `ligand_name`, `numbering`

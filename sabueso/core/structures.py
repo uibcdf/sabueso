@@ -116,3 +116,33 @@ def structures_view(card: Any, include_fragments: bool = False) -> Dict[str, Any
         "excluded": sorted(excluded),
         "classification": coverage_derivation(),
     }
+
+
+def predicted_structures_view(card: Any) -> Dict[str, Any]:
+    """The card's predicted models (``has_predicted_structure``, #57), never mixed with
+    experimental structures.
+
+    Each item: the model reference, version and tool, the mean pLDDT and its bands, the
+    UniProt range it covers and its coverage of the sequence, and whether the modelled
+    sequence is the entry's current one.
+    """
+    length = (card.get("sequence.length") or {}).get("value")
+    items = []
+    for rel in card.relationships(predicate="has_predicted_structure"):
+        q = rel.get("qualifiers") or {}
+        start, end = (list(q.get("range") or []) + [None, None])[:2]
+        items.append(
+            {
+                "model_ref": rel["object_ref"],
+                "model_version": q.get("model_version"),
+                "tool": q.get("tool"),
+                "mean_plddt": q.get("mean_plddt"),
+                "plddt_fractions": q.get("plddt_fractions"),
+                "range": q.get("range"),
+                "coverage": round((end - start + 1) / length, 3)
+                if length and start and end
+                else None,
+                "sequence_matches": q.get("sequence_matches"),
+            }
+        )
+    return {"items": sorted(items, key=lambda i: i["model_ref"])}

@@ -34,6 +34,13 @@ source was consulted and states nothing (`not_stated`), it was not requested
 release and the basis. An absence is reported as a fact about a source, never as
 evidence against something.
 
+## Predicted structures
+
+`sabueso.resolve(..., predicted_structures=True)` adds the AlphaFold DB models of a
+protein, and `card.predicted_structures()` lists them: model version, mean pLDDT and its
+bands, range covered, and whether the model is of the entry's current sequence. Models
+are kept apart from experimental structures: `card.structures()` never counts them.
+
 ## Comparing two cards
 
 `card.compare_knowledge(other)` lists, per field, relationship predicate and knowledge

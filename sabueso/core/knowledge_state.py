@@ -37,6 +37,11 @@ PROTEIN_ENRICHMENTS = (
         {"source": "PDBe-KB", "data": "interface_residues"},
     ),
     ("features_positional.family_site", "InterPro", {"source": "InterPro"}),
+    (
+        "relationships.has_predicted_structure",
+        "AlphaFold DB",
+        {"source": "AlphaFold DB"},
+    ),
 )
 
 

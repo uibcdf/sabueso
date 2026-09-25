@@ -441,3 +441,15 @@ uibcdf/sabueso#59; rule `card_knowledge_diff@1`.
   (MolSysMT) and is recorded as the basis.
 - **Free text is `not_compared`,** as for curated claims (#43).
 - The comparison is a derived view, never a SourceAssertion.
+
+## Predicted structures (2026-09-25)
+uibcdf/sabueso#57.
+- AlphaFold DB models are `has_predicted_structure` relationships
+  (`alphafold:<entry id>`), a predicate of their own. `Card.structures()` and every view
+  of experimental structures therefore cannot count them, by construction.
+- A model carries what a reader needs to judge it: version, tool, mean pLDDT and its
+  bands, the range covered, and whether the modelled sequence is the entry's current
+  one. A model of an older sequence version is flagged, not dropped.
+- `predicted_structures=True` is an opt-in enrichment. Its outcome is a knowledge
+  state like any other: known, not stated (no model), not queried, or unavailable.
+- Sabueso records models; it never downloads coordinates (MolSysMT).

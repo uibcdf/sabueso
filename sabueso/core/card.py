@@ -270,6 +270,12 @@ class Card:
 
         return card_table(self, view, **options)
 
+    def predicted_structures(self) -> Dict[str, Any]:
+        """Predicted models (AlphaFold DB), apart from experimental structures (#57)."""
+        from .structures import predicted_structures_view
+
+        return predicted_structures_view(self)
+
     def knowledge_state(self) -> Dict[str, Any]:
         """Per area and source: known, conflicting, not stated, not queried or
         unavailable (#56). See ``sabueso.core.knowledge_state``."""

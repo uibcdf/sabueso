@@ -187,6 +187,11 @@ This file records the current repository baseline so new developers can resume e
 - `card.compare_knowledge(other, residue_map=None)` compares two cards' knowledge,
   with positions compared only through a residue mapping (#59).
 
+## Predicted Structures (2026-09-25)
+- AlphaFold DB models are `has_predicted_structure` relationships
+  (`resolve_protein_card(..., predicted_structures=True)`, `Card.predicted_structures()`),
+  apart from experimental structures (#57).
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

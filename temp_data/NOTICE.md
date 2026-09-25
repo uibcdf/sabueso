@@ -20,7 +20,8 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | Files | Source | Version / release | Retrieved | Licence |
 | --- | --- | --- | --- | --- |
 | `P00938.json`, `P35372.json`, `P52270.json`, `P52789.json`, `P60174.json`, `P60175.json`, `Q6FHP9.json`, `V9HWK1.json`, `A0A140VJM9.json` | UniProtKB (UniProt Consortium) | release 2026_03 | 2026-09-23 | CC BY 4.0 |
-| `uniprot_search/*.json` | UniProtKB search responses | release 2026_03 | 2026-09-23 | CC BY 4.0 |
+| `uniprot_search/*.json` | UniProtKB search responses; refreshed with lineage and gene-locus cross-references, and the Trichomonas vaginalis search added, on 2026-09-25 (same release, same results) | release 2026_03 | 2026-09-23 | CC BY 4.0 |
+| `alphafold/*.json` | AlphaFold DB (Google DeepMind and EMBL-EBI), prediction API responses | model version 6 | 2026-09-25 | CC BY 4.0 |
 | `rcsb/*.json` | RCSB PDB (wwPDB archive), GraphQL entry data; assemblies added and 3Q37 retrieved 2026-09-24 | — | 2026-09-23 | CC0 1.0 |
 | `pdb_ccd/*.json` | wwPDB Chemical Component Dictionary, served by RCSB PDB | — | 2026-09-23 | CC0 1.0 |
 | `pdbe_kb/*.json` | PDBe-KB (EMBL-EBI), ligand binding sites (2026-09-23) and interface residues (2026-09-24) | — | 2026-09-23 | CC BY 4.0 |
@@ -52,6 +53,8 @@ JSON.
   The site residues in these fixtures come from **CDD** (NCBI), a U.S. government work
   under NLM policy, like PubChem.
 - **STRING** — https://string-db.org, CC BY 4.0.
+- **AlphaFold DB** — Google DeepMind and EMBL-EBI, https://alphafold.ebi.ac.uk, CC BY 4.0.
+  Cite Jumper et al., Nature 2021 (AlphaFold) and the AlphaFold DB paper (Varadi et al.).
 - **ChEMBL** — EMBL-EBI, https://www.ebi.ac.uk/chembl/, CC BY-SA 3.0 Unported
   (https://creativecommons.org/licenses/by-sa/3.0/).
 - **UniChem** — EMBL-EBI, https://www.ebi.ac.uk/unichem/. EMBL-EBI adds no restrictions

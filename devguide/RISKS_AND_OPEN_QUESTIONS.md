@@ -80,6 +80,12 @@
   compares relationships by their objects only, not their qualifiers. Comparing
   measured values per molecule is `compare_ligands`. Comparing two small-molecule
   cards needs its own rules (stereochemistry, salts, tautomers) and is not offered.
+- **Profiles do not include predicted structures** (#57): `structural_baseline@1` was
+  published before models existed, and profiles never change. If a baseline with
+  models is wanted, add `structural_baseline@2`, never an edit of `@1`.
+- **Model versions change** (#57): AlphaFold DB replaces models (v2 to v6 so far). A
+  card records the version it saw, and a snapshot pins it. The coordinates of an older
+  version may no longer be served, which MolSysMT consumers should expect.
 
 ## Open Questions
 - What are the default **selection rules** per field?

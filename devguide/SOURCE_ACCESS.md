@@ -9,7 +9,7 @@ Sabueso has three public layers:
 ## One module per source
 
 Each module holds the source's clients and its public `get_*` functions: `uniprot`,
-`rcsb`, `chembl`, `pubchem`, `interpro`, `pdbe_kb`, `pdb_ccd`, `unichem`, `stringdb`. Card
+`rcsb`, `chembl`, `pubchem`, `interpro`, `pdbe_kb`, `pdb_ccd`, `unichem`, `stringdb`, `alphafold`. Card
 building uses the same clients, so there is one way to query each source.
 `sabueso.resolver.uniprot_client` and `rcsb_client` are aliases until 1.0.
 
