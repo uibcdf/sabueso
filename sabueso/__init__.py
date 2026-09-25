@@ -21,6 +21,7 @@ from sabueso.core.errors import (
     StorageError,
 )
 from sabueso.core.knowledge_store import KnowledgeStore
+from sabueso.core.migration import migrate_card, refresh_card
 from sabueso.core.tables import to_dataframe
 from sabueso.tools.card.protein import ambiguity_deck, resolve_protein_card
 from sabueso.tools.card.small_molecule import ligand_deck, resolve_molecule_card
@@ -61,6 +62,8 @@ __all__ = [
     "resolve",
     "CurationStore",
     "KnowledgeStore",
+    "migrate_card",
+    "refresh_card",
     "to_dataframe",
     "resolve_protein_card",
     "resolve_molecule_card",

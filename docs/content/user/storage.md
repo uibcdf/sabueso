@@ -64,6 +64,23 @@ store.relationships(object_ref="chembl:CHEMBL1288605", predicate="has_bioactivit
 
 The reference forms are provisional until they are agreed across MOLI (uibcdf/moli#3).
 
+## Old Cards
+
+A card states the schema it was written with. Newer versions of the same schema line
+are read as they are. To bring an older card up to date, and to know what it lacks:
+
+```python
+card = sabueso.migrate_card(data)  # data: a stored card (dict)
+card.quality["migration"][-1]["steps"][0]["gaps"]
+# e.g. {"path": "annotations.taxon_id", "kind": "missing", ...}: a refresh brings it
+#      {"path": "annotations.taxonomy", "kind": "available", ...}: ask for taxonomy=True
+
+refreshed, _ = sabueso.refresh_card(card, curations=store)
+refreshed.quality["migration"][-1]["completed"]
+```
+
+The original is never changed; with `store=` both states are kept as revisions.
+
 ## Cache Policy
 
 Current policy is Raw + Cards.

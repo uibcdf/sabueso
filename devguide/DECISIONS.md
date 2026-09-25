@@ -515,3 +515,21 @@ uibcdf/sabueso#66; rule `measurement_identity@1`;
   and lead to ChEMBL assays a card lacks. A copy whose compound PubChem standardised
   differently is grouped only when the connectivity leaves one candidate, and is
   flagged.
+
+## Migrating cards (2026-09-25)
+uibcdf/sabueso#51; rule `card_migration@1`.
+- Loading a card of another schema line is refused, and the error points to the
+  explicit `sabueso.migrate_card(data)`. Nothing is migrated silently.
+- A migration is honest, not complete.
+  - Each step records what it converted and the **gaps**: `missing` when a fresh build
+    with the same options would state it, `available` when it is a new enrichment one
+    can ask for.
+  - Additions a version made are listed in `migration.SCHEMA_CHANGES`, and a test
+    requires an entry for every schema version.
+- The original is never changed: its snapshot id is recorded, and with `store=` the
+  original and the migrated card are two revisions of one card.
+- `sabueso.refresh_card(card)` builds the card again with the options its
+  enrichments record, re-applies curations, and records which gaps it completed and
+  which the sources do not state.
+- Steps between lines are functions in `migration.STEPS`. None exists: every card
+  published so far is in the 0.3 line.

@@ -120,6 +120,13 @@
 - **Pointers can be large** (#68): a copy can name an assay with thousands of
   activities, all fetched from ChEMBL. That is fine for curated assays; screening
   assays deposited through ChEMBL may need a limit.
+- **Refresh options are rebuilt from enrichment records** (#51): options that leave no
+  enrichment record (a resolver preference policy, the name query a card came from)
+  are not reproduced. A refresh resolves the card's anchor directly, so the entity
+  cannot change, but its options may. `refresh_card(**options)` can override them.
+- **Gaps of qualifier-level additions** (#51): `SCHEMA_CHANGES` names relationship
+  qualifiers by their relationship, so an added qualifier (for example `isoform`) is
+  reported only when the relationship itself is absent.
 
 ## Open Questions
 - What are the default **selection rules** per field?

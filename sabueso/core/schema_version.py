@@ -60,6 +60,7 @@ def check_card_schema(meta: Mapping[str, Any] | None, current: str) -> bool:
     if not same_line(theirs, mine):
         raise StorageError(
             f"Card {card_id} was written with card schema {stated}; this Sabueso reads "
-            f"{mine[0]}.{mine[1]}.x. No migration exists yet (uibcdf/sabueso#51)."
+            f"{mine[0]}.{mine[1]}.x. Migrate it explicitly with sabueso.migrate_card(data), "
+            "which records what it converts and what it cannot (uibcdf/sabueso#51)."
         )
     return theirs > mine

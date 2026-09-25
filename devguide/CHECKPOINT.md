@@ -209,6 +209,10 @@ This file records the current repository baseline so new developers can resume e
 - PubChem BioAssay is the third bioactivity source. Declared copies are grouped by
   provenance and lead to ChEMBL assays a card lacks (#68).
 
+## Card Migration (2026-09-25)
+- `sabueso.migrate_card` and `sabueso.refresh_card`: honest migration with recorded
+  gaps, completed by rebuilding from the sources (#51).
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

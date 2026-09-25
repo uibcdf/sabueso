@@ -400,6 +400,10 @@ A Relationship is first-class, traceable knowledge:
   `normalized`).
 
 ## Quality records (#10)
+- `migration` (#51): one record per migration or refresh. A migration record has
+  `rule`, `at`, `original_schema`, `original_snapshot` and `steps` (`from`, `to`,
+  `converted`, `gaps`). A refresh record has `refresh_of`, `options`, `completed` and
+  `not_stated`.
 `card.quality` records how the card was resolved and enriched. Its entries are not fields
 stated by a source, so they are not `value`/`source_assertion_ids` nodes:
 - `conflicts`: `[{field, type: "disagreement", values, source_assertion_ids}]`,
