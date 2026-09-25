@@ -22,12 +22,12 @@ Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the o
   - One `noarch` package for Linux, macOS and Windows, on Python 3.11–3.14.
   - Before publication, the exact package was tested on all 12 combinations.
   - It writes card schema 0.3.1.
-- **Archive of 0.2.0:** pending. Zenodo has not published its record yet. No DOI is
-  claimed until it is verified.
-- **0.1.1** is archived and verified on Zenodo:
-  - version DOI: [10.5281/zenodo.22937715](https://doi.org/10.5281/zenodo.22937715);
+- **0.2.0** is archived and verified on Zenodo:
+  - version DOI: [10.5281/zenodo.22948384](https://doi.org/10.5281/zenodo.22948384);
   - concept DOI, which covers all versions:
     [10.5281/zenodo.22937375](https://doi.org/10.5281/zenodo.22937375).
+- **0.1.1** is archived too
+  ([10.5281/zenodo.22937715](https://doi.org/10.5281/zenodo.22937715)).
 
   Each Zenodo record holds the source snapshot of its tag only. The conda package is
   published separately on the `uibcdf` channel.

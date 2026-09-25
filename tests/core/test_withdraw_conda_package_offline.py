@@ -74,3 +74,41 @@ def test_nothing_is_written_unless_the_exact_public_file_is_proven(
 def test_malformed_coordinates_are_refused(version, build):
     with pytest.raises(w.WithdrawalError):
         w.basename(version, build)
+
+
+def test_a_candidate_that_was_never_published_is_withdrawn_from_staging():
+    registry = Registry(["staging"])
+    receipt = w.withdraw(
+        registry,
+        registry,
+        version="0.1.0",
+        build_number=0,
+        sha256=DIGEST,
+        label="staging",
+    )
+    assert receipt["labels_after"] == ["withdrawn"]
+    assert [c[:2] for c in registry.calls] == [
+        ("add", "withdrawn"),
+        ("remove", "staging"),
+    ]
+
+
+@pytest.mark.parametrize(
+    "labels, label, message",
+    [
+        (["staging", "main"], "staging", "published"),
+        (["staging"], "withdrawn", "main or staging"),
+    ],
+)
+def test_staging_withdrawal_never_touches_a_published_file(labels, label, message):
+    registry = Registry(labels)
+    with pytest.raises(w.WithdrawalError, match=message):
+        w.withdraw(
+            registry,
+            registry,
+            version="0.1.0",
+            build_number=0,
+            sha256=DIGEST,
+            label=label,
+        )
+    assert registry.calls == []

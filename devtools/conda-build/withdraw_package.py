@@ -1,8 +1,9 @@
-"""Withdraw one exact Sabueso file from the public ``main`` label.
+"""Withdraw one exact Sabueso file from the public ``main`` label, or from ``staging``.
 
 The file is not deleted: it gains the ``withdrawn`` label first, so it stays archived and
 traceable, and only then loses ``main``, so ``conda install -c uibcdf sabueso`` can no
-longer select it. Every call names the exact file; a label is never removed from a whole
+longer select it. A candidate that was staged but never published (a rebuilt or
+abandoned candidate) is withdrawn from ``staging`` the same way. Every call names the exact file; a label is never removed from a whole
 package or channel (anaconda-client's ``remove_channel`` would do that if the file
 coordinates were omitted).
 """
@@ -18,6 +19,7 @@ from typing import Any
 OWNER = "uibcdf"
 PACKAGE = "sabueso"
 PUBLIC_LABEL = "main"
+STAGING_LABEL = "staging"
 WITHDRAWN_LABEL = "withdrawn"
 VERSION = re.compile(r"(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\Z")
 SHA256 = re.compile(r"[0-9a-f]{64}\Z")
@@ -45,9 +47,19 @@ def exact_file(api: Any, version: str, name: str) -> dict:
 
 
 def withdraw(
-    read_api: Any, write_api: Any, *, version: str, build_number: int, sha256: str
+    read_api: Any,
+    write_api: Any,
+    *,
+    version: str,
+    build_number: int,
+    sha256: str,
+    label: str = PUBLIC_LABEL,
 ) -> dict:
-    """Relabel the verified file, then prove the public ``main`` label no longer holds it."""
+    """Relabel the verified file, then prove ``label`` no longer holds it."""
+    if label not in (PUBLIC_LABEL, STAGING_LABEL):
+        raise WithdrawalError(
+            f"a file is withdrawn from main or staging, not {label!r}"
+        )
     if not SHA256.fullmatch(sha256):
         raise WithdrawalError("withdrawal needs the file's SHA-256")
     name = basename(version, build_number)
@@ -55,17 +67,20 @@ def withdraw(
     if before.get("sha256") != sha256:
         raise WithdrawalError(f"{name} does not have the expected SHA-256")
     labels = set(before.get("labels", []))
-    if PUBLIC_LABEL not in labels:
-        raise WithdrawalError(f"{name} is not on the {PUBLIC_LABEL!r} label")
+    if label not in labels:
+        raise WithdrawalError(f"{name} is not on the {label!r} label")
+    if label == STAGING_LABEL and PUBLIC_LABEL in labels:
+        # The staging label of a published file records its route; it is not a leftover.
+        raise WithdrawalError(f"{name} is published; withdraw it from main instead")
     if WITHDRAWN_LABEL not in labels:
         write_api.add_channel(
             WITHDRAWN_LABEL, OWNER, package=PACKAGE, version=version, filename=name
         )
     write_api.remove_channel(
-        PUBLIC_LABEL, OWNER, package=PACKAGE, version=version, filename=name
+        label, OWNER, package=PACKAGE, version=version, filename=name
     )
     after = exact_file(read_api, version, name)
-    if PUBLIC_LABEL in after.get("labels", []) or WITHDRAWN_LABEL not in after.get(
+    if label in after.get("labels", []) or WITHDRAWN_LABEL not in after.get(
         "labels", []
     ):
         raise WithdrawalError(
@@ -84,6 +99,9 @@ def main() -> None:
     parser.add_argument("--version", required=True)
     parser.add_argument("--build-number", type=int, required=True)
     parser.add_argument("--sha256", required=True)
+    parser.add_argument(
+        "--label", choices=(PUBLIC_LABEL, STAGING_LABEL), default=PUBLIC_LABEL
+    )
     args = parser.parse_args()
     from binstar_client import Binstar
 
@@ -97,6 +115,7 @@ def main() -> None:
         version=args.version,
         build_number=args.build_number,
         sha256=args.sha256,
+        label=args.label,
     )
     print(json.dumps(receipt, indent=2, sort_keys=True))
 
