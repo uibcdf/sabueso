@@ -238,7 +238,6 @@ def test_the_same_statement_about_two_entities_is_two_records(resolver, tmp_path
 
 def _legacy_store(resolver, tmp_path):
     """A store as releases up to 0.2.0 wrote it: curated ids without the subject."""
-    import json
 
     from sabueso.core.curation import legacy_curated_id
 
