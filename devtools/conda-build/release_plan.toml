@@ -1,6 +1,6 @@
-version = "0.3.0"
+version = "0.3.1"
 route = "staged"
-reason = "First publication of card schema 0.3.2; new modules that persist data (the SQLite knowledge store with content-addressed snapshots, sabueso/core/knowledge_store.py and snapshot.py); a new source (AlphaFold DB); and a change of curated SourceAssertion ids with an automatic migration of curation stores (#62). Clean installed-package gates, Windows included, must pass before public visibility."
+reason = "A data-integrity fix (#64: stored forms were shared with the card, so a copy could change with the original and a snapshot could mix two states), AlphaFold isoform models (#65), and the first publication of card schema 0.3.3. Clean installed-package gates, Windows included, must pass before public visibility."
 decision_by = "Diego Prada (Sabueso maintainer), 2026-09-25"
 required_workflows = [
   ".github/workflows/ci.yml",
