@@ -24,16 +24,13 @@ Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the o
   - It writes card schema 0.3.3.
   - Users of 0.3.0: upgrade; see the release notes about copies of cards (#64).
   - Users of 0.2.0: see the 0.3.0 release notes about curated ids (#62).
-- **Archives of 0.3.0 and 0.3.1:** published on Zenodo (records
-  [22958049](https://zenodo.org/records/22958049) and
-  [22959360](https://zenodo.org/records/22959360)). Each archive was verified to be
-  identical to its tag. Their version DOIs do not resolve yet (DataCite registration
-  pending), so none is claimed. The concept DOI
-  [10.5281/zenodo.22937375](https://doi.org/10.5281/zenodo.22937375) resolves to 0.3.1.
-- **0.2.0** is archived and verified on Zenodo:
-  - version DOI: [10.5281/zenodo.22948384](https://doi.org/10.5281/zenodo.22948384);
-  - concept DOI, which covers all versions:
+- **0.3.1 and 0.3.0** are archived on Zenodo, each verified to be identical to its tag:
+  - 0.3.1: [10.5281/zenodo.22959360](https://doi.org/10.5281/zenodo.22959360);
+  - 0.3.0: [10.5281/zenodo.22958049](https://doi.org/10.5281/zenodo.22958049);
+  - concept DOI, which covers all versions and resolves to the latest:
     [10.5281/zenodo.22937375](https://doi.org/10.5281/zenodo.22937375).
+- **0.2.0** is archived and verified on Zenodo
+  ([10.5281/zenodo.22948384](https://doi.org/10.5281/zenodo.22948384)).
 - **0.1.1** is archived too
   ([10.5281/zenodo.22937715](https://doi.org/10.5281/zenodo.22937715)).
 
