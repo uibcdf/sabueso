@@ -28,6 +28,40 @@ Deck persistence:
 - `Deck.from_jsonl(path)`
 - `Deck.from_sqlite(path, table='cards')`
 
+## Knowledge Store: Versioned Cards
+
+To keep cards over time and cite the exact state you used, save them in a knowledge
+store. It is one SQLite file:
+
+```python
+import sabueso
+
+store = sabueso.KnowledgeStore("project/knowledge.db")
+ref = store.save(card, note="baseline for the docking run")
+# 'sabueso:protein:uniprot:P52270@sha256:3b1f…' pins this exact state
+
+store.load(ref)  # exactly that state, or StorageError
+store.load(card.id)  # the latest state saved for the card
+store.history(card.id)  # every revision: reference, time, note
+
+# Which stored proteins was this molecule measured on?
+store.relationships(object_ref="chembl:CHEMBL1288605", predicate="has_bioactivity")
+```
+
+- A snapshot id is the content address of the card. `card.snapshot_id()` and
+  `card.pinned_ref()` compute it without a store, so a JSON copy of a card can be
+  checked against a reference.
+- A pinned reference never resolves to another state of the card. If that state is not
+  in the store, you get a `StorageError`.
+- An assertion or relationship is cited within a pinned state:
+  `store.source_assertion(f"{ref}#SA_…")`.
+- Decks are saved by name, with their cards pinned: `store.save_deck(deck, "ligands")`
+  and `store.load_deck("ligands")`.
+- To bring in cards saved earlier with `card.to_sqlite`, use
+  `store.import_card_table(path)`. Each row becomes a revision.
+
+The reference forms are provisional until they are agreed across MOLI (uibcdf/moli#3).
+
 ## Cache Policy
 
 Current policy is Raw + Cards.
@@ -47,3 +81,4 @@ See:
 
 - JSON/JSONL: easiest to inspect and diff.
 - SQLite: best for larger collections and query performance.
+- Knowledge store: the place to keep cards you will cite, with their history.

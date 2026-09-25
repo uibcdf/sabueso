@@ -69,6 +69,25 @@ class Card:
         """Stable card reference (``meta.card_id``), independent of storage location."""
         return self.meta.get("card_id")
 
+    def snapshot_id(self) -> str:
+        """Content address of this exact card state, ``sha256:<hex>`` (#7).
+
+        Any change to what the card stores changes it; see ``sabueso.core.snapshot``.
+        """
+        from .snapshot import snapshot_id
+
+        return snapshot_id(self.to_dict())
+
+    def pinned_ref(self) -> str:
+        """``<card_id>@<snapshot_id>``: a reference to this exact state (provisional form,
+        uibcdf/moli#3)."""
+        from .errors import StorageError
+        from .snapshot import pinned_ref
+
+        if not self.id:
+            raise StorageError("A card without meta.card_id cannot be referenced.")
+        return pinned_ref(self.id, self.snapshot_id())
+
     def relationships(
         self, predicate: str | None = None, object_ref: str | None = None
     ) -> List[Relationship]:

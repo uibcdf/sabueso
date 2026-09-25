@@ -40,7 +40,7 @@ This file documents concrete risks and mitigation strategies.
 
 ## Proposal under evaluation
 - A normalized SQLite store (cards, SourceAssertions and relationships as rows, JSON/JSONL
-  kept for exchange): uibcdf/sabueso#27, `devguide/pending_proposals/native_store.md`.
+  kept for exchange): uibcdf/sabueso#27, `devguide/archive/native_store.md`.
 
 ## Open Decisions
 - Which mitigation(s) will be the default for 1.0.0?

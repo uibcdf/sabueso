@@ -24,6 +24,8 @@ CardOps (minimum):
 - `to_sqlite(path, table="cards", id_field=None)`
 - `from_json(path)`
 - `from_sqlite(path, table="cards", card_id=None)`
+- `snapshot_id()` → `sha256:<hex>`, the content address of this state (#7)
+- `pinned_ref()` → `<card_id>@<snapshot_id>` (provisional form, uibcdf/moli#3)
 - `extract(field_paths)`
 - `compare(other_card, fields=None, mode="strict")` → `dict`
 - `derive_deck(kind)` → `Deck`
@@ -58,6 +60,8 @@ Tools are **ad‑hoc by design** and can return any output type.
 - `tools.db.uniprot` provides offline and online helpers to build a Protein Card from UniProt data.
 - `tools.card.storage` provides `save_card_json`, `save_card_sqlite`.
 - `tools.deck.storage` provides `save_deck_jsonl`, `save_deck_sqlite`.
+- `sabueso.KnowledgeStore` keeps versioned cards, their rows and decks
+  (`devguide/STORAGE_LAYOUT.md`, #7, #27).
 
 ## Mixed API Style
 The public API is mixed OO + functional:

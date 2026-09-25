@@ -6,6 +6,10 @@ from typing import Any
 
 from sabueso.core.errors import ArgumentError
 
+#: Knowledge store queries, where a relationship filter may be left out (None) and any
+#: predicate Sabueso states is accepted, not only the curatable ones.
+STORE_QUERIES = frozenset({"sabueso.core.knowledge_store.relationships"})
+
 
 def refuse(argument: str, value: Any, caller: str | None, reason: str) -> ArgumentError:
     return ArgumentError(argument=argument, value=value, caller=caller, reason=reason)

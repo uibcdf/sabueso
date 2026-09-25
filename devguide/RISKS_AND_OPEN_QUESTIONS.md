@@ -27,6 +27,32 @@
   re-applying gives the same id. If a field's item shape changes in a new schema version,
   re-application raises instead of silently changing the id. Stores then need a
   migration.
+- **Snapshots of rebuilds** (#7): a snapshot id covers everything a card stores,
+  `retrieved_at` included. Two builds from unchanged sources on different days are
+  therefore two snapshots. That is exact, since what was read on each day is part of the
+  record, but it is not "same knowledge, same id". If consumers need that, a second
+  digest that leaves out observation times can be added next to the snapshot id. It
+  must never replace the snapshot id.
+- **Canonical JSON is the snapshot contract** (#7): the id depends on how Python's
+  `json` writes numbers and on the stored form of the card. A change to `to_dict()`
+  changes the ids of new snapshots, never of stored ones, and it goes with a card
+  schema version (#42). Floats use the shortest representation that round-trips, and
+  NaN is refused.
+- **Retention in the knowledge store** (#27): snapshots and rows are never deleted. A
+  store that is saved often grows, although identical rows are stored once. Pruning
+  would break pins that consumers may hold, so it needs a retention policy agreed in
+  uibcdf/moli#3 before it exists.
+- **Queries match references as written** (#27): `KnowledgeStore.relationships` does
+  not use the glossary of entities (#52). A molecule stated as `chembl:…` in one card and
+  as `pdb.ligand:…` in another is found only under each reference. Resolving through
+  the glossary is the next step if cross-source queries become common.
+- **Knowledge store format** (#27): the file states format 1. A change to its tables
+  needs a new format and a migration, like the card schema (#42, #51).
+- **Decks are not versioned** (#27): a deck's name points to its latest contents. The
+  cards stay pinned, so a deck someone relied on can be rebuilt from their references,
+  but not from the deck name. Version decks as well if a consumer needs to cite one.
+- **One writer at a time**: SQLite serializes writers, which suits a local knowledge
+  store. Many concurrent writers would need another backend.
 
 ## Open Questions
 - What are the default **selection rules** per field?

@@ -153,8 +153,14 @@ This file records the current repository baseline so new developers can resume e
   `field_path`, `asserted_value`, `source_metadata`); cards carry a stable `meta.card_id`.
 - Sabueso belongs to the MOLI Platform's Scientific Context, not to MolSysSuite.
 
+## Versioned Cards and the Knowledge Store (2026-09-25)
+- `Card.snapshot_id()` is a content address (`sha256:`), and `Card.pinned_ref()` gives
+  `<card_id>@<snapshot_id>` (#7). Both forms are provisional until uibcdf/moli#3.
+- `sabueso.KnowledgeStore` keeps cards in normalized SQLite: snapshots, revisions,
+  shared SourceAssertion and relationship rows, decks, and pinned reads that never fall
+  back to the latest state (#27). See `devguide/STORAGE_LAYOUT.md`.
+
 ## Pending Decisions
-- Final **schema versioning policy**.
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).
 

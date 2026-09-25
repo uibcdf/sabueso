@@ -38,6 +38,42 @@ decision of an `ambiguity_deck`, or the source outcomes and unanchored records o
   and no public function returns an unverified payload: a card changed outside Sabueso
   is refused with `StorageError`.
 
+## Knowledge store (uibcdf/sabueso#7, #27)
+`sabueso.KnowledgeStore(path)` keeps cards with their history, in one SQLite file:
+- `store.save(card, note=None)` stores the card's exact state (a snapshot) and returns
+  its pinned reference, `<card_id>@sha256:<hex>`. Saving the card's latest state again
+  adds nothing.
+- `store.load(ref)` returns that exact state, or, for a bare `card_id`, the latest one.
+  A pin that is absent or malformed raises `StorageError`; another state is never
+  returned in its place.
+- `store.history(card_id)` lists the revisions: reference, time, note and schema.
+- `store.source_assertion(ref)` and `store.relationship(ref)` return one item of a
+  pinned state, `<card_id>@sha256:<hex>#SA_…` or `#REL_…`.
+- `store.relationships(object_ref=…, predicate=…, subject_ref=…)` searches across the
+  latest states of all cards, or across every state with `all_revisions=True`. An
+  example: which proteins a molecule was measured on.
+- `store.save_deck(deck, deck_name)` and `store.load_deck(deck_name)` keep a deck as
+  its meta and the pinned states of its cards. Saving under the same name replaces the
+  deck, but never the snapshots.
+- `store.import_card_table(path, table="cards")` imports the rows of a
+  `save_card_sqlite` table, oldest first, as history.
+
+Tables:
+- `snapshots` holds one row per distinct state: the card's document as JSON, plus its
+  seal.
+- `revisions` holds the saves of each card, in order.
+- `source_assertions` and `relationships` hold one row per distinct content, with
+  indexed columns (`sa_id`/`rel_id`, subject, field path, predicate, object, source
+  release).
+- `snapshot_source_assertions` and `snapshot_relationships` say which rows each state
+  holds, and in which order.
+- `decks` and `deck_members` hold the decks.
+- `store_meta` holds the store's format, currently 1.
+
+Every read rebuilds the snapshot, hashes it and compares the result with its id. Then
+`Card.from_dict` checks the schema version and the quantities seal. The store uses no
+SQLite JSON functions, so any SQLite that Python ships with works.
+
 ## Notes
 - JSON/JSONL is recommended for transparency and version control.
 - SQLite is recommended for large datasets and fast queries.

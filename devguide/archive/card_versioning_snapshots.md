@@ -1,13 +1,15 @@
 ---
 summary: Version and snapshot cards so consumers can pin reproducible knowledge references.
 issue: uibcdf/sabueso#7
-status: partial
+status: resolved
 opened: 2026-09-23
-closed:
-verification: inspected
+closed: 2026-09-25
+verification: measured
 area: [identity, persistence, provenance]
 blocked_by: []
 supersedes: []
+guard: tests/core/test_knowledge_store_offline.py
+normative: devguide/DECISIONS.md ("Card snapshots and the knowledge store")
 ---
 
 # Card versioning and snapshots
@@ -83,6 +85,34 @@ external-reference proposal to MOLI #3. The minimal workflow requested there exi
 now (`docs/content/showcase/knowledge_baseline.ipynb`). Local implementation no
 longer waits for MOLI #3; publishing a stable cross-component contract does.
 
-## Resolution
+## Resolution (2026-09-25)
 
-Pending.
+Implemented locally; the external form is proposed to uibcdf/moli#3.
+
+- **Identity: both.** A snapshot is content-addressed. `Card.snapshot_id()` is the
+  SHA-256 of `Card.to_dict()` in canonical JSON, with the quantities seal left out and
+  SourceAssertions and relationships in canonical order (`sabueso/core/snapshot.py`).
+  The knowledge store (#27) records revisions: the order of a card's saves, their time
+  and a note. The revision is for people; the hash is the identity and the integrity
+  check.
+- **What a snapshot keeps:** the whole stored card, including selected values,
+  conflicts, SourceAssertions with their source releases, relationships, curation
+  outcomes, selection rules, quality, the glossary of entities, and unknown keys of a
+  newer schema.
+- **Pinned reads.** `KnowledgeStore.load("<card_id>@sha256:<hex>")` returns that exact
+  state or raises `StorageError`. A bare `card_id` means the latest revision. A
+  malformed pin is an error, never a request for the latest card.
+- **Items in a state.** `…@sha256:<hex>#SA_…` and `…#REL_…` cite an item as a pinned
+  state holds it. An item reference without a pin is refused.
+- **Migration.** Existing cards need none: their snapshot id is computed from what they
+  store. `KnowledgeStore.import_card_table` turns the rows of a `save_card_sqlite`
+  table into history.
+- **Tests** (`tests/core/test_knowledge_store_offline.py`):
+  - an older pin keeps resolving to its state, including a curation outcome, after a
+    newer state is saved;
+  - absent, foreign and malformed pins fail;
+  - the id does not depend on build order, on JSON transit or on row order;
+  - a tampered row is refused.
+- **Left for uibcdf/moli#3:** the consumer-facing meaning of the forms, and their
+  retention guarantees. Adopting the agreed form, or migrating from this one, is
+  tracked in its own issue.

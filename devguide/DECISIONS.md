@@ -305,3 +305,32 @@ uibcdf/sabueso#46.
   `LibraryNotFoundError`). DepDigest therefore now applies to Sabueso, the condition
   recorded in #31.
 
+
+## Card snapshots and the knowledge store (2026-09-25)
+uibcdf/sabueso#7 and #27. The design is recorded in
+`devguide/archive/card_versioning_snapshots.md` and `devguide/archive/native_store.md`.
+- **A snapshot is content-addressed.** `Card.snapshot_id()` is the SHA-256 of the stored
+  card (`Card.to_dict()`) in canonical JSON, with the quantities seal left out and
+  SourceAssertions and relationships in canonical order. The same state always has the
+  same id, whoever computes it and wherever the card is kept, so a JSON copy can be
+  checked against a pin without a store.
+- **A revision is what a human reads.** A store records the order in which a card's
+  snapshots were saved, when, and with a note. Both at once: the revision for people, the
+  hash for identity and integrity.
+- **References (provisional, uibcdf/moli#3):** `<card_id>` for the latest state,
+  `<card_id>@sha256:<hex>` for one exact state, and `…#SA_…` or `…#REL_…` for an item in
+  that state. An item reference must be pinned. A pinned read returns that exact state
+  or fails; it never returns another one.
+- **The knowledge store is normalized SQLite** (`sabueso.KnowledgeStore`). A card's
+  document, meaning its sections, quality, rules, entities and meta, stays one JSON
+  column. SourceAssertions and relationships become rows keyed by their content, and are
+  shared by every snapshot that holds them. Relationships are indexed by object,
+  subject and predicate. Decks are stored by name as their meta and the pinned states of
+  their cards.
+- **Rows are keyed by content, not by id.** A SourceAssertion id names what was stated,
+  so the same statement from another source release is a different row. Two cards share
+  a row only when they state exactly the same thing. Different subjects never do.
+- **JSON/JSONL stay the exchange formats.** `save_card_sqlite` and `save_deck_sqlite`
+  stay as they are. `KnowledgeStore.import_card_table` turns their rows into history.
+- **The store's tables are Sabueso's implementation.** Other components rely on the
+  reference forms, not on the tables.

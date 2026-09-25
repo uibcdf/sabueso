@@ -1,13 +1,15 @@
 ---
 summary: A native read/write store for Sabueso (normalized SQLite), with JSON/JSONL kept as the exchange format.
 issue: uibcdf/sabueso#27
-status: open
+status: resolved
 opened: 2026-09-23
-closed:
+closed: 2026-09-25
 verification: measured
 area: [persistence, relationships, identity, scale]
 blocked_by: []
 supersedes: []
+guard: tests/core/test_knowledge_store_offline.py
+normative: devguide/DECISIONS.md ("Card snapshots and the knowledge store"), devguide/STORAGE_LAYOUT.md
 ---
 
 # Native read/write store
@@ -92,6 +94,33 @@ To be agreed before implementation. At least:
 - a SourceAssertion or relationship shared by two cards stored once;
 - the chosen answers to the risks above recorded in `devguide/DECISIONS.md` and `devguide/STORAGE_LAYOUT.md`.
 
-## Resolution
+## Resolution (2026-09-25)
 
-Pending.
+`sabueso.KnowledgeStore` implements the proposal, with these answers to its open
+questions:
+
+- **Rows are keyed by content, not by id.** A SourceAssertion id names what was stated,
+  so the same id observed in another source release must stay a separate row; keying
+  by id would have lost one of the two observations. Every row is shared by the
+  snapshots that hold it.
+  - Measured on the TIM fixtures: a second state of TcTIM with 566 SourceAssertions
+    and 531 relationships adds no row.
+  - HsTIM shares no relationship with TcTIM. Each states its own subject, even for the
+    TIM domain both are classified in, so sharing across cards happens only for
+    identical statements.
+- **Sections stay JSON.** A card's document (meta, sections, quality, rules, entities)
+  is one column. Resolved values become rows only when queries across cards need them.
+- **Versions** are snapshots plus revisions (#7).
+- **Inverse navigation** is `store.relationships(object_ref=…)`, indexed on
+  `(object_ref, predicate)`. Both TIMs are found through a molecule measured on them.
+- **Decks** are stored by name, as their meta and the pinned states of their cards. A
+  card in two decks is stored once.
+- **Migration.** `import_card_table` imports `save_card_sqlite` tables as history.
+  JSON/JSONL export is `store.load(ref).to_json(path)`; round trips are exact
+  (`Card.to_dict()` before and after, tested for protein and molecule cards).
+- **SQLite versions.** The store uses no JSON functions, so no minimum SQLite version
+  applies.
+- **Shared contract.** The tables are Sabueso's implementation. Other components use
+  the reference forms (uibcdf/moli#3).
+- **Not done:** the analytical layer (Parquet/DuckDB) and queries through the glossary
+  of entities. Both are recorded in `devguide/RISKS_AND_OPEN_QUESTIONS.md`.
