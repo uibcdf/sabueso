@@ -42,6 +42,9 @@ A `Deck` is a collection of Cards with batch operations:
 - `in_lineage(taxon)` keeps the cards whose organism is or descends from a taxon, and
   lists in `meta` the cards whose lineage is not stated; `group_by(field_path)` groups
   cards by a resolved value, e.g. `annotations.taxon_id`
+- `add(card, basis=...)` and `exclude(candidate, reason)` record why a card is in the
+  deck or was left out (`meta["membership"]`, `meta["excluded"]`). Derived decks list
+  the operations that produced them in `meta["operations"]`
 - `identity_audit()` reports redundant entries, strain variants, fragments and
   paralogs among the protein cards, each with its basis. It never merges cards.
 - `sort(field_path, reverse=False)` by resolved value; cards without a value go last

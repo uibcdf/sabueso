@@ -16,8 +16,9 @@ store is where cards are kept and worked with:
   is not the key: a SourceAssertion id names what was stated, so the same id observed in
   another source release is another row. Relationships are indexed by subject, object
   and predicate, so "which cards point at this molecule?" is a query, not a scan.
-- **Decks** are stored by name as their ``meta`` and the pinned states of their cards.
-  Saving a deck under a name replaces the deck, never the snapshots it pointed to.
+- **Decks** are versioned like cards (#58): a deck revision is its ``meta`` and the
+  pinned states of its cards, content-addressed, and a deck is referenced as
+  ``sabueso:deck:<name>`` (latest) or ``sabueso:deck:<name>@sha256:…`` (exact).
 - **Every read verifies.** A snapshot is rebuilt from its rows, hashed again and
   checked against its id; then ``Card.from_dict`` checks its schema version and its
   quantities seal. A store changed outside Sabueso is refused with ``StorageError``.
@@ -35,12 +36,21 @@ import sqlite3
 from contextlib import closing, contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterator, List
+from typing import Any, Dict, Iterator, List, Tuple
 
 from sabueso._private.argdigest import arg_digest
 
 from .errors import StorageError
-from .snapshot import canonical_json, digest, parse_ref, pinned_ref, snapshot_id
+from .snapshot import (
+    DECK_NAME,
+    DECK_PREFIX,
+    canonical_json,
+    deck_snapshot_id,
+    digest,
+    parse_ref,
+    pinned_ref,
+    snapshot_id,
+)
 
 FORMAT = 1
 #: The two stores of a card that become rows; the rest of the card is one document.
@@ -107,17 +117,19 @@ CREATE TABLE IF NOT EXISTS snapshot_relationships (
 );
 CREATE INDEX IF NOT EXISTS snapshot_relationships_by_row
     ON snapshot_relationships (body_hash);
-CREATE TABLE IF NOT EXISTS decks (
-    name TEXT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS deck_snapshots (
+    snapshot_id TEXT PRIMARY KEY,
     meta TEXT NOT NULL,
-    stored_at TEXT NOT NULL
+    members TEXT NOT NULL
 );
-CREATE TABLE IF NOT EXISTS deck_members (
-    name TEXT NOT NULL REFERENCES decks (name),
-    position INTEGER NOT NULL,
-    card_ref TEXT NOT NULL,
-    PRIMARY KEY (name, position)
+CREATE TABLE IF NOT EXISTS deck_revisions (
+    revision INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    snapshot_id TEXT NOT NULL REFERENCES deck_snapshots (snapshot_id),
+    stored_at TEXT NOT NULL,
+    note TEXT
 );
+CREATE INDEX IF NOT EXISTS deck_revisions_by_name ON deck_revisions (name, revision);
 """
 
 #: The latest revision of every card.
@@ -456,48 +468,117 @@ class KnowledgeStore:
         deck_name: str,
         note: str | None = None,
         skip_digestion: bool = False,
-    ) -> List[str]:
-        """Store every card of the deck, then the deck as its meta and pinned cards.
+    ) -> str:
+        """Store every card of the deck, then the deck: its meta and the pinned state of
+        each card. Returns the deck's pinned reference, ``sabueso:deck:<name>@sha256:…``.
 
-        One transaction: a failure stores nothing. Returns the pinned references.
+        One transaction: a failure stores nothing. Saving a deck again under its name
+        adds a revision, unless its content is the latest one; earlier revisions keep
+        resolving (#58).
         """
+        name, pinned = self._deck_name(deck_name)
+        if pinned:
+            raise StorageError("A deck is saved under its name, not under a pin.")
+        deck_name = name
         with self._session() as conn:
-            refs = [self._save(conn, card, note) for card in deck.cards]
-            conn.execute("DELETE FROM deck_members WHERE name = ?", (deck_name,))
+            members = [self._save(conn, card, note) for card in deck.cards]
+            sid = deck_snapshot_id(deck.meta, members)
             conn.execute(
-                "INSERT OR REPLACE INTO decks VALUES (?, ?, ?)",
-                (deck_name, canonical_json(deck.meta), _now()),
+                "INSERT OR IGNORE INTO deck_snapshots VALUES (?, ?, ?)",
+                (sid, canonical_json(deck.meta), canonical_json(members)),
             )
-            conn.executemany(
-                "INSERT INTO deck_members VALUES (?, ?, ?)",
-                [(deck_name, position, ref) for position, ref in enumerate(refs)],
-            )
-        return refs
+            if self._deck_head(conn, deck_name) != sid:
+                conn.execute(
+                    "INSERT INTO deck_revisions (name, snapshot_id, stored_at, note) "
+                    "VALUES (?, ?, ?, ?)",
+                    (deck_name, sid, _now(), note),
+                )
+        return pinned_ref(DECK_PREFIX + deck_name, sid)
+
+    @staticmethod
+    def _deck_head(conn: sqlite3.Connection, name: str) -> str | None:
+        row = conn.execute(
+            "SELECT snapshot_id FROM deck_revisions WHERE name = ? "
+            "ORDER BY revision DESC LIMIT 1",
+            (name,),
+        ).fetchone()
+        return None if row is None else row[0]
+
+    @staticmethod
+    def _deck_name(ref: str) -> Tuple[str, str | None]:
+        """``(name, snapshot_id)`` of ``<name>``, ``sabueso:deck:<name>`` or a pin."""
+        if not ref.startswith(DECK_PREFIX):
+            ref = DECK_PREFIX + ref
+        card_id, sid, item = parse_ref(ref)
+        name = card_id[len(DECK_PREFIX) :]
+        if item or not DECK_NAME.fullmatch(name):
+            raise StorageError(f"{ref!r} is not a deck reference.")
+        return name, sid
 
     @arg_digest()
     def load_deck(self, deck_name: str, skip_digestion: bool = False) -> Any:
-        """The deck stored under the name, each card in the exact state it was saved in."""
+        """The deck a name or reference names: the exact revision if pinned, else the
+        latest. Each card comes back in the exact state it was saved in. An absent pin
+        fails; another revision is never returned in its place."""
         from .deck import Deck
 
+        name, sid = self._deck_name(deck_name)
         with self._session() as conn:
-            row = conn.execute(
-                "SELECT meta FROM decks WHERE name = ?", (deck_name,)
-            ).fetchone()
-            if row is None:
-                raise StorageError(f"No deck {deck_name!r} in {self.path}.")
-            refs = [
-                ref
-                for (ref,) in conn.execute(
-                    "SELECT card_ref FROM deck_members WHERE name = ? ORDER BY position",
-                    (deck_name,),
+            if sid is None:
+                sid = self._deck_head(conn, name)
+                if sid is None:
+                    raise StorageError(f"No deck {name!r} in {self.path}.")
+            elif (
+                conn.execute(
+                    "SELECT 1 FROM deck_revisions WHERE name = ? AND snapshot_id = ?",
+                    (name, sid),
+                ).fetchone()
+                is None
+            ):
+                raise StorageError(
+                    f"No revision {sid} of deck {name!r} in {self.path}. A pinned deck "
+                    "resolves to that exact revision or fails."
                 )
-            ]
-        return Deck([self.load(ref) for ref in refs], meta=json.loads(row[0]))
+            meta, members = conn.execute(
+                "SELECT meta, members FROM deck_snapshots WHERE snapshot_id = ?", (sid,)
+            ).fetchone()
+        meta, members = json.loads(meta), json.loads(members)
+        if deck_snapshot_id(meta, members) != sid:
+            raise StorageError(
+                f"Deck revision {sid} in {self.path} no longer matches its content."
+            )
+        return Deck([self.load(ref) for ref in members], meta=meta)
+
+    @arg_digest()
+    def deck_history(
+        self, deck_name: str, skip_digestion: bool = False
+    ) -> List[Dict[str, Any]]:
+        """Every revision of a deck, oldest first, each with its pinned reference."""
+        name, _ = self._deck_name(deck_name)
+        with self._session() as conn:
+            rows = conn.execute(
+                "SELECT revision, snapshot_id, stored_at, note FROM deck_revisions "
+                "WHERE name = ? ORDER BY revision",
+                (name,),
+            ).fetchall()
+        return [
+            {
+                "revision": revision,
+                "ref": pinned_ref(DECK_PREFIX + name, sid),
+                "snapshot_id": sid,
+                "stored_at": stored_at,
+                "note": note,
+            }
+            for revision, sid, stored_at, note in rows
+        ]
 
     def deck_names(self) -> List[str]:
         with self._session() as conn:
             return [
-                name for (name,) in conn.execute("SELECT name FROM decks ORDER BY name")
+                name
+                for (name,) in conn.execute(
+                    "SELECT DISTINCT name FROM deck_revisions ORDER BY name"
+                )
             ]
 
     # --- migration -----------------------------------------------------------------------

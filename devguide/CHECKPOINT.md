@@ -179,6 +179,10 @@ This file records the current repository baseline so new developers can resume e
 - `card.knowledge_state()` tells known, conflicting, not stated, not queried and
   unavailable apart, per area and source (#56).
 
+## Versioned Decks (2026-09-25)
+- Deck revisions are content-addressed and pinnable (`sabueso:deck:<name>@sha256:…`).
+  Decks record their membership, exclusions and derivation operations (#58).
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

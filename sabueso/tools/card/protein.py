@@ -341,8 +341,10 @@ def ambiguity_deck(resolution: EntityResolution, skip_digestion: bool = False) -
         ),
         "",
     )
+    cards = [_candidate_card(c, resolution, retrieved) for c in items]
+    role = "candidate" if resolution.status == "ambiguous" else "alternative"
     return Deck(
-        [_candidate_card(c, resolution, retrieved) for c in items],
+        cards,
         meta={
             "kind": "entity_ambiguity"
             if resolution.status == "ambiguous"
@@ -351,5 +353,10 @@ def ambiguity_deck(resolution: EntityResolution, skip_digestion: bool = False) -
             "entity_ref": resolution.entity_ref,
             "policy": resolution.policy,
             "decision": resolution.decision,
+            # Why each card is here (#58): the query it answered, and its role.
+            "membership": {
+                card.id: {"role": role, "query": resolution.decision.get("query")}
+                for card in cards
+            },
         },
     )

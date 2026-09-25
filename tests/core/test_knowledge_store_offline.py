@@ -277,17 +277,31 @@ def test_queries_are_checked(tmp_path):
 def test_a_deck_is_stored_as_its_meta_and_pinned_cards(tmp_path, tctim, hstim):
     store = sabueso.KnowledgeStore(tmp_path / "knowledge.db")
     deck = Deck([tctim, hstim], meta={"kind": "orthologs", "decision": {"by": "test"}})
-    refs = store.save_deck(deck, "tims")
+    ref = store.save_deck(deck, "tims")
+    assert ref == f"sabueso:deck:tims@{deck.snapshot_id()}"
     loaded = store.load_deck("tims")
     assert loaded.meta == deck.meta
-    assert [c.pinned_ref() for c in loaded.cards] == refs
-    # Replacing the deck keeps the snapshots it pointed to.
-    store.save_deck(Deck([_variant(tctim, "new")]), "tims")
+    assert [c.pinned_ref() for c in loaded.cards] == [
+        tctim.pinned_ref(),
+        hstim.pinned_ref(),
+    ]
+    # Saving the same content again adds nothing; new content is a new revision, and
+    # the earlier one keeps resolving (#58).
+    assert store.save_deck(deck, "tims") == ref
+    newer = store.save_deck(Deck([_variant(tctim, "new")]), "tims", note="one card")
+    assert [h["ref"] for h in store.deck_history("tims")] == [ref, newer]
     assert len(store.load_deck("tims").cards) == 1
-    assert store.load(refs[0]).to_dict() == tctim.to_dict()
+    assert len(store.load_deck(ref).cards) == 2
+    assert store.load_deck("sabueso:deck:tims").meta == {}
     assert store.deck_names() == ["tims"]
     with pytest.raises(StorageError, match="No deck"):
         store.load_deck("absent")
+    with pytest.raises(StorageError, match="No revision"):
+        store.load_deck(f"tims@sha256:{'0' * 64}")
+    with pytest.raises(StorageError, match="not under a pin"):
+        store.save_deck(deck, ref)
+    with pytest.raises(ArgumentError):
+        store.save_deck(deck, "two words")
 
 
 # --- integrity, format and migration ----------------------------------------------------------

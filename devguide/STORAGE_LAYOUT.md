@@ -52,9 +52,10 @@ decision of an `ambiguity_deck`, or the source outcomes and unanchored records o
 - `store.relationships(object_ref=…, predicate=…, subject_ref=…)` searches across the
   latest states of all cards, or across every state with `all_revisions=True`. An
   example: which proteins a molecule was measured on.
-- `store.save_deck(deck, deck_name)` and `store.load_deck(deck_name)` keep a deck as
-  its meta and the pinned states of its cards. Saving under the same name replaces the
-  deck, but never the snapshots.
+- `store.save_deck(deck, deck_name)` stores a deck revision: its meta and the pinned
+  states of its cards, content-addressed. It returns `sabueso:deck:<name>@sha256:…`.
+  `store.load_deck(name or ref)` gives the latest revision or the exact pinned one, and
+  `store.deck_history(name)` lists the revisions (#58).
 - `store.import_card_table(path, table="cards")` imports the rows of a
   `save_card_sqlite` table, oldest first, as history.
 
@@ -67,7 +68,8 @@ Tables:
   release).
 - `snapshot_source_assertions` and `snapshot_relationships` say which rows each state
   holds, and in which order.
-- `decks` and `deck_members` hold the decks.
+- `deck_snapshots` holds one row per distinct deck content, and `deck_revisions` the
+  saves of each deck name, in order.
 - `store_meta` holds the store's format, currently 1.
 
 Every read rebuilds the snapshot, hashes it and compares the result with its id. Then

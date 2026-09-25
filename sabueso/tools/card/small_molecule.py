@@ -546,6 +546,11 @@ def ligand_deck(
     return Deck(
         [cards[key] for key in sorted(cards)],
         meta={
+            # Why each card is here (#58): a ligand of this protein, anchored by rule.
+            "membership": {
+                cards[key].id: {"ligand_of": protein_card.id, "rule": IDENTITY_RULE}
+                for key in sorted(cards)
+            },
             "kind": "protein_ligands",
             "protein": protein_card.id,
             "identity_rule": IDENTITY_RULE,

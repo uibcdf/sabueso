@@ -75,6 +75,16 @@ def snapshot_id(stored: Mapping[str, Any]) -> str:
     return digest(canonical_json(snapshot_content(stored)))
 
 
+#: Decks are referenced as ``sabueso:deck:<name>`` and pinned the same way (#58).
+DECK_PREFIX = "sabueso:deck:"
+DECK_NAME = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.-]*\Z")
+
+
+def deck_snapshot_id(meta: Mapping[str, Any], members: list) -> str:
+    """``sha256:<hex>`` of a deck: its meta and the pinned references of its cards."""
+    return digest(canonical_json({"meta": dict(meta), "members": list(members)}))
+
+
 class Ref(NamedTuple):
     card_id: str
     snapshot_id: str | None = None

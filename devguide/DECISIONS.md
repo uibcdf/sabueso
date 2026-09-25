@@ -413,3 +413,16 @@ uibcdf/sabueso#56; rule `knowledge_state@1`.
   failed and nothing was stated.
 - These are facts about sources, never Evidence: what an absence means for a project
   is Nextia's.
+
+## Versioned decks and traceable membership (2026-09-25)
+uibcdf/sabueso#58.
+- **A deck revision is content-addressed**, like a card snapshot: its meta plus the
+  pinned references of its cards (`Deck.snapshot_id()`). Decks are referenced as
+  `sabueso:deck:<name>`, meaning the latest revision, or `sabueso:deck:<name>@sha256:…`,
+  meaning that exact revision or failure. Deck names use letters, digits and `_ . -`.
+- **Membership is part of the content.** `meta["membership"]` maps each card to its
+  basis, and `meta["excluded"]` records candidates left out with their reason.
+  `ambiguity_deck` and `ligand_deck` fill the membership. `Deck.add(card, basis=...)`
+  and `Deck.exclude(candidate, reason, by=...)` let a curator do the same.
+- **Derived decks record their operations** (`meta["operations"]`), and keep the
+  membership of the cards they hold. `filter(predicate)` is marked not reproducible.

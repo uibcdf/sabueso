@@ -48,9 +48,11 @@
   the glossary is the next step if cross-source queries become common.
 - **Knowledge store format** (#27): the file states format 1. A change to its tables
   needs a new format and a migration, like the card schema (#42, #51).
-- **Decks are not versioned** (#27): a deck's name points to its latest contents. The
-  cards stay pinned, so a deck someone relied on can be rebuilt from their references,
-  but not from the deck name. Version decks as well if a consumer needs to cite one.
+- **Deck operations that cannot be recorded** (#58): `Deck.filter(predicate)` records
+  the operation but not the Python predicate, and marks it `"reproducible": False`. A
+  deck derived that way can be cited through its pinned reference, but not rebuilt from
+  its parent. Prefer `in_lineage`, `group_by`, `intersect` and `difference` when the
+  derivation must be reproducible.
 - **One writer at a time**: SQLite serializes writers, which suits a local knowledge
   store. Many concurrent writers would need another backend.
 - **ChEMBL ranges are untested against real data** (#37): ChEMBL_37 states none, so

@@ -1,4 +1,14 @@
-"""Deck core implementation (minimal)."""
+"""Deck core implementation.
+
+A deck can say why each card is in it and which candidates were left out (#58):
+
+- ``meta["membership"]``: ``{card_id: basis}``, filled by the tools that build decks and
+  by ``add(card, basis=...)``;
+- ``meta["excluded"]``: ``[{candidate, reason, by?}]``, filled by ``exclude()``;
+- ``meta["operations"]``: the operations that derived the deck from another one, in
+  order. An operation whose parameters cannot be recorded (a Python predicate) says so,
+  ``"reproducible": False``.
+"""
 
 from __future__ import annotations
 
@@ -16,14 +26,69 @@ class Deck:
         self.cards = cards or []
         self.meta = meta or {}
 
-    def add(self, card: Any) -> None:
+    def add(self, card: Any, basis: Dict[str, Any] | None = None) -> None:
+        """Add a card; ``basis`` records why it belongs (a query, a rule, a curator)."""
         self.cards.append(card)
+        if basis is not None:
+            self.meta.setdefault("membership", {})[card.id] = basis
+
+    def basis(self, card_id: str) -> Dict[str, Any] | None:
+        """Why a card is in the deck, when that was recorded."""
+        return (self.meta.get("membership") or {}).get(card_id)
+
+    def exclude(self, candidate: str, reason: str, by: str | None = None) -> None:
+        """Leave a candidate out, with the reason. The card is removed if present."""
+        if not reason:
+            from .errors import SchemaError
+
+            raise SchemaError("An exclusion needs its reason.")
+        self.cards = [c for c in self.cards if c.id != candidate]
+        (self.meta.get("membership") or {}).pop(candidate, None)
+        record = {"candidate": candidate, "reason": reason}
+        if by:
+            record["by"] = by
+        self.meta.setdefault("excluded", []).append(record)
+
+    def _derived(
+        self,
+        cards: List[Any],
+        operation: str,
+        parameters: Dict[str, Any] | None = None,
+        reproducible: bool = True,
+        **extra: Any,
+    ) -> "Deck":
+        """A deck derived from this one: membership kept for the cards it holds, and
+        the operation appended to ``meta["operations"]``."""
+        meta = {k: v for k, v in self.meta.items() if k != "membership"}
+        membership = self.meta.get("membership") or {}
+        kept = {c.id: membership[c.id] for c in cards if c.id in membership}
+        if kept:
+            meta["membership"] = kept
+        step: Dict[str, Any] = {"operation": operation, "parameters": parameters or {}}
+        if not reproducible:
+            step["reproducible"] = False
+        meta["operations"] = [*self.meta.get("operations", []), step]
+        meta.update(extra)
+        return Deck(list(cards), meta=meta)
+
+    def snapshot_id(self) -> str:
+        """Content address of the deck: its meta and the pinned state of each card."""
+        from .snapshot import deck_snapshot_id
+
+        return deck_snapshot_id(self.meta, [c.pinned_ref() for c in self.cards])
 
     def extend(self, cards: List[Any]) -> None:
         self.cards.extend(cards)
 
     def filter(self, predicate: Callable[[Any], bool]) -> "Deck":
-        return Deck([c for c in self.cards if predicate(c)], meta=self.meta.copy())
+        """Cards for which ``predicate`` is true. A Python predicate cannot be recorded,
+        so the operation is marked as not reproducible from the deck alone."""
+        return self._derived(
+            [c for c in self.cards if predicate(c)],
+            "filter",
+            {"predicate": getattr(predicate, "__name__", "custom")},
+            reproducible=False,
+        )
 
     def sort(self, key: str, reverse: bool = False) -> "Deck":
         """Sort cards by the resolved value at field path ``key``.
@@ -40,7 +105,7 @@ class Deck:
         present = [c for c in self.cards if value(c) is not None]
         missing = [c for c in self.cards if value(c) is None]
         ordered = sorted(present, key=value, reverse=reverse) + missing
-        return Deck(ordered, meta=self.meta.copy())
+        return self._derived(ordered, "sort", {"key": key, "reverse": reverse})
 
     def in_lineage(self, taxon: str) -> "Deck":
         """Cards whose organism is ``taxon`` or descends from it (#54).
@@ -61,24 +126,31 @@ class Deck:
                 unknown.append(card.id)
             elif taxon in lineage or value(card, "annotations.organism") == taxon:
                 kept.append(card)
-        meta = {**self.meta, "lineage_filter": taxon}
-        if unknown:
-            meta["lineage_not_stated"] = unknown
-        return Deck(kept, meta=meta)
+        extra = {"lineage_not_stated": unknown} if unknown else {}
+        return self._derived(kept, "in_lineage", {"taxon": taxon}, **extra)
 
     def group_by(self, key: str) -> Dict[Any, "Deck"]:
         """Decks of the cards that share the resolved value at field path ``key``, e.g.
         ``"annotations.organism"`` or ``"annotations.taxon_id"``. Cards without a value
         are grouped under None."""
-        groups: Dict[Any, Deck] = {}
+        members: Dict[Any, List[Any]] = {}
         for card in self.cards:
             node = card.get(key)
             value = node.get("value") if isinstance(node, dict) else node
             if isinstance(value, list):
                 value = tuple(value)
-            groups.setdefault(value, Deck(meta={**self.meta, "group": {key: value}}))
-            groups[value].add(card)
-        return groups
+            members.setdefault(value, []).append(card)
+        return {
+            value: self._derived(
+                cards,
+                "group_by",
+                {
+                    "key": key,
+                    "value": list(value) if isinstance(value, tuple) else value,
+                },
+            )
+            for value, cards in members.items()
+        }
 
     def identity_audit(self) -> Dict[str, Any]:
         """Redundant entries, strain variants and paralogs among the deck's protein
@@ -98,13 +170,19 @@ class Deck:
     def intersect(self, other: "Deck") -> "Deck":
         """Cards of this deck whose id is also in ``other`` (same entity, same anchor)."""
         wanted = set(other.ids())
-        return Deck([c for c in self.cards if c.id in wanted], meta=self.meta.copy())
+        return self._derived(
+            [c for c in self.cards if c.id in wanted],
+            "intersect",
+            {"other": sorted(wanted)},
+        )
 
     def difference(self, other: "Deck") -> "Deck":
         """Cards of this deck whose id is not in ``other``."""
         unwanted = set(other.ids())
-        return Deck(
-            [c for c in self.cards if c.id not in unwanted], meta=self.meta.copy()
+        return self._derived(
+            [c for c in self.cards if c.id not in unwanted],
+            "difference",
+            {"other": sorted(unwanted)},
         )
 
     def map(self, fn: Callable[[Any], Any]) -> List[Any]:

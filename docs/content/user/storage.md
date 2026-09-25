@@ -55,8 +55,10 @@ store.relationships(object_ref="chembl:CHEMBL1288605", predicate="has_bioactivit
   in the store, you get a `StorageError`.
 - An assertion or relationship is cited within a pinned state:
   `store.source_assertion(f"{ref}#SA_…")`.
-- Decks are saved by name, with their cards pinned: `store.save_deck(deck, "ligands")`
-  and `store.load_deck("ligands")`.
+- Decks are versioned too. `store.save_deck(deck, "ligands")` returns
+  `sabueso:deck:ligands@sha256:…`. `store.load_deck("ligands")` gives the latest
+  revision, and `store.load_deck(ref)` the exact one, each card in the state it was
+  saved in. `store.deck_history("ligands")` lists the revisions.
 - To bring in cards saved earlier with `card.to_sqlite`, use
   `store.import_card_table(path)`. Each row becomes a revision.
 
