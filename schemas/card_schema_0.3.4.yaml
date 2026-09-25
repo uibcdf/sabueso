@@ -55,6 +55,12 @@ schema:
     (uibcdf/sabueso#68). Additive.
     It also adds literature.claims, curated free-text claims typed by topic and never
     compared (uibcdf/sabueso#43). Additive.
+    It also adds names.gene_names, and fills names.synonyms and names.abbreviations from
+    UniProt. Synonyms are items with a name and a kind, abbreviations with a name and the
+    full name they shorten (of), gene names with a name, a kind and the gene they name.
+    Additive. The items of names.synonyms and names.abbreviations were described as
+    strings up to 0.3.3, but no source filled them, and curated synonyms have always been
+    items with a name. The description is corrected; no stored card changes.
 card_base:
   meta:
     card_id:
@@ -136,12 +142,21 @@ card_base:
       - string
     synonyms:
       value:
-      - string
+      - name: string
+        kind: "enum[alternative_name, submission_name]"
       source_assertion_ids:
       - string
     abbreviations:
       value:
+      - name: string
+        of: string
+      source_assertion_ids:
       - string
+    gene_names:
+      value:
+      - name: string
+        kind: "enum[gene_name, synonym, ordered_locus, orf]"
+        gene: integer
       source_assertion_ids:
       - string
   properties:

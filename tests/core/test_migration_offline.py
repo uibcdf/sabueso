@@ -45,9 +45,13 @@ def test_gaps_say_what_a_refresh_would_bring_and_what_can_be_asked_for():
     assert kinds["annotations.taxonomy"] == "available"  # an enrichment to ask for
     assert "relationships.engages" not in kinds  # only a curator adds it
     recent = sabueso.migrate_card(_data("schema_0.3.3__P60174.json"))
-    assert {
-        g["kind"] for s in recent.quality["migration"][0]["steps"] for g in s["gaps"]
-    } == {"available"}
+    gaps = [g for s in recent.quality["migration"][0]["steps"] for g in s["gaps"]]
+    # Since 0.3.4, UniProt's other names: a refresh brings them.
+    assert {g["path"] for g in gaps if g["kind"] == "missing"} == {
+        "names.synonyms",
+        "names.abbreviations",
+        "names.gene_names",
+    }
 
 
 def test_the_store_keeps_the_original_and_the_migrated_card(tmp_path):

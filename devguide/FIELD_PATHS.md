@@ -31,9 +31,10 @@ Versioning: **x.y.z** (no leading `v`).
 - `identifiers.other` (list/dict for rare IDs)
 
 ### names.*
-- `names.canonical_name`
-- `names.synonyms` (list of `{name}`; curatable: a name a publication uses for the entry, which anchors resolution by name through a curation store, #55)
-- `names.abbreviations`
+- `names.canonical_name` (UniProt's recommended name; an unreviewed entry without one gives its first submission name, with `source_metadata.uniprot_name: submission`)
+- `names.synonyms` (list of `{name, kind}`; UniProt's alternative names, `kind: alternative_name`, and the submitter's other names, `submission_name`; curatable as `{name}`: a name a publication uses for the entry, which anchors resolution by name through a curation store, #55. A curated `{name}` that UniProt states corroborates it: `kind` describes the item, it does not state it)
+- `names.abbreviations` (list of `{name, of}`; UniProt's short names, with the full name each shortens)
+- `names.gene_names` (list of `{name, kind, gene}`; UniProt's gene names, `kind` one of `gene_name`, `synonym`, `ordered_locus`, `orf`; `gene` numbers the gene within the entry, since an entry can be encoded by several)
 
 ### properties.*
 - `properties.physchem.formula`

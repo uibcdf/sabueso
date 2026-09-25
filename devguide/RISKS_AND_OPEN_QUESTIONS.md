@@ -130,6 +130,14 @@
 - **Claims can hide structure** (#43): free text is easy to add and cannot be
   compared, so claims could pile up where a structured field should exist. Review the
   topics periodically, and promote a recurring topic to a field.
+- **Names are not identities.** UniProt's synonyms, abbreviations and gene names are
+  recorded per entry as that source states them. Short names are ambiguous across
+  proteins ("TIM" names both a triosephosphate isomerase and unrelated protein
+  families), and gene symbols repeat across organisms. No rule may join two entities,
+  or anchor a resolution, by a shared stated name. Resolution by name stays with the
+  source's search and the identity audit. Curated synonyms anchor only through a
+  curation store, and a name curated for two entries is ambiguous. If a view of shared
+  names across a deck is ever added, it must report the coincidences, never merge them.
 
 ## Open Questions
 - What are the default **selection rules** per field?

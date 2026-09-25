@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from sabueso.core.quantities import LENGTH_UNIT, quantity_node
 from sabueso.core.relationship_store import make_relationship
@@ -44,6 +44,9 @@ STATED_FIELDS = frozenset(
         "identifiers.uniprot",
         "identifiers.gene_loci",
         "names.canonical_name",
+        "names.synonyms",
+        "names.abbreviations",
+        "names.gene_names",
         "annotations.catalytic_activity",
         "annotations.subcellular_location",
         "annotations.disease",
@@ -65,6 +68,73 @@ STATED_PREDICATES = frozenset(
         "described_in",
     }
 )
+
+
+def _names(
+    description: Dict[str, Any], canonical: str | None
+) -> Tuple[List[tuple], List[tuple]]:
+    """Synonyms and abbreviations, as ``(item, eco)`` pairs, from a protein description.
+
+    - Synonyms (``{name, kind}``): the alternative names (``alternative_name``), and the
+      submitter's names beyond the one taken as canonical (``submission_name``).
+    - Abbreviations (``{name, of}``): the short names of the recommended and the
+      alternative names, with the full name each shortens.
+    Names are kept as UniProt states them; a name repeated with another case is kept
+    once.
+    """
+    synonyms: List[tuple] = []
+    abbreviations: List[tuple] = []
+    seen = {(canonical or "").casefold()}
+    short_seen: set = set()
+
+    def short_names(entry: Dict[str, Any]) -> None:
+        full = get_in(entry, ["fullName", "value"])
+        for short in entry.get("shortNames") or []:
+            value = short.get("value")
+            if value and value.casefold() not in short_seen:
+                short_seen.add(value.casefold())
+                item = {"name": value, "of": full} if full else {"name": value}
+                abbreviations.append((item, _eco(short.get("evidences"))))
+
+    def synonym(entry: Dict[str, Any], kind: str) -> None:
+        full = entry.get("fullName") or {}
+        value = full.get("value")
+        if value and value.casefold() not in seen:
+            seen.add(value.casefold())
+            synonyms.append(
+                ({"name": value, "kind": kind}, _eco(full.get("evidences")))
+            )
+
+    short_names(description.get("recommendedName") or {})
+    for entry in description.get("alternativeNames") or []:
+        synonym(entry, "alternative_name")
+        short_names(entry)
+    for entry in description.get("submissionNames") or []:
+        synonym(entry, "submission_name")
+    return synonyms, abbreviations
+
+
+#: UniProt's kinds of gene names, as ``names.gene_names`` states them.
+_GENE_NAME_KINDS = (
+    ("geneName", "gene_name"),
+    ("synonyms", "synonym"),
+    ("orderedLocusNames", "ordered_locus"),
+    ("orfNames", "orf"),
+)
+
+
+def _gene_names(genes: List[Dict[str, Any]] | None) -> List[tuple]:
+    """``({name, kind, gene}, eco)`` pairs; ``gene`` numbers the gene in the entry (an
+    entry can be encoded by several genes, each with its own synonyms)."""
+    out: List[tuple] = []
+    for index, gene in enumerate(genes or [], start=1):
+        for key, kind in _GENE_NAME_KINDS:
+            entries = gene.get(key)
+            for entry in [entries] if isinstance(entries, dict) else entries or []:
+                if entry and entry.get("value"):
+                    item = {"name": entry["value"], "kind": kind, "gene": index}
+                    out.append((item, _eco(entry.get("evidences"))))
+    return out
 
 
 def _eco(evidences: List[Dict[str, Any]] | None) -> List[Dict[str, str]]:
@@ -397,12 +467,21 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     if primary:
         fields["identifiers.uniprot"] = primary
         assert_value("identifiers.uniprot", primary)
-    name = get_in(
-        uniprot_json, ["proteinDescription", "recommendedName", "fullName", "value"]
-    )
+    description = uniprot_json.get("proteinDescription") or {}
+    recommended = description.get("recommendedName") or {}
+    name_metadata = None
+    if not recommended.get("fullName") and description.get("submissionNames"):
+        # An unreviewed entry may state only the name its submitter gave.
+        recommended = description["submissionNames"][0]
+        name_metadata = {"uniprot_name": "submission"}
+    name = get_in(recommended, ["fullName", "value"])
     if name:
         fields["names.canonical_name"] = name
-        assert_value("names.canonical_name", name)
+        assert_value("names.canonical_name", name, name_metadata)
+    synonyms, abbreviations = _names(description, name)
+    assert_list("names.synonyms", synonyms, fields)
+    assert_list("names.abbreviations", abbreviations, fields)
+    assert_list("names.gene_names", _gene_names(uniprot_json.get("genes")), fields)
 
     # comments
     comments = uniprot_json.get("comments", []) or []

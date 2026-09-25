@@ -449,11 +449,23 @@ def _is_database(assertion: Dict[str, Any]) -> bool:
     return (assertion.get("source") or {}).get("type") != "literature"
 
 
+#: Keys a source adds to its items to describe them, not to state them: an item that
+#: differs from another only in these is the same item (UniProt's synonym ``kind``).
+DESCRIPTOR_KEYS = {"names.synonyms": ("kind",)}
+
+
+def _stated(field_path: str, item: Any) -> str:
+    drop = DESCRIPTOR_KEYS.get(field_path, ())
+    if isinstance(item, dict) and drop:
+        item = {k: v for k, v in item.items() if k not in drop}
+    return _key(item)
+
+
 def _add_item(card, field_path, assertion, others) -> Dict[str, Any]:
     item = assertion_value(assertion)
     node = card.get(field_path) or {"value": [], "source_assertion_ids": []}
     items = list(node.get("value") or [])
-    if _key(item) not in {_key(i) for i in items}:
+    if _stated(field_path, item) not in {_stated(field_path, i) for i in items}:
         items.append(item)
     card.set(
         field_path,
@@ -467,7 +479,10 @@ def _add_item(card, field_path, assertion, others) -> Dict[str, Any]:
     if not same:
         return {"outcome": "new", "compared_with": []}
     compared = [a["id"] for a in same]
-    if any(_key(assertion_value(a)) == _key(item) for a in same):
+    if any(
+        _stated(field_path, assertion_value(a)) == _stated(field_path, item)
+        for a in same
+    ):
         return {"outcome": "corroborates", "compared_with": compared}
     card.quality.setdefault("conflicts", []).append(
         {
