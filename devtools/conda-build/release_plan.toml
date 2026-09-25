@@ -1,6 +1,6 @@
-version = "0.3.1"
+version = "0.4.0"
 route = "staged"
-reason = "A data-integrity fix (#64: stored forms were shared with the card, so a copy could change with the original and a snapshot could mix two states), AlphaFold isoform models (#65), and the first publication of card schema 0.3.3. Clean installed-package gates, Windows included, must pass before public visibility."
+reason = "New knowledge sources and views for a first real scientific use (NCBI Taxonomy #67; one measurement across ChEMBL, BindingDB and PubChem BioAssay #66 #68; honest migration and refresh of stored cards #51; typed free-text claims #43; UniProt synonyms, abbreviations and gene names; structural inventory; unique names of a deck), and the first publication of card schema 0.3.4. Clean installed-package gates, Windows included, must pass before public visibility."
 decision_by = "Diego Prada (Sabueso maintainer), 2026-09-25"
 required_workflows = [
   ".github/workflows/ci.yml",
