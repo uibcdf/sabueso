@@ -8,7 +8,7 @@ from typing import Any, Dict
 
 import yaml
 
-SCHEMA = Path("schemas/card_schema_0.3.1.yaml")
+SCHEMA = Path("schemas/card_schema_0.3.2.yaml")
 
 
 def _load_schema() -> Dict[str, Any]:

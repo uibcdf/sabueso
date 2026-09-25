@@ -10,7 +10,7 @@ from .quantities import field_node, quantity_columns, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
-CARD_SCHEMA_VERSION = "0.3.1"
+CARD_SCHEMA_VERSION = "0.3.2"
 
 
 def make_card_id(entity_type: str, subject_ref: str) -> str:
@@ -213,6 +213,8 @@ class Card:
         quote: str | None = None,
         eco_code: str | None = None,
         curated_at: str | None = None,
+        upper_value: Any = None,
+        uncertainty: Dict[str, Any] | None = None,
         skip_digestion: bool = False,
     ) -> Dict[str, Any]:
         """Record a bioactivity a publication reports, e.g. an IC50 read in a table.
@@ -224,6 +226,11 @@ class Card:
         ``target_assignment`` says whether it was measured on this protein ("direct") or
         an ortholog ("homology"). It is compared with ChEMBL's measurements of the same
         publication, never given priority. See ``sabueso.core.curation``.
+
+        A range ("10-20 uM") is ``value="10 uM", upper_value="20 uM"``. A stated
+        uncertainty is ``uncertainty={"kind": "sd", "value": "3 nM", "n": 3}`` (also
+        ``"sem"`` or ``"unspecified"`` for a bare "±"), or ``{"kind": "ci", "lower": ...,
+        "upper": ..., "level": 0.95}`` (#37).
         """
         from sabueso._private.smonitor.outcomes import report_curated_disagreement
 
@@ -243,6 +250,8 @@ class Card:
             quote=quote,
             eco_code=eco_code,
             curated_at=curated_at,
+            upper_value=upper_value,
+            uncertainty=uncertainty,
         )
         if record["outcome"] == "differs":
             report_curated_disagreement(self.id or "", record["field"], publication)

@@ -6,8 +6,8 @@ This module reads them. The activity class of a measurement ("active", "weak", .
 test concentration of a single-point measurement are derived knowledge. They are computed
 here, from the stated rule and thresholds, and never stored as SourceAssertions.
 
-Rule ``bioactivity_class@2`` (the classes of ``@1``; thresholds and concentrations are
-now quantities, uibcdf/sabueso#32):
+Rule ``bioactivity_class@3`` (``@2`` made thresholds and concentrations quantities,
+uibcdf/sabueso#32; ``@3`` classifies ranges, #37):
 
 - a potency measure (IC50, Ki, Kd, ...) with relation ``=`` is "active" up to
   ``active_max``, "weak" up to ``weak_max`` and "inactive" beyond;
@@ -15,6 +15,10 @@ now quantities, uibcdf/sabueso#32):
   and "inconclusive" otherwise;
 - a lower bound (``>``, ``>=``) is "inactive" when it reaches ``weak_max``, and
   "inconclusive" otherwise;
+- a range (ChEMBL ``standard_upper_value``, or a range read in a paper) takes the class
+  of its band when both ends fall in the same one, and is "inconclusive" when it spans
+  a threshold. Treating it as its lower end would read a range as an exact potency;
+- a stated uncertainty does not change the class, which is read from the central value;
 - a single-point % inhibition reads as an IC50 bound: an inhibition of at least
   ``single_point_min`` at concentration c means IC50 <= c, and less than that means
   IC50 > c. This assumes a standard dose response. c comes from the assay
@@ -64,7 +68,7 @@ from .quantities import (
     to_quantity,
 )
 
-BIOACTIVITY_CLASS_RULE = "bioactivity_class@2"
+BIOACTIVITY_CLASS_RULE = "bioactivity_class@3"
 PCHEMBL_RULE = "pchembl_consistency@1"
 SCALE_RULE = "unit_scale_discrepancy@1"
 #: ChEMBL states pChEMBL with two decimals; the tolerance is one unit of the last one.
@@ -220,11 +224,25 @@ def classify_measurement(
         )
         if node is None or node["unit"] != CONCENTRATION_UNIT:
             return {"class": "inconclusive", "basis": "unknown_units"}
+        if is_range(measurement):
+            upper = upper_node(measurement)
+            if upper is None or upper["unit"] != CONCENTRATION_UNIT:
+                return {"class": "inconclusive", "basis": "unknown_units"}
+            if relation not in ("=", "~"):
+                return {"class": "inconclusive", "basis": "potency_range"}
+            low = _band(float(node["value"]), t)
+            high = _band(float(upper["value"]), t)
+            return {
+                "class": low if low == high else "inconclusive",
+                "basis": "potency_range",
+            }
         return {
             "class": _bounded(relation, float(node["value"]), t),
             "basis": "potency",
         }
     if kind in SINGLE_POINT_TYPES and measurement.get("units") == "%":
+        if is_range(measurement):
+            return {"class": "inconclusive", "basis": "single_point_range"}
         concentration = single_point_concentration(assay_description)
         if concentration is None:
             return {"class": "inconclusive", "basis": "single_point_no_concentration"}
@@ -255,6 +273,8 @@ def bioactivity_derivation(thresholds: Dict[str, Any] | None = None) -> Dict[str
             "potency_types": sorted(POTENCY_TYPES),
             "single_point_types": sorted(SINGLE_POINT_TYPES),
             "test_concentration": "assay description text",
+            "ranges": "both ends in one band: that band; across a threshold: inconclusive",
+            "uncertainty": "not used; the class is read from the central value",
         },
     )
 
@@ -273,6 +293,32 @@ def _flags(q: Dict[str, Any]) -> List[str]:
     if assay.get("variant_mutation"):
         flags.append(f"variant:{assay['variant_mutation']}")
     return flags
+
+
+def is_range(m: Dict[str, Any]) -> bool:
+    """Whether a measurement is stated as a range (it has an upper end)."""
+    return m.get("upper_value") is not None or bool(m.get("normalized_upper"))
+
+
+def upper_node(m: Dict[str, Any]) -> Dict[str, Any] | None:
+    """The normalized upper end of a range, from the card or the explicit vocabulary.
+
+    Cards written before schema 0.3.2 keep ChEMBL's upper value only verbatim.
+    """
+    if m.get("normalized_upper"):
+        return m["normalized_upper"]
+    return normalized_measurement(m.get("upper_value"), m.get("units"))
+
+
+def _uncertainty(m: Dict[str, Any]) -> Dict[str, Any] | None:
+    """A stated uncertainty with PyUnitWizard quantities, or None."""
+    node = m.get("normalized_uncertainty")
+    if not node:
+        return None
+    return {
+        key: to_quantity(value) if is_quantity_node(value) else value
+        for key, value in node.items()
+    }
 
 
 def _potency_node(m: Dict[str, Any]) -> Dict[str, Any] | None:
@@ -394,7 +440,13 @@ def bioactivities_view(
         derived = classify_measurement(m, assay.get("description"), thresholds)
         node = _potency_node(m)
         flags = _flags(q)
-        if pchembl_consistent(m.get("pchembl"), node, m.get("relation")) is False:
+        ranged = is_range(m)
+        upper = upper_node(m) if ranged else None
+        # A range has no single potency: no pChEMBL check, no scale comparison.
+        if (
+            not ranged
+            and pchembl_consistent(m.get("pchembl"), node, m.get("relation")) is False
+        ):
             flags.append("pchembl_inconsistent")
         measurement = {
             "relationship_id": rel["id"],
@@ -405,6 +457,8 @@ def bioactivities_view(
             "value": m.get("value"),
             "units": m.get("units"),
             "normalized": to_quantity(node) if node else None,
+            "normalized_upper": to_quantity(upper) if upper else None,
+            "uncertainty": _uncertainty(m),
             "pchembl": m.get("pchembl"),
             **derived,
             "assay": assay.get("id"),
@@ -436,7 +490,9 @@ def bioactivities_view(
             entry["smiles"] = _stated_smiles(card, rel) or entry["smiles"]
         entry["measurements"].append(measurement)
         entry["potencies"].append(
-            node["value"] if node and node["unit"] == CONCENTRATION_UNIT else None
+            node["value"]
+            if node and node["unit"] == CONCENTRATION_UNIT and not ranged
+            else None
         )
 
     items = []

@@ -1,0 +1,396 @@
+schema:
+  name: sabueso-card
+  version: 0.3.2
+  created_at: 2026-02-10
+  updated_at: 2026-09-25
+  note: Formal draft aligned with devguide/FIELD_PATHS.md; enforcement via code later.
+    0.2.0 renames evidence_ids to source_assertion_ids (SourceAssertion terminology) and
+    adds meta.card_id / meta.schema_version (stable card identity). Structured
+    catalytic_activity / subcellular_location values and sequence.length /
+    molecular_weight (Da) / checksums added before any release (uibcdf/sabueso#13).
+    structure.entry_metadata.* was removed because structures are has_structure
+    relationships shown through Card.structures() (uibcdf/sabueso#6, uibcdf/sabueso#21).
+    annotations.go_terms was removed because GO annotations are annotated_with
+    relationships (uibcdf/sabueso#21). annotations.domains stays reserved (not produced), since domain
+    classifications are classified_in relationships. interactions.binding_partners was
+    removed because interactions are interacts_with (physical, IntAct) and
+    functionally_associated_with (STRING) relationships (uibcdf/sabueso#21). Measured
+    bioactivities are has_bioactivity relationships (uibcdf/sabueso#23). ligands.items
+    was removed because ligands are has_bioactivity and has_structure relationships
+    read through Card.ligands() with a deck of small-molecule cards
+    (uibcdf/sabueso#25), and a role such as inhibitor is a derived class, never
+    asserted.
+    0.3.0 stores every physical quantity as a node with its unit (uibcdf/sabueso#32);
+    section fields that are quantities carry `unit` (canonical PyUnitWizard name), the
+    has_structure qualifier resolution_angstrom became resolution {value, unit}, contact
+    min_distance_angstrom became min_distance {value, unit}, has_bioactivity
+    measurements gain normalized {value, unit} (nanomolar or percent), and every stored
+    card carries `quantities`, a PyUnitWizard QuantityRecordBundle that seals all
+    quantity nodes as columns and is verified on load.
+    0.3.1 adds annotations.disease (UniProt DISEASE comments, uibcdf/sabueso#39). The
+    change is additive, so a 0.3.0 card is a valid 0.3.1 card without the field.
+    0.3.2 adds two optional has_bioactivity measurement qualifiers (uibcdf/sabueso#37).
+    normalized_upper {value, unit} is the upper end of a range (ChEMBL
+    standard_upper_value, or a range read in a paper). normalized_uncertainty is an
+    uncertainty a publication states (kind sd, sem, unspecified or ci; half_width, or
+    lower and upper, as {value, unit} in the measurement's normalized unit; level; n).
+    Both are negotiated quantity paths. The change is additive, so a 0.3.1 card is a
+    valid 0.3.2 card without them.
+card_base:
+  meta:
+    card_id:
+      value: string
+      source_assertion_ids:
+      - string
+    schema_version:
+      value: string
+      source_assertion_ids:
+      - string
+    entity_type:
+      value: "enum[protein, peptide, small_molecule]"
+      source_assertion_ids:
+      - string
+    created_at:
+      value: date
+      source_assertion_ids:
+      - string
+    updated_at:
+      value: date
+      source_assertion_ids:
+      - string
+    sources:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+  identifiers:
+    uniprot:
+      value: string
+      source_assertion_ids:
+      - string
+    pdb:
+      value: string
+      source_assertion_ids:
+      - string
+    chembl:
+      value: string
+      source_assertion_ids:
+      - string
+    pubchem:
+      value: string
+      source_assertion_ids:
+      - string
+    drugbank:
+      value: string
+      source_assertion_ids:
+      - string
+    inchi:
+      value: string
+      source_assertion_ids:
+      - string
+    inchikey:
+      value: string
+      source_assertion_ids:
+      - string
+    smiles:
+      value: string
+      source_assertion_ids:
+      - string
+    smiles_connectivity:
+      value: string
+      source_assertion_ids:
+      - string
+    other:
+      value: any
+      source_assertion_ids:
+      - string
+  names:
+    canonical_name:
+      value: string
+      source_assertion_ids:
+      - string
+    synonyms:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    abbreviations:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+  properties:
+    physchem:
+      formula:
+        value: string
+        source_assertion_ids:
+        - string
+      molecular_weight:
+        value: number
+        unit: string
+        source_assertion_ids:
+        - string
+      logp:
+        value: number
+        source_assertion_ids:
+        - string
+      tpsa:
+        value: number
+        unit: string
+        source_assertion_ids:
+        - string
+      hbd:
+        value: number
+        source_assertion_ids:
+        - string
+      hba:
+        value: number
+        source_assertion_ids:
+        - string
+      rotatable_bonds:
+        value: number
+        source_assertion_ids:
+        - string
+      aromatic_rings:
+        value: number
+        source_assertion_ids:
+        - string
+      molecule_type:
+        value: string
+        source_assertion_ids:
+        - string
+  annotations:
+    function:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    catalytic_activity:
+      value:
+      - reaction: string
+        ec_number: string
+        rhea_id: string
+        molecule: string
+      source_assertion_ids:
+      - string
+    pathway:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    subunit:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    subcellular_location:
+      value:
+      - location: string
+        topology: string
+        orientation: string
+        molecule: string
+      source_assertion_ids:
+      - string
+    disease:
+      value:
+      - name: string
+        accession: string
+        acronym: string
+        description: string
+        cross_references:
+        - database: string
+          id: string
+        note: string
+      source_assertion_ids:
+      - string
+    tissue_specificity:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    organism:
+      value: string
+      source_assertion_ids:
+      - string
+    ptm:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    polymorphism:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    domains:
+      value:
+      - id: string
+        name: string
+      source_assertion_ids:
+      - string
+  features_positional:
+    domains:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    active_site:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    binding_site:
+      value:
+      - location: any
+        description: string
+        ligand:
+          name: string
+          id: string
+          label: string
+          note: string
+      source_assertion_ids:
+      - string
+    modified_residue:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    disulfide_bond:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    natural_variant:
+      value:
+      - location: any
+        description: string
+        substitution:
+          original: string
+          alternatives:
+          - string
+        feature_id: string
+        cross_references:
+        - database: string
+          id: string
+      source_assertion_ids:
+      - string
+    mutagenesis:
+      value:
+      - location: any
+        description: string
+        substitution:
+          original: string
+          alternatives:
+          - string
+      source_assertion_ids:
+      - string
+    family_site:
+      value:
+      - location: any
+        description: string
+        signature:
+          accession: string
+          source_database: string
+          name: string
+      source_assertion_ids:
+      - string
+    glycosylation:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+  clinical: "*"
+  # quality holds records of how the card was resolved and enriched, not fields stated by
+  # a source, so its entries are not value/source_assertion_ids nodes (uibcdf/sabueso#10).
+  # Shapes: devguide/SCHEMA.md, "Quality records".
+  quality: "*"
+  # The seal over every quantity node of the card, written by Card.to_dict() and verified
+  # by Card.from_dict(): a PyUnitWizard QuantityRecordBundle (qrec-bundle/0.3) whose
+  # entries are columns "<path template>|<unit>" (uibcdf/sabueso#32).
+  quantities: "*"
+protein_card:
+  inherits: card_base
+  annotations:
+    enzyme_class:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    family:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    similar_proteins:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    isoforms:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+  disease:
+    associations:
+      value:
+      - disease_id: string
+        name: string
+        source: string
+      source_assertion_ids:
+      - string
+  sequence:
+    primary:
+      value: string
+      source_assertion_ids:
+      - string
+    length:
+      value: number
+      source_assertion_ids:
+      - string
+    molecular_weight:
+      value: number
+      unit: string
+      source_assertion_ids:
+      - string
+    checksums:
+      value:
+        crc64: string
+        md5: string
+      source_assertion_ids:
+      - string
+  structure:
+    primary:
+      value: any
+      source_assertion_ids:
+      - string
+    secondary_structure:
+      value: any
+      source_assertion_ids:
+      - string
+    chains:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    entities:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+peptide_card:
+  inherits: protein_card
+  note: Peptide cards may omit structure.* if not available.
+small_molecule_card:
+  inherits: card_base
+  annotations:
+    drug_class:
+      value:
+      - string
+      source_assertion_ids:
+      - string

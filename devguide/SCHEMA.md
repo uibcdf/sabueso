@@ -4,7 +4,7 @@
 The frozen draft schema lives at:
 - `schemas/card_schema.yaml`
 The formal schema (versioned) lives at:
-- `schemas/card_schema_0.3.1.yaml` (current; `card_schema_0.3.0.yaml`, the schema of releases 0.1.0 and 0.1.1, and `card_schema_0.2.0.yaml` are kept as history)
+- `schemas/card_schema_0.3.2.yaml` (current; `card_schema_0.3.1.yaml`, the schema of release 0.2.0, `card_schema_0.3.0.yaml`, the schema of releases 0.1.0 and 0.1.1, and `card_schema_0.2.0.yaml` are kept as history)
 
 This is a **conceptual** schema meant to be refined into formal validation later.
 
@@ -97,7 +97,7 @@ built by the aggregator therefore carries:
   `sabueso:protein:uniprot:P52789`, taken from the subject of the primary identifier
   assertion (`identifiers.uniprot`, then `chembl`, `pubchem`, `pdb`) unless given
   explicitly;
-- `meta.schema_version`: card schema version (`0.3.1`). Until a formal policy is agreed
+- `meta.schema_version`: card schema version (`0.3.2`). Until a formal policy is agreed
   (#42), an additive optional field bumps the patch number, and a change to existing
   fields bumps the minor number.
 
@@ -211,7 +211,7 @@ A Relationship is first-class, traceable knowledge:
     - Support: the verbatim activity record (`relationships.has_bioactivity`) and the
       assay record (`relationships.has_bioactivity.assay`). The assay record is stated
       once per assay and shared by that assay's activities.
-    - Activity classes are derived by `Card.bioactivities()` (`bioactivity_class@2`), and
+    - Activity classes are derived by `Card.bioactivities()` (`bioactivity_class@3`), and
       only there.
   - ligand sites (added in #28):
     - `has_ligand_site` (protein → `pdb.ligand:<code>`), one relationship per
@@ -357,6 +357,19 @@ A Relationship is first-class, traceable knowledge:
   (`angstrom`); `has_bioactivity.measurement.normalized` (`nanomolar` for concentrations,
   `percent` for percentages, `null` when the source unit cannot be normalized). The
   measurement's `value` and `units` stay as ChEMBL states them.
+- Ranges and uncertainty (#37, schema 0.3.2):
+  - a range keeps its upper end verbatim (`upper_value`, in `units`) and normalized
+    (`normalized_upper`, same units as `normalized`). The normalized key exists only
+    for ranges;
+  - an uncertainty a publication states is `normalized_uncertainty`: `kind` (`sd`, `sem`,
+    `unspecified` for a bare "±", or `ci`), then `half_width`, or `lower` and `upper`, as
+    nodes in the measurement's normalized unit, and optional `level` (a fraction, for
+    `ci`) and `n` (replicates). As written, it lives in the curated SourceAssertion.
+    No database source Sabueso maps states an uncertainty, so today only curated
+    measurements have one;
+  - a range is classified by its band when both ends share one, and is `inconclusive`
+    across a threshold (`bioactivity_class@3`). The uncertainty does not change the
+    class. Ranges take no pChEMBL check and no scale comparison.
 - `Card.to_dict()` writes `quantities`: one PyUnitWizard `QuantityRecordBundle` whose
   entries are columns `"<path template>|<unit>"`. `Card.from_dict()`, and therefore every
   loader, verifies the bundle and checks every node against its column. A change made
@@ -436,7 +449,7 @@ They are relationships of the protein:
 
 `Card.ligands(deck)` crosses them with a deck of SmallMoleculeCards anchored at the
 InChIKey (`ligand_deck`). A role such as "inhibitor" is a derived activity class
-(`bioactivity_class@2`), never an asserted attribute. The mechanism ChEMBL curates, when
+(`bioactivity_class@3`), never an asserted attribute. The mechanism ChEMBL curates, when
 present, is its `action_type`, kept in the measurement qualifiers.
 
 ## Clinical Layer (Small Molecules)

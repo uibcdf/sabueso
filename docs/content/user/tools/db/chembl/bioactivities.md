@@ -17,7 +17,7 @@ for item in view["items"][:5]:
     print(item["molecule_ref"], item["class"], item["best_pchembl"], item["classes"])
 print(view["documents"])  # measurements per document: source bias is visible
 print(view["excluded"])  # e.g. assays assigned to the target by homology
-print(view["classification"])  # rule bioactivity_class@2 and its thresholds
+print(view["classification"])  # rule bioactivity_class@3 and its thresholds
 ```
 
 The classes (`active`, `weak`, `inactive`, `inconclusive`, `not_determined`,

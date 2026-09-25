@@ -91,7 +91,7 @@ def test_every_activity_record_is_a_supported_relationship(resolver):
 def test_derived_classes_follow_the_stated_rule(resolver):
     view = _card(resolver, TCTIM).bioactivities()
     rule = view["classification"]
-    assert rule["rule"] == "bioactivity_class@2"
+    assert rule["rule"] == "bioactivity_class@3"
     # Thresholds are recorded as quantities, never as numbers named after a unit (#32).
     assert rule["parameters"]["active_max"] == {"value": 10.0, "unit": "micromolar"}
     assert rule["parameters"]["weak_max"] == {"value": 100.0, "unit": "micromolar"}

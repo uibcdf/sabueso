@@ -80,6 +80,14 @@ def _records_of(card: Any) -> List[Dict[str, Any]]:
                 target_assignment=stated["target_assignment"],
                 assay_description=stated.get("assay_description"),
             )
+            # A range and a stated uncertainty, as written (#37); absent otherwise, so
+            # records of plain values are unchanged.
+            for key, stored in (
+                ("upper", "upper_value"),
+                ("uncertainty", "uncertainty"),
+            ):
+                if measurement.get(key) is not None:
+                    record[stored] = measurement[key]
         elif field_path.startswith("relationships."):
             record.update(
                 kind="relationship",
@@ -210,6 +218,8 @@ class CurationStore:
                     target_assignment=record["target_assignment"],
                     relation=record["relation"],
                     assay_description=record.get("assay_description"),
+                    upper_value=record.get("upper_value"),
+                    uncertainty=record.get("uncertainty"),
                     **common,
                 )
             elif record["kind"] == "relationship":

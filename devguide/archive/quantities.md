@@ -254,7 +254,8 @@ Possible future problems (recorded):
 
 - A new quantity path must be added to `NEGOTIATED_UNITS`, or cards containing it cannot
   be written. That failure is loud and intended.
-- Ranges and uncertainty: #37.
+- Ranges and uncertainty: #37, resolved on 2026-09-25 (card schema 0.3.2; see
+  `devguide/DECISIONS.md`, "Ranges and stated uncertainty").
 - `scale_discrepancy` only sees exact ratios. A slip combined with rounding by the
   source (26 µM restated as 26000.5 nM) would pass unflagged.
 - pChEMBL's tolerance assumes ChEMBL keeps stating two decimals. A change in its

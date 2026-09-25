@@ -46,6 +46,19 @@ NEGOTIATED_UNITS: Dict[str, Tuple[str, ...]] = {
         CONCENTRATION_UNIT,
         "percent",
     ),
+    # A range: the upper end, normalized like the lower one (#37, schema 0.3.2).
+    "relationships.has_bioactivity.measurement.normalized_upper": (
+        CONCENTRATION_UNIT,
+        "percent",
+    ),
+    # An uncertainty a publication states, in the measurement's normalized unit (#37).
+    **{
+        f"relationships.has_bioactivity.measurement.normalized_uncertainty.{part}": (
+            CONCENTRATION_UNIT,
+            "percent",
+        )
+        for part in ("half_width", "lower", "upper")
+    },
 }
 
 #: ChEMBL ``standard_units`` spellings Sabueso normalizes, and to what. Source strings are

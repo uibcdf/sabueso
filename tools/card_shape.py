@@ -127,6 +127,31 @@ def fixture_cards() -> List[dict]:
             "direct",
             assay_description="shape",
         )
+        hstim.add_literature_bioactivity(
+            {"inchikey": "XBNHRNFODJOFRU-UHFFFAOYSA-N", "records": ["chembl:CHEMBL1"]},
+            "Ki",
+            "10 uM",
+            "pubmed:1",
+            "shape",
+            "direct",
+            upper_value="20 uM",
+            uncertainty={
+                "kind": "ci",
+                "lower": "8 uM",
+                "upper": "12 uM",
+                "level": 0.95,
+                "n": 3,
+            },
+        )
+        hstim.add_literature_bioactivity(
+            {"inchikey": "XBNHRNFODJOFRU-UHFFFAOYSA-N", "records": ["chembl:CHEMBL1"]},
+            "Kd",
+            "12 nM",
+            "pubmed:1",
+            "shape",
+            "direct",
+            uncertainty={"kind": "sd", "value": "3 nM"},
+        )
         molecule, _ = sabueso.resolve(
             "pdb.ligand:BTS",
             chembl_client=chembl,

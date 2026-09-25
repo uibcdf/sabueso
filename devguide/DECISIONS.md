@@ -334,3 +334,23 @@ uibcdf/sabueso#7 and #27. The design is recorded in
   stay as they are. `KnowledgeStore.import_card_table` turns their rows into history.
 - **The store's tables are Sabueso's implementation.** Other components rely on the
   reference forms, not on the tables.
+
+## Ranges and stated uncertainty (2026-09-25)
+uibcdf/sabueso#37; card schema 0.3.2; rule `bioactivity_class@3`.
+- **A range keeps both ends,** verbatim and normalized: `upper_value` and
+  `normalized_upper`. It is classified by its band when both ends share one, and is
+  `inconclusive` across a threshold. A range is never read as its lower end, and takes
+  no pChEMBL check and no scale comparison.
+- **ChEMBL_37 states no range.** `standard_upper_value` is null in all 24,527,044
+  activities (checked through the API on 2026-09-25). The ChEMBL path is kept for
+  fidelity, guarded by a constructed record. Ranges read in papers are the case that
+  occurs.
+- **Uncertainty is Sabueso's representation,** since PyUnitWizard defines none.
+  `normalized_uncertainty` is `{kind, half_width | lower, upper, level?, n?}`, with
+  quantity nodes in the measurement's normalized unit. The kinds are `sd`, `sem`,
+  `unspecified` (a bare "±") and `ci`. As written, it is part of the curated statement
+  and of its id. No database Sabueso maps states an uncertainty.
+- **Uncertainty changes neither the class nor agreement.** The class is read from the
+  central value. A curated value agrees with ChEMBL's reading of the same paper when
+  the numbers agree at their stated precision: agreement is about transcription, not
+  about the spread of the measurement. A point and a range never agree.

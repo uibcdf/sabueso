@@ -160,6 +160,11 @@ This file records the current repository baseline so new developers can resume e
   shared SourceAssertion and relationship rows, decks, and pinned reads that never fall
   back to the latest state (#27). See `devguide/STORAGE_LAYOUT.md`.
 
+## Ranges and Uncertainty (2026-09-25)
+- Card schema 0.3.2 adds `normalized_upper` and `normalized_uncertainty` to
+  `has_bioactivity` measurements, and `bioactivity_class@3` classifies ranges (#37).
+  Curators state ranges and uncertainties through `add_literature_bioactivity`.
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

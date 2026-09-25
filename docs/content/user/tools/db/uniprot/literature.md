@@ -66,8 +66,8 @@ print(record["outcome"])  # new, corroborates, differs, not_comparable or not_co
 - **Relationships.** `card.add_literature_relationship(predicate, object_ref,
   qualifiers, publication=..., curator=...)` records an interaction, the residues at an
   interface, and so on. It merges with the same relationship from other sources, and
-  qualifiers stated differently are kept as conflicts and flagged. Curated bioactivity
-  measurements are not supported yet (uibcdf/sabueso#44).
+  qualifiers stated differently are kept as conflicts and flagged. Bioactivity
+  measurements have their own method, below.
 - **Bioactivities read in a paper.** `card.add_literature_bioactivity(molecule,
   "IC50", "33 uM", publication=..., curator=..., target_assignment="direct")`.
   - The molecule can be a small-molecule card, an identifier (`chembl:`, `pubchem:`,
@@ -78,6 +78,15 @@ print(record["outcome"])  # new, corroborates, differs, not_comparable or not_co
   - Curated measurements appear in `card.bioactivities()`, marked `curated`.
     `target_assignment="homology"` (measured on an ortholog) is left out by default, as
     ChEMBL's homology assignments are.
+  - A range is `value="10 uM", upper_value="20 uM"`. It is classified by its band when
+    both ends share one, and as inconclusive when it spans a threshold.
+  - An uncertainty the paper states goes in `uncertainty`:
+    `{"kind": "sd", "value": "3 nM", "n": 3}` (also `"sem"`, or `"unspecified"` for a
+    bare "±"), or `{"kind": "ci", "lower": "8 nM", "upper": "18 nM", "level": 0.95}`.
+    It is part of the statement and appears in `card.bioactivities()` and the table.
+    It does not change the class, which is read from the value itself. It does not change
+    the comparison with ChEMBL either: both read the same paper, so they should state
+    the same number.
 - **Where it shows.** `card.literature()` lists each publication's curated assertions
   with their outcome.
 - **Scope.** How a statement bears on a project's hypotheses is not Sabueso's: that is

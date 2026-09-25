@@ -33,7 +33,7 @@ from datetime import datetime, timezone
 from typing import Any, Callable, Dict, List, Tuple
 
 from .errors import SchemaError
-from .quantities import FIELD_UNITS, converted, is_quantity_node
+from .quantities import FIELD_UNITS, canonical_unit, converted, is_quantity_node
 from .source_assertion_store import (
     assertion_value,
     generate_source_assertion_id,
@@ -563,6 +563,10 @@ def add_literature_relationship(
 # --- Curated bioactivity measurements (uibcdf/sabueso#44) ------------------------------
 
 RELATIONS = ("=", "<", "<=", ">", ">=", "~")
+#: How a publication states an uncertainty (#37). ``sd``, ``sem`` and ``unspecified``
+#: (a bare "±") give a half-width; ``ci`` gives the interval's ends and its level.
+HALF_WIDTH_KINDS = ("sd", "sem", "unspecified")
+UNCERTAINTY_KINDS = (*HALF_WIDTH_KINDS, "ci")
 TARGET_ASSIGNMENTS = {"direct": "D", "homology": "H"}
 _NUMBER_AND_UNIT = re.compile(r"\s*([-+]?(?:\d+(?:\.\d*)?|\.\d+))\s*(.*?)\s*$")
 
@@ -662,10 +666,113 @@ def _measured(value: Any) -> Tuple[Dict[str, Any], Dict[str, Any], int | None]:
     )
 
 
+def _unit_of(written: Dict[str, Any]) -> str:
+    unit = written["unit"].strip()
+    return canonical_unit("percent" if unit in ("%", "percent") else unit)
+
+
+def _written_only(written: Dict[str, Any]) -> Dict[str, Any]:
+    return {"value": written["value"], "unit": written["unit"]}
+
+
+def _uncertainty(
+    uncertainty: Dict[str, Any], normalized: Dict[str, Any]
+) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+    """``(as written, normalized)`` of a stated uncertainty, checked against the value.
+
+    The normalized parts are quantity nodes in the measurement's normalized unit.
+    """
+    if not isinstance(uncertainty, dict):
+        raise SchemaError(
+            "An uncertainty is a dict such as {'kind': 'sd', 'value': '3 nM'} or "
+            "{'kind': 'ci', 'lower': '8 nM', 'upper': '18 nM', 'level': 0.95}."
+        )
+    kind = uncertainty.get("kind")
+    if kind not in UNCERTAINTY_KINDS:
+        raise SchemaError(
+            f"Unknown uncertainty kind {kind!r}; expected one of {list(UNCERTAINTY_KINDS)}."
+        )
+    parts = ("value",) if kind in HALF_WIDTH_KINDS else ("lower", "upper")
+    allowed = {"kind", *parts, "n", *(("level",) if kind == "ci" else ())}
+    unknown = sorted(set(uncertainty) - allowed)
+    if unknown or any(uncertainty.get(part) is None for part in parts):
+        raise SchemaError(
+            f"A {kind} uncertainty takes {sorted(allowed)}; got {sorted(uncertainty)}."
+        )
+    written: Dict[str, Any] = {"kind": kind}
+    stored: Dict[str, Any] = {"kind": kind}
+    for part in parts:
+        as_written, node, _ = _measured(uncertainty[part])
+        if node["unit"] != normalized["unit"]:
+            raise SchemaError(
+                f"The uncertainty ({as_written['unit']}) and the value "
+                f"({normalized['unit']}) are not the same kind of quantity."
+            )
+        written[part] = _written_only(as_written)
+        stored["half_width" if part == "value" else part] = node
+    if kind in HALF_WIDTH_KINDS and stored["half_width"]["value"] < 0:
+        raise SchemaError("An uncertainty's half-width cannot be negative.")
+    if kind == "ci":
+        low, high = stored["lower"]["value"], stored["upper"]["value"]
+        if not low <= normalized["value"] <= high:
+            raise SchemaError(
+                "A confidence interval must contain the value it is stated for."
+            )
+        level = uncertainty.get("level")
+        if level is not None and not (
+            isinstance(level, (int, float))
+            and not isinstance(level, bool)
+            and 0 < level < 1
+        ):
+            raise SchemaError(
+                f"A confidence level is a fraction, e.g. 0.95, not {level!r}."
+            )
+        if level is not None:
+            written["level"] = stored["level"] = level
+    n = uncertainty.get("n")
+    if n is not None:
+        if not isinstance(n, int) or isinstance(n, bool) or n < 1:
+            raise SchemaError(f"n is a number of replicates, not {n!r}.")
+        written["n"] = stored["n"] = n
+    return written, stored
+
+
 def _agrees(a: float, b: float, decimals: int | None) -> bool:
     if decimals is None:
         return math.isclose(a, b, rel_tol=1e-9)
     return abs(a - b) <= 0.5 * 10.0**-decimals + 1e-9
+
+
+def _same_measurement(
+    rel: Dict[str, Any],
+    relation: str,
+    normalized: Dict[str, Any],
+    decimals: int | None,
+    upper: Tuple[Dict[str, Any], Dict[str, Any], int | None] | None,
+) -> bool:
+    """Whether a ChEMBL measurement states what the curator read, at its precision.
+
+    A point and a range never agree: ChEMBL recording one end of a range reported in
+    the paper, or a range where the paper gives a value, is a difference (#37). A stated
+    uncertainty plays no part: both are readings of the same publication, and agreement
+    is about the number reported, not about the spread of the measurement.
+    """
+    from .bioactivities import is_range, upper_node
+
+    m = rel["qualifiers"]["measurement"]
+    node = m.get("normalized") or {}
+    if (m.get("relation") or "=") != relation or node.get("unit") != normalized["unit"]:
+        return False
+    if not _agrees(float(node["value"]), float(normalized["value"]), decimals):
+        return False
+    if is_range(m) != (upper is not None):
+        return False
+    if upper is None:
+        return True
+    theirs = upper_node(m) or {}
+    return theirs.get("unit") == upper[1]["unit"] and _agrees(
+        float(theirs["value"]), float(upper[1]["value"]), upper[2]
+    )
 
 
 def add_literature_bioactivity(
@@ -682,8 +789,14 @@ def add_literature_bioactivity(
     quote: str | None = None,
     eco_code: str | None = None,
     curated_at: str | None = None,
+    upper_value: Any = None,
+    uncertainty: Dict[str, Any] | None = None,
 ) -> Dict[str, Any]:
     """Record a bioactivity a publication reports, and compare it with ChEMBL.
+
+    ``upper_value`` makes the measurement a range, from ``value`` to ``upper_value``,
+    written in the same unit. ``uncertainty`` is what the paper states around the value
+    (see ``UNCERTAINTY_KINDS``). Both are part of the statement, and so of its id (#37).
 
     The measurement becomes a ``has_bioactivity`` relationship of its own (its
     ``activity_id`` is ``curated:<digest>``), carrying the molecule's identity. It is
@@ -698,6 +811,24 @@ def add_literature_bioactivity(
     curated_at = curated_at or datetime.now(timezone.utc).date().isoformat()
     identity = molecule_identity(molecule)
     written, normalized, decimals = _measured(value)
+    upper = None
+    if upper_value is not None:
+        if relation not in ("=", "~"):
+            raise SchemaError(
+                f"A range states both of its ends; relation {relation!r} does not apply."
+            )
+        upper = _measured(upper_value)
+        written_upper, normalized_upper, _ = upper
+        if _unit_of(written_upper) != _unit_of(written):
+            raise SchemaError(
+                "Both ends of a range are written in the same unit "
+                f"({written['unit']} and {written_upper['unit']})."
+            )
+        if normalized_upper["value"] < normalized["value"]:
+            raise SchemaError("A range's upper end cannot be below its lower end.")
+    written_uncertainty = stored_uncertainty = None
+    if uncertainty is not None:
+        written_uncertainty, stored_uncertainty = _uncertainty(uncertainty, normalized)
     # What the curator states: the molecule as given and its InChIKey. The records
     # UniChem links belong to the card's glossary, not to the statement (#52).
     asserted = {
@@ -705,7 +836,13 @@ def add_literature_bioactivity(
             "inchikey": identity["inchikey"],
             "as_given": identity["as_given"],
         },
-        "measurement": {"type": measurement_type, "relation": relation, **written},
+        "measurement": {
+            "type": measurement_type,
+            "relation": relation,
+            **written,
+            **({"upper": _written_only(upper[0])} if upper else {}),
+            **({"uncertainty": written_uncertainty} if written_uncertainty else {}),
+        },
         "target_assignment": target_assignment,
         "assay_description": assay_description,
     }
@@ -771,6 +908,19 @@ def add_literature_bioactivity(
                 "value": float(written["value"]),
                 "units": written["unit"],
                 "normalized": normalized,
+                **(
+                    {
+                        "upper_value": float(upper[0]["value"]),
+                        "normalized_upper": upper[1],
+                    }
+                    if upper
+                    else {}
+                ),
+                **(
+                    {"normalized_uncertainty": stored_uncertainty}
+                    if stored_uncertainty
+                    else {}
+                ),
                 "pchembl": None,
                 "curated": True,
             },
@@ -810,14 +960,7 @@ def add_literature_bioactivity(
     agreeing = [
         rel
         for rel in same
-        if ((rel["qualifiers"]["measurement"].get("relation") or "=") == relation)
-        and (rel["qualifiers"]["measurement"].get("normalized") or {}).get("unit")
-        == normalized["unit"]
-        and _agrees(
-            float(rel["qualifiers"]["measurement"]["normalized"]["value"]),
-            float(normalized["value"]),
-            decimals,
-        )
+        if _same_measurement(rel, relation, normalized, decimals, upper)
     ]
     card.source_assertion_store.add(assertion)
     card.relationship_store.add(relationship)

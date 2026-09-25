@@ -145,7 +145,7 @@ def test_the_chembl_vocabulary_is_explicit(value, units, expected):
 
 def test_a_stored_card_seals_its_quantities_in_columns(protein):
     data = _through_json(protein)
-    assert protein.meta["schema_version"] == CARD_SCHEMA_VERSION == "0.3.1"
+    assert protein.meta["schema_version"] == CARD_SCHEMA_VERSION == "0.3.2"
     keys = set(data["quantities"]["entries"])
     assert "sequence.molecular_weight|dalton" in keys
     assert "relationships.has_bioactivity.measurement.normalized|nanomolar" in keys

@@ -47,6 +47,20 @@ def _structures(view: Dict[str, Any]) -> List[Dict[str, Any]]:
     ]
 
 
+def _uncertainty_columns(u: Dict[str, Any] | None) -> Dict[str, Any]:
+    """A stated uncertainty as flat cells (#37): its kind, a half-width or the ends of an
+    interval (quantities), its level and its number of replicates."""
+    u = u or {}
+    return {
+        "uncertainty_kind": u.get("kind"),
+        "uncertainty_half_width": u.get("half_width"),
+        "uncertainty_lower": u.get("lower"),
+        "uncertainty_upper": u.get("upper"),
+        "uncertainty_level": u.get("level"),
+        "uncertainty_n": u.get("n"),
+    }
+
+
 def _bioactivities(view: Dict[str, Any]) -> List[Dict[str, Any]]:
     rows = []
     for item in view["items"]:
@@ -61,6 +75,8 @@ def _bioactivities(view: Dict[str, Any]) -> List[Dict[str, Any]]:
                     "value": m["value"],
                     "units": m["units"],
                     "normalized": m["normalized"],
+                    "normalized_upper": m["normalized_upper"],
+                    **_uncertainty_columns(m["uncertainty"]),
                     "pchembl": m["pchembl"],
                     "class": m["class"],
                     "basis": m["basis"],

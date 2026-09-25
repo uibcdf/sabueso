@@ -53,6 +53,16 @@
   but not from the deck name. Version decks as well if a consumer needs to cite one.
 - **One writer at a time**: SQLite serializes writers, which suits a local knowledge
   store. Many concurrent writers would need another backend.
+- **ChEMBL ranges are untested against real data** (#37): ChEMBL_37 states none, so
+  the mapping is guarded by a constructed record. If a release starts stating ranges,
+  check how it sets `standard_relation` for them, and add a real fixture.
+- **Uncertainty on section fields** (#37): only bioactivity measurements can carry
+  one. A curated scalar field (for example a stated molecular weight ± error) would
+  need the same node shape at its field path, and a schema version.
+- **Uncertainty in the classification** (#37): an interval that spans a threshold is
+  still classified by its central value. If that is misleading for a project,
+  classifying the whole interval, as for ranges, is a new rule version, not a change to
+  `@3`.
 
 ## Open Questions
 - What are the default **selection rules** per field?

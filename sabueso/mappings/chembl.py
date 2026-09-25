@@ -121,6 +121,23 @@ def _document(activity: Dict[str, Any], documents: Dict[str, Any]) -> Dict[str, 
     }
 
 
+def _range_end(activity: Dict[str, Any]) -> Dict[str, Any]:
+    """``{"normalized_upper": node}`` when ChEMBL states the measurement as a range.
+
+    ChEMBL keeps the lower end in ``standard_value`` and the upper end in
+    ``standard_upper_value`` (#37). The key exists only for ranges, so the cards of
+    measurements without one are unchanged.
+    """
+    upper = _number(activity.get("standard_upper_value"))
+    if upper is None:
+        return {}
+    return {
+        "normalized_upper": normalized_measurement(
+            upper, activity.get("standard_units")
+        )
+    }
+
+
 def map_bioactivities(
     response: Dict[str, Any], subject_accession: str, retrieved_at: str
 ) -> Dict[str, Any]:
@@ -181,6 +198,7 @@ def map_bioactivities(
                             _number(activity.get("standard_value")),
                             activity.get("standard_units"),
                         ),
+                        **_range_end(activity),
                         "pchembl": _number(activity.get("pchembl_value")),
                         "activity_comment": activity.get("activity_comment"),
                         "data_validity_comment": activity.get("data_validity_comment"),
