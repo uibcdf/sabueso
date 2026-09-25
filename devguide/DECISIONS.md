@@ -354,3 +354,20 @@ uibcdf/sabueso#37; card schema 0.3.2; rule `bioactivity_class@3`.
   central value. A curated value agrees with ChEMBL's reading of the same paper when
   the numbers agree at their stated precision: agreement is about transcription, not
   about the spread of the measurement. A point and a range never agree.
+
+## Organism identity, gene loci and orthology groups (2026-09-25)
+uibcdf/sabueso#54; additive, card schema 0.3.2.
+- A protein card states its organism's NCBI taxon (`annotations.taxon_id`) and its
+  lineage (`annotations.lineage`, from the root down, the organism excluded), as
+  UniProt states them. UniProt's taxon is strain-level when the entry is, so no
+  separate strain field is needed.
+- `identifiers.gene_loci` lists gene loci in organism databases: VEuPathDB components
+  (TriTrypDB, GiardiaDB, HostDB…) and NCBI Gene. A reviewed entry can gather the loci
+  of several strain genomes (TcTIM lists 11). Loci are the identity anchors that tell
+  paralogs apart (#55); sequence similarity never is.
+- OrthoDB and eggNOG groups are `classified_in` relationships, like the other
+  classifications. A missing group is "not stated", never "not an ortholog": UniProt
+  gives HsTIM an OrthoDB group and TcTIM none.
+- `Deck.in_lineage(taxon)` keeps cards whose organism is or descends from the taxon.
+  Cards whose lineage is not stated are listed apart, not dropped silently.
+  `Deck.group_by(field_path)` groups by a resolved value.

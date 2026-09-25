@@ -35,7 +35,9 @@ schema:
     uncertainty a publication states (kind sd, sem, unspecified or ci; half_width, or
     lower and upper, as {value, unit} in the measurement's normalized unit; level; n).
     Both are negotiated quantity paths. The change is additive, so a 0.3.1 card is a
-    valid 0.3.2 card without them.
+    valid 0.3.2 card without them. 0.3.2 also adds annotations.taxon_id,
+    annotations.lineage and identifiers.gene_loci, and classified_in relationships to
+    OrthoDB and eggNOG groups (uibcdf/sabueso#54), all additive.
 card_base:
   meta:
     card_id:
@@ -66,6 +68,12 @@ card_base:
   identifiers:
     uniprot:
       value: string
+      source_assertion_ids:
+      - string
+    gene_loci:
+      value:
+      - database: string
+        id: string
       source_assertion_ids:
       - string
     pdb:
@@ -210,6 +218,15 @@ card_base:
       - string
     organism:
       value: string
+      source_assertion_ids:
+      - string
+    taxon_id:
+      value: integer
+      source_assertion_ids:
+      - string
+    lineage:
+      value:
+      - string
       source_assertion_ids:
       - string
     ptm:

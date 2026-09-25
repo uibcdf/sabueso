@@ -165,6 +165,11 @@ This file records the current repository baseline so new developers can resume e
   `has_bioactivity` measurements, and `bioactivity_class@3` classifies ranges (#37).
   Curators state ranges and uncertainties through `add_literature_bioactivity`.
 
+## Organism Identity (2026-09-25)
+- Cards state `annotations.taxon_id`, `annotations.lineage` and `identifiers.gene_loci`.
+  OrthoDB and eggNOG groups are `classified_in`. Decks filter by lineage
+  (`Deck.in_lineage`) and group by a field (`Deck.group_by`) (#54).
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

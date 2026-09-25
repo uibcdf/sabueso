@@ -42,6 +42,44 @@ class Deck:
         ordered = sorted(present, key=value, reverse=reverse) + missing
         return Deck(ordered, meta=self.meta.copy())
 
+    def in_lineage(self, taxon: str) -> "Deck":
+        """Cards whose organism is ``taxon`` or descends from it (#54).
+
+        ``taxon`` is a name as UniProt states lineages (``"Trypanosomatida"``,
+        ``"Metazoa"``). Cards whose lineage is not stated are left out, and listed in
+        the new deck's ``meta["lineage_not_stated"]``: not stated is not "outside".
+        """
+
+        def value(card: Any, path: str) -> Any:
+            node = card.get(path)
+            return node.get("value") if isinstance(node, dict) else node
+
+        kept, unknown = [], []
+        for card in self.cards:
+            lineage = value(card, "annotations.lineage")
+            if lineage is None:
+                unknown.append(card.id)
+            elif taxon in lineage or value(card, "annotations.organism") == taxon:
+                kept.append(card)
+        meta = {**self.meta, "lineage_filter": taxon}
+        if unknown:
+            meta["lineage_not_stated"] = unknown
+        return Deck(kept, meta=meta)
+
+    def group_by(self, key: str) -> Dict[Any, "Deck"]:
+        """Decks of the cards that share the resolved value at field path ``key``, e.g.
+        ``"annotations.organism"`` or ``"annotations.taxon_id"``. Cards without a value
+        are grouped under None."""
+        groups: Dict[Any, Deck] = {}
+        for card in self.cards:
+            node = card.get(key)
+            value = node.get("value") if isinstance(node, dict) else node
+            if isinstance(value, list):
+                value = tuple(value)
+            groups.setdefault(value, Deck(meta={**self.meta, "group": {key: value}}))
+            groups[value].add(card)
+        return groups
+
     def ids(self) -> List[str]:
         return [c.id for c in self.cards]
 

@@ -118,7 +118,13 @@ _CLASSIFICATIONS = {
     "PANTHER": "panther",
     "PROSITE": "prosite",
     "CDD": "cdd",
+    # Orthology groups, as the database states them (#54). A missing group is "not
+    # stated", never "not an ortholog".
+    "OrthoDB": "orthodb",
+    "eggNOG": "eggnog",
 }
+#: Gene loci in organism databases: identity anchors that tell paralogs apart (#54, #55).
+_GENE_LOCI = {"VEuPathDB", "GeneID"}
 
 _GO_ASPECTS = {
     "C": "cellular_component",
@@ -260,6 +266,16 @@ def _knowledge_relationships(
                     "match_count": int(props["MatchStatus"])
                     if str(props.get("MatchStatus", "")).isdigit()
                     else None,
+                    # eggNOG's taxonomic scope of the group (UniProt spells the key
+                    # "ToxonomicScope").
+                    **(
+                        {
+                            "scope": props.get("ToxonomicScope")
+                            or props.get("TaxonomicScope")
+                        }
+                        if db == "eggNOG"
+                        else {}
+                    ),
                 },
                 eco,
             )
@@ -407,11 +423,34 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     ):
         assert_list(fp, text_items[fp], fields)
 
-    # organism
+    # organism: the name, the NCBI taxon (strain-level when the entry is), and the
+    # lineage from the root down, the organism itself excluded (#54)
     org_name = get_in(uniprot_json, ["organism", "scientificName"])
     if org_name:
         fields["annotations.organism"] = org_name
         assert_value("annotations.organism", org_name)
+    taxon_id = get_in(uniprot_json, ["organism", "taxonId"])
+    if taxon_id is not None:
+        fields["annotations.taxon_id"] = int(taxon_id)
+        assert_value("annotations.taxon_id", int(taxon_id))
+    lineage = get_in(uniprot_json, ["organism", "lineage"])
+    if lineage:
+        fields["annotations.lineage"] = list(lineage)
+        assert_value("annotations.lineage", list(lineage))
+
+    # gene loci in organism databases (#54)
+    loci = []
+    for xref in uniprot_json.get("uniProtKBCrossReferences", []) or []:
+        if xref.get("database") not in _GENE_LOCI:
+            continue
+        if xref["database"] == "GeneID":
+            locus = {"database": "NCBI Gene", "id": xref["id"]}
+        else:  # VEuPathDB states "<component database>:<gene id>"
+            component, _, gene = xref["id"].partition(":")
+            locus = {"database": component, "id": gene} if gene else None
+        if locus and (locus, None) not in loci:
+            loci.append((locus, None))
+    assert_list("identifiers.gene_loci", loci, fields)
 
     # sequence
     sequence = uniprot_json.get("sequence", {}) or {}

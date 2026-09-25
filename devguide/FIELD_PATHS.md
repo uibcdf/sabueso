@@ -27,6 +27,7 @@ Versioning: **x.y.z** (no leading `v`).
 - `identifiers.inchikey`
 - `identifiers.smiles` (isomeric: keeps stereochemistry where the source defines it)
 - `identifiers.smiles_connectivity` (connectivity only, no stereochemistry)
+- `identifiers.gene_loci` (list of `{database, id}`: gene loci in organism databases, e.g. `{"database": "TriTrypDB", "id": "TcCLB.508647.200"}` from UniProt's VEuPathDB cross-references, and `{"database": "NCBI Gene", "id": "7167"}`; identity anchors that tell paralogs apart, #54)
 - `identifiers.other` (list/dict for rare IDs)
 
 ### names.*
@@ -54,6 +55,8 @@ Versioning: **x.y.z** (no leading `v`).
 - `annotations.disease` (list of `{name, accession?, acronym?, description?, cross_references?, note?}`; UniProt DISEASE comments, with their evidences in each SourceAssertion's `eco`)
 - `annotations.tissue_specificity`
 - `annotations.organism`
+- `annotations.taxon_id` (NCBI taxonomy id; strain-level when the entry is, #54)
+- `annotations.lineage` (list of taxon names from the root down, the organism itself excluded, as UniProt states it, #54)
 - `annotations.ptm`
 - `annotations.polymorphism`
 - `annotations.domains` (non-positional summary; reserved, not currently produced)
