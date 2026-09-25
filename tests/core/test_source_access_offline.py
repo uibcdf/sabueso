@@ -13,6 +13,7 @@ from sabueso.tools.db import (
     alphafold,
     chembl,
     interpro,
+    ncbi_taxonomy,
     pdb_ccd,
     pdbe_kb,
     pubchem,
@@ -26,6 +27,9 @@ ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 BTS_KEY = "XBNHRNFODJOFRU-UHFFFAOYSA-N"
 
 CALLS = {
+    "ncbi_taxonomy.get_taxon": lambda: ncbi_taxonomy.get_taxon(
+        "5693", client=ncbi_taxonomy.FixtureNCBITaxonomyClient("temp_data")
+    ),
     "alphafold.get_prediction": lambda: alphafold.get_prediction(
         "P52270", client=alphafold.FixtureAlphaFoldClient("temp_data")
     ),

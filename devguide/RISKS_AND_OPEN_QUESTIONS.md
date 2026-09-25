@@ -70,9 +70,14 @@
   Proteins with indels, or strain variants above 2%, are not flagged. A position-level
   comparison through a MolSysMT alignment would replace it if needed. `same_gene`
   joins isoforms, fragments and alleles, which a reader must tell apart.
-- **Strain relations by name** (#55): a strain entry whose lineage stops above the
-  species is related through its name ("Trypanosoma cruzi (strain CL Brener)"). A
-  taxonomy service (NCBI Taxonomy) would be exact if names prove unreliable.
+- **Strain relations by name** (#55, #67): cards enriched with NCBI Taxonomy are
+  related exactly. Resolver candidates and cards without that enrichment are still
+  related through UniProt names, and each finding says so (`organisms: names`). If
+  that proves unreliable, enrich candidates with NCBI Taxonomy in the resolver.
+- **NCBI Taxonomy has no data release** (#67): the Datasets API states its software
+  version, not a taxonomy release, so `annotations.taxonomy` records no source version.
+  Taxonomy changes (merged or renamed taxa) show up as a different snapshot, not as a
+  new release.
 - **Scheme-1 curation records** (#62): a statement dropped by the old collision cannot
   be recovered from a store. Stores stay mixed, with scheme-1 and scheme-2 records,
   until every entity is applied or saved once.

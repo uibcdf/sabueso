@@ -1,0 +1,11 @@
+{
+ "tax_id": 2611352,
+ "organism_name": "Discoba",
+ "rank": "CLADE",
+ "lineage": [
+  1,
+  131567,
+  2759
+ ],
+ "blast_name": "eukaryotes"
+}

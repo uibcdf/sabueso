@@ -1,0 +1,14 @@
+{
+ "tax_id": 33213,
+ "organism_name": "Bilateria",
+ "rank": "CLADE",
+ "lineage": [
+  1,
+  131567,
+  2759,
+  33154,
+  33208,
+  6072
+ ],
+ "blast_name": "animals"
+}

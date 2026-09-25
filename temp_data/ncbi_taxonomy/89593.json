@@ -1,0 +1,17 @@
+{
+ "tax_id": 89593,
+ "organism_name": "Craniata",
+ "rank": "SUBPHYLUM",
+ "lineage": [
+  1,
+  131567,
+  2759,
+  33154,
+  33208,
+  6072,
+  33213,
+  33511,
+  7711
+ ],
+ "blast_name": "chordates"
+}

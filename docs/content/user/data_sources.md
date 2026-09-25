@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 17, evaluating 1, queued 48, deferred 8, retired 3, out of scope 4.
+Summary: in use 18, queued 48, deferred 8, retired 3, out of scope 4.
 
 ## In use
 
@@ -30,12 +30,7 @@ Summary: in use 17, evaluating 1, queued 48, deferred 8, retired 3, out of scope
 | [eggNOG](http://eggnog5.embl.de/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only, through UniProt (CC BY 4.0) | 2026-09-25 |
 | [NCBI Gene / RefSeq](https://www.ncbi.nlm.nih.gov/gene/) | Targets, sequence and basic pharmacology | via UniProt cross-references | US public domain (NLM policy) | 2026-09-25 |
 | [VEuPathDB gene identifiers](https://veupathdb.org/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only | 2026-09-25 |
-
-## Being evaluated
-
-| Resource | Category | What it would bring | Since |
-| --- | --- | --- | --- |
-| [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) | Organism, orthology and biological context | Taxonomic names, ranks and lineages; would make strain–species relations exact (today they are read from UniProt names and lineages). | 2026-09-25 |
+| [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) | Organism, orthology and biological context | NCBI Datasets REST API, no key | US public domain (NLM policy) | 2026-09-25 |
 
 ## Queued for review
 

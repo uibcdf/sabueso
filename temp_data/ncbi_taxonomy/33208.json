@@ -1,0 +1,12 @@
+{
+ "tax_id": 33208,
+ "organism_name": "Metazoa",
+ "rank": "KINGDOM",
+ "lineage": [
+  1,
+  131567,
+  2759,
+  33154
+ ],
+ "blast_name": "animals"
+}

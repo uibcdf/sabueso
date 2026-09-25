@@ -25,6 +25,7 @@ themselves are not Sabueso's work and keep their source's licence.
 | ChEMBL | **CC BY-SA 3.0 Unported** | EMBL-EBI / ChEMBL | Share-alike: see below |
 | UniChem | EMBL-EBI adds no restrictions of its own | EMBL-EBI / UniChem | The rights of the resources it points to still apply |
 | PubChem | US public domain (NLM policy) | NCBI / NLM | Depositor contributions may carry their own terms |
+| NCBI Taxonomy | US public domain (NLM policy) | NCBI / NLM | Ranks and ancestors of organisms (#67) |
 
 ## Known Sensitive Sources
 - **DrugBank**: data downloads are license‑controlled. Clinical datasets may be restricted.

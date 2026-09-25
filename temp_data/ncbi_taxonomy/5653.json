@@ -1,0 +1,13 @@
+{
+ "tax_id": 5653,
+ "organism_name": "Kinetoplastea",
+ "rank": "CLASS",
+ "lineage": [
+  1,
+  131567,
+  2759,
+  2611352,
+  33682
+ ],
+ "blast_name": "kinetoplastids"
+}

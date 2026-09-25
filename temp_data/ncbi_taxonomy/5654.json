@@ -1,0 +1,16 @@
+{
+ "tax_id": 5654,
+ "organism_name": "Trypanosomatidae",
+ "rank": "FAMILY",
+ "lineage": [
+  1,
+  131567,
+  2759,
+  2611352,
+  33682,
+  5653,
+  2704647,
+  2704949
+ ],
+ "blast_name": "kinetoplastids"
+}

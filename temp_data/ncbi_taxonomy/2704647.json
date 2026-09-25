@@ -1,0 +1,14 @@
+{
+ "tax_id": 2704647,
+ "organism_name": "Metakinetoplastina",
+ "rank": "SUBCLASS",
+ "lineage": [
+  1,
+  131567,
+  2759,
+  2611352,
+  33682,
+  5653
+ ],
+ "blast_name": "kinetoplastids"
+}

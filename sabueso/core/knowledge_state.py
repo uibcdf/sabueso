@@ -42,6 +42,7 @@ PROTEIN_ENRICHMENTS = (
         "AlphaFold DB",
         {"source": "AlphaFold DB"},
     ),
+    ("annotations.taxonomy", "NCBI Taxonomy", {"source": "NCBI Taxonomy"}),
 )
 
 
@@ -160,7 +161,10 @@ def knowledge_state(card: Any) -> Dict[str, Any]:
 
     enrichments = card.quality.get("enrichments") or []
     if is_protein:
+        stated = {(r["area"], r["source"]) for r in rows}
         for area, source, match in PROTEIN_ENRICHMENTS:
+            if (area, source) in stated:
+                continue  # the field's own row already says what the source states
             records = [
                 r for r in enrichments if all(r.get(k) == v for k, v in match.items())
             ]

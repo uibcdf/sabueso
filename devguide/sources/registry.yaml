@@ -795,11 +795,13 @@ resources:
     name: "NCBI Taxonomy"
     url: https://www.ncbi.nlm.nih.gov/taxonomy
     category: organism_context
-    status: evaluating
+    status: in_use
     description: "Taxonomic names, ranks and lineages; would make strain–species relations exact (today they are read from UniProt names and lineages)."
     since: 2026-09-25
     proposed_by: "Sabueso devguide (risk recorded with #55, 2026-09-25)"
-    reason: "Checked 2026-09-25: the Datasets API gives rank and ancestor ids without a key (strain 353153 has species 5693 among its ancestors), which makes strain and species relations exact."
+    reason: "Exact relations between organisms (a strain and its species) for the identity audit, and ranks to group cohorts; UniProt gives names without ranks."
+    decided_by: "Sabueso maintainers (2026-09-25)"
+    module: [sabueso.tools.db.ncbi_taxonomy, sabueso.mappings.ncbi_taxonomy]
     access: "NCBI Datasets REST API, no key"
     licence: "US public domain (NLM policy)"
     links: ["#55", "#54", "#67"]

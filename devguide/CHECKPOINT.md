@@ -196,6 +196,10 @@ This file records the current repository baseline so new developers can resume e
 - `card.add_literature_engagement(...)` records residues and mechanism a paper states
   (`engages`), compared with observed PDBe-KB sites (#61).
 
+## NCBI Taxonomy (2026-09-25)
+- `taxonomy=True` adds `annotations.taxonomy` (ranks and ancestors). The identity audit
+  relates organisms exactly with it, and `Deck.group_by_rank` groups by rank (#67).
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

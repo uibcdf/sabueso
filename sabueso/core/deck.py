@@ -152,6 +152,29 @@ class Deck:
             for value, cards in members.items()
         }
 
+    def group_by_rank(self, rank: str) -> Dict[Any, "Deck"]:
+        """Decks of the cards whose organism falls in the same taxon of ``rank`` (e.g.
+        ``"genus"``, ``"family"``), from NCBI Taxonomy (``annotations.taxonomy``, #67).
+        Cards without that information, or without a taxon of that rank, are grouped
+        under None."""
+        wanted = rank.lower()
+        members: Dict[Any, List[Any]] = {}
+        for card in self.cards:
+            node = card.get("annotations.taxonomy")
+            taxonomy = node.get("value") if isinstance(node, dict) else None
+            key = None
+            if taxonomy:
+                chain = [*taxonomy.get("ancestors", []), taxonomy]
+                key = next(
+                    (t.get("name") for t in chain if (t.get("rank") or "") == wanted),
+                    None,
+                )
+            members.setdefault(key, []).append(card)
+        return {
+            key: self._derived(cards, "group_by_rank", {"rank": wanted, "value": key})
+            for key, cards in members.items()
+        }
+
     def identity_audit(self) -> Dict[str, Any]:
         """Redundant entries, strain variants and paralogs among the deck's protein
         cards (rule ``protein_identity_audit@1``, #55). Nothing is merged: each finding

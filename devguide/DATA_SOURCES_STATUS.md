@@ -105,6 +105,13 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: `same_as` links to the InChIKey anchor for ChEMBL, PDB (RCSB and PDBe), PubChem, DrugBank, ChEBI and BindingDB records. The full source list stays in the assertion.
 - **Notes**: an unknown key returns HTTP 200 with `"Not found"`, which the client maps to not found. One call per molecule, so it is opt-in for decks.
 
+### NCBI Taxonomy — ranks and ancestors
+- **Status**: implemented as an enricher of `resolve_protein_card(..., taxonomy=True)` (uibcdf/sabueso#67)
+- **Access**: NCBI Datasets API `taxonomy/taxon/<ids>` in batches (`OnlineNCBITaxonomyClient`), saved records (`FixtureNCBITaxonomyClient`, `temp_data/ncbi_taxonomy/`), and `tools.db.ncbi_taxonomy.get_taxon`
+- **Quality**: green for the listed coverage, verified on T. cruzi (species 5693), its strain CL Brener (353153, whose ancestors include 5693) and Homo sapiens
+- **Coverage**: `annotations.taxonomy`, the organism's taxon with its rank and every ancestor with name and rank; two requests per card (the taxon, then its ancestors)
+- **Notes**: no data release is stated (only the API version); licence: US public domain (NLM policy).
+
 ### AlphaFold DB — predicted structures
 - **Status**: implemented as an enricher of `resolve_protein_card(..., predicted_structures=True)` (uibcdf/sabueso#57)
 - **Access**: AlphaFold DB API `prediction/<accession>` (`OnlineAlphaFoldClient`), saved responses (`FixtureAlphaFoldClient`, `temp_data/alphafold/`), and `tools.db.alphafold.get_prediction`

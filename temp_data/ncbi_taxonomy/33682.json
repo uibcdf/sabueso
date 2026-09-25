@@ -1,0 +1,12 @@
+{
+ "tax_id": 33682,
+ "organism_name": "Euglenozoa",
+ "rank": "PHYLUM",
+ "lineage": [
+  1,
+  131567,
+  2759,
+  2611352
+ ],
+ "blast_name": "eukaryotes"
+}

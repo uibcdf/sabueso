@@ -69,6 +69,7 @@ def fixture_cards() -> List[dict]:
     from sabueso.tools.db.alphafold import FixtureAlphaFoldClient
     from sabueso.tools.db.chembl import FixtureChEMBLClient
     from sabueso.tools.db.interpro import FixtureInterProClient
+    from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
     from sabueso.tools.db.pdb_ccd import FixtureCCDClient
     from sabueso.tools.db.pdbe_kb import FixturePDBeKBClient
     from sabueso.tools.db.pubchem import create_compound_card_from_file
@@ -91,6 +92,8 @@ def fixture_cards() -> List[dict]:
             interpro_client=FixtureInterProClient(data),
             predicted_structures=True,
             alphafold_client=FixtureAlphaFoldClient(data),
+            taxonomy=True,
+            taxonomy_client=FixtureNCBITaxonomyClient(data),
         )
         hstim, _ = sabueso.resolve(
             "P60174",

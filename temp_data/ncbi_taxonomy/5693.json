@@ -1,0 +1,19 @@
+{
+ "tax_id": 5693,
+ "organism_name": "Trypanosoma cruzi",
+ "rank": "SPECIES",
+ "lineage": [
+  1,
+  131567,
+  2759,
+  2611352,
+  33682,
+  5653,
+  2704647,
+  2704949,
+  5654,
+  5690,
+  47570
+ ],
+ "blast_name": "kinetoplastids"
+}

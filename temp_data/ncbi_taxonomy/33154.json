@@ -1,0 +1,11 @@
+{
+ "tax_id": 33154,
+ "organism_name": "Opisthokonta",
+ "rank": "CLADE",
+ "lineage": [
+  1,
+  131567,
+  2759
+ ],
+ "blast_name": "eukaryotes"
+}

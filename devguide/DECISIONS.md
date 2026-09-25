@@ -482,3 +482,15 @@ uibcdf/sabueso#61.
 - It was seeded from Diego's inventory of open resources for drug design (54 queued),
   plus the sources already in use and those set aside earlier (#21, #22, #29, #60).
 - To be shared with MOLI once it has proven itself in Sabueso.
+
+## Organism relations from NCBI Taxonomy (2026-09-25)
+uibcdf/sabueso#67; card schema 0.3.4.
+- `taxonomy=True` (with `taxonomy_client`) adds `annotations.taxonomy`: the organism's
+  taxon, its rank and every ancestor with name and rank, from NCBI Taxonomy (Datasets
+  API, no key, public domain). UniProt's `annotations.taxon_id` stays the anchor.
+- The identity audit uses NCBI ancestors when both cards have them, and its answer is
+  final: related (`ncbi_lineage`) or not, whatever the names suggest. Otherwise it falls
+  back to UniProt names, and every finding says which one decided (`organisms`).
+- `Deck.group_by_rank(rank)` groups cards by the taxon of a rank (genus, family…).
+- The resolver's search candidates are still compared by names, because they are not
+  enriched; the audit of cards in a deck is exact once they are.

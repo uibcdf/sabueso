@@ -63,6 +63,8 @@ def resolve_protein_card(
     interpro_client: Any | None = None,
     predicted_structures: bool = False,
     alphafold_client: Any | None = None,
+    taxonomy: bool = False,
+    taxonomy_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -79,7 +81,9 @@ def resolve_protein_card(
     InterPro member databases place on the protein's sequence
     (``features_positional.family_site``). ``predicted_structures`` adds the AlphaFold
     DB models of the entry as ``has_predicted_structure`` relationships, apart from
-    experimental structures (``Card.predicted_structures()``).
+    experimental structures (``Card.predicted_structures()``). ``taxonomy`` adds the
+    organism's rank and ranked ancestors from NCBI Taxonomy (``annotations.taxonomy``),
+    which makes relations between organisms exact.
     Every enrichment outcome (added, not_found, error) is recorded in
     ``quality.enrichments``. Returns ``(card, resolution)``; ``card`` is None when the
     query did not resolve to a protein entity.
@@ -271,6 +275,42 @@ def resolve_protein_card(
                     "count": len(mapped["relationships"]),
                 }
             )
+
+    if taxonomy:
+        from sabueso.mappings.ncbi_taxonomy import map_taxonomy
+        from sabueso.tools.db.ncbi_taxonomy import OnlineNCBITaxonomyClient
+
+        client = taxonomy_client or OnlineNCBITaxonomyClient()
+        tax_id = (entry.get("organism") or {}).get("taxonId")
+        record = {"source": "NCBI Taxonomy", "identifier": tax_id}
+        try:
+            organism = client.taxa([tax_id]) if tax_id is not None else {"record": []}
+            if not organism["record"]:
+                enrichments.append({**record, "status": "not_found"})
+            else:
+                taxon = organism["record"][0]
+                lineage = client.taxa(taxon.get("lineage") or [])
+                mapped = map_taxonomy(
+                    taxon,
+                    lineage["record"],
+                    anchor,
+                    organism.get("retrieved_at", ""),
+                )
+                mappings.append(mapped)
+                enrichments.append(
+                    {
+                        **record,
+                        "status": "added",
+                        "count": len(taxon.get("lineage") or []),
+                        **(
+                            {"missing": lineage["missing"]}
+                            if lineage.get("missing")
+                            else {}
+                        ),
+                    }
+                )
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
 
     if family_sites:
         from sabueso.tools.db.interpro import OnlineInterProClient

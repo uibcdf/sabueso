@@ -1,0 +1,10 @@
+{
+ "tax_id": 2759,
+ "organism_name": "Eukaryota",
+ "rank": "DOMAIN",
+ "lineage": [
+  1,
+  131567
+ ],
+ "blast_name": "eukaryotes"
+}

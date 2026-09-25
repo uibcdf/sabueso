@@ -1,0 +1,13 @@
+{
+ "tax_id": 6072,
+ "organism_name": "Eumetazoa",
+ "rank": "CLADE",
+ "lineage": [
+  1,
+  131567,
+  2759,
+  33154,
+  33208
+ ],
+ "blast_name": "animals"
+}

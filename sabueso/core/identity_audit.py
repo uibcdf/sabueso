@@ -12,7 +12,9 @@ Identity therefore never comes from sequence similarity. Rule ``protein_identity
 compares two entries of related organisms and reports one finding, never a merge:
 
 1. entries of unrelated organisms are not compared (identical sequences in human and
-   chimpanzee are two entities);
+   chimpanzee are two entities). Relatedness is exact when both cards carry NCBI
+   Taxonomy ancestors (#67), and read from UniProt names otherwise; each finding says
+   which (``organisms``: ``same_taxon``, ``ncbi_lineage`` or ``names``);
 2. a **shared gene locus** (VEuPathDB, NCBI Gene) with an identical or near-identical
    sequence → ``possibly_same_as``; with another sequence → ``same_gene``: isoforms,
    fragments or alleles of one gene, which are not the same entity;
@@ -67,11 +69,16 @@ def basis_of_card(card: Any) -> Dict[str, Any]:
         node = card.get(path)
         return node.get("value") if isinstance(node, dict) else node
 
+    taxonomy = value("annotations.taxonomy") or {}
     return {
         "ref": card.id,
         "taxon_id": value("annotations.taxon_id"),
         "organism": value("annotations.organism"),
         "lineage": list(value("annotations.lineage") or []),
+        # NCBI Taxonomy ancestor ids, when the card has them (#67).
+        "ancestor_ids": [a["tax_id"] for a in taxonomy.get("ancestors") or []]
+        if taxonomy
+        else None,
         "gene_loci": sorted(
             {(x["database"], x["id"]) for x in value("identifiers.gene_loci") or []}
         ),
@@ -80,20 +87,25 @@ def basis_of_card(card: Any) -> Dict[str, Any]:
     }
 
 
-def _related(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
-    """The same organism, or one a strain or subtaxon of the other.
+def _related(a: Dict[str, Any], b: Dict[str, Any]) -> str | None:
+    """How two organisms are related, or None: ``same_taxon``, ``ncbi_lineage`` (one
+    is an ancestor of the other in NCBI Taxonomy, #67), or ``names``.
 
-    UniProt lineages of strain-level taxa can stop above the species ("Trypanosoma
-    cruzi (strain CL Brener)" lists no "Trypanosoma cruzi"), so a name that extends the
-    other's name counts too.
+    With NCBI ancestors for both, the answer is exact and final. Otherwise UniProt
+    names are read: lineages of strain-level taxa can stop above the species
+    ("Trypanosoma cruzi (strain CL Brener)" lists no "Trypanosoma cruzi"), so a name
+    that extends the other's name counts too.
     """
     if a["taxon_id"] is not None and a["taxon_id"] == b["taxon_id"]:
-        return True
+        return "same_taxon"
+    if a.get("ancestor_ids") is not None and b.get("ancestor_ids") is not None:
+        exact = a["taxon_id"] in b["ancestor_ids"] or b["taxon_id"] in a["ancestor_ids"]
+        return "ncbi_lineage" if exact else None
     x, y = a["organism"] or "", b["organism"] or ""
-    return bool(
-        (x and (x in b["lineage"] or y.startswith(x + " ")))
-        or (y and (y in a["lineage"] or x.startswith(y + " ")))
+    by_name = (x and (x in b["lineage"] or y.startswith(x + " "))) or (
+        y and (y in a["lineage"] or x.startswith(y + " "))
     )
+    return "names" if by_name else None
 
 
 def _differences(x: str, y: str) -> int:
@@ -102,9 +114,14 @@ def _differences(x: str, y: str) -> int:
 
 def compare(a: Dict[str, Any], b: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     """The finding for two entries or cards (``basis_of_*`` output), or None."""
-    if a["ref"] == b["ref"] or not _related(a, b):
+    relation = None if a["ref"] == b["ref"] else _related(a, b)
+    if relation is None:
         return None
-    finding: Dict[str, Any] = {"refs": [a["ref"], b["ref"]], "rule": IDENTITY_RULE}
+    finding: Dict[str, Any] = {
+        "refs": [a["ref"], b["ref"]],
+        "rule": IDENTITY_RULE,
+        "organisms": relation,
+    }
     shared = sorted(set(a["gene_loci"]) & set(b["gene_loci"]))
     same_genome = a["taxon_id"] is not None and a["taxon_id"] == b["taxon_id"]
     databases = {d for d, _ in a["gene_loci"]} & {d for d, _ in b["gene_loci"]}

@@ -57,6 +57,7 @@ Versioning: **x.y.z** (no leading `v`).
 - `annotations.organism`
 - `annotations.taxon_id` (NCBI taxonomy id; strain-level when the entry is, #54)
 - `annotations.lineage` (list of taxon names from the root down, the organism itself excluded, as UniProt states it, #54)
+- `annotations.taxonomy` (`{tax_id, name, rank, ancestors: [{tax_id, name, rank}]}` from NCBI Taxonomy: ranks and ancestor ids, root first; opt-in enrichment `taxonomy=True`, #67)
 - `annotations.ptm`
 - `annotations.polymorphism`
 - `annotations.domains` (non-positional summary; reserved, not currently produced)

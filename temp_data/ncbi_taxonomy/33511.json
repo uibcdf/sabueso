@@ -1,0 +1,15 @@
+{
+ "tax_id": 33511,
+ "organism_name": "Deuterostomia",
+ "rank": "CLADE",
+ "lineage": [
+  1,
+  131567,
+  2759,
+  33154,
+  33208,
+  6072,
+  33213
+ ],
+ "blast_name": "animals"
+}
