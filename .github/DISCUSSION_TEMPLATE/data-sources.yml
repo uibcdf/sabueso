@@ -1,0 +1,66 @@
+title: "[Source] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Propose an online resource for Sabueso: a database, an API or a dataset that states
+        knowledge about molecules, proteins or their relationships. Triage adds it to
+        `devguide/sources/registry.yaml` as *queued* and links this discussion; every later
+        decision is written there, with its reason.
+
+        This repository is public: describe what the resource would bring in general terms,
+        never project-specific or confidential context.
+  - type: input
+    id: name
+    attributes:
+      label: Resource
+      description: Its name, as the resource calls itself.
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Targets, sequence and basic pharmacology
+        - Target validation, genetics and functional networks
+        - Protein–protein interactions and structural modulation
+        - Macromolecular structures, models and dynamics
+        - Binding sites, cavities and specialised families
+        - Binding affinity and experimental bioactivity
+        - Benchmarks, open challenges and open-science consortia
+        - Emerging modalities (targeted degradation)
+        - Chemical space, synthesis, ADMET and safety
+        - Organism, orthology and biological context
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: brings
+    attributes:
+      label: What it would bring
+      description: Which knowledge Sabueso lacks today, and for which kind of question.
+    validations:
+      required: true
+  - type: textarea
+    id: access
+    attributes:
+      label: Access
+      description: API, downloads, keys or registration, rate limits, if known.
+  - type: input
+    id: licence
+    attributes:
+      label: Licence
+      description: If known, with a link to the terms.
+  - type: textarea
+    id: overlap
+    attributes:
+      label: Overlap
+      description: Resources already in the registry that cover part of this, if any.

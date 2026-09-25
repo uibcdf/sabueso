@@ -469,3 +469,16 @@ uibcdf/sabueso#61.
   engagement is `new`.
 - `Card.ligand_sites()` shows curated engagements next to observed contacts, each with
   its source. The curation store keeps them across rebuilds.
+
+## Source registry (2026-09-25)
+- `devguide/sources/registry.yaml` records every online resource Sabueso uses, has
+  set aside, or has yet to review. Statuses: in_use, evaluating, queued, deferred,
+  rejected, retired, out_of_scope. Each decision states its reason, and `deferred`
+  states when to revisit.
+- It is validated in CI: every `tools.db` module is an in_use entry, and a decision
+  without its basis fails. The user page `data_sources.md` is generated from it.
+- Proposals arrive through GitHub Discussions ("Data sources", with a form); the
+  registry, not the thread, records decisions (`devguide/sources/README.md`).
+- It was seeded from Diego's inventory of open resources for drug design (54 queued),
+  plus the sources already in use and those set aside earlier (#21, #22, #29, #60).
+- To be shared with MOLI once it has proven itself in Sabueso.

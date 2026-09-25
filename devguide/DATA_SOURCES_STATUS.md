@@ -1,5 +1,7 @@
 # Data Sources Status (Implemented)
 
+The index of every resource, with its status and the reason for it, is `devguide/sources/registry.yaml` (`devguide/sources/README.md`). This file keeps the technical detail of the sources in use.
+
 This document is a living checkpoint of the data sources (DBs) currently integrated in Sabueso. It summarizes the quality of each source integration, known issues, and operational notes (online/offline behavior).
 
 ## Legend

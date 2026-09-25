@@ -1,0 +1,780 @@
+# Online resources Sabueso uses, has set aside, or has yet to review.
+#
+# This file is the source of truth. docs/content/user/data_sources.md is generated from it
+# (python tools/source_registry.py --write), and tests/core/test_source_registry_offline.py
+# checks it: every source module in sabueso.tools.db is an in_use entry, and every
+# decision states its reason.
+#
+# Proposals arrive through GitHub Discussions (category "Data sources"); triage adds them
+# here as queued and links the discussion. Every later decision is written here, with
+# its date and reason, never only in a thread. Reasons stay generic: this repository is
+# public.
+#
+# Statuses:
+#   in_use        Sabueso reads it, directly (a tools.db module) or through another
+#                 source's cross-references (via).
+#   evaluating    Someone is checking access, licence, coverage and fit.
+#   queued        Proposed, not yet reviewed.
+#   deferred      Useful, set aside for now; revisit_when says when to look again.
+#   rejected      Not suitable; reason says why.
+#   retired       Was used, no longer is; reason says why.
+#   out_of_scope  Not a knowledge source for Sabueso; owner names the MOLI component
+#                 it belongs to.
+format: 1
+categories:
+  targets_sequence: Targets, sequence and basic pharmacology
+  target_validation: Target validation, genetics and functional networks
+  interactions: Protein–protein interactions and structural modulation
+  structures_models: Macromolecular structures, models and dynamics
+  sites_families: Binding sites, cavities and specialised families
+  bioactivity: Binding affinity and experimental bioactivity
+  benchmarks: Benchmarks, open challenges and open-science consortia
+  emerging_modalities: Emerging modalities (targeted degradation)
+  chemistry_admet: Chemical space, synthesis, ADMET and safety
+  organism_context: Organism, orthology and biological context
+  software: Open-source software ecosystems
+resources:
+  # --- in use -----------------------------------------------------------------------
+  - id: uniprot
+    name: UniProtKB
+    url: https://www.uniprot.org/
+    category: targets_sequence
+    status: in_use
+    description: Canonical protein sequences, isoforms, features, annotations and cross-references; the identity anchor of protein cards.
+    since: 2026-02-06
+    reason: Protein identity anchor and primary annotation source.
+    access: REST API (entries and search)
+    licence: CC BY 4.0
+    module: [sabueso.tools.db.uniprot, sabueso.mappings.uniprot]
+    links: ["#6", "#13"]
+  - id: rcsb_pdb
+    name: RCSB PDB
+    url: https://www.rcsb.org/
+    category: structures_models
+    status: in_use
+    description: Experimental structures (X-ray, cryo-EM, NMR), polymer entities, assemblies, ligand instances and contacts.
+    since: 2026-02-07
+    reason: Structure-level facts of the protein's experimental structures.
+    access: GraphQL and REST APIs
+    licence: CC0 1.0
+    module: [sabueso.tools.db.rcsb, sabueso.tools.db.pdb]
+    links: ["#21", "#40"]
+  - id: pdb_ccd
+    name: wwPDB Chemical Component Dictionary
+    url: https://www.wwpdb.org/data/ccd
+    category: chemistry_admet
+    status: in_use
+    description: Chemical identity of PDB ligands (InChIKey, SMILES, names).
+    since: 2026-09-23
+    reason: Anchors PDB ligands to standard InChIKeys.
+    access: RCSB REST API
+    licence: CC0 1.0
+    module: [sabueso.tools.db.pdb_ccd]
+    links: ["#25"]
+  - id: pdbe_kb
+    name: PDBe-KB
+    url: https://www.ebi.ac.uk/pdbe/pdbe-kb
+    category: sites_families
+    status: in_use
+    description: Ligand binding sites and interface residues aggregated over all structures of a protein, in UniProt numbering.
+    since: 2026-09-23
+    reason: Observed ligand sites and interfaces per protein.
+    access: PDBe graph API
+    licence: CC BY 4.0
+    module: [sabueso.tools.db.pdbe_kb]
+    links: ["#28", "#40"]
+  - id: interpro
+    name: InterPro and member databases (Pfam, CDD, PANTHER, PROSITE, SUPFAM, Gene3D/CATH)
+    url: https://www.ebi.ac.uk/interpro/
+    category: targets_sequence
+    status: in_use
+    description: Family, domain and site classifications; CDD site residues through the InterPro API.
+    since: 2026-02-07
+    reason: Classifications (via UniProt cross-references) and family site residues.
+    access: InterPro REST API; UniProt cross-references
+    licence: CC0 1.0 (member databases may carry their own terms)
+    module: [sabueso.tools.db.interpro, sabueso.mappings.uniprot]
+    links: ["#21", "#28"]
+  - id: chembl
+    name: ChEMBL
+    url: https://www.ebi.ac.uk/chembl/
+    category: bioactivity
+    status: in_use
+    description: Bioactive molecules, assays and quantitative activities (IC50, Ki, …), with their documents.
+    since: 2026-02-07
+    reason: Measured bioactivities of a target, and molecule records.
+    access: REST API
+    licence: CC BY-SA 3.0 (share-alike)
+    module: [sabueso.tools.db.chembl]
+    links: ["#23", "#37", "#44"]
+  - id: pubchem
+    name: PubChem (compounds)
+    url: https://pubchem.ncbi.nlm.nih.gov/
+    category: chemistry_admet
+    status: in_use
+    description: Compound records, identifiers and computed properties.
+    since: 2026-02-07
+    reason: Small-molecule identity and properties.
+    access: PUG REST
+    licence: US public domain (NLM policy); depositor terms may apply
+    module: [sabueso.tools.db.pubchem]
+    links: ["#50"]
+  - id: unichem
+    name: UniChem
+    url: https://www.ebi.ac.uk/unichem/
+    category: chemistry_admet
+    status: in_use
+    description: Cross-references of a structure across chemistry resources, keyed by InChIKey.
+    since: 2026-09-23
+    reason: Links a molecule's records across sources by standard InChIKey.
+    access: REST API
+    licence: No restrictions of its own; the linked resources' rights apply
+    module: [sabueso.tools.db.unichem]
+    links: ["#25"]
+  - id: string
+    name: STRING
+    url: https://string-db.org/
+    category: interactions
+    status: in_use
+    description: Functional and physical protein associations with confidence scores.
+    since: 2026-02-07
+    reason: Functional associations of a protein (opt-in enrichment).
+    access: REST API
+    licence: CC BY 4.0
+    module: [sabueso.tools.db.stringdb]
+    links: ["#21"]
+  - id: alphafold_db
+    name: AlphaFold DB
+    url: https://alphafold.ebi.ac.uk/
+    category: structures_models
+    status: in_use
+    description: Predicted structural models with per-residue confidence (pLDDT) and PAE.
+    since: 2026-09-25
+    reason: Structural representation of proteins without experimental structures, kept apart from experimental ones.
+    access: REST API
+    licence: CC BY 4.0
+    module: [sabueso.tools.db.alphafold]
+    links: ["#57"]
+  - id: gene_ontology
+    name: Gene Ontology annotations
+    url: https://geneontology.org/
+    category: targets_sequence
+    status: in_use
+    description: Function, process and component annotations.
+    since: 2026-09-23
+    reason: Read through UniProt cross-references since the direct GO tool was removed.
+    access: via UniProt cross-references
+    licence: CC BY 4.0
+    via: uniprot
+    module: [sabueso.mappings.uniprot]
+    links: ["#21"]
+  - id: intact
+    name: IntAct
+    url: https://www.ebi.ac.uk/intact/
+    category: interactions
+    status: in_use
+    description: Curated experimental binary molecular interactions (PSI-MI).
+    since: 2026-09-23
+    reason: Physical interactions read from UniProt INTERACTION comments, which derive from IntAct.
+    access: via UniProt
+    licence: CC BY 4.0
+    via: uniprot
+    module: [sabueso.mappings.uniprot]
+    links: ["#21"]
+  - id: rhea
+    name: Rhea
+    url: https://www.rhea-db.org/
+    category: targets_sequence
+    status: in_use
+    description: Curated biochemical reactions.
+    since: 2026-09-23
+    reason: Catalytic activities are stated with their Rhea ids through UniProt.
+    access: via UniProt
+    licence: CC BY 4.0
+    via: uniprot
+    module: [sabueso.mappings.uniprot]
+  - id: orthodb
+    name: OrthoDB
+    url: https://www.orthodb.org/
+    category: organism_context
+    status: in_use
+    description: Orthology groups across species.
+    since: 2026-09-25
+    reason: Orthology groups as classifications; a missing group reads as not stated.
+    access: via UniProt cross-references
+    licence: Identifiers only, through UniProt (CC BY 4.0)
+    via: uniprot
+    module: [sabueso.mappings.uniprot]
+    links: ["#54"]
+  - id: eggnog
+    name: eggNOG
+    url: http://eggnog5.embl.de/
+    category: organism_context
+    status: in_use
+    description: Orthologous groups with their taxonomic scope.
+    since: 2026-09-25
+    reason: Orthology groups as classifications.
+    access: via UniProt cross-references
+    licence: Identifiers only, through UniProt (CC BY 4.0)
+    via: uniprot
+    module: [sabueso.mappings.uniprot]
+    links: ["#54"]
+  - id: ncbi_gene
+    name: NCBI Gene / RefSeq
+    url: https://www.ncbi.nlm.nih.gov/gene/
+    category: targets_sequence
+    status: in_use
+    description: Gene records and standard identifiers; RefSeq sequences.
+    since: 2026-09-25
+    reason: NCBI Gene ids are gene-locus identity anchors (via UniProt). Direct access to Gene or RefSeq is not used.
+    access: via UniProt cross-references
+    licence: US public domain (NLM policy)
+    via: uniprot
+    module: [sabueso.mappings.uniprot]
+    links: ["#54", "#55"]
+  - id: veupathdb_ids
+    name: VEuPathDB gene identifiers
+    url: https://veupathdb.org/
+    category: organism_context
+    status: in_use
+    description: Gene loci of eukaryotic pathogens and hosts (TriTrypDB, GiardiaDB, TrichDB, AmoebaDB, HostDB…).
+    since: 2026-09-25
+    reason: Gene-locus identity anchors that tell paralogs apart, read from UniProt cross-references.
+    access: via UniProt cross-references
+    licence: Identifiers only
+    via: uniprot
+    module: [sabueso.mappings.uniprot]
+    links: ["#54", "#55"]
+  # --- set aside ---------------------------------------------------------------------
+  - id: veupathdb_api
+    name: VEuPathDB services (expression by stage, phenotype screens)
+    url: https://veupathdb.org/
+    category: organism_context
+    status: deferred
+    description: Stage-resolved expression, knockdown and knockout phenotypes, and gene records for eukaryotic pathogens.
+    since: 2026-09-25
+    reason: A large connector; structured fields for biological context should be used first, through curation.
+    revisit_when: Curated biological-context fields are in use and a workflow needs them for many genes.
+    access: WDK web services
+    links: ["#60"]
+  - id: biogrid
+    name: BioGRID
+    url: https://thebiogrid.org/
+    category: interactions
+    status: deferred
+    description: Genetic and protein interactions curated from the literature.
+    since: 2026-09-23
+    reason: The API needs a personal access key; IntAct (via UniProt) and STRING cover current needs.
+    revisit_when: Genetic interactions are needed, or key management exists for deployments.
+    access: REST API with access key
+    licence: MIT
+    links: ["#22"]
+  - id: drugbank
+    name: DrugBank (open data)
+    url: https://go.drugbank.com/
+    category: chemistry_admet
+    status: deferred
+    description: Pharmacology of approved and experimental drugs, metabolism, transporters and mechanisms.
+    since: 2026-09-23
+    reason: Licensing constrains redistribution and caching; only DrugBank ids are kept, through UniChem.
+    revisit_when: A licence compatible with Sabueso's caching and redistribution is confirmed.
+    access: Downloads under licence
+    licence: Open data (vocabulary, structures) CC0; full database CC BY-NC 4.0 or commercial
+    links: ["#29"]
+  - id: scope
+    name: SCOPe
+    url: https://scop.berkeley.edu/
+    category: structures_models
+    status: retired
+    description: Structural classification of protein domains.
+    since: 2026-09-23
+    reason: Removed with the per-database card tools; classifications come from UniProt and InterPro.
+    links: ["#21"]
+  - id: ted
+    name: TED (The Encyclopedia of Domains)
+    url: https://ted.cathdb.info/
+    category: structures_models
+    status: retired
+    description: Domain assignments for predicted structures.
+    since: 2026-09-23
+    reason: Removed with the per-database card tools.
+    links: ["#21"]
+  - id: phosphositeplus
+    name: PhosphoSitePlus
+    url: https://www.phosphosite.org/
+    category: targets_sequence
+    status: retired
+    description: Post-translational modification sites.
+    since: 2026-09-23
+    reason: Removed with the per-database card tools; its licence restricts redistribution.
+    links: ["#21"]
+  # --- out of scope: software, not knowledge sources -------------------------------
+  - id: teachopencadd
+    name: TeachOpenCADD
+    url: https://projects.volkamerlab.org/teachopencadd/
+    category: software
+    status: out_of_scope
+    description: Reproducible Python workflows for cheminformatics and molecular modelling.
+    since: 2026-09-25
+    reason: Software and tutorials, not a knowledge source.
+    owner: Praxis (methodology) and MolSysSuite
+  - id: prolif
+    name: ProLIF
+    url: https://prolif.readthedocs.io/
+    category: software
+    status: out_of_scope
+    description: 3D protein–ligand interaction fingerprints for trajectories and static complexes.
+    since: 2026-09-25
+    reason: A computation on structures, not a knowledge source.
+    owner: MolSysSuite
+  - id: oddt
+    name: Open Drug Discovery Toolkit (ODDT)
+    url: https://github.com/oddt/oddt
+    category: software
+    status: out_of_scope
+    description: Python tools for virtual screening, empirical scoring and coordinate handling.
+    since: 2026-09-25
+    reason: Software, not a knowledge source.
+    owner: MolSysSuite (DockingMT)
+  - id: posebusters
+    name: PoseBusters
+    url: https://github.com/maabuu/posebusters
+    category: software
+    status: out_of_scope
+    description: Quality checks of docking poses (physics, stereochemistry, clashes).
+    since: 2026-09-25
+    reason: A validation tool for modelling results, not a knowledge source.
+    owner: MolSysSuite (DockingMT) and Praxis
+  # --- queued: to review -----------------------------------------------------------
+  - id: guide_to_pharmacology
+    name: "Guide to PHARMACOLOGY (IUPHAR/BPS)"
+    url: https://www.guidetopharmacology.org/
+    category: targets_sequence
+    status: queued
+    description: "Expert-curated target–ligand relationships, quantitative agonist/antagonist classification and selectivity."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: ensembl
+    name: "Ensembl"
+    url: https://www.ensembl.org/
+    category: targets_sequence
+    status: queued
+    description: "Gene and transcript annotation, homology and population variants."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: open_targets
+    name: "Open Targets Platform"
+    url: https://platform.opentargets.org/
+    category: target_validation
+    status: queued
+    description: "Integrated target–disease association evidence, tractability for small molecules and biologics, preclinical data."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: ttd
+    name: "TTD (Therapeutic Target Database)"
+    url: https://idrblab.org/ttd/
+    category: target_validation
+    status: queued
+    description: "Molecular targets, their clinical status, diseases and resistance mutations."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: dgidb
+    name: "DGIdb"
+    url: https://dgidb.org/
+    category: target_validation
+    status: queued
+    description: "Aggregated drug–gene interactions and druggability categories."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: depmap
+    name: "DepMap"
+    url: https://depmap.org/
+    category: target_validation
+    status: queued
+    description: "CRISPR and RNAi screens of gene essentiality and dependencies in cancer cell lines."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: reactome
+    name: "Reactome"
+    url: https://reactome.org/
+    category: target_validation
+    status: queued
+    description: "Curated human pathways, reactions and signalling networks (REST API)."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: kegg_pathway
+    name: "KEGG PATHWAY"
+    url: https://www.kegg.jp/
+    category: target_validation
+    status: queued
+    description: "Metabolic and signalling pathway maps and human diseases."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: clinvar
+    name: "ClinVar"
+    url: https://www.ncbi.nlm.nih.gov/clinvar/
+    category: target_validation
+    status: queued
+    description: "Human genomic variants and their clinical significance."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: gnomad
+    name: "gnomAD"
+    url: https://gnomad.broadinstitute.org/
+    category: target_validation
+    status: queued
+    description: "Population allele frequencies, e.g. to assess the conservation of a binding pocket."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: pharmacodb
+    name: "PharmacoDB"
+    url: https://pharmacodb.pmgenomics.ca/
+    category: target_validation
+    status: queued
+    description: "Harmonised pharmacogenomic screens and cellular dose–response curves."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: 2p2idb
+    name: "2P2Idb"
+    url: http://2p2idb.cnrs-mrs.fr/
+    category: interactions
+    status: queued
+    description: "Curated structures of protein–protein complexes modulated by orthosteric small molecules, with interface parameters and druggability."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: ippi_db
+    name: "iPPI-DB"
+    url: https://ippidb.pasteur.fr/
+    category: interactions
+    status: queued
+    description: "Non-peptide inhibitors and modulators of protein–protein interactions, with pharmacological, chemical and structural data."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: skempi
+    name: "SKEMPI 2.0"
+    url: https://life.bsc.es/pid/skempi2/
+    category: interactions
+    status: queued
+    description: "Changes in binding affinity (ΔΔG) and kinetics caused by mutations at protein–protein interfaces."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: ppi3d
+    name: "PPI3D"
+    url: http://bioinformatics.ibt.lt/ppi3d/
+    category: interactions
+    status: queued
+    description: "Search, analysis and modelling of inter-chain interfaces and complexes (Voronoi tessellation)."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: modelarchive
+    name: "ModelArchive"
+    url: https://modelarchive.org/
+    category: structures_models
+    status: queued
+    description: "Open repository of computational macromolecular models with mmCIF metadata."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: esm_atlas
+    name: "ESM Metagenomic Atlas"
+    url: https://esmatlas.com/
+    category: structures_models
+    status: queued
+    description: "Structures predicted at scale by a protein language model."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: ndb
+    name: "NDB (Nucleic Acid Database)"
+    url: https://ndbserver.rutgers.edu/
+    category: structures_models
+    status: queued
+    description: "Structures and conformations of nucleic acids and their complexes."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: codnas
+    name: "CoDNaS"
+    url: https://codnas.inf.unlp.edu.ar/
+    category: structures_models
+    status: queued
+    description: "Conformational diversity of native states: experimental conformers in the PDB."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: model_library
+    name: "MoDEL Library"
+    url: https://mmb.irbbarcelona.org/MoDEL/
+    category: structures_models
+    status: queued
+    description: "Standardised atomistic molecular dynamics trajectories and conformations."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: prothermdb
+    name: "ProThermDB"
+    url: https://web.iitm.ac.in/bioinfo2/prothermdb/
+    category: structures_models
+    status: queued
+    description: "Experimental protein stability data (ΔΔG, Tm) for point mutations."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: sc_pdb
+    name: "sc-PDB"
+    url: http://bioinfo-pharma.u-strasbg.fr/scPDB/
+    category: sites_families
+    status: queued
+    description: "Druggable binding sites extracted from the PDB, cleaned of crystallographic artefacts."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: biolip
+    name: "BioLiP"
+    url: https://zhanggroup.org/BioLiP/
+    category: sites_families
+    status: queued
+    description: "Curated, biologically relevant macromolecule–ligand interactions."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: binding_moad
+    name: "Binding MOAD"
+    url: https://bindingmoad.org/
+    category: sites_families
+    status: queued
+    description: "High-resolution complexes linked to validated binding affinities."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: asd
+    name: "ASD (Allosteric Database)"
+    url: http://mdl.shsmu.edu.cn/ASD/
+    category: sites_families
+    status: queued
+    description: "Allosteric modulators, regulatory sites and conformational communication."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: klifs
+    name: "KLIFS"
+    url: https://klifs.net/
+    category: sites_families
+    status: queued
+    description: "Kinase pocket anatomy aligned to 85 reference positions, with DFG/αC conformations."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: gpcrdb
+    name: "GPCRdb"
+    url: https://gpcrdb.org/
+    category: sites_families
+    status: queued
+    description: "GPCR structures, mutations, activation states and Ballesteros–Weinstein numbering."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: opm
+    name: "OPM (Orientations of Proteins in Membranes)"
+    url: https://opm.phar.umich.edu/
+    category: sites_families
+    status: queued
+    description: "Position and orientation of PDB structures in the lipid bilayer."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: mpstruc
+    name: "mpstruc"
+    url: https://blanco.biomol.uci.edu/mpstruc/
+    category: sites_families
+    status: queued
+    description: "Membrane proteins of known structure, classified by topology and family."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: m_csa
+    name: "M-CSA (Mechanism and Catalytic Site Atlas)"
+    url: https://www.ebi.ac.uk/thornton-srv/m-csa/
+    category: sites_families
+    status: queued
+    description: "Curated enzyme mechanisms, catalytic residues and their roles."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: brenda
+    name: "BRENDA"
+    url: https://brenda-enzymes.org/
+    category: sites_families
+    status: queued
+    description: "Enzyme information: kinetics (Km, kcat), inhibitors, cofactors and conditions."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: sabio_rk
+    name: "SABIO-RK"
+    url: http://sabiork.h-its.org/
+    category: sites_families
+    status: queued
+    description: "Kinetic constants of purified biochemical reactions under stated conditions (REST API)."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: covpdb
+    name: "CovPDB"
+    url: https://bioinfo.fudan.edu.cn/CovPDB/
+    category: sites_families
+    status: queued
+    description: "Covalent protein–ligand complexes, with nucleophilic residues and warheads."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: sabdab
+    name: "SAbDab / Thera-SAbDab"
+    url: https://opig.stats.ox.ac.uk/webapps/sabdab/
+    category: sites_families
+    status: queued
+    description: "Antibody and nanobody structures with standard numbering, CDRs and clinical metadata."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: proteins_plus
+    name: "Proteins.plus (DoGSiteScorer)"
+    url: https://proteins.plus/
+    category: sites_families
+    status: queued
+    description: "Pocket detection, physico-chemical descriptors and druggability scores (a computation service)."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: bindingdb
+    name: "BindingDB"
+    url: https://www.bindingdb.org/
+    category: bioactivity
+    status: queued
+    description: "Equilibrium binding affinities (Ki, Kd) and ITC data."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: pdbbind
+    name: "PDBbind-CN"
+    url: http://www.pdbbind.org.cn/
+    category: bioactivity
+    status: queued
+    description: "3D complexes paired with experimental binding affinities (core and refined sets)."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: pubchem_bioassay
+    name: "PubChem BioAssay"
+    url: https://pubchem.ncbi.nlm.nih.gov/
+    category: bioactivity
+    status: queued
+    description: "High-throughput and phenotypic screening results and dose–response curves."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: d3r
+    name: "D3R (Drug Design Data Resource)"
+    url: https://drugdesigndata.org/
+    category: benchmarks
+    status: queued
+    description: "Blind challenges and datasets with experimental affinities for docking and free-energy prediction."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: cache
+    name: "CACHE Challenge"
+    url: https://cache-challenge.org/
+    category: benchmarks
+    status: queued
+    description: "Blind computational hit-finding challenges with independent experimental validation."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: openbind
+    name: "OpenBind"
+    url: https://openbind.uk/
+    category: benchmarks
+    status: queued
+    description: "Open initiative generating protein–ligand structures and affinity profiles at scale."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: tdc
+    name: "Therapeutics Data Commons (TDC)"
+    url: https://tdcommons.ai/
+    category: benchmarks
+    status: queued
+    description: "Standardised AI-ready datasets for drug design, affinity and ADMET."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: csar
+    name: "CSAR"
+    url: http://www.csardock.org/
+    category: benchmarks
+    status: queued
+    description: "High-resolution crystallographic complexes for evaluating scoring functions."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: fragalysis
+    name: "Fragalysis / XChem"
+    url: https://fragalysis.diamond.ac.uk/
+    category: benchmarks
+    status: queued
+    description: "Crystallographic data from open fragment-screening campaigns at Diamond."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: asap_discovery
+    name: "COVID Moonshot / ASAP Discovery"
+    url: https://asapdiscovery.org/
+    category: benchmarks
+    status: queued
+    description: "Open collaborative discovery: chemical series, affinities, synthesis and structures without IP barriers."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: rna_puzzles
+    name: "RNA-Puzzles"
+    url: https://rnapuzzles.org/
+    category: benchmarks
+    status: queued
+    description: "Blind community assessment of RNA tertiary structure prediction."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: target2035_sgc
+    name: "Target 2035 / SGC"
+    url: https://www.thesgc.org/
+    category: benchmarks
+    status: queued
+    description: "Selective chemical probes and negative controls for understudied targets."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: protac_db
+    name: "PROTAC-DB"
+    url: http://cadd.zju.edu.cn/protacdb/
+    category: emerging_modalities
+    status: queued
+    description: "Targeted-degradation chimeras: E3 ligases, warheads, linkers, ternary complexes and DC50/Dmax."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: surechembl
+    name: "SureChEMBL"
+    url: https://surechembl.org/
+    category: chemistry_admet
+    status: queued
+    description: "Chemical structures text-mined from patents."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: zinc
+    name: "ZINC (ZINC20 / ZINC-22)"
+    url: https://zinc.docking.org/
+    category: chemistry_admet
+    status: queued
+    description: "3D models of purchasable and make-on-demand compounds for virtual screening."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: enamine_real
+    name: "Enamine REAL Space"
+    url: https://enamine.net/compound-collections/real-compounds
+    category: chemistry_admet
+    status: queued
+    description: "Billions of make-on-demand molecules from validated reactions."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: chebi
+    name: "ChEBI"
+    url: https://www.ebi.ac.uk/chebi/
+    category: chemistry_admet
+    status: queued
+    description: "Ontology of chemical entities, endogenous metabolites and cofactors."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: tox21_toxcast
+    name: "Tox21 / ToxCast"
+    url: https://www.epa.gov/chemical-research/toxicity-forecasting
+    category: chemistry_admet
+    status: queued
+    description: "In vitro toxicity screening profiles, cellular stress and assay-interference flags."
+    since: 2026-09-25
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+  - id: ncbi_taxonomy
+    name: "NCBI Taxonomy"
+    url: https://www.ncbi.nlm.nih.gov/taxonomy
+    category: organism_context
+    status: queued
+    description: "Taxonomic names, ranks and lineages; would make strain–species relations exact (today they are read from UniProt names and lineages)."
+    since: 2026-09-25
+    proposed_by: "Sabueso devguide (risk recorded with #55, 2026-09-25)"

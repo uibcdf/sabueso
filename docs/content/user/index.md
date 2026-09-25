@@ -12,6 +12,7 @@ Start here:
 - {doc}`field_paths`
 - {doc}`selection_rules`
 - {doc}`storage`
+- {doc}`data_sources`
 - {doc}`testing`
 - {doc}`tools/index`
 
@@ -25,6 +26,7 @@ concepts
 field_paths
 selection_rules
 storage
+data_sources
 testing
 tools/index
 ```
