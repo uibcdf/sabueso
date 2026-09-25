@@ -84,6 +84,8 @@ MOLI owns the shared engineering baseline for its repositories. Applicable polic
 
 For repositories carrying the `python-package` capability, the baseline includes Python support, CI coverage, Ruff/pytest quality tooling, applicable UIBCDF support libraries, developer receptors, distribution, release-version semantics, repository badge evidence, and archival/DOI rules when applicable.
 
+Linux and macOS are the operating-system support baseline for public Python packages. Linux has a routine gating lane; macOS needs recurring tests and installed-package evidence before release. Windows is optional and is claimed only after equivalent evidence. Record current claims in the component README and in `moli.toml` for direct components; MolSysSuite records member claims internally. Follow [MOLI's Python CI policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_ci_policy.md) for cadence, release checks and bounded macOS exceptions.
+
 Review public API contracts for ArgDigest, optional or heavy dependencies for DepDigest, user-facing diagnostics for SMonitor, and physical quantities for PyUnitWizard. Use each library where its boundary exists; record justified non-applicability or a bounded exception in the component's review issue. Follow [MOLI's support-library policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_support_libraries_policy.md) for the exact applicability rule.
 
 ## Physical quantities and units
@@ -98,7 +100,7 @@ The official user-installation route for a public Python component is the `uibcd
 
 For a public release with Zenodo archival intent, maintain a README **Current release status** stating the exact version, archive evidence state, verified DOI links when they resolve, and the artifacts actually archived. `CITATION.cff` is the preferred metadata source; use `.zenodo.json` only when Zenodo-specific fields require it, because it takes precedence during ingestion. A release, integration delivery or registered DOI alone does not prove archival. Check the public record and both DOI destinations before claiming a verified archive or displaying a DOI badge. Order conditional badges as tests, coverage, deployed docs, release, DOI and verified distribution. Follow [MOLI's Zenodo policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/zenodo_policy.md) and [badge policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/repository_badges.md).
 
-When registering a new direct Python component, declare its `python-package` capability and `python_ecosystem_review` and `python_distribution_review` issues in `moli.toml`. The issues record applicability, adoption evidence, and exceptions. MOLI's registry validation and scheduled component audit guard this onboarding step.
+When registering a new direct Python component, declare its `python-package` capability, `python_ecosystem_review` and `python_distribution_review` issues, `supported_os`, and an owner-local `os_support_review` issue and state in `moli.toml`. An incubating component may have no supported-OS claim while the review is pending. The issues record applicability, adoption evidence, and exceptions. MOLI's registry validation and scheduled component audit guard this onboarding step.
 
 A component may add stricter local requirements. It must not silently contradict an applicable MOLI engineering policy; deviations require a tracked exception with rationale and an exit condition.
 
