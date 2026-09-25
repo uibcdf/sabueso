@@ -351,6 +351,21 @@ class Card:
             self, deck, other, other_deck, include_indirect, thresholds
         )
 
+    @arg_digest()
+    def compare_knowledge(
+        self,
+        other: "Card",
+        residue_map: Dict[int, int] | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """What this card and ``other`` both state, what only one states, and what they
+        state differently (#59). Positional features are compared only through
+        ``residue_map`` ({position here: position in other}, e.g. from a MolSysMT
+        alignment). See ``sabueso.core.card_diff``."""
+        from .card_diff import compare_knowledge
+
+        return compare_knowledge(self, other, residue_map)
+
     def get(self, field_path: str) -> Any:
         cur = self.sections
         for key in field_path.split("."):

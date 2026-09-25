@@ -183,6 +183,10 @@ This file records the current repository baseline so new developers can resume e
 - Deck revisions are content-addressed and pinnable (`sabueso:deck:<name>@sha256:…`).
   Decks record their membership, exclusions and derivation operations (#58).
 
+## Card Comparison (2026-09-25)
+- `card.compare_knowledge(other, residue_map=None)` compares two cards' knowledge,
+  with positions compared only through a residue mapping (#59).
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

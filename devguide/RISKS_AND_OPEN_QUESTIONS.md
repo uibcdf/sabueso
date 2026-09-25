@@ -76,6 +76,10 @@
 - **Scheme-1 curation records** (#62): a statement dropped by the old collision cannot
   be recovered from a store. Stores stay mixed, with scheme-1 and scheme-2 records,
   until every entity is applied or saved once.
+- **Card comparison scope** (#59): `compare_knowledge` takes protein cards, and
+  compares relationships by their objects only, not their qualifiers. Comparing
+  measured values per molecule is `compare_ligands`. Comparing two small-molecule
+  cards needs its own rules (stereochemistry, salts, tautomers) and is not offered.
 
 ## Open Questions
 - What are the default **selection rules** per field?

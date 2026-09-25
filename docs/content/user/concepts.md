@@ -34,6 +34,14 @@ source was consulted and states nothing (`not_stated`), it was not requested
 release and the basis. An absence is reported as a fact about a source, never as
 evidence against something.
 
+## Comparing two cards
+
+`card.compare_knowledge(other)` lists, per field, relationship predicate and knowledge
+state, what both cards state, what only one states, and what they state differently.
+Positional features are compared only when you pass `residue_map={position here:
+position there}`, for example from a MolSysMT alignment. The same number in two
+entries is not the same residue. Free text is never compared.
+
 ## Deck
 
 A `Deck` is a collection of Cards with batch operations:

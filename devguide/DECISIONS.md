@@ -426,3 +426,18 @@ uibcdf/sabueso#58.
   and `Deck.exclude(candidate, reason, by=...)` let a curator do the same.
 - **Derived decks record their operations** (`meta["operations"]`), and keep the
   membership of the cards they hold. `filter(predicate)` is marked not reproducible.
+
+## Comparing two cards (2026-09-25)
+uibcdf/sabueso#59; rule `card_knowledge_diff@1`.
+- `card.compare_knowledge(other, residue_map=None)` says, area by area, what both
+  protein cards state, what only one states, and what they state differently.
+  - Fields: list items are compared by their identity (`curation.ITEM_IDENTITY`), and
+    lists of plain values as values.
+  - Relationships: the objects both cards point at, and those only one does.
+  - Knowledge states: the ones that differ.
+- **Positions need a mapping.** The same number in two entries is not the same residue.
+  Positional features are `not_compared` without a residue mapping, and an item with
+  an unmapped position is `not_comparable`. The mapping comes from an alignment
+  (MolSysMT) and is recorded as the basis.
+- **Free text is `not_compared`,** as for curated claims (#43).
+- The comparison is a derived view, never a SourceAssertion.
