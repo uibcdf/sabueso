@@ -219,6 +219,10 @@ def build_entities(card: Any) -> Dict[str, Any]:
                     ref = f"{namespace}:{q[key]}"
                     g.add(ref, "small_molecule", predicate)
                     g.same(ref, obj)
+        elif predicate == "engages":
+            g.add(obj, "small_molecule", predicate)
+            if q.get("molecule_ref"):
+                g.same(obj, q["molecule_ref"])
         elif predicate == "has_bioactivity":
             g.add(
                 obj,

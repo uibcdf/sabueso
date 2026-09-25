@@ -86,6 +86,14 @@
 - **Model versions change** (#57): AlphaFold DB replaces models (v2 to v6 so far). A
   card records the version it saw, and a snapshot pins it. The coordinates of an older
   version may no longer be served, which MolSysMT consumers should expect.
+- **Engagement vocabulary** (#61): the mechanisms (`covalent`, `non_covalent`,
+  `allosteric`, `interface_disruption`, `unspecified`) are Sabueso's, not an ontology.
+  If Praxis or Nextia need a shared vocabulary, raise it in uibcdf/moli, and map these
+  terms onto it with a new schema version.
+- **Numbering of engaged residues** (#61): papers often number residues from a
+  construct or a structure, not from UniProt. The residue-code check catches most
+  slips, but it cannot catch a shift that lands on the same amino acid. Curators
+  should give the code whenever the paper does.
 
 ## Open Questions
 - What are the default **selection rules** per field?

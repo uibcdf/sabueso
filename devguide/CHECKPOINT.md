@@ -192,6 +192,10 @@ This file records the current repository baseline so new developers can resume e
   (`resolve_protein_card(..., predicted_structures=True)`, `Card.predicted_structures()`),
   apart from experimental structures (#57).
 
+## Curated Ligand Engagement (2026-09-25)
+- `card.add_literature_engagement(...)` records residues and mechanism a paper states
+  (`engages`), compared with observed PDBe-KB sites (#61).
+
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
 - LLM integration policy (provider, prompts, SourceAssertion tracking).

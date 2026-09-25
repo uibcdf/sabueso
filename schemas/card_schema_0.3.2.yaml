@@ -38,7 +38,8 @@ schema:
     valid 0.3.2 card without them. 0.3.2 also adds annotations.taxon_id,
     annotations.lineage and identifiers.gene_loci, and classified_in relationships to
     OrthoDB and eggNOG groups (uibcdf/sabueso#54), and has_predicted_structure
-    relationships to AlphaFold DB models (uibcdf/sabueso#57), all additive.
+    relationships to AlphaFold DB models (uibcdf/sabueso#57), and curated engages
+    relationships (uibcdf/sabueso#61), all additive.
 card_base:
   meta:
     card_id:

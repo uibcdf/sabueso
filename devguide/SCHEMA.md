@@ -219,6 +219,14 @@ A Relationship is first-class, traceable knowledge:
       Qualifiers: `model_version`, `tool`, `created`, `mean_plddt` (a 0–100 confidence
       score, not a quantity), `plddt_fractions`, `range` (UniProt positions) and
       `sequence_matches`. Never counted as an experimental structure.
+  - curated engagement (added in #61):
+    - `engages` (protein → the molecule's record, anchored by `molecule_ref`
+      `inchikey:<key>`), one relationship per curated statement (`statement_id`).
+      Qualifiers: `residues` (`position`, `residue` from the entry's sequence),
+      `mechanism` (`covalent`, `non_covalent`, `allosteric`, `interface_disruption`,
+      `unspecified`), `covalent_residue`, `method`, `publication`, `curated`.
+      Stated only by curators; compared with PDBe-KB `has_ligand_site` of the same
+      molecule.
   - ligand sites (added in #28):
     - `has_ligand_site` (protein → `pdb.ligand:<code>`), one relationship per
       protein–ligand pair, from PDBe-KB. Qualifiers: `ligand_name`, `numbering`

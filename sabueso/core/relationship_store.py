@@ -25,6 +25,7 @@ PREDICATES = frozenset(
         "superseded_by",
         "has_structure",
         "has_predicted_structure",  # protein -> predicted model (AlphaFold DB), #57
+        "engages",  # protein -> molecule: residues and mechanism a paper states, #61
         "annotated_with",  # protein -> GO term
         "classified_in",  # protein -> family / domain / superfamily / site entry
         "interacts_with",  # protein -> protein (physical interaction, e.g. IntAct)
@@ -45,6 +46,9 @@ IDENTITY_QUALIFIERS: Dict[str, tuple] = {
     # One relationship per measurement: the same molecule is often measured several
     # times (assays, papers), and each measurement keeps its own support and context.
     "has_bioactivity": ("activity_id",),
+    # One relationship per curated statement: two papers can state engagements of the
+    # same molecule (#61).
+    "engages": ("statement_id",),
 }
 
 

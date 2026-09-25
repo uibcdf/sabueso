@@ -258,6 +258,47 @@ class Card:
         return record
 
     @arg_digest()
+    def add_literature_engagement(
+        self,
+        molecule: Any,
+        residues: Any,
+        mechanism: str,
+        publication: str,
+        curator: str,
+        covalent_residue: int | None = None,
+        method: str | None = None,
+        locator: str | None = None,
+        quote: str | None = None,
+        eco_code: str | None = None,
+        curated_at: str | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Record the residues a publication says a compound acts on, and how (#61).
+
+        ``residues`` are UniProt positions of this entry, or ``{"position", "residue"}``
+        checked against its sequence. ``mechanism`` is one of ``curation.MECHANISMS``;
+        a covalent engagement names its ``covalent_residue``. ``method`` says how the
+        paper showed it (e.g. "mass spectrometry", "mutagenesis"). It is compared with
+        the ligand sites observed in structures; see ``sabueso.core.curation``.
+        """
+        from .curation import add_literature_engagement
+
+        return add_literature_engagement(
+            self,
+            molecule,
+            residues,
+            mechanism,
+            publication,
+            curator,
+            covalent_residue=covalent_residue,
+            method=method,
+            locator=locator,
+            quote=quote,
+            eco_code=eco_code,
+            curated_at=curated_at,
+        )
+
+    @arg_digest()
     def table(
         self, view: str, skip_digestion: bool = False, **options: Any
     ) -> List[Dict[str, Any]]:

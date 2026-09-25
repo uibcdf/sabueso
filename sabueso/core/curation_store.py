@@ -73,7 +73,22 @@ def _records_of(card: Any) -> List[Tuple[Dict[str, Any], str]]:
             "outcome": outcomes.get(assertion["id"]),
         }
         field_path = assertion["field_path"]
-        if field_path == "relationships.has_bioactivity":
+        if field_path == "relationships.engages":
+            stated = assertion["asserted_value"]
+            anchor = f"inchikey:{stated['molecule']['inchikey']}"
+            known = card.entity_identities.get(anchor) or {}
+            record.update(
+                kind="engagement",
+                molecule={
+                    **stated["molecule"],
+                    "records": sorted(known.get("records") or []),
+                },
+                residues=stated["residues"],
+                mechanism=stated["mechanism"],
+                covalent_residue=stated.get("covalent_residue"),
+                method=stated.get("method"),
+            )
+        elif field_path == "relationships.has_bioactivity":
             stated = assertion["asserted_value"]
             measurement = stated["measurement"]
             anchor = f"inchikey:{stated['molecule']['inchikey']}"
@@ -261,7 +276,16 @@ class CurationStore:
                 eco_code=record.get("eco_code"),
                 curated_at=record.get("curated_at"),
             )
-            if record["kind"] == "bioactivity":
+            if record["kind"] == "engagement":
+                result = card.add_literature_engagement(
+                    record["molecule"],
+                    record["residues"],
+                    record["mechanism"],
+                    covalent_residue=record.get("covalent_residue"),
+                    method=record.get("method"),
+                    **common,
+                )
+            elif record["kind"] == "bioactivity":
                 result = card.add_literature_bioactivity(
                     record["molecule"],
                     record["measurement_type"],

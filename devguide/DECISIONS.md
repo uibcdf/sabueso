@@ -453,3 +453,19 @@ uibcdf/sabueso#57.
 - `predicted_structures=True` is an opt-in enrichment. Its outcome is a knowledge
   state like any other: known, not stated (no model), not queried, or unavailable.
 - Sabueso records models; it never downloads coordinates (MolSysMT).
+
+## Curated ligand engagement (2026-09-25)
+uibcdf/sabueso#61.
+- `card.add_literature_engagement(molecule, residues, mechanism, publication, curator,
+  covalent_residue=None, method=None, ...)` records the residues a paper says a compound
+  acts on, and how. The result is an `engages` relationship, anchored by the molecule's
+  InChIKey.
+  - Residues are UniProt positions of the entry. A residue code given with a position
+    must match the entry's sequence, which catches numbering slips.
+  - A covalent engagement names its modified residue.
+- Compared with the structural ligand sites of the same molecule (PDBe-KB): shared
+  residues corroborate. Different residues are `not_comparable`, never a conflict,
+  because a site can differ between states or constructs. Without an observed site the
+  engagement is `new`.
+- `Card.ligand_sites()` shows curated engagements next to observed contacts, each with
+  its source. The curation store keeps them across rebuilds.

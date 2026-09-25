@@ -87,6 +87,15 @@ print(record["outcome"])  # new, corroborates, differs, not_comparable or not_co
     It does not change the class, which is read from the value itself. It does not change
     the comparison with ChEMBL either: both read the same paper, so they should state
     the same number.
+- **How a compound acts on residues.** `card.add_literature_engagement(molecule,
+  [{"position": 15, "residue": "Cys"}], "covalent", publication=..., curator=...,
+  covalent_residue=15, method="mass spectrometry")`.
+  - Positions are the entry's UniProt numbering. A residue code, when you give it,
+    must match the entry's sequence.
+  - The engagement is compared with the residues the same molecule contacts in
+    structures (PDBe-KB): shared residues corroborate. Different ones are "not
+    comparable", not a contradiction.
+  - It shows in `card.ligand_sites()["curated_engagements"]`.
 - **Where it shows.** `card.literature()` lists each publication's curated assertions
   with their outcome.
 - **Scope.** How a statement bears on a project's hypotheses is not Sabueso's: that is

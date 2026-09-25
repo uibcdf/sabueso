@@ -155,6 +155,15 @@ def fixture_cards() -> List[dict]:
             "direct",
             uncertainty={"kind": "sd", "value": "3 nM"},
         )
+        hstim.add_literature_engagement(
+            {"inchikey": "XBNHRNFODJOFRU-UHFFFAOYSA-N", "records": ["chembl:CHEMBL1"]},
+            [{"position": 12, "residue": "N"}],
+            "covalent",
+            "pubmed:1",
+            "shape",
+            covalent_residue=12,
+            method="shape",
+        )
         molecule, _ = sabueso.resolve(
             "pdb.ligand:BTS",
             chembl_client=chembl,

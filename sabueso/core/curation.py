@@ -1030,3 +1030,201 @@ def add_literature_bioactivity(
     }
     card.quality.setdefault("curation", []).append(record)
     return record
+
+
+#: How a publication says a compound acts on the residues it names (#61).
+MECHANISMS = (
+    "covalent",
+    "non_covalent",
+    "allosteric",
+    "interface_disruption",
+    "unspecified",
+)
+_THREE_TO_ONE = {
+    "ALA": "A", "ARG": "R", "ASN": "N", "ASP": "D", "CYS": "C", "GLN": "Q", "GLU": "E",
+    "GLY": "G", "HIS": "H", "ILE": "I", "LEU": "L", "LYS": "K", "MET": "M", "PHE": "F",
+    "PRO": "P", "SER": "S", "THR": "T", "TRP": "W", "TYR": "Y", "VAL": "V",
+}  # fmt: skip
+
+
+def _engaged_residues(card: Any, residues: Any) -> List[Dict[str, Any]]:
+    """``[{position, residue}]`` checked against the card's sequence.
+
+    A residue may be given as a position, or as ``{"position", "residue"}`` with a one-
+    or three-letter code, which must match the card's sequence at that position.
+    """
+    sequence = (card.get("sequence.primary") or {}).get("value") or ""
+    if not isinstance(residues, (list, tuple)) or not residues:
+        raise SchemaError("An engagement names at least one residue.")
+    out: Dict[int, Dict[str, Any]] = {}
+    for given in residues:
+        if isinstance(given, int) and not isinstance(given, bool):
+            position, stated = given, None
+        elif isinstance(given, dict) and isinstance(given.get("position"), int):
+            position, stated = given["position"], given.get("residue")
+        else:
+            raise SchemaError(
+                f"A residue is a position or {{'position', 'residue'}}, not {given!r}."
+            )
+        if position < 1 or (sequence and position > len(sequence)):
+            raise SchemaError(
+                f"Position {position} is outside the sequence ({len(sequence)} residues)."
+            )
+        actual = sequence[position - 1] if sequence else None
+        if stated is not None:
+            code = str(stated).strip().upper()
+            code = _THREE_TO_ONE.get(code, code)
+            if actual is not None and code != actual:
+                raise SchemaError(
+                    f"The paper's residue {stated} at {position} is {actual} in this "
+                    "entry's sequence: check the numbering (UniProt, 1-based)."
+                )
+        out[position] = {"position": position, "residue": actual or stated}
+    return [out[p] for p in sorted(out)]
+
+
+def add_literature_engagement(
+    card: Any,
+    molecule: Any,
+    residues: Any,
+    mechanism: str,
+    publication: str,
+    curator: str,
+    covalent_residue: int | None = None,
+    method: str | None = None,
+    locator: str | None = None,
+    quote: str | None = None,
+    eco_code: str | None = None,
+    curated_at: str | None = None,
+) -> Dict[str, Any]:
+    """Record the residues a publication says a compound acts on, and how (#61).
+
+    The engagement is an ``engages`` relationship anchored by the molecule's InChIKey.
+    It is compared with the ligand sites observed in structures (PDBe-KB
+    ``has_ligand_site``) of the same molecule: shared residues corroborate; different
+    residues do not contradict by themselves (a site can differ between states or
+    constructs) and are ``not_comparable``; no observed site is ``new``.
+    """
+    from .relationship_store import make_relationship
+
+    if mechanism not in MECHANISMS:
+        raise SchemaError(
+            f"Unknown mechanism {mechanism!r}; expected one of {list(MECHANISMS)}."
+        )
+    subject = _subject(card)
+    curated_at = curated_at or datetime.now(timezone.utc).date().isoformat()
+    engaged = _engaged_residues(card, residues)
+    positions = [r["position"] for r in engaged]
+    if mechanism == "covalent":
+        if covalent_residue not in positions:
+            raise SchemaError(
+                "A covalent engagement names its modified residue (covalent_residue), "
+                "among the residues."
+            )
+    elif covalent_residue is not None:
+        raise SchemaError("covalent_residue applies to covalent engagements only.")
+    identity = molecule_identity(molecule)
+    asserted: Dict[str, Any] = {
+        "molecule": {
+            "inchikey": identity["inchikey"],
+            "as_given": identity["as_given"],
+        },
+        "residues": positions,
+        "mechanism": mechanism,
+    }
+    if covalent_residue is not None:
+        asserted["covalent_residue"] = covalent_residue
+    if method:
+        asserted["method"] = method
+    field_path = "relationships.engages"
+    assertion = _literature_assertion(
+        field_path,
+        asserted,
+        publication,
+        subject,
+        curator,
+        locator,
+        quote,
+        eco_code,
+        curated_at,
+    )
+    base = {
+        "field": field_path,
+        "publication": publication,
+        "source_assertion_id": assertion["id"],
+    }
+    if card.source_assertion_store.get(assertion["id"]) is not None:
+        previous = next(
+            (
+                r
+                for r in card.quality.get("curation", [])
+                if r["source_assertion_id"] == assertion["id"]
+            ),
+            None,
+        )
+        return previous or {**base, "outcome": "already_recorded", "compared_with": []}
+
+    records = identity["records"]
+    shown = next(
+        (
+            r
+            for namespace in ("pdb.ligand:", "chembl:", "pubchem:")
+            for r in records
+            if r.startswith(namespace)
+        ),
+        f"inchikey:{identity['inchikey']}",
+    )
+    observed = [
+        rel
+        for rel in card.relationships("has_ligand_site")
+        if rel["object_ref"] in set(records)
+        and not (rel.get("qualifiers") or {}).get("curated")
+    ]
+    seen = {
+        p
+        for rel in observed
+        for r in (rel.get("qualifiers") or {}).get("residues") or []
+        for p in range(r.get("start") or 0, (r.get("end") or r.get("start") or 0) + 1)
+        if p
+    }
+    shared = sorted(seen & set(positions))
+    if not observed:
+        outcome = "new"
+    elif shared:
+        outcome = "corroborates"
+    else:
+        outcome = "not_comparable"
+
+    relationship = make_relationship(
+        subject,
+        "engages",
+        shown,
+        qualifiers={
+            "statement_id": "curated:" + assertion["id"].rsplit("_", 1)[-1],
+            "molecule_ref": f"inchikey:{identity['inchikey']}",
+            "residues": engaged,
+            "mechanism": mechanism,
+            "covalent_residue": covalent_residue,
+            "method": method,
+            "publication": publication,
+            "curated": True,
+        },
+        source_assertion_ids=[assertion["id"]],
+    )
+    card.source_assertion_store.add(assertion)
+    card.relationship_store.add(relationship)
+    card.register_identity(
+        f"inchikey:{identity['inchikey']}",
+        records,
+        "small_molecule",
+        {"by": "curation", "at": curated_at},
+    )
+    record = {
+        **base,
+        "relationship_id": relationship["id"],
+        "outcome": outcome,
+        "compared_with": [rel["id"] for rel in observed],
+        "shared_positions": shared,
+    }
+    card.quality.setdefault("curation", []).append(record)
+    return record
