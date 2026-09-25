@@ -14,7 +14,7 @@ itself states:
 Only standard InChIKeys anchor a molecule. A record without one (no structure, or a
 non-standard InChI) is reported as unanchored and never guessed. Two structures that
 differ only in charge, isotopes or stereochemistry have different standard InChIKeys and
-therefore different anchors (``devguide/pending_proposals/molecule_identity.md``).
+therefore different anchors (``devguide/archive/molecule_identity.md``).
 """
 
 from __future__ import annotations

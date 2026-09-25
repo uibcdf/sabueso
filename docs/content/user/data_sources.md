@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 17, queued 54, deferred 3, retired 3, out of scope 4.
+Summary: in use 17, queued 50, deferred 7, retired 3, out of scope 4.
 
 ## In use
 
@@ -44,9 +44,7 @@ Summary: in use 17, queued 54, deferred 3, retired 3, out of scope 4.
 | [RNA-Puzzles](https://rnapuzzles.org/) | Benchmarks, open challenges and open-science consortia | Blind community assessment of RNA tertiary structure prediction. | 2026-09-25 |
 | [Target 2035 / SGC](https://www.thesgc.org/) | Benchmarks, open challenges and open-science consortia | Selective chemical probes and negative controls for understudied targets. | 2026-09-25 |
 | [Therapeutics Data Commons (TDC)](https://tdcommons.ai/) | Benchmarks, open challenges and open-science consortia | Standardised AI-ready datasets for drug design, affinity and ADMET. | 2026-09-25 |
-| [BindingDB](https://www.bindingdb.org/) | Binding affinity and experimental bioactivity | Equilibrium binding affinities (Ki, Kd) and ITC data. | 2026-09-25 |
 | [PDBbind-CN](http://www.pdbbind.org.cn/) | Binding affinity and experimental bioactivity | 3D complexes paired with experimental binding affinities (core and refined sets). | 2026-09-25 |
-| [PubChem BioAssay](https://pubchem.ncbi.nlm.nih.gov/) | Binding affinity and experimental bioactivity | High-throughput and phenotypic screening results and dose–response curves. | 2026-09-25 |
 | [ChEBI](https://www.ebi.ac.uk/chebi/) | Chemical space, synthesis, ADMET and safety | Ontology of chemical entities, endogenous metabolites and cofactors. | 2026-09-25 |
 | [Enamine REAL Space](https://enamine.net/compound-collections/real-compounds) | Chemical space, synthesis, ADMET and safety | Billions of make-on-demand molecules from validated reactions. | 2026-09-25 |
 | [SureChEMBL](https://surechembl.org/) | Chemical space, synthesis, ADMET and safety | Chemical structures text-mined from patents. | 2026-09-25 |
@@ -60,12 +58,10 @@ Summary: in use 17, queued 54, deferred 3, retired 3, out of scope 4.
 | [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) | Organism, orthology and biological context | Taxonomic names, ranks and lineages; would make strain–species relations exact (today they are read from UniProt names and lineages). | 2026-09-25 |
 | [ASD (Allosteric Database)](http://mdl.shsmu.edu.cn/ASD/) | Binding sites, cavities and specialised families | Allosteric modulators, regulatory sites and conformational communication. | 2026-09-25 |
 | [Binding MOAD](https://bindingmoad.org/) | Binding sites, cavities and specialised families | High-resolution complexes linked to validated binding affinities. | 2026-09-25 |
-| [BioLiP](https://zhanggroup.org/BioLiP/) | Binding sites, cavities and specialised families | Curated, biologically relevant macromolecule–ligand interactions. | 2026-09-25 |
 | [BRENDA](https://brenda-enzymes.org/) | Binding sites, cavities and specialised families | Enzyme information: kinetics (Km, kcat), inhibitors, cofactors and conditions. | 2026-09-25 |
 | [CovPDB](https://bioinfo.fudan.edu.cn/CovPDB/) | Binding sites, cavities and specialised families | Covalent protein–ligand complexes, with nucleophilic residues and warheads. | 2026-09-25 |
 | [GPCRdb](https://gpcrdb.org/) | Binding sites, cavities and specialised families | GPCR structures, mutations, activation states and Ballesteros–Weinstein numbering. | 2026-09-25 |
 | [KLIFS](https://klifs.net/) | Binding sites, cavities and specialised families | Kinase pocket anatomy aligned to 85 reference positions, with DFG/αC conformations. | 2026-09-25 |
-| [M-CSA (Mechanism and Catalytic Site Atlas)](https://www.ebi.ac.uk/thornton-srv/m-csa/) | Binding sites, cavities and specialised families | Curated enzyme mechanisms, catalytic residues and their roles. | 2026-09-25 |
 | [mpstruc](https://blanco.biomol.uci.edu/mpstruc/) | Binding sites, cavities and specialised families | Membrane proteins of known structure, classified by topology and family. | 2026-09-25 |
 | [OPM (Orientations of Proteins in Membranes)](https://opm.phar.umich.edu/) | Binding sites, cavities and specialised families | Position and orientation of PDB structures in the lipid bilayer. | 2026-09-25 |
 | [Proteins.plus (DoGSiteScorer)](https://proteins.plus/) | Binding sites, cavities and specialised families | Pocket detection, physico-chemical descriptors and druggability scores (a computation service). | 2026-09-25 |
@@ -97,6 +93,10 @@ Summary: in use 17, queued 54, deferred 3, retired 3, out of scope 4.
 | [VEuPathDB services (expression by stage, phenotype screens)](https://veupathdb.org/) | A large connector; structured fields for biological context should be used first, through curation. | Curated biological-context fields are in use and a workflow needs them for many genes. | 2026-09-25 |
 | [BioGRID](https://thebiogrid.org/) | The API needs a personal access key; IntAct (via UniProt) and STRING cover current needs. | Genetic interactions are needed, or key management exists for deployments. | 2026-09-23 |
 | [DrugBank (open data)](https://go.drugbank.com/) | Licensing constrains redistribution and caching; only DrugBank ids are kept, through UniChem. | A licence compatible with Sabueso's caching and redistribution is confirmed. | 2026-09-23 |
+| [BioLiP](https://zhanggroup.org/BioLiP/) | Bulk downloads of a third-party pipeline, not a per-record service; the PDB subject-of-investigation flag already separates ligands from additives, and PDBe-KB gives contacts. | A batch import exists, or a question needs curated biologically relevant sites that PDBe-KB and the PDB flag do not give. | 2026-09-23 |
+| [M-CSA (Mechanism and Catalytic Site Atlas)](https://www.ebi.ac.uk/thornton-srv/m-csa/) | Evaluated: it links both TIMs to an entry but states catalytic residues and roles only in the numbering of a reference species; placing them on another sequence needs an alignment. | A residue mapping from an alignment (MolSysMT) can be applied to curated sites (#30). | 2026-09-23 |
+| [BindingDB](https://www.bindingdb.org/) | Overlaps ChEMBL; without an identity of a measurement across sources, shared measurements would look like independent confirmations. | A design for the identity of a measurement across sources exists (#66). | 2026-09-25 |
+| [PubChem BioAssay](https://pubchem.ncbi.nlm.nih.gov/) | Overlaps ChEMBL; without an identity of a measurement across sources, shared measurements would look like independent confirmations. | A design for the identity of a measurement across sources exists (#66). | 2026-09-25 |
 
 ## Retired
 

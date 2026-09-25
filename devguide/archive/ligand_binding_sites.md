@@ -1,9 +1,9 @@
 ---
 summary: Which residues each ligand contacts, from which source, and how that relates to the protein's annotated sites.
 issue: uibcdf/sabueso#28
-status: partial
+status: resolved
 opened: 2026-09-23
-closed:
+closed: 2026-09-25
 verification: measured
 area: [relationships, ligands, structures, pdbe-kb, rcsb, uniprot]
 blocked_by: []
@@ -99,9 +99,10 @@ Knowing that a molecule is active on a target is incomplete without knowing wher
 - [x] InterPro positional site residues (CDD family sites), placed by the source on each sequence.
 - [ ] BioLiP as a batch import, if a use appears.
 
-## Resolution
+## Resolution (2026-09-25)
 
-Partial, all on 2026-09-23:
-- implemented: plan steps 1 and 2, the RCSB instance contacts of step 4, the carrying of sites into the ligand comparison (step 3), and InterPro family sites;
-- evaluated and held back: M-CSA, blocked on residue mapping (#30);
-- open in uibcdf/sabueso#28: BioLiP.
+Closed. Beyond what was implemented on 2026-09-23 (PDBe-KB sites, RCSB instance contacts, the cross with annotated sites, InterPro family sites), curated ligand engagement was added in #61: the residues a paper says a compound acts on, and the mechanism, compared with the observed sites.
+
+The remaining sources are recorded in `devguide/sources/registry.yaml` as deferred, each with its reason and when to revisit it:
+- M-CSA: residues in the numbering of a reference species, which needs an alignment (#30);
+- BioLiP: bulk downloads only.

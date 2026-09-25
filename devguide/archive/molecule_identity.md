@@ -1,9 +1,9 @@
 ---
 summary: Small-molecule identity anchored at the standard InChIKey, linking structure ligands, measured molecules and other chemistry resources.
 issue: uibcdf/sabueso#25
-status: partial
+status: resolved
 opened: 2026-09-23
-closed:
+closed: 2026-09-25
 verification: measured
 area: [identity, small-molecules, chembl, pdb-ccd, unichem]
 blocked_by: []
@@ -128,9 +128,9 @@ Considered with the owner:
 - [x] The ligand of a TcTIM structure (BTS, 1SUX) and the molecule measured on TcTIM (CHEMBL1161789) resolve to one card.
 - [x] `max_phase` asserted by ChEMBL (item 5 of #25).
 - [x] Item 3: biological relevance of structure ligands, from the PDB "subject of investigation" flag.
-- [ ] Item 4: binding sites, moved to its own theme (uibcdf/sabueso#28, `devguide/pending_proposals/ligand_binding_sites.md`).
+- [ ] Item 4: binding sites, moved to its own theme (uibcdf/sabueso#28, `devguide/archive/ligand_binding_sites.md`).
 - [ ] Item 6: further bioactivity sources, after cross-source measurement identity is designed.
 
-## Resolution
+## Resolution (2026-09-25)
 
-Partial: items 1, 2, 3 and 5 were implemented on 2026-09-23. Items 4 and 6 remain open in uibcdf/sabueso#25.
+Closed. Items 1, 2, 3 and 5 were implemented on 2026-09-23 (InChIKey anchor, CCD, the PDB subject-of-investigation flag, `max_phase`). Item 4 became #28, which is resolved. Item 6, further bioactivity sources, needs the identity of a measurement across sources first, now designed in its own issue (#66). BindingDB and PubChem BioAssay are recorded as deferred in `devguide/sources/registry.yaml` until then. The rule on computable properties is in `devguide/DECISIONS.md`.

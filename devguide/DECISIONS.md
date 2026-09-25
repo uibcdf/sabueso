@@ -154,7 +154,7 @@ Agreed contract in `devguide/archive/entity_resolver.md` (uibcdf/sabueso#6):
 
 
 ## Small-molecule identity (2026-09-23)
-Decided by the Sabueso owner (uibcdf/sabueso#25, `devguide/pending_proposals/molecule_identity.md`):
+Decided by the Sabueso owner (uibcdf/sabueso#25, `devguide/archive/molecule_identity.md`):
 - **Anchor:** a small molecule is anchored at its standard InChIKey. Its card id is
   `sabueso:small_molecule:inchikey:<key>`.
 - **Links:** source records (`chembl:`, `pdb.ligand:`, and the DrugBank, PubChem, ChEBI
