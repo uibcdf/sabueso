@@ -24,7 +24,10 @@ compares two entries of related organisms and reports one finding, never a merge
    one (same length, at most ``MAX_DIFFERENT_FRACTION`` of positions differing, compared
    position by position) → ``possibly_same_as`` with the number of differences, for a
    person to review. Sequences of different lengths are not compared: aligning them
-   belongs to MolSysMT.
+   belongs to MolSysMT. When both entries state loci, but in databases that do not
+   overlap (NCBI Gene for one, an organism database for the other), the basis says so
+   (``gene_loci: not_comparable``, with each entry's databases): the gene layer could
+   not decide, and a strain variant cannot be told from a close paralog (#69).
 
 Every finding carries its basis. ``possibly_same_as`` is a flag for review, never an
 identity.
@@ -173,7 +176,16 @@ def compare(a: Dict[str, Any], b: Dict[str, Any]) -> Optional[Dict[str, Any]]:
             },
         }
     if sequence:
-        return {**finding, "finding": "possibly_same_as", "basis": sequence}
+        basis = dict(sequence)
+        if a["gene_loci"] and b["gene_loci"] and not databases:
+            # Both state loci, in databases that do not overlap (NCBI Gene here, an
+            # organism database there): the gene layer could not decide (#69).
+            basis["gene_loci"] = "not_comparable"
+            basis["loci_databases"] = [
+                sorted({d for d, _ in a["gene_loci"]}),
+                sorted({d for d, _ in b["gene_loci"]}),
+            ]
+        return {**finding, "finding": "possibly_same_as", "basis": basis}
     return None
 
 

@@ -122,6 +122,15 @@ def test_the_rule_in_isolation():
         _basis("b", 2, "X (strain S)", loci=[("DB", "g9")]),
     )
     assert found["finding"] == "possibly_same_as"
+    assert "gene_loci" not in found["basis"]  # same database: comparable, not shared
+    # Loci in databases that do not overlap: the gene layer could not decide (#69).
+    found = compare(
+        _basis("a", 1, "X", loci=[("TriTrypDB", "TcCLB.508647.200")]),
+        _basis("b", 2, "X (strain S)", loci=[("NCBI Gene", "3550449")]),
+    )
+    assert found["finding"] == "possibly_same_as"
+    assert found["basis"]["gene_loci"] == "not_comparable"
+    assert found["basis"]["loci_databases"] == [["TriTrypDB"], ["NCBI Gene"]]
     # More than 2% of positions different: no flag.
     assert (
         compare(
