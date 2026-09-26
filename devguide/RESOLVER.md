@@ -8,8 +8,11 @@
 This document defines the minimal **Resolver** contract for selecting canonical values from
 SourceAssertions (what external sources assert about a field).
 Versioning for resolver and selection rules follows **x.y.z**. Contract 0.2.0 renames the
-0.1.0 `evidences`/`evidence_ids` inputs and outputs to `assertions`/`source_assertion_ids`;
-the selection-rules format is unchanged and remains 0.1.0.
+0.1.0 `evidences`/`evidence_ids` inputs and outputs to `assertions`/`source_assertion_ids`.
+The packaged selection rules are version 0.2.0 (#10). They add `compare_within` and
+`numeric_agreement`, so that only comparable values are compared; itemised fields are a
+union. See `SELECTION_RULES_EXAMPLES.md`, which is authoritative where this contract is
+terser.
 
 ## Purpose
 - Take **all SourceAssertions** for a field and select a **canonical value** (or set of values).

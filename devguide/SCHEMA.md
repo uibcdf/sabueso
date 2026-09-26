@@ -1,12 +1,18 @@
 # Sabueso — Card Schema Notes
 
 ## Schema Location
-The frozen draft schema lives at:
-- `schemas/card_schema.yaml`
-The formal schema (versioned) lives at:
-- `schemas/card_schema_0.3.4.yaml` (current; `card_schema_0.3.3.yaml`, the schema of release 0.3.1; `card_schema_0.3.2.yaml`, the schema of release 0.3.0, `card_schema_0.3.1.yaml`, the schema of release 0.2.0, `card_schema_0.3.0.yaml`, the schema of releases 0.1.0 and 0.1.1, and `card_schema_0.2.0.yaml` are kept as history)
-
-This is a **conceptual** schema meant to be refined into formal validation later.
+- **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
+  - `0.3.4` is current, and is the schema of release 0.4.0;
+  - `0.3.3` is the schema of release 0.3.1;
+  - `0.3.2` of release 0.3.0;
+  - `0.3.1` of release 0.2.0;
+  - `0.3.0` of releases 0.1.0 and 0.1.1;
+  - `0.2.0` was never released.
+  Published versions are fixed. Each has a frozen card and a recorded shape
+  (`schemas/card_shape_<version>.json`).
+- **The conceptual draft** (`schemas/card_schema.yaml`), kept as the design the formal
+  schemas grew from. Some of its sections are still unbuilt, such as the clinical layer
+  (`ROADMAP.md`).
 
 ## Nested Structure
 Cards are **nested** to preserve hierarchy and order. Each card type (protein, peptide, small molecule) inherits from a shared base.
@@ -170,8 +176,11 @@ not part of it. Views are Python API, not schema.
   - for a published version (it has a frozen card), bump `CARD_SCHEMA_VERSION`, add
     `schemas/card_schema_<version>.yaml`, and record the new shape. `--write` refuses to
     rewrite a published shape.
-Card versions and snapshots, which Nextia needs to pin historical knowledge, are not
-implemented yet.
+Card versions and snapshots, which Nextia needs to pin historical knowledge, exist
+since #7 and #27: content-addressed snapshots, pinned references and the
+`KnowledgeStore` (`STORAGE_LAYOUT.md`). Cards of older schemas of the same line are
+converted by `sabueso.migrate_card`, which records their gaps (#51). No migration
+between lines exists yet.
 
 ## Relationship Contract (MVP)
 Agreed in `devguide/archive/entity_resolver.md` (uibcdf/sabueso#6) and

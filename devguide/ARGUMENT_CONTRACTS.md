@@ -23,23 +23,44 @@ support-library policy requires (uibcdf/sabueso#31) and as the sibling component
 
 ## Decorated functions
 
-- Tools: `resolve`, `resolve_protein_card`, `resolve_molecule_card`, `ligand_deck`, `ambiguity_deck`.
-- Card views and operations: `Card.bioactivities`, `Card.structures`, `Card.ligands`,
-  `Card.compare_ligands`, `Card.extract`. `Card.compare` and `Deck.compare` reach
-  their field paths through `Card.extract`.
-- Deck operations: `Deck.summarize`.
-- Resolver: `EntityResolver(uniprot_client, policy, rcsb_client)`.
-- SQLite storage, where the table name is interpolated into SQL: `save_card_sqlite`,
-  `load_card_sqlite`, `save_deck_sqlite`, `read_deck_sqlite`, `load_deck_sqlite`.
-  `Card.to_sqlite` and `Deck.to_sqlite` go through them.
-- `Card.from_sqlite` and `Deck.from_sqlite` are classmethods. ArgDigest does not wrap
-  those cleanly (uibcdf/argdigest#19), so the storage readers they call digest `table`
-  directly with the same digester.
+`tests/core/test_argument_contracts_offline.py` discovers them. It finds every `get_*`
+of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
+`KnowledgeStore` and `CurationStore`, so that a new one cannot miss its digesters. As of
+2026-09-26 they are:
 
-Not decorated, because the only constraints are ordinary types: the JSON storage helpers
-(a path and a card or deck), `Card.get`/`set`/`quantity` (one field path), `Deck.sort`,
-`filter` and `map`. `Card.expand` is not implemented and raises `NotImplementedError`.
-It used to return an empty Deck, which read as "nothing related".
+- **Tools:** `resolve`, `resolve_protein_card`, `resolve_molecule_card`, `ligand_deck`,
+  `ambiguity_deck`, `to_dataframe`, and every source-access function (`get_*`,
+  `uniprot.search`).
+- **Card views and operations:**
+  - `bioactivities`, `structures`, `ligands`, `compare_ligands`, `compare_knowledge`;
+  - `claims`, `table`, `extract`;
+  - the curation methods (`add_literature_*`).
+  `Card.compare` and `Deck.compare` reach their field paths through `Card.extract`.
+- **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,
+  `group_by_rank`.
+- **KnowledgeStore:** `save`, `load`, `history`, `source_assertion`, `relationship`,
+  `relationships`, `save_deck`, `load_deck`, `deck_history`, `import_card_table`.
+- **Resolver:** `EntityResolver(uniprot_client, policy, rcsb_client, ncbi_gene_client)`.
+- **SQLite storage**, where the table name is interpolated into SQL:
+  - `save_card_sqlite`, `load_card_sqlite`;
+  - `save_deck_sqlite`, `read_deck_sqlite`, `load_deck_sqlite`.
+  `Card.to_sqlite` and `Deck.to_sqlite` go through them.
+- **Classmethods.** `Card.from_sqlite` and `Deck.from_sqlite` are classmethods, which
+  ArgDigest does not wrap cleanly (uibcdf/argdigest#19). The storage readers they call
+  digest `table` directly, with the same digester.
+
+Not decorated, because their only constraints are ordinary types, or because a wrong
+value fails loudly instead of answering plausibly:
+- the JSON storage helpers, which take a path and a card or deck;
+- `Card.get`, `set`, `quantity`, `quantity_columns`, `relationships`, `entity`;
+- `Deck.add`, `extend`, `exclude`, `basis`, `sort`, `filter`, `map`, `in_lineage`,
+  `group_by`, `intersect`, `difference`;
+- `CurationStore`'s methods.
+
+A method whose wrong value would answer plausibly (a typo that returns an empty result)
+must be decorated. `claims(topic)` and `group_by_rank(rank)` were found missing on
+2026-09-26 and are now decorated. `Card.expand` is not implemented and raises
+`NotImplementedError`; it used to return an empty Deck, which read as "nothing related".
 
 Rules for all of them:
 

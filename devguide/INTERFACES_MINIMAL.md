@@ -1,7 +1,8 @@
 # Sabueso — Minimal Interfaces (Core)
 
-This document defines the **minimal internal interfaces** for a stable Sabueso core.
-These are contracts only (no implementation).
+This document defines the **minimal interfaces** of the Sabueso core that other code
+may rely on. They are implemented, and this document is kept true to the code
+(`PUBLIC_API.md` lists the whole public surface, including views).
 
 ## Card
 **Purpose:** Resolved knowledge about a single entity, linked to its SourceAssertions.
@@ -20,11 +21,14 @@ These are contracts only (no implementation).
 - `set(field_path: str, value: Any, source_assertion_ids: list[str]) -> None`
 - `extract(field_paths: list[str]) -> dict`
 - `compare(other_card: Card, fields: list[str] | None = None) -> dict`
-- `derive_deck(kind: str) -> Deck`
 - `list_fields() -> list[str]`
 - `to_dict() -> dict` *(includes `source_assertion_store` and `relationship_store`)*
 - `relationships(predicate=None, object_ref=None) -> list[Relationship]`
 - `to_deck() -> Deck`
+- `snapshot_id() -> str` and `pinned_ref() -> str` *(content address and
+  `<card_id>@sha256:…`)*
+- `Card.from_dict(data) -> Card` *(checks the schema version and the quantities seal)*
+- Views (derived knowledge, each with its rule) are listed in `PUBLIC_API.md`.
 
 ## Deck
 **Purpose:** Collection of Cards with consistent operations.
@@ -34,16 +38,17 @@ These are contracts only (no implementation).
 - `meta: dict` (optional)
 
 **Methods**
-- `add(card: Card) -> None`
-- `extend(cards: list[Card]) -> None`
-- `get_card(index: int) -> Card`
-- `filter(predicate: Callable[[Card], bool]) -> Deck`
-- `extract(predicate: Callable[[Card], bool]) -> Deck`
-- `sort(key: str) -> Deck`
-- `map(fn: Callable[[Card], Any]) -> list[Any]`
-- `compare(other_deck: Deck, key_fields: list[str]) -> dict`
-- `summarize(fields: list[str]) -> list[dict]`
-- `to_list() -> list[dict]`
+- `add(card: Card, basis: dict | None = None) -> None`, `extend(cards) -> None`,
+  `exclude(candidate, reason, by=None) -> None`, `basis(card_id) -> dict | None`
+- `filter(predicate) -> Deck`, `sort(key: str, reverse=False) -> Deck`,
+  `intersect(other) -> Deck`, `difference(other) -> Deck`, `in_lineage(taxon) -> Deck`
+  *(derived decks record the operation in `meta["operations"]`)*
+- `group_by(key: str) -> dict[Any, Deck]`, `group_by_rank(rank: str) -> dict[Any, Deck]`
+- `map(fn) -> list[Any]`, `compare(other_deck, key_fields) -> dict`,
+  `summarize(fields) -> list[dict]`
+- `ids() -> list[str]`, `snapshot_id() -> str`, `to_list() -> list[dict]`
+- Deck views (`identity_audit`, `structure_inventory`, `unique_names`) are listed in
+  `PUBLIC_API.md`.
 
 ## SourceAssertionStore
 **Purpose:** Registry of the SourceAssertions referenced by a card. A SourceAssertion
@@ -80,14 +85,18 @@ Implemented in `sabueso/resolver/entity_resolver.py` for UniProt accessions and 
 name + organism searches (MVP steps 2–3).
 
 **Methods**
-- `EntityResolver(uniprot_client=None, policy="prefer_reviewed@1", rcsb_client=None)`
+- `EntityResolver(uniprot_client=None, policy="prefer_reviewed@1", rcsb_client=None,
+  ncbi_gene_client=None)` *(NCBI Gene is asked only about candidates whose gene loci
+  are in databases that do not overlap, #69)*
   *(RCSB defaults to `OnlineRCSBClient`; `FixtureRCSBClient` serves saved GraphQL
   entries)* *(UniProt defaults to
   `OnlineUniProtClient`; `FixtureUniProtClient` serves saved REST responses; `policy=None`
   disables preferences so several matches stay ambiguous)*
 - `resolve(query: EntityQuery | str) -> EntityResolution`
 - `sequence_identity_link(entry_a, entry_b) -> Relationship | None` *(derived
-  `possibly_same_as` for identical sequences within one organism; never across organisms)*
+  `possibly_same_as` by rule `protein_identity_audit@1`: a shared gene locus, or an
+  identical or near-identical sequence within related organisms; never across unrelated
+  organisms, never between distinct loci of one genome)*
 
 **EntityQuery**
 - `identifier` *(e.g. `P60174`, `uniprot:P60174-3`, `pdb:1TCD`)*
@@ -101,12 +110,13 @@ name + organism searches (MVP steps 2–3).
 - `candidates`: when ambiguous, `[{entity_ref, basis}]`
 - `alternatives`: non-chosen candidates when resolved
 - `policy`: named preference policy, when one was applied
-- `identity_links`: Relationships (`same_as`, `superseded_by`, `isoform_of`)
+- `identity_links`: Relationships (`same_as`, `superseded_by`, `isoform_of`,
+  `possibly_same_as`)
 - `source_assertions`: the UniProt SourceAssertions supporting those links
 - `related`: for a PDB entry, the protein entities its polymer entities map to
   (`[{entity_ref, predicate: has_structure, polymer_entities}]`)
 - `decision`: rules applied, sources consulted (with outcome or retrieval time), query,
-  Sabueso version
+  Sabueso version, and `identity_audit` (the findings among the candidates of a search)
 
 ## SmallMoleculeCards anchored at the InChIKey
 Implemented in `sabueso/tools/card/small_molecule.py` (#25); `resolve_molecule_card` is

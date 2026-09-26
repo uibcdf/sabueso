@@ -138,6 +138,10 @@
   flag decides `ligand_of_interest`. It is missing for some older entries (`unstated`)
   and can mark a buffer component. The inventory groups by these states; it must never
   be read as a recommendation.
+- **The rank vocabulary is Sabueso's copy of NCBI's.** `group_by_rank` refuses a rank
+  outside `NCBI_RANKS` (`_private/argdigest/argument/rank.py`), so that a typo is not
+  answered with an empty grouping. A rank NCBI adds later (as "realm" and "cellular
+  root" were) is refused until it is added there.
 - **One request per PDB entry.** `structures="all"` fetches entries one by one. A
   protein with hundreds of entries (kinases, proteases) will be slow and may meet rate
   limits. RCSB GraphQL accepts `entries(entry_ids: [...])`; batch when that is felt.
@@ -154,9 +158,18 @@
   names across a deck is ever added, it must report the coincidences, never merge them.
 
 ## Open Questions
-- What are the default **selection rules** per field?
-- Should local cache include partial cards or only complete cards?
-- How to handle **ambiguous inputs** (e.g., common names)?
-- What is the **schema versioning policy** (major/minor compatibility rules)?
-- What is the **local cache policy** (raw sources vs cards vs both) given licensing constraints?
 - What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?
+  An LLM output would be stored as a SourceAssertion whose source is the model, the
+  prompt and the documents it read, never as Evidence. Nothing is decided beyond that.
+- Should Sabueso keep a **raw-payload cache** for heavy enrichments, and how would
+  licences constrain it (`CACHE_POLICY.md`)?
+- Which **reference form** will MOLI agree for cited knowledge (uibcdf/moli#3, #53)?
+- How does **derived knowledge promoted by a project** live in Sabueso, if at all
+  (uibcdf/moli#17)?
+
+Answered since the first list (2026-01):
+- default selection rules: `SELECTION_RULES_EXAMPLES.md` (#10);
+- ambiguous inputs: they are reported, never chosen (`DATA_FLOW.md`, #55);
+- the schema versioning policy: `SCHEMA.md` (#42), and migration (#51);
+- the local store: `CACHE_POLICY.md`, `STORAGE_LAYOUT.md` (#7, #27). Cards are stored
+  whole, so the question of partial cards does not arise.

@@ -16,6 +16,11 @@ This file documents concrete risks and mitigation strategies.
   - Assay records are already shared per assay.
   - A target with tens of thousands of activities would give cards of tens of MB.
   - Storage re-evaluation: uibcdf/sabueso#19.
+- The same card with every source of 0.4.0 weighs about 2.8 MB of indented JSON
+  (2026-09-25). The build asks ChEMBL for all its records, plus BindingDB and PubChem
+  BioAssay (1002 PubChem records, whose declared copies pull in the ChEMBL assays they
+  name). The frozen card of schema 0.3.4 was kept at 380 KB by leaving PubChem BioAssay
+  out and limiting ChEMBL to 25 records.
 
 ## Mitigations (Recommended)
 1) **Lazy SourceAssertion loading**
@@ -38,9 +43,12 @@ This file documents concrete risks and mitigation strategies.
    - Index SourceAssertions by field path for quick retrieval.
    - Cache frequently used SourceAssertion subsets.
 
-## Proposal under evaluation
-- A normalized SQLite store (cards, SourceAssertions and relationships as rows, JSON/JSONL
-  kept for exchange): uibcdf/sabueso#27, `devguide/archive/native_store.md`.
+## Implemented
+- The `KnowledgeStore` (since 0.3.0; uibcdf/sabueso#27, `devguide/archive/native_store.md`)
+  is a normalized SQLite store. SourceAssertions and relationships are rows shared by
+  content across revisions and cards, so storing many revisions of a large card does not
+  multiply its size. The card itself is still whole in memory, so mitigations 1–4 remain
+  open for very large targets.
 
 ## Open Decisions
 - Which mitigation(s) will be the default for 1.0.0?

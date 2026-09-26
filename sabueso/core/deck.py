@@ -152,7 +152,10 @@ class Deck:
             for value, cards in members.items()
         }
 
-    def group_by_rank(self, rank: str) -> Dict[Any, "Deck"]:
+    @arg_digest()
+    def group_by_rank(
+        self, rank: str, skip_digestion: bool = False
+    ) -> Dict[Any, "Deck"]:
         """Decks of the cards whose organism falls in the same taxon of ``rank`` (e.g.
         ``"genus"``, ``"family"``), from NCBI Taxonomy (``annotations.taxonomy``, #67).
         Cards without that information, or without a taxon of that rank, are grouped

@@ -74,7 +74,38 @@ SOURCE_FUNCTIONS = [
     _stringdb.get_partners,
 ]
 
+
+def _discovered():
+    """Every ``get_*`` of ``sabueso.tools.db`` and every digested public method of the
+    core objects, so that a new public function cannot miss its digesters unnoticed
+    (the hand-written lists above had fallen behind by 2026-09-26)."""
+    import pkgutil
+
+    import sabueso.tools.db as db
+    from sabueso import CurationStore, KnowledgeStore
+
+    found = []
+    for info in pkgutil.iter_modules(db.__path__):
+        if info.name.startswith("_"):
+            continue
+        module = importlib.import_module(f"sabueso.tools.db.{info.name}")
+        found += [
+            f
+            for name, f in vars(module).items()
+            if (name.startswith("get_") or name == "search")
+            and callable(f)
+            and getattr(f, "__module__", None) == module.__name__
+        ]
+    for cls in (Card, Deck, KnowledgeStore, CurationStore):
+        for name, f in vars(cls).items():
+            f = getattr(f, "__func__", f)
+            if not name.startswith("_") and callable(f) and inspect.unwrap(f) is not f:
+                found.append(f)
+    return found
+
+
 PUBLIC_TOOLS = [
+    *_discovered(),
     *SOURCE_FUNCTIONS,
     resolve,
     resolve_protein_card,
@@ -283,3 +314,13 @@ def test_expand_is_not_implemented_rather_than_empty(protein):
     # It returned an empty Deck, which read as "nothing related".
     with pytest.raises(NotImplementedError):
         protein.expand("structures")
+
+
+def test_a_misspelt_topic_or_rank_is_refused_not_answered_empty(protein):
+    # Both used to answer silently: no claims, and every card in the None group.
+    with pytest.raises(ArgumentError):
+        protein.claims("interfase")
+    with pytest.raises(ArgumentError):
+        Deck([protein]).group_by_rank("genera")
+    assert protein.claims()["items"] == []
+    assert list(Deck([protein]).group_by_rank("Genus")) == [None]  # no taxonomy asked

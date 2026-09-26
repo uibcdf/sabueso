@@ -8,9 +8,13 @@ Sabueso has three public layers:
 
 ## One module per source
 
-Each module holds the source's clients and its public `get_*` functions: `uniprot`,
-`rcsb`, `chembl`, `pubchem`, `interpro`, `pdbe_kb`, `pdb_ccd`, `unichem`, `stringdb`, `alphafold`. Card
-building uses the same clients, so there is one way to query each source.
+Each module holds the source's clients and its public `get_*` functions:
+- `uniprot`, `rcsb`, `pdb_ccd`, `pdbe_kb`, `interpro`, `alphafold`;
+- `chembl`, `bindingdb`, `pubchem`, `pubchem_bioassay`, `unichem`;
+- `stringdb`, `ncbi_taxonomy`, `ncbi_gene`.
+Card building uses the same clients, so there is one way to query each source. The
+registry (`sources/registry.yaml`) must list each module as `in_use`, and a test checks
+it.
 `sabueso.resolver.uniprot_client` and `rcsb_client` are aliases until 1.0.
 
 ## Client protocol
@@ -20,9 +24,13 @@ building uses the same clients, so there is one way to query each source.
   - `Fixture<Source>Client(directory="temp_data", retrieved_at="fixture", failing=None)`
     reads saved responses from `<directory>/<source>/...`.
   - `failing` simulates a failing source for the given ids.
-- Methods are named after what they return (`fetch_entry`, `bioactivities`, `molecules`,
-  `components`, `compound`, `site_residues`, `ligand_sites`, `interface_residues`,
-  `partners`, `search`). Each returns the record together with `retrieved_at`, and with
+- Methods are named after what they return:
+  - `fetch_entry`, `fetch_structure`, `search`;
+  - `bioactivities`, `assay_activities`, `molecules`, `ligands`, `assays`;
+  - `components`, `compound`, `compound_by_source`;
+  - `site_residues`, `ligand_sites`, `interface_residues`;
+  - `partners`, `prediction`, `taxa`, `gene`, and `version` where a source states its
+    release. Each returns the record together with `retrieved_at`, and with
   the source release when the source states one.
 - Errors:
   - `RecordNotFoundError`: the source answered and holds no such record;

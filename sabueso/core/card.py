@@ -299,7 +299,10 @@ class Card:
             curated_at=curated_at,
         )
 
-    def claims(self, topic: str | None = None) -> Dict[str, Any]:
+    @arg_digest()
+    def claims(
+        self, topic: str | None = None, skip_digestion: bool = False
+    ) -> Dict[str, Any]:
         """Curated free-text claims, by topic, with their provenance (#43)."""
         node = self.get("literature.claims") or {}
         items = []

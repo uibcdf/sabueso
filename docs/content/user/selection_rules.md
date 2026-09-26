@@ -1,45 +1,43 @@
-# Selection Rules (Canonical Resolver Policy)
+# Selection Rules
 
-This page describes the current selection behavior used by the Resolver
-(version 0.1.0).
+How Sabueso chooses the value it shows for a field when several sources state it. The
+packaged rules are version 0.2.0.
 
-## General Policy
+## General policy
 
-- Any discrepancy (multiple distinct values for the same field) is always reported.
-- Resolver selects canonical values while preserving every SourceAssertion.
-- Selection behavior is controlled by versioned `selection_rules`.
+- **Every field is resolved from its SourceAssertions**, and none is ever discarded.
+  The card records the rules it was resolved with (`card.selection_rules`); a project
+  may pass its own.
+- **Itemised fields are a union.** When each assertion states one item of a list (a
+  subcellular location, a binding site, a reaction), the items do not compete: the field
+  is their union, each item traced to its assertion.
+- **Only comparable values are compared.** Disagreements among comparable assertions go
+  to `quality.conflicts`. Values that are not comparable (another method, representation
+  or source) go to `quality.alternatives`, visible and never hidden.
+- **Support is every agreeing assertion**: the selected value cites all the assertions
+  that state it, from every source that agrees.
+- **Priority** (`priority_sources`: UniProt, ChEMBL, PubChem, PDB CCD, InterPro) chooses
+  which comparable value is shown. It never decides identity and never hides the others.
 
-## Representative Field Rules
+## Representative field rules
 
-1. Protein domains (`annotations.domains`)
+- **Molecular weight and TPSA** — `numeric_agreement: stated_precision`: two numbers
+  agree when they are equal at the coarser precision their sources wrote (ChEMBL
+  `"824.97"` and PubChem `"825.0"` agree at one decimal).
+- **logP and rotatable bonds** — `compare_within: source_metadata.method`: ChEMBL's ALogP
+  and PubChem's XLogP3 are two quantities, not a disagreement. Sabueso never recomputes a
+  property to reconcile sources.
+- **SMILES** — `compare_within: source.name`: SMILES from two toolkits are different
+  strings for one molecule, so they are compared only within one source. A molecule's
+  identity is its standard InChIKey.
+- **Catalytic activity** — by source priority; **binding sites** and **domains** —
+  lists (`allow_multiple`).
 
-- Priority sources: InterPro -> CATH -> SCOPe -> TED
-- `allow_multiple = true`
+The rationale and more examples are in the developer guide
+(`devguide/SELECTION_RULES_EXAMPLES.md`).
 
-2. Catalytic activity (`annotations.catalytic_activity`)
+## Machine-readable rules
 
-- Priority source: UniProt
-- `allow_multiple = false`
-
-3. Molecular weight (`properties.physchem.molecular_weight`)
-
-- Strategy: `most_recent`
-- `allow_multiple = false`
-
-4. SMILES (`identifiers.smiles`)
-
-- Priority sources: ChEMBL -> PubChem
-- `allow_multiple = false`
-
-5. Binding sites (`features_positional.binding_site`)
-
-- `allow_multiple = true`
-
-## Machine-Readable Rules
-
-Canonical machine-readable rules are published at:
-
-- `docs/content/user/selection_rules.json`
-- `sabueso/resolver/selection_rules.json`
-
-These files are intended for programmatic use by tools, agents, and automation.
+The rules are published for tools and agents at `docs/content/user/selection_rules.json`,
+identical to the packaged `sabueso/resolver/selection_rules.json` (a test keeps them
+equal).

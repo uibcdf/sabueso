@@ -33,3 +33,19 @@ def test_every_runtime_data_file_is_declared_as_package_data():
         if f not in NOT_SHIPPED and not any(fnmatch.fnmatch(f, pat) for pat in patterns)
     ]
     assert undeclared == []
+
+
+def test_the_published_selection_rules_are_the_packaged_ones():
+    # The user guide publishes the rules for tools and agents; a stale copy there went
+    # unnoticed from 0.2.0 of the rules (#10) until 2026-09-26.
+    import json
+
+    packaged = json.loads(
+        (PACKAGE / "resolver" / "selection_rules.json").read_text(encoding="utf-8")
+    )
+    published = json.loads(
+        (ROOT / "docs" / "content" / "user" / "selection_rules.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert published == packaged

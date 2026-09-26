@@ -14,6 +14,7 @@ from sabueso.tools.db import (
     bindingdb,
     chembl,
     interpro,
+    ncbi_gene,
     ncbi_taxonomy,
     pdb_ccd,
     pdbe_kb,
@@ -34,6 +35,9 @@ CALLS = {
     ),
     "bindingdb.get_affinities": lambda: bindingdb.get_affinities(
         "P60174", client=bindingdb.FixtureBindingDBClient("temp_data")
+    ),
+    "ncbi_gene.get_gene": lambda: ncbi_gene.get_gene(
+        "3550449", client=ncbi_gene.FixtureNCBIGeneClient("temp_data")
     ),
     "ncbi_taxonomy.get_taxon": lambda: ncbi_taxonomy.get_taxon(
         "5693", client=ncbi_taxonomy.FixtureNCBITaxonomyClient("temp_data")

@@ -19,7 +19,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - The recorded shape is `schemas/card_shape_0.3.4.json`.
 - **Unreleased on main:**
   - inventory grouping keys and residue maps (#70);
-  - NCBI Gene for identity across gene databases (#69).
+  - NCBI Gene for identity across gene databases (#69);
+  - `claims(topic)` and `group_by_rank(rank)` refuse misspelt values;
+  - the selection rules published in the user guide match the packaged ones (0.2.0).
 
 ## Package layout
 
@@ -57,7 +59,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 717 tests passed, 15 online tests deselected (2026-09-26). Run with
+- Offline suite: 720 tests passed, 15 online tests deselected (2026-09-26). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.

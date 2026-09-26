@@ -41,9 +41,15 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 ### RCSB PDB — polymer-entity mapping (GraphQL)
 - **Status**: implemented (uibcdf/sabueso#6, step 4b)
 - **Access**: online GraphQL (`OnlineRCSBClient`), saved entries (`FixtureRCSBClient`, `temp_data/rcsb/`)
-- **Quality**: green for the listed coverage, verified on 1HTI, 1KLG and 1TCD
+- **Quality**: green for the listed coverage. Verified on 1HTI, 1KLG, 1TCD, 1SUX, 2OMA, 2VOM, 3Q37, 4HHP and 4UNK, and live on every entry of TcTIM and HsTIM (2026-09-25).
 - **Coverage**:
   - `has_structure` relationships per UniProt accession aligned to polymer entities: chains, UniProt-numbered ranges, method, resolution;
+  - since schema 0.3.4, what choosing a structure needs:
+    - R-free and R-work, deposit and release dates;
+    - the construct: length, expression host and tags;
+    - mutations as RCSB marks them, placed in UniProt numbering;
+    - sequence differences against the UniProt sequence;
+    - per chain, the UniProt ranges with coordinates (`SCHEMA.md`);
   - polymer entities, the other entities present, and bound ligands;
   - structure facts keep `pdb:<id>` as SourceAssertion subject;
   - `EntityResolver` resolves `pdb:<id>` to the structure record and its proteins.
@@ -125,6 +131,13 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Quality**: green for the listed coverage, verified on T. cruzi (species 5693), its strain CL Brener (353153, whose ancestors include 5693) and Homo sapiens
 - **Coverage**: `annotations.taxonomy`, the organism's taxon with its rank and every ancestor with name and rank; two requests per card (the taxon, then its ancestors)
 - **Notes**: no data release is stated (only the API version); licence: US public domain (NLM policy).
+
+### NCBI Gene — gene products (identity across gene databases)
+- **Status**: implemented, consulted by the resolver's identity audit with `resolve(..., ncbi_gene=True)` (uibcdf/sabueso#69)
+- **Access**: Entrez E-utilities `efetch` (XML), no key (`OnlineNCBIGeneClient`); saved records (`FixtureNCBIGeneClient`, `temp_data/ncbi_gene/`); `tools.db.ncbi_gene.get_gene`
+- **Quality**: green for its one use, verified on GeneID 3550449, whose record lists both a Swiss-Prot and a TrEMBL entry of one *T. cruzi* gene
+- **Coverage**: gene id, symbol, locus tag, taxon, update date, and the UniProtKB accessions (Swiss-Prot and TrEMBL) of the gene's products. NCBI's lists can include secondary accessions; only the entries compared are matched.
+- **Notes**: asked only for candidate pairs whose loci are in databases that do not overlap; NCBI's rate limit (3 requests per second without a key) is not approached. Licence: US public domain (NLM policy).
 
 ### AlphaFold DB — predicted structures
 - **Status**: implemented as an enricher of `resolve_protein_card(..., predicted_structures=True)` (uibcdf/sabueso#57)
@@ -209,7 +222,8 @@ This document is a living checkpoint of the data sources (DBs) currently integra
     live data.
 
 ## Summary of Open Incidents
-- **Selection rules:** the default `priority_sources` still lists InterPro, CATH, SCOPe and
-  TED for `annotations.domains`, a field no mapping produces now. It is harmless, since
-  no source matches and resolution falls back to frequency, but stale. Revisit with the
-  selection-rule work in uibcdf/sabueso#10.
+- **Selection rules:** resolved by #10. The packaged rules (0.2.0) no longer list CATH,
+  SCOPe or TED. The rule for `annotations.domains` remains for a reserved field that no
+  mapping produces, since domains are `classified_in` relationships; it is harmless. The
+  copy published in the user guide had stayed at 0.1.0 until 2026-09-26, and a test
+  now keeps the two identical.

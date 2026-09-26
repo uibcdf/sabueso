@@ -434,7 +434,7 @@ Its distinctive value is the combination of heterogeneous knowledge acquisition,
 
 None of the capabilities described above need to be implemented prematurely.
 
-The current TcTIM/HsTIM vertical pilot should continue to pull the smallest useful Sabueso implementation.
+The vertical pilots should continue to pull the smallest useful Sabueso implementation, integrated with the foundational plan (`ROADMAP.md`), which keeps the objectives of this document tracked.
 
 However, early design decisions should avoid assumptions such as:
 

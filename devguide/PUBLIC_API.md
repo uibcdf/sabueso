@@ -1,8 +1,10 @@
 # Sabueso — Public API
 
 The public surface as of release 0.4.0. Anything not listed here, or not exported by
-`sabueso`, is internal. Every public function and method checks its arguments through
-ArgDigest (`ARGUMENT_CONTRACTS.md`). The user guide (`docs/`) shows how to use them.
+`sabueso`, is internal. Tools, views, stores and source access check their arguments
+through ArgDigest. Plain accessors (`get`, `set`, `sort`…) do not, and fail loudly on
+wrong types (`ARGUMENT_CONTRACTS.md` lists which is which). The user guide (`docs/`)
+shows how to use them.
 
 ## Entry point
 
