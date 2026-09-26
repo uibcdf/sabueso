@@ -653,4 +653,11 @@ sources. Issues #72–#75 record what it found.
 - **The recorded shape and fixture growth.** The shape builder pins its input
   structures, so a new fixture does not change a published shape. Chain-keyed qualifiers
   are recorded as `{chain}`.
+- **The measurement review lists only unexplained pairs (#75).**
+  - Two compounds of one paper can share a value. When each is already grouped with a
+    record of the other source stating its own molecule, pairing them crosswise is no
+    discrepancy, and the pair is left out.
+  - The list has one entry per pair of molecules, with all its records.
+  - On the live P52270 data, 7 entries became 3 unexplained ones: one `molecule_differs`
+    worth reading, and two declared copies with other stereochemistry.
 

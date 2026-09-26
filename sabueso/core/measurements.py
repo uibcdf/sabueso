@@ -111,6 +111,45 @@ def _molecules(card: Any) -> Dict[str, str]:
     return out
 
 
+def _review(
+    review: List[Dict[str, Any]],
+    groups: List[Dict[str, Any]],
+    group_of: Dict[str, str],
+    info: Dict[str, Dict[str, Any]],
+) -> List[Dict[str, Any]]:
+    """The review list, without explained coincidences, one entry per pair of molecules.
+
+    - **Explained.** A statement-based pair whose two records are each grouped with a
+      record of the other's source stating their own molecule is dropped: two compounds
+      of one paper that share a value, each already matched (#75).
+    - **One entry per pair.** Entries naming the same molecules, reason and note are
+      merged, with all their records. A source that states two measurements of one
+      pair lists it once, not twice.
+    """
+    sources_of = {g["id"]: set(g["sources"]) for g in groups}
+
+    def explained(entry: Dict[str, Any]) -> bool:
+        if entry.get("note") or len(entry["records"]) != 2:
+            return False  # provenance-based flags are kept
+        a, b = entry["records"]
+        ga, gb = group_of.get(a, a), group_of.get(b, b)
+        if ga == a or gb == b:
+            return False
+        return info[b]["source"] in sources_of.get(ga, set()) and info[a][
+            "source"
+        ] in sources_of.get(gb, set())
+
+    merged: Dict[tuple, Dict[str, Any]] = {}
+    for entry in review:
+        if explained(entry):
+            continue
+        key = (entry["reason"], tuple(entry["molecules"]), entry.get("note"))
+        found = merged.setdefault(key, {**entry, "records": []})
+        found["records"] = sorted(set(found["records"]) | set(entry["records"]))
+        found["sources"] = sorted(set(found["sources"]) | set(entry["sources"]))
+    return sorted(merged.values(), key=lambda r: r["records"])
+
+
 def measurement_groups(card: Any) -> Dict[str, Any]:
     """``{"rule", "groups", "ambiguous", "unresolved_copies", "review", "group_of"}``;
     see the module docstring. ``unresolved_copies`` are declared copies whose original
@@ -340,9 +379,6 @@ def measurement_groups(card: Any) -> Dict[str, Any]:
         "unresolved_copies": [
             u for u in unresolved_copies if group_of.get(u["record"]) == u["record"]
         ],
-        "review": sorted(
-            {tuple(r["records"]): r for r in review}.values(),
-            key=lambda r: r["records"],
-        ),
+        "review": _review(review, groups, group_of, info),
         "group_of": group_of,
     }

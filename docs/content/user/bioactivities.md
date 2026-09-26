@@ -93,6 +93,9 @@ stated precision (62 and 62.46 nM agree).
 - `view["measurement_identity"]["review"]` lists pairs with the same paper, type and
   value but different molecules according to the sources. These are worth reading,
   because one of the sources may have attributed the value to the wrong compound.
+  Each pair of molecules is listed once. A pair is left out when both compounds are
+  already matched to their own records: two compounds of one paper that happen to share
+  a value.
 - Records are never merged or dropped: every source keeps its own record and context.
 
 ## A third source: PubChem BioAssay

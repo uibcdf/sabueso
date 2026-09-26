@@ -204,3 +204,20 @@ def test_knowledge_state_and_source_access(resolver, tctim):
         "affinities",
         17,
     )
+
+
+def test_a_shared_value_of_two_matched_compounds_is_not_a_discrepancy(tctim):
+    # Paper PubMed 35189560 reports IC50 = 3 uM for two different compounds. Each is
+    # grouped with its own records (BindingDB 50597987 with ChEMBL CHEMBL5170853, 50597988
+    # with CHEMBL5192352), so pairing them crosswise is not a discrepancy (#75).
+    review = measurement_groups(tctim)["review"]
+    refs = [
+        {tctim.relationship_store.get(i)["object_ref"] for i in r["records"]}
+        for r in review
+    ]
+    assert {"bindingdb:50597987", "chembl:CHEMBL5192352"} not in refs
+    assert {"bindingdb:50597988", "chembl:CHEMBL5170853"} not in refs
+    assert {"bindingdb:50597991", "chembl:CHEMBL5198783"} in refs  # a genuine case
+    # One entry per pair of molecules, however many records state it.
+    pairs = [(r["reason"], tuple(r["molecules"]), r.get("note")) for r in review]
+    assert len(pairs) == len(set(pairs))
