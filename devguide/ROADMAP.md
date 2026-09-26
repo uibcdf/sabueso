@@ -128,8 +128,8 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Temporal knowledge | partial | snapshots, revisions, source releases; no "as of a date" query |
 | Knowledge from Nextia not imported automatically | done (as a boundary) | promotion of derived knowledge open in uibcdf/moli#17 |
 | Literature as a knowledge source | partial | human curation and literature views; automated extraction pending |
-| KnowledgeQuery (semantic queries over sources) | pending | profiles and views are its first pieces |
-| Knowledge packets (entities, facts, conflicts, unknowns) | pending | views, decks and pinned references are its parts |
+| KnowledgeQuery (semantic queries over sources) | pending | proposed in #71; contract in uibcdf/moli#22 |
+| Knowledge packets (entities, facts, conflicts, unknowns) | pending | proposed in #71; contract in uibcdf/moli#22 |
 | Unknowns as first-class output | done | `knowledge_state()` (#56) |
 | Two levels of access (semantic and raw) | done | `resolve` and views; `tools.db.*.get_*` |
 | Patents | pending | SureChEMBL queued |
@@ -161,7 +161,7 @@ ahead of that use.
 
 Foundational route, in the order proposed now:
 
-1. **Knowledge packets and KnowledgeQuery (design first).** Most of their parts exist.
+1. **Knowledge packets and KnowledgeQuery (design first; #71, uibcdf/moli#22).** Most of their parts exist.
    Designing the interface now keeps later views from growing apart. It also answers the
    MOLI Agent's need for one call that returns entities, facts, conflicts and unknowns.
 2. **UniProt isoforms and secondary structure.** They are small mappings that complete
