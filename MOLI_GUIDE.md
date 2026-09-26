@@ -28,7 +28,7 @@ The authoritative registry is `moli.toml`. Initial MOLI components are:
 
 Scientific Context is a conceptual grouping of Sabueso, Praxis, and Nextia; it is not a separate component repository.
 
-MolSysSuite is a MOLI component **with delegated internal governance**. MOLI governs MolSysSuite at the platform/component boundary and owns the shared MOLI engineering baseline. `uibcdf/molsyssuite` governs MolSysSuite's internal members, modeling-domain policies and contracts, adoption/rollout state, enforcement machinery, and explicit domain extensions of inherited engineering policy.
+MolSysSuite is a MOLI component **with delegated internal governance**. MOLI governs MolSysSuite at the platform boundary. `uibcdf/molsyssuite` is the normative owner of its members' engineering and modeling policies, contracts, adoption, releases, and enforcement. MOLI engineering rules for direct components do not automatically become member rules; MolSysSuite remains responsible for platform contracts it owes to MOLI.
 
 ## Ownership rule
 
@@ -76,13 +76,13 @@ UIBCDF maintains four shared resources used by MOLI development. They are [regis
 | [Conda build/upload action](https://github.com/uibcdf/action-build-and-upload-conda-packages) | Build and publish Conda packages | [Provider issues](https://github.com/uibcdf/action-build-and-upload-conda-packages/issues) |
 | [Sphinx-to-Pages action](https://github.com/uibcdf/action-sphinx-docs-to-gh-pages) | Publish Sphinx docs to GitHub Pages | [Provider issues](https://github.com/uibcdf/action-sphinx-docs-to-gh-pages/issues) |
 
-The provider owns its tool, while MOLI owns shared usage policy and MolSysSuite owns member adoption. The receptors also remain MolSysSuite auxiliary members. Link provider issues from any blocked consumer work. A repository without the relevant test, release or documentation route need not add that tool.
+The provider owns its tool. MOLI owns usage policy for directly governed components and platform-facing obligations; MolSysSuite owns the rules for use by its members. The receptors also remain MolSysSuite auxiliary members. Link provider issues from any blocked consumer work. A repository without the relevant test, release or documentation route need not add that tool.
 
 ## MOLI engineering baseline
 
-MOLI owns the shared engineering baseline for its repositories. Applicable policies are registered in `moli.toml` and documented under `uibcdf/moli/devguide/policies/`.
+MOLI owns the engineering baseline for directly governed components. Applicable policies are registered in `moli.toml` and documented under `uibcdf/moli/devguide/policies/`. MolSysSuite owns its member baseline in `suite.toml` and its own `devguide/`. Similar values in both registries are separate governance decisions.
 
-For repositories carrying the `python-package` capability, the baseline includes Python support, CI coverage, Ruff/pytest quality tooling, applicable UIBCDF support libraries, developer receptors, distribution, release-version semantics, repository badge evidence, and archival/DOI rules when applicable.
+For directly governed repositories carrying the `python-package` capability, the baseline includes Python support, CI coverage, Ruff/pytest quality tooling, applicable UIBCDF support libraries, developer receptors, distribution, release-version semantics, repository badge evidence, and archival/DOI rules when applicable. MolSysSuite sets corresponding requirements for its members.
 
 Linux and macOS are the operating-system support baseline for public Python packages. Linux has a routine gating lane; macOS needs recurring tests and installed-package evidence before release. Windows is optional and is claimed only after equivalent evidence. Record current claims in the component README and in `moli.toml` for direct components; MolSysSuite records member claims internally. Follow [MOLI's Python CI policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_ci_policy.md) for cadence, release checks and bounded macOS exceptions.
 
@@ -104,7 +104,7 @@ When registering a new direct Python component, declare its `python-package` cap
 
 A component may add stricter local requirements. It must not silently contradict an applicable MOLI engineering policy; deviations require a tracked exception with rationale and an exit condition.
 
-MolSysSuite inherits the MOLI engineering baseline and may add modeling-ecosystem-specific policies for its internally governed members.
+MolSysSuite adopts and versions its own member engineering baseline. It may align with a MOLI rule, but a MOLI policy change does not silently change the member rule. Platform scientific and interoperability contracts still bind MolSysSuite as a MOLI component.
 
 ## Architectural boundaries
 
@@ -139,7 +139,7 @@ MOLI
         └── ...           governed internally by MolSysSuite
 ```
 
-Do not use MOLI governance to duplicate MolSysSuite's member-level rollout, enforcement, membership, modeling-domain contracts, or repository-local implementation policy. MOLI owns the shared engineering baseline; MolSysSuite owns how that baseline is adopted and enforced across its governed ecosystem, plus any explicit domain-specific extensions.
+Do not use MOLI governance to duplicate MolSysSuite's member policies, rollout, enforcement, membership, modeling-domain contracts, or repository-local implementation policy. MolSysSuite owns the member engineering baseline; MOLI owns its own direct-component baseline and the platform obligations of MolSysSuite as a unit.
 
 ## Before finishing cross-component work
 
