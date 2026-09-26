@@ -31,6 +31,12 @@ Open a discussion in the **Data sources** category of the repository's GitHub
 Discussions. Its form asks for the resource, what it would bring, access, licence and
 overlap. Maintainers can also add a `queued` entry directly.
 
+The category is an intake channel; the decision is recorded here, never only in a
+thread. The rules for Discussions across MOLI (when to enable them, standard
+categories, their relation to issues) are proposed in uibcdf/moli#23. Sabueso will
+align its other categories (removing the unused GitHub defaults) once they are
+decided.
+
 ## Triage
 
 1. Add the resource as `queued`, with `proposed_by` and a link to the discussion.
