@@ -34,60 +34,12 @@ source was consulted and states nothing (`not_stated`), it was not requested
 release and the basis. An absence is reported as a fact about a source, never as
 evidence against something.
 
-## Experimental structures and the structural inventory
+## Structures
 
-`sabueso.resolve(..., structures="all")` fetches from RCSB every PDB entry UniProt lists
-for the protein. `card.structures()` then gives, per structure:
-
-- method, resolution, R-free and release date;
-- UniProt ranges and coverage;
-- the construct: sample length, expression host and expression tags;
-- the substitutions against the reference sequence (`N16D`, in UniProt numbering) and
-  the modified residues;
-- ligands, flagged when the PDB declares them the subject of investigation;
-- per chain, the UniProt ranges that have coordinates (`observed`).
-
-`card.structures(region=[[95, 100], 170])` adds, per chain, the residues of that region
-without coordinates (`missing_in_region`), and the chains that have them all
-(`complete_chains`).
-
-Each structure has a derived `state`, following the named rule `structure_state@1`:
-
-- method and coverage class;
-- sequence: `reference`, `mutant` (RCSB states an engineered mutation), `chimera`, or
-  `differs` (a difference no source calls engineered);
-- ligands: `ligand_of_interest`, `no_ligand_of_interest`, `no_ligands` or `unstated`;
-- oligomeric state;
-- whether other entities are present (`in_complex`).
-
-`deck.structure_inventory(regions=...)` puts the structures of several proteins side by
-side, grouped by state (rule `structure_inventory@1`). A state that every protein has is
-marked `shared`: it is where like can be compared with like, e.g. the apo wild-type
-dimers of two orthologs. Give `regions` per card (`{card.id: region}`), since numbering
-differs between proteins. Structures whose state is unknown are listed apart
-(`not_inventoried`), with the reason. The inventory states facts and groups them; it
-never chooses a structure. No single structure stands for the protein.
-
-- **Choosing the grouping keys.** `group_by` chooses what defines a group. For example,
-  `group_by=("method", "coverage", "sequence", "ligands:interest")` reads ligands
-  coarsely: a structure without ligands and one with only additives are both
-  `none_of_interest`.
-- **Relating substitutions across proteins.** Give `residue_maps={card.id: {position:
-  reference position}}` and `reference=other.id`, for example from a MolSysMT
-  alignment.
-  - Substitutions are then placed in the reference protein's numbering.
-  - `shared_substitutions` lists those found in several proteins, e.g. E105D in both
-    orthologs.
-  - The key `substitutions` groups mutants by them.
-  - Without a map, equal numbers in two proteins are never taken as equivalent
-    positions.
-
-## Predicted structures
-
-`sabueso.resolve(..., predicted_structures=True)` adds the AlphaFold DB models of a
-protein, and `card.predicted_structures()` lists them: model version, mean pLDDT and its
-bands, range covered, and whether the model is of the entry's current sequence. Models
-are kept apart from experimental structures: `card.structures()` never counts them.
+A protein's experimental structures are `has_structure` relationships, and its predicted
+models are `has_predicted_structure`; the two are never mixed. `card.structures()` and
+`card.predicted_structures()` read them, and `deck.structure_inventory()` puts several
+proteins side by side. See {doc}`structures`.
 
 ## Comparing two cards
 
@@ -99,36 +51,10 @@ entries is not the same residue. Free text is never compared.
 
 ## Deck
 
-A `Deck` is a collection of Cards with batch operations:
-
-- `filter(predicate)` for sub-decks
-- `in_lineage(taxon)` keeps the cards whose organism is or descends from a taxon, and
-  lists in `meta` the cards whose lineage is not stated; `group_by(field_path)` groups
-  cards by a resolved value, e.g. `annotations.taxon_id`
-- `add(card, basis=...)` and `exclude(candidate, reason)` record why a card is in the
-  deck or was left out (`meta["membership"]`, `meta["excluded"]`). Derived decks list
-  the operations that produced them in `meta["operations"]`
-- `group_by_rank(rank)` groups cards by genus, family or any rank, when cards carry NCBI
-  Taxonomy (`resolve(..., taxonomy=True)`)
-- `identity_audit()` reports redundant entries, strain variants, fragments and
-  paralogs among the protein cards, each with its basis. It never merges cards.
-  Two entries can state their gene in different databases, e.g. NCBI Gene for one and
-  an organism database for the other. The audit's basis then says so
-  (`gene_loci: not_comparable`). `resolve(..., ncbi_gene=True)` lets the resolution's
-  audit ask NCBI Gene, which lists the UniProt entries of a gene's products; when it
-  lists both, the finding says so (`gene_products`).
-- `unique_names()` lists the distinct names the cards carry (canonical names, synonyms,
-  abbreviations and gene names), as `numpy.unique` lists distinct values. Spellings
-  that differ only in case, spaces or hyphens are one name. `unique_names(return_cards=True)`
-  also gives, per name, the cards that carry it. Names are shared on purpose: "TIM"
-  abbreviates the enzyme's name, so every organism's triosephosphate isomerase carries
-  it. A shared name never joins cards; accessions and gene loci identify an entry.
-- `sort(field_path, reverse=False)` by resolved value; cards without a value go last
-- `map(fn)`, `summarize(field_paths)`
-- `compare(other, key_fields)`
-- `to_jsonl(path)`, `to_sqlite(path, ...)`
-- `from_jsonl(path)`, `from_sqlite(path, ...)`, which return `Card` objects with their
-  SourceAssertionStore and identity
+A `Deck` is a collection of cards that records why each card is in it, which candidates
+were left out, and how it was derived. It filters, sorts, groups by lineage and rank,
+audits identities, lists names, inventories structures and compares; it is saved and
+pinned like a card. See {doc}`decks`.
 
 ## SourceAssertion
 
@@ -206,8 +132,9 @@ df = sabueso.to_dataframe(potencies, units={"normalized": "micromolar"})
 # column "normalized [micromolar]", numbers; df.attrs["units"] records the unit
 ```
 
-The views with a table form are `structures`, `bioactivities`, `ligands` (pass
-`deck=`), `ligand_sites`, `interfaces`, `literature` and `entities`. Asking for numbers
+The views with a table form are `structures`, `predicted_structures`, `bioactivities`,
+`ligands` (pass `deck=`), `ligand_sites`, `interfaces`, `literature`, `claims`,
+`entities` and `knowledge_state`. Asking for numbers
 in a unit a column cannot take is refused. For example, bioactivities mix
 concentrations and single-point percentages, so select the rows first.
 
@@ -230,25 +157,23 @@ SourceAssertion.
 
 ## Selection Rules
 
-Selection behavior is controlled by versioned rules (`x.y.z`), including:
-
-- priority source order
-- per-field strategy (for example, `most_recent` or `priority_sources`)
-- whether a field allows multiple selected values
+The value shown for a field is chosen by versioned rules (`x.y.z`): which values are
+comparable (`compare_within`, `numeric_agreement`), which source is shown first when
+they agree or disagree (`priority_sources`), and whether a field holds several values.
+Only comparable values are compared, and nothing is discarded. See {doc}`selection_rules`.
 
 ## Pipeline
 
-The operational flow is:
+The operational flow of `sabueso.resolve` (details in {doc}`resolving`):
 
 ```text
-source payloads
-  -> mappings
-  -> merge
-  -> resolver
-  -> card/deck
+query
+  -> entity resolution (which entity? ambiguity is reported)
+  -> source records (tools.db clients)
+  -> mappings (SourceAssertions and relationships)
+  -> merge and selection (conflicts kept)
+  -> card; views derive knowledge on demand
 ```
-
-This pipeline preserves traceability while producing canonical outputs for downstream tools.
 
 ## Field Paths
 

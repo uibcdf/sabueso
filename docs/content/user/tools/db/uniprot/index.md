@@ -8,5 +8,4 @@ create_protein_card_from_file
 create_protein_card
 fetch_uniprot_json
 create_protein_card_online
-literature
 ```

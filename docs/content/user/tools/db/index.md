@@ -9,7 +9,6 @@ provenance envelope. The sections below cover each database.
 sources
 chembl/index
 pdb/index
-pdbe_kb/index
 pubchem/index
 stringdb/index
 uniprot/index

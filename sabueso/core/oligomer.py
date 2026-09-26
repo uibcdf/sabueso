@@ -14,6 +14,7 @@
 Two derived judgements, never stored:
 
 - ``interface_partner_class@1`` says what kind of partner each PDBe-KB interface is:
+
   - ``homomeric``: another copy of the protein itself;
   - ``heteromeric``: observed in at least one structure where the protein is not a
     fragment and its chains are not a chimera with that partner;
@@ -24,6 +25,7 @@ Two derived judgements, never stored:
     example a TIM peptide presented by HLA-DR;
   - ``chimera_or_fragment``: both of the above, and nothing else;
   - ``undetermined``: some of its structures are not on the card with the data needed.
+
   The basis is given per structure.
 - ``interface_site_agreement@1`` compares the homomeric interface residues with each
   family interface site. Positions are matched exactly, in UniProt numbering.

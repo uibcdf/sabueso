@@ -8,6 +8,7 @@ does not. They are never counted as independent confirmations.
 
 ``assays(accession)`` returns ``{accession, retrieved_at, record}``, where ``record``
 holds:
+
 - ``aids``: the assay ids linked to the protein;
 - ``summaries``: per assay, the name, depositor and its assay id;
 - ``concise``: per assay, the table of results. Each row holds the SID, the CID, the

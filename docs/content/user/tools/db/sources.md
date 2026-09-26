@@ -34,6 +34,11 @@ Every function returns `{source, kind, query, retrieved_at, version, record}`:
 | `pdb_ccd` | `get_components(codes)` |
 | `unichem` | `get_compound(inchikey)` |
 | `stringdb` | `get_partners(identifier, species, required_score, limit)` |
+| `alphafold` | `get_prediction(accession)` |
+| `bindingdb` | `get_affinities(accession)` |
+| `pubchem_bioassay` | `get_assays(accession)` |
+| `ncbi_taxonomy` | `get_taxon(tax_id)` |
+| `ncbi_gene` | `get_gene(gene_id)` |
 
 Every function accepts `client=`. The default is the source's online client. Each module
 also has a fixture client that reads saved responses, for offline work and tests, for

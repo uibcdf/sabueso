@@ -60,6 +60,17 @@ python tools/validate_schema.py
 python devtools/moli_governance.py
 ```
 
+When `docs/` or a docstring changes, also build the documentation, failing on any
+warning. Use the environment of `devtools/conda-envs/docs_env.yaml`, with the checkout
+installed:
+
+```bash
+sphinx-build -W --keep-going -b html docs <output directory>
+```
+
+The API reference renders module docstrings, so a malformed RST list in a docstring
+fails this build.
+
 - Run each gate on its own and read its result.
 - Never pipe a gate through `tail` or `grep`, and never chain a commit after a command
   whose own exit code does not reflect the gate. Both have let a failure through before.

@@ -1,51 +1,43 @@
 # Overview
 
-Sabueso transforms heterogeneous biomolecular and chemical source payloads into
-structured, traceable outputs.
+Sabueso turns what public databases and publications state about a molecular entity into
+structured, traceable knowledge. It is the knowledge component of the MOLI platform:
+**Sabueso knows; it does not discover.**
 
-Tagline:
-- From database fragments to structured molecular intelligence.
+## What Sabueso produces
 
-## What Sabueso Produces
+- **Card**: one entity (a protein or a small molecule) with its resolved field values,
+  each linked to the SourceAssertions that support it, and its relationships to other
+  entities (structures, bioactivities, interactions, classifications…).
+- **Deck**: a collection of cards that records why each card is in it and how it was
+  derived.
+- **Views**: knowledge derived on demand, such as structures, bioactivities, ligands,
+  oligomer, literature, knowledge states, comparisons and identity audits. Each view
+  names the rule that derived it.
 
-- **Card**: one entity (protein, peptide, small molecule) with canonical field values.
-- **Deck**: a collection of Cards for batch operations and downstream workflows.
+## What Sabueso preserves
 
-## What Sabueso Preserves
+- **Every assertion.** Selection chooses a value to show, and never discards the others.
+- **Conflicts and alternatives**, where sources disagree or are not comparable.
+- **What is not known.** It tells apart what a source does not state, what was not
+  asked, and what failed.
+- **Identity with care.** Ambiguity is reported, and entries are never merged by
+  similarity.
+- **Exact states**, which can be cited by a pinned reference and read back unchanged.
 
-- **Canonical values** for usability.
-- **SourceAssertion links** for each resolved field.
-- **Conflict records** whenever sources disagree.
+## Sources
 
-## Core Pipeline
+Proteins come from UniProt, with RCSB PDB, PDBe-KB, InterPro, AlphaFold DB, STRING,
+NCBI Taxonomy and NCBI Gene. Small molecules and bioactivities come from ChEMBL,
+BindingDB, PubChem, PubChem BioAssay, the PDB Chemical Component Dictionary and UniChem.
+The full list, with what is queued, deferred or set aside, is in {doc}`data_sources`.
 
-Sabueso's processing model is deterministic and auditable:
+## Where to go next
 
-```text
-source payloads
-  -> mappings
-  -> merge
-  -> resolver (selection rules)
-  -> card/deck
-```
-
-## Design Principles
-
-- Traceability first: source assertions are never discarded.
-- Canonical schema: dot-separated field paths and versioned rules.
-- Practical interoperability: Card/Deck in memory, explicit persistence by user choice.
-
-## Current Scope
-
-Integrated sources include UniProt, RCSB PDB, ChEMBL, PubChem and STRING. GO annotations,
-InterPro/Pfam/CATH/SCOP-family classifications and curated IntAct interactions reach a
-protein card as typed relationships stated by UniProt.
-
-## See Also
-
-- {doc}`quickstart`
-- {doc}`concepts`
-- {doc}`field_paths`
-- {doc}`selection_rules`
-- {doc}`storage`
-- {doc}`testing`
+- {doc}`quickstart`: a first session.
+- {doc}`resolving`: queries, options, ambiguity and profiles.
+- {doc}`concepts`: cards, SourceAssertions, conflicts, quantities, tables.
+- {doc}`structures`, {doc}`sites_and_interfaces`, {doc}`bioactivities`,
+  {doc}`literature_and_curation`: what a protein card knows.
+- {doc}`decks`: cohorts, audits and inventories.
+- {doc}`storage` and {doc}`upgrading`: keeping and citing knowledge.

@@ -1,4 +1,11 @@
-# Ligand binding sites (PDBe-KB)
+# Sites and interfaces
+
+Where ligands bind and where chains meet, as the sources state it: PDBe-KB from the
+protein's structures, UniProt and InterPro from its sequence, and RCSB from each
+structure's assemblies. Sabueso does not compute contacts from coordinates; that is
+modelling.
+
+## Ligand binding sites (PDBe-KB)
 
 PDBe-KB states, for each ligand seen in a protein's structures, the residues it contacts,
 in UniProt numbering. Sabueso records them as `has_ligand_site` relationships and puts
@@ -39,7 +46,7 @@ print(view["classification"])  # rule annotated_site_overlap@2
 Clients: `sabueso.tools.db.pdbe_kb.OnlinePDBeKBClient` and `FixturePDBeKBClient`.
 PDBe-KB data is CC BY 4.0; cite the PDBe-KB consortium paper.
 
-# Oligomer and interfaces
+## Oligomer and interfaces
 
 `card.oligomer()` puts together what sources state about a protein's quaternary
 structure:

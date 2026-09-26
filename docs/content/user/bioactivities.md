@@ -1,7 +1,10 @@
 # Bioactivities of a protein
 
-ChEMBL activity records of a resolved protein become `has_bioactivity` relationships
-from the protein to each tested molecule. Each measurement is one relationship. It keeps
+Measured bioactivities come from ChEMBL, BindingDB and PubChem BioAssay, and from papers
+a curator reads ({doc}`literature_and_curation`).
+
+ChEMBL activity records of a resolved protein become `has_bioactivity` relationships from
+the protein to each tested molecule. Each measurement is one relationship. It keeps
 the measured value, the assay (including how ChEMBL assigned it to the target) and the
 document it comes from:
 

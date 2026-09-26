@@ -66,35 +66,32 @@ The reference forms are provisional until they are agreed across MOLI (uibcdf/mo
 
 ## Old Cards
 
-A card states the schema it was written with. Newer versions of the same schema line
-are read as they are. To bring an older card up to date, and to know what it lacks:
+Cards written by older versions are read, or migrated with what they lack reported; see
+{doc}`upgrading`.
 
-```python
-card = sabueso.migrate_card(data)  # data: a stored card (dict)
-card.quality["migration"][-1]["steps"][0]["gaps"]
-# e.g. {"path": "annotations.taxon_id", "kind": "missing", ...}: a refresh brings it
-#      {"path": "annotations.taxonomy", "kind": "available", ...}: ask for taxonomy=True
+## What Sabueso stores
 
-refreshed, _ = sabueso.refresh_card(card, curations=store)
-refreshed.quality["migration"][-1]["completed"]
-```
-
-The original is never changed; with `store=` both states are kept as revisions.
-
-## Cache Policy
-
-Current policy is Raw + Cards.
-
-- Raw payloads support reproducibility and re-resolution.
-- Cards support fast reuse in workflows.
-- There are **no hard-coded default paths**.
+- **Cards and decks**, in the knowledge store or in files, where you choose. There are
+  no default paths.
+- **Curated statements**, in a curation store ({doc}`literature_and_curation`).
+- **Not the raw source records.** Each SourceAssertion keeps what was taken from a
+  record: the source, its release, the record id, the retrieval date and the asserted
+  value. To keep raw records yourself, use the `get_*` functions
+  ({doc}`tools/db/sources`), and check each source's terms before redistributing them.
 
 ## Recommended Project Layout
 
-See:
+```text
+project_root/
+  data/
+    knowledge.db        # KnowledgeStore: cards and decks with their revisions
+    curation.jsonl      # CurationStore: curated statements, kept across rebuilds
+    raw/                # optional: raw source records you keep yourself
+    exports/            # optional: JSON/JSONL/SQLite files to share
+```
 
-- `devguide/STORAGE_LAYOUT.md`
-- `devguide/CACHE_POLICY.md`
+The developer guide explains the reasons (`devguide/STORAGE_LAYOUT.md`,
+`devguide/CACHE_POLICY.md`).
 
 ## Tradeoffs
 

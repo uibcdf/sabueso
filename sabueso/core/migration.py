@@ -7,10 +7,12 @@ A migration does not have to be complete, but it must say what it did not do:
   which, the rule, what was converted, and the **gaps**. A gap is what a card of the
   new schema can hold but the old card cannot, because its sources were not asked for
   it then:
+
   - ``missing``: a fresh build with the same options would have it, e.g. UniProt's
     taxon and lineage since 0.3.2;
   - ``available``: an enrichment that did not exist when the card was built, and can be
     asked for, e.g. NCBI Taxonomy since 0.3.4.
+
 - The original is never changed. The record keeps its snapshot id, and ``store=``
   saves the original, when it is readable, and then the migrated card, as two
   revisions of one card.

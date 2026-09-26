@@ -142,6 +142,10 @@
   outside `NCBI_RANKS` (`_private/argdigest/argument/rank.py`), so that a typo is not
   answered with an empty grouping. A rank NCBI adds later (as "realm" and "cellular
   root" were) is refused until it is added there.
+- **The documentation is not built in CI.** A broken page or a malformed docstring is
+  caught only by the local docs gate (`TESTS.md`). The user guide had drifted far behind
+  the API by 0.4.0: stale selection rules, a wrong release badge, no page for
+  `resolve`. A docs job in CI, building with `-W`, would prevent it.
 - **One request per PDB entry.** `structures="all"` fetches entries one by one. A
   protein with hundreds of entries (kinases, proteases) will be slow and may meet rate
   limits. RCSB GraphQL accepts `entries(entry_ids: [...])`; batch when that is felt.

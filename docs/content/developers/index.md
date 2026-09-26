@@ -65,9 +65,11 @@ sphinx-build -b html docs docs/_build/html
 - Online vs offline tests are intentionally separated.
 - Version format follows `x.y.z` (no `v` prefix).
 
-## Next Developers Priorities
+## Plans and state
 
-1. Replace remaining placeholders in `sabueso/ops`.
-2. Expand field mappings and improve conflict-resolution coverage.
-3. Continue improving docstring quality so API reference remains high signal.
-4. Keep `devguide/` synchronized as the canonical checkpoint for team onboarding.
+- `devguide/README.md` indexes the developer guide.
+- `devguide/CHECKPOINT.md` records the current state of the repository.
+- `devguide/ROADMAP.md` records the plan: the foundational plan and the pilot-driven
+  route, integrated, with the status of every objective.
+- `AGENTS.md` holds the repository's working rules: principles, conventions, local
+  gates, schema policy, commits and releases.

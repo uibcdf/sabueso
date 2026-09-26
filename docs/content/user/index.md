@@ -1,17 +1,28 @@
 # User
 
-This section introduces the user-facing model of Sabueso: how to build and use
-Cards and Decks, how canonical values are resolved from heterogeneous sources,
-and how to persist, validate, and test workflows in practical research setups.
+How to use Sabueso: resolving entities into cards, reading what their cards know,
+working with decks, curating the literature, and keeping knowledge so it can be cited.
 
-Start here:
-
+**Getting started**
 - {doc}`overview`
 - {doc}`quickstart`
+- {doc}`resolving`
 - {doc}`concepts`
+
+**What a protein card knows**
+- {doc}`structures`
+- {doc}`sites_and_interfaces`
+- {doc}`bioactivities`
+- {doc}`literature_and_curation`
+
+**Collections, storage and upgrades**
+- {doc}`decks`
+- {doc}`storage`
+- {doc}`upgrading`
+
+**Reference**
 - {doc}`field_paths`
 - {doc}`selection_rules`
-- {doc}`storage`
 - {doc}`data_sources`
 - {doc}`testing`
 - {doc}`tools/index`
@@ -22,10 +33,17 @@ Start here:
 
 overview
 quickstart
+resolving
 concepts
+structures
+sites_and_interfaces
+bioactivities
+literature_and_curation
+decks
+storage
+upgrading
 field_paths
 selection_rules
-storage
 data_sources
 testing
 tools/index

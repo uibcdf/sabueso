@@ -9,12 +9,14 @@ measurements, not records, and a copy never reads as a confirmation:
    the original's activity id, or its assay id) is grouped with it. This is exact. A
    copy whose original is not on the card is listed as a pointer to follow (#68).
 2. **Statement.** Records of different sources are grouped when they share:
+
    - the publication (PubMed id or DOI);
    - the molecule, through the card's glossary of entities (identities stated by
      sources, e.g. UniChem);
    - the measurement type and relation;
    - a value that agrees at the coarser of the two stated precisions, in the
      normalized unit.
+
    This is a derived judgement, recomputed whenever the card changes.
 3. **Ambiguity.** A record with several candidates in another source is not grouped,
    and neither is a group that would hold two records of one source. Both are

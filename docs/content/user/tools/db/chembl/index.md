@@ -7,5 +7,4 @@ create_molecule_card_from_json
 create_molecule_card_from_file
 fetch_chembl_json
 create_molecule_card_online
-bioactivities
 ```

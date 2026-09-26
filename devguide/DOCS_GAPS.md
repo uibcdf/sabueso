@@ -3,38 +3,40 @@
 What the user guide (`docs/`) lacks. The first list (2026-01) was reviewed on 2026-09-26:
 what is now covered is noted, and what remains is below.
 
-## Covered since the first list
+## Covered
 
-- Card and deck concepts, views, knowledge states, comparison: `user/concepts.md`.
-- Field paths: `user/field_paths.md` (from `devguide/FIELD_PATHS.md`).
-- Published selection rules: `user/selection_rules.md` and `selection_rules.json`.
-- Storage (files and the knowledge store): `user/storage.md`.
-- Data sources and their status: `user/data_sources.md`, generated from the registry.
-- Testing: `user/testing.md`.
-- A worked flow on real systems: the showcase notebook.
+- Concepts: `user/concepts.md`.
+- Resolution: `user/resolving.md`, covering queries, ambiguity, the identity audit,
+  options, profiles and offline clients.
+- What a protein card knows:
+  - `user/structures.md`;
+  - `user/sites_and_interfaces.md`;
+  - `user/bioactivities.md`, with three sources and measurement identity;
+  - `user/literature_and_curation.md`, covering the curation workflow, claims and the
+    curation store.
+- Decks: `user/decks.md`, covering membership, derivation, audits, names, inventory
+  and citing.
+- Storage and upgrades: `user/storage.md`, and `user/upgrading.md` (migration, refresh,
+  deprecations).
+- Field paths, selection rules (kept identical to the packaged rules by a test), data
+  sources (generated from the registry), testing.
+- Source access: `user/tools/db/sources.md`, which lists every `get_*`. The deprecated
+  pages are marked, each pointing to its replacement.
+- The API reference covers every module of `core`, `tools` and `mappings`.
 
 ## Open gaps
 
-- **The tools reference lags the API.**
-  - `user/tools/` still centres on the deprecated `create_*_card_*` and `fetch_*_json`
-    pages.
-  - It has no page for `sabueso.resolve` and its options, for the `get_*` source-access
-    functions, or for the newer sources: AlphaFold DB, BindingDB, PubChem BioAssay,
-    UniChem, InterPro, the PDB CCD, NCBI Taxonomy, NCBI Gene.
-  - It should be rebuilt around `resolve`, views and source access, with the deprecated
-    pages marked.
-- **Deck operations.** No user page for membership, lineage, `group_by_rank`, identity
-  audit, the structural inventory or `unique_names`; only short entries in
-  `concepts.md`.
-- **Curation.** The curation workflow (curated assertions, bioactivities, engagements,
-  claims, the curation store, retractions) has one page, under UniProt literature. It
-  deserves its own.
-- **Migration and refresh** of stored cards, for users upgrading.
-- **Resolver logic.** Worked examples of ambiguity, identity findings and curated
-  names.
+- **The showcase notebook** was run on 0.3.0. It lacks:
+  - the identity audit with NCBI Gene;
+  - measurements across sources;
+  - names;
+  - the structural inventory.
+  Rebuild it (`tools/build_showcase_notebook.py`) with the next release.
 - **Per-source coverage tables** for users: which fields and relationships each source
-  fills. Today they live only in `devguide/DATA_SOURCES_STATUS.md`.
+  fills. They live only in `devguide/DATA_SOURCES_STATUS.md`.
 - **Integration contracts** with MolSysSuite (MolSysMT, TopoMT, PharmacophoreMT) and with
   Nextia (citing references). Not written, because not agreed yet (uibcdf/moli#3,
   moli#17).
 - **Online tests**: keys and environment variables (BioGRID).
+- **Small-molecule cards** have no page of their own. Resolution, ligand decks and
+  entities cover them in part.

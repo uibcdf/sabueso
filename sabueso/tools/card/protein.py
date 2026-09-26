@@ -2,6 +2,7 @@
 
 ``resolve_protein_card`` resolves a query with the EntityResolver and builds the card of
 the resolved protein entity:
+
 - only SourceAssertions about the entity (its anchor record and ``same_as`` records) feed
   card fields (``entity_subjects`` guard);
 - identity links (``same_as``, ``superseded_by``, ``isoform_of``, derived

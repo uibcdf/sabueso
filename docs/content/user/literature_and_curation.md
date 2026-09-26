@@ -1,4 +1,10 @@
-# Literature on a card
+# Literature and curation
+
+What sources say about publications, and what a curator reads in them. A curated
+statement is a SourceAssertion whose source is the paper: it is compared with the
+databases, never given priority, and kept across rebuilds.
+
+## Literature on a card
 
 `card.literature()` answers "which publications support which statements on this
 card?". It does not read papers. It collects what sources state about publications:
@@ -48,8 +54,8 @@ record = card.add_literature_assertion(
 print(record["outcome"])  # new, corroborates, differs, not_comparable or not_compared
 ```
 
-- **Fields.** Knowledge fields only: `annotations.*`, `features_positional.*` and
-  `properties.physchem.*`. A positional item can give `start` (and `end`) in the card's
+- **Fields.** Knowledge fields only: `annotations.*`, `features_positional.*`,
+  `properties.physchem.*` and `names.synonyms`. A positional item can give `start` (and `end`) in the card's
   UniProt numbering instead of a full location.
 - **Outcomes.** The same item, identified for example by position and substitution:
   - with the same content, it `corroborates`;
