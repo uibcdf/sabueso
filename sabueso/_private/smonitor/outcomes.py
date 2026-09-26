@@ -24,22 +24,33 @@ from .warnings import (
 # Warnings point at the user's call. Between it and report_* sit Sabueso's public
 # function and the wrappers of @signal (SMonitor) and @arg_digest (ArgDigest); their depth
 # is theirs to change, so it is measured, not counted by hand. A hand-counted constant
-# broke the day ArgDigest's wrapper was added. Drop this once uibcdf/smonitor#23 and its
-# ArgDigest counterpart let the libraries skip their own frames.
+# broke the day ArgDigest's wrapper was added.
+#
+# Since SMonitor 0.17.0 (uibcdf/smonitor#23), DiagnosticBundle.warn skips SMonitor's own
+# frames when it applies ``stacklevel``. So SMonitor frames are passed over here without
+# being counted. Sabueso's and ArgDigest's frames are still counted until ArgDigest offers
+# the same.
+_SKIPPED_BY_SMONITOR = ("smonitor",)
 _INTERNAL = ("sabueso", "smonitor", "argdigest")
 
 
 def _user_stacklevel() -> int:
     """``stacklevel`` for ``warn`` called in a report_* function: the first frame outside
-    Sabueso, SMonitor and ArgDigest."""
+    Sabueso, SMonitor and ArgDigest, counted as SMonitor >= 0.17 counts (its own frames
+    excluded)."""
     frame = sys._getframe(2)  # skip this helper and the report_* function
     level = 2  # warn()'s stacklevel counts from the report_* function's caller
     while frame is not None:
-        module = frame.f_globals.get("__name__", "")
-        if module.split(".", 1)[0] not in _INTERNAL:
+        package = frame.f_globals.get("__name__", "").split(".", 1)[0]
+        if package not in _INTERNAL:
             return level
         frame = frame.f_back
-        level += 1
+        if (
+            frame is not None
+            and frame.f_globals.get("__name__", "").split(".", 1)[0]
+            not in _SKIPPED_BY_SMONITOR
+        ):
+            level += 1
     return 2
 
 

@@ -208,8 +208,9 @@ def test_unanchored_records_are_reported_with_examples():
 
 
 def test_a_diagnostic_points_at_the_line_that_called_sabueso():
-    # The @signal wrapper adds a frame that outcomes.py counts by hand
-    # (uibcdf/smonitor#23). If SMonitor changes its wrapper depth, this fails.
+    # Wrappers add frames between the user's call and the warning. SMonitor >= 0.17
+    # skips its own (uibcdf/smonitor#23); outcomes.py skips Sabueso's and ArgDigest's.
+    # If either library changes how it counts, this fails.
     from sabueso import resolve_protein_card
     from sabueso.resolver import (
         EntityResolver,

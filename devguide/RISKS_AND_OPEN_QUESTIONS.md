@@ -146,6 +146,16 @@
   caught only by the local docs gate (`TESTS.md`). The user guide had drifted far behind
   the API by 0.4.0: stale selection rules, a wrong release badge, no page for
   `resolve`. A docs job in CI, building with `-W`, would prevent it.
+- **A support library can change a behaviour in a minor release.**
+  - SMonitor 0.17.0 (2026-09-26) began skipping its own frames in `stacklevel`
+    (uibcdf/smonitor#23). Sabueso's frame count then double-skipped, and warnings
+    pointed into pytest.
+  - Main requires SMonitor >= 0.17.0 and counts accordingly.
+  - Published Sabueso 0.4.0 declares `smonitor>=0.16.0`, so a fresh install gets 0.17.0
+    and attributes its warnings to the wrong line. This is cosmetic: messages, records
+    and results are unchanged. The next release fixes it.
+  - Lower bounds alone do not protect a published release from such changes. Upper
+    bounds, or a release test against the newest support libraries, would.
 - **RCSB answers can change from day to day.** On 2026-09-26, RCSB failed server-side
   on the per-chain data of some entries (1KLG, 2V5B, 1KLU), intermittently. Entries
   are now kept as `partial` (#74). Two runs a day apart can still differ in what they

@@ -67,11 +67,17 @@ message.
   stack level skips those frames. `outcomes.py` used to count them by hand
   (`_CALLER = 4`), and it broke the day ArgDigest's wrapper was added. It now measures the
   level: the first frame outside `sabueso`, `smonitor` and `argdigest`
-  (`_user_stacklevel`). Remove it once the libraries skip their own frames
-  (uibcdf/smonitor#23; the ArgDigest counterpart is reported too). The attribution test in
-  `test_smonitor_integration_offline.py` guards it.
+  (`_user_stacklevel`).
+  - SMonitor 0.17.0 resolved uibcdf/smonitor#23: `DiagnosticBundle.warn` now skips
+    SMonitor's own frames when it applies `stacklevel`. Sabueso therefore requires
+    SMonitor >= 0.17.0, and `_user_stacklevel` passes over SMonitor frames without
+    counting them.
+  - Counting them too pointed warnings into pytest's own code. CI caught it on
+    2026-09-26, eight minutes after 0.17.0 was published.
+  - Sabueso and ArgDigest frames are still counted until ArgDigest offers the same.
+  - The attribution test in `test_smonitor_integration_offline.py` guards it.
 - The guide's check 2 walks only the grouped catalog shape, so on a flat catalog it
   passes while checking nothing (uibcdf/smonitor#22). Sabueso's catalog is grouped, and
   our check also asserts that it found the full set of codes.
-- A development environment with an older SMonitor (before 0.16.0) is not supported;
+- A development environment with an older SMonitor (before 0.17.0) is not supported;
   `devtools/conda-envs/development_env.yaml` requires `>=0.16.0`.

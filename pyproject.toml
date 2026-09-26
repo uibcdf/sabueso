@@ -14,7 +14,7 @@ dynamic = ["version"]
 # published on the uibcdf conda channel, not on PyPI: install them with conda and use
 # `pip install --no-deps` for Sabueso itself (MOLI distribution policy, #34).
 dependencies = [
-  "smonitor>=0.16.0",
+  "smonitor>=0.17.0",
   "pyunitwizard>=0.27.0",
   "argdigest>=0.13.0",
   "depdigest>=0.11.0",
