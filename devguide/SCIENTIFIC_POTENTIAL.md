@@ -14,7 +14,7 @@ This document records that direction. It is a **vision document**, not a frozen 
 
 A Card should not ultimately be understood merely as a container of normalized fields.
 
-Conceptually, a Card combines structured knowledge about a molecular entity with SourceAssertions, provenance, and relationships to other entities. A Deck should not be understood merely as a list of Cards: it may represent a scientifically meaningful collection such as TcTIM ligands, TIM homologs, experimental structures, inhibitors, or interaction partners.
+Conceptually, a Card combines structured knowledge about a molecular entity with SourceAssertions, provenance, and relationships to other entities. A Deck should not be understood merely as a list of Cards: it may represent a scientifically meaningful collection such as ProteinX ligands, ProteinX homologs, experimental structures, inhibitors, or interaction partners.
 
 Cards and Decks should therefore be able to become **composable scientific knowledge objects**.
 
@@ -85,7 +85,7 @@ The scientific meaning of an operation depends on the entity types and the asser
 
 Two Cards should eventually be scientifically comparable and relatable.
 
-For example, TcTIM Card × HsTIM Card could support questions involving sequence and structural similarity, shared/distinct ligands, known inhibitors, interaction partners, experimental structures, variants, functional differences, and source agreement/disagreement.
+For example, ProteinX Card × ProteinY Card could support questions involving sequence and structural similarity, shared/distinct ligands, known inhibitors, interaction partners, experimental structures, variants, functional differences, and source agreement/disagreement.
 
 A future API might expose operations conceptually similar to:
 
@@ -102,13 +102,13 @@ Scientific questions often concern collections rather than individual entities.
 
 For example:
 
-    Deck A = known TcTIM ligands
-    Deck B = known HsTIM ligands
+    Deck A = known ProteinX ligands
+    Deck B = known ProteinY ligands
 
 Sabueso could support questions such as:
 
 - Which ligands occur in both sets?
-- Which are exclusive to TcTIM?
+- Which are exclusive to ProteinX?
 - Which chemical families are enriched?
 - Which molecules have the strongest experimental support?
 - Which compounds have associated experimental structures?
@@ -141,7 +141,7 @@ Derived knowledge should therefore retain a derivation record containing, where 
 
 Derived knowledge must not erase the origin of the information from which it was obtained.
 
-An operation such as the intersection of TcTIM and HsTIM ligand sets should not merely return molecular identifiers. It should remain possible to inspect why each entity appears, which operation produced it, which inputs participated, which assertions support the underlying relationships, which sources produced those assertions, whether sources agree or conflict, and what context applies.
+An operation such as the intersection of ProteinX and ProteinY ligand sets should not merely return molecular identifiers. It should remain possible to inspect why each entity appears, which operation produced it, which inputs participated, which assertions support the underlying relationships, which sources produced those assertions, whether sources agree or conflict, and what context applies.
 
 > **Scientific operations over knowledge should preserve the path back to the assertions and sources that made the result possible.**
 
@@ -151,7 +151,7 @@ A derived result should, in principle, be able to answer:
 
 > **Why is this in the result?**
 
-Conceptually, an explanation for a compound appearing in an intersection might identify the TcTIM binding assertions, the HsTIM binding assertions, their sources, and the intersection operation that combined them.
+Conceptually, an explanation for a compound appearing in an intersection might identify the ProteinX binding assertions, the ProteinY binding assertions, their sources, and the intersection operation that combined them.
 
 The final API may differ. The architectural property is more important than the method name: **derived knowledge should remain explainable in terms of its operation, inputs, context, and supporting SourceAssertions.**
 
@@ -195,7 +195,7 @@ MOLI should not need to know the endpoint and schema of every external database.
 
 A future semantic query layer could express questions such as:
 
-- What inhibitors are known for TcTIM?
+- What inhibitors are known for ProteinX?
 - Which experimental structures contain bound ligands?
 - Which homologs have reported interface inhibitors?
 
@@ -233,7 +233,7 @@ The objective is not merely document retrieval. The conceptual flow is:
             v
     Cards / relationships / Decks
 
-A paper reporting that a compound perturbs the TcTIM dimer interface might yield normalized entities, a reported relationship, experimental conditions/method, measurements, and a SourceAssertion whose location can point to the relevant Results passage, Figure 3B, Table 2, or supplement.
+A paper reporting that a compound perturbs the ProteinX dimer interface might yield normalized entities, a reported relationship, experimental conditions/method, measurements, and a SourceAssertion whose location can point to the relevant Results passage, Figure 3B, Table 2, or supplement.
 
 Fine-grained source location is valuable: provenance should be able to reach the relevant passage, table, figure, caption, or supplementary item rather than stopping at the DOI.
 
@@ -372,7 +372,7 @@ The semantic layer should prevent MOLI from needing to understand every external
 
 A useful future composition may be a **KnowledgePacket**: a traceable bundle assembled around a scientific focus rather than a new epistemic primitive.
 
-For example, a packet for selective TcTIM inhibition could contain:
+For example, a packet for the selective inhibition of a protein X over its homolog Y could contain:
 
 - focus and entities;
 - relevant Cards and Decks;

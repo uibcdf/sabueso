@@ -1,5 +1,7 @@
 > **Archived (2026-09-26).** A design conversation of 2026-09-23 on Sabueso's long-term
-> direction, kept verbatim and in Spanish as the historical record it is. Its ideas are
+> direction, kept verbatim and in Spanish as the historical record it is, except that
+> its examples naming a specific system were replaced by generic proteins (ProteinX,
+> ProteinY) on 2026-09-26. Its ideas are
 > restated in English in `devguide/SCIENTIFIC_POTENTIAL.md`. Its roadmap (0.1 knowledge
 > foundation, 0.2 relationships, 0.3 knowledge queries, 0.4 literature, 0.5
 > proprietary/internal knowledge; knowledge packets; unknowns; patents; two levels of
@@ -47,7 +49,7 @@ Eso parece una diferencia semántica, pero cambia mucho el roadmap.
 Hoy el flujo mental es aproximadamente:
 
 ```text
-TcTIM
+ProteinX
   ↓
 query UniProt
 query PDB
@@ -60,7 +62,7 @@ ProteinCard
 Yo quiero que evolucione hacia:
 
 ```text
-                     TcTIM
+                     ProteinX
                        │
              ┌─────────┼─────────┐
              ▼         ▼         ▼
@@ -119,13 +121,13 @@ Por ejemplo:
 SourceAssertion SA017
 
 asserts:
-TcTIM is a homodimer
+ProteinX is a homodimer
 
 source:
 UniProt
 
 record:
-P60174
+<UniProt accession>
 
 source_version:
 2026_09
@@ -146,7 +148,7 @@ frente a:
 SourceAssertion SA031
 
 asserts:
-compound X inhibits TcTIM
+compound X inhibits ProteinX
 
 source:
 paper
@@ -220,7 +222,7 @@ source_assertion_ids
 Por ejemplo:
 
 ```text
-TcTIM
+ProteinX
    ── inhibited_by ──► compound X
               │
               └── E17, E23
@@ -246,21 +248,21 @@ Pero imaginemos:
 
 ```text
 Deck:
-TcTIM known inhibitors
+ProteinX known inhibitors
 ```
 
 o:
 
 ```text
 Deck:
-TIM homologs across Trypanosomatidae
+ProteinX homologs across its taxonomic family
 ```
 
 o:
 
 ```text
 Deck:
-proteins associated with Chagas disease
+proteins associated with disease Z
 ```
 
 Entonces Deck se convierte en **una vista científica sobre conocimiento**.
@@ -278,7 +280,7 @@ provenance
 Eso permitiría:
 
 ```python
-deck = sabueso.find(entity="TcTIM", relation="inhibited_by")
+deck = sabueso.find(entity="ProteinX", relation="inhibited_by")
 ```
 
 conceptualmente.
@@ -307,7 +309,7 @@ Eso sería repetir el error que evitamos con Praxis.
 MOLI debería poder preguntar:
 
 ```text
-What inhibitors are known for TcTIM?
+What inhibitors are known for ProteinX?
 ```
 
 y Sabueso traducirlo a algo como:
@@ -316,7 +318,7 @@ y Sabueso traducirlo a algo como:
 KnowledgeQuery
 
 subject:
-TcTIM
+ProteinX
 
 relation:
 inhibited_by
@@ -354,12 +356,12 @@ Pero hay dos problemas distintos:
 ```text
 ENTITY RESOLUTION
 
-"triosephosphate isomerase"
-"TIM"
-"TPIS"
-"P60174"
-"1TCD"
-TcTIM
+"protein X full name"
+"PX"
+"GENEX"
+"<UniProt accession>"
+"<PDB id>"
+ProteinX
 ```
 
 y:
@@ -413,7 +415,7 @@ Decision D31
 used knowledge snapshot:
 
 Sabueso Card
-TcTIM
+ProteinX
 version: ...
 generated: 2026-09-23
 ```
@@ -531,7 +533,7 @@ Paper X
    │
    └── SourceAssertion (experimental assay)
           │
-TcTIM ── inhibited_by ── compound Y
+ProteinX ── inhibited_by ── compound Y
           │
           └── IC50 = ...
 ```
@@ -579,7 +581,7 @@ raw API level
 MOLI debería poder hacer:
 
 ```text
-sabueso.get_card("TcTIM")
+sabueso.get_card("ProteinX")
 ```
 
 pero también:
@@ -593,15 +595,15 @@ cuando necesite algo muy concreto.
 Y el nivel semántico:
 
 ```text
-find_known_inhibitors(TcTIM)
+find_known_inhibitors(ProteinX)
 
-find_homologs(TcTIM)
+find_homologs(ProteinX)
 
-find_structures(TcTIM)
+find_structures(ProteinX)
 
-find_disease_associations(TcTIM)
+find_disease_associations(ProteinX)
 
-find_known_mutations(TcTIM)
+find_known_mutations(ProteinX)
 ```
 
 podría incluso convertirse después en **Praxis Capabilities** cuando implique metodología más compleja.
@@ -697,7 +699,7 @@ Sabueso podría acabar devolviendo no solo una respuesta sino un **knowledge pac
 
 MOLI pregunta:
 
-> What do we know about selective inhibition of TcTIM?
+> What do we know about selective inhibition of ProteinX?
 
 Sabueso devuelve:
 
@@ -705,11 +707,11 @@ Sabueso devuelve:
 KnowledgePacket
 
 Focus:
-TcTIM selective inhibition
+ProteinX selective inhibition
 
 Entities:
-TcTIM
-HsTIM
+ProteinX
+ProteinY
 known inhibitors
 
 Facts:
