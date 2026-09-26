@@ -22,10 +22,11 @@ Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the o
   - One `noarch` package for Linux, macOS and Windows, on Python 3.11–3.14.
   - Before publication, the exact package was tested on all 12 combinations.
   - It writes card schema 0.3.4; `sabueso.migrate_card` reports what older cards lack.
-  - Its Zenodo archive is pending.
   - Users of 0.3.0: upgrade; see the 0.3.1 release notes about copies of cards (#64).
   - Users of 0.2.0: see the 0.3.0 release notes about curated ids (#62).
-- **0.3.1 and 0.3.0** are archived on Zenodo, each verified to be identical to its tag:
+- **0.4.0, 0.3.1 and 0.3.0** are archived on Zenodo, each verified to be identical to
+  its tag:
+  - 0.4.0: [10.5281/zenodo.22969742](https://doi.org/10.5281/zenodo.22969742);
   - 0.3.1: [10.5281/zenodo.22959360](https://doi.org/10.5281/zenodo.22959360);
   - 0.3.0: [10.5281/zenodo.22958049](https://doi.org/10.5281/zenodo.22958049);
   - concept DOI, which covers all versions and resolves to the latest:

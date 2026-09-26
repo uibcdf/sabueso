@@ -227,6 +227,7 @@ This file records the current repository baseline so new developers can resume e
 - Published on the `uibcdf` channel from the staged candidate 141a5dc (sha256
   `ba12e2d2…2e3e`), verified by a clean public install on Python 3.14. It publishes card
   schema 0.3.4, whose frozen card is `temp_data/frozen_cards/schema_0.3.4__P52270.json`.
+- Zenodo archive 22969742 (DOI 10.5281/zenodo.22969742), verified identical to the tag.
 
 ## Pending Decisions
 - Local cache policy (raw sources vs cards vs both).
