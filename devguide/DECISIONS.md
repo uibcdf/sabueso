@@ -586,3 +586,23 @@ uibcdf/sabueso#70, found running the inventory live on two orthologs.
 - The rule's parameters record the keys, the reference and the mapped cards, so a
   grouping can be told from another.
 
+## Gene loci across databases (2026-09-26)
+uibcdf/sabueso#69.
+- Two entries of one gene can state it in different databases. In the case found, a
+  Swiss-Prot entry states a TriTrypDB locus, and a TrEMBL entry of a strain genome
+  states an NCBI GeneID. The audit could not relate them and fell back to sequence.
+- **Reported first.** A sequence-based finding says `gene_loci: not_comparable`, with
+  each entry's databases, when both state loci in databases that do not overlap.
+- **Decided by a source.** NCBI Gene lists the UniProt entries (Swiss-Prot and TrEMBL)
+  of a gene's products. With `resolve(..., ncbi_gene=True)`, the resolver's audit asks
+  NCBI Gene for the NCBI loci of a `not_comparable` pair, and only then. When the gene
+  lists both entries, the gene is shared as a common locus would be (`gene_products`,
+  with the gene and the retrieval date), and the request is recorded in the decision's
+  sources. A failed or empty answer changes nothing.
+- **Not done:**
+  - matching locus tags as text (`TcCLB.508647.200` and `tcr:508647.200`), which is
+    fragile and not a source statement;
+  - KEGG, whose licence restricts use.
+- **Resolution only.** `Deck.identity_audit()` works on cards, which do not store gene
+  products. Extend it only when a deck needs it.
+

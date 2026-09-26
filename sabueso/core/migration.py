@@ -294,6 +294,9 @@ def rebuild_options(card: Any) -> Dict[str, Any]:
             options["pubchem_bioassay"] = True
     if structures:
         options["structures"] = sorted(set(structures))
+    decision = (card.quality.get("entity_resolution") or {}).get("decision") or {}
+    if any(s.get("name") == "NCBI Gene" for s in decision.get("sources") or []):
+        options["ncbi_gene"] = True
     return options
 
 

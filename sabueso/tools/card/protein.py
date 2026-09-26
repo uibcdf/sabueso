@@ -70,6 +70,8 @@ def resolve_protein_card(
     unichem_client: Any | None = None,
     pubchem_bioassay: bool = False,
     pubchem_bioassay_client: Any | None = None,
+    ncbi_gene: bool = False,
+    ncbi_gene_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -98,7 +100,20 @@ def resolve_protein_card(
     Every enrichment outcome (added, not_found, error) is recorded in
     ``quality.enrichments``. Returns ``(card, resolution)``; ``card`` is None when the
     query did not resolve to a protein entity.
+
+    ``ncbi_gene`` lets the resolution's identity audit ask NCBI Gene about two
+    candidates that state their gene in different databases: NCBI Gene lists the UniProt
+    entries of a gene's products (#69).
     """
+    if ncbi_gene:
+        import copy
+
+        from sabueso.tools.db.ncbi_gene import OnlineNCBIGeneClient
+
+        resolver = copy.copy(resolver) if resolver is not None else EntityResolver()
+        resolver.ncbi_gene = (
+            ncbi_gene_client or resolver.ncbi_gene or OnlineNCBIGeneClient()
+        )
     resolver = resolver or EntityResolver()
     resolution = resolver.resolve(query)
     entity_ref = resolution.entity_ref or ""

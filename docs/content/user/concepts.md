@@ -112,6 +112,11 @@ A `Deck` is a collection of Cards with batch operations:
   Taxonomy (`resolve(..., taxonomy=True)`)
 - `identity_audit()` reports redundant entries, strain variants, fragments and
   paralogs among the protein cards, each with its basis. It never merges cards.
+  Two entries can state their gene in different databases, e.g. NCBI Gene for one and
+  an organism database for the other. The audit's basis then says so
+  (`gene_loci: not_comparable`). `resolve(..., ncbi_gene=True)` lets the resolution's
+  audit ask NCBI Gene, which lists the UniProt entries of a gene's products; when it
+  lists both, the finding says so (`gene_products`).
 - `unique_names()` lists the distinct names the cards carry (canonical names, synonyms,
   abbreviations and gene names), as `numpy.unique` lists distinct values. Spellings
   that differ only in case, spaces or hyphens are one name. `unique_names(return_cards=True)`

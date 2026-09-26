@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import asdict, dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.card import make_card_id
@@ -117,11 +117,66 @@ def sequence_identity_link(
     return links[0] if links else None
 
 
-def identity_audit(results: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Findings among the candidates of a search (``protein_identity_audit@1``)."""
-    from sabueso.core.identity_audit import audit, basis_of_entry
+def identity_audit(
+    results: List[Dict[str, Any]],
+    gene_client: Any = None,
+    decision: Dict[str, Any] | None = None,
+) -> Tuple[List[Dict[str, Any]], Dict[str, Dict[str, Any]]]:
+    """Findings among the candidates of a search (``protein_identity_audit@1``), and
+    the basis of each candidate by reference.
 
-    return audit(basis_of_entry(e) for e in results)
+    With ``gene_client`` (NCBI Gene), a pair whose loci could not be compared (#69) is
+    compared again with the products NCBI Gene lists for each entry's NCBI gene. Each
+    request is recorded in ``decision["sources"]``.
+    """
+    from sabueso.core.identity_audit import audit, basis_of_entry, compare
+
+    bases = {b["ref"]: b for b in (basis_of_entry(e) for e in results)}
+    findings = audit(bases.values())
+    if gene_client is None:
+        return findings, bases
+    fetched: Dict[str, Any] = {}
+    for i, finding in enumerate(findings):
+        if (finding.get("basis") or {}).get("gene_loci") != "not_comparable":
+            continue
+        for ref in finding["refs"]:
+            basis = bases[ref]
+            for database, gene_id in basis["gene_loci"]:
+                if database != "NCBI Gene":
+                    continue
+                if gene_id not in fetched:
+                    fetched[gene_id] = _gene_products(gene_client, gene_id, decision)
+                if fetched[gene_id] is not None:
+                    basis.setdefault("gene_products", {})[(database, gene_id)] = (
+                        fetched[gene_id]
+                    )
+        again = compare(*(bases[ref] for ref in finding["refs"]))
+        if again:
+            findings[i] = again
+    return findings, bases
+
+
+def _gene_products(
+    client: Any, gene_id: str, decision: Dict[str, Any] | None
+) -> Dict[str, Any] | None:
+    from sabueso.mappings.ncbi_gene import products
+
+    record: Dict[str, Any] = {"name": "NCBI Gene", "record": gene_id}
+    try:
+        gene, retrieved_at = client.gene(gene_id)
+    except RecordNotFoundError:
+        record["outcome"] = "not_found"
+        gene, retrieved_at = None, None
+    except ConnectorError as exc:
+        record["outcome"] = f"error: {exc}"
+        gene, retrieved_at = None, None
+    else:
+        record["retrieved_at"] = retrieved_at
+    if decision is not None:
+        decision["sources"].append(record)
+    if gene is None:
+        return None
+    return {"products": products(gene), "retrieved_at": retrieved_at}
 
 
 class EntityResolver:
@@ -131,11 +186,14 @@ class EntityResolver:
         uniprot_client: Any | None = None,
         policy: str | None = DEFAULT_POLICY,
         rcsb_client: Any | None = None,
+        ncbi_gene_client: Any | None = None,
         skip_digestion: bool = False,
     ) -> None:
         self.uniprot = uniprot_client or OnlineUniProtClient()
         self.rcsb = rcsb_client or OnlineRCSBClient()
         self.policy = policy
+        # Consulted only when two candidates state loci that cannot be compared (#69).
+        self.ncbi_gene = ncbi_gene_client
 
     def resolve(self, query: EntityQuery | str) -> EntityResolution:
         if isinstance(query, str):
@@ -253,22 +311,26 @@ class EntityResolver:
             return EntityResolution(
                 "ambiguous", candidates=candidates, decision=decision
             )
+        bases: Dict[str, Dict[str, Any]] = {}
         if len(results) > 1:
             # Redundant entries, strain variants and paralogs among the candidates,
             # each with its basis; nothing is merged (#55).
-            decision["identity_audit"] = identity_audit(results)
+            decision["identity_audit"], bases = identity_audit(
+                results, self.ncbi_gene, decision
+            )
         if len(results) == 1:
             decision["rules"].append("name_organism_single_match")
             return EntityResolution(
                 "resolved", entity_ref=candidates[0]["entity_ref"], decision=decision
             )
-        return self._apply_preference(results, candidates, decision)
+        return self._apply_preference(results, candidates, decision, bases)
 
     def _apply_preference(
         self,
         results: List[Dict[str, Any]],
         candidates: List[Dict[str, Any]],
         decision: Dict[str, Any],
+        bases: Dict[str, Dict[str, Any]] | None = None,
     ) -> EntityResolution:
         decision["policy"] = self.policy
         if self.policy is None:
@@ -292,11 +354,22 @@ class EntityResolver:
             decision=decision,
         )
         # Make identical-sequence alternatives in the same organism explicit (derived).
+        from sabueso.core.identity_audit import compare, pairs_to_relationships
+
+        mine = f"uniprot:{results[chosen]['primaryAccession']}"
         for i, entry in enumerate(results):
-            if i != chosen:
+            if i == chosen:
+                continue
+            other = f"uniprot:{entry['primaryAccession']}"
+            if bases and mine in bases and other in bases:
+                # The bases the audit used, gene products included (#69).
+                found = compare(bases[mine], bases[other])
+                links = pairs_to_relationships([found] if found else [])
+                link = links[0] if links else None
+            else:
                 link = sequence_identity_link(results[chosen], entry)
-                if link:
-                    resolution.identity_links.append(link)
+            if link:
+                resolution.identity_links.append(link)
         return resolution
 
     # UniProt ------------------------------------------------------------------------

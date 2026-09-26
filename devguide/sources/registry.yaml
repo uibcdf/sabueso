@@ -226,12 +226,11 @@ resources:
     status: in_use
     description: Gene records and standard identifiers; RefSeq sequences.
     since: 2026-09-25
-    reason: NCBI Gene ids are gene-locus identity anchors (via UniProt). Direct access to Gene or RefSeq is not used.
-    access: via UniProt cross-references
+    reason: "NCBI Gene ids are gene-locus identity anchors (via UniProt). Gene records are read directly for one purpose, relating two UniProt entries that state their gene in different databases: NCBI Gene lists the UniProt entries of a gene's products (#69). RefSeq is not used."
+    access: "via UniProt cross-references; Entrez E-utilities efetch (XML), no key, when resolve(..., ncbi_gene=True)"
     licence: US public domain (NLM policy)
-    via: uniprot
-    module: [sabueso.mappings.uniprot]
-    links: ["#54", "#55"]
+    module: [sabueso.mappings.uniprot, sabueso.tools.db.ncbi_gene, sabueso.mappings.ncbi_gene]
+    links: ["#54", "#55", "#69"]
   - id: veupathdb_ids
     name: VEuPathDB gene identifiers
     url: https://veupathdb.org/

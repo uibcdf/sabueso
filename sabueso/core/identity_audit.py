@@ -27,7 +27,9 @@ compares two entries of related organisms and reports one finding, never a merge
    belongs to MolSysMT. When both entries state loci, but in databases that do not
    overlap (NCBI Gene for one, an organism database for the other), the basis says so
    (``gene_loci: not_comparable``, with each entry's databases): the gene layer could
-   not decide, and a strain variant cannot be told from a close paralog (#69).
+   not decide, and a strain variant cannot be told from a close paralog (#69). A gene
+   record that lists both entries as its products (NCBI Gene, when the resolver is given
+   a client for it) shares the gene as a common locus would (``gene_products``).
 
 Every finding carries its basis. ``possibly_same_as`` is a flag for review, never an
 identity.
@@ -115,6 +117,33 @@ def _differences(x: str, y: str) -> int:
     return sum(1 for i, j in zip(x, y) if i != j)
 
 
+def _accession(ref: str) -> str:
+    return ref.rsplit(":", 1)[-1]
+
+
+def _listed_together(a: Dict[str, Any], b: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Genes of either entry whose source lists both entries as its products (#69).
+
+    A basis may carry ``gene_products``: ``{(database, gene id): {"products": [UniProt
+    accessions], "retrieved_at": ...}}``, as NCBI Gene states them for the entry's own
+    loci. Each gene found is returned with its source and retrieval date."""
+    found: Dict[tuple, Dict[str, Any]] = {}
+    if not (a.get("gene_products") or b.get("gene_products")):
+        return []
+    for x, y in ((a, b), (b, a)):
+        mine, theirs = _accession(x["ref"]), _accession(y["ref"])
+        for (database, gene_id), record in (x.get("gene_products") or {}).items():
+            listed = set(record.get("products") or [])
+            if mine in listed and theirs in listed:
+                found[(database, gene_id)] = {
+                    "database": database,
+                    "id": gene_id,
+                    "lists": sorted([mine, theirs]),
+                    "retrieved_at": record.get("retrieved_at"),
+                }
+    return [found[k] for k in sorted(found)]
+
+
 def compare(a: Dict[str, Any], b: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     """The finding for two entries or cards (``basis_of_*`` output), or None."""
     relation = None if a["ref"] == b["ref"] else _related(a, b)
@@ -126,6 +155,7 @@ def compare(a: Dict[str, Any], b: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         "organisms": relation,
     }
     shared = sorted(set(a["gene_loci"]) & set(b["gene_loci"]))
+    listed = _listed_together(a, b)
     same_genome = a["taxon_id"] is not None and a["taxon_id"] == b["taxon_id"]
     databases = {d for d, _ in a["gene_loci"]} & {d for d, _ in b["gene_loci"]}
     sequence: Dict[str, Any] = {}
@@ -143,14 +173,17 @@ def compare(a: Dict[str, Any], b: Dict[str, Any]) -> Optional[Dict[str, Any]]:
                     "differences": n,
                     "length": len(x),
                 }
-    if shared:
+    if shared or listed:
         # One gene: the same protein entered twice when the sequences agree; otherwise
         # isoforms, fragments or alleles of that gene, which are not the same entity.
+        # The gene is shared as a locus both entries state, or through a gene record
+        # that lists both entries as its products (#69).
         return {
             **finding,
             "finding": "possibly_same_as" if sequence else "same_gene",
             "basis": {
-                "shared_gene_loci": [list(x) for x in shared],
+                **({"shared_gene_loci": [list(x) for x in shared]} if shared else {}),
+                **({"gene_products": listed} if listed else {}),
                 **(
                     sequence
                     or {

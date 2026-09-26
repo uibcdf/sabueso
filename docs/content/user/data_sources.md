@@ -28,7 +28,7 @@ Summary: in use 20, queued 48, deferred 6, retired 3, out of scope 4.
 | [Rhea](https://www.rhea-db.org/) | Targets, sequence and basic pharmacology | via UniProt | CC BY 4.0 | 2026-09-23 |
 | [OrthoDB](https://www.orthodb.org/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only, through UniProt (CC BY 4.0) | 2026-09-25 |
 | [eggNOG](http://eggnog5.embl.de/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only, through UniProt (CC BY 4.0) | 2026-09-25 |
-| [NCBI Gene / RefSeq](https://www.ncbi.nlm.nih.gov/gene/) | Targets, sequence and basic pharmacology | via UniProt cross-references | US public domain (NLM policy) | 2026-09-25 |
+| [NCBI Gene / RefSeq](https://www.ncbi.nlm.nih.gov/gene/) | Targets, sequence and basic pharmacology | via UniProt cross-references; Entrez E-utilities efetch (XML), no key, when resolve(..., ncbi_gene=True) | US public domain (NLM policy) | 2026-09-25 |
 | [VEuPathDB gene identifiers](https://veupathdb.org/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only | 2026-09-25 |
 | [BindingDB](https://www.bindingdb.org/) | Binding affinity and experimental bioactivity | REST getLigandsByUniprots, no key; monomers anchored through UniChem | CC BY 3.0 (BindingDB curation) and CC BY-SA 3.0 (imported from ChEMBL); treated as CC BY-SA 3.0, since the REST records state no origin | 2026-09-25 |
 | [PubChem BioAssay](https://pubchem.ncbi.nlm.nih.gov/) | Binding affinity and experimental bioactivity | PUG REST (assays by protein, summaries, concise tables, compound InChIKeys) | US public domain (NLM policy); deposited data keeps its depositor terms (ChEMBL copies: CC BY-SA 3.0) | 2026-09-25 |
