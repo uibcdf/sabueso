@@ -67,6 +67,36 @@ class EnrichmentTruncatedWarning(SabuesoWarning):
         )
 
 
+class EnrichmentPartialWarning(SabuesoWarning):
+    """A source answered only part of a record (#74)."""
+
+    catalog_key = "EnrichmentPartialWarning"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        source: str | None = None,
+        subject: str | None = None,
+        missing: Any = None,
+        detail: str | None = None,
+    ) -> None:
+        extra = None
+        if message is None:
+            extra = {
+                "source": source,
+                "subject": subject,
+                "missing": missing,
+                "detail": detail,
+            }
+        super().__init__(
+            message,
+            catalog=CATALOG if extra else None,
+            meta=META if extra else None,
+            extra=extra,
+        )
+
+
 class UnanchoredRecordsWarning(SabuesoWarning):
     """Records without a standard InChIKey were left out of a deck."""
 

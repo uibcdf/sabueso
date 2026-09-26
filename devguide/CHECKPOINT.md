@@ -12,16 +12,19 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 - **Latest release:** 0.4.0 (2026-09-25).
   - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
   - Archived on Zenodo, DOI 10.5281/zenodo.22969742.
-- **Card schema:** 0.3.4 (`schemas/card_schema_0.3.4.yaml`). Main may already write
-  additive changes the next release will publish.
+- **Card schema:** main writes 0.3.5 (`schemas/card_schema_0.3.5.yaml`), unpublished:
+  0.3.4 plus `author_numbering` (#73). Release 0.4.0 writes 0.3.4.
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
     0.3.4.
-  - The recorded shape is `schemas/card_shape_0.3.4.json`.
+  - The recorded shape of the current schema is `schemas/card_shape_0.3.5.json`.
 - **Unreleased on main:**
   - inventory grouping keys and residue maps (#70);
   - NCBI Gene for identity across gene databases (#69);
   - `claims(topic)` and `group_by_rank(rank)` refuse misspelt values;
-  - the selection rules published in the user guide match the packaged ones (0.2.0).
+  - the selection rules published in the user guide match the packaged ones (0.2.0);
+  - the oligomer from author-defined assemblies (`structure_state@2`, #72); author
+    numbering (#73); partial RCSB entries kept and a `partial` knowledge state
+    (`knowledge_state@2`, #74).
 
 ## Package layout
 

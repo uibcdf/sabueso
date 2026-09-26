@@ -146,6 +146,11 @@
   caught only by the local docs gate (`TESTS.md`). The user guide had drifted far behind
   the API by 0.4.0: stale selection rules, a wrong release badge, no page for
   `resolve`. A docs job in CI, building with `-W`, would prevent it.
+- **RCSB answers can change from day to day.** On 2026-09-26, RCSB failed server-side
+  on the per-chain data of some entries (1KLG, 2V5B, 1KLU), intermittently. Entries
+  are now kept as `partial` (#74). Two runs a day apart can still differ in what they
+  hold, and a refreshed fixture can be partial. Fixtures are refreshed only from
+  complete answers.
 - **One request per PDB entry.** `structures="all"` fetches entries one by one. A
   protein with hundreds of entries (kinases, proteases) will be slow and may meet rate
   limits. RCSB GraphQL accepts `entries(entry_ids: [...])`; batch when that is felt.

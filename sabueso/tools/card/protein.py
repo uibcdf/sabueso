@@ -153,8 +153,21 @@ def resolve_protein_card(
             reference_sequences={anchor: sequence} if sequence else None,
         )
         mappings.append(mapped)
+        partial = rcsb_entry.get("_partial")
         enrichments.append(
-            {**record, "status": "added", "count": len(mapped["relationships"])}
+            {
+                **record,
+                "status": "partial" if partial else "added",
+                "count": len(mapped["relationships"]),
+                **(
+                    {
+                        "missing": partial.get("missing"),
+                        "detail": partial.get("reason"),
+                    }
+                    if partial
+                    else {}
+                ),
+            }
         )
 
     if string is not None:

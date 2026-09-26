@@ -25,11 +25,16 @@ from typing import Any, Iterator, List
 ROOT = Path(__file__).resolve().parents[1]
 FROZEN = ROOT / "temp_data" / "frozen_cards"
 OPAQUE = {"asserted_value", "normalized_value"}
+#: Qualifiers whose keys are data (chain ids), recorded as ``{chain}`` so that a new
+#: chain name is not a new shape. Since schema 0.3.5; the 0.3.4 shape lists chains.
+CHAIN_KEYED = {"observed", "author_numbering"}
 
 
 def _paths(node: Any, prefix: str) -> Iterator[str]:
     if isinstance(node, dict):
+        chain_keyed = prefix.endswith(tuple(f"qualifiers.{k}" for k in CHAIN_KEYED))
         for key, value in node.items():
+            key = "{chain}" if chain_keyed else key
             here = f"{prefix}.{key}" if prefix else str(key)
             yield here
             if key not in OPAQUE:
@@ -89,6 +94,10 @@ def fixture_cards() -> List[dict]:
             "P52270",
             resolver=resolver,
             profile="structural_baseline@1",
+            # Pinned to the RCSB fixtures of release 0.4.0, so that adding a fixture
+            # later does not change the fixed shape of a published schema (the profile
+            # alone would fetch every structure UniProt lists).
+            structures=["1SUX", "1TCD", "2OMA", "3Q37", "4HHP"],
             chembl_client=chembl,
             pdbe_kb_client=FixturePDBeKBClient(data),
             interpro_client=FixtureInterProClient(data),

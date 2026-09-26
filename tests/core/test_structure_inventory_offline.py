@@ -132,7 +132,7 @@ def test_structures_without_state_say_why(cards):
     reasons = {
         e["structure_ref"]: e["reason"] for e in inventory["not_inventoried"][TCTIM]
     }
-    assert reasons == {"pdb:1CI1": "not_found", "pdb:2V5B": "not_found"}
+    assert reasons == {"pdb:1CI1": "not_found"}
     # Peptide complexes are excluded, and the exclusion is reported.
     assert "pdb:1KLG" in inventory["excluded"][HSTIM]
 
@@ -216,3 +216,92 @@ def test_group_by_and_reference_are_checked(cards):
         Deck([tc, hs]).structure_inventory(reference="sabueso:protein:uniprot:P00000")
     with pytest.raises(ArgumentError):
         Deck([tc, hs]).structure_inventory(residue_maps={TCTIM: {0: 1}})
+
+
+def test_the_oligomer_is_the_one_the_authors_defined(cards):
+    tc, hs = cards
+    # 2V5B, "The monomerization of TcTIM": software predicts a dimer (assembly 1), the
+    # authors defined a monomer (assembly 2). Rule structure_state@2 reads the authors'.
+    item = _item(tc, "pdb:2V5B")
+    assert item["state"]["oligomer"] == "Monomer"
+    assert item["oligomer_basis"] == "author"
+    assert item["oligomer_disagreement"] is True
+    assert item["assembly_states"] == {
+        "author": ["Monomer"],
+        "software": ["Homo 2-mer"],
+    }
+    # 1WYI: the authors defined a tetramer, software a dimer; both are shown.
+    item = _item(hs, "pdb:1WYI")
+    assert item["state"]["oligomer"] == "Homo 4-mer"
+    assert item["oligomer_disagreement"] is True
+    # Author and software agree: no disagreement.
+    item = _item(tc, "pdb:1TCD")
+    assert (item["state"]["oligomer"], item["oligomer_basis"]) == (
+        "Homo 2-mer",
+        "author",
+    )
+    assert item["oligomer_disagreement"] is False
+    assert tc.structures()["state_rule"]["rule"] == STATE_RULE == "structure_state@2"
+
+
+def test_a_partial_rcsb_entry_is_kept_and_reported(tmp_path):
+    # RCSB may fail on the instance-level fields of an entry (#74). The client then
+    # fetches the entry without them and marks it partial; the card keeps what came.
+    import json
+    import shutil
+    import warnings
+
+    from sabueso._private.smonitor.warnings import EnrichmentPartialWarning
+
+    shutil.copytree(
+        "temp_data", tmp_path / "data", ignore=shutil.ignore_patterns("rcsb")
+    )
+    (tmp_path / "data" / "rcsb").mkdir()
+    entry = json.loads(open("temp_data/rcsb/1TCD.json").read())
+    for pe in entry["polymer_entities"]:
+        for instance in pe["polymer_entity_instances"]:
+            instance.pop("rcsb_polymer_instance_feature", None)
+            instance.pop("rcsb_ligand_neighbors", None)
+    entry["_partial"] = {
+        "missing": ["rcsb_polymer_instance_feature", "rcsb_ligand_neighbors"],
+        "reason": "server-side exception",
+    }
+    (tmp_path / "data" / "rcsb" / "1TCD.json").write_text(json.dumps(entry))
+    data = str(tmp_path / "data")
+    resolver = EntityResolver(
+        FixtureUniProtClient(data), rcsb_client=FixtureRCSBClient(data)
+    )
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
+        card, _ = sabueso.resolve("P52270", resolver=resolver, structures=["1TCD"])
+    assert any(isinstance(w.message, EnrichmentPartialWarning) for w in caught)
+    (record,) = [e for e in card.quality["enrichments"] if e.get("structure") == "1TCD"]
+    assert record["status"] == "partial" and record["missing"]
+    item = _item(card, "pdb:1TCD")
+    assert item["method"] == "X-ray" and item["state"]["oligomer"] == "Homo 2-mer"
+    assert item["observed"] is None  # no instance features: unknown, never assumed
+    (row,) = [r for r in card.knowledge_state()["rows"] if r["source"] == "RCSB PDB"]
+    assert row["state"] == "partial"
+    assert row["basis"]["incomplete_for"] == ["1TCD"]
+
+
+def test_substitutions_are_given_in_the_authors_numbering_too(cards):
+    tc, hs = cards
+    # RCSB states the author numbering per residue (#73); depositors often number the
+    # mature protein, one less than UniProt here.
+    item = _item(hs, "pdb:2VOM")
+    assert item["substitutions"] == ["E105D"]
+    assert item["author_substitutions"] == ["E104D"]  # as the paper names it
+    assert _item(hs, "pdb:4UNK")["author_substitutions"] == ["N15D"]
+    # 2V5B renumbers the swapped loop: UniProt 69-71 are the authors' 76-78.
+    from sabueso.mappings.rcsb_structures import author_position
+
+    numbering = _item(tc, "pdb:2V5B")["author_numbering"]["A"]
+    assert [author_position(numbering, p) for p in (68, 69, 71, 80)] == [
+        "68",
+        "76",
+        "78",
+        "80",
+    ]
+    rows = {r["structure_ref"]: r for r in hs.table("structures")}
+    assert rows["pdb:2VOM"]["author_substitutions"] == "E104D"

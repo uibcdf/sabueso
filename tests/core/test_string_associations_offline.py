@@ -93,5 +93,6 @@ def test_all_structures_only_fetches_pdb_entries_and_records_each_outcome(resolv
     # Only has_structure objects are fetched (never go:, pfam: or other knowledge refs).
     assert sorted(outcomes) == ["1CI1", "1SUX", "1TCD", "2OMA", "2V5B", "3Q37", "4HHP"]
     added = {pdb for pdb, status in outcomes.items() if status == "added"}
-    assert added == {"1TCD", "1SUX", "2OMA", "3Q37", "4HHP"}  # the saved RCSB entries
+    # the saved RCSB entries
+    assert added == {"1TCD", "1SUX", "2OMA", "2V5B", "3Q37", "4HHP"}
     assert {s for pdb, s in outcomes.items() if pdb not in added} == {"not_found"}

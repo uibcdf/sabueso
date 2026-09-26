@@ -33,6 +33,24 @@
     {
      "rcsb_nonpolymer_instance_validation_score": [
       {
+       "is_subject_of_investigation": "Y",
+       "is_subject_of_investigation_provenance": "RCSB"
+      }
+     ]
+    }
+   ],
+   "rcsb_nonpolymer_entity": {
+    "pdbx_description": "3-(2-BENZOTHIAZOLYLTHIO)-1-PROPANESULFONIC ACID"
+   },
+   "rcsb_nonpolymer_entity_container_identifiers": {
+    "nonpolymer_comp_id": "BTS"
+   }
+  },
+  {
+   "nonpolymer_entity_instances": [
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
        "is_subject_of_investigation": "N",
        "is_subject_of_investigation_provenance": null
       }
@@ -93,24 +111,6 @@
    "rcsb_nonpolymer_entity_container_identifiers": {
     "nonpolymer_comp_id": "SO4"
    }
-  },
-  {
-   "nonpolymer_entity_instances": [
-    {
-     "rcsb_nonpolymer_instance_validation_score": [
-      {
-       "is_subject_of_investigation": "Y",
-       "is_subject_of_investigation_provenance": "RCSB"
-      }
-     ]
-    }
-   ],
-   "rcsb_nonpolymer_entity": {
-    "pdbx_description": "3-(2-BENZOTHIAZOLYLTHIO)-1-PROPANESULFONIC ACID"
-   },
-   "rcsb_nonpolymer_entity_container_identifiers": {
-    "nonpolymer_comp_id": "BTS"
-   }
   }
  ],
  "polymer_entities": [
@@ -121,6 +121,977 @@
     "rcsb_sample_sequence_length": 251
    },
    "polymer_entity_instances": [
+    {
+     "rcsb_ligand_neighbors": [
+      {
+       "comp_id": "GLY",
+       "distance": 2.729,
+       "ligand_asym_id": "H",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 236
+      },
+      {
+       "comp_id": "GLY",
+       "distance": 3.544,
+       "ligand_asym_id": "H",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 235
+      },
+      {
+       "comp_id": "SER",
+       "distance": 4.027,
+       "ligand_asym_id": "H",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 214
+      },
+      {
+       "comp_id": "GLY",
+       "distance": 4.449,
+       "ligand_asym_id": "H",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 213
+      },
+      {
+       "comp_id": "ARG",
+       "distance": 2.668,
+       "ligand_asym_id": "I",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 227
+      },
+      {
+       "comp_id": "ARG",
+       "distance": 3.947,
+       "ligand_asym_id": "I",
+       "ligand_comp_id": "SO4",
+       "ligand_is_bound": null,
+       "seq_id": 196
+      },
+      {
+       "comp_id": "TYR",
+       "distance": 3.127,
+       "ligand_asym_id": "J",
+       "ligand_comp_id": "BTS",
+       "ligand_is_bound": null,
+       "seq_id": 102
+      }
+     ],
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "B",
+      "auth_asym_id": "B",
+      "auth_to_entity_poly_seq_mapping": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10",
+       "11",
+       "12",
+       "13",
+       "14",
+       "15",
+       "16",
+       "17",
+       "18",
+       "19",
+       "20",
+       "21",
+       "22",
+       "23",
+       "24",
+       "25",
+       "26",
+       "27",
+       "28",
+       "29",
+       "30",
+       "31",
+       "32",
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47",
+       "48",
+       "49",
+       "50",
+       "51",
+       "52",
+       "53",
+       "54",
+       "55",
+       "56",
+       "57",
+       "58",
+       "59",
+       "60",
+       "61",
+       "62",
+       "63",
+       "64",
+       "65",
+       "66",
+       "67",
+       "68",
+       "69",
+       "70",
+       "71",
+       "72",
+       "73",
+       "74",
+       "75",
+       "76",
+       "77",
+       "78",
+       "79",
+       "80",
+       "81",
+       "82",
+       "83",
+       "84",
+       "85",
+       "86",
+       "87",
+       "88",
+       "89",
+       "90",
+       "91",
+       "92",
+       "93",
+       "94",
+       "95",
+       "96",
+       "97",
+       "98",
+       "99",
+       "100",
+       "101",
+       "102",
+       "103",
+       "104",
+       "105",
+       "106",
+       "107",
+       "108",
+       "109",
+       "110",
+       "111",
+       "112",
+       "113",
+       "114",
+       "115",
+       "116",
+       "117",
+       "118",
+       "119",
+       "120",
+       "121",
+       "122",
+       "123",
+       "124",
+       "125",
+       "126",
+       "127",
+       "128",
+       "129",
+       "130",
+       "131",
+       "132",
+       "133",
+       "134",
+       "135",
+       "136",
+       "137",
+       "138",
+       "139",
+       "140",
+       "141",
+       "142",
+       "143",
+       "144",
+       "145",
+       "146",
+       "147",
+       "148",
+       "149",
+       "150",
+       "151",
+       "152",
+       "153",
+       "154",
+       "155",
+       "156",
+       "157",
+       "158",
+       "159",
+       "160",
+       "161",
+       "162",
+       "163",
+       "164",
+       "165",
+       "166",
+       "167",
+       "168",
+       "169",
+       "170",
+       "171",
+       "172",
+       "173",
+       "174",
+       "175",
+       "176",
+       "177",
+       "178",
+       "179",
+       "180",
+       "181",
+       "182",
+       "183",
+       "184",
+       "185",
+       "186",
+       "187",
+       "188",
+       "189",
+       "190",
+       "191",
+       "192",
+       "193",
+       "194",
+       "195",
+       "196",
+       "197",
+       "198",
+       "199",
+       "200",
+       "201",
+       "202",
+       "203",
+       "204",
+       "205",
+       "206",
+       "207",
+       "208",
+       "209",
+       "210",
+       "211",
+       "212",
+       "213",
+       "214",
+       "215",
+       "216",
+       "217",
+       "218",
+       "219",
+       "220",
+       "221",
+       "222",
+       "223",
+       "224",
+       "225",
+       "226",
+       "227",
+       "228",
+       "229",
+       "230",
+       "231",
+       "232",
+       "233",
+       "234",
+       "235",
+       "236",
+       "237",
+       "238",
+       "239",
+       "240",
+       "241",
+       "242",
+       "243",
+       "244",
+       "245",
+       "246",
+       "247",
+       "248",
+       "249",
+       "250",
+       "251"
+      ]
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "SCOP2B_SUPERFAMILY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": 12
+        },
+        {
+         "beg_seq_id": 39,
+         "end_seq_id": 43
+        },
+        {
+         "beg_seq_id": 61,
+         "end_seq_id": 65
+        },
+        {
+         "beg_seq_id": 91,
+         "end_seq_id": 94
+        },
+        {
+         "beg_seq_id": 123,
+         "end_seq_id": 128
+        },
+        {
+         "beg_seq_id": 163,
+         "end_seq_id": 167
+        },
+        {
+         "beg_seq_id": 209,
+         "end_seq_id": 211
+        },
+        {
+         "beg_seq_id": 231,
+         "end_seq_id": 234
+        },
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": 12
+        }
+       ],
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 18,
+         "end_seq_id": 32
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": 47
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 48,
+         "end_seq_id": 56
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 80,
+         "end_seq_id": 88
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 96,
+         "end_seq_id": 103
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 106,
+         "end_seq_id": 120
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 131,
+         "end_seq_id": 137
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 139,
+         "end_seq_id": 155
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 156,
+         "end_seq_id": 161
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 169,
+         "end_seq_id": 174
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 180,
+         "end_seq_id": 199
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 200,
+         "end_seq_id": 207
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 219,
+         "end_seq_id": 225
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 235,
+         "end_seq_id": 241
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 242,
+         "end_seq_id": 249
+        }
+       ],
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 7
+        },
+        {
+         "beg_seq_id": 13,
+         "end_seq_id": 17
+        },
+        {
+         "beg_seq_id": 33,
+         "end_seq_id": 38
+        },
+        {
+         "beg_seq_id": 44,
+         "end_seq_id": 44
+        },
+        {
+         "beg_seq_id": 57,
+         "end_seq_id": 60
+        },
+        {
+         "beg_seq_id": 66,
+         "end_seq_id": 79
+        },
+        {
+         "beg_seq_id": 89,
+         "end_seq_id": 90
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": 95
+        },
+        {
+         "beg_seq_id": 104,
+         "end_seq_id": 105
+        },
+        {
+         "beg_seq_id": 121,
+         "end_seq_id": 122
+        },
+        {
+         "beg_seq_id": 129,
+         "end_seq_id": 130
+        },
+        {
+         "beg_seq_id": 138,
+         "end_seq_id": 138
+        },
+        {
+         "beg_seq_id": 162,
+         "end_seq_id": 162
+        },
+        {
+         "beg_seq_id": 168,
+         "end_seq_id": 168
+        },
+        {
+         "beg_seq_id": 175,
+         "end_seq_id": 179
+        },
+        {
+         "beg_seq_id": 208,
+         "end_seq_id": 208
+        },
+        {
+         "beg_seq_id": 212,
+         "end_seq_id": 218
+        },
+        {
+         "beg_seq_id": 226,
+         "end_seq_id": 230
+        },
+        {
+         "beg_seq_id": 250,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 175,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 177,
+         "end_seq_id": null
+        }
+       ],
+       "type": "BINDING_SITE"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 235,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 236,
+         "end_seq_id": null
+        }
+       ],
+       "type": "BINDING_SITE"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 177,
+         "end_seq_id": null
+        }
+       ],
+       "type": "BINDING_SITE"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 55,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 227,
+         "end_seq_id": null
+        }
+       ],
+       "type": "BINDING_SITE"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 102,
+         "end_seq_id": null
+        }
+       ],
+       "type": "BINDING_SITE"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 236,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 235,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 214,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 213,
+         "end_seq_id": null
+        }
+       ],
+       "type": "LIGAND_INTERACTION"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 227,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 196,
+         "end_seq_id": null
+        }
+       ],
+       "type": "LIGAND_INTERACTION"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 102,
+         "end_seq_id": null
+        }
+       ],
+       "type": "LIGAND_INTERACTION"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 1
+        }
+       ],
+       "type": "UNOBSERVED_RESIDUE_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 218,
+         "end_seq_id": 218
+        }
+       ],
+       "type": "UNOBSERVED_ATOM_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 22,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 26,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 36,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 50,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 58,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 61,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 67,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 81,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 86,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 91,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 99,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 103,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 117,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 123,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 131,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 134,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 147,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 151,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 158,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 162,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 171,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 190,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 195,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 199,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 210,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 227,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 231,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 238,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 243,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 247,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 251,
+         "end_seq_id": null
+        }
+       ],
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 22,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 61,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 70,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 123,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 227,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 233,
+         "end_seq_id": null
+        }
+       ],
+       "type": "ANGLE_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSCC"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSR"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": null
+        }
+       ],
+       "type": "RSRZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": null
+        }
+       ],
+       "type": "NATOMS_EDS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": null
+        }
+       ],
+       "type": "OWAB"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": null
+        }
+       ],
+       "type": "AVERAGE_OCCUPANCY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": 251
+        }
+       ],
+       "type": "ASA"
+      }
+     ]
+    },
     {
      "rcsb_ligand_neighbors": [
       {
@@ -262,7 +1233,260 @@
      ],
      "rcsb_polymer_entity_instance_container_identifiers": {
       "asym_id": "A",
-      "auth_asym_id": "A"
+      "auth_asym_id": "A",
+      "auth_to_entity_poly_seq_mapping": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10",
+       "11",
+       "12",
+       "13",
+       "14",
+       "15",
+       "16",
+       "17",
+       "18",
+       "19",
+       "20",
+       "21",
+       "22",
+       "23",
+       "24",
+       "25",
+       "26",
+       "27",
+       "28",
+       "29",
+       "30",
+       "31",
+       "32",
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47",
+       "48",
+       "49",
+       "50",
+       "51",
+       "52",
+       "53",
+       "54",
+       "55",
+       "56",
+       "57",
+       "58",
+       "59",
+       "60",
+       "61",
+       "62",
+       "63",
+       "64",
+       "65",
+       "66",
+       "67",
+       "68",
+       "69",
+       "70",
+       "71",
+       "72",
+       "73",
+       "74",
+       "75",
+       "76",
+       "77",
+       "78",
+       "79",
+       "80",
+       "81",
+       "82",
+       "83",
+       "84",
+       "85",
+       "86",
+       "87",
+       "88",
+       "89",
+       "90",
+       "91",
+       "92",
+       "93",
+       "94",
+       "95",
+       "96",
+       "97",
+       "98",
+       "99",
+       "100",
+       "101",
+       "102",
+       "103",
+       "104",
+       "105",
+       "106",
+       "107",
+       "108",
+       "109",
+       "110",
+       "111",
+       "112",
+       "113",
+       "114",
+       "115",
+       "116",
+       "117",
+       "118",
+       "119",
+       "120",
+       "121",
+       "122",
+       "123",
+       "124",
+       "125",
+       "126",
+       "127",
+       "128",
+       "129",
+       "130",
+       "131",
+       "132",
+       "133",
+       "134",
+       "135",
+       "136",
+       "137",
+       "138",
+       "139",
+       "140",
+       "141",
+       "142",
+       "143",
+       "144",
+       "145",
+       "146",
+       "147",
+       "148",
+       "149",
+       "150",
+       "151",
+       "152",
+       "153",
+       "154",
+       "155",
+       "156",
+       "157",
+       "158",
+       "159",
+       "160",
+       "161",
+       "162",
+       "163",
+       "164",
+       "165",
+       "166",
+       "167",
+       "168",
+       "169",
+       "170",
+       "171",
+       "172",
+       "173",
+       "174",
+       "175",
+       "176",
+       "177",
+       "178",
+       "179",
+       "180",
+       "181",
+       "182",
+       "183",
+       "184",
+       "185",
+       "186",
+       "187",
+       "188",
+       "189",
+       "190",
+       "191",
+       "192",
+       "193",
+       "194",
+       "195",
+       "196",
+       "197",
+       "198",
+       "199",
+       "200",
+       "201",
+       "202",
+       "203",
+       "204",
+       "205",
+       "206",
+       "207",
+       "208",
+       "209",
+       "210",
+       "211",
+       "212",
+       "213",
+       "214",
+       "215",
+       "216",
+       "217",
+       "218",
+       "219",
+       "220",
+       "221",
+       "222",
+       "223",
+       "224",
+       "225",
+       "226",
+       "227",
+       "228",
+       "229",
+       "230",
+       "231",
+       "232",
+       "233",
+       "234",
+       "235",
+       "236",
+       "237",
+       "238",
+       "239",
+       "240",
+       "241",
+       "242",
+       "243",
+       "244",
+       "245",
+       "246",
+       "247",
+       "248",
+       "249",
+       "250",
+       "251"
+      ]
      },
      "rcsb_polymer_instance_feature": [
       {
@@ -934,724 +2158,6 @@
         },
         {
          "beg_seq_id": 200,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 227,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 233,
-         "end_seq_id": null
-        }
-       ],
-       "type": "ANGLE_OUTLIERS"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 2,
-         "end_seq_id": null
-        }
-       ],
-       "type": "RSCC"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 2,
-         "end_seq_id": null
-        }
-       ],
-       "type": "RSR"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 2,
-         "end_seq_id": null
-        }
-       ],
-       "type": "RSRZ"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 2,
-         "end_seq_id": null
-        }
-       ],
-       "type": "NATOMS_EDS"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 2,
-         "end_seq_id": null
-        }
-       ],
-       "type": "OWAB"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 2,
-         "end_seq_id": null
-        }
-       ],
-       "type": "AVERAGE_OCCUPANCY"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 2,
-         "end_seq_id": 251
-        }
-       ],
-       "type": "ASA"
-      }
-     ]
-    },
-    {
-     "rcsb_ligand_neighbors": [
-      {
-       "comp_id": "GLY",
-       "distance": 2.729,
-       "ligand_asym_id": "H",
-       "ligand_comp_id": "SO4",
-       "ligand_is_bound": null,
-       "seq_id": 236
-      },
-      {
-       "comp_id": "GLY",
-       "distance": 3.544,
-       "ligand_asym_id": "H",
-       "ligand_comp_id": "SO4",
-       "ligand_is_bound": null,
-       "seq_id": 235
-      },
-      {
-       "comp_id": "SER",
-       "distance": 4.027,
-       "ligand_asym_id": "H",
-       "ligand_comp_id": "SO4",
-       "ligand_is_bound": null,
-       "seq_id": 214
-      },
-      {
-       "comp_id": "GLY",
-       "distance": 4.449,
-       "ligand_asym_id": "H",
-       "ligand_comp_id": "SO4",
-       "ligand_is_bound": null,
-       "seq_id": 213
-      },
-      {
-       "comp_id": "ARG",
-       "distance": 2.668,
-       "ligand_asym_id": "I",
-       "ligand_comp_id": "SO4",
-       "ligand_is_bound": null,
-       "seq_id": 227
-      },
-      {
-       "comp_id": "ARG",
-       "distance": 3.947,
-       "ligand_asym_id": "I",
-       "ligand_comp_id": "SO4",
-       "ligand_is_bound": null,
-       "seq_id": 196
-      },
-      {
-       "comp_id": "TYR",
-       "distance": 3.127,
-       "ligand_asym_id": "J",
-       "ligand_comp_id": "BTS",
-       "ligand_is_bound": null,
-       "seq_id": 102
-      }
-     ],
-     "rcsb_polymer_entity_instance_container_identifiers": {
-      "asym_id": "B",
-      "auth_asym_id": "B"
-     },
-     "rcsb_polymer_instance_feature": [
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 2,
-         "end_seq_id": 251
-        }
-       ],
-       "type": "CATH"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 1,
-         "end_seq_id": 251
-        }
-       ],
-       "type": "SCOP"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 2,
-         "end_seq_id": 251
-        }
-       ],
-       "type": "SCOP2B_SUPERFAMILY"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 3,
-         "end_seq_id": 251
-        }
-       ],
-       "type": "ECOD"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 8,
-         "end_seq_id": 12
-        },
-        {
-         "beg_seq_id": 39,
-         "end_seq_id": 43
-        },
-        {
-         "beg_seq_id": 61,
-         "end_seq_id": 65
-        },
-        {
-         "beg_seq_id": 91,
-         "end_seq_id": 94
-        },
-        {
-         "beg_seq_id": 123,
-         "end_seq_id": 128
-        },
-        {
-         "beg_seq_id": 163,
-         "end_seq_id": 167
-        },
-        {
-         "beg_seq_id": 209,
-         "end_seq_id": 211
-        },
-        {
-         "beg_seq_id": 231,
-         "end_seq_id": 234
-        },
-        {
-         "beg_seq_id": 8,
-         "end_seq_id": 12
-        }
-       ],
-       "type": "SHEET"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 18,
-         "end_seq_id": 32
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 45,
-         "end_seq_id": 47
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 48,
-         "end_seq_id": 56
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 80,
-         "end_seq_id": 88
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 96,
-         "end_seq_id": 103
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 106,
-         "end_seq_id": 120
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 131,
-         "end_seq_id": 137
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 139,
-         "end_seq_id": 155
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 156,
-         "end_seq_id": 161
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 169,
-         "end_seq_id": 174
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 180,
-         "end_seq_id": 199
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 200,
-         "end_seq_id": 207
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 219,
-         "end_seq_id": 225
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 235,
-         "end_seq_id": 241
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 242,
-         "end_seq_id": 249
-        }
-       ],
-       "type": "HELIX_P"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 1,
-         "end_seq_id": 7
-        },
-        {
-         "beg_seq_id": 13,
-         "end_seq_id": 17
-        },
-        {
-         "beg_seq_id": 33,
-         "end_seq_id": 38
-        },
-        {
-         "beg_seq_id": 44,
-         "end_seq_id": 44
-        },
-        {
-         "beg_seq_id": 57,
-         "end_seq_id": 60
-        },
-        {
-         "beg_seq_id": 66,
-         "end_seq_id": 79
-        },
-        {
-         "beg_seq_id": 89,
-         "end_seq_id": 90
-        },
-        {
-         "beg_seq_id": 95,
-         "end_seq_id": 95
-        },
-        {
-         "beg_seq_id": 104,
-         "end_seq_id": 105
-        },
-        {
-         "beg_seq_id": 121,
-         "end_seq_id": 122
-        },
-        {
-         "beg_seq_id": 129,
-         "end_seq_id": 130
-        },
-        {
-         "beg_seq_id": 138,
-         "end_seq_id": 138
-        },
-        {
-         "beg_seq_id": 162,
-         "end_seq_id": 162
-        },
-        {
-         "beg_seq_id": 168,
-         "end_seq_id": 168
-        },
-        {
-         "beg_seq_id": 175,
-         "end_seq_id": 179
-        },
-        {
-         "beg_seq_id": 208,
-         "end_seq_id": 208
-        },
-        {
-         "beg_seq_id": 212,
-         "end_seq_id": 218
-        },
-        {
-         "beg_seq_id": 226,
-         "end_seq_id": 230
-        },
-        {
-         "beg_seq_id": 250,
-         "end_seq_id": 251
-        }
-       ],
-       "type": "UNASSIGNED_SEC_STRUCT"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 175,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 177,
-         "end_seq_id": null
-        }
-       ],
-       "type": "BINDING_SITE"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 235,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 236,
-         "end_seq_id": null
-        }
-       ],
-       "type": "BINDING_SITE"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 177,
-         "end_seq_id": null
-        }
-       ],
-       "type": "BINDING_SITE"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 55,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 227,
-         "end_seq_id": null
-        }
-       ],
-       "type": "BINDING_SITE"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 102,
-         "end_seq_id": null
-        }
-       ],
-       "type": "BINDING_SITE"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 236,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 235,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 214,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 213,
-         "end_seq_id": null
-        }
-       ],
-       "type": "LIGAND_INTERACTION"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 227,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 196,
-         "end_seq_id": null
-        }
-       ],
-       "type": "LIGAND_INTERACTION"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 102,
-         "end_seq_id": null
-        }
-       ],
-       "type": "LIGAND_INTERACTION"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 1,
-         "end_seq_id": 1
-        }
-       ],
-       "type": "UNOBSERVED_RESIDUE_XYZ"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 218,
-         "end_seq_id": 218
-        }
-       ],
-       "type": "UNOBSERVED_ATOM_XYZ"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 8,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 11,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 22,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 26,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 36,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 47,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 50,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 58,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 61,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 64,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 67,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 81,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 86,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 91,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 99,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 103,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 117,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 123,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 131,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 134,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 147,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 151,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 158,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 162,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 171,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 190,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 195,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 199,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 210,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 227,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 231,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 238,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 243,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 247,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 251,
-         "end_seq_id": null
-        }
-       ],
-       "type": "CLASHES"
-      },
-      {
-       "feature_positions": [
-        {
-         "beg_seq_id": 22,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 45,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 61,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 70,
-         "end_seq_id": null
-        },
-        {
-         "beg_seq_id": 123,
          "end_seq_id": null
         },
         {

@@ -15,6 +15,7 @@ from .warnings import (
     CuratedDisagreementWarning,
     DeprecatedUsageWarning,
     EnrichmentFailedWarning,
+    EnrichmentPartialWarning,
     EnrichmentTruncatedWarning,
     NewerCardSchemaWarning,
     UnanchoredRecordsWarning,
@@ -51,6 +52,20 @@ def report_outcomes(records: Iterable[Dict[str, Any]], subject: str) -> None:
             warn(
                 EnrichmentFailedWarning(
                     source=source, subject=subject, detail=record.get("detail") or ""
+                ),
+                stacklevel=_user_stacklevel(),
+            )
+        if record.get("status") == "partial":
+            warn(
+                EnrichmentPartialWarning(
+                    source=source,
+                    subject=(
+                        f"{subject} ({record['structure']})"
+                        if record.get("structure")
+                        else subject
+                    ),
+                    missing=", ".join(record.get("missing") or []),
+                    detail=record.get("detail") or "",
                 ),
                 stacklevel=_user_stacklevel(),
             )

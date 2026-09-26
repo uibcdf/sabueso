@@ -5,7 +5,8 @@ expression tags (``rcsb_polymer_entity_feature``), their canonical sequence and
 expression host, the residues without coordinates per chain
 (``rcsb_polymer_instance_feature``), R-free and R-work, and the deposit and release
 dates. Instance features are fetched whole and filtered by the mapping, because
-GraphQL cannot filter them by type.
+GraphQL cannot filter them by type. When RCSB fails on the instance-level fields of an
+entry, the entry is fetched again without them and marked ``_partial`` (#74).
 
 Ligands come with the PDB "subject of investigation" flag and, per polymer chain, the
 residues near each ligand instance (``rcsb_ligand_neighbors``, structure numbering).
@@ -55,7 +56,8 @@ STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
     rcsb_polymer_entity_align { reference_database_name reference_database_accession
       aligned_regions { entity_beg_seq_id ref_beg_seq_id length } }
     polymer_entity_instances {
-      rcsb_polymer_entity_instance_container_identifiers { asym_id auth_asym_id }
+      rcsb_polymer_entity_instance_container_identifiers { asym_id auth_asym_id
+        auth_to_entity_poly_seq_mapping }
       rcsb_polymer_instance_feature { type feature_positions { beg_seq_id end_seq_id } }
       rcsb_ligand_neighbors {
         ligand_asym_id ligand_comp_id ligand_is_bound seq_id comp_id distance }
@@ -71,29 +73,55 @@ STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
   }
 } }"""
 
+#: Instance-level fields a server-side error can make unavailable for an entry
+#: (uibcdf/sabueso#74). Without them the entry is still mapped, and marked partial.
+INSTANCE_FIELDS = """      rcsb_polymer_instance_feature { type feature_positions { beg_seq_id end_seq_id } }
+      rcsb_ligand_neighbors {
+        ligand_asym_id ligand_comp_id ligand_is_bound seq_id comp_id distance }
+"""
+PARTIAL_QUERY = STRUCTURE_QUERY.replace(INSTANCE_FIELDS, "")
+PARTIAL_MISSING = ["rcsb_polymer_instance_feature", "rcsb_ligand_neighbors"]
+
 
 class OnlineRCSBClient:
     def __init__(self, timeout: float = 30.0) -> None:
         self.timeout = timeout
 
-    def fetch_structure(self, pdb_id: str) -> Tuple[Dict[str, Any], str]:
-        body = json.dumps(
-            {"query": STRUCTURE_QUERY, "variables": {"id": pdb_id.upper()}}
-        ).encode("utf-8")
+    def _post(self, query: str, pdb_id: str) -> Dict[str, Any]:
+        body = json.dumps({"query": query, "variables": {"id": pdb_id.upper()}}).encode(
+            "utf-8"
+        )
         request = Request(
             RCSB_GRAPHQL, data=body, headers={"Content-Type": "application/json"}
         )
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
         try:
             with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
-                data = json.loads(resp.read().decode("utf-8"))
+                return json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"RCSB request for {pdb_id} failed: {exc}") from exc
-        if data.get("errors"):
-            raise ConnectorError(f"RCSB request for {pdb_id} failed: {data['errors']}")
+
+    def fetch_structure(self, pdb_id: str) -> Tuple[Dict[str, Any], str]:
+        """The entry, or, when RCSB fails on its instance-level fields, the entry
+        without them, marked ``_partial`` (``{"missing": [...], "reason": ...}``)."""
+        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        data = self._post(STRUCTURE_QUERY, pdb_id)
+        partial = None
+        errors = data.get("errors") or []
+        if errors and all(
+            "polymer_entity_instances" in [str(p) for p in e.get("path") or []]
+            for e in errors
+        ):
+            reason = str(errors[0].get("message") or "")[:300]
+            data = self._post(PARTIAL_QUERY, pdb_id)
+            errors = data.get("errors") or []
+            partial = {"missing": list(PARTIAL_MISSING), "reason": reason}
+        if errors:
+            raise ConnectorError(f"RCSB request for {pdb_id} failed: {errors}")
         entry = (data.get("data") or {}).get("entry")
         if entry is None:
             raise RecordNotFoundError(f"RCSB has no entry {pdb_id}")
+        if partial:
+            entry["_partial"] = partial
         return entry, retrieved_at
 
 

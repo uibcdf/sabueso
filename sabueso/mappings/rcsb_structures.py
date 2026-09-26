@@ -221,6 +221,66 @@ def _construct(
     }
 
 
+def _author_numbering(
+    entities: List[Dict[str, Any]], acc: str
+) -> Dict[str, List[list]] | None:
+    """Per chain, the author residue numbers of the UniProt positions (#73).
+
+    RCSB states each instance's author numbering (``auth_to_entity_poly_seq_mapping``,
+    one author id per entity residue); the entity alignment places entity residues in
+    UniProt numbering. Stored compactly as ``[uniprot_begin, uniprot_end, author_begin]``
+    segments where both run on together; an author id with an insertion code (``"52A"``)
+    is its own segment, ``[position, position, "52A"]``. None when RCSB did not state
+    the author numbering.
+    """
+    out: Dict[str, List[list]] = {}
+    for entity in entities:
+        if acc not in entity["uniprot"]:
+            continue
+        for instance in entity["instances"]:
+            ids = (
+                instance.get("rcsb_polymer_entity_instance_container_identifiers") or {}
+            )
+            mapping = ids.get("auth_to_entity_poly_seq_mapping")
+            if not mapping:
+                continue
+            segments: List[list] = []
+            for entity_beg, ref_beg, length in entity["regions"].get(acc, []):
+                for k in range(length):
+                    index = entity_beg + k - 1
+                    if not 0 <= index < len(mapping):
+                        continue
+                    author, position = str(mapping[index]), ref_beg + k
+                    number = int(author) if author.lstrip("-").isdigit() else None
+                    last = segments[-1] if segments else None
+                    if (
+                        number is not None
+                        and last is not None
+                        and isinstance(last[2], int)
+                        and position == last[1] + 1
+                        and number == last[2] + (last[1] - last[0]) + 1
+                    ):
+                        last[1] = position
+                    else:
+                        segments.append(
+                            [
+                                position,
+                                position,
+                                number if number is not None else author,
+                            ]
+                        )
+            out[str(ids.get("auth_asym_id"))] = segments
+    return out or None
+
+
+def author_position(segments: List[list] | None, position: int) -> str | None:
+    """The author residue id of a UniProt position, from ``author_numbering`` segments."""
+    for beg, end, author in segments or []:
+        if beg <= position <= end:
+            return str(author + (position - beg)) if isinstance(author, int) else author
+    return None
+
+
 def _refinement(entry: Dict[str, Any]) -> List[Dict[str, Any]] | None:
     """R-free and R-work per refinement, as RCSB states them; None when not stated."""
     if not entry.get("refine"):
@@ -488,6 +548,9 @@ def map_structure_entities(
         }
         if any(e["features"] is not None for e in mine):
             qualifiers.update(_construct(mine, acc, sequences.get(acc)))
+        numbering = _author_numbering(mine, acc)
+        if numbering:
+            qualifiers["author_numbering"] = numbering
         if lengths.get(acc):
             qualifiers["coverage"] = coverage(ranges, lengths[acc])
         relationships.append(

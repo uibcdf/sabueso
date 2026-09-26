@@ -2,7 +2,8 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
-  - `0.3.4` is current, and is the schema of release 0.4.0;
+  - `0.3.5` is current, not yet released: it adds `author_numbering` (#73);
+  - `0.3.4` is the schema of release 0.4.0;
   - `0.3.3` is the schema of release 0.3.1;
   - `0.3.2` of release 0.3.0;
   - `0.3.1` of release 0.2.0;
@@ -362,6 +363,13 @@ A Relationship is first-class, traceable knowledge:
       sequence, stated as a mutation or not (`null` without a reference sequence);
     - `observed`: per chain, the UniProt ranges with coordinates (aligned ranges minus
       RCSB's unobserved residues).
+  - since 0.3.5, `author_numbering`: per chain, the author residue numbers of UniProt
+    positions (RCSB `auth_to_entity_poly_seq_mapping` through the entity alignment), as
+    segments `[uniprot_begin, uniprot_end, author_begin]`, or `[position, position,
+    "52A"]` for an author id with an insertion code (#73).
+    `sabueso.mappings.rcsb_structures.author_position(segments, position)` reads it.
+  - Chain-keyed qualifiers (`observed`, `author_numbering`) are recorded in the card
+    shape as `{chain}` since 0.3.5, so a new chain name is not a new shape.
     These keys are absent from relationships fetched before 0.3.4, and the state that
     `Card.structures()` derives from them is then unknown (`None`), never assumed.
   - `assemblies` (#40): per biological assembly, `id`, `oligomeric_details`,

@@ -46,10 +46,13 @@ def _structures(view: Dict[str, Any]) -> List[Dict[str, Any]]:
             "r_free": s.get("r_free"),
             "sequence_state": s["state"]["sequence"],
             "substitutions": _join(s.get("substitutions")),
+            "author_substitutions": _join(s.get("author_substitutions")),
             "modified_residues": _join(s.get("modified_residues")),
             "ligand_state": s["state"]["ligands"],
             "ligands_of_interest": _join(s.get("ligands_of_interest")),
             "oligomer": s["state"]["oligomer"],
+            "oligomer_basis": s.get("oligomer_basis"),
+            "oligomer_disagreement": s.get("oligomer_disagreement"),
             "in_complex": s["state"]["in_complex"],
             "expression_host": _join(s.get("expression_host")),
             "missing_in_region": _join(

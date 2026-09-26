@@ -84,6 +84,13 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "qualifier": True,
         },
     ],
+    "0.3.5": [
+        {
+            "path": "relationships.has_structure.author_numbering",
+            "filled_by": "structures",
+            "qualifier": True,
+        },
+    ],
 }
 
 #: Qualifiers every relationship of their predicate has when fetched with the schema

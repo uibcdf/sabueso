@@ -8,18 +8,21 @@
   at its release, has no subcellular location for the entry, or ChEMBL has no
   target;
 - ``not_queried``: the enrichment that would answer it was not requested;
-- ``unavailable``: the source failed, so nothing can be said.
+- ``unavailable``: the source failed, so nothing can be said;
+- ``partial``: the source stated some of it, but failed, or answered incompletely, for
+  some requests (e.g. two structures of many). ``basis`` names them (``unavailable_for``,
+  ``incomplete_for``), so that "known" never hides a gap (#74, rule ``@2``).
 
 These are knowledge states, not Evidence. "Not stated by UniProt at release 120" is a
 fact about a source; what the absence means for a project is interpreted in Nextia.
-Rule ``knowledge_state@1``.
+Rule ``knowledge_state@2``.
 """
 
 from __future__ import annotations
 
 from typing import Any, Dict, List
 
-KNOWLEDGE_STATE_RULE = "knowledge_state@1"
+KNOWLEDGE_STATE_RULE = "knowledge_state@2"
 
 #: Protein enrichments: (area, source, which enrichment records answer it).
 PROTEIN_ENRICHMENTS = (
@@ -67,7 +70,18 @@ def _enrichment_row(area: str, source: str, records: List[Dict[str, Any]]):
     if not records:
         return _row(area, source, "not_queried")
     statuses = [r.get("status") for r in records]
-    count = sum(r.get("count") or 0 for r in records if r.get("status") == "added")
+    count = sum(
+        r.get("count") or 0 for r in records if r.get("status") in ("added", "partial")
+    )
+
+    def which(status: str) -> List[str] | None:
+        found = [
+            str(r.get("structure") or r.get("identifier") or r.get("data") or "")
+            for r in records
+            if r.get("status") == status
+        ]
+        return found or None
+
     releases = sorted({str(r["version"]) for r in records if r.get("version")})
     release = "; ".join(releases) or None
     details = sorted({r["detail"] for r in records if r.get("detail")})
@@ -78,6 +92,18 @@ def _enrichment_row(area: str, source: str, records: List[Dict[str, Any]]):
         detail="; ".join(details) or None,
     )
     if count:
+        failed, incomplete = which("error"), which("partial")
+        if failed or incomplete:
+            return _row(
+                area,
+                source,
+                "partial",
+                release,
+                count,
+                unavailable_for=failed,
+                incomplete_for=incomplete,
+                **basis,
+            )
         return _row(area, source, "known", release, count, **basis)
     if "error" in statuses:
         # Nothing stated, and at least one request failed: nothing can be said.

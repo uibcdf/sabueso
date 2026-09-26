@@ -28,11 +28,17 @@ Cards expose core methods such as:
 ## What a card does not know
 
 `card.knowledge_state()` (or `card.table("knowledge_state")`) lists, per area and
-source, whether the card knows it (`known`), sources disagree (`conflicting`), the
-source was consulted and states nothing (`not_stated`), it was not requested
-(`not_queried`), or the source failed (`unavailable`). Each row carries the source
-release and the basis. An absence is reported as a fact about a source, never as
-evidence against something.
+source:
+- `known`: the card knows it;
+- `conflicting`: sources disagree;
+- `not_stated`: the source was consulted and states nothing;
+- `not_queried`: it was not requested;
+- `unavailable`: the source failed;
+- `partial`: the source answered for some requests and failed, or answered
+  incompletely, for others. `basis` names which (`unavailable_for`, `incomplete_for`).
+
+Each row carries the source release and the basis. An absence is reported as a fact
+about a source, never as evidence against something (rule `knowledge_state@2`).
 
 ## Structures
 

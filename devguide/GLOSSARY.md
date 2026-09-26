@@ -22,7 +22,8 @@
   a SourceAssertion.
 - **Knowledge state**: per area and source, whether a card knows something (`known`),
   sources disagree (`conflicting`), the source was asked and states nothing
-  (`not_stated`), it was not asked (`not_queried`), or it failed (`unavailable`).
+  (`not_stated`), it was not asked (`not_queried`), it failed (`unavailable`), or it
+  answered only for some requests (`partial`).
 - **Conflict**: disagreement among SourceAssertions for the same field or relationship
   qualifier. It is recorded, never resolved by deletion.
 - **Measurement**: one experimental result, which several source records may state. The

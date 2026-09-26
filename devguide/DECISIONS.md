@@ -629,3 +629,28 @@ uibcdf/sabueso#69.
   - schema policy, tests and fixtures, local gates;
   - commits, releases, recording work, pilot confidentiality.
 
+## Findings of the first live run of the knowledge baseline (2026-09-26)
+A live run of the first pilot's knowledge baseline on 0.4.0 was audited against the
+sources. Issues #72–#75 record what it found.
+- **The oligomer the authors define (#72, `structure_state@2`).**
+  - The state read the first assembly by id. For 2V5B, a monomerization structure,
+    that is the software-predicted dimer, while the authors defined a monomer.
+  - The oligomer now comes from author-defined assemblies, else from the software's.
+  - `oligomer_basis` says which, and a software prediction the authors' assemblies do
+    not include is flagged (`oligomer_disagreement`), never resolved.
+- **Author numbering (#73, card schema 0.3.5).**
+  - Positions stay in UniProt numbering. `author_numbering` adds, per chain, the author
+    residue numbers from RCSB (`auth_to_entity_poly_seq_mapping` through the entity
+    alignment), as compact segments.
+  - Views give `author_substitutions` (`E104D` next to UniProt `E105D`).
+  - It is a source statement; geometry stays with MolSysMT.
+- **Partial source answers (#74, `knowledge_state@2`).**
+  - RCSB failed that day, server-side, on the per-chain data of some entries. The client
+    now fetches such an entry again without those fields and marks it `_partial`.
+  - The card keeps the rest. The enrichment is `partial` (warning
+    `SABUESO-W-ENRICH-003`), and the knowledge state is `partial`, naming the
+    structures that failed or came back incomplete. "known" no longer hides a gap.
+- **The recorded shape and fixture growth.** The shape builder pins its input
+  structures, so a new fixture does not change a published shape. Chain-keyed qualifiers
+  are recorded as `{chain}`.
+

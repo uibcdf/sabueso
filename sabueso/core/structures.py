@@ -77,7 +77,7 @@ def coverage_derivation() -> Dict[str, Any]:
     )
 
 
-STATE_RULE = "structure_state@1"
+STATE_RULE = "structure_state@2"
 
 
 def state_derivation() -> Dict[str, Any]:
@@ -103,7 +103,8 @@ def state_derivation() -> Dict[str, Any]:
                 "reference": "no difference and no engineered mutation",
             },
             "ligands": "PDB subject-of-investigation flag",
-            "oligomer": "RCSB global symmetry of the first assembly",
+            "oligomer": "RCSB global symmetry of the author-defined assemblies, else of "
+            "the software-defined ones; disagreement between the two is flagged",
             "unknown": "None: the structure was not fetched from RCSB with these data",
         },
     )
@@ -147,6 +148,47 @@ def _sequence_state(q: Dict[str, Any]) -> tuple:
     return state, substitutions, modified
 
 
+def _oligomer(assemblies: List[Dict[str, Any]] | None) -> Dict[str, Any]:
+    """The oligomeric state of a structure (rule ``structure_state@2``).
+
+    RCSB states who defined each assembly: the authors, software (e.g. PISA), or both.
+    The state comes from the assemblies the authors defined, since they state what the
+    structure was determined to show; from the software's when the authors defined none.
+    Several distinct states are joined with " / ". A software assembly whose state the
+    authors' do not include is a disagreement, flagged and never resolved.
+    """
+    if not assemblies:
+        return {"state": None, "basis": None, "disagreement": None, "by_basis": None}
+    author = sorted(
+        {
+            a["oligomeric_state"]
+            for a in assemblies
+            if a.get("oligomeric_state") and "author" in str(a.get("defined_by") or "")
+        }
+    )
+    software = sorted(
+        {
+            a["oligomeric_state"]
+            for a in assemblies
+            if a.get("oligomeric_state")
+            and "software" in str(a.get("defined_by") or "")
+        }
+    )
+    chosen, basis = (author, "author") if author else (software, "software")
+    if not chosen:
+        # Assemblies without a stated definer: kept as stated, basis unknown.
+        chosen = sorted(
+            {a["oligomeric_state"] for a in assemblies if a.get("oligomeric_state")}
+        )
+        basis = None
+    return {
+        "state": " / ".join(chosen) if chosen else None,
+        "basis": basis,
+        "disagreement": bool(author and software and set(software) - set(author)),
+        "by_basis": {"author": author, "software": software},
+    }
+
+
 def _ligand_state(ligands: List[Dict[str, Any]] | None) -> str | None:
     if ligands is None:
         return None
@@ -158,6 +200,35 @@ def _ligand_state(ligands: List[Dict[str, Any]] | None) -> str | None:
     if all(flag is False for flag in flags):
         return "no_ligand_of_interest"
     return "unstated"
+
+
+def _author_substitutions(
+    q: Dict[str, Any], substitutions: List[str] | None
+) -> List[str] | None:
+    """The substitutions in the authors' numbering (#73), e.g. ``E104D`` for UniProt
+    ``E105D``, read from the first chain that numbers the position. None without author
+    numbering; ``?`` for a position no chain numbers."""
+    from sabueso.mappings.rcsb_structures import author_position
+
+    numbering = q.get("author_numbering")
+    if substitutions is None or not numbering:
+        return None
+    out = []
+    for label in substitutions:
+        match = _SUBSTITUTION.match(label)
+        if not match:
+            continue
+        position = int(match.group(2))
+        author = next(
+            (
+                a
+                for chain in sorted(numbering)
+                if (a := author_position(numbering[chain], position)) is not None
+            ),
+            "?",
+        )
+        out.append(f"{match.group(1)}{author}{match.group(3)}")
+    return out
 
 
 def _missing(
@@ -193,6 +264,7 @@ def structures_view(
         assemblies = q.get("assemblies")
         refinement = [r for r in q.get("refinement") or [] if r.get("r_free")]
         missing = _missing(q, region)
+        oligomer = _oligomer(assemblies)
         summary = {
             "structure_ref": rel["object_ref"],
             "relationship_id": rel["id"],
@@ -215,6 +287,8 @@ def structures_view(
             "released": q.get("released"),
             "r_free": refinement[0]["r_free"] if refinement else None,
             "substitutions": substitutions,
+            "author_substitutions": _author_substitutions(q, substitutions),
+            "author_numbering": q.get("author_numbering"),
             "modified_residues": modified,
             "ligands_of_interest": None
             if q.get("ligands") is None
@@ -236,6 +310,9 @@ def structures_view(
                 }
             ),
             "observed": q.get("observed"),
+            "oligomer_basis": oligomer["basis"],
+            "oligomer_disagreement": oligomer["disagreement"],
+            "assembly_states": oligomer["by_basis"],
             "missing_in_region": missing,
             "complete_chains": None
             if missing is None
@@ -245,9 +322,7 @@ def structures_view(
                 "coverage": coverage_class(q.get("coverage")),
                 "sequence": sequence_state,
                 "ligands": _ligand_state(q.get("ligands")),
-                "oligomer": assemblies[0].get("oligomeric_state")
-                if assemblies
-                else None,
+                "oligomer": oligomer["state"],
                 "in_complex": bool(q["other_entities"])
                 if "other_entities" in q
                 else None,

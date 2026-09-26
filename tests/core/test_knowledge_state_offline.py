@@ -51,7 +51,7 @@ def test_known_not_stated_and_not_queried_are_told_apart(resolver):
         states[("relationships.has_ligand_site", "PDBe-KB")]["state"] == "not_queried"
     )
     assert states[("relationships.interacts_with", "UniProt")]["state"] == "not_stated"
-    assert card.knowledge_state()["rule"]["rule"] == "knowledge_state@1"
+    assert card.knowledge_state()["rule"]["rule"] == "knowledge_state@2"
 
 
 def test_a_failed_source_is_unavailable(resolver):

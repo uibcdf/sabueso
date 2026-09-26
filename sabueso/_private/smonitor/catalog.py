@@ -61,6 +61,12 @@ CATALOG = {
             "category": "source",
             "level": "WARNING",
         },
+        "EnrichmentPartialWarning": {
+            "code": "SABUESO-W-ENRICH-003",
+            "source": "sabueso.warning.enrichment_partial",
+            "category": "source",
+            "level": "WARNING",
+        },
         "UnanchoredRecordsWarning": {
             "code": "SABUESO-W-IDENTITY-001",
             "source": "sabueso.warning.unanchored_records",
@@ -110,6 +116,15 @@ CODES = {
         "user_hint": "The failure is recorded with the result. Retry later, or check "
         "the source's availability.",
         "dev_message": "{source} failed for {subject}: {detail}",
+        "dev_hint": "See the enrichment record for the full outcome.",
+    },
+    "SABUESO-W-ENRICH-003": {
+        "title": "Result partial",
+        "user_message": "{source} answered only part of the record for {subject} "
+        "(missing: {missing}); the result is incomplete.",
+        "user_hint": "The gap is recorded with the result. Retry later, or check the "
+        "source's availability.",
+        "dev_message": "{source} partial for {subject}: {detail}",
         "dev_hint": "See the enrichment record for the full outcome.",
     },
     "SABUESO-W-ENRICH-002": {

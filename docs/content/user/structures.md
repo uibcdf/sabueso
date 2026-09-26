@@ -44,8 +44,23 @@ Each structure has a derived `state`, following the named rule `structure_state@
 - sequence: `reference`, `mutant` (RCSB states an engineered mutation), `chimera`, or
   `differs` (a difference no source calls engineered);
 - ligands: `ligand_of_interest`, `no_ligand_of_interest`, `no_ligands` or `unstated`;
-- oligomeric state;
+- the oligomeric state of the assemblies the authors defined; the software's only when
+  the authors defined none. `oligomer_basis` says which, and `oligomer_disagreement`
+  flags a software prediction the authors' assemblies do not include. An example is
+  2V5B, a monomerization structure that software predicts as a dimer;
 - whether other entities are present (`in_complex`).
+
+The state follows rule `structure_state@2`.
+
+**Numbering.** Positions are in UniProt numbering. Depositors and papers often use their
+own numbering, often the mature protein's. `author_substitutions` gives each substitution
+as the authors number it (UniProt `E105D` is `E104D` in 2VOM). `author_numbering` gives,
+per chain, the author residue numbers of UniProt positions;
+`sabueso.mappings.rcsb_structures.author_position(segments, position)` reads them.
+
+**Partial entries.** When RCSB fails on the per-chain data of an entry, the entry is kept
+without it and recorded as `partial`, with a warning. What is missing (observed
+residues, ligand contacts) is then `None`, never assumed.
 
 A structure fetched before card schema 0.3.4 has no construct data, and its state is
 `None`, never assumed. Refresh the card to fetch it again ({doc}`upgrading`).
