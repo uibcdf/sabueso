@@ -120,7 +120,7 @@ def test_the_inventory_groups_like_with_like(cards):
         for refs in g["structures"].values()
         for ref in refs
     }
-    assert mutants == {"pdb:4HHP", "pdb:4UNK"}
+    assert mutants == {"pdb:2VOM", "pdb:4HHP", "pdb:4UNK"}
     # Each protein's region in its own numbering.
     rows = {(r["card_id"], r["structure_ref"]): r for r in inventory["items"]}
     assert rows[(TCTIM, "pdb:1SUX")]["complete_chains"] == ["A", "B"]
@@ -147,3 +147,72 @@ def test_structures_without_state_say_why(cards):
 def test_a_region_is_checked():
     with pytest.raises(ArgumentError):
         Deck([]).structure_inventory(regions=[[5, 2]])
+
+
+#: TcTIM -> HsTIM positions over a gap-free window of the two sequences
+#: (GHSERR...GE, 95-115), as an alignment would give them.
+WINDOW = {p: p for p in range(95, 116)}
+
+
+def test_groups_can_read_ligands_coarsely(cards):
+    tc, hs = cards
+    inventory = Deck([tc, hs]).structure_inventory(
+        group_by=("method", "coverage", "sequence", "ligands:interest")
+    )
+    assert inventory["rule"]["parameters"]["state"] == [
+        "method",
+        "coverage",
+        "sequence",
+        "ligands:interest",
+    ]
+    apo = [
+        g
+        for g in inventory["states"]
+        if g["state"]["sequence"] == "reference"
+        and g["state"]["ligands:interest"] == "none_of_interest"
+    ]
+    # "no ligands" (1TCD) and "no ligand of interest" (2OMA) are one apo group now.
+    (group,) = apo
+    assert group["structures"][TCTIM] == ["pdb:1TCD", "pdb:2OMA"]
+
+
+def test_substitutions_are_related_through_residue_maps(cards):
+    tc, hs = cards
+    deck = Deck([tc, hs])
+    keys = ("method", "coverage", "sequence", "ligands:interest", "substitutions")
+    mapped = deck.structure_inventory(
+        group_by=keys, residue_maps={TCTIM: WINDOW}, reference=HSTIM
+    )
+    # E105D in TcTIM (4HHP) and HsTIM (2VOM), at one reference position.
+    assert mapped["shared_substitutions"] == [
+        {
+            "reference_position": 105,
+            "residue": "D",
+            "structures": {TCTIM: ["pdb:4HHP"], HSTIM: ["pdb:2VOM"]},
+        }
+    ]
+    (group,) = [g for g in mapped["states"] if g["state"]["substitutions"] == ["105D"]]
+    assert group["shared"]
+    assert group["structures"] == {TCTIM: ["pdb:4HHP"], HSTIM: ["pdb:2VOM"]}
+    rows = {r["structure_ref"]: r for r in mapped["items"]}
+    assert rows["pdb:4HHP"]["substitutions_in_reference"] == [
+        {"label": "E105D", "position": 105, "reference_position": 105, "residue": "D"}
+    ]
+    assert mapped["rule"]["parameters"]["mapped"] == [TCTIM]
+
+    # Without a map, equal numbers are never taken as equivalent positions.
+    unmapped = deck.structure_inventory(group_by=keys)
+    assert unmapped["shared_substitutions"] == []
+    assert not any(
+        g["shared"] for g in unmapped["states"] if g["state"]["sequence"] == "mutant"
+    )
+
+
+def test_group_by_and_reference_are_checked(cards):
+    tc, hs = cards
+    with pytest.raises(ArgumentError):
+        Deck([tc, hs]).structure_inventory(group_by=("resolution",))
+    with pytest.raises(ArgumentError):
+        Deck([tc, hs]).structure_inventory(reference="sabueso:protein:uniprot:P00000")
+    with pytest.raises(ArgumentError):
+        Deck([tc, hs]).structure_inventory(residue_maps={TCTIM: {0: 1}})

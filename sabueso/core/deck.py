@@ -207,17 +207,40 @@ class Deck:
         self,
         regions: Any = None,
         include_fragments: bool = False,
+        group_by: Any = None,
+        residue_maps: Any = None,
+        reference: str | None = None,
         skip_digestion: bool = False,
     ) -> Dict[str, Any]:
         """The experimental structures of the deck's protein cards, side by side and
         grouped by state (rule ``structure_inventory@1``); see
-        ``sabueso.core.structures.structure_inventory``. ``regions``: one region (UniProt
-        positions and ``[begin, end]`` ranges) for every card, or ``{card_id: region}``."""
+        ``sabueso.core.structures.structure_inventory``.
+
+        - ``regions``: one region (UniProt positions and ``[begin, end]`` ranges) for
+          every card, or ``{card_id: region}``.
+        - ``group_by``: the keys of a group (default: every state key), e.g.
+          ``("method", "coverage", "sequence", "ligands:interest", "substitutions")``.
+        - ``residue_maps`` and ``reference``: ``{card_id: {position: reference
+          position}}``, placing substitutions in the reference card's numbering."""
         from .structures import structure_inventory
 
         proteins = [c for c in self.cards if c.meta.get("entity_type") == "protein"]
+        if reference is not None and reference not in {c.id for c in proteins}:
+            from .errors import ArgumentError
+
+            raise ArgumentError(
+                argument="reference",
+                value=reference,
+                caller="Deck.structure_inventory",
+                reason="expected the card id of a protein card of the deck",
+            )
         return structure_inventory(
-            proteins, regions=regions, include_fragments=include_fragments
+            proteins,
+            regions=regions,
+            include_fragments=include_fragments,
+            group_by=group_by,
+            residue_maps=residue_maps,
+            reference=reference,
         )
 
     def ids(self) -> List[str]:

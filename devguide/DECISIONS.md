@@ -570,3 +570,19 @@ uibcdf/sabueso#43.
   it. It is a view for reading and review. Nothing is grouped, stored or merged by
   name. Whether two cards with one name are paralogs or redundant entries is the
   identity audit's question.
+
+## Structural inventory: grouping keys and residue maps (2026-09-26)
+uibcdf/sabueso#70, found running the inventory live on two orthologs.
+- **`group_by`** chooses the keys of a group among `structures.GROUP_KEYS`. The
+  default, every state key, keeps the results of `structure_inventory@1` as they were
+  cited. `ligands:interest` reads the ligand state coarsely: `no_ligands` and
+  `no_ligand_of_interest` are both `none_of_interest`.
+- **`residue_maps` and `reference`** place each card's substitutions in the reference
+  card's numbering. The maps come from the caller, e.g. a MolSysMT alignment; Sabueso
+  aligns nothing. `shared_substitutions` lists a reference position and residue found in
+  several proteins, and the key `substitutions` groups mutants by them.
+- **Equal numbers are never equivalent positions.** A card without a map keeps its own
+  numbering, and its substitutions match no other card's.
+- The rule's parameters record the keys, the reference and the mapped cards, so a
+  grouping can be told from another.
+

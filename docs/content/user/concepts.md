@@ -68,6 +68,20 @@ differs between proteins. Structures whose state is unknown are listed apart
 (`not_inventoried`), with the reason. The inventory states facts and groups them; it
 never chooses a structure. No single structure stands for the protein.
 
+- **Choosing the grouping keys.** `group_by` chooses what defines a group. For example,
+  `group_by=("method", "coverage", "sequence", "ligands:interest")` reads ligands
+  coarsely: a structure without ligands and one with only additives are both
+  `none_of_interest`.
+- **Relating substitutions across proteins.** Give `residue_maps={card.id: {position:
+  reference position}}` and `reference=other.id`, for example from a MolSysMT
+  alignment.
+  - Substitutions are then placed in the reference protein's numbering.
+  - `shared_substitutions` lists those found in several proteins, e.g. E105D in both
+    orthologs.
+  - The key `substitutions` groups mutants by them.
+  - Without a map, equal numbers in two proteins are never taken as equivalent
+    positions.
+
 ## Predicted structures
 
 `sabueso.resolve(..., predicted_structures=True)` adds the AlphaFold DB models of a

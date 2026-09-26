@@ -8,6 +8,7 @@ thresholds that produced it and is never stored as a SourceAssertion.
 
 from __future__ import annotations
 
+import re
 from typing import Any, Dict, List, Sequence
 
 from .quantities import to_quantity
@@ -267,12 +268,53 @@ def structures_view(
 
 INVENTORY_RULE = "structure_inventory@1"
 STATE_KEYS = ("method", "coverage", "sequence", "ligands", "oligomer", "in_complex")
+#: Keys ``group_by`` accepts, beyond the state keys: ``ligands:interest`` reads the
+#: ligand state coarsely (a ligand of interest, none, or unstated: ``no_ligands`` and
+#: ``no_ligand_of_interest`` are both ``none_of_interest``), and ``substitutions`` groups
+#: mutants by their substitutions, in the reference numbering when residue maps are given.
+GROUP_KEYS = STATE_KEYS + ("ligands:interest", "substitutions")
+_LIGANDS_OF_INTEREST = {
+    "ligand_of_interest": "ligand_of_interest",
+    "no_ligand_of_interest": "none_of_interest",
+    "no_ligands": "none_of_interest",
+    "unstated": "unstated",
+}
+_SUBSTITUTION = re.compile(r"^([A-Z])(\d+)([A-Z])$")
+
+
+def _in_reference(
+    labels: List[str] | None, mapping: Dict[int, int] | None
+) -> List[Dict[str, Any]] | None:
+    """Substitutions as ``{position, reference_position, residue, label}``; the reference
+    position is None when the card has no map, or its map does not cover the position."""
+    if labels is None:
+        return None
+    out = []
+    for label in labels:
+        match = _SUBSTITUTION.match(label)
+        if not match:
+            continue
+        position = int(match.group(2))
+        out.append(
+            {
+                "label": label,
+                "position": position,
+                "reference_position": None
+                if mapping is None
+                else mapping.get(position),
+                "residue": match.group(3),
+            }
+        )
+    return out
 
 
 def structure_inventory(
     cards: Sequence[Any],
     regions: Any = None,
     include_fragments: bool = False,
+    group_by: Sequence[str] | None = None,
+    residue_maps: Dict[str, Dict[int, int]] | None = None,
+    reference: str | None = None,
 ) -> Dict[str, Any]:
     """The experimental structures of several proteins, side by side, grouped by state.
 
@@ -286,16 +328,31 @@ def structure_inventory(
     ``fetched_without_state`` (a card built before schema 0.3.4: refresh it).
 
     ``regions`` is one region (UniProt positions and ranges) for every card, or
-    ``{card_id: region}``, since numbering differs between proteins. Choosing a
-    structure stays with the reader; the inventory states facts and groups them by a
-    named rule.
+    ``{card_id: region}``, since numbering differs between proteins.
+
+    ``group_by`` chooses the keys of a group, among ``GROUP_KEYS`` (default: every state
+    key, ``STATE_KEYS``). ``residue_maps`` (``{card_id: {position: reference position}}``,
+    e.g. from a MolSysMT alignment) places each card's substitutions in the numbering of
+    the ``reference`` card, whose own positions need no map. Substitutions at one
+    reference position with one residue, in several proteins, are then listed
+    (``shared_substitutions``), and ``substitutions`` groups them together. Equal numbers
+    in two proteins are never taken as equivalent positions: a card without a map keeps
+    its own numbering, and its substitutions match no other card's.
+
+    Choosing a structure stays with the reader; the inventory states facts and groups
+    them by a named rule, whose parameters record the choices above.
     """
     from .relationship_store import make_derivation
 
+    keys = tuple(group_by) if group_by else STATE_KEYS
+    maps = {card_id: dict(m) for card_id, m in (residue_maps or {}).items()}
+    if reference is not None:
+        maps.setdefault(reference, None)  # identity: the reference numbering itself
     items: List[Dict[str, Any]] = []
     not_inventoried: Dict[str, List[Dict[str, str]]] = {}
     excluded: Dict[str, List[str]] = {}
     states: Dict[tuple, Dict[str, List[str]]] = {}
+    substituted: Dict[tuple, Dict[str, set]] = {}
     ids = [card.id for card in cards]
     for card in cards:
         region = regions.get(card.id) if isinstance(regions, dict) else regions
@@ -304,12 +361,22 @@ def structure_inventory(
             for e in card.quality.get("enrichments") or []
             if e.get("source") == "RCSB PDB" and e.get("structure")
         }
+        if card.id == reference:
+            mapping = None
+            in_frame = True
+        else:
+            mapping = maps.get(card.id)
+            in_frame = mapping is not None
         view = structures_view(card, include_fragments=include_fragments, region=region)
         if view["excluded"]:
             excluded[card.id] = view["excluded"]
         for item in view["items"]:
-            state = item["state"]
-            row = {"card_id": card.id, **item}
+            state = dict(item["state"])
+            mapped = _in_reference(item.get("substitutions"), mapping)
+            if card.id == reference and mapped is not None:
+                for m in mapped:
+                    m["reference_position"] = m["position"]
+            row = {"card_id": card.id, **item, "substitutions_in_reference": mapped}
             items.append(row)
             if state["sequence"] is None:
                 status = fetched.get(item["structure_ref"])
@@ -320,27 +387,63 @@ def structure_inventory(
                     {"structure_ref": item["structure_ref"], "reason": reason}
                 )
                 continue
-            key = tuple(state[k] for k in STATE_KEYS)
+            state["ligands:interest"] = _LIGANDS_OF_INTEREST.get(state["ligands"])
+            state["substitutions"] = tuple(
+                sorted(
+                    (m["reference_position"], m["residue"])
+                    if in_frame and m["reference_position"] is not None
+                    else (card.id, m["label"])
+                    for m in mapped or []
+                )
+            )
+            for m in mapped or []:
+                if in_frame and m["reference_position"] is not None:
+                    found = substituted.setdefault(
+                        (m["reference_position"], m["residue"]), {}
+                    )
+                    found.setdefault(card.id, set()).add(item["structure_ref"])
+            key = tuple(state[k] for k in keys)
             states.setdefault(key, {}).setdefault(card.id, []).append(
                 item["structure_ref"]
             )
+
+    def shown(key: str, value: Any) -> Any:
+        if key != "substitutions":
+            return value
+        return [
+            f"{pos}{res}" if isinstance(pos, int) else f"{res} ({pos})"
+            for pos, res in value
+        ]
+
     grouped = [
         {
-            "state": dict(zip(STATE_KEYS, key)),
+            "state": {k: shown(k, v) for k, v in zip(keys, key)},
             "structures": {i: sorted(by_card.get(i, [])) for i in ids},
             "shared": all(by_card.get(i) for i in ids),
         }
         for key, by_card in states.items()
     ]
     grouped.sort(key=lambda g: (not g["shared"], [str(v) for v in g["state"].values()]))
+    shared_substitutions = [
+        {
+            "reference_position": position,
+            "residue": residue,
+            "structures": {i: sorted(found[i]) for i in ids if i in found},
+        }
+        for (position, residue), found in sorted(substituted.items())
+        if len(found) > 1
+    ]
+    parameters: Dict[str, Any] = {"state": list(keys), "state_rule": STATE_RULE}
+    if residue_maps or reference:
+        parameters["reference"] = reference
+        parameters["mapped"] = sorted(c for c in maps if c != reference)
     return {
         "rule": make_derivation(
-            INVENTORY_RULE,
-            inputs=["has_structure"],
-            parameters={"state": list(STATE_KEYS), "state_rule": STATE_RULE},
+            INVENTORY_RULE, inputs=["has_structure"], parameters=parameters
         ),
         "items": items,
         "states": grouped,
+        "shared_substitutions": shared_substitutions,
         "not_inventoried": not_inventoried,
         "excluded": excluded,
     }
