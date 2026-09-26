@@ -177,12 +177,15 @@ def test_a7b_strain_variant_is_kept_as_alternative(resolver):
     (alternative,) = res.alternatives
     assert alternative["basis"]["accession"] == "Q4DV43"
     assert alternative["basis"]["organism"] == 353153  # strain CL Brener
-    # 4 of 251 positions differ: flagged for review, never merged (#55).
+    # 4 of 251 positions differ: flagged for review, never merged (#55). Both state a
+    # gene locus, in databases that do not overlap: the gene layer could not decide (#69).
     (link,) = res.identity_links
     assert link["qualifiers"]["basis"] == {
         "sequence": "near_identical",
         "differences": 4,
         "length": 251,
+        "gene_loci": "not_comparable",
+        "loci_databases": [["TriTrypDB"], ["NCBI Gene"]],
     }
 
 
