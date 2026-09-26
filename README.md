@@ -71,8 +71,11 @@ pip install --no-deps --editable .
 Start with:
 
 - `AGENTS.md` and `MOLI_GUIDE.md` for governance;
+- `devguide/README.md`, the index of the developer guide;
 - `devguide/VISION.md` and `devguide/ARCHITECTURE.md` for Sabueso's scientific design;
-- `devguide/CHECKPOINT.md` for the current repository baseline;
+- `devguide/CHECKPOINT.md` for the current repository baseline, and
+  `devguide/ROADMAP.md` for the plan (the foundational plan and the pilot-driven route,
+  integrated);
 - `schemas/card_schema_0.3.4.yaml` for the current card schema, and
   `schemas/card_schema.yaml` for the conceptual draft it grew from.
 

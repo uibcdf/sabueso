@@ -1,3 +1,7 @@
+> **Archived (2026-09-26).** The next steps as of 2026-09-23. Every item was done (cache
+> and storage, field paths, location model, database interfaces, resolver with real
+> sources); the living plan is `devguide/ROADMAP.md`.
+
 # Sabueso — Next Steps
 
 ## Immediate

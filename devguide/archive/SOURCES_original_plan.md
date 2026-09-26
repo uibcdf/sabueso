@@ -1,3 +1,9 @@
+> **Archived (2026-09-26).** The original source plan of 2026-01. Every source it names
+> is now an entry of `devguide/sources/registry.yaml`, the single index of sources, with
+> its status (sources absent from the registry until then were added as `queued`). The
+> verified UniProt and PDB examples are kept in `devguide/UNIPROT_ENUMS.md` and the test
+> fixtures; the clinical layer is tracked in `devguide/ROADMAP.md`.
+
 # Sabueso — Sources and Verified Fields
 
 ## Minimum Sources (Agreed)

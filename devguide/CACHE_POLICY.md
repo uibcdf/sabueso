@@ -1,38 +1,39 @@
-# Sabueso — Cache/Storage Policy (Draft)
+# Sabueso — Cache and Storage Policy
 
-This document defines how Sabueso stores data locally for reproducibility and performance.
+## What Sabueso stores, as of 0.4.0
 
-## Scope
-- **Raw source payloads** (JSON/XML dumps from external DBs)
-- **Canonical Cards** (resolved, linked to SourceAssertions)
+- **Cards and decks.** The `KnowledgeStore` keeps every saved state, content-addressed,
+  with its revisions. JSON, JSONL and SQLite files are available for exchange
+  (`STORAGE_LAYOUT.md`).
+- **Curated statements.** They are kept in a `CurationStore`, which survives rebuilds.
+- **Raw source payloads: not stored by Sabueso.** A card keeps enough to know where each
+  value came from:
+  - the source and its release;
+  - the record id and the retrieval date;
+  - the asserted value, per SourceAssertion.
+  A user who needs the payloads keeps them, through the `tools.db.*.get_*` functions,
+  which return them in a provenance envelope.
+- **No default paths.** Sabueso writes only where it is told to.
 
-## Options
+## How this differs from the first draft
 
-### Option A — Raw only
-- Pros: full provenance, easy reprocessing.
-- Cons: expensive rebuild; no fast access.
+The first draft (2026-01) recommended "raw payloads + cards, with size-aware pruning":
+- raw payloads kept for recent days or entities;
+- cards kept long-term;
+- user overrides by configuration.
 
-### Option B — Cards only
-- Pros: fast access, compact.
-- Cons: loses raw detail unless the SourceAssertion store is embedded.
+Only the card half was built, as the knowledge store. Raw payloads were left out for
+three reasons:
+- a SourceAssertion already records what was taken from them;
+- some sources' licences restrict redistribution (`LICENSING_AND_COMPLIANCE.md`);
+- rebuilding from sources is `refresh_card`, which records what changed.
 
-### Option C — Raw + Cards (recommended)
-- Store raw payloads + resolved cards.
-- Allows re‑resolution when rules change.
+## Open questions
 
-## Draft Decision (to confirm)
-## Decision (Confirmed)
-- Default: **Option C (Raw + Cards)** with size‑aware pruning.
-- Policy:
-  - Keep **raw payloads** for recent N days or N entities.
-  - Keep **cards** for long‑term access.
-  - Allow user overrides via config.
-
-## Storage Layout (Recommendation)
-See `devguide/STORAGE_LAYOUT.md` for a recommended project layout.
-There are **no default paths** in Sabueso.
-
-## Open Questions
-- Where to store (path, DB, SQLite)?
-- How to handle licensing restrictions.
-- How to manage versioned selection_rules changes.
+- **A raw-payload cache** for heavy enrichments (large bioactivity sets, many structures):
+  where it would live, how it expires, and how licences constrain it. It would be a
+  convenience cache, never a source of truth.
+- **Selection-rule changes.** Rules are versioned (`RESOLVER.md`). Re-resolving stored
+  cards under new rules means a refresh today, and a stored card keeps the rules it was
+  built with.
+- **Store size.** See `CARD_SIZE_RISKS.md`.

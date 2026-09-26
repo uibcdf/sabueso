@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 20, queued 48, deferred 6, retired 3, out of scope 4.
+Summary: in use 20, queued 54, deferred 6, retired 3, out of scope 4.
 
 ## In use
 
@@ -49,13 +49,18 @@ Summary: in use 20, queued 48, deferred 6, retired 3, out of scope 4.
 | [Therapeutics Data Commons (TDC)](https://tdcommons.ai/) | Benchmarks, open challenges and open-science consortia | Standardised AI-ready datasets for drug design, affinity and ADMET. | 2026-09-25 |
 | [PDBbind-CN](http://www.pdbbind.org.cn/) | Binding affinity and experimental bioactivity | 3D complexes paired with experimental binding affinities (core and refined sets). | 2026-09-25 |
 | [ChEBI](https://www.ebi.ac.uk/chebi/) | Chemical space, synthesis, ADMET and safety | Ontology of chemical entities, endogenous metabolites and cofactors. | 2026-09-25 |
+| [ChemSpider](https://www.chemspider.com/) | Chemical space, synthesis, ADMET and safety | Chemical structures, names and identifiers aggregated from many data sources. | 2026-01-31 |
+| [eMolecules](https://www.emolecules.com/) | Chemical space, synthesis, ADMET and safety | Commercial availability of screening compounds and building blocks, with vendors. | 2026-01-31 |
 | [Enamine REAL Space](https://enamine.net/compound-collections/real-compounds) | Chemical space, synthesis, ADMET and safety | Billions of make-on-demand molecules from validated reactions. | 2026-09-25 |
+| [IUPAC resources](https://iupac.org/) | Chemical space, synthesis, ADMET and safety | Listed in the original plan without further detail (nomenclature and standard definitions are the likely use); to be specified before review. | 2026-01-31 |
 | [SureChEMBL](https://surechembl.org/) | Chemical space, synthesis, ADMET and safety | Chemical structures text-mined from patents. | 2026-09-25 |
 | [Tox21 / ToxCast](https://www.epa.gov/chemical-research/toxicity-forecasting) | Chemical space, synthesis, ADMET and safety | In vitro toxicity screening profiles, cellular stress and assay-interference flags. | 2026-09-25 |
 | [ZINC (ZINC20 / ZINC-22)](https://zinc.docking.org/) | Chemical space, synthesis, ADMET and safety | 3D models of purchasable and make-on-demand compounds for virtual screening. | 2026-09-25 |
+| [CPPsite](https://webs.iiitd.edu.in/raghava/cppsite/) | Emerging modalities (targeted degradation) | Cell-penetrating peptides and their properties; to be mapped to peptide cards. | 2026-01-31 |
 | [PROTAC-DB](http://cadd.zju.edu.cn/protacdb/) | Emerging modalities (targeted degradation) | Targeted-degradation chimeras: E3 ligases, warheads, linkers, ternary complexes and DC50/Dmax. | 2026-09-25 |
 | [2P2Idb](http://2p2idb.cnrs-mrs.fr/) | Protein–protein interactions and structural modulation | Curated structures of protein–protein complexes modulated by orthosteric small molecules, with interface parameters and druggability. | 2026-09-25 |
 | [iPPI-DB](https://ippidb.pasteur.fr/) | Protein–protein interactions and structural modulation | Non-peptide inhibitors and modulators of protein–protein interactions, with pharmacological, chemical and structural data. | 2026-09-25 |
+| [PiSITE](https://pisite.pdbj.org/) | Protein–protein interactions and structural modulation | Protein–protein interaction sites mapped onto PDB structures. | 2026-01-31 |
 | [PPI3D](http://bioinformatics.ibt.lt/ppi3d/) | Protein–protein interactions and structural modulation | Search, analysis and modelling of inter-chain interfaces and complexes (Voronoi tessellation). | 2026-09-25 |
 | [SKEMPI 2.0](https://life.bsc.es/pid/skempi2/) | Protein–protein interactions and structural modulation | Changes in binding affinity (ΔΔG) and kinetics caused by mutations at protein–protein interfaces. | 2026-09-25 |
 | [ASD (Allosteric Database)](http://mdl.shsmu.edu.cn/ASD/) | Binding sites, cavities and specialised families | Allosteric modulators, regulatory sites and conformational communication. | 2026-09-25 |
@@ -76,6 +81,7 @@ Summary: in use 20, queued 48, deferred 6, retired 3, out of scope 4.
 | [ModelArchive](https://modelarchive.org/) | Macromolecular structures, models and dynamics | Open repository of computational macromolecular models with mmCIF metadata. | 2026-09-25 |
 | [NDB (Nucleic Acid Database)](https://ndbserver.rutgers.edu/) | Macromolecular structures, models and dynamics | Structures and conformations of nucleic acids and their complexes. | 2026-09-25 |
 | [ProThermDB](https://web.iitm.ac.in/bioinfo2/prothermdb/) | Macromolecular structures, models and dynamics | Experimental protein stability data (ΔΔG, Tm) for point mutations. | 2026-09-25 |
+| [ClinicalTrials.gov](https://clinicaltrials.gov/) | Target validation, genetics and functional networks | Registered clinical studies: interventions, conditions, phases and status. The clinical layer of the original plan (clinical trials of ligands). | 2026-01-31 |
 | [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/) | Target validation, genetics and functional networks | Human genomic variants and their clinical significance. | 2026-09-25 |
 | [DepMap](https://depmap.org/) | Target validation, genetics and functional networks | CRISPR and RNAi screens of gene essentiality and dependencies in cancer cell lines. | 2026-09-25 |
 | [DGIdb](https://dgidb.org/) | Target validation, genetics and functional networks | Aggregated drug–gene interactions and druggability categories. | 2026-09-25 |

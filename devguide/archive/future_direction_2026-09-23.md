@@ -1,3 +1,10 @@
+> **Archived (2026-09-26).** A design conversation of 2026-09-23 on Sabueso's long-term
+> direction, kept verbatim and in Spanish as the historical record it is. Its ideas are
+> restated in English in `devguide/SCIENTIFIC_POTENTIAL.md`. Its roadmap (0.1 knowledge
+> foundation, 0.2 relationships, 0.3 knowledge queries, 0.4 literature, 0.5
+> proprietary/internal knowledge; knowledge packets; unknowns; patents; two levels of
+> access) is tracked, item by item, in `devguide/ROADMAP.md` ("Strategic directions").
+
 > **Nota terminológica (2026-09-23):** este documento se escribió antes de la decisión
 > `SourceAssertion ≠ Evidence ≠ Provenance`. Lo que aquí se llamaba "evidence" de Sabueso
 > ahora es `SourceAssertion` (lo que una fuente externa afirma sobre una entidad o propiedad);

@@ -1,64 +1,115 @@
 # Sabueso — Architecture
 
-## Conceptual Architecture
-1) **Input Layer**
-   - Accepts identifiers and descriptors: database IDs, sequences (FASTA), SMILES, InChI, names, and structure files (PDB/MOL/SDF).
+What Sabueso is built of, as of release 0.4.0. `DATA_FLOW.md` follows one resolution
+through these parts; `PUBLIC_API.md` lists the public surface.
 
-2) **Resolver**
-   - Classifies entity type (protein, peptide, small molecule).
-   - Normalizes identifiers and resolves ambiguity.
+## Layers
 
-3) **Database Modules (tools.db.\*)**
-   - Per‑database modules (UniProt, PDB, ChEMBL, PubChem, eMolecules, ChemSpider, DrugBank).
-   - Provide public functions for querying and extracting source data.
-   - Internally, these functions return raw source data + source metadata.
+1. **Source access** (`sabueso.tools.db.<source>`, `SOURCE_ACCESS.md`).
+   - Each source has:
+     - a client with an online and a fixture implementation, sharing one protocol;
+     - public `get_*` functions that return raw records in a provenance envelope.
+   - Failures are `ConnectorError`; absences are `RecordNotFoundError`.
+   - Sources in use are listed in `sources/registry.yaml`.
+2. **Mappings** (`sabueso.mappings.<source>`). They translate a source record into:
+   - field values;
+   - relationships;
+   - one SourceAssertion per value the source asserts.
+   Mappings live apart from source access, so that a transformation is written once.
+3. **Aggregation and selection** (`core.aggregator`, `core.merge`,
+   `resolver.field_resolver`).
+   - Mapping outputs are merged into one card.
+   - Each field is resolved from its SourceAssertions by the selection rules
+     (`resolver/selection_rules.json`, `RESOLVER.md`).
+   - Alternatives and conflicts are kept, never discarded.
+4. **Entity resolution** (`resolver.entity_resolver`, `tools.resolve`).
+   - `sabueso.resolve(query)` routes a query by namespace, to a protein card or a
+     small-molecule card.
+   - The EntityResolver decides which entity a query or record refers to. It reports
+     ambiguity instead of choosing, and audits identities
+     (`protein_identity_audit@1`).
+   - The decision is recorded on the card.
+5. **The card** (`core.card`).
+   - Nested sections of fields: each is `{value, source_assertion_ids}`, and a quantity
+     is `{value, unit}`.
+   - A `source_assertion_store` and a `relationship_store`.
+   - `quality`: conflicts, alternatives, enrichments, resolution, curation, migration.
+   - A `meta.card_id` that does not depend on storage, and a `schema_version`.
+6. **Views and derived knowledge** (`core.structures`, `core.bioactivities`,
+   `core.oligomer`, `core.ligand_sites`, `core.literature`, `core.knowledge_state`,
+   `core.card_diff`, `core.identity_audit`, `core.measurements`, `core.names`…).
+   - Card and deck methods read the stored knowledge and return views.
+   - Everything a view derives (a class, a group, a state, a finding) carries the named,
+     versioned rule that produced it, and is never stored as a SourceAssertion.
+7. **Decks** (`core.deck`). Collections of cards that record:
+   - why each card is in (membership);
+   - which candidates were left out;
+   - the operations that derived the deck.
+   Deck views compare, group, audit and inventory across cards.
+8. **Curation** (`core.curation`, `core.curation_store`). What a publication states is
+   recorded as a curated SourceAssertion:
+   - field assertions, relationships, bioactivities, engagements and typed claims;
+   - compared with the sources, never given priority;
+   - kept across rebuilds by a `CurationStore`.
+9. **Storage and references** (`core.snapshot`, `core.knowledge_store`,
+   `core.migration`, `tools.card.storage`, `tools.deck.storage`).
+   - Content-addressed snapshots and pinned references, for cards, their items and
+     decks.
+   - The `KnowledgeStore`, a normalized SQLite store with revisions.
+   - JSON, JSONL and SQLite files.
+   - Honest migration and refresh of cards written by older schemas.
+10. **Cross-cutting.**
+    - Physical quantities through PyUnitWizard: never a bare number with its unit in a
+      name.
+    - Argument contracts through ArgDigest: one digester per argument name
+      (`ARGUMENT_CONTRACTS.md`).
+    - Diagnostics through SMonitor (`DIAGNOSTICS.md`).
+    - Optional dependencies through DepDigest.
 
-4) **Aggregator**
-   - Merges results, deduplicates, and aligns to canonical field paths.
-   - Records every source value as a SourceAssertion (what the source asserts about a field).
+## Core objects
 
-5) **Selection Layer**
-   - Chooses a canonical value per field based on configurable rules.
-   - Resolves each field from its SourceAssertions; alternative and conflicting assertions are kept independent of selection.
+- **Card** and **Deck** are the domain objects; users work on one card or on a deck.
+- **Relationships** (`subject_ref predicate object_ref`, with qualifiers) are first-class
+  knowledge between entities. Examples: `has_structure`, `has_bioactivity`,
+  `interacts_with`, `classified_in`, `has_interface_with`, `engages`.
 
-6) **Card Builder**
-   - Builds the final structured card with nested sections.
-   - All fields point to the `source_assertion_ids` that support their value.
+## Ops and tools
 
-7) **Cache / Store (optional)**
-   - Local storage for previously generated cards.
-   - Does not replace online queries; it is a convenience layer.
+- **Ops** are methods on Card and Deck with consistent semantics: compare, filter, sort,
+  views, tables.
+- **Tools** are public functions, grouped by module:
+  - `tools.db.*` for source access;
+  - `tools.card.*` and `tools.deck.*` for building and storing cards and decks;
+  - `sabueso.resolve` as the entry point.
+- Tools are ad hoc by design.
 
-## Clinical Layer
-Sabueso supports a **clinical layer** for drug‑design workflows. Clinical data (pharmacology, ADMET, clinical trials, pharmacovigilance, indications, contraindications, interactions) is included as a separate section to avoid mixing it with core physicochemical and biological data.
+## Design principles
 
-## ProteinCard Extensions
-- `disease` section for disease associations.
-- `ligands` section with a `role` attribute (e.g., inhibitor, activator, substrate).
-- An operation to extract a **Deck of inhibitor cards** from a ProteinCard.
+- **Uniform SourceAssertion mechanism.** Every value is resolved from SourceAssertions
+  through one model, and selection never discards them.
+- **Knowledge, not project Evidence.** `SourceAssertion ≠ Evidence ≠ Provenance`. Nextia
+  may cite Sabueso SourceAssertions as the basis of its own Evidence; Sabueso never
+  creates Evidence.
+- **Asserted and derived knowledge are different.** Derived knowledge names its rule, and
+  is recomputed, not stored as an assertion. A ligand's role (inhibitor…) is a derived
+  class, never asserted (#25).
+- **Identity is never merged by similarity.** Two entries are one entity only when a
+  source states it. Sequence similarity, a shared name or an equal residue number
+  proves nothing; each is reported with its basis, for review.
+- **Absence is not evidence.** What a source does not state, what was not asked, and what
+  failed are told apart (`knowledge_state`).
+- **Nested sections.** Cards are hierarchical and ordered, not flat.
+- **Auditable decisions.** Selection rules, conflicts, resolution decisions and
+  derivation rules are explicit and recorded.
 
-## Core Objects
-- **Card** and **Deck** are the core domain objects.
-- Users can operate on a single Card or a Deck of cards.
+## Planned, not built (from the original design)
 
-## Ops vs Tools
-- **Ops**: internal operations attached to Card/Deck with consistent semantics (compare, filter, sort, expand, extract, etc.).
-- **Tools**: public, heterogeneous functions that take Card/Deck as inputs and can return any output type.
+- **Clinical layer.** Pharmacology, ADMET, clinical trials, pharmacovigilance,
+  indications, contraindications and interactions, as a section apart from
+  physicochemical and biological data. Today only ChEMBL's `clinical.max_phase` exists.
+- **Peptide cards.** `entity_type: peptide` exists; peptide sources and views do not.
+- **Inputs by sequence, SMILES/InChI or structure file.** Resolution takes identifiers
+  and names today.
+- **KnowledgeQuery and knowledge packets** (`SCIENTIFIC_POTENTIAL.md`).
 
-## Tools Modules (Public API)
-- `tools.db.*`: per‑database modules with public functions for querying and extracting data.
-- `tools.card.*`: tools that operate on a single Card.
-- `tools.deck.*`: tools that operate on a Deck.
-
-Tools are **ad‑hoc by design**; there is no enforced common interface or protocol.
-
-## Mappings Layer
-Mappings are the explicit translation rules from **source fields** to **canonical card fields**.
-They should live outside database modules to keep transformations consistent and maintainable.
-
-## Design Principles
-- **Uniform SourceAssertion Mechanism**: every field is resolved from SourceAssertions through the same model.
-- **Nested Sections**: cards are hierarchical and ordered, not flat.
-- **All Values Preserved**: selection never discards SourceAssertions.
-- **Knowledge, not project Evidence**: `SourceAssertion ≠ Evidence ≠ Provenance`. Nextia may cite Sabueso SourceAssertions as the basis of its own Evidence; Sabueso never creates Evidence.
-- **Auditable Decisions**: selection rules and conflicts are explicit.
+Their status is tracked in `ROADMAP.md`.

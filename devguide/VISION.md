@@ -14,18 +14,35 @@ Provide a reliable, traceable, and extensible foundation for biomolecular data d
 - Preserve **all values** from sources while selecting a canonical value per field.
 - Make every value traceable to the SourceAssertions that support it, through one uniform mechanism with transparent, auditable provenance.
 
-## Objectives (Initial)
-- Implement Protein, Peptide, and Small Molecule cards with stable, nested structure.
-- Provide public tools for database access and card/deck operations.
-- Maintain a perfect developer checkpoint in `devguide/`.
+## Objectives
+- Protein, peptide and small-molecule cards with a stable, nested structure, whose
+  every value is linked to the SourceAssertions that support it.
+- Relationships between entities as first-class knowledge, and decks as reproducible
+  collections.
+- Derived knowledge (classes, groupings, audits, comparisons) computed by named,
+  versioned rules, never stored as assertions.
+- Knowledge that can be cited exactly (pinned references) and stored with its history.
+- Public tools for database access and for card and deck operations.
+- A developer guide that stays an exact checkpoint of the repository (`devguide/`).
 
 ## Users
-Primary users are computational scientists in biophysics, biochemistry, computational biology, and computer‑assisted molecular design.
+Primary users are computational scientists in biophysics, biochemistry, computational
+biology, and computer‑assisted molecular design, and the MOLI components and agents that
+work for them.
 
-## Scope (Initial)
-- Entities: **protein**, **peptide**, **small molecule**.
-- Sources: **UniProt**, **PDB**, **ChEMBL**, **PubChem**, **eMolecules**, **ChemSpider**, **DrugBank**.
-- Output: one **card** per entity with nested sections and standardized field paths.
+## Scope
+- **Entities.** Proteins and small molecules today. Peptides are in the schema, without
+  a peptide source or view yet.
+- **Sources.** The original plan named UniProt, PDB, ChEMBL, PubChem, eMolecules,
+  ChemSpider and DrugBank.
+  - The first four are in use, with many more.
+  - eMolecules and ChemSpider are queued, and DrugBank is deferred.
+  - `devguide/sources/registry.yaml` is the single index of sources, their status and
+    the reason for it.
+- **Output.** One card per entity, with nested sections and standardized field paths;
+  relationships; decks; views.
+- **How the scope is advanced.** Through two integrated routes, the foundational plan
+  and the pilot-driven route (`ROADMAP.md`).
 
 ## Platform Context
 Sabueso is the Knowledge-context component of the **MOLI Platform** (`uibcdf/moli`). Together with Praxis (Know-how) and Nextia (Discovery) it forms the platform's **Scientific Context**. **Sabueso knows; it does not discover.**

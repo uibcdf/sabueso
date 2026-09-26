@@ -808,3 +808,52 @@ resources:
     access: "NCBI Datasets REST API, no key"
     licence: "US public domain (NLM policy)"
     links: ["#55", "#54", "#67"]
+  # --- from the original source plan (devguide/archive/SOURCES_original_plan.md) ------
+  - id: emolecules
+    name: "eMolecules"
+    url: https://www.emolecules.com/
+    category: chemistry_admet
+    status: queued
+    description: "Commercial availability of screening compounds and building blocks, with vendors."
+    since: 2026-01-31
+    proposed_by: "Original source plan (minimum sources, 2026-01); use case: commercial availability"
+  - id: chemspider
+    name: "ChemSpider"
+    url: https://www.chemspider.com/
+    category: chemistry_admet
+    status: queued
+    description: "Chemical structures, names and identifiers aggregated from many data sources."
+    since: 2026-01-31
+    proposed_by: "Original source plan (minimum sources, 2026-01)"
+  - id: clinicaltrials_gov
+    name: "ClinicalTrials.gov"
+    url: https://clinicaltrials.gov/
+    category: target_validation
+    status: queued
+    description: "Registered clinical studies: interventions, conditions, phases and status. The clinical layer of the original plan (clinical trials of ligands)."
+    since: 2026-01-31
+    proposed_by: "Original plan: clinical layer and use case 8 (clinical trials for ligands)"
+  - id: pisite
+    name: "PiSITE"
+    url: https://pisite.pdbj.org/
+    category: interactions
+    status: queued
+    description: "Protein–protein interaction sites mapped onto PDB structures."
+    since: 2026-01-31
+    proposed_by: "Original source plan (low priority, 2026-01)"
+  - id: cppsite
+    name: "CPPsite"
+    url: https://webs.iiitd.edu.in/raghava/cppsite/
+    category: emerging_modalities
+    status: queued
+    description: "Cell-penetrating peptides and their properties; to be mapped to peptide cards."
+    since: 2026-01-31
+    proposed_by: "Original source plan (low priority, 2026-01); peptide cards"
+  - id: iupac_resources
+    name: "IUPAC resources"
+    url: https://iupac.org/
+    category: chemistry_admet
+    status: queued
+    description: "Listed in the original plan without further detail (nomenclature and standard definitions are the likely use); to be specified before review."
+    since: 2026-01-31
+    proposed_by: "Original source plan (low priority, 2026-01)"

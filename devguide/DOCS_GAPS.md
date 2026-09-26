@@ -1,37 +1,40 @@
-# Documentation Gaps (Content Needed)
+# Documentation Gaps
 
-This list captures **missing deep content** for the documentation.
+What the user guide (`docs/`) lacks. The first list (2026-01) was reviewed on 2026-09-26:
+what is now covered is noted, and what remains is below.
 
-## Core Concepts
-- Formal definition of Card/Deck structures and expected field semantics.
-- SourceAssertionStore lifecycle and how SourceAssertions are created/linked.
-- Resolver logic with examples and conflict reporting.
+## Covered since the first list
 
-## Field Paths
-- Detailed description of each canonical field, type, and expected value shape.
-- Differences by card type (Protein/Peptide/SmallMolecule).
+- Card and deck concepts, views, knowledge states, comparison: `user/concepts.md`.
+- Field paths: `user/field_paths.md` (from `devguide/FIELD_PATHS.md`).
+- Published selection rules: `user/selection_rules.md` and `selection_rules.json`.
+- Storage (files and the knowledge store): `user/storage.md`.
+- Data sources and their status: `user/data_sources.md`, generated from the registry.
+- Testing: `user/testing.md`.
+- A worked flow on real systems: the showcase notebook.
 
-## Data Sources
-- Per-source coverage tables (what fields are populated by each DB).
-- Known limitations and update frequency of each source.
+## Open gaps
 
-## Selection Rules
-- Full published ruleset with rationale per field.
-- Examples of rule overrides.
-
-## Storage & Cache
-- Best practices for raw vs card persistence.
-- Recommended layouts for lab projects.
-- Tradeoffs for JSON/JSONL vs SQLite.
-
-## Operations
-- Examples for compare, extract, derive_deck.
-- Expected outputs and error semantics.
-
-## Testing
-- What each test category validates.
-- Guidance for running online tests (keys, env vars).
-
-## Integration
-- How Sabueso integrates with MolSysSuite (TopoMT, PharmacophoreMT, MolSysMT).
-- Expected interoperability contracts.
+- **The tools reference lags the API.**
+  - `user/tools/` still centres on the deprecated `create_*_card_*` and `fetch_*_json`
+    pages.
+  - It has no page for `sabueso.resolve` and its options, for the `get_*` source-access
+    functions, or for the newer sources: AlphaFold DB, BindingDB, PubChem BioAssay,
+    UniChem, InterPro, the PDB CCD, NCBI Taxonomy, NCBI Gene.
+  - It should be rebuilt around `resolve`, views and source access, with the deprecated
+    pages marked.
+- **Deck operations.** No user page for membership, lineage, `group_by_rank`, identity
+  audit, the structural inventory or `unique_names`; only short entries in
+  `concepts.md`.
+- **Curation.** The curation workflow (curated assertions, bioactivities, engagements,
+  claims, the curation store, retractions) has one page, under UniProt literature. It
+  deserves its own.
+- **Migration and refresh** of stored cards, for users upgrading.
+- **Resolver logic.** Worked examples of ambiguity, identity findings and curated
+  names.
+- **Per-source coverage tables** for users: which fields and relationships each source
+  fills. Today they live only in `devguide/DATA_SOURCES_STATUS.md`.
+- **Integration contracts** with MolSysSuite (MolSysMT, TopoMT, PharmacophoreMT) and with
+  Nextia (citing references). Not written, because not agreed yet (uibcdf/moli#3,
+  moli#17).
+- **Online tests**: keys and environment variables (BioGRID).

@@ -8,14 +8,19 @@ Users must choose where to store Cards/Decks in their project.
 ```
 project_root/
   data/
-    raw/                # raw source payloads (JSON/XML)
-    cards/              # resolved cards
+    knowledge.db        # KnowledgeStore: cards and decks with their revisions
+    curation.jsonl      # CurationStore: curated statements, kept across rebuilds
+    raw/                # optional: raw source payloads (tools.db get_* records)
+    exports/            # optional: files to share
       cards.jsonl       # JSONL deck
       cards.db          # SQLite deck
-    decks/              # optional per-deck files
       ligands.jsonl
-      interactors.jsonl
 ```
+
+The knowledge store is the default choice for a project: what it saves can be cited
+exactly (pinned references) and read back as it was. The files are for exchange and
+inspection. A curation store belongs to whoever curates, and it can serve several
+projects.
 
 ## Deck files (uibcdf/sabueso#26)
 A deck is its cards plus its `meta`: the traces that make it interpretable, such as the

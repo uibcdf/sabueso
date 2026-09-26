@@ -1,3 +1,5 @@
+> **Archived (2026-09-26).** The first quality notes; merged into `devguide/TESTS.md`.
+
 # Sabueso — Quality and Tests
 
 ## Testing Strategy

@@ -606,3 +606,26 @@ uibcdf/sabueso#69.
 - **Resolution only.** `Deck.identity_audit()` works on cards, which do not store gene
   products. Extend it only when a deck needs it.
 
+## Two integrated routes, and a guide that stays true (2026-09-26)
+- **Two routes.** Sabueso's plan follows two routes, integrated in
+  `devguide/ROADMAP.md`:
+  - the foundational plan of the original design (2026-01 → 2026-09-23);
+  - the pilot-driven route (since 2026-09-23).
+
+  The pilots decided the order of the work, not its scope. The foundational objectives
+  stay objectives, and the roadmap tracks each one's status: done, partial, pending or
+  changed (the last citing the decision that changed it).
+- **Nothing is dropped.** The original roadmap, source plan, next steps and
+  long-term-direction conversation were archived verbatim, with notes pointing to where
+  they are tracked. Sources of the original plan that were missing from the registry
+  (eMolecules, ChemSpider, ClinicalTrials.gov, PiSITE, CPPsite, IUPAC resources) were
+  added as `queued`.
+- **Kinds of document.** The devguide has an index (`devguide/README.md`) that classes
+  every document as normative, living, design or historical, and states how the guide
+  is kept true.
+- **AGENTS.md holds the repository's working rules**, which were recorded nowhere
+  before:
+  - language, knowledge principles, code conventions;
+  - schema policy, tests and fixtures, local gates;
+  - commits, releases, recording work, pilot confidentiality.
+

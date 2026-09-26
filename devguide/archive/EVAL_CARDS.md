@@ -1,3 +1,7 @@
+> **Archived (2026-09-26).** Decision templates that were never filled. Decisions are
+> recorded in `devguide/DECISIONS.md` and, when they need a full analysis, as reports
+> (`devguide/templates/report.md`).
+
 # Sabueso — Evaluation Cards (Decision Templates)
 
 These templates capture critical design choices with explicit rationale.

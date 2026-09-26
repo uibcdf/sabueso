@@ -1,0 +1,243 @@
+> **Archived (2026-09-26).** The checkpoint as it grew from Phase 0 to release 0.4.0: a
+> log, whose first sections describe a repository that no longer exists (placeholders,
+> SCOPe/TED/PhosphoSitePlus tools removed in #21). The current state is in
+> `devguide/CHECKPOINT.md`; decisions are in `devguide/DECISIONS.md`.
+
+# Sabueso — Checkpoint (Current Repo State)
+
+This file records the current repository baseline so new developers can resume exactly from this state.
+
+## Repository Structure (Created)
+- `sabueso/`
+  - `core/` (placeholders: `card.py`, `deck.py`, `source_assertion_store.py`)
+  - `resolver/` (placeholder: `base.py`)
+  - `tools/db/`, `tools/card/`, `tools/deck/`
+  - `ops/` (placeholders: `card_ops.py`, `deck_ops.py`)
+  - `mappings/` (README placeholder)
+  - `utils/` (internal utilities only; currently empty)
+- `docs/`
+  - `conf.py` (Sphinx, **pydata_sphinx_theme**)
+  - `index.rst` (minimal)
+  - `README.md` (placeholder)
+- `tests/` (directories created with `.gitkeep`)
+
+## Notes
+- `schemas/card_schema.yaml` remains a **conceptual** schema draft.
+- The `schemas/` directory is **temporary** until Card/Deck classes are fully defined.
+- Phase‑0 focus is on structure, interfaces, and documentation, not implementation.
+- Editable install works offline with: `pip install --no-deps --editable .`
+- SCOPe and TED online fetch now use remote dumps by default (override via env vars).
+- InterPro online endpoint can be slow; online test may skip on timeout.
+- InterPro fetch tries `fields=metadata` first to reduce payload, then falls back.
+- Offline test suite: `pytest -m "not online"` → 31 passed, 12 deselected (2026-02-10).
+
+## New Decisions (Today)
+- **Field path notation**: dot‑separated paths (e.g., `properties.physchem.molecular_weight`).
+- **SourceAssertion object** (formerly "evidence object"): includes `source` with `type`, `name`, `record_id`, plus optional `source_metadata` (fields aligned with MOLI's conceptual schema on 2026-09-23).
+- **Location model**: general model with `kind` and sub‑blocks (sequence / structure / atom / substructure). To be refined with real cases, but accepted conceptually.
+
+## New Artifacts
+- `devguide/LOCATION_EXAMPLES.md`: real‑ID validation examples for location model.
+- `devguide/SCHEMA.md`: link to `LOCATION_EXAMPLES.md`.
+- `devguide/INTERFACES_MINIMAL.md`: minimal core interfaces for Card/Deck/SourceAssertionStore/Resolver.
+- `sabueso/mappings/` (Python mapping stubs):
+  - `uniprot.py`, `pdb.py`, `pubchem.py`, `chembl.py`, `base.py`
+- `sabueso/core/source_assertion_store.py`: SourceAssertion records, `make_source_assertion`, and SourceAssertionStore with deterministic IDs.
+- Mappings now emit `source_assertions` and `field_source_assertions` (minimal).
+- `sabueso/core/aggregator.py`: minimal card builder from mapping outputs.
+- `sabueso/core/card.py`: minimal Card implementation.
+- `sabueso/core/deck.py`: minimal Deck implementation.
+- `sabueso/tools/db/uniprot.py`: offline + online UniProt card creation helpers.
+- `sabueso/tools/db/pdb.py`: raw RCSB entry fetch (`fetch_pdb_json`). The former PDB-entry card helpers were removed (#21); structures are `has_structure` relationships (`mappings/rcsb_structures.py`, `Card.structures()`).
+- `sabueso/tools/db/pubchem.py`: offline + online PubChem card helpers.
+- `sabueso/tools/db/chembl.py`: offline + online ChEMBL card helpers.
+- `sabueso/tools/db/go.py`: offline + online GO term helpers.
+- `sabueso/tools/db/interpro.py`: offline + online InterPro entry helpers.
+- `sabueso/tools/db/stringdb.py`: online STRING interaction helper.
+- `sabueso/tools/db/biogrid.py`: online BioGRID interaction helper (requires access key).
+- `sabueso/tools/db/cath.py`: online CATH domain_summary helper.
+- `sabueso/tools/db/scope.py`: SCOPe dump-backed helper (remote dump or local file).
+- `sabueso/tools/db/ted.py`: TED dump-backed helper (remote dump or local file).
+- `sabueso/tools/db/phosphositeplus.py`: PSP offline-only helper.
+- `tests/core/test_mapping_uniprot_offline.py`: offline smoke test for UniProt mapping.
+- `tests/core/test_mapping_pdb_offline.py`: offline smoke test for PDB mapping.
+- `tests/core/test_mapping_pubchem_offline.py`: offline smoke test for PubChem mapping.
+- `tests/core/test_mapping_chembl_offline.py`: offline smoke test for ChEMBL mapping.
+- `tests/core/test_mapping_go_offline.py`: offline smoke test for GO mapping.
+- `tests/core/test_mapping_interpro_offline.py`: offline smoke test for InterPro mapping.
+- `tests/core/test_online_*.py`: online smoke tests (UniProt, PDB, PubChem, ChEMBL).
+- `tests/core/test_online_go.py`: online smoke test for GO.
+- `tests/core/test_online_interpro.py`: online smoke test for InterPro.
+- `tests/core/test_mapping_string_offline.py`: offline smoke test for STRING mapping.
+- `tests/core/test_mapping_biogrid_offline.py`: offline smoke test for BioGRID mapping.
+- `tests/core/test_online_string.py`: online smoke test for STRING.
+- `tests/core/test_online_biogrid.py`: online smoke test for BioGRID (requires BIOGRID_ACCESS_KEY).
+- `tests/core/test_mapping_cath_offline.py`: offline smoke test for CATH mapping.
+- `tests/core/test_mapping_scope_offline.py`: offline smoke test for SCOPe mapping.
+- `tests/core/test_mapping_ted_offline.py`: offline smoke test for TED mapping.
+- `tests/core/test_mapping_psp_offline.py`: offline smoke test for PSP mapping.
+- `tests/core/test_online_cath.py`: online smoke test for CATH.
+- `tests/core/test_online_scope.py`: online smoke test for SCOPe (dump-backed).
+- `tests/core/test_online_ted.py`: online smoke test for TED (dump-backed).
+- `tests/core/test_online_psp.py`: online smoke test for PSP (skips).
+- `devguide/TESTS.md`: offline/online test strategy.
+- `devguide/DATA_SOURCES_STATUS.md`: implemented DBs with quality/incidents report.
+- `devguide/RESOLVER.md`: minimal resolver contract (0.2.0) and selection rules 0.1.0.
+- Core Ops 0.1.0 semantics recorded in `devguide/PUBLIC_API.md` and `devguide/INTERFACES_MINIMAL.md`.
+- `sabueso/resolver/field_resolver.py`: resolver implementation (field-level selection).
+- `tests/core/test_resolver.py`: resolver unit tests (offline).
+- `sabueso/core/aggregator.py`: resolver-integrated card builder.
+- `tests/core/test_aggregator_resolver.py`: aggregator+resolver integration test.
+- `devguide/SELECTION_RULES_EXAMPLES.md`: field-level selection rules examples.
+- `tests/core/test_selection_rules_fields.py`: resolver tests using real field examples.
+- `docs/selection_rules.rst`: published documentation page for selection rules.
+- `docs/selection_rules.json`: machine-readable selection rules for agents/tools.
+- `sabueso/resolver/selection_rules.json`: internal resolver rules for runtime use.
+- `sabueso/resolver/loader.py`: selection rules loader.
+- `sabueso/core/merge.py`: mapping merge helper.
+- `tests/core/test_end_to_end_resolver_offline.py`: offline end-to-end pipeline test.
+- `devguide/FIELD_PATHS.md`: canonical field paths catalog.
+- `schemas/card_schema_0.2.0.yaml`: formal YAML schema aligned with field paths.
+- `tests/core/test_end_to_end_protein_sources_offline.py`: protein end-to-end offline test (UniProt + PDB + InterPro).
+- `devguide/CACHE_POLICY.md`: draft cache/storage policy options.
+- `devguide/STORAGE_LAYOUT.md`: recommended project storage layout (no defaults).
+- `tools/validate_card.py`: basic schema validator for Card dicts.
+- `tests/core/test_card_schema_validation_offline.py`: card schema validation test.
+- `tools/validate_deck.py`: basic schema validator for Deck JSONL.
+- `tests/core/test_deck_schema_validation_offline.py`: deck schema validation test.
+- `sabueso/core/errors.py`: common exception types (Resolver, Schema, Storage, Connector).
+- `sabueso/tools/card/storage.py`: JSON and SQLite persistence for Card.
+- `sabueso/tools/deck/storage.py`: JSONL and SQLite persistence for Deck.
+- `tests/core/test_storage_offline.py`: persistence tests (offline).
+- `tools/validate_schema.py`: schema alignment validator (used in pytest).
+- `pyproject.toml`: minimal packaging config for editable installs.
+- Mappings expanded:
+  - UniProt: organism, pathway, subunit, catalytic_activity, subcellular_location,
+    tissue_specificity, ptm, polymorphism, active_site, modified_residue,
+    glycosylation, disulfide_bond.
+  - PubChem: molecular_formula, inchi, inchikey, logp, tpsa, hbd, hba,
+    rotatable_bonds.
+  - ChEMBL: pref_name, molecule_type, mw_freebase, hbd, hba, tpsa, rtb,
+    aromatic_rings, inchi, inchikey.
+  - PDB: deposition_date, release_date, primary_citation (doi/pmid/title).
+  - STRING: `functionally_associated_with` relationships through `resolve_protein_card(..., string={...})` (#21, part 2c).
+  - ChEMBL bioactivities: `has_bioactivity` relationships through `resolve_protein_card(..., chembl={...})` and the derived view `Card.bioactivities()` (#23).
+  - Small-molecule identity: SmallMoleculeCards anchored at the standard InChIKey, with `same_as` links from ChEMBL, the PDB CCD and UniChem (`resolve_molecule_card`, #25).
+  - Guard by default and one identity scheme for small molecules: `create_molecule_card_*` and `create_compound_card_*` build InChIKey-anchored cards (#21, closed).
+  - Diagnostics through SMonitor: warnings for failed and truncated sources and unanchored records, derived from the recorded outcomes; exceptions with stable codes (`devguide/DIAGNOSTICS.md`, #31).
+  - Quantities: stored as `{value, unit}` at negotiated paths, sealed with PyUnitWizard and verified on load; returned as quantities (`Card.quantity`, `Card.quantity_columns`, views); pChEMBL and unit-scale plausibility flags (`devguide/archive/quantities.md`, #32, closed 2026-09-24; ranges and uncertainty in #37).
+  - Argument contracts through ArgDigest on every public tool, Card and Deck view, the resolver and SQLite storage; bioactivity units through PyUnitWizard with explicit target units; DepDigest not applicable (`devguide/ARGUMENT_CONTRACTS.md`, #31, closed 2026-09-24).
+  - Ligand decks: `ligand_deck(protein_card)`, `Card.ligands(deck)`, `Card.compare_ligands(...)` and `Deck.intersect` / `Deck.difference` (#23, closed).
+  - Oligomer and interfaces: RCSB assemblies and `chimeric_with` on `has_structure`, PDBe-KB `has_interface_with`, and `Card.oligomer()` with UniProt SUBUNIT and CDD dimer-interface agreement (#40).
+  - Curated literature assertions on knowledge fields: `Card.add_literature_assertion`, compared with other sources, never prioritised or discarded, differences flagged (#41, part 2; free-text claims #43).
+  - Tables: `Card.table(view, **options)` flat rows with quantities kept; `sabueso.to_dataframe` (pandas optional via DepDigest, `LibraryNotFoundError`), numbers only in a named unit (#46).
+  - Glossary of entities: `card.entities()` / `card.entity(ref)`, each molecular entity once, records merged only on stated identity; curated molecules cite `molecule_ref` and state no UniChem records (#52).
+  - Curated bioactivities: `Card.add_literature_bioactivity`, molecule identity by InChIKey and all linked records, compared with ChEMBL measurements of the same paper (ChEMBL documents now carry PubMed ids); in the curation store (#44).
+  - Small molecules resolve from PubChem CIDs (`pubchem:<cid>`); `pubchem=True` adds the PubChem records UniChem links (#50).
+  - Card schema versioning policy: readers check `meta.schema_version` (own line read, newer read with a warning keeping unknown keys, other lines refused until migration #51); frozen card of release 0.1.1 (schema 0.3.0) must stay readable; recorded card shape guards unannounced changes (#42).
+  - Source access as a public layer: `sabueso.tools.db.<source>.get_*` return raw records in a provenance envelope, one client per source (UniProt and RCSB moved here; PubChem client added), legacy fetchers and online card builders deprecated (`devguide/SOURCE_ACCESS.md`, #49).
+  - Enrichment profiles: `resolve(..., profile="structural_baseline@1")`, versioned and recorded on the card (#45).
+  - View conventions: reference keys end in `_ref`, and molecules carry a readable `label` (#47).
+  - Curation store: curated assertions survive rebuilds (`CurationStore`, `resolve(..., curations=)`), same ids, outcomes recomputed, retractions kept (#48).
+  - Literature: UniProt references as `described_in` relationships, PDB primary citations, and `Card.literature()` linking publications to the statements their evidence supports (#41, part 1).
+  - Entry point `sabueso.resolve()` (#38); UniProt DISEASE comments as `annotations.disease` (#39, schema 0.3.1).
+  - Ligand sites: PDBe-KB `has_ligand_site` relationships, RCSB per-instance ligand contacts, and `Card.ligand_sites()` against the UniProt annotated sites (#28).
+  - GO, InterPro, CATH, SCOPe, TED, PhosphoSitePlus and BioGRID card tools were removed on
+    2026-09-23 (#21). GO, classification and curated-interaction knowledge now comes
+    from UniProt as typed relationships.
+
+## Terminology Migration (2026-09-23)
+- Sabueso "evidence" renamed to **SourceAssertion** across code, schemas, tests and docs
+  (`SourceAssertion ≠ Evidence ≠ Provenance`; see `devguide/DECISIONS.md`).
+- Mappings build assertions with `make_source_assertion`; outputs verified identical to the
+  pre-migration outputs apart from the renamed keys and the `SA_` ID prefix.
+- `Card.to_dict()` now serializes `source_assertion_store`, so JSON/SQLite round trips keep
+  every SourceAssertion.
+- Formal schema: `schemas/card_schema_0.2.0.yaml`.
+- SourceAssertion fields aligned with MOLI Platform Architecture 1.0 (`id`, `subject_ref`,
+  `field_path`, `asserted_value`, `source_metadata`); cards carry a stable `meta.card_id`.
+- Sabueso belongs to the MOLI Platform's Scientific Context, not to MolSysSuite.
+
+## Versioned Cards and the Knowledge Store (2026-09-25)
+- `Card.snapshot_id()` is a content address (`sha256:`), and `Card.pinned_ref()` gives
+  `<card_id>@<snapshot_id>` (#7). Both forms are provisional until uibcdf/moli#3.
+- `sabueso.KnowledgeStore` keeps cards in normalized SQLite: snapshots, revisions,
+  shared SourceAssertion and relationship rows, decks, and pinned reads that never fall
+  back to the latest state (#27). See `devguide/STORAGE_LAYOUT.md`.
+
+## Ranges and Uncertainty (2026-09-25)
+- Card schema 0.3.2 adds `normalized_upper` and `normalized_uncertainty` to
+  `has_bioactivity` measurements, and `bioactivity_class@3` classifies ranges (#37).
+  Curators state ranges and uncertainties through `add_literature_bioactivity`.
+
+## Organism Identity (2026-09-25)
+- Cards state `annotations.taxon_id`, `annotations.lineage` and `identifiers.gene_loci`.
+  OrthoDB and eggNOG groups are `classified_in`. Decks filter by lineage
+  (`Deck.in_lineage`) and group by a field (`Deck.group_by`) (#54).
+
+## Identity Hygiene (2026-09-25)
+- Rule `protein_identity_audit@1` flags redundant entries, strain variants,
+  fragments and paralogs by gene locus and sequence, and never merges them. Curated
+  names anchor resolution by name. Curated ids include the subject (#55, #62).
+
+## Knowledge States (2026-09-25)
+- `card.knowledge_state()` tells known, conflicting, not stated, not queried and
+  unavailable apart, per area and source (#56).
+
+## Versioned Decks (2026-09-25)
+- Deck revisions are content-addressed and pinnable (`sabueso:deck:<name>@sha256:…`).
+  Decks record their membership, exclusions and derivation operations (#58).
+
+## Card Comparison (2026-09-25)
+- `card.compare_knowledge(other, residue_map=None)` compares two cards' knowledge,
+  with positions compared only through a residue mapping (#59).
+
+## Predicted Structures (2026-09-25)
+- AlphaFold DB models are `has_predicted_structure` relationships
+  (`resolve_protein_card(..., predicted_structures=True)`, `Card.predicted_structures()`),
+  apart from experimental structures (#57).
+
+## Curated Ligand Engagement (2026-09-25)
+- `card.add_literature_engagement(...)` records residues and mechanism a paper states
+  (`engages`), compared with observed PDBe-KB sites (#61).
+
+## NCBI Taxonomy (2026-09-25)
+- `taxonomy=True` adds `annotations.taxonomy` (ranks and ancestors). The identity audit
+  relates organisms exactly with it, and `Deck.group_by_rank` groups by rank (#67).
+
+## Measurement Identity and BindingDB (2026-09-25)
+- Records of several sources are grouped into measurements (`measurement_identity@1`),
+  views count measurements, and cross-source discrepancies are reported for review.
+  BindingDB is the second bioactivity source (#66).
+
+## PubChem BioAssay (2026-09-25)
+- PubChem BioAssay is the third bioactivity source. Declared copies are grouped by
+  provenance and lead to ChEMBL assays a card lacks (#68).
+
+## Card Migration (2026-09-25)
+- `sabueso.migrate_card` and `sabueso.refresh_card`: honest migration with recorded
+  gaps, completed by rebuilding from the sources (#51).
+
+## Free-text Claims (2026-09-25)
+- `card.add_literature_claim` records typed free-text claims in `literature.claims`,
+  never compared (#43).
+
+## Names and the Structural Inventory (2026-09-25)
+- UniProt synonyms, abbreviations and gene names (`names.*`), and `Deck.unique_names`.
+- RCSB construct, mutations, sequence differences, observed residues, R-free and dates
+  as `has_structure` qualifiers; `Card.structures(region=...)` with a derived state
+  (`structure_state@1`), and `Deck.structure_inventory` (`structure_inventory@1`).
+
+## Release 0.4.0 (2026-09-25)
+- Published on the `uibcdf` channel from the staged candidate 141a5dc (sha256
+  `ba12e2d2…2e3e`), verified by a clean public install on Python 3.14. It publishes card
+  schema 0.3.4, whose frozen card is `temp_data/frozen_cards/schema_0.3.4__P52270.json`.
+- Zenodo archive 22969742 (DOI 10.5281/zenodo.22969742), verified identical to the tag.
+
+## Pending Decisions
+- Local cache policy (raw sources vs cards vs both).
+- LLM integration policy (provider, prompts, SourceAssertion tracking).
+
+## Next Steps
+1) Expand mappings with additional fields and sources.
+2) Validate location model with additional real cases when ready.
