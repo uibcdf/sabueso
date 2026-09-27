@@ -12,7 +12,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 - **Latest release:** 0.5.0 (2026-09-27).
   - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
   - Staged candidate 2ea2693; sha256 `69fd95b1…5ecb`.
-  - Verified by a clean public install on Python 3.14. Its Zenodo archive is pending.
+  - Verified by a clean public install on Python 3.14.
+  - Archived on Zenodo (10.5281/zenodo.23001265), identical to tag 0.5.0.
 - **Card schema:** 0.3.5 (`schemas/card_schema_0.3.5.yaml`), published by 0.5.0. Main may
   already write additive changes that the next release will publish.
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to

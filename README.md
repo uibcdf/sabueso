@@ -23,7 +23,8 @@ Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the o
   - Before publication, the exact package was inspected, then tested on all 12
     combinations.
   - It writes card schema 0.3.5; `sabueso.migrate_card` reports what older cards lack.
-  - Its Zenodo archive is pending.
+  - Archived on Zenodo, verified to be identical to its tag:
+    [10.5281/zenodo.23001265](https://doi.org/10.5281/zenodo.23001265).
   - Users of 0.4.0: upgrade. It verifies pinned item reads (#79), attributes warnings
     correctly with SMonitor 0.17, and reads the authors' oligomer (#72).
   - Users of 0.3.0: see the 0.3.1 release notes about copies of cards (#64).
