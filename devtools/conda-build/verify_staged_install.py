@@ -11,7 +11,7 @@ from pathlib import Path
 
 PACKAGE = "sabueso"
 PUBLIC_DEPENDENCIES = (
-    ("smonitor", "0.16.0", "py_1"),
+    ("smonitor", "0.17.0", "py_0"),
     ("pyunitwizard", "0.27.0", "py_0"),
     ("argdigest", "0.13.0", "py_1"),
     ("depdigest", "0.11.0", "py_2"),
@@ -94,6 +94,60 @@ def verify_receipts(
         "Invalid digest",
     )
     return digest
+
+
+#: Package-critical runtime resources the artifact must carry (uibcdf/sabueso#77): the
+#: package data files. A test keeps this list equal to the files package-data ships.
+REQUIRED_RESOURCES = (
+    "site-packages/sabueso/resolver/enrichment_profiles.json",
+    "site-packages/sabueso/resolver/selection_rules.json",
+)
+
+
+def verify_archive(path: Path, sha256: str, version: str) -> None:
+    """Inspect the exact candidate artifact before any installation (#77).
+
+    Checks its digest, the version it embeds (conda's ``info/index.json``, the
+    ``_version.py`` versioningit writes and the ``dist-info`` metadata), and that every
+    package-critical resource is present and readable. The installed-package gate then
+    exercises the resources at run time (``api_smoke``).
+    """
+    import hashlib
+    import tarfile
+
+    _require(bool(re.fullmatch(r"[0-9a-f]{64}", sha256)), "Invalid expected digest")
+    _require(
+        hashlib.sha256(path.read_bytes()).hexdigest() == sha256,
+        "Artifact digest mismatch",
+    )
+    with tarfile.open(path, "r:bz2") as archive:
+        names = set(archive.getnames())
+
+        def read(member: str) -> str:
+            _require(member in names, f"Artifact lacks {member}")
+            handle = archive.extractfile(member)
+            _require(handle is not None, f"Artifact member {member} is not a file")
+            return handle.read().decode("utf-8")
+
+        index = json.loads(read("info/index.json"))
+        _require(index.get("name") == PACKAGE, "Artifact is not the sabueso package")
+        _require(index.get("version") == version, "Artifact index version is stale")
+        _require(
+            re.search(
+                r"^__version__\s*=\s*['\"]" + re.escape(version) + r"['\"]",
+                read("site-packages/sabueso/_version.py"),
+                re.M,
+            )
+            is not None,
+            "Embedded _version.py is stale",
+        )
+        metadata = read(f"site-packages/{PACKAGE}-{version}.dist-info/METADATA")
+        _require(
+            f"\nVersion: {version}\n" in f"\n{metadata}",
+            "Distribution metadata version is stale",
+        )
+        for resource in REQUIRED_RESOURCES:
+            json.loads(read(resource))
 
 
 def verify_installed(
@@ -232,6 +286,10 @@ def main() -> None:
     receipts.add_argument("--version", required=True)
     receipts.add_argument("--build-number", type=int, required=True)
     receipts.add_argument("--run-id", type=int, required=True)
+    archive = subparsers.add_parser("archive")
+    archive.add_argument("--path", type=Path, required=True)
+    archive.add_argument("--sha256", required=True)
+    archive.add_argument("--version", required=True)
     installed = subparsers.add_parser("installed")
     installed.add_argument("--prefix", type=Path, required=True)
     installed.add_argument("--sha256", required=True)
@@ -249,6 +307,9 @@ def main() -> None:
             args.run_id,
         )
         print(digest)
+    elif args.mode == "archive":
+        verify_archive(args.path, args.sha256, args.version)
+        print("PASS: exact artifact digest, embedded version, and runtime resources")
     else:
         verify_installed(
             args.prefix,

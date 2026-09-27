@@ -132,10 +132,10 @@ def _installed_records(tmp_path: Path) -> None:
             verifier.STAGING_CHANNEL,
             DIGEST,
         ),
-        ("smonitor", "0.16.0", "py_1", verifier.PUBLIC_CHANNEL, "c" * 64),
-        ("pyunitwizard", "0.27.0", "py_0", verifier.PUBLIC_CHANNEL, "e" * 64),
-        ("argdigest", "0.13.0", "py_1", verifier.PUBLIC_CHANNEL, "f" * 64),
-        ("depdigest", "0.11.0", "py_2", verifier.PUBLIC_CHANNEL, "d" * 64),
+    ] + [
+        # The verifier's own list, so that moving a pin is one edit, not three.
+        (name, version, build, verifier.PUBLIC_CHANNEL, f"{i:x}" * 64)
+        for i, (name, version, build) in enumerate(verifier.PUBLIC_DEPENDENCIES, 10)
     ]
     for name, version, build, channel, sha256 in records:
         filename = f"{name}-{version}-{build}.tar.bz2"
@@ -187,7 +187,7 @@ def test_installed_gate_accepts_exact_stage_and_public_dependencies(
         (
             "smonitor",
             "url",
-            f"{verifier.STAGING_CHANNEL}/smonitor-0.16.0-py_1.tar.bz2",
+            f"{verifier.STAGING_CHANNEL}/smonitor-0.17.0-py_0.tar.bz2",
         ),
         (
             "depdigest",
@@ -218,3 +218,72 @@ def test_installed_gate_rejects_wrong_digest_or_channel(
 def test_the_api_smoke_really_exercises_the_quantities_seal():
     # Runs against the source checkout here; in the staged gate, against the installed file.
     assert verifier.api_smoke() is True
+
+
+# --- the exact artifact (uibcdf/sabueso#77) ---------------------------------------------
+
+
+def _artifact(tmp_path, version=VERSION, embedded=None, drop=None, metadata=None):
+    """A conda-like .tar.bz2 with the members the archive check reads."""
+    import hashlib
+    import io
+    import tarfile
+
+    members = {
+        "info/index.json": json.dumps({"name": "sabueso", "version": version}),
+        "site-packages/sabueso/_version.py": f'__version__ = "{embedded or version}"\n',
+        f"site-packages/sabueso-{version}.dist-info/METADATA": (
+            f"Metadata-Version: 2.1\nName: sabueso\nVersion: {metadata or version}\n"
+        ),
+        **{resource: "{}" for resource in verifier.REQUIRED_RESOURCES},
+    }
+    members.pop(drop, None)
+    path = tmp_path / f"sabueso-{version}-py_0.tar.bz2"
+    with tarfile.open(path, "w:bz2") as archive:
+        for name, text in members.items():
+            data = text.encode()
+            info = tarfile.TarInfo(name)
+            info.size = len(data)
+            archive.addfile(info, io.BytesIO(data))
+    return path, hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def test_the_artifact_check_accepts_the_exact_candidate(tmp_path):
+    path, digest = _artifact(tmp_path)
+    verifier.verify_archive(path, digest, VERSION)
+
+
+@pytest.mark.parametrize(
+    ("kwargs", "message"),
+    [
+        ({"embedded": "0.0.0+unknown"}, "Embedded _version.py is stale"),
+        ({"metadata": "0.3.1"}, "Distribution metadata version is stale"),
+        (
+            {"drop": "site-packages/sabueso/resolver/selection_rules.json"},
+            "lacks site-packages/sabueso/resolver/selection_rules.json",
+        ),
+    ],
+)
+def test_the_artifact_check_rejects_a_stale_version_or_a_missing_resource(
+    tmp_path, kwargs, message
+):
+    path, digest = _artifact(tmp_path, **kwargs)
+    with pytest.raises(ValueError, match=message):
+        verifier.verify_archive(path, digest, VERSION)
+
+
+def test_the_artifact_check_rejects_another_digest_or_version(tmp_path):
+    path, digest = _artifact(tmp_path)
+    with pytest.raises(ValueError, match="digest mismatch"):
+        verifier.verify_archive(path, "0" * 64, VERSION)
+    with pytest.raises(ValueError, match="index version is stale"):
+        verifier.verify_archive(path, digest, "9.9.9")
+
+
+def test_the_required_resources_are_the_shipped_package_data():
+    # Adding a package data file must add it to the artifact check.
+    shipped = sorted(
+        f"site-packages/{p.relative_to(ROOT).as_posix()}"
+        for p in (ROOT / "sabueso" / "resolver").glob("*.json")
+    )
+    assert sorted(verifier.REQUIRED_RESOURCES) == shipped

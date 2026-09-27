@@ -60,6 +60,22 @@ jobs:
             --sha "$CANDIDATE_SHA" --version "$CANDIDATE_VERSION" \
             --build-number "$BUILD_NUMBER" --run-id "$STAGING_RUN_ID")"
           echo "sha256=$sha256" >> "$GITHUB_OUTPUT"
+      - name: Inspect the exact staged artifact before any installation
+        # Digest, embedded version identities and package-critical resources of the
+        # very file the receipts name (uibcdf/sabueso#77).
+        shell: bash
+        env:
+          CANDIDATE_VERSION: ${{ inputs.version }}
+          BUILD_NUMBER: ${{ inputs.build_number }}
+          EXPECTED_SHA256: ${{ steps.receipts.outputs.sha256 }}
+        run: |
+          set -euo pipefail
+          file="sabueso-${CANDIDATE_VERSION}-py_${BUILD_NUMBER}.tar.bz2"
+          curl -fsSL --retry 3 -o "$RUNNER_TEMP/$file" \
+            "https://conda.anaconda.org/uibcdf/label/staging/noarch/$file"
+          python devtools/conda-build/verify_staged_install.py archive \
+            --path "$RUNNER_TEMP/$file" --sha256 "$EXPECTED_SHA256" \
+            --version "$CANDIDATE_VERSION"
 
   install:
     name: Install ${{ matrix.os }} / Python ${{ matrix.python }}

@@ -25,7 +25,12 @@ For the staged route, dispatch
 `candidate_sha`, `version`, and `build_number` (normally zero). It uploads
 only to `uibcdf/label/staging` and retains the route and producer receipts.
 Then dispatch `.github/workflows/test_staged_conda_package.yaml` with the
-same coordinates and successful staging run ID. The gate checks artifact
+same coordinates and successful staging run ID. Before any installation, it downloads
+the exact staged file and inspects it (`verify_staged_install.py archive`, #77): its
+digest against the producer receipts, the version it embeds (`info/index.json`,
+`_version.py` and the `dist-info` metadata), and the package-critical resources
+(`REQUIRED_RESOURCES`: the packaged selection rules and enrichment profiles). This is
+the only claimed public route (the `noarch` conda package); Sabueso publishes no wheel. The gate checks artifact
 digest, source channel, public dependency provenance, package version, and
 an API smoke test (a card whose quantities are sealed by `to_dict()` and verified by
 `from_dict()`) in clean Linux, macOS and Windows environments for Python 3.11–3.14, with the

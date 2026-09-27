@@ -105,6 +105,14 @@ def route_specs(path: Path, kind: str) -> Dict[str, str]:
         entries = _list_after(lines, "run:")
     elif kind == "environment":
         entries = _list_after(lines, "dependencies:")
+    elif kind == "pins" and path.suffix == ".py":
+        # ("name", "version", "build") tuples, as conda's name=version=build.
+        entries = [
+            f"{n}={v}={b}"
+            for n, v, b in re.findall(
+                r'\(\s*"([^"]+)",\s*"([^"]+)",\s*"([^"]+)"\s*\)', path.read_text()
+            )
+        ]
     elif kind == "pins":
         entries = [
             s

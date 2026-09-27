@@ -25,6 +25,7 @@ def root(tmp_path):
         "pyproject.toml",
         "devtools/dependency_routes.toml",
         "devtools/conda-build/meta.yaml",
+        "devtools/conda-build/verify_staged_install.py",
         "devtools/conda-envs",
         ".github/workflows",
     ):
@@ -133,3 +134,32 @@ def test_the_preflight_never_rewrites_a_file(root):
     before = {p: p.read_bytes() for p in root.rglob("*") if p.is_file()}
     preflight(root)
     assert {p: p.read_bytes() for p in root.rglob("*") if p.is_file()} == before
+
+
+def test_the_workflow_and_its_verifier_pin_the_same_public_builds():
+    # Two places name the exact public builds of the installed-package gate. The
+    # verifier's list was left behind once (smonitor 0.16.0 after the floor moved to
+    # 0.17.0), which would have failed the next release: they must agree.
+    import re
+
+    workflow = (ROOT / ".github/workflows/test_staged_conda_package.yaml").read_text()
+    pinned = set(re.findall(r"uibcdf::([a-z_]+)=([0-9.]+)=(py_\d+)", workflow))
+    spec = importlib.util.spec_from_file_location(
+        "verify_staged_install", ROOT / "devtools/conda-build/verify_staged_install.py"
+    )
+    verifier = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(verifier)
+    assert pinned == set(verifier.PUBLIC_DEPENDENCIES)
+
+
+def test_a_stale_verifier_pin_fails(root):
+    target = root / "devtools/conda-build/verify_staged_install.py"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy(ROOT / "devtools/conda-build/verify_staged_install.py", target)
+    _edit(
+        target,
+        '("pyunitwizard", "0.27.0", "py_0")',
+        '("pyunitwizard", "0.25.0", "py_0")',
+    )
+    (problem,) = preflight(root)
+    assert "verify_staged_install.py: pyunitwizard =0.25.0 is weaker" in problem

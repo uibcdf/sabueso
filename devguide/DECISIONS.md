@@ -694,4 +694,24 @@ uibcdf/sabueso#76, adopting MOLI's distribution policy (uibcdf/moli#21).
 - The check for siblings installed from source does not apply: no required lane
   installs a sibling from a Git checkout. The inventory says so, and a lane added later
   must be declared there.
+- **The staged-package gate pins its builds in two places**: the workflow's
+  `create-args` and the verifier's `PUBLIC_DEPENDENCIES`. The verifier still pinned
+  SMonitor 0.16.0. The preflight now reads both, and a test requires them to agree.
+
+## Generated and packaged resources in the release artifact (2026-09-27)
+uibcdf/sabueso#77, adopting MOLI's distribution policy (uibcdf/moli#26).
+- **One claimed public route**, the `noarch` conda package. No wheel is published.
+- **What it carries:**
+  - package-critical resources: the packaged selection rules and enrichment profiles
+    (`sabueso/resolver/*.json`). A missing one made 0.1.0 unable to build cards (#35);
+  - version-bearing payloads: `info/index.json`, the `_version.py` versioningit writes
+    at build, and the `dist-info` metadata.
+- **Inspection before installation.** The staged-package test inspects the exact staged
+  file (`verify_staged_install.py archive`): digest, embedded versions and resources.
+  The installed gate then exercises the resources (`api_smoke` reads both JSON files).
+- A test keeps `REQUIRED_RESOURCES` equal to the shipped package data. Negative fixtures
+  cover a stale embedded version, stale metadata, a missing resource, another digest and
+  another version.
+- Checked against the published 0.4.0 artifact
+  (`sabueso-0.4.0-py_0.tar.bz2`, sha256 `ba12e2d2…2e3e`): passes.
 

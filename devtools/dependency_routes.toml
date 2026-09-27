@@ -34,6 +34,11 @@ reason = "builds, uploads and promotes the package; never installs Sabueso's run
 [routes.".github/workflows/test_staged_conda_package.yaml"]
 kind = "pins"
 
+[routes."devtools/conda-build/verify_staged_install.py"]
+kind = "pins"
+# PUBLIC_DEPENDENCIES: the exact public builds the installed-package gate checks. They
+# must equal the workflow's pins (tests/tools/test_dependency_preflight_offline.py).
+
 [routes.".github/workflows/ci.yml"]
 kind = "excluded"
 reason = "installs test_env.yaml (checked above), Sabueso itself with pip --no-deps, and ruff; no runtime library of its own"
