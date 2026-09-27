@@ -68,6 +68,15 @@
   - `…#SA_…` for one of its items;
   - `sabueso:deck:<name>@sha256:…` for a deck.
   The form is provisional until uibcdf/moli#3.
+- **KnowledgeQuery**: a structured question: a subject protein, an optional
+  comparator, the aspects asked and constraints (`knowledge_query@1`, #71). Not natural
+  language.
+- **KnowledgePacket**: the composed answer to a KnowledgeQuery: pinned entities, facts
+  per aspect with their rules, conflicts, unknowns and provenance
+  (`knowledge_packet@1`). Referenced as `sabueso:packet:<name>@sha256:…`.
+- **Content-equivalence id**: the id of a card or packet without retrieval times and
+  the Sabueso version that built it. Two assemblies of unchanged knowledge share it;
+  their snapshot ids differ.
 - **KnowledgeStore**: Sabueso's native SQLite store of cards, decks and their revisions.
 - **CurationStore**: a JSONL store of curated statements that survive rebuilds.
 - **Migration**: converting a card of an older schema, recording what it lacks

@@ -25,7 +25,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     and secondary structure, and states deletions as `substitution.missing` (#80);
   - an integrity fix for users of 0.5.0 and earlier: a deletion stated by UniProt read
     as an unspecified variant, and a free-text comment restricted to an isoform read
-    as a statement about the entry (#80).
+    as a statement about the entry (#80);
+  - a prototype of knowledge packets (#71): `KnowledgeQuery`, `knowledge_packet`,
+    `compose_packet`, and stored, pinned packets with a content-equivalence id. Its
+    shared contract waits on uibcdf/moli#22.
 
 ## Package layout
 
@@ -35,7 +38,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - Views and derivation rules: structures, bioactivities and measurements, oligomer,
     ligand sites, ligands, literature, knowledge state, card diff, identity audit, names.
   - Curation and the curation store.
-  - Snapshots and the knowledge store; migration.
+  - Snapshots and the knowledge store; knowledge packets; migration.
   - Quantities; tables.
 - `sabueso/resolver/`: the EntityResolver and the FieldResolver, selection rules,
   enrichment profiles, and the UniProt and RCSB clients.
@@ -44,7 +47,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   `sources/registry.yaml`).
 - `sabueso/tools/card/`: the protein and small-molecule card tools, and file storage.
 - `sabueso/tools/deck/`: deck file storage.
-- `sabueso/tools/resolve.py`: `sabueso.resolve`.
+- `sabueso/tools/resolve.py`: `sabueso.resolve`; `sabueso/tools/packet.py`: `sabueso.knowledge_packet`.
 - `sabueso/_private/`: argument digesters (ArgDigest, one per argument name) and
   diagnostics (SMonitor).
 - `sabueso/ops/`, `sabueso/utils/`: thin, kept for layout.
@@ -63,7 +66,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 761 tests passed, 15 online tests deselected (2026-09-27). Run with
+- Offline suite: 775 tests passed, 15 online tests deselected (2026-09-27). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.

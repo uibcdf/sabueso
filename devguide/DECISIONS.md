@@ -754,3 +754,29 @@ uibcdf/sabueso#80, card schema 0.3.6.
   as before.
 - **Not curatable yet:** alternative sequences and secondary structure, until a
   publication needs to be compared with them.
+
+## Knowledge packets, prototype (2026-09-27)
+uibcdf/sabueso#71, before the MOLI contract (uibcdf/moli#22) is agreed; the maintainers
+chose to prototype first and align after.
+- **Two steps.** `knowledge_packet` resolves the cards the query needs. `compose_packet`
+  is a pure function of the query and card states: no network, no LLM, no ranking, no
+  summary. The same query and states give the same packet.
+- **The query decides what is asked.** Aspects map to resolve options through a fixed,
+  versioned mapping (`packet_aspects@1`). Keyword arguments are only a resolver and
+  source clients. An unknown aspect or constraint is refused.
+- **Two ids.** `snapshot_id` hashes the exact packet, retrieval times included, and is
+  what `sabueso:packet:<name>@sha256:…` pins. `content_id` leaves out `retrieved_at` and
+  `sabueso_version`, and uses each card's content-equivalence id instead of its pin. So
+  two assemblies of unchanged knowledge are recognisably the same, which answers the
+  finding recorded on #71 (identical knowledge, different snapshot ids).
+- **Facts are the views' output, whole,** with their named rules. Quantities are
+  `{value, unit}` nodes, read in their own unit. Summaries with references, if size
+  demands them, are a later version.
+- **Unknowns come from `knowledge_state@2`,** restricted to the areas of the aspects
+  asked. Conflicts come from the cards' records, restricted the same way.
+- **Stored like decks.** A packet is saved only when every card state it cites is in
+  the store, and a read verifies the packet and those states. The new tables do not
+  change the store format.
+- **Proteins only** in `knowledge_query@1`: a subject and an optional comparator. Decks
+  as subjects, and other entity types, wait for real use.
+

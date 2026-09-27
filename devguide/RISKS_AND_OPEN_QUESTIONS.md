@@ -185,6 +185,20 @@
   and mixes entries along one sequence. A consumer that paints it on another structure,
   another state or an isoform shows what those structures do not state. The item keeps
   `structures`; per-structure secondary structure (RCSB) would close the gap.
+- **Packet size** (#71). A packet holds the views' output whole. For a protein pair
+  with ChEMBL bioactivities and literature it is about 0.8 MB of JSON (HsTIM and
+  TcTIM, live, 2026-09-27), and a protein
+  with thousands of measurements will be much larger. If that is felt (MOLI Agent's
+  context, storage), facts may become summaries with references to the full views, in a
+  new packet version.
+- **What the content-equivalence id leaves out** (#71). It drops `retrieved_at` and
+  `sabueso_version` only. A new field that records when or by what something was built
+  would make unchanged knowledge look changed, until it is added to `NOT_KNOWLEDGE`
+  (`sabueso/core/packets.py`). On 2026-09-27, cards built live held no other time value
+  than `retrieved_at` (dates such as a PDB deposit are knowledge, and stay). Recheck
+  when a field is added.
+- **The packet contract may change** when uibcdf/moli#22 is agreed. Stored packets
+  state their format (`knowledge_packet@1`), so a change is a new version.
 
 ## Open Questions
 - What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?

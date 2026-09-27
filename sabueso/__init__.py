@@ -22,6 +22,7 @@ from sabueso.core.errors import (
 )
 from sabueso.core.knowledge_store import KnowledgeStore
 from sabueso.core.migration import migrate_card, refresh_card
+from sabueso.core.packets import KnowledgePacket, KnowledgeQuery, compose_packet
 from sabueso.core.tables import to_dataframe
 from sabueso.tools.card.protein import ambiguity_deck, resolve_protein_card
 from sabueso.tools.card.small_molecule import ligand_deck, resolve_molecule_card
@@ -43,6 +44,7 @@ from sabueso.tools.db.uniprot import (
     create_protein_card_online,
 )
 from sabueso.tools.deck.storage import save_deck_jsonl, save_deck_sqlite
+from sabueso.tools.packet import knowledge_packet
 from sabueso.tools.resolve import resolve
 
 # SMonitor is configured when Sabueso is imported (uibcdf/sabueso#31).
@@ -60,6 +62,10 @@ __all__ = [
     "create_molecule_card_from_json",
     "create_molecule_card_online",
     "resolve",
+    "KnowledgeQuery",
+    "KnowledgePacket",
+    "compose_packet",
+    "knowledge_packet",
     "CurationStore",
     "KnowledgeStore",
     "migrate_card",

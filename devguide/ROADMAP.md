@@ -132,8 +132,8 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Temporal knowledge | partial | snapshots, revisions, source releases; no "as of a date" query |
 | Knowledge from Nextia not imported automatically | done (as a boundary) | promotion of derived knowledge open in uibcdf/moli#17 |
 | Literature as a knowledge source | partial | human curation and literature views; automated extraction pending |
-| KnowledgeQuery (semantic queries over sources) | pending | proposed in #71; contract in uibcdf/moli#22 |
-| Knowledge packets (entities, facts, conflicts, unknowns) | pending | proposed in #71; contract in uibcdf/moli#22 |
+| KnowledgeQuery (semantic queries over sources) | partial | prototype on main (#71): structured query, fixed aspect mapping; contract in uibcdf/moli#22 |
+| Knowledge packets (entities, facts, conflicts, unknowns) | partial | prototype on main (#71): pinned, stored, with a content-equivalence id; contract in uibcdf/moli#22 |
 | Unknowns as first-class output | done | `knowledge_state()` (#56) |
 | Two levels of access (semantic and raw) | done | `resolve` and views; `tools.db.*.get_*` |
 | Patents | pending | SureChEMBL queued |
@@ -169,9 +169,10 @@ ahead of that use.
 
 Foundational route, in the order proposed now:
 
-1. **Knowledge packets and KnowledgeQuery (design first; #71, uibcdf/moli#22).** Most of their parts exist.
-   Designing the interface now keeps later views from growing apart. It also answers the
-   MOLI Agent's need for one call that returns entities, facts, conflicts and unknowns.
+1. **Knowledge packets and KnowledgeQuery (#71, uibcdf/moli#22).** A prototype is on
+   main: protein subject and comparator, seven aspects, pinned and stored packets, and
+   a content-equivalence id. Next: let real use (the pilot, MOLI Agent) decide the
+   aspects and the size of facts, and align with the MOLI contract once it is agreed.
 2. **UniProt isoforms and secondary structure.** Mapped on main (#80). Isoform sequences
    and per-structure secondary structure (RCSB) remain.
 3. **Clinical layer.** Evaluate ClinicalTrials.gov (queued), and DrugBank's terms, for

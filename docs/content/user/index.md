@@ -40,6 +40,7 @@ sites_and_interfaces
 bioactivities
 literature_and_curation
 decks
+packets
 storage
 upgrading
 field_paths

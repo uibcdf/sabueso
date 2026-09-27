@@ -1,6 +1,6 @@
 # Sabueso — Public API
 
-The public surface as of release 0.4.0. Anything not listed here, or not exported by
+The public surface as of main after release 0.5.0. Anything not listed here, or not exported by
 `sabueso`, is internal. Tools, views, stores and source access check their arguments
 through ArgDigest. Plain accessors (`get`, `set`, `sort`…) do not, and fail loudly on
 wrong types (`ARGUMENT_CONTRACTS.md` lists which is which). The user guide (`docs/`)
@@ -25,6 +25,18 @@ shows how to use them.
   Deck.
 - `sabueso.ligand_deck(protein_card, ...)`: the small-molecule cards of a protein's
   ligands and measured molecules.
+
+## Knowledge packets (prototype, #71; contract in uibcdf/moli#22)
+
+- `sabueso.KnowledgeQuery(subject, comparator=None, aspects=None, constraints=None)`:
+  `to_dict()`, `from_dict(data)`, `options()`.
+- `sabueso.knowledge_packet(knowledge_query, store=None, packet_name=None, note=None,
+  curations=None, **clients)` resolves, composes, and optionally stores.
+- `sabueso.compose_packet(knowledge_query, subject, comparator=None)` composes from
+  existing cards.
+- `KnowledgePacket`: `entities`, `facts`, `conflicts`, `unknowns`, `provenance`,
+  `query`, `ref`; `snapshot_id()`, `content_id()`, `same_knowledge(other)`,
+  `cite(role, item_id)`, `to_dict()`.
 
 ## Card
 
@@ -83,6 +95,8 @@ shows how to use them.
     predicate=None, subject_ref=None, all_revisions=False)`;
   - `save_deck(deck, deck_name, note=None)`, `load_deck(name_or_ref)`,
     `deck_history(name)`, `deck_names()`;
+  - `save_packet(packet, packet_name, note=None)`, `load_packet(name_or_ref)`,
+    `packet_history(name)`, `packet_names()`;
   - `import_card_table(path, table="cards")`.
 - `sabueso.CurationStore(path)`: `save(card)`, `apply(card)`, `records()`,
   `retract(source_assertion_id, reason, curator)`, `entities_named(name)`.

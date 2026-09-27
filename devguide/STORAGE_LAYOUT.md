@@ -61,6 +61,11 @@ decision of an `ambiguity_deck`, or the source outcomes and unanchored records o
   states of its cards, content-addressed. It returns `sabueso:deck:<name>@sha256:…`.
   `store.load_deck(name or ref)` gives the latest revision or the exact pinned one, and
   `store.deck_history(name)` lists the revisions (#58).
+- `store.save_packet(packet, packet_name)` stores a knowledge packet revision
+  (`sabueso:packet:<name>@sha256:…`) once every card state it cites is in the store.
+  `store.load_packet(name or ref)` verifies the packet and those states;
+  `store.packet_history(name)` lists the revisions with their content-equivalence ids
+  and whether the knowledge changed (#71).
 - `store.import_card_table(path, table="cards")` imports the rows of a
   `save_card_sqlite` table, oldest first, as history.
 
@@ -75,6 +80,10 @@ Tables:
   holds, and in which order.
 - `deck_snapshots` holds one row per distinct deck content, and `deck_revisions` the
   saves of each deck name, in order.
+- `packet_snapshots` holds one row per distinct knowledge packet (its document, its
+  snapshot id and its content-equivalence id), and `packet_revisions` the saves of each
+  packet name, in order (#71). The tables are added to an existing store when it is
+  opened; the store format stays 1, since earlier readers ignore them.
 - `store_meta` holds the store's format, currently 1.
 
 Every read rebuilds the snapshot, hashes it and compares the result with its id. That

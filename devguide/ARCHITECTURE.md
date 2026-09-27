@@ -110,6 +110,7 @@ through these parts; `PUBLIC_API.md` lists the public surface.
 - **Peptide cards.** `entity_type: peptide` exists; peptide sources and views do not.
 - **Inputs by sequence, SMILES/InChI or structure file.** Resolution takes identifiers
   and names today.
-- **KnowledgeQuery and knowledge packets** (`SCIENTIFIC_POTENTIAL.md`).
+- **KnowledgeQuery and knowledge packets** (`SCIENTIFIC_POTENTIAL.md`): a prototype on
+  main (`sabueso/core/packets.py`, #71). Its shared contract waits on uibcdf/moli#22.
 
 Their status is tracked in `ROADMAP.md`.

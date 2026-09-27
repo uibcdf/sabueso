@@ -19,6 +19,11 @@ store is where cards are kept and worked with:
 - **Decks** are versioned like cards (#58): a deck revision is its ``meta`` and the
   pinned states of its cards, content-addressed, and a deck is referenced as
   ``sabueso:deck:<name>`` (latest) or ``sabueso:deck:<name>@sha256:…`` (exact).
+- **Knowledge packets** (#71) are versioned like decks: a packet revision is its
+  document, content-addressed, and every card state it cites must be in the store. A
+  packet is referenced as ``sabueso:packet:<name>`` (latest) or
+  ``sabueso:packet:<name>@sha256:…`` (exact). Each revision also records the packet's
+  content-equivalence id, so that a history shows when the knowledge last changed.
 - **Every read verifies.** A snapshot is rebuilt from its rows, hashed again and
   checked against its id; then ``Card.from_dict`` checks its schema version and its
   quantities seal. A store changed outside Sabueso is refused with ``StorageError``.
@@ -130,6 +135,19 @@ CREATE TABLE IF NOT EXISTS deck_revisions (
     note TEXT
 );
 CREATE INDEX IF NOT EXISTS deck_revisions_by_name ON deck_revisions (name, revision);
+CREATE TABLE IF NOT EXISTS packet_snapshots (
+    snapshot_id TEXT PRIMARY KEY,
+    content_id TEXT NOT NULL,
+    document TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS packet_revisions (
+    revision INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    snapshot_id TEXT NOT NULL REFERENCES packet_snapshots (snapshot_id),
+    stored_at TEXT NOT NULL,
+    note TEXT
+);
+CREATE INDEX IF NOT EXISTS packet_revisions_by_name ON packet_revisions (name, revision);
 """
 
 #: The latest revision of every card.
@@ -584,6 +602,155 @@ class KnowledgeStore:
                 name
                 for (name,) in conn.execute(
                     "SELECT DISTINCT name FROM deck_revisions ORDER BY name"
+                )
+            ]
+
+    # --- knowledge packets (#71) ----------------------------------------------------------
+
+    @staticmethod
+    def _packet_name(ref: str) -> Tuple[str, str | None]:
+        """``(name, snapshot_id)`` of ``<name>``, ``sabueso:packet:<name>`` or a pin."""
+        from .packets import PACKET_PREFIX
+
+        if not ref.startswith(PACKET_PREFIX):
+            ref = PACKET_PREFIX + ref
+        card_id, sid, item = parse_ref(ref)
+        name = card_id[len(PACKET_PREFIX) :]
+        if item or not DECK_NAME.fullmatch(name):
+            raise StorageError(f"{ref!r} is not a packet reference.")
+        return name, sid
+
+    @staticmethod
+    def _packet_head(conn: sqlite3.Connection, name: str) -> str | None:
+        row = conn.execute(
+            "SELECT snapshot_id FROM packet_revisions WHERE name = ? "
+            "ORDER BY revision DESC LIMIT 1",
+            (name,),
+        ).fetchone()
+        return None if row is None else row[0]
+
+    @arg_digest()
+    def save_packet(
+        self,
+        packet: Any,
+        packet_name: str,
+        note: str | None = None,
+        skip_digestion: bool = False,
+    ) -> str:
+        """Store a packet under its name; return ``sabueso:packet:<name>@sha256:…``.
+
+        Every card state the packet cites must already be in this store, verified, so
+        that the packet reads back whole; otherwise nothing is stored. Saving the latest
+        state again adds no revision.
+        """
+        from .packets import PACKET_PREFIX
+
+        if packet_name is None:
+            raise StorageError("A packet is saved under a name.")
+        name, pinned = self._packet_name(packet_name)
+        if pinned:
+            raise StorageError("A packet is saved under its name, not under a pin.")
+        document = packet.to_dict()
+        sid = packet.snapshot_id()
+        with self._session() as conn:
+            for entity in document["entities"].values():
+                _, card_sid, _ = self._resolve(conn, entity["ref"])
+                self._assemble(conn, card_sid)
+            conn.execute(
+                "INSERT OR IGNORE INTO packet_snapshots VALUES (?, ?, ?)",
+                (sid, packet.content_id(), canonical_json(document)),
+            )
+            if self._packet_head(conn, name) != sid:
+                conn.execute(
+                    "INSERT INTO packet_revisions (name, snapshot_id, stored_at, note) "
+                    "VALUES (?, ?, ?, ?)",
+                    (name, sid, _now(), note),
+                )
+        ref = pinned_ref(PACKET_PREFIX + name, sid)
+        packet.ref = ref
+        return ref
+
+    @arg_digest()
+    def load_packet(self, packet_name: str, skip_digestion: bool = False) -> Any:
+        """The packet a name or reference names: the exact revision if pinned, else the
+        latest. Its content and every card state it cites are verified; an absent pin
+        fails, and another revision is never returned in its place."""
+        from .packets import PACKET_PREFIX, KnowledgePacket
+
+        name, sid = self._packet_name(packet_name)
+        with self._session() as conn:
+            if sid is None:
+                sid = self._packet_head(conn, name)
+                if sid is None:
+                    raise StorageError(f"No packet {name!r} in {self.path}.")
+            elif (
+                conn.execute(
+                    "SELECT 1 FROM packet_revisions WHERE name = ? AND snapshot_id = ?",
+                    (name, sid),
+                ).fetchone()
+                is None
+            ):
+                raise StorageError(
+                    f"No revision {sid} of packet {name!r} in {self.path}. A pinned "
+                    "packet resolves to that exact revision or fails."
+                )
+            content_id, document = conn.execute(
+                "SELECT content_id, document FROM packet_snapshots WHERE snapshot_id = ?",
+                (sid,),
+            ).fetchone()
+            packet = KnowledgePacket(json.loads(document))
+            if packet.snapshot_id() != sid or packet.content_id() != content_id:
+                raise StorageError(
+                    f"Packet revision {sid} in {self.path} no longer matches its "
+                    "content; the store was changed outside Sabueso."
+                )
+            for entity in packet.entities.values():
+                _, card_sid, _ = self._resolve(conn, entity["ref"])
+                self._assemble(conn, card_sid)
+        packet.ref = pinned_ref(PACKET_PREFIX + name, sid)
+        return packet
+
+    @arg_digest()
+    def packet_history(
+        self, packet_name: str, skip_digestion: bool = False
+    ) -> List[Dict[str, Any]]:
+        """Every revision of a packet, oldest first, each with its pinned reference,
+        its content-equivalence id, and whether its knowledge changed from the previous
+        revision (``knowledge_changed``: None for the first)."""
+        from .packets import PACKET_PREFIX
+
+        name, _ = self._packet_name(packet_name)
+        with self._session() as conn:
+            rows = conn.execute(
+                "SELECT r.revision, r.snapshot_id, r.stored_at, r.note, s.content_id "
+                "FROM packet_revisions r JOIN packet_snapshots s "
+                "ON s.snapshot_id = r.snapshot_id WHERE r.name = ? ORDER BY r.revision",
+                (name,),
+            ).fetchall()
+        history, previous = [], None
+        for revision, sid, stored_at, note, content_id in rows:
+            history.append(
+                {
+                    "revision": revision,
+                    "ref": pinned_ref(PACKET_PREFIX + name, sid),
+                    "snapshot_id": sid,
+                    "content_id": content_id,
+                    "knowledge_changed": None
+                    if previous is None
+                    else content_id != previous,
+                    "stored_at": stored_at,
+                    "note": note,
+                }
+            )
+            previous = content_id
+        return history
+
+    def packet_names(self) -> List[str]:
+        with self._session() as conn:
+            return [
+                name
+                for (name,) in conn.execute(
+                    "SELECT DISTINCT name FROM packet_revisions ORDER BY name"
                 )
             ]
 

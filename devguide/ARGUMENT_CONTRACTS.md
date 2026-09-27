@@ -29,7 +29,7 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
 2026-09-26 they are:
 
 - **Tools:** `resolve`, `resolve_protein_card`, `resolve_molecule_card`, `ligand_deck`,
-  `ambiguity_deck`, `to_dataframe`, and every source-access function (`get_*`,
+  `ambiguity_deck`, `knowledge_packet`, `to_dataframe`, and every source-access function (`get_*`,
   `uniprot.search`).
 - **Card views and operations:**
   - `bioactivities`, `structures`, `ligands`, `compare_ligands`, `compare_knowledge`;
@@ -39,7 +39,12 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
 - **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,
   `group_by_rank`.
 - **KnowledgeStore:** `save`, `load`, `history`, `source_assertion`, `relationship`,
-  `relationships`, `save_deck`, `load_deck`, `deck_history`, `import_card_table`.
+  `relationships`, `save_deck`, `load_deck`, `deck_history`, `save_packet`,
+  `load_packet`, `packet_history`, `import_card_table`.
+- **KnowledgeQuery** (#71): its constructor digests `subject`, `comparator`, `aspects`
+  and `constraints`. `knowledge_packet` takes `**clients` and admits the
+  `source_clients` domain, the resolver and the `*_client` options of
+  `resolve_protein_card`. So a keyword never changes what a query asks.
 - **Resolver:** `EntityResolver(uniprot_client, policy, rcsb_client, ncbi_gene_client)`.
 - **SQLite storage**, where the table name is interpolated into SQL:
   - `save_card_sqlite`, `load_card_sqlite`;
