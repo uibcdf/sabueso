@@ -715,3 +715,21 @@ uibcdf/sabueso#77, adopting MOLI's distribution policy (uibcdf/moli#26).
 - Checked against the published 0.4.0 artifact
   (`sabueso-0.4.0-py_0.tar.bz2`, sha256 `ba12e2d2…2e3e`): passes.
 
+## Immutable Conda coordinates and the public poststate (2026-09-27)
+uibcdf/sabueso#78, adopting MOLI's distribution policy (uibcdf/moli#25).
+- **The route.** The staged route uploads to `staging`, and promotes by adding `main`
+  to the same file through the provider's exact-file primitive, which checks the digest
+  and source label. The action is never given `overwrite`, so it never uses `--force`.
+- **Before a staged upload.** `release_route.py coordinate` refuses a coordinate the
+  registry already holds under any label, identical bytes included. The direct route
+  keeps its stricter check: no file of that version may exist.
+- **After promotion.** `release_route.py poststate` verifies the exact coordinate,
+  labels and SHA-256 with a repeatable read-only registry query and bounded retries. It
+  records a receipt; an unobserved record fails the gate. The `conda search` check stays
+  as the index view.
+- **Negative checks.** An occupied coordinate is refused under `staging`, `main`, both
+  or no label. Changed bytes at the public coordinate, a missing `main` label and an
+  absent record are refused, and an unobserved poststate stays unresolved.
+- **Checked on the live registry.** 0.5.0 is free; 0.4.0 is refused as occupied; the
+  public poststate of 0.4.0 matches its tested digest.
+

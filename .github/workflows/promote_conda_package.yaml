@@ -120,6 +120,27 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      - name: Verify the public registry poststate of the exact coordinate
+        # Read-only and repeatable, with bounded retries; recorded (#78).
+        shell: bash
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+          BUILD_NUMBER: ${{ inputs.build_number }}
+          EXPECTED_SHA256: ${{ inputs.sha256 }}
+        run: |
+          python devtools/conda-build/release_route.py poststate \
+            --version "$RELEASE_VERSION" --build-number "$BUILD_NUMBER" \
+            --sha256 "$EXPECTED_SHA256" \
+            --receipt "$RUNNER_TEMP/sabueso-conda-poststate.json"
+
+      - name: Retain the poststate receipt
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: sabueso-conda-poststate-${{ inputs.version }}-py_${{ inputs.build_number }}
+          path: ${{ runner.temp }}/sabueso-conda-poststate.json
+          if-no-files-found: error
+          retention-days: 90
+
       - name: Independently verify the public channel
         shell: bash -l {0}
         env:

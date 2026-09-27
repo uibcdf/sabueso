@@ -163,6 +163,17 @@ jobs:
           EXPECTED_VERSION: ${{ inputs.version || github.event.release.tag_name }}
         run: test "$(python -m versioningit)" = "$EXPECTED_VERSION"
 
+      - name: Refuse an occupied Conda coordinate under any label
+        # Never overwrite or --force, even with the same bytes (uibcdf/sabueso#78).
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+          BUILD_NUMBER: ${{ inputs.build_number }}
+        run: |
+          python devtools/conda-build/release_route.py coordinate \
+            --version "$RELEASE_VERSION" --build-number "$BUILD_NUMBER"
+
       - name: Build, test, and upload the staging candidate
         id: conda_staging
         if: github.event_name == 'workflow_dispatch'

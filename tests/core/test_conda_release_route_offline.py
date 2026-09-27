@@ -236,3 +236,73 @@ def test_public_poststate_rejects_checksum_mismatch(monkeypatch, tmp_path):
         route.verify_public(
             version="0.1.0", built_paths=str(package), receipt=receipt, attempts=1
         )
+
+
+# --- immutable coordinates and public poststate (#78) -----------------------------------
+
+_DIGEST = "a" * 64
+
+
+def _files(*entries):
+    """A registry snapshot of the package's files, as api.anaconda.org lists them."""
+    return [
+        {"basename": basename, "labels": labels, "sha256": sha256}
+        for basename, labels, sha256 in entries
+    ]
+
+
+def test_an_absent_coordinate_may_be_uploaded():
+    files = _files(("noarch/sabueso-0.4.0-py_0.tar.bz2", ["staging", "main"], _DIGEST))
+    state = route.assert_coordinate_unoccupied(files, "0.5.0", 0)
+    assert state == {
+        "coordinate": "noarch/sabueso-0.5.0-py_0.tar.bz2",
+        "state": "absent",
+    }
+
+
+@pytest.mark.parametrize("labels", [["staging"], ["main"], ["staging", "main"], []])
+def test_an_occupied_coordinate_is_refused_under_any_label(labels):
+    files = _files(("noarch/sabueso-0.5.0-py_0.tar.bz2", labels, _DIGEST))
+    with pytest.raises(route.ReleaseRouteError, match="never overwrite"):
+        route.assert_coordinate_unoccupied(files, "0.5.0", 0)
+    # Another build number is another coordinate.
+    route.assert_coordinate_unoccupied(files, "0.5.0", 1)
+
+
+def test_the_public_poststate_needs_the_main_label_and_the_tested_bytes():
+    basename = "noarch/sabueso-0.5.0-py_0.tar.bz2"
+    ok = _files((basename, ["staging", "main"], _DIGEST))
+    assert route.check_public_poststate(ok, "0.5.0", 0, _DIGEST)["labels"] == [
+        "main",
+        "staging",
+    ]
+    with pytest.raises(route.ReleaseRouteError, match="changed bytes"):
+        route.check_public_poststate(ok, "0.5.0", 0, "b" * 64)
+    with pytest.raises(route.ReleaseRouteError, match="main label"):
+        route.check_public_poststate(
+            _files((basename, ["staging"], _DIGEST)), "0.5.0", 0, _DIGEST
+        )
+    with pytest.raises(route.ReleaseRouteError, match="not in the registry"):
+        route.check_public_poststate([], "0.5.0", 0, _DIGEST)
+
+
+def test_an_unobserved_poststate_stays_unresolved(monkeypatch, tmp_path):
+    monkeypatch.setattr(route, "registry_files", lambda: [])
+    monkeypatch.setattr(route.time, "sleep", lambda _: None)
+    receipt = tmp_path / "poststate.json"
+    with pytest.raises(route.ReleaseRouteError, match="unresolved"):
+        route.verify_poststate(
+            version="0.5.0", build_number=0, sha256=_DIGEST, receipt=receipt, attempts=2
+        )
+    assert not receipt.exists()
+
+
+def test_an_observed_poststate_is_recorded(monkeypatch, tmp_path):
+    files = _files(("noarch/sabueso-0.5.0-py_0.tar.bz2", ["staging", "main"], _DIGEST))
+    monkeypatch.setattr(route, "registry_files", lambda: files)
+    receipt = tmp_path / "poststate.json"
+    evidence = route.verify_poststate(
+        version="0.5.0", build_number=0, sha256=_DIGEST, receipt=receipt
+    )
+    assert json.loads(receipt.read_text()) == evidence
+    assert evidence["schema"] == "sabueso.conda-poststate@1"

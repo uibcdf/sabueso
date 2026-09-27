@@ -28,7 +28,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - pinned item reads and relationship searches verify their snapshot (#79);
   - SMonitor >= 0.17.0, whose frame counting Sabueso now follows;
   - the dependency-contract preflight (`devtools/dependency_preflight.py`, #76), and the
-    inspection of the exact staged artifact (#77).
+    inspection of the exact staged artifact (#77), immutable Conda coordinates and a
+    recorded public poststate (#78).
 
 ## Package layout
 
@@ -66,7 +67,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 743 tests passed, 15 online tests deselected (2026-09-27). Run with
+- Offline suite: 751 tests passed, 15 online tests deselected (2026-09-27). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.

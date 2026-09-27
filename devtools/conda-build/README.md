@@ -20,6 +20,18 @@ read-only check that the recipe, every environment installing the runtime, and t
 exact public builds pinned by the staged-package test agree with `pyproject.toml`
 (`devtools/dependency_routes.toml`, #76). CI's quality job runs it on every commit.
 
+**Immutable coordinates (#78).**
+- A Conda file coordinate (`uibcdf/sabueso/<version>/noarch/<filename>`) is never
+  overwritten, under any label, even with the same bytes.
+- Before a staged upload, `release_route.py coordinate` refuses a coordinate the
+  registry already holds. A corrected build needs a new build number or version. The
+  direct route refuses any existing file of the version.
+- After promotion, `release_route.py poststate` queries the registry read-only, with
+  bounded retries. The exact coordinate must carry the `main` label and the tested
+  SHA-256. The result is kept as a receipt (`sabueso-conda-poststate-*`).
+- A red poststate is diagnosed with read-only queries, never with another upload or
+  promotion.
+
 For the staged route, dispatch
 `.github/workflows/build_and_upload_conda_packages.yaml` with the exact
 `candidate_sha`, `version`, and `build_number` (normally zero). It uploads

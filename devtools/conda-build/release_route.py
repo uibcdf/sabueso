@@ -118,6 +118,101 @@ def assert_version_unoccupied(version: str) -> dict:
     )
 
 
+# --- immutable Conda coordinates (uibcdf/sabueso#78, MOLI distribution policy) ----------
+
+PACKAGE_FILES = "https://api.anaconda.org/package/uibcdf/sabueso"
+
+
+def coordinate(version: str, build_number: int) -> str:
+    """The Conda file coordinate of a Sabueso noarch build, as the registry names it."""
+    return f"noarch/sabueso-{version}-py_{build_number}.tar.bz2"
+
+
+def coordinate_state(files: list, basename: str) -> dict:
+    """Where the registry holds ``basename``, under any label: ``absent``, or
+    ``occupied`` with its labels and SHA-256. Pure: registry snapshots are its input."""
+    found = [f for f in files if f.get("basename") == basename]
+    if not found:
+        return {"coordinate": basename, "state": "absent"}
+    if len(found) > 1:
+        raise ReleaseRouteError(f"the registry lists {basename} {len(found)} times")
+    return {
+        "coordinate": basename,
+        "state": "occupied",
+        "labels": sorted(found[0].get("labels") or []),
+        "sha256": found[0].get("sha256"),
+    }
+
+
+def assert_coordinate_unoccupied(files: list, version: str, build_number: int) -> dict:
+    """Refusing an upload to a coordinate the registry already holds, under any label,
+    even with the same bytes: a changed build needs a new build number or version."""
+    state = coordinate_state(files, coordinate(version, build_number))
+    if state["state"] != "absent":
+        raise ReleaseRouteError(
+            f"{state['coordinate']} is already in the registry (labels "
+            f"{state['labels']}, sha256 {state['sha256']}); never overwrite or use "
+            "--force: use a new build number or version"
+        )
+    return state
+
+
+def check_public_poststate(
+    files: list, version: str, build_number: int, sha256: str
+) -> dict:
+    """The exact coordinate carries the public label and the tested bytes."""
+    state = coordinate_state(files, coordinate(version, build_number))
+    if state["state"] != "occupied":
+        raise ReleaseRouteError(f"{state['coordinate']} is not in the registry")
+    if state["sha256"] != sha256:
+        raise ReleaseRouteError(
+            f"{state['coordinate']} holds sha256 {state['sha256']}, not the tested "
+            f"{sha256}: changed bytes at the public coordinate"
+        )
+    if "main" not in state["labels"]:
+        raise ReleaseRouteError(f"{state['coordinate']} does not carry the main label")
+    return state
+
+
+def registry_files() -> list:
+    files = _read_json(PACKAGE_FILES).get("files")
+    if not isinstance(files, list):
+        raise ReleaseRouteError("the registry did not list the package's files")
+    return files
+
+
+def verify_poststate(
+    *, version: str, build_number: int, sha256: str, receipt: Path, attempts: int = 6
+) -> dict:
+    """A read-only registry query, repeatable without a new mutation, with bounded
+    retries for propagation; the result is recorded in the receipt. A gate that cannot
+    observe the exact public record stays unresolved (it fails)."""
+    last = "public record not observed"
+    for attempt in range(attempts):
+        try:
+            state = check_public_poststate(
+                registry_files(), version, build_number, sha256
+            )
+        except (ReleaseRouteError, HTTPError, OSError) as error:
+            last = str(error)
+            if attempt + 1 < attempts:
+                time.sleep(10)
+            continue
+        evidence = {
+            "schema": "sabueso.conda-poststate@1",
+            "version": version,
+            "build_number": build_number,
+            "checked_at": datetime.now(timezone.utc).isoformat(),
+            "registry": PACKAGE_FILES,
+            **state,
+        }
+        receipt.write_text(
+            json.dumps(evidence, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+        )
+        return evidence
+    raise ReleaseRouteError(f"public poststate unresolved: {last}")
+
+
 def check_route(
     *, version: str, route: str, sha: str, repository: str, receipt: Path
 ) -> dict:
@@ -228,6 +323,14 @@ def main() -> None:
     check.add_argument("--sha", required=True)
     check.add_argument("--repository", required=True)
     check.add_argument("--receipt", required=True, type=Path)
+    unoccupied = subcommands.add_parser("coordinate")
+    unoccupied.add_argument("--version", required=True)
+    unoccupied.add_argument("--build-number", required=True, type=int)
+    poststate = subcommands.add_parser("poststate")
+    poststate.add_argument("--version", required=True)
+    poststate.add_argument("--build-number", required=True, type=int)
+    poststate.add_argument("--sha256", required=True)
+    poststate.add_argument("--receipt", required=True, type=Path)
     public = subcommands.add_parser("verify-public")
     public.add_argument("--version", required=True)
     public.add_argument("--built-paths", required=True)
@@ -241,6 +344,19 @@ def main() -> None:
             repository=args.repository,
             receipt=args.receipt,
         )
+    elif args.command == "coordinate":
+        state = assert_coordinate_unoccupied(
+            registry_files(), args.version, args.build_number
+        )
+        print(json.dumps(state))
+    elif args.command == "poststate":
+        evidence = verify_poststate(
+            version=args.version,
+            build_number=args.build_number,
+            sha256=args.sha256,
+            receipt=args.receipt,
+        )
+        print(json.dumps(evidence))
     else:
         verify_public(
             version=args.version, built_paths=args.built_paths, receipt=args.receipt
