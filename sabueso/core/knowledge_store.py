@@ -384,19 +384,21 @@ class KnowledgeStore:
     # --- items of a pinned card ------------------------------------------------------------
 
     def _item(self, ref: str, key: str) -> Dict[str, Any]:
-        table, members, id_column, _ = ROW_TABLES[key]
+        """An item of a pinned card, as the verified snapshot holds it (#79).
+
+        The whole snapshot is rebuilt and its content address checked, as ``load``
+        does, and the item is taken from that verified state. A row changed outside
+        Sabueso therefore fails the read, instead of being returned under the pin.
+        """
         with self._session() as conn:
             card_id, sid, item = self._resolve(conn, ref)
             if item is None:
                 raise StorageError(f"{ref!r} names a card, not one of its items.")
-            row = conn.execute(
-                f"SELECT t.body FROM {members} m JOIN {table} t "
-                f"ON t.body_hash = m.body_hash WHERE m.snapshot_id = ? AND t.{id_column} = ?",
-                (sid, item),
-            ).fetchone()
-        if row is None:
+            data = self._assemble(conn, sid)
+        found = [entry for entry in data[key] if entry.get("id") == item]
+        if not found:
             raise StorageError(f"Snapshot {sid} of {card_id} holds no {item}.")
-        return json.loads(row[0])
+        return found[0]
 
     @arg_digest()
     def source_assertion(
@@ -454,6 +456,10 @@ class KnowledgeStore:
                 "ORDER BY s.card_id, s.snapshot_id, m.position",
                 args,
             ).fetchall()
+            # Every state a result cites is verified first, in the same transaction:
+            # a result is a pinned reference, so it must hold what the pin names (#79).
+            for sid in sorted({sid for _, sid, _ in rows}):
+                self._assemble(conn, sid)
         return [
             {"card": pinned_ref(card_id, sid), "relationship": json.loads(body)}
             for card_id, sid, body in rows

@@ -325,6 +325,48 @@ def test_a_store_changed_outside_sabueso_is_refused(tmp_path, tctim):
         store.load(ref)
 
 
+def _tamper(path, table, id_column):
+    """Change one row's body outside Sabueso, keeping its hash and the snapshot id."""
+    with sqlite3.connect(path) as conn:
+        item_id, body_hash, body = conn.execute(
+            f"SELECT {id_column}, body_hash, body FROM {table} LIMIT 1"
+        ).fetchone()
+        changed = json.loads(body)
+        changed["tampered"] = True
+        conn.execute(
+            f"UPDATE {table} SET body = ? WHERE body_hash = ?",
+            (json.dumps(changed), body_hash),
+        )
+    return item_id
+
+
+def test_a_pinned_item_read_is_verified_like_a_card_read(tmp_path, tctim):
+    # A pinned item returns the item as the verified snapshot holds it, or fails; it
+    # never returns changed content under the original pin (#79, uibcdf/moli#3).
+    for table, id_column, read in (
+        ("source_assertions", "sa_id", "source_assertion"),
+        ("relationships", "rel_id", "relationship"),
+    ):
+        path = tmp_path / f"{table}.db"
+        store = sabueso.KnowledgeStore(path)
+        ref = store.save(tctim)
+        item_id = _tamper(path, table, id_column)
+        with pytest.raises(StorageError, match="changed outside Sabueso"):
+            getattr(store, read)(f"{ref}#{item_id}")
+        with pytest.raises(StorageError, match="changed outside Sabueso"):
+            store.load(ref)
+
+
+def test_a_relationship_search_never_cites_a_changed_state(tmp_path, tctim):
+    path = tmp_path / "k.db"
+    store = sabueso.KnowledgeStore(path)
+    store.save(tctim)
+    assert store.relationships(predicate="has_structure")  # untouched: found
+    _tamper(path, "relationships", "rel_id")
+    with pytest.raises(StorageError, match="changed outside Sabueso"):
+        store.relationships(predicate="has_structure")
+
+
 def test_the_store_states_its_format(tmp_path):
     path = tmp_path / "knowledge.db"
     sabueso.KnowledgeStore(path)

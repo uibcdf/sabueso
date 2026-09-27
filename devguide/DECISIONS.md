@@ -661,3 +661,15 @@ sources. Issues #72–#75 record what it found.
   - On the live P52270 data, 7 entries became 3 unexplained ones: one `molecule_differs`
     worth reading, and two declared copies with other stereochemistry.
 
+## A pinned item is read from its verified snapshot (2026-09-27)
+uibcdf/sabueso#79; acceptance case 2 of uibcdf/moli#3.
+- `KnowledgeStore.source_assertion(pin#SA_…)` and `relationship(pin#REL_…)` used to read
+  the item row directly. `load(pin)` re-verified the whole snapshot, but these did not,
+  so a row changed outside Sabueso came back under an unchanged pin.
+- Both now rebuild and verify the snapshot, as `load` does, and take the item from that
+  verified state. `relationships()` verifies every state it cites before returning, in
+  the same transaction.
+- Verification is never cached across reads. A cache would let a change made after the
+  first read pass unnoticed. The cost is about 0.1 s per item read, for a card of about a
+  thousand relationships.
+

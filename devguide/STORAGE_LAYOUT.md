@@ -77,7 +77,11 @@ Tables:
   saves of each deck name, in order.
 - `store_meta` holds the store's format, currently 1.
 
-Every read rebuilds the snapshot, hashes it and compares the result with its id. Then
+Every read rebuilds the snapshot, hashes it and compares the result with its id. That
+includes the reads of a single pinned item (`source_assertion`, `relationship`) and the
+states `relationships()` cites. A row changed outside Sabueso fails the read, instead of
+being returned under an unchanged pin (#79). For a card of about a thousand
+relationships, a verified item read takes about 0.1 s. Then
 `Card.from_dict` checks the schema version and the quantities seal. The store uses no
 SQLite JSON functions, so any SQLite that Python ships with works.
 

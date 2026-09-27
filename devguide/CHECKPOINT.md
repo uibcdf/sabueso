@@ -24,7 +24,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - the selection rules published in the user guide match the packaged ones (0.2.0);
   - the oligomer from author-defined assemblies (`structure_state@2`, #72); author
     numbering (#73); partial RCSB entries kept and a `partial` knowledge state
-    (`knowledge_state@2`, #74).
+    (`knowledge_state@2`, #74);
+  - pinned item reads and relationship searches verify their snapshot (#79);
+  - SMonitor >= 0.17.0, whose frame counting Sabueso now follows.
 
 ## Package layout
 
@@ -62,7 +64,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 720 tests passed, 15 online tests deselected (2026-09-26). Run with
+- Offline suite: 726 tests passed, 15 online tests deselected (2026-09-27). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.
