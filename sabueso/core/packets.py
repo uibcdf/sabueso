@@ -116,8 +116,9 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         "areas": ("relationships.described_in", "literature."),
     },
     "biological_context": {
-        "options": {},
+        "options": {"phi_base": True},
         "areas": (
+            "annotations.pathogen_phenotypes",
             "annotations.stage_expression",
             "annotations.essentiality",
             "annotations.accessibility",

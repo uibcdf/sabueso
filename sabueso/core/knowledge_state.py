@@ -53,6 +53,7 @@ PROTEIN_ENRICHMENTS = (
         {"source": "AlphaFold DB"},
     ),
     ("annotations.taxonomy", "NCBI Taxonomy", {"source": "NCBI Taxonomy"}),
+    ("annotations.pathogen_phenotypes", "PHI-base", {"source": "PHI-base"}),
 )
 
 

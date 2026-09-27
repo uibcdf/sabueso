@@ -255,7 +255,7 @@ resources:
     reason: A large connector; structured fields for biological context should be used first, through curation.
     revisit_when: Curated biological-context fields are in use and a workflow needs them for many genes.
     access: WDK web services
-    links: ["#60"]
+    links: ["#60", "#84"]
   - id: biogrid
     name: BioGRID
     url: https://thebiogrid.org/
@@ -416,15 +416,19 @@ resources:
     description: "Target prioritisation for pathogens of neglected tropical diseases: essentiality, druggability, similarity to the host."
     since: 2026-09-27
     proposed_by: "Source coverage plan (#83): pathogen-target assessment"
-    links: ["#83"]
+    links: ["#83", "#84"]
   - id: phi_base
     name: "PHI-base"
     url: https://phi-base.org/
     category: organism_context
-    status: evaluating
+    status: in_use
     description: "Pathogen–host interactions: genes whose mutation changes a pathogen's phenotype on its host."
     since: 2026-09-27
     proposed_by: "Source coverage plan (#83): pathogen-target assessment"
+    reason: "Curated phenotypes of pathogen mutants (lethal, reduced virulence…), keyed by the gene's UniProt accession, with the genotype, host, conditions and publication. It covers eukaryotic pathogens, trypanosomatids included, which human-centred sources do not."
+    access: "Versioned releases of PHI-base 5 on Zenodo (JSON), downloaded once, checked against their MD5 and split per UniProt accession in the local cache, when resolve(..., phi_base=True)"
+    licence: "CC BY 4.0 (cite PHI-base and the release)"
+    module: [sabueso.tools.db.phi_base, sabueso.mappings.phi_base]
     links: ["#83"]
   - id: ttd
     name: "TTD (Therapeutic Target Database)"

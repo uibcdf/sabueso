@@ -20,6 +20,8 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | Files | Source | Version / release | Retrieved | Licence |
 | --- | --- | --- | --- | --- |
 | `P00938.json`, `P35372.json`, `P52270.json`, `P52789.json`, `P60174.json`, `P60175.json`, `Q6FHP9.json`, `V9HWK1.json`, `A0A140VJM9.json` | UniProtKB (UniProt Consortium) | release 2026_03 | 2026-09-23 | CC BY 4.0 |
+| `Q4D3W2.json`, `Q4QGX0.json` | UniProtKB (UniProt Consortium), a *T. cruzi* and an *L. major* entry with PHI-base records | release 2026_03 | 2026-09-27 | CC BY 4.0 |
+| `phi_base/*.json` | PHI-base 5 (Zenodo record 21196331), the curation sessions naming Q4D3W2, H2DQH1 and Q4QGX0, as split by `sabueso.tools.db.phi_base.split_release` | 5.6 | 2026-09-27 | CC BY 4.0 (cite PHI-base; Urban et al., Nucleic Acids Res. 2025) |
 | `uniprot_search/*.json` | UniProtKB search responses; refreshed with lineage and gene-locus cross-references, and the Trichomonas vaginalis search added, on 2026-09-25 (same release, same results) | release 2026_03 | 2026-09-23 | CC BY 4.0 |
 | `alphafold/*.json` | AlphaFold DB (Google DeepMind and EMBL-EBI), prediction API responses | model version 6 | 2026-09-25 | CC BY 4.0 |
 | `ncbi_taxonomy/*.json` | NCBI Taxonomy (NCBI/NLM), Datasets API taxon records, trimmed to id, name, rank, lineage and BLAST name | Datasets API 18.37.0 | 2026-09-25 | US public domain (NLM policy) |

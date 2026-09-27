@@ -18,6 +18,7 @@ from sabueso.tools.db import (
     ncbi_taxonomy,
     pdb_ccd,
     pdbe_kb,
+    phi_base,
     pubchem,
     pubchem_bioassay,
     rcsb,
@@ -38,6 +39,9 @@ CALLS = {
     ),
     "ncbi_gene.get_gene": lambda: ncbi_gene.get_gene(
         "3550449", client=ncbi_gene.FixtureNCBIGeneClient("temp_data")
+    ),
+    "phi_base.get_phenotypes": lambda: phi_base.get_phenotypes(
+        "Q4D3W2", client=phi_base.FixturePHIBaseClient("temp_data")
     ),
     "ncbi_taxonomy.get_taxon": lambda: ncbi_taxonomy.get_taxon(
         "5693", client=ncbi_taxonomy.FixtureNCBITaxonomyClient("temp_data")
@@ -105,6 +109,7 @@ def test_the_envelope_carries_the_release_where_the_source_states_it():
     assert entry["record"]["primaryAccession"] == "P60174"
     assert CALLS["chembl.get_bioactivities"]()["version"] == "ChEMBL_37"
     assert CALLS["rcsb.get_entry"]()["query"] == {"pdb_id": "1SUX"}
+    assert CALLS["phi_base.get_phenotypes"]()["version"] == "5.6"
 
 
 def test_the_same_clients_build_cards_and_answer_queries():

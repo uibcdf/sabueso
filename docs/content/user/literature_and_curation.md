@@ -101,6 +101,14 @@ card.add_literature_assertion(
   another statement.
 - **Knowledge state.** A field nothing has been curated for is `not_queried` from
   `Literature`, never `not_stated`: nobody has read the literature for it yet.
+
+For pathogen genes, databases also state some of this.
+`sabueso.resolve(..., phi_base=True)` adds what PHI-base curates about mutants of the
+gene (`annotations.pathogen_phenotypes`): for example "Lethal" for a knockout, or
+"reduced virulence" on a host. Each item comes with its whole genotype, the pathogen and
+host strains, the publication and the PHI-base release. The first use downloads a
+PHI-base release, about 12 MB, and keeps its index in memory. To keep it between
+sessions, set `$SABUESO_CACHE_DIR`.
 - **Quantities.** Give the unit (`"0.825 kDa"`, `puw.quantity(825, "Da")`). The value is
   kept as written and compared at the precision it was stated with.
 - **Relationships.** `card.add_literature_relationship(predicate, object_ref,

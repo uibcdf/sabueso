@@ -145,6 +145,28 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: gene id, symbol, locus tag, taxon, update date, and the UniProtKB accessions (Swiss-Prot and TrEMBL) of the gene's products. NCBI's lists can include secondary accessions; only the entries compared are matched.
 - **Notes**: asked only for candidate pairs whose loci are in databases that do not overlap; NCBI's rate limit (3 requests per second without a key) is not approached. Licence: US public domain (NLM policy).
 
+### PHI-base — phenotypes of pathogen mutants
+- **Status**: implemented as an enricher of `resolve_protein_card(..., phi_base=True)` (uibcdf/sabueso#83)
+- **Access**:
+  - `OnlinePHIBaseClient`: versioned PHI-base 5 releases on Zenodo (concept record 10722192), downloaded once and checked against their MD5, then indexed by UniProt accession. The index is kept in memory for the process, or written to a cache directory only when one is given (`cache_dir=`, `$SABUESO_CACHE_DIR`; `CACHE_POLICY.md`);
+  - `FixturePHIBaseClient` reads saved sessions from `temp_data/phi_base/`;
+  - `tools.db.phi_base.get_phenotypes`.
+- **Quality**: green for the listed coverage.
+  - Verified live on release 5.6 (2026-09-27): about 11,300 genes, 339 pathogen species and 5,747 curation sessions.
+  - First load about 30 s, with a peak of about 750 MB while parsing. The cache on disk is 76 MB; later reads take about 1 s.
+- **Coverage**: `annotations.pathogen_phenotypes`, one item per pathogen-host interaction, pathogen or gene-for-gene phenotype whose pathogen genotype includes the gene. Each item holds:
+  - PHIPO term, extensions and high-level terms;
+  - the whole genotype;
+  - pathogen and host (taxon, strain);
+  - diseases, conditions and method (PHI-base's `evidence_code`);
+  - PHI ids, publication and the curator's comment.
+
+  GO, interaction and expression annotations are not mapped.
+- **Notes**:
+  - PHIPO terms keep their ids; their labels are not fetched, and `high_level_terms` gives PHI-base's readable summary.
+  - Coverage of trypanosomatids is small (11 *T. cruzi* genes in 5.6), and TcTIM is not in it. That absence is `not_stated`, never evidence.
+  - Licence: CC BY 4.0 (cite PHI-base and the release).
+
 ### AlphaFold DB — predicted structures
 - **Status**: implemented as an enricher of `resolve_protein_card(..., predicted_structures=True)` (uibcdf/sabueso#57)
 - **Access**: AlphaFold DB API `prediction/<accession>` (`OnlineAlphaFoldClient`), saved responses (`FixtureAlphaFoldClient`, `temp_data/alphafold/`), and `tools.db.alphafold.get_prediction`

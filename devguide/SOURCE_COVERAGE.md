@@ -26,7 +26,7 @@ status. This document holds the reasoning across sources.
 | Disease association | protein, disease | human | UniProt DISEASE comments | disease → targets (#82, this wave) |
 | Variants | protein | human first | UniProt variants and mutagenesis | ClinVar, gnomAD (this wave) |
 | Pathways | protein | all | UniProt pathway (text), Rhea | Reactome (this wave) |
-| **Pathogen and organism context** | protein | pathogens | curation only (#60) | essentiality, stage expression and target prioritisation: this wave |
+| **Pathogen and organism context** | protein | pathogens | curation (#60), PHI-base | stage expression and screens (VEuPathDB), target prioritisation (TDR Targets): terms pending (#84) |
 | Literature | all | all | UniProt citations, human curation | automated extraction (later) |
 
 ## 2. The rubric
@@ -65,7 +65,7 @@ Each source is checked live, and the date is recorded:
 | DGIdb | drug–gene interactions | human | aggregated; each source keeps its terms | gene ids; drugs grouped by name normalisation | Its drug grouping merges by name, so a drug's identity would need re-anchoring |
 | ClinicalTrials.gov | trials | human | US government work; NLM asks credit | NCT id; interventions as text only | Only through NCT ids ChEMBL states (#81) |
 | TDR Targets | pathogen target prioritisation | NTD pathogens | not checked | not checked | Did not answer on 2026-09-27; recheck |
-| PHI-base | pathogen–host phenotypes | pathogens | not checked | not checked | Did not answer on 2026-09-27; recheck |
+| PHI-base | pathogen–host phenotypes of mutants | 339 pathogens, trypanosomatids included | CC BY 4.0 (Zenodo releases) | UniProt accession per gene | **In use** since 2026-09-27; its HTTPS site did not answer from our network, but the releases are on Zenodo |
 | VEuPathDB services | stage expression, RNAi/CRISPR phenotypes | eukaryotic pathogens | no licence statement found; a data release policy exists | VEuPathDB gene ids (in use, #54) | #60 step 2; terms to be asked of the providers |
 
 ### What wave 1 shows
@@ -75,9 +75,10 @@ Each source is checked live, and the date is recorded:
   or protein identifiers. Associations are per gene, so they reach a protein card only
   through the gene's stated products.
 - **Pathogen-target knowledge is where the gap is.** None of the human sources covers a
-  parasite protein. The sources that do (VEuPathDB phenotypes, TDR Targets, PHI-base)
-  are the least clear on terms or availability. They need a direct check with their
-  providers before any connector.
+  parasite protein. Of the sources that do, PHI-base is open (CC BY 4.0) and now in use.
+  VEuPathDB and TDR Targets are unclear on terms or access, and the maintainers will ask
+  them (#84). Meanwhile a connector may read them live, but nothing of theirs is
+  committed or redistributed.
 - **Integrated scores need care.** Open Targets and TCRD give scores and classes of
   their own. DISEASES keeps its evidence channels apart, which fits recording "who says
   this".

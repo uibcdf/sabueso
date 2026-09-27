@@ -18,6 +18,7 @@ from sabueso.tools.db.chembl import FixtureChEMBLClient
 from sabueso.tools.db.interpro import FixtureInterProClient
 from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
 from sabueso.tools.db.pdbe_kb import FixturePDBeKBClient
+from sabueso.tools.db.phi_base import FixturePHIBaseClient
 
 
 @pytest.fixture(scope="module")
@@ -31,6 +32,7 @@ def clients():
         pdbe_kb_client=FixturePDBeKBClient("temp_data"),
         interpro_client=FixtureInterProClient("temp_data"),
         taxonomy_client=FixtureNCBITaxonomyClient("temp_data"),
+        phi_base_client=FixturePHIBaseClient("temp_data"),
     )
 
 
@@ -62,6 +64,7 @@ def test_a_query_is_declared_and_normalized(query):
     assert sabueso.KnowledgeQuery.from_dict(query.to_dict()) == query
     # What the aspects ask of the sources is fixed by packet_aspects@1.
     assert query.options() == {
+        "phi_base": True,
         "taxonomy": True,
         "structures": "all",
         "interfaces": True,

@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 20, evaluating 12, queued 46, deferred 7, retired 3, out of scope 4.
+Summary: in use 21, evaluating 11, queued 46, deferred 7, retired 3, out of scope 4.
 
 ## In use
 
@@ -30,6 +30,7 @@ Summary: in use 20, evaluating 12, queued 46, deferred 7, retired 3, out of scop
 | [eggNOG](http://eggnog5.embl.de/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only, through UniProt (CC BY 4.0) | 2026-09-25 |
 | [NCBI Gene / RefSeq](https://www.ncbi.nlm.nih.gov/gene/) | Targets, sequence and basic pharmacology | via UniProt cross-references; Entrez E-utilities efetch (XML), no key, when resolve(..., ncbi_gene=True) | US public domain (NLM policy) | 2026-09-25 |
 | [VEuPathDB gene identifiers](https://veupathdb.org/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only | 2026-09-25 |
+| [PHI-base](https://phi-base.org/) | Organism, orthology and biological context | Versioned releases of PHI-base 5 on Zenodo (JSON), downloaded once, checked against their MD5 and split per UniProt accession in the local cache, when resolve(..., phi_base=True) | CC BY 4.0 (cite PHI-base and the release) | 2026-09-27 |
 | [BindingDB](https://www.bindingdb.org/) | Binding affinity and experimental bioactivity | REST getLigandsByUniprots, no key; monomers anchored through UniChem | CC BY 3.0 (BindingDB curation) and CC BY-SA 3.0 (imported from ChEMBL); treated as CC BY-SA 3.0, since the REST records state no origin | 2026-09-25 |
 | [PubChem BioAssay](https://pubchem.ncbi.nlm.nih.gov/) | Binding affinity and experimental bioactivity | PUG REST (assays by protein, summaries, concise tables, compound InChIKeys) | US public domain (NLM policy); deposited data keeps its depositor terms (ChEMBL copies: CC BY-SA 3.0) | 2026-09-25 |
 | [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) | Organism, orthology and biological context | NCBI Datasets REST API, no key | US public domain (NLM policy) | 2026-09-25 |
@@ -38,7 +39,6 @@ Summary: in use 20, evaluating 12, queued 46, deferred 7, retired 3, out of scop
 
 | Resource | Category | What it would bring | Since |
 | --- | --- | --- | --- |
-| [PHI-base](https://phi-base.org/) | Organism, orthology and biological context | Pathogen–host interactions: genes whose mutation changes a pathogen's phenotype on its host. | 2026-09-27 |
 | [TDR Targets](https://tdrtargets.org/) | Organism, orthology and biological context | Target prioritisation for pathogens of neglected tropical diseases: essentiality, druggability, similarity to the host. | 2026-09-27 |
 | [ClinicalTrials.gov](https://clinicaltrials.gov/) | Target validation, genetics and functional networks | Registered clinical studies: interventions, conditions, phases and status. The clinical layer of the original plan (clinical trials of ligands). | 2026-01-31 |
 | [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/) | Target validation, genetics and functional networks | Human genomic variants and their clinical significance. | 2026-09-25 |

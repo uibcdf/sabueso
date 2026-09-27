@@ -805,3 +805,22 @@ uibcdf/sabueso#60. Four curated fields, before any connector (VEuPathDB is step 
   subcellular location, tissue specificity and pathway.
 - Free-text claims on these topics stay possible (#43).
 
+## PHI-base, and caching whole releases (2026-09-27)
+uibcdf/sabueso#83, the first source of the coverage plan's pathogen gap.
+- **Why PHI-base.** Its curated phenotypes of pathogen mutants are keyed by UniProt
+  accession, cover eukaryotic pathogens, and are CC BY 4.0 with versioned releases.
+- **Releases, not the web API.** PHI-base 5's web API is undocumented. Its releases on
+  Zenodo are versioned and checksummed, so the client uses them.
+- **Caching only where told.** The first release cache keeps the policy "Sabueso writes
+  only where it is told to". By default a release is indexed in memory for the
+  process. A cache directory (`cache_dir=`, `$SABUESO_CACHE_DIR`) keeps it on disk,
+  each curation session once (the first attempt, one file per gene, took 2.1 GB).
+- **One item per phenotype annotation, with the whole genotype.** A double mutant's
+  phenotype carries both alleles and is never read as the single gene's. Nothing is
+  classified: "Lethal" or "reduced virulence" is PHI-base's statement about a mutant in
+  an experiment.
+- **"evidence" stays Nextia's word.** PHI-base's `evidence_code` (how the phenotype was
+  observed) is kept as `method`.
+- **In packets,** the `biological_context` aspect asks PHI-base (`packet_aspects@1`, not
+  yet published).
+

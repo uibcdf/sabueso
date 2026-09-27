@@ -1,0 +1,201 @@
+{
+ "record": "21196331",
+ "sessions": [
+  {
+   "alleles": {
+    "Q4QGX0:00014f904fb22f27-1": {
+     "allele_type": "deletion",
+     "gene": "Leishmania major Q4QGX0",
+     "name": "C14DM\u0394",
+     "primary_identifier": "Q4QGX0:00014f904fb22f27-1",
+     "synonyms": []
+    },
+    "Q4QGX0:00014f904fb22f27-2": {
+     "allele_type": "wild type",
+     "gene": "Leishmania major Q4QGX0",
+     "name": "C14DM+",
+     "primary_identifier": "Q4QGX0:00014f904fb22f27-2",
+     "synonyms": []
+    }
+   },
+   "annotations": [
+    {
+     "checked": "yes",
+     "conditions": [],
+     "creation_date": "2014-11-01",
+     "curator": {
+      "community_curated": false
+     },
+     "evidence_code": "",
+     "extension": [
+      {
+       "rangeDisplayName": "reduced virulence",
+       "rangeType": "Ontology",
+       "rangeValue": "PHIPO:0000015",
+       "relation": "infective_ability"
+      }
+     ],
+     "figure": "",
+     "high_level_terms": [
+      "Reduced virulence"
+     ],
+     "metagenotype": "00014f904fb22f27-metagenotype-1",
+     "phi4_id": [
+      "PHI:3258"
+     ],
+     "publication": "PMID:25340392",
+     "status": "new",
+     "submitter_comment": "The mutants showed severely reduced virulence in mice but were highly resistant to itraconazole and amphotericin B, two drugs targeting sterol synthesis.",
+     "term": "PHIPO:0000001",
+     "type": "pathogen_host_interaction_phenotype"
+    },
+    {
+     "checked": "yes",
+     "conditions": [],
+     "creation_date": "2014-11-01",
+     "curator": {
+      "community_curated": false
+     },
+     "evidence_code": "",
+     "extension": [],
+     "figure": "",
+     "genotype": "00014f904fb22f27-genotype-1",
+     "high_level_terms": [],
+     "phi4_id": [
+      "PHI:3258"
+     ],
+     "publication": "PMID:25340392",
+     "status": "new",
+     "submitter_comment": "The mutants showed severely reduced virulence in mice but were highly resistant to itraconazole and amphotericin B, two drugs targeting sterol synthesis.",
+     "term": "PHIPO:0000405",
+     "type": "pathogen_phenotype"
+    },
+    {
+     "checked": "yes",
+     "conditions": [],
+     "creation_date": "2014-11-01",
+     "curator": {
+      "community_curated": false
+     },
+     "evidence_code": "",
+     "extension": [],
+     "figure": "",
+     "high_level_terms": [],
+     "metagenotype": "00014f904fb22f27-metagenotype-2",
+     "phi4_id": [
+      "PHI:3258"
+     ],
+     "publication": "PMID:25340392",
+     "status": "new",
+     "term": "PHIDO:0000214",
+     "type": "disease_name"
+    }
+   ],
+   "genes": {
+    "Leishmania major Q4QGX0": {
+     "organism": "Leishmania major",
+     "phig_id": "PHIG:4362",
+     "uniprot_data": {
+      "dbref_gene_id": "5649863",
+      "ensembl_gene_id": [],
+      "ensembl_sequence_id": [],
+      "name": "LMJF_11_1100",
+      "product": "Putative lanosterol 14-alpha-demethylase",
+      "strain": "MHOM/IL/81/Friedlin",
+      "uniprot_id": "Q4QGX0"
+     },
+     "uniquename": "Q4QGX0"
+    }
+   },
+   "genotypes": {
+    "00014f904fb22f27-genotype-1": {
+     "loci": [
+      [
+       {
+        "id": "Q4QGX0:00014f904fb22f27-1"
+       }
+      ]
+     ],
+     "organism_strain": "lv39",
+     "organism_taxonid": 5664
+    },
+    "00014f904fb22f27-genotype-2": {
+     "loci": [
+      [
+       {
+        "expression": "Not assayed",
+        "id": "Q4QGX0:00014f904fb22f27-2"
+       }
+      ]
+     ],
+     "organism_strain": "lv39",
+     "organism_taxonid": 5664
+    },
+    "Mus-musculus-wild-type-genotype-BALB/c": {
+     "loci": [],
+     "organism_strain": "BALB/c",
+     "organism_taxonid": 10090
+    }
+   },
+   "metadata": {
+    "accepted_timestamp": "2014-11-01 10:00:00",
+    "annotation_mode": "standard",
+    "annotation_status": "APPROVED",
+    "annotation_status_datestamp": "2014-11-01 14:00:00",
+    "approval_in_progress_timestamp": "2014-11-01 13:00:00",
+    "approved_timestamp": "2014-11-01 14:00:00",
+    "canto_session": "00014f904fb22f27",
+    "curation_accepted_date": "2014-11-01 10:00:00",
+    "curation_in_progress_timestamp": "2014-11-01 11:00:00",
+    "curation_pub_id": "PMID:25340392",
+    "curator_role": "Molecular Connections",
+    "first_approved_timestamp": "2014-11-01 14:00:00",
+    "has_community_curation": false,
+    "needs_approval_timestamp": "2014-11-01 12:00:00",
+    "session_created_timestamp": "2014-11-01 09:00:00",
+    "session_first_submitted_timestamp": "2014-11-01 12:00:00",
+    "session_genes_count": "1",
+    "session_term_suggestions_count": "0",
+    "session_unknown_conditions_count": "0",
+    "term_suggestion_count": "0",
+    "unknown_conditions_count": "0"
+   },
+   "metagenotypes": {
+    "00014f904fb22f27-metagenotype-1": {
+     "host_genotype": "Mus-musculus-wild-type-genotype-BALB/c",
+     "pathogen_genotype": "00014f904fb22f27-genotype-1",
+     "type": "pathogen-host"
+    },
+    "00014f904fb22f27-metagenotype-2": {
+     "host_genotype": "Mus-musculus-wild-type-genotype-BALB/c",
+     "pathogen_genotype": "00014f904fb22f27-genotype-2",
+     "type": "pathogen-host"
+    }
+   },
+   "organisms": {
+    "10090": {
+     "full_name": "Mus musculus",
+     "role": "host"
+    },
+    "5664": {
+     "full_name": "Leishmania major",
+     "role": "pathogen"
+    }
+   },
+   "publications": {
+    "PMID:25340392": {
+     "pubmed_data": {
+      "author": "Xu",
+      "issue": "10",
+      "journal_abbr": "PLoS Pathog",
+      "pages": "e1004427",
+      "volume": "10",
+      "year": "2014"
+     }
+    }
+   },
+   "session": "00014f904fb22f27"
+  }
+ ],
+ "version": "5.6"
+}

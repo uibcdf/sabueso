@@ -73,6 +73,8 @@ def resolve_protein_card(
     pubchem_bioassay_client: Any | None = None,
     ncbi_gene: bool = False,
     ncbi_gene_client: Any | None = None,
+    phi_base: bool = False,
+    phi_base_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -105,6 +107,10 @@ def resolve_protein_card(
     ``ncbi_gene`` lets the resolution's identity audit ask NCBI Gene about two
     candidates that state their gene in different databases: NCBI Gene lists the UniProt
     entries of a gene's products (#69).
+
+    ``phi_base`` adds the phenotypes PHI-base curates for mutants of the gene, alone or
+    on a host (``annotations.pathogen_phenotypes``). The first use downloads a PHI-base
+    release into the local cache (``sabueso.tools.db.phi_base``).
     """
     if ncbi_gene:
         import copy
@@ -567,6 +573,35 @@ def resolve_protein_card(
             enrichments.append({**record, "status": "error", "detail": str(exc)})
         else:
             mapped = map_family_sites(response, response.get("retrieved_at", ""))
+            mappings.append(mapped)
+            enrichments.append(
+                {
+                    **record,
+                    "status": "added",
+                    "version": response.get("version"),
+                    "count": len(mapped["source_assertions"]),
+                }
+            )
+
+    if phi_base:
+        from sabueso.mappings.phi_base import map_phenotypes
+        from sabueso.tools.db.phi_base import OnlinePHIBaseClient
+
+        client = phi_base_client or OnlinePHIBaseClient()
+        record = {"source": "PHI-base", "identifier": anchor}
+        try:
+            response = client.phenotypes(anchor)
+        except RecordNotFoundError as exc:
+            enrichments.append({**record, "status": "not_found", "detail": str(exc)})
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        else:
+            mapped = map_phenotypes(
+                response["sessions"],
+                anchor,
+                response.get("retrieved_at", ""),
+                response.get("version"),
+            )
             mappings.append(mapped)
             enrichments.append(
                 {

@@ -78,6 +78,7 @@ def fixture_cards() -> List[dict]:
     from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
     from sabueso.tools.db.pdb_ccd import FixtureCCDClient
     from sabueso.tools.db.pdbe_kb import FixturePDBeKBClient
+    from sabueso.tools.db.phi_base import FixturePHIBaseClient
     from sabueso.tools.db.pubchem import create_compound_card_from_file
     from sabueso.tools.db.pubchem_bioassay import FixturePubChemBioAssayClient
     from sabueso.tools.db.stringdb import FixtureStringClient
@@ -177,6 +178,55 @@ def fixture_cards() -> List[dict]:
         hstim.add_literature_claim(
             "interface", "shape", "pubmed:1", "shape", about=["residues:14"]
         )
+        # Biological context (#60): every key of each curated field.
+        for field_path, item in (
+            (
+                "annotations.stage_expression",
+                {
+                    "stage": "s",
+                    "observation": "o",
+                    "host": "h",
+                    "method": "m",
+                    "level": "l",
+                    "note": "n",
+                },
+            ),
+            (
+                "annotations.essentiality",
+                {
+                    "method": "m",
+                    "phenotype": "p",
+                    "stage": "s",
+                    "host": "h",
+                    "condition": "c",
+                    "call": "c",
+                    "note": "n",
+                },
+            ),
+            (
+                "annotations.accessibility",
+                {
+                    "compartment": "c",
+                    "exposure": "e",
+                    "stage": "s",
+                    "host": "h",
+                    "method": "m",
+                    "note": "n",
+                },
+            ),
+            (
+                "annotations.metabolic_role",
+                {
+                    "pathway": "p",
+                    "role": "r",
+                    "stage": "s",
+                    "host": "h",
+                    "method": "m",
+                    "note": "n",
+                },
+            ),
+        ):
+            hstim.add_literature_assertion(field_path, item, "pubmed:1", "shape")
         hstim.add_literature_engagement(
             {"inchikey": "XBNHRNFODJOFRU-UHFFFAOYSA-N", "records": ["chembl:CHEMBL1"]},
             [{"position": 12, "residue": "N"}],
@@ -195,7 +245,14 @@ def fixture_cards() -> List[dict]:
         compound = create_compound_card_from_file(
             ROOT / "temp_data" / "5978.json", "2026-09-24"
         )
-    return [c.to_dict() for c in (tctim, hstim, molecule, compound)]
+        # A pathogen protein with PHI-base phenotypes, alone and on a host (0.3.6).
+        pathogen, _ = sabueso.resolve(
+            "Q4QGX0",
+            resolver=resolver,
+            phi_base=True,
+            phi_base_client=FixturePHIBaseClient(data),
+        )
+    return [c.to_dict() for c in (tctim, hstim, molecule, compound, pathogen)]
 
 
 def current_shape() -> List[str]:

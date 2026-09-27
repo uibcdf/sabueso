@@ -1,0 +1,137 @@
+{
+ "record": "21196331",
+ "sessions": [
+  {
+   "alleles": {
+    "Q4D3W2:76f4d34e4a91ba75-1": {
+     "allele_type": "deletion",
+     "gene": "Trypanosoma cruzi Q4D3W2",
+     "name": "DHOD\u0394",
+     "primary_identifier": "Q4D3W2:76f4d34e4a91ba75-1",
+     "synonyms": []
+    },
+    "Q4D3W2:76f4d34e4a91ba75-2": {
+     "allele_type": "wild type",
+     "gene": "Trypanosoma cruzi Q4D3W2",
+     "name": "DHOD+",
+     "primary_identifier": "Q4D3W2:76f4d34e4a91ba75-2",
+     "synonyms": []
+    }
+   },
+   "annotations": [
+    {
+     "checked": "yes",
+     "conditions": [],
+     "creation_date": "2013-01-01",
+     "curator": {
+      "community_curated": false
+     },
+     "evidence_code": "",
+     "extension": [],
+     "figure": "",
+     "genotype": "76f4d34e4a91ba75-genotype-1",
+     "high_level_terms": [
+      "Lethal"
+     ],
+     "phi4_id": [
+      "PHI:2575"
+     ],
+     "publication": "PMID:15696374",
+     "status": "new",
+     "submitter_comment": "DHOD-knockout T. cruzi did not express the enzyme protein and could not survive even in the presence of pyrimidine nu-cleosides, substrates for the potentially active salvage pathway, suggesting a vital role of fumarate reduc-tase activity in the regulation of cellular redox balance.",
+     "term": "PHIPO:0000513",
+     "type": "pathogen_phenotype"
+    }
+   ],
+   "genes": {
+    "Trypanosoma cruzi Q4D3W2": {
+     "organism": "Trypanosoma cruzi",
+     "phig_id": "PHIG:4551",
+     "uniprot_data": {
+      "dbref_gene_id": "3539620",
+      "ensembl_gene_id": [
+       "Tc00.1047053508375.50"
+      ],
+      "ensembl_sequence_id": [
+       "EAN87213"
+      ],
+      "name": "pyr4",
+      "product": "Dihydroorotate dehydrogenase (fumarate)",
+      "strain": "CL Brener",
+      "uniprot_id": "Q4D3W2"
+     },
+     "uniquename": "Q4D3W2"
+    }
+   },
+   "genotypes": {
+    "76f4d34e4a91ba75-genotype-1": {
+     "loci": [
+      [
+       {
+        "id": "Q4D3W2:76f4d34e4a91ba75-1"
+       }
+      ]
+     ],
+     "organism_strain": "Tulahuen",
+     "organism_taxonid": 5693
+    },
+    "76f4d34e4a91ba75-genotype-2": {
+     "loci": [
+      [
+       {
+        "expression": "Not assayed",
+        "id": "Q4D3W2:76f4d34e4a91ba75-2"
+       }
+      ]
+     ],
+     "organism_strain": "Tulahuen",
+     "organism_taxonid": 5693
+    }
+   },
+   "metadata": {
+    "accepted_timestamp": "2013-01-01 10:00:00",
+    "annotation_mode": "standard",
+    "annotation_status": "APPROVED",
+    "annotation_status_datestamp": "2013-01-01 14:00:00",
+    "approval_in_progress_timestamp": "2013-01-01 13:00:00",
+    "approved_timestamp": "2013-01-01 14:00:00",
+    "canto_session": "76f4d34e4a91ba75",
+    "curation_accepted_date": "2013-01-01 10:00:00",
+    "curation_in_progress_timestamp": "2013-01-01 11:00:00",
+    "curation_pub_id": "PMID:15696374",
+    "curator_role": "Molecular Connections",
+    "first_approved_timestamp": "2013-01-01 14:00:00",
+    "has_community_curation": false,
+    "needs_approval_timestamp": "2013-01-01 12:00:00",
+    "session_created_timestamp": "2013-01-01 09:00:00",
+    "session_first_submitted_timestamp": "2013-01-01 12:00:00",
+    "session_genes_count": "1",
+    "session_term_suggestions_count": "0",
+    "session_unknown_conditions_count": "0",
+    "term_suggestion_count": "0",
+    "unknown_conditions_count": "0"
+   },
+   "metagenotypes": {},
+   "organisms": {
+    "5693": {
+     "full_name": "Trypanosoma cruzi",
+     "role": "pathogen"
+    }
+   },
+   "publications": {
+    "PMID:15696374": {
+     "pubmed_data": {
+      "author": "Annoura",
+      "issue": "1",
+      "journal_abbr": "J Mol Evol",
+      "pages": "113-27",
+      "volume": "60",
+      "year": "2005"
+     }
+    }
+   },
+   "session": "76f4d34e4a91ba75"
+  }
+ ],
+ "version": "5.6"
+}

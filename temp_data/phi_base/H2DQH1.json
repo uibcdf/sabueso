@@ -1,0 +1,416 @@
+{
+ "record": "21196331",
+ "sessions": [
+  {
+   "alleles": {
+    "H2DQH1:01583537c127b7f6-1": {
+     "allele_type": "deletion",
+     "gene": "Trypanosoma cruzi H2DQH1",
+     "name": "CUB\u0394",
+     "primary_identifier": "H2DQH1:01583537c127b7f6-1",
+     "synonyms": []
+    },
+    "H2DQH1:01583537c127b7f6-2": {
+     "allele_type": "wild type",
+     "gene": "Trypanosoma cruzi H2DQH1",
+     "name": "CUB+",
+     "primary_identifier": "H2DQH1:01583537c127b7f6-2",
+     "synonyms": []
+    }
+   },
+   "annotations": [
+    {
+     "checked": "yes",
+     "conditions": [],
+     "creation_date": "2013-01-01",
+     "curator": {
+      "community_curated": false
+     },
+     "evidence_code": "",
+     "extension": [],
+     "figure": "",
+     "genotype": "01583537c127b7f6-genotype-1",
+     "high_level_terms": [
+      "Lethal"
+     ],
+     "phi4_id": [
+      "PHI:2573"
+     ],
+     "publication": "PMID:8813691",
+     "status": "new",
+     "submitter_comment": "Individually either CUB gene is dispensable, both can be deleted only when an additional copy is expressed from an alternative locus. It is essential for the viability of the pathogen",
+     "term": "PHIPO:0000513",
+     "type": "pathogen_phenotype"
+    }
+   ],
+   "genes": {
+    "Trypanosoma cruzi H2DQH1": {
+     "organism": "Trypanosoma cruzi",
+     "phig_id": "PHIG:4082",
+     "uniprot_data": {
+      "dbref_gene_id": null,
+      "ensembl_gene_id": null,
+      "ensembl_sequence_id": null,
+      "name": null,
+      "product": null,
+      "strain": null,
+      "uniprot_id": "H2DQH1"
+     },
+     "uniquename": "H2DQH1"
+    }
+   },
+   "genotypes": {
+    "01583537c127b7f6-genotype-1": {
+     "loci": [
+      [
+       {
+        "id": "H2DQH1:01583537c127b7f6-1"
+       }
+      ]
+     ],
+     "organism_strain": "CL Brener",
+     "organism_taxonid": 5693
+    },
+    "01583537c127b7f6-genotype-2": {
+     "loci": [
+      [
+       {
+        "expression": "Not assayed",
+        "id": "H2DQH1:01583537c127b7f6-2"
+       }
+      ]
+     ],
+     "organism_strain": "CL Brener",
+     "organism_taxonid": 5693
+    }
+   },
+   "metadata": {
+    "accepted_timestamp": "2013-01-01 10:00:00",
+    "annotation_mode": "standard",
+    "annotation_status": "APPROVED",
+    "annotation_status_datestamp": "2013-01-01 14:00:00",
+    "approval_in_progress_timestamp": "2013-01-01 13:00:00",
+    "approved_timestamp": "2013-01-01 14:00:00",
+    "canto_session": "01583537c127b7f6",
+    "curation_accepted_date": "2013-01-01 10:00:00",
+    "curation_in_progress_timestamp": "2013-01-01 11:00:00",
+    "curation_pub_id": "PMID:8813691",
+    "curator_role": "Molecular Connections",
+    "first_approved_timestamp": "2013-01-01 14:00:00",
+    "has_community_curation": false,
+    "needs_approval_timestamp": "2013-01-01 12:00:00",
+    "session_created_timestamp": "2013-01-01 09:00:00",
+    "session_first_submitted_timestamp": "2013-01-01 12:00:00",
+    "session_genes_count": "1",
+    "session_term_suggestions_count": "0",
+    "session_unknown_conditions_count": "0",
+    "term_suggestion_count": "0",
+    "unknown_conditions_count": "0"
+   },
+   "metagenotypes": {},
+   "organisms": {
+    "5693": {
+     "full_name": "Trypanosoma cruzi",
+     "role": "pathogen"
+    }
+   },
+   "publications": {
+    "PMID:8813691": {
+     "pubmed_data": {
+      "author": "Ajioka",
+      "issue": "1-2",
+      "journal_abbr": "Mol Biochem Parasitol",
+      "pages": "217-25",
+      "volume": "78",
+      "year": "1996"
+     }
+    }
+   },
+   "session": "01583537c127b7f6"
+  },
+  {
+   "alleles": {
+    "H2DQH1:5f9d8ca770004032-1": {
+     "allele_type": "deletion",
+     "gene": "Trypanosoma cruzi H2DQH1",
+     "name": "CUB\u0394",
+     "primary_identifier": "H2DQH1:5f9d8ca770004032-1",
+     "synonyms": []
+    },
+    "H2DQH1:5f9d8ca770004032-2": {
+     "allele_type": "wild type",
+     "gene": "Trypanosoma cruzi H2DQH1",
+     "name": "CUB+",
+     "primary_identifier": "H2DQH1:5f9d8ca770004032-2",
+     "synonyms": []
+    }
+   },
+   "annotations": [
+    {
+     "checked": "yes",
+     "conditions": [],
+     "creation_date": "2013-01-01",
+     "curator": {
+      "community_curated": false
+     },
+     "evidence_code": "",
+     "extension": [
+      {
+       "rangeDisplayName": "reduced virulence",
+       "rangeType": "Ontology",
+       "rangeValue": "PHIPO:0000015",
+       "relation": "infective_ability"
+      }
+     ],
+     "figure": "",
+     "high_level_terms": [
+      "Reduced virulence"
+     ],
+     "metagenotype": "5f9d8ca770004032-metagenotype-1",
+     "phi4_id": [
+      "PHI:2576"
+     ],
+     "publication": "PMID:17624327",
+     "status": "new",
+     "submitter_comment": "After targeted deletion, a clone (TulCub8) was derived where one of the two alleles was disrupted. This clone displayed a sharp and stable loss of virulence for mice.",
+     "term": "PHIPO:0000001",
+     "type": "pathogen_host_interaction_phenotype"
+    },
+    {
+     "checked": "yes",
+     "conditions": [],
+     "creation_date": "2013-01-01",
+     "curator": {
+      "community_curated": false
+     },
+     "evidence_code": "",
+     "extension": [],
+     "figure": "",
+     "genotype": "5f9d8ca770004032-genotype-1",
+     "high_level_terms": [
+      "Lethal"
+     ],
+     "phi4_id": [
+      "PHI:2576"
+     ],
+     "publication": "PMID:17624327",
+     "status": "new",
+     "submitter_comment": "After targeted deletion, a clone (TulCub8) was derived where one of the two alleles was disrupted. This clone displayed a sharp and stable loss of virulence for mice.",
+     "term": "PHIPO:0000513",
+     "type": "pathogen_phenotype"
+    },
+    {
+     "checked": "yes",
+     "conditions": [],
+     "creation_date": "2013-01-01",
+     "curator": {
+      "community_curated": false
+     },
+     "evidence_code": "",
+     "extension": [],
+     "figure": "",
+     "genotype": "5f9d8ca770004032-genotype-1",
+     "high_level_terms": [],
+     "phi4_id": [
+      "PHI:2576"
+     ],
+     "publication": "PMID:17624327",
+     "status": "new",
+     "submitter_comment": "After targeted deletion, a clone (TulCub8) was derived where one of the two alleles was disrupted. This clone displayed a sharp and stable loss of virulence for mice.",
+     "term": "PHIPO:0000974",
+     "type": "pathogen_phenotype"
+    },
+    {
+     "checked": "yes",
+     "conditions": [],
+     "creation_date": "2013-01-01",
+     "curator": {
+      "community_curated": false
+     },
+     "evidence_code": "",
+     "extension": [
+      {
+       "rangeDisplayName": "reduced virulence",
+       "rangeType": "Ontology",
+       "rangeValue": "PHIPO:0000015",
+       "relation": "infective_ability"
+      }
+     ],
+     "figure": "",
+     "high_level_terms": [
+      "Reduced virulence"
+     ],
+     "metagenotype": "5f9d8ca770004032-metagenotype-2",
+     "phi4_id": [
+      "PHI:2576"
+     ],
+     "publication": "PMID:17624327",
+     "status": "new",
+     "submitter_comment": "After targeted deletion, a clone (TulCub8) was derived where one of the two alleles was disrupted. This clone displayed a sharp and stable loss of virulence for mice.",
+     "term": "PHIPO:0000001",
+     "type": "pathogen_host_interaction_phenotype"
+    },
+    {
+     "checked": "yes",
+     "conditions": [],
+     "creation_date": "2013-01-01",
+     "curator": {
+      "community_curated": false
+     },
+     "evidence_code": "",
+     "extension": [],
+     "figure": "",
+     "high_level_terms": [],
+     "metagenotype": "5f9d8ca770004032-metagenotype-3",
+     "phi4_id": [
+      "PHI:2576"
+     ],
+     "publication": "PMID:17624327",
+     "status": "new",
+     "term": "PHIDO:0000078",
+     "type": "disease_name"
+    },
+    {
+     "checked": "yes",
+     "conditions": [],
+     "creation_date": "2013-01-01",
+     "curator": {
+      "community_curated": false
+     },
+     "evidence_code": "",
+     "extension": [],
+     "figure": "",
+     "high_level_terms": [],
+     "metagenotype": "5f9d8ca770004032-metagenotype-4",
+     "phi4_id": [
+      "PHI:2576"
+     ],
+     "publication": "PMID:17624327",
+     "status": "new",
+     "term": "PHIDO:0000078",
+     "type": "disease_name"
+    }
+   ],
+   "genes": {
+    "Trypanosoma cruzi H2DQH1": {
+     "organism": "Trypanosoma cruzi",
+     "phig_id": "PHIG:4082",
+     "uniprot_data": {
+      "dbref_gene_id": null,
+      "ensembl_gene_id": null,
+      "ensembl_sequence_id": null,
+      "name": null,
+      "product": null,
+      "strain": null,
+      "uniprot_id": "H2DQH1"
+     },
+     "uniquename": "H2DQH1"
+    }
+   },
+   "genotypes": {
+    "5f9d8ca770004032-genotype-1": {
+     "loci": [
+      [
+       {
+        "id": "H2DQH1:5f9d8ca770004032-1"
+       }
+      ]
+     ],
+     "organism_strain": "Tulahuen",
+     "organism_taxonid": 5693
+    },
+    "5f9d8ca770004032-genotype-2": {
+     "loci": [
+      [
+       {
+        "expression": "Not assayed",
+        "id": "H2DQH1:5f9d8ca770004032-2"
+       }
+      ]
+     ],
+     "organism_strain": "Tulahuen",
+     "organism_taxonid": 5693
+    },
+    "Mus-musculus-wild-type-genotype-BALB/c": {
+     "loci": [],
+     "organism_strain": "BALB/c",
+     "organism_taxonid": 10090
+    },
+    "Mus-musculus-wild-type-genotype-SWR": {
+     "loci": [],
+     "organism_strain": "SWR",
+     "organism_taxonid": 10090
+    }
+   },
+   "metadata": {
+    "accepted_timestamp": "2013-01-01 10:00:00",
+    "annotation_mode": "standard",
+    "annotation_status": "APPROVED",
+    "annotation_status_datestamp": "2013-01-01 14:00:00",
+    "approval_in_progress_timestamp": "2013-01-01 13:00:00",
+    "approved_timestamp": "2013-01-01 14:00:00",
+    "canto_session": "5f9d8ca770004032",
+    "curation_accepted_date": "2013-01-01 10:00:00",
+    "curation_in_progress_timestamp": "2013-01-01 11:00:00",
+    "curation_pub_id": "PMID:17624327",
+    "curator_role": "Molecular Connections",
+    "first_approved_timestamp": "2013-01-01 14:00:00",
+    "has_community_curation": false,
+    "needs_approval_timestamp": "2013-01-01 12:00:00",
+    "session_created_timestamp": "2013-01-01 09:00:00",
+    "session_first_submitted_timestamp": "2013-01-01 12:00:00",
+    "session_genes_count": "1",
+    "session_term_suggestions_count": "0",
+    "session_unknown_conditions_count": "0",
+    "term_suggestion_count": "0",
+    "unknown_conditions_count": "0"
+   },
+   "metagenotypes": {
+    "5f9d8ca770004032-metagenotype-1": {
+     "host_genotype": "Mus-musculus-wild-type-genotype-BALB/c",
+     "pathogen_genotype": "5f9d8ca770004032-genotype-1",
+     "type": "pathogen-host"
+    },
+    "5f9d8ca770004032-metagenotype-2": {
+     "host_genotype": "Mus-musculus-wild-type-genotype-SWR",
+     "pathogen_genotype": "5f9d8ca770004032-genotype-1",
+     "type": "pathogen-host"
+    },
+    "5f9d8ca770004032-metagenotype-3": {
+     "host_genotype": "Mus-musculus-wild-type-genotype-BALB/c",
+     "pathogen_genotype": "5f9d8ca770004032-genotype-2",
+     "type": "pathogen-host"
+    },
+    "5f9d8ca770004032-metagenotype-4": {
+     "host_genotype": "Mus-musculus-wild-type-genotype-SWR",
+     "pathogen_genotype": "5f9d8ca770004032-genotype-2",
+     "type": "pathogen-host"
+    }
+   },
+   "organisms": {
+    "10090": {
+     "full_name": "Mus musculus",
+     "role": "host"
+    },
+    "5693": {
+     "full_name": "Trypanosoma cruzi",
+     "role": "pathogen"
+    }
+   },
+   "publications": {
+    "PMID:17624327": {
+     "pubmed_data": {
+      "author": "Barrio",
+      "issue": "4",
+      "journal_abbr": "Exp Parasitol",
+      "pages": "382-9",
+      "volume": "117",
+      "year": "2007"
+     }
+    }
+   },
+   "session": "5f9d8ca770004032"
+  }
+ ],
+ "version": "5.6"
+}

@@ -11,7 +11,9 @@ Sabueso has three public layers:
 Each module holds the source's clients and its public `get_*` functions:
 - `uniprot`, `rcsb`, `pdb_ccd`, `pdbe_kb`, `interpro`, `alphafold`;
 - `chembl`, `bindingdb`, `pubchem`, `pubchem_bioassay`, `unichem`;
-- `stringdb`, `ncbi_taxonomy`, `ncbi_gene`.
+- `stringdb`, `ncbi_taxonomy`, `ncbi_gene`;
+- `phi_base`, whose online client works on versioned releases rather than an API
+  (`CACHE_POLICY.md`).
 Card building uses the same clients, so there is one way to query each source. The
 registry (`sources/registry.yaml`) must list each module as `in_use`, and a test checks
 it.

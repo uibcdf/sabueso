@@ -85,8 +85,11 @@ schema:
     strands RCSB states for the entry in UniProt numbering, with the programs that
     assigned them. It also adds the biological context of a target, curated from
     publications (uibcdf/sabueso#60), namely annotations.stage_expression, essentiality,
-    accessibility and metabolic_role, items of stated text. All additive, so a 0.3.5
-    card is a valid 0.3.6 card without them.
+    accessibility and metabolic_role, items of stated text. It also adds
+    annotations.pathogen_phenotypes, the phenotypes PHI-base curates for mutants of a
+    pathogen gene, alone or on a host, each with its whole genotype, host, publication
+    and PHI-base release. All additive, so a 0.3.5 card is a valid 0.3.6 card without
+    them.
 card_base:
   meta:
     card_id:
@@ -511,6 +514,40 @@ protein_card:
         host: string
         method: string
         note: string
+      source_assertion_ids:
+      - string
+    pathogen_phenotypes:
+      value:
+      - annotation_type: string
+        phenotype: string
+        extensions:
+        - relation: string
+          term: string
+          label: string
+        high_level_terms:
+        - string
+        genotype:
+        - gene: string
+          allele: string
+          allele_type: string
+          expression: string
+        pathogen:
+          taxon_id: number
+          name: string
+          strain: string
+        host:
+          taxon_id: number
+          name: string
+          strain: string
+        diseases:
+        - string
+        conditions:
+        - string
+        method: string
+        phi_ids:
+        - string
+        publication: string
+        curator_comment: string
       source_assertion_ids:
       - string
   disease:

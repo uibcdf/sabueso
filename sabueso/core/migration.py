@@ -113,6 +113,7 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
         {"path": "annotations.essentiality", "filled_by": "curation"},
         {"path": "annotations.accessibility", "filled_by": "curation"},
         {"path": "annotations.metabolic_role", "filled_by": "curation"},
+        {"path": "annotations.pathogen_phenotypes", "filled_by": "phi_base"},
     ],
 }
 
@@ -189,6 +190,7 @@ def _enrichment_options(data: Dict[str, Any]) -> set:
             ("BindingDB", None): {"bindingdb"},
             ("PubChem BioAssay", None): {"pubchem_bioassay"},
             ("RCSB PDB", None): {"structures"},
+            ("PHI-base", None): {"phi_base"},
         }.get((source, kind), set())
     return options
 

@@ -201,6 +201,13 @@
   when a field is added.
 - **The packet contract may change** when uibcdf/moli#22 is agreed. Stored packets
   state their format (`knowledge_packet@1`), so a change is a new version.
+- **Whole-release sources** (#83). PHI-base's first load parses a 134 MB JSON: about
+  30 s and 750 MB of memory once per process without a cache directory. A larger
+  release, or several release-based sources, would need streaming parsing or a
+  prebuilt index. The cache directory is the mitigation today.
+- **Terms not stated** (#84). VEuPathDB and TDR Targets state no reuse terms that were
+  found. Until they answer, their data is read live only, never committed as fixtures or
+  redistributed.
 
 ## Open Questions
 - What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?
