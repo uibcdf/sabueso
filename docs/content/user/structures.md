@@ -19,7 +19,9 @@ structure:
 - the substitutions against the reference sequence (`N16D`, in UniProt numbering) and
   the modified residues;
 - ligands, flagged when the PDB declares them the subject of investigation;
-- per chain, the UniProt ranges that have coordinates (`observed`).
+- per chain, the UniProt ranges that have coordinates (`observed`);
+- per chain, the helices and strands the entry assigns, in UniProt numbering, with the
+  program that assigned them (`secondary_structure`, e.g. PROMOTIF).
 
 ```python
 import sabueso
@@ -36,9 +38,11 @@ rows = card.table("structures", region=[[12, 20]])  # the same, as flat rows
 ```
 
 `region` adds, per chain, the residues of that region without coordinates
-(`missing_in_region`), and the chains that have them all (`complete_chains`).
+(`missing_in_region`), the chains that have them all (`complete_chains`), and the
+region's positions in a helix or a strand (`secondary_structure_in_region`). A chain the
+entry assigns no secondary structure to is left out: not stated, never coil.
 
-Each structure has a derived `state`, following the named rule `structure_state@1`:
+Each structure has a derived `state`:
 
 - method and coverage class;
 - sequence: `reference`, `mutant` (RCSB states an engineered mutation), `chimera`, or
@@ -127,7 +131,8 @@ A protein card keeps what UniProt states about both:
 - `features_positional.secondary_structure`: helix, strand and turn segments, in UniProt
   numbering. Each one names the structures it was read from (`structures`, e.g.
   `["pdb:9F69"]`), and one entry often mixes several. They describe those structures,
-  not the protein in every state or construct.
+  not the protein in every state or construct. For one structure and chain, use the
+  structure's own `secondary_structure` (above).
 - `annotations.isoforms`: the isoforms of the entry, with their ids, names, synonyms and
   sequence status. `annotations.alternative_products` keeps what produces them and
   UniProt's note on the list (e.g. "Additional isoforms seem to exist.").

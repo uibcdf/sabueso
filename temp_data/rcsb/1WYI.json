@@ -339,6 +339,7 @@
          "end_seq_id": 250
         }
        ],
+       "provenance_source": "CATH",
        "type": "CATH"
       },
       {
@@ -348,6 +349,7 @@
          "end_seq_id": 250
         }
        ],
+       "provenance_source": "SCOPe",
        "type": "SCOP"
       },
       {
@@ -357,6 +359,7 @@
          "end_seq_id": 250
         }
        ],
+       "provenance_source": "SCOP2B",
        "type": "SCOP2B_SUPERFAMILY"
       },
       {
@@ -366,6 +369,7 @@
          "end_seq_id": 250
         }
        ],
+       "provenance_source": "ECOD",
        "type": "ECOD"
       },
       {
@@ -407,6 +411,7 @@
          "end_seq_id": 13
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "SHEET"
       },
       {
@@ -416,6 +421,7 @@
          "end_seq_id": 31
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -425,6 +431,7 @@
          "end_seq_id": 48
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -434,6 +441,7 @@
          "end_seq_id": 57
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -443,6 +451,7 @@
          "end_seq_id": 88
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -452,6 +461,7 @@
          "end_seq_id": 103
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -461,6 +471,7 @@
          "end_seq_id": 121
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -470,6 +481,7 @@
          "end_seq_id": 137
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -479,6 +491,7 @@
          "end_seq_id": 154
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -488,6 +501,7 @@
          "end_seq_id": 160
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -497,6 +511,7 @@
          "end_seq_id": 172
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -506,6 +521,7 @@
          "end_seq_id": 198
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -515,6 +531,7 @@
          "end_seq_id": 204
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -524,6 +541,7 @@
          "end_seq_id": 225
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -533,6 +551,7 @@
          "end_seq_id": 238
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -542,6 +561,7 @@
          "end_seq_id": 240
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -551,6 +571,7 @@
          "end_seq_id": 246
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -636,6 +657,7 @@
          "end_seq_id": 250
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "UNASSIGNED_SEC_STRUCT"
       },
       {
@@ -645,6 +667,7 @@
          "end_seq_id": 2
         }
        ],
+       "provenance_source": "PDB",
        "type": "UNOBSERVED_RESIDUE_XYZ"
       },
       {
@@ -850,6 +873,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "CLASHES"
       },
       {
@@ -863,6 +887,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "ANGLE_OUTLIERS"
       },
       {
@@ -872,6 +897,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "RSCC"
       },
       {
@@ -881,6 +907,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "RSR"
       },
       {
@@ -890,6 +917,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "RSRZ"
       },
       {
@@ -899,6 +927,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "NATOMS_EDS"
       },
       {
@@ -908,6 +937,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "OWAB"
       },
       {
@@ -917,6 +947,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "AVERAGE_OCCUPANCY"
       },
       {
@@ -926,6 +957,7 @@
          "end_seq_id": 250
         }
        ],
+       "provenance_source": "biojava-7.2.2",
        "type": "ASA"
       }
      ]
@@ -1196,6 +1228,7 @@
          "end_seq_id": 250
         }
        ],
+       "provenance_source": "CATH",
        "type": "CATH"
       },
       {
@@ -1205,6 +1238,7 @@
          "end_seq_id": 250
         }
        ],
+       "provenance_source": "SCOPe",
        "type": "SCOP"
       },
       {
@@ -1214,6 +1248,7 @@
          "end_seq_id": 250
         }
        ],
+       "provenance_source": "SCOP2B",
        "type": "SCOP2B_SUPERFAMILY"
       },
       {
@@ -1223,6 +1258,7 @@
          "end_seq_id": 250
         }
        ],
+       "provenance_source": "ECOD",
        "type": "ECOD"
       },
       {
@@ -1264,6 +1300,7 @@
          "end_seq_id": 13
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "SHEET"
       },
       {
@@ -1273,6 +1310,7 @@
          "end_seq_id": 32
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1282,6 +1320,7 @@
          "end_seq_id": 48
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1291,6 +1330,7 @@
          "end_seq_id": 57
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1300,6 +1340,7 @@
          "end_seq_id": 88
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1309,6 +1350,7 @@
          "end_seq_id": 102
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1318,6 +1360,7 @@
          "end_seq_id": 121
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1327,6 +1370,7 @@
          "end_seq_id": 139
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1336,6 +1380,7 @@
          "end_seq_id": 155
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1345,6 +1390,7 @@
          "end_seq_id": 172
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1354,6 +1400,7 @@
          "end_seq_id": 198
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1363,6 +1410,7 @@
          "end_seq_id": 206
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1372,6 +1420,7 @@
          "end_seq_id": 225
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1381,6 +1430,7 @@
          "end_seq_id": 239
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1390,6 +1440,7 @@
          "end_seq_id": 247
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "HELIX_P"
       },
       {
@@ -1467,6 +1518,7 @@
          "end_seq_id": 250
         }
        ],
+       "provenance_source": "PROMOTIF",
        "type": "UNASSIGNED_SEC_STRUCT"
       },
       {
@@ -1476,6 +1528,7 @@
          "end_seq_id": 2
         }
        ],
+       "provenance_source": "PDB",
        "type": "UNOBSERVED_RESIDUE_XYZ"
       },
       {
@@ -1745,6 +1798,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "CLASHES"
       },
       {
@@ -1766,6 +1820,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "ANGLE_OUTLIERS"
       },
       {
@@ -1775,6 +1830,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "RSCC"
       },
       {
@@ -1784,6 +1840,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "RSR"
       },
       {
@@ -1793,6 +1850,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "RSRZ"
       },
       {
@@ -1802,6 +1860,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "NATOMS_EDS"
       },
       {
@@ -1811,6 +1870,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "OWAB"
       },
       {
@@ -1820,6 +1880,7 @@
          "end_seq_id": null
         }
        ],
+       "provenance_source": "PDB",
        "type": "AVERAGE_OCCUPANCY"
       },
       {
@@ -1829,6 +1890,7 @@
          "end_seq_id": 250
         }
        ],
+       "provenance_source": "biojava-7.2.2",
        "type": "ASA"
       }
      ]

@@ -54,6 +54,8 @@ This document is a living checkpoint of the data sources (DBs) currently integra
     - mutations as RCSB marks them, placed in UniProt numbering;
     - sequence differences against the UniProt sequence;
     - per chain, the UniProt ranges with coordinates (`SCHEMA.md`);
+  - since schema 0.3.6, per chain, helices and strands (`HELIX_P`, `SHEET`) in UniProt
+    numbering, with the assigning program (`provenance_source`, e.g. PROMOTIF; #80);
   - polymer entities, the other entities present, and bound ligands;
   - structure facts keep `pdb:<id>` as SourceAssertion subject;
   - `EntityResolver` resolves `pdb:<id>` to the structure record and its proteins.

@@ -27,7 +27,7 @@ FROZEN = ROOT / "temp_data" / "frozen_cards"
 OPAQUE = {"asserted_value", "normalized_value"}
 #: Qualifiers whose keys are data (chain ids), recorded as ``{chain}`` so that a new
 #: chain name is not a new shape. Since schema 0.3.5; the 0.3.4 shape lists chains.
-CHAIN_KEYED = {"observed", "author_numbering"}
+CHAIN_KEYED = {"observed", "author_numbering", "secondary_structure"}
 
 
 def _paths(node: Any, prefix: str) -> Iterator[str]:

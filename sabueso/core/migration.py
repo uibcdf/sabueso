@@ -104,6 +104,11 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "path": "features_positional.mutagenesis.substitution.missing",
             "filled_by": "refresh",
         },
+        {
+            "path": "relationships.has_structure.secondary_structure",
+            "filled_by": "structures",
+            "qualifier": True,
+        },
     ],
 }
 

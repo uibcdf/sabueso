@@ -184,7 +184,9 @@
 - **Secondary structure out of context.** UniProt reads each segment from one PDB entry,
   and mixes entries along one sequence. A consumer that paints it on another structure,
   another state or an isoform shows what those structures do not state. The item keeps
-  `structures`; per-structure secondary structure (RCSB) would close the gap.
+  `structures`, and each structure now carries its own per-chain assignment (RCSB,
+  since 0.3.6). Assignments by different programs (PROMOTIF, DSSP, authors) can
+  disagree at segment ends; `assigned_by` says which one a chain has.
 - **Packet size** (#71). A packet holds the views' output whole. Measured live on
   2026-09-27 for the HsTIM/TcTIM pair: about 0.8 MB of JSON with ChEMBL bioactivities,
   and about 1.2 MB with ChEMBL, BindingDB and PubChem BioAssay (0.8 MB of it TcTIM's

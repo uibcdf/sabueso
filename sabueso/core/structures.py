@@ -245,6 +245,25 @@ def _missing(
     return out
 
 
+def _secondary_in_region(
+    q: Dict[str, Any], region: Sequence[int] | None
+) -> Dict[str, Dict[str, List[int]]] | None:
+    """Per chain, the region's positions the entry assigns to a helix or a strand (#80).
+    A chain the entry assigns nothing to is left out: not stated, never coil."""
+    secondary = q.get("secondary_structure")
+    if region is None or secondary is None:
+        return None
+    out = {}
+    for chain, item in sorted(secondary.items()):
+        out[chain] = {
+            element: [
+                p for p in region if any(b <= p <= e for b, e in item.get(element, []))
+            ]
+            for element in ("helix", "strand")
+        }
+    return out
+
+
 def structures_view(
     card: Any, include_fragments: bool = False, region: Sequence[int] | None = None
 ) -> Dict[str, Any]:
@@ -253,8 +272,9 @@ def structures_view(
     Returns ``{"items", "excluded", "classification", "state_rule"}``. Fragments and
     peptides are excluded by default, and the exclusion is reported, never silent.
     ``region`` (UniProt positions) adds, per chain, the region's residues without
-    coordinates (``missing_in_region``) and the chains that have them all
-    (``complete_chains``).
+    coordinates (``missing_in_region``), the chains that have them all
+    (``complete_chains``), and the region's positions in a helix or a strand
+    (``secondary_structure_in_region``).
     """
     items: List[Dict[str, Any]] = []
     excluded: List[str] = []
@@ -289,6 +309,7 @@ def structures_view(
             "substitutions": substitutions,
             "author_substitutions": _author_substitutions(q, substitutions),
             "author_numbering": q.get("author_numbering"),
+            "secondary_structure": q.get("secondary_structure"),
             "modified_residues": modified,
             "ligands_of_interest": None
             if q.get("ligands") is None
@@ -314,6 +335,7 @@ def structures_view(
             "oligomer_disagreement": oligomer["disagreement"],
             "assembly_states": oligomer["by_basis"],
             "missing_in_region": missing,
+            "secondary_structure_in_region": _secondary_in_region(q, region),
             "complete_chains": None
             if missing is None
             else sorted(chain for chain, gaps in missing.items() if not gaps),

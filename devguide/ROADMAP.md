@@ -112,7 +112,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | 4. PharmacophoreMT: deck of ligands | partial (ligand decks; no exchange format agreed) |
 | 5. Commercial availability of peptides | pending |
 | 6. Tissue-specific isoforms | partial (tissue specificity; UniProt isoforms and alternative sequences, #80; AlphaFold isoform models; isoform sequences not fetched) |
-| 7. Visualization (MolSysViewer) | partial (interfaces, mutations, sites, UniProt secondary structure, #80; no contract) |
+| 7. Visualization (MolSysViewer) | partial (interfaces, mutations, sites, secondary structure from UniProt and per chain from RCSB, #80; no contract) |
 | 8. Clinical trials of ligands | pending |
 | 9. Disease associations; targets of a disease | partial (protein → disease; disease → targets needs a source, e.g. Open Targets, queued) |
 | 10. Knowledge baseline for a target and a comparator (pilot route) | done |
@@ -173,8 +173,8 @@ Foundational route, in the order proposed now:
    main: protein subject and comparator, seven aspects, pinned and stored packets, and
    a content-equivalence id. Next: let real use (the pilot, MOLI Agent) decide the
    aspects and the size of facts, and align with the MOLI contract once it is agreed.
-2. **UniProt isoforms and secondary structure.** Mapped on main (#80). Isoform sequences
-   and per-structure secondary structure (RCSB) remain.
+2. **UniProt isoforms and secondary structure.** Mapped on main (#80), with per-chain
+   secondary structure from RCSB. Isoform sequences remain.
 3. **Clinical layer.** Evaluate ClinicalTrials.gov (queued), and DrugBank's terms, for
    use cases 2 and 8.
 4. **Disease → targets.** Evaluate Open Targets (queued) for use case 9.

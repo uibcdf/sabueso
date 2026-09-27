@@ -57,6 +57,7 @@ def test_gaps_say_what_a_refresh_would_bring_and_what_can_be_asked_for():
         "annotations.alternative_products",
         "features_positional.alternative_sequence",
         "features_positional.secondary_structure",
+        "relationships.has_structure.secondary_structure",
     }
 
 

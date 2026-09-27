@@ -754,6 +754,11 @@ uibcdf/sabueso#80, card schema 0.3.6.
   as before.
 - **Not curatable yet:** alternative sequences and secondary structure, until a
   publication needs to be compared with them.
+- **Per-chain secondary structure from RCSB** (added the same day) is a `has_structure`
+  qualifier, with the assigning program. A strand shared by two sheets is one segment,
+  and sheets are not kept. A chain without any assignment is left out: not stated,
+  never coil. `UNASSIGNED_SEC_STRUCT` counts as an assignment, so a chain with only
+  unassigned residues is listed, with no helix or strand.
 
 ## Knowledge packets, prototype (2026-09-27)
 uibcdf/sabueso#71, before the MOLI contract (uibcdf/moli#22) is agreed; the maintainers

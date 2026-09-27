@@ -58,7 +58,8 @@ STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
     polymer_entity_instances {
       rcsb_polymer_entity_instance_container_identifiers { asym_id auth_asym_id
         auth_to_entity_poly_seq_mapping }
-      rcsb_polymer_instance_feature { type feature_positions { beg_seq_id end_seq_id } }
+      rcsb_polymer_instance_feature {
+        type provenance_source feature_positions { beg_seq_id end_seq_id } }
       rcsb_ligand_neighbors {
         ligand_asym_id ligand_comp_id ligand_is_bound seq_id comp_id distance }
     }
@@ -75,7 +76,8 @@ STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
 
 #: Instance-level fields a server-side error can make unavailable for an entry
 #: (uibcdf/sabueso#74). Without them the entry is still mapped, and marked partial.
-INSTANCE_FIELDS = """      rcsb_polymer_instance_feature { type feature_positions { beg_seq_id end_seq_id } }
+INSTANCE_FIELDS = """      rcsb_polymer_instance_feature {
+        type provenance_source feature_positions { beg_seq_id end_seq_id } }
       rcsb_ligand_neighbors {
         ligand_asym_id ligand_comp_id ligand_is_bound seq_id comp_id distance }
 """

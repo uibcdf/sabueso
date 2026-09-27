@@ -3,7 +3,8 @@
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
   - `0.3.6` is current, not yet released: it adds UniProt isoforms, alternative
-    sequences, secondary structure and `substitution.missing` (#80);
+    sequences, secondary structure (UniProt's, and per chain from RCSB) and
+    `substitution.missing` (#80);
   - `0.3.5` is the schema of release 0.5.0: it adds `author_numbering` (#73);
   - `0.3.4` is the schema of release 0.4.0;
   - `0.3.3` is the schema of release 0.3.1;
@@ -371,8 +372,16 @@ A Relationship is first-class, traceable knowledge:
     segments `[uniprot_begin, uniprot_end, author_begin]`, or `[position, position,
     "52A"]` for an author id with an insertion code (#73).
     `sabueso.mappings.rcsb_structures.author_position(segments, position)` reads it.
-  - Chain-keyed qualifiers (`observed`, `author_numbering`) are recorded in the card
-    shape as `{chain}` since 0.3.5, so a new chain name is not a new shape.
+  - since 0.3.6, `secondary_structure` (#80): per chain, `{assigned_by, helix,
+    strand}`. `assigned_by` names the programs RCSB states (e.g. PROMOTIF or DSSP).
+    `helix` and `strand` are UniProt ranges from RCSB's `HELIX_P` and `SHEET` instance
+    features, placed through the entity alignment and split at its gaps. A strand shared
+    by two sheets is listed once, and sheets are not kept. A chain is listed only when
+    the entry assigns secondary structure to it; a chain without any is not stated,
+    never coil.
+  - Chain-keyed qualifiers (`observed`, `author_numbering`, `secondary_structure`) are
+    recorded in the card shape as `{chain}` since 0.3.5, so a new chain name is not a
+    new shape.
     These keys are absent from relationships fetched before 0.3.4, and the state that
     `Card.structures()` derives from them is then unknown (`None`), never assumed.
   - `assemblies` (#40): per biological assembly, `id`, `oligomeric_details`,

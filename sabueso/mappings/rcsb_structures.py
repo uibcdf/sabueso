@@ -273,6 +273,76 @@ def _author_numbering(
     return out or None
 
 
+#: RCSB instance features that assign secondary structure, and the element each gives.
+SECONDARY_FEATURES = {"HELIX_P": "helix", "SHEET": "strand"}
+
+
+def _secondary_structure(
+    entities: List[Dict[str, Any]], acc: str
+) -> Dict[str, Dict[str, Any]] | None:
+    """Per chain, the helices and strands the entry assigns, in UniProt numbering (#80).
+
+    RCSB states them as instance features (``HELIX_P``, ``SHEET``), in entity numbering,
+    with the program that assigned them (``provenance_source``, e.g. PROMOTIF or DSSP).
+    Each segment is placed in UniProt numbering through the entity alignment, and split
+    where the alignment has a gap. Sheets are not kept, only their strands. A chain is
+    listed only when the entry assigns
+    secondary structure to it (``UNASSIGNED_SEC_STRUCT`` counts as an assignment): a
+    chain without any is not stated, never coil.
+    """
+    out: Dict[str, Dict[str, Any]] = {}
+    for entity in entities:
+        if acc not in entity["uniprot"]:
+            continue
+        for instance in entity["instances"]:
+            features = [
+                f
+                for f in instance.get("rcsb_polymer_instance_feature") or []
+                if f.get("type") in (*SECONDARY_FEATURES, "UNASSIGNED_SEC_STRUCT")
+            ]
+            if not features:
+                continue
+            chain = str(
+                (
+                    instance.get("rcsb_polymer_entity_instance_container_identifiers")
+                    or {}
+                ).get("auth_asym_id")
+            )
+            item: Dict[str, Any] = {
+                "assigned_by": sorted(
+                    {
+                        f["provenance_source"]
+                        for f in features
+                        if f.get("provenance_source")
+                    }
+                ),
+                **{element: [] for element in SECONDARY_FEATURES.values()},
+            }
+            for f in features:
+                element = SECONDARY_FEATURES.get(f["type"])
+                if element is None:
+                    continue
+                for pos in f.get("feature_positions") or []:
+                    beg = pos.get("beg_seq_id")
+                    if beg is None:
+                        continue
+                    end = pos.get("end_seq_id") or beg
+                    positions = [
+                        p
+                        for i in range(int(beg), int(end) + 1)
+                        for a, p in [_uniprot_position(entity, i, acc)]
+                        if a is not None
+                    ]
+                    item[element].extend(merge_ranges([[p, p] for p in positions]))
+            # A strand shared by two sheets (the closing strand of a barrel) is stated
+            # twice; it is one segment. Adjacent segments stay apart, as stated.
+            for element in SECONDARY_FEATURES.values():
+                item[element] = sorted({tuple(r) for r in item[element]})
+                item[element] = [list(r) for r in item[element]]
+            out[chain] = item
+    return out or None
+
+
 def author_position(segments: List[list] | None, position: int) -> str | None:
     """The author residue id of a UniProt position, from ``author_numbering`` segments."""
     for beg, end, author in segments or []:
@@ -517,6 +587,22 @@ def map_structure_entities(
                 if "rcsb_polymer_instance_feature" in i
             }
             or None,
+            "secondary_structure": {
+                str(
+                    (
+                        i.get("rcsb_polymer_entity_instance_container_identifiers")
+                        or {}
+                    ).get("auth_asym_id")
+                ): [
+                    f
+                    for f in i.get("rcsb_polymer_instance_feature") or []
+                    if f.get("type") in (*SECONDARY_FEATURES, "UNASSIGNED_SEC_STRUCT")
+                ]
+                for e in mine
+                for i in e["instances"]
+                if "rcsb_polymer_instance_feature" in i
+            }
+            or None,
             "refine": entry.get("refine"),
             "accession_info": accession,
             "nonpolymer_entities": ligands,
@@ -551,6 +637,9 @@ def map_structure_entities(
         numbering = _author_numbering(mine, acc)
         if numbering:
             qualifiers["author_numbering"] = numbering
+        secondary = _secondary_structure(mine, acc)
+        if secondary:
+            qualifiers["secondary_structure"] = secondary
         if lengths.get(acc):
             qualifiers["coverage"] = coverage(ranges, lengths[acc])
         relationships.append(
