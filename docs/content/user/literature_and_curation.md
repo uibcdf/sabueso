@@ -54,7 +54,8 @@ record = card.add_literature_assertion(
 print(record["outcome"])  # new, corroborates, differs, not_comparable or not_compared
 ```
 
-- **Fields.** Knowledge fields only: `annotations.*`, `features_positional.*` (except
+- **Fields.** Knowledge fields only: `annotations.*` (see also the biological context
+  below), `features_positional.*` (except
   family sites, alternative sequences and secondary structure), `properties.physchem.*`
   and `names.synonyms`. A positional item can give `start` (and `end`) in the card's
   UniProt numbering instead of a full location.
@@ -68,6 +69,38 @@ print(record["outcome"])  # new, corroborates, differs, not_comparable or not_co
   `not_compared`.
 - **Priority.** A curated assertion never takes priority automatically, and nothing is
   discarded or overridden.
+
+### Biological context of a target
+
+Whether a protein is worth studying as a target in an organism depends on facts that
+come from papers and organism databases. Four fields hold them, curated as above:
+
+| Field | Item |
+|---|---|
+| `annotations.stage_expression` | `stage`, `observation`; optional `host`, `method`, `level`, `note` |
+| `annotations.essentiality` | `method`, `phenotype`; optional `stage`, `host`, `condition`, `call`, `note` |
+| `annotations.accessibility` | `compartment`; optional `exposure`, `stage`, `host`, `method`, `note` |
+| `annotations.metabolic_role` | `pathway`, `role`; optional `stage`, `host`, `method`, `note` |
+
+```python
+card.add_literature_assertion(
+    "annotations.essentiality",
+    {"method": "RNAi knockdown", "phenotype": "growth arrest", "stage": "epimastigote"},
+    publication="doi:10....",
+    curator="your-name",
+    locator="Fig. 3",
+)
+```
+
+- **Values are text, as stated.** A phenotype is never turned into a category. `call`
+  records the authors' own word, such as "essential", if they use one.
+- **The organism is the card's.** A knockdown done on an ortholog is curated on the
+  ortholog's card, not on this one.
+- **Comparison.** Two statements under the same condition are compared: essentiality by
+  method, stage, host and condition, the others by stage and host. Another stage is
+  another statement.
+- **Knowledge state.** A field nothing has been curated for is `not_queried` from
+  `Literature`, never `not_stated`: nobody has read the literature for it yet.
 - **Quantities.** Give the unit (`"0.825 kDa"`, `puw.quantity(825, "Da")`). The value is
   kept as written and compared at the precision it was stated with.
 - **Relationships.** `card.add_literature_relationship(predicate, object_ref,

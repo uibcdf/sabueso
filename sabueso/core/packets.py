@@ -115,6 +115,18 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         "options": {},
         "areas": ("relationships.described_in", "literature."),
     },
+    "biological_context": {
+        "options": {},
+        "areas": (
+            "annotations.stage_expression",
+            "annotations.essentiality",
+            "annotations.accessibility",
+            "annotations.metabolic_role",
+            "annotations.subcellular_location",
+            "annotations.tissue_specificity",
+            "annotations.pathway",
+        ),
+    },
 }
 
 #: Bioactivity sources a query may name, and the resolve option each needs.
@@ -292,6 +304,8 @@ def _facts(aspect: str, card: Any) -> Dict[str, Any]:
         return _positional(card)
     if aspect == "literature":
         return {"publications": card.literature(), "claims": card.claims()}
+    if aspect == "biological_context":
+        return _fields(card, ASPECTS["biological_context"]["areas"])
     raise KeyError(aspect)
 
 

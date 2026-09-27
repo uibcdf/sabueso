@@ -109,6 +109,10 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "filled_by": "structures",
             "qualifier": True,
         },
+        {"path": "annotations.stage_expression", "filled_by": "curation"},
+        {"path": "annotations.essentiality", "filled_by": "curation"},
+        {"path": "annotations.accessibility", "filled_by": "curation"},
+        {"path": "annotations.metabolic_role", "filled_by": "curation"},
     ],
 }
 

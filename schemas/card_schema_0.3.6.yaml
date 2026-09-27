@@ -83,7 +83,10 @@ schema:
     alternative sequences; before 0.3.6 such an item was kept with no substitution. It
     also adds the has_structure qualifier secondary_structure, per chain the helices and
     strands RCSB states for the entry in UniProt numbering, with the programs that
-    assigned them. All additive, so a 0.3.5 card is a valid 0.3.6 card without them.
+    assigned them. It also adds the biological context of a target, curated from
+    publications (uibcdf/sabueso#60), namely annotations.stage_expression, essentiality,
+    accessibility and metabolic_role, items of stated text. All additive, so a 0.3.5
+    card is a valid 0.3.6 card without them.
 card_base:
   meta:
     card_id:
@@ -466,6 +469,47 @@ protein_card:
       value:
         events:
         - string
+        note: string
+      source_assertion_ids:
+      - string
+    stage_expression:
+      value:
+      - stage: string
+        observation: string
+        host: string
+        method: string
+        level: string
+        note: string
+      source_assertion_ids:
+      - string
+    essentiality:
+      value:
+      - method: string
+        phenotype: string
+        stage: string
+        host: string
+        condition: string
+        call: string
+        note: string
+      source_assertion_ids:
+      - string
+    accessibility:
+      value:
+      - compartment: string
+        exposure: string
+        stage: string
+        host: string
+        method: string
+        note: string
+      source_assertion_ids:
+      - string
+    metabolic_role:
+      value:
+      - pathway: string
+        role: string
+        stage: string
+        host: string
+        method: string
         note: string
       source_assertion_ids:
       - string

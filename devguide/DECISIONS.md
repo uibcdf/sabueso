@@ -785,3 +785,23 @@ chose to prototype first and align after.
 - **Proteins only** in `knowledge_query@1`: a subject and an optional comparator. Decks
   as subjects, and other entity types, wait for real use.
 
+## Biological context of a target, step 1 (2026-09-27)
+uibcdf/sabueso#60. Four curated fields, before any connector (VEuPathDB is step 2):
+`annotations.stage_expression`, `essentiality`, `accessibility` and `metabolic_role`.
+- **Stated text, never categories.** Items hold the words of the publication. A
+  phenotype is not classified. "Essential" is kept only as the authors' `call`.
+- **Strict items.** Each field has required and optional keys (`CONTEXT_KEYS` in
+  `sabueso/core/curation.py`). Anything else is refused, so a misspelt key cannot
+  silently become a new kind of statement.
+- **Comparison by condition.** Two statements under the same condition are compared:
+  method, stage, host and condition for essentiality; compartment, pathway or stage,
+  with stage and host, for the others. A different content there `differs`; another
+  stage is another statement.
+- **The organism is the card's.** No field names an organism. A result on an ortholog
+  belongs to the ortholog's card, since identity is never merged.
+- **Absence.** An uncurated field is `not_queried` from `Literature` in the knowledge
+  state, with the basis `route: curation`, never `not_stated`.
+- **Packets** have a `biological_context` aspect: these fields, and UniProt's
+  subcellular location, tissue specificity and pathway.
+- Free-text claims on these topics stay possible (#43).
+

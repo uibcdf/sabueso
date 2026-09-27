@@ -74,6 +74,35 @@ def _positions(item: Dict[str, Any]) -> Tuple[int, ...]:
     )
 
 
+#: Biological context of a target (#60): per field, the keys an item may state, and
+#: those it must. Values are text, kept as stated: a phenotype or a role is never turned
+#: into a category, and "essential" is recorded only as the authors' own ``call``. The
+#: organism is the card's: a result on an ortholog is curated on the ortholog's card.
+CONTEXT_KEYS: Dict[str, Tuple[Tuple[str, ...], Tuple[str, ...]]] = {
+    "annotations.stage_expression": (
+        ("stage", "observation"),
+        ("host", "method", "level", "note"),
+    ),
+    "annotations.essentiality": (
+        ("method", "phenotype"),
+        ("stage", "host", "condition", "call", "note"),
+    ),
+    "annotations.accessibility": (
+        ("compartment",),
+        ("exposure", "stage", "host", "method", "note"),
+    ),
+    "annotations.metabolic_role": (
+        ("pathway", "role"),
+        ("stage", "host", "method", "note"),
+    ),
+}
+CONTEXT_FIELDS = tuple(CONTEXT_KEYS)
+
+
+def _context_key(*keys: str) -> Callable[[Any], Any]:
+    return lambda i: tuple((i.get(k) or "").strip().casefold() for k in keys)
+
+
 def _substitution(item: Dict[str, Any]) -> tuple:
     """A deletion (``missing``, #80) is its own substitution, never an unstated one."""
     s = item.get("substitution") or {}
@@ -100,6 +129,12 @@ ITEM_IDENTITY: Dict[str, Callable[[Any], Any] | None] = {
     "annotations.disease": lambda i: i.get("accession") or i.get("name", "").lower(),
     "annotations.catalytic_activity": lambda i: i.get("rhea_id") or i.get("reaction"),
     "annotations.subcellular_location": lambda i: (i.get("location") or "").lower(),
+    # Biological context (#60): the same statement is the same condition (stage, host,
+    # method...); a different observation there differs.
+    "annotations.stage_expression": _context_key("stage", "host", "method"),
+    "annotations.essentiality": _context_key("method", "stage", "host", "condition"),
+    "annotations.accessibility": _context_key("compartment", "stage", "host"),
+    "annotations.metabolic_role": _context_key("pathway", "stage", "host"),
     # A name a publication uses for the protein, e.g. a paralog's "TIM2" (#55). Resolving
     # by that name through a curation store anchors it to this entry.
     "names.synonyms": lambda i: (i.get("name") or "").strip().casefold(),
@@ -162,7 +197,8 @@ def _sequence_id(subject: str) -> str | None:
 #: Topics of free-text claims (#43). Sabueso's own, provisional vocabulary: a new topic
 #: is an additive schema change, and a vocabulary shared with Praxis or Nextia would be
 #: agreed in uibcdf/moli. When claims of one topic recur, they should become a structured
-#: field (migrated with ``migrate_card``), as biological context may (#60).
+#: field (migrated with ``migrate_card``), as biological context did (#60,
+#: ``CONTEXT_FIELDS``); a claim on those topics stays possible as free text.
 CLAIM_TOPICS = (
     "interface",
     "mechanism",
@@ -239,6 +275,21 @@ def _item(field_path: str, value: Any, subject: str) -> Any:
             }
         if not _positions(item):
             raise SchemaError(f"{field_path} needs at least one sequence position.")
+    if field_path in CONTEXT_KEYS:
+        required, optional = CONTEXT_KEYS[field_path]
+        unknown = sorted(set(item) - set(required) - set(optional))
+        if unknown:
+            raise SchemaError(
+                f"{field_path} items take {list(required + optional)}, not {unknown}."
+            )
+        for key, value in item.items():
+            if not isinstance(value, str) or not value.strip():
+                raise SchemaError(f"{field_path}: {key} is a non-empty text.")
+            item[key] = value.strip()
+        missing = [k for k in required if k not in item]
+        if missing:
+            raise SchemaError(f"{field_path} items need {missing}.")
+        return item
     missing = [k for k in REQUIRED_KEYS.get(field_path, ()) if not item.get(k)]
     if missing:
         raise SchemaError(f"{field_path} items need {missing}.")

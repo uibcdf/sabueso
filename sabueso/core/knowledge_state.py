@@ -7,7 +7,8 @@
 - ``not_stated``: the source was consulted and states nothing. For example UniProt,
   at its release, has no subcellular location for the entry, or ChEMBL has no
   target;
-- ``not_queried``: the enrichment that would answer it was not requested;
+- ``not_queried``: the enrichment that would answer it was not requested, or, for the
+  biological context only curation states (#60), nothing has been curated;
 - ``unavailable``: the source failed, so nothing can be said;
 - ``partial``: the source stated some of it, but failed, or answered incompletely, for
   some requests (e.g. two structures of many). ``basis`` names them (``unavailable_for``,
@@ -190,6 +191,17 @@ def knowledge_state(card: Any) -> Dict[str, Any]:
                     count,
                 )
             )
+
+    if is_protein:
+        # Biological context comes only from curated publications (#60). Absent, the
+        # literature was not consulted for it: not queried, never "not stated".
+        from .curation import CONTEXT_FIELDS
+
+        for path in CONTEXT_FIELDS:
+            if path not in fields:
+                rows.append(
+                    _row(path, "Literature", "not_queried", None, route="curation")
+                )
 
     enrichments = card.quality.get("enrichments") or []
     if is_protein:

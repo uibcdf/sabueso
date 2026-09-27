@@ -116,6 +116,11 @@ Records of how the card was resolved and enriched, not source-stated fields:
 - `annotations.similar_proteins`
 - `annotations.isoforms` (list of `{isoform_id, isoform_ids?, name?, synonyms?, sequence_status?, alternative_sequence_ids?, note?}`; UniProt ALTERNATIVE PRODUCTS, #80)
 - `annotations.alternative_products` (`{events?, note?}`: what produces the isoforms, and UniProt's note on the list, e.g. "Additional isoforms seem to exist.")
+- Biological context of a target, curated from publications only (#60); every value is stated text:
+  - `annotations.stage_expression` (`{stage, observation, host?, method?, level?, note?}`)
+  - `annotations.essentiality` (`{method, phenotype, stage?, host?, condition?, call?, note?}`; `call` is the authors' own word, e.g. "essential")
+  - `annotations.accessibility` (`{compartment, exposure?, stage?, host?, method?, note?}`)
+  - `annotations.metabolic_role` (`{pathway, role, stage?, host?, method?, note?}`)
 - `disease.associations`
 - `sequence.primary`
 - `sequence.length`
