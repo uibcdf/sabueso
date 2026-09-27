@@ -67,7 +67,7 @@ IDENTITY_FIELDS = (
 #: conflicts and unknowns it reports. An area matches by prefix.
 ASPECTS: Dict[str, Dict[str, Any]] = {
     "identity": {
-        "options": {},
+        "options": {"taxonomy": True},
         "areas": (
             "identifiers.",
             "names.",
