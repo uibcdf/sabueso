@@ -15,6 +15,11 @@ the registry must confirm that the version is unoccupied. A staged route is
 required for a new interpreter, dependency, packaging contract, or other
 change that needs clean installed-package evidence before public visibility.
 
+Before any candidate build, `python devtools/dependency_preflight.py` must pass. It is a
+read-only check that the recipe, every environment installing the runtime, and the
+exact public builds pinned by the staged-package test agree with `pyproject.toml`
+(`devtools/dependency_routes.toml`, #76). CI's quality job runs it on every commit.
+
 For the staged route, dispatch
 `.github/workflows/build_and_upload_conda_packages.yaml` with the exact
 `candidate_sha`, `version`, and `build_number` (normally zero). It uploads

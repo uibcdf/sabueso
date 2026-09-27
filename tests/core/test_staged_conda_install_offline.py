@@ -81,7 +81,7 @@ def test_staged_matrix_uses_candidate_verifier_and_supported_lanes():
     assert "os: [ubuntu-latest, macos-latest, windows-latest]" in workflow
     assert 'python: ["3.11", "3.12", "3.13", "3.14"]' in workflow
     assert "uibcdf/label/staging::sabueso=" in workflow
-    assert "uibcdf::smonitor=0.16.0=py_1" in workflow
+    assert "uibcdf::smonitor=0.17.0=py_0" in workflow
     assert "uibcdf::depdigest=0.11.0=py_2" in workflow
     assert "uibcdf::pyunitwizard=0.27.0=py_0" in workflow
     assert "uibcdf::argdigest=0.13.0=py_1" in workflow

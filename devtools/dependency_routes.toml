@@ -1,0 +1,61 @@
+# Routes that install, or build, Sabueso's runtime, checked against pyproject.toml by
+# devtools/dependency_preflight.py (MOLI distribution policy, early dependency-contract
+# preflight; uibcdf/sabueso#76). pyproject.toml stays the authority for runtime names,
+# constraints and requires-python: this file only says where to look, and why a route
+# is not checked.
+#
+# kind:
+#   recipe       requirements.run of a conda recipe holds the runtime closure and Python
+#   environment  a conda environment that installs the runtime (dependencies list)
+#   pins         a workflow that installs exact public builds of the runtime libraries
+#                (create-args), checked against the floors
+#   excluded     does not install Sabueso's runtime; `reason` says why
+#
+# A conda environment file, recipe or workflow that installs packages and is not listed
+# here fails the preflight until it is reviewed.
+
+[routes."devtools/conda-build/meta.yaml"]
+kind = "recipe"
+
+[routes."devtools/conda-envs/test_env.yaml"]
+kind = "environment"
+used_by = ".github/workflows/ci.yml (offline tests, every OS and Python)"
+
+[routes."devtools/conda-envs/development_env.yaml"]
+kind = "environment"
+
+[routes."devtools/conda-envs/docs_env.yaml"]
+kind = "environment"
+
+[routes."devtools/conda-envs/build_env.yaml"]
+kind = "excluded"
+reason = "builds, uploads and promotes the package; never installs Sabueso's runtime"
+
+[routes.".github/workflows/test_staged_conda_package.yaml"]
+kind = "pins"
+
+[routes.".github/workflows/ci.yml"]
+kind = "excluded"
+reason = "installs test_env.yaml (checked above), Sabueso itself with pip --no-deps, and ruff; no runtime library of its own"
+
+[routes.".github/workflows/build_and_upload_conda_packages.yaml"]
+kind = "excluded"
+reason = "installs build_env.yaml only"
+
+[routes.".github/workflows/promote_conda_package.yaml"]
+kind = "excluded"
+reason = "installs build_env.yaml only"
+
+[routes.".github/workflows/withdraw_conda_package.yaml"]
+kind = "excluded"
+reason = "installs build_env.yaml only, to remove a label"
+
+[routes.".github/workflows/moli-governance.yml"]
+kind = "excluded"
+reason = "runs the governance check; installs no runtime"
+
+# No required lane installs a sibling library from source (--no-deps from a Git
+# checkout): siblings come from the uibcdf conda channel. The source-candidate check of
+# the policy is therefore not applicable; adding such a lane must add it here.
+[source_routes]
+applicable = false

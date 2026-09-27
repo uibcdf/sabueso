@@ -58,6 +58,7 @@ python tools/card_shape.py
 python tools/source_registry.py --check
 python tools/validate_schema.py
 python devtools/moli_governance.py
+python devtools/dependency_preflight.py
 ```
 
 When `docs/` or a docstring changes, also build the documentation, failing on any

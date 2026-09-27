@@ -673,3 +673,25 @@ uibcdf/sabueso#79; acceptance case 2 of uibcdf/moli#3.
   first read pass unnoticed. The cost is about 0.1 s per item read, for a card of about a
   thousand relationships.
 
+## Early dependency-contract preflight (2026-09-27)
+uibcdf/sabueso#76, adopting MOLI's distribution policy (uibcdf/moli#21).
+- `pyproject.toml` stays the only authority for runtime names, constraints and
+  `requires-python`.
+- `devtools/dependency_routes.toml` lists where the runtime is installed: the conda
+  recipe, the test, development and docs environments, and the exact public builds the
+  staged-package test pins. It also lists, with a reason, the routes that do not install
+  the runtime.
+- `devtools/dependency_preflight.py` compares them, using the standard library only. It
+  fails on:
+  - a missing dependency;
+  - a weaker or unconstrained floor, or a ceiling above the public one;
+  - a missing or wider Python constraint;
+  - an unlisted route.
+  It never rewrites files. CI's quality job runs it first; it is also a local gate.
+- Its first run found real drift. The staged-package test pinned SMonitor 0.16.0, below
+  the new floor of 0.17.0, and would have failed to solve at the next release. The pin
+  is now the public 0.17.0 build.
+- The check for siblings installed from source does not apply: no required lane
+  installs a sibling from a Git checkout. The inventory says so, and a lane added later
+  must be declared there.
+

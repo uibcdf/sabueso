@@ -74,6 +74,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.13"
+      - name: Dependency-contract preflight
+        # Standard library only: every route that installs the runtime agrees with
+        # pyproject.toml (uibcdf/sabueso#76, MOLI distribution policy).
+        run: python devtools/dependency_preflight.py
       - name: Install quality tooling
         run: python -m pip install "ruff==0.16.5"
       - name: Ruff format
