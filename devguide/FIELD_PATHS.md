@@ -75,6 +75,9 @@ Versioning: **x.y.z** (no leading `v`).
 - `features_positional.disulfide_bond`
 - `features_positional.natural_variant` (a variant observed in a population: substitution, verbatim description, `VAR_` id, dbSNP)
 - `features_positional.mutagenesis` (a substitution the authors made, with the effect they report)
+- `features_positional.alternative_sequence` (the segment an isoform replaces or lacks: substitution, verbatim description, `VSP_` id, and the `isoform_ids` the entry links to it; #80)
+- `features_positional.secondary_structure` (UniProt's helix, strand and turn segments: `element`, and the `structures` each segment was read from, e.g. `pdb:9F69`; #80)
+- A `substitution` with `missing: true` is a deletion (UniProt's "Missing"), in variants, mutagenesis and alternative sequences (since 0.3.6).
 - `features_positional.glycosylation`
 
 ### clinical.*
@@ -111,14 +114,15 @@ Records of how the card was resolved and enriched, not source-stated fields:
 - `annotations.enzyme_class`
 - `annotations.family`
 - `annotations.similar_proteins`
-- `annotations.isoforms`
+- `annotations.isoforms` (list of `{isoform_id, isoform_ids?, name?, synonyms?, sequence_status?, alternative_sequence_ids?, note?}`; UniProt ALTERNATIVE PRODUCTS, #80)
+- `annotations.alternative_products` (`{events?, note?}`: what produces the isoforms, and UniProt's note on the list, e.g. "Additional isoforms seem to exist.")
 - `disease.associations`
 - `sequence.primary`
 - `sequence.length`
 - `sequence.molecular_weight` (quantity node, `dalton`)
 - `sequence.checksums` (`crc64`, `md5`)
 - `structure.primary`
-- `structure.secondary_structure`
+- `structure.secondary_structure` (declared, never written: UniProt's statement is `features_positional.secondary_structure`)
 - `structure.chains`
 - `structure.entities`
 

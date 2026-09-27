@@ -175,6 +175,16 @@
   source's search and the identity audit. Curated synonyms anchor only through a
   curation store, and a name curated for two entries is ambiguous. If a view of shared
   names across a deck is ever added, it must report the coincidences, never merge them.
+- **A deletion is read from an empty field** (#80). UniProt's JSON writes "Missing" as an
+  empty `alternativeSequence`, and nothing else says so. If UniProt changes that
+  convention, a deletion could again read as an unspecified change, or a change as a
+  deletion. It was checked against the text format on 2026-09-27, and
+  `test_isoforms_offline.py` holds it on frozen entries. Recheck when fixtures are
+  refreshed.
+- **Secondary structure out of context.** UniProt reads each segment from one PDB entry,
+  and mixes entries along one sequence. A consumer that paints it on another structure,
+  another state or an isoform shows what those structures do not state. The item keeps
+  `structures`; per-structure secondary structure (RCSB) would close the gap.
 
 ## Open Questions
 - What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?

@@ -225,6 +225,7 @@ def knowledge_state(card: Any) -> Dict[str, Any]:
                     "not_stated",
                     "not_queried",
                     "unavailable",
+                    "partial",
                 ],
                 "uniprot_fields": sorted(STATED_FIELDS),
                 "uniprot_predicates": sorted(STATED_PREDICATES),

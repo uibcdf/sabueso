@@ -733,3 +733,24 @@ uibcdf/sabueso#78, adopting MOLI's distribution policy (uibcdf/moli#25).
 - **Checked on the live registry.** 0.5.0 is free; 0.4.0 is refused as occupied; the
   public poststate of 0.4.0 matches its tested digest.
 
+## UniProt isoforms, deletions and secondary structure (2026-09-27)
+uibcdf/sabueso#80, card schema 0.3.6.
+- **Deletions are stated, not implied.** A UniProt "Missing" is
+  `substitution: {missing: true}` in variants, mutagenesis and alternative sequences.
+  An item with no substitution stays what it was: nothing stated. Curation compares a
+  deletion as a substitution of its own. Cards of 0.3.5 or earlier that hold such an
+  item report a `missing` gap on migration.
+- **Isoform links come from the entry.** An alternative sequence names its isoforms
+  through the entry's own list (`Sequence=VSP_…`). No isoform is matched by sequence or
+  name, and isoform sequences are not built by applying segments: that would be derived
+  knowledge, and fetching them is a later step.
+- **Secondary structure is positional, with its structures.** It goes to
+  `features_positional.secondary_structure`, one item per segment, with the PDB entries
+  it was read from. `structure.secondary_structure` stays unwritten, since
+  it would drop that basis.
+- **A text comment's isoform restriction lives on its SourceAssertion**
+  (`source_metadata.molecule`). The published shape of text comments stays a string.
+  Structured comments (catalytic activity, subcellular location) keep it in the value,
+  as before.
+- **Not curatable yet:** alternative sequences and secondary structure, until a
+  publication needs to be compared with them.

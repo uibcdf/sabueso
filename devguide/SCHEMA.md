@@ -2,7 +2,9 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
-  - `0.3.5` is current, not yet released: it adds `author_numbering` (#73);
+  - `0.3.6` is current, not yet released: it adds UniProt isoforms, alternative
+    sequences, secondary structure and `substitution.missing` (#80);
+  - `0.3.5` is the schema of release 0.5.0: it adds `author_numbering` (#73);
   - `0.3.4` is the schema of release 0.4.0;
   - `0.3.3` is the schema of release 0.3.1;
   - `0.3.2` of release 0.3.0;
@@ -267,7 +269,8 @@ A Relationship is first-class, traceable knowledge:
       precision expressed in the field's unit. Its id hashes the value and the locator,
       so the same value at another place in the paper is another assertion.
     - Only knowledge fields take them (`sabueso.core.curation.CURATABLE_FIELDS`):
-      `annotations.*`, `features_positional.*` (except family sites) and
+      `annotations.*`, `features_positional.*` (except family sites, alternative
+      sequences and secondary structure) and
       `properties.physchem.*`. Identity, sequence and metadata never do.
     - `quality.curation` records each one: `field`, `publication`,
       `source_assertion_id`, `outcome` (`new`, `corroborates`, `differs`,
@@ -464,6 +467,25 @@ they are different kinds of statement about a position. Each item keeps
 `description`, and for variants the `feature_id` (`VAR_…`) and `cross_references`
 (dbSNP). The evidence stays in the item's own SourceAssertion (`source_metadata.eco`).
 The description is never parsed into a category.
+
+A deletion, UniProt's "Missing", is `substitution: {missing: true}` since 0.3.6 (#80).
+Before, it was kept with no substitution, so it read as an unspecified change. Curation
+compares a deletion as a substitution of its own.
+
+## Isoforms and secondary structure (#80)
+- `annotations.isoforms` lists the isoforms as UniProt's ALTERNATIVE PRODUCTS comment
+  states them (`isoform_id`, `name`, `synonyms`, `sequence_status`,
+  `alternative_sequence_ids`, `note`). `annotations.alternative_products` keeps the
+  comment's `events` and `note`. An entry with no such comment gives `not_stated`,
+  never "one isoform".
+- `features_positional.alternative_sequence` holds the `VSP_` segments. `isoform_ids`
+  comes from the entry's own isoform list (`Sequence=VSP_…`); nothing is matched by
+  sequence or name. Isoform sequences are not built from these segments.
+- `features_positional.secondary_structure` holds helix, strand and turn segments, each
+  with `element` and the `structures` it was read from (`ECO:0007829`). One entry often
+  mixes several structures.
+- A free-text comment restricted to one isoform keeps it as
+  `source_metadata.molecule` on its SourceAssertion.
 
 ## Positional Features (Proteins/Peptides)
 The schema includes positional features observed directly in UniProt JSON examples:

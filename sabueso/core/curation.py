@@ -75,8 +75,13 @@ def _positions(item: Dict[str, Any]) -> Tuple[int, ...]:
 
 
 def _substitution(item: Dict[str, Any]) -> tuple:
+    """A deletion (``missing``, #80) is its own substitution, never an unstated one."""
     s = item.get("substitution") or {}
-    return (s.get("original"), tuple(s.get("alternatives") or []))
+    return (
+        s.get("original"),
+        tuple(s.get("alternatives") or []),
+        bool(s.get("missing")),
+    )
 
 
 #: How two items of a list field are recognised as the same item. None: free text,

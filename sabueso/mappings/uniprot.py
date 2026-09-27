@@ -32,7 +32,14 @@ _FEATURES = {
     "Disulfide bond": "features_positional.disulfide_bond",
     "Natural variant": "features_positional.natural_variant",
     "Mutagenesis": "features_positional.mutagenesis",
+    # The segment an isoform replaces or lacks (VAR_SEQ, #80).
+    "Alternative sequence": "features_positional.alternative_sequence",
+    # Secondary structure, as read by UniProt from the PDB entry each segment cites (#80).
+    "Helix": "features_positional.secondary_structure",
+    "Beta strand": "features_positional.secondary_structure",
+    "Turn": "features_positional.secondary_structure",
 }
+_SECONDARY_ELEMENTS = {"Helix": "helix", "Beta strand": "strand", "Turn": "turn"}
 
 
 #: Every field the mapping can state, and the relationships it can give: what a card
@@ -50,6 +57,8 @@ STATED_FIELDS = frozenset(
         "annotations.catalytic_activity",
         "annotations.subcellular_location",
         "annotations.disease",
+        "annotations.isoforms",
+        "annotations.alternative_products",
         "annotations.organism",
         "annotations.taxon_id",
         "annotations.lineage",
@@ -151,6 +160,32 @@ def _eco(evidences: List[Dict[str, Any]] | None) -> List[Dict[str, str]]:
             item["id"] = ev["id"]
         out.append(item)
     return out
+
+
+def _isoform(isoform: Dict[str, Any]) -> Dict[str, Any] | None:
+    """One isoform of an ``ALTERNATIVE PRODUCTS`` comment, as stated (#80)."""
+    ids = [i for i in isoform.get("isoformIds") or [] if i]
+    if not ids:
+        return None
+    item: Dict[str, Any] = {"isoform_id": ids[0]}
+    if len(ids) > 1:
+        item["isoform_ids"] = ids
+    name = get_in(isoform, ["name", "value"])
+    if name:
+        item["name"] = name
+    synonyms = [s["value"] for s in isoform.get("synonyms") or [] if s.get("value")]
+    if synonyms:
+        item["synonyms"] = synonyms
+    if isoform.get("isoformSequenceStatus"):
+        item["sequence_status"] = isoform["isoformSequenceStatus"]
+    if isoform.get("sequenceIds"):
+        item["alternative_sequence_ids"] = list(isoform["sequenceIds"])
+    note = " ".join(
+        t["value"] for t in get_in(isoform, ["note", "texts"]) or [] if t.get("value")
+    )
+    if note:
+        item["note"] = note
+    return item
 
 
 def _disease(comment: Dict[str, Any]) -> Dict[str, Any] | None:
@@ -456,12 +491,16 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         field_source_assertions.setdefault(fp, []).append(assertion["id"])
 
     def assert_list(fp: str, items: List[tuple], target: Dict[str, Any]) -> None:
-        """Record a list-valued field; ``items`` holds ``(value, eco)`` pairs."""
+        """Record a list-valued field; ``items`` holds ``(value, eco)`` pairs, or
+        ``(value, eco, metadata)`` when the statement carries more (e.g. the isoform a
+        comment is restricted to)."""
         if not items:
             return
-        target[fp] = [value for value, _ in items]
-        for value, eco in items:
-            assert_value(fp, value, {"eco": eco} if eco else None)
+        target[fp] = [item[0] for item in items]
+        for value, eco, *extra in items:
+            metadata = {"eco": eco} if eco else {}
+            metadata.update(extra[0] if extra else {})
+            assert_value(fp, value, metadata or None)
 
     # identifiers and names
     if primary:
@@ -489,14 +528,32 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     reactions: List[tuple] = []
     locations: List[tuple] = []
     diseases: List[tuple] = []
+    isoforms: List[tuple] = []
     for c in comments:
         ctype = c.get("commentType")
         if ctype in _TEXT_COMMENTS:
+            # A comment restricted to one isoform or chain keeps that restriction on
+            # its SourceAssertion (#80); the value stays the stated text.
+            molecule = {"molecule": c["molecule"]} if c.get("molecule") else {}
             for t in c.get("texts", []) or []:
                 if t.get("value"):
                     text_items[_TEXT_COMMENTS[ctype]].append(
-                        (t["value"], _eco(t.get("evidences")))
+                        (t["value"], _eco(t.get("evidences")), molecule)
                     )
+        elif ctype == "ALTERNATIVE PRODUCTS":
+            for isoform in c.get("isoforms") or []:
+                item = _isoform(isoform)
+                if item:
+                    isoforms.append((item, None))
+            products = {"events": list(c["events"])} if c.get("events") else {}
+            note = " ".join(
+                t["value"] for t in get_in(c, ["note", "texts"]) or [] if t.get("value")
+            )
+            if note:
+                products["note"] = note
+            if products:
+                fields["annotations.alternative_products"] = products
+                assert_value("annotations.alternative_products", products)
         elif ctype == "CATALYTIC ACTIVITY" and c.get("reaction"):
             reactions.append(
                 (
@@ -527,6 +584,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     assert_list("annotations.subunit", text_items["annotations.subunit"], fields)
     assert_list("annotations.subcellular_location", locations, fields)
     assert_list("annotations.disease", diseases, fields)
+    assert_list("annotations.isoforms", isoforms, fields)
     for fp in (
         "annotations.tissue_specificity",
         "annotations.ptm",
@@ -588,6 +646,11 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
 
     # positional features
     feature_items: Dict[str, List[tuple]] = {fp: [] for fp in _FEATURES.values()}
+    # The isoforms each alternative sequence makes, as the entry lists them (#80).
+    isoforms_of: Dict[str, List[str]] = {}
+    for isoform, _ in isoforms:
+        for vsp in isoform.get("alternative_sequence_ids") or []:
+            isoforms_of.setdefault(vsp, []).append(isoform["isoform_id"])
     for f in uniprot_json.get("features", []) or []:
         fp = _FEATURES.get(f.get("type"))
         if not fp:
@@ -609,17 +672,34 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             },
             "description": f.get("description") or "",
         }
-        # Variants and mutagenesis state a substitution. UniProt may list several
-        # alternative residues for one item; they are kept as stated, not split.
-        substitution = f.get("alternativeSequence") or {}
-        original = substitution.get("originalSequence")
-        alternatives = [a for a in substitution.get("alternativeSequences") or [] if a]
+        # Variants, mutagenesis and alternative sequences state a substitution. UniProt
+        # may list several alternative residues for one item; they are kept as stated,
+        # not split. A stated substitution with no residues is UniProt's "Missing": a
+        # deletion, kept as ``missing`` (#80).
+        substitution = f.get("alternativeSequence")
+        original = (substitution or {}).get("originalSequence")
+        alternatives = [
+            a for a in (substitution or {}).get("alternativeSequences") or [] if a
+        ]
         if original or alternatives:
             item["substitution"] = {
                 k: v
                 for k, v in (("original", original), ("alternatives", alternatives))
                 if v
             }
+        if substitution is not None and not alternatives:
+            item.setdefault("substitution", {})["missing"] = True
+        if f.get("type") in _SECONDARY_ELEMENTS:
+            item["element"] = _SECONDARY_ELEMENTS[f["type"]]
+            structures = [
+                f"pdb:{e['id']}"
+                for e in f.get("evidences") or []
+                if e.get("source") == "PDB" and e.get("id")
+            ]
+            if structures:
+                item["structures"] = structures
+        if isoforms_of.get(f.get("featureId")):
+            item["isoform_ids"] = isoforms_of[f["featureId"]]
         if f.get("featureId"):
             item["feature_id"] = f["featureId"]
         cross_references = [
@@ -638,7 +718,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         if ligand:
             item["ligand"] = ligand
         feature_items[fp].append((item, _eco(f.get("evidences"))))
-    for fp in _FEATURES.values():
+    for fp in feature_items:
         assert_list(fp, feature_items[fp], features)
 
     # experimental structures (PDB cross-references) as has_structure relationships

@@ -12,6 +12,7 @@ Every card states the card schema it was written with (`meta.schema_version`):
 | 0.3.1 | 0.3.3 |
 | 0.4.0 | 0.3.4 |
 | 0.5.0 | 0.3.5 |
+| main (unreleased) | 0.3.6 |
 
 - A card of an older version of the same line (`0.3.x`) is read as it is.
 - A card of a newer version of the line is read with a warning, keeping the keys this

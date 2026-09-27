@@ -120,6 +120,30 @@ protein, and `card.predicted_structures()` lists them:
 Models are kept apart from experimental structures: `card.structures()` never counts
 them.
 
+## Secondary structure and isoforms (UniProt)
+
+A protein card keeps what UniProt states about both:
+
+- `features_positional.secondary_structure`: helix, strand and turn segments, in UniProt
+  numbering. Each one names the structures it was read from (`structures`, e.g.
+  `["pdb:9F69"]`), and one entry often mixes several. They describe those structures,
+  not the protein in every state or construct.
+- `annotations.isoforms`: the isoforms of the entry, with their ids, names, synonyms and
+  sequence status. `annotations.alternative_products` keeps what produces them and
+  UniProt's note on the list (e.g. "Additional isoforms seem to exist.").
+- `features_positional.alternative_sequence`: the segment each isoform replaces or
+  lacks, with the isoforms the entry links to it. A segment an isoform lacks is
+  `substitution: {"missing": true}`.
+
+```python
+card, _ = sabueso.resolve("P60174")
+for item in card.get("features_positional.secondary_structure")["value"][:3]:
+    print(item["element"], item["location"]["sequence"]["start"], item["structures"])
+```
+
+An entry with no isoform list gives `not_stated` in `card.knowledge_state()`, never "one
+isoform". Isoform sequences are not fetched.
+
 ## Oligomer, interfaces and ligand sites
 
 What sources state about the oligomer, the interfaces between chains and the residues

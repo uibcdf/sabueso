@@ -54,8 +54,9 @@ record = card.add_literature_assertion(
 print(record["outcome"])  # new, corroborates, differs, not_comparable or not_compared
 ```
 
-- **Fields.** Knowledge fields only: `annotations.*`, `features_positional.*`,
-  `properties.physchem.*` and `names.synonyms`. A positional item can give `start` (and `end`) in the card's
+- **Fields.** Knowledge fields only: `annotations.*`, `features_positional.*` (except
+  family sites, alternative sequences and secondary structure), `properties.physchem.*`
+  and `names.synonyms`. A positional item can give `start` (and `end`) in the card's
   UniProt numbering instead of a full location.
 - **Outcomes.** The same item, identified for example by position and substitution:
   - with the same content, it `corroborates`;

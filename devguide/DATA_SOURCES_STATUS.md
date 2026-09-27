@@ -24,16 +24,20 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - catalytic activity as `{reaction, ec_number, rhea_id, molecule?}`;
   - subcellular location as `{location, topology?, orientation?, molecule?}`;
   - sequence: primary, length, molecular weight in Da, CRC64/MD5 checksums;
-  - positional features: binding and active sites, modified residues, disulfide bonds, glycosylation, natural variants and mutagenesis (substitution, verbatim description, `VAR_` id and cross-references; uibcdf/sabueso#33);
+  - positional features: binding and active sites, modified residues, disulfide bonds, glycosylation, natural variants and mutagenesis (substitution, verbatim description, `VAR_` id and cross-references; uibcdf/sabueso#33). A deletion ("Missing") is `substitution.missing` (#80);
+  - isoforms (ALTERNATIVE PRODUCTS: ids, names, synonyms, sequence status, `VSP_` ids; events and note) and alternative sequences, linked to the isoforms the entry lists for them (#80);
+  - secondary structure (helix, strand, turn), each segment with the PDB entries it was read from (#80);
   - PDB cross-references as `has_structure` relationships (method, resolution, chains, UniProt-numbered ranges, coverage), shown through `Card.structures()`;
   - GO cross-references as `annotated_with` relationships (aspect, term, GO code, assigned by; ECO in `source_metadata`);
   - InterPro, Pfam, Gene3D (CATH), SUPFAM, PANTHER, PROSITE and CDD cross-references as `classified_in` relationships;
   - curated INTERACTION comments (IntAct binary interactions) as `interacts_with` relationships;
   - UniProt evidence qualifiers kept per SourceAssertion as `source_metadata.eco`.
 - **Known limits**:
-  - other comment types (disease, alternative products, similarity, …) and feature types (sequence conflict, cross-link, chain, secondary structure) are not mapped;
+  - other comment types (similarity, miscellaneous, …) and feature types (sequence conflict, cross-link, chain, region, motif, …) are not mapped;
+  - isoform sequences are not fetched, and never built by applying alternative sequences;
+  - UniProt's secondary structure comes from the PDB entries each segment cites, often several; it describes those structures, not the protein in every state or construct;
   - the stated effect of a variant or mutagenesis is free text, kept verbatim: "thermolabile" or "abolishes ligand binding" is not turned into a category;
-  - isoform restrictions (`molecule`) are recorded for catalytic activity and subcellular location, but not for free-text comments;
+  - isoform restrictions (`molecule`) are part of the value for catalytic activity and subcellular location. For free-text comments they are on the SourceAssertion (`source_metadata.molecule`, since 0.3.6), since the value is the stated text;
   - identical repeated values in one record share one SourceAssertion id.
   - INTERACTION comments are UniProt's curated subset of binary interactions: 3 for human TIM, while its IntAct cross-reference reports 75. Full interaction data would need IntAct, STRING or BioGRID directly.
 - **Notes**: stable online tests

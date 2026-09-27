@@ -91,6 +91,20 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "qualifier": True,
         },
     ],
+    "0.3.6": [
+        {"path": "annotations.isoforms", "filled_by": "refresh"},
+        {"path": "annotations.alternative_products", "filled_by": "refresh"},
+        {"path": "features_positional.alternative_sequence", "filled_by": "refresh"},
+        {"path": "features_positional.secondary_structure", "filled_by": "refresh"},
+        {
+            "path": "features_positional.natural_variant.substitution.missing",
+            "filled_by": "refresh",
+        },
+        {
+            "path": "features_positional.mutagenesis.substitution.missing",
+            "filled_by": "refresh",
+        },
+    ],
 }
 
 #: Qualifiers every relationship of their predicate has when fetched with the schema
@@ -141,6 +155,13 @@ def _has(data: Dict[str, Any], path: str) -> bool:
             )
         return bool(rels)
     node: Any = data.get("sections") or {}
+    if path.endswith(".substitution.missing"):
+        # Before 0.3.6 a deletion was an item with no substitution (#80): only such an
+        # item is a gap, not a card without deletions.
+        for key in path.split(".")[:2]:
+            node = node.get(key) if isinstance(node, dict) else None
+        items = (node or {}).get("value") or []
+        return all("substitution" in item for item in items if isinstance(item, dict))
     for key in path.split("."):
         if not isinstance(node, dict) or key not in node:
             return False
