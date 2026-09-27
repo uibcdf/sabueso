@@ -57,11 +57,6 @@ message.
 
 ## Known issues
 
-- With pytest-receptor 1.1.0, every receptor run ends with
-  `ResourceWarning: unclosed file ... '/dev/null'`. The receptor never closes a discard
-  stream, and SMonitor's warning capture makes the normally hidden warning visible. It is
-  cosmetic: exit status and verdict are unaffected. Tracked upstream in
-  uibcdf/pytest-receptor#4.
 - `@signal` (SMonitor) and `@arg_digest` (ArgDigest) each wrap a public function in
   extra frames, so a warning raised inside it points at their decorator module unless the
   stack level skips those frames. `outcomes.py` used to count them by hand

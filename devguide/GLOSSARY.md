@@ -18,7 +18,7 @@
   subject card's `relationship_store`.
 - **Derived knowledge**: what a view computes from stored knowledge, such as a class, a
   group, a state or an identity finding. It carries the named, versioned rule that
-  produced it (e.g. `bioactivity_class@3`, `structure_state@1`), and is never stored as
+  produced it (e.g. `bioactivity_class@3`, `structure_state@2`), and is never stored as
   a SourceAssertion.
 - **Knowledge state**: per area and source, whether a card knows something (`known`),
   sources disagree (`conflicting`), the source was asked and states nothing
