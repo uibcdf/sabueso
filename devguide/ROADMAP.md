@@ -37,7 +37,7 @@ status, so that none is lost because a pilot has not asked for it yet.
 - **Maintainers may schedule a foundational objective on its own.** The pilots do not
   own the plan.
 
-## Delivered so far (0.1.0 → 0.4.0)
+## Delivered so far (0.1.0 → 0.5.0)
 
 - **Foundations.**
   - Card, Deck, `SourceAssertionStore` and `RelationshipStore`.
@@ -49,6 +49,10 @@ status, so that none is lost because a pilot has not asked for it yet.
   - Content-addressed card and deck snapshots, and pinned references.
   - The `KnowledgeStore` and the `CurationStore`.
   - Honest migration and refresh of stored cards.
+- **Release route.** Staged conda releases:
+  - a dependency-contract preflight;
+  - inspection of the exact artifact;
+  - immutable coordinates, and a recorded public poststate (#76–#78).
 - **Sources in use.**
   - UniProt, RCSB PDB, PDB CCD, PDBe-KB, InterPro, AlphaFold DB.
   - ChEMBL, BindingDB, PubChem and PubChem BioAssay, UniChem.
@@ -145,7 +149,11 @@ Delivered for the first pilot's knowledge baseline and structural inventory:
 - predicted structures (#57) and curated engagement (#61);
 - measurements across sources (#66, #68);
 - migration (#51) and claims (#43);
-- names, the structural inventory and its grouping (#70).
+- names, the structural inventory and its grouping (#70);
+- what the first live run of the baseline found: the authors' oligomer (#72), author
+  numbering (#73), partial source answers (#74), the measurement review (#75);
+- the integrity of pinned item reads (#79), a case of the reference contract
+  (uibcdf/moli#3).
 
 Open, pilot-related:
 - #53, the reference form (waits on uibcdf/moli#3);

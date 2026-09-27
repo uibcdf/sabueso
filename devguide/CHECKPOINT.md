@@ -5,31 +5,20 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-09-26, after release 0.4.0.*
+*Last updated: 2026-09-27, after release 0.5.0.*
 
 ## Release and schema
 
-- **Latest release:** 0.4.0 (2026-09-25).
+- **Latest release:** 0.5.0 (2026-09-27).
   - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
-  - Archived on Zenodo, DOI 10.5281/zenodo.22969742.
-- **Card schema:** main writes 0.3.5 (`schemas/card_schema_0.3.5.yaml`), unpublished:
-  0.3.4 plus `author_numbering` (#73). Release 0.4.0 writes 0.3.4.
+  - Staged candidate 2ea2693; sha256 `69fd95b1…5ecb`.
+  - Verified by a clean public install on Python 3.14. Its Zenodo archive is pending.
+- **Card schema:** 0.3.5 (`schemas/card_schema_0.3.5.yaml`), published by 0.5.0. Main may
+  already write additive changes that the next release will publish.
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
-    0.3.4.
+    0.3.5.
   - The recorded shape of the current schema is `schemas/card_shape_0.3.5.json`.
-- **Unreleased on main:**
-  - inventory grouping keys and residue maps (#70);
-  - NCBI Gene for identity across gene databases (#69);
-  - `claims(topic)` and `group_by_rank(rank)` refuse misspelt values;
-  - the selection rules published in the user guide match the packaged ones (0.2.0);
-  - the oligomer from author-defined assemblies (`structure_state@2`, #72); author
-    numbering (#73); partial RCSB entries kept and a `partial` knowledge state
-    (`knowledge_state@2`, #74);
-  - pinned item reads and relationship searches verify their snapshot (#79);
-  - SMonitor >= 0.17.0, whose frame counting Sabueso now follows;
-  - the dependency-contract preflight (`devtools/dependency_preflight.py`, #76), and the
-    inspection of the exact staged artifact (#77), immutable Conda coordinates and a
-    recorded public poststate (#78).
+- **Unreleased on main:** nothing yet.
 
 ## Package layout
 
@@ -67,7 +56,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 751 tests passed, 15 online tests deselected (2026-09-27). Run with
+- Offline suite: 753 tests passed, 15 online tests deselected (2026-09-27). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.
