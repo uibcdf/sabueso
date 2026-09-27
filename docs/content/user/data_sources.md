@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 20, queued 54, deferred 6, retired 3, out of scope 4.
+Summary: in use 20, evaluating 12, queued 46, deferred 7, retired 3, out of scope 4.
 
 ## In use
 
@@ -33,6 +33,23 @@ Summary: in use 20, queued 54, deferred 6, retired 3, out of scope 4.
 | [BindingDB](https://www.bindingdb.org/) | Binding affinity and experimental bioactivity | REST getLigandsByUniprots, no key; monomers anchored through UniChem | CC BY 3.0 (BindingDB curation) and CC BY-SA 3.0 (imported from ChEMBL); treated as CC BY-SA 3.0, since the REST records state no origin | 2026-09-25 |
 | [PubChem BioAssay](https://pubchem.ncbi.nlm.nih.gov/) | Binding affinity and experimental bioactivity | PUG REST (assays by protein, summaries, concise tables, compound InChIKeys) | US public domain (NLM policy); deposited data keeps its depositor terms (ChEMBL copies: CC BY-SA 3.0) | 2026-09-25 |
 | [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) | Organism, orthology and biological context | NCBI Datasets REST API, no key | US public domain (NLM policy) | 2026-09-25 |
+
+## Being evaluated
+
+| Resource | Category | What it would bring | Since |
+| --- | --- | --- | --- |
+| [PHI-base](https://phi-base.org/) | Organism, orthology and biological context | Pathogen–host interactions: genes whose mutation changes a pathogen's phenotype on its host. | 2026-09-27 |
+| [TDR Targets](https://tdrtargets.org/) | Organism, orthology and biological context | Target prioritisation for pathogens of neglected tropical diseases: essentiality, druggability, similarity to the host. | 2026-09-27 |
+| [ClinicalTrials.gov](https://clinicaltrials.gov/) | Target validation, genetics and functional networks | Registered clinical studies: interventions, conditions, phases and status. The clinical layer of the original plan (clinical trials of ligands). | 2026-01-31 |
+| [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/) | Target validation, genetics and functional networks | Human genomic variants and their clinical significance. | 2026-09-25 |
+| [DepMap](https://depmap.org/) | Target validation, genetics and functional networks | CRISPR and RNAi screens of gene essentiality and dependencies in cancer cell lines. | 2026-09-25 |
+| [DGIdb](https://dgidb.org/) | Target validation, genetics and functional networks | Aggregated drug–gene interactions and druggability categories. | 2026-09-25 |
+| [DISEASES (Jensen lab)](https://diseases.jensenlab.org/) | Target validation, genetics and functional networks | Human gene–disease associations in separate channels: curated knowledge, experiments and text mining, each with its own score. | 2026-09-27 |
+| [gnomAD](https://gnomad.broadinstitute.org/) | Target validation, genetics and functional networks | Population allele frequencies, e.g. to assess the conservation of a binding pocket. | 2026-09-25 |
+| [Open Targets Platform](https://platform.opentargets.org/) | Target validation, genetics and functional networks | Integrated target–disease association evidence, tractability for small molecules and biologics, preclinical data. | 2026-09-25 |
+| [Orphadata (Orphanet)](https://www.orphadata.com/) | Target validation, genetics and functional networks | Rare diseases and their genes, curated, with the type of association. | 2026-09-27 |
+| [Pharos / TCRD (IDG)](https://pharos.nih.gov/) | Target validation, genetics and functional networks | Human target development levels (Tclin, Tchem, Tbio, Tdark) and aggregated target knowledge, keyed by UniProt, HGNC, Ensembl and NCBI Gene. | 2026-09-27 |
+| [Reactome](https://reactome.org/) | Target validation, genetics and functional networks | Curated human pathways, reactions and signalling networks (REST API). | 2026-09-25 |
 
 ## Queued for review
 
@@ -81,15 +98,7 @@ Summary: in use 20, queued 54, deferred 6, retired 3, out of scope 4.
 | [ModelArchive](https://modelarchive.org/) | Macromolecular structures, models and dynamics | Open repository of computational macromolecular models with mmCIF metadata. | 2026-09-25 |
 | [NDB (Nucleic Acid Database)](https://ndbserver.rutgers.edu/) | Macromolecular structures, models and dynamics | Structures and conformations of nucleic acids and their complexes. | 2026-09-25 |
 | [ProThermDB](https://web.iitm.ac.in/bioinfo2/prothermdb/) | Macromolecular structures, models and dynamics | Experimental protein stability data (ΔΔG, Tm) for point mutations. | 2026-09-25 |
-| [ClinicalTrials.gov](https://clinicaltrials.gov/) | Target validation, genetics and functional networks | Registered clinical studies: interventions, conditions, phases and status. The clinical layer of the original plan (clinical trials of ligands). | 2026-01-31 |
-| [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/) | Target validation, genetics and functional networks | Human genomic variants and their clinical significance. | 2026-09-25 |
-| [DepMap](https://depmap.org/) | Target validation, genetics and functional networks | CRISPR and RNAi screens of gene essentiality and dependencies in cancer cell lines. | 2026-09-25 |
-| [DGIdb](https://dgidb.org/) | Target validation, genetics and functional networks | Aggregated drug–gene interactions and druggability categories. | 2026-09-25 |
-| [gnomAD](https://gnomad.broadinstitute.org/) | Target validation, genetics and functional networks | Population allele frequencies, e.g. to assess the conservation of a binding pocket. | 2026-09-25 |
-| [KEGG PATHWAY](https://www.kegg.jp/) | Target validation, genetics and functional networks | Metabolic and signalling pathway maps and human diseases. | 2026-09-25 |
-| [Open Targets Platform](https://platform.opentargets.org/) | Target validation, genetics and functional networks | Integrated target–disease association evidence, tractability for small molecules and biologics, preclinical data. | 2026-09-25 |
 | [PharmacoDB](https://pharmacodb.pmgenomics.ca/) | Target validation, genetics and functional networks | Harmonised pharmacogenomic screens and cellular dose–response curves. | 2026-09-25 |
-| [Reactome](https://reactome.org/) | Target validation, genetics and functional networks | Curated human pathways, reactions and signalling networks (REST API). | 2026-09-25 |
 | [TTD (Therapeutic Target Database)](https://idrblab.org/ttd/) | Target validation, genetics and functional networks | Molecular targets, their clinical status, diseases and resistance mutations. | 2026-09-25 |
 | [Ensembl](https://www.ensembl.org/) | Targets, sequence and basic pharmacology | Gene and transcript annotation, homology and population variants. | 2026-09-25 |
 
@@ -101,6 +110,7 @@ Summary: in use 20, queued 54, deferred 6, retired 3, out of scope 4.
 | [BioGRID](https://thebiogrid.org/) | The API needs a personal access key; IntAct (via UniProt) and STRING cover current needs. | Genetic interactions are needed, or key management exists for deployments. | 2026-09-23 |
 | [DrugBank (open data)](https://go.drugbank.com/) | Licensing constrains redistribution and caching; only DrugBank ids are kept, through UniChem. | A licence compatible with Sabueso's caching and redistribution is confirmed. | 2026-09-23 |
 | [Guide to PHARMACOLOGY (IUPHAR/BPS)](https://www.guidetopharmacology.org/) | Its web services now need a personal API key (HTTP 401 without one), its data is under ODbL (share-alike), and UniProt links neither test target to it. | A target of interest has a GuidetoPHARMACOLOGY cross-reference in UniProt, and key management exists for deployments (as for BioGRID). | 2026-09-25 |
+| [KEGG PATHWAY](https://www.kegg.jp/) | Not a public database: free academic use of the website only; services, downloads and non-academic use need a licence, which does not fit redistribution across MOLI. | A licence covering MOLI use is in place, or a pathway need is not met by Reactome (CC0). | 2026-09-25 |
 | [BioLiP](https://zhanggroup.org/BioLiP/) | Bulk downloads of a third-party pipeline, not a per-record service; the PDB subject-of-investigation flag already separates ligands from additives, and PDBe-KB gives contacts. | A batch import exists, or a question needs curated biologically relevant sites that PDBe-KB and the PDB flag do not give. | 2026-09-23 |
 | [M-CSA (Mechanism and Catalytic Site Atlas)](https://www.ebi.ac.uk/thornton-srv/m-csa/) | Evaluated: it links both TIMs to an entry but states catalytic residues and roles only in the numbering of a reference species; placing them on another sequence needs an alignment. | A residue mapping from an alignment (MolSysMT) can be applied to curated sites (#30). | 2026-09-23 |
 

@@ -37,6 +37,15 @@ themselves are not Sabueso's work and keep their source's licence.
 - **eMolecules**: data downloads may require license agreements.
 - **ChemSpider**: API access requires a key and has usage conditions.
 - **BioGRID** (uibcdf/sabueso#22): requires an access key; terms to be checked before use.
+- **KEGG**: not a public database; beyond academic use of its website, services,
+  downloads and non-academic use need a licence. Deferred; Reactome (CC0) covers
+  pathways (#83).
+- **DrugBank, checked 2026-09-27**: its open data (identifiers, names, synonyms) is CC0,
+  and its full database, which holds the clinical content, is CC BY-NC 4.0. The
+  clinical content stays out of Sabueso (#81).
+- **Aggregators** (DGIdb, Pharos/TCRD): they carry each primary source's terms, so a
+  field is usable only when its primary source's licence is. Licences of sources under
+  evaluation are recorded in the registry (`sources/registry.yaml`, #83).
 
 ## Share-alike (ChEMBL)
 ChEMBL is the only source in use with a share-alike clause, so it is the one to watch.

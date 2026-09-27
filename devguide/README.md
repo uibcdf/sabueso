@@ -55,6 +55,7 @@ Every document is one of four kinds:
 | `sources/registry.yaml` | living (source of truth) | Every resource: in use, evaluating, queued, deferred, rejected, retired, out of scope |
 | `sources/README.md` | normative | How sources are proposed, triaged and decided |
 | `DATA_SOURCES_STATUS.md` | living | Technical detail of each source in use |
+| `SOURCE_COVERAGE.md` | living | Knowledge areas, the source rubric, and evaluations by wave (#83) |
 | `STORAGE_LAYOUT.md` | living | Knowledge store, files, recommended project layout |
 | `CACHE_POLICY.md` | living | What is stored and what is not, and open questions |
 | `CARD_SIZE_RISKS.md` | living | Card growth, measurements, mitigations |

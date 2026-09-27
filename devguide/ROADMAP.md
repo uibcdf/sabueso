@@ -169,15 +169,21 @@ ahead of that use.
 
 Foundational route, in the order proposed now:
 
+0. **Source coverage (#83).** Sabueso is MOLI's tracker of the outside world: every
+   source it can reach, evaluated with one rubric (`SOURCE_COVERAGE.md`), and an
+   architecture that scales to many sources. Wave 1 (target validation, disease,
+   pathogen context) is evaluated. It sets the order of items 3 and 4 below and adds
+   pathways, variants and pathogen context.
 1. **Knowledge packets and KnowledgeQuery (#71, uibcdf/moli#22).** A prototype is on
    main: protein subject and comparator, seven aspects, pinned and stored packets, and
    a content-equivalence id. Next: let real use (the pilot, MOLI Agent) decide the
    aspects and the size of facts, and align with the MOLI contract once it is agreed.
 2. **UniProt isoforms and secondary structure.** Mapped on main (#80), with per-chain
    secondary structure from RCSB. Isoform sequences remain.
-3. **Clinical layer.** Evaluate ClinicalTrials.gov (queued), and DrugBank's terms, for
-   use cases 2 and 8.
-4. **Disease → targets.** Evaluate Open Targets (queued) for use case 9.
+3. **Clinical layer (#81).** Evaluated: ChEMBL indications, and trials only by the NCT
+   ids ChEMBL states. DrugBank stays deferred for clinical content (CC BY-NC).
+4. **Disease association (#82).** Evaluated: Open Targets, DISEASES and Orphadata for
+   humans. Pathogen targets need other sources (`SOURCE_COVERAGE.md`).
 5. **Peptide cards.** Scope them before any source (use case 5, CPPsite).
 
 Each is proposed as an issue before work starts, and the order is revisited at each
