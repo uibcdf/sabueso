@@ -33,7 +33,8 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | `pdbe_kb/*.json` | PDBe-KB (EMBL-EBI), ligand binding sites (2026-09-23) and interface residues (2026-09-24) | — | 2026-09-23 | CC BY 4.0 |
 | `interpro/*.json` | InterPro (EMBL-EBI), site residues from the CDD member database | InterPro 110.0 | 2026-09-23 | see note below |
 | `string/*.json` | STRING | 12.0 | 2026-09-23 | CC BY 4.0 |
-| `chembl/*.json`, `CHEMBL90555.json` | ChEMBL (EMBL-EBI); CHEMBL90555 added to `chembl/molecules.json` 2026-09-24 | ChEMBL_37 (released 2026-05-01) | 2026-09-23 | **CC BY-SA 3.0** |
+| `chembl/*.json`, `CHEMBL90555.json` | ChEMBL (EMBL-EBI); CHEMBL90555 added to `chembl/molecules.json` 2026-09-24; `chembl/indications.json` (benznidazole, CHEMBL110) added 2026-09-28 | ChEMBL_37 (released 2026-05-01) | 2026-09-23 | **CC BY-SA 3.0** |
+| `clinicaltrials/studies.json` | ClinicalTrials.gov (NLM), the 16 studies ChEMBL's benznidazole indications cite | API v2 data of 2026-09-25 | 2026-09-28 | US government work; Source: National Library of Medicine |
 | `unichem/*.json` | UniChem (EMBL-EBI); vincristine added 2026-09-24; lookups of the BindingDB monomers of the TIM fixtures by source id (`source31__<monomer>.json`) added 2026-09-25 | — | 2026-09-23 | see note below |
 | `5978.json`, `66414.json` | PubChem (NCBI/NLM) | — | earlier | US public domain (NLM policy) |
 | `2NZT.json` | RCSB PDB entry | — | earlier | CC0 1.0 |

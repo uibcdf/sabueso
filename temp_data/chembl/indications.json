@@ -1,0 +1,90 @@
+{
+ "indications": {
+  "CHEMBL110": [
+   {
+    "drugind_id": 108801,
+    "efo_id": "EFO:0008559",
+    "efo_term": "American trypanosomiasis",
+    "indication_refs": [
+     {
+      "ref_id": "NCT03191162,NCT03981523",
+      "ref_type": "ClinicalTrials",
+      "ref_url": "https://clinicaltrials.gov/search?term=NCT03191162%20NCT03981523"
+     }
+    ],
+    "max_phase_for_ind": "4.0",
+    "mesh_heading": "Chagas Disease",
+    "mesh_id": "D014355",
+    "molecule_chembl_id": "CHEMBL110",
+    "parent_molecule_chembl_id": "CHEMBL110"
+   },
+   {
+    "drugind_id": 118508,
+    "efo_id": "DOID:10113",
+    "efo_term": "trypanosomiasis",
+    "indication_refs": [
+     {
+      "ref_id": "P01CA02",
+      "ref_type": "ATC",
+      "ref_url": "https://www.whocc.no/atc_ddd_index/?code=P01CA02"
+     },
+     {
+      "ref_id": "NCT00123916",
+      "ref_type": "ClinicalTrials",
+      "ref_url": "https://clinicaltrials.gov/search?term=NCT00123916"
+     }
+    ],
+    "max_phase_for_ind": "4.0",
+    "mesh_heading": "Trypanosomiasis",
+    "mesh_id": "D014352",
+    "molecule_chembl_id": "CHEMBL110",
+    "parent_molecule_chembl_id": "CHEMBL110"
+   },
+   {
+    "drugind_id": 118509,
+    "efo_id": "EFO:0005044",
+    "efo_term": "Leishmaniasis",
+    "indication_refs": [
+     {
+      "ref_id": "P01CA02",
+      "ref_type": "ATC",
+      "ref_url": "https://www.whocc.no/atc_ddd_index/?code=P01CA02"
+     }
+    ],
+    "max_phase_for_ind": "4.0",
+    "mesh_heading": "Leishmaniasis",
+    "mesh_id": "D007896",
+    "molecule_chembl_id": "CHEMBL110",
+    "parent_molecule_chembl_id": "CHEMBL110"
+   },
+   {
+    "drugind_id": 118510,
+    "efo_id": "MONDO:0001444",
+    "efo_term": "Chagas disease",
+    "indication_refs": [
+     {
+      "ref_id": "NCT00123916,NCT01162967,NCT01377480,NCT01489228,NCT01549236,NCT01755403,NCT02369978,NCT02386358,NCT03191162,NCT03378661,NCT03672487,NCT03892213,NCT03981523,NCT04024163,NCT04897516,NCT06339710",
+      "ref_type": "ClinicalTrials",
+      "ref_url": "https://clinicaltrials.gov/search?term=NCT00123916%20NCT01162967%20NCT01377480%20NCT01489228%20NCT01549236%20NCT01755403%20NCT02369978%20NCT02386358%20NCT03191162%20NCT03378661%20NCT03672487%20NCT03892213%20NCT03981523%20NCT04024163%20NCT04897516%20NCT06339710"
+     },
+     {
+      "ref_id": "8983d6a0-f63f-4f8e-bba4-38223f39e29b",
+      "ref_type": "DailyMed",
+      "ref_url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8983d6a0-f63f-4f8e-bba4-38223f39e29b"
+     },
+     {
+      "ref_id": "label/2017/209570lbl.pdf",
+      "ref_type": "FDA",
+      "ref_url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2017/209570lbl.pdf"
+     }
+    ],
+    "max_phase_for_ind": "4.0",
+    "mesh_heading": "Chagas Disease",
+    "mesh_id": "D014355",
+    "molecule_chembl_id": "CHEMBL110",
+    "parent_molecule_chembl_id": "CHEMBL110"
+   }
+  ]
+ },
+ "version": "ChEMBL_37"
+}

@@ -104,7 +104,8 @@ through these parts; `PUBLIC_API.md` lists the public surface.
 
 ## Planned, not built (from the original design)
 
-- **Clinical layer.** Pharmacology, ADMET, clinical trials, pharmacovigilance,
+- **Clinical layer.** Partly built (#81): ChEMBL indications and the trials they cite
+  (`Card.clinical()`). Still planned: pharmacology, ADMET, pharmacovigilance,
   indications, contraindications and interactions, as a section apart from
   physicochemical and biological data. Today only ChEMBL's `clinical.max_phase` exists.
 - **Peptide cards.** `entity_type: peptide` exists; peptide sources and views do not.

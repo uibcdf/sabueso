@@ -22,7 +22,7 @@ status. This document holds the reasoning across sources.
 | Interactions | protein | all | IntAct (via UniProt), STRING | PPI-inhibitor resources (queued) |
 | Bioactivity | molecule–protein | all | ChEMBL, BindingDB, PubChem BioAssay | PDBbind (queued) |
 | Chemistry and ADMET | molecule | — | PubChem, PDB CCD, UniChem | ChEBI, Tox21/ToxCast (queued) |
-| Clinical | molecule | human | ChEMBL max phase | indications and trials (#81) |
+| Clinical | molecule | human | ChEMBL max phase and indications, ClinicalTrials.gov (#81) | adverse events (openFDA, later) |
 | Disease association | protein, disease | human | UniProt DISEASE comments | disease → targets (#82, this wave) |
 | Variants | protein | human first | UniProt variants and mutagenesis | ClinVar, gnomAD (this wave) |
 | Pathways | protein | all | UniProt pathway (text), Rhea | Reactome (this wave) |
@@ -63,7 +63,7 @@ Each source is checked live, and the date is recorded:
 | gnomAD | population variants | human | CC0 1.0 (core); some annotations CC BY-NC | gene, variant ids | Frequencies; large |
 | DepMap | essentiality in cancer cell lines | human | CC BY 4.0 (public release; some files differ) | gene ids | Bulk releases |
 | DGIdb | drug–gene interactions | human | aggregated; each source keeps its terms | gene ids; drugs grouped by name normalisation | Its drug grouping merges by name, so a drug's identity would need re-anchoring |
-| ClinicalTrials.gov | trials | human | US government work; NLM asks credit | NCT id; interventions as text only | Only through NCT ids ChEMBL states (#81) |
+| ClinicalTrials.gov | trials | human | US government work; NLM asks credit | NCT id; interventions as text only | **In use** since 2026-09-28, only through NCT ids ChEMBL states (#81) |
 | TDR Targets | pathogen target prioritisation | NTD pathogens | not checked | not checked | Did not answer on 2026-09-27; recheck |
 | PHI-base | pathogen–host phenotypes of mutants | 339 pathogens, trypanosomatids included | CC BY 4.0 (Zenodo releases) | UniProt accession per gene | **In use** since 2026-09-27; its HTTPS site did not answer from our network, but the releases are on Zenodo |
 | VEuPathDB services | stage expression, RNAi/CRISPR phenotypes | eukaryotic pathogens | no licence statement found; a data release policy exists | VEuPathDB gene ids (in use, #54) | #60 step 2; terms to be asked of the providers |

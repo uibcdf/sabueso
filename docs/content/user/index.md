@@ -38,6 +38,7 @@ concepts
 structures
 sites_and_interfaces
 bioactivities
+clinical
 literature_and_curation
 decks
 packets

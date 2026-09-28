@@ -40,7 +40,8 @@ MIGRATION_RULE = "card_migration@1"
 #: What each schema version added, and how a card gets it (``filled_by``):
 #: ``refresh`` (a fresh build with the same options states it), ``<option>`` (an
 #: enrichment to ask for), or ``curation``. Paths are field paths or relationship
-#: templates.
+#: templates. ``entity_types``, when given, limits a change to the cards it applies to
+#: (a molecule has no pathogen phenotypes, a protein no indications).
 SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
     "0.3.1": [{"path": "annotations.disease", "filled_by": "refresh"}],
     "0.3.2": [
@@ -113,7 +114,21 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
         {"path": "annotations.essentiality", "filled_by": "curation"},
         {"path": "annotations.accessibility", "filled_by": "curation"},
         {"path": "annotations.metabolic_role", "filled_by": "curation"},
-        {"path": "annotations.pathogen_phenotypes", "filled_by": "phi_base"},
+        {
+            "path": "annotations.pathogen_phenotypes",
+            "filled_by": "phi_base",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "relationships.investigated_for",
+            "filled_by": "indications",
+            "entity_types": ("small_molecule",),
+        },
+        {
+            "path": "relationships.tested_in",
+            "filled_by": "trials",
+            "entity_types": ("small_molecule",),
+        },
     ],
 }
 
@@ -191,6 +206,8 @@ def _enrichment_options(data: Dict[str, Any]) -> set:
             ("PubChem BioAssay", None): {"pubchem_bioassay"},
             ("RCSB PDB", None): {"structures"},
             ("PHI-base", None): {"phi_base"},
+            ("ChEMBL", "indications"): {"indications"},
+            ("ClinicalTrials.gov", None): {"trials"},
         }.get((source, kind), set())
     return options
 
@@ -205,7 +222,10 @@ def within_line_gaps(
     for version, changes in sorted(SCHEMA_CHANGES.items(), key=lambda kv: parse(kv[0])):
         if not (have < parse(version) <= want):
             continue
+        entity_type = (data.get("meta") or {}).get("entity_type")
         for change in changes:
+            if entity_type not in change.get("entity_types", (entity_type,)):
+                continue
             if _has(data, change["path"]):
                 continue
             filled_by = change["filled_by"]

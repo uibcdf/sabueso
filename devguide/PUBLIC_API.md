@@ -17,7 +17,9 @@ shows how to use them.
     - `structures`, `interfaces`, `ligand_sites`, `family_sites`;
     - `chembl`, `bindingdb`, `pubchem_bioassay`, `string`;
     - `predicted_structures`, `taxonomy`, `ncbi_gene`;
+    - `phi_base` (pathogen phenotypes, #83);
     - each source's `*_client`, and `resolver`.
+  - For small molecules: `unichem`, `pubchem`, `indications` and `trials` (#81).
   - An option the tool does not take is refused, never ignored.
 - `sabueso.resolve_protein_card`, `sabueso.resolve_molecule_card`: the card tools behind
   `resolve`.
@@ -49,6 +51,7 @@ shows how to use them.
   - `bioactivities(include_indirect=False, thresholds=None)`;
   - `ligands(deck, ...)` and `compare_ligands(deck, other, other_deck, ...)`;
   - `literature()` and `claims(topic=None)`;
+  - `clinical()` (molecules: indications and trials, #81);
   - `knowledge_state()`;
   - `entities()` and `entity(ref)`;
   - `compare(other, fields=None)` and `compare_knowledge(other, residue_map=None)`.

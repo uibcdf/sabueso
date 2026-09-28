@@ -74,6 +74,7 @@ def fixture_cards() -> List[dict]:
     from sabueso.tools.db.alphafold import FixtureAlphaFoldClient
     from sabueso.tools.db.bindingdb import FixtureBindingDBClient
     from sabueso.tools.db.chembl import FixtureChEMBLClient
+    from sabueso.tools.db.clinicaltrials import FixtureClinicalTrialsClient
     from sabueso.tools.db.interpro import FixtureInterProClient
     from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
     from sabueso.tools.db.pdb_ccd import FixtureCCDClient
@@ -252,7 +253,16 @@ def fixture_cards() -> List[dict]:
             phi_base=True,
             phi_base_client=FixturePHIBaseClient(data),
         )
-    return [c.to_dict() for c in (tctim, hstim, molecule, compound, pathogen)]
+        # A drug with its indications and the trials they cite (0.3.6).
+        drug, _ = sabueso.resolve(
+            "chembl:CHEMBL110",
+            chembl_client=chembl,
+            ccd_client=FixtureCCDClient(data),
+            unichem_client=FixtureUniChemClient(data),
+            trials={},
+            clinicaltrials_client=FixtureClinicalTrialsClient(data),
+        )
+    return [c.to_dict() for c in (tctim, hstim, molecule, compound, pathogen, drug)]
 
 
 def current_shape() -> List[str]:

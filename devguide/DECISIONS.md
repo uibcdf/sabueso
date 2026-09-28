@@ -824,3 +824,20 @@ uibcdf/sabueso#83, the first source of the coverage plan's pathogen gap.
 - **In packets,** the `biological_context` aspect asks PHI-base (`packet_aspects@1`, not
   yet published).
 
+## Clinical layer, step 1 (2026-09-28)
+uibcdf/sabueso#81.
+- **Trials only through a stated link.** ClinicalTrials.gov names interventions as text.
+  Sabueso asks it only for the NCT ids ChEMBL's drug indications cite, and records that
+  basis on every `tested_in`. No trial is matched to a molecule by name.
+- **Indications keep ChEMBL's terms.** One `investigated_for` per indication, to the
+  term's CURIE (`efo:`, `mondo:`, `doid:`…). Two terms with one MeSH heading are not
+  merged. The phase is ChEMBL's, per indication.
+- **A cited trial the registry lacks** keeps ChEMBL's statement, with `registry:
+  not_found`. A cited trial not fetched is listed in `Card.clinical()["not_fetched"]`,
+  never treated as absent.
+- **Two sources, two assertions.** The ChEMBL indication record supports both
+  relationships. The ClinicalTrials.gov study record, with subject `nct:<id>`,
+  supports `tested_in`.
+- **Migration changes may name the entity types they apply to** (`entity_types`), so a
+  protein is not told it lacks indications, nor a molecule pathogen phenotypes.
+

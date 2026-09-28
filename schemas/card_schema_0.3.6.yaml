@@ -88,8 +88,11 @@ schema:
     accessibility and metabolic_role, items of stated text. It also adds
     annotations.pathogen_phenotypes, the phenotypes PHI-base curates for mutants of a
     pathogen gene, alone or on a host, each with its whole genotype, host, publication
-    and PHI-base release. All additive, so a 0.3.5 card is a valid 0.3.6 card without
-    them.
+    and PHI-base release. It also adds the clinical layer of molecules
+    (uibcdf/sabueso#81) as two relationship predicates, investigated_for (a ChEMBL drug
+    indication, to its disease term) and tested_in (a ClinicalTrials.gov study an
+    indication cites, by NCT id). All additive, so a 0.3.5 card is a valid 0.3.6 card
+    without them.
 card_base:
   meta:
     card_id:

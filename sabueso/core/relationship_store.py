@@ -34,6 +34,8 @@ PREDICATES = frozenset(
         "has_ligand_site",  # protein -> PDB ligand (residues it contacts, e.g. PDBe-KB)
         "has_interface_with",  # protein -> partner chain (interface residues, PDBe-KB)
         "described_in",  # protein -> publication (pubmed:, doi:), e.g. UniProt references
+        "investigated_for",  # molecule -> disease term (ChEMBL drug indication), #81
+        "tested_in",  # molecule -> clinical trial (nct:), cited by an indication, #81
     }
 )
 

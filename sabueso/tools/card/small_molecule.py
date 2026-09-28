@@ -184,6 +184,9 @@ def resolve_molecule_card(
     unichem_client: Any | None = None,
     pubchem: bool = False,
     pubchem_client: Any | None = None,
+    indications: bool = False,
+    trials: Dict[str, Any] | None = None,
+    clinicaltrials_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve a small-molecule identifier and build the card of its molecule.
@@ -198,6 +201,12 @@ def resolve_molecule_card(
     resources hold for that structure, and the ChEMBL molecules and PDB components it
     lists are retrieved too. A failure of that expansion never prevents the card; it is
     recorded in ``quality.enrichments``. ``inchikey:`` identifiers need UniChem.
+
+    The clinical layer (#81, ``Card.clinical()``): ``indications`` adds ChEMBL's drug
+    indications of the card's ChEMBL molecules (``investigated_for``); ``trials`` (e.g.
+    ``{}`` or ``{"limit": 50}``) also adds the ClinicalTrials.gov studies those
+    indications cite, by NCT id (``tested_in``), and implies ``indications``. Trials are
+    never matched to a molecule by name.
     """
     namespace, record = _parse(identifier)
     decision: Dict[str, Any] = {"query": identifier, "rules": [], "sources": []}
@@ -302,6 +311,8 @@ def resolve_molecule_card(
         if other != key
         for rel in other_card.relationships("same_as")
     ] + unanchored
+    if indications or trials is not None:
+        _clinical(card, chembl_client, clinicaltrials_client, trials, enrichments)
     if enrichments:
         card.quality["enrichments"] = enrichments
         report_outcomes(enrichments, subject=molecule_ref(key))
@@ -317,6 +328,89 @@ def resolve_molecule_card(
         "decision": decision,
     }
     return card, resolution
+
+
+#: Trials fetched per card unless ``trials={"limit": n}`` says otherwise.
+DEFAULT_TRIAL_LIMIT = 100
+
+
+def _clinical(card, chembl_client, clinicaltrials_client, trials, enrichments):
+    """Add ChEMBL indications and, with ``trials``, the studies they cite (#81)."""
+    from sabueso.mappings.clinical import map_indications, map_trials
+
+    molecules = sorted(
+        r["subject_ref"].split(":", 1)[1]
+        for r in card.relationships("same_as")
+        if r["subject_ref"].startswith("chembl:")
+    )
+    record = {"source": "ChEMBL", "data": "indications", "records": molecules}
+    if not molecules:
+        enrichments.append({**record, "status": "not_found"})
+        return
+    try:
+        response = chembl_client.indications(molecules)
+    except ConnectorError as exc:
+        enrichments.append({**record, "status": "error", "detail": str(exc)})
+        return
+    mapped = map_indications(
+        response["indications"],
+        response.get("retrieved_at", ""),
+        response.get("version"),
+    )
+    for assertion in mapped["source_assertions"]:
+        card.source_assertion_store.add(assertion)
+    for relationship in mapped["relationships"]:
+        card.relationship_store.add(relationship)
+    enrichments.append(
+        {
+            **record,
+            "status": "added" if mapped["relationships"] else "not_found",
+            "version": response.get("version"),
+            "count": len(mapped["relationships"]),
+        }
+    )
+    if trials is None:
+        return
+    cited = sorted({nct for _, nct in mapped["citations"]})
+    limit = trials.get("limit", DEFAULT_TRIAL_LIMIT)
+    wanted = cited[:limit]
+    record = {"source": "ClinicalTrials.gov", "records": len(cited)}
+    if not wanted:
+        enrichments.append({**record, "status": "not_found"})
+        return
+    try:
+        studies = (clinicaltrials_client or _clinicaltrials_client()).studies(wanted)
+    except ConnectorError as exc:
+        enrichments.append({**record, "status": "error", "detail": str(exc)})
+        return
+    linked = map_trials(
+        mapped["citations"],
+        studies["record"],
+        wanted,
+        studies.get("retrieved_at", ""),
+        studies.get("version"),
+    )
+    for assertion in linked["source_assertions"]:
+        card.source_assertion_store.add(assertion)
+    for relationship in linked["relationships"]:
+        card.relationship_store.add(relationship)
+    enrichments.append(
+        {
+            **record,
+            "status": "added" if studies["record"] else "not_found",
+            "version": studies.get("version"),
+            "count": len(studies["record"]),
+            "missing": studies.get("missing") or [],
+            "truncated": len(cited) > len(wanted),
+            "total_count": len(cited),
+        }
+    )
+
+
+def _clinicaltrials_client():
+    from sabueso.tools.db.clinicaltrials import OnlineClinicalTrialsClient
+
+    return OnlineClinicalTrialsClient()
 
 
 def _expand_pubchem(pubchem_client, pubchem, linked, enrichments):

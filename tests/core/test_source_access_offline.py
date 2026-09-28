@@ -13,6 +13,7 @@ from sabueso.tools.db import (
     alphafold,
     bindingdb,
     chembl,
+    clinicaltrials,
     interpro,
     ncbi_gene,
     ncbi_taxonomy,
@@ -42,6 +43,13 @@ CALLS = {
     ),
     "phi_base.get_phenotypes": lambda: phi_base.get_phenotypes(
         "Q4D3W2", client=phi_base.FixturePHIBaseClient("temp_data")
+    ),
+    "chembl.get_indications": lambda: chembl.get_indications(
+        ["CHEMBL110"], client=chembl.FixtureChEMBLClient("temp_data")
+    ),
+    "clinicaltrials.get_studies": lambda: clinicaltrials.get_studies(
+        ["NCT00123916"],
+        client=clinicaltrials.FixtureClinicalTrialsClient("temp_data"),
     ),
     "ncbi_taxonomy.get_taxon": lambda: ncbi_taxonomy.get_taxon(
         "5693", client=ncbi_taxonomy.FixtureNCBITaxonomyClient("temp_data")

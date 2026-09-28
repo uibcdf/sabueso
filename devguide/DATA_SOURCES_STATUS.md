@@ -83,6 +83,24 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: identifiers, preferred name, molecule type, formula, physchem (ALogP, HBD/HBA, TPSA, rotatable bonds, aromatic rings, molecular weight as `full_mwt`), `max_phase`, InChI/InChIKey, isomeric SMILES
 - **Notes**: numbers ChEMBL serialises as strings are normalized; logP and rotatable bonds carry their method (`ALogP`, `chembl:rtb`) and are compared only within it (uibcdf/sabueso#10). Stable online tests.
 
+### ChEMBL indications and ClinicalTrials.gov — the clinical layer
+- **Status**: implemented as enrichers of `resolve_molecule_card(..., indications=True)` and `trials={}` (uibcdf/sabueso#81)
+- **Access**:
+  - ChEMBL `drug_indication` (`OnlineChEMBLClient.indications`, `tools.db.chembl.get_indications`);
+  - ClinicalTrials.gov API v2 studies by NCT id, in batches, no key (`OnlineClinicalTrialsClient`, `tools.db.clinicaltrials.get_studies`);
+  - saved responses in `temp_data/chembl/indications.json` and `temp_data/clinicaltrials/studies.json`.
+- **Quality**: green for the listed coverage.
+  - Verified live on benznidazole (CHEMBL110): 4 indications, all phase 4 (ChEMBL_37), and the 16 trials they cite (API v2, data of 2026-09-25).
+  - An NCT id ClinicalTrials.gov does not hold is returned as missing.
+- **Coverage**:
+  - `investigated_for`: disease term, MeSH heading, maximum phase and cited references;
+  - `tested_in`: title, status, phases, study type, enrolment, dates, conditions, interventions as written, lead sponsor, and whether results are posted;
+  - `Card.clinical()`.
+- **Notes**:
+  - Trials come only through the NCT ids ChEMBL cites, never by matching intervention names.
+  - Adverse events (openFDA/FAERS) are not covered.
+  - Licences: ChEMBL CC BY-SA 3.0; ClinicalTrials.gov is a US government work (credit NLM).
+
 ### ChEMBL bioactivities
 - **Status**: implemented as an enricher of `resolve_protein_card` (uibcdf/sabueso#23)
 - **Access**: online API (`OnlineChEMBLClient`), saved responses (`FixtureChEMBLClient`, `temp_data/chembl/`)

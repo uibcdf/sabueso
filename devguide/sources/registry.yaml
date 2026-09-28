@@ -102,7 +102,7 @@ resources:
     status: in_use
     description: Bioactive molecules, assays and quantitative activities (IC50, Ki, …), with their documents.
     since: 2026-02-07
-    reason: Measured bioactivities of a target, and molecule records.
+    reason: Measured bioactivities of a target, molecule records, and a molecule's drug indications with the trials they cite (#81).
     access: REST API
     licence: CC BY-SA 3.0 (share-alike)
     module: [sabueso.tools.db.chembl]
@@ -898,11 +898,14 @@ resources:
     name: "ClinicalTrials.gov"
     url: https://clinicaltrials.gov/
     category: target_validation
-    status: evaluating
+    status: in_use
     description: "Registered clinical studies: interventions, conditions, phases and status. The clinical layer of the original plan (clinical trials of ligands)."
     since: 2026-01-31
     proposed_by: "Original plan: clinical layer and use case 8 (clinical trials for ligands)"
-    licence: "US government work (not under copyright in the US); NLM asks to be credited"
+    reason: "The clinical layer of molecule cards (#81). Studies name interventions only as text, so Sabueso asks only for the NCT ids ChEMBL's drug indications cite, and never matches a trial to a molecule by name."
+    access: "API v2 (studies by NCT id, in batches), no key, when resolve(..., trials={})"
+    licence: "US government work (not under copyright in the US); NLM asks credit (Source: National Library of Medicine)"
+    module: [sabueso.tools.db.clinicaltrials, sabueso.mappings.clinical]
     links: ["#81", "#83"]
   - id: pisite
     name: "PiSITE"

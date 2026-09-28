@@ -430,6 +430,13 @@ class Card:
 
         return literature_view(self)
 
+    def clinical(self) -> Dict[str, Any]:
+        """A molecule's indications (ChEMBL) and the trials they cite
+        (ClinicalTrials.gov), as the sources state them (#81)."""
+        from .clinical import clinical_view
+
+        return clinical_view(self)
+
     def oligomer(self) -> Dict[str, Any]:
         """What sources state about this protein's quaternary structure and interfaces."""
         from .oligomer import oligomer_view

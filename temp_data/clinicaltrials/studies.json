@@ -1,0 +1,1169 @@
+{
+ "studies": {
+  "NCT00123916": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "Benznidazole"
+       ],
+       "description": "Daily po Benznidazole or placebo (weight based) during 40 - 80 days (depending on body weight)",
+       "name": "Benznidazole",
+       "otherNames": [
+        "Rochagan/LaFepe"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "Placebo"
+       ],
+       "description": "a dose calculated as 5mg/kg/day for 60 days, now administered as a fixed daily dose of 300mg during 40 - 80 days of treatment - period adjusted according to the patient's body weight to a total minimum dose of 12g (corresponding to 40kg) and a total maximum dose of 24g (corresponding to 80kg)",
+       "name": "Placebo",
+       "otherNames": [
+        "Rochagan/LaFepe"
+       ],
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas Disease",
+      "Trypanosomiasis",
+      "Heart Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 2854,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE3"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "BENEFIT: Evaluation of the Use of Antiparasital Drug (Benznidazole) in the Treatment of Chronic Chagas' Disease",
+     "nctId": "NCT00123916"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER",
+      "name": "Population Health Research Institute"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2015-08",
+      "type": "ACTUAL"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2020-03-03",
+      "type": "ACTUAL"
+     },
+     "overallStatus": "COMPLETED",
+     "startDateStruct": {
+      "date": "2004-11"
+     }
+    }
+   }
+  },
+  "NCT01162967": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "Benznidazole"
+       ],
+       "description": "Standard dosage",
+       "name": "Benznidazole",
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "Posaconazole, high dose",
+        "Posaconazole, low dose"
+       ],
+       "name": "Posaconazole",
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 78,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE2"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "Clinical Trial For The Treatment Of Chronic Chagas Disease With Posaconazole And Benznidazole",
+     "nctId": "NCT01162967"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER",
+      "name": "Hospital Universitari Vall d'Hebron Research Institute"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2013-03",
+      "type": "ACTUAL"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2013-09-10",
+      "type": "ESTIMATED"
+     },
+     "overallStatus": "COMPLETED",
+     "startDateStruct": {
+      "date": "2010-09"
+     }
+    }
+   }
+  },
+  "NCT01377480": {
+   "hasResults": true,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "Posaconazole",
+        "Posaconazole + Benznidazole"
+       ],
+       "description": "POS 40 mg/mL oral suspension",
+       "name": "Posaconazole",
+       "otherNames": [
+        "SCH 056592, MK-5592"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "Benznidazole + Placebo",
+        "Placebo"
+       ],
+       "description": "Placebo oral suspension",
+       "name": "Placebo for posaconazole",
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "Benznidazole + Placebo",
+        "Posaconazole + Benznidazole"
+       ],
+       "description": "BNZ 100 mg oral tablet",
+       "name": "Benznidazole",
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 120,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE2"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "A Study of the Use of Oral Posaconazole (POS) in the Treatment of Asymptomatic Chronic Chagas Disease (P05267)",
+     "nctId": "NCT01377480"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "INDUSTRY",
+      "name": "Merck Sharp & Dohme LLC"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2015-01-12",
+      "type": "ACTUAL"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2018-08-27",
+      "type": "ACTUAL"
+     },
+     "overallStatus": "COMPLETED",
+     "startDateStruct": {
+      "date": "2011-07-06",
+      "type": "ACTUAL"
+     }
+    }
+   }
+  },
+  "NCT01489228": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "High Dose E1224",
+        "Low Dose E1224",
+        "Short Dose E1224"
+       ],
+       "description": "100 mg tablets",
+       "name": "E1224",
+       "otherNames": [
+        "E1224 (prodrug for active ingredient Ravuconazole)"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "Benznidazol"
+       ],
+       "description": "100mg tablets",
+       "name": "Benznidazole",
+       "otherNames": [
+        "Benznidazole (N-benzil-2-nitro-1-imidazolacetamida)"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "Placebo"
+       ],
+       "description": "tablets",
+       "name": "Placebo",
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chronic Chagas Disease, Indeterminate"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 230,
+      "type": "ESTIMATED"
+     },
+     "phases": [
+      "PHASE2"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "Proof-of-Concept Study of E1224 to Treat Adult Patients With Chagas Disease",
+     "nctId": "NCT01489228"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER",
+      "name": "Drugs for Neglected Diseases"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2013-12",
+      "type": "ESTIMATED"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2011-12-21",
+      "type": "ESTIMATED"
+     },
+     "overallStatus": "UNKNOWN",
+     "startDateStruct": {
+      "date": "2011-06"
+     }
+    }
+   }
+  },
+  "NCT01549236": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "description": "All 80 subjects recruited into the study will receive treatment with:\n\n\\- Benznidazole (Laborat\u00f3rio Farmac\u00eautico do Estado de Pernambuco -LAFEPE - Recife - Brazil; tablet 12.5mg or 100mg), 7.5 mg/Kg/day PO (actual range of 5.5-8.5 mg/Kg/d), divided in two daily doses, for 60 days.",
+       "name": "Benznidazole 12,5mg or 100mg",
+       "otherNames": [
+        "BNZ"
+       ],
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas' Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 80,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE4"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "Population Pharmacokinetics Study of Benznidazole in Children With Chagas'Disease",
+     "nctId": "NCT01549236"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER",
+      "name": "Drugs for Neglected Diseases"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2012-10",
+      "type": "ACTUAL"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2018-06-25",
+      "type": "ACTUAL"
+     },
+     "overallStatus": "COMPLETED",
+     "startDateStruct": {
+      "date": "2011-05",
+      "type": "ACTUAL"
+     }
+    }
+   }
+  },
+  "NCT01755403": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "Benznidazole"
+       ],
+       "name": "Benznidazole",
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 52,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE4"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "Population Pharmacokinetics in Benznidazole-treated Adults With Chronic With Chagas Disease",
+     "nctId": "NCT01755403"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER",
+      "name": "Barcelona Centre for International Health Research"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2013-11",
+      "type": "ACTUAL"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2015-05-27",
+      "type": "ESTIMATED"
+     },
+     "overallStatus": "COMPLETED",
+     "startDateStruct": {
+      "date": "2012-12"
+     }
+    }
+   }
+  },
+  "NCT02369978": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "Nifurtimox (NFX)"
+       ],
+       "description": "Full dose: 8 mg/Kg/day, assuming an average weight of 60 Kg: 240 mg B.I.D Half-dose: 120 mg B.I.D",
+       "name": "Nifurtimox",
+       "otherNames": [
+        "Lampit (Bayer)"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "Benznidazole (BZN)"
+       ],
+       "description": "Full dose: 5 mg/Kg/day, assuming an average weight of 60 Kg: 150 mg B.I.D Half dose: 75 mg B.I.D",
+       "name": "Benznidazole",
+       "otherNames": [
+        "Radanil (Roche), Rochagan (Roche), Abarax (ELEA)"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "Placebo"
+       ],
+       "description": "Two capsules of matching placebo (contaning Magnesium stearate and cellulose) B.I.D",
+       "name": "Placebo",
+       "otherNames": [
+        "Control group"
+       ],
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 500,
+      "type": "ESTIMATED"
+     },
+     "phases": [
+      "PHASE2",
+      "PHASE3"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "CHICAMOCHA 3 - Equivalence of Usual Interventions for Trypanosomiasis (EQUITY)",
+     "nctId": "NCT02369978"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER",
+      "name": "Universidad Aut\u00f3noma de Bucaramanga"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2019-02",
+      "type": "ESTIMATED"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2017-07-21",
+      "type": "ACTUAL"
+     },
+     "overallStatus": "UNKNOWN",
+     "startDateStruct": {
+      "date": "2015-08",
+      "type": "ACTUAL"
+     }
+    }
+   }
+  },
+  "NCT02386358": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "Benznidazole"
+       ],
+       "description": "Benznidazole at a dose 5 mg/Kg/day until 60 days have been completed or development of non-acceptable toxicity-",
+       "name": "Benznidazole",
+       "otherNames": [
+        "Radanil (Roche Laboratory)"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "Placebo"
+       ],
+       "description": "Placebo at a dose 5 m/Kg/day until 60 days",
+       "name": "Placebo",
+       "otherNames": [
+        "Placebo pills"
+       ],
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 910,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE3"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "Etiologic Treatment With Benznidazole in Adult Patients With Chronic Chagas Disease. A Randomized Clinical Trial",
+     "nctId": "NCT02386358"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER_GOV",
+      "name": "Instituto Nacional de Parasitologia Dr. Mario Fatala Chaben"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2013-04",
+      "type": "ACTUAL"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2015-03-11",
+      "type": "ESTIMATED"
+     },
+     "overallStatus": "COMPLETED",
+     "startDateStruct": {
+      "date": "1999-03"
+     }
+    }
+   }
+  },
+  "NCT03191162": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "B150/60",
+        "B300/60",
+        "B400/15"
+       ],
+       "description": "To evaluate different regimens of Benznidazole for the treatment of chronic Chagas disease",
+       "name": "Benznidazole",
+       "otherNames": [
+        "Abarax"
+       ],
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas Disease",
+      "Trypanosoma Cruzi Infection"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 238,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE2"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "Evaluation of Different Benznidazole Regimens for the Treatment of Chronic Chagas Disease.",
+     "nctId": "NCT03191162"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER",
+      "name": "Hospital Universitari Vall d'Hebron Research Institute"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2021-03-16",
+      "type": "ACTUAL"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2023-12-19",
+      "type": "ACTUAL"
+     },
+     "overallStatus": "COMPLETED",
+     "startDateStruct": {
+      "date": "2017-04-21",
+      "type": "ACTUAL"
+     }
+    }
+   }
+  },
+  "NCT03378661": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "BZN 150 mg - 4 wks",
+        "BZN 150 mg - 4 wks / E1224 300 mg",
+        "BZN 300 mg (weekly) 8 wks / E1224 300 mg",
+        "BZN 300 mg - 2 wks",
+        "BZN 300 mg - 4 wks",
+        "BZN STD Regimen"
+       ],
+       "description": "Benznidazole tablet",
+       "name": "Benznidazole",
+       "otherNames": [
+        "Abarax\u00ae",
+        "N-benzil-2-nitro-1-imidazolacetamide)",
+        "Lafepe Benznidazol",
+        "ABALEA\u00ae"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "BZN 150 mg - 4 wks / E1224 300 mg",
+        "BZN 300 mg (weekly) 8 wks / E1224 300 mg"
+       ],
+       "description": "E1224 capsules",
+       "name": "E1224",
+       "otherNames": [
+        "Fosravuconazole",
+        "E1224 (prodrug for active ingredient Ravuconazole)"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "BZN 150 mg - 4 wks",
+        "BZN 300 mg - 2 wks",
+        "BZN 300 mg - 4 wks",
+        "BZN STD Regimen",
+        "Placebo"
+       ],
+       "description": "E1224 matched placebo capsules",
+       "name": "E1224 Placebo",
+       "otherNames": [
+        "Placebo (for E1224)"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "BZN 150 mg - 4 wks",
+        "BZN 150 mg - 4 wks / E1224 300 mg",
+        "BZN 300 mg (weekly) 8 wks / E1224 300 mg",
+        "BZN 300 mg - 2 wks",
+        "BZN 300 mg - 4 wks",
+        "Placebo"
+       ],
+       "description": "Benznidazole matched placebo tablets",
+       "name": "Benznidazole Placebo",
+       "otherNames": [
+        "Placebo (for Benznidazole)"
+       ],
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 210,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE2"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "BENDITA BEnznidazole New Doses Improved Treatment and Associations",
+     "nctId": "NCT03378661"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER",
+      "name": "Drugs for Neglected Diseases"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2018-07-27",
+      "type": "ESTIMATED"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2017-12-20",
+      "type": "ACTUAL"
+     },
+     "overallStatus": "UNKNOWN",
+     "startDateStruct": {
+      "date": "2016-11-30",
+      "type": "ACTUAL"
+     }
+    }
+   }
+  },
+  "NCT03672487": {
+   "hasResults": true,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "30/150mg",
+        "60/300mg"
+       ],
+       "description": "Benznidazole tablet",
+       "name": "Benznidazole",
+       "otherNames": [
+        "Abarax"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "30/150mg"
+       ],
+       "description": "Sugar pill manufactured to mimic Benznidazole",
+       "name": "Placebo Oral Tablet",
+       "otherNames": [
+        "Placebo (for Benznidazole)"
+       ],
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 87,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE3"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "Short-course Benznidazole Treatment to Reduce Trypanosoma Cruzi Parasitic Load in Women of Reproductive Age",
+     "nctId": "NCT03672487"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER",
+      "name": "Tulane University School of Public Health and Tropical Medicine"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2025-05-31",
+      "type": "ACTUAL"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2026-04-09",
+      "type": "ACTUAL"
+     },
+     "overallStatus": "COMPLETED",
+     "startDateStruct": {
+      "date": "2019-06-01",
+      "type": "ACTUAL"
+     }
+    }
+   }
+  },
+  "NCT03892213": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "Benznidazole and E1224"
+       ],
+       "description": "Benznidazole single dose (2.5 mg/kg) at Day 1. Benznidazole single dose (2.5 mg/kg) at Day 9\\*. Benznidazole multiple dose (2.5 mg/kg twice daily) from Day 12\\* until Day 15.",
+       "name": "Benznidazole",
+       "otherNames": [
+        "Abarax\u00ae (Benznidazole 100mg or 50mg)."
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "Benznidazole and E1224"
+       ],
+       "description": "E1224 multiple dose 400 mg loading dose once daily for 3 days (i.e. from Day 4 to Day 6 followed by maintenance dose 100mg once daily for 9 days (from Day 7 to Day15).\n\nOn Day 9 and from Day 12 to Day 15, E1224 and benznidazole will be given concomitantly.",
+       "name": "E1224",
+       "otherNames": [
+        "E1224 is a prodrug monolysine form of ravuconazole."
+       ],
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 28,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE1"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "Pharmacokinetic Drug-Drug Interaction Study",
+     "nctId": "NCT03892213"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER",
+      "name": "Drugs for Neglected Diseases"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2015-01",
+      "type": "ACTUAL"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2019-03-27",
+      "type": "ACTUAL"
+     },
+     "overallStatus": "COMPLETED",
+     "startDateStruct": {
+      "date": "2014-10"
+     }
+    }
+   }
+  },
+  "NCT03981523": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "BZN-30",
+        "BZN-60",
+        "BZN-90"
+       ],
+       "description": "50 mg and 100 mg tablet taken orally",
+       "name": "Benznidazole",
+       "otherNames": [
+        "P01CA02",
+        "Abarax",
+        "Radanil",
+        "Rochagan"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "NFX-30",
+        "NFX-60",
+        "NFX-90"
+       ],
+       "description": "120 mg tablet taken orally",
+       "name": "Nifurtimox",
+       "otherNames": [
+        "Lampit",
+        "P01CC01",
+        "QP51AC01"
+       ],
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Trypanosoma Cruzi Infection",
+      "Chagas Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 450,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE2"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "New Therapies and Biomarkers for Chagas Infection",
+     "nctId": "NCT03981523"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER",
+      "name": "University of Texas, El Paso"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2024-05-31",
+      "type": "ACTUAL"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2024-07-17",
+      "type": "ACTUAL"
+     },
+     "overallStatus": "COMPLETED",
+     "startDateStruct": {
+      "date": "2019-12-18",
+      "type": "ACTUAL"
+     }
+    }
+   }
+  },
+  "NCT04024163": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "Benznidazole"
+       ],
+       "description": "Drug: Benznidazole Tablets 100 mg (functionally scored) or Tablets 12.5 mg",
+       "name": "Benznidazole",
+       "otherNames": [
+        "National Drug Code (NDC) 0642-7464-10",
+        "National Drug Code (NDC) 0642-7464-12"
+       ],
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 178,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE3"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "Prospective Study of Benznidazole for Chagas' Disease Children With Chronic Indeterminate Chagas Disease",
+     "nctId": "NCT04024163"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "INDUSTRY",
+      "name": "Insud Pharma"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2028-03-30",
+      "type": "ESTIMATED"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2026-04-21",
+      "type": "ACTUAL"
+     },
+     "overallStatus": "ACTIVE_NOT_RECRUITING",
+     "startDateStruct": {
+      "date": "2019-09-19",
+      "type": "ACTUAL"
+     }
+    }
+   }
+  },
+  "NCT04897516": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "Short regimen of benznidazole 2 weeks"
+       ],
+       "description": "Benznidazole, under the brand name Abarax (100 mg tablet), 300 mg divided into three daily doses (100 mg every 08 hours) for 2 weeks.",
+       "name": "Short regimen of benznidazole",
+       "otherNames": [
+        "Benznidazole 2 weeks"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "Short regimen of benznidazole 4 weeks"
+       ],
+       "description": "Benznidazole, under the brand name Abarax (100 mg tablet), 300 mg divided into three daily doses (100 mg every 08 hours) for 4 weeks.",
+       "name": "Short treatment with benznidazole",
+       "otherNames": [
+        "Benznidazole 4 weeks"
+       ],
+       "type": "DRUG"
+      },
+      {
+       "armGroupLabels": [
+        "Standard treatment with benznidazole"
+       ],
+       "description": "Benznidazole, 300 mg divided into three daily doses (100 mg every 08 hours), orally for 8 weeks",
+       "name": "Standard treatment with benznidazole",
+       "otherNames": [
+        "Benznidazole 8 weeks"
+       ],
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chagas Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 300,
+      "type": "ESTIMATED"
+     },
+     "phases": [
+      "PHASE3"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "Shorter Benznidazole Regimens Compared to the Standard Regimen for Chagas Disease",
+     "nctId": "NCT04897516"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "INDUSTRY",
+      "name": "Laboratorio Elea Phoenix S.A."
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2026-12-01",
+      "type": "ESTIMATED"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2023-11-30",
+      "type": "ACTUAL"
+     },
+     "overallStatus": "RECRUITING",
+     "startDateStruct": {
+      "date": "2021-07-28",
+      "type": "ACTUAL"
+     }
+    }
+   }
+  },
+  "NCT06339710": {
+   "hasResults": false,
+   "protocolSection": {
+    "armsInterventionsModule": {
+     "interventions": [
+      {
+       "armGroupLabels": [
+        "Short Treatment 2",
+        "Short treatment 1",
+        "Standard treatment"
+       ],
+       "description": "672 participants will be randomly assigned to receive the standard-dose of benznidazole (300 mg daily for 8 weeks) or the short experimental regimens (benznidazole 300 mg daily for the first 2 weeks plus placebo for the last 6 weeks or benznidazole 300 mg daily for the first 4 weeks plus placebo for the last 4 weeks)",
+       "name": "benznidazole 300 mg daily 8 weeks",
+       "otherNames": [
+        "benznidazole 300 mg daily for the first 2 weeks plus placebo for the last 6 weeks",
+        "benznidazole 300 mg daily for the first 4 weeks plus placebo for the last 4 weeks"
+       ],
+       "type": "DRUG"
+      }
+     ]
+    },
+    "conditionsModule": {
+     "conditions": [
+      "Chronic Chagas Disease"
+     ]
+    },
+    "designModule": {
+     "enrollmentInfo": {
+      "count": 0,
+      "type": "ACTUAL"
+     },
+     "phases": [
+      "PHASE3"
+     ],
+     "studyType": "INTERVENTIONAL"
+    },
+    "identificationModule": {
+     "briefTitle": "Short Benznidazole Regimen for Chronic Phase Chagas Disease Patients",
+     "nctId": "NCT06339710"
+    },
+    "sponsorCollaboratorsModule": {
+     "leadSponsor": {
+      "class": "OTHER",
+      "name": "Evandro Chagas Institute of Clinical Research"
+     }
+    },
+    "statusModule": {
+     "completionDateStruct": {
+      "date": "2026-10-30",
+      "type": "ESTIMATED"
+     },
+     "lastUpdatePostDateStruct": {
+      "date": "2025-03-13",
+      "type": "ACTUAL"
+     },
+     "overallStatus": "WITHDRAWN",
+     "startDateStruct": {
+      "date": "2025-01-30",
+      "type": "ACTUAL"
+     }
+    }
+   }
+  }
+ },
+ "version": "2026-09-25T09:00:04"
+}

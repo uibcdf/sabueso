@@ -102,5 +102,7 @@
   `structural_baseline@1`.
 - **View**: a card or deck method that returns knowledge derived on demand; `table(view)`
   gives it as flat rows.
-- **Clinical layer** *(planned)*: a section for pharmacology, ADMET, clinical trials and
+- **Clinical layer** *(partly built, #81)*: indications (ChEMBL) and the trials they cite
+  (ClinicalTrials.gov), shown by `Card.clinical()`. Planned: a section for pharmacology,
+  ADMET, clinical trials and
   pharmacovigilance, kept apart from physicochemical and biological data (`ROADMAP.md`).

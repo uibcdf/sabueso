@@ -260,6 +260,31 @@ A Relationship is first-class, traceable knowledge:
       `first_author`, `n_authors`, `pubmed`, `doi`, `uniprot_citation`,
       `reference_number`, `scope` (what the source cites it for) and `comments` (e.g.
       strain). The SourceAssertion keeps the reference verbatim.
+  - clinical layer of molecules (added in #81, schema 0.3.6):
+    - `investigated_for` (molecule record `chembl:<id>` → disease term), one per ChEMBL
+      drug indication. The object is `<namespace>:<CURIE>` of ChEMBL's term
+      (`efo:EFO:0008559`, `mondo:MONDO:0001444`, `doid:DOID:10113`), or `mesh:<id>`
+      when there is none. Two terms that share a MeSH heading stay two relationships.
+      Qualifiers:
+      - `max_phase` (4 is approval as ChEMBL states it; 1 to 3 are investigational);
+      - `disease_term`, `mesh_id`, `mesh_heading`;
+      - `trials` (the NCT ids ChEMBL cites);
+      - `references` (`type`, `id`: ClinicalTrials, ATC, FDA, EMA, DailyMed…).
+
+      The SourceAssertion keeps the indication record verbatim
+      (`drug_indication:<id>`).
+    - `tested_in` (molecule record → `nct:<id>`), one per trial an indication cites.
+      - Support: the ChEMBL assertions that cite it (the link's basis,
+        `basis: chembl_drug_indication`), and the ClinicalTrials.gov record (subject
+        `nct:<id>`).
+      - Qualifiers: `cited_for` (the disease terms), and what ClinicalTrials.gov states:
+        `title`, `status`, `study_type`, `phases`, `enrollment`, `start`, `completion`,
+        `last_update`, `conditions`, `interventions` (`type`, `name`, `other_names`, as
+        written), `lead_sponsor` and `has_results`.
+      - `registry: not_found` when ClinicalTrials.gov does not hold a cited id.
+
+      A trial is never matched to a molecule by its intervention text.
+    - `Card.clinical()` lists both, and the cited trials not fetched.
     - Which statements each publication supports is read by `Card.literature()` from the
       ECO evidence of every SourceAssertion, and only there.
   - curated literature assertions (added in #41):

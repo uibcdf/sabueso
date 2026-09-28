@@ -82,7 +82,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Phase 3 — selection engine with per-field rules | done | `RESOLVER.md`, `SELECTION_RULES_EXAMPLES.md` |
 | Phase 4 — eMolecules, ChemSpider, DrugBank | pending | registry: eMolecules and ChemSpider queued; DrugBank deferred (licence) |
 | Phase 4 — physchem and bioactivity fields | done | PubChem, ChEMBL physchem; three bioactivity sources (#66, #68) |
-| Phase 4 — clinical layer | partial | ChEMBL `clinical.max_phase` only; ClinicalTrials.gov queued, DrugBank deferred |
+| Phase 4 — clinical layer | partial | ChEMBL max phase and indications, ClinicalTrials.gov trials by cited NCT id (#81); DrugBank deferred; ADMET and pharmacovigilance pending |
 | Phase 5 — SDK entry points | done | `sabueso.resolve`, views, `PUBLIC_API.md` |
 | Phase 5 — CLI | pending | no need has been stated |
 | Phase 5 — Sphinx documentation | done | `docs/` |
@@ -180,8 +180,9 @@ Foundational route, in the order proposed now:
    aspects and the size of facts, and align with the MOLI contract once it is agreed.
 2. **UniProt isoforms and secondary structure.** Mapped on main (#80), with per-chain
    secondary structure from RCSB. Isoform sequences remain.
-3. **Clinical layer (#81).** Evaluated: ChEMBL indications, and trials only by the NCT
-   ids ChEMBL states. DrugBank stays deferred for clinical content (CC BY-NC).
+3. **Clinical layer (#81).** Step 1 on main: ChEMBL indications, and trials only by the
+   NCT ids ChEMBL states (`Card.clinical()`). DrugBank stays deferred for clinical
+   content (CC BY-NC). Next: adverse events (openFDA), after a terms review.
 4. **Disease association (#82).** Evaluated: Open Targets, DISEASES and Orphadata for
    humans. Pathogen targets need other sources (`SOURCE_COVERAGE.md`).
 5. **Peptide cards.** Scope them before any source (use case 5, CPPsite).

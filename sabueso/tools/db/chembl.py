@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable
+from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
@@ -125,6 +125,19 @@ ACTIVITY_FIELDS = (
     "document_journal",
 )
 MOLECULE_CHUNK = 50
+#: A drug's indications (``drug_indication``), with the references ChEMBL cites for each
+#: (ClinicalTrials.gov NCT ids, ATC, FDA, EMA, DailyMed…; #81).
+INDICATION_FIELDS = (
+    "drugind_id",
+    "molecule_chembl_id",
+    "parent_molecule_chembl_id",
+    "efo_id",
+    "efo_term",
+    "mesh_id",
+    "mesh_heading",
+    "max_phase_for_ind",
+    "indication_refs",
+)
 MOLECULE_FIELDS = (
     "molecule_chembl_id",
     "pref_name",
@@ -331,6 +344,41 @@ class OnlineChEMBLClient:
             "missing": [i for i in ids if i not in found],
         }
 
+    def indications(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
+        """Indications by molecule ChEMBL id: ``{version, retrieved_at, indications,
+        missing}``. ``missing`` lists molecules ChEMBL states no indication for."""
+        ids = sorted({i for i in chembl_ids if i})
+        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        found: Dict[str, List[Dict[str, Any]]] = {}
+        for i in range(0, len(ids), MOLECULE_CHUNK):
+            chunk = ids[i : i + MOLECULE_CHUNK]
+            offset = 0
+            while True:
+                page = _chembl_get(
+                    "drug_indication.json",
+                    {
+                        "molecule_chembl_id__in": ",".join(chunk),
+                        "order_by": "drugind_id",
+                        "limit": PAGE_SIZE,
+                        "offset": offset,
+                    },
+                    self.timeout,
+                )
+                records = page.get("drug_indications") or []
+                for record in records:
+                    found.setdefault(record["molecule_chembl_id"], []).append(
+                        _keep(record, INDICATION_FIELDS)
+                    )
+                offset += len(records)
+                if not records or not (page.get("page_meta") or {}).get("next"):
+                    break
+        return {
+            "version": self.version(),
+            "retrieved_at": retrieved_at,
+            "indications": found,
+            "missing": [i for i in ids if i not in found],
+        }
+
 
 class FixtureChEMBLClient:
     def __init__(
@@ -419,6 +467,26 @@ class FixtureChEMBLClient:
             "missing": [i for i in ids if i not in found],
         }
 
+    def indications(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
+        ids = sorted({i for i in chembl_ids if i})
+        if self.failing & set(ids):
+            raise ConnectorError(
+                f"ChEMBL indication request for {ids} failed (simulated)"
+            )
+        path = self.directory / "chembl" / "indications.json"
+        saved = (
+            json.loads(path.read_text(encoding="utf-8"))
+            if path.is_file()
+            else {"version": None, "indications": {}}
+        )
+        found = {i: saved["indications"][i] for i in ids if i in saved["indications"]}
+        return {
+            "version": saved.get("version"),
+            "retrieved_at": self.retrieved_at,
+            "indications": found,
+            "missing": [i for i in ids if i not in found],
+        }
+
 
 # --- Public source access (uibcdf/sabueso#49) -----------------------------------------
 
@@ -457,4 +525,22 @@ def get_molecules(identifiers: Any, client: Any = None, skip_digestion: bool = F
         response.get("retrieved_at"),
         response.get("version"),
         {"molecules": response.get("molecules"), "missing": response.get("missing")},
+    )
+
+
+@arg_digest()
+def get_indications(identifiers: Any, client: Any = None, skip_digestion: bool = False):
+    """ChEMBL's indications of molecules, by ChEMBL id, with the references it cites;
+    ``missing`` lists molecules ChEMBL states no indication for."""
+    response = online(client, OnlineChEMBLClient).indications(identifiers)
+    return source_record(
+        "ChEMBL",
+        "indications",
+        {"chembl_ids": list(identifiers)},
+        response.get("retrieved_at"),
+        response.get("version"),
+        {
+            "indications": response.get("indications"),
+            "missing": response.get("missing"),
+        },
     )
