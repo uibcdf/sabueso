@@ -286,7 +286,12 @@ A Relationship is first-class, traceable knowledge:
       A trial is never matched to a molecule by its intervention text.
     - `Card.clinical()` lists both, and the cited trials not fetched.
   - disease association (added in #82, schema 0.3.6):
-    - `associated_with` (protein → disease term, `doid:DOID:<id>`), one per disease,
+    - `associated_with` (protein → disease term), one per disease, source, channel and
+      Ensembl protein or gene (`source`, `channel`, `via_protein`, `via_gene` identify
+      it). From Open Targets: `mondo:`/`efo:…` terms, with `score`, `datatype_scores`
+      (`datatype`, `score`) and `rank` as stated, through the Ensembl gene UniProt cross-references
+      (`via_gene`), only when Open Targets lists the entry among the gene's products
+      (`gene_lists_protein`). From DISEASES: `doid:DOID:<id>`, one per disease,
       DISEASES channel and Ensembl protein. The protein must be one the UniProt entry
       cross-references: `via_protein`, `uniprot_isoform`, basis
       `uniprot_ensembl_xref`. Qualifiers:

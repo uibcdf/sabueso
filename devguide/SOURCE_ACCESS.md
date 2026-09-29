@@ -15,7 +15,8 @@ Each module holds the source's clients and its public `get_*` functions:
 - `phi_base`, whose online client works on versioned releases rather than an API
   (`CACHE_POLICY.md`);
 - `clinicaltrials`, asked only for the NCT ids another source states (#81);
-- `diseases` (DISEASES), whose channel files are versioned downloads, like `phi_base`.
+- `diseases` (DISEASES), whose channel files are versioned downloads, like `phi_base`;
+- `open_targets`, GraphQL.
 Card building uses the same clients, so there is one way to query each source. The
 registry (`sources/registry.yaml`) must list each module as `in_use`, and a test checks
 it.

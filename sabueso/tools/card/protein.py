@@ -77,6 +77,8 @@ def resolve_protein_card(
     phi_base_client: Any | None = None,
     diseases: Dict[str, Any] | None = None,
     diseases_client: Any | None = None,
+    open_targets: Dict[str, Any] | None = None,
+    open_targets_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -120,6 +122,11 @@ def resolve_protein_card(
     cross-references. The default channels are curated knowledge and experiments; text
     mining links names, not molecules, and is added only when asked for. DISEASES covers
     human genes only.
+
+    ``open_targets`` (e.g. ``{}`` or ``{"limit": 50}``; default 100, in Open Targets'
+    own order) adds Open Targets' target–disease associations, with its scores as
+    stated, through the Ensembl gene the entry cross-references, when Open Targets also
+    lists the entry among that gene's products. Human genes only.
     """
     if ncbi_gene:
         import copy
@@ -679,6 +686,88 @@ def resolve_protein_card(
                         "count": len(mapped["relationships"]),
                     }
                 )
+
+    if open_targets is not None:
+        from sabueso.mappings.open_targets import lists_protein
+        from sabueso.mappings.open_targets import (
+            map_associations as map_open_targets,
+        )
+        from sabueso.tools.db.open_targets import (
+            DEFAULT_LIMIT,
+            OnlineOpenTargetsClient,
+        )
+
+        genes = sorted(
+            {
+                prop["value"].split(".")[0]
+                for xref in entry.get("uniProtKBCrossReferences") or []
+                if xref.get("database") == "Ensembl"
+                for prop in xref.get("properties") or []
+                if prop.get("key") == "GeneId" and prop.get("value")
+            }
+        )
+        limit = open_targets.get("limit", DEFAULT_LIMIT)
+        taxon = (entry.get("organism") or {}).get("taxonId")
+        if taxon != 9606:
+            enrichments.append(
+                {
+                    "source": "Open Targets",
+                    "identifier": anchor,
+                    "status": "not_applicable",
+                    "detail": "Open Targets covers Homo sapiens genes only",
+                }
+            )
+        elif not genes:
+            enrichments.append(
+                {
+                    "source": "Open Targets",
+                    "identifier": anchor,
+                    "status": "not_found",
+                    "detail": "the entry cross-references no Ensembl gene",
+                }
+            )
+        client = open_targets_client or OnlineOpenTargetsClient()
+        for gene in genes if taxon == 9606 else []:
+            record = {"source": "Open Targets", "identifier": gene}
+            try:
+                response = client.associations(gene, limit)
+            except RecordNotFoundError as exc:
+                enrichments.append(
+                    {**record, "status": "not_found", "detail": str(exc)}
+                )
+                continue
+            except ConnectorError as exc:
+                enrichments.append({**record, "status": "error", "detail": str(exc)})
+                continue
+            target = response["record"]["target"]
+            if not lists_protein(target, anchor):
+                enrichments.append(
+                    {
+                        **record,
+                        "status": "not_found",
+                        "detail": f"Open Targets does not list {anchor} among "
+                        f"{gene}'s products",
+                    }
+                )
+                continue
+            mapped = map_open_targets(
+                response["record"],
+                anchor,
+                response.get("retrieved_at", ""),
+                response.get("version"),
+            )
+            mappings.append({"fields": {}, "field_source_assertions": {}, **mapped})
+            count = response["record"].get("count") or 0
+            enrichments.append(
+                {
+                    **record,
+                    "status": "added" if mapped["relationships"] else "not_found",
+                    "version": response.get("version"),
+                    "count": len(mapped["relationships"]),
+                    "truncated": count > len(response["record"]["rows"]),
+                    "total_count": count,
+                }
+            )
 
     mappings.append(
         {

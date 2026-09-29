@@ -83,6 +83,21 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: identifiers, preferred name, molecule type, formula, physchem (ALogP, HBD/HBA, TPSA, rotatable bonds, aromatic rings, molecular weight as `full_mwt`), `max_phase`, InChI/InChIKey, isomeric SMILES
 - **Notes**: numbers ChEMBL serialises as strings are normalized; logP and rotatable bonds carry their method (`ALogP`, `chembl:rtb`) and are compared only within it (uibcdf/sabueso#10). Stable online tests.
 
+### Open Targets Platform — target–disease associations
+- **Status**: implemented as an enricher of `resolve_protein_card(..., open_targets={})` (uibcdf/sabueso#82)
+- **Access**:
+  - GraphQL API v4, no key (`OnlineOpenTargetsClient`);
+  - saved answers in `temp_data/open_targets/`;
+  - `tools.db.open_targets.get_associations`.
+- **Quality**: green for the listed coverage. Verified live on TPI1 (ENSG00000111669, data 26.09): 483 associations, the first being TIM deficiency (MONDO_0014221, score 0.78). A missing gene is not found.
+- **Coverage**: `associated_with` relationships, with the overall score, the per-datatype scores and the rank, as stated.
+- **Notes**:
+  - Joined through the Ensembl gene UniProt cross-references, only when Open Targets also lists the entry among the gene's products.
+  - At most 100 associations per gene by default, in Open Targets' order; truncation reported.
+  - Human genes only.
+  - Tractability, safety and evidence strings are not mapped yet.
+  - Licence: CC0 1.0.
+
 ### DISEASES (Jensen lab) — gene–disease associations
 - **Status**: implemented as an enricher of `resolve_protein_card(..., diseases={})` (uibcdf/sabueso#82)
 - **Access**:

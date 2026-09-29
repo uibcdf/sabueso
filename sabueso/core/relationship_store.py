@@ -52,9 +52,10 @@ IDENTITY_QUALIFIERS: Dict[str, tuple] = {
     # One relationship per curated statement: two papers can state engagements of the
     # same molecule (#61).
     "engages": ("statement_id",),
-    # One per channel and Ensembl protein: a curated association and a text-mined
-    # co-mention of one disease are two statements (#82).
-    "associated_with": ("channel", "via_protein"),
+    # One per source, channel and Ensembl protein or gene: a curated association and a
+    # text-mined co-mention of one disease, or DISEASES's and Open Targets', are
+    # separate statements (#82).
+    "associated_with": ("source", "channel", "via_protein", "via_gene"),
 }
 
 

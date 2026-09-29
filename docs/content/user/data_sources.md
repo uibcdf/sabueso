@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 23, evaluating 9, queued 46, deferred 7, retired 3, out of scope 4.
+Summary: in use 24, evaluating 8, queued 46, deferred 7, retired 3, out of scope 4.
 
 ## In use
 
@@ -30,6 +30,7 @@ Summary: in use 23, evaluating 9, queued 46, deferred 7, retired 3, out of scope
 | [eggNOG](http://eggnog5.embl.de/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only, through UniProt (CC BY 4.0) | 2026-09-25 |
 | [NCBI Gene / RefSeq](https://www.ncbi.nlm.nih.gov/gene/) | Targets, sequence and basic pharmacology | via UniProt cross-references; Entrez E-utilities efetch (XML), no key, when resolve(..., ncbi_gene=True) | US public domain (NLM policy) | 2026-09-25 |
 | [VEuPathDB gene identifiers](https://veupathdb.org/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only | 2026-09-25 |
+| [Open Targets Platform](https://platform.opentargets.org/) | Target validation, genetics and functional networks | GraphQL API v4, no key, when resolve(..., open_targets={}); at most 100 associations per gene by default, in Open Targets' order, truncation reported | CC0 1.0 (cite the latest Open Targets publication; third-party sources inside keep their terms, agreed for unrestricted use by its users) | 2026-09-25 |
 | [DISEASES (Jensen lab)](https://diseases.jensenlab.org/) | Target validation, genetics and functional networks | Filtered channel files (TSV) from download.jensenlab.org, versioned by publication date, kept in memory or in a cache directory, when resolve(..., diseases={}) | CC BY 4.0 | 2026-09-27 |
 | [PHI-base](https://phi-base.org/) | Organism, orthology and biological context | Versioned releases of PHI-base 5 on Zenodo (JSON), downloaded once, checked against their MD5 and split per UniProt accession in the local cache, when resolve(..., phi_base=True) | CC BY 4.0 (cite PHI-base and the release) | 2026-09-27 |
 | [BindingDB](https://www.bindingdb.org/) | Binding affinity and experimental bioactivity | REST getLigandsByUniprots, no key; monomers anchored through UniChem | CC BY 3.0 (BindingDB curation) and CC BY-SA 3.0 (imported from ChEMBL); treated as CC BY-SA 3.0, since the REST records state no origin | 2026-09-25 |
@@ -46,7 +47,6 @@ Summary: in use 23, evaluating 9, queued 46, deferred 7, retired 3, out of scope
 | [DepMap](https://depmap.org/) | Target validation, genetics and functional networks | CRISPR and RNAi screens of gene essentiality and dependencies in cancer cell lines. | 2026-09-25 |
 | [DGIdb](https://dgidb.org/) | Target validation, genetics and functional networks | Aggregated drug–gene interactions and druggability categories. | 2026-09-25 |
 | [gnomAD](https://gnomad.broadinstitute.org/) | Target validation, genetics and functional networks | Population allele frequencies, e.g. to assess the conservation of a binding pocket. | 2026-09-25 |
-| [Open Targets Platform](https://platform.opentargets.org/) | Target validation, genetics and functional networks | Integrated target–disease association evidence, tractability for small molecules and biologics, preclinical data. | 2026-09-25 |
 | [Orphadata (Orphanet)](https://www.orphadata.com/) | Target validation, genetics and functional networks | Rare diseases and their genes, curated, with the type of association. | 2026-09-27 |
 | [Pharos / TCRD (IDG)](https://pharos.nih.gov/) | Target validation, genetics and functional networks | Human target development levels (Tclin, Tchem, Tbio, Tdark) and aggregated target knowledge, keyed by UniProt, HGNC, Ensembl and NCBI Gene. | 2026-09-27 |
 | [Reactome](https://reactome.org/) | Target validation, genetics and functional networks | Curated human pathways, reactions and signalling networks (REST API). | 2026-09-25 |

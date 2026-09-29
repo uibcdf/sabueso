@@ -18,6 +18,7 @@ from sabueso.tools.db.chembl import FixtureChEMBLClient
 from sabueso.tools.db.diseases import FixtureDISEASESClient
 from sabueso.tools.db.interpro import FixtureInterProClient
 from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
+from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
 from sabueso.tools.db.pdbe_kb import FixturePDBeKBClient
 from sabueso.tools.db.phi_base import FixturePHIBaseClient
 
@@ -35,12 +36,20 @@ def clients():
         taxonomy_client=FixtureNCBITaxonomyClient("temp_data"),
         phi_base_client=FixturePHIBaseClient("temp_data"),
         diseases_client=FixtureDISEASESClient("temp_data"),
+        open_targets_client=FixtureOpenTargetsClient("temp_data"),
     )
 
 
 @pytest.fixture(scope="module")
 def query():
     return sabueso.KnowledgeQuery("P60174", comparator="uniprot:P52270")
+
+
+def _resolve(accession, **options):
+    with warnings.catch_warnings():
+        # The saved Open Targets rows are a cut of a larger answer (reported).
+        warnings.simplefilter("ignore")
+        return sabueso.resolve(accession, **options)
 
 
 def _packet(query, clients, **kwargs):
@@ -67,6 +76,7 @@ def test_a_query_is_declared_and_normalized(query):
     # What the aspects ask of the sources is fixed by packet_aspects@1.
     assert query.options() == {
         "diseases": {},
+        "open_targets": {},
         "phi_base": True,
         "taxonomy": True,
         "structures": "all",
@@ -139,15 +149,15 @@ def test_composition_is_deterministic(packet, query, clients):
     assert again.snapshot_id() == packet.snapshot_id()
     # From the same card states, read back from their JSON form.
     subject = Card.from_dict(
-        sabueso.resolve("P60174", **query.options(), **clients)[0].to_dict()
+        _resolve("P60174", **query.options(), **clients)[0].to_dict()
     )
     assert card_content_id(subject) == packet.entities["subject"]["content_id"]
 
 
 def test_retrieval_times_change_the_pin_but_not_the_knowledge(query, clients):
     options = {**query.options(), **clients}
-    subject = sabueso.resolve("P60174", **options)[0]
-    comparator = sabueso.resolve("P52270", **options)[0]
+    subject = _resolve("P60174", **options)[0]
+    comparator = _resolve("P52270", **options)[0]
     first = sabueso.compose_packet(query, subject, comparator)
     reread = subject.to_dict()
     for assertion in reread["source_assertion_store"]:
@@ -203,7 +213,7 @@ def test_a_changed_packet_is_refused(tmp_path, query, clients):
 
 def test_an_unresolved_or_mismatched_card_is_refused(query, clients):
     options = {**query.options(), **clients}
-    subject = sabueso.resolve("P60174", **options)[0]
+    subject = _resolve("P60174", **options)[0]
     with pytest.raises(ValueError, match="comparator"):
         sabueso.compose_packet(query, subject)
     with pytest.raises(ValueError, match="asks about"):

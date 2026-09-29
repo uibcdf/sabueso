@@ -35,6 +35,7 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | `string/*.json` | STRING | 12.0 | 2026-09-23 | CC BY 4.0 |
 | `chembl/*.json`, `CHEMBL90555.json` | ChEMBL (EMBL-EBI); CHEMBL90555 added to `chembl/molecules.json` 2026-09-24; `chembl/indications.json` (benznidazole, CHEMBL110) added 2026-09-28 | ChEMBL_37 (released 2026-05-01) | 2026-09-23 | **CC BY-SA 3.0** |
 | `diseases/*.tsv`, `diseases/versions.json` | DISEASES (Jensen lab), the filtered rows of HsTIM's Ensembl protein ENSP00000229270 per channel | files of 2026-09-18 (knowledge, experiments) and 2026-09-20 (text mining) | 2026-09-28 | CC BY 4.0 |
+| `open_targets/ENSG00000111669.json` | Open Targets Platform, HsTIM's gene (TPI1): its target record and first 20 of 483 associated diseases | data 26.09 | 2026-09-28 | CC0 1.0 |
 | `clinicaltrials/studies.json` | ClinicalTrials.gov (NLM), the 16 studies ChEMBL's benznidazole indications cite | API v2 data of 2026-09-25 | 2026-09-28 | US government work; Source: National Library of Medicine |
 | `unichem/*.json` | UniChem (EMBL-EBI); vincristine added 2026-09-24; lookups of the BindingDB monomers of the TIM fixtures by source id (`source31__<monomer>.json`) added 2026-09-25 | — | 2026-09-23 | see note below |
 | `5978.json`, `66414.json` | PubChem (NCBI/NLM) | — | earlier | US public domain (NLM policy) |

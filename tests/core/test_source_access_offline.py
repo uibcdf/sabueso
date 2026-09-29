@@ -18,6 +18,7 @@ from sabueso.tools.db import (
     interpro,
     ncbi_gene,
     ncbi_taxonomy,
+    open_targets,
     pdb_ccd,
     pdbe_kb,
     phi_base,
@@ -54,6 +55,9 @@ CALLS = {
     ),
     "diseases.get_associations": lambda: diseases.get_associations(
         ["ENSP00000229270"], client=diseases.FixtureDISEASESClient("temp_data")
+    ),
+    "open_targets.get_associations": lambda: open_targets.get_associations(
+        "ENSG00000111669", client=open_targets.FixtureOpenTargetsClient("temp_data")
     ),
     "ncbi_taxonomy.get_taxon": lambda: ncbi_taxonomy.get_taxon(
         "5693", client=ncbi_taxonomy.FixtureNCBITaxonomyClient("temp_data")

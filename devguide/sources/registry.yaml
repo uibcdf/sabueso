@@ -370,11 +370,14 @@ resources:
     name: "Open Targets Platform"
     url: https://platform.opentargets.org/
     category: target_validation
-    status: evaluating
+    status: in_use
     description: "Integrated target–disease association evidence, tractability for small molecules and biologics, preclinical data."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "CC0 1.0 (third-party sources inside keep their terms, agreed for unrestricted use by its users)"
+    reason: "Target-disease associations for human proteins, with Open Targets' overall and per-datatype scores as stated. Joined through the Ensembl gene UniProt cross-references, only when Open Targets also lists the entry among the gene's products."
+    access: "GraphQL API v4, no key, when resolve(..., open_targets={}); at most 100 associations per gene by default, in Open Targets' order, truncation reported"
+    licence: "CC0 1.0 (cite the latest Open Targets publication; third-party sources inside keep their terms, agreed for unrestricted use by its users)"
+    module: [sabueso.tools.db.open_targets, sabueso.mappings.open_targets]
     links: ["#82", "#83"]
   - id: diseases_jensen
     name: "DISEASES (Jensen lab)"

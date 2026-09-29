@@ -116,7 +116,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         "areas": ("relationships.described_in", "literature."),
     },
     "disease_association": {
-        "options": {"diseases": {}},
+        "options": {"diseases": {}, "open_targets": {}},
         "areas": ("relationships.associated_with", "annotations.disease"),
     },
     "biological_context": {

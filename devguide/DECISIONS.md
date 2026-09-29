@@ -858,4 +858,12 @@ uibcdf/sabueso#82, the first of the human disease-association sources.
   `not_applicable`, and the knowledge state says `not_queried` with the reason.
 - **Versioned by date.** The files are updated in place, so the version is each file's
   publication date, and the cache is keyed by it.
+- **Open Targets (same day).** Associations are per Ensembl gene. A row reaches a card
+  only when both sources state the gene–protein link: UniProt cross-references the
+  gene, and Open Targets lists the entry among its products. Scores (overall and per
+  data type) and rank are recorded as stated, with the data version, never recomputed.
+  At most 100 associations per gene by default, in Open Targets' order, with the cut
+  reported. `associated_with` is identified by source, channel, Ensembl protein and
+  gene, so DISEASES's and Open Targets' statements never merge, and a disease under
+  two ontologies stays two references.
 

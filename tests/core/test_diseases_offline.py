@@ -147,3 +147,79 @@ def test_the_online_client_versions_by_date_and_caches_only_where_told(
     assert [p.name for p in (tmp_path / "diseases").iterdir()] == [
         "knowledge_2026-09-18.json"
     ]
+
+
+# --- Open Targets ----------------------------------------------------------------------
+
+
+def _open_targets(resolver, accession="P60174", **options):
+    from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
+
+    card, _ = sabueso.resolve(
+        accession,
+        resolver=resolver,
+        open_targets=options.pop("open_targets", {}),
+        open_targets_client=FixtureOpenTargetsClient("temp_data"),
+        diseases={},
+        diseases_client=FixtureDISEASESClient("temp_data"),
+        **options,
+    )
+    return card
+
+
+def test_open_targets_scores_are_kept_as_stated_and_the_cut_reported(resolver):
+    from sabueso._private.smonitor.warnings import EnrichmentTruncatedWarning
+
+    with pytest.warns(EnrichmentTruncatedWarning):  # 20 saved rows of 483
+        card = _open_targets(resolver)
+    found = {
+        (r["object_ref"], r["qualifiers"]["source"]): r["qualifiers"]
+        for r in card.relationships("associated_with")
+    }
+    deficiency = found[("mondo:MONDO:0014221", "Open Targets")]
+    assert deficiency["rank"] == 1
+    assert round(deficiency["score"], 3) == 0.783
+    assert {d["datatype"] for d in deficiency["datatype_scores"]} == {
+        "literature",
+        "genetic_association",
+        "genetic_literature",
+    }
+    assert (deficiency["via_gene"], deficiency["gene_lists_protein"]) == (
+        "ensembl:ENSG00000111669",
+        True,
+    )
+    # DISEASES states the same disease under another ontology: never merged.
+    assert ("doid:DOID:0050884", "DISEASES") in found
+
+
+def test_open_targets_needs_both_sources_to_state_the_link(resolver, monkeypatch):
+    from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
+
+    original = FixtureOpenTargetsClient.associations
+
+    def other_products(self, gene, limit=100):
+        response = original(self, gene, limit)
+        response["record"]["target"]["proteinIds"] = [{"id": "Q00000"}]
+        return response
+
+    monkeypatch.setattr(FixtureOpenTargetsClient, "associations", other_products)
+    card = _open_targets(resolver)
+    sources = {r["qualifiers"]["source"] for r in card.relationships("associated_with")}
+    assert sources == {"DISEASES"}
+    (record,) = [
+        e for e in card.quality["enrichments"] if e["source"] == "Open Targets"
+    ]
+    assert record["status"] == "not_found"
+    assert "does not list P60174" in record["detail"]
+
+
+def test_open_targets_does_not_cover_a_parasite_protein(resolver):
+    card = _open_targets(resolver, "P52270")
+    rows = {
+        (r["area"], r["source"]): r
+        for r in card.knowledge_state()["rows"]
+        if r["area"] == "relationships.associated_with"
+    }
+    assert rows[("relationships.associated_with", "Open Targets")]["state"] == (
+        "not_queried"
+    )

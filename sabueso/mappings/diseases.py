@@ -62,6 +62,7 @@ def map_associations(
                 assertion["source"]["version"] = f"{channel} {versions[channel]}"
             assertions.append(assertion)
             qualifiers = {
+                "source": SOURCE,
                 "channel": channel,
                 "disease_name": row.get("disease_name"),
                 "via_protein": f"ensembl:{row['protein']}",

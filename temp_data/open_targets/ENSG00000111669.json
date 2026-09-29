@@ -1,0 +1,598 @@
+{
+ "record": {
+  "count": 483,
+  "rows": [
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.1862065668738581
+     },
+     {
+      "id": "genetic_association",
+      "score": 0.8869039943327759
+     },
+     {
+      "id": "genetic_literature",
+      "score": 0.7295169571339454
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0014221",
+     "name": "triosephosphate isomerase deficiency"
+    },
+    "score": 0.7826557233644024
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.07432995933531851
+     },
+     {
+      "id": "affected_pathway",
+      "score": 0.607930797611621
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0005559",
+     "name": "neurodegenerative disease"
+    },
+    "score": 0.37183922825795973
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.07896852191308955
+     },
+     {
+      "id": "genetic_association",
+      "score": 0.310514174076927
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0003847",
+     "name": "hereditary disease"
+    },
+    "score": 0.19117149934194175
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.8732327560149848
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0005070",
+     "name": "neoplasm"
+    },
+    "score": 0.10617301717295678
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.8532489417198212
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0005061",
+     "name": "lung adenocarcinoma"
+    },
+    "score": 0.10374326194020052
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.7488144880699815
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0012382",
+     "name": "hyperinsulinemic hypoglycemia, familial, 4"
+    },
+    "score": 0.09104547779910431
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.6960186005677081
+     }
+    ],
+    "disease": {
+     "id": "EFO_0000544",
+     "name": "infection"
+    },
+    "score": 0.08462622859913022
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "genetic_association",
+      "score": 0.13908892206083395
+     }
+    ],
+    "disease": {
+     "id": "EFO_1002005",
+     "name": "lumbar disc herniation"
+    },
+    "score": 0.08455643932738338
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.6933894152741591
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0007256",
+     "name": "hepatocellular carcinoma"
+    },
+    "score": 0.08430655605661501
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.030396539880581056
+     },
+     {
+      "id": "animal_model",
+      "score": 0.6451632680746378
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0019350",
+     "name": "hereditary spherocytosis"
+    },
+    "score": 0.07936687366677868
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.635568268449649
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0008383",
+     "name": "rheumatoid arthritis"
+    },
+    "score": 0.0772763048750464
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.6337053747336937
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0018177",
+     "name": "glioblastoma"
+    },
+    "score": 0.07704980278252513
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.6219769542556046
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0017910",
+     "name": "dehydrated hereditary stomatocytosis"
+    },
+    "score": 0.0756237891793313
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.6170497595757953
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0005595",
+     "name": "laryngeal squamous cell carcinoma"
+    },
+    "score": 0.07502471050099445
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.6076114988471422
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0019107",
+     "name": "Rh deficiency syndrome"
+    },
+    "score": 0.07387714862642715
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.012158615952232422
+     },
+     {
+      "id": "animal_model",
+      "score": 0.5982744079353916
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0009950",
+     "name": "pyruvate kinase deficiency of red cells"
+    },
+    "score": 0.07311146745604129
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.5802851445902326
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0011381",
+     "name": "dominant beta-thalassemia"
+    },
+    "score": 0.07055464215858301
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.5779902058292488
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0016490",
+     "name": "hemoglobin C-beta-thalassemia syndrome"
+    },
+    "score": 0.07027560936829605
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.5771829434318366
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0017319",
+     "name": "hereditary elliptocytosis"
+    },
+    "score": 0.07017745743366792
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.5684364044751161
+     }
+    ],
+    "disease": {
+     "id": "MONDO_0010745",
+     "name": "beta-thalassemia-X-linked thrombocytopenia syndrome"
+    },
+    "score": 0.06911399935280788
+   }
+  ],
+  "target": {
+   "approvedSymbol": "TPI1",
+   "id": "ENSG00000111669",
+   "proteinIds": [
+    {
+     "id": "P60174",
+     "source": "uniprot_swissprot"
+    },
+    {
+     "id": "U3KPS5",
+     "source": "uniprot_trembl"
+    },
+    {
+     "id": "U3KPZ0",
+     "source": "uniprot_trembl"
+    },
+    {
+     "id": "U3KQF3",
+     "source": "uniprot_trembl"
+    },
+    {
+     "id": "V9HWK1",
+     "source": "uniprot_trembl"
+    },
+    {
+     "id": "ENSP00000229270",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000379933",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000443599",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000475184",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000475364",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000475620",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000475829",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000484435",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000524223",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000524224",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000524225",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000524226",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000524227",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000524228",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000604819",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000604820",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000604821",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000618689",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000618690",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000667743",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000667745",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000667746",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000667748",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000714565",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000714566",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000714572",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000714577",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000714582",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000714585",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746804",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746805",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746807",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746810",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746811",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746812",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746813",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746814",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746817",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746824",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746828",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746832",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746834",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746839",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000746841",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770153",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770154",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770155",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770156",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770157",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770158",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770159",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770160",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770161",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770162",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770163",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770164",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770165",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770166",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770167",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770168",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770169",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000770170",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "ENSP00000794325",
+     "source": "ensembl_PRO"
+    },
+    {
+     "id": "B7Z5D8",
+     "source": "uniprot_obsolete"
+    },
+    {
+     "id": "D3DUS9",
+     "source": "uniprot_obsolete"
+    },
+    {
+     "id": "P00938",
+     "source": "uniprot_obsolete"
+    },
+    {
+     "id": "Q6FHP9",
+     "source": "uniprot_obsolete"
+    },
+    {
+     "id": "Q6IS07",
+     "source": "uniprot_obsolete"
+    },
+    {
+     "id": "Q8WWD0",
+     "source": "uniprot_obsolete"
+    },
+    {
+     "id": "Q96AG5",
+     "source": "uniprot_obsolete"
+    }
+   ]
+  }
+ },
+ "version": "26.09"
+}

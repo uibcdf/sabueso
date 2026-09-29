@@ -1,7 +1,7 @@
 # Disease association
 
-A human protein card can hold what DISEASES states about the diseases its gene is
-associated with. DISEASES keeps three channels apart, and so does the card.
+A human protein card can hold what DISEASES and Open Targets state about the diseases
+its gene is associated with. Each source, and each DISEASES channel, is kept apart.
 
 ```{note}
 Disease associations are on main, not yet in a release.
@@ -36,10 +36,25 @@ DISEASES names genes by Ensembl protein. An association is added only for an Ens
 protein that the UniProt entry cross-references: `via_protein`, and `uniprot_isoform`
 when UniProt maps it to an isoform. It is never matched by gene name.
 
+## Open Targets
+
+`sabueso.resolve("P60174", open_targets={})` adds Open Targets' associations, at most 100
+per gene by default (`{"limit": n}`), in Open Targets' own order. A cut is reported with
+a warning. Each association keeps:
+- the overall `score`, `datatype_scores` (genetic association, literature, known
+  drug…) and `rank`. They are Open Targets' own computation, recorded as stated with
+  the data version, never recomputed;
+- the disease under Open Targets' term (`mondo:MONDO:0014221`). The same disease under
+  a DISEASES term (`doid:DOID:0050884`) stays a separate reference.
+
+The association reaches the card through the Ensembl gene the UniProt entry
+cross-references (`via_gene`). It is added only when Open Targets also lists the entry
+among that gene's products.
+
 ## Coverage
 
-DISEASES covers human genes only. For a protein of another organism, the knowledge
-state says `not_queried`, with that reason, never `not_stated`.
+DISEASES and Open Targets cover human genes only. For a protein of another organism,
+the knowledge state says `not_queried`, with that reason, never `not_stated`.
 
 The files are downloaded once per process, about 50 MB with text mining. Set
 `$SABUESO_CACHE_DIR` to keep them between sessions. The version recorded is each file's
