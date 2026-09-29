@@ -237,3 +237,21 @@ def test_every_card_tool_takes_the_profile():
         "ORPHA:868", terms="commercial", mondo_client=FixtureMONDOClient("temp_data")
     )
     assert disease.quality["terms_profile"]["profile"] == "commercial"
+
+
+def test_a_database_licence_with_share_alike_binds_when_shared(monkeypatch):
+    stated = {
+        "Somewhere": {
+            "licence": "ODbL-1.0",
+            "attribution": "Somewhere",
+            "statement": "https://example.org/licence",
+            "reviewed": "2026-09-29",
+        }
+    }
+    monkeypatch.setattr(terms_module, "source_terms", lambda: stated)
+    answer = verdict("Somewhere", "commercial_product")
+    assert (answer["verdict"], answer["obligations"]) == (
+        "allowed",
+        ["attribution", "share_alike"],
+    )
+    assert verdict("Somewhere", "internal_research")["obligations"] == []

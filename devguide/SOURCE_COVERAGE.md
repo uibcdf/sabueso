@@ -201,7 +201,37 @@ through the PDB and ChEMBL already. They are reviewed when a target needs them.
 4. **Family-specific sources:** KLIFS and GPCRdb, when a target needs them.
 5. **SureChEMBL**, and then structures: OPM, SAbDab, ESM Atlas.
 
-## 6. Next wave
+## 6. Sources set aside, reviewed for terms profiles and keys (2026-09-29)
+
+Terms profiles (#94) and personal keys (`tools/db/_keys`) change why some sources were
+set aside. A source whose licence is non-commercial can fit the `non_commercial`
+profile, and one that needs a key can take the user's own. Checked live on 2026-09-29:
+
+| Source | Terms, as stated | Access | Profiles that admit it | Worth it |
+|---|---|---|---|---|
+| **BRENDA** | CC BY 4.0 (licence page) | SOAP service, registered account | every profile | **High:** Km, kcat, Ki and inhibitors per EC number and organism (TIM is EC 5.3.1.1) |
+| **DrugBank** (full) | CC BY-NC 4.0, under DrugBank's Academic License (academic institution, research not primarily for a commercial third party) | download (204 MB, 5.1.22) with the user's account | `non_commercial`, with an academic account | **High:** the clinical layer still lacks pharmacology, mechanisms, interactions and transporters |
+| DrugBank (Open Data) | CC0 (vocabulary, structures) | download, also behind a login (403) | every profile | Low: drug names and synonyms; identity already comes from UniChem |
+| **BioGRID** | MIT | REST, personal key | every profile | Medium: genetic interactions IntAct does not hold |
+| Guide to PHARMACOLOGY | database ODbL 1.0, contents CC BY-SA 4.0 | REST, personal key (401) | every profile, with share-alike | Medium: curated ligand-target pharmacology; no test target is linked yet |
+| SABIO-RK | CC BY-NC (earlier review) | REST; did not answer | `non_commercial` | Low while BRENDA covers kinetics |
+| KEGG | academic website use only; services need a licence, academic ones too | licence | none without a licence | stays out; Reactome covers pathways |
+| ZINC | major portions may not be redistributed | downloads | none | stays out |
+| PhosphoSitePlus | its licence page could not be read (2026-09-29) | downloads | not known | stays retired until its terms are read |
+
+**Proposed order:**
+1. **BRENDA**, for every profile.
+2. **DrugBank**, full data for `non_commercial`. Its terms record states both the licence
+   (CC BY-NC 4.0) and the access condition (the Academic License), so the report says
+   which one binds.
+3. **BioGRID**, then **Guide to PHARMACOLOGY** when a target needs them.
+
+**What it needs from a user.** Each of the first three needs the user's own account or
+key: a BRENDA account, a DrugBank academic account, a BioGRID key. Sabueso never stores,
+logs or ships any of them. Fixtures are then the public responses of those accounts,
+under each source's licence.
+
+## 7. Next wave
 
 - Wave 3: the architecture for many sources (#83, part 3), informed by what waves 1 and
   2 show that sources need:

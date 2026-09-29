@@ -357,8 +357,8 @@ resources:
     status: deferred
     description: Genetic and protein interactions curated from the literature.
     since: 2026-09-23
-    reason: The API needs a personal access key; IntAct (via UniProt) and STRING cover current needs.
-    revisit_when: Genetic interactions are needed, or key management exists for deployments.
+    reason: "The API needs a personal access key; IntAct (via UniProt) and STRING cover current needs. Reviewed 2026-09-29 (#94): MIT licence (its terms page), so every terms profile admits it; key management now exists (tools/db/_keys)."
+    revisit_when: "Genetic interactions are needed, and a user supplies their own key."
     access: REST API with access key
     licence: MIT
     links: ["#22"]
@@ -369,10 +369,10 @@ resources:
     status: deferred
     description: Pharmacology of approved and experimental drugs, metabolism, transporters and mechanisms.
     since: 2026-09-23
-    reason: Licensing constrains redistribution and caching; only DrugBank ids are kept, through UniChem.
-    revisit_when: A licence compatible with Sabueso's caching and redistribution is confirmed.
-    access: Downloads under licence
-    licence: Open data (vocabulary, structures) CC0; full database CC BY-NC 4.0 or commercial
+    reason: "Reviewed for terms profiles (2026-09-29, #94). The full database (XML 5.1.22 of 2026-06-27, 204 MB) is CC BY-NC 4.0, and its download needs an account under DrugBank's Academic License (an academic institution, research not primarily for a commercial third party). It would fit only the non_commercial profile, with the user's own account, and would bring what the clinical layer still lacks: pharmacology, mechanisms, interactions, transporters. The Open Data (vocabulary, structures) is CC0, but its download also needs a login (HTTP 403 without one)."
+    revisit_when: "A user with a DrugBank academic account asks for it; the account's credentials are theirs, through tools/db/_keys, never stored."
+    access: Downloads under an account (HTTP basic authentication with the user's email and password)
+    licence: Open data (vocabulary, structures) CC0; full database CC BY-NC 4.0, under DrugBank's Academic License, or commercial
     links: ["#29"]
   - id: scope
     name: SCOPe
@@ -448,7 +448,7 @@ resources:
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     decided_by: "Sabueso maintainers, triage (2026-09-25)"
-    reason: "Its web services now need a personal API key (HTTP 401 without one), its data is under ODbL (share-alike), and UniProt links neither test target to it."
+    reason: "Its web services now need a personal API key (HTTP 401 without one), its data is under ODbL (share-alike), and UniProt links neither test target to it. Reviewed 2026-09-29 (#94): the database is under ODbL 1.0 and its contents under CC BY-SA 4.0 (its about page); every terms profile would admit it with share-alike, and key management now exists."
     revisit_when: "A target of interest has a GuidetoPHARMACOLOGY cross-reference in UniProt, and key management exists for deployments (as for BioGRID)."
     access: "REST API with a personal key; downloads"
     licence: "ODbL 1.0"
@@ -621,7 +621,7 @@ resources:
     description: "Metabolic and signalling pathway maps and human diseases."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    reason: "Not a public database: free academic use of the website only; services, downloads and non-academic use need a licence, which does not fit redistribution across MOLI."
+    reason: "Not a public database: free academic use of the website only; services, downloads and non-academic use need a licence, which does not fit redistribution across MOLI. Reviewed 2026-09-29 (#94): even academic users who provide services with KEGG need an academic service provider licence, so no terms profile admits it without one."
     revisit_when: "A licence covering MOLI use is in place, or a pathway need is not met by Reactome (CC0)."
     links: ["#83"]
   - id: clinvar
@@ -902,7 +902,8 @@ resources:
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     licence: "CC BY 4.0; the API needs a registered account (key rule)"
-    links: ["#83"]
+    note: "Reviewed 2026-09-29 (#94): data CC BY 4.0 (its licence page); the SOAP web service needs a registered account (email and password). Fits every terms profile. Strong candidate: kinetics (Km, kcat, Ki) and inhibitors per EC number and organism, e.g. TIM (EC 5.3.1.1) of T. cruzi and human. Waits on a user's account for the key rule."
+    links: ["#83", "#94"]
   - id: sabio_rk
     name: "SABIO-RK"
     url: http://sabiork.h-its.org/
@@ -911,8 +912,8 @@ resources:
     description: "Kinetic constants of purified biochemical reactions under stated conditions (REST API)."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    reason: "Non-commercial use only (HITS terms, CC BY-NC); does not fit redistribution across MOLI."
-    revisit_when: "A licence covering MOLI use, or kinetics a target needs that BRENDA (CC BY 4.0) does not give."
+    reason: "Non-commercial use only (HITS terms, CC BY-NC). Reviewed 2026-09-29 (#94): the non_commercial profile could admit it, but its site and REST API did not answer that day."
+    revisit_when: "Its services answer, and kinetics a target needs that BRENDA (CC BY 4.0) does not give; then for the non_commercial profile only."
     links: ["#83"]
   - id: covpdb
     name: "CovPDB"

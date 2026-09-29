@@ -92,6 +92,12 @@ LICENCES: Dict[str, Dict[str, Any]] = {
         "attribution": "attribution",
         "share_alike": True,
     },
+    "ODbL-1.0": {
+        "name": "ODbL 1.0",
+        "attribution": "attribution",
+        "share_alike": True,
+    },
+    "MIT": {"name": "MIT", "attribution": "attribution", "share_alike": False},
     "CC-BY-NC-4.0": {
         "name": "CC BY-NC 4.0",
         "attribution": "attribution",
