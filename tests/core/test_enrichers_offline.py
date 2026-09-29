@@ -123,3 +123,19 @@ def test_a_missing_key_is_not_queried_never_an_error():
     row = _enrichment_row("annotations.toy", "Toy", records)
     assert row["state"] == "not_queried"
     assert row["basis"]["detail"] == "Toy answers only with a personal key"
+
+
+def test_not_found_states_the_release_it_was_checked_against():
+    from sabueso.core.knowledge_state import _enrichment_row
+
+    def released(gene):
+        raise RecordNotFoundError("Toy 7 names no such gene", version="7")
+
+    _, records = _run({"organism": {"taxonId": 9606}, "genes": ["g1"]}, released)
+    assert records[0]["status"] == "not_found"
+    assert records[0]["version"] == "7"
+    row = _enrichment_row("annotations.toy", "Toy", records)
+    assert (row["state"], row["release"]) == ("not_stated", "7")
+    # A source that states no release keeps a not_found without one.
+    _, records = _run({"organism": {"taxonId": 9606}, "genes": ["missing"]}, _client)
+    assert "version" not in records[0]

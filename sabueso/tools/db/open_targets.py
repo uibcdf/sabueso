@@ -82,9 +82,11 @@ class OnlineOpenTargetsClient:
                 {"gene": gene, "index": index, "size": min(PAGE_SIZE, limit)}
             )
             target = data.get("target")
-            if target is None:
-                raise RecordNotFoundError(f"Open Targets has no target {gene}")
             version = _version(data.get("meta"))
+            if target is None:
+                raise RecordNotFoundError(
+                    f"Open Targets has no target {gene}", version=version
+                )
             page = target.get("associatedDiseases") or {}
             count = page.get("count") or 0
             batch = page.get("rows") or []

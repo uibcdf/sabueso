@@ -13,19 +13,21 @@
   for the biological context only curation states (#60), nothing has been curated;
 - ``unavailable``: the source failed, so nothing can be said;
 - ``partial``: the source stated some of it, but failed, or answered incompletely, for
-  some requests (e.g. two structures of many). ``basis`` names them (``unavailable_for``,
-  ``incomplete_for``), so that "known" never hides a gap (#74, rule ``@2``).
+  some requests (e.g. two structures of many), or its answer was cut at a limit (e.g.
+  the first 5000 associations of a gene). ``basis`` names them (``unavailable_for``,
+  ``incomplete_for``, ``truncated_for``), so that "known" never hides a gap (#74, rule
+  ``@2``; cuts since ``@3``, #88).
 
 These are knowledge states, not Evidence. "Not stated by UniProt at release 120" is a
 fact about a source; what the absence means for a project is interpreted in Nextia.
-Rule ``knowledge_state@2``.
+Rule ``knowledge_state@3``.
 """
 
 from __future__ import annotations
 
 from typing import Any, Dict, List
 
-KNOWLEDGE_STATE_RULE = "knowledge_state@2"
+KNOWLEDGE_STATE_RULE = "knowledge_state@3"
 
 #: Protein enrichments: (area, source, which enrichment records answer it).
 PROTEIN_ENRICHMENTS = (
@@ -92,7 +94,12 @@ def _enrichment_row(area: str, source: str, records: List[Dict[str, Any]]):
     )
     if count:
         failed, incomplete = which("error"), which("partial")
-        if failed or incomplete:
+        truncated = [
+            str(r.get("structure") or r.get("identifier") or r.get("data") or "")
+            for r in records
+            if r.get("truncated")
+        ] or None
+        if failed or incomplete or truncated:
             return _row(
                 area,
                 source,
@@ -101,6 +108,7 @@ def _enrichment_row(area: str, source: str, records: List[Dict[str, Any]]):
                 count,
                 unavailable_for=failed,
                 incomplete_for=incomplete,
+                truncated_for=truncated,
                 **basis,
             )
         return _row(area, source, "known", release, count, **basis)

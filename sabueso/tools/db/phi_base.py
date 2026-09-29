@@ -162,7 +162,8 @@ class OnlinePHIBaseClient:
         kept = _release.remembered(SOURCE, release["record"], build)
         if accession not in kept["index"]:
             raise RecordNotFoundError(
-                f"PHI-base {release['version']} names no gene with UniProt {accession}"
+                f"PHI-base {release['version']} names no gene with UniProt {accession}",
+                version=release["version"],
             )
         return {
             "retrieved_at": kept["retrieved_at"],
@@ -181,7 +182,8 @@ class OnlinePHIBaseClient:
         index = json.loads((directory / "index.json").read_text(encoding="utf-8"))
         if accession not in index:
             raise RecordNotFoundError(
-                f"PHI-base {meta['version']} names no gene with UniProt {accession}"
+                f"PHI-base {meta['version']} names no gene with UniProt {accession}",
+                version=meta["version"],
             )
         return {
             "retrieved_at": meta["retrieved_at"],

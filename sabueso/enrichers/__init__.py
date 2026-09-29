@@ -14,8 +14,9 @@ covers, and three steps:
 
 The runner (``run``) does the rest, the same way for every source:
 - organism coverage: ``not_applicable``, with the reason;
-- ``RecordNotFoundError`` → ``not_found``, and ``ConnectorError`` → ``error``, per
-  request, so one failing source or gene never hides another's knowledge;
+- ``RecordNotFoundError`` → ``not_found`` (with the release consulted, when the source
+  states one), and ``ConnectorError`` → ``error``, per request, so one failing source
+  or gene never hides another's knowledge;
 - ``MissingKeyError`` → ``not_queried``: a source that needs a personal key it was not
   given is not asked (``tools.db._keys``);
 - mappings and records in the declared order, so a card stays deterministic.
@@ -198,7 +199,12 @@ def run(
             continue
         except RecordNotFoundError as exc:
             detail = {"detail": str(exc)} if enricher.not_found_detail else {}
-            enrichments.append({**request.record, "status": "not_found", **detail})
+            # The release consulted, when the source states one (#89).
+            version = getattr(exc, "version", None)
+            released = {"version": version} if version is not None else {}
+            enrichments.append(
+                {**request.record, "status": "not_found", **released, **detail}
+            )
             continue
         except ConnectorError as exc:
             enrichments.append(

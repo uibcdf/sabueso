@@ -51,7 +51,7 @@ def test_known_not_stated_and_not_queried_are_told_apart(resolver):
         states[("relationships.has_ligand_site", "PDBe-KB")]["state"] == "not_queried"
     )
     assert states[("relationships.interacts_with", "UniProt")]["state"] == "not_stated"
-    assert card.knowledge_state()["rule"]["rule"] == "knowledge_state@2"
+    assert card.knowledge_state()["rule"]["rule"] == "knowledge_state@3"
 
 
 def test_a_failed_source_is_unavailable(resolver):
@@ -66,6 +66,24 @@ def test_a_failed_source_is_unavailable(resolver):
         )
     row = _states(card)[("relationships.has_bioactivity", "ChEMBL")]
     assert (row["state"], row["basis"]["errors"]) == ("unavailable", 1)
+
+
+def test_a_cut_answer_is_partial_never_known(resolver):
+    # STRING holds 78 partners of HsTIM at score >= 700; the fixture keeps 50, marked
+    # truncated. "known" would hide the cut (#88, knowledge_state@3).
+    from sabueso._private.smonitor.warnings import EnrichmentTruncatedWarning
+    from sabueso.tools.db.stringdb import FixtureStringClient
+
+    with pytest.warns(EnrichmentTruncatedWarning):
+        card, _ = sabueso.resolve(
+            "P60174",
+            resolver=resolver,
+            string={},
+            string_client=FixtureStringClient("temp_data"),
+        )
+    row = _states(card)[("relationships.functionally_associated_with", "STRING")]
+    assert (row["state"], row["count"]) == ("partial", 50)
+    assert row["basis"]["truncated_for"] == ["P60174"]
 
 
 def test_no_cross_reference_is_not_stated_with_its_reason(resolver):

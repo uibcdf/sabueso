@@ -64,7 +64,13 @@ class OnlineReactomeClient:
             f"mapping/UniProt/{accession}/reactions", self.timeout, missing_ok=True
         )
         if not pathways and not reactions:
-            raise RecordNotFoundError(f"Reactome maps UniProt {accession} to nothing")
+            try:
+                version = str(_get("database/version", self.timeout))
+            except ConnectorError:
+                version = None  # the answer stands; only its release is unknown
+            raise RecordNotFoundError(
+                f"Reactome maps UniProt {accession} to nothing", version=version
+            )
         ancestors = {}
         for pathway in pathways or []:
             paths = _get(f"event/{pathway['stId']}/ancestors", self.timeout) or []

@@ -20,10 +20,11 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
     0.3.6.
   - The recorded shape of 0.3.6 is `schemas/card_shape_0.3.6.json`.
-- **Unreleased on main:** nothing yet.
-- **Open follow-ups from the release:** #88 (large default answers; a truncated answer
-  still reads `known` in the knowledge state), #89 (a `not_found` record without the
-  release it was checked against).
+- **Unreleased on main:**
+  - `knowledge_state@3`: an answer cut at a limit is `partial`, with `truncated_for`
+    (#88);
+  - a `not_found` record states the release it was checked against (#89).
+- **Watched:** card and packet size with the default ceilings (#88).
 
 ## Package layout
 

@@ -35,10 +35,11 @@ source:
 - `not_queried`: it was not requested;
 - `unavailable`: the source failed;
 - `partial`: the source answered for some requests and failed, or answered
-  incompletely, for others. `basis` names which (`unavailable_for`, `incomplete_for`).
+  incompletely, for others, or its answer was cut at a limit. `basis` names which
+  (`unavailable_for`, `incomplete_for`, `truncated_for`).
 
 Each row carries the source release and the basis. An absence is reported as a fact
-about a source, never as evidence against something (rule `knowledge_state@2`).
+about a source, never as evidence against something (rule `knowledge_state@3`).
 
 ## Structures
 

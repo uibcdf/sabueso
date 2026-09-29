@@ -57,9 +57,22 @@ class RecordNotFoundError(SabuesoError):
     """A source was consulted and holds no record for the requested identifier.
 
     Distinct from ConnectorError: "not found" is an answer, a connector failure is not.
+    ``version`` is the source release that was consulted, when the source states one:
+    "not stated by S at release R" is a fact about a source that can be checked (#89).
     """
 
     catalog_key = "RecordNotFoundError"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        version: Any = None,
+        code: str | None = None,
+        extra: Dict[str, Any] | None = None,
+    ) -> None:
+        super().__init__(message, code=code, extra=extra)
+        self.version = None if version is None else str(version)
 
 
 class MissingKeyError(SabuesoError):

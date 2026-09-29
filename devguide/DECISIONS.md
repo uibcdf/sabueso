@@ -987,3 +987,15 @@ uibcdf/sabueso#86, wave 3 of #83.
 - **Where sources are documented.** The data-sources page, generated from the registry,
   is the one list of sources in use, their access and licence, their ceilings, and the
   sources set aside or blocked, each with its reason.
+
+## Gaps in the knowledge state, found by the 0.6.0 release (2026-09-29)
+- **A cut is partial** (`knowledge_state@3`, #88). A source whose answer was cut at a
+  limit read as `known`, although its record and a warning said `truncated`. The row
+  is now `partial`, and `basis.truncated_for` names the requests that were cut, as
+  `unavailable_for` and `incomplete_for` already do for failures. It is a new rule
+  version: packets and views built from now on cite `@3`.
+- **"Not stated" carries its release** (#89). `RecordNotFoundError` takes the release
+  the client consulted (`version=`), and the enricher runner records it in the
+  `not_found` record. The row then reads "not stated by Reactome at release 97". PHI-base,
+  Reactome, Orphadata and Open Targets pass it. A source that states no release still
+  records `not_found` without one.

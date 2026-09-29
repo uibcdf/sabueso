@@ -109,7 +109,8 @@ class OnlineOrphadataClient:
         version, index = self._index()
         if accession not in index:
             raise RecordNotFoundError(
-                f"Orphadata ({version}) names no gene with UniProt {accession}"
+                f"Orphadata ({version}) names no gene with UniProt {accession}",
+                version=version,
             )
         return {
             "retrieved_at": retrieved_at,
@@ -137,7 +138,7 @@ class FixtureOrphadataClient:
         version, index = parse_release(self.path.read_bytes())
         if accession not in index:
             raise RecordNotFoundError(
-                f"Orphadata names no gene with UniProt {accession}"
+                f"Orphadata names no gene with UniProt {accession}", version=version
             )
         return {
             "retrieved_at": self.retrieved_at,
