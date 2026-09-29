@@ -119,36 +119,49 @@ def test_what_remains_for_a_commercial_product_molecule_by_molecule(tctim):
     report = tctim.terms("commercial_product")
     assert report["rule"] == "terms_propagation@1"
     assert "not legal advice" in report["disclaimer"]
-    assert report["unknown"] == ["PubChem BioAssay"]
     (card,) = report["cards"]
-    assert card["status"] == "partial"
     molecules = {
         ref: entry
         for ref, entry in card["objects"].items()
         if "has_bioactivity" in entry["predicates"]
     }
-    by_status = {}
-    for ref, entry in molecules.items():
-        by_status.setdefault(entry["status"], []).append(entry)
-    # Molecules measured by ChEMBL or BindingDB may be used, with their obligations;
-    # those only PubChem BioAssay states depend on each depositor's terms: unknown.
-    assert set(by_status) == {"complete", "unknown"}
-    assert all(e["sources"] == ["PubChem BioAssay"] for e in by_status["unknown"])
+    # Every assay in the fixture was deposited in PubChem by ChEMBL: each result is
+    # judged by ChEMBL's terms, so every measured molecule may be used, with
+    # attribution and share-alike.
+    assert molecules and {e["status"] for e in molecules.values()} == {"complete"}
+    label = "PubChem BioAssay (deposited by ChEMBL)"
+    assert report["sources"][label]["verdict"] == "allowed"
+    assert report["sources"][label]["basis"] == {
+        "source": "PubChem BioAssay",
+        "depositor": "ChEMBL",
+        "terms_of": "ChEMBL",
+    }
     assert {"attribution", "share_alike"} <= set(report["obligations"])
     assert any("ChEMBL" in text for text in report["attribution"])
 
 
-def test_a_deck_keeps_only_what_is_admissible_and_says_why(hstim, tctim):
+def test_a_depositor_whose_terms_are_not_recorded_stays_unknown():
+    answer = terms_module.labelled_verdict(
+        "PubChem BioAssay (deposited by Somebody)", "commercial_product"
+    )
+    assert (answer["verdict"], answer["reason"]) == (
+        "unknown",
+        "depositor_terms_not_recorded",
+    )
+
+
+def test_a_deck_keeps_only_what_is_admissible_and_says_why(hstim, tctim, monkeypatch):
+    # Without ChEMBL's terms on record, the TcTIM card's bioactivities are unknown.
+    stated = {k: v for k, v in source_terms().items() if k != "ChEMBL"}
+    monkeypatch.setattr(terms_module, "source_terms", lambda: stated)
     deck = Deck([hstim, tctim])
     kept = deck.admissible("commercial_product")
-    assert [c.id for c in kept.cards] == [hstim.id]
-    assert kept.meta["excluded"] == [
-        {
-            "candidate": tctim.id,
-            "reason": "partially_admissible",
-            "by": "terms_propagation@1",
-        }
-    ]
+    assert tctim.id not in [c.id for c in kept.cards]
+    assert {
+        "candidate": tctim.id,
+        "reason": "partially_admissible",
+        "by": "terms_propagation@1",
+    } in kept.meta["excluded"]
     assert kept.meta["operations"][-1]["operation"] == "admissible"
 
 
@@ -183,26 +196,43 @@ def _tctim(**options):
 
 
 @pytest.mark.parametrize("profile", ["commercial", "non_commercial"])
-def test_a_profile_asks_only_the_sources_it_admits(profile):
+def test_a_profile_keeps_the_records_whose_terms_allow_its_use(profile):
     card = _tctim(terms=profile)
     assert card.quality["terms_profile"] == {
         "profile": profile,
         "use": terms_module.PROFILES[profile],
         "rule": "terms_profile@1",
-        "excluded": [{"source": "PubChem BioAssay", "reason": "terms_per_record"}],
+        "excluded": [],
     }
-    assert not any(
+    # PubChem BioAssay is asked: its results deposited by ChEMBL are kept.
+    assert any(
         r["qualifiers"].get("source") == "PubChem BioAssay"
         for r in card.relationships("has_bioactivity")
     )
-    rows = {(r["area"], r["source"]): r for r in card.knowledge_state()["rows"]}
-    row = rows[("relationships.has_bioactivity", "PubChem BioAssay")]
-    assert row["state"] == "not_queried"
-    assert f"terms profile '{profile}'" in row["basis"]["detail"]
-    # What was kept is all usable for the profile's use.
-    assert (
-        card.terms(terms_module.PROFILES[profile])["cards"][0]["status"] == "complete"
+    assert card.terms(terms_module.PROFILES[profile])["cards"][0]["status"] == (
+        "complete"
     )
+
+
+def test_a_record_of_a_depositor_without_recorded_terms_is_left_out():
+    profile = terms_module.TermsProfile("commercial")
+    assert profile.admits("PubChem BioAssay")  # asked, then judged record by record
+    assert profile.admits_record("PubChem BioAssay", "ChEMBL")
+    assert not profile.admits_record("PubChem BioAssay", "Somebody")
+    assert not profile.admits_record("PubChem BioAssay", "Somebody")
+    assert profile.record()["excluded_records"] == [
+        {
+            "source": "PubChem BioAssay",
+            "depositor": "Somebody",
+            "reason": "depositor_terms_not_recorded",
+            "count": 2,
+        }
+    ]
+    # A source whose terms are each record's, with no depositor known, is not asked.
+    assert not profile.admits("Literature")
+    assert profile.record()["excluded"] == [
+        {"source": "Literature", "reason": "terms_per_record"}
+    ]
 
 
 def test_without_a_profile_nothing_is_excluded():

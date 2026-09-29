@@ -1128,3 +1128,17 @@ uibcdf/sabueso#29.
   - Today almost every source in use allows commercial use. The profiles differ through
     sources with unknown terms, and `non_commercial` would let us reconsider sources set
     aside for a non-commercial licence, such as DrugBank's clinical content.
+- **Terms per record: PubChem BioAssay by depositor** (same day, #94).
+  - A PubChem BioAssay result keeps its depositor's terms. The registry names the
+    depositors whose terms are known (ChEMBL, BindingDB: their assays in PubChem are
+    copies of their records).
+  - Each result is judged by its depositor's terms, and the report says so
+    (`PubChem BioAssay (deposited by ChEMBL)`, with its basis). Other depositors stay
+    `unknown`.
+  - Profiles now ask PubChem BioAssay and keep each result whose depositor's terms
+    allow the use. The others are counted (`excluded_records`).
+  - The depositor comes from each relationship's `assay.depositor`, so cards stored by
+    0.6.0 are judged the same way.
+  - For TcTIM with ChEMBL, BindingDB and PubChem BioAssay, all 527 measured molecules
+    now remain for a commercial product, with attribution and share-alike. The first
+    milestone reported 255 of them as `unknown`.

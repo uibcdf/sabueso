@@ -34,7 +34,10 @@
 #   terms         What the source states about the use of its data (#29): the
 #                 SourceAssertion source_names it covers, a licence classified in
 #                 sabueso/core/terms.py (LICENCES), the attribution text, the
-#                 statement's URL, the date it was reviewed, and caveats. Exported to
+#                 statement's URL, the date it was reviewed, and caveats; and, for a
+#                 source whose records keep their depositor's terms, depositors: each
+#                 depositor whose terms are known, to the source whose terms apply.
+#                 Exported to
 #                 sabueso/resolver/source_terms.json; every source Sabueso reads states
 #                 them.
 format: 1
@@ -1019,8 +1022,9 @@ resources:
       attribution: "PubChem BioAssay, National Library of Medicine (https://pubchem.ncbi.nlm.nih.gov/)"
       statement: https://www.ncbi.nlm.nih.gov/home/about/policies/
       reviewed: 2026-09-29
+      depositors: {"ChEMBL": "ChEMBL", "BindingDB": "BindingDB"}
       caveats:
-        - "Each assay keeps its depositor's terms (ChEMBL copies: CC BY-SA 3.0); Sabueso does not record them per assay yet."
+        - "Each assay keeps its depositor's terms. An assay deposited by ChEMBL or BindingDB is a copy of their records, under their terms; any other depositor's terms are not recorded, so its assays stay unknown."
     module: [sabueso.tools.db.pubchem_bioassay, sabueso.mappings.pubchem_bioassay]
   - id: d3r
     name: "D3R (Drug Design Data Resource)"

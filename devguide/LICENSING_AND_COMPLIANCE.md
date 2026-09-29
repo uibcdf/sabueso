@@ -99,9 +99,11 @@ A first milestone is built (2026-09-29): `Card.terms(use)`, `Deck.terms(use)` an
   `sabueso/resolver/source_terms.json` is packaged, and `tools/source_registry.py`
   keeps them in step. A source Sabueso reads without terms fails the registry check.
 - **Licences are classified** in `sabueso/core/terms.py` (`LICENCES`): CC0,
-  US public domain, CC BY, CC BY-SA, CC BY-NC. Terms that depend on each record, such
-  as a depositor's (PubChem BioAssay) or a publication's (curated literature), are
-  `unknown` until they are recorded per record.
+  US public domain, CC BY, CC BY-SA, CC BY-NC, ODbL, MIT. Terms that depend on each
+  record are `unknown` until they are recorded per record. PubChem BioAssay's are: the
+  registry names the depositors whose terms apply (ChEMBL, BindingDB), and a result is
+  judged by its depositor's terms (`PubChem BioAssay (deposited by ChEMBL)`). A curated
+  statement's publication terms are not recorded.
 - **Share-alike binds when the data leaves the user's hands**: redistribution, a
   derived dataset, a commercial product. It does not bind a publication that cites.
 - **A term record older than a year is flagged** `review_due`.

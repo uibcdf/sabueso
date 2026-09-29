@@ -145,8 +145,12 @@
    "statement": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
    "reviewed": "2026-09-29",
    "caveats": [
-    "Each assay keeps its depositor's terms (ChEMBL copies: CC BY-SA 3.0); Sabueso does not record them per assay yet."
-   ]
+    "Each assay keeps its depositor's terms. An assay deposited by ChEMBL or BindingDB is a copy of their records, under their terms; any other depositor's terms are not recorded, so its assays stay unknown."
+   ],
+   "depositors": {
+    "ChEMBL": "ChEMBL",
+    "BindingDB": "BindingDB"
+   }
   },
   "RCSB PDB": {
    "registry_id": "rcsb_pdb",

@@ -171,6 +171,36 @@ def verdict(name: str, use: str, today: date | None = None) -> Dict[str, Any]:
     return {**out, "verdict": "allowed", "obligations": obligations}
 
 
+DEPOSITED = " (deposited by "
+
+
+def record_label(source: str, depositor: str | None) -> str:
+    """The name under which a record whose terms are its depositor's is judged:
+    ``PubChem BioAssay (deposited by ChEMBL)``, or the source's own name."""
+    terms = source_terms().get(source) or {}
+    licence = LICENCES.get(terms.get("licence") or "") or {}
+    if depositor and licence.get("per_record"):
+        return f"{source}{DEPOSITED}{depositor})"
+    return source
+
+
+def labelled_verdict(label: str, use: str, today: date | None = None) -> Dict[str, Any]:
+    """``verdict`` for a source name or a ``record_label``: a record deposited by a
+    source whose terms the registry names is judged by those terms, and says so."""
+    if DEPOSITED not in label:
+        return verdict(label, use, today)
+    source, depositor = label[:-1].split(DEPOSITED, 1)
+    mapped = (source_terms().get(source) or {}).get("depositors", {}).get(depositor)
+    basis = {"source": source, "depositor": depositor}
+    if mapped is None:
+        return {
+            "verdict": "unknown",
+            "reason": "depositor_terms_not_recorded",
+            "basis": basis,
+        }
+    return {**verdict(mapped, use, today), "basis": {**basis, "terms_of": mapped}}
+
+
 def _items(card: Any) -> List[Dict[str, Any]]:
     """Every field and relationship of a card, with the sources that state it."""
     store = card.source_assertion_store
@@ -196,13 +226,17 @@ def _items(card: Any) -> List[Dict[str, Any]]:
             )
     for rel in card.relationships():
         ids = rel.get("source_assertion_ids") or []
+        # A record whose terms are its depositor's is judged by them (#94).
+        depositor = ((rel.get("qualifiers") or {}).get("assay") or {}).get("depositor")
         items.append(
             {
                 "kind": "relationship",
                 "id": rel.get("id"),
                 "predicate": rel.get("predicate"),
                 "object_ref": rel.get("object_ref"),
-                "sources": sources(ids) if ids else [],
+                "sources": sorted({record_label(n, depositor) for n in sources(ids)})
+                if ids
+                else [],
                 **({"derived": True} if not ids and rel.get("derivation") else {}),
             }
         )
@@ -227,7 +261,7 @@ def terms_report(
             answers = {}
             for name in item["sources"]:
                 if name not in verdicts:
-                    verdicts[name] = verdict(name, use, today)
+                    verdicts[name] = labelled_verdict(name, use, today)
                 answers[name] = verdicts[name]["verdict"]
             if "allowed" in answers.values():
                 outcome = "remains"
@@ -328,12 +362,29 @@ class TermsProfile:
         self.profile = profile
         self.use = PROFILES[profile]
         self.excluded: Dict[str, str] = {}
+        self.excluded_records: Dict[tuple, int] = {}
 
     def admits(self, source: str) -> bool:
+        """Whether the source may be asked at all. A source whose terms are each
+        record's depositor's, and which names the depositors whose terms are known,
+        is asked; its records are then judged one by one (``admits_record``)."""
         answer = verdict(source, self.use)
         if answer["verdict"] == "allowed":
             return True
+        if answer.get("reason") == "terms_per_record" and (
+            source_terms().get(source) or {}
+        ).get("depositors"):
+            return True
         self.excluded[source] = answer.get("reason") or answer["verdict"]
+        return False
+
+    def admits_record(self, source: str, depositor: str | None) -> bool:
+        """Whether one record of ``source`` is admitted, by its depositor's terms."""
+        answer = labelled_verdict(record_label(source, depositor), self.use)
+        if answer["verdict"] == "allowed":
+            return True
+        key = (source, depositor, answer.get("reason") or answer["verdict"])
+        self.excluded_records[key] = self.excluded_records.get(key, 0) + 1
         return False
 
     def detail(self, source: str) -> str:
@@ -351,4 +402,16 @@ class TermsProfile:
             "excluded": [
                 {"source": s, "reason": r} for s, r in sorted(self.excluded.items())
             ],
+            **(
+                {
+                    "excluded_records": [
+                        {"source": s, "depositor": d, "reason": r, "count": n}
+                        for (s, d, r), n in sorted(
+                            self.excluded_records.items(), key=lambda kv: str(kv[0])
+                        )
+                    ]
+                }
+                if self.excluded_records
+                else {}
+            ),
         }

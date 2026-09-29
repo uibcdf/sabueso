@@ -36,14 +36,20 @@ deck.admissible("commercial_product")  # only cards whose knowledge all remains
     derived dataset, a product. It does not bind a publication that cites.
 - **restricted**, with the reason, e.g. a non-commercial licence for a commercial
   product.
-- **unknown**, with the reason: no terms recorded, or terms that depend on each record.
-  PubChem BioAssay keeps each depositor's terms, and a curated statement keeps its
-  publication's. Unknown is never "no restriction".
+- **unknown**, with the reason: no terms recorded, or terms that depend on each record
+  and are not recorded for this one. A curated statement keeps its publication's terms.
+  Unknown is never "no restriction".
+
+**Terms per record.** A PubChem BioAssay result keeps the terms of whoever deposited
+the assay. An assay deposited by ChEMBL or BindingDB is a copy of their records, so it
+is judged by their terms, and the report says so: `PubChem BioAssay (deposited by
+ChEMBL)`, with its `basis`. An assay of any other depositor stays `unknown`, with the
+reason `depositor_terms_not_recorded`.
 
 A piece of knowledge **remains** for a use when at least one source that states it is
-allowed. For human triosephosphate isomerase, everything remains for a commercial
-product, with attribution and share-alike (ChEMBL, BindingDB). For the *T. cruzi*
-enzyme, the molecules measured only in PubChem BioAssay are `unknown`.
+allowed. For human and *T. cruzi* triosephosphate isomerase, everything remains for a
+commercial product, with attribution and share-alike (ChEMBL, BindingDB, and PubChem
+BioAssay results deposited by ChEMBL).
 
 Each source's terms, with the statement they come from and the date they were reviewed,
 are listed on the *Data sources* page. A record older than a year is flagged
@@ -67,7 +73,11 @@ card.quality["terms_profile"]  # the profile, and the sources it excluded, with 
   contract makes commercial use, and a non-profit may not.
 - A source the profile does not admit is not asked. The enrichment records
   `not_queried`, with the profile and the reason, and the knowledge state shows it.
-  Sources with unknown terms, such as PubChem BioAssay's depositors, are excluded too.
+  Sources with unknown terms are excluded too.
+- A source whose records keep their depositor's terms is asked, and each record is kept
+  only if its depositor's terms allow the use. PubChem BioAssay results of other
+  depositors are left out, counted in the enrichment record and in
+  `terms_profile["excluded_records"]`.
 - Curated statements you apply are yours: the profile does not filter them.
 
 Some sources need an account, a key, an academic licence or a written agreement before

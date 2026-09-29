@@ -106,6 +106,11 @@ def terms_export(data: Dict[str, Any]) -> str:
                 "statement": terms["statement"],
                 "reviewed": str(terms["reviewed"]),
                 **({"caveats": terms["caveats"]} if terms.get("caveats") else {}),
+                **(
+                    {"depositors": terms["depositors"]}
+                    if terms.get("depositors")
+                    else {}
+                ),
             }
     body = {
         "note": "Generated from devguide/sources/registry.yaml by "

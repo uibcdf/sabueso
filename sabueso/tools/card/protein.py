@@ -412,6 +412,29 @@ def resolve_protein_card(
             enrichments.append({**record, "status": "error", "detail": str(exc)})
         else:
             mapped = map_assays(response, anchor, response.get("retrieved_at", ""))
+            excluded_by_profile = 0
+            if profile is not None:
+                # Each result keeps its depositor's terms (#94): keep those the profile
+                # admits, and count the others.
+                kept, dropped = [], set()
+                for rel in mapped["relationships"]:
+                    depositor = ((rel.get("qualifiers") or {}).get("assay") or {}).get(
+                        "depositor"
+                    )
+                    if profile.admits_record("PubChem BioAssay", depositor):
+                        kept.append(rel)
+                    else:
+                        dropped.update(rel.get("source_assertion_ids") or [])
+                excluded_by_profile = len(mapped["relationships"]) - len(kept)
+                mapped = {
+                    **mapped,
+                    "relationships": kept,
+                    "source_assertions": [
+                        sa
+                        for sa in mapped["source_assertions"]
+                        if sa["id"] not in dropped
+                    ],
+                }
             mappings.append(mapped)
             depositors: Dict[str, int] = {}
             for s_ in response["record"].get("summaries") or []:
@@ -431,6 +454,11 @@ def resolve_protein_card(
                     "count": len(mapped["relationships"]),
                     "copies": len(copies),
                     "depositors": dict(sorted(depositors.items())),
+                    **(
+                        {"excluded_by_terms_profile": excluded_by_profile}
+                        if excluded_by_profile
+                        else {}
+                    ),
                 }
             )
             # Copies are pointers: ChEMBL assays they name that the card lacks. An assay
