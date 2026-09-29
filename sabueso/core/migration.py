@@ -174,6 +174,11 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "filled_by": "disease_identity",
             "entity_types": ("protein",),
         },
+        {
+            "path": "relationships.same_as (MedGen)",
+            "filled_by": "medgen",
+            "entity_types": ("protein",),
+        },
     ],
 }
 

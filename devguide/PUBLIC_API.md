@@ -21,7 +21,8 @@ shows how to use them.
     - `phi_base` (pathogen phenotypes, #83), `diseases`, `open_targets` and
       `orphadata` (disease associations, #82), `reactome` (pathways, #83), `clinvar`
       and `gnomad` (variants, #83), `skempi` (interface mutations, #83),
-      `disease_identity` (MONDO identity of the card's diseases, #90);
+      `medgen` and `disease_identity` (identity of the card's diseases through MedGen
+      and MONDO, #90);
     - each source's `*_client`, and `resolver`.
   - For small molecules: `unichem`, `pubchem`, `indications` and `trials` (#81).
   - For diseases: `mondo_client`.
@@ -126,7 +127,7 @@ Raw records in a provenance envelope, one client per source (`SOURCE_ACCESS.md`)
 - `bindingdb.get_affinities`, `pubchem.get_compound`, `pubchem_bioassay.get_assays`;
 - `unichem.get_compound`, `stringdb.get_partners`;
 - `ncbi_taxonomy.get_taxon`, `ncbi_gene.get_gene`;
-- `skempi.get_mutations`, `mondo.get_term`.
+- `skempi.get_mutations`, `mondo.get_term`, `medgen.get_concepts`.
 
 Each source also has an `Online<Source>Client` and a `Fixture<Source>Client`. The legacy
 `create_*_card_*` builders are deprecated and will be removed before 1.0.

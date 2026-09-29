@@ -190,7 +190,17 @@ def hstim(mondo):
             )
         return card
 
-    return build(disease_identity=True, mondo_client=mondo), build()
+    from sabueso.tools.db.medgen import FixtureMedGenClient
+
+    return (
+        build(
+            medgen=True,
+            medgen_client=FixtureMedGenClient("temp_data"),
+            disease_identity=True,
+            mondo_client=mondo,
+        ),
+        build(),
+    )
 
 
 def test_one_disease_across_every_source_that_states_it(hstim):
@@ -209,8 +219,9 @@ def test_one_disease_across_every_source_that_states_it(hstim):
     assert {"doid:DOID:0050884", "orphanet:ORPHA:868", "omim:615512"} <= set(
         tpi["refs"]
     )
-    bases = {s["grouped_by"] for s in tpi["statements"]}
-    assert bases == {"same_as", "named_directly"}
+    bases = {hop["basis"] for s in tpi["statements"] for hop in s["grouped_by"]}
+    # MedGen's concept id reaches the same term through MedGen's record and MONDO.
+    assert bases == {"same_as", "named_directly", "medgen_same_as"}
 
 
 def test_identity_is_a_stated_same_as_never_a_name(hstim):
@@ -229,11 +240,21 @@ def test_identity_is_a_stated_same_as_never_a_name(hstim):
 def test_what_mondo_does_not_state_stays_apart_with_its_reason(hstim):
     card, _ = hstim
     ungrouped = card.diseases()["ungrouped"]
-    # MedGen concept ids (ClinVar) and some EFO terms (Open Targets) have no stated
-    # MONDO equivalence: they are kept apart, never matched by name.
-    assert ungrouped
-    assert {u["reason"] for u in ungrouped} == {"no_stated_equivalence"}
-    assert any(u["curie"].startswith("MEDGEN:C") for u in ungrouped)
+    assert {u["reason"] for u in ungrouped} == {
+        "no_stated_equivalence",
+        "condition_not_provided",
+        "no_id_stated",
+    }
+    # ClinVar's "not provided" and "not specified" are not diseases.
+    placeholders = [u for u in ungrouped if u["reason"] == "condition_not_provided"]
+    assert {u["name"] for u in placeholders} == {"not provided", "not specified"}
+    # Some Open Targets EFO terms have no MONDO equivalence: none is matched by name.
+    assert any(
+        u["reason"] == "no_stated_equivalence" and u["source"] == "Open Targets"
+        for u in ungrouped
+    )
+    (text_only,) = {u["name"] for u in ungrouped if u["reason"] == "no_id_stated"}
+    assert text_only == "TPI1-related disorder"
     (record,) = [e for e in card.quality["enrichments"] if e["source"] == "MONDO"]
     assert record["status"] == "added" and record["version"] == "2026-09-01"
 
@@ -243,11 +264,18 @@ def test_without_the_enrichment_only_the_same_id_groups(hstim):
     view = card.diseases()
     # Statements that name the same MONDO id are one disease; everything else waits
     # for MONDO's answer.
-    assert {s["grouped_by"] for d in view["diseases"] for s in d["statements"]} == {
-        "named_directly"
+    assert {
+        hop["basis"]
+        for d in view["diseases"]
+        for s in d["statements"]
+        for hop in s["grouped_by"]
+    } == {"named_directly"}
+    assert {u["reason"] for u in view["ungrouped"]} == {
+        "identity_not_queried",
+        "condition_not_provided",
+        "no_id_stated",
     }
-    assert {u["reason"] for u in view["ungrouped"]} == {"identity_not_queried"}
-    assert any(u["ref"] == "doid:DOID:0050884" for u in view["ungrouped"])
+    assert any(u["refs"] == ["doid:DOID:0050884"] for u in view["ungrouped"])
 
 
 def test_disease_ids_are_diseases_in_the_glossary(hstim):
@@ -274,3 +302,62 @@ def test_a_protein_with_no_disease_has_nothing_to_ask(mondo):
     (record,) = [e for e in card.quality["enrichments"] if e["source"] == "MONDO"]
     assert record["status"] == "not_found"
     assert record["detail"] == "the card names no disease"
+
+
+class _Card:
+    """The little a view reads, to state cases no fixture holds."""
+
+    def __init__(self, conditions, same_as):
+        from sabueso.core.relationship_store import make_relationship
+
+        self.quality = {"enrichments": [{"source": "MONDO", "ungrouped": []}]}
+        self._conditions = conditions
+        self._rels = [
+            make_relationship(
+                subject,
+                "same_as",
+                obj,
+                qualifiers={"source": source, "mondo_name": "a name"},
+                source_assertion_ids=["SA_x"],
+            )
+            for subject, obj, source in same_as
+        ]
+
+    def get(self, path):
+        if path == "annotations.clinical_variants":
+            return {"value": [{"accession": "VCV1", "conditions": self._conditions}]}
+        return None
+
+    def relationships(self, predicate=None):
+        return [r for r in self._rels if predicate in (None, r["predicate"])]
+
+
+def test_a_condition_named_only_by_medgen_reaches_mondo_through_two_statements():
+    from sabueso.core.diseases import diseases_view
+
+    card = _Card(
+        [{"name": "TPI deficiency", "xrefs": ["MedGen:C1860808"]}],
+        [
+            ("MEDGEN:C1860808", "MEDGEN:349893", "MedGen"),
+            ("MEDGEN:349893", "mondo:MONDO:0014221", "MONDO"),
+        ],
+    )
+    (disease,) = diseases_view(card)["diseases"]
+    assert disease["mondo"] == "MONDO:0014221"
+    assert disease["statements"][0]["grouped_by"] == [
+        {"id": "MEDGEN:C1860808", "basis": "medgen_same_as"}
+    ]
+
+
+def test_ids_that_reach_two_terms_are_a_conflict_never_a_choice():
+    from sabueso.core.diseases import diseases_view
+
+    card = _Card(
+        [{"name": "x", "xrefs": ["MONDO:MONDO:0000001", "OMIM:1"]}],
+        [("OMIM:1", "mondo:MONDO:0000002", "MONDO")],
+    )
+    view = diseases_view(card)
+    assert view["diseases"] == []
+    (conflict,) = view["ungrouped"]
+    assert conflict["reason"] == "conflicting_identity"
+    assert set(conflict["terms"]) == {"MONDO:0000001", "MONDO:0000002"}

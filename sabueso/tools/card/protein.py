@@ -86,6 +86,8 @@ def resolve_protein_card(
     gnomad_client: Any | None = None,
     skempi: bool = False,
     skempi_client: Any | None = None,
+    medgen: bool = False,
+    medgen_client: Any | None = None,
     disease_identity: bool = False,
     mondo_client: Any | None = None,
     skip_digestion: bool = False,
@@ -167,7 +169,9 @@ def resolve_protein_card(
     the card are the same disease (``same_as`` to ``mondo:<term>``, only where MONDO
     states it), so that ``Card.diseases()`` can group them. It reads the diseases of
     ``diseases``, ``open_targets``, ``orphadata``, ``clinvar`` and UniProt, so ask for
-    those in the same call.
+    those in the same call. ``medgen`` asks MedGen which record each MedGen concept id
+    naming a condition is, so that a condition ClinVar names only by a MedGen concept id
+    reaches MONDO through MedGen's statement and MONDO's (``medgen_concept@1``).
     """
     if ncbi_gene:
         import copy
@@ -252,6 +256,7 @@ def resolve_protein_card(
         "gnomad": (gnomad, gnomad_client),
         "clinvar": (clinvar, clinvar_client),
         "skempi": (skempi, skempi_client),
+        "medgen": (medgen, medgen_client),
         "disease_identity": (disease_identity, mondo_client),
     }
     context = Context(anchor, entry, mappings)

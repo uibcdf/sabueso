@@ -165,8 +165,11 @@ def build_entities(card: Any) -> Dict[str, Any]:
     for rel in card.relationships():
         predicate, obj = rel["predicate"], rel["object_ref"]
         q = rel.get("qualifiers") or {}
-        if predicate == "same_as" and str(obj).startswith("mondo:"):
-            # A disease id MONDO states is the same disease as its term (#90).
+        if predicate == "same_as" and (
+            str(obj).startswith("mondo:") or q.get("source") == "MedGen"
+        ):
+            # A disease id MONDO states is the same disease as its term, or a MedGen
+            # concept id and its record (#90).
             g.add(rel["subject_ref"], "disease", "same_as")
             g.add(obj, "disease", "same_as", name=q.get("mondo_name"))
             g.same(rel["subject_ref"], obj)

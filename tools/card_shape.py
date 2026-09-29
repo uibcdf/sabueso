@@ -79,6 +79,7 @@ def fixture_cards() -> List[dict]:
     from sabueso.tools.db.diseases import FixtureDISEASESClient
     from sabueso.tools.db.gnomad import FixtureGnomADClient
     from sabueso.tools.db.interpro import FixtureInterProClient
+    from sabueso.tools.db.medgen import FixtureMedGenClient
     from sabueso.tools.db.mondo import FixtureMONDOClient
     from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
     from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
@@ -141,6 +142,8 @@ def fixture_cards() -> List[dict]:
             clinvar_client=FixtureClinVarClient(data),
             gnomad={},
             gnomad_client=FixtureGnomADClient(data),
+            medgen=True,
+            medgen_client=FixtureMedGenClient(data),
             disease_identity=True,
             mondo_client=FixtureMONDOClient(data),
         )

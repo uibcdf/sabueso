@@ -20,7 +20,7 @@ class DiseaseIdentity(Enricher):
         return OnlineMONDOClient()
 
     def requests(self, context, options):
-        from sabueso.core.diseases import disease_statements
+        from sabueso.core.diseases import CLINVAR_PLACEHOLDERS, disease_statements
 
         fields, relationships = {}, []
         for mapping in context.mappings:
@@ -29,8 +29,24 @@ class DiseaseIdentity(Enricher):
         statements = disease_statements(fields.get, relationships)
         if not statements:
             raise NothingToAsk("the card names no disease")
-        curies = sorted({s["curie"] for s in statements if s.get("curie")})
-        unmapped = sorted({s["ref"] for s in statements if not s.get("curie")})
+        # MONDO names MedGen records by UID: concept ids are asked through the UIDs
+        # MedGen states for them (the medgen enrichment), not directly.
+        uids = {
+            r["object_ref"]
+            for r in relationships
+            if r.get("predicate") == "same_as"
+            and (r.get("qualifiers") or {}).get("source") == "MedGen"
+        }
+        curies = sorted(
+            {
+                c
+                for s in statements
+                for c in s["curies"]
+                if not c.startswith("MEDGEN:C") and c not in CLINVAR_PLACEHOLDERS
+            }
+            | uids
+        )
+        unmapped = sorted({r for s in statements for r in s["unmapped"]})
         return [
             Request(
                 context.anchor,

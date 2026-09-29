@@ -3,23 +3,31 @@
 Diseases reach a protein card from several sources, each with its own ids:
 
 - ``associated_with`` relationships: DISEASES (``doid:``), Open Targets (``mondo:``,
-  ``efo:``) and Orphanet (``orphanet:ORPHA:``);
+  ``efo:``) and Orphanet (``orphanet:ORPHA:``), one id each;
 - UniProt's ``annotations.disease``, through the MIM id it states for each disease;
-- ClinVar's ``annotations.clinical_variants``, through the ids each condition states.
+- ClinVar's ``annotations.clinical_variants``: each condition of a variant is **one**
+  statement with every id ClinVar states for it (MedGen, OMIM, Orphanet, MONDO…).
+  ClinVar states that those ids name the same condition.
 
-``disease_statements`` lists them, each with the id it names. The ``disease_identity``
-enrichment then asks MONDO which of those ids it states are the same disease, and
-records each answer as a ``same_as`` relationship (id → ``mondo:<term>``), backed by a
-MONDO SourceAssertion.
+``disease_statements`` lists them. Two enrichments then state identity, each as a
+``same_as`` relationship backed by its source's SourceAssertion:
+- ``medgen``: which MedGen record (UID) each MedGen concept id is, as MedGen states it
+  (``MEDGEN:C1860808`` → ``MEDGEN:349893``, rule ``medgen_concept@1``);
+- ``disease_identity``: which ids MONDO states are the same disease as one of its terms
+  (→ ``mondo:<term>``, rule ``mondo_equivalence@1``), MedGen UIDs included.
 
 ``diseases_view`` (``Card.diseases()``) groups the statements by MONDO term, under the
 rule ``disease_grouping@1``:
-- two statements are about one disease only when MONDO states that their ids are the
-  same disease, or they name the same id;
-- a statement whose id MONDO does not state as equivalent to any term stays apart
-  (``ungrouped``), with the reason. It is never grouped by name;
-- without the ``disease_identity`` enrichment, only statements naming the same MONDO
-  id are grouped; every other stays apart with the reason ``identity_not_queried``.
+- a statement joins a MONDO term when one of its ids is that term, or reaches it
+  through the stated ``same_as`` chain. Nothing groups by name;
+- a statement whose ids reach two different terms is not grouped: it is reported as
+  ``conflicting_identity``, with both;
+- ClinVar's placeholders are not diseases: "not provided" (MedGen C3661900) and "not
+  specified" (CN169374) are ``condition_not_provided``;
+- what reaches no term stays apart with its reason: ``no_stated_equivalence``,
+  ``obsolete_term``, ``namespace_not_mapped`` (e.g. a phenotype term), ``no_id_stated``
+  (a condition named only by text), or ``identity_not_queried`` when
+  ``disease_identity`` was not asked.
 """
 
 from __future__ import annotations
@@ -29,59 +37,66 @@ from typing import Any, Callable, Dict, List
 from .relationship_store import make_derivation
 
 RULE = "disease_grouping@1"
+#: ClinVar's condition placeholders, by the MedGen concept ids it uses for them.
+CLINVAR_PLACEHOLDERS = {
+    "MEDGEN:C3661900": "not provided",
+    "MEDGEN:CN169374": "not specified",
+}
 
 
 def disease_statements(
     get: Callable[[str], Any], relationships: List[Dict[str, Any]]
 ) -> List[Dict[str, Any]]:
-    """Every statement naming a disease: ``{ref, curie, source, kind, ...}``.
+    """Every statement naming a disease: ``{refs, curies, unmapped, source, kind, ...}``.
 
     ``get(path)`` returns a field's value; ``relationships`` are the card's."""
     from sabueso.tools.db.mondo import normalize
 
     out: List[Dict[str, Any]] = []
+
+    def add(refs: List[str], **statement: Any) -> None:
+        curies = [normalize(r) for r in refs]
+        out.append(
+            {
+                "refs": refs,
+                "curies": [c for c in curies if c],
+                "unmapped": [r for r, c in zip(refs, curies) if not c],
+                **{k: v for k, v in statement.items() if v is not None},
+            }
+        )
+
     for rel in relationships:
         if rel.get("predicate") != "associated_with":
             continue
         q = rel.get("qualifiers") or {}
-        out.append(
-            {
-                "ref": rel["object_ref"],
-                "curie": normalize(rel["object_ref"]),
-                "source": q.get("source"),
-                "kind": "association",
-                "channel": q.get("channel"),
-                "name": q.get("disease_name"),
-                "relationship_id": rel.get("id"),
-            }
+        add(
+            [rel["object_ref"]],
+            source=q.get("source"),
+            kind="association",
+            channel=q.get("channel"),
+            name=q.get("disease_name"),
+            relationship_id=rel.get("id"),
         )
     for item in get("annotations.disease") or []:
         for xref in item.get("cross_references") or []:
             if xref.get("database") == "MIM" and xref.get("id"):
-                out.append(
-                    {
-                        "ref": f"omim:{xref['id']}",
-                        "curie": normalize(f"omim:{xref['id']}"),
-                        "source": "UniProt",
-                        "kind": "uniprot_disease",
-                        "name": item.get("name"),
-                        "accession": item.get("accession"),
-                    }
+                add(
+                    [f"omim:{xref['id']}"],
+                    source="UniProt",
+                    kind="uniprot_disease",
+                    name=item.get("name"),
+                    accession=item.get("accession"),
                 )
     for variant in get("annotations.clinical_variants") or []:
         for condition in variant.get("conditions") or []:
-            for xref in condition.get("xrefs") or []:
-                out.append(
-                    {
-                        "ref": xref,
-                        "curie": normalize(xref),
-                        "source": "ClinVar",
-                        "kind": "clinvar_condition",
-                        "name": condition.get("name"),
-                        "variant": variant.get("accession"),
-                    }
-                )
-    return [{k: v for k, v in s.items() if v is not None} for s in out]
+            add(
+                list(condition.get("xrefs") or []),
+                source="ClinVar",
+                kind="clinvar_condition",
+                name=condition.get("name"),
+                variant=variant.get("accession"),
+            )
+    return out
 
 
 def _card_statements(card: Any) -> List[Dict[str, Any]]:
@@ -92,50 +107,91 @@ def _card_statements(card: Any) -> List[Dict[str, Any]]:
     return disease_statements(get, card.relationships())
 
 
-def diseases_view(card: Any) -> Dict[str, Any]:
-    """The card's disease statements grouped by MONDO term; see the module docstring."""
-    identity = {
+def _same_as(card: Any, source: str) -> Dict[str, Dict[str, Any]]:
+    return {
         rel["subject_ref"]: rel
         for rel in card.relationships("same_as")
-        if str(rel["object_ref"]).startswith("mondo:MONDO:")
+        if (rel.get("qualifiers") or {}).get("source") == source
     }
-    queried = any(
-        e.get("source") == "MONDO" for e in card.quality.get("enrichments") or []
-    )
+
+
+def diseases_view(card: Any) -> Dict[str, Any]:
+    """The card's disease statements grouped by MONDO term; see the module docstring."""
+    mondo_of = _same_as(card, "MONDO")
+    medgen_of = _same_as(card, "MedGen")
+    records = card.quality.get("enrichments") or []
+    queried = any(e.get("source") == "MONDO" for e in records)
     unresolved = {
         u["curie"]: u["reason"]
-        for e in card.quality.get("enrichments") or []
+        for e in records
         if e.get("source") == "MONDO"
         for u in e.get("ungrouped") or []
     }
+
+    def term_of(curie: str) -> tuple | None:
+        """``(mondo id, basis)`` a curie reaches through stated identity, or None."""
+        if curie.startswith("MONDO:") and curie not in unresolved:
+            return curie, "named_directly"
+        if curie in mondo_of:
+            return mondo_of[curie]["object_ref"].split(":", 1)[1], "same_as"
+        if curie in medgen_of:
+            uid = medgen_of[curie]["object_ref"]
+            if uid in mondo_of:
+                return mondo_of[uid]["object_ref"].split(":", 1)[1], "medgen_same_as"
+        return None
+
     groups: Dict[str, Dict[str, Any]] = {}
     ungrouped: List[Dict[str, Any]] = []
     for statement in _card_statements(card):
-        curie = statement.get("curie")
-        if curie and curie.startswith("MONDO:") and curie not in unresolved:
-            mondo, basis = curie, "named_directly"
-        elif curie in identity:
-            mondo, basis = identity[curie]["object_ref"].split(":", 1)[1], "same_as"
-        else:
-            reason = (
-                "identity_not_queried"
-                if not queried
-                else unresolved.get(curie or "", "no_stated_equivalence")
-                if curie
-                else "namespace_not_mapped"
+        if any(c in CLINVAR_PLACEHOLDERS for c in statement["curies"]):
+            ungrouped.append({**statement, "reason": "condition_not_provided"})
+            continue
+        reached: Dict[str, List[Dict[str, str]]] = {}
+        for curie in statement["curies"]:
+            found = term_of(curie)
+            if found:
+                reached.setdefault(found[0], []).append(
+                    {"id": curie, "basis": found[1]}
+                )
+        if len(reached) > 1:
+            ungrouped.append(
+                {**statement, "reason": "conflicting_identity", "terms": reached}
             )
+            continue
+        if not reached:
+            if not statement["refs"]:
+                reason = "no_id_stated"
+            elif not statement["curies"]:
+                reason = "namespace_not_mapped"
+            elif not queried:
+                reason = "identity_not_queried"
+            else:
+                reasons = {
+                    unresolved.get(c, "no_stated_equivalence")
+                    for c in statement["curies"]
+                }
+                reason = (
+                    "obsolete_term"
+                    if reasons == {"obsolete_term"}
+                    else "no_stated_equivalence"
+                )
             ungrouped.append({**statement, "reason": reason})
             continue
+        ((mondo, via),) = reached.items()
         group = groups.setdefault(
             mondo, {"mondo": mondo, "names": set(), "refs": set(), "statements": []}
         )
-        name = (identity.get(curie) or {}).get("qualifiers", {}).get("mondo_name")
-        if name:
-            group["mondo_name"] = name
+        for hop in via:
+            link = mondo_of.get(hop["id"]) or mondo_of.get(
+                (medgen_of.get(hop["id"]) or {}).get("object_ref", "")
+            )
+            name = ((link or {}).get("qualifiers") or {}).get("mondo_name")
+            if name:
+                group["mondo_name"] = name
         if statement.get("name"):
             group["names"].add(statement["name"])
-        group["refs"].add(statement["ref"])
-        group["statements"].append({**statement, "grouped_by": basis})
+        group["refs"].update(statement["refs"])
+        group["statements"].append({**statement, "grouped_by": via})
     diseases = []
     for mondo in sorted(groups):
         group = groups[mondo]
@@ -160,6 +216,9 @@ def diseases_view(card: Any) -> Dict[str, Any]:
                 "annotations.clinical_variants",
                 "relationships.same_as",
             ],
-            parameters={"identity": "mondo_equivalence@1"},
+            parameters={
+                "identity": ["mondo_equivalence@1", "medgen_concept@1"],
+                "placeholders": sorted(CLINVAR_PLACEHOLDERS),
+            },
         ),
     }

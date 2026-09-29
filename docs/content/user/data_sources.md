@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 30, evaluating 23, deferred 24, retired 3, out of scope 13.
+Summary: in use 31, evaluating 23, deferred 24, retired 3, out of scope 13.
 
 ## In use
 
@@ -42,6 +42,7 @@ Summary: in use 30, evaluating 23, deferred 24, retired 3, out of scope 13.
 | [PubChem BioAssay](https://pubchem.ncbi.nlm.nih.gov/) | Binding affinity and experimental bioactivity | PUG REST (assays by protein, summaries, concise tables, compound InChIKeys) | US public domain (NLM policy); deposited data keeps its depositor terms (ChEMBL copies: CC BY-SA 3.0) | 2026-09-25 |
 | [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) | Organism, orthology and biological context | NCBI Datasets REST API, optional NCBI key | US public domain (NLM policy) | 2026-09-25 |
 | [ClinicalTrials.gov](https://clinicaltrials.gov/) | Target validation, genetics and functional networks | API v2 (studies by NCT id, in batches), no key, when resolve(..., trials={}) | US government work (not under copyright in the US); NLM asks credit (Source: National Library of Medicine) | 2026-01-31 |
+| [MedGen (NCBI)](https://www.ncbi.nlm.nih.gov/medgen/) | Target validation, genetics and functional networks | E-utilities (esearch by [ConceptId], esummary), in batches, optional NCBI key, when resolve(..., medgen=True) | US public domain (NLM policy) for NCBI's records; names from integrated vocabularies may carry their own terms and are not kept | 2026-09-29 |
 | [MONDO (Mondo Disease Ontology)](https://mondo.monarchinitiative.org/) | Target validation, genetics and functional networks | Dated GitHub releases; mondo.obo (about 53 MB) downloaded once per process, checked against the SHA-256 GitHub states, and indexed; resolve('mondo:...'), or any id of a terminology MONDO maps | CC BY 4.0 (cite Mondo and the release) | 2026-09-29 |
 
 ### How much Sabueso asks for

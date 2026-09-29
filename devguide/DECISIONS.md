@@ -1062,3 +1062,23 @@ uibcdf/sabueso#90, step 1. Card schema 0.3.7.
   name. For HsTIM, triosephosphate isomerase deficiency is one disease stated by five
   sources. MedGen concept ids and some EFO terms stay apart, with their reason. In the
   glossary (`entities()`), those ids are diseases, anchored at their MONDO term.
+- **Step 3 (same day): ClinVar conditions, MedGen, placeholders.** A first run left 272
+  ClinVar statements ungrouped for HsTIM. They were 18 MedGen concepts, and most
+  statements were not an identity problem:
+  - **One condition is one statement.** ClinVar states that a condition's ids (MedGen,
+    OMIM, Orphanet, MONDO…) name it together. Treating each id as a statement had
+    left TPI deficiency's MedGen id apart from its own MONDO id. A condition now joins
+    a disease when any of its ids does, and ids that reach two terms are
+    `conflicting_identity`, both listed, neither chosen.
+  - **Placeholders are not diseases.** ClinVar's "not provided" (MedGen C3661900) and
+    "not specified" (CN169374) are `condition_not_provided`, 153 of the 272.
+  - **MedGen as a source, not a scheme rule.** MONDO states equivalences to MedGen
+    records by UID, not by concept id. Reading a MedGen concept id as a UMLS CUI would
+    rest on a naming convention that no record states. Instead, MedGen states, record
+    by record, the UID of each concept id (`medgen_concept@1`), and MONDO's equivalence
+    completes the chain. On HsTIM, both alternatives grouped the same 9 concepts,
+    without a single disagreement. The stated route was kept.
+  - **Result, live HsTIM:** of ClinVar's conditions, only 6 phenotypic traits have no
+    stated equivalence. Three conditions are reported as conflicts: ClinVar gives a
+    broader Orphanet id next to a subtype's MONDO and OMIM ids. Telling that granularity
+    difference apart with MONDO's hierarchy is a possible next rule.

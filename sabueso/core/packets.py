@@ -132,6 +132,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
             "annotations.disease",
             "annotations.clinical_variants",
             "relationships.same_as (MONDO)",
+            "relationships.same_as (MedGen)",
         ),
     },
     "biological_context": {

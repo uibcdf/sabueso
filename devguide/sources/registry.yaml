@@ -1066,6 +1066,19 @@ resources:
     licence: "US government work (not under copyright in the US); NLM asks credit (Source: National Library of Medicine)"
     module: [sabueso.tools.db.clinicaltrials, sabueso.mappings.clinical]
     links: ["#81", "#83"]
+  - id: medgen
+    name: "MedGen (NCBI)"
+    url: https://www.ncbi.nlm.nih.gov/medgen/
+    category: target_validation
+    status: in_use
+    description: "NCBI's portal of medical genetics concepts, integrating UMLS, OMIM, Orphanet, HPO, MONDO and other vocabularies."
+    since: 2026-09-29
+    proposed_by: "Foundational route: the disease as an entity (#90)"
+    reason: "Which MedGen record (UID) each MedGen concept id is, as MedGen states it, so that a condition ClinVar names only by a MedGen concept id reaches MONDO, whose equivalences name MedGen records by UID (rule medgen_concept@1). Only the ids are kept."
+    access: "E-utilities (esearch by [ConceptId], esummary), in batches, optional NCBI key, when resolve(..., medgen=True)"
+    licence: "US public domain (NLM policy) for NCBI's records; names from integrated vocabularies may carry their own terms and are not kept"
+    module: [sabueso.tools.db.medgen, sabueso.mappings.medgen]
+    links: ["#90"]
   - id: mondo
     name: "MONDO (Mondo Disease Ontology)"
     url: https://mondo.monarchinitiative.org/

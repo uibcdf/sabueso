@@ -163,6 +163,7 @@ card, _ = sabueso.resolve(
     open_targets={},
     orphadata=True,
     clinvar={},
+    medgen=True,
     disease_identity=True,
 )
 view = card.diseases()
@@ -178,7 +179,21 @@ print(view["rule"]["rule"])  # disease_grouping@1
 - Statements are grouped only through those, or when they name the same id. For human
   triosephosphate isomerase, triosephosphate isomerase deficiency is one disease stated
   by ClinVar, DISEASES, Open Targets, Orphanet and UniProt.
-- What MONDO does not state stays apart, with its reason (`no_stated_equivalence`),
-  and is never grouped by name. Examples are MedGen concept ids and some EFO terms.
+- A ClinVar condition is one statement with every id ClinVar states for it. It joins a
+  disease when any of those ids does.
+- `medgen=True` asks MedGen which record each MedGen concept id is (`C1860808` is
+  record 349893). MONDO states its equivalences by those records, so a condition named
+  only by a MedGen concept id reaches MONDO through two statements, MedGen's and
+  MONDO's (`medgen_concept@1`).
+- What reaches no MONDO term stays apart, with its reason. It is never grouped by
+  name:
+  - `condition_not_provided`: ClinVar's "not provided" and "not specified", which are
+    not diseases;
+  - `no_stated_equivalence`: for example some EFO terms, or phenotypic traits;
+  - `no_id_stated`: a condition named only by text;
+  - `namespace_not_mapped`: for example HP phenotype terms;
+  - `conflicting_identity`: the ids of one condition reach two MONDO terms. Both are
+    listed, and neither is chosen. ClinVar sometimes gives a broader Orphanet id next
+    to the MONDO and OMIM ids of a subtype.
 - `disease_identity` reads the diseases the other sources put on the card, so ask for
   them in the same call.

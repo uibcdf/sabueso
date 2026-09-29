@@ -28,8 +28,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - `packet_aspects@2`: the `oligomer` aspect also covers interface mutations;
   - disease cards (#90), anchored at MONDO, resolved from DOID, Orphanet, OMIM, MeSH,
     EFO… ids only through the equivalences MONDO states (`mondo_equivalence@1`); and a
-    protein's diseases grouped across sources (`disease_identity`, `Card.diseases()`,
-    `disease_grouping@1`);
+    protein's diseases grouped across sources (`medgen`, `disease_identity`,
+    `Card.diseases()`, `disease_grouping@1`);
   - `knowledge_state@3`: an answer cut at a limit is `partial`, with `truncated_for`
     (#88);
   - a `not_found` record states the release it was checked against (#89).

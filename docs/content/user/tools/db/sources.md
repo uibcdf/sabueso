@@ -40,6 +40,7 @@ Every function returns `{source, kind, query, retrieved_at, version, record}`:
 | `ncbi_taxonomy` | `get_taxon(tax_id)` |
 | `skempi` | `get_mutations(pdb_ids)` |
 | `mondo` | `get_term(mondo_id)` |
+| `medgen` | `get_concepts(concept_ids)` |
 | `ncbi_gene` | `get_gene(gene_id)` |
 
 Every function accepts `client=`. The default is the source's online client. Each module
