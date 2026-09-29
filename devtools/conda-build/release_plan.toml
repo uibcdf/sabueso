@@ -1,7 +1,7 @@
-version = "0.5.0"
+version = "0.6.0"
 route = "staged"
-reason = "Integrity fixes that affect users of 0.4.0: pinned item reads verified against their snapshot (#79); warnings attributed correctly with SMonitor 0.17 (published 0.4.0 declares smonitor>=0.16.0); the oligomer read from author-defined assemblies (#72). New knowledge: author residue numbering (#73, card schema 0.3.5), partial RCSB entries kept and reported (#74), identity across gene databases through NCBI Gene (#69), inventory grouping keys and residue maps (#70), a measurement review without false alarms (#75). Distribution: dependency-contract preflight (#76), exact-artifact inspection (#77), immutable Conda coordinates and a recorded public poststate (#78). First publication of card schema 0.3.5. Clean installed-package gates, Windows included, must pass before public visibility."
-decision_by = "Diego Prada (Sabueso maintainer), 2026-09-27"
+reason = "Integrity fix that affects users of 0.5.0: STRING answers cut at the default limit passed for the whole answer (70fc142); every cut is now recorded and reported, and defaults ask for everything up to 5000 items (#88). New knowledge: card schema 0.3.6 (isoforms, secondary structure, curated biological context, pathogen phenotypes, clinical variants, population variants), eight new sources (PHI-base, DISEASES, Open Targets, Orphanet, Reactome, ClinVar, gnomAD, ClinicalTrials.gov), variant placement through stated transcripts and UniProt isoform maps (#83, #85), knowledge packets (#71), declared enrichers with shared network, release-cache and key services (#86). First publication of card schema 0.3.6. Clean installed-package gates, Windows included, must pass before public visibility."
+decision_by = "Diego Prada (Sabueso maintainer), 2026-09-29"
 required_workflows = [
   ".github/workflows/ci.yml",
   ".github/workflows/moli-governance.yml",
