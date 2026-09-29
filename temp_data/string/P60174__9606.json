@@ -6,6 +6,7 @@
   "limit": 50
  },
  "version": "12.0",
+ "truncated": true,
  "results": [
   {
    "stringId_A": "9606.ENSP00000229270",

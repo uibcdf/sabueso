@@ -1,7 +1,8 @@
 """Source access as a public layer (uibcdf/sabueso#49).
 
 Every source module offers ``get_*`` functions returning the raw record in a provenance
-envelope: ``{source, kind, query, retrieved_at, version, record}``. They take the same
+envelope: ``{source, kind, query, retrieved_at, version, record}``, and ``truncated`` for
+a source that cut its answer. They take the same
 clients card building uses, so there is one way to query each source.
 """
 
@@ -125,7 +126,8 @@ CALLS = {
 @pytest.mark.parametrize("name", sorted(CALLS))
 def test_every_source_returns_its_record_in_the_envelope(name):
     result = CALLS[name]()
-    assert set(result) == ENVELOPE
+    # "truncated" only where the source cut its answer and says so.
+    assert set(result) - {"truncated"} == ENVELOPE
     assert result["record"]
     assert result["retrieved_at"]
     assert result["query"]

@@ -3,7 +3,10 @@
 import pytest
 
 from sabueso import resolve_protein_card
-from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
+from sabueso._private.smonitor.warnings import (
+    EnrichmentFailedWarning,
+    EnrichmentTruncatedWarning,
+)
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 from sabueso.tools.db.stringdb import FixtureStringClient
 
@@ -23,9 +26,15 @@ def _associations(card):
 
 
 def test_string_adds_scored_functional_associations(resolver):
-    card, _ = resolve_protein_card(
-        "P60174", resolver, string={}, string_client=FixtureStringClient("temp_data")
-    )
+    # STRING holds 78 partners of HsTIM at score >= 700; the default limit keeps the 50
+    # most confident, and the cut is recorded and reported, never silent.
+    with pytest.warns(EnrichmentTruncatedWarning, match="50 of more than 50"):
+        card, _ = resolve_protein_card(
+            "P60174",
+            resolver,
+            string={},
+            string_client=FixtureStringClient("temp_data"),
+        )
     (enrichment,) = card.quality["enrichments"]
     assert enrichment == {
         "source": "STRING",
@@ -36,6 +45,7 @@ def test_string_adds_scored_functional_associations(resolver):
         "status": "added",
         "version": "12.0",
         "count": 50,
+        "truncated": True,
     }
 
     associations = _associations(card)

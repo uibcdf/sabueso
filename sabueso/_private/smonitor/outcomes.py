@@ -95,7 +95,10 @@ def report_outcomes(records: Iterable[Dict[str, Any]], subject: str) -> None:
                     source=source,
                     subject=subject,
                     count=record.get("count"),
-                    total=record.get("total_count"),
+                    # A source that states no total (STRING) is cut at "more than".
+                    total=record.get("total_count")
+                    if record.get("total_count") is not None
+                    else f"more than {record.get('count')}",
                 ),
                 stacklevel=_user_stacklevel(),
             )

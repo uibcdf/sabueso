@@ -7,7 +7,10 @@ them as ``functionally_associated_with`` relationships (``mappings/stringdb.py``
 ``resolve_protein_card(..., string={...})``.
 
 ``partners(identifier, species, required_score, limit)`` returns
-``{query, version, retrieved_at, results}``. ``OnlineStringClient`` queries the STRING API;
+``{query, version, retrieved_at, results, truncated}``: the partners at or above
+``required_score``, most confident first, at most ``limit``. STRING states no total, so
+the client asks for one partner more than ``limit``; ``truncated`` says STRING holds
+more. ``OnlineStringClient`` queries the STRING API;
 ``FixtureStringClient`` reads ``<directory>/string/<identifier>__<species>.json``. Both raise
 ``RecordNotFoundError`` when STRING has no such protein and ``ConnectorError`` on failures.
 """
@@ -72,7 +75,11 @@ class OnlineStringClient:
             "limit": limit,
         }
         retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
-        results = _get("interaction_partners", query, self.timeout)
+        # One partner more than the limit tells whether STRING holds more: STRING
+        # states no total, and a cut must never pass for the whole answer.
+        results = _get(
+            "interaction_partners", {**query, "limit": limit + 1}, self.timeout
+        )
         if results and isinstance(results[0], dict) and results[0].get("Error"):
             raise RecordNotFoundError(
                 f"STRING has no protein {identifier} in {species}"
@@ -81,7 +88,8 @@ class OnlineStringClient:
             "query": query,
             "version": self.version(),
             "retrieved_at": retrieved_at,
-            "results": results,
+            "results": results[:limit],
+            "truncated": len(results) > limit,
         }
 
 
@@ -138,4 +146,5 @@ def get_partners(
         response.get("retrieved_at"),
         response.get("version"),
         response.get("results"),
+        truncated=bool(response.get("truncated")),
     )

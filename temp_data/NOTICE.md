@@ -32,7 +32,7 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | `pdb_ccd/*.json` | wwPDB Chemical Component Dictionary, served by RCSB PDB | — | 2026-09-23 | CC0 1.0 |
 | `pdbe_kb/*.json` | PDBe-KB (EMBL-EBI), ligand binding sites (2026-09-23) and interface residues (2026-09-24) | — | 2026-09-23 | CC BY 4.0 |
 | `interpro/*.json` | InterPro (EMBL-EBI), site residues from the CDD member database | InterPro 110.0 | 2026-09-23 | see note below |
-| `string/*.json` | STRING | 12.0 | 2026-09-23 | CC BY 4.0 |
+| `string/*.json` | STRING; HsTIM's 50 most confident partners at score ≥ 700, of 78, marked `truncated` 2026-09-29 (refetched: same rows) | 12.0 | 2026-09-23 | CC BY 4.0 |
 | `chembl/*.json`, `CHEMBL90555.json` | ChEMBL (EMBL-EBI); CHEMBL90555 added to `chembl/molecules.json` 2026-09-24; `chembl/indications.json` (benznidazole, CHEMBL110) added 2026-09-28 | ChEMBL_37 (released 2026-05-01) | 2026-09-23 | **CC BY-SA 3.0** |
 | `diseases/*.tsv`, `diseases/versions.json` | DISEASES (Jensen lab), the filtered rows of HsTIM's Ensembl protein ENSP00000229270 per channel | files of 2026-09-18 (knowledge, experiments) and 2026-09-20 (text mining) | 2026-09-28 | CC BY 4.0 |
 | `open_targets/ENSG00000111669.json` | Open Targets Platform, HsTIM's gene (TPI1): its target record and first 20 of 483 associated diseases | data 26.09 | 2026-09-28 | CC0 1.0 |

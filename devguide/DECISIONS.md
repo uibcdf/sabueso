@@ -965,3 +965,16 @@ uibcdf/sabueso#86, wave 3 of #83.
   of thread safety and gentler use of rate-limited sources. #87 states when to
   re-evaluate. ClinVar, the slowest, now also takes the optional NCBI key.
 
+
+## A cut never passes for the whole answer (2026-09-29)
+- **The gap.** STRING states no total. With its default limit of 50, a card kept
+  HsTIM's 50 most confident partners (of 78 at score ≥ 700), and nothing said so.
+- **The rule.** Every source whose answer Sabueso limits must report the cut:
+  - with the source's total where it states one (ChEMBL, Open Targets, ClinVar,
+    gnomAD);
+  - otherwise by asking for one record more than the limit. STRING's cut is then
+    recorded as `truncated`, and reported as "50 of more than 50".
+- **Where it shows.** The public envelope (`get_partners`) carries `truncated` too.
+- **Fixtures.** Some are declared cuts of a larger answer (`temp_data/NOTICE.md`), so
+  building cards from them reports truncation. That is the fixture stating what it is,
+  not a failure.

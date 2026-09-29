@@ -45,6 +45,8 @@ class STRING(Enricher):
             "status": "added",
             "version": response.get("version"),
             "count": len(mapped["relationships"]),
+            # STRING states no total: a cut is "more than count", never a total.
+            "truncated": bool(response.get("truncated")),
         }
 
 
