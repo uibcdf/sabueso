@@ -38,6 +38,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - scientific operations (#91): `sabueso.expand`, `Card.expand` and `Deck.expand`
     (relationships into decks, `relationship_expansion@1`); `Card.explain` and
     `Deck.explain`; `KnowledgeStore.as_of`, `revision_as_of` and `changed_since`;
+  - molecules given as a structure (`smiles:`, `inchi:`), matched by PubChem
+    (`pubchem_structure_lookup`, #93);
   - `knowledge_state@3`: an answer cut at a limit is `partial`, with `truncated_for`
     (#88);
   - a `not_found` record states the release it was checked against (#89).

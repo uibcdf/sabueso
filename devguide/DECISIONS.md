@@ -1159,3 +1159,18 @@ uibcdf/sabueso#29.
     operations, and a card's SourceAssertions. It does not re-run anything.
   - `as_of` reads the store's revisions only. Sabueso does not reconstruct a source's
     past: knowledge on a date is what was built and saved by then.
+- **Molecules given as a structure** (same day, #93).
+  - A `smiles:` or `inchi:` query is matched by PubChem, and the card is the compound
+    PubChem names, anchored at the InChIKey PubChem states
+    (`pubchem_structure_lookup`). Sabueso never computes a key from a structure: that
+    would make identity depend on a toolkit and its version.
+  - A structure PubChem does not hold (CID 0) is `not_found`; one it cannot read (HTTP
+    400) is `unsupported`, with PubChem's message; several CIDs are `ambiguous`.
+  - Stereochemistry, tautomers and salts are as PubChem handles them. A SMILES without
+    stereocentres names the compound with undefined stereochemistry, which is a
+    different card: vincristine's flat SMILES resolves to CID 3717450, not 5978.
+  - The lookup is the resolution's basis (`decision["structure"]`, with the structure
+    as given), not a SourceAssertion: the card is about the compound, and the query is
+    the user's.
+  - A computed key, as a flagged derived identity under a named rule, waits for a
+    stated need.

@@ -7,11 +7,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import request, urlopen
 from sabueso.tools.db._record import online, source_record
 
 
@@ -47,6 +47,9 @@ def create_compound_card_from_file(path: str | Path, retrieved_at: str) -> Any:
 
 
 PUBCHEM_PUG = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid"
+PUBCHEM_COMPOUND = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound"
+#: Structure notations PubChem matches to its compounds (#93).
+NOTATIONS = ("smiles", "inchi")
 PROPERTIES = (
     "MolecularWeight,MolecularFormula,XLogP,TPSA,HBondDonorCount,HBondAcceptorCount,"
     "RotatableBondCount,InChI,InChIKey,SMILES,ConnectivitySMILES"
@@ -75,6 +78,54 @@ class OnlinePubChemClient:
             raise ConnectorError(f"PubChem request for {cid} failed: {exc}") from exc
         return {"retrieved_at": retrieved_at, "record": data}
 
+    def structure(self, notation: str, structure: str) -> Dict[str, Any]:
+        """The compounds PubChem states a structure is (#93): PubChem standardizes the
+        structure and matches it to its compounds, so the answer is PubChem's
+        statement, not a key Sabueso computed.
+
+        Returns ``{"retrieved_at", "cids", "fault"}``. ``cids`` is empty when PubChem
+        holds no compound for the structure (it answers CID 0), and ``fault`` is
+        PubChem's message when it cannot read the structure (HTTP 400).
+        """
+        url = f"{PUBCHEM_COMPOUND}/{notation}/cids/JSON"
+        # POST: a SMILES or an InChI carries characters a URL path would mangle.
+        data = urlencode({notation: structure}).encode("utf-8")
+        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        try:
+            with urlopen(request(url, data=data), timeout=self.timeout) as resp:
+                body = json.loads(resp.read().decode("utf-8"))
+        except HTTPError as exc:
+            if exc.code == 404:
+                return {"retrieved_at": retrieved_at, "cids": [], "fault": None}
+            if exc.code == 400:
+                return {
+                    "retrieved_at": retrieved_at,
+                    "cids": [],
+                    "fault": _fault(exc),
+                }
+            raise ConnectorError(
+                f"PubChem structure lookup failed: HTTP {exc.code}"
+            ) from exc
+        except (URLError, TimeoutError, OSError, ValueError) as exc:
+            raise ConnectorError(f"PubChem structure lookup failed: {exc}") from exc
+        return {"retrieved_at": retrieved_at, **_matched(body)}
+
+
+def _fault(exc: HTTPError) -> str:
+    try:
+        fault = json.loads(exc.read().decode("utf-8")).get("Fault") or {}
+    except (OSError, ValueError):
+        fault = {}
+    return fault.get("Message") or f"HTTP {exc.code}"
+
+
+def _matched(body: Dict[str, Any]) -> Dict[str, Any]:
+    """``cids`` and ``fault`` from a PUG REST identifier list (or fault) body."""
+    if "Fault" in body:
+        return {"cids": [], "fault": body["Fault"].get("Message") or "fault"}
+    cids = (body.get("IdentifierList") or {}).get("CID") or []
+    return {"cids": [str(c) for c in cids if int(c) > 0], "fault": None}
+
 
 class FixturePubChemClient:
     """Saved PubChem responses: ``<directory>/pubchem/<cid>.json``, or
@@ -101,6 +152,18 @@ class FixturePubChemClient:
                 data = json.loads(path.read_text(encoding="utf-8"))
                 return {"retrieved_at": self.retrieved_at, "record": data}
         raise RecordNotFoundError(f"PubChem has no compound {cid}")
+
+    def structure(self, notation: str, structure: str) -> Dict[str, Any]:
+        """A saved structure lookup (``<directory>/pubchem/structures.json``)."""
+        path = self.directory / "pubchem" / "structures.json"
+        saved = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+        for lookup in saved.get("lookups") or []:
+            if (lookup["kind"], lookup["query"]) == (notation, structure):
+                return {
+                    "retrieved_at": self.retrieved_at,
+                    **_matched(lookup["response"]),
+                }
+        raise RecordNotFoundError(f"No saved PubChem lookup for {notation} {structure}")
 
 
 def fetch_pubchem_json(cid: str) -> Dict[str, Any]:
@@ -140,4 +203,24 @@ def get_compound(identifier: str, client: Any = None, skip_digestion: bool = Fal
         response.get("retrieved_at"),
         None,
         response.get("record"),
+    )
+
+
+@arg_digest()
+def get_structure_match(
+    structure: str,
+    notation: str = "smiles",
+    client: Any = None,
+    skip_digestion: bool = False,
+):
+    """The PubChem compounds a structure (a SMILES or an InChI) is, as PubChem states
+    it (#93), in a provenance envelope: ``{"cids": [...], "fault": ...}``."""
+    response = online(client, OnlinePubChemClient).structure(notation, structure)
+    return source_record(
+        "PubChem",
+        "structure_match",
+        {"notation": notation, "structure": structure},
+        response.get("retrieved_at"),
+        None,
+        {"cids": response.get("cids") or [], "fault": response.get("fault")},
     )

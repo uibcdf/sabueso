@@ -103,7 +103,8 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Small-molecule cards | done | InChIKey anchor (#25) |
 | Peptide cards | pending | `entity_type: peptide` exists in the schema; no peptide source or view (CPPsite queued) |
 | Inputs: identifiers, names | done | UniProt, `pdb:`, `pubchem:`, `chembl:`, `pdb.ligand:`, `inchikey:`, name + organism |
-| Inputs: sequence (FASTA), SMILES/InChI, structure files | pending | resolution by sequence or structure would need its own identity rules |
+| Inputs: SMILES, InChI | done | matched by PubChem, never a computed key (`pubchem_structure_lookup`, #93) |
+| Inputs: sequence (FASTA), structure files | pending | resolution by sequence or structure file would need its own identity rules |
 | Disease associations of a protein | done | `annotations.disease` (#39) |
 | Ligands with a role (inhibitor…) | changed | a role is a derived class, never asserted (#25): `bioactivity_class@3`, `ligand_deck` |
 | Deck of inhibitors of a protein | done | `ligand_deck(card)` with derived classes |
@@ -206,7 +207,6 @@ In order:
    - sources of wave 2 (#83): chemistry (ChEBI, chemical probes), identity (Ensembl,
      which also serves #85), family-specific sources, patents, structures. iPPI-DB,
      VEuPathDB and TDR Targets wait on #84;
-   - molecules given as SMILES or InChI, through PubChem's stated match (#93);
    - knowledge packets: real use decides their aspects and size (#71, #88), aligned
      with uibcdf/moli#22 once agreed;
    - the clinical layer: adverse events (openFDA), after a terms review; isoform

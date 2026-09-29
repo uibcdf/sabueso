@@ -74,6 +74,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Access**: online API, local JSON
 - **Quality**: green
 - **Coverage**: formula, MW, isomeric SMILES (`identifiers.smiles`) and connectivity SMILES (`identifiers.smiles_connectivity`), InChI/InChIKey, XLogP3, TPSA, HBD/HBA, rotatable bonds; PubChem compounds are InChIKey-anchored like any small molecule (uibcdf/sabueso#25)
+- **Structure lookup** (#93): `smiles:` and `inchi:` queries are matched by PubChem (POST `compound/<notation>/cids/JSON`; `tools.db.pubchem.get_structure_match`). CID 0 means PubChem holds no such compound, and HTTP 400 that it cannot read the structure.
 - **Notes**: PubChem's `SMILES` (formerly `IsomericSMILES`) keeps stereochemistry and `ConnectivitySMILES` (formerly `CanonicalSMILES`) does not; the isomeric one used to be dropped (uibcdf/sabueso#10). XLogP3 and rotatable bonds carry their method. Stable online tests.
 
 ### ChEMBL

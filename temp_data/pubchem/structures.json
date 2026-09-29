@@ -1,0 +1,75 @@
+{
+ "retrieved": "2026-09-29",
+ "source": "PubChem PUG REST, POST compound/<kind>/cids/JSON",
+ "lookups": [
+  {
+   "kind": "smiles",
+   "query": "CC[C@@]1(C[C@@H]2C[C@@](C3=C(CCN(C2)C1)C4=CC=CC=C4N3)(C5=C(C=C6C(=C5)[C@]78CCN9[C@H]7[C@@](C=CC9)([C@H]([C@@]([C@@H]8N6C=O)(C(=O)OC)O)OC(=O)C)CC)OC)C(=O)OC)O",
+   "http_status": 200,
+   "response": {
+    "IdentifierList": {
+     "CID": [
+      5978
+     ]
+    }
+   }
+  },
+  {
+   "kind": "smiles",
+   "query": "CCC1(CC2CC(C3=C(CCN(C2)C1)C4=CC=CC=C4N3)(C5=C(C=C6C(=C5)C78CCN9C7C(C=CC9)(C(C(C8N6C=O)(C(=O)OC)O)OC(=O)C)CC)OC)C(=O)OC)O",
+   "http_status": 200,
+   "response": {
+    "IdentifierList": {
+     "CID": [
+      3717450
+     ]
+    }
+   }
+  },
+  {
+   "kind": "inchi",
+   "query": "InChI=1S/C46H56N4O10/c1-7-42(55)22-28-23-45(40(53)58-5,36-30(14-18-48(24-28)25-42)29-12-9-10-13-33(29)47-36)32-20-31-34(21-35(32)57-4)50(26-51)38-44(31)16-19-49-17-11-15-43(8-2,37(44)49)39(60-27(3)52)46(38,56)41(54)59-6/h9-13,15,20-21,26,28,37-39,47,55-56H,7-8,14,16-19,22-25H2,1-6H3/t28-,37+,38-,39-,42+,43-,44-,45+,46+/m1/s1",
+   "http_status": 200,
+   "response": {
+    "IdentifierList": {
+     "CID": [
+      5978
+     ]
+    }
+   }
+  },
+  {
+   "kind": "smiles",
+   "query": "C1CC1[Xe]C1CC1CC(=O)OCCCCCCCCCCN",
+   "http_status": 200,
+   "response": {
+    "IdentifierList": {
+     "CID": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "kind": "smiles",
+   "query": "C1CC(",
+   "http_status": 400,
+   "response": {
+    "Fault": {
+     "Code": "PUGREST.BadRequest",
+     "Message": "Unable to standardize the given structure - perhaps some special characters need to be escaped or data packed in a MIME form?",
+     "Details": [
+      "error: ",
+      "status: 400",
+      "output: Caught ncbi::CException: Standardization failed",
+      "Output Log:",
+      "Record 1: Warning: Cactvs Ensemble cannot be created from input string",
+      "Record 1: Error: Unable to convert input into a compound object",
+      "",
+      ""
+     ]
+    }
+   }
+  }
+ ]
+}

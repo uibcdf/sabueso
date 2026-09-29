@@ -1,0 +1,20 @@
+{
+ "PropertyTable": {
+  "Properties": [
+   {
+    "CID": 3717450,
+    "MolecularFormula": "C46H56N4O10",
+    "MolecularWeight": "825.0",
+    "SMILES": "CCC1(CC2CC(C3=C(CCN(C2)C1)C4=CC=CC=C4N3)(C5=C(C=C6C(=C5)C78CCN9C7C(C=CC9)(C(C(C8N6C=O)(C(=O)OC)O)OC(=O)C)CC)OC)C(=O)OC)O",
+    "ConnectivitySMILES": "CCC1(CC2CC(C3=C(CCN(C2)C1)C4=CC=CC=C4N3)(C5=C(C=C6C(=C5)C78CCN9C7C(C=CC9)(C(C(C8N6C=O)(C(=O)OC)O)OC(=O)C)CC)OC)C(=O)OC)O",
+    "InChI": "InChI=1S/C46H56N4O10/c1-7-42(55)22-28-23-45(40(53)58-5,36-30(14-18-48(24-28)25-42)29-12-9-10-13-33(29)47-36)32-20-31-34(21-35(32)57-4)50(26-51)38-44(31)16-19-49-17-11-15-43(8-2,37(44)49)39(60-27(3)52)46(38,56)41(54)59-6/h9-13,15,20-21,26,28,37-39,47,55-56H,7-8,14,16-19,22-25H2,1-6H3",
+    "InChIKey": "OGWKCGZFUXNPDA-UHFFFAOYSA-N",
+    "XLogP": 2.8,
+    "TPSA": 171,
+    "HBondDonorCount": 3,
+    "HBondAcceptorCount": 12,
+    "RotatableBondCount": 10
+   }
+  ]
+ }
+}

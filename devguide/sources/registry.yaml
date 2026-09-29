@@ -179,7 +179,7 @@ resources:
     description: Compound records, identifiers and computed properties.
     since: 2026-02-07
     reason: Small-molecule identity and properties.
-    access: PUG REST
+    access: PUG REST (compounds by CID; structure lookups by SMILES or InChI, #93)
     licence: US public domain (NLM policy); depositor terms may apply
     terms:
       source_names: ["PubChem"]
@@ -190,7 +190,7 @@ resources:
       caveats:
         - "Deposited records keep their depositor's terms."
     module: [sabueso.tools.db.pubchem]
-    links: ["#50"]
+    links: ["#50", "#93"]
   - id: unichem
     name: UniChem
     url: https://www.ebi.ac.uk/unichem/

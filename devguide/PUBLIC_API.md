@@ -11,7 +11,8 @@ shows how to use them.
 - `sabueso.resolve(query, entity_type=None, profile=None, curations=None, **options)`
   returns `(card | None, resolution)`.
   - `query` is an identifier (UniProt accession, `pdb:`, `pubchem:`, `chembl:`,
-    `pdb.ligand:`, `inchikey:`, a disease id: `mondo:`, `doid:`, `orphanet:`, `omim:`,
+    `pdb.ligand:`, `inchikey:`, a structure (`smiles:`, `inchi:`, matched by PubChem,
+    #93), a disease id: `mondo:`, `doid:`, `orphanet:`, `omim:`,
     `mesh:`, `efo:`… (#90)) or an `EntityQuery(name=..., organism=...,
     include_subtaxa=...)`. `entity_type` is `protein`, `small_molecule` or `disease`.
   - Options go to the card tool. For proteins:

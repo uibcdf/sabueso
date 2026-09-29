@@ -19,7 +19,7 @@ Summary: in use 31, evaluating 23, deferred 24, retired 3, out of scope 13.
 | [PDBe-KB](https://www.ebi.ac.uk/pdbe/pdbe-kb) | Binding sites, cavities and specialised families | PDBe graph API | CC BY 4.0 | 2026-09-23 |
 | [InterPro and member databases (Pfam, CDD, PANTHER, PROSITE, SUPFAM, Gene3D/CATH)](https://www.ebi.ac.uk/interpro/) | Targets, sequence and basic pharmacology | InterPro REST API; UniProt cross-references | CC0 1.0 (member databases may carry their own terms) | 2026-02-07 |
 | [ChEMBL](https://www.ebi.ac.uk/chembl/) | Binding affinity and experimental bioactivity | REST API | CC BY-SA 3.0 (share-alike) | 2026-02-07 |
-| [PubChem (compounds)](https://pubchem.ncbi.nlm.nih.gov/) | Chemical space, synthesis, ADMET and safety | PUG REST | US public domain (NLM policy); depositor terms may apply | 2026-02-07 |
+| [PubChem (compounds)](https://pubchem.ncbi.nlm.nih.gov/) | Chemical space, synthesis, ADMET and safety | PUG REST (compounds by CID; structure lookups by SMILES or InChI, | US public domain (NLM policy); depositor terms may apply | 2026-02-07 |
 | [UniChem](https://www.ebi.ac.uk/unichem/) | Chemical space, synthesis, ADMET and safety | REST API | No restrictions of its own; the linked resources' rights apply | 2026-09-23 |
 | [STRING](https://string-db.org/) | Protein–protein interactions and structural modulation | REST API | CC BY 4.0 | 2026-02-07 |
 | [AlphaFold DB](https://alphafold.ebi.ac.uk/) | Macromolecular structures, models and dynamics | REST API | CC BY 4.0 | 2026-09-25 |

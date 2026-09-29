@@ -3,8 +3,9 @@
 The query's namespace decides which card tool answers it, and the choice is recorded in
 the resolution (``resolution.decision["route"]``):
 
-- small-molecule namespaces (``chembl:``, ``pdb.ligand:``, ``inchikey:``), bare ChEMBL ids
-  and standard InChIKeys go to ``resolve_molecule_card``;
+- small-molecule namespaces (``chembl:``, ``pdb.ligand:``, ``pubchem:``, ``inchikey:``),
+  bare ChEMBL ids and standard InChIKeys, and structures (``smiles:``, ``inchi:``, a bare
+  ``InChI=``, matched by PubChem, #93) go to ``resolve_molecule_card``;
 - disease namespaces (``mondo:``, and those MONDO maps: ``doid:``, ``orphanet:``,
   ``omim:``, ``mesh:``, ``efo:``, ``ncit:``…) go to ``resolve_disease_card`` (#90).
   ``omim:`` and ``mesh:`` also name genes and chemicals: those have no MONDO

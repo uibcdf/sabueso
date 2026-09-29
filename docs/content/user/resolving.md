@@ -24,9 +24,31 @@ print(resolution.decision["route"], resolution.decision["rules"])
 | `pdb.ligand:<code>` | small molecule (PDB Chemical Component Dictionary) |
 | `pubchem:<cid>` | small molecule |
 | `inchikey:<key>` or a standard InChIKey | small molecule |
+| `smiles:<SMILES>`, `inchi:<InChI>` or a bare `InChI=…` | small molecule, the compound PubChem states the structure is |
 
 Small-molecule cards are anchored at the standard InChIKey, whichever record the query
 names. `entity_type=` overrides the route.
+
+### A structure as the query
+
+A SMILES or an InChI is not an identifier. Sabueso asks PubChem which compound the
+structure is (rule `pubchem_structure_lookup`) and builds that compound's card, anchored
+at the InChIKey PubChem states. It never computes a key from a structure: that would
+make identity depend on the toolkit and its version.
+
+```python
+card, resolution = sabueso.resolve("smiles:CC(=O)OC1=CC=CC=C1C(=O)O")  # aspirin
+resolution.decision["structure"]  # the structure as given, PubChem's CIDs, retrieval
+```
+
+- A structure PubChem does not hold is `not_found`, and one it cannot read is
+  `unsupported`, with PubChem's message. Neither gets a card.
+- One structure matched to several compounds is `ambiguous`, with the candidates as
+  `pubchem:` ids.
+- Stereochemistry, tautomers and salts are as PubChem handles them, not normalized by
+  Sabueso. A SMILES without its stereocentres is matched to the compound whose
+  stereochemistry is undefined, which is a different compound. A salt is its own
+  compound.
 
 ## Ambiguity is reported, never chosen silently
 

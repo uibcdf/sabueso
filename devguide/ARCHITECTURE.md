@@ -114,8 +114,8 @@ through these parts; `PUBLIC_API.md` lists the public surface.
   pharmacology, ADMET, pharmacovigilance, contraindications and interactions, as a
   section apart from physicochemical and biological data.
 - **Peptide cards.** `entity_type: peptide` exists; peptide sources and views do not.
-- **Inputs by sequence, SMILES/InChI or structure file.** Resolution takes identifiers
-  and names today.
+- **Inputs by sequence or structure file.** Resolution takes identifiers, names, and
+  SMILES or InChI matched by PubChem (#93).
 - **KnowledgeQuery and knowledge packets** (`SCIENTIFIC_POTENTIAL.md`): a prototype,
   released in 0.6.0 (`sabueso/core/packets.py`, #71). Its shared contract waits on
   uibcdf/moli#22.

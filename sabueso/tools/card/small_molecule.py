@@ -134,7 +134,12 @@ def single_molecule_card(**records: Any) -> Card:
 
 def _parse(identifier: str) -> Tuple[str | None, str]:
     value = identifier.strip()
+    if value.startswith("InChI="):
+        return "inchi", value
     namespace, _, record = value.partition(":")
+    if record.strip() and namespace.lower() in ("smiles", "inchi"):
+        # A structure as given; PubChem says which compound it is (#93).
+        return namespace.lower(), record.strip()
     if record and namespace.lower() == "pubchem":
         # A PubChem CID only with its prefix: a bare number could be anything.
         return (
@@ -148,6 +153,35 @@ def _parse(identifier: str) -> Tuple[str | None, str]:
     if is_standard_inchikey(value):
         return "inchikey", value
     return None, value
+
+
+STRUCTURE_RULE = "pubchem_structure_lookup"
+
+
+def _structure_match(pubchem_client, notation, structure, decision):
+    """The CID PubChem states a structure is, or ``(status, rule)`` (#93)."""
+    record = {"notation": notation, "given": structure, "basis": STRUCTURE_RULE}
+    decision["structure"] = record
+    decision["rules"].append(STRUCTURE_RULE)
+    try:
+        match = pubchem_client.structure(notation, structure)
+    except RecordNotFoundError:
+        return "not_found", "structure_not_in_pubchem"
+    except ConnectorError as exc:
+        decision["detail"] = str(exc)
+        return "error", "source_error"
+    record["retrieved_at"] = match.get("retrieved_at")
+    cids = match.get("cids") or []
+    record["cids"] = cids
+    if match.get("fault"):
+        record["fault"] = match["fault"]
+        return "unsupported", "structure_not_readable_by_pubchem"
+    if not cids:
+        return "not_found", "structure_not_in_pubchem"
+    if len(cids) > 1:
+        decision["candidates"] = [f"pubchem:{cid}" for cid in cids]
+        return "ambiguous", "structure_matches_several_compounds"
+    return cids[0]
 
 
 def _pubchem_client(pubchem_client):
@@ -193,12 +227,19 @@ def resolve_molecule_card(
     """Resolve a small-molecule identifier and build the card of its molecule.
 
     ``identifier`` is ``chembl:<id>`` (or a bare ChEMBL id), ``pdb.ligand:<code>``,
-    ``pubchem:<cid>`` or ``inchikey:<key>`` (or a bare standard InChIKey). With
+    ``pubchem:<cid>``, ``inchikey:<key>`` (or a bare standard InChIKey), or a structure:
+    ``smiles:<SMILES>``, ``inchi:<InChI>`` (or a bare ``InChI=…``). With
     ``pubchem=True``, the PubChem compounds UniChem links are retrieved too; a
     ``pubchem:`` identifier always brings its own compound.
 
     The anchor InChIKey comes from the record named by ``identifier`` (or is the
-    identifier itself). With ``unichem`` (default), UniChem adds the records other
+    identifier itself). A structure is matched by PubChem (``pubchem_structure_lookup``,
+    #93): PubChem states which compound it is, and the card is that compound's, anchored
+    at the InChIKey PubChem states. Sabueso never computes a key from a structure. A
+    structure PubChem does not hold is ``not_found``, one it cannot read is
+    ``unsupported``, and one it matches to several compounds is ``ambiguous``.
+    Stereochemistry and tautomers are as PubChem handles them: a SMILES without
+    stereocentres is matched to the compound with undefined stereochemistry. With ``unichem`` (default), UniChem adds the records other
     resources hold for that structure, and the ChEMBL molecules and PDB components it
     lists are retrieved too. A failure of that expansion never prevents the card; it is
     recorded in ``quality.enrichments``. ``inchikey:`` identifiers need UniChem.
@@ -245,6 +286,8 @@ def resolve_molecule_card(
         "pdb.ligand": "PDB CCD",
         "pubchem": "PubChem",
         "inchikey": "UniChem",
+        "smiles": "PubChem",
+        "inchi": "PubChem",
     }[namespace]
     if not admitted(primary):
         decision["terms_profile"] = profile.record()
@@ -261,6 +304,14 @@ def resolve_molecule_card(
         return outcome("unsupported", "not_a_standard_inchikey")
     if namespace == "inchikey" and not unichem:
         return outcome("unsupported", "inchikey_requires_unichem")
+    if namespace == "inchi" and not record.startswith("InChI="):
+        return outcome("unsupported", "not_an_inchi")
+    if namespace in ("smiles", "inchi"):
+        pubchem_client = _pubchem_client(pubchem_client)
+        matched = _structure_match(pubchem_client, namespace, record, decision)
+        if isinstance(matched, tuple):
+            return outcome(*matched)
+        namespace, record = "pubchem", matched
     chembl_client, ccd_client, unichem_client = _clients(
         chembl_client, ccd_client, unichem_client
     )
