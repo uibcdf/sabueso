@@ -30,7 +30,7 @@ from __future__ import annotations
 from typing import Any, Dict, List
 
 #: Namespace order for choosing an entity's key and anchor.
-ANCHORS = ("uniprot:", "inchikey:")
+ANCHORS = ("uniprot:", "inchikey:", "mondo:")
 PREFERENCE = (
     "uniprot:",
     "inchikey:",
@@ -165,7 +165,12 @@ def build_entities(card: Any) -> Dict[str, Any]:
     for rel in card.relationships():
         predicate, obj = rel["predicate"], rel["object_ref"]
         q = rel.get("qualifiers") or {}
-        if predicate == "same_as":
+        if predicate == "same_as" and str(obj).startswith("mondo:"):
+            # A disease id MONDO states is the same disease as its term (#90).
+            g.add(rel["subject_ref"], "disease", "same_as")
+            g.add(obj, "disease", "same_as", name=q.get("mondo_name"))
+            g.same(rel["subject_ref"], obj)
+        elif predicate == "same_as":
             g.add(rel["subject_ref"], entity_type, "same_as")
             g.same(rel["subject_ref"], obj)
             g.add(obj, entity_type, "same_as", name=q.get("name"))

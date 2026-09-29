@@ -437,6 +437,13 @@ class Card:
 
         return clinical_view(self)
 
+    def diseases(self) -> Dict[str, Any]:
+        """The diseases every source states for this protein, grouped by MONDO term
+        only through MONDO's stated equivalences (``disease_grouping@1``, #90)."""
+        from .diseases import diseases_view
+
+        return diseases_view(self)
+
     def interface_mutations(self) -> Dict[str, Any]:
         """Mutations at the interfaces of this protein's complexes and their binding
         changes, as SKEMPI states them, each with ΔΔG under ``binding_ddg@1`` (#83)."""

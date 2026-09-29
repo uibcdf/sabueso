@@ -119,6 +119,36 @@ is_obsolete: true
 replaced_by: MONDO:0009299
 
 [Term]
+id: MONDO:0000940
+name: trypanosomiasis
+def: "Infection with protozoa of the genus trypanosoma." [MESH:D014352]
+synonym: "Trypanosoma caused disease or disorder" EXACT [MONDO:patterns/specific_infectious_disease_by_agent]
+synonym: "Trypanosoma disease or disorder" EXACT []
+synonym: "Trypanosoma infectious disease" EXACT []
+synonym: "Trypanosomiases" RELATED [MESH:D014352]
+xref: DOID:10113 {source="MONDO:equivalentTo"}
+xref: ICD10CM:B56 {source="MONDO:equivalentTo"}
+xref: ICD9:086 {source="DOID:10113"}
+xref: ICD9:086.9 {source="MONDO:equivalentTo", source="MONDO:i2s", source="DOID:10113"}
+xref: MEDGEN:52872 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D014352 {source="MONDO:equivalentTo", source="DOID:10113"}
+xref: NANDO:2200774 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: SCTID:78940002 {source="MONDO:equivalentTo", source="DOID:10113"}
+xref: UMLS:C0041227 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:52872"}
+is_a: MONDO:0002428 {source="DOID:10113", source="ICD10CM:B56", source="MESH:D014352/inferred"} ! protozoa infectious disease
+intersection_of: MONDO:0005550 ! infectious disease
+intersection_of: disease_has_infectious_agent NCBITaxon:5690 ! Trypanosoma
+relationship: disease_has_infectious_agent NCBITaxon:5690 ! Trypanosoma
+property_value: curated_content_resource "https://www.malacards.org/card/trypanosomiasis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:10113
+property_value: skos:exactMatch icd10cm:B56
+property_value: skos:exactMatch MEDGEN:52872
+property_value: skos:exactMatch MESH:D014352
+property_value: skos:exactMatch SCTID:78940002
+property_value: skos:exactMatch UMLS:C0041227
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/infectious_disease_by_agent.yaml
+
+[Term]
 id: MONDO:0001103
 name: giardiasis
 def: "An infection of the small intestine caused by the flagellated protozoan giardia lamblia. It is spread via contaminated food and water and by direct person-to-person contact." [MESH:D005873]
@@ -202,6 +232,499 @@ property_value: skos:exactMatch UMLS:C0041234
 property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/infectious_disease_by_agent.yaml
 
 [Term]
+id: MONDO:0001627
+name: dementia
+def: "Loss of intellectual abilities interfering with an individual's social and occupational functions. Causes include Alzheimer's disease, brain injuries, brain tumors, and vascular disorders." [NCIT:P378]
+subset: otar {source="MONDO:OTAR"}
+synonym: "dementia" EXACT [DOID:1307, icd11.foundation:546689346, NCIT:C4786]
+synonym: "dementia (disease)" EXACT [https://orcid.org/0000-0002-6601-2165]
+xref: DOID:1307 {source="MONDO:equivalentTo"}
+xref: HP:0000726 {source="MONDO:otherHierarchy", source="https://orcid.org/0000-0001-9859-8589"}
+xref: ICD10CM:F02 {source="MONDO:equivalentTo"}
+xref: icd11.foundation:1468768235 {source="MONDO:equivalentTo"}
+xref: icd11.foundation:546689346 {source="MONDO:equivalentTo"}
+xref: ICD9:290.8 {source="DOID:1307"}
+xref: ICD9:294.1 {source="MONDO:equivalentTo", source="MONDO:i2s"}
+xref: ICD9:294.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:99229 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D003704 {source="MONDO:equivalentTo"}
+xref: NCIT:C4786 {source="MONDO:equivalentTo", source="MONDO:exact-label-match"}
+xref: SCTID:52448006 {source="MONDO:equivalentTo"}
+xref: UMLS:C0497327 {source="MEDGEN:99229", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0002039 {source="DOID:1307", source="MESH:D003704", source="MONDO:Redundant", source="NCIT:C4786"} ! cognitive disorder
+intersection_of: MONDO:0002039 ! cognitive disorder
+intersection_of: disease_has_major_feature HP:0000726 ! Dementia
+relationship: disease_has_major_feature HP:0000726 ! Dementia
+property_value: curated_content_resource "https://www.malacards.org/card/dementia" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/6193" xsd:anyURI
+property_value: IAO:0000589 "dementia (disease)" xsd:string
+property_value: skos:exactMatch DOID:1307
+property_value: skos:exactMatch icd10cm:F02
+property_value: skos:exactMatch icd11.foundation:1468768235
+property_value: skos:exactMatch icd11.foundation:546689346
+property_value: skos:exactMatch MEDGEN:99229
+property_value: skos:exactMatch MESH:D003704
+property_value: skos:exactMatch NCIT:C4786
+property_value: skos:exactMatch SCTID:52448006
+property_value: skos:exactMatch UMLS:C0497327
+
+[Term]
+id: MONDO:0001673
+name: diarrheal disease
+def: "The condition of having at least three loose or liquid bowel movements each day." [Wikipedia:Diarrhea]
+subset: otar {source="MONDO:OTAR"}
+synonym: "diarrhea" EXACT [DOID:13250, NCIT:C2987]
+synonym: "diarrheal disease" EXACT [NCIT:C2987]
+synonym: "diarrheal disorder" EXACT []
+synonym: "diarrhoea" EXACT OMO:0003005 [icd11.foundation:116759077]
+synonym: "diarrhoea of presumed infectious origin" RELATED OMO:0003005 []
+synonym: "frequent stools" EXACT [NCIT:C2987]
+synonym: "loose stools" EXACT [NCIT:C2987]
+xref: DOID:13250 {source="MONDO:equivalentTo"}
+xref: HP:0002014 {source="MONDO:otherHierarchy"}
+xref: icd11.foundation:116759077 {source="https://orcid.org/0009-0001-6494-4831", source="MONDO:equivalentTo"}
+xref: ICD9:009.2 {source="DOID:13250"}
+xref: MEDGEN:713159 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D003967 {source="MONDO:equivalentTo", source="MONDO:otherHierarchy", source="DOID:13250"}
+xref: NCIT:C2987 {source="MONDO:equivalentTo", source="MONDO:otherHierarchy", source="MONDO:exact-label-match"}
+xref: SCTID:128333008 {source="MONDO:equivalentTo"}
+xref: UMLS:C1290807 {source="MEDGEN:713159", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0004335 {source="DOID:13250", source="MONDO:Redundant"} ! digestive system disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_major_feature HP:0002014 ! Diarrhea
+relationship: disease_has_major_feature HP:0002014 ! Diarrhea
+property_value: curated_content_resource "https://www.malacards.org/card/diarrhea" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:13250
+property_value: skos:exactMatch icd11.foundation:116759077
+property_value: skos:exactMatch MEDGEN:713159
+property_value: skos:exactMatch MESH:D003967
+property_value: skos:exactMatch NCIT:C2987
+property_value: skos:exactMatch SCTID:128333008
+property_value: skos:exactMatch UMLS:C1290807
+
+[Term]
+id: MONDO:0001881
+name: toxic shock syndrome
+def: "A rare acute life-threatening systemic bacterial noncontagious illness caused by exotoxins from bacteria of either the Streptococcus pyogenes or Staphylococcus aureus type. It is characterized by high fever, hypotension, rash, multi-organ dysfunction, and cutaneous desquamation during the early convalescent period. The toxins affect the host immune system, causing an exuberant and pathological host inflammatory response. Laboratory findings include leukocytosis, elevated prothrombin time, hypoalbuminemia, hypocalcemia, and pyuria." [https://orcid.org/0000-0002-6601-2165, NCIT:C35498, Wikipedia:Toxic_shock_syndrome]
+subset: gard_rare {source="GARD:0009560", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD", source="NORD:1782"}
+subset: ordo_disorder {source="Orphanet:36234"}
+subset: orphanet_rare {source="Orphanet:36234"}
+subset: rare
+synonym: "bacterial toxic-shock syndrome" EXACT [MONDO:0018179, Orphanet:36234]
+synonym: "bacterial TSS" EXACT [Orphanet:36234]
+synonym: "shock syndrome (TSS), toxic" EXACT []
+synonym: "staphylococcal toxic shock syndrome" RELATED [GARD:0009560]
+synonym: "syndrome (TSS), toxic shock" EXACT []
+synonym: "toxic shock syndrome" EXACT [DOID:14115, ICD10CM:A48.3, icd11.foundation:114886962, ICD9CM:040.82, NCIT:C35498]
+synonym: "toxic shock syndrome, (TSS)" EXACT []
+synonym: "TSS" EXACT ABBREVIATION [DOID:14115, NCIT:C35498]
+synonym: "TSS, toxic shock syndrome" EXACT []
+xref: DOID:14115 {source="MONDO:equivalentTo"}
+xref: GARD:0009560 {source="MONDO:GARD"}
+xref: ICD10CM:A48.3 {source="Orphanet:36234/e", source="MONDO:equivalentTo", source="DOID:14115", source="Orphanet:36234"}
+xref: icd11.foundation:114886962 {source="MONDO:equivalentTo", source="Orphanet:36234"}
+xref: ICD9:040.82 {source="MONDO:equivalentTo", source="MONDO:i2s", source="DOID:14115"}
+xref: MEDGEN:109414 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D012772 {source="MONDO:equivalentTo", source="DOID:14115"}
+xref: NCIT:C35498 {source="MONDO:equivalentTo", source="DOID:14115"}
+xref: NORD:1782 {source="MONDO:NORD"}
+xref: Orphanet:36234 {source="MONDO:equivalentTo"}
+xref: SCTID:18504008 {source="MONDO:equivalentTo", source="DOID:14115"}
+xref: UMLS:C0600327 {source="MEDGEN:109414", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0000315 {source="DOID:14115"} ! commensal bacterial infectious disease
+is_a: MONDO:0002254 {source="NCIT:C35498"} ! syndromic disease
+relationship: disease_has_feature HP:0000707 ! Abnormality of the nervous system
+relationship: disease_has_feature HP:0002615 ! Hypotension
+property_value: curated_content_resource "https://www.malacards.org/card/toxic_shock_syndrome" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:14115
+property_value: skos:exactMatch icd10cm:A48.3
+property_value: skos:exactMatch icd11.foundation:114886962
+property_value: skos:exactMatch MEDGEN:109414
+property_value: skos:exactMatch MESH:D012772
+property_value: skos:exactMatch NCIT:C35498
+property_value: skos:exactMatch Orphanet:36234
+property_value: skos:exactMatch SCTID:18504008
+property_value: skos:exactMatch UMLS:C0600327
+
+[Term]
+id: MONDO:0002050
+name: depressive disorder
+def: "A melancholy feeling of sadness and despair." [NCIT:C2982]
+subset: otar {source="MONDO:OTAR"}
+synonym: "depression" EXACT [NCIT:C2982]
+synonym: "melancholia" RELATED [MESH:D003866]
+synonym: "melancholias" RELATED [MESH:D003866]
+synonym: "syndrome, depressive" RELATED [MESH:D003866]
+synonym: "syndromes, depressive" RELATED [MESH:D003866]
+xref: DOID:1596 {source="MONDO:equivalentTo"}
+xref: ICD10CM:F32 {source="MONDO:equivalentTo"}
+xref: ICD9:311 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:4229 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D003866 {source="MONDO:equivalentTo"}
+xref: MFOMD:0000013
+xref: NCIT:C2982 {source="DOID:1596", source="MONDO:equivalentTo"}
+xref: SCTID:35489007 {source="MONDO:equivalentTo"}
+xref: UMLS:C0011581 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:4229"}
+is_a: MONDO:0005371 {source="DOID:1596", source="ICD10CM:F32", source="MESH:D003866", source="NCIT:C2982"} ! mood disorder
+property_value: curated_content_resource "https://www.malacards.org/card/depressive_disorder" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:1596
+property_value: skos:exactMatch icd10cm:F32
+property_value: skos:exactMatch MEDGEN:4229
+property_value: skos:exactMatch MESH:D003866
+property_value: skos:exactMatch NCIT:C2982
+property_value: skos:exactMatch SCTID:35489007
+property_value: skos:exactMatch UMLS:C0011581
+
+[Term]
+id: MONDO:0002105
+name: toxic megacolon
+def: "An acute form of megacolon, severe pathological dilatation of the colon. It is associated with clinical conditions such as ulcerative colitis; crohn disease; amebic dysentery; or clostridium enterocolitis." [MESH:D008532]
+xref: DOID:1770 {source="MONDO:equivalentTo"}
+xref: ICD10CM:K59.31 {source="MONDO:equivalentTo"}
+xref: icd11.foundation:1497870078 {source="MONDO:equivalentTo"}
+xref: ICD9:564.7 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:9940 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D008532 {source="DOID:1770", source="MONDO:equivalentTo"}
+xref: SCTID:28536002 {source="DOID:1770", source="MONDO:equivalentTo"}
+xref: UMLS:C0025162 {source="MEDGEN:9940", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0001273 {source="DOID:1770", source="MESH:D008532", source="icd11.foundation:1497870078"} ! megacolon
+property_value: curated_content_resource "https://www.malacards.org/card/toxic_megacolon" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: excluded_from_qc_check http://purl.obolibrary.org/obo/mondo/sparql/qc/general/qc-single-child.sparql
+property_value: skos:exactMatch DOID:1770
+property_value: skos:exactMatch icd10cm:K59.31
+property_value: skos:exactMatch icd11.foundation:1497870078
+property_value: skos:exactMatch MEDGEN:9940
+property_value: skos:exactMatch MESH:D008532
+property_value: skos:exactMatch SCTID:28536002
+property_value: skos:exactMatch UMLS:C0025162
+
+[Term]
+id: MONDO:0002280
+name: anemia
+def: "A reduction in the number of red blood cells, the amount of hemoglobin, and/or the volume of packed red blood cells. Clinically, anemia represents a reduction in the oxygen-transporting capacity of a designated volume of blood, resulting from an imbalance between blood loss (through hemorrhage or hemolysis) and blood production. Signs and symptoms of anemia may include pallor of the skin and mucous membranes, shortness of breath, palpitations of the heart, soft systolic murmurs, lethargy, and fatigability." [NCIT:C2869]
+subset: otar {source="MONDO:OTAR"}
+synonym: "anaemia (disease)" EXACT OMO:0003005 []
+synonym: "anemia" EXACT [DOID:2355, MONDO:ambiguous, NCIT:C2869]
+synonym: "anemia (disease)" EXACT [https://orcid.org/0000-0002-6601-2165]
+xref: DOID:2355 {source="MONDO:equivalentTo"}
+xref: HP:0001903 {source="MONDO:otherHierarchy"}
+xref: ICD9:285.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:285.9 {source="DOID:2355", source="MONDO:equivalentTo", source="MONDO:i2s"}
+xref: MEDGEN:1526 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D000740 {source="DOID:2355", source="MONDO:equivalentTo"}
+xref: NCIT:C2869 {source="DOID:2355", source="MONDO:equivalentTo"}
+xref: SCTID:271737000 {source="DOID:2355", source="MONDO:equivalentTo"}
+xref: UMLS:C0002871 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:1526"}
+is_a: MONDO:0005570 {source="DOID:2355", source="MESH:D000740", source="NCIT:C2869/inferred"} ! hematologic disorder
+relationship: disease_has_basis_in_disruption_of GO:0034101 ! erythrocyte homeostasis
+property_value: IAO:0000589 "anemia (disease)" xsd:string
+property_value: skos:exactMatch DOID:2355
+property_value: skos:exactMatch MEDGEN:1526
+property_value: skos:exactMatch MESH:D000740
+property_value: skos:exactMatch NCIT:C2869
+property_value: skos:exactMatch SCTID:271737000
+property_value: skos:exactMatch UMLS:C0002871
+
+[Term]
+id: MONDO:0002356
+name: pancreas disorder
+def: "A non-neoplastic or neoplastic disorder that affects the pancreas. Representative examples of non-neoplastic disorders include pancreatitis and pancreatic insufficiency. Representative examples of neoplastic disorders include cystadenomas, carcinomas, lymphomas, and neuroendocrine neoplasms." [NCIT:C26842]
+subset: otar {source="MONDO:OTAR"}
+subset: rare_grouping
+synonym: "disease of pancreas" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of pancreas" EXACT []
+synonym: "disease, pancreatic" RELATED [MESH:D010182]
+synonym: "diseases, pancreatic" RELATED [MESH:D010182]
+synonym: "disorder of pancreas" EXACT [MONDO:patterns/location_top]
+synonym: "pancreas disease" EXACT [DOID:26, MONDO:patterns/location]
+synonym: "pancreas disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+synonym: "pancreatic disease" RELATED [MESH:D010182]
+synonym: "pancreatic disorder" EXACT [NCIT:C26842]
+xref: DOID:26 {source="MONDO:equivalentTo"}
+xref: EFO:0009605 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD10CM:K86.9 {source="MONDO:equivalentTo"}
+xref: icd11.foundation:1726554290 {source="MONDO:equivalentTo"}
+xref: ICD9:577.8 {source="DOID:26"}
+xref: ICD9:577.9
+xref: MEDGEN:14583 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D010182 {source="MONDO:equivalentTo"}
+xref: NCIT:C26842 {source="MONDO:equivalentTo"}
+xref: SCTID:3855007 {source="MONDO:equivalentTo"}
+xref: UMLS:C0030286 {source="MONDO:equivalentTo", source="MEDGEN:14583", source="MONDO:MEDGEN"}
+is_a: MONDO:0004335 {source="NCIT:C26842"} ! digestive system disorder
+is_a: MONDO:0005151 {source="DOID:26"} ! endocrine system disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_location UBERON:0001264 ! pancreas
+relationship: disease_has_location UBERON:0001264 ! pancreas
+property_value: curated_content_resource "https://www.malacards.org/card/pancreas_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:26
+property_value: skos:exactMatch EFO:0009605
+property_value: skos:exactMatch icd10cm:K86.9
+property_value: skos:exactMatch icd11.foundation:1726554290
+property_value: skos:exactMatch MEDGEN:14583
+property_value: skos:exactMatch MESH:D010182
+property_value: skos:exactMatch NCIT:C26842
+property_value: skos:exactMatch SCTID:3855007
+property_value: skos:exactMatch UMLS:C0030286
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+property_value: terms:conformsTo location:top.yaml
+
+[Term]
+id: MONDO:0002909
+name: hyperglycemia
+def: "Abnormally high level of glucose in the blood." [NCIT:P378]
+xref: DOID:4195 {source="MONDO:equivalentTo"}
+xref: ICD9:790.6 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:5689 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D006943 {source="MONDO:equivalentTo", source="DOID:4195"}
+xref: SCTID:80394007 {source="MONDO:equivalentTo", source="DOID:4195"}
+xref: UMLS:C0020456 {source="MEDGEN:5689", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0002908 {source="DOID:4195", source="MESH:D006943", source="MONDO:Redundant"} ! glucose metabolism disease
+intersection_of: MONDO:0002908 ! glucose metabolism disease
+intersection_of: disease_has_feature HP:0003074 ! Hyperglycemia
+relationship: disease_has_feature HP:0003074 ! Hyperglycemia
+property_value: curated_content_resource "https://www.malacards.org/card/hyperglycemia" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:4195
+property_value: skos:exactMatch MEDGEN:5689
+property_value: skos:exactMatch MESH:D006943
+property_value: skos:exactMatch SCTID:80394007
+property_value: skos:exactMatch UMLS:C0020456
+
+[Term]
+id: MONDO:0003105
+name: prostate disorder
+def: "A disease involving the prostate gland." [https://orcid.org/0000-0002-6601-2165]
+subset: otar {source="MONDO:OTAR"}
+synonym: "disease of prostate gland" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of prostate gland" EXACT []
+synonym: "disorder of prostate gland" EXACT [MONDO:patterns/location_top]
+synonym: "prostate disease" EXACT [DOID:47, NCIT:C26865]
+synonym: "prostate disorder" EXACT [NCIT:C26865]
+synonym: "prostate gland disease" EXACT [MONDO:patterns/location]
+synonym: "prostate gland disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+xref: DOID:47 {source="MONDO:equivalentTo"}
+xref: EFO:0009602 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD9:602.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:602.9 {source="MONDO:equivalentTo", source="DOID:47", source="MONDO:i2s"}
+xref: MEDGEN:10964 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D011469 {source="MONDO:equivalentTo", source="DOID:47"}
+xref: NCIT:C26865 {source="MONDO:equivalentTo", source="DOID:47"}
+xref: SCTID:30281009 {source="MONDO:equivalentTo", source="DOID:47"}
+xref: UMLS:C0033575 {source="MEDGEN:10964", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0003150 {source="DOID:47", source="MESH:D011469", source="MONDO:Redundant", source="NCIT:C26865"} ! male reproductive system disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_location UBERON:0002367 ! prostate gland
+relationship: disease_has_location UBERON:0002367 ! prostate gland
+property_value: curated_content_resource "https://www.malacards.org/card/prostate_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:47
+property_value: skos:exactMatch EFO:0009602
+property_value: skos:exactMatch MEDGEN:10964
+property_value: skos:exactMatch MESH:D011469
+property_value: skos:exactMatch NCIT:C26865
+property_value: skos:exactMatch SCTID:30281009
+property_value: skos:exactMatch UMLS:C0033575
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+property_value: terms:conformsTo location:top.yaml
+
+[Term]
+id: MONDO:0003689
+name: familial hemolytic anemia
+def: "A congenital hemolytic anemia caused by defects of the erythrocyte membrane, enzyme deficiencies, or hemoglobinopathies." [NCIT:C34379]
+subset: doid_rare {source="DOID:589"}
+subset: gard_rare {source="GARD:0006167", source="MONDO:GARD"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "anaemia hemolytic congenital" RELATED OMO:0003005 []
+synonym: "anemia hemolytic congenital" RELATED [GARD:0006167]
+synonym: "congenital hemolytic anemia" EXACT [DOID:589, NCIT:C34379]
+synonym: "hereditary hemolytic anemia" EXACT [DOID:589, MONDO:patterns/hereditary, NCIT:C34379]
+xref: DOID:589 {source="MONDO:equivalentTo"}
+xref: GARD:0006167 {source="MONDO:GARD"}
+xref: ICD9:282 {source="DOID:589"}
+xref: ICD9:282.9 {source="DOID:589"}
+xref: MEDGEN:1919 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D000745 {source="DOID:589", source="MONDO:equivalentTo"}
+xref: NANDO:2100183 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NCIT:C34379 {source="DOID:589", source="MONDO:equivalentTo"}
+xref: SCTID:42601008 {source="DOID:589", source="MONDO:equivalentTo"}
+xref: UMLS:C0002881 {source="MEDGEN:1919", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0003664 {source="DOID:589", source="MESH:D000745", source="MONDO:Redundant", source="NCIT:C34379"} ! hemolytic anemia
+is_a: MONDO:0003847 ! hereditary disease
+intersection_of: MONDO:0003664 ! hemolytic anemia
+intersection_of: has_characteristic MONDO:0021152 ! inherited
+property_value: curated_content_resource "https://www.malacards.org/card/congenital_hemolytic_anemia" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/6167/congenital-hemolytic-anemia" xsd:anyURI {source="GARD:0006167"}
+property_value: skos:exactMatch DOID:589
+property_value: skos:exactMatch MEDGEN:1919
+property_value: skos:exactMatch MESH:D000745
+property_value: skos:exactMatch NCIT:C34379
+property_value: skos:exactMatch SCTID:42601008
+property_value: skos:exactMatch UMLS:C0002881
+
+[Term]
+id: MONDO:0003847
+name: hereditary disease
+def: "A disease that is caused by genetic modifications where those modifications are inherited from a parent's genome." [https://orcid.org/0000-0002-6601-2165]
+comment: Usage note: this is intended only for diseases with an inherited genetic etiology. Somatic genetic mutations are excluded. Some ontologies use the term 'genetic disease' in the sense of inherited disorders only, we are here careful to distinguish.
+subset: harrisons_view
+subset: otar {source="MONDO:OTAR"}
+subset: rare_grouping
+synonym: "genetic condition" BROAD []
+synonym: "genetic disease" BROAD []
+synonym: "genetic disorder" BROAD []
+synonym: "hereditary disease" EXACT [MONDO:patterns/hereditary, NCIT:C3101]
+synonym: "hereditary disease or disorder" EXACT [MONDO:patterns/hereditary]
+synonym: "hereditary diseases" EXACT [NCIT:C3101]
+synonym: "inherited disease" EXACT [NCIT:C3101]
+synonym: "inherited genetic disease" EXACT [https://github.com/monarch-initiative/mondo/issues/1758]
+synonym: "Mendelian disease" NARROW []
+synonym: "molecular disease" EXACT [NCIT:C3101]
+xref: DOID:630 {source="MONDO:equivalentTo"}
+xref: EFO:0000508 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD9:799.89 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:5527 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D030342 {source="EFO:0000508", source="MONDO:equivalentTo", source="DOID:630"}
+xref: NCIT:C3101 {source="EFO:0000508", source="MONDO:equivalentTo", source="DOID:630"}
+xref: SCTID:32895009 {source="MONDO:equivalentTo", source="DOID:630"}
+xref: UMLS:C0019247 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:5527"}
+is_a: MONDO:7770009 ! disease of genetic or genomic mechanism
+intersection_of: MONDO:0700096 ! human disease
+intersection_of: has_characteristic MONDO:0021152 ! inherited
+relationship: has_characteristic MONDO:0021152 ! inherited
+property_value: skos:exactMatch DOID:630
+property_value: skos:exactMatch EFO:0000508
+property_value: skos:exactMatch MEDGEN:5527
+property_value: skos:exactMatch MESH:D030342
+property_value: skos:exactMatch NCIT:C3101
+property_value: skos:exactMatch SCTID:32895009
+property_value: skos:exactMatch UMLS:C0019247
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/hereditary.yaml
+
+[Term]
+id: MONDO:0003900
+name: connective tissue disorder
+def: "A disease involving the connective tissue." [https://orcid.org/0000-0002-6601-2165]
+comment: Following clinical usage of the term 'connective tissue disorder' this grouping excludes some diseases affecting tissues classically considered to be connective tissue, such as bone.
+subset: harrisons_view
+subset: otar {source="MONDO:OTAR"}
+subset: rare_grouping
+synonym: "connective tissue disease" EXACT [DOID:65, MONDO:patterns/location, NCIT:C26729]
+synonym: "connective tissue disease or disorder" EXACT [MONDO:patterns/location]
+synonym: "connective tissue diseases" EXACT [NCIT:C26729]
+synonym: "connective tissue disorder" EXACT [DOID:65, NCIT:C26729]
+synonym: "connective tissue disorders" EXACT [NCIT:C26729]
+synonym: "disease of connective tissue" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of connective tissue" EXACT []
+synonym: "disease, connective tissue" EXACT []
+synonym: "disorder of connective tissue" EXACT [DOID:65, MONDO:patterns/location_top, NCIT:C26729]
+synonym: "primary disorder of connective tissue" EXACT [NCIT:C26729]
+synonym: "tissue disease, connective" EXACT []
+xref: DOID:65 {source="MONDO:equivalentTo"}
+xref: EFO:1001986 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: MEDGEN:1098 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D003240 {source="DOID:65", source="MONDO:equivalentTo"}
+xref: NANDO:2100172 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NCIT:C26729 {source="DOID:65", source="MONDO:equivalentTo"}
+xref: SCTID:105969002 {source="DOID:65", source="MONDO:equivalentTo"}
+xref: UMLS:C0009782 {source="MEDGEN:1098", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:7770006 ! disease by body system or component
+relationship: excluded_subClassOf MONDO:0002081 {source="DOID:65", source="https://orcid.org/0000-0001-5208-3432"} ! musculoskeletal system disorder
+property_value: curated_content_resource "https://www.malacards.org/card/connective_tissue_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/3570" xsd:anyURI
+property_value: skos:exactMatch DOID:65
+property_value: skos:exactMatch EFO:1001986
+property_value: skos:exactMatch MEDGEN:1098
+property_value: skos:exactMatch MESH:D003240
+property_value: skos:exactMatch NCIT:C26729
+property_value: skos:exactMatch SCTID:105969002
+property_value: skos:exactMatch UMLS:C0009782
+
+[Term]
+id: MONDO:0004298
+name: stomach disorder
+def: "A disease involving the stomach." [https://orcid.org/0000-0002-6601-2165]
+subset: otar {source="MONDO:OTAR"}
+subset: rare_grouping
+synonym: "disease of stomach" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of stomach" EXACT []
+synonym: "disorder of stomach" EXACT [icd11.foundation:1264914040, MONDO:patterns/location_top]
+synonym: "stomach disease" EXACT [DOID:76, MONDO:patterns/location]
+synonym: "stomach disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+synonym: "stomach disorder" EXACT [DOID:76, NCIT:C26886]
+xref: DOID:76 {source="MONDO:equivalentTo"}
+xref: EFO:0009608 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: icd11.foundation:1264914040 {source="https://orcid.org/0009-0001-6494-4831", source="MONDO:equivalentTo"}
+xref: ICD9:537.89 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:537.9 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:21329 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D013272 {source="DOID:76", source="MONDO:equivalentTo"}
+xref: NCIT:C26886 {source="DOID:76", source="MONDO:equivalentTo"}
+xref: SCTID:29384001 {source="DOID:76", source="MONDO:equivalentTo"}
+xref: UMLS:C0038354 {source="MEDGEN:21329", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0004335 {source="DOID:76", source="MESH:D013272", source="MONDO:Redundant", source="NCIT:C26886"} ! digestive system disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_location UBERON:0000945 ! stomach
+relationship: disease_has_location UBERON:0000945 ! stomach
+property_value: curated_content_resource "https://www.malacards.org/card/stomach_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:76
+property_value: skos:exactMatch EFO:0009608
+property_value: skos:exactMatch icd11.foundation:1264914040
+property_value: skos:exactMatch MEDGEN:21329
+property_value: skos:exactMatch MESH:D013272
+property_value: skos:exactMatch NCIT:C26886
+property_value: skos:exactMatch SCTID:29384001
+property_value: skos:exactMatch UMLS:C0038354
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+property_value: terms:conformsTo location:top.yaml
+
+[Term]
+id: MONDO:0004992
+name: cancer
+def: "A tumor composed of atypical neoplastic, often pleomorphic cells that invade other tissues. Malignant neoplasms often metastasize to distant anatomic sites and may recur after excision. The most common malignant neoplasms are carcinomas (adenocarcinomas or squamous cell carcinomas), Hodgkin and non-Hodgkin lymphomas, leukemias, melanomas, and sarcomas." [NCIT:C9305]
+subset: otar {source="MONDO:OTAR"}
+synonym: "CA" EXACT ABBREVIATION [NCIT:C9305]
+synonym: "cancer" EXACT [DOID:162, NCIT:C9305]
+synonym: "cell type cancer" EXACT [DOID:0050687, MONDO:0000404]
+synonym: "malignancy" EXACT [NCIT:C9305]
+synonym: "malignant growth" EXACT [NCIT:C9305]
+synonym: "malignant neoplasm" EXACT [DOID:162, NCIT:C9305]
+synonym: "malignant neoplasm (disease)" EXACT []
+synonym: "malignant neoplastic disease" EXACT [NCIT:C9305]
+synonym: "malignant tumor" EXACT [DOID:162, NCIT:C9305]
+synonym: "malignant tumour" EXACT OMO:0003005 []
+synonym: "MT" RELATED ABBREVIATION [ONCOTREE:MT]
+synonym: "neoplasm (disease), malignant" EXACT [MONDO:patterns/malignant]
+synonym: "neoplasm, malignant" EXACT [NCIT:C9305]
+xref: birnlex:406 {source="EFO:0000311"}
+xref: DOID:0050686 {source="MONDO:equivalentTo"}
+xref: DOID:0050687 {source="MONDO:equivalentTo"}
+xref: DOID:162 {source="MONDO:equivalentTo", source="EFO:0000311"}
+xref: ICD9:195.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:199 {source="DOID:162"}
+xref: ICD9:199.1 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICDO:8000/3 {source="NCIT:C9305"}
+xref: MEDGEN:14297 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: NCIT:C9305 {source="MONDO:equivalentTo", source="EFO:0000311", source="DOID:162"}
+xref: ONCOTREE:MT {source="MONDO:equivalentTo"}
+xref: SCTID:363346000 {source="MONDO:equivalentTo", source="DOID:162"}
+xref: UMLS:C0006826 {source="MONDO:equivalentTo", source="MEDGEN:14297", source="MONDO:MEDGEN"}
+is_a: MONDO:0005070 {source="DOID:0050686/inferred", source="DOID:0050687/inferred", source="DOID:162", source="EFO:0000311", source="MONDO:Redundant", source="NCIT:C9305/inferred"} ! neoplasm
+intersection_of: MONDO:0005070 ! neoplasm
+intersection_of: has_characteristic PATO:0002097 ! neoplastic, malignant
+disjoint_from: MONDO:0005165 ! benign neoplasm
+relationship: has_characteristic PATO:0002097 ! neoplastic, malignant
+property_value: curated_content_resource "https://www.malacards.org/card/cell_type_cancer" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:0050686
+property_value: skos:exactMatch DOID:0050687
+property_value: skos:exactMatch DOID:162
+property_value: skos:exactMatch MEDGEN:14297
+property_value: skos:exactMatch NCIT:C9305
+property_value: skos:exactMatch SCTID:363346000
+property_value: skos:exactMatch UMLS:C0006826
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/malignant.yaml
+
+[Term]
 id: MONDO:0005015
 name: diabetes mellitus
 def: "A metabolic disorder characterized by abnormally high blood sugar levels due to diminished production of insulin or insulin resistance/desensitization." [NCIT:P378]
@@ -239,6 +762,212 @@ property_value: skos:exactMatch MESH:D003920
 property_value: skos:exactMatch NCIT:C2985
 property_value: skos:exactMatch SCTID:73211009
 property_value: skos:exactMatch UMLS:C0011849
+
+[Term]
+id: MONDO:0005025
+name: endocarditis
+def: "Inflammation of the endocardium." [NCIT:C34582]
+subset: otar {source="MONDO:OTAR"}
+synonym: "endocarditis" EXACT [DOID:10314, MONDO:ambiguous, NCIT:C34582]
+synonym: "endocarditis (disease)" EXACT [https://orcid.org/0000-0002-6601-2165]
+synonym: "endocardium inflammation" EXACT [MONDO:patterns/inflammatory_disease_by_site]
+synonym: "inflammation of endocardium" EXACT []
+xref: DOID:10314 {source="MONDO:equivalentTo", source="EFO:0000465"}
+xref: EFO:0000465 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: HP:0100584 {source="MONDO:otherHierarchy"}
+xref: ICD9:421.9 {source="DOID:10314", source="EFO:0000465"}
+xref: ICD9:424.99 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:4940 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D004696 {source="DOID:10314", source="MONDO:equivalentTo", source="EFO:0000465"}
+xref: NCIT:C34582 {source="DOID:10314", source="MONDO:equivalentTo", source="EFO:0000465"}
+xref: SCTID:56819008 {source="DOID:10314", source="MONDO:equivalentTo", source="EFO:0000465"}
+xref: UMLS:C0014118 {source="MONDO:equivalentTo", source="MEDGEN:4940", source="MONDO:MEDGEN"}
+is_a: MONDO:0000470 {source="DOID:10314", source="MONDO:Redundant"} ! endocardium disorder
+is_a: MONDO:0024636 ! inflammation of heart layer
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_inflammation_site UBERON:0002165 ! endocardium
+relationship: disease_has_inflammation_site UBERON:0002165 ! endocardium
+property_value: curated_content_resource "https://www.malacards.org/card/endocarditis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000589 "endocarditis (disease)" xsd:string
+property_value: skos:exactMatch DOID:10314
+property_value: skos:exactMatch EFO:0000465
+property_value: skos:exactMatch MEDGEN:4940
+property_value: skos:exactMatch MESH:D004696
+property_value: skos:exactMatch NCIT:C34582
+property_value: skos:exactMatch SCTID:56819008
+property_value: skos:exactMatch UMLS:C0014118
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/inflammatory_disease_by_site.yaml
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/specific_infectious_disease_by_location.yaml
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/specific_inflammatory_disease_by_site.yaml
+
+[Term]
+id: MONDO:0005061
+name: lung adenocarcinoma
+def: "A carcinoma that arises from the lung and is characterized by the presence of malignant glandular epithelial cells. There is a male predilection with a male to female ratio of 2:1. Usually lung adenocarcinoma is asymptomatic and is identified through screening studies or as an incidental radiologic finding. If clinical symptoms are present they include shortness of breath, cough, hemoptysis, chest pain, and fever. Tobacco smoke is a known risk factor." [NCIT:C3512]
+subset: doid_rare {source="DOID:3910"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "adenocarcinoma of lung" EXACT [NCIT:C3512]
+synonym: "adenocarcinoma of the lung" EXACT [NCIT:C3512]
+synonym: "lung adenocarcinoma" EXACT [DOID:3910, MONDO:patterns/location, NCIT:C3512]
+synonym: "non-small cell lung adenocarcinoma" EXACT [MONDO:0005474]
+xref: DOID:3910 {source="EFO:0005288", source="EFO:0000571", source="MONDO:equivalentTo"}
+xref: EFO:0000571 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: MEDGEN:57744 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:C538231 {source="EFO:0000571", source="MONDO:equivalentTo", source="DOID:3910"}
+xref: NCIT:C3512 {source="EFO:0005288", source="EFO:0000571", source="MONDO:equivalentTo", source="DOID:3910"}
+xref: ONCOTREE:LUAD {source="MONDO:equivalentTo"}
+xref: Orphanet:415268 {source="MONDO:equivalentObsolete"}
+xref: SCTID:254626006 {source="EFO:0000571", source="MONDO:equivalentTo", source="DOID:3910"}
+xref: UMLS:C0152013 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:57744"}
+is_a: MONDO:0004970 {source="DOID:3910", source="EFO:0005288", source="MESH:C538231", source="MONDO:Redundant", source="NCIT:C3512/inferred"} ! adenocarcinoma
+is_a: MONDO:0005233 {source="DOID:3910", source="EFO:0005288", source="NCIT:C3512", source="ONCOTREE:LUAD"} ! non-small cell lung carcinoma
+intersection_of: MONDO:0004970 ! adenocarcinoma
+intersection_of: disease_has_location UBERON:0002048 ! lung
+property_value: curated_content_resource "https://www.malacards.org/card/lung_cancer_susceptibility_3" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/5742/lung-adenocarcinoma" xsd:anyURI {source="GARD:0005742"}
+property_value: skos:exactMatch DOID:3910
+property_value: skos:exactMatch EFO:0000571
+property_value: skos:exactMatch MEDGEN:57744
+property_value: skos:exactMatch MESH:C538231
+property_value: skos:exactMatch NCIT:C3512
+property_value: skos:exactMatch SCTID:254626006
+property_value: skos:exactMatch UMLS:C0152013
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/adenocarcinoma.yaml
+
+[Term]
+id: MONDO:0005070
+name: neoplasm
+def: "A benign or malignant tissue growth resulting from uncontrolled cell proliferation. Benign neoplastic cells resemble normal cells without exhibiting significant cytologic atypia, while malignant cells exhibit overt signs such as dysplastic features, atypical mitotic figures, necrosis, nuclear pleomorphism, and anaplasia. Representative examples of benign neoplasms include papillomas, cystadenomas, and lipomas; malignant neoplasms include carcinomas, sarcomas, lymphomas, and leukemias." [NCIT:C3262]
+subset: otar {source="MONDO:OTAR"}
+synonym: "cell process disease" BROAD DUBIOUS []
+synonym: "disease of cellular proliferation" EXACT [DOID:14566, MONDO:0002001]
+synonym: "neoplasia" EXACT [NCIT:C3262]
+synonym: "neoplasm" EXACT [DOID:14566, MONDO:ambiguous, NCIT:C3262]
+synonym: "neoplasm (disease)" EXACT [https://orcid.org/0000-0002-6601-2165]
+synonym: "neoplastic disease" EXACT [NCIT:C3262]
+synonym: "neoplastic growth" EXACT [NCIT:C3262]
+synonym: "other neoplasm" NARROW []
+synonym: "tumor" EXACT []
+synonym: "tumor disease" EXACT []
+synonym: "tumour" EXACT OMO:0003005 []
+synonym: "tumour disease" EXACT OMO:0003005 []
+xref: DOID:14566 {source="MONDO:equivalentTo"}
+xref: EFO:0000616 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: HP:0002664 {source="MONDO:otherHierarchy"}
+xref: ICD10CM:C00-D49 {source="https://github.com/monarch-initiative/mondo/issues/4536", source="MONDO:equivalentTo", source="https://orcid.org/0000-0001-5208-3432", source="https://orcid.org/0000-0002-4142-7153"}
+xref: ICD10CM:C7A-C7A {source="MONDO:mondoIsBroaderThanSource"}
+xref: ICD10CM:C7B-C7B {source="MONDO:mondoIsBroaderThanSource"}
+xref: ICD9:140-239 {source="EFO:0000616"}
+xref: ICD9:239.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:239.9 {source="MONDO:equivalentTo", source="MONDO:i2s"}
+xref: MEDGEN:10294 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D009369 {source="MONDO:equivalentTo", source="EFO:0000616"}
+xref: NCIT:C3262 {source="MONDO:equivalentTo", source="EFO:0000616"}
+xref: ONCOTREE:OTHER
+xref: SCTID:55342001 {source="MONDO:equivalentTo"}
+xref: UMLS:C0027651 {source="MEDGEN:10294", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0023370 {source="MONDO:Redundant", source="https://orcid.org/0000-0002-6601-2165"} ! neoplastic disease or syndrome
+disjoint_from: MONDO:0024291 ! vascular malformation
+property_value: IAO:0000589 "neoplasm (disease)" xsd:string
+property_value: skos:exactMatch DOID:14566
+property_value: skos:exactMatch EFO:0000616
+property_value: skos:exactMatch icd10cm:C00-D49
+property_value: skos:exactMatch MEDGEN:10294
+property_value: skos:exactMatch MESH:D009369
+property_value: skos:exactMatch NCIT:C3262
+property_value: skos:exactMatch SCTID:55342001
+property_value: skos:exactMatch UMLS:C0027651
+property_value: skos:narrowMatch icd10cm:C7A-C7A
+property_value: skos:narrowMatch icd10cm:C7B-C7B
+
+[Term]
+id: MONDO:0005093
+name: skin disorder
+def: "Any deviation from the normal structure or function of the skin or subcutaneous tissue that is manifested by a characteristic set of symptoms and signs." [NCIT:C3371]
+subset: otar {source="MONDO:OTAR"}
+subset: rare_grouping
+synonym: "cutaneous disorder" EXACT [NCIT:C3371]
+synonym: "dermatosis" NARROW [https://medical-dictionary.thefreedictionary.com/dermatosis]
+synonym: "disease of zone of skin" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of zone of skin" EXACT []
+synonym: "disorder of skin" EXACT [NCIT:C3371]
+synonym: "disorder of zone of skin" EXACT [MONDO:patterns/location_top]
+synonym: "genodermatosis" NARROW []
+synonym: "skin diseases and manifestations" EXACT [NCIT:C3371]
+synonym: "skin disorder" EXACT [NCIT:C3371]
+synonym: "zone of skin disease" EXACT [MONDO:patterns/location]
+synonym: "zone of skin disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+xref: DOID:37 {source="MONDO:equivalentTo", source="EFO:0000701"}
+xref: EFO:0000701 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD9:702 {source="DOID:37"}
+xref: ICD9:702.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:709.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:20777 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D012871 {source="DOID:37", source="MONDO:equivalentTo"}
+xref: NANDO:2100281 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NCIT:C3371 {source="DOID:37", source="MONDO:equivalentTo", source="EFO:0000701"}
+xref: SCTID:95320005 {source="DOID:37", source="MONDO:equivalentTo"}
+xref: UMLS:C0037274 {source="MEDGEN:20777", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0002051 {source="DOID:37", source="MONDO:Redundant"} ! integumentary system disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_location UBERON:0000014 ! zone of skin
+relationship: disease_has_location UBERON:0000014 ! zone of skin
+property_value: curated_content_resource "https://www.malacards.org/card/skin_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:37
+property_value: skos:exactMatch EFO:0000701
+property_value: skos:exactMatch MEDGEN:20777
+property_value: skos:exactMatch MESH:D012871
+property_value: skos:exactMatch NCIT:C3371
+property_value: skos:exactMatch SCTID:95320005
+property_value: skos:exactMatch UMLS:C0037274
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+property_value: terms:conformsTo location:top.yaml
+
+[Term]
+id: MONDO:0005136
+name: malaria
+def: "Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. Infection with malaria parasites may result in a wide variety of symptoms, ranging from absent or very mild symptoms to severe disease and even death. People who get malaria are typically very sick with high fevers, shaking chills, and flu-like illness. In general, malaria is a curable disease if diagnosed and treated promptly and correctly.Treatment depends on many factors including disease severity, the species of malaria parasite causing the infection and the part of the world in which the infection was acquired." [https://rarediseases.info.nih.gov/diseases/6961/malaria]
+subset: doid_rare {source="DOID:12365"}
+subset: gard_rare {source="GARD:0006961", source="MONDO:GARD"}
+subset: ordo_disorder {source="Orphanet:673"}
+subset: orphanet_rare {source="Orphanet:673"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+xref: DOID:12365 {source="EFO:0001068", source="MONDO:equivalentTo"}
+xref: EFO:0001068 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: GARD:0006961 {source="MONDO:GARD"}
+xref: ICD10CM:B53 {source="MONDO:equivalentTo", source="https://orcid.org/0000-0002-6601-2165"}
+xref: icd11.foundation:1439886552 {source="MONDO:equivalentTo"}
+xref: ICD9:084 {source="EFO:0001068", source="MONDO:equivalentTo", source="DOID:12365"}
+xref: ICD9:084.6 {source="DOID:12365"}
+xref: MedDRA:10025487 {source="Orphanet:673/e", source="Orphanet:673"}
+xref: MEDGEN:7443 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D008288 {source="EFO:0001068", source="Orphanet:673/e", source="MONDO:equivalentTo", source="DOID:12365", source="Orphanet:673"}
+xref: NCIT:C34797 {source="EFO:0001068", source="MONDO:equivalentTo", source="DOID:12365"}
+xref: Orphanet:673 {source="MONDO:equivalentTo", source="OMIM:611162"}
+xref: SCTID:61462000 {source="EFO:0001068", source="MONDO:equivalentTo", source="DOID:12365"}
+xref: UMLS:C0024530 {source="MEDGEN:7443", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0002428 {source="DOID:12365", source="ICD10CM:B53", source="MESH:D008288"} ! protozoa infectious disease
+is_a: MONDO:0044347 ! erythrocyte disorder
+is_a: MONDO:0100120 {source="https://www.who.int/news-room/fact-sheets/detail/vector-borne-diseases"} ! vector-borne disease
+relationship: disease_has_feature HP:0001903 {source="MONDO:Wikidata"} ! Anemia
+relationship: disease_has_feature MONDO:0002280 {source="MONDO:Wikidata"} ! anemia
+relationship: disease_has_infectious_agent NCBITaxon:5820 {source="MONDO:Wikidata"} ! Plasmodium <genus>
+property_value: curated_content_resource "https://www.malacards.org/card/malaria" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/6961/malaria" xsd:anyURI {source="GARD:0006961"}
+property_value: skos:closeMatch MEDDRA:10025487
+property_value: skos:exactMatch DOID:12365
+property_value: skos:exactMatch EFO:0001068
+property_value: skos:exactMatch icd10cm:B53
+property_value: skos:exactMatch icd11.foundation:1439886552
+property_value: skos:exactMatch MEDGEN:7443
+property_value: skos:exactMatch MESH:D008288
+property_value: skos:exactMatch NCIT:C34797
+property_value: skos:exactMatch Orphanet:673
+property_value: skos:exactMatch SCTID:61462000
+property_value: skos:exactMatch UMLS:C0024530
 
 [Term]
 id: MONDO:0005148
@@ -302,6 +1031,914 @@ property_value: skos:exactMatch SCTID:44054006
 property_value: skos:exactMatch UMLS:C0011860
 
 [Term]
+id: MONDO:0005154
+name: liver disorder
+def: "A disease involving the liver." [https://orcid.org/0000-0002-6601-2165]
+subset: otar {source="MONDO:OTAR"}
+synonym: "disease of liver" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of liver" EXACT []
+synonym: "disorder of liver" EXACT [DOID:409, MONDO:patterns/location_top]
+synonym: "hepatic disease" EXACT []
+synonym: "hepatic disorder" EXACT [DOID:409, NCIT:C3196]
+synonym: "liver and intrahepatic bile duct disorder" EXACT [NCIT:C3196]
+synonym: "liver disease" EXACT [DOID:409, icd11.foundation:1784240230, MONDO:patterns/location, NCIT:C3196]
+synonym: "liver disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+synonym: "liver disorder" EXACT [NCIT:C3196]
+xref: DOID:409 {source="EFO:0001421", source="MONDO:equivalentTo"}
+xref: EFO:0001421 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD10CM:K70-K77 {source="https://github.com/monarch-initiative/mondo/issues/4536", source="MONDO:equivalentTo", source="DOID:409", source="https://orcid.org/0000-0001-5208-3432", source="https://orcid.org/0000-0002-4142-7153"}
+xref: icd11.foundation:1784240230 {source="https://orcid.org/0009-0001-6494-4831", source="MONDO:equivalentTo"}
+xref: ICD9:573.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:573.9 {source="EFO:0001421", source="MONDO:equivalentTo", source="MONDO:i2s", source="DOID:409"}
+xref: MEDGEN:893061 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D008107 {source="EFO:0001421", source="MONDO:equivalentTo", source="DOID:409"}
+xref: NCIT:C3196 {source="EFO:0001421", source="MONDO:equivalentTo", source="DOID:409"}
+xref: SCTID:235856003 {source="EFO:0001421", source="MONDO:equivalentTo", source="DOID:409"}
+xref: UMLS:C4021780 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:893061"}
+is_a: MONDO:0002515 {source="DOID:409", source="MONDO:Redundant", source="NCIT:C3196"} ! hepatobiliary disorder
+is_a: MONDO:0005151 ! endocrine system disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_location UBERON:0002107 ! liver
+relationship: disease_has_location UBERON:0002107 ! liver
+property_value: curated_content_resource "https://www.malacards.org/card/liver_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:409
+property_value: skos:exactMatch EFO:0001421
+property_value: skos:exactMatch icd10cm:K70-K77
+property_value: skos:exactMatch icd11.foundation:1784240230
+property_value: skos:exactMatch MEDGEN:893061
+property_value: skos:exactMatch MESH:D008107
+property_value: skos:exactMatch NCIT:C3196
+property_value: skos:exactMatch SCTID:235856003
+property_value: skos:exactMatch UMLS:C4021780
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+property_value: terms:conformsTo location:top.yaml
+
+[Term]
+id: MONDO:0005240
+name: kidney disorder
+def: "A disease involving the kidney." [https://orcid.org/0000-0002-6601-2165]
+subset: clingen {source="MONDO:CLINGEN"}
+subset: otar {source="MONDO:OTAR"}
+synonym: "disease of kidney" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of kidney" EXACT []
+synonym: "disorder of kidney" EXACT [MONDO:patterns/location_top]
+synonym: "kidney disease" EXACT [DOID:557, MONDO:patterns/location, NCIT:C3149]
+synonym: "kidney disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+synonym: "kidney disorder" EXACT [NCIT:C3149]
+synonym: "renal disease" EXACT [NCIT:C3149]
+synonym: "renal disorder" EXACT [NCIT:C3149]
+xref: DOID:557 {source="MONDO:equivalentTo", source="EFO:0003086"}
+xref: EFO:0003086 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD9:583.81 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:9635 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D007674 {source="DOID:557", source="MONDO:equivalentTo", source="EFO:0003086"}
+xref: NCIT:C3149 {source="DOID:557", source="MONDO:equivalentTo", source="EFO:0003086"}
+xref: SCTID:90708001 {source="DOID:557", source="MONDO:equivalentTo", source="EFO:0003086"}
+xref: UMLS:C0022658 {source="MEDGEN:9635", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0002118 {source="DOID:557", source="MESH:D007674", source="MONDO:Redundant", source="NCIT:C3149"} ! urinary system disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_location UBERON:0002113 ! kidney
+relationship: curated_content_resource https://search.clinicalgenome.org/kb/conditions/MONDO:0005240 {source="MONDO:CLINGEN"}
+relationship: disease_has_location UBERON:0002113 ! kidney
+property_value: curated_content_resource "https://www.malacards.org/card/kidney_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:557
+property_value: skos:exactMatch EFO:0003086
+property_value: skos:exactMatch MEDGEN:9635
+property_value: skos:exactMatch MESH:D007674
+property_value: skos:exactMatch NCIT:C3149
+property_value: skos:exactMatch SCTID:90708001
+property_value: skos:exactMatch UMLS:C0022658
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+property_value: terms:conformsTo location:top.yaml
+
+[Term]
+id: MONDO:0005275
+name: lung disorder
+def: "A disease involving the lung." [https://orcid.org/0000-0002-6601-2165]
+subset: otar {source="MONDO:OTAR"}
+synonym: "disease of lung" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of lung" EXACT []
+synonym: "disorder of lung" EXACT [MONDO:patterns/location_top, NCIT:C3198]
+synonym: "lung disease" EXACT [DOID:850, MONDO:patterns/location]
+synonym: "lung disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+synonym: "lung disorder" EXACT [NCIT:C3198]
+synonym: "lung disorders" EXACT [NCIT:C3198]
+synonym: "pulmonary disease" EXACT [NCIT:C3198]
+synonym: "pulmonary diseases" EXACT [NCIT:C3198]
+synonym: "pulmonary disorder" EXACT [NCIT:C3198]
+synonym: "pulmonary disorders" EXACT [NCIT:C3198]
+xref: DOID:850 {source="MONDO:equivalentTo", source="EFO:0003818"}
+xref: EFO:0003818 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD9:518.89 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:7399 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D008171 {source="MONDO:equivalentTo", source="EFO:0003818", source="DOID:850"}
+xref: NCIT:C3198 {source="MONDO:equivalentTo", source="DOID:850"}
+xref: SCTID:19829001 {source="MONDO:equivalentTo", source="DOID:850"}
+xref: UMLS:C0024115 {source="MEDGEN:7399", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0000270 {source="DOID:850", source="MONDO:Redundant"} ! lower respiratory tract disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_location UBERON:0002048 ! lung
+relationship: disease_has_location UBERON:0002048 ! lung
+property_value: curated_content_resource "https://www.malacards.org/card/lung_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:850
+property_value: skos:exactMatch EFO:0003818
+property_value: skos:exactMatch MEDGEN:7399
+property_value: skos:exactMatch MESH:D008171
+property_value: skos:exactMatch NCIT:C3198
+property_value: skos:exactMatch SCTID:19829001
+property_value: skos:exactMatch UMLS:C0024115
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+property_value: terms:conformsTo location:top.yaml
+
+[Term]
+id: MONDO:0005292
+name: colitis
+def: "Inflammation of the colon." [NCIT:P378]
+subset: otar {source="MONDO:OTAR"}
+synonym: "colitis" EXACT [DOID:0060180, MONDO:ambiguous, NCIT:C26723]
+synonym: "colitis (disease)" EXACT [https://orcid.org/0000-0002-6601-2165]
+synonym: "colon inflammation" EXACT [icd11.foundation:1870792958, MONDO:patterns/inflammatory_disease_by_site]
+synonym: "inflammation of colon" EXACT [icd11.foundation:1870792958]
+xref: DOID:0060180 {source="EFO:0003872", source="MONDO:equivalentTo"}
+xref: EFO:0003872 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: HP:0002583 {source="MONDO:otherHierarchy"}
+xref: icd11.foundation:1870792958 {source="https://orcid.org/0009-0001-6494-4831", source="MONDO:equivalentTo"}
+xref: ICD9:558.9 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:40385 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D003092 {source="EFO:0003872", source="MONDO:equivalentTo", source="DOID:0060180"}
+xref: NCIT:C26723 {source="EFO:0003872", source="MONDO:equivalentTo", source="DOID:0060180"}
+xref: SCTID:64226004 {source="EFO:0003872", source="MONDO:equivalentTo", source="DOID:0060180"}
+xref: UMLS:C0009319 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:40385"}
+is_a: MONDO:0002269 ! gastroenteritis
+is_a: MONDO:0003409 {source="MESH:D003092", source="MONDO:Redundant"} ! colonic disorder
+is_a: MONDO:0005265 {source="DOID:0060180"} ! inflammatory bowel disease
+intersection_of: MONDO:0000001 {source="EFO:0000784"} ! disease
+intersection_of: disease_has_inflammation_site UBERON:0001155 {source="EFO:0000784"} ! colon
+relationship: disease_has_inflammation_site UBERON:0001155 ! colon
+property_value: curated_content_resource "https://www.malacards.org/card/colitis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000589 "colitis (disease)" xsd:string
+property_value: skos:exactMatch DOID:0060180
+property_value: skos:exactMatch EFO:0003872
+property_value: skos:exactMatch icd11.foundation:1870792958
+property_value: skos:exactMatch MEDGEN:40385
+property_value: skos:exactMatch MESH:D003092
+property_value: skos:exactMatch NCIT:C26723
+property_value: skos:exactMatch SCTID:64226004
+property_value: skos:exactMatch UMLS:C0009319
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/inflammatory_disease_by_site.yaml
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/specific_infectious_disease_by_location.yaml
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/specific_inflammatory_disease_by_site.yaml
+
+[Term]
+id: MONDO:0005328
+name: eye disorder
+def: "A non-neoplastic or neoplastic disorder that affects the eye. Representative examples include conjunctivitis, glaucoma, cataract, conjunctival squamous cell carcinoma, uveal melanoma, and retinoblastoma." [NCIT:C26767]
+subset: otar {source="MONDO:OTAR"}
+synonym: "disease of eye" EXACT [MONDO:patterns/location_top]
+synonym: "disease of eyeball of camera-type eye" EXACT [MONDO:design_pattern, MONDO:patterns/location_top]
+synonym: "disease or disorder of eyeball of camera-type eye" EXACT []
+synonym: "disorder of eye" EXACT [MONDO:patterns/location_top]
+synonym: "disorder of eyeball of camera-type eye" EXACT [MONDO:design_pattern, MONDO:patterns/location_top]
+synonym: "eye disease" EXACT [DOID:5614, MONDO:patterns/location, NCIT:C26767]
+synonym: "eye disorder" EXACT [NCIT:C26767]
+synonym: "eyeball of camera-type eye disease" EXACT [MONDO:design_pattern]
+synonym: "eyeball of camera-type eye disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+synonym: "globe disease" EXACT [DOID:1242, MONDO:0001524]
+xref: DOID:1242 {source="MONDO:equivalentTo"}
+xref: DOID:5614 {source="MONDO:equivalentTo", source="EFO:0003966"}
+xref: EFO:0003966 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD9:360 {source="DOID:5614"}
+xref: ICD9:360.29 {source="DOID:1242"}
+xref: ICD9:360.89 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:360.9 {source="DOID:5614", source="MONDO:equivalentTo", source="MONDO:i2s"}
+xref: ICD9:379.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:379.90 {source="DOID:5614", source="MONDO:equivalentTo", source="MONDO:i2s"}
+xref: MEDGEN:5092 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D005128 {source="DOID:5614", source="MONDO:equivalentTo"}
+xref: NCIT:C26767 {source="DOID:5614", source="MONDO:equivalentTo"}
+xref: SCTID:371405004 {source="DOID:5614", source="MONDO:equivalentTo"}
+xref: UMLS:C0015397 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:5092"}
+is_a: MONDO:0002022 {source="DOID:5614", source="MONDO:Redundant"} ! disorder of orbital region
+is_a: MONDO:0024458 ! disorder of visual system
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_location UBERON:0010230 ! eyeball of camera-type eye
+relationship: disease_has_location UBERON:0000019 {source="NCIT:C26767"} ! camera-type eye
+relationship: disease_has_location UBERON:0010230 ! eyeball of camera-type eye
+property_value: curated_content_resource "https://www.malacards.org/card/blood_group_globoside_system" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: curated_content_resource "https://www.malacards.org/card/eye_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/5166" xsd:anyURI
+property_value: skos:exactMatch DOID:1242
+property_value: skos:exactMatch DOID:5614
+property_value: skos:exactMatch EFO:0003966
+property_value: skos:exactMatch MEDGEN:5092
+property_value: skos:exactMatch MESH:D005128
+property_value: skos:exactMatch NCIT:C26767
+property_value: skos:exactMatch SCTID:371405004
+property_value: skos:exactMatch UMLS:C0015397
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+property_value: terms:conformsTo location:top.yaml
+
+[Term]
+id: MONDO:0005336
+name: myopathy
+def: "A disease of the muscle in which the muscle fibers do not function properly. This results in muscular weakness." [Wikipedia:Myopathy]
+comment: Editor note: TODO check this, relationship to myotonic disorder/syndrome, also check HP definition
+subset: otar {source="MONDO:OTAR"}
+xref: DOID:423 {source="EFO:0004145", source="MONDO:equivalentTo"}
+xref: EFO:0004145 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: icd11.foundation:1870184184 {source="MONDO:equivalentTo"}
+xref: ICD9:359.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:359.9 {source="DOID:423", source="MONDO:equivalentTo", source="MONDO:i2s"}
+xref: ICD9:728.3 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:10135 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: NCIT:C101216 {source="EFO:0004145", source="DOID:423", source="MONDO:equivalentTo"}
+xref: SCTID:129565002 {source="DOID:423", source="MONDO:equivalentTo"}
+xref: UMLS:C0026848 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:10135"}
+is_a: MONDO:0020120 {source="DOID:423", source="MONDO:Entailed", source="MONDO:Redundant"} ! skeletal muscle disorder
+intersection_of: MONDO:0003939 ! muscle tissue disorder
+intersection_of: disease_has_basis_in_dysfunction_of GO:0043292 ! contractile muscle fiber
+relationship: disease_has_basis_in_dysfunction_of GO:0043292 ! contractile muscle fiber
+relationship: disease_has_feature HP:0003198 ! Myopathy
+property_value: curated_content_resource "https://www.malacards.org/card/myopathy" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:423
+property_value: skos:exactMatch EFO:0004145
+property_value: skos:exactMatch icd11.foundation:1870184184
+property_value: skos:exactMatch MEDGEN:10135
+property_value: skos:exactMatch NCIT:C101216
+property_value: skos:exactMatch SCTID:129565002
+property_value: skos:exactMatch UMLS:C0026848
+
+[Term]
+id: MONDO:0005385
+name: vascular disorder
+def: "A general term used to describe any disease affecting blood vessels]. It includes vascular abnormalities caused by degenerative, metabolic and inflammatory conditions, embolic diseases, coagulative disorders, and functional disorders such as posteri or reversible encephalopathy syndrome." [https://doi.org/10.1007/978-3-540-78785-3_7]
+comment: The etiology of vasculopathy is generally unknown and the condition is frequently not pathologically proven. Vasculitis, on the other hand, is a more specific term and is defined as inflammation of the wall of a blood vessel. However, the term vasculopathy is also used for “vasculitis” that has not been pathologically established.
+subset: otar {source="MONDO:OTAR"}
+subset: rare_grouping
+synonym: "disease of vasculature" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of vasculature" EXACT []
+synonym: "disorder of vasculature" EXACT [MONDO:patterns/location_top]
+synonym: "vascular disorder" EXACT [NCIT:C35117]
+synonym: "vasculature disease" EXACT [MONDO:patterns/location]
+synonym: "vasculature disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+synonym: "vasculopathy" RELATED [https://doi.org/10.1007/978-3-540-78785-3_7, https://orcid.org/0000-0002-0736-9199]
+xref: DOID:178 {source="MONDO:equivalentTo", source="EFO:0004264"}
+xref: EFO:0004264 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD10CM:I00-I99 {source="MONDO:mondoIsNarrowerThanSource", source="https://github.com/monarch-initiative/mondo/issues/4536", source="https://orcid.org/0000-0002-5002-8648", source="https://orcid.org/0000-0001-5208-3432", source="https://orcid.org/0000-0002-4142-7153"}
+xref: ICD10CM:I70-I79 {source="https://github.com/monarch-initiative/mondo/issues/4536", source="MONDO:equivalentTo", source="https://orcid.org/0000-0001-5208-3432", source="https://orcid.org/0000-0002-4142-7153"}
+xref: ICD9:442.9 {source="DOID:178"}
+xref: MEDGEN:22621 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D014652 {source="MONDO:equivalentTo", source="DOID:178", source="EFO:0004264"}
+xref: NANDO:2100294 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NCIT:C35117 {source="MONDO:equivalentTo", source="DOID:178"}
+xref: SCTID:27550009 {source="MONDO:equivalentTo", source="DOID:178"}
+xref: UMLS:C0042373 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:22621"}
+is_a: MONDO:0004995 {source="DOID:178", source="EFO:0004264", source="MESH:D014652", source="MONDO:Redundant", source="NCIT:C35117"} ! cardiovascular disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_location UBERON:0002049 ! vasculature
+relationship: disease_has_location UBERON:0002049 ! vasculature
+relationship: disease_has_location UBERON:0007798 {source="NCIT:C35117"} ! vascular system
+property_value: curated_content_resource "https://www.malacards.org/card/vascular_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/3602" xsd:anyURI
+property_value: skos:broadMatch icd10cm:I00-I99
+property_value: skos:exactMatch DOID:178
+property_value: skos:exactMatch EFO:0004264
+property_value: skos:exactMatch icd10cm:I70-I79
+property_value: skos:exactMatch MEDGEN:22621
+property_value: skos:exactMatch MESH:D014652
+property_value: skos:exactMatch NCIT:C35117
+property_value: skos:exactMatch SCTID:27550009
+property_value: skos:exactMatch UMLS:C0042373
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+property_value: terms:conformsTo location:top.yaml
+
+[Term]
+id: MONDO:0005459
+name: human African trypanosomiasis
+alt_id: MONDO:0018073
+def: "A parasitic disorder caused by protozoa of the Trypanosoma brucei species. It is transmitted by flies and is endemic in various regions of Sub-Saharan Africa. Signs and symptoms include fever, joint pain, headache, and significant swelling of the lymph nodes. If left untreated, the parasitic infection causes anemia, heart, kidney, and endocrine failure, and neurologic damage. Subsequently patients develop confusion, disruption of the sleep cycle, and mental deterioration. The infection may lead to coma and death." [NCIT:P378]
+subset: doid_rare {source="DOID:10112"}
+subset: gard_rare {source="GARD:0007826", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:3385"}
+subset: orphanet_rare {source="Orphanet:3385"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "Africam sleeping sickness" EXACT [https://orcid.org/0000-0002-6601-2165]
+synonym: "African trypanosomiasis" EXACT [DOID:10112, MTH:NOCODE, NCIT:C84541, Orphanet:3385]
+synonym: "sleeping sickness" EXACT [DOID:10112, NCIT:C84541, Orphanet:3385]
+xref: DOID:10112 {source="EFO:0005225", source="MONDO:equivalentTo"}
+xref: EFO:0005225 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: GARD:0007826 {source="MONDO:GARD"}
+xref: ICD9:086.5 {source="MONDO:equivalentTo", source="MONDO:i2s", source="DOID:10112"}
+xref: MedDRA:10001461 {source="Orphanet:3385/e", source="Orphanet:3385"}
+xref: MEDGEN:21714 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D014353 {source="MONDO:relatedTo", source="Orphanet:3385/e", source="Orphanet:3385", source="DOID:10112"}
+xref: NCIT:C84541 {source="EFO:0005225", source="MONDO:equivalentTo", source="DOID:10112"}
+xref: Orphanet:3385 {source="MONDO:equivalentTo"}
+xref: SCTID:27031003 {source="EFO:0005225", source="MONDO:equivalentTo", source="DOID:10112"}
+xref: UMLS:C0041228 {source="MEDGEN:21714", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0000940 {source="DOID:10112", source="EFO:0005225"} ! trypanosomiasis
+is_a: MONDO:0100120 {source="https://www.who.int/news-room/fact-sheets/detail/vector-borne-diseases"} ! vector-borne disease
+relationship: disease_has_feature HP:0001903 {source="MONDO:Wikidata"} ! Anemia
+relationship: disease_has_feature HP:0002315 {source="MONDO:Wikidata"} ! Headache
+relationship: disease_has_feature MONDO:0002280 {source="MONDO:Wikidata"} ! anemia
+relationship: disease_has_infectious_agent NCBITaxon:5691 {source="MONDO:Wikidata"} ! Trypanosoma brucei
+property_value: curated_content_resource "https://www.malacards.org/card/sleeping_sickness" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:closeMatch MEDDRA:10001461
+property_value: skos:exactMatch DOID:10112
+property_value: skos:exactMatch EFO:0005225
+property_value: skos:exactMatch MEDGEN:21714
+property_value: skos:exactMatch NCIT:C84541
+property_value: skos:exactMatch Orphanet:3385
+property_value: skos:exactMatch SCTID:27031003
+property_value: skos:exactMatch UMLS:C0041228
+property_value: skos:relatedMatch MESH:D014353
+
+[Term]
+id: MONDO:0005558
+name: ovarian disorder
+def: "A disease involving the ovary." [https://orcid.org/0000-0002-6601-2165]
+subset: otar {source="MONDO:OTAR"}
+synonym: "disease of ovary" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of ovary" EXACT []
+synonym: "disorder of ovary" EXACT [MONDO:patterns/location_top]
+synonym: "ovarian disease" EXACT [DOID:1100, NCIT:C26841]
+synonym: "ovarian disorder" EXACT [NCIT:C26841]
+synonym: "ovary disease" EXACT [MONDO:patterns/location]
+synonym: "ovary disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+xref: DOID:1100 {source="MONDO:equivalentTo", source="EFO:0005771"}
+xref: EFO:0005771 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: MEDGEN:892314 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D010049 {source="DOID:1100", source="MONDO:equivalentTo"}
+xref: NCIT:C26841 {source="DOID:1100", source="MONDO:equivalentTo", source="EFO:0005771"}
+xref: SCTID:5552004 {source="DOID:1100", source="MONDO:equivalentTo"}
+xref: UMLS:C4021818 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:892314"}
+is_a: MONDO:0002259 {source="DOID:1100", source="MESH:D010049", source="MONDO:Redundant"} ! gonadal disorder
+is_a: MONDO:0002263 {source="DOID:1100", source="MESH:D010049/inferred", source="MONDO:Redundant", source="NCIT:C26841"} ! female reproductive system disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_location UBERON:0000992 ! ovary
+relationship: disease_has_location UBERON:0000992 ! ovary
+property_value: skos:exactMatch DOID:1100
+property_value: skos:exactMatch EFO:0005771
+property_value: skos:exactMatch MEDGEN:892314
+property_value: skos:exactMatch MESH:D010049
+property_value: skos:exactMatch NCIT:C26841
+property_value: skos:exactMatch SCTID:5552004
+property_value: skos:exactMatch UMLS:C4021818
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+property_value: terms:conformsTo location:top.yaml
+
+[Term]
+id: MONDO:0005559
+name: neurodegenerative disease
+def: "A disorder of the central nervous system characterized by gradual and progressive loss of neural tissue and neurologic function." [NCIT:C4802]
+comment: Editor notes: DO treats this as two diseases
+subset: merged_class
+subset: otar {source="MONDO:OTAR"}
+synonym: "brain degeneration" EXACT []
+synonym: "central nervous system degenerative disorder" EXACT [MONDO:patterns/location, NCIT:C4802]
+synonym: "central nervous system neurodegenerative disorder" EXACT [NCIT:C4802]
+synonym: "cerebral degeneration disease" NARROW [MONDO:0001963]
+synonym: "degenerative disease" BROAD []
+synonym: "degenerative disorder of central nervous system" EXACT [MONDO:design_pattern]
+xref: DOID:1289 {source="EFO:0005772", source="MONDO:equivalentTo"}
+xref: EFO:0005772 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD9:349.89 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:17999 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D019636 {source="EFO:0005772", source="DOID:1289", source="MONDO:equivalentTo"}
+xref: NCIT:C4802 {source="EFO:0005772", source="MONDO:equivalentTo"}
+xref: SCTID:80690008 {source="MONDO:equivalentTo"}
+xref: UMLS:C0027746 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:17999"}
+is_a: MONDO:0002602 {source="DOID:1289", source="https://github.com/monarch-initiative/mondo/issues/528", source="https://orcid.org/0000-0001-5208-3432"} ! central nervous system disorder
+relationship: disease_has_major_feature HP:0007313 ! Cerebral degeneration
+property_value: skos:exactMatch DOID:1289
+property_value: skos:exactMatch EFO:0005772
+property_value: skos:exactMatch MEDGEN:17999
+property_value: skos:exactMatch MESH:D019636
+property_value: skos:exactMatch NCIT:C4802
+property_value: skos:exactMatch SCTID:80690008
+property_value: skos:exactMatch UMLS:C0027746
+
+[Term]
+id: MONDO:0005560
+name: brain disorder
+def: "A disease affecting the brain or part of the brain." [EFO:0005774]
+comment: Editor note: NCIT has different classes for brain disease and encephalopathy
+subset: otar {source="MONDO:OTAR"}
+synonym: "brain disease" EXACT [DOID:936, MONDO:patterns/location]
+synonym: "brain disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+synonym: "disease of brain" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of brain" EXACT []
+synonym: "disorder of brain" EXACT [MONDO:patterns/location_top]
+synonym: "encephalopathy" NARROW []
+xref: DOID:936 {source="EFO:0005774", source="MONDO:equivalentTo"}
+xref: EFO:0005774 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD9:348.3 {source="DOID:936", source="MONDO:equivalentTo", source="MONDO:i2s"}
+xref: ICD9:348.30 {source="DOID:936", source="MONDO:equivalentTo", source="MONDO:i2s"}
+xref: ICD9:348.8 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:348.9 {source="DOID:936", source="MONDO:equivalentTo", source="MONDO:i2s"}
+xref: MEDGEN:14214 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D001927 {source="DOID:936", source="MONDO:equivalentTo"}
+xref: NCIT:C96413 {source="DOID:936", source="MONDO:equivalentTo"}
+xref: SCTID:81308009 {source="DOID:936", source="MONDO:equivalentTo"}
+xref: UMLS:C0006111 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:14214"}
+is_a: MONDO:0002602 {source="DOID:936", source="MESH:D001927", source="MONDO:Redundant", source="NCIT:C26920/inferred"} ! central nervous system disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_location UBERON:0000955 ! brain
+relationship: disease_has_location UBERON:0000955 ! brain
+property_value: skos:exactMatch DOID:936
+property_value: skos:exactMatch EFO:0005774
+property_value: skos:exactMatch MEDGEN:14214
+property_value: skos:exactMatch MESH:D001927
+property_value: skos:exactMatch NCIT:C96413
+property_value: skos:exactMatch SCTID:81308009
+property_value: skos:exactMatch UMLS:C0006111
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+property_value: terms:conformsTo location:top.yaml
+
+[Term]
+id: MONDO:0005595
+name: laryngeal squamous cell carcinoma
+def: "A squamous cell carcinoma that arises from the larynx. It is the most common histologic type of laryngeal carcinoma. It can arise from the glottis, supraglottic area, or it can be transglottic. Glottic squamous cell carcinoma is the most frequent laryngeal carcinoma in the United States. The symptoms, clinical behavior and the prognosis depend on the site of origin within the larynx." [NCIT:C4044]
+subset: gard_rare {source="GARD:0017908", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:494550"}
+subset: orphanet_rare {source="Orphanet:494550"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "epidermoid carcinoma of larynx" EXACT [NCIT:C4044]
+synonym: "epidermoid carcinoma of the larynx" EXACT [DOID:2876, NCIT:C4044]
+synonym: "laryngeal epidermoid carcinoma" EXACT [NCIT:C4044]
+synonym: "laryngeal squamous cell carcinoma" EXACT [DOID:2876, NCIT:C4044]
+synonym: "laryngeal throat squamous cell cancer" EXACT [NCIT:C4044]
+synonym: "larynx epidermoid carcinoma" EXACT [NCIT:C4044]
+synonym: "larynx squamous cell carcinoma" EXACT [MONDO:patterns/location, NCIT:C4044]
+synonym: "LXSC" RELATED ABBREVIATION [ONCOTREE:LXSC]
+synonym: "squamous cell carcinoma of larynx" EXACT [DOID:2876, NCIT:C4044]
+synonym: "squamous cell carcinoma of the larynx" EXACT [NCIT:C4044, Orphanet:494550]
+xref: DOID:2876 {source="MONDO:equivalentTo", source="EFO:0006352"}
+xref: EFO:0006352 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: GARD:0017908 {source="MONDO:GARD"}
+xref: MEDGEN:83630 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: NCIT:C4044 {source="MONDO:equivalentTo", source="DOID:2876", source="MONDO:exact-label-match", source="EFO:0006352"}
+xref: ONCOTREE:LXSC {source="MONDO:equivalentTo"}
+xref: Orphanet:494550 {source="MONDO:equivalentTo"}
+xref: SCTID:405822008 {source="MONDO:equivalentTo", source="DOID:2876", source="EFO:0006352"}
+xref: UMLS:C0280324 {source="MEDGEN:83630", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0002358 {source="DOID:2876", source="MONDO:Redundant", source="NCIT:C4044"} ! laryngeal carcinoma
+is_a: MONDO:0010150 {source="EFO:0006352", source="NCIT:C4044", source="ONCOTREE:LXSC"} ! head and neck squamous cell carcinoma
+intersection_of: MONDO:0005096 ! squamous cell carcinoma
+intersection_of: disease_has_location UBERON:0001737 ! larynx
+relationship: excluded_subClassOf MONDO:0020035 {source="Orphanet:494550", source="https://orcid.org/0000-0001-5208-3432"} ! obsolete rare otorhinolaryngologic tumor
+property_value: curated_content_resource "https://www.malacards.org/card/laryngeal_squamous_cell_carcinoma" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:2876
+property_value: skos:exactMatch EFO:0006352
+property_value: skos:exactMatch MEDGEN:83630
+property_value: skos:exactMatch NCIT:C4044
+property_value: skos:exactMatch Orphanet:494550
+property_value: skos:exactMatch SCTID:405822008
+property_value: skos:exactMatch UMLS:C0280324
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/squamous_cell_carcinoma.yaml
+
+[Term]
+id: MONDO:0005725
+name: cyclosporiasis
+def: "A protozoan infection that is caused by Cyclospora cayetanensis, which is most commonly acquired from contaminated food or water, and which is characterized by watery diarrhea and abdominal pain." [NCIT:C128409]
+subset: doid_rare {source="DOID:12750"}
+subset: gard_rare {source="GARD:0009528", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:210"}
+subset: orphanet_rare {source="Orphanet:210"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "Cyclospora caused disease or disorder" EXACT [MONDO:patterns/specific_infectious_disease_by_agent]
+synonym: "Cyclospora cayetanensis caused disease or disorder" EXACT [MONDO:patterns/specific_infectious_disease_by_agent]
+synonym: "Cyclospora cayetanensis disease or disorder" EXACT []
+synonym: "Cyclospora cayetanensis infectious disease" EXACT []
+synonym: "Cyclospora disease or disorder" EXACT []
+synonym: "Cyclospora infection" RELATED [GARD:0009528]
+synonym: "Cyclospora infectious disease" EXACT []
+synonym: "cyclosporosis" EXACT [icd11.foundation:833744511, MONDO:0016212]
+synonym: "infection of intestine caused by Cyclospora cayetanensis" EXACT []
+synonym: "intestinal infection caused by Cyclospora cayetanensis" EXACT []
+xref: DOID:12750 {source="MONDO:equivalentTo", source="EFO:0007230"}
+xref: EFO:0007230 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: GARD:0009528 {source="MONDO:GARD"}
+xref: ICD10CM:A07.4 {source="MONDO:equivalentTo", source="DOID:12750"}
+xref: icd11.foundation:833744511 {source="MONDO:equivalentTo"}
+xref: ICD9:007.5 {source="DOID:12750"}
+xref: MEDGEN:91014 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D021866 {source="MONDO:equivalentTo", source="EFO:0007230", source="DOID:12750"}
+xref: NCIT:C128409 {source="MONDO:equivalentTo"}
+xref: Orphanet:210 {source="MONDO:equivalentTo"}
+xref: SCTID:240372001 {source="MONDO:equivalentTo", source="DOID:12750"}
+xref: SCTID:716860005 {source="MONDO:equivalentTo"}
+xref: UMLS:C0343398 {source="MEDGEN:91014", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0005707 {source="DOID:12750", source="MESH:D021866"} ! coccidiosis
+intersection_of: MONDO:0005550 ! infectious disease
+intersection_of: disease_has_infectious_agent NCBITaxon:88456 ! Cyclospora cayetanensis
+relationship: disease_has_infectious_agent NCBITaxon:88456 ! Cyclospora cayetanensis
+property_value: curated_content_resource "https://www.malacards.org/card/cyclosporiasis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/3694" xsd:anyURI
+property_value: skos:exactMatch DOID:12750
+property_value: skos:exactMatch EFO:0007230
+property_value: skos:exactMatch icd10cm:A07.4
+property_value: skos:exactMatch icd11.foundation:833744511
+property_value: skos:exactMatch MEDGEN:91014
+property_value: skos:exactMatch MESH:D021866
+property_value: skos:exactMatch NCIT:C128409
+property_value: skos:exactMatch Orphanet:210
+property_value: skos:exactMatch SCTID:240372001
+property_value: skos:exactMatch SCTID:716860005
+property_value: skos:exactMatch UMLS:C0343398
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/infectious_disease_by_agent.yaml
+
+[Term]
+id: MONDO:0005833
+name: lymphatic system disorder
+def: "A disease involving the lymphatic part of lymphoid system." [https://orcid.org/0000-0002-6601-2165]
+comment: Editor note: check alignment to anatomy, consider lymphoid system disease
+subset: otar {source="MONDO:OTAR"}
+synonym: "disease of lymphatic part of lymphoid system" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of lymphatic part of lymphoid system" EXACT []
+synonym: "disorder of lymphatic part of lymphoid system" EXACT [MONDO:patterns/location_top]
+synonym: "glands, swollen" EXACT []
+synonym: "lymphadenopathy" NARROW []
+synonym: "lymphangiopathy" NARROW []
+synonym: "lymphatic disease" EXACT [DOID:75, MTH:461, MTH:NOCODE]
+synonym: "lymphatic part of lymphoid system disease" EXACT [MONDO:patterns/location]
+synonym: "lymphatic part of lymphoid system disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+synonym: "swollen gland" EXACT [NCIT:C50764]
+synonym: "swollen glands" EXACT []
+xref: DOID:75 {source="MONDO:equivalentTo"}
+xref: EFO:0007352 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: MEDGEN:892707 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D008206 {source="DOID:75", source="MONDO:equivalentTo"}
+xref: NCIT:C50764 {source="MONDO:equivalentTo"}
+xref: SCTID:362971004 {source="DOID:75", source="MONDO:equivalentTo"}
+xref: UMLS:C4021976 {source="MEDGEN:892707", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0044986 ! lymphoid system disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_location UBERON:0006558 ! lymphatic part of lymphoid system
+relationship: disease_has_location UBERON:0006558 ! lymphatic part of lymphoid system
+property_value: curated_content_resource "https://www.malacards.org/card/lymphatic_system_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:75
+property_value: skos:exactMatch EFO:0007352
+property_value: skos:exactMatch MEDGEN:892707
+property_value: skos:exactMatch MESH:D008206
+property_value: skos:exactMatch NCIT:C50764
+property_value: skos:exactMatch SCTID:362971004
+property_value: skos:exactMatch UMLS:C4021976
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+property_value: terms:conformsTo location:top.yaml
+
+[Term]
+id: MONDO:0005846
+name: microsporidiosis
+def: "A fungal infection caused by Microsporidia. It occurs in immunocompromised patients, causing diarrhea and wasting." [NCIT:P378]
+subset: doid_rare {source="DOID:4271"}
+subset: gard_rare {source="GARD:0003655", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:2552"}
+subset: orphanet_rare {source="Orphanet:2552"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "infection by Microspora" EXACT [DOID:4271, icd11.foundation:1021483422]
+synonym: "Microsporidia caused disease or disorder" EXACT [MONDO:patterns/specific_infectious_disease_by_agent]
+synonym: "Microsporidia disease or disorder" EXACT []
+synonym: "Microsporidia infection" EXACT [icd11.foundation:1021483422, NCIT:C84891]
+synonym: "Microsporidia infectious disease" EXACT []
+synonym: "Microsporidiasis" RELATED [GARD:0003655]
+xref: DOID:4271 {source="MONDO:equivalentTo", source="EFO:0007366"}
+xref: EFO:0007366 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: GARD:0003655 {source="MONDO:GARD"}
+xref: icd11.foundation:1021483422 {source="Orphanet:2552", source="MONDO:equivalentTo"}
+xref: ICD9:117.9 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MedDRA:10053982 {source="Orphanet:2552", source="Orphanet:2552/e"}
+xref: MEDGEN:39278 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D016881 {source="Orphanet:2552", source="MONDO:equivalentTo", source="Orphanet:2552/e", source="DOID:4271", source="EFO:0007366"}
+xref: NCIT:C84891 {source="MONDO:equivalentTo", source="DOID:4271"}
+xref: Orphanet:2552 {source="MONDO:equivalentTo"}
+xref: SCTID:699676006 {source="MONDO:equivalentTo", source="DOID:4271"}
+xref: UMLS:C0085407 {source="MONDO:equivalentTo", source="MEDGEN:39278", source="MONDO:MEDGEN"}
+is_a: MONDO:0002312 {source="DOID:4271"} ! opportunistic mycosis
+is_a: MONDO:0005135 {source="Orphanet:2552"} ! parasitic infectious disease
+intersection_of: MONDO:0005550 ! infectious disease
+intersection_of: disease_has_infectious_agent NCBITaxon:6029 ! Microsporidia
+relationship: disease_has_infectious_agent NCBITaxon:6029 ! Microsporidia
+property_value: curated_content_resource "https://www.malacards.org/card/microsporidiosis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/3655/microsporidiosis" xsd:anyURI {source="GARD:0003655"}
+property_value: skos:closeMatch MEDDRA:10053982
+property_value: skos:exactMatch DOID:4271
+property_value: skos:exactMatch EFO:0007366
+property_value: skos:exactMatch icd11.foundation:1021483422
+property_value: skos:exactMatch MEDGEN:39278
+property_value: skos:exactMatch MESH:D016881
+property_value: skos:exactMatch NCIT:C84891
+property_value: skos:exactMatch Orphanet:2552
+property_value: skos:exactMatch SCTID:699676006
+property_value: skos:exactMatch UMLS:C0085407
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/infectious_disease_by_agent.yaml
+
+[Term]
+id: MONDO:0005894
+name: paracoccidioidomycosis
+def: "A systemic fungal infection caused by Paracoccidioides brasiliensis that is most often seen in immunocompromised patients. It affects the mucous membranes, lymph nodes, lungs and bones." [NCIT:P378]
+subset: doid_rare {source="DOID:12662"}
+subset: gard_rare {source="GARD:0007323", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD", source="NORD:1553"}
+subset: ordo_disorder {source="Orphanet:73260"}
+subset: orphanet_rare {source="Orphanet:73260"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "lobo disease" RELATED [GARD:0007323]
+synonym: "Lutz-Splendore-Almeida disease" RELATED [GARD:0007323]
+synonym: "Paracoccidioidal granuloma" RELATED [GARD:0007323]
+synonym: "PCM" RELATED ABBREVIATION [GARD:0007323]
+synonym: "South American blastomycosis" RELATED [GARD:0007323]
+xref: DOID:12662 {source="MONDO:equivalentTo", source="EFO:0007417"}
+xref: EFO:0007417 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: GARD:0007323 {source="MONDO:GARD"}
+xref: ICD10CM:B41 {source="MONDO:equivalentTo", source="DOID:12662"}
+xref: ICD10WHO:B41 {source="https://orcid.org/0000-0002-7941-5545", source="MONDO:equivalentTo", source="https://orcid.org/0000-0001-9439-5346"}
+xref: icd11.foundation:268777657 {source="MONDO:equivalentTo"}
+xref: ICD9:116.1 {source="DOID:12662"}
+xref: MedDRA:10061906 {source="Orphanet:73260/e", source="Orphanet:73260"}
+xref: MEDGEN:14601 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D010229 {source="Orphanet:73260/e", source="MONDO:equivalentTo", source="EFO:0007417", source="DOID:12662", source="Orphanet:73260"}
+xref: NCIT:C34891 {source="MONDO:equivalentTo", source="DOID:12662"}
+xref: NORD:1553 {source="MONDO:NORD"}
+xref: Orphanet:73260 {source="MONDO:equivalentTo"}
+xref: SCTID:36866003 {source="MONDO:equivalentTo", source="DOID:12662"}
+xref: UMLS:C0030409 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:14601"}
+is_a: MONDO:0000308 {source="DOID:12662"} ! primary systemic mycosis
+relationship: disease_has_infectious_agent NCBITaxon:121759 ! Paracoccidioides brasiliensis
+property_value: curated_content_resource "https://www.malacards.org/card/paracoccidioidomycosis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/7323/paracoccidioidomycosis" xsd:anyURI {source="GARD:0007323"}
+property_value: skos:closeMatch MEDDRA:10061906
+property_value: skos:exactMatch DOID:12662
+property_value: skos:exactMatch EFO:0007417
+property_value: skos:exactMatch icd10cm:B41
+property_value: skos:exactMatch ICD10WHO:B41
+property_value: skos:exactMatch icd11.foundation:268777657
+property_value: skos:exactMatch MEDGEN:14601
+property_value: skos:exactMatch MESH:D010229
+property_value: skos:exactMatch NCIT:C34891
+property_value: skos:exactMatch Orphanet:73260
+property_value: skos:exactMatch SCTID:36866003
+property_value: skos:exactMatch UMLS:C0030409
+
+[Term]
+id: MONDO:0005971
+name: staphyloenterotoxemia
+def: "Food poisoning that is caused by Staphylococcal infection." [NCIT:C35037]
+subset: otar {source="MONDO:OTAR"}
+synonym: "staphylococcal food poisoning" EXACT [DOID:96, ICD9CM:005.0, NCIT:C35037]
+synonym: "staphylococcal toxemia due to food" EXACT []
+xref: DOID:96 {source="MONDO:equivalentTo", source="EFO:0007497"}
+xref: EFO:0007497 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD9:005.0 {source="DOID:96", source="MONDO:equivalentTo", source="MONDO:i2s"}
+xref: MEDGEN:52482 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D013202 {source="DOID:96", source="MONDO:equivalentTo", source="EFO:0007497"}
+xref: NCIT:C35037 {source="DOID:96", source="MONDO:equivalentTo"}
+xref: SCTID:84622004 {source="DOID:96", source="MONDO:equivalentTo"}
+xref: UMLS:C0038159 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:52482"}
+is_a: MONDO:0000314 {source="DOID:96"} ! primary bacterial infectious disease
+is_a: MONDO:0024313 {source="MESH:D013202", source="NCIT:C35037"} ! staphylococcal infection
+relationship: disease_has_feature HP:0001324 ! Muscle weakness
+property_value: curated_content_resource "https://www.malacards.org/card/staphyloenterotoxemia" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:96
+property_value: skos:exactMatch EFO:0007497
+property_value: skos:exactMatch MEDGEN:52482
+property_value: skos:exactMatch MESH:D013202
+property_value: skos:exactMatch NCIT:C35037
+property_value: skos:exactMatch SCTID:84622004
+property_value: skos:exactMatch UMLS:C0038159
+
+[Term]
+id: MONDO:0006849
+name: mastitis
+def: "Inflammation of breast tissue during lactation or postpartum due to an obstructed duct or infection. Mastitis can also occur in non-breastfeeding women, and rarely in men." [https://www.nhs.uk/conditions/mastitis/, NCIT:P378, Wikipedia:Mastitis#Types]
+subset: otar {source="MONDO:OTAR"}
+synonym: "breast infection" EXACT []
+synonym: "breast inflammation" EXACT [DOID:10690, MONDO:patterns/inflammatory_disease_by_site]
+synonym: "inflammation of breast" EXACT []
+synonym: "inflammatory disease of breast" EXACT [DOID:10690, ICD9CM:611.0]
+xref: DOID:10690 {source="EFO:1001034", source="MONDO:equivalentTo"}
+xref: EFO:1001034 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: MedDRA:10026883 {source="EFO:1001034"}
+xref: MEDGEN:9901 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D008413 {source="EFO:1001034", source="MONDO:equivalentTo", source="DOID:10690"}
+xref: NCIT:C53662 {source="EFO:1001034", source="MONDO:equivalentTo", source="DOID:10690"}
+xref: SCTID:45198002 {source="EFO:1001034", source="MONDO:equivalentTo", source="DOID:10690"}
+xref: UMLS:C0024894 {source="MONDO:equivalentTo", source="MEDGEN:9901", source="MONDO:MEDGEN"}
+is_a: MONDO:0002657 {source="DOID:10690", source="MESH:D008413", source="MONDO:Redundant", source="NCIT:C53662/inferred"} ! breast disorder
+is_a: MONDO:0021166 {source="MONDO:Redundant"} ! inflammatory disease
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_inflammation_site UBERON:0000310 ! breast
+relationship: disease_has_inflammation_site UBERON:0000310 ! breast
+relationship: excluded_subClassOf MONDO:0005039 {source="EFO:1001034", source="https://orcid.org/0000-0001-5208-3432"} ! reproductive system disorder
+property_value: curated_content_resource "https://www.malacards.org/card/mastitis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:closeMatch MEDDRA:10026883
+property_value: skos:exactMatch DOID:10690
+property_value: skos:exactMatch EFO:1001034
+property_value: skos:exactMatch MEDGEN:9901
+property_value: skos:exactMatch MESH:D008413
+property_value: skos:exactMatch NCIT:C53662
+property_value: skos:exactMatch SCTID:45198002
+property_value: skos:exactMatch UMLS:C0024894
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/inflammatory_disease_by_site.yaml
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/specific_infectious_disease_by_location.yaml
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/specific_inflammatory_disease_by_site.yaml
+
+[Term]
+id: MONDO:0006858
+name: mouth disorder
+def: "A disease involving the mouth." [https://orcid.org/0000-0002-6601-2165]
+subset: otar {source="MONDO:OTAR"}
+subset: rare_grouping
+synonym: "disease of mouth" EXACT [MONDO:patterns/location_top]
+synonym: "disease or disorder of mouth" EXACT []
+synonym: "disorder of mouth" EXACT [MONDO:patterns/location_top]
+synonym: "mouth disease" EXACT [DOID:403, MONDO:patterns/location]
+synonym: "mouth disease or disorder" EXACT [MONDO:design_pattern, MONDO:patterns/location]
+synonym: "oral disease" EXACT [NCIT:C3240]
+synonym: "oral disorder" EXACT [NCIT:C3240]
+xref: DOID:403 {source="MONDO:equivalentTo", source="EFO:1001047"}
+xref: EFO:1001047 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD9:528.9 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:6448 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D009059 {source="DOID:403", source="MONDO:equivalentTo", source="EFO:1001047"}
+xref: NCIT:C3240 {source="DOID:403", source="MONDO:equivalentTo"}
+xref: SCTID:118938008 {source="DOID:403", source="MONDO:equivalentTo", source="EFO:1001047"}
+xref: UMLS:C0026636 {source="MEDGEN:6448", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:7770006 ! disease by body system or component
+intersection_of: MONDO:0700096 ! human disease
+intersection_of: disease_has_location UBERON:0000165 ! mouth
+relationship: disease_has_location UBERON:0000165 ! mouth
+property_value: curated_content_resource "https://www.malacards.org/card/mouth_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4968" xsd:anyURI
+property_value: skos:exactMatch DOID:403
+property_value: skos:exactMatch EFO:1001047
+property_value: skos:exactMatch MEDGEN:6448
+property_value: skos:exactMatch MESH:D009059
+property_value: skos:exactMatch NCIT:C3240
+property_value: skos:exactMatch SCTID:118938008
+property_value: skos:exactMatch UMLS:C0026636
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/location.yaml
+
+[Term]
+id: MONDO:0007179
+name: autoimmune disease
+def: "A disorder resulting from loss of function or tissue destruction of an organ or multiple organs, arising from humoral or cellular immune responses of the individual to their own tissue constituents. It may be systemic (e.g., systemic lupus erythematosus), or organ specific, (e.g., thyroiditis)." [NCIT:C2889]
+comment: Editor note: check OMIM
+subset: clingen {source="MONDO:CLINGEN"}
+subset: otar {source="MONDO:OTAR"}
+synonym: "autoimmune disease" EXACT [DOID:417, EFO:0005140, NCIT:C2889, OMIM:109100]
+synonym: "autoimmune disease or disorder" EXACT []
+synonym: "autoimmune disorder" EXACT [NCIT:C2889]
+synonym: "disease, autoimmune" EXACT []
+xref: DOID:417 {source="MONDO:equivalentTo"}
+xref: EFO:0005809 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: ICD9:279.4 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:279.49 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:720 {source="DOID:417"}
+xref: MEDGEN:2135 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D001327 {source="MONDO:equivalentTo"}
+xref: NCIT:C2889 {source="MONDO:equivalentTo", source="EFO:0005140"}
+xref: OBI:1110054 {source="MONDO:equivalentTo", source="EFO:0005140"}
+xref: OMIM:109100 {source="DOID:417", source="MONDO:equivalentTo"}
+xref: SCTID:85828009 {source="MONDO:equivalentTo", source="EFO:0005140"}
+xref: UMLS:C0004364 {source="MONDO:equivalentTo", source="MEDGEN:2135", source="MONDO:MEDGEN"}
+is_a: MONDO:0005046 {source="DOID:417/inferred", source="EFO:0005140", source="MESH:D001327", source="MONDO:Redundant", source="NCIT:C2889"} ! immune system disorder
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_arises_from_feature HP:0002960 ! Autoimmunity
+relationship: curated_content_resource https://search.clinicalgenome.org/kb/conditions/MONDO:0007179 {source="MONDO:CLINGEN"}
+relationship: disease_arises_from_feature HP:0002960 ! Autoimmunity
+relationship: excluded_subClassOf MONDO:0000605 {source="DOID:417", source="MONDO:Entailed", source="https://orcid.org/0000-0001-5208-3432"} ! hypersensitivity reaction disease
+property_value: curated_content_resource "https://www.malacards.org/card/autoimmune_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:417
+property_value: skos:exactMatch EFO:0005809
+property_value: skos:exactMatch MEDGEN:2135
+property_value: skos:exactMatch MESH:D001327
+property_value: skos:exactMatch NCIT:C2889
+property_value: skos:exactMatch OMIM:109100
+property_value: skos:exactMatch SCTID:85828009
+property_value: skos:exactMatch UMLS:C0004364
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/autoimmune.yaml
+
+[Term]
+id: MONDO:0007256
+name: hepatocellular carcinoma
+def: "A malignant tumor that arises from hepatocytes. Hepatocellular carcinoma is relatively rare in the United States but very common in all African countries south of the Sahara and in Southeast Asia. Most cases are seen in patients over the age of 50 years, but this tumor can also occur in younger individuals and even in children. Hepatocellular carcinoma is more common in males than females and is associated with hepatitis B, hepatitis C, chronic alcohol abuse and cirrhosis. Serum elevation of alpha-fetoprotein occurs in a large percentage of patients with hepatocellular carcinoma. Grossly, hepatocellular carcinoma may present as a single mass, as multiple nodules, or as diffuse liver involvement. Microscopically, there is a wide range of differentiation from tumor to tumor (well differentiated to poorly differentiated tumors). Hepatocellular carcinomas quickly metastasize to regional lymph nodes and lung. The overall median survival of untreated liver cell carcinoma is about 4 months. The most effective treatment of hepatocellular carcinoma is complete resection of the tumor. Lately, an increasing number of tumors have been treated with liver transplantation." [NCIT:C3099]
+subset: doid_rare {source="DOID:684"}
+subset: gard_rare {source="GARD:0016773", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD", source="NORD:1907"}
+subset: ordo_group_of_disorders {source="Orphanet:88673"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "adult hepatoma" NARROW []
+synonym: "adult primary hepatocellular carcinoma" NARROW []
+synonym: "cancer, hepatocellular" EXACT [OMIM:114550]
+synonym: "carcinoma of liver" EXACT [MONDO:patterns/carcinoma]
+synonym: "carcinoma of liver cells" EXACT [NCIT:C3099]
+synonym: "carcinoma of the liver cells" EXACT [NCIT:C3099]
+synonym: "carcinoma, hepatocellular, malignant" EXACT [NCIT:C3099]
+synonym: "HCC" EXACT ABBREVIATION [NCIT:C3099, OMIM:114550, Orphanet:88673]
+synonym: "hepatoblastoma, somatic" EXACT []
+synonym: "hepatocellular adenocarcinoma" EXACT [MONDO:design_patterns]
+synonym: "hepatocellular cancer" EXACT [icd11.foundation:1294035808, NCIT:C3099]
+synonym: "hepatocellular cancer, somatic" EXACT []
+synonym: "hepatocellular carcinoma" EXACT [DOID:684, ICD10CM:C22.0, icd11.foundation:1294035808, NCIT:C3099, OMIM:114550, Orphanet:88673]
+synonym: "hepatocellular carcinoma, childhood type, somatic" EXACT []
+synonym: "hepatocellular carcinoma, somatic" EXACT []
+synonym: "hepatoma" EXACT [DOID:684, https://orcid.org/0000-0002-6601-2165, ICD10CM:C22.0, NCIT:C3099, OMIM:114550]
+synonym: "liver carcinoma" EXACT [DOID:686, MONDO:0004018, MONDO:patterns/location]
+synonym: "liver cell cancer (hepatocellular carcinoma)" EXACT [NCIT:C3099]
+synonym: "liver cell carcinoma" EXACT [ICD10CM:C22.0, icd11.foundation:1294035808, NCIT:C3099, OMIM:114550]
+synonym: "primary carcinoma of liver cells" EXACT [NCIT:C3099]
+synonym: "primary carcinoma of the liver cells" EXACT [NCIT:C3099]
+xref: DOID:684 {source="MONDO:equivalentTo", source="EFO:0000182"}
+xref: DOID:686 {source="MONDO:equivalentTo"}
+xref: EFO:0000182 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: GARD:0016773 {source="MONDO:GARD"}
+xref: ICD10CM:C22.0 {source="https://orcid.org/0009-0001-6494-4831", source="Orphanet:88673/e", source="MONDO:equivalentTo", source="https://orcid.org/0000-0002-5002-8648", source="Orphanet:88673"}
+xref: icd11.foundation:1294035808 {source="MONDO:equivalentTo", source="https://orcid.org/0000-0001-5208-3432", source="Orphanet:88673"}
+xref: ICDO:8170/3 {source="NCIT:C3099"}
+xref: MedDRA:10049010 {source="Orphanet:88673/e", source="Orphanet:88673"}
+xref: MEDGEN:389187 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D006528 {source="Orphanet:88673/e", source="MONDO:equivalentTo", source="EFO:0000182", source="Orphanet:88673"}
+xref: NANDO:2200047 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NCIT:C3099 {source="MONDO:equivalentTo", source="EFO:0000182"}
+xref: NORD:1907 {source="MONDO:NORD"}
+xref: OMIM:114550 {source="Orphanet:88673/e", source="MONDO:equivalentTo", source="DOID:684", source="EFO:0000182", source="Orphanet:88673"}
+xref: ONCOTREE:HCC {source="MONDO:equivalentTo"}
+xref: Orphanet:88673 {source="OMIM:114550", source="MONDO:equivalentTo"}
+xref: UMLS:C2239176 {source="MEDGEN:389187", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0004970 {source="MESH:D006528", source="NCIT:C3099"} ! adenocarcinoma
+is_a: MONDO:0018531 {source="NCIT:C3099", source="Orphanet:88673"} ! carcinoma of liver and intrahepatic biliary tract
+intersection_of: MONDO:0004993 ! carcinoma
+intersection_of: disease_arises_from_structure CL:0000182 ! hepatocyte
+relationship: disease_arises_from_structure CL:0000182 {source="NCIT:C3099"} ! hepatocyte
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4521" xsd:anyURI
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9097" xsd:anyURI
+property_value: skos:closeMatch MEDDRA:10049010
+property_value: skos:exactMatch DOID:684
+property_value: skos:exactMatch DOID:686
+property_value: skos:exactMatch EFO:0000182
+property_value: skos:exactMatch icd10cm:C22.0
+property_value: skos:exactMatch icd11.foundation:1294035808
+property_value: skos:exactMatch MEDGEN:389187
+property_value: skos:exactMatch MESH:D006528
+property_value: skos:exactMatch NCIT:C3099
+property_value: skos:exactMatch OMIM:114550
+property_value: skos:exactMatch Orphanet:88673
+property_value: skos:exactMatch UMLS:C2239176
+
+[Term]
+id: MONDO:0008383
+name: rheumatoid arthritis
+def: "A chronic, systemic autoimmune disorder characterized by inflammation in the synovial membranes and articular surfaces. It manifests primarily as a symmetric, erosive polyarthritis that spares the axial skeleton and is typically associated with the presence in the serum of rheumatoid factor." [NCIT:C2884]
+subset: omim_susceptibility {source="OMIM:180300"}
+subset: otar {source="MONDO:OTAR"}
+synonym: "RA" EXACT ABBREVIATION [NCIT:C2884, OMIM:180300]
+synonym: "rheumatoid arthritis" EXACT [DOID:7148, icd11.foundation:576319925, NCIT:C2884, OMIM:180300]
+xref: DOID:7148 {source="MONDO:equivalentTo", source="EFO:0000685"}
+xref: EFO:0000685 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: HP:0001370 {source="MONDO:otherHierarchy", source="https://orcid.org/0000-0001-9859-8589"}
+xref: icd11.foundation:576319925 {source="MONDO:equivalentTo"}
+xref: ICD9:714.0 {source="DOID:7148", source="MONDO:equivalentTo", source="EFO:0000685", source="MONDO:i2s"}
+xref: MEDGEN:2078 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D001172 {source="DOID:7148", source="MONDO:equivalentTo", source="EFO:0000685"}
+xref: NCIT:C2884 {source="DOID:7148", source="MONDO:equivalentTo", source="EFO:0000685"}
+xref: OMIM:180300 {source="DOID:7148", source="MONDO:equivalentTo", source="EFO:0000685"}
+xref: Orphanet:284130 {source="OMIM:180300", source="MONDO:equivalentObsolete"}
+xref: SCTID:69896004 {source="DOID:7148", source="MONDO:equivalentTo", source="EFO:0000685"}
+xref: UMLS:C0003873 {source="MEDGEN:2078", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0000589 {source="DOID:7148"} ! autoimmune disorder of musculoskeletal system
+is_a: MONDO:0005554 {source="EFO:0000685/inferred", source="MESH:D001172", source="MONDO:Redundant", source="NCIT:C2884"} ! rheumatic disorder
+is_a: MONDO:0005578 {source="DOID:7148", source="EFO:0000685", source="MESH:D001172", source="MONDO:Redundant", source="NCIT:C2884"} ! arthritic joint disease
+intersection_of: MONDO:0005578 ! arthritic joint disease
+intersection_of: disease_arises_from_feature HP:0002960 ! Autoimmunity
+relationship: disease_has_feature HP:0001369 ! Arthritis
+relationship: disease_has_feature HP:0002960 ! Autoimmunity
+property_value: curated_content_resource "https://www.malacards.org/card/rheumatoid_arthritis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: excluded_from_qc_check http://purl.obolibrary.org/obo/mondo/sparql/qc/mondo/qc-omim-subsumption.sparql
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4521" xsd:anyURI
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/6094" xsd:anyURI
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9753" xsd:anyURI
+property_value: skos:exactMatch DOID:7148
+property_value: skos:exactMatch EFO:0000685
+property_value: skos:exactMatch icd11.foundation:576319925
+property_value: skos:exactMatch MEDGEN:2078
+property_value: skos:exactMatch MESH:D001172
+property_value: skos:exactMatch NCIT:C2884
+property_value: skos:exactMatch OMIM:180300
+property_value: skos:exactMatch SCTID:69896004
+property_value: skos:exactMatch UMLS:C0003873
+
+[Term]
 id: MONDO:0009299
 name: 46 XX gonadal dysgenesis
 def: "46,XX gonadal dysgenesis (46,XX GD) is a primary ovarian defect leading to premature ovarian failure (POF) in otherwise normal 46,XX females as a result of failure of the gonads to develop or due to resistance to gonadotrophin stimulation." [Orphanet:243]
@@ -348,6 +1985,259 @@ property_value: skos:exactMatch SCTID:95198001
 property_value: skos:exactMatch UMLS:C0685837
 
 [Term]
+id: MONDO:0009950
+name: pyruvate kinase deficiency of red cells
+def: "A rare, genetic metabolic disorder due to pyruvate kinase deficiency characterized by a variable degree of chronic nonspherocytic hemolytic anemia resulting in a variable clinical manifestations ranging from fatal anemia at birth to a to a fully compensated hemolysis without apparent anemia." [Orphanet:766]
+subset: doid_rare {source="DOID:0111077"}
+subset: gard_rare {source="GARD:0007514", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD", source="NORD:1642"}
+subset: ordo_disorder {source="Orphanet:766"}
+subset: orphanet_rare {source="Orphanet:766"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "anemia, congenital, nonspherocytic hemolytic, 2, pyruvate kinase deficient" EXACT []
+synonym: "hemolytic anaemia due to pyruvate Kinase deficiency" EXACT OMO:0003005 []
+synonym: "hemolytic anaemia due to red cell pyruvate kinase deficiency" EXACT OMO:0003005 []
+synonym: "hemolytic anemia due to pyruvate Kinase deficiency" EXACT [NCIT:C99037]
+synonym: "hemolytic anemia due to red cell pyruvate kinase deficiency" EXACT [DOID:0111077, Orphanet:766]
+synonym: "PK deficiency" EXACT [DOID:0111077, OMIM:266200]
+synonym: "Pyruvate Kinase Deficiency" EXACT [NCIT:C99037, NORD:1642] {OMO:0002001="https://w3id.org/information-resource-registry/nord"}
+synonym: "pyruvate kinase deficiency" EXACT [GARD:0007514, NCIT:C99037]
+synonym: "pyruvate kinase deficiency of erythrocyte" EXACT [DOID:0111077, OMIM:266200]
+synonym: "pyruvate kinase deficiency of erythrocytes" EXACT [Orphanet:766]
+synonym: "pyruvate kinase deficiency of red cells" EXACT [DOID:0111077, OMIM:266200]
+xref: DOID:0111077 {source="MONDO:equivalentTo"}
+xref: GARD:0007514 {source="MONDO:GARD"}
+xref: MEDGEN:473069 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:C564858 {source="MONDO:equivalentTo"}
+xref: NANDO:2200628 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NCIT:C99037 {source="MONDO:equivalentTo"}
+xref: NORD:1642 {source="MONDO:NORD"}
+xref: OMIM:266200 {source="Orphanet:766", source="MONDO:equivalentTo", source="Orphanet:766/e", source="DOID:0111077"}
+xref: Orphanet:766 {source="MONDO:equivalentTo", source="OMIM:266200", source="DOID:0111077"}
+xref: SCTID:124331002 {source="MONDO:equivalentTo"}
+xref: UMLS:C0340968 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:473069"}
+is_a: MONDO:0006506 {source="DOID:0111077", source="MESH:C564858"} ! congenital nonspherocytic hemolytic anemia
+is_a: MONDO:0017688 {source="PMID:33340416"} ! disorder of glycolysis
+is_a: MONDO:0020585 ! anemia due to erythrocyte enzyme disorder
+relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/9020 {source="OMIM:266200"} ! PKLR
+property_value: curated_content_resource "https://www.malacards.org/card/anemia_congenital_nonspherocytic_hemolytic_2" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4985" xsd:anyURI
+property_value: skos:exactMatch DOID:0111077
+property_value: skos:exactMatch MEDGEN:473069
+property_value: skos:exactMatch MESH:C564858
+property_value: skos:exactMatch NCIT:C99037
+property_value: skos:exactMatch OMIM:266200
+property_value: skos:exactMatch Orphanet:766
+property_value: skos:exactMatch SCTID:124331002
+property_value: skos:exactMatch UMLS:C0340968
+
+[Term]
+id: MONDO:0010745
+name: beta-thalassemia-X-linked thrombocytopenia syndrome
+def: "Beta-thalassemia - X-linked thrombocytopenia is a form of beta-thalassemia characterized by splenomegaly and petechiae, moderate thrombocytopenia, prolonged bleeding time due to platelet dysfunction, reticulocytosis and mild beta-thalassemia." [Orphanet:231393]
+subset: doid_rare {source="DOID:0111767"}
+subset: gard_rare {source="GARD:0017166", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:231393"}
+subset: orphanet_rare {source="Orphanet:231393"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "thrombocytopenia with BETA-thalassemia, X-linked" RELATED []
+synonym: "thrombocytopenia with beta-thalassemia, X-linked, X-linked recessive" EXACT []
+synonym: "X-linked thrombocytopenia with Beta-thalassemia" EXACT [DOID:0111767, NCIT:C134941]
+synonym: "XLTT" EXACT ABBREVIATION [DOID:0111767, NCIT:C134941, OMIM:314050, Orphanet:231393]
+xref: DOID:0111767 {source="MONDO:equivalentTo"}
+xref: GARD:0017166 {source="MONDO:GARD"}
+xref: icd11.foundation:905057212 {source="MONDO:equivalentTo"}
+xref: MEDGEN:326415 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:C564050 {source="MONDO:equivalentTo"}
+xref: NCIT:C134941 {source="MONDO:equivalentTo"}
+xref: OMIM:314050 {source="Orphanet:231393/e", source="MONDO:equivalentTo", source="Orphanet:231393"}
+xref: Orphanet:231393 {source="MONDO:equivalentTo", source="OMIM:314050"}
+xref: SCTID:718196002 {source="MONDO:equivalentTo"}
+xref: UMLS:C1839161 {source="MONDO:equivalentTo", source="MEDGEN:326415", source="MONDO:MEDGEN"}
+is_a: MONDO:0017145 ! beta-thalassemia and related diseases
+is_a: MONDO:0100089 {source="https://github.com/monarch-initiative/mondo/issues/1018"} ! GATA1-Related X-Linked Cytopenia
+property_value: curated_content_resource "https://www.malacards.org/card/thrombocytopenia_with_beta_thalassemia_x_linked" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4521" xsd:anyURI
+property_value: skos:exactMatch DOID:0111767
+property_value: skos:exactMatch icd11.foundation:905057212
+property_value: skos:exactMatch MEDGEN:326415
+property_value: skos:exactMatch MESH:C564050
+property_value: skos:exactMatch NCIT:C134941
+property_value: skos:exactMatch OMIM:314050
+property_value: skos:exactMatch Orphanet:231393
+property_value: skos:exactMatch SCTID:718196002
+property_value: skos:exactMatch UMLS:C1839161
+
+[Term]
+id: MONDO:0011122
+name: obesity disorder
+def: "A disorder involving an excessive amount of body fat." [https://www.ama-assn.org/sites/default/files/media-browser/public/about-ama/councils/Council%20Reports/council-on-science-public-health/a13csaph3.pdf, https://www.mayoclinic.org/diseases-conditions/obesity/symptoms-causes/syc-20375742]
+comment: Obesity is a complex disease that may involve multiple environmental and genetic causes. See the subclass monogenic disease for genetic subtypes
+subset: otar {source="MONDO:OTAR"}
+synonym: "obesity" EXACT [DOID:9970, MONDO:ambiguous, NCIT:C3283]
+synonym: "obesity disease" EXACT []
+xref: DOID:9970 {source="MONDO:equivalentTo", source="EFO:0001073"}
+xref: EFO:0001073 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: HP:0001513 {source="MONDO:otherHierarchy"}
+xref: ICD9:278.0 {source="MONDO:equivalentTo", source="MONDO:i2s", source="EFO:0001073"}
+xref: ICD9:278.00 {source="MONDO:equivalentTo", source="MONDO:i2s", source="DOID:9970", source="EFO:0001073"}
+xref: MEDGEN:18127 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: NCIT:C3283 {source="MONDO:equivalentTo", source="MONDO:otherHierarchy", source="DOID:9970", source="EFO:0001073"}
+xref: Orphanet:521399 {source="MONDO:equivalentObsolete"}
+xref: SCTID:414916001 {source="MONDO:equivalentTo", source="DOID:9970", source="EFO:0001073"}
+xref: UMLS:C0028754 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:18127"}
+is_a: MONDO:0003916 {source="DOID:9970"} ! overnutrition
+intersection_of: MONDO:0000001 ! disease
+intersection_of: disease_has_feature HP:0001513 ! Obesity
+relationship: disease_has_feature HP:0001513 ! Obesity
+property_value: curated_content_resource "https://www.malacards.org/card/body_mass_index_quantitative_trait_locus_11" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:9970
+property_value: skos:exactMatch EFO:0001073
+property_value: skos:exactMatch MEDGEN:18127
+property_value: skos:exactMatch NCIT:C3283
+property_value: skos:exactMatch SCTID:414916001
+property_value: skos:exactMatch UMLS:C0028754
+
+[Term]
+id: MONDO:0011381
+name: dominant beta-thalassemia
+def: "Dominant beta-thalassemia is a form of beta-thalassemia resulting in moderate to severe anemia." [Orphanet:231226]
+subset: clingen {source="MONDO:CLINGEN"}
+subset: gard_rare {source="GARD:0017164", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_subtype_of_a_disorder {source="Orphanet:231226"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "inclusion body beta-thalassemia" EXACT [DOID:0080770, Orphanet:231226]
+synonym: "thalassemia-beta, dominant inclusion-body" EXACT []
+xref: DOID:0080770 {source="MONDO:equivalentTo"}
+xref: GARD:0017164 {source="MONDO:GARD"}
+xref: MEDGEN:347036 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:C565834 {source="MONDO:equivalentTo"}
+xref: OMIM:603902 {source="MONDO:equivalentTo", source="Orphanet:231226", source="Orphanet:231226/e"}
+xref: Orphanet:231226 {source="MONDO:equivalentTo", source="OMIM:603902"}
+xref: SCTID:716682000 {source="MONDO:equivalentTo"}
+xref: UMLS:C1858990 {source="MEDGEN:347036", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0019402 {source="DC-OMIM:603902", source="DOID:0080770", source="MESH:C565834", source="Orphanet:231226"} ! beta thalassemia
+relationship: curated_content_resource https://search.clinicalgenome.org/kb/conditions/MONDO:0011381 {source="MONDO:CLINGEN"}
+relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4827 {source="OMIM:603902"} ! HBB
+property_value: curated_content_resource "https://www.malacards.org/card/autosomal_dominant_beta_thalassemia" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: curated_content_resource "https://www.malacards.org/card/beta_thalassemia_dominant_inclusion_body_type" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:0080770
+property_value: skos:exactMatch MEDGEN:347036
+property_value: skos:exactMatch MESH:C565834
+property_value: skos:exactMatch OMIM:603902
+property_value: skos:exactMatch Orphanet:231226
+property_value: skos:exactMatch SCTID:716682000
+property_value: skos:exactMatch UMLS:C1858990
+
+[Term]
+id: MONDO:0011989
+name: leishmaniasis
+def: "Infectious disease that is transmitted through the bite of hematophagous female phlebotomine sand flies. The clinical spectrum ranges from asymptomatic to clinically overt disease which can remain localized to the skin or disseminate to the upper oral and respiratory mucous membranes or throughout the reticulo-endothelial system. Three main clinical syndromes have been described: visceral (or Kala-Azar; with fever, weight loss, hepatosplenomegaly), cutaneous, and mucocutaneous leishmaniasis (cutaneous or mucocutaneous ulceration)." [Orphanet:507]
+subset: doid_rare {source="DOID:9065"}
+subset: gard_rare {source="GARD:0006881", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD", source="NORD:1895"}
+subset: ordo_disorder {source="Orphanet:507"}
+subset: orphanet_rare {source="Orphanet:507"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "cutaneous leishmaniasis (subtype)" RELATED [GARD:0006881]
+synonym: "visceral leishmaniasis (subtype)" RELATED [GARD:0006881]
+xref: DOID:9065 {source="MONDO:equivalentTo", source="EFO:0005044"}
+xref: EFO:0005044 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: GARD:0006881 {source="MONDO:GARD"}
+xref: ICD10CM:B55 {source="MONDO:equivalentTo", source="DOID:9065"}
+xref: ICD10WHO:B55 {source="https://orcid.org/0000-0002-7941-5545", source="MONDO:equivalentTo", source="https://orcid.org/0000-0001-9439-5346"}
+xref: icd11.foundation:1082373067 {source="MONDO:equivalentTo"}
+xref: ICD9:085 {source="DOID:9065", source="EFO:0005044"}
+xref: ICD9:085.9 {source="MONDO:equivalentTo", source="MONDO:i2s", source="DOID:9065"}
+xref: MedDRA:10024198 {source="Orphanet:507", source="Orphanet:507/e"}
+xref: MEDGEN:9714 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D007896 {source="MONDO:equivalentTo", source="DOID:9065", source="Orphanet:507", source="EFO:0005044", source="Orphanet:507/e"}
+xref: NCIT:C34767 {source="MONDO:equivalentTo", source="DOID:9065", source="EFO:0005044"}
+xref: NORD:1895 {source="MONDO:NORD"}
+xref: Orphanet:507 {source="OMIM:608207", source="MONDO:equivalentTo"}
+xref: SCTID:80612004 {source="MONDO:equivalentTo", source="DOID:9065", source="EFO:0005044"}
+xref: UMLS:C0023281 {source="MONDO:equivalentTo", source="MEDGEN:9714", source="MONDO:MEDGEN"}
+is_a: MONDO:0002428 {source="DOID:9065", source="ICD10CM:B55", source="MESH:D007896/inferred"} ! protozoa infectious disease
+is_a: MONDO:0100120 {source="https://www.who.int/news-room/fact-sheets/detail/vector-borne-diseases"} ! vector-borne disease
+property_value: curated_content_resource "https://www.malacards.org/card/leishmaniasis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:closeMatch MEDDRA:10024198
+property_value: skos:exactMatch DOID:9065
+property_value: skos:exactMatch EFO:0005044
+property_value: skos:exactMatch icd10cm:B55
+property_value: skos:exactMatch ICD10WHO:B55
+property_value: skos:exactMatch icd11.foundation:1082373067
+property_value: skos:exactMatch MEDGEN:9714
+property_value: skos:exactMatch MESH:D007896
+property_value: skos:exactMatch NCIT:C34767
+property_value: skos:exactMatch Orphanet:507
+property_value: skos:exactMatch SCTID:80612004
+property_value: skos:exactMatch UMLS:C0023281
+
+[Term]
+id: MONDO:0012382
+name: hyperinsulinemic hypoglycemia, familial, 4
+def: "Any hyperinsulinemic hypoglycemia in which the cause of the disease is a mutation in the HADH gene." [MONDO:patterns/disease_series_by_gene]
+subset: doid_rare {source="DOID:0070215"}
+subset: gard_rare {source="GARD:0009870", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:71212"}
+subset: orphanet_rare {source="Orphanet:71212"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "3-alpha hydroxyacyl-CoA dehydrogenase deficiency" RELATED [GARD:0009870]
+synonym: "3-Alpha-hydroxyacyl-Coenzyme A dehydrogenase deficiency" RELATED [MESH:C535310]
+synonym: "3-hydroxyacyl-Coenzyme A dehydrogenase deficiency" RELATED [MESH:C535310]
+synonym: "3-hydroxylacyl-CoA dehydrogenase deficiency" RELATED [GARD:0009870]
+synonym: "had deficiency" RELATED [MESH:C535310]
+synonym: "HADH deficiency" RELATED [GARD:0009870, MESH:C535310]
+synonym: "HADH hyperinsulinemic hypoglycemia (disease)" EXACT [MONDO:patterns/disease_series_by_gene]
+synonym: "HADHSC deficiency" RELATED [MESH:C535310]
+synonym: "HHF4" RELATED ABBREVIATION []
+synonym: "hyperinsulinemic hypoglycemia (disease) caused by mutation in HADH" EXACT []
+synonym: "hyperinsulinemic hypoglycemia due to HADH deficiency" EXACT [https://orcid.org/0000-0002-6601-2165]
+synonym: "hyperinsulinemic hypoglycemia due to short chain 3-hydroxylacyl-CoA dehydrogenase deficiency" EXACT [DOID:0070215, Orphanet:71212]
+synonym: "hyperinsulinemic hypoglycemia, familial, 4" EXACT [OMIM:609975]
+synonym: "hyperinsulinemic hypoglycemia, familial, type 4" EXACT []
+synonym: "hyperinsulinism due to glutamodehydrogenase deficiency" EXACT [DOID:0070215, Orphanet:71212]
+synonym: "hyperinsulinism due to SCHAD deficiency" EXACT [DOID:0070215, Orphanet:71212]
+synonym: "hyperinsulinism due to short chain 3-hydroxyacyl-coenzyme a dehydrogenase deficiency" EXACT []
+synonym: "hyperinsulinism due to short chain 3-hydroxylacyl-CoA dehydrogenase deficiency" EXACT [DOID:0070215, MONDO:0009278, Orphanet:71212] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+synonym: "L-3-Alpha-hydroxyacyl-CoA dehydrogenase, short chain, deficiency" RELATED [MESH:C535310]
+synonym: "M-SCHAD deficiency" RELATED [MESH:C535310]
+synonym: "M/SCHAD" RELATED [GARD:0009870]
+synonym: "medium and short chain 3-hydroxyacyl-CoA dehydrogenase deficiency" RELATED [GARD:0009870]
+synonym: "SCHAD deficiency" RELATED [MESH:C535310]
+xref: DOID:0070215 {source="MONDO:equivalentTo"}
+xref: GARD:0009870 {source="MONDO:GARD"}
+xref: MEDGEN:400646 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:C566493 {source="MONDO:equivalentTo"}
+xref: OMIM:609975 {source="Orphanet:71212", source="MONDO:equivalentTo", source="Orphanet:71212/e"}
+xref: Orphanet:71212 {source="MONDO:equivalentTo", source="GARD:0009870", source="OMIM:231530", source="OMIM:609975"}
+xref: SCTID:721236002 {source="MONDO:equivalentTo"}
+xref: UMLS:C1864948 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:400646"}
+is_a: MONDO:0015624 {source="Orphanet:71212"} ! diazoxide-sensitive diffuse hyperinsulinism
+intersection_of: MONDO:0005803 ! hyperinsulinemic hypoglycemia
+intersection_of: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4799 ! HADH
+relationship: excluded_subClassOf MONDO:0017715 {source="Orphanet:71212", source="https://orcid.org/0000-0001-5208-3432"} ! 3-hydroxyacyl-CoA dehydrogenase deficiency
+relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/4799 {source="OMIM:609975"} ! HADH
+property_value: curated_content_resource "https://www.malacards.org/card/hyperinsulinemic_hypoglycemia_familial_4" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/3977" xsd:anyURI
+property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/9870/3-alpha-hydroxyacyl-coa-dehydrogenase-deficiency" xsd:anyURI {source="GARD:0009870"}
+property_value: skos:exactMatch DOID:0070215
+property_value: skos:exactMatch MEDGEN:400646
+property_value: skos:exactMatch MESH:C566493
+property_value: skos:exactMatch OMIM:609975
+property_value: skos:exactMatch Orphanet:71212
+property_value: skos:exactMatch SCTID:721236002
+property_value: skos:exactMatch UMLS:C1864948
+
+[Term]
 id: MONDO:0014221
 name: triosephosphate isomerase deficiency
 def: "Triosephosphate isomerase (TPI) deficiency is a severe autosomal recessive inherited multisystem disorder of glycolytic metabolism characterized by hemolytic anemia and neurodegeneration." [Orphanet:868]
@@ -392,3 +2282,338 @@ property_value: skos:exactMatch OMIM:615512
 property_value: skos:exactMatch Orphanet:868
 property_value: skos:exactMatch SCTID:234405009
 property_value: skos:exactMatch UMLS:C1860808
+
+[Term]
+id: MONDO:0015254
+name: schistosomiasis
+def: "An infectious disease caused by parasitic trematodes of the genus Schistosoma that colonize human blood vessels and release eggs that can cause granulomatous reactions leading to acute (swimmer's itch or acute schistosomiasis syndrome) or chronic disease. Depending on where the eggs lodge, manifestations of chronic schistosomiasis can include diarrhea, abdominal pain, loss of appetite, anemia (intestines), hepatosplenism, periportal fibrosis with portal hypertension (liver), urogenital inflammation and scarring, hematuria and dysuria (genitourinary system). Other patients may be asymptomatic." [Orphanet:1247]
+subset: doid_rare {source="DOID:1395"}
+subset: gard_rare {source="GARD:0009687", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:1247"}
+subset: orphanet_rare {source="Orphanet:1247"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "Bilharzia" EXACT [NCIT:C35000]
+synonym: "bilharziasis" EXACT [icd11.foundation:1194562592, Orphanet:1247]
+synonym: "schistosomiasis" EXACT [DOID:1395, ICD10CM:B65, icd11.foundation:1194562592, NCIT:C35000, Orphanet:1247]
+synonym: "snail fever" EXACT [ICD10CM:B65, icd11.foundation:1194562592, NCIT:C35000]
+xref: DOID:1395 {source="MONDO:equivalentTo"}
+xref: EFO:1001475 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: GARD:0009687 {source="MONDO:GARD"}
+xref: ICD10CM:B65 {source="https://orcid.org/0009-0001-6494-4831", source="MONDO:equivalentTo", source="https://orcid.org/0000-0002-5002-8648"}
+xref: icd11.foundation:1194562592 {source="MONDO:equivalentTo"}
+xref: ICD9:120.8 {source="DOID:1395", source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: ICD9:120.9 {source="MONDO:equivalentTo", source="MONDO:i2s"}
+xref: MedDRA:10039603 {source="Orphanet:1247", source="Orphanet:1247/e"}
+xref: MEDGEN:48573 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D012552 {source="MONDO:equivalentTo", source="Orphanet:1247", source="Orphanet:1247/e"}
+xref: NCIT:C35000 {source="MONDO:equivalentTo", source="MONDO:exact-label-match"}
+xref: Orphanet:1247 {source="MONDO:equivalentTo"}
+xref: SCTID:10087007 {source="MONDO:equivalentTo"}
+xref: UMLS:C0036323 {source="MONDO:equivalentTo", source="MEDGEN:48573", source="MONDO:MEDGEN"}
+is_a: MONDO:0004664 {source="DOID:1395", source="MESH:D012552/inferred"} ! helminthiasis
+is_a: MONDO:0100120 {source="https://www.who.int/news-room/fact-sheets/detail/vector-borne-diseases"} ! vector-borne disease
+relationship: disease_has_feature HP:0000790 ! Hematuria
+relationship: disease_has_infectious_agent NCBITaxon:6181 {source="MONDO:Wikidata"} ! Schistosoma
+property_value: curated_content_resource "https://www.malacards.org/card/schistosomiasis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9097" xsd:anyURI
+property_value: skos:closeMatch MEDDRA:10039603
+property_value: skos:exactMatch DOID:1395
+property_value: skos:exactMatch EFO:1001475
+property_value: skos:exactMatch icd10cm:B65
+property_value: skos:exactMatch icd11.foundation:1194562592
+property_value: skos:exactMatch MEDGEN:48573
+property_value: skos:exactMatch MESH:D012552
+property_value: skos:exactMatch NCIT:C35000
+property_value: skos:exactMatch Orphanet:1247
+property_value: skos:exactMatch SCTID:10087007
+property_value: skos:exactMatch UMLS:C0036323
+
+[Term]
+id: MONDO:0015474
+name: cryptosporidiosis
+def: "Intestinal infection with organisms of the genus Cryptosporidium. It occurs in both animals and humans. Symptoms include severe diarrhea." [MESH:D003457]
+subset: doid_rare {source="DOID:1733"}
+subset: ordo_disorder {source="Orphanet:697096"}
+subset: orphanet_rare {source="Orphanet:697096"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "Cryptosporidioses" RELATED [MESH:D003457]
+synonym: "Cryptosporidium caused disease or disorder" EXACT [MONDO:patterns/specific_infectious_disease_by_agent]
+synonym: "Cryptosporidium disease or disorder" EXACT []
+synonym: "Cryptosporidium infection" EXACT [NCIT:C128408, Orphanet:697096]
+synonym: "Cryptosporidium infectious disease" EXACT []
+synonym: "intestinal cryptosporidiosis" EXACT [DOID:1733, icd11.foundation:1837013982, ICD9CM:007.4]
+xref: DOID:1733 {source="MONDO:equivalentTo"}
+xref: ICD10CM:A07.2 {source="Orphanet:1549/e", source="MONDO:equivalentTo", source="DOID:1733", source="Orphanet:1549"}
+xref: icd11.foundation:1837013982 {source="MONDO:equivalentTo"}
+xref: ICD9:007.4 {source="DOID:1733"}
+xref: MedDRA:10011502 {source="Orphanet:1549/e", source="Orphanet:1549"}
+xref: MEDGEN:41362 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D003457 {source="Orphanet:1549/e", source="MONDO:equivalentTo", source="DOID:1733", source="Orphanet:1549"}
+xref: NCIT:C128408 {source="MONDO:equivalentTo"}
+xref: Orphanet:1549 {source="MONDO:equivalentObsolete"}
+xref: Orphanet:697096 {source="MONDO:equivalentTo"}
+xref: SCTID:66160001 {source="MONDO:equivalentTo"}
+xref: UMLS:C0010418 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:41362"}
+is_a: MONDO:0005707 {source="DOID:1733", source="MESH:D003457"} ! coccidiosis
+is_a: MONDO:0024270 {source="MESH:D003457", source="MONDO:Entailed"} ! parasitic intestinal disorder
+intersection_of: MONDO:0005550 ! infectious disease
+intersection_of: disease_has_infectious_agent NCBITaxon:5806 ! Cryptosporidium
+relationship: disease_has_feature MONDO:0001517 {source="MONDO:Wikidata"} ! dysentery
+relationship: disease_has_infectious_agent NCBITaxon:5807 {source="MONDO:Wikidata"} ! Cryptosporidium parvum
+property_value: curated_content_resource "https://www.malacards.org/card/cryptosporidiosis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/6219/cryptosporidiosis" xsd:anyURI {source="GARD:0006219"}
+property_value: skos:closeMatch MEDDRA:10011502
+property_value: skos:exactMatch DOID:1733
+property_value: skos:exactMatch icd10cm:A07.2
+property_value: skos:exactMatch icd11.foundation:1837013982
+property_value: skos:exactMatch MEDGEN:41362
+property_value: skos:exactMatch MESH:D003457
+property_value: skos:exactMatch NCIT:C128408
+property_value: skos:exactMatch Orphanet:697096
+property_value: skos:exactMatch SCTID:66160001
+property_value: skos:exactMatch UMLS:C0010418
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/infectious_disease_by_agent.yaml
+
+[Term]
+id: MONDO:0016490
+name: hemoglobin C-beta-thalassemia syndrome
+def: "Hemoglobin C - beta-thalassemia (HbC - BT) is a form of beta-thalassemia resulting in moderate hemolytic anemia." [Orphanet:231242]
+subset: gard_rare {source="GARD:0020608", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:231242"}
+subset: orphanet_rare {source="Orphanet:231242"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "C-beta-thalassemia" EXACT [Orphanet:231242]
+synonym: "HBC-beta-thalassemia syndrome" EXACT [Orphanet:231242]
+xref: GARD:0020608 {source="MONDO:GARD"}
+xref: MEDGEN:526128 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: Orphanet:231242 {source="MONDO:equivalentTo"}
+xref: UMLS:C0221020 {source="MEDGEN:526128", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0017145 {source="Orphanet:231242"} ! beta-thalassemia and related diseases
+property_value: curated_content_resource "https://www.malacards.org/card/hemoglobin_c_beta_thalassemia_syndrome" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch MEDGEN:526128
+property_value: skos:exactMatch Orphanet:231242
+property_value: skos:exactMatch UMLS:C0221020
+
+[Term]
+id: MONDO:0017319
+name: hereditary elliptocytosis
+def: "Hereditary elliptocytosis (HE) is a rare clinically and genetically heterogeneous disorder of the red cell membrane characterized by manifestations ranging from mild to severe transfusion-dependent hemolytic anemia but with the majority of patients being asymptomatic." [Orphanet:288]
+subset: doid_rare {source="DOID:2373"}
+subset: gard_rare {source="GARD:0006621", source="MONDO:GARD"}
+subset: nord_rare {source="NORD:1935", source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:288"}
+subset: orphanet_rare {source="Orphanet:288"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "congenital elliptocytosis" EXACT [DOID:2373, icd11.foundation:679955609]
+synonym: "Hashimoto Encephalopathy" EXACT [NORD:1935] {OMO:0002001="https://w3id.org/information-resource-registry/nord"}
+synonym: "HE" EXACT ABBREVIATION [Orphanet:288]
+synonym: "hereditary ovalocytosis" EXACT [icd11.foundation:679955609, NCIT:C35882]
+synonym: "ovalocytosis" EXACT [DOID:2373, ICD10CM:D58.1, icd11.foundation:679955609]
+xref: DOID:2373 {source="MONDO:equivalentTo"}
+xref: GARD:0006621 {source="MONDO:GARD"}
+xref: ICD10CM:D58.1 {source="Orphanet:288/specific", source="DOID:2373", source="Orphanet:288/e", source="MONDO:equivalentTo", source="Orphanet:288"}
+xref: icd11.foundation:679955609 {source="MONDO:equivalentTo", source="Orphanet:288"}
+xref: MedDRA:10014490 {source="Orphanet:288/e", source="Orphanet:288"}
+xref: MEDGEN:41747 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D004612 {source="DOID:2373", source="Orphanet:288/e", source="MONDO:equivalentTo", source="Orphanet:288"}
+xref: NANDO:2200630 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NCIT:C35882 {source="DOID:2373", source="MONDO:equivalentTo"}
+xref: NORD:1935 {source="MONDO:NORD"}
+xref: Orphanet:288 {source="DOID:2373", source="MONDO:equivalentTo"}
+xref: SCTID:178935009 {source="DOID:2373", source="MONDO:equivalentTo"}
+xref: UMLS:C0013902 {source="MONDO:equivalentTo", source="MEDGEN:41747", source="MONDO:MEDGEN"}
+is_a: MONDO:0003664 {source="Orphanet:288"} ! hemolytic anemia
+property_value: curated_content_resource "https://www.malacards.org/card/hereditary_elliptocytosis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:closeMatch MEDDRA:10014490
+property_value: skos:exactMatch DOID:2373
+property_value: skos:exactMatch icd10cm:D58.1
+property_value: skos:exactMatch icd11.foundation:679955609
+property_value: skos:exactMatch MEDGEN:41747
+property_value: skos:exactMatch MESH:D004612
+property_value: skos:exactMatch NCIT:C35882
+property_value: skos:exactMatch Orphanet:288
+property_value: skos:exactMatch SCTID:178935009
+property_value: skos:exactMatch UMLS:C0013902
+
+[Term]
+id: MONDO:0017910
+name: dehydrated hereditary stomatocytosis
+def: "Dehydrated hereditary stomatocytosis (DHS) is a rare hemolytic anemia characterized by a decreased red cell osmotic fragility due to a defect in cation permeability, resulting in red cell dehydration and mild to moderate compensated hemolysis. Pseudohyperkalemia (loss of potassium ions from red cells on storage at room temperature) is sometimes observed." [Orphanet:3202]
+subset: doid_rare {source="DOID:0111575"}
+subset: gard_rare {source="GARD:0005623", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:3202"}
+subset: orphanet_rare {source="Orphanet:3202"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "Desiccytosis hereditary" RELATED [GARD:0005623]
+synonym: "hereditary xerocytosis" EXACT [DOID:0111575, GARD:0005623, Orphanet:3202]
+synonym: "xerocytosis hereditary" RELATED [GARD:0005623]
+xref: DOID:0111575 {source="MONDO:equivalentTo"}
+xref: GARD:0005623 {source="MONDO:GARD"}
+xref: icd11.foundation:799088159 {source="MONDO:equivalentTo"}
+xref: MEDGEN:124415 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: NANDO:2200633 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: Orphanet:3202 {source="GARD:0005623", source="MONDO:equivalentTo"}
+xref: SCTID:715526002 {source="MONDO:equivalentTo"}
+xref: UMLS:C0272051 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:124415"}
+is_a: MONDO:0020102 {source="Orphanet:3202", source="icd11.foundation:799088159"} ! hereditary stomatocytosis
+property_value: skos:exactMatch DOID:0111575
+property_value: skos:exactMatch icd11.foundation:799088159
+property_value: skos:exactMatch MEDGEN:124415
+property_value: skos:exactMatch Orphanet:3202
+property_value: skos:exactMatch SCTID:715526002
+property_value: skos:exactMatch UMLS:C0272051
+
+[Term]
+id: MONDO:0018177
+name: glioblastoma
+def: "The most malignant astrocytic tumor (WHO grade IV). It is composed of poorly differentiated neoplastic astrocytes and it is characterized by the presence of cellular polymorphism, nuclear atypia, brisk mitotic activity, vascular thrombosis, microvascular proliferation and necrosis. It typically affects adults and is preferentially located in the cerebral hemispheres. It may develop from diffuse astrocytoma WHO grade II or anaplastic astrocytoma (secondary glioblastoma, IDH-mutant), but more frequently, it manifests after a short clinical history de novo, without evidence of a less malignant precursor lesion (primary glioblastoma, IDH- wildtype). (Adapted from WHO)" [NCIT:C3058]
+subset: doid_rare {source="DOID:3068"}
+subset: gard_rare {source="GARD:0002491", source="MONDO:GARD"}
+subset: ordo_disorder {source="Orphanet:360"}
+subset: orphanet_rare {source="Orphanet:360"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "GBM" EXACT ABBREVIATION [DOID:3068, NCIT:C3058, Orphanet:360]
+synonym: "GBM (glioblastoma)" EXACT [NCIT:C3058]
+synonym: "giant cell glioblastoma (histologic variant)" RELATED [GARD:0002491]
+synonym: "glioblastoma" EXACT [DOID:3068, MONDO:ambiguous, NCIT:C3058, Orphanet:360]
+synonym: "glioblastoma (disease)" EXACT [https://orcid.org/0000-0002-6601-2165]
+synonym: "glioblastoma multiforme" EXACT [DOID:3068, NCIT:C3058, Orphanet:360]
+synonym: "glioblastoma multiforme (disease)" EXACT [MONDO:0002498]
+synonym: "gliosarcoma (histologic variant)" RELATED [GARD:0002491]
+synonym: "grade IV adult astrocytic tumor" NARROW []
+synonym: "grade IV adult astrocytic tumour" NARROW OMO:0003005 []
+synonym: "grade IV astrocytic neoplasm" EXACT []
+synonym: "grade IV astrocytic tumor" EXACT []
+synonym: "grade IV astrocytic tumour" EXACT OMO:0003005 []
+synonym: "grade IV astrocytoma" EXACT []
+synonym: "spongioblastoma multiforme" EXACT [DOID:3068, NCIT:C3058]
+synonym: "WHO grade IV glioma" EXACT []
+xref: DOID:3068 {source="MONDO:equivalentTo"}
+xref: EFO:0000519 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: GARD:0002491 {source="MONDO:GARD"}
+xref: HP:0012174 {source="MONDO:otherHierarchy"}
+xref: HP:0100843 {source="MONDO:otherHierarchy"}
+xref: ICDO:9440/3 {source="NCIT:C3058"}
+xref: MedDRA:10018336 {source="Orphanet:360", source="Orphanet:360/e"}
+xref: MedDRA:10018337 {source="Orphanet:360", source="Orphanet:360/e"}
+xref: MEDGEN:42228 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D005909 {source="https://orcid.org/0000-0003-1967-3726", source="DOID:3068", source="MONDO:equivalentTo", source="Orphanet:360", source="Orphanet:360/e"}
+xref: NANDO:2200087 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NCIT:C3058 {source="DOID:3068", source="MONDO:equivalentTo"}
+xref: ONCOTREE:GB {source="MONDO:equivalentTo"}
+xref: ONCOTREE:GBM {source="MONDO:equivalentTo"}
+xref: Orphanet:360 {source="MONDO:equivalentTo"}
+xref: SCTID:393563007 {source="MONDO:equivalentTo"}
+xref: UMLS:C0017636 {source="MEDGEN:42228", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0016680 {source="NCIT:C3058", source="Orphanet:360"} ! high grade astrocytic tumor
+relationship: has_characteristic MONDO:0024494 {source="NCIT:C3058"} ! tumor grade 4, general grading system
+property_value: curated_content_resource "https://www.malacards.org/card/glioblastoma" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/5798" xsd:anyURI
+property_value: IAO:0000589 "glioblastoma (disease)" xsd:string
+property_value: skos:closeMatch MEDDRA:10018336
+property_value: skos:closeMatch MEDDRA:10018337
+property_value: skos:exactMatch DOID:3068
+property_value: skos:exactMatch EFO:0000519
+property_value: skos:exactMatch MEDGEN:42228
+property_value: skos:exactMatch MESH:D005909
+property_value: skos:exactMatch NCIT:C3058
+property_value: skos:exactMatch Orphanet:360
+property_value: skos:exactMatch SCTID:393563007
+property_value: skos:exactMatch UMLS:C0017636
+
+[Term]
+id: MONDO:0019107
+name: Rh deficiency syndrome
+def: "The Rh deficiency syndrome, also known as Rh-null syndrome, is a blood disorder where people have red blood cells (RBCs) lacking all Rh antigens. The Rh antigens maintain the integrity of the RBC membrane and therefore, RBCs which lack Rh antigens have an abnormal shape. There are two types of Rh deficiency syndrome: The regulator type is associated with many different changes (mutations) in the RHAG gene. The amorph type is caused by inactive copies of a gene (silent alleles) at the RH locus. As a result, the RBCs do not express any of the Rh antigens. The absence of the Rh complex alters the RBC shape, increases its tendency to break down (osmotic fragility), and shortens its lifespan, resulting in a hemolytic anemia that is usually mild. These patients are at risk of having adverse transfusion reactions because they may produce antibodies against several of the Rh antigens and can only receive blood from people who have the same condition. Rh deficiency syndrome is inherited in an autosomal recessive manner. Management is individualized according to the severity of hemolytic anemia." [https://rarediseases.info.nih.gov/diseases/12916/rh-deficiency-syndrome]
+subset: doid_rare {source="DOID:0050641"}
+subset: gard_rare {source="GARD:0012916", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:71275"}
+subset: orphanet_rare {source="Orphanet:71275"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "anemia, hemolytic, Rh-null, regulator type" EXACT []
+synonym: "Rh deficiency syndrome" EXACT [DOID:0050641, icd11.foundation:1554765420, Orphanet:71275]
+synonym: "Rh-null syndrome" EXACT [icd11.foundation:1554765420, Orphanet:71275]
+synonym: "RH-null, regulator type" RELATED []
+synonym: "RHN" RELATED ABBREVIATION []
+synonym: "RHNR" RELATED ABBREVIATION []
+xref: DOID:0050641 {source="MONDO:equivalentTo"}
+xref: GARD:0012916 {source="MONDO:GARD"}
+xref: icd11.foundation:1554765420 {source="MONDO:equivalentTo"}
+xref: MEDGEN:75772 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:C562717 {source="MONDO:equivalentTo"}
+xref: OMIM:268150 {source="DOID:0050641", source="Orphanet:71275", source="MONDO:equivalentTo"}
+xref: Orphanet:71275 {source="MONDO:equivalentTo", source="OMIM:268150"}
+xref: SCTID:37272000 {source="MONDO:equivalentTo"}
+xref: UMLS:C0272052 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:75772"}
+is_a: MONDO:0003689 ! familial hemolytic anemia
+is_a: MONDO:0020102 {source="Orphanet:71275", source="icd11.foundation:1554765420"} ! hereditary stomatocytosis
+relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/10006 {source="OMIM:268150"} ! RHAG
+property_value: curated_content_resource "https://www.malacards.org/card/hemolytic_disease_of_fetus_and_newborn_rh_induced" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: curated_content_resource "https://www.malacards.org/card/rh_null_regulator_type" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4521" xsd:anyURI
+property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/12916/rh-deficiency-syndrome" xsd:anyURI {source="GARD:0012916"}
+property_value: skos:exactMatch DOID:0050641
+property_value: skos:exactMatch icd11.foundation:1554765420
+property_value: skos:exactMatch MEDGEN:75772
+property_value: skos:exactMatch MESH:C562717
+property_value: skos:exactMatch OMIM:268150
+property_value: skos:exactMatch Orphanet:71275
+property_value: skos:exactMatch SCTID:37272000
+property_value: skos:exactMatch UMLS:C0272052
+
+[Term]
+id: MONDO:0019350
+name: hereditary spherocytosis
+def: "Hereditary spherocytosis is a congenital hemolytic anemia with a wide clinical spectrum (from symptom-free carriers to severe hemolysis) characterized by anemia, variable jaundice, splenomegaly and cholelithiasis." [Orphanet:822]
+subset: clingen {source="MONDO:CLINGEN"}
+subset: doid_rare {source="DOID:12971"}
+subset: gard_rare {source="GARD:0006639", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD", source="NORD:777"}
+subset: ordo_disorder {source="Orphanet:822"}
+subset: orphanet_rare {source="Orphanet:822"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "congenital spherocytic hemolytic anaemia" EXACT OMO:0003005 []
+synonym: "congenital spherocytosis" RELATED [GARD:0006639]
+synonym: "hereditary spherocytosis" EXACT [DOID:12971, ICD10CM:D58.0, icd11.foundation:1305248013, NCIT:C97074, Orphanet:822] {OMO:0002001="https://w3id.org/information-resource-registry/clingen"}
+synonym: "Minkowski-Chauffard disease" EXACT [icd11.foundation:1305248013, Orphanet:822]
+synonym: "spherocytic anaemia" EXACT OMO:0003005 []
+xref: DOID:12971 {source="MONDO:equivalentTo"}
+xref: GARD:0006639 {source="MONDO:GARD"}
+xref: ICD10CM:D58.0 {source="Orphanet:822", source="MONDO:equivalentTo", source="Orphanet:822/specific", source="Orphanet:822/e", source="DOID:12971"}
+xref: icd11.foundation:1305248013 {source="MONDO:equivalentTo"}
+xref: ICD9:282.0 {source="MONDO:equivalentTo", source="MONDO:i2s", source="DOID:12971"}
+xref: MedDRA:10019904 {source="Orphanet:822", source="Orphanet:822/e"}
+xref: MEDGEN:52450 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D013103 {source="Orphanet:822", source="MONDO:equivalentTo", source="Orphanet:822/e", source="DOID:12971"}
+xref: NANDO:2200622 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NCIT:C97074 {source="MONDO:equivalentTo", source="DOID:12971"}
+xref: NORD:777 {source="MONDO:NORD"}
+xref: Orphanet:822 {source="MONDO:equivalentTo", source="DOID:12971"}
+xref: SCTID:55995005 {source="MONDO:equivalentTo", source="DOID:12971"}
+xref: UMLS:C0037889 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:52450"}
+is_a: MONDO:0003689 {source="DOID:12971", source="MESH:D013103", source="NCIT:C97074/inferred"} ! familial hemolytic anemia
+relationship: curated_content_resource https://search.clinicalgenome.org/kb/conditions/MONDO:0019350 {source="MONDO:CLINGEN"}
+property_value: curated_content_resource "https://www.malacards.org/card/hereditary_spherocytosis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/6639/hereditary-spherocytosis" xsd:anyURI {source="GARD:0006639"}
+property_value: skos:closeMatch MEDDRA:10019904
+property_value: skos:exactMatch DOID:12971
+property_value: skos:exactMatch icd10cm:D58.0
+property_value: skos:exactMatch icd11.foundation:1305248013
+property_value: skos:exactMatch MEDGEN:52450
+property_value: skos:exactMatch MESH:D013103
+property_value: skos:exactMatch NCIT:C97074
+property_value: skos:exactMatch Orphanet:822
+property_value: skos:exactMatch SCTID:55995005
+property_value: skos:exactMatch UMLS:C0037889

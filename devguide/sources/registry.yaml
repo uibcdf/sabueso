@@ -1074,7 +1074,7 @@ resources:
     description: "A disease ontology integrating DOID, Orphanet, OMIM, NCIT, MeSH, EFO, ICD, MedGen and others, with stated equivalences to each."
     since: 2026-09-29
     proposed_by: "Foundational route: the disease as an entity (#90)"
-    reason: "The anchor of disease cards. An external disease id joins a MONDO term only through an equivalence MONDO states (MONDO:equivalentTo, rule mondo_equivalence@1); related xrefs are kept apart and never read as identity."
+    reason: "The anchor of disease cards, and the identity of the diseases on protein cards (disease_identity, Card.diseases()). An external disease id joins a MONDO term only through an equivalence MONDO states (MONDO:equivalentTo, rule mondo_equivalence@1); related xrefs are kept apart and never read as identity."
     access: "Dated GitHub releases; mondo.obo (about 53 MB) downloaded once per process, checked against the SHA-256 GitHub states, and indexed; resolve('mondo:...'), or any id of a terminology MONDO maps"
     licence: "CC BY 4.0 (cite Mondo and the release)"
     module: [sabueso.tools.db.mondo, sabueso.mappings.mondo]

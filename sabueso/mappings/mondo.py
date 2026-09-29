@@ -89,3 +89,37 @@ def map_disease(
         "source_assertions": assertions,
         "relationships": relationships,
     }
+
+
+def map_equivalences(answers: Dict[str, Any], accession: str) -> Dict[str, Any]:
+    """``same_as`` (id → ``mondo:<term>``) for each id MONDO states is the same disease
+    as one of its terms, each backed by a MONDO SourceAssertion (#90)."""
+    assertions, relationships = [], []
+    for curie, answer in sorted(answers.items()):
+        mondo = answer.get("mondo")
+        if not mondo or curie == mondo:
+            continue
+        made = make_source_assertion(
+            "relationships.same_as",
+            {"equivalent_id": curie, "mondo": mondo, "name": answer.get("name")},
+            SOURCE,
+            mondo,
+            answer.get("retrieved_at") or "",
+            subject_ref=curie,
+        )
+        if answer.get("version") is not None:
+            made["source"]["version"] = str(answer["version"])
+        assertions.append(made)
+        qualifiers = {"basis": "mondo_equivalence@1", "source": SOURCE}
+        if answer.get("name"):
+            qualifiers["mondo_name"] = answer["name"]
+        relationships.append(
+            make_relationship(
+                curie,
+                "same_as",
+                disease_ref(mondo),
+                qualifiers=qualifiers,
+                source_assertion_ids=[made["id"]],
+            )
+        )
+    return {"source_assertions": assertions, "relationships": relationships}

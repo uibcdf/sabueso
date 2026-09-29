@@ -1053,3 +1053,12 @@ uibcdf/sabueso#90, step 1. Card schema 0.3.7.
   as a disease.
 - **Next steps (#90):** relate the diseases on protein and molecule cards through these
   equivalences, then disease → targets.
+- **Step 2 (same day): a protein's diseases, grouped.** `disease_identity` asks MONDO
+  about every disease id the other sources put on a protein card: associations,
+  UniProt's MIM numbers, and ClinVar's condition ids. Each stated equivalence becomes a
+  `same_as` relationship to the MONDO term, backed by a MONDO SourceAssertion.
+  `Card.diseases()` groups the statements through those relationships, or when they
+  name the same id (`disease_grouping@1`). Nothing else groups, not even an identical
+  name. For HsTIM, triosephosphate isomerase deficiency is one disease stated by five
+  sources. MedGen concept ids and some EFO terms stay apart, with their reason. In the
+  glossary (`entities()`), those ids are diseases, anchored at their MONDO term.

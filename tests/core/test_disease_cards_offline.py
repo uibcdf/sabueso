@@ -157,3 +157,120 @@ def test_the_public_function_and_the_entity_type(mondo):
     assert card.get("names.canonical_name")["value"] == "Chagas disease"
     with pytest.raises(ArgumentError):
         sabueso.resolve("MONDO:0001444", entity_type="illness")
+
+
+# --- A protein's diseases, grouped through MONDO (#90, step 2) -------------------------
+
+
+@pytest.fixture(scope="module")
+def hstim(mondo):
+    import warnings
+
+    from sabueso.resolver import EntityResolver, FixtureUniProtClient
+    from sabueso.tools.db.clinvar import FixtureClinVarClient
+    from sabueso.tools.db.diseases import FixtureDISEASESClient
+    from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
+    from sabueso.tools.db.orphadata import FixtureOrphadataClient
+
+    def build(**identity):
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")  # the saved ClinVar and OT rows are cuts
+            card, _ = sabueso.resolve(
+                "P60174",
+                resolver=EntityResolver(FixtureUniProtClient("temp_data")),
+                diseases={"channels": ["knowledge", "experiments", "textmining"]},
+                diseases_client=FixtureDISEASESClient("temp_data"),
+                open_targets={},
+                open_targets_client=FixtureOpenTargetsClient("temp_data"),
+                orphadata=True,
+                orphadata_client=FixtureOrphadataClient("temp_data"),
+                clinvar={},
+                clinvar_client=FixtureClinVarClient("temp_data"),
+                **identity,
+            )
+        return card
+
+    return build(disease_identity=True, mondo_client=mondo), build()
+
+
+def test_one_disease_across_every_source_that_states_it(hstim):
+    card, _ = hstim
+    view = card.diseases()
+    assert view["rule"]["rule"] == "disease_grouping@1"
+    (tpi,) = [d for d in view["diseases"] if d["mondo"] == "MONDO:0014221"]
+    assert tpi["mondo_name"] == "triosephosphate isomerase deficiency"
+    assert tpi["sources"] == [
+        "ClinVar",
+        "DISEASES",
+        "Open Targets",
+        "Orphanet",
+        "UniProt",
+    ]
+    assert {"doid:DOID:0050884", "orphanet:ORPHA:868", "omim:615512"} <= set(
+        tpi["refs"]
+    )
+    bases = {s["grouped_by"] for s in tpi["statements"]}
+    assert bases == {"same_as", "named_directly"}
+
+
+def test_identity_is_a_stated_same_as_never_a_name(hstim):
+    card, _ = hstim
+    for rel in card.relationships("same_as"):
+        if rel["object_ref"].startswith("mondo:"):
+            assert rel["qualifiers"]["basis"] == "mondo_equivalence@1"
+            assert rel["qualifiers"]["source"] == "MONDO"
+            (sa,) = [
+                card.source_assertion_store.get(i) for i in rel["source_assertion_ids"]
+            ]
+            assert sa["source"]["name"] == "MONDO"
+            assert sa["source"]["version"] == "2026-09-01"
+
+
+def test_what_mondo_does_not_state_stays_apart_with_its_reason(hstim):
+    card, _ = hstim
+    ungrouped = card.diseases()["ungrouped"]
+    # MedGen concept ids (ClinVar) and some EFO terms (Open Targets) have no stated
+    # MONDO equivalence: they are kept apart, never matched by name.
+    assert ungrouped
+    assert {u["reason"] for u in ungrouped} == {"no_stated_equivalence"}
+    assert any(u["curie"].startswith("MEDGEN:C") for u in ungrouped)
+    (record,) = [e for e in card.quality["enrichments"] if e["source"] == "MONDO"]
+    assert record["status"] == "added" and record["version"] == "2026-09-01"
+
+
+def test_without_the_enrichment_only_the_same_id_groups(hstim):
+    _, card = hstim
+    view = card.diseases()
+    # Statements that name the same MONDO id are one disease; everything else waits
+    # for MONDO's answer.
+    assert {s["grouped_by"] for d in view["diseases"] for s in d["statements"]} == {
+        "named_directly"
+    }
+    assert {u["reason"] for u in view["ungrouped"]} == {"identity_not_queried"}
+    assert any(u["ref"] == "doid:DOID:0050884" for u in view["ungrouped"])
+
+
+def test_disease_ids_are_diseases_in_the_glossary(hstim):
+    card, _ = hstim
+    entities = card.entities()
+    entry = entities["mondo:MONDO:0014221"]
+    assert entry["entity_type"] == "disease"
+    assert "DOID:0050884" in entry["records"]
+    assert (
+        entities[card.meta["card_id"].split("sabueso:protein:")[1]]["entity_type"]
+        == "protein"
+    )
+
+
+def test_a_protein_with_no_disease_has_nothing_to_ask(mondo):
+    from sabueso.resolver import EntityResolver, FixtureUniProtClient
+
+    card, _ = sabueso.resolve(
+        "P52270",
+        resolver=EntityResolver(FixtureUniProtClient("temp_data")),
+        disease_identity=True,
+        mondo_client=mondo,
+    )
+    (record,) = [e for e in card.quality["enrichments"] if e["source"] == "MONDO"]
+    assert record["status"] == "not_found"
+    assert record["detail"] == "the card names no disease"

@@ -631,6 +631,11 @@ A disease is an entity of its own (`entity_type: disease`), anchored at a MONDO 
   scope as `kind`), `annotations.definition` and `annotations.disease_subsets`.
 - **Relationships:** `subclass_of` (disease → `mondo:<parent>`), one per parent MONDO
   states.
+- **On protein cards** (`disease_identity`): `same_as` (a disease id as MONDO spells it,
+  e.g. `DOID:0050884` → `mondo:<term>`), one per id on the card that MONDO states is the
+  same disease. Qualifiers: `basis` (`mondo_equivalence@1`), `source` (`MONDO`),
+  `mondo_name`. `Card.diseases()` groups the card's disease statements through them
+  (`disease_grouping@1`).
 
 ## Ligands (ProteinCard)
 Ligands are not a card section (the reserved `ligands.items` field was removed, #25).

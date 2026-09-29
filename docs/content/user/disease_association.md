@@ -148,3 +148,37 @@ card.relationships("subclass_of")  # its parent terms in MONDO
   and are reported as not found, never as a disease.
 - MONDO's release file (about 53 MB) is downloaded once per process and checked against
   its published SHA-256.
+
+## A protein's diseases, grouped (MONDO)
+
+The same disease reaches a protein card under several ids: DISEASES writes
+`doid:DOID:0050884`, Orphanet `orphanet:ORPHA:868`, UniProt the MIM number `615512`,
+ClinVar a list of ids per condition. `disease_identity=True` asks MONDO which of them
+it states are the same disease, and `Card.diseases()` groups them:
+
+```python
+card, _ = sabueso.resolve(
+    "P60174",
+    diseases={},
+    open_targets={},
+    orphadata=True,
+    clinvar={},
+    disease_identity=True,
+)
+view = card.diseases()
+for disease in view["diseases"]:
+    print(disease["mondo"], disease.get("mondo_name"), disease["sources"])
+for item in view["ungrouped"]:
+    print(item["ref"], item["source"], item["reason"])
+print(view["rule"]["rule"])  # disease_grouping@1
+```
+
+- Each id MONDO states is the same disease becomes a `same_as` relationship to its
+  MONDO term (`basis: mondo_equivalence@1`), backed by a MONDO SourceAssertion.
+- Statements are grouped only through those, or when they name the same id. For human
+  triosephosphate isomerase, triosephosphate isomerase deficiency is one disease stated
+  by ClinVar, DISEASES, Open Targets, Orphanet and UniProt.
+- What MONDO does not state stays apart, with its reason (`no_stated_equivalence`),
+  and is never grouped by name. Examples are MedGen concept ids and some EFO terms.
+- `disease_identity` reads the diseases the other sources put on the card, so ask for
+  them in the same call.

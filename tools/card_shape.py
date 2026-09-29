@@ -141,6 +141,8 @@ def fixture_cards() -> List[dict]:
             clinvar_client=FixtureClinVarClient(data),
             gnomad={},
             gnomad_client=FixtureGnomADClient(data),
+            disease_identity=True,
+            mondo_client=FixtureMONDOClient(data),
         )
         hstim.add_literature_assertion(
             "features_positional.natural_variant",

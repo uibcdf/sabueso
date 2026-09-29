@@ -27,6 +27,7 @@ from sabueso.tools.db.clinvar import FixtureClinVarClient
 from sabueso.tools.db.diseases import FixtureDISEASESClient
 from sabueso.tools.db.gnomad import FixtureGnomADClient
 from sabueso.tools.db.interpro import FixtureInterProClient
+from sabueso.tools.db.mondo import FixtureMONDOClient
 from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
 from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
 from sabueso.tools.db.orphadata import FixtureOrphadataClient
@@ -56,6 +57,7 @@ def clients():
         clinvar_client=FixtureClinVarClient("temp_data"),
         gnomad_client=FixtureGnomADClient("temp_data"),
         skempi_client=FixtureSKEMPIClient("temp_data"),
+        mondo_client=FixtureMONDOClient("temp_data"),
     )
 
 
@@ -111,6 +113,7 @@ def test_a_query_is_declared_and_normalized(query):
         "family_sites": True,
         "ligand_sites": True,
         "skempi": True,
+        "disease_identity": True,
         "chembl": {},
     }
     narrow = sabueso.KnowledgeQuery(

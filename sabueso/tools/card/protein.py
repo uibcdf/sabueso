@@ -86,6 +86,8 @@ def resolve_protein_card(
     gnomad_client: Any | None = None,
     skempi: bool = False,
     skempi_client: Any | None = None,
+    disease_identity: bool = False,
+    mondo_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -160,6 +162,12 @@ def resolve_protein_card(
     the PDB entries whose chains UniProt states are this protein. A mutation is placed
     in UniProt numbering only through the author numbering RCSB states for that chain,
     so ask for the ``structures`` too, and only when its residue matches.
+
+    ``disease_identity`` asks MONDO which of the disease ids the other sources put on
+    the card are the same disease (``same_as`` to ``mondo:<term>``, only where MONDO
+    states it), so that ``Card.diseases()`` can group them. It reads the diseases of
+    ``diseases``, ``open_targets``, ``orphadata``, ``clinvar`` and UniProt, so ask for
+    those in the same call.
     """
     if ncbi_gene:
         import copy
@@ -244,6 +252,7 @@ def resolve_protein_card(
         "gnomad": (gnomad, gnomad_client),
         "clinvar": (clinvar, clinvar_client),
         "skempi": (skempi, skempi_client),
+        "disease_identity": (disease_identity, mondo_client),
     }
     context = Context(anchor, entry, mappings)
     run_stage("after_structures", context, requested, mappings, enrichments)

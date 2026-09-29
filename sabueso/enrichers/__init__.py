@@ -240,6 +240,7 @@ def _registered() -> List[Enricher]:
     from . import (
         alphafold,
         clinvar,
+        disease_identity,
         diseases,
         gnomad,
         interpro,
@@ -268,6 +269,8 @@ def _registered() -> List[Enricher]:
         gnomad.ENRICHER,
         clinvar.ENRICHER,
         skempi.ENRICHER,
+        # Last: it reads the diseases the sources above put on the card (#90).
+        disease_identity.ENRICHER,
     ]
 
 

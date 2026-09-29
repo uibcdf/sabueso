@@ -23,7 +23,8 @@ the same ``content_id`` even when the sources were read again (``same_knowledge`
 What each aspect asks the sources for, and which knowledge areas it covers, is fixed by
 the mapping ``packet_aspects@2``. It never changes once published: a change is a new
 version, and a test pins what each version asks. ``@1`` was published in 0.6.0; ``@2``
-adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83).
+adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83), and MONDO's disease
+identity and the grouped diseases to ``disease_association`` (#90).
 
 The shared contract (query and packet shapes, references, the boundary with MOLI's
 Context Assembly) is proposed in uibcdf/moli#22; this is Sabueso's prototype of it.
@@ -130,6 +131,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
             "relationships.associated_with",
             "annotations.disease",
             "annotations.clinical_variants",
+            "relationships.same_as (MONDO)",
         ),
     },
     "biological_context": {
@@ -354,6 +356,7 @@ def _facts(aspect: str, card: Any) -> Dict[str, Any]:
                     key=lambda r: (r["object_ref"], r["qualifiers"].get("channel", "")),
                 )
             ],
+            "grouped": card.diseases(),
         }
     if aspect == "biological_context":
         return {

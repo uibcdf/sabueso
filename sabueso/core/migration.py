@@ -169,6 +169,11 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
                 "relationships.subclass_of",
             )
         ),
+        {
+            "path": "relationships.same_as (MONDO)",
+            "filled_by": "disease_identity",
+            "entity_types": ("protein",),
+        },
     ],
 }
 

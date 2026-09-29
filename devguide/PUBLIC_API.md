@@ -20,7 +20,8 @@ shows how to use them.
     - `predicted_structures`, `taxonomy`, `ncbi_gene`;
     - `phi_base` (pathogen phenotypes, #83), `diseases`, `open_targets` and
       `orphadata` (disease associations, #82), `reactome` (pathways, #83), `clinvar`
-      and `gnomad` (variants, #83);
+      and `gnomad` (variants, #83), `skempi` (interface mutations, #83),
+      `disease_identity` (MONDO identity of the card's diseases, #90);
     - each source's `*_client`, and `resolver`.
   - For small molecules: `unichem`, `pubchem`, `indications` and `trials` (#81).
   - For diseases: `mondo_client`.
@@ -53,6 +54,8 @@ shows how to use them.
   - `structures(include_fragments=False, region=None)` and `predicted_structures()`;
   - `oligomer()` and `ligand_sites()`;
   - `interface_mutations()` (SKEMPI, with ΔΔG under `binding_ddg@1`, #83);
+  - `diseases()` (a protein's diseases grouped by MONDO term, `disease_grouping@1`,
+    #90);
   - `bioactivities(include_indirect=False, thresholds=None)`;
   - `ligands(deck, ...)` and `compare_ligands(deck, other, other_deck, ...)`;
   - `literature()` and `claims(topic=None)`;
