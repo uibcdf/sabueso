@@ -1,6 +1,6 @@
 # Sabueso — Architecture
 
-What Sabueso is built of, as of release 0.4.0. `DATA_FLOW.md` follows one resolution
+What Sabueso is built of, as of release 0.6.0. `DATA_FLOW.md` follows one resolution
 through these parts; `PUBLIC_API.md` lists the public surface.
 
 ## Layers
@@ -16,6 +16,11 @@ through these parts; `PUBLIC_API.md` lists the public surface.
    - relationships;
    - one SourceAssertion per value the source asserts.
    Mappings live apart from source access, so that a transformation is written once.
+   **Enrichers** (`sabueso.enrichers`, #86) declare each source's contribution to a
+   card once: its option, areas, organism coverage and three steps (requests, fetch,
+   map). One runner handles coverage, failures and order, and the knowledge-state rows,
+   migration map and packet options are derived from the declarations. Clients share
+   the network, release-cache and key services of `tools/db/` (`SOURCE_ARCHITECTURE.md`).
 3. **Aggregation and selection** (`core.aggregator`, `core.merge`,
    `resolver.field_resolver`).
    - Mapping outputs are merged into one card.
@@ -104,14 +109,15 @@ through these parts; `PUBLIC_API.md` lists the public surface.
 
 ## Planned, not built (from the original design)
 
-- **Clinical layer.** Partly built (#81): ChEMBL indications and the trials they cite
-  (`Card.clinical()`). Still planned: pharmacology, ADMET, pharmacovigilance,
-  indications, contraindications and interactions, as a section apart from
-  physicochemical and biological data. Today only ChEMBL's `clinical.max_phase` exists.
+- **Clinical layer.** Partly built (#81): ChEMBL's `clinical.max_phase`, its drug
+  indications, and the trials they cite (`Card.clinical()`). Still planned:
+  pharmacology, ADMET, pharmacovigilance, contraindications and interactions, as a
+  section apart from physicochemical and biological data.
 - **Peptide cards.** `entity_type: peptide` exists; peptide sources and views do not.
 - **Inputs by sequence, SMILES/InChI or structure file.** Resolution takes identifiers
   and names today.
-- **KnowledgeQuery and knowledge packets** (`SCIENTIFIC_POTENTIAL.md`): a prototype on
-  main (`sabueso/core/packets.py`, #71). Its shared contract waits on uibcdf/moli#22.
+- **KnowledgeQuery and knowledge packets** (`SCIENTIFIC_POTENTIAL.md`): a prototype,
+  released in 0.6.0 (`sabueso/core/packets.py`, #71). Its shared contract waits on
+  uibcdf/moli#22.
 
 Their status is tracked in `ROADMAP.md`.

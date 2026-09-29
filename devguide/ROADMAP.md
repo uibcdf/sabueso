@@ -114,13 +114,13 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Use case | Status |
 |---|---|
 | 1. Interactions, ligands, pathways of a protein | done (pathway structure from Reactome, #83) |
-| 2. Clinical usage of ligands | partial (max phase only) |
-| 3. TopoMT: catalytic residues, mutations as structural features | partial (positional features, ligand and family sites; no TopoMT contract yet) |
+| 2. Clinical usage of ligands | partial (max phase and ChEMBL indications, #81; DrugBank clinical content deferred, licence) |
+| 3. TopoMT: catalytic residues, mutations as structural features | partial (positional features, ligand and family sites, interface mutations from SKEMPI, #83; no TopoMT contract yet) |
 | 4. PharmacophoreMT: deck of ligands | partial (ligand decks; no exchange format agreed) |
 | 5. Commercial availability of peptides | pending |
 | 6. Tissue-specific isoforms | partial (tissue specificity; UniProt isoforms and alternative sequences, #80; AlphaFold isoform models; isoform sequences not fetched) |
 | 7. Visualization (MolSysViewer) | partial (interfaces, mutations, sites, secondary structure from UniProt and per chain from RCSB, #80; no contract) |
-| 8. Clinical trials of ligands | pending |
+| 8. Clinical trials of ligands | done for the trials ChEMBL's indications cite (#81); a trial is never matched to a molecule by name |
 | 9. Disease associations; targets of a disease | partial (protein → disease from UniProt, DISEASES, Open Targets and Orphanet, #82; disease → targets pending) |
 | 10. Knowledge baseline for a target and a comparator (pilot route) | done |
 | 11. Curating what the literature states (pilot route) | done (human curation) |
@@ -139,8 +139,8 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Temporal knowledge | partial | snapshots, revisions, source releases; no "as of a date" query |
 | Knowledge from Nextia not imported automatically | done (as a boundary) | promotion of derived knowledge open in uibcdf/moli#17 |
 | Literature as a knowledge source | partial | human curation and literature views; automated extraction pending |
-| KnowledgeQuery (semantic queries over sources) | partial | prototype on main (#71): structured query, fixed aspect mapping; contract in uibcdf/moli#22 |
-| Knowledge packets (entities, facts, conflicts, unknowns) | partial | prototype on main (#71): pinned, stored, with a content-equivalence id; contract in uibcdf/moli#22 |
+| KnowledgeQuery (semantic queries over sources) | partial | prototype released in 0.6.0 (#71): a protein subject, a fixed aspect mapping; contract in uibcdf/moli#22 |
+| Knowledge packets (entities, facts, conflicts, unknowns) | partial | prototype released in 0.6.0 (#71): pinned, stored, with a content-equivalence id; contract in uibcdf/moli#22 |
 | Unknowns as first-class output | done | `knowledge_state()` (#56) |
 | Two levels of access (semantic and raw) | done | `resolve` and views; `tools.db.*.get_*` |
 | Patents | pending | SureChEMBL queued |
@@ -164,7 +164,8 @@ Delivered for the first pilot's knowledge baseline and structural inventory:
 
 Open, pilot-related:
 - #53, the reference form (waits on uibcdf/moli#3);
-- #60, biological context (deferred);
+- #60, biological context: step 1 (curated fields) released in 0.6.0; step 2
+  (VEuPathDB) blocked on access and terms (#84);
 - #30, ligand proximity to sites (deferred);
 - correspondence of regions across proteins. This one belongs to MolSysMT; Sabueso takes
   its residue maps (`residue_map`, `residue_maps`).
@@ -180,20 +181,23 @@ Foundational route, in the order proposed now:
    source it can reach, evaluated with one rubric (`SOURCE_COVERAGE.md`), and an
    architecture that scales to many sources. Wave 1 (target validation, disease,
    pathogen context) is evaluated and mostly in use. Wave 2 (every other queued source)
-   is evaluated too: no source is left unreviewed. Its order is interfaces (SKEMPI,
-   iPPI-DB), chemistry (ChEBI, chemical probes), identity (Ensembl), family-specific
-   sources, then patents and structures.
-1. **Knowledge packets and KnowledgeQuery (#71, uibcdf/moli#22).** A prototype is on
-   main: protein subject and comparator, seven aspects, pinned and stored packets, and
-   a content-equivalence id. Next: let real use (the pilot, MOLI Agent) decide the
-   aspects and the size of facts, and align with the MOLI contract once it is agreed.
-2. **UniProt isoforms and secondary structure.** Mapped on main (#80), with per-chain
+   is evaluated too: no source is left unreviewed. Its order is interfaces (SKEMPI, on
+   main after 0.6.0; iPPI-DB, blocked on access and terms, #84), chemistry (ChEBI,
+   chemical probes), identity (Ensembl), family-specific sources, then patents and
+   structures.
+1. **Knowledge packets and KnowledgeQuery (#71, uibcdf/moli#22).** A prototype is
+   released (0.6.0): protein subject and comparator, nine aspects, pinned and stored
+   packets, and a content-equivalence id. Next: let real use (the pilot, MOLI Agent)
+   decide the aspects and the size of facts (#88), and align with the MOLI contract once
+   it is agreed.
+2. **UniProt isoforms and secondary structure.** Released in 0.6.0 (#80), with per-chain
    secondary structure from RCSB. Isoform sequences remain.
-3. **Clinical layer (#81).** Step 1 on main: ChEMBL indications, and trials only by the
-   NCT ids ChEMBL states (`Card.clinical()`). DrugBank stays deferred for clinical
-   content (CC BY-NC). Next: adverse events (openFDA), after a terms review.
-4. **Disease association (#82).** DISEASES, Open Targets and Orphanet are on main.
-   Next: disease → targets, and Open Targets' tractability. Pathogen targets need other sources (`SOURCE_COVERAGE.md`).
+3. **Clinical layer (#81, closed).** Step 1 released in 0.6.0: ChEMBL indications, and
+   trials only by the NCT ids ChEMBL states (`Card.clinical()`). DrugBank stays deferred
+   for clinical content (CC BY-NC). Next: adverse events (openFDA), after a terms review.
+4. **Disease association (#82).** DISEASES, Open Targets and Orphanet are released
+   (0.6.0). Next: disease → targets, and Open Targets' tractability. Pathogen targets
+   need other sources (`SOURCE_COVERAGE.md`).
 5. **Peptide cards.** Scope them before any source (use case 5, CPPsite).
 
 Each is proposed as an issue before work starts, and the order is revisited at each
