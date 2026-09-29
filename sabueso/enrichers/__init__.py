@@ -93,6 +93,24 @@ class Enricher:
     coverage_detail: str | None = None
     #: "flag" (``option=True``) or "options" (``option={}`` or ``{"limit": …}``).
     option_kind: str = "flag"
+    #: The resolve argument that passes this source's client (default
+    #: ``<option>_client``); sources of one service share it (PDBe-KB).
+    client_option: str | None = None
+    #: Where the enricher runs among the bespoke enrichments, so records keep the
+    #: order cards have always had: "after_structures", "after_chembl" or
+    #: "after_bioactivity".
+    stage: str = "after_bioactivity"
+    #: Whether a ``not_found`` record carries the source's message as ``detail``.
+    not_found_detail: bool = True
+
+    @property
+    def client_argument(self) -> str:
+        return self.client_option or f"{self.option}_client"
+
+    @property
+    def match(self) -> Dict[str, str]:
+        """Fields that identify this enricher's records in ``quality.enrichments``."""
+        return {"source": self.source}
 
     def requested(self, options: Any) -> bool:
         return bool(options) if self.option_kind == "flag" else options is not None
@@ -161,9 +179,8 @@ def run(
         try:
             response = enricher.fetch(client, request, options)
         except RecordNotFoundError as exc:
-            enrichments.append(
-                {**request.record, "status": "not_found", "detail": str(exc)}
-            )
+            detail = {"detail": str(exc)} if enricher.not_found_detail else {}
+            enrichments.append({**request.record, "status": "not_found", **detail})
             continue
         except ConnectorError as exc:
             enrichments.append(
@@ -178,16 +195,27 @@ def run(
 
 def _registered() -> List[Enricher]:
     from . import (
+        alphafold,
         clinvar,
         diseases,
         gnomad,
+        interpro,
+        ncbi_taxonomy,
         open_targets,
         orphadata,
+        pdbe_kb,
         phi_base,
         reactome,
+        stringdb,
     )
 
     return [
+        stringdb.ENRICHER,
+        pdbe_kb.LIGAND_SITES,
+        pdbe_kb.INTERFACES,
+        alphafold.ENRICHER,
+        ncbi_taxonomy.ENRICHER,
+        interpro.ENRICHER,
         phi_base.ENRICHER,
         diseases.ENRICHER,
         open_targets.ENRICHER,
@@ -205,15 +233,33 @@ ENRICHERS: List[Enricher] = _registered()
 def knowledge_areas(
     entity_type: str = "protein",
 ) -> List[Tuple[str, str, Dict[str, str]]]:
-    """``(area, source, match)`` rows for the knowledge state, from the declarations."""
+    """``(area, source, match)`` rows for the knowledge state, from the declarations.
+    ``match`` selects the enrichment records that answer the area."""
     return [
-        (area, e.source, {"source": e.source})
+        (area, e.source, e.match)
         for e in ENRICHERS
         if e.entity_type == entity_type
         for area in e.areas
     ]
 
 
-def options_by_source() -> Dict[Tuple[str, None], set]:
-    """Which resolve option produced an enrichment record, by its source."""
-    return {(e.source, None): {e.option} for e in ENRICHERS}
+def options_by_source() -> Dict[Tuple[str, str | None], set]:
+    """Which resolve option produced an enrichment record, by source and data kind."""
+    return {(e.source, e.match.get("data")): {e.option} for e in ENRICHERS}
+
+
+def run_stage(
+    stage: str,
+    context: Context,
+    requested: Dict[str, Tuple[Any, Any]],
+    mappings: List[Dict[str, Any]],
+    enrichments: List[Dict[str, Any]],
+) -> None:
+    """Run the requested enrichers of one stage, in the declared order.
+    ``requested`` maps each option to ``(options, client)``."""
+    for enricher in ENRICHERS:
+        if enricher.stage != stage:
+            continue
+        options, client = requested.get(enricher.option, (None, None))
+        if enricher.requested(options):
+            run(enricher, context, options, client, mappings, enrichments)

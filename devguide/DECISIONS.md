@@ -936,4 +936,9 @@ uibcdf/sabueso#86, wave 3 of #83.
   (snapshot ids and records) before and after, not only by the test suite.
 - **Bespoke, for stated reasons:** RCSB structures, the ChEMBL/BindingDB/PubChem
   BioAssay group, and NCBI Gene in the resolution.
+- **Step 2 (same day).** STRING, PDBe-KB (ligand sites, interfaces), AlphaFold DB,
+  NCBI Taxonomy and InterPro became enrichers. They run in declared stages among the
+  bespoke enrichments, so the order of records (part of a card's content) does not
+  change. Only the RCSB, ChEMBL, BindingDB and PubChem BioAssay blocks remain in
+  `resolve_protein_card`.
 

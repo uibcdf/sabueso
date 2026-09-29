@@ -36,24 +36,6 @@ PROTEIN_ENRICHMENTS = (
         "PubChem BioAssay",
         {"source": "PubChem BioAssay"},
     ),
-    ("relationships.functionally_associated_with", "STRING", {"source": "STRING"}),
-    (
-        "relationships.has_ligand_site",
-        "PDBe-KB",
-        {"source": "PDBe-KB", "data": "ligand_sites"},
-    ),
-    (
-        "relationships.has_interface_with",
-        "PDBe-KB",
-        {"source": "PDBe-KB", "data": "interface_residues"},
-    ),
-    ("features_positional.family_site", "InterPro", {"source": "InterPro"}),
-    (
-        "relationships.has_predicted_structure",
-        "AlphaFold DB",
-        {"source": "AlphaFold DB"},
-    ),
-    ("annotations.taxonomy", "NCBI Taxonomy", {"source": "NCBI Taxonomy"}),
 )
 
 

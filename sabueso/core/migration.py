@@ -220,8 +220,6 @@ def _enrichment_options(data: Dict[str, Any]) -> set:
     from sabueso.enrichers import options_by_source
 
     known = {
-        ("AlphaFold DB", None): {"predicted_structures"},
-        ("NCBI Taxonomy", None): {"taxonomy"},
         ("BindingDB", None): {"bindingdb"},
         ("PubChem BioAssay", None): {"pubchem_bioassay"},
         ("RCSB PDB", None): {"structures"},

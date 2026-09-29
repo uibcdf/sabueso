@@ -25,8 +25,8 @@ ARGUMENTS = Path("sabueso/_private/argdigest/argument")
 @pytest.mark.parametrize("enricher", ENRICHERS, ids=lambda e: e.option)
 def test_every_enricher_is_wired_everywhere(enricher):
     parameters = inspect.signature(inspect.unwrap(resolve_protein_card)).parameters
-    assert {enricher.option, f"{enricher.option}_client"} <= set(parameters)
-    for name in (enricher.option, f"{enricher.option}_client"):
+    assert {enricher.option, enricher.client_argument} <= set(parameters)
+    for name in (enricher.option, enricher.client_argument):
         assert (ARGUMENTS / f"{name}.py").is_file(), name
     registry = yaml.safe_load(Path("devguide/sources/registry.yaml").read_text())
     (entry,) = [r for r in registry["resources"] if r["id"] == enricher.registry_id]
@@ -34,7 +34,10 @@ def test_every_enricher_is_wired_everywhere(enricher):
     assert enricher.areas
     rows = {(a, s) for a, s, _ in knowledge_areas(enricher.entity_type)}
     assert {(a, enricher.source) for a in enricher.areas} <= rows
-    assert enricher.option in options_by_source()[(enricher.source, None)]
+    assert (
+        enricher.option
+        in options_by_source()[(enricher.source, enricher.match.get("data"))]
+    )
 
 
 class _Toy(Enricher):

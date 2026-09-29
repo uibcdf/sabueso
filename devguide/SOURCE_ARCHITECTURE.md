@@ -112,8 +112,15 @@ unchanged.
    a test checks each enricher's wiring. `resolve_protein_card` went from 1,096 to
    753 lines. Cards are identical before and after: same snapshot ids and same
    enrichment records, for four proteins, with and without failing sources.
-2. The remaining simple enrichers: STRING, ligand sites, interfaces, family sites,
-   predicted structures and taxonomy.
+2. **Done (2026-09-29).** The remaining simple enrichers: STRING, ligand sites,
+   interfaces, family sites, predicted structures and taxonomy.
+   - They run in declared stages among the bespoke enrichments, so records keep their
+     order.
+   - An enricher can share a client argument (PDBe-KB), and can keep a `not_found`
+     record without detail, as these always had.
+   - `resolve_protein_card` is 595 lines.
+   - Cards are identical before and after, for four proteins with and without failing
+     sources, and the knowledge-state rows are the same.
 3. Shared services: every client on `_http`, `_release` for the release sources, and
    `_keys` with its first user.
 4. Derived packet options and the consistency test.

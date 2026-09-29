@@ -33,10 +33,7 @@ from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.core.merge import merge_mapping_results
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.mappings.chembl import map_bioactivities
-from sabueso.mappings.interpro import map_family_sites
-from sabueso.mappings.pdbe_kb import map_interfaces, map_ligand_sites
 from sabueso.mappings.rcsb_structures import map_structure_entities
-from sabueso.mappings.stringdb import map_string_partners
 from sabueso.mappings.uniprot import map_protein
 from sabueso.resolver.entity_resolver import (
     EntityQuery,
@@ -220,38 +217,27 @@ def resolve_protein_card(
             }
         )
 
-    if string is not None:
-        from sabueso.tools.db.stringdb import OnlineStringClient
+    # Declared enrichers (#86), run in stages among the bespoke enrichments so that
+    # records keep their order.
+    from sabueso.enrichers import Context, run_stage
 
-        client = string_client or OnlineStringClient()
-        species = (entry.get("organism") or {}).get("taxonId")
-        record = {
-            "source": "STRING",
-            "identifier": anchor,
-            "species": species,
-            **string,
-        }
-        try:
-            response = client.partners(anchor, species, **string)
-        except RecordNotFoundError:
-            enrichments.append({**record, "status": "not_found"})
-        except ConnectorError as exc:
-            enrichments.append({**record, "status": "error", "detail": str(exc)})
-        else:
-            mapped = map_string_partners(
-                response, anchor, response.get("retrieved_at", "")
-            )
-            mappings.append(mapped)
-            enrichments.append(
-                {
-                    **record,
-                    "required_score": response.get("query", {}).get("required_score"),
-                    "limit": response.get("query", {}).get("limit"),
-                    "status": "added",
-                    "version": response.get("version"),
-                    "count": len(mapped["relationships"]),
-                }
-            )
+    requested = {
+        "string": (string, string_client),
+        "ligand_sites": (ligand_sites, pdbe_kb_client),
+        "interfaces": (interfaces, pdbe_kb_client),
+        "predicted_structures": (predicted_structures, alphafold_client),
+        "taxonomy": (taxonomy, taxonomy_client),
+        "family_sites": (family_sites, interpro_client),
+        "phi_base": (phi_base, phi_base_client),
+        "diseases": (diseases, diseases_client),
+        "open_targets": (open_targets, open_targets_client),
+        "orphadata": (orphadata, orphadata_client),
+        "reactome": (reactome, reactome_client),
+        "gnomad": (gnomad, gnomad_client),
+        "clinvar": (clinvar, clinvar_client),
+    }
+    context = Context(anchor, entry)
+    run_stage("after_structures", context, requested, mappings, enrichments)
 
     if chembl is not None:
         from sabueso.tools.db.chembl import OnlineChEMBLClient
@@ -295,114 +281,7 @@ def resolve_protein_card(
                 }
             )
 
-    if ligand_sites:
-        from sabueso.tools.db.pdbe_kb import OnlinePDBeKBClient
-
-        client = pdbe_kb_client or OnlinePDBeKBClient()
-        record = {"source": "PDBe-KB", "data": "ligand_sites", "identifier": anchor}
-        try:
-            response = client.ligand_sites(anchor)
-        except RecordNotFoundError:
-            enrichments.append({**record, "status": "not_found"})
-        except ConnectorError as exc:
-            enrichments.append({**record, "status": "error", "detail": str(exc)})
-        else:
-            mapped = map_ligand_sites(response, response.get("retrieved_at", ""))
-            mappings.append(mapped)
-            enrichments.append(
-                {**record, "status": "added", "count": len(mapped["relationships"])}
-            )
-
-    if interfaces:
-        from sabueso.tools.db.pdbe_kb import OnlinePDBeKBClient
-
-        client = pdbe_kb_client or OnlinePDBeKBClient()
-        record = {
-            "source": "PDBe-KB",
-            "data": "interface_residues",
-            "identifier": anchor,
-        }
-        try:
-            response = client.interface_residues(anchor)
-        except RecordNotFoundError:
-            enrichments.append({**record, "status": "not_found"})
-        except ConnectorError as exc:
-            enrichments.append({**record, "status": "error", "detail": str(exc)})
-        else:
-            mapped = map_interfaces(response, response.get("retrieved_at", ""))
-            mappings.append(mapped)
-            enrichments.append(
-                {**record, "status": "added", "count": len(mapped["relationships"])}
-            )
-
-    if predicted_structures:
-        from sabueso.mappings.alphafold import map_predictions
-        from sabueso.tools.db.alphafold import OnlineAlphaFoldClient
-
-        client = alphafold_client or OnlineAlphaFoldClient()
-        record = {"source": "AlphaFold DB", "identifier": anchor}
-        try:
-            response = client.prediction(anchor)
-        except RecordNotFoundError:
-            enrichments.append({**record, "status": "not_found"})
-        except ConnectorError as exc:
-            enrichments.append({**record, "status": "error", "detail": str(exc)})
-        else:
-            mapped = map_predictions(
-                response,
-                anchor,
-                response.get("retrieved_at", ""),
-                sequence_md5=(entry.get("sequence") or {}).get("md5"),
-            )
-            mappings.append(mapped)
-            versions = sorted(
-                {r["qualifiers"]["model_version"] for r in mapped["relationships"]}
-                - {None}
-            )
-            enrichments.append(
-                {
-                    **record,
-                    "status": "added",
-                    "version": "; ".join(f"v{v}" for v in versions) or None,
-                    "count": len(mapped["relationships"]),
-                }
-            )
-
-    if taxonomy:
-        from sabueso.mappings.ncbi_taxonomy import map_taxonomy
-        from sabueso.tools.db.ncbi_taxonomy import OnlineNCBITaxonomyClient
-
-        client = taxonomy_client or OnlineNCBITaxonomyClient()
-        tax_id = (entry.get("organism") or {}).get("taxonId")
-        record = {"source": "NCBI Taxonomy", "identifier": tax_id}
-        try:
-            organism = client.taxa([tax_id]) if tax_id is not None else {"record": []}
-            if not organism["record"]:
-                enrichments.append({**record, "status": "not_found"})
-            else:
-                taxon = organism["record"][0]
-                lineage = client.taxa(taxon.get("lineage") or [])
-                mapped = map_taxonomy(
-                    taxon,
-                    lineage["record"],
-                    anchor,
-                    organism.get("retrieved_at", ""),
-                )
-                mappings.append(mapped)
-                enrichments.append(
-                    {
-                        **record,
-                        "status": "added",
-                        "count": len(taxon.get("lineage") or []),
-                        **(
-                            {"missing": lineage["missing"]}
-                            if lineage.get("missing")
-                            else {}
-                        ),
-                    }
-                )
-        except ConnectorError as exc:
-            enrichments.append({**record, "status": "error", "detail": str(exc)})
+    run_stage("after_chembl", context, requested, mappings, enrichments)
 
     identities: List[tuple] = []
     if bindingdb is not None:
@@ -604,47 +483,7 @@ def resolve_protein_card(
                 if q.get("source") == "PubChem BioAssay" and q.get("molecule_ref"):
                     identities.append((q["molecule_ref"], [rel["object_ref"]]))
 
-    if family_sites:
-        from sabueso.tools.db.interpro import OnlineInterProClient
-
-        client = interpro_client or OnlineInterProClient()
-        record = {"source": "InterPro", "identifier": anchor}
-        try:
-            response = client.site_residues(anchor)
-        except RecordNotFoundError as exc:
-            enrichments.append({**record, "status": "not_found", "detail": str(exc)})
-        except ConnectorError as exc:
-            enrichments.append({**record, "status": "error", "detail": str(exc)})
-        else:
-            mapped = map_family_sites(response, response.get("retrieved_at", ""))
-            mappings.append(mapped)
-            enrichments.append(
-                {
-                    **record,
-                    "status": "added",
-                    "version": response.get("version"),
-                    "count": len(mapped["source_assertions"]),
-                }
-            )
-
-    # Declared enrichers (#86): one runner applies coverage, error isolation and order.
-    from sabueso.enrichers import ENRICHERS, Context
-    from sabueso.enrichers import run as run_enricher
-
-    requested = {
-        "phi_base": (phi_base, phi_base_client),
-        "diseases": (diseases, diseases_client),
-        "open_targets": (open_targets, open_targets_client),
-        "orphadata": (orphadata, orphadata_client),
-        "reactome": (reactome, reactome_client),
-        "gnomad": (gnomad, gnomad_client),
-        "clinvar": (clinvar, clinvar_client),
-    }
-    context = Context(anchor, entry)
-    for enricher in ENRICHERS:
-        options, client = requested[enricher.option]
-        if enricher.requested(options):
-            run_enricher(enricher, context, options, client, mappings, enrichments)
+    run_stage("after_bioactivity", context, requested, mappings, enrichments)
 
     mappings.append(
         {

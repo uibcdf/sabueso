@@ -91,6 +91,8 @@ map are derived from the declarations.
 To add one:
 1. Write the client, the `get_*` function and the mapping, as above.
 2. Write the enricher, and register it in `ENRICHERS` in the order it runs.
+   `stage` places it among the bespoke enrichments; new sources use the default,
+   `after_bioactivity`.
 3. Add the option and its client to `resolve_protein_card`, with their digesters.
 4. Add fixtures, and a card in the card-shape builder.
 
