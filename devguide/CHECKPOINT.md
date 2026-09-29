@@ -82,7 +82,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 836 tests passed, 15 online tests deselected (2026-09-27). Run with
+- Offline suite: 839 tests passed, 15 online tests deselected (2026-09-27). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.

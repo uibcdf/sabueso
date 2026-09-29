@@ -904,3 +904,21 @@ uibcdf/sabueso#83; the numbering rule was agreed with the maintainers before bui
   change are kept, and the others are counted. Frequencies (`ac`, `an`, `af`) are kept
   as stated, per exomes and genomes. The placement code is shared (`mappings/_hgvs.py`).
 
+## Placing a change stated on another isoform (2026-09-29)
+Agreed with the maintainers as a second pass for the variants of #83.
+- **Rule `uniprot_isoform_map@1`.** Each step is a UniProt statement:
+  - which isoform a transcript encodes (Ensembl and RefSeq cross-references);
+  - how that isoform differs from the canonical sequence (its `VSP_` edits).
+
+  Applying the edits gives a map from isoform positions to canonical ones. The
+  residue must still match. The item records `placed_via` (rule, isoform, isoform
+  position).
+- **An isoform's own segment has no canonical position** (`isoform_specific_position`).
+  For TPI1 this accounts for 184 of the 189 gnomAD variants the first pass left out:
+  they lie in the 37 residues isoform P60174-3 adds at its N-terminus. Placing them by
+  alignment would have been wrong.
+- **Alignment is not used.** It is kept as a possible last resort, with its own rule,
+  for isoforms UniProt does not describe by edits (#85).
+- More precise reasons for what is not placed: `unparsed_protein_change` and
+  `stop_codon`, besides `residue_mismatch`.
+

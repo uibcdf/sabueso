@@ -99,7 +99,9 @@ schema:
     classification as stated, placed in UniProt numbering only through a transcript
     UniProt states for the canonical isoform and a matching residue, and
     annotations.population_variants, gnomAD's variants with a protein change and their
-    frequencies, placed by the same rule. All additive, so a 0.3.5 card is a valid 0.3.6 card without
+    frequencies, placed by the same rule. A change stated on another isoform's
+    transcript is placed through rule uniprot_isoform_map@1, which applies UniProt's
+    own alternative-sequence edits (placed_via). All additive, so a 0.3.5 card is a valid 0.3.6 card without
     them.
 card_base:
   meta:
@@ -550,6 +552,10 @@ protein_card:
         substitution:
           original: string
           change: string
+        placed_via:
+          rule: string
+          isoform: string
+          isoform_position: number
         numbering: string
         not_placed: string
       source_assertion_ids:
@@ -577,6 +583,10 @@ protein_card:
         substitution:
           original: string
           change: string
+        placed_via:
+          rule: string
+          isoform: string
+          isoform_position: number
         numbering: string
         not_placed: string
       source_assertion_ids:

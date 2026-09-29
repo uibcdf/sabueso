@@ -13,7 +13,7 @@ changed sequence.
 
 from __future__ import annotations
 
-from typing import Any, Dict, Iterable, List
+from typing import Any, Dict, List
 
 from sabueso.core.source_assertion_store import make_source_assertion
 
@@ -32,12 +32,10 @@ def _frequencies(block: Dict[str, Any] | None) -> Dict[str, Any] | None:
 def map_variants(
     variants: List[Dict[str, Any]],
     accession: str,
-    canonical: Iterable[str],
-    sequence: str | None,
+    context: Dict[str, Any],
     retrieved_at: str,
     version: str | None,
 ) -> Dict[str, Any]:
-    canonical = sorted(set(canonical))
     items, assertions = [], []
     for variant in variants:
         if not variant.get("hgvsp"):
@@ -52,7 +50,14 @@ def map_variants(
             "exome": _frequencies(variant.get("exome")),
             "genome": _frequencies(variant.get("genome")),
         }
-        placed = place(item["hgvs_p"], item["transcript"], canonical, sequence)
+        placed = place(
+            item["hgvs_p"],
+            item["transcript"],
+            context["canonical"],
+            context["sequence"],
+            context["isoform_of"],
+            context["maps"],
+        )
         item.update(placed)
         item["numbering"] = "uniprot" if "location" in placed else item["transcript"]
         item = {k: v for k, v in item.items() if v not in (None, "", [])}

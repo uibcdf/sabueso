@@ -42,14 +42,21 @@ def test_frequencies_are_kept_as_gnomad_states_them(card):
     )
 
 
-def test_only_the_canonical_transcript_places_a_variant(card):
-    counts = collections.Counter(
-        v.get("not_placed", "placed") for v in card.get(FIELD)["value"]
-    )
-    # ENST00000229270 is UniProt's isoform 3, not the canonical isoform.
-    assert counts == {"placed": 6, "transcript_not_canonical": 6}
+def test_isoform_changes_are_placed_through_uniprots_isoform_map(card):
+    variants = card.get(FIELD)["value"]
+    counts = collections.Counter(v.get("not_placed", "placed") for v in variants)
+    # ENST00000229270 is UniProt's isoform P60174-3, which replaces Met1 by 38 residues.
+    # A change in those residues has no canonical counterpart; one past them does.
+    assert counts == {"placed": 8, "isoform_specific_position": 6}
+    frameshift = next(v for v in variants if v["hgvs_p"] == "p.Pro40ThrfsTer24")
+    assert frameshift["location"] == {"start": 3, "end": 3}
+    assert frameshift["placed_via"] == {
+        "rule": "uniprot_isoform_map@1",
+        "isoform": "P60174-3",
+        "isoform_position": 40,
+    }
     (record,) = [e for e in card.quality["enrichments"] if e["source"] == "gnomAD"]
-    assert (record["count"], record["without_protein_change"]) == (12, 3)
+    assert (record["count"], record["without_protein_change"]) == (14, 3)
 
 
 def test_gnomad_does_not_cover_a_parasite_protein():

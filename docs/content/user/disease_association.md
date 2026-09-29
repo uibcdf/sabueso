@@ -79,8 +79,20 @@ Each variant keeps what ClinVar states:
 E105D, E23D"). A variant is placed in UniProt numbering (`location`, `numbering:
 "uniprot"`) only when two things hold: its transcript is one UniProt states for the
 canonical isoform, and the residue ClinVar names is the UniProt residue at that
-position. Otherwise `not_placed` says why: `no_protein_change`,
-`transcript_not_canonical` or `residue_mismatch`.
+position. A change on another isoform's transcript is placed through that isoform's
+edits as UniProt states them (`placed_via`, rule `uniprot_isoform_map@1`). For example,
+position 142 of isoform P60174-3 is canonical 105. A change inside an isoform's own
+segment has no canonical position.
+
+Otherwise `not_placed` says why:
+- `no_protein_change`;
+- `unparsed_protein_change`;
+- `transcript_not_canonical`;
+- `isoform_specific_position`;
+- `stop_codon`;
+- `residue_mismatch`.
+
+Nothing is placed by aligning sequences.
 
 ClinVar is not for diagnostic use without review by a genetics professional.
 

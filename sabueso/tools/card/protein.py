@@ -865,13 +865,11 @@ def resolve_protein_card(
                 }
             )
 
-    displayed_isoforms = [
-        (isoform.get("isoformIds") or [None])[0]
-        for comment in entry.get("comments") or []
-        if comment.get("commentType") == "ALTERNATIVE PRODUCTS"
-        for isoform in comment.get("isoforms") or []
-        if isoform.get("isoformSequenceStatus") == "Displayed"
-    ]
+    if gnomad is not None or clinvar is not None:
+        from sabueso.mappings._hgvs import transcript_context
+
+        # Transcripts, isoforms and their position maps, as the entry states them.
+        context = transcript_context(entry)
     if gnomad is not None:
         from sabueso.mappings.gnomad import map_variants as map_gnomad
         from sabueso.tools.db.gnomad import OnlineGnomADClient
@@ -886,11 +884,6 @@ def resolve_protein_card(
                 if p.get("key") == "GeneId" and p.get("value")
             }
         )
-        canonical_ensembl = {
-            x["id"].split(".")[0]
-            for x in ensembl
-            if x.get("isoformId") in (None, *displayed_isoforms)
-        }
         limit = gnomad.get("limit", 1000)
         if (entry.get("organism") or {}).get("taxonId") != 9606:
             enrichments.append(
@@ -929,8 +922,7 @@ def resolve_protein_card(
             mapped = map_gnomad(
                 coding[:limit],
                 anchor,
-                canonical_ensembl,
-                (entry.get("sequence") or {}).get("value"),
+                context,
                 response.get("retrieved_at", ""),
                 response.get("version"),
             )
@@ -954,15 +946,6 @@ def resolve_protein_card(
 
         xrefs = entry.get("uniProtKBCrossReferences") or []
         genes = sorted({x["id"] for x in xrefs if x.get("database") == "GeneID"})
-        displayed = displayed_isoforms
-        canonical = {
-            prop["value"]
-            for x in xrefs
-            if x.get("database") == "RefSeq"
-            and x.get("isoformId") in (None, *displayed)
-            for prop in x.get("properties") or []
-            if prop.get("key") == "NucleotideSequenceId" and prop.get("value")
-        }
         record = {"source": "ClinVar", "identifier": anchor, "genes": genes}
         if (entry.get("organism") or {}).get("taxonId") != 9606:
             enrichments.append(
@@ -990,8 +973,7 @@ def resolve_protein_card(
                 mapped = map_variants(
                     response["record"],
                     anchor,
-                    canonical,
-                    (entry.get("sequence") or {}).get("value"),
+                    context,
                     response.get("retrieved_at", ""),
                     response.get("version"),
                 )

@@ -77,9 +77,11 @@ def test_a_variant_is_placed_only_through_the_canonical_transcript(card):
     "hgvs_p, transcript, reason",
     [
         (None, "NM_000365.6", "no_protein_change"),
-        ("p.Glu105Asp", "NM_001159287.1", "transcript_not_canonical"),
         ("p.Lys105Asp", "NM_000365.6", "residue_mismatch"),  # E at 105, not K
         ("p.Glu999Asp", "NM_000365.6", "residue_mismatch"),  # past the sequence
+        ("p.Ter250Cysext*55", "NM_000365.6", "stop_codon"),  # one past 249 residues
+        ("p.AspGly4_?9", "NM_000365.6", "unparsed_protein_change"),
+        ("p.Glu105Asp", "NM_999999.1", "transcript_not_canonical"),
     ],
 )
 def test_what_cannot_be_placed_says_why(card, hgvs_p, transcript, reason):
@@ -101,3 +103,31 @@ def test_clinvar_does_not_cover_a_parasite_protein():
         (r["area"], r["source"]): r["state"] for r in card.knowledge_state()["rows"]
     }
     assert states[(FIELD, "ClinVar")] == "not_queried"
+
+
+def test_uniprots_isoform_edits_give_a_position_map():
+    import json
+    from pathlib import Path
+
+    from sabueso.mappings._hgvs import isoform_map, transcript_context
+
+    # A deletion of canonical 1-82 (isoform 3 of P60174) and a replacement of Met1 by
+    # 38 residues (isoform 2).
+    assert isoform_map(249, [(1, 82, "")])[23] == 105
+    extended = isoform_map(249, [(1, 1, "M" * 38)])
+    assert (extended.get(38), extended[142]) == (None, 105)
+    context = transcript_context(json.loads(Path("temp_data/P60174.json").read_text()))
+    assert context["canonical"] == {"NM_000365.6", "ENST00000396705"}
+    assert context["isoform_of"]["NM_001159287.1"] == "P60174-3"
+    # ClinVar's "E142D, E105D, E23D": one change, three numberings, one position.
+    sequence = context["sequence"]
+    for transcript, stated in (("NM_001159287.1", 142), ("NM_001258026.2", 23)):
+        placed = place(
+            f"p.Glu{stated}Asp",
+            transcript,
+            context["canonical"],
+            sequence,
+            context["isoform_of"],
+            context["maps"],
+        )
+        assert placed["location"] == {"start": 105, "end": 105}

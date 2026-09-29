@@ -86,7 +86,8 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 ### gnomAD — population frequencies
 - **Status**: implemented as an enricher of `resolve_protein_card(..., gnomad={})` (uibcdf/sabueso#83)
 - **Access**: GraphQL API, dataset gnomad_r4, no key (`OnlineGnomADClient`); saved variants in `temp_data/gnomad/`; `tools.db.gnomad.get_variants`
-- **Quality**: green for the listed coverage. Verified live on TPI1 (ENSG00000111669): 1,668 variants, of which those with a protein change are kept. E105D, on the canonical transcript ENST00000396705, is placed at UniProt 105 with its exome and genome frequencies.
+- **Quality**: green for the listed coverage. Verified live on TPI1 (ENSG00000111669, 2026-09-29): 1,668 variants, of which 729 have a protein change. E105D, on the canonical transcript ENST00000396705, is placed at UniProt 105 with its exome and genome frequencies.
+  - Placement: 540 placed, 2 of them through isoform P60174-3's map. 184 fall in that isoform's own N-terminal segment, and 2 are on transcripts UniProt does not state. 3 are not placed: two stop-codon changes and one unparsed notation.
 - **Coverage**: `annotations.population_variants`, with consequence, transcript, HGVS, flags, and exome and genome allele count, number and frequency as stated
 - **Notes**:
   - Found by the Ensembl gene UniProt cross-references.

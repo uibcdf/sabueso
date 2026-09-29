@@ -311,6 +311,13 @@ A Relationship is first-class, traceable knowledge:
     UniProt states for the canonical isoform (RefSeq cross-references, versions
     included) and its residue matches the UniProt sequence. Otherwise `numbering` names
     ClinVar's transcript and `not_placed` gives the reason.
+    - A change on the transcript of another isoform is placed through rule
+      `uniprot_isoform_map@1` (`placed_via`: rule, isoform, isoform position). UniProt
+      states the transcript's isoform, and the isoform's alternative-sequence edits
+      give the map to canonical positions. A position inside an isoform's own segment
+      has none (`isoform_specific_position`).
+    - Other reasons: `no_protein_change`, `unparsed_protein_change`,
+      `transcript_not_canonical`, `stop_codon` and `residue_mismatch`.
   - population variants (added in #83, schema 0.3.6): `annotations.population_variants`,
     one item per gnomAD variant with a protein change, with the exome and genome
     `{ac, an, af}` as stated. Placed by the same rule as ClinVar, through an Ensembl

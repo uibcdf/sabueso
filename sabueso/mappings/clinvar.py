@@ -26,7 +26,7 @@ never placed by similarity.
 from __future__ import annotations
 
 import re
-from typing import Any, Dict, Iterable, List
+from typing import Any, Dict, List
 
 from sabueso.core.source_assertion_store import make_source_assertion
 
@@ -50,12 +50,10 @@ def _parse_title(title: str) -> Dict[str, str]:
 def map_variants(
     records: List[Dict[str, Any]],
     accession: str,
-    canonical: Iterable[str],
-    sequence: str | None,
+    context: Dict[str, Any],
     retrieved_at: str,
     version: str | None,
 ) -> Dict[str, Any]:
-    canonical = sorted(set(canonical))
     items, assertions = [], []
     for record in sorted(records, key=lambda r: r.get("accession") or ""):
         classification = record.get("germline_classification") or {}
@@ -85,7 +83,12 @@ def map_variants(
             "consequences": record.get("molecular_consequence_list") or [],
         }
         placed = place(
-            parsed.get("hgvs_p"), parsed.get("transcript"), canonical, sequence
+            parsed.get("hgvs_p"),
+            parsed.get("transcript"),
+            context["canonical"],
+            context["sequence"],
+            context["isoform_of"],
+            context["maps"],
         )
         item.update(placed)
         item["numbering"] = (

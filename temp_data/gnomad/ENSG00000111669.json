@@ -233,6 +233,34 @@
     "hgvsp": null,
     "transcript_id": "ENST00000229270",
     "variant_id": "12-6867382-G-A"
+   },
+   {
+    "consequence": "frameshift_variant",
+    "exome": {
+     "ac": 1,
+     "af": 6.865510148597102e-07,
+     "an": 1456556
+    },
+    "flags": [],
+    "genome": null,
+    "hgvsc": "c.86_117dup",
+    "hgvsp": "p.Pro40ThrfsTer24",
+    "transcript_id": "ENST00000229270",
+    "variant_id": "12-6867539-T-TGACCTTCAGCGCCTCGGCTCCAGCGCCATGGC"
+   },
+   {
+    "consequence": "inframe_insertion",
+    "exome": {
+     "ac": 1,
+     "af": 6.853305006339307e-07,
+     "an": 1459150
+    },
+    "flags": [],
+    "genome": null,
+    "hgvsc": "c.101_118dup",
+    "hgvsp": "p.Ala39_Pro40insArgSerSerAlaMetAla",
+    "transcript_id": "ENST00000229270",
+    "variant_id": "12-6867555-G-GGCTCCAGCGCCATGGCGC"
    }
   ]
  },
