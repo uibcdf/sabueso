@@ -190,7 +190,9 @@ In order:
 2. **What may be done with the knowledge (#29).** The terms of each source carried to
    cards, decks and packets: attribution, share-alike, and what remains without a
    restricted source. With about 30 sources in use, MOLI needs it before knowledge is
-   redistributed.
+   redistributed. First milestone on main: `Card.terms`, `Deck.terms`,
+   `Deck.admissible`. Next: depositor terms per PubChem assay, packets, and the shared
+   vocabulary with MOLI.
 3. **Scientific operations (#91).**
    - Navigate relationships into decks (`neighbors`, `expand`).
    - Explain a derived result back to its SourceAssertions.

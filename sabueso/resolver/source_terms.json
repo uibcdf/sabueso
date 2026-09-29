@@ -1,0 +1,207 @@
+{
+ "note": "Generated from devguide/sources/registry.yaml by `python tools/source_registry.py --write`. Do not edit by hand.",
+ "sources": {
+  "AlphaFold DB": {
+   "registry_id": "alphafold_db",
+   "licence": "CC-BY-4.0",
+   "attribution": "AlphaFold Protein Structure Database, DeepMind and EMBL-EBI (https://alphafold.ebi.ac.uk/), CC BY 4.0",
+   "statement": "https://alphafold.ebi.ac.uk/faq",
+   "reviewed": "2026-09-29"
+  },
+  "BindingDB": {
+   "registry_id": "bindingdb",
+   "licence": "CC-BY-SA-3.0",
+   "attribution": "BindingDB (https://www.bindingdb.org/), CC BY 3.0 and, for data imported from ChEMBL, CC BY-SA 3.0",
+   "statement": "https://www.bindingdb.org/rwd/bind/info.jsp",
+   "reviewed": "2026-09-29",
+   "caveats": [
+    "Treated as CC BY-SA 3.0: the records Sabueso reads do not state their origin."
+   ]
+  },
+  "ChEMBL": {
+   "registry_id": "chembl",
+   "licence": "CC-BY-SA-3.0",
+   "attribution": "ChEMBL, EMBL-EBI (https://www.ebi.ac.uk/chembl/), CC BY-SA 3.0",
+   "statement": "https://chembl.gitbook.io/chembl-interface-documentation/about",
+   "reviewed": "2026-09-29"
+  },
+  "ClinVar": {
+   "registry_id": "clinvar",
+   "licence": "US-PD",
+   "attribution": "ClinVar, National Library of Medicine (https://www.ncbi.nlm.nih.gov/clinvar/)",
+   "statement": "https://www.ncbi.nlm.nih.gov/clinvar/docs/maintenance_use/",
+   "reviewed": "2026-09-29",
+   "caveats": [
+    "Not for direct diagnostic use or medical decisions without review by a genetics professional."
+   ]
+  },
+  "ClinicalTrials.gov": {
+   "registry_id": "clinicaltrials_gov",
+   "licence": "US-PD",
+   "attribution": "Source: National Library of Medicine, ClinicalTrials.gov (https://clinicaltrials.gov/)",
+   "statement": "https://clinicaltrials.gov/about-site/terms-conditions",
+   "reviewed": "2026-09-29"
+  },
+  "DISEASES": {
+   "registry_id": "diseases_jensen",
+   "licence": "CC-BY-4.0",
+   "attribution": "DISEASES, Jensen lab (https://diseases.jensenlab.org/), CC BY 4.0",
+   "statement": "https://diseases.jensenlab.org/Downloads",
+   "reviewed": "2026-09-29"
+  },
+  "InterPro": {
+   "registry_id": "interpro",
+   "licence": "CC0-1.0",
+   "attribution": "InterPro, EMBL-EBI (https://www.ebi.ac.uk/interpro/)",
+   "statement": "https://interpro-documentation.readthedocs.io/en/latest/license.html",
+   "reviewed": "2026-09-29",
+   "caveats": [
+    "Member databases may carry their own terms."
+   ]
+  },
+  "MONDO": {
+   "registry_id": "mondo",
+   "licence": "CC-BY-4.0",
+   "attribution": "Mondo Disease Ontology, Monarch Initiative (https://mondo.monarchinitiative.org/), CC BY 4.0",
+   "statement": "https://mondo.monarchinitiative.org/",
+   "reviewed": "2026-09-29"
+  },
+  "MedGen": {
+   "registry_id": "medgen",
+   "licence": "US-PD",
+   "attribution": "MedGen, National Library of Medicine (https://www.ncbi.nlm.nih.gov/medgen/)",
+   "statement": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+   "reviewed": "2026-09-29",
+   "caveats": [
+    "Names from integrated vocabularies may carry their own terms; Sabueso keeps only ids."
+   ]
+  },
+  "NCBI Gene": {
+   "registry_id": "ncbi_gene",
+   "licence": "US-PD",
+   "attribution": "NCBI Gene, National Library of Medicine (https://www.ncbi.nlm.nih.gov/gene/)",
+   "statement": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+   "reviewed": "2026-09-29"
+  },
+  "NCBI Taxonomy": {
+   "registry_id": "ncbi_taxonomy",
+   "licence": "US-PD",
+   "attribution": "NCBI Taxonomy, National Library of Medicine (https://www.ncbi.nlm.nih.gov/taxonomy)",
+   "statement": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+   "reviewed": "2026-09-29"
+  },
+  "Open Targets": {
+   "registry_id": "open_targets",
+   "licence": "CC0-1.0",
+   "attribution": "Open Targets Platform (https://platform.opentargets.org/)",
+   "statement": "https://platform-docs.opentargets.org/licence",
+   "reviewed": "2026-09-29",
+   "caveats": [
+    "Third-party sources inside keep their terms; Open Targets states they agreed to unrestricted use by its users."
+   ]
+  },
+  "Orphanet": {
+   "registry_id": "orphadata",
+   "licence": "CC-BY-4.0",
+   "attribution": "Orphadata: Free access data from Orphanet. (c) INSERM 1999 (https://www.orphadata.com/), CC BY 4.0",
+   "statement": "https://www.orphadata.com/legal-notice/",
+   "reviewed": "2026-09-29"
+  },
+  "PDB CCD": {
+   "registry_id": "pdb_ccd",
+   "licence": "CC0-1.0",
+   "attribution": "wwPDB Chemical Component Dictionary (https://www.wwpdb.org/data/ccd)",
+   "statement": "https://www.wwpdb.org/about/usage-policies",
+   "reviewed": "2026-09-29"
+  },
+  "PDBe-KB": {
+   "registry_id": "pdbe_kb",
+   "licence": "CC-BY-4.0",
+   "attribution": "PDBe-KB, EMBL-EBI (https://www.ebi.ac.uk/pdbe/pdbe-kb/), CC BY 4.0",
+   "statement": "https://www.ebi.ac.uk/pdbe/pdbe-kb/",
+   "reviewed": "2026-09-29"
+  },
+  "PHI-base": {
+   "registry_id": "phi_base",
+   "licence": "CC-BY-4.0",
+   "attribution": "PHI-base (https://phi-base.org/), CC BY 4.0",
+   "statement": "https://zenodo.org/records/10722192",
+   "reviewed": "2026-09-29"
+  },
+  "PubChem": {
+   "registry_id": "pubchem",
+   "licence": "US-PD",
+   "attribution": "PubChem, National Library of Medicine (https://pubchem.ncbi.nlm.nih.gov/)",
+   "statement": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+   "reviewed": "2026-09-29",
+   "caveats": [
+    "Deposited records keep their depositor's terms."
+   ]
+  },
+  "PubChem BioAssay": {
+   "registry_id": "pubchem_bioassay",
+   "licence": "DEPOSITOR-TERMS",
+   "attribution": "PubChem BioAssay, National Library of Medicine (https://pubchem.ncbi.nlm.nih.gov/)",
+   "statement": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+   "reviewed": "2026-09-29",
+   "caveats": [
+    "Each assay keeps its depositor's terms (ChEMBL copies: CC BY-SA 3.0); Sabueso does not record them per assay yet."
+   ]
+  },
+  "RCSB PDB": {
+   "registry_id": "rcsb_pdb",
+   "licence": "CC0-1.0",
+   "attribution": "RCSB Protein Data Bank (https://www.rcsb.org/)",
+   "statement": "https://www.rcsb.org/pages/usage-policy",
+   "reviewed": "2026-09-29"
+  },
+  "Reactome": {
+   "registry_id": "reactome",
+   "licence": "CC0-1.0",
+   "attribution": "Reactome (https://reactome.org/)",
+   "statement": "https://reactome.org/license",
+   "reviewed": "2026-09-29"
+  },
+  "SKEMPI": {
+   "registry_id": "skempi",
+   "licence": "CC-BY-4.0",
+   "attribution": "SKEMPI 2.0 (Jankauskaitė et al. 2019, Bioinformatics 35, 462-469), CC BY 4.0",
+   "statement": "https://life.bsc.es/pid/skempi2/info/terms",
+   "reviewed": "2026-09-29"
+  },
+  "STRING": {
+   "registry_id": "string",
+   "licence": "CC-BY-4.0",
+   "attribution": "STRING (https://string-db.org/), CC BY 4.0",
+   "statement": "https://string-db.org/cgi/access",
+   "reviewed": "2026-09-29"
+  },
+  "UniChem": {
+   "registry_id": "unichem",
+   "licence": "NO-OWN-RESTRICTIONS",
+   "attribution": "UniChem, EMBL-EBI (https://www.ebi.ac.uk/unichem/)",
+   "statement": "https://www.ebi.ac.uk/about/terms-of-use",
+   "reviewed": "2026-09-29",
+   "caveats": [
+    "The linked resources' rights apply to their records."
+   ]
+  },
+  "UniProt": {
+   "registry_id": "uniprot",
+   "licence": "CC-BY-4.0",
+   "attribution": "UniProtKB, UniProt Consortium (https://www.uniprot.org/), CC BY 4.0",
+   "statement": "https://rest.uniprot.org/help/license",
+   "reviewed": "2026-09-29"
+  },
+  "gnomAD": {
+   "registry_id": "gnomad",
+   "licence": "CC0-1.0",
+   "attribution": "Genome Aggregation Database, gnomAD (https://gnomad.broadinstitute.org/)",
+   "statement": "https://gnomad.broadinstitute.org/terms",
+   "reviewed": "2026-09-29",
+   "caveats": [
+    "Some annotations, not read by Sabueso, carry other terms."
+   ]
+  }
+ }
+}

@@ -101,6 +101,8 @@ def verify_receipts(
 REQUIRED_RESOURCES = (
     "site-packages/sabueso/resolver/enrichment_profiles.json",
     "site-packages/sabueso/resolver/selection_rules.json",
+    # The terms of every source (#29): without them every verdict would be unknown.
+    "site-packages/sabueso/resolver/source_terms.json",
 )
 
 

@@ -31,6 +31,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     protein's diseases grouped across sources (`medgen`, `disease_identity`,
     `Card.diseases()`, `disease_grouping@1`); and a disease's targets and drugs as
     decks (`disease_targets`, `disease_drugs`);
+  - what may be done with the knowledge (#29, first milestone): `Card.terms(use)`,
+    `Deck.terms(use)`, `Deck.admissible(use)`, from the terms each source states in the
+    registry (`terms_propagation@1`);
   - `knowledge_state@3`: an answer cut at a limit is `partial`, with `truncated_for`
     (#88);
   - a `not_found` record states the release it was checked against (#89).

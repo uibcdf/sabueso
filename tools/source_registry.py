@@ -2,8 +2,9 @@
 
 ``devguide/sources/registry.yaml`` is the source of truth for the online resources
 Sabueso uses, has set aside or has yet to review. ``python tools/source_registry.py
---write`` regenerates ``docs/content/user/data_sources.md`` from it, and ``--check``
-fails when that page is out of date or the registry breaks a rule.
+--write`` regenerates ``docs/content/user/data_sources.md`` and the packaged source
+terms (``sabueso/resolver/source_terms.json``, #29) from it, and ``--check`` fails when
+either is out of date or the registry breaks a rule.
 """
 
 from __future__ import annotations
@@ -11,6 +12,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import importlib.util
+import json
 import re
 import sys
 from pathlib import Path
@@ -52,7 +54,10 @@ KNOWN = set(REQUIRED) | {
     "links",
     "limit",
     "note",
+    "terms",
 }
+TERMS = ROOT / "sabueso" / "resolver" / "source_terms.json"
+TERMS_KEYS = {"source_names", "licence", "attribution", "statement", "reviewed"}
 ID = re.compile(r"[a-z0-9][a-z0-9_]*\Z")
 
 
@@ -69,6 +74,36 @@ def _constant(path: str) -> Any:
         return getattr(importlib.import_module(module), name)
     except (ImportError, AttributeError, ValueError):
         return None
+
+
+def _licences() -> Dict[str, Any]:
+    from sabueso.core.terms import LICENCES
+
+    return LICENCES
+
+
+def terms_export(data: Dict[str, Any]) -> str:
+    """The terms of every source, by SourceAssertion source name, as packaged JSON."""
+    sources: Dict[str, Any] = {}
+    for r in data["resources"]:
+        terms = r.get("terms")
+        if not terms:
+            continue
+        for name in terms["source_names"]:
+            sources[name] = {
+                "registry_id": r["id"],
+                "licence": terms["licence"],
+                "attribution": terms["attribution"],
+                "statement": terms["statement"],
+                "reviewed": str(terms["reviewed"]),
+                **({"caveats": terms["caveats"]} if terms.get("caveats") else {}),
+            }
+    body = {
+        "note": "Generated from devguide/sources/registry.yaml by "
+        "`python tools/source_registry.py --write`. Do not edit by hand.",
+        "sources": dict(sorted(sources.items())),
+    }
+    return json.dumps(body, indent=1, ensure_ascii=False) + "\n"
 
 
 def problems(data: Dict[str, Any]) -> List[str]:
@@ -106,6 +141,21 @@ def problems(data: Dict[str, Any]) -> List[str]:
         for module in r.get("module") or []:
             if importlib.util.find_spec(module) is None:
                 out.append(f"{rid}: module {module} does not exist")
+        if (
+            r.get("status") == "in_use"
+            and any(m.startswith("sabueso.tools.db.") for m in r.get("module") or [])
+            and "terms" not in r
+        ):
+            out.append(f"{rid}: a source Sabueso reads states its terms (#29)")
+        if "terms" in r:
+            terms = r["terms"] or {}
+            missing = TERMS_KEYS - set(terms)
+            if missing:
+                out.append(f"{rid}: terms state {sorted(missing)}")
+            elif terms["licence"] not in _licences():
+                out.append(f"{rid}: terms licence {terms['licence']} is not classified")
+            elif not isinstance(terms["reviewed"], datetime.date):
+                out.append(f"{rid}: terms reviewed is a date (YYYY-MM-DD)")
         if "limit" in r:
             limit = r["limit"] or {}
             if set(limit) != {"constant", "of"}:
@@ -238,14 +288,19 @@ def main() -> int:
     if found:
         return 1
     page = render(data)
+    terms = terms_export(data)
     if args.write:
         PAGE.write_text(page, encoding="utf-8")
-        print(f"wrote {PAGE.relative_to(ROOT)}")
+        TERMS.write_text(terms, encoding="utf-8")
+        print(f"wrote {PAGE.relative_to(ROOT)} and {TERMS.relative_to(ROOT)}")
         return 0
     if not PAGE.is_file() or PAGE.read_text(encoding="utf-8") != page:
         print("docs/content/user/data_sources.md is out of date: run --write")
         return 1
-    print("OK: source registry and its page")
+    if not TERMS.is_file() or TERMS.read_text(encoding="utf-8") != terms:
+        print("sabueso/resolver/source_terms.json is out of date: run --write")
+        return 1
+    print("OK: source registry, its page and the packaged source terms")
     return 0
 
 

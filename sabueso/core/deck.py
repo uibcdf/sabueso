@@ -71,6 +71,34 @@ class Deck:
         meta.update(extra)
         return Deck(list(cards), meta=meta)
 
+    @arg_digest()
+    def terms(self, use: str, skip_digestion: bool = False) -> Dict[str, Any]:
+        """What the sources of the deck's knowledge state about ``use``, card by card
+        (``terms_propagation@1``, #29). Not legal advice."""
+        from .terms import terms_report
+
+        return terms_report(self.cards, use)
+
+    @arg_digest()
+    def admissible(self, use: str, skip_digestion: bool = False) -> "Deck":
+        """The cards all of whose knowledge has a source allowed for ``use``. The others
+        are excluded with the reason (``partially_admissible``, ``not_admissible``), and
+        the operation is recorded (#29)."""
+        report = self.terms(use)
+        status = {c["card_id"]: c["status"] for c in report["cards"]}
+        kept = [c for c in self.cards if status.get(c.id) == "complete"]
+        deck = self._derived(kept, "admissible", {"use": use, "rule": report["rule"]})
+        for card in self.cards:
+            if status.get(card.id) != "complete":
+                deck.exclude(
+                    card.id,
+                    "partially_admissible"
+                    if status.get(card.id) == "partial"
+                    else "not_admissible",
+                    by=report["rule"],
+                )
+        return deck
+
     def snapshot_id(self) -> str:
         """Content address of the deck: its meta and the pinned state of each card."""
         from .snapshot import deck_snapshot_id

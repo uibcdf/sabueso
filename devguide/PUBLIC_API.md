@@ -60,6 +60,8 @@ shows how to use them.
   - `interface_mutations()` (SKEMPI, with ΔΔG under `binding_ddg@1`, #83);
   - `diseases()` (a protein's diseases grouped by MONDO term, `disease_grouping@1`,
     #90);
+  - `terms(use)` (what the sources state about a use of the card's knowledge,
+    `terms_propagation@1`, #29; also `Deck.terms(use)` and `Deck.admissible(use)`);
   - `bioactivities(include_indirect=False, thresholds=None)`;
   - `ligands(deck, ...)` and `compare_ligands(deck, other, other_deck, ...)`;
   - `literature()` and `claims(topic=None)`;

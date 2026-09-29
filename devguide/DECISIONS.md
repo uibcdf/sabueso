@@ -1094,3 +1094,23 @@ uibcdf/sabueso#90, step 1. Card schema 0.3.7.
     (#88), but a deck member is a whole card, at least one request: five protein cards
     took about 50 s live. The cut is recorded (`excluded`, reason `limit`) and
     reported, and `limit` asks for more.
+
+## What may be done with the knowledge: a first milestone (2026-09-29)
+uibcdf/sabueso#29.
+- **Terms are the sources' statements, recorded per source** in the registry (`terms`),
+  with the URL of the statement and a review date. They are not SourceAssertions: their
+  subject is the source, not an entity. Granularity is the source, except where the
+  source states that terms vary per record (PubChem BioAssay's depositors, a curated
+  statement's publication). Those are `unknown` until they are recorded per record.
+- **Three verdicts:** `allowed` with obligations, `restricted` with the reason, and
+  `unknown` with the reason. Unknown is never "no restriction".
+- **An item remains when one allowed source states it.** Each statement stands on its
+  own, so a value two sources state survives the loss of one of them.
+- **Derived knowledge** is recomputed from what remains, and carries the obligations
+  of the statements it is computed from; the strictest governs (`terms_propagation@1`).
+- **The disclaimer lives in the returned report.** It is a report for a person's
+  decision, not legal advice.
+- **Answering the acceptance question.** For the *T. cruzi* enzyme with ChEMBL,
+  BindingDB and PubChem BioAssay, 272 of 527 measured molecules may be used in a
+  commercial product (attribution, share-alike); 255 are known only from PubChem
+  BioAssay and are `unknown`.

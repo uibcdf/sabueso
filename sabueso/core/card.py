@@ -437,6 +437,15 @@ class Card:
 
         return clinical_view(self)
 
+    @arg_digest()
+    def terms(self, use: str, skip_digestion: bool = False) -> Dict[str, Any]:
+        """What the sources of this card's knowledge state about ``use``: verdicts,
+        obligations, attribution, and what remains without restricted or unknown
+        sources (``terms_propagation@1``, #29). Not legal advice."""
+        from .terms import terms_report
+
+        return terms_report([self], use)
+
     def diseases(self) -> Dict[str, Any]:
         """The diseases every source states for this protein, grouped by MONDO term
         only through MONDO's stated equivalences (``disease_grouping@1``, #90)."""

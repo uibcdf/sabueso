@@ -42,6 +42,7 @@ clinical
 disease_association
 literature_and_curation
 decks
+terms
 packets
 storage
 upgrading

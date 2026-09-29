@@ -91,6 +91,21 @@ knowledge survives excluding the restricted sources. Sabueso reports what each s
 states about its own terms; it does not rule on what is lawful, and "no terms recorded"
 is never reported as "no restriction".
 
+A first milestone is built (2026-09-29): `Card.terms(use)`, `Deck.terms(use)` and
+`Deck.admissible(use)`, rule `terms_propagation@1`.
+- **Where the terms live.** Each source in use states them in
+  `sources/registry.yaml` (`terms`): its SourceAssertion names, a classified licence,
+  the attribution text, the statement's URL, the review date and caveats. The export
+  `sabueso/resolver/source_terms.json` is packaged, and `tools/source_registry.py`
+  keeps them in step. A source Sabueso reads without terms fails the registry check.
+- **Licences are classified** in `sabueso/core/terms.py` (`LICENCES`): CC0,
+  US public domain, CC BY, CC BY-SA, CC BY-NC. Terms that depend on each record, such
+  as a depositor's (PubChem BioAssay) or a publication's (curated literature), are
+  `unknown` until they are recorded per record.
+- **Share-alike binds when the data leaves the user's hands**: redistribution, a
+  derived dataset, a commercial product. It does not bind a publication that cites.
+- **A term record older than a year is flagged** `review_due`.
+
 ## Compliance Principles
 - Do not redistribute restricted datasets without permission.
 - Store only what is required for reproducibility when licenses allow.
