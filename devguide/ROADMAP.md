@@ -172,33 +172,50 @@ Open, pilot-related:
 
 ## Next candidates
 
-Pilot route: whatever running the first pilot's notebooks exposes; nothing is scheduled
-ahead of that use.
+Pilot route: whatever running the pilots' notebooks exposes; nothing is scheduled ahead
+of that use.
 
-Foundational route, in the order proposed now:
+Foundational route. Reviewed on 2026-09-29 against `SCIENTIFIC_POTENTIAL.md`, the
+conceptual schema and the use cases, to work beyond what the pilots have asked for.
+In order:
 
-0. **Source coverage (#83).** Sabueso is MOLI's tracker of the outside world: every
-   source it can reach, evaluated with one rubric (`SOURCE_COVERAGE.md`), and an
-   architecture that scales to many sources. Wave 1 (target validation, disease,
-   pathogen context) is evaluated and mostly in use. Wave 2 (every other queued source)
-   is evaluated too: no source is left unreviewed. Its order is interfaces (SKEMPI, on
-   main after 0.6.0; iPPI-DB, blocked on access and terms, #84), chemistry (ChEBI,
-   chemical probes), identity (Ensembl), family-specific sources, then patents and
-   structures.
-1. **Knowledge packets and KnowledgeQuery (#71, uibcdf/moli#22).** A prototype is
-   released (0.6.0): protein subject and comparator, nine aspects, pinned and stored
-   packets, and a content-equivalence id. Next: let real use (the pilot, MOLI Agent)
-   decide the aspects and the size of facts (#88), and align with the MOLI contract once
-   it is agreed.
-2. **UniProt isoforms and secondary structure.** Released in 0.6.0 (#80), with per-chain
-   secondary structure from RCSB. Isoform sequences remain.
-3. **Clinical layer (#81, closed).** Step 1 released in 0.6.0: ChEMBL indications, and
-   trials only by the NCT ids ChEMBL states (`Card.clinical()`). DrugBank stays deferred
-   for clinical content (CC BY-NC). Next: adverse events (openFDA), after a terms review.
-4. **Disease association (#82).** DISEASES, Open Targets and Orphanet are released
-   (0.6.0). Next: disease → targets, and Open Targets' tractability. Pathogen targets
-   need other sources (`SOURCE_COVERAGE.md`).
-5. **Peptide cards.** Scope them before any source (use case 5, CPPsite).
+1. **The disease as an entity (#90).**
+   - Six sources name diseases with different ids (DOID, EFO, MONDO, ORPHA, MIM,
+     MeSH), and nothing relates them.
+   - A disease card is anchored at MONDO, and joined only through the equivalences
+     MONDO states.
+   - It opens disease → targets (use case 9, #82), and the drugs investigated for a
+     protein's diseases.
+   - Identity comes before composition, and it gets costlier with every source.
+2. **What may be done with the knowledge (#29).** The terms of each source carried to
+   cards, decks and packets: attribution, share-alike, and what remains without a
+   restricted source. With about 30 sources in use, MOLI needs it before knowledge is
+   redistributed.
+3. **Scientific operations (#91).**
+   - Navigate relationships into decks (`neighbors`, `expand`).
+   - Explain a derived result back to its SourceAssertions.
+   - Knowledge as of a date in the store (`as_of`).
+4. **Literature beyond manual curation (#92).**
+   - First, how each statement entered: database, curation, rule extraction, model
+     extraction, validation.
+   - Then, a first rule-extracted source (Europe PMC's annotations, after a terms
+     review).
+5. **Continuing, in parallel when a need or a slot appears:**
+   - sources of wave 2 (#83): chemistry (ChEBI, chemical probes), identity (Ensembl,
+     which also serves #85), family-specific sources, patents, structures. iPPI-DB,
+     VEuPathDB and TDR Targets wait on #84;
+   - molecules given as SMILES or InChI, through PubChem's stated match (#93);
+   - knowledge packets: real use decides their aspects and size (#71, #88), aligned
+     with uibcdf/moli#22 once agreed;
+   - the clinical layer: adverse events (openFDA), after a terms review; isoform
+     sequences (#80);
+   - peptide cards: scope them before any source (use case 5, CPPsite).
+6. **Contracts with other MOLI components**, raised in uibcdf/moli when those
+   components are ready:
+   - the reference form (uibcdf/moli#3, #53) and knowledge packets (uibcdf/moli#22);
+   - exchange with TopoMT (positions, interface mutations), MolSysViewer (features to
+     show) and PharmacophoreMT (ligand decks). Use cases 3, 4 and 7 are partial for
+     want of these.
 
 Each is proposed as an issue before work starts, and the order is revisited at each
 release.
