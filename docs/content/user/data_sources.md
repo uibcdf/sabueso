@@ -106,7 +106,7 @@ Summary: in use 22, evaluating 10, queued 46, deferred 7, retired 3, out of scop
 
 | Resource | Reason | Revisit when | Since |
 | --- | --- | --- | --- |
-| [VEuPathDB services (expression by stage, phenotype screens)](https://veupathdb.org/) | A large connector; structured fields for biological context should be used first, through curation. | Curated biological-context fields are in use and a workflow needs them for many genes. | 2026-09-25 |
+| [VEuPathDB services (expression by stage, phenotype screens)](https://veupathdb.org/) | Blocked (2026-09-28): the web services now need a registered user's API key (HTTP 401 without one), and no reuse terms were found (#84). The curated biological-context fields (#60) exist meanwhile. | VEuPathDB answers #84 on terms and on a tool using a user's key; then a user supplies their own key through an environment variable. | 2026-09-25 |
 | [BioGRID](https://thebiogrid.org/) | The API needs a personal access key; IntAct (via UniProt) and STRING cover current needs. | Genetic interactions are needed, or key management exists for deployments. | 2026-09-23 |
 | [DrugBank (open data)](https://go.drugbank.com/) | Licensing constrains redistribution and caching; only DrugBank ids are kept, through UniChem. | A licence compatible with Sabueso's caching and redistribution is confirmed. | 2026-09-23 |
 | [Guide to PHARMACOLOGY (IUPHAR/BPS)](https://www.guidetopharmacology.org/) | Its web services now need a personal API key (HTTP 401 without one), its data is under ODbL (share-alike), and UniProt links neither test target to it. | A target of interest has a GuidetoPHARMACOLOGY cross-reference in UniProt, and key management exists for deployments (as for BioGRID). | 2026-09-25 |

@@ -93,7 +93,35 @@ Each source is checked live, and the date is recorded:
    then #60 step 2.
 5. **Variants**: ClinVar, then gnomAD.
 
-## 4. Next waves
+## 4. Blocked and set aside (2026-09-28)
+
+What cannot be used now, and why. The registry holds each decision with its reason and
+when to look again.
+
+| Source | Kind | Why | What would unblock it |
+|---|---|---|---|
+| VEuPathDB services (TriTrypDB…) | **blocked: key and terms** | Web services need a registered user's API key; no reuse terms found (#84) | An answer on terms and on per-user keys; a key from the user, never stored |
+| TDR Targets | **blocked: unreachable** | Its site did not answer from our network (2026-09-27/28); no terms or API found | An answer from its maintainers (#84) |
+| Guide to PHARMACOLOGY | **blocked: key and licence** | Personal API key needed; ODbL (share-alike) | Key management for deployments, and a target that needs it |
+| BioGRID | **blocked: key** | Personal access key | Genetic interactions needed, and key management (#22) |
+| KEGG | set aside: **licence** | Not public; services and downloads need a licence | A MOLI-wide licence, or a need Reactome (CC0) does not meet |
+| DrugBank (clinical content) | set aside: **licence** | Full data CC BY-NC 4.0; only its CC0 vocabulary is open | A licence compatible with MOLI redistribution |
+| PhosphoSitePlus | retired: **licence** | Restricts redistribution | — |
+| M-CSA | set aside: **numbering** | Catalytic residues only in a reference species' numbering | A residue mapping from alignments (#30) |
+| BioLiP | set aside: **bulk, overlap** | Bulk files of a third-party pipeline; PDBe-KB and the PDB flag cover ligand sites | A batch-import need |
+| DGIdb | caution: **identity** | Groups drugs by name normalisation | Re-anchoring each drug at a stated identifier |
+| SCOPe, TED | retired | Removed with the per-database card tools | — |
+| TeachOpenCADD, ProLIF, ODDT, PoseBusters | out of scope | Software or computations, not knowledge | Belong to MolSysSuite or Praxis |
+
+Three reasons recur:
+- **Keys.** More sources now require a personal API key. A general rule is needed:
+  a user supplies their own key through the environment; Sabueso never stores, logs
+  or ships it, and records only that the source was reached with a key.
+- **Licences** that forbid redistribution: KEGG, DrugBank and PhosphoSitePlus.
+- **Identity by name**, as in DGIdb and in ClinicalTrials.gov's interventions. A second
+  source that states the link solves it, as ChEMBL does for trials.
+
+## 5. Next waves
 
 - Wave 2: the remaining queued sources by category (structures and models; sites and
   families; interactions; chemistry and ADMET; bioactivity; emerging modalities;

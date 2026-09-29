@@ -252,8 +252,8 @@ resources:
     status: deferred
     description: Stage-resolved expression, knockdown and knockout phenotypes, and gene records for eukaryotic pathogens.
     since: 2026-09-25
-    reason: A large connector; structured fields for biological context should be used first, through curation.
-    revisit_when: Curated biological-context fields are in use and a workflow needs them for many genes.
+    reason: "Blocked (2026-09-28): the web services now need a registered user's API key (HTTP 401 without one), and no reuse terms were found (#84). The curated biological-context fields (#60) exist meanwhile."
+    revisit_when: "VEuPathDB answers #84 on terms and on a tool using a user's key; then a user supplies their own key through an environment variable."
     access: WDK web services
     links: ["#60", "#84"]
   - id: biogrid
