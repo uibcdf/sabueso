@@ -84,6 +84,8 @@ def resolve_protein_card(
     clinvar_client: Any | None = None,
     gnomad: Dict[str, Any] | None = None,
     gnomad_client: Any | None = None,
+    skempi: bool = False,
+    skempi_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -152,6 +154,12 @@ def resolve_protein_card(
     (``annotations.population_variants``), placed in UniProt numbering by the same rule
     through an Ensembl transcript UniProt states for the canonical isoform. Human genes
     only.
+
+    ``skempi`` adds SKEMPI 2.0's measured binding changes of mutations at the
+    interfaces of complexes of this protein (``annotations.interface_mutations``), for
+    the PDB entries whose chains UniProt states are this protein. A mutation is placed
+    in UniProt numbering only through the author numbering RCSB states for that chain,
+    so ask for the ``structures`` too, and only when its residue matches.
     """
     if ncbi_gene:
         import copy
@@ -235,8 +243,9 @@ def resolve_protein_card(
         "reactome": (reactome, reactome_client),
         "gnomad": (gnomad, gnomad_client),
         "clinvar": (clinvar, clinvar_client),
+        "skempi": (skempi, skempi_client),
     }
-    context = Context(anchor, entry)
+    context = Context(anchor, entry, mappings)
     run_stage("after_structures", context, requested, mappings, enrichments)
 
     if chembl is not None:

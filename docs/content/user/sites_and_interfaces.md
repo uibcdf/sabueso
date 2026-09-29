@@ -82,3 +82,51 @@ for row in view["agreement"]:  # family dimer interface vs observed interface
   - `undetermined`: the structures are not on the card. Pass `structures="all"` to fetch
     them.
 - Interfaces are not computed from coordinates; that is modelling (uibcdf/sabueso#30).
+
+## Interface mutations (SKEMPI 2.0)
+
+SKEMPI 2.0 curates, from publications, how mutations at the interface of a complex of
+known structure change its binding: the affinities of mutant and wild type, and, where
+measured, kinetics and thermodynamics.
+
+```{note}
+Interface mutations are on main, not yet in a release (card schema 0.3.7).
+```
+
+```python
+import sabueso
+
+# Barnase, with its complex with barstar
+card, _ = sabueso.resolve("P00648", structures=["1BRS"], skempi=True)
+view = card.interface_mutations()
+for item in view["items"]:
+    for m in item["mutations"]:
+        where = m.get("location", {}).get("start", m.get("not_placed"))
+        print(
+            item["structure"],
+            m["original"],
+            m["author_residue"],
+            m["change"],
+            m["on"],
+            where,
+        )
+    print(item["affinity"], item.get("ddg"), item.get("method"), item.get("reference"))
+print(view["rule"]["rule"])  # binding_ddg@1
+```
+
+- **Joined through stated identity.** A SKEMPI row joins the card only when UniProt
+  states that one of the chains of its PDB entry is this protein. The protein names SKEMPI
+  writes are kept as text, never used to join.
+- **Placed through stated numbering.** SKEMPI writes mutations in the entry's author
+  numbering (barnase's Lys 27 is UniProt's 74). A mutation is placed in UniProt numbering
+  only through the author numbering RCSB states for that chain, so ask for the
+  structures (`structures=[...]` or `"all"`), and only when its residue matches.
+  Otherwise `not_placed` says why: `partner_chain` (the mutation is on the partner),
+  `structure_not_loaded`, `author_residue_not_mapped` or `residue_mismatch`.
+- **Quantities as stated.** Affinities are in molar, kinetics in 1/(M·s) and 1/s, ΔH in
+  kcal/mol, ΔS in cal/(mol·K) and temperatures in kelvin. A bound (`>1E-04`) keeps its
+  relation, "n.b." is `mutant_no_binding`, and SKEMPI's assumed 298 K is flagged
+  (`temperature_assumed`).
+- **ΔΔG is derived, never stored.** The view computes ΔΔG = R·T·ln(K_mutant /
+  K_wild_type) under the rule `binding_ddg@1`. A bound gives a bound (`ddg_relation`),
+  and when ΔΔG cannot be derived, `ddg_basis` says why.

@@ -101,6 +101,7 @@ when to look again.
 | Source | Kind | Why | What would unblock it |
 |---|---|---|---|
 | VEuPathDB services (TriTrypDB…) | **blocked: key and terms** | Web services need a registered user's API key; no reuse terms found (#84) | An answer on terms and on per-user keys; a key from the user, never stored |
+| iPPI-DB | **blocked: access and terms** | Targets, activities and InChIKeys only in HTML pages (the CSV has SMILES only, the API covers structures and cavities); no data licence found (2026-09-29) | A documented export or API, and stated terms (#84) |
 | TDR Targets | **blocked: unreachable** | Its site did not answer from our network (2026-09-27/28); no terms or API found | An answer from its maintainers (#84) |
 | Guide to PHARMACOLOGY | **blocked: key and licence** | Personal API key needed; ODbL (share-alike) | Key management for deployments, and a target that needs it |
 | BioGRID | **blocked: key** | Personal access key | Genetic interactions needed, and key management (#22) |
@@ -133,7 +134,7 @@ That is not a data licence, and is recorded as "no data licence found".
 | Source | Area | Terms | Identity basis | Why |
 |---|---|---|---|---|
 | SKEMPI 2.0 | interactions | CC BY 4.0 (CSV) | PDB entry, chains, mutations in PDB numbering | Binding-energy changes of mutations at protein–protein interfaces; placed through author numbering (#73) |
-| iPPI-DB | interactions | CC BY-SA 3.0 (CSV); share-alike, like ChEMBL | UniProt targets; compound structures | Small-molecule modulators of protein–protein interactions |
+| iPPI-DB | interactions | no data licence found (2026-09-29; the earlier "CC BY-SA 3.0" could not be confirmed) | UniProt targets; InChIKeys, in HTML pages only | Small-molecule modulators of protein–protein interactions; blocked (section 4) |
 | ChEBI (2.0) | chemistry | CC BY 4.0; new JSON API | ChEBI ids (already linked through UniChem), InChIKey | Chemical roles and classes, metabolites, cofactors |
 | Chemical Probes Portal | chemistry | Creative Commons (to confirm which) | UniProt targets; compound structures | Expert-reviewed probes and their targets |
 | KLIFS | sites (kinases) | CC BY 4.0; REST API | UniProt / kinase ids; PDB | Kinase pocket residues and conformations |
@@ -193,7 +194,8 @@ through the PDB and ChEMBL already. They are reviewed when a target needs them.
 
 ### Proposed order (wave 2)
 
-1. **Interfaces:** SKEMPI (mutations and binding energy) and iPPI-DB (modulators).
+1. **Interfaces:** SKEMPI (mutations and binding energy): **done** (2026-09-29, schema
+   0.3.7). iPPI-DB (modulators): blocked on access and terms (section 4).
 2. **Chemistry:** ChEBI roles and classes, and the Chemical Probes Portal.
 3. **Identity:** Ensembl transcripts and orthology, which also serve #85.
 4. **Family-specific sources:** KLIFS and GPCRdb, when a target needs them.

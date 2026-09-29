@@ -59,6 +59,23 @@ NEGOTIATED_UNITS: Dict[str, Tuple[str, ...]] = {
         )
         for part in ("half_width", "lower", "upper")
     },
+    # SKEMPI's interface mutations, as stated (#83, schema 0.3.7).
+    **{
+        f"annotations.interface_mutations.value.{path}": (unit,)
+        for path, unit in {
+            "affinity.mutant": "molar",
+            "affinity.wild_type": "molar",
+            "kinetics.kon_mutant": "1/(M*s)",
+            "kinetics.kon_wild_type": "1/(M*s)",
+            "kinetics.koff_mutant": "1/s",
+            "kinetics.koff_wild_type": "1/s",
+            "thermodynamics.dh_mutant": "kcal/mol",
+            "thermodynamics.dh_wild_type": "kcal/mol",
+            "thermodynamics.ds_mutant": "cal/(mol*K)",
+            "thermodynamics.ds_wild_type": "cal/(mol*K)",
+            "temperature": "kelvin",
+        }.items()
+    },
 }
 
 #: ChEMBL ``standard_units`` spellings Sabueso normalizes, and to what. Source strings are

@@ -310,6 +310,17 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - Partners are STRING proteins (`string:<taxon>.<id>`). They are not yet linked to UniProt entities.
   - The species comes from the UniProt anchor. STRING has no *T. cruzi* species-level entry for P52270: it covers the strain CL Brener (e.g. Q4DV43). The enricher records `not_found` and does not attach the strain network silently.
 
+### SKEMPI 2.0 — interface mutations and binding changes
+- **Status**: implemented as an enricher (`skempi=True`, #83), card schema 0.3.7
+- **Access**: the whole CSV file (1.6 MB), downloaded once per process and indexed by PDB entry; saved subset `temp_data/skempi/skempi_v2.csv` (barnase–barstar)
+- **Quality**: green, verified on barnase (P00648). Of its 89 mutations in SKEMPI, the 83 in 1BRS are placed through RCSB's author numbering when 1BRS is loaded, each with a matching residue; K27A has ΔΔG 5.38 kcal/mol under `binding_ddg@1`, as published.
+- **Coverage**: `annotations.interface_mutations`, 7085 rows over 345 PDB entries.
+- **Notes**:
+  - Rows are joined only through the PDB chains UniProt states are the protein. The protein names SKEMPI writes are never used to join.
+  - Mutations are in the entry's author numbering. They are placed only through the author numbering RCSB states for the chain (`rcsb_author_numbering@1`) of a structure the card holds.
+  - The file states no finer version than the database's (2.0), and the site reports corrections after 2018. The file's SHA-256 is recorded in the enrichment record, so a changed file is told apart.
+  - Licence CC BY 4.0 (the site's terms of download and use).
+
 ---
 
 ## Removed per-concept card tools (2026-09-23, uibcdf/sabueso#21 part 2b)

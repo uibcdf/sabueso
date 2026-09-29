@@ -2,6 +2,8 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
+  - `0.3.7` is current, not yet released: it adds `annotations.interface_mutations`
+    (SKEMPI 2.0, #83);
   - `0.3.6` is the schema of release 0.6.0: it adds UniProt isoforms, alternative
     sequences, secondary structure (UniProt's, and per chain from RCSB) and
     `substitution.missing` (#80), the curated biological context (#60), pathogen
@@ -331,6 +333,26 @@ A Relationship is first-class, traceable knowledge:
       `reaction`), `name`, `species`, `is_inferred` (inferred by Reactome from
       orthology), and for pathways `ancestors` (each path up to a top-level pathway,
       `id` and `name`).
+  - interface mutations (added in #83, schema 0.3.7): `annotations.interface_mutations`,
+    one item per SKEMPI 2.0 row whose PDB entry has a chain UniProt states is this
+    protein (the entry's PDB cross-reference). Never joined by the protein names SKEMPI
+    writes.
+    - `structure`, `complex` (SKEMPI's `1BRS_A_D`), `sides` (the chains of each side),
+      `protein_chains` (this protein's), `proteins` (as SKEMPI names them).
+    - `mutations`: each `{chain, author_residue, original, change, location_class, on}`
+      in the entry's author numbering, with `on` `this_protein` or `partner`. Placed in
+      UniProt numbering (`location`, `placed_via`, rule `rcsb_author_numbering@1`) only
+      through the author numbering RCSB states for that chain of a structure the card
+      holds, and a matching residue. Otherwise `not_placed`: `partner_chain`,
+      `structure_not_loaded`, `author_residue_not_mapped` or `residue_mismatch`.
+    - `affinity` (`mutant`, `wild_type` in molar), `kinetics` (kon in 1/(M·s), koff in
+      1/s), `thermodynamics` (ΔH in kcal/mol, ΔS in cal/(mol·K)) and `temperature`
+      (kelvin), as stated. A bound keeps `<name>_relation`, "n.b." is
+      `<name>_no_binding`, other text is `<name>_stated`, and SKEMPI's assumed 298 K is
+      `temperature_assumed`.
+    - `method`, `reference` (`pubmed:<id>`, or `reference_stated`), `notes`,
+      `hold_out_type` and `skempi_version` (the SKEMPI version the row entered).
+    - ΔΔG is not stored. `Card.interface_mutations()` derives it (`binding_ddg@1`).
     - Which statements each publication supports is read by `Card.literature()` from the
       ECO evidence of every SourceAssertion, and only there.
   - curated literature assertions (added in #41):

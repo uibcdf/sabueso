@@ -1,0 +1,2764 @@
+{
+ "assemblies": [
+  {
+   "pdbx_struct_assembly": {
+    "details": "author_defined_assembly",
+    "method_details": null,
+    "oligomeric_count": 2,
+    "oligomeric_details": "dimeric"
+   },
+   "rcsb_assembly_container_identifiers": {
+    "assembly_id": "1"
+   },
+   "rcsb_struct_symmetry": [
+    {
+     "kind": "Global Symmetry",
+     "oligomeric_state": "Hetero 2-mer",
+     "stoichiometry": [
+      "A1",
+      "B1"
+     ],
+     "type": "Asymmetric"
+    }
+   ]
+  },
+  {
+   "pdbx_struct_assembly": {
+    "details": "author_defined_assembly",
+    "method_details": null,
+    "oligomeric_count": 2,
+    "oligomeric_details": "dimeric"
+   },
+   "rcsb_assembly_container_identifiers": {
+    "assembly_id": "2"
+   },
+   "rcsb_struct_symmetry": [
+    {
+     "kind": "Global Symmetry",
+     "oligomeric_state": "Hetero 2-mer",
+     "stoichiometry": [
+      "A1",
+      "B1"
+     ],
+     "type": "Asymmetric"
+    }
+   ]
+  },
+  {
+   "pdbx_struct_assembly": {
+    "details": "author_defined_assembly",
+    "method_details": null,
+    "oligomeric_count": 2,
+    "oligomeric_details": "dimeric"
+   },
+   "rcsb_assembly_container_identifiers": {
+    "assembly_id": "3"
+   },
+   "rcsb_struct_symmetry": [
+    {
+     "kind": "Global Symmetry",
+     "oligomeric_state": "Hetero 2-mer",
+     "stoichiometry": [
+      "A1",
+      "B1"
+     ],
+     "type": "Asymmetric"
+    }
+   ]
+  }
+ ],
+ "exptl": [
+  {
+   "method": "X-RAY DIFFRACTION"
+  }
+ ],
+ "nonpolymer_entities": null,
+ "polymer_entities": [
+  {
+   "entity_poly": {
+    "pdbx_seq_one_letter_code_can": "KKAVINGEQIRSISDLHQTLKKELALPEYYGENLDALWDALTGWVEYPLVLEWRQFEQSKQLTENGAESVLQVFREAKAEGADITIILS",
+    "rcsb_mutation_count": 0,
+    "rcsb_sample_sequence_length": 89
+   },
+   "polymer_entity_instances": [
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "F",
+      "auth_asym_id": "F",
+      "auth_to_entity_poly_seq_mapping": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10",
+       "11",
+       "12",
+       "13",
+       "14",
+       "15",
+       "16",
+       "17",
+       "18",
+       "19",
+       "20",
+       "21",
+       "22",
+       "23",
+       "24",
+       "25",
+       "26",
+       "27",
+       "28",
+       "29",
+       "30",
+       "31",
+       "32",
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47",
+       "48",
+       "49",
+       "50",
+       "51",
+       "52",
+       "53",
+       "54",
+       "55",
+       "56",
+       "57",
+       "58",
+       "59",
+       "60",
+       "61",
+       "62",
+       "63",
+       "64",
+       "65",
+       "66",
+       "67",
+       "68",
+       "69",
+       "70",
+       "71",
+       "72",
+       "73",
+       "74",
+       "75",
+       "76",
+       "77",
+       "78",
+       "79",
+       "80",
+       "81",
+       "82",
+       "83",
+       "84",
+       "85",
+       "86",
+       "87",
+       "88",
+       "89"
+      ]
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "CATH",
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "SCOPe",
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "SCOP2B",
+       "type": "SCOP2B_SUPERFAMILY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "ECOD",
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 7
+        },
+        {
+         "beg_seq_id": 49,
+         "end_seq_id": 54
+        },
+        {
+         "beg_seq_id": 83,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": 48
+        },
+        {
+         "beg_seq_id": 55,
+         "end_seq_id": 82
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": 48
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "CIS-PEPTIDE"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 22,
+         "end_seq_id": 22
+        },
+        {
+         "beg_seq_id": 28,
+         "end_seq_id": 28
+        },
+        {
+         "beg_seq_id": 46,
+         "end_seq_id": 46
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": 65
+        },
+        {
+         "beg_seq_id": 89,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "UNOBSERVED_ATOM_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 9,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 15,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 17,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 24,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 28,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 31,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 35,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 50,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 54,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 57,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 69,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 75,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 77,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 81,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 85,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "ANGLE_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 20,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 26,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 29,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 40,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 44,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 54,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 59,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 62,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 72,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 76,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 78,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 84,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "biojava-7.2.2",
+       "type": "ASA"
+      }
+     ]
+    },
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "E",
+      "auth_asym_id": "E",
+      "auth_to_entity_poly_seq_mapping": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10",
+       "11",
+       "12",
+       "13",
+       "14",
+       "15",
+       "16",
+       "17",
+       "18",
+       "19",
+       "20",
+       "21",
+       "22",
+       "23",
+       "24",
+       "25",
+       "26",
+       "27",
+       "28",
+       "29",
+       "30",
+       "31",
+       "32",
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47",
+       "48",
+       "49",
+       "50",
+       "51",
+       "52",
+       "53",
+       "54",
+       "55",
+       "56",
+       "57",
+       "58",
+       "59",
+       "60",
+       "61",
+       "62",
+       "63",
+       "64",
+       "65",
+       "66",
+       "67",
+       "68",
+       "69",
+       "70",
+       "71",
+       "72",
+       "73",
+       "74",
+       "75",
+       "76",
+       "77",
+       "78",
+       "79",
+       "80",
+       "81",
+       "82",
+       "83",
+       "84",
+       "85",
+       "86",
+       "87",
+       "88",
+       "89"
+      ]
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "CATH",
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "SCOPe",
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "SCOP2B",
+       "type": "SCOP2B_SUPERFAMILY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "ECOD",
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 49,
+         "end_seq_id": 54
+        },
+        {
+         "beg_seq_id": 83,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 48
+        },
+        {
+         "beg_seq_id": 55,
+         "end_seq_id": 82
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": 48
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "CIS-PEPTIDE"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 1
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": 65
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "UNOBSERVED_RESIDUE_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": 11
+        },
+        {
+         "beg_seq_id": 18,
+         "end_seq_id": 18
+        },
+        {
+         "beg_seq_id": 54,
+         "end_seq_id": 54
+        },
+        {
+         "beg_seq_id": 58,
+         "end_seq_id": 58
+        },
+        {
+         "beg_seq_id": 60,
+         "end_seq_id": 62
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "UNOBSERVED_ATOM_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 14,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 19,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 25,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 31,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 39,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 53,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 55,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 57,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 72,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 75,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 77,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 80,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 83,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 85,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "ANGLE_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 7,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 15,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 21,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 26,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 39,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 43,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 54,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 72,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 76,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 78,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 83,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 89,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 89,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "BOND_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 2,
+         "end_seq_id": 63
+        },
+        {
+         "beg_seq_id": 66,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "biojava-7.2.2",
+       "type": "ASA"
+      }
+     ]
+    },
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "D",
+      "auth_asym_id": "D",
+      "auth_to_entity_poly_seq_mapping": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10",
+       "11",
+       "12",
+       "13",
+       "14",
+       "15",
+       "16",
+       "17",
+       "18",
+       "19",
+       "20",
+       "21",
+       "22",
+       "23",
+       "24",
+       "25",
+       "26",
+       "27",
+       "28",
+       "29",
+       "30",
+       "31",
+       "32",
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47",
+       "48",
+       "49",
+       "50",
+       "51",
+       "52",
+       "53",
+       "54",
+       "55",
+       "56",
+       "57",
+       "58",
+       "59",
+       "60",
+       "61",
+       "62",
+       "63",
+       "64",
+       "65",
+       "66",
+       "67",
+       "68",
+       "69",
+       "70",
+       "71",
+       "72",
+       "73",
+       "74",
+       "75",
+       "76",
+       "77",
+       "78",
+       "79",
+       "80",
+       "81",
+       "82",
+       "83",
+       "84",
+       "85",
+       "86",
+       "87",
+       "88",
+       "89"
+      ]
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "CATH",
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "SCOPe",
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "SCOP2B",
+       "type": "SCOP2B_SUPERFAMILY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "ECOD",
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 7
+        },
+        {
+         "beg_seq_id": 49,
+         "end_seq_id": 54
+        },
+        {
+         "beg_seq_id": 83,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": 48
+        },
+        {
+         "beg_seq_id": 55,
+         "end_seq_id": 82
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": 48
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "CIS-PEPTIDE"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": 65
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "UNOBSERVED_RESIDUE_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 58,
+         "end_seq_id": 58
+        },
+        {
+         "beg_seq_id": 60,
+         "end_seq_id": 61
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "UNOBSERVED_ATOM_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 5,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 15,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 19,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 28,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 30,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 42,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 55,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 57,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 63,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 68,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 72,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 75,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 81,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 85,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "ANGLE_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 18,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 26,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 32,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 54,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 60,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 62,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 75,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 78,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 84,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 86,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 63
+        },
+        {
+         "beg_seq_id": 66,
+         "end_seq_id": 89
+        }
+       ],
+       "provenance_source": "biojava-7.2.2",
+       "type": "ASA"
+      }
+     ]
+    }
+   ],
+   "rcsb_entity_host_organism": [
+    {
+     "ncbi_scientific_name": "Escherichia coli",
+     "ncbi_taxonomy_id": 562
+    }
+   ],
+   "rcsb_id": "1BRS_2",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "BARSTAR",
+    "pdbx_mutation": null
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 1,
+       "length": 89,
+       "ref_beg_seq_id": 2
+      }
+     ],
+     "reference_database_accession": "P11540",
+     "reference_database_name": "UniProt"
+    }
+   ],
+   "rcsb_polymer_entity_container_identifiers": {
+    "auth_asym_ids": [
+     "D",
+     "E",
+     "F"
+    ],
+    "entity_id": "2",
+    "uniprot_ids": [
+     "P11540"
+    ]
+   },
+   "rcsb_polymer_entity_feature": [
+    {
+     "feature_positions": [
+      {
+       "beg_seq_id": 5,
+       "end_seq_id": null
+      }
+     ],
+     "name": "Hydropathy values",
+     "type": "hydropathy"
+    },
+    {
+     "feature_positions": [
+      {
+       "beg_seq_id": 1,
+       "end_seq_id": null
+      }
+     ],
+     "name": "Disordered binding sites",
+     "type": "disorder_binding"
+    },
+    {
+     "feature_positions": [
+      {
+       "beg_seq_id": 1,
+       "end_seq_id": null
+      }
+     ],
+     "name": "Disordered regions",
+     "type": "disorder"
+    }
+   ]
+  },
+  {
+   "entity_poly": {
+    "pdbx_seq_one_letter_code_can": "AQVINTFDGVADYLQTYHKLPDNYITKSEAQALGWVASKGNLADVAPGKSIGGDIFSNREGKLPGKSGRTWREADINYTSGFRNSDRILYSSDWLIYKTTDHYQTFTKIR",
+    "rcsb_mutation_count": 0,
+    "rcsb_sample_sequence_length": 110
+   },
+   "polymer_entity_instances": [
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "C",
+      "auth_asym_id": "C",
+      "auth_to_entity_poly_seq_mapping": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10",
+       "11",
+       "12",
+       "13",
+       "14",
+       "15",
+       "16",
+       "17",
+       "18",
+       "19",
+       "20",
+       "21",
+       "22",
+       "23",
+       "24",
+       "25",
+       "26",
+       "27",
+       "28",
+       "29",
+       "30",
+       "31",
+       "32",
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47",
+       "48",
+       "49",
+       "50",
+       "51",
+       "52",
+       "53",
+       "54",
+       "55",
+       "56",
+       "57",
+       "58",
+       "59",
+       "60",
+       "61",
+       "62",
+       "63",
+       "64",
+       "65",
+       "66",
+       "67",
+       "68",
+       "69",
+       "70",
+       "71",
+       "72",
+       "73",
+       "74",
+       "75",
+       "76",
+       "77",
+       "78",
+       "79",
+       "80",
+       "81",
+       "82",
+       "83",
+       "84",
+       "85",
+       "86",
+       "87",
+       "88",
+       "89",
+       "90",
+       "91",
+       "92",
+       "93",
+       "94",
+       "95",
+       "96",
+       "97",
+       "98",
+       "99",
+       "100",
+       "101",
+       "102",
+       "103",
+       "104",
+       "105",
+       "106",
+       "107",
+       "108",
+       "109",
+       "110"
+      ]
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "CATH",
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "SCOPe",
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "SCOP2B",
+       "type": "SCOP2B_SUPERFAMILY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "ECOD",
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 51,
+         "end_seq_id": 56
+        },
+        {
+         "beg_seq_id": 70,
+         "end_seq_id": 76
+        },
+        {
+         "beg_seq_id": 86,
+         "end_seq_id": 92
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": 99
+        },
+        {
+         "beg_seq_id": 108,
+         "end_seq_id": 109
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": 18
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 26,
+         "end_seq_id": 34
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 41,
+         "end_seq_id": 46
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 12,
+         "end_seq_id": 25
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 33,
+         "end_seq_id": 44
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 55,
+         "end_seq_id": 63
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 66,
+         "end_seq_id": 81
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 5
+        },
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": 50
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": 65
+        },
+        {
+         "beg_seq_id": 82,
+         "end_seq_id": 85
+        },
+        {
+         "beg_seq_id": 93,
+         "end_seq_id": 94
+        },
+        {
+         "beg_seq_id": 100,
+         "end_seq_id": 107
+        },
+        {
+         "beg_seq_id": 110,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 2
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "UNOBSERVED_RESIDUE_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 19,
+         "end_seq_id": 19
+        },
+        {
+         "beg_seq_id": 22,
+         "end_seq_id": 22
+        },
+        {
+         "beg_seq_id": 29,
+         "end_seq_id": 29
+        },
+        {
+         "beg_seq_id": 31,
+         "end_seq_id": 31
+        },
+        {
+         "beg_seq_id": 39,
+         "end_seq_id": 39
+        },
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": 45
+        },
+        {
+         "beg_seq_id": 49,
+         "end_seq_id": 49
+        },
+        {
+         "beg_seq_id": 67,
+         "end_seq_id": 67
+        },
+        {
+         "beg_seq_id": 110,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "UNOBSERVED_ATOM_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 5,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 7,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 11,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 15,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 20,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 23,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 29,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 34,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 39,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 41,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 49,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 52,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 73,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 84,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 87,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 89,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 98,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 101,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 105,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 109,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 5,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 10,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 14,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 17,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 24,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 31,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 37,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 40,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 46,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 53,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 62,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 69,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 75,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 82,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 88,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 94,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 103,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 107,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 110,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "ANGLE_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "biojava-7.2.2",
+       "type": "ASA"
+      }
+     ]
+    },
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "B",
+      "auth_asym_id": "B",
+      "auth_to_entity_poly_seq_mapping": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10",
+       "11",
+       "12",
+       "13",
+       "14",
+       "15",
+       "16",
+       "17",
+       "18",
+       "19",
+       "20",
+       "21",
+       "22",
+       "23",
+       "24",
+       "25",
+       "26",
+       "27",
+       "28",
+       "29",
+       "30",
+       "31",
+       "32",
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47",
+       "48",
+       "49",
+       "50",
+       "51",
+       "52",
+       "53",
+       "54",
+       "55",
+       "56",
+       "57",
+       "58",
+       "59",
+       "60",
+       "61",
+       "62",
+       "63",
+       "64",
+       "65",
+       "66",
+       "67",
+       "68",
+       "69",
+       "70",
+       "71",
+       "72",
+       "73",
+       "74",
+       "75",
+       "76",
+       "77",
+       "78",
+       "79",
+       "80",
+       "81",
+       "82",
+       "83",
+       "84",
+       "85",
+       "86",
+       "87",
+       "88",
+       "89",
+       "90",
+       "91",
+       "92",
+       "93",
+       "94",
+       "95",
+       "96",
+       "97",
+       "98",
+       "99",
+       "100",
+       "101",
+       "102",
+       "103",
+       "104",
+       "105",
+       "106",
+       "107",
+       "108",
+       "109",
+       "110"
+      ]
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "CATH",
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "SCOPe",
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "SCOP2B",
+       "type": "SCOP2B_SUPERFAMILY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "ECOD",
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 51,
+         "end_seq_id": 56
+        },
+        {
+         "beg_seq_id": 70,
+         "end_seq_id": 76
+        },
+        {
+         "beg_seq_id": 86,
+         "end_seq_id": 92
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": 99
+        },
+        {
+         "beg_seq_id": 108,
+         "end_seq_id": 109
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": 18
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 26,
+         "end_seq_id": 34
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 41,
+         "end_seq_id": 46
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 12,
+         "end_seq_id": 25
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 33,
+         "end_seq_id": 44
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 55,
+         "end_seq_id": 63
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 66,
+         "end_seq_id": 81
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 5
+        },
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": 50
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": 65
+        },
+        {
+         "beg_seq_id": 82,
+         "end_seq_id": 85
+        },
+        {
+         "beg_seq_id": 93,
+         "end_seq_id": 94
+        },
+        {
+         "beg_seq_id": 100,
+         "end_seq_id": 107
+        },
+        {
+         "beg_seq_id": 110,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 4,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 10,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 15,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 19,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 22,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 26,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 36,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 41,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 44,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 46,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 52,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 63,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 66,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 72,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 80,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 86,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 93,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 100,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "ANGLE_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 27,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 36,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 39,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 41,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 44,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 84,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 108,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 110,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "BOND_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "biojava-7.2.2",
+       "type": "ASA"
+      }
+     ]
+    },
+    {
+     "rcsb_ligand_neighbors": null,
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "A",
+      "auth_asym_id": "A",
+      "auth_to_entity_poly_seq_mapping": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5",
+       "6",
+       "7",
+       "8",
+       "9",
+       "10",
+       "11",
+       "12",
+       "13",
+       "14",
+       "15",
+       "16",
+       "17",
+       "18",
+       "19",
+       "20",
+       "21",
+       "22",
+       "23",
+       "24",
+       "25",
+       "26",
+       "27",
+       "28",
+       "29",
+       "30",
+       "31",
+       "32",
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47",
+       "48",
+       "49",
+       "50",
+       "51",
+       "52",
+       "53",
+       "54",
+       "55",
+       "56",
+       "57",
+       "58",
+       "59",
+       "60",
+       "61",
+       "62",
+       "63",
+       "64",
+       "65",
+       "66",
+       "67",
+       "68",
+       "69",
+       "70",
+       "71",
+       "72",
+       "73",
+       "74",
+       "75",
+       "76",
+       "77",
+       "78",
+       "79",
+       "80",
+       "81",
+       "82",
+       "83",
+       "84",
+       "85",
+       "86",
+       "87",
+       "88",
+       "89",
+       "90",
+       "91",
+       "92",
+       "93",
+       "94",
+       "95",
+       "96",
+       "97",
+       "98",
+       "99",
+       "100",
+       "101",
+       "102",
+       "103",
+       "104",
+       "105",
+       "106",
+       "107",
+       "108",
+       "109",
+       "110"
+      ]
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "CATH",
+       "type": "CATH"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "SCOPe",
+       "type": "SCOP"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "SCOP2B",
+       "type": "SCOP2B_SUPERFAMILY"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "ECOD",
+       "type": "ECOD"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 51,
+         "end_seq_id": 56
+        },
+        {
+         "beg_seq_id": 70,
+         "end_seq_id": 76
+        },
+        {
+         "beg_seq_id": 86,
+         "end_seq_id": 92
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": 99
+        },
+        {
+         "beg_seq_id": 108,
+         "end_seq_id": 109
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "SHEET"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": 18
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 26,
+         "end_seq_id": 34
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 41,
+         "end_seq_id": 46
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 12,
+         "end_seq_id": 25
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 33,
+         "end_seq_id": 44
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 55,
+         "end_seq_id": 63
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 66,
+         "end_seq_id": 81
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "HELIX_P"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 5
+        },
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": 50
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": 65
+        },
+        {
+         "beg_seq_id": 82,
+         "end_seq_id": 85
+        },
+        {
+         "beg_seq_id": 93,
+         "end_seq_id": 94
+        },
+        {
+         "beg_seq_id": 100,
+         "end_seq_id": 107
+        },
+        {
+         "beg_seq_id": 110,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "PROMOTIF",
+       "type": "UNASSIGNED_SEC_STRUCT"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 2
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "UNOBSERVED_RESIDUE_XYZ"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 5,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 8,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 15,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 18,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 22,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 24,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 31,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 36,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 40,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 47,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 54,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 58,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 71,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 77,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 82,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 87,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 90,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 94,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 100,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 106,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 110,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "ANGLE_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 14,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 18,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 21,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 23,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 27,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 31,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 36,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 39,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 49,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 52,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 74,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 82,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 104,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "CLASHES"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 110,
+         "end_seq_id": null
+        }
+       ],
+       "provenance_source": "PDB",
+       "type": "BOND_OUTLIERS"
+      },
+      {
+       "feature_positions": [
+        {
+         "beg_seq_id": 3,
+         "end_seq_id": 110
+        }
+       ],
+       "provenance_source": "biojava-7.2.2",
+       "type": "ASA"
+      }
+     ]
+    }
+   ],
+   "rcsb_entity_host_organism": [
+    {
+     "ncbi_scientific_name": "Escherichia coli",
+     "ncbi_taxonomy_id": 562
+    }
+   ],
+   "rcsb_id": "1BRS_1",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "BARNASE",
+    "pdbx_mutation": null
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 1,
+       "length": 110,
+       "ref_beg_seq_id": 48
+      }
+     ],
+     "reference_database_accession": "P00648",
+     "reference_database_name": "UniProt"
+    }
+   ],
+   "rcsb_polymer_entity_container_identifiers": {
+    "auth_asym_ids": [
+     "A",
+     "B",
+     "C"
+    ],
+    "entity_id": "1",
+    "uniprot_ids": [
+     "P00648"
+    ]
+   },
+   "rcsb_polymer_entity_feature": [
+    {
+     "feature_positions": [
+      {
+       "beg_seq_id": 5,
+       "end_seq_id": null
+      }
+     ],
+     "name": "Hydropathy values",
+     "type": "hydropathy"
+    },
+    {
+     "feature_positions": [
+      {
+       "beg_seq_id": 1,
+       "end_seq_id": null
+      }
+     ],
+     "name": "Disordered regions",
+     "type": "disorder"
+    },
+    {
+     "feature_positions": [
+      {
+       "beg_seq_id": 1,
+       "end_seq_id": null
+      }
+     ],
+     "name": "Disordered binding sites",
+     "type": "disorder_binding"
+    }
+   ]
+  }
+ ],
+ "rcsb_accession_info": {
+  "deposit_date": "1994-03-11T00:00:00Z",
+  "initial_release_date": "1994-06-22T00:00:00Z"
+ },
+ "rcsb_entry_info": {
+  "polymer_entity_count_protein": 2,
+  "resolution_combined": [
+   2.0
+  ]
+ },
+ "rcsb_id": "1BRS",
+ "rcsb_primary_citation": {
+  "journal_abbrev": "Biochemistry",
+  "pdbx_database_id_DOI": "10.1021/bi00196a004",
+  "pdbx_database_id_PubMed": 8043575,
+  "title": "Protein-protein recognition: crystal structural analysis of a barnase-barstar complex at 2.0-A resolution.",
+  "year": 1994
+ },
+ "refine": [
+  {
+   "ls_R_factor_R_free": null,
+   "ls_R_factor_R_work": null,
+   "pdbx_refine_id": "X-RAY DIFFRACTION"
+  }
+ ]
+}

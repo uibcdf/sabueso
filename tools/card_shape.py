@@ -88,6 +88,7 @@ def fixture_cards() -> List[dict]:
     from sabueso.tools.db.pubchem import create_compound_card_from_file
     from sabueso.tools.db.pubchem_bioassay import FixturePubChemBioAssayClient
     from sabueso.tools.db.reactome import FixtureReactomeClient
+    from sabueso.tools.db.skempi import FixtureSKEMPIClient
     from sabueso.tools.db.stringdb import FixtureStringClient
     from sabueso.tools.db.unichem import FixtureUniChemClient
 
@@ -280,7 +281,16 @@ def fixture_cards() -> List[dict]:
             trials={},
             clinicaltrials_client=FixtureClinicalTrialsClient(data),
         )
-    return [c.to_dict() for c in (tctim, hstim, molecule, compound, pathogen, drug)]
+        # Barnase with SKEMPI's interface mutations, placed through 1BRS (0.3.7).
+        barnase, _ = sabueso.resolve(
+            "P00648",
+            resolver=resolver,
+            structures=["1BRS"],
+            skempi=True,
+            skempi_client=FixtureSKEMPIClient(data),
+        )
+    cards = (tctim, hstim, molecule, compound, pathogen, drug, barnase)
+    return [c.to_dict() for c in cards]
 
 
 def current_shape() -> List[str]:

@@ -999,3 +999,37 @@ uibcdf/sabueso#86, wave 3 of #83.
   `not_found` record. The row then reads "not stated by Reactome at release 97". PHI-base,
   Reactome, Orphadata and Open Targets pass it. A source that states no release still
   records `not_found` without one.
+
+## SKEMPI 2.0: interface mutations, joined and placed only on stated grounds (2026-09-29)
+uibcdf/sabueso#83, wave 2, first of the interface sources. Card schema 0.3.7.
+- **Join.** A SKEMPI row names a PDB entry and the chains of each side (`1BRS_A_D`).
+  It joins a protein card only when UniProt states that one of those chains is the
+  protein (the PDB cross-reference's `Chains`). The protein names SKEMPI writes are
+  kept as text and never used to join.
+- **Placement** (`rcsb_author_numbering@1`). Mutations are in the entry's author
+  numbering. One is placed in UniProt numbering only through the author numbering RCSB
+  states for that chain (#73), of a structure the card holds, and only when its residue
+  matches. Mutations on the partner stay in author numbering (`partner_chain`).
+  Barnase is the test: its author numbering is the mature protein's, 47 positions from
+  UniProt's.
+- **As stated.** Affinities, kinetics, thermodynamics and temperature are quantities in
+  the units SKEMPI states. A bound keeps its relation, "n.b." is `no_binding`, and an
+  assumed temperature is flagged.
+- **ΔΔG is derived, never stored** (`binding_ddg@1`, in `Card.interface_mutations()`).
+  It is computed from the stored affinities and temperature, and is a bound when an
+  affinity is one.
+- **Version.** The file states only the database version, 2.0, while the site reports
+  later corrections. Each enrichment records the file's SHA-256.
+- **Packets.** The `oligomer` aspect now also covers interface mutations. That changes
+  what a published mapping asks, so it is `packet_aspects@2`. A test pins each
+  version's options: aspect options are derived from the enrichers, and a new enricher
+  must never change a published version silently.
+
+## iPPI-DB is blocked (2026-09-29)
+- Its compound pages state targets (UniProt), activities and InChIKeys, but only as
+  HTML. The CSV export holds SMILES only, and the REST API covers structures, cavities
+  and hotspots.
+- No data licence was found on the site. The registry's earlier "CC BY-SA 3.0" could
+  not be confirmed, and may have been the article's licence.
+- Reading HTML pages is fragile and, without terms, not redistributable. It waits on the
+  maintainers (#84).

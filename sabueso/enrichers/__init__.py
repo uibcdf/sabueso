@@ -45,6 +45,8 @@ class Context:
 
     anchor: str
     entry: Dict[str, Any]
+    #: The mappings built so far (the bespoke enrichments' among them), read-only.
+    mappings: List[Dict[str, Any]] = field(default_factory=list)
 
     @property
     def taxon(self) -> int | None:
@@ -69,6 +71,23 @@ class Context:
             for p in x.get("properties") or []
             if p.get("key") == key and p.get("value")
         ]
+
+    def author_numbering(self) -> Dict[str, Dict[str, List[list]]]:
+        """Per PDB entry, the author numbering RCSB states for this protein's chains
+        (``has_structure`` qualifier ``author_numbering``, #73), for the structures the
+        card holds."""
+        out: Dict[str, Dict[str, List[list]]] = {}
+        subject = f"uniprot:{self.anchor}"
+        for mapping in self.mappings:
+            for rel in mapping.get("relationships") or []:
+                if (
+                    rel.get("predicate") == "has_structure"
+                    and rel.get("subject_ref") == subject
+                    and (rel.get("qualifiers") or {}).get("author_numbering")
+                ):
+                    pdb_id = str(rel["object_ref"]).split(":", 1)[1].upper()
+                    out[pdb_id] = rel["qualifiers"]["author_numbering"]
+        return out
 
     @cached_property
     def transcripts(self) -> Dict[str, Any]:
@@ -230,6 +249,7 @@ def _registered() -> List[Enricher]:
         pdbe_kb,
         phi_base,
         reactome,
+        skempi,
         stringdb,
     )
 
@@ -247,6 +267,7 @@ def _registered() -> List[Enricher]:
         reactome.ENRICHER,
         gnomad.ENRICHER,
         clinvar.ENRICHER,
+        skempi.ENRICHER,
     ]
 
 

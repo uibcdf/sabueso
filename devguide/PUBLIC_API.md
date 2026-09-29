@@ -50,6 +50,7 @@ shows how to use them.
 - **Views.** Each derives knowledge with a named rule:
   - `structures(include_fragments=False, region=None)` and `predicted_structures()`;
   - `oligomer()` and `ligand_sites()`;
+  - `interface_mutations()` (SKEMPI, with ΔΔG under `binding_ddg@1`, #83);
   - `bioactivities(include_indirect=False, thresholds=None)`;
   - `ligands(deck, ...)` and `compare_ligands(deck, other, other_deck, ...)`;
   - `literature()` and `claims(topic=None)`;
@@ -119,7 +120,8 @@ Raw records in a provenance envelope, one client per source (`SOURCE_ACCESS.md`)
 - `chembl.get_bioactivities`, `chembl.get_molecules`;
 - `bindingdb.get_affinities`, `pubchem.get_compound`, `pubchem_bioassay.get_assays`;
 - `unichem.get_compound`, `stringdb.get_partners`;
-- `ncbi_taxonomy.get_taxon`, `ncbi_gene.get_gene`.
+- `ncbi_taxonomy.get_taxon`, `ncbi_gene.get_gene`;
+- `skempi.get_mutations`.
 
 Each source also has an `Online<Source>Client` and a `Fixture<Source>Client`. The legacy
 `create_*_card_*` builders are deprecated and will be removed before 1.0.

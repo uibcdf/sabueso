@@ -5,7 +5,7 @@ indications ChEMBL records, with their maximum phase, and the registered trials 
 indications cite.
 
 ```{note}
-The clinical layer is on main, not yet in a release.
+The clinical layer is available since release 0.6.0.
 ```
 
 ```python

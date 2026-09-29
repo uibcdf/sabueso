@@ -13,6 +13,7 @@ import sabueso
 from sabueso.core.card import Card
 from sabueso.core.errors import ArgumentError, ResolverError, StorageError
 from sabueso.core.packets import (
+    ASPECT_MAPPING,
     ASPECTS,
     BIOACTIVITY_SOURCES,
     aspect_options,
@@ -32,6 +33,7 @@ from sabueso.tools.db.orphadata import FixtureOrphadataClient
 from sabueso.tools.db.pdbe_kb import FixturePDBeKBClient
 from sabueso.tools.db.phi_base import FixturePHIBaseClient
 from sabueso.tools.db.reactome import FixtureReactomeClient
+from sabueso.tools.db.skempi import FixtureSKEMPIClient
 
 
 @pytest.fixture(scope="module")
@@ -53,6 +55,7 @@ def clients():
         reactome_client=FixtureReactomeClient("temp_data"),
         clinvar_client=FixtureClinVarClient("temp_data"),
         gnomad_client=FixtureGnomADClient("temp_data"),
+        skempi_client=FixtureSKEMPIClient("temp_data"),
     )
 
 
@@ -89,7 +92,10 @@ def test_a_query_is_declared_and_normalized(query):
         "constraints": {"bioactivity_sources": ["ChEMBL"]},
     }
     assert sabueso.KnowledgeQuery.from_dict(query.to_dict()) == query
-    # What the aspects ask of the sources is fixed by packet_aspects@1.
+    # What the aspects ask of the sources is fixed per mapping version. The options are
+    # derived from the declared enrichers, so a new enricher in an aspect's areas fails
+    # here: that is a new mapping version (packet_aspects@3), never a silent change.
+    assert ASPECT_MAPPING == "packet_aspects@2"
     assert query.options() == {
         "clinvar": {},
         "diseases": {},
@@ -104,6 +110,7 @@ def test_a_query_is_declared_and_normalized(query):
         "interfaces": True,
         "family_sites": True,
         "ligand_sites": True,
+        "skempi": True,
         "chembl": {},
     }
     narrow = sabueso.KnowledgeQuery(

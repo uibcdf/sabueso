@@ -38,6 +38,7 @@ Every function returns `{source, kind, query, retrieved_at, version, record}`:
 | `bindingdb` | `get_affinities(accession)` |
 | `pubchem_bioassay` | `get_assays(accession)` |
 | `ncbi_taxonomy` | `get_taxon(tax_id)` |
+| `skempi` | `get_mutations(pdb_ids)` |
 | `ncbi_gene` | `get_gene(gene_id)` |
 
 Every function accepts `client=`. The default is the source's online client. Each module

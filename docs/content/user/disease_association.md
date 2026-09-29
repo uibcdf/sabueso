@@ -5,7 +5,7 @@ diseases its gene is associated with. Each source, and each DISEASES channel, is
 apart.
 
 ```{note}
-Disease associations are on main, not yet in a release.
+Disease associations are available since release 0.6.0.
 ```
 
 ```python

@@ -576,17 +576,21 @@ resources:
     description: "Non-peptide inhibitors and modulators of protein–protein interactions, with pharmacological, chemical and structural data."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "CC BY-SA 3.0 (share-alike, like ChEMBL); CSV download"
-    links: ["#83"]
+    licence: "Not found (2026-09-29): the site states no data licence; CC BY-SA 3.0 was recorded earlier from elsewhere and could not be confirmed"
+    note: "Blocked (2026-09-29): the compounds' targets, activities and InChIKeys are only in HTML pages (the CSV export has SMILES only, and the REST API covers structures, cavities and hotspots), and no data licence was found. Waiting for its maintainers (#84)."
+    links: ["#83", "#84"]
   - id: skempi
     name: "SKEMPI 2.0"
     url: https://life.bsc.es/pid/skempi2/
     category: interactions
-    status: evaluating
+    status: in_use
     description: "Changes in binding affinity (ΔΔG) and kinetics caused by mutations at protein–protein interfaces."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "CC BY 4.0 (CSV download)"
+    reason: "Measured binding changes of interface mutations (affinities, kinetics, thermodynamics, as stated), joined through the PDB chains UniProt states are the protein, and placed in UniProt numbering only through RCSB's author numbering and a matching residue. ΔΔG is derived in the view (binding_ddg@1), never stored."
+    access: "The whole CSV file (1.6 MB, database version 2.0, its SHA-256 recorded), downloaded once per process and indexed by PDB entry, when resolve(..., skempi=True)"
+    licence: "CC BY 4.0 (the site's terms of download and use; cite Jankauskaitė et al. 2019)"
+    module: [sabueso.tools.db.skempi, sabueso.mappings.skempi]
     links: ["#83"]
   - id: ppi3d
     name: "PPI3D"

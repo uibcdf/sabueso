@@ -20,6 +20,8 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | Files | Source | Version / release | Retrieved | Licence |
 | --- | --- | --- | --- | --- |
 | `P00938.json`, `P35372.json`, `P52270.json`, `P52789.json`, `P60174.json`, `P60175.json`, `Q6FHP9.json`, `V9HWK1.json`, `A0A140VJM9.json` | UniProtKB (UniProt Consortium) | release 2026_03 | 2026-09-23 | CC BY 4.0 |
+| `P00648.json` | UniProtKB (UniProt Consortium), barnase of *Bacillus amyloliquefaciens*, a public test system for interface mutations | release 2026_03 (entry version 146) | 2026-09-29 | CC BY 4.0 |
+| `skempi/skempi_v2.csv` | SKEMPI 2.0 (Jankauskaitė et al. 2019), the 105 rows of the barnase–barstar complexes (1BRS, 1B2S, 1B2U, 1B3S, 1X1W, 1X1X), header kept; a subset of the whole file, rows unchanged | 2.0 (CSV of 2018-06-06) | 2026-09-29 | CC BY 4.0 |
 | `Q4D3W2.json`, `Q4QGX0.json` | UniProtKB (UniProt Consortium), a *T. cruzi* and an *L. major* entry with PHI-base records | release 2026_03 | 2026-09-27 | CC BY 4.0 |
 | `phi_base/*.json` | PHI-base 5 (Zenodo record 21196331), the curation sessions naming Q4D3W2, H2DQH1 and Q4QGX0, as split by `sabueso.tools.db.phi_base.split_release` | 5.6 | 2026-09-27 | CC BY 4.0 (cite PHI-base; Urban et al., Nucleic Acids Res. 2025) |
 | `uniprot_search/*.json` | UniProtKB search responses; refreshed with lineage and gene-locus cross-references, and the Trichomonas vaginalis search added, on 2026-09-25 (same release, same results) | release 2026_03 | 2026-09-23 | CC BY 4.0 |
@@ -28,7 +30,7 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | `ncbi_gene/*.xml` | NCBI Gene (NCBI/NLM), Entrez E-utilities `efetch` gene records (XML), as returned | E-utilities | 2026-09-26 | US public domain (NLM policy) |
 | `bindingdb/*.json` | BindingDB, REST `getLigandsByUniprots` responses for P52270 and P60174 | — | 2026-09-25 | **CC BY-SA 3.0** (treated as such: BindingDB curation is CC BY 3.0, ChEMBL imports CC BY-SA 3.0, and records state no origin) |
 | `pubchem_bioassay/*.json` | PubChem BioAssay (NCBI/NLM): assays linked to P52270 and P60174, their summaries, concise tables and the InChIKeys of their compounds | — | 2026-09-25 | US public domain (NLM policy); deposited data keeps its depositor's terms: these assays were deposited by ChEMBL (**CC BY-SA 3.0**) and BindingDB |
-| `rcsb/*.json` | RCSB PDB (wwPDB archive), GraphQL entry data; assemblies added and 3Q37 retrieved 2026-09-24; all refetched with mutations, tags, unobserved residues, refinement and dates, and 2OMA, 2VOM, 4HHP and 4UNK added, 2026-09-25; refetched with author numbering, and 2V5B and 1WYI added, 2026-09-26 (1KLG kept from 2026-09-25: RCSB answered it only partially that day); all refetched with the program that assigned each instance feature (`provenance_source`), 2026-09-27, each answered completely, 1KLG included | — | 2026-09-23 | CC0 1.0 |
+| `rcsb/*.json` | RCSB PDB (wwPDB archive), GraphQL entry data; assemblies added and 3Q37 retrieved 2026-09-24; all refetched with mutations, tags, unobserved residues, refinement and dates, and 2OMA, 2VOM, 4HHP and 4UNK added, 2026-09-25; refetched with author numbering, and 2V5B and 1WYI added, 2026-09-26 (1KLG kept from 2026-09-25: RCSB answered it only partially that day); all refetched with the program that assigned each instance feature (`provenance_source`), 2026-09-27, each answered completely, 1KLG included; 1BRS (barnase–barstar) added 2026-09-29 | — | 2026-09-23 | CC0 1.0 |
 | `pdb_ccd/*.json` | wwPDB Chemical Component Dictionary, served by RCSB PDB | — | 2026-09-23 | CC0 1.0 |
 | `pdbe_kb/*.json` | PDBe-KB (EMBL-EBI), ligand binding sites (2026-09-23) and interface residues (2026-09-24) | — | 2026-09-23 | CC BY 4.0 |
 | `interpro/*.json` | InterPro (EMBL-EBI), site residues from the CDD member database | InterPro 110.0 | 2026-09-23 | see note below |
@@ -66,6 +68,10 @@ JSON.
   The site residues in these fixtures come from **CDD** (NCBI), a U.S. government work
   under NLM policy, like PubChem.
 - **STRING** — https://string-db.org, CC BY 4.0.
+- **SKEMPI 2.0** — https://life.bsc.es/pid/skempi2/, CC BY 4.0 (its terms of download and
+  use). Cite: Jankauskaitė J, Jiménez-García B, Dapkūnas J, Fernández-Recio J, Moal IH
+  (2019) SKEMPI 2.0: an updated benchmark of changes in protein–protein binding energy,
+  kinetics and thermodynamics upon mutation. Bioinformatics 35, 462–469.
 - **AlphaFold DB** — Google DeepMind and EMBL-EBI, https://alphafold.ebi.ac.uk, CC BY 4.0.
   Cite Jumper et al., Nature 2021 (AlphaFold) and the AlphaFold DB paper (Varadi et al.).
 - **ChEMBL** — EMBL-EBI, https://www.ebi.ac.uk/chembl/, CC BY-SA 3.0 Unported

@@ -6,8 +6,8 @@ and pins every card state it read, so that the answer can be cited and read back
 exactly.
 
 ```{note}
-Knowledge packets are a prototype on main, not yet in a release. Their shared contract
-with the rest of MOLI is under discussion (uibcdf/moli#22), so their shape may change.
+Knowledge packets are a prototype, released in 0.6.0. Their shared contract with the
+rest of MOLI is under discussion (uibcdf/moli#22), so their shape may change.
 ```
 
 ## A question and its answer
@@ -33,7 +33,7 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping, `packet_aspects@1`. Keyword arguments to
+by a named, versioned mapping, `packet_aspects@2`. Keyword arguments to
 `knowledge_packet` only choose how the sources are reached (a `resolver`, or source
 clients such as `chembl_client`); they never change what is asked.
 

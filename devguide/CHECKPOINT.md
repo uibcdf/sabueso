@@ -21,6 +21,11 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     0.3.6.
   - The recorded shape of 0.3.6 is `schemas/card_shape_0.3.6.json`.
 - **Unreleased on main:**
+  - card schema 0.3.7 (`schemas/card_schema_0.3.7.yaml`, shape
+    `schemas/card_shape_0.3.7.json`): `annotations.interface_mutations` from SKEMPI 2.0,
+    placed through RCSB's author numbering, with ΔΔG derived in
+    `Card.interface_mutations()` (`binding_ddg@1`) (#83);
+  - `packet_aspects@2`: the `oligomer` aspect also covers interface mutations;
   - `knowledge_state@3`: an answer cut at a limit is `partial`, with `truncated_for`
     (#88);
   - a `not_found` record states the release it was checked against (#89).

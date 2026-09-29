@@ -21,8 +21,9 @@ the Sabueso version that built the cards, so two assemblies of unchanged knowled
 the same ``content_id`` even when the sources were read again (``same_knowledge``).
 
 What each aspect asks the sources for, and which knowledge areas it covers, is fixed by
-the mapping ``packet_aspects@1``. It never changes once published: a change is a new
-version.
+the mapping ``packet_aspects@2``. It never changes once published: a change is a new
+version, and a test pins what each version asks. ``@1`` was published in 0.6.0; ``@2``
+adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83).
 
 The shared contract (query and packet shapes, references, the boundary with MOLI's
 Context Assembly) is proposed in uibcdf/moli#22; this is Sabueso's prototype of it.
@@ -41,7 +42,7 @@ from .snapshot import canonical_json, digest, parse_ref, pinned_ref, snapshot_co
 
 QUERY_FORMAT = "knowledge_query@1"
 PACKET_FORMAT = "knowledge_packet@1"
-ASPECT_MAPPING = "packet_aspects@1"
+ASPECT_MAPPING = "packet_aspects@2"
 PACKET_PREFIX = "sabueso:packet:"
 
 #: Keys left out of a content-equivalence id: when the sources were read, and which
@@ -62,7 +63,7 @@ IDENTITY_FIELDS = (
     "sequence.checksums",
 )
 
-#: ``packet_aspects@1``: per aspect, the knowledge areas (field paths and relationships,
+#: ``packet_aspects@2``: per aspect, the knowledge areas (field paths and relationships,
 #: as ``knowledge_state`` names them) whose facts, conflicts and unknowns it reports,
 #: matched by prefix; and the options of the bespoke sources it needs. The options of
 #: declared enrichers are derived (``aspect_options``): an aspect asks every enricher
@@ -94,6 +95,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
             "annotations.subunit",
             "relationships.has_interface_with",
             "features_positional.family_site",
+            "annotations.interface_mutations",
         ),
     },
     "ligand_sites": {
@@ -149,7 +151,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
 
 def aspect_options(aspect: str) -> Dict[str, Any]:
     """The resolve options an aspect needs: its bespoke sources', and every declared
-    enricher answering one of its areas (``packet_aspects@1``)."""
+    enricher answering one of its areas (``packet_aspects@2``)."""
     from sabueso.enrichers import ENRICHERS
 
     options = dict(ASPECTS[aspect]["bespoke_options"])
@@ -177,7 +179,7 @@ class KnowledgeQuery:
     """A declared question about a protein, optionally beside a comparator.
 
     ``subject`` and ``comparator`` are UniProt accessions (``P60174`` or
-    ``uniprot:P60174``). ``aspects`` are names of ``packet_aspects@1`` (default: all
+    ``uniprot:P60174``). ``aspects`` are names of ``packet_aspects@2`` (default: all
     of them). ``constraints``: ``bioactivity_sources``, among ChEMBL, BindingDB and
     PubChem BioAssay (default ChEMBL). Anything else is refused, never ignored.
     """
@@ -225,7 +227,7 @@ class KnowledgeQuery:
         )
 
     def options(self) -> Dict[str, Any]:
-        """The resolve options the aspects need (``packet_aspects@1``)."""
+        """The resolve options the aspects need (``packet_aspects@2``)."""
         options: Dict[str, Any] = {}
         for aspect in self.aspects:
             options.update(aspect_options(aspect))
@@ -332,7 +334,7 @@ def _facts(aspect: str, card: Any) -> Dict[str, Any]:
             "predicted": card.predicted_structures(),
         }
     if aspect == "oligomer":
-        return card.oligomer()
+        return {**card.oligomer(), "interface_mutations": card.interface_mutations()}
     if aspect == "ligand_sites":
         return card.ligand_sites()
     if aspect == "bioactivities":

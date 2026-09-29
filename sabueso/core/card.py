@@ -10,7 +10,7 @@ from .quantities import field_node, quantity_columns, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
-CARD_SCHEMA_VERSION = "0.3.6"
+CARD_SCHEMA_VERSION = "0.3.7"
 
 
 def make_card_id(entity_type: str, subject_ref: str) -> str:
@@ -436,6 +436,13 @@ class Card:
         from .clinical import clinical_view
 
         return clinical_view(self)
+
+    def interface_mutations(self) -> Dict[str, Any]:
+        """Mutations at the interfaces of this protein's complexes and their binding
+        changes, as SKEMPI states them, each with ΔΔG under ``binding_ddg@1`` (#83)."""
+        from .interface_mutations import interface_mutations_view
+
+        return interface_mutations_view(self)
 
     def oligomer(self) -> Dict[str, Any]:
         """What sources state about this protein's quaternary structure and interfaces."""

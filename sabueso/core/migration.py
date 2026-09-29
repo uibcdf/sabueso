@@ -150,6 +150,13 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "entity_types": ("protein",),
         },
     ],
+    "0.3.7": [
+        {
+            "path": "annotations.interface_mutations",
+            "filled_by": "skempi",
+            "entity_types": ("protein",),
+        },
+    ],
 }
 
 #: Qualifiers every relationship of their predicate has when fetched with the schema
