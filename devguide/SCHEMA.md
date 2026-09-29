@@ -2,8 +2,10 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
-  - `0.3.7` is current, not yet released: it adds `annotations.interface_mutations`
-    (SKEMPI 2.0, #83) and disease cards (MONDO, #90);
+  - `0.3.7` is the schema of release 0.7.0: it adds `annotations.interface_mutations`
+    (SKEMPI 2.0, #83), disease cards (MONDO, #90), the MONDO and MedGen identity and
+    hierarchy relationships on protein cards, `mentioned_in` (Europe PMC, #92),
+    `quality.terms_profile` (#94), and `acquisition` on every SourceAssertion (#92);
   - `0.3.6` is the schema of release 0.6.0: it adds UniProt isoforms, alternative
     sequences, secondary structure (UniProt's, and per chain from RCSB) and
     `substitution.missing` (#80), the curated biological context (#60), pathogen

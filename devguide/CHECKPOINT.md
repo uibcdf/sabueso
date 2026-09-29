@@ -5,50 +5,52 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-09-29, after release 0.6.0.*
+*Last updated: 2026-09-29, after release 0.7.0.*
 
 ## Release and schema
 
-- **Latest release:** 0.6.0 (2026-09-29).
+- **Latest release:** 0.7.0 (2026-09-29).
   - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
-  - Staged candidate 3e5c3db; sha256 `e155b9b7…5f2d`.
+  - Staged candidate cb8dd77; sha256 `933337b7…3e9d`.
   - The exact staged file passed the installed-package gate on Linux, macOS and
     Windows × 3.11–3.14, and a clean public install on Python 3.14.
-  - Zenodo archive: pending.
-- **Card schema:** 0.3.6 (`schemas/card_schema_0.3.6.yaml`), published by 0.6.0. Main may
-  already write additive changes that the next release will publish.
+  - Zenodo archive: pending (0.6.0's too).
+- **Card schema:** 0.3.7 (`schemas/card_schema_0.3.7.yaml`), published by 0.7.0. Main may
+  already write additive changes that the next release will publish, in 0.3.8.
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
-    0.3.6.
-  - The recorded shape of 0.3.6 is `schemas/card_shape_0.3.6.json`.
-- **Unreleased on main:**
-  - card schema 0.3.7 (`schemas/card_schema_0.3.7.yaml`, shape
-    `schemas/card_shape_0.3.7.json`): `annotations.interface_mutations` from SKEMPI 2.0,
-    placed through RCSB's author numbering, with ΔΔG derived in
-    `Card.interface_mutations()` (`binding_ddg@1`) (#83);
-  - `packet_aspects@2`: the `oligomer` aspect also covers interface mutations;
+    0.3.7.
+  - The recorded shape of 0.3.7 is `schemas/card_shape_0.3.7.json`.
+- **In 0.7.0:**
+  - card schema 0.3.7: `annotations.interface_mutations` from SKEMPI 2.0, placed
+    through RCSB's author numbering, with ΔΔG derived in `Card.interface_mutations()`
+    (`binding_ddg@1`) (#83);
+  - `packet_aspects@2`: the `oligomer` aspect also covers interface mutations, and
+    `disease_association` asks MedGen and MONDO;
   - disease cards (#90), anchored at MONDO, resolved from DOID, Orphanet, OMIM, MeSH,
-    EFO… ids only through the equivalences MONDO states (`mondo_equivalence@1`); and a
+    EFO… ids only through the equivalences MONDO states (`mondo_equivalence@1`); a
     protein's diseases grouped across sources (`medgen`, `disease_identity`,
     `Card.diseases()`, `disease_grouping@1`), a condition named at two granularities
-    joining the broader disease through MONDO's hierarchy (`mondo_hierarchy@1`); and a disease's targets and drugs as
-    decks (`disease_targets`, `disease_drugs`);
-  - what may be done with the knowledge (#29, first milestone): `Card.terms(use)`,
-    `Deck.terms(use)`, `Deck.admissible(use)`, from the terms each source states in the
-    registry (`terms_propagation@1`); and terms profiles to build under
-    (`terms="commercial"` or `"non_commercial"`, `terms_profile@1`, #94);
+    joining the broader disease through MONDO's hierarchy (`mondo_hierarchy@1`); and a
+    disease's targets and drugs as decks (`disease_targets`, `disease_drugs`);
+  - what may be done with the knowledge (#29): `Card.terms(use)`, `Deck.terms(use)`,
+    `Deck.admissible(use)`, from the terms each source states in the registry
+    (`terms_propagation@1`), PubChem BioAssay results judged by their depositor; and
+    terms profiles to build under (`terms="commercial"` or `"non_commercial"`,
+    `terms_profile@1`, #94);
   - scientific operations (#91): `sabueso.expand`, `Card.expand` and `Deck.expand`
     (relationships into decks, `relationship_expansion@1`); `Card.explain` and
     `Deck.explain`; `KnowledgeStore.as_of`, `revision_as_of` and `changed_since`;
   - molecules given as a structure (`smiles:`, `inchi:`), matched by PubChem
     (`pubchem_structure_lookup`, #93);
   - how each statement entered (#92): `acquisition` on every SourceAssertion
-    (`database`, with `origin: text_mining` for DISEASES's text-mining channel;
-    `curation`; `rule_extraction` and `model_extraction`, not used yet),
+    (`database`, with `origin: text_mining` for DISEASES's text-mining channel and
+    Europe PMC; `curation`; `rule_extraction` and `model_extraction`, not used yet),
     `Card.acquisition()`, and packets' provenance; and Europe PMC's text-mined
     mentions of a protein's accession (`europepmc`, `mentioned_in`);
   - `knowledge_state@3`: an answer cut at a limit is `partial`, with `truncated_for`
     (#88);
   - a `not_found` record states the release it was checked against (#89).
+- **Unreleased on main:** nothing yet.
 - **Watched:** card and packet size with the default ceilings (#88).
 
 ## Package layout

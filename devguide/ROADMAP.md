@@ -37,7 +37,7 @@ status, so that none is lost because a pilot has not asked for it yet.
 - **Maintainers may schedule a foundational objective on its own.** The pilots do not
   own the plan.
 
-## Delivered so far (0.1.0 → 0.6.0)
+## Delivered so far (0.1.0 → 0.7.0)
 
 - **Foundations.**
   - Card, Deck, `SourceAssertionStore` and `RelationshipStore`.
@@ -59,6 +59,7 @@ status, so that none is lost because a pilot has not asked for it yet.
   - STRING, IntAct (through UniProt), NCBI Taxonomy, NCBI Gene.
   - Since 0.6.0: PHI-base, DISEASES, Open Targets, Orphanet, Reactome, ClinVar, gnomAD,
     ChEMBL indications and ClinicalTrials.gov (#81–#83).
+  - Since 0.7.0: SKEMPI 2.0 (#83), MONDO and MedGen (#90), Europe PMC (#92).
   - The registry, `sources/registry.yaml`, is the index.
 - **Knowledge views, each with a named rule:**
   - structures and the structural inventory; predicted models;
@@ -73,6 +74,13 @@ status, so that none is lost because a pilot has not asked for it yet.
   - Variants placed only through stated transcripts and isoform maps (#83, #85).
   - Knowledge packets, a prototype (#71).
   - Declared enrichers with shared network, release-cache and key services (#86).
+- **Since 0.7.0.**
+  - Diseases as entities, anchored at MONDO; a protein's diseases grouped; a
+    disease's targets and drugs (#90).
+  - What may be done with the knowledge, and terms profiles (#29, #94).
+  - Scientific operations: expand, explain, as of (#91).
+  - Molecules given as SMILES or InChI, through PubChem's stated match (#93).
+  - How each statement entered, and text-mined literature mentions (#92).
 
 ## Status of the foundational plan
 
@@ -180,28 +188,20 @@ Foundational route. Reviewed on 2026-09-29 against `SCIENTIFIC_POTENTIAL.md`, th
 conceptual schema and the use cases, to work beyond what the pilots have asked for.
 In order:
 
-1. **The disease as an entity (#90).**
-   - Six sources name diseases with different ids (DOID, EFO, MONDO, ORPHA, MIM,
-     MeSH), and nothing relates them.
-   - A disease card is anchored at MONDO, and joined only through the equivalences
-     MONDO states.
-   - It opens disease → targets (use case 9, #82), and the drugs investigated for a
-     protein's diseases.
-   - Identity comes before composition, and it gets costlier with every source.
-2. **What may be done with the knowledge (#29).** The terms of each source carried to
-   cards, decks and packets: attribution, share-alike, and what remains without a
-   restricted source. With about 30 sources in use, MOLI needs it before knowledge is
-   redistributed. First milestone on main: `Card.terms`, `Deck.terms`,
-   `Deck.admissible`. Next: depositor terms per PubChem assay, packets, and the shared
-   vocabulary with MOLI.
-3. **Scientific operations (#91).** On main: `expand` (relationships into decks),
+1. **The disease as an entity (#90).** Released in 0.7.0: disease cards anchored at
+   MONDO, a protein's diseases grouped through stated identity and MONDO's hierarchy,
+   and a disease's targets and drugs. Open: EFO terms MONDO does not map (#96).
+2. **What may be done with the knowledge (#29).** Released in 0.7.0: `Card.terms`,
+   `Deck.terms`, `Deck.admissible`, depositor terms per PubChem assay, and terms
+   profiles (#94). Next: terms in packets, and the shared vocabulary with MOLI.
+3. **Scientific operations (#91).** Released in 0.7.0: `expand` (relationships into decks),
    `explain` (a deck member and a card's SourceAssertions), and the store's `as_of` and
    `changed_since`. Next, as use asks: explaining a view's derived items (a group, a
    state) through the same path.
 4. **Literature beyond manual curation (#92).**
-   - On main: how each statement entered (`acquisition`: database, curation, rule
+   - Released in 0.7.0: how each statement entered (`acquisition`: database, curation, rule
      extraction, model extraction, validation).
-   - On main: Europe PMC's text-mined accession mentions (`mentioned_in`). Its gene
+   - Released in 0.7.0: Europe PMC's text-mined accession mentions (`mentioned_in`). Its gene
      and protein annotations were reviewed and set aside: they ground names without
      the organism.
    - Next, when use asks: located mentions (section, sentence) of PDB ids and
