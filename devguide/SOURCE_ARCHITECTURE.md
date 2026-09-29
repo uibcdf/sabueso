@@ -139,5 +139,15 @@ unchanged.
      key.
    - Cards are identical before and after, for four proteins with and without failing
      sources.
-4. Derived packet options and the consistency test.
+4. **Done (2026-09-29).** Derived packet options and the consistency test.
+   - An aspect asks every enricher that answers one of its areas
+     (`packets.aspect_options`); only the bespoke sources' options are written by hand.
+   - The derivation found two gaps in `packet_aspects@1` (unpublished, so corrected in
+     place). `structures` showed predicted structures without asking AlphaFold DB.
+     `sequence_features` reported InterPro family sites without asking InterPro.
+   - A test checks that every "not queried" unknown in a full packet states why.
+   - The wiring test now also asks each enricher for a fixture client and a card in the
+     card-shape builder. STRING is the one enricher outside every aspect, declared
+     with its reason.
+   - `card_options` was already read from the card tools' signatures.
 5. Parallel fetching, if measured worthwhile.

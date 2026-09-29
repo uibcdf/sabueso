@@ -114,6 +114,11 @@ class Enricher:
         """Fields that identify this enricher's records in ``quality.enrichments``."""
         return {"source": self.source}
 
+    @property
+    def default_request(self) -> Any:
+        """The option's value that asks for everything by default (packets use it)."""
+        return True if self.option_kind == "flag" else {}
+
     def requested(self, options: Any) -> bool:
         return bool(options) if self.option_kind == "flag" else options is not None
 

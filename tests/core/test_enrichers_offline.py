@@ -38,6 +38,11 @@ def test_every_enricher_is_wired_everywhere(enricher):
         enricher.option
         in options_by_source()[(enricher.source, enricher.match.get("data"))]
     )
+    # A fixture client beside the online one, and a card in the card-shape builder that
+    # uses it, so the recorded shape covers what the enricher adds.
+    module = inspect.getmodule(type(enricher.client()))
+    assert any(name.startswith("Fixture") for name in vars(module)), module.__name__
+    assert f"{enricher.client_argument}=" in Path("tools/card_shape.py").read_text()
 
 
 class _Toy(Enricher):

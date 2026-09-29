@@ -953,4 +953,10 @@ uibcdf/sabueso#86, wave 3 of #83.
     not record whether a key was used: an optional key changes the rate, not the
     answer. A missing required key is `not_queried` (`MissingKeyError`). NCBI is the
     first user, with its optional key.
+- **Step 4 (same day): packet options are derived.** An aspect asks every declared
+  enricher that answers one of its knowledge areas. The rule: a packet never reports
+  as "not queried" what its own aspects could have asked. `packet_aspects@1` is
+  unpublished (packets are not in 0.5.0), so its two gaps were corrected in place:
+  `structures` now asks AlphaFold DB, and `sequence_features` asks InterPro. Functional
+  association (STRING) is not an aspect yet.
 

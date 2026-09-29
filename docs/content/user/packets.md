@@ -37,6 +37,13 @@ by a named, versioned mapping, `packet_aspects@1`. Keyword arguments to
 `knowledge_packet` only choose how the sources are reached (a `resolver`, or source
 clients such as `chembl_client`); they never change what is asked.
 
+An aspect asks every source that answers one of its knowledge areas, so a packet never
+reports as not queried what its own aspects could have asked. What stays not queried
+always says why: the source does not cover the organism (a human-only source for a
+parasite protein), only curation states the area, or the query did not name the source
+(`bioactivity_sources`). `sabueso.core.packets.aspect_options(aspect)` lists what an
+aspect asks for.
+
 ## What a packet holds
 
 - `entities`: the pinned state of each card it was composed from.

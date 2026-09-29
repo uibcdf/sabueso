@@ -12,8 +12,15 @@ import pytest
 import sabueso
 from sabueso.core.card import Card
 from sabueso.core.errors import ArgumentError, ResolverError, StorageError
-from sabueso.core.packets import ASPECTS, card_content_id
+from sabueso.core.packets import (
+    ASPECTS,
+    BIOACTIVITY_SOURCES,
+    aspect_options,
+    card_content_id,
+)
+from sabueso.enrichers import ENRICHERS
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
+from sabueso.tools.db.alphafold import FixtureAlphaFoldClient
 from sabueso.tools.db.chembl import FixtureChEMBLClient
 from sabueso.tools.db.clinvar import FixtureClinVarClient
 from sabueso.tools.db.diseases import FixtureDISEASESClient
@@ -35,6 +42,7 @@ def clients():
             rcsb_client=FixtureRCSBClient("temp_data"),
         ),
         chembl_client=FixtureChEMBLClient("temp_data"),
+        alphafold_client=FixtureAlphaFoldClient("temp_data"),
         pdbe_kb_client=FixturePDBeKBClient("temp_data"),
         interpro_client=FixtureInterProClient("temp_data"),
         taxonomy_client=FixtureNCBITaxonomyClient("temp_data"),
@@ -92,6 +100,7 @@ def test_a_query_is_declared_and_normalized(query):
         "reactome": True,
         "taxonomy": True,
         "structures": "all",
+        "predicted_structures": True,
         "interfaces": True,
         "family_sites": True,
         "ligand_sites": True,
@@ -239,3 +248,42 @@ def test_the_clients_never_change_what_is_asked(query, clients):
     # the resolver.
     with pytest.raises(argdigest.UnknownArgumentError):
         sabueso.knowledge_packet(query, bindingdb={}, **clients)
+
+
+def test_a_packet_never_leaves_unasked_what_its_aspects_could_ask(packet, query):
+    # Every "not queried" unknown has a reason: the source does not cover the
+    # organism, only curation states the area, or the query did not name the source.
+    unnamed = set(BIOACTIVITY_SOURCES) - set(query.constraints["bioactivity_sources"])
+    for role in ("subject", "comparator"):
+        for row in packet.unknowns[role]["rows"]:
+            if row["state"] != "not_queried":
+                continue
+            assert (
+                row["basis"].get("detail")
+                or row["basis"].get("route") == "curation"
+                or (
+                    row["area"] == "relationships.has_bioactivity"
+                    and row["source"] in unnamed
+                )
+            ), row
+
+
+#: Enrichers no aspect covers yet, and why.
+OUTSIDE_PACKETS = {
+    "string": "functional association networks are not a packet aspect yet",
+}
+
+
+@pytest.mark.parametrize("enricher", ENRICHERS, ids=lambda e: e.option)
+def test_every_enricher_belongs_to_an_aspect_and_is_asked_by_it(enricher):
+    aspects = [
+        a
+        for a in ASPECTS
+        if any(area.startswith(ASPECTS[a]["areas"]) for area in enricher.areas)
+    ]
+    if enricher.option in OUTSIDE_PACKETS:
+        assert not aspects
+        return
+    assert aspects, f"{enricher.option} answers no packet aspect"
+    for aspect in aspects:
+        assert aspect_options(aspect)[enricher.option] == enricher.default_request

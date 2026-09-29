@@ -62,12 +62,15 @@ IDENTITY_FIELDS = (
     "sequence.checksums",
 )
 
-#: ``packet_aspects@1``: per aspect, the resolve options it needs, and the knowledge
-#: areas (field paths and relationships, as ``knowledge_state`` names them) whose
-#: conflicts and unknowns it reports. An area matches by prefix.
+#: ``packet_aspects@1``: per aspect, the knowledge areas (field paths and relationships,
+#: as ``knowledge_state`` names them) whose facts, conflicts and unknowns it reports,
+#: matched by prefix; and the options of the bespoke sources it needs. The options of
+#: declared enrichers are derived (``aspect_options``): an aspect asks every enricher
+#: that answers one of its areas, so a packet never reports as "not queried" what its
+#: own aspects could have asked (#86).
 ASPECTS: Dict[str, Dict[str, Any]] = {
     "identity": {
-        "options": {"taxonomy": True},
+        "bespoke_options": {},
         "areas": (
             "identifiers.",
             "names.",
@@ -79,11 +82,14 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         ),
     },
     "structures": {
-        "options": {"structures": "all"},
-        "areas": ("relationships.has_structure",),
+        "bespoke_options": {"structures": "all"},
+        "areas": (
+            "relationships.has_structure",
+            "relationships.has_predicted_structure",
+        ),
     },
     "oligomer": {
-        "options": {"structures": "all", "interfaces": True, "family_sites": True},
+        "bespoke_options": {"structures": "all"},
         "areas": (
             "annotations.subunit",
             "relationships.has_interface_with",
@@ -91,7 +97,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         ),
     },
     "ligand_sites": {
-        "options": {"ligand_sites": True, "family_sites": True},
+        "bespoke_options": {},
         "areas": (
             "relationships.has_ligand_site",
             "features_positional.binding_site",
@@ -100,11 +106,11 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         ),
     },
     "bioactivities": {
-        "options": {},  # from the bioactivity_sources constraint
+        "bespoke_options": {},  # from the bioactivity_sources constraint
         "areas": ("relationships.has_bioactivity",),
     },
     "sequence_features": {
-        "options": {"gnomad": {}},
+        "bespoke_options": {},
         "areas": (
             "features_positional.",
             "annotations.isoforms",
@@ -113,16 +119,11 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         ),
     },
     "literature": {
-        "options": {},
+        "bespoke_options": {},
         "areas": ("relationships.described_in", "literature."),
     },
     "disease_association": {
-        "options": {
-            "diseases": {},
-            "open_targets": {},
-            "orphadata": True,
-            "clinvar": {},
-        },
+        "bespoke_options": {},
         "areas": (
             "relationships.associated_with",
             "annotations.disease",
@@ -130,7 +131,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         ),
     },
     "biological_context": {
-        "options": {"phi_base": True, "reactome": True},
+        "bespoke_options": {},
         "areas": (
             "relationships.participates_in",
             "annotations.pathogen_phenotypes",
@@ -144,6 +145,21 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         ),
     },
 }
+
+
+def aspect_options(aspect: str) -> Dict[str, Any]:
+    """The resolve options an aspect needs: its bespoke sources', and every declared
+    enricher answering one of its areas (``packet_aspects@1``)."""
+    from sabueso.enrichers import ENRICHERS
+
+    options = dict(ASPECTS[aspect]["bespoke_options"])
+    for enricher in ENRICHERS:
+        if enricher.entity_type == "protein" and any(
+            _in_areas(area, [aspect]) for area in enricher.areas
+        ):
+            options[enricher.option] = enricher.default_request
+    return options
+
 
 #: Bioactivity sources a query may name, and the resolve option each needs.
 BIOACTIVITY_SOURCES = {
@@ -212,7 +228,7 @@ class KnowledgeQuery:
         """The resolve options the aspects need (``packet_aspects@1``)."""
         options: Dict[str, Any] = {}
         for aspect in self.aspects:
-            options.update(ASPECTS[aspect]["options"])
+            options.update(aspect_options(aspect))
         if "bioactivities" in self.aspects:
             for source in self.constraints["bioactivity_sources"]:
                 option, value = BIOACTIVITY_SOURCES[source]
