@@ -102,7 +102,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Access**: E-utilities (einfo for the build, esearch by NCBI Gene id, esummary), no key (`OnlineClinVarClient`); saved summaries in `temp_data/clinvar/`; `tools.db.clinvar.get_variants`
 - **Quality**: green for the listed coverage. Verified live on TPI1 (GeneID 7167, Build260924-0125.1): 249 records in about 8 s. 110 have a protein change on the canonical transcript NM_000365.6, and those placed include UniProt's natural variants at 42, 105, 171 and 241.
 - **Coverage**: `annotations.clinical_variants`, with the classification, review status, conditions and consequences as stated. Positions are in UniProt numbering only through a canonical transcript UniProt states and a matching residue.
-- **Notes**: found by the NCBI Gene id UniProt cross-references, never by gene symbol. At most 500 records per gene by default; truncation reported. Human genes only. Not for diagnostic use without review by a genetics professional.
+- **Notes**: found by the NCBI Gene id UniProt cross-references, never by gene symbol. Every record of the gene by default, up to 5000; a cut is reported. Human genes only. Not for diagnostic use without review by a genetics professional.
 
 ### Reactome — pathways and reactions
 - **Status**: implemented as an enricher of `resolve_protein_card(..., reactome=True)` (uibcdf/sabueso#83)
@@ -128,7 +128,8 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: `associated_with` relationships, with the overall score, the per-datatype scores and the rank, as stated.
 - **Notes**:
   - Joined through the Ensembl gene UniProt cross-references, only when Open Targets also lists the entry among the gene's products.
-  - At most 100 associations per gene by default, in Open Targets' order; truncation reported.
+  - Every association of the gene by default, up to 5000, in Open Targets' order; a cut
+    is reported.
   - Human genes only.
   - Tractability, safety and evidence strings are not mapped yet.
   - Licence: CC0 1.0.
@@ -302,7 +303,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 ### STRING
 - **Status**: implemented as an enricher of `resolve_protein_card` (uibcdf/sabueso#21, part 2c)
 - **Access**: online API (`OnlineStringClient`), saved responses (`FixtureStringClient`, `temp_data/string/`)
-- **Quality**: green for the listed coverage, verified on human TIM (STRING 12.0: 50 partners at score ≥ 700)
+- **Quality**: green for the listed coverage, verified on human TIM (STRING 12.0: 78 partners at score ≥ 700; the fixture keeps the 50 most confident, marked `truncated`)
 - **Coverage**: `functionally_associated_with` relationships with the combined score, the seven evidence channels, the query parameters and the STRING version (`source.version`)
 - **Notes**:
   - STRING edges are functional associations, not physical interactions. The channels show whether an association rests on experiments or on pathways, fusion or text mining.

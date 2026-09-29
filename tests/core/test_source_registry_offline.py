@@ -44,6 +44,11 @@ def test_every_source_module_is_in_use(data):
         (lambda r: r.update(category="nowhere"), "unknown category"),
         (lambda r: r.update(colour="blue"), "unknown keys"),
         (lambda r: r.update(module=["sabueso.tools.db.nowhere"]), "does not exist"),
+        (lambda r: r.update(limit={"constant": "x.Y"}), "what it counts"),
+        (
+            lambda r: r.update(limit={"constant": "sabueso.nowhere.LIMIT", "of": "x"}),
+            "is not an int",
+        ),
     ],
 )
 def test_a_decision_without_its_basis_is_refused(data, change, message):
@@ -59,3 +64,11 @@ def test_an_unregistered_source_module_is_refused(data):
     assert "sabueso.tools.db.alphafold is not registered as an in_use resource" in (
         registry.problems(broken)
     )
+
+
+def test_the_page_states_each_ceiling_as_the_code_holds_it(data):
+    from sabueso.tools.db import open_targets
+
+    page = registry.render(data)
+    assert f"| Open Targets Platform | {open_targets.DEFAULT_LIMIT} |" in page
+    assert "Blocked: its site did not answer" in page  # an evaluation's state

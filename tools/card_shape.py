@@ -303,6 +303,12 @@ def main() -> int:
     from sabueso.core.card import CARD_SCHEMA_VERSION
 
     shape = current_shape()
+    # The cards are built from fixtures, some of them declared cuts of a larger answer
+    # (temp_data/NOTICE.md): their truncation warnings are expected.
+    print(
+        "note: truncation warnings above come from fixtures that are declared cuts "
+        "(temp_data/NOTICE.md)"
+    )
     path = shape_file(CARD_SCHEMA_VERSION)
     if args.write:
         if published(CARD_SCHEMA_VERSION) and path.exists():

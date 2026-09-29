@@ -90,8 +90,8 @@ def resolve_protein_card(
 
     ``structures`` lists PDB ids to enrich with RCSB polymer-entity data, or ``"all"``
     for every PDB cross-reference of the entry. ``string`` (e.g. ``{}`` or
-    ``{"required_score": 900, "limit": 20}``) adds STRING functional associations for the
-    entry's organism. ``chembl`` (e.g. ``{}`` or ``{"limit": 1000}``) adds the ChEMBL
+    ``{"required_score": 900, "limit": 20}``; default score 700, every partner up to
+    5000) adds STRING functional associations for the entry's organism. ``chembl`` (e.g. ``{}`` or ``{"limit": 1000}``) adds the ChEMBL
     bioactivities of the targets the entry cross-references (``Card.bioactivities()``).
     ``ligand_sites`` adds the residues each ligand contacts in the protein's structures,
     from PDBe-KB (``Card.ligand_sites()``). ``interfaces`` adds the residues PDBe-KB
@@ -128,8 +128,8 @@ def resolve_protein_card(
     mining links names, not molecules, and is added only when asked for. DISEASES covers
     human genes only.
 
-    ``open_targets`` (e.g. ``{}`` or ``{"limit": 50}``; default 100, in Open Targets'
-    own order) adds Open Targets' target–disease associations, with its scores as
+    ``open_targets`` (e.g. ``{}`` or ``{"limit": 50}``; default all, up to 5000, in
+    Open Targets' own order) adds Open Targets' target–disease associations, with its scores as
     stated, through the Ensembl gene the entry cross-references, when Open Targets also
     lists the entry among that gene's products. Human genes only.
 
@@ -141,14 +141,14 @@ def resolve_protein_card(
     (``participates_in``), with each pathway's ancestors and whether Reactome inferred
     the event from orthology.
 
-    ``clinvar`` (e.g. ``{}`` or ``{"limit": 100}``; default 500 per gene) adds ClinVar's
-    variants of the gene, found by the NCBI Gene id the entry cross-references, with
+    ``clinvar`` (e.g. ``{}`` or ``{"limit": 100}``; default all, up to 5000 per gene)
+    adds ClinVar's variants of the gene, found by the NCBI Gene id the entry cross-references, with
     their classification as ClinVar states it (``annotations.clinical_variants``). A
     variant is placed in UniProt numbering only when its transcript is one UniProt states
     for the canonical isoform and its residue matches. Human genes only.
 
-    ``gnomad`` (e.g. ``{}`` or ``{"limit": 200}``; default 1000) adds gnomAD's variants of
-    the gene with a protein change, and their exome and genome frequencies
+    ``gnomad`` (e.g. ``{}`` or ``{"limit": 200}``; default all, up to 5000) adds
+    gnomAD's variants of the gene with a protein change, and their exome and genome frequencies
     (``annotations.population_variants``), placed in UniProt numbering by the same rule
     through an Ensembl transcript UniProt states for the canonical isoform. Human genes
     only.

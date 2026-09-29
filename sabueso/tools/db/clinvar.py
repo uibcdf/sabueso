@@ -33,7 +33,8 @@ from sabueso.tools.db._record import online, source_record
 
 SOURCE = "ClinVar"
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
-DEFAULT_LIMIT = 500
+#: Every record of the gene, up to a safety ceiling; a cut is reported.
+DEFAULT_LIMIT = 5000
 BATCH = 200
 KEPT = (
     "uid",

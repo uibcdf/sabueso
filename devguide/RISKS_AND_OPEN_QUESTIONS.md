@@ -209,9 +209,14 @@
   found. Until they answer, their data is read live only, never committed as fixtures or
   redistributed.
 - **Sources that refuse unnamed clients** (#82). DISEASES's download server and
-  Reactome's Content Service answer 403 to Python's default user agent. Their clients,
-  and Orphadata's, name Sabueso through one helper (`tools/db/_http.py`). Older clients
-  still use the default; move them to the helper if a source starts refusing it.
+  Reactome's Content Service answer 403 to Python's default user agent. Since #86 every
+  client names Sabueso through one helper (`tools/db/_http.py`), and a test keeps it so.
+- **Large default answers** (#88). By default every source is asked for everything, up
+  to 5000 items. For heavily studied human genes this means thousands of
+  SourceAssertions per card: Open Targets holds 5198 associations for TP53, and ClinVar
+  16094 records for BRCA1, about a minute to fetch 5000 of them. Card size, store size
+  and packet size may grow past what views and MOLI consumers expect. #88 lists what to
+  watch and the options.
 
 ## Open Questions
 - What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?

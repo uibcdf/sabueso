@@ -50,12 +50,25 @@ KNOWN = set(REQUIRED) | {
     "proposed_by",
     "decided_by",
     "links",
+    "limit",
+    "note",
 }
 ID = re.compile(r"[a-z0-9][a-z0-9_]*\Z")
 
 
 def load(path: Path = REGISTRY) -> Dict[str, Any]:
     return yaml.safe_load(path.read_text(encoding="utf-8"))
+
+
+def _constant(path: str) -> Any:
+    """The value of a module constant named by its dotted path, or None."""
+    import importlib
+
+    module, _, name = str(path).rpartition(".")
+    try:
+        return getattr(importlib.import_module(module), name)
+    except (ImportError, AttributeError, ValueError):
+        return None
 
 
 def problems(data: Dict[str, Any]) -> List[str]:
@@ -93,6 +106,12 @@ def problems(data: Dict[str, Any]) -> List[str]:
         for module in r.get("module") or []:
             if importlib.util.find_spec(module) is None:
                 out.append(f"{rid}: module {module} does not exist")
+        if "limit" in r:
+            limit = r["limit"] or {}
+            if set(limit) != {"constant", "of"}:
+                out.append(f"{rid}: limit states its constant and what it counts (of)")
+            elif not isinstance(_constant(limit["constant"]), int):
+                out.append(f"{rid}: limit constant {limit['constant']} is not an int")
     # Every source module is registered as in use.
     registered = {
         m
@@ -151,10 +170,11 @@ def render(data: Dict[str, Any]) -> str:
                 for r in group
             ]
         elif status in ("queued", "evaluating"):
-            header = "| Resource | Category | What it would bring | Since |"
+            header = "| Resource | Category | What it would bring | State | Since |"
             rows = [
                 f"| [{r['name']}]({r['url']}) | {categories[r['category']]} | "
-                f"{r['description']} | {r['since']} |"
+                f"{r['description']} | {r.get('note') or 'under review'} | "
+                f"{r['since']} |"
                 for r in sorted(group, key=lambda r: (r["category"], r["name"].lower()))
             ]
         else:
@@ -174,7 +194,32 @@ def render(data: Dict[str, Any]) -> str:
         lines.append(header)
         lines.append("|" + " --- |" * header.count(" | ") + " --- |")
         lines += [row.replace("\n", " ") for row in rows]
+        if status == "in_use":
+            lines += _limits(group)
     return "\n".join(lines) + "\n"
+
+
+def _limits(group: List[Dict[str, Any]]) -> List[str]:
+    """Where Sabueso stops by default, with the value read from the code."""
+    capped = [r for r in group if r.get("limit")]
+    lines = [
+        "",
+        "### How much Sabueso asks for",
+        "",
+        "By default Sabueso asks each source for everything it states about an entry.",
+        "Where an answer can be very large, a safety ceiling applies; an option such as",
+        '`open_targets={"limit": n}` asks for fewer. A cut is never silent: the card',
+        "records it as `truncated`, with the source's total when the source states one,",
+        "and Sabueso warns. The other sources in use are read whole.",
+        "",
+        "| Resource | Default ceiling | Counts |",
+        "| --- | --- | --- |",
+    ]
+    lines += [
+        f"| {r['name']} | {_constant(r['limit']['constant'])} | {r['limit']['of']} |"
+        for r in capped
+    ]
+    return lines
 
 
 def main() -> int:

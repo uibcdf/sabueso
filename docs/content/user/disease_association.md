@@ -39,9 +39,9 @@ when UniProt maps it to an isoform. It is never matched by gene name.
 
 ## Open Targets
 
-`sabueso.resolve("P60174", open_targets={})` adds Open Targets' associations, at most 100
-per gene by default (`{"limit": n}`), in Open Targets' own order. A cut is reported with
-a warning. Each association keeps:
+`sabueso.resolve("P60174", open_targets={})` adds every association Open Targets states
+for the gene, up to a safety ceiling of 5000 (`{"limit": n}` asks for fewer), in Open
+Targets' own order. A cut is recorded and reported with a warning. Each association keeps:
 - the overall `score`, `datatype_scores` (genetic association, literature, known
   drug…) and `rank`. They are Open Targets' own computation, recorded as stated with
   the data version, never recomputed;

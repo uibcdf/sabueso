@@ -978,3 +978,12 @@ uibcdf/sabueso#86, wave 3 of #83.
 - **Fixtures.** Some are declared cuts of a larger answer (`temp_data/NOTICE.md`), so
   building cards from them reports truncation. That is the fixture stating what it is,
   not a failure.
+- **Defaults: everything, up to a ceiling** (same day, #88). Each source is asked for
+  everything it states about an entry, up to 5000 items: ChEMBL, STRING, Open Targets,
+  ClinVar, gnomAD, ClinicalTrials.gov. The previous defaults were 50 to 1000, and they
+  hid knowledge by default. The ceilings are listed on the data-sources page, read from
+  the code. UniProt's name search stays at 500 candidates on purpose: more is ambiguity,
+  and the resolution records it. Card size and time are watched in #88.
+- **Where sources are documented.** The data-sources page, generated from the registry,
+  is the one list of sources in use, their access and licence, their ceilings, and the
+  sources set aside or blocked, each with its reason.

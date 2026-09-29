@@ -4,7 +4,8 @@ from __future__ import annotations
 
 from sabueso.enrichers import Enricher, NothingToAsk, Request
 
-DEFAULT_LIMIT = 1000
+#: Every protein-level variant, up to a safety ceiling; a cut is reported.
+DEFAULT_LIMIT = 5000
 
 
 class GnomAD(Enricher):

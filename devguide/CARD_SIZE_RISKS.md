@@ -21,6 +21,11 @@ This file documents concrete risks and mitigation strategies.
   BioAssay (1002 PubChem records, whose declared copies pull in the ChEMBL assays they
   name). The frozen card of schema 0.3.4 was kept at 380 KB by leaving PubChem BioAssay
   out and limiting ChEMBL to 25 records.
+- Since the defaults ask for everything, up to 5000 items per source (2026-09-29, #88),
+  a heavily studied human gene can bring thousands of items from each of Open Targets,
+  ClinVar and gnomAD. The raw answers alone are about 0.9 MB (TP53, Open Targets) and
+  about 6 MB (BRCA1, ClinVar, 5000 of 16094 records). At about 2 KB per item on the card,
+  such a card can reach tens of MB. Watched in #88.
 
 ## Mitigations (Recommended)
 1) **Lazy SourceAssertion loading**

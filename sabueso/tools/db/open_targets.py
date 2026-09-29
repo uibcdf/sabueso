@@ -31,8 +31,10 @@ from sabueso.tools.db._record import online, source_record
 
 SOURCE = "Open Targets"
 GRAPHQL = "https://api.platform.opentargets.org/api/v4/graphql"
-DEFAULT_LIMIT = 100
-PAGE_SIZE = 100
+#: Everything Open Targets states, up to a safety ceiling; a cut is reported.
+DEFAULT_LIMIT = 5000
+#: The largest page the GraphQL API accepts is 3000 rows.
+PAGE_SIZE = 3000
 QUERY = """
 query($gene: String!, $index: Int!, $size: Int!) {
   target(ensemblId: $gene) {

@@ -20,6 +20,13 @@
 #   retired       Was used, no longer is; reason says why.
 #   out_of_scope  Not a knowledge source for Sabueso; owner names the MOLI component
 #                 it belongs to.
+#
+# Optional keys:
+#   limit         For a source whose answer Sabueso caps by default: the code constant
+#                 that holds the cap (constant) and what it counts (of). The page reads
+#                 the value from the code, so the two cannot disagree. A cut is always
+#                 recorded as truncated and reported.
+#   note          The state of a review, e.g. why an evaluation is blocked.
 format: 1
 categories:
   targets_sequence: Targets, sequence and basic pharmacology
@@ -44,6 +51,9 @@ resources:
     since: 2026-02-06
     reason: Protein identity anchor and primary annotation source.
     access: REST API (entries and search)
+    limit:
+      constant: sabueso.tools.db.uniprot.SEARCH_SIZE
+      of: candidates of a name or gene search (kept low on purpose; more than this is ambiguous, and the resolution records search_truncated)
     licence: CC BY 4.0
     module: [sabueso.tools.db.uniprot, sabueso.mappings.uniprot]
     links: ["#6", "#13"]
@@ -104,6 +114,9 @@ resources:
     since: 2026-02-07
     reason: Measured bioactivities of a target, molecule records, and a molecule's drug indications with the trials they cite (#81).
     access: REST API
+    limit:
+      constant: sabueso.tools.db.chembl.DEFAULT_ACTIVITY_LIMIT
+      of: bioactivities per target
     licence: CC BY-SA 3.0 (share-alike)
     module: [sabueso.tools.db.chembl]
     links: ["#23", "#37", "#44"]
@@ -140,6 +153,9 @@ resources:
     since: 2026-02-07
     reason: Functional associations of a protein (opt-in enrichment).
     access: REST API
+    limit:
+      constant: sabueso.tools.db.stringdb.DEFAULT_LIMIT
+      of: partners at the required score (700 by default); STRING states no total, so a cut is detected by asking for one more
     licence: CC BY 4.0
     module: [sabueso.tools.db.stringdb]
     links: ["#21"]
@@ -227,7 +243,7 @@ resources:
     description: Gene records and standard identifiers; RefSeq sequences.
     since: 2026-09-25
     reason: "NCBI Gene ids are gene-locus identity anchors (via UniProt). Gene records are read directly for one purpose, relating two UniProt entries that state their gene in different databases: NCBI Gene lists the UniProt entries of a gene's products (#69). RefSeq is not used."
-    access: "via UniProt cross-references; Entrez E-utilities efetch (XML), no key, when resolve(..., ncbi_gene=True)"
+    access: "via UniProt cross-references; Entrez E-utilities efetch (XML), optional NCBI key, when resolve(..., ncbi_gene=True)"
     licence: US public domain (NLM policy)
     module: [sabueso.mappings.uniprot, sabueso.tools.db.ncbi_gene, sabueso.mappings.ncbi_gene]
     links: ["#54", "#55", "#69"]
@@ -377,7 +393,10 @@ resources:
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     reason: "Target-disease associations for human proteins, with Open Targets' overall and per-datatype scores as stated. Joined through the Ensembl gene UniProt cross-references, only when Open Targets also lists the entry among the gene's products."
-    access: "GraphQL API v4, no key, when resolve(..., open_targets={}); at most 100 associations per gene by default, in Open Targets' order, truncation reported"
+    access: "GraphQL API v4 (pages of 3000), no key, when resolve(..., open_targets={}), in Open Targets' order"
+    limit:
+      constant: sabueso.tools.db.open_targets.DEFAULT_LIMIT
+      of: associations per gene
     licence: "CC0 1.0 (cite the latest Open Targets publication; third-party sources inside keep their terms, agreed for unrestricted use by its users)"
     module: [sabueso.tools.db.open_targets, sabueso.mappings.open_targets]
     links: ["#82", "#83"]
@@ -426,6 +445,7 @@ resources:
     description: "Target prioritisation for pathogens of neglected tropical diseases: essentiality, druggability, similarity to the host."
     since: 2026-09-27
     proposed_by: "Source coverage plan (#83): pathogen-target assessment"
+    note: "Blocked: its site did not answer from our network (2026-09-27/28), and no terms or API were found. Waiting for its maintainers (#84)."
     links: ["#83", "#84"]
   - id: phi_base
     name: "PHI-base"
@@ -503,7 +523,10 @@ resources:
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     reason: "Variants of a human gene with their germline classification, review status and conditions, as ClinVar states them. Found by the NCBI Gene id UniProt cross-references; placed in UniProt numbering only through a canonical transcript UniProt states and a matching residue."
-    access: "E-utilities (einfo, esearch by gene id, esummary), no key, when resolve(..., clinvar={}); at most 500 records per gene by default, truncation reported"
+    access: "E-utilities (einfo, esearch by gene id, esummary), optional NCBI key, when resolve(..., clinvar={})"
+    limit:
+      constant: sabueso.tools.db.clinvar.DEFAULT_LIMIT
+      of: records per gene
     licence: "Freely available; ClinVar asks to be credited as the source. Not for diagnostic use without review by a genetics professional."
     module: [sabueso.tools.db.clinvar, sabueso.mappings.clinvar]
     links: ["#83"]
@@ -516,7 +539,10 @@ resources:
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     reason: "Population frequencies (exomes, genomes) of a human gene's variants with a protein change, as gnomAD states them. Found by the Ensembl gene UniProt cross-references; placed in UniProt numbering only through a canonical Ensembl transcript UniProt states and a matching residue."
-    access: "GraphQL API (dataset gnomad_r4; the API states no finer release), no key, when resolve(..., gnomad={}); at most 1000 protein-level variants per gene by default"
+    access: "GraphQL API (dataset gnomad_r4; the API states no finer release), no key, when resolve(..., gnomad={})"
+    limit:
+      constant: sabueso.enrichers.gnomad.DEFAULT_LIMIT
+      of: protein-level variants per gene
     licence: "CC0 1.0 (core data; some annotations, not read, carry other terms)"
     module: [sabueso.tools.db.gnomad, sabueso.mappings.gnomad]
     links: ["#83"]
@@ -994,7 +1020,7 @@ resources:
     reason: "Exact relations between organisms (a strain and its species) for the identity audit, and ranks to group cohorts; UniProt gives names without ranks."
     decided_by: "Sabueso maintainers (2026-09-25)"
     module: [sabueso.tools.db.ncbi_taxonomy, sabueso.mappings.ncbi_taxonomy]
-    access: "NCBI Datasets REST API, no key"
+    access: "NCBI Datasets REST API, optional NCBI key"
     licence: "US public domain (NLM policy)"
     links: ["#55", "#54", "#67"]
   # --- from the original source plan (devguide/archive/SOURCES_original_plan.md) ------
@@ -1030,6 +1056,9 @@ resources:
     proposed_by: "Original plan: clinical layer and use case 8 (clinical trials for ligands)"
     reason: "The clinical layer of molecule cards (#81). Studies name interventions only as text, so Sabueso asks only for the NCT ids ChEMBL's drug indications cite, and never matches a trial to a molecule by name."
     access: "API v2 (studies by NCT id, in batches), no key, when resolve(..., trials={})"
+    limit:
+      constant: sabueso.tools.card.small_molecule.DEFAULT_TRIAL_LIMIT
+      of: trials per molecule, among those ChEMBL's indications cite
     licence: "US government work (not under copyright in the US); NLM asks credit (Source: National Library of Medicine)"
     module: [sabueso.tools.db.clinicaltrials, sabueso.mappings.clinical]
     links: ["#81", "#83"]

@@ -166,8 +166,9 @@ Implemented in `sabueso/tools/card/protein.py` (#6, step 4c); exported at packag
     enforced through `build_card_from_mapping(..., entity_subjects=...)`;
   - identity links become relationships;
   - `structures=[...]` or `"all"` enriches `has_structure` with RCSB data;
-  - `string={...}` (e.g. `{"required_score": 700, "limit": 50}`) adds STRING
-    `functionally_associated_with` relationships for the entry's organism;
+  - `string={...}` (e.g. `{"required_score": 700, "limit": 50}`; by default every
+    partner at score ≥ 700, up to 5000) adds STRING `functionally_associated_with`
+    relationships for the entry's organism;
   - `chembl={...}` (e.g. `{"limit": 5000}`) adds ChEMBL `has_bioactivity` relationships
     for the targets cross-referenced by the entry. `Card.bioactivities(include_indirect=False,
     thresholds=None)` is the molecule-centric view, with derived activity classes

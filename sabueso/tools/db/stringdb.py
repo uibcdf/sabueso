@@ -32,7 +32,8 @@ from sabueso.tools.db._record import online, source_record
 STRING_API = "https://string-db.org/api/json"
 CALLER_IDENTITY = "sabueso"
 DEFAULT_REQUIRED_SCORE = 700  # STRING "high confidence"
-DEFAULT_LIMIT = 50
+#: Every partner at or above the score, up to a safety ceiling; a cut is reported.
+DEFAULT_LIMIT = 5000
 
 
 def _get(endpoint: str, params: Dict[str, Any], timeout: float) -> Any:

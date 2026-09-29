@@ -330,8 +330,9 @@ def resolve_molecule_card(
     return card, resolution
 
 
-#: Trials fetched per card unless ``trials={"limit": n}`` says otherwise.
-DEFAULT_TRIAL_LIMIT = 100
+#: Every trial ChEMBL cites, up to a safety ceiling, unless ``trials={"limit": n}``
+#: asks for fewer; a cut is reported.
+DEFAULT_TRIAL_LIMIT = 5000
 
 
 def _clinical(card, chembl_client, clinicaltrials_client, trials, enrichments):
