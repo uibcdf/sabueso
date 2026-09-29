@@ -1114,3 +1114,17 @@ uibcdf/sabueso#29.
   BindingDB and PubChem BioAssay, 272 of 527 measured molecules may be used in a
   commercial product (attribution, share-alike); 255 are known only from PubChem
   BioAssay and are `unknown`.
+- **Terms profiles** (same day, #94). `terms="commercial"` or `"non_commercial"` builds
+  knowledge only from sources whose stated terms are `allowed` for the profile's use
+  (`commercial_product`, `academic_publication`).
+  - Named by use, not by institution.
+  - A project that may end in commercial exploitation is `commercial` from its first
+    day: knowledge that informed a decision cannot be un-used later.
+  - Unknown terms are excluded too, with their reason. In a commercial project a wrong
+    green light is worse than an exclusion.
+  - The card keeps the profile (`quality.terms_profile`, `terms_profile@1`), so a
+    packet or a Nextia decision knows under which terms its knowledge was gathered.
+  - Curations the user applies are the user's, and are not filtered.
+  - Today almost every source in use allows commercial use. The profiles differ through
+    sources with unknown terms, and `non_commercial` would let us reconsider sources set
+    aside for a non-commercial licence, such as DrugBank's clinical content.

@@ -551,7 +551,9 @@ stated by a source, so they are not `value`/`source_assertion_ids` nodes:
   values, source_assertion_ids}]}]`, values of different methods, representations or
   sources, reported and never compared (`devguide/SELECTION_RULES_EXAMPLES.md`);
 - `enrichments`: per-source enrichment outcomes;
-- `entity_resolution`: the resolution trace.
+- `entity_resolution`: the resolution trace;
+- `terms_profile` (#94, since 0.3.7): the terms profile the card was built under, when
+  one was asked: `{profile, use, rule: terms_profile@1, excluded: [{source, reason}]}`.
 
 `card.selection_rules` holds the rules the card was resolved with, the packaged defaults
 included.

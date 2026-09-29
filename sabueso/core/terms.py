@@ -293,3 +293,56 @@ def terms_report(
         "rule": RULE,
         "disclaimer": DISCLAIMER,
     }
+
+
+# --- Terms profiles: build only from sources a project's use allows (#94) --------------
+
+#: Each profile, and the use whose verdicts decide it. Named by use, not by
+#: institution: a project that may end in commercial exploitation is ``commercial``
+#: from its first day, since knowledge that informed a decision cannot be un-used.
+PROFILES = {
+    "commercial": "commercial_product",
+    "non_commercial": "academic_publication",
+}
+PROFILE_RULE = "terms_profile@1"
+
+
+class TermsProfile:
+    """Which sources a profile admits, and a record of those it excluded.
+
+    A source is admitted only when its stated terms are ``allowed`` for the profile's
+    use. Restricted and unknown terms are both excluded, each with its reason: a wrong
+    green light is worse than an exclusion."""
+
+    def __init__(self, profile: str) -> None:
+        if profile not in PROFILES:
+            raise ValueError(
+                f"profile must be one of {sorted(PROFILES)}, not {profile!r}"
+            )
+        self.profile = profile
+        self.use = PROFILES[profile]
+        self.excluded: Dict[str, str] = {}
+
+    def admits(self, source: str) -> bool:
+        answer = verdict(source, self.use)
+        if answer["verdict"] == "allowed":
+            return True
+        self.excluded[source] = answer.get("reason") or answer["verdict"]
+        return False
+
+    def detail(self, source: str) -> str:
+        return (
+            f"excluded by the terms profile {self.profile!r} "
+            f"({self.excluded.get(source)})"
+        )
+
+    def record(self) -> Dict[str, Any]:
+        """What the card keeps about the profile it was built under."""
+        return {
+            "profile": self.profile,
+            "use": self.use,
+            "rule": PROFILE_RULE,
+            "excluded": [
+                {"source": s, "reason": r} for s, r in sorted(self.excluded.items())
+            ],
+        }

@@ -155,3 +155,85 @@ def test_a_deck_keeps_only_what_is_admissible_and_says_why(hstim, tctim):
 def test_a_use_is_one_of_the_named_ones(hstim):
     with pytest.raises(ArgumentError):
         hstim.terms("anything")
+
+
+# --- Terms profiles (#94) --------------------------------------------------------------
+
+
+def _tctim(**options):
+    from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
+    from sabueso.tools.db.chembl import FixtureChEMBLClient
+    from sabueso.tools.db.pubchem_bioassay import FixturePubChemBioAssayClient
+
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        card, _ = sabueso.resolve(
+            "P52270",
+            resolver=EntityResolver(
+                FixtureUniProtClient("temp_data"),
+                rcsb_client=FixtureRCSBClient("temp_data"),
+            ),
+            chembl={},
+            chembl_client=FixtureChEMBLClient("temp_data"),
+            pubchem_bioassay=True,
+            pubchem_bioassay_client=FixturePubChemBioAssayClient("temp_data"),
+            **options,
+        )
+    return card
+
+
+@pytest.mark.parametrize("profile", ["commercial", "non_commercial"])
+def test_a_profile_asks_only_the_sources_it_admits(profile):
+    card = _tctim(terms=profile)
+    assert card.quality["terms_profile"] == {
+        "profile": profile,
+        "use": terms_module.PROFILES[profile],
+        "rule": "terms_profile@1",
+        "excluded": [{"source": "PubChem BioAssay", "reason": "terms_per_record"}],
+    }
+    assert not any(
+        r["qualifiers"].get("source") == "PubChem BioAssay"
+        for r in card.relationships("has_bioactivity")
+    )
+    rows = {(r["area"], r["source"]): r for r in card.knowledge_state()["rows"]}
+    row = rows[("relationships.has_bioactivity", "PubChem BioAssay")]
+    assert row["state"] == "not_queried"
+    assert f"terms profile '{profile}'" in row["basis"]["detail"]
+    # What was kept is all usable for the profile's use.
+    assert (
+        card.terms(terms_module.PROFILES[profile])["cards"][0]["status"] == "complete"
+    )
+
+
+def test_without_a_profile_nothing_is_excluded():
+    card = _tctim()
+    assert "terms_profile" not in card.quality
+    assert any(
+        r["qualifiers"].get("source") == "PubChem BioAssay"
+        for r in card.relationships("has_bioactivity")
+    )
+
+
+def test_a_profile_is_one_of_the_named_ones():
+    with pytest.raises(ArgumentError):
+        _tctim(terms="academic")
+
+
+def test_every_card_tool_takes_the_profile():
+    from sabueso.tools.db.chembl import FixtureChEMBLClient
+    from sabueso.tools.db.mondo import FixtureMONDOClient
+    from sabueso.tools.db.pdb_ccd import FixtureCCDClient
+    from sabueso.tools.db.unichem import FixtureUniChemClient
+
+    molecule, _ = sabueso.resolve(
+        "chembl:CHEMBL110",
+        terms="commercial",
+        chembl_client=FixtureChEMBLClient("temp_data"),
+        ccd_client=FixtureCCDClient("temp_data"),
+        unichem_client=FixtureUniChemClient("temp_data"),
+    )
+    assert molecule.quality["terms_profile"]["excluded"] == []
+    disease, _ = sabueso.resolve(
+        "ORPHA:868", terms="commercial", mondo_client=FixtureMONDOClient("temp_data")
+    )
+    assert disease.quality["terms_profile"]["profile"] == "commercial"

@@ -105,6 +105,9 @@ A first milestone is built (2026-09-29): `Card.terms(use)`, `Deck.terms(use)` an
 - **Share-alike binds when the data leaves the user's hands**: redistribution, a
   derived dataset, a commercial product. It does not bind a publication that cites.
 - **A term record older than a year is flagged** `review_due`.
+- **Terms profiles** (#94): `terms="commercial"` or `"non_commercial"` builds a card
+  only from sources whose terms are `allowed` for that use; unknown terms are excluded
+  too. The card keeps the profile (`quality.terms_profile`).
 
 ## Compliance Principles
 - Do not redistribute restricted datasets without permission.

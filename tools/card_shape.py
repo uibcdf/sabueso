@@ -294,6 +294,7 @@ def fixture_cards() -> List[dict]:
             structures=["1BRS"],
             skempi=True,
             skempi_client=FixtureSKEMPIClient(data),
+            terms="commercial",  # built under a terms profile (#94)
         )
         # A disease card, resolved from an Orphanet id through MONDO (0.3.7).
         disease, _ = sabueso.resolve("ORPHA:868", mondo_client=FixtureMONDOClient(data))

@@ -26,6 +26,8 @@ shows how to use them.
     - each source's `*_client`, and `resolver`.
   - For small molecules: `unichem`, `pubchem`, `indications` and `trials` (#81).
   - For diseases: `mondo_client`.
+  - Every card tool takes `terms` (`"commercial"` or `"non_commercial"`): only sources
+    whose stated terms allow that use are asked (#94).
   - An option the tool does not take is refused, never ignored.
 - `sabueso.resolve_protein_card`, `sabueso.resolve_molecule_card`: the card tools behind
   `resolve`; diseases through `sabueso.resolve_disease_card` (#90).

@@ -39,16 +39,30 @@ def disease_card_id(mondo_id: str) -> str:
 def resolve_disease_card(
     identifier: str,
     mondo_client: Any | None = None,
+    terms: str | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve a disease id and build the card of its MONDO term; see the module
-    docstring."""
+    docstring. ``terms`` builds it only if MONDO's stated terms allow the profile's use
+    (#94)."""
     decision: Dict[str, Any] = {"query": identifier, "rules": [], "sources": []}
 
     def outcome(status: str, rule: str, **extra: Any) -> Tuple[None, EntityResolution]:
         decision["rules"].append(rule)
         decision.update(extra)
         return None, EntityResolution(status=status, decision=decision)
+
+    profile = None
+    if terms is not None:
+        from sabueso.core.terms import TermsProfile
+
+        profile = TermsProfile(terms)
+        if not profile.admits("MONDO"):
+            return outcome(
+                "unsupported",
+                "excluded_by_terms_profile",
+                terms_profile=profile.record(),
+            )
 
     curie = normalize(identifier)
     if curie is None:
@@ -117,6 +131,8 @@ def resolve_disease_card(
         "entity_ref": resolution.entity_ref,
         "decision": decision,
     }
+    if profile is not None:
+        card.quality["terms_profile"] = profile.record()
     return card, resolution
 
 

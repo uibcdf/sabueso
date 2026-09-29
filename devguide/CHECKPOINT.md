@@ -33,7 +33,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     decks (`disease_targets`, `disease_drugs`);
   - what may be done with the knowledge (#29, first milestone): `Card.terms(use)`,
     `Deck.terms(use)`, `Deck.admissible(use)`, from the terms each source states in the
-    registry (`terms_propagation@1`);
+    registry (`terms_propagation@1`); and terms profiles to build under
+    (`terms="commercial"` or `"non_commercial"`, `terms_profile@1`, #94);
   - `knowledge_state@3`: an answer cut at a limit is `partial`, with `truncated_for`
     (#88);
   - a `not_found` record states the release it was checked against (#89).

@@ -187,6 +187,7 @@ def resolve_molecule_card(
     indications: bool = False,
     trials: Dict[str, Any] | None = None,
     clinicaltrials_client: Any | None = None,
+    terms: str | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve a small-molecule identifier and build the card of its molecule.
@@ -207,6 +208,10 @@ def resolve_molecule_card(
     ``{}`` or ``{"limit": 50}``) also adds the ClinicalTrials.gov studies those
     indications cite, by NCT id (``tested_in``), and implies ``indications``. Trials are
     never matched to a molecule by name.
+
+    ``terms`` (``"commercial"`` or ``"non_commercial"``) builds the card only from
+    sources whose stated terms allow that use (#94); see ``resolve_protein_card``. A
+    molecule named by a source the profile excludes is not resolved.
     """
     namespace, record = _parse(identifier)
     decision: Dict[str, Any] = {"query": identifier, "rules": [], "sources": []}
@@ -217,6 +222,41 @@ def resolve_molecule_card(
 
     if namespace is None:
         return outcome("unsupported", "unsupported_identifier")
+    profile, excluded_by_profile = None, []
+    if terms is not None:
+        from sabueso.core.terms import TermsProfile
+
+        profile = TermsProfile(terms)
+
+    def admitted(source: str) -> bool:
+        if profile is None or profile.admits(source):
+            return True
+        excluded_by_profile.append(
+            {
+                "source": source,
+                "status": "not_queried",
+                "detail": profile.detail(source),
+            }
+        )
+        return False
+
+    primary = {
+        "chembl": "ChEMBL",
+        "pdb.ligand": "PDB CCD",
+        "pubchem": "PubChem",
+        "inchikey": "UniChem",
+    }[namespace]
+    if not admitted(primary):
+        decision["terms_profile"] = profile.record()
+        return outcome("unsupported", "excluded_by_terms_profile")
+    if unichem and not admitted("UniChem"):
+        unichem = False
+    if pubchem and not admitted("PubChem"):
+        pubchem = False
+    if (indications or trials is not None) and not admitted("ChEMBL"):
+        indications, trials = False, None
+    if trials is not None and not admitted("ClinicalTrials.gov"):
+        trials = None
     if namespace == "inchikey" and not is_standard_inchikey(record):
         return outcome("unsupported", "not_a_standard_inchikey")
     if namespace == "inchikey" and not unichem:
@@ -313,9 +353,12 @@ def resolve_molecule_card(
     ] + unanchored
     if indications or trials is not None:
         _clinical(card, chembl_client, clinicaltrials_client, trials, enrichments)
+    enrichments = excluded_by_profile + enrichments
     if enrichments:
         card.quality["enrichments"] = enrichments
         report_outcomes(enrichments, subject=molecule_ref(key))
+    if profile is not None:
+        card.quality["terms_profile"] = profile.record()
     resolution = EntityResolution(
         status="resolved",
         entity_ref=molecule_ref(key),

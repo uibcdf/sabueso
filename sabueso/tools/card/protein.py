@@ -90,6 +90,7 @@ def resolve_protein_card(
     medgen_client: Any | None = None,
     disease_identity: bool = False,
     mondo_client: Any | None = None,
+    terms: str | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -172,6 +173,12 @@ def resolve_protein_card(
     those in the same call. ``medgen`` asks MedGen which record each MedGen concept id
     naming a condition is, so that a condition ClinVar names only by a MedGen concept id
     reaches MONDO through MedGen's statement and MONDO's (``medgen_concept@1``).
+
+    ``terms`` (``"commercial"`` or ``"non_commercial"``) builds the card only from
+    sources whose stated terms allow that use (#94): the others are not queried, their
+    records say why (``not_queried``), and ``quality["terms_profile"]`` keeps the
+    profile. Sources with unknown terms (e.g. PubChem BioAssay's depositors) are
+    excluded too.
     """
     if ncbi_gene:
         import copy
@@ -202,6 +209,34 @@ def resolve_protein_card(
     length = (entry.get("sequence") or {}).get("length")
     sequence = (entry.get("sequence") or {}).get("value")
     enrichments: List[Dict[str, Any]] = []
+    profile = None
+    if terms is not None:
+        from sabueso.core.terms import TermsProfile
+
+        profile = TermsProfile(terms)
+
+    def admitted(source: str) -> bool:
+        """Whether the terms profile admits a source; if not, the record says why."""
+        if profile is None or profile.admits(source):
+            return True
+        enrichments.append(
+            {
+                "source": source,
+                "identifier": anchor,
+                "status": "not_queried",
+                "detail": profile.detail(source),
+            }
+        )
+        return False
+
+    if structures and not admitted("RCSB PDB"):
+        structures = []
+    if chembl is not None and not admitted("ChEMBL"):
+        chembl = None
+    if bindingdb is not None and not (admitted("BindingDB") and admitted("UniChem")):
+        bindingdb = None
+    if pubchem_bioassay and not admitted("PubChem BioAssay"):
+        pubchem_bioassay = False
     for pdb_id in structures:
         record = {"source": "RCSB PDB", "structure": pdb_id}
         try:
@@ -259,6 +294,13 @@ def resolve_protein_card(
         "medgen": (medgen, medgen_client),
         "disease_identity": (disease_identity, mondo_client),
     }
+    if profile is not None:
+        from sabueso.enrichers import ENRICHERS
+
+        for enricher in ENRICHERS:
+            options, client = requested.get(enricher.option, (None, None))
+            if enricher.requested(options) and not admitted(enricher.source):
+                requested[enricher.option] = (None, client)
     context = Context(anchor, entry, mappings)
     run_stage("after_structures", context, requested, mappings, enrichments)
 
@@ -533,6 +575,8 @@ def resolve_protein_card(
     if enrichments:
         card.quality["enrichments"] = enrichments
         report_outcomes(enrichments, subject=entity_ref)
+    if profile is not None:
+        card.quality["terms_profile"] = profile.record()
     card.quality["entity_resolution"] = {
         "status": resolution.status,
         "entity_ref": resolution.entity_ref,

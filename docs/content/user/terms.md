@@ -48,3 +48,24 @@ enzyme, the molecules measured only in PubChem BioAssay are `unknown`.
 Each source's terms, with the statement they come from and the date they were reviewed,
 are listed on the *Data sources* page. A record older than a year is flagged
 `review_due`.
+
+## Building under a terms profile
+
+A project can also build its knowledge only from sources whose terms allow its use:
+
+```python
+card, _ = sabueso.resolve(
+    "P52270", chembl={}, pubchem_bioassay=True, terms="commercial"
+)
+card.quality["terms_profile"]  # the profile, and the sources it excluded, with why
+```
+
+- `terms="commercial"`: for a project that may end in commercial exploitation. Choose
+  it from the first day: knowledge that informed a decision cannot be un-used later.
+- `terms="non_commercial"`: for research without commercial exploitation.
+- The profiles are named by use, not by institution. An academic lab under an industry
+  contract makes commercial use, and a non-profit may not.
+- A source the profile does not admit is not asked. The enrichment records
+  `not_queried`, with the profile and the reason, and the knowledge state shows it.
+  Sources with unknown terms, such as PubChem BioAssay's depositors, are excluded too.
+- Curated statements you apply are yours: the profile does not filter them.
