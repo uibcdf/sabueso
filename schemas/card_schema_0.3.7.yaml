@@ -122,7 +122,9 @@ schema:
     several steps derived, mondo_hierarchy@1). Every SourceAssertion also records
     acquisition, how it entered (method database, curation, rule_extraction or
     model_extraction; an extraction names its tool and version; origin text_mining when
-    a database states its record was mined from text; uibcdf/sabueso#92). Additive, so
+    a database states its record was mined from text; uibcdf/sabueso#92), and protein
+    cards may hold mentioned_in relationships to the publications whose text states the
+    UniProt accession (Europe PMC, text-mined, uibcdf/sabueso#92). Additive, so
     a 0.3.6 card is a valid 0.3.7 card without them.
 card_base:
   meta:

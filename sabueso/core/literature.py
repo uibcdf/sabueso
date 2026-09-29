@@ -11,7 +11,10 @@ publication (``pubmed:<id>``, else ``doi:<doi>``, else UniProt's own citation id
   outcome of comparing it with other sources);
 - a source gives it as evidence of a statement: the PubMed ids in a SourceAssertion's
   ``eco`` evidence, and UniProt's ``Ref.<n>`` evidences, resolved through the entry's
-  reference numbers.
+  reference numbers;
+- its text states the protein's accession, as Europe PMC found it by text mining
+  (``mentioned_in``, ``mentions``, #92). A mention says the paper names the entry, not
+  what it states about it.
 
 Nothing here reads a paper. How a publication bears on a project's hypotheses is Nextia
 Evidence, not Sabueso's.
@@ -59,6 +62,7 @@ def literature_view(card: Any) -> Dict[str, Any]:
                 "primary_citation_of": [],
                 "supports": [],
                 "curated": [],
+                "mentions": [],
                 "measurements": 0,
             },
         )
@@ -105,6 +109,19 @@ def literature_view(card: Any) -> Dict[str, Any]:
         fill(pub, citation)
         pub["primary_citation_of"].append(rel["object_ref"])
 
+    for rel in card.relationships("mentioned_in"):
+        q = rel.get("qualifiers", {})
+        pub = entry(rel["object_ref"])
+        fill(pub, q)
+        pub["mentions"].append(
+            {
+                "source": q.get("source"),
+                "mention": q.get("mention"),
+                "open_access": q.get("open_access"),
+                "relationship_id": rel["id"],
+            }
+        )
+
     for rel in card.relationships("has_bioactivity"):
         document = rel.get("qualifiers", {}).get("document") or {}
         if document.get("pubmed"):
@@ -117,14 +134,20 @@ def literature_view(card: Any) -> Dict[str, Any]:
         fill(pub, document)
         pub["measurements"] += 1
 
+    from .source_assertion_store import acquisition_of
+
     outcomes = {
         r["source_assertion_id"]: r for r in card.quality.get("curation", []) or []
     }
     unresolved: List[Dict[str, Any]] = []
     for assertion in card.source_assertion_store.to_list():
         source = assertion.get("source") or {}
-        if source.get("type") == "literature" and source.get("record_id"):
-            curation = (assertion.get("source_metadata") or {}).get("curation") or {}
+        curation = (assertion.get("source_metadata") or {}).get("curation") or {}
+        # Curated only when a person recorded it (#92): an extracted statement from a
+        # publication is never listed as curated.
+        method = acquisition_of(assertion)["method"]
+        curated = method == "curation" or (method == "not_recorded" and curation)
+        if source.get("type") == "literature" and source.get("record_id") and curated:
             record = outcomes.get(assertion["id"]) or {}
             entry(source["record_id"])["curated"].append(
                 {

@@ -44,7 +44,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - how each statement entered (#92): `acquisition` on every SourceAssertion
     (`database`, with `origin: text_mining` for DISEASES's text-mining channel;
     `curation`; `rule_extraction` and `model_extraction`, not used yet),
-    `Card.acquisition()`, and packets' provenance;
+    `Card.acquisition()`, and packets' provenance; and Europe PMC's text-mined
+    mentions of a protein's accession (`europepmc`, `mentioned_in`);
   - `knowledge_state@3`: an answer cut at a limit is `partial`, with `truncated_for`
     (#88);
   - a `not_found` record states the release it was checked against (#89).

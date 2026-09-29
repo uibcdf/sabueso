@@ -90,6 +90,8 @@ def resolve_protein_card(
     medgen_client: Any | None = None,
     disease_identity: bool = False,
     mondo_client: Any | None = None,
+    europepmc: Dict[str, Any] | None = None,
+    europepmc_client: Any | None = None,
     terms: str | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
@@ -173,6 +175,11 @@ def resolve_protein_card(
     those in the same call. ``medgen`` asks MedGen which record each MedGen concept id
     naming a condition is, so that a condition ClinVar names only by a MedGen concept id
     reaches MONDO through MedGen's statement and MONDO's (``medgen_concept@1``).
+
+    ``europepmc`` (e.g. ``{}`` or ``{"limit": 100}``; default all, up to 5000, newest
+    first) adds the publications whose text states the UniProt accession, as Europe PMC
+    found them by text mining (``mentioned_in``, #92). Only a stated accession counts:
+    a protein named in a paper is never matched to the entry by its name.
 
     ``terms`` (``"commercial"`` or ``"non_commercial"``) builds the card only from
     sources whose stated terms allow that use (#94): the others are not queried, their
@@ -293,6 +300,7 @@ def resolve_protein_card(
         "skempi": (skempi, skempi_client),
         "medgen": (medgen, medgen_client),
         "disease_identity": (disease_identity, mondo_client),
+        "europepmc": (europepmc, europepmc_client),
     }
     if profile is not None:
         from sabueso.enrichers import ENRICHERS

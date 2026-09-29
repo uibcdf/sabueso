@@ -105,6 +105,13 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: `annotations.clinical_variants`, with the classification, review status, conditions and consequences as stated. Positions are in UniProt numbering only through a canonical transcript UniProt states and a matching residue.
 - **Notes**: found by the NCBI Gene id UniProt cross-references, never by gene symbol. Every record of the gene by default, up to 5000; a cut is reported. Human genes only. Not for diagnostic use without review by a genetics professional.
 
+### Europe PMC — publications that mention a protein
+- **Status**: implemented as an enricher of `resolve_protein_card(..., europepmc={})` (uibcdf/sabueso#92)
+- **Access**: REST search `ACCESSION_ID:<acc> AND ACCESSION_TYPE:uniprot`, cursor paging of 1000, no key (`OnlineEuropePMCClient`); saved search in `temp_data/europepmc/`; `tools.db.europepmc.get_mentions`
+- **Quality**: green for the listed coverage. Verified live on HsTIM (service 6.9): 354 articles in about 4 s, 352 in PubMed and 2 preprints.
+- **Coverage**: `mentioned_in` relationships to each article whose text states the UniProt accession, with title, journal, year, open access and preprint; SourceAssertions record `origin: text_mining`
+- **Notes**: stated accessions only. The gene and protein annotations are not used: they ground names without the organism (a human TPI paper is tagged with a yeast entry, Q9C401). Every article up to 5000, newest first; a cut is reported. Ids and bibliographic data only, never article text.
+
 ### Reactome — pathways and reactions
 - **Status**: implemented as an enricher of `resolve_protein_card(..., reactome=True)` (uibcdf/sabueso#83)
 - **Access**: Content Service, UniProt mapping and event ancestors, no key (`OnlineReactomeClient`, which names Sabueso: the service refuses Python's default user agent); saved answers in `temp_data/reactome/`; `tools.db.reactome.get_pathways`

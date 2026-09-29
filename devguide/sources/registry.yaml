@@ -53,6 +53,7 @@ categories:
   chemistry_admet: Chemical space, synthesis, ADMET and safety
   organism_context: Organism, orthology and biological context
   software: Open-source software ecosystems
+  literature: Literature and text mining
 resources:
   # --- in use -----------------------------------------------------------------------
   - id: uniprot
@@ -630,6 +631,31 @@ resources:
       reviewed: 2026-09-29
     module: [sabueso.tools.db.reactome, sabueso.mappings.reactome]
     links: ["#83"]
+  - id: europepmc
+    name: "Europe PMC"
+    url: https://europepmc.org/
+    category: literature
+    status: in_use
+    description: "Abstracts and open-access full texts of the life-sciences literature, with text-mined accession numbers and annotations."
+    since: 2026-09-29
+    proposed_by: "Sabueso maintainers, literature beyond manual curation (#92)"
+    decided_by: "Sabueso maintainers (2026-09-29)"
+    reason: "The publications whose text states a protein's UniProt accession (ACCESSION_ID search, text-mined by Europe PMC). Its gene and protein annotations are not used: they ground a name without the organism (a human TPI paper is tagged with a yeast entry)."
+    access: "REST search (ACCESSION_ID, cursor paging), no key, when resolve(..., europepmc={})"
+    licence: "EMBL-EBI terms of use: no restrictions of its own, attribution expected; each article keeps its licence (Sabueso keeps ids and bibliographic data, not text)"
+    limit:
+      constant: sabueso.tools.db.europepmc.DEFAULT_LIMIT
+      of: "articles mentioning the accession, newest first; europepmc={\"limit\": n} asks for fewer"
+    terms:
+      source_names: ["Europe PMC"]
+      licence: NO-OWN-RESTRICTIONS
+      attribution: "Europe PMC (https://europepmc.org/)"
+      statement: https://www.ebi.ac.uk/about/terms-of-use
+      reviewed: 2026-09-29
+      caveats:
+        - "Articles keep their own licences; only ids and bibliographic data are kept."
+    module: [sabueso.tools.db.europepmc, sabueso.mappings.europepmc]
+    links: ["#92"]
   - id: kegg_pathway
     name: "KEGG PATHWAY"
     url: https://www.kegg.jp/

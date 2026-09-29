@@ -138,3 +138,26 @@ def test_a_packet_reports_how_its_sources_statements_entered(hstim):
     diseases = _provenance(hstim)["sources"]["DISEASES"]["acquisition"]
     assert set(diseases) == {"database", "database (text_mining)"}
     assert _provenance(hstim)["sources"]["Literature"]["acquisition"] == {"curation": 1}
+
+
+def test_an_extracted_statement_from_a_paper_is_not_listed_as_curated(hstim):
+    card = Card.from_dict(json.loads(json.dumps(hstim.to_dict())))
+    card.source_assertion_store.add(
+        make_source_assertion(
+            "annotations.subunit",
+            "Tetramer.",
+            "Literature",
+            "pubmed:1",
+            "2026-09-29",
+            source_type="literature",
+            acquisition=make_acquisition(
+                "model_extraction", tool="a model", version="1"
+            ),
+        )
+    )
+    curated = [
+        pub["publication_ref"]
+        for pub in card.literature()["publications"]
+        if pub["curated"]
+    ]
+    assert curated == ["pubmed:18562316"]

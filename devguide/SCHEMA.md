@@ -106,12 +106,15 @@ Every SourceAssertion stored in `source_assertion_store` must include:
   how the statement entered, never how true it is. `method` is one of:
   - `database`: imported from a source's record. `origin` records what the source
     states about how it obtained the record, today only `text_mining` (DISEASES's
-    text-mining channel);
+    text-mining channel, Europe PMC's accession mentions);
   - `curation`: a person read the publication and recorded it
     (`source_metadata.curation` says who, when and where);
   - `rule_extraction` or `model_extraction`: extracted from a text. It names its
     `tool` and `version`, and its `configuration` when there is one. `validated_by`
-    (curator and date) records a person's confirmation. No source uses this yet.
+    (curator and date) records a person's confirmation. These are for extractions
+    whose tool and version are known because Sabueso or its user ran them; a source
+    that serves text-mined records is `database` with its `origin`. No extraction is
+    run yet.
   An older SourceAssertion has none, and reads as `not_recorded`
   (`acquisition_of`), until its card is built again.
 
@@ -343,6 +346,13 @@ A Relationship is first-class, traceable knowledge:
     no version, so the residue check guards against a changed sequence.
   - disease hierarchy (added in #90, schema 0.3.7): `subclass_of` (disease →
     `mondo:<id>`), one per parent term MONDO states.
+  - text mentions (added in #92, schema 0.3.7): `mentioned_in` (protein →
+    `pubmed:<id>`, else `doi:<doi>`, else `europepmc:<source>:<id>`), one per article
+    whose text states the UniProt accession, as Europe PMC found it by text mining.
+    Qualifiers: `source` (`Europe PMC`), `mention` (`uniprot_accession`), `title`,
+    `journal`, `year`, `open_access`, and `preprint`. Its SourceAssertions record
+    `acquisition: {method: database, origin: text_mining}`. A mention says the paper
+    names the entry, never what it states about it.
   - pathways (added in #83, schema 0.3.6):
     - `participates_in` (protein → `reactome:<stId>`), one per Reactome event mapping
       the UniProt accession. Qualifiers: `kind` (`pathway`, lowest level, or

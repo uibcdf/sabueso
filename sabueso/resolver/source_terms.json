@@ -49,6 +49,16 @@
    "statement": "https://diseases.jensenlab.org/Downloads",
    "reviewed": "2026-09-29"
   },
+  "Europe PMC": {
+   "registry_id": "europepmc",
+   "licence": "NO-OWN-RESTRICTIONS",
+   "attribution": "Europe PMC (https://europepmc.org/)",
+   "statement": "https://www.ebi.ac.uk/about/terms-of-use",
+   "reviewed": "2026-09-29",
+   "caveats": [
+    "Articles keep their own licences; only ids and bibliographic data are kept."
+   ]
+  },
   "InterPro": {
    "registry_id": "interpro",
    "licence": "CC0-1.0",

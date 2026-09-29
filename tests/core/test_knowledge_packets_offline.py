@@ -284,6 +284,9 @@ def test_a_packet_never_leaves_unasked_what_its_aspects_could_ask(packet, query)
 #: Enrichers no aspect covers yet, and why.
 OUTSIDE_PACKETS = {
     "string": "functional association networks are not a packet aspect yet",
+    # Hundreds of articles per well-studied protein: packet size is watched (#88), and
+    # real use decides whether the literature aspect asks for them (#71).
+    "europepmc": "text-mined mentions are not asked by a packet aspect yet",
 }
 
 

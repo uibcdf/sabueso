@@ -1207,3 +1207,21 @@ uibcdf/sabueso#29.
     project remains Evidence, in Nextia.
   - The key is not in MOLI's conceptual SourceAssertion schema. It was proposed
     there (uibcdf/moli#32), and Sabueso's use is additive.
+- **Europe PMC: stated accessions only** (same day, #92, step 2).
+  - Europe PMC mines abstracts and open-access full texts for accession numbers. A
+    search `ACCESSION_ID:<acc> AND ACCESSION_TYPE:uniprot` finds the articles whose text
+    states the accession: 354 for HsTIM. The id is written by the authors, so a
+    mention is identity by statement. It becomes `mentioned_in` (protein →
+    publication). It says the paper names the entry, never what it states about it.
+  - Its gene and protein annotations are not used. They ground a name without the
+    organism: in a paper on the human TPI deficiency, "triosephosphate isomerase" is
+    tagged with a yeast entry (Q9C401). That is identity by name.
+  - Acquisition: a source that serves text-mined records is `database`, with
+    `origin: text_mining`, as DISEASES's text-mining channel is. `rule_extraction` and
+    `model_extraction` are kept for extractions whose tool and version are known,
+    because Sabueso or its user ran them. Europe PMC states no version of its tagger,
+    only of its service (6.9), which is recorded as the release.
+  - Terms: EMBL-EBI places no restrictions of its own and expects attribution. Each
+    article keeps its licence, so only ids and bibliographic data are kept, never text.
+  - Not asked by a packet aspect yet. A well-studied protein has thousands of
+    mentions, and packet size is watched (#88).

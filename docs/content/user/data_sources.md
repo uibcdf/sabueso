@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 31, evaluating 23, deferred 24, retired 3, out of scope 13.
+Summary: in use 32, evaluating 23, deferred 24, retired 3, out of scope 13.
 
 ## In use
 
@@ -35,6 +35,7 @@ Summary: in use 31, evaluating 23, deferred 24, retired 3, out of scope 13.
 | [Orphadata (Orphanet)](https://www.orphadata.com/) | Target validation, genetics and functional networks | The en_product6.xml file (about 22 MB), dated in its header, downloaded and indexed once per process in memory, when resolve(..., orphadata=True) | CC BY 4.0 (Orphadata Science; cite Orphanet and the data version) | 2026-09-27 |
 | [PHI-base](https://phi-base.org/) | Organism, orthology and biological context | Versioned releases of PHI-base 5 on Zenodo (JSON), downloaded once, checked against their MD5 and split per UniProt accession in the local cache, when resolve(..., phi_base=True) | CC BY 4.0 (cite PHI-base and the release) | 2026-09-27 |
 | [Reactome](https://reactome.org/) | Target validation, genetics and functional networks | Content Service (UniProt mapping, event ancestors), no key, when resolve(..., reactome=True) | CC0 1.0 (data); CC BY 4.0 (illustrations, not used) | 2026-09-25 |
+| [Europe PMC](https://europepmc.org/) | Literature and text mining | REST search (ACCESSION_ID, cursor paging), no key, when resolve(..., europepmc={}) | EMBL-EBI terms of use: no restrictions of its own, attribution expected; each article keeps its licence (Sabueso keeps ids and bibliographic data, not text) | 2026-09-29 |
 | [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/) | Target validation, genetics and functional networks | E-utilities (einfo, esearch by gene id, esummary), optional NCBI key, when resolve(..., clinvar={}) | Freely available; ClinVar asks to be credited as the source. Not for diagnostic use without review by a genetics professional. | 2026-09-25 |
 | [gnomAD](https://gnomad.broadinstitute.org/) | Target validation, genetics and functional networks | GraphQL API (dataset gnomad_r4; the API states no finer release), no key, when resolve(..., gnomad={}) | CC0 1.0 (core data; some annotations, not read, carry other terms) | 2026-09-25 |
 | [SKEMPI 2.0](https://life.bsc.es/pid/skempi2/) | Protein–protein interactions and structural modulation | The whole CSV file (1.6 MB, database version 2.0, its SHA-256 recorded), downloaded once per process and indexed by PDB entry, when resolve(..., skempi=True) | CC BY 4.0 (the site's terms of download and use; cite Jankauskaitė et al. 2019) | 2026-09-25 |
@@ -59,6 +60,7 @@ and Sabueso warns. The other sources in use are read whole.
 | ChEMBL | 5000 | bioactivities per target |
 | STRING | 5000 | partners at the required score (700 by default); STRING states no total, so a cut is detected by asking for one more |
 | Open Targets Platform | 5000 | associations per gene |
+| Europe PMC | 5000 | articles mentioning the accession, newest first; europepmc={"limit": n} asks for fewer |
 | ClinVar | 5000 | records per gene |
 | gnomAD | 5000 | protein-level variants per gene |
 | ClinicalTrials.gov | 5000 | trials per molecule, among those ChEMBL's indications cite |

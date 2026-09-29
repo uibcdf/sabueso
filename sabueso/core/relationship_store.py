@@ -39,6 +39,7 @@ PREDICATES = frozenset(
         "associated_with",  # protein -> disease term (DISEASES, per channel), #82
         "participates_in",  # protein -> pathway or reaction (Reactome), #83
         "subclass_of",  # disease -> broader disease term (MONDO is_a), #90
+        "mentioned_in",  # protein -> publication whose text states its accession, #92
     }
 )
 

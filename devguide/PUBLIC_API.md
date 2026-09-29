@@ -23,7 +23,8 @@ shows how to use them.
       `orphadata` (disease associations, #82), `reactome` (pathways, #83), `clinvar`
       and `gnomad` (variants, #83), `skempi` (interface mutations, #83),
       `medgen` and `disease_identity` (identity of the card's diseases through MedGen
-      and MONDO, #90);
+      and MONDO, #90), `europepmc` (publications whose text states the accession,
+      #92);
     - each source's `*_client`, and `resolver`.
   - For small molecules: `unichem`, `pubchem`, `indications` and `trials` (#81).
   - For diseases: `mondo_client`.

@@ -33,6 +33,28 @@ for pub in card.literature()["publications"]:
 - A paper cited only as evidence (for example by a GO annotation) appears with its id
   and no title.
 
+## Publications that mention the protein
+
+`sabueso.resolve(..., europepmc={})` adds the publications whose text states the
+protein's UniProt accession, found by Europe PMC's text mining of abstracts and
+open-access full texts:
+
+```python
+card, _ = sabueso.resolve("P60174", europepmc={})  # or {"limit": 100}, newest first
+for rel in card.relationships("mentioned_in"):
+    print(rel["object_ref"], rel["qualifiers"]["year"], rel["qualifiers"]["title"])
+```
+
+- Only a stated accession counts. Europe PMC also tags gene and protein *names* with
+  UniProt entries, but without the organism: "triosephosphate isomerase" in a paper on
+  the human deficiency is tagged with a yeast entry. Sabueso does not use those.
+- A mention says that the paper names the entry, not what it states about it. It
+  appears in `card.literature()` under `mentions`, never as curated.
+- These are not UniProt's curated references, which come as `described_in`
+  (`cited_by`).
+- Every article is fetched, up to 5000, and a cut is reported. HsTIM is mentioned in
+  354.
+
 ## Curated literature assertions
 
 When you read a paper, record what it states on the card. Sabueso keeps where the
@@ -175,11 +197,11 @@ card.explain([source_assertion_id])[0]["acquisition"]
 ```
 
 - `database`: imported from a source's record. When the source states that its record
-  was mined from text, for example DISEASES's text-mining channel, `origin` says
-  `text_mining`.
+  was mined from text, for example DISEASES's text-mining channel or Europe PMC's
+  mentions, `origin` says `text_mining`.
 - `curation`: a person read the publication and recorded it, as above.
 - `rule_extraction` and `model_extraction`: extracted from a text by a named tool or
-  model, with its version. No source uses them yet. A model-extracted statement is
+  model, with its version, run by Sabueso or by you. None is run yet. A model-extracted statement is
   never reported as curated.
 - Cards saved before this was recorded read as `not_recorded` until they are built
   again.

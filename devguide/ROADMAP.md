@@ -201,8 +201,11 @@ In order:
 4. **Literature beyond manual curation (#92).**
    - On main: how each statement entered (`acquisition`: database, curation, rule
      extraction, model extraction, validation).
-   - Next, a first rule-extracted source (Europe PMC's annotations, after a terms
-     review).
+   - On main: Europe PMC's text-mined accession mentions (`mentioned_in`). Its gene
+     and protein annotations were reviewed and set aside: they ground names without
+     the organism.
+   - Next, when use asks: located mentions (section, sentence) of PDB ids and
+     accessions, and an extraction Sabueso runs itself, with its tool and version.
 5. **Continuing, in parallel when a need or a slot appears:**
    - sources of wave 2 (#83): chemistry (ChEBI, chemical probes), identity (Ensembl,
      which also serves #85), family-specific sources, patents, structures. iPPI-DB,
