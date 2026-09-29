@@ -97,7 +97,7 @@ and Sabueso warns. The other sources in use are read whole.
 | --- | --- | --- | --- |
 | [VEuPathDB services (expression by stage, phenotype screens)](https://veupathdb.org/) | Blocked (2026-09-28): the web services now need a registered user's API key (HTTP 401 without one), and no reuse terms were found (#84). The curated biological-context fields (#60) exist meanwhile. | VEuPathDB answers #84 on terms and on a tool using a user's key; then a user supplies their own key through an environment variable. | 2026-09-25 |
 | [BioGRID](https://thebiogrid.org/) | The API needs a personal access key; IntAct (via UniProt) and STRING cover current needs. Reviewed 2026-09-29 (#94): MIT licence (its terms page), so every terms profile admits it; key management now exists (tools/db/_keys). | Genetic interactions are needed, and a user supplies their own key. | 2026-09-23 |
-| [DrugBank (open data)](https://go.drugbank.com/) | Reviewed for terms profiles (2026-09-29, #94). The full database (XML 5.1.22 of 2026-06-27, 204 MB) is CC BY-NC 4.0, and its download needs an account under DrugBank's Academic License (an academic institution, research not primarily for a commercial third party). It would fit only the non_commercial profile, with the user's own account, and would bring what the clinical layer still lacks: pharmacology, mechanisms, interactions, transporters. The Open Data (vocabulary, structures) is CC0, but its download also needs a login (HTTP 403 without one). | A user with a DrugBank academic account asks for it; the account's credentials are theirs, through tools/db/_keys, never stored. | 2026-09-23 |
+| [DrugBank](https://go.drugbank.com/) | Reviewed for terms profiles (2026-09-29, #94). The full database (XML 5.1.22 of 2026-06-27, 204 MB) is CC BY-NC 4.0, and its download needs an account under DrugBank's Academic License (an academic institution, research not primarily for a commercial third party). It would fit only the non_commercial profile, with the user's own account, and would bring what the clinical layer still lacks: pharmacology, mechanisms, interactions, transporters. The Open Data (vocabulary, structures) is CC0, but its download also needs a login (HTTP 403 without one). | A user with a DrugBank academic account asks for it; the account's credentials are theirs, through tools/db/_keys, never stored. | 2026-09-23 |
 | [Guide to PHARMACOLOGY (IUPHAR/BPS)](https://www.guidetopharmacology.org/) | Its web services now need a personal API key (HTTP 401 without one), its data is under ODbL (share-alike), and UniProt links neither test target to it. Reviewed 2026-09-29 (#94): the database is under ODbL 1.0 and its contents under CC BY-SA 4.0 (its about page); every terms profile would admit it with share-alike, and key management now exists. | A target of interest has a GuidetoPHARMACOLOGY cross-reference in UniProt, and key management exists for deployments (as for BioGRID). | 2026-09-25 |
 | [KEGG PATHWAY](https://www.kegg.jp/) | Not a public database: free academic use of the website only; services, downloads and non-academic use need a licence, which does not fit redistribution across MOLI. Reviewed 2026-09-29 (#94): even academic users who provide services with KEGG need an academic service provider licence, so no terms profile admits it without one. | A licence covering MOLI use is in place, or a pathway need is not met by Reactome (CC0). | 2026-09-25 |
 | [PharmacoDB](https://pharmacodb.pmgenomics.ca/) | HTTP 503 on 2026-09-29. | It answers again. | 2026-09-25 |
@@ -126,7 +126,7 @@ and Sabueso warns. The other sources in use are read whole.
 | --- | --- | --- |
 | [SCOPe](https://scop.berkeley.edu/) | Removed with the per-database card tools; classifications come from UniProt and InterPro. | 2026-09-23 |
 | [TED (The Encyclopedia of Domains)](https://ted.cathdb.info/) | Removed with the per-database card tools. | 2026-09-23 |
-| [PhosphoSitePlus](https://www.phosphosite.org/) | Removed with the per-database card tools; its licence restricts redistribution. | 2026-09-23 |
+| [PhosphoSitePlus](https://www.phosphosite.org/) | Removed with the per-database card tools; its licence restricts redistribution. Terms re-read on 2026-09-29 (beta.phosphosite.org/psp/legal/terms-and-conditions): use for internal research only; no right to download any data; no commercial use; no sharing or distributing of data; and no access by data-mining tools, robots or spiders. No terms profile admits it, and Sabueso may not query it at all without a written agreement with Cell Signaling Technology. | 2026-09-23 |
 
 ## Out of scope for Sabueso
 
@@ -145,3 +145,24 @@ and Sabueso warns. The other sources in use are read whole.
 | [CSAR](http://www.csardock.org/) | A benchmark set for scoring functions (and unreachable on 2026-09-29). | MolSysSuite (evaluation) | 2026-09-25 |
 | [RNA-Puzzles](https://rnapuzzles.org/) | A structure-prediction assessment, not a knowledge source. | MolSysSuite (evaluation) | 2026-09-25 |
 | [IUPAC resources](https://iupac.org/) | Nomenclature and standard definitions, not entity knowledge; listed in the original plan without detail. | MOLI (shared terminology), if needed | 2026-01-31 |
+
+## Sources that need an account, a key or a licence
+
+Some sources answer only to a registered user, or only under a licence the
+user holds. Sabueso never stores, logs or ships a user's credentials: a key or
+an account is passed to its client, or set in `SABUESO_<SERVICE>_KEY`, and a
+source that needs one it was not given is recorded as not queried. A licence
+or an agreement is the user's to obtain; Sabueso only reports which one binds.
+
+| Resource | Status | Needs | What |
+| --- | --- | --- | --- |
+| [BioGRID](https://thebiogrid.org/) | deferred | a personal key | A free personal access key for the REST API; the data is MIT-licensed. |
+| [ChemSpider](https://www.chemspider.com/) | deferred | a personal key | An API key, with its usage conditions. |
+| [DrugBank](https://go.drugbank.com/) | deferred | an account (login), an academic licence | An account under DrugBank's Academic License to download the full data (CC BY-NC 4.0); the CC0 Open Data also needs a login. |
+| [Guide to PHARMACOLOGY (IUPHAR/BPS)](https://www.guidetopharmacology.org/) | deferred | a personal key | A personal API key; the database is ODbL 1.0, its contents CC BY-SA 4.0. |
+| [KEGG PATHWAY](https://www.kegg.jp/) | deferred | a licence | A licence for services, downloads and non-academic use; academic service providers need one too. |
+| [PDBbind-CN](http://www.pdbbind.org.cn/) | deferred | an account (login) | Registration to download. |
+| [VEuPathDB services (expression by stage, phenotype screens)](https://veupathdb.org/) | deferred | a personal key | A registered user's API key; reuse terms not found (#84). |
+| [BRENDA](https://brenda-enzymes.org/) | being evaluated | an account (login) | A free account (email and password) for the SOAP web service; the data is CC BY 4.0. |
+| [Tox21 / ToxCast](https://www.epa.gov/chemical-research/toxicity-forecasting) | being evaluated | a personal key | A key for the CTX API; the summary files are CC0. |
+| [PhosphoSitePlus](https://www.phosphosite.org/) | retired | an account (login), a written agreement | Login for its data, internal research only, no downloads, no automated access; anything else needs a written agreement with Cell Signaling Technology (terms read 2026-09-29). |

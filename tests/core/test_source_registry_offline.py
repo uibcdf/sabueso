@@ -45,6 +45,8 @@ def test_every_source_module_is_in_use(data):
         (lambda r: r.update(colour="blue"), "unknown keys"),
         (lambda r: r.update(module=["sabueso.tools.db.nowhere"]), "does not exist"),
         (lambda r: r.update(limit={"constant": "x.Y"}), "what it counts"),
+        (lambda r: r.update(requires=["a_wish"]), "requires is a list"),
+        (lambda r: r.update(requires=["key"], requires_note=None), "requires_note"),
         (
             lambda r: r.update(limit={"constant": "sabueso.nowhere.LIMIT", "of": "x"}),
             "is not an int",

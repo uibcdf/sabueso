@@ -217,7 +217,7 @@ profile, and one that needs a key can take the user's own. Checked live on 2026-
 | SABIO-RK | CC BY-NC (earlier review) | REST; did not answer | `non_commercial` | Low while BRENDA covers kinetics |
 | KEGG | academic website use only; services need a licence, academic ones too | licence | none without a licence | stays out; Reactome covers pathways |
 | ZINC | major portions may not be redistributed | downloads | none | stays out |
-| PhosphoSitePlus | its licence page could not be read (2026-09-29) | downloads | not known | stays retired until its terms are read |
+| PhosphoSitePlus | internal research use only: no downloads, no commercial use, no sharing, no automated access (terms read on 2026-09-29, beta site) | login | none | stays retired; querying it would need a written agreement with Cell Signaling Technology |
 
 **Proposed order:**
 1. **BRENDA**, for every profile.
@@ -227,7 +227,8 @@ profile, and one that needs a key can take the user's own. Checked live on 2026-
 3. **BioGRID**, then **Guide to PHARMACOLOGY** when a target needs them.
 
 **What it needs from a user.** Each of the first three needs the user's own account or
-key: a BRENDA account, a DrugBank academic account, a BioGRID key. Sabueso never stores,
+key: a BRENDA account, a DrugBank academic account, a BioGRID key. Every source that needs
+an account, a key or a licence is listed on the *Data sources* page and tracked in #95. Sabueso never stores,
 logs or ships any of them. Fixtures are then the public responses of those accounts,
 under each source's licence.
 

@@ -69,3 +69,7 @@ card.quality["terms_profile"]  # the profile, and the sources it excluded, with 
   `not_queried`, with the profile and the reason, and the knowledge state shows it.
   Sources with unknown terms, such as PubChem BioAssay's depositors, are excluded too.
 - Curated statements you apply are yours: the profile does not filter them.
+
+Some sources need an account, a key, an academic licence or a written agreement before
+they can be asked at all. They are listed, with what each needs, on the *Data sources*
+page.

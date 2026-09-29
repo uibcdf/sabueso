@@ -55,6 +55,15 @@ KNOWN = set(REQUIRED) | {
     "limit",
     "note",
     "terms",
+    "requires",
+    "requires_note",
+}
+REQUIRES = {
+    "account": "an account (login)",
+    "key": "a personal key",
+    "academic_licence": "an academic licence",
+    "licence": "a licence",
+    "agreement": "a written agreement",
 }
 TERMS = ROOT / "sabueso" / "resolver" / "source_terms.json"
 TERMS_KEYS = {"source_names", "licence", "attribution", "statement", "reviewed"}
@@ -147,6 +156,12 @@ def problems(data: Dict[str, Any]) -> List[str]:
             and "terms" not in r
         ):
             out.append(f"{rid}: a source Sabueso reads states its terms (#29)")
+        if "requires" in r:
+            unknown = sorted(set(r["requires"] or []) - set(REQUIRES))
+            if unknown or not r["requires"]:
+                out.append(f"{rid}: requires is a list of {sorted(REQUIRES)}")
+            if not r.get("requires_note"):
+                out.append(f"{rid}: requires states its requires_note")
         if "terms" in r:
             terms = r["terms"] or {}
             missing = TERMS_KEYS - set(terms)
@@ -246,7 +261,44 @@ def render(data: Dict[str, Any]) -> str:
         lines += [row.replace("\n", " ") for row in rows]
         if status == "in_use":
             lines += _limits(group)
+    lines += _requirements(resources)
     return "\n".join(lines) + "\n"
+
+
+def _requirements(resources: List[Dict[str, Any]]) -> List[str]:
+    """The sources that need an account, a key or a licence from the user (#94)."""
+    needing = [r for r in resources if r.get("requires")]
+    if not needing:
+        return []
+    titles = {
+        "in_use": "in use",
+        "evaluating": "being evaluated",
+        "queued": "queued",
+        "deferred": "deferred",
+        "rejected": "rejected",
+        "retired": "retired",
+        "out_of_scope": "out of scope",
+    }
+    lines = [
+        "",
+        "## Sources that need an account, a key or a licence",
+        "",
+        "Some sources answer only to a registered user, or only under a licence the",
+        "user holds. Sabueso never stores, logs or ships a user's credentials: a key or",
+        "an account is passed to its client, or set in `SABUESO_<SERVICE>_KEY`, and a",
+        "source that needs one it was not given is recorded as not queried. A licence",
+        "or an agreement is the user's to obtain; Sabueso only reports which one binds.",
+        "",
+        "| Resource | Status | Needs | What |",
+        "| --- | --- | --- | --- |",
+    ]
+    for r in sorted(needing, key=lambda r: (r["status"], r["name"].lower())):
+        needs = ", ".join(REQUIRES[k] for k in r["requires"])
+        lines.append(
+            f"| [{r['name']}]({r['url']}) | {titles[r['status']]} | {needs} | "
+            f"{r['requires_note']} |"
+        )
+    return lines
 
 
 def _limits(group: List[Dict[str, Any]]) -> List[str]:

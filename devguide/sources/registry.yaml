@@ -27,6 +27,10 @@
 #                 the value from the code, so the two cannot disagree. A cut is always
 #                 recorded as truncated and reported.
 #   note          The state of a review, e.g. why an evaluation is blocked.
+#   requires      What access needs from a user (#94): account, key, academic_licence
+#                 (an institution-based licence), licence, or agreement (a written
+#                 one); requires_note says what, in a sentence. Listed on the data
+#                 sources page, so a user knows what to obtain before asking for it.
 #   terms         What the source states about the use of its data (#29): the
 #                 SourceAssertion source_names it covers, a licence classified in
 #                 sabueso/core/terms.py (LICENCES), the attribution text, the
@@ -346,6 +350,8 @@ resources:
     status: deferred
     description: Stage-resolved expression, knockdown and knockout phenotypes, and gene records for eukaryotic pathogens.
     since: 2026-09-25
+    requires: ["key"]
+    requires_note: "A registered user's API key; reuse terms not found (#84)."
     reason: "Blocked (2026-09-28): the web services now need a registered user's API key (HTTP 401 without one), and no reuse terms were found (#84). The curated biological-context fields (#60) exist meanwhile."
     revisit_when: "VEuPathDB answers #84 on terms and on a tool using a user's key; then a user supplies their own key through an environment variable."
     access: WDK web services
@@ -357,18 +363,22 @@ resources:
     status: deferred
     description: Genetic and protein interactions curated from the literature.
     since: 2026-09-23
+    requires: ["key"]
+    requires_note: "A free personal access key for the REST API; the data is MIT-licensed."
     reason: "The API needs a personal access key; IntAct (via UniProt) and STRING cover current needs. Reviewed 2026-09-29 (#94): MIT licence (its terms page), so every terms profile admits it; key management now exists (tools/db/_keys)."
     revisit_when: "Genetic interactions are needed, and a user supplies their own key."
     access: REST API with access key
     licence: MIT
     links: ["#22"]
   - id: drugbank
-    name: DrugBank (open data)
+    name: DrugBank
     url: https://go.drugbank.com/
     category: chemistry_admet
     status: deferred
     description: Pharmacology of approved and experimental drugs, metabolism, transporters and mechanisms.
     since: 2026-09-23
+    requires: ["account", "academic_licence"]
+    requires_note: "An account under DrugBank's Academic License to download the full data (CC BY-NC 4.0); the CC0 Open Data also needs a login."
     reason: "Reviewed for terms profiles (2026-09-29, #94). The full database (XML 5.1.22 of 2026-06-27, 204 MB) is CC BY-NC 4.0, and its download needs an account under DrugBank's Academic License (an academic institution, research not primarily for a commercial third party). It would fit only the non_commercial profile, with the user's own account, and would bring what the clinical layer still lacks: pharmacology, mechanisms, interactions, transporters. The Open Data (vocabulary, structures) is CC0, but its download also needs a login (HTTP 403 without one)."
     revisit_when: "A user with a DrugBank academic account asks for it; the account's credentials are theirs, through tools/db/_keys, never stored."
     access: Downloads under an account (HTTP basic authentication with the user's email and password)
@@ -399,7 +409,9 @@ resources:
     status: retired
     description: Post-translational modification sites.
     since: 2026-09-23
-    reason: Removed with the per-database card tools; its licence restricts redistribution.
+    requires: ["account", "agreement"]
+    requires_note: "Login for its data, internal research only, no downloads, no automated access; anything else needs a written agreement with Cell Signaling Technology (terms read 2026-09-29)."
+    reason: "Removed with the per-database card tools; its licence restricts redistribution. Terms re-read on 2026-09-29 (beta.phosphosite.org/psp/legal/terms-and-conditions): use for internal research only; no right to download any data; no commercial use; no sharing or distributing of data; and no access by data-mining tools, robots or spiders. No terms profile admits it, and Sabueso may not query it at all without a written agreement with Cell Signaling Technology."
     links: ["#21"]
   # --- out of scope: software, not knowledge sources -------------------------------
   - id: teachopencadd
@@ -446,6 +458,8 @@ resources:
     status: deferred
     description: "Expert-curated target–ligand relationships, quantitative agonist/antagonist classification and selectivity."
     since: 2026-09-25
+    requires: ["key"]
+    requires_note: "A personal API key; the database is ODbL 1.0, its contents CC BY-SA 4.0."
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     decided_by: "Sabueso maintainers, triage (2026-09-25)"
     reason: "Its web services now need a personal API key (HTTP 401 without one), its data is under ODbL (share-alike), and UniProt links neither test target to it. Reviewed 2026-09-29 (#94): the database is under ODbL 1.0 and its contents under CC BY-SA 4.0 (its about page); every terms profile would admit it with share-alike, and key management now exists."
@@ -620,6 +634,8 @@ resources:
     status: deferred
     description: "Metabolic and signalling pathway maps and human diseases."
     since: 2026-09-25
+    requires: ["licence"]
+    requires_note: "A licence for services, downloads and non-academic use; academic service providers need one too."
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     reason: "Not a public database: free academic use of the website only; services, downloads and non-academic use need a licence, which does not fit redistribution across MOLI. Reviewed 2026-09-29 (#94): even academic users who provide services with KEGG need an academic service provider licence, so no terms profile admits it without one."
     revisit_when: "A licence covering MOLI use is in place, or a pathway need is not met by Reactome (CC0)."
@@ -900,6 +916,8 @@ resources:
     status: evaluating
     description: "Enzyme information: kinetics (Km, kcat), inhibitors, cofactors and conditions."
     since: 2026-09-25
+    requires: ["account"]
+    requires_note: "A free account (email and password) for the SOAP web service; the data is CC BY 4.0."
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     licence: "CC BY 4.0; the API needs a registered account (key rule)"
     note: "Reviewed 2026-09-29 (#94): data CC BY 4.0 (its licence page); the SOAP web service needs a registered account (email and password). Fits every terms profile. Strong candidate: kinetics (Km, kcat, Ki) and inhibitors per EC number and organism, e.g. TIM (EC 5.3.1.1) of T. cruzi and human. Waits on a user's account for the key rule."
@@ -976,6 +994,8 @@ resources:
     status: deferred
     description: "3D complexes paired with experimental binding affinities (core and refined sets)."
     since: 2026-09-25
+    requires: ["account"]
+    requires_note: "Registration to download."
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     reason: "Did not answer on 2026-09-29, and needs registration; affinities also come from ChEMBL and BindingDB."
     revisit_when: "It answers, and its terms fit MOLI."
@@ -1159,6 +1179,8 @@ resources:
     status: evaluating
     description: "In vitro toxicity screening profiles, cellular stress and assay-interference flags."
     since: 2026-09-25
+    requires: ["key"]
+    requires_note: "A key for the CTX API; the summary files are CC0."
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     licence: "Summary files CC0; the CTX API needs a key"
     links: ["#83"]
@@ -1201,6 +1223,8 @@ resources:
     status: deferred
     description: "Chemical structures, names and identifiers aggregated from many data sources."
     since: 2026-01-31
+    requires: ["key"]
+    requires_note: "An API key, with its usage conditions."
     proposed_by: "Original source plan (minimum sources, 2026-01)"
     reason: "API key and usage conditions; PubChem and UniChem cover identity."
     revisit_when: "A structure or name need that PubChem, ChEBI and UniChem do not cover."
