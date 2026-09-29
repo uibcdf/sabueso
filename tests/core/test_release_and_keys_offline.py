@@ -76,7 +76,7 @@ def test_a_key_is_scrubbed_from_messages():
 def test_the_ncbi_key_is_sent_but_never_echoed(monkeypatch):
     from urllib.error import HTTPError
 
-    from sabueso.tools.db import ncbi_gene, ncbi_taxonomy
+    from sabueso.tools.db import clinvar, ncbi_gene, ncbi_taxonomy
 
     seen = []
 
@@ -86,14 +86,18 @@ def test_the_ncbi_key_is_sent_but_never_echoed(monkeypatch):
         raise HTTPError(url, 500, f"boom at {url}", None, None)
 
     monkeypatch.setattr(ncbi_gene, "urlopen", failing)
+    monkeypatch.setattr(clinvar, "urlopen", failing)
     monkeypatch.setattr(ncbi_taxonomy, "urlopen", failing)
     monkeypatch.setenv("SABUESO_NCBI_KEY", "s3cr3t")
     with pytest.raises(ConnectorError) as gene_error:
         ncbi_gene.OnlineNCBIGeneClient().gene("7167")
     with pytest.raises(ConnectorError) as taxon_error:
         ncbi_taxonomy.OnlineNCBITaxonomyClient().taxa([9606])
+    with pytest.raises(ConnectorError) as clinvar_error:
+        clinvar.OnlineClinVarClient().variants(["7167"])
     assert "api_key=s3cr3t" in seen[0]
     assert seen[1].get_header("Api-key") == "s3cr3t"
-    for error in (gene_error.value, taxon_error.value):
+    assert "api_key=s3cr3t" in seen[2].full_url
+    for error in (gene_error.value, taxon_error.value, clinvar_error.value):
         assert "s3cr3t" not in str(error)
         assert error.__cause__ is None

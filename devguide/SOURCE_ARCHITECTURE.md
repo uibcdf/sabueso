@@ -78,8 +78,8 @@ From the declarations, the other tables are **derived** instead of maintained by
   (BRENDA, VEuPathDB, BioGRID, Guide to PHARMACOLOGY, Tox21's API); others answer
   faster with one (NCBI, the first user).
   - The user supplies their own key through `SABUESO_<SERVICE>_KEY`, or the client's
-    `api_key`. A service, not a registry entry, owns a key: NCBI Gene and NCBI
-    Taxonomy share `SABUESO_NCBI_KEY`.
+    `api_key`. A service, not a registry entry, owns a key: NCBI Gene, NCBI
+    Taxonomy and ClinVar share `SABUESO_NCBI_KEY`.
   - Sabueso never stores, logs or ships a key. It is sent only to its own service, is
     scrubbed from error messages, and is left out of the traceback's cause.
   - A card does not say whether a key was used: an optional key changes the rate, not
@@ -106,7 +106,7 @@ From the declarations, the other tables are **derived** instead of maintained by
 They keep their code. They adopt the shared services, and are declared as enrichers
 for the derived tables.
 
-## 5. Parallel fetching (last)
+## 5. Parallel fetching (last; deferred, #87)
 
 Independent enrichers can fetch concurrently (a thread pool), with results merged in
 the declared order, so a card stays deterministic. It comes last, after the contract,
@@ -135,8 +135,8 @@ unchanged.
 3. **Done (2026-09-29).** Shared services.
    - Every client (23 modules) reaches the network through `_http`.
    - PHI-base, DISEASES and Orphadata keep their releases through `_release`.
-   - `_keys` has its first user: NCBI Gene and NCBI Taxonomy take an optional NCBI
-     key.
+   - `_keys` has its first users: NCBI Gene, NCBI Taxonomy and ClinVar take an
+     optional NCBI key.
    - Cards are identical before and after, for four proteins with and without failing
      sources.
 4. **Done (2026-09-29).** Derived packet options and the consistency test.
@@ -150,4 +150,11 @@ unchanged.
      card-shape builder. STRING is the one enricher outside every aspect, declared
      with its reason.
    - `card_options` was already read from the card tools' signatures.
-5. Parallel fetching, if measured worthwhile.
+5. **Measured and deferred (2026-09-29, #87).** Parallel fetching.
+   - Online, the declared enrichers take 18.8 s of a 39.5 s card for HsTIM, and
+     6.3 s of 34.9 s for TcTIM. ClinVar is the largest, at 9.1 s, most of it spent
+     on NCBI's side.
+   - Running them concurrently would save at most about a quarter of a card's time,
+     at the cost of thread safety, diagnostics from threads and gentler use of rate-
+     limited sources.
+   - #87 states when to re-evaluate.

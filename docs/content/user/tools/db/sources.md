@@ -53,8 +53,8 @@ clients, so there is one way to query each source.
 - **Personal keys.** A source that asks for a key gets yours, never Sabueso's: pass
   `api_key=` to its online client, or set `SABUESO_<SERVICE>_KEY`. Sabueso sends the
   key only to its own service, and never writes it into a card, a record, a cache or a
-  message. NCBI's key is optional (`SABUESO_NCBI_KEY`): it raises NCBI's rate limit and
-  changes nothing in the answers. A source that needs a key it was not given is not
+  message. NCBI's key is optional (`SABUESO_NCBI_KEY`, for NCBI Gene, NCBI Taxonomy
+  and ClinVar): it raises NCBI's rate limit and changes nothing in the answers. A source that needs a key it was not given is not
   asked; the card records it as not queried, with the reason.
 - **Boundaries.**
   - Sabueso retrieves knowledge records: entries, annotations and metadata. It does not

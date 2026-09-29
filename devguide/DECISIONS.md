@@ -959,4 +959,9 @@ uibcdf/sabueso#86, wave 3 of #83.
   unpublished (packets are not in 0.5.0), so its two gaps were corrected in place:
   `structures` now asks AlphaFold DB, and `sequence_features` asks InterPro. Functional
   association (STRING) is not an aspect yet.
+- **Step 5 (same day): parallel fetching is deferred (#87).** Measured online: the
+  declared enrichers are 18.8 s of a 39.5 s card for HsTIM, and 6.3 s of 34.9 s for
+  TcTIM. Concurrency would save at most about a quarter of a card's time, at the cost
+  of thread safety and gentler use of rate-limited sources. #87 states when to
+  re-evaluate. ClinVar, the slowest, now also takes the optional NCBI key.
 

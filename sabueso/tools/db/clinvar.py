@@ -8,8 +8,8 @@ are found by the NCBI Gene id the UniProt entry cross-references, never by gene 
 ``variants(gene_ids, limit)`` returns ``{"retrieved_at", "version", "record": [summary,
 ...], "total_count", "truncated"}``: ClinVar's summaries (E-utilities ``esummary``),
 keeping the fields Sabueso maps, at most ``limit`` per gene. ``version`` is the ClinVar
-database build. ``OnlineClinVarClient`` uses the E-utilities (no key; NCBI's rate limit
-without a key is not approached); ``FixtureClinVarClient`` reads
+database build. ``OnlineClinVarClient`` uses the E-utilities, with the optional NCBI key
+(``api_key=``, or ``$SABUESO_NCBI_KEY``; ``tools.db._keys``); ``FixtureClinVarClient`` reads
 ``<directory>/clinvar/<gene id>.json``.
 
 Terms: freely available; ClinVar asks to be credited as the source. It is not for
@@ -27,6 +27,7 @@ from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError
+from sabueso.tools.db import _keys
 from sabueso.tools.db._http import request, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -46,15 +47,21 @@ KEPT = (
 )
 
 
-def _get(path: str, params: Dict[str, Any], timeout: float) -> Dict[str, Any]:
-    url = f"{EUTILS}/{path}?" + urlencode(
-        {**params, "retmode": "json", "tool": "sabueso"}
-    )
+def _get(
+    path: str, params: Dict[str, Any], timeout: float, api_key: str | None = None
+) -> Dict[str, Any]:
+    query = {**params, "retmode": "json", "tool": "sabueso"}
+    if api_key:
+        query["api_key"] = api_key
+    url = f"{EUTILS}/{path}?" + urlencode(query)
     try:
         with urlopen(request(url), timeout=timeout) as resp:  # nosec - trusted
             return json.loads(resp.read().decode("utf-8"))
     except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
-        raise ConnectorError(f"ClinVar {path} failed: {exc}") from exc
+        detail = _keys.scrub(str(exc), api_key)
+        raise ConnectorError(f"ClinVar {path} failed: {detail}") from (
+            None if api_key else exc  # a key never reaches a traceback
+        )
 
 
 def _summary(record: Dict[str, Any]) -> Dict[str, Any]:
@@ -83,14 +90,16 @@ def _summary(record: Dict[str, Any]) -> Dict[str, Any]:
 
 
 class OnlineClinVarClient:
-    def __init__(self, timeout: float = 60.0) -> None:
+    def __init__(self, timeout: float = 60.0, api_key: str | None = None) -> None:
         self.timeout = timeout
+        self._api_key = api_key
 
     def variants(
         self, gene_ids: Iterable[str], limit: int = DEFAULT_LIMIT
     ) -> Dict[str, Any]:
         retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
-        info = _get("einfo.fcgi", {"db": "clinvar"}, self.timeout)
+        api_key = _keys.key("ncbi", self._api_key)
+        info = _get("einfo.fcgi", {"db": "clinvar"}, self.timeout, api_key)
         version = ((info.get("einforesult") or {}).get("dbinfo") or [{}])[0].get(
             "dbbuild"
         )
@@ -102,6 +111,7 @@ class OnlineClinVarClient:
                     "esearch.fcgi",
                     {"db": "clinvar", "term": f"{gene}[geneid]", "retmax": limit},
                     self.timeout,
+                    api_key,
                 ).get("esearchresult")
                 or {}
             )
@@ -113,6 +123,7 @@ class OnlineClinVarClient:
                         "esummary.fcgi",
                         {"db": "clinvar", "id": ",".join(ids[i : i + BATCH])},
                         self.timeout,
+                        api_key,
                     ).get("result")
                     or {}
                 )
