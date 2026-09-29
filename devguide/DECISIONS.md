@@ -898,4 +898,9 @@ uibcdf/sabueso#83; the numbering rule was agreed with the maintainers before bui
   keeps ClinVar's numbering and says why it is not placed. Nothing is placed by
   similarity.
 - **Not for diagnosis.** The docs repeat ClinVar's own warning.
+- **gnomAD (same day)** follows the same placement rule, through an Ensembl transcript
+  UniProt states for its canonical isoform. gnomAD's transcript ids carry no version,
+  so the residue check guards against a changed sequence. Only variants with a protein
+  change are kept, and the others are counted. Frequencies (`ac`, `an`, `af`) are kept
+  as stated, per exomes and genomes. The placement code is shared (`mappings/_hgvs.py`).
 

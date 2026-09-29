@@ -60,6 +60,7 @@ PROTEIN_ENRICHMENTS = (
     ("relationships.associated_with", "Orphanet", {"source": "Orphanet"}),
     ("relationships.participates_in", "Reactome", {"source": "Reactome"}),
     ("annotations.clinical_variants", "ClinVar", {"source": "ClinVar"}),
+    ("annotations.population_variants", "gnomAD", {"source": "gnomAD"}),
 )
 
 

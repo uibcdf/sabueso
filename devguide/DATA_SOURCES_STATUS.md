@@ -83,6 +83,19 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: identifiers, preferred name, molecule type, formula, physchem (ALogP, HBD/HBA, TPSA, rotatable bonds, aromatic rings, molecular weight as `full_mwt`), `max_phase`, InChI/InChIKey, isomeric SMILES
 - **Notes**: numbers ChEMBL serialises as strings are normalized; logP and rotatable bonds carry their method (`ALogP`, `chembl:rtb`) and are compared only within it (uibcdf/sabueso#10). Stable online tests.
 
+### gnomAD — population frequencies
+- **Status**: implemented as an enricher of `resolve_protein_card(..., gnomad={})` (uibcdf/sabueso#83)
+- **Access**: GraphQL API, dataset gnomad_r4, no key (`OnlineGnomADClient`); saved variants in `temp_data/gnomad/`; `tools.db.gnomad.get_variants`
+- **Quality**: green for the listed coverage. Verified live on TPI1 (ENSG00000111669): 1,668 variants, of which those with a protein change are kept. E105D, on the canonical transcript ENST00000396705, is placed at UniProt 105 with its exome and genome frequencies.
+- **Coverage**: `annotations.population_variants`, with consequence, transcript, HGVS, flags, and exome and genome allele count, number and frequency as stated
+- **Notes**:
+  - Found by the Ensembl gene UniProt cross-references.
+  - Variants without a protein change are left out and counted.
+  - At most 1000 per gene by default, with the cut reported.
+  - The API states no release finer than the dataset.
+  - Human genes only.
+  - Licence: CC0 1.0 (core).
+
 ### ClinVar — variants and their clinical classification
 - **Status**: implemented as an enricher of `resolve_protein_card(..., clinvar={})` (uibcdf/sabueso#83)
 - **Access**: E-utilities (einfo for the build, esearch by NCBI Gene id, esummary), no key (`OnlineClinVarClient`); saved summaries in `temp_data/clinvar/`; `tools.db.clinvar.get_variants`

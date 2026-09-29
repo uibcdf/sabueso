@@ -32,6 +32,7 @@ themselves are not Sabueso's work and keep their source's licence.
 | ClinicalTrials.gov | US government work, not under copyright in the US | "Source: National Library of Medicine" | Studies fetched only by the NCT ids ChEMBL cites (#81) |
 | Open Targets Platform | CC0 1.0 | its latest publication (requested) | Scores are Open Targets' own; recorded as stated with the data version (#82) |
 | Orphadata (Orphanet) | CC BY 4.0 | "Orphadata Science: Free access data from Orphanet. © INSERM 1999", with the data version | Rare disorder–gene associations (#82) |
+| gnomAD | CC0 1.0 (core data) | requested (gnomAD project) | Population frequencies; annotations with other terms (e.g. SpliceAI) are not read (#83) |
 | ClinVar | Freely available (NCBI) | ClinVar, as the data source (e.g. PMID 29165669) | Not for diagnostic use without review by a genetics professional (#83) |
 | Reactome | CC0 1.0 (data) | encouraged, not required | Pathways and reactions (#83) |
 | DISEASES (Jensen lab) | CC BY 4.0 | DISEASES, citing the file dates | Associations per channel, joined through UniProt's Ensembl cross-references (#82) |

@@ -77,6 +77,7 @@ def fixture_cards() -> List[dict]:
     from sabueso.tools.db.clinicaltrials import FixtureClinicalTrialsClient
     from sabueso.tools.db.clinvar import FixtureClinVarClient
     from sabueso.tools.db.diseases import FixtureDISEASESClient
+    from sabueso.tools.db.gnomad import FixtureGnomADClient
     from sabueso.tools.db.interpro import FixtureInterProClient
     from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
     from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
@@ -136,6 +137,8 @@ def fixture_cards() -> List[dict]:
             reactome_client=FixtureReactomeClient(data),
             clinvar={},
             clinvar_client=FixtureClinVarClient(data),
+            gnomad={},
+            gnomad_client=FixtureGnomADClient(data),
         )
         hstim.add_literature_assertion(
             "features_positional.natural_variant",

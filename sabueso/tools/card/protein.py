@@ -85,6 +85,8 @@ def resolve_protein_card(
     reactome_client: Any | None = None,
     clinvar: Dict[str, Any] | None = None,
     clinvar_client: Any | None = None,
+    gnomad: Dict[str, Any] | None = None,
+    gnomad_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -147,6 +149,12 @@ def resolve_protein_card(
     their classification as ClinVar states it (``annotations.clinical_variants``). A
     variant is placed in UniProt numbering only when its transcript is one UniProt states
     for the canonical isoform and its residue matches. Human genes only.
+
+    ``gnomad`` (e.g. ``{}`` or ``{"limit": 200}``; default 1000) adds gnomAD's variants of
+    the gene with a protein change, and their exome and genome frequencies
+    (``annotations.population_variants``), placed in UniProt numbering by the same rule
+    through an Ensembl transcript UniProt states for the canonical isoform. Human genes
+    only.
     """
     if ncbi_gene:
         import copy
@@ -857,6 +865,88 @@ def resolve_protein_card(
                 }
             )
 
+    displayed_isoforms = [
+        (isoform.get("isoformIds") or [None])[0]
+        for comment in entry.get("comments") or []
+        if comment.get("commentType") == "ALTERNATIVE PRODUCTS"
+        for isoform in comment.get("isoforms") or []
+        if isoform.get("isoformSequenceStatus") == "Displayed"
+    ]
+    if gnomad is not None:
+        from sabueso.mappings.gnomad import map_variants as map_gnomad
+        from sabueso.tools.db.gnomad import OnlineGnomADClient
+
+        xrefs = entry.get("uniProtKBCrossReferences") or []
+        ensembl = [x for x in xrefs if x.get("database") == "Ensembl"]
+        genes = sorted(
+            {
+                p["value"].split(".")[0]
+                for x in ensembl
+                for p in x.get("properties") or []
+                if p.get("key") == "GeneId" and p.get("value")
+            }
+        )
+        canonical_ensembl = {
+            x["id"].split(".")[0]
+            for x in ensembl
+            if x.get("isoformId") in (None, *displayed_isoforms)
+        }
+        limit = gnomad.get("limit", 1000)
+        if (entry.get("organism") or {}).get("taxonId") != 9606:
+            enrichments.append(
+                {
+                    "source": "gnomAD",
+                    "identifier": anchor,
+                    "status": "not_applicable",
+                    "detail": "gnomAD covers human variants only",
+                }
+            )
+        elif not genes:
+            enrichments.append(
+                {
+                    "source": "gnomAD",
+                    "identifier": anchor,
+                    "status": "not_found",
+                    "detail": "the entry cross-references no Ensembl gene",
+                }
+            )
+        for gene in (
+            genes if (entry.get("organism") or {}).get("taxonId") == 9606 else []
+        ):
+            record = {"source": "gnomAD", "identifier": gene}
+            try:
+                response = (gnomad_client or OnlineGnomADClient()).variants(gene)
+            except RecordNotFoundError as exc:
+                enrichments.append(
+                    {**record, "status": "not_found", "detail": str(exc)}
+                )
+                continue
+            except ConnectorError as exc:
+                enrichments.append({**record, "status": "error", "detail": str(exc)})
+                continue
+            variants = response["record"]["variants"]
+            coding = [v for v in variants if v.get("hgvsp")]
+            mapped = map_gnomad(
+                coding[:limit],
+                anchor,
+                canonical_ensembl,
+                (entry.get("sequence") or {}).get("value"),
+                response.get("retrieved_at", ""),
+                response.get("version"),
+            )
+            mappings.append(mapped)
+            enrichments.append(
+                {
+                    **record,
+                    "status": "added" if coding else "not_found",
+                    "version": response.get("version"),
+                    "count": len(mapped["source_assertions"]),
+                    "without_protein_change": len(variants) - len(coding),
+                    "truncated": len(coding) > limit,
+                    "total_count": len(coding),
+                }
+            )
+
     if clinvar is not None:
         from sabueso.mappings.clinvar import map_variants
         from sabueso.tools.db.clinvar import DEFAULT_LIMIT as CLINVAR_LIMIT
@@ -864,13 +954,7 @@ def resolve_protein_card(
 
         xrefs = entry.get("uniProtKBCrossReferences") or []
         genes = sorted({x["id"] for x in xrefs if x.get("database") == "GeneID"})
-        displayed = [
-            (isoform.get("isoformIds") or [None])[0]
-            for comment in entry.get("comments") or []
-            if comment.get("commentType") == "ALTERNATIVE PRODUCTS"
-            for isoform in comment.get("isoforms") or []
-            if isoform.get("isoformSequenceStatus") == "Displayed"
-        ]
+        displayed = displayed_isoforms
         canonical = {
             prop["value"]
             for x in xrefs

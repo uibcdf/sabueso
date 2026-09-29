@@ -122,6 +122,7 @@ Records of how the card was resolved and enriched, not source-stated fields:
   - `annotations.accessibility` (`{compartment, exposure?, stage?, host?, method?, note?}`)
   - `annotations.metabolic_role` (`{pathway, role, stage?, host?, method?, note?}`)
 - `annotations.clinical_variants` (ClinVar: `{accession, title, variant_type, transcript?, hgvs_c?, hgvs_p?, classification, review_status, last_evaluated?, conditions, consequences, location?, substitution?, numbering, not_placed?}`; `location` in UniProt numbering only through a canonical transcript UniProt states and a matching residue)
+- `annotations.population_variants` (gnomAD: `{variant_id, consequence, transcript, hgvs_c, hgvs_p, flags?, exome?, genome?, location?, substitution?, numbering, not_placed?}`; `exome`/`genome` are `{ac, an, af}`; placed by the same rule as ClinVar, through an Ensembl transcript)
 - `annotations.pathogen_phenotypes` (PHI-base: `{annotation_type, phenotype, extensions?, high_level_terms?, genotype, pathogen, host?, diseases?, conditions?, method?, phi_ids?, publication?, curator_comment?}`; the genotype lists every allele, so a double mutant is never read as a single one)
 - `disease.associations`
 - `sequence.primary`

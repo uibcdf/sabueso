@@ -104,11 +104,12 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         "areas": ("relationships.has_bioactivity",),
     },
     "sequence_features": {
-        "options": {},
+        "options": {"gnomad": {}},
         "areas": (
             "features_positional.",
             "annotations.isoforms",
             "annotations.alternative_products",
+            "annotations.population_variants",
         ),
     },
     "literature": {
@@ -292,7 +293,12 @@ def _positional(card: Any) -> Dict[str, Any]:
     paths = {p.split(".")[0] + "." + p.split(".")[1] for p in paths}
     return _fields(
         card,
-        sorted(paths) + ["annotations.isoforms", "annotations.alternative_products"],
+        sorted(paths)
+        + [
+            "annotations.isoforms",
+            "annotations.alternative_products",
+            "annotations.population_variants",
+        ],
     )
 
 

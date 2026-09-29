@@ -16,6 +16,7 @@ from sabueso.tools.db import (
     clinicaltrials,
     clinvar,
     diseases,
+    gnomad,
     interpro,
     ncbi_gene,
     ncbi_taxonomy,
@@ -70,6 +71,9 @@ CALLS = {
     ),
     "clinvar.get_variants": lambda: clinvar.get_variants(
         ["7167"], client=clinvar.FixtureClinVarClient("temp_data")
+    ),
+    "gnomad.get_variants": lambda: gnomad.get_variants(
+        "ENSG00000111669", client=gnomad.FixtureGnomADClient("temp_data")
     ),
     "ncbi_taxonomy.get_taxon": lambda: ncbi_taxonomy.get_taxon(
         "5693", client=ncbi_taxonomy.FixtureNCBITaxonomyClient("temp_data")

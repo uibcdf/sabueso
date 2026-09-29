@@ -19,7 +19,7 @@ shows how to use them.
     - `predicted_structures`, `taxonomy`, `ncbi_gene`;
     - `phi_base` (pathogen phenotypes, #83), `diseases`, `open_targets` and
       `orphadata` (disease associations, #82), `reactome` (pathways, #83), `clinvar`
-      (variants, #83);
+      and `gnomad` (variants, #83);
     - each source's `*_client`, and `resolver`.
   - For small molecules: `unichem`, `pubchem`, `indications` and `trials` (#81).
   - An option the tool does not take is refused, never ignored.

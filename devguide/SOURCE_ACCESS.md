@@ -19,7 +19,8 @@ Each module holds the source's clients and its public `get_*` functions:
 - `open_targets`, GraphQL;
 - `orphadata`, one dated XML file indexed in memory;
 - `reactome`, the Content Service;
-- `clinvar`, NCBI's E-utilities.
+- `clinvar`, NCBI's E-utilities;
+- `gnomad`, GraphQL.
 Clients added since #82 name Sabueso over HTTP through `tools/db/_http.py`.
 Card building uses the same clients, so there is one way to query each source. The
 registry (`sources/registry.yaml`) must list each module as `in_use`, and a test checks

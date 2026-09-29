@@ -30,16 +30,11 @@ from typing import Any, Dict, Iterable, List
 
 from sabueso.core.source_assertion_store import make_source_assertion
 
+from ._hgvs import place
+
 SOURCE = "ClinVar"
 FIELD = "annotations.clinical_variants"
-THREE = {
-    "Ala": "A", "Arg": "R", "Asn": "N", "Asp": "D", "Cys": "C", "Gln": "Q",
-    "Glu": "E", "Gly": "G", "His": "H", "Ile": "I", "Leu": "L", "Lys": "K",
-    "Met": "M", "Phe": "F", "Pro": "P", "Ser": "S", "Thr": "T", "Trp": "W",
-    "Tyr": "Y", "Val": "V", "Sec": "U", "Pyl": "O", "Ter": "*",
-}  # fmt: skip
 TITLE = re.compile(r"(N[MR]_\d+\.\d+)\([^)]*\):(\S+)(?: \((p\.[^)]+)\))?")
-PROTEIN = re.compile(r"p\.([A-Z][a-z]{2})(\d+)(.*)")
 
 
 def _parse_title(title: str) -> Dict[str, str]:
@@ -50,42 +45,6 @@ def _parse_title(title: str) -> Dict[str, str]:
     if match.group(3):
         out["hgvs_p"] = match.group(3)
     return out
-
-
-def _change(rest: str) -> str | None:
-    """The one-letter result of a simple change, or the stated suffix otherwise."""
-    if rest in THREE:
-        return THREE[rest]
-    if rest == "=":
-        return "="
-    return rest or None
-
-
-def place(
-    hgvs_p: str | None,
-    transcript: str | None,
-    canonical: Iterable[str],
-    sequence: str | None,
-) -> Dict[str, Any]:
-    """``{"location", "substitution"}`` in UniProt numbering, or ``{"not_placed"}``."""
-    if not hgvs_p:
-        return {"not_placed": "no_protein_change"}
-    if transcript not in set(canonical):
-        return {"not_placed": "transcript_not_canonical"}
-    match = PROTEIN.match(hgvs_p)
-    residue = THREE.get(match.group(1)) if match else None
-    position = int(match.group(2)) if match else None
-    if (
-        residue is None
-        or not sequence
-        or not 0 < position <= len(sequence)
-        or sequence[position - 1] != residue
-    ):
-        return {"not_placed": "residue_mismatch"}
-    return {
-        "location": {"start": position, "end": position},
-        "substitution": {"original": residue, "change": _change(match.group(3))},
-    }
 
 
 def map_variants(

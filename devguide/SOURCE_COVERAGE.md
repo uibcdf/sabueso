@@ -24,7 +24,7 @@ status. This document holds the reasoning across sources.
 | Chemistry and ADMET | molecule | — | PubChem, PDB CCD, UniChem | ChEBI, Tox21/ToxCast (queued) |
 | Clinical | molecule | human | ChEMBL max phase and indications, ClinicalTrials.gov (#81) | adverse events (openFDA, later) |
 | Disease association | protein, disease | human | UniProt DISEASE comments, DISEASES, Open Targets, Orphanet (#82) | disease → targets (#82) |
-| Variants | protein | human first | UniProt variants and mutagenesis, ClinVar (#83) | gnomAD |
+| Variants | protein | human first | UniProt variants and mutagenesis, ClinVar, gnomAD (#83) | — |
 | Pathways | protein | all | UniProt pathway (text), Rhea, Reactome (#83) | — |
 | **Pathogen and organism context** | protein | pathogens | curation (#60), PHI-base | stage expression and screens (VEuPathDB), target prioritisation (TDR Targets): terms pending (#84) |
 | Literature | all | all | UniProt citations, human curation | automated extraction (later) |
@@ -60,7 +60,7 @@ Each source is checked live, and the date is recorded:
 | Reactome | pathways | human, with inferred species | CC0 1.0 (data) | UniProt | **In use** since 2026-09-28; replaces the need for KEGG |
 | KEGG | pathways | many | not public; licence needed beyond academic web use | KEGG ids | Deferred |
 | ClinVar | variant clinical significance | human | Freely available; credit ClinVar; not for diagnostic use without professional review | NCBI Gene id; HGVS on RefSeq transcripts | **In use** since 2026-09-29; placed in UniProt numbering only through a canonical transcript UniProt states and a matching residue |
-| gnomAD | population variants | human | CC0 1.0 (core); some annotations CC BY-NC | gene, variant ids | Frequencies; large |
+| gnomAD | population variants | human | CC0 1.0 (core); some annotations CC BY-NC (not read) | Ensembl gene; Ensembl transcripts | **In use** since 2026-09-29: protein-level variants and frequencies, placed through a canonical transcript |
 | DepMap | essentiality in cancer cell lines | human | CC BY 4.0 (public release; some files differ) | gene ids | Bulk releases |
 | DGIdb | drug–gene interactions | human | aggregated; each source keeps its terms | gene ids; drugs grouped by name normalisation | Its drug grouping merges by name, so a drug's identity would need re-anchoring |
 | ClinicalTrials.gov | trials | human | US government work; NLM asks credit | NCT id; interventions as text only | **In use** since 2026-09-28, only through NCT ids ChEMBL states (#81) |

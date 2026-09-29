@@ -39,7 +39,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     Targets, with its scores as stated; and Orphanet's rare disorders;
   - Reactome pathways and reactions (#83, `participates_in`);
   - ClinVar variants of human genes (#83, `annotations.clinical_variants`), placed in
-    UniProt numbering only through a canonical transcript and a matching residue;
+    UniProt numbering only through a canonical transcript and a matching residue, and
+    gnomAD population frequencies (`annotations.population_variants`) placed the same
+    way;
   - a prototype of knowledge packets (#71): `KnowledgeQuery`, `knowledge_packet`,
     `compose_packet`, and stored, pinned packets with a content-equivalence id. Its
     shared contract waits on uibcdf/moli#22.
@@ -80,7 +82,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 832 tests passed, 15 online tests deselected (2026-09-27). Run with
+- Offline suite: 836 tests passed, 15 online tests deselected (2026-09-27). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.

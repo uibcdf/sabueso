@@ -311,6 +311,11 @@ A Relationship is first-class, traceable knowledge:
     UniProt states for the canonical isoform (RefSeq cross-references, versions
     included) and its residue matches the UniProt sequence. Otherwise `numbering` names
     ClinVar's transcript and `not_placed` gives the reason.
+  - population variants (added in #83, schema 0.3.6): `annotations.population_variants`,
+    one item per gnomAD variant with a protein change, with the exome and genome
+    `{ac, an, af}` as stated. Placed by the same rule as ClinVar, through an Ensembl
+    transcript UniProt states for the canonical isoform. gnomAD's transcript ids carry
+    no version, so the residue check guards against a changed sequence.
   - pathways (added in #83, schema 0.3.6):
     - `participates_in` (protein → `reactome:<stId>`), one per Reactome event mapping
       the UniProt accession. Qualifiers: `kind` (`pathway`, lowest level, or

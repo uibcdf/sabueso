@@ -11,7 +11,7 @@ import pytest
 
 import sabueso
 from sabueso._private.smonitor.warnings import EnrichmentTruncatedWarning
-from sabueso.mappings.clinvar import place
+from sabueso.mappings._hgvs import place
 from sabueso.resolver import EntityResolver, FixtureUniProtClient
 from sabueso.tools.db.clinvar import FixtureClinVarClient
 

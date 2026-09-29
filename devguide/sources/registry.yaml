@@ -507,11 +507,14 @@ resources:
     name: "gnomAD"
     url: https://gnomad.broadinstitute.org/
     category: target_validation
-    status: evaluating
+    status: in_use
     description: "Population allele frequencies, e.g. to assess the conservation of a binding pocket."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "CC0 1.0 (core data); some annotations restricted, e.g. SpliceAI CC BY-NC 4.0"
+    reason: "Population frequencies (exomes, genomes) of a human gene's variants with a protein change, as gnomAD states them. Found by the Ensembl gene UniProt cross-references; placed in UniProt numbering only through a canonical Ensembl transcript UniProt states and a matching residue."
+    access: "GraphQL API (dataset gnomad_r4; the API states no finer release), no key, when resolve(..., gnomad={}); at most 1000 protein-level variants per gene by default"
+    licence: "CC0 1.0 (core data; some annotations, not read, carry other terms)"
+    module: [sabueso.tools.db.gnomad, sabueso.mappings.gnomad]
     links: ["#83"]
   - id: pharmacodb
     name: "PharmacoDB"

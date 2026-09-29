@@ -84,6 +84,15 @@ position. Otherwise `not_placed` says why: `no_protein_change`,
 
 ClinVar is not for diagnostic use without review by a genetics professional.
 
+## gnomAD (population frequencies)
+
+`sabueso.resolve("P60174", gnomad={})` adds gnomAD's variants of the gene with a protein
+change, each with its allele count, allele number and frequency in exomes and genomes
+(`annotations.population_variants`). They are placed in UniProt numbering by the same
+rule as ClinVar, through an Ensembl transcript UniProt states for the canonical
+isoform. Variants without a protein change are left out, and the enrichment record
+counts them. At most 1000 per gene by default (`{"limit": n}`).
+
 ## Coverage
 
 DISEASES, Open Targets, Orphanet and ClinVar cover human genes only. For a protein of another organism,
