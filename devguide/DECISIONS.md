@@ -1192,3 +1192,18 @@ uibcdf/sabueso#29.
   - Terms of which neither is under the other (two subtypes) stay a conflict.
   - `disease_grouping@1` has not been released, so it keeps its version, with
     `granularity: mondo_hierarchy@1` among its parameters.
+- **How each statement entered** (same day, #92, step 1). Every SourceAssertion
+  records `acquisition`, a new optional key in card schema 0.3.7.
+  - Methods: `database`, `curation`, `rule_extraction` and `model_extraction`, plus
+    `validated_by` on an extraction. An extraction must name its tool and version: a
+    statement whose extractor cannot be named cannot be reproduced or weighed.
+  - How a database obtained its own record is the database's statement, recorded as
+    `origin` only when the source states it. Today that is DISEASES's text-mining
+    channel (`text_mining`). STRING's links combine channels, text mining among them,
+    in one score, so no single link can be marked.
+  - Acquisition is recorded, not inferred. SourceAssertions of older cards read as
+    `not_recorded` until a refresh; a migration within a line does not rewrite them.
+  - It says how a statement entered, never how true it is. Weighing a statement for a
+    project remains Evidence, in Nextia.
+  - The key is not in MOLI's conceptual SourceAssertion schema. It was proposed
+    there (uibcdf/moli#32), and Sabueso's use is additive.

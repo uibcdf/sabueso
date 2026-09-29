@@ -41,6 +41,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     `Deck.explain`; `KnowledgeStore.as_of`, `revision_as_of` and `changed_since`;
   - molecules given as a structure (`smiles:`, `inchi:`), matched by PubChem
     (`pubchem_structure_lookup`, #93);
+  - how each statement entered (#92): `acquisition` on every SourceAssertion
+    (`database`, with `origin: text_mining` for DISEASES's text-mining channel;
+    `curation`; `rule_extraction` and `model_extraction`, not used yet),
+    `Card.acquisition()`, and packets' provenance;
   - `knowledge_state@3`: an answer cut at a limit is `partial`, with `truncated_for`
     (#88);
   - a `not_found` record states the release it was checked against (#89).

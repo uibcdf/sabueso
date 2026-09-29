@@ -101,6 +101,20 @@ Every SourceAssertion stored in `source_assertion_store` must include:
 - `timestamps: { published_at?: date, updated_at?: date }`
 - `confidence: float` (only when reported by the source)
 
+**Recorded since card schema 0.3.7** (#92)
+- `acquisition: {method, tool?, version?, configuration?, origin?, validated_by?}`:
+  how the statement entered, never how true it is. `method` is one of:
+  - `database`: imported from a source's record. `origin` records what the source
+    states about how it obtained the record, today only `text_mining` (DISEASES's
+    text-mining channel);
+  - `curation`: a person read the publication and recorded it
+    (`source_metadata.curation` says who, when and where);
+  - `rule_extraction` or `model_extraction`: extracted from a text. It names its
+    `tool` and `version`, and its `configuration` when there is one. `validated_by`
+    (curator and date) records a person's confirmation. No source uses this yet.
+  An older SourceAssertion has none, and reads as `not_recorded`
+  (`acquisition_of`), until its card is built again.
+
 `source.type` is one of `database`, `literature`, `patent`, `curated`, `other`.
 
 ## Card Identity (Provisional)

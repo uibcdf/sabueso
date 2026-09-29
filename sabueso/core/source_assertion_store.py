@@ -45,6 +45,63 @@ class SourceRef(TypedDict, total=False):
     version: str
 
 
+#: How a statement entered (#92). ``database``: imported from a source's record;
+#: ``curation``: a person read the publication and recorded it; ``rule_extraction`` and
+#: ``model_extraction``: extracted from a text by a named tool or model.
+ACQUISITION_METHODS = ("database", "curation", "rule_extraction", "model_extraction")
+#: What a database states about how its own record was obtained, when it states it.
+ORIGINS = ("text_mining",)
+
+
+class Acquisition(TypedDict, total=False):
+    """How a SourceAssertion entered (#92): never how true it is."""
+
+    method: str
+    tool: str  # extraction: the tool or model
+    version: str  # extraction: its version
+    configuration: Dict[str, Any]  # extraction: its settings
+    origin: str  # database: how the source states its record was obtained
+    validated_by: Dict[str, Any]  # extraction: the curator who confirmed it, and when
+
+
+def make_acquisition(
+    method: str,
+    tool: str | None = None,
+    version: str | None = None,
+    configuration: Dict[str, Any] | None = None,
+    origin: str | None = None,
+) -> "Acquisition":
+    """An acquisition record. An extraction names its tool and version: a statement
+    whose extractor cannot be named cannot be reproduced or weighed."""
+    from .errors import SchemaError
+
+    if method not in ACQUISITION_METHODS:
+        raise SchemaError(f"Unknown acquisition method {method!r}")
+    if origin is not None and (method != "database" or origin not in ORIGINS):
+        raise SchemaError(f"An origin {origin!r} describes a database's own record")
+    extraction = method.endswith("_extraction")
+    if extraction and not (tool and version):
+        raise SchemaError(f"A {method} names its tool and its version")
+    if not extraction and (tool or version or configuration):
+        raise SchemaError("Only an extraction has a tool, version and configuration")
+    record: Acquisition = {"method": method}
+    for key, value in (
+        ("tool", tool),
+        ("version", version),
+        ("configuration", configuration),
+        ("origin", origin),
+    ):
+        if value is not None:
+            record[key] = value
+    return record
+
+
+def acquisition_of(assertion: "SourceAssertion") -> Dict[str, Any]:
+    """How a SourceAssertion entered, or ``{"method": "not_recorded"}`` for one made
+    before acquisition was recorded (card schema 0.3.6 and older)."""
+    return dict(assertion.get("acquisition") or {"method": "not_recorded"})
+
+
 class SourceAssertion(TypedDict, total=False):
     """What an external source asserts about a field of an entity."""
 
@@ -59,6 +116,7 @@ class SourceAssertion(TypedDict, total=False):
         str, Any
     ]  # source-native qualifiers (e.g., UniProt ECO codes)
     provenance_ref: str
+    acquisition: Acquisition
 
 
 def _stable_value_repr(value: Any) -> str:
@@ -107,12 +165,16 @@ def make_source_assertion(
     retrieved_at: str,
     source_type: str = "database",
     subject_ref: str | None = None,
+    acquisition: Acquisition | None = None,
 ) -> SourceAssertion:
     """Build a SourceAssertion with its deterministic id and subject reference.
 
     The subject defaults to ``<source namespace>:<record_id>``. Pass ``subject_ref`` when
     the source keys its record by another namespace, e.g. InterPro and PDBe-KB protein
     records are keyed by UniProt accession, so their subject is ``uniprot:<accession>``.
+
+    ``acquisition`` says how the statement entered (#92); a source's record is
+    ``{"method": "database"}``.
     """
     return {
         "id": generate_source_assertion_id(
@@ -123,6 +185,7 @@ def make_source_assertion(
         "asserted_value": asserted_value,
         "source": {"type": source_type, "name": source_name, "record_id": record_id},
         "retrieved_at": retrieved_at,
+        "acquisition": dict(acquisition or {"method": "database"}),
     }
 
 

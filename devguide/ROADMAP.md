@@ -199,9 +199,9 @@ In order:
    `changed_since`. Next, as use asks: explaining a view's derived items (a group, a
    state) through the same path.
 4. **Literature beyond manual curation (#92).**
-   - First, how each statement entered: database, curation, rule extraction, model
-     extraction, validation.
-   - Then, a first rule-extracted source (Europe PMC's annotations, after a terms
+   - On main: how each statement entered (`acquisition`: database, curation, rule
+     extraction, model extraction, validation).
+   - Next, a first rule-extracted source (Europe PMC's annotations, after a terms
      review).
 5. **Continuing, in parallel when a need or a slot appears:**
    - sources of wave 2 (#83): chemistry (ChEBI, chemical probes), identity (Ensembl,

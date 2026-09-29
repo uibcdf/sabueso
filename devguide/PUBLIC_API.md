@@ -73,6 +73,8 @@ shows how to use them.
   - `literature()` and `claims(topic=None)`;
   - `clinical()` (molecules: indications and trials, #81);
   - `knowledge_state()`;
+  - `acquisition()` (how the card's statements entered: database, curation,
+    extraction, #92);
   - `entities()` and `entity(ref)`;
   - `compare(other, fields=None)` and `compare_knowledge(other, residue_map=None)`.
 - **Tables.** `table(view, **options)` gives flat rows; `sabueso.to_dataframe(rows,

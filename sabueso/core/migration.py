@@ -184,6 +184,9 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "filled_by": "disease_identity",
             "entity_types": ("protein",),
         },
+        # How each statement entered (#92). An older card's SourceAssertions read as
+        # not_recorded until the card is built again.
+        {"path": "source_assertion_store[].acquisition", "filled_by": "refresh"},
     ],
 }
 

@@ -57,6 +57,10 @@ def map_associations(
                 f"{channel}:{row['protein']}:{row['disease']}",
                 retrieved_at,
                 subject_ref=f"uniprot:{accession}",
+                # DISEASES states that this channel's records are mined from text.
+                acquisition={"method": "database", "origin": "text_mining"}
+                if channel == "textmining"
+                else None,
             )
             if versions.get(channel):
                 assertion["source"]["version"] = f"{channel} {versions[channel]}"

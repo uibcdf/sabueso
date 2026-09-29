@@ -443,7 +443,10 @@ class Card:
     ) -> List[Dict[str, Any]]:
         """Where each SourceAssertion comes from (#91): the source, its record, release
         and retrieval, what it asserts and about which subject, and how it entered
-        (curation metadata, when curated). The end of every "why is this here?"."""
+        (``acquisition``, #92; curation metadata, when curated). The end of every "why
+        is this here?"."""
+        from .source_assertion_store import acquisition_of
+
         out = []
         for sa_id in source_assertion_ids:
             sa = self.source_assertion_store.get(sa_id)
@@ -462,6 +465,7 @@ class Card:
                     "version": source.get("version"),
                     "retrieved_at": sa.get("retrieved_at"),
                     "asserted_value": sa.get("asserted_value"),
+                    "acquisition": acquisition_of(sa),
                     **(
                         {"source_metadata": sa["source_metadata"]}
                         if sa.get("source_metadata")
@@ -470,6 +474,48 @@ class Card:
                 }
             )
         return out
+
+    def acquisition(self) -> Dict[str, Any]:
+        """How the card's statements entered (#92), counted by method and source:
+        imported from a database, curated from a publication, or extracted from a text
+        by a named tool or model. A database that states how it obtained its record
+        (e.g. DISEASES's text-mining channel) is counted under ``origins`` too.
+        Statements stored before acquisition was recorded are ``not_recorded``."""
+        from .source_assertion_store import acquisition_of
+
+        methods: Dict[str, Dict[str, int]] = {}
+        origins: Dict[str, Dict[str, int]] = {}
+        extractors: Dict[tuple, int] = {}
+        for sa in self.source_assertion_store.to_list():
+            record = acquisition_of(sa)
+            source = (sa.get("source") or {}).get("name") or "unknown"
+            by_source = methods.setdefault(record["method"], {})
+            by_source[source] = by_source.get(source, 0) + 1
+            if record.get("origin"):
+                by_origin = origins.setdefault(record["origin"], {})
+                by_origin[source] = by_origin.get(source, 0) + 1
+            if record.get("tool"):
+                key = (
+                    record["method"],
+                    record["tool"],
+                    record.get("version"),
+                    bool(record.get("validated_by")),
+                )
+                extractors[key] = extractors.get(key, 0) + 1
+        return {
+            "methods": {m: dict(sorted(s.items())) for m, s in sorted(methods.items())},
+            "origins": {o: dict(sorted(s.items())) for o, s in sorted(origins.items())},
+            "extractions": [
+                {
+                    "method": m,
+                    "tool": t,
+                    "version": v,
+                    "validated": validated,
+                    "count": n,
+                }
+                for (m, t, v, validated), n in sorted(extractors.items())
+            ],
+        }
 
     @arg_digest()
     def terms(self, use: str, skip_digestion: bool = False) -> Dict[str, Any]:

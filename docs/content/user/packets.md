@@ -54,8 +54,9 @@ aspect asks for.
 - `unknowns`: per source, what is `not_stated`, `not_queried`, `unavailable` or
   `partial`, for the areas of the aspects asked. An absence is a fact about a source,
   never evidence.
-- `provenance`: the sources, their releases and retrieval dates, and what each
-  enrichment returned.
+- `provenance`: the sources, their releases and retrieval dates, how their statements
+  entered (`acquisition`: for example `database`, `database (text_mining)` or
+  `curation`), and what each enrichment returned.
 
 Quantities keep their unit, as `{value, unit}`.
 

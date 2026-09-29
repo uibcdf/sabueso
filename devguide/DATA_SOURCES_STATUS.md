@@ -144,6 +144,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Quality**: green for the listed coverage. Verified live on HsTIM (ENSP00000229270): 2 curated associations (TIM deficiency, congenital hemolytic anemia) and 42 text-mined ones.
 - **Coverage**: `associated_with` relationships, one per disease, channel and Ensembl protein, with DISEASES's scores as stated.
 - **Notes**:
+  - The text-mining channel's SourceAssertions record `acquisition: {method: database, origin: text_mining}` (#92): imported from DISEASES, which states they were mined from text.
   - Joined only through the Ensembl proteins UniProt cross-references.
   - Text mining links names, not molecules, and is added only when asked for.
   - Human genes only: a non-human protein is `not_queried`, with the reason.

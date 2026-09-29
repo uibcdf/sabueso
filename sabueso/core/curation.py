@@ -603,6 +603,7 @@ def _literature_assertion(
         curated_at,
         source_type="literature",
         subject_ref=subject,
+        acquisition={"method": "curation"},
     )
     # Two statements of the same value in two places of a paper are two assertions, and
     # so are the same statement about two entities (#55: without the subject, a review

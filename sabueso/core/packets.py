@@ -405,14 +405,23 @@ def _conflicts(card: Any, aspects: Iterable[str]) -> List[Dict[str, Any]]:
 
 
 def _provenance(card: Any) -> Dict[str, Any]:
+    from .source_assertion_store import acquisition_of
+
     sources: Dict[str, Dict[str, Any]] = {}
     for sa in card.source_assertion_store.to_list():
         source = sa.get("source") or {}
         entry = sources.setdefault(
             source.get("name") or "unknown",
-            {"releases": set(), "retrieved": set(), "assertions": 0},
+            {"releases": set(), "retrieved": set(), "assertions": 0, "acquired": {}},
         )
         entry["assertions"] += 1
+        # How the statements entered (#92): a model-extracted statement is never
+        # reported as curated.
+        record = acquisition_of(sa)
+        how = record["method"] + (
+            f" ({record['origin']})" if record.get("origin") else ""
+        )
+        entry["acquired"][how] = entry["acquired"].get(how, 0) + 1
         if source.get("version") is not None:
             entry["releases"].add(str(source["version"]))
         if sa.get("retrieved_at"):
@@ -430,6 +439,7 @@ def _provenance(card: Any) -> Dict[str, Any]:
             name: {
                 "releases": sorted(e["releases"]),
                 "assertions": e["assertions"],
+                "acquisition": dict(sorted(e["acquired"].items())),
                 "retrieved_at": sorted(e["retrieved"])[:1] + sorted(e["retrieved"])[-1:]
                 if e["retrieved"]
                 else [],

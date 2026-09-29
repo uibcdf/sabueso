@@ -162,6 +162,30 @@ inferred it from orthology.
 - **Scope.** How a statement bears on a project's hypotheses is not Sabueso's: that is
   Evidence, in Nextia.
 
+## How each statement entered
+
+Every SourceAssertion records how it entered the card (`acquisition`). This is not a
+measure of how true the statement is:
+
+```python
+card.acquisition()
+# {"methods": {"database": {"UniProt": 412, ...}, "curation": {"Literature": 3}},
+#  "origins": {"text_mining": {"DISEASES": 42}}, "extractions": []}
+card.explain([source_assertion_id])[0]["acquisition"]
+```
+
+- `database`: imported from a source's record. When the source states that its record
+  was mined from text, for example DISEASES's text-mining channel, `origin` says
+  `text_mining`.
+- `curation`: a person read the publication and recorded it, as above.
+- `rule_extraction` and `model_extraction`: extracted from a text by a named tool or
+  model, with its version. No source uses them yet. A model-extracted statement is
+  never reported as curated.
+- Cards saved before this was recorded read as `not_recorded` until they are built
+  again.
+
+Knowledge packets report the same per source, in their provenance.
+
 ## Names that papers use
 
 A paper may call a protein by a name UniProt does not list, such as a paralog's
