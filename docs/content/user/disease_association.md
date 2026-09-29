@@ -197,3 +197,34 @@ print(view["rule"]["rule"])  # disease_grouping@1
     to the MONDO and OMIM ids of a subtype.
 - `disease_identity` reads the diseases the other sources put on the card, so ask for
   them in the same call.
+
+## From a disease to its targets and its drugs
+
+```python
+import sabueso
+
+targets = sabueso.disease_targets("ORPHA:868")  # a deck of protein cards
+for card in targets.cards:
+    print(card.id, targets.basis(card.id)["statements"])
+print(targets.meta["excluded"])  # what was left out, and why
+
+drugs = sabueso.disease_drugs("mondo:MONDO:0001444")  # Chagas disease
+for card in drugs.cards:
+    print(
+        card.id, [i["max_phase_for_ind"] for i in drugs.basis(card.id)["indications"]]
+    )
+```
+
+- **Targets** (`disease_targets@1`) come from Open Targets' associated targets (asked by
+  the MONDO id, then its EFO equivalents) and Orphanet's genes of the disorder (asked by
+  its Orphanet equivalents). Each member is the Swiss-Prot product a source states for
+  the gene. Its basis lists every statement that brought it, with Open Targets' score
+  and rank, or Orphanet's association type and status, as stated.
+- **Drugs** (`disease_drugs@1`) are the molecules whose ChEMBL drug indications name the
+  disease by its MONDO id or by the EFO and MeSH ids MONDO states are the same disease.
+  They are ordered by ChEMBL's `max_phase_for_ind`, highest first.
+- Nothing is matched by name, and a disease that does not resolve is refused.
+- **Each member is a whole card**, which costs at least one request. So these decks
+  build 50 members by default (`limit=`). The rest are listed in `meta["excluded"]` with
+  the reason `limit`, and the cut is reported with a warning. A gene with no Swiss-Prot
+  product is excluded with its reason.

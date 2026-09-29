@@ -121,7 +121,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | 6. Tissue-specific isoforms | partial (tissue specificity; UniProt isoforms and alternative sequences, #80; AlphaFold isoform models; isoform sequences not fetched) |
 | 7. Visualization (MolSysViewer) | partial (interfaces, mutations, sites, secondary structure from UniProt and per chain from RCSB, #80; no contract) |
 | 8. Clinical trials of ligands | done for the trials ChEMBL's indications cite (#81); a trial is never matched to a molecule by name |
-| 9. Disease associations; targets of a disease | partial (protein → disease from UniProt, DISEASES, Open Targets and Orphanet, #82; disease → targets pending) |
+| 9. Disease associations; targets of a disease | done on main: protein → diseases from UniProt, DISEASES, Open Targets, Orphanet and ClinVar, grouped through MONDO (#82, #90); disease → targets and → drugs as decks (#90) |
 | 10. Knowledge baseline for a target and a comparator (pilot route) | done |
 | 11. Curating what the literature states (pilot route) | done (human curation) |
 | 12. Citing knowledge from a project (pilot route) | done, provisional reference form (#53, moli#3) |

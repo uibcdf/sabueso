@@ -24,6 +24,11 @@ from sabueso.core.knowledge_store import KnowledgeStore
 from sabueso.core.migration import migrate_card, refresh_card
 from sabueso.core.packets import KnowledgePacket, KnowledgeQuery, compose_packet
 from sabueso.core.tables import to_dataframe
+from sabueso.tools.card.disease import (
+    disease_drugs,
+    disease_targets,
+    resolve_disease_card,
+)
 from sabueso.tools.card.protein import ambiguity_deck, resolve_protein_card
 from sabueso.tools.card.small_molecule import ligand_deck, resolve_molecule_card
 from sabueso.tools.card.storage import save_card_json, save_card_sqlite
@@ -75,6 +80,9 @@ __all__ = [
     "resolve_molecule_card",
     "ligand_deck",
     "ambiguity_deck",
+    "resolve_disease_card",
+    "disease_targets",
+    "disease_drugs",
     "save_card_json",
     "save_card_sqlite",
     "save_deck_jsonl",

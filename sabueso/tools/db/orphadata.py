@@ -84,6 +84,20 @@ def parse_release(xml: bytes) -> tuple:
     return version, index
 
 
+def genes_of(
+    index: Dict[str, List[Dict[str, Any]]], orpha_code: str
+) -> List[Dict[str, Any]]:
+    """The gene associations of one disorder (``ORPHA:868`` or ``868``), each with the
+    UniProt accession Orphanet states for the gene (#90)."""
+    code = str(orpha_code).split(":")[-1]
+    return [
+        {**row, "uniprot": accession}
+        for accession, rows in sorted(index.items())
+        for row in rows
+        if str(row.get("orpha_code")) == code
+    ]
+
+
 class OnlineOrphadataClient:
     def __init__(self, timeout: float = 300.0):
         self.timeout = timeout
@@ -118,6 +132,19 @@ class OnlineOrphadataClient:
             "record": index[accession],
         }
 
+    def genes(self, orpha_code: str) -> Dict[str, Any]:
+        """The genes Orphanet associates with a disorder: ``{"retrieved_at",
+        "version", "record": [row with "uniprot", ...]}``."""
+        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        version, index = self._index()
+        rows = genes_of(index, orpha_code)
+        if not rows:
+            raise RecordNotFoundError(
+                f"Orphadata ({version}) names no gene for ORPHA:{orpha_code}",
+                version=version,
+            )
+        return {"retrieved_at": retrieved_at, "version": version, "record": rows}
+
 
 class FixtureOrphadataClient:
     def __init__(
@@ -145,6 +172,19 @@ class FixtureOrphadataClient:
             "version": version,
             "record": index[accession],
         }
+
+    def genes(self, orpha_code: str) -> Dict[str, Any]:
+        if orpha_code in self.failing:
+            raise ConnectorError(
+                f"Orphadata request for {orpha_code} failed (simulated)"
+            )
+        version, index = parse_release(self.path.read_bytes())
+        rows = genes_of(index, orpha_code)
+        if not rows:
+            raise RecordNotFoundError(
+                f"Orphadata names no gene for ORPHA:{orpha_code}", version=version
+            )
+        return {"retrieved_at": self.retrieved_at, "version": version, "record": rows}
 
 
 # --- Public source access (uibcdf/sabueso#49) -----------------------------------------

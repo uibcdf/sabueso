@@ -361,3 +361,92 @@ def test_ids_that_reach_two_terms_are_a_conflict_never_a_choice():
     (conflict,) = view["ungrouped"]
     assert conflict["reason"] == "conflicting_identity"
     assert set(conflict["terms"]) == {"MONDO:0000001", "MONDO:0000002"}
+
+
+# --- From a disease to its targets and its drugs (#90; #82, point 2) ------------------
+
+
+def _targets(mondo, **options):
+    import warnings
+
+    from sabueso.resolver import EntityResolver, FixtureUniProtClient
+    from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
+    from sabueso.tools.db.orphadata import FixtureOrphadataClient
+
+    options = {
+        "resolver": EntityResolver(FixtureUniProtClient("temp_data")),
+        "open_targets_client": FixtureOpenTargetsClient("temp_data"),
+        "orphadata_client": FixtureOrphadataClient("temp_data"),
+        "mondo_client": mondo,
+        **options,
+    }
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")  # the saved Open Targets rows are a cut
+        return sabueso.disease_targets("ORPHA:868", **options)
+
+
+def test_a_disease_s_targets_with_every_statement_that_brought_them(mondo):
+    deck = _targets(mondo, limit=3)
+    assert deck.meta["kind"] == "disease_targets"
+    assert deck.meta["disease"] == TPI_DEFICIENCY
+    ids = [c.id for c in deck.cards]
+    assert ids[0] == "sabueso:protein:uniprot:P60174"
+    basis = deck.basis(ids[0])
+    assert basis["rule"] == "disease_targets@1"
+    assert {s["source"] for s in basis["statements"]} == {"Open Targets", "Orphanet"}
+    ot = next(s for s in basis["statements"] if s["source"] == "Open Targets")
+    assert (ot["rank"], ot["symbol"], ot["disease"]) == (1, "TPI1", "MONDO:0014221")
+    orpha = next(s for s in basis["statements"] if s["source"] == "Orphanet")
+    assert orpha["association_type"].startswith("Disease-causing")
+
+
+def test_what_the_deck_leaves_out_is_recorded(mondo):
+    deck = _targets(mondo, limit=3)
+    reasons = {e["reason"] for e in deck.meta["excluded"]}
+    # Targets without a saved UniProt entry cannot be built here; past the limit,
+    # candidates are listed, never dropped silently.
+    assert {"limit", "card_not_built"} <= reasons
+    cut = [s for s in deck.meta["sources"] if s["source"] == "Sabueso"]
+    assert cut and cut[0]["truncated"] and cut[0]["count"] == 3
+
+
+def test_a_failing_source_leaves_the_others(mondo):
+    from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
+
+    deck = _targets(
+        mondo,
+        limit=3,
+        open_targets_client=FixtureOpenTargetsClient(
+            "temp_data", failing={"MONDO:0014221"}
+        ),
+    )
+    statuses = {s["source"]: s["status"] for s in deck.meta["sources"]}
+    assert statuses == {"Open Targets": "error", "Orphanet": "added"}
+    assert [c.id for c in deck.cards] == ["sabueso:protein:uniprot:P60174"]
+
+
+def test_a_disease_that_does_not_resolve_is_refused(mondo):
+    from sabueso.core.errors import ResolverError
+
+    with pytest.raises(ResolverError, match="no_stated_equivalence"):
+        sabueso.disease_targets("doid:9999999", mondo_client=mondo)
+
+
+def test_the_drugs_whose_indications_name_the_disease(mondo):
+    from sabueso.tools.db.chembl import FixtureChEMBLClient
+    from sabueso.tools.db.pdb_ccd import FixtureCCDClient
+    from sabueso.tools.db.unichem import FixtureUniChemClient
+
+    deck = sabueso.disease_drugs(
+        "mesh:D014355",  # Chagas disease, through MONDO's stated equivalence
+        chembl_client=FixtureChEMBLClient("temp_data"),
+        ccd_client=FixtureCCDClient("temp_data"),
+        unichem_client=FixtureUniChemClient("temp_data"),
+        mondo_client=mondo,
+    )
+    assert deck.meta["disease"] == "sabueso:disease:mondo:MONDO:0001444"
+    (drug,) = deck.cards  # benznidazole
+    basis = deck.basis(drug.id)
+    assert basis["rule"] == "disease_drugs@1"
+    assert {i["max_phase_for_ind"] for i in basis["indications"]} == {"4.0"}
+    assert {i["molecule_chembl_id"] for i in basis["indications"]} == {"CHEMBL110"}

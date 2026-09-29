@@ -28,9 +28,12 @@ shows how to use them.
   - For diseases: `mondo_client`.
   - An option the tool does not take is refused, never ignored.
 - `sabueso.resolve_protein_card`, `sabueso.resolve_molecule_card`: the card tools behind
-  `resolve`; diseases through `sabueso.tools.card.disease.resolve_disease_card` (#90).
+  `resolve`; diseases through `sabueso.resolve_disease_card` (#90).
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
   Deck.
+- `sabueso.resolve_disease_card(identifier)`, `sabueso.disease_targets(disease,
+  limit=50)` and `sabueso.disease_drugs(disease, limit=50)`: a disease card, and decks
+  of its targets and of the drugs whose indications name it (#90).
 - `sabueso.ligand_deck(protein_card, ...)`: the small-molecule cards of a protein's
   ligands and measured molecules.
 

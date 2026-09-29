@@ -1,0 +1,4000 @@
+{
+ "record": {
+  "count": 252,
+  "disease": {
+   "id": "MONDO_0014221",
+   "name": "triosephosphate isomerase deficiency"
+  },
+  "rows": [
+   {
+    "datatypeScores": [
+     {
+      "id": "literature",
+      "score": 0.1862065668738581
+     },
+     {
+      "id": "genetic_association",
+      "score": 0.8869039943327759
+     },
+     {
+      "id": "genetic_literature",
+      "score": 0.7295169571339454
+     }
+    ],
+    "score": 0.7826557233644024,
+    "target": {
+     "approvedSymbol": "TPI1",
+     "id": "ENSG00000111669",
+     "proteinIds": [
+      {
+       "id": "P60174",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "U3KPS5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "U3KPZ0",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "U3KQF3",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "V9HWK1",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000229270",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000379933",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000443599",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000475184",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000475364",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000475620",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000475829",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000484435",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000524223",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000524224",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000524225",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000524226",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000524227",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000524228",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000604819",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000604820",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000604821",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000618689",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000618690",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000667743",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000667745",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000667746",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000667748",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000714565",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000714566",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000714572",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000714577",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000714582",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000714585",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746804",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746805",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746807",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746810",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746811",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746812",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746813",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746814",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746817",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746824",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746828",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746832",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746834",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746839",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746841",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770153",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770154",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770155",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770156",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770157",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770158",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770159",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770160",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770161",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770162",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770163",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770164",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770165",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770166",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770167",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770168",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770169",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000770170",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000794325",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "B7Z5D8",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "D3DUS9",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "P00938",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q6FHP9",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q6IS07",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8WWD0",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q96AG5",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.5422562530762034
+     }
+    ],
+    "score": 0.06593085528850108,
+    "target": {
+     "approvedSymbol": "SCN8A",
+     "id": "ENSG00000196876",
+     "proteinIds": [
+      {
+       "id": "Q9UQD0",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "A0A1B0GVD4",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A1B0GVM8",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A1W2PQI5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A590UJP2",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A590UK43",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A590UK68",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "F8W0Q0",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000346534",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000347255",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000440360",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000447567",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000476447",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000486828",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000487583",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000490470",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000490580",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000492157",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000499511",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000499636",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000499691",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000499724",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "B9VWG8",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "O95788",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9NYX2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9UPB2",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.5169668216941762
+     }
+    ],
+    "score": 0.06285601045025704,
+    "target": {
+     "approvedSymbol": "SCN4A",
+     "id": "ENSG00000007314",
+     "proteinIds": [
+      {
+       "id": "P35499",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "ENSP00000396320",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "Q15478",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q16447",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q7Z6B1",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.4945251544438703
+     }
+    ],
+    "score": 0.06012741431601444,
+    "target": {
+     "approvedSymbol": "MYH6",
+     "id": "ENSG00000197616",
+     "proteinIds": [
+      {
+       "id": "P13533",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "ENSP00000386041",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638309",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638310",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638311",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638312",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638313",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638314",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638315",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638316",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638317",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638318",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638319",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638320",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638321",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638322",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638323",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638324",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638325",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638326",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638327",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638328",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638329",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638330",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638331",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638332",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638333",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638334",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638335",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638336",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638337",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638338",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638339",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638340",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638341",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638342",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638343",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638344",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638345",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638346",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638347",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638348",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000638349",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708021",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708023",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708026",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708029",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708031",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708033",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708046",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708047",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708051",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708056",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708058",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708062",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708067",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708071",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708086",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000708122",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000812361",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "A2RTX1",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "D9YZU2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q13943",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q14906",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q14907",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.4801661191844037
+     }
+    ],
+    "score": 0.058381554364370244,
+    "target": {
+     "approvedSymbol": "MYBPC3",
+     "id": "ENSG00000134571",
+     "proteinIds": [
+      {
+       "id": "Q14896",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "A8MXZ9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "F5GZR4",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000382193",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000442795",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000444259",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "A5PL00",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q16410",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q6R2F7",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9UE27",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9UM53",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.476621477643896
+     }
+    ],
+    "score": 0.057950575012576624,
+    "target": {
+     "approvedSymbol": "DMD",
+     "id": "ENSG00000198947",
+     "proteinIds": [
+      {
+       "id": "P11532",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "A0A087WTU7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WV90",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A0B4J1W6",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A0C4DH61",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A0S2Z3B2",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A0S2Z3B5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A0S2Z3J7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A5H1ZRP7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A5H1ZRP8",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A5H1ZRP9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A5H1ZRQ1",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A5H1ZRQ8",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A5H1ZRR9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0T8I2",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0TA90",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0TAD9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0TAM6",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0TAW7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0TAX0",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0TB71",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0TBK1",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0Z447",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0Z4M9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0Z4P7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0Z4Q6",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A804HIY5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A804HJY0",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A804HKR4",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A804HKY9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A804HKZ5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A804HL39",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "B4DSV7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "H0Y304",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "H0Y3E8",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "H0Y864",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "Q14172",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "Q14174",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "Q4G0X0",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000288447",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000340057",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000350765",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000352894",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000354464",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000354923",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000367948",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000367951",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000367974",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000367977",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000367979",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000367997",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000388559",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000395904",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000399897",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000417075",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000417123",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000417725",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000444119",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000478150",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000479270",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000505124",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000505164",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000505228",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000506066",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000506135",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000506257",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000506310",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000506359",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000506386",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000506462",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000506629",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000506634",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000506689",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000506709",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000507277",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000507640",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000507690",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000508037",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000508124",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000508133",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000508187",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000696302",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000696303",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000779758",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000808988",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "A0A075B6G3",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "A1L0U9",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "E7EQR9",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "E7EQS5",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "E7ESB2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "E9PDN1",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "E9PDN5",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "F5GZY3",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "F8VX32",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q02295",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q14169",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q14170",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q5JYU0",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q6NSJ9",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q7KZ48",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8N754",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9UCW3",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9UCW4",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.46370869256821456
+     }
+    ],
+    "score": 0.05638055906648733,
+    "target": {
+     "approvedSymbol": "GAA",
+     "id": "ENSG00000171298",
+     "proteinIds": [
+      {
+       "id": "P10253",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "A0AAQ5BHD3",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0AAQ5BHE1",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0AAQ5BHE2",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0AAQ5BHE5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0AAQ5BHG9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "I3L0S5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "I3L2V9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "I3L3L3",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000305692",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000374665",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000458306",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000459972",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000460543",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000519344",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000519345",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000519346",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000519347",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000519348",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000519351",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000519352",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000603463",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000603464",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000603465",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000615546",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000615547",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000689808",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000783421",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "Q09GN4",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q14351",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q16302",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8IWE7",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.45726008041782806
+     }
+    ],
+    "score": 0.05559649708087285,
+    "target": {
+     "approvedSymbol": "DES",
+     "id": "ENSG00000175084",
+     "proteinIds": [
+      {
+       "id": "P17661",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "Q53SB5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000363071",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539048",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539049",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539050",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539051",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539052",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539053",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539054",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539055",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539056",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539057",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539058",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539059",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539060",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000539061",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612950",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612951",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612952",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612953",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612954",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612955",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612956",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612957",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612958",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612959",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612960",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612961",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612962",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612963",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612964",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000612965",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000651376",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000651380",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000651382",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000651383",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717792",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717796",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717799",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717806",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717807",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717808",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717823",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717828",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717839",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717841",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717845",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717848",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717853",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717856",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717884",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717886",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717896",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000717925",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000784580",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000793979",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000793980",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000793981",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000793982",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000793983",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000793984",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000793985",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000793986",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000793987",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000793988",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000810324",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "Q15787",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q549R7",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q549R8",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q549R9",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8IZR1",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8IZR6",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8NES2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8NEU6",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8TAC4",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8TCX2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8TD99",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9UHN5",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9UJ80",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.4503162948475082
+     }
+    ],
+    "score": 0.054752228860831115,
+    "target": {
+     "approvedSymbol": "SGCD",
+     "id": "ENSG00000170624",
+     "proteinIds": [
+      {
+       "id": "Q92629",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "E5RI34",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000338343",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000403003",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000429378",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000430794",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000629841",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000629842",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000629843",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000629844",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000629845",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000629846",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000691297",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000691298",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000762060",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000762061",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000794108",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000807728",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "A8K9S9",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q53XA5",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q99644",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.44937653065683825
+     }
+    ],
+    "score": 0.05463796654203096,
+    "target": {
+     "approvedSymbol": "DST",
+     "id": "ENSG00000151914",
+     "proteinIds": [
+      {
+       "id": "Q03001",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "A0A0U1RQJ2",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A494C073",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A494C1D7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A494C1U5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A7P0T890",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "E7ERX3",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "E7ETB9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "E9PHM6",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "F6QMI7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "F8W9J4",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "H0YAT7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "H0YBX0",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "H0YC65",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "H0YC82",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "Q5T0V7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "Q6P0N6",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000244364",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000307959",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000354508",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000359801",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000359824",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000393082",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000400883",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000404924",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000428068",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000429221",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000430472",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000431003",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000431020",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000431030",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000431121",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000489032",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000489111",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000498389",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000498983",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000499198",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000505098",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000815352",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "B7Z3H1",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "E7ERU0",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "O94833",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q12825",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q13266",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q13267",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q13775",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q5TBT0",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q5TBT2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q5TF23",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q5TF24",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8N1T8",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8N8J3",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8WXK8",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8WXK9",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q96AK9",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q96DQ5",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q96J76",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q96QT5",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9H555",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9UGD7",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9UGD8",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9UN10",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.40686288748729027
+     }
+    ],
+    "score": 0.04946889594174313,
+    "target": {
+     "approvedSymbol": "LAMA2",
+     "id": "ENSG00000196569",
+     "proteinIds": [
+      {
+       "id": "P24043",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "A0A087WX80",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WYF1",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A8I5KQG5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A8I5KYA2",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000400365",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000480802",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000481744",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000508458",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000509691",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000510533",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000510626",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000676048",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000688729",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000779534",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000779535",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000783204",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000789667",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000797225",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000812821",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "Q14736",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q5VUM2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q93022",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.40594579010516
+     }
+    ],
+    "score": 0.04935738959314193,
+    "target": {
+     "approvedSymbol": "ANK1",
+     "id": "ENSG00000029534",
+     "proteinIds": [
+      {
+       "id": "P16157",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "A0A2R8Y4B0",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A994J4W8",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A994J7F8",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "C9JN86",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "H0YAY8",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "H0YBS0",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "Q6PK32",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000265709",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000289734",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000297744",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000319123",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000335031",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000339620",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000428315",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000428750",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000430174",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000430368",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000493840",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000516136",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000516137",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000801161",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "A0PJN8",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "A6NJ23",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "E5RFL7",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "O43400",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q13768",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q53ER1",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q59FP2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8N604",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q99407",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.3996604611365199
+     }
+    ],
+    "score": 0.04859318058251057,
+    "target": {
+     "approvedSymbol": "GARS1",
+     "id": "ENSG00000106105",
+     "proteinIds": [
+      {
+       "id": "P41250",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "A0A6Q8PF45",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PFN0",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PFU7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PFV5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PFZ6",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PGA8",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PGI6",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PGN7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PGT3",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PGW4",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PGZ8",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PGZ9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PH49",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PHH9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A6Q8PHI7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "F8WCK4",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "H7C443",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000373918",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000392677",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000415447",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000501636",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000501655",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000501884",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000501980",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000501986",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502033",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502174",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502296",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502373",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502408",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502451",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502464",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502513",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502571",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502681",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502743",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502799",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000502814",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000537405",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000537406",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000594953",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000624916",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000649623",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000725168",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000745335",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "A0A090N8G0",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "B3KQA2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "B4DIA0",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q969Y1",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.39136389444578124
+     }
+    ],
+    "score": 0.04758443290136282,
+    "target": {
+     "approvedSymbol": "NEXN",
+     "id": "ENSG00000162614",
+     "proteinIds": [
+      {
+       "id": "Q0ZGT2",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "E7ETM8",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "E7EUA0",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "H7BXY5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000327363",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000333938",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000343928",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000383814",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000411902",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000521102",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000572326",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000572327",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000572328",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000597483",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000621211",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000669691",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000690184",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000690185",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000690187",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000690188",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000774364",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000776383",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000783081",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000783082",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000783083",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000792885",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000799819",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000799820",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000807467",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "A0PJ84",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "B4DPZ7",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q0D2H2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q14CC2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q14CC3",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q16081",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q7Z2X0",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q96DL0",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9Y2V1",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.38928848625060153
+     }
+    ],
+    "score": 0.04733209198946975,
+    "target": {
+     "approvedSymbol": "XIRP1",
+     "id": "ENSG00000168334",
+     "proteinIds": [
+      {
+       "id": "Q702N8",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "ENSP00000343140",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000379550",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000391645",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000554528",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000628198",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000808044",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "A0JP25",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "A4QPE2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q68DF2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q6ZTR3",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q702N9",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8IVN7",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8N1N3",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8N904",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8TCG7",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.3891820983610195
+     }
+    ],
+    "score": 0.047319156694555796,
+    "target": {
+     "approvedSymbol": "TBCE",
+     "id": "ENSG00000284770",
+     "proteinIds": [
+      {
+       "id": "Q15813",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "A0A2R8Y3S1",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y4E7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y4P2",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y4V6",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y597",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y5H6",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y5Q8",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y6G3",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y6L2",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y6Q1",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y720",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y784",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y787",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y7E7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y7H8",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y809",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8Y897",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8YER9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8YFG9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8YFM3",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8YH53",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2R8YHI9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A2U3TZJ6",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000355560",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000384571",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000439170",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000493539",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000493552",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000493737",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000493806",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000494026",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000494102",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000494208",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000494232",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000494291",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000494541",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000494646",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000494755",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000494796",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000494801",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000494980",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495007",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495024",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495125",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495257",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495295",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495319",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495425",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495475",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495738",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495831",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495910",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495916",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495928",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495953",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000495964",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000496033",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000496103",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000496322",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000496408",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000496612",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000496773",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000498645",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000553509",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000553510",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000553511",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000590644",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000590645",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000590646",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000590647",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000590648",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000624672",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000645172",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000645173",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000645174",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000645175",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000718600",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000718601",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000718602",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000745726",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000745727",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000745728",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000745729",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000745730",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000745731",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000745732",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000764344",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000777396",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000801140",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "A8K8C2",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "B7Z3P1",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.38899971912173603
+     }
+    ],
+    "score": 0.047296981903274714,
+    "target": {
+     "approvedSymbol": "TARDBP",
+     "id": "ENSG00000120948",
+     "proteinIds": [
+      {
+       "id": "Q13148",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "A0A087WTG4",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WTZ4",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WV68",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WVX6",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WW61",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WX29",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WX67",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WXQ5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WXV3",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WYE7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WYY0",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WZC9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087WZM1",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A087X260",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A0A0MSV7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A0A0N0M3",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "B1AKP7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "G3V162",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "K7EJ99",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "K7EJM5",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "K7EL26",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "K7EN94",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "K7ENM9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000240185",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000313129",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000404666",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000432132",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000465080",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000465240",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000465888",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000466842",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000467020",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000477852",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000478249",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000479219",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000479758",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000479978",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000480398",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000480690",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000480771",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000481206",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000481330",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000481737",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000481867",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000482191",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000482559",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000482754",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000484722",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000486989",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000491203",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000492196",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000497327",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000551750",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000583633",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000583634",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000583635",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000583636",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000628749",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000628750",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000752598",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000752599",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000764613",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000764614",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000764615",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000789507",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000796898",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000796899",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000802231",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "A4GUK4",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "A4GUK5",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "A4GUK6",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "B2R629",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "B4DJ45",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "E2PU12",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q53H27",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q6FI92",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q96DJ0",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.3874106555646457
+     }
+    ],
+    "score": 0.04710377376813122,
+    "target": {
+     "approvedSymbol": "CNTNAP1",
+     "id": "ENSG00000108797",
+     "proteinIds": [
+      {
+       "id": "P78357",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "K7EMM9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000264638",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000466571",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000777145",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000803633",
+       "source": "ensembl_PRO"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.3843794450598877
+     }
+    ],
+    "score": 0.04673522052415396,
+    "target": {
+     "approvedSymbol": "NEMF",
+     "id": "ENSG00000165525",
+     "proteinIds": [
+      {
+       "id": "O60524",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "G3V4D9",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "G3V547",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "G3V5V3",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000298310",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000451740",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000452174",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000452540",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000595662",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000595663",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000613781",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000678252",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000678253",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000678254",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000678255",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000678256",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000678257",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000678258",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000678259",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000678261",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000713709",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000713710",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000713711",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000713712",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000748006",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000748007",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000748008",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000748011",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000775057",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000775058",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000805264",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "A0JLQ3",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "B3KSK1",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "B4DDL3",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "B4DHA9",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "B4E3F3",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q32Q66",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q8WW70",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9NWG1",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   },
+   {
+    "datatypeScores": [
+     {
+      "id": "animal_model",
+      "score": 0.38176534263015777
+     }
+    ],
+    "score": 0.046417381849125125,
+    "target": {
+     "approvedSymbol": "MYH10",
+     "id": "ENSG00000133026",
+     "proteinIds": [
+      {
+       "id": "P35580",
+       "source": "uniprot_swissprot"
+      },
+      {
+       "id": "A0A8I5KSC2",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A8I5KTT7",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "A0A8I5KZ38",
+       "source": "uniprot_trembl"
+      },
+      {
+       "id": "ENSP00000269243",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000353590",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000369315",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000508862",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000509091",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000509241",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000509695",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000509748",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000509831",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000510471",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000510761",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586103",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586104",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586105",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586106",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586107",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586108",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586109",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586110",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586111",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586112",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586113",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586114",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586115",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586116",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586117",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586118",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586119",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586120",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586121",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586122",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586123",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000586124",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000625242",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000625243",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000625244",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000703712",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000703714",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000703715",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000703716",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000703717",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000703719",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000703721",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000703722",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000703724",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000703725",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746910",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000746911",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000785767",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000785768",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000785769",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000799964",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "ENSP00000808829",
+       "source": "ensembl_PRO"
+      },
+      {
+       "id": "B2RWP9",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "D3DTS1",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "F8VTL3",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q12989",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q149N3",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q149N4",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q16087",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q4LE45",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q6PK16",
+       "source": "uniprot_obsolete"
+      },
+      {
+       "id": "Q9BWG0",
+       "source": "uniprot_obsolete"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "version": "26.09"
+}

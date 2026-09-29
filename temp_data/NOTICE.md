@@ -40,6 +40,7 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | `chembl/*.json`, `CHEMBL90555.json` | ChEMBL (EMBL-EBI); CHEMBL90555 added to `chembl/molecules.json` 2026-09-24; `chembl/indications.json` (benznidazole, CHEMBL110) added 2026-09-28 | ChEMBL_37 (released 2026-05-01) | 2026-09-23 | **CC BY-SA 3.0** |
 | `diseases/*.tsv`, `diseases/versions.json` | DISEASES (Jensen lab), the filtered rows of HsTIM's Ensembl protein ENSP00000229270 per channel | files of 2026-09-18 (knowledge, experiments) and 2026-09-20 (text mining) | 2026-09-28 | CC BY 4.0 |
 | `open_targets/ENSG00000111669.json` | Open Targets Platform, HsTIM's gene (TPI1): its target record and first 20 of 483 associated diseases | data 26.09 | 2026-09-28 | CC0 1.0 |
+| `open_targets/diseases/MONDO_0014221.json` | Open Targets Platform, triosephosphate isomerase deficiency: its first 20 of 252 associated targets, in Open Targets' order | data 26.09 | 2026-09-29 | CC0 1.0 |
 | `orphadata/en_product6.xml` | Orphadata Science (Orphanet, INSERM), the disorders naming HsTIM (P60174); "Orphadata Science: Free access data from Orphanet. © INSERM 1999." | file of 2026-06-23 | 2026-09-28 | CC BY 4.0 |
 | `reactome/P60174.json` | Reactome, HsTIM's pathways, reactions and pathway ancestors | release 97 | 2026-09-28 | CC0 1.0 |
 | `clinvar/7167.json` | ClinVar (NCBI), 21 of the 249 variation summaries of TPI1 (GeneID 7167), chosen to cover each kind of record | Build260924-0125.1 | 2026-09-29 | Freely available; credit ClinVar |

@@ -379,6 +379,59 @@ class OnlineChEMBLClient:
             "missing": [i for i in ids if i not in found],
         }
 
+    def indications_for(self, disease_ids: Iterable[str]) -> Dict[str, Any]:
+        """Indications naming a disease, by the ids ChEMBL states for it (#90):
+        ``EFO:…``/``MONDO:…`` (``efo_id``) or ``MESH:D…`` (``mesh_id``). Returns
+        ``{version, retrieved_at, indications: {molecule: [indication, ...]}}``."""
+        ids = sorted({i for i in disease_ids if i})
+        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        found: Dict[str, List[Dict[str, Any]]] = {}
+        filters = {
+            "efo_id__in": [i for i in ids if not i.upper().startswith("MESH:")],
+            "mesh_id__in": [
+                i.split(":", 1)[1] for i in ids if i.upper().startswith("MESH:")
+            ],
+        }
+        seen = set()
+        for name, values in filters.items():
+            if not values:
+                continue
+            offset = 0
+            while True:
+                page = _chembl_get(
+                    "drug_indication.json",
+                    {
+                        name: ",".join(values),
+                        "order_by": "drugind_id",
+                        "limit": PAGE_SIZE,
+                        "offset": offset,
+                    },
+                    self.timeout,
+                )
+                records = page.get("drug_indications") or []
+                for record in records:
+                    if record.get("drugind_id") in seen:
+                        continue
+                    seen.add(record.get("drugind_id"))
+                    found.setdefault(record["molecule_chembl_id"], []).append(
+                        _keep(record, INDICATION_FIELDS)
+                    )
+                offset += len(records)
+                if not records or not (page.get("page_meta") or {}).get("next"):
+                    break
+        return {
+            "version": self.version(),
+            "retrieved_at": retrieved_at,
+            "indications": found,
+        }
+
+
+def _names_disease(indication: Dict[str, Any], ids: Iterable[str]) -> bool:
+    wanted = {i.upper() for i in ids}
+    efo = str(indication.get("efo_id") or "").upper()
+    mesh = str(indication.get("mesh_id") or "")
+    return efo in wanted or (mesh and f"MESH:{mesh}".upper() in wanted)
+
 
 class FixtureChEMBLClient:
     def __init__(
@@ -485,6 +538,29 @@ class FixtureChEMBLClient:
             "retrieved_at": self.retrieved_at,
             "indications": found,
             "missing": [i for i in ids if i not in found],
+        }
+
+    def indications_for(self, disease_ids: Iterable[str]) -> Dict[str, Any]:
+        ids = sorted({i for i in disease_ids if i})
+        if self.failing & set(ids):
+            raise ConnectorError(
+                f"ChEMBL indication request for {ids} failed (simulated)"
+            )
+        path = self.directory / "chembl" / "indications.json"
+        saved = (
+            json.loads(path.read_text(encoding="utf-8"))
+            if path.is_file()
+            else {"version": None, "indications": {}}
+        )
+        found = {}
+        for molecule, indications in sorted(saved["indications"].items()):
+            named = [i for i in indications if _names_disease(i, ids)]
+            if named:
+                found[molecule] = named
+        return {
+            "version": saved.get("version"),
+            "retrieved_at": self.retrieved_at,
+            "indications": found,
         }
 
 

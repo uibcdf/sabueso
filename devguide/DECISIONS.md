@@ -1082,3 +1082,15 @@ uibcdf/sabueso#90, step 1. Card schema 0.3.7.
     stated equivalence. Three conditions are reported as conflicts: ClinVar gives a
     broader Orphanet id next to a subtype's MONDO and OMIM ids. Telling that granularity
     difference apart with MONDO's hierarchy is a possible next rule.
+- **Step 4 (same day): from a disease to its targets and its drugs.**
+  - `disease_targets` (`disease_targets@1`) takes Open Targets' associated targets
+    (asked by the MONDO id, then its EFO equivalents) and Orphanet's genes of the
+    disorder (by its Orphanet equivalents). Each member is a Swiss-Prot product the
+    source states for the gene, and its basis lists every statement that brought it.
+  - `disease_drugs` (`disease_drugs@1`) takes the molecules whose ChEMBL indications
+    name the disease by its MONDO id or its EFO and MeSH equivalents, ordered by
+    ChEMBL's phase.
+  - **A lower default for decks (50).** Enrichments ask for everything up to 5000
+    (#88), but a deck member is a whole card, at least one request: five protein cards
+    took about 50 s live. The cut is recorded (`excluded`, reason `limit`) and
+    reported, and `limit` asks for more.

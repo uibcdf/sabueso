@@ -118,3 +118,334 @@ def resolve_disease_card(
         "decision": decision,
     }
     return card, resolution
+
+
+# --- From a disease to its targets and its drugs (#90; #82, point 2) --------------------
+
+#: Members built by default. Each member is a whole card (one UniProt or ChEMBL request
+#: at least), so a deck asks for fewer than an enrichment does; the cut is recorded in
+#: ``deck.meta`` and reported, and ``limit`` asks for more.
+DEFAULT_DECK_LIMIT = 50
+TARGETS_RULE = "disease_targets@1"
+DRUGS_RULE = "disease_drugs@1"
+
+
+def _disease_card(disease: Any, mondo_client: Any) -> Card:
+    """A disease card, given or resolved; ``ResolverError`` when it does not resolve."""
+    from sabueso.core.errors import ResolverError
+
+    if isinstance(disease, Card):
+        return disease
+    card, resolution = resolve_disease_card(disease, mondo_client=mondo_client)
+    if card is None:
+        raise ResolverError(
+            f"{disease} did not resolve to a disease ({resolution.status}: "
+            f"{', '.join(resolution.decision.get('rules') or [])})."
+        )
+    return card
+
+
+def _ids(card: Card) -> Tuple[str, list]:
+    mondo = (card.get("identifiers.mondo") or {}).get("value")
+    equivalents = (card.get("identifiers.equivalent_ids") or {}).get("value") or []
+    return mondo, list(equivalents)
+
+
+def _deck(cards, meta, sources, subject):
+    from sabueso._private.smonitor.outcomes import report_outcomes
+    from sabueso.core.deck import Deck
+
+    report_outcomes(sources, subject=subject)
+    return Deck(cards, meta=meta)
+
+
+@arg_digest()
+def disease_targets(
+    disease: Any,
+    limit: int = DEFAULT_DECK_LIMIT,
+    resolver: Any | None = None,
+    open_targets_client: Any | None = None,
+    orphadata_client: Any | None = None,
+    mondo_client: Any | None = None,
+    skip_digestion: bool = False,
+) -> Any:
+    """Deck of the protein cards of a disease's targets (rule ``disease_targets@1``).
+
+    ``disease`` is a disease card or any id ``resolve_disease_card`` takes. The targets
+    are those the sources state, through the disease's MONDO id and the ids MONDO states
+    are the same disease:
+
+    - Open Targets' associated targets (by the MONDO id, then its EFO equivalents): each
+      gene's Swiss-Prot products, with the overall score as stated;
+    - Orphanet's genes of the disorder (by its Orphanet equivalents), with the
+      association type and status, through the UniProt accession Orphanet states.
+
+    Each member's ``basis`` lists every source statement that brought it. A gene with
+    no Swiss-Prot product is excluded (``no_swissprot_product``), and so is anything past
+    ``limit`` (``limit``), in Open Targets' order and then Orphanet's. Every source
+    outcome is in ``deck.meta["sources"]``.
+    """
+    from sabueso.tools.card.protein import resolve_protein_card
+
+    card = _disease_card(disease, mondo_client)
+    mondo, equivalents = _ids(card)
+    candidates: Dict[str, list] = {}
+    excluded = []
+    sources = []
+
+    if open_targets_client is None:
+        from sabueso.tools.db.open_targets import OnlineOpenTargetsClient
+
+        open_targets_client = OnlineOpenTargetsClient()
+    asked = [mondo] + [e for e in equivalents if e.startswith("EFO:")]
+    for disease_id in asked:
+        record = {"source": "Open Targets", "identifier": disease_id}
+        try:
+            response = open_targets_client.targets(disease_id)
+        except RecordNotFoundError as exc:
+            sources.append({**record, "status": "not_found", "detail": str(exc)})
+            continue
+        except ConnectorError as exc:
+            sources.append({**record, "status": "error", "detail": str(exc)})
+            continue
+        rows = response["record"]["rows"]
+        sources.append(
+            {
+                **record,
+                "status": "added" if rows else "not_found",
+                "version": response.get("version"),
+                "count": len(rows),
+                "total_count": response["record"].get("count"),
+                "truncated": (response["record"].get("count") or 0) > len(rows),
+            }
+        )
+        for rank, row in enumerate(rows, 1):
+            target = row.get("target") or {}
+            swissprot = sorted(
+                p["id"]
+                for p in target.get("proteinIds") or []
+                if p.get("source") == "uniprot_swissprot"
+            )
+            if not swissprot:
+                excluded.append(
+                    {
+                        "candidate": f"ensembl:{target.get('id')}",
+                        "reason": "no_swissprot_product",
+                        "by": "Open Targets",
+                    }
+                )
+            for accession in swissprot:
+                candidates.setdefault(accession, []).append(
+                    {
+                        "source": "Open Targets",
+                        "disease": disease_id,
+                        "gene": f"ensembl:{target.get('id')}",
+                        "symbol": target.get("approvedSymbol"),
+                        "score": row.get("score"),
+                        "rank": rank,
+                        "version": response.get("version"),
+                    }
+                )
+        break  # the first id Open Targets holds answers for the disease
+
+    if orphadata_client is None:
+        from sabueso.tools.db.orphadata import OnlineOrphadataClient
+
+        orphadata_client = OnlineOrphadataClient()
+    for code in [e for e in equivalents if e.startswith("Orphanet:")]:
+        record = {"source": "Orphanet", "identifier": code}
+        try:
+            response = orphadata_client.genes(code.split(":", 1)[1])
+        except RecordNotFoundError as exc:
+            sources.append({**record, "status": "not_found", "detail": str(exc)})
+            continue
+        except ConnectorError as exc:
+            sources.append({**record, "status": "error", "detail": str(exc)})
+            continue
+        sources.append(
+            {
+                **record,
+                "status": "added",
+                "version": response.get("version"),
+                "count": len(response["record"]),
+            }
+        )
+        for row in response["record"]:
+            candidates.setdefault(row["uniprot"], []).append(
+                {
+                    "source": "Orphanet",
+                    "disease": code,
+                    "gene": row.get("gene_symbol"),
+                    "association_type": row.get("association_type"),
+                    "association_status": row.get("association_status"),
+                    "version": response.get("version"),
+                }
+            )
+
+    ordered = sorted(
+        candidates,
+        key=lambda a: (
+            min(
+                (b["rank"] for b in candidates[a] if "rank" in b),
+                default=len(candidates) + 1,
+            ),
+            a,
+        ),
+    )
+    cards, membership = [], {}
+    for accession in ordered[:limit]:
+        try:
+            protein, _ = resolve_protein_card(accession, resolver=resolver)
+        except ConnectorError as exc:
+            excluded.append(
+                {
+                    "candidate": f"uniprot:{accession}",
+                    "reason": f"card_not_built: {exc}",
+                }
+            )
+            continue
+        if protein is None:
+            excluded.append(
+                {"candidate": f"uniprot:{accession}", "reason": "card_not_built"}
+            )
+            continue
+        cards.append(protein)
+        membership[protein.id] = {
+            "target_of": card.id,
+            "rule": TARGETS_RULE,
+            "statements": candidates[accession],
+        }
+    excluded += [
+        {"candidate": f"uniprot:{a}", "reason": "limit"} for a in ordered[limit:]
+    ]
+    if len(ordered) > limit:
+        sources.append(
+            {
+                "source": "Sabueso",
+                "data": "disease_targets",
+                "status": "added",
+                "count": limit,
+                "total_count": len(ordered),
+                "truncated": True,
+            }
+        )
+    return _deck(
+        cards,
+        {
+            "kind": "disease_targets",
+            "disease": card.id,
+            "rule": TARGETS_RULE,
+            "membership": membership,
+            "excluded": excluded,
+            "sources": sources,
+            "limit": limit,
+        },
+        sources,
+        card.id,
+    )
+
+
+@arg_digest()
+def disease_drugs(
+    disease: Any,
+    limit: int = DEFAULT_DECK_LIMIT,
+    chembl_client: Any | None = None,
+    ccd_client: Any | None = None,
+    unichem_client: Any | None = None,
+    mondo_client: Any | None = None,
+    skip_digestion: bool = False,
+) -> Any:
+    """Deck of the small-molecule cards whose ChEMBL drug indications name a disease
+    (rule ``disease_drugs@1``).
+
+    ChEMBL names an indication's disease by an EFO or MONDO id (``efo_id``) and a MeSH
+    heading. The disease is asked by its MONDO id and by the EFO and MeSH ids MONDO
+    states are the same disease; never by name. Each member's ``basis`` lists the
+    indications that brought it, with ChEMBL's ``max_phase_for_ind``. Molecules are
+    ordered by that phase, highest first; past ``limit`` they are excluded (``limit``).
+    """
+    from sabueso.tools.card.small_molecule import resolve_molecule_card
+
+    card = _disease_card(disease, mondo_client)
+    mondo, equivalents = _ids(card)
+    asked = [mondo] + [e for e in equivalents if e.startswith(("EFO:", "MESH:"))]
+    if chembl_client is None:
+        from sabueso.tools.db.chembl import OnlineChEMBLClient
+
+        chembl_client = OnlineChEMBLClient()
+    record = {"source": "ChEMBL", "data": "drug_indication", "identifier": asked}
+    excluded, cards, membership = [], [], {}
+    try:
+        response = chembl_client.indications_for(asked)
+    except ConnectorError as exc:
+        sources = [{**record, "status": "error", "detail": str(exc)}]
+        return _deck(
+            [],
+            {"kind": "disease_drugs", "disease": card.id, "rule": DRUGS_RULE,
+             "sources": sources},
+            sources,
+            card.id,
+        )  # fmt: skip
+    found = response["indications"]
+    sources = [
+        {
+            **record,
+            "status": "added" if found else "not_found",
+            "version": response.get("version"),
+            "count": len(found),
+        }
+    ]
+
+    def phase(molecule: str) -> float:
+        return max(float(i.get("max_phase_for_ind") or 0) for i in found[molecule])
+
+    ordered = sorted(found, key=lambda m: (-phase(m), m))
+    for molecule in ordered[:limit]:
+        drug, resolution = resolve_molecule_card(
+            f"chembl:{molecule}",
+            chembl_client=chembl_client,
+            ccd_client=ccd_client,
+            unichem_client=unichem_client,
+        )
+        if drug is None:
+            excluded.append(
+                {
+                    "candidate": f"chembl:{molecule}",
+                    "reason": f"card_not_built: {resolution.status}",
+                }
+            )
+            continue
+        cards.append(drug)
+        membership[drug.id] = {
+            "investigated_for": card.id,
+            "rule": DRUGS_RULE,
+            "indications": found[molecule],
+        }
+    excluded += [
+        {"candidate": f"chembl:{m}", "reason": "limit"} for m in ordered[limit:]
+    ]
+    if len(ordered) > limit:
+        sources.append(
+            {
+                "source": "Sabueso",
+                "data": "disease_drugs",
+                "status": "added",
+                "count": limit,
+                "total_count": len(ordered),
+                "truncated": True,
+            }
+        )
+    return _deck(
+        cards,
+        {
+            "kind": "disease_drugs",
+            "disease": card.id,
+            "rule": DRUGS_RULE,
+            "membership": membership,
+            "excluded": excluded,
+            "sources": sources,
+            "limit": limit,
+        },
+        sources,
+        card.id,
+    )

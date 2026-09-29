@@ -11,8 +11,12 @@ lists) and its associated diseases, in Open Targets' own order (overall score), 
 ``limit`` of ``count``. It raises ``RecordNotFoundError`` when Open Targets has no such
 target, and ``ConnectorError`` when it cannot answer.
 
+``targets(disease, limit)`` is the other direction (#90): a disease's associated
+targets, each with its ``proteinIds`` and scores, in Open Targets' order.
+
 ``OnlineOpenTargetsClient`` queries the GraphQL API (no key; CC0 1.0).
-``FixtureOpenTargetsClient`` reads ``<directory>/open_targets/<ENSG>.json``.
+``FixtureOpenTargetsClient`` reads ``<directory>/open_targets/<ENSG>.json`` and
+``<directory>/open_targets/diseases/<MONDO_…>.json``.
 """
 
 from __future__ import annotations
@@ -46,6 +50,27 @@ query($gene: String!, $index: Int!, $size: Int!) {
   meta { dataVersion { year month iteration } }
 }
 """
+#: A disease's associated targets (#82, point 2; #90).
+DISEASE_QUERY = """
+query($disease: String!, $index: Int!, $size: Int!) {
+  disease(efoId: $disease) {
+    id name
+    associatedTargets(page: {index: $index, size: $size}) {
+      count
+      rows {
+        score datatypeScores { id score }
+        target { id approvedSymbol proteinIds { id source } }
+      }
+    }
+  }
+  meta { dataVersion { year month iteration } }
+}
+"""
+
+
+def disease_id(curie: str) -> str:
+    """Open Targets' spelling of a disease id: ``MONDO:0014221`` → ``MONDO_0014221``."""
+    return str(curie).replace(":", "_", 1)
 
 
 def _version(meta: Dict[str, Any]) -> str | None:
@@ -60,8 +85,8 @@ class OnlineOpenTargetsClient:
     def __init__(self, timeout: float = 60.0) -> None:
         self.timeout = timeout
 
-    def _post(self, variables: Dict[str, Any]) -> Dict[str, Any]:
-        body = json.dumps({"query": QUERY, "variables": variables}).encode("utf-8")
+    def _post(self, variables: Dict[str, Any], query: str = QUERY) -> Dict[str, Any]:
+        body = json.dumps({"query": query, "variables": variables}).encode("utf-8")
         request = Request(
             GRAPHQL, data=body, headers={"Content-Type": "application/json"}
         )
@@ -106,6 +131,44 @@ class OnlineOpenTargetsClient:
             },
         }
 
+    def targets(self, disease: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
+        """A disease's associated targets, in Open Targets' order (overall score), at
+        most ``limit`` of ``count``: ``{"retrieved_at", "version", "record":
+        {"disease", "count", "rows"}}``. ``disease`` is a MONDO, EFO… id."""
+        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        rows, index, count, found, version = [], 0, None, None, None
+        while count is None or len(rows) < min(limit, count):
+            data = self._post(
+                {
+                    "disease": disease_id(disease),
+                    "index": index,
+                    "size": min(PAGE_SIZE, limit),
+                },
+                DISEASE_QUERY,
+            )
+            found = data.get("disease")
+            version = _version(data.get("meta"))
+            if found is None:
+                raise RecordNotFoundError(
+                    f"Open Targets has no disease {disease}", version=version
+                )
+            page = found.get("associatedTargets") or {}
+            count = page.get("count") or 0
+            batch = page.get("rows") or []
+            if not batch:
+                break
+            rows.extend(batch)
+            index += 1
+        return {
+            "retrieved_at": retrieved_at,
+            "version": version,
+            "record": {
+                "disease": {k: found[k] for k in ("id", "name")},
+                "count": count,
+                "rows": rows[:limit],
+            },
+        }
+
 
 class FixtureOpenTargetsClient:
     def __init__(
@@ -124,6 +187,23 @@ class FixtureOpenTargetsClient:
         path = self.directory / "open_targets" / f"{gene}.json"
         if not path.is_file():
             raise RecordNotFoundError(f"Open Targets has no target {gene}")
+        saved = json.loads(path.read_text(encoding="utf-8"))
+        return {
+            "retrieved_at": self.retrieved_at,
+            "version": saved.get("version"),
+            "record": {**saved["record"], "rows": saved["record"]["rows"][:limit]},
+        }
+
+    def targets(self, disease: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
+        """Reads ``<directory>/open_targets/diseases/<MONDO_…>.json``."""
+        key = disease_id(disease)
+        if disease in self.failing or key in self.failing:
+            raise ConnectorError(
+                f"Open Targets request for {disease} failed (simulated)"
+            )
+        path = self.directory / "open_targets" / "diseases" / f"{key}.json"
+        if not path.is_file():
+            raise RecordNotFoundError(f"Open Targets has no disease {disease}")
         saved = json.loads(path.read_text(encoding="utf-8"))
         return {
             "retrieved_at": self.retrieved_at,
