@@ -1,0 +1,22 @@
+{
+  "format": 1,
+  "note": "Named, versioned option sets for sabueso.resolve (uibcdf/sabueso#45). A profile never changes once published: change it by adding a new version.",
+  "profiles": {
+    "identity@1": {
+      "description": "Identity and annotations only: the entry of the entity, no enrichment.",
+      "protein": {},
+      "small_molecule": {"unichem": true}
+    },
+    "structural_baseline@1": {
+      "description": "A structural and chemical knowledge baseline: every experimental structure with RCSB details, interface residues, ligand sites and family sites, and ChEMBL bioactivities.",
+      "protein": {
+        "structures": "all",
+        "interfaces": true,
+        "ligand_sites": true,
+        "family_sites": true,
+        "chembl": {}
+      },
+      "small_molecule": {"unichem": true}
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from sabueso.core.quantities import LENGTH_UNIT, quantity_node
 from sabueso.core.relationship_store import make_relationship
@@ -32,7 +32,118 @@ _FEATURES = {
     "Disulfide bond": "features_positional.disulfide_bond",
     "Natural variant": "features_positional.natural_variant",
     "Mutagenesis": "features_positional.mutagenesis",
+    # The segment an isoform replaces or lacks (VAR_SEQ, #80).
+    "Alternative sequence": "features_positional.alternative_sequence",
+    # Secondary structure, as read by UniProt from the PDB entry each segment cites (#80).
+    "Helix": "features_positional.secondary_structure",
+    "Beta strand": "features_positional.secondary_structure",
+    "Turn": "features_positional.secondary_structure",
 }
+_SECONDARY_ELEMENTS = {"Helix": "helix", "Beta strand": "strand", "Turn": "turn"}
+
+
+#: Every field the mapping can state, and the relationships it can give: what a card
+#: built from UniProt knows, or knows UniProt does not state (knowledge states, #56).
+STATED_FIELDS = frozenset(
+    {
+        *_TEXT_COMMENTS.values(),
+        *_FEATURES.values(),
+        "identifiers.uniprot",
+        "identifiers.gene_loci",
+        "names.canonical_name",
+        "names.synonyms",
+        "names.abbreviations",
+        "names.gene_names",
+        "annotations.catalytic_activity",
+        "annotations.subcellular_location",
+        "annotations.disease",
+        "annotations.isoforms",
+        "annotations.alternative_products",
+        "annotations.organism",
+        "annotations.taxon_id",
+        "annotations.lineage",
+        "sequence.primary",
+        "sequence.length",
+        "sequence.molecular_weight",
+        "sequence.checksums",
+    }
+)
+STATED_PREDICATES = frozenset(
+    {
+        "has_structure",
+        "annotated_with",
+        "classified_in",
+        "interacts_with",
+        "described_in",
+    }
+)
+
+
+def _names(
+    description: Dict[str, Any], canonical: str | None
+) -> Tuple[List[tuple], List[tuple]]:
+    """Synonyms and abbreviations, as ``(item, eco)`` pairs, from a protein description.
+
+    - Synonyms (``{name, kind}``): the alternative names (``alternative_name``), and the
+      submitter's names beyond the one taken as canonical (``submission_name``).
+    - Abbreviations (``{name, of}``): the short names of the recommended and the
+      alternative names, with the full name each shortens.
+    Names are kept as UniProt states them; a name repeated with another case is kept
+    once.
+    """
+    synonyms: List[tuple] = []
+    abbreviations: List[tuple] = []
+    seen = {(canonical or "").casefold()}
+    short_seen: set = set()
+
+    def short_names(entry: Dict[str, Any]) -> None:
+        full = get_in(entry, ["fullName", "value"])
+        for short in entry.get("shortNames") or []:
+            value = short.get("value")
+            if value and value.casefold() not in short_seen:
+                short_seen.add(value.casefold())
+                item = {"name": value, "of": full} if full else {"name": value}
+                abbreviations.append((item, _eco(short.get("evidences"))))
+
+    def synonym(entry: Dict[str, Any], kind: str) -> None:
+        full = entry.get("fullName") or {}
+        value = full.get("value")
+        if value and value.casefold() not in seen:
+            seen.add(value.casefold())
+            synonyms.append(
+                ({"name": value, "kind": kind}, _eco(full.get("evidences")))
+            )
+
+    short_names(description.get("recommendedName") or {})
+    for entry in description.get("alternativeNames") or []:
+        synonym(entry, "alternative_name")
+        short_names(entry)
+    for entry in description.get("submissionNames") or []:
+        synonym(entry, "submission_name")
+    return synonyms, abbreviations
+
+
+#: UniProt's kinds of gene names, as ``names.gene_names`` states them.
+_GENE_NAME_KINDS = (
+    ("geneName", "gene_name"),
+    ("synonyms", "synonym"),
+    ("orderedLocusNames", "ordered_locus"),
+    ("orfNames", "orf"),
+)
+
+
+def _gene_names(genes: List[Dict[str, Any]] | None) -> List[tuple]:
+    """``({name, kind, gene}, eco)`` pairs; ``gene`` numbers the gene in the entry (an
+    entry can be encoded by several genes, each with its own synonyms)."""
+    out: List[tuple] = []
+    for index, gene in enumerate(genes or [], start=1):
+        for key, kind in _GENE_NAME_KINDS:
+            entries = gene.get(key)
+            for entry in [entries] if isinstance(entries, dict) else entries or []:
+                if entry and entry.get("value"):
+                    item = {"name": entry["value"], "kind": kind, "gene": index}
+                    out.append((item, _eco(entry.get("evidences"))))
+    return out
 
 
 def _eco(evidences: List[Dict[str, Any]] | None) -> List[Dict[str, str]]:
@@ -49,6 +160,57 @@ def _eco(evidences: List[Dict[str, Any]] | None) -> List[Dict[str, str]]:
             item["id"] = ev["id"]
         out.append(item)
     return out
+
+
+def _isoform(isoform: Dict[str, Any]) -> Dict[str, Any] | None:
+    """One isoform of an ``ALTERNATIVE PRODUCTS`` comment, as stated (#80)."""
+    ids = [i for i in isoform.get("isoformIds") or [] if i]
+    if not ids:
+        return None
+    item: Dict[str, Any] = {"isoform_id": ids[0]}
+    if len(ids) > 1:
+        item["isoform_ids"] = ids
+    name = get_in(isoform, ["name", "value"])
+    if name:
+        item["name"] = name
+    synonyms = [s["value"] for s in isoform.get("synonyms") or [] if s.get("value")]
+    if synonyms:
+        item["synonyms"] = synonyms
+    if isoform.get("isoformSequenceStatus"):
+        item["sequence_status"] = isoform["isoformSequenceStatus"]
+    if isoform.get("sequenceIds"):
+        item["alternative_sequence_ids"] = list(isoform["sequenceIds"])
+    note = " ".join(
+        t["value"] for t in get_in(isoform, ["note", "texts"]) or [] if t.get("value")
+    )
+    if note:
+        item["note"] = note
+    return item
+
+
+def _disease(comment: Dict[str, Any]) -> Dict[str, Any] | None:
+    """A UniProt DISEASE comment as stated: the disease entry, and UniProt's note on how
+    this protein is involved (uibcdf/sabueso#39)."""
+    disease = comment.get("disease") or {}
+    if not disease.get("diseaseId"):
+        return None
+    item: Dict[str, Any] = {"name": disease["diseaseId"]}
+    for key, source_key in (
+        ("accession", "diseaseAccession"),
+        ("acronym", "acronym"),
+        ("description", "description"),
+    ):
+        if disease.get(source_key):
+            item[key] = disease[source_key]
+    xref = disease.get("diseaseCrossReference") or {}
+    if xref.get("database") and xref.get("id"):
+        item["cross_references"] = [{"database": xref["database"], "id": xref["id"]}]
+    notes = [
+        t["value"] for t in get_in(comment, ["note", "texts"]) or [] if t.get("value")
+    ]
+    if notes:
+        item["note"] = " ".join(notes)
+    return item
 
 
 def _reaction(reaction: Dict[str, Any], molecule: str | None) -> Dict[str, Any]:
@@ -93,13 +255,89 @@ _CLASSIFICATIONS = {
     "PANTHER": "panther",
     "PROSITE": "prosite",
     "CDD": "cdd",
+    # Orthology groups, as the database states them (#54). A missing group is "not
+    # stated", never "not an ortholog".
+    "OrthoDB": "orthodb",
+    "eggNOG": "eggnog",
 }
+#: Gene loci in organism databases: identity anchors that tell paralogs apart (#54, #55).
+_GENE_LOCI = {"VEuPathDB", "GeneID"}
 
 _GO_ASPECTS = {
     "C": "cellular_component",
     "F": "molecular_function",
     "P": "biological_process",
 }
+
+
+def publication_ref(citation: Dict[str, Any]) -> str | None:
+    """``pubmed:<id>``, else ``doi:<doi>``, else UniProt's own citation id."""
+    xrefs = {
+        x.get("database"): x.get("id")
+        for x in citation.get("citationCrossReferences") or []
+    }
+    if xrefs.get("PubMed"):
+        return f"pubmed:{xrefs['PubMed']}"
+    if xrefs.get("DOI"):
+        return f"doi:{xrefs['DOI']}"
+    if citation.get("id"):
+        return f"uniprot.citation:{citation['id']}"
+    return None
+
+
+def _reference_relationships(
+    uniprot_json: Dict[str, Any], primary: str, retrieved_at: str
+) -> tuple:
+    """The publications a UniProt entry cites, as ``described_in`` relationships
+    (uibcdf/sabueso#41). Qualifiers keep the publication record and what UniProt cites it
+    for (``scope``, e.g. ``HOMODIMERIZATION``); the assertion keeps the reference
+    verbatim. Sequence submissions are kept too, typed as such."""
+    assertions: List[Dict[str, Any]] = []
+    relationships: List[Dict[str, Any]] = []
+    for reference in uniprot_json.get("references") or []:
+        citation = reference.get("citation") or {}
+        object_ref = publication_ref(citation)
+        if object_ref is None:
+            continue
+        xrefs = {
+            x.get("database"): x.get("id")
+            for x in citation.get("citationCrossReferences") or []
+        }
+        assertion = make_source_assertion(
+            "relationships.described_in",
+            {"object_ref": object_ref, "reference": reference},
+            "UniProt",
+            primary,
+            retrieved_at,
+        )
+        assertions.append(assertion)
+        authors = citation.get("authors") or []
+        relationships.append(
+            make_relationship(
+                f"uniprot:{primary}",
+                "described_in",
+                object_ref,
+                qualifiers={
+                    "citation_type": citation.get("citationType"),
+                    "title": citation.get("title"),
+                    "journal": citation.get("journal"),
+                    "year": citation.get("publicationDate"),
+                    "first_author": authors[0] if authors else None,
+                    "n_authors": len(authors),
+                    "pubmed": xrefs.get("PubMed"),
+                    "doi": xrefs.get("DOI"),
+                    "uniprot_citation": citation.get("id"),
+                    "reference_number": reference.get("referenceNumber"),
+                    "scope": reference.get("referencePositions") or [],
+                    "comments": [
+                        {"type": c.get("type"), "value": c.get("value")}
+                        for c in reference.get("referenceComments") or []
+                    ],
+                },
+                source_assertion_ids=[assertion["id"]],
+            )
+        )
+    return assertions, relationships
 
 
 def _knowledge_relationships(
@@ -165,6 +403,16 @@ def _knowledge_relationships(
                     "match_count": int(props["MatchStatus"])
                     if str(props.get("MatchStatus", "")).isdigit()
                     else None,
+                    # eggNOG's taxonomic scope of the group (UniProt spells the key
+                    # "ToxonomicScope").
+                    **(
+                        {
+                            "scope": props.get("ToxonomicScope")
+                            or props.get("TaxonomicScope")
+                        }
+                        if db == "eggNOG"
+                        else {}
+                    ),
                 },
                 eco,
             )
@@ -243,37 +491,69 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         field_source_assertions.setdefault(fp, []).append(assertion["id"])
 
     def assert_list(fp: str, items: List[tuple], target: Dict[str, Any]) -> None:
-        """Record a list-valued field; ``items`` holds ``(value, eco)`` pairs."""
+        """Record a list-valued field; ``items`` holds ``(value, eco)`` pairs, or
+        ``(value, eco, metadata)`` when the statement carries more (e.g. the isoform a
+        comment is restricted to)."""
         if not items:
             return
-        target[fp] = [value for value, _ in items]
-        for value, eco in items:
-            assert_value(fp, value, {"eco": eco} if eco else None)
+        target[fp] = [item[0] for item in items]
+        for value, eco, *extra in items:
+            metadata = {"eco": eco} if eco else {}
+            metadata.update(extra[0] if extra else {})
+            assert_value(fp, value, metadata or None)
 
     # identifiers and names
     if primary:
         fields["identifiers.uniprot"] = primary
         assert_value("identifiers.uniprot", primary)
-    name = get_in(
-        uniprot_json, ["proteinDescription", "recommendedName", "fullName", "value"]
-    )
+    description = uniprot_json.get("proteinDescription") or {}
+    recommended = description.get("recommendedName") or {}
+    name_metadata = None
+    if not recommended.get("fullName") and description.get("submissionNames"):
+        # An unreviewed entry may state only the name its submitter gave.
+        recommended = description["submissionNames"][0]
+        name_metadata = {"uniprot_name": "submission"}
+    name = get_in(recommended, ["fullName", "value"])
     if name:
         fields["names.canonical_name"] = name
-        assert_value("names.canonical_name", name)
+        assert_value("names.canonical_name", name, name_metadata)
+    synonyms, abbreviations = _names(description, name)
+    assert_list("names.synonyms", synonyms, fields)
+    assert_list("names.abbreviations", abbreviations, fields)
+    assert_list("names.gene_names", _gene_names(uniprot_json.get("genes")), fields)
 
     # comments
     comments = uniprot_json.get("comments", []) or []
     text_items: Dict[str, List[tuple]] = {fp: [] for fp in _TEXT_COMMENTS.values()}
     reactions: List[tuple] = []
     locations: List[tuple] = []
+    diseases: List[tuple] = []
+    isoforms: List[tuple] = []
     for c in comments:
         ctype = c.get("commentType")
         if ctype in _TEXT_COMMENTS:
+            # A comment restricted to one isoform or chain keeps that restriction on
+            # its SourceAssertion (#80); the value stays the stated text.
+            molecule = {"molecule": c["molecule"]} if c.get("molecule") else {}
             for t in c.get("texts", []) or []:
                 if t.get("value"):
                     text_items[_TEXT_COMMENTS[ctype]].append(
-                        (t["value"], _eco(t.get("evidences")))
+                        (t["value"], _eco(t.get("evidences")), molecule)
                     )
+        elif ctype == "ALTERNATIVE PRODUCTS":
+            for isoform in c.get("isoforms") or []:
+                item = _isoform(isoform)
+                if item:
+                    isoforms.append((item, None))
+            products = {"events": list(c["events"])} if c.get("events") else {}
+            note = " ".join(
+                t["value"] for t in get_in(c, ["note", "texts"]) or [] if t.get("value")
+            )
+            if note:
+                products["note"] = note
+            if products:
+                fields["annotations.alternative_products"] = products
+                assert_value("annotations.alternative_products", products)
         elif ctype == "CATALYTIC ACTIVITY" and c.get("reaction"):
             reactions.append(
                 (
@@ -281,6 +561,15 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
                     _eco(c["reaction"].get("evidences")),
                 )
             )
+        elif ctype == "DISEASE":
+            item = _disease(c)
+            if item:
+                diseases.append(
+                    (
+                        item,
+                        _eco(get_in(c, ["disease", "evidences"]) or c.get("evidences")),
+                    )
+                )
         elif ctype == "SUBCELLULAR LOCATION":
             for entry in c.get("subcellularLocations", []) or []:
                 item = _subcellular_location(entry, c.get("molecule"))
@@ -294,6 +583,8 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     assert_list("annotations.pathway", text_items["annotations.pathway"], fields)
     assert_list("annotations.subunit", text_items["annotations.subunit"], fields)
     assert_list("annotations.subcellular_location", locations, fields)
+    assert_list("annotations.disease", diseases, fields)
+    assert_list("annotations.isoforms", isoforms, fields)
     for fp in (
         "annotations.tissue_specificity",
         "annotations.ptm",
@@ -301,11 +592,34 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     ):
         assert_list(fp, text_items[fp], fields)
 
-    # organism
+    # organism: the name, the NCBI taxon (strain-level when the entry is), and the
+    # lineage from the root down, the organism itself excluded (#54)
     org_name = get_in(uniprot_json, ["organism", "scientificName"])
     if org_name:
         fields["annotations.organism"] = org_name
         assert_value("annotations.organism", org_name)
+    taxon_id = get_in(uniprot_json, ["organism", "taxonId"])
+    if taxon_id is not None:
+        fields["annotations.taxon_id"] = int(taxon_id)
+        assert_value("annotations.taxon_id", int(taxon_id))
+    lineage = get_in(uniprot_json, ["organism", "lineage"])
+    if lineage:
+        fields["annotations.lineage"] = list(lineage)
+        assert_value("annotations.lineage", list(lineage))
+
+    # gene loci in organism databases (#54)
+    loci = []
+    for xref in uniprot_json.get("uniProtKBCrossReferences", []) or []:
+        if xref.get("database") not in _GENE_LOCI:
+            continue
+        if xref["database"] == "GeneID":
+            locus = {"database": "NCBI Gene", "id": xref["id"]}
+        else:  # VEuPathDB states "<component database>:<gene id>"
+            component, _, gene = xref["id"].partition(":")
+            locus = {"database": component, "id": gene} if gene else None
+        if locus and (locus, None) not in loci:
+            loci.append((locus, None))
+    assert_list("identifiers.gene_loci", loci, fields)
 
     # sequence
     sequence = uniprot_json.get("sequence", {}) or {}
@@ -332,6 +646,11 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
 
     # positional features
     feature_items: Dict[str, List[tuple]] = {fp: [] for fp in _FEATURES.values()}
+    # The isoforms each alternative sequence makes, as the entry lists them (#80).
+    isoforms_of: Dict[str, List[str]] = {}
+    for isoform, _ in isoforms:
+        for vsp in isoform.get("alternative_sequence_ids") or []:
+            isoforms_of.setdefault(vsp, []).append(isoform["isoform_id"])
     for f in uniprot_json.get("features", []) or []:
         fp = _FEATURES.get(f.get("type"))
         if not fp:
@@ -353,17 +672,34 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             },
             "description": f.get("description") or "",
         }
-        # Variants and mutagenesis state a substitution. UniProt may list several
-        # alternative residues for one item; they are kept as stated, not split.
-        substitution = f.get("alternativeSequence") or {}
-        original = substitution.get("originalSequence")
-        alternatives = [a for a in substitution.get("alternativeSequences") or [] if a]
+        # Variants, mutagenesis and alternative sequences state a substitution. UniProt
+        # may list several alternative residues for one item; they are kept as stated,
+        # not split. A stated substitution with no residues is UniProt's "Missing": a
+        # deletion, kept as ``missing`` (#80).
+        substitution = f.get("alternativeSequence")
+        original = (substitution or {}).get("originalSequence")
+        alternatives = [
+            a for a in (substitution or {}).get("alternativeSequences") or [] if a
+        ]
         if original or alternatives:
             item["substitution"] = {
                 k: v
                 for k, v in (("original", original), ("alternatives", alternatives))
                 if v
             }
+        if substitution is not None and not alternatives:
+            item.setdefault("substitution", {})["missing"] = True
+        if f.get("type") in _SECONDARY_ELEMENTS:
+            item["element"] = _SECONDARY_ELEMENTS[f["type"]]
+            structures = [
+                f"pdb:{e['id']}"
+                for e in f.get("evidences") or []
+                if e.get("source") == "PDB" and e.get("id")
+            ]
+            if structures:
+                item["structures"] = structures
+        if isoforms_of.get(f.get("featureId")):
+            item["isoform_ids"] = isoforms_of[f["featureId"]]
         if f.get("featureId"):
             item["feature_id"] = f["featureId"]
         cross_references = [
@@ -382,7 +718,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         if ligand:
             item["ligand"] = ligand
         feature_items[fp].append((item, _eco(f.get("evidences"))))
-    for fp in _FEATURES.values():
+    for fp in feature_items:
         assert_list(fp, feature_items[fp], features)
 
     # experimental structures (PDB cross-references) as has_structure relationships
@@ -419,6 +755,14 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
             )
         )
 
+    # publications the entry cites
+    if primary:
+        extra_assertions, extra_relationships = _reference_relationships(
+            uniprot_json, primary, retrieved_at
+        )
+        source_assertions.extend(extra_assertions)
+        relationships.extend(extra_relationships)
+
     # GO annotations, classifications and curated interactions
     if primary:
         extra_assertions, extra_relationships = _knowledge_relationships(
@@ -426,6 +770,22 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         )
         source_assertions.extend(extra_assertions)
         relationships.extend(extra_relationships)
+
+    # The entry release every assertion comes from (uibcdf/sabueso#7): UniProt's entry
+    # version, and for sequence fields the sequence version. Not part of the assertion
+    # id, so the same statement in two releases stays one assertion.
+    audit = uniprot_json.get("entryAudit") or {}
+    if audit.get("entryVersion") is not None:
+        for assertion in source_assertions:
+            if assertion["source"].get("name") != "UniProt":
+                continue
+            assertion["source"]["version"] = str(audit["entryVersion"])
+            if assertion["field_path"].startswith("sequence.") and audit.get(
+                "sequenceVersion"
+            ):
+                assertion.setdefault("source_metadata", {})["sequence_version"] = audit[
+                    "sequenceVersion"
+                ]
 
     return {
         "fields": fields,

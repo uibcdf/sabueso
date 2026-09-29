@@ -1,5 +1,8 @@
 """Resolver utilities."""
 
+from sabueso.tools.db.rcsb import FixtureRCSBClient, OnlineRCSBClient
+from sabueso.tools.db.uniprot import FixtureUniProtClient, OnlineUniProtClient
+
 from .entity_resolver import (
     EntityQuery,
     EntityResolution,
@@ -8,8 +11,6 @@ from .entity_resolver import (
 )
 from .field_resolver import resolve_field
 from .loader import load_selection_rules
-from .rcsb_client import FixtureRCSBClient, OnlineRCSBClient
-from .uniprot_client import FixtureUniProtClient, OnlineUniProtClient
 
 __all__ = [
     "EntityQuery",

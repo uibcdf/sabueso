@@ -48,6 +48,8 @@ commit messages, issues, pull requests, release notes and documentation.
   - a client with online and fixture implementations;
   - public `get_*` functions;
   - a mapping in `sabueso/mappings/`;
+  - to enrich cards, a declared enricher in `sabueso/enrichers/` (#86). The knowledge
+    state and migration read it; a test checks its wiring;
   - an `in_use` entry in `devguide/sources/registry.yaml` (then
     `python tools/source_registry.py --write`).
 - Python 3.11–3.14 are supported.

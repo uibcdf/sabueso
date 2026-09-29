@@ -4,11 +4,13 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
-from .quantities import field_node, seal, to_quantity, verify
+from sabueso._private.argdigest import arg_digest
+
+from .quantities import field_node, quantity_columns, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
-CARD_SCHEMA_VERSION = "0.3.0"
+CARD_SCHEMA_VERSION = "0.3.6"
 
 
 def make_card_id(entity_type: str, subject_ref: str) -> str:
@@ -33,9 +35,26 @@ class Card:
         selection_rules: Dict[str, Any] | None = None,
         quality: Dict[str, Any] | None = None,
         relationship_store: RelationshipStore | List[Dict[str, Any]] | None = None,
+        entities: Dict[str, Any] | None = None,
     ) -> None:
         self.meta = meta or {}
+        # A card always states its schema; a stored card keeps the one it was written with.
+        self.meta.setdefault("schema_version", CARD_SCHEMA_VERSION)
         self.sections = sections or {}
+        # Top-level keys of a newer schema this version does not know: kept, never
+        # dropped, so saving the card again does not lose them (#42).
+        self.unknown_stored: Dict[str, Any] = {}
+        # Resolved identities (anchor -> records), the stored part of the glossary of
+        # entities; the rest of the glossary is derived from relationships (#52).
+        self.entity_identities: Dict[str, Dict[str, Any]] = {
+            key: {
+                "entity_type": entry.get("entity_type"),
+                "records": list(entry.get("records") or []),
+                "resolved": entry["identity"],
+            }
+            for key, entry in (entities or {}).items()
+            if entry.get("identity")
+        }
         if not isinstance(source_assertion_store, SourceAssertionStore):
             source_assertion_store = SourceAssertionStore(source_assertion_store)
         self.source_assertion_store = source_assertion_store
@@ -50,22 +69,53 @@ class Card:
         """Stable card reference (``meta.card_id``), independent of storage location."""
         return self.meta.get("card_id")
 
+    def snapshot_id(self) -> str:
+        """Content address of this exact card state, ``sha256:<hex>`` (#7).
+
+        Any change to what the card stores changes it; see ``sabueso.core.snapshot``.
+        """
+        from .snapshot import snapshot_id
+
+        return snapshot_id(self.to_dict())
+
+    def pinned_ref(self) -> str:
+        """``<card_id>@<snapshot_id>``: a reference to this exact state (provisional form,
+        uibcdf/moli#3)."""
+        from .errors import StorageError
+        from .snapshot import pinned_ref
+
+        if not self.id:
+            raise StorageError("A card without meta.card_id cannot be referenced.")
+        return pinned_ref(self.id, self.snapshot_id())
+
     def relationships(
         self, predicate: str | None = None, object_ref: str | None = None
     ) -> List[Relationship]:
         """Relationships carried by this card, optionally filtered."""
         return self.relationship_store.find(predicate=predicate, object_ref=object_ref)
 
-    def structures(self, include_fragments: bool = False) -> Dict[str, Any]:
-        """Protein-centric view of this card's experimental structures."""
+    @arg_digest()
+    def structures(
+        self,
+        include_fragments: bool = False,
+        region: Any = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Protein-centric view of this card's experimental structures.
+
+        ``region`` (UniProt positions and ``[begin, end]`` ranges) adds, per chain, the
+        region's residues without coordinates.
+        """
         from .structures import structures_view
 
-        return structures_view(self, include_fragments=include_fragments)
+        return structures_view(self, include_fragments=include_fragments, region=region)
 
+    @arg_digest()
     def bioactivities(
         self,
         include_indirect: bool = False,
         thresholds: Dict[str, Any] | None = None,
+        skip_digestion: bool = False,
     ) -> Dict[str, Any]:
         """Molecule-centric view of this card's measured bioactivities."""
         from .bioactivities import bioactivities_view
@@ -74,23 +124,345 @@ class Card:
             self, include_indirect=include_indirect, thresholds=thresholds
         )
 
+    @arg_digest()
+    def add_literature_assertion(
+        self,
+        field_path: str,
+        value: Any,
+        publication: str,
+        curator: str,
+        locator: str | None = None,
+        quote: str | None = None,
+        method: str | None = None,
+        eco_code: str | None = None,
+        curated_at: str | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Record what a publication states about one of this card's fields.
+
+        ``publication`` is ``pubmed:<id>`` or ``doi:<doi>``; ``locator`` says where
+        (figure, table, page) and ``quote`` is an optional short excerpt. The assertion
+        is compared with what other sources state, never given priority, and never
+        discarded; a difference is recorded in ``quality.conflicts`` and warned about.
+        Returns the curation record (``outcome``: new, corroborates, differs,
+        not_comparable or not_compared). See ``sabueso.core.curation``.
+        """
+        from sabueso._private.smonitor.outcomes import report_curated_disagreement
+
+        from .curation import add_literature_assertion
+
+        record = add_literature_assertion(
+            self,
+            field_path,
+            value,
+            publication,
+            curator,
+            locator=locator,
+            quote=quote,
+            method=method,
+            eco_code=eco_code,
+            curated_at=curated_at,
+        )
+        if record["outcome"] == "differs":
+            report_curated_disagreement(self.id or "", field_path, publication)
+        return record
+
+    @arg_digest()
+    def add_literature_relationship(
+        self,
+        predicate: str,
+        object_ref: str,
+        qualifiers: Dict[str, Any] | None,
+        publication: str,
+        curator: str,
+        locator: str | None = None,
+        quote: str | None = None,
+        eco_code: str | None = None,
+        curated_at: str | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Record a relationship a publication states, e.g. an interaction or the
+        residues at an interface. It merges with the same relationship from other
+        sources; qualifiers it states differently are kept as conflicts and warned
+        about. See ``sabueso.core.curation``."""
+        from sabueso._private.smonitor.outcomes import report_curated_disagreement
+
+        from .curation import add_literature_relationship
+
+        record = add_literature_relationship(
+            self,
+            predicate,
+            object_ref,
+            qualifiers,
+            publication,
+            curator,
+            locator=locator,
+            quote=quote,
+            eco_code=eco_code,
+            curated_at=curated_at,
+        )
+        if record["outcome"] == "differs":
+            report_curated_disagreement(self.id or "", record["field"], publication)
+        return record
+
+    @arg_digest()
+    def add_literature_bioactivity(
+        self,
+        molecule: Any,
+        measurement_type: str,
+        value: Any,
+        publication: str,
+        curator: str,
+        target_assignment: str,
+        relation: str = "=",
+        assay_description: str | None = None,
+        locator: str | None = None,
+        quote: str | None = None,
+        eco_code: str | None = None,
+        curated_at: str | None = None,
+        upper_value: Any = None,
+        uncertainty: Dict[str, Any] | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Record a bioactivity a publication reports, e.g. an IC50 read in a table.
+
+        ``molecule`` is a small-molecule card, an identifier Sabueso resolves
+        (``chembl:``, ``pubchem:``, ``pdb.ligand:``, ``inchikey:``) or a recorded identity
+        ``{"inchikey", "records"}``; the measurement keeps the InChIKey and every linked
+        record. ``value`` has its unit (``"33 uM"``, ``"45 %"``, a quantity).
+        ``target_assignment`` says whether it was measured on this protein ("direct") or
+        an ortholog ("homology"). It is compared with ChEMBL's measurements of the same
+        publication, never given priority. See ``sabueso.core.curation``.
+
+        A range ("10-20 uM") is ``value="10 uM", upper_value="20 uM"``. A stated
+        uncertainty is ``uncertainty={"kind": "sd", "value": "3 nM", "n": 3}`` (also
+        ``"sem"`` or ``"unspecified"`` for a bare "±"), or ``{"kind": "ci", "lower": ...,
+        "upper": ..., "level": 0.95}`` (#37).
+        """
+        from sabueso._private.smonitor.outcomes import report_curated_disagreement
+
+        from .curation import add_literature_bioactivity
+
+        record = add_literature_bioactivity(
+            self,
+            molecule,
+            measurement_type,
+            value,
+            publication,
+            curator,
+            target_assignment,
+            relation=relation,
+            assay_description=assay_description,
+            locator=locator,
+            quote=quote,
+            eco_code=eco_code,
+            curated_at=curated_at,
+            upper_value=upper_value,
+            uncertainty=uncertainty,
+        )
+        if record["outcome"] == "differs":
+            report_curated_disagreement(self.id or "", record["field"], publication)
+        return record
+
+    @arg_digest()
+    def add_literature_claim(
+        self,
+        topic: str,
+        text: str,
+        publication: str,
+        curator: str,
+        about: List[str] | None = None,
+        locator: str | None = None,
+        quote: str | None = None,
+        eco_code: str | None = None,
+        curated_at: str | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Record a claim a publication makes that fits no structured field (#43).
+
+        ``topic`` is one of ``curation.CLAIM_TOPICS``; ``about`` lists what the claim
+        is about (``"chembl:CHEMBL123"``, ``"pdb:1SUX"``, ``"residues:14,96"``). A
+        claim is kept with its provenance and listed by topic, but never compared:
+        whether two texts agree needs a reader. Its outcome is ``not_compared``.
+        """
+        item = {"topic": topic, "text": text}
+        if about:
+            item["about"] = list(about)
+        return self.add_literature_assertion(
+            "literature.claims",
+            item,
+            publication,
+            curator,
+            locator=locator,
+            quote=quote,
+            eco_code=eco_code,
+            curated_at=curated_at,
+        )
+
+    @arg_digest()
+    def claims(
+        self, topic: str | None = None, skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """Curated free-text claims, by topic, with their provenance (#43)."""
+        node = self.get("literature.claims") or {}
+        items = []
+        for sa_id in node.get("source_assertion_ids") or []:
+            sa = self.source_assertion_store.get(sa_id) or {}
+            value = sa.get("asserted_value") or {}
+            if topic is not None and value.get("topic") != topic:
+                continue
+            curation = (sa.get("source_metadata") or {}).get("curation") or {}
+            items.append(
+                {
+                    "topic": value.get("topic"),
+                    "text": value.get("text"),
+                    "about": value.get("about") or [],
+                    "publication": (sa.get("source") or {}).get("record_id"),
+                    "locator": curation.get("locator"),
+                    "quote": curation.get("quote"),
+                    "curator": curation.get("curator"),
+                    "curated_at": curation.get("curated_at"),
+                    "source_assertion_id": sa_id,
+                    "outcome": "not_compared",
+                }
+            )
+        by_topic: Dict[str, int] = {}
+        for item in items:
+            by_topic[item["topic"]] = by_topic.get(item["topic"], 0) + 1
+        return {"items": items, "topics": dict(sorted(by_topic.items()))}
+
+    @arg_digest()
+    def add_literature_engagement(
+        self,
+        molecule: Any,
+        residues: Any,
+        mechanism: str,
+        publication: str,
+        curator: str,
+        covalent_residue: int | None = None,
+        method: str | None = None,
+        locator: str | None = None,
+        quote: str | None = None,
+        eco_code: str | None = None,
+        curated_at: str | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Record the residues a publication says a compound acts on, and how (#61).
+
+        ``residues`` are UniProt positions of this entry, or ``{"position", "residue"}``
+        checked against its sequence. ``mechanism`` is one of ``curation.MECHANISMS``;
+        a covalent engagement names its ``covalent_residue``. ``method`` says how the
+        paper showed it (e.g. "mass spectrometry", "mutagenesis"). It is compared with
+        the ligand sites observed in structures; see ``sabueso.core.curation``.
+        """
+        from .curation import add_literature_engagement
+
+        return add_literature_engagement(
+            self,
+            molecule,
+            residues,
+            mechanism,
+            publication,
+            curator,
+            covalent_residue=covalent_residue,
+            method=method,
+            locator=locator,
+            quote=quote,
+            eco_code=eco_code,
+            curated_at=curated_at,
+        )
+
+    @arg_digest()
+    def table(
+        self, view: str, skip_digestion: bool = False, **options: Any
+    ) -> List[Dict[str, Any]]:
+        """A view as flat rows (#46): ``structures``, ``bioactivities``, ``ligands``,
+        ``ligand_sites``, ``interfaces``, ``literature`` or ``entities``. ``options`` go
+        to the view, e.g. ``card.table("bioactivities", include_indirect=True)`` or
+        ``card.table("ligands", deck=deck)``. Quantities stay quantities;
+        ``sabueso.to_dataframe`` makes a DataFrame."""
+        from .tables import card_table
+
+        return card_table(self, view, **options)
+
+    def predicted_structures(self) -> Dict[str, Any]:
+        """Predicted models (AlphaFold DB), apart from experimental structures (#57)."""
+        from .structures import predicted_structures_view
+
+        return predicted_structures_view(self)
+
+    def knowledge_state(self) -> Dict[str, Any]:
+        """Per area and source: known, conflicting, not stated, not queried or
+        unavailable (#56). See ``sabueso.core.knowledge_state``."""
+        from .knowledge_state import knowledge_state
+
+        return knowledge_state(self)
+
+    def entities(self) -> Dict[str, Any]:
+        """The glossary of molecular entities this card mentions, each once (#52)."""
+        from .entities import build_entities
+
+        return build_entities(self)
+
+    def entity(self, ref: str) -> Dict[str, Any] | None:
+        """The glossary entry of the entity a record belongs to, with its key."""
+        from .entities import resolve_ref
+
+        key, entry = resolve_ref(self, ref)
+        return None if entry is None else {"key": key, **entry}
+
+    def register_identity(
+        self,
+        anchor: str,
+        records: List[str],
+        entity_type: str,
+        resolved: Dict[str, Any],
+    ) -> None:
+        """Record that ``records`` name the entity anchored at ``anchor``."""
+        known = self.entity_identities.setdefault(
+            anchor, {"entity_type": entity_type, "records": [], "resolved": resolved}
+        )
+        known["records"] = sorted(set(known["records"]) | set(records))
+
+    def literature(self) -> Dict[str, Any]:
+        """The publications that support statements on this card, and what for."""
+        from .literature import literature_view
+
+        return literature_view(self)
+
+    def clinical(self) -> Dict[str, Any]:
+        """A molecule's indications (ChEMBL) and the trials they cite
+        (ClinicalTrials.gov), as the sources state them (#81)."""
+        from .clinical import clinical_view
+
+        return clinical_view(self)
+
+    def oligomer(self) -> Dict[str, Any]:
+        """What sources state about this protein's quaternary structure and interfaces."""
+        from .oligomer import oligomer_view
+
+        return oligomer_view(self)
+
     def ligand_sites(self) -> Dict[str, Any]:
         """Residues each ligand contacts, next to the protein's annotated sites."""
         from .ligand_sites import ligand_sites_view
 
         return ligand_sites_view(self)
 
+    @arg_digest()
     def ligands(
         self,
         deck: Any,
         include_indirect: bool = False,
         thresholds: Dict[str, Any] | None = None,
+        skip_digestion: bool = False,
     ) -> Dict[str, Any]:
         """This protein crossed with a deck of SmallMoleculeCards (``ligand_deck``)."""
         from .ligands import ligands_view
 
         return ligands_view(self, deck, include_indirect, thresholds)
 
+    @arg_digest()
     def compare_ligands(
         self,
         deck: Any,
@@ -98,6 +470,7 @@ class Card:
         other_deck: Any,
         include_indirect: bool = False,
         thresholds: Dict[str, Any] | None = None,
+        skip_digestion: bool = False,
     ) -> Dict[str, Any]:
         """Molecules related to this protein and to ``other``, side by side."""
         from .ligands import compare_ligands
@@ -105,6 +478,21 @@ class Card:
         return compare_ligands(
             self, deck, other, other_deck, include_indirect, thresholds
         )
+
+    @arg_digest()
+    def compare_knowledge(
+        self,
+        other: "Card",
+        residue_map: Dict[int, int] | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """What this card and ``other`` both state, what only one states, and what they
+        state differently (#59). Positional features are compared only through
+        ``residue_map`` ({position here: position in other}, e.g. from a MolSysMT
+        alignment). See ``sabueso.core.card_diff``."""
+        from .card_diff import compare_knowledge
+
+        return compare_knowledge(self, other, residue_map)
 
     def get(self, field_path: str) -> Any:
         cur = self.sections
@@ -130,7 +518,28 @@ class Card:
         """
         return to_quantity(self.get(field_path))
 
-    def extract(self, field_paths: List[str]) -> Dict[str, Any]:
+    def quantity_columns(self, template: str) -> Dict[str, Any]:
+        """Every quantity at ``template`` as array quantities, one per stored unit.
+
+        ``template`` names a column as the seal does, without list indices, e.g.
+        ``relationships.has_structure.resolution`` or
+        ``relationships.has_bioactivity.measurement.normalized``. Values keep their stored
+        order (relationships by id). Units are never mixed or converted: a column holding
+        nanomolar and percent returns both, keyed by unit.
+        """
+        return quantity_columns(
+            {
+                "sections": self.sections,
+                "relationship_store": self.relationship_store.to_list(),
+            },
+            template,
+        )
+
+    @arg_digest()
+    def extract(
+        self, field_paths: List[str], skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """``{field_path: node}``; a single path is one field, not its characters."""
         return {fp: self.get(fp) for fp in field_paths}
 
     def list_fields(self) -> List[str]:
@@ -147,7 +556,12 @@ class Card:
         return out
 
     def to_dict(self) -> Dict[str, Any]:
-        """The stored form: every quantity node sealed by ``quantities`` (#32)."""
+        """The stored form: every quantity node sealed by ``quantities`` (#32).
+
+        It is independent of the card: changing one never changes the other.
+        """
+        import copy
+
         data = {
             "meta": self.meta,
             "sections": self.sections,
@@ -155,7 +569,10 @@ class Card:
             "relationship_store": self.relationship_store.to_list(),
             "selection_rules": self.selection_rules,
             "quality": self.quality,
+            "entities": self.entities(),
+            **self.unknown_stored,
         }
+        data = copy.deepcopy(data)
         data["quantities"] = seal(data)
         return data
 
@@ -175,12 +592,35 @@ class Card:
     def from_dict(cls, data: Dict[str, Any]) -> "Card":
         """Rebuild a Card, including its SourceAssertionStore, from ``to_dict()`` output.
 
-        The quantities seal is verified first; a card whose quantities were changed
-        outside Sabueso is refused (StorageError).
+        The card's schema version is checked first (``sabueso.core.schema_version``): a
+        card of another schema line is refused, and one of a newer version of this line is
+        read with a warning. Then the quantities seal is verified; a card whose quantities
+        were changed outside Sabueso is refused (StorageError).
         """
-        data = dict(data)
+        import copy
+
+        from .schema_version import check_card_schema
+
+        # The card owns its content: later changes to ``data`` do not reach it.
+        data = copy.deepcopy(dict(data))
+        newer = check_card_schema(data.get("meta"), CARD_SCHEMA_VERSION)
         verify(data, data.pop("quantities", None))
-        return cls(**data)
+        known = {
+            "meta",
+            "sections",
+            "source_assertion_store",
+            "relationship_store",
+            "selection_rules",
+            "quality",
+            "entities",
+        }
+        card = cls(**{k: v for k, v in data.items() if k in known})
+        card.unknown_stored = {k: v for k, v in data.items() if k not in known}
+        if newer:
+            from sabueso._private.smonitor.outcomes import report_newer_schema
+
+            report_newer_schema(card.id or "", card.meta["schema_version"])
+        return card
 
     @classmethod
     def from_json(cls, path: str) -> "Card":
@@ -205,14 +645,12 @@ class Card:
         return Deck([self])
 
     def compare(self, other: "Card", fields: List[str] | None = None) -> Dict[str, Any]:
-        fields = fields or []
-        diffs: Dict[str, Any] = {}
-        for fp in fields:
-            diffs[fp] = {"self": self.get(fp), "other": other.get(fp)}
-        return diffs
+        """``{field_path: {"self": node, "other": node}}``; ``fields`` as in ``extract``."""
+        mine = self.extract([] if fields is None else fields)
+        theirs = other.extract(list(mine))
+        return {fp: {"self": mine[fp], "other": theirs[fp]} for fp in mine}
 
     def expand(self, kind: str) -> Any:
-        # Placeholder: actual expansion will be implemented in ops/tools.
-        from .deck import Deck
-
-        return Deck([])
+        """Not implemented. It used to return an empty Deck, which read as "nothing
+        related" rather than "not computed"."""
+        raise NotImplementedError("Card.expand is not implemented yet.")

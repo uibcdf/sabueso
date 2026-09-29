@@ -2,6 +2,7 @@
 
 ``resolve_protein_card`` resolves a query with the EntityResolver and builds the card of
 the resolved protein entity:
+
 - only SourceAssertions about the entity (its anchor record and ``same_as`` records) feed
   card fields (``entity_subjects`` guard);
 - identity links (``same_as``, ``superseded_by``, ``isoform_of``, derived
@@ -23,6 +24,7 @@ from typing import Any, Dict, Iterable, List, Tuple
 
 from smonitor import signal
 
+from sabueso._private.argdigest import arg_digest
 from sabueso._private.smonitor.outcomes import report_outcomes
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card
@@ -32,7 +34,7 @@ from sabueso.core.merge import merge_mapping_results
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.mappings.chembl import map_bioactivities
 from sabueso.mappings.interpro import map_family_sites
-from sabueso.mappings.pdbe_kb import map_ligand_sites
+from sabueso.mappings.pdbe_kb import map_interfaces, map_ligand_sites
 from sabueso.mappings.rcsb_structures import map_structure_entities
 from sabueso.mappings.stringdb import map_string_partners
 from sabueso.mappings.uniprot import map_protein
@@ -46,6 +48,7 @@ UNIPROT_PREFIX = "sabueso:protein:uniprot:"
 
 
 @signal(tags=["api", "protein"])
+@arg_digest()
 def resolve_protein_card(
     query: EntityQuery | str,
     resolver: EntityResolver | None = None,
@@ -55,9 +58,36 @@ def resolve_protein_card(
     chembl: Dict[str, Any] | None = None,
     chembl_client: Any | None = None,
     ligand_sites: bool = False,
+    interfaces: bool = False,
     pdbe_kb_client: Any | None = None,
     family_sites: bool = False,
     interpro_client: Any | None = None,
+    predicted_structures: bool = False,
+    alphafold_client: Any | None = None,
+    taxonomy: bool = False,
+    taxonomy_client: Any | None = None,
+    bindingdb: Dict[str, Any] | None = None,
+    bindingdb_client: Any | None = None,
+    unichem_client: Any | None = None,
+    pubchem_bioassay: bool = False,
+    pubchem_bioassay_client: Any | None = None,
+    ncbi_gene: bool = False,
+    ncbi_gene_client: Any | None = None,
+    phi_base: bool = False,
+    phi_base_client: Any | None = None,
+    diseases: Dict[str, Any] | None = None,
+    diseases_client: Any | None = None,
+    open_targets: Dict[str, Any] | None = None,
+    open_targets_client: Any | None = None,
+    orphadata: bool = False,
+    orphadata_client: Any | None = None,
+    reactome: bool = False,
+    reactome_client: Any | None = None,
+    clinvar: Dict[str, Any] | None = None,
+    clinvar_client: Any | None = None,
+    gnomad: Dict[str, Any] | None = None,
+    gnomad_client: Any | None = None,
+    skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
 
@@ -67,13 +97,74 @@ def resolve_protein_card(
     entry's organism. ``chembl`` (e.g. ``{}`` or ``{"limit": 1000}``) adds the ChEMBL
     bioactivities of the targets the entry cross-references (``Card.bioactivities()``).
     ``ligand_sites`` adds the residues each ligand contacts in the protein's structures,
-    from PDBe-KB (``Card.ligand_sites()``). ``family_sites`` adds the site residues that
+    from PDBe-KB (``Card.ligand_sites()``). ``interfaces`` adds the residues PDBe-KB
+    reports at the protein's interfaces with other chains, per partner
+    (``Card.oligomer()``). ``family_sites`` adds the site residues that
     InterPro member databases place on the protein's sequence
-    (``features_positional.family_site``).
+    (``features_positional.family_site``). ``predicted_structures`` adds the AlphaFold
+    DB models of the entry as ``has_predicted_structure`` relationships, apart from
+    experimental structures (``Card.predicted_structures()``). ``taxonomy`` adds the
+    organism's rank and ranked ancestors from NCBI Taxonomy (``annotations.taxonomy``),
+    which makes relations between organisms exact. ``bindingdb`` (e.g. ``{}``) adds the
+    affinities BindingDB holds for the entry, with each monomer anchored at its InChIKey
+    through UniChem; measurements several sources state are grouped, never counted
+    twice (``sabueso.core.measurements``). ``pubchem_bioassay`` adds PubChem's results
+    for the entry; results copied from ChEMBL or BindingDB are grouped with their
+    originals, and a ChEMBL assay named by a copy but missing from the card is fetched
+    from ChEMBL (#68).
     Every enrichment outcome (added, not_found, error) is recorded in
     ``quality.enrichments``. Returns ``(card, resolution)``; ``card`` is None when the
     query did not resolve to a protein entity.
+
+    ``ncbi_gene`` lets the resolution's identity audit ask NCBI Gene about two
+    candidates that state their gene in different databases: NCBI Gene lists the UniProt
+    entries of a gene's products (#69).
+
+    ``phi_base`` adds the phenotypes PHI-base curates for mutants of the gene, alone or
+    on a host (``annotations.pathogen_phenotypes``). The first use downloads a PHI-base
+    release into the local cache (``sabueso.tools.db.phi_base``).
+
+    ``diseases`` (e.g. ``{}``, or ``{"channels": ["knowledge", "experiments",
+    "textmining"]}``) adds DISEASES's gene–disease associations as ``associated_with``
+    relationships, one per disease and channel, through the Ensembl proteins the entry
+    cross-references. The default channels are curated knowledge and experiments; text
+    mining links names, not molecules, and is added only when asked for. DISEASES covers
+    human genes only.
+
+    ``open_targets`` (e.g. ``{}`` or ``{"limit": 50}``; default 100, in Open Targets'
+    own order) adds Open Targets' target–disease associations, with its scores as
+    stated, through the Ensembl gene the entry cross-references, when Open Targets also
+    lists the entry among that gene's products. Human genes only.
+
+    ``orphadata`` adds the rare disorders Orphanet associates with the gene, through the
+    UniProt accession Orphanet states for it, with Orphanet's association type and
+    status. Human genes only.
+
+    ``reactome`` adds the Reactome pathways and reactions the entry takes part in
+    (``participates_in``), with each pathway's ancestors and whether Reactome inferred
+    the event from orthology.
+
+    ``clinvar`` (e.g. ``{}`` or ``{"limit": 100}``; default 500 per gene) adds ClinVar's
+    variants of the gene, found by the NCBI Gene id the entry cross-references, with
+    their classification as ClinVar states it (``annotations.clinical_variants``). A
+    variant is placed in UniProt numbering only when its transcript is one UniProt states
+    for the canonical isoform and its residue matches. Human genes only.
+
+    ``gnomad`` (e.g. ``{}`` or ``{"limit": 200}``; default 1000) adds gnomAD's variants of
+    the gene with a protein change, and their exome and genome frequencies
+    (``annotations.population_variants``), placed in UniProt numbering by the same rule
+    through an Ensembl transcript UniProt states for the canonical isoform. Human genes
+    only.
     """
+    if ncbi_gene:
+        import copy
+
+        from sabueso.tools.db.ncbi_gene import OnlineNCBIGeneClient
+
+        resolver = copy.copy(resolver) if resolver is not None else EntityResolver()
+        resolver.ncbi_gene = (
+            ncbi_gene_client or resolver.ncbi_gene or OnlineNCBIGeneClient()
+        )
     resolver = resolver or EntityResolver()
     resolution = resolver.resolve(query)
     entity_ref = resolution.entity_ref or ""
@@ -92,6 +183,7 @@ def resolve_protein_card(
             if rel["predicate"] == "has_structure"
         ]
     length = (entry.get("sequence") or {}).get("length")
+    sequence = (entry.get("sequence") or {}).get("value")
     enrichments: List[Dict[str, Any]] = []
     for pdb_id in structures:
         record = {"source": "RCSB PDB", "structure": pdb_id}
@@ -108,10 +200,24 @@ def resolve_protein_card(
             rcsb_retrieved_at,
             subjects={anchor},
             reference_lengths={anchor: length} if length else None,
+            reference_sequences={anchor: sequence} if sequence else None,
         )
         mappings.append(mapped)
+        partial = rcsb_entry.get("_partial")
         enrichments.append(
-            {**record, "status": "added", "count": len(mapped["relationships"])}
+            {
+                **record,
+                "status": "partial" if partial else "added",
+                "count": len(mapped["relationships"]),
+                **(
+                    {
+                        "missing": partial.get("missing"),
+                        "detail": partial.get("reason"),
+                    }
+                    if partial
+                    else {}
+                ),
+            }
         )
 
     if string is not None:
@@ -193,7 +299,7 @@ def resolve_protein_card(
         from sabueso.tools.db.pdbe_kb import OnlinePDBeKBClient
 
         client = pdbe_kb_client or OnlinePDBeKBClient()
-        record = {"source": "PDBe-KB", "identifier": anchor}
+        record = {"source": "PDBe-KB", "data": "ligand_sites", "identifier": anchor}
         try:
             response = client.ligand_sites(anchor)
         except RecordNotFoundError:
@@ -206,6 +312,297 @@ def resolve_protein_card(
             enrichments.append(
                 {**record, "status": "added", "count": len(mapped["relationships"])}
             )
+
+    if interfaces:
+        from sabueso.tools.db.pdbe_kb import OnlinePDBeKBClient
+
+        client = pdbe_kb_client or OnlinePDBeKBClient()
+        record = {
+            "source": "PDBe-KB",
+            "data": "interface_residues",
+            "identifier": anchor,
+        }
+        try:
+            response = client.interface_residues(anchor)
+        except RecordNotFoundError:
+            enrichments.append({**record, "status": "not_found"})
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        else:
+            mapped = map_interfaces(response, response.get("retrieved_at", ""))
+            mappings.append(mapped)
+            enrichments.append(
+                {**record, "status": "added", "count": len(mapped["relationships"])}
+            )
+
+    if predicted_structures:
+        from sabueso.mappings.alphafold import map_predictions
+        from sabueso.tools.db.alphafold import OnlineAlphaFoldClient
+
+        client = alphafold_client or OnlineAlphaFoldClient()
+        record = {"source": "AlphaFold DB", "identifier": anchor}
+        try:
+            response = client.prediction(anchor)
+        except RecordNotFoundError:
+            enrichments.append({**record, "status": "not_found"})
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        else:
+            mapped = map_predictions(
+                response,
+                anchor,
+                response.get("retrieved_at", ""),
+                sequence_md5=(entry.get("sequence") or {}).get("md5"),
+            )
+            mappings.append(mapped)
+            versions = sorted(
+                {r["qualifiers"]["model_version"] for r in mapped["relationships"]}
+                - {None}
+            )
+            enrichments.append(
+                {
+                    **record,
+                    "status": "added",
+                    "version": "; ".join(f"v{v}" for v in versions) or None,
+                    "count": len(mapped["relationships"]),
+                }
+            )
+
+    if taxonomy:
+        from sabueso.mappings.ncbi_taxonomy import map_taxonomy
+        from sabueso.tools.db.ncbi_taxonomy import OnlineNCBITaxonomyClient
+
+        client = taxonomy_client or OnlineNCBITaxonomyClient()
+        tax_id = (entry.get("organism") or {}).get("taxonId")
+        record = {"source": "NCBI Taxonomy", "identifier": tax_id}
+        try:
+            organism = client.taxa([tax_id]) if tax_id is not None else {"record": []}
+            if not organism["record"]:
+                enrichments.append({**record, "status": "not_found"})
+            else:
+                taxon = organism["record"][0]
+                lineage = client.taxa(taxon.get("lineage") or [])
+                mapped = map_taxonomy(
+                    taxon,
+                    lineage["record"],
+                    anchor,
+                    organism.get("retrieved_at", ""),
+                )
+                mappings.append(mapped)
+                enrichments.append(
+                    {
+                        **record,
+                        "status": "added",
+                        "count": len(taxon.get("lineage") or []),
+                        **(
+                            {"missing": lineage["missing"]}
+                            if lineage.get("missing")
+                            else {}
+                        ),
+                    }
+                )
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+
+    identities: List[tuple] = []
+    if bindingdb is not None:
+        from sabueso.mappings.bindingdb import map_affinities, molecule_identity
+        from sabueso.tools.db.bindingdb import OnlineBindingDBClient
+        from sabueso.tools.db.unichem import BINDINGDB_SOURCE, OnlineUniChemClient
+
+        client = bindingdb_client or OnlineBindingDBClient()
+        record = {"source": "BindingDB", "identifier": anchor, **bindingdb}
+        try:
+            response = client.ligands(anchor, **bindingdb)
+        except RecordNotFoundError:
+            enrichments.append({**record, "status": "not_found"})
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        else:
+            unichem = unichem_client or OnlineUniChemClient()
+            resolved: Dict[str, Any] = {}
+            unanchored, errors = [], []
+            for monomer in sorted(
+                {str(r.get("monomerid")) for r in response["record"]}
+            ):
+                try:
+                    found = unichem.compound_by_source(BINDINGDB_SOURCE, monomer)
+                    resolved[monomer] = molecule_identity(found["compound"], monomer)
+                except RecordNotFoundError:
+                    resolved[monomer] = None
+                    unanchored.append(f"bindingdb:{monomer}")
+                except ConnectorError:
+                    resolved[monomer] = None
+                    errors.append(f"bindingdb:{monomer}")
+            mapped = map_affinities(
+                response, anchor, response.get("retrieved_at", ""), resolved
+            )
+            mappings.append(mapped)
+            identities += [
+                (i["anchor"], i["records"]) for i in resolved.values() if i is not None
+            ]
+            enrichments.append(
+                {
+                    **record,
+                    "status": "added",
+                    "count": len(mapped["relationships"]),
+                    "anchored": sum(1 for i in resolved.values() if i is not None),
+                    "unanchored": unanchored,
+                    **({"unichem_errors": errors} if errors else {}),
+                }
+            )
+
+    if pubchem_bioassay:
+        from sabueso.mappings.chembl import map_bioactivities as map_chembl
+        from sabueso.mappings.pubchem_bioassay import map_assays
+        from sabueso.tools.db.chembl import OnlineChEMBLClient
+        from sabueso.tools.db.pubchem_bioassay import OnlinePubChemBioAssayClient
+
+        client = pubchem_bioassay_client or OnlinePubChemBioAssayClient()
+        record = {"source": "PubChem BioAssay", "identifier": anchor}
+        try:
+            response = client.assays(anchor)
+        except RecordNotFoundError:
+            enrichments.append({**record, "status": "not_found"})
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        else:
+            mapped = map_assays(response, anchor, response.get("retrieved_at", ""))
+            mappings.append(mapped)
+            depositors: Dict[str, int] = {}
+            for s_ in response["record"].get("summaries") or []:
+                depositors[s_.get("SourceName")] = (
+                    depositors.get(s_.get("SourceName"), 0) + 1
+                )
+            copies = [
+                r
+                for r in mapped["relationships"]
+                if (r.get("qualifiers") or {}).get("copy_of")
+            ]
+            enrichments.append(
+                {
+                    **record,
+                    "status": "added",
+                    "assays": len(response["record"].get("aids") or []),
+                    "count": len(mapped["relationships"]),
+                    "copies": len(copies),
+                    "depositors": dict(sorted(depositors.items())),
+                }
+            )
+            # Copies are pointers: ChEMBL assays they name that the card lacks. An assay
+            # on the card is complete only if the target query was not truncated.
+            chembl_rels = [
+                rel
+                for m in mappings
+                for rel in m["relationships"]
+                if rel["predicate"] == "has_bioactivity"
+                and not (rel.get("qualifiers") or {}).get("source")
+            ]
+            present = {
+                (rel.get("qualifiers") or {}).get("activity_id") for rel in chembl_rels
+            }
+            truncated = any(
+                e.get("source") == "ChEMBL" and e.get("truncated") for e in enrichments
+            )
+            on_card = (
+                set()
+                if truncated
+                else {
+                    (rel.get("qualifiers") or {}).get("assay", {}).get("id")
+                    for rel in chembl_rels
+                }
+            )
+            named = sorted(
+                {
+                    r["qualifiers"]["copy_of"]["assay"]
+                    for r in copies
+                    if r["qualifiers"]["copy_of"].get("source") == "ChEMBL"
+                    and r["qualifiers"]["copy_of"].get("assay")
+                }
+                - on_card
+            )
+            if named:
+                pointer = {
+                    "source": "ChEMBL",
+                    "data": "assays named by PubChem copies",
+                    "assays": named,
+                }
+                try:
+                    followed = (chembl_client or OnlineChEMBLClient()).assay_activities(
+                        named
+                    )
+                except ConnectorError as exc:
+                    enrichments.append(
+                        {**pointer, "status": "error", "detail": str(exc)}
+                    )
+                else:
+                    followed = {
+                        **followed,
+                        "activities": [
+                            a
+                            for a in followed.get("activities") or []
+                            if a.get("activity_id") not in present
+                        ],
+                    }
+                    extra = map_chembl(
+                        followed, anchor, followed.get("retrieved_at", "")
+                    )
+                    targets = sorted(
+                        {
+                            (rel.get("qualifiers") or {}).get("target")
+                            for rel in extra["relationships"]
+                        }
+                        - {None}
+                    )
+                    for rel in extra["relationships"]:
+                        rel["qualifiers"]["retrieved_via"] = "PubChem BioAssay copy"
+                    mappings.append(extra)
+                    enrichments.append(
+                        {
+                            **pointer,
+                            "status": "added"
+                            if extra["relationships"]
+                            else "not_found",
+                            "version": followed.get("version"),
+                            "count": len(extra["relationships"]),
+                            "targets": targets,
+                        }
+                    )
+
+    if bindingdb is not None or pubchem_bioassay:
+        # ChEMBL's molecules anchored at the InChIKey ChEMBL states for them, so that the
+        # same molecule is recognised across sources (#66, #68).
+        from sabueso.tools.db.chembl import OnlineChEMBLClient
+
+        chembl_ids = {
+            ref.split(":", 1)[1]
+            for m in mappings
+            for rel in m["relationships"]
+            if rel["predicate"] == "has_bioactivity"
+            and not (rel.get("qualifiers") or {}).get("source")
+            for ref in (
+                rel["object_ref"],
+                (rel.get("qualifiers") or {}).get("parent_molecule"),
+            )
+            if ref and ref.startswith("chembl:")
+        }
+        if chembl_ids:
+            try:
+                found = (chembl_client or OnlineChEMBLClient()).molecules(chembl_ids)
+            except ConnectorError:
+                found = {"molecules": {}}
+            for chembl_id, molecule in sorted((found.get("molecules") or {}).items()):
+                key = ((molecule or {}).get("molecule_structures") or {}).get(
+                    "standard_inchi_key"
+                )
+                if key:
+                    identities.append((f"inchikey:{key}", [f"chembl:{chembl_id}"]))
+        # PubChem compounds, at the InChIKey PubChem states (in the mapping).
+        for m in mappings:
+            for rel in m["relationships"]:
+                q = rel.get("qualifiers") or {}
+                if q.get("source") == "PubChem BioAssay" and q.get("molecule_ref"):
+                    identities.append((q["molecule_ref"], [rel["object_ref"]]))
 
     if family_sites:
         from sabueso.tools.db.interpro import OnlineInterProClient
@@ -230,6 +627,25 @@ def resolve_protein_card(
                 }
             )
 
+    # Declared enrichers (#86): one runner applies coverage, error isolation and order.
+    from sabueso.enrichers import ENRICHERS, Context
+    from sabueso.enrichers import run as run_enricher
+
+    requested = {
+        "phi_base": (phi_base, phi_base_client),
+        "diseases": (diseases, diseases_client),
+        "open_targets": (open_targets, open_targets_client),
+        "orphadata": (orphadata, orphadata_client),
+        "reactome": (reactome, reactome_client),
+        "gnomad": (gnomad, gnomad_client),
+        "clinvar": (clinvar, clinvar_client),
+    }
+    context = Context(anchor, entry)
+    for enricher in ENRICHERS:
+        options, client = requested[enricher.option]
+        if enricher.requested(options):
+            run_enricher(enricher, context, options, client, mappings, enrichments)
+
     mappings.append(
         {
             "fields": {},
@@ -249,6 +665,9 @@ def resolve_protein_card(
         card_id=entity_ref,
         entity_subjects=subjects,
     )
+    for anchor_ref, records in identities:
+        # Stated by UniChem, which links the BindingDB monomer to the anchor (#66).
+        card.register_identity(anchor_ref, records, "small_molecule", {"by": "UniChem"})
     if enrichments:
         card.quality["enrichments"] = enrichments
         report_outcomes(enrichments, subject=entity_ref)
@@ -299,7 +718,8 @@ def _candidate_card(
     return card
 
 
-def ambiguity_deck(resolution: EntityResolution) -> Deck:
+@arg_digest()
+def ambiguity_deck(resolution: EntityResolution, skip_digestion: bool = False) -> Deck:
     """Deck of candidate cards: the candidates of an ambiguous resolution, or the
     non-preferred alternatives of a resolved one. Nothing is fetched again."""
     items = resolution.candidates if resolution.status == "ambiguous" else []
@@ -312,8 +732,10 @@ def ambiguity_deck(resolution: EntityResolution) -> Deck:
         ),
         "",
     )
+    cards = [_candidate_card(c, resolution, retrieved) for c in items]
+    role = "candidate" if resolution.status == "ambiguous" else "alternative"
     return Deck(
-        [_candidate_card(c, resolution, retrieved) for c in items],
+        cards,
         meta={
             "kind": "entity_ambiguity"
             if resolution.status == "ambiguous"
@@ -322,5 +744,10 @@ def ambiguity_deck(resolution: EntityResolution) -> Deck:
             "entity_ref": resolution.entity_ref,
             "policy": resolution.policy,
             "decision": resolution.decision,
+            # Why each card is here (#58): the query it answered, and its role.
+            "membership": {
+                card.id: {"role": role, "query": resolution.decision.get("query")}
+                for card in cards
+            },
         },
     )

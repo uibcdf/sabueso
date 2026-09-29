@@ -105,12 +105,46 @@ def _number(value: Any) -> float | None:
         return None
 
 
+def _document(activity: Dict[str, Any], documents: Dict[str, Any]) -> Dict[str, Any]:
+    """The document a measurement comes from, with its PubMed id and DOI when ChEMBL
+    states them (``src_id`` 1 is the scientific literature)."""
+    doc_id = activity.get("document_chembl_id")
+    record = documents.get(doc_id) or {}
+    pubmed = record.get("pubmed_id")
+    return {
+        "id": doc_id,
+        "year": activity.get("document_year"),
+        "journal": activity.get("document_journal"),
+        "pubmed": str(pubmed) if pubmed else None,
+        "doi": record.get("doi") or None,
+        "title": record.get("title") or None,
+    }
+
+
+def _range_end(activity: Dict[str, Any]) -> Dict[str, Any]:
+    """``{"normalized_upper": node}`` when ChEMBL states the measurement as a range.
+
+    ChEMBL keeps the lower end in ``standard_value`` and the upper end in
+    ``standard_upper_value`` (#37). The key exists only for ranges, so the cards of
+    measurements without one are unchanged.
+    """
+    upper = _number(activity.get("standard_upper_value"))
+    if upper is None:
+        return {}
+    return {
+        "normalized_upper": normalized_measurement(
+            upper, activity.get("standard_units")
+        )
+    }
+
+
 def map_bioactivities(
     response: Dict[str, Any], subject_accession: str, retrieved_at: str
 ) -> Dict[str, Any]:
     """Map a target bioactivity response (``tools.db.chembl``) for a protein entity."""
     version = response.get("version")
     assays = response.get("assays", {}) or {}
+    documents = response.get("documents", {}) or {}
     source_assertions: List[Dict[str, Any]] = []
     relationships: List[Dict[str, Any]] = []
     assay_assertions: Dict[str, Dict[str, Any]] = {}
@@ -164,6 +198,7 @@ def map_bioactivities(
                             _number(activity.get("standard_value")),
                             activity.get("standard_units"),
                         ),
+                        **_range_end(activity),
                         "pchembl": _number(activity.get("pchembl_value")),
                         "activity_comment": activity.get("activity_comment"),
                         "data_validity_comment": activity.get("data_validity_comment"),
@@ -182,11 +217,7 @@ def map_bioactivities(
                         "relationship_type": assay.get("relationship_type"),
                         "variant_mutation": activity.get("assay_variant_mutation"),
                     },
-                    "document": {
-                        "id": activity.get("document_chembl_id"),
-                        "year": activity.get("document_year"),
-                        "journal": activity.get("document_journal"),
-                    },
+                    "document": _document(activity, documents),
                 },
                 source_assertion_ids=support,
             )

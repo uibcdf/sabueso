@@ -24,12 +24,20 @@ PREDICATES = frozenset(
         "isoform_of",
         "superseded_by",
         "has_structure",
+        "has_predicted_structure",  # protein -> predicted model (AlphaFold DB), #57
+        "engages",  # protein -> molecule: residues and mechanism a paper states, #61
         "annotated_with",  # protein -> GO term
         "classified_in",  # protein -> family / domain / superfamily / site entry
         "interacts_with",  # protein -> protein (physical interaction, e.g. IntAct)
         "functionally_associated_with",  # protein -> protein (STRING functional link)
         "has_bioactivity",  # protein -> molecule (one measured activity, e.g. ChEMBL)
         "has_ligand_site",  # protein -> PDB ligand (residues it contacts, e.g. PDBe-KB)
+        "has_interface_with",  # protein -> partner chain (interface residues, PDBe-KB)
+        "described_in",  # protein -> publication (pubmed:, doi:), e.g. UniProt references
+        "investigated_for",  # molecule -> disease term (ChEMBL drug indication), #81
+        "tested_in",  # molecule -> clinical trial (nct:), cited by an indication, #81
+        "associated_with",  # protein -> disease term (DISEASES, per channel), #82
+        "participates_in",  # protein -> pathway or reaction (Reactome), #83
     }
 )
 
@@ -42,6 +50,13 @@ IDENTITY_QUALIFIERS: Dict[str, tuple] = {
     # One relationship per measurement: the same molecule is often measured several
     # times (assays, papers), and each measurement keeps its own support and context.
     "has_bioactivity": ("activity_id",),
+    # One relationship per curated statement: two papers can state engagements of the
+    # same molecule (#61).
+    "engages": ("statement_id",),
+    # One per source, channel and Ensembl protein or gene: a curated association and a
+    # text-mined co-mention of one disease, or DISEASES's and Open Targets', are
+    # separate statements (#82).
+    "associated_with": ("source", "channel", "via_protein", "via_gene"),
 }
 
 

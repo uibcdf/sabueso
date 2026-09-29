@@ -1,4 +1,5 @@
-"""PDBe-KB ligand binding sites -> ``has_ligand_site`` relationships (#28).
+"""PDBe-KB ligand binding sites -> ``has_ligand_site`` relationships (#28), and interface
+residues -> ``has_interface_with`` relationships (#40).
 
 Each ligand PDBe-KB reports for a protein becomes one relationship of the protein to the
 PDB chemical component (``pdb.ligand:<code>``). The qualifiers carry the residues it
@@ -98,6 +99,76 @@ def map_ligand_sites(response: Dict[str, Any], retrieved_at: str) -> Dict[str, A
                     "reaction_id": _text(extra.get("reactionId")),
                     "chembl_id": _text(extra.get("chemblId")),
                     "drugbank_id": _text(extra.get("drugBankId")),
+                },
+                source_assertion_ids=[assertion["id"]],
+            )
+        )
+    return {
+        "fields": {},
+        "source_assertions": source_assertions,
+        "field_source_assertions": {},
+        "relationships": relationships,
+    }
+
+
+def _partner_ref(partner: Dict[str, Any]) -> str:
+    """``uniprot:<acc>`` for a UniProt partner; otherwise PDBe-KB's own label, kept as
+    stated (e.g. an antibody or T-cell receptor chain without a UniProt entry)."""
+    accession = partner.get("accession") or ""
+    kind = (partner.get("additionalData") or {}).get("type")
+    if kind == "UNP":
+        return f"uniprot:{accession}"
+    return f"pdbe_kb.partner:{accession}"
+
+
+def map_interfaces(response: Dict[str, Any], retrieved_at: str) -> Dict[str, Any]:
+    """Map a PDBe-KB ``interface_residues`` response (``tools.db.pdbe_kb``).
+
+    One ``has_interface_with`` relationship per partner: the residues of this protein at
+    its interface with that partner, in UniProt numbering, with the structures, entities
+    and chains where each is observed. PDBe-KB derives them from the structures (PISA);
+    what kind of interface it is (homomeric, a chimera with itself, a peptide in a
+    complex...) is judged by ``Card.oligomer()``, never here.
+    """
+    accession = response["accession"]
+    record = response.get("record") or {}
+    source_assertions: List[Dict[str, Any]] = []
+    relationships: List[Dict[str, Any]] = []
+    for partner in record.get("data") or []:
+        if not partner.get("accession"):
+            continue
+        object_ref = _partner_ref(partner)
+        residues = partner.get("residues") or []
+        index_types = {(r.get("indexType") or "").upper() for r in residues}
+        numbering = "uniprot" if index_types <= {"UNIPROT"} else "mixed"
+        assertion = make_source_assertion(
+            "relationships.has_interface_with",
+            {"object_ref": object_ref, "partner": partner},
+            "PDBe-KB",
+            accession,
+            retrieved_at,
+            subject_ref=f"uniprot:{accession}",
+        )
+        source_assertions.append(assertion)
+        mapped_residues = sorted(
+            (_residue(r) for r in residues), key=lambda r: r["start"]
+        )
+        # Where the interface is observed (``interactingPDBEntries``), not every entry
+        # where a residue is resolved (``allPDBEntries``).
+        structures = sorted(
+            {o["structure"] for r in mapped_residues for o in r["observed_in"]}
+        )
+        relationships.append(
+            make_relationship(
+                f"uniprot:{accession}",
+                "has_interface_with",
+                object_ref,
+                qualifiers={
+                    "partner_name": partner.get("name"),
+                    "partner_type": (partner.get("additionalData") or {}).get("type"),
+                    "numbering": numbering,
+                    "residues": mapped_residues,
+                    "structures": structures,
                 },
                 source_assertion_ids=[assertion["id"]],
             )

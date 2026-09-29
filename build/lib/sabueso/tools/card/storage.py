@@ -7,6 +7,9 @@ import sqlite3
 from pathlib import Path
 from typing import Any, Dict
 
+from sabueso._private.argdigest import arg_digest
+from sabueso._private.argdigest.argument.table import digest_table
+
 
 def _unwrap_value(node: Any) -> Any:
     if isinstance(node, dict) and "value" in node:
@@ -20,11 +23,13 @@ def save_card_json(card: Any, path: str | Path) -> None:
     out.write_text(json.dumps(card.to_dict(), indent=2), encoding="utf-8")
 
 
+@arg_digest()
 def save_card_sqlite(
     card: Any,
     path: str | Path,
     table: str = "cards",
     id_field: str | None = None,
+    skip_digestion: bool = False,
 ) -> None:
     """Save a single Card into a SQLite table as JSON."""
     out = Path(path)
@@ -64,8 +69,12 @@ def load_card_json(path: str | Path) -> Any:
     return Card.from_dict(_read_card_json(path))
 
 
+@arg_digest()
 def load_card_sqlite(
-    path: str | Path, table: str = "cards", card_id: str | None = None
+    path: str | Path,
+    table: str = "cards",
+    card_id: str | None = None,
+    skip_digestion: bool = False,
 ) -> Any:
     """Load a Card from SQLite (latest row by default), verified as ``load_card_json``."""
     from sabueso.core.card import Card
@@ -77,7 +86,12 @@ def load_card_sqlite(
 def _read_card_sqlite(
     path: str | Path, table: str = "cards", card_id: str | None = None
 ) -> Dict[str, Any] | None:
-    """The stored payload, unverified. Only ``Card.from_dict`` may consume it."""
+    """The stored payload, unverified. Only ``Card.from_dict`` may consume it.
+
+    Reached from ``Card.from_sqlite``, a classmethod ArgDigest does not wrap, so the
+    table name is digested here as well: it is interpolated into SQL.
+    """
+    table = digest_table(table, caller="sabueso.core.card.Card.from_sqlite")
     out = Path(path)
     with sqlite3.connect(out) as conn:
         cur = conn.cursor()

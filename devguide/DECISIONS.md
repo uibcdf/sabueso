@@ -922,3 +922,18 @@ Agreed with the maintainers as a second pass for the variants of #83.
 - More precise reasons for what is not placed: `unparsed_protein_change` and
   `stop_codon`, besides `residue_mismatch`.
 
+## Declared enrichers (2026-09-29)
+uibcdf/sabueso#86, wave 3 of #83.
+- **One contract, one runner.** A source's contribution to a card is declared once.
+  The runner applies organism coverage, `not_found` and `error` per request, and a
+  fixed order. An enricher's `map` returns its record's outcome, so each source's
+  records stay exactly as before.
+- **Tables are derived, not kept by hand:** the knowledge-state rows
+  (`knowledge_areas`) and the migration map of records to options
+  (`options_by_source`). A test checks that each enricher has its parameters,
+  digesters and registry entry.
+- **Behaviour-preserving steps.** Each step is checked by comparing whole cards
+  (snapshot ids and records) before and after, not only by the test suite.
+- **Bespoke, for stated reasons:** RCSB structures, the ChEMBL/BindingDB/PubChem
+  BioAssay group, and NCBI Gene in the resolution.
+

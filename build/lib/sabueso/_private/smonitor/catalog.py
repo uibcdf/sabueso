@@ -39,10 +39,14 @@ CATALOG = {
         "ResolverError": _exception("SABUESO-E-RESOLVE-001", "resolver", "resolution"),
         "SchemaError": _exception("SABUESO-E-SCHEMA-001", "schema", "schema"),
         "StorageError": _exception("SABUESO-E-STORAGE-001", "storage", "storage"),
+        "LibraryNotFoundError": _exception(
+            "SABUESO-E-LIBRARY-001", "library_not_found", "dependency"
+        ),
         "ConnectorError": _exception("SABUESO-E-SOURCE-001", "connector", "source"),
         "RecordNotFoundError": _exception(
             "SABUESO-E-SOURCE-002", "record_not_found", "source"
         ),
+        "ArgumentError": _exception("SABUESO-E-ARG-001", "argument", "argument"),
     },
     "warnings": {
         "EnrichmentFailedWarning": {
@@ -57,10 +61,34 @@ CATALOG = {
             "category": "source",
             "level": "WARNING",
         },
+        "EnrichmentPartialWarning": {
+            "code": "SABUESO-W-ENRICH-003",
+            "source": "sabueso.warning.enrichment_partial",
+            "category": "source",
+            "level": "WARNING",
+        },
         "UnanchoredRecordsWarning": {
             "code": "SABUESO-W-IDENTITY-001",
             "source": "sabueso.warning.unanchored_records",
             "category": "identity",
+            "level": "WARNING",
+        },
+        "NewerCardSchemaWarning": {
+            "code": "SABUESO-W-SCHEMA-001",
+            "source": "sabueso.warning.newer_card_schema",
+            "category": "storage",
+            "level": "WARNING",
+        },
+        "DeprecatedUsageWarning": {
+            "code": "SABUESO-W-DEPRECATED-001",
+            "source": "sabueso.warning.deprecated_usage",
+            "category": "api",
+            "level": "WARNING",
+        },
+        "CuratedDisagreementWarning": {
+            "code": "SABUESO-W-CURATION-001",
+            "source": "sabueso.warning.curated_disagreement",
+            "category": "curation",
             "level": "WARNING",
         },
     },
@@ -73,8 +101,14 @@ CODES = {
     "SABUESO-E-RESOLVE-001": {**_RAISE_SITE, "title": "Resolution failed"},
     "SABUESO-E-SCHEMA-001": {**_RAISE_SITE, "title": "Schema error"},
     "SABUESO-E-STORAGE-001": {**_RAISE_SITE, "title": "Storage error"},
+    "SABUESO-E-LIBRARY-001": {**_RAISE_SITE, "title": "Optional library missing"},
     "SABUESO-E-SOURCE-001": {**_RAISE_SITE, "title": "Source unavailable"},
     "SABUESO-E-SOURCE-002": {**_RAISE_SITE, "title": "Record not found"},
+    "SABUESO-E-ARG-001": {
+        **_RAISE_SITE,
+        "title": "Invalid argument",
+        "user_hint": "Check the documented values of this argument.",
+    },
     "SABUESO-W-ENRICH-001": {
         "title": "Source not consulted",
         "user_message": "{source} could not be consulted for {subject}; the result was "
@@ -82,6 +116,15 @@ CODES = {
         "user_hint": "The failure is recorded with the result. Retry later, or check "
         "the source's availability.",
         "dev_message": "{source} failed for {subject}: {detail}",
+        "dev_hint": "See the enrichment record for the full outcome.",
+    },
+    "SABUESO-W-ENRICH-003": {
+        "title": "Result partial",
+        "user_message": "{source} answered only part of the record for {subject} "
+        "(missing: {missing}); the result is incomplete.",
+        "user_hint": "The gap is recorded with the result. Retry later, or check the "
+        "source's availability.",
+        "dev_message": "{source} partial for {subject}: {detail}",
         "dev_hint": "See the enrichment record for the full outcome.",
     },
     "SABUESO-W-ENRICH-002": {
@@ -97,6 +140,26 @@ CODES = {
         "user_hint": "They are listed in deck.meta['unanchored'].",
         "dev_message": "Unanchored records for {subject}: {examples}",
     },
+    "SABUESO-W-SCHEMA-001": {
+        "title": "Card from a newer Sabueso",
+        "user_message": "Card {card} was written with card schema {schema}, newer than "
+        "this Sabueso's. It was read; fields this version does not know are kept but not "
+        "interpreted.",
+        "user_hint": "Update Sabueso to use every field of the card.",
+    },
+    "SABUESO-W-DEPRECATED-001": {
+        "title": "Deprecated function",
+        "user_message": "{function} is deprecated and will be removed before Sabueso 1.0.",
+        "user_hint": "Use {replacement} instead.",
+    },
+    "SABUESO-W-CURATION-001": {
+        "title": "Curated assertion differs",
+        "user_message": "The literature assertion from {publication} on {field} of "
+        "{subject} differs from what other sources state about the same item. Both are "
+        "kept; neither takes priority.",
+        "user_hint": "Whether they contradict needs a reader: see "
+        "card.quality['conflicts'] and card.literature().",
+    },
 }
 
 SIGNALS = {
@@ -108,5 +171,10 @@ SIGNALS = {
     },
     "sabueso.warning.unanchored_records": {
         "extra_required": ["subject", "count", "examples"]
+    },
+    "sabueso.warning.newer_card_schema": {"extra_required": ["card", "schema"]},
+    "sabueso.warning.deprecated_usage": {"extra_required": ["function", "replacement"]},
+    "sabueso.warning.curated_disagreement": {
+        "extra_required": ["subject", "field", "publication"]
     },
 }

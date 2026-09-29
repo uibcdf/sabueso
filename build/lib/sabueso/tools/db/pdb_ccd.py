@@ -22,7 +22,9 @@ from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError
+from sabueso.tools.db._record import online, source_record
 
 RCSB_GRAPHQL = "https://data.rcsb.org/graphql"
 COMPONENTS_QUERY = """query($ids: [String!]!) { chem_comps(comp_ids: $ids) {
@@ -94,3 +96,20 @@ class FixtureCCDClient:
             "components": found,
             "missing": [c for c in codes if c not in found],
         }
+
+
+# --- Public source access (uibcdf/sabueso#49) -----------------------------------------
+
+
+@arg_digest()
+def get_components(identifiers: Any, client: Any = None, skip_digestion: bool = False):
+    """PDB Chemical Component Dictionary records by component code."""
+    response = online(client, OnlineCCDClient).components(identifiers)
+    return source_record(
+        "PDB CCD",
+        "components",
+        {"codes": list(identifiers)},
+        response.get("retrieved_at"),
+        None,
+        {"components": response.get("components"), "missing": response.get("missing")},
+    )

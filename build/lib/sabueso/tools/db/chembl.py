@@ -5,12 +5,14 @@ from __future__ import annotations
 import json
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable
+from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
 
+from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db._record import online, source_record
 
 
 def load_json(path: str | Path) -> Dict[str, Any]:
@@ -43,16 +45,33 @@ def create_molecule_card_from_file(path: str | Path, retrieved_at: str) -> Any:
 
 
 def fetch_chembl_json(chembl_id: str) -> Dict[str, Any]:
-    """Fetch ChEMBL molecule JSON online by ChEMBL ID."""
-    url = f"https://www.ebi.ac.uk/chembl/api/data/molecule/{chembl_id}.json"
-    with urlopen(url) as resp:  # nosec - expected trusted endpoint
-        return json.loads(resp.read().decode("utf-8"))
+    """Deprecated: use ``get_molecules([chembl_id])`` (#49)."""
+    from sabueso._private.smonitor.outcomes import report_deprecated
+
+    report_deprecated(
+        "sabueso.tools.db.chembl.fetch_chembl_json",
+        "sabueso.tools.db.chembl.get_molecules([chembl_id])",
+    )
+    response = OnlineChEMBLClient().molecules([chembl_id])
+    if chembl_id not in response["molecules"]:
+        raise RecordNotFoundError(f"ChEMBL has no molecule {chembl_id}")
+    return response["molecules"][chembl_id]
 
 
 def create_molecule_card_online(chembl_id: str, retrieved_at: str) -> Any:
-    """Create a SmallMolecule Card by ChEMBL ID using online fetch."""
-    data = fetch_chembl_json(chembl_id)
-    return create_molecule_card_from_json(data, retrieved_at=retrieved_at)
+    """Deprecated: use ``sabueso.resolve("chembl:<id>")``, which links the molecule's
+    records across sources (#49)."""
+    from sabueso._private.smonitor.outcomes import report_deprecated
+
+    report_deprecated(
+        "sabueso.create_molecule_card_online", 'sabueso.resolve("chembl:<id>")'
+    )
+    response = OnlineChEMBLClient().molecules([chembl_id])
+    if chembl_id not in response["molecules"]:
+        raise RecordNotFoundError(f"ChEMBL has no molecule {chembl_id}")
+    return create_molecule_card_from_json(
+        response["molecules"][chembl_id], retrieved_at=retrieved_at
+    )
 
 
 # --- Target bioactivities (uibcdf/sabueso#23) -------------------------------------------
@@ -69,6 +88,15 @@ CHEMBL_API = "https://www.ebi.ac.uk/chembl/api/data"
 DEFAULT_ACTIVITY_LIMIT = 5000
 PAGE_SIZE = 1000
 ASSAY_CHUNK = 50
+DOCUMENT_FIELDS = (
+    "document_chembl_id",
+    "pubmed_id",
+    "doi",
+    "title",
+    "year",
+    "journal",
+    "src_id",
+)
 
 ACTIVITY_FIELDS = (
     "activity_id",
@@ -97,6 +125,19 @@ ACTIVITY_FIELDS = (
     "document_journal",
 )
 MOLECULE_CHUNK = 50
+#: A drug's indications (``drug_indication``), with the references ChEMBL cites for each
+#: (ClinicalTrials.gov NCT ids, ATC, FDA, EMA, DailyMed…; #81).
+INDICATION_FIELDS = (
+    "drugind_id",
+    "molecule_chembl_id",
+    "parent_molecule_chembl_id",
+    "efo_id",
+    "efo_term",
+    "mesh_id",
+    "mesh_heading",
+    "max_phase_for_ind",
+    "indication_refs",
+)
 MOLECULE_FIELDS = (
     "molecule_chembl_id",
     "pref_name",
@@ -183,6 +224,21 @@ class OnlineChEMBLClient:
             offset += len(batch)
             if not batch or not page.get("page_meta", {}).get("next"):
                 break
+        assays, documents = self._context(activities)
+        return {
+            "query": {"target_chembl_id": target, "limit": limit},
+            "version": self.version(),
+            "retrieved_at": retrieved_at,
+            "total_count": total,
+            "truncated": total > len(activities),
+            "activities": activities,
+            "assays": assays,
+            "documents": documents,
+        }
+
+    def _context(self, activities: list) -> tuple:
+        """The assays and documents of the activities: their metadata, and PubMed ids and
+        DOIs so that a measurement can be matched to a publication (#44)."""
         assay_ids = sorted(
             {a["assay_chembl_id"] for a in activities if a.get("assay_chembl_id")}
         )
@@ -200,14 +256,67 @@ class OnlineChEMBLClient:
             )
             for assay in page.get("assays", []):
                 assays[assay["assay_chembl_id"]] = _keep(assay, ASSAY_FIELDS)
+        # The documents the measurements come from, with their PubMed id and DOI, so a
+        # measurement can be matched to a publication (#44).
+        document_ids = sorted(
+            {a["document_chembl_id"] for a in activities if a.get("document_chembl_id")}
+        )
+        documents: Dict[str, Any] = {}
+        for i in range(0, len(document_ids), ASSAY_CHUNK):
+            chunk = document_ids[i : i + ASSAY_CHUNK]
+            page = _chembl_get(
+                "document.json",
+                {
+                    "document_chembl_id__in": ",".join(chunk),
+                    "only": ",".join(DOCUMENT_FIELDS),
+                    "limit": len(chunk),
+                },
+                self.timeout,
+            )
+            for document in page.get("documents", []):
+                documents[document["document_chembl_id"]] = _keep(
+                    document, DOCUMENT_FIELDS
+                )
+        return assays, documents
+
+    def assay_activities(
+        self, assay_ids: Iterable[str], limit: int = DEFAULT_ACTIVITY_LIMIT
+    ) -> Dict[str, Any]:
+        """The activities of named assays, whatever their target: how a PubChem copy
+        leads to a ChEMBL original a target-based query did not return (#68)."""
+        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        ids = sorted({i for i in assay_ids if i})
+        activities: list = []
+        for i in range(0, len(ids), ASSAY_CHUNK):
+            chunk = ids[i : i + ASSAY_CHUNK]
+            offset = 0
+            while len(activities) < limit:
+                page = _chembl_get(
+                    "activity.json",
+                    {
+                        "assay_chembl_id__in": ",".join(chunk),
+                        "order_by": "activity_id",
+                        "only": ",".join(ACTIVITY_FIELDS),
+                        "limit": min(PAGE_SIZE, limit - len(activities)),
+                        "offset": offset,
+                    },
+                    self.timeout,
+                )
+                batch = page.get("activities", [])
+                activities.extend(_keep(a, ACTIVITY_FIELDS) for a in batch)
+                offset += len(batch)
+                if not batch or not page.get("page_meta", {}).get("next"):
+                    break
+        assays, documents = self._context(activities)
         return {
-            "query": {"target_chembl_id": target, "limit": limit},
+            "query": {"assay_chembl_id": ids, "limit": limit},
             "version": self.version(),
             "retrieved_at": retrieved_at,
-            "total_count": total,
-            "truncated": total > len(activities),
+            "total_count": len(activities),
+            "truncated": len(activities) >= limit,
             "activities": activities,
             "assays": assays,
+            "documents": documents,
         }
 
     def molecules(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
@@ -232,6 +341,41 @@ class OnlineChEMBLClient:
             "version": self.version(),
             "retrieved_at": retrieved_at,
             "molecules": found,
+            "missing": [i for i in ids if i not in found],
+        }
+
+    def indications(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
+        """Indications by molecule ChEMBL id: ``{version, retrieved_at, indications,
+        missing}``. ``missing`` lists molecules ChEMBL states no indication for."""
+        ids = sorted({i for i in chembl_ids if i})
+        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        found: Dict[str, List[Dict[str, Any]]] = {}
+        for i in range(0, len(ids), MOLECULE_CHUNK):
+            chunk = ids[i : i + MOLECULE_CHUNK]
+            offset = 0
+            while True:
+                page = _chembl_get(
+                    "drug_indication.json",
+                    {
+                        "molecule_chembl_id__in": ",".join(chunk),
+                        "order_by": "drugind_id",
+                        "limit": PAGE_SIZE,
+                        "offset": offset,
+                    },
+                    self.timeout,
+                )
+                records = page.get("drug_indications") or []
+                for record in records:
+                    found.setdefault(record["molecule_chembl_id"], []).append(
+                        _keep(record, INDICATION_FIELDS)
+                    )
+                offset += len(records)
+                if not records or not (page.get("page_meta") or {}).get("next"):
+                    break
+        return {
+            "version": self.version(),
+            "retrieved_at": retrieved_at,
+            "indications": found,
             "missing": [i for i in ids if i not in found],
         }
 
@@ -265,6 +409,44 @@ class FixtureChEMBLClient:
             "activities": activities,
         }
 
+    def assay_activities(
+        self, assay_ids: Iterable[str], limit: int = DEFAULT_ACTIVITY_LIMIT
+    ) -> Dict[str, Any]:
+        """Activities of named assays, from every saved target response."""
+        ids = {i for i in assay_ids if i}
+        if self.failing & ids:
+            raise ConnectorError(
+                f"ChEMBL assay request for {sorted(ids)} failed (simulated)"
+            )
+        activities, assays, documents, version = [], {}, {}, None
+        for path in sorted((self.directory / "chembl").glob("CHEMBL*.json")):
+            saved = json.loads(path.read_text(encoding="utf-8"))
+            if "activities" not in saved:
+                continue
+            version = version or saved.get("version")
+            for activity in saved["activities"]:
+                if activity.get("assay_chembl_id") in ids:
+                    activities.append(activity)
+                    aid, did = (
+                        activity.get("assay_chembl_id"),
+                        activity.get("document_chembl_id"),
+                    )
+                    if aid in (saved.get("assays") or {}):
+                        assays[aid] = saved["assays"][aid]
+                    if did in (saved.get("documents") or {}):
+                        documents[did] = saved["documents"][did]
+        activities = sorted(activities, key=lambda a: a["activity_id"])[:limit]
+        return {
+            "query": {"assay_chembl_id": sorted(ids), "limit": limit},
+            "version": version,
+            "retrieved_at": self.retrieved_at,
+            "total_count": len(activities),
+            "truncated": False,
+            "activities": activities,
+            "assays": assays,
+            "documents": documents,
+        }
+
     def molecules(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
         ids = sorted({i for i in chembl_ids if i})
         if self.failing & set(ids):
@@ -284,3 +466,81 @@ class FixtureChEMBLClient:
             "molecules": found,
             "missing": [i for i in ids if i not in found],
         }
+
+    def indications(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
+        ids = sorted({i for i in chembl_ids if i})
+        if self.failing & set(ids):
+            raise ConnectorError(
+                f"ChEMBL indication request for {ids} failed (simulated)"
+            )
+        path = self.directory / "chembl" / "indications.json"
+        saved = (
+            json.loads(path.read_text(encoding="utf-8"))
+            if path.is_file()
+            else {"version": None, "indications": {}}
+        )
+        found = {i: saved["indications"][i] for i in ids if i in saved["indications"]}
+        return {
+            "version": saved.get("version"),
+            "retrieved_at": self.retrieved_at,
+            "indications": found,
+            "missing": [i for i in ids if i not in found],
+        }
+
+
+# --- Public source access (uibcdf/sabueso#49) -----------------------------------------
+
+
+@arg_digest()
+def get_bioactivities(
+    identifier: str,
+    limit: int = DEFAULT_ACTIVITY_LIMIT,
+    client: Any = None,
+    skip_digestion: bool = False,
+):
+    """The activity records of a ChEMBL target (``identifier`` is its ChEMBL id)."""
+    response = online(client, OnlineChEMBLClient).bioactivities(identifier, limit=limit)
+    return source_record(
+        "ChEMBL",
+        "bioactivities",
+        {"target": identifier, "limit": limit},
+        response.get("retrieved_at"),
+        response.get("version"),
+        {
+            "total_count": response.get("total_count"),
+            "truncated": response.get("truncated"),
+            "activities": response.get("activities"),
+        },
+    )
+
+
+@arg_digest()
+def get_molecules(identifiers: Any, client: Any = None, skip_digestion: bool = False):
+    """ChEMBL molecule records by ChEMBL id; ``missing`` lists ids ChEMBL does not hold."""
+    response = online(client, OnlineChEMBLClient).molecules(identifiers)
+    return source_record(
+        "ChEMBL",
+        "molecules",
+        {"chembl_ids": list(identifiers)},
+        response.get("retrieved_at"),
+        response.get("version"),
+        {"molecules": response.get("molecules"), "missing": response.get("missing")},
+    )
+
+
+@arg_digest()
+def get_indications(identifiers: Any, client: Any = None, skip_digestion: bool = False):
+    """ChEMBL's indications of molecules, by ChEMBL id, with the references it cites;
+    ``missing`` lists molecules ChEMBL states no indication for."""
+    response = online(client, OnlineChEMBLClient).indications(identifiers)
+    return source_record(
+        "ChEMBL",
+        "indications",
+        {"chembl_ids": list(identifiers)},
+        response.get("retrieved_at"),
+        response.get("version"),
+        {
+            "indications": response.get("indications"),
+            "missing": response.get("missing"),
+        },
+    )

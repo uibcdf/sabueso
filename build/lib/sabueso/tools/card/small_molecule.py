@@ -21,6 +21,7 @@ from typing import Any, Dict, Iterable, List, Tuple
 
 from smonitor import signal
 
+from sabueso._private.argdigest import arg_digest
 from sabueso._private.smonitor.outcomes import report_outcomes, report_unanchored
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card, make_card_id
@@ -134,6 +135,11 @@ def single_molecule_card(**records: Any) -> Card:
 def _parse(identifier: str) -> Tuple[str | None, str]:
     value = identifier.strip()
     namespace, _, record = value.partition(":")
+    if record and namespace.lower() == "pubchem":
+        # A PubChem CID only with its prefix: a bare number could be anything.
+        return (
+            ("pubchem", record.strip()) if record.strip().isdigit() else (None, value)
+        )
     if record and namespace.lower() in ("chembl", "pdb.ligand", "inchikey"):
         namespace = namespace.lower()
         return namespace, record if namespace == "inchikey" else record.upper()
@@ -142,6 +148,14 @@ def _parse(identifier: str) -> Tuple[str | None, str]:
     if is_standard_inchikey(value):
         return "inchikey", value
     return None, value
+
+
+def _pubchem_client(pubchem_client):
+    if pubchem_client is None:
+        from sabueso.tools.db.pubchem import OnlinePubChemClient
+
+        pubchem_client = OnlinePubChemClient()
+    return pubchem_client
 
 
 def _clients(chembl_client, ccd_client, unichem_client):
@@ -161,20 +175,38 @@ def _clients(chembl_client, ccd_client, unichem_client):
 
 
 @signal(tags=["api", "small_molecule"])
+@arg_digest()
 def resolve_molecule_card(
     identifier: str,
     chembl_client: Any | None = None,
     ccd_client: Any | None = None,
     unichem: bool = True,
     unichem_client: Any | None = None,
+    pubchem: bool = False,
+    pubchem_client: Any | None = None,
+    indications: bool = False,
+    trials: Dict[str, Any] | None = None,
+    clinicaltrials_client: Any | None = None,
+    skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve a small-molecule identifier and build the card of its molecule.
+
+    ``identifier`` is ``chembl:<id>`` (or a bare ChEMBL id), ``pdb.ligand:<code>``,
+    ``pubchem:<cid>`` or ``inchikey:<key>`` (or a bare standard InChIKey). With
+    ``pubchem=True``, the PubChem compounds UniChem links are retrieved too; a
+    ``pubchem:`` identifier always brings its own compound.
 
     The anchor InChIKey comes from the record named by ``identifier`` (or is the
     identifier itself). With ``unichem`` (default), UniChem adds the records other
     resources hold for that structure, and the ChEMBL molecules and PDB components it
     lists are retrieved too. A failure of that expansion never prevents the card; it is
     recorded in ``quality.enrichments``. ``inchikey:`` identifiers need UniChem.
+
+    The clinical layer (#81, ``Card.clinical()``): ``indications`` adds ChEMBL's drug
+    indications of the card's ChEMBL molecules (``investigated_for``); ``trials`` (e.g.
+    ``{}`` or ``{"limit": 50}``) also adds the ClinicalTrials.gov studies those
+    indications cite, by NCT id (``tested_in``), and implies ``indications``. Trials are
+    never matched to a molecule by name.
     """
     namespace, record = _parse(identifier)
     decision: Dict[str, Any] = {"query": identifier, "rules": [], "sources": []}
@@ -195,7 +227,9 @@ def resolve_molecule_card(
 
     chembl_ids = [record] if namespace == "chembl" else []
     codes = [record] if namespace == "pdb.ligand" else []
-    chembl = ccd = None
+    chembl = ccd = compounds = None
+    if namespace == "pubchem" or pubchem:
+        pubchem_client = _pubchem_client(pubchem_client)
     key = record if namespace == "inchikey" else None
     enrichments: List[Dict[str, Any]] = []
     try:
@@ -209,12 +243,22 @@ def resolve_molecule_card(
             decision["sources"].append({"name": "PDB CCD", "records": codes})
             if not ccd["components"]:
                 return outcome("not_found", "record_not_found")
+        if namespace == "pubchem":
+            try:
+                response = pubchem_client.compound(record)
+            except RecordNotFoundError:
+                return outcome("not_found", "record_not_found")
+            decision["sources"].append({"name": "PubChem", "records": [record]})
+            compounds = {
+                "retrieved_at": response["retrieved_at"],
+                "compounds": {record: response["record"]},
+            }
     except ConnectorError as exc:
         decision["detail"] = str(exc)
         return outcome("error", "source_error")
 
     if key is None:
-        cards, unanchored = build_molecule_cards(chembl, ccd)
+        cards, unanchored = build_molecule_cards(chembl, ccd, pubchem=compounds)
         if not cards:
             return outcome("unsupported", "no_standard_inchikey")
         (key,) = cards
@@ -249,8 +293,14 @@ def resolve_molecule_card(
             chembl, ccd = _expand(
                 chembl_client, ccd_client, chembl, ccd, linked, enrichments
             )
+            if pubchem:
+                compounds = _expand_pubchem(
+                    pubchem_client, compounds, linked, enrichments
+                )
 
-    cards, unanchored = build_molecule_cards(chembl, ccd, unichem_responses)
+    cards, unanchored = build_molecule_cards(
+        chembl, ccd, unichem_responses, pubchem=compounds
+    )
     card = cards.get(key)
     if card is None:
         return outcome("not_found", "no_record_for_inchikey")
@@ -261,6 +311,8 @@ def resolve_molecule_card(
         if other != key
         for rel in other_card.relationships("same_as")
     ] + unanchored
+    if indications or trials is not None:
+        _clinical(card, chembl_client, clinicaltrials_client, trials, enrichments)
     if enrichments:
         card.quality["enrichments"] = enrichments
         report_outcomes(enrichments, subject=molecule_ref(key))
@@ -276,6 +328,122 @@ def resolve_molecule_card(
         "decision": decision,
     }
     return card, resolution
+
+
+#: Trials fetched per card unless ``trials={"limit": n}`` says otherwise.
+DEFAULT_TRIAL_LIMIT = 100
+
+
+def _clinical(card, chembl_client, clinicaltrials_client, trials, enrichments):
+    """Add ChEMBL indications and, with ``trials``, the studies they cite (#81)."""
+    from sabueso.mappings.clinical import map_indications, map_trials
+
+    molecules = sorted(
+        r["subject_ref"].split(":", 1)[1]
+        for r in card.relationships("same_as")
+        if r["subject_ref"].startswith("chembl:")
+    )
+    record = {"source": "ChEMBL", "data": "indications", "records": molecules}
+    if not molecules:
+        enrichments.append({**record, "status": "not_found"})
+        return
+    try:
+        response = chembl_client.indications(molecules)
+    except ConnectorError as exc:
+        enrichments.append({**record, "status": "error", "detail": str(exc)})
+        return
+    mapped = map_indications(
+        response["indications"],
+        response.get("retrieved_at", ""),
+        response.get("version"),
+    )
+    for assertion in mapped["source_assertions"]:
+        card.source_assertion_store.add(assertion)
+    for relationship in mapped["relationships"]:
+        card.relationship_store.add(relationship)
+    enrichments.append(
+        {
+            **record,
+            "status": "added" if mapped["relationships"] else "not_found",
+            "version": response.get("version"),
+            "count": len(mapped["relationships"]),
+        }
+    )
+    if trials is None:
+        return
+    cited = sorted({nct for _, nct in mapped["citations"]})
+    limit = trials.get("limit", DEFAULT_TRIAL_LIMIT)
+    wanted = cited[:limit]
+    record = {"source": "ClinicalTrials.gov", "records": len(cited)}
+    if not wanted:
+        enrichments.append({**record, "status": "not_found"})
+        return
+    try:
+        studies = (clinicaltrials_client or _clinicaltrials_client()).studies(wanted)
+    except ConnectorError as exc:
+        enrichments.append({**record, "status": "error", "detail": str(exc)})
+        return
+    linked = map_trials(
+        mapped["citations"],
+        studies["record"],
+        wanted,
+        studies.get("retrieved_at", ""),
+        studies.get("version"),
+    )
+    for assertion in linked["source_assertions"]:
+        card.source_assertion_store.add(assertion)
+    for relationship in linked["relationships"]:
+        card.relationship_store.add(relationship)
+    enrichments.append(
+        {
+            **record,
+            "status": "added" if studies["record"] else "not_found",
+            "version": studies.get("version"),
+            "count": len(studies["record"]),
+            "missing": studies.get("missing") or [],
+            "truncated": len(cited) > len(wanted),
+            "total_count": len(cited),
+        }
+    )
+
+
+def _clinicaltrials_client():
+    from sabueso.tools.db.clinicaltrials import OnlineClinicalTrialsClient
+
+    return OnlineClinicalTrialsClient()
+
+
+def _expand_pubchem(pubchem_client, pubchem, linked, enrichments):
+    """Retrieve the PubChem compounds UniChem links (``pubchem=True``)."""
+    have = set(((pubchem or {}).get("compounds") or {}).keys())
+    wanted = [cid for cid in linked.get("pubchem", []) if cid not in have]
+    if not wanted:
+        return pubchem
+    pubchem = pubchem or {"retrieved_at": None, "compounds": {}}
+    found, missing = [], []
+    for cid in wanted:
+        try:
+            response = pubchem_client.compound(cid)
+        except RecordNotFoundError:
+            missing.append(cid)
+            continue
+        except ConnectorError as exc:
+            enrichments.append(
+                {"source": "PubChem", "status": "error", "detail": str(exc)}
+            )
+            return pubchem
+        pubchem["compounds"][cid] = response["record"]
+        pubchem["retrieved_at"] = pubchem["retrieved_at"] or response["retrieved_at"]
+        found.append(cid)
+    enrichments.append(
+        {
+            "source": "PubChem",
+            "status": "added" if found else "not_found",
+            "records": sorted(found),
+            "missing": missing,
+        }
+    )
+    return pubchem
 
 
 def _expand(chembl_client, ccd_client, chembl, ccd, linked, enrichments):
@@ -385,6 +553,7 @@ def _notes(structure_ligands: str | None) -> List[str]:
 
 
 @signal(tags=["api", "small_molecule", "deck"])
+@arg_digest()
 def ligand_deck(
     protein_card: Card,
     structure_ligands: str | None = "of_interest",
@@ -392,6 +561,7 @@ def ligand_deck(
     ccd_client: Any | None = None,
     unichem: bool = False,
     unichem_client: Any | None = None,
+    skip_digestion: bool = False,
 ) -> Deck:
     """Deck of the small molecules a protein card refers to, anchored at the InChIKey.
 
@@ -470,6 +640,11 @@ def ligand_deck(
     return Deck(
         [cards[key] for key in sorted(cards)],
         meta={
+            # Why each card is here (#58): a ligand of this protein, anchored by rule.
+            "membership": {
+                cards[key].id: {"ligand_of": protein_card.id, "rule": IDENTITY_RULE}
+                for key in sorted(cards)
+            },
             "kind": "protein_ligands",
             "protein": protein_card.id,
             "identity_rule": IDENTITY_RULE,

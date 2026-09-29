@@ -32,6 +32,35 @@ FIELD_UNITS: Dict[str, str] = {
 CONCENTRATION_UNIT = "nanomolar"
 LENGTH_UNIT = "angstrom"
 
+#: Every place a card stores quantities (a path template, as the seal names its columns)
+#: and the units negotiated for it. The writer refuses a quantity anywhere else, and the
+#: reader declares these, not what the card says, as the fields and dimensionalities it
+#: expects (MOLI quantity integrity policy, guarantee 2).
+NEGOTIATED_UNITS: Dict[str, Tuple[str, ...]] = {
+    **{path: (unit,) for path, unit in FIELD_UNITS.items()},
+    "relationships.has_structure.resolution": (LENGTH_UNIT,),
+    "relationships.has_structure.ligands.instances.contacts.min_distance": (
+        LENGTH_UNIT,
+    ),
+    "relationships.has_bioactivity.measurement.normalized": (
+        CONCENTRATION_UNIT,
+        "percent",
+    ),
+    # A range: the upper end, normalized like the lower one (#37, schema 0.3.2).
+    "relationships.has_bioactivity.measurement.normalized_upper": (
+        CONCENTRATION_UNIT,
+        "percent",
+    ),
+    # An uncertainty a publication states, in the measurement's normalized unit (#37).
+    **{
+        f"relationships.has_bioactivity.measurement.normalized_uncertainty.{part}": (
+            CONCENTRATION_UNIT,
+            "percent",
+        )
+        for part in ("half_width", "lower", "upper")
+    },
+}
+
 #: ChEMBL ``standard_units`` spellings Sabueso normalizes, and to what. Source strings are
 #: never handed to a unit parser: ``nM`` and ``nm`` differ only in case, and ChEMBL's
 #: ``ug.mL-1`` is not a valid pint expression. Anything else is left unnormalized.
@@ -45,6 +74,19 @@ CHEMBL_UNITS: Dict[str, str] = {
     "%": "percent",
 }
 _CONCENTRATIONS = {"picomolar", "nanomolar", "micromolar", "millimolar", "molar"}
+
+
+#: Significant digits kept after a unit conversion. pint converts through SI base units,
+#: so 20 µM becomes 19999.999999999996 nM; a measurement exactly on a threshold would
+#: then fall on either side depending on how the threshold was written, and stored
+#: values would carry the noise. No source states more than a few digits; 12 keeps every
+#: stated digit and drops the noise.
+SIGNIFICANT_DIGITS = 12
+
+
+def converted(value: float) -> float:
+    """A converted value without floating-point noise (see SIGNIFICANT_DIGITS)."""
+    return float(f"{value:.{SIGNIFICANT_DIGITS}g}")
 
 
 @lru_cache(maxsize=None)
@@ -94,12 +136,12 @@ def normalized_measurement(value: Any, units: Any) -> Optional[Dict[str, Any]]:
         return quantity_node(value, "percent")
     import pyunitwizard as puw
 
-    converted = puw.convert(
+    value_nM = puw.convert(
         puw.quantity(float(value), unit, form="pint"),
         to_unit=CONCENTRATION_UNIT,
         to_type="value",
     )
-    return quantity_node(float(converted), CONCENTRATION_UNIT)
+    return quantity_node(converted(float(value_nM)), CONCENTRATION_UNIT)
 
 
 def is_quantity_node(obj: Any) -> bool:
@@ -151,15 +193,36 @@ def _columns(card_data: Mapping[str, Any]) -> Dict[str, Tuple[str, List[float]]]
     return columns
 
 
+def _negotiated(key: str) -> str:
+    """The unit of column ``key`` if Sabueso negotiated it there; otherwise None."""
+    template, unit = key.rsplit("|", 1)
+    allowed = NEGOTIATED_UNITS.get(template, ())
+    return unit if unit in {canonical_unit(u) for u in allowed} else None
+
+
+def _dimensionality(unit: str) -> Dict[str, int]:
+    import pyunitwizard as puw
+
+    dims = puw.get_dimensionality(puw.quantity(1.0, unit, form="pint"))
+    return {k: int(v) for k, v in dims.items()}
+
+
 def seal(card_data: Mapping[str, Any]) -> Dict[str, Any]:
     """The ``quantities`` entry of a stored card: one bundle, one column per path and unit."""
     import numpy as np
     import pyunitwizard as puw
     from pyunitwizard import QuantityRecordBundle
 
+    raw = _columns(card_data)
+    unexpected = sorted(key for key in raw if _negotiated(key) is None)
+    if unexpected:
+        raise SchemaError(
+            f"Quantities outside Sabueso's negotiated paths and units: {unexpected}. "
+            "Register them in quantities.NEGOTIATED_UNITS."
+        )
     columns = {
         key: puw.quantity(np.asarray(values, dtype=np.float64), unit, form="pint")
-        for key, (unit, values) in _columns(card_data).items()
+        for key, (unit, values) in raw.items()
     }
     return QuantityRecordBundle.from_quantities(columns).to_dict()
 
@@ -173,14 +236,22 @@ def verify(card_data: Mapping[str, Any], sealed: Any) -> None:
     card_id = (card_data.get("meta") or {}).get("card_id")
     if sealed is None:
         raise StorageError(
-            f"Card {card_id} has no quantities seal; schema 0.3.0 cards are written with one, "
+            f"Card {card_id} has no quantities seal; cards since schema 0.3.0 are written with one, "
             "and there is no default unit."
         )
     columns = _columns(card_data)
+    unexpected = sorted(key for key in columns if _negotiated(key) is None)
+    if unexpected:
+        raise StorageError(
+            f"Card {card_id} stores quantities where Sabueso negotiated none, or in "
+            f"another unit: {unexpected}."
+        )
     try:
         bundle = QuantityRecordBundle.from_dict(sealed)
+        # The expectation is Sabueso's, per column: the negotiated unit's dimensionality.
         stored = bundle.to_quantities(
-            expected={key: None for key in columns}, form="pint"
+            expected={key: _dimensionality(unit) for key, (unit, _) in columns.items()},
+            form="pint",
         )
     except Exception as exc:  # RecordError, or a malformed bundle
         raise StorageError(
@@ -196,6 +267,43 @@ def verify(card_data: Mapping[str, Any], sealed: Any) -> None:
                 f"Card {card_id}: the quantities at {key!r} were changed outside Sabueso; "
                 "they no longer match their seal."
             )
+
+
+def quantity_columns(card_data: Mapping[str, Any], template: str) -> Dict[str, Any]:
+    """``{unit: array quantity}`` of every node at ``template``, as sealed.
+
+    One column per unit, in stored order; units are never mixed or converted here.
+    """
+    import numpy as np
+    import pyunitwizard as puw
+
+    out: Dict[str, Any] = {}
+    for key, (unit, values) in _columns(card_data).items():
+        if key.rsplit("|", 1)[0] == template:
+            out[unit] = puw.quantity(np.asarray(values, dtype=np.float64), unit)
+    return out
+
+
+#: Orders of magnitude that mark a probable unit slip, as in ChEMBL's "Potential
+#: transcription error": nM written as µM or pM (3), or as mM (6).
+SCALE_ORDERS = (3, 6)
+
+
+def scale_discrepancy(a: Any, b: Any) -> int | None:
+    """3 or 6 when two values of one quantity differ by exactly that many orders of
+    magnitude; otherwise None. Values must already be in the same unit."""
+    import math
+
+    numbers = (int, float)
+    if isinstance(a, bool) or isinstance(b, bool):
+        return None
+    if not (isinstance(a, numbers) and isinstance(b, numbers)) or a <= 0 or b <= 0:
+        return None
+    ratio = max(a, b) / min(a, b)
+    for orders in SCALE_ORDERS:
+        if math.isclose(ratio, 10.0**orders, rel_tol=10.0 ** -(SIGNIFICANT_DIGITS - 3)):
+            return orders
+    return None
 
 
 def to_quantity(node: Any):

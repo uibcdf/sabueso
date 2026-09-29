@@ -67,6 +67,36 @@ class EnrichmentTruncatedWarning(SabuesoWarning):
         )
 
 
+class EnrichmentPartialWarning(SabuesoWarning):
+    """A source answered only part of a record (#74)."""
+
+    catalog_key = "EnrichmentPartialWarning"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        source: str | None = None,
+        subject: str | None = None,
+        missing: Any = None,
+        detail: str | None = None,
+    ) -> None:
+        extra = None
+        if message is None:
+            extra = {
+                "source": source,
+                "subject": subject,
+                "missing": missing,
+                "detail": detail,
+            }
+        super().__init__(
+            message,
+            catalog=CATALOG if extra else None,
+            meta=META if extra else None,
+            extra=extra,
+        )
+
+
 class UnanchoredRecordsWarning(SabuesoWarning):
     """Records without a standard InChIKey were left out of a deck."""
 
@@ -83,6 +113,79 @@ class UnanchoredRecordsWarning(SabuesoWarning):
         extra = None
         if message is None:
             extra = {"subject": subject, "count": count, "examples": examples}
+        super().__init__(
+            message,
+            catalog=CATALOG if extra else None,
+            meta=META if extra else None,
+            extra=extra,
+        )
+
+
+class CuratedDisagreementWarning(SabuesoWarning):
+    """A curated literature assertion differs from other sources (uibcdf/sabueso#41)."""
+
+    catalog_key = "CuratedDisagreementWarning"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        subject: str | None = None,
+        field: str | None = None,
+        publication: str | None = None,
+    ) -> None:
+        extra = None
+        if message is None:
+            extra = {"subject": subject, "field": field, "publication": publication}
+        super().__init__(
+            message,
+            catalog=CATALOG if extra else None,
+            meta=META if extra else None,
+            extra=extra,
+        )
+
+
+class DeprecatedUsageWarning(SabuesoWarning, FutureWarning):
+    """A deprecated function was called; it will be removed before 1.0 (#49).
+
+    Also a FutureWarning, so Python shows it to end users by default.
+    """
+
+    catalog_key = "DeprecatedUsageWarning"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        function: str | None = None,
+        replacement: str | None = None,
+    ) -> None:
+        extra = None
+        if message is None:
+            extra = {"function": function, "replacement": replacement}
+        super().__init__(
+            message,
+            catalog=CATALOG if extra else None,
+            meta=META if extra else None,
+            extra=extra,
+        )
+
+
+class NewerCardSchemaWarning(SabuesoWarning):
+    """A card written with a newer schema of this line was read (#42)."""
+
+    catalog_key = "NewerCardSchemaWarning"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        card: str | None = None,
+        schema: str | None = None,
+    ) -> None:
+        extra = None
+        if message is None:
+            extra = {"card": card, "schema": schema}
         super().__init__(
             message,
             catalog=CATALOG if extra else None,

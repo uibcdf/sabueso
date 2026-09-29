@@ -12,6 +12,7 @@ except PackageNotFoundError:
 from smonitor.integrations import ensure_configured as _ensure_smonitor_configured
 
 from sabueso._private.smonitor import PACKAGE_ROOT as _SMONITOR_PACKAGE_ROOT
+from sabueso.core.curation_store import CurationStore
 from sabueso.core.errors import (
     ConnectorError,
     ResolverError,
@@ -19,6 +20,10 @@ from sabueso.core.errors import (
     SchemaError,
     StorageError,
 )
+from sabueso.core.knowledge_store import KnowledgeStore
+from sabueso.core.migration import migrate_card, refresh_card
+from sabueso.core.packets import KnowledgePacket, KnowledgeQuery, compose_packet
+from sabueso.core.tables import to_dataframe
 from sabueso.tools.card.protein import ambiguity_deck, resolve_protein_card
 from sabueso.tools.card.small_molecule import ligand_deck, resolve_molecule_card
 from sabueso.tools.card.storage import save_card_json, save_card_sqlite
@@ -39,6 +44,8 @@ from sabueso.tools.db.uniprot import (
     create_protein_card_online,
 )
 from sabueso.tools.deck.storage import save_deck_jsonl, save_deck_sqlite
+from sabueso.tools.packet import knowledge_packet
+from sabueso.tools.resolve import resolve
 
 # SMonitor is configured when Sabueso is imported (uibcdf/sabueso#31).
 _ensure_smonitor_configured(_SMONITOR_PACKAGE_ROOT)
@@ -54,6 +61,16 @@ __all__ = [
     "create_molecule_card_from_file",
     "create_molecule_card_from_json",
     "create_molecule_card_online",
+    "resolve",
+    "KnowledgeQuery",
+    "KnowledgePacket",
+    "compose_packet",
+    "knowledge_packet",
+    "CurationStore",
+    "KnowledgeStore",
+    "migrate_card",
+    "refresh_card",
+    "to_dataframe",
     "resolve_protein_card",
     "resolve_molecule_card",
     "ligand_deck",

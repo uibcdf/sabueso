@@ -12,3 +12,12 @@ DEFAULT_RULES_PATH = Path(__file__).with_name("selection_rules.json")
 def load_selection_rules(path: str | Path | None = None) -> Dict[str, Any]:
     rules_path = Path(path) if path else DEFAULT_RULES_PATH
     return json.loads(rules_path.read_text(encoding="utf-8"))
+
+
+DEFAULT_PROFILES_PATH = Path(__file__).with_name("enrichment_profiles.json")
+
+
+def load_enrichment_profiles() -> Dict[str, Any]:
+    """The packaged enrichment profiles (uibcdf/sabueso#45): ``{name@version: profile}``."""
+    data = json.loads(DEFAULT_PROFILES_PATH.read_text(encoding="utf-8"))
+    return data["profiles"]

@@ -107,7 +107,7 @@ def _structure_statements(card: Any, code: str) -> tuple:
             for instance in ligand.get("instances") or []:
                 instances.append(
                     {
-                        "structure": rel["object_ref"],
+                        "structure_ref": rel["object_ref"],
                         "asym_id": instance.get("asym_id"),
                         "chains": instance.get("chains") or [],
                         "positions": sorted(
@@ -119,7 +119,7 @@ def _structure_statements(card: Any, code: str) -> tuple:
                         ),
                     }
                 )
-    instances.sort(key=lambda i: (i["structure"], str(i["asym_id"])))
+    instances.sort(key=lambda i: (i["structure_ref"], str(i["asym_id"])))
     return dict(sorted(flags.items())), instances
 
 
@@ -141,7 +141,7 @@ def site_overlap_derivation() -> Dict[str, Any]:
 def ligand_sites_view(card: Any) -> Dict[str, Any]:
     """Each ligand site of the card next to the card's annotated sites.
 
-    Returns ``{"items", "annotated_sites", "classification"}``. Each item holds the
+    Returns ``{"items", "curated_engagements", "annotated_sites", "classification"}``. Each item holds the
     ligand, its contacted positions (PDBe-KB, over all structures), the per-instance
     contacts of the structures the card holds (RCSB) and the structures where one
     instance contacts more than one chain, the relevance statements of both sources
@@ -171,7 +171,7 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
             )
         items.append(
             {
-                "ligand": rel["object_ref"],
+                "ligand_ref": rel["object_ref"],
                 "name": q.get("ligand_name"),
                 "positions": positions,
                 "residues": [
@@ -181,7 +181,7 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
                 "structures": q.get("structures") or [],
                 "instances": instances,
                 "spans_chains": sorted(
-                    {i["structure"] for i in instances if len(i["chains"]) > 1}
+                    {i["structure_ref"] for i in instances if len(i["chains"]) > 1}
                 )
                 if instances
                 else None,
@@ -207,9 +207,30 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
                 "relationship_id": rel["id"],
             }
         )
-    items.sort(key=lambda i: i["ligand"])
+    items.sort(key=lambda i: i["ligand_ref"])
+    # What papers state about how compounds act on residues (#61), next to what the
+    # structures show; each keeps its source.
+    curated = [
+        {
+            "molecule_ref": (rel.get("qualifiers") or {}).get("molecule_ref"),
+            "ligand_ref": rel["object_ref"],
+            "positions": [
+                r["position"] for r in rel["qualifiers"].get("residues") or []
+            ],
+            "residues": rel["qualifiers"].get("residues"),
+            "mechanism": rel["qualifiers"].get("mechanism"),
+            "covalent_residue": rel["qualifiers"].get("covalent_residue"),
+            "method": rel["qualifiers"].get("method"),
+            "publication": rel["qualifiers"].get("publication"),
+            "relationship_id": rel["id"],
+        }
+        for rel in card.relationships("engages")
+    ]
     return {
         "items": items,
+        "curated_engagements": sorted(
+            curated, key=lambda c: (c["ligand_ref"], c["relationship_id"])
+        ),
         "annotated_sites": annotated,
         "classification": site_overlap_derivation(),
     }

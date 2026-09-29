@@ -62,6 +62,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 - `sabueso/tools/db/`: source access, one module per source in use (see
   `sources/registry.yaml`).
 - `sabueso/tools/card/`: the protein and small-molecule card tools, and file storage.
+- `sabueso/enrichers/`: declared enrichers and their runner (#86).
 - `sabueso/tools/deck/`: deck file storage.
 - `sabueso/tools/resolve.py`: `sabueso.resolve`; `sabueso/tools/packet.py`: `sabueso.knowledge_packet`.
 - `sabueso/_private/`: argument digesters (ArgDigest, one per argument name) and
@@ -82,7 +83,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 839 tests passed, 15 online tests deselected (2026-09-27). Run with
+- Offline suite: 848 tests passed, 15 online tests deselected (2026-09-27). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.

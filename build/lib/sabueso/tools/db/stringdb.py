@@ -22,7 +22,9 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
 
+from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db._record import online, source_record
 
 STRING_API = "https://string-db.org/api/json"
 CALLER_IDENTITY = "sabueso"
@@ -111,3 +113,29 @@ class FixtureStringClient:
             )
         saved = json.loads(path.read_text(encoding="utf-8"))
         return {**saved, "retrieved_at": self.retrieved_at}
+
+
+# --- Public source access (uibcdf/sabueso#49) -----------------------------------------
+
+
+@arg_digest()
+def get_partners(
+    identifier: str,
+    species: int,
+    required_score: int = DEFAULT_REQUIRED_SCORE,
+    limit: int = DEFAULT_LIMIT,
+    client: Any = None,
+    skip_digestion: bool = False,
+):
+    """STRING functional partners of a protein within a species (NCBI taxonomy id)."""
+    response = online(client, OnlineStringClient).partners(
+        identifier, species, required_score=required_score, limit=limit
+    )
+    return source_record(
+        "STRING",
+        "partners",
+        response.get("query"),
+        response.get("retrieved_at"),
+        response.get("version"),
+        response.get("results"),
+    )

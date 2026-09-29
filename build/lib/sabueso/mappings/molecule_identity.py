@@ -14,7 +14,7 @@ itself states:
 Only standard InChIKeys anchor a molecule. A record without one (no structure, or a
 non-standard InChI) is reported as unanchored and never guessed. Two structures that
 differ only in charge, isotopes or stereochemistry have different standard InChIKeys and
-therefore different anchors (``devguide/pending_proposals/molecule_identity.md``).
+therefore different anchors (``devguide/archive/molecule_identity.md``).
 """
 
 from __future__ import annotations
@@ -242,8 +242,8 @@ def map_unichem_identity(
 
 
 def linked_records(compound: Dict[str, Any]) -> Dict[str, List[str]]:
-    """ChEMBL ids and PDB component codes that UniChem lists for a compound."""
-    out: Dict[str, List[str]] = {"chembl": [], "pdb.ligand": []}
+    """ChEMBL ids, PDB component codes and PubChem CIDs that UniChem lists."""
+    out: Dict[str, List[str]] = {"chembl": [], "pdb.ligand": [], "pubchem": []}
     for source in compound.get("sources", []):
         ref = _unichem_ref(source)
         if ref:

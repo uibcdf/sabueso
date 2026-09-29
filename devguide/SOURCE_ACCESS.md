@@ -74,6 +74,32 @@ Each warns with `DeprecatedUsageWarning` (`SABUESO-W-DEPRECATED-001`, also a
 
 `create_*_card_from_json` and `create_*_card_from_file` stay, for offline work and tests.
 
+## Enriching cards (#86)
+
+A source that adds knowledge to cards declares an enricher in `sabueso/enrichers/`
+(`devguide/SOURCE_ARCHITECTURE.md`). The declaration has:
+- the option and source name;
+- the registry id;
+- the knowledge areas it answers;
+- the organisms it covers;
+- `requests`, `fetch` and `map`.
+
+The runner applies what every source needs: coverage (`not_applicable`), `not_found`
+and `error` per request, and a fixed order. The knowledge-state rows and the migration
+map are derived from the declarations.
+
+To add one:
+1. Write the client, the `get_*` function and the mapping, as above.
+2. Write the enricher, and register it in `ENRICHERS` in the order it runs.
+3. Add the option and its client to `resolve_protein_card`, with their digesters.
+4. Add fixtures, and a card in the card-shape builder.
+
+`tests/core/test_enrichers_offline.py` checks the wiring: the parameters, the
+digesters, the registry entry `in_use`, and the derived rows.
+
+RCSB structures, the ChEMBL/BindingDB/PubChem BioAssay group and NCBI Gene stay
+bespoke, for the reasons in the architecture document.
+
 ## Boundaries
 
 - **MolSysMT.** Sabueso retrieves knowledge records, not coordinate files.

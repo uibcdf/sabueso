@@ -17,27 +17,22 @@ verified on the way in (#32); unverified payloads never leave this module.
 from __future__ import annotations
 
 import json
-import re
 import sqlite3
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
+from sabueso._private.argdigest import arg_digest
+from sabueso._private.argdigest.argument.table import digest_table
+
 DECK_HEADER = "sabueso_deck"
 DECK_FORMAT = 1
-META_TABLE = "deck_meta"
-TABLE_NAME = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+META_TABLE = "deck_meta"  # reserved in the table digester
 
 
 def _unwrap_value(node: Any) -> Any:
     if isinstance(node, dict) and "value" in node:
         return node["value"]
     return node
-
-
-def _table(name: str) -> str:
-    if not TABLE_NAME.match(name or "") or name == META_TABLE:
-        raise ValueError(f"Invalid deck table name: {name!r}")
-    return name
 
 
 def save_deck_jsonl(deck: Any, path: str | Path) -> None:
@@ -84,17 +79,18 @@ def load_deck_jsonl(path: str | Path) -> Any:
     return Deck.from_jsonl(str(path))
 
 
+@arg_digest()
 def save_deck_sqlite(
     deck: Any,
     path: str | Path,
     table: str = "cards",
     id_field: str | None = None,
+    skip_digestion: bool = False,
 ) -> None:
     """Save a Deck into a SQLite table (one row per card) and its meta into ``deck_meta``.
 
     The table's previous rows are replaced: a table holds one deck.
     """
-    table = _table(table)
     out = Path(path)
     out.parent.mkdir(parents=True, exist_ok=True)
 
@@ -131,8 +127,9 @@ def save_deck_sqlite(
         conn.commit()
 
 
+@arg_digest()
 def read_deck_sqlite(
-    path: str | Path, table: str = "cards"
+    path: str | Path, table: str = "cards", skip_digestion: bool = False
 ) -> Tuple[Dict[str, Any], List[Any]]:
     """``(meta, cards)`` of the deck stored in ``table``; every card is verified (#32)."""
     from sabueso.core.card import Card
@@ -144,8 +141,12 @@ def read_deck_sqlite(
 def _read_deck_sqlite(
     path: str | Path, table: str = "cards"
 ) -> Tuple[Dict[str, Any], List[dict]]:
-    """``(meta, payloads)`` of the deck stored in ``table``, unverified."""
-    table = _table(table)
+    """``(meta, payloads)`` of the deck stored in ``table``, unverified.
+
+    Reached from ``Deck.from_sqlite``, a classmethod ArgDigest does not wrap, so the
+    table name is digested here as well: it is interpolated into SQL.
+    """
+    table = digest_table(table, caller="sabueso.core.deck.Deck.from_sqlite")
     with sqlite3.connect(Path(path)) as conn:
         cur = conn.cursor()
         cur.execute(f"SELECT card_json FROM {table} ORDER BY id ASC")
@@ -164,7 +165,10 @@ def _read_deck_sqlite(
     return meta, cards
 
 
-def load_deck_sqlite(path: str | Path, table: str = "cards") -> Any:
+@arg_digest()
+def load_deck_sqlite(
+    path: str | Path, table: str = "cards", skip_digestion: bool = False
+) -> Any:
     """Load the deck stored in ``table``, with its meta; every card is verified (#32)."""
     from sabueso.core.deck import Deck
 
