@@ -1033,3 +1033,23 @@ uibcdf/sabueso#83, wave 2, first of the interface sources. Card schema 0.3.7.
   not be confirmed, and may have been the article's licence.
 - Reading HTML pages is fragile and, without terms, not redistributable. It waits on the
   maintainers (#84).
+
+## The disease as an entity, anchored at MONDO (2026-09-29)
+uibcdf/sabueso#90, step 1. Card schema 0.3.7.
+- **Why MONDO.** Six sources name diseases with different ids (DOID, EFO, MONDO,
+  ORPHA, MIM, MeSH). MONDO integrates those terminologies and states, term by term,
+  which external ids are the same disease (`MONDO:equivalentTo`). In release v2026-09-01
+  that is 118,297 equivalences over 36,015 terms, each external id to exactly one term.
+- **Identity** (`mondo_equivalence@1`). An external id resolves only through a stated
+  equivalence. The resolution records the statement and the release. Other xrefs are
+  related terms, kept apart (`identifiers.related_ids`) and never read as identity:
+  for example, EFO:0001360 is cited by MONDO's type 2 diabetes term only as the source
+  of other xrefs, so it does not resolve.
+- **Obsolete terms are not followed.** The replacement MONDO states is named as a
+  candidate. A replacement can be a merge or a split, and whoever cites the old term
+  decides.
+- **Routing.** Disease namespaces go to disease cards. `omim:` and `mesh:` also number
+  genes and chemicals: those find no equivalence and are reported as not found, never
+  as a disease.
+- **Next steps (#90):** relate the diseases on protein and molecule cards through these
+  equivalences, then disease → targets.

@@ -111,8 +111,13 @@ schema:
     rcsb_author_numbering@1, and a matching residue), the affinities of mutant and wild
     type in molar, kinetics and thermodynamics where measured, the temperature, the
     method and the publication. A bound keeps its relation and "n.b." is no_binding.
-    ΔΔG is not stored; the view derives it (binding_ddg@1). Additive, so a 0.3.6 card
-    is a valid 0.3.7 card without it.
+    ΔΔG is not stored; the view derives it (binding_ddg@1). It also adds disease cards
+    (entity_type disease, uibcdf/sabueso#90), anchored at a MONDO term, with
+    identifiers.mondo, identifiers.equivalent_ids (the ids MONDO states are the same
+    disease, the only ones that join), identifiers.related_ids (xrefs that are not
+    identity), names, annotations.definition, annotations.disease_subsets, and
+    subclass_of relationships to the parent terms. Additive, so a 0.3.6 card is a valid
+    0.3.7 card without them.
 card_base:
   meta:
     card_id:
@@ -770,6 +775,36 @@ small_molecule_card:
   inherits: card_base
   annotations:
     drug_class:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+disease_card:
+  inherits: card_base
+  identifiers:
+    mondo:
+      value: string
+      source_assertion_ids:
+      - string
+    equivalent_ids:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    related_ids:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+  annotations:
+    definition:
+      value:
+        text: string
+        references:
+        - string
+      source_assertion_ids:
+      - string
+    disease_subsets:
       value:
       - string
       source_assertion_ids:

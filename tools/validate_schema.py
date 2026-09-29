@@ -33,7 +33,13 @@ def load_schema_paths() -> List[str]:
         elif isinstance(obj, list):
             pass
 
-    for root in ("card_base", "protein_card", "peptide_card", "small_molecule_card"):
+    for root in (
+        "card_base",
+        "protein_card",
+        "peptide_card",
+        "small_molecule_card",
+        "disease_card",
+    ):
         if root in data:
             walk("", data[root])
 

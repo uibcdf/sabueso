@@ -11,8 +11,8 @@ and indexes it. This module is how every such client keeps that index
   given, or ``$SABUESO_CACHE_DIR``. Sabueso has no default path.
 - **Written atomically** (``write_release``): files are staged next to their target and
   renamed into place, so an interrupted write never leaves a release half cached.
-- **Checked** (``verify_md5``) against the checksum the source publishes, when it
-  publishes one.
+- **Checked** (``verify_md5``, ``verify_sha256``) against the checksum the source
+  publishes, when it publishes one.
 
 A release never changes once published, so a cached release does not expire; a newer
 release is a new key.
@@ -67,6 +67,11 @@ def forget(source: str | None = None) -> None:
 
 def verify_md5(payload: bytes, md5: str, what: str) -> None:
     if hashlib.md5(payload).hexdigest() != md5:  # nosec - the source's own checksum
+        raise ConnectorError(f"{what} does not match its published checksum.")
+
+
+def verify_sha256(payload: bytes, sha256: str, what: str) -> None:
+    if hashlib.sha256(payload).hexdigest() != sha256:
         raise ConnectorError(f"{what} does not match its published checksum.")
 
 

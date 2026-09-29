@@ -21,6 +21,7 @@ wrote it (`sabueso/tools/db/`, `sabueso/resolver/`).
 | --- | --- | --- | --- | --- |
 | `P00938.json`, `P35372.json`, `P52270.json`, `P52789.json`, `P60174.json`, `P60175.json`, `Q6FHP9.json`, `V9HWK1.json`, `A0A140VJM9.json` | UniProtKB (UniProt Consortium) | release 2026_03 | 2026-09-23 | CC BY 4.0 |
 | `P00648.json` | UniProtKB (UniProt Consortium), barnase of *Bacillus amyloliquefaciens*, a public test system for interface mutations | release 2026_03 (entry version 146) | 2026-09-29 | CC BY 4.0 |
+| `mondo/mondo.obo` | MONDO (Monarch Initiative), release v2026-09-01: the file's header and the whole stanzas of seven terms (triosephosphate isomerase deficiency, Chagas disease, giardiasis, type 2 diabetes mellitus and its parent, an obsolete term and its replacement), unchanged | v2026-09-01 | 2026-09-29 | CC BY 4.0 |
 | `skempi/skempi_v2.csv` | SKEMPI 2.0 (Jankauskaitė et al. 2019), the 105 rows of the barnase–barstar complexes (1BRS, 1B2S, 1B2U, 1B3S, 1X1W, 1X1X), header kept; a subset of the whole file, rows unchanged | 2.0 (CSV of 2018-06-06) | 2026-09-29 | CC BY 4.0 |
 | `Q4D3W2.json`, `Q4QGX0.json` | UniProtKB (UniProt Consortium), a *T. cruzi* and an *L. major* entry with PHI-base records | release 2026_03 | 2026-09-27 | CC BY 4.0 |
 | `phi_base/*.json` | PHI-base 5 (Zenodo record 21196331), the curation sessions naming Q4D3W2, H2DQH1 and Q4QGX0, as split by `sabueso.tools.db.phi_base.split_release` | 5.6 | 2026-09-27 | CC BY 4.0 (cite PHI-base; Urban et al., Nucleic Acids Res. 2025) |
@@ -68,6 +69,8 @@ JSON.
   The site residues in these fixtures come from **CDD** (NCBI), a U.S. government work
   under NLM policy, like PubChem.
 - **STRING** — https://string-db.org, CC BY 4.0.
+- **MONDO** — Mondo Disease Ontology, Monarch Initiative, https://mondo.monarchinitiative.org/,
+  CC BY 4.0. Cite Mondo and the release (v2026-09-01).
 - **SKEMPI 2.0** — https://life.bsc.es/pid/skempi2/, CC BY 4.0 (its terms of download and
   use). Cite: Jankauskaitė J, Jiménez-García B, Dapkūnas J, Fernández-Recio J, Moal IH
   (2019) SKEMPI 2.0: an updated benchmark of changes in protein–protein binding energy,

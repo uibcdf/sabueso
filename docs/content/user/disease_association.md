@@ -68,7 +68,7 @@ Orphanet states the gene's UniProt accession itself, so the link is its own. The
 
 `sabueso.resolve("P60174", clinvar={})` adds ClinVar's variants of the gene
 (`annotations.clinical_variants`), found by the NCBI Gene id the UniProt entry
-cross-references. At most 500 per gene by default (`{"limit": n}`); a cut is reported.
+cross-references. By default every record of the gene, up to 5000 (`{"limit": n}` asks for fewer); a cut is reported.
 Each variant keeps what ClinVar states:
 - the HGVS title, variant type and consequences;
 - the germline classification and its review status. "Conflicting classifications of
@@ -103,7 +103,7 @@ change, each with its allele count, allele number and frequency in exomes and ge
 (`annotations.population_variants`). They are placed in UniProt numbering by the same
 rule as ClinVar, through an Ensembl transcript UniProt states for the canonical
 isoform. Variants without a protein change are left out, and the enrichment record
-counts them. At most 1000 per gene by default (`{"limit": n}`).
+counts them. By default every variant, up to 5000 (`{"limit": n}` asks for fewer); a cut is reported.
 
 ## Coverage
 
@@ -113,3 +113,38 @@ the knowledge state says `not_queried`, with that reason, never `not_stated`.
 The files are downloaded once per process, about 50 MB with text mining. Set
 `$SABUESO_CACHE_DIR` to keep them between sessions. The version recorded is each file's
 publication date.
+
+## Disease cards (MONDO)
+
+A disease is also an entity of its own, anchored at a MONDO term. MONDO integrates the
+terminologies the sources above use (DOID, Orphanet, OMIM, MeSH, EFO, NCIT…) and states,
+term by term, which of their ids are the same disease.
+
+```{note}
+Disease cards are on main, not yet in a release (card schema 0.3.7).
+```
+
+```python
+import sabueso
+
+# The same disease, named by DISEASES (DOID), Orphanet and MONDO
+for query in ("doid:DOID:0050884", "ORPHA:868", "mondo:MONDO:0014221"):
+    card, resolution = sabueso.resolve(query)
+    print(card.id, resolution.decision.get("identity"))
+
+card.get("names.canonical_name")  # triosephosphate isomerase deficiency
+card.get("identifiers.equivalent_ids")  # the ids MONDO states are this disease
+card.relationships("subclass_of")  # its parent terms in MONDO
+```
+
+- **Identity only through stated equivalence** (`mondo_equivalence@1`). An id of another
+  terminology resolves only when MONDO states that it is the same disease. The
+  resolution records that statement and the MONDO release.
+- **Related is not the same.** MONDO's other cross-references are related terms. They
+  are kept in `identifiers.related_ids`, and never used to join.
+- **Obsolete terms** are not followed. The resolution (`obsolete`) names the replacement
+  MONDO states as a candidate.
+- `omim:` and `mesh:` also number genes and chemicals. Those have no MONDO equivalence
+  and are reported as not found, never as a disease.
+- MONDO's release file (about 53 MB) is downloaded once per process and checked against
+  its published SHA-256.

@@ -79,6 +79,7 @@ def fixture_cards() -> List[dict]:
     from sabueso.tools.db.diseases import FixtureDISEASESClient
     from sabueso.tools.db.gnomad import FixtureGnomADClient
     from sabueso.tools.db.interpro import FixtureInterProClient
+    from sabueso.tools.db.mondo import FixtureMONDOClient
     from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
     from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
     from sabueso.tools.db.orphadata import FixtureOrphadataClient
@@ -289,7 +290,9 @@ def fixture_cards() -> List[dict]:
             skempi=True,
             skempi_client=FixtureSKEMPIClient(data),
         )
-    cards = (tctim, hstim, molecule, compound, pathogen, drug, barnase)
+        # A disease card, resolved from an Orphanet id through MONDO (0.3.7).
+        disease, _ = sabueso.resolve("ORPHA:868", mondo_client=FixtureMONDOClient(data))
+    cards = (tctim, hstim, molecule, compound, pathogen, drug, barnase, disease)
     return [c.to_dict() for c in cards]
 
 

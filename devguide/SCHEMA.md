@@ -3,7 +3,7 @@
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
   - `0.3.7` is current, not yet released: it adds `annotations.interface_mutations`
-    (SKEMPI 2.0, #83);
+    (SKEMPI 2.0, #83) and disease cards (MONDO, #90);
   - `0.3.6` is the schema of release 0.6.0: it adds UniProt isoforms, alternative
     sequences, secondary structure (UniProt's, and per chain from RCSB) and
     `substitution.missing` (#80), the curated biological context (#60), pathogen
@@ -327,6 +327,8 @@ A Relationship is first-class, traceable knowledge:
     `{ac, an, af}` as stated. Placed by the same rule as ClinVar, through an Ensembl
     transcript UniProt states for the canonical isoform. gnomAD's transcript ids carry
     no version, so the residue check guards against a changed sequence.
+  - disease hierarchy (added in #90, schema 0.3.7): `subclass_of` (disease →
+    `mondo:<id>`), one per parent term MONDO states.
   - pathways (added in #83, schema 0.3.6):
     - `participates_in` (protein → `reactome:<stId>`), one per Reactome event mapping
       the UniProt accession. Qualifiers: `kind` (`pathway`, lowest level, or
@@ -613,6 +615,22 @@ Real‑ID validation examples:
 
 ## Disease Section (ProteinCard)
 Protein cards include a `disease` section with disease associations linked to their SourceAssertions.
+
+## Disease cards (#90, schema 0.3.7)
+A disease is an entity of its own (`entity_type: disease`), anchored at a MONDO term:
+`sabueso:disease:mondo:MONDO:0014221`.
+- **Identity.** An id of another terminology (DOID, Orphanet, OMIM, MeSH, EFO, NCIT…)
+  resolves to a disease card only when MONDO states that it is the same disease
+  (`MONDO:equivalentTo`, rule `mondo_equivalence@1`). The resolution records the
+  statement and the MONDO release. Other xrefs are related terms, kept in
+  `identifiers.related_ids`, never read as identity. Nothing is matched by name.
+- **Obsolete terms** are not followed: the resolution (`obsolete`) names the
+  replacement MONDO states as candidates.
+- **Fields:** `identifiers.mondo`, `identifiers.equivalent_ids`,
+  `identifiers.related_ids`, `names.canonical_name`, `names.synonyms` (with MONDO's
+  scope as `kind`), `annotations.definition` and `annotations.disease_subsets`.
+- **Relationships:** `subclass_of` (disease → `mondo:<parent>`), one per parent MONDO
+  states.
 
 ## Ligands (ProteinCard)
 Ligands are not a card section (the reserved `ligands.items` field was removed, #25).

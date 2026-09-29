@@ -38,6 +38,7 @@ PREDICATES = frozenset(
         "tested_in",  # molecule -> clinical trial (nct:), cited by an indication, #81
         "associated_with",  # protein -> disease term (DISEASES, per channel), #82
         "participates_in",  # protein -> pathway or reaction (Reactome), #83
+        "subclass_of",  # disease -> broader disease term (MONDO is_a), #90
     }
 )
 

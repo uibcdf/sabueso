@@ -11,8 +11,9 @@ shows how to use them.
 - `sabueso.resolve(query, entity_type=None, profile=None, curations=None, **options)`
   returns `(card | None, resolution)`.
   - `query` is an identifier (UniProt accession, `pdb:`, `pubchem:`, `chembl:`,
-    `pdb.ligand:`, `inchikey:`) or an `EntityQuery(name=..., organism=...,
-    include_subtaxa=...)`.
+    `pdb.ligand:`, `inchikey:`, a disease id: `mondo:`, `doid:`, `orphanet:`, `omim:`,
+    `mesh:`, `efo:`… (#90)) or an `EntityQuery(name=..., organism=...,
+    include_subtaxa=...)`. `entity_type` is `protein`, `small_molecule` or `disease`.
   - Options go to the card tool. For proteins:
     - `structures`, `interfaces`, `ligand_sites`, `family_sites`;
     - `chembl`, `bindingdb`, `pubchem_bioassay`, `string`;
@@ -22,9 +23,10 @@ shows how to use them.
       and `gnomad` (variants, #83);
     - each source's `*_client`, and `resolver`.
   - For small molecules: `unichem`, `pubchem`, `indications` and `trials` (#81).
+  - For diseases: `mondo_client`.
   - An option the tool does not take is refused, never ignored.
 - `sabueso.resolve_protein_card`, `sabueso.resolve_molecule_card`: the card tools behind
-  `resolve`.
+  `resolve`; diseases through `sabueso.tools.card.disease.resolve_disease_card` (#90).
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
   Deck.
 - `sabueso.ligand_deck(protein_card, ...)`: the small-molecule cards of a protein's
@@ -121,7 +123,7 @@ Raw records in a provenance envelope, one client per source (`SOURCE_ACCESS.md`)
 - `bindingdb.get_affinities`, `pubchem.get_compound`, `pubchem_bioassay.get_assays`;
 - `unichem.get_compound`, `stringdb.get_partners`;
 - `ncbi_taxonomy.get_taxon`, `ncbi_gene.get_gene`;
-- `skempi.get_mutations`.
+- `skempi.get_mutations`, `mondo.get_term`.
 
 Each source also has an `Online<Source>Client` and a `Fixture<Source>Client`. The legacy
 `create_*_card_*` builders are deprecated and will be removed before 1.0.

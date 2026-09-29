@@ -19,6 +19,7 @@ from sabueso.tools.db import (
     diseases,
     gnomad,
     interpro,
+    mondo,
     ncbi_gene,
     ncbi_taxonomy,
     open_targets,
@@ -123,6 +124,9 @@ CALLS = {
     ),
     "skempi.get_mutations": lambda: skempi.get_mutations(
         ["1BRS"], client=skempi.FixtureSKEMPIClient("temp_data")
+    ),
+    "mondo.get_term": lambda: mondo.get_term(
+        "MONDO:0014221", client=mondo.FixtureMONDOClient("temp_data")
     ),
 }
 

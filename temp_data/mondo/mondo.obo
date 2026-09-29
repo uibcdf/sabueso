@@ -1,0 +1,394 @@
+format-version: 1.2
+data-version: releases/2026-09-01
+subsetdef: clingen "Disease classes available in the ClinGen resource"
+subsetdef: disease_grouping "disease_grouping"
+subsetdef: do_inheritance_inconsistent "classes where the corresponding DO term is both AR and AD https://github.com/monarch-initiative/monarch-disease-ontology/issues/406"
+subsetdef: doid_rare "DOID rare disease subset"
+subsetdef: gard_rare "GARD rare disease subset"
+subsetdef: harrisons_view "harrisons_view"
+subsetdef: historic_epidemic "classes representing a historic epidemic"
+subsetdef: implicit_genetic_in_ordo "in ORDO this is classified as genetic even though the class is used for non-genetic disorders"
+subsetdef: inferred_rare "inferred rare disease subset"
+subsetdef: merged_class "this class merges distinct concepts in other resources"
+subsetdef: metaclass "A grouping of disease classes. Should be excluded from analysis"
+subsetdef: mondo_curated_rare "mondo curated rare"
+subsetdef: mostly_harmless "condition has no severe phenotypes and is harmless or mostly harmless"
+subsetdef: n_of_one "N of one"
+subsetdef: ncit_rare "ncit rare"
+subsetdef: nord_rare "nord rare"
+subsetdef: not_a_disease "classes that do not represent diseases"
+subsetdef: obsoletion_candidate "obsoletion candidate"
+subsetdef: obsoletion_protected "obsoletion_protected"
+subsetdef: omim_susceptibility "OMIM entry with braces, e.g. {}, which indicate mutations that contribute to susceptibility to multifactorial disorders (e.g., diabetes, asthma) or to susceptibility to infection (e.g., malaria)."
+subsetdef: ordo_biological_anomaly "biological anomaly"
+subsetdef: ordo_clinical_situation "particular clinical situation in a disease or syndrome"
+subsetdef: ordo_clinical_subtype "clinical subtype"
+subsetdef: ordo_clinical_syndrome "clinical syndrome"
+subsetdef: ordo_disease "disease"
+subsetdef: ordo_disorder "disorder"
+subsetdef: ordo_etiological_subtype "etiological subtype"
+subsetdef: ordo_group_of_disorders "group of disorders"
+subsetdef: ordo_histopathological_subtype "histopathological subtype"
+subsetdef: ordo_inheritance_inconsistent "classes where the corresponding ordo term is both AR and AD https://github.com/monarch-initiative/monarch-disease-ontology/issues/406"
+subsetdef: ordo_malformation_syndrome "malformation syndrome"
+subsetdef: ordo_morphological_anomaly "morphological anomaly"
+subsetdef: ordo_subtype_of_a_disorder "subtype of a disorder"
+subsetdef: orphanet_rare "orphanet rare"
+subsetdef: otar "Disease classes available in the Open Targets resource"
+subsetdef: other_hierarchy "A bin for classes that are likely not diseases and may be moved to a separate hierarchy"
+subsetdef: predisposition "Diseases that are pre-dispositions to other diseases"
+subsetdef: prototype_pattern "Conforms to the prototype design pattern where the classic/type1 form may be confused with the grouping type. See https://github.com/monarch-initiative/monarch-disease-ontology/issues/149"
+subsetdef: rare "rare"
+subsetdef: rare_grouping "rare grouping"
+subsetdef: speculative "A hypothesized disease whose existence is speculative"
+subsetdef: venom_avian "VeNom avian animal type subset"
+subsetdef: venom_equine "VeNom equine animal type subset"
+subsetdef: venom_exotics "VeNom exotics animal type subset"
+subsetdef: venom_farm_animal "VeNom farm animal type subset"
+subsetdef: venom_large_animal "VeNom large animal type subset"
+subsetdef: venom_small_animal "VeNom small animal type subset"
+synonymtypedef: ABBREVIATION "abbreviation"
+synonymtypedef: AMBIGUOUS "ambiguous"
+synonymtypedef: DEPRECATED "A synonym that is historic and discouraged"
+synonymtypedef: DUBIOUS "dubious synonym"
+synonymtypedef: EXCLUDE "Synonym to be removed from public release but maintained in edit version as record of external usage"
+synonymtypedef: MISSPELLING "A synonym that is recorded for consistency with another source but is a misspelling"
+synonymtypedef: NON_HUMAN "A synonym that is used for non-human animal variants of a disease"
+synonymtypedef: OMO:0003005 "UK spelling synonym"
+idspace: BAO http://www.bioassayontology.org/bao#BAO_ 
+idspace: CoVIC https://cvdb.ontodev.com/antibody/ 
+idspace: dc http://purl.org/dc/elements/1.1/ 
+idspace: doap http://usefulinc.com/ns/doap# 
+idspace: EFO http://www.ebi.ac.uk/efo/EFO_ 
+idspace: ENM http://purl.enanomapper.org/onto/ENM_ 
+idspace: faldo http://biohackathon.org/resource/faldo# 
+idspace: foaf http://xmlns.com/foaf/0.1/ 
+idspace: gocam http://model.geneontology.org/ 
+idspace: ICD10CM http://purl.bioontology.org/ontology/ICD10CM/ 
+idspace: icd10cm http://purl.bioontology.org/ontology/ICD10CM/ 
+idspace: ICD10WHO https://icd.who.int/browse10/2019/en#/ 
+idspace: ICD11 http://id.who.int/icd/entity/ 
+idspace: icd11.foundation http://id.who.int/icd/entity/ 
+idspace: IEDB http://iedb.org/ 
+idspace: iedb-protein http://iedb.org/taxon-protein/ 
+idspace: MEDDRA http://identifiers.org/meddra/ 
+idspace: MEDGEN http://identifiers.org/medgen/ 
+idspace: MESH http://identifiers.org/mesh/ 
+idspace: NPO http://purl.bioontology.org/ontology/npo#NPO_ 
+idspace: oboInOwl http://www.geneontology.org/formats/oboInOwl# 
+idspace: OMIM https://omim.org/entry/ 
+idspace: OMIMPS https://omim.org/phenotypicSeries/PS 
+idspace: ONTIE https://ontology.iedb.org/ontology/ONTIE_ 
+idspace: Orphanet http://www.orpha.net/ORDO/Orphanet_ 
+idspace: PRO http://www.uniprot.org/annotation/PRO_ 
+idspace: protege http://protege.stanford.edu/plugins/owl/protege# 
+idspace: SCTID http://identifiers.org/snomedct/ 
+idspace: skos http://www.w3.org/2004/02/skos/core# 
+idspace: sssom https://w3id.org/sssom/ 
+idspace: terms http://purl.org/dc/terms/ 
+idspace: UC http://purl.uniprot.org/core/ 
+idspace: UMLS http://linkedlifedata.com/resource/umls/id/ 
+idspace: UP http://purl.uniprot.org/uniprot/ 
+idspace: vocab https://w3id.org/semapv/vocab/ 
+ontology: mondo
+property_value: dc:description "A semi-automatically constructed ontology that merges in multiple disease resources to yield a coherent merged ontology." xsd:string
+property_value: dc:title "Mondo Disease Ontology" xsd:string
+property_value: foaf:homepage "http://obofoundry.org/ontology/mondo.html" xsd:anyURI
+property_value: IAO:0000700 MONDO:0000001
+property_value: IAO:0000700 MONDO:0021125
+property_value: IAO:0000700 MONDO:0021178
+property_value: IAO:0000700 MONDO:0042489
+property_value: terms:license http://creativecommons.org/licenses/by/4.0/
+property_value: terms:source http://purl.obolibrary.org/obo/chebi.owl
+property_value: terms:source http://purl.obolibrary.org/obo/doid.owl
+property_value: terms:source http://purl.obolibrary.org/obo/envo.owl
+property_value: terms:source http://purl.obolibrary.org/obo/go.owl
+property_value: terms:source http://purl.obolibrary.org/obo/hp.owl
+property_value: terms:source http://purl.obolibrary.org/obo/mf.owl
+property_value: terms:source http://purl.obolibrary.org/obo/ncbitaxon.owl
+property_value: terms:source http://purl.obolibrary.org/obo/ncit.owl
+property_value: terms:source http://purl.obolibrary.org/obo/uberon.owl
+property_value: terms:source http://www.orpha.net/ontology/orphanet.owl
+property_value: terms:source https://id.nlm.nih.gov/mesh/
+property_value: terms:source https://rarediseases.info.nih.gov/
+
+[Term]
+id: MONDO:0000002
+name: obsolete 46,XX sex reversal
+is_obsolete: true
+replaced_by: MONDO:0009299
+
+[Term]
+id: MONDO:0001103
+name: giardiasis
+def: "An infection of the small intestine caused by the flagellated protozoan giardia lamblia. It is spread via contaminated food and water and by direct person-to-person contact." [MESH:D005873]
+synonym: "Giardia infection" EXACT [MONDO:patterns/infectious_disease_by_agent]
+synonym: "Giardiases" RELATED [MESH:D005873]
+synonym: "infections, Giardia" RELATED [MONDO:patterns/infectious_disease_by_agent]
+synonym: "Lambliases" RELATED [MESH:D005873]
+synonym: "lambliasis" RELATED [MESH:D005873]
+xref: DOID:10718 {source="MONDO:equivalentTo"}
+xref: ICD10CM:A07.1 {source="https://orcid.org/0009-0001-6494-4831", source="MONDO:equivalentTo", source="https://orcid.org/0000-0002-5002-8648", source="DOID:10718"}
+xref: icd11.foundation:433310499 {source="MONDO:equivalentTo"}
+xref: ICD9:007.1 {source="DOID:10718"}
+xref: MEDGEN:42213 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D005873 {source="MONDO:equivalentTo", source="DOID:10718"}
+xref: SCTID:10679007 {source="MONDO:equivalentTo", source="DOID:10718"}
+xref: UMLS:C0017536 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:42213"}
+is_a: MONDO:0002428 {source="DOID:10718", source="MESH:D005873"} ! protozoa infectious disease
+is_a: MONDO:0024270 {source="MESH:D005873"} ! parasitic intestinal disorder
+intersection_of: MONDO:0005550 ! infectious disease
+intersection_of: disease_has_infectious_agent NCBITaxon:5740 ! Giardia
+relationship: disease_has_infectious_agent NCBITaxon:5740 ! Giardia
+property_value: curated_content_resource "https://www.malacards.org/card/giardiasis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9097" xsd:anyURI
+property_value: skos:exactMatch DOID:10718
+property_value: skos:exactMatch icd10cm:A07.1
+property_value: skos:exactMatch icd11.foundation:433310499
+property_value: skos:exactMatch MEDGEN:42213
+property_value: skos:exactMatch MESH:D005873
+property_value: skos:exactMatch SCTID:10679007
+property_value: skos:exactMatch UMLS:C0017536
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/infectious_disease_by_agent.yaml
+
+[Term]
+id: MONDO:0001444
+name: Chagas disease
+def: "A parasitic infection caused by Trypanosoma cruzi. It is transmitted by insect bites. It is characterized by an acute and chronic phase; in the acute phase patients may have fever, malaise, and swelling at the site of the insect bite. In the chronic phase patients develop hepatosplenomegaly, lymphadenopathy, cardiomyopathy and arrhythmias." [NCIT:C84629]
+subset: doid_rare {source="DOID:12140"}
+subset: gard_rare {source="GARD:0018795", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:3386"}
+subset: orphanet_rare {source="Orphanet:3386"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "Chagas disease" EXACT [DOID:12140, ICD10WHO:B57, icd11.foundation:1365585570, NCIT:C84629, Orphanet:3386]
+synonym: "Chagas' disease" EXACT [DOID:12140, ICD10CM:B57]
+synonym: "infection by trypanosoma cruzi" EXACT []
+synonym: "Trypanosoma cruzi caused disease or disorder" EXACT [MONDO:patterns/specific_infectious_disease_by_agent]
+synonym: "Trypanosoma cruzi disease or disorder" EXACT []
+synonym: "Trypanosoma cruzi infectious disease" EXACT []
+xref: DOID:12140 {source="MONDO:equivalentTo"}
+xref: GARD:0018795 {source="MONDO:GARD"}
+xref: ICD10CM:B57 {source="MONDO:equivalentTo"}
+xref: ICD10WHO:B57 {source="https://orcid.org/0000-0002-7941-5545", source="MONDO:equivalentTo", source="https://orcid.org/0000-0001-9439-5346"}
+xref: icd11.foundation:1365585570 {source="MONDO:equivalentTo"}
+xref: ICD9:086.2 {source="DOID:12140"}
+xref: MedDRA:10001935 {source="Orphanet:3386", source="Orphanet:3386/e"}
+xref: MEDGEN:11935 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D014355 {source="MONDO:equivalentTo"}
+xref: NCIT:C84629 {source="MONDO:equivalentTo"}
+xref: Orphanet:3386 {source="MONDO:equivalentTo"}
+xref: SCTID:77506005 {source="MONDO:equivalentTo"}
+xref: UMLS:C0041234 {source="MEDGEN:11935", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0000940 {source="DOID:12140", source="EFO:0008559", source="MESH:D014355", source="MONDO:Redundant"} ! trypanosomiasis
+is_a: MONDO:0100120 {source="https://www.who.int/news-room/fact-sheets/detail/vector-borne-diseases"} ! vector-borne disease
+intersection_of: MONDO:0005550 ! infectious disease
+intersection_of: disease_has_infectious_agent NCBITaxon:5693 ! Trypanosoma cruzi
+relationship: disease_has_infectious_agent NCBITaxon:5693 {source="MONDO:Wikidata"} ! Trypanosoma cruzi
+relationship: disease_has_infectious_agent NCBITaxon:70999 {source="MONDO:Wikidata"} ! Triatominae
+property_value: curated_content_resource "https://www.malacards.org/card/chagas_disease" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:closeMatch MEDDRA:10001935
+property_value: skos:exactMatch DOID:12140
+property_value: skos:exactMatch icd10cm:B57
+property_value: skos:exactMatch ICD10WHO:B57
+property_value: skos:exactMatch icd11.foundation:1365585570
+property_value: skos:exactMatch MEDGEN:11935
+property_value: skos:exactMatch MESH:D014355
+property_value: skos:exactMatch NCIT:C84629
+property_value: skos:exactMatch Orphanet:3386
+property_value: skos:exactMatch SCTID:77506005
+property_value: skos:exactMatch UMLS:C0041234
+property_value: terms:conformsTo http://purl.obolibrary.org/obo/mondo/patterns/infectious_disease_by_agent.yaml
+
+[Term]
+id: MONDO:0005015
+name: diabetes mellitus
+def: "A metabolic disorder characterized by abnormally high blood sugar levels due to diminished production of insulin or insulin resistance/desensitization." [NCIT:P378]
+subset: otar {source="MONDO:OTAR"}
+synonym: "diabetes" EXACT [DOID:9351, NCIT:C2985]
+synonym: "diabetes mellitus" EXACT [DOID:9351, ICD10CM:E08-E13, ICD10WHO:E10-E14, icd11.foundation:465177735, MONDO:ambiguous, NCIT:C2985]
+synonym: "diabetes mellitus (disease)" EXACT [https://orcid.org/0000-0002-6601-2165]
+synonym: "DM" EXACT ABBREVIATION [NCIT:C2985]
+xref: DOID:9351 {source="EFO:0000400", source="MONDO:equivalentTo"}
+xref: EFO:0000400 {source="MONDO:equivalentTo", source="MONDO:EFO"}
+xref: HP:0000819 {source="MONDO:otherHierarchy"}
+xref: ICD10CM:E08-E13 {source="https://github.com/monarch-initiative/mondo/issues/4536", source="MONDO:equivalentTo", source="DOID:9351", source="https://orcid.org/0000-0001-5208-3432", source="https://orcid.org/0000-0002-4142-7153"}
+xref: ICD10WHO:E10-E14 {source="https://orcid.org/0000-0002-7941-5545", source="MONDO:equivalentTo", source="https://orcid.org/0000-0001-9439-5346"}
+xref: icd11.foundation:465177735 {source="MONDO:equivalentTo"}
+xref: ICD9:250 {source="EFO:0000400", source="DOID:9351"}
+xref: MEDGEN:8350 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D003920 {source="EFO:0000400", source="MONDO:equivalentTo", source="DOID:9351"}
+xref: NANDO:2100157 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NANDO:2100158 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NCIT:C2985 {source="EFO:0000400", source="MONDO:equivalentTo", source="DOID:9351"}
+xref: SCTID:73211009 {source="EFO:0000400", source="MONDO:equivalentTo", source="DOID:9351"}
+xref: UMLS:C0011849 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:8350"}
+is_a: MONDO:0001933 {source="NCIT:C2985"} ! endocrine pancreas disorder
+is_a: MONDO:0002908 {source="DOID:9351", source="MESH:D003920", source="NCIT:C2985"} ! glucose metabolism disease
+property_value: curated_content_resource "https://www.malacards.org/card/diabetes_mellitus" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/5723" xsd:anyURI
+property_value: IAO:0000589 "diabetes mellitus (disease)" xsd:string
+property_value: skos:exactMatch DOID:9351
+property_value: skos:exactMatch EFO:0000400
+property_value: skos:exactMatch icd10cm:E08-E13
+property_value: skos:exactMatch ICD10WHO:E10-E14
+property_value: skos:exactMatch icd11.foundation:465177735
+property_value: skos:exactMatch MEDGEN:8350
+property_value: skos:exactMatch MESH:D003920
+property_value: skos:exactMatch NCIT:C2985
+property_value: skos:exactMatch SCTID:73211009
+property_value: skos:exactMatch UMLS:C0011849
+
+[Term]
+id: MONDO:0005148
+name: type 2 diabetes mellitus
+def: "A type of diabetes mellitus that is characterized by insulin resistance or desensitization and increased blood glucose levels. This is a chronic disease that can develop gradually over the life of a patient and can be linked to both environmental factors and heredity." [NCIT:P378]
+subset: omim_susceptibility {source="OMIM:125853"}
+subset: otar {source="MONDO:OTAR"}
+synonym: "adult onset diabetes" EXACT DEPRECATED [icd11.foundation:119724091, NCIT:C26747]
+synonym: "adult-onset diabetes" EXACT DEPRECATED [NCIT:C26747]
+synonym: "diabetes mellitis type 2" EXACT []
+synonym: "diabetes mellitis type II" EXACT []
+synonym: "diabetes mellitus, noninsulin-dependent" EXACT [OMIM:125853]
+synonym: "diabetes mellitus, noninsulin-dependent, 2" NARROW []
+synonym: "diabetes mellitus, noninsulin-dependent, association with" EXACT []
+synonym: "diabetes mellitus, noninsulin-dependent, late onset" EXACT []
+synonym: "diabetes mellitus, type 2" EXACT [OMIM:125853]
+synonym: "diabetes mellitus, type II" EXACT []
+synonym: "diabetes, type 2" EXACT [NCIT:C26747]
+synonym: "insulin resistance, severe, digenic" EXACT []
+synonym: "NIDDM" EXACT DEPRECATED [DOID:9352, NCIT:C26747, OMIM:125853]
+synonym: "non-insulin dependent diabetes" EXACT DEPRECATED [NCIT:C26747]
+synonym: "non-insulin dependent diabetes mellitus" EXACT DEPRECATED [icd11.foundation:119724091, NCIT:C26747]
+synonym: "noninsulin dependent diabetes" EXACT DEPRECATED [icd11.foundation:119724091, NCIT:C26747]
+synonym: "noninsulin-dependent diabetes mellitus" EXACT [OMIM:125853]
+synonym: "T2D" EXACT ABBREVIATION [https://orcid.org/0000-0002-4071-8397, OMIM:125853]
+synonym: "T2DM" EXACT ABBREVIATION [https://orcid.org/0000-0002-4071-8397]
+synonym: "T2DM - type 2 diabetes mellitus" EXACT [NCIT:C26747]
+synonym: "type 2 diabetes" EXACT [DOID:9352, icd11.foundation:119724091, NCIT:C26747]
+synonym: "type 2 diabetes mellitus" EXACT [DOID:9352, ICD10CM:E11, ICD10WHO:E11, icd11.foundation:119724091, NCIT:C26747, OMIM:125853]
+synonym: "type 2 diabetes mellitus non-insulin dependent" EXACT [NCIT:C26747]
+synonym: "type II diabetes" EXACT [icd11.foundation:119724091, NCIT:C26747]
+synonym: "type II diabetes mellitus" EXACT [DOID:9352, icd11.foundation:119724091, NCIT:C26747]
+xref: DOID:9352 {source="MONDO:equivalentTo", source="EFO:0001360"}
+xref: ICD10CM:E11 {source="https://orcid.org/0009-0001-6494-4831", source="MONDO:equivalentTo", source="https://orcid.org/0000-0002-5002-8648", source="DOID:9352"}
+xref: ICD10WHO:E11 {source="https://orcid.org/0000-0002-7941-5545", source="MONDO:equivalentTo", source="https://orcid.org/0000-0001-9439-5346"}
+xref: icd11.foundation:119724091 {source="MONDO:equivalentTo"}
+xref: MEDGEN:41523 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D003924 {source="MONDO:equivalentTo", source="DOID:9352", source="EFO:0001360"}
+xref: NANDO:2200461 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NCIT:C26747 {source="MONDO:equivalentTo", source="DOID:9352", source="EFO:0001360"}
+xref: OMIM:125853 {source="MONDO:equivalentTo", source="DOID:9352", source="EFO:0001360"}
+xref: SCTID:44054006 {source="MONDO:equivalentTo", source="DOID:9352", source="EFO:0001360"}
+xref: UMLS:C0011860 {source="MEDGEN:41523", source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+is_a: MONDO:0005015 {source="DOID:9352", source="EFO:0001360", source="MESH:D003924", source="NCIT:C26747", source="icd11.foundation:119724091"} ! diabetes mellitus
+relationship: disease_disrupts GO:0030073 ! insulin secretion
+relationship: disease_disrupts GO:0044381 ! glucose import in response to insulin stimulus
+relationship: disease_has_feature HP:0000855 ! Insulin resistance
+property_value: curated_content_resource "https://www.malacards.org/card/type_2_diabetes_mellitus" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4521" xsd:anyURI
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/7275" xsd:anyURI
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/9097" xsd:anyURI
+property_value: skos:exactMatch DOID:9352
+property_value: skos:exactMatch icd10cm:E11
+property_value: skos:exactMatch ICD10WHO:E11
+property_value: skos:exactMatch icd11.foundation:119724091
+property_value: skos:exactMatch MEDGEN:41523
+property_value: skos:exactMatch MESH:D003924
+property_value: skos:exactMatch NCIT:C26747
+property_value: skos:exactMatch OMIM:125853
+property_value: skos:exactMatch SCTID:44054006
+property_value: skos:exactMatch UMLS:C0011860
+
+[Term]
+id: MONDO:0009299
+name: 46 XX gonadal dysgenesis
+def: "46,XX gonadal dysgenesis (46,XX GD) is a primary ovarian defect leading to premature ovarian failure (POF) in otherwise normal 46,XX females as a result of failure of the gonads to develop or due to resistance to gonadotrophin stimulation." [Orphanet:243]
+subset: doid_rare {source="DOID:14450"}
+subset: gard_rare {source="GARD:0005671", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD"}
+subset: ordo_disorder {source="Orphanet:243"}
+subset: ordo_malformation_syndrome {source="Orphanet:243"}
+subset: orphanet_rare {source="Orphanet:243"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "46,XX complete gonadal dysgenesis" EXACT [icd11.foundation:1742528605, Orphanet:243]
+synonym: "46,XX gonadal dysgenesis" EXACT [icd11.foundation:1742528605, NCIT:C120197, Orphanet:243]
+synonym: "46,XX ovarian dysgenesis" EXACT [NCIT:C120197, Orphanet:243]
+synonym: "46,XX pure gonadal dysgenesis" EXACT [icd11.foundation:1742528605, Orphanet:243]
+synonym: "follicular stimulating hormone-resistant ovaries" EXACT [icd11.foundation:1742528605]
+synonym: "FSH-RO" EXACT []
+synonym: "hypergonadotropic ovarian dysgenesis" EXACT [icd11.foundation:1742528605, Orphanet:243]
+synonym: "XX female gonadal dysgenesis" EXACT [Orphanet:243]
+synonym: "XX-GD" EXACT ABBREVIATION [Orphanet:243]
+xref: DOID:14450 {source="MONDO:equivalentTo"}
+xref: GARD:0005671 {source="MONDO:GARD"}
+xref: icd11.foundation:1742528605 {source="MONDO:equivalentTo", source="https://orcid.org/0000-0001-5208-3432", source="Orphanet:243"}
+xref: MEDGEN:146899 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:D023961 {source="Orphanet:243/e", source="DOID:14450", source="MONDO:equivalentTo", source="Orphanet:243"}
+xref: NANDO:2200384 {source="MONDO:NANDO", source="https://orcid.org/0000-0003-0011-764X", source="https://orcid.org/0000-0002-0170-9172"}
+xref: NCIT:C120197 {source="DOID:14450", source="MONDO:equivalentTo"}
+xref: OMIMPS:233300 {source="MONDO:equivalentTo"}
+xref: Orphanet:243 {source="DOID:14450", source="MONDO:equivalentTo", source="OMIM:233300"}
+xref: SCTID:95198001 {source="MONDO:equivalentTo"}
+xref: UMLS:C0685837 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:146899"}
+is_a: MONDO:0001967 {source="DOID:14450", source="MESH:D023961", source="NCIT:C120197"} ! gonadal dysgenesis
+is_a: MONDO:0019852 {source="Orphanet:243"} ! inherited primary ovarian failure
+relationship: should_conform_to http://purl.obolibrary.org/obo/mondo/patterns/OMIM_phenotypic_series.yaml
+property_value: curated_content_resource "https://www.malacards.org/card/46_xx_gonadal_dysgenesis" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: skos:exactMatch DOID:14450
+property_value: skos:exactMatch icd11.foundation:1742528605
+property_value: skos:exactMatch MEDGEN:146899
+property_value: skos:exactMatch MESH:D023961
+property_value: skos:exactMatch NCIT:C120197
+property_value: skos:exactMatch OMIMPS:233300
+property_value: skos:exactMatch Orphanet:243
+property_value: skos:exactMatch SCTID:95198001
+property_value: skos:exactMatch UMLS:C0685837
+
+[Term]
+id: MONDO:0014221
+name: triosephosphate isomerase deficiency
+def: "Triosephosphate isomerase (TPI) deficiency is a severe autosomal recessive inherited multisystem disorder of glycolytic metabolism characterized by hemolytic anemia and neurodegeneration." [Orphanet:868]
+subset: doid_rare {source="DOID:0050884"}
+subset: gard_rare {source="GARD:0005287", source="MONDO:GARD"}
+subset: nord_rare {source="MONDO:NORD", source="NORD:1793"}
+subset: ordo_disorder {source="Orphanet:868"}
+subset: orphanet_rare {source="Orphanet:868"}
+subset: otar {source="MONDO:OTAR"}
+subset: rare
+synonym: "hemolytic anaemia due to triosephosphate isomerase deficiency" EXACT OMO:0003005 []
+synonym: "hemolytic anemia due to triosephosphate isomerase deficiency" EXACT []
+synonym: "TPI deficiency" RELATED [GARD:0005287]
+synonym: "TPID" RELATED ABBREVIATION []
+synonym: "triose phosphate-isomerase deficiency" EXACT [DOID:0050884, Orphanet:868]
+synonym: "triosephosphate isomerase deficiency" EXACT [DOID:0050884, NCIT:C131652, OMIM:615512]
+xref: DOID:0050884 {source="MONDO:equivalentTo"}
+xref: GARD:0005287 {source="MONDO:GARD"}
+xref: ICD9:282.3 {source="MONDO:relatedTo", source="MONDO:i2s"}
+xref: MEDGEN:349893 {source="MONDO:equivalentTo", source="MONDO:MEDGEN"}
+xref: MESH:C566029 {source="MONDO:equivalentTo"}
+xref: NCIT:C131652 {source="MONDO:equivalentTo"}
+xref: NORD:1793 {source="MONDO:NORD"}
+xref: OMIM:615512 {source="DOID:0050884", source="MONDO:equivalentTo", source="Orphanet:868", source="Orphanet:868/e"}
+xref: Orphanet:868 {source="OMIM:615512", source="MONDO:equivalentTo"}
+xref: SCTID:234405009 {source="MONDO:equivalentTo"}
+xref: UMLS:C1860808 {source="MONDO:equivalentTo", source="MONDO:MEDGEN", source="MEDGEN:349893"}
+is_a: MONDO:0002908 {source="DOID:0050884"} ! glucose metabolism disease
+is_a: MONDO:0003689 ! familial hemolytic anemia
+is_a: MONDO:0017688 {source="MONDO:Redundant", source="Orphanet:868", source="PMID:33340416"} ! disorder of glycolysis
+is_a: MONDO:0020585 ! anemia due to erythrocyte enzyme disorder
+relationship: has_material_basis_in_germline_mutation_in http://identifiers.org/hgnc/12009 {source="OMIM:615512"} ! TPI1
+property_value: curated_content_resource "https://www.malacards.org/card/triosephosphate_isomerase_deficiency" xsd:anyURI {source="MONDO:MalaCards"}
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4521" xsd:anyURI
+property_value: IAO:0000233 "https://github.com/monarch-initiative/mondo/issues/4985" xsd:anyURI
+property_value: seeAlso "https://rarediseases.info.nih.gov/diseases/5287/triosephosphate-isomerase-deficiency" xsd:anyURI {source="GARD:0005287"}
+property_value: skos:exactMatch DOID:0050884
+property_value: skos:exactMatch MEDGEN:349893
+property_value: skos:exactMatch MESH:C566029
+property_value: skos:exactMatch NCIT:C131652
+property_value: skos:exactMatch OMIM:615512
+property_value: skos:exactMatch Orphanet:868
+property_value: skos:exactMatch SCTID:234405009
+property_value: skos:exactMatch UMLS:C1860808

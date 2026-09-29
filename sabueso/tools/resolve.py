@@ -5,6 +5,10 @@ the resolution (``resolution.decision["route"]``):
 
 - small-molecule namespaces (``chembl:``, ``pdb.ligand:``, ``inchikey:``), bare ChEMBL ids
   and standard InChIKeys go to ``resolve_molecule_card``;
+- disease namespaces (``mondo:``, and those MONDO maps: ``doid:``, ``orphanet:``,
+  ``omim:``, ``mesh:``, ``efo:``, ``ncit:``…) go to ``resolve_disease_card`` (#90).
+  ``omim:`` and ``mesh:`` also name genes and chemicals: those have no MONDO
+  equivalence and are reported as not found;
 - anything else, including UniProt accessions, ``pdb:`` ids and an ``EntityQuery`` (name
   and organism), goes to ``resolve_protein_card``, whose resolver keeps its own rules
   (ambiguity is reported, never silently chosen).
@@ -23,7 +27,7 @@ from sabueso._private.argdigest import arg_digest
 from sabueso.core.card import Card
 from sabueso.resolver.entity_resolver import EntityQuery, EntityResolution
 
-PROTEIN, SMALL_MOLECULE = "protein", "small_molecule"
+PROTEIN, SMALL_MOLECULE, DISEASE = "protein", "small_molecule", "disease"
 
 
 def _route(query: EntityQuery | str, entity_type: str | None) -> Tuple[str, str]:
@@ -41,6 +45,11 @@ def _route(query: EntityQuery | str, entity_type: str | None) -> Tuple[str, str]
     namespace, _ = _parse(query)
     if namespace is not None:
         return SMALL_MOLECULE, f"namespace:{namespace}"
+    from sabueso.tools.db.mondo import normalize
+
+    disease = normalize(query) if ":" in query or "_" in query else None
+    if disease is not None:
+        return DISEASE, f"namespace:{disease.split(':', 1)[0].lower()}"
     return PROTEIN, "default"
 
 
@@ -142,7 +151,13 @@ def resolve(
             "overridden": sorted(set(given) & set(options)),
         }
         options = {**given, **options}
-    if kind == SMALL_MOLECULE:
+    if kind == DISEASE:
+        from sabueso.tools.card.disease import resolve_disease_card
+
+        identifier = query.identifier if isinstance(query, EntityQuery) else query
+        card, resolution = resolve_disease_card(identifier, **options)
+        tool = "resolve_disease_card"
+    elif kind == SMALL_MOLECULE:
         from sabueso.tools.card.small_molecule import resolve_molecule_card
 
         identifier = query.identifier if isinstance(query, EntityQuery) else query

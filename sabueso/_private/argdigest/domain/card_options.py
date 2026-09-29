@@ -6,11 +6,12 @@ def _members():
     signatures so the two cannot drift apart."""
     import inspect
 
+    from sabueso.tools.card.disease import resolve_disease_card
     from sabueso.tools.card.protein import resolve_protein_card
     from sabueso.tools.card.small_molecule import resolve_molecule_card
 
     names = set()
-    for tool in (resolve_protein_card, resolve_molecule_card):
+    for tool in (resolve_protein_card, resolve_molecule_card, resolve_disease_card):
         names |= set(inspect.signature(inspect.unwrap(tool)).parameters)
     return tuple(sorted(names - {"query", "identifier", "skip_digestion"}))
 
@@ -18,5 +19,5 @@ def _members():
 domain = Domain(
     name="card_options",
     members=_members,
-    description="options of resolve_protein_card and resolve_molecule_card",
+    description="options of the protein, small-molecule and disease card tools",
 )

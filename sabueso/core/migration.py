@@ -156,6 +156,19 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "filled_by": "skempi",
             "entity_types": ("protein",),
         },
+        # Disease cards are new in 0.3.7 (#90): no older card of theirs exists, and
+        # older protein and molecule cards lack none of these fields.
+        *(
+            {"path": path, "filled_by": "refresh", "entity_types": ("disease",)}
+            for path in (
+                "identifiers.mondo",
+                "identifiers.equivalent_ids",
+                "identifiers.related_ids",
+                "annotations.definition",
+                "annotations.disease_subsets",
+                "relationships.subclass_of",
+            )
+        ),
     ],
 }
 

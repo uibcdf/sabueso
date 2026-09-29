@@ -1066,6 +1066,19 @@ resources:
     licence: "US government work (not under copyright in the US); NLM asks credit (Source: National Library of Medicine)"
     module: [sabueso.tools.db.clinicaltrials, sabueso.mappings.clinical]
     links: ["#81", "#83"]
+  - id: mondo
+    name: "MONDO (Mondo Disease Ontology)"
+    url: https://mondo.monarchinitiative.org/
+    category: target_validation
+    status: in_use
+    description: "A disease ontology integrating DOID, Orphanet, OMIM, NCIT, MeSH, EFO, ICD, MedGen and others, with stated equivalences to each."
+    since: 2026-09-29
+    proposed_by: "Foundational route: the disease as an entity (#90)"
+    reason: "The anchor of disease cards. An external disease id joins a MONDO term only through an equivalence MONDO states (MONDO:equivalentTo, rule mondo_equivalence@1); related xrefs are kept apart and never read as identity."
+    access: "Dated GitHub releases; mondo.obo (about 53 MB) downloaded once per process, checked against the SHA-256 GitHub states, and indexed; resolve('mondo:...'), or any id of a terminology MONDO maps"
+    licence: "CC BY 4.0 (cite Mondo and the release)"
+    module: [sabueso.tools.db.mondo, sabueso.mappings.mondo]
+    links: ["#90"]
   - id: pisite
     name: "PiSITE"
     url: https://pisite.pdbj.org/

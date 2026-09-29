@@ -24,8 +24,8 @@ for trial in view["trials"][:3]:
 
 - `indications=True` adds ChEMBL's drug indications of the molecule's ChEMBL records.
 - `trials={}`, or `trials={"limit": 50}`, also adds the ClinicalTrials.gov studies those
-  indications cite, by NCT id. It implies `indications`. The default limit is 100, and
-  a cut is reported with a warning.
+  indications cite, by NCT id. It implies `indications`. By default every cited trial
+  is fetched, up to 5000, and a cut is reported with a warning.
 
 ## What it holds
 

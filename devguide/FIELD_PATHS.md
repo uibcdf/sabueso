@@ -150,6 +150,20 @@ Records of how the card was resolved and enriched, not source-stated fields:
 
 ---
 
+## 5) DiseaseCard Extensions (#90, since 0.3.7)
+
+Anchored at a MONDO term (`sabueso:disease:mondo:MONDO:0014221`).
+
+- `identifiers.mondo` (the MONDO id)
+- `identifiers.equivalent_ids` (list of the ids MONDO states are the same disease, `MONDO:equivalentTo`, e.g. `DOID:0050884`, `Orphanet:868`, `OMIM:615512`; the only ids that join other sources' diseases to the card)
+- `identifiers.related_ids` (list of MONDO's other xrefs: related terms, never identity)
+- `annotations.definition` (`{text, references}`, as MONDO states it)
+- `annotations.disease_subsets` (list of MONDO subsets the term is in, e.g. `rare`)
+- `names.canonical_name` and `names.synonyms` (`{name, kind}`, kind `exact_synonym`, `related_synonym`, `broad_synonym` or `narrow_synonym`) are shared with the base paths.
+- Parents are `subclass_of` relationships (disease → `mondo:<id>`).
+
+---
+
 ## Notes
 - GO annotations, family/domain classifications, curated interactions and experimental
   structures are **relationships**, not field paths: `annotated_with`, `classified_in`,
