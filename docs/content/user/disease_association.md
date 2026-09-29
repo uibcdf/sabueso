@@ -64,9 +64,29 @@ with the gene (`orphanet:ORPHA:868`). Each one comes with Orphanet's wording:
 Orphanet states the gene's UniProt accession itself, so the link is its own. The file
 (about 22 MB) is downloaded once per process, and its date is the version.
 
+## ClinVar (variants)
+
+`sabueso.resolve("P60174", clinvar={})` adds ClinVar's variants of the gene
+(`annotations.clinical_variants`), found by the NCBI Gene id the UniProt entry
+cross-references. At most 500 per gene by default (`{"limit": n}`); a cut is reported.
+Each variant keeps what ClinVar states:
+- the HGVS title, variant type and consequences;
+- the germline classification and its review status. "Conflicting classifications of
+  pathogenicity" is ClinVar's own statement, never resolved;
+- the conditions, with their cross-references.
+
+**Numbering.** ClinVar lists a protein change in every isoform's numbering ("E142D,
+E105D, E23D"). A variant is placed in UniProt numbering (`location`, `numbering:
+"uniprot"`) only when two things hold: its transcript is one UniProt states for the
+canonical isoform, and the residue ClinVar names is the UniProt residue at that
+position. Otherwise `not_placed` says why: `no_protein_change`,
+`transcript_not_canonical` or `residue_mismatch`.
+
+ClinVar is not for diagnostic use without review by a genetics professional.
+
 ## Coverage
 
-DISEASES, Open Targets and Orphanet cover human genes only. For a protein of another organism,
+DISEASES, Open Targets, Orphanet and ClinVar cover human genes only. For a protein of another organism,
 the knowledge state says `not_queried`, with that reason, never `not_stated`.
 
 The files are downloaded once per process, about 50 MB with text mining. Set

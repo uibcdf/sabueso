@@ -116,8 +116,17 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         "areas": ("relationships.described_in", "literature."),
     },
     "disease_association": {
-        "options": {"diseases": {}, "open_targets": {}, "orphadata": True},
-        "areas": ("relationships.associated_with", "annotations.disease"),
+        "options": {
+            "diseases": {},
+            "open_targets": {},
+            "orphadata": True,
+            "clinvar": {},
+        },
+        "areas": (
+            "relationships.associated_with",
+            "annotations.disease",
+            "annotations.clinical_variants",
+        ),
     },
     "biological_context": {
         "options": {"phi_base": True, "reactome": True},
@@ -313,6 +322,7 @@ def _facts(aspect: str, card: Any) -> Dict[str, Any]:
     if aspect == "disease_association":
         return {
             "uniprot": _fields(card, ["annotations.disease"]),
+            "clinical_variants": _fields(card, ["annotations.clinical_variants"]),
             "associations": [
                 {k: r[k] for k in ("object_ref", "qualifiers", "source_assertion_ids")}
                 for r in sorted(

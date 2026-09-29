@@ -1,0 +1,8694 @@
+{
+ "record": [
+  {
+   "accession": "VCV000012468",
+   "accession_version": "VCV000012468.27",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Pathogenic/Likely pathogenic",
+    "last_evaluated": "2025/11/08 00:00",
+    "review_status": "criteria provided, multiple submitters, no conflicts",
+    "trait_set": [
+     {
+      "trait_name": "not provided",
+      "trait_xrefs": [
+       {
+        "db_id": "C3661900",
+        "db_source": "MedGen"
+       }
+      ]
+     },
+     {
+      "trait_name": "Triosephosphate isomerase deficiency",
+      "trait_xrefs": [
+       {
+        "db_id": "868",
+        "db_source": "Orphanet"
+       },
+       {
+        "db_id": "C1860808",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "MONDO:0014221",
+        "db_source": "MONDO"
+       },
+       {
+        "db_id": "615512",
+        "db_source": "OMIM"
+       }
+      ]
+     },
+     {
+      "trait_name": "TPI1-related disorder",
+      "trait_xrefs": []
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "missense variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "E142D, E105D, E23D",
+   "title": "NM_000365.6(TPI1):c.315G>C (p.Glu105Asp)",
+   "uid": "12468",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6869173:G:C",
+     "cdna_change": "c.315G>C",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.315G>C (p.Glu105Asp)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV002063765",
+   "accession_version": "VCV002063765.4",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Pathogenic",
+    "last_evaluated": "2023/07/21 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "not provided",
+      "trait_xrefs": [
+       {
+        "db_id": "C3661900",
+        "db_source": "MedGen"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "frameshift variant"
+   ],
+   "obj_type": "Duplication",
+   "protein_change": "G41fs, G123fs, G160fs",
+   "title": "NM_000365.6(TPI1):c.366dup (p.Gly123fs)",
+   "uid": "2063765",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6869298:C:CC",
+     "cdna_change": "c.366dup",
+     "variant_type": "Duplication",
+     "variation_name": "NM_000365.6(TPI1):c.366dup (p.Gly123fs)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV000136173",
+   "accession_version": "VCV000136173.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Pathogenic",
+    "last_evaluated": "2010/08/01 00:00",
+    "review_status": "no assertion criteria provided",
+    "trait_set": [
+     {
+      "trait_name": "Triosephosphate isomerase deficiency",
+      "trait_xrefs": [
+       {
+        "db_id": "868",
+        "db_source": "Orphanet"
+       },
+       {
+        "db_id": "C1860808",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "MONDO:0014221",
+        "db_source": "MONDO"
+       },
+       {
+        "db_id": "615512",
+        "db_source": "OMIM"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "frameshift variant"
+   ],
+   "obj_type": "Duplication",
+   "protein_change": "N12fs, N49fs",
+   "title": "NM_000365.6(TPI1):c.32dup (p.Asn12fs)",
+   "uid": "136173",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6867593:GGGGG:GGGGGG",
+     "cdna_change": "c.32dup",
+     "variant_type": "Duplication",
+     "variation_name": "NM_000365.6(TPI1):c.32dup (p.Asn12fs)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV000136172",
+   "accession_version": "VCV000136172.2",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Pathogenic",
+    "last_evaluated": "2010/08/01 00:00",
+    "review_status": "no assertion criteria provided",
+    "trait_set": [
+     {
+      "trait_name": "Triosephosphate isomerase deficiency",
+      "trait_xrefs": [
+       {
+        "db_id": "868",
+        "db_source": "Orphanet"
+       },
+       {
+        "db_id": "C1860808",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "MONDO:0014221",
+        "db_source": "MONDO"
+       },
+       {
+        "db_id": "615512",
+        "db_source": "OMIM"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "missense variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "F241S, F278S, F159S",
+   "title": "NM_000365.6(TPI1):c.722T>C (p.Phe241Ser)",
+   "uid": "136172",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6870354:T:C",
+     "cdna_change": "c.722T>C",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.722T>C (p.Phe241Ser)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV000012473",
+   "accession_version": "VCV000012473.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Pathogenic",
+    "last_evaluated": "2001/11/15 00:00",
+    "review_status": "no assertion criteria provided",
+    "trait_set": [
+     {
+      "trait_name": "Triosephosphate isomerase deficiency",
+      "trait_xrefs": [
+       {
+        "db_id": "868",
+        "db_source": "Orphanet"
+       },
+       {
+        "db_id": "C1860808",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "MONDO:0014221",
+        "db_source": "MONDO"
+       },
+       {
+        "db_id": "615512",
+        "db_source": "OMIM"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "nonsense"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "E146*, E183*, E64*",
+   "title": "NM_000365.6(TPI1):c.436G>T (p.Glu146Ter)",
+   "uid": "12473",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6869368:G:T",
+     "cdna_change": "c.436G>T",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.436G>T (p.Glu146Ter)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV000012472",
+   "accession_version": "VCV000012472.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Pathogenic",
+    "last_evaluated": "1997/01/01 00:00",
+    "review_status": "no assertion criteria provided",
+    "trait_set": [
+     {
+      "trait_name": "Triosephosphate isomerase deficiency",
+      "trait_xrefs": [
+       {
+        "db_id": "868",
+        "db_source": "Orphanet"
+       },
+       {
+        "db_id": "C1860808",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "MONDO:0014221",
+        "db_source": "MONDO"
+       },
+       {
+        "db_id": "615512",
+        "db_source": "OMIM"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "missense variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "I171V, I208V, I89V",
+   "title": "NM_000365.6(TPI1):c.511A>G (p.Ile171Val)",
+   "uid": "12472",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6869740:A:G",
+     "cdna_change": "c.511A>G",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.511A>G (p.Ile171Val)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV000012471",
+   "accession_version": "VCV000012471.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Pathogenic",
+    "last_evaluated": "1997/01/01 00:00",
+    "review_status": "no assertion criteria provided",
+    "trait_set": [
+     {
+      "trait_name": "Triosephosphate isomerase deficiency",
+      "trait_xrefs": [
+       {
+        "db_id": "868",
+        "db_source": "Orphanet"
+       },
+       {
+        "db_id": "C1860808",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "MONDO:0014221",
+        "db_source": "MONDO"
+       },
+       {
+        "db_id": "615512",
+        "db_source": "OMIM"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "missense variant",
+    "5 prime UTR variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "C42Y, C79Y",
+   "title": "NM_000365.6(TPI1):c.125G>A (p.Cys42Tyr)",
+   "uid": "12471",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6868872:G:A",
+     "cdna_change": "c.125G>A",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.125G>A (p.Cys42Tyr)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV004633453",
+   "accession_version": "VCV004633453.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Uncertain significance",
+    "last_evaluated": "2025/11/12 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "Inborn genetic diseases",
+      "trait_xrefs": [
+       {
+        "db_id": "C0950123",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "D030342",
+        "db_source": "MeSH"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "missense variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "V151M, V32M, V114M",
+   "title": "NM_000365.6(TPI1):c.340G>A (p.Val114Met)",
+   "uid": "4633453",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6869272:G:A",
+     "cdna_change": "c.340G>A",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.340G>A (p.Val114Met)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV004541691",
+   "accession_version": "VCV004541691.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Uncertain significance",
+    "last_evaluated": "2025/08/04 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "not provided",
+      "trait_xrefs": [
+       {
+        "db_id": "C3661900",
+        "db_source": "MedGen"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "missense variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "V34L, V71L",
+   "title": "NM_000365.6(TPI1):c.100G>C (p.Val34Leu)",
+   "uid": "4541691",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6867665:G:C",
+     "cdna_change": "c.100G>C",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.100G>C (p.Val34Leu)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV004189479",
+   "accession_version": "VCV004189479.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Uncertain significance",
+    "last_evaluated": "2025/08/06 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "Inborn genetic diseases",
+      "trait_xrefs": [
+       {
+        "db_id": "C0950123",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "D030342",
+        "db_source": "MeSH"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "missense variant",
+    "5 prime UTR variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "V78F, V41F",
+   "title": "NM_000365.6(TPI1):c.121G>T (p.Val41Phe)",
+   "uid": "4189479",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6868868:G:T",
+     "cdna_change": "c.121G>T",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.121G>T (p.Val41Phe)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV004080573",
+   "accession_version": "VCV004080573.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Uncertain significance",
+    "last_evaluated": "2024/08/13 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "Triosephosphate isomerase deficiency",
+      "trait_xrefs": [
+       {
+        "db_id": "868",
+        "db_source": "Orphanet"
+       },
+       {
+        "db_id": "C1860808",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "MONDO:0014221",
+        "db_source": "MONDO"
+       },
+       {
+        "db_id": "615512",
+        "db_source": "OMIM"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "missense variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "V124I, V161I, V42I",
+   "title": "NM_000365.6(TPI1):c.370G>A (p.Val124Ile)",
+   "uid": "4080573",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6869302:G:A",
+     "cdna_change": "c.370G>A",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.370G>A (p.Val124Ile)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV004080572",
+   "accession_version": "VCV004080572.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Uncertain significance",
+    "last_evaluated": "2023/11/27 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "Triosephosphate isomerase deficiency",
+      "trait_xrefs": [
+       {
+        "db_id": "868",
+        "db_source": "Orphanet"
+       },
+       {
+        "db_id": "C1860808",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "MONDO:0014221",
+        "db_source": "MONDO"
+       },
+       {
+        "db_id": "615512",
+        "db_source": "OMIM"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "missense variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "G23A, G60A",
+   "title": "NM_000365.6(TPI1):c.68G>C (p.Gly23Ala)",
+   "uid": "4080572",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6867633:G:C",
+     "cdna_change": "c.68G>C",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.68G>C (p.Gly23Ala)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV001685182",
+   "accession_version": "VCV001685182.9",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Conflicting classifications of pathogenicity",
+    "last_evaluated": "2024/09/20 00:00",
+    "review_status": "criteria provided, conflicting classifications",
+    "trait_set": [
+     {
+      "trait_name": "not specified",
+      "trait_xrefs": [
+       {
+        "db_id": "CN169374",
+        "db_source": "MedGen"
+       }
+      ]
+     },
+     {
+      "trait_name": "not provided",
+      "trait_xrefs": [
+       {
+        "db_id": "C3661900",
+        "db_source": "MedGen"
+       }
+      ]
+     },
+     {
+      "trait_name": "Triosephosphate isomerase deficiency",
+      "trait_xrefs": [
+       {
+        "db_id": "868",
+        "db_source": "Orphanet"
+       },
+       {
+        "db_id": "C1860808",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "MONDO:0014221",
+        "db_source": "MONDO"
+       },
+       {
+        "db_id": "615512",
+        "db_source": "OMIM"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "missense variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "V155M, V192M, V73M",
+   "title": "NM_000365.6(TPI1):c.463G>A (p.Val155Met)",
+   "uid": "1685182",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6869692:G:A",
+     "cdna_change": "c.463G>A",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.463G>A (p.Val155Met)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV001642638",
+   "accession_version": "VCV001642638.13",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Conflicting classifications of pathogenicity",
+    "last_evaluated": "2024/09/17 00:00",
+    "review_status": "criteria provided, conflicting classifications",
+    "trait_set": [
+     {
+      "trait_name": "not provided",
+      "trait_xrefs": [
+       {
+        "db_id": "C3661900",
+        "db_source": "MedGen"
+       }
+      ]
+     },
+     {
+      "trait_name": "Triosephosphate isomerase deficiency",
+      "trait_xrefs": [
+       {
+        "db_id": "868",
+        "db_source": "Orphanet"
+       },
+       {
+        "db_id": "C1860808",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "MONDO:0014221",
+        "db_source": "MONDO"
+       },
+       {
+        "db_id": "615512",
+        "db_source": "OMIM"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "intron variant"
+   ],
+   "obj_type": "Deletion",
+   "protein_change": "",
+   "title": "NM_000365.6(TPI1):c.458-18del",
+   "uid": "1642638",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6869669:T:",
+     "cdna_change": "NM_000365.6(TPI1):c.458-18del",
+     "variant_type": "Deletion",
+     "variation_name": "NM_000365.6(TPI1):c.458-18del"
+    }
+   ]
+  },
+  {
+   "accession": "VCV004915457",
+   "accession_version": "VCV004915457.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Likely benign",
+    "last_evaluated": "2020/02/11 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "not specified",
+      "trait_xrefs": [
+       {
+        "db_id": "CN169374",
+        "db_source": "MedGen"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "intron variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "",
+   "title": "NM_000365.6(TPI1):c.632-13G>C",
+   "uid": "4915457",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6870251:G:C",
+     "cdna_change": "NM_000365.6(TPI1):c.632-13G>C",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.632-13G>C"
+    }
+   ]
+  },
+  {
+   "accession": "VCV004915453",
+   "accession_version": "VCV004915453.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Likely benign",
+    "last_evaluated": "2021/03/25 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "not specified",
+      "trait_xrefs": [
+       {
+        "db_id": "CN169374",
+        "db_source": "MedGen"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "5 prime UTR variant",
+    "synonymous variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "",
+   "title": "NM_000365.6(TPI1):c.-4C>T",
+   "uid": "4915453",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6867562:C:T",
+     "cdna_change": "NM_000365.6(TPI1):c.-4C>T",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.-4C>T"
+    }
+   ]
+  },
+  {
+   "accession": "VCV004915452",
+   "accession_version": "VCV004915452.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Uncertain significance",
+    "last_evaluated": "2024/10/14 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "not provided",
+      "trait_xrefs": [
+       {
+        "db_id": "C3661900",
+        "db_source": "MedGen"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "5 prime UTR variant",
+    "missense variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "T28A",
+   "title": "NM_000365.6(TPI1):c.-30A>G",
+   "uid": "4915452",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6867536:A:G",
+     "cdna_change": "NM_000365.6(TPI1):c.-30A>G",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.-30A>G"
+    }
+   ]
+  },
+  {
+   "accession": "VCV004767267",
+   "accession_version": "VCV004767267.1",
+   "genes": [
+    {
+     "geneid": "130007280",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007280"
+    },
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Likely benign",
+    "last_evaluated": "2025/12/01 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "not provided",
+      "trait_xrefs": [
+       {
+        "db_id": "C3661900",
+        "db_source": "MedGen"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "intron variant"
+   ],
+   "obj_type": "single nucleotide variant",
+   "protein_change": "",
+   "title": "NM_000365.6(TPI1):c.115+19G>A",
+   "uid": "4767267",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6867699:G:A",
+     "cdna_change": "NM_000365.6(TPI1):c.115+19G>A",
+     "variant_type": "single nucleotide variant",
+     "variation_name": "NM_000365.6(TPI1):c.115+19G>A"
+    }
+   ]
+  },
+  {
+   "accession": "VCV004796136",
+   "accession_version": "VCV004796136.1",
+   "genes": [
+    {
+     "geneid": "124629327",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629327"
+    },
+    {
+     "geneid": "124629329",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629329"
+    },
+    {
+     "geneid": "124629330",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629330"
+    },
+    {
+     "geneid": "124629331",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629331"
+    },
+    {
+     "geneid": "124629332",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629332"
+    },
+    {
+     "geneid": "124629333",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629333"
+    },
+    {
+     "geneid": "124629334",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629334"
+    },
+    {
+     "geneid": "124629336",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629336"
+    },
+    {
+     "geneid": "124629337",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629337"
+    },
+    {
+     "geneid": "124629338",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629338"
+    },
+    {
+     "geneid": "124629339",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629339"
+    },
+    {
+     "geneid": "124629340",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629340"
+    },
+    {
+     "geneid": "124906977",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC124906977"
+    },
+    {
+     "geneid": "126861410",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861410"
+    },
+    {
+     "geneid": "126861411",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861411"
+    },
+    {
+     "geneid": "126861412",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861412"
+    },
+    {
+     "geneid": "126861413",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861413"
+    },
+    {
+     "geneid": "126861414",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861414"
+    },
+    {
+     "geneid": "126861415",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861415"
+    },
+    {
+     "geneid": "126861416",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861416"
+    },
+    {
+     "geneid": "126861417",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861417"
+    },
+    {
+     "geneid": "126861418",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861418"
+    },
+    {
+     "geneid": "126861419",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861419"
+    },
+    {
+     "geneid": "126861420",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861420"
+    },
+    {
+     "geneid": "126861421",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861421"
+    },
+    {
+     "geneid": "126861422",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861422"
+    },
+    {
+     "geneid": "126861423",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861423"
+    },
+    {
+     "geneid": "126861424",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861424"
+    },
+    {
+     "geneid": "126861425",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861425"
+    },
+    {
+     "geneid": "126861426",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861426"
+    },
+    {
+     "geneid": "126861427",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861427"
+    },
+    {
+     "geneid": "126861428",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861428"
+    },
+    {
+     "geneid": "126861429",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861429"
+    },
+    {
+     "geneid": "126861430",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861430"
+    },
+    {
+     "geneid": "126861431",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861431"
+    },
+    {
+     "geneid": "126861432",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861432"
+    },
+    {
+     "geneid": "126861433",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861433"
+    },
+    {
+     "geneid": "126861434",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861434"
+    },
+    {
+     "geneid": "126861435",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861435"
+    },
+    {
+     "geneid": "126861436",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861436"
+    },
+    {
+     "geneid": "126861437",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861437"
+    },
+    {
+     "geneid": "126861438",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861438"
+    },
+    {
+     "geneid": "126861439",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861439"
+    },
+    {
+     "geneid": "126861440",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861440"
+    },
+    {
+     "geneid": "126861441",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861441"
+    },
+    {
+     "geneid": "126861442",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861442"
+    },
+    {
+     "geneid": "126861443",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861443"
+    },
+    {
+     "geneid": "126861444",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861444"
+    },
+    {
+     "geneid": "126861445",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861445"
+    },
+    {
+     "geneid": "126861446",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861446"
+    },
+    {
+     "geneid": "126861447",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861447"
+    },
+    {
+     "geneid": "126861448",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861448"
+    },
+    {
+     "geneid": "126861449",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861449"
+    },
+    {
+     "geneid": "126861450",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861450"
+    },
+    {
+     "geneid": "126861451",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861451"
+    },
+    {
+     "geneid": "126861452",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861452"
+    },
+    {
+     "geneid": "126861453",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861453"
+    },
+    {
+     "geneid": "126861454",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861454"
+    },
+    {
+     "geneid": "126861455",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861455"
+    },
+    {
+     "geneid": "126861456",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861456"
+    },
+    {
+     "geneid": "126861457",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861457"
+    },
+    {
+     "geneid": "126861458",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861458"
+    },
+    {
+     "geneid": "126861459",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861459"
+    },
+    {
+     "geneid": "126861460",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861460"
+    },
+    {
+     "geneid": "126861461",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861461"
+    },
+    {
+     "geneid": "126861462",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861462"
+    },
+    {
+     "geneid": "126861463",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861463"
+    },
+    {
+     "geneid": "126861464",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861464"
+    },
+    {
+     "geneid": "126861465",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861465"
+    },
+    {
+     "geneid": "126861466",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861466"
+    },
+    {
+     "geneid": "126861467",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861467"
+    },
+    {
+     "geneid": "126861468",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861468"
+    },
+    {
+     "geneid": "126861469",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861469"
+    },
+    {
+     "geneid": "126861470",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861470"
+    },
+    {
+     "geneid": "126861471",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861471"
+    },
+    {
+     "geneid": "126861472",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861472"
+    },
+    {
+     "geneid": "126861473",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861473"
+    },
+    {
+     "geneid": "126861474",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861474"
+    },
+    {
+     "geneid": "126861475",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861475"
+    },
+    {
+     "geneid": "126861476",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861476"
+    },
+    {
+     "geneid": "126861477",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861477"
+    },
+    {
+     "geneid": "126861478",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861478"
+    },
+    {
+     "geneid": "126861479",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861479"
+    },
+    {
+     "geneid": "126861480",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861480"
+    },
+    {
+     "geneid": "126861481",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861481"
+    },
+    {
+     "geneid": "126861482",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861482"
+    },
+    {
+     "geneid": "126861483",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861483"
+    },
+    {
+     "geneid": "126861484",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861484"
+    },
+    {
+     "geneid": "126861485",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861485"
+    },
+    {
+     "geneid": "126861486",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861486"
+    },
+    {
+     "geneid": "126861487",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861487"
+    },
+    {
+     "geneid": "126861488",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861488"
+    },
+    {
+     "geneid": "126861489",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861489"
+    },
+    {
+     "geneid": "126861490",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861490"
+    },
+    {
+     "geneid": "126861491",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861491"
+    },
+    {
+     "geneid": "126861492",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861492"
+    },
+    {
+     "geneid": "126861493",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861493"
+    },
+    {
+     "geneid": "126861494",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861494"
+    },
+    {
+     "geneid": "126861495",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861495"
+    },
+    {
+     "geneid": "126861496",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861496"
+    },
+    {
+     "geneid": "126861497",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861497"
+    },
+    {
+     "geneid": "126861498",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861498"
+    },
+    {
+     "geneid": "126861499",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861499"
+    },
+    {
+     "geneid": "126861500",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC126861500"
+    },
+    {
+     "geneid": "128732306",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC128732306"
+    },
+    {
+     "geneid": "128772374",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC128772374"
+    },
+    {
+     "geneid": "128772375",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC128772375"
+    },
+    {
+     "geneid": "128772376",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC128772376"
+    },
+    {
+     "geneid": "128772377",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC128772377"
+    },
+    {
+     "geneid": "128772378",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC128772378"
+    },
+    {
+     "geneid": "128772379",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC128772379"
+    },
+    {
+     "geneid": "128781585",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC128781585"
+    },
+    {
+     "geneid": "129390385",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390385"
+    },
+    {
+     "geneid": "129390386",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390386"
+    },
+    {
+     "geneid": "129390387",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390387"
+    },
+    {
+     "geneid": "129390388",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390388"
+    },
+    {
+     "geneid": "129390389",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390389"
+    },
+    {
+     "geneid": "129390390",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390390"
+    },
+    {
+     "geneid": "129390391",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390391"
+    },
+    {
+     "geneid": "129390392",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390392"
+    },
+    {
+     "geneid": "129390393",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390393"
+    },
+    {
+     "geneid": "129390394",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390394"
+    },
+    {
+     "geneid": "129390395",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390395"
+    },
+    {
+     "geneid": "129390396",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390396"
+    },
+    {
+     "geneid": "129390397",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390397"
+    },
+    {
+     "geneid": "129390398",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390398"
+    },
+    {
+     "geneid": "129390399",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390399"
+    },
+    {
+     "geneid": "129390400",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390400"
+    },
+    {
+     "geneid": "129390401",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390401"
+    },
+    {
+     "geneid": "129390402",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390402"
+    },
+    {
+     "geneid": "129390403",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390403"
+    },
+    {
+     "geneid": "129390404",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390404"
+    },
+    {
+     "geneid": "129390405",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390405"
+    },
+    {
+     "geneid": "129390406",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390406"
+    },
+    {
+     "geneid": "129390407",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390407"
+    },
+    {
+     "geneid": "129390408",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390408"
+    },
+    {
+     "geneid": "129390409",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390409"
+    },
+    {
+     "geneid": "129390410",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390410"
+    },
+    {
+     "geneid": "129390411",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390411"
+    },
+    {
+     "geneid": "129390412",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390412"
+    },
+    {
+     "geneid": "129390413",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390413"
+    },
+    {
+     "geneid": "129390414",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390414"
+    },
+    {
+     "geneid": "129390415",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390415"
+    },
+    {
+     "geneid": "129390416",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390416"
+    },
+    {
+     "geneid": "129390417",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390417"
+    },
+    {
+     "geneid": "129390418",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390418"
+    },
+    {
+     "geneid": "129390419",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390419"
+    },
+    {
+     "geneid": "129390420",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390420"
+    },
+    {
+     "geneid": "129390421",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390421"
+    },
+    {
+     "geneid": "129390422",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390422"
+    },
+    {
+     "geneid": "129390423",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390423"
+    },
+    {
+     "geneid": "129390424",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390424"
+    },
+    {
+     "geneid": "129390425",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390425"
+    },
+    {
+     "geneid": "129390426",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390426"
+    },
+    {
+     "geneid": "129390427",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390427"
+    },
+    {
+     "geneid": "129390428",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390428"
+    },
+    {
+     "geneid": "129390429",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390429"
+    },
+    {
+     "geneid": "129390430",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390430"
+    },
+    {
+     "geneid": "129390431",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390431"
+    },
+    {
+     "geneid": "129390432",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390432"
+    },
+    {
+     "geneid": "129390433",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390433"
+    },
+    {
+     "geneid": "129390434",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390434"
+    },
+    {
+     "geneid": "129390435",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390435"
+    },
+    {
+     "geneid": "129390436",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390436"
+    },
+    {
+     "geneid": "129390437",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC129390437"
+    },
+    {
+     "geneid": "130007132",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007132"
+    },
+    {
+     "geneid": "130007133",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007133"
+    },
+    {
+     "geneid": "130007134",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007134"
+    },
+    {
+     "geneid": "130007135",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007135"
+    },
+    {
+     "geneid": "130007136",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007136"
+    },
+    {
+     "geneid": "130007137",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007137"
+    },
+    {
+     "geneid": "130007138",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007138"
+    },
+    {
+     "geneid": "130007139",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007139"
+    },
+    {
+     "geneid": "130007140",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007140"
+    },
+    {
+     "geneid": "130007141",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007141"
+    },
+    {
+     "geneid": "130007142",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007142"
+    },
+    {
+     "geneid": "130007143",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007143"
+    },
+    {
+     "geneid": "130007144",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007144"
+    },
+    {
+     "geneid": "130007145",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007145"
+    },
+    {
+     "geneid": "130007146",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007146"
+    },
+    {
+     "geneid": "130007147",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007147"
+    },
+    {
+     "geneid": "130007148",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007148"
+    },
+    {
+     "geneid": "130007149",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007149"
+    },
+    {
+     "geneid": "130007150",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007150"
+    },
+    {
+     "geneid": "130007151",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007151"
+    },
+    {
+     "geneid": "130007152",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007152"
+    },
+    {
+     "geneid": "130007153",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007153"
+    },
+    {
+     "geneid": "130007154",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007154"
+    },
+    {
+     "geneid": "130007155",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007155"
+    },
+    {
+     "geneid": "130007156",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007156"
+    },
+    {
+     "geneid": "130007157",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007157"
+    },
+    {
+     "geneid": "130007158",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007158"
+    },
+    {
+     "geneid": "130007159",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007159"
+    },
+    {
+     "geneid": "130007160",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007160"
+    },
+    {
+     "geneid": "130007161",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007161"
+    },
+    {
+     "geneid": "130007162",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007162"
+    },
+    {
+     "geneid": "130007163",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007163"
+    },
+    {
+     "geneid": "130007164",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007164"
+    },
+    {
+     "geneid": "130007165",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007165"
+    },
+    {
+     "geneid": "130007166",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007166"
+    },
+    {
+     "geneid": "130007167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007167"
+    },
+    {
+     "geneid": "130007168",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007168"
+    },
+    {
+     "geneid": "130007169",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007169"
+    },
+    {
+     "geneid": "130007170",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007170"
+    },
+    {
+     "geneid": "130007171",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007171"
+    },
+    {
+     "geneid": "130007172",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007172"
+    },
+    {
+     "geneid": "130007173",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007173"
+    },
+    {
+     "geneid": "130007174",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007174"
+    },
+    {
+     "geneid": "130007175",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007175"
+    },
+    {
+     "geneid": "130007176",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007176"
+    },
+    {
+     "geneid": "130007177",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007177"
+    },
+    {
+     "geneid": "130007178",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007178"
+    },
+    {
+     "geneid": "130007179",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007179"
+    },
+    {
+     "geneid": "130007180",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007180"
+    },
+    {
+     "geneid": "130007181",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007181"
+    },
+    {
+     "geneid": "130007182",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007182"
+    },
+    {
+     "geneid": "130007183",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007183"
+    },
+    {
+     "geneid": "130007184",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007184"
+    },
+    {
+     "geneid": "130007185",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007185"
+    },
+    {
+     "geneid": "130007186",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007186"
+    },
+    {
+     "geneid": "130007187",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007187"
+    },
+    {
+     "geneid": "130007188",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007188"
+    },
+    {
+     "geneid": "130007189",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007189"
+    },
+    {
+     "geneid": "130007190",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007190"
+    },
+    {
+     "geneid": "130007191",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007191"
+    },
+    {
+     "geneid": "130007192",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007192"
+    },
+    {
+     "geneid": "130007193",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007193"
+    },
+    {
+     "geneid": "130007194",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007194"
+    },
+    {
+     "geneid": "130007195",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007195"
+    },
+    {
+     "geneid": "130007196",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007196"
+    },
+    {
+     "geneid": "130007197",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007197"
+    },
+    {
+     "geneid": "130007198",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007198"
+    },
+    {
+     "geneid": "130007199",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007199"
+    },
+    {
+     "geneid": "130007200",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007200"
+    },
+    {
+     "geneid": "130007201",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007201"
+    },
+    {
+     "geneid": "130007202",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007202"
+    },
+    {
+     "geneid": "130007203",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007203"
+    },
+    {
+     "geneid": "130007204",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007204"
+    },
+    {
+     "geneid": "130007205",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007205"
+    },
+    {
+     "geneid": "130007206",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007206"
+    },
+    {
+     "geneid": "130007207",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007207"
+    },
+    {
+     "geneid": "130007208",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007208"
+    },
+    {
+     "geneid": "130007209",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007209"
+    },
+    {
+     "geneid": "130007210",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007210"
+    },
+    {
+     "geneid": "130007211",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007211"
+    },
+    {
+     "geneid": "130007212",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007212"
+    },
+    {
+     "geneid": "130007213",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007213"
+    },
+    {
+     "geneid": "130007214",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007214"
+    },
+    {
+     "geneid": "130007215",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007215"
+    },
+    {
+     "geneid": "130007216",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007216"
+    },
+    {
+     "geneid": "130007217",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007217"
+    },
+    {
+     "geneid": "130007218",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007218"
+    },
+    {
+     "geneid": "130007219",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007219"
+    },
+    {
+     "geneid": "130007220",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007220"
+    },
+    {
+     "geneid": "130007221",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007221"
+    },
+    {
+     "geneid": "130007222",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007222"
+    },
+    {
+     "geneid": "130007223",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007223"
+    },
+    {
+     "geneid": "130007224",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007224"
+    },
+    {
+     "geneid": "130007225",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007225"
+    },
+    {
+     "geneid": "130007226",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007226"
+    },
+    {
+     "geneid": "130007227",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007227"
+    },
+    {
+     "geneid": "130007228",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007228"
+    },
+    {
+     "geneid": "130007229",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007229"
+    },
+    {
+     "geneid": "130007230",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007230"
+    },
+    {
+     "geneid": "130007231",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007231"
+    },
+    {
+     "geneid": "130007232",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007232"
+    },
+    {
+     "geneid": "130007233",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007233"
+    },
+    {
+     "geneid": "130007234",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007234"
+    },
+    {
+     "geneid": "130007235",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007235"
+    },
+    {
+     "geneid": "130007236",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007236"
+    },
+    {
+     "geneid": "130007237",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007237"
+    },
+    {
+     "geneid": "130007238",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007238"
+    },
+    {
+     "geneid": "130007239",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007239"
+    },
+    {
+     "geneid": "130007240",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007240"
+    },
+    {
+     "geneid": "130007241",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007241"
+    },
+    {
+     "geneid": "130007242",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007242"
+    },
+    {
+     "geneid": "130007243",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007243"
+    },
+    {
+     "geneid": "130007244",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007244"
+    },
+    {
+     "geneid": "130007245",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007245"
+    },
+    {
+     "geneid": "130007246",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007246"
+    },
+    {
+     "geneid": "130007247",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007247"
+    },
+    {
+     "geneid": "130007248",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007248"
+    },
+    {
+     "geneid": "130007249",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007249"
+    },
+    {
+     "geneid": "130007250",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007250"
+    },
+    {
+     "geneid": "130007251",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007251"
+    },
+    {
+     "geneid": "130007252",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007252"
+    },
+    {
+     "geneid": "130007253",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007253"
+    },
+    {
+     "geneid": "130007254",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007254"
+    },
+    {
+     "geneid": "130007255",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007255"
+    },
+    {
+     "geneid": "130007256",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007256"
+    },
+    {
+     "geneid": "130007257",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007257"
+    },
+    {
+     "geneid": "130007258",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007258"
+    },
+    {
+     "geneid": "130007259",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007259"
+    },
+    {
+     "geneid": "130007260",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007260"
+    },
+    {
+     "geneid": "130007261",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007261"
+    },
+    {
+     "geneid": "130007262",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007262"
+    },
+    {
+     "geneid": "130007263",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007263"
+    },
+    {
+     "geneid": "130007264",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007264"
+    },
+    {
+     "geneid": "130007265",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007265"
+    },
+    {
+     "geneid": "130007266",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007266"
+    },
+    {
+     "geneid": "130007267",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007267"
+    },
+    {
+     "geneid": "130007268",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007268"
+    },
+    {
+     "geneid": "130007269",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007269"
+    },
+    {
+     "geneid": "130007270",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007270"
+    },
+    {
+     "geneid": "130007271",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007271"
+    },
+    {
+     "geneid": "130007272",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007272"
+    },
+    {
+     "geneid": "130007273",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007273"
+    },
+    {
+     "geneid": "130007274",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007274"
+    },
+    {
+     "geneid": "130007275",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007275"
+    },
+    {
+     "geneid": "130007276",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007276"
+    },
+    {
+     "geneid": "130007277",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007277"
+    },
+    {
+     "geneid": "130007278",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007278"
+    },
+    {
+     "geneid": "130007279",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007279"
+    },
+    {
+     "geneid": "130007280",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007280"
+    },
+    {
+     "geneid": "130007281",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007281"
+    },
+    {
+     "geneid": "130007282",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007282"
+    },
+    {
+     "geneid": "130007283",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007283"
+    },
+    {
+     "geneid": "130007284",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007284"
+    },
+    {
+     "geneid": "130007285",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007285"
+    },
+    {
+     "geneid": "130007286",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007286"
+    },
+    {
+     "geneid": "130007287",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007287"
+    },
+    {
+     "geneid": "130007288",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007288"
+    },
+    {
+     "geneid": "130007289",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007289"
+    },
+    {
+     "geneid": "130007290",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007290"
+    },
+    {
+     "geneid": "130007291",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007291"
+    },
+    {
+     "geneid": "130007292",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007292"
+    },
+    {
+     "geneid": "130007293",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007293"
+    },
+    {
+     "geneid": "130007294",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007294"
+    },
+    {
+     "geneid": "130007295",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007295"
+    },
+    {
+     "geneid": "130007296",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007296"
+    },
+    {
+     "geneid": "130007297",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007297"
+    },
+    {
+     "geneid": "130007298",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007298"
+    },
+    {
+     "geneid": "130007299",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007299"
+    },
+    {
+     "geneid": "130007300",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007300"
+    },
+    {
+     "geneid": "130007301",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007301"
+    },
+    {
+     "geneid": "130007302",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007302"
+    },
+    {
+     "geneid": "130007303",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007303"
+    },
+    {
+     "geneid": "130007304",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007304"
+    },
+    {
+     "geneid": "130007305",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007305"
+    },
+    {
+     "geneid": "130007306",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007306"
+    },
+    {
+     "geneid": "130007307",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007307"
+    },
+    {
+     "geneid": "130007308",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007308"
+    },
+    {
+     "geneid": "130007309",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007309"
+    },
+    {
+     "geneid": "130007310",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007310"
+    },
+    {
+     "geneid": "130007311",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007311"
+    },
+    {
+     "geneid": "130007312",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007312"
+    },
+    {
+     "geneid": "130007313",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007313"
+    },
+    {
+     "geneid": "130007314",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007314"
+    },
+    {
+     "geneid": "130007315",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007315"
+    },
+    {
+     "geneid": "130007316",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007316"
+    },
+    {
+     "geneid": "130007317",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007317"
+    },
+    {
+     "geneid": "130007318",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007318"
+    },
+    {
+     "geneid": "130007319",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007319"
+    },
+    {
+     "geneid": "130007320",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007320"
+    },
+    {
+     "geneid": "130007321",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007321"
+    },
+    {
+     "geneid": "130007322",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007322"
+    },
+    {
+     "geneid": "130007323",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007323"
+    },
+    {
+     "geneid": "130007324",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007324"
+    },
+    {
+     "geneid": "130007325",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007325"
+    },
+    {
+     "geneid": "130007326",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007326"
+    },
+    {
+     "geneid": "130007327",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007327"
+    },
+    {
+     "geneid": "130007328",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007328"
+    },
+    {
+     "geneid": "130007329",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007329"
+    },
+    {
+     "geneid": "130007330",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007330"
+    },
+    {
+     "geneid": "130007331",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007331"
+    },
+    {
+     "geneid": "130007332",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007332"
+    },
+    {
+     "geneid": "130007333",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007333"
+    },
+    {
+     "geneid": "130007334",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007334"
+    },
+    {
+     "geneid": "130007335",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007335"
+    },
+    {
+     "geneid": "130007336",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007336"
+    },
+    {
+     "geneid": "130007337",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007337"
+    },
+    {
+     "geneid": "130007338",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007338"
+    },
+    {
+     "geneid": "130007339",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007339"
+    },
+    {
+     "geneid": "130007340",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007340"
+    },
+    {
+     "geneid": "130007341",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007341"
+    },
+    {
+     "geneid": "130007342",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007342"
+    },
+    {
+     "geneid": "130007343",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007343"
+    },
+    {
+     "geneid": "130007344",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007344"
+    },
+    {
+     "geneid": "130007345",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007345"
+    },
+    {
+     "geneid": "130007346",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007346"
+    },
+    {
+     "geneid": "130007347",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007347"
+    },
+    {
+     "geneid": "130007348",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007348"
+    },
+    {
+     "geneid": "130007349",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007349"
+    },
+    {
+     "geneid": "130007350",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007350"
+    },
+    {
+     "geneid": "130007351",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007351"
+    },
+    {
+     "geneid": "130007352",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007352"
+    },
+    {
+     "geneid": "130007353",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007353"
+    },
+    {
+     "geneid": "130007354",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007354"
+    },
+    {
+     "geneid": "130007355",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007355"
+    },
+    {
+     "geneid": "130007356",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007356"
+    },
+    {
+     "geneid": "130007357",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007357"
+    },
+    {
+     "geneid": "130007358",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007358"
+    },
+    {
+     "geneid": "130007359",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007359"
+    },
+    {
+     "geneid": "130007360",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007360"
+    },
+    {
+     "geneid": "130007361",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007361"
+    },
+    {
+     "geneid": "130007362",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007362"
+    },
+    {
+     "geneid": "130007363",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007363"
+    },
+    {
+     "geneid": "130007364",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007364"
+    },
+    {
+     "geneid": "130007365",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007365"
+    },
+    {
+     "geneid": "130007366",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007366"
+    },
+    {
+     "geneid": "130007367",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007367"
+    },
+    {
+     "geneid": "130007368",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007368"
+    },
+    {
+     "geneid": "130007369",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007369"
+    },
+    {
+     "geneid": "130007370",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007370"
+    },
+    {
+     "geneid": "130007371",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007371"
+    },
+    {
+     "geneid": "130007372",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007372"
+    },
+    {
+     "geneid": "130007373",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007373"
+    },
+    {
+     "geneid": "130007374",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007374"
+    },
+    {
+     "geneid": "130007375",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007375"
+    },
+    {
+     "geneid": "130007376",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007376"
+    },
+    {
+     "geneid": "130007377",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007377"
+    },
+    {
+     "geneid": "130007378",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007378"
+    },
+    {
+     "geneid": "130007379",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007379"
+    },
+    {
+     "geneid": "130007380",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007380"
+    },
+    {
+     "geneid": "130007381",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007381"
+    },
+    {
+     "geneid": "130007382",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007382"
+    },
+    {
+     "geneid": "130007383",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007383"
+    },
+    {
+     "geneid": "130007384",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007384"
+    },
+    {
+     "geneid": "130007385",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007385"
+    },
+    {
+     "geneid": "130007386",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007386"
+    },
+    {
+     "geneid": "130007387",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007387"
+    },
+    {
+     "geneid": "130007388",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007388"
+    },
+    {
+     "geneid": "130007389",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007389"
+    },
+    {
+     "geneid": "130007390",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007390"
+    },
+    {
+     "geneid": "130007391",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007391"
+    },
+    {
+     "geneid": "130007392",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007392"
+    },
+    {
+     "geneid": "130007393",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007393"
+    },
+    {
+     "geneid": "130007394",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007394"
+    },
+    {
+     "geneid": "130007395",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007395"
+    },
+    {
+     "geneid": "130007396",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007396"
+    },
+    {
+     "geneid": "130007397",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007397"
+    },
+    {
+     "geneid": "130007398",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007398"
+    },
+    {
+     "geneid": "130007399",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007399"
+    },
+    {
+     "geneid": "130007400",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007400"
+    },
+    {
+     "geneid": "130007401",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007401"
+    },
+    {
+     "geneid": "130007402",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007402"
+    },
+    {
+     "geneid": "130007403",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007403"
+    },
+    {
+     "geneid": "130007404",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007404"
+    },
+    {
+     "geneid": "130007405",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007405"
+    },
+    {
+     "geneid": "130007406",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007406"
+    },
+    {
+     "geneid": "130007407",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007407"
+    },
+    {
+     "geneid": "130007408",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007408"
+    },
+    {
+     "geneid": "130007409",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007409"
+    },
+    {
+     "geneid": "130007410",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007410"
+    },
+    {
+     "geneid": "130007411",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007411"
+    },
+    {
+     "geneid": "130007412",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007412"
+    },
+    {
+     "geneid": "130007413",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007413"
+    },
+    {
+     "geneid": "130007414",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007414"
+    },
+    {
+     "geneid": "130007415",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007415"
+    },
+    {
+     "geneid": "130007416",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007416"
+    },
+    {
+     "geneid": "130007417",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007417"
+    },
+    {
+     "geneid": "130007418",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007418"
+    },
+    {
+     "geneid": "130007419",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007419"
+    },
+    {
+     "geneid": "130007420",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007420"
+    },
+    {
+     "geneid": "130007421",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007421"
+    },
+    {
+     "geneid": "130007422",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007422"
+    },
+    {
+     "geneid": "130007423",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007423"
+    },
+    {
+     "geneid": "130007424",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007424"
+    },
+    {
+     "geneid": "130007425",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007425"
+    },
+    {
+     "geneid": "130007426",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007426"
+    },
+    {
+     "geneid": "130007427",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007427"
+    },
+    {
+     "geneid": "130007428",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007428"
+    },
+    {
+     "geneid": "130007429",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007429"
+    },
+    {
+     "geneid": "130007430",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007430"
+    },
+    {
+     "geneid": "130007431",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007431"
+    },
+    {
+     "geneid": "130007432",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007432"
+    },
+    {
+     "geneid": "130007433",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007433"
+    },
+    {
+     "geneid": "130007434",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007434"
+    },
+    {
+     "geneid": "130007435",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007435"
+    },
+    {
+     "geneid": "130007436",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007436"
+    },
+    {
+     "geneid": "130007437",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007437"
+    },
+    {
+     "geneid": "130007438",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007438"
+    },
+    {
+     "geneid": "130007439",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007439"
+    },
+    {
+     "geneid": "130007440",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007440"
+    },
+    {
+     "geneid": "130007441",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007441"
+    },
+    {
+     "geneid": "130007442",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007442"
+    },
+    {
+     "geneid": "130007443",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007443"
+    },
+    {
+     "geneid": "130007444",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007444"
+    },
+    {
+     "geneid": "130007445",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007445"
+    },
+    {
+     "geneid": "130007446",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007446"
+    },
+    {
+     "geneid": "130007447",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007447"
+    },
+    {
+     "geneid": "130007448",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007448"
+    },
+    {
+     "geneid": "130007449",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007449"
+    },
+    {
+     "geneid": "130007450",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007450"
+    },
+    {
+     "geneid": "130007451",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007451"
+    },
+    {
+     "geneid": "130007452",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007452"
+    },
+    {
+     "geneid": "130007453",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007453"
+    },
+    {
+     "geneid": "130007454",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007454"
+    },
+    {
+     "geneid": "130007455",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007455"
+    },
+    {
+     "geneid": "130007456",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007456"
+    },
+    {
+     "geneid": "130007457",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007457"
+    },
+    {
+     "geneid": "130007458",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007458"
+    },
+    {
+     "geneid": "130007459",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007459"
+    },
+    {
+     "geneid": "130007460",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007460"
+    },
+    {
+     "geneid": "130007461",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007461"
+    },
+    {
+     "geneid": "130007462",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007462"
+    },
+    {
+     "geneid": "130007463",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007463"
+    },
+    {
+     "geneid": "130007464",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007464"
+    },
+    {
+     "geneid": "130007465",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007465"
+    },
+    {
+     "geneid": "130007466",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007466"
+    },
+    {
+     "geneid": "130007467",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007467"
+    },
+    {
+     "geneid": "130007468",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007468"
+    },
+    {
+     "geneid": "130007469",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007469"
+    },
+    {
+     "geneid": "130007470",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007470"
+    },
+    {
+     "geneid": "130007471",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007471"
+    },
+    {
+     "geneid": "130007472",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007472"
+    },
+    {
+     "geneid": "130007473",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007473"
+    },
+    {
+     "geneid": "130007474",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007474"
+    },
+    {
+     "geneid": "130007475",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007475"
+    },
+    {
+     "geneid": "130007476",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007476"
+    },
+    {
+     "geneid": "130007477",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007477"
+    },
+    {
+     "geneid": "130007478",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007478"
+    },
+    {
+     "geneid": "2",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "A2M"
+    },
+    {
+     "geneid": "144571",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "A2M-AS1"
+    },
+    {
+     "geneid": "144568",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "A2ML1"
+    },
+    {
+     "geneid": "100874108",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "A2ML1-AS1"
+    },
+    {
+     "geneid": "10060",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ABCC9"
+    },
+    {
+     "geneid": "84519",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ACRBP"
+    },
+    {
+     "geneid": "341392",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ACSM4"
+    },
+    {
+     "geneid": "79602",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ADIPOR2"
+    },
+    {
+     "geneid": "121536",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "AEBP2"
+    },
+    {
+     "geneid": "57379",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "AICDA"
+    },
+    {
+     "geneid": "10566",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "AKAP3"
+    },
+    {
+     "geneid": "84920",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ALG10"
+    },
+    {
+     "geneid": "196394",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "AMN1"
+    },
+    {
+     "geneid": "138842261",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "AMN1-AS1"
+    },
+    {
+     "geneid": "57101",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ANO2"
+    },
+    {
+     "geneid": "339",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "APOBEC1"
+    },
+    {
+     "geneid": "81575",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "APOLD1"
+    },
+    {
+     "geneid": "397",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ARHGDIB"
+    },
+    {
+     "geneid": "420",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ART4"
+    },
+    {
+     "geneid": "55729",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ATF7IP"
+    },
+    {
+     "geneid": "1822",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ATN1"
+    },
+    {
+     "geneid": "283358",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "B4GALNT3"
+    },
+    {
+     "geneid": "586",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "BCAT1"
+    },
+    {
+     "geneid": "105369699",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "BCAT1-AS1"
+    },
+    {
+     "geneid": "139281667",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "BCAT1-DT"
+    },
+    {
+     "geneid": "79370",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "BCL2L14"
+    },
+    {
+     "geneid": "79365",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "BHLHE41"
+    },
+    {
+     "geneid": "636",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "BICD1"
+    },
+    {
+     "geneid": "120766143",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "BICD1-AS1"
+    },
+    {
+     "geneid": "56938",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "BMAL2"
+    },
+    {
+     "geneid": "101928646",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "BMAL2-AS1"
+    },
+    {
+     "geneid": "118426",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "BORCS5"
+    },
+    {
+     "geneid": "113246",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "C12orf57"
+    },
+    {
+     "geneid": "144608",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "C12orf60"
+    },
+    {
+     "geneid": "728858",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "C12orf71"
+    },
+    {
+     "geneid": "715",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "C1R"
+    },
+    {
+     "geneid": "51279",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "C1RL"
+    },
+    {
+     "geneid": "283314",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "C1RL-AS1"
+    },
+    {
+     "geneid": "716",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "C1S"
+    },
+    {
+     "geneid": "9847",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "C2CD5"
+    },
+    {
+     "geneid": "719",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "C3AR1"
+    },
+    {
+     "geneid": "775",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CACNA1C"
+    },
+    {
+     "geneid": "100652846",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CACNA1C-AS1"
+    },
+    {
+     "geneid": "100874235",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CACNA1C-AS2"
+    },
+    {
+     "geneid": "100874234",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CACNA1C-AS4"
+    },
+    {
+     "geneid": "107984540",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CACNA1C-IT1"
+    },
+    {
+     "geneid": "100874369",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CACNA1C-IT2"
+    },
+    {
+     "geneid": "100874370",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CACNA1C-IT3"
+    },
+    {
+     "geneid": "93589",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CACNA2D4"
+    },
+    {
+     "geneid": "65981",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CAPRIN2"
+    },
+    {
+     "geneid": "93661",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CAPZA3"
+    },
+    {
+     "geneid": "84318",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CCDC77"
+    },
+    {
+     "geneid": "55297",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CCDC91"
+    },
+    {
+     "geneid": "894",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CCND2"
+    },
+    {
+     "geneid": "103752584",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CCND2-AS1"
+    },
+    {
+     "geneid": "9332",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CD163"
+    },
+    {
+     "geneid": "283316",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CD163L1"
+    },
+    {
+     "geneid": "939",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CD27"
+    },
+    {
+     "geneid": "678655",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CD27-AS1"
+    },
+    {
+     "geneid": "920",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CD4"
+    },
+    {
+     "geneid": "969",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CD69"
+    },
+    {
+     "geneid": "928",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CD9"
+    },
+    {
+     "geneid": "83461",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CDCA3"
+    },
+    {
+     "geneid": "1027",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CDKN1B"
+    },
+    {
+     "geneid": "1108",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CHD4"
+    },
+    {
+     "geneid": "139355233",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CHD4-AS1"
+    },
+    {
+     "geneid": "160364",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CLEC12A"
+    },
+    {
+     "geneid": "400002",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CLEC12A-AS1"
+    },
+    {
+     "geneid": "387837",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CLEC12B"
+    },
+    {
+     "geneid": "51267",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CLEC1A"
+    },
+    {
+     "geneid": "51266",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CLEC1B"
+    },
+    {
+     "geneid": "387836",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CLEC2A"
+    },
+    {
+     "geneid": "9976",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CLEC2B"
+    },
+    {
+     "geneid": "29121",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CLEC2D"
+    },
+    {
+     "geneid": "50856",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CLEC4A"
+    },
+    {
+     "geneid": "170482",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CLEC4C"
+    },
+    {
+     "geneid": "338339",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CLEC4D"
+    },
+    {
+     "geneid": "26253",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CLEC4E"
+    },
+    {
+     "geneid": "93978",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CLEC6A"
+    },
+    {
+     "geneid": "64581",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CLEC7A"
+    },
+    {
+     "geneid": "283420",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CLEC9A"
+    },
+    {
+     "geneid": "160365",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CLECL1"
+    },
+    {
+     "geneid": "9746",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CLSTN3"
+    },
+    {
+     "geneid": "55907",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CMAS"
+    },
+    {
+     "geneid": "50813",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "COPS7A"
+    },
+    {
+     "geneid": "84766",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "CRACR2A"
+    },
+    {
+     "geneid": "1389",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "CREBL2"
+    },
+    {
+     "geneid": "196513",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "DCP1B"
+    },
+    {
+     "geneid": "1663",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "DDX11"
+    },
+    {
+     "geneid": "100506660",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "DDX11-AS1"
+    },
+    {
+     "geneid": "51202",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "DDX47"
+    },
+    {
+     "geneid": "160518",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "DENND5B"
+    },
+    {
+     "geneid": "100874249",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "DENND5B-AS1"
+    },
+    {
+     "geneid": "51071",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "DERA"
+    },
+    {
+     "geneid": "55259",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "DNAI7"
+    },
+    {
+     "geneid": "10059",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "DNM1L"
+    },
+    {
+     "geneid": "359787",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "DPPA3"
+    },
+    {
+     "geneid": "80824",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "DUSP16"
+    },
+    {
+     "geneid": "8798",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "DYRK4"
+    },
+    {
+     "geneid": "255308",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "EIF2S3B"
+    },
+    {
+     "geneid": "10436",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "EMG1"
+    },
+    {
+     "geneid": "2012",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "EMP1"
+    },
+    {
+     "geneid": "2026",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ENO2"
+    },
+    {
+     "geneid": "2059",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "EPS8"
+    },
+    {
+     "geneid": "23085",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ERC1"
+    },
+    {
+     "geneid": "51290",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ERGIC2"
+    },
+    {
+     "geneid": "121506",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ERP27"
+    },
+    {
+     "geneid": "254013",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ETFBKMT"
+    },
+    {
+     "geneid": "144363",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ETFRF1"
+    },
+    {
+     "geneid": "55500",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ETNK1"
+    },
+    {
+     "geneid": "105369691",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ETNK1-DT"
+    },
+    {
+     "geneid": "2120",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ETV6"
+    },
+    {
+     "geneid": "57613",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "FAM234B"
+    },
+    {
+     "geneid": "440078",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "FAM66C"
+    },
+    {
+     "geneid": "55138",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "FAM90A1"
+    },
+    {
+     "geneid": "55711",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "FAR2"
+    },
+    {
+     "geneid": "100506606",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "FAR2-AS1"
+    },
+    {
+     "geneid": "144699",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "FBXL14"
+    },
+    {
+     "geneid": "57102",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "FERRY3"
+    },
+    {
+     "geneid": "121512",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "FGD4"
+    },
+    {
+     "geneid": "8074",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "FGF23"
+    },
+    {
+     "geneid": "2251",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "FGF6"
+    },
+    {
+     "geneid": "26127",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "FGFR1OP2"
+    },
+    {
+     "geneid": "2288",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "FKBP4"
+    },
+    {
+     "geneid": "79857",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "FLJ13224"
+    },
+    {
+     "geneid": "55810",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "FOXJ2"
+    },
+    {
+     "geneid": "2305",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "FOXM1"
+    },
+    {
+     "geneid": "23710",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "GABARAPL1"
+    },
+    {
+     "geneid": "116435304",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "GABARAPL1-AS1"
+    },
+    {
+     "geneid": "26290",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "GALNT8"
+    },
+    {
+     "geneid": "2597",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "GAPDH"
+    },
+    {
+     "geneid": "101929549",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "GAU1"
+    },
+    {
+     "geneid": "9573",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "GDF3"
+    },
+    {
+     "geneid": "2784",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "GNB3"
+    },
+    {
+     "geneid": "51026",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "GOLT1B"
+    },
+    {
+     "geneid": "27239",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "GPR162"
+    },
+    {
+     "geneid": "2842",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "GPR19"
+    },
+    {
+     "geneid": "9052",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "GPRC5A"
+    },
+    {
+     "geneid": "55507",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "GPRC5D"
+    },
+    {
+     "geneid": "100506314",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "GPRC5D-AS1"
+    },
+    {
+     "geneid": "2904",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "GRIN2B"
+    },
+    {
+     "geneid": "83445",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "GSG1"
+    },
+    {
+     "geneid": "2984",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "GUCY2C"
+    },
+    {
+     "geneid": "123706531",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "GUCY2C-AS1"
+    },
+    {
+     "geneid": "2998",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "GYS2"
+    },
+    {
+     "geneid": "55766",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "H2AJ"
+    },
+    {
+     "geneid": "440093",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "H3-5"
+    },
+    {
+     "geneid": "121504",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "H4C16"
+    },
+    {
+     "geneid": "50865",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "HEBP1"
+    },
+    {
+     "geneid": "3375",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "IAPP"
+    },
+    {
+     "geneid": "25900",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "IFFO1"
+    },
+    {
+     "geneid": "51147",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ING4"
+    },
+    {
+     "geneid": "55726",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "INTS13"
+    },
+    {
+     "geneid": "10526",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "IPO8"
+    },
+    {
+     "geneid": "440073",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "IQSEC3"
+    },
+    {
+     "geneid": "105369592",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "IQSEC3-AS1"
+    },
+    {
+     "geneid": "105369593",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "IQSEC3-AS2"
+    },
+    {
+     "geneid": "574538",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "IQSEC3-AS3"
+    },
+    {
+     "geneid": "4033",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "IRAG2"
+    },
+    {
+     "geneid": "55846",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ITFG2"
+    },
+    {
+     "geneid": "283440",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ITFG2-AS1"
+    },
+    {
+     "geneid": "3709",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ITPR2"
+    },
+    {
+     "geneid": "139355255",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ITPR2-AS2"
+    },
+    {
+     "geneid": "3736",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "KCNA1"
+    },
+    {
+     "geneid": "3741",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "KCNA5"
+    },
+    {
+     "geneid": "3742",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "KCNA6"
+    },
+    {
+     "geneid": "139432815",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "KCNA6-AS1"
+    },
+    {
+     "geneid": "3764",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "KCNJ8"
+    },
+    {
+     "geneid": "105369689",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "KCNJ8-AS1"
+    },
+    {
+     "geneid": "5927",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "KDM5A"
+    },
+    {
+     "geneid": "57542",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "KLHL42"
+    },
+    {
+     "geneid": "3820",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "KLRB1"
+    },
+    {
+     "geneid": "3821",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "KLRC1"
+    },
+    {
+     "geneid": "3822",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "KLRC2"
+    },
+    {
+     "geneid": "3823",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "KLRC3"
+    },
+    {
+     "geneid": "8302",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "KLRC4"
+    },
+    {
+     "geneid": "100528032",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "KLRC4-KLRK1"
+    },
+    {
+     "geneid": "3824",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "KLRD1"
+    },
+    {
+     "geneid": "51348",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "KLRF1"
+    },
+    {
+     "geneid": "100431172",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "KLRF2"
+    },
+    {
+     "geneid": "10219",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "KLRG1"
+    },
+    {
+     "geneid": "22914",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "KLRK1"
+    },
+    {
+     "geneid": "101928100",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "KLRK1-AS1"
+    },
+    {
+     "geneid": "3845",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "KRAS"
+    },
+    {
+     "geneid": "3902",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LAG3"
+    },
+    {
+     "geneid": "3945",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LDHB"
+    },
+    {
+     "geneid": "144360",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC00477"
+    },
+    {
+     "geneid": "253128",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC00612"
+    },
+    {
+     "geneid": "389634",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC00937"
+    },
+    {
+     "geneid": "100271702",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC00940"
+    },
+    {
+     "geneid": "100287314",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC00941"
+    },
+    {
+     "geneid": "100292680",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC00942"
+    },
+    {
+     "geneid": "100499405",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC00987"
+    },
+    {
+     "geneid": "338817",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC01252"
+    },
+    {
+     "geneid": "101928340",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC01489"
+    },
+    {
+     "geneid": "283422",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC01559"
+    },
+    {
+     "geneid": "101928162",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC02366"
+    },
+    {
+     "geneid": "101930452",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC02367"
+    },
+    {
+     "geneid": "107984539",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC02371"
+    },
+    {
+     "geneid": "105369678",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC02378"
+    },
+    {
+     "geneid": "105369717",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC02386"
+    },
+    {
+     "geneid": "101929027",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC02387"
+    },
+    {
+     "geneid": "105369652",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC02390"
+    },
+    {
+     "geneid": "100506393",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC02398"
+    },
+    {
+     "geneid": "101930162",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC02417"
+    },
+    {
+     "geneid": "105369723",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC02422"
+    },
+    {
+     "geneid": "101929584",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC02443"
+    },
+    {
+     "geneid": "101060038",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC02446"
+    },
+    {
+     "geneid": "101927905",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC02449"
+    },
+    {
+     "geneid": "105369597",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC02455"
+    },
+    {
+     "geneid": "105369684",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC02468"
+    },
+    {
+     "geneid": "100506159",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC02470"
+    },
+    {
+     "geneid": "112588022",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC02598"
+    },
+    {
+     "geneid": "113523642",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC02617"
+    },
+    {
+     "geneid": "105369606",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC02827"
+    },
+    {
+     "geneid": "196415",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC02909"
+    },
+    {
+     "geneid": "107984516",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC02955"
+    },
+    {
+     "geneid": "123706542",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LINC02963"
+    },
+    {
+     "geneid": "123706525",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LINC02972"
+    },
+    {
+     "geneid": "160492",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LMNTD1"
+    },
+    {
+     "geneid": "55885",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LMO3"
+    },
+    {
+     "geneid": "100128253",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC100128253"
+    },
+    {
+     "geneid": "100507560",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC100507560"
+    },
+    {
+     "geneid": "101928030",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC101928030"
+    },
+    {
+     "geneid": "102723544",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC102723544"
+    },
+    {
+     "geneid": "102724020",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC102724020"
+    },
+    {
+     "geneid": "105369595",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC105369595"
+    },
+    {
+     "geneid": "105369617",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC105369617"
+    },
+    {
+     "geneid": "105369632",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC105369632"
+    },
+    {
+     "geneid": "105369704",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC105369704"
+    },
+    {
+     "geneid": "105369728",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC105369728"
+    },
+    {
+     "geneid": "106799839",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC106799839"
+    },
+    {
+     "geneid": "107436002",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC107436002"
+    },
+    {
+     "geneid": "107832852",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC107832852"
+    },
+    {
+     "geneid": "107832854",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC107832854"
+    },
+    {
+     "geneid": "107984507",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC107984507"
+    },
+    {
+     "geneid": "108178986",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC108178986"
+    },
+    {
+     "geneid": "108178987",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC108178987"
+    },
+    {
+     "geneid": "108251798",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC108251798"
+    },
+    {
+     "geneid": "108254668",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC108254668"
+    },
+    {
+     "geneid": "108281141",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC108281141"
+    },
+    {
+     "geneid": "108281176",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC108281176"
+    },
+    {
+     "geneid": "108942766",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC108942766"
+    },
+    {
+     "geneid": "109461484",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC109461484"
+    },
+    {
+     "geneid": "110120854",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC110120854"
+    },
+    {
+     "geneid": "110120899",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC110120899"
+    },
+    {
+     "geneid": "110120906",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC110120906"
+    },
+    {
+     "geneid": "110120907",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC110120907"
+    },
+    {
+     "geneid": "110120918",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC110120918"
+    },
+    {
+     "geneid": "110120934",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC110120934"
+    },
+    {
+     "geneid": "110120948",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC110120948"
+    },
+    {
+     "geneid": "110120955",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC110120955"
+    },
+    {
+     "geneid": "110120956",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC110120956"
+    },
+    {
+     "geneid": "110121389",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC110121389"
+    },
+    {
+     "geneid": "110121408",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC110121408"
+    },
+    {
+     "geneid": "110121489",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC110121489"
+    },
+    {
+     "geneid": "111365179",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC111365179"
+    },
+    {
+     "geneid": "111501779",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC111501779"
+    },
+    {
+     "geneid": "112136100",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112136100"
+    },
+    {
+     "geneid": "112136106",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112136106"
+    },
+    {
+     "geneid": "112163543",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163543"
+    },
+    {
+     "geneid": "112163544",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163544"
+    },
+    {
+     "geneid": "112163545",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163545"
+    },
+    {
+     "geneid": "112163548",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163548"
+    },
+    {
+     "geneid": "112163549",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163549"
+    },
+    {
+     "geneid": "112163550",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163550"
+    },
+    {
+     "geneid": "112163551",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163551"
+    },
+    {
+     "geneid": "112163552",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163552"
+    },
+    {
+     "geneid": "112163597",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163597"
+    },
+    {
+     "geneid": "112163604",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163604"
+    },
+    {
+     "geneid": "112163620",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163620"
+    },
+    {
+     "geneid": "112163621",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163621"
+    },
+    {
+     "geneid": "112163622",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163622"
+    },
+    {
+     "geneid": "112163623",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163623"
+    },
+    {
+     "geneid": "112163625",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163625"
+    },
+    {
+     "geneid": "112163626",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163626"
+    },
+    {
+     "geneid": "112163630",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC112163630"
+    },
+    {
+     "geneid": "113939932",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC113939932"
+    },
+    {
+     "geneid": "113939935",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC113939935"
+    },
+    {
+     "geneid": "116268425",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268425"
+    },
+    {
+     "geneid": "116268426",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268426"
+    },
+    {
+     "geneid": "116268427",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268427"
+    },
+    {
+     "geneid": "116268428",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268428"
+    },
+    {
+     "geneid": "116268429",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268429"
+    },
+    {
+     "geneid": "116268430",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268430"
+    },
+    {
+     "geneid": "116268431",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268431"
+    },
+    {
+     "geneid": "116268432",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268432"
+    },
+    {
+     "geneid": "116268433",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268433"
+    },
+    {
+     "geneid": "116268434",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268434"
+    },
+    {
+     "geneid": "116268435",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268435"
+    },
+    {
+     "geneid": "116268436",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268436"
+    },
+    {
+     "geneid": "116268437",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC116268437"
+    },
+    {
+     "geneid": "120807612",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC120807612"
+    },
+    {
+     "geneid": "121392955",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121392955"
+    },
+    {
+     "geneid": "121392956",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121392956"
+    },
+    {
+     "geneid": "121403743",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121403743"
+    },
+    {
+     "geneid": "121403744",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121403744"
+    },
+    {
+     "geneid": "121466689",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121466689"
+    },
+    {
+     "geneid": "121466690",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121466690"
+    },
+    {
+     "geneid": "121466691",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121466691"
+    },
+    {
+     "geneid": "121466692",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121466692"
+    },
+    {
+     "geneid": "121466693",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121466693"
+    },
+    {
+     "geneid": "121832825",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121832825"
+    },
+    {
+     "geneid": "121832826",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121832826"
+    },
+    {
+     "geneid": "121832827",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121832827"
+    },
+    {
+     "geneid": "121832828",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121832828"
+    },
+    {
+     "geneid": "121832829",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121832829"
+    },
+    {
+     "geneid": "121832830",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121832830"
+    },
+    {
+     "geneid": "121832831",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC121832831"
+    },
+    {
+     "geneid": "124625876",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625876"
+    },
+    {
+     "geneid": "124625877",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625877"
+    },
+    {
+     "geneid": "124625878",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625878"
+    },
+    {
+     "geneid": "124625879",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625879"
+    },
+    {
+     "geneid": "124625880",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625880"
+    },
+    {
+     "geneid": "124625881",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625881"
+    },
+    {
+     "geneid": "124625882",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625882"
+    },
+    {
+     "geneid": "124625883",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625883"
+    },
+    {
+     "geneid": "124625884",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625884"
+    },
+    {
+     "geneid": "124625885",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625885"
+    },
+    {
+     "geneid": "124625886",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625886"
+    },
+    {
+     "geneid": "124625887",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625887"
+    },
+    {
+     "geneid": "124625889",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625889"
+    },
+    {
+     "geneid": "124625890",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625890"
+    },
+    {
+     "geneid": "124625892",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625892"
+    },
+    {
+     "geneid": "124625893",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625893"
+    },
+    {
+     "geneid": "124625895",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625895"
+    },
+    {
+     "geneid": "124625896",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625896"
+    },
+    {
+     "geneid": "124625897",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625897"
+    },
+    {
+     "geneid": "124625898",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625898"
+    },
+    {
+     "geneid": "124625899",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625899"
+    },
+    {
+     "geneid": "124625900",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625900"
+    },
+    {
+     "geneid": "124625901",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625901"
+    },
+    {
+     "geneid": "124625902",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625902"
+    },
+    {
+     "geneid": "124625903",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625903"
+    },
+    {
+     "geneid": "124625904",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625904"
+    },
+    {
+     "geneid": "124625905",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625905"
+    },
+    {
+     "geneid": "124625906",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625906"
+    },
+    {
+     "geneid": "124625907",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625907"
+    },
+    {
+     "geneid": "124625908",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625908"
+    },
+    {
+     "geneid": "124625909",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625909"
+    },
+    {
+     "geneid": "124625910",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625910"
+    },
+    {
+     "geneid": "124625911",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625911"
+    },
+    {
+     "geneid": "124625912",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625912"
+    },
+    {
+     "geneid": "124625913",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625913"
+    },
+    {
+     "geneid": "124625914",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625914"
+    },
+    {
+     "geneid": "124625915",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625915"
+    },
+    {
+     "geneid": "124625916",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625916"
+    },
+    {
+     "geneid": "124625917",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625917"
+    },
+    {
+     "geneid": "124625918",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625918"
+    },
+    {
+     "geneid": "124625919",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625919"
+    },
+    {
+     "geneid": "124625920",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625920"
+    },
+    {
+     "geneid": "124625921",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124625921"
+    },
+    {
+     "geneid": "124629325",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629325"
+    },
+    {
+     "geneid": "124629326",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC124629326"
+    },
+    {
+     "geneid": "130007479",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007479"
+    },
+    {
+     "geneid": "130007480",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007480"
+    },
+    {
+     "geneid": "130007481",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007481"
+    },
+    {
+     "geneid": "130007482",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007482"
+    },
+    {
+     "geneid": "130007483",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007483"
+    },
+    {
+     "geneid": "130007484",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007484"
+    },
+    {
+     "geneid": "130007485",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007485"
+    },
+    {
+     "geneid": "130007486",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007486"
+    },
+    {
+     "geneid": "130007487",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007487"
+    },
+    {
+     "geneid": "130007488",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007488"
+    },
+    {
+     "geneid": "130007489",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007489"
+    },
+    {
+     "geneid": "130007490",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007490"
+    },
+    {
+     "geneid": "130007491",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007491"
+    },
+    {
+     "geneid": "130007492",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007492"
+    },
+    {
+     "geneid": "130007493",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007493"
+    },
+    {
+     "geneid": "130007494",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007494"
+    },
+    {
+     "geneid": "130007495",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007495"
+    },
+    {
+     "geneid": "130007496",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007496"
+    },
+    {
+     "geneid": "130007497",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007497"
+    },
+    {
+     "geneid": "130007498",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007498"
+    },
+    {
+     "geneid": "130007499",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007499"
+    },
+    {
+     "geneid": "130007500",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007500"
+    },
+    {
+     "geneid": "130007501",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007501"
+    },
+    {
+     "geneid": "130007502",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007502"
+    },
+    {
+     "geneid": "130007503",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007503"
+    },
+    {
+     "geneid": "130007504",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007504"
+    },
+    {
+     "geneid": "130007505",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007505"
+    },
+    {
+     "geneid": "130007506",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007506"
+    },
+    {
+     "geneid": "130007507",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007507"
+    },
+    {
+     "geneid": "130007508",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007508"
+    },
+    {
+     "geneid": "130007509",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007509"
+    },
+    {
+     "geneid": "130007510",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007510"
+    },
+    {
+     "geneid": "130007511",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007511"
+    },
+    {
+     "geneid": "130007512",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007512"
+    },
+    {
+     "geneid": "130007513",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007513"
+    },
+    {
+     "geneid": "130007514",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007514"
+    },
+    {
+     "geneid": "130007515",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007515"
+    },
+    {
+     "geneid": "130007516",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007516"
+    },
+    {
+     "geneid": "130007517",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007517"
+    },
+    {
+     "geneid": "130007518",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007518"
+    },
+    {
+     "geneid": "130007519",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007519"
+    },
+    {
+     "geneid": "130007520",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007520"
+    },
+    {
+     "geneid": "130007521",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007521"
+    },
+    {
+     "geneid": "130007522",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007522"
+    },
+    {
+     "geneid": "130007523",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007523"
+    },
+    {
+     "geneid": "130007524",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007524"
+    },
+    {
+     "geneid": "130007525",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007525"
+    },
+    {
+     "geneid": "130007526",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007526"
+    },
+    {
+     "geneid": "130007527",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007527"
+    },
+    {
+     "geneid": "130007528",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007528"
+    },
+    {
+     "geneid": "130007529",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007529"
+    },
+    {
+     "geneid": "130007530",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007530"
+    },
+    {
+     "geneid": "130007531",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007531"
+    },
+    {
+     "geneid": "130007532",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007532"
+    },
+    {
+     "geneid": "130007533",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007533"
+    },
+    {
+     "geneid": "130007534",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007534"
+    },
+    {
+     "geneid": "130007535",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007535"
+    },
+    {
+     "geneid": "130007536",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007536"
+    },
+    {
+     "geneid": "130007537",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007537"
+    },
+    {
+     "geneid": "130007538",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007538"
+    },
+    {
+     "geneid": "130007539",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007539"
+    },
+    {
+     "geneid": "130007540",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007540"
+    },
+    {
+     "geneid": "130007541",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007541"
+    },
+    {
+     "geneid": "130007542",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007542"
+    },
+    {
+     "geneid": "130007543",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007543"
+    },
+    {
+     "geneid": "130007544",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007544"
+    },
+    {
+     "geneid": "130007545",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007545"
+    },
+    {
+     "geneid": "130007546",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007546"
+    },
+    {
+     "geneid": "130007547",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007547"
+    },
+    {
+     "geneid": "130007548",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007548"
+    },
+    {
+     "geneid": "130007549",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007549"
+    },
+    {
+     "geneid": "130007550",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007550"
+    },
+    {
+     "geneid": "130007551",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007551"
+    },
+    {
+     "geneid": "130007552",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007552"
+    },
+    {
+     "geneid": "130007553",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007553"
+    },
+    {
+     "geneid": "130007554",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007554"
+    },
+    {
+     "geneid": "130007555",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007555"
+    },
+    {
+     "geneid": "130007556",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007556"
+    },
+    {
+     "geneid": "130007557",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007557"
+    },
+    {
+     "geneid": "130007558",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007558"
+    },
+    {
+     "geneid": "130007559",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007559"
+    },
+    {
+     "geneid": "130007560",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007560"
+    },
+    {
+     "geneid": "130007561",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007561"
+    },
+    {
+     "geneid": "130007562",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007562"
+    },
+    {
+     "geneid": "130007563",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007563"
+    },
+    {
+     "geneid": "130007564",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007564"
+    },
+    {
+     "geneid": "130007565",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007565"
+    },
+    {
+     "geneid": "130007566",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007566"
+    },
+    {
+     "geneid": "130007567",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007567"
+    },
+    {
+     "geneid": "130007568",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007568"
+    },
+    {
+     "geneid": "130007569",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007569"
+    },
+    {
+     "geneid": "130007570",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007570"
+    },
+    {
+     "geneid": "130007571",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007571"
+    },
+    {
+     "geneid": "130007572",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007572"
+    },
+    {
+     "geneid": "130007573",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007573"
+    },
+    {
+     "geneid": "130007574",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007574"
+    },
+    {
+     "geneid": "130007575",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007575"
+    },
+    {
+     "geneid": "130007576",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007576"
+    },
+    {
+     "geneid": "130007577",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007577"
+    },
+    {
+     "geneid": "130007578",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007578"
+    },
+    {
+     "geneid": "130007579",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007579"
+    },
+    {
+     "geneid": "130007580",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007580"
+    },
+    {
+     "geneid": "130007581",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007581"
+    },
+    {
+     "geneid": "130007582",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007582"
+    },
+    {
+     "geneid": "130007583",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007583"
+    },
+    {
+     "geneid": "130007584",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007584"
+    },
+    {
+     "geneid": "130007585",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007585"
+    },
+    {
+     "geneid": "130007586",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007586"
+    },
+    {
+     "geneid": "130007587",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007587"
+    },
+    {
+     "geneid": "130007588",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007588"
+    },
+    {
+     "geneid": "130007589",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007589"
+    },
+    {
+     "geneid": "130007590",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007590"
+    },
+    {
+     "geneid": "130007591",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007591"
+    },
+    {
+     "geneid": "130007592",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007592"
+    },
+    {
+     "geneid": "130007593",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007593"
+    },
+    {
+     "geneid": "130007594",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007594"
+    },
+    {
+     "geneid": "130007595",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007595"
+    },
+    {
+     "geneid": "130007596",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007596"
+    },
+    {
+     "geneid": "130007597",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007597"
+    },
+    {
+     "geneid": "130007598",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007598"
+    },
+    {
+     "geneid": "130007599",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007599"
+    },
+    {
+     "geneid": "130007600",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007600"
+    },
+    {
+     "geneid": "130007601",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007601"
+    },
+    {
+     "geneid": "130007602",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007602"
+    },
+    {
+     "geneid": "130007603",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007603"
+    },
+    {
+     "geneid": "130007604",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007604"
+    },
+    {
+     "geneid": "130007605",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007605"
+    },
+    {
+     "geneid": "130007606",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007606"
+    },
+    {
+     "geneid": "130007607",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007607"
+    },
+    {
+     "geneid": "130007608",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007608"
+    },
+    {
+     "geneid": "130007609",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007609"
+    },
+    {
+     "geneid": "130007610",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007610"
+    },
+    {
+     "geneid": "130007611",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007611"
+    },
+    {
+     "geneid": "130007612",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007612"
+    },
+    {
+     "geneid": "130007613",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007613"
+    },
+    {
+     "geneid": "130007614",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007614"
+    },
+    {
+     "geneid": "130007615",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007615"
+    },
+    {
+     "geneid": "130007616",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007616"
+    },
+    {
+     "geneid": "130007617",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007617"
+    },
+    {
+     "geneid": "130007618",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007618"
+    },
+    {
+     "geneid": "130007619",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007619"
+    },
+    {
+     "geneid": "130007620",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007620"
+    },
+    {
+     "geneid": "130007621",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007621"
+    },
+    {
+     "geneid": "130007622",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007622"
+    },
+    {
+     "geneid": "130007623",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007623"
+    },
+    {
+     "geneid": "130007624",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007624"
+    },
+    {
+     "geneid": "130007625",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007625"
+    },
+    {
+     "geneid": "130007626",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007626"
+    },
+    {
+     "geneid": "130007627",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007627"
+    },
+    {
+     "geneid": "130007628",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007628"
+    },
+    {
+     "geneid": "130007629",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007629"
+    },
+    {
+     "geneid": "130007630",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007630"
+    },
+    {
+     "geneid": "130007631",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007631"
+    },
+    {
+     "geneid": "130007632",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007632"
+    },
+    {
+     "geneid": "130007633",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007633"
+    },
+    {
+     "geneid": "130007634",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007634"
+    },
+    {
+     "geneid": "130007635",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007635"
+    },
+    {
+     "geneid": "130007636",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007636"
+    },
+    {
+     "geneid": "130007637",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007637"
+    },
+    {
+     "geneid": "130007638",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007638"
+    },
+    {
+     "geneid": "130007639",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007639"
+    },
+    {
+     "geneid": "130007640",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007640"
+    },
+    {
+     "geneid": "130007641",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007641"
+    },
+    {
+     "geneid": "130007642",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007642"
+    },
+    {
+     "geneid": "130007643",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007643"
+    },
+    {
+     "geneid": "130007644",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007644"
+    },
+    {
+     "geneid": "130007645",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007645"
+    },
+    {
+     "geneid": "130007646",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007646"
+    },
+    {
+     "geneid": "130007647",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007647"
+    },
+    {
+     "geneid": "130007648",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007648"
+    },
+    {
+     "geneid": "130007649",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007649"
+    },
+    {
+     "geneid": "130007650",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007650"
+    },
+    {
+     "geneid": "130007651",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007651"
+    },
+    {
+     "geneid": "130007652",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007652"
+    },
+    {
+     "geneid": "130007653",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007653"
+    },
+    {
+     "geneid": "130007654",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007654"
+    },
+    {
+     "geneid": "130007655",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007655"
+    },
+    {
+     "geneid": "130007656",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007656"
+    },
+    {
+     "geneid": "130007657",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007657"
+    },
+    {
+     "geneid": "130007658",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007658"
+    },
+    {
+     "geneid": "130007659",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007659"
+    },
+    {
+     "geneid": "130007660",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007660"
+    },
+    {
+     "geneid": "130007661",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007661"
+    },
+    {
+     "geneid": "130007662",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007662"
+    },
+    {
+     "geneid": "130007663",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007663"
+    },
+    {
+     "geneid": "130007664",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007664"
+    },
+    {
+     "geneid": "130007665",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007665"
+    },
+    {
+     "geneid": "130007666",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC130007666"
+    },
+    {
+     "geneid": "132090038",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090038"
+    },
+    {
+     "geneid": "132090065",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090065"
+    },
+    {
+     "geneid": "132090066",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090066"
+    },
+    {
+     "geneid": "132090067",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090067"
+    },
+    {
+     "geneid": "132090068",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090068"
+    },
+    {
+     "geneid": "132090070",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090070"
+    },
+    {
+     "geneid": "132090071",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090071"
+    },
+    {
+     "geneid": "132090072",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090072"
+    },
+    {
+     "geneid": "132090073",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090073"
+    },
+    {
+     "geneid": "132090074",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090074"
+    },
+    {
+     "geneid": "132090075",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090075"
+    },
+    {
+     "geneid": "132090076",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090076"
+    },
+    {
+     "geneid": "132090077",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090077"
+    },
+    {
+     "geneid": "132090078",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090078"
+    },
+    {
+     "geneid": "132090079",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090079"
+    },
+    {
+     "geneid": "132090080",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090080"
+    },
+    {
+     "geneid": "132090081",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090081"
+    },
+    {
+     "geneid": "132090082",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090082"
+    },
+    {
+     "geneid": "132090083",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090083"
+    },
+    {
+     "geneid": "132090084",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090084"
+    },
+    {
+     "geneid": "132090085",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090085"
+    },
+    {
+     "geneid": "132090086",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090086"
+    },
+    {
+     "geneid": "132090087",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090087"
+    },
+    {
+     "geneid": "132090088",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090088"
+    },
+    {
+     "geneid": "132090089",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090089"
+    },
+    {
+     "geneid": "132090090",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090090"
+    },
+    {
+     "geneid": "132090091",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090091"
+    },
+    {
+     "geneid": "132090092",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090092"
+    },
+    {
+     "geneid": "132090093",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090093"
+    },
+    {
+     "geneid": "132090094",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090094"
+    },
+    {
+     "geneid": "132090095",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090095"
+    },
+    {
+     "geneid": "132090096",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090096"
+    },
+    {
+     "geneid": "132090097",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090097"
+    },
+    {
+     "geneid": "132090098",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090098"
+    },
+    {
+     "geneid": "132090099",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090099"
+    },
+    {
+     "geneid": "132090100",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090100"
+    },
+    {
+     "geneid": "132090101",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090101"
+    },
+    {
+     "geneid": "132090102",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090102"
+    },
+    {
+     "geneid": "132090103",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090103"
+    },
+    {
+     "geneid": "132090104",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090104"
+    },
+    {
+     "geneid": "132090105",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090105"
+    },
+    {
+     "geneid": "132090142",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090142"
+    },
+    {
+     "geneid": "132090843",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090843"
+    },
+    {
+     "geneid": "132090844",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090844"
+    },
+    {
+     "geneid": "132090845",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132090845"
+    },
+    {
+     "geneid": "132211106",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132211106"
+    },
+    {
+     "geneid": "132211107",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC132211107"
+    },
+    {
+     "geneid": "440084",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC440084"
+    },
+    {
+     "geneid": "642846",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC642846"
+    },
+    {
+     "geneid": "645485",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LOC645485"
+    },
+    {
+     "geneid": "728715",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC728715"
+    },
+    {
+     "geneid": "729291",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOC729291"
+    },
+    {
+     "geneid": "503693",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LOH12CR2"
+    },
+    {
+     "geneid": "57121",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LPAR5"
+    },
+    {
+     "geneid": "10162",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LPCAT3"
+    },
+    {
+     "geneid": "4040",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "LRP6"
+    },
+    {
+     "geneid": "10233",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LRRC23"
+    },
+    {
+     "geneid": "654429",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LRTM2"
+    },
+    {
+     "geneid": "4055",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "LTBR"
+    },
+    {
+     "geneid": "4074",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "M6PR"
+    },
+    {
+     "geneid": "55110",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "MAGOHB"
+    },
+    {
+     "geneid": "54682",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "MANSC1"
+    },
+    {
+     "geneid": "100287284",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "MANSC4"
+    },
+    {
+     "geneid": "9412",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "MED21"
+    },
+    {
+     "geneid": "8076",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "MFAP5"
+    },
+    {
+     "geneid": "4256",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "MGP"
+    },
+    {
+     "geneid": "4257",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "MGST1"
+    },
+    {
+     "geneid": "100422872",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "MIR1244-3"
+    },
+    {
+     "geneid": "103504734",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "MIR1244-4"
+    },
+    {
+     "geneid": "406933",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "MIR141"
+    },
+    {
+     "geneid": "406985",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "MIR200C"
+    },
+    {
+     "geneid": "105369635",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "MIR200CHG"
+    },
+    {
+     "geneid": "100500816",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "MIR3649"
+    },
+    {
+     "geneid": "100616279",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "MIR3974"
+    },
+    {
+     "geneid": "100422897",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "MIR4302"
+    },
+    {
+     "geneid": "693198",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "MIR613"
+    },
+    {
+     "geneid": "693199",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "MIR614"
+    },
+    {
+     "geneid": "100126320",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "MIR920"
+    },
+    {
+     "geneid": "8079",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "MLF2"
+    },
+    {
+     "geneid": "51258",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "MRPL51"
+    },
+    {
+     "geneid": "60488",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "MRPS35"
+    },
+    {
+     "geneid": "79923",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "NANOG"
+    },
+    {
+     "geneid": "360030",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "NANOGNB"
+    },
+    {
+     "geneid": "9918",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "NCAPD2"
+    },
+    {
+     "geneid": "4704",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "NDUFA9"
+    },
+    {
+     "geneid": "25977",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "NECAP1"
+    },
+    {
+     "geneid": "4815",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "NINJ2"
+    },
+    {
+     "geneid": "100049716",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "NINJ2-AS1"
+    },
+    {
+     "geneid": "4839",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "NOP2"
+    },
+    {
+     "geneid": "83714",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "NRIP2"
+    },
+    {
+     "geneid": "4908",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "NTF3"
+    },
+    {
+     "geneid": "4973",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "OLR1"
+    },
+    {
+     "geneid": "341350",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "OVCH1"
+    },
+    {
+     "geneid": "101055625",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "OVCH1-AS1"
+    },
+    {
+     "geneid": "10536",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "P3H3"
+    },
+    {
+     "geneid": "57097",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PARP11"
+    },
+    {
+     "geneid": "105369609",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PARP11-AS1"
+    },
+    {
+     "geneid": "5139",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PDE3A"
+    },
+    {
+     "geneid": "120766147",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PDE3A-AS1"
+    },
+    {
+     "geneid": "5149",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PDE6H"
+    },
+    {
+     "geneid": "5830",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PEX5"
+    },
+    {
+     "geneid": "11331",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PHB2"
+    },
+    {
+     "geneid": "1911",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PHC1"
+    },
+    {
+     "geneid": "196500",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PIANP"
+    },
+    {
+     "geneid": "5288",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PIK3C2G"
+    },
+    {
+     "geneid": "5318",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PKP2"
+    },
+    {
+     "geneid": "79887",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PLBD1"
+    },
+    {
+     "geneid": "101928290",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PLBD1-AS1"
+    },
+    {
+     "geneid": "101928317",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PLBD1-AS2"
+    },
+    {
+     "geneid": "89869",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PLCZ1"
+    },
+    {
+     "geneid": "54477",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PLEKHA5"
+    },
+    {
+     "geneid": "55200",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PLEKHG6"
+    },
+    {
+     "geneid": "8496",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PPFIBP1"
+    },
+    {
+     "geneid": "5542",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PRB1"
+    },
+    {
+     "geneid": "653247",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PRB2"
+    },
+    {
+     "geneid": "5544",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PRB3"
+    },
+    {
+     "geneid": "5545",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PRB4"
+    },
+    {
+     "geneid": "5554",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PRH1"
+    },
+    {
+     "geneid": "100533464",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PRH1-PRR4"
+    },
+    {
+     "geneid": "106707243",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PRH1-TAS2R14"
+    },
+    {
+     "geneid": "5555",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PRH2"
+    },
+    {
+     "geneid": "56341",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PRMT8"
+    },
+    {
+     "geneid": "11272",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PRR4"
+    },
+    {
+     "geneid": "5744",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PTHLH"
+    },
+    {
+     "geneid": "5763",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PTMS"
+    },
+    {
+     "geneid": "5777",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PTPN6"
+    },
+    {
+     "geneid": "5800",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PTPRO"
+    },
+    {
+     "geneid": "79912",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "PYROXD1"
+    },
+    {
+     "geneid": "5858",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "PZP"
+    },
+    {
+     "geneid": "10635",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "RAD51AP1"
+    },
+    {
+     "geneid": "5893",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "RAD52"
+    },
+    {
+     "geneid": "11228",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "RASSF8"
+    },
+    {
+     "geneid": "100506451",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "RASSF8-AS1"
+    },
+    {
+     "geneid": "83758",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "RBP5"
+    },
+    {
+     "geneid": "5965",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "RECQL"
+    },
+    {
+     "geneid": "387849",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "REP15"
+    },
+    {
+     "geneid": "85004",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "RERG"
+    },
+    {
+     "geneid": "100873980",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "RERG-AS1"
+    },
+    {
+     "geneid": "100874290",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "RERG-IT1"
+    },
+    {
+     "geneid": "79785",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "RERGL"
+    },
+    {
+     "geneid": "55196",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "RESF1"
+    },
+    {
+     "geneid": "83695",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "RHNO1"
+    },
+    {
+     "geneid": "57494",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "RIMKLB"
+    },
+    {
+     "geneid": "100147744",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "RNU7-1"
+    },
+    {
+     "geneid": "692148",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "SCARNA10"
+    },
+    {
+     "geneid": "677780",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SCARNA11"
+    },
+    {
+     "geneid": "677777",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SCARNA12"
+    },
+    {
+     "geneid": "6337",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SCNN1A"
+    },
+    {
+     "geneid": "58516",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SINHCAF"
+    },
+    {
+     "geneid": "729025",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SLC15A5"
+    },
+    {
+     "geneid": "144195",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SLC2A14"
+    },
+    {
+     "geneid": "6515",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SLC2A3"
+    },
+    {
+     "geneid": "6539",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SLC6A12"
+    },
+    {
+     "geneid": "101929384",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "SLC6A12-AS1"
+    },
+    {
+     "geneid": "6540",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SLC6A13"
+    },
+    {
+     "geneid": "6579",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SLCO1A2"
+    },
+    {
+     "geneid": "10599",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "SLCO1B1"
+    },
+    {
+     "geneid": "28234",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "SLCO1B3"
+    },
+    {
+     "geneid": "115072896",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "SLCO1B3-SLCO1B7"
+    },
+    {
+     "geneid": "338821",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "SLCO1B7"
+    },
+    {
+     "geneid": "53919",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "SLCO1C1"
+    },
+    {
+     "geneid": "341346",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "SMCO2"
+    },
+    {
+     "geneid": "440087",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SMCO3"
+    },
+    {
+     "geneid": "100129361",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "SMIM10L1"
+    },
+    {
+     "geneid": "109729112",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SNORA120"
+    },
+    {
+     "geneid": "6660",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SOX5"
+    },
+    {
+     "geneid": "101928471",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "SOX5-AS1"
+    },
+    {
+     "geneid": "84727",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SPSB2"
+    },
+    {
+     "geneid": "80763",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "SPX"
+    },
+    {
+     "geneid": "8082",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "SSPN"
+    },
+    {
+     "geneid": "101928554",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SSPN-AS1"
+    },
+    {
+     "geneid": "6489",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ST8SIA1"
+    },
+    {
+     "geneid": "23012",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "STK38L"
+    },
+    {
+     "geneid": "11171",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "STRAP"
+    },
+    {
+     "geneid": "55359",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "STYK1"
+    },
+    {
+     "geneid": "341359",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "SYT10"
+    },
+    {
+     "geneid": "55080",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TAPBPL"
+    },
+    {
+     "geneid": "50839",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R10"
+    },
+    {
+     "geneid": "50838",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R13"
+    },
+    {
+     "geneid": "50840",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R14"
+    },
+    {
+     "geneid": "259294",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R19"
+    },
+    {
+     "geneid": "259295",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R20"
+    },
+    {
+     "geneid": "259293",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R30"
+    },
+    {
+     "geneid": "259290",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R31"
+    },
+    {
+     "geneid": "353164",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R42"
+    },
+    {
+     "geneid": "259289",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R43"
+    },
+    {
+     "geneid": "259292",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R46"
+    },
+    {
+     "geneid": "259296",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R50"
+    },
+    {
+     "geneid": "50837",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R7"
+    },
+    {
+     "geneid": "50836",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R8"
+    },
+    {
+     "geneid": "50835",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TAS2R9"
+    },
+    {
+     "geneid": "7004",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TEAD4"
+    },
+    {
+     "geneid": "101929469",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TEX52"
+    },
+    {
+     "geneid": "100129223",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "THCAT155"
+    },
+    {
+     "geneid": "57103",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TIGAR"
+    },
+    {
+     "geneid": "51768",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TM7SF3"
+    },
+    {
+     "geneid": "120939",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TMEM52B"
+    },
+    {
+     "geneid": "83857",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TMTC1"
+    },
+    {
+     "geneid": "7132",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "TNFRSF1A"
+    },
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    },
+    {
+     "geneid": "441631",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TSPAN11"
+    },
+    {
+     "geneid": "10867",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TSPAN9"
+    },
+    {
+     "geneid": "100874356",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TSPAN9-IT1"
+    },
+    {
+     "geneid": "7289",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TULP3"
+    },
+    {
+     "geneid": "8078",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "USP5"
+    },
+    {
+     "geneid": "6843",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "VAMP1"
+    },
+    {
+     "geneid": "7450",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "VWF"
+    },
+    {
+     "geneid": "51729",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "WBP11"
+    },
+    {
+     "geneid": "65125",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "WNK1"
+    },
+    {
+     "geneid": "81029",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "WNT5B"
+    },
+    {
+     "geneid": "51067",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "YARS2"
+    },
+    {
+     "geneid": "8531",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "YBX3"
+    },
+    {
+     "geneid": "171017",
+     "source": "submitted",
+     "strand": "-",
+     "symbol": "ZNF384"
+    },
+    {
+     "geneid": "440077",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "ZNF705A"
+    }
+   ],
+   "germline_classification": {
+    "description": "Pathogenic",
+    "last_evaluated": "2025/12/10 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "not provided",
+      "trait_xrefs": [
+       {
+        "db_id": "C3661900",
+        "db_source": "MedGen"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [],
+   "obj_type": "copy number gain",
+   "protein_change": "",
+   "title": "GRCh38/hg38 12p13.33-11.1(chr12:64621-34650483)x3",
+   "uid": "4796136",
+   "variation_set": [
+    {
+     "canonical_spdi": "",
+     "cdna_change": "GRCh38/hg38 12p13.33-11.1(chr12:64621-34650483)x3",
+     "variant_type": "copy number gain",
+     "variation_name": "GRCh38/hg38 12p13.33-11.1(chr12:64621-34650483)x3"
+    }
+   ]
+  },
+  {
+   "accession": "VCV004915456",
+   "accession_version": "VCV004915456.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Likely pathogenic",
+    "last_evaluated": "2023/04/06 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "TPI1-related disorder",
+      "trait_xrefs": []
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "frameshift variant"
+   ],
+   "obj_type": "Deletion",
+   "protein_change": "I188fs, I69fs, I151fs",
+   "title": "NM_000365.6(TPI1):c.452_453del (p.Ile151fs)",
+   "uid": "4915456",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6869384:TC:",
+     "cdna_change": "c.452_453del",
+     "variant_type": "Deletion",
+     "variation_name": "NM_000365.6(TPI1):c.452_453del (p.Ile151fs)"
+    }
+   ]
+  },
+  {
+   "accession": "VCV003065734",
+   "accession_version": "VCV003065734.1",
+   "genes": [
+    {
+     "geneid": "7167",
+     "source": "submitted",
+     "strand": "+",
+     "symbol": "TPI1"
+    }
+   ],
+   "germline_classification": {
+    "description": "Likely pathogenic",
+    "last_evaluated": "2024/03/29 00:00",
+    "review_status": "criteria provided, single submitter",
+    "trait_set": [
+     {
+      "trait_name": "Triosephosphate isomerase deficiency",
+      "trait_xrefs": [
+       {
+        "db_id": "868",
+        "db_source": "Orphanet"
+       },
+       {
+        "db_id": "C1860808",
+        "db_source": "MedGen"
+       },
+       {
+        "db_id": "MONDO:0014221",
+        "db_source": "MONDO"
+       },
+       {
+        "db_id": "615512",
+        "db_source": "OMIM"
+       }
+      ]
+     }
+    ]
+   },
+   "molecular_consequence_list": [
+    "frameshift variant"
+   ],
+   "obj_type": "Deletion",
+   "protein_change": "G11fs, G48fs",
+   "title": "NM_000365.6(TPI1):c.32del (p.Gly11fs)",
+   "uid": "3065734",
+   "variation_set": [
+    {
+     "canonical_spdi": "NC_000012.12:6867593:GGGGG:GGGG",
+     "cdna_change": "c.32del",
+     "variant_type": "Deletion",
+     "variation_name": "NM_000365.6(TPI1):c.32del (p.Gly11fs)"
+    }
+   ]
+  }
+ ],
+ "total_count": 249,
+ "version": "Build260924-0125.1"
+}

@@ -83,6 +83,13 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: identifiers, preferred name, molecule type, formula, physchem (ALogP, HBD/HBA, TPSA, rotatable bonds, aromatic rings, molecular weight as `full_mwt`), `max_phase`, InChI/InChIKey, isomeric SMILES
 - **Notes**: numbers ChEMBL serialises as strings are normalized; logP and rotatable bonds carry their method (`ALogP`, `chembl:rtb`) and are compared only within it (uibcdf/sabueso#10). Stable online tests.
 
+### ClinVar — variants and their clinical classification
+- **Status**: implemented as an enricher of `resolve_protein_card(..., clinvar={})` (uibcdf/sabueso#83)
+- **Access**: E-utilities (einfo for the build, esearch by NCBI Gene id, esummary), no key (`OnlineClinVarClient`); saved summaries in `temp_data/clinvar/`; `tools.db.clinvar.get_variants`
+- **Quality**: green for the listed coverage. Verified live on TPI1 (GeneID 7167, Build260924-0125.1): 249 records in about 8 s. 110 have a protein change on the canonical transcript NM_000365.6, and those placed include UniProt's natural variants at 42, 105, 171 and 241.
+- **Coverage**: `annotations.clinical_variants`, with the classification, review status, conditions and consequences as stated. Positions are in UniProt numbering only through a canonical transcript UniProt states and a matching residue.
+- **Notes**: found by the NCBI Gene id UniProt cross-references, never by gene symbol. At most 500 records per gene by default; truncation reported. Human genes only. Not for diagnostic use without review by a genetics professional.
+
 ### Reactome — pathways and reactions
 - **Status**: implemented as an enricher of `resolve_protein_card(..., reactome=True)` (uibcdf/sabueso#83)
 - **Access**: Content Service, UniProt mapping and event ancestors, no key (`OnlineReactomeClient`, which names Sabueso: the service refuses Python's default user agent); saved answers in `temp_data/reactome/`; `tools.db.reactome.get_pathways`

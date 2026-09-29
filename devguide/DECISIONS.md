@@ -883,3 +883,19 @@ uibcdf/sabueso#83.
   helper (`tools/db/_http.py`); older clients move to it when a source starts refusing
   them.
 
+## ClinVar, and placing variants in UniProt numbering (2026-09-29)
+uibcdf/sabueso#83; the numbering rule was agreed with the maintainers before building.
+- **Found by a stated gene.** Records come from the NCBI Gene id the UniProt entry
+  cross-references, never from a gene symbol.
+- **Classifications as stated.** The germline classification, its review status and
+  the conditions are ClinVar's words. "Conflicting classifications of pathogenicity"
+  is ClinVar's own statement, and Sabueso never resolves it.
+- **Placing is strict.** ClinVar's `protein_change` lists the change in every
+  isoform's numbering, so it never places a variant. A variant gets a UniProt
+  position only when two things hold: the record's transcript is one UniProt states
+  for its canonical isoform (RefSeq cross-reference, version included), and the
+  residue ClinVar names is the UniProt residue at that position. Otherwise the item
+  keeps ClinVar's numbering and says why it is not placed. Nothing is placed by
+  similarity.
+- **Not for diagnosis.** The docs repeat ClinVar's own warning.
+

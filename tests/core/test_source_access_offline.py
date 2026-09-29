@@ -14,6 +14,7 @@ from sabueso.tools.db import (
     bindingdb,
     chembl,
     clinicaltrials,
+    clinvar,
     diseases,
     interpro,
     ncbi_gene,
@@ -66,6 +67,9 @@ CALLS = {
     ),
     "reactome.get_pathways": lambda: reactome.get_pathways(
         "P60174", client=reactome.FixtureReactomeClient("temp_data")
+    ),
+    "clinvar.get_variants": lambda: clinvar.get_variants(
+        ["7167"], client=clinvar.FixtureClinVarClient("temp_data")
     ),
     "ncbi_taxonomy.get_taxon": lambda: ncbi_taxonomy.get_taxon(
         "5693", client=ncbi_taxonomy.FixtureNCBITaxonomyClient("temp_data")

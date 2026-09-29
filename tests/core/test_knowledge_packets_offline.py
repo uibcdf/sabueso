@@ -15,6 +15,7 @@ from sabueso.core.errors import ArgumentError, ResolverError, StorageError
 from sabueso.core.packets import ASPECTS, card_content_id
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 from sabueso.tools.db.chembl import FixtureChEMBLClient
+from sabueso.tools.db.clinvar import FixtureClinVarClient
 from sabueso.tools.db.diseases import FixtureDISEASESClient
 from sabueso.tools.db.interpro import FixtureInterProClient
 from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
@@ -41,6 +42,7 @@ def clients():
         open_targets_client=FixtureOpenTargetsClient("temp_data"),
         orphadata_client=FixtureOrphadataClient("temp_data"),
         reactome_client=FixtureReactomeClient("temp_data"),
+        clinvar_client=FixtureClinVarClient("temp_data"),
     )
 
 
@@ -79,6 +81,7 @@ def test_a_query_is_declared_and_normalized(query):
     assert sabueso.KnowledgeQuery.from_dict(query.to_dict()) == query
     # What the aspects ask of the sources is fixed by packet_aspects@1.
     assert query.options() == {
+        "clinvar": {},
         "diseases": {},
         "open_targets": {},
         "orphadata": True,

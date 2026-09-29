@@ -305,6 +305,12 @@ A Relationship is first-class, traceable knowledge:
         mining).
 
       Text mining links names, not molecules, and is added only when asked for.
+  - clinical variants (added in #83, schema 0.3.6): `annotations.clinical_variants`, one
+    item per ClinVar variation record of the gene, as ClinVar states it. `location` and
+    `substitution` are in UniProt numbering only when the record's transcript is one
+    UniProt states for the canonical isoform (RefSeq cross-references, versions
+    included) and its residue matches the UniProt sequence. Otherwise `numbering` names
+    ClinVar's transcript and `not_placed` gives the reason.
   - pathways (added in #83, schema 0.3.6):
     - `participates_in` (protein → `reactome:<stId>`), one per Reactome event mapping
       the UniProt accession. Qualifiers: `kind` (`pathway`, lowest level, or

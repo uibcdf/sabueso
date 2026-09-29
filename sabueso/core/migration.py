@@ -139,6 +139,11 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "filled_by": "reactome",
             "entity_types": ("protein",),
         },
+        {
+            "path": "annotations.clinical_variants",
+            "filled_by": "clinvar",
+            "entity_types": ("protein",),
+        },
     ],
 }
 
@@ -222,6 +227,7 @@ def _enrichment_options(data: Dict[str, Any]) -> set:
             ("Open Targets", None): {"open_targets"},
             ("Orphanet", None): {"orphadata"},
             ("Reactome", None): {"reactome"},
+            ("ClinVar", None): {"clinvar"},
         }.get((source, kind), set())
     return options
 

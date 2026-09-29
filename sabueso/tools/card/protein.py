@@ -83,6 +83,8 @@ def resolve_protein_card(
     orphadata_client: Any | None = None,
     reactome: bool = False,
     reactome_client: Any | None = None,
+    clinvar: Dict[str, Any] | None = None,
+    clinvar_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -139,6 +141,12 @@ def resolve_protein_card(
     ``reactome`` adds the Reactome pathways and reactions the entry takes part in
     (``participates_in``), with each pathway's ancestors and whether Reactome inferred
     the event from orthology.
+
+    ``clinvar`` (e.g. ``{}`` or ``{"limit": 100}``; default 500 per gene) adds ClinVar's
+    variants of the gene, found by the NCBI Gene id the entry cross-references, with
+    their classification as ClinVar states it (``annotations.clinical_variants``). A
+    variant is placed in UniProt numbering only when its transcript is one UniProt states
+    for the canonical isoform and its residue matches. Human genes only.
     """
     if ncbi_gene:
         import copy
@@ -848,6 +856,72 @@ def resolve_protein_card(
                     "count": len(mapped["relationships"]),
                 }
             )
+
+    if clinvar is not None:
+        from sabueso.mappings.clinvar import map_variants
+        from sabueso.tools.db.clinvar import DEFAULT_LIMIT as CLINVAR_LIMIT
+        from sabueso.tools.db.clinvar import OnlineClinVarClient
+
+        xrefs = entry.get("uniProtKBCrossReferences") or []
+        genes = sorted({x["id"] for x in xrefs if x.get("database") == "GeneID"})
+        displayed = [
+            (isoform.get("isoformIds") or [None])[0]
+            for comment in entry.get("comments") or []
+            if comment.get("commentType") == "ALTERNATIVE PRODUCTS"
+            for isoform in comment.get("isoforms") or []
+            if isoform.get("isoformSequenceStatus") == "Displayed"
+        ]
+        canonical = {
+            prop["value"]
+            for x in xrefs
+            if x.get("database") == "RefSeq"
+            and x.get("isoformId") in (None, *displayed)
+            for prop in x.get("properties") or []
+            if prop.get("key") == "NucleotideSequenceId" and prop.get("value")
+        }
+        record = {"source": "ClinVar", "identifier": anchor, "genes": genes}
+        if (entry.get("organism") or {}).get("taxonId") != 9606:
+            enrichments.append(
+                {
+                    **record,
+                    "status": "not_applicable",
+                    "detail": "ClinVar covers human variants only",
+                }
+            )
+        elif not genes:
+            enrichments.append(
+                {
+                    **record,
+                    "status": "not_found",
+                    "detail": "the entry cross-references no NCBI Gene id",
+                }
+            )
+        else:
+            client = clinvar_client or OnlineClinVarClient()
+            try:
+                response = client.variants(genes, clinvar.get("limit", CLINVAR_LIMIT))
+            except ConnectorError as exc:
+                enrichments.append({**record, "status": "error", "detail": str(exc)})
+            else:
+                mapped = map_variants(
+                    response["record"],
+                    anchor,
+                    canonical,
+                    (entry.get("sequence") or {}).get("value"),
+                    response.get("retrieved_at", ""),
+                    response.get("version"),
+                )
+                mappings.append(mapped)
+                enrichments.append(
+                    {
+                        **record,
+                        "status": "added" if response["record"] else "not_found",
+                        "version": response.get("version"),
+                        "count": len(response["record"]),
+                        "truncated": response.get("truncated", False),
+                        "total_count": response.get("total_count"),
+                    }
+                )
 
     mappings.append(
         {

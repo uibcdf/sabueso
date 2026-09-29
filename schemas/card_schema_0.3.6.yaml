@@ -94,7 +94,10 @@ schema:
     indication cites, by NCT id). It also adds associated_with, a gene-disease
     association DISEASES or Open Targets states for a human protein, one per disease,
     source and channel (uibcdf/sabueso#82), and participates_in, the Reactome pathways
-    and reactions a protein takes part in (uibcdf/sabueso#83). All additive, so a 0.3.5 card is a valid 0.3.6 card without
+    and reactions a protein takes part in (uibcdf/sabueso#83), and
+    annotations.clinical_variants, ClinVar's variants of a human gene with their
+    classification as stated, placed in UniProt numbering only through a transcript
+    UniProt states for the canonical isoform and a matching residue. All additive, so a 0.3.5 card is a valid 0.3.6 card without
     them.
 card_base:
   meta:
@@ -520,6 +523,33 @@ protein_card:
         host: string
         method: string
         note: string
+      source_assertion_ids:
+      - string
+    clinical_variants:
+      value:
+      - accession: string
+        title: string
+        variant_type: string
+        transcript: string
+        hgvs_c: string
+        hgvs_p: string
+        classification: string
+        review_status: string
+        last_evaluated: string
+        conditions:
+        - name: string
+          xrefs:
+          - string
+        consequences:
+        - string
+        location:
+          start: number
+          end: number
+        substitution:
+          original: string
+          change: string
+        numbering: string
+        not_placed: string
       source_assertion_ids:
       - string
     pathogen_phenotypes:

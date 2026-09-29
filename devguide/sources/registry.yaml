@@ -494,11 +494,14 @@ resources:
     name: "ClinVar"
     url: https://www.ncbi.nlm.nih.gov/clinvar/
     category: target_validation
-    status: evaluating
+    status: in_use
     description: "Human genomic variants and their clinical significance."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "US public domain (NCBI/NLM policy); to confirm for submitter data"
+    reason: "Variants of a human gene with their germline classification, review status and conditions, as ClinVar states them. Found by the NCBI Gene id UniProt cross-references; placed in UniProt numbering only through a canonical transcript UniProt states and a matching residue."
+    access: "E-utilities (einfo, esearch by gene id, esummary), no key, when resolve(..., clinvar={}); at most 500 records per gene by default, truncation reported"
+    licence: "Freely available; ClinVar asks to be credited as the source. Not for diagnostic use without review by a genetics professional."
+    module: [sabueso.tools.db.clinvar, sabueso.mappings.clinvar]
     links: ["#83"]
   - id: gnomad
     name: "gnomAD"
