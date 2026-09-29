@@ -22,17 +22,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 from urllib.error import HTTPError, URLError
-from urllib.request import urlopen
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import request
+from sabueso.tools.db import _release
+from sabueso.tools.db._http import request, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "Orphanet"
 URL = "https://www.orphadata.com/data/xml/en_product6.xml"
-
-_MEMORY: Dict[str, Dict[str, List[Dict[str, Any]]]] = {}
 
 
 def _text(node: Any, path: str) -> str | None:
@@ -91,21 +89,20 @@ class OnlineOrphadataClient:
         self.timeout = timeout
 
     def _index(self) -> tuple:
-        if _MEMORY:
-            ((version, index),) = _MEMORY.items()
-            return version, index
+        """``(version, index)`` of the file, downloaded and parsed once per process.
+        The file's date is known only once it is read, so it is kept under one key."""
+        return _release.remembered(SOURCE, "en_product6", self._download)
+
+    def _download(self) -> tuple:
         try:
             with urlopen(request(URL), timeout=self.timeout) as resp:  # nosec - trusted
                 payload = resp.read()
         except (HTTPError, URLError, TimeoutError, OSError) as exc:
             raise ConnectorError(f"Orphadata download failed: {exc}") from exc
         try:
-            version, index = parse_release(payload)
+            return parse_release(payload)
         except ET.ParseError as exc:
             raise ConnectorError(f"Orphadata file is not valid XML: {exc}") from exc
-        _MEMORY.clear()
-        _MEMORY[version] = index
-        return version, index
 
     def associations(self, accession: str) -> Dict[str, Any]:
         retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")

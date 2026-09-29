@@ -102,6 +102,14 @@ digesters, the registry entry `in_use`, and the derived rows.
 RCSB structures, the ChEMBL/BindingDB/PubChem BioAssay group and NCBI Gene stay
 bespoke, for the reasons in the architecture document.
 
+Every client uses the shared services in `sabueso/tools/db/`:
+- `_http.urlopen`, never `urllib.request.urlopen`, for the user agent and the retries
+  (a test checks it);
+- `_release`, for a source published as whole releases;
+- `_keys`, for a source that takes a personal key. A client that needs one calls
+  `_keys.required(...)` when asked, and the runner records `not_queried` if the key is
+  missing. A key never goes into a record, a message or a cache.
+
 ## Boundaries
 
 - **MolSysMT.** Sabueso retrieves knowledge records, not coordinate files.

@@ -23,7 +23,7 @@ traceable, identity never merged by similarity, absences told apart.
   - human-only coverage (`not_applicable`), in four sources;
   - the not-found and error handling;
   - the truncation records;
-  - the user agent: 5 of 23 HTTP clients name Sabueso;
+  - the user agent: 5 of 23 HTTP clients named Sabueso;
   - release caches: PHI-base and DISEASES each have their own.
 - Nothing fetches in parallel: a card with every enrichment asks about 20 sources one
   after the other.
@@ -66,15 +66,26 @@ From the declarations, the other tables are **derived** instead of maintained by
 
 ## 3. Shared services
 
-- **HTTP** (`tools/db/_http.py`): one user agent naming Sabueso; timeouts; retries with
-  backoff for 429 and 5xx, only for idempotent requests. Every client moves to it.
-- **Keys** (`tools/db/_keys.py`), for sources that need a personal key: BRENDA,
-  VEuPathDB, BioGRID, Guide to PHARMACOLOGY, Tox21's API.
-  - The user supplies their own key through `SABUESO_<REGISTRY_ID>_KEY`, or the
-    client's `api_key`.
-  - Sabueso never stores, logs or ships a key.
-  - The enrichment record says only that the source was reached with a key.
-  - A missing key is `not_queried`, with the reason, never an error.
+- **HTTP** (`tools/db/_http.py`): every client's one way to the network.
+  - One user agent naming Sabueso.
+  - Retries with backoff for 429, 502, 503 and 504 and for refused or reset
+    connections, twice at most, honouring `Retry-After`. Every Sabueso request is a
+    read, GraphQL posts included, so a retry changes nothing on the source.
+  - A timeout is not retried: the source has had its time, and a retry would multiply
+    it. Any other error reaches the client unchanged, so a 404 stays "not found".
+  - A test checks that no client imports `urlopen` from `urllib` directly.
+- **Keys** (`tools/db/_keys.py`), for sources that take a personal key. Some need one
+  (BRENDA, VEuPathDB, BioGRID, Guide to PHARMACOLOGY, Tox21's API); others answer
+  faster with one (NCBI, the first user).
+  - The user supplies their own key through `SABUESO_<SERVICE>_KEY`, or the client's
+    `api_key`. A service, not a registry entry, owns a key: NCBI Gene and NCBI
+    Taxonomy share `SABUESO_NCBI_KEY`.
+  - Sabueso never stores, logs or ships a key. It is sent only to its own service, is
+    scrubbed from error messages, and is left out of the traceback's cause.
+  - A card does not say whether a key was used: an optional key changes the rate, not
+    what the source states, and cards built with and without one stay identical.
+  - A missing required key raises `MissingKeyError` (`SABUESO-E-SOURCE-003`). The runner
+    records `not_queried`, with the reason, never an error.
 - **Release caches** (`tools/db/_release.py`), for sources published as whole
   versioned releases (PHI-base, DISEASES, Orphadata):
   - the index is kept in memory by default;
@@ -103,7 +114,7 @@ and only if measured: most sources answer in 1–10 s, and some ask for gentle u
 
 ## 6. Plan, in behaviour-preserving steps
 
-Each step keeps the 839 offline tests, the recorded card shape and the frozen cards
+Each step keeps the offline tests, the recorded card shape and the frozen cards
 unchanged.
 
 1. **Done (2026-09-29).** The contract and the runner. The seven sources of waves 1–2
@@ -121,7 +132,12 @@ unchanged.
    - `resolve_protein_card` is 595 lines.
    - Cards are identical before and after, for four proteins with and without failing
      sources, and the knowledge-state rows are the same.
-3. Shared services: every client on `_http`, `_release` for the release sources, and
-   `_keys` with its first user.
+3. **Done (2026-09-29).** Shared services.
+   - Every client (23 modules) reaches the network through `_http`.
+   - PHI-base, DISEASES and Orphadata keep their releases through `_release`.
+   - `_keys` has its first user: NCBI Gene and NCBI Taxonomy take an optional NCBI
+     key.
+   - Cards are identical before and after, for four proteins with and without failing
+     sources.
 4. Derived packet options and the consistency test.
 5. Parallel fetching, if measured worthwhile.

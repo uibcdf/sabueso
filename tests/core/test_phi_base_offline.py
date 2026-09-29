@@ -16,7 +16,7 @@ from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.mappings.phi_base import map_phenotypes
 from sabueso.resolver import EntityResolver, FixtureUniProtClient
-from sabueso.tools.db import phi_base
+from sabueso.tools.db import _release, phi_base
 from sabueso.tools.db.phi_base import FixturePHIBaseClient, OnlinePHIBaseClient
 
 FIELD = "annotations.pathogen_phenotypes"
@@ -165,7 +165,7 @@ class _Response(io.BytesIO):
 def release(monkeypatch):
     payload = _release_zip()
     monkeypatch.setattr(phi_base, "urlopen", lambda url, timeout: _Response(payload))
-    monkeypatch.setattr(phi_base, "_MEMORY", {})
+    monkeypatch.setattr(_release, "_MEMORY", {})
     info = {
         "record": "1",
         "version": "X",

@@ -27,17 +27,17 @@ Ensembl proteins, and the proteins no channel names.
 from __future__ import annotations
 
 import json
-import os
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
-from urllib.request import urlopen
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError
+from sabueso.tools.db import _release
 from sabueso.tools.db._http import request as http_request
+from sabueso.tools.db._http import urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "DISEASES"
@@ -50,14 +50,6 @@ COLUMNS = {
     "experiments": ("source_database", "source_score", "confidence"),
     "textmining": ("z_score", "confidence", "url"),
 }
-
-#: Channel files parsed in memory, per channel and publication date, for the process.
-_MEMORY: Dict[tuple, Dict[str, List[Dict[str, Any]]]] = {}
-
-
-def _cache_root() -> Path | None:
-    value = os.environ.get("SABUESO_CACHE_DIR")
-    return Path(value) if value else None
 
 
 def parse_channel(text: str, channel: str) -> Dict[str, List[Dict[str, Any]]]:
@@ -92,8 +84,7 @@ def _select(
 class OnlineDISEASESClient:
     def __init__(self, timeout: float = 300.0, cache_dir: str | Path | None = None):
         self.timeout = timeout
-        root = Path(cache_dir) if cache_dir else _cache_root()
-        self.cache_dir = root / "diseases" if root is not None else None
+        self.cache_dir = _release.cache_directory("diseases", cache_dir)
 
     def _fetch(self, channel: str) -> tuple:
         """``(version, rows per protein)`` of a channel's filtered file."""
@@ -108,9 +99,9 @@ class OnlineDISEASESClient:
                     if modified
                     else None
                 )
-                key = (channel, version)
-                if version is not None and key in _MEMORY:
-                    return version, _MEMORY[key]
+                kept = _release.recall(SOURCE, (channel, version))
+                if version is not None and kept is not None:
+                    return version, kept
                 cached = (
                     self.cache_dir / f"{channel}_{version}.json"
                     if self.cache_dir is not None and version
@@ -121,12 +112,11 @@ class OnlineDISEASESClient:
                 else:
                     index = parse_channel(resp.read().decode("utf-8"), channel)
                     if cached is not None:
-                        self.cache_dir.mkdir(parents=True, exist_ok=True)
-                        cached.write_text(json.dumps(index), encoding="utf-8")
+                        _release.write_file(cached, json.dumps(index))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"DISEASES {channel} download failed: {exc}") from exc
         if version is not None:
-            _MEMORY[(channel, version)] = index
+            _release.keep(SOURCE, (channel, version), index)
         return version, index
 
     def associations(

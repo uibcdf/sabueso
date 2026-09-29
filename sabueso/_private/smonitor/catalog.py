@@ -46,6 +46,7 @@ CATALOG = {
         "RecordNotFoundError": _exception(
             "SABUESO-E-SOURCE-002", "record_not_found", "source"
         ),
+        "MissingKeyError": _exception("SABUESO-E-SOURCE-003", "missing_key", "source"),
         "ArgumentError": _exception("SABUESO-E-ARG-001", "argument", "argument"),
     },
     "warnings": {
@@ -104,6 +105,9 @@ CODES = {
     "SABUESO-E-LIBRARY-001": {**_RAISE_SITE, "title": "Optional library missing"},
     "SABUESO-E-SOURCE-001": {**_RAISE_SITE, "title": "Source unavailable"},
     "SABUESO-E-SOURCE-002": {**_RAISE_SITE, "title": "Record not found"},
+    # No hint: the message names where to put a key, and it is also the reason an
+    # enrichment record states, which must not depend on the diagnostics profile.
+    "SABUESO-E-SOURCE-003": {**_RAISE_SITE, "title": "Source needs a key"},
     "SABUESO-E-ARG-001": {
         **_RAISE_SITE,
         "title": "Invalid argument",

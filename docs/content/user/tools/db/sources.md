@@ -47,6 +47,15 @@ clients, so there is one way to query each source.
 
 - **Errors.** `RecordNotFoundError` means the source answered and holds no such record.
   `ConnectorError` means it could not answer. The two are never confused.
+- **Network.** Every request names Sabueso in its user agent. A source that is briefly
+  overloaded (HTTP 429, 502, 503, 504) or drops the connection is asked again, twice at
+  most, waiting a little longer each time. A timeout is not retried.
+- **Personal keys.** A source that asks for a key gets yours, never Sabueso's: pass
+  `api_key=` to its online client, or set `SABUESO_<SERVICE>_KEY`. Sabueso sends the
+  key only to its own service, and never writes it into a card, a record, a cache or a
+  message. NCBI's key is optional (`SABUESO_NCBI_KEY`): it raises NCBI's rate limit and
+  changes nothing in the answers. A source that needs a key it was not given is not
+  asked; the card records it as not queried, with the reason.
 - **Boundaries.**
   - Sabueso retrieves knowledge records: entries, annotations and metadata. It does not
     download coordinate files; loading structures belongs to MolSysMT.

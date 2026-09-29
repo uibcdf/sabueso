@@ -27,10 +27,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
-from urllib.request import urlopen
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db._http import urlopen
 from sabueso.tools.db._record import online, source_record
 
 PDBE_GRAPH_API = "https://www.ebi.ac.uk/pdbe/graph-api"

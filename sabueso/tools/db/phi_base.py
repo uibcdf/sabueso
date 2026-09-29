@@ -26,38 +26,24 @@ the release cannot be obtained.
 
 from __future__ import annotations
 
-import hashlib
 import io
 import json
-import os
-import shutil
-import tempfile
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 from urllib.error import HTTPError, URLError
-from urllib.request import urlopen
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db import _release
+from sabueso.tools.db._http import urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "PHI-base"
 ZENODO_RECORDS = "https://zenodo.org/api/records"
 #: The Zenodo concept record of PHI-base 5: every version, the latest first.
 CONCEPT_RECORD = "10722192"
-
-
-#: Releases split in memory, per Zenodo record, for the life of the process.
-_MEMORY: Dict[str, Dict[str, Any]] = {}
-
-
-def cache_root() -> Path | None:
-    """The cache directory the user chose (``$SABUESO_CACHE_DIR``), or None: Sabueso
-    keeps no files unless told where."""
-    value = os.environ.get("SABUESO_CACHE_DIR")
-    return Path(value) if value else None
 
 
 def index_release(data: Dict[str, Any]) -> tuple:
@@ -102,8 +88,7 @@ class OnlinePHIBaseClient:
         record: str | None = None,
     ) -> None:
         self.timeout = timeout
-        root = Path(cache_dir) if cache_dir else cache_root()
-        self.cache_dir = root / "phi-base" if root is not None else None
+        self.cache_dir = _release.cache_directory("phi-base", cache_dir)
         self.record = record
         self._release: Dict[str, Any] | None = None
 
@@ -138,10 +123,9 @@ class OnlinePHIBaseClient:
                 payload = resp.read()
         except (HTTPError, URLError, TimeoutError, OSError) as exc:
             raise ConnectorError(f"PHI-base release download failed: {exc}") from exc
-        if hashlib.md5(payload).hexdigest() != release["md5"]:  # nosec - Zenodo's
-            raise ConnectorError(
-                f"PHI-base release {release['version']} does not match its checksum."
-            )
+        _release.verify_md5(
+            payload, release["md5"], f"PHI-base release {release['version']}"
+        )
         with zipfile.ZipFile(io.BytesIO(payload)) as archive:
             (name,) = [
                 n
@@ -160,40 +144,22 @@ class OnlinePHIBaseClient:
             return target
         sessions, index = self._download()
         prepared_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
-        self.cache_dir.mkdir(parents=True, exist_ok=True)
-        staging = Path(tempfile.mkdtemp(dir=self.cache_dir))
-        try:
-            (staging / "sessions").mkdir()
-            for session_id, text in sessions.items():
-                (staging / "sessions" / f"{session_id}.json").write_text(
-                    text, encoding="utf-8"
-                )
-            (staging / "index.json").write_text(json.dumps(index), encoding="utf-8")
-            (staging / "release.json").write_text(
-                json.dumps({**release, "retrieved_at": prepared_at}), encoding="utf-8"
-            )
-            if target.exists():
-                shutil.rmtree(target)
-            staging.rename(target)
-        finally:
-            if staging.exists():
-                shutil.rmtree(staging)
+        files = {f"sessions/{sid}.json": text for sid, text in sessions.items()}
+        files["index.json"] = json.dumps(index)
+        files["release.json"] = json.dumps({**release, "retrieved_at": prepared_at})
+        _release.write_release(target, files)
         return target
 
     def _in_memory(self, accession: str) -> Dict[str, Any]:
         release = self.release()
-        kept = _MEMORY.get(release["record"])
-        if kept is None:
+
+        def build() -> Dict[str, Any]:
             # Sessions as compact text: a fraction of the parsed release's memory.
             sessions, index = self._download()
-            kept = {
-                "retrieved_at": datetime.now(timezone.utc).isoformat(
-                    timespec="seconds"
-                ),
-                "sessions": sessions,
-                "index": index,
-            }
-            _MEMORY[release["record"]] = kept
+            retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+            return {"retrieved_at": retrieved_at, "sessions": sessions, "index": index}
+
+        kept = _release.remembered(SOURCE, release["record"], build)
         if accession not in kept["index"]:
             raise RecordNotFoundError(
                 f"PHI-base {release['version']} names no gene with UniProt {accession}"

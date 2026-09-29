@@ -62,6 +62,16 @@ class RecordNotFoundError(SabuesoError):
     catalog_key = "RecordNotFoundError"
 
 
+class MissingKeyError(SabuesoError):
+    """A source answers only with a personal key, and none was given (#86).
+
+    Distinct from ConnectorError: nothing was asked, so nothing failed. An enrichment
+    records it as ``not_queried``, with the reason.
+    """
+
+    catalog_key = "MissingKeyError"
+
+
 class ArgumentError(SabuesoError, ValueError):
     """An argument of a public function has a value the function cannot accept.
 

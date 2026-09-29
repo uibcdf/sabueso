@@ -30,6 +30,10 @@
     CC BY 4.0).
   - DISEASES updates its files in place, so its cache is keyed by each file's
     publication date (`diseases/<channel>_<date>.json`). A newer file is a new entry.
+  - Orphadata's file is dated only inside it, so it is kept in memory only.
+  - All three share one implementation (`tools/db/_release.py`, #86): the same memory
+    store, the same resolution of the cache directory, and atomic writes (staged, then
+    renamed), so an interrupted write never leaves a release half cached.
 
 ## How this differs from the first draft
 

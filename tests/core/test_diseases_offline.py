@@ -13,6 +13,7 @@ import sabueso
 from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
 from sabueso.core.errors import ArgumentError
 from sabueso.resolver import EntityResolver, FixtureUniProtClient
+from sabueso.tools.db import _release
 from sabueso.tools.db import diseases as diseases_db
 from sabueso.tools.db.diseases import (
     FixtureDISEASESClient,
@@ -133,7 +134,7 @@ def test_the_online_client_versions_by_date_and_caches_only_where_told(
     tmp_path, monkeypatch
 ):
     body = b"ENSP1\tG\tDOID:1\tD\tMedlinePlus\tCURATED\t5\n"
-    monkeypatch.setattr(diseases_db, "_MEMORY", {})
+    monkeypatch.setattr(_release, "_MEMORY", {})
     monkeypatch.setattr(
         diseases_db, "urlopen", lambda request, timeout: _Response(body)
     )
@@ -142,7 +143,7 @@ def test_the_online_client_versions_by_date_and_caches_only_where_told(
     assert response["version"] == {"knowledge": "2026-09-18"}
     assert response["record"]["knowledge"][0]["disease"] == "DOID:1"
     assert response["missing"] == ["ENSP2"]
-    monkeypatch.setattr(diseases_db, "_MEMORY", {})
+    monkeypatch.setattr(_release, "_MEMORY", {})
     OnlineDISEASESClient(cache_dir=tmp_path).associations(["ENSP1"], ["knowledge"])
     assert [p.name for p in (tmp_path / "diseases").iterdir()] == [
         "knowledge_2026-09-18.json"

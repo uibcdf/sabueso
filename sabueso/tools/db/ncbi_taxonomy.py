@@ -20,10 +20,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
-from urllib.request import urlopen
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db import _keys
+from sabueso.tools.db._http import request, urlopen
 from sabueso.tools.db._record import online, source_record
 
 DATASETS_TAXON = "https://api.ncbi.nlm.nih.gov/datasets/v2/taxonomy/taxon"
@@ -36,8 +37,9 @@ def _ids(tax_ids: Iterable[Any]) -> List[int]:
 
 
 class OnlineNCBITaxonomyClient:
-    def __init__(self, timeout: float = 30.0) -> None:
+    def __init__(self, timeout: float = 30.0, api_key: str | None = None) -> None:
         self.timeout = timeout
+        self._api_key = api_key
 
     def taxa(self, tax_ids: Iterable[Any]) -> Dict[str, Any]:
         ids = _ids(tax_ids)
@@ -46,11 +48,18 @@ class OnlineNCBITaxonomyClient:
         for i in range(0, len(ids), BATCH):
             chunk = ids[i : i + BATCH]
             url = f"{DATASETS_TAXON}/{','.join(map(str, chunk))}"
+            api_key = _keys.key("ncbi", self._api_key)
+            headers = {"api-key": api_key} if api_key else {}
             try:
-                with urlopen(url, timeout=self.timeout) as resp:  # nosec - trusted endpoint
+                with urlopen(
+                    request(url, headers=headers), timeout=self.timeout
+                ) as resp:  # nosec
                     data = json.loads(resp.read().decode("utf-8"))
             except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
-                raise ConnectorError(f"NCBI Taxonomy request failed: {exc}") from exc
+                detail = _keys.scrub(str(exc), api_key)
+                raise ConnectorError(f"NCBI Taxonomy request failed: {detail}") from (
+                    None if api_key else exc
+                )  # a key never reaches a traceback
             for node in data.get("taxonomy_nodes") or []:
                 taxon = node.get("taxonomy") or {}
                 if taxon.get("tax_id") is not None:

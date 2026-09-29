@@ -130,6 +130,7 @@ Defined in `sabueso/core/errors.py`:
 - `SabuesoError`, the base;
 - `ResolverError`, `SchemaError`, `StorageError`, `ConnectorError`;
 - `RecordNotFoundError`;
+- `MissingKeyError`, for a source that answers only with a personal key (#86);
 - `ArgumentError`, a `ValueError` for refused arguments.
 
 Diagnostics are SMonitor signals with stable codes (`DIAGNOSTICS.md`).

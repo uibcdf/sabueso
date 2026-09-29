@@ -8,7 +8,8 @@
   at its release, has no subcellular location for the entry, or ChEMBL has no
   target;
 - ``not_queried``: the enrichment that would answer it was not requested, the source
-  does not cover the entity (``basis.detail`` says why, e.g. a human-only source), or,
+  does not cover the entity (``basis.detail`` says why, e.g. a human-only source), the
+  source needs a personal key that was not given, or,
   for the biological context only curation states (#60), nothing has been curated;
 - ``unavailable``: the source failed, so nothing can be said;
 - ``partial``: the source stated some of it, but failed, or answered incompletely, for
@@ -61,9 +62,10 @@ def _row(area, source, state, release=None, count=None, **basis) -> Dict[str, An
 def _enrichment_row(area: str, source: str, records: List[Dict[str, Any]]):
     if not records:
         return _row(area, source, "not_queried")
-    if all(r.get("status") == "not_applicable" for r in records):
+    if all(r.get("status") in ("not_applicable", "not_queried") for r in records):
         # The source does not cover this entity (e.g. a human-only source and a parasite
-        # protein): nothing was asked, so nothing is "not stated".
+        # protein), or needs a key it was not given: nothing was asked, so nothing is
+        # "not stated".
         details = sorted({r["detail"] for r in records if r.get("detail")})
         return _row(area, source, "not_queried", detail="; ".join(details) or None)
     statuses = [r.get("status") for r in records]

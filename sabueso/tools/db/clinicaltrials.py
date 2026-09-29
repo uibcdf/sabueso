@@ -23,10 +23,10 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
-from urllib.request import urlopen
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError
+from sabueso.tools.db._http import urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "ClinicalTrials.gov"

@@ -5,6 +5,9 @@
 E-utilities (``efetch``, XML); ``FixtureNCBIGeneClient`` reads
 ``<directory>/ncbi_gene/<gene_id>.xml``. Both raise ``RecordNotFoundError`` when NCBI
 holds no such gene and ``ConnectorError`` when the source cannot answer.
+
+An NCBI key is optional (``api_key=``, or ``$SABUESO_NCBI_KEY``; ``tools.db._keys``): it
+raises NCBI's rate limit, and changes nothing in what NCBI answers.
 """
 
 from __future__ import annotations
@@ -14,11 +17,12 @@ from pathlib import Path
 from typing import Any, Dict, Tuple
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
-from urllib.request import urlopen
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.mappings.ncbi_gene import parse_gene
+from sabueso.tools.db import _keys
+from sabueso.tools.db._http import urlopen
 from sabueso.tools.db._record import online, source_record
 
 EFETCH = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
@@ -32,19 +36,25 @@ def _record(gene_id: str, xml: str) -> Dict[str, Any]:
 
 
 class OnlineNCBIGeneClient:
-    def __init__(self, timeout: float = 30.0) -> None:
+    def __init__(self, timeout: float = 30.0, api_key: str | None = None) -> None:
         self.timeout = timeout
+        self._api_key = api_key
 
     def gene(self, gene_id: str) -> Tuple[Dict[str, Any], str]:
-        url = f"{EFETCH}?{urlencode({'db': 'gene', 'id': str(gene_id), 'retmode': 'xml'})}"
+        query = {"db": "gene", "id": str(gene_id), "retmode": "xml"}
+        api_key = _keys.key("ncbi", self._api_key)
+        if api_key:
+            query["api_key"] = api_key
+        url = f"{EFETCH}?{urlencode(query)}"
         retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
         try:
             with urlopen(url, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 xml = resp.read().decode("utf-8")
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            detail = _keys.scrub(str(exc), api_key)
             raise ConnectorError(
-                f"NCBI Gene request for {gene_id} failed: {exc}"
-            ) from exc
+                f"NCBI Gene request for {gene_id} failed: {detail}"
+            ) from (None if api_key else exc)  # a key never reaches a traceback
         return _record(str(gene_id), xml), retrieved_at
 
 

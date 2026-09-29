@@ -16,6 +16,8 @@ The runner (``run``) does the rest, the same way for every source:
 - organism coverage: ``not_applicable``, with the reason;
 - ``RecordNotFoundError`` → ``not_found``, and ``ConnectorError`` → ``error``, per
   request, so one failing source or gene never hides another's knowledge;
+- ``MissingKeyError`` → ``not_queried``: a source that needs a personal key it was not
+  given is not asked (``tools.db._keys``);
 - mappings and records in the declared order, so a card stays deterministic.
 
 The knowledge-state rows and the migration map of enrichment records to options are
@@ -29,7 +31,7 @@ from dataclasses import dataclass, field
 from functools import cached_property
 from typing import Any, Dict, List, Tuple
 
-from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.errors import ConnectorError, MissingKeyError, RecordNotFoundError
 
 
 class NothingToAsk(Exception):
@@ -174,10 +176,21 @@ def run(
             }
         )
         return
-    client = client or enricher.client()
+    try:
+        client = client or enricher.client()
+    except MissingKeyError as exc:
+        enrichments.extend(
+            {**r.record, "status": "not_queried", "detail": str(exc)} for r in requests
+        )
+        return
     for request in requests:
         try:
             response = enricher.fetch(client, request, options)
+        except MissingKeyError as exc:
+            enrichments.append(
+                {**request.record, "status": "not_queried", "detail": str(exc)}
+            )
+            continue
         except RecordNotFoundError as exc:
             detail = {"detail": str(exc)} if enricher.not_found_detail else {}
             enrichments.append({**request.record, "status": "not_found", **detail})

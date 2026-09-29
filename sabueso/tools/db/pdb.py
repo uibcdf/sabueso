@@ -12,7 +12,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Any, Dict
-from urllib.request import urlopen
+
+from sabueso.tools.db._http import urlopen
 
 
 def load_json(path: str | Path) -> Dict[str, Any]:

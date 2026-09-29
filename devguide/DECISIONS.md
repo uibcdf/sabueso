@@ -941,4 +941,16 @@ uibcdf/sabueso#86, wave 3 of #83.
   bespoke enrichments, so the order of records (part of a card's content) does not
   change. Only the RCSB, ChEMBL, BindingDB and PubChem BioAssay blocks remain in
   `resolve_protein_card`.
+- **Step 3 (same day): shared services.**
+  - Every client reaches the network through `tools/db/_http.py`: Sabueso's user
+    agent, and at most two retries with backoff for 429, 502, 503, 504 and refused
+    connections. Timeouts are not retried, since a retry would multiply a slow
+    source's cost. Other errors reach the client unchanged, so "not found" stays an
+    answer.
+  - Release sources share `_release`: memory by default, disk only when told, atomic
+    writes, checksums.
+  - Keys belong to the user and to a service (`SABUESO_<SERVICE>_KEY`). A card does
+    not record whether a key was used: an optional key changes the rate, not the
+    answer. A missing required key is `not_queried` (`MissingKeyError`). NCBI is the
+    first user, with its optional key.
 

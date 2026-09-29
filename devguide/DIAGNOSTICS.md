@@ -33,6 +33,7 @@ replaces the recorded outcome.
 | `SABUESO-E-STORAGE-001` | `StorageError` | |
 | `SABUESO-E-SOURCE-001` | `ConnectorError` | a source could not answer |
 | `SABUESO-E-SOURCE-002` | `RecordNotFoundError` | a source answered that it holds no such record |
+| `SABUESO-E-SOURCE-003` | `MissingKeyError` | a source answers only with a personal key, and none was given (#86); an enrichment records it as `not_queried` |
 | `SABUESO-E-ARG-001` | `ArgumentError` | an argument of a public function has a value it cannot accept (ArgDigest; also a `ValueError`) |
 
 The warnings are catalog warnings: they emit a structured SMonitor event and raise an

@@ -8,10 +8,10 @@ from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote
-from urllib.request import urlopen
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db._http import urlopen
 from sabueso.tools.db._record import online, source_record
 
 
