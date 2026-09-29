@@ -20,8 +20,14 @@ Diseases reach a protein card from several sources, each with its own ids:
 rule ``disease_grouping@1``:
 - a statement joins a MONDO term when one of its ids is that term, or reaches it
   through the stated ``same_as`` chain. Nothing groups by name;
-- a statement whose ids reach two different terms is not grouped: it is reported as
-  ``conflicting_identity``, with both;
+- a statement whose ids reach several terms joins the broadest one when MONDO places
+  every other term under it (``subclass_of``, ``mondo_hierarchy@1``, recorded by
+  ``disease_identity``). The source named the disease at two granularities. What holds
+  for a subtype holds for the disease it belongs to, and the reverse does not: ClinVar
+  names "Obesity" with the Orphanet id of obesity due to MC4R deficiency. The narrower
+  terms are kept in the statement (``narrower``), with MONDO's chain;
+- otherwise the statement is not grouped: it is reported as ``conflicting_identity``,
+  with every term, and none is chosen;
 - ClinVar's placeholders are not diseases: "not provided" (MedGen C3661900) and "not
   specified" (CN169374) are ``condition_not_provided``;
 - what reaches no term stays apart with its reason: ``no_stated_equivalence``,
@@ -118,6 +124,15 @@ def _same_as(card: Any, source: str) -> Dict[str, Dict[str, Any]]:
 def diseases_view(card: Any) -> Dict[str, Any]:
     """The card's disease statements grouped by MONDO term; see the module docstring."""
     mondo_of = _same_as(card, "MONDO")
+    narrower_of: Dict[str, Dict[str, List[str]]] = {}
+    for rel in card.relationships("subclass_of"):
+        if (rel.get("qualifiers") or {}).get("source") != "MONDO":
+            continue
+        term = rel["subject_ref"].split(":", 1)[1]
+        broader = rel["object_ref"].split(":", 1)[1]
+        narrower_of.setdefault(broader, {})[term] = (rel.get("qualifiers") or {}).get(
+            "path"
+        ) or [term, broader]
     medgen_of = _same_as(card, "MedGen")
     records = card.quality.get("enrichments") or []
     queried = any(e.get("source") == "MONDO" for e in records)
@@ -153,11 +168,25 @@ def diseases_view(card: Any) -> Dict[str, Any]:
                 reached.setdefault(found[0], []).append(
                     {"id": curie, "basis": found[1]}
                 )
+        narrower = {}
         if len(reached) > 1:
-            ungrouped.append(
-                {**statement, "reason": "conflicting_identity", "terms": reached}
-            )
-            continue
+            broadest = [
+                t
+                for t in reached
+                if all(o == t or o in narrower_of.get(t, {}) for o in reached)
+            ]
+            if len(broadest) != 1:
+                ungrouped.append(
+                    {**statement, "reason": "conflicting_identity", "terms": reached}
+                )
+                continue
+            (term,) = broadest
+            narrower = {
+                other: {"ids": via, "path": narrower_of[term][other]}
+                for other, via in reached.items()
+                if other != term
+            }
+            reached = {term: reached[term]}
         if not reached:
             if not statement["refs"]:
                 reason = "no_id_stated"
@@ -191,7 +220,10 @@ def diseases_view(card: Any) -> Dict[str, Any]:
         if statement.get("name"):
             group["names"].add(statement["name"])
         group["refs"].update(statement["refs"])
-        group["statements"].append({**statement, "grouped_by": via})
+        entry = {**statement, "grouped_by": via}
+        if narrower:
+            entry["narrower"] = narrower
+        group["statements"].append(entry)
     diseases = []
     for mondo in sorted(groups):
         group = groups[mondo]
@@ -215,10 +247,12 @@ def diseases_view(card: Any) -> Dict[str, Any]:
                 "annotations.disease",
                 "annotations.clinical_variants",
                 "relationships.same_as",
+                "relationships.subclass_of",
             ],
             parameters={
                 "identity": ["mondo_equivalence@1", "medgen_concept@1"],
                 "placeholders": sorted(CLINVAR_PLACEHOLDERS),
+                "granularity": "mondo_hierarchy@1",
             },
         ),
     }

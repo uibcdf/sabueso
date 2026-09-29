@@ -1174,3 +1174,21 @@ uibcdf/sabueso#29.
     the user's.
   - A computed key, as a flagged derived identity under a named rule, waits for a
     stated need.
+- **A disease named at two granularities** (same day, #90). On HsTIM, three ClinVar
+  conditions reached two MONDO terms and were reported as `conflicting_identity`.
+  - MONDO's hierarchy tells them apart. `disease_identity` asks MONDO, for the terms one
+    statement reaches, whether one is under the other. It records each chain as
+    `subclass_of`: each `is_a` step is a MONDO SourceAssertion, and a chain of several
+    steps is derived (`mondo_hierarchy@1`). Only terms met together in one statement
+    are related. Relating every term a card reaches recorded 1,107 relationships on
+    HsTIM, most of them to broad terms such as "hereditary disease"; asking by
+    statement records 3.
+  - The statement joins the **broader** term, with the narrower one in `narrower`.
+    Joining the most specific term looked natural, and it was right for two of the
+    three conditions (Klippel-Feil syndrome 3, familial tumoral calcinosis 1). The
+    third was ClinVar's "Obesity", named with the Orphanet id of obesity due to MC4R
+    deficiency. What holds for a subtype holds for the disease it belongs to; the
+    reverse is a claim no source made.
+  - Terms of which neither is under the other (two subtypes) stay a conflict.
+  - `disease_grouping@1` has not been released, so it keeps its version, with
+    `granularity: mondo_hierarchy@1` among its parameters.

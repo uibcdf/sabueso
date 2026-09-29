@@ -192,9 +192,14 @@ print(view["rule"]["rule"])  # disease_grouping@1
   - `no_stated_equivalence`: for example some EFO terms, or phenotypic traits;
   - `no_id_stated`: a condition named only by text;
   - `namespace_not_mapped`: for example HP phenotype terms;
-  - `conflicting_identity`: the ids of one condition reach two MONDO terms. Both are
-    listed, and neither is chosen. ClinVar sometimes gives a broader Orphanet id next
-    to the MONDO and OMIM ids of a subtype.
+  - `conflicting_identity`: the ids of one condition reach two MONDO terms, and MONDO
+    does not place one under the other. All are listed, and none is chosen.
+- A condition named at two granularities joins the broader disease. ClinVar sometimes
+  gives a broader Orphanet id next to the MONDO and OMIM ids of a subtype, or names
+  "Obesity" with the Orphanet id of obesity due to MC4R deficiency. When MONDO places
+  one term under the other, the statement joins the broader term, because what holds
+  for a subtype holds for the disease it belongs to. The narrower term is kept in the
+  statement (`narrower`), with MONDO's chain of terms (`mondo_hierarchy@1`).
 - `disease_identity` reads the diseases the other sources put on the card, so ask for
   them in the same call.
 

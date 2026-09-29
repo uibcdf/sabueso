@@ -639,7 +639,11 @@ A disease is an entity of its own (`entity_type: disease`), anchored at a MONDO 
   `mondo_name`. With `medgen`, also `same_as` (`MEDGEN:<concept id>` → `MEDGEN:<uid>`),
   qualifiers `basis` (`medgen_concept@1`) and `source` (`MedGen`). `Card.diseases()`
   groups the card's disease statements through them (`disease_grouping@1`); a ClinVar
-  condition is one statement with all its ids.
+  condition is one statement with all its ids. When the ids of one statement reach
+  several terms, also `subclass_of` (`mondo:<term>` → `mondo:<broader term>`) for each
+  pair MONDO places one under the other. Qualifiers: `source` (`MONDO`) and `path` (the
+  chain of terms). Each `is_a` step is a MONDO SourceAssertion, and a chain of several
+  steps carries the derivation `mondo_hierarchy@1`.
 
 ## Ligands (ProteinCard)
 Ligands are not a card section (the reserved `ligands.items` field was removed, #25).

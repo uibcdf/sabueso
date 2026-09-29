@@ -29,7 +29,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - disease cards (#90), anchored at MONDO, resolved from DOID, Orphanet, OMIM, MeSH,
     EFO… ids only through the equivalences MONDO states (`mondo_equivalence@1`); and a
     protein's diseases grouped across sources (`medgen`, `disease_identity`,
-    `Card.diseases()`, `disease_grouping@1`); and a disease's targets and drugs as
+    `Card.diseases()`, `disease_grouping@1`), a condition named at two granularities
+    joining the broader disease through MONDO's hierarchy (`mondo_hierarchy@1`); and a disease's targets and drugs as
     decks (`disease_targets`, `disease_drugs`);
   - what may be done with the knowledge (#29, first milestone): `Card.terms(use)`,
     `Deck.terms(use)`, `Deck.admissible(use)`, from the terms each source states in the

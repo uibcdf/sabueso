@@ -116,7 +116,10 @@ schema:
     identifiers.mondo, identifiers.equivalent_ids (the ids MONDO states are the same
     disease, the only ones that join), identifiers.related_ids (xrefs that are not
     identity), names, annotations.definition, annotations.disease_subsets, and
-    subclass_of relationships to the parent terms. Additive, so a 0.3.6 card is a valid
+    subclass_of relationships to the parent terms. On protein cards, disease_identity
+    also records subclass_of between the MONDO terms one disease statement reaches, when
+    MONDO places one under the other (each is_a step a MONDO SourceAssertion; a chain of
+    several steps derived, mondo_hierarchy@1). Additive, so a 0.3.6 card is a valid
     0.3.7 card without them.
 card_base:
   meta:

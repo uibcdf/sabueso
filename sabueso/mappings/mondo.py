@@ -123,3 +123,56 @@ def map_equivalences(answers: Dict[str, Any], accession: str) -> Dict[str, Any]:
             )
         )
     return {"source_assertions": assertions, "relationships": relationships}
+
+
+HIERARCHY_RULE = "mondo_hierarchy@1"
+
+
+def map_hierarchy(chains: List[List[Dict[str, Any]]]) -> Dict[str, Any]:
+    """``subclass_of`` (``mondo:<term>`` → ``mondo:<broader term>``) for each chain of
+    ``is_a`` statements MONDO makes between two terms a card reaches (#90).
+
+    Each step is a MONDO SourceAssertion. A chain of one step is MONDO's statement; a
+    longer one is its transitive closure, which Sabueso derives
+    (``mondo_hierarchy@1``) and records with every step's SourceAssertion.
+    """
+    from sabueso.core.relationship_store import make_derivation
+
+    assertions: Dict[str, Dict[str, Any]] = {}
+    relationships = []
+    for chain in chains:
+        ids = []
+        for step in chain:
+            made = make_source_assertion(
+                "relationships.subclass_of",
+                {"parent": step["parent"]},
+                SOURCE,
+                step["term"],
+                step.get("retrieved_at") or "",
+                subject_ref=disease_ref(step["term"]),
+            )
+            if step.get("version") is not None:
+                made["source"]["version"] = str(step["version"])
+            assertions.setdefault(made["id"], made)
+            ids.append(made["id"])
+        path = [chain[0]["term"]] + [step["parent"] for step in chain]
+        relationships.append(
+            make_relationship(
+                disease_ref(path[0]),
+                "subclass_of",
+                disease_ref(path[-1]),
+                qualifiers={"source": SOURCE, "path": path},
+                source_assertion_ids=ids,
+                derivation=make_derivation(
+                    HIERARCHY_RULE,
+                    inputs=["MONDO is_a"],
+                    parameters={"steps": len(chain)},
+                )
+                if len(chain) > 1
+                else None,
+            )
+        )
+    return {
+        "source_assertions": list(assertions.values()),
+        "relationships": relationships,
+    }

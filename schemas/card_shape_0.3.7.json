@@ -73,6 +73,7 @@
   "quality.enrichments[].status",
   "quality.enrichments[].structure",
   "quality.enrichments[].structures",
+  "quality.enrichments[].subclass_of",
   "quality.enrichments[].target",
   "quality.enrichments[].total_count",
   "quality.enrichments[].truncated",

@@ -307,7 +307,7 @@ def test_a_protein_with_no_disease_has_nothing_to_ask(mondo):
 class _Card:
     """The little a view reads, to state cases no fixture holds."""
 
-    def __init__(self, conditions, same_as):
+    def __init__(self, conditions, same_as, subclass_of=()):
         from sabueso.core.relationship_store import make_relationship
 
         self.quality = {"enrichments": [{"source": "MONDO", "ungrouped": []}]}
@@ -321,6 +321,15 @@ class _Card:
                 source_assertion_ids=["SA_x"],
             )
             for subject, obj, source in same_as
+        ] + [
+            make_relationship(
+                f"mondo:{path[0]}",
+                "subclass_of",
+                f"mondo:{path[-1]}",
+                qualifiers={"source": "MONDO", "path": list(path)},
+                source_assertion_ids=["SA_y"],
+            )
+            for path in subclass_of
         ]
 
     def get(self, path):
@@ -361,6 +370,99 @@ def test_ids_that_reach_two_terms_are_a_conflict_never_a_choice():
     (conflict,) = view["ungrouped"]
     assert conflict["reason"] == "conflicting_identity"
     assert set(conflict["terms"]) == {"MONDO:0000001", "MONDO:0000002"}
+
+
+def test_a_condition_named_at_two_granularities_joins_the_broader_disease():
+    from sabueso.core.diseases import diseases_view
+
+    # ClinVar names one condition by a subtype's MONDO and OMIM ids and by a broader
+    # Orphanet id. MONDO places the subtype under the broader term. What holds for the
+    # subtype holds for the disease it belongs to, not the reverse.
+    card = _Card(
+        [{"name": "x", "xrefs": ["MONDO:MONDO:0000003", "OMIM:3", "Orphanet:9"]}],
+        [
+            ("OMIM:3", "mondo:MONDO:0000003", "MONDO"),
+            ("Orphanet:9", "mondo:MONDO:0000009", "MONDO"),
+        ],
+        subclass_of=[("MONDO:0000003", "MONDO:0000005", "MONDO:0000009")],
+    )
+    view = diseases_view(card)
+    assert view["ungrouped"] == []
+    ((disease, statement),) = [
+        (d, s) for d in view["diseases"] for s in d["statements"]
+    ]
+    assert disease["mondo"] == "MONDO:0000009"
+    assert statement["narrower"] == {
+        "MONDO:0000003": {
+            "ids": [
+                {"id": "MONDO:0000003", "basis": "named_directly"},
+                {"id": "OMIM:3", "basis": "same_as"},
+            ],
+            "path": ["MONDO:0000003", "MONDO:0000005", "MONDO:0000009"],
+        }
+    }
+    assert view["rule"]["parameters"]["granularity"] == "mondo_hierarchy@1"
+
+
+def test_terms_that_are_not_one_above_the_other_stay_a_conflict():
+    from sabueso.core.diseases import diseases_view
+
+    # Two subtypes of one disease: MONDO places both under it, neither under the other.
+    card = _Card(
+        [{"name": "x", "xrefs": ["MONDO:MONDO:0000003", "MONDO:MONDO:0000004"]}],
+        [],
+        subclass_of=[
+            ("MONDO:0000003", "MONDO:0000009"),
+            ("MONDO:0000004", "MONDO:0000009"),
+        ],
+    )
+    (conflict,) = diseases_view(card)["ungrouped"]
+    assert conflict["reason"] == "conflicting_identity"
+
+
+def test_the_enrichment_records_mondo_s_chain_between_the_terms_a_card_reaches(
+    tmp_path,
+):
+    from sabueso.enrichers.disease_identity import _hierarchy
+    from sabueso.mappings.mondo import map_hierarchy
+
+    obo = tmp_path / "mondo" / "mondo.obo"
+    obo.parent.mkdir()
+    obo.write_text(
+        "data-version: releases/2026-09-01\n\n"
+        "[Term]\nid: MONDO:0000009\nname: broad\n\n"
+        "[Term]\nid: MONDO:0000005\nname: middle\nis_a: MONDO:0000009 ! broad\n\n"
+        "[Term]\nid: MONDO:0000003\nname: subtype\nis_a: MONDO:0000005 ! middle\n\n"
+        "[Term]\nid: MONDO:0000004\nname: other\nis_a: MONDO:0000009 ! broad\n",
+        encoding="utf-8",
+    )
+    from sabueso.core.errors import RecordNotFoundError
+
+    client = FixtureMONDOClient(tmp_path)
+    chains = _hierarchy(
+        client, ["MONDO:0000003", "MONDO:0000004", "MONDO:0000009"], RecordNotFoundError
+    )
+    mapped = map_hierarchy(chains)
+    pairs = {(r["subject_ref"], r["object_ref"]): r for r in mapped["relationships"]}
+    # Only the pairs where one term is above the other; siblings are not related.
+    assert set(pairs) == {
+        ("mondo:MONDO:0000003", "mondo:MONDO:0000009"),
+        ("mondo:MONDO:0000004", "mondo:MONDO:0000009"),
+    }
+    far = pairs[("mondo:MONDO:0000003", "mondo:MONDO:0000009")]
+    # Two stated is_a steps: each a MONDO SourceAssertion, their closure derived.
+    assert far["qualifiers"]["path"] == [
+        "MONDO:0000003",
+        "MONDO:0000005",
+        "MONDO:0000009",
+    ]
+    assert len(far["source_assertion_ids"]) == 2
+    assert far["derivation"]["rule"] == "mondo_hierarchy@1"
+    near = pairs[("mondo:MONDO:0000004", "mondo:MONDO:0000009")]
+    assert "derivation" not in near  # one step: MONDO's own statement
+    assert {sa["source"]["version"] for sa in mapped["source_assertions"]} == {
+        "2026-09-01"
+    }
 
 
 # --- From a disease to its targets and its drugs (#90; #82, point 2) ------------------
