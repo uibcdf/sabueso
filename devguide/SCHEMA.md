@@ -2,9 +2,11 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
-  - `0.3.6` is current, not yet released: it adds UniProt isoforms, alternative
+  - `0.3.6` is the schema of release 0.6.0: it adds UniProt isoforms, alternative
     sequences, secondary structure (UniProt's, and per chain from RCSB) and
-    `substitution.missing` (#80);
+    `substitution.missing` (#80), the curated biological context (#60), pathogen
+    phenotypes, disease associations, pathways, and clinical and population variants
+    (#81–#83);
   - `0.3.5` is the schema of release 0.5.0: it adds `author_numbering` (#73);
   - `0.3.4` is the schema of release 0.4.0;
   - `0.3.3` is the schema of release 0.3.1;

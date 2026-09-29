@@ -5,46 +5,25 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-09-27, after release 0.5.0.*
+*Last updated: 2026-09-29, after release 0.6.0.*
 
 ## Release and schema
 
-- **Latest release:** 0.5.0 (2026-09-27).
+- **Latest release:** 0.6.0 (2026-09-29).
   - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
-  - Staged candidate 2ea2693; sha256 `69fd95b1…5ecb`.
-  - Verified by a clean public install on Python 3.14.
-  - Archived on Zenodo (10.5281/zenodo.23001265), identical to tag 0.5.0.
-- **Card schema:** 0.3.5 (`schemas/card_schema_0.3.5.yaml`), published by 0.5.0. Main may
+  - Staged candidate 3e5c3db; sha256 `e155b9b7…5f2d`.
+  - The exact staged file passed the installed-package gate on Linux, macOS and
+    Windows × 3.11–3.14, and a clean public install on Python 3.14.
+  - Zenodo archive: pending.
+- **Card schema:** 0.3.6 (`schemas/card_schema_0.3.6.yaml`), published by 0.6.0. Main may
   already write additive changes that the next release will publish.
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
-    0.3.5.
-  - The recorded shape of 0.3.5 is `schemas/card_shape_0.3.5.json`.
-- **Unreleased on main:**
-  - card schema 0.3.6 (`schemas/card_schema_0.3.6.yaml`, shape
-    `schemas/card_shape_0.3.6.json`). It adds UniProt isoforms, alternative sequences
-    and secondary structure, per-chain secondary structure from RCSB, and states
-    deletions as `substitution.missing` (#80);
-  - an integrity fix for users of 0.5.0 and earlier: a deletion stated by UniProt read
-    as an unspecified variant, and a free-text comment restricted to an isoform read
-    as a statement about the entry (#80);
-  - the biological context of a target, curated from publications (#60, step 1):
-    `annotations.stage_expression`, `essentiality`, `accessibility` and
-    `metabolic_role`;
-  - PHI-base, a new source (#83): phenotypes of pathogen mutants
-    (`annotations.pathogen_phenotypes`), from versioned releases, cached only where
-    told;
-  - the clinical layer of molecules (#81): ChEMBL indications (`investigated_for`)
-    and the ClinicalTrials.gov trials they cite (`tested_in`), `Card.clinical()`;
-  - gene–disease associations for human proteins (#82): DISEASES, per channel; Open
-    Targets, with its scores as stated; and Orphanet's rare disorders;
-  - Reactome pathways and reactions (#83, `participates_in`);
-  - ClinVar variants of human genes (#83, `annotations.clinical_variants`), placed in
-    UniProt numbering only through a canonical transcript and a matching residue, and
-    gnomAD population frequencies (`annotations.population_variants`) placed the same
-    way;
-  - a prototype of knowledge packets (#71): `KnowledgeQuery`, `knowledge_packet`,
-    `compose_packet`, and stored, pinned packets with a content-equivalence id. Its
-    shared contract waits on uibcdf/moli#22.
+    0.3.6.
+  - The recorded shape of 0.3.6 is `schemas/card_shape_0.3.6.json`.
+- **Unreleased on main:** nothing yet.
+- **Open follow-ups from the release:** #88 (large default answers; a truncated answer
+  still reads `known` in the knowledge state), #89 (a `not_found` record without the
+  release it was checked against).
 
 ## Package layout
 

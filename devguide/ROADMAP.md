@@ -37,7 +37,7 @@ status, so that none is lost because a pilot has not asked for it yet.
 - **Maintainers may schedule a foundational objective on its own.** The pilots do not
   own the plan.
 
-## Delivered so far (0.1.0 → 0.5.0)
+## Delivered so far (0.1.0 → 0.6.0)
 
 - **Foundations.**
   - Card, Deck, `SourceAssertionStore` and `RelationshipStore`.
@@ -57,6 +57,8 @@ status, so that none is lost because a pilot has not asked for it yet.
   - UniProt, RCSB PDB, PDB CCD, PDBe-KB, InterPro, AlphaFold DB.
   - ChEMBL, BindingDB, PubChem and PubChem BioAssay, UniChem.
   - STRING, IntAct (through UniProt), NCBI Taxonomy, NCBI Gene.
+  - Since 0.6.0: PHI-base, DISEASES, Open Targets, Orphanet, Reactome, ClinVar, gnomAD,
+    ChEMBL indications and ClinicalTrials.gov (#81–#83).
   - The registry, `sources/registry.yaml`, is the index.
 - **Knowledge views, each with a named rule:**
   - structures and the structural inventory; predicted models;
@@ -65,7 +67,12 @@ status, so that none is lost because a pilot has not asked for it yet.
   - literature and claims; knowledge states;
   - card comparison; identity audit; unique names.
 - **Curation.** Literature assertions, bioactivities, engagements, relationships and
-  typed claims, compared with the sources, never given priority.
+  typed claims, compared with the sources, never given priority. Since 0.6.0, the
+  biological context of a target (#60).
+- **Since 0.6.0.**
+  - Variants placed only through stated transcripts and isoform maps (#83, #85).
+  - Knowledge packets, a prototype (#71).
+  - Declared enrichers with shared network, release-cache and key services (#86).
 
 ## Status of the foundational plan
 

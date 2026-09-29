@@ -17,8 +17,8 @@ Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the o
 
 ## Current release status
 
-- **Latest release:** [0.5.0](https://github.com/uibcdf/sabueso/releases/tag/0.5.0)
-  (2026-09-27), distributed through the `uibcdf` conda channel.
+- **Latest release:** [0.6.0](https://github.com/uibcdf/sabueso/releases/tag/0.6.0)
+  (2026-09-29), distributed through the `uibcdf` conda channel.
   - One `noarch` package for Linux, macOS and Windows, on Python 3.11–3.14.
   - Before publication, the exact package was inspected, then tested on all 12
     combinations.
