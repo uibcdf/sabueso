@@ -121,10 +121,89 @@ Three reasons recur:
 - **Identity by name**, as in DGIdb and in ClinicalTrials.gov's interventions. A second
   source that states the link solves it, as ChEMBL does for trials.
 
-## 5. Next waves
+## 5. Wave 2: the remaining queued sources (2026-09-29)
 
-- Wave 2: the remaining queued sources by category (structures and models; sites and
-  families; interactions; chemistry and ADMET; bioactivity; emerging modalities;
-  benchmarks).
+Every queued source was checked: whether it answers, and its terms (from its own pages
+or its maintainers' statements). **Caution:** some databases state only the licence of
+the article that describes them (e.g. Oxford University Press's CC BY or CC BY-NC).
+That is not a data licence, and is recorded as "no data licence found".
+
+### Strong candidates (open terms, stated identifiers)
+
+| Source | Area | Terms | Identity basis | Why |
+|---|---|---|---|---|
+| SKEMPI 2.0 | interactions | CC BY 4.0 (CSV) | PDB entry, chains, mutations in PDB numbering | Binding-energy changes of mutations at protein–protein interfaces; placed through author numbering (#73) |
+| iPPI-DB | interactions | CC BY-SA 3.0 (CSV); share-alike, like ChEMBL | UniProt targets; compound structures | Small-molecule modulators of protein–protein interactions |
+| ChEBI (2.0) | chemistry | CC BY 4.0; new JSON API | ChEBI ids (already linked through UniChem), InChIKey | Chemical roles and classes, metabolites, cofactors |
+| Chemical Probes Portal | chemistry | Creative Commons (to confirm which) | UniProt targets; compound structures | Expert-reviewed probes and their targets |
+| KLIFS | sites (kinases) | CC BY 4.0; REST API | UniProt / kinase ids; PDB | Kinase pocket residues and conformations |
+| GPCRdb | sites (GPCRs) | CC BY 4.0; REST API | UniProt entry names; PDB | GPCR numbering, states, mutations |
+| Ensembl | identity | No restrictions; REST API (15 req/s) | Ensembl gene, transcript, protein | Transcripts and orthology: supports variant placement (#85) |
+| SureChEMBL | chemistry (patents) | CC BY 4.0 (API and new bulk data) | InChIKey / structures | Patent chemistry |
+| SAbDab | structures (antibodies) | CC BY 4.0 | PDB, chains | Antibody structures; a modality Sabueso does not model yet |
+| OPM | structures (membranes) | CC BY 3.0 | PDB | Membrane orientation of structures |
+| ESM Atlas | predicted structures | CC BY 4.0; API | MGnify / sequence ids | Predicted models, like AlphaFold DB; mostly metagenomic |
+
+### Usable only with a key, or with care
+
+| Source | Why |
+|---|---|
+| BRENDA | CC BY 4.0, but its API needs a registered account (email and password): the key rule applies |
+| Tox21 / ToxCast | Summary files CC0; the CTX API needs a key. Bulk files are usable |
+| DGIdb, Pharos/TCRD | Aggregators: each field keeps its primary source's terms (wave 1) |
+
+### Terms that do not fit MOLI redistribution
+
+| Source | Terms |
+|---|---|
+| SABIO-RK | Non-commercial use only (HITS terms, CC BY-NC) |
+| ZINC | Free to use, but no redistribution of major portions without permission |
+| Enamine REAL, eMolecules | Commercial catalogues |
+| ChemSpider | API key and usage conditions (already known) |
+
+### No data licence found (the article's licence only), or not reachable
+
+| Source | Status on 2026-09-29 |
+|---|---|
+| TTD | Only the article's CC BY-NC; downloads available |
+| ProThermDB | Only the article's CC BY-NC; download by form |
+| PROTAC-DB | Only the article's CC BY 4.0 |
+| ModelArchive | Terms page gave no text |
+| sc-PDB, ASD | Only the article's CC BY 4.0; data terms to confirm |
+| mpstruc | No licence found |
+| Binding MOAD | Sunset; its affinity backend licensed to Chemical Abstracts Service (deferred) |
+| 2P2Idb, CoDNaS, CovPDB, PDBbind, CSAR, PiSITE | No answer; PDBbind also needs registration |
+| PharmacoDB | HTTP 503 |
+
+### Not knowledge sources for Sabueso (out of scope)
+
+| Source | Belongs to |
+|---|---|
+| D3R, CACHE, CSAR, TDC, RNA-Puzzles | Benchmarks and challenges: Praxis (methodology) and MolSysSuite (evaluation) |
+| PROTEINS+ | A computation service (pockets, descriptors): MolSysSuite |
+| MoDEL | Molecular dynamics trajectories: MolSysSuite |
+| NDB | Nucleic-acid structures: deferred until Sabueso has nucleic-acid entities |
+| PPI3D | An interface search and modelling service: MolSysSuite |
+| IUPAC resources | Nomenclature and definitions: MOLI terminology, if needed |
+| CPPsite | Deferred until peptide cards are scoped |
+
+Open-science data projects (OpenBind, Fragalysis, ASAP Discovery, SGC chemical probes)
+are knowledge (structures, affinities, probes), but most of their data reach Sabueso
+through the PDB and ChEMBL already. They are reviewed when a target needs them.
+
+### Proposed order (wave 2)
+
+1. **Interfaces:** SKEMPI (mutations and binding energy) and iPPI-DB (modulators).
+2. **Chemistry:** ChEBI roles and classes, and the Chemical Probes Portal.
+3. **Identity:** Ensembl transcripts and orthology, which also serve #85.
+4. **Family-specific sources:** KLIFS and GPCRdb, when a target needs them.
+5. **SureChEMBL**, and then structures: OPM, SAbDab, ESM Atlas.
+
+## 6. Next wave
+
 - Wave 3: the architecture for many sources (#83, part 3), informed by what waves 1 and
-  2 show that sources need.
+  2 show that sources need:
+  - keys supplied by users;
+  - release caches;
+  - one user agent;
+  - numbering through stated maps.

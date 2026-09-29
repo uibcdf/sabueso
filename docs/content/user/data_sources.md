@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 28, evaluating 4, queued 46, deferred 7, retired 3, out of scope 4.
+Summary: in use 28, evaluating 24, deferred 24, retired 3, out of scope 13.
 
 ## In use
 
@@ -46,59 +46,28 @@ Summary: in use 28, evaluating 4, queued 46, deferred 7, retired 3, out of scope
 
 | Resource | Category | What it would bring | Since |
 | --- | --- | --- | --- |
-| [TDR Targets](https://tdrtargets.org/) | Organism, orthology and biological context | Target prioritisation for pathogens of neglected tropical diseases: essentiality, druggability, similarity to the host. | 2026-09-27 |
-| [DepMap](https://depmap.org/) | Target validation, genetics and functional networks | CRISPR and RNAi screens of gene essentiality and dependencies in cancer cell lines. | 2026-09-25 |
-| [DGIdb](https://dgidb.org/) | Target validation, genetics and functional networks | Aggregated drug–gene interactions and druggability categories. | 2026-09-25 |
-| [Pharos / TCRD (IDG)](https://pharos.nih.gov/) | Target validation, genetics and functional networks | Human target development levels (Tclin, Tchem, Tbio, Tdark) and aggregated target knowledge, keyed by UniProt, HGNC, Ensembl and NCBI Gene. | 2026-09-27 |
-
-## Queued for review
-
-| Resource | Category | What it would bring | Since |
-| --- | --- | --- | --- |
-| [CACHE Challenge](https://cache-challenge.org/) | Benchmarks, open challenges and open-science consortia | Blind computational hit-finding challenges with independent experimental validation. | 2026-09-25 |
-| [COVID Moonshot / ASAP Discovery](https://asapdiscovery.org/) | Benchmarks, open challenges and open-science consortia | Open collaborative discovery: chemical series, affinities, synthesis and structures without IP barriers. | 2026-09-25 |
-| [CSAR](http://www.csardock.org/) | Benchmarks, open challenges and open-science consortia | High-resolution crystallographic complexes for evaluating scoring functions. | 2026-09-25 |
-| [D3R (Drug Design Data Resource)](https://drugdesigndata.org/) | Benchmarks, open challenges and open-science consortia | Blind challenges and datasets with experimental affinities for docking and free-energy prediction. | 2026-09-25 |
-| [Fragalysis / XChem](https://fragalysis.diamond.ac.uk/) | Benchmarks, open challenges and open-science consortia | Crystallographic data from open fragment-screening campaigns at Diamond. | 2026-09-25 |
-| [OpenBind](https://openbind.uk/) | Benchmarks, open challenges and open-science consortia | Open initiative generating protein–ligand structures and affinity profiles at scale. | 2026-09-25 |
-| [RNA-Puzzles](https://rnapuzzles.org/) | Benchmarks, open challenges and open-science consortia | Blind community assessment of RNA tertiary structure prediction. | 2026-09-25 |
 | [Target 2035 / SGC](https://www.thesgc.org/) | Benchmarks, open challenges and open-science consortia | Selective chemical probes and negative controls for understudied targets. | 2026-09-25 |
-| [Therapeutics Data Commons (TDC)](https://tdcommons.ai/) | Benchmarks, open challenges and open-science consortia | Standardised AI-ready datasets for drug design, affinity and ADMET. | 2026-09-25 |
-| [PDBbind-CN](http://www.pdbbind.org.cn/) | Binding affinity and experimental bioactivity | 3D complexes paired with experimental binding affinities (core and refined sets). | 2026-09-25 |
 | [ChEBI](https://www.ebi.ac.uk/chebi/) | Chemical space, synthesis, ADMET and safety | Ontology of chemical entities, endogenous metabolites and cofactors. | 2026-09-25 |
-| [ChemSpider](https://www.chemspider.com/) | Chemical space, synthesis, ADMET and safety | Chemical structures, names and identifiers aggregated from many data sources. | 2026-01-31 |
-| [eMolecules](https://www.emolecules.com/) | Chemical space, synthesis, ADMET and safety | Commercial availability of screening compounds and building blocks, with vendors. | 2026-01-31 |
-| [Enamine REAL Space](https://enamine.net/compound-collections/real-compounds) | Chemical space, synthesis, ADMET and safety | Billions of make-on-demand molecules from validated reactions. | 2026-09-25 |
-| [IUPAC resources](https://iupac.org/) | Chemical space, synthesis, ADMET and safety | Listed in the original plan without further detail (nomenclature and standard definitions are the likely use); to be specified before review. | 2026-01-31 |
 | [SureChEMBL](https://surechembl.org/) | Chemical space, synthesis, ADMET and safety | Chemical structures text-mined from patents. | 2026-09-25 |
 | [Tox21 / ToxCast](https://www.epa.gov/chemical-research/toxicity-forecasting) | Chemical space, synthesis, ADMET and safety | In vitro toxicity screening profiles, cellular stress and assay-interference flags. | 2026-09-25 |
-| [ZINC (ZINC20 / ZINC-22)](https://zinc.docking.org/) | Chemical space, synthesis, ADMET and safety | 3D models of purchasable and make-on-demand compounds for virtual screening. | 2026-09-25 |
-| [CPPsite](https://webs.iiitd.edu.in/raghava/cppsite/) | Emerging modalities (targeted degradation) | Cell-penetrating peptides and their properties; to be mapped to peptide cards. | 2026-01-31 |
 | [PROTAC-DB](http://cadd.zju.edu.cn/protacdb/) | Emerging modalities (targeted degradation) | Targeted-degradation chimeras: E3 ligases, warheads, linkers, ternary complexes and DC50/Dmax. | 2026-09-25 |
-| [2P2Idb](http://2p2idb.cnrs-mrs.fr/) | Protein–protein interactions and structural modulation | Curated structures of protein–protein complexes modulated by orthosteric small molecules, with interface parameters and druggability. | 2026-09-25 |
 | [iPPI-DB](https://ippidb.pasteur.fr/) | Protein–protein interactions and structural modulation | Non-peptide inhibitors and modulators of protein–protein interactions, with pharmacological, chemical and structural data. | 2026-09-25 |
-| [PiSITE](https://pisite.pdbj.org/) | Protein–protein interactions and structural modulation | Protein–protein interaction sites mapped onto PDB structures. | 2026-01-31 |
-| [PPI3D](http://bioinformatics.ibt.lt/ppi3d/) | Protein–protein interactions and structural modulation | Search, analysis and modelling of inter-chain interfaces and complexes (Voronoi tessellation). | 2026-09-25 |
 | [SKEMPI 2.0](https://life.bsc.es/pid/skempi2/) | Protein–protein interactions and structural modulation | Changes in binding affinity (ΔΔG) and kinetics caused by mutations at protein–protein interfaces. | 2026-09-25 |
+| [TDR Targets](https://tdrtargets.org/) | Organism, orthology and biological context | Target prioritisation for pathogens of neglected tropical diseases: essentiality, druggability, similarity to the host. | 2026-09-27 |
 | [ASD (Allosteric Database)](http://mdl.shsmu.edu.cn/ASD/) | Binding sites, cavities and specialised families | Allosteric modulators, regulatory sites and conformational communication. | 2026-09-25 |
-| [Binding MOAD](https://bindingmoad.org/) | Binding sites, cavities and specialised families | High-resolution complexes linked to validated binding affinities. | 2026-09-25 |
 | [BRENDA](https://brenda-enzymes.org/) | Binding sites, cavities and specialised families | Enzyme information: kinetics (Km, kcat), inhibitors, cofactors and conditions. | 2026-09-25 |
-| [CovPDB](https://bioinfo.fudan.edu.cn/CovPDB/) | Binding sites, cavities and specialised families | Covalent protein–ligand complexes, with nucleophilic residues and warheads. | 2026-09-25 |
 | [GPCRdb](https://gpcrdb.org/) | Binding sites, cavities and specialised families | GPCR structures, mutations, activation states and Ballesteros–Weinstein numbering. | 2026-09-25 |
 | [KLIFS](https://klifs.net/) | Binding sites, cavities and specialised families | Kinase pocket anatomy aligned to 85 reference positions, with DFG/αC conformations. | 2026-09-25 |
 | [mpstruc](https://blanco.biomol.uci.edu/mpstruc/) | Binding sites, cavities and specialised families | Membrane proteins of known structure, classified by topology and family. | 2026-09-25 |
 | [OPM (Orientations of Proteins in Membranes)](https://opm.phar.umich.edu/) | Binding sites, cavities and specialised families | Position and orientation of PDB structures in the lipid bilayer. | 2026-09-25 |
-| [Proteins.plus (DoGSiteScorer)](https://proteins.plus/) | Binding sites, cavities and specialised families | Pocket detection, physico-chemical descriptors and druggability scores (a computation service). | 2026-09-25 |
 | [SAbDab / Thera-SAbDab](https://opig.stats.ox.ac.uk/webapps/sabdab/) | Binding sites, cavities and specialised families | Antibody and nanobody structures with standard numbering, CDRs and clinical metadata. | 2026-09-25 |
-| [SABIO-RK](http://sabiork.h-its.org/) | Binding sites, cavities and specialised families | Kinetic constants of purified biochemical reactions under stated conditions (REST API). | 2026-09-25 |
 | [sc-PDB](http://bioinfo-pharma.u-strasbg.fr/scPDB/) | Binding sites, cavities and specialised families | Druggable binding sites extracted from the PDB, cleaned of crystallographic artefacts. | 2026-09-25 |
-| [CoDNaS](https://codnas.inf.unlp.edu.ar/) | Macromolecular structures, models and dynamics | Conformational diversity of native states: experimental conformers in the PDB. | 2026-09-25 |
 | [ESM Metagenomic Atlas](https://esmatlas.com/) | Macromolecular structures, models and dynamics | Structures predicted at scale by a protein language model. | 2026-09-25 |
-| [MoDEL Library](https://mmb.irbbarcelona.org/MoDEL/) | Macromolecular structures, models and dynamics | Standardised atomistic molecular dynamics trajectories and conformations. | 2026-09-25 |
 | [ModelArchive](https://modelarchive.org/) | Macromolecular structures, models and dynamics | Open repository of computational macromolecular models with mmCIF metadata. | 2026-09-25 |
-| [NDB (Nucleic Acid Database)](https://ndbserver.rutgers.edu/) | Macromolecular structures, models and dynamics | Structures and conformations of nucleic acids and their complexes. | 2026-09-25 |
 | [ProThermDB](https://web.iitm.ac.in/bioinfo2/prothermdb/) | Macromolecular structures, models and dynamics | Experimental protein stability data (ΔΔG, Tm) for point mutations. | 2026-09-25 |
-| [PharmacoDB](https://pharmacodb.pmgenomics.ca/) | Target validation, genetics and functional networks | Harmonised pharmacogenomic screens and cellular dose–response curves. | 2026-09-25 |
+| [DepMap](https://depmap.org/) | Target validation, genetics and functional networks | CRISPR and RNAi screens of gene essentiality and dependencies in cancer cell lines. | 2026-09-25 |
+| [DGIdb](https://dgidb.org/) | Target validation, genetics and functional networks | Aggregated drug–gene interactions and druggability categories. | 2026-09-25 |
+| [Pharos / TCRD (IDG)](https://pharos.nih.gov/) | Target validation, genetics and functional networks | Human target development levels (Tclin, Tchem, Tbio, Tdark) and aggregated target knowledge, keyed by UniProt, HGNC, Ensembl and NCBI Gene. | 2026-09-27 |
 | [TTD (Therapeutic Target Database)](https://idrblab.org/ttd/) | Target validation, genetics and functional networks | Molecular targets, their clinical status, diseases and resistance mutations. | 2026-09-25 |
 | [Ensembl](https://www.ensembl.org/) | Targets, sequence and basic pharmacology | Gene and transcript annotation, homology and population variants. | 2026-09-25 |
 
@@ -111,8 +80,25 @@ Summary: in use 28, evaluating 4, queued 46, deferred 7, retired 3, out of scope
 | [DrugBank (open data)](https://go.drugbank.com/) | Licensing constrains redistribution and caching; only DrugBank ids are kept, through UniChem. | A licence compatible with Sabueso's caching and redistribution is confirmed. | 2026-09-23 |
 | [Guide to PHARMACOLOGY (IUPHAR/BPS)](https://www.guidetopharmacology.org/) | Its web services now need a personal API key (HTTP 401 without one), its data is under ODbL (share-alike), and UniProt links neither test target to it. | A target of interest has a GuidetoPHARMACOLOGY cross-reference in UniProt, and key management exists for deployments (as for BioGRID). | 2026-09-25 |
 | [KEGG PATHWAY](https://www.kegg.jp/) | Not a public database: free academic use of the website only; services, downloads and non-academic use need a licence, which does not fit redistribution across MOLI. | A licence covering MOLI use is in place, or a pathway need is not met by Reactome (CC0). | 2026-09-25 |
+| [PharmacoDB](https://pharmacodb.pmgenomics.ca/) | HTTP 503 on 2026-09-29. | It answers again. | 2026-09-25 |
+| [2P2Idb](http://2p2idb.cnrs-mrs.fr/) | Did not answer on 2026-09-27/29. | It answers again; then evaluate with iPPI-DB. | 2026-09-25 |
+| [NDB (Nucleic Acid Database)](https://ndbserver.rutgers.edu/) | Nucleic-acid structures; Sabueso has no nucleic-acid entities yet. | Nucleic-acid cards exist. | 2026-09-25 |
+| [CoDNaS](https://codnas.inf.unlp.edu.ar/) | Did not answer on 2026-09-29. | It answers again. | 2026-09-25 |
 | [BioLiP](https://zhanggroup.org/BioLiP/) | Bulk downloads of a third-party pipeline, not a per-record service; the PDB subject-of-investigation flag already separates ligands from additives, and PDBe-KB gives contacts. | A batch import exists, or a question needs curated biologically relevant sites that PDBe-KB and the PDB flag do not give. | 2026-09-23 |
+| [Binding MOAD](https://bindingmoad.org/) | Sunset: online until mid-2024, with its affinity backend licensed to Chemical Abstracts Service; earlier terms non-commercial. | An open release of its data exists. | 2026-09-25 |
 | [M-CSA (Mechanism and Catalytic Site Atlas)](https://www.ebi.ac.uk/thornton-srv/m-csa/) | Evaluated: it links both TIMs to an entry but states catalytic residues and roles only in the numbering of a reference species; placing them on another sequence needs an alignment. | A residue mapping from an alignment (MolSysMT) can be applied to curated sites (#30). | 2026-09-23 |
+| [SABIO-RK](http://sabiork.h-its.org/) | Non-commercial use only (HITS terms, CC BY-NC); does not fit redistribution across MOLI. | A licence covering MOLI use, or kinetics a target needs that BRENDA (CC BY 4.0) does not give. | 2026-09-25 |
+| [CovPDB](https://bioinfo.fudan.edu.cn/CovPDB/) | Did not answer on 2026-09-29. | It answers again; covalent complexes are also in the PDB. | 2026-09-25 |
+| [PDBbind-CN](http://www.pdbbind.org.cn/) | Did not answer on 2026-09-29, and needs registration; affinities also come from ChEMBL and BindingDB. | It answers, and its terms fit MOLI. | 2026-09-25 |
+| [OpenBind](https://openbind.uk/) | Open-science structures and affinities; most reach Sabueso through the PDB and ChEMBL already. | A target has data here that the PDB and ChEMBL do not hold. | 2026-09-25 |
+| [Fragalysis / XChem](https://fragalysis.diamond.ac.uk/) | Open-science structures and affinities; most reach Sabueso through the PDB and ChEMBL already. | A target has data here that the PDB and ChEMBL do not hold. | 2026-09-25 |
+| [COVID Moonshot / ASAP Discovery](https://asapdiscovery.org/) | Open-science structures and affinities; most reach Sabueso through the PDB and ChEMBL already. | A target has data here that the PDB and ChEMBL do not hold. | 2026-09-25 |
+| [ZINC (ZINC20 / ZINC-22)](https://zinc.docking.org/) | Free to use, but major portions may not be redistributed without written permission. | A purchasable-compound need that a permission or another open catalogue covers. | 2026-09-25 |
+| [Enamine REAL Space](https://enamine.net/compound-collections/real-compounds) | A commercial catalogue. | A licence covering MOLI use. | 2026-09-25 |
+| [eMolecules](https://www.emolecules.com/) | A commercial catalogue; data downloads may need a licence agreement. | A licence covering MOLI use. | 2026-01-31 |
+| [ChemSpider](https://www.chemspider.com/) | API key and usage conditions; PubChem and UniChem cover identity. | A structure or name need that PubChem, ChEBI and UniChem do not cover. | 2026-01-31 |
+| [PiSITE](https://pisite.pdbj.org/) | Did not answer on 2026-09-27/29; interfaces come from PDBe-KB. | It answers again, and a need PDBe-KB does not cover appears. | 2026-01-31 |
+| [CPPsite](https://webs.iiitd.edu.in/raghava/cppsite/) | Cell-penetrating peptides need peptide cards, which are scoped before any source (use case 5). | Peptide cards are scoped. | 2026-01-31 |
 
 ## Retired
 
@@ -130,3 +116,12 @@ Summary: in use 28, evaluating 4, queued 46, deferred 7, retired 3, out of scope
 | [ProLIF](https://prolif.readthedocs.io/) | A computation on structures, not a knowledge source. | MolSysSuite | 2026-09-25 |
 | [Open Drug Discovery Toolkit (ODDT)](https://github.com/oddt/oddt) | Software, not a knowledge source. | MolSysSuite (DockingMT) | 2026-09-25 |
 | [PoseBusters](https://github.com/maabuu/posebusters) | A validation tool for modelling results, not a knowledge source. | MolSysSuite (DockingMT) and Praxis | 2026-09-25 |
+| [PPI3D](http://bioinformatics.ibt.lt/ppi3d/) | An interface search and modelling service: a computation on structures, not a knowledge source. | MolSysSuite | 2026-09-25 |
+| [MoDEL Library](https://mmb.irbbarcelona.org/MoDEL/) | Molecular dynamics trajectories, not source knowledge about entities. | MolSysSuite | 2026-09-25 |
+| [Proteins.plus (DoGSiteScorer)](https://proteins.plus/) | A computation service (pockets, descriptors), not a knowledge source. | MolSysSuite | 2026-09-25 |
+| [D3R (Drug Design Data Resource)](https://drugdesigndata.org/) | A benchmark and challenge dataset, not a knowledge source. | Praxis (methodology) and MolSysSuite (evaluation) | 2026-09-25 |
+| [CACHE Challenge](https://cache-challenge.org/) | A hit-finding challenge, not a knowledge source. | Praxis (methodology) and MolSysSuite (evaluation) | 2026-09-25 |
+| [Therapeutics Data Commons (TDC)](https://tdcommons.ai/) | AI-ready benchmark datasets, not a knowledge source. | MolSysSuite and Praxis | 2026-09-25 |
+| [CSAR](http://www.csardock.org/) | A benchmark set for scoring functions (and unreachable on 2026-09-29). | MolSysSuite (evaluation) | 2026-09-25 |
+| [RNA-Puzzles](https://rnapuzzles.org/) | A structure-prediction assessment, not a knowledge source. | MolSysSuite (evaluation) | 2026-09-25 |
+| [IUPAC resources](https://iupac.org/) | Nomenclature and standard definitions, not entity knowledge; listed in the original plan without detail. | MOLI (shared terminology), if needed | 2026-01-31 |

@@ -362,10 +362,12 @@ resources:
     name: "Ensembl"
     url: https://www.ensembl.org/
     category: targets_sequence
-    status: queued
+    status: evaluating
     description: "Gene and transcript annotation, homology and population variants."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "No restrictions on data (REST API, 15 requests per second)"
+    links: ["#83"]
   - id: open_targets
     name: "Open Targets Platform"
     url: https://platform.opentargets.org/
@@ -442,10 +444,12 @@ resources:
     name: "TTD (Therapeutic Target Database)"
     url: https://idrblab.org/ttd/
     category: target_validation
-    status: queued
+    status: evaluating
     description: "Molecular targets, their clinical status, diseases and resistance mutations."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "No data licence found (only the article's CC BY-NC)"
+    links: ["#83"]
   - id: dgidb
     name: "DGIdb"
     url: https://dgidb.org/
@@ -520,98 +524,128 @@ resources:
     name: "PharmacoDB"
     url: https://pharmacodb.pmgenomics.ca/
     category: target_validation
-    status: queued
+    status: deferred
     description: "Harmonised pharmacogenomic screens and cellular dose–response curves."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "HTTP 503 on 2026-09-29."
+    revisit_when: "It answers again."
+    links: ["#83"]
   - id: 2p2idb
     name: "2P2Idb"
     url: http://2p2idb.cnrs-mrs.fr/
     category: interactions
-    status: queued
+    status: deferred
     description: "Curated structures of protein–protein complexes modulated by orthosteric small molecules, with interface parameters and druggability."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "Did not answer on 2026-09-27/29."
+    revisit_when: "It answers again; then evaluate with iPPI-DB."
+    links: ["#83"]
   - id: ippi_db
     name: "iPPI-DB"
     url: https://ippidb.pasteur.fr/
     category: interactions
-    status: queued
+    status: evaluating
     description: "Non-peptide inhibitors and modulators of protein–protein interactions, with pharmacological, chemical and structural data."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "CC BY-SA 3.0 (share-alike, like ChEMBL); CSV download"
+    links: ["#83"]
   - id: skempi
     name: "SKEMPI 2.0"
     url: https://life.bsc.es/pid/skempi2/
     category: interactions
-    status: queued
+    status: evaluating
     description: "Changes in binding affinity (ΔΔG) and kinetics caused by mutations at protein–protein interfaces."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "CC BY 4.0 (CSV download)"
+    links: ["#83"]
   - id: ppi3d
     name: "PPI3D"
     url: http://bioinformatics.ibt.lt/ppi3d/
     category: interactions
-    status: queued
+    status: out_of_scope
     description: "Search, analysis and modelling of inter-chain interfaces and complexes (Voronoi tessellation)."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "An interface search and modelling service: a computation on structures, not a knowledge source."
+    owner: "MolSysSuite"
+    links: ["#83"]
   - id: modelarchive
     name: "ModelArchive"
     url: https://modelarchive.org/
     category: structures_models
-    status: queued
+    status: evaluating
     description: "Open repository of computational macromolecular models with mmCIF metadata."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "Not found (the terms page gave no text)"
+    links: ["#83"]
   - id: esm_atlas
     name: "ESM Metagenomic Atlas"
     url: https://esmatlas.com/
     category: structures_models
-    status: queued
+    status: evaluating
     description: "Structures predicted at scale by a protein language model."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "CC BY 4.0 (API)"
+    links: ["#83"]
   - id: ndb
     name: "NDB (Nucleic Acid Database)"
     url: https://ndbserver.rutgers.edu/
     category: structures_models
-    status: queued
+    status: deferred
     description: "Structures and conformations of nucleic acids and their complexes."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "Nucleic-acid structures; Sabueso has no nucleic-acid entities yet."
+    revisit_when: "Nucleic-acid cards exist."
+    links: ["#83"]
   - id: codnas
     name: "CoDNaS"
     url: https://codnas.inf.unlp.edu.ar/
     category: structures_models
-    status: queued
+    status: deferred
     description: "Conformational diversity of native states: experimental conformers in the PDB."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "Did not answer on 2026-09-29."
+    revisit_when: "It answers again."
+    links: ["#83"]
   - id: model_library
     name: "MoDEL Library"
     url: https://mmb.irbbarcelona.org/MoDEL/
     category: structures_models
-    status: queued
+    status: out_of_scope
     description: "Standardised atomistic molecular dynamics trajectories and conformations."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "Molecular dynamics trajectories, not source knowledge about entities."
+    owner: "MolSysSuite"
+    links: ["#83"]
   - id: prothermdb
     name: "ProThermDB"
     url: https://web.iitm.ac.in/bioinfo2/prothermdb/
     category: structures_models
-    status: queued
+    status: evaluating
     description: "Experimental protein stability data (ΔΔG, Tm) for point mutations."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "No data licence found (only the article's CC BY-NC); download by form"
+    links: ["#83"]
   - id: sc_pdb
     name: "sc-PDB"
     url: http://bioinfo-pharma.u-strasbg.fr/scPDB/
     category: sites_families
-    status: queued
+    status: evaluating
     description: "Druggable binding sites extracted from the PDB, cleaned of crystallographic artefacts."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "Article under CC BY 4.0; data terms to confirm; downloadable archive and REST services"
+    links: ["#83"]
   - id: biolip
     name: "BioLiP"
     url: https://zhanggroup.org/BioLiP/
@@ -628,50 +662,63 @@ resources:
     name: "Binding MOAD"
     url: https://bindingmoad.org/
     category: sites_families
-    status: queued
+    status: deferred
     description: "High-resolution complexes linked to validated binding affinities."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "Sunset: online until mid-2024, with its affinity backend licensed to Chemical Abstracts Service; earlier terms non-commercial."
+    revisit_when: "An open release of its data exists."
+    links: ["#83"]
   - id: asd
     name: "ASD (Allosteric Database)"
     url: http://mdl.shsmu.edu.cn/ASD/
     category: sites_families
-    status: queued
+    status: evaluating
     description: "Allosteric modulators, regulatory sites and conformational communication."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "Article under CC BY 4.0 (ASD2023); data terms to confirm"
+    links: ["#83"]
   - id: klifs
     name: "KLIFS"
     url: https://klifs.net/
     category: sites_families
-    status: queued
+    status: evaluating
     description: "Kinase pocket anatomy aligned to 85 reference positions, with DFG/αC conformations."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "CC BY 4.0 (REST API)"
+    links: ["#83"]
   - id: gpcrdb
     name: "GPCRdb"
     url: https://gpcrdb.org/
     category: sites_families
-    status: queued
+    status: evaluating
     description: "GPCR structures, mutations, activation states and Ballesteros–Weinstein numbering."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "CC BY 4.0 (REST API)"
+    links: ["#83"]
   - id: opm
     name: "OPM (Orientations of Proteins in Membranes)"
     url: https://opm.phar.umich.edu/
     category: sites_families
-    status: queued
+    status: evaluating
     description: "Position and orientation of PDB structures in the lipid bilayer."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "CC BY 3.0"
+    links: ["#83"]
   - id: mpstruc
     name: "mpstruc"
     url: https://blanco.biomol.uci.edu/mpstruc/
     category: sites_families
-    status: queued
+    status: evaluating
     description: "Membrane proteins of known structure, classified by topology and family."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "No licence found"
+    links: ["#83"]
   - id: m_csa
     name: "M-CSA (Mechanism and Catalytic Site Atlas)"
     url: https://www.ebi.ac.uk/thornton-srv/m-csa/
@@ -688,42 +735,55 @@ resources:
     name: "BRENDA"
     url: https://brenda-enzymes.org/
     category: sites_families
-    status: queued
+    status: evaluating
     description: "Enzyme information: kinetics (Km, kcat), inhibitors, cofactors and conditions."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "CC BY 4.0; the API needs a registered account (key rule)"
+    links: ["#83"]
   - id: sabio_rk
     name: "SABIO-RK"
     url: http://sabiork.h-its.org/
     category: sites_families
-    status: queued
+    status: deferred
     description: "Kinetic constants of purified biochemical reactions under stated conditions (REST API)."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "Non-commercial use only (HITS terms, CC BY-NC); does not fit redistribution across MOLI."
+    revisit_when: "A licence covering MOLI use, or kinetics a target needs that BRENDA (CC BY 4.0) does not give."
+    links: ["#83"]
   - id: covpdb
     name: "CovPDB"
     url: https://bioinfo.fudan.edu.cn/CovPDB/
     category: sites_families
-    status: queued
+    status: deferred
     description: "Covalent protein–ligand complexes, with nucleophilic residues and warheads."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "Did not answer on 2026-09-29."
+    revisit_when: "It answers again; covalent complexes are also in the PDB."
+    links: ["#83"]
   - id: sabdab
     name: "SAbDab / Thera-SAbDab"
     url: https://opig.stats.ox.ac.uk/webapps/sabdab/
     category: sites_families
-    status: queued
+    status: evaluating
     description: "Antibody and nanobody structures with standard numbering, CDRs and clinical metadata."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "CC BY 4.0"
+    links: ["#83"]
   - id: proteins_plus
     name: "Proteins.plus (DoGSiteScorer)"
     url: https://proteins.plus/
     category: sites_families
-    status: queued
+    status: out_of_scope
     description: "Pocket detection, physico-chemical descriptors and druggability scores (a computation service)."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "A computation service (pockets, descriptors), not a knowledge source."
+    owner: "MolSysSuite"
+    links: ["#83"]
   - id: bindingdb
     name: "BindingDB"
     url: https://www.bindingdb.org/
@@ -742,10 +802,13 @@ resources:
     name: "PDBbind-CN"
     url: http://www.pdbbind.org.cn/
     category: bioactivity
-    status: queued
+    status: deferred
     description: "3D complexes paired with experimental binding affinities (core and refined sets)."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "Did not answer on 2026-09-29, and needs registration; affinities also come from ChEMBL and BindingDB."
+    revisit_when: "It answers, and its terms fit MOLI."
+    links: ["#83"]
   - id: pubchem_bioassay
     name: "PubChem BioAssay"
     url: https://pubchem.ncbi.nlm.nih.gov/
@@ -764,122 +827,162 @@ resources:
     name: "D3R (Drug Design Data Resource)"
     url: https://drugdesigndata.org/
     category: benchmarks
-    status: queued
+    status: out_of_scope
     description: "Blind challenges and datasets with experimental affinities for docking and free-energy prediction."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "A benchmark and challenge dataset, not a knowledge source."
+    owner: "Praxis (methodology) and MolSysSuite (evaluation)"
+    links: ["#83"]
   - id: cache
     name: "CACHE Challenge"
     url: https://cache-challenge.org/
     category: benchmarks
-    status: queued
+    status: out_of_scope
     description: "Blind computational hit-finding challenges with independent experimental validation."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "A hit-finding challenge, not a knowledge source."
+    owner: "Praxis (methodology) and MolSysSuite (evaluation)"
+    links: ["#83"]
   - id: openbind
     name: "OpenBind"
     url: https://openbind.uk/
     category: benchmarks
-    status: queued
+    status: deferred
     description: "Open initiative generating protein–ligand structures and affinity profiles at scale."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "Open-science structures and affinities; most reach Sabueso through the PDB and ChEMBL already."
+    revisit_when: "A target has data here that the PDB and ChEMBL do not hold."
+    links: ["#83"]
   - id: tdc
     name: "Therapeutics Data Commons (TDC)"
     url: https://tdcommons.ai/
     category: benchmarks
-    status: queued
+    status: out_of_scope
     description: "Standardised AI-ready datasets for drug design, affinity and ADMET."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "AI-ready benchmark datasets, not a knowledge source."
+    owner: "MolSysSuite and Praxis"
+    links: ["#83"]
   - id: csar
     name: "CSAR"
     url: http://www.csardock.org/
     category: benchmarks
-    status: queued
+    status: out_of_scope
     description: "High-resolution crystallographic complexes for evaluating scoring functions."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "A benchmark set for scoring functions (and unreachable on 2026-09-29)."
+    owner: "MolSysSuite (evaluation)"
+    links: ["#83"]
   - id: fragalysis
     name: "Fragalysis / XChem"
     url: https://fragalysis.diamond.ac.uk/
     category: benchmarks
-    status: queued
+    status: deferred
     description: "Crystallographic data from open fragment-screening campaigns at Diamond."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "Open-science structures and affinities; most reach Sabueso through the PDB and ChEMBL already."
+    revisit_when: "A target has data here that the PDB and ChEMBL do not hold."
+    links: ["#83"]
   - id: asap_discovery
     name: "COVID Moonshot / ASAP Discovery"
     url: https://asapdiscovery.org/
     category: benchmarks
-    status: queued
+    status: deferred
     description: "Open collaborative discovery: chemical series, affinities, synthesis and structures without IP barriers."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "Open-science structures and affinities; most reach Sabueso through the PDB and ChEMBL already."
+    revisit_when: "A target has data here that the PDB and ChEMBL do not hold."
+    links: ["#83"]
   - id: rna_puzzles
     name: "RNA-Puzzles"
     url: https://rnapuzzles.org/
     category: benchmarks
-    status: queued
+    status: out_of_scope
     description: "Blind community assessment of RNA tertiary structure prediction."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "A structure-prediction assessment, not a knowledge source."
+    owner: "MolSysSuite (evaluation)"
+    links: ["#83"]
   - id: target2035_sgc
     name: "Target 2035 / SGC"
     url: https://www.thesgc.org/
     category: benchmarks
-    status: queued
+    status: evaluating
     description: "Selective chemical probes and negative controls for understudied targets."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "SGC probes: no restrictions on use; Chemical Probes Portal under Creative Commons (to confirm)"
+    links: ["#83"]
   - id: protac_db
     name: "PROTAC-DB"
     url: http://cadd.zju.edu.cn/protacdb/
     category: emerging_modalities
-    status: queued
+    status: evaluating
     description: "Targeted-degradation chimeras: E3 ligases, warheads, linkers, ternary complexes and DC50/Dmax."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "No data licence found (only the article's CC BY 4.0)"
+    links: ["#83"]
   - id: surechembl
     name: "SureChEMBL"
     url: https://surechembl.org/
     category: chemistry_admet
-    status: queued
+    status: evaluating
     description: "Chemical structures text-mined from patents."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "CC BY 4.0 (API and current bulk data); older dumps CC BY-SA 3.0"
+    links: ["#83"]
   - id: zinc
     name: "ZINC (ZINC20 / ZINC-22)"
     url: https://zinc.docking.org/
     category: chemistry_admet
-    status: queued
+    status: deferred
     description: "3D models of purchasable and make-on-demand compounds for virtual screening."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "Free to use, but major portions may not be redistributed without written permission."
+    revisit_when: "A purchasable-compound need that a permission or another open catalogue covers."
+    links: ["#83"]
   - id: enamine_real
     name: "Enamine REAL Space"
     url: https://enamine.net/compound-collections/real-compounds
     category: chemistry_admet
-    status: queued
+    status: deferred
     description: "Billions of make-on-demand molecules from validated reactions."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    reason: "A commercial catalogue."
+    revisit_when: "A licence covering MOLI use."
+    links: ["#83"]
   - id: chebi
     name: "ChEBI"
     url: https://www.ebi.ac.uk/chebi/
     category: chemistry_admet
-    status: queued
+    status: evaluating
     description: "Ontology of chemical entities, endogenous metabolites and cofactors."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "CC BY 4.0 (ChEBI 2.0 API)"
+    links: ["#83"]
   - id: tox21_toxcast
     name: "Tox21 / ToxCast"
     url: https://www.epa.gov/chemical-research/toxicity-forecasting
     category: chemistry_admet
-    status: queued
+    status: evaluating
     description: "In vitro toxicity screening profiles, cellular stress and assay-interference flags."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "Summary files CC0; the CTX API needs a key"
+    links: ["#83"]
   - id: ncbi_taxonomy
     name: "NCBI Taxonomy"
     url: https://www.ncbi.nlm.nih.gov/taxonomy
@@ -899,18 +1002,24 @@ resources:
     name: "eMolecules"
     url: https://www.emolecules.com/
     category: chemistry_admet
-    status: queued
+    status: deferred
     description: "Commercial availability of screening compounds and building blocks, with vendors."
     since: 2026-01-31
     proposed_by: "Original source plan (minimum sources, 2026-01); use case: commercial availability"
+    reason: "A commercial catalogue; data downloads may need a licence agreement."
+    revisit_when: "A licence covering MOLI use."
+    links: ["#83"]
   - id: chemspider
     name: "ChemSpider"
     url: https://www.chemspider.com/
     category: chemistry_admet
-    status: queued
+    status: deferred
     description: "Chemical structures, names and identifiers aggregated from many data sources."
     since: 2026-01-31
     proposed_by: "Original source plan (minimum sources, 2026-01)"
+    reason: "API key and usage conditions; PubChem and UniChem cover identity."
+    revisit_when: "A structure or name need that PubChem, ChEBI and UniChem do not cover."
+    links: ["#83"]
   - id: clinicaltrials_gov
     name: "ClinicalTrials.gov"
     url: https://clinicaltrials.gov/
@@ -928,23 +1037,32 @@ resources:
     name: "PiSITE"
     url: https://pisite.pdbj.org/
     category: interactions
-    status: queued
+    status: deferred
     description: "Protein–protein interaction sites mapped onto PDB structures."
     since: 2026-01-31
     proposed_by: "Original source plan (low priority, 2026-01)"
+    reason: "Did not answer on 2026-09-27/29; interfaces come from PDBe-KB."
+    revisit_when: "It answers again, and a need PDBe-KB does not cover appears."
+    links: ["#83"]
   - id: cppsite
     name: "CPPsite"
     url: https://webs.iiitd.edu.in/raghava/cppsite/
     category: emerging_modalities
-    status: queued
+    status: deferred
     description: "Cell-penetrating peptides and their properties; to be mapped to peptide cards."
     since: 2026-01-31
     proposed_by: "Original source plan (low priority, 2026-01); peptide cards"
+    reason: "Cell-penetrating peptides need peptide cards, which are scoped before any source (use case 5)."
+    revisit_when: "Peptide cards are scoped."
+    links: ["#83"]
   - id: iupac_resources
     name: "IUPAC resources"
     url: https://iupac.org/
     category: chemistry_admet
-    status: queued
+    status: out_of_scope
     description: "Listed in the original plan without further detail (nomenclature and standard definitions are the likely use); to be specified before review."
     since: 2026-01-31
     proposed_by: "Original source plan (low priority, 2026-01)"
+    reason: "Nomenclature and standard definitions, not entity knowledge; listed in the original plan without detail."
+    owner: "MOLI (shared terminology), if needed"
+    links: ["#83"]

@@ -172,8 +172,10 @@ Foundational route, in the order proposed now:
 0. **Source coverage (#83).** Sabueso is MOLI's tracker of the outside world: every
    source it can reach, evaluated with one rubric (`SOURCE_COVERAGE.md`), and an
    architecture that scales to many sources. Wave 1 (target validation, disease,
-   pathogen context) is evaluated. It sets the order of items 3 and 4 below and adds
-   pathways, variants and pathogen context.
+   pathogen context) is evaluated and mostly in use. Wave 2 (every other queued source)
+   is evaluated too: no source is left unreviewed. Its order is interfaces (SKEMPI,
+   iPPI-DB), chemistry (ChEBI, chemical probes), identity (Ensembl), family-specific
+   sources, then patents and structures.
 1. **Knowledge packets and KnowledgeQuery (#71, uibcdf/moli#22).** A prototype is on
    main: protein subject and comparator, seven aspects, pinned and stored packets, and
    a content-equivalence id. Next: let real use (the pilot, MOLI Agent) decide the
