@@ -38,6 +38,9 @@ shows how to use them.
   of its targets and of the drugs whose indications name it (#90).
 - `sabueso.ligand_deck(protein_card, ...)`: the small-molecule cards of a protein's
   ligands and measured molecules.
+- `sabueso.expand(card, predicate, limit=50, options=None, terms=None)`: a deck of the
+  cards of the entities a card relates to by a predicate, or several
+  (`relationship_expansion@1`, #91). Also `Card.expand` and `Deck.expand`.
 
 ## Knowledge packets (prototype, #71; contract in uibcdf/moli#22)
 
@@ -83,17 +86,22 @@ shows how to use them.
 - **Serialization.**
   - `to_dict()`, `to_json(path)`, `to_sqlite(path, ...)`;
   - `Card.from_dict(data)`, `Card.from_json(path)`, `Card.from_sqlite(path, ...)`.
-- **Other.** `to_deck()`. `expand(kind)` is reserved and not implemented.
+- **Provenance.** `explain(source_assertion_ids)`: each SourceAssertion's field,
+  subject, source, record, version, retrieval and asserted value (#91).
+- **Other.** `to_deck()`, `expand(predicate, ...)` (see `sabueso.expand`).
 
 ## Deck
 
 - **Build.** `Deck(cards)`, `add(card, basis=None)`, `extend(cards)`,
   `exclude(candidate, reason, by=None)`, `basis(card_id)`.
+- **Explain.** `explain(card_id)`: why a card is in the deck, or why it was left out,
+  and the operations that produced the deck (#91).
 - **Derive.** Each derived deck records the operation that produced it:
   - `filter(predicate)`, `sort(key, reverse=False)`;
   - `intersect(other)`, `difference(other)`;
   - `in_lineage(taxon)`;
-  - `group_by(field_path)`, `group_by_rank(rank)`.
+  - `group_by(field_path)`, `group_by_rank(rank)`;
+  - `expand(predicate, limit=50, options=None, terms=None)` (#91).
 - **Views.**
   - `identity_audit()`;
   - `structure_inventory(regions=None, include_fragments=False, group_by=None,
@@ -116,7 +124,9 @@ shows how to use them.
     `deck_history(name)`, `deck_names()`;
   - `save_packet(packet, packet_name, note=None)`, `load_packet(name_or_ref)`,
     `packet_history(name)`, `packet_names()`;
-  - `import_card_table(path, table="cards")`.
+  - `import_card_table(path, table="cards")`;
+  - `as_of(ref, when)` and `revision_as_of(ref, when)`: the card, deck or packet as
+    stored by a date, or None; `changed_since(ref, when)` for a card or a packet (#91).
 - `sabueso.CurationStore(path)`: `save(card)`, `apply(card)`, `records()`,
   `retract(source_assertion_id, reason, curator)`, `entities_named(name)`.
 - `sabueso.migrate_card(data, store=None)` and `sabueso.refresh_card(card,

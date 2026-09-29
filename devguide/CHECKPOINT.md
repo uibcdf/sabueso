@@ -35,6 +35,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     `Deck.terms(use)`, `Deck.admissible(use)`, from the terms each source states in the
     registry (`terms_propagation@1`); and terms profiles to build under
     (`terms="commercial"` or `"non_commercial"`, `terms_profile@1`, #94);
+  - scientific operations (#91): `sabueso.expand`, `Card.expand` and `Deck.expand`
+    (relationships into decks, `relationship_expansion@1`); `Card.explain` and
+    `Deck.explain`; `KnowledgeStore.as_of`, `revision_as_of` and `changed_since`;
   - `knowledge_state@3`: an answer cut at a limit is `partial`, with `truncated_for`
     (#88);
   - a `not_found` record states the release it was checked against (#89).
@@ -58,7 +61,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 - `sabueso/tools/card/`: the protein and small-molecule card tools, and file storage.
 - `sabueso/enrichers/`: declared enrichers and their runner (#86).
 - `sabueso/tools/deck/`: deck file storage.
-- `sabueso/tools/resolve.py`: `sabueso.resolve`; `sabueso/tools/packet.py`: `sabueso.knowledge_packet`.
+- `sabueso/tools/resolve.py`: `sabueso.resolve`; `sabueso/tools/packet.py`: `sabueso.knowledge_packet`;
+  `sabueso/tools/navigate.py`: `sabueso.expand` (#91).
 - `sabueso/_private/`: argument digesters (ArgDigest, one per argument name) and
   diagnostics (SMonitor).
 - `sabueso/ops/`, `sabueso/utils/`: thin, kept for layout.

@@ -72,6 +72,44 @@ class Deck:
         return Deck(list(cards), meta=meta)
 
     @arg_digest()
+    def explain(self, card_id: str, skip_digestion: bool = False) -> Dict[str, Any]:
+        """Why a card is in this deck (#91): its membership basis (the rule, and the
+        statements that brought it, with their SourceAssertions when the tool that
+        built the deck recorded them), the deck's rule and origin, and the operations
+        that derived the deck. A card that was left out says why."""
+        basis = self.basis(card_id)
+        excluded = [
+            e for e in self.meta.get("excluded") or [] if e["candidate"] == card_id
+        ]
+        return {
+            "card_id": card_id,
+            "in_deck": any(c.id == card_id for c in self.cards),
+            "basis": basis,
+            "excluded": excluded or None,
+            "deck": {
+                k: self.meta.get(k)
+                for k in ("kind", "rule", "from", "predicates", "disease", "protein")
+                if self.meta.get(k) is not None
+            },
+            "operations": self.meta.get("operations") or [],
+        }
+
+    @arg_digest()
+    def expand(
+        self,
+        predicate: Any,
+        limit: int = 50,
+        options: Dict[str, Dict[str, Any]] | None = None,
+        terms: str | None = None,
+        skip_digestion: bool = False,
+    ) -> "Deck":
+        """Deck of the entities every card of this deck relates to by ``predicate``
+        (``relationship_expansion@1``, #91); see ``sabueso.expand``."""
+        from sabueso.tools.navigate import _expand
+
+        return _expand(self.cards, predicate, limit, options or {}, terms)
+
+    @arg_digest()
     def terms(self, use: str, skip_digestion: bool = False) -> Dict[str, Any]:
         """What the sources of the deck's knowledge state about ``use``, card by card
         (``terms_propagation@1``, #29). Not legal advice."""

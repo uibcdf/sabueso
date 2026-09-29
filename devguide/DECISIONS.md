@@ -1142,3 +1142,20 @@ uibcdf/sabueso#29.
   - For TcTIM with ChEMBL, BindingDB and PubChem BioAssay, all 527 measured molecules
     now remain for a commercial product, with attribution and share-alike. The first
     milestone reported 255 of them as `unknown`.
+- **Scientific operations: navigate, explain, as of** (same day, #91).
+  - `expand(card, predicate)` follows relationships into a deck of the related
+    entities' cards (`relationship_expansion@1`). A member is one entity: refs that
+    resolve to the same card are merged, and the basis keeps every statement and its
+    SourceAssertions. Merging relies on the stated identity that resolution already
+    uses, never on similarity.
+  - What cannot be followed is excluded with its reason (`no_card_type`,
+    `not_resolved`, `limit`). A related entity without a card type is not dropped.
+  - Each member is a whole card, so expansion is capped (50 by default). The entities
+    with the most statements are followed first, and the cut is reported as a
+    truncation.
+  - One name, `expand`: the `neighbors` of the roadmap would only have been a second
+    spelling. The reserved `Card.expand(kind)` now takes a predicate.
+  - `explain` answers from what is recorded: a deck member's basis and the deck's
+    operations, and a card's SourceAssertions. It does not re-run anything.
+  - `as_of` reads the store's revisions only. Sabueso does not reconstruct a source's
+    past: knowledge on a date is what was built and saved by then.

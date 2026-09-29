@@ -193,10 +193,10 @@ In order:
    redistributed. First milestone on main: `Card.terms`, `Deck.terms`,
    `Deck.admissible`. Next: depositor terms per PubChem assay, packets, and the shared
    vocabulary with MOLI.
-3. **Scientific operations (#91).**
-   - Navigate relationships into decks (`neighbors`, `expand`).
-   - Explain a derived result back to its SourceAssertions.
-   - Knowledge as of a date in the store (`as_of`).
+3. **Scientific operations (#91).** On main: `expand` (relationships into decks),
+   `explain` (a deck member and a card's SourceAssertions), and the store's `as_of` and
+   `changed_since`. Next, as use asks: explaining a view's derived items (a group, a
+   state) through the same path.
 4. **Literature beyond manual curation (#92).**
    - First, how each statement entered: database, curation, rule extraction, model
      extraction, validation.

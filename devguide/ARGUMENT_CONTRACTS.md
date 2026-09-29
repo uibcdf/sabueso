@@ -29,18 +29,21 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
 2026-09-26 they are:
 
 - **Tools:** `resolve`, `resolve_protein_card`, `resolve_molecule_card`, `ligand_deck`,
-  `ambiguity_deck`, `knowledge_packet`, `to_dataframe`, and every source-access function (`get_*`,
-  `uniprot.search`).
+  `ambiguity_deck`, `knowledge_packet`, `to_dataframe`, `expand`, and every
+  source-access function (`get_*`, `uniprot.search`).
 - **Card views and operations:**
   - `bioactivities`, `structures`, `ligands`, `compare_ligands`, `compare_knowledge`;
   - `claims`, `table`, `extract`;
-  - the curation methods (`add_literature_*`).
+  - the curation methods (`add_literature_*`);
+  - `expand` (a predicate, or several, from the relationship vocabulary; `options`
+    keyed by entity type) and `explain` (#91).
   `Card.compare` and `Deck.compare` reach their field paths through `Card.extract`.
 - **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,
-  `group_by_rank`.
+  `group_by_rank`, `expand`, `explain`.
 - **KnowledgeStore:** `save`, `load`, `history`, `source_assertion`, `relationship`,
   `relationships`, `save_deck`, `load_deck`, `deck_history`, `save_packet`,
-  `load_packet`, `packet_history`, `import_card_table`.
+  `load_packet`, `packet_history`, `import_card_table`, `as_of`, `revision_as_of`,
+  `changed_since` (`when`: a date, a datetime or an ISO string, #91).
 - **KnowledgeQuery** (#71): its constructor digests `subject`, `comparator`, `aspects`
   and `constraints`. `knowledge_packet` takes `**clients` and admits the
   `source_clients` domain, the resolver and the `*_client` options of
@@ -64,8 +67,9 @@ value fails loudly instead of answering plausibly:
 
 A method whose wrong value would answer plausibly (a typo that returns an empty result)
 must be decorated. `claims(topic)` and `group_by_rank(rank)` were found missing on
-2026-09-26 and are now decorated. `Card.expand` is not implemented and raises
-`NotImplementedError`; it used to return an empty Deck, which read as "nothing related".
+2026-09-26 and are now decorated. `Card.expand` used to return an empty Deck for any
+kind, which read as "nothing related"; it now follows relationship predicates only
+(#91), and refuses anything else.
 
 Rules for all of them:
 

@@ -35,6 +35,49 @@ print(deck.meta["membership"], deck.meta["excluded"])
   into a deck, and `sabueso.ligand_deck(card)` builds the deck of a protein's ligands
   ({doc}`bioactivities`).
 
+## Following relationships into a deck
+
+`sabueso.expand(card, predicate)` follows a card's relationships and returns a deck of
+the related entities' cards (rule `relationship_expansion@1`):
+
+```python
+diseases = sabueso.expand(card, "associated_with")
+molecules = card.expand("has_bioactivity", limit=20)
+both = deck.expand(["associated_with", "has_bioactivity"])  # from every card
+```
+
+- Each member's basis names the card it came from, and every relationship and
+  SourceAssertion that brought it: source, record, version and retrieval time.
+- Refs that name the same entity become one member, with all their statements. A DOID
+  term from DISEASES, a MONDO term from Open Targets and an Orphanet code from Orphadata
+  are one disease card when MONDO states it; a ChEMBL id and an InChIKey are one
+  molecule when the molecule's sources state it.
+- What cannot be followed is excluded, with the reason:
+  - `no_card_type`: Sabueso has no card for it, e.g. a Reactome pathway;
+  - `not_resolved: <status>`: the resolution did not give a card;
+  - `limit`: past the limit (50 by default). Each member is a whole card, so the limit
+    keeps expansion affordable. The entities with the most statements are followed
+    first, and a cut is reported.
+- `options` passes resolve options per entity type:
+  `{"protein": {...}, "small_molecule": {...}, "disease": {...}}`. `terms` builds every
+  member under a terms profile ({doc}`terms`).
+- A predicate outside the relationship vocabulary is refused.
+
+## Explaining why
+
+`deck.explain(card_id)` answers why a card is in a deck: its membership basis, the rule
+and origin of the deck, and the operations that derived it. For a candidate that was
+left out, it gives the exclusion and its reason. A card's SourceAssertions are traced
+back with `card.explain(source_assertion_ids)`:
+
+```python
+why = diseases.explain("sabueso:disease:mondo:MONDO:0014221")
+ids = [a["id"] for s in why["basis"]["statements"] for a in s["source_assertions"]]
+card.explain(ids)  # field, subject, source, record, version, retrieval, value
+```
+
+An id the card does not hold is reported as `found: False`, never dropped.
+
 ## Deriving decks
 
 Each derived deck lists the operations that produced it in `meta["operations"]`. An

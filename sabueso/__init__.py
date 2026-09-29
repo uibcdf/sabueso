@@ -49,6 +49,7 @@ from sabueso.tools.db.uniprot import (
     create_protein_card_online,
 )
 from sabueso.tools.deck.storage import save_deck_jsonl, save_deck_sqlite
+from sabueso.tools.navigate import expand
 from sabueso.tools.packet import knowledge_packet
 from sabueso.tools.resolve import resolve
 
@@ -83,6 +84,7 @@ __all__ = [
     "resolve_disease_card",
     "disease_targets",
     "disease_drugs",
+    "expand",
     "save_card_json",
     "save_card_sqlite",
     "save_deck_jsonl",

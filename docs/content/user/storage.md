@@ -62,6 +62,25 @@ store.relationships(object_ref="chembl:CHEMBL1288605", predicate="has_bioactivit
 - To bring in cards saved earlier with `card.to_sqlite`, use
   `store.import_card_table(path)`. Each row becomes a revision.
 
+### What the store knew on a date
+
+```python
+from datetime import date
+
+store.as_of(card.id, date(2026, 9, 1))  # the card as stored by the end of that day
+store.as_of("ligands", date(2026, 9, 1))  # a deck or a packet, the same way
+store.changed_since(card.id, date(2026, 9, 1))
+# {'changed': True, 'then': '…@sha256:…', 'latest': '…@sha256:…', …}
+```
+
+- `as_of(ref, when)` gives the latest revision stored by `when`, loaded, or None when
+  nothing had been stored yet. `when` is a date (up to the end of that day, UTC), a
+  datetime or an ISO string. `revision_as_of(ref, when)` gives the revision entry.
+- `changed_since(ref, when)` compares a card's or a packet's knowledge then and now,
+  without retrieval times. `changed` is None when nothing had been stored by then.
+- The store answers only from what it saved, to the second. It never reconstructs what
+  a source said on a past date: for that, save the cards when you use them.
+
 The reference forms are provisional until they are agreed across MOLI (uibcdf/moli#3).
 
 ## Old Cards

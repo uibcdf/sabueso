@@ -310,9 +310,9 @@ def test_digested_storage_round_trips(protein, tmp_path):
     assert load_deck_sqlite(db, table="proteins").ids() == [protein.id]
 
 
-def test_expand_is_not_implemented_rather_than_empty(protein):
-    # It returned an empty Deck, which read as "nothing related".
-    with pytest.raises(NotImplementedError):
+def test_expand_follows_only_relationship_predicates(protein):
+    # It once returned an empty Deck for any kind, which read as "nothing related".
+    with pytest.raises(ArgumentError):
         protein.expand("structures")
 
 

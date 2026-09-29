@@ -9,6 +9,14 @@ from sabueso.core.errors import ArgumentError
 #: Knowledge store queries, where a relationship filter may be left out (None) and any
 #: predicate Sabueso states is accepted, not only the curatable ones.
 STORE_QUERIES = frozenset({"sabueso.core.knowledge_store.relationships"})
+#: Callers that follow relationships (#91): one predicate or several.
+EXPANSIONS = frozenset(
+    {
+        "sabueso.tools.navigate.expand",
+        "sabueso.core.card.expand",
+        "sabueso.core.deck.expand",
+    }
+)
 
 
 def refuse(argument: str, value: Any, caller: str | None, reason: str) -> ArgumentError:

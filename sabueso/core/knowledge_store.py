@@ -389,6 +389,98 @@ class KnowledgeStore:
             for revision, sid, stored_at, note, schema_version in rows
         ]
 
+    # --- knowledge as of a date (#91) --------------------------------------------------
+
+    def _revisions(self, ref: str) -> Tuple[str, List[Dict[str, Any]]]:
+        """``(kind, revisions)`` of a card id, a deck or a packet (by name or prefix)."""
+        from .packets import PACKET_PREFIX
+
+        if ref.startswith(PACKET_PREFIX) or ref in self.packet_names():
+            return "packet", self.packet_history(ref)
+        if ref.startswith(DECK_PREFIX) or ref in self.deck_names():
+            return "deck", self.deck_history(ref)
+        if ref in self.card_ids():
+            return "card", self.history(ref)
+        raise StorageError(f"{ref} is not a card, deck or packet of this store.")
+
+    @staticmethod
+    def _cutoff(when: Any) -> str:
+        """The latest ``stored_at`` a revision may have to count as known on ``when``:
+        the end of that day for a date, the instant itself for a datetime (UTC)."""
+        from datetime import date as _date
+
+        if isinstance(when, datetime):
+            moment = when if when.tzinfo else when.replace(tzinfo=timezone.utc)
+            return moment.astimezone(timezone.utc).isoformat(timespec="seconds")
+        if isinstance(when, _date):
+            return f"{when.isoformat()}T23:59:59+00:00"
+        raise StorageError(f"{when!r} is not a date or a datetime.")
+
+    @arg_digest()
+    def revision_as_of(
+        self, ref: str, when: Any, skip_digestion: bool = False
+    ) -> Dict[str, Any] | None:
+        """The revision of a card, deck or packet that was the latest one stored on
+        ``when`` (a date: by the end of that day, UTC), or None when nothing had been
+        stored by then."""
+        _, revisions = self._revisions(ref)
+        cutoff = self._cutoff(when)
+        known = [r for r in revisions if r["stored_at"] <= cutoff]
+        return known[-1] if known else None
+
+    @arg_digest()
+    def as_of(self, ref: str, when: Any, skip_digestion: bool = False) -> Any:
+        """What this store knew about a card, deck or packet on ``when``: its latest
+        revision stored by then, loaded, or None when nothing had been stored yet.
+
+        Sabueso answers only from what it stored. It never reconstructs a source's
+        past state: a revision is the knowledge as it was built and saved.
+        """
+        kind, _ = self._revisions(ref)
+        revision = self.revision_as_of(ref, when)
+        if revision is None:
+            return None
+        if kind == "packet":
+            return self.load_packet(revision["ref"])
+        if kind == "deck":
+            return self.load_deck(revision["ref"])
+        return self.load(revision["ref"])
+
+    @arg_digest()
+    def changed_since(
+        self, ref: str, when: Any, skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """Whether the knowledge of a card or a packet changed after ``when``: its
+        revision then and its latest one, compared without retrieval times
+        (content-equivalence ids). ``changed`` is None when nothing was stored by then.
+        """
+        from .packets import card_content_id
+
+        kind, revisions = self._revisions(ref)
+        then = self.revision_as_of(ref, when)
+        latest = revisions[-1] if revisions else None
+        out: Dict[str, Any] = {
+            "ref": ref,
+            "when": str(when),
+            "then": then["ref"] if then else None,
+            "latest": latest["ref"] if latest else None,
+        }
+        if then is None:
+            return {**out, "changed": None, "reason": "nothing_stored_by_then"}
+        if kind == "deck":
+            raise StorageError(
+                "changed_since() compares cards and packets; for a deck, compare "
+                "its cards."
+            )
+        if kind == "packet":
+            ids = [then["content_id"], latest["content_id"]]
+        else:
+            ids = [
+                card_content_id(self.load(then["ref"])),
+                card_content_id(self.load(latest["ref"])),
+            ]
+        return {**out, "changed": ids[0] != ids[1], "content_ids": ids}
+
     def card_ids(self) -> List[str]:
         """Every card in the store."""
         with self._session() as conn:

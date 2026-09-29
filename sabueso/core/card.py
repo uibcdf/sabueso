@@ -438,6 +438,40 @@ class Card:
         return clinical_view(self)
 
     @arg_digest()
+    def explain(
+        self, source_assertion_ids: Any, skip_digestion: bool = False
+    ) -> List[Dict[str, Any]]:
+        """Where each SourceAssertion comes from (#91): the source, its record, release
+        and retrieval, what it asserts and about which subject, and how it entered
+        (curation metadata, when curated). The end of every "why is this here?"."""
+        out = []
+        for sa_id in source_assertion_ids:
+            sa = self.source_assertion_store.get(sa_id)
+            if sa is None:
+                out.append({"id": sa_id, "found": False})
+                continue
+            source = sa.get("source") or {}
+            out.append(
+                {
+                    "id": sa_id,
+                    "found": True,
+                    "field_path": sa.get("field_path"),
+                    "subject_ref": sa.get("subject_ref"),
+                    "source": source.get("name"),
+                    "record": source.get("record_id"),
+                    "version": source.get("version"),
+                    "retrieved_at": sa.get("retrieved_at"),
+                    "asserted_value": sa.get("asserted_value"),
+                    **(
+                        {"source_metadata": sa["source_metadata"]}
+                        if sa.get("source_metadata")
+                        else {}
+                    ),
+                }
+            )
+        return out
+
+    @arg_digest()
     def terms(self, use: str, skip_digestion: bool = False) -> Dict[str, Any]:
         """What the sources of this card's knowledge state about ``use``: verdicts,
         obligations, attribution, and what remains without restricted or unknown
@@ -673,7 +707,17 @@ class Card:
         theirs = other.extract(list(mine))
         return {fp: {"self": mine[fp], "other": theirs[fp]} for fp in mine}
 
-    def expand(self, kind: str) -> Any:
-        """Not implemented. It used to return an empty Deck, which read as "nothing
-        related" rather than "not computed"."""
-        raise NotImplementedError("Card.expand is not implemented yet.")
+    @arg_digest()
+    def expand(
+        self,
+        predicate: Any,
+        limit: int = 50,
+        options: Dict[str, Dict[str, Any]] | None = None,
+        terms: str | None = None,
+        skip_digestion: bool = False,
+    ) -> Any:
+        """Deck of the entities this card relates to by ``predicate``
+        (``relationship_expansion@1``, #91); see ``sabueso.expand``."""
+        from sabueso.tools.navigate import _expand
+
+        return _expand([self], predicate, limit, options or {}, terms)
