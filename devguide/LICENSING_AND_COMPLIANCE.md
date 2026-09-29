@@ -30,6 +30,7 @@ themselves are not Sabueso's work and keep their source's licence.
 | NCBI Taxonomy | US public domain (NLM policy) | NCBI / NLM | Ranks and ancestors of organisms (#67) |
 | NCBI Gene | US public domain (NLM policy) | NCBI / NLM | The UniProt entries of a gene's products, read to relate entries across gene databases (#69) |
 | ClinicalTrials.gov | US government work, not under copyright in the US | "Source: National Library of Medicine" | Studies fetched only by the NCT ids ChEMBL cites (#81) |
+| DISEASES (Jensen lab) | CC BY 4.0 | DISEASES, citing the file dates | Associations per channel, joined through UniProt's Ensembl cross-references (#82) |
 | PHI-base | CC BY 4.0 | PHI-base, citing the release (e.g. 5.6, Zenodo) | Releases are downloaded and cached locally, split per gene (#83, `CACHE_POLICY.md`) |
 
 ## Known Sensitive Sources

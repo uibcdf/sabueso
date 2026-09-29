@@ -35,6 +35,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     told;
   - the clinical layer of molecules (#81): ChEMBL indications (`investigated_for`)
     and the ClinicalTrials.gov trials they cite (`tested_in`), `Card.clinical()`;
+  - DISEASES gene–disease associations for human proteins (#82), per channel;
   - a prototype of knowledge packets (#71): `KnowledgeQuery`, `knowledge_packet`,
     `compose_packet`, and stored, pinned packets with a content-equivalence id. Its
     shared contract waits on uibcdf/moli#22.
@@ -75,7 +76,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 806 tests passed, 15 online tests deselected (2026-09-27). Run with
+- Offline suite: 814 tests passed, 15 online tests deselected (2026-09-27). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.

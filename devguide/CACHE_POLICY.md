@@ -26,7 +26,10 @@
     newer release goes to its own directory, and the old one can be deleted freely.
   - It is a convenience, never a source of truth. What a card took from it is recorded
     in its SourceAssertions, with the release.
-  - Only sources whose licence allows keeping copies are cached (PHI-base: CC BY 4.0).
+  - Only sources whose licence allows keeping copies are cached (PHI-base and DISEASES:
+    CC BY 4.0).
+  - DISEASES updates its files in place, so its cache is keyed by each file's
+    publication date (`diseases/<channel>_<date>.json`). A newer file is a new entry.
 
 ## How this differs from the first draft
 

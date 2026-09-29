@@ -39,6 +39,7 @@ structures
 sites_and_interfaces
 bioactivities
 clinical
+disease_association
 literature_and_curation
 decks
 packets

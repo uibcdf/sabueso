@@ -841,3 +841,21 @@ uibcdf/sabueso#81.
 - **Migration changes may name the entity types they apply to** (`entity_types`), so a
   protein is not told it lacks indications, nor a molecule pathogen phenotypes.
 
+## DISEASES, gene–disease associations (2026-09-28)
+uibcdf/sabueso#82, the first of the human disease-association sources.
+- **Channels stay apart.** One `associated_with` per disease, channel and Ensembl
+  protein. A curated association and a text-mined co-mention of one disease are two
+  statements.
+- **Text mining only when asked.** It links names: the human TPI1 is co-mentioned with
+  giardiasis because the parasite's enzyme has the same name. The default channels are
+  curated knowledge and experiments.
+- **Joined through a stated link.** Rows name Ensembl proteins, and a row reaches a card
+  only through an Ensembl protein the UniProt entry cross-references, never by gene
+  name. The isoform UniProt maps it to is kept.
+- **Scores as stated.** Confidence, source score and z-score are DISEASES's, never
+  recomputed or ranked.
+- **Not applicable is not "not stated".** For a non-human protein the enrichment is
+  `not_applicable`, and the knowledge state says `not_queried` with the reason.
+- **Versioned by date.** The files are updated in place, so the version is each file's
+  publication date, and the cache is keyed by it.
+

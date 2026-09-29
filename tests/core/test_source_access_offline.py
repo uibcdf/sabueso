@@ -14,6 +14,7 @@ from sabueso.tools.db import (
     bindingdb,
     chembl,
     clinicaltrials,
+    diseases,
     interpro,
     ncbi_gene,
     ncbi_taxonomy,
@@ -50,6 +51,9 @@ CALLS = {
     "clinicaltrials.get_studies": lambda: clinicaltrials.get_studies(
         ["NCT00123916"],
         client=clinicaltrials.FixtureClinicalTrialsClient("temp_data"),
+    ),
+    "diseases.get_associations": lambda: diseases.get_associations(
+        ["ENSP00000229270"], client=diseases.FixtureDISEASESClient("temp_data")
     ),
     "ncbi_taxonomy.get_taxon": lambda: ncbi_taxonomy.get_taxon(
         "5693", client=ncbi_taxonomy.FixtureNCBITaxonomyClient("temp_data")

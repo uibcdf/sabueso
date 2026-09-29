@@ -208,6 +208,10 @@
 - **Terms not stated** (#84). VEuPathDB and TDR Targets state no reuse terms that were
   found. Until they answer, their data is read live only, never committed as fixtures or
   redistributed.
+- **Sources that refuse unnamed clients** (#82). DISEASES's download server answers 403
+  to Python's default user agent, so its client names Sabueso and its version. Other
+  sources may start doing the same. If they do, every client should share one user
+  agent.
 
 ## Open Questions
 - What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?

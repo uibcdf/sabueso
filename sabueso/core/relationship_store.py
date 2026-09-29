@@ -36,6 +36,7 @@ PREDICATES = frozenset(
         "described_in",  # protein -> publication (pubmed:, doi:), e.g. UniProt references
         "investigated_for",  # molecule -> disease term (ChEMBL drug indication), #81
         "tested_in",  # molecule -> clinical trial (nct:), cited by an indication, #81
+        "associated_with",  # protein -> disease term (DISEASES, per channel), #82
     }
 )
 
@@ -51,6 +52,9 @@ IDENTITY_QUALIFIERS: Dict[str, tuple] = {
     # One relationship per curated statement: two papers can state engagements of the
     # same molecule (#61).
     "engages": ("statement_id",),
+    # One per channel and Ensembl protein: a curated association and a text-mined
+    # co-mention of one disease are two statements (#82).
+    "associated_with": ("channel", "via_protein"),
 }
 
 

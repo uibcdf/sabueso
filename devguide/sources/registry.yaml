@@ -380,12 +380,14 @@ resources:
     name: "DISEASES (Jensen lab)"
     url: https://diseases.jensenlab.org/
     category: target_validation
-    status: evaluating
+    status: in_use
     description: "Human gene–disease associations in separate channels: curated knowledge, experiments and text mining, each with its own score."
     since: 2026-09-27
     proposed_by: "Source coverage plan (#83): alternatives to Open Targets"
+    reason: "Gene-disease associations for human proteins, one per channel, so curated, experimental and text-mined statements are never merged. Joined through the Ensembl proteins UniProt cross-references, never by gene name."
+    access: "Filtered channel files (TSV) from download.jensenlab.org, versioned by publication date, kept in memory or in a cache directory, when resolve(..., diseases={})"
     licence: "CC BY 4.0"
-    access: "TSV downloads per channel"
+    module: [sabueso.tools.db.diseases, sabueso.mappings.diseases]
     links: ["#82", "#83"]
   - id: orphadata
     name: "Orphadata (Orphanet)"

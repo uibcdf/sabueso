@@ -75,6 +75,8 @@ def resolve_protein_card(
     ncbi_gene_client: Any | None = None,
     phi_base: bool = False,
     phi_base_client: Any | None = None,
+    diseases: Dict[str, Any] | None = None,
+    diseases_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -111,6 +113,13 @@ def resolve_protein_card(
     ``phi_base`` adds the phenotypes PHI-base curates for mutants of the gene, alone or
     on a host (``annotations.pathogen_phenotypes``). The first use downloads a PHI-base
     release into the local cache (``sabueso.tools.db.phi_base``).
+
+    ``diseases`` (e.g. ``{}``, or ``{"channels": ["knowledge", "experiments",
+    "textmining"]}``) adds DISEASES's gene–disease associations as ``associated_with``
+    relationships, one per disease and channel, through the Ensembl proteins the entry
+    cross-references. The default channels are curated knowledge and experiments; text
+    mining links names, not molecules, and is added only when asked for. DISEASES covers
+    human genes only.
     """
     if ncbi_gene:
         import copy
@@ -611,6 +620,65 @@ def resolve_protein_card(
                     "count": len(mapped["source_assertions"]),
                 }
             )
+
+    if diseases is not None:
+        from sabueso.mappings.diseases import map_associations
+        from sabueso.tools.db.diseases import OnlineDISEASESClient
+
+        channels = tuple(diseases.get("channels") or ("knowledge", "experiments"))
+        record = {"source": "DISEASES", "identifier": anchor, "channels": channels}
+        isoform_of = {
+            prop["value"].split(".")[0]: xref.get("isoformId")
+            for xref in entry.get("uniProtKBCrossReferences") or []
+            if xref.get("database") == "Ensembl"
+            for prop in xref.get("properties") or []
+            if prop.get("key") == "ProteinId" and prop.get("value")
+        }
+        taxon = (entry.get("organism") or {}).get("taxonId")
+        if taxon != 9606:
+            enrichments.append(
+                {
+                    **record,
+                    "status": "not_applicable",
+                    "detail": "DISEASES covers Homo sapiens genes only",
+                }
+            )
+        elif not isoform_of:
+            enrichments.append(
+                {
+                    **record,
+                    "status": "not_found",
+                    "detail": "the entry cross-references no Ensembl protein",
+                }
+            )
+        else:
+            client = diseases_client or OnlineDISEASESClient()
+            try:
+                response = client.associations(sorted(isoform_of), channels)
+            except ConnectorError as exc:
+                enrichments.append({**record, "status": "error", "detail": str(exc)})
+            else:
+                mapped = map_associations(
+                    response["record"],
+                    anchor,
+                    isoform_of,
+                    response.get("retrieved_at", ""),
+                    response.get("version") or {},
+                )
+                mappings.append({"fields": {}, "field_source_assertions": {}, **mapped})
+                enrichments.append(
+                    {
+                        **record,
+                        "status": "added" if mapped["relationships"] else "not_found",
+                        "version": "; ".join(
+                            f"{c} {v}"
+                            for c, v in sorted((response.get("version") or {}).items())
+                            if v
+                        )
+                        or None,
+                        "count": len(mapped["relationships"]),
+                    }
+                )
 
     mappings.append(
         {

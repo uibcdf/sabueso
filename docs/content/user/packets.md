@@ -27,8 +27,8 @@ A `KnowledgeQuery` is structured, not free text:
 
 - `subject`: a UniProt accession; `comparator`: another one, optional;
 - `aspects`: among `identity`, `structures`, `oligomer`, `ligand_sites`,
-  `bioactivities`, `sequence_features`, `literature` and `biological_context` (all by
-  default);
+  `bioactivities`, `sequence_features`, `literature`, `disease_association` and
+  `biological_context` (all by default);
 - `constraints`: for now `bioactivity_sources`, among ChEMBL (the default), BindingDB
   and PubChem BioAssay.
 

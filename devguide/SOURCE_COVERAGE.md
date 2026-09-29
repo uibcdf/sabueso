@@ -23,7 +23,7 @@ status. This document holds the reasoning across sources.
 | Bioactivity | molecule–protein | all | ChEMBL, BindingDB, PubChem BioAssay | PDBbind (queued) |
 | Chemistry and ADMET | molecule | — | PubChem, PDB CCD, UniChem | ChEBI, Tox21/ToxCast (queued) |
 | Clinical | molecule | human | ChEMBL max phase and indications, ClinicalTrials.gov (#81) | adverse events (openFDA, later) |
-| Disease association | protein, disease | human | UniProt DISEASE comments | disease → targets (#82, this wave) |
+| Disease association | protein, disease | human | UniProt DISEASE comments, DISEASES (#82) | disease → targets, Open Targets, Orphadata (#82) |
 | Variants | protein | human first | UniProt variants and mutagenesis | ClinVar, gnomAD (this wave) |
 | Pathways | protein | all | UniProt pathway (text), Rhea | Reactome (this wave) |
 | **Pathogen and organism context** | protein | pathogens | curation (#60), PHI-base | stage expression and screens (VEuPathDB), target prioritisation (TDR Targets): terms pending (#84) |
@@ -54,7 +54,7 @@ Each source is checked live, and the date is recorded:
 | Source | Areas | Organisms | Licence (checked 2026-09-27) | Identity basis | Notes |
 |---|---|---|---|---|---|
 | Open Targets | disease association, tractability | human | CC0 1.0 | Ensembl gene, listing its UniProt products | Scores are its own; associations are per gene (#82) |
-| DISEASES (Jensen lab) | disease association | human | CC BY 4.0 | gene identifiers; disease ids (to confirm) | Channels kept apart: curated knowledge, experiments, text mining. This fits SourceAssertions better than one integrated score |
+| DISEASES (Jensen lab) | disease association | human | CC BY 4.0 | Ensembl proteins (joined through UniProt's cross-references); DOID | **In use** since 2026-09-28. Channels kept apart: curated knowledge, experiments, text mining (name-based, only when asked) |
 | Orphadata | rare disease genes | human | CC BY 4.0, citing the data version | Orphanet codes, gene ids (to confirm) | Curated, typed associations |
 | Pharos / TCRD | target development level | human | none of its own; each primary source's terms apply | UniProt, HGNC, Ensembl, NCBI Gene | The development level is TCRD's classification; licence tracing per field needed |
 | Reactome | pathways | human, with inferred species | CC0 1.0 (data) | UniProt | Replaces the need for KEGG |

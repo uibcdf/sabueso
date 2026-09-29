@@ -114,7 +114,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | 6. Tissue-specific isoforms | partial (tissue specificity; UniProt isoforms and alternative sequences, #80; AlphaFold isoform models; isoform sequences not fetched) |
 | 7. Visualization (MolSysViewer) | partial (interfaces, mutations, sites, secondary structure from UniProt and per chain from RCSB, #80; no contract) |
 | 8. Clinical trials of ligands | pending |
-| 9. Disease associations; targets of a disease | partial (protein → disease; disease → targets needs a source, e.g. Open Targets, queued) |
+| 9. Disease associations; targets of a disease | partial (protein → disease from UniProt and DISEASES, #82; disease → targets pending) |
 | 10. Knowledge baseline for a target and a comparator (pilot route) | done |
 | 11. Curating what the literature states (pilot route) | done (human curation) |
 | 12. Citing knowledge from a project (pilot route) | done, provisional reference form (#53, moli#3) |
@@ -183,8 +183,9 @@ Foundational route, in the order proposed now:
 3. **Clinical layer (#81).** Step 1 on main: ChEMBL indications, and trials only by the
    NCT ids ChEMBL states (`Card.clinical()`). DrugBank stays deferred for clinical
    content (CC BY-NC). Next: adverse events (openFDA), after a terms review.
-4. **Disease association (#82).** Evaluated: Open Targets, DISEASES and Orphadata for
-   humans. Pathogen targets need other sources (`SOURCE_COVERAGE.md`).
+4. **Disease association (#82).** DISEASES is on main: per channel, joined through
+   UniProt's Ensembl cross-references. Next: Open Targets and Orphadata, and disease →
+   targets. Pathogen targets need other sources (`SOURCE_COVERAGE.md`).
 5. **Peptide cards.** Scope them before any source (use case 5, CPPsite).
 
 Each is proposed as an issue before work starts, and the order is revisited at each

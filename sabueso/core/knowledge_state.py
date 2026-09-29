@@ -7,8 +7,9 @@
 - ``not_stated``: the source was consulted and states nothing. For example UniProt,
   at its release, has no subcellular location for the entry, or ChEMBL has no
   target;
-- ``not_queried``: the enrichment that would answer it was not requested, or, for the
-  biological context only curation states (#60), nothing has been curated;
+- ``not_queried``: the enrichment that would answer it was not requested, the source
+  does not cover the entity (``basis.detail`` says why, e.g. a human-only source), or,
+  for the biological context only curation states (#60), nothing has been curated;
 - ``unavailable``: the source failed, so nothing can be said;
 - ``partial``: the source stated some of it, but failed, or answered incompletely, for
   some requests (e.g. two structures of many). ``basis`` names them (``unavailable_for``,
@@ -54,6 +55,7 @@ PROTEIN_ENRICHMENTS = (
     ),
     ("annotations.taxonomy", "NCBI Taxonomy", {"source": "NCBI Taxonomy"}),
     ("annotations.pathogen_phenotypes", "PHI-base", {"source": "PHI-base"}),
+    ("relationships.associated_with", "DISEASES", {"source": "DISEASES"}),
 )
 
 
@@ -71,6 +73,11 @@ def _row(area, source, state, release=None, count=None, **basis) -> Dict[str, An
 def _enrichment_row(area: str, source: str, records: List[Dict[str, Any]]):
     if not records:
         return _row(area, source, "not_queried")
+    if all(r.get("status") == "not_applicable" for r in records):
+        # The source does not cover this entity (e.g. a human-only source and a parasite
+        # protein): nothing was asked, so nothing is "not stated".
+        details = sorted({r["detail"] for r in records if r.get("detail")})
+        return _row(area, source, "not_queried", detail="; ".join(details) or None)
     statuses = [r.get("status") for r in records]
     count = sum(
         r.get("count") or 0 for r in records if r.get("status") in ("added", "partial")

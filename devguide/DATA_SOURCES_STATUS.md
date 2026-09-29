@@ -83,6 +83,20 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: identifiers, preferred name, molecule type, formula, physchem (ALogP, HBD/HBA, TPSA, rotatable bonds, aromatic rings, molecular weight as `full_mwt`), `max_phase`, InChI/InChIKey, isomeric SMILES
 - **Notes**: numbers ChEMBL serialises as strings are normalized; logP and rotatable bonds carry their method (`ALogP`, `chembl:rtb`) and are compared only within it (uibcdf/sabueso#10). Stable online tests.
 
+### DISEASES (Jensen lab) — gene–disease associations
+- **Status**: implemented as an enricher of `resolve_protein_card(..., diseases={})` (uibcdf/sabueso#82)
+- **Access**:
+  - the filtered channel files from download.jensenlab.org (`OnlineDISEASESClient`), versioned by their publication date and kept in memory, or in a cache directory when one is given;
+  - saved rows in `temp_data/diseases/`;
+  - `tools.db.diseases.get_associations`.
+- **Quality**: green for the listed coverage. Verified live on HsTIM (ENSP00000229270): 2 curated associations (TIM deficiency, congenital hemolytic anemia) and 42 text-mined ones.
+- **Coverage**: `associated_with` relationships, one per disease, channel and Ensembl protein, with DISEASES's scores as stated.
+- **Notes**:
+  - Joined only through the Ensembl proteins UniProt cross-references.
+  - Text mining links names, not molecules, and is added only when asked for.
+  - Human genes only: a non-human protein is `not_queried`, with the reason.
+  - Licence: CC BY 4.0.
+
 ### ChEMBL indications and ClinicalTrials.gov — the clinical layer
 - **Status**: implemented as enrichers of `resolve_molecule_card(..., indications=True)` and `trials={}` (uibcdf/sabueso#81)
 - **Access**:

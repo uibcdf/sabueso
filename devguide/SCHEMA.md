@@ -285,6 +285,17 @@ A Relationship is first-class, traceable knowledge:
 
       A trial is never matched to a molecule by its intervention text.
     - `Card.clinical()` lists both, and the cited trials not fetched.
+  - disease association (added in #82, schema 0.3.6):
+    - `associated_with` (protein → disease term, `doid:DOID:<id>`), one per disease,
+      DISEASES channel and Ensembl protein. The protein must be one the UniProt entry
+      cross-references: `via_protein`, `uniprot_isoform`, basis
+      `uniprot_ensembl_xref`. Qualifiers:
+      - `channel` (`knowledge`, `experiments`, `textmining`) and `disease_name`;
+      - DISEASES's scores as stated: `confidence`; `source_database` and
+        `statement_type` (knowledge), `source_score` (experiments), `z_score` (text
+        mining).
+
+      Text mining links names, not molecules, and is added only when asked for.
     - Which statements each publication supports is read by `Card.literature()` from the
       ECO evidence of every SourceAssertion, and only there.
   - curated literature assertions (added in #41):

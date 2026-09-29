@@ -129,6 +129,11 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "filled_by": "trials",
             "entity_types": ("small_molecule",),
         },
+        {
+            "path": "relationships.associated_with",
+            "filled_by": "diseases",
+            "entity_types": ("protein",),
+        },
     ],
 }
 
@@ -208,6 +213,7 @@ def _enrichment_options(data: Dict[str, Any]) -> set:
             ("PHI-base", None): {"phi_base"},
             ("ChEMBL", "indications"): {"indications"},
             ("ClinicalTrials.gov", None): {"trials"},
+            ("DISEASES", None): {"diseases"},
         }.get((source, kind), set())
     return options
 
