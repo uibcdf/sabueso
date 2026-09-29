@@ -81,6 +81,8 @@ def resolve_protein_card(
     open_targets_client: Any | None = None,
     orphadata: bool = False,
     orphadata_client: Any | None = None,
+    reactome: bool = False,
+    reactome_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -133,6 +135,10 @@ def resolve_protein_card(
     ``orphadata`` adds the rare disorders Orphanet associates with the gene, through the
     UniProt accession Orphanet states for it, with Orphanet's association type and
     status. Human genes only.
+
+    ``reactome`` adds the Reactome pathways and reactions the entry takes part in
+    (``participates_in``), with each pathway's ancestors and whether Reactome inferred
+    the event from orthology.
     """
     if ncbi_gene:
         import copy
@@ -814,6 +820,34 @@ def resolve_protein_card(
                         "count": len(mapped["relationships"]),
                     }
                 )
+
+    if reactome:
+        from sabueso.mappings.reactome import map_pathways
+        from sabueso.tools.db.reactome import OnlineReactomeClient
+
+        record = {"source": "Reactome", "identifier": anchor}
+        try:
+            response = (reactome_client or OnlineReactomeClient()).pathways(anchor)
+        except RecordNotFoundError as exc:
+            enrichments.append({**record, "status": "not_found", "detail": str(exc)})
+        except ConnectorError as exc:
+            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        else:
+            mapped = map_pathways(
+                response["record"],
+                anchor,
+                response.get("retrieved_at", ""),
+                response.get("version"),
+            )
+            mappings.append({"fields": {}, "field_source_assertions": {}, **mapped})
+            enrichments.append(
+                {
+                    **record,
+                    "status": "added",
+                    "version": response.get("version"),
+                    "count": len(mapped["relationships"]),
+                }
+            )
 
     mappings.append(
         {

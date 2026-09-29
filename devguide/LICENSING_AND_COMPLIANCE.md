@@ -32,6 +32,7 @@ themselves are not Sabueso's work and keep their source's licence.
 | ClinicalTrials.gov | US government work, not under copyright in the US | "Source: National Library of Medicine" | Studies fetched only by the NCT ids ChEMBL cites (#81) |
 | Open Targets Platform | CC0 1.0 | its latest publication (requested) | Scores are Open Targets' own; recorded as stated with the data version (#82) |
 | Orphadata (Orphanet) | CC BY 4.0 | "Orphadata Science: Free access data from Orphanet. © INSERM 1999", with the data version | Rare disorder–gene associations (#82) |
+| Reactome | CC0 1.0 (data) | encouraged, not required | Pathways and reactions (#83) |
 | DISEASES (Jensen lab) | CC BY 4.0 | DISEASES, citing the file dates | Associations per channel, joined through UniProt's Ensembl cross-references (#82) |
 | PHI-base | CC BY 4.0 | PHI-base, citing the release (e.g. 5.6, Zenodo) | Releases are downloaded and cached locally, split per gene (#83, `CACHE_POLICY.md`) |
 

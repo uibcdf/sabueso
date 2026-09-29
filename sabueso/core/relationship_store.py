@@ -37,6 +37,7 @@ PREDICATES = frozenset(
         "investigated_for",  # molecule -> disease term (ChEMBL drug indication), #81
         "tested_in",  # molecule -> clinical trial (nct:), cited by an indication, #81
         "associated_with",  # protein -> disease term (DISEASES, per channel), #82
+        "participates_in",  # protein -> pathway or reaction (Reactome), #83
     }
 )
 

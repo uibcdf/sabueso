@@ -85,6 +85,7 @@ def fixture_cards() -> List[dict]:
     from sabueso.tools.db.phi_base import FixturePHIBaseClient
     from sabueso.tools.db.pubchem import create_compound_card_from_file
     from sabueso.tools.db.pubchem_bioassay import FixturePubChemBioAssayClient
+    from sabueso.tools.db.reactome import FixtureReactomeClient
     from sabueso.tools.db.stringdb import FixtureStringClient
     from sabueso.tools.db.unichem import FixtureUniChemClient
 
@@ -130,6 +131,8 @@ def fixture_cards() -> List[dict]:
             open_targets_client=FixtureOpenTargetsClient(data),
             orphadata=True,
             orphadata_client=FixtureOrphadataClient(data),
+            reactome=True,
+            reactome_client=FixtureReactomeClient(data),
         )
         hstim.add_literature_assertion(
             "features_positional.natural_variant",

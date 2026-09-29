@@ -93,7 +93,8 @@ schema:
     indication, to its disease term) and tested_in (a ClinicalTrials.gov study an
     indication cites, by NCT id). It also adds associated_with, a gene-disease
     association DISEASES or Open Targets states for a human protein, one per disease,
-    source and channel (uibcdf/sabueso#82). All additive, so a 0.3.5 card is a valid 0.3.6 card without
+    source and channel (uibcdf/sabueso#82), and participates_in, the Reactome pathways
+    and reactions a protein takes part in (uibcdf/sabueso#83). All additive, so a 0.3.5 card is a valid 0.3.6 card without
     them.
 card_base:
   meta:

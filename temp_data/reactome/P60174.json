@@ -1,0 +1,103 @@
+{
+ "record": {
+  "ancestors": {
+   "R-HSA-70171": [
+    [
+     {
+      "displayName": "Glycolysis",
+      "isInferred": null,
+      "schemaClass": "Pathway",
+      "speciesName": "Homo sapiens",
+      "stId": "R-HSA-70171"
+     },
+     {
+      "displayName": "Glucose metabolism",
+      "isInferred": null,
+      "schemaClass": "Pathway",
+      "speciesName": "Homo sapiens",
+      "stId": "R-HSA-70326"
+     },
+     {
+      "displayName": "Metabolism of carbohydrates and carbohydrate derivatives",
+      "isInferred": null,
+      "schemaClass": "Pathway",
+      "speciesName": "Homo sapiens",
+      "stId": "R-HSA-71387"
+     },
+     {
+      "displayName": "Metabolism",
+      "isInferred": null,
+      "schemaClass": "TopLevelPathway",
+      "speciesName": "Homo sapiens",
+      "stId": "R-HSA-1430728"
+     }
+    ]
+   ],
+   "R-HSA-70263": [
+    [
+     {
+      "displayName": "Gluconeogenesis",
+      "isInferred": null,
+      "schemaClass": "Pathway",
+      "speciesName": "Homo sapiens",
+      "stId": "R-HSA-70263"
+     },
+     {
+      "displayName": "Glucose metabolism",
+      "isInferred": null,
+      "schemaClass": "Pathway",
+      "speciesName": "Homo sapiens",
+      "stId": "R-HSA-70326"
+     },
+     {
+      "displayName": "Metabolism of carbohydrates and carbohydrate derivatives",
+      "isInferred": null,
+      "schemaClass": "Pathway",
+      "speciesName": "Homo sapiens",
+      "stId": "R-HSA-71387"
+     },
+     {
+      "displayName": "Metabolism",
+      "isInferred": null,
+      "schemaClass": "TopLevelPathway",
+      "speciesName": "Homo sapiens",
+      "stId": "R-HSA-1430728"
+     }
+    ]
+   ]
+  },
+  "pathways": [
+   {
+    "displayName": "Glycolysis",
+    "isInferred": false,
+    "schemaClass": "Pathway",
+    "speciesName": "Homo sapiens",
+    "stId": "R-HSA-70171"
+   },
+   {
+    "displayName": "Gluconeogenesis",
+    "isInferred": false,
+    "schemaClass": "Pathway",
+    "speciesName": "Homo sapiens",
+    "stId": "R-HSA-70263"
+   }
+  ],
+  "reactions": [
+   {
+    "displayName": "TPI1 dimer isomerizes DHAP to GA3P",
+    "isInferred": false,
+    "schemaClass": "Reaction",
+    "speciesName": "Homo sapiens",
+    "stId": "R-HSA-70454"
+   },
+   {
+    "displayName": "TPI1 dimer isomerizes GA3P to DHAP",
+    "isInferred": false,
+    "schemaClass": "Reaction",
+    "speciesName": "Homo sapiens",
+    "stId": "R-HSA-70481"
+   }
+  ]
+ },
+ "version": "97"
+}

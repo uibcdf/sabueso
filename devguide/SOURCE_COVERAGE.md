@@ -25,7 +25,7 @@ status. This document holds the reasoning across sources.
 | Clinical | molecule | human | ChEMBL max phase and indications, ClinicalTrials.gov (#81) | adverse events (openFDA, later) |
 | Disease association | protein, disease | human | UniProt DISEASE comments, DISEASES, Open Targets, Orphanet (#82) | disease → targets (#82) |
 | Variants | protein | human first | UniProt variants and mutagenesis | ClinVar, gnomAD (this wave) |
-| Pathways | protein | all | UniProt pathway (text), Rhea | Reactome (this wave) |
+| Pathways | protein | all | UniProt pathway (text), Rhea, Reactome (#83) | — |
 | **Pathogen and organism context** | protein | pathogens | curation (#60), PHI-base | stage expression and screens (VEuPathDB), target prioritisation (TDR Targets): terms pending (#84) |
 | Literature | all | all | UniProt citations, human curation | automated extraction (later) |
 
@@ -57,7 +57,7 @@ Each source is checked live, and the date is recorded:
 | DISEASES (Jensen lab) | disease association | human | CC BY 4.0 | Ensembl proteins (joined through UniProt's cross-references); DOID | **In use** since 2026-09-28. Channels kept apart: curated knowledge, experiments, text mining (name-based, only when asked) |
 | Orphadata | rare disease genes | human | CC BY 4.0, citing the data version | Swiss-Prot accession per gene (stated by Orphanet) | **In use** since 2026-09-28: typed, assessed associations |
 | Pharos / TCRD | target development level | human | none of its own; each primary source's terms apply | UniProt, HGNC, Ensembl, NCBI Gene | The development level is TCRD's classification; licence tracing per field needed |
-| Reactome | pathways | human, with inferred species | CC0 1.0 (data) | UniProt | Replaces the need for KEGG |
+| Reactome | pathways | human, with inferred species | CC0 1.0 (data) | UniProt | **In use** since 2026-09-28; replaces the need for KEGG |
 | KEGG | pathways | many | not public; licence needed beyond academic web use | KEGG ids | Deferred |
 | ClinVar | variant clinical significance | human | US public domain (NCBI/NLM); confirm for submitter data | gene, HGVS, ClinVar ids | Complements UniProt variants (#33) |
 | gnomAD | population variants | human | CC0 1.0 (core); some annotations CC BY-NC | gene, variant ids | Frequencies; large |

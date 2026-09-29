@@ -83,6 +83,13 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: identifiers, preferred name, molecule type, formula, physchem (ALogP, HBD/HBA, TPSA, rotatable bonds, aromatic rings, molecular weight as `full_mwt`), `max_phase`, InChI/InChIKey, isomeric SMILES
 - **Notes**: numbers ChEMBL serialises as strings are normalized; logP and rotatable bonds carry their method (`ALogP`, `chembl:rtb`) and are compared only within it (uibcdf/sabueso#10). Stable online tests.
 
+### Reactome — pathways and reactions
+- **Status**: implemented as an enricher of `resolve_protein_card(..., reactome=True)` (uibcdf/sabueso#83)
+- **Access**: Content Service, UniProt mapping and event ancestors, no key (`OnlineReactomeClient`, which names Sabueso: the service refuses Python's default user agent); saved answers in `temp_data/reactome/`; `tools.db.reactome.get_pathways`
+- **Quality**: green for the listed coverage. Verified live on HsTIM (release 97): glycolysis and gluconeogenesis, two reactions, and their ancestors up to Metabolism. TcTIM: not mapped.
+- **Coverage**: `participates_in` relationships, with kind, name, species, the orthology-inference flag and pathway ancestors
+- **Notes**: one request per pathway for its ancestors. Licence: CC0 1.0 (data).
+
 ### Orphadata (Orphanet) — rare disorders and their genes
 - **Status**: implemented as an enricher of `resolve_protein_card(..., orphadata=True)` (uibcdf/sabueso#82)
 - **Access**: `en_product6.xml` (about 22 MB, dated in its header), downloaded and indexed once per process in memory (`OnlineOrphadataClient`); saved disorders in `temp_data/orphadata/`; `tools.db.orphadata.get_associations`

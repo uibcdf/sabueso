@@ -22,10 +22,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
+from urllib.request import urlopen
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.tools.db._http import request
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "Orphanet"
@@ -94,8 +95,7 @@ class OnlineOrphadataClient:
             ((version, index),) = _MEMORY.items()
             return version, index
         try:
-            request = Request(URL, headers={"User-Agent": "Sabueso"})
-            with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted
+            with urlopen(request(URL), timeout=self.timeout) as resp:  # nosec - trusted
                 payload = resp.read()
         except (HTTPError, URLError, TimeoutError, OSError) as exc:
             raise ConnectorError(f"Orphadata download failed: {exc}") from exc

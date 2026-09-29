@@ -22,6 +22,7 @@ from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
 from sabueso.tools.db.orphadata import FixtureOrphadataClient
 from sabueso.tools.db.pdbe_kb import FixturePDBeKBClient
 from sabueso.tools.db.phi_base import FixturePHIBaseClient
+from sabueso.tools.db.reactome import FixtureReactomeClient
 
 
 @pytest.fixture(scope="module")
@@ -39,6 +40,7 @@ def clients():
         diseases_client=FixtureDISEASESClient("temp_data"),
         open_targets_client=FixtureOpenTargetsClient("temp_data"),
         orphadata_client=FixtureOrphadataClient("temp_data"),
+        reactome_client=FixtureReactomeClient("temp_data"),
     )
 
 
@@ -81,6 +83,7 @@ def test_a_query_is_declared_and_normalized(query):
         "open_targets": {},
         "orphadata": True,
         "phi_base": True,
+        "reactome": True,
         "taxonomy": True,
         "structures": "all",
         "interfaces": True,

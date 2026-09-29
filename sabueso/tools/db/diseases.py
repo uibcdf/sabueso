@@ -33,10 +33,11 @@ from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
+from urllib.request import urlopen
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError
+from sabueso.tools.db._http import request as http_request
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "DISEASES"
@@ -96,16 +97,9 @@ class OnlineDISEASESClient:
 
     def _fetch(self, channel: str) -> tuple:
         """``(version, rows per protein)`` of a channel's filtered file."""
-        from sabueso import __version__
-
         url = f"{DOWNLOADS}/human_disease_{channel}_filtered.tsv"
         # The server refuses Python's default user agent; Sabueso names itself.
-        request = Request(
-            url,
-            headers={
-                "User-Agent": f"Sabueso/{__version__} (+https://github.com/uibcdf/sabueso)"
-            },
-        )
+        request = http_request(url)
         try:
             with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted
                 modified = resp.headers.get("Last-Modified")

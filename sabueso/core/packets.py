@@ -120,8 +120,9 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         "areas": ("relationships.associated_with", "annotations.disease"),
     },
     "biological_context": {
-        "options": {"phi_base": True},
+        "options": {"phi_base": True, "reactome": True},
         "areas": (
+            "relationships.participates_in",
             "annotations.pathogen_phenotypes",
             "annotations.stage_expression",
             "annotations.essentiality",
@@ -321,7 +322,16 @@ def _facts(aspect: str, card: Any) -> Dict[str, Any]:
             ],
         }
     if aspect == "biological_context":
-        return _fields(card, ASPECTS["biological_context"]["areas"])
+        return {
+            **_fields(card, ASPECTS["biological_context"]["areas"][1:]),
+            "pathways": [
+                {k: r[k] for k in ("object_ref", "qualifiers", "source_assertion_ids")}
+                for r in sorted(
+                    card.relationships(predicate="participates_in"),
+                    key=lambda r: r["object_ref"],
+                )
+            ],
+        }
     raise KeyError(aspect)
 
 

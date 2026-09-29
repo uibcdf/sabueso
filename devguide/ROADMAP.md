@@ -106,7 +106,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 
 | Use case | Status |
 |---|---|
-| 1. Interactions, ligands, pathways of a protein | done (Reactome queued for pathway structure) |
+| 1. Interactions, ligands, pathways of a protein | done (pathway structure from Reactome, #83) |
 | 2. Clinical usage of ligands | partial (max phase only) |
 | 3. TopoMT: catalytic residues, mutations as structural features | partial (positional features, ligand and family sites; no TopoMT contract yet) |
 | 4. PharmacophoreMT: deck of ligands | partial (ligand decks; no exchange format agreed) |

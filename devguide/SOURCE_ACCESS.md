@@ -17,7 +17,9 @@ Each module holds the source's clients and its public `get_*` functions:
 - `clinicaltrials`, asked only for the NCT ids another source states (#81);
 - `diseases` (DISEASES), whose channel files are versioned downloads, like `phi_base`;
 - `open_targets`, GraphQL;
-- `orphadata`, one dated XML file indexed in memory.
+- `orphadata`, one dated XML file indexed in memory;
+- `reactome`, the Content Service.
+Clients added since #82 name Sabueso over HTTP through `tools/db/_http.py`.
 Card building uses the same clients, so there is one way to query each source. The
 registry (`sources/registry.yaml`) must list each module as `in_use`, and a test checks
 it.

@@ -470,11 +470,14 @@ resources:
     name: "Reactome"
     url: https://reactome.org/
     category: target_validation
-    status: evaluating
+    status: in_use
     description: "Curated human pathways, reactions and signalling networks (REST API)."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "CC0 1.0 (data); CC BY 4.0 (illustrations)"
+    reason: "The pathways and reactions a protein takes part in, keyed by UniProt accession, with each pathway's ancestors and whether the event is inferred from orthology. It covers the pathway need that KEGG's licence rules out."
+    access: "Content Service (UniProt mapping, event ancestors), no key, when resolve(..., reactome=True)"
+    licence: "CC0 1.0 (data); CC BY 4.0 (illustrations, not used)"
+    module: [sabueso.tools.db.reactome, sabueso.mappings.reactome]
     links: ["#83"]
   - id: kegg_pathway
     name: "KEGG PATHWAY"

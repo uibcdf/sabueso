@@ -26,6 +26,7 @@ from sabueso.tools.db import (
     pubchem,
     pubchem_bioassay,
     rcsb,
+    reactome,
     stringdb,
     unichem,
     uniprot,
@@ -62,6 +63,9 @@ CALLS = {
     ),
     "orphadata.get_associations": lambda: orphadata.get_associations(
         "P60174", client=orphadata.FixtureOrphadataClient("temp_data")
+    ),
+    "reactome.get_pathways": lambda: reactome.get_pathways(
+        "P60174", client=reactome.FixtureReactomeClient("temp_data")
     ),
     "ncbi_taxonomy.get_taxon": lambda: ncbi_taxonomy.get_taxon(
         "5693", client=ncbi_taxonomy.FixtureNCBITaxonomyClient("temp_data")

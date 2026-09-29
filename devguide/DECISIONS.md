@@ -873,3 +873,13 @@ uibcdf/sabueso#82, the first of the human disease-association sources.
   its version is only known after downloading, so a disk cache could not be keyed
   before fetching.
 
+## Reactome, and naming Sabueso over HTTP (2026-09-28)
+uibcdf/sabueso#83.
+- **Pathways as relationships.** `participates_in`, one per Reactome event mapping the
+  accession (lowest-level pathways and reactions), with Reactome's ancestors and its
+  orthology-inference flag. UniProt's free-text pathway stays a separate statement.
+- **One user agent.** DISEASES's downloads and Reactome's Content Service refuse
+  Python's default user agent. New clients name Sabueso and its version through one
+  helper (`tools/db/_http.py`); older clients move to it when a source starts refusing
+  them.
+

@@ -109,6 +109,12 @@ gene (`annotations.pathogen_phenotypes`): for example "Lethal" for a knockout, o
 host strains, the publication and the PHI-base release. The first use downloads a
 PHI-base release, about 12 MB, and keeps its index in memory. To keep it between
 sessions, set `$SABUESO_CACHE_DIR`.
+
+The pathways a protein takes part in come from Reactome:
+`sabueso.resolve(..., reactome=True)` adds `participates_in` relationships to its
+lowest-level pathways and its reactions. Each pathway comes with its ancestors
+(Glycolysis, Glucose metabolism, …, Metabolism), and each event with whether Reactome
+inferred it from orthology.
 - **Quantities.** Give the unit (`"0.825 kDa"`, `puw.quantity(825, "Da")`). The value is
   kept as written and compared at the precision it was stated with.
 - **Relationships.** `card.add_literature_relationship(predicate, object_ref,

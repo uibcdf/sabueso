@@ -305,6 +305,12 @@ A Relationship is first-class, traceable knowledge:
         mining).
 
       Text mining links names, not molecules, and is added only when asked for.
+  - pathways (added in #83, schema 0.3.6):
+    - `participates_in` (protein → `reactome:<stId>`), one per Reactome event mapping
+      the UniProt accession. Qualifiers: `kind` (`pathway`, lowest level, or
+      `reaction`), `name`, `species`, `is_inferred` (inferred by Reactome from
+      orthology), and for pathways `ancestors` (each path up to a top-level pathway,
+      `id` and `name`).
     - Which statements each publication supports is read by `Card.literature()` from the
       ECO evidence of every SourceAssertion, and only there.
   - curated literature assertions (added in #41):
