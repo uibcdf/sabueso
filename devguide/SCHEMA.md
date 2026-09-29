@@ -292,7 +292,11 @@ A Relationship is first-class, traceable knowledge:
       (`datatype`, `score`) and `rank` as stated, through the Ensembl gene UniProt cross-references
       (`via_gene`), only when Open Targets lists the entry among the gene's products
       (`gene_lists_protein`). From DISEASES: `doid:DOID:<id>`, one per disease,
-      DISEASES channel and Ensembl protein. The protein must be one the UniProt entry
+      DISEASES channel and Ensembl protein. From Orphanet: `orphanet:ORPHA:<code>`,
+      through the Swiss-Prot accession Orphanet states (basis
+      `orphanet_swissprot_xref`), with `association_type`, `association_status`,
+      `disorder_type`, `disorder_group` and `validation` (publications). For DISEASES,
+      the protein must be one the UniProt entry
       cross-references: `via_protein`, `uniprot_isoform`, basis
       `uniprot_ensembl_xref`. Qualifiers:
       - `channel` (`knowledge`, `experiments`, `textmining`) and `disease_name`;

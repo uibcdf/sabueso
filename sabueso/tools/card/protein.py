@@ -79,6 +79,8 @@ def resolve_protein_card(
     diseases_client: Any | None = None,
     open_targets: Dict[str, Any] | None = None,
     open_targets_client: Any | None = None,
+    orphadata: bool = False,
+    orphadata_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the ProteinCard of the resolved entity.
@@ -127,6 +129,10 @@ def resolve_protein_card(
     own order) adds Open Targets' target–disease associations, with its scores as
     stated, through the Ensembl gene the entry cross-references, when Open Targets also
     lists the entry among that gene's products. Human genes only.
+
+    ``orphadata`` adds the rare disorders Orphanet associates with the gene, through the
+    UniProt accession Orphanet states for it, with Orphanet's association type and
+    status. Human genes only.
     """
     if ncbi_gene:
         import copy
@@ -768,6 +774,46 @@ def resolve_protein_card(
                     "total_count": count,
                 }
             )
+
+    if orphadata:
+        from sabueso.mappings.orphadata import map_associations as map_orphadata
+        from sabueso.tools.db.orphadata import OnlineOrphadataClient
+
+        record = {"source": "Orphanet", "identifier": anchor}
+        if (entry.get("organism") or {}).get("taxonId") != 9606:
+            enrichments.append(
+                {
+                    **record,
+                    "status": "not_applicable",
+                    "detail": "Orphanet covers Homo sapiens genes only",
+                }
+            )
+        else:
+            client = orphadata_client or OnlineOrphadataClient()
+            try:
+                response = client.associations(anchor)
+            except RecordNotFoundError as exc:
+                enrichments.append(
+                    {**record, "status": "not_found", "detail": str(exc)}
+                )
+            except ConnectorError as exc:
+                enrichments.append({**record, "status": "error", "detail": str(exc)})
+            else:
+                mapped = map_orphadata(
+                    response["record"],
+                    anchor,
+                    response.get("retrieved_at", ""),
+                    response.get("version"),
+                )
+                mappings.append({"fields": {}, "field_source_assertions": {}, **mapped})
+                enrichments.append(
+                    {
+                        **record,
+                        "status": "added",
+                        "version": response.get("version"),
+                        "count": len(mapped["relationships"]),
+                    }
+                )
 
     mappings.append(
         {

@@ -866,4 +866,10 @@ uibcdf/sabueso#82, the first of the human disease-association sources.
   reported. `associated_with` is identified by source, channel, Ensembl protein and
   gene, so DISEASES's and Open Targets' statements never merge, and a disease under
   two ontologies stays two references.
+- **Orphanet (same day).** One `associated_with` per disorder–gene association, to
+  `orphanet:ORPHA:<code>`, with Orphanet's association type, status and validating
+  publications. Orphanet states each gene's Swiss-Prot accession, so the link is its
+  own. The 22 MB file is indexed in memory once per process, and nothing is written:
+  its version is only known after downloading, so a disk cache could not be keyed
+  before fetching.
 

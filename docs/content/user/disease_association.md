@@ -1,7 +1,8 @@
 # Disease association
 
-A human protein card can hold what DISEASES and Open Targets state about the diseases
-its gene is associated with. Each source, and each DISEASES channel, is kept apart.
+A human protein card can hold what DISEASES, Open Targets and Orphanet state about the
+diseases its gene is associated with. Each source, and each DISEASES channel, is kept
+apart.
 
 ```{note}
 Disease associations are on main, not yet in a release.
@@ -51,9 +52,21 @@ The association reaches the card through the Ensembl gene the UniProt entry
 cross-references (`via_gene`). It is added only when Open Targets also lists the entry
 among that gene's products.
 
+## Orphanet (rare disorders)
+
+`sabueso.resolve("P60174", orphadata=True)` adds the rare disorders Orphanet associates
+with the gene (`orphanet:ORPHA:868`). Each one comes with Orphanet's wording:
+- the association type (for example "Disease-causing germline mutation(s) in") and its
+  status ("Assessed");
+- the disorder's type and group;
+- the publications that validate it.
+
+Orphanet states the gene's UniProt accession itself, so the link is its own. The file
+(about 22 MB) is downloaded once per process, and its date is the version.
+
 ## Coverage
 
-DISEASES and Open Targets cover human genes only. For a protein of another organism,
+DISEASES, Open Targets and Orphanet cover human genes only. For a protein of another organism,
 the knowledge state says `not_queried`, with that reason, never `not_stated`.
 
 The files are downloaded once per process, about 50 MB with text mining. Set

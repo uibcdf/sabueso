@@ -19,6 +19,7 @@ from sabueso.tools.db.diseases import FixtureDISEASESClient
 from sabueso.tools.db.interpro import FixtureInterProClient
 from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
 from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
+from sabueso.tools.db.orphadata import FixtureOrphadataClient
 from sabueso.tools.db.pdbe_kb import FixturePDBeKBClient
 from sabueso.tools.db.phi_base import FixturePHIBaseClient
 
@@ -37,6 +38,7 @@ def clients():
         phi_base_client=FixturePHIBaseClient("temp_data"),
         diseases_client=FixtureDISEASESClient("temp_data"),
         open_targets_client=FixtureOpenTargetsClient("temp_data"),
+        orphadata_client=FixtureOrphadataClient("temp_data"),
     )
 
 
@@ -77,6 +79,7 @@ def test_a_query_is_declared_and_normalized(query):
     assert query.options() == {
         "diseases": {},
         "open_targets": {},
+        "orphadata": True,
         "phi_base": True,
         "taxonomy": True,
         "structures": "all",

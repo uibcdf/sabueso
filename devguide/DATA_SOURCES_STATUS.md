@@ -83,6 +83,13 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: identifiers, preferred name, molecule type, formula, physchem (ALogP, HBD/HBA, TPSA, rotatable bonds, aromatic rings, molecular weight as `full_mwt`), `max_phase`, InChI/InChIKey, isomeric SMILES
 - **Notes**: numbers ChEMBL serialises as strings are normalized; logP and rotatable bonds carry their method (`ALogP`, `chembl:rtb`) and are compared only within it (uibcdf/sabueso#10). Stable online tests.
 
+### Orphadata (Orphanet) — rare disorders and their genes
+- **Status**: implemented as an enricher of `resolve_protein_card(..., orphadata=True)` (uibcdf/sabueso#82)
+- **Access**: `en_product6.xml` (about 22 MB, dated in its header), downloaded and indexed once per process in memory (`OnlineOrphadataClient`); saved disorders in `temp_data/orphadata/`; `tools.db.orphadata.get_associations`
+- **Quality**: green for the listed coverage. Verified live on HsTIM (file of 2026-06-23, about 5 s): ORPHA:868, triose phosphate-isomerase deficiency, "Disease-causing germline mutation(s) in", Assessed.
+- **Coverage**: `associated_with` relationships to `orphanet:ORPHA:<code>`, with the association type and status, the disorder's type and group, and the validating publications
+- **Notes**: joined through the Swiss-Prot accession Orphanet states for each gene; genes without one are not attached. Human genes only. Licence: CC BY 4.0 (cite Orphanet and the data version).
+
 ### Open Targets Platform — target–disease associations
 - **Status**: implemented as an enricher of `resolve_protein_card(..., open_targets={})` (uibcdf/sabueso#82)
 - **Access**:

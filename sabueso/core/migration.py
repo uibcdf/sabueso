@@ -215,6 +215,7 @@ def _enrichment_options(data: Dict[str, Any]) -> set:
             ("ClinicalTrials.gov", None): {"trials"},
             ("DISEASES", None): {"diseases"},
             ("Open Targets", None): {"open_targets"},
+            ("Orphanet", None): {"orphadata"},
         }.get((source, kind), set())
     return options
 

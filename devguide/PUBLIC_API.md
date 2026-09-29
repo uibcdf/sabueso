@@ -17,8 +17,8 @@ shows how to use them.
     - `structures`, `interfaces`, `ligand_sites`, `family_sites`;
     - `chembl`, `bindingdb`, `pubchem_bioassay`, `string`;
     - `predicted_structures`, `taxonomy`, `ncbi_gene`;
-    - `phi_base` (pathogen phenotypes, #83), `diseases` and `open_targets` (disease
-      associations, #82);
+    - `phi_base` (pathogen phenotypes, #83), `diseases`, `open_targets` and
+      `orphadata` (disease associations, #82);
     - each source's `*_client`, and `resolver`.
   - For small molecules: `unichem`, `pubchem`, `indications` and `trials` (#81).
   - An option the tool does not take is refused, never ignored.

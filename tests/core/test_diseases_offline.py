@@ -223,3 +223,45 @@ def test_open_targets_does_not_cover_a_parasite_protein(resolver):
     assert rows[("relationships.associated_with", "Open Targets")]["state"] == (
         "not_queried"
     )
+
+
+# --- Orphadata -------------------------------------------------------------------------
+
+
+def test_orphanet_states_the_rare_disorder_with_its_association_type(resolver):
+    from sabueso.tools.db.orphadata import FixtureOrphadataClient
+
+    card, _ = sabueso.resolve(
+        "P60174",
+        resolver=resolver,
+        orphadata=True,
+        orphadata_client=FixtureOrphadataClient("temp_data"),
+    )
+    (rel,) = card.relationships("associated_with")
+    q = rel["qualifiers"]
+    assert rel["object_ref"] == "orphanet:ORPHA:868"
+    assert (q["association_type"], q["association_status"]) == (
+        "Disease-causing germline mutation(s) in",
+        "Assessed",
+    )
+    # Orphanet states the Swiss-Prot accession of the gene: the link is its own.
+    assert q["basis"] == "orphanet_swissprot_xref"
+    (sa_id,) = rel["source_assertion_ids"]
+    assert card.source_assertion_store.get(sa_id)["source"]["version"] == "2026-06-23"
+
+
+def test_a_gene_orphanet_does_not_name_is_not_stated(resolver):
+    from sabueso.tools.db.orphadata import FixtureOrphadataClient
+
+    # The human mu-opioid receptor: Orphanet was asked, and the saved file names no
+    # disorder for it.
+    card, _ = sabueso.resolve(
+        "P35372",
+        resolver=resolver,
+        orphadata=True,
+        orphadata_client=FixtureOrphadataClient("temp_data"),
+    )
+    states = {
+        (r["area"], r["source"]): r["state"] for r in card.knowledge_state()["rows"]
+    }
+    assert states[("relationships.associated_with", "Orphanet")] == "not_stated"

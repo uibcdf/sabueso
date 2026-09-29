@@ -57,6 +57,7 @@ PROTEIN_ENRICHMENTS = (
     ("annotations.pathogen_phenotypes", "PHI-base", {"source": "PHI-base"}),
     ("relationships.associated_with", "DISEASES", {"source": "DISEASES"}),
     ("relationships.associated_with", "Open Targets", {"source": "Open Targets"}),
+    ("relationships.associated_with", "Orphanet", {"source": "Orphanet"}),
 )
 
 

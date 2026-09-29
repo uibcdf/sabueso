@@ -396,11 +396,14 @@ resources:
     name: "Orphadata (Orphanet)"
     url: https://www.orphadata.com/
     category: target_validation
-    status: evaluating
+    status: in_use
     description: "Rare diseases and their genes, curated, with the type of association."
     since: 2026-09-27
     proposed_by: "Source coverage plan (#83): alternatives to Open Targets"
-    licence: "CC BY 4.0 (Orphadata Science datasets; data version to be cited)"
+    reason: "Curated rare disorder–gene associations for human proteins, with Orphanet's association type, status and validating publications. Each gene states its UniProt accession."
+    access: "The en_product6.xml file (about 22 MB), dated in its header, downloaded and indexed once per process in memory, when resolve(..., orphadata=True)"
+    licence: "CC BY 4.0 (Orphadata Science; cite Orphanet and the data version)"
+    module: [sabueso.tools.db.orphadata, sabueso.mappings.orphadata]
     links: ["#82", "#83"]
   - id: pharos_tcrd
     name: "Pharos / TCRD (IDG)"
