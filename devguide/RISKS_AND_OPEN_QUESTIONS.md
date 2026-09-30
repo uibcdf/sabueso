@@ -248,6 +248,16 @@
   genes in a row may still see errors, recorded as `error`, never as absence.
 
 ## Open Questions
+- **Which isoforms, and which variants, are tissue-specific?** (#102; a need the
+  maintainers recorded on 2026-09-30.) A card states a protein's isoforms and places
+  each population variant on the canonical isoform, or says why not
+  (`isoform_specific_position`, `not_coding_on_canonical`, `transcript_not_canonical`).
+  It does not say where each isoform is expressed. So it cannot tell a change that
+  matters only in one tissue from one that matters everywhere, for example PKM1 against
+  PKM2, or MAPT's neuronal exons. Resolving it needs a stated source of isoform
+  expression by tissue (gnomAD's `pext`, GTEx transcript expression), with its release.
+  It also needs a named rule that places a variant within the transcripts each tissue
+  expresses. The source and the rule are open.
 - What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?
   An LLM output would be stored as a SourceAssertion whose source is the model, the
   prompt and the documents it read, never as Evidence. Nothing is decided beyond that.
