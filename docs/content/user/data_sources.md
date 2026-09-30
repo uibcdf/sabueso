@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 36, evaluating 18, deferred 26, retired 3, out of scope 13.
+Summary: in use 36, evaluating 17, deferred 27, retired 3, out of scope 13.
 
 ## In use
 
@@ -87,7 +87,6 @@ and Sabueso warns. The other sources in use are read whole.
 | [BRENDA](https://brenda-enzymes.org/) | Binding sites, cavities and specialised families | Enzyme information: kinetics (Km, kcat), inhibitors, cofactors and conditions. | Reviewed 2026-09-29 (#94): data CC BY 4.0 (its licence page); the SOAP web service needs a registered account (email and password). Fits every terms profile. Strong candidate: kinetics (Km, kcat, Ki) and inhibitors per EC number and organism, e.g. TIM (EC 5.3.1.1) of T. cruzi and human. Waits on a user's account for the key rule. | 2026-09-25 |
 | [mpstruc](https://blanco.biomol.uci.edu/mpstruc/) | Binding sites, cavities and specialised families | Membrane proteins of known structure, classified by topology and family. | under review | 2026-09-25 |
 | [sc-PDB](http://bioinfo-pharma.u-strasbg.fr/scPDB/) | Binding sites, cavities and specialised families | Druggable binding sites extracted from the PDB, cleaned of crystallographic artefacts. | under review | 2026-09-25 |
-| [ESM Metagenomic Atlas](https://esmatlas.com/) | Macromolecular structures, models and dynamics | Structures predicted at scale by a protein language model. | under review | 2026-09-25 |
 | [ModelArchive](https://modelarchive.org/) | Macromolecular structures, models and dynamics | Open repository of computational macromolecular models with mmCIF metadata. | under review | 2026-09-25 |
 | [ProThermDB](https://web.iitm.ac.in/bioinfo2/prothermdb/) | Macromolecular structures, models and dynamics | Experimental protein stability data (ΔΔG, Tm) for point mutations. | under review | 2026-09-25 |
 | [DepMap](https://depmap.org/) | Target validation, genetics and functional networks | CRISPR and RNAi screens of gene essentiality and dependencies in cancer cell lines. | under review | 2026-09-25 |
@@ -107,6 +106,7 @@ and Sabueso warns. The other sources in use are read whole.
 | [KEGG PATHWAY](https://www.kegg.jp/) | Not a public database: free academic use of the website only; services, downloads and non-academic use need a licence, which does not fit redistribution across MOLI. Reviewed 2026-09-29 (#94): even academic users who provide services with KEGG need an academic service provider licence, so no terms profile admits it without one. | A licence covering MOLI use is in place, or a pathway need is not met by Reactome (CC0). | 2026-09-25 |
 | [PharmacoDB](https://pharmacodb.pmgenomics.ca/) | HTTP 503 on 2026-09-29. | It answers again. | 2026-09-25 |
 | [2P2Idb](http://2p2idb.cnrs-mrs.fr/) | Did not answer on 2026-09-27/29. | It answers again; then evaluate with iPPI-DB. | 2026-09-25 |
+| [ESM Metagenomic Atlas](https://esmatlas.com/) | Evaluated 2026-09-30. Its predictions are keyed by MGnify protein ids (MGYP…); UniProt cross-references none, so a UniProt card could reach them only by sequence search, which is identity by similarity. Folding a sequence on demand (foldSequence) is a computation, which belongs to MolSysSuite. AlphaFold DB covers UniProt entries. | Metagenomic proteins (MGnify) become entities of their own. | 2026-09-25 |
 | [NDB (Nucleic Acid Database)](https://ndbserver.rutgers.edu/) | Nucleic-acid structures; Sabueso has no nucleic-acid entities yet. | Nucleic-acid cards exist. | 2026-09-25 |
 | [CoDNaS](https://codnas.inf.unlp.edu.ar/) | Did not answer on 2026-09-29. | It answers again. | 2026-09-25 |
 | [BioLiP](https://zhanggroup.org/BioLiP/) | Bulk downloads of a third-party pipeline, not a per-record service; the PDB subject-of-investigation flag already separates ligands from additives, and PDBe-KB gives contacts. | A batch import exists, or a question needs curated biologically relevant sites that PDBe-KB and the PDB flag do not give. | 2026-09-23 |

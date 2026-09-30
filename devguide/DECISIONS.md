@@ -1565,3 +1565,19 @@ uibcdf/sabueso#83 (wave 2, structures).
   for a use.
 - **Not in packets yet**, as KLIFS and GPCRdb (#88).
 
+## Wave 2 of the source coverage plan, closed (2026-09-30)
+uibcdf/sabueso#83.
+- **In use:** ChEBI (molecules), KLIFS (kinases), GPCRdb (GPCRs), SAbDab (antibody
+  complexes), and OPM's and PDBTM's transmembrane segments through RCSB. gnomAD now
+  also reads the canonical transcript (#85).
+- **Deferred or blocked, with the reason in the registry:**
+  - the Chemical Probes Portal: no documented access; accessions only in pages;
+  - SureChEMBL: mentions cannot be restricted to the claims;
+  - OPM's own API: its own chain letters, and no licence found;
+  - ESM Atlas: MGnify ids only.
+- **Waiting:** Ensembl orthology, while its REST service does not answer.
+- **Each source was surveyed for batch or bulk access and tested live before design**
+  (whole files for SAbDab, one list request for KLIFS). Each joins only through an
+  identifier its source states: an accession, the PDB chains UniProt states, or an
+  InChIKey.
+

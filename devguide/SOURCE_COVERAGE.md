@@ -17,7 +17,7 @@ status. This document holds the reasoning across sources.
 |---|---|---|---|---|
 | Identity and names | all | all | UniProt, NCBI Gene, NCBI Taxonomy, UniChem, PubChem | Ensembl (queued) |
 | Sequence and annotation | protein | all | UniProt, InterPro, GO, Rhea | isoform sequences |
-| Structures and models | protein | all | RCSB PDB, AlphaFold DB | ModelArchive, ESM Atlas (queued) |
+| Structures and models | protein | all | RCSB PDB, AlphaFold DB | ModelArchive; ESM Atlas deferred (MGnify ids only) |
 | Sites and families | protein | all | UniProt, PDBe-KB, InterPro | pockets and allosteric sites (queued) |
 | Interactions | protein | all | IntAct (via UniProt), STRING | PPI-inhibitor resources (queued) |
 | Bioactivity | molecule–protein | all | ChEMBL, BindingDB, PubChem BioAssay | PDBbind (queued) |
@@ -144,7 +144,7 @@ That is not a data licence, and is recorded as "no data licence found".
 | SureChEMBL | chemistry (patents) | CC BY 4.0 (API and new bulk data) | InChIKey / structures | Patent chemistry; deferred (2026-09-30): mentions cannot be restricted to claims |
 | SAbDab | structures (antibodies) | CC BY 4.0 | PDB, chains | Antibody structures of a protein; in use (2026-09-30); antibodies as entities not modelled yet |
 | OPM | structures (membranes) | no licence found (2026-09-30) | PDB (its own chain letters) | Membrane orientation of structures; its segments reach cards through RCSB (with PDBTM's), the rest deferred |
-| ESM Atlas | predicted structures | CC BY 4.0; API | MGnify / sequence ids | Predicted models, like AlphaFold DB; mostly metagenomic |
+| ESM Atlas | predicted structures | CC BY 4.0; API | MGnify ids only (no UniProt link) | Predicted models of metagenomic proteins; deferred (2026-09-30) |
 
 ### Usable only with a key, or with care
 
@@ -206,7 +206,9 @@ through the PDB and ChEMBL already. They are reviewed when a target needs them.
 5. **SureChEMBL**: deferred (2026-09-30). Its patents are text-mined mentions that
    cannot be restricted to the claims (111,187 documents for imatinib). Then
    structures: OPM (its transmembrane segments, and PDBTM's, through RCSB: done,
-   2026-09-30; the rest deferred), SAbDab (done, 2026-09-30), ESM Atlas.
+   2026-09-30; the rest deferred), SAbDab (done, 2026-09-30), ESM Atlas (deferred: keyed by MGnify
+   ids, which UniProt does not cross-reference). Wave 2 is complete, except Ensembl
+   orthology, waiting for its service.
 
 ## 6. Sources set aside, reviewed for terms profiles and keys (2026-09-29)
 

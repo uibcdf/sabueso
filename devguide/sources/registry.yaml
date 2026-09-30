@@ -794,10 +794,13 @@ resources:
     name: "ESM Metagenomic Atlas"
     url: https://esmatlas.com/
     category: structures_models
-    status: evaluating
+    status: deferred
     description: "Structures predicted at scale by a protein language model."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    decided_by: "Sabueso maintainers (2026-09-30)"
+    reason: "Evaluated 2026-09-30. Its predictions are keyed by MGnify protein ids (MGYP…); UniProt cross-references none, so a UniProt card could reach them only by sequence search, which is identity by similarity. Folding a sequence on demand (foldSequence) is a computation, which belongs to MolSysSuite. AlphaFold DB covers UniProt entries."
+    revisit_when: "Metagenomic proteins (MGnify) become entities of their own."
     licence: "CC BY 4.0 (API)"
     links: ["#83"]
   - id: ndb
