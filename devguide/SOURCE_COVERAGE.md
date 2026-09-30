@@ -199,7 +199,9 @@ through the PDB and ChEMBL already. They are reviewed when a target needs them.
    0.3.7). iPPI-DB (modulators): blocked on access and terms (section 4).
 2. **Chemistry:** ChEBI roles and classes: **done** (2026-09-30, schema 0.3.8). The
    Chemical Probes Portal: blocked on access (section 4).
-3. **Identity:** Ensembl transcripts and orthology, which also serve #85.
+3. **Identity:** Ensembl transcripts and orthology. For #85, gnomAD itself states each
+   variant's consequence on the canonical transcript (done, 2026-09-30); Ensembl states
+   no map for the transcripts left (separate TrEMBL entries). Orthology is next.
 4. **Family-specific sources:** KLIFS and GPCRdb, when a target needs them.
 5. **SureChEMBL**, and then structures: OPM, SAbDab, ESM Atlas.
 

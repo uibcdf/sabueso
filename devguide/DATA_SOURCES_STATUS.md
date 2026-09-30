@@ -86,9 +86,10 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 
 ### gnomAD — population frequencies
 - **Status**: implemented as an enricher of `resolve_protein_card(..., gnomad={})` (uibcdf/sabueso#83)
-- **Access**: GraphQL API, dataset gnomad_r4, no key (`OnlineGnomADClient`); saved variants in `temp_data/gnomad/`; `tools.db.gnomad.get_variants`
+- **Access**: GraphQL API, dataset gnomad_r4, no key (`OnlineGnomADClient`): the gene's variants, and the variants of each Ensembl transcript UniProt states for the canonical isoform (#85); saved answers in `temp_data/gnomad/`; `tools.db.gnomad.get_variants`, `tools.db.gnomad.get_transcript_variants`
 - **Quality**: green for the listed coverage. Verified live on TPI1 (ENSG00000111669, 2026-09-29): 1,668 variants, of which 729 have a protein change. E105D, on the canonical transcript ENST00000396705, is placed at UniProt 105 with its exome and genome frequencies.
   - Placement: 540 placed, 2 of them through isoform P60174-3's map. 184 fall in that isoform's own N-terminal segment, and 2 are on transcripts UniProt does not state. 3 are not placed: two stop-codon changes and one unparsed notation.
+  - With the canonical transcript asked too (2026-09-30, #85): gnomAD states each variant's consequence on it, so a change it ranks on another transcript is read on the canonical one when it is a protein change there. For TPI1, 79 changes on isoform P60174-3's transcript are stated as not coding on the canonical transcript (UTR or intron), including the frameshift at isoform Pro40, which the isoform map had placed at canonical Pro3 (on the canonical transcript it is a 5' UTR duplication); 107 stay in the isoform's own segment, 540 are placed, none through the isoform map. Over nine genes, the variants on transcripts UniProt does not state fell from 810 to 533 (EGFR 161 → 88, BRCA1 83 → 38, DMD 237 → 121, MAPK14 12 → 0); those checked lie outside the canonical transcript, where gnomAD states no consequence on it.
 - **Coverage**: `annotations.population_variants`, with consequence, transcript, HGVS, flags, and exome and genome allele count, number and frequency as stated
 - **Notes**:
   - Found by the Ensembl gene UniProt cross-references.

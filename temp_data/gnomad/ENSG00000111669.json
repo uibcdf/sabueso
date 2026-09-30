@@ -261,6 +261,20 @@
     "hgvsp": "p.Ala39_Pro40insArgSerSerAlaMetAla",
     "transcript_id": "ENST00000229270",
     "variant_id": "12-6867555-G-GGCTCCAGCGCCATGGCGC"
+   },
+   {
+    "variant_id": "12-6869106-A-G",
+    "consequence": "start_lost",
+    "hgvsp": "p.Met1?",
+    "hgvsc": "c.1A>G",
+    "transcript_id": "ENST00000462761",
+    "flags": [],
+    "exome": {
+     "ac": 1,
+     "an": 1461884,
+     "af": 6.840488027777854e-07
+    },
+    "genome": null
    }
   ]
  },

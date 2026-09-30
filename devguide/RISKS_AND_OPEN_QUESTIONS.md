@@ -231,6 +231,16 @@
   of a whole copy. What still grows with each revision is one membership row per
   statement; the retrieval archive (#100) will add responses, which licences and
   freshness decide.
+- **Transcript versions** (#85). gnomAD states the version of the canonical transcript
+  it annotates (gnomad_r4 uses GENCODE 39), and UniProt cross-references its own. They
+  can differ when either updates, and then the same id may encode another protein.
+  The residue check guards each placement, and the item records gnomAD's version; the
+  versions are not compared yet.
+- **Variants on transcripts UniProt does not state** (#85). After asking gnomAD for the
+  canonical transcript, 533 of about 22,000 protein changes over nine genes remain
+  unplaced for this reason; those checked lie outside the canonical transcript. Most such transcripts
+  encode separate TrEMBL entries (Ensembl states it). Alignment, the only remaining
+  route, would place a change on another protein.
 
 ## Open Questions
 - What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?

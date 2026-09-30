@@ -1398,3 +1398,28 @@ uibcdf/sabueso#83 (wave 2, chemistry).
   the field's value is its plain text (`normalized_value`).
 - Names and formula are not taken: ChEMBL and PubChem state them already, and a second
   spelling would add disagreements without knowledge.
+
+## gnomAD's consequence on the canonical transcript (2026-09-30)
+uibcdf/sabueso#85, found while evaluating Ensembl for wave 2 of #83.
+- **Ask the source that states it.** Asked for a gene, gnomAD states each variant's
+  consequence on the one transcript it ranks most severe. Asked for a transcript, it
+  states each variant's consequence on that transcript, with its version, in one
+  request (EGFR: 5,942 variants, 3 s). Sabueso now asks for the gene and for each
+  Ensembl transcript UniProt states for the canonical isoform.
+- **The canonical statement comes first.** A protein change gnomAD states on the
+  canonical transcript is kept as stated, and the residue check still applies. A
+  variant gnomAD states changes no residue there (intron or UTR) is not placed
+  (`not_coding_on_canonical`) and records that consequence, even where UniProt's
+  isoform map would place it: the same DNA change can shift a residue on one isoform
+  and none on the other. For TPI1, a frameshift at isoform 3's Pro40, which the map
+  had placed at canonical Pro3, is a 5' UTR duplication on the canonical transcript.
+- **What it changed**, over nine genes: the variants on transcripts UniProt does not
+  state fell from 810 to 533 (MAPK14 12 → 0, EGFR 161 → 88, BRCA1 83 → 38), and 328
+  are now stated as not coding on the canonical transcript. Those left that were
+  checked lie outside it: gnomAD states no consequence on the canonical transcript.
+- **Ensembl adds no stated map for them.** For the transcripts left, Ensembl states a
+  separate TrEMBL entry (e.g. Q504U8, E7EQX7) or no translation any more, so there is
+  no stated route to canonical positions. Alignment (#85 step 2) stays unbuilt.
+- `uniprot_isoform_map@1` stays for ClinVar, and for a gnomAD variant the canonical
+  answer does not state.
+

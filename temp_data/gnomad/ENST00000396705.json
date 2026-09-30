@@ -1,0 +1,157 @@
+{
+ "version": "gnomad_r4",
+ "record": {
+  "transcript": {
+   "transcript_id": "ENST00000396705",
+   "transcript_version": "10",
+   "gene_id": "ENSG00000111669"
+  },
+  "variants": [
+   {
+    "variant_id": "12-6867539-T-TGACCTTCAGCGCCTCGGCTCCAGCGCCATGGC",
+    "consequence": "5_prime_UTR_variant",
+    "hgvsp": null,
+    "hgvsc": "c.-26_6dup",
+    "transcript_id": "ENST00000396705",
+    "transcript_version": "10",
+    "flags": [],
+    "exome": {
+     "ac": 1,
+     "an": 1456556,
+     "af": 6.865510148597102e-07
+    },
+    "genome": null
+   },
+   {
+    "variant_id": "12-6867555-G-GGCTCCAGCGCCATGGCGC",
+    "consequence": "5_prime_UTR_variant",
+    "hgvsp": null,
+    "hgvsc": "c.-11_7dup",
+    "transcript_id": "ENST00000396705",
+    "transcript_version": "10",
+    "flags": [],
+    "exome": {
+     "ac": 1,
+     "an": 1459150,
+     "af": 6.853305006339307e-07
+    },
+    "genome": null
+   },
+   {
+    "variant_id": "12-6867681-G-GAGGTGGTTT",
+    "consequence": "stop_gained",
+    "hgvsp": "p.Val41_Cys42insTer",
+    "hgvsc": "c.115_115+1insAGGTGGTTT",
+    "transcript_id": "ENST00000396705",
+    "transcript_version": "10",
+    "flags": [
+     "lof_flag"
+    ],
+    "exome": {
+     "ac": 8,
+     "an": 1453658,
+     "af": 5.5033577361387615e-06
+    },
+    "genome": null
+   },
+   {
+    "variant_id": "12-6868872-T-TG",
+    "consequence": "frameshift_variant",
+    "hgvsp": "p.Cys42TrpfsTer31",
+    "hgvsc": "c.125dup",
+    "transcript_id": "ENST00000396705",
+    "transcript_version": "10",
+    "flags": [],
+    "exome": null,
+    "genome": {
+     "ac": 1,
+     "an": 152192,
+     "af": 6.570647603027754e-06
+    }
+   },
+   {
+    "variant_id": "12-6868873-G-A",
+    "consequence": "missense_variant",
+    "hgvsp": "p.Cys42Tyr",
+    "hgvsc": "c.125G>A",
+    "transcript_id": "ENST00000396705",
+    "transcript_version": "10",
+    "flags": [],
+    "exome": {
+     "ac": 39,
+     "an": 1460804,
+     "af": 2.6697626786345054e-05
+    },
+    "genome": {
+     "ac": 1,
+     "an": 152210,
+     "af": 6.569870573549701e-06
+    }
+   },
+   {
+    "variant_id": "12-6869106-A-G",
+    "consequence": "missense_variant",
+    "hgvsp": "p.Met83Val",
+    "hgvsc": "c.247A>G",
+    "transcript_id": "ENST00000396705",
+    "transcript_version": "10",
+    "flags": [],
+    "exome": {
+     "ac": 1,
+     "an": 1461884,
+     "af": 6.840488027777854e-07
+    },
+    "genome": null
+   },
+   {
+    "variant_id": "12-6869174-G-C",
+    "consequence": "missense_variant",
+    "hgvsp": "p.Glu105Asp",
+    "hgvsc": "c.315G>C",
+    "transcript_id": "ENST00000396705",
+    "transcript_version": "10",
+    "flags": [],
+    "exome": {
+     "ac": 393,
+     "an": 1461876,
+     "af": 0.00026883265064889223
+    },
+    "genome": {
+     "ac": 16,
+     "an": 152234,
+     "af": 0.00010510135712127383
+    }
+   },
+   {
+    "variant_id": "12-6869743-T-C",
+    "consequence": "synonymous_variant",
+    "hgvsp": "p.Ile171Ile",
+    "hgvsc": "c.513T>C",
+    "transcript_id": "ENST00000396705",
+    "transcript_version": "10",
+    "flags": [],
+    "exome": {
+     "ac": 2,
+     "an": 1461886,
+     "af": 1.368095733867073e-06
+    },
+    "genome": null
+   },
+   {
+    "variant_id": "12-6870354-T-C",
+    "consequence": "missense_variant",
+    "hgvsp": "p.Phe241Leu",
+    "hgvsc": "c.721T>C",
+    "transcript_id": "ENST00000396705",
+    "transcript_version": "10",
+    "flags": [],
+    "exome": {
+     "ac": 2,
+     "an": 1461708,
+     "af": 1.3682623342008117e-06
+    },
+    "genome": null
+   }
+  ]
+ }
+}

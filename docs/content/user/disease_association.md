@@ -100,10 +100,14 @@ ClinVar is not for diagnostic use without review by a genetics professional.
 
 `sabueso.resolve("P60174", gnomad={})` adds gnomAD's variants of the gene with a protein
 change, each with its allele count, allele number and frequency in exomes and genomes
-(`annotations.population_variants`). They are placed in UniProt numbering by the same
-rule as ClinVar, through an Ensembl transcript UniProt states for the canonical
-isoform. Variants without a protein change are left out, and the enrichment record
-counts them. By default every variant, up to 5000 (`{"limit": n}` asks for fewer); a cut is reported.
+(`annotations.population_variants`). gnomAD is asked for the gene and for the Ensembl
+transcripts UniProt states for the canonical isoform. When gnomAD states a protein
+change on the canonical transcript, that is the one kept, in UniProt numbering (the
+residue must match). A variant gnomAD states changes no residue of the canonical
+transcript (it is in an intron or a UTR there) keeps its consequence on the other
+transcript, with `canonical_consequence`, and is not placed
+(`not_coding_on_canonical`). Otherwise the same rule as ClinVar applies. Variants
+without a protein change are left out, and the enrichment record counts them. By default every variant, up to 5000 (`{"limit": n}` asks for fewer); a cut is reported.
 
 ## Coverage
 

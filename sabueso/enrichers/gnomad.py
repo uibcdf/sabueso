@@ -28,31 +28,79 @@ class GnomAD(Enricher):
         )
         if not genes:
             raise NothingToAsk("the entry cross-references no Ensembl gene")
-        return [Request(g, {"source": self.source, "identifier": g}) for g in genes]
+        canonical = context.transcripts["canonical"]
+        requests = []
+        for gene in genes:
+            # The Ensembl transcripts UniProt states encode its canonical isoform.
+            transcripts = sorted(
+                {
+                    x["id"].split(".")[0]
+                    for x in context.xrefs("Ensembl")
+                    if x["id"].split(".")[0] in canonical
+                    and any(
+                        p.get("key") == "GeneId"
+                        and str(p.get("value")).split(".")[0] == gene
+                        for p in x.get("properties") or []
+                    )
+                }
+            )
+            requests.append(
+                Request(
+                    gene,
+                    {"source": self.source, "identifier": gene},
+                    {"canonical_transcripts": transcripts},
+                )
+            )
+        return requests
 
     def fetch(self, client, request, options):
-        return client.variants(request.identifier)
+        from sabueso.core.errors import RecordNotFoundError
+
+        response = client.variants(request.identifier)
+        on_canonical = {}
+        for transcript in request.args["canonical_transcripts"]:
+            try:
+                on_canonical[transcript] = client.transcript_variants(transcript)
+            except RecordNotFoundError:
+                on_canonical[transcript] = None
+        return {**response, "on_canonical": on_canonical}
 
     def map(self, context, request, response, options):
-        from sabueso.mappings.gnomad import map_variants
+        from sabueso.mappings.gnomad import map_variants, merged
 
         limit = options.get("limit", DEFAULT_LIMIT)
-        variants = response["record"]["variants"]
-        coding = [v for v in variants if v.get("hgvsp")]
+        on_canonical = response.get("on_canonical") or {}
+        variants, without = merged(
+            response["record"]["variants"],
+            [
+                answer["record"]
+                for _, answer in sorted(on_canonical.items())
+                if answer is not None
+            ],
+        )
         mapped = map_variants(
-            coding[:limit],
+            variants[:limit],
             context.anchor,
             context.transcripts,
             response.get("retrieved_at", ""),
             response.get("version"),
         )
         return mapped, {
-            "status": "added" if coding else "not_found",
+            "status": "added" if variants else "not_found",
             "version": response.get("version"),
             "count": len(mapped["source_assertions"]),
-            "without_protein_change": len(variants) - len(coding),
-            "truncated": len(coding) > limit,
-            "total_count": len(coding),
+            "without_protein_change": without,
+            "truncated": len(variants) > limit,
+            "total_count": len(variants),
+            "canonical_transcripts": [
+                {
+                    "transcript": transcript,
+                    "version": answer["record"]["transcript"].get("transcript_version"),
+                }
+                if answer is not None
+                else {"transcript": transcript, "not_found": True}
+                for transcript, answer in sorted(on_canonical.items())
+            ],
         }
 
 

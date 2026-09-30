@@ -193,7 +193,8 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
         # not_recorded until the card is built again.
         {"path": "source_assertion_store[].acquisition", "filled_by": "refresh"},
     ],
-    # The rule that chose the records a capped source kept (#88, #98), and ChEBI (#83).
+    # The rule that chose the records a capped source kept (#88, #98), ChEBI (#83), and
+    # gnomAD on the canonical transcript (#85).
     "0.3.8": [
         *(
             {"path": path, "filled_by": "chebi", "entity_types": ("small_molecule",)}
@@ -214,6 +215,15 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "filled_by": "pubchem_bioassay",
             "entity_types": ("protein",),
         },
+        # gnomAD's consequence on the canonical transcript (#85).
+        *(
+            {"path": path, "filled_by": "gnomad", "entity_types": ("protein",)}
+            for path in (
+                "annotations.population_variants[].transcript_version",
+                "annotations.population_variants[].canonical_consequence",
+                "quality.enrichments[].canonical_transcripts (gnomAD)",
+            )
+        ),
     ],
 }
 

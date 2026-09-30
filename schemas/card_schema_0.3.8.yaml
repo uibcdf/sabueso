@@ -137,7 +137,15 @@ schema:
     hold what ChEBI states for an entry UniChem links and whose stated InChIKey is the
     anchor (uibcdf/sabueso#83), identifiers.chebi, annotations.chemical_classes (is a),
     annotations.chemical_roles (direct or inherited, biological, chemical or an
-    application) and annotations.definition. Additive, so a 0.3.7 card is a valid 0.3.8
+    application) and annotations.definition. gnomAD's population variants are also
+    asked for on each Ensembl transcript UniProt states for the canonical isoform
+    (uibcdf/sabueso#85), and an item keeps gnomAD's consequence on that transcript when
+    it states a protein change there, with transcript_version. When gnomAD states that
+    the variant changes no residue of the canonical transcript, the item keeps its
+    consequence on the other transcript, records canonical_consequence (transcript,
+    transcript_version, consequence, hgvs_c) and is not placed (not_coding_on_canonical).
+    The enrichment record lists the canonical transcripts asked (canonical_transcripts,
+    each with its version, or not_found). Additive, so a 0.3.7 card is a valid 0.3.8
     card without them.
 card_base:
   meta:
@@ -601,6 +609,7 @@ protein_card:
       - variant_id: string
         consequence: string
         transcript: string
+        transcript_version: string
         hgvs_c: string
         hgvs_p: string
         flags:
@@ -625,6 +634,11 @@ protein_card:
           isoform_position: number
         numbering: string
         not_placed: string
+        canonical_consequence:
+          transcript: string
+          transcript_version: string
+          consequence: string
+          hgvs_c: string
       source_assertion_ids:
       - string
     interface_mutations:

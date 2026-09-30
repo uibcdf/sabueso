@@ -79,6 +79,9 @@ CALLS = {
     "gnomad.get_variants": lambda: gnomad.get_variants(
         "ENSG00000111669", client=gnomad.FixtureGnomADClient("temp_data")
     ),
+    "gnomad.get_transcript_variants": lambda: gnomad.get_transcript_variants(
+        "ENST00000396705", client=gnomad.FixtureGnomADClient("temp_data")
+    ),
     "ncbi_taxonomy.get_taxon": lambda: ncbi_taxonomy.get_taxon(
         "5693", client=ncbi_taxonomy.FixtureNCBITaxonomyClient("temp_data")
     ),

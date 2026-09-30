@@ -67,6 +67,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     `annotations.chemical_classes`, `annotations.chemical_roles` and
     `annotations.definition`, joined through UniChem's link and ChEBI's stated
     InChIKey;
+  - gnomAD on the canonical transcript (#85): gnomAD is also asked for each Ensembl
+    transcript UniProt states for the canonical isoform, its consequence there comes
+    first (`transcript_version`), and a change it states is not coding there is not
+    placed (`not_coding_on_canonical`, `canonical_consequence`);
   - local mirrors (#100, phase 2): `sabueso.mirrors` (install, status, update policies,
     remove, `using` with `mirror_first` or `offline`); BindingDB's monthly release as
     the first mirror (`MirrorBindingDBClient`), recorded as `access: mirror` with its

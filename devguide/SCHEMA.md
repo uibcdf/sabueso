@@ -4,7 +4,8 @@
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
   - `0.3.8` is current, not yet released: it records the ordering rule of a capped
     source in its enrichment record (`record_order` for BindingDB, `row_order` for
-    PubChem BioAssay, #98);
+    PubChem BioAssay, #98), and gnomAD's consequence on the canonical transcript
+    (`transcript_version`, `canonical_consequence`, #85);
   - `0.3.7` is the schema of release 0.7.0: it adds `annotations.interface_mutations`
     (SKEMPI 2.0, #83), disease cards (MONDO, #90), the MONDO and MedGen identity and
     hierarchy relationships on protein cards, `mentioned_in` (Europe PMC, #92),
@@ -343,12 +344,19 @@ A Relationship is first-class, traceable knowledge:
       give the map to canonical positions. A position inside an isoform's own segment
       has none (`isoform_specific_position`).
     - Other reasons: `no_protein_change`, `unparsed_protein_change`,
-      `transcript_not_canonical`, `stop_codon` and `residue_mismatch`.
+      `transcript_not_canonical`, `not_coding_on_canonical` (gnomAD), `stop_codon` and
+      `residue_mismatch`.
   - population variants (added in #83, schema 0.3.6): `annotations.population_variants`,
     one item per gnomAD variant with a protein change, with the exome and genome
     `{ac, an, af}` as stated. Placed by the same rule as ClinVar, through an Ensembl
-    transcript UniProt states for the canonical isoform. gnomAD's transcript ids carry
-    no version, so the residue check guards against a changed sequence.
+    transcript UniProt states for the canonical isoform. Since schema 0.3.8 (#85)
+    gnomAD is also asked for each such transcript, and states each variant's
+    consequence on it, with the transcript's version (`transcript_version`); that
+    consequence is kept when it is a protein change. A variant gnomAD states changes no
+    residue of the canonical transcript keeps its consequence on the other transcript,
+    records `canonical_consequence` (`transcript`, `transcript_version`, `consequence`,
+    `hgvs_c`) and is not placed (`not_coding_on_canonical`), even where UniProt's
+    isoform map would place it. The residue check still applies.
   - disease hierarchy (added in #90, schema 0.3.7): `subclass_of` (disease →
     `mondo:<id>`), one per parent term MONDO states.
   - text mentions (added in #92, schema 0.3.7): `mentioned_in` (protein →
