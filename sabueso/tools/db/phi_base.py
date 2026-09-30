@@ -37,7 +37,7 @@ from urllib.error import HTTPError, URLError
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.tools.db import _release
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "PHI-base"
@@ -156,8 +156,12 @@ class OnlinePHIBaseClient:
         def build() -> Dict[str, Any]:
             # Sessions as compact text: a fraction of the parsed release's memory.
             sessions, index = self._download()
-            retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
-            return {"retrieved_at": retrieved_at, "sessions": sessions, "index": index}
+            retrieval = stamp()
+            return {
+                "retrieved_at": retrieval.value,
+                "sessions": sessions,
+                "index": index,
+            }
 
         kept = _release.remembered(SOURCE, release["record"], build)
         if accession not in kept["index"]:

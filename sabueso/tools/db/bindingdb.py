@@ -24,7 +24,6 @@ reads ``<directory>/bindingdb/<accession>.json``.
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
@@ -32,7 +31,7 @@ from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 BINDINGDB_REST = "https://bindingdb.org/rest/getLigandsByUniprots"
@@ -83,7 +82,7 @@ class OnlineBindingDBClient:
         query = urlencode(
             {"uniprot": accession, "cutoff": cutoff, "response": "application/json"}
         )
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         try:
             with urlopen(f"{BINDINGDB_REST}?{query}", timeout=self.timeout) as resp:  # nosec
                 data = json.loads(resp.read().decode("utf-8"))
@@ -94,7 +93,7 @@ class OnlineBindingDBClient:
         records = _affinities(data)
         if not records:
             raise RecordNotFoundError(f"BindingDB has no affinities for {accession}")
-        return _kept(accession, retrieved_at, records, limit)
+        return _kept(accession, retrieval.value, records, limit)
 
 
 class FixtureBindingDBClient:

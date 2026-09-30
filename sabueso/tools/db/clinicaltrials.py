@@ -18,7 +18,6 @@ source be acknowledged ("Source: National Library of Medicine").
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
@@ -26,7 +25,7 @@ from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "ClinicalTrials.gov"
@@ -72,7 +71,7 @@ class OnlineClinicalTrialsClient:
 
     def studies(self, nct_ids: Iterable[str]) -> Dict[str, Any]:
         ids = sorted({i.strip().upper() for i in nct_ids if i and i.strip()})
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         version = _get("version", {}, self.timeout).get("dataTimestamp")
         found: Dict[str, Any] = {}
         for i in range(0, len(ids), BATCH):
@@ -91,7 +90,7 @@ class OnlineClinicalTrialsClient:
                 if _nct(study):
                     found[_nct(study)] = study
         return {
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "version": version,
             "record": {i: found[i] for i in ids if i in found},
             "missing": [i for i in ids if i not in found],

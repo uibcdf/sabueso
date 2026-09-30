@@ -18,7 +18,6 @@ more. ``OnlineStringClient`` queries the STRING API;
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
@@ -26,7 +25,7 @@ from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 STRING_API = "https://string-db.org/api/json"
@@ -75,7 +74,7 @@ class OnlineStringClient:
             "required_score": required_score,
             "limit": limit,
         }
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         # One partner more than the limit tells whether STRING holds more: STRING
         # states no total, and a cut must never pass for the whole answer.
         results = _get(
@@ -88,7 +87,7 @@ class OnlineStringClient:
         return {
             "query": query,
             "version": self.version(),
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "results": results[:limit],
             "truncated": len(results) > limit,
         }

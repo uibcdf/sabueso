@@ -25,7 +25,6 @@ no entry and ``ConnectorError`` when the source cannot answer.
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Tuple
 from urllib.error import HTTPError, URLError
@@ -33,7 +32,7 @@ from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 RCSB_GRAPHQL = "https://data.rcsb.org/graphql"
@@ -134,7 +133,7 @@ class OnlineRCSBClient:
     def fetch_structure(self, pdb_id: str) -> Tuple[Dict[str, Any], str]:
         """The entry, or, when RCSB fails on its instance-level fields, the entry
         without them, marked ``_partial`` (``{"missing": [...], "reason": ...}``)."""
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         data = self._post(STRUCTURE_QUERY, pdb_id)
         partial = None
         errors = data.get("errors") or []
@@ -153,14 +152,14 @@ class OnlineRCSBClient:
             raise RecordNotFoundError(f"RCSB has no entry {pdb_id}")
         if partial:
             entry["_partial"] = partial
-        return entry, retrieved_at
+        return entry, retrieval.value
 
     def fetch_structures(self, pdb_ids: Any) -> Dict[str, Any]:
         ids = list(dict.fromkeys(p.upper() for p in pdb_ids))
         out: Dict[str, Any] = {}
         for i in range(0, len(ids), BATCH_SIZE):
             batch = ids[i : i + BATCH_SIZE]
-            retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+            retrieval = stamp()
             try:
                 data = self._post(BATCH_QUERY, ",".join(batch), {"ids": batch})
             except ConnectorError:
@@ -186,7 +185,7 @@ class OnlineRCSBClient:
                 for pdb_id in batch:
                     index = held.get(pdb_id)
                     if index is not None and index not in touched:
-                        out[pdb_id] = (entries[index], retrieved_at)
+                        out[pdb_id] = (entries[index], retrieval.value)
                     elif index is not None or unnamed:
                         again.append(pdb_id)  # alone, with the partial fallback
                     else:

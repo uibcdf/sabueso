@@ -16,7 +16,6 @@ API in batches; ``FixtureNCBITaxonomyClient`` reads
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
@@ -24,7 +23,7 @@ from urllib.error import HTTPError, URLError
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.tools.db import _keys
-from sabueso.tools.db._http import request, urlopen
+from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 DATASETS_TAXON = "https://api.ncbi.nlm.nih.gov/datasets/v2/taxonomy/taxon"
@@ -43,7 +42,7 @@ class OnlineNCBITaxonomyClient:
 
     def taxa(self, tax_ids: Iterable[Any]) -> Dict[str, Any]:
         ids = _ids(tax_ids)
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         found: Dict[int, Dict[str, Any]] = {}
         for i in range(0, len(ids), BATCH):
             chunk = ids[i : i + BATCH]
@@ -67,7 +66,7 @@ class OnlineNCBITaxonomyClient:
                         k: taxon[k] for k in KEPT if k in taxon
                     }
         return {
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "record": [found[t] for t in ids if t in found],
             "missing": [t for t in ids if t not in found],
         }

@@ -16,14 +16,13 @@ Sabueso reads); ``FixtureGnomADClient`` reads ``<directory>/gnomad/<ENSG>.json``
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import request, urlopen
+from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "gnomAD"
@@ -51,7 +50,7 @@ class OnlineGnomADClient:
         self.timeout = timeout
 
     def variants(self, gene: str) -> Dict[str, Any]:
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         body = json.dumps({"query": QUERY, "variables": {"gene": gene}}).encode("utf-8")
         try:
             with urlopen(  # nosec - trusted endpoint
@@ -68,7 +67,7 @@ class OnlineGnomADClient:
             raise RecordNotFoundError(f"gnomAD has no gene {gene}")
         variants = found.pop("variants") or []
         return {
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "version": DATASET,
             "record": {"gene": found, "variants": variants},
         }

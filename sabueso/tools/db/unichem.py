@@ -21,7 +21,6 @@ reads ``<directory>/unichem/source<id>__<compound id>.json``.
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
@@ -29,7 +28,7 @@ from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 UNICHEM_API = "https://www.ebi.ac.uk/unichem/api/v1/compounds"
@@ -67,7 +66,7 @@ class OnlineUniChemClient:
         request = Request(
             UNICHEM_API, data=body, headers={"Content-Type": "application/json"}
         )
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         try:
             with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
@@ -78,7 +77,7 @@ class OnlineUniChemClient:
         compounds = data.get("compounds") or []
         if not compounds:
             raise RecordNotFoundError(f"UniChem has no compound {inchikey}")
-        return {"retrieved_at": retrieved_at, "compound": _compound(compounds[0])}
+        return {"retrieved_at": retrieval.value, "compound": _compound(compounds[0])}
 
     def compound_by_source(self, source_id: int, compound_id: str) -> Dict[str, Any]:
         body = json.dumps(
@@ -91,7 +90,7 @@ class OnlineUniChemClient:
         request = Request(
             UNICHEM_API, data=body, headers={"Content-Type": "application/json"}
         )
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         label = f"source {source_id} compound {compound_id}"
         try:
             with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
@@ -101,7 +100,7 @@ class OnlineUniChemClient:
         compounds = data.get("compounds") or []
         if not compounds:
             raise RecordNotFoundError(f"UniChem has no {label}")
-        return {"retrieved_at": retrieved_at, "compound": _compound(compounds[0])}
+        return {"retrieved_at": retrieval.value, "compound": _compound(compounds[0])}
 
 
 class FixtureUniChemClient:

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
@@ -11,7 +10,7 @@ from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 
@@ -201,7 +200,7 @@ class OnlineChEMBLClient:
     def bioactivities(
         self, target: str, limit: int = DEFAULT_ACTIVITY_LIMIT
     ) -> Dict[str, Any]:
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         _chembl_get(f"target/{target}.json", {"only": "target_chembl_id"}, self.timeout)
         activities: list = []
         total = 0
@@ -228,7 +227,7 @@ class OnlineChEMBLClient:
         return {
             "query": {"target_chembl_id": target, "limit": limit},
             "version": self.version(),
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "total_count": total,
             "truncated": total > len(activities),
             "activities": activities,
@@ -284,7 +283,7 @@ class OnlineChEMBLClient:
     ) -> Dict[str, Any]:
         """The activities of named assays, whatever their target: how a PubChem copy
         leads to a ChEMBL original a target-based query did not return (#68)."""
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         ids = sorted({i for i in assay_ids if i})
         activities: list = []
         for i in range(0, len(ids), ASSAY_CHUNK):
@@ -311,7 +310,7 @@ class OnlineChEMBLClient:
         return {
             "query": {"assay_chembl_id": ids, "limit": limit},
             "version": self.version(),
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "total_count": len(activities),
             "truncated": len(activities) >= limit,
             "activities": activities,
@@ -322,7 +321,7 @@ class OnlineChEMBLClient:
     def molecules(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
         """Molecule records by ChEMBL id: ``{version, retrieved_at, molecules, missing}``."""
         ids = sorted({i for i in chembl_ids if i})
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         found: Dict[str, Any] = {}
         for i in range(0, len(ids), MOLECULE_CHUNK):
             chunk = ids[i : i + MOLECULE_CHUNK]
@@ -339,7 +338,7 @@ class OnlineChEMBLClient:
                 found[record["molecule_chembl_id"]] = _molecule(record)
         return {
             "version": self.version(),
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "molecules": found,
             "missing": [i for i in ids if i not in found],
         }
@@ -348,7 +347,7 @@ class OnlineChEMBLClient:
         """Indications by molecule ChEMBL id: ``{version, retrieved_at, indications,
         missing}``. ``missing`` lists molecules ChEMBL states no indication for."""
         ids = sorted({i for i in chembl_ids if i})
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         found: Dict[str, List[Dict[str, Any]]] = {}
         for i in range(0, len(ids), MOLECULE_CHUNK):
             chunk = ids[i : i + MOLECULE_CHUNK]
@@ -374,7 +373,7 @@ class OnlineChEMBLClient:
                     break
         return {
             "version": self.version(),
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "indications": found,
             "missing": [i for i in ids if i not in found],
         }
@@ -384,7 +383,7 @@ class OnlineChEMBLClient:
         ``EFO:…``/``MONDO:…`` (``efo_id``) or ``MESH:D…`` (``mesh_id``). Returns
         ``{version, retrieved_at, indications: {molecule: [indication, ...]}}``."""
         ids = sorted({i for i in disease_ids if i})
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         found: Dict[str, List[Dict[str, Any]]] = {}
         filters = {
             "efo_id__in": [i for i in ids if not i.upper().startswith("MESH:")],
@@ -421,7 +420,7 @@ class OnlineChEMBLClient:
                     break
         return {
             "version": self.version(),
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "indications": found,
         }
 

@@ -37,14 +37,13 @@ import csv
 import io
 import json
 import time
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 PUG = "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
@@ -123,7 +122,7 @@ class OnlinePubChemBioAssayClient:
         return data
 
     def assays(self, accession: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         # One request for every result of the target, in every assay (#98).
         text = self._get(f"assay/target/accession/{accession}/concise/CSV", True)
         reader = csv.reader(io.StringIO(text))
@@ -164,7 +163,7 @@ class OnlinePubChemBioAssayClient:
                 inchikeys[str(prop["CID"])] = prop.get("InChIKey")
         return {
             "accession": accession,
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "record": {**record, "summaries": summaries, "inchikeys": inchikeys},
         }
 

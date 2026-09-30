@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
@@ -11,7 +10,7 @@ from urllib.parse import quote, urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import request, urlopen
+from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 
@@ -64,7 +63,7 @@ class OnlinePubChemClient:
 
     def compound(self, cid: str) -> Dict[str, Any]:
         url = f"{PUBCHEM_PUG}/{cid}/property/{quote(PROPERTIES, safe=',')}/JSON"
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         try:
             with urlopen(url, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
@@ -76,7 +75,7 @@ class OnlinePubChemClient:
             ) from exc
         except (URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"PubChem request for {cid} failed: {exc}") from exc
-        return {"retrieved_at": retrieved_at, "record": data}
+        return {"retrieved_at": retrieval.value, "record": data}
 
     def structure(self, notation: str, structure: str) -> Dict[str, Any]:
         """The compounds PubChem states a structure is (#93): PubChem standardizes the
@@ -90,16 +89,16 @@ class OnlinePubChemClient:
         url = f"{PUBCHEM_COMPOUND}/{notation}/cids/JSON"
         # POST: a SMILES or an InChI carries characters a URL path would mangle.
         data = urlencode({notation: structure}).encode("utf-8")
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         try:
             with urlopen(request(url, data=data), timeout=self.timeout) as resp:
                 body = json.loads(resp.read().decode("utf-8"))
         except HTTPError as exc:
             if exc.code == 404:
-                return {"retrieved_at": retrieved_at, "cids": [], "fault": None}
+                return {"retrieved_at": retrieval.value, "cids": [], "fault": None}
             if exc.code == 400:
                 return {
-                    "retrieved_at": retrieved_at,
+                    "retrieved_at": retrieval.value,
                     "cids": [],
                     "fault": _fault(exc),
                 }
@@ -108,7 +107,7 @@ class OnlinePubChemClient:
             ) from exc
         except (URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"PubChem structure lookup failed: {exc}") from exc
-        return {"retrieved_at": retrieved_at, **_matched(body)}
+        return {"retrieved_at": retrieval.value, **_matched(body)}
 
 
 def _fault(exc: HTTPError) -> str:

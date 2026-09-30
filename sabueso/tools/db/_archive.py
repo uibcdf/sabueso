@@ -12,10 +12,20 @@ A record is referenced as ``sabueso:retrieval:sha256:<hex>``, a hash of all of t
 above, so the same answer read at another time is another record over the same stored
 content.
 
-Nothing is archived unless the user asks: ``with archive.recording():`` (or
-``sabueso.RetrievalArchive(path)``). A card built inside lists the records its build
-made (``quality.retrievals``). Replaying from the archive, and reusing fresh answers,
-come next (#100).
+Nothing is archived unless the user asks. Three modes, each a context:
+
+- ``archive.recording()``: every answer is received from the source and kept;
+- ``archive.reusing(max_age)``: an answer kept within ``max_age`` is used instead of
+  asking again; anything else is asked and kept;
+- ``archive.replaying(of=card)``: answers come from the archive only, never from the
+  network. With ``of`` (a card, or its ``quality.retrievals``), a request is answered
+  with the records that card's build received, in the order it received them, so a
+  request made twice gets its two answers; otherwise with the latest record. A request
+  the archive does not hold raises ``NotArchivedError``, and a card records that source
+  as ``not_queried`` (``not_in_archive``), never as absent or failed.
+
+An answer taken from the archive keeps the time it was read. A card built inside lists
+the records its build used, and the mode (``quality.retrievals``).
 
 The archive is a local SQLite file, the user's. Whether a source's terms allow keeping
 or sharing its responses is recorded per source in the registry (#100, next step).
@@ -30,7 +40,7 @@ import sqlite3
 import threading
 import zlib
 from contextlib import contextmanager
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterator, List
 
@@ -170,13 +180,54 @@ class RetrievalArchive:
         return {"ref": ref, "size": len(content), **record}
 
     @contextmanager
-    def recording(self) -> Iterator["RetrievalArchive"]:
-        """Within the block, every answer a source client receives is archived."""
-        token = _ACTIVE.set(self)
+    def _mode(
+        self, mode: str, max_age: timedelta | None = None, plan: Any = None
+    ) -> Iterator[Any]:
+        token = _ACTIVE.set(Mode(self, mode, max_age, plan))
         try:
             yield self
         finally:
             _ACTIVE.reset(token)
+
+    def recording(self):
+        """Within the block, every answer a source client receives is archived."""
+        return self._mode("record")
+
+    def reusing(self, max_age: timedelta):
+        """Within the block, an answer archived within ``max_age`` is used instead of
+        asking the source again; the rest is asked and archived."""
+        if not isinstance(max_age, timedelta) or max_age.total_seconds() <= 0:
+            raise ValueError("max_age is a positive datetime.timedelta")
+        return self._mode("reuse", max_age)
+
+    def replaying(self, of: Any = None):
+        """Within the block, answers come from the archive only; the network is never
+        asked. ``of``: a card (or its ``quality.retrievals``) whose build to replay, in
+        the order its answers were received."""
+        return self._mode("replay", plan=_plan(of))
+
+    def find(
+        self,
+        method: str,
+        url: str,
+        request_body: bytes | None,
+        max_age: timedelta | None = None,
+    ) -> Dict[str, Any] | None:
+        """The latest record of this request (within ``max_age`` of now), or None."""
+        request_hash = _sha256(request_body) if request_body else None
+        query = (
+            "SELECT ref, retrieved_at FROM retrievals WHERE method = ? AND url = ? "
+            "AND request_hash IS ? ORDER BY retrieved_at DESC, rid DESC LIMIT 1"
+        )
+        with self._session() as conn:
+            row = conn.execute(query, (method, url, request_hash)).fetchone()
+        if row is None:
+            return None
+        if max_age is not None:
+            when = datetime.fromisoformat(row[1])
+            if datetime.now(timezone.utc) - when > max_age:
+                return None
+        return self.get(row[0])
 
     # --- reading -----------------------------------------------------------------------
 
@@ -230,9 +281,66 @@ class RetrievalArchive:
 # --- hooks for _http and the card tools ---------------------------------------------------
 
 
-def active() -> RetrievalArchive | None:
-    """The archive answers are recorded in, in this context, or None."""
+def _plan(of: Any) -> Dict[tuple, List[str]] | None:
+    """Per request, the records a build received, in order (``replaying(of=...)``)."""
+    if of is None:
+        return None
+    manifest = of.quality.get("retrievals") if hasattr(of, "quality") else of
+    if not manifest or "records" not in manifest:
+        raise ValueError("replaying(of=...) takes a card built with an archive")
+    plan: Dict[tuple, List[str]] = {}
+    for r in manifest["records"]:
+        key = (r["method"], r["url"], r.get("request_hash"))
+        plan.setdefault(key, []).append(r["ref"])
+    return plan
+
+
+class Mode:
+    """An active archive, how it is used (``record``, ``reuse``, ``replay``), the
+    freshness a reused answer must have, and the build a replay follows."""
+
+    def __init__(
+        self, archive: RetrievalArchive, name: str, max_age: Any, plan: Any = None
+    ) -> None:
+        self.archive, self.name, self.max_age = archive, name, max_age
+        self.plan = plan
+        self._lock = threading.Lock()
+
+    def planned(self, method: str, url: str, request_body: bytes | None) -> str | None:
+        """The next record the replayed build received for this request, or None."""
+        if not self.plan:
+            return None
+        key = (method, url, _sha256(request_body) if request_body else None)
+        with self._lock:
+            refs = self.plan.get(key)
+            if not refs:
+                return None
+            return refs.pop(0) if len(refs) > 1 else refs[0]
+
+    @property
+    def path(self) -> Path:
+        return self.archive.path
+
+
+def active() -> Mode | None:
+    """The archive in use in this context, and its mode, or None."""
     return _ACTIVE.get()
+
+
+def summary(record: Dict[str, Any]) -> Dict[str, Any]:
+    """What a build notes of a record (``quality.retrievals``)."""
+    return {
+        k: record.get(k)
+        for k in (
+            "ref",
+            "method",
+            "url",
+            "request_hash",
+            "status",
+            "retrieved_at",
+            "content_hash",
+        )
+    } | {"size": record.get("size", len(record.get("content") or b""))}
 
 
 def note(record: Dict[str, Any]) -> None:
@@ -256,20 +364,11 @@ def collecting() -> Iterator[List[Dict[str, Any]]]:
             outer.extend(made)
 
 
-def manifest(archive: RetrievalArchive, made: List[Dict[str, Any]]) -> Dict[str, Any]:
+def manifest(mode: Mode, made: List[Dict[str, Any]]) -> Dict[str, Any]:
     """What a card records of its build's retrievals (``quality.retrievals``)."""
-    seen: Dict[str, Dict[str, Any]] = {}
-    for r in made:
-        seen.setdefault(
-            r["ref"],
-            {
-                "ref": r["ref"],
-                "method": r["method"],
-                "url": r["url"],
-                "status": r["status"],
-                "retrieved_at": r["retrieved_at"],
-                "content_hash": r["content_hash"],
-                "size": r["size"],
-            },
-        )
-    return {"archive": archive.path.name, "records": list(seen.values())}
+    # In the order received; a request answered twice is listed twice.
+    records = [summary(r) for r in made]
+    out: Dict[str, Any] = {"archive": mode.path.name, "mode": mode.name}
+    if mode.max_age is not None:
+        out["max_age_seconds"] = int(mode.max_age.total_seconds())
+    return {**out, "records": records}

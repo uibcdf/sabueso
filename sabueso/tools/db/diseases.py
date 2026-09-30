@@ -27,7 +27,6 @@ Ensembl proteins, and the proteins no channel names.
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
@@ -37,7 +36,7 @@ from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError
 from sabueso.tools.db import _release
 from sabueso.tools.db._http import request as http_request
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "DISEASES"
@@ -123,11 +122,11 @@ class OnlineDISEASESClient:
         self, proteins: Iterable[str], channels: Iterable[str] = CHANNELS
     ) -> Dict[str, Any]:
         ids = sorted({p.split(".")[0] for p in proteins if p})
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         versions, indexes = {}, {}
         for channel in channels:
             versions[channel], indexes[channel] = self._fetch(channel)
-        return {"retrieved_at": retrieved_at, "version": versions} | _select(
+        return {"retrieved_at": retrieval.value, "version": versions} | _select(
             indexes, ids
         )
 

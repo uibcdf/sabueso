@@ -23,14 +23,13 @@ answers 404) and ``ConnectorError`` on failures.
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 PDBE_GRAPH_API = "https://www.ebi.ac.uk/pdbe/graph-api"
@@ -49,7 +48,7 @@ class OnlinePDBeKBClient:
 
     def _fetch(self, kind: str, accession: str) -> Dict[str, Any]:
         url = f"{PDBE_GRAPH_API}/uniprot/{kind}/{accession}"
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         missing = f"PDBe-KB has no {KINDS[kind]} for {accession}"
         try:
             with urlopen(url, timeout=self.timeout) as resp:  # nosec - trusted endpoint
@@ -67,7 +66,11 @@ class OnlinePDBeKBClient:
         record = data.get(accession)
         if not record:
             raise RecordNotFoundError(missing)
-        return {"accession": accession, "retrieved_at": retrieved_at, "record": record}
+        return {
+            "accession": accession,
+            "retrieved_at": retrieval.value,
+            "record": record,
+        }
 
     def ligand_sites(self, accession: str) -> Dict[str, Any]:
         return self._fetch("ligand_sites", accession)

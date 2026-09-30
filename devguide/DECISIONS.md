@@ -1332,3 +1332,18 @@ uibcdf/sabueso#99.
   content hash, and when; the content is stored once per SHA-256. A card lists the
   records its build made. Retrieval times still come from each client's clock, so
   replay waits for the next step: taking them from the answers.
+- **Replay and reuse; times from the answers** (same day, #100, phase 1).
+  - A client dated its answers with its own clock before asking, so a replay would
+    have dated statements at replay time. Clients now open a stamp (`_http.stamp`,
+    35 sites changed mechanically) whose value is the time of their first answer
+    when an archive is active. A recorded statement and its record agree, and a
+    replayed one keeps its original time.
+  - `replaying(of=card)` follows the card's build: a request answered twice (UniProt's
+    entry is fetched by the resolver and again by the card tool) gets its two answers,
+    in order. Without `of`, the latest record answers. Live, TcTIM's build replayed
+    without the network in 4.4 s and gave an identical card.
+  - A request the archive does not hold raises `NotArchivedError`, a
+    `ConnectorError`, so every client path handles it. `sabueso.resolve` turns those
+    records into `not_queried` (`not_in_archive`).
+  - `reusing(max_age)` is the design's `archive_first`: an answer archived within
+    `max_age` is used, anything older is asked and kept.

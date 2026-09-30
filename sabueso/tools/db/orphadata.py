@@ -18,7 +18,6 @@ process, in memory; nothing is written. The version recorded is the file's date.
 from __future__ import annotations
 
 import xml.etree.ElementTree as ET  # nosec - a trusted source's own file
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 from urllib.error import HTTPError, URLError
@@ -26,7 +25,7 @@ from urllib.error import HTTPError, URLError
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.tools.db import _release
-from sabueso.tools.db._http import request, urlopen
+from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "Orphanet"
@@ -119,7 +118,7 @@ class OnlineOrphadataClient:
             raise ConnectorError(f"Orphadata file is not valid XML: {exc}") from exc
 
     def associations(self, accession: str) -> Dict[str, Any]:
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         version, index = self._index()
         if accession not in index:
             raise RecordNotFoundError(
@@ -127,7 +126,7 @@ class OnlineOrphadataClient:
                 version=version,
             )
         return {
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "version": version,
             "record": index[accession],
         }
@@ -135,7 +134,7 @@ class OnlineOrphadataClient:
     def genes(self, orpha_code: str) -> Dict[str, Any]:
         """The genes Orphanet associates with a disorder: ``{"retrieved_at",
         "version", "record": [row with "uniprot", ...]}``."""
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         version, index = self._index()
         rows = genes_of(index, orpha_code)
         if not rows:
@@ -143,7 +142,7 @@ class OnlineOrphadataClient:
                 f"Orphadata ({version}) names no gene for ORPHA:{orpha_code}",
                 version=version,
             )
-        return {"retrieved_at": retrieved_at, "version": version, "record": rows}
+        return {"retrieved_at": retrieval.value, "version": version, "record": rows}
 
 
 class FixtureOrphadataClient:

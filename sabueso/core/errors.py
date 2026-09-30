@@ -53,6 +53,13 @@ class ConnectorError(SabuesoError):
     catalog_key = "ConnectorError"
 
 
+class NotArchivedError(ConnectorError):
+    """An answer a retrieval archive does not hold, while replaying from it (#100): the
+    source was not asked, which is neither its failure nor an absence."""
+
+    catalog_key = "ConnectorError"
+
+
 class RecordNotFoundError(SabuesoError):
     """A source was consulted and holds no record for the requested identifier.
 

@@ -16,7 +16,6 @@ codes from a batch without an error, so ``missing`` is computed, never assumed e
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
@@ -24,7 +23,7 @@ from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 RCSB_GRAPHQL = "https://data.rcsb.org/graphql"
@@ -44,9 +43,9 @@ class OnlineCCDClient:
 
     def components(self, comp_ids: Iterable[str]) -> Dict[str, Any]:
         codes = _codes(comp_ids)
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         if not codes:
-            return {"retrieved_at": retrieved_at, "components": {}, "missing": []}
+            return {"retrieved_at": retrieval.value, "components": {}, "missing": []}
         body = json.dumps(
             {"query": COMPONENTS_QUERY, "variables": {"ids": codes}}
         ).encode("utf-8")
@@ -66,7 +65,7 @@ class OnlineCCDClient:
             if record and record.get("chem_comp")
         }
         return {
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "components": found,
             "missing": [c for c in codes if c not in found],
         }

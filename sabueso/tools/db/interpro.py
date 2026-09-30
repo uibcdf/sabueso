@@ -18,7 +18,6 @@ unknown accession, so the two cannot be told apart) and ``ConnectorError`` on fa
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
@@ -26,7 +25,7 @@ from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 INTERPRO_API = "https://www.ebi.ac.uk/interpro/api"
@@ -40,7 +39,7 @@ class OnlineInterProClient:
     def site_residues(self, accession: str) -> Dict[str, Any]:
         url = f"{INTERPRO_API}/protein/uniprot/{accession}/?residues"
         request = Request(url, headers={"Accept": "application/json"})
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         try:
             with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 body = resp.read()
@@ -65,7 +64,7 @@ class OnlineInterProClient:
             raise RecordNotFoundError(NO_RESIDUES.format(accession))
         return {
             "accession": accession,
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "version": version,
             "residues": residues,
         }

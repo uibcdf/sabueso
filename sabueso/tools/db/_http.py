@@ -16,6 +16,11 @@ Clients import ``urlopen`` from here instead of ``urllib.request``.
 - **What was downloaded** (#100). While a retrieval archive is recording
   (``tools.db._archive``), every final answer, a 404 included, is kept there, and the
   client receives it as it would have.
+- **When an answer was read** (``stamp``, #100). A client opens a stamp when it starts
+  asking, and uses ``stamp.value`` as the retrieval time of what it returns: the time
+  of its first answer when an archive is active (so that a record and the statements
+  taken from it agree, and a replayed answer keeps its original time), else the time
+  the client started.
 - **Many requests to one service** (``gather``, #98). A source answered one record per
   request (UniChem, one compound at a time) is asked by a few threads at once, never
   faster than the pace the service asks for or Sabueso chooses to keep (``Pace``).
@@ -75,6 +80,43 @@ def _timed_out(error: URLError) -> bool:
     return isinstance(error.reason, TimeoutError) or "timed out" in str(error.reason)
 
 
+_STAMP: contextvars.ContextVar = contextvars.ContextVar("sabueso_stamp", default=None)
+
+
+def _clock() -> str:
+    from datetime import datetime, timezone
+
+    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+class Stamp:
+    """The retrieval time of one client call; see the module docstring."""
+
+    def __init__(self) -> None:
+        self.started = _clock()
+        self.first: str | None = None
+
+    @property
+    def value(self) -> str:
+        return self.first or self.started
+
+    def __str__(self) -> str:
+        return self.value
+
+
+def stamp() -> Stamp:
+    """Open the stamp of a client call: the answers it receives next date it."""
+    opened = Stamp()
+    _STAMP.set(opened)
+    return opened
+
+
+def _answered_at(when: str) -> None:
+    opened = _STAMP.get()
+    if opened is not None and opened.first is None:
+        opened.first = when
+
+
 class Answer:
     """A response read whole, as a client uses it: ``read()``, ``status``, ``headers``,
     and as a context manager. What an archive keeps is what the client received."""
@@ -108,11 +150,29 @@ def urlopen(target: Any, timeout: float = 30.0, sleep=time.sleep):
     docstring."""
     from sabueso.tools.db import _archive
 
-    archive = _archive.active()
-    if archive is None:
+    mode = _archive.active()
+    if mode is None:
         return _open(target, timeout, sleep)
+    archive = mode.archive
     named = _named(target)
     method, url, body = named.get_method(), named.full_url, named.data
+    if mode.name in ("replay", "reuse"):
+        planned = mode.planned(method, url, body)
+        kept = (
+            archive.get(planned)
+            if planned
+            else archive.find(
+                method, url, body, mode.max_age if mode.name == "reuse" else None
+            )
+        )
+        if kept is not None:
+            return _from_archive(kept)
+        if mode.name == "replay":
+            from sabueso.core.errors import NotArchivedError
+
+            raise NotArchivedError(
+                f"Not in the retrieval archive {archive.path.name}: {method} {url}"
+            )
     retrieved_at = _archive._now()
     try:
         response = _open(named, timeout, sleep)
@@ -123,6 +183,7 @@ def urlopen(target: Any, timeout: float = 30.0, sleep=time.sleep):
             method, url, body, exc.code, _kept(exc.headers), content, retrieved_at
         )
         _archive.note(record)
+        _answered_at(retrieved_at)
         raise HTTPError(
             exc.url, exc.code, exc.msg, exc.headers, io.BytesIO(content)
         ) from None
@@ -134,7 +195,30 @@ def urlopen(target: Any, timeout: float = 30.0, sleep=time.sleep):
         method, url, body, status, _kept(headers), content, retrieved_at
     )
     _archive.note(record)
+    _answered_at(retrieved_at)
     return Answer(content, status, headers, retrieved_at)
+
+
+def _from_archive(kept: Dict[str, Any]):
+    """An archived answer, served as the source served it, with its original time."""
+    from email.message import Message
+
+    from sabueso.tools.db import _archive
+
+    headers = Message()
+    for key, value in kept["headers"].items():
+        headers[key] = value
+    _archive.note(_archive.summary(kept))
+    _answered_at(kept["retrieved_at"])
+    if kept["status"] >= 400:
+        raise HTTPError(
+            kept["url"],
+            kept["status"],
+            "archived",
+            headers,
+            io.BytesIO(kept["content"]),
+        )
+    return Answer(kept["content"], kept["status"], headers, kept["retrieved_at"])
 
 
 def _open(target: Any, timeout: float, sleep):

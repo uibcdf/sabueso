@@ -37,11 +37,18 @@
 
 ## Direction adopted (2026-09-30, #100)
 
-Built so far: the retrieval archive records (`sabueso.RetrievalArchive`,
-`archive.recording()`): every answer through `_http.urlopen`, a 404 included, stored once
-per distinct content (compressed, SHA-256), and listed on the card
-(`quality.retrievals`). Next: retrieval times taken from the answers, `replay` and
-`archive_first`, retention by licence, and `provenance_ref` per SourceAssertion.
+Built so far (`sabueso.RetrievalArchive`):
+- `archive.recording()`: every answer through `_http.urlopen`, a 404 included, stored
+  once per distinct content (compressed, SHA-256), and listed on the card
+  (`quality.retrievals`);
+- `archive.reusing(max_age)` (the design's `archive_first`): an answer kept within
+  `max_age` is used instead of asking again;
+- `archive.replaying(of=card)`: the network is never asked; a card's build is replayed
+  from its answers, and what the archive does not hold is `not_queried`
+  (`not_in_archive`);
+- retrieval times come from the answers (`_http.stamp`), so a replayed statement keeps
+  the time its answer was read.
+Next: retention by licence, and `provenance_ref` per SourceAssertion.
 
 
 "Raw payloads: not stored" answered the first draft, and it is being replaced. MOLI's

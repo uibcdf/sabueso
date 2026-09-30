@@ -580,10 +580,11 @@ stated by a source, so they are not `value`/`source_assertion_ids` nodes:
   values, source_assertion_ids}]}]`, values of different methods, representations or
   sources, reported and never compared (`devguide/SELECTION_RULES_EXAMPLES.md`);
 - `enrichments`: per-source enrichment outcomes;
-- `retrievals` (#100, schema 0.3.8, only when built inside
-  `RetrievalArchive.recording()`): `{archive, records: [{ref, method, url, status,
-  retrieved_at, content_hash, size}]}`, every answer the build received, each kept in
-  the archive under its `ref` (`sabueso:retrieval:sha256:…`);
+- `retrievals` (#100, schema 0.3.8, only when built with a `RetrievalArchive`):
+  `{archive, mode (record, reuse or replay), max_age_seconds (reuse), records: [{ref,
+  method, url, request_hash, status, retrieved_at, content_hash, size}]}`, every answer
+  the build received, in order, each kept in the archive under its `ref`
+  (`sabueso:retrieval:sha256:…`);
 - `entity_resolution`: the resolution trace;
 - `terms_profile` (#94, since 0.3.7): the terms profile the card was built under, when
   one was asked: `{profile, use, rule: terms_profile@1, excluded: [{source, reason}]}`.

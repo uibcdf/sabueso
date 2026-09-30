@@ -12,7 +12,6 @@ raises NCBI's rate limit, and changes nothing in what NCBI answers.
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Tuple
 from urllib.error import HTTPError, URLError
@@ -22,7 +21,7 @@ from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.mappings.ncbi_gene import parse_gene
 from sabueso.tools.db import _keys
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 EFETCH = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
@@ -46,7 +45,7 @@ class OnlineNCBIGeneClient:
         if api_key:
             query["api_key"] = api_key
         url = f"{EFETCH}?{urlencode(query)}"
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         try:
             with urlopen(url, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 xml = resp.read().decode("utf-8")
@@ -55,7 +54,7 @@ class OnlineNCBIGeneClient:
             raise ConnectorError(
                 f"NCBI Gene request for {gene_id} failed: {detail}"
             ) from (None if api_key else exc)  # a key never reaches a traceback
-        return _record(str(gene_id), xml), retrieved_at
+        return _record(str(gene_id), xml), retrieval.value
 
 
 class FixtureNCBIGeneClient:

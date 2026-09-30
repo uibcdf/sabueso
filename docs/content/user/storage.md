@@ -104,8 +104,25 @@ archive.get(ref)["content"]  # the response itself, checked against its hash
   response is stored once, compressed: building TcTIM with ChEMBL, BindingDB, PubChem
   BioAssay, three structures and Europe PMC kept 1.4 MB of responses in 158 KB.
 - A 404 is an answer ("not found") and is kept too.
-- Reusing archived answers and rebuilding a card without the network come next
-  (uibcdf/sabueso#100).
+
+The same archive rebuilds a card without the network, or saves asking again:
+
+```python
+with archive.replaying(of=card):  # never asks the network
+    same, _ = sabueso.resolve("P52270", chembl={}, structures=["1SUX"])
+# same knowledge, and every statement keeps the time its answer was read
+
+from datetime import timedelta
+
+with archive.reusing(timedelta(days=30)):  # answers younger than 30 days are reused
+    card, _ = sabueso.resolve("P52270", chembl={}, bindingdb={})
+```
+
+- `replaying(of=card)` answers each request with what that card's build received. A
+  request the archive does not hold is not asked: the source shows as `not_queried`
+  (`not_in_archive`), never as absent.
+- Replaying the TcTIM build above took 4 s instead of 55 s online, and gave the same
+  card.
 
 ## Old Cards
 

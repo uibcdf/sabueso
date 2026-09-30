@@ -16,14 +16,13 @@ pathway. It raises ``RecordNotFoundError`` when Reactome maps the accession to n
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import request, urlopen
+from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "Reactome"
@@ -56,7 +55,7 @@ class OnlineReactomeClient:
         self.timeout = timeout
 
     def pathways(self, accession: str) -> Dict[str, Any]:
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         pathways = _get(
             f"mapping/UniProt/{accession}/pathways", self.timeout, missing_ok=True
         )
@@ -76,7 +75,7 @@ class OnlineReactomeClient:
             paths = _get(f"event/{pathway['stId']}/ancestors", self.timeout) or []
             ancestors[pathway["stId"]] = [_events(path) for path in paths]
         return {
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "version": str(_get("database/version", self.timeout)),
             "record": {
                 "pathways": _events(pathways),

@@ -145,13 +145,21 @@ def resolve(
     """
     from sabueso.tools.db import _archive
 
-    archive = _archive.active()
-    if archive is None:
+    mode = _archive.active()
+    if mode is None:
         return _resolve(query, entity_type, profile, curations, options)
     with _archive.collecting() as made:
         card, resolution = _resolve(query, entity_type, profile, curations, options)
     if card is not None:
-        card.quality["retrievals"] = _archive.manifest(archive, made)
+        card.quality["retrievals"] = _archive.manifest(mode, made)
+        # A source the archive held no answer for was not asked: not_queried, never an
+        # error of the source or an absence (#100).
+        for record in card.quality.get("enrichments") or []:
+            if record.get("status") == "error" and str(
+                record.get("detail") or ""
+            ).startswith("Not in the retrieval archive"):
+                record["status"] = "not_queried"
+                record["reason"] = "not_in_archive"
     return card, resolution
 
 

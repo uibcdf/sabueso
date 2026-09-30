@@ -21,7 +21,7 @@ from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 
@@ -120,10 +120,6 @@ def search_key(name: str, organism: int | str, include_subtaxa: bool = False) ->
     return f"{name.replace(' ', '_')}__{str(organism).replace(' ', '_')}{suffix}"
 
 
-def _now() -> str:
-    return datetime.now(timezone.utc).isoformat(timespec="seconds")
-
-
 class OnlineUniProtClient:
     def __init__(self, timeout: float = 30.0) -> None:
         self.timeout = timeout
@@ -132,10 +128,10 @@ class OnlineUniProtClient:
         request = Request(
             f"{UNIPROT_REST}/{accession}.json", headers={"Accept": "application/json"}
         )
-        retrieved_at = _now()
+        retrieval = stamp()
         try:
             with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
-                return json.loads(resp.read().decode("utf-8")), retrieved_at
+                return json.loads(resp.read().decode("utf-8")), retrieval.value
         except HTTPError as exc:
             if exc.code == 404:
                 raise RecordNotFoundError(f"UniProt has no record {accession}") from exc
@@ -163,7 +159,7 @@ class OnlineUniProtClient:
                 "size": SEARCH_SIZE,
             }
         )
-        retrieved_at = _now()
+        retrieval = stamp()
         try:
             with urlopen(  # nosec - trusted endpoint
                 f"{UNIPROT_REST}/search?{params}", timeout=self.timeout
@@ -178,7 +174,7 @@ class OnlineUniProtClient:
             "query": query,
             "total": total,
             "release": release,
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "results": results,
         }
 

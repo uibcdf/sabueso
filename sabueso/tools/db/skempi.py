@@ -22,7 +22,6 @@ from __future__ import annotations
 import csv
 import hashlib
 import io
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
@@ -30,7 +29,7 @@ from urllib.error import HTTPError, URLError
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError
 from sabueso.tools.db import _release
-from sabueso.tools.db._http import request, urlopen
+from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "SKEMPI"
@@ -76,10 +75,10 @@ class OnlineSKEMPIClient:
             raise ConnectorError(f"SKEMPI file could not be read: {exc}") from exc
 
     def mutations(self, pdb_ids: Iterable[str]) -> Dict[str, Any]:
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         checksum, index = _release.remembered(SOURCE, VERSION, self._download)
         return {
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "version": VERSION,
             "checksum": checksum,
             **_select(index, pdb_ids),

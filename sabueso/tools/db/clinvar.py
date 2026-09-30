@@ -19,7 +19,6 @@ direct diagnostic use or medical decisions without review by a genetics professi
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
@@ -28,7 +27,7 @@ from urllib.parse import urlencode
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError
 from sabueso.tools.db import _keys
-from sabueso.tools.db._http import request, urlopen
+from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "ClinVar"
@@ -98,7 +97,7 @@ class OnlineClinVarClient:
     def variants(
         self, gene_ids: Iterable[str], limit: int = DEFAULT_LIMIT
     ) -> Dict[str, Any]:
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         api_key = _keys.key("ncbi", self._api_key)
         info = _get("einfo.fcgi", {"db": "clinvar"}, self.timeout, api_key)
         version = ((info.get("einforesult") or {}).get("dbinfo") or [{}])[0].get(
@@ -130,7 +129,7 @@ class OnlineClinVarClient:
                 )
                 records.extend(_summary(result[u]) for u in result.get("uids") or [])
         return {
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "version": version,
             "record": records,
             "total_count": total,

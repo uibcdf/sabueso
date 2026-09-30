@@ -18,14 +18,13 @@ long proteins). ``OnlineAlphaFoldClient`` queries the AlphaFold DB API;
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 ALPHAFOLD_API = "https://alphafold.ebi.ac.uk/api/prediction"
@@ -36,7 +35,7 @@ class OnlineAlphaFoldClient:
         self.timeout = timeout
 
     def prediction(self, accession: str) -> Dict[str, Any]:
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         try:
             with urlopen(  # nosec - trusted endpoint
                 f"{ALPHAFOLD_API}/{accession}", timeout=self.timeout
@@ -56,7 +55,7 @@ class OnlineAlphaFoldClient:
             ) from exc
         if not data:
             raise RecordNotFoundError(f"AlphaFold DB has no model for {accession}")
-        return {"accession": accession, "retrieved_at": retrieved_at, "record": data}
+        return {"accession": accession, "retrieved_at": retrieval.value, "record": data}
 
 
 class FixtureAlphaFoldClient:

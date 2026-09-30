@@ -22,7 +22,6 @@ targets, each with its ``proteinIds`` and scores, in Open Targets' order.
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
@@ -30,7 +29,7 @@ from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import urlopen
+from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "Open Targets"
@@ -100,7 +99,7 @@ class OnlineOpenTargetsClient:
         return data.get("data") or {}
 
     def associations(self, gene: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         rows, index, count, target, version = [], 0, None, None, None
         while count is None or len(rows) < min(limit, count):
             data = self._post(
@@ -120,7 +119,7 @@ class OnlineOpenTargetsClient:
             rows.extend(batch)
             index += 1
         return {
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "version": version,
             "record": {
                 "target": {
@@ -135,7 +134,7 @@ class OnlineOpenTargetsClient:
         """A disease's associated targets, in Open Targets' order (overall score), at
         most ``limit`` of ``count``: ``{"retrieved_at", "version", "record":
         {"disease", "count", "rows"}}``. ``disease`` is a MONDO, EFO… id."""
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         rows, index, count, found, version = [], 0, None, None, None
         while count is None or len(rows) < min(limit, count):
             data = self._post(
@@ -160,7 +159,7 @@ class OnlineOpenTargetsClient:
             rows.extend(batch)
             index += 1
         return {
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "version": version,
             "record": {
                 "disease": {k: found[k] for k in ("id", "name")},

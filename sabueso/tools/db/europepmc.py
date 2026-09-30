@@ -28,7 +28,6 @@ each article keeps its licence. Sabueso keeps ids and bibliographic data, not te
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
 from urllib.error import HTTPError, URLError
@@ -36,7 +35,7 @@ from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
-from sabueso.tools.db._http import request, urlopen
+from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "Europe PMC"
@@ -68,7 +67,7 @@ class OnlineEuropePMCClient:
         self.timeout = timeout
 
     def mentions(self, accession: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
-        retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        retrieval = stamp()
         articles, cursor, hits, version = [], "*", 0, None
         while len(articles) < limit:
             params = {
@@ -105,7 +104,7 @@ class OnlineEuropePMCClient:
                 f"No Europe PMC article mentions UniProt {accession}", version=version
             )
         return {
-            "retrieved_at": retrieved_at,
+            "retrieved_at": retrieval.value,
             "version": version,
             "record": {
                 "query": query(accession),
