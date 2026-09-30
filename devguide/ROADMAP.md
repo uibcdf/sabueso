@@ -152,7 +152,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Knowledge packets (entities, facts, conflicts, unknowns) | partial | prototype released in 0.6.0 (#71): pinned, stored, with a content-equivalence id; contract in uibcdf/moli#22 |
 | Unknowns as first-class output | done | `knowledge_state()` (#56) |
 | Two levels of access (semantic and raw) | done | `resolve` and views; `tools.db.*.get_*` |
-| Patents | pending | SureChEMBL queued |
+| Patents | deferred | SureChEMBL evaluated 2026-09-30: mentions cannot be restricted to claims |
 | Proprietary / internal knowledge | pending | needs its boundary with Nextia (moli#17) and usage terms (#29) |
 
 ## Pilot-driven work

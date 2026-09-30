@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 35, evaluating 21, deferred 24, retired 3, out of scope 13.
+Summary: in use 35, evaluating 20, deferred 25, retired 3, out of scope 13.
 
 ## In use
 
@@ -78,7 +78,6 @@ and Sabueso warns. The other sources in use are read whole.
 | --- | --- | --- | --- | --- |
 | [Target 2035 / SGC](https://www.thesgc.org/) | Benchmarks, open challenges and open-science consortia | Selective chemical probes and negative controls for understudied targets. | under review | 2026-09-25 |
 | [Chemical Probes Portal](https://www.chemicalprobes.org/) | Chemical space, synthesis, ADMET and safety | Chemical probes for protein targets, curated from the literature and rated by an expert review panel for use in cells and in vivo. | Blocked (2026-09-30): no documented API or download. The site's own search endpoint answers without login for probes (name, target gene symbols, ratings, mechanism) but states no UniProt accession or structure; target search needs a login. The accessions, InChI and SMILES appear only in each probe's rendered page. Structures come from canSAR. Revisit with a documented export or API. | 2026-09-30 |
-| [SureChEMBL](https://surechembl.org/) | Chemical space, synthesis, ADMET and safety | Chemical structures text-mined from patents. | under review | 2026-09-25 |
 | [Tox21 / ToxCast](https://www.epa.gov/chemical-research/toxicity-forecasting) | Chemical space, synthesis, ADMET and safety | In vitro toxicity screening profiles, cellular stress and assay-interference flags. | under review | 2026-09-25 |
 | [PROTAC-DB](http://cadd.zju.edu.cn/protacdb/) | Emerging modalities (targeted degradation) | Targeted-degradation chimeras: E3 ligases, warheads, linkers, ternary complexes and DC50/Dmax. | under review | 2026-09-25 |
 | [iPPI-DB](https://ippidb.pasteur.fr/) | Protein–protein interactions and structural modulation | Non-peptide inhibitors and modulators of protein–protein interactions, with pharmacological, chemical and structural data. | Blocked (2026-09-29): the compounds' targets, activities and InChIKeys are only in HTML pages (the CSV export has SMILES only, and the REST API covers structures, cavities and hotspots), and no data licence was found. Waiting for its maintainers (#84). | 2026-09-25 |
@@ -120,6 +119,7 @@ and Sabueso warns. The other sources in use are read whole.
 | [OpenBind](https://openbind.uk/) | Open-science structures and affinities; most reach Sabueso through the PDB and ChEMBL already. | A target has data here that the PDB and ChEMBL do not hold. | 2026-09-25 |
 | [Fragalysis / XChem](https://fragalysis.diamond.ac.uk/) | Open-science structures and affinities; most reach Sabueso through the PDB and ChEMBL already. | A target has data here that the PDB and ChEMBL do not hold. | 2026-09-25 |
 | [COVID Moonshot / ASAP Discovery](https://asapdiscovery.org/) | Open-science structures and affinities; most reach Sabueso through the PDB and ChEMBL already. | A target has data here that the PDB and ChEMBL do not hold. | 2026-09-25 |
+| [SureChEMBL](https://surechembl.org/) | Evaluated 2026-09-30. Identity works: UniChem lists a structure's SureChEMBL id, and SureChEMBL's documented API (OpenAPI at /api/v3/api-docs) states each chemical's standard InChIKey. But the patents of a structure are text-mined mentions without dates or applicants in the listing (111,187 documents for imatinib), and they cannot be restricted to the claims or ordered by date: the section filter of the structure search takes undocumented values. Reading each document for its dates and claims is one request per document. | A use needs the patents that claim a compound or chemotype, and SureChEMBL documents how to restrict a search to claims (or bulk data make it local). | 2026-09-25 |
 | [ZINC (ZINC20 / ZINC-22)](https://zinc.docking.org/) | Free to use, but major portions may not be redistributed without written permission. | A purchasable-compound need that a permission or another open catalogue covers. | 2026-09-25 |
 | [Enamine REAL Space](https://enamine.net/compound-collections/real-compounds) | A commercial catalogue. | A licence covering MOLI use. | 2026-09-25 |
 | [eMolecules](https://www.emolecules.com/) | A commercial catalogue; data downloads may need a licence agreement. | A licence covering MOLI use. | 2026-01-31 |

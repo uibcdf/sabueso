@@ -1210,10 +1210,13 @@ resources:
     name: "SureChEMBL"
     url: https://surechembl.org/
     category: chemistry_admet
-    status: evaluating
+    status: deferred
     description: "Chemical structures text-mined from patents."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    decided_by: "Sabueso maintainers (2026-09-30)"
+    reason: "Evaluated 2026-09-30. Identity works: UniChem lists a structure's SureChEMBL id, and SureChEMBL's documented API (OpenAPI at /api/v3/api-docs) states each chemical's standard InChIKey. But the patents of a structure are text-mined mentions without dates or applicants in the listing (111,187 documents for imatinib), and they cannot be restricted to the claims or ordered by date: the section filter of the structure search takes undocumented values. Reading each document for its dates and claims is one request per document."
+    revisit_when: "A use needs the patents that claim a compound or chemotype, and SureChEMBL documents how to restrict a search to claims (or bulk data make it local)."
     licence: "CC BY 4.0 (API and current bulk data); older dumps CC BY-SA 3.0"
     links: ["#83"]
   - id: zinc

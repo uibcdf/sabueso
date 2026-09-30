@@ -141,7 +141,7 @@ That is not a data licence, and is recorded as "no data licence found".
 | KLIFS | sites (kinases) | no formal licence; the FAQ states the data free and open (2026-09-30); REST API | UniProt accession KLIFS states; PDB | Kinase pocket residues and conformations; in use (2026-09-30) |
 | GPCRdb | sites (GPCRs) | CC BY 4.0 (legal notice, 2026-09-30); REST API | UniProt accession GPCRdb states; PDB | GPCR numbering, states, ligands; in use (2026-09-30), mutations not yet |
 | Ensembl | identity | No restrictions; REST API (15 req/s) | Ensembl gene, transcript, protein | Transcripts and orthology: supports variant placement (#85) |
-| SureChEMBL | chemistry (patents) | CC BY 4.0 (API and new bulk data) | InChIKey / structures | Patent chemistry |
+| SureChEMBL | chemistry (patents) | CC BY 4.0 (API and new bulk data) | InChIKey / structures | Patent chemistry; deferred (2026-09-30): mentions cannot be restricted to claims |
 | SAbDab | structures (antibodies) | CC BY 4.0 | PDB, chains | Antibody structures; a modality Sabueso does not model yet |
 | OPM | structures (membranes) | CC BY 3.0 | PDB | Membrane orientation of structures |
 | ESM Atlas | predicted structures | CC BY 4.0; API | MGnify / sequence ids | Predicted models, like AlphaFold DB; mostly metagenomic |
@@ -203,7 +203,9 @@ through the PDB and ChEMBL already. They are reviewed when a target needs them.
    variant's consequence on the canonical transcript (done, 2026-09-30); Ensembl states
    no map for the transcripts left (separate TrEMBL entries). Orthology is next.
 4. **Family-specific sources:** KLIFS and GPCRdb: **done** (2026-09-30, schema 0.3.8).
-5. **SureChEMBL**, and then structures: OPM, SAbDab, ESM Atlas.
+5. **SureChEMBL**: deferred (2026-09-30). Its patents are text-mined mentions that
+   cannot be restricted to the claims (111,187 documents for imatinib). Then
+   structures: OPM, SAbDab, ESM Atlas.
 
 ## 6. Sources set aside, reviewed for terms profiles and keys (2026-09-29)
 
