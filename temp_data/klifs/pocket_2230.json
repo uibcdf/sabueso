@@ -1,0 +1,427 @@
+[
+ {
+  "index": 1,
+  "Xray_position": "24",
+  "KLIFS_position": "I.1"
+ },
+ {
+  "index": 2,
+  "Xray_position": "25",
+  "KLIFS_position": "I.2"
+ },
+ {
+  "index": 3,
+  "Xray_position": "26",
+  "KLIFS_position": "I.3"
+ },
+ {
+  "index": 4,
+  "Xray_position": "27",
+  "KLIFS_position": "g.l.4"
+ },
+ {
+  "index": 5,
+  "Xray_position": "28",
+  "KLIFS_position": "g.l.5"
+ },
+ {
+  "index": 6,
+  "Xray_position": "29",
+  "KLIFS_position": "g.l.6"
+ },
+ {
+  "index": 7,
+  "Xray_position": "30",
+  "KLIFS_position": "g.l.7"
+ },
+ {
+  "index": 8,
+  "Xray_position": "31",
+  "KLIFS_position": "g.l.8"
+ },
+ {
+  "index": 9,
+  "Xray_position": "32",
+  "KLIFS_position": "g.l.9"
+ },
+ {
+  "index": 10,
+  "Xray_position": "33",
+  "KLIFS_position": "II.10"
+ },
+ {
+  "index": 11,
+  "Xray_position": "34",
+  "KLIFS_position": "II.11"
+ },
+ {
+  "index": 12,
+  "Xray_position": "35",
+  "KLIFS_position": "II.12"
+ },
+ {
+  "index": 13,
+  "Xray_position": "36",
+  "KLIFS_position": "II.13"
+ },
+ {
+  "index": 14,
+  "Xray_position": "46",
+  "KLIFS_position": "III.14"
+ },
+ {
+  "index": 15,
+  "Xray_position": "47",
+  "KLIFS_position": "III.15"
+ },
+ {
+  "index": 16,
+  "Xray_position": "48",
+  "KLIFS_position": "III.16"
+ },
+ {
+  "index": 17,
+  "Xray_position": "49",
+  "KLIFS_position": "III.17"
+ },
+ {
+  "index": 18,
+  "Xray_position": "50",
+  "KLIFS_position": "III.18"
+ },
+ {
+  "index": 19,
+  "Xray_position": "51",
+  "KLIFS_position": "III.19"
+ },
+ {
+  "index": 20,
+  "Xray_position": "61",
+  "KLIFS_position": "\u03b1C.20"
+ },
+ {
+  "index": 21,
+  "Xray_position": "62",
+  "KLIFS_position": "\u03b1C.21"
+ },
+ {
+  "index": 22,
+  "Xray_position": "63",
+  "KLIFS_position": "\u03b1C.22"
+ },
+ {
+  "index": 23,
+  "Xray_position": "64",
+  "KLIFS_position": "\u03b1C.23"
+ },
+ {
+  "index": 24,
+  "Xray_position": "65",
+  "KLIFS_position": "\u03b1C.24"
+ },
+ {
+  "index": 25,
+  "Xray_position": "66",
+  "KLIFS_position": "\u03b1C.25"
+ },
+ {
+  "index": 26,
+  "Xray_position": "67",
+  "KLIFS_position": "\u03b1C.26"
+ },
+ {
+  "index": 27,
+  "Xray_position": "68",
+  "KLIFS_position": "\u03b1C.27"
+ },
+ {
+  "index": 28,
+  "Xray_position": "69",
+  "KLIFS_position": "\u03b1C.28"
+ },
+ {
+  "index": 29,
+  "Xray_position": "70",
+  "KLIFS_position": "\u03b1C.29"
+ },
+ {
+  "index": 30,
+  "Xray_position": "71",
+  "KLIFS_position": "\u03b1C.30"
+ },
+ {
+  "index": 31,
+  "Xray_position": "72",
+  "KLIFS_position": "b.l.31"
+ },
+ {
+  "index": 32,
+  "Xray_position": "73",
+  "KLIFS_position": "b.l.32"
+ },
+ {
+  "index": 33,
+  "Xray_position": "75",
+  "KLIFS_position": "b.l.33"
+ },
+ {
+  "index": 34,
+  "Xray_position": "76",
+  "KLIFS_position": "b.l.34"
+ },
+ {
+  "index": 35,
+  "Xray_position": "77",
+  "KLIFS_position": "b.l.35"
+ },
+ {
+  "index": 36,
+  "Xray_position": "78",
+  "KLIFS_position": "b.l.36"
+ },
+ {
+  "index": 37,
+  "Xray_position": "79",
+  "KLIFS_position": "b.l.37"
+ },
+ {
+  "index": 38,
+  "Xray_position": "80",
+  "KLIFS_position": "IV.38"
+ },
+ {
+  "index": 39,
+  "Xray_position": "81",
+  "KLIFS_position": "IV.39"
+ },
+ {
+  "index": 40,
+  "Xray_position": "82",
+  "KLIFS_position": "IV.40"
+ },
+ {
+  "index": 41,
+  "Xray_position": "83",
+  "KLIFS_position": "IV.41"
+ },
+ {
+  "index": 42,
+  "Xray_position": "95",
+  "KLIFS_position": "V.42"
+ },
+ {
+  "index": 43,
+  "Xray_position": "96",
+  "KLIFS_position": "V.43"
+ },
+ {
+  "index": 44,
+  "Xray_position": "97",
+  "KLIFS_position": "V.44"
+ },
+ {
+  "index": 45,
+  "Xray_position": "98",
+  "KLIFS_position": "GK.45"
+ },
+ {
+  "index": 46,
+  "Xray_position": "99",
+  "KLIFS_position": "hinge.46"
+ },
+ {
+  "index": 47,
+  "Xray_position": "100",
+  "KLIFS_position": "hinge.47"
+ },
+ {
+  "index": 48,
+  "Xray_position": "101",
+  "KLIFS_position": "hinge.48"
+ },
+ {
+  "index": 49,
+  "Xray_position": "102",
+  "KLIFS_position": "linker.49"
+ },
+ {
+  "index": 50,
+  "Xray_position": "103",
+  "KLIFS_position": "linker.50"
+ },
+ {
+  "index": 51,
+  "Xray_position": "104",
+  "KLIFS_position": "linker.51"
+ },
+ {
+  "index": 52,
+  "Xray_position": "105",
+  "KLIFS_position": "linker.52"
+ },
+ {
+  "index": 53,
+  "Xray_position": "106",
+  "KLIFS_position": "\u03b1D.53"
+ },
+ {
+  "index": 54,
+  "Xray_position": "107",
+  "KLIFS_position": "\u03b1D.54"
+ },
+ {
+  "index": 55,
+  "Xray_position": "108",
+  "KLIFS_position": "\u03b1D.55"
+ },
+ {
+  "index": 56,
+  "Xray_position": "109",
+  "KLIFS_position": "\u03b1D.56"
+ },
+ {
+  "index": 57,
+  "Xray_position": "110",
+  "KLIFS_position": "\u03b1D.57"
+ },
+ {
+  "index": 58,
+  "Xray_position": "111",
+  "KLIFS_position": "\u03b1D.58"
+ },
+ {
+  "index": 59,
+  "Xray_position": "112",
+  "KLIFS_position": "\u03b1D.59"
+ },
+ {
+  "index": 60,
+  "Xray_position": "138",
+  "KLIFS_position": "\u03b1E.60"
+ },
+ {
+  "index": 61,
+  "Xray_position": "139",
+  "KLIFS_position": "\u03b1E.61"
+ },
+ {
+  "index": 62,
+  "Xray_position": "140",
+  "KLIFS_position": "\u03b1E.62"
+ },
+ {
+  "index": 63,
+  "Xray_position": "141",
+  "KLIFS_position": "\u03b1E.63"
+ },
+ {
+  "index": 64,
+  "Xray_position": "142",
+  "KLIFS_position": "\u03b1E.64"
+ },
+ {
+  "index": 65,
+  "Xray_position": "143",
+  "KLIFS_position": "VI.65"
+ },
+ {
+  "index": 66,
+  "Xray_position": "144",
+  "KLIFS_position": "VI.66"
+ },
+ {
+  "index": 67,
+  "Xray_position": "145",
+  "KLIFS_position": "VI.67"
+ },
+ {
+  "index": 68,
+  "Xray_position": "146",
+  "KLIFS_position": "c.l.68"
+ },
+ {
+  "index": 69,
+  "Xray_position": "147",
+  "KLIFS_position": "c.l.69"
+ },
+ {
+  "index": 70,
+  "Xray_position": "148",
+  "KLIFS_position": "c.l.70"
+ },
+ {
+  "index": 71,
+  "Xray_position": "149",
+  "KLIFS_position": "c.l.71"
+ },
+ {
+  "index": 72,
+  "Xray_position": "150",
+  "KLIFS_position": "c.l.72"
+ },
+ {
+  "index": 73,
+  "Xray_position": "151",
+  "KLIFS_position": "c.l.73"
+ },
+ {
+  "index": 74,
+  "Xray_position": "152",
+  "KLIFS_position": "c.l.74"
+ },
+ {
+  "index": 75,
+  "Xray_position": "153",
+  "KLIFS_position": "c.l.75"
+ },
+ {
+  "index": 76,
+  "Xray_position": "154",
+  "KLIFS_position": "VII.76"
+ },
+ {
+  "index": 77,
+  "Xray_position": "155",
+  "KLIFS_position": "VII.77"
+ },
+ {
+  "index": 78,
+  "Xray_position": "156",
+  "KLIFS_position": "VII.78"
+ },
+ {
+  "index": 79,
+  "Xray_position": "164",
+  "KLIFS_position": "VIII.79"
+ },
+ {
+  "index": 80,
+  "Xray_position": "165",
+  "KLIFS_position": "xDFG.80"
+ },
+ {
+  "index": 81,
+  "Xray_position": "166",
+  "KLIFS_position": "xDFG.81"
+ },
+ {
+  "index": 82,
+  "Xray_position": "167",
+  "KLIFS_position": "xDFG.82"
+ },
+ {
+  "index": 83,
+  "Xray_position": "168",
+  "KLIFS_position": "xDFG.83"
+ },
+ {
+  "index": 84,
+  "Xray_position": "169",
+  "KLIFS_position": "a.l.84"
+ },
+ {
+  "index": 85,
+  "Xray_position": "170",
+  "KLIFS_position": "a.l.85"
+ }
+]

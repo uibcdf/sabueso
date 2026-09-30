@@ -339,6 +339,18 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - The file states no finer version than the database's (2.0), and the site reports corrections after 2018. The file's SHA-256 is recorded in the enrichment record, so a changed file is told apart.
   - Licence CC BY 4.0 (the site's terms of download and use).
 
+### KLIFS — kinase classification, structure conformations and pocket
+- **Status**: implemented as an enricher (`klifs={}`, #83), card schema 0.3.8
+- **Access**: REST API `api_v2`, no key (`OnlineKLIFSClient`): the kinase list once per process (`kinase_names`, 1,127 kinases, human and mouse), then per kinase its information, its structures, and one structure's pocket residues; saved answers for STK16 in `temp_data/klifs/`; `tools.db.klifs.get_kinases`, `tools.db.klifs.get_structures`
+- **Quality**: green, verified live on EGFR (P00533, 2026-09-30, 6.8 s with one structure loaded): 565 structures with their conformations (306 DFG-in/αC-out, 221 in/in, 17 out/out…); the 85 pocket residues placed through 4HJO chain A, with the gatekeeper T790, the catalytic K745, the hinge L792 and the DFG D855. STK16 (O75716): 85 of 85 placed through 2BUJ chain B.
+- **Coverage**: `annotations.kinase_classification`, `annotations.kinase_structures`, `annotations.kinase_pocket`
+- **Notes**:
+  - Joined only through the UniProt accession KLIFS states for a kinase. A protein with two kinase domains (a JAK) is two KLIFS kinases.
+  - The pocket is placed only through the author numbering RCSB states for one structure the card holds (`klifs_pocket_reference@1` chooses it; `rcsb_author_numbering@1` places it), and a matching residue.
+  - `interactions_match_residues` answers one structure per request, so one structure places the pocket.
+  - KLIFS answers 400 ("unknown kinase ID") for a kinase it lists without structures; that is read as no structures, not as a failure.
+  - No formal licence: the FAQ states the data is free and open for academia and industry, and asks to be cited (the registry's "CC BY 4.0" could not be confirmed).
+
 ---
 
 ## Removed per-concept card tools (2026-09-23, uibcdf/sabueso#21 part 2b)

@@ -1447,3 +1447,46 @@ uibcdf/sabueso#85, found while evaluating Ensembl for wave 2 of #83.
 - `uniprot_isoform_map@1` stays for ClinVar, and for a gnomAD variant the canonical
   answer does not state.
 
+## KLIFS: kinase pockets and conformations (2026-09-30)
+uibcdf/sabueso#83 (wave 2, family-specific sources).
+- **Joined through the accession KLIFS states.** KLIFS's kinase list states each
+  kinase's UniProt accession (1,127 kinases, human and mouse, one request per process).
+  A protein with two kinase domains is two KLIFS kinases (JAK1 and JAK1-b), and the card
+  holds both.
+- **What a card gains.** For a kinase:
+  - the classification (group, family, subfamily);
+  - per structure, the conformation KLIFS assigns (DFG in, out or out-like; αC helix
+    in or out), the orthosteric and allosteric ligands, and the quality;
+  - the 85 pocket positions in KLIFS's common numbering (gatekeeper `GK.45`, hinge,
+    `xDFG`).
+
+  Type I and type II inhibitors differ by DFG state, and the pocket positions compare
+  across kinases.
+- **The pocket in UniProt numbering, through statements only.** KLIFS states the
+  pocket residues in one structure's author numbering. The structure is chosen by
+  `klifs_pocket_reference@1`, among the kinase's structures the card holds with RCSB's
+  author numbering. The order is:
+  - a pocket equal to the kinase's (no mutation, no gap);
+  - then the highest quality score;
+  - then the fewest missing residues and atoms;
+  - then the best resolution;
+  - then the lowest KLIFS id.
+
+  It is placed with `rcsb_author_numbering@1`, and the residue must be UniProt's. No
+  sequence is aligned. For EGFR the gatekeeper is T790, the residue of the T790M
+  resistance mutation, so the pocket joins the variant annotations by position.
+- **One request per kinase for the pocket.** `interactions_match_residues` answers one
+  structure at a time. One structure is enough to place the kinase's 85 positions; if
+  another structure's numbering disagreed, the residue check is the guard. Without a
+  structure on the card, the
+  pocket stays in KLIFS numbering (`no_structure_loaded`), and no pocket request is
+  sent.
+- **Terms.** No formal licence was found. The FAQ states the data is free and open for
+  academia and industry, and asks to be cited. The registry records it as no
+  restrictions of its own, with that caveat (`RISKS_AND_OPEN_QUESTIONS.md`).
+- **Not in packets yet.** Its areas fit the `ligand_sites` aspect, but
+  `packet_aspects@2` was published in 0.7.0. Adding KLIFS there is a new mapping
+  version (`packet_aspects@3`), left for when packet aspects are revisited (#88).
+- **Not taken now:** KLIFS's interaction fingerprints per structure (one request each),
+  its ligand bioactivities (ChEMBL's, already on the card) and its drug list.
+

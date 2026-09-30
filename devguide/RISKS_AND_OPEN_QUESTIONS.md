@@ -243,6 +243,14 @@
   it. The card still says only that the transcript is not canonical. gnomAD's variant
   query would state which (25 variants per request, within its rate limit), and
   isoform expression by tissue would say where each change matters (#102).
+- **KLIFS's terms are a statement, not a licence** (2026-09-30). Its FAQ says all data
+  is free and open for academia and industry, and asks for a citation; no licence text
+  was found. The registry records it as no restrictions of its own, with that caveat.
+  If KLIFS publishes a licence, the terms record is reviewed.
+- **One structure places a kinase's pocket.** KLIFS states pocket residues one
+  structure per request. If the chosen structure's author numbering disagrees with
+  another's at a pocket position, the card shows only the chosen one, and the residue
+  check is the guard.
 - **gnomAD's rate limit.** The service answers HTTP 429 after bursts (about ten
   requests a minute sustained). Sabueso retries with backoff. A build that asks many
   genes in a row may still see errors, recorded as `error`, never as absence.

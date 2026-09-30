@@ -19,6 +19,7 @@ from sabueso.tools.db import (
     diseases,
     gnomad,
     interpro,
+    klifs,
     medgen,
     mondo,
     ncbi_gene,
@@ -81,6 +82,12 @@ CALLS = {
     ),
     "gnomad.get_transcript_variants": lambda: gnomad.get_transcript_variants(
         "ENST00000396705", client=gnomad.FixtureGnomADClient("temp_data")
+    ),
+    "klifs.get_kinases": lambda: klifs.get_kinases(
+        "O75716", client=klifs.FixtureKLIFSClient("temp_data")
+    ),
+    "klifs.get_structures": lambda: klifs.get_structures(
+        "280", client=klifs.FixtureKLIFSClient("temp_data")
     ),
     "ncbi_taxonomy.get_taxon": lambda: ncbi_taxonomy.get_taxon(
         "5693", client=ncbi_taxonomy.FixtureNCBITaxonomyClient("temp_data")

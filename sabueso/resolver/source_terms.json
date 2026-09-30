@@ -76,6 +76,17 @@
     "Member databases may carry their own terms."
    ]
   },
+  "KLIFS": {
+   "registry_id": "klifs",
+   "licence": "NO-OWN-RESTRICTIONS",
+   "attribution": "KLIFS (Kanev et al. 2021, Nucleic Acids Research 49, D562-D569; https://klifs.net)",
+   "statement": "https://klifs.net/faq.php",
+   "reviewed": "2026-09-30",
+   "caveats": [
+    "No formal licence: the FAQ states the data is free and open for academia and industry.",
+    "Structures come from the PDB (CC0); KLIFS's annotations are its own."
+   ]
+  },
   "MONDO": {
    "registry_id": "mondo",
    "licence": "CC-BY-4.0",

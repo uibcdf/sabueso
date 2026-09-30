@@ -1,0 +1,15 @@
+[
+ {
+  "kinase_ID": 280,
+  "name": "MPSK1",
+  "gene_name": "STK16",
+  "family": "NAK",
+  "group": "Other",
+  "subfamily": "MPSK",
+  "species": "Human",
+  "full_name": "serine/threonine kinase 16",
+  "uniprot": "O75716",
+  "iuphar": 2213,
+  "pocket": "QKLGEGGFSYVDLYALKRIEAQREADMHRLFNPNILRLVAYWLLLPFFKRGTLWNEIERAIHAKGYAHRDLKPTNILLLMDLGSM"
+ }
+]

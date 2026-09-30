@@ -310,6 +310,17 @@ def fixture_cards() -> List[dict]:
             skempi_client=FixtureSKEMPIClient(data),
             terms="commercial",  # built under a terms profile (#94)
         )
+        # STK16 with KLIFS's classification, structures and pocket, placed through
+        # 2BUJ (0.3.8).
+        from sabueso.tools.db.klifs import FixtureKLIFSClient
+
+        kinase, _ = sabueso.resolve(
+            "O75716",
+            resolver=resolver,
+            structures=["2BUJ"],
+            klifs={},
+            klifs_client=FixtureKLIFSClient(data),
+        )
         # A disease card, resolved from an Orphanet id through MONDO (0.3.7).
         disease, _ = sabueso.resolve("ORPHA:868", mondo_client=FixtureMONDOClient(data))
     cards = (
@@ -322,6 +333,7 @@ def fixture_cards() -> List[dict]:
         barnase,
         disease,
         vincristine,
+        kinase,
     )
     return [c.to_dict() for c in cards]
 

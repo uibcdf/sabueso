@@ -1,0 +1,42 @@
+[
+ {
+  "kinase_ID": 1,
+  "name": "AKT1",
+  "gene_name": "AKT1",
+  "accession": "P31749",
+  "full_name": "v-akt murine thymoma viral oncogene homolog 1",
+  "species": "Human"
+ },
+ {
+  "kinase_ID": 406,
+  "name": "EGFR",
+  "gene_name": "EGFR",
+  "accession": "P00533",
+  "full_name": "epidermal growth factor receptor",
+  "species": "Human"
+ },
+ {
+  "kinase_ID": 435,
+  "name": "JAK1",
+  "gene_name": "JAK1",
+  "accession": "P23458",
+  "full_name": "Janus kinase 1",
+  "species": "Human"
+ },
+ {
+  "kinase_ID": 438,
+  "name": "JAK1-b",
+  "gene_name": "JAK1-b",
+  "accession": "P23458",
+  "full_name": "Janus kinase 1 (2nd domain)",
+  "species": "Human"
+ },
+ {
+  "kinase_ID": 280,
+  "name": "MPSK1",
+  "gene_name": "STK16",
+  "accession": "O75716",
+  "full_name": "serine/threonine kinase 16",
+  "species": "Human"
+ }
+]

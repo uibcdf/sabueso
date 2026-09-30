@@ -104,6 +104,7 @@ take is refused, never ignored.
 | `string={"required_score": 700}` | STRING functional associations |
 | `taxonomy=True` | NCBI Taxonomy ranks and ancestors of the organism |
 | `ncbi_gene=True` | NCBI Gene, for the identity audit of a resolution by name |
+| `klifs={}` | for a kinase KLIFS states is the entry: its group, family and subfamily, the conformation of each of its structures (DFG, αC helix, ligands) and its 85 pocket residues, placed through a structure you also ask for |
 | `curations=store` | the curated statements recorded for the entity |
 
 **Small molecules**

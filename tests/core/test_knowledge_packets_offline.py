@@ -297,6 +297,9 @@ OUTSIDE_PACKETS = {
     # Hundreds of articles per well-studied protein: packet size is watched (#88), and
     # real use decides whether the literature aspect asks for them (#71).
     "europepmc": "text-mined mentions are not asked by a packet aspect yet",
+    # Adding it to ligand_sites would change packet_aspects@2, published in 0.7.0: a
+    # new mapping version, decided when packet aspects are revisited (#88).
+    "klifs": "kinase pockets and conformations are not asked by a packet aspect yet",
 }
 
 

@@ -4,8 +4,9 @@
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
   - `0.3.8` is current, not yet released: it records the ordering rule of a capped
     source in its enrichment record (`record_order` for BindingDB, `row_order` for
-    PubChem BioAssay, #98), and gnomAD's consequence on the canonical transcript
-    (`transcript_version`, `canonical_consequence`, #85);
+    PubChem BioAssay, #98), gnomAD's consequence on the canonical transcript
+    (`transcript_version`, `canonical_consequence`, #85), and KLIFS's kinase
+    classification, structures and pocket (#83);
   - `0.3.7` is the schema of release 0.7.0: it adds `annotations.interface_mutations`
     (SKEMPI 2.0, #83), disease cards (MONDO, #90), the MONDO and MedGen identity and
     hierarchy relationships on protein cards, `mentioned_in` (Europe PMC, #92),
@@ -394,6 +395,22 @@ A Relationship is first-class, traceable knowledge:
     - ΔΔG is not stored. `Card.interface_mutations()` derives it (`binding_ddg@1`).
     - Which statements each publication supports is read by `Card.literature()` from the
       ECO evidence of every SourceAssertion, and only there.
+  - kinases (added in #83, schema 0.3.8), from KLIFS, for a kinase whose UniProt
+    accession KLIFS states (two items for a protein with two kinase domains):
+    - `annotations.kinase_classification`: KLIFS's kinase id and name, `group`,
+      `family`, `subfamily`, and `pocket_sequence` (85 residues, `_` for a gap).
+    - `annotations.kinase_structures`: per KLIFS structure (PDB entry, `chain`, `alt`),
+      the conformation KLIFS assigns (`dfg`, `ac_helix`: `in`, `out`, `out-like`,
+      `na`), the orthosteric and allosteric `ligand` (PDB chemical component ids),
+      `quality_score`, `resolution` (angstrom), `missing_residues`, `missing_atoms`.
+      Up to 5000 per kinase (`klifs={"limit": n}`); a cut is reported.
+    - `annotations.kinase_pocket`: the 85 positions (`index`, `klifs_position` such as
+      `GK.45`, `hinge.46`, `xDFG.81`, and `residue`). Placed in UniProt numbering
+      (`location`, `placed_via`) through one structure's author numbering as RCSB
+      states it: the structure is chosen by `klifs_pocket_reference@1`, and the rule
+      is `rcsb_author_numbering@1`; the residue must be UniProt's. Otherwise
+      `not_placed`: `gap`, `no_structure_loaded`, `missing_in_structure`,
+      `author_residue_not_mapped` or `residue_mismatch`.
   - curated literature assertions (added in #41):
     - A SourceAssertion with `source.type = "literature"`, `source.name = "Literature"`
       and the publication as `record_id` (`pubmed:<id>` or `doi:<doi>`). Its
@@ -544,6 +561,9 @@ A Relationship is first-class, traceable knowledge:
   (`sequence.molecular_weight`, `properties.physchem.molecular_weight`: `dalton`;
   `properties.physchem.tpsa`: `angstrom ** 2`). Counts (`hbd`, `hba`, `rotatable_bonds`,
   `sequence.length`) and logarithmic scores (`logp`, `pchembl`) are not quantities.
+- Item fields that are quantities: `annotations.kinase_structures[].resolution`
+  (`angstrom`, #83); SKEMPI's affinities, kinetics, thermodynamics and temperatures in
+  `annotations.interface_mutations` (see above).
 - Relationship qualifiers: `has_structure.resolution` and contact `min_distance`
   (`angstrom`); `has_bioactivity.measurement.normalized` (`nanomolar` for concentrations,
   `percent` for percentages, `null` when the source unit cannot be normalized). The

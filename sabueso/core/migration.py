@@ -215,6 +215,15 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "filled_by": "pubchem_bioassay",
             "entity_types": ("protein",),
         },
+        # KLIFS (#83).
+        *(
+            {"path": path, "filled_by": "klifs", "entity_types": ("protein",)}
+            for path in (
+                "annotations.kinase_classification",
+                "annotations.kinase_structures",
+                "annotations.kinase_pocket",
+            )
+        ),
         # gnomAD's consequence on the canonical transcript (#85).
         *(
             {"path": path, "filled_by": "gnomad", "entity_types": ("protein",)}

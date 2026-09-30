@@ -147,7 +147,16 @@ schema:
     The enrichment record lists the canonical transcripts (canonical_transcripts, each
     with its version, or not_in_dataset when gnomAD does not annotate it, or not_found).
     A transcript UniProt names no isoform for is canonical only in an entry that
-    describes no isoforms. Additive, so a 0.3.7 card is a valid 0.3.8
+    describes no isoforms. Protein cards may hold what KLIFS states for a
+    kinase whose UniProt accession it states (uibcdf/sabueso#83),
+    annotations.kinase_classification (KLIFS kinase id and name, group, family,
+    subfamily, pocket sequence), annotations.kinase_structures (per KLIFS structure, the
+    PDB entry, chain and alternate location, the DFG and alpha-C helix conformations,
+    the orthosteric and allosteric ligands, quality score, resolution in angstrom, and
+    missing residues and atoms) and annotations.kinase_pocket (the 85 pocket positions
+    in KLIFS numbering, each with its residue, placed in UniProt numbering through one
+    structure's author numbering as RCSB states it, rules klifs_pocket_reference@1 and
+    rcsb_author_numbering@1, or not_placed with the reason). Additive, so a 0.3.7 card is a valid 0.3.8
     card without them.
 card_base:
   meta:
@@ -722,6 +731,54 @@ protein_card:
         notes: string
         hold_out_type: string
         skempi_version: string
+      source_assertion_ids:
+      - string
+    kinase_classification:
+      value:
+      - kinase_id: number
+        name: string
+        group: string
+        family: string
+        subfamily: string
+        pocket_sequence: string
+      source_assertion_ids:
+      - string
+    kinase_structures:
+      value:
+      - kinase_id: number
+        klifs_structure_id: number
+        structure: string
+        chain: string
+        alt: string
+        dfg: string
+        ac_helix: string
+        ligand: string
+        allosteric_ligand: string
+        quality_score: number
+        resolution:
+          value: number
+          unit: string
+        missing_residues: number
+        missing_atoms: number
+      source_assertion_ids:
+      - string
+    kinase_pocket:
+      value:
+      - kinase_id: number
+        index: number
+        klifs_position: string
+        residue: string
+        location:
+          start: number
+          end: number
+        placed_via:
+          rule: string
+          reference_rule: string
+          structure: string
+          chain: string
+          author_position: string
+        numbering: string
+        not_placed: string
       source_assertion_ids:
       - string
     pathogen_phenotypes:

@@ -71,6 +71,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     transcript UniProt states for the canonical isoform, its consequence there comes
     first (`transcript_version`), and a change it states is not coding there is not
     placed (`not_coding_on_canonical`, `canonical_consequence`);
+  - KLIFS for kinases (#83, wave 2): `klifs={}` adds the classification, the
+    conformation of each structure (DFG, αC helix, ligands, quality) and the 85 pocket
+    residues, placed in UniProt numbering through one structure's author numbering
+    (`klifs_pocket_reference@1`, `rcsb_author_numbering@1`);
   - local mirrors (#100, phase 2): `sabueso.mirrors` (install, status, update policies,
     remove, `using` with `mirror_first` or `offline`); BindingDB's monthly release as
     the first mirror (`MirrorBindingDBClient`), recorded as `access: mirror` with its

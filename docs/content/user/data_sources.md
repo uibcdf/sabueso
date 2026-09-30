@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 33, evaluating 23, deferred 24, retired 3, out of scope 13.
+Summary: in use 34, evaluating 22, deferred 24, retired 3, out of scope 13.
 
 ## In use
 
@@ -39,6 +39,7 @@ Summary: in use 33, evaluating 23, deferred 24, retired 3, out of scope 13.
 | [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/) | Target validation, genetics and functional networks | E-utilities (einfo, esearch by gene id, esummary), optional NCBI key, when resolve(..., clinvar={}) | Freely available; ClinVar asks to be credited as the source. Not for diagnostic use without review by a genetics professional. | 2026-09-25 |
 | [gnomAD](https://gnomad.broadinstitute.org/) | Target validation, genetics and functional networks | GraphQL API (dataset gnomad_r4; the API states no finer release), no key, when resolve(..., gnomad={}) | CC0 1.0 (core data; some annotations, not read, carry other terms) | 2026-09-25 |
 | [SKEMPI 2.0](https://life.bsc.es/pid/skempi2/) | Protein–protein interactions and structural modulation | The whole CSV file (1.6 MB, database version 2.0, its SHA-256 recorded), downloaded once per process and indexed by PDB entry, when resolve(..., skempi=True) | CC BY 4.0 (the site's terms of download and use; cite Jankauskaitė et al. 2019) | 2026-09-25 |
+| [KLIFS](https://klifs.net/) | Binding sites, cavities and specialised families | REST API (api_v2), no key: the kinase list once per process, then per kinase its information, its structures and one structure's pocket residues, when resolve(..., klifs={}) | No formal licence found (2026-09-30); the FAQ states that all KLIFS data is freely available and open, for academia and industry, and asks to be cited. The earlier 'CC BY 4.0' could not be confirmed. | 2026-09-25 |
 | [BindingDB](https://www.bindingdb.org/) | Binding affinity and experimental bioactivity | REST getLigandsByUniprots, no key; monomers anchored through UniChem | CC BY 3.0 (BindingDB curation) and CC BY-SA 3.0 (imported from ChEMBL); treated as CC BY-SA 3.0, since the REST records state no origin | 2026-09-25 |
 | [PubChem BioAssay](https://pubchem.ncbi.nlm.nih.gov/) | Binding affinity and experimental bioactivity | PUG REST: every result of the target in one request (assay/target/accession/<acc>/concise), assay summaries and compound InChIKeys in batches | US public domain (NLM policy); deposited data keeps its depositor terms (ChEMBL copies: CC BY-SA 3.0) | 2026-09-25 |
 | [ChEBI](https://www.ebi.ac.uk/chebi/) | Chemical space, synthesis, ADMET and safety | ChEBI 2.0 API (compounds, 200 per request), no key, when resolve(..., chebi=True) | CC BY 4.0 (ChEBI 2.0 API) | 2026-09-25 |
@@ -64,6 +65,7 @@ and Sabueso warns. The other sources in use are read whole.
 | Europe PMC | 5000 | articles mentioning the accession, newest first; europepmc={"limit": n} asks for fewer |
 | ClinVar | 5000 | records per gene |
 | gnomAD | 5000 | protein-level variants per gene |
+| KLIFS | 5000 | structures of the kinase; klifs={"limit": n} asks for fewer |
 | BindingDB | 5000 | affinity records per protein, ordered by bindingdb_record_order@1 (each kept monomer needs one UniChem lookup) |
 | PubChem BioAssay | 5000 | result rows of the protein, ordered by pubchem_row_order@1 (confirmatory rows with a value first) |
 | ClinicalTrials.gov | 5000 | trials per molecule, among those ChEMBL's indications cite |
@@ -82,7 +84,6 @@ and Sabueso warns. The other sources in use are read whole.
 | [ASD (Allosteric Database)](http://mdl.shsmu.edu.cn/ASD/) | Binding sites, cavities and specialised families | Allosteric modulators, regulatory sites and conformational communication. | under review | 2026-09-25 |
 | [BRENDA](https://brenda-enzymes.org/) | Binding sites, cavities and specialised families | Enzyme information: kinetics (Km, kcat), inhibitors, cofactors and conditions. | Reviewed 2026-09-29 (#94): data CC BY 4.0 (its licence page); the SOAP web service needs a registered account (email and password). Fits every terms profile. Strong candidate: kinetics (Km, kcat, Ki) and inhibitors per EC number and organism, e.g. TIM (EC 5.3.1.1) of T. cruzi and human. Waits on a user's account for the key rule. | 2026-09-25 |
 | [GPCRdb](https://gpcrdb.org/) | Binding sites, cavities and specialised families | GPCR structures, mutations, activation states and Ballesteros–Weinstein numbering. | under review | 2026-09-25 |
-| [KLIFS](https://klifs.net/) | Binding sites, cavities and specialised families | Kinase pocket anatomy aligned to 85 reference positions, with DFG/αC conformations. | under review | 2026-09-25 |
 | [mpstruc](https://blanco.biomol.uci.edu/mpstruc/) | Binding sites, cavities and specialised families | Membrane proteins of known structure, classified by topology and family. | under review | 2026-09-25 |
 | [OPM (Orientations of Proteins in Membranes)](https://opm.phar.umich.edu/) | Binding sites, cavities and specialised families | Position and orientation of PDB structures in the lipid bilayer. | under review | 2026-09-25 |
 | [SAbDab / Thera-SAbDab](https://opig.stats.ox.ac.uk/webapps/sabdab/) | Binding sites, cavities and specialised families | Antibody and nanobody structures with standard numbering, CDRs and clinical metadata. | under review | 2026-09-25 |

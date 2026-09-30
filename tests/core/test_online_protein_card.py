@@ -87,3 +87,18 @@ def test_online_source_access_returns_raw_records_with_provenance():
     assert structure["record"]["rcsb_id"] == "1SUX"
     compound = pubchem.get_compound("5978")
     assert compound["record"]["PropertyTable"]["Properties"][0]["CID"] == 5978
+
+
+@pytest.mark.online
+def test_online_klifs_places_the_egfr_gatekeeper():
+    card, _ = resolve_protein_card("P00533", structures=["4HJO"], klifs={})
+    (outcome,) = [e for e in card.quality["enrichments"] if e["source"] == "KLIFS"]
+    assert outcome["status"] == "added"
+    assert outcome["count"] > 500
+    pocket = {
+        p["klifs_position"]: p for p in card.get("annotations.kinase_pocket")["value"]
+    }
+    assert (pocket["GK.45"]["residue"], pocket["GK.45"]["location"]["start"]) == (
+        "T",
+        790,
+    )

@@ -890,11 +890,27 @@ resources:
     name: "KLIFS"
     url: https://klifs.net/
     category: sites_families
-    status: evaluating
+    status: in_use
     description: "Kinase pocket anatomy aligned to 85 reference positions, with DFG/αC conformations."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "CC BY 4.0 (REST API)"
+    decided_by: "Sabueso maintainers (2026-09-30)"
+    reason: "A kinase's classification (group, family, subfamily), the conformation KLIFS assigns each of its structures (DFG and alpha-C helix, ligands, quality) and its 85 pocket residues, for a kinase whose UniProt accession KLIFS states. The pocket is placed in UniProt numbering only through one structure's author numbering as RCSB states it (klifs_pocket_reference@1, rcsb_author_numbering@1) and a matching residue."
+    access: "REST API (api_v2), no key: the kinase list once per process, then per kinase its information, its structures and one structure's pocket residues, when resolve(..., klifs={})"
+    licence: "No formal licence found (2026-09-30); the FAQ states that all KLIFS data is freely available and open, for academia and industry, and asks to be cited. The earlier 'CC BY 4.0' could not be confirmed."
+    limit:
+      constant: sabueso.enrichers.klifs.DEFAULT_LIMIT
+      of: "structures of the kinase; klifs={\"limit\": n} asks for fewer"
+    terms:
+      source_names: ["KLIFS"]
+      licence: NO-OWN-RESTRICTIONS
+      attribution: "KLIFS (Kanev et al. 2021, Nucleic Acids Research 49, D562-D569; https://klifs.net)"
+      statement: https://klifs.net/faq.php
+      reviewed: 2026-09-30
+      caveats:
+        - "No formal licence: the FAQ states the data is free and open for academia and industry."
+        - "Structures come from the PDB (CC0); KLIFS's annotations are its own."
+    module: [sabueso.tools.db.klifs, sabueso.mappings.klifs]
     links: ["#83"]
   - id: gpcrdb
     name: "GPCRdb"

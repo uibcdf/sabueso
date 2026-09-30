@@ -39,6 +39,8 @@ LENGTH_UNIT = "angstrom"
 NEGOTIATED_UNITS: Dict[str, Tuple[str, ...]] = {
     **{path: (unit,) for path, unit in FIELD_UNITS.items()},
     "relationships.has_structure.resolution": (LENGTH_UNIT,),
+    # KLIFS's structures of a kinase (#83, schema 0.3.8).
+    "annotations.kinase_structures.value.resolution": (LENGTH_UNIT,),
     "relationships.has_structure.ligands.instances.contacts.min_distance": (
         LENGTH_UNIT,
     ),

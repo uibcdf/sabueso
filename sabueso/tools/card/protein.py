@@ -86,6 +86,8 @@ def resolve_protein_card(
     gnomad_client: Any | None = None,
     skempi: bool = False,
     skempi_client: Any | None = None,
+    klifs: Dict[str, Any] | None = None,
+    klifs_client: Any | None = None,
     medgen: bool = False,
     medgen_client: Any | None = None,
     disease_identity: bool = False,
@@ -167,6 +169,15 @@ def resolve_protein_card(
     the PDB entries whose chains UniProt states are this protein. A mutation is placed
     in UniProt numbering only through the author numbering RCSB states for that chain,
     so ask for the ``structures`` too, and only when its residue matches.
+
+    ``klifs`` (e.g. ``{}`` or ``{"limit": 100}``; default all, up to 5000 structures)
+    adds, for a kinase KLIFS states is this UniProt entry, its classification (group,
+    family, subfamily), the conformation KLIFS assigns each of its structures (DFG and
+    αC helix in or out, ligands, quality) and its 85 pocket residues
+    (``annotations.kinase_classification``, ``annotations.kinase_structures``,
+    ``annotations.kinase_pocket``). The pocket is placed in UniProt numbering through
+    one structure's author numbering as RCSB states it (``klifs_pocket_reference@1``),
+    so ask for the ``structures`` too.
 
     ``disease_identity`` asks MONDO which of the disease ids the other sources put on
     the card are the same disease (``same_as`` to ``mondo:<term>``, only where MONDO
@@ -316,6 +327,7 @@ def resolve_protein_card(
         "gnomad": (gnomad, gnomad_client),
         "clinvar": (clinvar, clinvar_client),
         "skempi": (skempi, skempi_client),
+        "klifs": (klifs, klifs_client),
         "medgen": (medgen, medgen_client),
         "disease_identity": (disease_identity, mondo_client),
         "europepmc": (europepmc, europepmc_client),
