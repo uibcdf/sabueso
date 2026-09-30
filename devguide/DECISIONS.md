@@ -1306,3 +1306,21 @@ uibcdf/sabueso#100, uibcdf/moli#33. Direction adopted; not yet built.
   manager (ChEMBL and BindingDB first); then MOLI's platform side.
 - **Licences decide retention.** The registry's terms gain `retention` and `mirror`.
   What cannot be kept keeps its hash and is marked `retained: false`.
+
+## Knowledge store format 2 (2026-09-30)
+uibcdf/sabueso#99.
+- **When a statement was read belongs to the state, not to the row.** A SourceAssertion
+  row is its content without `retrieved_at`, which `card_sa` keeps per state (through
+  `retrieval_times`: a card holds few distinct times). A card rebuilt with unchanged
+  knowledge shares every row with its previous revision. Pinned ids do not change: the
+  snapshot id is computed on the whole card, before storage, and every read rebuilds and
+  checks it.
+- **Integer keys.** Membership rows repeated two long hex keys, in the table and in
+  each index (~150 bytes a row). States and rows are now numbered, and membership
+  tables are `WITHOUT ROWID`.
+- **Compression.** Documents and rows are zlib-compressed; ids are computed on the
+  canonical JSON, never on stored bytes. A row read as text is format 1's.
+- **Measured** on a live pilot store: 15.4 MB (format 1) to 4.7 MB (format 2); saving
+  both cards again with unchanged knowledge adds 0.2 MB instead of about 5 MB.
+- **Upgrade in place.** Format 1 rows are copied as written, and old tables dropped. A
+  Sabueso that reads only format 1 refuses format 2 with its message.

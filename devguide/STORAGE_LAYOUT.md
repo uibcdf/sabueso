@@ -70,22 +70,29 @@ decision of an `ambiguity_deck`, or the source outcomes and unanchored records o
 - `store.import_card_table(path, table="cards")` imports the rows of a
   `save_card_sqlite` table, oldest first, as history.
 
-Tables:
-- `snapshots` holds one row per distinct state: the card's document as JSON, plus its
-  seal.
+Tables (format 2, #99):
+- `snapshots` holds one row per distinct state: the card's document, plus its seal,
+  zlib-compressed. `snapshot_numbers` gives each state an integer.
 - `revisions` holds the saves of each card, in order.
-- `source_assertions` and `relationships` hold one row per distinct content, with
-  indexed columns (`sa_id`/`rel_id`, subject, field path, predicate, object, source
-  release).
-- `snapshot_source_assertions` and `snapshot_relationships` say which rows each state
-  holds, and in which order.
+- `sa_rows` and `rel_rows` hold one row per distinct content, compressed, with indexed
+  columns (`sa_id`/`rel_id`, subject, field path, predicate, object, source release). A
+  SourceAssertion's row leaves out `retrieved_at`: the same statement read again is the
+  same row.
+- `card_sa` and `card_rel` say which rows each state holds, in which order, by integer.
+  `card_sa` also names when each statement was read (`retrieval_times`).
 - `deck_snapshots` holds one row per distinct deck content, and `deck_revisions` the
   saves of each deck name, in order.
 - `packet_snapshots` holds one row per distinct knowledge packet (its document, its
   snapshot id and its content-equivalence id), and `packet_revisions` the saves of each
-  packet name, in order (#71). The tables are added to an existing store when it is
-  opened; the store format stays 1, since earlier readers ignore them.
-- `store_meta` holds the store's format, currently 1.
+  packet name, in order (#71).
+- `store_meta` holds the store's format, currently 2. A format-1 store is upgraded in
+  place when it is opened: its rows are copied as written (text, `retrieved_at` inside),
+  and its old row tables are dropped. A Sabueso that reads only format 1 refuses a
+  format-2 store.
+
+Measured on a live pilot store (two proteins, six card states): 15.4 MB in format 1,
+4.7 MB in format 2; saving both cards again with unchanged knowledge adds 0.2 MB, where
+format 1 stored them whole again (about 5 MB).
 
 Every read rebuilds the snapshot, hashes it and compares the result with its id. That
 includes the reads of a single pinned item (`source_assertion`, `relationship`) and the

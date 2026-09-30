@@ -46,8 +46,9 @@
   not use the glossary of entities (#52). A molecule stated as `chembl:…` in one card and
   as `pdb.ligand:…` in another is found only under each reference. Resolving through
   the glossary is the next step if cross-source queries become common.
-- **Knowledge store format** (#27): the file states format 1. A change to its tables
-  needs a new format and a migration, like the card schema (#42, #51).
+- **Knowledge store format** (#27): the file states its format, 2 since #99, and
+  upgrades format 1 in place. A change to its tables needs a new format and an upgrade,
+  like the card schema (#42, #51).
 - **Deck operations that cannot be recorded** (#58): `Deck.filter(predicate)` records
   the operation but not the Python predicate, and marks it `"reproducible": False`. A
   deck derived that way can be cited through its pinned reference, but not rebuilt from
@@ -224,11 +225,12 @@
   393 entries (~175 KB of card each). BindingDB and PubChem BioAssay ignore the 5000
   ceiling. A card with every source would exceed 100 MB and take hours. #98 lists the
   batched queries the sources offer, and the order of work.
-- **Store growth across rebuilds** (#99). Stored SourceAssertion rows include
-  `retrieved_at` in their hash, so a card rebuilt with unchanged knowledge shares no row
-  with its previous revision (4761 rows for 4761 references in a live pilot store).
-  Periodic revisions, which `as_of` and `changed_since` invite, would store everything
-  again each time.
+- **Store growth across rebuilds** (#99, addressed on main). Format 2 keeps
+  `retrieved_at` out of a SourceAssertion's row, numbers states and rows with integers,
+  and compresses: a card saved again with unchanged knowledge adds about 0.1 MB instead
+  of a whole copy. What still grows with each revision is one membership row per
+  statement; the retrieval archive (#100) will add responses, which licences and
+  freshness decide.
 
 ## Open Questions
 - What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?

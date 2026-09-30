@@ -8,6 +8,7 @@ by the snapshots that hold them, and relationships can be searched from their ob
 import copy
 import json
 import sqlite3
+import zlib
 from pathlib import Path
 
 import pytest
@@ -203,19 +204,19 @@ def test_rows_are_stored_once_and_shared(tmp_path, tctim, hstim):
     path = tmp_path / "knowledge.db"
     store = sabueso.KnowledgeStore(path)
     store.save(tctim)
-    assertions = _count(path, "source_assertions")
-    relationships = _count(path, "relationships")
+    assertions = _count(path, "sa_rows")
+    relationships = _count(path, "rel_rows")
     assert assertions == len(tctim.source_assertion_store.to_list())
     # A second state of the card adds only what changed: here, nothing in its rows.
     store.save(_variant(tctim, "new"))
-    assert _count(path, "source_assertions") == assertions
-    assert _count(path, "relationships") == relationships
+    assert _count(path, "sa_rows") == assertions
+    assert _count(path, "rel_rows") == relationships
     assert _count(path, "snapshots") == 2
     # Rows are keyed by content: another card states its own subject, so it shares none
     # of TcTIM's relationships, even the TIM domain both are classified in.
     store.save(hstim)
     hs = len(hstim.relationship_store.to_list())
-    assert _count(path, "relationships") == relationships + hs
+    assert _count(path, "rel_rows") == relationships + hs
 
 
 def test_the_same_assertion_in_another_release_is_another_row(tmp_path, tctim):
@@ -313,16 +314,25 @@ def test_a_store_changed_outside_sabueso_is_refused(tmp_path, tctim):
     ref = store.save(tctim)
     with sqlite3.connect(path) as conn:
         body_hash, body = conn.execute(
-            "SELECT body_hash, body FROM source_assertions LIMIT 1"
+            "SELECT body_hash, body FROM sa_rows LIMIT 1"
         ).fetchone()
-        changed = json.loads(body)
+        changed = json.loads(_text(body))
         changed["asserted_value"] = "tampered"
         conn.execute(
-            "UPDATE source_assertions SET body = ? WHERE body_hash = ?",
-            (json.dumps(changed), body_hash),
+            "UPDATE sa_rows SET body = ? WHERE body_hash = ?",
+            (_stored(json.dumps(changed)), body_hash),
         )
     with pytest.raises(StorageError, match="changed outside Sabueso"):
         store.load(ref)
+
+
+def _text(value):
+    """A stored row's text (format 2 stores it compressed)."""
+    return zlib.decompress(value).decode() if isinstance(value, bytes) else value
+
+
+def _stored(text):
+    return zlib.compress(text.encode())
 
 
 def _tamper(path, table, id_column):
@@ -331,11 +341,11 @@ def _tamper(path, table, id_column):
         item_id, body_hash, body = conn.execute(
             f"SELECT {id_column}, body_hash, body FROM {table} LIMIT 1"
         ).fetchone()
-        changed = json.loads(body)
+        changed = json.loads(_text(body))
         changed["tampered"] = True
         conn.execute(
             f"UPDATE {table} SET body = ? WHERE body_hash = ?",
-            (json.dumps(changed), body_hash),
+            (_stored(json.dumps(changed)), body_hash),
         )
     return item_id
 
@@ -344,8 +354,8 @@ def test_a_pinned_item_read_is_verified_like_a_card_read(tmp_path, tctim):
     # A pinned item returns the item as the verified snapshot holds it, or fails; it
     # never returns changed content under the original pin (#79, uibcdf/moli#3).
     for table, id_column, read in (
-        ("source_assertions", "sa_id", "source_assertion"),
-        ("relationships", "rel_id", "relationship"),
+        ("sa_rows", "sa_id", "source_assertion"),
+        ("rel_rows", "rel_id", "relationship"),
     ):
         path = tmp_path / f"{table}.db"
         store = sabueso.KnowledgeStore(path)
@@ -362,7 +372,7 @@ def test_a_relationship_search_never_cites_a_changed_state(tmp_path, tctim):
     store = sabueso.KnowledgeStore(path)
     store.save(tctim)
     assert store.relationships(predicate="has_structure")  # untouched: found
-    _tamper(path, "relationships", "rel_id")
+    _tamper(path, "rel_rows", "rel_id")
     with pytest.raises(StorageError, match="changed outside Sabueso"):
         store.relationships(predicate="has_structure")
 
@@ -371,8 +381,8 @@ def test_the_store_states_its_format(tmp_path):
     path = tmp_path / "knowledge.db"
     sabueso.KnowledgeStore(path)
     with sqlite3.connect(path) as conn:
-        conn.execute("UPDATE store_meta SET value = '2' WHERE key = 'format'")
-    with pytest.raises(StorageError, match="format 2"):
+        conn.execute("UPDATE store_meta SET value = '3' WHERE key = 'format'")
+    with pytest.raises(StorageError, match="format 3"):
         sabueso.KnowledgeStore(path)
     other = tmp_path / "not_a_database.db"
     other.write_text("plain text", encoding="utf-8")
@@ -394,3 +404,143 @@ def test_a_card_table_is_imported_as_history(tmp_path, tctim):
     assert store.load(tctim.id).to_dict() == after.to_dict()
     with pytest.raises(StorageError, match="no card table"):
         store.import_card_table(legacy, table="absent")
+
+
+# --- format 2: unchanged knowledge stored once, compressed (#99) -------------------------
+
+
+def _read_again(card, when="2027-01-01T00:00:00+00:00"):
+    """The same card as if every source were read again, with nothing changed."""
+    data = copy.deepcopy(card.to_dict())
+    for assertion in data["source_assertion_store"]:
+        assertion["retrieved_at"] = when
+    data.pop("quantities", None)
+    from sabueso.core.quantities import seal
+
+    data["quantities"] = seal(data)
+    return Card.from_dict(data)
+
+
+def test_unchanged_knowledge_read_again_adds_no_rows(tmp_path, tctim):
+    path = tmp_path / "k.db"
+    store = sabueso.KnowledgeStore(path)
+    first = store.save(tctim)
+    count = "SELECT count(*) FROM sa_rows"
+    with sqlite3.connect(path) as conn:
+        rows = conn.execute(count).fetchone()[0]
+    again = store.save(_read_again(tctim))
+    assert again != first  # another state: the retrieval times differ
+    with sqlite3.connect(path) as conn:
+        assert conn.execute(count).fetchone()[0] == rows
+    # Each revision still knows when each statement was read.
+    old, new = store.load(first), store.load(again)
+    assert {sa["retrieved_at"] for sa in new.source_assertion_store.to_list()} == {
+        "2027-01-01T00:00:00+00:00"
+    }
+    assert old.to_dict() == tctim.to_dict()
+
+
+def test_what_is_stored_is_compressed(tmp_path, tctim):
+    path = tmp_path / "k.db"
+    sabueso.KnowledgeStore(path).save(tctim)
+    with sqlite3.connect(path) as conn:
+        (document,) = conn.execute("SELECT document FROM snapshots").fetchone()
+        (body,) = conn.execute("SELECT body FROM sa_rows LIMIT 1").fetchone()
+    assert isinstance(document, bytes) and isinstance(body, bytes)
+    assert "retrieved_at" not in json.loads(zlib.decompress(body))
+
+
+FORMAT_1 = """
+CREATE TABLE store_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+CREATE TABLE snapshots (snapshot_id TEXT PRIMARY KEY, card_id TEXT NOT NULL,
+    entity_type TEXT, schema_version TEXT NOT NULL, document TEXT NOT NULL,
+    quantities TEXT NOT NULL);
+CREATE TABLE revisions (revision INTEGER PRIMARY KEY AUTOINCREMENT,
+    card_id TEXT NOT NULL, snapshot_id TEXT NOT NULL REFERENCES snapshots (snapshot_id),
+    stored_at TEXT NOT NULL, note TEXT);
+CREATE TABLE source_assertions (body_hash TEXT PRIMARY KEY, sa_id TEXT NOT NULL,
+    subject_ref TEXT, field_path TEXT, source_name TEXT, source_version TEXT,
+    body TEXT NOT NULL);
+CREATE TABLE snapshot_source_assertions (snapshot_id TEXT NOT NULL, position INTEGER
+    NOT NULL, body_hash TEXT NOT NULL, PRIMARY KEY (snapshot_id, position));
+CREATE TABLE relationships (body_hash TEXT PRIMARY KEY, rel_id TEXT NOT NULL,
+    subject_ref TEXT, predicate TEXT, object_ref TEXT, body TEXT NOT NULL);
+CREATE TABLE snapshot_relationships (snapshot_id TEXT NOT NULL, position INTEGER
+    NOT NULL, body_hash TEXT NOT NULL, PRIMARY KEY (snapshot_id, position));
+"""
+
+
+def _format_1_store(path, card):
+    """A store as Sabueso wrote format 1: text rows with retrieved_at inside."""
+    from sabueso.core.knowledge_store import _columns
+    from sabueso.core.snapshot import canonical_json, digest, pinned_ref
+
+    stored = card.to_dict()
+    sid = snapshot_id(stored)
+    with sqlite3.connect(path) as conn:
+        conn.executescript(FORMAT_1)
+        conn.execute("INSERT INTO store_meta VALUES ('format', '1')")
+        document = {
+            k: v
+            for k, v in stored.items()
+            if k not in ("source_assertion_store", "relationship_store", "quantities")
+        }
+        conn.execute(
+            "INSERT INTO snapshots VALUES (?, ?, ?, ?, ?, ?)",
+            (
+                sid,
+                card.id,
+                card.meta.get("entity_type"),
+                card.meta["schema_version"],
+                canonical_json(document),
+                canonical_json(stored["quantities"]),
+            ),
+        )
+        for key, rows, members, id_column, columns in (
+            (
+                "source_assertion_store",
+                "source_assertions",
+                "snapshot_source_assertions",
+                "sa_id",
+                "subject_ref, field_path, source_name, source_version",
+            ),
+            (
+                "relationship_store",
+                "relationships",
+                "snapshot_relationships",
+                "rel_id",
+                "subject_ref, predicate, object_ref",
+            ),
+        ):
+            for position, row in enumerate(stored[key]):
+                body = canonical_json(row)
+                values = (digest(body), row["id"], *_columns(key, row), body)
+                conn.execute(
+                    f"INSERT OR IGNORE INTO {rows} (body_hash, {id_column}, "
+                    f"{columns}, body) VALUES ({', '.join('?' for _ in values)})",
+                    values,
+                )
+                conn.execute(
+                    f"INSERT INTO {members} VALUES (?, ?, ?)",
+                    (sid, position, digest(body)),
+                )
+        conn.execute(
+            "INSERT INTO revisions (card_id, snapshot_id, stored_at) VALUES (?, ?, ?)",
+            (card.id, sid, "2026-09-29T00:00:00+00:00"),
+        )
+    return pinned_ref(card.id, sid)
+
+
+def test_a_format_1_store_is_upgraded_in_place_and_still_read(tmp_path, tctim):
+    path = tmp_path / "k.db"
+    old_ref = _format_1_store(path, tctim)
+    store = sabueso.KnowledgeStore(path)
+    with sqlite3.connect(path) as conn:
+        assert conn.execute("SELECT value FROM store_meta").fetchone() == ("2",)
+        tables = {n for (n,) in conn.execute("SELECT name FROM sqlite_master")}
+    assert "source_assertions" not in tables and "sa_rows" in tables
+    assert store.load(old_ref).to_dict() == tctim.to_dict()
+    assert store.relationships(predicate="has_structure")
+    new_ref = store.save(_read_again(tctim))
+    assert store.load(new_ref).id == tctim.id
+    assert [h["ref"] for h in store.history(tctim.id)] == [old_ref, new_ref]

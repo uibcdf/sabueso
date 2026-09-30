@@ -236,11 +236,21 @@ def test_a_changed_packet_is_refused(tmp_path, query, clients):
     path = tmp_path / "k.db"
     store = sabueso.KnowledgeStore(path)
     packet = _packet(query, clients, store=store, packet_name="tim_pair")
+    import zlib
+
     with sqlite3.connect(path) as conn:
-        conn.execute(
-            "UPDATE packet_snapshots SET document = replace(document, "
-            "'knowledge_state@3', 'knowledge_state@9')"
-        )
+        for sid, document in conn.execute(
+            "SELECT snapshot_id, document FROM packet_snapshots"
+        ).fetchall():
+            text = (
+                zlib.decompress(document)
+                .decode()
+                .replace("knowledge_state@3", "knowledge_state@9")
+            )
+            conn.execute(
+                "UPDATE packet_snapshots SET document = ? WHERE snapshot_id = ?",
+                (zlib.compress(text.encode()), sid),
+            )
     with pytest.raises(StorageError, match="no longer matches"):
         store.load_packet(packet.ref)
 

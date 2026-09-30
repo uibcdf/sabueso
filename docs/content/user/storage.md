@@ -61,6 +61,11 @@ store.relationships(object_ref="chembl:CHEMBL1288605", predicate="has_bioactivit
   saved in. `store.deck_history("ligands")` lists the revisions.
 - To bring in cards saved earlier with `card.to_sqlite`, use
   `store.import_card_table(path)`. Each row becomes a revision.
+- Saving a card again when nothing it knows has changed costs little: each statement is
+  stored once, with the time it was read kept per revision, and the store is
+  compressed. A store written by Sabueso 0.7.0 or earlier is upgraded in place the
+  first time a newer Sabueso opens it; older versions of Sabueso cannot open it after
+  that.
 
 ### What the store knew on a date
 

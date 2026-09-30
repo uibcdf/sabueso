@@ -24,11 +24,19 @@ store is where cards are kept and worked with:
   packet is referenced as ``sabueso:packet:<name>`` (latest) or
   ``sabueso:packet:<name>@sha256:…`` (exact). Each revision also records the packet's
   content-equivalence id, so that a history shows when the knowledge last changed.
+- **Unchanged knowledge is stored once** (format 2, #99). A SourceAssertion's row is
+  its content without ``retrieved_at``, which is kept where the row joins each
+  snapshot. A card rebuilt from sources that did not change shares every row with its
+  previous revision, and each revision still knows when each statement was read.
+- **Compressed** (format 2): documents and rows are stored zlib-compressed. Ids and
+  checks are computed on the canonical JSON, never on the stored bytes.
 - **Every read verifies.** A snapshot is rebuilt from its rows, hashed again and
   checked against its id; then ``Card.from_dict`` checks its schema version and its
   quantities seal. A store changed outside Sabueso is refused with ``StorageError``.
 
-The file states its format (``store_meta``, format 1). Its tables are Sabueso's
+The file states its format (``store_meta``). Format 2 reads a format-1 store and
+upgrades it in place: its rows stay as they were (``retrieved_at`` inside, uncompressed)
+and new ones are written in format 2. A Sabueso that reads only format 1 refuses it. Its tables are Sabueso's
 implementation, not a contract: other MOLI components reference cards through the
 reference forms (uibcdf/moli#3), not by reading these tables.
 """
@@ -38,6 +46,7 @@ from __future__ import annotations
 import json
 import os
 import sqlite3
+import zlib
 from contextlib import closing, contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
@@ -57,7 +66,9 @@ from .snapshot import (
     snapshot_id,
 )
 
-FORMAT = 1
+FORMAT = 2
+#: Formats this Sabueso opens; an older one is upgraded in place.
+UPGRADABLE = {"1"}
 #: The two stores of a card that become rows; the rest of the card is one document.
 ROWS = ("source_assertion_store", "relationship_store")
 
@@ -82,46 +93,53 @@ CREATE TABLE IF NOT EXISTS revisions (
     note TEXT
 );
 CREATE INDEX IF NOT EXISTS revisions_by_card ON revisions (card_id, revision);
-CREATE TABLE IF NOT EXISTS source_assertions (
-    body_hash TEXT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS snapshot_numbers (
+    sno INTEGER PRIMARY KEY,
+    snapshot_id TEXT NOT NULL UNIQUE REFERENCES snapshots (snapshot_id)
+);
+CREATE TABLE IF NOT EXISTS retrieval_times (
+    tid INTEGER PRIMARY KEY,
+    value TEXT NOT NULL UNIQUE
+);
+CREATE TABLE IF NOT EXISTS sa_rows (
+    rid INTEGER PRIMARY KEY,
+    body_hash TEXT NOT NULL UNIQUE,
     sa_id TEXT NOT NULL,
     subject_ref TEXT,
     field_path TEXT,
     source_name TEXT,
     source_version TEXT,
-    body TEXT NOT NULL
+    body BLOB NOT NULL
 );
-CREATE INDEX IF NOT EXISTS source_assertions_by_id ON source_assertions (sa_id);
-CREATE INDEX IF NOT EXISTS source_assertions_by_subject
-    ON source_assertions (subject_ref, field_path);
-CREATE TABLE IF NOT EXISTS snapshot_source_assertions (
-    snapshot_id TEXT NOT NULL REFERENCES snapshots (snapshot_id),
+CREATE INDEX IF NOT EXISTS sa_rows_by_id ON sa_rows (sa_id);
+CREATE INDEX IF NOT EXISTS sa_rows_by_subject ON sa_rows (subject_ref, field_path);
+CREATE TABLE IF NOT EXISTS card_sa (
+    sno INTEGER NOT NULL REFERENCES snapshot_numbers (sno),
     position INTEGER NOT NULL,
-    body_hash TEXT NOT NULL REFERENCES source_assertions (body_hash),
-    PRIMARY KEY (snapshot_id, position)
-);
-CREATE INDEX IF NOT EXISTS snapshot_source_assertions_by_row
-    ON snapshot_source_assertions (body_hash);
-CREATE TABLE IF NOT EXISTS relationships (
-    body_hash TEXT PRIMARY KEY,
+    rid INTEGER NOT NULL REFERENCES sa_rows (rid),
+    tid INTEGER REFERENCES retrieval_times (tid),
+    PRIMARY KEY (sno, position)
+) WITHOUT ROWID;
+CREATE INDEX IF NOT EXISTS card_sa_by_row ON card_sa (rid);
+CREATE TABLE IF NOT EXISTS rel_rows (
+    rid INTEGER PRIMARY KEY,
+    body_hash TEXT NOT NULL UNIQUE,
     rel_id TEXT NOT NULL,
     subject_ref TEXT,
     predicate TEXT,
     object_ref TEXT,
-    body TEXT NOT NULL
+    body BLOB NOT NULL
 );
-CREATE INDEX IF NOT EXISTS relationships_by_id ON relationships (rel_id);
-CREATE INDEX IF NOT EXISTS relationships_by_object ON relationships (object_ref, predicate);
-CREATE INDEX IF NOT EXISTS relationships_by_subject
-    ON relationships (subject_ref, predicate);
-CREATE TABLE IF NOT EXISTS snapshot_relationships (
-    snapshot_id TEXT NOT NULL REFERENCES snapshots (snapshot_id),
+CREATE INDEX IF NOT EXISTS rel_rows_by_id ON rel_rows (rel_id);
+CREATE INDEX IF NOT EXISTS rel_rows_by_object ON rel_rows (object_ref, predicate);
+CREATE INDEX IF NOT EXISTS rel_rows_by_subject ON rel_rows (subject_ref, predicate);
+CREATE TABLE IF NOT EXISTS card_rel (
+    sno INTEGER NOT NULL REFERENCES snapshot_numbers (sno),
     position INTEGER NOT NULL,
-    body_hash TEXT NOT NULL REFERENCES relationships (body_hash),
-    PRIMARY KEY (snapshot_id, position)
-);
-CREATE INDEX IF NOT EXISTS snapshot_relationships_by_row
-    ON snapshot_relationships (body_hash);
+    rid INTEGER NOT NULL REFERENCES rel_rows (rid),
+    PRIMARY KEY (sno, position)
+) WITHOUT ROWID;
+CREATE INDEX IF NOT EXISTS card_rel_by_row ON card_rel (rid);
 CREATE TABLE IF NOT EXISTS deck_snapshots (
     snapshot_id TEXT PRIMARY KEY,
     meta TEXT NOT NULL,
@@ -159,18 +177,40 @@ JOIN (SELECT card_id, MAX(revision) AS last FROM revisions GROUP BY card_id) m
 #: (table of rows, membership table, id column, columns taken from each row)
 ROW_TABLES = {
     "source_assertion_store": (
-        "source_assertions",
-        "snapshot_source_assertions",
+        "sa_rows",
+        "card_sa",
         "sa_id",
         ("subject_ref", "field_path", "source_name", "source_version"),
     ),
     "relationship_store": (
-        "relationships",
-        "snapshot_relationships",
+        "rel_rows",
+        "card_rel",
         "rel_id",
         ("subject_ref", "predicate", "object_ref"),
     ),
 }
+#: Format 1's tables, copied into format 2's by ``_upgrade`` and then dropped:
+#: (rows, members, the new rows and members).
+FORMAT_1_TABLES = (
+    ("source_assertions", "snapshot_source_assertions", "sa_rows", "card_sa"),
+    ("relationships", "snapshot_relationships", "rel_rows", "card_rel"),
+)
+
+
+def _pack(text: str) -> bytes:
+    """What a document or row is stored as (format 2): its text, compressed."""
+    return zlib.compress(text.encode("utf-8"), 6)
+
+
+def _unpack(value: Any) -> str:
+    """The text of a stored document or row; format-1 values are text already."""
+    if isinstance(value, bytes):
+        return zlib.decompress(value).decode("utf-8")
+    return value
+
+
+#: What a SourceAssertion row leaves out, kept per snapshot instead (#99).
+PER_SNAPSHOT = "retrieved_at"
 
 
 def _now() -> str:
@@ -206,11 +246,46 @@ class KnowledgeStore:
                     "INSERT INTO store_meta (key, value) VALUES ('format', ?)",
                     (str(FORMAT),),
                 )
+            elif row[0] in UPGRADABLE:
+                self._upgrade(conn)
             elif row[0] != str(FORMAT):
                 raise StorageError(
                     f"{self.path} is a knowledge store of format {row[0]}; this Sabueso "
                     f"reads format {FORMAT}."
                 )
+
+    @staticmethod
+    def _upgrade(conn: sqlite3.Connection) -> None:
+        """Format 1 to 2, in place (#99). Rows are copied as they were written (text,
+        ``retrieved_at`` inside), numbered, and their old tables dropped."""
+        tables = {name for (name,) in conn.execute("SELECT name FROM sqlite_master")}
+        conn.execute(
+            "INSERT OR IGNORE INTO snapshot_numbers (snapshot_id) "
+            "SELECT snapshot_id FROM snapshots ORDER BY rowid"
+        )
+        for (old_rows, old_members, rows, members), (_, _, id_column, columns) in zip(
+            FORMAT_1_TABLES, ROW_TABLES.values()
+        ):
+            if old_rows not in tables:
+                continue
+            listed = ", ".join(columns)
+            conn.execute(
+                f"INSERT OR IGNORE INTO {rows} (body_hash, {id_column}, {listed}, body) "
+                f"SELECT body_hash, {id_column}, {listed}, body FROM {old_rows}"
+            )
+            conn.execute(
+                f"INSERT INTO {members} (sno, position, rid) "
+                "SELECT n.sno, m.position, r.rid FROM {old} m "
+                "JOIN snapshot_numbers n ON n.snapshot_id = m.snapshot_id "
+                "JOIN {rows} r ON r.body_hash = m.body_hash".format(
+                    old=old_members, rows=rows
+                )
+            )
+            conn.execute(f"DROP TABLE {old_members}")
+            conn.execute(f"DROP TABLE {old_rows}")
+        conn.execute(
+            "UPDATE store_meta SET value = ? WHERE key = 'format'", (str(FORMAT),)
+        )
 
     @contextmanager
     def _session(self) -> Iterator[sqlite3.Connection]:
@@ -262,24 +337,44 @@ class KnowledgeStore:
                     card.id,
                     card.meta.get("entity_type"),
                     card.meta["schema_version"],
-                    canonical_json(document),
-                    canonical_json(stored["quantities"]),
+                    _pack(canonical_json(document)),
+                    _pack(canonical_json(stored["quantities"])),
                 ),
             )
+            sno = conn.execute(
+                "INSERT INTO snapshot_numbers (snapshot_id) VALUES (?)", (sid,)
+            ).lastrowid
+            times: Dict[str, int] = {}
             for key, (table, members, id_column, columns) in ROW_TABLES.items():
+                per_snapshot = key == "source_assertion_store"
                 for position, row in enumerate(stored.get(key) or []):
-                    body = canonical_json(row)
+                    # When a statement was read belongs to the snapshot, not the row:
+                    # the same statement read again is the same row (#99).
+                    kept, tid = row, None
+                    if per_snapshot and PER_SNAPSHOT in row:
+                        kept = {k: v for k, v in row.items() if k != PER_SNAPSHOT}
+                        tid = self._time(conn, json.dumps(row[PER_SNAPSHOT]), times)
+                    body = canonical_json(kept)
                     body_hash = digest(body)
                     conn.execute(
                         f"INSERT OR IGNORE INTO {table} "
                         f"(body_hash, {id_column}, {', '.join(columns)}, body) "
                         f"VALUES (?, ?, {', '.join('?' for _ in columns)}, ?)",
-                        (body_hash, row.get("id"), *_columns(key, row), body),
+                        (body_hash, row.get("id"), *_columns(key, row), _pack(body)),
                     )
-                    conn.execute(
-                        f"INSERT INTO {members} VALUES (?, ?, ?)",
-                        (sid, position, body_hash),
-                    )
+                    (rid,) = conn.execute(
+                        f"SELECT rid FROM {table} WHERE body_hash = ?", (body_hash,)
+                    ).fetchone()
+                    if per_snapshot:
+                        conn.execute(
+                            f"INSERT INTO {members} VALUES (?, ?, ?, ?)",
+                            (sno, position, rid, tid),
+                        )
+                    else:
+                        conn.execute(
+                            f"INSERT INTO {members} VALUES (?, ?, ?)",
+                            (sno, position, rid),
+                        )
         head = self._head(conn, card.id)
         if head != sid:
             conn.execute(
@@ -288,6 +383,18 @@ class KnowledgeStore:
                 (card.id, sid, _now(), note),
             )
         return pinned_ref(card.id, sid)
+
+    @staticmethod
+    def _time(conn: sqlite3.Connection, value: str, known: Dict[str, int]) -> int:
+        """The number of a retrieval time: a card holds few distinct ones."""
+        if value not in known:
+            conn.execute(
+                "INSERT OR IGNORE INTO retrieval_times (value) VALUES (?)", (value,)
+            )
+            (known[value],) = conn.execute(
+                "SELECT tid FROM retrieval_times WHERE value = ?", (value,)
+            ).fetchone()
+        return known[value]
 
     @staticmethod
     def _head(conn: sqlite3.Connection, card_id: str) -> str | None:
@@ -321,23 +428,34 @@ class KnowledgeStore:
         document, quantities = conn.execute(
             "SELECT document, quantities FROM snapshots WHERE snapshot_id = ?", (sid,)
         ).fetchone()
-        data = json.loads(document)
+        data = json.loads(_unpack(document))
         for key, (table, members, _, _) in ROW_TABLES.items():
-            data[key] = [
-                json.loads(body)
-                for (body,) in conn.execute(
-                    f"SELECT t.body FROM {members} m JOIN {table} t "
-                    "ON t.body_hash = m.body_hash WHERE m.snapshot_id = ? "
-                    "ORDER BY m.position",
-                    (sid,),
+            if key == "source_assertion_store":
+                when, times = (
+                    "rt.value",
+                    ("LEFT JOIN retrieval_times rt ON rt.tid = m.tid "),
                 )
-            ]
+            else:
+                when, times = "NULL", ""
+            rows = []
+            for body, retrieved_at in conn.execute(
+                f"SELECT t.body, {when} FROM snapshot_numbers n "
+                f"JOIN {members} m ON m.sno = n.sno "
+                f"JOIN {table} t ON t.rid = m.rid {times}"
+                "WHERE n.snapshot_id = ? ORDER BY m.position",
+                (sid,),
+            ):
+                row = json.loads(_unpack(body))
+                if retrieved_at is not None:
+                    row[PER_SNAPSHOT] = json.loads(retrieved_at)
+                rows.append(row)
+            data[key] = rows
         if snapshot_id(data) != sid:
             raise StorageError(
                 f"Snapshot {sid} in {self.path} no longer matches its content; the "
                 "store was changed outside Sabueso."
             )
-        data["quantities"] = json.loads(quantities)
+        data["quantities"] = json.loads(_unpack(quantities))
         return data
 
     @arg_digest()
@@ -562,8 +680,9 @@ class KnowledgeStore:
             rows = conn.execute(
                 f"WITH states AS ({states}) "
                 "SELECT s.card_id, s.snapshot_id, t.body FROM states s "
-                "JOIN snapshot_relationships m ON m.snapshot_id = s.snapshot_id "
-                "JOIN relationships t ON t.body_hash = m.body_hash "
+                "JOIN snapshot_numbers n ON n.snapshot_id = s.snapshot_id "
+                "JOIN card_rel m ON m.sno = n.sno "
+                "JOIN rel_rows t ON t.rid = m.rid "
                 f"WHERE {' AND '.join(where)} "
                 "ORDER BY s.card_id, s.snapshot_id, m.position",
                 args,
@@ -573,7 +692,10 @@ class KnowledgeStore:
             for sid in sorted({sid for _, sid, _ in rows}):
                 self._assemble(conn, sid)
         return [
-            {"card": pinned_ref(card_id, sid), "relationship": json.loads(body)}
+            {
+                "card": pinned_ref(card_id, sid),
+                "relationship": json.loads(_unpack(body)),
+            }
             for card_id, sid, body in rows
         ]
 
@@ -603,7 +725,7 @@ class KnowledgeStore:
             sid = deck_snapshot_id(deck.meta, members)
             conn.execute(
                 "INSERT OR IGNORE INTO deck_snapshots VALUES (?, ?, ?)",
-                (sid, canonical_json(deck.meta), canonical_json(members)),
+                (sid, _pack(canonical_json(deck.meta)), _pack(canonical_json(members))),
             )
             if self._deck_head(conn, deck_name) != sid:
                 conn.execute(
@@ -660,7 +782,7 @@ class KnowledgeStore:
             meta, members = conn.execute(
                 "SELECT meta, members FROM deck_snapshots WHERE snapshot_id = ?", (sid,)
             ).fetchone()
-        meta, members = json.loads(meta), json.loads(members)
+        meta, members = json.loads(_unpack(meta)), json.loads(_unpack(members))
         if deck_snapshot_id(meta, members) != sid:
             raise StorageError(
                 f"Deck revision {sid} in {self.path} no longer matches its content."
@@ -752,7 +874,7 @@ class KnowledgeStore:
                 self._assemble(conn, card_sid)
             conn.execute(
                 "INSERT OR IGNORE INTO packet_snapshots VALUES (?, ?, ?)",
-                (sid, packet.content_id(), canonical_json(document)),
+                (sid, packet.content_id(), _pack(canonical_json(document))),
             )
             if self._packet_head(conn, name) != sid:
                 conn.execute(
@@ -792,7 +914,7 @@ class KnowledgeStore:
                 "SELECT content_id, document FROM packet_snapshots WHERE snapshot_id = ?",
                 (sid,),
             ).fetchone()
-            packet = KnowledgePacket(json.loads(document))
+            packet = KnowledgePacket(json.loads(_unpack(document)))
             if packet.snapshot_id() != sid or packet.content_id() != content_id:
                 raise StorageError(
                     f"Packet revision {sid} in {self.path} no longer matches its "
@@ -824,7 +946,7 @@ class KnowledgeStore:
             ).fetchall()
         history, previous = [], None
         for revision, sid, stored_at, note, content_id, document in rows:
-            packet_format = json.loads(document).get("format")
+            packet_format = json.loads(_unpack(document)).get("format")
             comparable = previous is not None and previous[1] == packet_format
             history.append(
                 {

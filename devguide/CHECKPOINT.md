@@ -57,6 +57,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     recorded in the enrichment; PubChem BioAssay fetches every result of a target in
     one request; UniChem lookups for BindingDB's monomers run a few at once, politely
     paced (`_http.gather`); RCSB entries are asked 25 per GraphQL request (#98);
+  - knowledge store format 2 (#99): unchanged statements shared across rebuilds
+    (`retrieved_at` kept per state), integer keys, zlib compression; format 1 upgraded
+    in place;
   - `knowledge_packet@2` (#88): a packet holds each statement once; grouped disease
     statements and the joint structure inventory name what they group (`@1` is still
     read, and revisions of different formats are not compared).
