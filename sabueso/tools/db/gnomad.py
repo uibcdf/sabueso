@@ -8,8 +8,8 @@ ranks most severe. Asked for a transcript, it states each variant's consequence 
 transcript, with the transcript's version (#85).
 
 ``variants(gene)`` returns ``{"retrieved_at", "version", "record": {"gene", "variants"}}``,
-where ``gene`` keeps gnomAD's canonical and MANE Select transcripts, and ``version`` the
-dataset asked (``gnomad_r4``); the API states no finer release.
+where ``gene`` keeps gnomAD's canonical and MANE Select transcripts and the gene's
+transcripts it annotates (with their versions), and ``version`` the dataset asked (``gnomad_r4``); the API states no finer release.
 ``transcript_variants(transcript)`` returns the same shape with ``record: {"transcript",
 "variants"}``. Both raise ``RecordNotFoundError`` when gnomAD has no such gene or
 transcript. ``OnlineGnomADClient`` uses the GraphQL API (no key; data CC0 1.0, some
@@ -38,6 +38,7 @@ query($gene: String!) {
   gene(gene_id: $gene, reference_genome: GRCh38) {
     gene_id symbol canonical_transcript_id
     mane_select_transcript { ensembl_id refseq_id }
+    transcripts { transcript_id transcript_version }
     variants(dataset: %s) {
       variant_id consequence hgvsp hgvsc transcript_id flags
       exome { ac an af } genome { ac an af }

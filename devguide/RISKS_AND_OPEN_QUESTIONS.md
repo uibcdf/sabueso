@@ -237,10 +237,15 @@
   The residue check guards each placement, and the item records gnomAD's version; the
   versions are not compared yet.
 - **Variants on transcripts UniProt does not state** (#85). After asking gnomAD for the
-  canonical transcript, 533 of about 22,000 protein changes over nine genes remain
-  unplaced for this reason; those checked lie outside the canonical transcript. Most such transcripts
-  encode separate TrEMBL entries (Ensembl states it). Alignment, the only remaining
-  route, would place a change on another protein.
+  canonical transcript, 1,682 of 52,928 protein changes over 22 human proteins remain
+  unplaced for this reason (`transcript_not_canonical`). Checked one by one, none is
+  coding on the canonical transcript: they are intronic or in its 3' UTR, or outside
+  it. The card still says only that the transcript is not canonical. gnomAD's variant
+  query would state which (25 variants per request, within its rate limit), if a
+  reader needs it.
+- **gnomAD's rate limit.** The service answers HTTP 429 after bursts (about ten
+  requests a minute sustained). Sabueso retries with backoff. A build that asks many
+  genes in a row may still see errors, recorded as `error`, never as absence.
 
 ## Open Questions
 - What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?

@@ -1415,11 +1415,35 @@ uibcdf/sabueso#85, found while evaluating Ensembl for wave 2 of #83.
   had placed at canonical Pro3, is a 5' UTR duplication on the canonical transcript.
 - **What it changed**, over nine genes: the variants on transcripts UniProt does not
   state fell from 810 to 533 (MAPK14 12 → 0, EGFR 161 → 88, BRCA1 83 → 38), and 328
-  are now stated as not coding on the canonical transcript. Those left that were
-  checked lie outside it: gnomAD states no consequence on the canonical transcript.
+  are now stated as not coding on the canonical transcript.
+- **What is left, checked variant by variant** (same day), on 22 human proteins: the
+  nine above; glycolytic enzymes (GAPDH, PGK1, ENO1, ALDOA, LDHA, PKM); genes with
+  hard isoforms (CDKN2A, MAPT, APP, CD44); BRAF, PRKDC and ATM. That is 52,928
+  protein changes. gnomAD's variant query states every transcript a variant has a
+  consequence on. For all 1,682 changes left on transcripts UniProt does not state,
+  it states no protein change on the canonical transcript:
+  - 1,205 are intronic (1,191) or in the 3' UTR (14) there. The transcript query
+    covers the coding region with a margin, so it does not return them.
+  - For 477, gnomAD states no consequence on the canonical transcript at all. They
+    lie outside it: TP53's alternative 3' exons, and CDKN2A's exon 1β of p14ARF,
+    another UniProt entry.
+  - None is coding on the canonical transcript.
+
+  They are changes on other proteins or on other exons: PKM's alternative exon, and
+  MAPT's exons the canonical transcript skips.
 - **Ensembl adds no stated map for them.** For the transcripts left, Ensembl states a
   separate TrEMBL entry (e.g. Q504U8, E7EQX7) or no translation any more, so there is
-  no stated route to canonical positions. Alignment (#85 step 2) stays unbuilt.
+  no stated route to canonical positions. Alignment (#85 step 2) is not built: it
+  would place changes of other exons and other proteins on this one.
+- **Only transcripts gnomAD annotates are asked.** UniProt may cross-reference Ensembl
+  transcripts newer than the dataset's GENCODE release (ENO1: 17, of which gnomAD
+  annotates one). gnomAD's gene record lists its transcripts, so a request is sent
+  only for those. The others are recorded as `not_in_dataset`, and the gnomAD
+  service's rate limit is not spent on them.
+- **A transcript UniProt names no isoform for is not the canonical one** in an entry
+  that describes isoforms. CD44's ENST00000442151 (a 294-residue protein) was taken
+  as canonical; the residue check stopped its 3 changes. Such a cross-reference is now
+  canonical only in an entry without isoforms (`_hgvs.transcript_context`).
 - `uniprot_isoform_map@1` stays for ClinVar, and for a gnomAD variant the canonical
   answer does not state.
 

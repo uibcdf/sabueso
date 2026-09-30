@@ -144,8 +144,10 @@ schema:
     the variant changes no residue of the canonical transcript, the item keeps its
     consequence on the other transcript, records canonical_consequence (transcript,
     transcript_version, consequence, hgvs_c) and is not placed (not_coding_on_canonical).
-    The enrichment record lists the canonical transcripts asked (canonical_transcripts,
-    each with its version, or not_found). Additive, so a 0.3.7 card is a valid 0.3.8
+    The enrichment record lists the canonical transcripts (canonical_transcripts, each
+    with its version, or not_in_dataset when gnomAD does not annotate it, or not_found).
+    A transcript UniProt names no isoform for is canonical only in an entry that
+    describes no isoforms. Additive, so a 0.3.7 card is a valid 0.3.8
     card without them.
 card_base:
   meta:

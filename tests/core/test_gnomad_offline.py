@@ -151,3 +151,74 @@ def test_gnomad_does_not_cover_a_parasite_protein():
         (r["area"], r["source"]): r["state"] for r in card.knowledge_state()["rows"]
     }
     assert states[(FIELD, "gnomAD")] == "not_queried"
+
+
+def test_a_canonical_transcript_gnomad_does_not_annotate_is_not_asked():
+    # UniProt may cross-reference Ensembl transcripts newer than the dataset's GENCODE
+    # release; gnomAD's gene record lists the transcripts it annotates.
+    class Older(FixtureGnomADClient):
+        asked = []
+
+        def variants(self, gene):
+            saved = super().variants(gene)
+            saved["record"]["gene"]["transcripts"] = [
+                t
+                for t in saved["record"]["gene"]["transcripts"]
+                if t["transcript_id"] != "ENST00000396705"
+            ]
+            return saved
+
+        def transcript_variants(self, transcript):
+            self.asked.append(transcript)
+            return super().transcript_variants(transcript)
+
+    client = Older("temp_data")
+    card, _ = sabueso.resolve(
+        "P60174",
+        resolver=EntityResolver(FixtureUniProtClient("temp_data")),
+        gnomad={},
+        gnomad_client=client,
+    )
+    assert client.asked == []
+    (record,) = [e for e in card.quality["enrichments"] if e["source"] == "gnomAD"]
+    assert record["canonical_transcripts"] == [
+        {"transcript": "ENST00000396705", "not_in_dataset": True}
+    ]
+
+
+def test_a_transcript_uniprot_states_no_isoform_for_is_canonical_only_without_isoforms():
+    from sabueso.mappings._hgvs import transcript_context
+
+    def entry(isoforms):
+        comments = (
+            [
+                {
+                    "commentType": "ALTERNATIVE PRODUCTS",
+                    "isoforms": [
+                        {"isoformIds": ["X-1"], "isoformSequenceStatus": "Displayed"},
+                        {"isoformIds": ["X-2"], "sequenceIds": []},
+                    ],
+                }
+            ]
+            if isoforms
+            else []
+        )
+        xrefs = [
+            {"database": "Ensembl", "id": "ENST01.1", "isoformId": "X-1"},
+            {"database": "Ensembl", "id": "ENST02.1"},
+        ]
+        if not isoforms:
+            xrefs = [xrefs[1]]
+        return {
+            "sequence": {"value": "MAG"},
+            "comments": comments,
+            "uniProtKBCrossReferences": xrefs,
+        }
+
+    # An entry that describes isoforms names the isoform of each transcript it
+    # matched; one without an isoform encodes another sequence (as CD44's
+    # ENST00000442151 does).
+    described = transcript_context(entry(isoforms=True))
+    assert described["canonical"] == {"ENST01"}
+    assert "ENST02" not in described["isoform_of"]
+    assert transcript_context(entry(isoforms=False))["canonical"] == {"ENST02"}

@@ -118,9 +118,13 @@ def transcript_context(entry: Dict[str, Any]) -> Dict[str, Any]:
             continue
         isoform = xref.get("isoformId")
         for transcript in transcripts:
-            if isoform in (None, displayed):
+            # A cross-reference without an isoform is the canonical one only in an
+            # entry that describes no isoforms; in one that does, UniProt names the
+            # isoform of each transcript it matched, and states none for a transcript
+            # that encodes another sequence (CD44: ENST00000442151, 294 residues).
+            if isoform == displayed or (isoform is None and displayed is None):
                 canonical.add(transcript)
-            else:
+            elif isoform is not None:
                 isoform_of[transcript] = isoform
     return {
         "canonical": canonical,

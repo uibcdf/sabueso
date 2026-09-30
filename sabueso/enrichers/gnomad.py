@@ -57,8 +57,18 @@ class GnomAD(Enricher):
         from sabueso.core.errors import RecordNotFoundError
 
         response = client.variants(request.identifier)
+        # Only the canonical transcripts gnomAD annotates: UniProt may cross-reference
+        # newer Ensembl transcripts than the dataset's GENCODE release (ENO1: 17, of
+        # which gnomAD knows one), and each would cost a request.
+        annotated = {
+            t.get("transcript_id")
+            for t in response["record"]["gene"].get("transcripts") or []
+        }
         on_canonical = {}
         for transcript in request.args["canonical_transcripts"]:
+            if transcript not in annotated:
+                on_canonical[transcript] = "not_in_dataset"
+                continue
             try:
                 on_canonical[transcript] = client.transcript_variants(transcript)
             except RecordNotFoundError:
@@ -75,7 +85,7 @@ class GnomAD(Enricher):
             [
                 answer["record"]
                 for _, answer in sorted(on_canonical.items())
-                if answer is not None
+                if isinstance(answer, dict)
             ],
         )
         mapped = map_variants(
@@ -93,15 +103,22 @@ class GnomAD(Enricher):
             "truncated": len(variants) > limit,
             "total_count": len(variants),
             "canonical_transcripts": [
-                {
-                    "transcript": transcript,
-                    "version": answer["record"]["transcript"].get("transcript_version"),
-                }
-                if answer is not None
-                else {"transcript": transcript, "not_found": True}
+                _asked(transcript, answer)
                 for transcript, answer in sorted(on_canonical.items())
             ],
         }
+
+
+def _asked(transcript, answer):
+    """What was asked for a canonical transcript: its version, or why it has none."""
+    if answer == "not_in_dataset":
+        return {"transcript": transcript, "not_in_dataset": True}
+    if answer is None:
+        return {"transcript": transcript, "not_found": True}
+    return {
+        "transcript": transcript,
+        "version": answer["record"]["transcript"].get("transcript_version"),
+    }
 
 
 ENRICHER = GnomAD()

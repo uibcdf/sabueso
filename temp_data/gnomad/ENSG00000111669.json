@@ -7,7 +7,49 @@
     "ensembl_id": "ENST00000396705",
     "refseq_id": "NM_000365"
    },
-   "symbol": "TPI1"
+   "symbol": "TPI1",
+   "transcripts": [
+    {
+     "transcript_id": "ENST00000474253",
+     "transcript_version": "1"
+    },
+    {
+     "transcript_id": "ENST00000462761",
+     "transcript_version": "5"
+    },
+    {
+     "transcript_id": "ENST00000229270",
+     "transcript_version": "8"
+    },
+    {
+     "transcript_id": "ENST00000396705",
+     "transcript_version": "10"
+    },
+    {
+     "transcript_id": "ENST00000488464",
+     "transcript_version": "6"
+    },
+    {
+     "transcript_id": "ENST00000613953",
+     "transcript_version": "4"
+    },
+    {
+     "transcript_id": "ENST00000482209",
+     "transcript_version": "1"
+    },
+    {
+     "transcript_id": "ENST00000493987",
+     "transcript_version": "5"
+    },
+    {
+     "transcript_id": "ENST00000495834",
+     "transcript_version": "1"
+    },
+    {
+     "transcript_id": "ENST00000535434",
+     "transcript_version": "5"
+    }
+   ]
   },
   "variants": [
    {
