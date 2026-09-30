@@ -218,6 +218,17 @@
   16094 records for BRCA1, about a minute to fetch 5000 of them. Card size, store size
   and packet size may grow past what views and MOLI consumers expect. #88 lists what to
   watch and the options.
+- **Heavily studied targets** (#98). Measured live for EGFR on 2026-09-30: ChEMBL
+  holds 58,847 activities (~7 s per 1000-row page, server side), BindingDB 32,346
+  records of 16,463 monomers (each needing a UniChem lookup), PubChem 6569 assays, RCSB
+  393 entries (~175 KB of card each). BindingDB and PubChem BioAssay ignore the 5000
+  ceiling. A card with every source would exceed 100 MB and take hours. #98 lists the
+  batched queries the sources offer, and the order of work.
+- **Store growth across rebuilds** (#99). Stored SourceAssertion rows include
+  `retrieved_at` in their hash, so a card rebuilt with unchanged knowledge shares no row
+  with its previous revision (4761 rows for 4761 references in a live pilot store).
+  Periodic revisions, which `as_of` and `changed_since` invite, would store everything
+  again each time.
 
 ## Open Questions
 - What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?
