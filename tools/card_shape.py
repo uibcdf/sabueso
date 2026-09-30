@@ -290,6 +290,17 @@ def fixture_cards() -> List[dict]:
             trials={},
             clinicaltrials_client=FixtureClinicalTrialsClient(data),
         )
+        # Vincristine with ChEBI's classes, roles and definition (0.3.8).
+        from sabueso.tools.db.chebi import FixtureChEBIClient
+
+        vincristine, _ = sabueso.resolve(
+            "chembl:CHEMBL90555",
+            chembl_client=chembl,
+            ccd_client=FixtureCCDClient(data),
+            unichem_client=FixtureUniChemClient(data),
+            chebi=True,
+            chebi_client=FixtureChEBIClient(data),
+        )
         # Barnase with SKEMPI's interface mutations, placed through 1BRS (0.3.7).
         barnase, _ = sabueso.resolve(
             "P00648",
@@ -301,7 +312,17 @@ def fixture_cards() -> List[dict]:
         )
         # A disease card, resolved from an Orphanet id through MONDO (0.3.7).
         disease, _ = sabueso.resolve("ORPHA:868", mondo_client=FixtureMONDOClient(data))
-    cards = (tctim, hstim, molecule, compound, pathogen, drug, barnase, disease)
+    cards = (
+        tctim,
+        hstim,
+        molecule,
+        compound,
+        pathogen,
+        drug,
+        barnase,
+        disease,
+        vincristine,
+    )
     return [c.to_dict() for c in cards]
 
 

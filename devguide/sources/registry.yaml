@@ -1202,11 +1202,21 @@ resources:
     name: "ChEBI"
     url: https://www.ebi.ac.uk/chebi/
     category: chemistry_admet
-    status: evaluating
+    status: in_use
     description: "Ontology of chemical entities, endogenous metabolites and cofactors."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    decided_by: "Sabueso maintainers (2026-09-30)"
+    reason: "A molecule's chemical classes and roles (biological, chemical, applications), stated per entry, joined through UniChem's link and the InChIKey ChEBI states."
+    access: "ChEBI 2.0 API (compounds, 200 per request), no key, when resolve(..., chebi=True)"
     licence: "CC BY 4.0 (ChEBI 2.0 API)"
+    terms:
+      source_names: ["ChEBI"]
+      licence: CC-BY-4.0
+      attribution: "ChEBI, EMBL-EBI (https://www.ebi.ac.uk/chebi/), CC BY 4.0"
+      statement: https://www.ebi.ac.uk/chebi/about
+      reviewed: 2026-09-30
+    module: [sabueso.tools.db.chebi, sabueso.mappings.chebi]
     links: ["#83"]
   - id: tox21_toxcast
     name: "Tox21 / ToxCast"

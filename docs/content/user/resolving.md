@@ -112,6 +112,7 @@ take is refused, never ignored.
 |---|---|
 | `unichem=True` (default) | the records UniChem links to the InChIKey |
 | `pubchem=True` | the PubChem records UniChem links |
+| `chebi=True` | ChEBI's classes, roles (biological, chemical, applications) and definition, for the ChEBI entry UniChem links and whose stated InChIKey is the molecule's |
 
 ## Profiles
 

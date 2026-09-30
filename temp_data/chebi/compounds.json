@@ -1,0 +1,723 @@
+{
+ "retrieved": "2026-09-30",
+ "request": [
+  "CHEBI:28445",
+  "CHEBI:17150",
+  "CHEBI:90402",
+  "CHEBI:31221",
+  "CHEBI:91447",
+  "CHEBI:28475",
+  "CHEBI:50859"
+ ],
+ "compounds": {
+  "CHEBI:28445": {
+   "standardized_chebi_id": "CHEBI:28445",
+   "primary_chebi_id": "CHEBI:28445",
+   "exists": true,
+   "id_type": "PRIMARY_ID",
+   "data": {
+    "id": 28445,
+    "chebi_accession": "CHEBI:28445",
+    "name": "vincristine",
+    "stars": 3,
+    "definition": "A vinca alkaloid with formula C<small><sub>46</sub></small>H<small><sub>56</sub></small>N<small><sub>4</sub></small>O<small><sub>10</sub></small> found in the Madagascar periwinkle, <em>Catharanthus roseus</em>. It is used (commonly as the corresponding sulfate salt)as a chemotherapy drug for the treatment of leukaemia, lymphoma, myeloma, breast cancer and head and neck cancer.",
+    "default_structure": {
+     "id": 20672,
+     "smiles": "[H][C@@]12N(C=O)c3cc(OC)c([C@@]4(C(=O)OC)C[C@@H]5C[N@](CCc6c4nc4ccccc64)C[C@](O)(CC)C5)cc3[C@@]13CCN1CC=C[C@@](CC)([C@@H](OC(C)=O)[C@]2(O)C(=O)OC)[C@]13[H]",
+     "standard_inchi": "InChI=1S/C46H56N4O10/c1-7-42(55)22-28-23-45(40(53)58-5,36-30(14-18-48(24-28)25-42)29-12-9-10-13-33(29)47-36)32-20-31-34(21-35(32)57-4)50(26-51)38-44(31)16-19-49-17-11-15-43(8-2,37(44)49)39(60-27(3)52)46(38,56)41(54)59-6/h9-13,15,20-21,26,28,37-39,47,55-56H,7-8,14,16-19,22-25H2,1-6H3/t28-,37+,38-,39-,42+,43-,44-,45+,46+/m1/s1",
+     "standard_inchi_key": "OGWKCGZFUXNPDA-XQKSVPLYSA-N",
+     "wurcs": null,
+     "is_r_group": false
+    },
+    "chemical_data": {
+     "formula": "C46H56N4O10",
+     "charge": 0,
+     "mass": "824.972",
+     "monoisotopic_mass": "824.39964"
+    },
+    "ontology_relations": {
+     "outgoing_relations": [
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "has parent hydride",
+       "final_id": 27375,
+       "final_name": "vincaleukoblastine"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "has role",
+       "final_id": 76924,
+       "final_name": "plant metabolite"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "has role",
+       "final_id": 35610,
+       "final_name": "antineoplastic agent"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "has role",
+       "final_id": 23888,
+       "final_name": "drug"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "has role",
+       "final_id": 60832,
+       "final_name": "tubulin modulator"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "has role",
+       "final_id": 61951,
+       "final_name": "microtubule-destabilising agent"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "is a",
+       "final_id": 38163,
+       "final_name": "organic heterotetracyclic compound"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "is a",
+       "final_id": 50996,
+       "final_name": "tertiary amino compound"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "is a",
+       "final_id": 25248,
+       "final_name": "methyl ester"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "is a",
+       "final_id": 27288,
+       "final_name": "vinca alkaloid"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "is a",
+       "final_id": 47622,
+       "final_name": "acetate ester"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "is a",
+       "final_id": 26878,
+       "final_name": "tertiary alcohol"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "is a",
+       "final_id": 24079,
+       "final_name": "formamides"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "is a",
+       "final_id": 38164,
+       "final_name": "organic heteropentacyclic compound"
+      },
+      {
+       "init_id": 28445,
+       "init_name": "vincristine",
+       "relation_type": "is conjugate base of",
+       "final_id": 143658,
+       "final_name": "vincristine(2+)"
+      }
+     ]
+    },
+    "roles_classification": [
+     {
+      "application": true,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:35610",
+      "name": "antineoplastic agent",
+      "definition": "A substance that inhibits or prevents the proliferation of neoplasms.",
+      "id": 35610,
+      "biological_role": false
+     },
+     {
+      "application": false,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:76924",
+      "name": "plant metabolite",
+      "definition": "Any eukaryotic metabolite produced during a metabolic reaction in plants, the kingdom that include flowering plants, conifers and other gymnosperms.",
+      "id": 76924,
+      "biological_role": true
+     },
+     {
+      "application": false,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:61951",
+      "name": "microtubule-destabilising agent",
+      "definition": "Any substance that interacts with tubulin to inhibit polymerisation of microtubules.",
+      "id": 61951,
+      "biological_role": true
+     },
+     {
+      "application": true,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:23888",
+      "name": "drug",
+      "definition": "Any substance which when absorbed into a living organism may modify one or more of its functions. The term is generally accepted for a substance taken for a therapeutic purpose, but is also commonly used for abused substances.",
+      "id": 23888,
+      "biological_role": false
+     },
+     {
+      "application": false,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:60832",
+      "name": "tubulin modulator",
+      "definition": "Any substance that interacts with tubulin to inhibit or promote polymerisation of microtubules.",
+      "id": 60832,
+      "biological_role": true
+     },
+     {
+      "application": false,
+      "chemical_role": true,
+      "chebi_accession": "CHEBI:39142",
+      "name": "Bronsted base",
+      "definition": "A molecular entity capable of accepting a hydron from a donor (Br\u00f8nsted acid).",
+      "id": 39142,
+      "biological_role": false
+     },
+     {
+      "application": false,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:25212",
+      "name": "metabolite",
+      "definition": "Any intermediate or product resulting from metabolism. The term 'metabolite' subsumes the classes commonly known as primary and secondary metabolites.",
+      "id": 25212,
+      "biological_role": true
+     }
+    ],
+    "secondary_ids": [
+     "CHEBI:9987",
+     "CHEBI:27289"
+    ],
+    "modified_on": "2019-08-09T14:16:08Z",
+    "is_released": true
+   }
+  },
+  "CHEBI:17150": {
+   "standardized_chebi_id": "CHEBI:17150",
+   "primary_chebi_id": "CHEBI:17150",
+   "exists": true,
+   "id_type": "PRIMARY_ID",
+   "data": {
+    "id": 17150,
+    "chebi_accession": "CHEBI:17150",
+    "name": "2-phosphoglycolic acid",
+    "stars": 3,
+    "definition": "The <em>O</em>-phospho derivative of glycolic acid.",
+    "default_structure": {
+     "id": 708,
+     "smiles": "O=C(O)COP(=O)(O)O",
+     "standard_inchi": "InChI=1S/C2H5O6P/c3-2(4)1-8-9(5,6)7/h1H2,(H,3,4)(H2,5,6,7)",
+     "standard_inchi_key": "ASCFNMCAHFUBCO-UHFFFAOYSA-N",
+     "wurcs": null,
+     "is_r_group": false
+    },
+    "chemical_data": {
+     "formula": "C2H5O6P",
+     "charge": 0,
+     "mass": "156.030",
+     "monoisotopic_mass": "155.98237"
+    },
+    "ontology_relations": {
+     "outgoing_relations": [
+      {
+       "init_id": 17150,
+       "init_name": "2-phosphoglycolic acid",
+       "relation_type": "has functional parent",
+       "final_id": 17497,
+       "final_name": "glycolic acid"
+      },
+      {
+       "init_id": 17150,
+       "init_name": "2-phosphoglycolic acid",
+       "relation_type": "has role",
+       "final_id": 75771,
+       "final_name": "mouse metabolite"
+      },
+      {
+       "init_id": 17150,
+       "init_name": "2-phosphoglycolic acid",
+       "relation_type": "has role",
+       "final_id": 76971,
+       "final_name": "<em>Escherichia coli</em> metabolite"
+      },
+      {
+       "init_id": 17150,
+       "init_name": "2-phosphoglycolic acid",
+       "relation_type": "is a",
+       "final_id": 36952,
+       "final_name": "carboxyalkyl phosphate"
+      },
+      {
+       "init_id": 17150,
+       "init_name": "2-phosphoglycolic acid",
+       "relation_type": "is conjugate acid of",
+       "final_id": 58033,
+       "final_name": "2-phosphonatoglycolate(3\u2212)"
+      },
+      {
+       "init_id": 17150,
+       "init_name": "2-phosphoglycolic acid",
+       "relation_type": "is conjugate acid of",
+       "final_id": 19763,
+       "final_name": "2-phosphoglycolate"
+      }
+     ]
+    },
+    "roles_classification": [
+     {
+      "application": false,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:76971",
+      "name": "Escherichia coli metabolite",
+      "definition": "Any bacterial metabolite produced during a metabolic reaction in <em>Escherichia coli</em>.",
+      "id": 76971,
+      "biological_role": true
+     },
+     {
+      "application": false,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:75771",
+      "name": "mouse metabolite",
+      "definition": "Any mammalian metabolite produced during a metabolic reaction in a mouse (<em>Mus musculus</em>).",
+      "id": 75771,
+      "biological_role": true
+     },
+     {
+      "application": false,
+      "chemical_role": true,
+      "chebi_accession": "CHEBI:39141",
+      "name": "Bronsted acid",
+      "definition": "A molecular entity capable of donating a hydron to an acceptor (Br\u00f8nsted base).",
+      "id": 39141,
+      "biological_role": false
+     }
+    ],
+    "secondary_ids": [
+     "CHEBI:1268",
+     "CHEBI:11652",
+     "CHEBI:19764",
+     "CHEBI:44849"
+    ],
+    "modified_on": "2019-01-31T10:06:25Z",
+    "is_released": true
+   }
+  },
+  "CHEBI:90402": {
+   "standardized_chebi_id": "CHEBI:90402",
+   "primary_chebi_id": "CHEBI:90402",
+   "exists": true,
+   "id_type": "PRIMARY_ID",
+   "data": {
+    "id": 90402,
+    "chebi_accession": "CHEBI:90402",
+    "name": "primuline (acid form)",
+    "stars": 3,
+    "definition": "A member of the class of benzothiazoles that is 2,6'-bi-1,3-benzothiazole substituted at positions 2' 6 and 7 by 4-aminophenyl, methyl and sulfo groups respectively. The monosodium salt is the biological dye 'primuline'.",
+    "default_structure": {
+     "id": 2900490,
+     "smiles": "Cc1ccc2nc(-c3ccc4nc(-c5ccc(N)cc5)sc4c3)sc2c1S(=O)(=O)O",
+     "standard_inchi": "InChI=1S/C21H15N3O3S3/c1-11-2-8-16-18(19(11)30(25,26)27)29-21(24-16)13-5-9-15-17(10-13)28-20(23-15)12-3-6-14(22)7-4-12/h2-10H,22H2,1H3,(H,25,26,27)",
+     "standard_inchi_key": "CTPFWVHDVOKBSN-UHFFFAOYSA-N",
+     "wurcs": null,
+     "is_r_group": false
+    },
+    "chemical_data": {
+     "formula": "C21H15N3O3S3",
+     "charge": 0,
+     "mass": "453.570",
+     "monoisotopic_mass": "453.02755"
+    },
+    "ontology_relations": {
+     "outgoing_relations": [
+      {
+       "init_id": 90402,
+       "init_name": "primuline (acid form)",
+       "relation_type": "has role",
+       "final_id": 51217,
+       "final_name": "fluorochrome"
+      },
+      {
+       "init_id": 90402,
+       "init_name": "primuline (acid form)",
+       "relation_type": "has role",
+       "final_id": 77178,
+       "final_name": "histological dye"
+      },
+      {
+       "init_id": 90402,
+       "init_name": "primuline (acid form)",
+       "relation_type": "is a",
+       "final_id": 48975,
+       "final_name": "substituted aniline"
+      },
+      {
+       "init_id": 90402,
+       "init_name": "primuline (acid form)",
+       "relation_type": "is a",
+       "final_id": 37947,
+       "final_name": "benzothiazoles"
+      },
+      {
+       "init_id": 90402,
+       "init_name": "primuline (acid form)",
+       "relation_type": "is a",
+       "final_id": 33555,
+       "final_name": "arenesulfonic acid"
+      },
+      {
+       "init_id": 90402,
+       "init_name": "primuline (acid form)",
+       "relation_type": "is a",
+       "final_id": 36820,
+       "final_name": "ring assembly"
+      },
+      {
+       "init_id": 90402,
+       "init_name": "primuline (acid form)",
+       "relation_type": "is conjugate acid of",
+       "final_id": 90403,
+       "final_name": "2'-(4-aminophenyl)-6-methyl[2,6'-bi-1,3-benzothiazole]-7-sulfonate"
+      }
+     ]
+    },
+    "roles_classification": [
+     {
+      "application": true,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:51217",
+      "name": "fluorochrome",
+      "definition": "A fluorescent dye used to stain biological specimens.",
+      "id": 51217,
+      "biological_role": false
+     },
+     {
+      "application": true,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:77178",
+      "name": "histological dye",
+      "definition": "A dye used in microscopic or electron microscopic examination of cells and tissues to give contrast and to highlight particular features of interest, such as nuclei and cytoplasm.",
+      "id": 77178,
+      "biological_role": false
+     },
+     {
+      "application": false,
+      "chemical_role": true,
+      "chebi_accession": "CHEBI:39142",
+      "name": "Bronsted base",
+      "definition": "A molecular entity capable of accepting a hydron from a donor (Br\u00f8nsted acid).",
+      "id": 39142,
+      "biological_role": false
+     }
+    ],
+    "secondary_ids": [],
+    "modified_on": "2015-11-17T11:45:47Z",
+    "is_released": true
+   }
+  },
+  "CHEBI:31221": {
+   "standardized_chebi_id": "CHEBI:31221",
+   "primary_chebi_id": "CHEBI:31221",
+   "exists": true,
+   "id_type": "PRIMARY_ID",
+   "data": {
+    "id": 31221,
+    "chebi_accession": "CHEBI:31221",
+    "name": "Anetholtrithion",
+    "stars": 2,
+    "definition": null,
+    "default_structure": {
+     "id": 2917529,
+     "smiles": "COc1ccc(-c2cc(=S)ss2)cc1",
+     "standard_inchi": "InChI=1S/C10H8OS3/c1-11-8-4-2-7(3-5-8)9-6-10(12)14-13-9/h2-6H,1H3",
+     "standard_inchi_key": "KYLIZBIRMBGUOP-UHFFFAOYSA-N",
+     "wurcs": null,
+     "is_r_group": false
+    },
+    "chemical_data": {
+     "formula": "C10H8OS3",
+     "charge": 0,
+     "mass": "240.374",
+     "monoisotopic_mass": "239.97373"
+    },
+    "ontology_relations": {
+     "outgoing_relations": [
+      {
+       "init_id": 31221,
+       "init_name": "Anetholtrithion",
+       "relation_type": "is a",
+       "final_id": 51683,
+       "final_name": "methoxybenzenes"
+      }
+     ]
+    },
+    "roles_classification": null,
+    "secondary_ids": [
+     "CHEBI:94799"
+    ],
+    "modified_on": "2017-03-06T08:53:57Z",
+    "is_released": true
+   }
+  },
+  "CHEBI:91447": {
+   "standardized_chebi_id": "CHEBI:91447",
+   "primary_chebi_id": "CHEBI:91447",
+   "exists": true,
+   "id_type": "PRIMARY_ID",
+   "data": {
+    "id": 91447,
+    "chebi_accession": "CHEBI:91447",
+    "name": "4-methyl-3-[[1-methyl-6-(3-pyridinyl)-4-pyrazolo[3,4-d]pyrimidinyl]amino]-N-[3-(trifluoromethyl)phenyl]benzamide",
+    "stars": 2,
+    "definition": null,
+    "default_structure": {
+     "id": 2904057,
+     "smiles": "Cc1ccc(C(=O)Nc2cccc(C(F)(F)F)c2)cc1Nc1nc(-c2cccnc2)nc2c1cnn2C",
+     "standard_inchi": "InChI=1S/C26H20F3N7O/c1-15-8-9-16(25(37)32-19-7-3-6-18(12-19)26(27,28)29)11-21(15)33-23-20-14-31-36(2)24(20)35-22(34-23)17-5-4-10-30-13-17/h3-14H,1-2H3,(H,32,37)(H,33,34,35)",
+     "standard_inchi_key": "ZCCPLJOKGAACRT-UHFFFAOYSA-N",
+     "wurcs": null,
+     "is_r_group": false
+    },
+    "chemical_data": {
+     "formula": "C26H20F3N7O",
+     "charge": 0,
+     "mass": "503.488",
+     "monoisotopic_mass": "503.16814"
+    },
+    "ontology_relations": {
+     "outgoing_relations": [
+      {
+       "init_id": 91447,
+       "init_name": "4-methyl-3-[[1-methyl-6-(3-pyridinyl)-4-pyrazolo[3,4-d]pyrimidinyl]amino]-N-[3-(trifluoromethyl)phenyl]benzamide",
+       "relation_type": "is a",
+       "final_id": 22702,
+       "final_name": "benzamides"
+      }
+     ]
+    },
+    "roles_classification": null,
+    "secondary_ids": [],
+    "modified_on": null,
+    "is_released": true
+   }
+  },
+  "CHEBI:28475": {
+   "standardized_chebi_id": "CHEBI:28475",
+   "primary_chebi_id": "CHEBI:28475",
+   "exists": true,
+   "id_type": "PRIMARY_ID",
+   "data": {
+    "id": 28475,
+    "chebi_accession": "CHEBI:28475",
+    "name": "phosphoglycolohydroxamic acid",
+    "stars": 3,
+    "definition": "The hydroxamate of phosphoglycolic acid.",
+    "default_structure": {
+     "id": 83773,
+     "smiles": "O=C(COP(=O)(O)O)NO",
+     "standard_inchi": "InChI=1S/C2H6NO6P/c4-2(3-5)1-9-10(6,7)8/h5H,1H2,(H,3,4)(H2,6,7,8)",
+     "standard_inchi_key": "BAXHHWZKQZIJID-UHFFFAOYSA-N",
+     "wurcs": null,
+     "is_r_group": false
+    },
+    "chemical_data": {
+     "formula": "C2H6NO6P",
+     "charge": 0,
+     "mass": "171.045",
+     "monoisotopic_mass": "170.99327"
+    },
+    "ontology_relations": {
+     "outgoing_relations": [
+      {
+       "init_id": 28475,
+       "init_name": "phosphoglycolohydroxamic acid",
+       "relation_type": "has functional parent",
+       "final_id": 17497,
+       "final_name": "glycolic acid"
+      },
+      {
+       "init_id": 28475,
+       "init_name": "phosphoglycolohydroxamic acid",
+       "relation_type": "has role",
+       "final_id": 90691,
+       "final_name": "EC 5.3.1.1 (triose-phosphate isomerase) inhibitor"
+      },
+      {
+       "init_id": 28475,
+       "init_name": "phosphoglycolohydroxamic acid",
+       "relation_type": "is a",
+       "final_id": 37481,
+       "final_name": "amidoalkyl phosphate"
+      },
+      {
+       "init_id": 28475,
+       "init_name": "phosphoglycolohydroxamic acid",
+       "relation_type": "is a",
+       "final_id": 24650,
+       "final_name": "hydroxamic acid"
+      }
+     ]
+    },
+    "roles_classification": [
+     {
+      "application": false,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:90691",
+      "name": "EC 5.3.1.1 (triose-phosphate isomerase) inhibitor",
+      "definition": "Any EC 5.3.1.* (intramolecular oxidoreductase interconverting aldoses and ketoses) inhibitor that interferes with the action of a triose-phosphate isomerase (EC 5.3.1.1).",
+      "id": 90691,
+      "biological_role": true
+     }
+    ],
+    "secondary_ids": [
+     "CHEBI:8148",
+     "CHEBI:8157",
+     "CHEBI:26056",
+     "CHEBI:26072",
+     "CHEBI:28583",
+     "CHEBI:44852"
+    ],
+    "modified_on": "2015-12-04T12:04:51Z",
+    "is_released": true
+   }
+  },
+  "CHEBI:50859": {
+   "standardized_chebi_id": "CHEBI:50859",
+   "primary_chebi_id": "CHEBI:50859",
+   "exists": true,
+   "id_type": "PRIMARY_ID",
+   "data": {
+    "id": 50859,
+    "chebi_accession": "CHEBI:50859",
+    "name": "bexarotene",
+    "stars": 3,
+    "definition": null,
+    "default_structure": {
+     "id": 75811,
+     "smiles": "C=C(c1ccc(C(=O)O)cc1)c1cc2c(cc1C)C(C)(C)CCC2(C)C",
+     "standard_inchi": "InChI=1S/C24H28O2/c1-15-13-20-21(24(5,6)12-11-23(20,3)4)14-19(15)16(2)17-7-9-18(10-8-17)22(25)26/h7-10,13-14H,2,11-12H2,1,3-6H3,(H,25,26)",
+     "standard_inchi_key": "NAVMQTYZDKMPEU-UHFFFAOYSA-N",
+     "wurcs": null,
+     "is_r_group": false
+    },
+    "chemical_data": {
+     "formula": "C24H28O2",
+     "charge": 0,
+     "mass": "348.486",
+     "monoisotopic_mass": "348.20893"
+    },
+    "ontology_relations": {
+     "outgoing_relations": [
+      {
+       "init_id": 50859,
+       "init_name": "bexarotene",
+       "relation_type": "has role",
+       "final_id": 35610,
+       "final_name": "antineoplastic agent"
+      },
+      {
+       "init_id": 50859,
+       "init_name": "bexarotene",
+       "relation_type": "has role",
+       "final_id": 50748,
+       "final_name": "antipsoriatic"
+      },
+      {
+       "init_id": 50859,
+       "init_name": "bexarotene",
+       "relation_type": "has role",
+       "final_id": 35476,
+       "final_name": "antipsychotic agent"
+      },
+      {
+       "init_id": 50859,
+       "init_name": "bexarotene",
+       "relation_type": "is a",
+       "final_id": 26537,
+       "final_name": "retinoid"
+      },
+      {
+       "init_id": 50859,
+       "init_name": "bexarotene",
+       "relation_type": "is a",
+       "final_id": 22723,
+       "final_name": "benzoic acids"
+      },
+      {
+       "init_id": 50859,
+       "init_name": "bexarotene",
+       "relation_type": "is a",
+       "final_id": 25477,
+       "final_name": "naphthalenes"
+      }
+     ]
+    },
+    "roles_classification": [
+     {
+      "application": true,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:35476",
+      "name": "antipsychotic agent",
+      "definition": "Antipsychotic drugs are agents that control agitated psychotic behaviour, alleviate acute psychotic states, reduce psychotic symptoms, and exert a quieting effect.",
+      "id": 35476,
+      "biological_role": false
+     },
+     {
+      "application": true,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:35610",
+      "name": "antineoplastic agent",
+      "definition": "A substance that inhibits or prevents the proliferation of neoplasms.",
+      "id": 35610,
+      "biological_role": false
+     },
+     {
+      "application": true,
+      "chemical_role": false,
+      "chebi_accession": "CHEBI:50748",
+      "name": "antipsoriatic",
+      "definition": "A drug used to treat psoriasis.",
+      "id": 50748,
+      "biological_role": false
+     },
+     {
+      "application": false,
+      "chemical_role": true,
+      "chebi_accession": "CHEBI:39141",
+      "name": "Bronsted acid",
+      "definition": "A molecular entity capable of donating a hydron to an acceptor (Br\u00f8nsted base).",
+      "id": 39141,
+      "biological_role": false
+     }
+    ],
+    "secondary_ids": [],
+    "modified_on": "2017-02-22T20:37:55Z",
+    "is_released": true
+   }
+  }
+ }
+}

@@ -209,6 +209,13 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: `same_as` links to the InChIKey anchor for ChEMBL, PDB (RCSB and PDBe), PubChem, DrugBank, ChEBI and BindingDB records. The full source list stays in the assertion.
 - **Notes**: an unknown key returns HTTP 200 with `"Not found"`, which the client maps to not found. One call per molecule, and no batch query (UniChem recommends its whole-source mapping files for large mappings), so it is opt-in for decks. Lookups for BindingDB's monomers run four at once, at most five per second (#98): EGFR's 1769 monomers took 635 s (about 1.4 s per lookup), where one at a time would take about 40 minutes.
 
+### ChEBI — chemical classes and roles
+- **Status**: implemented as an option of `resolve_molecule_card(..., chebi=True)` (uibcdf/sabueso#83)
+- **Access**: ChEBI 2.0 API, `POST compounds/` with up to 200 ids per request (`OnlineChEBIClient`; 200 entries in about 12 s); saved entries (`FixtureChEBIClient`, `temp_data/chebi/`); `tools.db.chebi.get_compounds`
+- **Quality**: green for the listed coverage. Verified live on vincristine (CHEBI:28445): 8 classes, 7 roles (5 direct, 2 inherited), 3 stars.
+- **Coverage**: `identifiers.chebi`, `annotations.chemical_classes` (`is a`), `annotations.chemical_roles` (`direct` for the entry's own `has role`, otherwise inherited through its classes or parent roles; biological, chemical or application, as ChEBI flags them), `annotations.definition` (markup kept in the assertion, plain text as the value), and a `same_as` stated by ChEBI
+- **Notes**: reached only through UniChem's link, and joined only when the InChIKey ChEBI states for the entry is the anchor. A secondary id is answered by its primary entry. Licence CC BY 4.0.
+
 ### BindingDB — affinities
 - **Status**: implemented as an enricher of `resolve_protein_card(..., bindingdb={})` (uibcdf/sabueso#66)
 - **Access**: REST `getLigandsByUniprots` (`OnlineBindingDBClient`), saved responses (`FixtureBindingDBClient`, `temp_data/bindingdb/`), `tools.db.bindingdb.get_affinities`; monomers anchored at their InChIKey through UniChem (source 31)

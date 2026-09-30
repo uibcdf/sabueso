@@ -196,7 +196,8 @@ through the PDB and ChEMBL already. They are reviewed when a target needs them.
 
 1. **Interfaces:** SKEMPI (mutations and binding energy): **done** (2026-09-29, schema
    0.3.7). iPPI-DB (modulators): blocked on access and terms (section 4).
-2. **Chemistry:** ChEBI roles and classes, and the Chemical Probes Portal.
+2. **Chemistry:** ChEBI roles and classes: **done** (2026-09-30, schema 0.3.8); the
+   Chemical Probes Portal next.
 3. **Identity:** Ensembl transcripts and orthology, which also serve #85.
 4. **Family-specific sources:** KLIFS and GPCRdb, when a target needs them.
 5. **SureChEMBL**, and then structures: OPM, SAbDab, ESM Atlas.

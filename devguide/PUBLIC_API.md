@@ -27,7 +27,8 @@ shows how to use them.
       and MONDO, #90), `europepmc` (publications whose text states the accession,
       #92);
     - each source's `*_client`, and `resolver`.
-  - For small molecules: `unichem`, `pubchem`, `indications` and `trials` (#81).
+  - For small molecules: `unichem`, `pubchem`, `chebi` (#83), `indications` and
+    `trials` (#81).
   - For diseases: `mondo_client`.
   - Every card tool takes `terms` (`"commercial"` or `"non_commercial"`): only sources
     whose stated terms allow that use are asked (#94).

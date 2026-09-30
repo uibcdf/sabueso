@@ -63,6 +63,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     its source, retention derived from the licence (`retention_from_licence@1`),
     `quality.retrievals` on the card and `explain` linking statements to answers;
   - UniProt's entry is read once per protein build (the resolver keeps it);
+  - ChEBI for small molecules (#83, wave 2): `chebi=True` adds `identifiers.chebi`,
+    `annotations.chemical_classes`, `annotations.chemical_roles` and
+    `annotations.definition`, joined through UniChem's link and ChEBI's stated
+    InChIKey;
   - local mirrors (#100, phase 2): `sabueso.mirrors` (install, status, update policies,
     remove, `using` with `mirror_first` or `offline`); BindingDB's monthly release as
     the first mirror (`MirrorBindingDBClient`), recorded as `access: mirror` with its

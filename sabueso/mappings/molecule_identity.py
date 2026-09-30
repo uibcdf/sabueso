@@ -242,8 +242,14 @@ def map_unichem_identity(
 
 
 def linked_records(compound: Dict[str, Any]) -> Dict[str, List[str]]:
-    """ChEMBL ids, PDB component codes and PubChem CIDs that UniChem lists."""
-    out: Dict[str, List[str]] = {"chembl": [], "pdb.ligand": [], "pubchem": []}
+    """ChEMBL ids, PDB component codes, PubChem CIDs and ChEBI ids that UniChem
+    lists."""
+    out: Dict[str, List[str]] = {
+        "chembl": [],
+        "pdb.ligand": [],
+        "pubchem": [],
+        "chebi": [],
+    }
     for source in compound.get("sources", []):
         ref = _unichem_ref(source)
         if ref:

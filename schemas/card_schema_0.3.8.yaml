@@ -133,8 +133,12 @@ schema:
     (uibcdf/sabueso#88, uibcdf/sabueso#98). A card built while a retrieval archive is
     recording lists, in quality.retrievals, every answer its build received, each kept
     in the archive under its reference, and an enrichment read from a local mirror
-    records access mirror and the release (uibcdf/sabueso#100). Additive, so a 0.3.7 card
-    is a valid 0.3.8 card without them.
+    records access mirror and the release (uibcdf/sabueso#100). Small molecule cards may
+    hold what ChEBI states for an entry UniChem links and whose stated InChIKey is the
+    anchor (uibcdf/sabueso#83), identifiers.chebi, annotations.chemical_classes (is a),
+    annotations.chemical_roles (direct or inherited, biological, chemical or an
+    application) and annotations.definition. Additive, so a 0.3.7 card is a valid 0.3.8
+    card without them.
 card_base:
   meta:
     card_id:
@@ -790,10 +794,36 @@ peptide_card:
   note: Peptide cards may omit structure.* if not available.
 small_molecule_card:
   inherits: card_base
+  identifiers:
+    chebi:
+      value: string
+      source_assertion_ids:
+      - string
   annotations:
     drug_class:
       value:
       - string
+      source_assertion_ids:
+      - string
+    chemical_classes:
+      value:
+      - chebi_id: string
+        name: string
+      source_assertion_ids:
+      - string
+    chemical_roles:
+      value:
+      - chebi_id: string
+        name: string
+        direct: boolean
+        biological_role: boolean
+        chemical_role: boolean
+        application: boolean
+      source_assertion_ids:
+      - string
+    definition:
+      value:
+        text: string
       source_assertion_ids:
       - string
 disease_card:

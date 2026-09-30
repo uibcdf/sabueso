@@ -52,6 +52,7 @@ def build_molecule_cards(
     ccd: Dict[str, Any] | None = None,
     unichem: Iterable[Dict[str, Any]] = (),
     pubchem: Dict[str, Any] | None = None,
+    chebi: Dict[str, Any] | None = None,
 ) -> Tuple[Dict[str, Card], List[Dict[str, Any]]]:
     """One SmallMoleculeCard per standard InChIKey, from retrieved records.
 
@@ -87,6 +88,19 @@ def build_molecule_cards(
         else:
             unanchored.append(
                 {"ref": f"pubchem:{cid}", "reason": "no_standard_inchikey"}
+            )
+    from sabueso.mappings.chebi import map_chebi_identity
+
+    for accession, record in sorted(((chebi or {}).get("compounds") or {}).items()):
+        mapping, key = map_chebi_identity(record, chebi.get("retrieved_at", ""))
+        if key:
+            groups.setdefault(key, []).append(mapping)
+        else:
+            unanchored.append(
+                {
+                    "ref": f"chebi:{accession.split(':', 1)[1]}",
+                    "reason": "no_standard_inchikey",
+                }
             )
     for response in unichem:
         mapping, key = map_unichem_identity(
@@ -218,6 +232,8 @@ def resolve_molecule_card(
     unichem_client: Any | None = None,
     pubchem: bool = False,
     pubchem_client: Any | None = None,
+    chebi: bool = False,
+    chebi_client: Any | None = None,
     indications: bool = False,
     trials: Dict[str, Any] | None = None,
     clinicaltrials_client: Any | None = None,
@@ -243,6 +259,11 @@ def resolve_molecule_card(
     resources hold for that structure, and the ChEMBL molecules and PDB components it
     lists are retrieved too. A failure of that expansion never prevents the card; it is
     recorded in ``quality.enrichments``. ``inchikey:`` identifiers need UniChem.
+
+    ``chebi`` adds what ChEBI states about the ChEBI entries UniChem links to the
+    structure: their classes, roles (biological, chemical, applications; direct or
+    inherited through ChEBI's ontology) and definition (#83). An entry joins the card
+    only if the InChIKey ChEBI states for it is the anchor.
 
     The clinical layer (#81, ``Card.clinical()``): ``indications`` adds ChEMBL's drug
     indications of the card's ChEMBL molecules (``investigated_for``); ``trials`` (e.g.
@@ -296,6 +317,8 @@ def resolve_molecule_card(
         unichem = False
     if pubchem and not admitted("PubChem"):
         pubchem = False
+    if chebi and not admitted("ChEBI"):
+        chebi = False
     if (indications or trials is not None) and not admitted("ChEMBL"):
         indications, trials = False, None
     if trials is not None and not admitted("ClinicalTrials.gov"):
@@ -322,6 +345,7 @@ def resolve_molecule_card(
     if namespace == "pubchem" or pubchem:
         pubchem_client = _pubchem_client(pubchem_client)
     key = record if namespace == "inchikey" else None
+    entries = None
     enrichments: List[Dict[str, Any]] = []
     try:
         if chembl_ids:
@@ -388,9 +412,11 @@ def resolve_molecule_card(
                 compounds = _expand_pubchem(
                     pubchem_client, compounds, linked, enrichments
                 )
+            if chebi:
+                entries = _expand_chebi(chebi_client, linked, enrichments)
 
     cards, unanchored = build_molecule_cards(
-        chembl, ccd, unichem_responses, pubchem=compounds
+        chembl, ccd, unichem_responses, pubchem=compounds, chebi=entries
     )
     card = cards.get(key)
     if card is None:
@@ -750,3 +776,34 @@ def ligand_deck(
             "notes": _notes(structure_ligands),
         },
     )
+
+
+def _expand_chebi(chebi_client, linked, enrichments):
+    """The ChEBI entries UniChem links to the structure (``chebi=True``, #83). Each
+    joins the card only if the InChIKey ChEBI states is the anchor."""
+    wanted = [f"CHEBI:{i}" for i in linked.get("chebi") or []]
+    record = {"source": "ChEBI", "records": wanted}
+    if not wanted:
+        enrichments.append(
+            {**record, "status": "not_found", "detail": "UniChem links no ChEBI entry"}
+        )
+        return None
+    if chebi_client is None:
+        from sabueso.tools.db.chebi import OnlineChEBIClient
+
+        chebi_client = OnlineChEBIClient()
+    try:
+        response = chebi_client.compounds(wanted)
+    except ConnectorError as exc:
+        enrichments.append({**record, "status": "error", "detail": str(exc)})
+        return None
+    found = response.get("compounds") or {}
+    enrichments.append(
+        {
+            **record,
+            "status": "added" if found else "not_found",
+            "count": len(found),
+            **({"missing": response["missing"]} if response.get("missing") else {}),
+        }
+    )
+    return response

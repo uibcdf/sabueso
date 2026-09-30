@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 32, evaluating 23, deferred 24, retired 3, out of scope 13.
+Summary: in use 33, evaluating 22, deferred 24, retired 3, out of scope 13.
 
 ## In use
 
@@ -41,6 +41,7 @@ Summary: in use 32, evaluating 23, deferred 24, retired 3, out of scope 13.
 | [SKEMPI 2.0](https://life.bsc.es/pid/skempi2/) | Protein–protein interactions and structural modulation | The whole CSV file (1.6 MB, database version 2.0, its SHA-256 recorded), downloaded once per process and indexed by PDB entry, when resolve(..., skempi=True) | CC BY 4.0 (the site's terms of download and use; cite Jankauskaitė et al. 2019) | 2026-09-25 |
 | [BindingDB](https://www.bindingdb.org/) | Binding affinity and experimental bioactivity | REST getLigandsByUniprots, no key; monomers anchored through UniChem | CC BY 3.0 (BindingDB curation) and CC BY-SA 3.0 (imported from ChEMBL); treated as CC BY-SA 3.0, since the REST records state no origin | 2026-09-25 |
 | [PubChem BioAssay](https://pubchem.ncbi.nlm.nih.gov/) | Binding affinity and experimental bioactivity | PUG REST: every result of the target in one request (assay/target/accession/<acc>/concise), assay summaries and compound InChIKeys in batches | US public domain (NLM policy); deposited data keeps its depositor terms (ChEMBL copies: CC BY-SA 3.0) | 2026-09-25 |
+| [ChEBI](https://www.ebi.ac.uk/chebi/) | Chemical space, synthesis, ADMET and safety | ChEBI 2.0 API (compounds, 200 per request), no key, when resolve(..., chebi=True) | CC BY 4.0 (ChEBI 2.0 API) | 2026-09-25 |
 | [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) | Organism, orthology and biological context | NCBI Datasets REST API, optional NCBI key | US public domain (NLM policy) | 2026-09-25 |
 | [ClinicalTrials.gov](https://clinicaltrials.gov/) | Target validation, genetics and functional networks | API v2 (studies by NCT id, in batches), no key, when resolve(..., trials={}) | US government work (not under copyright in the US); NLM asks credit (Source: National Library of Medicine) | 2026-01-31 |
 | [MedGen (NCBI)](https://www.ncbi.nlm.nih.gov/medgen/) | Target validation, genetics and functional networks | E-utilities (esearch by [ConceptId], esummary), in batches, optional NCBI key, when resolve(..., medgen=True) | US public domain (NLM policy) for NCBI's records; names from integrated vocabularies may carry their own terms and are not kept | 2026-09-29 |
@@ -72,7 +73,6 @@ and Sabueso warns. The other sources in use are read whole.
 | Resource | Category | What it would bring | State | Since |
 | --- | --- | --- | --- | --- |
 | [Target 2035 / SGC](https://www.thesgc.org/) | Benchmarks, open challenges and open-science consortia | Selective chemical probes and negative controls for understudied targets. | under review | 2026-09-25 |
-| [ChEBI](https://www.ebi.ac.uk/chebi/) | Chemical space, synthesis, ADMET and safety | Ontology of chemical entities, endogenous metabolites and cofactors. | under review | 2026-09-25 |
 | [SureChEMBL](https://surechembl.org/) | Chemical space, synthesis, ADMET and safety | Chemical structures text-mined from patents. | under review | 2026-09-25 |
 | [Tox21 / ToxCast](https://www.epa.gov/chemical-research/toxicity-forecasting) | Chemical space, synthesis, ADMET and safety | In vitro toxicity screening profiles, cellular stress and assay-interference flags. | under review | 2026-09-25 |
 | [PROTAC-DB](http://cadd.zju.edu.cn/protacdb/) | Emerging modalities (targeted degradation) | Targeted-degradation chimeras: E3 ligases, warheads, linkers, ternary complexes and DC50/Dmax. | under review | 2026-09-25 |

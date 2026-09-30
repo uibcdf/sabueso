@@ -145,7 +145,11 @@ Records of how the card was resolved and enriched, not source-stated fields:
 
 ## 4) SmallMoleculeCard Extensions
 
+- `identifiers.chebi` (`CHEBI:<n>`, since 0.3.8, #83): the ChEBI entry UniChem links and whose stated InChIKey is the anchor
 - `annotations.drug_class`
+- `annotations.chemical_classes` (since 0.3.8): list of `{chebi_id, name}`, the classes ChEBI says the molecule is a member of (`is a`)
+- `annotations.chemical_roles` (since 0.3.8): list of `{chebi_id, name, direct, biological_role, chemical_role, application}`; `direct` roles are the entry's own `has role` statements, the others ChEBI classifies it with through its classes or parent roles
+- `annotations.definition` (since 0.3.8): `{text}`, ChEBI's definition; the assertion keeps its markup, the value is its plain text
 - `clinical.*` (same keys as base)
 
 ---

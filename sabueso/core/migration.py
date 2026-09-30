@@ -193,8 +193,17 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
         # not_recorded until the card is built again.
         {"path": "source_assertion_store[].acquisition", "filled_by": "refresh"},
     ],
-    # The rule that chose the records a capped source kept (#88, #98).
+    # The rule that chose the records a capped source kept (#88, #98), and ChEBI (#83).
     "0.3.8": [
+        *(
+            {"path": path, "filled_by": "chebi", "entity_types": ("small_molecule",)}
+            for path in (
+                "identifiers.chebi",
+                "annotations.chemical_classes",
+                "annotations.chemical_roles",
+                "annotations.definition",
+            )
+        ),
         {
             "path": "quality.enrichments[].record_order (BindingDB)",
             "filled_by": "bindingdb",

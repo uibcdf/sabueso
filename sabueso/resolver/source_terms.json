@@ -18,6 +18,13 @@
     "Treated as CC BY-SA 3.0: the records Sabueso reads do not state their origin."
    ]
   },
+  "ChEBI": {
+   "registry_id": "chebi",
+   "licence": "CC-BY-4.0",
+   "attribution": "ChEBI, EMBL-EBI (https://www.ebi.ac.uk/chebi/), CC BY 4.0",
+   "statement": "https://www.ebi.ac.uk/chebi/about",
+   "reviewed": "2026-09-30"
+  },
   "ChEMBL": {
    "registry_id": "chembl",
    "licence": "CC-BY-SA-3.0",

@@ -1380,3 +1380,21 @@ uibcdf/sabueso#100 (phase 2), #98.
   with UniChem; repeated lookups are saved by `archive.reusing(...)`.
 - **Offline** refuses every request not answered by a mirror or an archive
   (`OfflineError`), and the source is `not_queried` (`offline`), never absent.
+
+## ChEBI: classes and roles of a molecule (2026-09-30)
+uibcdf/sabueso#83 (wave 2, chemistry).
+- **Joined on stated grounds only.** UniChem lists a structure's ChEBI ids; ChEBI states
+  each entry's standard InChIKey. An entry becomes part of a card like any other record
+  keyed by its stated InChIKey (`build_molecule_cards`), so an entry whose key is
+  another is never merged.
+- **Batched.** ChEBI 2.0's `compounds/` answers up to 200 ids per request (about 12 s),
+  and a secondary id with its primary entry.
+- **Roles, direct or inherited.** `roles_classification` lists every role ChEBI
+  classifies an entry with, including those it inherits through its classes and parent
+  roles (vincristine is a "Bronsted base" through "tertiary amino compound"). Both are
+  kept, and `direct` marks the entry's own `has role` statements, so a reader never
+  takes an inherited role for a curated one.
+- **The definition's markup** (`C<sub>46</sub>…`) stays in the assertion, as written;
+  the field's value is its plain text (`normalized_value`).
+- Names and formula are not taken: ChEMBL and PubChem state them already, and a second
+  spelling would add disagreements without knowledge.
