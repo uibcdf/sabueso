@@ -473,6 +473,8 @@ class KnowledgeStore:
                 "its cards."
             )
         if kind == "packet":
+            if then["format"] != latest["format"]:
+                return {**out, "changed": None, "reason": "format_changed"}
             ids = [then["content_id"], latest["content_id"]]
         else:
             ids = [
@@ -807,34 +809,38 @@ class KnowledgeStore:
         self, packet_name: str, skip_digestion: bool = False
     ) -> List[Dict[str, Any]]:
         """Every revision of a packet, oldest first, each with its pinned reference,
-        its content-equivalence id, and whether its knowledge changed from the previous
-        revision (``knowledge_changed``: None for the first)."""
+        its format, its content-equivalence id, and whether its knowledge changed from
+        the previous revision (``knowledge_changed``: None for the first, and when the
+        two are in different formats, whose ids cannot be compared)."""
         from .packets import PACKET_PREFIX
 
         name, _ = self._packet_name(packet_name)
         with self._session() as conn:
             rows = conn.execute(
-                "SELECT r.revision, r.snapshot_id, r.stored_at, r.note, s.content_id "
-                "FROM packet_revisions r JOIN packet_snapshots s "
+                "SELECT r.revision, r.snapshot_id, r.stored_at, r.note, s.content_id, "
+                "s.document FROM packet_revisions r JOIN packet_snapshots s "
                 "ON s.snapshot_id = r.snapshot_id WHERE r.name = ? ORDER BY r.revision",
                 (name,),
             ).fetchall()
         history, previous = [], None
-        for revision, sid, stored_at, note, content_id in rows:
+        for revision, sid, stored_at, note, content_id, document in rows:
+            packet_format = json.loads(document).get("format")
+            comparable = previous is not None and previous[1] == packet_format
             history.append(
                 {
                     "revision": revision,
                     "ref": pinned_ref(PACKET_PREFIX + name, sid),
                     "snapshot_id": sid,
+                    "format": packet_format,
                     "content_id": content_id,
-                    "knowledge_changed": None
-                    if previous is None
-                    else content_id != previous,
+                    "knowledge_changed": content_id != previous[0]
+                    if comparable
+                    else None,
                     "stored_at": stored_at,
                     "note": note,
                 }
             )
-            previous = content_id
+            previous = (content_id, packet_format)
         return history
 
     def packet_names(self) -> List[str]:

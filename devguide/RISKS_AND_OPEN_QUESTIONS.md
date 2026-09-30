@@ -200,7 +200,8 @@
   than `retrieved_at` (dates such as a PDB deposit are knowledge, and stay). Recheck
   when a field is added.
 - **The packet contract may change** when uibcdf/moli#22 is agreed. Stored packets
-  state their format (`knowledge_packet@1`), so a change is a new version.
+  state their format (`knowledge_packet@2` since #88; `@1` is still read), so a change
+  is a new version, and revisions of different formats are never compared.
 - **Whole-release sources** (#83). PHI-base's first load parses a 134 MB JSON: about
   30 s and 750 MB of memory once per process without a cache directory. A larger
   release, or several release-based sources, would need streaming parsing or a

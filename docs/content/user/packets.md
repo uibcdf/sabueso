@@ -60,6 +60,16 @@ aspect asks for.
 
 Quantities keep their unit, as `{value, unit}`.
 
+A packet holds each statement once (`knowledge_packet@2`), and other places name it
+instead of copying it:
+- a grouped disease statement names what it groups, from the same aspect: an
+  association by its `relationship_id` (`associations`), a UniProt disease by its
+  `accession`, a ClinVar condition by its `variant` and `condition` index
+  (`clinical_variants`). Beside the reference it keeps what the grouping adds:
+  `grouped_by`, `narrower`, or the `reason` it was not grouped;
+- the joint structure inventory names each protein's structure by its
+  `relationship_id`, found in that protein's `structures` facts.
+
 A fact names the SourceAssertions behind it. `packet.cite("subject", "SA_…")` gives its
 pinned reference, which `store.source_assertion(ref)` reads back.
 
@@ -77,8 +87,11 @@ packet has two ids:
 - `packet.content_id()`: the knowledge alone, without retrieval times or the Sabueso
   version that built the cards. `packet.same_knowledge(other)` compares it.
 
-`store.packet_history("tim_pair")` lists each saved revision with its `content_id` and
-`knowledge_changed`. So "has anything changed since the last time?" has an answer.
+`store.packet_history("tim_pair")` lists each saved revision with its format, its
+`content_id` and `knowledge_changed`. So "has anything changed since the last time?"
+has an answer. Packets saved by Sabueso 0.6.0 and 0.7.0 (`knowledge_packet@1`) are still
+read. Two revisions of different formats are not compared: `knowledge_changed` and
+`same_knowledge` are `None`, never a change that did not happen.
 
 ## Stored packets
 

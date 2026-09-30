@@ -94,13 +94,14 @@ def disease_statements(
                     accession=item.get("accession"),
                 )
     for variant in get("annotations.clinical_variants") or []:
-        for condition in variant.get("conditions") or []:
+        for index, condition in enumerate(variant.get("conditions") or []):
             add(
                 list(condition.get("xrefs") or []),
                 source="ClinVar",
                 kind="clinvar_condition",
                 name=condition.get("name"),
                 variant=variant.get("accession"),
+                condition=index,
             )
     return out
 

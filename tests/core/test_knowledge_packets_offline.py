@@ -303,3 +303,76 @@ def test_every_enricher_belongs_to_an_aspect_and_is_asked_by_it(enricher):
     assert aspects, f"{enricher.option} answers no packet aspect"
     for aspect in aspects:
         assert aspect_options(aspect)[enricher.option] == enricher.default_request
+
+
+# --- knowledge_packet@2: references, not copies (#88) ----------------------------------
+
+
+def test_grouped_disease_statements_name_the_statement_they_group(packet):
+    assert packet.format == "knowledge_packet@2"
+    facts = packet.facts["disease_association"]["subject"]
+    associations = {r["relationship_id"] for r in facts["associations"]}
+    variants = {
+        v["accession"]: v
+        for v in facts["clinical_variants"]["annotations.clinical_variants"]["value"]
+    }
+    grouped = facts["grouped"]
+    statements = [s for d in grouped["diseases"] for s in d["statements"]]
+    statements += grouped["ungrouped"]
+    kinds = {s["kind"] for s in statements}
+    assert {"association", "clinvar_condition"} <= kinds
+    for s in statements:
+        # Named, not copied: no statement repeats its ids or its name here.
+        assert not {"refs", "curies", "name"} & set(s)
+        if s["kind"] == "association":
+            assert s["relationship_id"] in associations
+        elif s["kind"] == "clinvar_condition":
+            assert variants[s["variant"]]["conditions"][s["condition"]]
+    assert all(s["grouped_by"] for d in grouped["diseases"] for s in d["statements"])
+    assert all(s["reason"] for s in grouped["ungrouped"])
+
+
+def test_the_joint_inventory_names_each_role_s_structures(packet):
+    facts = packet.facts["structures"]
+    held = {
+        item["relationship_id"]: item
+        for role in ("subject", "comparator")
+        for item in facts[role]["experimental"]["items"]
+    }
+    items = facts["together"]["inventory"]["items"]
+    assert items
+    for item in items:
+        assert item["relationship_id"] in held
+        assert set(item) <= {"relationship_id", "card_id", "substitutions_in_reference"}
+
+
+def test_a_packet_of_the_earlier_format_is_read_and_never_compared(packet):
+    earlier = sabueso.KnowledgePacket(
+        {**packet.to_dict(), "format": "knowledge_packet@1"}
+    )
+    assert earlier.format == "knowledge_packet@1"
+    assert earlier.same_knowledge(packet) is None
+    with pytest.raises(StorageError):
+        sabueso.KnowledgePacket({**packet.to_dict(), "format": "knowledge_packet@9"})
+
+
+def test_revisions_of_different_formats_are_not_compared(tmp_path, query, clients):
+    import time
+    from datetime import datetime, timezone
+
+    store = sabueso.KnowledgeStore(tmp_path / "k.db")
+    current = _packet(query, clients, store=store, packet_name="tim_pair")
+    between = datetime.now(timezone.utc)
+    time.sleep(1.1)  # the store keeps times to the second
+    earlier = sabueso.KnowledgePacket(
+        {**current.to_dict(), "format": "knowledge_packet@1"}
+    )
+    store.save_packet(earlier, "tim_pair")
+    history = store.packet_history("tim_pair")
+    assert [h["format"] for h in history] == [
+        "knowledge_packet@2",
+        "knowledge_packet@1",
+    ]
+    assert [h["knowledge_changed"] for h in history] == [None, None]
+    answer = store.changed_since("tim_pair", between)
+    assert (answer["changed"], answer["reason"]) == (None, "format_changed")

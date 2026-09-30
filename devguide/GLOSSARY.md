@@ -77,7 +77,9 @@
   language.
 - **KnowledgePacket**: the composed answer to a KnowledgeQuery: pinned entities, facts
   per aspect with their rules, conflicts, unknowns and provenance
-  (`knowledge_packet@1`). Referenced as `sabueso:packet:<name>@sha256:…`.
+  (`knowledge_packet@2`; `@1` is still read). It holds each statement once and
+  names it elsewhere. Distinct from a Deck, which holds whole cards. Referenced as
+  `sabueso:packet:<name>@sha256:…`.
 - **Content-equivalence id**: the id of a card or packet without retrieval times and
   the Sabueso version that built it. Two assemblies of unchanged knowledge share it;
   their snapshot ids differ.

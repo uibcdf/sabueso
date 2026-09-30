@@ -64,8 +64,9 @@ decision of an `ambiguity_deck`, or the source outcomes and unanchored records o
 - `store.save_packet(packet, packet_name)` stores a knowledge packet revision
   (`sabueso:packet:<name>@sha256:…`) once every card state it cites is in the store.
   `store.load_packet(name or ref)` verifies the packet and those states;
-  `store.packet_history(name)` lists the revisions with their content-equivalence ids
-  and whether the knowledge changed (#71).
+  `store.packet_history(name)` lists the revisions with their format, their
+  content-equivalence ids and whether the knowledge changed (#71); revisions of
+  different formats are not compared (#88).
 - `store.import_card_table(path, table="cards")` imports the rows of a
   `save_card_sqlite` table, oldest first, as history.
 

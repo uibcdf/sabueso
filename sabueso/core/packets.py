@@ -42,7 +42,11 @@ from .errors import StorageError
 from .snapshot import canonical_json, digest, parse_ref, pinned_ref, snapshot_content
 
 QUERY_FORMAT = "knowledge_query@1"
-PACKET_FORMAT = "knowledge_packet@1"
+PACKET_FORMAT = "knowledge_packet@2"
+#: Formats a packet can be read in. ``@2`` references instead of copying: grouped
+#: disease statements name the statement they group, and the joint structure inventory
+#: names each role's structure by its relationship id (#88).
+READABLE_FORMATS = ("knowledge_packet@1", "knowledge_packet@2")
 ASPECT_MAPPING = "packet_aspects@2"
 PACKET_PREFIX = "sabueso:packet:"
 
@@ -351,19 +355,31 @@ def _facts(aspect: str, card: Any) -> Dict[str, Any]:
             "uniprot": _fields(card, ["annotations.disease"]),
             "clinical_variants": _fields(card, ["annotations.clinical_variants"]),
             "associations": [
-                {k: r[k] for k in ("object_ref", "qualifiers", "source_assertion_ids")}
+                {
+                    "relationship_id": r["id"],
+                    **{
+                        k: r[k]
+                        for k in ("object_ref", "qualifiers", "source_assertion_ids")
+                    },
+                }
                 for r in sorted(
                     card.relationships(predicate="associated_with"),
                     key=lambda r: (r["object_ref"], r["qualifiers"].get("channel", "")),
                 )
             ],
-            "grouped": card.diseases(),
+            "grouped": _grouped_by_reference(card.diseases()),
         }
     if aspect == "biological_context":
         return {
             **_fields(card, ASPECTS["biological_context"]["areas"][1:]),
             "pathways": [
-                {k: r[k] for k in ("object_ref", "qualifiers", "source_assertion_ids")}
+                {
+                    "relationship_id": r["id"],
+                    **{
+                        k: r[k]
+                        for k in ("object_ref", "qualifiers", "source_assertion_ids")
+                    },
+                }
                 for r in sorted(
                     card.relationships(predicate="participates_in"),
                     key=lambda r: r["object_ref"],
@@ -373,14 +389,66 @@ def _facts(aspect: str, card: Any) -> Dict[str, Any]:
     raise KeyError(aspect)
 
 
-def _together(aspect: str, subject: Any, comparator: Any) -> Dict[str, Any] | None:
+#: What names a disease statement in the aspect it comes from (``knowledge_packet@2``).
+STATEMENT_KEYS = {
+    "association": ("relationship_id",),
+    "uniprot_disease": ("accession",),
+    "clinvar_condition": ("variant", "condition"),
+}
+#: What a grouping adds to a statement, kept beside its reference.
+GROUPING_KEYS = ("grouped_by", "narrower", "reason", "terms")
+
+
+def _grouped_by_reference(view: Dict[str, Any]) -> Dict[str, Any]:
+    """``Card.diseases()`` with each statement named, not copied: an association by its
+    relationship id (``associations``), a UniProt disease by its accession
+    (``uniprot``), a ClinVar condition by its variant and index (``clinical_variants``)
+    — all in the same aspect."""
+
+    def reference(statement: Dict[str, Any]) -> Dict[str, Any]:
+        keys = ("kind", "source", *STATEMENT_KEYS.get(statement.get("kind"), ()))
+        named = {k: statement[k] for k in keys if k in statement}
+        if len(named) == 2:  # a statement of a kind this format cannot name
+            return statement
+        return {**named, **{k: statement[k] for k in GROUPING_KEYS if k in statement}}
+
+    return {
+        **view,
+        "diseases": [
+            {**d, "statements": [reference(s) for s in d["statements"]]}
+            for d in view["diseases"]
+        ],
+        "ungrouped": [reference(s) for s in view["ungrouped"]],
+    }
+
+
+#: What the joint inventory adds to a structure each role's ``structures`` holds.
+INVENTORY_KEYS = ("relationship_id", "card_id", "substitutions_in_reference")
+
+
+def _together(
+    aspect: str, subject: Any, comparator: Any, facts: Dict[str, Any]
+) -> Dict[str, Any] | None:
     """What an aspect says of the two proteins side by side."""
     from .deck import Deck
 
     if aspect == "identity":
         return {"identity_audit": Deck([subject, comparator]).identity_audit()}
     if aspect == "structures":
-        return {"inventory": Deck([subject, comparator]).structure_inventory()}
+        inventory = Deck([subject, comparator]).structure_inventory()
+        # Each structure is in its role's facts already: the inventory names it.
+        held = {
+            item["relationship_id"]
+            for role in ("subject", "comparator")
+            for item in facts[role]["experimental"]["items"]
+        }
+        inventory["items"] = [
+            {k: item[k] for k in INVENTORY_KEYS if k in item}
+            if item.get("relationship_id") in held
+            else item
+            for item in inventory["items"]
+        ]
+        return {"inventory": inventory}
     return None
 
 
@@ -456,13 +524,15 @@ class KnowledgePacket:
     ``conflicts``, ``entities`` and ``provenance``."""
 
     def __init__(self, data: Dict[str, Any], ref: str | None = None) -> None:
-        if data.get("format") != PACKET_FORMAT:
+        if data.get("format") not in READABLE_FORMATS:
             raise StorageError(
-                f"Not a {PACKET_FORMAT} packet: format {data.get('format')!r}."
+                f"Not a knowledge packet Sabueso reads ({', '.join(READABLE_FORMATS)}):"
+                f" format {data.get('format')!r}."
             )
         self._data = data
         self.ref = ref
 
+    format = property(lambda self: self._data["format"])
     query = property(lambda self: KnowledgeQuery.from_dict(self._data["query"]))
     entities = property(lambda self: self._data["entities"])
     facts = property(lambda self: self._data["facts"])
@@ -484,8 +554,11 @@ class KnowledgePacket:
             entity.pop("ref", None)
         return digest(canonical_json(content))
 
-    def same_knowledge(self, other: "KnowledgePacket") -> bool:
-        """Whether two packets hold the same knowledge, however often it was read."""
+    def same_knowledge(self, other: "KnowledgePacket") -> bool | None:
+        """Whether two packets hold the same knowledge, however often it was read.
+        None when they are in different formats: their ids cannot be compared."""
+        if self.format != other.format:
+            return None
         return self.content_id() == other.content_id()
 
     def cite(self, role: str, item_id: str) -> str:
@@ -524,7 +597,7 @@ def compose_packet(
     for aspect in aspects:
         facts[aspect] = {role: _facts(aspect, card) for role, card in roles}
         if comparator is not None:
-            together = _together(aspect, subject, comparator)
+            together = _together(aspect, subject, comparator, facts[aspect])
             if together is not None:
                 facts[aspect]["together"] = together
     data = {

@@ -50,7 +50,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - `knowledge_state@3`: an answer cut at a limit is `partial`, with `truncated_for`
     (#88);
   - a `not_found` record states the release it was checked against (#89).
-- **Unreleased on main:** nothing yet.
+- **Unreleased on main:**
+  - `knowledge_packet@2` (#88): a packet holds each statement once; grouped disease
+    statements and the joint structure inventory name what they group (`@1` is still
+    read, and revisions of different formats are not compared).
 - **Watched:** card and packet size with the default ceilings (#88).
 
 ## Package layout

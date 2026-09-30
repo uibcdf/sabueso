@@ -1225,3 +1225,25 @@ uibcdf/sabueso#29.
     article keeps its licence, so only ids and bibliographic data are kept, never text.
   - Not asked by a packet aspect yet. A well-studied protein has thousands of
     mentions, and packet size is watched (#88).
+
+## Knowledge packets: the name, and references instead of copies (2026-09-30)
+uibcdf/sabueso#88.
+- **The name stays `KnowledgePacket`.** Alternatives were weighed: *brief* and
+  *dossier* collide with MOLI's scientific communication (ProjectBriefings,
+  ProgressBriefs, dossiers); *slice* and *bundle* already name integration slices and
+  deployment bundles; *answer* pairs well with `KnowledgeQuery` but reads as a
+  conclusion; *excerpt* was the closest fit. A packet is not a deck: a deck holds whole
+  cards, a packet the facts a query asks, with unknowns, conflicts and provenance.
+- **`knowledge_packet@2`: each statement once.** In a TcTIM/HsTIM packet with every
+  aspect, the joint structure inventory copied each protein's structures field for
+  field (31 of 31), and grouped disease statements copied the associations and ClinVar
+  conditions of the same aspect. Both now name what they refer to. Associations and
+  pathways carry their `relationship_id`, and ClinVar statements their condition index.
+- **Measured.** The same cards give 2.04 MB instead of 2.25 MB (−9 %): structures
+  halve (288 → 151 KB), diseases −11 % (most groups hold a single Open Targets
+  statement). The rest is content, not repetition. Reducing it is a decision about
+  what a packet is for (a declared level of detail, or a compact encoding), taken
+  apart.
+- **Formats are not compared.** `@1` packets are still read. A revision of another
+  format has `knowledge_changed: None`, and `same_knowledge` answers None: the ids of
+  two formats differ even when the knowledge does not.

@@ -53,7 +53,8 @@ shows how to use them.
 - `sabueso.compose_packet(knowledge_query, subject, comparator=None)` composes from
   existing cards.
 - `KnowledgePacket`: `entities`, `facts`, `conflicts`, `unknowns`, `provenance`,
-  `query`, `ref`; `snapshot_id()`, `content_id()`, `same_knowledge(other)`,
+  `query`, `ref`, `format`; `snapshot_id()`, `content_id()`, `same_knowledge(other)`
+  (None across formats),
   `cite(role, item_id)`, `to_dict()`.
 
 ## Card
