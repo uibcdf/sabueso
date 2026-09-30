@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 33, evaluating 22, deferred 24, retired 3, out of scope 13.
+Summary: in use 33, evaluating 23, deferred 24, retired 3, out of scope 13.
 
 ## In use
 
@@ -73,6 +73,7 @@ and Sabueso warns. The other sources in use are read whole.
 | Resource | Category | What it would bring | State | Since |
 | --- | --- | --- | --- | --- |
 | [Target 2035 / SGC](https://www.thesgc.org/) | Benchmarks, open challenges and open-science consortia | Selective chemical probes and negative controls for understudied targets. | under review | 2026-09-25 |
+| [Chemical Probes Portal](https://www.chemicalprobes.org/) | Chemical space, synthesis, ADMET and safety | Chemical probes for protein targets, curated from the literature and rated by an expert review panel for use in cells and in vivo. | Blocked (2026-09-30): no documented API or download. The site's own search endpoint answers without login for probes (name, target gene symbols, ratings, mechanism) but states no UniProt accession or structure; target search needs a login. The accessions, InChI and SMILES appear only in each probe's rendered page. Structures come from canSAR. Revisit with a documented export or API. | 2026-09-30 |
 | [SureChEMBL](https://surechembl.org/) | Chemical space, synthesis, ADMET and safety | Chemical structures text-mined from patents. | under review | 2026-09-25 |
 | [Tox21 / ToxCast](https://www.epa.gov/chemical-research/toxicity-forecasting) | Chemical space, synthesis, ADMET and safety | In vitro toxicity screening profiles, cellular stress and assay-interference flags. | under review | 2026-09-25 |
 | [PROTAC-DB](http://cadd.zju.edu.cn/protacdb/) | Emerging modalities (targeted degradation) | Targeted-degradation chimeras: E3 ligases, warheads, linkers, ternary complexes and DC50/Dmax. | under review | 2026-09-25 |

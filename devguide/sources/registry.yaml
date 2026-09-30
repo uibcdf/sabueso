@@ -1154,7 +1154,18 @@ resources:
     description: "Selective chemical probes and negative controls for understudied targets."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "SGC probes: no restrictions on use; Chemical Probes Portal under Creative Commons (to confirm)"
+    licence: "SGC probes: no restrictions on use; the Chemical Probes Portal is its own entry (chemical_probes_portal)"
+    links: ["#83"]
+  - id: chemical_probes_portal
+    name: "Chemical Probes Portal"
+    url: https://www.chemicalprobes.org/
+    category: chemistry_admet
+    status: evaluating
+    description: "Chemical probes for protein targets, curated from the literature and rated by an expert review panel for use in cells and in vivo."
+    since: 2026-09-30
+    proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    licence: "CC BY-SA 4.0 (the site's licence link, 2026-09-30); share-alike, as ChEMBL"
+    note: "Blocked (2026-09-30): no documented API or download. The site's own search endpoint answers without login for probes (name, target gene symbols, ratings, mechanism) but states no UniProt accession or structure; target search needs a login. The accessions, InChI and SMILES appear only in each probe's rendered page. Structures come from canSAR. Revisit with a documented export or API."
     links: ["#83"]
   - id: protac_db
     name: "PROTAC-DB"

@@ -102,6 +102,7 @@ when to look again.
 |---|---|---|---|
 | VEuPathDB services (TriTrypDB…) | **blocked: key and terms** | Web services need a registered user's API key; no reuse terms found (#84) | An answer on terms and on per-user keys; a key from the user, never stored |
 | iPPI-DB | **blocked: access and terms** | Targets, activities and InChIKeys only in HTML pages (the CSV has SMILES only, the API covers structures and cavities); no data licence found (2026-09-29) | A documented export or API, and stated terms (#84) |
+| Chemical Probes Portal | **blocked: access** | No documented API or download; its search states target gene symbols but no UniProt accession or structure, target search needs a login, and accessions and InChI appear only in rendered pages (2026-09-30) | A documented export or API |
 | TDR Targets | **blocked: unreachable** | Its site did not answer from our network (2026-09-27/28); no terms or API found | An answer from its maintainers (#84) |
 | Guide to PHARMACOLOGY | **blocked: key and licence** | Personal API key needed; ODbL (share-alike) | Key management for deployments, and a target that needs it |
 | BioGRID | **blocked: key** | Personal access key | Genetic interactions needed, and key management (#22) |
@@ -136,7 +137,7 @@ That is not a data licence, and is recorded as "no data licence found".
 | SKEMPI 2.0 | interactions | CC BY 4.0 (CSV) | PDB entry, chains, mutations in PDB numbering | Binding-energy changes of mutations at protein–protein interfaces; placed through author numbering (#73) |
 | iPPI-DB | interactions | no data licence found (2026-09-29; the earlier "CC BY-SA 3.0" could not be confirmed) | UniProt targets; InChIKeys, in HTML pages only | Small-molecule modulators of protein–protein interactions; blocked (section 4) |
 | ChEBI (2.0) | chemistry | CC BY 4.0; new JSON API | ChEBI ids (already linked through UniChem), InChIKey | Chemical roles and classes, metabolites, cofactors |
-| Chemical Probes Portal | chemistry | Creative Commons (to confirm which) | UniProt targets; compound structures | Expert-reviewed probes and their targets |
+| Chemical Probes Portal | chemistry | CC BY-SA 4.0 (2026-09-30) | UniProt targets and structures, in rendered pages only | Expert-reviewed probes and their targets; blocked (section 4) |
 | KLIFS | sites (kinases) | CC BY 4.0; REST API | UniProt / kinase ids; PDB | Kinase pocket residues and conformations |
 | GPCRdb | sites (GPCRs) | CC BY 4.0; REST API | UniProt entry names; PDB | GPCR numbering, states, mutations |
 | Ensembl | identity | No restrictions; REST API (15 req/s) | Ensembl gene, transcript, protein | Transcripts and orthology: supports variant placement (#85) |
@@ -196,8 +197,8 @@ through the PDB and ChEMBL already. They are reviewed when a target needs them.
 
 1. **Interfaces:** SKEMPI (mutations and binding energy): **done** (2026-09-29, schema
    0.3.7). iPPI-DB (modulators): blocked on access and terms (section 4).
-2. **Chemistry:** ChEBI roles and classes: **done** (2026-09-30, schema 0.3.8); the
-   Chemical Probes Portal next.
+2. **Chemistry:** ChEBI roles and classes: **done** (2026-09-30, schema 0.3.8). The
+   Chemical Probes Portal: blocked on access (section 4).
 3. **Identity:** Ensembl transcripts and orthology, which also serve #85.
 4. **Family-specific sources:** KLIFS and GPCRdb, when a target needs them.
 5. **SureChEMBL**, and then structures: OPM, SAbDab, ESM Atlas.

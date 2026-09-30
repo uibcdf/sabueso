@@ -207,9 +207,9 @@ In order:
    - Next, when use asks: located mentions (section, sentence) of PDB ids and
      accessions, and an extraction Sabueso runs itself, with its tool and version.
 5. **Continuing, in parallel when a need or a slot appears:**
-   - sources of wave 2 (#83): chemistry (ChEBI done; chemical probes), identity (Ensembl,
-     which also serves #85), family-specific sources, patents, structures. iPPI-DB,
-     VEuPathDB and TDR Targets wait on #84;
+   - sources of wave 2 (#83): chemistry (ChEBI done; the Chemical Probes Portal
+     blocked on access), identity (Ensembl, which also serves #85), family-specific
+     sources, patents, structures. iPPI-DB, VEuPathDB and TDR Targets wait on #84;
    - knowledge packets: real use decides their aspects and size (#71, #88), aligned
      with uibcdf/moli#22 once agreed;
    - the clinical layer: adverse events (openFDA), after a terms review; isoform
