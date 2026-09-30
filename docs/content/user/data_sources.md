@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 36, evaluating 17, deferred 27, retired 3, out of scope 13.
+Summary: in use 36, evaluating 17, deferred 28, retired 3, out of scope 13.
 
 ## In use
 
@@ -93,7 +93,7 @@ and Sabueso warns. The other sources in use are read whole.
 | [DGIdb](https://dgidb.org/) | Target validation, genetics and functional networks | Aggregated drug–gene interactions and druggability categories. | under review | 2026-09-25 |
 | [Pharos / TCRD (IDG)](https://pharos.nih.gov/) | Target validation, genetics and functional networks | Human target development levels (Tclin, Tchem, Tbio, Tdark) and aggregated target knowledge, keyed by UniProt, HGNC, Ensembl and NCBI Gene. | under review | 2026-09-27 |
 | [TTD (Therapeutic Target Database)](https://idrblab.org/ttd/) | Target validation, genetics and functional networks | Molecular targets, their clinical status, diseases and resistance mutations. | under review | 2026-09-25 |
-| [Ensembl](https://www.ensembl.org/) | Targets, sequence and basic pharmacology | Gene and transcript annotation, homology and population variants. | under review | 2026-09-25 |
+| [OMA (Orthologous MAtrix)](https://omabrowser.org/) | Targets, sequence and basic pharmacology | Orthologs and hierarchical orthologous groups across about 2,600 genomes, by UniProt accession. | Tested 2026-09-30: api/protein/<acc>/orthologs answers in about 10 s, 3,090 orthologs of human TPI1 (2,454 one-to-one), with T. cruzi's TIM (Q4DV43) among them, and TcTIM's with human TPIS. Orthologs are named by UniProt accession, entry name or another database's id (GenBank), so only UniProt ones would join. Licence not yet confirmed: the site's pages answer 403 to non-browser clients. | 2026-09-30 |
 
 ## Deferred
 
@@ -103,6 +103,7 @@ and Sabueso warns. The other sources in use are read whole.
 | [BioGRID](https://thebiogrid.org/) | The API needs a personal access key; IntAct (via UniProt) and STRING cover current needs. Reviewed 2026-09-29 (#94): MIT licence (its terms page), so every terms profile admits it; key management now exists (tools/db/_keys). | Genetic interactions are needed, and a user supplies their own key. | 2026-09-23 |
 | [DrugBank](https://go.drugbank.com/) | Reviewed for terms profiles (2026-09-29, #94). The full database (XML 5.1.22 of 2026-06-27, 204 MB) is CC BY-NC 4.0, and its download needs an account under DrugBank's Academic License (an academic institution, research not primarily for a commercial third party). It would fit only the non_commercial profile, with the user's own account, and would bring what the clinical layer still lacks: pharmacology, mechanisms, interactions, transporters. The Open Data (vocabulary, structures) is CC0, but its download also needs a login (HTTP 403 without one). | A user with a DrugBank academic account asks for it; the account's credentials are theirs, through tools/db/_keys, never stored. | 2026-09-23 |
 | [Guide to PHARMACOLOGY (IUPHAR/BPS)](https://www.guidetopharmacology.org/) | Its web services now need a personal API key (HTTP 401 without one), its data is under ODbL (share-alike), and UniProt links neither test target to it. Reviewed 2026-09-29 (#94): the database is under ODbL 1.0 and its contents under CC BY-SA 4.0 (its about page); every terms profile would admit it with share-alike, and key management now exists. | A target of interest has a GuidetoPHARMACOLOGY cross-reference in UniProt, and key management exists for deployments (as for BioGRID). | 2026-09-25 |
+| [Ensembl](https://www.ensembl.org/) | Evaluated 2026-09-30 for transcripts and orthology. Transcripts: gnomAD states each variant's consequence on the canonical transcript itself (#85), and for the transcripts UniProt does not state Ensembl gives a separate TrEMBL entry or no translation, so no stated map. Orthology (Compara): 44-52 s per gene request, orthologs as Ensembl genes and proteins that need one cross-reference request each to reach UniProt, and no trypanosomatid genomes in the vertebrate Compara. OMA states orthologs by UniProt accession, including the parasite-host pairs (see oma). | A use needs Ensembl's gene trees or its vertebrate paralogues, or transcripts beyond gnomAD's. | 2026-09-25 |
 | [KEGG PATHWAY](https://www.kegg.jp/) | Not a public database: free academic use of the website only; services, downloads and non-academic use need a licence, which does not fit redistribution across MOLI. Reviewed 2026-09-29 (#94): even academic users who provide services with KEGG need an academic service provider licence, so no terms profile admits it without one. | A licence covering MOLI use is in place, or a pathway need is not met by Reactome (CC0). | 2026-09-25 |
 | [PharmacoDB](https://pharmacodb.pmgenomics.ca/) | HTTP 503 on 2026-09-29. | It answers again. | 2026-09-25 |
 | [2P2Idb](http://2p2idb.cnrs-mrs.fr/) | Did not answer on 2026-09-27/29. | It answers again; then evaluate with iPPI-DB. | 2026-09-25 |

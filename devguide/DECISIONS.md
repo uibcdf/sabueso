@@ -1575,7 +1575,15 @@ uibcdf/sabueso#83.
   - SureChEMBL: mentions cannot be restricted to the claims;
   - OPM's own API: its own chain letters, and no licence found;
   - ESM Atlas: MGnify ids only.
-- **Waiting:** Ensembl orthology, while its REST service does not answer.
+- **Ensembl, deferred** once its service answered again (same day). For orthology:
+  - its Compara answers in 44-52 s per gene;
+  - it names orthologs as Ensembl genes, one cross-reference request each away from
+    UniProt;
+  - its vertebrate Compara has no trypanosomatids.
+
+  OMA names orthologs by UniProt accession, and states TcTIM and human TPI1 as
+  orthologs of each other. It is proposed as the orthology source (evaluating: its
+  licence is to be confirmed).
 - **Each source was surveyed for batch or bulk access and tested live before design**
   (whole files for SAbDab, one list request for KLIFS). Each joins only through an
   identifier its source states: an accession, the PDB chains UniProt states, or an

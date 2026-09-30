@@ -474,11 +474,25 @@ resources:
     name: "Ensembl"
     url: https://www.ensembl.org/
     category: targets_sequence
-    status: evaluating
+    status: deferred
     description: "Gene and transcript annotation, homology and population variants."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
+    decided_by: "Sabueso maintainers (2026-09-30)"
+    reason: "Evaluated 2026-09-30 for transcripts and orthology. Transcripts: gnomAD states each variant's consequence on the canonical transcript itself (#85), and for the transcripts UniProt does not state Ensembl gives a separate TrEMBL entry or no translation, so no stated map. Orthology (Compara): 44-52 s per gene request, orthologs as Ensembl genes and proteins that need one cross-reference request each to reach UniProt, and no trypanosomatid genomes in the vertebrate Compara. OMA states orthologs by UniProt accession, including the parasite-host pairs (see oma)."
+    revisit_when: "A use needs Ensembl's gene trees or its vertebrate paralogues, or transcripts beyond gnomAD's."
     licence: "No restrictions on data (REST API, 15 requests per second)"
+    links: ["#83", "#85"]
+  - id: oma
+    name: "OMA (Orthologous MAtrix)"
+    url: https://omabrowser.org/
+    category: targets_sequence
+    status: evaluating
+    description: "Orthologs and hierarchical orthologous groups across about 2,600 genomes, by UniProt accession."
+    since: 2026-09-30
+    proposed_by: "Sabueso maintainers, evaluating Ensembl orthology in wave 2 (#83)"
+    note: "Tested 2026-09-30: api/protein/<acc>/orthologs answers in about 10 s, 3,090 orthologs of human TPI1 (2,454 one-to-one), with T. cruzi's TIM (Q4DV43) among them, and TcTIM's with human TPIS. Orthologs are named by UniProt accession, entry name or another database's id (GenBank), so only UniProt ones would join. Licence not yet confirmed: the site's pages answer 403 to non-browser clients."
+    licence: "To confirm"
     links: ["#83"]
   - id: open_targets
     name: "Open Targets Platform"

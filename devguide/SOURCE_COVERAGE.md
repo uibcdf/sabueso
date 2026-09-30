@@ -201,14 +201,16 @@ through the PDB and ChEMBL already. They are reviewed when a target needs them.
    Chemical Probes Portal: blocked on access (section 4).
 3. **Identity:** Ensembl transcripts and orthology. For #85, gnomAD itself states each
    variant's consequence on the canonical transcript (done, 2026-09-30); Ensembl states
-   no map for the transcripts left (separate TrEMBL entries). Orthology is next.
+   no map for the transcripts left (separate TrEMBL entries). Ensembl orthology is
+   deferred (slow, Ensembl ids, no trypanosomatids); OMA, which states orthologs by
+   UniProt accession, is proposed instead (evaluating, licence to confirm).
 4. **Family-specific sources:** KLIFS and GPCRdb: **done** (2026-09-30, schema 0.3.8).
 5. **SureChEMBL**: deferred (2026-09-30). Its patents are text-mined mentions that
    cannot be restricted to the claims (111,187 documents for imatinib). Then
    structures: OPM (its transmembrane segments, and PDBTM's, through RCSB: done,
    2026-09-30; the rest deferred), SAbDab (done, 2026-09-30), ESM Atlas (deferred: keyed by MGnify
-   ids, which UniProt does not cross-reference). Wave 2 is complete, except Ensembl
-   orthology, waiting for its service.
+   ids, which UniProt does not cross-reference). Wave 2 is complete; orthology
+   continues with OMA, once its terms are confirmed.
 
 ## 6. Sources set aside, reviewed for terms profiles and keys (2026-09-29)
 
