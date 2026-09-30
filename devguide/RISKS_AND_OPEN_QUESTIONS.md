@@ -236,13 +236,13 @@
   can differ when either updates, and then the same id may encode another protein.
   The residue check guards each placement, and the item records gnomAD's version; the
   versions are not compared yet.
-- **Variants on transcripts UniProt does not state** (#85). After asking gnomAD for the
+- **Variants on transcripts UniProt does not state** (#85, closed; follow-up #102). After asking gnomAD for the
   canonical transcript, 1,682 of 52,928 protein changes over 22 human proteins remain
   unplaced for this reason (`transcript_not_canonical`). Checked one by one, none is
   coding on the canonical transcript: they are intronic or in its 3' UTR, or outside
   it. The card still says only that the transcript is not canonical. gnomAD's variant
-  query would state which (25 variants per request, within its rate limit), if a
-  reader needs it.
+  query would state which (25 variants per request, within its rate limit), and
+  isoform expression by tissue would say where each change matters (#102).
 - **gnomAD's rate limit.** The service answers HTTP 429 after bursts (about ten
   requests a minute sustained). Sabueso retries with backoff. A build that asks many
   genes in a row may still see errors, recorded as `error`, never as absence.
