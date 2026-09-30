@@ -35,6 +35,31 @@
     store, the same resolution of the cache directory, and atomic writes (staged, then
     renamed), so an interrupted write never leaves a release half cached.
 
+## Direction adopted (2026-09-30, #100; not yet built)
+
+"Raw payloads: not stored" answered the first draft, and it is being replaced. MOLI's
+reproducibility policy asks every external retrieval to keep what it returned, when
+the licence allows, and to say so when it does not (`uibcdf/moli`,
+`REPRODUCIBILITY_AUDIT_AND_REPLAY.md`). Three layers, each opt-in, for three kinds of
+user: an independent user of Sabueso as a tool, UIBCDF's own research, and Sabueso as
+MOLI's Knowledge component.
+
+- **Retrieval archive.** Every request as a `RetrievalRecord`: source, query, release,
+  time, the response and its hash, and whether it was retained (licence). Each
+  SourceAssertion links to it through `provenance_ref`. It serves audit, replay without
+  the network, reformulating questions over what was downloaded, and reuse of fresh
+  answers under a declared freshness policy, which replaces a separate lookup cache.
+- **Local source mirrors.** Whole releases installed once, with an update policy
+  (`manual`, `notify`, `auto`), several releases side by side, read through the same
+  clients with parity tests. The release caches below are their first case.
+- **Knowledge states.** The `KnowledgeStore`, as today (#99).
+- **Access modes**, recorded in each enrichment: `online` (default), `archive_first`,
+  `mirror_first`, `replay` and `offline`. In `replay` and `offline` no source is asked
+  online, and a missing answer is `not_queried` with its reason, never an absence.
+- **Defaults do not change:** online, nothing written, no default paths.
+
+The shared contract and the platform side are proposed in uibcdf/moli#33.
+
 ## How this differs from the first draft
 
 The first draft (2026-01) recommended "raw payloads + cards, with size-aware pruning":
@@ -50,9 +75,9 @@ three reasons:
 
 ## Open questions
 
-- **A raw-payload cache** for heavy enrichments of API sources (large bioactivity sets,
-  many structures): how it expires, and how licences constrain it. The release cache
-  above is its first, simpler case: releases do not change, so they need no expiry.
+- **A raw-payload cache** for heavy enrichments of API sources: answered by the
+  direction above (#100), where the archive's freshness policy decides reuse and each
+  source's stated retention decides what is kept.
 - **Selection-rule changes.** Rules are versioned (`RESOLVER.md`). Re-resolving stored
   cards under new rules means a refresh today, and a stored card keeps the rules it was
   built with.

@@ -1288,3 +1288,21 @@ uibcdf/sabueso#98, #88.
   asked entry by entry. A client without `fetch_structures` (saved entries, a user's
   client) is asked one entry at a time. Live, 40 EGFR entries gave a card with the same
   content id as one-at-a-time, in 5.6 s instead of 13.1 s.
+
+## What was downloaded: a retrieval archive, mirrors and access modes (2026-09-30)
+uibcdf/sabueso#100, uibcdf/moli#33. Direction adopted; not yet built.
+- **Why the policy changes.** Sabueso stored no raw payloads. MOLI's reproducibility
+  policy asks every external retrieval to keep what it returned when the licence
+  allows, and to say so when not. Repeated builds re-fetch the same answers (#98), and a
+  project should be able to work offline and on one release.
+- **Three layers, not one cache.** A retrieval archive (what was downloaded), local
+  source mirrors (whole releases with an update policy), and the knowledge store (what
+  was known). Reusing a fresh archived answer replaces a separate lookup cache.
+- **Three users.** An independent user sees no change by default: online, nothing
+  written. UIBCDF's research use gets mirrors on a lab machine and archives per project.
+  MOLI gets shared mirrors and per-project archives feeding its InputManifest and
+  KnowledgeSnapshot.
+- **Order.** #99 first; then the archive with replay and freshness; then the mirror
+  manager (ChEMBL and BindingDB first); then MOLI's platform side.
+- **Licences decide retention.** The registry's terms gain `retention` and `mirror`.
+  What cannot be kept keeps its hash and is marked `retained: false`.
