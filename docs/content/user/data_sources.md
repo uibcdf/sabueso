@@ -40,7 +40,7 @@ Summary: in use 32, evaluating 23, deferred 24, retired 3, out of scope 13.
 | [gnomAD](https://gnomad.broadinstitute.org/) | Target validation, genetics and functional networks | GraphQL API (dataset gnomad_r4; the API states no finer release), no key, when resolve(..., gnomad={}) | CC0 1.0 (core data; some annotations, not read, carry other terms) | 2026-09-25 |
 | [SKEMPI 2.0](https://life.bsc.es/pid/skempi2/) | Protein–protein interactions and structural modulation | The whole CSV file (1.6 MB, database version 2.0, its SHA-256 recorded), downloaded once per process and indexed by PDB entry, when resolve(..., skempi=True) | CC BY 4.0 (the site's terms of download and use; cite Jankauskaitė et al. 2019) | 2026-09-25 |
 | [BindingDB](https://www.bindingdb.org/) | Binding affinity and experimental bioactivity | REST getLigandsByUniprots, no key; monomers anchored through UniChem | CC BY 3.0 (BindingDB curation) and CC BY-SA 3.0 (imported from ChEMBL); treated as CC BY-SA 3.0, since the REST records state no origin | 2026-09-25 |
-| [PubChem BioAssay](https://pubchem.ncbi.nlm.nih.gov/) | Binding affinity and experimental bioactivity | PUG REST (assays by protein, summaries, concise tables, compound InChIKeys) | US public domain (NLM policy); deposited data keeps its depositor terms (ChEMBL copies: CC BY-SA 3.0) | 2026-09-25 |
+| [PubChem BioAssay](https://pubchem.ncbi.nlm.nih.gov/) | Binding affinity and experimental bioactivity | PUG REST: every result of the target in one request (assay/target/accession/<acc>/concise), assay summaries and compound InChIKeys in batches | US public domain (NLM policy); deposited data keeps its depositor terms (ChEMBL copies: CC BY-SA 3.0) | 2026-09-25 |
 | [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) | Organism, orthology and biological context | NCBI Datasets REST API, optional NCBI key | US public domain (NLM policy) | 2026-09-25 |
 | [ClinicalTrials.gov](https://clinicaltrials.gov/) | Target validation, genetics and functional networks | API v2 (studies by NCT id, in batches), no key, when resolve(..., trials={}) | US government work (not under copyright in the US); NLM asks credit (Source: National Library of Medicine) | 2026-01-31 |
 | [MedGen (NCBI)](https://www.ncbi.nlm.nih.gov/medgen/) | Target validation, genetics and functional networks | E-utilities (esearch by [ConceptId], esummary), in batches, optional NCBI key, when resolve(..., medgen=True) | US public domain (NLM policy) for NCBI's records; names from integrated vocabularies may carry their own terms and are not kept | 2026-09-29 |
@@ -63,6 +63,8 @@ and Sabueso warns. The other sources in use are read whole.
 | Europe PMC | 5000 | articles mentioning the accession, newest first; europepmc={"limit": n} asks for fewer |
 | ClinVar | 5000 | records per gene |
 | gnomAD | 5000 | protein-level variants per gene |
+| BindingDB | 5000 | affinity records per protein, ordered by bindingdb_record_order@1 (each kept monomer needs one UniChem lookup) |
+| PubChem BioAssay | 5000 | result rows of the protein, ordered by pubchem_row_order@1 (confirmatory rows with a value first) |
 | ClinicalTrials.gov | 5000 | trials per molecule, among those ChEMBL's indications cite |
 
 ## Being evaluated

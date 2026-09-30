@@ -1007,6 +1007,9 @@ resources:
     links: ["#25", "#66"]
     module: [sabueso.tools.db.bindingdb, sabueso.mappings.bindingdb]
     access: "REST getLigandsByUniprots, no key; monomers anchored through UniChem"
+    limit:
+      constant: sabueso.tools.db.bindingdb.DEFAULT_LIMIT
+      of: "affinity records per protein, ordered by bindingdb_record_order@1 (each kept monomer needs one UniChem lookup)"
     licence: "CC BY 3.0 (BindingDB curation) and CC BY-SA 3.0 (imported from ChEMBL); treated as CC BY-SA 3.0, since the REST records state no origin"
     terms:
       source_names: ["BindingDB"]
@@ -1040,7 +1043,10 @@ resources:
     decided_by: "Sabueso maintainers (2026-09-25)"
     reason: "Results PubChem links to a protein. Copies deposited by ChEMBL or BindingDB are grouped with their originals by provenance and lead to ChEMBL assays a card lacks; results of other depositors are new measurements (#68)."
     links: ["#25", "#66", "#68"]
-    access: "PUG REST (assays by protein, summaries, concise tables, compound InChIKeys)"
+    access: "PUG REST: every result of the target in one request (assay/target/accession/<acc>/concise), assay summaries and compound InChIKeys in batches"
+    limit:
+      constant: sabueso.tools.db.pubchem_bioassay.DEFAULT_LIMIT
+      of: "result rows of the protein, ordered by pubchem_row_order@1 (confirmatory rows with a value first)"
     licence: "US public domain (NLM policy); deposited data keeps its depositor terms (ChEMBL copies: CC BY-SA 3.0)"
     terms:
       source_names: ["PubChem BioAssay"]

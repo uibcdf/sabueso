@@ -17,7 +17,8 @@ shows how to use them.
     include_subtaxa=...)`. `entity_type` is `protein`, `small_molecule` or `disease`.
   - Options go to the card tool. For proteins:
     - `structures`, `interfaces`, `ligand_sites`, `family_sites`;
-    - `chembl`, `bindingdb`, `pubchem_bioassay`, `string`;
+    - `chembl`, `bindingdb` (`{"cutoff", "limit"}`), `pubchem_bioassay` (`True` or
+      `{"limit"}`), `string`;
     - `predicted_structures`, `taxonomy`, `ncbi_gene`;
     - `phi_base` (pathogen phenotypes, #83), `diseases`, `open_targets` and
       `orphadata` (disease associations, #82), `reactome` (pathways, #83), `clinvar`

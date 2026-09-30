@@ -193,6 +193,19 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
         # not_recorded until the card is built again.
         {"path": "source_assertion_store[].acquisition", "filled_by": "refresh"},
     ],
+    # The rule that chose the records a capped source kept (#88, #98).
+    "0.3.8": [
+        {
+            "path": "quality.enrichments[].record_order (BindingDB)",
+            "filled_by": "bindingdb",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "quality.enrichments[].row_order (PubChem BioAssay)",
+            "filled_by": "pubchem_bioassay",
+            "entity_types": ("protein",),
+        },
+    ],
 }
 
 #: Qualifiers every relationship of their predicate has when fetched with the schema

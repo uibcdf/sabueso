@@ -51,6 +51,11 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     (#88);
   - a `not_found` record states the release it was checked against (#89).
 - **Unreleased on main:**
+  - card schema 0.3.8 (`schemas/card_schema_0.3.8.yaml`, shape
+    `schemas/card_shape_0.3.8.json`): BindingDB and PubChem BioAssay keep the 5000
+    ceiling, with a named order (`bindingdb_record_order@1`, `pubchem_row_order@1`)
+    recorded in the enrichment; PubChem BioAssay fetches every result of a target in
+    one request (#98);
   - `knowledge_packet@2` (#88): a packet holds each statement once; grouped disease
     statements and the joint structure inventory name what they group (`@1` is still
     read, and revisions of different formats are not compared).

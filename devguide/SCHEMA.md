@@ -2,6 +2,9 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
+  - `0.3.8` is current, not yet released: it records the ordering rule of a capped
+    source in its enrichment record (`record_order` for BindingDB, `row_order` for
+    PubChem BioAssay, #98);
   - `0.3.7` is the schema of release 0.7.0: it adds `annotations.interface_mutations`
     (SKEMPI 2.0, #83), disease cards (MONDO, #90), the MONDO and MedGen identity and
     hierarchy relationships on protein cards, `mentioned_in` (Europe PMC, #92),

@@ -66,7 +66,7 @@ def resolve_protein_card(
     bindingdb: Dict[str, Any] | None = None,
     bindingdb_client: Any | None = None,
     unichem_client: Any | None = None,
-    pubchem_bioassay: bool = False,
+    pubchem_bioassay: bool | Dict[str, Any] = False,
     pubchem_bioassay_client: Any | None = None,
     ncbi_gene: bool = False,
     ncbi_gene_client: Any | None = None,
@@ -242,8 +242,15 @@ def resolve_protein_card(
         chembl = None
     if bindingdb is not None and not (admitted("BindingDB") and admitted("UniChem")):
         bindingdb = None
-    if pubchem_bioassay and not admitted("PubChem BioAssay"):
-        pubchem_bioassay = False
+    # ``True``, or options (``{}``, ``{"limit": n}``), asks PubChem BioAssay: None
+    # when it is not asked.
+    pubchem_options = (
+        dict(pubchem_bioassay)
+        if isinstance(pubchem_bioassay, dict)
+        else ({} if pubchem_bioassay else None)
+    )
+    if pubchem_options is not None and not admitted("PubChem BioAssay"):
+        pubchem_options = None
     for pdb_id in structures:
         record = {"source": "RCSB PDB", "structure": pdb_id}
         try:
@@ -398,22 +405,31 @@ def resolve_protein_card(
                     **record,
                     "status": "added",
                     "count": len(mapped["relationships"]),
+                    # Records BindingDB returned, and the rule that chose which to
+                    # keep (#88, #98).
+                    "total_count": response.get("total_count"),
+                    "truncated": (response.get("total_count") or 0)
+                    > len(response["record"]),
+                    "record_order": response.get("record_order"),
                     "anchored": sum(1 for i in resolved.values() if i is not None),
                     "unanchored": unanchored,
                     **({"unichem_errors": errors} if errors else {}),
                 }
             )
 
-    if pubchem_bioassay:
+    if pubchem_options is not None:
         from sabueso.mappings.chembl import map_bioactivities as map_chembl
         from sabueso.mappings.pubchem_bioassay import map_assays
         from sabueso.tools.db.chembl import OnlineChEMBLClient
+        from sabueso.tools.db.pubchem_bioassay import DEFAULT_LIMIT as PUBCHEM_LIMIT
         from sabueso.tools.db.pubchem_bioassay import OnlinePubChemBioAssayClient
 
         client = pubchem_bioassay_client or OnlinePubChemBioAssayClient()
-        record = {"source": "PubChem BioAssay", "identifier": anchor}
+        record = {"source": "PubChem BioAssay", "identifier": anchor, **pubchem_options}
         try:
-            response = client.assays(anchor)
+            response = client.assays(
+                anchor, pubchem_options.get("limit", PUBCHEM_LIMIT)
+            )
         except RecordNotFoundError:
             enrichments.append({**record, "status": "not_found"})
         except ConnectorError as exc:
@@ -460,6 +476,12 @@ def resolve_protein_card(
                     "status": "added",
                     "assays": len(response["record"].get("aids") or []),
                     "count": len(mapped["relationships"]),
+                    # Rows of the protein PubChem states, and the rule that chose
+                    # which to keep (#88, #98).
+                    "total_count": response["record"].get("total_rows"),
+                    "truncated": response["record"].get("total_rows", 0)
+                    > response["record"].get("rows", 0),
+                    "row_order": response["record"].get("row_order"),
                     "copies": len(copies),
                     "depositors": dict(sorted(depositors.items())),
                     **(
@@ -549,7 +571,7 @@ def resolve_protein_card(
                         }
                     )
 
-    if bindingdb is not None or pubchem_bioassay:
+    if bindingdb is not None or pubchem_options is not None:
         # ChEMBL's molecules anchored at the InChIKey ChEMBL states for them, so that the
         # same molecule is recognised across sources (#66, #68).
         from sabueso.tools.db.chembl import OnlineChEMBLClient

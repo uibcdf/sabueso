@@ -1247,3 +1247,29 @@ uibcdf/sabueso#88.
 - **Formats are not compared.** `@1` packets are still read. A revision of another
   format has `knowledge_changed: None`, and `same_knowledge` answers None: the ids of
   two formats differ even when the knowledge does not.
+
+## Ceilings for BindingDB and PubChem BioAssay, and PubChem by target (2026-09-30)
+uibcdf/sabueso#98, #88.
+- **The ceiling held everywhere but here.** Every source stops at 5000 records and
+  reports the cut, except BindingDB and PubChem BioAssay, which fetched everything. For
+  EGFR that meant 32,346 BindingDB records (16,463 UniChem lookups, one at a time) and
+  6569 PubChem assays (one request each, some primary screens of tens of MB): a card
+  that would not finish. Both now keep 5000 by default, and record and report a cut.
+- **Which records are kept is a named rule**, recorded in the enrichment (card schema
+  0.3.8, since 0.3.7 is published).
+  - `bindingdb_record_order@1`: by monomer id, affinity type and value. It is only
+    deterministic; every BindingDB record has a value.
+  - `pubchem_row_order@1`: confirmatory rows with a value, then other rows with a value,
+    then rows without one; each by AID and SID. A cut keeps measurements before
+    screening outcomes.
+- **PubChem by target.** `assay/target/accession/<acc>/concise` returns every result of
+  a protein in one request, with the same columns as an assay's table. For TcTIM it
+  gives exactly the 493 rows of the 13 assays fetched one by one. For EGFR it takes
+  about 21 s instead of more than 27 minutes. Rows of another protein in a multi-target
+  assay are left out, as before.
+- **BindingDB's monomer → CID file is not an identity route.** It is fast (97.7 % of
+  EGFR's monomers, 200 InChIKeys per PubChem request), but a PubChem CID is PubChem's
+  standardized compound. On a sample, 5 of 52 differed from the InChIKey UniChem states
+  for BindingDB's structure: a stereo layer, a tautomer, or another compound. Identity
+  stays with UniChem. BindingDB's monthly TSV, which states its own InChIKey per row,
+  is the candidate for heavy use (#98).

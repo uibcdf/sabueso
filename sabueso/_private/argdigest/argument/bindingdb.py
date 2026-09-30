@@ -1,4 +1,4 @@
-from sabueso._private.argdigest._shared import options, refuse
+from sabueso._private.argdigest._shared import options, positive_int, refuse
 
 
 def _cutoff(value):
@@ -8,9 +8,12 @@ def _cutoff(value):
 
 
 def digest_bindingdb(bindingdb, caller=None):
-    """BindingDB affinities enrichment: None (off) or options {cutoff} (nanomolar)."""
+    """BindingDB affinities enrichment: None (off) or options {cutoff} (nanomolar) and
+    {limit} (records, #98)."""
     if bindingdb is not None and not isinstance(bindingdb, dict):
         raise refuse(
             "bindingdb", bindingdb, caller, "expected a dict of options, or None"
         )
-    return options("bindingdb", bindingdb, caller, {"cutoff": _cutoff})
+    return options(
+        "bindingdb", bindingdb, caller, {"cutoff": _cutoff, "limit": positive_int}
+    )

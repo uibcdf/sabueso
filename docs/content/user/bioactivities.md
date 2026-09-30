@@ -97,11 +97,16 @@ stated precision (62 and 62.46 nM agree).
   already matched to their own records: two compounds of one paper that happen to share
   a value.
 - Records are never merged or dropped: every source keeps its own record and context.
+- Up to 5000 records are asked by default, ordered by monomer id, type and value
+  (`bindingdb_record_order@1`), and a cut is reported. `bindingdb={"limit": n}` asks
+  for another number. Each kept monomer needs one UniChem lookup for its identity.
 
 ## A third source: PubChem BioAssay
 
-`sabueso.resolve(..., pubchem_bioassay=True)` adds the results PubChem links to the
-protein. Most are copies of ChEMBL or BindingDB data, and PubChem says so: each
+`sabueso.resolve(..., pubchem_bioassay=True)` (or `{"limit": n}`) adds the results
+PubChem states for the protein, all fetched in one request. Up to 5000 rows are kept by
+default: confirmatory rows with a value first, then other rows with a value, then rows
+without one (`pubchem_row_order@1`), and a cut is reported. Most are copies of ChEMBL or BindingDB data, and PubChem says so: each
 assay names its depositor and the depositor's assay id.
 
 - A copy is grouped with its original (`copy_of`), never counted as a confirmation,
