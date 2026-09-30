@@ -26,6 +26,7 @@ import re
 import sqlite3
 import sys
 import zipfile
+from contextlib import closing
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterator, List
@@ -171,7 +172,9 @@ class BindingDBMirror:
         partial = index.with_name(INDEX + ".part")
         partial.unlink(missing_ok=True)
         count = 0
-        with sqlite3.connect(partial) as conn:
+        # closing(): a connection's context manager commits but does not close, and
+        # Windows cannot rename a file that is still open.
+        with closing(sqlite3.connect(partial)) as conn, conn:
             conn.execute("PRAGMA journal_mode = OFF")
             conn.execute("PRAGMA synchronous = OFF")
             conn.executescript(SCHEMA)
@@ -179,7 +182,8 @@ class BindingDBMirror:
                 (member,) = [i for i in z.namelist() if i.endswith(".tsv")]
                 with z.open(member) as raw:
                     text = io.TextIOWrapper(raw, encoding="utf-8", errors="replace")
-                    csv.field_size_limit(sys.maxsize)
+                    # A C long is 32 bits on Windows.
+                    csv.field_size_limit(min(sys.maxsize, 2**31 - 1))
                     batch = []
                     for row in rows(text):
                         batch.append(row)
@@ -237,8 +241,8 @@ class MirrorBindingDBClient:
         )
 
         cutoff = DEFAULT_CUTOFF if cutoff is None else cutoff
-        with sqlite3.connect(
-            f"file:{self.directory / INDEX}?mode=ro", uri=True
+        with closing(
+            sqlite3.connect(f"file:{self.directory / INDEX}?mode=ro", uri=True)
         ) as conn:
             found = conn.execute(
                 "SELECT monomerid, smile, inchikey, affinity_type, affinity, pmid, doi, "
