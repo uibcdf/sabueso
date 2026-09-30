@@ -1,0 +1,207 @@
+[
+ {
+  "pdb_code": "6LI0",
+  "protein": "gpr52_human",
+  "class": "Class A (Rhodopsin)",
+  "family": "001_011_001_023",
+  "species": "Homo sapiens",
+  "preferred_chain": "A",
+  "resolution": 2.2,
+  "publication_date": "2020-02-26",
+  "type": "X-ray diffraction",
+  "state": "Inactive",
+  "distance": null,
+  "publication": "https://dx.doi.org/10.1038/S41586-020-2019-0",
+  "ligands": [
+   {
+    "name": "derivative 17 [Nakahata <i>et al</i>., 2018]",
+    "type": "Small molecule",
+    "function": "Allosteric agonist",
+    "PDB": "EN6",
+    "SMILES": "OCCNC(=O)c1c(C)nn(c1CO)c1cccc2c1sc(c2)Cc1cccc(c1)C(F)(F)F"
+   }
+  ]
+ },
+ {
+  "pdb_code": "6LI1",
+  "protein": "gpr52_human",
+  "class": "Class A (Rhodopsin)",
+  "family": "001_011_001_023",
+  "species": "Homo sapiens",
+  "preferred_chain": "A",
+  "resolution": 2.9,
+  "publication_date": "2020-02-26",
+  "type": "X-ray diffraction",
+  "state": "Inactive",
+  "distance": null,
+  "publication": "https://dx.doi.org/10.1038/S41586-020-2019-0",
+  "ligands": [
+   {
+    "name": "Apo (no ligand)",
+    "type": "None",
+    "PDB": "apo"
+   }
+  ]
+ },
+ {
+  "pdb_code": "6LI2",
+  "protein": "gpr52_human",
+  "class": "Class A (Rhodopsin)",
+  "family": "001_011_001_023",
+  "species": "Homo sapiens",
+  "preferred_chain": "A",
+  "resolution": 2.8,
+  "publication_date": "2020-02-26",
+  "type": "X-ray diffraction",
+  "state": "Inactive",
+  "distance": null,
+  "publication": "https://dx.doi.org/10.1038/S41586-020-2019-0",
+  "ligands": [
+   {
+    "name": "Apo (no ligand)",
+    "type": "None",
+    "PDB": "apo"
+   }
+  ]
+ },
+ {
+  "pdb_code": "6LI3",
+  "protein": "gpr52_human",
+  "class": "Class A (Rhodopsin)",
+  "family": "001_011_001_023",
+  "species": "Homo sapiens",
+  "preferred_chain": "R",
+  "resolution": 3.32,
+  "publication_date": "2020-02-26",
+  "type": "Electron microscopy",
+  "state": "Active",
+  "distance": null,
+  "publication": "https://dx.doi.org/10.1038/S41586-020-2019-0",
+  "ligands": [
+   {
+    "name": "Apo (no ligand)",
+    "type": "None",
+    "PDB": "apo"
+   }
+  ],
+  "signalling_protein": {
+   "type": "G protein",
+   "data": {
+    "entity1": {
+     "entry_name": "gnas2_human",
+     "chain": "A"
+    },
+    "entity2": {
+     "entry_name": "gbb1_human",
+     "chain": "B"
+    },
+    "entity3": {
+     "entry_name": "gbg2_human",
+     "chain": "G"
+    }
+   }
+  }
+ },
+ {
+  "pdb_code": "8HMP",
+  "protein": "gpr52_human",
+  "class": "Class A (Rhodopsin)",
+  "family": "001_011_001_023",
+  "species": "Homo sapiens",
+  "preferred_chain": "R",
+  "resolution": 2.77,
+  "publication_date": "2023-06-21",
+  "type": "Electron microscopy",
+  "state": "Active",
+  "distance": null,
+  "publication": "https://dx.doi.org/10.1002/MCO2.260",
+  "ligands": [
+   {
+    "name": "derivative 17 [Nakahata <i>et al</i>., 2018]",
+    "type": "Small molecule",
+    "function": "Allosteric agonist",
+    "PDB": "EN6",
+    "SMILES": "OCCNC(=O)c1c(C)nn(c1CO)c1cccc2c1sc(c2)Cc1cccc(c1)C(F)(F)F"
+   }
+  ],
+  "signalling_protein": {
+   "type": "G protein",
+   "data": {
+    "entity1": {
+     "entry_name": "gnas2_human",
+     "chain": "A"
+    },
+    "entity2": {
+     "entry_name": "gbb1_human",
+     "chain": "B"
+    },
+    "entity3": {
+     "entry_name": "gbg2_human",
+     "chain": "G"
+    }
+   }
+  }
+ },
+ {
+  "pdb_code": "9IJR",
+  "protein": "gpr52_human",
+  "class": "Class A (Rhodopsin)",
+  "family": "001_011_001_023",
+  "species": "Homo sapiens",
+  "preferred_chain": "A",
+  "resolution": 3.86,
+  "publication_date": "2025-09-03",
+  "type": "Electron microscopy",
+  "state": "Active",
+  "distance": null,
+  "publication": "https://dx.doi.org/10.1038/S41422-025-01165-W",
+  "ligands": [
+   {
+    "name": "derivative 17 [Nakahata <i>et al</i>., 2018]",
+    "type": "Small molecule",
+    "function": "Agonist",
+    "PDB": "EN6",
+    "SMILES": "OCCNC(=O)c1c(C)nn(c1CO)c1cccc2c1sc(c2)Cc1cccc(c1)C(F)(F)F"
+   }
+  ],
+  "signalling_protein": {
+   "type": "Arrestin",
+   "data": {
+    "entity1": {
+     "entry_name": "arrb1_human",
+     "chain": "C"
+    }
+   }
+  }
+ },
+ {
+  "pdb_code": "9IJS",
+  "protein": "gpr52_human",
+  "class": "Class A (Rhodopsin)",
+  "family": "001_011_001_023",
+  "species": "Homo sapiens",
+  "preferred_chain": "A",
+  "resolution": 3.64,
+  "publication_date": "2025-09-03",
+  "type": "Electron microscopy",
+  "state": "Active",
+  "distance": null,
+  "publication": "https://dx.doi.org/10.1038/S41422-025-01165-W",
+  "ligands": [
+   {
+    "name": "Apo (no ligand)",
+    "type": "None",
+    "PDB": "apo"
+   }
+  ],
+  "signalling_protein": {
+   "type": "Arrestin",
+   "data": {
+    "entity1": {
+     "entry_name": "arrb1_human",
+     "chain": "C"
+    }
+   }
+  }
+ }
+]

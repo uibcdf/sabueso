@@ -351,6 +351,22 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - KLIFS answers 400 ("unknown kinase ID") for a kinase it lists without structures; that is read as no structures, not as a failure.
   - No formal licence: the FAQ states the data is free and open for academia and industry, and asks to be cited (the registry's "CC BY 4.0" could not be confirmed).
 
+### GPCRdb — GPCR classification, generic residue numbers and structure states
+- **Status**: implemented as an enricher (`gpcrdb={}`, #83), card schema 0.3.8
+- **Access**: REST services, no key (`OnlineGPCRdbClient`): the receptor by UniProt accession, its residues (`residues/extended`) and its structures (three requests); saved answers for GPR52 in `temp_data/gpcrdb/`; `tools.db.gpcrdb.get_receptor`
+- **Quality**: green, verified live (2026-09-30):
+  - β2-adrenoceptor (P07550, 8.5 s): 268 residues placed and 135 structures (100 active, 35 inactive), with D113 at 3.32, R131 at 3.50 (DRY), W286 at 6.48 and N312 at 7.39.
+  - GLP-1 receptor (P43220, class B1, 6.6 s): 262 residues placed and 60 structures.
+  - GPR52 (Q9Y2T5): 270 residues placed and 7 structures.
+  - TPI1: `not_found`.
+- **Coverage**: `annotations.gpcr_classification`, `annotations.gpcr_segments`, `annotations.gpcr_residues`, `annotations.gpcr_structures`
+- **Notes**:
+  - Joined only through the UniProt accession GPCRdb states for a receptor.
+  - GPCRdb numbers residues on its own copy of the sequence, so its numbers are UniProt's only when that copy is the entry's sequence (`gpcrdb_sequence_numbering@1`); each residue must still match. Otherwise segments and residues stay in GPCRdb's numbering (`sequence_differs`).
+  - GPCRdb writes a structure without ligand as a ligand "Apo (no ligand)"; the card records `apo` instead of a ligand.
+  - Its mutation data (ligand-binding mutagenesis from the literature, 659 records for β2AR) are not read yet.
+  - Licence CC BY 4.0 (data), stated in the legal notice.
+
 ---
 
 ## Removed per-concept card tools (2026-09-23, uibcdf/sabueso#21 part 2b)

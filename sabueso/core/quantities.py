@@ -41,6 +41,8 @@ NEGOTIATED_UNITS: Dict[str, Tuple[str, ...]] = {
     "relationships.has_structure.resolution": (LENGTH_UNIT,),
     # KLIFS's structures of a kinase (#83, schema 0.3.8).
     "annotations.kinase_structures.value.resolution": (LENGTH_UNIT,),
+    # GPCRdb's structures of a receptor (#83, schema 0.3.8).
+    "annotations.gpcr_structures.value.resolution": (LENGTH_UNIT,),
     "relationships.has_structure.ligands.instances.contacts.min_distance": (
         LENGTH_UNIT,
     ),

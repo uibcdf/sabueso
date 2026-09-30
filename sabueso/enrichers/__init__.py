@@ -244,6 +244,7 @@ def _registered() -> List[Enricher]:
         diseases,
         europepmc,
         gnomad,
+        gpcrdb,
         interpro,
         klifs,
         medgen,
@@ -273,6 +274,7 @@ def _registered() -> List[Enricher]:
         clinvar.ENRICHER,
         skempi.ENRICHER,
         klifs.ENRICHER,
+        gpcrdb.ENRICHER,
         europepmc.ENRICHER,
         # Last: they read the diseases the sources above put on the card (#90), and
         # MONDO reads the MedGen records MedGen states.

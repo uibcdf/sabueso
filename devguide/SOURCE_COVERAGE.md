@@ -139,7 +139,7 @@ That is not a data licence, and is recorded as "no data licence found".
 | ChEBI (2.0) | chemistry | CC BY 4.0; new JSON API | ChEBI ids (already linked through UniChem), InChIKey | Chemical roles and classes, metabolites, cofactors |
 | Chemical Probes Portal | chemistry | CC BY-SA 4.0 (2026-09-30) | UniProt targets and structures, in rendered pages only | Expert-reviewed probes and their targets; blocked (section 4) |
 | KLIFS | sites (kinases) | no formal licence; the FAQ states the data free and open (2026-09-30); REST API | UniProt accession KLIFS states; PDB | Kinase pocket residues and conformations; in use (2026-09-30) |
-| GPCRdb | sites (GPCRs) | CC BY 4.0; REST API | UniProt entry names; PDB | GPCR numbering, states, mutations |
+| GPCRdb | sites (GPCRs) | CC BY 4.0 (legal notice, 2026-09-30); REST API | UniProt accession GPCRdb states; PDB | GPCR numbering, states, ligands; in use (2026-09-30), mutations not yet |
 | Ensembl | identity | No restrictions; REST API (15 req/s) | Ensembl gene, transcript, protein | Transcripts and orthology: supports variant placement (#85) |
 | SureChEMBL | chemistry (patents) | CC BY 4.0 (API and new bulk data) | InChIKey / structures | Patent chemistry |
 | SAbDab | structures (antibodies) | CC BY 4.0 | PDB, chains | Antibody structures; a modality Sabueso does not model yet |
@@ -202,8 +202,7 @@ through the PDB and ChEMBL already. They are reviewed when a target needs them.
 3. **Identity:** Ensembl transcripts and orthology. For #85, gnomAD itself states each
    variant's consequence on the canonical transcript (done, 2026-09-30); Ensembl states
    no map for the transcripts left (separate TrEMBL entries). Orthology is next.
-4. **Family-specific sources:** KLIFS: **done** (2026-09-30, schema 0.3.8). GPCRdb
-   next.
+4. **Family-specific sources:** KLIFS and GPCRdb: **done** (2026-09-30, schema 0.3.8).
 5. **SureChEMBL**, and then structures: OPM, SAbDab, ESM Atlas.
 
 ## 6. Sources set aside, reviewed for terms profiles and keys (2026-09-29)

@@ -251,6 +251,10 @@
   structure per request. If the chosen structure's author numbering disagrees with
   another's at a pocket position, the card shows only the chosen one, and the residue
   check is the guard.
+- **GPCRdb's own copy of a sequence** (2026-09-30). GPCRdb numbers residues on the
+  sequence its entry states. When UniProt revises the sequence and GPCRdb has not yet,
+  the numbers stay in GPCRdb's numbering (`sequence_differs`) until both agree: correct,
+  but a card loses its placed residues until then.
 - **gnomAD's rate limit.** The service answers HTTP 429 after bursts (about ten
   requests a minute sustained). Sabueso retries with backoff. A build that asks many
   genes in a row may still see errors, recorded as `error`, never as absence.

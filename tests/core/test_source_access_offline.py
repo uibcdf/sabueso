@@ -18,6 +18,7 @@ from sabueso.tools.db import (
     clinvar,
     diseases,
     gnomad,
+    gpcrdb,
     interpro,
     klifs,
     medgen,
@@ -82,6 +83,9 @@ CALLS = {
     ),
     "gnomad.get_transcript_variants": lambda: gnomad.get_transcript_variants(
         "ENST00000396705", client=gnomad.FixtureGnomADClient("temp_data")
+    ),
+    "gpcrdb.get_receptor": lambda: gpcrdb.get_receptor(
+        "Q9Y2T5", client=gpcrdb.FixtureGPCRdbClient("temp_data")
     ),
     "klifs.get_kinases": lambda: klifs.get_kinases(
         "O75716", client=klifs.FixtureKLIFSClient("temp_data")

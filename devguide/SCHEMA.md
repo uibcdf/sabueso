@@ -5,8 +5,9 @@
   - `0.3.8` is current, not yet released: it records the ordering rule of a capped
     source in its enrichment record (`record_order` for BindingDB, `row_order` for
     PubChem BioAssay, #98), gnomAD's consequence on the canonical transcript
-    (`transcript_version`, `canonical_consequence`, #85), and KLIFS's kinase
-    classification, structures and pocket (#83);
+    (`transcript_version`, `canonical_consequence`, #85), KLIFS's kinase
+    classification, structures and pocket, and GPCRdb's receptor classification,
+    segments, generic residue numbers and structures (#83);
   - `0.3.7` is the schema of release 0.7.0: it adds `annotations.interface_mutations`
     (SKEMPI 2.0, #83), disease cards (MONDO, #90), the MONDO and MedGen identity and
     hierarchy relationships on protein cards, `mentioned_in` (Europe PMC, #92),
@@ -411,6 +412,24 @@ A Relationship is first-class, traceable knowledge:
       is `rcsb_author_numbering@1`; the residue must be UniProt's. Otherwise
       `not_placed`: `gap`, `no_structure_loaded`, `missing_in_structure`,
       `author_residue_not_mapped` or `residue_mismatch`.
+  - GPCRs (added in #83, schema 0.3.8), from GPCRdb, for a receptor whose UniProt
+    accession GPCRdb states:
+    - `annotations.gpcr_classification`: `entry_name`, `name`, `receptor_class`,
+      `family`, `numbering_scheme`.
+    - `annotations.gpcr_segments`: runs of consecutive residues per segment (N-term,
+      TM1-7, ICL/ECL, H8, C-term), in GPCRdb's numbering (`gpcrdb_start`,
+      `gpcrdb_end`) and in UniProt's (`location`).
+    - `annotations.gpcr_residues`: the residues with a generic number, each with its
+      `residue`, `segment`, `generic_number` (GPCRdb's display number) and
+      `generic_numbers` (`[{scheme, label}]`, every scheme GPCRdb states).
+    - Segments and residues are in UniProt numbering only when GPCRdb's sequence is the
+      entry's (`gpcrdb_sequence_numbering@1`), and each residue must match; otherwise
+      `not_placed` (`sequence_differs`, `residue_mismatch`).
+    - `annotations.gpcr_structures`: per structure, `chain`, `state` (Active, Inactive,
+      Intermediate), `method`, `resolution` (angstrom), `publication`,
+      `publication_date`, `ligands` (`name`, `pdb_ccd`, `type`, `function`), `apo`
+      (GPCRdb states no ligand), `signalling_protein` (`type`, `partners`: GPCRdb entry
+      names). Up to 5000 (`gpcrdb={"limit": n}`); a cut is reported.
   - curated literature assertions (added in #41):
     - A SourceAssertion with `source.type = "literature"`, `source.name = "Literature"`
       and the publication as `record_id` (`pubmed:<id>` or `doi:<doi>`). Its
@@ -561,8 +580,8 @@ A Relationship is first-class, traceable knowledge:
   (`sequence.molecular_weight`, `properties.physchem.molecular_weight`: `dalton`;
   `properties.physchem.tpsa`: `angstrom ** 2`). Counts (`hbd`, `hba`, `rotatable_bonds`,
   `sequence.length`) and logarithmic scores (`logp`, `pchembl`) are not quantities.
-- Item fields that are quantities: `annotations.kinase_structures[].resolution`
-  (`angstrom`, #83); SKEMPI's affinities, kinetics, thermodynamics and temperatures in
+- Item fields that are quantities: `annotations.kinase_structures[].resolution` and
+  `annotations.gpcr_structures[].resolution` (`angstrom`, #83); SKEMPI's affinities, kinetics, thermodynamics and temperatures in
   `annotations.interface_mutations` (see above).
 - Relationship qualifiers: `has_structure.resolution` and contact `min_distance`
   (`angstrom`); `has_bioactivity.measurement.normalized` (`nanomolar` for concentrations,

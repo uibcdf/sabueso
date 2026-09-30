@@ -321,6 +321,15 @@ def fixture_cards() -> List[dict]:
             klifs={},
             klifs_client=FixtureKLIFSClient(data),
         )
+        # GPR52 with GPCRdb's classification, segments, residues and structures (0.3.8).
+        from sabueso.tools.db.gpcrdb import FixtureGPCRdbClient
+
+        receptor, _ = sabueso.resolve(
+            "Q9Y2T5",
+            resolver=resolver,
+            gpcrdb={},
+            gpcrdb_client=FixtureGPCRdbClient(data),
+        )
         # A disease card, resolved from an Orphanet id through MONDO (0.3.7).
         disease, _ = sabueso.resolve("ORPHA:868", mondo_client=FixtureMONDOClient(data))
     cards = (
@@ -334,6 +343,7 @@ def fixture_cards() -> List[dict]:
         disease,
         vincristine,
         kinase,
+        receptor,
     )
     return [c.to_dict() for c in cards]
 

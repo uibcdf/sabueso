@@ -916,11 +916,24 @@ resources:
     name: "GPCRdb"
     url: https://gpcrdb.org/
     category: sites_families
-    status: evaluating
+    status: in_use
     description: "GPCR structures, mutations, activation states and Ballesteros–Weinstein numbering."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "CC BY 4.0 (REST API)"
+    decided_by: "Sabueso maintainers (2026-09-30)"
+    reason: "A receptor's class and family, its segments, the generic number of each residue in every scheme GPCRdb states, and the activation state, ligands (with their function) and signalling protein of each structure, for a receptor whose UniProt accession GPCRdb states. Residues are in UniProt numbering only when GPCRdb's sequence is the entry's (gpcrdb_sequence_numbering@1) and the residue matches. Its mutation data are not read yet."
+    access: "REST services, no key: the receptor by UniProt accession, its residues and its structures (three requests), when resolve(..., gpcrdb={})"
+    licence: "CC BY 4.0 (the data, as the legal notice at docs.gpcrdb.org states; the code is Apache 2.0)"
+    limit:
+      constant: sabueso.enrichers.gpcrdb.DEFAULT_LIMIT
+      of: "structures of the receptor; gpcrdb={\"limit\": n} asks for fewer"
+    terms:
+      source_names: ["GPCRdb"]
+      licence: CC-BY-4.0
+      attribution: "GPCRdb (https://gpcrdb.org; Pándy-Szekeres et al., Nucleic Acids Research), CC BY 4.0"
+      statement: https://docs.gpcrdb.org/legal_notice.html
+      reviewed: 2026-09-30
+    module: [sabueso.tools.db.gpcrdb, sabueso.mappings.gpcrdb]
     links: ["#83"]
   - id: opm
     name: "OPM (Orientations of Proteins in Membranes)"

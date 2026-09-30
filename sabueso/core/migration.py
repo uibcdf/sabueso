@@ -224,6 +224,16 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
                 "annotations.kinase_pocket",
             )
         ),
+        # GPCRdb (#83).
+        *(
+            {"path": path, "filled_by": "gpcrdb", "entity_types": ("protein",)}
+            for path in (
+                "annotations.gpcr_classification",
+                "annotations.gpcr_segments",
+                "annotations.gpcr_residues",
+                "annotations.gpcr_structures",
+            )
+        ),
         # gnomAD's consequence on the canonical transcript (#85).
         *(
             {"path": path, "filled_by": "gnomad", "entity_types": ("protein",)}

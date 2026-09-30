@@ -156,8 +156,16 @@ schema:
     missing residues and atoms) and annotations.kinase_pocket (the 85 pocket positions
     in KLIFS numbering, each with its residue, placed in UniProt numbering through one
     structure's author numbering as RCSB states it, rules klifs_pocket_reference@1 and
-    rcsb_author_numbering@1, or not_placed with the reason). Additive, so a 0.3.7 card is a valid 0.3.8
-    card without them.
+    rcsb_author_numbering@1, or not_placed with the reason). Protein cards may also
+    hold what GPCRdb states for a receptor whose UniProt accession it states,
+    annotations.gpcr_classification (entry name, class, family, numbering scheme),
+    annotations.gpcr_segments (runs of residues per segment), annotations.gpcr_residues
+    (residues with a generic number, in every scheme GPCRdb states) and
+    annotations.gpcr_structures (activation state, method, resolution in angstrom,
+    publication, ligands with their function, apo, signalling protein). Segments and
+    residues are in UniProt numbering only when GPCRdb's sequence is the entry's (rule
+    gpcrdb_sequence_numbering@1). Additive, so a 0.3.7 card is a valid 0.3.8 card
+    without them.
 card_base:
   meta:
     card_id:
@@ -779,6 +787,68 @@ protein_card:
           author_position: string
         numbering: string
         not_placed: string
+      source_assertion_ids:
+      - string
+    gpcr_classification:
+      value:
+      - entry_name: string
+        name: string
+        receptor_class: string
+        family: string
+        numbering_scheme: string
+      source_assertion_ids:
+      - string
+    gpcr_segments:
+      value:
+      - segment: string
+        gpcrdb_start: number
+        gpcrdb_end: number
+        location:
+          start: number
+          end: number
+        numbering: string
+        not_placed: string
+      source_assertion_ids:
+      - string
+    gpcr_residues:
+      value:
+      - gpcrdb_position: number
+        residue: string
+        segment: string
+        generic_number: string
+        generic_numbers:
+        - scheme: string
+          label: string
+        location:
+          start: number
+          end: number
+        placed_via:
+          rule: string
+        numbering: string
+        not_placed: string
+      source_assertion_ids:
+      - string
+    gpcr_structures:
+      value:
+      - structure: string
+        chain: string
+        state: string
+        method: string
+        resolution:
+          value: number
+          unit: string
+        publication: string
+        publication_date: string
+        ligands:
+        - name: string
+          pdb_ccd: string
+          type: string
+          function: string
+        apo: boolean
+        signalling_protein:
+          type: string
+          partners:
+          - string
       source_assertion_ids:
       - string
     pathogen_phenotypes:

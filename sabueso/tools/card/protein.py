@@ -88,6 +88,8 @@ def resolve_protein_card(
     skempi_client: Any | None = None,
     klifs: Dict[str, Any] | None = None,
     klifs_client: Any | None = None,
+    gpcrdb: Dict[str, Any] | None = None,
+    gpcrdb_client: Any | None = None,
     medgen: bool = False,
     medgen_client: Any | None = None,
     disease_identity: bool = False,
@@ -178,6 +180,13 @@ def resolve_protein_card(
     ``annotations.kinase_pocket``). The pocket is placed in UniProt numbering through
     one structure's author numbering as RCSB states it (``klifs_pocket_reference@1``),
     so ask for the ``structures`` too.
+
+    ``gpcrdb`` (e.g. ``{}`` or ``{"limit": 100}``; default all, up to 5000 structures)
+    adds, for a receptor GPCRdb states is this UniProt entry, its class and family, its
+    segments (TM1-7, loops, H8), the generic number of each residue in every scheme
+    GPCRdb states (Ballesteros-Weinstein ``3.32``…), and the activation state, ligands
+    and signalling protein of each structure (``annotations.gpcr_*``). Residues are in
+    UniProt numbering when GPCRdb's sequence is the entry's (``gpcrdb_sequence_numbering@1``).
 
     ``disease_identity`` asks MONDO which of the disease ids the other sources put on
     the card are the same disease (``same_as`` to ``mondo:<term>``, only where MONDO
@@ -328,6 +337,7 @@ def resolve_protein_card(
         "clinvar": (clinvar, clinvar_client),
         "skempi": (skempi, skempi_client),
         "klifs": (klifs, klifs_client),
+        "gpcrdb": (gpcrdb, gpcrdb_client),
         "medgen": (medgen, medgen_client),
         "disease_identity": (disease_identity, mondo_client),
         "europepmc": (europepmc, europepmc_client),

@@ -66,6 +66,13 @@
     "Articles keep their own licences; only ids and bibliographic data are kept."
    ]
   },
+  "GPCRdb": {
+   "registry_id": "gpcrdb",
+   "licence": "CC-BY-4.0",
+   "attribution": "GPCRdb (https://gpcrdb.org; Pándy-Szekeres et al., Nucleic Acids Research), CC BY 4.0",
+   "statement": "https://docs.gpcrdb.org/legal_notice.html",
+   "reviewed": "2026-09-30"
+  },
   "InterPro": {
    "registry_id": "interpro",
    "licence": "CC0-1.0",

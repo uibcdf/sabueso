@@ -75,6 +75,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     conformation of each structure (DFG, αC helix, ligands, quality) and the 85 pocket
     residues, placed in UniProt numbering through one structure's author numbering
     (`klifs_pocket_reference@1`, `rcsb_author_numbering@1`);
+  - GPCRdb for GPCRs (#83, wave 2): `gpcrdb={}` adds the class and family, the
+    segments and the generic number of each residue in every scheme (in UniProt
+    numbering when GPCRdb's sequence is the entry's, `gpcrdb_sequence_numbering@1`),
+    and each structure's activation state, ligands and signalling protein;
   - local mirrors (#100, phase 2): `sabueso.mirrors` (install, status, update policies,
     remove, `using` with `mirror_first` or `offline`); BindingDB's monthly release as
     the first mirror (`MirrorBindingDBClient`), recorded as `access: mirror` with its

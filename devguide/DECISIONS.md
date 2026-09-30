@@ -1490,3 +1490,32 @@ uibcdf/sabueso#83 (wave 2, family-specific sources).
 - **Not taken now:** KLIFS's interaction fingerprints per structure (one request each),
   its ligand bioactivities (ChEMBL's, already on the card) and its drug list.
 
+## GPCRdb: GPCR numbering and structure states (2026-09-30)
+uibcdf/sabueso#83 (wave 2, family-specific sources).
+- **Joined through the accession GPCRdb states.** One request finds the receptor of a
+  UniProt accession (`protein/accession/<acc>`), and two more read its residues and
+  structures. A protein that is not a GPCR is `not_found`.
+- **What a card gains.** For a receptor:
+  - the class and family;
+  - the segments (TM1-7, loops, H8);
+  - the generic number of each residue, in every scheme GPCRdb states. The same
+    position compares across receptors (D3.32 of aminergic receptors, the DRY motif
+    at 3.50, the toggle switch W6.48).
+  - per structure, the activation state, the ligands with the function GPCRdb states
+    (agonist, antagonist, inverse agonist, allosteric), and the signalling protein.
+
+  This is the vocabulary of GPCR drug design: the state a ligand stabilises, and the
+  positions shared across a family.
+- **Numbering through sequence identity, not similarity.** GPCRdb numbers residues on
+  the sequence its entry states. Its numbers are UniProt's when that sequence is the
+  card's UniProt sequence, character by character (`gpcrdb_sequence_numbering@1`), and
+  each residue must still match. This is an equality check of two stated sequences,
+  not an alignment. When they differ, everything stays in GPCRdb's numbering.
+- **Apo is not a ligand.** GPCRdb writes a structure without ligand as a ligand named
+  "Apo (no ligand)" with the code `apo`. The card records `apo: true` and no ligand, so
+  no false chemical component enters the card.
+- **Not in packets yet**, as KLIFS (`packet_aspects@2` is published; #88).
+- **Not taken now:** GPCRdb's mutation data. They are literature mutagenesis with
+  ligand effects, often with empty fields (the first β2AR record states only the
+  mutation). They are read when a use asks.
+

@@ -102,3 +102,17 @@ def test_online_klifs_places_the_egfr_gatekeeper():
         "T",
         790,
     )
+
+
+@pytest.mark.online
+def test_online_gpcrdb_numbers_the_beta2_adrenoceptor():
+    card, _ = resolve_protein_card("P07550", gpcrdb={})
+    (outcome,) = [e for e in card.quality["enrichments"] if e["source"] == "GPCRdb"]
+    assert (outcome["status"], outcome["sequence_matches"]) == ("added", True)
+    residues = {
+        r["generic_number"]: r for r in card.get("annotations.gpcr_residues")["value"]
+    }
+    assert (residues["3.32x32"]["residue"], residues["3.32x32"]["location"]) == (
+        "D",
+        {"start": 113, "end": 113},
+    )
