@@ -12,12 +12,20 @@
   its own reading: a 404 is "not found", never a failure.
 
 Clients import ``urlopen`` from here instead of ``urllib.request``.
+
+- **Many requests to one service** (``gather``, #98). A source answered one record per
+  request (UniChem, one compound at a time) is asked by a few threads at once, never
+  faster than the pace the service asks for or Sabueso chooses to keep (``Pace``).
+  Results come back in the order asked; a failure of one request is that request's
+  answer, never the others'.
 """
 
 from __future__ import annotations
 
+import threading
 import time
-from typing import Any, Dict
+from concurrent.futures import ThreadPoolExecutor
+from typing import Any, Callable, Dict, Iterable, List, Tuple
 from urllib.error import HTTPError, URLError
 from urllib.request import Request
 from urllib.request import urlopen as _urlopen
@@ -78,3 +86,54 @@ def urlopen(target: Any, timeout: float = 30.0, sleep=time.sleep):
                 raise
             sleep(_wait(attempt, exc))
     raise AssertionError("unreachable")  # pragma: no cover
+
+
+class Pace:
+    """At most ``per_second`` requests start per second, across threads."""
+
+    def __init__(
+        self, per_second: float, sleep=time.sleep, clock=time.monotonic
+    ) -> None:
+        self.interval = 1.0 / per_second
+        self._lock = threading.Lock()
+        self._next = 0.0
+        self._sleep, self._clock = sleep, clock
+
+    def wait(self) -> None:
+        with self._lock:
+            now = self._clock()
+            start = max(now, self._next)
+            self._next = start + self.interval
+        if start > now:
+            self._sleep(start - now)
+
+
+def gather(
+    call: Callable[[Any], Any],
+    items: Iterable[Any],
+    workers: int = 4,
+    per_second: float | None = None,
+    expected: Tuple[type, ...] = (),
+) -> List[Tuple[Any, Any]]:
+    """``[(item, answer)]`` in the order of ``items``: ``call(item)``'s result, or the
+    exception it raised when that exception is ``expected`` (a source's not found or
+    failure). Any other exception is a fault, and is raised.
+
+    ``workers`` threads ask at once, and no more than ``per_second`` requests start per
+    second (unpaced when None).
+    """
+    items = list(items)
+    pace = Pace(per_second) if per_second else None
+
+    def one(item: Any) -> Any:
+        if pace is not None:
+            pace.wait()
+        try:
+            return call(item)
+        except expected as exc:
+            return exc
+
+    if workers <= 1 or len(items) <= 1:
+        return [(item, one(item)) for item in items]
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        return list(zip(items, pool.map(one, items)))

@@ -67,6 +67,9 @@ From the declarations, the other tables are **derived** instead of maintained by
 ## 3. Shared services
 
 - **HTTP** (`tools/db/_http.py`): every client's one way to the network.
+  - `gather` asks a service answered one record per request (UniChem) with a few
+    threads, no faster than the pace its online client states (`Pace`), and returns
+    each answer or failure in the order asked (#98).
   - One user agent naming Sabueso.
   - Retries with backoff for 429, 502, 503 and 504 and for refused or reset
     connections, twice at most, honouring `Retry-After`. Every Sabueso request is a

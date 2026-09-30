@@ -87,3 +87,47 @@ def test_a_refused_connection_is_retried(monkeypatch):
     outcomes = [URLError(ConnectionRefusedError("refused")), "ok"]
     monkeypatch.setattr(_http, "_urlopen", _opener(outcomes, seen))
     assert _http.urlopen("https://example.org/x", sleep=lambda s: None) == "ok"
+
+
+# --- Many requests to one service (#98) ------------------------------------------------
+
+
+def test_gather_keeps_the_order_and_each_failure_is_its_own():
+    from sabueso.core.errors import ConnectorError, RecordNotFoundError
+
+    def call(item):
+        if item == "missing":
+            raise RecordNotFoundError("no such record")
+        if item == "broken":
+            raise ConnectorError("down")
+        return item.upper()
+
+    items = ["a", "missing", "b", "broken", "c"]
+    answers = _http.gather(
+        call, items, workers=3, expected=(RecordNotFoundError, ConnectorError)
+    )
+    assert [item for item, _ in answers] == items
+    assert [a for _, a in answers][::2] == ["A", "B", "C"]
+    assert isinstance(answers[1][1], RecordNotFoundError)
+    assert isinstance(answers[3][1], ConnectorError)
+
+
+def test_gather_raises_a_fault_that_is_not_a_source_answer():
+    def call(item):
+        raise KeyError(item)
+
+    with pytest.raises(KeyError):
+        _http.gather(call, ["a", "b"], workers=2, expected=(ValueError,))
+
+
+def test_pace_spaces_the_start_of_requests():
+    now, slept = [0.0], []
+
+    def sleep(seconds):
+        slept.append(round(seconds, 6))
+        now[0] += seconds
+
+    pace = _http.Pace(5.0, sleep=sleep, clock=lambda: now[0])
+    for _ in range(4):
+        pace.wait()
+    assert slept == [0.2, 0.2, 0.2]

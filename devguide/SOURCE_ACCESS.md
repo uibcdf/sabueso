@@ -102,9 +102,16 @@ digesters, the registry entry `in_use`, and the derived rows.
 RCSB structures, the ChEMBL/BindingDB/PubChem BioAssay group and NCBI Gene stay
 bespoke, for the reasons in the architecture document.
 
+Before designing a client, survey the server's own programmatic access: batch queries
+(RCSB GraphQL `entries`), per-target queries (PubChem `assay/target/accession`), bulk
+release files, usage policies and throttling headers. Test them live, and check that a
+faster route keeps a stated identity (#98).
+
 Every client uses the shared services in `sabueso/tools/db/`:
 - `_http.urlopen`, never `urllib.request.urlopen`, for the user agent and the retries
   (a test checks it);
+- `_http.gather`, for a service answered one record per request, with the pace its
+  online client states (`workers`, `per_second`); saved answers need none (#98);
 - `_release`, for a source published as whole releases;
 - `_keys`, for a source that takes a personal key. A client that needs one calls
   `_keys.required(...)` when asked, and the runner records `not_queried` if the key is

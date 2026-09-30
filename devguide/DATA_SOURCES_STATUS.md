@@ -207,7 +207,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Access**: REST `compounds` by InChIKey (`OnlineUniChemClient`), saved compounds (`FixtureUniChemClient`, `temp_data/unichem/`)
 - **Quality**: green for the listed coverage, verified on BTS (UCI 336651) and 2-phosphoglycolate (UCI 118810)
 - **Coverage**: `same_as` links to the InChIKey anchor for ChEMBL, PDB (RCSB and PDBe), PubChem, DrugBank, ChEBI and BindingDB records. The full source list stays in the assertion.
-- **Notes**: an unknown key returns HTTP 200 with `"Not found"`, which the client maps to not found. One call per molecule, so it is opt-in for decks.
+- **Notes**: an unknown key returns HTTP 200 with `"Not found"`, which the client maps to not found. One call per molecule, and no batch query (UniChem recommends its whole-source mapping files for large mappings), so it is opt-in for decks. Lookups for BindingDB's monomers run four at once, at most five per second (#98): EGFR's 1769 monomers took 635 s (about 1.4 s per lookup), where one at a time would take about 40 minutes.
 
 ### BindingDB — affinities
 - **Status**: implemented as an enricher of `resolve_protein_card(..., bindingdb={})` (uibcdf/sabueso#66)

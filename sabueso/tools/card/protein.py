@@ -378,21 +378,29 @@ def resolve_protein_card(
         except ConnectorError as exc:
             enrichments.append({**record, "status": "error", "detail": str(exc)})
         else:
+            from sabueso.tools.db._http import gather
+
             unichem = unichem_client or OnlineUniChemClient()
             resolved: Dict[str, Any] = {}
             unanchored, errors = [], []
-            for monomer in sorted(
-                {str(r.get("monomerid")) for r in response["record"]}
+            # One UniChem lookup per monomer, a few at once and politely paced (#98).
+            monomers = sorted({str(r.get("monomerid")) for r in response["record"]})
+            for monomer, found in gather(
+                lambda m: unichem.compound_by_source(BINDINGDB_SOURCE, m),
+                monomers,
+                # The online client states its pace; saved answers need none.
+                workers=getattr(unichem, "workers", 1),
+                per_second=getattr(unichem, "per_second", None),
+                expected=(RecordNotFoundError, ConnectorError),
             ):
-                try:
-                    found = unichem.compound_by_source(BINDINGDB_SOURCE, monomer)
-                    resolved[monomer] = molecule_identity(found["compound"], monomer)
-                except RecordNotFoundError:
+                if isinstance(found, RecordNotFoundError):
                     resolved[monomer] = None
                     unanchored.append(f"bindingdb:{monomer}")
-                except ConnectorError:
+                elif isinstance(found, ConnectorError):
                     resolved[monomer] = None
                     errors.append(f"bindingdb:{monomer}")
+                else:
+                    resolved[monomer] = molecule_identity(found["compound"], monomer)
             mapped = map_affinities(
                 response, anchor, response.get("retrieved_at", ""), resolved
             )

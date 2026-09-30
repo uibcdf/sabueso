@@ -36,6 +36,10 @@ UNICHEM_API = "https://www.ebi.ac.uk/unichem/api/v1/compounds"
 SOURCE_FIELDS = ("id", "shortName", "compoundId")
 #: UniChem's source ids used by Sabueso.
 BINDINGDB_SOURCE = 31
+#: UniChem answers one compound per request and states no rate limit: Sabueso asks with
+#: a few threads, and never more than five requests per second (#98).
+WORKERS = 4
+PER_SECOND = 5.0
 
 
 def _compound(record: Dict[str, Any]) -> Dict[str, Any]:
@@ -51,6 +55,10 @@ def _compound(record: Dict[str, Any]) -> Dict[str, Any]:
 
 
 class OnlineUniChemClient:
+    #: How many lookups a caller may run at once, and how fast (``_http.gather``).
+    workers = WORKERS
+    per_second = PER_SECOND
+
     def __init__(self, timeout: float = 30.0) -> None:
         self.timeout = timeout
 

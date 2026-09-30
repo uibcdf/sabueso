@@ -1273,3 +1273,11 @@ uibcdf/sabueso#98, #88.
   for BindingDB's structure: a stereo layer, a tautomer, or another compound. Identity
   stays with UniChem. BindingDB's monthly TSV, which states its own InChIKey per row,
   is the candidate for heavy use (#98).
+- **Polite concurrency for one-record-per-request services** (same day, #98, #87).
+  UniChem has no batch query and states no rate limit. `_http.gather` asks it with four
+  threads at most, and `Pace` starts no more than five requests per second, the pace
+  PubChem states for itself. The pace belongs to the online client (`workers`,
+  `per_second`), so saved answers in tests run unpaced. For EGFR, 1769 BindingDB
+  monomers took 635 s instead of about 40 minutes: UniChem's latency (about 1.4 s),
+  not the pace, is the limit. A cache of lookups would remove repeated ones, but it is
+  a raw-payload cache, an open question of `CACHE_POLICY.md`, and is proposed apart.
