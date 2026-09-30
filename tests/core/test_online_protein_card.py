@@ -116,3 +116,11 @@ def test_online_gpcrdb_numbers_the_beta2_adrenoceptor():
         "D",
         {"start": 113, "end": 113},
     )
+
+
+@pytest.mark.online
+def test_online_sabdab_finds_cetuximab_on_egfr():
+    card, _ = resolve_protein_card("P00533", sabdab=True)
+    (outcome,) = [e for e in card.quality["enrichments"] if e["source"] == "SAbDab"]
+    assert outcome["status"] == "added"
+    assert "pdb:1YY9" in outcome["structures"]

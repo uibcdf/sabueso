@@ -367,6 +367,20 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - Its mutation data (ligand-binding mutagenesis from the literature, 659 records for β2AR) are not read yet.
   - Licence CC BY 4.0 (data), stated in the legal notice.
 
+### SAbDab — antibody structures of a protein
+- **Status**: implemented as an enricher (`sabdab=True`, #83), card schema 0.3.8
+- **Access**: SAbDab2's annotations of the PDB (`api/rcsb-pdb-annotations`, about 15 MB of JSON, 22,201 antibody instances), downloaded once per process and indexed by PDB entry; the SHA-256 and the API version (2.1.4) recorded; saved subset `temp_data/sabdab/`; `tools.db.sabdab.get_complexes`
+- **Quality**: green, verified live (2026-09-30):
+  - EGFR (P00533): 50 antibody instances in 28 structures (38 two-chain, 12 nanobodies), cetuximab in 1YY9 among them; 18.4 s with the download.
+  - β2-adrenoceptor: 16 instances, in 1.5 s from the index already in memory.
+  - μ-opioid receptor and GPR52 (fixtures): a nanobody, and an scFv bound to a receptor–arrestin complex.
+- **Coverage**: `annotations.antibody_complexes`
+- **Notes**:
+  - Joined only through the PDB chains UniProt states are the protein; the antigen names SAbDab writes are never used, and a hapten, sugar or ion (SAbDab gives it the chain of the polymer it is attached to) never makes a protein an antigen.
+  - An antigen is SAbDab's assignment in the structure: every chain it finds bound to the antibody is listed, marked `this_protein` or not.
+  - The classic summary file of SAbDab now answers with the SAbDab2 web application; the annotations file of the new API is read instead. It carries no affinities.
+  - Licence CC BY 4.0 (the API's description).
+
 ---
 
 ## Removed per-concept card tools (2026-09-23, uibcdf/sabueso#21 part 2b)

@@ -104,6 +104,7 @@ take is refused, never ignored.
 | `string={"required_score": 700}` | STRING functional associations |
 | `taxonomy=True` | NCBI Taxonomy ranks and ancestors of the organism |
 | `ncbi_gene=True` | NCBI Gene, for the identity audit of a resolution by name |
+| `sabdab=True` | SAbDab's antibody structures of the protein: per antibody, its heavy and light chains and every antigen SAbDab assigns to it, where a chain UniProt states is the protein is one of them |
 | `gpcrdb={}` | for a receptor GPCRdb states is the entry: its class and family, its segments (TM1-7, loops), the generic number of each residue in every scheme (Ballesteros-Weinstein…), and each structure's activation state, ligands and signalling protein |
 | `klifs={}` | for a kinase KLIFS states is the entry: its group, family and subfamily, the conformation of each of its structures (DFG, αC helix, ligands) and its 85 pocket residues, placed through a structure you also ask for |
 | `curations=store` | the curated statements recorded for the entity |

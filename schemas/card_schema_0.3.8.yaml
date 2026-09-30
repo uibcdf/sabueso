@@ -167,6 +167,10 @@ schema:
     gpcrdb_sequence_numbering@1). The has_structure qualifier membrane_segments gives,
     per chain, the transmembrane segments each resource RCSB integrates assigns (OPM,
     PDBTM), as a list of assigned_by and UniProt ranges; it is set only when stated.
+    annotations.antibody_complexes holds SAbDab's antibody structures of the protein,
+    per antibody instance its heavy and light chains and every antigen SAbDab assigns
+    to it, for the PDB entries where a chain UniProt states is this protein is one of
+    those antigens.
     Additive, so a 0.3.7 card is a valid 0.3.8 card without them.
 card_base:
   meta:
@@ -851,6 +855,30 @@ protein_card:
           type: string
           partners:
           - string
+      source_assertion_ids:
+      - string
+    antibody_complexes:
+      value:
+      - structure: string
+        model: number
+        heavy_chain:
+          chain: string
+          entity: number
+          type: string
+          v_gene_subgroup: string
+        light_chain:
+          chain: string
+          entity: number
+          type: string
+          v_gene_subgroup: string
+        antigen_chains:
+        - string
+        antigens:
+        - name: string
+          type: string
+          entity: number
+          chain: string
+          this_protein: boolean
       source_assertion_ids:
       - string
     pathogen_phenotypes:

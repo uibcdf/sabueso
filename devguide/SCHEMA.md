@@ -7,7 +7,8 @@
     PubChem BioAssay, #98), gnomAD's consequence on the canonical transcript
     (`transcript_version`, `canonical_consequence`, #85), KLIFS's kinase
     classification, structures and pocket, and GPCRdb's receptor classification,
-    segments, generic residue numbers and structures (#83);
+    segments, generic residue numbers and structures, and SAbDab's antibody complexes
+    (#83);
   - `0.3.7` is the schema of release 0.7.0: it adds `annotations.interface_mutations`
     (SKEMPI 2.0, #83), disease cards (MONDO, #90), the MONDO and MedGen identity and
     hierarchy relationships on protein cards, `mentioned_in` (Europe PMC, #92),
@@ -430,6 +431,18 @@ A Relationship is first-class, traceable knowledge:
       `publication_date`, `ligands` (`name`, `pdb_ccd`, `type`, `function`), `apo`
       (GPCRdb states no ligand), `signalling_protein` (`type`, `partners`: GPCRdb entry
       names). Up to 5000 (`gpcrdb={"limit": n}`); a cut is reported.
+  - antibody complexes (added in #83, schema 0.3.8): `annotations.antibody_complexes`,
+    one item per SAbDab antibody instance with an antigen that is a protein or peptide
+    chain UniProt states is this protein in that PDB entry. Never joined by the antigen
+    names SAbDab writes; a hapten, sugar or ion never makes a protein an antigen.
+    - `structure`, `model`, `heavy_chain` and `light_chain` (`chain` as the PDB names
+      it, `entity`, `type`: H, κ, λ, VNAR; `v_gene_subgroup`); a nanobody has no light
+      chain, and an scFv names one chain for both.
+    - `antigen_chains`: this protein's chains among the antigens.
+    - `antigens`: every antigen SAbDab assigns (`name`, `type`, `entity`, `chain`,
+      `this_protein`). An antigen is SAbDab's assignment in the structure, not a
+      statement that the antibody recognises it: a Fab bound to an arrestin–receptor
+      complex lists both.
   - curated literature assertions (added in #41):
     - A SourceAssertion with `source.type = "literature"`, `source.name = "Literature"`
       and the publication as `record_id` (`pubmed:<id>` or `doi:<doi>`). Its

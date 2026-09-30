@@ -201,6 +201,13 @@
    "statement": "https://reactome.org/license",
    "reviewed": "2026-09-29"
   },
+  "SAbDab": {
+   "registry_id": "sabdab",
+   "licence": "CC-BY-4.0",
+   "attribution": "SAbDab, Oxford Protein Informatics Group (Dunbar et al. 2014, Nucleic Acids Research 42, D1140-D1146), CC BY 4.0",
+   "statement": "https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabdab/api/openapi.json",
+   "reviewed": "2026-09-30"
+  },
   "SKEMPI": {
    "registry_id": "skempi",
    "licence": "CC-BY-4.0",

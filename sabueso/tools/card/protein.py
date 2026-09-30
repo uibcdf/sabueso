@@ -86,6 +86,8 @@ def resolve_protein_card(
     gnomad_client: Any | None = None,
     skempi: bool = False,
     skempi_client: Any | None = None,
+    sabdab: bool = False,
+    sabdab_client: Any | None = None,
     klifs: Dict[str, Any] | None = None,
     klifs_client: Any | None = None,
     gpcrdb: Dict[str, Any] | None = None,
@@ -171,6 +173,11 @@ def resolve_protein_card(
     the PDB entries whose chains UniProt states are this protein. A mutation is placed
     in UniProt numbering only through the author numbering RCSB states for that chain,
     so ask for the ``structures`` too, and only when its residue matches.
+
+    ``sabdab`` adds SAbDab's antibody structures of this protein
+    (``annotations.antibody_complexes``): per antibody, its heavy and light chains and
+    every antigen SAbDab assigns to it, for the PDB entries where a chain UniProt states
+    is this protein is one of those antigens.
 
     ``klifs`` (e.g. ``{}`` or ``{"limit": 100}``; default all, up to 5000 structures)
     adds, for a kinase KLIFS states is this UniProt entry, its classification (group,
@@ -336,6 +343,7 @@ def resolve_protein_card(
         "gnomad": (gnomad, gnomad_client),
         "clinvar": (clinvar, clinvar_client),
         "skempi": (skempi, skempi_client),
+        "sabdab": (sabdab, sabdab_client),
         "klifs": (klifs, klifs_client),
         "gpcrdb": (gpcrdb, gpcrdb_client),
         "medgen": (medgen, medgen_client),

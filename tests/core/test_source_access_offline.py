@@ -34,6 +34,7 @@ from sabueso.tools.db import (
     pubchem_bioassay,
     rcsb,
     reactome,
+    sabdab,
     skempi,
     stringdb,
     unichem,
@@ -136,6 +137,9 @@ CALLS = {
     ),
     "stringdb.get_partners": lambda: stringdb.get_partners(
         "P60174", 9606, client=stringdb.FixtureStringClient("temp_data")
+    ),
+    "sabdab.get_complexes": lambda: sabdab.get_complexes(
+        ["9MQI"], client=sabdab.FixtureSAbDabClient("temp_data")
     ),
     "skempi.get_mutations": lambda: skempi.get_mutations(
         ["1BRS"], client=skempi.FixtureSKEMPIClient("temp_data")

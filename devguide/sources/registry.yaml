@@ -1009,11 +1009,21 @@ resources:
     name: "SAbDab / Thera-SAbDab"
     url: https://opig.stats.ox.ac.uk/webapps/sabdab/
     category: sites_families
-    status: evaluating
+    status: in_use
     description: "Antibody and nanobody structures with standard numbering, CDRs and clinical metadata."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "CC BY 4.0"
+    decided_by: "Sabueso maintainers (2026-09-30)"
+    reason: "The antibody structures of a protein: per antibody instance, its heavy and light chains (type, V gene subgroup) and every antigen SAbDab assigns to it, for the PDB entries where a chain UniProt states is this protein is one of those antigens. Never joined by the antigen names SAbDab writes. Thera-SAbDab (therapeutics) is not read yet."
+    access: "SAbDab2's annotations of the PDB (api/rcsb-pdb-annotations, about 15 MB, JSON), downloaded once per process and indexed by PDB entry, its SHA-256 and the API version recorded, when resolve(..., sabdab=True)"
+    licence: "CC BY 4.0 (SAbDab2's OpenAPI description and site)"
+    terms:
+      source_names: ["SAbDab"]
+      licence: CC-BY-4.0
+      attribution: "SAbDab, Oxford Protein Informatics Group (Dunbar et al. 2014, Nucleic Acids Research 42, D1140-D1146), CC BY 4.0"
+      statement: https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabdab/api/openapi.json
+      reviewed: 2026-09-30
+    module: [sabueso.tools.db.sabdab, sabueso.mappings.sabdab]
     links: ["#83"]
   - id: proteins_plus
     name: "Proteins.plus (DoGSiteScorer)"

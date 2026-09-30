@@ -1546,3 +1546,22 @@ uibcdf/sabueso#83 (wave 2, structures).
 - **What it serves.** Lipid-facing sites and membrane-accessible ligands are placed
   against the transmembrane span of the very structure that shows them.
 
+## SAbDab: antibody complexes of a protein (2026-09-30)
+uibcdf/sabueso#83 (wave 2, structures).
+- **SAbDab2's annotations of the PDB.** The classic summary download now answers with
+  the SAbDab2 web application. Its API publishes one JSON file (about 15 MB) with every
+  antibody instance: heavy and light chains and their antigens, with the PDB entity and
+  chain of each. It is read once per process, as SKEMPI's CSV is, with its SHA-256.
+- **Joined through the chains UniProt states.** An antibody enters a protein's card
+  when one of its antigens is a protein or peptide chain UniProt states is this protein
+  in that PDB entry. Antigen names are never used. Haptens, sugars and ions carry the
+  chain of the polymer they sit on, so they never make a protein an antigen.
+- **Every antigen is kept, and marked.** SAbDab assigns as antigens the chains bound to
+  the antibody in the structure. In 9IJR an scFv is listed with GPR52 and β-arrestin 1
+  as antigens. The card keeps both, with `this_protein`, and does not claim the
+  antibody recognises the receptor.
+- **Antibodies are not entities yet.** Their chains, types and V gene subgroups are
+  kept on the target's card. Antibody cards, CDRs and Thera-SAbDab's therapeutics wait
+  for a use.
+- **Not in packets yet**, as KLIFS and GPCRdb (#88).
+

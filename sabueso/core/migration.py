@@ -234,6 +234,11 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
                 "annotations.gpcr_structures",
             )
         ),
+        {
+            "path": "annotations.antibody_complexes",
+            "filled_by": "sabdab",
+            "entity_types": ("protein",),
+        },
         # Transmembrane segments RCSB integrates (OPM, PDBTM), set only when stated.
         {
             "path": "relationships.has_structure.membrane_segments",

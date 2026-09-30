@@ -254,6 +254,7 @@ def _registered() -> List[Enricher]:
         pdbe_kb,
         phi_base,
         reactome,
+        sabdab,
         skempi,
         stringdb,
     )
@@ -273,6 +274,7 @@ def _registered() -> List[Enricher]:
         gnomad.ENRICHER,
         clinvar.ENRICHER,
         skempi.ENRICHER,
+        sabdab.ENRICHER,
         klifs.ENRICHER,
         gpcrdb.ENRICHER,
         europepmc.ENRICHER,

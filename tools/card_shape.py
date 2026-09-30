@@ -328,11 +328,14 @@ def fixture_cards() -> List[dict]:
         )
         # GPR52 with GPCRdb's classification, segments, residues and structures (0.3.8).
         from sabueso.tools.db.gpcrdb import FixtureGPCRdbClient
+        from sabueso.tools.db.sabdab import FixtureSAbDabClient
 
         receptor, _ = sabueso.resolve(
             "Q9Y2T5",
             resolver=resolver,
             structures=["6LI0"],  # membrane segments (OPM, PDBTM) through RCSB
+            sabdab=True,  # antibody complexes (0.3.8)
+            sabdab_client=FixtureSAbDabClient(data),
             gpcrdb={},
             gpcrdb_client=FixtureGPCRdbClient(data),
         )
