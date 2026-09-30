@@ -142,6 +142,11 @@ shows how to use them.
   licence allows: `sabueso.core.terms.retention`), `stats()`. `NotArchivedError` when a
   replay meets a request the archive does not hold. `Card.explain` links a statement to
   the answers its source gave the build.
+- `sabueso.mirrors` (#100): `install(source, release="latest", mirror_dir=None,
+  from_file=None, md5=None)`, `status(mirror_dir=None, check=False)`, `update(source,
+  policy="manual"|"notify"|"auto", keep=2)`, `remove(source, release)`,
+  `using(mirror_dir=None, mode="mirror_first"|"offline", releases=None)`. Sources:
+  `bindingdb`. `OfflineError` when a request is made offline.
 - `sabueso.CurationStore(path)`: `save(card)`, `apply(card)`, `records()`,
   `retract(source_assertion_id, reason, curator)`, `entities_named(name)`.
 - `sabueso.migrate_card(data, store=None)` and `sabueso.refresh_card(card,

@@ -130,6 +130,35 @@ with archive.reusing(timedelta(days=30)):  # answers younger than 30 days are re
 - `card.explain([source_assertion_id])` names the answers the statement's source gave
   the build (`retrievals`).
 
+## Local mirrors
+
+Some sources publish their whole data as releases. A mirror installs one on your disk,
+so that cards read it instead of asking the source record by record: faster, without
+the network, and every card of a project on the same release.
+
+```python
+import sabueso.mirrors as mirrors
+
+mirrors.install("bindingdb", mirror_dir="/data/mirrors")  # the latest monthly release
+mirrors.status("/data/mirrors", check=True)  # installed releases, size, newer ones
+with mirrors.using("/data/mirrors"):
+    card, _ = sabueso.resolve("P00533", bindingdb={})  # BindingDB from the mirror
+```
+
+- Nothing is downloaded unless you ask, and only where you say (`mirror_dir=` or
+  `$SABUESO_MIRROR_DIR`). BindingDB's release is about 600 MB to download and 700 MB
+  once indexed. The download is checked against the checksum BindingDB publishes.
+- `mirrors.update("bindingdb", policy)`: `"notify"` says whether a newer release exists;
+  `"manual"` installs it; `"auto"` installs it and keeps the previous `keep` releases.
+  Releases sit side by side; `using(..., releases={"bindingdb": "202609"})` pins one.
+- Each card records how it read the source: `access: "mirror"` and the release.
+- `using(..., mode="offline")` never asks the network: a source without a mirror, or an
+  archived answer, is `not_queried` (`offline`). With a retrieval archive in
+  `replaying()`, a whole build can run offline.
+- The mirror states the values as BindingDB publishes them (e.g. 112.4 nM, where its
+  web service rounds to 112), and a monthly release may differ slightly from the live
+  service. Molecules are still identified through UniChem.
+
 ## Old Cards
 
 Cards written by older versions are read, or migrated with what they lack reported; see

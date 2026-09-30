@@ -60,6 +60,13 @@ class NotArchivedError(ConnectorError):
     catalog_key = "ConnectorError"
 
 
+class OfflineError(ConnectorError):
+    """A request made while working offline (``mirrors.using(mode="offline")``, #100):
+    the source was not asked, which is neither its failure nor an absence."""
+
+    catalog_key = "ConnectorError"
+
+
 class RecordNotFoundError(SabuesoError):
     """A source was consulted and holds no record for the requested identifier.
 

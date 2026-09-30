@@ -143,24 +143,39 @@ def resolve(
     Inside ``RetrievalArchive.recording()``, every answer the build receives is
     archived, and the card lists them (``card.quality["retrievals"]``, #100).
     """
-    from sabueso.tools.db import _archive
+    from sabueso.tools.db import _archive, _mirror
 
     mode = _archive.active()
     if mode is None:
-        return _resolve(query, entity_type, profile, curations, options)
+        card, resolution = _resolve(query, entity_type, profile, curations, options)
+        if card is not None and _mirror.active() is not None:
+            _not_asked(card)
+        return card, resolution
     with _archive.collecting() as made:
         card, resolution = _resolve(query, entity_type, profile, curations, options)
     if card is not None:
         card.quality["retrievals"] = _archive.manifest(mode, made)
-        # A source the archive held no answer for was not asked: not_queried, never an
-        # error of the source or an absence (#100).
-        for record in card.quality.get("enrichments") or []:
-            if record.get("status") == "error" and str(
-                record.get("detail") or ""
-            ).startswith("Not in the retrieval archive"):
-                record["status"] = "not_queried"
-                record["reason"] = "not_in_archive"
+        _not_asked(card)
     return card, resolution
+
+
+#: Details of requests that were not made, by the reason (#100).
+NOT_ASKED = {
+    "Not in the retrieval archive": "not_in_archive",
+    "Not asked: working offline": "offline",
+}
+
+
+def _not_asked(card: Card) -> None:
+    """A source that was not asked (its answer not in the archive being replayed, or
+    working offline) is not_queried with the reason, never an error of the source or an
+    absence (#100)."""
+    for record in card.quality.get("enrichments") or []:
+        detail = str(record.get("detail") or "")
+        for marker, reason in NOT_ASKED.items():
+            if record.get("status") == "error" and detail.startswith(marker):
+                record["status"] = "not_queried"
+                record["reason"] = reason
 
 
 def _resolve(

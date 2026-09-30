@@ -1361,3 +1361,22 @@ uibcdf/sabueso#99.
     resolver now keeps the entries it read for the card tool; the second request is
     gone.
   - A replay's missing answer is not a failure, and no longer warns as one.
+
+## Local mirrors, BindingDB first (2026-09-30)
+uibcdf/sabueso#100 (phase 2), #98.
+- **Manager.** `sabueso.mirrors`: install, status, update (`manual`, `notify`, `auto`
+  keeping the previous releases), remove; releases side by side under a directory the
+  user names; `using()` makes card tools read installed mirrors (`mirror_first`) or
+  never the network (`offline`). A card records the access route and release.
+- **BindingDB first**: its monthly TSV (about 600 MB) with a published MD5 was indexed
+  by UniProt accession in 154 s (3.65 M records, 704 MB). ChEMBL, several GB, next.
+- **Parity with the service**, measured: identical for TcTIM and HsTIM; for EGFR the
+  service rounds values the release states with more precision (2,876 records), and
+  about 0.2 % of records differ between the live service and the monthly release.
+  Both are recorded: a card names its access and release.
+- **The release's InChIKeys are not an identity anchor.** For 39 of 112 sampled EGFR
+  monomers they drop the stereo layer that UniChem's standard key keeps (one names
+  another compound). Anchoring on them would merge stereoisomers, so identity stays
+  with UniChem; repeated lookups are saved by `archive.reusing(...)`.
+- **Offline** refuses every request not answered by a mirror or an archive
+  (`OfflineError`), and the source is `not_queried` (`offline`), never absent.

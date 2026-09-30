@@ -1005,7 +1005,7 @@ resources:
     decided_by: "Sabueso maintainers (2026-09-25)"
     reason: "Affinities from its own curation and from papers ChEMBL lacks for a target; measurements it shares with ChEMBL are grouped by measurement_identity@1, never counted twice (#66)."
     links: ["#25", "#66"]
-    module: [sabueso.tools.db.bindingdb, sabueso.mappings.bindingdb]
+    module: [sabueso.tools.db.bindingdb, sabueso.tools.db.bindingdb_mirror, sabueso.mappings.bindingdb]
     access: "REST getLigandsByUniprots, no key; monomers anchored through UniChem"
     limit:
       constant: sabueso.tools.db.bindingdb.DEFAULT_LIMIT

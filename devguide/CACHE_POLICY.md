@@ -56,6 +56,13 @@ Built so far (`sabueso.RetrievalArchive`):
 - `card.explain(ids)` links a statement to the answers its source gave the build
   (`retrievals`, basis `source_in_build`). A link to the exact record, per
   SourceAssertion, waits for a use that needs it.
+- **Mirrors (phase 2):** `sabueso.mirrors` installs whole releases under `mirror_dir=` or
+  `$SABUESO_MIRROR_DIR` (`<root>/<source>/<release>/`, `release.json` and an index),
+  checked against the published checksum; `status`, `update` (`manual`, `notify`,
+  `auto` keeping the previous `keep` releases) and `remove`. `mirrors.using(root,
+  mode="mirror_first"|"offline", releases={...})` makes card tools read installed
+  mirrors; `offline` never asks the network (what has no mirror or archived answer is
+  `not_queried`, `offline`). First mirror: BindingDB's monthly TSV (#98).
 
 
 "Raw payloads: not stored" answered the first draft, and it is being replaced. MOLI's

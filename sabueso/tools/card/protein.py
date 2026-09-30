@@ -377,15 +377,29 @@ def resolve_protein_card(
     identities: List[tuple] = []
     if bindingdb is not None:
         from sabueso.mappings.bindingdb import map_affinities, molecule_identity
+        from sabueso.tools.db import _mirror
         from sabueso.tools.db.bindingdb import OnlineBindingDBClient
         from sabueso.tools.db.unichem import BINDINGDB_SOURCE, OnlineUniChemClient
 
-        client = bindingdb_client or OnlineBindingDBClient()
+        # An installed mirror in use answers instead of the service (#100).
+        client = (
+            bindingdb_client
+            or _mirror.client_for("bindingdb")
+            or OnlineBindingDBClient()
+        )
         record = {"source": "BindingDB", "identifier": anchor, **bindingdb}
         try:
             response = client.ligands(anchor, **bindingdb)
-        except RecordNotFoundError:
-            enrichments.append({**record, "status": "not_found"})
+        except RecordNotFoundError as exc:
+            # The release consulted, when there is one (#89): a mirror's.
+            version = getattr(exc, "version", None)
+            enrichments.append(
+                {
+                    **record,
+                    "status": "not_found",
+                    **({"version": version} if version else {}),
+                }
+            )
         except ConnectorError as exc:
             enrichments.append({**record, "status": "error", "detail": str(exc)})
         else:
@@ -430,6 +444,12 @@ def resolve_protein_card(
                     "truncated": (response.get("total_count") or 0)
                     > len(response["record"]),
                     "record_order": response.get("record_order"),
+                    "access": response.get("access", "api"),
+                    **(
+                        {"version": response["version"]}
+                        if response.get("version")
+                        else {}
+                    ),
                     "anchored": sum(1 for i in resolved.values() if i is not None),
                     "unanchored": unanchored,
                     **({"unichem_errors": errors} if errors else {}),

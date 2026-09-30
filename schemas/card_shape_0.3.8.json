@@ -46,6 +46,7 @@
   "quality.curation[].shared_positions",
   "quality.curation[].source_assertion_id",
   "quality.enrichments",
+  "quality.enrichments[].access",
   "quality.enrichments[].anchored",
   "quality.enrichments[].assays",
   "quality.enrichments[].channels",

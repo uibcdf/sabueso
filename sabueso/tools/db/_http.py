@@ -156,10 +156,11 @@ def urlopen(target: Any, timeout: float = 30.0, sleep=time.sleep):
     """``urllib.request.urlopen`` with Sabueso's user agent and retries for transient
     failures, and the answer archived when an archive is recording; see the module
     docstring."""
-    from sabueso.tools.db import _archive
+    from sabueso.tools.db import _archive, _mirror
 
     mode = _archive.active()
     if mode is None:
+        _refuse_offline(target)
         return _open(target, timeout, sleep)
     archive = mode.archive
     named = _named(target)
@@ -181,6 +182,8 @@ def urlopen(target: Any, timeout: float = 30.0, sleep=time.sleep):
             raise NotArchivedError(
                 f"Not in the retrieval archive {archive.path.name}: {method} {url}"
             )
+    if _mirror.offline():
+        _refuse_offline(named)
     retrieved_at = _archive._now()
     try:
         response = _open(named, timeout, sleep)
@@ -212,6 +215,19 @@ def urlopen(target: Any, timeout: float = 30.0, sleep=time.sleep):
     _archive.note(record)
     _answered_at(retrieved_at)
     return Answer(content, status, headers, retrieved_at)
+
+
+OFFLINE = "Not asked: working offline"
+
+
+def _refuse_offline(target: Any) -> None:
+    from sabueso.tools.db import _mirror
+
+    if _mirror.offline():
+        from sabueso.core.errors import OfflineError
+
+        url = target.full_url if isinstance(target, Request) else str(target)
+        raise OfflineError(f"{OFFLINE}: {url}")
 
 
 def _from_archive(kept: Dict[str, Any]):
@@ -306,3 +322,24 @@ def gather(
             pool.submit(contextvars.copy_context().run, one, item) for item in items
         ]
         return list(zip(items, (f.result() for f in futures)))
+
+
+def download(url: str, path: Any, timeout: float = 600.0, chunk: int = 1 << 20) -> str:
+    """Stream a release file to ``path`` (written next to it, then renamed) and return
+    its MD5. For whole releases (mirrors, #100): not kept by a retrieval archive, since
+    the file itself is kept and checked against the checksum its source publishes."""
+    import hashlib
+    from pathlib import Path
+
+    target = Path(path)
+    partial = target.with_name(target.name + ".part")
+    md5 = hashlib.md5()  # nosec - compared with the checksum the source publishes
+    with _open(url, timeout, time.sleep) as response, open(partial, "wb") as out:
+        while True:
+            block = response.read(chunk)
+            if not block:
+                break
+            md5.update(block)
+            out.write(block)
+    partial.replace(target)
+    return md5.hexdigest()

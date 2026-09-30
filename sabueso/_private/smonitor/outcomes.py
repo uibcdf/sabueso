@@ -62,7 +62,7 @@ def report_outcomes(records: Iterable[Dict[str, Any]], subject: str) -> None:
         # Replaying from an archive that does not hold the answer: the source was not
         # asked, which is not its failure (#100); the card records it as not_queried.
         not_archived = str(record.get("detail") or "").startswith(
-            "Not in the retrieval archive"
+            ("Not in the retrieval archive", "Not asked: working offline")
         )
         if record.get("status") == "error" and not not_archived:
             warn(
