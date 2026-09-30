@@ -137,6 +137,51 @@ def source_terms() -> Dict[str, Dict[str, Any]]:
     return {**data["sources"], **BUILT_IN}
 
 
+RETENTION_RULE = "retention_from_licence@1"
+
+
+def retention(name: str | None) -> Dict[str, Any]:
+    """What a source's stated licence allows with an archived answer (#100), under
+    ``retention_from_licence@1``: ``keep`` (a copy for the user's own work) and
+    ``share`` (passing the copy on). Derived from the licence, never assumed:
+
+    - no terms recorded, or answers whose terms are each record's (a depositor's, a
+      publication's): ``keep: internal``, ``share: unknown``, to review;
+    - otherwise ``keep: yes``, and ``share`` with the licence's conditions:
+      ``attribution``, ``share_alike``, ``non_commercial`` (none for CC0 and public
+      domain). Third-party rights, where a source's terms name them, stay the user's
+      to check (``caveats``).
+    """
+    terms = source_terms().get(name or "")
+    licence = LICENCES.get(terms["licence"]) if terms else None
+    base: Dict[str, Any] = {"rule": RETENTION_RULE, "source": name}
+    if licence is None or licence.get("per_record"):
+        return {
+            **base,
+            "keep": "internal",
+            "share": "unknown",
+            "reason": "per_record_terms" if licence else "no_terms_recorded",
+            **({"licence": terms["licence"]} if terms else {}),
+        }
+    conditions = [
+        c
+        for c, holds in (
+            ("attribution", licence.get("attribution") is not None),
+            ("share_alike", licence.get("share_alike")),
+            ("non_commercial", licence.get("non_commercial")),
+        )
+        if holds
+    ]
+    return {
+        **base,
+        "licence": terms["licence"],
+        "keep": "yes",
+        "share": "yes",
+        "conditions": conditions,
+        **({"caveats": terms["caveats"]} if terms.get("caveats") else {}),
+    }
+
+
 def verdict(name: str, use: str, today: date | None = None) -> Dict[str, Any]:
     """What a source's stated terms say about ``use``; see the module docstring."""
     terms = source_terms().get(name)

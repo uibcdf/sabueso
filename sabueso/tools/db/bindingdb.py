@@ -82,7 +82,7 @@ class OnlineBindingDBClient:
         query = urlencode(
             {"uniprot": accession, "cutoff": cutoff, "response": "application/json"}
         )
-        retrieval = stamp()
+        retrieval = stamp("BindingDB")
         try:
             with urlopen(f"{BINDINGDB_REST}?{query}", timeout=self.timeout) as resp:  # nosec
                 data = json.loads(resp.read().decode("utf-8"))

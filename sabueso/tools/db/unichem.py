@@ -66,7 +66,7 @@ class OnlineUniChemClient:
         request = Request(
             UNICHEM_API, data=body, headers={"Content-Type": "application/json"}
         )
-        retrieval = stamp()
+        retrieval = stamp("UniChem")
         try:
             with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
@@ -90,7 +90,7 @@ class OnlineUniChemClient:
         request = Request(
             UNICHEM_API, data=body, headers={"Content-Type": "application/json"}
         )
-        retrieval = stamp()
+        retrieval = stamp("UniChem")
         label = f"source {source_id} compound {compound_id}"
         try:
             with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint

@@ -123,6 +123,12 @@ with archive.reusing(timedelta(days=30)):  # answers younger than 30 days are re
   (`not_in_archive`), never as absent.
 - Replaying the TcTIM build above took 4 s instead of 55 s online, and gave the same
   card.
+- Each answer is its source's. `archive.sources()` counts them per source, with what the
+  source's licence allows with a copy: `keep` and `share`, with conditions such as
+  attribution or share-alike. Sources whose terms are per record, or not recorded, are
+  `keep: internal`, `share: unknown`: check them before passing a copy on.
+- `card.explain([source_assertion_id])` names the answers the statement's source gave
+  the build (`retrievals`).
 
 ## Old Cards
 

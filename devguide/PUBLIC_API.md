@@ -138,8 +138,10 @@ shows how to use them.
   `datetime.timedelta` are used instead of asking again), `replaying(of=None)` (the
   network is never asked; `of` a card replays its build). A card built inside lists
   its answers in `quality.retrievals`. Also `get(ref)`, `find(method, url,
-  request_body, max_age=None)`, `stats()`. `NotArchivedError` when a replay meets a
-  request the archive does not hold.
+  request_body, max_age=None)`, `sources()` (answers per source, with what their
+  licence allows: `sabueso.core.terms.retention`), `stats()`. `NotArchivedError` when a
+  replay meets a request the archive does not hold. `Card.explain` links a statement to
+  the answers its source gave the build.
 - `sabueso.CurationStore(path)`: `save(card)`, `apply(card)`, `records()`,
   `retract(source_assertion_id, reason, curator)`, `entities_named(name)`.
 - `sabueso.migrate_card(data, store=None)` and `sabueso.refresh_card(card,

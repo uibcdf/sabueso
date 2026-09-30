@@ -203,7 +203,13 @@ def resolve_protein_card(
         return None, resolution
 
     anchor = entity_ref[len(UNIPROT_PREFIX) :]
-    entry, retrieved_at = resolver.uniprot.fetch_entry(anchor)
+    # The entry the resolution read, not read again (a resolver of the user's own may
+    # not keep it).
+    entry, retrieved_at = (
+        resolver.entry(anchor)
+        if hasattr(resolver, "entry")
+        else resolver.uniprot.fetch_entry(anchor)
+    )
     protein_mapping = map_protein(entry, retrieved_at)
     mappings: List[Dict[str, Any]] = [protein_mapping]
 

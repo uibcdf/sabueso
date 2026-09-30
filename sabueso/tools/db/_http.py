@@ -90,11 +90,13 @@ def _clock() -> str:
 
 
 class Stamp:
-    """The retrieval time of one client call; see the module docstring."""
+    """The retrieval time of one client call, and the source it asks; see the module
+    docstring."""
 
-    def __init__(self) -> None:
+    def __init__(self, source: str | None = None) -> None:
         self.started = _clock()
         self.first: str | None = None
+        self.source = source
 
     @property
     def value(self) -> str:
@@ -104,11 +106,17 @@ class Stamp:
         return self.value
 
 
-def stamp() -> Stamp:
-    """Open the stamp of a client call: the answers it receives next date it."""
-    opened = Stamp()
+def stamp(source: str | None = None) -> Stamp:
+    """Open the stamp of a client call: the answers it receives next date it, and are
+    archived as ``source``'s (the name its SourceAssertions carry)."""
+    opened = Stamp(source)
     _STAMP.set(opened)
     return opened
+
+
+def _source() -> str | None:
+    opened = _STAMP.get()
+    return opened.source if opened is not None else None
 
 
 def _answered_at(when: str) -> None:
@@ -180,7 +188,14 @@ def urlopen(target: Any, timeout: float = 30.0, sleep=time.sleep):
         # An HTTP answer is an answer (a 404 is "not found"): kept, then raised again.
         content = exc.read() if exc.fp is not None else b""
         record = archive.record(
-            method, url, body, exc.code, _kept(exc.headers), content, retrieved_at
+            method,
+            url,
+            body,
+            exc.code,
+            _kept(exc.headers),
+            content,
+            retrieved_at,
+            source=_source(),
         )
         _archive.note(record)
         _answered_at(retrieved_at)
@@ -192,7 +207,7 @@ def urlopen(target: Any, timeout: float = 30.0, sleep=time.sleep):
         status = getattr(response, "status", 200)
         headers = response.headers
     record = archive.record(
-        method, url, body, status, _kept(headers), content, retrieved_at
+        method, url, body, status, _kept(headers), content, retrieved_at, _source()
     )
     _archive.note(record)
     _answered_at(retrieved_at)

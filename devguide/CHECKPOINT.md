@@ -59,8 +59,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     paced (`_http.gather`); RCSB entries are asked 25 per GraphQL request (#98);
   - the retrieval archive (#100, phase 1): `RetrievalArchive` with `recording()`,
     `reusing(max_age)` and `replaying(of=card)`, answers kept at `_http.urlopen`,
-    retrieval times taken from the answers (`_http.stamp`), `quality.retrievals` on
-    the card;
+    retrieval times taken from the answers (`_http.stamp`), each answer attributed to
+    its source, retention derived from the licence (`retention_from_licence@1`),
+    `quality.retrievals` on the card and `explain` linking statements to answers;
+  - UniProt's entry is read once per protein build (the resolver keeps it);
   - knowledge store format 2 (#99): unchanged statements shared across rebuilds
     (`retrieved_at` kept per state), integer keys, zlib compression; format 1 upgraded
     in place;

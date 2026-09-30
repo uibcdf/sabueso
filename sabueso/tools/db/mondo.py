@@ -29,7 +29,7 @@ from urllib.error import HTTPError, URLError
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.tools.db import _release
-from sabueso.tools.db._http import request, urlopen
+from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "MONDO"
@@ -194,6 +194,7 @@ class OnlineMONDOClient(_Index):
         return self._when
 
     def _asset(self) -> Dict[str, str]:
+        stamp(SOURCE)  # what an archive keeps of this lookup is MONDO's
         url = (
             LATEST
             if self.release is None
@@ -214,6 +215,7 @@ class OnlineMONDOClient(_Index):
         }
 
     def _download(self, asset: Dict[str, str]) -> tuple:
+        stamp(SOURCE)
         try:
             with urlopen(request(asset["url"]), timeout=self.timeout) as resp:  # nosec
                 payload = resp.read()

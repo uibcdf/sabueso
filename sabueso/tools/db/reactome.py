@@ -55,7 +55,7 @@ class OnlineReactomeClient:
         self.timeout = timeout
 
     def pathways(self, accession: str) -> Dict[str, Any]:
-        retrieval = stamp()
+        retrieval = stamp(SOURCE)
         pathways = _get(
             f"mapping/UniProt/{accession}/pathways", self.timeout, missing_ok=True
         )

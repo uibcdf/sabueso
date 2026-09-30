@@ -582,7 +582,8 @@ stated by a source, so they are not `value`/`source_assertion_ids` nodes:
 - `enrichments`: per-source enrichment outcomes;
 - `retrievals` (#100, schema 0.3.8, only when built with a `RetrievalArchive`):
   `{archive, mode (record, reuse or replay), max_age_seconds (reuse), records: [{ref,
-  method, url, request_hash, status, retrieved_at, content_hash, size}]}`, every answer
+  source, method, url, request_hash, status, retrieved_at, content_hash, size}]}`, every
+  answer (`source` is the SourceAssertion source name of the client that asked)
   the build received, in order, each kept in the archive under its `ref`
   (`sabueso:retrieval:sha256:…`);
 - `entity_resolution`: the resolution trace;

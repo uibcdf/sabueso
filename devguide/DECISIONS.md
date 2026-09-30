@@ -1347,3 +1347,17 @@ uibcdf/sabueso#99.
     records into `not_queried` (`not_in_archive`).
   - `reusing(max_age)` is the design's `archive_first`: an answer archived within
     `max_age` is used, anything older is asked and kept.
+- **Answers attributed to their source; retention from the licence** (same day, #100).
+  - Several sources share a service (RCSB PDB and PDB CCD one GraphQL endpoint;
+    PubChem and PubChem BioAssay PUG REST; ClinVar, MedGen and NCBI Gene E-utilities),
+    so a URL cannot name the source. The client says it: `stamp(source)`, with the
+    name its SourceAssertions carry; a test checks every name has recorded terms.
+  - Retention is derived when read, from the licence (`retention_from_licence@1`), so a
+    change of policy never rewrites the archive. Per-record terms (a depositor's, a
+    publication's) and unrecorded ones are `keep: internal`, `share: unknown`.
+  - A statement links to its source's answers in the build (`explain`, basis
+    `source_in_build`), without threading record ids through clients and mappings.
+  - Replay made visible that UniProt's entry was read twice per protein build. The
+    resolver now keeps the entries it read for the card tool; the second request is
+    gone.
+  - A replay's missing answer is not a failure, and no longer warns as one.

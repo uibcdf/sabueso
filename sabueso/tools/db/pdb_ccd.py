@@ -43,7 +43,7 @@ class OnlineCCDClient:
 
     def components(self, comp_ids: Iterable[str]) -> Dict[str, Any]:
         codes = _codes(comp_ids)
-        retrieval = stamp()
+        retrieval = stamp("PDB CCD")
         if not codes:
             return {"retrieved_at": retrieval.value, "components": {}, "missing": []}
         body = json.dumps(

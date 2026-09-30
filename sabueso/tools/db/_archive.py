@@ -45,6 +45,7 @@ from pathlib import Path
 from typing import Any, Dict, Iterator, List
 
 from sabueso.core.errors import StorageError
+from sabueso.core.terms import retention
 
 PREFIX = "sabueso:retrieval:"
 #: Headers clients read; the rest of a response's headers are not kept.
@@ -73,7 +74,8 @@ CREATE TABLE IF NOT EXISTS retrievals (
     status INTEGER NOT NULL,
     headers TEXT NOT NULL,
     retrieved_at TEXT NOT NULL,
-    content_hash TEXT NOT NULL REFERENCES contents (content_hash)
+    content_hash TEXT NOT NULL REFERENCES contents (content_hash),
+    source TEXT
 );
 CREATE INDEX IF NOT EXISTS retrievals_by_request
     ON retrievals (method, url, request_hash, retrieved_at);
@@ -144,8 +146,11 @@ class RetrievalArchive:
         headers: Dict[str, str],
         content: bytes,
         retrieved_at: str | None = None,
+        source: str | None = None,
     ) -> Dict[str, Any]:
-        """Keep one answer; return its record (``ref``, ``content_hash``, …)."""
+        """Keep one answer; return its record (``ref``, ``content_hash``, …).
+        ``source`` is the SourceAssertion source name of the client that asked; it is
+        not part of the reference, which names what was asked and answered."""
         record = {
             "method": method,
             "url": url,
@@ -164,8 +169,8 @@ class RetrievalArchive:
             )
             conn.execute(
                 "INSERT OR IGNORE INTO retrievals (ref, method, url, request_hash, "
-                "status, headers, retrieved_at, content_hash) "
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                "status, headers, retrieved_at, content_hash, source) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     ref,
                     method,
@@ -175,9 +180,10 @@ class RetrievalArchive:
                     json.dumps(record["headers"], sort_keys=True),
                     record["retrieved_at"],
                     record["content_hash"],
+                    source,
                 ),
             )
-        return {"ref": ref, "size": len(content), **record}
+        return {"ref": ref, "size": len(content), "source": source, **record}
 
     @contextmanager
     def _mode(
@@ -237,13 +243,15 @@ class RetrievalArchive:
         with self._session() as conn:
             row = conn.execute(
                 "SELECT r.method, r.url, r.request_hash, r.status, r.headers, "
-                "r.retrieved_at, r.content_hash, c.body FROM retrievals r "
+                "r.retrieved_at, r.content_hash, r.source, c.body FROM retrievals r "
                 "JOIN contents c ON c.content_hash = r.content_hash WHERE r.ref = ?",
                 (ref,),
             ).fetchone()
         if row is None:
             raise StorageError(f"No retrieval {ref} in {self.path}.")
-        method, url, request_hash, status, headers, when, content_hash, body = row
+        method, url, request_hash, status, headers, when, content_hash, source, body = (
+            row
+        )
         content = zlib.decompress(body)
         if _sha256(content) != content_hash:
             raise StorageError(
@@ -259,7 +267,21 @@ class RetrievalArchive:
             "headers": json.loads(headers),
             "retrieved_at": when,
             "content_hash": content_hash,
+            "source": source,
+            "retention": retention(source),
             "content": content,
+        }
+
+    def sources(self) -> Dict[str, Any]:
+        """Per source, how many answers the archive holds, and what its licence allows
+        with them (``retention_from_licence@1``)."""
+        with self._session() as conn:
+            rows = conn.execute(
+                "SELECT source, COUNT(*) FROM retrievals GROUP BY source ORDER BY source"
+            ).fetchall()
+        return {
+            (source or "unattributed"): {"records": n, "retention": retention(source)}
+            for source, n in rows
         }
 
     def stats(self) -> Dict[str, Any]:
@@ -333,6 +355,7 @@ def summary(record: Dict[str, Any]) -> Dict[str, Any]:
         k: record.get(k)
         for k in (
             "ref",
+            "source",
             "method",
             "url",
             "request_hash",

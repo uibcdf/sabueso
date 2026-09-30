@@ -97,7 +97,7 @@ class OnlineClinVarClient:
     def variants(
         self, gene_ids: Iterable[str], limit: int = DEFAULT_LIMIT
     ) -> Dict[str, Any]:
-        retrieval = stamp()
+        retrieval = stamp(SOURCE)
         api_key = _keys.key("ncbi", self._api_key)
         info = _get("einfo.fcgi", {"db": "clinvar"}, self.timeout, api_key)
         version = ((info.get("einforesult") or {}).get("dbinfo") or [{}])[0].get(

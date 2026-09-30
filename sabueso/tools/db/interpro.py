@@ -39,7 +39,7 @@ class OnlineInterProClient:
     def site_residues(self, accession: str) -> Dict[str, Any]:
         url = f"{INTERPRO_API}/protein/uniprot/{accession}/?residues"
         request = Request(url, headers={"Accept": "application/json"})
-        retrieval = stamp()
+        retrieval = stamp("InterPro")
         try:
             with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 body = resp.read()

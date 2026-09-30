@@ -75,7 +75,7 @@ class OnlineSKEMPIClient:
             raise ConnectorError(f"SKEMPI file could not be read: {exc}") from exc
 
     def mutations(self, pdb_ids: Iterable[str]) -> Dict[str, Any]:
-        retrieval = stamp()
+        retrieval = stamp(SOURCE)
         checksum, index = _release.remembered(SOURCE, VERSION, self._download)
         return {
             "retrieved_at": retrieval.value,

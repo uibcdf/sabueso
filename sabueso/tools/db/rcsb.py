@@ -133,7 +133,7 @@ class OnlineRCSBClient:
     def fetch_structure(self, pdb_id: str) -> Tuple[Dict[str, Any], str]:
         """The entry, or, when RCSB fails on its instance-level fields, the entry
         without them, marked ``_partial`` (``{"missing": [...], "reason": ...}``)."""
-        retrieval = stamp()
+        retrieval = stamp("RCSB PDB")
         data = self._post(STRUCTURE_QUERY, pdb_id)
         partial = None
         errors = data.get("errors") or []
@@ -159,7 +159,7 @@ class OnlineRCSBClient:
         out: Dict[str, Any] = {}
         for i in range(0, len(ids), BATCH_SIZE):
             batch = ids[i : i + BATCH_SIZE]
-            retrieval = stamp()
+            retrieval = stamp("RCSB PDB")
             try:
                 data = self._post(BATCH_QUERY, ",".join(batch), {"ids": batch})
             except ConnectorError:

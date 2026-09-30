@@ -48,7 +48,14 @@ Built so far (`sabueso.RetrievalArchive`):
   (`not_in_archive`);
 - retrieval times come from the answers (`_http.stamp`), so a replayed statement keeps
   the time its answer was read.
-Next: retention by licence, and `provenance_ref` per SourceAssertion.
+- each answer is attributed to its source (the client's `stamp(source)`, the name its
+  SourceAssertions carry), and what the source's licence allows with it is derived when
+  read (`retention_from_licence@1`, `sabueso.core.terms.retention`; `archive.sources()`):
+  `keep` (yes, or internal only) and `share` (yes with its conditions, or unknown when
+  terms are per record or not recorded);
+- `card.explain(ids)` links a statement to the answers its source gave the build
+  (`retrievals`, basis `source_in_build`). A link to the exact record, per
+  SourceAssertion, waits for a use that needs it.
 
 
 "Raw payloads: not stored" answered the first draft, and it is being replaced. MOLI's

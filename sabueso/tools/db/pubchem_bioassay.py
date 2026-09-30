@@ -122,7 +122,7 @@ class OnlinePubChemBioAssayClient:
         return data
 
     def assays(self, accession: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
-        retrieval = stamp()
+        retrieval = stamp("PubChem BioAssay")
         # One request for every result of the target, in every assay (#98).
         text = self._get(f"assay/target/accession/{accession}/concise/CSV", True)
         reader = csv.reader(io.StringIO(text))

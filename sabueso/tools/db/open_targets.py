@@ -99,7 +99,7 @@ class OnlineOpenTargetsClient:
         return data.get("data") or {}
 
     def associations(self, gene: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
-        retrieval = stamp()
+        retrieval = stamp(SOURCE)
         rows, index, count, target, version = [], 0, None, None, None
         while count is None or len(rows) < min(limit, count):
             data = self._post(
@@ -134,7 +134,7 @@ class OnlineOpenTargetsClient:
         """A disease's associated targets, in Open Targets' order (overall score), at
         most ``limit`` of ``count``: ``{"retrieved_at", "version", "record":
         {"disease", "count", "rows"}}``. ``disease`` is a MONDO, EFO… id."""
-        retrieval = stamp()
+        retrieval = stamp(SOURCE)
         rows, index, count, found, version = [], 0, None, None, None
         while count is None or len(rows) < min(limit, count):
             data = self._post(

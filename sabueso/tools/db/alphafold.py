@@ -35,7 +35,7 @@ class OnlineAlphaFoldClient:
         self.timeout = timeout
 
     def prediction(self, accession: str) -> Dict[str, Any]:
-        retrieval = stamp()
+        retrieval = stamp("AlphaFold DB")
         try:
             with urlopen(  # nosec - trusted endpoint
                 f"{ALPHAFOLD_API}/{accession}", timeout=self.timeout

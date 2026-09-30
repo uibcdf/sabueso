@@ -63,7 +63,7 @@ class OnlinePubChemClient:
 
     def compound(self, cid: str) -> Dict[str, Any]:
         url = f"{PUBCHEM_PUG}/{cid}/property/{quote(PROPERTIES, safe=',')}/JSON"
-        retrieval = stamp()
+        retrieval = stamp("PubChem")
         try:
             with urlopen(url, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
@@ -89,7 +89,7 @@ class OnlinePubChemClient:
         url = f"{PUBCHEM_COMPOUND}/{notation}/cids/JSON"
         # POST: a SMILES or an InChI carries characters a URL path would mangle.
         data = urlencode({notation: structure}).encode("utf-8")
-        retrieval = stamp()
+        retrieval = stamp("PubChem")
         try:
             with urlopen(request(url, data=data), timeout=self.timeout) as resp:
                 body = json.loads(resp.read().decode("utf-8"))

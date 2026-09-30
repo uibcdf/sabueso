@@ -71,7 +71,7 @@ class OnlineClinicalTrialsClient:
 
     def studies(self, nct_ids: Iterable[str]) -> Dict[str, Any]:
         ids = sorted({i.strip().upper() for i in nct_ids if i and i.strip()})
-        retrieval = stamp()
+        retrieval = stamp(SOURCE)
         version = _get("version", {}, self.timeout).get("dataTimestamp")
         found: Dict[str, Any] = {}
         for i in range(0, len(ids), BATCH):

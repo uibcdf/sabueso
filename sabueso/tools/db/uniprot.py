@@ -128,7 +128,7 @@ class OnlineUniProtClient:
         request = Request(
             f"{UNIPROT_REST}/{accession}.json", headers={"Accept": "application/json"}
         )
-        retrieval = stamp()
+        retrieval = stamp("UniProt")
         try:
             with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 return json.loads(resp.read().decode("utf-8")), retrieval.value
@@ -159,7 +159,7 @@ class OnlineUniProtClient:
                 "size": SEARCH_SIZE,
             }
         )
-        retrieval = stamp()
+        retrieval = stamp("UniProt")
         try:
             with urlopen(  # nosec - trusted endpoint
                 f"{UNIPROT_REST}/search?{params}", timeout=self.timeout

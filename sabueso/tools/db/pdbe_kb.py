@@ -48,7 +48,7 @@ class OnlinePDBeKBClient:
 
     def _fetch(self, kind: str, accession: str) -> Dict[str, Any]:
         url = f"{PDBE_GRAPH_API}/uniprot/{kind}/{accession}"
-        retrieval = stamp()
+        retrieval = stamp("PDBe-KB")
         missing = f"PDBe-KB has no {KINDS[kind]} for {accession}"
         try:
             with urlopen(url, timeout=self.timeout) as resp:  # nosec - trusted endpoint

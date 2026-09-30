@@ -67,7 +67,7 @@ class OnlineEuropePMCClient:
         self.timeout = timeout
 
     def mentions(self, accession: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
-        retrieval = stamp()
+        retrieval = stamp(SOURCE)
         articles, cursor, hits, version = [], "*", 0, None
         while len(articles) < limit:
             params = {

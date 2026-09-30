@@ -74,7 +74,7 @@ class OnlineStringClient:
             "required_score": required_score,
             "limit": limit,
         }
-        retrieval = stamp()
+        retrieval = stamp("STRING")
         # One partner more than the limit tells whether STRING holds more: STRING
         # states no total, and a cut must never pass for the whole answer.
         results = _get(

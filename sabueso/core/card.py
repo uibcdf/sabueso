@@ -447,6 +447,10 @@ class Card:
         is this here?"."""
         from .source_assertion_store import acquisition_of
 
+        # Built with a retrieval archive (#100): the answers each source gave this build.
+        answers: Dict[str, List[str]] = {}
+        for record in (self.quality.get("retrievals") or {}).get("records") or []:
+            answers.setdefault(record.get("source"), []).append(record["ref"])
         out = []
         for sa_id in source_assertion_ids:
             sa = self.source_assertion_store.get(sa_id)
@@ -466,6 +470,16 @@ class Card:
                     "retrieved_at": sa.get("retrieved_at"),
                     "asserted_value": sa.get("asserted_value"),
                     "acquisition": acquisition_of(sa),
+                    **(
+                        {
+                            "retrievals": {
+                                "basis": "source_in_build",
+                                "refs": answers.get(source.get("name"), []),
+                            }
+                        }
+                        if answers
+                        else {}
+                    ),
                     **(
                         {"source_metadata": sa["source_metadata"]}
                         if sa.get("source_metadata")

@@ -118,7 +118,7 @@ class OnlineOrphadataClient:
             raise ConnectorError(f"Orphadata file is not valid XML: {exc}") from exc
 
     def associations(self, accession: str) -> Dict[str, Any]:
-        retrieval = stamp()
+        retrieval = stamp(SOURCE)
         version, index = self._index()
         if accession not in index:
             raise RecordNotFoundError(
@@ -134,7 +134,7 @@ class OnlineOrphadataClient:
     def genes(self, orpha_code: str) -> Dict[str, Any]:
         """The genes Orphanet associates with a disorder: ``{"retrieved_at",
         "version", "record": [row with "uniprot", ...]}``."""
-        retrieval = stamp()
+        retrieval = stamp(SOURCE)
         version, index = self._index()
         rows = genes_of(index, orpha_code)
         if not rows:

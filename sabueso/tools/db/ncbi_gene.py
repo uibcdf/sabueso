@@ -45,7 +45,7 @@ class OnlineNCBIGeneClient:
         if api_key:
             query["api_key"] = api_key
         url = f"{EFETCH}?{urlencode(query)}"
-        retrieval = stamp()
+        retrieval = stamp("NCBI Gene")
         try:
             with urlopen(url, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 xml = resp.read().decode("utf-8")

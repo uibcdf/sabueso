@@ -93,9 +93,11 @@ def test_what_the_archive_does_not_hold_is_not_queried(tmp_path, monkeypatch):
     monkeypatch.setattr(_http, "_urlopen", _no_network)
     import warnings
 
-    with archive.replaying(), warnings.catch_warnings():
-        warnings.simplefilter("ignore")  # UniChem "could not be consulted": not asked
+    with archive.replaying(), warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
         card, _ = sabueso.resolve(f"smiles:{FLAT}", unichem=True)
+    # Not asked is not a failure: no "could not be consulted" warning.
+    assert not [w for w in caught if "could not be consulted" in str(w.message)]
     (unichem,) = [e for e in card.quality["enrichments"] if e["source"] == "UniChem"]
     assert (unichem["status"], unichem["reason"]) == ("not_queried", "not_in_archive")
     with archive.replaying(), pytest.raises(NotArchivedError):
@@ -119,3 +121,59 @@ def test_fresh_answers_are_reused_and_old_ones_asked_again(tmp_path, monkeypatch
     # the same second is the same record)
     with pytest.raises(ValueError):
         archive.reusing(timedelta(0))
+
+
+def test_each_answer_is_its_source_s_and_explain_links_a_statement_to_them(
+    tmp_path, monkeypatch
+):
+    archive = sabueso.RetrievalArchive(tmp_path / "a.db")
+    monkeypatch.setattr(_http, "_urlopen", _network([]))
+    with archive.recording():
+        card = _build()
+    assert {r["source"] for r in card.quality["retrievals"]["records"]} == {"PubChem"}
+    sa = card.source_assertion_store.to_list()[0]
+    (explained,) = card.explain([sa["id"]])
+    assert explained["retrievals"]["basis"] == "source_in_build"
+    assert len(explained["retrievals"]["refs"]) == 2
+    held = archive.sources()
+    assert held["PubChem"]["records"] == 2
+    assert held["PubChem"]["retention"]["keep"] == "yes"
+
+
+def test_every_client_names_a_source_whose_terms_are_recorded():
+    import re
+    from pathlib import Path
+
+    from sabueso.core.terms import source_terms
+
+    known = set(source_terms())
+    for path in Path("sabueso/tools/db").glob("*.py"):
+        text = path.read_text()
+        constant = re.search(r'^SOURCE = "([^"]+)"', text, re.M)
+        for name in re.findall(r"stamp\(([^)]*)\)", text):
+            if not name or path.name == "_http.py":
+                continue
+            value = constant.group(1) if name == "SOURCE" else name.strip('"')
+            assert value in known, (path.name, value)
+
+
+@pytest.mark.parametrize(
+    "source, keep, share, conditions",
+    [
+        ("ChEMBL", "yes", "yes", ["attribution", "share_alike"]),
+        ("Reactome", "yes", "yes", []),
+        ("UniProt", "yes", "yes", ["attribution"]),
+        ("PubChem BioAssay", "internal", "unknown", None),
+        ("Nowhere", "internal", "unknown", None),
+    ],
+)
+def test_retention_is_derived_from_the_licence(source, keep, share, conditions):
+    from sabueso.core.terms import retention
+
+    answer = retention(source)
+    assert answer["rule"] == "retention_from_licence@1"
+    assert (answer["keep"], answer["share"]) == (keep, share)
+    if conditions is not None:
+        assert answer["conditions"] == conditions
+    else:
+        assert answer["reason"] in ("per_record_terms", "no_terms_recorded")

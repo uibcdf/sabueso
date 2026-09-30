@@ -122,7 +122,7 @@ class OnlineDISEASESClient:
         self, proteins: Iterable[str], channels: Iterable[str] = CHANNELS
     ) -> Dict[str, Any]:
         ids = sorted({p.split(".")[0] for p in proteins if p})
-        retrieval = stamp()
+        retrieval = stamp(SOURCE)
         versions, indexes = {}, {}
         for channel in channels:
             versions[channel], indexes[channel] = self._fetch(channel)

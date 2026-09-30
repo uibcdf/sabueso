@@ -59,7 +59,12 @@ def report_outcomes(records: Iterable[Dict[str, Any]], subject: str) -> None:
     recorded as data, and is not a diagnostic."""
     for record in records:
         source = record.get("source") or "A source"
-        if record.get("status") == "error":
+        # Replaying from an archive that does not hold the answer: the source was not
+        # asked, which is not its failure (#100); the card records it as not_queried.
+        not_archived = str(record.get("detail") or "").startswith(
+            "Not in the retrieval archive"
+        )
+        if record.get("status") == "error" and not not_archived:
             warn(
                 EnrichmentFailedWarning(
                     source=source, subject=subject, detail=record.get("detail") or ""

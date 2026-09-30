@@ -194,8 +194,19 @@ class EntityResolver:
         self.policy = policy
         # Consulted only when two candidates state loci that cannot be compared (#69).
         self.ncbi_gene = ncbi_gene_client
+        #: The UniProt entries the last resolution read, so that a card tool building
+        #: from it does not ask UniProt again (#100).
+        self._read: Dict[str, Tuple[Dict[str, Any], str]] = {}
+
+    def entry(self, accession: str) -> Tuple[Dict[str, Any], str]:
+        """``(entry, retrieved_at)`` of a UniProt entry: the one the last resolution
+        read, or read now."""
+        if accession in self._read:
+            return self._read[accession]
+        return self.uniprot.fetch_entry(accession)
 
     def resolve(self, query: EntityQuery | str) -> EntityResolution:
+        self._read = {}  # only what this resolution reads
         if isinstance(query, str):
             query = EntityQuery(identifier=query)
         from sabueso import __version__
@@ -377,6 +388,7 @@ class EntityResolver:
     def _fetch(self, accession: str, decision: Dict[str, Any]) -> Dict[str, Any]:
         try:
             entry, retrieved_at = self.uniprot.fetch_entry(accession)
+            self._read[accession] = (entry, retrieved_at)
         except RecordNotFoundError:
             decision["sources"].append(
                 {"name": "UniProt", "record": accession, "outcome": "not_found"}

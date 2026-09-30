@@ -64,7 +64,7 @@ class OnlineMedGenClient:
 
     def concepts(self, concept_ids: Iterable[str]) -> Dict[str, Any]:
         ids = _ids(concept_ids)
-        retrieval = stamp()
+        retrieval = stamp(SOURCE)
         info = self._get("einfo.fcgi", {"db": "medgen"})
         version = ((info.get("einforesult") or {}).get("dbinfo") or [{}])[0].get(
             "lastupdate"

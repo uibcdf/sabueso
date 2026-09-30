@@ -50,7 +50,7 @@ class OnlineGnomADClient:
         self.timeout = timeout
 
     def variants(self, gene: str) -> Dict[str, Any]:
-        retrieval = stamp()
+        retrieval = stamp(SOURCE)
         body = json.dumps({"query": QUERY, "variables": {"gene": gene}}).encode("utf-8")
         try:
             with urlopen(  # nosec - trusted endpoint

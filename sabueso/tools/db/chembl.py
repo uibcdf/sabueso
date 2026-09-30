@@ -200,7 +200,7 @@ class OnlineChEMBLClient:
     def bioactivities(
         self, target: str, limit: int = DEFAULT_ACTIVITY_LIMIT
     ) -> Dict[str, Any]:
-        retrieval = stamp()
+        retrieval = stamp("ChEMBL")
         _chembl_get(f"target/{target}.json", {"only": "target_chembl_id"}, self.timeout)
         activities: list = []
         total = 0
@@ -283,7 +283,7 @@ class OnlineChEMBLClient:
     ) -> Dict[str, Any]:
         """The activities of named assays, whatever their target: how a PubChem copy
         leads to a ChEMBL original a target-based query did not return (#68)."""
-        retrieval = stamp()
+        retrieval = stamp("ChEMBL")
         ids = sorted({i for i in assay_ids if i})
         activities: list = []
         for i in range(0, len(ids), ASSAY_CHUNK):
@@ -321,7 +321,7 @@ class OnlineChEMBLClient:
     def molecules(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
         """Molecule records by ChEMBL id: ``{version, retrieved_at, molecules, missing}``."""
         ids = sorted({i for i in chembl_ids if i})
-        retrieval = stamp()
+        retrieval = stamp("ChEMBL")
         found: Dict[str, Any] = {}
         for i in range(0, len(ids), MOLECULE_CHUNK):
             chunk = ids[i : i + MOLECULE_CHUNK]
@@ -347,7 +347,7 @@ class OnlineChEMBLClient:
         """Indications by molecule ChEMBL id: ``{version, retrieved_at, indications,
         missing}``. ``missing`` lists molecules ChEMBL states no indication for."""
         ids = sorted({i for i in chembl_ids if i})
-        retrieval = stamp()
+        retrieval = stamp("ChEMBL")
         found: Dict[str, List[Dict[str, Any]]] = {}
         for i in range(0, len(ids), MOLECULE_CHUNK):
             chunk = ids[i : i + MOLECULE_CHUNK]
@@ -383,7 +383,7 @@ class OnlineChEMBLClient:
         ``EFO:…``/``MONDO:…`` (``efo_id``) or ``MESH:D…`` (``mesh_id``). Returns
         ``{version, retrieved_at, indications: {molecule: [indication, ...]}}``."""
         ids = sorted({i for i in disease_ids if i})
-        retrieval = stamp()
+        retrieval = stamp("ChEMBL")
         found: Dict[str, List[Dict[str, Any]]] = {}
         filters = {
             "efo_id__in": [i for i in ids if not i.upper().startswith("MESH:")],

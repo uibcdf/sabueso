@@ -42,7 +42,7 @@ class OnlineNCBITaxonomyClient:
 
     def taxa(self, tax_ids: Iterable[Any]) -> Dict[str, Any]:
         ids = _ids(tax_ids)
-        retrieval = stamp()
+        retrieval = stamp("NCBI Taxonomy")
         found: Dict[int, Dict[str, Any]] = {}
         for i in range(0, len(ids), BATCH):
             chunk = ids[i : i + BATCH]

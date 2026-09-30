@@ -156,7 +156,7 @@ class OnlinePHIBaseClient:
         def build() -> Dict[str, Any]:
             # Sessions as compact text: a fraction of the parsed release's memory.
             sessions, index = self._download()
-            retrieval = stamp()
+            retrieval = stamp(SOURCE)
             return {
                 "retrieved_at": retrieval.value,
                 "sessions": sessions,
