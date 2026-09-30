@@ -1281,3 +1281,10 @@ uibcdf/sabueso#98, #88.
   monomers took 635 s instead of about 40 minutes: UniChem's latency (about 1.4 s),
   not the pace, is the limit. A cache of lookups would remove repeated ones, but it is
   a raw-payload cache, an open question of `CACHE_POLICY.md`, and is proposed apart.
+- **RCSB entries in batches** (same day, #98). The Data API answers `entries(entry_ids:
+  [...])` with the same fields as one entry, and leaves out an entry it does not hold.
+  Sabueso asks 25 per request. An entry an error touched is asked alone, so the
+  partial-entry fallback of #74 still applies to it; a batch that fails as a whole is
+  asked entry by entry. A client without `fetch_structures` (saved entries, a user's
+  client) is asked one entry at a time. Live, 40 EGFR entries gave a card with the same
+  content id as one-at-a-time, in 5.6 s instead of 13.1 s.

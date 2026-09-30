@@ -12,6 +12,11 @@ Ligands come with the PDB "subject of investigation" flag and, per polymer chain
 residues near each ligand instance (``rcsb_ligand_neighbors``, structure numbering).
 
 ``fetch_structure(pdb_id)`` returns ``(entry, retrieved_at)`` from one GraphQL request.
+``fetch_structures(pdb_ids)`` asks for many entries at once (``entries(entry_ids:
+[...])``, #98), 25 per request, and returns ``{pdb_id: (entry, retrieved_at) or the
+error}``. An entry RCSB does not hold is left out of its answer, and is not found. An
+entry whose instance-level fields fail is fetched again alone, with the fallback above;
+a batch that fails as a whole is asked entry by entry.
 ``OnlineRCSBClient`` queries data.rcsb.org; ``FixtureRCSBClient`` reads saved responses
 from ``<directory>/rcsb/<PDB_ID>.json``. Both raise ``RecordNotFoundError`` when RCSB holds
 no entry and ``ConnectorError`` when the source cannot answer.
@@ -84,16 +89,39 @@ INSTANCE_FIELDS = """      rcsb_polymer_instance_feature {
 """
 PARTIAL_QUERY = STRUCTURE_QUERY.replace(INSTANCE_FIELDS, "")
 PARTIAL_MISSING = ["rcsb_polymer_instance_feature", "rcsb_ligand_neighbors"]
+#: The same fields for many entries in one request (#98).
+BATCH_QUERY = STRUCTURE_QUERY.replace(
+    "query($id: String!) { entry(entry_id: $id) {",
+    "query($ids: [String!]!) { entries(entry_ids: $ids) {",
+)
+BATCH_SIZE = 25
+
+
+def fetch_many(client: Any, pdb_ids: Any) -> Dict[str, Any]:
+    """``{pdb_id: (entry, retrieved_at) or the error}``: the client's batched lookup when
+    it has one, else one entry at a time."""
+    ids = [p.upper() for p in pdb_ids]
+    if hasattr(client, "fetch_structures"):
+        return client.fetch_structures(ids)
+    out: Dict[str, Any] = {}
+    for pdb_id in ids:
+        try:
+            out[pdb_id] = client.fetch_structure(pdb_id)
+        except (RecordNotFoundError, ConnectorError) as exc:
+            out[pdb_id] = exc
+    return out
 
 
 class OnlineRCSBClient:
     def __init__(self, timeout: float = 30.0) -> None:
         self.timeout = timeout
 
-    def _post(self, query: str, pdb_id: str) -> Dict[str, Any]:
-        body = json.dumps({"query": query, "variables": {"id": pdb_id.upper()}}).encode(
-            "utf-8"
-        )
+    def _post(
+        self, query: str, pdb_id: str, variables: Dict[str, Any] | None = None
+    ) -> Dict[str, Any]:
+        body = json.dumps(
+            {"query": query, "variables": variables or {"id": pdb_id.upper()}}
+        ).encode("utf-8")
         request = Request(
             RCSB_GRAPHQL, data=body, headers={"Content-Type": "application/json"}
         )
@@ -126,6 +154,49 @@ class OnlineRCSBClient:
         if partial:
             entry["_partial"] = partial
         return entry, retrieved_at
+
+    def fetch_structures(self, pdb_ids: Any) -> Dict[str, Any]:
+        ids = list(dict.fromkeys(p.upper() for p in pdb_ids))
+        out: Dict[str, Any] = {}
+        for i in range(0, len(ids), BATCH_SIZE):
+            batch = ids[i : i + BATCH_SIZE]
+            retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+            try:
+                data = self._post(BATCH_QUERY, ",".join(batch), {"ids": batch})
+            except ConnectorError:
+                data = None  # asked entry by entry below
+            entries = ((data or {}).get("data") or {}).get("entries")
+            errors = (data or {}).get("errors") or []
+            # An error names the entry it touched by its index in the answer.
+            touched = {
+                e["path"][1]
+                for e in errors
+                if len(e.get("path") or []) > 1 and e["path"][0] == "entries"
+            }
+            if entries is None or any(len(e.get("path") or []) < 2 for e in errors):
+                again = list(batch)  # the batch failed as a whole
+            else:
+                held = {
+                    entry["rcsb_id"].upper(): index
+                    for index, entry in enumerate(entries)
+                    if entry is not None
+                }
+                unnamed = any(entry is None for entry in entries)
+                again = []
+                for pdb_id in batch:
+                    index = held.get(pdb_id)
+                    if index is not None and index not in touched:
+                        out[pdb_id] = (entries[index], retrieved_at)
+                    elif index is not None or unnamed:
+                        again.append(pdb_id)  # alone, with the partial fallback
+                    else:
+                        out[pdb_id] = RecordNotFoundError(f"RCSB has no entry {pdb_id}")
+            for pdb_id in again:
+                try:
+                    out[pdb_id] = self.fetch_structure(pdb_id)
+                except (RecordNotFoundError, ConnectorError) as exc:
+                    out[pdb_id] = exc
+        return out
 
 
 class FixtureRCSBClient:

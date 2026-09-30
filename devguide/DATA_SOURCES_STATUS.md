@@ -44,7 +44,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 
 ### RCSB PDB — polymer-entity mapping (GraphQL)
 - **Status**: implemented (uibcdf/sabueso#6, step 4b)
-- **Access**: online GraphQL (`OnlineRCSBClient`), saved entries (`FixtureRCSBClient`, `temp_data/rcsb/`)
+- **Access**: online GraphQL (`OnlineRCSBClient`), 25 entries per request (`fetch_structures`, `entries(entry_ids: [...])`, #98); saved entries (`FixtureRCSBClient`, `temp_data/rcsb/`). For 40 EGFR entries: 5.6 s batched against 13.1 s one at a time, with the same knowledge (content id).
 - **Quality**: green for the listed coverage. Verified on 1HTI, 1KLG, 1TCD, 1SUX, 2OMA, 2VOM, 3Q37, 4HHP and 4UNK, and live on every entry of TcTIM and HsTIM (2026-09-25).
 - **Coverage**:
   - `has_structure` relationships per UniProt accession aligned to polymer entities: chains, UniProt-numbered ranges, method, resolution;

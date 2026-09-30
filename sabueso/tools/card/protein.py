@@ -251,16 +251,21 @@ def resolve_protein_card(
     )
     if pubchem_options is not None and not admitted("PubChem BioAssay"):
         pubchem_options = None
+    from sabueso.tools.db.rcsb import fetch_many
+
+    # Many entries per request where the client can (#98); one record per structure.
+    fetched = fetch_many(resolver.rcsb, structures) if structures else {}
     for pdb_id in structures:
         record = {"source": "RCSB PDB", "structure": pdb_id}
-        try:
-            rcsb_entry, rcsb_retrieved_at = resolver.rcsb.fetch_structure(pdb_id)
-        except RecordNotFoundError:
+        answer = fetched.get(pdb_id.upper())
+        if isinstance(answer, RecordNotFoundError):
             enrichments.append({**record, "status": "not_found"})
             continue
-        except ConnectorError as exc:
-            enrichments.append({**record, "status": "error", "detail": str(exc)})
+        if isinstance(answer, ConnectorError) or answer is None:
+            detail = str(answer) if answer is not None else "no answer"
+            enrichments.append({**record, "status": "error", "detail": detail})
             continue
+        rcsb_entry, rcsb_retrieved_at = answer
         mapped = map_structure_entities(
             rcsb_entry,
             rcsb_retrieved_at,
