@@ -255,6 +255,11 @@
   sequence its entry states. When UniProt revises the sequence and GPCRdb has not yet,
   the numbers stay in GPCRdb's numbering (`sequence_differs`) until both agree: correct,
   but a card loses its placed residues until then.
+- **Annotations RCSB integrates carry their own origin** (2026-09-30). Membrane
+  segments (OPM, PDBTM) and secondary structure (PROMOTIF, DSSP) reach cards in RCSB's
+  statement, with the resource that assigned them. The statement's terms are RCSB's
+  (CC0); the assigning resource's own terms, where it states any, are not recorded
+  separately. No licence was found for OPM on its site.
 - **gnomAD's rate limit.** The service answers HTTP 429 after bursts (about ten
   requests a minute sustained). Sabueso retries with backoff. A build that asks many
   genes in a row may still see errors, recorded as `error`, never as absence.

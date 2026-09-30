@@ -343,6 +343,65 @@ def _secondary_structure(
     return out or None
 
 
+def _membrane_segments(
+    entities: List[Dict[str, Any]], acc: str
+) -> Dict[str, List[Dict[str, Any]]] | None:
+    """Per chain, the transmembrane segments each resource RCSB integrates assigns, in
+    UniProt numbering (#83).
+
+    RCSB states them as instance features (``MEMBRANE_SEGMENT``), in entity numbering,
+    each with the resource that assigned it (``provenance_source``: OPM, PDBTM…).
+    Resources disagree by a few residues at the ends, so each keeps its own segments:
+    ``[{assigned_by, segments}]``. Each segment is placed in UniProt numbering through
+    the entity alignment, and split where the alignment has a gap. A chain is listed
+    only when a segment is stated for it: a chain without any is not stated, never
+    soluble.
+    """
+    out: Dict[str, List[Dict[str, Any]]] = {}
+    for entity in entities:
+        if acc not in entity["uniprot"]:
+            continue
+        for instance in entity["instances"]:
+            by_resource: Dict[str, List[list]] = {}
+            for f in instance.get("rcsb_polymer_instance_feature") or []:
+                if f.get("type") != "MEMBRANE_SEGMENT":
+                    continue
+                resource = f.get("provenance_source") or "not stated"
+                for pos in f.get("feature_positions") or []:
+                    beg = pos.get("beg_seq_id")
+                    if beg is None:
+                        continue
+                    end = pos.get("end_seq_id") or beg
+                    positions = [
+                        p
+                        for i in range(int(beg), int(end) + 1)
+                        for a, p in [_uniprot_position(entity, i, acc)]
+                        if a is not None
+                    ]
+                    by_resource.setdefault(resource, []).extend(
+                        merge_ranges([[p, p] for p in positions])
+                    )
+            listed = [
+                {
+                    "assigned_by": resource,
+                    "segments": [list(r) for r in sorted({tuple(r) for r in ranges})],
+                }
+                for resource, ranges in sorted(by_resource.items())
+                if ranges
+            ]
+            if listed:
+                chain = str(
+                    (
+                        instance.get(
+                            "rcsb_polymer_entity_instance_container_identifiers"
+                        )
+                        or {}
+                    ).get("auth_asym_id")
+                )
+                out[chain] = listed
+    return out or None
+
+
 def author_position(segments: List[list] | None, position: int) -> str | None:
     """The author residue id of a UniProt position, from ``author_numbering`` segments."""
     for beg, end, author in segments or []:
@@ -609,6 +668,27 @@ def map_structure_entities(
             "assemblies": assemblies,
             "primary_citation": primary_citation,
         }
+        # Only when stated, so that the statements of entries without them keep their
+        # content (#83).
+        membrane_features = {
+            str(
+                (i.get("rcsb_polymer_entity_instance_container_identifiers") or {}).get(
+                    "auth_asym_id"
+                )
+            ): membrane
+            for e in mine
+            for i in e["instances"]
+            for membrane in [
+                [
+                    f
+                    for f in i.get("rcsb_polymer_instance_feature") or []
+                    if f.get("type") == "MEMBRANE_SEGMENT"
+                ]
+            ]
+            if membrane
+        }
+        if membrane_features:
+            stated["membrane_segments"] = membrane_features
         assertion = make_source_assertion(
             "relationships.has_structure", stated, "RCSB PDB", pdb_id, retrieved_at
         )
@@ -640,6 +720,9 @@ def map_structure_entities(
         secondary = _secondary_structure(mine, acc)
         if secondary:
             qualifiers["secondary_structure"] = secondary
+        membrane = _membrane_segments(mine, acc)
+        if membrane:
+            qualifiers["membrane_segments"] = membrane
         if lengths.get(acc):
             qualifiers["coverage"] = coverage(ranges, lengths[acc])
         relationships.append(

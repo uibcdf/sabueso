@@ -234,6 +234,12 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
                 "annotations.gpcr_structures",
             )
         ),
+        # Transmembrane segments RCSB integrates (OPM, PDBTM), set only when stated.
+        {
+            "path": "relationships.has_structure.membrane_segments",
+            "filled_by": "structures",
+            "entity_types": ("protein",),
+        },
         # gnomAD's consequence on the canonical transcript (#85).
         *(
             {"path": path, "filled_by": "gnomad", "entity_types": ("protein",)}

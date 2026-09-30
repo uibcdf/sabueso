@@ -79,6 +79,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     segments and the generic number of each residue in every scheme (in UniProt
     numbering when GPCRdb's sequence is the entry's, `gpcrdb_sequence_numbering@1`),
     and each structure's activation state, ligands and signalling protein;
+  - transmembrane segments per chain (`has_structure` qualifier `membrane_segments`,
+    #83): the segments OPM and PDBTM assign, as RCSB integrates them, each kept apart;
   - local mirrors (#100, phase 2): `sabueso.mirrors` (install, status, update policies,
     remove, `using` with `mirror_first` or `offline`); BindingDB's monthly release as
     the first mirror (`MirrorBindingDBClient`), recorded as `access: mirror` with its

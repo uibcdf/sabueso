@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 35, evaluating 20, deferred 25, retired 3, out of scope 13.
+Summary: in use 35, evaluating 19, deferred 26, retired 3, out of scope 13.
 
 ## In use
 
@@ -85,7 +85,6 @@ and Sabueso warns. The other sources in use are read whole.
 | [ASD (Allosteric Database)](http://mdl.shsmu.edu.cn/ASD/) | Binding sites, cavities and specialised families | Allosteric modulators, regulatory sites and conformational communication. | under review | 2026-09-25 |
 | [BRENDA](https://brenda-enzymes.org/) | Binding sites, cavities and specialised families | Enzyme information: kinetics (Km, kcat), inhibitors, cofactors and conditions. | Reviewed 2026-09-29 (#94): data CC BY 4.0 (its licence page); the SOAP web service needs a registered account (email and password). Fits every terms profile. Strong candidate: kinetics (Km, kcat, Ki) and inhibitors per EC number and organism, e.g. TIM (EC 5.3.1.1) of T. cruzi and human. Waits on a user's account for the key rule. | 2026-09-25 |
 | [mpstruc](https://blanco.biomol.uci.edu/mpstruc/) | Binding sites, cavities and specialised families | Membrane proteins of known structure, classified by topology and family. | under review | 2026-09-25 |
-| [OPM (Orientations of Proteins in Membranes)](https://opm.phar.umich.edu/) | Binding sites, cavities and specialised families | Position and orientation of PDB structures in the lipid bilayer. | under review | 2026-09-25 |
 | [SAbDab / Thera-SAbDab](https://opig.stats.ox.ac.uk/webapps/sabdab/) | Binding sites, cavities and specialised families | Antibody and nanobody structures with standard numbering, CDRs and clinical metadata. | under review | 2026-09-25 |
 | [sc-PDB](http://bioinfo-pharma.u-strasbg.fr/scPDB/) | Binding sites, cavities and specialised families | Druggable binding sites extracted from the PDB, cleaned of crystallographic artefacts. | under review | 2026-09-25 |
 | [ESM Metagenomic Atlas](https://esmatlas.com/) | Macromolecular structures, models and dynamics | Structures predicted at scale by a protein language model. | under review | 2026-09-25 |
@@ -112,6 +111,7 @@ and Sabueso warns. The other sources in use are read whole.
 | [CoDNaS](https://codnas.inf.unlp.edu.ar/) | Did not answer on 2026-09-29. | It answers again. | 2026-09-25 |
 | [BioLiP](https://zhanggroup.org/BioLiP/) | Bulk downloads of a third-party pipeline, not a per-record service; the PDB subject-of-investigation flag already separates ligands from additives, and PDBe-KB gives contacts. | A batch import exists, or a question needs curated biologically relevant sites that PDBe-KB and the PDB flag do not give. | 2026-09-23 |
 | [Binding MOAD](https://bindingmoad.org/) | Sunset: online until mid-2024, with its affinity backend licensed to Chemical Abstracts Service; earlier terms non-commercial. | An open release of its data exists. | 2026-09-25 |
+| [OPM (Orientations of Proteins in Membranes)](https://opm.phar.umich.edu/) | Evaluated 2026-09-30. Its transmembrane segments reach cards through RCSB, which integrates them as instance features with their provenance (has_structure qualifier membrane_segments, beside PDBTM's). Its own API (opm-back.cc.lehigh.edu) adds the hydrophobic thickness, tilt, transfer energy and membrane type per entry, but names chains by the letters of its own model (C and D for 2RH1, chain A in the PDB), and proteins by UniProt entry name; no data licence was found on its site (the earlier 'CC BY 3.0' could not be confirmed). | A use needs the membrane position (thickness, tilt, transfer energy), and OPM states its terms and a mapping of its chains to the PDB's. | 2026-09-25 |
 | [M-CSA (Mechanism and Catalytic Site Atlas)](https://www.ebi.ac.uk/thornton-srv/m-csa/) | Evaluated: it links both TIMs to an entry but states catalytic residues and roles only in the numbering of a reference species; placing them on another sequence needs an alignment. | A residue mapping from an alignment (MolSysMT) can be applied to curated sites (#30). | 2026-09-23 |
 | [SABIO-RK](http://sabiork.h-its.org/) | Non-commercial use only (HITS terms, CC BY-NC). Reviewed 2026-09-29 (#94): the non_commercial profile could admit it, but its site and REST API did not answer that day. | Its services answer, and kinetics a target needs that BRENDA (CC BY 4.0) does not give; then for the non_commercial profile only. | 2026-09-25 |
 | [CovPDB](https://bioinfo.fudan.edu.cn/CovPDB/) | Did not answer on 2026-09-29. | It answers again; covalent complexes are also in the PDB. | 2026-09-25 |

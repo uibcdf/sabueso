@@ -1519,3 +1519,30 @@ uibcdf/sabueso#83 (wave 2, family-specific sources).
   ligand effects, often with empty fields (the first β2AR record states only the
   mutation). They are read when a use asks.
 
+## Membranes: segments through RCSB, OPM's own API deferred (2026-09-30)
+uibcdf/sabueso#83 (wave 2, structures).
+- **OPM's API** answers per PDB entry:
+  - the hydrophobic thickness, tilt and transfer energy;
+  - the membrane type and which side is cytoplasmic;
+  - per subunit, the transmembrane segments.
+
+  But:
+  - its subunits carry the letters of OPM's own model (C and D for 2RH1, whose PDB
+    chain is A), so its segments cannot be placed through the PDB chain;
+  - proteins are named by UniProt entry name;
+  - no data licence was found on its site. The earlier "CC BY 3.0" could not be
+    confirmed.
+
+  Deferred.
+- **RCSB integrates the segments**, with their origin. `MEMBRANE_SEGMENT` instance
+  features come from OPM and PDBTM, in the PDB chain's entity numbering. Sabueso
+  already reads instance features (secondary structure, #80), so the segments join
+  `has_structure` as `membrane_segments`, per chain and per resource, in UniProt
+  numbering through the entity alignment.
+- **Each resource keeps its own segments.** For GPR52 (6LI0) OPM and PDBTM agree on TM1
+  and differ by a residue or two elsewhere. Neither is chosen.
+- **Statements of other entries are unchanged.** The segments enter RCSB's statement
+  only when stated, so a soluble protein's statements keep their content.
+- **What it serves.** Lipid-facing sites and membrane-accessible ligands are placed
+  against the transmembrane span of the very structure that shows them.
+

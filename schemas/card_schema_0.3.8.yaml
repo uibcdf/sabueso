@@ -164,8 +164,10 @@ schema:
     annotations.gpcr_structures (activation state, method, resolution in angstrom,
     publication, ligands with their function, apo, signalling protein). Segments and
     residues are in UniProt numbering only when GPCRdb's sequence is the entry's (rule
-    gpcrdb_sequence_numbering@1). Additive, so a 0.3.7 card is a valid 0.3.8 card
-    without them.
+    gpcrdb_sequence_numbering@1). The has_structure qualifier membrane_segments gives,
+    per chain, the transmembrane segments each resource RCSB integrates assigns (OPM,
+    PDBTM), as a list of assigned_by and UniProt ranges; it is set only when stated.
+    Additive, so a 0.3.7 card is a valid 0.3.8 card without them.
 card_base:
   meta:
     card_id:

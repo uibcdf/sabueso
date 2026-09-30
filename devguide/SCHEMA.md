@@ -547,7 +547,13 @@ A Relationship is first-class, traceable knowledge:
     by two sheets is listed once, and sheets are not kept. A chain is listed only when
     the entry assigns secondary structure to it; a chain without any is not stated,
     never coil.
-  - Chain-keyed qualifiers (`observed`, `author_numbering`, `secondary_structure`) are
+  - since 0.3.8, `membrane_segments` (#83): per chain, `[{assigned_by, segments}]`, the
+    transmembrane segments each resource RCSB integrates assigns (`MEMBRANE_SEGMENT`
+    instance features: OPM, PDBTM), as UniProt ranges placed through the entity
+    alignment. Resources differ by a residue or two at the ends, so each keeps its own.
+    Set only when stated, and the statement of an entry without segments is unchanged.
+  - Chain-keyed qualifiers (`observed`, `author_numbering`, `secondary_structure`,
+    `membrane_segments`) are
     recorded in the card shape as `{chain}` since 0.3.5, so a new chain name is not a
     new shape.
     These keys are absent from relationships fetched before 0.3.4, and the state that

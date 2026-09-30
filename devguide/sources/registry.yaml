@@ -939,11 +939,14 @@ resources:
     name: "OPM (Orientations of Proteins in Membranes)"
     url: https://opm.phar.umich.edu/
     category: sites_families
-    status: evaluating
+    status: deferred
     description: "Position and orientation of PDB structures in the lipid bilayer."
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "CC BY 3.0"
+    decided_by: "Sabueso maintainers (2026-09-30)"
+    reason: "Evaluated 2026-09-30. Its transmembrane segments reach cards through RCSB, which integrates them as instance features with their provenance (has_structure qualifier membrane_segments, beside PDBTM's). Its own API (opm-back.cc.lehigh.edu) adds the hydrophobic thickness, tilt, transfer energy and membrane type per entry, but names chains by the letters of its own model (C and D for 2RH1, chain A in the PDB), and proteins by UniProt entry name; no data licence was found on its site (the earlier 'CC BY 3.0' could not be confirmed)."
+    revisit_when: "A use needs the membrane position (thickness, tilt, transfer energy), and OPM states its terms and a mapping of its chains to the PDB's."
+    licence: "Not found (2026-09-30): the site and its code state no data licence; the earlier 'CC BY 3.0' could not be confirmed"
     links: ["#83"]
   - id: mpstruc
     name: "mpstruc"

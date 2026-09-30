@@ -1,0 +1,4826 @@
+{
+ "rcsb_id": "6LI0",
+ "exptl": [
+  {
+   "method": "X-RAY DIFFRACTION"
+  }
+ ],
+ "rcsb_primary_citation": {
+  "pdbx_database_id_PubMed": 32076264,
+  "pdbx_database_id_DOI": "10.1038/s41586-020-2019-0",
+  "title": "Structural basis of ligand recognition and self-activation of orphan GPR52.",
+  "journal_abbrev": "Nature",
+  "year": 2020
+ },
+ "rcsb_entry_info": {
+  "resolution_combined": [
+   2.2
+  ],
+  "polymer_entity_count_protein": 1
+ },
+ "rcsb_accession_info": {
+  "deposit_date": "2019-12-10T00:00:00Z",
+  "initial_release_date": "2020-02-26T00:00:00Z"
+ },
+ "refine": [
+  {
+   "pdbx_refine_id": "X-RAY DIFFRACTION",
+   "ls_R_factor_R_free": 0.21982,
+   "ls_R_factor_R_work": 0.1937
+  }
+ ],
+ "assemblies": [
+  {
+   "rcsb_assembly_container_identifiers": {
+    "assembly_id": "1"
+   },
+   "pdbx_struct_assembly": {
+    "oligomeric_details": "monomeric",
+    "oligomeric_count": 1,
+    "details": "software_defined_assembly",
+    "method_details": "PISA"
+   },
+   "rcsb_struct_symmetry": [
+    {
+     "kind": "Global Symmetry",
+     "type": "Asymmetric",
+     "oligomeric_state": "Monomer",
+     "stoichiometry": [
+      "A1"
+     ]
+    }
+   ]
+  }
+ ],
+ "polymer_entities": [
+  {
+   "rcsb_id": "6LI0_1",
+   "rcsb_polymer_entity": {
+    "pdbx_description": "Chimera of G-protein coupled receptor 52 and Flavodoxin",
+    "pdbx_mutation": "A130W,Y1098W,A264L,W278Q,C314P,S318A,N321D,V323T"
+   },
+   "entity_poly": {
+    "rcsb_sample_sequence_length": 468,
+    "rcsb_mutation_count": 8,
+    "pdbx_seq_one_letter_code_can": "GGIVNVSERHSCPLGFGHYSVVDVCIFETVVIVLLTFLIIAGNLTVIFVFHCAPLLHHYTTSYFIQTMAYADLFVGVSCLVPTLSLLHYSTGVHESLTCQVFGYIISVLKSVSMWCLACISVDRYLAITKPLSYNQLVTPCRLRICIILIWIYSCLIFLPSFFGWGKPGYHGDIFEWCATSWLTSAYFTGFIVCLLYAPAAFVVCFTYFHIFKICRQHTKEAKALIVYGSTTGNTEYTAETIARELADAGYEVDSRDAASVEAGGLFEGFDLVLLGCSTWGDDSIELQDDFIPLFDSLEETGAQGRKVACFGCGDSSWEYFCGAVDAIEEKLKNLGAEIVQDGLRIDGDPRAARDDIVGWAHDVRGAIRRYLMVLFRITSVFYMLQLPYIIYFLLESSRVLDNPTLSFLTTWLAISNSFCNPVIYALSDSTFRLGLRRLSETMCTSCMEFLEVLFQGPHHHHHHHHHH"
+   },
+   "rcsb_entity_host_organism": [
+    {
+     "ncbi_scientific_name": "Spodoptera frugiperda",
+     "ncbi_taxonomy_id": 7108
+    },
+    {
+     "ncbi_scientific_name": "Spodoptera frugiperda",
+     "ncbi_taxonomy_id": 7108
+    },
+    {
+     "ncbi_scientific_name": "Spodoptera frugiperda",
+     "ncbi_taxonomy_id": 7108
+    }
+   ],
+   "rcsb_polymer_entity_feature": [
+    {
+     "type": "Pfam",
+     "name": "Flavodoxin (Flavodoxin_1)",
+     "feature_positions": [
+      {
+       "beg_seq_id": 226,
+       "end_seq_id": 360
+      }
+     ]
+    },
+    {
+     "type": "Pfam",
+     "name": "7 transmembrane receptor (rhodopsin family) (7tm_1)",
+     "feature_positions": [
+      {
+       "beg_seq_id": 42,
+       "end_seq_id": 425
+      }
+     ]
+    },
+    {
+     "type": "mutation",
+     "name": "engineered mutation",
+     "feature_positions": [
+      {
+       "beg_seq_id": 115,
+       "end_seq_id": null
+      }
+     ]
+    },
+    {
+     "type": "mutation",
+     "name": "engineered mutation",
+     "feature_positions": [
+      {
+       "beg_seq_id": 318,
+       "end_seq_id": null
+      }
+     ]
+    },
+    {
+     "type": "mutation",
+     "name": "engineered mutation",
+     "feature_positions": [
+      {
+       "beg_seq_id": 372,
+       "end_seq_id": null
+      }
+     ]
+    },
+    {
+     "type": "mutation",
+     "name": "engineered mutation",
+     "feature_positions": [
+      {
+       "beg_seq_id": 386,
+       "end_seq_id": null
+      }
+     ]
+    },
+    {
+     "type": "mutation",
+     "name": "engineered mutation",
+     "feature_positions": [
+      {
+       "beg_seq_id": 422,
+       "end_seq_id": null
+      }
+     ]
+    },
+    {
+     "type": "mutation",
+     "name": "engineered mutation",
+     "feature_positions": [
+      {
+       "beg_seq_id": 426,
+       "end_seq_id": null
+      }
+     ]
+    },
+    {
+     "type": "mutation",
+     "name": "engineered mutation",
+     "feature_positions": [
+      {
+       "beg_seq_id": 429,
+       "end_seq_id": null
+      }
+     ]
+    },
+    {
+     "type": "mutation",
+     "name": "engineered mutation",
+     "feature_positions": [
+      {
+       "beg_seq_id": 431,
+       "end_seq_id": null
+      }
+     ]
+    },
+    {
+     "type": "artifact",
+     "name": "expression tag",
+     "feature_positions": [
+      {
+       "beg_seq_id": 1,
+       "end_seq_id": 1
+      }
+     ]
+    },
+    {
+     "type": "artifact",
+     "name": "linker",
+     "feature_positions": [
+      {
+       "beg_seq_id": 222,
+       "end_seq_id": 222
+      }
+     ]
+    },
+    {
+     "type": "artifact",
+     "name": "expression tag",
+     "feature_positions": [
+      {
+       "beg_seq_id": 449,
+       "end_seq_id": 468
+      }
+     ]
+    },
+    {
+     "type": "hydropathy",
+     "name": "Hydropathy values",
+     "feature_positions": [
+      {
+       "beg_seq_id": 5,
+       "end_seq_id": null
+      }
+     ]
+    },
+    {
+     "type": "disorder",
+     "name": "Disordered regions",
+     "feature_positions": [
+      {
+       "beg_seq_id": 1,
+       "end_seq_id": null
+      }
+     ]
+    },
+    {
+     "type": "disorder_binding",
+     "name": "Disordered binding sites",
+     "feature_positions": [
+      {
+       "beg_seq_id": 1,
+       "end_seq_id": null
+      }
+     ]
+    }
+   ],
+   "rcsb_polymer_entity_container_identifiers": {
+    "entity_id": "1",
+    "auth_asym_ids": [
+     "A"
+    ],
+    "uniprot_ids": [
+     "P00323",
+     "Q9Y2T5"
+    ]
+   },
+   "rcsb_polymer_entity_align": [
+    {
+     "reference_database_name": "UniProt",
+     "reference_database_accession": "Q9Y2T5",
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 2,
+       "ref_beg_seq_id": 17,
+       "length": 220
+      },
+      {
+       "entity_beg_seq_id": 369,
+       "ref_beg_seq_id": 261,
+       "length": 80
+      }
+     ]
+    },
+    {
+     "reference_database_name": "UniProt",
+     "reference_database_accession": "P00323",
+     "aligned_regions": [
+      {
+       "entity_beg_seq_id": 223,
+       "ref_beg_seq_id": 3,
+       "length": 146
+      }
+     ]
+    }
+   ],
+   "polymer_entity_instances": [
+    {
+     "rcsb_polymer_entity_instance_container_identifiers": {
+      "asym_id": "A",
+      "auth_asym_id": "A",
+      "auth_to_entity_poly_seq_mapping": [
+       "16",
+       "17",
+       "18",
+       "19",
+       "20",
+       "21",
+       "22",
+       "23",
+       "24",
+       "25",
+       "26",
+       "27",
+       "28",
+       "29",
+       "30",
+       "31",
+       "32",
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47",
+       "48",
+       "49",
+       "50",
+       "51",
+       "52",
+       "53",
+       "54",
+       "55",
+       "56",
+       "57",
+       "58",
+       "59",
+       "60",
+       "61",
+       "62",
+       "63",
+       "64",
+       "65",
+       "66",
+       "67",
+       "68",
+       "69",
+       "70",
+       "71",
+       "72",
+       "73",
+       "74",
+       "75",
+       "76",
+       "77",
+       "78",
+       "79",
+       "80",
+       "81",
+       "82",
+       "83",
+       "84",
+       "85",
+       "86",
+       "87",
+       "88",
+       "89",
+       "90",
+       "91",
+       "92",
+       "93",
+       "94",
+       "95",
+       "96",
+       "97",
+       "98",
+       "99",
+       "100",
+       "101",
+       "102",
+       "103",
+       "104",
+       "105",
+       "106",
+       "107",
+       "108",
+       "109",
+       "110",
+       "111",
+       "112",
+       "113",
+       "114",
+       "115",
+       "116",
+       "117",
+       "118",
+       "119",
+       "120",
+       "121",
+       "122",
+       "123",
+       "124",
+       "125",
+       "126",
+       "127",
+       "128",
+       "129",
+       "130",
+       "131",
+       "132",
+       "133",
+       "134",
+       "135",
+       "136",
+       "137",
+       "138",
+       "139",
+       "140",
+       "141",
+       "142",
+       "143",
+       "144",
+       "145",
+       "146",
+       "147",
+       "148",
+       "149",
+       "150",
+       "151",
+       "152",
+       "153",
+       "154",
+       "155",
+       "156",
+       "157",
+       "158",
+       "159",
+       "160",
+       "161",
+       "162",
+       "163",
+       "164",
+       "165",
+       "166",
+       "167",
+       "168",
+       "169",
+       "170",
+       "171",
+       "172",
+       "173",
+       "174",
+       "175",
+       "176",
+       "177",
+       "178",
+       "179",
+       "180",
+       "181",
+       "182",
+       "183",
+       "184",
+       "185",
+       "186",
+       "187",
+       "188",
+       "189",
+       "190",
+       "191",
+       "192",
+       "193",
+       "194",
+       "195",
+       "196",
+       "197",
+       "198",
+       "199",
+       "200",
+       "201",
+       "202",
+       "203",
+       "204",
+       "205",
+       "206",
+       "207",
+       "208",
+       "209",
+       "210",
+       "211",
+       "212",
+       "213",
+       "214",
+       "215",
+       "216",
+       "217",
+       "218",
+       "219",
+       "220",
+       "221",
+       "222",
+       "223",
+       "224",
+       "225",
+       "226",
+       "227",
+       "228",
+       "229",
+       "230",
+       "231",
+       "232",
+       "233",
+       "234",
+       "235",
+       "236",
+       "1002",
+       "1003",
+       "1004",
+       "1005",
+       "1006",
+       "1007",
+       "1008",
+       "1009",
+       "1010",
+       "1011",
+       "1012",
+       "1013",
+       "1014",
+       "1015",
+       "1016",
+       "1017",
+       "1018",
+       "1019",
+       "1020",
+       "1021",
+       "1022",
+       "1023",
+       "1024",
+       "1025",
+       "1026",
+       "1027",
+       "1028",
+       "1029",
+       "1030",
+       "1031",
+       "1032",
+       "1033",
+       "1034",
+       "1035",
+       "1036",
+       "1037",
+       "1038",
+       "1039",
+       "1040",
+       "1041",
+       "1042",
+       "1043",
+       "1044",
+       "1045",
+       "1046",
+       "1047",
+       "1048",
+       "1049",
+       "1050",
+       "1051",
+       "1052",
+       "1053",
+       "1054",
+       "1055",
+       "1056",
+       "1057",
+       "1058",
+       "1059",
+       "1060",
+       "1061",
+       "1062",
+       "1063",
+       "1064",
+       "1065",
+       "1066",
+       "1067",
+       "1068",
+       "1069",
+       "1070",
+       "1071",
+       "1072",
+       "1073",
+       "1074",
+       "1075",
+       "1076",
+       "1077",
+       "1078",
+       "1079",
+       "1080",
+       "1081",
+       "1082",
+       "1083",
+       "1084",
+       "1085",
+       "1086",
+       "1087",
+       "1088",
+       "1089",
+       "1090",
+       "1091",
+       "1092",
+       "1093",
+       "1094",
+       "1095",
+       "1096",
+       "1097",
+       "1098",
+       "1099",
+       "1100",
+       "1101",
+       "1102",
+       "1103",
+       "1104",
+       "1105",
+       "1106",
+       "1107",
+       "1108",
+       "1109",
+       "1110",
+       "1111",
+       "1112",
+       "1113",
+       "1114",
+       "1115",
+       "1116",
+       "1117",
+       "1118",
+       "1119",
+       "1120",
+       "1121",
+       "1122",
+       "1123",
+       "1124",
+       "1125",
+       "1126",
+       "1127",
+       "1128",
+       "1129",
+       "1130",
+       "1131",
+       "1132",
+       "1133",
+       "1134",
+       "1135",
+       "1136",
+       "1137",
+       "1138",
+       "1139",
+       "1140",
+       "1141",
+       "1142",
+       "1143",
+       "1144",
+       "1145",
+       "1146",
+       "1147",
+       "1148",
+       "261",
+       "262",
+       "263",
+       "264",
+       "265",
+       "266",
+       "267",
+       "268",
+       "269",
+       "270",
+       "271",
+       "272",
+       "273",
+       "274",
+       "275",
+       "276",
+       "277",
+       "278",
+       "279",
+       "280",
+       "281",
+       "282",
+       "283",
+       "284",
+       "285",
+       "286",
+       "287",
+       "288",
+       "289",
+       "290",
+       "291",
+       "292",
+       "293",
+       "294",
+       "295",
+       "296",
+       "297",
+       "298",
+       "299",
+       "300",
+       "301",
+       "302",
+       "303",
+       "304",
+       "305",
+       "306",
+       "307",
+       "308",
+       "309",
+       "310",
+       "311",
+       "312",
+       "313",
+       "314",
+       "315",
+       "316",
+       "317",
+       "318",
+       "319",
+       "320",
+       "321",
+       "322",
+       "323",
+       "324",
+       "325",
+       "326",
+       "327",
+       "328",
+       "329",
+       "330",
+       "331",
+       "332",
+       "333",
+       "334",
+       "335",
+       "336",
+       "337",
+       "338",
+       "339",
+       "340",
+       "341",
+       "342",
+       "343",
+       "344",
+       "345",
+       "346",
+       "347",
+       "348",
+       "349",
+       "350",
+       "351",
+       "352",
+       "353",
+       "354",
+       "355",
+       "356",
+       "357",
+       "358",
+       "359",
+       "360"
+      ]
+     },
+     "rcsb_polymer_instance_feature": [
+      {
+       "type": "SCOP2B_SUPERFAMILY",
+       "provenance_source": "SCOP2B",
+       "feature_positions": [
+        {
+         "beg_seq_id": 223,
+         "end_seq_id": 368
+        }
+       ]
+      },
+      {
+       "type": "ECOD",
+       "provenance_source": "ECOD",
+       "feature_positions": [
+        {
+         "beg_seq_id": 223,
+         "end_seq_id": 368
+        }
+       ]
+      },
+      {
+       "type": "ECOD",
+       "provenance_source": "ECOD",
+       "feature_positions": [
+        {
+         "beg_seq_id": 367,
+         "end_seq_id": 446
+        }
+       ]
+      },
+      {
+       "type": "SHEET",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 10,
+         "end_seq_id": 11
+        },
+        {
+         "beg_seq_id": 18,
+         "end_seq_id": 19
+        }
+       ]
+      },
+      {
+       "type": "SHEET",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 252,
+         "end_seq_id": 257
+        },
+        {
+         "beg_seq_id": 223,
+         "end_seq_id": 229
+        },
+        {
+         "beg_seq_id": 272,
+         "end_seq_id": 277
+        },
+        {
+         "beg_seq_id": 307,
+         "end_seq_id": 314
+        },
+        {
+         "beg_seq_id": 338,
+         "end_seq_id": 339
+        }
+       ]
+      },
+      {
+       "type": "SHEET",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 252,
+         "end_seq_id": 257
+        },
+        {
+         "beg_seq_id": 223,
+         "end_seq_id": 229
+        },
+        {
+         "beg_seq_id": 272,
+         "end_seq_id": 277
+        },
+        {
+         "beg_seq_id": 307,
+         "end_seq_id": 314
+        },
+        {
+         "beg_seq_id": 344,
+         "end_seq_id": 347
+        }
+       ]
+      },
+      {
+       "type": "SHEET",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 279,
+         "end_seq_id": 280
+        },
+        {
+         "beg_seq_id": 286,
+         "end_seq_id": 287
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 25,
+         "end_seq_id": 52
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 60,
+         "end_seq_id": 89
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": 130
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 130,
+         "end_seq_id": 138
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 139,
+         "end_seq_id": 158
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 159,
+         "end_seq_id": 163
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 170,
+         "end_seq_id": 174
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 175,
+         "end_seq_id": 182
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 185,
+         "end_seq_id": 196
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 196,
+         "end_seq_id": 212
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 233,
+         "end_seq_id": 249
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 259,
+         "end_seq_id": 261
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 291,
+         "end_seq_id": 297
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 298,
+         "end_seq_id": 301
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 322,
+         "end_seq_id": 335
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 349,
+         "end_seq_id": 352
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 353,
+         "end_seq_id": 365
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 366,
+         "end_seq_id": 398
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 403,
+         "end_seq_id": 416
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 416,
+         "end_seq_id": 429
+        }
+       ]
+      },
+      {
+       "type": "HELIX_P",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 429,
+         "end_seq_id": 446
+        }
+       ]
+      },
+      {
+       "type": "UNASSIGNED_SEC_STRUCT",
+       "provenance_source": "PROMOTIF",
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 9
+        },
+        {
+         "beg_seq_id": 12,
+         "end_seq_id": 17
+        },
+        {
+         "beg_seq_id": 20,
+         "end_seq_id": 24
+        },
+        {
+         "beg_seq_id": 53,
+         "end_seq_id": 59
+        },
+        {
+         "beg_seq_id": 90,
+         "end_seq_id": 94
+        },
+        {
+         "beg_seq_id": 164,
+         "end_seq_id": 169
+        },
+        {
+         "beg_seq_id": 183,
+         "end_seq_id": 184
+        },
+        {
+         "beg_seq_id": 213,
+         "end_seq_id": 222
+        },
+        {
+         "beg_seq_id": 230,
+         "end_seq_id": 232
+        },
+        {
+         "beg_seq_id": 250,
+         "end_seq_id": 251
+        },
+        {
+         "beg_seq_id": 258,
+         "end_seq_id": 258
+        },
+        {
+         "beg_seq_id": 262,
+         "end_seq_id": 271
+        },
+        {
+         "beg_seq_id": 278,
+         "end_seq_id": 278
+        },
+        {
+         "beg_seq_id": 281,
+         "end_seq_id": 285
+        },
+        {
+         "beg_seq_id": 288,
+         "end_seq_id": 290
+        },
+        {
+         "beg_seq_id": 302,
+         "end_seq_id": 306
+        },
+        {
+         "beg_seq_id": 315,
+         "end_seq_id": 321
+        },
+        {
+         "beg_seq_id": 336,
+         "end_seq_id": 337
+        },
+        {
+         "beg_seq_id": 340,
+         "end_seq_id": 343
+        },
+        {
+         "beg_seq_id": 348,
+         "end_seq_id": 348
+        },
+        {
+         "beg_seq_id": 399,
+         "end_seq_id": 402
+        },
+        {
+         "beg_seq_id": 447,
+         "end_seq_id": 468
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 13,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 19,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 23,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 24,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 25,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 29,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 32,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 79,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 86,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 102,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 170,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 171,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 173,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 174,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 175,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 176,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 404,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 407,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 408,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 411,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 125,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 230,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 231,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 232,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 233,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 234,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 235,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 278,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 279,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 280,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 281,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 282,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 313,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 314,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 315,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 318,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 320,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 321,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 322,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 67,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 151,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 155,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 403,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 74,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 85,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 98,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 377,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 406,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 97,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 98,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 377,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 380,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 384,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 88,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 198,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 202,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 205,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 206,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 88,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 15,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 144,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 151,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 405,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 162,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 163,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 164,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 165,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 58,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 124,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 212,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 216,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 307,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 368,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 119,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 122,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 115,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 93,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 369,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 370,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 373,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 377,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 366,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 204,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 205,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 376,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 383,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 97,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 377,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 428,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 16,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 18,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 24,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 26,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 27,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 28,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 156,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 163,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 165,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 48,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 27,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 31,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 416,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 446,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 438,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 326,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 345,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 135,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 271,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 306,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 398,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BINDING_SITE",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 217,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 218,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 219,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 220,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 221,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 174,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 173,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 25,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 176,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 170,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 171,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 29,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 79,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 175,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 32,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 23,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 411,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 408,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 24,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 102,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 13,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 407,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 19,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 404,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 86,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 28,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 20,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 412,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 232,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 278,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 230,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 279,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 235,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 234,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 231,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 322,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 315,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 280,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 320,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 314,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 282,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 318,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 281,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 313,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 403,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 405,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 409,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 406,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 410,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 388,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 377,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 406,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 388,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 384,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 392,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 391,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 376,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 387,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 380,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 380,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 377,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 384,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 413,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 381,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 385,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 205,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 198,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 202,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 206,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 209,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 201,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 205,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 391,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 387,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 15,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 405,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 14,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 409,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 163,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 162,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 159,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 165,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 164,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 307,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 58,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 216,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 124,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 368,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 212,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 369,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 128,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 372,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 211,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 127,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 214,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 119,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 122,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 123,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 146,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 115,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 138,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 143,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 203,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 115,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 146,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 149,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 153,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 150,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 119,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 377,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 370,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 369,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 366,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 373,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 205,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 376,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 204,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 383,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 380,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 193,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 387,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 201,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 390,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 198,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 384,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 197,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 428,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 377,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 424,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 381,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 18,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 16,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 24,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 26,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 28,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 27,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 25,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 14,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 163,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 165,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 156,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 160,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 195,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 191,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 159,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 419,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 426,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 38,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 423,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 42,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 41,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 48,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 45,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 44,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 41,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 27,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 416,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 31,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 412,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 420,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 38,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 385,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 34,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 30,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 419,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 413,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 26,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 319,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 320,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 326,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 438,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 345,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 441,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 442,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 135,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 271,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 306,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 270,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 304,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 305,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 398,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 399,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 400,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "LIGAND_INTERACTION",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 221,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 218,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 220,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 219,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 217,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 250,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "UNOBSERVED_RESIDUE_XYZ",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 1,
+         "end_seq_id": 5
+        },
+        {
+         "beg_seq_id": 447,
+         "end_seq_id": 468
+        }
+       ]
+      },
+      {
+       "type": "UNOBSERVED_ATOM_XYZ",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 285,
+         "end_seq_id": 285
+        },
+        {
+         "beg_seq_id": 441,
+         "end_seq_id": 441
+        }
+       ]
+      },
+      {
+       "type": "CLASHES",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 13,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 16,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 19,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 24,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 27,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 53,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 100,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 114,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 119,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 124,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 133,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 136,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 160,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 163,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 165,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 182,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 193,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 197,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 204,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 206,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 211,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 214,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 228,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 231,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 275,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 280,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 308,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 311,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 332,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 362,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 365,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 383,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 394,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 405,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 416,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 429,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 432,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 439,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "ANGLE_OUTLIERS",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 22,
+         "end_seq_id": null
+        },
+        {
+         "beg_seq_id": 170,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "BOND_OUTLIERS",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 308,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "RSCC",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "RSR",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "RSRZ",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "NATOMS_EDS",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "OWAB",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "AVERAGE_OCCUPANCY",
+       "provenance_source": "PDB",
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": null
+        }
+       ]
+      },
+      {
+       "type": "MEMBRANE_SEGMENT",
+       "provenance_source": "OPM",
+       "feature_positions": [
+        {
+         "beg_seq_id": 25,
+         "end_seq_id": 46
+        },
+        {
+         "beg_seq_id": 63,
+         "end_seq_id": 87
+        },
+        {
+         "beg_seq_id": 96,
+         "end_seq_id": 121
+        },
+        {
+         "beg_seq_id": 142,
+         "end_seq_id": 162
+        },
+        {
+         "beg_seq_id": 185,
+         "end_seq_id": 208
+        },
+        {
+         "beg_seq_id": 375,
+         "end_seq_id": 397
+        },
+        {
+         "beg_seq_id": 403,
+         "end_seq_id": 423
+        }
+       ]
+      },
+      {
+       "type": "MEMBRANE_SEGMENT",
+       "provenance_source": "PDBTM",
+       "feature_positions": [
+        {
+         "beg_seq_id": 25,
+         "end_seq_id": 46
+        },
+        {
+         "beg_seq_id": 64,
+         "end_seq_id": 88
+        },
+        {
+         "beg_seq_id": 95,
+         "end_seq_id": 121
+        },
+        {
+         "beg_seq_id": 144,
+         "end_seq_id": 165
+        },
+        {
+         "beg_seq_id": 184,
+         "end_seq_id": 208
+        },
+        {
+         "beg_seq_id": 375,
+         "end_seq_id": 397
+        },
+        {
+         "beg_seq_id": 404,
+         "end_seq_id": 425
+        }
+       ]
+      },
+      {
+       "type": "ASA",
+       "provenance_source": "biojava-7.2.2",
+       "feature_positions": [
+        {
+         "beg_seq_id": 6,
+         "end_seq_id": 446
+        }
+       ]
+      }
+     ],
+     "rcsb_ligand_neighbors": [
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 174,
+       "comp_id": "ILE",
+       "distance": 2.727
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 173,
+       "comp_id": "ASP",
+       "distance": 2.73
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 25,
+       "comp_id": "CYS",
+       "distance": 2.961
+      },
+      {
+       "ligand_asym_id": "R",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 25,
+       "comp_id": "CYS",
+       "distance": 3.874
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 176,
+       "comp_id": "GLU",
+       "distance": 3.19
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 170,
+       "comp_id": "TYR",
+       "distance": 3.224
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 171,
+       "comp_id": "HIS",
+       "distance": 3.259
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 29,
+       "comp_id": "THR",
+       "distance": 3.305
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 79,
+       "comp_id": "CYS",
+       "distance": 3.309
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 175,
+       "comp_id": "PHE",
+       "distance": 3.322
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 32,
+       "comp_id": "ILE",
+       "distance": 3.363
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 23,
+       "comp_id": "ASP",
+       "distance": 3.364
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 411,
+       "comp_id": "THR",
+       "distance": 3.438
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 408,
+       "comp_id": "PHE",
+       "distance": 3.459
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 24,
+       "comp_id": "VAL",
+       "distance": 3.493
+      },
+      {
+       "ligand_asym_id": "R",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 24,
+       "comp_id": "VAL",
+       "distance": 2.988
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 102,
+       "comp_id": "PHE",
+       "distance": 3.544
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 13,
+       "comp_id": "PRO",
+       "distance": 3.553
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 407,
+       "comp_id": "SER",
+       "distance": 3.586
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 19,
+       "comp_id": "TYR",
+       "distance": 3.596
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 404,
+       "comp_id": "PRO",
+       "distance": 3.626
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 86,
+       "comp_id": "LEU",
+       "distance": 3.655
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 28,
+       "comp_id": "GLU",
+       "distance": 3.774
+      },
+      {
+       "ligand_asym_id": "R",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 28,
+       "comp_id": "GLU",
+       "distance": 3.195
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 20,
+       "comp_id": "SER",
+       "distance": 3.798
+      },
+      {
+       "ligand_asym_id": "B",
+       "ligand_comp_id": "EN6",
+       "ligand_is_bound": null,
+       "seq_id": 412,
+       "comp_id": "TRP",
+       "distance": 3.806
+      },
+      {
+       "ligand_asym_id": "V",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 412,
+       "comp_id": "TRP",
+       "distance": 3.766
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 232,
+       "comp_id": "THR",
+       "distance": 2.61
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 278,
+       "comp_id": "SER",
+       "distance": 2.656
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 230,
+       "comp_id": "SER",
+       "distance": 2.701
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 279,
+       "comp_id": "THR",
+       "distance": 2.743
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 235,
+       "comp_id": "THR",
+       "distance": 2.746
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 234,
+       "comp_id": "ASN",
+       "distance": 2.822
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 231,
+       "comp_id": "THR",
+       "distance": 2.879
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 322,
+       "comp_id": "CYS",
+       "distance": 2.909
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 315,
+       "comp_id": "ASP",
+       "distance": 2.912
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 280,
+       "comp_id": "TRP",
+       "distance": 2.978
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 320,
+       "comp_id": "TYR",
+       "distance": 3.109
+      },
+      {
+       "ligand_asym_id": "X",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 320,
+       "comp_id": "TYR",
+       "distance": 3.874
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 314,
+       "comp_id": "GLY",
+       "distance": 3.272
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 282,
+       "comp_id": "ASP",
+       "distance": 3.277
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 318,
+       "comp_id": "TRP",
+       "distance": 3.303
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 281,
+       "comp_id": "GLY",
+       "distance": 3.317
+      },
+      {
+       "ligand_asym_id": "C",
+       "ligand_comp_id": "FMN",
+       "ligand_is_bound": null,
+       "seq_id": 313,
+       "comp_id": "CYS",
+       "distance": 3.393
+      },
+      {
+       "ligand_asym_id": "D",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 403,
+       "comp_id": "ASN",
+       "distance": 3.121
+      },
+      {
+       "ligand_asym_id": "D",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 405,
+       "comp_id": "THR",
+       "distance": 3.795
+      },
+      {
+       "ligand_asym_id": "I",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 405,
+       "comp_id": "THR",
+       "distance": 3.623
+      },
+      {
+       "ligand_asym_id": "D",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 409,
+       "comp_id": "LEU",
+       "distance": 3.803
+      },
+      {
+       "ligand_asym_id": "I",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 409,
+       "comp_id": "LEU",
+       "distance": 4.76
+      },
+      {
+       "ligand_asym_id": "D",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 406,
+       "comp_id": "LEU",
+       "distance": 4.17
+      },
+      {
+       "ligand_asym_id": "E",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 406,
+       "comp_id": "LEU",
+       "distance": 3.666
+      },
+      {
+       "ligand_asym_id": "D",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 410,
+       "comp_id": "THR",
+       "distance": 4.218
+      },
+      {
+       "ligand_asym_id": "D",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 388,
+       "comp_id": "PRO",
+       "distance": 4.533
+      },
+      {
+       "ligand_asym_id": "E",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 388,
+       "comp_id": "PRO",
+       "distance": 3.853
+      },
+      {
+       "ligand_asym_id": "E",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 377,
+       "comp_id": "ARG",
+       "distance": 3.604
+      },
+      {
+       "ligand_asym_id": "F",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 377,
+       "comp_id": "ARG",
+       "distance": 3.057
+      },
+      {
+       "ligand_asym_id": "O",
+       "ligand_comp_id": "FLC",
+       "ligand_is_bound": null,
+       "seq_id": 377,
+       "comp_id": "ARG",
+       "distance": 2.677
+      },
+      {
+       "ligand_asym_id": "Q",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 377,
+       "comp_id": "ARG",
+       "distance": 3.692
+      },
+      {
+       "ligand_asym_id": "E",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 384,
+       "comp_id": "MET",
+       "distance": 3.98
+      },
+      {
+       "ligand_asym_id": "F",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 384,
+       "comp_id": "MET",
+       "distance": 3.364
+      },
+      {
+       "ligand_asym_id": "P",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 384,
+       "comp_id": "MET",
+       "distance": 4.12
+      },
+      {
+       "ligand_asym_id": "E",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 392,
+       "comp_id": "TYR",
+       "distance": 4.05
+      },
+      {
+       "ligand_asym_id": "E",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 391,
+       "comp_id": "ILE",
+       "distance": 4.252
+      },
+      {
+       "ligand_asym_id": "H",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 391,
+       "comp_id": "ILE",
+       "distance": 4.154
+      },
+      {
+       "ligand_asym_id": "E",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 376,
+       "comp_id": "PHE",
+       "distance": 4.372
+      },
+      {
+       "ligand_asym_id": "P",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 376,
+       "comp_id": "PHE",
+       "distance": 3.478
+      },
+      {
+       "ligand_asym_id": "E",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 387,
+       "comp_id": "LEU",
+       "distance": 4.48
+      },
+      {
+       "ligand_asym_id": "H",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 387,
+       "comp_id": "LEU",
+       "distance": 4.422
+      },
+      {
+       "ligand_asym_id": "P",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 387,
+       "comp_id": "LEU",
+       "distance": 3.839
+      },
+      {
+       "ligand_asym_id": "E",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 380,
+       "comp_id": "SER",
+       "distance": 4.997
+      },
+      {
+       "ligand_asym_id": "F",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 380,
+       "comp_id": "SER",
+       "distance": 2.742
+      },
+      {
+       "ligand_asym_id": "P",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 380,
+       "comp_id": "SER",
+       "distance": 3.74
+      },
+      {
+       "ligand_asym_id": "F",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 413,
+       "comp_id": "LEU",
+       "distance": 3.705
+      },
+      {
+       "ligand_asym_id": "V",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 413,
+       "comp_id": "LEU",
+       "distance": 4.357
+      },
+      {
+       "ligand_asym_id": "F",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 381,
+       "comp_id": "VAL",
+       "distance": 3.944
+      },
+      {
+       "ligand_asym_id": "Q",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 381,
+       "comp_id": "VAL",
+       "distance": 4.216
+      },
+      {
+       "ligand_asym_id": "F",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 385,
+       "comp_id": "LEU",
+       "distance": 4.089
+      },
+      {
+       "ligand_asym_id": "V",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 385,
+       "comp_id": "LEU",
+       "distance": 3.974
+      },
+      {
+       "ligand_asym_id": "G",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 205,
+       "comp_id": "CYS",
+       "distance": 3.465
+      },
+      {
+       "ligand_asym_id": "H",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 205,
+       "comp_id": "CYS",
+       "distance": 3.826
+      },
+      {
+       "ligand_asym_id": "P",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 205,
+       "comp_id": "CYS",
+       "distance": 2.986
+      },
+      {
+       "ligand_asym_id": "G",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 198,
+       "comp_id": "ALA",
+       "distance": 3.502
+      },
+      {
+       "ligand_asym_id": "P",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 198,
+       "comp_id": "ALA",
+       "distance": 4.111
+      },
+      {
+       "ligand_asym_id": "G",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 202,
+       "comp_id": "PHE",
+       "distance": 3.618
+      },
+      {
+       "ligand_asym_id": "G",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 206,
+       "comp_id": "PHE",
+       "distance": 3.674
+      },
+      {
+       "ligand_asym_id": "G",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 209,
+       "comp_id": "PHE",
+       "distance": 3.892
+      },
+      {
+       "ligand_asym_id": "G",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 201,
+       "comp_id": "ALA",
+       "distance": 4.333
+      },
+      {
+       "ligand_asym_id": "P",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 201,
+       "comp_id": "ALA",
+       "distance": 3.921
+      },
+      {
+       "ligand_asym_id": "I",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 15,
+       "comp_id": "GLY",
+       "distance": 3.521
+      },
+      {
+       "ligand_asym_id": "I",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 14,
+       "comp_id": "LEU",
+       "distance": 4.086
+      },
+      {
+       "ligand_asym_id": "R",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 14,
+       "comp_id": "LEU",
+       "distance": 3.927
+      },
+      {
+       "ligand_asym_id": "J",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 163,
+       "comp_id": "PHE",
+       "distance": 3.397
+      },
+      {
+       "ligand_asym_id": "S",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 163,
+       "comp_id": "PHE",
+       "distance": 3.21
+      },
+      {
+       "ligand_asym_id": "J",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 162,
+       "comp_id": "PHE",
+       "distance": 3.511
+      },
+      {
+       "ligand_asym_id": "J",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 159,
+       "comp_id": "LEU",
+       "distance": 3.883
+      },
+      {
+       "ligand_asym_id": "S",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 159,
+       "comp_id": "LEU",
+       "distance": 4.347
+      },
+      {
+       "ligand_asym_id": "K",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 165,
+       "comp_id": "TRP",
+       "distance": 3.149
+      },
+      {
+       "ligand_asym_id": "S",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 165,
+       "comp_id": "TRP",
+       "distance": 3.364
+      },
+      {
+       "ligand_asym_id": "K",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 164,
+       "comp_id": "GLY",
+       "distance": 3.601
+      },
+      {
+       "ligand_asym_id": "L",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 307,
+       "comp_id": "LYS",
+       "distance": 2.683
+      },
+      {
+       "ligand_asym_id": "L",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 58,
+       "comp_id": "HIS",
+       "distance": 2.852
+      },
+      {
+       "ligand_asym_id": "L",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 216,
+       "comp_id": "ARG",
+       "distance": 3.044
+      },
+      {
+       "ligand_asym_id": "L",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 124,
+       "comp_id": "ARG",
+       "distance": 3.273
+      },
+      {
+       "ligand_asym_id": "L",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 368,
+       "comp_id": "ILE",
+       "distance": 3.411
+      },
+      {
+       "ligand_asym_id": "L",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 212,
+       "comp_id": "PHE",
+       "distance": 3.584
+      },
+      {
+       "ligand_asym_id": "L",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 369,
+       "comp_id": "ARG",
+       "distance": 3.771
+      },
+      {
+       "ligand_asym_id": "O",
+       "ligand_comp_id": "FLC",
+       "ligand_is_bound": null,
+       "seq_id": 369,
+       "comp_id": "ARG",
+       "distance": 2.776
+      },
+      {
+       "ligand_asym_id": "L",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 128,
+       "comp_id": "ILE",
+       "distance": 3.813
+      },
+      {
+       "ligand_asym_id": "L",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 372,
+       "comp_id": "LEU",
+       "distance": 4.08
+      },
+      {
+       "ligand_asym_id": "L",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 211,
+       "comp_id": "ILE",
+       "distance": 4.273
+      },
+      {
+       "ligand_asym_id": "L",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 127,
+       "comp_id": "ALA",
+       "distance": 4.595
+      },
+      {
+       "ligand_asym_id": "L",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 214,
+       "comp_id": "ILE",
+       "distance": 4.744
+      },
+      {
+       "ligand_asym_id": "M",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 119,
+       "comp_id": "CYS",
+       "distance": 3.494
+      },
+      {
+       "ligand_asym_id": "N",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 119,
+       "comp_id": "CYS",
+       "distance": 4.131
+      },
+      {
+       "ligand_asym_id": "M",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 122,
+       "comp_id": "VAL",
+       "distance": 3.618
+      },
+      {
+       "ligand_asym_id": "M",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 123,
+       "comp_id": "ASP",
+       "distance": 3.858
+      },
+      {
+       "ligand_asym_id": "M",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 146,
+       "comp_id": "CYS",
+       "distance": 3.878
+      },
+      {
+       "ligand_asym_id": "N",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 146,
+       "comp_id": "CYS",
+       "distance": 3.816
+      },
+      {
+       "ligand_asym_id": "M",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 115,
+       "comp_id": "TRP",
+       "distance": 3.899
+      },
+      {
+       "ligand_asym_id": "N",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 115,
+       "comp_id": "TRP",
+       "distance": 3.658
+      },
+      {
+       "ligand_asym_id": "M",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 138,
+       "comp_id": "VAL",
+       "distance": 3.978
+      },
+      {
+       "ligand_asym_id": "M",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 143,
+       "comp_id": "LEU",
+       "distance": 4.316
+      },
+      {
+       "ligand_asym_id": "M",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 203,
+       "comp_id": "VAL",
+       "distance": 4.413
+      },
+      {
+       "ligand_asym_id": "M",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 64,
+       "comp_id": "PHE",
+       "distance": 4.634
+      },
+      {
+       "ligand_asym_id": "N",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 149,
+       "comp_id": "LEU",
+       "distance": 3.816
+      },
+      {
+       "ligand_asym_id": "N",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 153,
+       "comp_id": "TYR",
+       "distance": 3.904
+      },
+      {
+       "ligand_asym_id": "N",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 150,
+       "comp_id": "ILE",
+       "distance": 4.118
+      },
+      {
+       "ligand_asym_id": "O",
+       "ligand_comp_id": "FLC",
+       "ligand_is_bound": null,
+       "seq_id": 370,
+       "comp_id": "ARG",
+       "distance": 2.774
+      },
+      {
+       "ligand_asym_id": "O",
+       "ligand_comp_id": "FLC",
+       "ligand_is_bound": null,
+       "seq_id": 366,
+       "comp_id": "GLY",
+       "distance": 3.216
+      },
+      {
+       "ligand_asym_id": "O",
+       "ligand_comp_id": "FLC",
+       "ligand_is_bound": null,
+       "seq_id": 373,
+       "comp_id": "MET",
+       "distance": 3.633
+      },
+      {
+       "ligand_asym_id": "P",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 204,
+       "comp_id": "VAL",
+       "distance": 3.6
+      },
+      {
+       "ligand_asym_id": "P",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 383,
+       "comp_id": "TYR",
+       "distance": 3.621
+      },
+      {
+       "ligand_asym_id": "P",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 193,
+       "comp_id": "VAL",
+       "distance": 3.797
+      },
+      {
+       "ligand_asym_id": "P",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 390,
+       "comp_id": "ILE",
+       "distance": 4.041
+      },
+      {
+       "ligand_asym_id": "P",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 197,
+       "comp_id": "TYR",
+       "distance": 4.137
+      },
+      {
+       "ligand_asym_id": "Q",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 428,
+       "comp_id": "SER",
+       "distance": 3.251
+      },
+      {
+       "ligand_asym_id": "Q",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 424,
+       "comp_id": "ILE",
+       "distance": 3.883
+      },
+      {
+       "ligand_asym_id": "R",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 18,
+       "comp_id": "HIS",
+       "distance": 2.754
+      },
+      {
+       "ligand_asym_id": "R",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 16,
+       "comp_id": "PHE",
+       "distance": 2.843
+      },
+      {
+       "ligand_asym_id": "R",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 26,
+       "comp_id": "ILE",
+       "distance": 3.192
+      },
+      {
+       "ligand_asym_id": "V",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 26,
+       "comp_id": "ILE",
+       "distance": 4.401
+      },
+      {
+       "ligand_asym_id": "R",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 27,
+       "comp_id": "PHE",
+       "distance": 3.377
+      },
+      {
+       "ligand_asym_id": "V",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 27,
+       "comp_id": "PHE",
+       "distance": 3.531
+      },
+      {
+       "ligand_asym_id": "S",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 156,
+       "comp_id": "LEU",
+       "distance": 3.697
+      },
+      {
+       "ligand_asym_id": "S",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 160,
+       "comp_id": "PRO",
+       "distance": 3.823
+      },
+      {
+       "ligand_asym_id": "S",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 195,
+       "comp_id": "LEU",
+       "distance": 4.266
+      },
+      {
+       "ligand_asym_id": "S",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 191,
+       "comp_id": "PHE",
+       "distance": 4.286
+      },
+      {
+       "ligand_asym_id": "T",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 45,
+       "comp_id": "THR",
+       "distance": 3.338
+      },
+      {
+       "ligand_asym_id": "U",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 45,
+       "comp_id": "THR",
+       "distance": 3.698
+      },
+      {
+       "ligand_asym_id": "T",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 419,
+       "comp_id": "PHE",
+       "distance": 3.83
+      },
+      {
+       "ligand_asym_id": "V",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 419,
+       "comp_id": "PHE",
+       "distance": 4.184
+      },
+      {
+       "ligand_asym_id": "T",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 426,
+       "comp_id": "ALA",
+       "distance": 3.882
+      },
+      {
+       "ligand_asym_id": "T",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 38,
+       "comp_id": "LEU",
+       "distance": 3.897
+      },
+      {
+       "ligand_asym_id": "V",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 38,
+       "comp_id": "LEU",
+       "distance": 3.941
+      },
+      {
+       "ligand_asym_id": "T",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 423,
+       "comp_id": "VAL",
+       "distance": 3.925
+      },
+      {
+       "ligand_asym_id": "T",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 42,
+       "comp_id": "GLY",
+       "distance": 3.955
+      },
+      {
+       "ligand_asym_id": "T",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 41,
+       "comp_id": "ALA",
+       "distance": 4.169
+      },
+      {
+       "ligand_asym_id": "U",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 41,
+       "comp_id": "ALA",
+       "distance": 4.172
+      },
+      {
+       "ligand_asym_id": "U",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 48,
+       "comp_id": "PHE",
+       "distance": 3.472
+      },
+      {
+       "ligand_asym_id": "U",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 44,
+       "comp_id": "LEU",
+       "distance": 3.98
+      },
+      {
+       "ligand_asym_id": "V",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 416,
+       "comp_id": "SER",
+       "distance": 3.644
+      },
+      {
+       "ligand_asym_id": "V",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 31,
+       "comp_id": "VAL",
+       "distance": 3.685
+      },
+      {
+       "ligand_asym_id": "V",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 420,
+       "comp_id": "CYS",
+       "distance": 3.938
+      },
+      {
+       "ligand_asym_id": "V",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 34,
+       "comp_id": "LEU",
+       "distance": 4.152
+      },
+      {
+       "ligand_asym_id": "V",
+       "ligand_comp_id": "OLC",
+       "ligand_is_bound": null,
+       "seq_id": 30,
+       "comp_id": "VAL",
+       "distance": 4.162
+      },
+      {
+       "ligand_asym_id": "X",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 319,
+       "comp_id": "GLU",
+       "distance": 3.775
+      },
+      {
+       "ligand_asym_id": "Y",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 326,
+       "comp_id": "ASP",
+       "distance": 3.02
+      },
+      {
+       "ligand_asym_id": "Y",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 438,
+       "comp_id": "ARG",
+       "distance": 3.021
+      },
+      {
+       "ligand_asym_id": "Y",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 345,
+       "comp_id": "ARG",
+       "distance": 3.665
+      },
+      {
+       "ligand_asym_id": "Z",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 441,
+       "comp_id": "GLU",
+       "distance": 4.133
+      },
+      {
+       "ligand_asym_id": "Z",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 442,
+       "comp_id": "THR",
+       "distance": 4.289
+      },
+      {
+       "ligand_asym_id": "AA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 135,
+       "comp_id": "ASN",
+       "distance": 3.524
+      },
+      {
+       "ligand_asym_id": "AA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 271,
+       "comp_id": "ASP",
+       "distance": 3.545
+      },
+      {
+       "ligand_asym_id": "AA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 306,
+       "comp_id": "ARG",
+       "distance": 3.567
+      },
+      {
+       "ligand_asym_id": "AA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 270,
+       "comp_id": "PHE",
+       "distance": 3.787
+      },
+      {
+       "ligand_asym_id": "AA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 304,
+       "comp_id": "GLN",
+       "distance": 3.864
+      },
+      {
+       "ligand_asym_id": "AA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 305,
+       "comp_id": "GLY",
+       "distance": 3.907
+      },
+      {
+       "ligand_asym_id": "BA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 398,
+       "comp_id": "SER",
+       "distance": 3.233
+      },
+      {
+       "ligand_asym_id": "BA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 399,
+       "comp_id": "ARG",
+       "distance": 3.903
+      },
+      {
+       "ligand_asym_id": "BA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 400,
+       "comp_id": "VAL",
+       "distance": 4.384
+      },
+      {
+       "ligand_asym_id": "CA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 221,
+       "comp_id": "GLU",
+       "distance": 3.262
+      },
+      {
+       "ligand_asym_id": "CA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 218,
+       "comp_id": "HIS",
+       "distance": 3.397
+      },
+      {
+       "ligand_asym_id": "CA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 220,
+       "comp_id": "LYS",
+       "distance": 3.421
+      },
+      {
+       "ligand_asym_id": "CA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 219,
+       "comp_id": "THR",
+       "distance": 3.604
+      },
+      {
+       "ligand_asym_id": "CA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 217,
+       "comp_id": "GLN",
+       "distance": 3.658
+      },
+      {
+       "ligand_asym_id": "CA",
+       "ligand_comp_id": "PEG",
+       "ligand_is_bound": null,
+       "seq_id": 250,
+       "comp_id": "GLY",
+       "distance": 4.231
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "nonpolymer_entities": [
+  {
+   "rcsb_nonpolymer_entity_container_identifiers": {
+    "nonpolymer_comp_id": "EN6"
+   },
+   "rcsb_nonpolymer_entity": {
+    "pdbx_description": "N-(2-hydroxyethyl)-5-(hydroxymethyl)-3-methyl-1-[2-[[3-(trifluoromethyl)phenyl]methyl]-1-benzothiophen-7-yl]pyrazole-4-carboxamide"
+   },
+   "nonpolymer_entity_instances": [
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "Y",
+       "is_subject_of_investigation_provenance": "Author"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rcsb_nonpolymer_entity_container_identifiers": {
+    "nonpolymer_comp_id": "FMN"
+   },
+   "rcsb_nonpolymer_entity": {
+    "pdbx_description": "FLAVIN MONONUCLEOTIDE"
+   },
+   "nonpolymer_entity_instances": [
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rcsb_nonpolymer_entity_container_identifiers": {
+    "nonpolymer_comp_id": "OLC"
+   },
+   "rcsb_nonpolymer_entity": {
+    "pdbx_description": "(2R)-2,3-dihydroxypropyl (9Z)-octadec-9-enoate"
+   },
+   "nonpolymer_entity_instances": [
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rcsb_nonpolymer_entity_container_identifiers": {
+    "nonpolymer_comp_id": "PEG"
+   },
+   "rcsb_nonpolymer_entity": {
+    "pdbx_description": "DI(HYDROXYETHYL)ETHER"
+   },
+   "nonpolymer_entity_instances": [
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    },
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rcsb_nonpolymer_entity_container_identifiers": {
+    "nonpolymer_comp_id": "FLC"
+   },
+   "rcsb_nonpolymer_entity": {
+    "pdbx_description": "CITRATE ANION"
+   },
+   "nonpolymer_entity_instances": [
+    {
+     "rcsb_nonpolymer_instance_validation_score": [
+      {
+       "is_subject_of_investigation": "N",
+       "is_subject_of_investigation_provenance": null
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

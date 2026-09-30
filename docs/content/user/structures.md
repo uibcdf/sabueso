@@ -22,6 +22,9 @@ structure:
 - per chain, the UniProt ranges that have coordinates (`observed`);
 - per chain, the helices and strands the entry assigns, in UniProt numbering, with the
   program that assigned them (`secondary_structure`, e.g. PROMOTIF).
+- per chain, for a membrane protein, the transmembrane segments each resource RCSB
+  integrates assigns, in UniProt numbering, each resource apart (`membrane_segments`:
+  OPM, PDBTM).
 
 ```python
 import sabueso
