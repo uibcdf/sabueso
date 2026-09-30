@@ -57,6 +57,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     recorded in the enrichment; PubChem BioAssay fetches every result of a target in
     one request; UniChem lookups for BindingDB's monomers run a few at once, politely
     paced (`_http.gather`); RCSB entries are asked 25 per GraphQL request (#98);
+  - the retrieval archive, recording (#100, phase 1 first step): `RetrievalArchive`,
+    answers kept at `_http.urlopen`, `quality.retrievals` on the card;
   - knowledge store format 2 (#99): unchanged statements shared across rebuilds
     (`retrieved_at` kept per state), integer keys, zlib compression; format 1 upgraded
     in place;

@@ -133,6 +133,9 @@ shows how to use them.
   - `import_card_table(path, table="cards")`;
   - `as_of(ref, when)` and `revision_as_of(ref, when)`: the card, deck or packet as
     stored by a date, or None; `changed_since(ref, when)` for a card or a packet (#91).
+- `sabueso.RetrievalArchive(path)` (#100): `recording()` (a context: every answer a
+  source client receives is archived, and a card built inside lists them in
+  `quality.retrievals`), `get(ref)`, `stats()`.
 - `sabueso.CurationStore(path)`: `save(card)`, `apply(card)`, `records()`,
   `retract(source_assertion_id, reason, curator)`, `entities_named(name)`.
 - `sabueso.migrate_card(data, store=None)` and `sabueso.refresh_card(card,

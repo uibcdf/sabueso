@@ -13,6 +13,9 @@
 
 Clients import ``urlopen`` from here instead of ``urllib.request``.
 
+- **What was downloaded** (#100). While a retrieval archive is recording
+  (``tools.db._archive``), every final answer, a 404 included, is kept there, and the
+  client receives it as it would have.
 - **Many requests to one service** (``gather``, #98). A source answered one record per
   request (UniChem, one compound at a time) is asked by a few threads at once, never
   faster than the pace the service asks for or Sabueso chooses to keep (``Pace``).
@@ -22,6 +25,8 @@ Clients import ``urlopen`` from here instead of ``urllib.request``.
 
 from __future__ import annotations
 
+import contextvars
+import io
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -70,9 +75,69 @@ def _timed_out(error: URLError) -> bool:
     return isinstance(error.reason, TimeoutError) or "timed out" in str(error.reason)
 
 
+class Answer:
+    """A response read whole, as a client uses it: ``read()``, ``status``, ``headers``,
+    and as a context manager. What an archive keeps is what the client received."""
+
+    def __init__(self, content: bytes, status: int, headers: Any, retrieved_at: str):
+        self._content, self.status, self.headers = content, status, headers
+        self.retrieved_at = retrieved_at
+
+    def read(self, *_: Any) -> bytes:
+        return self._content
+
+    def getcode(self) -> int:
+        return self.status
+
+    def __enter__(self) -> "Answer":
+        return self
+
+    def __exit__(self, *_: Any) -> None:
+        return None
+
+
+def _kept(headers: Any) -> Dict[str, str]:
+    from sabueso.tools.db._archive import KEPT_HEADERS
+
+    return {k: headers.get(k) for k in KEPT_HEADERS if headers and headers.get(k)}
+
+
 def urlopen(target: Any, timeout: float = 30.0, sleep=time.sleep):
     """``urllib.request.urlopen`` with Sabueso's user agent and retries for transient
-    failures; see the module docstring."""
+    failures, and the answer archived when an archive is recording; see the module
+    docstring."""
+    from sabueso.tools.db import _archive
+
+    archive = _archive.active()
+    if archive is None:
+        return _open(target, timeout, sleep)
+    named = _named(target)
+    method, url, body = named.get_method(), named.full_url, named.data
+    retrieved_at = _archive._now()
+    try:
+        response = _open(named, timeout, sleep)
+    except HTTPError as exc:
+        # An HTTP answer is an answer (a 404 is "not found"): kept, then raised again.
+        content = exc.read() if exc.fp is not None else b""
+        record = archive.record(
+            method, url, body, exc.code, _kept(exc.headers), content, retrieved_at
+        )
+        _archive.note(record)
+        raise HTTPError(
+            exc.url, exc.code, exc.msg, exc.headers, io.BytesIO(content)
+        ) from None
+    with response:
+        content = response.read()
+        status = getattr(response, "status", 200)
+        headers = response.headers
+    record = archive.record(
+        method, url, body, status, _kept(headers), content, retrieved_at
+    )
+    _archive.note(record)
+    return Answer(content, status, headers, retrieved_at)
+
+
+def _open(target: Any, timeout: float, sleep):
     named = _named(target)
     for attempt in range(RETRIES + 1):
         try:
@@ -136,4 +201,9 @@ def gather(
     if workers <= 1 or len(items) <= 1:
         return [(item, one(item)) for item in items]
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        return list(zip(items, pool.map(one, items)))
+        # Each request runs in a copy of the caller's context, so an archive that is
+        # recording, and the build collecting its records, see it (#100).
+        futures = [
+            pool.submit(contextvars.copy_context().run, one, item) for item in items
+        ]
+        return list(zip(items, (f.result() for f in futures)))

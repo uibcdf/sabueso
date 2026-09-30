@@ -4,6 +4,8 @@ for transient failures."""
 from __future__ import annotations
 
 import ast
+import io
+import zlib
 from email.message import Message
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -131,3 +133,96 @@ def test_pace_spaces_the_start_of_requests():
     for _ in range(4):
         pace.wait()
     assert slept == [0.2, 0.2, 0.2]
+
+
+# --- What was downloaded: the retrieval archive (#100) ---------------------------------
+
+
+class _Response:
+    def __init__(self, body, status=200, headers=None):
+        self.body, self.status = body, status
+        self.headers = Message()
+        for k, v in (headers or {}).items():
+            self.headers[k] = v
+
+    def read(self, *_):
+        return self.body
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_):
+        return None
+
+
+def test_nothing_is_archived_unless_asked(tmp_path, monkeypatch):
+    monkeypatch.setattr(_http, "_urlopen", lambda r, timeout: _Response(b"{}"))
+    with _http.urlopen("https://example.org/a") as resp:
+        assert resp.read() == b"{}"
+    assert not list(tmp_path.iterdir())
+
+
+def test_an_answer_is_archived_once_and_read_back_verified(tmp_path, monkeypatch):
+    import sabueso
+    from sabueso.core.errors import StorageError
+    from sabueso.tools.db import _archive
+
+    monkeypatch.setattr(
+        _http,
+        "_urlopen",
+        lambda r, timeout: _Response(b'{"x": 1}', headers={"X-UniProt-Release": "7"}),
+    )
+    archive = sabueso.RetrievalArchive(tmp_path / "a.db")
+    with archive.recording(), _archive.collecting() as made:
+        for _ in range(2):
+            with _http.urlopen("https://example.org/a") as resp:
+                assert resp.read() == b'{"x": 1}'
+                assert resp.headers.get("X-UniProt-Release") == "7"
+    assert len(made) == 2
+    assert archive.stats()["contents"] == 1  # the same content, stored once
+    record = archive.get(made[0]["ref"])
+    assert record["content"] == b'{"x": 1}' and record["headers"] == {
+        "X-UniProt-Release": "7"
+    }
+    import sqlite3
+
+    with sqlite3.connect(tmp_path / "a.db") as conn:
+        conn.execute("UPDATE contents SET body = ?", (zlib.compress(b"tampered"),))
+    with pytest.raises(StorageError, match="changed outside Sabueso"):
+        archive.get(made[0]["ref"])
+
+
+def test_a_not_found_is_an_answer_and_is_archived(tmp_path, monkeypatch):
+    import sabueso
+
+    def not_found(request, timeout):
+        raise HTTPError(
+            "https://example.org/b", 404, "no", Message(), io.BytesIO(b"nope")
+        )
+
+    monkeypatch.setattr(_http, "_urlopen", not_found)
+    archive = sabueso.RetrievalArchive(tmp_path / "a.db")
+    with archive.recording():
+        with pytest.raises(HTTPError) as caught:
+            _http.urlopen("https://example.org/b")
+    assert caught.value.code == 404 and caught.value.read() == b"nope"
+    assert archive.stats()["records"] == 1
+
+
+def test_requests_made_by_threads_are_archived_too(tmp_path, monkeypatch):
+    import sabueso
+    from sabueso.tools.db import _archive
+
+    monkeypatch.setattr(
+        _http, "_urlopen", lambda r, timeout: _Response(r.full_url.encode())
+    )
+    archive = sabueso.RetrievalArchive(tmp_path / "a.db")
+
+    def get(i):
+        with _http.urlopen(f"https://example.org/{i}") as resp:
+            return resp.read()
+
+    with archive.recording(), _archive.collecting() as made:
+        answers = _http.gather(get, range(5), workers=3)
+    assert [a for _, a in answers][0] == b"https://example.org/0"
+    assert len(made) == 5 and archive.stats()["records"] == 5

@@ -32,6 +32,7 @@ from sabueso.tools.card.disease import (
 from sabueso.tools.card.protein import ambiguity_deck, resolve_protein_card
 from sabueso.tools.card.small_molecule import ligand_deck, resolve_molecule_card
 from sabueso.tools.card.storage import save_card_json, save_card_sqlite
+from sabueso.tools.db._archive import RetrievalArchive
 from sabueso.tools.db.chembl import (
     create_molecule_card_from_file,
     create_molecule_card_from_json,
@@ -74,6 +75,7 @@ __all__ = [
     "knowledge_packet",
     "CurationStore",
     "KnowledgeStore",
+    "RetrievalArchive",
     "migrate_card",
     "refresh_card",
     "to_dataframe",

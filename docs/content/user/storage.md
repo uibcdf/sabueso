@@ -88,6 +88,25 @@ store.changed_since(card.id, date(2026, 9, 1))
 
 The reference forms are provisional until they are agreed across MOLI (uibcdf/moli#3).
 
+## What was downloaded
+
+To keep what the sources answered, build inside a retrieval archive:
+
+```python
+archive = sabueso.RetrievalArchive("project/retrievals.db")
+with archive.recording():
+    card, _ = sabueso.resolve("P52270", chembl={}, structures=["1SUX"])
+card.quality["retrievals"]["records"]  # every answer: URL, status, time, content hash
+archive.get(ref)["content"]  # the response itself, checked against its hash
+```
+
+- Nothing is kept unless you ask. The archive is a file of yours, and each distinct
+  response is stored once, compressed: building TcTIM with ChEMBL, BindingDB, PubChem
+  BioAssay, three structures and Europe PMC kept 1.4 MB of responses in 158 KB.
+- A 404 is an answer ("not found") and is kept too.
+- Reusing archived answers and rebuilding a card without the network come next
+  (uibcdf/sabueso#100).
+
 ## Old Cards
 
 Cards written by older versions are read, or migrated with what they lack reported; see

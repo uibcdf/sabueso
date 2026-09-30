@@ -35,7 +35,14 @@
     store, the same resolution of the cache directory, and atomic writes (staged, then
     renamed), so an interrupted write never leaves a release half cached.
 
-## Direction adopted (2026-09-30, #100; not yet built)
+## Direction adopted (2026-09-30, #100)
+
+Built so far: the retrieval archive records (`sabueso.RetrievalArchive`,
+`archive.recording()`): every answer through `_http.urlopen`, a 404 included, stored once
+per distinct content (compressed, SHA-256), and listed on the card
+(`quality.retrievals`). Next: retrieval times taken from the answers, `replay` and
+`archive_first`, retention by licence, and `provenance_ref` per SourceAssertion.
+
 
 "Raw payloads: not stored" answered the first draft, and it is being replaced. MOLI's
 reproducibility policy asks every external retrieval to keep what it returned, when

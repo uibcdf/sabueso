@@ -130,8 +130,10 @@ schema:
     source kept, record_order for BindingDB (bindingdb_record_order@1) and row_order
     for PubChem BioAssay (pubchem_row_order@1), beside total_count and truncated. Both
     sources now keep the 5000-record ceiling every other source keeps
-    (uibcdf/sabueso#88, uibcdf/sabueso#98). Additive, so a 0.3.7 card is a valid 0.3.8
-    card without them.
+    (uibcdf/sabueso#88, uibcdf/sabueso#98). A card built while a retrieval archive is
+    recording lists, in quality.retrievals, every answer its build received, each kept
+    in the archive under its reference (uibcdf/sabueso#100). Additive, so a 0.3.7 card
+    is a valid 0.3.8 card without them.
 card_base:
   meta:
     card_id:

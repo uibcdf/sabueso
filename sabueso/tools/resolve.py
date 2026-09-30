@@ -139,7 +139,29 @@ def resolve(
     ``curations`` (a ``CurationStore`` or the path of one) applies the curated literature
     assertions recorded for the entity, with their outcomes recomputed against the
     fresh sources (``card.quality["curation_store"]``).
+
+    Inside ``RetrievalArchive.recording()``, every answer the build receives is
+    archived, and the card lists them (``card.quality["retrievals"]``, #100).
     """
+    from sabueso.tools.db import _archive
+
+    archive = _archive.active()
+    if archive is None:
+        return _resolve(query, entity_type, profile, curations, options)
+    with _archive.collecting() as made:
+        card, resolution = _resolve(query, entity_type, profile, curations, options)
+    if card is not None:
+        card.quality["retrievals"] = _archive.manifest(archive, made)
+    return card, resolution
+
+
+def _resolve(
+    query: EntityQuery | str,
+    entity_type: str | None,
+    profile: str | None,
+    curations: Any,
+    options: dict,
+) -> Tuple[Card | None, EntityResolution]:
     kind, basis = _route(query, entity_type)
     applied = None
     if profile is not None:

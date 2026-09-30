@@ -1324,3 +1324,11 @@ uibcdf/sabueso#99.
   both cards again with unchanged knowledge adds 0.2 MB instead of about 5 MB.
 - **Upgrade in place.** Format 1 rows are copied as written, and old tables dropped. A
   Sabueso that reads only format 1 refuses format 2 with its message.
+- **The archive sits at `_http.urlopen`** (same day, #100, phase 1, first step). Every
+  client already goes through it, so one hook archives the answers of all 23 sources,
+  their headers and 404s included, without touching each client. `gather` runs each
+  request in a copy of its caller's context, so concurrent lookups are archived too.
+  A record's reference hashes what was asked, the answer's status, headers and
+  content hash, and when; the content is stored once per SHA-256. A card lists the
+  records its build made. Retrieval times still come from each client's clock, so
+  replay waits for the next step: taking them from the answers.
