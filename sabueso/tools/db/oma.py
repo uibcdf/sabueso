@@ -25,6 +25,7 @@ Each answer is ``{"retrieved_at", "record"}``. ``OnlineOMAClient`` queries the A
 from __future__ import annotations
 
 import json
+import time
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
@@ -39,6 +40,10 @@ SOURCE = "OMA"
 API = "https://omabrowser.org/api"
 UNIPROT_SEARCH = "https://rest.uniprot.org/uniprotkb/search"
 NAMES_PER_REQUEST = 100
+#: OMA's service answers HTTP 502 to about one request in three, however spaced (measured
+#: 2026-10-01); beyond the general retries, a request is tried this many times.
+UNSTABLE_ATTEMPTS = 4
+UNSTABLE_PAUSE = 2.0  # seconds, times the attempt
 
 
 def active_accessions(answer: Dict[str, Any], names: Iterable[str]) -> Dict[str, str]:
@@ -62,15 +67,20 @@ class OnlineOMAClient:
         # Entry names are resolved by UniProt, which states them; its answers are
         # UniProt's retrievals.
         retrieval = stamp("UniProt") if source == "UniProt" else stamp(SOURCE)
-        try:
-            with urlopen(url, timeout=self.timeout) as resp:
-                found = json.loads(resp.read().decode("utf-8"))
-        except HTTPError as exc:
-            if exc.code == 404:
-                raise RecordNotFoundError(f"{source} has no {what}") from exc
-            raise ConnectorError(f"{source} request failed: {exc}") from exc
-        except (URLError, TimeoutError, OSError, ValueError) as exc:
-            raise ConnectorError(f"{source} request failed: {exc}") from exc
+        for attempt in range(UNSTABLE_ATTEMPTS):
+            try:
+                with urlopen(url, timeout=self.timeout) as resp:
+                    found = json.loads(resp.read().decode("utf-8"))
+                break
+            except HTTPError as exc:
+                if exc.code == 404:
+                    raise RecordNotFoundError(f"{source} has no {what}") from exc
+                if exc.code in (502, 503) and attempt + 1 < UNSTABLE_ATTEMPTS:
+                    time.sleep(UNSTABLE_PAUSE * (attempt + 1))
+                    continue
+                raise ConnectorError(f"{source} request failed: {exc}") from exc
+            except (URLError, TimeoutError, OSError, ValueError) as exc:
+                raise ConnectorError(f"{source} request failed: {exc}") from exc
         return {"retrieved_at": retrieval.value, "record": found}
 
     def xrefs(self, accession: str) -> Dict[str, Any]:

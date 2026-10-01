@@ -135,3 +135,31 @@ def test_a_retired_entry_that_keeps_the_name_is_not_taken():
     assert active_accessions(answer, ["TPIS_HUMAN", "TWO_ACTIVE", "ABSENT"]) == {
         "TPIS_HUMAN": "P60174"
     }
+
+
+def test_an_unstable_answer_is_tried_again(monkeypatch):
+    import io
+    from urllib.error import HTTPError
+
+    from sabueso.tools.db import oma
+
+    calls = []
+
+    class Answer(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+    def flaky(url, timeout):
+        calls.append(url)
+        if len(calls) < 3:
+            raise HTTPError(url, 502, "Bad Gateway", {}, None)
+        return Answer(b'[{"xref": "P60174"}]')
+
+    monkeypatch.setattr(oma, "urlopen", flaky)
+    monkeypatch.setattr(oma, "UNSTABLE_PAUSE", 0.0)
+    answer = oma.OnlineOMAClient().xrefs("P60174")
+    assert answer["record"] == [{"xref": "P60174"}]
+    assert len(calls) == 3

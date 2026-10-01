@@ -85,7 +85,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - `knowledge_packet@2` (#88): a packet holds each statement once; grouped disease
     statements and the joint structure inventory name what they group (`@1` is still
     read, and revisions of different formats are not compared).
-- **Unreleased on main:** nothing yet.
+- **Unreleased on main:**
+  - OMA's client tries a request up to 4 times on HTTP 502/503: the service answers
+    502 to about one request in three.
 - **Watched:** card and packet size with the default ceilings (#88).
 
 ## Package layout
