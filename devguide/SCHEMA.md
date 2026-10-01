@@ -2,7 +2,7 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
-  - `0.3.8` is current, not yet released: it records the ordering rule of a capped
+  - `0.3.8` is the schema of release 0.8.0: it records the ordering rule of a capped
     source in its enrichment record (`record_order` for BindingDB, `row_order` for
     PubChem BioAssay, #98), gnomAD's consequence on the canonical transcript
     (`transcript_version`, `canonical_consequence`, #85), KLIFS's kinase

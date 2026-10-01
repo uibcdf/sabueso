@@ -60,6 +60,8 @@ status, so that none is lost because a pilot has not asked for it yet.
   - Since 0.6.0: PHI-base, DISEASES, Open Targets, Orphanet, Reactome, ClinVar, gnomAD,
     ChEMBL indications and ClinicalTrials.gov (#81–#83).
   - Since 0.7.0: SKEMPI 2.0 (#83), MONDO and MedGen (#90), Europe PMC (#92).
+  - Since 0.8.0: ChEBI, KLIFS, GPCRdb, SAbDab, OMA, OPM and PDBTM segments through RCSB
+    (#83), and gnomAD's pext (#102).
   - The registry, `sources/registry.yaml`, is the index.
 - **Knowledge views, each with a named rule:**
   - structures and the structural inventory; predicted models;
@@ -81,6 +83,12 @@ status, so that none is lost because a pilot has not asked for it yet.
   - Scientific operations: expand, explain, as of (#91).
   - Molecules given as SMILES or InChI, through PubChem's stated match (#93).
   - How each statement entered, and text-mined literature mentions (#92).
+- **Since 0.8.0.**
+  - Variants checked against gnomAD's consequence on the canonical transcript; the
+    tissues of each variant and isoform (#85, #102).
+  - Kinase pockets, GPCR numbering, antibody complexes and orthologs (#83).
+  - What was downloaded (a retrieval archive), local mirrors, offline work (#100).
+  - Knowledge store format 2, `knowledge_packet@2` and `packet_aspects@3` (#88, #99).
 
 ## Status of the foundational plan
 

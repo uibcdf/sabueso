@@ -8,7 +8,7 @@ result so it can be cited.
 Sabueso is distributed through the `uibcdf` conda channel, for Python 3.11–3.14:
 
 ```bash
-conda install -c uibcdf -c conda-forge 'sabueso>=0.7.0'
+conda install -c uibcdf -c conda-forge 'sabueso>=0.8.0'
 ```
 
 pandas is optional, for tables as DataFrames: `conda install -c conda-forge pandas`. To
