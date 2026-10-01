@@ -1,6 +1,6 @@
-version = "0.8.0"
+version = "0.8.1"
 route = "staged"
-reason = "Integrity fix that affects users of 0.7.0: gnomAD variants were placed on canonical residues the canonical protein never carries, through UniProt's isoform map next to exons the canonical transcript lacks (KRAS exon 4A, PKM's M1 exon, TPI1 isoform 3), and a transcript UniProt names no isoform for was taken as canonical (CD44); gnomAD now states each change's consequence on the canonical transcript first (#85, #102). New knowledge: card schema 0.3.8 (ChEBI classes and roles, KLIFS kinase pockets and conformations, GPCRdb generic numbers and states, SAbDab antibody complexes, OMA orthologs, transmembrane segments, gnomAD pext with the tissues of each variant and isoform, ordering rules of capped sources), packet_aspects@3, knowledge store format 2, the retrieval archive and local mirrors (#100). First publication of card schema 0.3.8. Clean installed-package gates, Windows included, must pass before public visibility."
+reason = "Integrity fix that affects users of 0.8.0 who read OMA orthologs: a Swiss-Prot entry name was resolved to whichever UniProt entry answered last, and a retired entry can keep the name (TPIS_HUMAN answers P60174 and the demerged P00938), so an ortholog could be named by a retired accession. Only active entries count now (379e140). Card schema 0.3.8, unchanged. Clean installed-package gates, Windows included, must pass before public visibility."
 decision_by = "Diego Prada (Sabueso maintainer), 2026-10-01"
 required_workflows = [
   ".github/workflows/ci.yml",
