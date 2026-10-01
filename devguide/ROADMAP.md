@@ -93,7 +93,7 @@ status, so that none is lost because a pilot has not asked for it yet.
 - **Since 0.9.0.**
   - A reference entry and its genome-strain entry related through their UniRef
     clusters, never merged; the positions where two equal-length sequences differ
-    (#103).
+    (#103, verified in the pilot that asked for it).
   - Unreadable answers and server errors asked again, and every retry recorded on the
     card (`quality.retries`, #97).
   - Validation runs from scratch, with what the sources answered recorded, never
@@ -194,7 +194,6 @@ Delivered for the first pilot's knowledge baseline and structural inventory:
   runs from scratch, with what the sources answered recorded (#100).
 
 Open, pilot-related:
-- #103, released in 0.9.0: to verify in the pilot that asked for it;
 - #53, the reference form (waits on uibcdf/moli#3);
 - #60, biological context: step 1 (curated fields) released in 0.6.0; step 2
   (VEuPathDB) blocked on access and terms (#84);

@@ -150,14 +150,14 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 - Plan and status of every objective: `ROADMAP.md`. It integrates the foundational plan
   and the pilot-driven route.
 - **Next, in order:**
-  1. Verify #103 in the pilot that asked for it, with 0.9.0, and close it: the pilot's
-     runs from scratch on the published package, its answers recorded (#100).
-  2. Local mirrors in real work (#101): ChEMBL as a mirror, and builds from cached
+  1. Local mirrors in real work (#101): ChEMBL as a mirror, and builds from cached
      sources.
-  3. Tissues as UBERON terms, and isoforms gnomAD has no transcript for (#102).
-  4. Knowledge packets: detail levels and size, as real use asks (#71, #88).
+  2. Tissues as UBERON terms, and isoforms gnomAD has no transcript for (#102).
+  3. Knowledge packets: detail levels and size, as real use asks (#71, #88).
+- **Last pilot run:** 0.9.0, 2026-10-01, from scratch on the published package, clean on
+  the first attempt; #103 verified there and closed.
 - **Open issues, by kind:**
-  - released, open for a follow-up: #103 (pilot verification), #102 (UBERON), #100
+  - released, open for a follow-up: #102 (UBERON), #100
     (archive and mirrors: next phases, #101), #98 (heavily studied targets), #92
     (literature: located mentions, own extraction), #91 (scientific operations), #88
     (default limits and size), #83 (source coverage: next wave), #71 (packets; contract
