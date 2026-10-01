@@ -1820,3 +1820,34 @@ uibcdf/sabueso#88, #71; shared contract in uibcdf/moli#22.
   `knowledge_packet@3` states its `detail`; `@1` and `@2` are still read. Packets of
   different formats, mappings or levels of detail are not compared.
 
+## Packets: what MOLI agreed on detail, ids and disclosure (2026-10-01)
+uibcdf/moli#22 (a MOLI maintainer's answer, 2026-10-01), #88, #71.
+- **`index` is accepted** as Context Assembly's first input: an inventory by reference,
+  to decide what to read. `full` materializes every view. No second deterministic
+  summary in Sabueso: selection, priority and synthesis belong to Context Assembly. A
+  new level needs a concrete consumer, and is versioned.
+- **What an index must allow, and what Sabueso does for it:**
+  - the aspects, knowledge states, rules, sources and pinned references available:
+    `areas` and `unknowns`, and `full_rules` (added), the rules the full views apply,
+    read from the modules that define them and checked against a full packet;
+  - each chosen item resolved against exactly the cited pin: `packet.item` reads that
+    state, and a store without it refuses; the latest is never read instead;
+  - the detail never changes what was asked, nor turns `not_queried` into
+    `not_stated`: a test pins that both levels ask the same options.
+- **Ids.** The pin (`snapshot_id`) is what is cited. `content_id` compares a projection
+  without retrieval times. Its equality is not the same observation, provenance or an
+  irrelevant change, and it never replaces the pin in Evidence, Decisions or Runs.
+  Consumers keep Sabueso's reference whole and opaque until uibcdf/moli#3 agrees its
+  public form.
+- **Model extraction** (point 5): a statement a model extracts from a publication keeps
+  the publication as its source, with `acquisition.method: model_extraction`, its tool,
+  version and `validated_by`. This is what #92 already records.
+- **Disclosure.** An index reveals existence, counts, sources and relationships even
+  without values. Authorization and disclosure policy apply before any packet, index or
+  item reaches a consumer, and again before a reasoning backend. Sabueso does not
+  authorize; that is the platform's (risk recorded).
+- **Closing moli#22** waits on a consumer test: a versioned query gets an index, an
+  item is read by its pin, Nextia records an Evidence, and the citation survives a new
+  acquisition. It also covers an unresolvable pin and an index with unauthorized
+  content.
+

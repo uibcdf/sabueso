@@ -547,8 +547,48 @@ def _index(aspect: str, card: Any) -> Dict[str, Any]:
     return {
         "areas": dict(sorted(out.items())),
         "full_views": list(FULL_VIEWS[aspect]),
+        "full_rules": full_rules()[aspect],
         "rule": INDEX_RULE,
     }
+
+
+def full_rules() -> Dict[str, List[str]]:
+    """Per aspect, the named rules a full packet's views apply (``FULL_VIEWS``), read
+    from the modules that define them, so an index names the rules a reader would get
+    by computing the views from the pinned cards."""
+    from . import (
+        bioactivities,
+        diseases,
+        identity_audit,
+        interface_mutations,
+        ligand_sites,
+        measurements,
+        oligomer,
+        structures,
+    )
+
+    rules = {
+        "identity": [identity_audit.IDENTITY_RULE],
+        "structures": [
+            structures.COVERAGE_CLASS_RULE,
+            structures.STATE_RULE,
+            structures.INVENTORY_RULE,
+        ],
+        "oligomer": [
+            oligomer.PARTNER_RULE,
+            oligomer.AGREEMENT_RULE,
+            interface_mutations.RULE,
+        ],
+        "ligand_sites": [ligand_sites.SITE_OVERLAP_RULE],
+        "bioactivities": [
+            bioactivities.BIOACTIVITY_CLASS_RULE,
+            bioactivities.PCHEMBL_RULE,
+            bioactivities.SCALE_RULE,
+            measurements.MEASUREMENT_RULE,
+        ],
+        "disease_association": [diseases.RULE],
+    }
+    return {aspect: sorted(rules.get(aspect, [])) for aspect in ASPECTS}
 
 
 #: What names a disease statement in the aspect it comes from (``knowledge_packet@2``).

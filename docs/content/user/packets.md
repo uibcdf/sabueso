@@ -102,11 +102,20 @@ packet.item("subject", area["relationship_ids"][0], store)  # the measurement, a
 Per aspect and protein, an index gives each field the card holds (how many items, from
 which sources, and the SourceAssertions that state them) and each relationship area (how
 many, from which sources, and every relationship's id). It names the views a full packet
-would hold (`full_views`), which the pinned cards compute. Nothing is ranked, selected
+would hold (`full_views`) and the rules they apply (`full_rules`), which the pinned
+cards compute. The level of detail never changes what is asked of the sources, so what
+an index reports as `not_queried` a full packet would not have asked either. Nothing is ranked, selected
 or summarized beyond counting (`packet_index@1`), and `unknowns`, `conflicts` and
 `provenance` are whole. The same packet is 135 KB as an index.
 
 An index and a full packet are never compared (`same_knowledge` is `None`).
+
+`packet.item` reads the exact card state the packet pins. A store that does not hold
+it refuses (`StorageError`); the latest state is never read in its place.
+
+Sabueso does not authorize. An index reveals what exists, how much and from where, even
+without values. Before an index, a packet or an item reaches anyone, the platform
+applies the recipient's disclosure policy (uibcdf/moli#22).
 
 ## Deterministic, with two ids
 
@@ -121,6 +130,12 @@ packet has two ids:
   pinned reference names.
 - `packet.content_id()`: the knowledge alone, without retrieval times or the Sabueso
   version that built the cards. `packet.same_knowledge(other)` compares it.
+
+Cite the pin, never the `content_id`. Two packets with one `content_id` state the same
+knowledge, but they are not the same observation: they were read at different times,
+perhaps from different releases (uibcdf/moli#22). Keep the reference Sabueso gives
+whole, as an opaque string: its public form is still being agreed in MOLI
+(uibcdf/moli#3).
 
 `store.packet_history("tim_pair")` lists each saved revision with its format, its
 `content_id` and `knowledge_changed`. So "has anything changed since the last time?"

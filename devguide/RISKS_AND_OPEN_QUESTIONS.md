@@ -286,6 +286,12 @@
   timeouts for pyunitwizard, smonitor, depdigest, argdigest), and passed on a rerun of
   the failed jobs. A red CI is read before it is trusted or dismissed: an install step
   that fails is infrastructure, a test that fails is not.
+- **Sabueso does not authorize what a packet discloses** (uibcdf/moli#22). A packet,
+  and even an index without values, reveals what exists, how much and from which
+  sources, curated statements included. Sabueso has no notion of a recipient. The
+  platform must apply the recipient's disclosure policy before a packet, an index or
+  an item leaves, and again before a reasoning backend. Until it does, a packet of
+  private cards is as private as the store it came from.
 
 ## Open Questions
 - **Which isoforms, and which variants, are tissue-specific?** (#102; a need the

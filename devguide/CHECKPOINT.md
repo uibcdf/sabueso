@@ -162,8 +162,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 - Plan and status of every objective: `ROADMAP.md`. It integrates the foundational plan
   and the pilot-driven route.
-- **Next:** the index level in real use, and its shared contract with MOLI's Context
-  Assembly (uibcdf/moli#22).
+- **Next:** MOLI accepted the index level (uibcdf/moli#22, 2026-10-01). It closes with
+  a consumer test (index, an item read by its pin, a Nextia Evidence, a citation that
+  survives a new acquisition), when Nextia has its first persistent consumer.
 - **Postponed by the maintainers (2026-10-01):** local mirrors in real work (#101),
   ChEMBL as a mirror and builds from cached sources.
 - **Last pilot run:** 0.9.0, 2026-10-01, from scratch on the published package, clean on

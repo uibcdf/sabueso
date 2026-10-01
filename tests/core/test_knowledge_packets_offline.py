@@ -506,3 +506,50 @@ def test_a_query_of_the_earlier_format_reads_as_full(query):
     assert sabueso.KnowledgeQuery.from_dict(earlier).detail == "full"
     with pytest.raises(ArgumentError):
         sabueso.KnowledgeQuery("P60174", detail="summary")
+
+
+def _rules(data, found):
+    """Every rule name (``name@N``) a packet's facts carry."""
+    import re
+
+    named = re.compile(r"^[a-z_]+@[0-9]+$")
+    if isinstance(data, dict):
+        for key, value in data.items():
+            if key in ("rule", "rules") or key.endswith("_rule"):
+                if isinstance(value, str) and named.match(value):
+                    found.add(value)
+                elif isinstance(value, dict) and isinstance(value.get("rule"), str):
+                    found.add(value["rule"])
+            _rules(value, found)
+    elif isinstance(data, list):
+        for value in data:
+            _rules(value, found)
+    return found
+
+
+def test_an_index_names_the_rules_its_full_views_apply(index_store, packet):
+    # uibcdf/moli#22: an index says which rules a reader gets by computing the views.
+    _, index = index_store
+    for aspect, facts in packet.facts.items():
+        declared = set(index.facts[aspect]["subject"]["full_rules"])
+        assert _rules(facts, set()) <= declared, aspect
+
+
+def test_the_level_of_detail_never_changes_what_is_asked():
+    # uibcdf/moli#22: the detail chosen does not change the question, so nothing an
+    # index reports as not_queried would have been asked by a full packet.
+    full = sabueso.KnowledgeQuery("P60174", comparator="P52270")
+    index = sabueso.KnowledgeQuery("P60174", comparator="P52270", detail="index")
+    assert index.options() == full.options()
+
+
+def test_a_pin_the_store_does_not_hold_is_never_read_as_the_latest(
+    index_store, tmp_path
+):
+    _, index = index_store
+    area = index.facts["bioactivities"]["subject"]["areas"][
+        "relationships.has_bioactivity"
+    ]
+    elsewhere = sabueso.KnowledgeStore(tmp_path / "other.db")
+    with pytest.raises(StorageError):
+        index.item("subject", area["relationship_ids"][0], elsewhere)
