@@ -1743,3 +1743,17 @@ uibcdf/sabueso#97.
   them per source and reason (`quality.retries`, schema 0.3.9). An answer that needed a
   retry is distinguishable from one that came at once.
 
+
+## Validation runs are run from scratch; the archive only records (2026-10-01)
+uibcdf/sabueso#100.
+- A validation run asks every source again. It never builds from an earlier run's
+  answers (`reusing`, `replaying`). It shows what the sources state today and what a new
+  Sabueso changed, and it has repeatedly revealed problems in areas a change was not
+  meant to touch.
+- A run records what the sources answered (`archive.recording()`), in one local archive
+  per run. A card lists the answers its build used (`quality.retrievals`), so an
+  unexpected value can be traced to the answer it came from. A replay is a diagnostic
+  tool after a run, not a way to run.
+- `reusing` is for user projects that repeat builds.
+- A run's archive is not shared: several sources' terms do not allow redistributing
+  their responses.
