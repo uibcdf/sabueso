@@ -49,12 +49,36 @@ from sabueso._private.argdigest import arg_digest
 from .errors import StorageError
 from .snapshot import canonical_json, digest, parse_ref, pinned_ref, snapshot_content
 
-QUERY_FORMAT = "knowledge_query@1"
-PACKET_FORMAT = "knowledge_packet@2"
+QUERY_FORMAT = "knowledge_query@2"
+#: ``@2`` adds ``detail`` (#88); a ``@1`` query reads as ``detail="full"``.
+READABLE_QUERY_FORMATS = ("knowledge_query@1", "knowledge_query@2")
+PACKET_FORMAT = "knowledge_packet@3"
 #: Formats a packet can be read in. ``@2`` references instead of copying: grouped
 #: disease statements name the statement they group, and the joint structure inventory
-#: names each role's structure by its relationship id (#88).
-READABLE_FORMATS = ("knowledge_packet@1", "knowledge_packet@2")
+#: names each role's structure by its relationship id (#88). ``@3`` states its
+#: ``detail``: ``full`` facts, or an ``index`` of what the cards hold (#88).
+READABLE_FORMATS = ("knowledge_packet@1", "knowledge_packet@2", "knowledge_packet@3")
+#: Levels of detail a query may ask for (``knowledge_query@2``).
+DETAILS = ("full", "index")
+INDEX_RULE = "packet_index@1"
+#: The views a ``full`` packet holds per aspect, which an ``index`` leaves to be
+#: computed from the pinned card (``card.<view>()``).
+FULL_VIEWS = {
+    "identity": ("identity_audit (together)",),
+    "structures": (
+        "structures",
+        "predicted_structures",
+        "structure_inventory (together)",
+    ),
+    "oligomer": ("oligomer", "interface_mutations"),
+    "ligand_sites": ("ligand_sites",),
+    "bioactivities": ("bioactivities",),
+    "sequence_features": (),
+    "literature": ("literature", "claims"),
+    "disease_association": ("diseases",),
+    "biological_context": (),
+    "orthology": (),
+}
 ASPECT_MAPPING = "packet_aspects@5"
 #: Aspect mappings a packet can carry; packets of different mappings are not compared.
 #: ``@3`` adds KLIFS and GPCRdb (identity, structures, ligand sites, sequence features),
@@ -230,7 +254,10 @@ class KnowledgeQuery:
     ``subject`` and ``comparator`` are UniProt accessions (``P60174`` or
     ``uniprot:P60174``). ``aspects`` are names of ``packet_aspects@5`` (default: all
     of them but ``orthology``). ``constraints``: ``bioactivity_sources``, among ChEMBL, BindingDB and
-    PubChem BioAssay (default ChEMBL). Anything else is refused, never ignored.
+    PubChem BioAssay (default ChEMBL). ``detail``: ``"full"`` (default), the views'
+    output whole, or ``"index"``, per aspect what the cards hold and the reference of
+    every item, without values (``packet_index@1``). Anything else is refused, never
+    ignored.
     """
 
     @arg_digest()
@@ -240,9 +267,11 @@ class KnowledgeQuery:
         comparator: str | None = None,
         aspects: Iterable[str] | None = None,
         constraints: Mapping[str, Any] | None = None,
+        detail: str = "full",
         skip_digestion: bool = False,
     ) -> None:
         self.subject = subject
+        self.detail = detail
         self.comparator = comparator
         self.aspects = tuple(sorted(aspects)) if aspects else DEFAULT_ASPECTS
         merged = dict(CONSTRAINTS)
@@ -260,19 +289,22 @@ class KnowledgeQuery:
             "comparator": self.comparator,
             "aspects": list(self.aspects),
             "constraints": {k: list(v) for k, v in self.constraints.items()},
+            "detail": self.detail,
         }
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "KnowledgeQuery":
-        if data.get("format") != QUERY_FORMAT:
+        if data.get("format") not in READABLE_QUERY_FORMATS:
             raise ValueError(
-                f"Not a {QUERY_FORMAT} query: format {data.get('format')!r}."
+                f"Not a knowledge query Sabueso reads "
+                f"({', '.join(READABLE_QUERY_FORMATS)}): format {data.get('format')!r}."
             )
         return cls(
             data["subject"],
             data.get("comparator"),
             data.get("aspects"),
             data.get("constraints"),
+            data.get("detail", "full"),
         )
 
     def options(self) -> Dict[str, Any]:
@@ -457,6 +489,68 @@ def _facts(aspect: str, card: Any) -> Dict[str, Any]:
     raise KeyError(aspect)
 
 
+def _index(aspect: str, card: Any) -> Dict[str, Any]:
+    """What a card holds in an aspect's areas, without values (``packet_index@1``).
+
+    Per field: how many items it holds, from which sources, and the SourceAssertions
+    that state them. Per relationship area: how many, from which sources, and each
+    relationship's id. Every item is cited through the card's pin
+    (``packet.cite(role, id)``) and read from the store; nothing is ranked, selected
+    or summarized beyond counting.
+    """
+    areas = ASPECTS[aspect]["areas"]
+    store = card.source_assertion_store
+
+    def sources(ids: Iterable[str]) -> Dict[str, int]:
+        counted: Dict[str, int] = {}
+        for sa_id in ids:
+            name = ((store.get(sa_id) or {}).get("source") or {}).get("name")
+            counted[name or "unknown"] = counted.get(name or "unknown", 0) + 1
+        return dict(sorted(counted.items()))
+
+    out: Dict[str, Any] = {}
+    field_areas = [a for a in areas if not a.startswith("relationships.")]
+    for path in card.list_fields():
+        if path.count(".") != 1 or not path.startswith(tuple(field_areas)):
+            continue
+        node = card.get(path)
+        if not isinstance(node, dict) or "value" not in node:
+            continue
+        ids = list(node.get("source_assertion_ids") or [])
+        value = node["value"]
+        out[path] = {
+            "count": len(value) if isinstance(value, list) else 1,
+            "by_source": sources(ids),
+            "source_assertion_ids": ids,
+        }
+    for area in areas:
+        if not area.startswith("relationships."):
+            continue
+        predicate, _, source = area[len("relationships.") :].partition(" (")
+        source = source.rstrip(")") or None
+        held = []
+        for rel in card.relationships(predicate=predicate):
+            named = sources(rel.get("source_assertion_ids") or [])
+            if source is None or source in named:
+                held.append((rel["id"], named))
+        if not held:
+            continue
+        by_source: Dict[str, int] = {}
+        for _, named in held:
+            for name in named:
+                by_source[name] = by_source.get(name, 0) + 1
+        out[area] = {
+            "count": len(held),
+            "by_source": dict(sorted(by_source.items())),
+            "relationship_ids": sorted(rid for rid, _ in held),
+        }
+    return {
+        "areas": dict(sorted(out.items())),
+        "full_views": list(FULL_VIEWS[aspect]),
+        "rule": INDEX_RULE,
+    }
+
+
 #: What names a disease statement in the aspect it comes from (``knowledge_packet@2``).
 STATEMENT_KEYS = {
     "association": ("relationship_id",),
@@ -619,6 +713,8 @@ class KnowledgePacket:
         self.ref = ref
 
     format = property(lambda self: self._data["format"])
+    #: ``full`` or ``index`` (``knowledge_packet@3``); earlier formats are ``full``.
+    detail = property(lambda self: self._data.get("detail", "full"))
     query = property(lambda self: KnowledgeQuery.from_dict(self._data["query"]))
     entities = property(lambda self: self._data["entities"])
     facts = property(lambda self: self._data["facts"])
@@ -642,11 +738,13 @@ class KnowledgePacket:
 
     def same_knowledge(self, other: "KnowledgePacket") -> bool | None:
         """Whether two packets hold the same knowledge, however often it was read.
-        None when they are in different formats or aspect mappings: their ids cannot
-        be compared."""
-        if self.format != other.format or self._data.get(
-            "aspect_mapping"
-        ) != other._data.get("aspect_mapping"):
+        None when they are in different formats, aspect mappings or levels of detail:
+        their ids cannot be compared."""
+        if (
+            self.format != other.format
+            or self._data.get("aspect_mapping") != other._data.get("aspect_mapping")
+            or self.detail != other.detail
+        ):
             return None
         return self.content_id() == other.content_id()
 
@@ -655,6 +753,15 @@ class KnowledgePacket:
         e.g. ``cite("subject", "SA_…")``."""
         card_id, sid, _ = parse_ref(self.entities[role]["ref"])
         return pinned_ref(card_id, sid, item_id)
+
+    def item(self, role: str, item_id: str, store: Any) -> Dict[str, Any]:
+        """A SourceAssertion (``SA_…``) or relationship (``REL_…``) of an entity, read
+        from a knowledge store at the card state the packet pins: how an ``index``
+        packet's references are read (#88)."""
+        ref = self.cite(role, item_id)
+        if item_id.startswith("REL_"):
+            return store.relationship(ref)
+        return store.source_assertion(ref)
 
     def __repr__(self) -> str:
         roles = ", ".join(f"{r}={e['card_id']}" for r, e in self.entities.items())
@@ -682,8 +789,12 @@ def compose_packet(
                 f"The {role} card is {card.id}, but the query asks about {wanted}."
             )
     aspects = knowledge_query.aspects
+    index = knowledge_query.detail == "index"
     facts: Dict[str, Any] = {}
     for aspect in aspects:
+        if index:
+            facts[aspect] = {role: _index(aspect, card) for role, card in roles}
+            continue
         facts[aspect] = {role: _facts(aspect, card) for role, card in roles}
         if comparator is not None:
             together = _together(aspect, subject, comparator, facts[aspect])
@@ -691,6 +802,7 @@ def compose_packet(
                 facts[aspect]["together"] = together
     data = {
         "format": PACKET_FORMAT,
+        "detail": knowledge_query.detail,
         "aspect_mapping": ASPECT_MAPPING,
         "query": knowledge_query.to_dict(),
         "entities": {

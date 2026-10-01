@@ -51,16 +51,18 @@ shows how to use them.
 
 ## Knowledge packets (prototype, #71; contract in uibcdf/moli#22)
 
-- `sabueso.KnowledgeQuery(subject, comparator=None, aspects=None, constraints=None)`:
-  `to_dict()`, `from_dict(data)`, `options()`.
+- `sabueso.KnowledgeQuery(subject, comparator=None, aspects=None, constraints=None,
+  detail="full")`: `to_dict()`, `from_dict(data)`, `options()`. `detail="index"` gives,
+  per aspect, what the cards hold and the reference of every item, without values
+  (`packet_index@1`, #88).
 - `sabueso.knowledge_packet(knowledge_query, store=None, packet_name=None, note=None,
   curations=None, **clients)` resolves, composes, and optionally stores.
 - `sabueso.compose_packet(knowledge_query, subject, comparator=None)` composes from
   existing cards.
 - `KnowledgePacket`: `entities`, `facts`, `conflicts`, `unknowns`, `provenance`,
-  `query`, `ref`, `format`; `snapshot_id()`, `content_id()`, `same_knowledge(other)`
-  (None across formats),
-  `cite(role, item_id)`, `to_dict()`.
+  `query`, `ref`, `format`, `detail`; `snapshot_id()`, `content_id()`,
+  `same_knowledge(other)` (None across formats, aspect mappings and levels of detail),
+  `cite(role, item_id)`, `item(role, item_id, store)`, `to_dict()`.
 
 ## Card
 

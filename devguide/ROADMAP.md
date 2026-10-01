@@ -166,7 +166,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Knowledge from Nextia not imported automatically | done (as a boundary) | promotion of derived knowledge open in uibcdf/moli#17 |
 | Literature as a knowledge source | partial | human curation and literature views; automated extraction pending |
 | KnowledgeQuery (semantic queries over sources) | partial | prototype released in 0.6.0 (#71): a protein subject, a fixed aspect mapping (`packet_aspects@4` in 0.9.0, `@5` on main); contract in uibcdf/moli#22 |
-| Knowledge packets (entities, facts, conflicts, unknowns) | partial | prototype released in 0.6.0 (#71): pinned, stored, with a content-equivalence id; contract in uibcdf/moli#22 |
+| Knowledge packets (entities, facts, conflicts, unknowns) | partial | prototype released in 0.6.0 (#71): pinned, stored, with a content-equivalence id; on main, an index level by reference for size (#88); contract in uibcdf/moli#22 |
 | Unknowns as first-class output | done | `knowledge_state()` (#56) |
 | Two levels of access (semantic and raw) | done | `resolve` and views; `tools.db.*.get_*` |
 | Patents | deferred | SureChEMBL evaluated 2026-09-30: mentions cannot be restricted to claims |
@@ -241,8 +241,9 @@ In order:
      them;
    - local mirrors in real work (#101): ChEMBL as a mirror, and builds from cached
      sources; postponed by the maintainers on 2026-10-01;
-   - knowledge packets: real use decides their aspects and size (#71, #88), aligned
-     with uibcdf/moli#22 once agreed;
+   - knowledge packets: real use decides their aspects and size (#71, #88); an index
+     level by reference on main (`packet_index@1`), aligned with uibcdf/moli#22 once
+     agreed;
    - the clinical layer: adverse events (openFDA), after a terms review; isoform
      sequences (#80);
    - peptide cards: scope them before any source (use case 5, CPPsite).

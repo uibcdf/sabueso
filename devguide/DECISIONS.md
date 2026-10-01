@@ -1800,3 +1800,23 @@ uibcdf/sabueso#102, #71.
 - A packet of `@4` and one of `@5` are not compared (`same_knowledge` is `None`).
 - About 10 KB more per human protein (49 tissues).
 
+## A packet's level of detail: an index by reference (2026-10-01)
+uibcdf/sabueso#88, #71; shared contract in uibcdf/moli#22.
+- **The problem.** A full packet holds every view's output. For the TcTIM/HsTIM pair
+  with three bioactivity sources it is 2.1 MB: bioactivities 861 KB, diseases 578 KB,
+  HsTIM's population variants 313 KB. A heavily studied target is many times that.
+- **The decision (maintainers, 2026-10-01).** A query declares its `detail`. `"full"`,
+  the default, is unchanged. `"index"` gives, per aspect and protein, what the cards
+  hold, by reference (`packet_index@1`):
+  - per field: its count, its sources and the SourceAssertions that state it;
+  - per relationship area: its count, its sources and every relationship's id;
+  - the views a full packet would hold (`full_views`), which the pinned cards compute.
+- **The boundary holds.** Nothing is ranked, selected or summarized beyond counting.
+  Every item is read through the card's pin (`packet.item(role, id, store)`).
+  Selecting and summarizing stay with MOLI's Context Assembly (uibcdf/moli#22).
+  `unknowns`, `conflicts` and `provenance` are whole at either level.
+- **Measured.** The pilot pair is 135 KB as an index (−94 %).
+- **Formats.** `knowledge_query@2` adds `detail`, and a `@1` query reads as `"full"`.
+  `knowledge_packet@3` states its `detail`; `@1` and `@2` are still read. Packets of
+  different formats, mappings or levels of detail are not compared.
+

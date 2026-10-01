@@ -82,11 +82,37 @@ instead of copying it:
 A fact names the SourceAssertions behind it. `packet.cite("subject", "SA_…")` gives its
 pinned reference, which `store.source_assertion(ref)` reads back.
 
+## An index instead of the facts
+
+A full packet holds every view's output. For a well-studied protein that is large: the
+TcTIM/HsTIM packet with three bioactivity sources is 2.1 MB, 861 KB of it
+bioactivities. `detail="index"` asks for what the cards hold instead, by reference:
+
+```python
+query = sabueso.KnowledgeQuery("P52270", comparator="P60174", detail="index")
+packet = sabueso.knowledge_packet(query, store=store, packet_name="tim_index")
+area = packet.facts["bioactivities"]["subject"]["areas"][
+    "relationships.has_bioactivity"
+]
+area["count"], area["by_source"]
+# 1002, {'BindingDB': 17, 'ChEMBL': 493, 'PubChem BioAssay': 492}
+packet.item("subject", area["relationship_ids"][0], store)  # the measurement, as stored
+```
+
+Per aspect and protein, an index gives each field the card holds (how many items, from
+which sources, and the SourceAssertions that state them) and each relationship area (how
+many, from which sources, and every relationship's id). It names the views a full packet
+would hold (`full_views`), which the pinned cards compute. Nothing is ranked, selected
+or summarized beyond counting (`packet_index@1`), and `unknowns`, `conflicts` and
+`provenance` are whole. The same packet is 135 KB as an index.
+
+An index and a full packet are never compared (`same_knowledge` is `None`).
+
 ## Deterministic, with two ids
 
-A packet never calls a language model, never ranks, and never summarizes: it holds the
-aspects asked, as the views compute them. The same query and the same card states give
-the same packet.
+A packet never calls a language model, never ranks, and never summarizes: a full packet
+holds the aspects asked as the views compute them, and an index counts and references
+what the cards hold. The same query and the same card states give the same packet.
 
 Sources change, though, and reading them again records new retrieval times. So a
 packet has two ids:
@@ -98,8 +124,8 @@ packet has two ids:
 
 `store.packet_history("tim_pair")` lists each saved revision with its format, its
 `content_id` and `knowledge_changed`. So "has anything changed since the last time?"
-has an answer. Packets saved by Sabueso 0.6.0 and 0.7.0 (`knowledge_packet@1`) are still
-read. Two revisions of different formats are not compared: `knowledge_changed` and
+has an answer. Packets saved by earlier releases (`knowledge_packet@1`, `@2`) are still
+read; `@3` states its level of detail. Two revisions of different formats are not compared: `knowledge_changed` and
 `same_knowledge` are `None`, never a change that did not happen.
 
 ## Stored packets

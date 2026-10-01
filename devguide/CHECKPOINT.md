@@ -109,6 +109,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     every isoform's exons were known;
   - the pext enrichment record counts its regions (it counted 0 since 0.8.0);
   - `packet_aspects@5`: GTEx's tissue terms in `biological_context` (#102).
+  - a packet's level of detail (#88): `KnowledgeQuery(detail="index")` gives what the
+    cards hold, by reference (`packet_index@1`), 135 KB instead of 2.1 MB for the pilot
+    pair; `knowledge_query@2`, `knowledge_packet@3`.
 - **Watched:** card and packet size with the default ceilings (#88).
 
 ## Package layout
@@ -159,8 +162,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 - Plan and status of every objective: `ROADMAP.md`. It integrates the foundational plan
   and the pilot-driven route.
-- **Next:** knowledge packets, their size and detail (#71, #88). This touches the
-  boundary with MOLI's Context Assembly (uibcdf/moli#22).
+- **Next:** the index level in real use, and its shared contract with MOLI's Context
+  Assembly (uibcdf/moli#22).
 - **Postponed by the maintainers (2026-10-01):** local mirrors in real work (#101),
   ChEMBL as a mirror and builds from cached sources.
 - **Last pilot run:** 0.9.0, 2026-10-01, from scratch on the published package, clean on

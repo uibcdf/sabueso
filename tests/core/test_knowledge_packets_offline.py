@@ -101,11 +101,12 @@ def packet(query, clients):
 
 def test_a_query_is_declared_and_normalized(query):
     assert query.to_dict() == {
-        "format": "knowledge_query@1",
+        "format": "knowledge_query@2",
         "subject": "uniprot:P60174",
         "comparator": "uniprot:P52270",
         "aspects": sorted(a for a in ASPECTS if a != "orthology"),
         "constraints": {"bioactivity_sources": ["ChEMBL"]},
+        "detail": "full",
     }
     assert sabueso.KnowledgeQuery.from_dict(query.to_dict()) == query
     # What the aspects ask of the sources is fixed per mapping version. The options are
@@ -338,7 +339,7 @@ def test_every_enricher_belongs_to_an_aspect_and_is_asked_by_it(enricher):
 
 
 def test_grouped_disease_statements_name_the_statement_they_group(packet):
-    assert packet.format == "knowledge_packet@2"
+    assert packet.format == "knowledge_packet@3"
     facts = packet.facts["disease_association"]["subject"]
     associations = {r["relationship_id"] for r in facts["associations"]}
     variants = {
@@ -399,7 +400,7 @@ def test_revisions_of_different_formats_are_not_compared(tmp_path, query, client
     store.save_packet(earlier, "tim_pair")
     history = store.packet_history("tim_pair")
     assert [h["format"] for h in history] == [
-        "knowledge_packet@2",
+        "knowledge_packet@3",
         "knowledge_packet@1",
     ]
     assert [h["knowledge_changed"] for h in history] == [None, None]
@@ -434,3 +435,74 @@ def test_the_biological_context_names_each_tissue_s_term(packet):
     terms = {t["gtex_id"]: t["ontology_id"] for t in stated}
     assert len(terms) == 49
     assert terms["Muscle_Skeletal"] == "UBERON:0011907"
+
+
+# --- detail="index": what the cards hold, by reference (#88) ----------------------------
+
+
+@pytest.fixture(scope="module")
+def index_store(tmp_path_factory, clients):
+    store = sabueso.KnowledgeStore(tmp_path_factory.mktemp("index") / "k.db")
+    query = sabueso.KnowledgeQuery("P60174", comparator="P52270", detail="index")
+    packet = _packet(query, clients, store=store, packet_name="tim_index")
+    return store, packet
+
+
+def test_an_index_packet_states_its_detail_and_rule(index_store):
+    _, index = index_store
+    assert (index.format, index.detail) == ("knowledge_packet@3", "index")
+    facts = index.facts["bioactivities"]["subject"]
+    assert facts["rule"] == "packet_index@1"
+    assert facts["full_views"] == ["bioactivities"]
+    # No comparison side by side: that is a view, computed from the pinned cards.
+    assert "together" not in index.facts["structures"]
+
+
+def test_an_index_counts_every_item_and_names_it(index_store, packet):
+    _, index = index_store
+    full = packet.facts["bioactivities"]["subject"]
+    area = index.facts["bioactivities"]["subject"]["areas"][
+        "relationships.has_bioactivity"
+    ]
+    held = {
+        m["relationship_id"] for item in full["items"] for m in item["measurements"]
+    }
+    assert area["count"] == len(area["relationship_ids"]) >= len(held)
+    assert held <= set(area["relationship_ids"])
+    assert area["by_source"] == {"ChEMBL": area["count"]}
+    variants = index.facts["sequence_features"]["subject"]["areas"][
+        "annotations.population_variants"
+    ]
+    assert variants["by_source"] == {"gnomAD": variants["count"]}
+    assert len(variants["source_assertion_ids"]) == variants["count"]
+
+
+def test_an_index_item_is_read_at_the_pinned_card_state(index_store):
+    store, index = index_store
+    area = index.facts["bioactivities"]["subject"]["areas"][
+        "relationships.has_bioactivity"
+    ]
+    rel = index.item("subject", area["relationship_ids"][0], store)
+    assert rel["predicate"] == "has_bioactivity"
+    sa_id = rel["source_assertion_ids"][0]
+    assert index.item("subject", sa_id, store)["id"] == sa_id
+
+
+def test_an_index_is_far_smaller_and_never_compared_with_a_full_packet(
+    index_store, packet
+):
+    import json
+
+    _, index = index_store
+    assert len(json.dumps(index.to_dict())) < len(json.dumps(packet.to_dict())) / 3
+    assert index.same_knowledge(packet) is None
+    # What is unknown and what is in conflict are reported whole at either level.
+    assert index.unknowns == packet.unknowns
+
+
+def test_a_query_of_the_earlier_format_reads_as_full(query):
+    earlier = {k: v for k, v in query.to_dict().items() if k != "detail"}
+    earlier["format"] = "knowledge_query@1"
+    assert sabueso.KnowledgeQuery.from_dict(earlier).detail == "full"
+    with pytest.raises(ArgumentError):
+        sabueso.KnowledgeQuery("P60174", detail="summary")
