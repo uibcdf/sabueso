@@ -5,11 +5,16 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-10-01, after release 0.8.0.*
+*Last updated: 2026-10-01, after release 0.8.1.*
 
 ## Release and schema
 
-- **Latest release:** 0.8.0 (2026-10-01).
+- **Latest release:** 0.8.1 (2026-10-01), an integrity fix for users of 0.8.0 who read
+  OMA orthologs: a Swiss-Prot entry name resolves only to an active UniProt entry.
+  Staged candidate ab45a3e; sha256 `3e6b1756…1fca9`; installed-package gate on Linux,
+  macOS and Windows × 3.11–3.14, and a clean public install on Python 3.14. Card schema
+  0.3.8, unchanged. Zenodo: 10.5281/zenodo.23079157, verified to be identical to its tag.
+- **0.8.0** (2026-10-01).
   - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
   - Staged candidate 4c4e0f2; sha256 `02f2dfd4…acf2`.
   - The exact staged file passed the installed-package gate on Linux, macOS and
@@ -80,10 +85,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - `knowledge_packet@2` (#88): a packet holds each statement once; grouped disease
     statements and the joint structure inventory name what they group (`@1` is still
     read, and revisions of different formats are not compared).
-- **Unreleased on main:**
-  - OMA: a Swiss-Prot entry name resolves only to an active entry; a retired one can
-    keep the name (TPIS_HUMAN → P60174, not the demerged P00938). Integrity fix for
-    users of 0.8.0 who read OMA orthologs.
+- **Unreleased on main:** nothing yet.
 - **Watched:** card and packet size with the default ceilings (#88).
 
 ## Package layout

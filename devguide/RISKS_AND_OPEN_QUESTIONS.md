@@ -260,6 +260,9 @@
   statement, with the resource that assigned them. The statement's terms are RCSB's
   (CC0); the assigning resource's own terms, where it states any, are not recorded
   separately. No licence was found for OPM on its site.
+- **OMA answers HTTP 502 now and then** (2026-10-01, several times in one day). The
+  request is retried with backoff, and a failure is recorded as `error`, never as
+  absence; a build may need to be repeated.
 - **gnomAD's rate limit.** The service answers HTTP 429 after bursts (about ten
   requests a minute sustained). Sabueso retries with backoff. A build that asks many
   genes in a row may still see errors, recorded as `error`, never as absence.
