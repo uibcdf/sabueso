@@ -154,7 +154,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1137 tests passed, 25 online tests deselected (2026-10-01). Run with
+- Offline suite: 1163 tests passed, 25 online tests deselected (2026-10-01). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.
@@ -164,13 +164,18 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 - Plan and status of every objective: `ROADMAP.md`. It integrates the foundational plan
   and the pilot-driven route.
-- **Next:** MOLI accepted the index level (uibcdf/moli#22, 2026-10-01). It closes with
-  a consumer test (index, an item read by its pin, a Nextia Evidence, a citation that
-  survives a new acquisition), when Nextia has its first persistent consumer.
+- **Next:** nothing is scheduled. The candidates are in `ROADMAP.md` ("Next
+  candidates") and in the user guide's gaps (`DOCS_GAPS.md`: wave-2 sources and the
+  comparative context have no pages of their own).
+- **Waiting on Nextia:** MOLI accepted the index level (uibcdf/moli#22, 2026-10-01). It
+  closes with a consumer test (index, an item read by its pin, a Nextia Evidence, a
+  citation that survives a new acquisition), when Nextia has its first persistent
+  consumer.
 - **Postponed by the maintainers (2026-10-01):** local mirrors in real work (#101),
   ChEMBL as a mirror and builds from cached sources.
-- **Last pilot run:** 0.9.0, 2026-10-01, from scratch on the published package, clean on
-  the first attempt; #103 verified there and closed.
+- **Last pilot run:** 0.10.0, 2026-10-01, from scratch on the published package. The
+  first attempt was repeated, because ChEMBL's API answered HTTP 500 to every request;
+  the second was clean. #103 was verified on 0.9.0 and closed.
 - **Open issues, by kind:**
   - released, open for a follow-up: #100
     (archive and mirrors: next phases, #101, postponed), #98 (heavily studied targets), #92

@@ -268,7 +268,10 @@
   OMA, PHI-base and Reactome once or more. Unreadable answers and HTTP 500 are now
   retried and recorded (`quality.retries`); a failure that persists is still an
   `error`. A user project that repeats builds can reuse what succeeded
-  (`reusing(max_age)`, #100); validation runs never do.
+  (`reusing(max_age)`, #100); validation runs never do. Retries do not help with an
+  outage: later the same day ChEMBL's API answered HTTP 500 to every request,
+  including its own status, for a while. The cards recorded an `error` and the
+  retries, and the run was repeated once ChEMBL answered again.
 - **UniRef clusters change with UniProt's releases** (#103). Members join and leave,
   and a cluster can be renamed after a new representative. `clustered_with` records
   the release it was read from; two cards of different releases may name different
