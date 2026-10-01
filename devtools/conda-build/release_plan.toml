@@ -1,6 +1,6 @@
-version = "0.9.0"
+version = "0.10.0"
 route = "staged"
-reason = "A substantial set: UniRef clusters relate a reference entry to its genome-strain entry, never merged (#103); unreadable 200 answers and HTTP 500 are asked again, and a card lists its build's retries (#97); OMA requests are tried up to 4 times on 502/503. First publication of card schema 0.3.9 (identifiers.uniref, clustered_with, quality.retries) and packet_aspects@4. Clean installed-package gates, Windows included, must pass before public visibility."
+reason = "A substantial set: tissues as GTEx's UBERON terms and isoforms without exons explained (isoform_exon_usage@2, #102); a knowledge packet's level of detail, an index by reference, with the guarantees agreed in uibcdf/moli#22 (knowledge_query@2, knowledge_packet@3, packet_index@1, #88); packet_aspects@5; the pext enrichment record counts its regions (it counted 0 since 0.8.0). First publication of card schema 0.3.10. Clean installed-package gates, Windows included, must pass before public visibility."
 decision_by = "Diego Prada (Sabueso maintainer), 2026-10-01"
 required_workflows = [
   ".github/workflows/ci.yml",
