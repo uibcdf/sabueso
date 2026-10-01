@@ -1,0 +1,415 @@
+[
+ {
+  "xref": "P60174",
+  "source": "UniProtKB/SwissProt",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "TPIS_HUMAN",
+  "source": "UniProtKB/SwissProt",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "V9HWK1",
+  "source": "UniProtKB/TrEMBL",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "V9HWK1_HUMAN",
+  "source": "UniProtKB/TrEMBL",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "ENST00000229270.8",
+  "source": "Ensembl Transcript",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "ENST00000396705.10",
+  "source": "Ensembl Transcript",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "ENST00000488464.6",
+  "source": "Ensembl Transcript",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "ENST00000535434.5",
+  "source": "Ensembl Transcript",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "ENST00000613953.4",
+  "source": "Ensembl Transcript",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "NP_000356.1",
+  "source": "RefSeq",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "NP_001152759.1",
+  "source": "RefSeq",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "NP_001244955.1",
+  "source": "RefSeq",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "7167",
+  "source": "EntrezGene",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "ENSG00000111669.15",
+  "source": "SourceID",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "ENSP00000379933.4",
+  "source": "SourceAC",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "ENST00000396705.10",
+  "source": "SourceAC",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "HGNC:12009",
+  "source": "HGNC",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "HEL-S-49 {ECO:0000313|EMBL:ACJ13722.1}",
+  "source": "Gene Name",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "TPI1",
+  "source": "Gene Name",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "TPI",
+  "source": "Synonym",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "Triosephosphate isomerase",
+  "source": "Protein Name",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "Methylglyoxal synthase",
+  "source": "Alternative Protein Name",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "Triose-phosphate isomerase;",
+  "source": "Alternative Protein Name",
+  "seq_match": "exact",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "1HTI",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "1KLG",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "1KLU",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "1WYI",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "2IAM",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "2IAN",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "2JK2",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "2VOM",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "4BR1",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "4E41",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "4POC",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "4POD",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "4UNK",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "4UNL",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "4ZVJ",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "6C2G",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "6D43",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "6NLH",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "6UP1",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "6UP5",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "6UP8",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "6UPF",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "7RDE",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "7SX1",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "7T0Q",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "7UXB",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "7UXV",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "9F69",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "9FFC",
+  "source": "PDB",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "P60174",
+  "source": "Swiss Model",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "V9HWK1",
+  "source": "Swiss Model",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "9606.ENSP00000229270",
+  "source": "STRING",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "NX_P60174",
+  "source": "neXtProt",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "ENSG00000111669",
+  "source": "Bgee",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "hsa:7167",
+  "source": "KEGG",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ },
+ {
+  "xref": "HGNC:12009",
+  "source": "AGR",
+  "seq_match": "unchecked",
+  "entry_nr": 24417486,
+  "omaid": "HUMAN10804"
+ }
+]

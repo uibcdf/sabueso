@@ -1,0 +1,184 @@
+[
+ {
+  "entry_nr": 3154940,
+  "entry_url": "https://omabrowser.org/api/protein/3154940/",
+  "omaid": "SALT104728",
+  "canonicalid": "TPIS_SALTY",
+  "sequence_md5": "9d90cb7317dc8ddffae15656d05a9d4f",
+  "sequence_length": 255,
+  "species": {
+   "code": "SALT1",
+   "taxon_id": -1305497511,
+   "species": "Salmonella typhimurium (strain 14028s / SGSC 2262)",
+   "genome_url": "https://omabrowser.org/api/genome/SALT1/"
+  },
+  "oma_group": 1435160,
+  "oma_hog_id": "HOG:F1075510.14a.20a",
+  "chromosome": "A",
+  "locus": {
+   "start": 4303850,
+   "end": 4304617,
+   "strand": -1
+  },
+  "is_main_isoform": true,
+  "rel_type": "1:1",
+  "distance": 89.0,
+  "score": 690.9299926757812
+ },
+ {
+  "entry_nr": 3201456,
+  "entry_url": "https://omabrowser.org/api/protein/3201456/",
+  "omaid": "SALTY03934",
+  "canonicalid": "TPIS_SALTY",
+  "sequence_md5": "9d90cb7317dc8ddffae15656d05a9d4f",
+  "sequence_length": 255,
+  "species": {
+   "code": "SALTY",
+   "taxon_id": -38414347,
+   "species": "Salmonella typhimurium (strain LT2 / SGSC1412 / ATCC 700720)",
+   "genome_url": "https://omabrowser.org/api/genome/SALTY/"
+  },
+  "oma_group": 1435160,
+  "oma_hog_id": "HOG:F1075510.14a.20a",
+  "chromosome": "Chromosome",
+  "locus": {
+   "start": 4290265,
+   "end": 4291032,
+   "strand": -1
+  },
+  "is_main_isoform": true,
+  "rel_type": "1:1",
+  "distance": 89.0,
+  "score": 690.9299926757812
+ },
+ {
+  "entry_nr": 11834270,
+  "entry_url": "https://omabrowser.org/api/protein/11834270/",
+  "omaid": "YEAST00916",
+  "canonicalid": "TPIS_YEAST",
+  "sequence_md5": "9d0def6e8fce8e6910e61541e0e4c8d6",
+  "sequence_length": 248,
+  "species": {
+   "code": "YEAST",
+   "taxon_id": 559292,
+   "species": "Saccharomyces cerevisiae (strain ATCC 204508 / S288c)",
+   "genome_url": "https://omabrowser.org/api/genome/YEAST/"
+  },
+  "oma_group": 1435160,
+  "oma_hog_id": "HOG:F1075510.1a.6b",
+  "chromosome": "IV",
+  "locus": {
+   "start": 555726,
+   "end": 556472,
+   "strand": -1
+  },
+  "is_main_isoform": true,
+  "rel_type": "1:1",
+  "distance": 68.0,
+  "score": 1098.5400390625
+ },
+ {
+  "entry_nr": 16156595,
+  "entry_url": "https://omabrowser.org/api/protein/16156595/",
+  "omaid": "DROME24886",
+  "canonicalid": "NP_788764.1",
+  "sequence_md5": "3f759e5a45645903bea5450dd0a5cce6",
+  "sequence_length": 348,
+  "species": {
+   "code": "DROME",
+   "taxon_id": 7227,
+   "species": "Drosophila melanogaster",
+   "genome_url": "https://omabrowser.org/api/genome/DROME/"
+  },
+  "oma_group": 1435160,
+  "oma_hog_id": "HOG:F1075510.1a.6b.47a.26a",
+  "chromosome": "3R",
+  "locus": {
+   "start": 30133242,
+   "end": 30134533,
+   "strand": -1
+  },
+  "is_main_isoform": true,
+  "rel_type": "1:1",
+  "distance": 48.0,
+  "score": 1407.0400390625
+ },
+ {
+  "entry_nr": 24854284,
+  "entry_url": "https://omabrowser.org/api/protein/24854284/",
+  "omaid": "MOUSE48222",
+  "canonicalid": "TPIS_MOUSE",
+  "sequence_md5": "6094d262f20ffd8cf59ca8162675eb15",
+  "sequence_length": 249,
+  "species": {
+   "code": "MOUSE",
+   "taxon_id": 10090,
+   "species": "Mus musculus",
+   "genome_url": "https://omabrowser.org/api/genome/MOUSE/"
+  },
+  "oma_group": 1435160,
+  "oma_hog_id": "HOG:F1075510.1a.6b.47a.26a.8a.5c.18a.28b.21a",
+  "chromosome": "6",
+  "locus": {
+   "start": 124788232,
+   "end": 124791085,
+   "strand": -1
+  },
+  "is_main_isoform": true,
+  "rel_type": "1:1",
+  "distance": 4.099899768829346,
+  "score": 2822.669921875
+ },
+ {
+  "entry_nr": 25469635,
+  "entry_url": "https://omabrowser.org/api/protein/25469635/",
+  "omaid": "TRYCC03899",
+  "canonicalid": "Q4DV43",
+  "sequence_md5": "4d5cdd67639abbf78fef917291c15d60",
+  "sequence_length": 251,
+  "species": {
+   "code": "TRYCC",
+   "taxon_id": 353153,
+   "species": "Trypanosoma cruzi (strain CL Brener)",
+   "genome_url": "https://omabrowser.org/api/genome/TRYCC/"
+  },
+  "oma_group": 1435160,
+  "oma_hog_id": "HOG:F1075510.1a",
+  "chromosome": "supercontig_tcruzi_1047053508647",
+  "locus": {
+   "start": 35043,
+   "end": 35798,
+   "strand": -1
+  },
+  "is_main_isoform": true,
+  "rel_type": "1:1",
+  "distance": 67.0,
+  "score": 980.9000244140625
+ },
+ {
+  "entry_nr": 1898,
+  "entry_url": "https://omabrowser.org/api/protein/1898/",
+  "omaid": "UC09801898",
+  "canonicalid": "HHV80407.1",
+  "sequence_md5": "7f093d1f680db95e4350e7f7fce6cc12",
+  "sequence_length": 249,
+  "species": {
+   "code": "UC098",
+   "taxon_id": -390384419,
+   "species": "bacterium AS04akNAM_5",
+   "genome_url": "https://omabrowser.org/api/genome/UC098/"
+  },
+  "oma_group": 1435160,
+  "oma_hog_id": "HOG:F1075510",
+  "chromosome": "DUMJ01000014",
+  "locus": {
+   "start": 40409,
+   "end": 41158,
+   "strand": 1
+  },
+  "is_main_isoform": true,
+  "rel_type": "1:1",
+  "distance": 96.0,
+  "score": 688.239990234375
+ }
+]

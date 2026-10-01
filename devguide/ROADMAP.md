@@ -207,9 +207,9 @@ In order:
    - Next, when use asks: located mentions (section, sentence) of PDB ids and
      accessions, and an extraction Sabueso runs itself, with its tool and version.
 5. **Continuing, in parallel when a need or a slot appears:**
-   - sources of wave 2 (#83), complete; orthology proposed through OMA instead of
-     Ensembl (terms to confirm): ChEBI, KLIFS, GPCRdb, SAbDab and membrane segments through RCSB in
-     use; the Chemical Probes Portal, SureChEMBL, OPM's own API, ESM Atlas and
+   - sources of wave 2 (#83), complete, orthology through OMA instead of Ensembl:
+     ChEBI, KLIFS, GPCRdb, SAbDab, OMA and membrane segments through RCSB
+     in use; the Chemical Probes Portal, SureChEMBL, OPM's own API, ESM Atlas and
      Ensembl deferred with their reasons; #85 closed through gnomAD's canonical transcript
      (follow-up #102). iPPI-DB, VEuPathDB and TDR Targets wait on #84;
    - isoforms and variants by tissue (#102): which isoforms, and which variants,

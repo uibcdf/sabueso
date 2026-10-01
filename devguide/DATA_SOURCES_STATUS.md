@@ -381,6 +381,19 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - The classic summary file of SAbDab now answers with the SAbDab2 web application; the annotations file of the new API is read instead. It carries no affinities.
   - Licence CC BY 4.0 (the API's description).
 
+### OMA — orthologs
+- **Status**: implemented as an enricher (`oma={}`, #83), card schema 0.3.8
+- **Access**: REST API, no key (`OnlineOMAClient`): the accession's cross-references, its orthologs (one request), and UniProt's accessions for the orthologs' Swiss-Prot entry names (100 per request); saved answers in `temp_data/oma/`; `tools.db.oma.get_orthologs`
+- **Quality**: green, verified live (2026-10-01):
+  - human TPI1 (P60174, 22 s): 3,090 orthologs. 2,378 are named by UniProt accession (558 through entry names UniProt resolved; 8 names unresolved) and 712 by OMA id. T. cruzi CL Brener's Q4DV43 is among them, 1:1.
+  - With `taxa`, only the chosen species are kept.
+  - TcTIM (P52270): `not_found`, because OMA maps it to Q4DV43, whose sequence differs (`seq_match` modified).
+- **Coverage**: `relationships.ortholog_of`
+- **Notes**:
+  - Joined only through an exact match OMA states for the accession.
+  - Identical proteins of several strains share one UniProt entry; each OMA protein stays its own relationship (`oma_id` is an identity qualifier).
+  - Licence CC BY 4.0, from OMA's Terms of Use as published in its browser's source (the site's pages answer 403 to non-browser clients); an older FAQ line says CC BY-SA 2.5 for the browser.
+
 ---
 
 ## Removed per-concept card tools (2026-09-23, uibcdf/sabueso#21 part 2b)

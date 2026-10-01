@@ -303,6 +303,7 @@ OUTSIDE_PACKETS = {
     "klifs": "kinase pockets and conformations are not asked by a packet aspect yet",
     "gpcrdb": "GPCR numbering and structure states are not asked by a packet aspect yet",
     "sabdab": "antibody complexes are not asked by a packet aspect yet",
+    "oma": "orthologs are not asked by a packet aspect yet",
 }
 
 

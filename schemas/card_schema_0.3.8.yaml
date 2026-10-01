@@ -170,7 +170,11 @@ schema:
     annotations.antibody_complexes holds SAbDab's antibody structures of the protein,
     per antibody instance its heavy and light chains and every antigen SAbDab assigns
     to it, for the PDB entries where a chain UniProt states is this protein is one of
-    those antigens.
+    those antigens. Protein cards may hold ortholog_of relationships to the orthologs
+    OMA states (uniprot:<accession> where OMA or UniProt states one, else oma:<OMA id>),
+    one per OMA protein, with qualifiers rel_type, species, taxon_id, oma_id, oma_group,
+    oma_hog_id, canonical_id, distance and score, only when OMA states the card's
+    accession with an exact sequence match.
     Additive, so a 0.3.7 card is a valid 0.3.8 card without them.
 card_base:
   meta:

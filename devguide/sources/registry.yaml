@@ -487,12 +487,27 @@ resources:
     name: "OMA (Orthologous MAtrix)"
     url: https://omabrowser.org/
     category: targets_sequence
-    status: evaluating
+    status: in_use
     description: "Orthologs and hierarchical orthologous groups across about 2,600 genomes, by UniProt accession."
     since: 2026-09-30
     proposed_by: "Sabueso maintainers, evaluating Ensembl orthology in wave 2 (#83)"
-    note: "Tested 2026-09-30: api/protein/<acc>/orthologs answers in about 10 s, 3,090 orthologs of human TPI1 (2,454 one-to-one), with T. cruzi's TIM (Q4DV43) among them, and TcTIM's with human TPIS. Orthologs are named by UniProt accession, entry name or another database's id (GenBank), so only UniProt ones would join. Licence not yet confirmed: the site's pages answer 403 to non-browser clients."
-    licence: "To confirm"
+    decided_by: "Sabueso maintainers (2026-10-01)"
+    reason: "A protein's pairwise orthologs (ortholog_of), only when OMA states the card's accession with an exact sequence match (an accession OMA maps to another strain's protein is not joined). Each ortholog is a UniProt accession when OMA states one, or when OMA states a Swiss-Prot entry name and UniProt states its accession; otherwise its OMA id. One relationship per OMA protein. Human TPI1: 3,090 orthologs, T. cruzi's Q4DV43 among them."
+    access: "REST API, no key: the cross-references of the accession, then its orthologs (one request, about 10-20 s), and UniProt's accessions for the entry names (100 per request), when resolve(..., oma={}) (options limit, rel_type, taxa)"
+    licence: "CC BY 4.0 (OMA's Terms of Use, 'Unless otherwise noted, OMA data is licensed under CC BY 4.0', in its browser's source, DessimozLab/pyomabrowser, 2023-06); its FAQ (2023-01) says the OMA Browser is under CC BY-SA 2.5"
+    limit:
+      constant: sabueso.enrichers.oma.DEFAULT_LIMIT
+      of: "orthologs of the protein; oma={\"limit\": n} asks for fewer"
+    terms:
+      source_names: ["OMA"]
+      licence: CC-BY-4.0
+      attribution: "OMA Orthology Database (https://omabrowser.org; Altenhoff et al., Nucleic Acids Research), CC BY 4.0"
+      statement: https://github.com/DessimozLab/pyomabrowser/blob/master/oma/templates/about_license.html
+      reviewed: 2026-10-01
+      caveats:
+        - "The Terms of Use page could not be read directly (HTTP 403 to non-browser clients); its text was read in the browser's public source."
+        - "The FAQ (older) states CC BY-SA 2.5 for the OMA Browser; the Terms of Use state CC BY 4.0 for the data."
+    module: [sabueso.tools.db.oma, sabueso.mappings.oma]
     links: ["#83"]
   - id: open_targets
     name: "Open Targets Platform"

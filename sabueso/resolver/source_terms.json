@@ -125,6 +125,17 @@
    "statement": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
    "reviewed": "2026-09-29"
   },
+  "OMA": {
+   "registry_id": "oma",
+   "licence": "CC-BY-4.0",
+   "attribution": "OMA Orthology Database (https://omabrowser.org; Altenhoff et al., Nucleic Acids Research), CC BY 4.0",
+   "statement": "https://github.com/DessimozLab/pyomabrowser/blob/master/oma/templates/about_license.html",
+   "reviewed": "2026-10-01",
+   "caveats": [
+    "The Terms of Use page could not be read directly (HTTP 403 to non-browser clients); its text was read in the browser's public source.",
+    "The FAQ (older) states CC BY-SA 2.5 for the OMA Browser; the Terms of Use state CC BY 4.0 for the data."
+   ]
+  },
   "Open Targets": {
    "registry_id": "open_targets",
    "licence": "CC0-1.0",

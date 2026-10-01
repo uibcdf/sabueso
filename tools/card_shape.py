@@ -128,9 +128,14 @@ def fixture_cards() -> List[dict]:
             pubchem_bioassay=True,
             pubchem_bioassay_client=FixturePubChemBioAssayClient(data),
         )
+        # HsTIM also with OMA's orthologs (0.3.8).
+        from sabueso.tools.db.oma import FixtureOMAClient
+
         hstim, _ = sabueso.resolve(
             "P60174",
             resolver=resolver,
+            oma={},
+            oma_client=FixtureOMAClient(data),
             structures=["1HTI", "1KLG", "4UNK"],
             chembl={},
             chembl_client=chembl,

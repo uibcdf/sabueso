@@ -7,8 +7,8 @@
     PubChem BioAssay, #98), gnomAD's consequence on the canonical transcript
     (`transcript_version`, `canonical_consequence`, #85), KLIFS's kinase
     classification, structures and pocket, and GPCRdb's receptor classification,
-    segments, generic residue numbers and structures, and SAbDab's antibody complexes
-    (#83);
+    segments, generic residue numbers and structures, SAbDab's antibody complexes,
+    and OMA's orthologs (#83);
   - `0.3.7` is the schema of release 0.7.0: it adds `annotations.interface_mutations`
     (SKEMPI 2.0, #83), disease cards (MONDO, #90), the MONDO and MedGen identity and
     hierarchy relationships on protein cards, `mentioned_in` (Europe PMC, #92),
@@ -362,6 +362,15 @@ A Relationship is first-class, traceable knowledge:
     isoform map would place it. The residue check still applies.
   - disease hierarchy (added in #90, schema 0.3.7): `subclass_of` (disease →
     `mondo:<id>`), one per parent term MONDO states.
+  - orthologs (added in #83, schema 0.3.8): `ortholog_of` (protein → `uniprot:<acc>`,
+    or `oma:<OMA id>`), one per OMA protein (`oma_id` is an identity qualifier:
+    identical proteins of several strains share a UniProt entry). Only when OMA states
+    the card's accession with `seq_match` `exact`; an accession OMA maps to another
+    protein (another strain) is `not_found`, naming it. Qualifiers: `rel_type` (1:1, 1:n,
+    m:1, m:n), `species`, `taxon_id`, `oma_id`, `oma_group`, `oma_hog_id`,
+    `canonical_id` (OMA's: a UniProt accession, a Swiss-Prot entry name UniProt resolves,
+    or another database's id), `distance` and `score`, as stated. Options: `limit`,
+    `rel_type`, `taxa`.
   - text mentions (added in #92, schema 0.3.7): `mentioned_in` (protein →
     `pubmed:<id>`, else `doi:<doi>`, else `europepmc:<source>:<id>`), one per article
     whose text states the UniProt accession, as Europe PMC found it by text mining.

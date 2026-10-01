@@ -88,6 +88,8 @@ def resolve_protein_card(
     skempi_client: Any | None = None,
     sabdab: bool = False,
     sabdab_client: Any | None = None,
+    oma: Dict[str, Any] | None = None,
+    oma_client: Any | None = None,
     klifs: Dict[str, Any] | None = None,
     klifs_client: Any | None = None,
     gpcrdb: Dict[str, Any] | None = None,
@@ -178,6 +180,11 @@ def resolve_protein_card(
     (``annotations.antibody_complexes``): per antibody, its heavy and light chains and
     every antigen SAbDab assigns to it, for the PDB entries where a chain UniProt states
     is this protein is one of those antigens.
+
+    ``oma`` (e.g. ``{}``, ``{"rel_type": "1:1"}`` or ``{"taxa": [9606, 353153]}``;
+    default all, up to 5000) adds OMA's orthologs of this protein (``ortholog_of``),
+    only when OMA states the accession with an exact sequence match. Each ortholog is a
+    UniProt accession when OMA or UniProt states one, else its OMA id.
 
     ``klifs`` (e.g. ``{}`` or ``{"limit": 100}``; default all, up to 5000 structures)
     adds, for a kinase KLIFS states is this UniProt entry, its classification (group,
@@ -344,6 +351,7 @@ def resolve_protein_card(
         "clinvar": (clinvar, clinvar_client),
         "skempi": (skempi, skempi_client),
         "sabdab": (sabdab, sabdab_client),
+        "oma": (oma, oma_client),
         "klifs": (klifs, klifs_client),
         "gpcrdb": (gpcrdb, gpcrdb_client),
         "medgen": (medgen, medgen_client),

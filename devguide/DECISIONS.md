@@ -1589,3 +1589,29 @@ uibcdf/sabueso#83.
   identifier its source states: an accession, the PDB chains UniProt states, or an
   InChIKey.
 
+## OMA: orthologs, joined only through an exact match (2026-10-01)
+uibcdf/sabueso#83, instead of Ensembl's Compara (deferred, 2026-09-30).
+- **Why OMA.** It states pairwise orthologs across about 2,600 genomes, by UniProt
+  accession where one exists, in one request per protein. That includes the
+  parasite–host pairs the pilots compare. Human TPI1 has T. cruzi's TIM among its
+  3,090 orthologs, 1:1.
+- **The query joins only through an exact match OMA states.** OMA maps an accession to
+  one of its proteins, sometimes of another strain, and says whether the sequence is
+  the same (`seq_match`). TcTIM (P52270) is mapped to CL Brener's Q4DV43 with
+  `modified`. Taking Q4DV43's orthologs for P52270 would be identity by similarity, so
+  the card records `not_found` and names the protein OMA chose.
+- **Orthologs named by stated identifiers.**
+  - A UniProt accession OMA states is taken as is.
+  - A Swiss-Prot entry name is resolved to its accession by UniProt, which states
+    that; the name is kept as `canonical_id`.
+  - Anything else (RefSeq, GenBank) stays `oma:<OMA id>`.
+- **One relationship per OMA protein.** Identical proteins of several strains share one
+  UniProt entry (Salmonella LT2 and 14028s, both TPIS_SALTY). `oma_id` is an identity
+  qualifier, so each genome's ortholog keeps its species.
+- **Options.** `rel_type` is filtered by OMA itself; `taxa` keeps exact taxon ids
+  (strains are their own taxa, e.g. 353153 for CL Brener). The ceiling is 5000.
+- **Terms.** CC BY 4.0, from OMA's Terms of Use as published in its browser's public
+  source. The site's pages answer 403 to non-browser clients. An older FAQ line says
+  CC BY-SA 2.5 for the browser, and both are recorded.
+- **Not in packets yet** (#88).
+

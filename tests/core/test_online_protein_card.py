@@ -124,3 +124,10 @@ def test_online_sabdab_finds_cetuximab_on_egfr():
     (outcome,) = [e for e in card.quality["enrichments"] if e["source"] == "SAbDab"]
     assert outcome["status"] == "added"
     assert "pdb:1YY9" in outcome["structures"]
+
+
+@pytest.mark.online
+def test_online_oma_states_the_parasite_ortholog_of_human_tim():
+    card, _ = resolve_protein_card("P60174", oma={"taxa": [353153]})
+    targets = [r["object_ref"] for r in card.relationships("ortholog_of")]
+    assert targets == ["uniprot:Q4DV43"]

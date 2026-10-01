@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 36, evaluating 17, deferred 28, retired 3, out of scope 13.
+Summary: in use 37, evaluating 16, deferred 28, retired 3, out of scope 13.
 
 ## In use
 
@@ -30,6 +30,7 @@ Summary: in use 36, evaluating 17, deferred 28, retired 3, out of scope 13.
 | [eggNOG](http://eggnog5.embl.de/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only, through UniProt (CC BY 4.0) | 2026-09-25 |
 | [NCBI Gene / RefSeq](https://www.ncbi.nlm.nih.gov/gene/) | Targets, sequence and basic pharmacology | via UniProt cross-references; Entrez E-utilities efetch (XML), optional NCBI key, when resolve(..., ncbi_gene=True) | US public domain (NLM policy) | 2026-09-25 |
 | [VEuPathDB gene identifiers](https://veupathdb.org/) | Organism, orthology and biological context | via UniProt cross-references | Identifiers only | 2026-09-25 |
+| [OMA (Orthologous MAtrix)](https://omabrowser.org/) | Targets, sequence and basic pharmacology | REST API, no key: the cross-references of the accession, then its orthologs (one request, about 10-20 s), and UniProt's accessions for the entry names (100 per request), when resolve(..., oma={}) (options limit, rel_type, taxa) | CC BY 4.0 (OMA's Terms of Use, 'Unless otherwise noted, OMA data is licensed under CC BY 4.0', in its browser's source, DessimozLab/pyomabrowser, 2023-06); its FAQ (2023-01) says the OMA Browser is under CC BY-SA 2.5 | 2026-09-30 |
 | [Open Targets Platform](https://platform.opentargets.org/) | Target validation, genetics and functional networks | GraphQL API v4 (pages of 3000), no key, when resolve(..., open_targets={}), in Open Targets' order | CC0 1.0 (cite the latest Open Targets publication; third-party sources inside keep their terms, agreed for unrestricted use by its users) | 2026-09-25 |
 | [DISEASES (Jensen lab)](https://diseases.jensenlab.org/) | Target validation, genetics and functional networks | Filtered channel files (TSV) from download.jensenlab.org, versioned by publication date, kept in memory or in a cache directory, when resolve(..., diseases={}) | CC BY 4.0 | 2026-09-27 |
 | [Orphadata (Orphanet)](https://www.orphadata.com/) | Target validation, genetics and functional networks | The en_product6.xml file (about 22 MB), dated in its header, downloaded and indexed once per process in memory, when resolve(..., orphadata=True) | CC BY 4.0 (Orphadata Science; cite Orphanet and the data version) | 2026-09-27 |
@@ -63,6 +64,7 @@ and Sabueso warns. The other sources in use are read whole.
 | UniProtKB | 500 | candidates of a name or gene search (kept low on purpose; more than this is ambiguous, and the resolution records search_truncated) |
 | ChEMBL | 5000 | bioactivities per target |
 | STRING | 5000 | partners at the required score (700 by default); STRING states no total, so a cut is detected by asking for one more |
+| OMA (Orthologous MAtrix) | 5000 | orthologs of the protein; oma={"limit": n} asks for fewer |
 | Open Targets Platform | 5000 | associations per gene |
 | Europe PMC | 5000 | articles mentioning the accession, newest first; europepmc={"limit": n} asks for fewer |
 | ClinVar | 5000 | records per gene |
@@ -93,7 +95,6 @@ and Sabueso warns. The other sources in use are read whole.
 | [DGIdb](https://dgidb.org/) | Target validation, genetics and functional networks | Aggregated drug–gene interactions and druggability categories. | under review | 2026-09-25 |
 | [Pharos / TCRD (IDG)](https://pharos.nih.gov/) | Target validation, genetics and functional networks | Human target development levels (Tclin, Tchem, Tbio, Tdark) and aggregated target knowledge, keyed by UniProt, HGNC, Ensembl and NCBI Gene. | under review | 2026-09-27 |
 | [TTD (Therapeutic Target Database)](https://idrblab.org/ttd/) | Target validation, genetics and functional networks | Molecular targets, their clinical status, diseases and resistance mutations. | under review | 2026-09-25 |
-| [OMA (Orthologous MAtrix)](https://omabrowser.org/) | Targets, sequence and basic pharmacology | Orthologs and hierarchical orthologous groups across about 2,600 genomes, by UniProt accession. | Tested 2026-09-30: api/protein/<acc>/orthologs answers in about 10 s, 3,090 orthologs of human TPI1 (2,454 one-to-one), with T. cruzi's TIM (Q4DV43) among them, and TcTIM's with human TPIS. Orthologs are named by UniProt accession, entry name or another database's id (GenBank), so only UniProt ones would join. Licence not yet confirmed: the site's pages answer 403 to non-browser clients. | 2026-09-30 |
 
 ## Deferred
 

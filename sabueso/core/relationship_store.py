@@ -40,6 +40,7 @@ PREDICATES = frozenset(
         "participates_in",  # protein -> pathway or reaction (Reactome), #83
         "subclass_of",  # disease -> broader disease term (MONDO is_a), #90
         "mentioned_in",  # protein -> publication whose text states its accession, #92
+        "ortholog_of",  # protein -> protein (OMA pairwise orthology), #83
     }
 )
 
@@ -59,6 +60,9 @@ IDENTITY_QUALIFIERS: Dict[str, tuple] = {
     # text-mined co-mention of one disease, or DISEASES's and Open Targets', are
     # separate statements (#82).
     "associated_with": ("source", "channel", "via_protein", "via_gene"),
+    # One per OMA protein: identical proteins of several strains share one UniProt
+    # entry, and each genome's ortholog keeps its species and OMA id (#83).
+    "ortholog_of": ("oma_id",),
 }
 
 

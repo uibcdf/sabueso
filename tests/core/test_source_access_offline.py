@@ -25,6 +25,7 @@ from sabueso.tools.db import (
     mondo,
     ncbi_gene,
     ncbi_taxonomy,
+    oma,
     open_targets,
     orphadata,
     pdb_ccd,
@@ -137,6 +138,9 @@ CALLS = {
     ),
     "stringdb.get_partners": lambda: stringdb.get_partners(
         "P60174", 9606, client=stringdb.FixtureStringClient("temp_data")
+    ),
+    "oma.get_orthologs": lambda: oma.get_orthologs(
+        "P60174", client=oma.FixtureOMAClient("temp_data")
     ),
     "sabdab.get_complexes": lambda: sabdab.get_complexes(
         ["9MQI"], client=sabdab.FixtureSAbDabClient("temp_data")

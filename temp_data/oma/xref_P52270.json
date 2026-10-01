@@ -1,0 +1,156 @@
+[
+ {
+  "xref": "P52270",
+  "source": "UniProtKB/SwissProt",
+  "seq_match": "modified",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "TPIS_TRYCR",
+  "source": "UniProtKB/SwissProt",
+  "seq_match": "modified",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "Q4DV43",
+  "source": "UniProtKB/TrEMBL",
+  "seq_match": "exact",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "Q4DV43_TRYCC",
+  "source": "UniProtKB/TrEMBL",
+  "seq_match": "exact",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "XP_818253.1",
+  "source": "RefSeq",
+  "seq_match": "exact",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "3550449",
+  "source": "EntrezGene",
+  "seq_match": "exact",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "Tc00.1047053508647.200",
+  "source": "SourceID",
+  "seq_match": "exact",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "EAN96402",
+  "source": "SourceAC",
+  "seq_match": "exact",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "Triosephosphate isomerase",
+  "source": "Protein Name",
+  "seq_match": "exact",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "Triosephosphate isomerase, glycosomal",
+  "source": "Protein Name",
+  "seq_match": "modified",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "Tc00.1047053508647.200 {ECO:0000313|EMBL:EAN96402.",
+  "source": "ORF Name",
+  "seq_match": "exact",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "1CI1",
+  "source": "PDB",
+  "seq_match": "modified",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "1SUX",
+  "source": "PDB",
+  "seq_match": "modified",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "1TCD",
+  "source": "PDB",
+  "seq_match": "modified",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "2OMA",
+  "source": "PDB",
+  "seq_match": "modified",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "2V5B",
+  "source": "PDB",
+  "seq_match": "modified",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "3Q37",
+  "source": "PDB",
+  "seq_match": "modified",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "4HHP",
+  "source": "PDB",
+  "seq_match": "modified",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "P52270",
+  "source": "Swiss Model",
+  "seq_match": "modified",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "Q4DV43",
+  "source": "Swiss Model",
+  "seq_match": "unchecked",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "353153.Q4DV43",
+  "source": "STRING",
+  "seq_match": "unchecked",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ },
+ {
+  "xref": "tcr:508647.200",
+  "source": "KEGG",
+  "seq_match": "unchecked",
+  "entry_nr": 25469635,
+  "omaid": "TRYCC03899"
+ }
+]

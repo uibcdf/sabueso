@@ -84,6 +84,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - SAbDab's antibody complexes (#83, wave 2): `sabdab=True` adds, per antibody bound
     to the protein in a PDB entry, its chains and every antigen SAbDab assigns,
     joined through the chains UniProt states;
+  - OMA's orthologs (#83): `oma={}` adds `ortholog_of`, only when OMA states the
+    accession with an exact sequence match, with options `rel_type` and `taxa`;
   - local mirrors (#100, phase 2): `sabueso.mirrors` (install, status, update policies,
     remove, `using` with `mirror_first` or `offline`); BindingDB's monthly release as
     the first mirror (`MirrorBindingDBClient`), recorded as `access: mirror` with its
