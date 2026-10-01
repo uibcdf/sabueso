@@ -2,7 +2,7 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
-  - `0.3.9` is current, not yet released: `identifiers.uniref` and `clustered_with`
+  - `0.3.9` is the schema of release 0.9.0: `identifiers.uniref` and `clustered_with`
     (UniProt's UniRef clusters, never identity, #103), and `quality.retries` (#97);
   - `0.3.8` is the schema of release 0.8.0: it records the ordering rule of a capped
     source in its enrichment record (`record_order` for BindingDB, `row_order` for

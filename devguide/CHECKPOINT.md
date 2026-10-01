@@ -5,15 +5,19 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-10-01, after release 0.8.1.*
+*Last updated: 2026-10-01, after release 0.9.0.*
 
 ## Release and schema
 
-- **Latest release:** 0.8.1 (2026-10-01), an integrity fix for users of 0.8.0 who read
-  OMA orthologs: a Swiss-Prot entry name resolves only to an active UniProt entry.
-  Staged candidate ab45a3e; sha256 `3e6b1756…1fca9`; installed-package gate on Linux,
-  macOS and Windows × 3.11–3.14, and a clean public install on Python 3.14. Card schema
-  0.3.8, unchanged. Zenodo: 10.5281/zenodo.23079157, verified to be identical to its tag.
+- **Latest release:** 0.9.0 (2026-10-01).
+  - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
+  - Staged candidate c6876b8; sha256 `6b73db7b…af9b`.
+  - The exact staged file passed the installed-package gate on Linux, macOS and
+    Windows × 3.11–3.14, and a clean public install on Python 3.14.
+  - Zenodo archive: 10.5281/zenodo.23084553, verified to be identical to its tag.
+- **0.8.1** (2026-10-01), an integrity fix for users of 0.8.0 who read OMA orthologs: a
+  Swiss-Prot entry name resolves only to an active UniProt entry. Staged candidate
+  ab45a3e; sha256 `3e6b1756…1fca9`. Zenodo: 10.5281/zenodo.23079157.
 - **0.8.0** (2026-10-01).
   - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
   - Staged candidate 4c4e0f2; sha256 `02f2dfd4…acf2`.
@@ -21,11 +25,11 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     Windows × 3.11–3.14, and a clean public install on Python 3.14.
   - Zenodo archive: 10.5281/zenodo.23077926, verified to be identical to its tag; 0.7.0
     (10.5281/zenodo.23048186) and 0.6.0 (10.5281/zenodo.23038465) too.
-- **Card schema:** 0.3.8 (`schemas/card_schema_0.3.8.yaml`), published by 0.8.0. The next
-  additive change goes to a new version, 0.3.9.
+- **Card schema:** 0.3.9 (`schemas/card_schema_0.3.9.yaml`), published by 0.9.0. The next
+  additive change goes to a new version, 0.3.10.
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
-    0.3.8.
-  - The recorded shape of 0.3.8 is `schemas/card_shape_0.3.8.json`.
+    0.3.9.
+  - The recorded shape of 0.3.9 is `schemas/card_shape_0.3.9.json`.
 - **In 0.8.0:**
   - an integrity fix for users of 0.7.0: gnomAD changes next to exons the canonical
     transcript lacks are no longer placed on canonical residues through UniProt's
@@ -85,7 +89,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - `knowledge_packet@2` (#88): a packet holds each statement once; grouped disease
     statements and the joint structure inventory name what they group (`@1` is still
     read, and revisions of different formats are not compared).
-- **Unreleased on main:**
+- **In 0.9.0:**
   - card schema 0.3.9 (#103): `identifiers.uniref` and `clustered_with`, UniProt's
     UniRef clusters (`uniref=True`), never identity; `Card.sequence_differences`
     (`equal_length_positions@1`); OMA's `not_found` names the UniProt entry it mapped

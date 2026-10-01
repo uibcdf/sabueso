@@ -17,13 +17,15 @@ Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the o
 
 ## Current release status
 
-- **Latest release:** [0.8.1](https://github.com/uibcdf/sabueso/releases/tag/0.8.1)
+- **Latest release:** [0.9.0](https://github.com/uibcdf/sabueso/releases/tag/0.9.0)
   (2026-10-01), distributed through the `uibcdf` conda channel.
   - One `noarch` package for Linux, macOS and Windows, on Python 3.11–3.14.
   - Before publication, the exact package was inspected, then tested on all 12
     combinations.
-  - It writes card schema 0.3.8; `sabueso.migrate_card` reports what older cards lack.
+  - It writes card schema 0.3.9; `sabueso.migrate_card` reports what older cards lack.
   - Archived on Zenodo, verified to be identical to its tag:
+    [10.5281/zenodo.23084553](https://doi.org/10.5281/zenodo.23084553).
+  - 0.8.1 is archived on Zenodo, verified to be identical to its tag:
     [10.5281/zenodo.23079157](https://doi.org/10.5281/zenodo.23079157).
   - Users of 0.8.0 who read OMA orthologs: upgrade. An ortholog could be named by a
     retired UniProt accession (see the release notes).
