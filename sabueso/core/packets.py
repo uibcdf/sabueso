@@ -178,6 +178,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
             "annotations.tissue_specificity",
             "annotations.pathway",
             "annotations.exon_usage_by_tissue",
+            "annotations.isoform_coding_exons",
         ),
     },
     "orthology": {

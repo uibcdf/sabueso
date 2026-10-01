@@ -1675,6 +1675,22 @@ uibcdf/sabueso#102.
   map is applied. In PKM and KRAS, 14 and 17 wrong placements are gone.
   `no_consequence_on_canonical` is new: gnomAD states no consequence on the canonical
   transcript at all.
-- **Still open (#102):** a view per isoform, which needs each isoform's exons in
-  genomic coordinates; and tissues as UBERON terms.
+- **Per isoform (same day): `isoform_exon_usage@1`.**
+  - UniProt states which transcript encodes each isoform (its cross-references), and
+    gnomAD states each transcript's CDS exons, in the same request as the pext. Both
+    are stored (`annotations.isoform_coding_exons`).
+  - An isoform's own coding bases lie in no other isoform's transcript, and the view
+    gives their mean pext per tissue.
+  - Isoforms built by combining exons (tau) rarely own any base, so the view also
+    gives the `variable_regions`: runs of coding bases that not every isoform
+    includes, with the isoforms that include them.
+  - UniProt's tissue-specificity statements restricted to an isoform
+    (`molecule: "Isoform M2"`) are shown with it.
+
+  PKM is where the two meet:
+  - UniProt states M2 in proliferating cells and M1 in adult tissues;
+  - the pext of M2's own exon is in all 49 tissues, and of M1's in 23, highest in
+    skeletal muscle.
+- **Still open (#102):** tissues as UBERON terms, and isoforms whose transcripts gnomAD
+  does not annotate.
 

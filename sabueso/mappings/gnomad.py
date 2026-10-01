@@ -249,3 +249,69 @@ def map_pext(
         else {},
         "relationships": [],
     }
+
+
+EXONS_FIELD = "annotations.isoform_coding_exons"
+
+
+def map_isoform_exons(
+    record: Dict[str, Any],
+    isoform_of: Dict[str, str],
+    accession: str,
+    retrieved_at: str,
+    version: str | None,
+) -> Dict[str, Any]:
+    """The coding exons gnomAD states for each transcript UniProt states an isoform for
+    → ``annotations.isoform_coding_exons`` (#102).
+
+    ``isoform_of`` maps an Ensembl transcript (no version) to the UniProt isoform the
+    entry's cross-reference states it encodes. One item per such transcript gnomAD
+    annotates: the isoform, the transcript and its version, and its CDS exons in GRCh38,
+    as gnomAD states them. Transcripts UniProt states but gnomAD does not annotate are
+    left out (the enrichment record counts them).
+    """
+    gene = record.get("gene") or {}
+    items, assertions = [], []
+    for transcript in sorted(
+        gene.get("transcripts") or [], key=lambda t: t.get("transcript_id") or ""
+    ):
+        isoform = isoform_of.get(transcript.get("transcript_id"))
+        if isoform is None:
+            continue
+        cds = sorted(
+            [e["start"], e["stop"]]
+            for e in transcript.get("exons") or []
+            if e.get("feature_type") == "CDS"
+        )
+        if not cds:
+            continue
+        item = {
+            "isoform": isoform,
+            "transcript": transcript.get("transcript_id"),
+            "transcript_version": transcript.get("transcript_version"),
+            "assembly": "GRCh38",
+            "chromosome": gene.get("chrom"),
+            "strand": gene.get("strand"),
+            "cds": cds,
+        }
+        item = {k: v for k, v in item.items() if v not in (None, "")}
+        assertion = make_source_assertion(
+            EXONS_FIELD,
+            item,
+            SOURCE,
+            f"transcript:{transcript.get('transcript_id')}",
+            retrieved_at,
+            subject_ref=f"uniprot:{accession}",
+        )
+        if version is not None:
+            assertion["source"]["version"] = str(version)
+        items.append(item)
+        assertions.append(assertion)
+    return {
+        "fields": {EXONS_FIELD: items} if items else {},
+        "source_assertions": assertions,
+        "field_source_assertions": {EXONS_FIELD: [a["id"] for a in assertions]}
+        if assertions
+        else {},
+        "relationships": [],
+    }

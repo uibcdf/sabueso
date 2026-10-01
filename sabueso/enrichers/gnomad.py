@@ -171,7 +171,7 @@ class GnomADPext(Enricher):
     data = "pext"
     registry_id = "gnomad"
     client_option = "gnomad_client"
-    areas = ("annotations.exon_usage_by_tissue",)
+    areas = ("annotations.exon_usage_by_tissue", "annotations.isoform_coding_exons")
     organisms = (9606,)
     coverage_detail = "gnomAD's pext covers human genes only"
 
@@ -202,7 +202,7 @@ class GnomADPext(Enricher):
         return client.pext(request.identifier)
 
     def map(self, context, request, response, options):
-        from sabueso.mappings.gnomad import map_pext
+        from sabueso.mappings.gnomad import map_isoform_exons, map_pext
 
         mapped = map_pext(
             response["record"],
@@ -210,12 +210,48 @@ class GnomADPext(Enricher):
             response.get("retrieved_at", ""),
             response.get("version"),
         )
+        isoform_of = _isoforms_of_transcripts(context)
+        exons = map_isoform_exons(
+            response["record"],
+            isoform_of,
+            context.anchor,
+            response.get("retrieved_at", ""),
+            response.get("version"),
+        )
+        for key in ("fields", "field_source_assertions"):
+            mapped[key].update(exons[key])
+        mapped["source_assertions"].extend(exons["source_assertions"])
+        listed = {i["transcript"] for i in exons["fields"].get(EXONS, [])}
         return mapped, {
             "status": "added",
             "version": response.get("version"),
-            "count": len(mapped["source_assertions"]),
+            "count": len(mapped["fields"].get(PEXT, [])),
             "flags": (response["record"].get("pext") or {}).get("flags") or [],
+            "isoform_transcripts": len(listed),
+            "isoform_transcripts_not_in_dataset": len(set(isoform_of) - listed),
         }
+
+
+PEXT = "annotations.exon_usage_by_tissue"
+EXONS = "annotations.isoform_coding_exons"
+
+
+def _isoforms_of_transcripts(context):
+    """Ensembl transcript → the UniProt isoform the entry's cross-reference states it
+    encodes; in an entry without isoforms, the entry itself."""
+    described = any(
+        comment.get("commentType") == "ALTERNATIVE PRODUCTS" and comment.get("isoforms")
+        for comment in context.entry.get("comments") or []
+    )
+    out = {}
+    for xref in context.xrefs("Ensembl"):
+        transcript = str(xref.get("id", "")).split(".")[0]
+        isoform = xref.get("isoformId")
+        if isoform is None and not described:
+            isoform = context.anchor
+        if transcript and isoform:
+            out[transcript] = isoform
+    return out
 
 
 ENRICHER = GnomAD()

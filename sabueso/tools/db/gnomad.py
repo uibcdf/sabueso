@@ -68,8 +68,9 @@ query($transcript: String!) {
 PEXT_QUERY = """
 query($gene: String!) {
   gene(gene_id: $gene, reference_genome: GRCh38) {
-    gene_id symbol chrom
+    gene_id symbol chrom strand
     pext { flags regions { start stop mean tissues { tissue value } } }
+    transcripts { transcript_id transcript_version exons { feature_type start stop } }
   }
 }
 """

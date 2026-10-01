@@ -93,7 +93,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - tissues of a variant (#102): `exon_usage=True` reads gnomAD's pext
     (`annotations.exon_usage_by_tissue`), and `Card.variant_tissue_usage()` gives each
     variant the tissues expressing its position (`pext_at_variant@1`); changes the
-    isoform map would place are first asked of gnomAD variant by variant;
+    isoform map would place are first asked of gnomAD variant by variant; and
+    `Card.isoform_tissue_usage()` gives per isoform UniProt's statements restricted to
+    it and the pext of its own and variable coding bases (`isoform_exon_usage@1`);
   - local mirrors (#100, phase 2): `sabueso.mirrors` (install, status, update policies,
     remove, `using` with `mirror_first` or `offline`); BindingDB's monthly release as
     the first mirror (`MirrorBindingDBClient`), recorded as `access: mirror` with its

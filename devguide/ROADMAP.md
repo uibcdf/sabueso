@@ -212,8 +212,9 @@ In order:
      in use; the Chemical Probes Portal, SureChEMBL, OPM's own API, ESM Atlas and
      Ensembl deferred with their reasons; #85 closed through gnomAD's canonical transcript
      (follow-up #102). iPPI-DB, VEuPathDB and TDR Targets wait on #84;
-   - isoforms and variants by tissue (#102): variants done (gnomAD's pext,
-     `pext_at_variant@1`); a view per isoform remains (`RISKS_AND_OPEN_QUESTIONS.md`);
+   - isoforms and variants by tissue (#102): variants and isoforms done
+     (gnomAD's pext, `pext_at_variant@1`, `isoform_exon_usage@1`); tissues as UBERON
+     terms remain;
    - knowledge packets: real use decides their aspects and size (#71, #88), aligned
      with uibcdf/moli#22 once agreed;
    - the clinical layer: adverse events (openFDA), after a terms review; isoform

@@ -344,3 +344,78 @@ def test_a_change_in_an_exon_the_canonical_transcript_lacks_is_not_placed():
         "p.Gly5Ser",
     )
     assert by_id["elsewhere"]["no_canonical_consequence"] is True
+
+
+def test_each_isoform_takes_the_pext_of_its_own_coding_bases(pext_card):
+    exons = pext_card.get("annotations.isoform_coding_exons")["value"]
+    assert {e["isoform"] for e in exons} == {"P60174-1", "P60174-3", "P60174-4"}
+    view = pext_card.isoform_tissue_usage()
+    assert view["rule"]["rule"] == "isoform_exon_usage@1"
+    by_id = {i["isoform"]: i for i in view["items"]}
+    # The canonical isoform shares every coding base with isoform 3.
+    assert by_id["P60174-1"]["pext"] == {"basis": "no_own_coding_bases"}
+    own = by_id["P60174-3"]
+    assert own["own_coding_bases"] == 111
+    assert own["pext"]["at_or_above_threshold"] == ["testis"]
+    (region,) = [r for r in view["variable_regions"] if r["isoforms"] == ["P60174-3"]]
+    assert region["pext"]["max"]["tissue"] == "testis"
+
+
+def test_variable_regions_follow_the_isoforms_that_include_them():
+    # Tau-like: a constitutive exon, an exon two isoforms of three include, and one
+    # only the third includes.
+    from sabueso.core.tissue_usage import variable_regions
+
+    cds = {
+        "A": [[1, 10], [20, 29]],
+        "B": [[1, 10], [20, 29]],
+        "C": [[1, 10], [40, 49]],
+    }
+    assert variable_regions(cds) == [
+        {"start": 20, "end": 29, "isoforms": ["A", "B"]},
+        {"start": 40, "end": 49, "isoforms": ["C"]},
+    ]
+
+
+def test_uniprot_statements_restricted_to_an_isoform_are_kept_with_it():
+    from sabueso.core.tissue_usage import isoform_tissue_usage_view
+
+    class Store:
+        def find_by_field(self, path):
+            return [
+                {
+                    "id": "SA_1",
+                    "asserted_value": "Specifically expressed in proliferating cells",
+                    "source_metadata": {
+                        "molecule": "Isoform M2",
+                        "eco": ["ECO:0000269"],
+                    },
+                },
+                {"id": "SA_2", "asserted_value": "Ubiquitous", "source_metadata": {}},
+            ]
+
+    class Card:
+        source_assertion_store = Store()
+
+        def get(self, path):
+            return {
+                "annotations.isoforms": {
+                    "value": [
+                        {
+                            "isoform_id": "X-1",
+                            "name": "M2",
+                            "sequence_status": "Displayed",
+                        },
+                        {"isoform_id": "X-2", "name": "M1"},
+                    ]
+                }
+            }.get(path)
+
+    view = isoform_tissue_usage_view(Card())
+    by_id = {i["isoform"]: i for i in view["items"]}
+    assert [
+        s["source_assertion_id"] for s in by_id["X-1"]["uniprot_tissue_specificity"]
+    ] == ["SA_1"]
+    assert by_id["X-2"]["uniprot_tissue_specificity"] == []
+    assert [s["text"] for s in view["entry_tissue_specificity"]] == ["Ubiquitous"]
+    assert by_id["X-1"]["pext"] == {"basis": "no_transcript_in_gnomad"}

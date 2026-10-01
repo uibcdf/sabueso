@@ -180,6 +180,10 @@ schema:
     tissue, the share of the gene's expression that includes the region; the view
     Card.variant_tissue_usage joins it to each population variant's genomic position
     (pext_at_variant@1), and nothing derived is stored.
+    annotations.isoform_coding_exons holds, per Ensembl transcript UniProt states an
+    isoform for and gnomAD annotates, the isoform, the transcript and version, and its
+    CDS exons in GRCh38 as gnomAD states them; the view Card.isoform_tissue_usage
+    (isoform_exon_usage@1) reads them with the pext.
     A gnomAD change the isoform map would place is first asked of gnomAD variant by
     variant, and is not placed when gnomAD states no protein change on the canonical
     transcript (not_coding_on_canonical) or no consequence there
@@ -892,6 +896,18 @@ protein_card:
           entity: number
           chain: string
           this_protein: boolean
+      source_assertion_ids:
+      - string
+    isoform_coding_exons:
+      value:
+      - isoform: string
+        transcript: string
+        transcript_version: string
+        assembly: string
+        chromosome: string
+        strand: string
+        cds:
+        - - number
       source_assertion_ids:
       - string
     exon_usage_by_tissue:

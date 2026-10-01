@@ -244,11 +244,13 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "filled_by": "oma",
             "entity_types": ("protein",),
         },
-        {
-            "path": "annotations.exon_usage_by_tissue",
-            "filled_by": "exon_usage",
-            "entity_types": ("protein",),
-        },
+        *(
+            {"path": path, "filled_by": "exon_usage", "entity_types": ("protein",)}
+            for path in (
+                "annotations.exon_usage_by_tissue",
+                "annotations.isoform_coding_exons",
+            )
+        ),
         # Transmembrane segments RCSB integrates (OPM, PDBTM), set only when stated.
         {
             "path": "relationships.has_structure.membrane_segments",

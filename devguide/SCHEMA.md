@@ -453,6 +453,16 @@ A Relationship is first-class, traceable knowledge:
     each population variant's genomic position to its region (`pext_at_variant@1`);
     a variant outside every region is `outside_pext_regions` (pext covers coding
     regions only). Nothing derived is stored.
+  - isoform coding exons (added in #102, schema 0.3.8):
+    `annotations.isoform_coding_exons`, per Ensembl transcript UniProt states an isoform
+    for (its cross-reference) and gnomAD annotates: `isoform`, `transcript`,
+    `transcript_version`, `assembly`, `chromosome`, `strand`, and `cds` (GRCh38 ranges,
+    as gnomAD states them). `Card.isoform_tissue_usage()` (`isoform_exon_usage@1`) gives
+    per isoform UniProt's tissue-specificity statements restricted to it
+    (`source_metadata.molecule`), its own coding bases (in no other isoform's
+    transcript) and their mean pext per tissue, and the `variable_regions`: runs of
+    coding bases not every isoform includes, with the isoforms that include them and
+    their pext.
   - antibody complexes (added in #83, schema 0.3.8): `annotations.antibody_complexes`,
     one item per SAbDab antibody instance with an antigen that is a protein or peptide
     chain UniProt states is this protein in that PDB entry. Never joined by the antigen

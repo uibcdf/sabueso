@@ -144,3 +144,12 @@ def test_online_pext_places_pkm_m1_exon_variants_in_muscle():
     ]
     assert m1
     assert all(i.get("not_placed") == "not_coding_on_canonical" for i in m1)
+
+
+@pytest.mark.online
+def test_online_pkm_isoforms_own_exons_and_uniprot_statements():
+    card, _ = resolve_protein_card("P14618", exon_usage=True)
+    by_name = {i["name"]: i for i in card.isoform_tissue_usage()["items"]}
+    assert by_name["M1"]["pext"]["max"]["tissue"] == "muscle_skeletal"
+    assert by_name["M1"]["uniprot_tissue_specificity"]
+    assert len(by_name["M2"]["pext"]["at_or_above_threshold"]) == 49

@@ -4,7 +4,400 @@
   "gene": {
    "gene_id": "ENSG00000111669",
    "symbol": "TPI1",
-   "chrom": "12"
+   "chrom": "12",
+   "strand": "+",
+   "transcripts": [
+    {
+     "transcript_id": "ENST00000474253",
+     "transcript_version": "1",
+     "exons": [
+      {
+       "feature_type": "exon",
+       "start": 6870017,
+       "stop": 6870136
+      },
+      {
+       "feature_type": "exon",
+       "start": 6870265,
+       "stop": 6870571
+      }
+     ]
+    },
+    {
+     "transcript_id": "ENST00000462761",
+     "transcript_version": "5",
+     "exons": [
+      {
+       "feature_type": "UTR",
+       "start": 6868197,
+       "stop": 6868323
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6868864,
+       "stop": 6868987
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6869099,
+       "stop": 6869105
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869106,
+       "stop": 6869183
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869258,
+       "stop": 6869295
+      }
+     ]
+    },
+    {
+     "transcript_id": "ENST00000229270",
+     "transcript_version": "8",
+     "exons": [
+      {
+       "feature_type": "UTR",
+       "start": 6867119,
+       "stop": 6867455
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6867456,
+       "stop": 6867681
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6868864,
+       "stop": 6868987
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869099,
+       "stop": 6869183
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869258,
+       "stop": 6869390
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869688,
+       "stop": 6869773
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6870049,
+       "stop": 6870136
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6870265,
+       "stop": 6870380
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6870381,
+       "stop": 6870948
+      }
+     ]
+    },
+    {
+     "transcript_id": "ENST00000396705",
+     "transcript_version": "10",
+     "exons": [
+      {
+       "feature_type": "UTR",
+       "start": 6867531,
+       "stop": 6867566
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6867567,
+       "stop": 6867681
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6868864,
+       "stop": 6868987
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869099,
+       "stop": 6869183
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869258,
+       "stop": 6869390
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869688,
+       "stop": 6869773
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6870049,
+       "stop": 6870136
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6870265,
+       "stop": 6870380
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6870381,
+       "stop": 6870948
+      }
+     ]
+    },
+    {
+     "transcript_id": "ENST00000488464",
+     "transcript_version": "6",
+     "exons": [
+      {
+       "feature_type": "UTR",
+       "start": 6868100,
+       "stop": 6868255
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6868864,
+       "stop": 6868987
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6869099,
+       "stop": 6869105
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869106,
+       "stop": 6869183
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869258,
+       "stop": 6869390
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869688,
+       "stop": 6869773
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6870049,
+       "stop": 6870136
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6870265,
+       "stop": 6870380
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6870381,
+       "stop": 6870383
+      }
+     ]
+    },
+    {
+     "transcript_id": "ENST00000613953",
+     "transcript_version": "4",
+     "exons": [
+      {
+       "feature_type": "UTR",
+       "start": 6867420,
+       "stop": 6867455
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6867456,
+       "stop": 6867681
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6868864,
+       "stop": 6868987
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869099,
+       "stop": 6869183
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869258,
+       "stop": 6869390
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869688,
+       "stop": 6869773
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6870049,
+       "stop": 6870136
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6870265,
+       "stop": 6870380
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6870381,
+       "stop": 6870946
+      }
+     ]
+    },
+    {
+     "transcript_id": "ENST00000482209",
+     "transcript_version": "1",
+     "exons": [
+      {
+       "feature_type": "exon",
+       "start": 6869548,
+       "stop": 6869773
+      },
+      {
+       "feature_type": "exon",
+       "start": 6870036,
+       "stop": 6870137
+      }
+     ]
+    },
+    {
+     "transcript_id": "ENST00000493987",
+     "transcript_version": "5",
+     "exons": [
+      {
+       "feature_type": "UTR",
+       "start": 6868141,
+       "stop": 6868509
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6868864,
+       "stop": 6868987
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6869099,
+       "stop": 6869105
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869106,
+       "stop": 6869183
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869258,
+       "stop": 6869390
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869688,
+       "stop": 6869773
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6870049,
+       "stop": 6870090
+      }
+     ]
+    },
+    {
+     "transcript_id": "ENST00000495834",
+     "transcript_version": "1",
+     "exons": [
+      {
+       "feature_type": "UTR",
+       "start": 6868469,
+       "stop": 6868987
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6869099,
+       "stop": 6869105
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869106,
+       "stop": 6869183
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869258,
+       "stop": 6869390
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869688,
+       "stop": 6869770
+      }
+     ]
+    },
+    {
+     "transcript_id": "ENST00000535434",
+     "transcript_version": "5",
+     "exons": [
+      {
+       "feature_type": "UTR",
+       "start": 6868114,
+       "stop": 6868509
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6868864,
+       "stop": 6868987
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6869099,
+       "stop": 6869105
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869106,
+       "stop": 6869183
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869258,
+       "stop": 6869390
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6869688,
+       "stop": 6869773
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6870049,
+       "stop": 6870136
+      },
+      {
+       "feature_type": "CDS",
+       "start": 6870265,
+       "stop": 6870380
+      },
+      {
+       "feature_type": "UTR",
+       "start": 6870381,
+       "stop": 6870939
+      }
+     ]
+    }
+   ]
   },
   "pext": {
    "flags": [],

@@ -122,6 +122,24 @@ For TPI1, the variants in isoform 3's own N-terminal segment lie in a region exp
 in testis only (0.38; below 0.01 on average), while E105D lies in a region every
 tissue expresses.
 
+### In which tissues an isoform is made
+
+`card.isoform_tissue_usage()` answers per isoform. For each one it gives:
+
+- what UniProt states about its tissues, when a tissue-specificity statement is
+  restricted to that isoform;
+- where its own coding bases are expressed, from gnomAD's pext. Its own bases are those
+  in no other isoform's transcript, and the transcripts and their exons are the ones
+  UniProt and gnomAD state.
+
+For PKM, UniProt states M2 is "specifically expressed in proliferating cells" and M1 is
+"expressed in adult tissues". The pext of their own exons agrees: M2's is expressed in
+all 49 GTEx tissues, and M1's in 23, up to 0.58 in skeletal muscle.
+
+Isoforms built by combining exons, such as tau's, rarely own any base. For them,
+`variable_regions` lists each run of coding bases that not every isoform includes,
+with the isoforms that include it and its pext.
+
 The values come from isoform quantifications of adult tissues, so a low value is not
 proof that a change is harmless. By default every variant, up to 5000 (`{"limit": n}` asks for fewer); a cut is reported.
 

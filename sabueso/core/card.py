@@ -562,6 +562,14 @@ class Card:
 
         return variant_tissue_usage_view(self, threshold)
 
+    def isoform_tissue_usage(self, threshold: float = 0.1) -> Dict[str, Any]:
+        """Per UniProt isoform: UniProt's tissue-specificity statements restricted to
+        it, and the tissues expressing its own coding bases (gnomAD's pext), under
+        ``isoform_exon_usage@1`` (#102). Build the card with ``exon_usage=True``."""
+        from .tissue_usage import isoform_tissue_usage_view
+
+        return isoform_tissue_usage_view(self, threshold)
+
     def oligomer(self) -> Dict[str, Any]:
         """What sources state about this protein's quaternary structure and interfaces."""
         from .oligomer import oligomer_view

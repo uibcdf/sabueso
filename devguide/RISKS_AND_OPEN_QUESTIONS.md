@@ -267,9 +267,10 @@
 ## Open Questions
 - **Which isoforms, and which variants, are tissue-specific?** (#102; a need the
   maintainers recorded on 2026-09-30. **Variants: answered on 2026-10-01** by gnomAD's
-  pext and `Card.variant_tissue_usage()`, `pext_at_variant@1`. Still open: a view per
-  isoform, which needs each isoform's exons in genomic coordinates, and tissues as
-  UBERON terms.) A card states a protein's isoforms and places
+  pext and `Card.variant_tissue_usage()`, `pext_at_variant@1`. Isoforms: answered the
+  same day by `Card.isoform_tissue_usage()`, `isoform_exon_usage@1`, with UniProt's
+  statements restricted to each isoform. Still open: tissues as UBERON terms, and
+  isoforms whose transcripts gnomAD does not annotate.) A card states a protein's isoforms and places
   each population variant on the canonical isoform, or says why not
   (`isoform_specific_position`, `not_coding_on_canonical`, `transcript_not_canonical`).
   It does not say where each isoform is expressed. So it cannot tell a change that
