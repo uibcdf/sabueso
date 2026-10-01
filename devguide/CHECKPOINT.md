@@ -90,6 +90,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     `ligand_sites` and `sequence_features`, SAbDab in `structures`, and the
     `orthology` aspect (OMA), asked only by name; packets of different mappings are
     not compared;
+  - tissues of a variant (#102): `exon_usage=True` reads gnomAD's pext
+    (`annotations.exon_usage_by_tissue`), and `Card.variant_tissue_usage()` gives each
+    variant the tissues expressing its position (`pext_at_variant@1`); changes the
+    isoform map would place are first asked of gnomAD variant by variant;
   - local mirrors (#100, phase 2): `sabueso.mirrors` (install, status, update policies,
     remove, `using` with `mirror_first` or `offline`); BindingDB's monthly release as
     the first mirror (`MirrorBindingDBClient`), recorded as `access: mirror` with its

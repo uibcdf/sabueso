@@ -27,8 +27,9 @@ version, and a test pins what each version asks. ``@1`` was published in 0.6.0; 
 disease identity and the grouped diseases to ``disease_association`` (#90). ``@3``
 adds the kinase and GPCR classifications to ``identity``, kinase conformations, GPCR
 states and antibody complexes to ``structures``, the kinase pocket to
-``ligand_sites``, GPCR segments and generic numbers to ``sequence_features``, and the
-``orthology`` aspect (OMA), asked only when named (#83).
+``ligand_sites``, GPCR segments and generic numbers to ``sequence_features``, gnomAD's
+pext to ``biological_context`` (#102), and the ``orthology`` aspect (OMA), asked only
+when named (#83).
 
 The shared contract (query and packet shapes, references, the boundary with MOLI's
 Context Assembly) is proposed in uibcdf/moli#22; this is Sabueso's prototype of it.
@@ -176,6 +177,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
             "annotations.subcellular_location",
             "annotations.tissue_specificity",
             "annotations.pathway",
+            "annotations.exon_usage_by_tissue",
         ),
     },
     "orthology": {

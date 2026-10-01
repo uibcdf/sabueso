@@ -47,9 +47,11 @@ def test_frequencies_are_kept_as_gnomad_states_them(card):
 def test_the_consequence_on_the_canonical_transcript_comes_first(card):
     variants = card.get(FIELD)["value"]
     counts = collections.Counter(v.get("not_placed", "placed") for v in variants)
+    # The six changes in isoform 3's own segment: gnomAD, asked variant by variant,
+    # states no consequence on the canonical transcript (#102).
     assert counts == {
         "placed": 7,
-        "isoform_specific_position": 6,
+        "no_consequence_on_canonical": 6,
         "not_coding_on_canonical": 2,
     }
     # For the gene, gnomAD states this change on a transcript UniProt does not state
@@ -67,6 +69,7 @@ def test_the_consequence_on_the_canonical_transcript_comes_first(card):
     assert record["canonical_transcripts"] == [
         {"transcript": "ENST00000396705", "version": "10"}
     ]
+    assert record["consequences_checked"] == 6
 
 
 def test_a_change_that_is_not_coding_on_the_canonical_transcript_is_not_placed(card):
@@ -222,3 +225,122 @@ def test_a_transcript_uniprot_states_no_isoform_for_is_canonical_only_without_is
     assert described["canonical"] == {"ENST01"}
     assert "ENST02" not in described["isoform_of"]
     assert transcript_context(entry(isoforms=False))["canonical"] == {"ENST02"}
+
+
+@pytest.fixture(scope="module")
+def pext_card():
+    resolver = EntityResolver(FixtureUniProtClient("temp_data"))
+    card, _ = sabueso.resolve(
+        "P60174",
+        resolver=resolver,
+        gnomad={},
+        exon_usage=True,
+        gnomad_client=FixtureGnomADClient("temp_data"),
+    )
+    return card
+
+
+def test_pext_is_kept_as_gnomad_states_it(pext_card):
+    regions = pext_card.get("annotations.exon_usage_by_tissue")["value"]
+    assert len(regions) == 12
+    first = regions[0]
+    assert (first["assembly"], first["chromosome"], first["start"], first["end"]) == (
+        "GRCh38",
+        "12",
+        6867456,
+        6867566,
+    )
+    assert len(first["tissues"]) == 49
+    records = {
+        e.get("data"): e
+        for e in pext_card.quality["enrichments"]
+        if e["source"] == "gnomAD"
+    }
+    assert records["pext"]["version"] == "gnomad_r4 pext (GTEx v10)"
+    assert records[None]["count"] == 15  # the variants keep their own record
+
+
+def test_each_variant_takes_the_pext_of_its_region(pext_card):
+    view = pext_card.variant_tissue_usage()
+    assert view["rule"]["rule"] == "pext_at_variant@1"
+    assert view["rule"]["parameters"] == {"threshold": 0.1, "assembly": "GRCh38"}
+    by_id = {i["variant_id"]: i for i in view["items"]}
+    # E105D, on the canonical isoform, lies in a region every tissue expresses.
+    e105d = by_id["12-6869174-G-C"]["pext"]
+    assert len(e105d["at_or_above_threshold"]) == 49
+    # Isoform 3's own N-terminal segment is expressed in testis only.
+    segment = by_id["12-6867456-A-G"]
+    assert segment["not_placed"] == "no_consequence_on_canonical"
+    assert segment["pext"]["at_or_above_threshold"] == ["testis"]
+    assert segment["pext"]["max"]["tissue"] == "testis"
+    assert segment["pext"]["mean"] < 0.01
+
+
+def test_a_variant_outside_every_region_is_not_called_unexpressed(pext_card):
+    from sabueso.core.tissue_usage import variant_tissue_usage_view
+
+    class Card:
+        def get(self, path):
+            return {
+                "annotations.exon_usage_by_tissue": {
+                    "value": [
+                        {
+                            "chromosome": "12",
+                            "start": 10,
+                            "end": 20,
+                            "mean": 0.5,
+                            "tissues": [{"tissue": "liver", "value": 0.5}],
+                        }
+                    ]
+                },
+                "annotations.population_variants": {
+                    "value": [{"variant_id": "12-30-A-G"}, {"variant_id": "x"}]
+                },
+            }.get(path)
+
+    view = variant_tissue_usage_view(Card())
+    assert [i["pext"]["basis"] for i in view["items"]] == [
+        "outside_pext_regions",
+        "no_position",
+    ]
+
+
+def test_a_change_in_an_exon_the_canonical_transcript_lacks_is_not_placed():
+    # PKM's M1 exon: identical residues flank the segment UniProt marks as different,
+    # so the isoform map would place a change there; gnomAD states it is intronic on
+    # the canonical (M2) transcript.
+    from sabueso.mappings.gnomad import merged
+
+    gene = [
+        {"variant_id": "m1", "hgvsp": "p.Ser434Phe", "transcript_id": "M1"},
+        {"variant_id": "both", "hgvsp": "p.Gly5Ser", "transcript_id": "M1"},
+        {"variant_id": "elsewhere", "hgvsp": "p.Ala2Thr", "transcript_id": "M1"},
+    ]
+    consequences = {
+        "m1": [
+            {"transcript_id": "M1", "hgvsp": "p.Ser434Phe"},
+            {
+                "transcript_id": "M2",
+                "hgvsc": "c.1167+30C>T",
+                "major_consequence": "intron_variant",
+            },
+        ],
+        "both": [
+            {"transcript_id": "M1", "hgvsp": "p.Gly5Ser"},
+            {
+                "transcript_id": "M2",
+                "hgvsp": "p.Gly5Ser",
+                "transcript_version": "3",
+                "major_consequence": "missense_variant",
+            },
+        ],
+        "elsewhere": [{"transcript_id": "M1", "hgvsp": "p.Ala2Thr"}],
+    }
+    kept, _ = merged(gene, [], consequences, {"M2"})
+    by_id = {v["variant_id"]: v for v in kept}
+    assert by_id["m1"]["canonical_consequence"]["consequence"] == "intron_variant"
+    assert (by_id["both"]["transcript_id"], by_id["both"]["hgvsp"]) == (
+        "M2",
+        "p.Gly5Ser",
+    )
+    assert by_id["elsewhere"]["no_canonical_consequence"] is True

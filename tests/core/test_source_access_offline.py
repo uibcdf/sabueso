@@ -83,6 +83,9 @@ CALLS = {
     "gnomad.get_variants": lambda: gnomad.get_variants(
         "ENSG00000111669", client=gnomad.FixtureGnomADClient("temp_data")
     ),
+    "gnomad.get_pext": lambda: gnomad.get_pext(
+        "ENSG00000111669", client=gnomad.FixtureGnomADClient("temp_data")
+    ),
     "gnomad.get_transcript_variants": lambda: gnomad.get_transcript_variants(
         "ENST00000396705", client=gnomad.FixtureGnomADClient("temp_data")
     ),

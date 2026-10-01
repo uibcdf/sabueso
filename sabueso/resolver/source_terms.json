@@ -257,7 +257,8 @@
    "statement": "https://gnomad.broadinstitute.org/terms",
    "reviewed": "2026-09-29",
    "caveats": [
-    "Some annotations, not read by Sabueso, carry other terms."
+    "Some annotations, not read by Sabueso, carry other terms.",
+    "pext (read since 2026-10-01) is gnomAD's computation from GTEx v10 isoform quantifications; GTEx's own terms for its summary data were not reviewed separately."
    ]
   }
  }

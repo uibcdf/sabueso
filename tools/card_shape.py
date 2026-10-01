@@ -152,6 +152,7 @@ def fixture_cards() -> List[dict]:
             clinvar={},
             clinvar_client=FixtureClinVarClient(data),
             gnomad={},
+            exon_usage=True,  # gnomAD's pext (0.3.8, #102)
             gnomad_client=FixtureGnomADClient(data),
             medgen=True,
             medgen_client=FixtureMedGenClient(data),

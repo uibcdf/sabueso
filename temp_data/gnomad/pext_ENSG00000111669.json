@@ -1,0 +1,2451 @@
+{
+ "version": "gnomad_r4 pext (GTEx v10)",
+ "record": {
+  "gene": {
+   "gene_id": "ENSG00000111669",
+   "symbol": "TPI1",
+   "chrom": "12"
+  },
+  "pext": {
+   "flags": [],
+   "regions": [
+    {
+     "start": 6867456,
+     "stop": 6867566,
+     "mean": 0.008096,
+     "tissues": [
+      {
+       "tissue": "adipose_subcutaneous",
+       "value": 0.007862
+      },
+      {
+       "tissue": "adipose_visceral_omentum",
+       "value": 0.00555
+      },
+      {
+       "tissue": "adrenal_gland",
+       "value": 0.002
+      },
+      {
+       "tissue": "artery_aorta",
+       "value": 0.006434
+      },
+      {
+       "tissue": "artery_coronary",
+       "value": 0.005935
+      },
+      {
+       "tissue": "artery_tibial",
+       "value": 0.007253
+      },
+      {
+       "tissue": "brain_amygdala",
+       "value": 0.012193
+      },
+      {
+       "tissue": "brain_anterior_cingulate_cortex_ba24",
+       "value": 0.014881
+      },
+      {
+       "tissue": "brain_caudate_basal_ganglia",
+       "value": 0.015067
+      },
+      {
+       "tissue": "brain_cerebellar_hemisphere",
+       "value": 0.017769
+      },
+      {
+       "tissue": "brain_cerebellum",
+       "value": 0.014425
+      },
+      {
+       "tissue": "brain_cortex",
+       "value": 0.013878
+      },
+      {
+       "tissue": "brain_frontal_cortex_ba9",
+       "value": 0.016663
+      },
+      {
+       "tissue": "brain_hippocampus",
+       "value": 0.012138
+      },
+      {
+       "tissue": "brain_hypothalamus",
+       "value": 0.009321
+      },
+      {
+       "tissue": "brain_nucleus_accumbens_basal_ganglia",
+       "value": 0.03303
+      },
+      {
+       "tissue": "brain_putamen_basal_ganglia",
+       "value": 0.014002
+      },
+      {
+       "tissue": "brain_spinal_cord_cervical_c_1",
+       "value": 0.008589
+      },
+      {
+       "tissue": "brain_substantia_nigra",
+       "value": 0.007483
+      },
+      {
+       "tissue": "breast_mammary_tissue",
+       "value": 0.007495
+      },
+      {
+       "tissue": "cells_cultured_fibroblasts",
+       "value": 0.003192
+      },
+      {
+       "tissue": "cells_ebv_transformed_lymphocytes",
+       "value": 0.00691
+      },
+      {
+       "tissue": "colon_sigmoid",
+       "value": 0.003704
+      },
+      {
+       "tissue": "colon_transverse",
+       "value": 0.003131
+      },
+      {
+       "tissue": "esophagus_gastroesophageal_junction",
+       "value": 0.004503
+      },
+      {
+       "tissue": "esophagus_mucosa",
+       "value": 0.004431
+      },
+      {
+       "tissue": "esophagus_muscularis",
+       "value": 0.003991
+      },
+      {
+       "tissue": "heart_atrial_appendage",
+       "value": 0.003095
+      },
+      {
+       "tissue": "heart_left_ventricle",
+       "value": 0.002102
+      },
+      {
+       "tissue": "kidney_cortex",
+       "value": 0.002339
+      },
+      {
+       "tissue": "liver",
+       "value": 0.001786
+      },
+      {
+       "tissue": "lung",
+       "value": 0.005201
+      },
+      {
+       "tissue": "minor_salivary_gland",
+       "value": 0.005067
+      },
+      {
+       "tissue": "muscle_skeletal",
+       "value": 0.003008
+      },
+      {
+       "tissue": "nerve_tibial",
+       "value": 0.008763
+      },
+      {
+       "tissue": "ovary",
+       "value": 0.006178
+      },
+      {
+       "tissue": "pancreas",
+       "value": 0.003187
+      },
+      {
+       "tissue": "pituitary",
+       "value": 0.008566
+      },
+      {
+       "tissue": "prostate",
+       "value": 0.004764
+      },
+      {
+       "tissue": "skin_not_sun_exposed_suprapubic",
+       "value": 0.010392
+      },
+      {
+       "tissue": "skin_sun_exposed_lower_leg",
+       "value": 0.011987
+      },
+      {
+       "tissue": "small_intestine_terminal_ileum",
+       "value": 0.004051
+      },
+      {
+       "tissue": "spleen",
+       "value": 0.007447
+      },
+      {
+       "tissue": "stomach",
+       "value": 0.003729
+      },
+      {
+       "tissue": "testis",
+       "value": 0.379153
+      },
+      {
+       "tissue": "thyroid",
+       "value": 0.005913
+      },
+      {
+       "tissue": "uterus",
+       "value": 0.007385
+      },
+      {
+       "tissue": "vagina",
+       "value": 0.005242
+      },
+      {
+       "tissue": "whole_blood",
+       "value": 0.004779
+      }
+     ]
+    },
+    {
+     "start": 6867567,
+     "stop": 6867681,
+     "mean": 0.84382,
+     "tissues": [
+      {
+       "tissue": "adipose_subcutaneous",
+       "value": 0.849009
+      },
+      {
+       "tissue": "adipose_visceral_omentum",
+       "value": 0.837592
+      },
+      {
+       "tissue": "adrenal_gland",
+       "value": 0.82001
+      },
+      {
+       "tissue": "artery_aorta",
+       "value": 0.835602
+      },
+      {
+       "tissue": "artery_coronary",
+       "value": 0.851568
+      },
+      {
+       "tissue": "artery_tibial",
+       "value": 0.851435
+      },
+      {
+       "tissue": "brain_amygdala",
+       "value": 0.911477
+      },
+      {
+       "tissue": "brain_anterior_cingulate_cortex_ba24",
+       "value": 0.888182
+      },
+      {
+       "tissue": "brain_caudate_basal_ganglia",
+       "value": 0.851374
+      },
+      {
+       "tissue": "brain_cerebellar_hemisphere",
+       "value": 0.800779
+      },
+      {
+       "tissue": "brain_cerebellum",
+       "value": 0.751372
+      },
+      {
+       "tissue": "brain_cortex",
+       "value": 0.803643
+      },
+      {
+       "tissue": "brain_frontal_cortex_ba9",
+       "value": 0.846886
+      },
+      {
+       "tissue": "brain_hippocampus",
+       "value": 0.896939
+      },
+      {
+       "tissue": "brain_hypothalamus",
+       "value": 0.891299
+      },
+      {
+       "tissue": "brain_nucleus_accumbens_basal_ganglia",
+       "value": 0.816595
+      },
+      {
+       "tissue": "brain_putamen_basal_ganglia",
+       "value": 0.856933
+      },
+      {
+       "tissue": "brain_spinal_cord_cervical_c_1",
+       "value": 0.892425
+      },
+      {
+       "tissue": "brain_substantia_nigra",
+       "value": 0.892787
+      },
+      {
+       "tissue": "breast_mammary_tissue",
+       "value": 0.845468
+      },
+      {
+       "tissue": "cells_cultured_fibroblasts",
+       "value": 0.906848
+      },
+      {
+       "tissue": "cells_ebv_transformed_lymphocytes",
+       "value": 0.908817
+      },
+      {
+       "tissue": "colon_sigmoid",
+       "value": 0.842393
+      },
+      {
+       "tissue": "colon_transverse",
+       "value": 0.831572
+      },
+      {
+       "tissue": "esophagus_gastroesophageal_junction",
+       "value": 0.836096
+      },
+      {
+       "tissue": "esophagus_mucosa",
+       "value": 0.856989
+      },
+      {
+       "tissue": "esophagus_muscularis",
+       "value": 0.834429
+      },
+      {
+       "tissue": "heart_atrial_appendage",
+       "value": 0.846324
+      },
+      {
+       "tissue": "heart_left_ventricle",
+       "value": 0.86445
+      },
+      {
+       "tissue": "kidney_cortex",
+       "value": 0.848879
+      },
+      {
+       "tissue": "liver",
+       "value": 0.783201
+      },
+      {
+       "tissue": "lung",
+       "value": 0.812168
+      },
+      {
+       "tissue": "minor_salivary_gland",
+       "value": 0.844423
+      },
+      {
+       "tissue": "muscle_skeletal",
+       "value": 0.857799
+      },
+      {
+       "tissue": "nerve_tibial",
+       "value": 0.846066
+      },
+      {
+       "tissue": "ovary",
+       "value": 0.819995
+      },
+      {
+       "tissue": "pancreas",
+       "value": 0.862032
+      },
+      {
+       "tissue": "pituitary",
+       "value": 0.778512
+      },
+      {
+       "tissue": "prostate",
+       "value": 0.813031
+      },
+      {
+       "tissue": "skin_not_sun_exposed_suprapubic",
+       "value": 0.858146
+      },
+      {
+       "tissue": "skin_sun_exposed_lower_leg",
+       "value": 0.86599
+      },
+      {
+       "tissue": "small_intestine_terminal_ileum",
+       "value": 0.820091
+      },
+      {
+       "tissue": "spleen",
+       "value": 0.809228
+      },
+      {
+       "tissue": "stomach",
+       "value": 0.831192
+      },
+      {
+       "tissue": "testis",
+       "value": 0.791773
+      },
+      {
+       "tissue": "thyroid",
+       "value": 0.816382
+      },
+      {
+       "tissue": "uterus",
+       "value": 0.835016
+      },
+      {
+       "tissue": "vagina",
+       "value": 0.847116
+      },
+      {
+       "tissue": "whole_blood",
+       "value": 0.871409
+      }
+     ]
+    },
+    {
+     "start": 6868864,
+     "stop": 6868987,
+     "mean": 0.84382,
+     "tissues": [
+      {
+       "tissue": "adipose_subcutaneous",
+       "value": 0.849009
+      },
+      {
+       "tissue": "adipose_visceral_omentum",
+       "value": 0.837592
+      },
+      {
+       "tissue": "adrenal_gland",
+       "value": 0.82001
+      },
+      {
+       "tissue": "artery_aorta",
+       "value": 0.835602
+      },
+      {
+       "tissue": "artery_coronary",
+       "value": 0.851568
+      },
+      {
+       "tissue": "artery_tibial",
+       "value": 0.851435
+      },
+      {
+       "tissue": "brain_amygdala",
+       "value": 0.911477
+      },
+      {
+       "tissue": "brain_anterior_cingulate_cortex_ba24",
+       "value": 0.888182
+      },
+      {
+       "tissue": "brain_caudate_basal_ganglia",
+       "value": 0.851374
+      },
+      {
+       "tissue": "brain_cerebellar_hemisphere",
+       "value": 0.800779
+      },
+      {
+       "tissue": "brain_cerebellum",
+       "value": 0.751372
+      },
+      {
+       "tissue": "brain_cortex",
+       "value": 0.803643
+      },
+      {
+       "tissue": "brain_frontal_cortex_ba9",
+       "value": 0.846886
+      },
+      {
+       "tissue": "brain_hippocampus",
+       "value": 0.896939
+      },
+      {
+       "tissue": "brain_hypothalamus",
+       "value": 0.891299
+      },
+      {
+       "tissue": "brain_nucleus_accumbens_basal_ganglia",
+       "value": 0.816595
+      },
+      {
+       "tissue": "brain_putamen_basal_ganglia",
+       "value": 0.856933
+      },
+      {
+       "tissue": "brain_spinal_cord_cervical_c_1",
+       "value": 0.892425
+      },
+      {
+       "tissue": "brain_substantia_nigra",
+       "value": 0.892787
+      },
+      {
+       "tissue": "breast_mammary_tissue",
+       "value": 0.845468
+      },
+      {
+       "tissue": "cells_cultured_fibroblasts",
+       "value": 0.906848
+      },
+      {
+       "tissue": "cells_ebv_transformed_lymphocytes",
+       "value": 0.908817
+      },
+      {
+       "tissue": "colon_sigmoid",
+       "value": 0.842393
+      },
+      {
+       "tissue": "colon_transverse",
+       "value": 0.831572
+      },
+      {
+       "tissue": "esophagus_gastroesophageal_junction",
+       "value": 0.836096
+      },
+      {
+       "tissue": "esophagus_mucosa",
+       "value": 0.856989
+      },
+      {
+       "tissue": "esophagus_muscularis",
+       "value": 0.834429
+      },
+      {
+       "tissue": "heart_atrial_appendage",
+       "value": 0.846324
+      },
+      {
+       "tissue": "heart_left_ventricle",
+       "value": 0.86445
+      },
+      {
+       "tissue": "kidney_cortex",
+       "value": 0.848879
+      },
+      {
+       "tissue": "liver",
+       "value": 0.783201
+      },
+      {
+       "tissue": "lung",
+       "value": 0.812168
+      },
+      {
+       "tissue": "minor_salivary_gland",
+       "value": 0.844423
+      },
+      {
+       "tissue": "muscle_skeletal",
+       "value": 0.857799
+      },
+      {
+       "tissue": "nerve_tibial",
+       "value": 0.846066
+      },
+      {
+       "tissue": "ovary",
+       "value": 0.819995
+      },
+      {
+       "tissue": "pancreas",
+       "value": 0.862032
+      },
+      {
+       "tissue": "pituitary",
+       "value": 0.778512
+      },
+      {
+       "tissue": "prostate",
+       "value": 0.813031
+      },
+      {
+       "tissue": "skin_not_sun_exposed_suprapubic",
+       "value": 0.858146
+      },
+      {
+       "tissue": "skin_sun_exposed_lower_leg",
+       "value": 0.86599
+      },
+      {
+       "tissue": "small_intestine_terminal_ileum",
+       "value": 0.820091
+      },
+      {
+       "tissue": "spleen",
+       "value": 0.809228
+      },
+      {
+       "tissue": "stomach",
+       "value": 0.831192
+      },
+      {
+       "tissue": "testis",
+       "value": 0.791773
+      },
+      {
+       "tissue": "thyroid",
+       "value": 0.816382
+      },
+      {
+       "tissue": "uterus",
+       "value": 0.835016
+      },
+      {
+       "tissue": "vagina",
+       "value": 0.847116
+      },
+      {
+       "tissue": "whole_blood",
+       "value": 0.871409
+      }
+     ]
+    },
+    {
+     "start": 6869099,
+     "stop": 6869105,
+     "mean": 0.84382,
+     "tissues": [
+      {
+       "tissue": "adipose_subcutaneous",
+       "value": 0.849009
+      },
+      {
+       "tissue": "adipose_visceral_omentum",
+       "value": 0.837592
+      },
+      {
+       "tissue": "adrenal_gland",
+       "value": 0.82001
+      },
+      {
+       "tissue": "artery_aorta",
+       "value": 0.835602
+      },
+      {
+       "tissue": "artery_coronary",
+       "value": 0.851568
+      },
+      {
+       "tissue": "artery_tibial",
+       "value": 0.851435
+      },
+      {
+       "tissue": "brain_amygdala",
+       "value": 0.911477
+      },
+      {
+       "tissue": "brain_anterior_cingulate_cortex_ba24",
+       "value": 0.888182
+      },
+      {
+       "tissue": "brain_caudate_basal_ganglia",
+       "value": 0.851374
+      },
+      {
+       "tissue": "brain_cerebellar_hemisphere",
+       "value": 0.800779
+      },
+      {
+       "tissue": "brain_cerebellum",
+       "value": 0.751372
+      },
+      {
+       "tissue": "brain_cortex",
+       "value": 0.803643
+      },
+      {
+       "tissue": "brain_frontal_cortex_ba9",
+       "value": 0.846886
+      },
+      {
+       "tissue": "brain_hippocampus",
+       "value": 0.896939
+      },
+      {
+       "tissue": "brain_hypothalamus",
+       "value": 0.891299
+      },
+      {
+       "tissue": "brain_nucleus_accumbens_basal_ganglia",
+       "value": 0.816595
+      },
+      {
+       "tissue": "brain_putamen_basal_ganglia",
+       "value": 0.856933
+      },
+      {
+       "tissue": "brain_spinal_cord_cervical_c_1",
+       "value": 0.892425
+      },
+      {
+       "tissue": "brain_substantia_nigra",
+       "value": 0.892787
+      },
+      {
+       "tissue": "breast_mammary_tissue",
+       "value": 0.845468
+      },
+      {
+       "tissue": "cells_cultured_fibroblasts",
+       "value": 0.906848
+      },
+      {
+       "tissue": "cells_ebv_transformed_lymphocytes",
+       "value": 0.908817
+      },
+      {
+       "tissue": "colon_sigmoid",
+       "value": 0.842393
+      },
+      {
+       "tissue": "colon_transverse",
+       "value": 0.831572
+      },
+      {
+       "tissue": "esophagus_gastroesophageal_junction",
+       "value": 0.836096
+      },
+      {
+       "tissue": "esophagus_mucosa",
+       "value": 0.856989
+      },
+      {
+       "tissue": "esophagus_muscularis",
+       "value": 0.834429
+      },
+      {
+       "tissue": "heart_atrial_appendage",
+       "value": 0.846324
+      },
+      {
+       "tissue": "heart_left_ventricle",
+       "value": 0.86445
+      },
+      {
+       "tissue": "kidney_cortex",
+       "value": 0.848879
+      },
+      {
+       "tissue": "liver",
+       "value": 0.783201
+      },
+      {
+       "tissue": "lung",
+       "value": 0.812168
+      },
+      {
+       "tissue": "minor_salivary_gland",
+       "value": 0.844423
+      },
+      {
+       "tissue": "muscle_skeletal",
+       "value": 0.857799
+      },
+      {
+       "tissue": "nerve_tibial",
+       "value": 0.846066
+      },
+      {
+       "tissue": "ovary",
+       "value": 0.819995
+      },
+      {
+       "tissue": "pancreas",
+       "value": 0.862032
+      },
+      {
+       "tissue": "pituitary",
+       "value": 0.778512
+      },
+      {
+       "tissue": "prostate",
+       "value": 0.813031
+      },
+      {
+       "tissue": "skin_not_sun_exposed_suprapubic",
+       "value": 0.858146
+      },
+      {
+       "tissue": "skin_sun_exposed_lower_leg",
+       "value": 0.86599
+      },
+      {
+       "tissue": "small_intestine_terminal_ileum",
+       "value": 0.820091
+      },
+      {
+       "tissue": "spleen",
+       "value": 0.809228
+      },
+      {
+       "tissue": "stomach",
+       "value": 0.831192
+      },
+      {
+       "tissue": "testis",
+       "value": 0.791773
+      },
+      {
+       "tissue": "thyroid",
+       "value": 0.816382
+      },
+      {
+       "tissue": "uterus",
+       "value": 0.835016
+      },
+      {
+       "tissue": "vagina",
+       "value": 0.847116
+      },
+      {
+       "tissue": "whole_blood",
+       "value": 0.871409
+      }
+     ]
+    },
+    {
+     "start": 6869106,
+     "stop": 6869183,
+     "mean": 0.861846,
+     "tissues": [
+      {
+       "tissue": "adipose_subcutaneous",
+       "value": 0.86926
+      },
+      {
+       "tissue": "adipose_visceral_omentum",
+       "value": 0.858266
+      },
+      {
+       "tissue": "adrenal_gland",
+       "value": 0.836823
+      },
+      {
+       "tissue": "artery_aorta",
+       "value": 0.852263
+      },
+      {
+       "tissue": "artery_coronary",
+       "value": 0.86608
+      },
+      {
+       "tissue": "artery_tibial",
+       "value": 0.870136
+      },
+      {
+       "tissue": "brain_amygdala",
+       "value": 0.925255
+      },
+      {
+       "tissue": "brain_anterior_cingulate_cortex_ba24",
+       "value": 0.899114
+      },
+      {
+       "tissue": "brain_caudate_basal_ganglia",
+       "value": 0.868382
+      },
+      {
+       "tissue": "brain_cerebellar_hemisphere",
+       "value": 0.833599
+      },
+      {
+       "tissue": "brain_cerebellum",
+       "value": 0.789296
+      },
+      {
+       "tissue": "brain_cortex",
+       "value": 0.821645
+      },
+      {
+       "tissue": "brain_frontal_cortex_ba9",
+       "value": 0.866271
+      },
+      {
+       "tissue": "brain_hippocampus",
+       "value": 0.91215
+      },
+      {
+       "tissue": "brain_hypothalamus",
+       "value": 0.900922
+      },
+      {
+       "tissue": "brain_nucleus_accumbens_basal_ganglia",
+       "value": 0.850857
+      },
+      {
+       "tissue": "brain_putamen_basal_ganglia",
+       "value": 0.871721
+      },
+      {
+       "tissue": "brain_spinal_cord_cervical_c_1",
+       "value": 0.90096
+      },
+      {
+       "tissue": "brain_substantia_nigra",
+       "value": 0.902806
+      },
+      {
+       "tissue": "breast_mammary_tissue",
+       "value": 0.864455
+      },
+      {
+       "tissue": "cells_cultured_fibroblasts",
+       "value": 0.914076
+      },
+      {
+       "tissue": "cells_ebv_transformed_lymphocytes",
+       "value": 0.920769
+      },
+      {
+       "tissue": "colon_sigmoid",
+       "value": 0.856688
+      },
+      {
+       "tissue": "colon_transverse",
+       "value": 0.850274
+      },
+      {
+       "tissue": "esophagus_gastroesophageal_junction",
+       "value": 0.851171
+      },
+      {
+       "tissue": "esophagus_mucosa",
+       "value": 0.869998
+      },
+      {
+       "tissue": "esophagus_muscularis",
+       "value": 0.847421
+      },
+      {
+       "tissue": "heart_atrial_appendage",
+       "value": 0.854772
+      },
+      {
+       "tissue": "heart_left_ventricle",
+       "value": 0.869981
+      },
+      {
+       "tissue": "kidney_cortex",
+       "value": 0.867975
+      },
+      {
+       "tissue": "liver",
+       "value": 0.804121
+      },
+      {
+       "tissue": "lung",
+       "value": 0.836943
+      },
+      {
+       "tissue": "minor_salivary_gland",
+       "value": 0.864487
+      },
+      {
+       "tissue": "muscle_skeletal",
+       "value": 0.860766
+      },
+      {
+       "tissue": "nerve_tibial",
+       "value": 0.86035
+      },
+      {
+       "tissue": "ovary",
+       "value": 0.845953
+      },
+      {
+       "tissue": "pancreas",
+       "value": 0.888174
+      },
+      {
+       "tissue": "pituitary",
+       "value": 0.813469
+      },
+      {
+       "tissue": "prostate",
+       "value": 0.846419
+      },
+      {
+       "tissue": "skin_not_sun_exposed_suprapubic",
+       "value": 0.872311
+      },
+      {
+       "tissue": "skin_sun_exposed_lower_leg",
+       "value": 0.878706
+      },
+      {
+       "tissue": "small_intestine_terminal_ileum",
+       "value": 0.841888
+      },
+      {
+       "tissue": "spleen",
+       "value": 0.83876
+      },
+      {
+       "tissue": "stomach",
+       "value": 0.848625
+      },
+      {
+       "tissue": "testis",
+       "value": 0.811945
+      },
+      {
+       "tissue": "thyroid",
+       "value": 0.842753
+      },
+      {
+       "tissue": "uterus",
+       "value": 0.853714
+      },
+      {
+       "tissue": "vagina",
+       "value": 0.863938
+      },
+      {
+       "tissue": "whole_blood",
+       "value": 0.888191
+      }
+     ]
+    },
+    {
+     "start": 6869258,
+     "stop": 6869295,
+     "mean": 0.861846,
+     "tissues": [
+      {
+       "tissue": "adipose_subcutaneous",
+       "value": 0.86926
+      },
+      {
+       "tissue": "adipose_visceral_omentum",
+       "value": 0.858266
+      },
+      {
+       "tissue": "adrenal_gland",
+       "value": 0.836823
+      },
+      {
+       "tissue": "artery_aorta",
+       "value": 0.852263
+      },
+      {
+       "tissue": "artery_coronary",
+       "value": 0.86608
+      },
+      {
+       "tissue": "artery_tibial",
+       "value": 0.870136
+      },
+      {
+       "tissue": "brain_amygdala",
+       "value": 0.925255
+      },
+      {
+       "tissue": "brain_anterior_cingulate_cortex_ba24",
+       "value": 0.899114
+      },
+      {
+       "tissue": "brain_caudate_basal_ganglia",
+       "value": 0.868382
+      },
+      {
+       "tissue": "brain_cerebellar_hemisphere",
+       "value": 0.833599
+      },
+      {
+       "tissue": "brain_cerebellum",
+       "value": 0.789296
+      },
+      {
+       "tissue": "brain_cortex",
+       "value": 0.821645
+      },
+      {
+       "tissue": "brain_frontal_cortex_ba9",
+       "value": 0.866271
+      },
+      {
+       "tissue": "brain_hippocampus",
+       "value": 0.91215
+      },
+      {
+       "tissue": "brain_hypothalamus",
+       "value": 0.900922
+      },
+      {
+       "tissue": "brain_nucleus_accumbens_basal_ganglia",
+       "value": 0.850857
+      },
+      {
+       "tissue": "brain_putamen_basal_ganglia",
+       "value": 0.871721
+      },
+      {
+       "tissue": "brain_spinal_cord_cervical_c_1",
+       "value": 0.90096
+      },
+      {
+       "tissue": "brain_substantia_nigra",
+       "value": 0.902806
+      },
+      {
+       "tissue": "breast_mammary_tissue",
+       "value": 0.864455
+      },
+      {
+       "tissue": "cells_cultured_fibroblasts",
+       "value": 0.914076
+      },
+      {
+       "tissue": "cells_ebv_transformed_lymphocytes",
+       "value": 0.920769
+      },
+      {
+       "tissue": "colon_sigmoid",
+       "value": 0.856688
+      },
+      {
+       "tissue": "colon_transverse",
+       "value": 0.850274
+      },
+      {
+       "tissue": "esophagus_gastroesophageal_junction",
+       "value": 0.851171
+      },
+      {
+       "tissue": "esophagus_mucosa",
+       "value": 0.869998
+      },
+      {
+       "tissue": "esophagus_muscularis",
+       "value": 0.847421
+      },
+      {
+       "tissue": "heart_atrial_appendage",
+       "value": 0.854772
+      },
+      {
+       "tissue": "heart_left_ventricle",
+       "value": 0.869981
+      },
+      {
+       "tissue": "kidney_cortex",
+       "value": 0.867975
+      },
+      {
+       "tissue": "liver",
+       "value": 0.804121
+      },
+      {
+       "tissue": "lung",
+       "value": 0.836943
+      },
+      {
+       "tissue": "minor_salivary_gland",
+       "value": 0.864487
+      },
+      {
+       "tissue": "muscle_skeletal",
+       "value": 0.860766
+      },
+      {
+       "tissue": "nerve_tibial",
+       "value": 0.86035
+      },
+      {
+       "tissue": "ovary",
+       "value": 0.845953
+      },
+      {
+       "tissue": "pancreas",
+       "value": 0.888174
+      },
+      {
+       "tissue": "pituitary",
+       "value": 0.813469
+      },
+      {
+       "tissue": "prostate",
+       "value": 0.846419
+      },
+      {
+       "tissue": "skin_not_sun_exposed_suprapubic",
+       "value": 0.872311
+      },
+      {
+       "tissue": "skin_sun_exposed_lower_leg",
+       "value": 0.878706
+      },
+      {
+       "tissue": "small_intestine_terminal_ileum",
+       "value": 0.841888
+      },
+      {
+       "tissue": "spleen",
+       "value": 0.83876
+      },
+      {
+       "tissue": "stomach",
+       "value": 0.848625
+      },
+      {
+       "tissue": "testis",
+       "value": 0.811945
+      },
+      {
+       "tissue": "thyroid",
+       "value": 0.842753
+      },
+      {
+       "tissue": "uterus",
+       "value": 0.853714
+      },
+      {
+       "tissue": "vagina",
+       "value": 0.863938
+      },
+      {
+       "tissue": "whole_blood",
+       "value": 0.888191
+      }
+     ]
+    },
+    {
+     "start": 6869296,
+     "stop": 6869390,
+     "mean": 0.861124,
+     "tissues": [
+      {
+       "tissue": "adipose_subcutaneous",
+       "value": 0.86926
+      },
+      {
+       "tissue": "adipose_visceral_omentum",
+       "value": 0.858266
+      },
+      {
+       "tissue": "adrenal_gland",
+       "value": 0.836386
+      },
+      {
+       "tissue": "artery_aorta",
+       "value": 0.852263
+      },
+      {
+       "tissue": "artery_coronary",
+       "value": 0.86608
+      },
+      {
+       "tissue": "artery_tibial",
+       "value": 0.870136
+      },
+      {
+       "tissue": "brain_amygdala",
+       "value": 0.923016
+      },
+      {
+       "tissue": "brain_anterior_cingulate_cortex_ba24",
+       "value": 0.896358
+      },
+      {
+       "tissue": "brain_caudate_basal_ganglia",
+       "value": 0.864629
+      },
+      {
+       "tissue": "brain_cerebellar_hemisphere",
+       "value": 0.832508
+      },
+      {
+       "tissue": "brain_cerebellum",
+       "value": 0.788291
+      },
+      {
+       "tissue": "brain_cortex",
+       "value": 0.819438
+      },
+      {
+       "tissue": "brain_frontal_cortex_ba9",
+       "value": 0.863862
+      },
+      {
+       "tissue": "brain_hippocampus",
+       "value": 0.910268
+      },
+      {
+       "tissue": "brain_hypothalamus",
+       "value": 0.899715
+      },
+      {
+       "tissue": "brain_nucleus_accumbens_basal_ganglia",
+       "value": 0.843978
+      },
+      {
+       "tissue": "brain_putamen_basal_ganglia",
+       "value": 0.868659
+      },
+      {
+       "tissue": "brain_spinal_cord_cervical_c_1",
+       "value": 0.900774
+      },
+      {
+       "tissue": "brain_substantia_nigra",
+       "value": 0.901808
+      },
+      {
+       "tissue": "breast_mammary_tissue",
+       "value": 0.864455
+      },
+      {
+       "tissue": "cells_cultured_fibroblasts",
+       "value": 0.913849
+      },
+      {
+       "tissue": "cells_ebv_transformed_lymphocytes",
+       "value": 0.919558
+      },
+      {
+       "tissue": "colon_sigmoid",
+       "value": 0.856688
+      },
+      {
+       "tissue": "colon_transverse",
+       "value": 0.850274
+      },
+      {
+       "tissue": "esophagus_gastroesophageal_junction",
+       "value": 0.851171
+      },
+      {
+       "tissue": "esophagus_mucosa",
+       "value": 0.869998
+      },
+      {
+       "tissue": "esophagus_muscularis",
+       "value": 0.847421
+      },
+      {
+       "tissue": "heart_atrial_appendage",
+       "value": 0.854772
+      },
+      {
+       "tissue": "heart_left_ventricle",
+       "value": 0.869981
+      },
+      {
+       "tissue": "kidney_cortex",
+       "value": 0.867975
+      },
+      {
+       "tissue": "liver",
+       "value": 0.804121
+      },
+      {
+       "tissue": "lung",
+       "value": 0.836943
+      },
+      {
+       "tissue": "minor_salivary_gland",
+       "value": 0.864487
+      },
+      {
+       "tissue": "muscle_skeletal",
+       "value": 0.860766
+      },
+      {
+       "tissue": "nerve_tibial",
+       "value": 0.86035
+      },
+      {
+       "tissue": "ovary",
+       "value": 0.845953
+      },
+      {
+       "tissue": "pancreas",
+       "value": 0.888174
+      },
+      {
+       "tissue": "pituitary",
+       "value": 0.813102
+      },
+      {
+       "tissue": "prostate",
+       "value": 0.846419
+      },
+      {
+       "tissue": "skin_not_sun_exposed_suprapubic",
+       "value": 0.872311
+      },
+      {
+       "tissue": "skin_sun_exposed_lower_leg",
+       "value": 0.878706
+      },
+      {
+       "tissue": "small_intestine_terminal_ileum",
+       "value": 0.841888
+      },
+      {
+       "tissue": "spleen",
+       "value": 0.83876
+      },
+      {
+       "tissue": "stomach",
+       "value": 0.848625
+      },
+      {
+       "tissue": "testis",
+       "value": 0.810274
+      },
+      {
+       "tissue": "thyroid",
+       "value": 0.842753
+      },
+      {
+       "tissue": "uterus",
+       "value": 0.853714
+      },
+      {
+       "tissue": "vagina",
+       "value": 0.863938
+      },
+      {
+       "tissue": "whole_blood",
+       "value": 0.887635
+      }
+     ]
+    },
+    {
+     "start": 6869688,
+     "stop": 6869770,
+     "mean": 0.861124,
+     "tissues": [
+      {
+       "tissue": "adipose_subcutaneous",
+       "value": 0.86926
+      },
+      {
+       "tissue": "adipose_visceral_omentum",
+       "value": 0.858266
+      },
+      {
+       "tissue": "adrenal_gland",
+       "value": 0.836386
+      },
+      {
+       "tissue": "artery_aorta",
+       "value": 0.852263
+      },
+      {
+       "tissue": "artery_coronary",
+       "value": 0.86608
+      },
+      {
+       "tissue": "artery_tibial",
+       "value": 0.870136
+      },
+      {
+       "tissue": "brain_amygdala",
+       "value": 0.923016
+      },
+      {
+       "tissue": "brain_anterior_cingulate_cortex_ba24",
+       "value": 0.896358
+      },
+      {
+       "tissue": "brain_caudate_basal_ganglia",
+       "value": 0.864629
+      },
+      {
+       "tissue": "brain_cerebellar_hemisphere",
+       "value": 0.832508
+      },
+      {
+       "tissue": "brain_cerebellum",
+       "value": 0.788291
+      },
+      {
+       "tissue": "brain_cortex",
+       "value": 0.819438
+      },
+      {
+       "tissue": "brain_frontal_cortex_ba9",
+       "value": 0.863862
+      },
+      {
+       "tissue": "brain_hippocampus",
+       "value": 0.910268
+      },
+      {
+       "tissue": "brain_hypothalamus",
+       "value": 0.899715
+      },
+      {
+       "tissue": "brain_nucleus_accumbens_basal_ganglia",
+       "value": 0.843978
+      },
+      {
+       "tissue": "brain_putamen_basal_ganglia",
+       "value": 0.868659
+      },
+      {
+       "tissue": "brain_spinal_cord_cervical_c_1",
+       "value": 0.900774
+      },
+      {
+       "tissue": "brain_substantia_nigra",
+       "value": 0.901808
+      },
+      {
+       "tissue": "breast_mammary_tissue",
+       "value": 0.864455
+      },
+      {
+       "tissue": "cells_cultured_fibroblasts",
+       "value": 0.913849
+      },
+      {
+       "tissue": "cells_ebv_transformed_lymphocytes",
+       "value": 0.919558
+      },
+      {
+       "tissue": "colon_sigmoid",
+       "value": 0.856688
+      },
+      {
+       "tissue": "colon_transverse",
+       "value": 0.850274
+      },
+      {
+       "tissue": "esophagus_gastroesophageal_junction",
+       "value": 0.851171
+      },
+      {
+       "tissue": "esophagus_mucosa",
+       "value": 0.869998
+      },
+      {
+       "tissue": "esophagus_muscularis",
+       "value": 0.847421
+      },
+      {
+       "tissue": "heart_atrial_appendage",
+       "value": 0.854772
+      },
+      {
+       "tissue": "heart_left_ventricle",
+       "value": 0.869981
+      },
+      {
+       "tissue": "kidney_cortex",
+       "value": 0.867975
+      },
+      {
+       "tissue": "liver",
+       "value": 0.804121
+      },
+      {
+       "tissue": "lung",
+       "value": 0.836943
+      },
+      {
+       "tissue": "minor_salivary_gland",
+       "value": 0.864487
+      },
+      {
+       "tissue": "muscle_skeletal",
+       "value": 0.860766
+      },
+      {
+       "tissue": "nerve_tibial",
+       "value": 0.86035
+      },
+      {
+       "tissue": "ovary",
+       "value": 0.845953
+      },
+      {
+       "tissue": "pancreas",
+       "value": 0.888174
+      },
+      {
+       "tissue": "pituitary",
+       "value": 0.813102
+      },
+      {
+       "tissue": "prostate",
+       "value": 0.846419
+      },
+      {
+       "tissue": "skin_not_sun_exposed_suprapubic",
+       "value": 0.872311
+      },
+      {
+       "tissue": "skin_sun_exposed_lower_leg",
+       "value": 0.878706
+      },
+      {
+       "tissue": "small_intestine_terminal_ileum",
+       "value": 0.841888
+      },
+      {
+       "tissue": "spleen",
+       "value": 0.83876
+      },
+      {
+       "tissue": "stomach",
+       "value": 0.848625
+      },
+      {
+       "tissue": "testis",
+       "value": 0.810274
+      },
+      {
+       "tissue": "thyroid",
+       "value": 0.842753
+      },
+      {
+       "tissue": "uterus",
+       "value": 0.853714
+      },
+      {
+       "tissue": "vagina",
+       "value": 0.863938
+      },
+      {
+       "tissue": "whole_blood",
+       "value": 0.887635
+      }
+     ]
+    },
+    {
+     "start": 6869771,
+     "stop": 6869773,
+     "mean": 0.851002,
+     "tissues": [
+      {
+       "tissue": "adipose_subcutaneous",
+       "value": 0.856389
+      },
+      {
+       "tissue": "adipose_visceral_omentum",
+       "value": 0.843776
+      },
+      {
+       "tissue": "adrenal_gland",
+       "value": 0.825427
+      },
+      {
+       "tissue": "artery_aorta",
+       "value": 0.842352
+      },
+      {
+       "tissue": "artery_coronary",
+       "value": 0.856525
+      },
+      {
+       "tissue": "artery_tibial",
+       "value": 0.859413
+      },
+      {
+       "tissue": "brain_amygdala",
+       "value": 0.919227
+      },
+      {
+       "tissue": "brain_anterior_cingulate_cortex_ba24",
+       "value": 0.893326
+      },
+      {
+       "tissue": "brain_caudate_basal_ganglia",
+       "value": 0.859516
+      },
+      {
+       "tissue": "brain_cerebellar_hemisphere",
+       "value": 0.816765
+      },
+      {
+       "tissue": "brain_cerebellum",
+       "value": 0.769038
+      },
+      {
+       "tissue": "brain_cortex",
+       "value": 0.814275
+      },
+      {
+       "tissue": "brain_frontal_cortex_ba9",
+       "value": 0.860447
+      },
+      {
+       "tissue": "brain_hippocampus",
+       "value": 0.905773
+      },
+      {
+       "tissue": "brain_hypothalamus",
+       "value": 0.894954
+      },
+      {
+       "tissue": "brain_nucleus_accumbens_basal_ganglia",
+       "value": 0.839347
+      },
+      {
+       "tissue": "brain_putamen_basal_ganglia",
+       "value": 0.864428
+      },
+      {
+       "tissue": "brain_spinal_cord_cervical_c_1",
+       "value": 0.894612
+      },
+      {
+       "tissue": "brain_substantia_nigra",
+       "value": 0.896945
+      },
+      {
+       "tissue": "breast_mammary_tissue",
+       "value": 0.851784
+      },
+      {
+       "tissue": "cells_cultured_fibroblasts",
+       "value": 0.909937
+      },
+      {
+       "tissue": "cells_ebv_transformed_lymphocytes",
+       "value": 0.914689
+      },
+      {
+       "tissue": "colon_sigmoid",
+       "value": 0.846194
+      },
+      {
+       "tissue": "colon_transverse",
+       "value": 0.83789
+      },
+      {
+       "tissue": "esophagus_gastroesophageal_junction",
+       "value": 0.841238
+      },
+      {
+       "tissue": "esophagus_mucosa",
+       "value": 0.861291
+      },
+      {
+       "tissue": "esophagus_muscularis",
+       "value": 0.838809
+      },
+      {
+       "tissue": "heart_atrial_appendage",
+       "value": 0.848379
+      },
+      {
+       "tissue": "heart_left_ventricle",
+       "value": 0.865705
+      },
+      {
+       "tissue": "kidney_cortex",
+       "value": 0.855588
+      },
+      {
+       "tissue": "liver",
+       "value": 0.792033
+      },
+      {
+       "tissue": "lung",
+       "value": 0.820094
+      },
+      {
+       "tissue": "minor_salivary_gland",
+       "value": 0.852057
+      },
+      {
+       "tissue": "muscle_skeletal",
+       "value": 0.858904
+      },
+      {
+       "tissue": "nerve_tibial",
+       "value": 0.851131
+      },
+      {
+       "tissue": "ovary",
+       "value": 0.82891
+      },
+      {
+       "tissue": "pancreas",
+       "value": 0.872477
+      },
+      {
+       "tissue": "pituitary",
+       "value": 0.791565
+      },
+      {
+       "tissue": "prostate",
+       "value": 0.826466
+      },
+      {
+       "tissue": "skin_not_sun_exposed_suprapubic",
+       "value": 0.862616
+      },
+      {
+       "tissue": "skin_sun_exposed_lower_leg",
+       "value": 0.870452
+      },
+      {
+       "tissue": "small_intestine_terminal_ileum",
+       "value": 0.827537
+      },
+      {
+       "tissue": "spleen",
+       "value": 0.81777
+      },
+      {
+       "tissue": "stomach",
+       "value": 0.836988
+      },
+      {
+       "tissue": "testis",
+       "value": 0.800024
+      },
+      {
+       "tissue": "thyroid",
+       "value": 0.824414
+      },
+      {
+       "tissue": "uterus",
+       "value": 0.842047
+      },
+      {
+       "tissue": "vagina",
+       "value": 0.852971
+      },
+      {
+       "tissue": "whole_blood",
+       "value": 0.875076
+      }
+     ]
+    },
+    {
+     "start": 6870049,
+     "stop": 6870090,
+     "mean": 0.851002,
+     "tissues": [
+      {
+       "tissue": "adipose_subcutaneous",
+       "value": 0.856389
+      },
+      {
+       "tissue": "adipose_visceral_omentum",
+       "value": 0.843776
+      },
+      {
+       "tissue": "adrenal_gland",
+       "value": 0.825427
+      },
+      {
+       "tissue": "artery_aorta",
+       "value": 0.842352
+      },
+      {
+       "tissue": "artery_coronary",
+       "value": 0.856525
+      },
+      {
+       "tissue": "artery_tibial",
+       "value": 0.859413
+      },
+      {
+       "tissue": "brain_amygdala",
+       "value": 0.919227
+      },
+      {
+       "tissue": "brain_anterior_cingulate_cortex_ba24",
+       "value": 0.893326
+      },
+      {
+       "tissue": "brain_caudate_basal_ganglia",
+       "value": 0.859516
+      },
+      {
+       "tissue": "brain_cerebellar_hemisphere",
+       "value": 0.816765
+      },
+      {
+       "tissue": "brain_cerebellum",
+       "value": 0.769038
+      },
+      {
+       "tissue": "brain_cortex",
+       "value": 0.814275
+      },
+      {
+       "tissue": "brain_frontal_cortex_ba9",
+       "value": 0.860447
+      },
+      {
+       "tissue": "brain_hippocampus",
+       "value": 0.905773
+      },
+      {
+       "tissue": "brain_hypothalamus",
+       "value": 0.894954
+      },
+      {
+       "tissue": "brain_nucleus_accumbens_basal_ganglia",
+       "value": 0.839347
+      },
+      {
+       "tissue": "brain_putamen_basal_ganglia",
+       "value": 0.864428
+      },
+      {
+       "tissue": "brain_spinal_cord_cervical_c_1",
+       "value": 0.894612
+      },
+      {
+       "tissue": "brain_substantia_nigra",
+       "value": 0.896945
+      },
+      {
+       "tissue": "breast_mammary_tissue",
+       "value": 0.851784
+      },
+      {
+       "tissue": "cells_cultured_fibroblasts",
+       "value": 0.909937
+      },
+      {
+       "tissue": "cells_ebv_transformed_lymphocytes",
+       "value": 0.914689
+      },
+      {
+       "tissue": "colon_sigmoid",
+       "value": 0.846194
+      },
+      {
+       "tissue": "colon_transverse",
+       "value": 0.83789
+      },
+      {
+       "tissue": "esophagus_gastroesophageal_junction",
+       "value": 0.841238
+      },
+      {
+       "tissue": "esophagus_mucosa",
+       "value": 0.861291
+      },
+      {
+       "tissue": "esophagus_muscularis",
+       "value": 0.838809
+      },
+      {
+       "tissue": "heart_atrial_appendage",
+       "value": 0.848379
+      },
+      {
+       "tissue": "heart_left_ventricle",
+       "value": 0.865705
+      },
+      {
+       "tissue": "kidney_cortex",
+       "value": 0.855588
+      },
+      {
+       "tissue": "liver",
+       "value": 0.792033
+      },
+      {
+       "tissue": "lung",
+       "value": 0.820094
+      },
+      {
+       "tissue": "minor_salivary_gland",
+       "value": 0.852057
+      },
+      {
+       "tissue": "muscle_skeletal",
+       "value": 0.858904
+      },
+      {
+       "tissue": "nerve_tibial",
+       "value": 0.851131
+      },
+      {
+       "tissue": "ovary",
+       "value": 0.82891
+      },
+      {
+       "tissue": "pancreas",
+       "value": 0.872477
+      },
+      {
+       "tissue": "pituitary",
+       "value": 0.791565
+      },
+      {
+       "tissue": "prostate",
+       "value": 0.826466
+      },
+      {
+       "tissue": "skin_not_sun_exposed_suprapubic",
+       "value": 0.862616
+      },
+      {
+       "tissue": "skin_sun_exposed_lower_leg",
+       "value": 0.870452
+      },
+      {
+       "tissue": "small_intestine_terminal_ileum",
+       "value": 0.827537
+      },
+      {
+       "tissue": "spleen",
+       "value": 0.81777
+      },
+      {
+       "tissue": "stomach",
+       "value": 0.836988
+      },
+      {
+       "tissue": "testis",
+       "value": 0.800024
+      },
+      {
+       "tissue": "thyroid",
+       "value": 0.824414
+      },
+      {
+       "tissue": "uterus",
+       "value": 0.842047
+      },
+      {
+       "tissue": "vagina",
+       "value": 0.852971
+      },
+      {
+       "tissue": "whole_blood",
+       "value": 0.875076
+      }
+     ]
+    },
+    {
+     "start": 6870091,
+     "stop": 6870136,
+     "mean": 0.846594,
+     "tissues": [
+      {
+       "tissue": "adipose_subcutaneous",
+       "value": 0.849009
+      },
+      {
+       "tissue": "adipose_visceral_omentum",
+       "value": 0.837592
+      },
+      {
+       "tissue": "adrenal_gland",
+       "value": 0.82001
+      },
+      {
+       "tissue": "artery_aorta",
+       "value": 0.835602
+      },
+      {
+       "tissue": "artery_coronary",
+       "value": 0.851568
+      },
+      {
+       "tissue": "artery_tibial",
+       "value": 0.851435
+      },
+      {
+       "tissue": "brain_amygdala",
+       "value": 0.919227
+      },
+      {
+       "tissue": "brain_anterior_cingulate_cortex_ba24",
+       "value": 0.892821
+      },
+      {
+       "tissue": "brain_caudate_basal_ganglia",
+       "value": 0.859516
+      },
+      {
+       "tissue": "brain_cerebellar_hemisphere",
+       "value": 0.801888
+      },
+      {
+       "tissue": "brain_cerebellum",
+       "value": 0.75219
+      },
+      {
+       "tissue": "brain_cortex",
+       "value": 0.808154
+      },
+      {
+       "tissue": "brain_frontal_cortex_ba9",
+       "value": 0.849328
+      },
+      {
+       "tissue": "brain_hippocampus",
+       "value": 0.905773
+      },
+      {
+       "tissue": "brain_hypothalamus",
+       "value": 0.894954
+      },
+      {
+       "tissue": "brain_nucleus_accumbens_basal_ganglia",
+       "value": 0.825776
+      },
+      {
+       "tissue": "brain_putamen_basal_ganglia",
+       "value": 0.864428
+      },
+      {
+       "tissue": "brain_spinal_cord_cervical_c_1",
+       "value": 0.894425
+      },
+      {
+       "tissue": "brain_substantia_nigra",
+       "value": 0.896945
+      },
+      {
+       "tissue": "breast_mammary_tissue",
+       "value": 0.845468
+      },
+      {
+       "tissue": "cells_cultured_fibroblasts",
+       "value": 0.906848
+      },
+      {
+       "tissue": "cells_ebv_transformed_lymphocytes",
+       "value": 0.909622
+      },
+      {
+       "tissue": "colon_sigmoid",
+       "value": 0.842393
+      },
+      {
+       "tissue": "colon_transverse",
+       "value": 0.831572
+      },
+      {
+       "tissue": "esophagus_gastroesophageal_junction",
+       "value": 0.836096
+      },
+      {
+       "tissue": "esophagus_mucosa",
+       "value": 0.856989
+      },
+      {
+       "tissue": "esophagus_muscularis",
+       "value": 0.834429
+      },
+      {
+       "tissue": "heart_atrial_appendage",
+       "value": 0.848379
+      },
+      {
+       "tissue": "heart_left_ventricle",
+       "value": 0.865705
+      },
+      {
+       "tissue": "kidney_cortex",
+       "value": 0.855588
+      },
+      {
+       "tissue": "liver",
+       "value": 0.792033
+      },
+      {
+       "tissue": "lung",
+       "value": 0.812168
+      },
+      {
+       "tissue": "minor_salivary_gland",
+       "value": 0.844423
+      },
+      {
+       "tissue": "muscle_skeletal",
+       "value": 0.857799
+      },
+      {
+       "tissue": "nerve_tibial",
+       "value": 0.846066
+      },
+      {
+       "tissue": "ovary",
+       "value": 0.819995
+      },
+      {
+       "tissue": "pancreas",
+       "value": 0.872477
+      },
+      {
+       "tissue": "pituitary",
+       "value": 0.791565
+      },
+      {
+       "tissue": "prostate",
+       "value": 0.826466
+      },
+      {
+       "tissue": "skin_not_sun_exposed_suprapubic",
+       "value": 0.858146
+      },
+      {
+       "tissue": "skin_sun_exposed_lower_leg",
+       "value": 0.86599
+      },
+      {
+       "tissue": "small_intestine_terminal_ileum",
+       "value": 0.820091
+      },
+      {
+       "tissue": "spleen",
+       "value": 0.81777
+      },
+      {
+       "tissue": "stomach",
+       "value": 0.831192
+      },
+      {
+       "tissue": "testis",
+       "value": 0.792027
+      },
+      {
+       "tissue": "thyroid",
+       "value": 0.816382
+      },
+      {
+       "tissue": "uterus",
+       "value": 0.835016
+      },
+      {
+       "tissue": "vagina",
+       "value": 0.847116
+      },
+      {
+       "tissue": "whole_blood",
+       "value": 0.875076
+      }
+     ]
+    },
+    {
+     "start": 6870265,
+     "stop": 6870380,
+     "mean": 0.846594,
+     "tissues": [
+      {
+       "tissue": "adipose_subcutaneous",
+       "value": 0.849009
+      },
+      {
+       "tissue": "adipose_visceral_omentum",
+       "value": 0.837592
+      },
+      {
+       "tissue": "adrenal_gland",
+       "value": 0.82001
+      },
+      {
+       "tissue": "artery_aorta",
+       "value": 0.835602
+      },
+      {
+       "tissue": "artery_coronary",
+       "value": 0.851568
+      },
+      {
+       "tissue": "artery_tibial",
+       "value": 0.851435
+      },
+      {
+       "tissue": "brain_amygdala",
+       "value": 0.919227
+      },
+      {
+       "tissue": "brain_anterior_cingulate_cortex_ba24",
+       "value": 0.892821
+      },
+      {
+       "tissue": "brain_caudate_basal_ganglia",
+       "value": 0.859516
+      },
+      {
+       "tissue": "brain_cerebellar_hemisphere",
+       "value": 0.801888
+      },
+      {
+       "tissue": "brain_cerebellum",
+       "value": 0.75219
+      },
+      {
+       "tissue": "brain_cortex",
+       "value": 0.808154
+      },
+      {
+       "tissue": "brain_frontal_cortex_ba9",
+       "value": 0.849328
+      },
+      {
+       "tissue": "brain_hippocampus",
+       "value": 0.905773
+      },
+      {
+       "tissue": "brain_hypothalamus",
+       "value": 0.894954
+      },
+      {
+       "tissue": "brain_nucleus_accumbens_basal_ganglia",
+       "value": 0.825776
+      },
+      {
+       "tissue": "brain_putamen_basal_ganglia",
+       "value": 0.864428
+      },
+      {
+       "tissue": "brain_spinal_cord_cervical_c_1",
+       "value": 0.894425
+      },
+      {
+       "tissue": "brain_substantia_nigra",
+       "value": 0.896945
+      },
+      {
+       "tissue": "breast_mammary_tissue",
+       "value": 0.845468
+      },
+      {
+       "tissue": "cells_cultured_fibroblasts",
+       "value": 0.906848
+      },
+      {
+       "tissue": "cells_ebv_transformed_lymphocytes",
+       "value": 0.909622
+      },
+      {
+       "tissue": "colon_sigmoid",
+       "value": 0.842393
+      },
+      {
+       "tissue": "colon_transverse",
+       "value": 0.831572
+      },
+      {
+       "tissue": "esophagus_gastroesophageal_junction",
+       "value": 0.836096
+      },
+      {
+       "tissue": "esophagus_mucosa",
+       "value": 0.856989
+      },
+      {
+       "tissue": "esophagus_muscularis",
+       "value": 0.834429
+      },
+      {
+       "tissue": "heart_atrial_appendage",
+       "value": 0.848379
+      },
+      {
+       "tissue": "heart_left_ventricle",
+       "value": 0.865705
+      },
+      {
+       "tissue": "kidney_cortex",
+       "value": 0.855588
+      },
+      {
+       "tissue": "liver",
+       "value": 0.792033
+      },
+      {
+       "tissue": "lung",
+       "value": 0.812168
+      },
+      {
+       "tissue": "minor_salivary_gland",
+       "value": 0.844423
+      },
+      {
+       "tissue": "muscle_skeletal",
+       "value": 0.857799
+      },
+      {
+       "tissue": "nerve_tibial",
+       "value": 0.846066
+      },
+      {
+       "tissue": "ovary",
+       "value": 0.819995
+      },
+      {
+       "tissue": "pancreas",
+       "value": 0.872477
+      },
+      {
+       "tissue": "pituitary",
+       "value": 0.791565
+      },
+      {
+       "tissue": "prostate",
+       "value": 0.826466
+      },
+      {
+       "tissue": "skin_not_sun_exposed_suprapubic",
+       "value": 0.858146
+      },
+      {
+       "tissue": "skin_sun_exposed_lower_leg",
+       "value": 0.86599
+      },
+      {
+       "tissue": "small_intestine_terminal_ileum",
+       "value": 0.820091
+      },
+      {
+       "tissue": "spleen",
+       "value": 0.81777
+      },
+      {
+       "tissue": "stomach",
+       "value": 0.831192
+      },
+      {
+       "tissue": "testis",
+       "value": 0.792027
+      },
+      {
+       "tissue": "thyroid",
+       "value": 0.816382
+      },
+      {
+       "tissue": "uterus",
+       "value": 0.835016
+      },
+      {
+       "tissue": "vagina",
+       "value": 0.847116
+      },
+      {
+       "tissue": "whole_blood",
+       "value": 0.875076
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

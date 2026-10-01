@@ -112,6 +112,7 @@ def test_a_query_is_declared_and_normalized(query):
         "clinvar": {},
         "diseases": {},
         "gnomad": {},
+        "exon_usage": True,
         "open_targets": {},
         "orphadata": True,
         "phi_base": True,

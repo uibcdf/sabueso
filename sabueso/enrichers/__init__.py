@@ -273,6 +273,7 @@ def _registered() -> List[Enricher]:
         orphadata.ENRICHER,
         reactome.ENRICHER,
         gnomad.ENRICHER,
+        gnomad.PEXT,
         clinvar.ENRICHER,
         skempi.ENRICHER,
         sabdab.ENRICHER,

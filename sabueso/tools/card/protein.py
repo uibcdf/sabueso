@@ -84,6 +84,7 @@ def resolve_protein_card(
     clinvar_client: Any | None = None,
     gnomad: Dict[str, Any] | None = None,
     gnomad_client: Any | None = None,
+    exon_usage: bool = False,
     skempi: bool = False,
     skempi_client: Any | None = None,
     sabdab: bool = False,
@@ -168,6 +169,12 @@ def resolve_protein_card(
     gnomAD's variants of the gene with a protein change, and their exome and genome frequencies
     (``annotations.population_variants``), placed in UniProt numbering by the same rule
     through an Ensembl transcript UniProt states for the canonical isoform. Human genes
+    only.
+
+    ``exon_usage`` adds gnomAD's pext of the gene (``annotations.exon_usage_by_tissue``):
+    per coding region, the share of the gene's expression in each GTEx v10 tissue that
+    includes it. With ``gnomad``, ``Card.variant_tissue_usage()`` gives each variant
+    the tissues where its position is expressed (``pext_at_variant@1``). Human genes
     only.
 
     ``skempi`` adds SKEMPI 2.0's measured binding changes of mutations at the
@@ -348,6 +355,7 @@ def resolve_protein_card(
         "orphadata": (orphadata, orphadata_client),
         "reactome": (reactome, reactome_client),
         "gnomad": (gnomad, gnomad_client),
+        "exon_usage": (exon_usage, gnomad_client),
         "clinvar": (clinvar, clinvar_client),
         "skempi": (skempi, skempi_client),
         "sabdab": (sabdab, sabdab_client),

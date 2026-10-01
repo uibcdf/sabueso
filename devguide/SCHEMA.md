@@ -8,7 +8,7 @@
     (`transcript_version`, `canonical_consequence`, #85), KLIFS's kinase
     classification, structures and pocket, and GPCRdb's receptor classification,
     segments, generic residue numbers and structures, SAbDab's antibody complexes,
-    and OMA's orthologs (#83);
+    and OMA's orthologs (#83), and gnomAD's pext (#102);
   - `0.3.7` is the schema of release 0.7.0: it adds `annotations.interface_mutations`
     (SKEMPI 2.0, #83), disease cards (MONDO, #90), the MONDO and MedGen identity and
     hierarchy relationships on protein cards, `mentioned_in` (Europe PMC, #92),
@@ -347,8 +347,8 @@ A Relationship is first-class, traceable knowledge:
       give the map to canonical positions. A position inside an isoform's own segment
       has none (`isoform_specific_position`).
     - Other reasons: `no_protein_change`, `unparsed_protein_change`,
-      `transcript_not_canonical`, `not_coding_on_canonical` (gnomAD), `stop_codon` and
-      `residue_mismatch`.
+      `transcript_not_canonical`, `not_coding_on_canonical` and
+      `no_consequence_on_canonical` (gnomAD), `stop_codon` and `residue_mismatch`.
   - population variants (added in #83, schema 0.3.6): `annotations.population_variants`,
     one item per gnomAD variant with a protein change, with the exome and genome
     `{ac, an, af}` as stated. Placed by the same rule as ClinVar, through an Ensembl
@@ -359,7 +359,12 @@ A Relationship is first-class, traceable knowledge:
     residue of the canonical transcript keeps its consequence on the other transcript,
     records `canonical_consequence` (`transcript`, `transcript_version`, `consequence`,
     `hgvs_c`) and is not placed (`not_coding_on_canonical`), even where UniProt's
-    isoform map would place it. The residue check still applies.
+    isoform map would place it. The residue check still applies. A change the isoform
+    map would place is first asked of gnomAD variant by variant (#102): it is read on
+    the canonical transcript when gnomAD states a protein change there, and otherwise
+    not placed (`not_coding_on_canonical`, or `no_consequence_on_canonical` when gnomAD
+    states no consequence on it). The enrichment record counts the variants asked
+    (`consequences_checked`).
   - disease hierarchy (added in #90, schema 0.3.7): `subclass_of` (disease →
     `mondo:<id>`), one per parent term MONDO states.
   - orthologs (added in #83, schema 0.3.8): `ortholog_of` (protein → `uniprot:<acc>`,
@@ -440,6 +445,14 @@ A Relationship is first-class, traceable knowledge:
       `publication_date`, `ligands` (`name`, `pdb_ccd`, `type`, `function`), `apo`
       (GPCRdb states no ligand), `signalling_protein` (`type`, `partners`: GPCRdb entry
       names). Up to 5000 (`gpcrdb={"limit": n}`); a cut is reported.
+  - exon usage by tissue (added in #102, schema 0.3.8):
+    `annotations.exon_usage_by_tissue`, gnomAD's pext of the gene, one item per coding
+    region: `gene`, `assembly` (GRCh38), `chromosome`, `start`, `end`, `mean`, and
+    `tissues` (`[{tissue, value}]`, the share of the gene's expression in each GTEx v10
+    tissue that includes the region). `Card.variant_tissue_usage(threshold=0.1)` joins
+    each population variant's genomic position to its region (`pext_at_variant@1`);
+    a variant outside every region is `outside_pext_regions` (pext covers coding
+    regions only). Nothing derived is stored.
   - antibody complexes (added in #83, schema 0.3.8): `annotations.antibody_complexes`,
     one item per SAbDab antibody instance with an antigen that is a protein or peptide
     chain UniProt states is this protein in that PDB entry. Never joined by the antigen

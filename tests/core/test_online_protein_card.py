@@ -131,3 +131,16 @@ def test_online_oma_states_the_parasite_ortholog_of_human_tim():
     card, _ = resolve_protein_card("P60174", oma={"taxa": [353153]})
     targets = [r["object_ref"] for r in card.relationships("ortholog_of")]
     assert targets == ["uniprot:Q4DV43"]
+
+
+@pytest.mark.online
+def test_online_pext_places_pkm_m1_exon_variants_in_muscle():
+    card, _ = resolve_protein_card("P14618", gnomad={}, exon_usage=True)
+    view = card.variant_tissue_usage()
+    m1 = [
+        i
+        for i in view["items"]
+        if i["pext"].get("max", {}) and i["pext"]["max"]["tissue"] == "muscle_skeletal"
+    ]
+    assert m1
+    assert all(i.get("not_placed") == "not_coding_on_canonical" for i in m1)

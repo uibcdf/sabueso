@@ -107,7 +107,23 @@ residue must match). A variant gnomAD states changes no residue of the canonical
 transcript (it is in an intron or a UTR there) keeps its consequence on the other
 transcript, with `canonical_consequence`, and is not placed
 (`not_coding_on_canonical`). Otherwise the same rule as ClinVar applies. Variants
-without a protein change are left out, and the enrichment record counts them. By default every variant, up to 5000 (`{"limit": n}` asks for fewer); a cut is reported.
+without a protein change are left out, and the enrichment record counts them.
+
+### In which tissues a variant matters
+
+`exon_usage=True` adds gnomAD's pext of the gene (`annotations.exon_usage_by_tissue`).
+For each coding region, it gives the share of the gene's expression in each GTEx v10
+tissue that includes the region. With the variants on the card,
+`card.variant_tissue_usage()` places each variant's genomic position in its region,
+under the rule `pext_at_variant@1`, and lists the tissues at or above a threshold
+(0.1 by default).
+
+For TPI1, the variants in isoform 3's own N-terminal segment lie in a region expressed
+in testis only (0.38; below 0.01 on average), while E105D lies in a region every
+tissue expresses.
+
+The values come from isoform quantifications of adult tissues, so a low value is not
+proof that a change is harmless. By default every variant, up to 5000 (`{"limit": n}` asks for fewer); a cut is reported.
 
 ## Coverage
 

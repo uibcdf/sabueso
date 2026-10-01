@@ -21,7 +21,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, Iterable
 from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
@@ -62,13 +62,34 @@ query($transcript: String!) {
 """
     % DATASET
 )
+#: pext (proportion expressed across transcripts, #102): per coding region of the gene,
+#: the share of the gene's expression in each GTEx v10 tissue that includes it, as
+#: gnomAD computes it from GTEx's isoform quantifications (GRCh38).
+PEXT_QUERY = """
+query($gene: String!) {
+  gene(gene_id: $gene, reference_genome: GRCh38) {
+    gene_id symbol chrom
+    pext { flags regions { start stop mean tissues { tissue value } } }
+  }
+}
+"""
+PEXT_VERSION = "gnomad_r4 pext (GTEx v10)"
+#: A variant's consequence on every transcript it touches, asked for many variants at
+#: once through GraphQL aliases (#102): gnomAD answers bursts with HTTP 429.
+CONSEQUENCE_FIELDS = (
+    "variant_id transcript_consequences { transcript_id transcript_version hgvsp "
+    "hgvsc major_consequence }"
+)
+CONSEQUENCES_PER_REQUEST = 25
 
 
 class OnlineGnomADClient:
     def __init__(self, timeout: float = 120.0) -> None:
         self.timeout = timeout
 
-    def _ask(self, query: str, kind: str, identifier: str) -> Dict[str, Any]:
+    def _ask(
+        self, query: str, kind: str, identifier: str, variants: bool = True
+    ) -> Dict[str, Any]:
         retrieval = stamp(SOURCE)
         body = json.dumps({"query": query, "variables": {kind: identifier}}).encode(
             "utf-8"
@@ -86,11 +107,13 @@ class OnlineGnomADClient:
             if data.get("errors") and "not found" not in str(data["errors"]).lower():
                 raise ConnectorError(f"gnomAD answered with errors: {data['errors']}")
             raise RecordNotFoundError(f"gnomAD has no {kind} {identifier}")
-        variants = found.pop("variants") or []
+        if not variants:
+            return {"retrieved_at": retrieval.value, "record": found}
+        listed = found.pop("variants") or []
         return {
             "retrieved_at": retrieval.value,
             "version": DATASET,
-            "record": {kind: found, "variants": variants},
+            "record": {kind: found, "variants": listed},
         }
 
     def variants(self, gene: str) -> Dict[str, Any]:
@@ -98,6 +121,49 @@ class OnlineGnomADClient:
 
     def transcript_variants(self, transcript: str) -> Dict[str, Any]:
         return self._ask(TRANSCRIPT_QUERY, "transcript", transcript)
+
+    def consequences(self, variant_ids: Iterable[str]) -> Dict[str, Any]:
+        """``{variant_id: [consequence on each transcript]}``; a variant gnomAD does not
+        hold is left out."""
+        wanted = sorted({v for v in variant_ids if v})
+        retrieval = stamp(SOURCE)
+        found: Dict[str, Any] = {}
+        for i in range(0, len(wanted), CONSEQUENCES_PER_REQUEST):
+            chunk = wanted[i : i + CONSEQUENCES_PER_REQUEST]
+            parts = " ".join(
+                f'v{n}: variant(variantId: "{v}", dataset: {DATASET}) '
+                f"{{ {CONSEQUENCE_FIELDS} }}"
+                for n, v in enumerate(chunk)
+            )
+            body = json.dumps({"query": f"query {{ {parts} }}"}).encode("utf-8")
+            try:
+                with urlopen(  # nosec - trusted endpoint
+                    request(
+                        API, data=body, headers={"Content-Type": "application/json"}
+                    ),
+                    timeout=self.timeout,
+                ) as resp:
+                    data = json.loads(resp.read().decode("utf-8")).get("data") or {}
+            except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+                raise ConnectorError(f"gnomAD request failed: {exc}") from exc
+            for alias, answer in data.items():
+                if answer:
+                    found[chunk[int(alias[1:])]] = (
+                        answer.get("transcript_consequences") or []
+                    )
+        return {"retrieved_at": retrieval.value, "version": DATASET, "record": found}
+
+    def pext(self, gene: str) -> Dict[str, Any]:
+        answer = self._ask(PEXT_QUERY, "gene", gene, variants=False)
+        found = answer["record"]
+        pext = found.pop("pext", None)
+        if not pext or not pext.get("regions"):
+            raise RecordNotFoundError(f"gnomAD states no pext for gene {gene}")
+        return {
+            "retrieved_at": answer["retrieved_at"],
+            "version": PEXT_VERSION,
+            "record": {"gene": found, "pext": pext},
+        }
 
 
 class FixtureGnomADClient:
@@ -125,6 +191,20 @@ class FixtureGnomADClient:
 
     def transcript_variants(self, transcript: str) -> Dict[str, Any]:
         return self._read("transcript", transcript)
+
+    def pext(self, gene: str) -> Dict[str, Any]:
+        return self._read("pext", f"pext_{gene}")
+
+    def consequences(self, variant_ids: Iterable[str]) -> Dict[str, Any]:
+        path = self.directory / "consequences.json"
+        if "consequences" in self.failing:
+            raise ConnectorError("gnomAD request for consequences failed (simulated)")
+        saved = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+        return {
+            "retrieved_at": self.retrieved_at,
+            "version": DATASET,
+            "record": {v: saved[v] for v in variant_ids if v in saved},
+        }
 
 
 # --- Public source access (uibcdf/sabueso#49) -----------------------------------------
@@ -155,6 +235,21 @@ def get_transcript_variants(
         SOURCE,
         "transcript_variants",
         {"ensembl_transcript": identifier, "dataset": DATASET},
+        response.get("retrieved_at"),
+        response.get("version"),
+        response["record"],
+    )
+
+
+@arg_digest()
+def get_pext(identifier: str, client: Any = None, skip_digestion: bool = False):
+    """gnomAD's pext of a gene (an Ensembl gene id): per coding region, the share of the
+    gene's expression in each GTEx v10 tissue that includes it (GRCh38)."""
+    response = online(client, OnlineGnomADClient).pext(identifier)
+    return source_record(
+        SOURCE,
+        "pext",
+        {"ensembl_gene": identifier},
         response.get("retrieved_at"),
         response.get("version"),
         response["record"],

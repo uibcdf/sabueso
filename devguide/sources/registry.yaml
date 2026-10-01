@@ -731,7 +731,7 @@ resources:
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     reason: "Population frequencies (exomes, genomes) of a human gene's variants with a protein change, as gnomAD states them. Found by the Ensembl gene UniProt cross-references; placed in UniProt numbering only through a canonical Ensembl transcript UniProt states and a matching residue. gnomAD is also asked for those canonical transcripts, and its consequence on them comes first (#85)."
-    access: "GraphQL API (dataset gnomad_r4; the API states no finer release), no key, when resolve(..., gnomad={})"
+    access: "GraphQL API (dataset gnomad_r4; the API states no finer release), no key, when resolve(..., gnomad={}); and the gene's pext (GTEx v10, GRCh38) when resolve(..., exon_usage=True) (#102)"
     limit:
       constant: sabueso.enrichers.gnomad.DEFAULT_LIMIT
       of: protein-level variants per gene
@@ -744,6 +744,7 @@ resources:
       reviewed: 2026-09-29
       caveats:
         - "Some annotations, not read by Sabueso, carry other terms."
+        - "pext (read since 2026-10-01) is gnomAD's computation from GTEx v10 isoform quantifications; GTEx's own terms for its summary data were not reviewed separately."
     module: [sabueso.tools.db.gnomad, sabueso.mappings.gnomad]
     links: ["#83"]
   - id: pharmacodb

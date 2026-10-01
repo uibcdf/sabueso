@@ -1639,3 +1639,42 @@ version.
   for different formats.
 - STRING and Europe PMC stay outside packets.
 
+## Where a variant matters: gnomAD's pext (2026-10-01)
+uibcdf/sabueso#102.
+- **Sources surveyed.**
+  - UniProt states tissue specificity as curated text, sometimes per isoform. PKM M1
+    and M2 each have their own comment, and Sabueso already keeps the restriction on
+    each SourceAssertion. It is text, not values to join with positions.
+  - UniProt cross-references HPA, Bgee and Expression Atlas, which are gene-level.
+  - GTEx's transcript medians (v8) give PKM's M2 transcript 217 TPM in skeletal muscle
+    and the M1 ones 1-3, against the known biology. Short-read quantification cannot
+    tell two mutually exclusive exons of one length apart, and GENCODE v26 lacks most
+    transcripts UniProt states. Set aside.
+  - gnomAD's pext (GTEx v10, GRCh38) gives, per coding region, the share of the gene's
+    expression in each of 49 tissues that includes it. It recovers PKM's biology: the
+    M1 exon reaches 0.58 in skeletal muscle and 0.01 in oesophagus. Chosen.
+- **Stored as stated, joined by a rule.**
+  - The pext regions are gnomAD's statements (`annotations.exon_usage_by_tissue`,
+    option `exon_usage`, its own enrichment record, data `pext`).
+  - `Card.variant_tissue_usage()` places each population variant's genomic position in
+    its region (`pext_at_variant@1`, with the threshold as a parameter).
+  - A variant outside every region is `outside_pext_regions`, never "not expressed":
+    pext covers coding regions only.
+  - Nothing derived is stored.
+- **What it shows.**
+  - TPI1's isoform-3 segment is expressed in testis only (0.38).
+  - PKM's M1 exon is expressed in 23 tissues, and an alternative PKM transcript's
+    region in none (86 variants).
+- **It exposed a placement error.** Next to an exon the canonical transcript lacks, the
+  residues on both sides are identical in the two isoforms (PKM's M1 exon, KRAS's exon
+  4A). UniProt's isoform map placed changes there on canonical residues, but the
+  canonical protein never carries them. gnomAD's transcript query did not catch them,
+  because they are intronic on the canonical transcript, beyond its margin.
+
+  Such changes are now asked of gnomAD variant by variant (25 per request) before the
+  map is applied. In PKM and KRAS, 14 and 17 wrong placements are gone.
+  `no_consequence_on_canonical` is new: gnomAD states no consequence on the canonical
+  transcript at all.
+- **Still open (#102):** a view per isoform, which needs each isoform's exons in
+  genomic coordinates; and tissues as UBERON terms.
+

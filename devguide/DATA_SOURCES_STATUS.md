@@ -98,6 +98,8 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - The API states no release finer than the dataset.
   - Human genes only.
   - Licence: CC0 1.0 (core).
+  - pext (2026-10-01, #102): `exon_usage=True` reads the gene's pext (GTEx v10, GRCh38) into `annotations.exon_usage_by_tissue`, and `Card.variant_tissue_usage()` gives each variant the tissues expressing its position (`pext_at_variant@1`). Verified live: PKM's M1 exon is expressed in 23 tissues, up to 0.58 in skeletal muscle, and its M2 exon in all 49. TPI1's isoform-3 segment is expressed in testis only (0.38). GTEx's own transcript-level medians were set aside: for PKM they put the M2 transcript at 217 TPM and the M1 ones at 1-3 in skeletal muscle, because short-read quantification cannot tell two mutually exclusive exons of the same length apart, and GTEx v8 (GENCODE v26) lacks most transcripts UniProt now states.
+  - Changes the isoform map would place are asked of gnomAD variant by variant (#102). PKM's 98 changes in its M1 exon and KRAS's 70 in its alternative exon 4 are stated as not coding on the canonical transcript. The isoform map had placed 14 (PKM) and 17 (KRAS) of them on canonical residues.
 
 ### ClinVar — variants and their clinical classification
 - **Status**: implemented as an enricher of `resolve_protein_card(..., clinvar={})` (uibcdf/sabueso#83)

@@ -554,6 +554,14 @@ class Card:
 
         return interface_mutations_view(self)
 
+    def variant_tissue_usage(self, threshold: float = 0.1) -> Dict[str, Any]:
+        """Each population variant with the share of its gene's expression, per GTEx
+        tissue, that includes its position (gnomAD's pext), under ``pext_at_variant@1``
+        (#102). Build the card with ``gnomad={}`` and ``exon_usage=True``."""
+        from .tissue_usage import variant_tissue_usage_view
+
+        return variant_tissue_usage_view(self, threshold)
+
     def oligomer(self) -> Dict[str, Any]:
         """What sources state about this protein's quaternary structure and interfaces."""
         from .oligomer import oligomer_view

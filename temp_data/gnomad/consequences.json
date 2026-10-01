@@ -1,0 +1,98 @@
+{
+ "12-6867456-A-C": [
+  {
+   "hgvsc": "c.1A>C",
+   "hgvsp": "p.Met1?",
+   "major_consequence": "start_lost",
+   "transcript_id": "ENST00000229270",
+   "transcript_version": "8"
+  },
+  {
+   "hgvsc": "c.1A>C",
+   "hgvsp": "p.Met1?",
+   "major_consequence": "start_lost",
+   "transcript_id": "ENST00000613953",
+   "transcript_version": "4"
+  }
+ ],
+ "12-6867456-A-G": [
+  {
+   "hgvsc": "c.1A>G",
+   "hgvsp": "p.Met1?",
+   "major_consequence": "start_lost",
+   "transcript_id": "ENST00000229270",
+   "transcript_version": "8"
+  },
+  {
+   "hgvsc": "c.1A>G",
+   "hgvsp": "p.Met1?",
+   "major_consequence": "start_lost",
+   "transcript_id": "ENST00000613953",
+   "transcript_version": "4"
+  }
+ ],
+ "12-6867461-G-A": [
+  {
+   "hgvsc": "c.6G>A",
+   "hgvsp": "p.Ala2Ala",
+   "major_consequence": "synonymous_variant",
+   "transcript_id": "ENST00000229270",
+   "transcript_version": "8"
+  },
+  {
+   "hgvsc": "c.6G>A",
+   "hgvsp": "p.Ala2Ala",
+   "major_consequence": "synonymous_variant",
+   "transcript_id": "ENST00000613953",
+   "transcript_version": "4"
+  }
+ ],
+ "12-6867461-G-T": [
+  {
+   "hgvsc": "c.6G>T",
+   "hgvsp": "p.Ala2Ala",
+   "major_consequence": "synonymous_variant",
+   "transcript_id": "ENST00000229270",
+   "transcript_version": "8"
+  },
+  {
+   "hgvsc": "c.6G>T",
+   "hgvsp": "p.Ala2Ala",
+   "major_consequence": "synonymous_variant",
+   "transcript_id": "ENST00000613953",
+   "transcript_version": "4"
+  }
+ ],
+ "12-6867501-T-TC": [
+  {
+   "hgvsc": "c.46_47insC",
+   "hgvsp": "p.Tyr16SerfsTer14",
+   "major_consequence": "frameshift_variant",
+   "transcript_id": "ENST00000229270",
+   "transcript_version": "8"
+  },
+  {
+   "hgvsc": "c.46_47insC",
+   "hgvsp": "p.Tyr16SerfsTer14",
+   "major_consequence": "frameshift_variant",
+   "transcript_id": "ENST00000613953",
+   "transcript_version": "4"
+  }
+ ],
+ "12-6867503-TATAAGTGGGCAGTGGCC-T": [
+  {
+   "hgvsc": "c.49_65del",
+   "hgvsp": "p.Ile17AlafsTer7",
+   "major_consequence": "frameshift_variant",
+   "transcript_id": "ENST00000229270",
+   "transcript_version": "8"
+  },
+  {
+   "hgvsc": "c.49_65del",
+   "hgvsp": "p.Ile17AlafsTer7",
+   "major_consequence": "frameshift_variant",
+   "transcript_id": "ENST00000613953",
+   "transcript_version": "4"
+  }
+ ]
+}
