@@ -37,7 +37,7 @@ status, so that none is lost because a pilot has not asked for it yet.
 - **Maintainers may schedule a foundational objective on its own.** The pilots do not
   own the plan.
 
-## Delivered so far (0.1.0 → 0.9.0)
+## Delivered so far (0.1.0 → 0.10.0)
 
 - **Foundations.**
   - Card, Deck, `SourceAssertionStore` and `RelationshipStore`.
@@ -63,6 +63,7 @@ status, so that none is lost because a pilot has not asked for it yet.
   - Since 0.8.0: ChEBI, KLIFS, GPCRdb, SAbDab, OMA, OPM and PDBTM segments through RCSB
     (#83), and gnomAD's pext (#102).
   - Since 0.9.0: UniRef clusters, through UniProt (#103).
+  - Since 0.10.0: GTEx's tissue terms (#102).
   - The registry, `sources/registry.yaml`, is the index.
 - **Knowledge views, each with a named rule:**
   - structures and the structural inventory; predicted models;
@@ -98,6 +99,11 @@ status, so that none is lost because a pilot has not asked for it yet.
     card (`quality.retries`, #97).
   - Validation runs from scratch, with what the sources answered recorded, never
     reused (#100).
+- **Since 0.10.0.**
+  - Tissues as GTEx's UBERON and EFO terms; isoforms whose exons are unknown say why
+    (`isoform_exon_usage@2`, #102).
+  - A knowledge packet as an index by reference, with the guarantees agreed in
+    uibcdf/moli#22 (`packet_index@1`, #88); `packet_aspects@5`.
 
 ## Status of the foundational plan
 
@@ -147,7 +153,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | 6. Tissue-specific isoforms | partial (tissue specificity; UniProt isoforms and alternative sequences, #80; AlphaFold isoform models; the tissues of each variant and isoform from gnomAD's pext, with GTEx's UBERON terms, #102; isoform sequences not fetched) |
 | 7. Visualization (MolSysViewer) | partial (interfaces, mutations, sites, secondary structure from UniProt and per chain from RCSB, #80; no contract) |
 | 8. Clinical trials of ligands | done for the trials ChEMBL's indications cite (#81); a trial is never matched to a molecule by name |
-| 9. Disease associations; targets of a disease | done on main: protein → diseases from UniProt, DISEASES, Open Targets, Orphanet and ClinVar, grouped through MONDO (#82, #90); disease → targets and → drugs as decks (#90) |
+| 9. Disease associations; targets of a disease | done: protein → diseases from UniProt, DISEASES, Open Targets, Orphanet and ClinVar, grouped through MONDO (#82, #90); disease → targets and → drugs as decks (#90) |
 | 10. Knowledge baseline for a target and a comparator (pilot route) | done |
 | 11. Curating what the literature states (pilot route) | done (human curation) |
 | 12. Citing knowledge from a project (pilot route) | done, provisional reference form (#53, moli#3) |
@@ -165,8 +171,8 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Temporal knowledge | partial | snapshots, revisions, source releases; the store's `as_of` and `changed_since` (#91); no source asked as of a past release |
 | Knowledge from Nextia not imported automatically | done (as a boundary) | promotion of derived knowledge open in uibcdf/moli#17 |
 | Literature as a knowledge source | partial | human curation and literature views; automated extraction pending |
-| KnowledgeQuery (semantic queries over sources) | partial | prototype released in 0.6.0 (#71): a protein subject, a fixed aspect mapping (`packet_aspects@4` in 0.9.0, `@5` on main); contract in uibcdf/moli#22 |
-| Knowledge packets (entities, facts, conflicts, unknowns) | partial | prototype released in 0.6.0 (#71): pinned, stored, with a content-equivalence id; on main, an index level by reference for size (#88); contract in uibcdf/moli#22 |
+| KnowledgeQuery (semantic queries over sources) | partial | prototype released in 0.6.0 (#71): a protein subject, a fixed aspect mapping (`packet_aspects@5` since 0.10.0); contract in uibcdf/moli#22 |
+| Knowledge packets (entities, facts, conflicts, unknowns) | partial | prototype released in 0.6.0 (#71): pinned, stored, with a content-equivalence id; since 0.10.0, an index level by reference for size (#88), accepted in uibcdf/moli#22, which closes with a consumer test |
 | Unknowns as first-class output | done | `knowledge_state()` (#56) |
 | Two levels of access (semantic and raw) | done | `resolve` and views; `tools.db.*.get_*` |
 | Patents | deferred | SureChEMBL evaluated 2026-09-30: mentions cannot be restricted to claims |
@@ -234,16 +240,15 @@ In order:
      in use; the Chemical Probes Portal, SureChEMBL, OPM's own API, ESM Atlas and
      Ensembl deferred with their reasons; #85 closed through gnomAD's canonical transcript
      (follow-up #102). iPPI-DB, VEuPathDB and TDR Targets wait on #84;
-   - isoforms and variants by tissue (#102): done on main (gnomAD's pext,
+   - isoforms and variants by tissue (#102): done in 0.10.0 (gnomAD's pext,
      `pext_at_variant@1`, `isoform_exon_usage@2`, tissues as GTEx's UBERON and EFO
      terms). Isoforms without a stated transcript stay without exons (Sabueso does not
      align); exons from Ensembl for the few transcripts gnomAD lacks, when a use needs
      them;
    - local mirrors in real work (#101): ChEMBL as a mirror, and builds from cached
      sources; postponed by the maintainers on 2026-10-01;
-   - knowledge packets: real use decides their aspects and size (#71, #88); an index
-     level by reference on main (`packet_index@1`), aligned with uibcdf/moli#22 once
-     agreed;
+   - knowledge packets: real use decides their aspects (#71); an index level by
+     reference since 0.10.0 (`packet_index@1`, #88), accepted in uibcdf/moli#22;
    - the clinical layer: adverse events (openFDA), after a terms review; isoform
      sequences (#80);
    - peptide cards: scope them before any source (use case 5, CPPsite).

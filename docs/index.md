@@ -11,7 +11,7 @@
 From database fragments to structured molecular intelligence.
 
 
-```{image} https://img.shields.io/badge/release-0.9.0-white.svg
+```{image} https://img.shields.io/badge/release-0.10.0-white.svg
 :target: https://github.com/uibcdf/sabueso
 ```
 ```{image} https://img.shields.io/badge/license-MIT-white.svg
@@ -31,10 +31,10 @@ From database fragments to structured molecular intelligence.
 Sabueso is distributed through the `uibcdf` conda channel:
 
 ```bash
-conda install -c uibcdf -c conda-forge 'sabueso>=0.9.0'
+conda install -c uibcdf -c conda-forge 'sabueso>=0.10.0'
 ```
 
-The latest release is 0.9.0 (card schema 0.3.9). To work on Sabueso itself, see `Developers`.
+The latest release is 0.10.0 (card schema 0.3.10). To work on Sabueso itself, see `Developers`.
 
 ## Start Here
 

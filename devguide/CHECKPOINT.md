@@ -5,16 +5,18 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-10-01, after release 0.9.0.*
+*Last updated: 2026-10-01, after release 0.10.0.*
 
 ## Release and schema
 
-- **Latest release:** 0.9.0 (2026-10-01).
+- **Latest release:** 0.10.0 (2026-10-01).
   - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
-  - Staged candidate c6876b8; sha256 `6b73db7b…af9b`.
+  - Staged candidate d41c7f7; sha256 `5217c5ce…0248`.
   - The exact staged file passed the installed-package gate on Linux, macOS and
     Windows × 3.11–3.14, and a clean public install on Python 3.14.
-  - Zenodo archive: 10.5281/zenodo.23084553, verified to be identical to its tag.
+  - Zenodo archive: 10.5281/zenodo.23089116, verified to be identical to its tag.
+- **0.9.0** (2026-10-01). Staged candidate c6876b8; sha256 `6b73db7b…af9b`. Zenodo:
+  10.5281/zenodo.23084553.
 - **0.8.1** (2026-10-01), an integrity fix for users of 0.8.0 who read OMA orthologs: a
   Swiss-Prot entry name resolves only to an active UniProt entry. Staged candidate
   ab45a3e; sha256 `3e6b1756…1fca9`. Zenodo: 10.5281/zenodo.23079157.
@@ -25,11 +27,11 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     Windows × 3.11–3.14, and a clean public install on Python 3.14.
   - Zenodo archive: 10.5281/zenodo.23077926, verified to be identical to its tag; 0.7.0
     (10.5281/zenodo.23048186) and 0.6.0 (10.5281/zenodo.23038465) too.
-- **Card schema:** 0.3.10 (`schemas/card_schema_0.3.10.yaml`), current and not yet
-  released; 0.3.9 is the last published (0.9.0).
+- **Card schema:** 0.3.10 (`schemas/card_schema_0.3.10.yaml`), published by 0.10.0. The
+  next additive change goes to a new version, 0.3.11.
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
-    0.3.9.
-  - The recorded shape of 0.3.10 is `schemas/card_shape_0.3.10.json`; 0.3.9's is fixed.
+    0.3.10.
+  - The recorded shape of 0.3.10 is `schemas/card_shape_0.3.10.json`, now fixed.
 - **In 0.8.0:**
   - an integrity fix for users of 0.7.0: gnomAD changes next to exons the canonical
     transcript lacks are no longer placed on canonical residues through UniProt's
@@ -99,7 +101,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - an unreadable 200 answer (a body that is not the JSON asked for) is asked again,
     HTTP 500 joins the retried statuses, and a card lists its build's retries
     (`quality.retries`, #97).
-- **Unreleased on main:**
+- **In 0.10.0:**
   - card schema 0.3.10 (#102): GTEx's tissue terms (`gtex=True`,
     `annotations.tissue_terms`; UBERON, or EFO for a cell line), listed by the tissue
     views as `tissue_terms` (`gtex_tissue_key@1`); UniProt's Ensembl transcripts per

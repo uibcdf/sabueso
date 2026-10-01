@@ -2,7 +2,7 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
-  - `0.3.10` is current, not yet released: `identifiers.ensembl_transcripts` (UniProt's
+  - `0.3.10` is the schema of release 0.10.0: `identifiers.ensembl_transcripts` (UniProt's
     Ensembl transcripts per isoform) and `annotations.tissue_terms` (GTEx's ontology
     term for each pext tissue), #102;
   - `0.3.9` is the schema of release 0.9.0: `identifiers.uniref` and `clustered_with`
