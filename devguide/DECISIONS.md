@@ -1484,9 +1484,8 @@ uibcdf/sabueso#83 (wave 2, family-specific sources).
 - **Terms.** No formal licence was found. The FAQ states the data is free and open for
   academia and industry, and asks to be cited. The registry records it as no
   restrictions of its own, with that caveat (`RISKS_AND_OPEN_QUESTIONS.md`).
-- **Not in packets yet.** Its areas fit the `ligand_sites` aspect, but
-  `packet_aspects@2` was published in 0.7.0. Adding KLIFS there is a new mapping
-  version (`packet_aspects@3`), left for when packet aspects are revisited (#88).
+- **In packets since `packet_aspects@3`** (2026-10-01): classification in
+  `identity`, conformations in `structures`, pocket in `ligand_sites`.
 - **Not taken now:** KLIFS's interaction fingerprints per structure (one request each),
   its ligand bioactivities (ChEMBL's, already on the card) and its drug list.
 
@@ -1514,7 +1513,9 @@ uibcdf/sabueso#83 (wave 2, family-specific sources).
 - **Apo is not a ligand.** GPCRdb writes a structure without ligand as a ligand named
   "Apo (no ligand)" with the code `apo`. The card records `apo: true` and no ligand, so
   no false chemical component enters the card.
-- **Not in packets yet**, as KLIFS (`packet_aspects@2` is published; #88).
+- **In packets since `packet_aspects@3`** (2026-10-01): classification in
+  `identity`, states in `structures`, segments and generic numbers in
+  `sequence_features`.
 - **Not taken now:** GPCRdb's mutation data. They are literature mutagenesis with
   ligand effects, often with empty fields (the first β2AR record states only the
   mutation). They are read when a use asks.
@@ -1563,7 +1564,7 @@ uibcdf/sabueso#83 (wave 2, structures).
 - **Antibodies are not entities yet.** Their chains, types and V gene subgroups are
   kept on the target's card. Antibody cards, CDRs and Thera-SAbDab's therapeutics wait
   for a use.
-- **Not in packets yet**, as KLIFS and GPCRdb (#88).
+- **In packets since `packet_aspects@3`** (2026-10-01), in `structures`.
 
 ## Wave 2 of the source coverage plan, closed (2026-09-30)
 uibcdf/sabueso#83.
@@ -1613,5 +1614,28 @@ uibcdf/sabueso#83, instead of Ensembl's Compara (deferred, 2026-09-30).
 - **Terms.** CC BY 4.0, from OMA's Terms of Use as published in its browser's public
   source. The site's pages answer 403 to non-browser clients. An older FAQ line says
   CC BY-SA 2.5 for the browser, and both are recorded.
-- **Not in packets yet** (#88).
+- **In packets since `packet_aspects@3`** (2026-10-01): the `orthology` aspect,
+  asked by name.
+
+## packet_aspects@3: the wave-2 sources in packets (2026-10-01)
+uibcdf/sabueso#83, #88. `@2` was published in 0.7.0 and is not changed; `@3` is a new
+version.
+- **Where each source fits:**
+  - KLIFS and GPCRdb classifications in `identity`, what the protein is;
+  - kinase conformations, GPCR states and antibody complexes in `structures`, what
+    each structure shows;
+  - the kinase pocket in `ligand_sites`;
+  - GPCR segments and generic numbers in `sequence_features`, positions on the
+    sequence.
+
+  Each enters an aspect's facts only when the card holds it, so a protein without
+  them keeps the same facts.
+- **`orthology` is an aspect of its own, asked only by name.** OMA gives thousands of
+  orthologs per protein (3,090 for human TPI1), and packet size is watched (#88).
+  With a comparator, the aspect says whether OMA states one protein an ortholog of the
+  other, by the accessions the cards are anchored at, and nothing more. For HsTIM and
+  TcTIM (P52270) that is empty, because OMA maps P52270 to another strain's protein.
+- **Packets of different mappings are not compared.** `same_knowledge` is `None`, as
+  for different formats.
+- STRING and Europe PMC stay outside packets.
 

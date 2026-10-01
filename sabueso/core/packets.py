@@ -21,10 +21,14 @@ the Sabueso version that built the cards, so two assemblies of unchanged knowled
 the same ``content_id`` even when the sources were read again (``same_knowledge``).
 
 What each aspect asks the sources for, and which knowledge areas it covers, is fixed by
-the mapping ``packet_aspects@2``. It never changes once published: a change is a new
+the mapping ``packet_aspects@3``. It never changes once published: a change is a new
 version, and a test pins what each version asks. ``@1`` was published in 0.6.0; ``@2``
-adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83), and MONDO's disease
-identity and the grouped diseases to ``disease_association`` (#90).
+(0.7.0) adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83), and MONDO's
+disease identity and the grouped diseases to ``disease_association`` (#90). ``@3``
+adds the kinase and GPCR classifications to ``identity``, kinase conformations, GPCR
+states and antibody complexes to ``structures``, the kinase pocket to
+``ligand_sites``, GPCR segments and generic numbers to ``sequence_features``, and the
+``orthology`` aspect (OMA), asked only when named (#83).
 
 The shared contract (query and packet shapes, references, the boundary with MOLI's
 Context Assembly) is proposed in uibcdf/moli#22; this is Sabueso's prototype of it.
@@ -47,7 +51,11 @@ PACKET_FORMAT = "knowledge_packet@2"
 #: disease statements name the statement they group, and the joint structure inventory
 #: names each role's structure by its relationship id (#88).
 READABLE_FORMATS = ("knowledge_packet@1", "knowledge_packet@2")
-ASPECT_MAPPING = "packet_aspects@2"
+ASPECT_MAPPING = "packet_aspects@3"
+#: Aspect mappings a packet can carry; packets of different mappings are not compared.
+#: ``@3`` adds KLIFS and GPCRdb (identity, structures, ligand sites, sequence features),
+#: SAbDab (structures) and the ``orthology`` aspect (OMA), which a query asks for by
+#: name: a protein has thousands of orthologs (#83, #88).
 PACKET_PREFIX = "sabueso:packet:"
 
 #: Keys left out of a content-equivalence id: when the sources were read, and which
@@ -68,7 +76,19 @@ IDENTITY_FIELDS = (
     "sequence.checksums",
 )
 
-#: ``packet_aspects@2``: per aspect, the knowledge areas (field paths and relationships,
+#: Areas ``@3`` adds to existing aspects; they enter an aspect's facts only when the card
+#: holds them, so a protein without them keeps its facts.
+CLASSIFICATION_FIELDS = (
+    "annotations.kinase_classification",
+    "annotations.gpcr_classification",
+)
+STRUCTURE_FIELDS = (
+    "annotations.kinase_structures",
+    "annotations.gpcr_structures",
+    "annotations.antibody_complexes",
+)
+
+#: ``packet_aspects@3``: per aspect, the knowledge areas (field paths and relationships,
 #: as ``knowledge_state`` names them) whose facts, conflicts and unknowns it reports,
 #: matched by prefix; and the options of the bespoke sources it needs. The options of
 #: declared enrichers are derived (``aspect_options``): an aspect asks every enricher
@@ -85,6 +105,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
             "annotations.lineage",
             "annotations.taxonomy",
             "sequence.",
+            *CLASSIFICATION_FIELDS,
         ),
     },
     "structures": {
@@ -92,6 +113,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
         "areas": (
             "relationships.has_structure",
             "relationships.has_predicted_structure",
+            *STRUCTURE_FIELDS,
         ),
     },
     "oligomer": {
@@ -110,6 +132,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
             "features_positional.binding_site",
             "features_positional.active_site",
             "features_positional.family_site",
+            "annotations.kinase_pocket",
         ),
     },
     "bioactivities": {
@@ -123,6 +146,8 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
             "annotations.isoforms",
             "annotations.alternative_products",
             "annotations.population_variants",
+            "annotations.gpcr_segments",
+            "annotations.gpcr_residues",
         ),
     },
     "literature": {
@@ -153,12 +178,19 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
             "annotations.pathway",
         ),
     },
+    "orthology": {
+        "bespoke_options": {},
+        "areas": ("relationships.ortholog_of",),
+    },
 }
+#: Aspects a query asks for when it names none: every aspect but ``orthology``, whose
+#: thousands of orthologs per protein a query asks for by name.
+DEFAULT_ASPECTS = tuple(sorted(a for a in ASPECTS if a != "orthology"))
 
 
 def aspect_options(aspect: str) -> Dict[str, Any]:
     """The resolve options an aspect needs: its bespoke sources', and every declared
-    enricher answering one of its areas (``packet_aspects@2``)."""
+    enricher answering one of its areas (``packet_aspects@3``)."""
     from sabueso.enrichers import ENRICHERS
 
     options = dict(ASPECTS[aspect]["bespoke_options"])
@@ -186,8 +218,8 @@ class KnowledgeQuery:
     """A declared question about a protein, optionally beside a comparator.
 
     ``subject`` and ``comparator`` are UniProt accessions (``P60174`` or
-    ``uniprot:P60174``). ``aspects`` are names of ``packet_aspects@2`` (default: all
-    of them). ``constraints``: ``bioactivity_sources``, among ChEMBL, BindingDB and
+    ``uniprot:P60174``). ``aspects`` are names of ``packet_aspects@3`` (default: all
+    of them but ``orthology``). ``constraints``: ``bioactivity_sources``, among ChEMBL, BindingDB and
     PubChem BioAssay (default ChEMBL). Anything else is refused, never ignored.
     """
 
@@ -202,7 +234,7 @@ class KnowledgeQuery:
     ) -> None:
         self.subject = subject
         self.comparator = comparator
-        self.aspects = tuple(sorted(aspects)) if aspects else tuple(sorted(ASPECTS))
+        self.aspects = tuple(sorted(aspects)) if aspects else DEFAULT_ASPECTS
         merged = dict(CONSTRAINTS)
         merged.update(constraints or {})
         self.constraints = {
@@ -234,7 +266,7 @@ class KnowledgeQuery:
         )
 
     def options(self) -> Dict[str, Any]:
-        """The resolve options the aspects need (``packet_aspects@2``)."""
+        """The resolve options the aspects need (``packet_aspects@3``)."""
         options: Dict[str, Any] = {}
         for aspect in self.aspects:
             options.update(aspect_options(aspect))
@@ -323,8 +355,23 @@ def _positional(card: Any) -> Dict[str, Any]:
             "annotations.isoforms",
             "annotations.alternative_products",
             "annotations.population_variants",
+            "annotations.gpcr_segments",
+            "annotations.gpcr_residues",
         ],
     )
+
+
+def _relationships(card: Any, predicate: str) -> List[Dict[str, Any]]:
+    return [
+        {
+            "relationship_id": r["id"],
+            **{k: r[k] for k in ("object_ref", "qualifiers", "source_assertion_ids")},
+        }
+        for r in sorted(
+            card.relationships(predicate=predicate),
+            key=lambda r: (r["object_ref"], r["id"]),
+        )
+    ]
 
 
 def _facts(aspect: str, card: Any) -> Dict[str, Any]:
@@ -332,18 +379,19 @@ def _facts(aspect: str, card: Any) -> Dict[str, Any]:
         decision = (card.quality.get("entity_resolution") or {}).get("decision") or {}
         return {
             "card_id": card.id,
-            "fields": _fields(card, IDENTITY_FIELDS),
+            "fields": _fields(card, (*IDENTITY_FIELDS, *CLASSIFICATION_FIELDS)),
             "resolution": {k: decision.get(k) for k in ("rules", "sources", "route")},
         }
     if aspect == "structures":
         return {
             "experimental": card.structures(),
             "predicted": card.predicted_structures(),
+            **_fields(card, STRUCTURE_FIELDS),
         }
     if aspect == "oligomer":
         return {**card.oligomer(), "interface_mutations": card.interface_mutations()}
     if aspect == "ligand_sites":
-        return card.ligand_sites()
+        return {**card.ligand_sites(), **_fields(card, ["annotations.kinase_pocket"])}
     if aspect == "bioactivities":
         return card.bioactivities()
     if aspect == "sequence_features":
@@ -386,6 +434,8 @@ def _facts(aspect: str, card: Any) -> Dict[str, Any]:
                 )
             ],
         }
+    if aspect == "orthology":
+        return {"orthologs": _relationships(card, "ortholog_of")}
     raise KeyError(aspect)
 
 
@@ -449,7 +499,25 @@ def _together(
             for item in inventory["items"]
         ]
         return {"inventory": inventory}
+    if aspect == "orthology":
+        # Whether OMA states the two proteins orthologs of each other: their own
+        # relationships, by the accession each card is anchored at.
+        refs = {
+            "subject": f"uniprot:{_anchor(subject)}",
+            "comparator": f"uniprot:{_anchor(comparator)}",
+        }
+        stated = sorted(
+            item["relationship_id"]
+            for role, other in (("subject", "comparator"), ("comparator", "subject"))
+            for item in facts[role]["orthologs"]
+            if item["object_ref"] == refs[other]
+        )
+        return {"stated_orthologs": stated}
     return None
+
+
+def _anchor(card: Any) -> str | None:
+    return (card.get("identifiers.uniprot") or {}).get("value")
 
 
 def _unknowns(card: Any, aspects: Iterable[str]) -> Dict[str, Any]:
@@ -556,8 +624,11 @@ class KnowledgePacket:
 
     def same_knowledge(self, other: "KnowledgePacket") -> bool | None:
         """Whether two packets hold the same knowledge, however often it was read.
-        None when they are in different formats: their ids cannot be compared."""
-        if self.format != other.format:
+        None when they are in different formats or aspect mappings: their ids cannot
+        be compared."""
+        if self.format != other.format or self._data.get(
+            "aspect_mapping"
+        ) != other._data.get("aspect_mapping"):
             return None
         return self.content_id() == other.content_id()
 

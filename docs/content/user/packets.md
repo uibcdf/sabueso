@@ -27,13 +27,18 @@ A `KnowledgeQuery` is structured, not free text:
 
 - `subject`: a UniProt accession; `comparator`: another one, optional;
 - `aspects`: among `identity`, `structures`, `oligomer`, `ligand_sites`,
-  `bioactivities`, `sequence_features`, `literature`, `disease_association` and
-  `biological_context` (all by default);
+  `bioactivities`, `sequence_features`, `literature`, `disease_association`,
+  `biological_context` and `orthology` (all but `orthology` by default: a protein has
+  thousands of orthologs, so a query asks for them by name);
 - `constraints`: for now `bioactivity_sources`, among ChEMBL (the default), BindingDB
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping, `packet_aspects@2`. Keyword arguments to
+by a named, versioned mapping, `packet_aspects@3`. It adds to `@2` the kinase and
+GPCR classifications (`identity`), kinase conformations, GPCR states and antibody
+complexes (`structures`), the kinase pocket (`ligand_sites`), GPCR segments and generic
+residue numbers (`sequence_features`), and the `orthology` aspect (OMA). Packets of
+different mappings are not compared (`same_knowledge` is `None`). Keyword arguments to
 `knowledge_packet` only choose how the sources are reached (a `resolver`, or source
 clients such as `chembl_client`); they never change what is asked.
 
@@ -49,7 +54,8 @@ aspect asks for.
 - `entities`: the pinned state of each card it was composed from.
 - `facts`: per aspect and per protein, the output of Sabueso's views, each with its
   named rule. With a comparator, some aspects also hold what the two say together: the
-  identity audit, and the structure inventory.
+  identity audit, the structure inventory, and, for `orthology`, the relationships
+  in which OMA states one protein an ortholog of the other.
 - `conflicts`: where sources disagree, as the cards record it.
 - `unknowns`: per source, what is `not_stated`, `not_queried`, `unavailable` or
   `partial`, for the areas of the aspects asked. An absence is a fact about a source,

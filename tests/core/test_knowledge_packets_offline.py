@@ -26,15 +26,19 @@ from sabueso.tools.db.chembl import FixtureChEMBLClient
 from sabueso.tools.db.clinvar import FixtureClinVarClient
 from sabueso.tools.db.diseases import FixtureDISEASESClient
 from sabueso.tools.db.gnomad import FixtureGnomADClient
+from sabueso.tools.db.gpcrdb import FixtureGPCRdbClient
 from sabueso.tools.db.interpro import FixtureInterProClient
+from sabueso.tools.db.klifs import FixtureKLIFSClient
 from sabueso.tools.db.medgen import FixtureMedGenClient
 from sabueso.tools.db.mondo import FixtureMONDOClient
 from sabueso.tools.db.ncbi_taxonomy import FixtureNCBITaxonomyClient
+from sabueso.tools.db.oma import FixtureOMAClient
 from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
 from sabueso.tools.db.orphadata import FixtureOrphadataClient
 from sabueso.tools.db.pdbe_kb import FixturePDBeKBClient
 from sabueso.tools.db.phi_base import FixturePHIBaseClient
 from sabueso.tools.db.reactome import FixtureReactomeClient
+from sabueso.tools.db.sabdab import FixtureSAbDabClient
 from sabueso.tools.db.skempi import FixtureSKEMPIClient
 
 
@@ -60,6 +64,10 @@ def clients():
         skempi_client=FixtureSKEMPIClient("temp_data"),
         mondo_client=FixtureMONDOClient("temp_data"),
         medgen_client=FixtureMedGenClient("temp_data"),
+        klifs_client=FixtureKLIFSClient("temp_data"),
+        gpcrdb_client=FixtureGPCRdbClient("temp_data"),
+        sabdab_client=FixtureSAbDabClient("temp_data"),
+        oma_client=FixtureOMAClient("temp_data"),
     )
 
 
@@ -92,14 +100,14 @@ def test_a_query_is_declared_and_normalized(query):
         "format": "knowledge_query@1",
         "subject": "uniprot:P60174",
         "comparator": "uniprot:P52270",
-        "aspects": sorted(ASPECTS),
+        "aspects": sorted(a for a in ASPECTS if a != "orthology"),
         "constraints": {"bioactivity_sources": ["ChEMBL"]},
     }
     assert sabueso.KnowledgeQuery.from_dict(query.to_dict()) == query
     # What the aspects ask of the sources is fixed per mapping version. The options are
     # derived from the declared enrichers, so a new enricher in an aspect's areas fails
-    # here: that is a new mapping version (packet_aspects@3), never a silent change.
-    assert ASPECT_MAPPING == "packet_aspects@2"
+    # here: that is a new mapping version (packet_aspects@4), never a silent change.
+    assert ASPECT_MAPPING == "packet_aspects@3"
     assert query.options() == {
         "clinvar": {},
         "diseases": {},
@@ -115,6 +123,9 @@ def test_a_query_is_declared_and_normalized(query):
         "family_sites": True,
         "ligand_sites": True,
         "skempi": True,
+        "klifs": {},
+        "gpcrdb": {},
+        "sabdab": True,
         "medgen": True,
         "disease_identity": True,
         "chembl": {},
@@ -142,7 +153,8 @@ def test_what_a_query_cannot_state_is_refused(kwargs):
 
 
 def test_the_packet_holds_the_declared_aspects_for_both_proteins(packet):
-    assert set(packet.facts) == set(ASPECTS)
+    # Every aspect but orthology, which a query asks for by name (packet_aspects@3).
+    assert set(packet.facts) == set(ASPECTS) - {"orthology"}
     assert packet.entities["subject"]["card_id"] == "sabueso:protein:uniprot:P60174"
     assert packet.entities["comparator"]["card_id"] == "sabueso:protein:uniprot:P52270"
     structures = packet.facts["structures"]
@@ -297,13 +309,6 @@ OUTSIDE_PACKETS = {
     # Hundreds of articles per well-studied protein: packet size is watched (#88), and
     # real use decides whether the literature aspect asks for them (#71).
     "europepmc": "text-mined mentions are not asked by a packet aspect yet",
-    # Adding KLIFS and GPCRdb to ligand_sites or structures would change
-    # packet_aspects@2, published in 0.7.0: a new mapping version, decided when packet
-    # aspects are revisited (#88).
-    "klifs": "kinase pockets and conformations are not asked by a packet aspect yet",
-    "gpcrdb": "GPCR numbering and structure states are not asked by a packet aspect yet",
-    "sabdab": "antibody complexes are not asked by a packet aspect yet",
-    "oma": "orthologs are not asked by a packet aspect yet",
 }
 
 
@@ -393,3 +398,23 @@ def test_revisions_of_different_formats_are_not_compared(tmp_path, query, client
     assert [h["knowledge_changed"] for h in history] == [None, None]
     answer = store.changed_since("tim_pair", between)
     assert (answer["changed"], answer["reason"]) == (None, "format_changed")
+
+
+def test_orthology_is_asked_by_name_and_states_only_what_oma_states(clients):
+    query = sabueso.KnowledgeQuery(
+        "P60174", comparator="uniprot:P52270", aspects=["orthology"]
+    )
+    assert query.options() == {"oma": {}}
+    packet = _packet(query, clients)
+    orthologs = packet.facts["orthology"]["subject"]["orthologs"]
+    assert "uniprot:Q4DV43" in {o["object_ref"] for o in orthologs}
+    # OMA maps P52270 to another strain's protein: nothing is joined for it, and OMA
+    # states no orthology between the two cards' own accessions.
+    assert packet.facts["orthology"]["comparator"]["orthologs"] == []
+    assert packet.facts["orthology"]["together"] == {"stated_orthologs": []}
+
+
+def test_packets_of_different_aspect_mappings_are_not_compared(packet):
+    older = packet.to_dict()
+    older["aspect_mapping"] = "packet_aspects@2"
+    assert packet.same_knowledge(sabueso.KnowledgePacket(older)) is None

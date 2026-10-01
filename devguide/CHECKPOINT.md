@@ -86,6 +86,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     joined through the chains UniProt states;
   - OMA's orthologs (#83): `oma={}` adds `ortholog_of`, only when OMA states the
     accession with an exact sequence match, with options `rel_type` and `taxa`;
+  - `packet_aspects@3` (#83, #88): KLIFS and GPCRdb in `identity`, `structures`,
+    `ligand_sites` and `sequence_features`, SAbDab in `structures`, and the
+    `orthology` aspect (OMA), asked only by name; packets of different mappings are
+    not compared;
   - local mirrors (#100, phase 2): `sabueso.mirrors` (install, status, update policies,
     remove, `using` with `mirror_first` or `offline`); BindingDB's monthly release as
     the first mirror (`MirrorBindingDBClient`), recorded as `access: mirror` with its
