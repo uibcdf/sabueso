@@ -25,11 +25,11 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     Windows × 3.11–3.14, and a clean public install on Python 3.14.
   - Zenodo archive: 10.5281/zenodo.23077926, verified to be identical to its tag; 0.7.0
     (10.5281/zenodo.23048186) and 0.6.0 (10.5281/zenodo.23038465) too.
-- **Card schema:** 0.3.9 (`schemas/card_schema_0.3.9.yaml`), published by 0.9.0. The next
-  additive change goes to a new version, 0.3.10.
+- **Card schema:** 0.3.10 (`schemas/card_schema_0.3.10.yaml`), current and not yet
+  released; 0.3.9 is the last published (0.9.0).
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
     0.3.9.
-  - The recorded shape of 0.3.9 is `schemas/card_shape_0.3.9.json`.
+  - The recorded shape of 0.3.10 is `schemas/card_shape_0.3.10.json`; 0.3.9's is fixed.
 - **In 0.8.0:**
   - an integrity fix for users of 0.7.0: gnomAD changes next to exons the canonical
     transcript lacks are no longer placed on canonical residues through UniProt's
@@ -99,6 +99,15 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - an unreadable 200 answer (a body that is not the JSON asked for) is asked again,
     HTTP 500 joins the retried statuses, and a card lists its build's retries
     (`quality.retries`, #97).
+- **Unreleased on main:**
+  - card schema 0.3.10 (#102): GTEx's tissue terms (`gtex=True`,
+    `annotations.tissue_terms`; UBERON, or EFO for a cell line), listed by the tissue
+    views as `tissue_terms` (`gtex_tissue_key@1`); UniProt's Ensembl transcripts per
+    isoform (`identifiers.ensembl_transcripts`);
+  - `isoform_exon_usage@2`: an isoform without exons says why
+    (`no_transcript_stated`, `transcript_not_in_gnomad`), and own bases say whether
+    every isoform's exons were known;
+  - the pext enrichment record counts its regions (it counted 0 since 0.8.0).
 - **Watched:** card and packet size with the default ceilings (#88).
 
 ## Package layout
@@ -152,12 +161,12 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 - **Next, in order:**
   1. Local mirrors in real work (#101): ChEMBL as a mirror, and builds from cached
      sources.
-  2. Tissues as UBERON terms, and isoforms gnomAD has no transcript for (#102).
-  3. Knowledge packets: detail levels and size, as real use asks (#71, #88).
+  2. Knowledge packets: detail levels and size, as real use asks (#71, #88), and
+     `packet_aspects@5` with GTEx's tissue terms in the biological context (#102).
 - **Last pilot run:** 0.9.0, 2026-10-01, from scratch on the published package, clean on
   the first attempt; #103 verified there and closed.
 - **Open issues, by kind:**
-  - released, open for a follow-up: #102 (UBERON), #100
+  - released, open for a follow-up: #100
     (archive and mirrors: next phases, #101), #98 (heavily studied targets), #92
     (literature: located mentions, own extraction), #91 (scientific operations), #88
     (default limits and size), #83 (source coverage: next wave), #71 (packets; contract

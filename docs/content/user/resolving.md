@@ -104,6 +104,7 @@ take is refused, never ignored.
 | `string={"required_score": 700}` | STRING functional associations |
 | `taxonomy=True` | NCBI Taxonomy ranks and ancestors of the organism |
 | `ncbi_gene=True` | NCBI Gene, for the identity audit of a resolution by name |
+| `gtex=True` | with `exon_usage=True`: the ontology term GTEx states for each tissue of gnomAD's pext (UBERON, or EFO for a cell line); the tissue views list them as `tissue_terms` |
 | `uniref=True` | the UniRef clusters UniProt places the entry in, and the other members of its UniRef90 cluster (`clustered_with`): related sequences of other strains or species, never the same entity |
 | `oma={}` | OMA's orthologs of the protein (`ortholog_of`), when OMA states the accession with an exact sequence match; options `rel_type` (`"1:1"`…) and `taxa` (NCBI taxon ids) |
 | `sabdab=True` | SAbDab's antibody structures of the protein: per antibody, its heavy and light chains and every antigen SAbDab assigns to it, where a chain UniProt states is the protein is one of them |

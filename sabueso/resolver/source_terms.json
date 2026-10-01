@@ -73,6 +73,16 @@
    "statement": "https://docs.gpcrdb.org/legal_notice.html",
    "reviewed": "2026-09-30"
   },
+  "GTEx": {
+   "registry_id": "gtex",
+   "licence": "FREE-WITH-ACKNOWLEDGEMENT",
+   "attribution": "The Genotype-Tissue Expression (GTEx) Project, GTEx Portal (https://gtexportal.org/)",
+   "statement": "https://gtexportal.org/home/documentationPage",
+   "reviewed": "2026-10-01",
+   "caveats": [
+    "Acknowledge the GTEx Portal and the date the data were obtained."
+   ]
+  },
   "InterPro": {
    "registry_id": "interpro",
    "licence": "CC0-1.0",

@@ -2,6 +2,9 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
+  - `0.3.10` is current, not yet released: `identifiers.ensembl_transcripts` (UniProt's
+    Ensembl transcripts per isoform) and `annotations.tissue_terms` (GTEx's ontology
+    term for each pext tissue), #102;
   - `0.3.9` is the schema of release 0.9.0: `identifiers.uniref` and `clustered_with`
     (UniProt's UniRef clusters, never identity, #103), and `quality.retries` (#97);
   - `0.3.8` is the schema of release 0.8.0: it records the ordering rule of a capped
@@ -469,12 +472,27 @@ A Relationship is first-class, traceable knowledge:
     `annotations.isoform_coding_exons`, per Ensembl transcript UniProt states an isoform
     for (its cross-reference) and gnomAD annotates: `isoform`, `transcript`,
     `transcript_version`, `assembly`, `chromosome`, `strand`, and `cds` (GRCh38 ranges,
-    as gnomAD states them). `Card.isoform_tissue_usage()` (`isoform_exon_usage@1`) gives
+    as gnomAD states them). `Card.isoform_tissue_usage()` (`isoform_exon_usage@2`) gives
     per isoform UniProt's tissue-specificity statements restricted to it
     (`source_metadata.molecule`), its own coding bases (in no other isoform's
     transcript) and their mean pext per tissue, and the `variable_regions`: runs of
     coding bases not every isoform includes, with the isoforms that include them and
-    their pext.
+    their pext. An isoform without known exons says why: `no_transcript_stated`
+    (UniProt states no Ensembl transcript for it), `transcript_not_in_gnomad`, or
+    `transcripts_not_recorded` (a card older than 0.3.10). Own bases are counted
+    against the isoforms whose exons are known; `own_bases_complete` and
+    `variable_regions_complete` say whether every isoform's were (`@1` did not say).
+  - Ensembl transcripts (added in #102, schema 0.3.10): `identifiers.ensembl_transcripts`,
+    UniProt's Ensembl cross-references, each `{transcript, protein, gene, isoform}`
+    (`isoform` when UniProt names the isoform the transcript encodes).
+  - tissue terms (added in #102, schema 0.3.10): `annotations.tissue_terms`, from GTEx
+    (`gtex=True`, with `exon_usage=True`), one item per GTEx tissue the card's pext
+    names: `gtex_id`, `name`, `tissue_site`, `ontology_id` (UBERON, or EFO for a cell
+    line) and `ontology_iri`, as GTEx states them for the release the pext states
+    (gtex_v10). The views join them to the pext's tissues by `gtex_tissue_key@1`
+    (GTEx's id in lower case, other characters as `_`) and list them as
+    `tissue_terms`. A term never replaces a tissue: GTEx gives the cerebellum and the
+    cerebellar hemisphere UBERON:0002037.
   - antibody complexes (added in #83, schema 0.3.8): `annotations.antibody_complexes`,
     one item per SAbDab antibody instance with an antigen that is a protein or peptide
     chain UniProt states is this protein in that PDB entry. Never joined by the antigen

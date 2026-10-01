@@ -10,7 +10,7 @@ from .quantities import field_node, quantity_columns, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
-CARD_SCHEMA_VERSION = "0.3.9"
+CARD_SCHEMA_VERSION = "0.3.10"
 
 
 def make_card_id(entity_type: str, subject_ref: str) -> str:
@@ -557,7 +557,8 @@ class Card:
     def variant_tissue_usage(self, threshold: float = 0.1) -> Dict[str, Any]:
         """Each population variant with the share of its gene's expression, per GTEx
         tissue, that includes its position (gnomAD's pext), under ``pext_at_variant@1``
-        (#102). Build the card with ``gnomad={}`` and ``exon_usage=True``."""
+        (#102). Build the card with ``gnomad={}`` and ``exon_usage=True``; with
+        ``gtex=True`` too, each tissue's ontology term (``tissue_terms``)."""
         from .tissue_usage import variant_tissue_usage_view
 
         return variant_tissue_usage_view(self, threshold)
@@ -573,7 +574,9 @@ class Card:
     def isoform_tissue_usage(self, threshold: float = 0.1) -> Dict[str, Any]:
         """Per UniProt isoform: UniProt's tissue-specificity statements restricted to
         it, and the tissues expressing its own coding bases (gnomAD's pext), under
-        ``isoform_exon_usage@1`` (#102). Build the card with ``exon_usage=True``."""
+        ``isoform_exon_usage@2`` (#102). An isoform without known exons says why, and
+        own bases say whether every isoform's exons were known. Build the card with
+        ``exon_usage=True``; with ``gtex=True`` too, each tissue's ontology term."""
         from .tissue_usage import isoform_tissue_usage_view
 
         return isoform_tissue_usage_view(self, threshold)

@@ -1757,3 +1757,37 @@ uibcdf/sabueso#100.
 - `reusing` is for user projects that repeat builds.
 - A run's archive is not shared: several sources' terms do not allow redistributing
   their responses.
+
+## Tissues as ontology terms, and isoforms whose exons are unknown (2026-10-01)
+uibcdf/sabueso#102.
+- **Tissue terms come from GTEx.** gnomAD's pext names GTEx tissues by GTEx's ids, in
+  lower case. GTEx states an ontology term for each tissue: UBERON, or EFO for a cell
+  line. `gtex=True` records GTEx's statement for the tissues the card's pext names
+  (`annotations.tissue_terms`). The views join the two ids by `gtex_tissue_key@1`
+  (lower case, other characters as `_`), which compares identifiers of one dataset,
+  never names. All 49 pext tissues match one GTEx v10 tissue each.
+- **A term never replaces a tissue.** GTEx gives the cerebellum and the cerebellar
+  hemisphere one term (UBERON:0002037). Grouping by term would merge two sampled
+  tissues, so the views keep each tissue and name its term.
+- **Packets do not carry tissue terms yet.** `packet_aspects@4` is published, and a new
+  mapping makes packets of the two mappings incomparable. Tissue terms join the
+  biological context with `packet_aspects@5`, together with what real packet use asks.
+- **Most isoforms without exons have no stated transcript.** On 20 human proteins, 64
+  isoforms had no exons. For 62, UniProt states no Ensembl transcript; Ensembl 116 maps
+  none of the four checked either. Only APP's isoforms 3 and 7 have transcripts
+  gnomAD's release does not annotate (newer than GENCODE 39). Sabueso does not align,
+  so the first stay without exons.
+- **The view says why, and what follows** (`isoform_exon_usage@2`):
+  - an isoform without exons is `no_transcript_stated`, `transcript_not_in_gnomad`
+    (with the transcripts) or `transcripts_not_recorded` (a card before 0.3.10). This
+    reads UniProt's own cross-references, now recorded
+    (`identifiers.ensembl_transcripts`);
+  - own bases are counted against the isoforms whose exons are known. When some are
+    not, a base counted as own may be shared with one of them: `own_bases_complete`
+    and `variable_regions_complete` are false. `@1` did not say so.
+- **Not done: exons from Ensembl for the two APP transcripts.** It would bring Ensembl
+  in for 2 of 64 isoforms. Proposed when a use needs it.
+- **A defect found along the way:** the pext enrichment record counted 0 regions since
+  0.8.0, because the field's name was shadowed by the enricher's. The knowledge state
+  was right (it counts the card's items); the record is right now.
+

@@ -18,6 +18,12 @@ The values are gnomAD's; nothing is stored. They come from isoform quantificatio
 adult post-mortem tissues (RSEM), as gnomAD warns: a region absent from every GTEx
 tissue may be developmental or annotated in error, and a low value is not proof that
 the change is harmless.
+
+When the card states GTEx's terms for the tissues (``gtex=True``,
+``annotations.tissue_terms``), both views add ``tissue_terms``: per tissue the pext
+names, the GTEx tissue and the ontology term GTEx states for it (UBERON, or EFO for a
+cell line), joined by ``gtex_tissue_key@1``. Tissues keep their own entries: two GTEx
+tissues can share a term.
 """
 
 from __future__ import annotations
@@ -29,7 +35,41 @@ from .relationship_store import make_derivation
 RULE = "pext_at_variant@1"
 REGIONS = "annotations.exon_usage_by_tissue"
 VARIANTS = "annotations.population_variants"
+TERMS = "annotations.tissue_terms"
+TRANSCRIPTS = "identifiers.ensembl_transcripts"
 DEFAULT_THRESHOLD = 0.1
+
+
+def tissue_terms(card: Any) -> Dict[str, Any] | None:
+    """Per tissue the card's pext names, GTEx's tissue and its ontology term
+    (``gtex_tissue_key@1``); None when the card states no GTEx terms."""
+    from sabueso.mappings.gtex import KEY_RULE, tissue_key
+
+    stated = (card.get(TERMS) or {}).get("value")
+    if not stated:
+        return None
+    by_key = {tissue_key(t.get("gtex_id") or ""): t for t in stated}
+    named = sorted(
+        {
+            t.get("tissue")
+            for r in (card.get(REGIONS) or {}).get("value") or []
+            for t in r.get("tissues") or []
+            if t.get("tissue")
+        }
+    )
+    return {
+        "terms": {
+            key: {
+                k: by_key[key][k]
+                for k in ("gtex_id", "name", "ontology_id")
+                if k in by_key[key]
+            }
+            for key in named
+            if key in by_key
+        },
+        "tissues_without_term": [key for key in named if key not in by_key],
+        "rule": make_derivation(KEY_RULE, inputs=[f"{REGIONS}.tissues", TERMS]),
+    }
 
 
 def _position(variant_id: str | None) -> Tuple[str, int] | None:
@@ -88,7 +128,7 @@ def variant_tissue_usage_view(
         }
         counts["in_region"] += 1
         items.append(item)
-    return {
+    out = {
         "items": items,
         "counts": counts,
         "rule": make_derivation(
@@ -97,9 +137,13 @@ def variant_tissue_usage_view(
             parameters={"threshold": threshold, "assembly": "GRCh38"},
         ),
     }
+    terms = tissue_terms(card)
+    if terms is not None:
+        out["tissue_terms"] = terms
+    return out
 
 
-ISOFORM_RULE = "isoform_exon_usage@1"
+ISOFORM_RULE = "isoform_exon_usage@2"
 EXONS = "annotations.isoform_coding_exons"
 ISOFORMS = "annotations.isoforms"
 TISSUE_TEXT = "annotations.tissue_specificity"
@@ -218,15 +262,27 @@ def isoform_tissue_usage_view(
     card: Any, threshold: float = DEFAULT_THRESHOLD
 ) -> Dict[str, Any]:
     """Per UniProt isoform: what UniProt states about its tissues, and where its own
-    coding bases are expressed (gnomAD's pext), under ``isoform_exon_usage@1``.
+    coding bases are expressed (gnomAD's pext), under ``isoform_exon_usage@2``.
 
     An isoform's own coding bases are the CDS bases (GRCh38) of the transcripts UniProt
     states for it that lie in no transcript UniProt states for another isoform. Their
     pext per tissue is the mean over those bases, each base taking the value of the
     pext region that contains it; bases outside every region do not count, and their
     number is reported. An isoform without own coding bases shares all its coding
-    sequence with others (``no_own_coding_bases``); without a transcript gnomAD
-    annotates, ``no_transcript_in_gnomad``.
+    sequence with others (``no_own_coding_bases``).
+
+    An isoform whose exons are not known says why (``identifiers.ensembl_transcripts``,
+    UniProt's cross-references):
+    - ``no_transcript_stated``: UniProt states no Ensembl transcript for it, so no
+      source gives its genomic structure (Sabueso does not align);
+    - ``transcript_not_in_gnomad``: UniProt states transcripts (listed) that gnomAD's
+      release does not annotate;
+    - ``transcripts_not_recorded``: the card was built before UniProt's transcripts
+      were recorded (schema 0.3.10).
+    Own bases are counted against the isoforms whose exons are known. When some are
+    not (``isoforms_without_exons``), a base counted as own may be shared with one of
+    them: ``own_bases_complete`` is then false, and so is
+    ``variable_regions_complete``.
 
     Isoforms built by combining exons (tau) rarely own any base, so the view also gives
     the ``variable_regions``: the coding bases not every isoform includes, as runs
@@ -242,6 +298,15 @@ def isoform_tissue_usage_view(
     for item in exons:
         cds_of.setdefault(item["isoform"], []).extend(item.get("cds") or [])
         transcripts_of.setdefault(item["isoform"], []).append(item["transcript"])
+    stated = card.get(TRANSCRIPTS)
+    stated_for: Dict[str, List[str]] = {}
+    for x in (stated or {}).get("value") or []:
+        if x.get("isoform"):
+            stated_for.setdefault(x["isoform"], []).append(x["transcript"])
+    without = [
+        i.get("isoform_id") for i in isoforms if i.get("isoform_id") not in cds_of
+    ]
+    complete = not without
     items = []
     for isoform in isoforms:
         iso_id = isoform.get("isoform_id")
@@ -252,13 +317,20 @@ def isoform_tissue_usage_view(
             "uniprot_tissue_specificity": texts.get(iso_id, []),
         }
         if iso_id not in cds_of:
-            entry["pext"] = {"basis": "no_transcript_in_gnomad"}
+            if stated is None:
+                entry["pext"] = {"basis": "transcripts_not_recorded"}
+            elif iso_id in stated_for:
+                entry["pext"] = {"basis": "transcript_not_in_gnomad"}
+                entry["transcripts"] = sorted(stated_for[iso_id])
+            else:
+                entry["pext"] = {"basis": "no_transcript_stated"}
             items.append(entry)
             continue
         others = [r for k, v in cds_of.items() if k != iso_id for r in v]
         own = _minus(cds_of[iso_id], others)
         entry["transcripts"] = sorted(transcripts_of[iso_id])
         entry["own_coding_bases"] = sum(e - s + 1 for s, e in own)
+        entry["own_bases_complete"] = complete
         if not own:
             entry["pext"] = {"basis": "no_own_coding_bases"}
             items.append(entry)
@@ -281,13 +353,15 @@ def isoform_tissue_usage_view(
                 else {"basis": "outside_pext_regions"},
             }
         )
-    return {
+    out = {
         "items": items,
+        "isoforms_without_exons": without,
         "variable_regions": variable,
+        "variable_regions_complete": complete,
         "entry_tissue_specificity": texts.get(None, []),
         "rule": make_derivation(
             ISOFORM_RULE,
-            inputs=[EXONS, REGIONS, ISOFORMS, TISSUE_TEXT],
+            inputs=[EXONS, REGIONS, ISOFORMS, TISSUE_TEXT, TRANSCRIPTS],
             parameters={
                 "threshold": threshold,
                 "assembly": "GRCh38",
@@ -296,3 +370,7 @@ def isoform_tissue_usage_view(
             },
         ),
     }
+    terms = tissue_terms(card)
+    if terms is not None:
+        out["tissue_terms"] = terms
+    return out

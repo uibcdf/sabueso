@@ -144,7 +144,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | 3. TopoMT: catalytic residues, mutations as structural features | partial (positional features, ligand and family sites, interface mutations from SKEMPI, #83; no TopoMT contract yet) |
 | 4. PharmacophoreMT: deck of ligands | partial (ligand decks; no exchange format agreed) |
 | 5. Commercial availability of peptides | pending |
-| 6. Tissue-specific isoforms | partial (tissue specificity; UniProt isoforms and alternative sequences, #80; AlphaFold isoform models; the tissues of each variant and isoform from gnomAD's pext, #102; tissues not yet UBERON terms; isoform sequences not fetched) |
+| 6. Tissue-specific isoforms | partial (tissue specificity; UniProt isoforms and alternative sequences, #80; AlphaFold isoform models; the tissues of each variant and isoform from gnomAD's pext, with GTEx's UBERON terms, #102; isoform sequences not fetched) |
 | 7. Visualization (MolSysViewer) | partial (interfaces, mutations, sites, secondary structure from UniProt and per chain from RCSB, #80; no contract) |
 | 8. Clinical trials of ligands | done for the trials ChEMBL's indications cite (#81); a trial is never matched to a molecule by name |
 | 9. Disease associations; targets of a disease | done on main: protein → diseases from UniProt, DISEASES, Open Targets, Orphanet and ClinVar, grouped through MONDO (#82, #90); disease → targets and → drugs as decks (#90) |
@@ -234,9 +234,11 @@ In order:
      in use; the Chemical Probes Portal, SureChEMBL, OPM's own API, ESM Atlas and
      Ensembl deferred with their reasons; #85 closed through gnomAD's canonical transcript
      (follow-up #102). iPPI-DB, VEuPathDB and TDR Targets wait on #84;
-   - isoforms and variants by tissue (#102): variants and isoforms done
-     (gnomAD's pext, `pext_at_variant@1`, `isoform_exon_usage@1`); tissues as UBERON
-     terms, and isoforms gnomAD has no transcript for, remain;
+   - isoforms and variants by tissue (#102): done on main (gnomAD's pext,
+     `pext_at_variant@1`, `isoform_exon_usage@2`, tissues as GTEx's UBERON and EFO
+     terms). Isoforms without a stated transcript stay without exons (Sabueso does not
+     align); exons from Ensembl for the few transcripts gnomAD lacks, when a use needs
+     them;
    - local mirrors in real work (#101): ChEMBL as a mirror, and builds from cached
      sources;
    - knowledge packets: real use decides their aspects and size (#71, #88), aligned

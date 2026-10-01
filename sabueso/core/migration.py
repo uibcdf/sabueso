@@ -277,6 +277,19 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
         # only when the build asked a request again, so its absence is no gap (like
         # quality.retrievals, #100).
     ],
+    # UniProt's Ensembl transcripts per isoform, and GTEx's tissue terms (#102).
+    "0.3.10": [
+        {
+            "path": "identifiers.ensembl_transcripts",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "annotations.tissue_terms",
+            "filled_by": "gtex",
+            "entity_types": ("protein",),
+        },
+    ],
 }
 
 #: Qualifiers every relationship of their predicate has when fetched with the schema

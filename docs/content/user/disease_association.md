@@ -140,6 +140,36 @@ Isoforms built by combining exons, such as tau's, rarely own any base. For them,
 `variable_regions` lists each run of coding bases that not every isoform includes,
 with the isoforms that include it and its pext.
 
+An isoform whose exons are not known says why:
+
+- `no_transcript_stated`: UniProt states no Ensembl transcript for it. Sabueso does
+  not align sequences, so its genomic structure stays unknown. This is the common
+  case, 12 of CD44's 19 isoforms. Ensembl (release 116) maps none of the four such
+  isoforms checked to a transcript either (of CD44, PKM, CACNA1C and APP).
+- `transcript_not_in_gnomad`: UniProt states a transcript newer than gnomAD's
+  release (APP's isoforms 3 and 7).
+
+Own bases are counted against the isoforms whose exons are known. When some are not,
+a base counted as one isoform's own may be shared with one of them, so
+`own_bases_complete` and `variable_regions_complete` are false. PKM's isoform 3 has no
+known exons, so M1's and M2's own exons carry that caveat.
+
+### Tissues as ontology terms
+
+`gtex=True`, with `exon_usage=True`, adds the term GTEx states for each tissue the pext
+names: UBERON for a tissue, or EFO for a cell line (`annotations.tissue_terms`). Both
+views then list `tissue_terms`, joined by GTEx's tissue id (`gtex_tissue_key@1`):
+
+```python
+card, _ = sabueso.resolve("P14618", exon_usage=True, gtex=True)
+view = card.isoform_tissue_usage()
+view["tissue_terms"]["terms"]["muscle_skeletal"]
+# {'gtex_id': 'Muscle_Skeletal', 'name': 'Muscle - Skeletal', 'ontology_id': 'UBERON:0011907'}
+```
+
+A term never replaces a tissue. GTEx gives the cerebellum and the cerebellar
+hemisphere the same term, UBERON:0002037, and they stay two tissues.
+
 The values come from isoform quantifications of adult tissues, so a low value is not
 proof that a change is harmless. By default every variant, up to 5000 (`{"limit": n}` asks for fewer); a cut is reported.
 

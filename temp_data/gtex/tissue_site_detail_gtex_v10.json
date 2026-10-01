@@ -1,0 +1,382 @@
+{
+ "data": [
+  {
+   "tissueSiteDetailId": "Adipose_Subcutaneous",
+   "tissueSiteDetail": "Adipose - Subcutaneous",
+   "tissueSite": "Adipose Tissue",
+   "ontologyId": "UBERON:0002190",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0002190"
+  },
+  {
+   "tissueSiteDetailId": "Adipose_Visceral_Omentum",
+   "tissueSiteDetail": "Adipose - Visceral (Omentum)",
+   "tissueSite": "Adipose Tissue",
+   "ontologyId": "UBERON:0010414",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0010414"
+  },
+  {
+   "tissueSiteDetailId": "Adrenal_Gland",
+   "tissueSiteDetail": "Adrenal Gland",
+   "tissueSite": "Adrenal Gland",
+   "ontologyId": "UBERON:0002369",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0002369"
+  },
+  {
+   "tissueSiteDetailId": "Artery_Aorta",
+   "tissueSiteDetail": "Artery - Aorta",
+   "tissueSite": "Blood Vessel",
+   "ontologyId": "UBERON:0001496",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001496"
+  },
+  {
+   "tissueSiteDetailId": "Artery_Coronary",
+   "tissueSiteDetail": "Artery - Coronary",
+   "tissueSite": "Blood Vessel",
+   "ontologyId": "UBERON:0001621",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001621"
+  },
+  {
+   "tissueSiteDetailId": "Artery_Tibial",
+   "tissueSiteDetail": "Artery - Tibial",
+   "tissueSite": "Blood Vessel",
+   "ontologyId": "UBERON:0007610",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0007610"
+  },
+  {
+   "tissueSiteDetailId": "Bladder",
+   "tissueSiteDetail": "Bladder",
+   "tissueSite": "Bladder",
+   "ontologyId": "UBERON:0001255",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001255"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Amygdala",
+   "tissueSiteDetail": "Brain - Amygdala",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0001876",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001876"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Anterior_cingulate_cortex_BA24",
+   "tissueSiteDetail": "Brain - Anterior qcingulate cortex (BA24)",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0009835",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0009835"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Caudate_basal_ganglia",
+   "tissueSiteDetail": "Brain - Caudate (basal ganglia)",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0001873",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001873"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Cerebellar_Hemisphere",
+   "tissueSiteDetail": "Brain - Cerebellar Hemisphere",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0002037",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0002037"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Cerebellum",
+   "tissueSiteDetail": "Brain - Cerebellum",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0002037",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0002037"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Cortex",
+   "tissueSiteDetail": "Brain - Cortex",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0001870",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001870"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Frontal_Cortex_BA9",
+   "tissueSiteDetail": "Brain - Frontal Cortex (BA9)",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0009834",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0009834"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Hippocampus",
+   "tissueSiteDetail": "Brain - Hippocampus",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0001954",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001954"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Hypothalamus",
+   "tissueSiteDetail": "Brain - Hypothalamus",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0001898",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001898"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Nucleus_accumbens_basal_ganglia",
+   "tissueSiteDetail": "Brain - Nucleus accumbens (basal ganglia)",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0001882",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001882"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Putamen_basal_ganglia",
+   "tissueSiteDetail": "Brain - Putamen (basal ganglia)",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0001874",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001874"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Spinal_cord_cervical_c-1",
+   "tissueSiteDetail": "Brain - Spinal cord (cervical c-1)",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0006469",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0006469"
+  },
+  {
+   "tissueSiteDetailId": "Brain_Substantia_nigra",
+   "tissueSiteDetail": "Brain - Substantia nigra",
+   "tissueSite": "Brain",
+   "ontologyId": "UBERON:0002038",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0002038"
+  },
+  {
+   "tissueSiteDetailId": "Breast_Mammary_Tissue",
+   "tissueSiteDetail": "Breast - Mammary Tissue",
+   "tissueSite": "Breast",
+   "ontologyId": "UBERON:0008367",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0008367"
+  },
+  {
+   "tissueSiteDetailId": "Cells_Cultured_fibroblasts",
+   "tissueSiteDetail": "Cells - Cultured fibroblasts",
+   "tissueSite": "Skin",
+   "ontologyId": "EFO:0002009",
+   "ontologyIri": "http://purl.obolibrary.org/obo/EFO_0002009"
+  },
+  {
+   "tissueSiteDetailId": "Cells_EBV-transformed_lymphocytes",
+   "tissueSiteDetail": "Cells - EBV-transformed lymphocytes",
+   "tissueSite": "Blood Vessel",
+   "ontologyId": "EFO:0000572",
+   "ontologyIri": "http://purl.obolibrary.org/obo/EFO_0000572"
+  },
+  {
+   "tissueSiteDetailId": "Cervix_Ectocervix",
+   "tissueSiteDetail": "Cervix - Ectocervix",
+   "tissueSite": "Cervix Uteri",
+   "ontologyId": "UBERON:0012249",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0012249"
+  },
+  {
+   "tissueSiteDetailId": "Cervix_Endocervix",
+   "tissueSiteDetail": "Cervix - Endocervix",
+   "tissueSite": "Cervix Uteri",
+   "ontologyId": "UBERON:0000458",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0000458"
+  },
+  {
+   "tissueSiteDetailId": "Colon_Sigmoid",
+   "tissueSiteDetail": "Colon - Sigmoid",
+   "tissueSite": "Colon",
+   "ontologyId": "UBERON:0001159",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001159"
+  },
+  {
+   "tissueSiteDetailId": "Colon_Transverse",
+   "tissueSiteDetail": "Colon - Transverse",
+   "tissueSite": "Colon",
+   "ontologyId": "UBERON:0001157",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001157"
+  },
+  {
+   "tissueSiteDetailId": "Esophagus_Gastroesophageal_Junction",
+   "tissueSiteDetail": "Esophagus - Gastroesophageal Junction",
+   "tissueSite": "Esophagus",
+   "ontologyId": "UBERON:0004550",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0004550"
+  },
+  {
+   "tissueSiteDetailId": "Esophagus_Mucosa",
+   "tissueSiteDetail": "Esophagus - Mucosa",
+   "tissueSite": "Esophagus",
+   "ontologyId": "UBERON:0006920",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0006920"
+  },
+  {
+   "tissueSiteDetailId": "Esophagus_Muscularis",
+   "tissueSiteDetail": "Esophagus - Muscularis",
+   "tissueSite": "Esophagus",
+   "ontologyId": "UBERON:0004648",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0004648"
+  },
+  {
+   "tissueSiteDetailId": "Fallopian_Tube",
+   "tissueSiteDetail": "Fallopian Tube",
+   "tissueSite": "Fallopian Tube",
+   "ontologyId": "UBERON:0003889",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0003889"
+  },
+  {
+   "tissueSiteDetailId": "Heart_Atrial_Appendage",
+   "tissueSiteDetail": "Heart - Atrial Appendage",
+   "tissueSite": "Heart",
+   "ontologyId": "UBERON:0006631",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0006631"
+  },
+  {
+   "tissueSiteDetailId": "Heart_Left_Ventricle",
+   "tissueSiteDetail": "Heart - Left Ventricle",
+   "tissueSite": "Heart",
+   "ontologyId": "UBERON:0006566",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0006566"
+  },
+  {
+   "tissueSiteDetailId": "Kidney_Cortex",
+   "tissueSiteDetail": "Kidney - Cortex",
+   "tissueSite": "Kidney",
+   "ontologyId": "UBERON:0001225",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001225"
+  },
+  {
+   "tissueSiteDetailId": "Kidney_Medulla",
+   "tissueSiteDetail": "Kidney - Medulla",
+   "tissueSite": "Kidney",
+   "ontologyId": "UBERON:0001293",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001293"
+  },
+  {
+   "tissueSiteDetailId": "Liver",
+   "tissueSiteDetail": "Liver",
+   "tissueSite": "Liver",
+   "ontologyId": "UBERON:0001114",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001114"
+  },
+  {
+   "tissueSiteDetailId": "Lung",
+   "tissueSiteDetail": "Lung",
+   "tissueSite": "Lung",
+   "ontologyId": "UBERON:0008952",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0008952"
+  },
+  {
+   "tissueSiteDetailId": "Minor_Salivary_Gland",
+   "tissueSiteDetail": "Minor Salivary Gland",
+   "tissueSite": "Salivary Gland",
+   "ontologyId": "UBERON:0006330",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0006330"
+  },
+  {
+   "tissueSiteDetailId": "Muscle_Skeletal",
+   "tissueSiteDetail": "Muscle - Skeletal",
+   "tissueSite": "Muscle",
+   "ontologyId": "UBERON:0011907",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0011907"
+  },
+  {
+   "tissueSiteDetailId": "Nerve_Tibial",
+   "tissueSiteDetail": "Nerve - Tibial",
+   "tissueSite": "Nerve",
+   "ontologyId": "UBERON:0001323",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001323"
+  },
+  {
+   "tissueSiteDetailId": "Ovary",
+   "tissueSiteDetail": "Ovary",
+   "tissueSite": "Ovary",
+   "ontologyId": "UBERON:0000992",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0000992"
+  },
+  {
+   "tissueSiteDetailId": "Pancreas",
+   "tissueSiteDetail": "Pancreas",
+   "tissueSite": "Pancreas",
+   "ontologyId": "UBERON:0001150",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001150"
+  },
+  {
+   "tissueSiteDetailId": "Pituitary",
+   "tissueSiteDetail": "Pituitary",
+   "tissueSite": "Pituitary",
+   "ontologyId": "UBERON:0000007",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0000007"
+  },
+  {
+   "tissueSiteDetailId": "Prostate",
+   "tissueSiteDetail": "Prostate",
+   "tissueSite": "Prostate",
+   "ontologyId": "UBERON:0002367",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0002367"
+  },
+  {
+   "tissueSiteDetailId": "Skin_Not_Sun_Exposed_Suprapubic",
+   "tissueSiteDetail": "Skin - Not Sun Exposed (Suprapubic)",
+   "tissueSite": "Skin",
+   "ontologyId": "UBERON:0036149",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0036149"
+  },
+  {
+   "tissueSiteDetailId": "Skin_Sun_Exposed_Lower_leg",
+   "tissueSiteDetail": "Skin - Sun Exposed (Lower leg)",
+   "tissueSite": "Skin",
+   "ontologyId": "UBERON:0004264",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0004264"
+  },
+  {
+   "tissueSiteDetailId": "Small_Intestine_Terminal_Ileum",
+   "tissueSiteDetail": "Small Intestine - Terminal Ileum",
+   "tissueSite": "Small Intestine",
+   "ontologyId": "UBERON:0001211",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0001211"
+  },
+  {
+   "tissueSiteDetailId": "Spleen",
+   "tissueSiteDetail": "Spleen",
+   "tissueSite": "Spleen",
+   "ontologyId": "UBERON:0002106",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0002106"
+  },
+  {
+   "tissueSiteDetailId": "Stomach",
+   "tissueSiteDetail": "Stomach",
+   "tissueSite": "Stomach",
+   "ontologyId": "UBERON:0000945",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0000945"
+  },
+  {
+   "tissueSiteDetailId": "Testis",
+   "tissueSiteDetail": "Testis",
+   "tissueSite": "Testis",
+   "ontologyId": "UBERON:0000473",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0000473"
+  },
+  {
+   "tissueSiteDetailId": "Thyroid",
+   "tissueSiteDetail": "Thyroid",
+   "tissueSite": "Thyroid",
+   "ontologyId": "UBERON:0002046",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0002046"
+  },
+  {
+   "tissueSiteDetailId": "Uterus",
+   "tissueSiteDetail": "Uterus",
+   "tissueSite": "Uterus",
+   "ontologyId": "UBERON:0000995",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0000995"
+  },
+  {
+   "tissueSiteDetailId": "Vagina",
+   "tissueSiteDetail": "Vagina",
+   "tissueSite": "Vagina",
+   "ontologyId": "UBERON:0000996",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0000996"
+  },
+  {
+   "tissueSiteDetailId": "Whole_Blood",
+   "tissueSiteDetail": "Whole Blood",
+   "tissueSite": "Blood",
+   "ontologyId": "UBERON:0013756",
+   "ontologyIri": "http://purl.obolibrary.org/obo/UBERON_0013756"
+  }
+ ]
+}

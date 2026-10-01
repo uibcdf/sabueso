@@ -7,7 +7,7 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 38, evaluating 16, deferred 28, retired 3, out of scope 13.
+Summary: in use 39, evaluating 16, deferred 28, retired 3, out of scope 13.
 
 ## In use
 
@@ -40,6 +40,7 @@ Summary: in use 38, evaluating 16, deferred 28, retired 3, out of scope 13.
 | [Europe PMC](https://europepmc.org/) | Literature and text mining | REST search (ACCESSION_ID, cursor paging), no key, when resolve(..., europepmc={}) | EMBL-EBI terms of use: no restrictions of its own, attribution expected; each article keeps its licence (Sabueso keeps ids and bibliographic data, not text) | 2026-09-29 |
 | [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/) | Target validation, genetics and functional networks | E-utilities (einfo, esearch by gene id, esummary), optional NCBI key, when resolve(..., clinvar={}) | Freely available; ClinVar asks to be credited as the source. Not for diagnostic use without review by a genetics professional. | 2026-09-25 |
 | [gnomAD](https://gnomad.broadinstitute.org/) | Target validation, genetics and functional networks | GraphQL API (dataset gnomad_r4; the API states no finer release), no key, when resolve(..., gnomad={}); and the gene's pext (GTEx v10, GRCh38) when resolve(..., exon_usage=True) (#102) | CC0 1.0 (core data; some annotations, not read, carry other terms) | 2026-09-25 |
+| [GTEx Portal (tissues)](https://gtexportal.org/) | Target validation, genetics and functional networks | Portal API v2 (dataset/tissueSiteDetail, one request per release), no key, when resolve(..., gtex=True) with exon_usage=True | GTEx open-access data: free to use, with acknowledgement of the GTEx Portal (custom permissive terms) | 2026-10-01 |
 | [SKEMPI 2.0](https://life.bsc.es/pid/skempi2/) | Protein–protein interactions and structural modulation | The whole CSV file (1.6 MB, database version 2.0, its SHA-256 recorded), downloaded once per process and indexed by PDB entry, when resolve(..., skempi=True) | CC BY 4.0 (the site's terms of download and use; cite Jankauskaitė et al. 2019) | 2026-09-25 |
 | [KLIFS](https://klifs.net/) | Binding sites, cavities and specialised families | REST API (api_v2), no key: the kinase list once per process, then per kinase its information, its structures and one structure's pocket residues, when resolve(..., klifs={}) | No formal licence found (2026-09-30); the FAQ states that all KLIFS data is freely available and open, for academia and industry, and asks to be cited. The earlier 'CC BY 4.0' could not be confirmed. | 2026-09-25 |
 | [GPCRdb](https://gpcrdb.org/) | Binding sites, cavities and specialised families | REST services, no key: the receptor by UniProt accession, its residues and its structures (three requests), when resolve(..., gpcrdb={}) | CC BY 4.0 (the data, as the legal notice at docs.gpcrdb.org states; the code is Apache 2.0) | 2026-09-25 |

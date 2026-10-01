@@ -276,14 +276,21 @@
 - **gnomAD's rate limit.** The service answers HTTP 429 after bursts (about ten
   requests a minute sustained). Sabueso retries with backoff. A build that asks many
   genes in a row may still see errors, recorded as `error`, never as absence.
+- **Tissue terms follow the pext's GTEx release** (#102). GTEx is asked for the release
+  gnomAD's pext states (`gtex_v10`). If a later pext uses a release whose tissue ids
+  change, the join (`gtex_tissue_key@1`) fails for those tissues; they are listed as
+  `tissues_not_in_gtex` in the record and `tissues_without_term` in the views, never
+  given a term by name.
 
 ## Open Questions
 - **Which isoforms, and which variants, are tissue-specific?** (#102; a need the
   maintainers recorded on 2026-09-30. **Variants: answered on 2026-10-01** by gnomAD's
   pext and `Card.variant_tissue_usage()`, `pext_at_variant@1`. Isoforms: answered the
   same day by `Card.isoform_tissue_usage()`, `isoform_exon_usage@1`, with UniProt's
-  statements restricted to each isoform. Still open: tissues as UBERON terms, and
-  isoforms whose transcripts gnomAD does not annotate.) A card states a protein's isoforms and places
+  statements restricted to each isoform. Tissues as GTEx's UBERON terms, and isoforms
+  without exons explained, on main (`isoform_exon_usage@2`). What remains: most
+  isoforms without exons have no transcript any source states, so their tissues stay
+  unknown.) A card states a protein's isoforms and places
   each population variant on the canonical isoform, or says why not
   (`isoform_specific_position`, `not_coding_on_canonical`, `transcript_not_canonical`).
   It does not say where each isoform is expressed. So it cannot tell a change that

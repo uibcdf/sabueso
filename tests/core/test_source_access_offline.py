@@ -19,6 +19,7 @@ from sabueso.tools.db import (
     diseases,
     gnomad,
     gpcrdb,
+    gtex,
     interpro,
     klifs,
     medgen,
@@ -145,6 +146,9 @@ CALLS = {
     ),
     "oma.get_orthologs": lambda: oma.get_orthologs(
         "P60174", client=oma.FixtureOMAClient("temp_data")
+    ),
+    "gtex.get_tissues": lambda: gtex.get_tissues(
+        "gtex_v10", client=gtex.FixtureGTExClient("temp_data")
     ),
     "uniref.get_clusters": lambda: uniref.get_clusters(
         "P52270", client=uniref.FixtureUniRefClient("temp_data")

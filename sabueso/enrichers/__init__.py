@@ -245,6 +245,7 @@ def _registered() -> List[Enricher]:
         europepmc,
         gnomad,
         gpcrdb,
+        gtex,
         interpro,
         klifs,
         medgen,
@@ -275,6 +276,7 @@ def _registered() -> List[Enricher]:
         reactome.ENRICHER,
         gnomad.ENRICHER,
         gnomad.PEXT,
+        gtex.ENRICHER,  # after the pext: it asks for the tissues the pext names
         clinvar.ENRICHER,
         skempi.ENRICHER,
         sabdab.ENRICHER,

@@ -390,6 +390,18 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: `identifiers.uniref`, `relationships.clustered_with`
 - **Notes**: a cluster is UniProt's statement of similarity, never identity; the members stay other entities. Licence as UniProtKB (CC BY 4.0).
 
+### GTEx — the ontology terms of its tissues
+- **Status**: implemented as an enricher (`gtex=True`, with `exon_usage=True`; #102), card schema 0.3.10
+- **Access**: GTEx Portal API v2, `dataset/tissueSiteDetail` (`OnlineGTExClient`), one request per release, no key; the release is the one gnomAD's pext states (`gnomad_r4 pext (GTEx v10)` → `gtex_v10`); saved answer in `temp_data/gtex/`; `tools.db.gtex.get_tissues`
+- **Quality**: green, verified live (2026-10-01): the 49 tissues of the pext of PKM, APP and CD44 each match one GTEx v10 tissue (`gtex_tissue_key@1`), none without a term. GTEx v10 states 54 tissues; the 5 the pext does not name (bladder, cervix, fallopian tube, kidney medulla) are not kept.
+- **Coverage**: `annotations.tissue_terms` (`gtex_id`, `name`, `tissue_site`, `ontology_id`, `ontology_iri`); the tissue views list them as `tissue_terms`
+- **Notes**:
+  - Terms are GTEx's: UBERON for tissues, EFO for the two cell lines (cultured fibroblasts EFO:0002009, EBV-transformed lymphocytes EFO:0000572).
+  - Two GTEx tissues share UBERON:0002037 (cerebellum, cerebellar hemisphere); a term never replaces the tissue.
+  - Names are kept as GTEx states them, typos included ("Anterior qcingulate cortex (BA24)").
+  - GTEx's transcript expression is not used (#102: its short-read quantification inverts PKM's M1/M2 biology).
+  - Terms: GTEx open-access data, free to use with acknowledgement of the GTEx Portal.
+
 ### OMA — orthologs
 - **Status**: implemented as an enricher (`oma={}`, #83), card schema 0.3.8
 - **Access**: REST API, no key (`OnlineOMAClient`): the accession's cross-references, its orthologs (one request), and UniProt's accessions for the orthologs' Swiss-Prot entry names (100 per request); saved answers in `temp_data/oma/`; `tools.db.oma.get_orthologs`

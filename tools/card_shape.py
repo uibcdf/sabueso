@@ -84,6 +84,7 @@ def fixture_cards() -> List[dict]:
     from sabueso.tools.db.diseases import FixtureDISEASESClient
     from sabueso.tools.db.europepmc import FixtureEuropePMCClient
     from sabueso.tools.db.gnomad import FixtureGnomADClient
+    from sabueso.tools.db.gtex import FixtureGTExClient
     from sabueso.tools.db.interpro import FixtureInterProClient
     from sabueso.tools.db.medgen import FixtureMedGenClient
     from sabueso.tools.db.mondo import FixtureMONDOClient
@@ -157,6 +158,8 @@ def fixture_cards() -> List[dict]:
             gnomad={},
             exon_usage=True,  # gnomAD's pext (0.3.8, #102)
             gnomad_client=FixtureGnomADClient(data),
+            gtex=True,  # GTEx's tissue terms (0.3.10, #102)
+            gtex_client=FixtureGTExClient(data),
             medgen=True,
             medgen_client=FixtureMedGenClient(data),
             disease_identity=True,

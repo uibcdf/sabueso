@@ -98,6 +98,11 @@ LICENCES: Dict[str, Dict[str, Any]] = {
         "share_alike": True,
     },
     "MIT": {"name": "MIT", "attribution": "attribution", "share_alike": False},
+    "FREE-WITH-ACKNOWLEDGEMENT": {
+        "name": "free to use, with acknowledgement of the source",
+        "attribution": "attribution",
+        "share_alike": False,
+    },
     "CC-BY-NC-4.0": {
         "name": "CC BY-NC 4.0",
         "attribution": "attribution",

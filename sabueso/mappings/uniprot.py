@@ -50,6 +50,7 @@ STATED_FIELDS = frozenset(
         *_FEATURES.values(),
         "identifiers.uniprot",
         "identifiers.gene_loci",
+        "identifiers.ensembl_transcripts",
         "names.canonical_name",
         "names.synonyms",
         "names.abbreviations",
@@ -620,6 +621,23 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         if locus and (locus, None) not in loci:
             loci.append((locus, None))
     assert_list("identifiers.gene_loci", loci, fields)
+
+    # the Ensembl transcripts UniProt states, and the isoform each encodes (#102)
+    transcripts = []
+    for xref in uniprot_json.get("uniProtKBCrossReferences", []) or []:
+        if xref.get("database") != "Ensembl" or not xref.get("id"):
+            continue
+        props = {p.get("key"): p.get("value") for p in xref.get("properties") or []}
+        item = {
+            "transcript": xref["id"],
+            "protein": props.get("ProteinId"),
+            "gene": props.get("GeneId"),
+            "isoform": xref.get("isoformId"),
+        }
+        item = {k: v for k, v in item.items() if v}
+        if (item, None) not in transcripts:
+            transcripts.append((item, None))
+    assert_list("identifiers.ensembl_transcripts", transcripts, fields)
 
     # sequence
     sequence = uniprot_json.get("sequence", {}) or {}

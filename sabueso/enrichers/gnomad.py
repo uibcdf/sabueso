@@ -225,14 +225,15 @@ class GnomADPext(Enricher):
         return mapped, {
             "status": "added",
             "version": response.get("version"),
-            "count": len(mapped["fields"].get(PEXT, [])),
+            "count": len(mapped["fields"].get(PEXT_FIELD, [])),
             "flags": (response["record"].get("pext") or {}).get("flags") or [],
             "isoform_transcripts": len(listed),
             "isoform_transcripts_not_in_dataset": len(set(isoform_of) - listed),
         }
 
 
-PEXT = "annotations.exon_usage_by_tissue"
+# The field, not the enricher (PEXT below): the record counted nothing until 0.9.0.
+PEXT_FIELD = "annotations.exon_usage_by_tissue"
 EXONS = "annotations.isoform_coding_exons"
 
 

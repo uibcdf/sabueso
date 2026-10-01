@@ -350,12 +350,16 @@ def test_each_isoform_takes_the_pext_of_its_own_coding_bases(pext_card):
     exons = pext_card.get("annotations.isoform_coding_exons")["value"]
     assert {e["isoform"] for e in exons} == {"P60174-1", "P60174-3", "P60174-4"}
     view = pext_card.isoform_tissue_usage()
-    assert view["rule"]["rule"] == "isoform_exon_usage@1"
+    assert view["rule"]["rule"] == "isoform_exon_usage@2"
+    # Every isoform's exons are known, so own bases are counted against all of them.
+    assert view["isoforms_without_exons"] == []
+    assert view["variable_regions_complete"] is True
     by_id = {i["isoform"]: i for i in view["items"]}
     # The canonical isoform shares every coding base with isoform 3.
     assert by_id["P60174-1"]["pext"] == {"basis": "no_own_coding_bases"}
     own = by_id["P60174-3"]
     assert own["own_coding_bases"] == 111
+    assert own["own_bases_complete"] is True
     assert own["pext"]["at_or_above_threshold"] == ["testis"]
     (region,) = [r for r in view["variable_regions"] if r["isoforms"] == ["P60174-3"]]
     assert region["pext"]["max"]["tissue"] == "testis"
@@ -418,4 +422,75 @@ def test_uniprot_statements_restricted_to_an_isoform_are_kept_with_it():
     ] == ["SA_1"]
     assert by_id["X-2"]["uniprot_tissue_specificity"] == []
     assert [s["text"] for s in view["entry_tissue_specificity"]] == ["Ubiquitous"]
-    assert by_id["X-1"]["pext"] == {"basis": "no_transcript_in_gnomad"}
+    # Built before UniProt's transcripts were recorded (schema 0.3.10).
+    assert by_id["X-1"]["pext"] == {"basis": "transcripts_not_recorded"}
+
+
+def test_an_isoform_without_exons_says_why_and_own_bases_say_they_may_be_shared():
+    # X-1: exons from gnomAD. X-2: a transcript UniProt states, which gnomAD does not
+    # annotate. X-3: no transcript UniProt states (as most of CD44's isoforms, #102).
+    from sabueso.core.tissue_usage import isoform_tissue_usage_view
+
+    class Store:
+        def find_by_field(self, path):
+            return []
+
+    fields = {
+        "annotations.isoforms": [
+            {"isoform_id": "X-1", "name": "1", "sequence_status": "Displayed"},
+            {"isoform_id": "X-2", "name": "2"},
+            {"isoform_id": "X-3", "name": "3"},
+        ],
+        "annotations.isoform_coding_exons": [
+            {"isoform": "X-1", "transcript": "ENST1", "cds": [[100, 199]]}
+        ],
+        "identifiers.ensembl_transcripts": [
+            {"transcript": "ENST1.4", "isoform": "X-1"},
+            {"transcript": "ENST2.1", "isoform": "X-2"},
+        ],
+    }
+
+    class Card:
+        source_assertion_store = Store()
+
+        def get(self, path):
+            return {"value": fields[path]} if path in fields else None
+
+    view = isoform_tissue_usage_view(Card())
+    by_id = {i["isoform"]: i for i in view["items"]}
+    assert by_id["X-2"]["pext"] == {"basis": "transcript_not_in_gnomad"}
+    assert by_id["X-2"]["transcripts"] == ["ENST2.1"]
+    assert by_id["X-3"]["pext"] == {"basis": "no_transcript_stated"}
+    assert view["isoforms_without_exons"] == ["X-2", "X-3"]
+    # X-1's bases are its own only among the isoforms whose exons are known.
+    assert by_id["X-1"]["own_coding_bases"] == 100
+    assert by_id["X-1"]["own_bases_complete"] is False
+    assert view["variable_regions_complete"] is False
+
+
+def test_the_pext_record_counts_its_regions(pext_card):
+    (record,) = [e for e in pext_card.quality["enrichments"] if e.get("data") == "pext"]
+    # Until 0.9.0 the record counted nothing: the field name was shadowed.
+    assert record["count"] == len(
+        pext_card.get("annotations.exon_usage_by_tissue")["value"]
+    )
+    assert record["count"] > 0
+
+
+def test_uniprot_s_ensembl_transcripts_are_recorded_with_their_isoforms(pext_card):
+    # UniProt's own cross-references (schema 0.3.10, #102), versioned as it states them.
+    stated = pext_card.get("identifiers.ensembl_transcripts")
+    by_transcript = {x["transcript"]: x for x in stated["value"]}
+    assert by_transcript["ENST00000396705.10"] == {
+        "transcript": "ENST00000396705.10",
+        "protein": "ENSP00000379933.4",
+        "gene": "ENSG00000111669.16",
+        "isoform": "P60174-1",
+    }
+    assert {x["isoform"] for x in stated["value"]} == {
+        "P60174-1",
+        "P60174-3",
+        "P60174-4",
+    }
+    made = pext_card.source_assertion_store.get(stated["source_assertion_ids"][0])
+    assert made["source"]["name"] == "UniProt"

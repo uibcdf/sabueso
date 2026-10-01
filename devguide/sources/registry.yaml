@@ -770,6 +770,28 @@ resources:
         - "pext (read since 2026-10-01) is gnomAD's computation from GTEx v10 isoform quantifications; GTEx's own terms for its summary data were not reviewed separately."
     module: [sabueso.tools.db.gnomad, sabueso.mappings.gnomad]
     links: ["#83"]
+  - id: gtex
+    name: GTEx Portal (tissues)
+    url: https://gtexportal.org/
+    category: target_validation
+    status: in_use
+    description: "The tissues of each GTEx release, with the ontology term GTEx states for each: UBERON, or EFO for a cell line."
+    since: 2026-10-01
+    proposed_by: "Sabueso maintainers, to name the tissues of gnomAD's pext by ontology terms (#102)"
+    decided_by: "Sabueso maintainers (2026-10-01)"
+    reason: "gnomAD's pext names GTEx tissues by GTEx's ids. GTEx states the ontology term of each (annotations.tissue_terms), joined to the pext's keys by gtex_tissue_key@1. A term never replaces the tissue: GTEx gives the cerebellum and the cerebellar hemisphere one UBERON term. GTEx's transcript expression is not used: its short-read quantification inverts PKM's M1/M2 biology (#102)."
+    access: "Portal API v2 (dataset/tissueSiteDetail, one request per release), no key, when resolve(..., gtex=True) with exon_usage=True"
+    licence: "GTEx open-access data: free to use, with acknowledgement of the GTEx Portal (custom permissive terms)"
+    terms:
+      source_names: ["GTEx"]
+      licence: FREE-WITH-ACKNOWLEDGEMENT
+      attribution: "The Genotype-Tissue Expression (GTEx) Project, GTEx Portal (https://gtexportal.org/)"
+      statement: https://gtexportal.org/home/documentationPage
+      reviewed: 2026-10-01
+      caveats:
+        - "Acknowledge the GTEx Portal and the date the data were obtained."
+    module: [sabueso.tools.db.gtex, sabueso.mappings.gtex]
+    links: ["#102"]
   - id: pharmacodb
     name: "PharmacoDB"
     url: https://pharmacodb.pmgenomics.ca/

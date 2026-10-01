@@ -85,6 +85,8 @@ def resolve_protein_card(
     gnomad: Dict[str, Any] | None = None,
     gnomad_client: Any | None = None,
     exon_usage: bool = False,
+    gtex: bool = False,
+    gtex_client: Any | None = None,
     skempi: bool = False,
     skempi_client: Any | None = None,
     sabdab: bool = False,
@@ -178,6 +180,11 @@ def resolve_protein_card(
     includes it. With ``gnomad``, ``Card.variant_tissue_usage()`` gives each variant
     the tissues where its position is expressed (``pext_at_variant@1``). Human genes
     only.
+
+    ``gtex``, with ``exon_usage``, adds the ontology term GTEx states for each tissue
+    the pext names (``annotations.tissue_terms``: UBERON, or EFO for a cell line), from
+    the GTEx release the pext states. The tissue views then name each tissue's term
+    (``gtex_tissue_key@1``).
 
     ``skempi`` adds SKEMPI 2.0's measured binding changes of mutations at the
     interfaces of complexes of this protein (``annotations.interface_mutations``), for
@@ -364,6 +371,7 @@ def resolve_protein_card(
         "reactome": (reactome, reactome_client),
         "gnomad": (gnomad, gnomad_client),
         "exon_usage": (exon_usage, gnomad_client),
+        "gtex": (gtex, gtex_client),
         "clinvar": (clinvar, clinvar_client),
         "skempi": (skempi, skempi_client),
         "sabdab": (sabdab, sabdab_client),

@@ -313,6 +313,9 @@ OUTSIDE_PACKETS = {
     # Hundreds of articles per well-studied protein: packet size is watched (#88), and
     # real use decides whether the literature aspect asks for them (#71).
     "europepmc": "text-mined mentions are not asked by a packet aspect yet",
+    # packet_aspects@4 is published (0.9.0); a new mapping makes packets of the two
+    # incomparable, so tissue terms join the biological context with the next one.
+    "gtex": "GTEx's tissue terms join the biological context with packet_aspects@5",
 }
 
 
