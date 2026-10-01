@@ -6,8 +6,9 @@
   with its revisions. JSON, JSONL and SQLite files are available for exchange
   (`STORAGE_LAYOUT.md`).
 - **Curated statements.** They are kept in a `CurationStore`, which survives rebuilds.
-- **Raw source payloads: not stored by Sabueso.** A card keeps enough to know where each
-  value came from:
+- **Raw source payloads: not stored by default.** They are kept only in a retrieval
+  archive the user asks for (below, #100). Without one, a card keeps enough to know
+  where each value came from:
   - the source and its release;
   - the record id and the retrieval date;
   - the asserted value, per SourceAssertion.
@@ -37,7 +38,7 @@
 
 ## Direction adopted (2026-09-30, #100)
 
-Built so far (`sabueso.RetrievalArchive`):
+Built, released in 0.8.0 (`sabueso.RetrievalArchive`):
 - `archive.recording()`: every answer through `_http.urlopen`, a 404 included, stored
   once per distinct content (compressed, SHA-256), and listed on the card
   (`quality.retrievals`);
@@ -63,9 +64,13 @@ Built so far (`sabueso.RetrievalArchive`):
   mode="mirror_first"|"offline", releases={...})` makes card tools read installed
   mirrors; `offline` never asks the network (what has no mirror or archived answer is
   `not_queried`, `offline`). First mirror: BindingDB's monthly TSV (#98).
+- The `Link` header is kept (0.9.0), so paginated answers (UniRef's members) replay.
+- **Validation runs record, never reuse** (`DECISIONS.md`, 2026-10-01). A pilot run
+  asks every source again, and keeps what they answered in a local archive of the run;
+  `reusing` is for user projects that repeat builds.
 
 
-"Raw payloads: not stored" answered the first draft, and it is being replaced. MOLI's
+"Raw payloads: not stored" answered the first draft; the layers below replaced it. MOLI's
 reproducibility policy asks every external retrieval to keep what it returned, when
 the licence allows, and to say so when it does not (`uibcdf/moli`,
 `REPRODUCIBILITY_AUDIT_AND_REPLAY.md`). Three layers, each opt-in, for three kinds of

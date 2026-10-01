@@ -120,7 +120,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Access**: Content Service, UniProt mapping and event ancestors, no key (`OnlineReactomeClient`, which names Sabueso: the service refuses Python's default user agent); saved answers in `temp_data/reactome/`; `tools.db.reactome.get_pathways`
 - **Quality**: green for the listed coverage. Verified live on HsTIM (release 97): glycolysis and gluconeogenesis, two reactions, and their ancestors up to Metabolism. TcTIM: not mapped.
 - **Coverage**: `participates_in` relationships, with kind, name, species, the orthology-inference flag and pathway ancestors
-- **Notes**: one request per pathway for its ancestors. Licence: CC0 1.0 (data).
+- **Notes**: one request per pathway for its ancestors. The release endpoint (`database/version`) answers plain text, so it is the one Reactome request not checked as JSON (#97). Licence: CC0 1.0 (data).
 
 ### Orphadata (Orphanet) — rare disorders and their genes
 - **Status**: implemented as an enricher of `resolve_protein_card(..., orphadata=True)` (uibcdf/sabueso#82)
@@ -225,7 +225,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Quality**: verified on TcTIM (17 records: 16 grouped with ChEMBL, one attributed by ChEMBL to another molecule) and HsTIM (23 records: 13 grouped, 3 from a paper ChEMBL lacks for the target, 5 monomers UniChem does not hold, one with another stereochemistry than ChEMBL's)
 - **Coverage**: `has_bioactivity` relationships with the ChEMBL layout (`source: BindingDB`, `stated_value` keeps the written precision); measurements shared with ChEMBL are grouped by `measurement_identity@1`
 - **Mirror** (#100): `sabueso.mirrors.install("bindingdb")` downloads the monthly `BindingDB_All_<yyyymm>_tsv.zip` (about 600 MB; 9 GB unpacked), checks its published MD5 and indexes it by UniProt accession (release 202609: 3,650,556 records, 704 MB, 154 s). Inside `mirrors.using(...)` cards read it (`access: mirror`, `version`). Parity with the REST service: identical for TcTIM (17) and HsTIM (23); for EGFR, 29,470 of 32,346 identical, 2,876 differing only because the REST service rounds values (112 where the release states 112.4), and about 0.2 % differing between the live service and the monthly release. The release's InChIKeys drop the stereo layer (39 of 112 sampled EGFR monomers against UniChem's standard key), so identity stays with UniChem.
-- **Notes**: the REST records carry no origin (BindingDB curation or ChEMBL import) and no record id; licence treated as CC BY-SA 3.0. Up to 5000 records by default (`bindingdb={"limit": n}`), ordered by `bindingdb_record_order@1` (monomer id, affinity type, value); a cut is reported (#98). EGFR (P00533) holds 32,346 records of 16,463 monomers. BindingDB's monthly `BindingDB_CID.txt` (monomer → PubChem CID) is not used for identity: on a sample of EGFR monomers, 5 of 52 CIDs name another structure than the one UniChem states for BindingDB's (stereo layer, tautomer, or another compound).
+- **Notes**: the REST service sometimes answers a 200 whose body is not JSON (three times in eight pilot builds, 2026-10-01); since 0.9.0 it is asked again and recorded in `quality.retries` (#97). The REST records carry no origin (BindingDB curation or ChEMBL import) and no record id; licence treated as CC BY-SA 3.0. Up to 5000 records by default (`bindingdb={"limit": n}`), ordered by `bindingdb_record_order@1` (monomer id, affinity type, value); a cut is reported (#98). EGFR (P00533) holds 32,346 records of 16,463 monomers. BindingDB's monthly `BindingDB_CID.txt` (monomer → PubChem CID) is not used for identity: on a sample of EGFR monomers, 5 of 52 CIDs name another structure than the one UniChem states for BindingDB's (stereo layer, tautomer, or another compound).
 
 ### PubChem BioAssay — results linked to a protein
 - **Status**: implemented as an enricher of `resolve_protein_card(..., pubchem_bioassay=True)` (uibcdf/sabueso#68)
@@ -312,7 +312,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Coverage**: `features_positional.family_site`: sites a member database places on the protein's sequence, with description and signature
 - **Notes**:
   - Positions are placed by the source's family model, so Sabueso never aligns sequences. The same CDD model places TcTIM's catalytic glutamate at 168 and HsTIM's at 166.
-  - An empty answer is the same for "no site residues" and "unknown accession"; both are recorded as not_found with that caveat.
+  - An empty answer is the same for "no site residues" and "unknown accession"; both are recorded as not_found with that caveat. It is an answer, so it is not asked again as unreadable (#97).
   - The release is read from the `InterPro-Version` response header.
   - Licence: InterPro CC0 1.0; member-database content may carry its own terms. The CDD sites are NCBI work (US public domain, NLM policy).
 
@@ -402,6 +402,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - Joined only through an exact match OMA states for the accession.
   - Identical proteins of several strains share one UniProt entry; each OMA protein stays its own relationship (`oma_id` is an identity qualifier).
   - Entry names are resolved to active entries only: a retired entry can keep a name (P00938, demerged, is still TPIS_HUMAN). Fixed after 0.8.0, found in the TcTIM C1 run on 0.8.0: the CL Brener TIM's human ortholog was named P00938 instead of P60174.
+  - OMA answers HTTP 502 or 503 to about one request in three (2026-10-01): each request is tried up to 4 times (0.9.0); a failure after that is `error`.
   - Licence CC BY 4.0, from OMA's Terms of Use as published in its browser's source (the site's pages answer 403 to non-browser clients); an older FAQ line says CC BY-SA 2.5 for the browser.
 
 ---

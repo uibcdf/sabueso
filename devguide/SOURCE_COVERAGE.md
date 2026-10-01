@@ -203,7 +203,9 @@ through the PDB and ChEMBL already. They are reviewed when a target needs them.
    variant's consequence on the canonical transcript (done, 2026-09-30); Ensembl states
    no map for the transcripts left (separate TrEMBL entries). Ensembl orthology is
    deferred (slow, Ensembl ids, no trypanosomatids); OMA, which states orthologs by
-   UniProt accession, is in use instead (2026-10-01).
+   UniProt accession, is in use instead (2026-10-01). UniRef clusters, through UniProt,
+   relate a reference entry to the genome-strain entry such sources use, never merged
+   (#103, 2026-10-01, schema 0.3.9).
 4. **Family-specific sources:** KLIFS and GPCRdb: **done** (2026-09-30, schema 0.3.8).
 5. **SureChEMBL**: deferred (2026-09-30). Its patents are text-mined mentions that
    cannot be restricted to the claims (111,187 documents for imatinib). Then

@@ -37,7 +37,7 @@ status, so that none is lost because a pilot has not asked for it yet.
 - **Maintainers may schedule a foundational objective on its own.** The pilots do not
   own the plan.
 
-## Delivered so far (0.1.0 → 0.7.0)
+## Delivered so far (0.1.0 → 0.9.0)
 
 - **Foundations.**
   - Card, Deck, `SourceAssertionStore` and `RelationshipStore`.
@@ -62,6 +62,7 @@ status, so that none is lost because a pilot has not asked for it yet.
   - Since 0.7.0: SKEMPI 2.0 (#83), MONDO and MedGen (#90), Europe PMC (#92).
   - Since 0.8.0: ChEBI, KLIFS, GPCRdb, SAbDab, OMA, OPM and PDBTM segments through RCSB
     (#83), and gnomAD's pext (#102).
+  - Since 0.9.0: UniRef clusters, through UniProt (#103).
   - The registry, `sources/registry.yaml`, is the index.
 - **Knowledge views, each with a named rule:**
   - structures and the structural inventory; predicted models;
@@ -89,6 +90,14 @@ status, so that none is lost because a pilot has not asked for it yet.
   - Kinase pockets, GPCR numbering, antibody complexes and orthologs (#83).
   - What was downloaded (a retrieval archive), local mirrors, offline work (#100).
   - Knowledge store format 2, `knowledge_packet@2` and `packet_aspects@3` (#88, #99).
+- **Since 0.9.0.**
+  - A reference entry and its genome-strain entry related through their UniRef
+    clusters, never merged; the positions where two equal-length sequences differ
+    (#103).
+  - Unreadable answers and server errors asked again, and every retry recorded on the
+    card (`quality.retries`, #97).
+  - Validation runs from scratch, with what the sources answered recorded, never
+    reused (#100).
 
 ## Status of the foundational plan
 
@@ -124,7 +133,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Disease associations of a protein | done | `annotations.disease` (#39) |
 | Ligands with a role (inhibitor…) | changed | a role is a derived class, never asserted (#25): `bioactivity_class@3`, `ligand_deck` |
 | Deck of inhibitors of a protein | done | `ligand_deck(card)` with derived classes |
-| Local cache / store | done | `KnowledgeStore` (cards); raw payloads are not stored (`CACHE_POLICY.md`) |
+| Local cache / store | done | `KnowledgeStore` (cards); retrieval archive and local mirrors, opt-in (#100, `CACHE_POLICY.md`) |
 
 ### Use cases (`USE_CASES.md`)
 
@@ -135,7 +144,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | 3. TopoMT: catalytic residues, mutations as structural features | partial (positional features, ligand and family sites, interface mutations from SKEMPI, #83; no TopoMT contract yet) |
 | 4. PharmacophoreMT: deck of ligands | partial (ligand decks; no exchange format agreed) |
 | 5. Commercial availability of peptides | pending |
-| 6. Tissue-specific isoforms | partial (tissue specificity; UniProt isoforms and alternative sequences, #80; AlphaFold isoform models; isoform sequences not fetched) |
+| 6. Tissue-specific isoforms | partial (tissue specificity; UniProt isoforms and alternative sequences, #80; AlphaFold isoform models; the tissues of each variant and isoform from gnomAD's pext, #102; tissues not yet UBERON terms; isoform sequences not fetched) |
 | 7. Visualization (MolSysViewer) | partial (interfaces, mutations, sites, secondary structure from UniProt and per chain from RCSB, #80; no contract) |
 | 8. Clinical trials of ligands | done for the trials ChEMBL's indications cite (#81); a trial is never matched to a molecule by name |
 | 9. Disease associations; targets of a disease | done on main: protein → diseases from UniProt, DISEASES, Open Targets, Orphanet and ClinVar, grouped through MONDO (#82, #90); disease → targets and → drugs as decks (#90) |
@@ -152,11 +161,11 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | A strong SourceAssertionStore | done | MOLI-aligned fields, curated assertions, provenance |
 | Cards that relate (relationships as knowledge) | done | `RelationshipStore`, typed predicates |
 | More powerful decks | done | membership, derivation, pinned revisions, lineage, audits, inventory |
-| Entity resolution as a central piece | done | EntityResolver, identity audit, curated names |
-| Temporal knowledge | partial | snapshots, revisions, source releases; no "as of a date" query |
+| Entity resolution as a central piece | done | EntityResolver, identity audit, curated names; a reference entry related to its genome-strain entry, never merged (#103) |
+| Temporal knowledge | partial | snapshots, revisions, source releases; the store's `as_of` and `changed_since` (#91); no source asked as of a past release |
 | Knowledge from Nextia not imported automatically | done (as a boundary) | promotion of derived knowledge open in uibcdf/moli#17 |
 | Literature as a knowledge source | partial | human curation and literature views; automated extraction pending |
-| KnowledgeQuery (semantic queries over sources) | partial | prototype released in 0.6.0 (#71): a protein subject, a fixed aspect mapping; contract in uibcdf/moli#22 |
+| KnowledgeQuery (semantic queries over sources) | partial | prototype released in 0.6.0 (#71): a protein subject, a fixed aspect mapping (`packet_aspects@4` since 0.9.0); contract in uibcdf/moli#22 |
 | Knowledge packets (entities, facts, conflicts, unknowns) | partial | prototype released in 0.6.0 (#71): pinned, stored, with a content-equivalence id; contract in uibcdf/moli#22 |
 | Unknowns as first-class output | done | `knowledge_state()` (#56) |
 | Two levels of access (semantic and raw) | done | `resolve` and views; `tools.db.*.get_*` |
@@ -177,9 +186,15 @@ Delivered for the first pilot's knowledge baseline and structural inventory:
 - what the first live run of the baseline found: the authors' oligomer (#72), author
   numbering (#73), partial source answers (#74), the measurement review (#75);
 - the integrity of pinned item reads (#79), a case of the reference contract
-  (uibcdf/moli#3).
+  (uibcdf/moli#3);
+- the comparative context: orthologs (OMA, #83), the tissues of variants and isoforms
+  (#102), and a reference entry related to the genome-strain entry proteome-based
+  sources use (#103);
+- steadier live runs: unreadable answers and server errors retried and recorded (#97);
+  runs from scratch, with what the sources answered recorded (#100).
 
 Open, pilot-related:
+- #103, released in 0.9.0: to verify in the pilot that asked for it;
 - #53, the reference form (waits on uibcdf/moli#3);
 - #60, biological context: step 1 (curated fields) released in 0.6.0; step 2
   (VEuPathDB) blocked on access and terms (#84);
@@ -222,7 +237,9 @@ In order:
      (follow-up #102). iPPI-DB, VEuPathDB and TDR Targets wait on #84;
    - isoforms and variants by tissue (#102): variants and isoforms done
      (gnomAD's pext, `pext_at_variant@1`, `isoform_exon_usage@1`); tissues as UBERON
-     terms remain;
+     terms, and isoforms gnomAD has no transcript for, remain;
+   - local mirrors in real work (#101): ChEMBL as a mirror, and builds from cached
+     sources;
    - knowledge packets: real use decides their aspects and size (#71, #88), aligned
      with uibcdf/moli#22 once agreed;
    - the clinical layer: adverse events (openFDA), after a terms review; isoform

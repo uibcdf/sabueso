@@ -11,11 +11,15 @@ project_root/
     knowledge.db        # KnowledgeStore: cards and decks with their revisions
     curation.jsonl      # CurationStore: curated statements, kept across rebuilds
     raw/                # optional: raw source payloads (tools.db get_* records)
+    retrievals/         # optional: RetrievalArchive files, e.g. one per run (<run>.db)
     exports/            # optional: files to share
       cards.jsonl       # JSONL deck
       cards.db          # SQLite deck
       ligands.jsonl
 ```
+
+Local mirrors (`sabueso.mirrors`) live outside the project, under `mirror_dir=` or
+`$SABUESO_MIRROR_DIR`, shared by every project that reads them.
 
 The knowledge store is the default choice for a project: what it saves can be cited
 exactly (pinned references) and read back as it was. The files are for exchange and
@@ -105,4 +109,6 @@ SQLite JSON functions, so any SQLite that Python ships with works.
 ## Notes
 - JSON/JSONL is recommended for transparency and version control.
 - SQLite is recommended for large datasets and fast queries.
-- Raw payloads are optional, but recommended for reproducibility.
+- Recording what the sources answered (a `RetrievalArchive`) is optional, and
+  recommended for reproducibility. Keep it local: several sources' terms do not allow
+  sharing their responses (`archive.sources()`).

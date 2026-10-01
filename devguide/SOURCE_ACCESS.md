@@ -109,7 +109,9 @@ faster route keeps a stated identity (#98).
 
 Every client uses the shared services in `sabueso/tools/db/`:
 - `_http.urlopen`, never `urllib.request.urlopen`, for the user agent and the retries
-  (a test checks it);
+  (a test checks it). A request that reads JSON passes `expect_json=True`, so that an
+  unreadable 200 answer is asked again (#97). Leave it out where an empty or non-JSON
+  body is an answer (InterPro's empty body, Reactome's plain-text version);
 - `_http.gather`, for a service answered one record per request, with the pace its
   online client states (`workers`, `per_second`); saved answers need none (#98);
 - `_release`, for a source published as whole releases;
@@ -125,8 +127,9 @@ Every client uses the shared services in `sabueso/tools/db/`:
 
 ## Possible future problems
 
-- **Caching.** Sources have rate limits, and none of the clients caches. A cache must
-  respect each source's terms (#29) and record what it served, and when.
+- **Caching.** Sources have rate limits, and no client caches on its own. Reuse goes
+  through the retrieval archive the user asks for (`reusing(max_age)`, #100), which
+  records what it served and when; what may be kept follows each source's terms (#29).
 - **Envelope drift.** The `record` of a source changes when the source changes its API.
   Mappings absorb that; direct users of `get_*` see it. The envelope is stable, the
   record is not.

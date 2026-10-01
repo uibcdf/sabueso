@@ -139,7 +139,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 885 tests passed, 15 online tests deselected (2026-09-29). Run with
+- Offline suite: 1137 tests passed, 25 online tests deselected (2026-10-01). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.
@@ -149,12 +149,23 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 - Plan and status of every objective: `ROADMAP.md`. It integrates the foundational plan
   and the pilot-driven route.
-- Open issues:
-  - #53, the reference form (waits on uibcdf/moli#3);
-  - #60, biological context (deferred);
-  - #30, ligand proximity (deferred);
-  - #29, usage terms of knowledge;
-  - #22, BioGRID (needs a key);
-  - #20 and #19, re-evaluations of structure and relationship storage;
-  - #36, an ArgDigest experiment.
+- **Next, in order:**
+  1. Verify #103 in the pilot that asked for it, with 0.9.0, and close it: the pilot's
+     runs from scratch on the published package, its answers recorded (#100).
+  2. Local mirrors in real work (#101): ChEMBL as a mirror, and builds from cached
+     sources.
+  3. Tissues as UBERON terms, and isoforms gnomAD has no transcript for (#102).
+  4. Knowledge packets: detail levels and size, as real use asks (#71, #88).
+- **Open issues, by kind:**
+  - released, open for a follow-up: #103 (pilot verification), #102 (UBERON), #100
+    (archive and mirrors: next phases, #101), #98 (heavily studied targets), #92
+    (literature: located mentions, own extraction), #91 (scientific operations), #88
+    (default limits and size), #83 (source coverage: next wave), #71 (packets; contract
+    in uibcdf/moli#22);
+  - waiting on others: #53 (reference form, uibcdf/moli#3), #84 (VEuPathDB and TDR
+    Targets terms), #95 (accounts, keys and licences), #22 (BioGRID key);
+  - decisions to take: #96 (EFO terms without MONDO), #94 and #29 (terms profiles and
+    usage terms, next steps), #20 and #19 (structure and relationship storage);
+  - deferred or experiments: #87 (parallel enrichers), #60 step 2 (VEuPathDB), #30
+    (ligand proximity), #36 (an ArgDigest experiment).
 - Risks: `RISKS_AND_OPEN_QUESTIONS.md`.

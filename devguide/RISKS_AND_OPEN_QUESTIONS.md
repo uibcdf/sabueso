@@ -225,12 +225,12 @@
   393 entries (~175 KB of card each). BindingDB and PubChem BioAssay ignore the 5000
   ceiling. A card with every source would exceed 100 MB and take hours. #98 lists the
   batched queries the sources offer, and the order of work.
-- **Store growth across rebuilds** (#99, addressed on main). Format 2 keeps
+- **Store growth across rebuilds** (#99, addressed in 0.8.0). Format 2 keeps
   `retrieved_at` out of a SourceAssertion's row, numbers states and rows with integers,
   and compresses: a card saved again with unchanged knowledge adds about 0.1 MB instead
   of a whole copy. What still grows with each revision is one membership row per
-  statement; the retrieval archive (#100) will add responses, which licences and
-  freshness decide.
+  statement; a retrieval archive (#100), when used, adds the responses (about 23 MB
+  compressed for one full pilot run, 2026-10-01).
 - **Transcript versions** (#85). gnomAD states the version of the canonical transcript
   it annotates (gnomad_r4 uses GENCODE 39), and UniProt cross-references its own. They
   can differ when either updates, and then the same id may encode another protein.
@@ -267,7 +267,12 @@
   BindingDB failed three times (a 200 whose body was not JSON), and ChEMBL (HTTP 500),
   OMA, PHI-base and Reactome once or more. Unreadable answers and HTTP 500 are now
   retried and recorded (`quality.retries`); a failure that persists is still an
-  `error`. Repeated builds can also reuse what succeeded (the retrieval archive, #100).
+  `error`. A user project that repeats builds can reuse what succeeded
+  (`reusing(max_age)`, #100); validation runs never do.
+- **UniRef clusters change with UniProt's releases** (#103). Members join and leave,
+  and a cluster can be renamed after a new representative. `clustered_with` records
+  the release it was read from; two cards of different releases may name different
+  clusters for the same entry.
 - **gnomAD's rate limit.** The service answers HTTP 429 after bursts (about ten
   requests a minute sustained). Sabueso retries with backoff. A build that asks many
   genes in a row may still see errors, recorded as `error`, never as absence.

@@ -71,6 +71,11 @@ shows how to use them.
   - `structures(include_fragments=False, region=None)` and `predicted_structures()`;
   - `oligomer()` and `ligand_sites()`;
   - `interface_mutations()` (SKEMPI, with ΔΔG under `binding_ddg@1`, #83);
+  - `variant_tissue_usage(threshold=0.1)` and `isoform_tissue_usage(threshold=0.1)`
+    (the tissues expressing a variant's position or an isoform's coding bases, from
+    gnomAD's pext, `pext_at_variant@1` and `isoform_exon_usage@1`, #102);
+  - `sequence_differences(other)` (the positions where two equal-length sequences
+    differ, nothing aligned, `equal_length_positions@1`, #103);
   - `diseases()` (a protein's diseases grouped by MONDO term, `disease_grouping@1`,
     #90);
   - `terms(use)` (what the sources state about a use of the card's knowledge,

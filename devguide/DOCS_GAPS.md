@@ -38,5 +38,10 @@ what is now covered is noted, and what remains is below.
   Nextia (citing references). Not written, because not agreed yet (uibcdf/moli#3,
   moli#17).
 - **Online tests**: keys and environment variables (BioGRID).
+- **Sources of wave 2 and the comparative context** (0.8.0, 0.9.0): KLIFS, GPCRdb,
+  SAbDab, OMA and UniRef appear only as `resolve` options and on the data sources page.
+  No page shows what they state or how to read it: kinase pockets, GPCR numbering,
+  antibody complexes, orthologs, a reference entry against its genome-strain entry
+  (`clustered_with`, `Card.sequence_differences`).
 - **Small-molecule cards** have no page of their own. Resolution, ligand decks and
   entities cover them in part.
