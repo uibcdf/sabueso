@@ -30,7 +30,9 @@ def main() -> int:
         if "MOLI_GUIDE.md#durable-instructions-for-development-agents" not in content:
             errors.append("AGENTS.md: must link to the agent-instruction lifecycle")
         if "devguide/AGENTS.md" not in content:
-            errors.append("AGENTS.md: must route developer-guide work to devguide/AGENTS.md")
+            errors.append(
+                "AGENTS.md: must route developer-guide work to devguide/AGENTS.md"
+            )
     nested = ROOT / "devguide/AGENTS.md"
     if nested.is_file():
         content = nested.read_text(encoding="utf-8")
