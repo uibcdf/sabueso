@@ -91,7 +91,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     (`equal_length_positions@1`); OMA's `not_found` names the UniProt entry it mapped
     the accession to; `packet_aspects@4` (UniRef in `identity`);
   - OMA's client tries a request up to 4 times on HTTP 502/503: the service answers
-    502 to about one request in three.
+    502 to about one request in three;
+  - an unreadable 200 answer (a body that is not the JSON asked for) is asked again,
+    HTTP 500 joins the retried statuses, and a card lists its build's retries
+    (`quality.retries`, #97).
 - **Watched:** card and packet size with the default ceilings (#88).
 
 ## Package layout

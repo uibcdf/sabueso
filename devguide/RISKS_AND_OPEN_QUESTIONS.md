@@ -263,6 +263,11 @@
 - **OMA answers HTTP 502 to about one request in three** (measured 2026-10-01, however
   spaced). Its client tries a request up to 4 times beyond the general retries (on
   main since 0.8.1); a failure is still recorded as `error`, never as absence.
+- **Live sources fail now and then** (#97). In one day of eight full pilot builds,
+  BindingDB failed three times (a 200 whose body was not JSON), and ChEMBL (HTTP 500),
+  OMA, PHI-base and Reactome once or more. Unreadable answers and HTTP 500 are now
+  retried and recorded (`quality.retries`); a failure that persists is still an
+  `error`. Repeated builds can also reuse what succeeded (the retrieval archive, #100).
 - **gnomAD's rate limit.** The service answers HTTP 429 after bursts (about ten
   requests a minute sustained). Sabueso retries with backoff. A build that asks many
   genes in a row may still see errors, recorded as `error`, never as absence.

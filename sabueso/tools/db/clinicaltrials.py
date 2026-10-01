@@ -53,7 +53,7 @@ FIELDS = (
 def _get(path: str, params: Dict[str, Any], timeout: float) -> Any:
     url = f"{API}/{path}" + ("?" + urlencode(params) if params else "")
     try:
-        with urlopen(url, timeout=timeout) as resp:  # nosec - trusted endpoint
+        with urlopen(url, timeout=timeout, expect_json=True) as resp:  # nosec - trusted endpoint
             return json.loads(resp.read().decode("utf-8"))
     except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
         raise ConnectorError(f"ClinicalTrials.gov {path} failed: {exc}") from exc

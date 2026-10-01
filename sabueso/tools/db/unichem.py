@@ -68,7 +68,7 @@ class OnlineUniChemClient:
         )
         retrieval = stamp("UniChem")
         try:
-            with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
+            with urlopen(request, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(
@@ -93,7 +93,7 @@ class OnlineUniChemClient:
         retrieval = stamp("UniChem")
         label = f"source {source_id} compound {compound_id}"
         try:
-            with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
+            with urlopen(request, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"UniChem request for {label} failed: {exc}") from exc

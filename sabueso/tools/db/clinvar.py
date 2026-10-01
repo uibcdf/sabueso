@@ -55,7 +55,7 @@ def _get(
         query["api_key"] = api_key
     url = f"{EUTILS}/{path}?" + urlencode(query)
     try:
-        with urlopen(request(url), timeout=timeout) as resp:  # nosec - trusted
+        with urlopen(request(url), timeout=timeout, expect_json=True) as resp:  # nosec - trusted
             return json.loads(resp.read().decode("utf-8"))
     except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
         detail = _keys.scrub(str(exc), api_key)

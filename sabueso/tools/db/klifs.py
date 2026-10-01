@@ -48,7 +48,9 @@ class OnlineKLIFSClient:
 
     def _get(self, path: str) -> Any:
         try:
-            with urlopen(f"{API}/{path}", timeout=self.timeout) as resp:
+            with urlopen(
+                f"{API}/{path}", timeout=self.timeout, expect_json=True
+            ) as resp:
                 return json.loads(resp.read().decode("utf-8"))
         except HTTPError as exc:
             # KLIFS answers 400 with [400, "KLIFS error: …"] for an id it does not hold.

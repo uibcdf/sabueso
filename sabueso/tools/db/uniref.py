@@ -46,7 +46,7 @@ class OnlineUniRefClient:
 
     def _get(self, url: str) -> tuple:
         try:
-            with urlopen(url, timeout=self.timeout) as resp:
+            with urlopen(url, timeout=self.timeout, expect_json=True) as resp:
                 return (
                     json.loads(resp.read().decode("utf-8")),
                     resp.headers.get("X-UniProt-Release"),

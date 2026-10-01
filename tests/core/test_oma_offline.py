@@ -152,7 +152,7 @@ def test_an_unstable_answer_is_tried_again(monkeypatch):
         def __exit__(self, *exc):
             return False
 
-    def flaky(url, timeout):
+    def flaky(url, timeout, expect_json=False):
         calls.append(url)
         if len(calls) < 3:
             raise HTTPError(url, 502, "Bad Gateway", {}, None)

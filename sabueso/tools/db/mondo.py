@@ -201,7 +201,7 @@ class OnlineMONDOClient(_Index):
             else f"{LATEST.rsplit('/', 1)[0]}/tags/{self.release}"
         )
         try:
-            with urlopen(request(url), timeout=60) as resp:  # nosec - trusted
+            with urlopen(request(url), timeout=60, expect_json=True) as resp:  # nosec - trusted
                 data = json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"MONDO release lookup failed: {exc}") from exc

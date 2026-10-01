@@ -142,6 +142,10 @@ print(resolution.decision["profile"])  # name, the options it gave, those you ov
 - `card.quality["enrichments"]` holds one outcome per requested enrichment: `added`,
   `not_found` or `error`, with the source release. A truncated result says so (for
   example, "ChEMBL returned 25 of 493 records").
+- `card.quality["retries"]`, when present, lists the requests the build asked again,
+  per source and reason: a transient HTTP status (429, 500, 502, 503, 504), a lost
+  connection, or an `unreadable_body`, a 200 answer that was not the JSON asked for.
+  A request that still failed is that source's `error` in `enrichments`.
 - `card.knowledge_state()` says, per area and source, what is known, in conflict, not
   stated, not asked or unavailable ({doc}`concepts`).
 

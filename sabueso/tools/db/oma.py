@@ -69,7 +69,7 @@ class OnlineOMAClient:
         retrieval = stamp("UniProt") if source == "UniProt" else stamp(SOURCE)
         for attempt in range(UNSTABLE_ATTEMPTS):
             try:
-                with urlopen(url, timeout=self.timeout) as resp:
+                with urlopen(url, timeout=self.timeout, expect_json=True) as resp:
                     found = json.loads(resp.read().decode("utf-8"))
                 break
             except HTTPError as exc:

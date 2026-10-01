@@ -53,7 +53,9 @@ class OnlineMedGenClient:
             query["api_key"] = api_key
         try:
             with urlopen(  # nosec - trusted endpoint
-                request(f"{EUTILS}/{path}?{urlencode(query)}"), timeout=self.timeout
+                request(f"{EUTILS}/{path}?{urlencode(query)}"),
+                timeout=self.timeout,
+                expect_json=True,
             ) as resp:
                 return json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:

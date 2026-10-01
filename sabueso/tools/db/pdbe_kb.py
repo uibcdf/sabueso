@@ -51,7 +51,7 @@ class OnlinePDBeKBClient:
         retrieval = stamp("PDBe-KB")
         missing = f"PDBe-KB has no {KINDS[kind]} for {accession}"
         try:
-            with urlopen(url, timeout=self.timeout) as resp:  # nosec - trusted endpoint
+            with urlopen(url, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
         except HTTPError as exc:
             if exc.code == 404:

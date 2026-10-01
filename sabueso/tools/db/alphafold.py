@@ -38,7 +38,7 @@ class OnlineAlphaFoldClient:
         retrieval = stamp("AlphaFold DB")
         try:
             with urlopen(  # nosec - trusted endpoint
-                f"{ALPHAFOLD_API}/{accession}", timeout=self.timeout
+                f"{ALPHAFOLD_API}/{accession}", timeout=self.timeout, expect_json=True
             ) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
         except HTTPError as exc:

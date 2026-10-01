@@ -72,7 +72,7 @@ class OnlineSAbDabClient:
 
     def _download(self) -> tuple:
         try:
-            with urlopen(request(SPEC), timeout=self.timeout) as resp:  # nosec
+            with urlopen(request(SPEC), timeout=self.timeout, expect_json=True) as resp:  # nosec
                 version = json.loads(resp.read().decode("utf-8"))["info"]["version"]
             with urlopen(request(ANNOTATIONS), timeout=self.timeout) as resp:  # nosec
                 payload = resp.read()

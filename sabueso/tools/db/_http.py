@@ -10,6 +10,13 @@
 - **What is not retried.** A timeout: the source has already had its time, and asking
   again would multiply it. Any other error reaches the client unchanged, which keeps
   its own reading: a 404 is "not found", never a failure.
+- **An unreadable answer** (#97). A client that reads JSON asks with
+  ``expect_json=True``: a 200 whose body is empty or not JSON is asked again, the same
+  number of times, since services sometimes answer a request with a page that is not the
+  answer. A second failure reaches the client, which reports it as an error.
+- **Retries are recorded** (#97). Inside ``noting_retries()`` (a card's build), each
+  retry is noted with its source and reason, and the card lists them
+  (``quality.retries``): an answer that needed a retry is never silent.
 
 Clients import ``urlopen`` from here instead of ``urllib.request``.
 
@@ -30,12 +37,14 @@ Clients import ``urlopen`` from here instead of ``urllib.request``.
 
 from __future__ import annotations
 
+import contextlib
 import contextvars
 import io
+import json
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
-from typing import Any, Callable, Dict, Iterable, List, Tuple
+from typing import Any, Callable, Dict, Iterable, Iterator, List, Tuple
 from urllib.error import HTTPError, URLError
 from urllib.request import Request
 from urllib.request import urlopen as _urlopen
@@ -43,7 +52,48 @@ from urllib.request import urlopen as _urlopen
 RETRIES = 2
 BACKOFF = 1.5  # seconds, doubled on each retry
 MAX_WAIT = 20.0
-TRANSIENT = {429, 502, 503, 504}
+#: HTTP statuses retried. A 500 is a server error that often passes (ChEMBL's
+#: document endpoint answered one on 2026-10-01 and the next request), and every
+#: Sabueso request is a read.
+TRANSIENT = {429, 500, 502, 503, 504}
+_RETRIED: contextvars.ContextVar = contextvars.ContextVar(
+    "sabueso_retried", default=None
+)
+
+
+@contextlib.contextmanager
+def noting_retries() -> Iterator[List[Dict[str, Any]]]:
+    """The retries made inside the block (a card's build): ``[{source, reason, url}]``."""
+    outer = _RETRIED.get()
+    noted: List[Dict[str, Any]] = []
+    token = _RETRIED.set(noted)
+    try:
+        yield noted
+    finally:
+        _RETRIED.reset(token)
+        if outer is not None:
+            outer.extend(noted)
+
+
+def _note_retry(url: str, reason: str) -> None:
+    noted = _RETRIED.get()
+    if noted is not None:
+        noted.append({"source": _source(), "reason": reason, "url": url})
+
+
+def retries_summary(noted: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """What a card records of its build's retries (``quality.retries``): per source and
+    reason, how many."""
+    counts: Dict[Tuple[Any, str], int] = {}
+    for item in noted:
+        key = (item.get("source"), item["reason"])
+        counts[key] = counts.get(key, 0) + 1
+    return [
+        {"source": source, "reason": reason, "count": count}
+        for (source, reason), count in sorted(
+            counts.items(), key=lambda kv: (str(kv[0][0]), kv[0][1])
+        )
+    ]
 
 
 def user_agent() -> str:
@@ -152,10 +202,37 @@ def _kept(headers: Any) -> Dict[str, str]:
     return {k: headers.get(k) for k in KEPT_HEADERS if headers and headers.get(k)}
 
 
-def urlopen(target: Any, timeout: float = 30.0, sleep=time.sleep):
+def urlopen(
+    target: Any, timeout: float = 30.0, sleep=time.sleep, expect_json: bool = False
+):
     """``urllib.request.urlopen`` with Sabueso's user agent and retries for transient
-    failures, and the answer archived when an archive is recording; see the module
+    failures, and the answer archived when an archive is recording; with
+    ``expect_json``, a 200 whose body is not JSON is asked again. See the module
     docstring."""
+    if not expect_json:
+        return _urlopen_once(target, timeout, sleep)
+    for attempt in range(RETRIES + 1):
+        answer = _urlopen_once(target, timeout, sleep)
+        with answer:
+            content = answer.read()
+            status = getattr(answer, "status", 200)
+            headers = answer.headers
+        if _readable_json(content) or attempt == RETRIES:
+            return Answer(content, status, headers, getattr(answer, "retrieved_at", ""))
+        _note_retry(_named(target).full_url, "unreadable_body")
+        sleep(_wait(attempt, None))
+    raise AssertionError("unreachable")  # pragma: no cover
+
+
+def _readable_json(content: bytes) -> bool:
+    try:
+        json.loads(content.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError):
+        return False
+    return True
+
+
+def _urlopen_once(target: Any, timeout: float, sleep):
     from sabueso.tools.db import _archive, _mirror
 
     mode = _archive.active()
@@ -260,10 +337,12 @@ def _open(target: Any, timeout: float, sleep):
         except HTTPError as exc:
             if exc.code not in TRANSIENT or attempt == RETRIES:
                 raise
+            _note_retry(named.full_url, f"HTTP {exc.code}")
             sleep(_wait(attempt, exc))
         except URLError as exc:
             if _timed_out(exc) or attempt == RETRIES:
                 raise
+            _note_retry(named.full_url, "connection")
             sleep(_wait(attempt, exc))
     raise AssertionError("unreachable")  # pragma: no cover
 

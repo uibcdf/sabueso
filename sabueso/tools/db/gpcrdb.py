@@ -44,7 +44,9 @@ class OnlineGPCRdbClient:
     def _get(self, path: str, what: str) -> Dict[str, Any]:
         retrieval = stamp(SOURCE)
         try:
-            with urlopen(f"{API}/{path}", timeout=self.timeout) as resp:
+            with urlopen(
+                f"{API}/{path}", timeout=self.timeout, expect_json=True
+            ) as resp:
                 found = json.loads(resp.read().decode("utf-8"))
         except HTTPError as exc:
             if exc.code == 404:

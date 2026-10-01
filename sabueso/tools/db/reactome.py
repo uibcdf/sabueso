@@ -30,9 +30,18 @@ CONTENT = "https://reactome.org/ContentService/data"
 KEPT = ("stId", "displayName", "speciesName", "isInferred", "schemaClass")
 
 
+#: The one endpoint that answers plain text; every other answers JSON, and an
+#: unreadable answer is asked again (#97).
+TEXT_PATHS = ("database/version",)
+
+
 def _get(path: str, timeout: float, missing_ok: bool = False) -> Any:
     try:
-        with urlopen(request(f"{CONTENT}/{path}"), timeout=timeout) as resp:  # nosec
+        with urlopen(
+            request(f"{CONTENT}/{path}"),
+            timeout=timeout,
+            expect_json=path not in TEXT_PATHS,
+        ) as resp:  # nosec
             body = resp.read().decode("utf-8")
     except HTTPError as exc:
         if exc.code == 404 and missing_ok:

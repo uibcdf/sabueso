@@ -99,6 +99,7 @@ class OnlineGnomADClient:
             with urlopen(  # nosec - trusted endpoint
                 request(API, data=body, headers={"Content-Type": "application/json"}),
                 timeout=self.timeout,
+                expect_json=True,
             ) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
@@ -143,6 +144,7 @@ class OnlineGnomADClient:
                         API, data=body, headers={"Content-Type": "application/json"}
                     ),
                     timeout=self.timeout,
+                    expect_json=True,
                 ) as resp:
                     data = json.loads(resp.read().decode("utf-8")).get("data") or {}
             except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:

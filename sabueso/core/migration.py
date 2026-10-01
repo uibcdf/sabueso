@@ -273,6 +273,9 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             {"path": path, "filled_by": "uniref", "entity_types": ("protein",)}
             for path in ("identifiers.uniref", "relationships.clustered_with")
         ),
+        # quality.retries (#97) is not listed: it records a build's retries, present
+        # only when the build asked a request again, so its absence is no gap (like
+        # quality.retrievals, #100).
     ],
 }
 

@@ -3,7 +3,7 @@
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
   - `0.3.9` is current, not yet released: `identifiers.uniref` and `clustered_with`
-    (UniProt's UniRef clusters, never identity, #103);
+    (UniProt's UniRef clusters, never identity, #103), and `quality.retries` (#97);
   - `0.3.8` is the schema of release 0.8.0: it records the ordering rule of a capped
     source in its enrichment record (`record_order` for BindingDB, `row_order` for
     PubChem BioAssay, #98), gnomAD's consequence on the canonical transcript
@@ -696,6 +696,11 @@ stated by a source, so they are not `value`/`source_assertion_ids` nodes:
   answer (`source` is the SourceAssertion source name of the client that asked)
   the build received, in order, each kept in the archive under its `ref`
   (`sabueso:retrieval:sha256:…`);
+- `retries` (#97, schema 0.3.9, only when a request was asked again): `[{source,
+  reason, count}]`, per source and reason (`HTTP 429`, `HTTP 500`, `HTTP 502`,
+  `HTTP 503`, `HTTP 504`, `connection`, `unreadable_body`, a 200 whose body was not the
+  JSON asked for). A retry that ended in an answer is listed here; one that did not is
+  also the source's `error` in `enrichments`;
 - `entity_resolution`: the resolution trace;
 - `terms_profile` (#94, since 0.3.7): the terms profile the card was built under, when
   one was asked: `{profile, use, rule: terms_profile@1, excluded: [{source, reason}]}`.

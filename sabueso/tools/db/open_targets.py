@@ -90,7 +90,7 @@ class OnlineOpenTargetsClient:
             GRAPHQL, data=body, headers={"Content-Type": "application/json"}
         )
         try:
-            with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted
+            with urlopen(request, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted
                 data = json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"Open Targets request failed: {exc}") from exc

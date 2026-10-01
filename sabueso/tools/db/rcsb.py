@@ -125,7 +125,7 @@ class OnlineRCSBClient:
             RCSB_GRAPHQL, data=body, headers={"Content-Type": "application/json"}
         )
         try:
-            with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
+            with urlopen(request, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 return json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"RCSB request for {pdb_id} failed: {exc}") from exc

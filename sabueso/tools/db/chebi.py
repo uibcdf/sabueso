@@ -79,6 +79,7 @@ class OnlineChEBIClient:
                         headers={"Content-Type": "application/json"},
                     ),
                     timeout=self.timeout,
+                    expect_json=True,
                 ) as resp:
                     answer = json.loads(resp.read().decode("utf-8"))
             except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:

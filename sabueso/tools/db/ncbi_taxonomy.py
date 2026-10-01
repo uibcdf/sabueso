@@ -51,7 +51,9 @@ class OnlineNCBITaxonomyClient:
             headers = {"api-key": api_key} if api_key else {}
             try:
                 with urlopen(
-                    request(url, headers=headers), timeout=self.timeout
+                    request(url, headers=headers),
+                    timeout=self.timeout,
+                    expect_json=True,
                 ) as resp:  # nosec
                     data = json.loads(resp.read().decode("utf-8"))
             except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:

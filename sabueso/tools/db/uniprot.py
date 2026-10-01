@@ -130,7 +130,7 @@ class OnlineUniProtClient:
         )
         retrieval = stamp("UniProt")
         try:
-            with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
+            with urlopen(request, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 return json.loads(resp.read().decode("utf-8")), retrieval.value
         except HTTPError as exc:
             if exc.code == 404:
@@ -162,7 +162,9 @@ class OnlineUniProtClient:
         retrieval = stamp("UniProt")
         try:
             with urlopen(  # nosec - trusted endpoint
-                f"{UNIPROT_REST}/search?{params}", timeout=self.timeout
+                f"{UNIPROT_REST}/search?{params}",
+                timeout=self.timeout,
+                expect_json=True,
             ) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
                 results = data.get("results", [])

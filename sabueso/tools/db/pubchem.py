@@ -65,7 +65,7 @@ class OnlinePubChemClient:
         url = f"{PUBCHEM_PUG}/{cid}/property/{quote(PROPERTIES, safe=',')}/JSON"
         retrieval = stamp("PubChem")
         try:
-            with urlopen(url, timeout=self.timeout) as resp:  # nosec - trusted endpoint
+            with urlopen(url, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
         except HTTPError as exc:
             if exc.code in (400, 404):
@@ -91,7 +91,9 @@ class OnlinePubChemClient:
         data = urlencode({notation: structure}).encode("utf-8")
         retrieval = stamp("PubChem")
         try:
-            with urlopen(request(url, data=data), timeout=self.timeout) as resp:
+            with urlopen(
+                request(url, data=data), timeout=self.timeout, expect_json=True
+            ) as resp:
                 body = json.loads(resp.read().decode("utf-8"))
         except HTTPError as exc:
             if exc.code == 404:

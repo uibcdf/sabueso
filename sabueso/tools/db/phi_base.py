@@ -74,7 +74,7 @@ def split_release(data: Dict[str, Any]) -> Dict[str, List[Dict[str, Any]]]:
 
 def _get_json(url: str, timeout: float) -> Dict[str, Any]:
     try:
-        with urlopen(url, timeout=timeout) as resp:  # nosec - trusted endpoint
+        with urlopen(url, timeout=timeout, expect_json=True) as resp:  # nosec - trusted endpoint
             return json.loads(resp.read().decode("utf-8"))
     except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
         raise ConnectorError(f"PHI-base release lookup failed: {exc}") from exc

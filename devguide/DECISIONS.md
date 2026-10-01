@@ -1723,3 +1723,23 @@ uibcdf/sabueso#103, from the TcTIM pilot (REQ-TCTIM-009).
   `identity` now asks UniRef; `@3`, published in 0.8.0, is unchanged.
 - **Card schema 0.3.9**, since 0.3.8 is published.
 
+## Unreadable answers are asked again, and retries are recorded (2026-10-01)
+uibcdf/sabueso#97.
+- **What failed.** In eight full builds of the TcTIM/HsTIM baseline in one day:
+  - BindingDB failed three times, each a 200 whose body was not JSON, answered
+    normally minutes later;
+  - ChEMBL's document endpoint answered HTTP 500 once;
+  - OMA answered 502 to about one request in three.
+- **A client that reads JSON says so** (`urlopen(..., expect_json=True)`). A 200 whose
+  body is empty or not JSON is asked again, like a transient status. A second failure
+  reaches the client, which reports an `error`.
+  - InterPro is not marked: it answers an empty body when a protein has no residues,
+    and that is an answer.
+  - Reactome's version endpoint answers plain text, and is the one Reactome request
+    not marked.
+- **HTTP 500 is retried.** Every Sabueso request is a read, and 500 has passed on the
+  next request.
+- **Never silent.** Each retry is noted with its source and reason, and the card lists
+  them per source and reason (`quality.retries`, schema 0.3.9). An answer that needed a
+  retry is distinguishable from one that came at once.
+

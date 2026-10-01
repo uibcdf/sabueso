@@ -79,7 +79,9 @@ class OnlineEuropePMCClient:
             }
             try:
                 with urlopen(  # nosec - trusted endpoint
-                    request(f"{SEARCH}?{urlencode(params)}"), timeout=self.timeout
+                    request(f"{SEARCH}?{urlencode(params)}"),
+                    timeout=self.timeout,
+                    expect_json=True,
                 ) as resp:
                     page = json.loads(resp.read().decode("utf-8"))
             except HTTPError as exc:

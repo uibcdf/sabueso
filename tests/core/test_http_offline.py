@@ -91,6 +91,71 @@ def test_a_refused_connection_is_retried(monkeypatch):
     assert _http.urlopen("https://example.org/x", sleep=lambda s: None) == "ok"
 
 
+def test_a_server_error_is_retried(monkeypatch):
+    # ChEMBL's document endpoint answered 500 once on 2026-10-01, then normally (#97).
+    seen = []
+    outcomes = [_http_error(500), "ok"]
+    monkeypatch.setattr(_http, "_urlopen", _opener(outcomes, seen))
+    assert _http.urlopen("https://example.org/x", sleep=lambda s: None) == "ok"
+    assert len(seen) == 2
+
+
+# --- Unreadable answers, and retries recorded (#97) -----------------------------------
+
+
+def test_an_unreadable_json_answer_is_asked_again(monkeypatch):
+    # BindingDB answered a 200 whose body was not JSON, then 17 records (#97).
+    seen = []
+    outcomes = [_Response(b"<html>busy</html>"), _Response(b'{"records": []}')]
+    monkeypatch.setattr(_http, "_urlopen", _opener(outcomes, seen))
+    with _http.noting_retries() as noted:
+        _http.stamp("BindingDB")
+        answer = _http.urlopen(
+            "https://example.org/x", sleep=lambda s: None, expect_json=True
+        )
+    assert answer.read() == b'{"records": []}'
+    assert len(seen) == 2
+    assert noted == [
+        {
+            "source": "BindingDB",
+            "reason": "unreadable_body",
+            "url": "https://example.org/x",
+        }
+    ]
+
+
+def test_a_body_unreadable_every_time_reaches_the_client(monkeypatch):
+    seen = []
+    outcomes = [_Response(b"")] * (_http.RETRIES + 1)
+    monkeypatch.setattr(_http, "_urlopen", _opener(outcomes, seen))
+    answer = _http.urlopen(
+        "https://example.org/x", sleep=lambda s: None, expect_json=True
+    )
+    assert answer.read() == b""  # the client reads it, and reports its error
+    assert len(seen) == _http.RETRIES + 1
+
+
+def test_without_expect_json_a_text_answer_is_not_asked_again(monkeypatch):
+    seen = []
+    monkeypatch.setattr(_http, "_urlopen", _opener([_Response(b"Release 97")], seen))
+    assert _http.urlopen("https://example.org/version").read() == b"Release 97"
+    assert len(seen) == 1
+
+
+def test_retries_are_summarized_per_source_and_reason(monkeypatch):
+    outcomes = [_http_error(502), _http_error(502), "ok", _http_error(500), "ok"]
+    monkeypatch.setattr(_http, "_urlopen", _opener(outcomes, []))
+    with _http.noting_retries() as noted:
+        _http.stamp("OMA")
+        _http.urlopen("https://example.org/a", sleep=lambda s: None)
+        _http.stamp("ChEMBL")
+        _http.urlopen("https://example.org/b", sleep=lambda s: None)
+    assert _http.retries_summary(noted) == [
+        {"source": "ChEMBL", "reason": "HTTP 500", "count": 1},
+        {"source": "OMA", "reason": "HTTP 502", "count": 2},
+    ]
+
+
 # --- Many requests to one service (#98) ------------------------------------------------
 
 
@@ -226,3 +291,29 @@ def test_requests_made_by_threads_are_archived_too(tmp_path, monkeypatch):
         answers = _http.gather(get, range(5), workers=3)
     assert [a for _, a in answers][0] == b"https://example.org/0"
     assert len(made) == 5 and archive.stats()["records"] == 5
+
+
+def test_a_card_lists_the_retries_of_its_build():
+    import sabueso
+    from sabueso.resolver import EntityResolver, FixtureUniProtClient
+    from sabueso.tools.db.uniref import FixtureUniRefClient
+
+    class Unstable(FixtureUniRefClient):
+        def clusters(self, accession):
+            _http.stamp("UniProt")
+            _http._note_retry("https://example.org/uniref", "HTTP 502")
+            return super().clusters(accession)
+
+    card, _ = sabueso.resolve(
+        "P52270",
+        resolver=EntityResolver(FixtureUniProtClient("temp_data")),
+        uniref=True,
+        uniref_client=Unstable("temp_data"),
+    )
+    assert card.quality["retries"] == [
+        {"source": "UniProt", "reason": "HTTP 502", "count": 1}
+    ]
+    calm, _ = sabueso.resolve(
+        "P52270", resolver=EntityResolver(FixtureUniProtClient("temp_data"))
+    )
+    assert "retries" not in calm.quality

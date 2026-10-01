@@ -142,20 +142,28 @@ def resolve(
 
     Inside ``RetrievalArchive.recording()``, every answer the build receives is
     archived, and the card lists them (``card.quality["retrievals"]``, #100).
+
+    A request asked again (a transient failure, or an unreadable answer) is listed per
+    source and reason in ``card.quality["retries"]`` (#97).
     """
-    from sabueso.tools.db import _archive, _mirror
+    from sabueso.tools.db import _archive, _http, _mirror
 
     mode = _archive.active()
-    if mode is None:
-        card, resolution = _resolve(query, entity_type, profile, curations, options)
-        if card is not None and _mirror.active() is not None:
-            _not_asked(card)
-        return card, resolution
-    with _archive.collecting() as made:
-        card, resolution = _resolve(query, entity_type, profile, curations, options)
-    if card is not None:
-        card.quality["retrievals"] = _archive.manifest(mode, made)
-        _not_asked(card)
+    with _http.noting_retries() as retried:
+        if mode is None:
+            card, resolution = _resolve(query, entity_type, profile, curations, options)
+            if card is not None and _mirror.active() is not None:
+                _not_asked(card)
+        else:
+            with _archive.collecting() as made:
+                card, resolution = _resolve(
+                    query, entity_type, profile, curations, options
+                )
+            if card is not None:
+                card.quality["retrievals"] = _archive.manifest(mode, made)
+                _not_asked(card)
+    if card is not None and retried:
+        card.quality["retries"] = _http.retries_summary(retried)
     return card, resolution
 
 

@@ -33,5 +33,5 @@ def fetch_pdb_json(pdb_id: str) -> Dict[str, Any]:
         "sabueso.tools.db.pdb.fetch_pdb_json", "sabueso.tools.db.rcsb.get_entry(pdb_id)"
     )
     url = f"https://data.rcsb.org/rest/v1/core/entry/{pdb_id}"
-    with urlopen(url, timeout=30) as resp:  # nosec - expected trusted endpoint
+    with urlopen(url, timeout=30, expect_json=True) as resp:  # nosec - expected trusted endpoint
         return json.loads(resp.read().decode("utf-8"))

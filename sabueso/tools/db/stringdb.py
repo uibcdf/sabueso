@@ -40,7 +40,7 @@ def _get(endpoint: str, params: Dict[str, Any], timeout: float) -> Any:
         {**params, "caller_identity": CALLER_IDENTITY}
     )
     try:
-        with urlopen(url, timeout=timeout) as resp:  # nosec - trusted endpoint
+        with urlopen(url, timeout=timeout, expect_json=True) as resp:  # nosec - trusted endpoint
             return json.loads(resp.read().decode("utf-8"))
     except HTTPError as exc:
         if exc.code == 404:

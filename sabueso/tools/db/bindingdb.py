@@ -84,7 +84,9 @@ class OnlineBindingDBClient:
         )
         retrieval = stamp("BindingDB")
         try:
-            with urlopen(f"{BINDINGDB_REST}?{query}", timeout=self.timeout) as resp:  # nosec
+            with urlopen(
+                f"{BINDINGDB_REST}?{query}", timeout=self.timeout, expect_json=True
+            ) as resp:  # nosec
                 data = json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(

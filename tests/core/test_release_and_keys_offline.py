@@ -80,7 +80,7 @@ def test_the_ncbi_key_is_sent_but_never_echoed(monkeypatch):
 
     seen = []
 
-    def failing(target, timeout):
+    def failing(target, timeout, expect_json=False):
         seen.append(target)
         url = target if isinstance(target, str) else target.full_url
         raise HTTPError(url, 500, f"boom at {url}", None, None)

@@ -195,7 +195,10 @@ schema:
     a sequence without an entry), with qualifiers cluster, identity_level, member_id,
     organism, taxon_id, sequence_length, uniref100 and same_uniref100. They are
     UniProt's statements of sequence similarity, never identity (uibcdf/sabueso#103).
-    Additive, so a 0.3.8 card is a valid 0.3.9 card without them.
+    A card also lists, in quality.retries, the requests its build asked again, per
+    source and reason (a transient HTTP status, a connection, or an unreadable answer),
+    each with how many (uibcdf/sabueso#97). Additive, so a 0.3.8 card is a valid 0.3.9
+    card without them.
 card_base:
   meta:
     card_id:
