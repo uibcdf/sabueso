@@ -1,0 +1,16 @@
+{
+ "entry_nr": 25469635,
+ "omaid": "TRYCC03899",
+ "canonicalid": "Q4DV43",
+ "sequence_md5": "4d5cdd67639abbf78fef917291c15d60",
+ "sequence_length": 251,
+ "species": {
+  "code": "TRYCC",
+  "taxon_id": 353153,
+  "species": "Trypanosoma cruzi (strain CL Brener)",
+  "genome_url": "https://omabrowser.org/api/genome/TRYCC/"
+ },
+ "oma_group": 1435160,
+ "oma_hog_id": "HOG:F1075510.1a",
+ "is_main_isoform": true
+}

@@ -91,6 +91,8 @@ def resolve_protein_card(
     sabdab_client: Any | None = None,
     oma: Dict[str, Any] | None = None,
     oma_client: Any | None = None,
+    uniref: bool = False,
+    uniref_client: Any | None = None,
     klifs: Dict[str, Any] | None = None,
     klifs_client: Any | None = None,
     gpcrdb: Dict[str, Any] | None = None,
@@ -192,6 +194,12 @@ def resolve_protein_card(
     default all, up to 5000) adds OMA's orthologs of this protein (``ortholog_of``),
     only when OMA states the accession with an exact sequence match. Each ortholog is a
     UniProt accession when OMA or UniProt states one, else its OMA id.
+
+    ``uniref`` adds the UniRef clusters UniProt places the entry in
+    (``identifiers.uniref``) and, as ``clustered_with``, the other members of its
+    UniRef90 cluster: related sequences, never the same entity (a genome-strain entry of
+    the same protein meets the reference entry here). ``Card.sequence_differences``
+    compares two cards' sequences.
 
     ``klifs`` (e.g. ``{}`` or ``{"limit": 100}``; default all, up to 5000 structures)
     adds, for a kinase KLIFS states is this UniProt entry, its classification (group,
@@ -360,6 +368,7 @@ def resolve_protein_card(
         "skempi": (skempi, skempi_client),
         "sabdab": (sabdab, sabdab_client),
         "oma": (oma, oma_client),
+        "uniref": (uniref, uniref_client),
         "klifs": (klifs, klifs_client),
         "gpcrdb": (gpcrdb, gpcrdb_client),
         "medgen": (medgen, medgen_client),

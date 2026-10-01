@@ -40,6 +40,7 @@ from sabueso.tools.db.phi_base import FixturePHIBaseClient
 from sabueso.tools.db.reactome import FixtureReactomeClient
 from sabueso.tools.db.sabdab import FixtureSAbDabClient
 from sabueso.tools.db.skempi import FixtureSKEMPIClient
+from sabueso.tools.db.uniref import FixtureUniRefClient
 
 
 @pytest.fixture(scope="module")
@@ -68,6 +69,7 @@ def clients():
         gpcrdb_client=FixtureGPCRdbClient("temp_data"),
         sabdab_client=FixtureSAbDabClient("temp_data"),
         oma_client=FixtureOMAClient("temp_data"),
+        uniref_client=FixtureUniRefClient("temp_data"),
     )
 
 
@@ -106,8 +108,8 @@ def test_a_query_is_declared_and_normalized(query):
     assert sabueso.KnowledgeQuery.from_dict(query.to_dict()) == query
     # What the aspects ask of the sources is fixed per mapping version. The options are
     # derived from the declared enrichers, so a new enricher in an aspect's areas fails
-    # here: that is a new mapping version (packet_aspects@4), never a silent change.
-    assert ASPECT_MAPPING == "packet_aspects@3"
+    # here: that is a new mapping version (packet_aspects@5), never a silent change.
+    assert ASPECT_MAPPING == "packet_aspects@4"
     assert query.options() == {
         "clinvar": {},
         "diseases": {},
@@ -127,6 +129,7 @@ def test_a_query_is_declared_and_normalized(query):
         "klifs": {},
         "gpcrdb": {},
         "sabdab": True,
+        "uniref": True,
         "medgen": True,
         "disease_identity": True,
         "chembl": {},
@@ -417,5 +420,5 @@ def test_orthology_is_asked_by_name_and_states_only_what_oma_states(clients):
 
 def test_packets_of_different_aspect_mappings_are_not_compared(packet):
     older = packet.to_dict()
-    older["aspect_mapping"] = "packet_aspects@2"
+    older["aspect_mapping"] = "packet_aspects@3"
     assert packet.same_knowledge(sabueso.KnowledgePacket(older)) is None

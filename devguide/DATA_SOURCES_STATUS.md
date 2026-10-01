@@ -383,6 +383,13 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - The classic summary file of SAbDab now answers with the SAbDab2 web application; the annotations file of the new API is read instead. It carries no affinities.
   - Licence CC BY 4.0 (the API's description).
 
+### UniRef (UniProt) — sequence clusters
+- **Status**: implemented as an enricher (`uniref=True`, #103), card schema 0.3.9
+- **Access**: UniProt's REST API: the entry's clusters (`uniref/search`), then the members of its UniRef90 cluster (500 per page, up to 5000); saved answers for P52270 in `temp_data/uniref/`; `tools.db.uniref.get_clusters`
+- **Quality**: green, verified live on TcTIM (P52270, 2026-10-01): UniRef100_P52270, UniRef90_P52270, UniRef50_P04789; 6 members `clustered_with` it, among them CL Brener's Q4DV43 (another UniRef100 cluster) and two UniParc sequences of its own UniRef100 cluster.
+- **Coverage**: `identifiers.uniref`, `relationships.clustered_with`
+- **Notes**: a cluster is UniProt's statement of similarity, never identity; the members stay other entities. Licence as UniProtKB (CC BY 4.0).
+
 ### OMA — orthologs
 - **Status**: implemented as an enricher (`oma={}`, #83), card schema 0.3.8
 - **Access**: REST API, no key (`OnlineOMAClient`): the accession's cross-references, its orthologs (one request), and UniProt's accessions for the orthologs' Swiss-Prot entry names (100 per request); saved answers in `temp_data/oma/`; `tools.db.oma.get_orthologs`

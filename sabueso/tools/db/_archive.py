@@ -55,6 +55,7 @@ KEPT_HEADERS = (
     "InterPro-Version",
     "X-Total-Results",
     "X-UniProt-Release",
+    "Link",
     "x-throttling-control",
 )
 

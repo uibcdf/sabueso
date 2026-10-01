@@ -21,19 +21,31 @@ class OMA(Enricher):
         return OnlineOMAClient()
 
     def fetch(self, client, request, options):
-        from sabueso.core.errors import RecordNotFoundError
+        from sabueso.core.errors import ConnectorError, RecordNotFoundError
         from sabueso.mappings.oma import joined, mapped_to, names_of
 
         accession = request.identifier
         xrefs = client.xrefs(accession)["record"]
         if joined(xrefs, accession) is None:
             target = mapped_to(xrefs, accession)
+            if not target:
+                raise RecordNotFoundError(f"OMA states no exact match for {accession}")
+            # Name the entry OMA chose by its own canonical id (often another strain's
+            # UniProt entry), so that its card can be asked (#103).
+            canonical = None
+            try:
+                canonical = client.protein(target["oma_id"])["record"].get(
+                    "canonicalid"
+                )
+            except (RecordNotFoundError, ConnectorError):
+                pass
+            named = (
+                f"{target['oma_id']} ({canonical})" if canonical else target["oma_id"]
+            )
             raise RecordNotFoundError(
-                f"OMA maps {accession} to {target.get('oma_id')}, whose sequence is "
-                f"not the accession's (seq_match {target.get('seq_match')}); its "
-                "orthologs are not joined"
-                if target
-                else f"OMA states no exact match for {accession}"
+                f"OMA maps {accession} to {named}, whose sequence is not the "
+                f"accession's (seq_match {target.get('seq_match')}); its orthologs are "
+                "not joined"
             )
         found = client.orthologs(accession, options.get("rel_type"))
         orthologs = found["record"]

@@ -40,6 +40,7 @@ from sabueso.tools.db import (
     stringdb,
     unichem,
     uniprot,
+    uniref,
 )
 
 ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
@@ -144,6 +145,9 @@ CALLS = {
     ),
     "oma.get_orthologs": lambda: oma.get_orthologs(
         "P60174", client=oma.FixtureOMAClient("temp_data")
+    ),
+    "uniref.get_clusters": lambda: uniref.get_clusters(
+        "P52270", client=uniref.FixtureUniRefClient("temp_data")
     ),
     "sabdab.get_complexes": lambda: sabdab.get_complexes(
         ["9MQI"], client=sabdab.FixtureSAbDabClient("temp_data")

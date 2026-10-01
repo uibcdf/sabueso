@@ -88,7 +88,7 @@ def test_an_accession_oma_maps_to_another_protein_is_not_joined(resolver):
     card = _card(resolver, accession="P52270")
     record = _record(card)
     assert record["status"] == "not_found"
-    assert "TRYCC03899" in record["detail"] and "modified" in record["detail"]
+    assert "TRYCC03899 (Q4DV43)" in record["detail"] and "modified" in record["detail"]
     assert card.relationships("ortholog_of") == []
 
 

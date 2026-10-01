@@ -86,6 +86,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     statements and the joint structure inventory name what they group (`@1` is still
     read, and revisions of different formats are not compared).
 - **Unreleased on main:**
+  - card schema 0.3.9 (#103): `identifiers.uniref` and `clustered_with`, UniProt's
+    UniRef clusters (`uniref=True`), never identity; `Card.sequence_differences`
+    (`equal_length_positions@1`); OMA's `not_found` names the UniProt entry it mapped
+    the accession to; `packet_aspects@4` (UniRef in `identity`);
   - OMA's client tries a request up to 4 times on HTTP 502/503: the service answers
     502 to about one request in three.
 - **Watched:** card and packet size with the default ceilings (#88).

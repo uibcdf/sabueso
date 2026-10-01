@@ -34,7 +34,8 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping, `packet_aspects@3`. It adds to `@2` the kinase and
+by a named, versioned mapping, `packet_aspects@4`. `@4` adds UniRef to `identity`
+(the entry's clusters and the entries `clustered_with` it, #103). `@3` added to `@2` the kinase and
 GPCR classifications (`identity`), kinase conformations, GPCR states and antibody
 complexes (`structures`), the kinase pocket (`ligand_sites`), GPCR segments and generic
 residue numbers (`sequence_features`), and the `orthology` aspect (OMA). Packets of

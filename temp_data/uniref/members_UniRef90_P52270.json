@@ -1,0 +1,89 @@
+{
+ "version": "2026_03",
+ "record": [
+  {
+   "memberIdType": "UniProtKB ID",
+   "memberId": "TPIS_TRYCR",
+   "organismName": "Trypanosoma cruzi",
+   "organismTaxId": 5693,
+   "sequenceLength": 251,
+   "proteinName": "Triosephosphate isomerase, glycosomal",
+   "accessions": [
+    "P52270"
+   ],
+   "uniref50Id": "UniRef50_P04789",
+   "uniref100Id": "UniRef100_P52270",
+   "uniparcId": "UPI0000110C94",
+   "seed": true,
+   "sequence": {
+    "value": "MASKPQPIAAANWKCNGSESLLVPLIETLNAATFDHDVQCVVAPTFLHIPMTKARLTNPKFQIAAQNAITRSGAFTGEVSLQILKDYGISWVVLGHSERRLYYGETNEIVAEKVAQACAAGFHVIVCVGETNEEREAGRTAAVVLTQLAAVAQKLSKEAWSRVVIAYEPVWAIGTGKVATPQQAQEVHELLRRWVRSKLGTDIAAQLRILYGGSVTAKNARTLYQMRDINGFLVGGASLKPEFVEIIEATK",
+    "length": 251,
+    "molWeight": 27329,
+    "crc64": "03010B66586C186D",
+    "md5": "8B10ED90CF2DCA684CD7C8F7CC289846"
+   }
+  },
+  {
+   "memberIdType": "UniProtKB ID",
+   "memberId": "Q4DV43_TRYCC",
+   "organismName": "Trypanosoma cruzi (strain CL Brener)",
+   "organismTaxId": 353153,
+   "sequenceLength": 251,
+   "proteinName": "Triosephosphate isomerase",
+   "accessions": [
+    "Q4DV43"
+   ],
+   "uniref50Id": "UniRef50_P04789",
+   "uniref100Id": "UniRef100_Q4DV43",
+   "uniparcId": "UPI000055E7C9"
+  },
+  {
+   "memberIdType": "UniParc",
+   "memberId": "UPI0001753D16",
+   "organismName": "Trypanosoma cruzi",
+   "organismTaxId": 5693,
+   "sequenceLength": 250,
+   "proteinName": "Triosephosphate isomerase",
+   "uniref100Id": "UniRef100_P52270"
+  },
+  {
+   "memberIdType": "UniParc",
+   "memberId": "UPI0000112D88",
+   "organismName": "Trypanosoma cruzi",
+   "organismTaxId": 5693,
+   "sequenceLength": 249,
+   "proteinName": "TRIOSEPHOSPHATE ISOMERASE",
+   "uniref100Id": "UniRef100_P52270"
+  },
+  {
+   "memberIdType": "UniParc",
+   "memberId": "UPI0003B7E045",
+   "organismName": "Trypanosoma cruzi",
+   "organismTaxId": 5693,
+   "sequenceLength": 251,
+   "proteinName": "Triosephosphate isomerase, glycosomal",
+   "uniref50Id": "UniRef50_P04789",
+   "uniref100Id": "UniRef100_UPI0003B7E045"
+  },
+  {
+   "memberIdType": "UniParc",
+   "memberId": "UPI000225A881",
+   "organismName": "Trypanosoma cruzi",
+   "organismTaxId": 5693,
+   "sequenceLength": 251,
+   "proteinName": "TIM from Trypanosoma cruzi/ TIM from Trypanosoma brucei brucei chimera protein",
+   "uniref50Id": "UniRef50_P04789",
+   "uniref100Id": "UniRef100_UPI000225A881"
+  },
+  {
+   "memberIdType": "UniParc",
+   "memberId": "UPI00018408AC",
+   "organismName": "Trypanosoma cruzi",
+   "organismTaxId": 5693,
+   "sequenceLength": 244,
+   "proteinName": "TRIOSEPHOSPHATE ISOMERASE",
+   "uniref50Id": "UniRef50_P04789",
+   "uniref100Id": "UniRef100_UPI00018408AC"
+  }
+ ]
+}

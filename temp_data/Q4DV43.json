@@ -1,0 +1,1033 @@
+{
+ "entryType": "UniProtKB unreviewed (TrEMBL)",
+ "primaryAccession": "Q4DV43",
+ "uniProtkbId": "Q4DV43_TRYCC",
+ "entryAudit": {
+  "firstPublicDate": "2005-09-13",
+  "lastAnnotationUpdateDate": "2026-09-02",
+  "lastSequenceUpdateDate": "2005-09-13",
+  "entryVersion": 97,
+  "sequenceVersion": 1
+ },
+ "annotationScore": 3.0,
+ "organism": {
+  "scientificName": "Trypanosoma cruzi (strain CL Brener)",
+  "taxonId": 353153,
+  "evidences": [
+   {
+    "evidenceCode": "ECO:0000313",
+    "source": "EMBL",
+    "id": "EAN96402.1"
+   },
+   {
+    "evidenceCode": "ECO:0000313",
+    "source": "Proteomes",
+    "id": "UP000002296"
+   }
+  ],
+  "lineage": [
+   "Eukaryota",
+   "Discoba",
+   "Euglenozoa",
+   "Kinetoplastea",
+   "Metakinetoplastina",
+   "Trypanosomatida",
+   "Trypanosomatidae",
+   "Trypanosoma",
+   "Schizotrypanum"
+  ]
+ },
+ "proteinExistence": "3: Inferred from homology",
+ "proteinDescription": {
+  "recommendedName": {
+   "fullName": {
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000256",
+      "source": "RuleBase",
+      "id": "RU363013"
+     }
+    ],
+    "value": "Triosephosphate isomerase"
+   },
+   "ecNumbers": [
+    {
+     "evidences": [
+      {
+       "evidenceCode": "ECO:0000256",
+       "source": "RuleBase",
+       "id": "RU363013"
+      }
+     ],
+     "value": "5.3.1.1"
+    }
+   ]
+  }
+ },
+ "genes": [
+  {
+   "orfNames": [
+    {
+     "evidences": [
+      {
+       "evidenceCode": "ECO:0000313",
+       "source": "EMBL",
+       "id": "EAN96402.1"
+      }
+     ],
+     "value": "Tc00.1047053508647.200"
+    }
+   ]
+  }
+ ],
+ "comments": [
+  {
+   "commentType": "CATALYTIC ACTIVITY",
+   "reaction": {
+    "name": "D-glyceraldehyde 3-phosphate = dihydroxyacetone phosphate",
+    "reactionCrossReferences": [
+     {
+      "database": "Rhea",
+      "id": "RHEA:18585"
+     },
+     {
+      "database": "ChEBI",
+      "id": "CHEBI:57642"
+     },
+     {
+      "database": "ChEBI",
+      "id": "CHEBI:59776"
+     }
+    ],
+    "ecNumber": "5.3.1.1",
+    "evidences": [
+     {
+      "evidenceCode": "ECO:0000256",
+      "source": "RuleBase",
+      "id": "RU363013"
+     }
+    ]
+   }
+  },
+  {
+   "texts": [
+    {
+     "evidences": [
+      {
+       "evidenceCode": "ECO:0000256",
+       "source": "ARBA",
+       "id": "ARBA00004742"
+      },
+      {
+       "evidenceCode": "ECO:0000256",
+       "source": "RuleBase",
+       "id": "RU363013"
+      }
+     ],
+     "value": "Carbohydrate biosynthesis; gluconeogenesis"
+    }
+   ],
+   "commentType": "PATHWAY"
+  },
+  {
+   "texts": [
+    {
+     "evidences": [
+      {
+       "evidenceCode": "ECO:0000256",
+       "source": "ARBA",
+       "id": "ARBA00004680"
+      },
+      {
+       "evidenceCode": "ECO:0000256",
+       "source": "RuleBase",
+       "id": "RU363013"
+      }
+     ],
+     "value": "Carbohydrate degradation; glycolysis; D-glyceraldehyde 3-phosphate from glycerone phosphate: step 1/1"
+    }
+   ],
+   "commentType": "PATHWAY"
+  },
+  {
+   "texts": [
+    {
+     "evidences": [
+      {
+       "evidenceCode": "ECO:0000256",
+       "source": "ARBA",
+       "id": "ARBA00011738"
+      }
+     ],
+     "value": "Homodimer"
+    }
+   ],
+   "commentType": "SUBUNIT"
+  },
+  {
+   "commentType": "SUBCELLULAR LOCATION",
+   "subcellularLocations": [
+    {
+     "location": {
+      "evidences": [
+       {
+        "evidenceCode": "ECO:0000256",
+        "source": "ARBA",
+        "id": "ARBA00060503"
+       }
+      ],
+      "value": "Glycosome",
+      "id": "SL-0129"
+     }
+    }
+   ]
+  },
+  {
+   "texts": [
+    {
+     "evidences": [
+      {
+       "evidenceCode": "ECO:0000256",
+       "source": "ARBA",
+       "id": "ARBA00007422"
+      },
+      {
+       "evidenceCode": "ECO:0000256",
+       "source": "PROSITE-ProRule",
+       "id": "PRU10127"
+      },
+      {
+       "evidenceCode": "ECO:0000256",
+       "source": "RuleBase",
+       "id": "RU363013"
+      }
+     ],
+     "value": "Belongs to the triosephosphate isomerase family"
+    }
+   ],
+   "commentType": "SIMILARITY"
+  },
+  {
+   "texts": [
+    {
+     "evidences": [
+      {
+       "evidenceCode": "ECO:0000313",
+       "source": "EMBL",
+       "id": "EAN96402.1"
+      }
+     ],
+     "value": "The sequence shown here is derived from an EMBL/GenBank/DDBJ whole genome shotgun (WGS) entry which is preliminary data"
+    }
+   ],
+   "commentType": "CAUTION"
+  }
+ ],
+ "features": [
+  {
+   "type": "Active site",
+   "location": {
+    "start": {
+     "value": 96,
+     "modifier": "EXACT"
+    },
+    "end": {
+     "value": 96,
+     "modifier": "EXACT"
+    }
+   },
+   "description": "Electrophile",
+   "evidences": [
+    {
+     "evidenceCode": "ECO:0000256",
+     "source": "PROSITE-ProRule",
+     "id": "PRU10127"
+    }
+   ]
+  },
+  {
+   "type": "Active site",
+   "location": {
+    "start": {
+     "value": 168,
+     "modifier": "EXACT"
+    },
+    "end": {
+     "value": 168,
+     "modifier": "EXACT"
+    }
+   },
+   "description": "Proton acceptor",
+   "evidences": [
+    {
+     "evidenceCode": "ECO:0000256",
+     "source": "PROSITE-ProRule",
+     "id": "PRU10127"
+    }
+   ]
+  },
+  {
+   "type": "Binding site",
+   "location": {
+    "start": {
+     "value": 12,
+     "modifier": "EXACT"
+    },
+    "end": {
+     "value": 12,
+     "modifier": "EXACT"
+    }
+   },
+   "description": "",
+   "evidences": [
+    {
+     "evidenceCode": "ECO:0000256",
+     "source": "PROSITE-ProRule",
+     "id": "PRU10127"
+    }
+   ],
+   "ligand": {
+    "name": "substrate"
+   }
+  },
+  {
+   "type": "Binding site",
+   "location": {
+    "start": {
+     "value": 14,
+     "modifier": "EXACT"
+    },
+    "end": {
+     "value": 14,
+     "modifier": "EXACT"
+    }
+   },
+   "description": "",
+   "evidences": [
+    {
+     "evidenceCode": "ECO:0000256",
+     "source": "PROSITE-ProRule",
+     "id": "PRU10127"
+    }
+   ],
+   "ligand": {
+    "name": "substrate"
+   }
+  }
+ ],
+ "keywords": [
+  {
+   "evidences": [
+    {
+     "evidenceCode": "ECO:0000256",
+     "source": "ARBA",
+     "id": "ARBA00022432"
+    },
+    {
+     "evidenceCode": "ECO:0000256",
+     "source": "RuleBase",
+     "id": "RU363013"
+    }
+   ],
+   "id": "KW-0312",
+   "category": "Biological process",
+   "name": "Gluconeogenesis"
+  },
+  {
+   "evidences": [
+    {
+     "evidenceCode": "ECO:0000256",
+     "source": "ARBA",
+     "id": "ARBA00023152"
+    },
+    {
+     "evidenceCode": "ECO:0000256",
+     "source": "RuleBase",
+     "id": "RU363013"
+    }
+   ],
+   "id": "KW-0324",
+   "category": "Biological process",
+   "name": "Glycolysis"
+  },
+  {
+   "evidences": [
+    {
+     "evidenceCode": "ECO:0000256",
+     "source": "ARBA",
+     "id": "ARBA00084116"
+    }
+   ],
+   "id": "KW-0327",
+   "category": "Cellular component",
+   "name": "Glycosome"
+  },
+  {
+   "evidences": [
+    {
+     "evidenceCode": "ECO:0000256",
+     "source": "ARBA",
+     "id": "ARBA00023235"
+    },
+    {
+     "evidenceCode": "ECO:0000256",
+     "source": "RuleBase",
+     "id": "RU363013"
+    }
+   ],
+   "id": "KW-0413",
+   "category": "Molecular function",
+   "name": "Isomerase"
+  },
+  {
+   "evidences": [
+    {
+     "evidenceCode": "ECO:0000256",
+     "source": "ARBA",
+     "id": "ARBA00023140"
+    }
+   ],
+   "id": "KW-0576",
+   "category": "Cellular component",
+   "name": "Peroxisome"
+  },
+  {
+   "evidences": [
+    {
+     "evidenceCode": "ECO:0000313",
+     "source": "Proteomes",
+     "id": "UP000002296"
+    }
+   ],
+   "id": "KW-1185",
+   "category": "Technical term",
+   "name": "Reference proteome"
+  }
+ ],
+ "references": [
+  {
+   "referenceNumber": 1,
+   "citation": {
+    "id": "16020725",
+    "citationType": "journal article",
+    "authors": [
+     "El-Sayed N.M.",
+     "Myler P.J.",
+     "Bartholomeu D.C.",
+     "Nilsson D.",
+     "Aggarwal G.",
+     "Tran A.N.",
+     "Ghedin E.",
+     "Worthey E.A.",
+     "Delcher A.L.",
+     "Blandin G.",
+     "Westenberger S.J.",
+     "Caler E.",
+     "Cerqueira G.C.",
+     "Branche C.",
+     "Haas B.",
+     "Anupama A.",
+     "Arner E.",
+     "Aslund L.",
+     "Attipoe P.",
+     "Bontempi E.",
+     "Bringaud F.",
+     "Burton P.",
+     "Cadag E.",
+     "Campbell D.A.",
+     "Carrington M.",
+     "Crabtree J.",
+     "Darban H.",
+     "da Silveira J.F.",
+     "de Jong P.",
+     "Edwards K.",
+     "Englund P.T.",
+     "Fazelina G.",
+     "Feldblyum T.",
+     "Ferella M.",
+     "Frasch A.C.",
+     "Gull K.",
+     "Horn D.",
+     "Hou L.",
+     "Huang Y.",
+     "Kindlund E.",
+     "Klingbeil M.",
+     "Kluge S.",
+     "Koo H.",
+     "Lacerda D.",
+     "Levin M.J.",
+     "Lorenzi H.",
+     "Louie T.",
+     "Machado C.R.",
+     "McCulloch R.",
+     "McKenna A.",
+     "Mizuno Y.",
+     "Mottram J.C.",
+     "Nelson S.",
+     "Ochaya S.",
+     "Osoegawa K.",
+     "Pai G.",
+     "Parsons M.",
+     "Pentony M.",
+     "Pettersson U.",
+     "Pop M.",
+     "Ramirez J.L.",
+     "Rinta J.",
+     "Robertson L.",
+     "Salzberg S.L.",
+     "Sanchez D.O.",
+     "Seyler A.",
+     "Sharma R.",
+     "Shetty J.",
+     "Simpson A.J.",
+     "Sisk E.",
+     "Tammi M.T.",
+     "Tarleton R.",
+     "Teixeira S.",
+     "Van Aken S.",
+     "Vogt C.",
+     "Ward P.N.",
+     "Wickstead B.",
+     "Wortman J.",
+     "White O.",
+     "Fraser C.M.",
+     "Stuart K.D.",
+     "Andersson B."
+    ],
+    "citationCrossReferences": [
+     {
+      "database": "PubMed",
+      "id": "16020725"
+     },
+     {
+      "database": "DOI",
+      "id": "10.1126/science.1112631"
+     }
+    ],
+    "title": "The genome sequence of Trypanosoma cruzi, etiologic agent of Chagas disease.",
+    "publicationDate": "2005",
+    "journal": "Science",
+    "firstPage": "409",
+    "lastPage": "415",
+    "volume": "309"
+   },
+   "referencePositions": [
+    "NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]"
+   ],
+   "referenceComments": [
+    {
+     "evidences": [
+      {
+       "evidenceCode": "ECO:0000313",
+       "source": "EMBL",
+       "id": "EAN96402.1"
+      },
+      {
+       "evidenceCode": "ECO:0000313",
+       "source": "Proteomes",
+       "id": "UP000002296"
+      }
+     ],
+     "value": "CL Brener",
+     "type": "STRAIN"
+    }
+   ],
+   "evidences": [
+    {
+     "evidenceCode": "ECO:0000313",
+     "source": "EMBL",
+     "id": "EAN96402.1"
+    },
+    {
+     "evidenceCode": "ECO:0000313",
+     "source": "Proteomes",
+     "id": "UP000002296"
+    }
+   ]
+  }
+ ],
+ "uniProtKBCrossReferences": [
+  {
+   "database": "EMBL",
+   "id": "AAHK01000154",
+   "properties": [
+    {
+     "key": "ProteinId",
+     "value": "EAN96402.1"
+    },
+    {
+     "key": "Status",
+     "value": "-"
+    },
+    {
+     "key": "MoleculeType",
+     "value": "Genomic_DNA"
+    }
+   ]
+  },
+  {
+   "database": "RefSeq",
+   "id": "XP_818253.1",
+   "properties": [
+    {
+     "key": "NucleotideSequenceId",
+     "value": "XM_813160.1"
+    }
+   ]
+  },
+  {
+   "database": "AlphaFoldDB",
+   "id": "Q4DV43",
+   "properties": [
+    {
+     "key": "Description",
+     "value": "-"
+    }
+   ]
+  },
+  {
+   "database": "SMR",
+   "id": "Q4DV43",
+   "properties": [
+    {
+     "key": "Description",
+     "value": "-"
+    }
+   ]
+  },
+  {
+   "database": "FunCoup",
+   "id": "Q4DV43",
+   "properties": [
+    {
+     "key": "Number of interactors",
+     "value": "649"
+    }
+   ]
+  },
+  {
+   "database": "STRING",
+   "id": "353153.Q4DV43",
+   "properties": [
+    {
+     "key": "Description",
+     "value": "-"
+    }
+   ]
+  },
+  {
+   "database": "PaxDb",
+   "id": "353153-Q4DV43",
+   "properties": [
+    {
+     "key": "Description",
+     "value": "-"
+    }
+   ]
+  },
+  {
+   "database": "GeneID",
+   "id": "3550449",
+   "properties": [
+    {
+     "key": "Description",
+     "value": "-"
+    }
+   ]
+  },
+  {
+   "database": "KEGG",
+   "id": "tcr:508647.200",
+   "properties": [
+    {
+     "key": "Description",
+     "value": "-"
+    }
+   ]
+  },
+  {
+   "database": "eggNOG",
+   "id": "KOG1643",
+   "properties": [
+    {
+     "key": "ToxonomicScope",
+     "value": "Eukaryota"
+    }
+   ]
+  },
+  {
+   "database": "InParanoid",
+   "id": "Q4DV43",
+   "properties": [
+    {
+     "key": "Description",
+     "value": "-"
+    }
+   ]
+  },
+  {
+   "database": "OMA",
+   "id": "NWKMHMT",
+   "properties": [
+    {
+     "key": "Fingerprint",
+     "value": "-"
+    }
+   ]
+  },
+  {
+   "database": "UniPathway",
+   "id": "UPA00109",
+   "properties": [
+    {
+     "key": "RectionId",
+     "value": "UER00189"
+    }
+   ]
+  },
+  {
+   "database": "UniPathway",
+   "id": "UPA00138",
+   "properties": [
+    {
+     "key": "RectionId",
+     "value": "-"
+    }
+   ]
+  },
+  {
+   "database": "Proteomes",
+   "id": "UP000002296",
+   "properties": [
+    {
+     "key": "Component",
+     "value": "Unassembled WGS sequence"
+    }
+   ]
+  },
+  {
+   "database": "GO",
+   "id": "GO:0005829",
+   "properties": [
+    {
+     "key": "GoTerm",
+     "value": "C:cytosol"
+    },
+    {
+     "key": "GoEvidenceType",
+     "value": "IEA:TreeGrafter"
+    }
+   ]
+  },
+  {
+   "database": "GO",
+   "id": "GO:0020015",
+   "properties": [
+    {
+     "key": "GoTerm",
+     "value": "C:glycosome"
+    },
+    {
+     "key": "GoEvidenceType",
+     "value": "IEA:UniProtKB-SubCell"
+    }
+   ]
+  },
+  {
+   "database": "GO",
+   "id": "GO:0004807",
+   "properties": [
+    {
+     "key": "GoTerm",
+     "value": "F:triose-phosphate isomerase activity"
+    },
+    {
+     "key": "GoEvidenceType",
+     "value": "IEA:UniProtKB-EC"
+    }
+   ]
+  },
+  {
+   "database": "GO",
+   "id": "GO:0006094",
+   "properties": [
+    {
+     "key": "GoTerm",
+     "value": "P:gluconeogenesis"
+    },
+    {
+     "key": "GoEvidenceType",
+     "value": "IEA:UniProtKB-UniPathway"
+    }
+   ]
+  },
+  {
+   "database": "GO",
+   "id": "GO:0046166",
+   "properties": [
+    {
+     "key": "GoTerm",
+     "value": "P:glyceraldehyde-3-phosphate biosynthetic process"
+    },
+    {
+     "key": "GoEvidenceType",
+     "value": "IEA:TreeGrafter"
+    }
+   ]
+  },
+  {
+   "database": "GO",
+   "id": "GO:0019563",
+   "properties": [
+    {
+     "key": "GoTerm",
+     "value": "P:glycerol catabolic process"
+    },
+    {
+     "key": "GoEvidenceType",
+     "value": "IEA:TreeGrafter"
+    }
+   ]
+  },
+  {
+   "database": "GO",
+   "id": "GO:0006096",
+   "properties": [
+    {
+     "key": "GoTerm",
+     "value": "P:glycolytic process"
+    },
+    {
+     "key": "GoEvidenceType",
+     "value": "IEA:UniProtKB-UniPathway"
+    }
+   ]
+  },
+  {
+   "database": "CDD",
+   "id": "cd00311",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "TIM"
+    },
+    {
+     "key": "MatchStatus",
+     "value": "1"
+    }
+   ]
+  },
+  {
+   "database": "FunFam",
+   "id": "3.20.20.70:FF:000020",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "Triosephosphate isomerase"
+    },
+    {
+     "key": "MatchStatus",
+     "value": "1"
+    }
+   ]
+  },
+  {
+   "database": "Gene3D",
+   "id": "3.20.20.70",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "Aldolase class I"
+    },
+    {
+     "key": "MatchStatus",
+     "value": "1"
+    }
+   ]
+  },
+  {
+   "database": "HAMAP",
+   "id": "MF_00147_B",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "TIM_B"
+    },
+    {
+     "key": "MatchStatus",
+     "value": "1"
+    }
+   ]
+  },
+  {
+   "database": "InterPro",
+   "id": "IPR013785",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "Aldolase_TIM"
+    }
+   ]
+  },
+  {
+   "database": "InterPro",
+   "id": "IPR035990",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "TIM_sf"
+    }
+   ]
+  },
+  {
+   "database": "InterPro",
+   "id": "IPR022896",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "TrioseP_Isoase_bac/euk"
+    }
+   ]
+  },
+  {
+   "database": "InterPro",
+   "id": "IPR000652",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "Triosephosphate_isomerase"
+    }
+   ]
+  },
+  {
+   "database": "InterPro",
+   "id": "IPR020861",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "Triosephosphate_isomerase_AS"
+    }
+   ]
+  },
+  {
+   "database": "NCBIfam",
+   "id": "TIGR00419",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "tim"
+    },
+    {
+     "key": "MatchStatus",
+     "value": "1"
+    }
+   ]
+  },
+  {
+   "database": "PANTHER",
+   "id": "PTHR21139",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "TRIOSEPHOSPHATE ISOMERASE"
+    },
+    {
+     "key": "MatchStatus",
+     "value": "1"
+    }
+   ]
+  },
+  {
+   "database": "PANTHER",
+   "id": "PTHR21139:SF2",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "TRIOSEPHOSPHATE ISOMERASE"
+    },
+    {
+     "key": "MatchStatus",
+     "value": "1"
+    }
+   ]
+  },
+  {
+   "database": "Pfam",
+   "id": "PF00121",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "TIM"
+    },
+    {
+     "key": "MatchStatus",
+     "value": "1"
+    }
+   ]
+  },
+  {
+   "database": "SUPFAM",
+   "id": "SSF51351",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "Triosephosphate isomerase (TIM)"
+    },
+    {
+     "key": "MatchStatus",
+     "value": "1"
+    }
+   ]
+  },
+  {
+   "database": "PROSITE",
+   "id": "PS00171",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "TIM_1"
+    },
+    {
+     "key": "MatchStatus",
+     "value": "1"
+    }
+   ]
+  },
+  {
+   "database": "PROSITE",
+   "id": "PS51440",
+   "properties": [
+    {
+     "key": "EntryName",
+     "value": "TIM_2"
+    },
+    {
+     "key": "MatchStatus",
+     "value": "1"
+    }
+   ]
+  }
+ ],
+ "sequence": {
+  "value": "MASKPQPIAAANWKCNGSESLLVPLIETLNAATFDHDVQCVVAPTFLHIPMTKARLTNPKFQIAAQNAITRSGAFTGEVSLQILKDYGIKWVVLGHSERRLYYGETNEIVAEKVAQACAAGFHVIVCVGETNEEREAGRTAAVVLTQLAAVAQKLSKEAWAHVVIAYEPVWAIGTGKVATPQQAQEVHELLRRWVRSKLGADIAAQLRILYGGSVTAKNARTLYQMRDINGFLVGGASLKPEFVEIIEATK",
+  "length": 251,
+  "molWeight": 27306,
+  "crc64": "A30B37EF7B9301D3",
+  "md5": "4D5CDD67639ABBF78FEF917291C15D60"
+ },
+ "extraAttributes": {
+  "countByCommentType": {
+   "CATALYTIC ACTIVITY": 1,
+   "PATHWAY": 2,
+   "SUBUNIT": 1,
+   "SUBCELLULAR LOCATION": 1,
+   "SIMILARITY": 1,
+   "CAUTION": 1
+  },
+  "countByFeatureType": {
+   "Active site": 2,
+   "Binding site": 2
+  },
+  "uniParcId": "UPI000055E7C9"
+ }
+}

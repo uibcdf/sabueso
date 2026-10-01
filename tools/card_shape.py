@@ -99,6 +99,7 @@ def fixture_cards() -> List[dict]:
     from sabueso.tools.db.skempi import FixtureSKEMPIClient
     from sabueso.tools.db.stringdb import FixtureStringClient
     from sabueso.tools.db.unichem import FixtureUniChemClient
+    from sabueso.tools.db.uniref import FixtureUniRefClient
 
     data = str(ROOT / "temp_data")
     resolver = EntityResolver(
@@ -127,6 +128,8 @@ def fixture_cards() -> List[dict]:
             unichem_client=FixtureUniChemClient(data),
             pubchem_bioassay=True,
             pubchem_bioassay_client=FixturePubChemBioAssayClient(data),
+            uniref=True,  # UniRef clusters and clustered_with (0.3.9, #103)
+            uniref_client=FixtureUniRefClient(data),
         )
         # HsTIM also with OMA's orthologs (0.3.8).
         from sabueso.tools.db.oma import FixtureOMAClient

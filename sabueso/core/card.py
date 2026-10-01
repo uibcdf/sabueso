@@ -10,7 +10,7 @@ from .quantities import field_node, quantity_columns, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
-CARD_SCHEMA_VERSION = "0.3.8"
+CARD_SCHEMA_VERSION = "0.3.9"
 
 
 def make_card_id(entity_type: str, subject_ref: str) -> str:
@@ -561,6 +561,14 @@ class Card:
         from .tissue_usage import variant_tissue_usage_view
 
         return variant_tissue_usage_view(self, threshold)
+
+    def sequence_differences(self, other: "Card") -> Dict[str, Any]:
+        """The positions where this card's sequence and ``other``'s differ, when both
+        have the same length, under ``equal_length_positions@1`` (#103). Nothing is
+        aligned, and no identity follows from it."""
+        from .sequences import sequence_differences_view
+
+        return sequence_differences_view(self, other)
 
     def isoform_tissue_usage(self, threshold: float = 0.1) -> Dict[str, Any]:
         """Per UniProt isoform: UniProt's tissue-specificity statements restricted to

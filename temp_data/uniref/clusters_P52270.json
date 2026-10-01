@@ -1,0 +1,20 @@
+{
+ "version": "2026_03",
+ "record": [
+  {
+   "id": "UniRef100_P52270",
+   "level": "UniRef100",
+   "member_count": 3
+  },
+  {
+   "id": "UniRef50_P04789",
+   "level": "UniRef50",
+   "member_count": 78
+  },
+  {
+   "id": "UniRef90_P52270",
+   "level": "UniRef90",
+   "member_count": 7
+  }
+ ]
+}

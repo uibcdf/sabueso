@@ -41,6 +41,7 @@ PREDICATES = frozenset(
         "subclass_of",  # disease -> broader disease term (MONDO is_a), #90
         "mentioned_in",  # protein -> publication whose text states its accession, #92
         "ortholog_of",  # protein -> protein (OMA pairwise orthology), #83
+        "clustered_with",  # protein -> protein or UniParc sequence (UniRef90), #103
     }
 )
 

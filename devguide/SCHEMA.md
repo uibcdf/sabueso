@@ -2,6 +2,8 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
+  - `0.3.9` is current, not yet released: `identifiers.uniref` and `clustered_with`
+    (UniProt's UniRef clusters, never identity, #103);
   - `0.3.8` is the schema of release 0.8.0: it records the ordering rule of a capped
     source in its enrichment record (`record_order` for BindingDB, `row_order` for
     PubChem BioAssay, #98), gnomAD's consequence on the canonical transcript
@@ -367,6 +369,16 @@ A Relationship is first-class, traceable knowledge:
     (`consequences_checked`).
   - disease hierarchy (added in #90, schema 0.3.7): `subclass_of` (disease →
     `mondo:<id>`), one per parent term MONDO states.
+  - sequence clusters (added in #103, schema 0.3.9): `identifiers.uniref`
+    (`{uniref100, uniref90, uniref50}`), and `clustered_with` (protein →
+    `uniprot:<accession>`, or `uniparc:<UPI>` for a sequence without an entry), one per
+    other member of the entry's UniRef90 cluster. Qualifiers: `cluster`,
+    `identity_level` (0.9), `member_id`, `organism`, `taxon_id`, `sequence_length`,
+    `uniref100` and `same_uniref100` (an identical sequence or a fragment of the
+    card's). UniProt's statement of similarity, never `same_as`: a reference entry and a
+    genome-strain entry of one protein stay two entities. `Card.sequence_differences`
+    lists the positions where two cards' sequences differ, for equal lengths only
+    (`equal_length_positions@1`); nothing is aligned.
   - orthologs (added in #83, schema 0.3.8): `ortholog_of` (protein → `uniprot:<acc>`,
     or `oma:<OMA id>`), one per OMA protein (`oma_id` is an identity qualifier:
     identical proteins of several strains share a UniProt entry). Only when OMA states

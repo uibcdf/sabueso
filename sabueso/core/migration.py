@@ -267,6 +267,13 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             )
         ),
     ],
+    # UniRef clusters, and the entries clustered with the card's (#103).
+    "0.3.9": [
+        *(
+            {"path": path, "filled_by": "uniref", "entity_types": ("protein",)}
+            for path in ("identifiers.uniref", "relationships.clustered_with")
+        ),
+    ],
 }
 
 #: Qualifiers every relationship of their predicate has when fetched with the schema

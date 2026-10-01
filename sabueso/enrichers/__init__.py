@@ -258,6 +258,7 @@ def _registered() -> List[Enricher]:
         sabdab,
         skempi,
         stringdb,
+        uniref,
     )
 
     return [
@@ -278,6 +279,7 @@ def _registered() -> List[Enricher]:
         skempi.ENRICHER,
         sabdab.ENRICHER,
         oma.ENRICHER,
+        uniref.ENRICHER,
         klifs.ENRICHER,
         gpcrdb.ENRICHER,
         europepmc.ENRICHER,

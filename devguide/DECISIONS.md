@@ -1698,3 +1698,28 @@ uibcdf/sabueso#102.
 - **Still open (#102):** tissues as UBERON terms, and isoforms whose transcripts gnomAD
   does not annotate.
 
+## Reference entry and genome-strain entry: related, never merged (2026-10-01)
+uibcdf/sabueso#103, from the TcTIM pilot (REQ-TCTIM-009).
+- **The case.**
+  - TcTIM's reviewed entry, P52270, carries the structures (*T. cruzi*, species
+    level).
+  - Proteome-based sources such as OMA use the genome strain's entry, CL Brener's
+    Q4DV43.
+  - The two differ at 4 of 251 positions.
+  - OMA's orthology reached the human card as Q4DV43, but did not reach TcTIM's card,
+    and nothing on the cards showed that the two entries were related.
+- **UniProt states the relation.** `uniref=True` reads the clusters UniProt places
+  the entry in (`identifiers.uniref`). For each other member of its UniRef90 cluster
+  it adds `clustered_with`, saying whether the member shares the card's UniRef100
+  cluster (an identical sequence or a fragment of it). This is similarity stated by
+  UniProt, never `same_as`.
+- **Where two sequences differ.** `Card.sequence_differences` lists differing
+  positions only for sequences of equal length (`equal_length_positions@1`). Nothing
+  is aligned: different lengths are `different_lengths`.
+- **A source that maps an accession elsewhere says where.** OMA's `not_found` now names
+  the UniProt entry of the protein it chose ("TRYCC03899 (Q4DV43)"), so that the card
+  of that entry can be asked.
+- **`packet_aspects@4`.** `identifiers.uniref` falls under `identity`'s areas, so
+  `identity` now asks UniRef; `@3`, published in 0.8.0, is unchanged.
+- **Card schema 0.3.9**, since 0.3.8 is published.
+

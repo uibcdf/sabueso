@@ -77,6 +77,29 @@ resources:
       reviewed: 2026-09-29
     module: [sabueso.tools.db.uniprot, sabueso.mappings.uniprot]
     links: ["#6", "#13"]
+  - id: uniref
+    name: UniRef (UniProt)
+    url: https://www.uniprot.org/help/uniref
+    category: targets_sequence
+    status: in_use
+    description: UniProt's sequence clusters at 100%, 90% and 50% identity, with their member entries and UniParc sequences.
+    since: 2026-10-01
+    proposed_by: "Sabueso maintainers, from the TcTIM pilot's need to relate a reference entry and a genome-strain entry (#103)"
+    decided_by: "Sabueso maintainers (2026-10-01)"
+    reason: "The clusters UniProt places an entry in (identifiers.uniref) and, as clustered_with, the other members of its UniRef90 cluster: related sequences of other strains or species, never the same entity. TcTIM's P52270 and CL Brener's Q4DV43 meet here."
+    access: "REST API (uniref/search by accession, then the UniRef90 cluster's members, 500 per page), when resolve(..., uniref=True)"
+    limit:
+      constant: sabueso.tools.db.uniref.MAX_MEMBERS
+      of: members of the entry's UniRef90 cluster
+    licence: CC BY 4.0 (as UniProtKB; its statements are UniProt's, under UniProt's terms)
+    terms:
+      source_names: ["UniProt"]
+      licence: CC-BY-4.0
+      attribution: "UniRef, UniProt Consortium (https://www.uniprot.org/), CC BY 4.0"
+      statement: https://rest.uniprot.org/help/license
+      reviewed: 2026-10-01
+    module: [sabueso.tools.db.uniref, sabueso.mappings.uniref]
+    links: ["#103"]
   - id: rcsb_pdb
     name: RCSB PDB
     url: https://www.rcsb.org/

@@ -86,6 +86,10 @@ class OnlineOMAClient:
     def xrefs(self, accession: str) -> Dict[str, Any]:
         return self._get(f"{API}/protein/{accession}/xref/", f"protein {accession}")
 
+    def protein(self, entry_id: str) -> Dict[str, Any]:
+        """An OMA protein entry: its canonical id, species and sequence length."""
+        return self._get(f"{API}/protein/{entry_id}/", f"protein {entry_id}")
+
     def orthologs(self, accession: str, rel_type: str | None = None) -> Dict[str, Any]:
         query = f"?{urlencode({'rel_type': rel_type})}" if rel_type else ""
         return self._get(
@@ -136,6 +140,9 @@ class FixtureOMAClient:
 
     def xrefs(self, accession: str) -> Dict[str, Any]:
         return self._read(f"xref_{accession}", f"protein {accession}")
+
+    def protein(self, entry_id: str) -> Dict[str, Any]:
+        return self._read(f"protein_{entry_id}", f"protein {entry_id}")
 
     def orthologs(self, accession: str, rel_type: str | None = None) -> Dict[str, Any]:
         found = self._read(f"orthologs_{accession}", f"protein {accession}")

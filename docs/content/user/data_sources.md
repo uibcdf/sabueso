@@ -7,13 +7,14 @@ The online resources Sabueso uses, has set aside, or has yet to review. To
 propose one, open a discussion in the **Data sources** category of the
 repository's GitHub Discussions; triage adds it here as *queued*.
 
-Summary: in use 37, evaluating 16, deferred 28, retired 3, out of scope 13.
+Summary: in use 38, evaluating 16, deferred 28, retired 3, out of scope 13.
 
 ## In use
 
 | Resource | Category | Access | Licence | Since |
 | --- | --- | --- | --- | --- |
 | [UniProtKB](https://www.uniprot.org/) | Targets, sequence and basic pharmacology | REST API (entries and search) | CC BY 4.0 | 2026-02-06 |
+| [UniRef (UniProt)](https://www.uniprot.org/help/uniref) | Targets, sequence and basic pharmacology | REST API (uniref/search by accession, then the UniRef90 cluster's members, 500 per page), when resolve(..., uniref=True) | CC BY 4.0 (as UniProtKB; its statements are UniProt's, under UniProt's terms) | 2026-10-01 |
 | [RCSB PDB](https://www.rcsb.org/) | Macromolecular structures, models and dynamics | GraphQL and REST APIs | CC0 1.0 | 2026-02-07 |
 | [wwPDB Chemical Component Dictionary](https://www.wwpdb.org/data/ccd) | Chemical space, synthesis, ADMET and safety | RCSB REST API | CC0 1.0 | 2026-09-23 |
 | [PDBe-KB](https://www.ebi.ac.uk/pdbe/pdbe-kb) | Binding sites, cavities and specialised families | PDBe graph API | CC BY 4.0 | 2026-09-23 |
@@ -62,6 +63,7 @@ and Sabueso warns. The other sources in use are read whole.
 | Resource | Default ceiling | Counts |
 | --- | --- | --- |
 | UniProtKB | 500 | candidates of a name or gene search (kept low on purpose; more than this is ambiguous, and the resolution records search_truncated) |
+| UniRef (UniProt) | 5000 | members of the entry's UniRef90 cluster |
 | ChEMBL | 5000 | bioactivities per target |
 | STRING | 5000 | partners at the required score (700 by default); STRING states no total, so a cut is detected by asking for one more |
 | OMA (Orthologous MAtrix) | 5000 | orthologs of the protein; oma={"limit": n} asks for fewer |

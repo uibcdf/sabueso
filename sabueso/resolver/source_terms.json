@@ -244,11 +244,11 @@
    ]
   },
   "UniProt": {
-   "registry_id": "uniprot",
+   "registry_id": "uniref",
    "licence": "CC-BY-4.0",
-   "attribution": "UniProtKB, UniProt Consortium (https://www.uniprot.org/), CC BY 4.0",
+   "attribution": "UniRef, UniProt Consortium (https://www.uniprot.org/), CC BY 4.0",
    "statement": "https://rest.uniprot.org/help/license",
-   "reviewed": "2026-09-29"
+   "reviewed": "2026-10-01"
   },
   "gnomAD": {
    "registry_id": "gnomad",

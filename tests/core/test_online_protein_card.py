@@ -153,3 +153,11 @@ def test_online_pkm_isoforms_own_exons_and_uniprot_statements():
     assert by_name["M1"]["pext"]["max"]["tissue"] == "muscle_skeletal"
     assert by_name["M1"]["uniprot_tissue_specificity"]
     assert len(by_name["M2"]["pext"]["at_or_above_threshold"]) == 49
+
+
+@pytest.mark.online
+def test_online_uniref_relates_tctim_to_its_genome_strain_entry():
+    card, _ = resolve_protein_card("P52270", uniref=True)
+    assert card.get("identifiers.uniref")["value"]["uniref90"] == "UniRef90_P52270"
+    targets = {r["object_ref"] for r in card.relationships("clustered_with")}
+    assert "uniprot:Q4DV43" in targets
