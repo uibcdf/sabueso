@@ -95,6 +95,13 @@ commit messages, issues, pull requests, release notes and documentation.
 
 ## Recording work
 
+When an incident reveals a reusable development rule, assess its scope. Put an
+accepted repository-wide rule here and a directory-specific rule in the
+appropriate nested `AGENTS.md` in the same change; otherwise track adoption
+in an owned issue. Follow `MOLI_GUIDE.md#durable-instructions-for-development-agents`.
+Report a potentially shared lesson to the owning governance issue. For work
+in the developer guide, also read `devguide/AGENTS.md`.
+
 - A decision goes to `devguide/DECISIONS.md`, and a possible future problem to
   `devguide/RISKS_AND_OPEN_QUESTIONS.md`.
 - A decision to re-evaluate later gets a GitHub issue.

@@ -56,6 +56,12 @@ For concerns internal to MolSysSuite, follow MolSysSuite governance rather than 
 
 GitHub issues are the stable identity for bugs/proposals. Durable analysis or decisions may be recorded under the owning repository's `devguide/`; small findings need no extra report.
 
+## Durable instructions for development agents
+
+When a defect or difficult investigation yields a reusable rule for future developers or agents, assess its scope. Record an accepted rule in the root `AGENTS.md` for repository-wide behavior or in a nested `AGENTS.md` for that directory. Do this with the fix or decision; otherwise open a linked adoption issue. A rule in `AGENTS.md` supplements tests and technical documentation. Point to the authoritative policy rather than copying long procedures.
+
+Repositories with a `devguide/` keep `devguide/AGENTS.md` for instructions specific to that directory: maintained guidance, active issue-backed queues, and historical archives. Report a useful local lesson to the lowest owner of a shared rule: MOLI for direct components or a cross-suite boundary, MolSysSuite for its members. Adoption by another repository requires its own decision. Follow [MOLI's agent-instruction lifecycle](https://github.com/uibcdf/moli/blob/main/devguide/governance/agent_instruction_lifecycle.md); MolSysSuite governs rollout within its members.
+
 ## Cross-component feedback
 
 When work in one component exposes a missing or limiting capability in another:
@@ -100,7 +106,11 @@ The official user-installation route for a public Python component is the `uibcd
 
 For a public release with Zenodo archival intent, maintain a README **Current release status** stating the exact version, archive evidence state, verified DOI links when they resolve, and the artifacts actually archived. `CITATION.cff` is the preferred metadata source; use `.zenodo.json` only when Zenodo-specific fields require it, because it takes precedence during ingestion. A release, integration delivery or registered DOI alone does not prove archival. Check the public record and both DOI destinations before claiming a verified archive or displaying a DOI badge. Order conditional badges as tests, coverage, deployed docs, release, DOI and verified distribution. Follow [MOLI's Zenodo policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/zenodo_policy.md) and [badge policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/repository_badges.md).
 
-When registering a new direct Python component, declare its `python-package` capability, `python_ecosystem_review` and `python_distribution_review` issues, `supported_os`, and an owner-local `os_support_review` issue and state in `moli.toml`. An incubating component may have no supported-OS claim while the review is pending. The issues record applicability, adoption evidence, and exceptions. MOLI's registry validation and scheduled component audit guard this onboarding step.
+## Starting a new MOLI component repository
+
+Register a new directly governed component in `moli.toml` before treating its repository as admitted. Start it with a root `AGENTS.md` that points to the vendored `MOLI_GUIDE.md` and states the durable-lesson and issue-feedback actions, a `devguide/AGENTS.md` that distinguishes current guidance and active issue queues from archive/history, the reporting queues/template, and the governance check. Use [MOLI's onboarding guide](https://github.com/uibcdf/moli/blob/main/devguide/governance/new_component_onboarding.md) and [agent-instruction starter](https://github.com/uibcdf/moli/blob/main/devguide/templates/component_agent_instructions.md). Run `python devtools/scripts/check_repository.py <checkout> --canonical-guide MOLI_GUIDE.md` from MOLI before calling the governance surface complete; a new repository must not depend on a later migration to acquire these instructions.
+
+When registering a new direct Python component, also declare its `python-package` capability, `python_ecosystem_review` and `python_distribution_review` issues, `supported_os`, and an owner-local `os_support_review` issue and state in `moli.toml`. An incubating component may have no supported-OS claim while the review is pending. The issues record applicability, adoption evidence, and exceptions. MOLI's registry validation and scheduled component audit guard this onboarding step. MolSysSuite owns its separate starter kit and member admission.
 
 A component may add stricter local requirements. It must not silently contradict an applicable MOLI engineering policy; deviations require a tracked exception with rationale and an exit condition.
 
