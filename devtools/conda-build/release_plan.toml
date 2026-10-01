@@ -1,6 +1,6 @@
-version = "0.8.1"
+version = "0.9.0"
 route = "staged"
-reason = "Integrity fix that affects users of 0.8.0 who read OMA orthologs: a Swiss-Prot entry name was resolved to whichever UniProt entry answered last, and a retired entry can keep the name (TPIS_HUMAN answers P60174 and the demerged P00938), so an ortholog could be named by a retired accession. Only active entries count now (379e140). Card schema 0.3.8, unchanged. Clean installed-package gates, Windows included, must pass before public visibility."
+reason = "A substantial set: UniRef clusters relate a reference entry to its genome-strain entry, never merged (#103); unreadable 200 answers and HTTP 500 are asked again, and a card lists its build's retries (#97); OMA requests are tried up to 4 times on 502/503. First publication of card schema 0.3.9 (identifiers.uniref, clustered_with, quality.retries) and packet_aspects@4. Clean installed-package gates, Windows included, must pass before public visibility."
 decision_by = "Diego Prada (Sabueso maintainer), 2026-10-01"
 required_workflows = [
   ".github/workflows/ci.yml",
