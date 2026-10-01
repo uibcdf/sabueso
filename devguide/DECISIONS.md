@@ -1791,3 +1791,12 @@ uibcdf/sabueso#102.
   0.8.0, because the field's name was shadowed by the enricher's. The knowledge state
   was right (it counts the card's items); the record is right now.
 
+## Tissue terms join the packets: `packet_aspects@5` (2026-10-01)
+uibcdf/sabueso#102, #71.
+- `biological_context` also reports GTEx's tissue terms (`annotations.tissue_terms`),
+  beside the pext they name. The aspect asks `gtex=True` with `exon_usage=True`.
+- The entry of the same day said tissue terms would wait for the next mapping. The
+  maintainers asked to proceed with packets, so `@5` is that mapping.
+- A packet of `@4` and one of `@5` are not compared (`same_knowledge` is `None`).
+- About 10 KB more per human protein (49 tissues).
+

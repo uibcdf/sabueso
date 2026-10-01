@@ -21,7 +21,7 @@ the Sabueso version that built the cards, so two assemblies of unchanged knowled
 the same ``content_id`` even when the sources were read again (``same_knowledge``).
 
 What each aspect asks the sources for, and which knowledge areas it covers, is fixed by
-the mapping ``packet_aspects@3``. It never changes once published: a change is a new
+the mapping (``packet_aspects@5`` now). It never changes once published: a change is a new
 version, and a test pins what each version asks. ``@1`` was published in 0.6.0; ``@2``
 (0.7.0) adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83), and MONDO's
 disease identity and the grouped diseases to ``disease_association`` (#90). ``@3``
@@ -30,7 +30,9 @@ states and antibody complexes to ``structures``, the kinase pocket to
 ``ligand_sites``, GPCR segments and generic numbers to ``sequence_features``, gnomAD's
 pext to ``biological_context`` (#102), and the ``orthology`` aspect (OMA), asked only
 when named (#83). ``@4`` adds UniRef to ``identity``: the entry's sequence clusters and
-the entries ``clustered_with`` it, never the same entity (#103).
+the entries ``clustered_with`` it, never the same entity (#103). ``@5`` adds GTEx's
+tissue terms (UBERON, or EFO for a cell line) to ``biological_context``, next to the
+pext they name (#102).
 
 The shared contract (query and packet shapes, references, the boundary with MOLI's
 Context Assembly) is proposed in uibcdf/moli#22; this is Sabueso's prototype of it.
@@ -53,12 +55,13 @@ PACKET_FORMAT = "knowledge_packet@2"
 #: disease statements name the statement they group, and the joint structure inventory
 #: names each role's structure by its relationship id (#88).
 READABLE_FORMATS = ("knowledge_packet@1", "knowledge_packet@2")
-ASPECT_MAPPING = "packet_aspects@4"
+ASPECT_MAPPING = "packet_aspects@5"
 #: Aspect mappings a packet can carry; packets of different mappings are not compared.
 #: ``@3`` adds KLIFS and GPCRdb (identity, structures, ligand sites, sequence features),
 #: SAbDab (structures) and the ``orthology`` aspect (OMA), which a query asks for by
 #: name: a protein has thousands of orthologs (#83, #88). ``@4`` adds UniRef to
 #: ``identity``: the entry's clusters, and the entries ``clustered_with`` it (#103).
+#: ``@5`` adds GTEx's tissue terms to ``biological_context`` (#102).
 PACKET_PREFIX = "sabueso:packet:"
 
 #: Keys left out of a content-equivalence id: when the sources were read, and which
@@ -91,7 +94,7 @@ STRUCTURE_FIELDS = (
     "annotations.antibody_complexes",
 )
 
-#: ``packet_aspects@3``: per aspect, the knowledge areas (field paths and relationships,
+#: ``packet_aspects@5``: per aspect, the knowledge areas (field paths and relationships,
 #: as ``knowledge_state`` names them) whose facts, conflicts and unknowns it reports,
 #: matched by prefix; and the options of the bespoke sources it needs. The options of
 #: declared enrichers are derived (``aspect_options``): an aspect asks every enricher
@@ -182,6 +185,7 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
             "annotations.pathway",
             "annotations.exon_usage_by_tissue",
             "annotations.isoform_coding_exons",
+            "annotations.tissue_terms",
         ),
     },
     "orthology": {
@@ -196,7 +200,7 @@ DEFAULT_ASPECTS = tuple(sorted(a for a in ASPECTS if a != "orthology"))
 
 def aspect_options(aspect: str) -> Dict[str, Any]:
     """The resolve options an aspect needs: its bespoke sources', and every declared
-    enricher answering one of its areas (``packet_aspects@4``)."""
+    enricher answering one of its areas (``packet_aspects@5``)."""
     from sabueso.enrichers import ENRICHERS
 
     options = dict(ASPECTS[aspect]["bespoke_options"])
@@ -224,7 +228,7 @@ class KnowledgeQuery:
     """A declared question about a protein, optionally beside a comparator.
 
     ``subject`` and ``comparator`` are UniProt accessions (``P60174`` or
-    ``uniprot:P60174``). ``aspects`` are names of ``packet_aspects@4`` (default: all
+    ``uniprot:P60174``). ``aspects`` are names of ``packet_aspects@5`` (default: all
     of them but ``orthology``). ``constraints``: ``bioactivity_sources``, among ChEMBL, BindingDB and
     PubChem BioAssay (default ChEMBL). Anything else is refused, never ignored.
     """
@@ -272,7 +276,7 @@ class KnowledgeQuery:
         )
 
     def options(self) -> Dict[str, Any]:
-        """The resolve options the aspects need (``packet_aspects@4``)."""
+        """The resolve options the aspects need (``packet_aspects@5``)."""
         options: Dict[str, Any] = {}
         for aspect in self.aspects:
             options.update(aspect_options(aspect))

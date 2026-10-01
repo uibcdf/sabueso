@@ -27,6 +27,7 @@ from sabueso.tools.db.clinvar import FixtureClinVarClient
 from sabueso.tools.db.diseases import FixtureDISEASESClient
 from sabueso.tools.db.gnomad import FixtureGnomADClient
 from sabueso.tools.db.gpcrdb import FixtureGPCRdbClient
+from sabueso.tools.db.gtex import FixtureGTExClient
 from sabueso.tools.db.interpro import FixtureInterProClient
 from sabueso.tools.db.klifs import FixtureKLIFSClient
 from sabueso.tools.db.medgen import FixtureMedGenClient
@@ -70,6 +71,7 @@ def clients():
         sabdab_client=FixtureSAbDabClient("temp_data"),
         oma_client=FixtureOMAClient("temp_data"),
         uniref_client=FixtureUniRefClient("temp_data"),
+        gtex_client=FixtureGTExClient("temp_data"),
     )
 
 
@@ -108,13 +110,14 @@ def test_a_query_is_declared_and_normalized(query):
     assert sabueso.KnowledgeQuery.from_dict(query.to_dict()) == query
     # What the aspects ask of the sources is fixed per mapping version. The options are
     # derived from the declared enrichers, so a new enricher in an aspect's areas fails
-    # here: that is a new mapping version (packet_aspects@5), never a silent change.
-    assert ASPECT_MAPPING == "packet_aspects@4"
+    # here: that is a new mapping version (packet_aspects@6), never a silent change.
+    assert ASPECT_MAPPING == "packet_aspects@5"
     assert query.options() == {
         "clinvar": {},
         "diseases": {},
         "gnomad": {},
         "exon_usage": True,
+        "gtex": True,
         "open_targets": {},
         "orphadata": True,
         "phi_base": True,
@@ -313,9 +316,6 @@ OUTSIDE_PACKETS = {
     # Hundreds of articles per well-studied protein: packet size is watched (#88), and
     # real use decides whether the literature aspect asks for them (#71).
     "europepmc": "text-mined mentions are not asked by a packet aspect yet",
-    # packet_aspects@4 is published (0.9.0); a new mapping makes packets of the two
-    # incomparable, so tissue terms join the biological context with the next one.
-    "gtex": "GTEx's tissue terms join the biological context with packet_aspects@5",
 }
 
 
@@ -425,3 +425,12 @@ def test_packets_of_different_aspect_mappings_are_not_compared(packet):
     older = packet.to_dict()
     older["aspect_mapping"] = "packet_aspects@3"
     assert packet.same_knowledge(sabueso.KnowledgePacket(older)) is None
+
+
+def test_the_biological_context_names_each_tissue_s_term(packet):
+    # packet_aspects@5 (#102): GTEx's terms beside the pext they name.
+    facts = packet.facts["biological_context"]["subject"]
+    stated = facts["annotations.tissue_terms"]["value"]
+    terms = {t["gtex_id"]: t["ontology_id"] for t in stated}
+    assert len(terms) == 49
+    assert terms["Muscle_Skeletal"] == "UBERON:0011907"

@@ -34,7 +34,9 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping, `packet_aspects@4`. `@4` adds UniRef to `identity`
+by a named, versioned mapping, `packet_aspects@5`. `@5` adds GTEx's tissue terms
+(UBERON, or EFO for a cell line) to `biological_context`, next to the gnomAD pext they
+name. `@4` added UniRef to `identity`
 (the entry's clusters and the entries `clustered_with` it, #103). `@3` added to `@2` the kinase and
 GPCR classifications (`identity`), kinase conformations, GPCR states and antibody
 complexes (`structures`), the kinase pocket (`ligand_sites`), GPCR segments and generic

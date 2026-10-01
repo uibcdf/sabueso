@@ -107,7 +107,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - `isoform_exon_usage@2`: an isoform without exons says why
     (`no_transcript_stated`, `transcript_not_in_gnomad`), and own bases say whether
     every isoform's exons were known;
-  - the pext enrichment record counts its regions (it counted 0 since 0.8.0).
+  - the pext enrichment record counts its regions (it counted 0 since 0.8.0);
+  - `packet_aspects@5`: GTEx's tissue terms in `biological_context` (#102).
 - **Watched:** card and packet size with the default ceilings (#88).
 
 ## Package layout
@@ -158,8 +159,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 - Plan and status of every objective: `ROADMAP.md`. It integrates the foundational plan
   and the pilot-driven route.
-- **Next:** knowledge packets, detail levels and size, as real use asks (#71, #88), and
-  `packet_aspects@5` with GTEx's tissue terms in the biological context (#102).
+- **Next:** knowledge packets, their size and detail (#71, #88). This touches the
+  boundary with MOLI's Context Assembly (uibcdf/moli#22).
 - **Postponed by the maintainers (2026-10-01):** local mirrors in real work (#101),
   ChEMBL as a mirror and builds from cached sources.
 - **Last pilot run:** 0.9.0, 2026-10-01, from scratch on the published package, clean on
