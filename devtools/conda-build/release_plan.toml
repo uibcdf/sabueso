@@ -1,7 +1,7 @@
-version = "0.7.0"
+version = "0.8.0"
 route = "staged"
-reason = "Integrity fix that affects users of 0.6.0: an answer cut at a limit was reported as complete by the knowledge state; it is now partial, with truncated_for, and a not_found record states the release it was checked against (8b09a11, #88, #89). New knowledge: card schema 0.3.7 (SKEMPI interface mutations, disease cards anchored at MONDO, a protein's diseases grouped through stated identity and MONDO's hierarchy, text-mined literature mentions, and how each SourceAssertion entered), new sources (SKEMPI, MONDO, MedGen, Europe PMC), what may be done with the knowledge and terms profiles (#29, #94), scientific operations (expand, explain, as_of, #91), and molecules given as SMILES or InChI (#93). First publication of card schema 0.3.7. Clean installed-package gates, Windows included, must pass before public visibility."
-decision_by = "Diego Prada (Sabueso maintainer), 2026-09-29"
+reason = "Integrity fix that affects users of 0.7.0: gnomAD variants were placed on canonical residues the canonical protein never carries, through UniProt's isoform map next to exons the canonical transcript lacks (KRAS exon 4A, PKM's M1 exon, TPI1 isoform 3), and a transcript UniProt names no isoform for was taken as canonical (CD44); gnomAD now states each change's consequence on the canonical transcript first (#85, #102). New knowledge: card schema 0.3.8 (ChEBI classes and roles, KLIFS kinase pockets and conformations, GPCRdb generic numbers and states, SAbDab antibody complexes, OMA orthologs, transmembrane segments, gnomAD pext with the tissues of each variant and isoform, ordering rules of capped sources), packet_aspects@3, knowledge store format 2, the retrieval archive and local mirrors (#100). First publication of card schema 0.3.8. Clean installed-package gates, Windows included, must pass before public visibility."
+decision_by = "Diego Prada (Sabueso maintainer), 2026-10-01"
 required_workflows = [
   ".github/workflows/ci.yml",
   ".github/workflows/moli-governance.yml",
