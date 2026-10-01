@@ -394,6 +394,7 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Notes**:
   - Joined only through an exact match OMA states for the accession.
   - Identical proteins of several strains share one UniProt entry; each OMA protein stays its own relationship (`oma_id` is an identity qualifier).
+  - Entry names are resolved to active entries only: a retired entry can keep a name (P00938, demerged, is still TPIS_HUMAN). Fixed after 0.8.0, found in the TcTIM C1 run on 0.8.0: the CL Brener TIM's human ortholog was named P00938 instead of P60174.
   - Licence CC BY 4.0, from OMA's Terms of Use as published in its browser's source (the site's pages answer 403 to non-browser clients); an older FAQ line says CC BY-SA 2.5 for the browser.
 
 ---

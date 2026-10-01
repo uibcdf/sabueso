@@ -14,7 +14,8 @@ Access is OMA's REST API (``/api``, no key):
 - ``orthologs(accession, rel_type=None)``: its pairwise orthologs, in one request.
 
 ``accessions(names)`` asks UniProt which accession each Swiss-Prot entry name is (100
-names per request): UniProt states that, not OMA.
+names per request): UniProt states that, not OMA. Only active entries count: a retired
+entry can keep the name of the one that replaced it.
 
 Each answer is ``{"retrieved_at", "record"}``. ``OnlineOMAClient`` queries the APIs;
 ``FixtureOMAClient`` reads ``<directory>/oma/``: ``xref_<acc>.json``,
@@ -25,7 +26,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, Iterable
+from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 
@@ -38,6 +39,19 @@ SOURCE = "OMA"
 API = "https://omabrowser.org/api"
 UNIPROT_SEARCH = "https://rest.uniprot.org/uniprotkb/search"
 NAMES_PER_REQUEST = 100
+
+
+def active_accessions(answer: Dict[str, Any], names: Iterable[str]) -> Dict[str, str]:
+    """``{entry name: accession}`` from a UniProt search answer: only active entries
+    count. A retired entry can keep the name (TPIS_HUMAN: P00938, demerged into P60174
+    and P60175), and a name with more than one active entry is left unresolved."""
+    wanted = set(names)
+    active: Dict[str, List[str]] = {}
+    for row in answer.get("results") or []:
+        name = row.get("uniProtkbId")
+        if name in wanted and row.get("entryType") != "Inactive":
+            active.setdefault(name, []).append(row["primaryAccession"])
+    return {name: hits[0] for name, hits in active.items() if len(set(hits)) == 1}
 
 
 class OnlineOMAClient:
@@ -84,9 +98,7 @@ class OnlineOMAClient:
             answer = self._get(
                 f"{UNIPROT_SEARCH}?{query}", "entry names", source="UniProt"
             )
-            for row in answer["record"].get("results") or []:
-                if row.get("uniProtkbId") in chunk:
-                    found[row["uniProtkbId"]] = row["primaryAccession"]
+            found.update(active_accessions(answer["record"], chunk))
         return found
 
 

@@ -109,3 +109,29 @@ def test_a_failing_source_is_an_error_not_an_absence(resolver):
             resolver, client=FixtureOMAClient("temp_data", failing={"xref_P60174"})
         )
     assert _record(card)["status"] == "error"
+
+
+def test_a_retired_entry_that_keeps_the_name_is_not_taken():
+    # UniProt's search for id:TPIS_HUMAN answers the active P60174 and P00938, retired
+    # (demerged into P60174 and P60175) but still named TPIS_HUMAN.
+    from sabueso.tools.db.oma import active_accessions
+
+    answer = {
+        "results": [
+            {
+                "primaryAccession": "P60174",
+                "uniProtkbId": "TPIS_HUMAN",
+                "entryType": "UniProtKB reviewed (Swiss-Prot)",
+            },
+            {
+                "primaryAccession": "P00938",
+                "uniProtkbId": "TPIS_HUMAN",
+                "entryType": "Inactive",
+            },
+            {"primaryAccession": "A1", "uniProtkbId": "TWO_ACTIVE", "entryType": "x"},
+            {"primaryAccession": "A2", "uniProtkbId": "TWO_ACTIVE", "entryType": "x"},
+        ]
+    }
+    assert active_accessions(answer, ["TPIS_HUMAN", "TWO_ACTIVE", "ABSENT"]) == {
+        "TPIS_HUMAN": "P60174"
+    }

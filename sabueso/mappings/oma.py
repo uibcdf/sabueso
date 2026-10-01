@@ -12,7 +12,8 @@ Brener's Q4DV43, whose sequence differs).
 
 - ``uniprot:<accession>`` when OMA's canonical id is a UniProt accession;
 - ``uniprot:<accession>`` when it is a Swiss-Prot entry name UniProt states the
-  accession of (``TPIS_HUMAN`` → P60174), with the name kept;
+  accession of (``TPIS_HUMAN`` → P60174), with the name kept; only an active entry
+  counts, since a retired one can keep the name;
 - ``oma:<OMA id>`` otherwise (a GenBank protein, or a name UniProt no longer has).
 
 Each ``ortholog_of`` relationship keeps OMA's relation type (``1:1``, ``1:n``, ``m:1``,

@@ -80,7 +80,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - `knowledge_packet@2` (#88): a packet holds each statement once; grouped disease
     statements and the joint structure inventory name what they group (`@1` is still
     read, and revisions of different formats are not compared).
-- **Unreleased on main:** nothing yet.
+- **Unreleased on main:**
+  - OMA: a Swiss-Prot entry name resolves only to an active entry; a retired one can
+    keep the name (TPIS_HUMAN → P60174, not the demerged P00938). Integrity fix for
+    users of 0.8.0 who read OMA orthologs.
 - **Watched:** card and packet size with the default ceilings (#88).
 
 ## Package layout

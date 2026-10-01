@@ -1604,7 +1604,11 @@ uibcdf/sabueso#83, instead of Ensembl's Compara (deferred, 2026-09-30).
 - **Orthologs named by stated identifiers.**
   - A UniProt accession OMA states is taken as is.
   - A Swiss-Prot entry name is resolved to its accession by UniProt, which states
-    that; the name is kept as `canonical_id`.
+    that; the name is kept as `canonical_id`. Only active entries count. A retired
+    entry can keep the name of the entry that replaced it: P00938, demerged into
+    P60174 and P60175, is still named TPIS_HUMAN. A name with more than one active
+    entry stays unresolved. Fixed after 0.8.0: 5 of the 566 names among human TPI1's
+    orthologs had a retired entry, and one could be taken.
   - Anything else (RefSeq, GenBank) stays `oma:<OMA id>`.
 - **One relationship per OMA protein.** Identical proteins of several strains share one
   UniProt entry (Salmonella LT2 and 14028s, both TPIS_SALTY). `oma_id` is an identity
