@@ -95,12 +95,17 @@ commit messages, issues, pull requests, release notes and documentation.
 
 ## Recording work
 
-When an incident reveals a reusable development rule, assess its scope. Put an
-accepted repository-wide rule here and a directory-specific rule in the
-appropriate nested `AGENTS.md` in the same change; otherwise track adoption
-in an owned issue. Follow `MOLI_GUIDE.md#durable-instructions-for-development-agents`.
-Report a potentially shared lesson to the owning governance issue. For work
-in the developer guide, also read `devguide/AGENTS.md`.
+Report defects and needs in their owning issues; put source behavior, edge
+cases and workarounds in code, regression tests and technical documentation,
+not in `AGENTS.md`. Add an instruction here or in a nested `AGENTS.md` only
+when normal repository review accepts a lasting rule about how contributors
+or agents should work across future tasks and existing guidance is insufficient.
+Use an adoption issue only if that accepted working instruction cannot be
+placed with the fix or decision. Do not ask for a separate `AGENTS.md` decision
+for every defect. Propose cross-component adoption only for an accepted
+working instruction with shared evidence. Follow
+`MOLI_GUIDE.md#durable-instructions-for-development-agents`. For work in the
+developer guide, also read `devguide/AGENTS.md`.
 
 - A decision goes to `devguide/DECISIONS.md`, and a possible future problem to
   `devguide/RISKS_AND_OPEN_QUESTIONS.md`.

@@ -10,5 +10,8 @@ check the current replacement before treating it as a rule.
 
 Follow the reporting protocol in `../MOLI_GUIDE.md` when filing or closing a
 report. Put rules specific to this directory here; put repository-wide rules
-in the root `AGENTS.md`. When a local lesson may help another component,
-follow the MOLI agent-instruction lifecycle linked from the guide.
+in the root `AGENTS.md`. Keep source-specific findings in the owning issue,
+tests and maintained technical documents. Propose a cross-component agent
+instruction only after a local working rule has been accepted and there is
+evidence that another component needs it; follow the MOLI lifecycle linked
+from the guide.
