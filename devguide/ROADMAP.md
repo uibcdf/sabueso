@@ -240,7 +240,7 @@ In order:
      align); exons from Ensembl for the few transcripts gnomAD lacks, when a use needs
      them;
    - local mirrors in real work (#101): ChEMBL as a mirror, and builds from cached
-     sources;
+     sources; postponed by the maintainers on 2026-10-01;
    - knowledge packets: real use decides their aspects and size (#71, #88), aligned
      with uibcdf/moli#22 once agreed;
    - the clinical layer: adverse events (openFDA), after a terms review; isoform

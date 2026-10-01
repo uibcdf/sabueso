@@ -158,16 +158,15 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 - Plan and status of every objective: `ROADMAP.md`. It integrates the foundational plan
   and the pilot-driven route.
-- **Next, in order:**
-  1. Local mirrors in real work (#101): ChEMBL as a mirror, and builds from cached
-     sources.
-  2. Knowledge packets: detail levels and size, as real use asks (#71, #88), and
-     `packet_aspects@5` with GTEx's tissue terms in the biological context (#102).
+- **Next:** knowledge packets, detail levels and size, as real use asks (#71, #88), and
+  `packet_aspects@5` with GTEx's tissue terms in the biological context (#102).
+- **Postponed by the maintainers (2026-10-01):** local mirrors in real work (#101),
+  ChEMBL as a mirror and builds from cached sources.
 - **Last pilot run:** 0.9.0, 2026-10-01, from scratch on the published package, clean on
   the first attempt; #103 verified there and closed.
 - **Open issues, by kind:**
   - released, open for a follow-up: #100
-    (archive and mirrors: next phases, #101), #98 (heavily studied targets), #92
+    (archive and mirrors: next phases, #101, postponed), #98 (heavily studied targets), #92
     (literature: located mentions, own extraction), #91 (scientific operations), #88
     (default limits and size), #83 (source coverage: next wave), #71 (packets; contract
     in uibcdf/moli#22);
