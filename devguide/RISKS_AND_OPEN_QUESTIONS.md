@@ -281,6 +281,11 @@
   change, the join (`gtex_tissue_key@1`) fails for those tissues; they are listed as
   `tissues_not_in_gtex` in the record and `tissues_without_term` in the views, never
   given a term by name.
+- **CI depends on the uibcdf channel at anaconda.org.** On 2026-10-01 the CI of two
+  commits failed in most cells while installing packages from it (HTTP 503 and
+  timeouts for pyunitwizard, smonitor, depdigest, argdigest), and passed on a rerun of
+  the failed jobs. A red CI is read before it is trusted or dismissed: an install step
+  that fails is infrastructure, a test that fails is not.
 
 ## Open Questions
 - **Which isoforms, and which variants, are tissue-specific?** (#102; a need the
