@@ -6,6 +6,7 @@ thing, and checks that the preflight names the route and the constraint.
 
 import importlib.util
 import shutil
+import tomllib
 from pathlib import Path
 
 import pytest
@@ -46,6 +47,34 @@ def _edit(path: Path, old: str, new: str) -> None:
 
 def test_the_repository_passes():
     assert preflight(ROOT) == []
+
+
+def test_release_is_blocked_until_required_ackredit_is_published():
+    problems = preflight(ROOT, release=True)
+    assert len(problems) == 1
+    assert "Release blocked: ackredit" in problems[0]
+
+
+def test_source_overlay_needs_the_actual_pinned_provider_install(root):
+    inventory = tomllib.loads((root / "devtools/dependency_routes.toml").read_text())
+    commit = inventory["source_routes"]["candidates"][0]["commit"]
+    _edit(
+        root / ".github/workflows/ci.yml",
+        f"ref: {commit}",
+        "ref: main",
+    )
+    (problem,) = preflight(root)
+    assert "ackredit-pilot: does not install the pinned ackredit source" in problem
+
+
+def test_pending_public_pins_cannot_be_silently_omitted(root):
+    _edit(
+        root / "devtools/dependency_routes.toml",
+        'pending_public_dependencies = ["ackredit"]',
+        "",
+    )
+    (problem,) = preflight(root)
+    assert "missing required runtime dependency ackredit" in problem
 
 
 def test_a_missing_recipe_dependency_fails(root):

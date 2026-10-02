@@ -4,12 +4,21 @@ This section summarizes how to work on Sabueso code and documentation.
 
 ## Development Environment
 
-Dependencies come from the `uibcdf` and `conda-forge` conda channels, as they do for
-users. pip is used only to install Sabueso itself, in editable mode:
+Published dependencies come from the `uibcdf` and `conda-forge` Conda channels.
+The required Ackredit portable-API candidate is temporarily provisioned from a
+tracked source commit. Use Python 3.13 for normal development while its 3.14 metadata
+support is pending (ackredit#80):
 
 ```bash
 conda env create -n sabueso-dev -f devtools/conda-envs/development_env.yaml
+conda install -n sabueso-dev "python=3.13"
 conda activate sabueso-dev
+```
+
+Install the pinned Ackredit candidate following the
+[development provisioning instructions](https://github.com/uibcdf/sabueso/blob/main/devtools/conda-envs/README.md), then:
+
+```bash
 pip install --no-deps --editable .
 ```
 

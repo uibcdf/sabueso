@@ -1,4 +1,4 @@
-"""Opt-in packet attribution, detached from immutable scientific payloads (#108).
+"""Automatic packet attribution, detached from immutable scientific payloads (#108).
 
 The application owns Ackredit sessions. This first adapter observes completed packet
 composition over stored statements, not source requests or every calculation in the
@@ -10,8 +10,6 @@ from __future__ import annotations
 from contextlib import contextmanager
 from contextvars import ContextVar
 from copy import deepcopy
-
-from depdigest import dep_digest, is_installed
 
 _runs: ContextVar[tuple] = ContextVar("sabueso_attribution_runs", default=())
 FORMAT = "sabueso.packet_attribution@1"
@@ -36,7 +34,7 @@ class AttributionRun:
 
 @contextmanager
 def attribution():
-    """Observe packet composition in this context, with lazy optional Ackredit.
+    """Collect automatic packet attribution records in this context.
 
     Yields an ``AttributionRun``. Nested contexts observe their contained results;
     the outer context also retains them. No backend is loaded on entry or exit, and
@@ -50,7 +48,6 @@ def attribution():
         _runs.reset(token)
 
 
-@dep_digest("ackredit")
 def _load_backend():
     import ackredit
 
@@ -77,11 +74,14 @@ def _support(packet, roles):
     resources, scope, gaps = {}, {}, []
     bibliography = {item["id"]: item for item in [software()]}
     for role, card in roles:
+        # Composition already computed this exact pin. Rehashing the entire card
+        # per statement makes default attribution quadratic in card size.
+        card_ref = packet.entities[role]["ref"]
         # Use the same stored-support closure as packet terms, including conflicts
         # and both legs of derived relationships; never infer usage from terms.
         facts = {aspect: _facts(aspect, card) for aspect in packet.query.aspects}
         items = _items(card, facts, role, packet.conflicts.get(role) or [])
-        scope[role] = {"card_ref": card.pinned_ref(), "items": items}
+        scope[role] = {"card_ref": card_ref, "items": items}
         for item in items:
             if item["kind"] != "source_assertion":
                 continue
@@ -111,7 +111,7 @@ def _support(packet, roles):
                     )
             usage = {
                 "role": role,
-                "card_ref": card.pinned_ref(),
+                "card_ref": card_ref,
                 "source_assertion_ref": item["source_assertion_ref"],
                 "retrieved_at": assertion.get("retrieved_at"),
                 "acquisition": assertion.get("acquisition"),
@@ -145,8 +145,6 @@ def _credit(record):
     """Provider failures cannot replace a completed scientific result."""
     backend = None
     try:
-        if not is_installed("ackredit"):
-            return {"status": "absent", "version": None, "attribution": None}
         backend = _load_backend()
         context = {
             "producer": record["producer"],
@@ -204,8 +202,6 @@ def _credit(record):
 
 def _record_packet(packet, roles):
     runs = _runs.get()
-    if not runs:
-        return
     from sabueso import __version__
 
     record = {
@@ -234,3 +230,4 @@ def _record_packet(packet, roles):
         record["provider"] = _credit(record)
     for run in runs:
         run._records.append(deepcopy(record))
+    return record

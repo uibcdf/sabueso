@@ -1,3 +1,5 @@
+# Conda portion only: required Ackredit is provisioned separately from the full-commit
+# source candidate in devtools/dependency_routes.toml. See devtools/conda-envs/README.md.
 # Environment to build Sabueso's documentation (uibcdf/sabueso#34).
 #   conda env create -f devtools/conda-envs/docs_env.yaml
 #   pip install --no-deps --editable .

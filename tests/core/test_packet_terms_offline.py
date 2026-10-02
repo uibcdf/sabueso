@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 import sabueso
+from sabueso._private.smonitor.warnings import AttributionTrackingWarning
 from sabueso.core import terms as terms_module
 from sabueso.core.card import Card
 from sabueso.core.errors import ArgumentError, StorageError
@@ -165,8 +166,14 @@ def test_missing_pinned_support_is_refused_not_currently_replaced(tmp_path, whic
     store = sabueso.KnowledgeStore(tmp_path / "knowledge.db")
     if which != "card":
         store.save(subject)
+        with pytest.warns(AttributionTrackingWarning):
+            result = packet(subject)
+        assert result.attribution["support_status"] == "unavailable"
+        assert result.attribution["provider"]["status"] == "not_attempted"
+    else:
+        result = packet(subject)
     with pytest.raises(StorageError):
-        packet(subject).terms("commercial_product", store)
+        result.terms("commercial_product", store)
 
 
 def test_old_mapping_remains_readable_without_using_current_scope(tmp_path):

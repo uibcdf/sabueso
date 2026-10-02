@@ -37,12 +37,16 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
 - **Installed-package gates.** Release candidates are tested from the exact conda
   artifact, on Linux, macOS and Windows × Python 3.11–3.14, before publication
   (`devtools/conda-build/README.md`).
-- **Optional Ackredit pilot.** `tests/core/test_attribution_offline.py` exercises
+- **Required Ackredit integration.** `tests/core/test_attribution_offline.py` exercises
+  automatic per-result attachment without a collector,
   per-result/workflow reuse, exact support scope, real provider failure, saved readers,
   context isolation and genuine fresh-process absence. CI installs a tracked full
-  source commit on Python 3.11–3.13 and requires the provider tests to run. Ordinary
-  CI covers Sabueso without it on 3.11–3.14. The public workflow also runs in the
-  provider lane; publication and 3.14 compatibility remain separate gates (#108).
+  source commit in every runtime lane, without skipping provider tests. Python
+  3.11–3.13 use normal source installs; 3.14 is an explicitly named metadata-override
+  compatibility probe (ackredit#80), not a supported provider-installation claim.
+  The public workflow also runs in the provider lane. `dependency_preflight.py
+  --release` blocks build, staged installation and promotion until the stable
+  provider API and public dependency closure are verified (#108, ackredit#22/#75).
 
 ## Fixtures
 

@@ -9,8 +9,6 @@ imported when Sabueso is imported.
 from sabueso.core.errors import LibraryNotFoundError
 
 LIBRARIES = {
-    # Opt-in packet attribution; source pilot, public extra pending (#108).
-    "ackredit": {"type": "soft", "pypi": "ackredit", "conda": "ackredit"},
     # Views as DataFrames: sabueso.to_dataframe (#46).
     "pandas": {"type": "soft", "pypi": "pandas", "conda": "pandas"},
 }

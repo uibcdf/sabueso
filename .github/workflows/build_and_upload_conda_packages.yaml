@@ -39,6 +39,10 @@ jobs:
           persist-credentials: false
           ref: ${{ inputs.candidate_sha || github.event.release.tag_name }}
 
+      - name: Require published runtime closure
+        shell: bash
+        run: python devtools/dependency_preflight.py --release
+
       - name: Validate the immutable candidate identity
         if: github.event_name == 'workflow_dispatch'
         shell: bash

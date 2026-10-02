@@ -36,6 +36,10 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
           ref: ${{ inputs.candidate_sha }}
+      - name: Require published runtime closure
+        shell: bash
+        run: python devtools/dependency_preflight.py --release
+
       - name: Confirm the verifier comes from the candidate commit
         shell: bash
         env:
@@ -93,6 +97,10 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
           ref: ${{ inputs.candidate_sha }}
+      - name: Require published runtime closure
+        shell: bash
+        run: python devtools/dependency_preflight.py --release
+
       - name: Verify Apple Silicon macOS runner
         if: runner.os == 'macOS'
         shell: bash

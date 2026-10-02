@@ -14,8 +14,9 @@ the composed answer. It is a composition over cards, not a new kind of knowledge
 **Deterministic.** The packet payload is a pure function of the query and card states. It
 never calls an LLM, never ranks, never summarizes, and holds the aspects the query
 declares, nothing else. The same query and the same card states give the same packet.
-An explicit ``sabueso.attribution()`` context may collect detached composition
-attribution; those records never enter the packet or its hashes.
+Composition automatically attaches detached ``packet.attribution``. A
+``sabueso.attribution()`` context collects these records; they never enter the
+scientific payload or its hashes.
 
 **Two ids.** ``snapshot_id`` is the exact state, retrieval times included: the citable
 pin, ``sabueso:packet:<name>@sha256:…``. ``content_id`` leaves out retrieval times and
@@ -770,7 +771,19 @@ class KnowledgePacket:
                 f" format {data.get('format')!r}."
             )
         self._data = data
+        # Runtime attribution belongs to the result, outside its scientific hash.
+        # A saved scientific payload alone cannot reconstruct an original capture.
+        self._attribution = None
         self.ref = ref
+
+    @property
+    def attribution(self) -> dict | None:
+        """Detached composition record; None for a payload loaded without its sidecar.
+
+        Save this record beside ``to_dict()`` to retain the original producer and
+        source versions. Reading a packet never creates a replacement capture.
+        """
+        return copy.deepcopy(self._attribution)
 
     format = property(lambda self: self._data["format"])
     #: ``full`` or ``index`` (``knowledge_packet@3``); earlier formats are ``full``.
@@ -846,7 +859,7 @@ def compose_packet(
 
     The cards are used as they are: an aspect whose sources they were not built with
     shows as ``not_queried`` in ``unknowns``, never as absent knowledge.
-    An active attribution context collects a detached record after composition.
+    Composition attaches a detached attribution record; active contexts collect it.
     """
     roles: List[Tuple[str, Any]] = [("subject", subject)]
     if comparator is not None:
@@ -895,5 +908,5 @@ def compose_packet(
     packet = KnowledgePacket(json.loads(canonical_json(as_stated(data))))
     from .attribution import _record_packet
 
-    _record_packet(packet, roles)
+    packet._attribution = _record_packet(packet, roles)
     return packet

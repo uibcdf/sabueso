@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           repository: uibcdf/ackredit
-          ref: 4228444cc865a4decb550d1b14b1ffeb046a10eb
+          ref: 561989e5dfa0c48e172440b0f130a1efae961e95
           path: .ackredit-candidate
           fetch-depth: 0
       - uses: mamba-org/setup-micromamba@v3.2.1
@@ -51,17 +51,15 @@ jobs:
         run: |
           cd "$RUNNER_TEMP"
           python -c "import ackredit,sabueso; assert 'site-packages' in ackredit.__file__, ackredit.__file__; assert 'site-packages' in sabueso.__file__, sabueso.__file__; assert callable(ackredit.capture)"
-      - name: Exercise the real optional provider
+      - name: Exercise the real required provider
         shell: bash -l {0}
-        env:
-          SABUESO_REQUIRE_ACKREDIT: "1"
         run: python -m pytest tests/core/test_attribution_offline.py -m "not online" --receptor=ci
       - name: Run the public offline workflow
         shell: bash -l {0}
         run: python -m examples.ackredit_pilot.run --output "$RUNNER_TEMP/ackredit-pilot"
 
   test:
-    name: Offline tests (${{ matrix.os }}, Python ${{ matrix.python-version }})
+    name: Offline tests (${{ matrix.os }}, Python ${{ matrix.python-version }}${{ matrix.python-version == '3.14' && ', Ackredit compatibility probe' || '' }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -78,12 +76,18 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
+      - uses: actions/checkout@v6
+        with:
+          repository: uibcdf/ackredit
+          ref: 561989e5dfa0c48e172440b0f130a1efae961e95
+          path: .ackredit-candidate
+          fetch-depth: 0
       - name: Verify Apple Silicon macOS runner
         if: runner.os == 'macOS'
         shell: bash
         run: test "$(uname -m)" = arm64
-      # Dependencies come from the uibcdf and conda-forge channels, as for users; only
-      # Sabueso itself is installed with pip (uibcdf/sabueso#34).
+      # Published dependencies come from Conda. Required Ackredit is a tracked
+      # full-commit source candidate until #22/#75/#80 close its public graph.
       - uses: mamba-org/setup-micromamba@v3.2.1
         with:
           environment-file: devtools/conda-envs/test_env.yaml
@@ -95,9 +99,19 @@ jobs:
             channel_priority: strict
           create-args: >-
             python=${{ matrix.python-version }}
-      - name: Install Sabueso
+      - name: Install required source provider and Sabueso
         shell: bash -l {0}
-        run: python -m pip install --no-deps --no-build-isolation .
+        env:
+          PYTHON_VERSION: ${{ matrix.python-version }}
+        run: |
+          if [[ "$PYTHON_VERSION" == "3.14" ]]; then
+            # Experimental source compatibility evidence only (ackredit#80).
+            # Never reuse this metadata override in public or release installs.
+            python -m pip install --no-deps --no-build-isolation --ignore-requires-python .ackredit-candidate
+          else
+            python -m pip install --no-deps --no-build-isolation .ackredit-candidate
+          fi
+          python -m pip install --no-deps --no-build-isolation .
       - name: Smoke the installed package outside the checkout
         # Tests run from the repository root, where `import sabueso` finds the checkout;
         # this step reads the installed package, which is what users get (#35).
@@ -108,7 +122,7 @@ jobs:
           else
             cd "$RUNNER_TEMP"
           fi
-          python -c "import sabueso; from sabueso.resolver import load_selection_rules; assert 'site-packages' in sabueso.__file__, sabueso.__file__; assert load_selection_rules()['field_rules']"
+          python -c "import ackredit,sabueso; from sabueso.resolver import load_selection_rules; assert 'site-packages' in sabueso.__file__, sabueso.__file__; assert 'site-packages' in ackredit.__file__, ackredit.__file__; assert callable(ackredit.capture); assert load_selection_rules()['field_rules']"
       - name: Environment
         shell: bash -l {0}
         run: |

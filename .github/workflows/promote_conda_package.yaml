@@ -39,6 +39,10 @@ jobs:
           persist-credentials: false
           ref: ${{ inputs.candidate_sha }}
 
+      - name: Require published runtime closure
+        shell: bash
+        run: python devtools/dependency_preflight.py --release
+
       - name: Validate immutable published release identity
         shell: bash
         env:

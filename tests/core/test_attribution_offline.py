@@ -1,8 +1,6 @@
-"""Optional attribution preserves pinned knowledge and observes real reusable credits."""
+"""Automatic attribution preserves pinned knowledge and observes real reusable credits."""
 
-import importlib.util
 import json
-import os
 import subprocess
 import sys
 import textwrap
@@ -31,19 +29,47 @@ def card():
 
 @pytest.fixture
 def provider():
-    if os.environ.get("SABUESO_REQUIRE_ACKREDIT") and not importlib.util.find_spec(
-        "ackredit"
-    ):
-        pytest.fail(
-            "The real-provider CI lane must install its pinned Ackredit candidate."
-        )
-    return pytest.importorskip("ackredit")
+    import ackredit
+
+    return ackredit
 
 
 def compose(card, aspects=("literature",), detail="full"):
     return sabueso.compose_packet(
         sabueso.KnowledgeQuery("P60174", aspects=aspects, detail=detail), card
     )
+
+
+def test_default_composition_has_detached_attribution_without_collector(card, provider):
+    with provider.session("automatic result"):
+        packet = compose(card)
+        record = packet.attribution
+        assert record["provider"]["status"] == "available"
+        assert record["packet_snapshot_id"] == packet.snapshot_id()
+        assert provider.get_attribution().to_dict()["items"]
+    document = packet.to_dict()
+    record["scope"].clear()
+    assert packet.attribution["scope"]
+    assert packet.to_dict() == document
+    # A scientific payload does not pretend to reproduce an earlier execution.
+    assert sabueso.KnowledgePacket(document).attribution is None
+
+
+def test_support_does_not_rehash_the_entire_card_per_statement(card, monkeypatch):
+    packet = compose(card)
+    original_pin = card.pinned_ref
+    calls = []
+
+    def counted_pin():
+        calls.append(True)
+        return original_pin()
+
+    monkeypatch.setattr(card, "pinned_ref", counted_pin)
+    support = adapter._support(packet, [("subject", card)])
+    uses = [use for resource in support["resources"] for use in resource["uses"]]
+    assert len(uses) > 2
+    assert len(calls) == 1  # support closure computes its own pin once
+    assert all(use["card_ref"] == packet.entities["subject"]["ref"] for use in uses)
 
 
 def test_two_results_reuse_resources_in_application_workflow(card, provider):
@@ -60,6 +86,8 @@ def test_two_results_reuse_resources_in_application_workflow(card, provider):
         assert len(records) == 2
         assert records[0]["packet_snapshot_id"] == identity.snapshot_id()
         assert records[1]["packet_snapshot_id"] == literature.snapshot_id()
+        assert identity.attribution == records[0]
+        assert literature.attribution == records[1]
         left, right = [record["provider"]["attribution"] for record in records]
         assert all(record["provider"]["status"] == "available" for record in records)
         left_ids = {item["id"] for item in left["items"]}
@@ -115,7 +143,7 @@ def test_saved_readers_preserve_original_versions_without_new_credit(
     monkeypatch.setattr(
         adapter,
         "_load_backend",
-        lambda: pytest.fail("Reading must not load the optional backend"),
+        lambda: pytest.fail("Reading must not load the backend"),
     )
     with provider.session("reader"):
         with sabueso.attribution() as reading:
@@ -126,10 +154,15 @@ def test_saved_readers_preserve_original_versions_without_new_credit(
             )
             text = attribution.report(format="text")
             csl = json.loads(attribution.report(format="csl-json"))
+            bibtex = attribution.report(format="bibtex")
         assert reading.records == []
         assert provider.get_attribution().to_dict()["items"] == []
     assert restored == record
     assert "999.reader" not in text
+    assert "author = {{The UniProt Consortium}}" in bibtex
+    assert "Rosonovski, Summer and Levchenko, Maria" in bibtex
+    assert "Xing, Lijun and Harrison, Melissa" in bibtex
+    assert "{'literal':" not in bibtex
     uniprot = next(item for item in csl if item["id"] == "doi:10.1093/nar/gkae1010")
     assert uniprot["author"] == [{"literal": "The UniProt Consortium"}]
     assert (
@@ -241,10 +274,10 @@ def test_nested_contexts_observe_reuse_without_duplicate_tracking(card, provider
     assert outer.records[0]["scope"] and inner.records[0]["scope"]
 
 
-def test_context_isolation_and_scientific_exception_propagation(card, monkeypatch):
-    monkeypatch.setattr(adapter, "is_installed", lambda name: False)
+def test_context_isolation_and_scientific_exception_propagation(card, provider):
     with sabueso.attribution() as run:
-        Context().run(compose, card)
+        result = Context().run(compose, card)
+        assert result.attribution["provider"]["status"] == "available"
         with pytest.raises(ValueError, match="comparator"):
             sabueso.compose_packet(
                 sabueso.KnowledgeQuery("P60174", comparator="P52270"), card
@@ -288,14 +321,15 @@ def test_missing_support_is_diagnosed_without_destroying_completed_packet(
 ):
     monkeypatch.setattr(
         adapter,
-        "is_installed",
-        lambda name: pytest.fail("Do not load provider without support"),
+        "_load_backend",
+        lambda: pytest.fail("Do not load provider without support"),
     )
     subject = Card.from_dict(card.to_dict())
     rel = subject.relationships("structure_mentioned_in")[0]
     missing = rel["qualifiers"]["structure_context"]["relationship_ids"][0]
     del subject.relationship_store.store[missing]
-    baseline = compose(subject)
+    with pytest.warns(AttributionTrackingWarning):
+        baseline = compose(subject)
     with pytest.warns(AttributionTrackingWarning):
         with sabueso.attribution() as run:
             packet = compose(subject)
@@ -308,13 +342,11 @@ def test_fresh_process_absence_laziness_and_saved_reading(tmp_path):
     # Hide the provider through Python's actual discovery/import boundary in a new
     # interpreter, even when the developer has an editable Ackredit installed.
     script = textwrap.dedent("""
-        import importlib.abc, importlib.util, json, sys
+        import importlib.abc, importlib.util, json, sys, warnings
         from pathlib import Path
         class Absent(importlib.abc.MetaPathFinder):
             def find_spec(self, fullname, path=None, target=None):
                 if fullname == "ackredit" or fullname.startswith("ackredit."):
-                    # DepDigest >=0.12 preserves unrelated/broken discovery errors.
-                    # Python identifies a genuinely missing module through name.
                     raise ModuleNotFoundError("Ackredit is absent in this process", name=fullname)
         sys.meta_path.insert(0, Absent())
         import sabueso
@@ -322,13 +354,19 @@ def test_fresh_process_absence_laziness_and_saved_reading(tmp_path):
         from sabueso.core.packets import KnowledgePacket
         card = Card.from_dict(json.loads(Path("temp_data/frozen_cards/schema_0.3.10__P60174.json").read_text()))
         query = sabueso.KnowledgeQuery("P60174", aspects=["identity"])
-        baseline = sabueso.compose_packet(query, card)
+        from sabueso._private.smonitor.warnings import AttributionTrackingWarning
+        with warnings.catch_warnings(record=True) as diagnosed:
+            warnings.simplefilter("always")
+            baseline = sabueso.compose_packet(query, card)
+        assert any(isinstance(w.message, AttributionTrackingWarning) for w in diagnosed)
+        assert baseline.attribution["provider"]["status"] == "failed"
         with sabueso.attribution() as empty:
             pass
         assert empty.records == []
         with sabueso.attribution() as run:
             packet = sabueso.compose_packet(query, card)
-        assert run.records[0]["provider"]["status"] == "absent"
+        assert run.records[0]["provider"]["status"] == "failed"
+        assert "ModuleNotFoundError" in run.records[0]["provider"]["reason"]
         assert run.records[0]["resources"] and run.records[0]["bibliography"]
         saved = json.loads(json.dumps(run.records))
         with sabueso.attribution() as reading:
@@ -352,7 +390,6 @@ def test_fresh_import_and_empty_context_never_load_provider_or_bibliography():
         import sabueso
         from sabueso.core.card import Card
         card = Card.from_dict(json.loads(Path("temp_data/frozen_cards/schema_0.3.10__P60174.json").read_text()))
-        sabueso.compose_packet(sabueso.KnowledgeQuery("P60174", aspects=["identity"]), card)
         with sabueso.attribution() as run:
             pass
         assert not run.records

@@ -1,6 +1,36 @@
 # Sabueso — Decision Log
 
-## Early optional Ackredit integration (2026-10-02, #108, moli#36)
+## Required Ackredit and automatic result attribution (2026-10-02, #108, moli#36)
+
+- The maintainer chose Ackredit as a hard runtime dependency: bibliography and
+  attribution are part of Sabueso's knowledge product. This supersedes the initial
+  optional-dependency decision below; preserving scientific results on tracking
+  failure does not require making a dependency optional.
+- Every completed packet composition gets `packet.attribution`, outside its
+  scientific payload and hashes. `sabueso.attribution()` is a convenience collector,
+  not an activation switch. Applications continue to own sessions/workflows.
+- Importing Sabueso or entering an empty collector does not import the provider.
+  Composition uses a lazy required import without DepDigest's optional path.
+  Missing/broken provider installations emit diagnostics and retain a failed record
+  and the completed science, never a successful-attribution claim.
+- Save the original detached JSON beside the scientific packet. Payload-only store
+  readers return `attribution is None`, without crediting another execution. Packet,
+  card and store schemas/hashes do not change.
+- Ackredit is required in metadata and the recipe. Its first stable portable-API
+  version/build is pending (#75/#22), so no numerical floor or public build is invented.
+  A tracked full-commit source overlay provisions every runtime CI lane. Normal
+  source installation covers 3.11–3.13. The bounded 3.14 metadata-override probe
+  (#80) is experimental consumer evidence, not a provider support/public-install claim.
+- The next release is blocked in build, installed-package and promotion workflows
+  through `dependency_preflight.py --release`. Re-evaluate #108 when a stable API
+  version/public build supports normal clean installation on Python 3.11–3.14;
+  then set the actual floor, install public builds in every route and remove the
+  source overlay, metadata override and release blocker together.
+- The required source candidate includes Ackredit's #78 BibTeX correction. Saved
+  original CSL author objects render correctly in text, CSL-JSON and BibTeX; consumer
+  regressions check corporate grouping and personal names without new credits.
+
+## Early optional Ackredit integration (superseded, 2026-10-02, #108, moli#36)
 
 - Integrate a bounded runtime adapter now, before the knowledge API grows further.
   `sabueso.attribution()` explicitly observes completed packet composition. It

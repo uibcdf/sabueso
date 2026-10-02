@@ -59,14 +59,19 @@ shows how to use them.
 
 ## Knowledge packets (prototype, #71; contract in uibcdf/moli#22)
 
-- `sabueso.attribution()` (unreleased, #108) yields an `AttributionRun`; its
+- `KnowledgePacket.attribution` (unreleased, #108) automatically retains a detached
+  composition record outside the scientific payload and hashes. Its accessor returns
+  an independent copy; payload-only saved readers return `None` and add no credit.
+  Save the original JSON sidecar alongside the scientific packet.
+  `sabueso.attribution()` yields an `AttributionRun`; its
   `records` accessor returns detached JSON records for completed packet composition.
-  Applications own Ackredit sessions. The optional lazy adapter preserves per-result
-  reused resources and contributes to enclosing captures/workflows; absence/failure
+  Applications own Ackredit sessions. The required lazy adapter preserves per-result
+  reused resources and contributes to enclosing captures/workflows; provider failures
   preserves knowledge and host records. Records carry source-record versions and
   exact support pins, separately from packets/terms. Acquisition and resolve-only
-  attribution remain outside this first adapter. No public extra is declared while
-  provider publication/3.14 closure are pending. See the user attribution page and
+  attribution remain outside this first adapter. Ackredit is required in runtime
+  metadata/recipe; the next release is blocked by stable API/publication/3.14 closure.
+  See the user attribution page and
   `examples/ackredit_pilot/`.
 
 - `sabueso.KnowledgeQuery(subject, comparator=None, aspects=None, constraints=None,

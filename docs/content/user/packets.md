@@ -201,5 +201,11 @@ mappings or detail levels are not compared: `knowledge_changed` and
 - `store.packet_names()` lists the names.
 
 To compose a packet from cards you already have, without resolving again, use
-`sabueso.compose_packet(query, subject_card, comparator_card)`. The cards are used as
-they are. An aspect whose sources they were not built with shows as `not_queried`.
+`sabueso.compose_packet(query, subject_card, comparator_card)`.
+Composition automatically attaches `packet.attribution`, a detached runtime
+record outside the scientific payload and hashes. Save its original JSON beside the
+packet; payload-only saved readers add no credit and have no reconstructed capture.
+See [automatic attribution](attribution.md) for application workflows and failure status.
+
+The cards are used as they are. An aspect whose sources they were not built with
+shows as `not_queried`.

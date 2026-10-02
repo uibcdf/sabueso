@@ -13,15 +13,20 @@
   packaged registry and review dates, not a historical registry snapshot. Stored
   statement support is available, but exact mapping/qualifier lineage is not always
   recorded; disease grouping includes broader MONDO/MedGen identity/hierarchy context.
-- **Optional pipeline attribution** (#108, moli#36): Ackredit source capture APIs
+- **Required pipeline attribution / release blocker** (#108, moli#36): Ackredit source capture APIs
   are provisional, publication is pending and its declared Python range does not yet
   cover Sabueso's 3.14 claim. The first runtime adapter observes packet composition;
   source acquisition and further result types still need adapters. Only UniProt and
   Europe PMC description papers are declared so far; other citations remain explicit
-  gaps. Real-provider source CI covers 3.11–3.13, independently of ordinary Sabueso's
-  provider-free 3.11–3.14 CI. Published dependency closure remains a release gate for
-  any optional installation claim. Explicit literal authors are misrendered in
-  BibTeX (ackredit#78); use CSL-JSON/text until corrected. Failed tracking can leave
+  gaps. Every runtime CI lane installs the full-commit source provider. Python
+  3.11–3.13 use normal source installs; 3.14 uses an explicit metadata-override probe
+  (ackredit#80), which cannot establish supported or public provider closure.
+  `dependency_preflight.py --release` blocks build, installed-package and promotion
+  routes until a stable API version and exact public provider pins are verified
+  on every supported Python minor. The unversioned required metadata is temporary:
+  set the real stable API floor when the provider publishes it. No floor or public
+  build is invented. The pinned candidate includes the explicit CSL-author BibTeX
+  correction (ackredit#78), checked by saved-reader regressions. Failed tracking can leave
   partial workflow credits; result records retain failure status and host support.
 - **SourceAssertion growth**: preserving all values can create very large cards and stores.
 - **Mapping fragility**: changes in source APIs can break field mappings.

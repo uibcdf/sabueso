@@ -14,7 +14,7 @@ class SabuesoWarning(CatalogWarning):
 
 
 class AttributionTrackingWarning(SabuesoWarning):
-    """Optional attribution failed; the scientific result remains usable."""
+    """Automatic attribution failed; the scientific result remains usable."""
 
     catalog_key = "AttributionTrackingWarning"
 

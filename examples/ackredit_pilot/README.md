@@ -12,14 +12,18 @@ python -m examples.ackredit_pilot.run --output /tmp/sabueso-ackredit-pilot
 ```
 
 CI builds and installs Ackredit commit
-`4228444cc865a4decb550d1b14b1ffeb046a10eb` with `--no-deps`, using the Conda test
+`561989e5dfa0c48e172440b0f130a1efae961e95` with `--no-deps`, using the Conda test
 environment, on Python 3.11–3.13. This is a tracked source test, not a published
-installation route. Sabueso's ordinary provider-free CI still covers 3.11–3.14.
+installation route. All runtime CI installs the required source provider; 3.14 is
+an explicitly labelled metadata-override compatibility probe (ackredit#80).
+The next release requires normal public-provider installation on 3.11–3.14.
 
 The output contains a knowledge store, two detached result attribution records,
-their text and CSL-JSON references, and the application's workflow attribution.
+their text, CSL-JSON and BibTeX references, and the application's workflow attribution.
 Both results credit reused UniProt knowledge. Only the literature result credits
 Europe PMC. The workflow contains their union; saved readers add no credit.
+Composition supplies `packet.attribution` automatically; this workflow uses no
+Sabueso attribution collector to activate it. The records are saved beside packets.
 
 The initial adapter observes completed composition over pinned stored statements.
 The explicit source intake is outside that adapter. The records state this scope,
@@ -28,6 +32,6 @@ missing bibliography. The service-description articles are complete; they do not
 replace the bibliography of the target article or its annotation provider, and do
 not grant reuse rights for text fragments. See `docs/content/user/attribution.md`.
 
-BibTeX is deliberately not exported here: explicit corporate authors are currently
-misrendered by the inspected provider ([Ackredit #78](https://github.com/uibcdf/ackredit/issues/78)).
-The original metadata is preserved for a corrected provider reader.
+The pinned provider includes the explicit CSL-author BibTeX correction
+([Ackredit #78](https://github.com/uibcdf/ackredit/issues/78)). Saved readers render
+the corporate UniProt author and Europe PMC's personal names from original metadata.

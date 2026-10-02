@@ -289,12 +289,14 @@ In order:
    - exchange with TopoMT (positions, interface mutations), MolSysViewer (features to
      show) and PharmacophoreMT (ligand decks). Use cases 3, 4 and 7 are partial for
      want of these.
-   - optional Ackredit attribution for knowledge pipelines (#108, moli#36): the
-     initial opt-in packet-composition adapter and public offline workflow are
+   - required Ackredit attribution for knowledge pipelines (#108, moli#36): the
+     automatic packet-composition adapter and public offline workflow are
      implemented against provisional capture APIs (ackredit#75). Source acquisition,
      further result types, complete resource bibliography and published Python
-     dependency closure remain next work. Explicit author-object BibTeX rendering is
-     tracked upstream in ackredit#78. Knowledge support, runtime use and terms retain
+     dependency closure remain next work and block the next release. Python 3.14
+     provider support is requested in ackredit#80. The provider corrected explicit
+     author-object BibTeX rendering in ackredit#78; the pinned candidate includes it.
+     Knowledge support, runtime use and terms retain
      their separate meanings; scientific payloads are unchanged.
 
 Each is proposed as an issue before work starts, and the order is revisited at each

@@ -1,3 +1,5 @@
+# Conda portion only: required Ackredit is provisioned separately from the full-commit
+# source candidate in devtools/dependency_routes.toml. See devtools/conda-envs/README.md.
 # Environment for Sabueso's offline tests in CI (uibcdf/sabueso#34).
 # Runtime dependencies (as in pyproject.toml and the recipe) plus test tooling.
 channels:

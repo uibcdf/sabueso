@@ -90,12 +90,19 @@ it (`conda install -c conda-forge pandas`) to turn tables into DataFrames. Avoid
 its package lacks a data file and cannot build cards (#35). Sabueso is not published on
 PyPI.
 
-For development, dependencies come from conda and pip is used only for the local editable
-install:
+For development, provision the Conda environment on Python 3.13 while the required
+Ackredit candidate's 3.14 support is pending:
 
 ```bash
 conda env create -n sabueso-dev -f devtools/conda-envs/development_env.yaml
+conda install -n sabueso-dev "python=3.13"
 conda activate sabueso-dev
+```
+
+Install the pinned required Ackredit source candidate using
+[the development provisioning instructions](devtools/conda-envs/README.md), then:
+
+```bash
 pip install --no-deps --editable .
 ```
 

@@ -15,10 +15,12 @@ the registry must confirm that the version is unoccupied. A staged route is
 required for a new interpreter, dependency, packaging contract, or other
 change that needs clean installed-package evidence before public visibility.
 
-Before any candidate build, `python devtools/dependency_preflight.py` must pass. It is a
+Before any candidate build, `python devtools/dependency_preflight.py --release` must pass. It is a
 read-only check that the recipe, every environment installing the runtime, and the
 exact public builds pinned by the staged-package test agree with `pyproject.toml`
-(`devtools/dependency_routes.toml`, #76). CI's quality job runs it on every commit.
+(`devtools/dependency_routes.toml`, #76). CI's quality job runs the development check
+without `--release`, allowing only explicitly inventoried required source candidates
+while reporting their release blockers.
 
 **Immutable coordinates (#78).**
 - A Conda file coordinate (`uibcdf/sabueso/<version>/noarch/<filename>`) is never
@@ -75,3 +77,15 @@ package: `SABUESO_CONDA_VERSION=X.Y.Z conda build devtools/conda-build
 write the card from the fixtures there
 (see `devguide/SCHEMA.md`, "Versioning policy", and uibcdf/sabueso#42). From then on,
 that schema's recorded shape is fixed.
+
+## Unreleased required dependency gate
+
+The development line now requires Ackredit for automatic packet attribution (#108).
+Its portable API has no verified stable public build across Python 3.11–3.14 yet
+(ackredit#22/#75/#80). Build, staged installed-package and promotion workflows run
+`python devtools/dependency_preflight.py --release` and stop while this dependency
+is declared unpublished in `devtools/dependency_routes.toml`. Do not infer public
+closure from the source CI candidate or its experimental 3.14 metadata override.
+Once the provider publishes, set the actual API floor and exact public build pins,
+verify normal clean installs on all supported interpreters, and remove the tracked
+source overlay and blocker together. The published 0.11.0 route is unchanged.

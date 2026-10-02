@@ -21,7 +21,7 @@ replaces the recorded outcome.
 
 | Code | Class | When |
 |---|---|---|
-| `SABUESO-W-ATTRIBUTION-001` | `AttributionTrackingWarning` | optional tracking or stored-support attribution failed; the completed packet and host failure record remain available (#108) |
+| `SABUESO-W-ATTRIBUTION-001` | `AttributionTrackingWarning` | automatic tracking or stored-support attribution failed; the completed packet and host failure record remain available (#108) |
 | `SABUESO-E-LIBRARY-001` | `LibraryNotFoundError` | an optional library a function needs is not installed (DepDigest; also an `ImportError`), with install hints |
 | `SABUESO-W-ENRICH-001` | `EnrichmentFailedWarning` | a source failed; the result was built without it |
 | `SABUESO-W-ENRICH-002` | `EnrichmentTruncatedWarning` | a source returned fewer records than it holds |

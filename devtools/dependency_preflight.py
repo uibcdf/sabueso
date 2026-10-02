@@ -13,6 +13,9 @@ For each checked route it fails on:
 
 It also fails on a conda environment, recipe or package-installing workflow that the
 inventory does not list. It never rewrites a file, and never weakens metadata to pass.
+An explicitly inventoried unpublished required sibling can be provisioned from a
+full-commit source overlay for development; its missing public pins block ``--release``.
+Release workflows must use that mode. Source tests cannot establish public closure.
 Standard library only, so it runs before any environment is built:
 
     python devtools/dependency_preflight.py [--root PATH]
@@ -194,13 +197,32 @@ def unlisted_routes(root: Path, listed: Dict[str, dict]) -> List[str]:
     )
 
 
-def preflight(root: Path) -> List[str]:
+def preflight(root: Path, *, release: bool = False) -> List[str]:
     inventory = tomllib.loads(
         (root / "devtools" / "dependency_routes.toml").read_text(encoding="utf-8")
     )
     routes = inventory.get("routes", {})
     required, python = public_contract(root)
     problems = unlisted_routes(root, routes)
+    # A source candidate can provision an unpublished required sibling for
+    # development. Public pins remain pending and block every release route.
+    pending = inventory.get("unpublished_required_dependencies", {})
+    candidates = {
+        c.get("dependency"): c
+        for c in inventory.get("source_routes", {}).get("candidates", [])
+    }
+    for name, entry in pending.items():
+        candidate = candidates.get(name, {})
+        if name not in required or not entry.get("reason") or not entry.get("issue"):
+            problems.append(f"{name}: invalid unpublished dependency declaration")
+        if not re.fullmatch(r"[0-9a-f]{40}", candidate.get("commit", "")):
+            problems.append(
+                f"{name}: unpublished dependency needs a full source commit"
+            )
+        if candidate.get("constraint") != required.get(name):
+            problems.append(f"{name}: source constraint differs from pyproject.toml")
+        if release:
+            problems.append(f"Release blocked: {name}: {entry.get('reason')}")
     for route, entry in sorted(routes.items()):
         kind = entry.get("kind")
         path = root / route
@@ -214,12 +236,49 @@ def preflight(root: Path) -> List[str]:
         if not path.is_file():
             problems.append(f"{route}: listed but missing")
             continue
-        problems += check_route(route, route_specs(path, kind), required, python, kind)
+        specs = route_specs(path, kind)
+        for mode in ("source_dependencies", "pending_public_dependencies"):
+            for name in entry.get(mode, []):
+                if name not in pending:
+                    problems.append(f"{route}: {name} is not a tracked release blocker")
+                    continue
+                if name not in required:
+                    continue  # already diagnosed by the declaration check
+                if (mode == "source_dependencies" and kind != "environment") or (
+                    mode == "pending_public_dependencies" and kind != "pins"
+                ):
+                    problems.append(f"{route}: invalid {mode} for {kind}")
+                    continue
+                specs[name] = required[name]
+        problems += check_route(route, specs, required, python, kind)
     source = inventory.get("source_routes", {})
     if source.get("applicable") is not False and not source.get("routes"):
         problems.append(
             "source_routes: declare applicable = false, or list the source lanes"
         )
+    for lane in source.get("routes", []):
+        route, _, job = lane.partition(":")
+        path = root / route
+        if not path.is_file() or not job:
+            problems.append(f"{lane}: missing source workflow/job")
+            continue
+        match = re.search(
+            r"^  " + re.escape(job) + r":\n(.*?)(?=^  [\w-]+:|\Z)",
+            path.read_text(),
+            re.M | re.S,
+        )
+        body = match.group(1) if match else ""
+        for name, candidate in candidates.items():
+            if not re.search(
+                r"^\s+ref: " + re.escape(candidate.get("commit", "")) + r"\s*$",
+                body,
+                re.M,
+            ) or not re.search(
+                r"pip install[^\n]* " + re.escape(candidate.get("path", "")) + r"\s*$",
+                body,
+                re.M,
+            ):
+                problems.append(f"{lane}: does not install the pinned {name} source")
     return problems
 
 
@@ -228,12 +287,22 @@ def main(argv: List[str] | None = None) -> int:
     parser.add_argument(
         "--root", default=Path(__file__).resolve().parents[1], type=Path
     )
+    parser.add_argument(
+        "--release", action="store_true", help="Require published dependency closure"
+    )
     args = parser.parse_args(argv)
-    problems = preflight(args.root)
+    problems = preflight(args.root, release=args.release)
     for problem in problems:
         print(f"FAIL {problem}")
     if not problems:
-        print("OK: every runtime route agrees with pyproject.toml")
+        print("OK: development dependency routes agree with pyproject.toml")
+        inventory = tomllib.loads(
+            (args.root / "devtools/dependency_routes.toml").read_text()
+        )
+        for name, entry in inventory.get(
+            "unpublished_required_dependencies", {}
+        ).items():
+            print(f"RELEASE BLOCKED: {name}: {entry['reason']} ({entry['issue']})")
     return 1 if problems else 0
 
 

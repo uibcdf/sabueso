@@ -203,20 +203,25 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   exact grouping inputs, which were not recorded. The terms registry is the current
   packaged registry with review dates, not a reconstructed historical registry.
   This read-time report changes no stored formats, card shapes or packet hashes.
-- Optional Ackredit integration (#108, moli#36), first local runtime adapter:
-  `sabueso.attribution()` observes completed packet composition, with detached
+- Required Ackredit integration (#108, moli#36), first local runtime adapter:
+  composition automatically attaches `packet.attribution`; `sabueso.attribution()`
+  collects those detached
   `sabueso.packet_attribution@1` records. Actual selected stored support/conflicts
   and relationship dependencies define resource scope; each result retains reused
   resources and contributes to the application's workflow. Packet/card/store payloads
-  and hashes are unchanged. Absence and failure retain knowledge and host records;
+  and hashes are unchanged. Missing/broken providers diagnose failed attribution
+  while retaining knowledge and host records;
   saved readers add no credit. The public offline pilot is `examples/ackredit_pilot/`.
-  CI tests real provider commit `4228444cc865a4decb550d1b14b1ffeb046a10eb` on
-  Python 3.11–3.13; ordinary Sabueso CI still covers 3.11–3.14. UniProt/Europe PMC
+  All runtime CI tests real provider commit `561989e5dfa0c48e172440b0f130a1efae961e95`.
+  Python 3.11–3.13 use normal source installation; 3.14 is a metadata-override
+  compatibility probe (ackredit#80), not supported-provider/public-install evidence.
+  The next release is blocked by `dependency_preflight.py --release` until a stable
+  provider API and public dependency closure exist on 3.11–3.14. UniProt/Europe PMC
   description citations are verified offline; other descriptions, target articles
   and annotation-provider bibliography remain explicit gaps. Acquisition coverage,
   provider publication, 3.14 closure and the shared record boundary remain open.
-  Corporate-author BibTeX rendering was reported as ackredit#78; the pilot uses
-  CSL-JSON and text.
+  Corporate-author BibTeX rendering was reported as ackredit#78 and corrected by
+  the provider; the pinned candidate includes it, with CSL-JSON/text/BibTeX reader tests.
 
 ## Package layout
 
@@ -256,8 +261,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1303 tests passed, 26 online tests deselected (2026-10-02, with the
-  real optional Ackredit source provider available). Run with
+- Offline suite: 1308 tests passed, 26 online tests deselected (2026-10-02, with the
+  required real Ackredit source provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.

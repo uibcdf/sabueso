@@ -1,7 +1,7 @@
-# Optional packet attribution
+# Automatic packet attribution
 
-In development after 0.11.0, `sabueso.attribution()` observes completed packet
-composition. It keeps the resources behind selected stored statements, their
+In development after 0.11.0, every completed packet composition attaches
+`packet.attribution`. It keeps the resources behind selected stored statements, their
 original source-record versions and pins, and the software executing composition.
 The records are separate from the packet, its hashes and its terms report.
 
@@ -13,17 +13,17 @@ import sabueso
 
 with ackredit.session("my knowledge workflow"):
     with ackredit.capture("workflow") as workflow:
-        with sabueso.attribution() as run:
-            identity = sabueso.compose_packet(identity_query, card)
-            literature = sabueso.compose_packet(literature_query, card)
+        identity = sabueso.compose_packet(identity_query, card)
+        literature = sabueso.compose_packet(literature_query, card)
 
-result_records = run.records
+result_records = [identity.attribution, literature.attribution]
 workflow_references = workflow.attribution.to_dict()
 ```
 
 `card` and both queries are supplied by the application. Each completed composition
 gets a record, including resources reused by the preceding result. The application's
-workflow collects their union. Nested Sabueso contexts retain their contained
+workflow collects their union. An optional `sabueso.attribution()` collector retains
+records from several compositions. Nested collectors retain their contained
 results, and the enclosing context retains those results too. No isolated component
 session is created. Composition inside `knowledge_packet` uses the same adapter.
 
@@ -38,7 +38,8 @@ Each record carries:
 - `bibliography` and `bibliography_gaps`: declared descriptions and missing records;
 - `provider`: status, original Ackredit version and detached provider attribution.
 
-`run.records` returns independent copies. Save them beside the corresponding packets:
+`packet.attribution` and a collector's `run.records` return independent copies.
+Save them beside the corresponding packets:
 
 ```python
 import json
@@ -57,24 +58,33 @@ original records without new registration, source requests or DOI enrichment. Do
 not substitute the reader's current version or a current card head for saved pins.
 In a source checkout, runtime package metadata can be stale; use an installed
 candidate when exact producer-version evidence matters.
+The knowledge store and `packet.to_dict()` retain scientific payloads only: a packet
+loaded from them has `attribution is None`. Retain and read the original JSON sidecar
+alongside it; never manufacture execution attribution while loading saved knowledge.
 
-## Activation and failures
+## Dependency and failures
 
-Ordinary composition and empty attribution contexts never import Ackredit or load
-the bibliography. When attribution is enabled and Ackredit is absent, host records
-still retain source support and declared bibliography, with `provider.status: absent`.
-A broken installed provider produces `SABUESO-W-ATTRIBUTION-001`, marks attribution
+Ackredit is a required runtime dependency. Importing Sabueso and entering an empty
+collector do not load it; composition automatically loads it and credits the result.
+A missing or broken provider in an invalid installation produces
+`SABUESO-W-ATTRIBUTION-001`, marks attribution
 `failed`, and preserves the completed packet and host record. Missing stored support
 marks `support_status: unavailable` and skips provider credit. These statuses never
 mean that missing references were successfully collected. A provider failure after
 some credits can leave a partial enclosing workflow; inspect the result records and
 diagnostics before claiming completeness.
 
-Ackredit is optional and lazy through DepDigest. This pilot does not enable import
+The adapter uses a lazy required import, without DepDigest's optional-library path.
+This pilot does not enable import
 hooks, journals, automatic DOI enrichment or reminders. Its reviewed capture API is
 provisional; channel publication and Python 3.14 compatibility remain open. No public
-installation extra is claimed yet. CI installs a tracked source candidate and tests
-the real provider on Python 3.11–3.13; ordinary Sabueso CI retains 3.11–3.14.
+installation route for the development candidate is claimed. All runtime CI installs
+the required full-commit source candidate. Python 3.11–3.13 use normal source installs;
+3.14 uses an explicitly marked metadata-override compatibility probe
+([Ackredit #80](https://github.com/uibcdf/ackredit/issues/80)), which does not prove
+supported or publicly installable provider compatibility. The next Sabueso release
+is blocked until a stable API version and public dependency closure are verified
+on every supported Python minor. The published 0.11.0 installation remains unchanged.
 
 ## Scope and bibliography
 
@@ -107,10 +117,10 @@ providers also need their own citations; a service-description paper does not re
 them. No missing authors, dates or release identifiers are invented. Terms and
 fragment reuse rights are answered separately by the terms report.
 
-CSL-JSON and text preserve the corporate UniProt author. BibTeX rendering of explicit
-author objects is currently defective in the inspected provider
-([Ackredit #78](https://github.com/uibcdf/ackredit/issues/78)); the public pilot retains
-the original metadata and does not export BibTeX until the provider is corrected.
+CSL-JSON, text and BibTeX preserve the corporate UniProt author. The required source
+candidate includes the provider's correction for explicit CSL author objects
+([Ackredit #78](https://github.com/uibcdf/ackredit/issues/78)); saved-reader regression
+tests check corporate-name grouping and Europe PMC's personal names without new credit.
 
 The complete runnable public workflow is in `examples/ackredit_pilot/`, using only
 the frozen public HsTIM fixtures declared in `temp_data/NOTICE.md`.

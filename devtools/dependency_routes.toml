@@ -19,13 +19,16 @@ kind = "recipe"
 
 [routes."devtools/conda-envs/test_env.yaml"]
 kind = "environment"
+source_dependencies = ["ackredit"]
 used_by = ".github/workflows/ci.yml (offline tests, every OS and Python)"
 
 [routes."devtools/conda-envs/development_env.yaml"]
 kind = "environment"
+source_dependencies = ["ackredit"]
 
 [routes."devtools/conda-envs/docs_env.yaml"]
 kind = "environment"
+source_dependencies = ["ackredit"]
 
 [routes."devtools/conda-envs/build_env.yaml"]
 kind = "excluded"
@@ -33,15 +36,17 @@ reason = "builds, uploads and promotes the package; never installs Sabueso's run
 
 [routes.".github/workflows/test_staged_conda_package.yaml"]
 kind = "pins"
+pending_public_dependencies = ["ackredit"]
 
 [routes."devtools/conda-build/verify_staged_install.py"]
 kind = "pins"
+pending_public_dependencies = ["ackredit"]
 # PUBLIC_DEPENDENCIES: the exact public builds the installed-package gate checks. They
 # must equal the workflow's pins (tests/tools/test_dependency_preflight_offline.py).
 
 [routes.".github/workflows/ci.yml"]
 kind = "excluded"
-reason = "installs test_env.yaml (checked above), Sabueso itself and the separately inventoried optional Ackredit source candidate with pip --no-deps, and ruff"
+reason = "installs the Conda portion of test_env.yaml (checked above), the required full-commit Ackredit source candidate, Sabueso with pip --no-deps, and ruff; Python 3.14 is a tracked compatibility probe (ackredit#80)"
 
 [routes.".github/workflows/build_and_upload_conda_packages.yaml"]
 kind = "excluded"
@@ -59,14 +64,23 @@ reason = "installs build_env.yaml only, to remove a label"
 kind = "excluded"
 reason = "runs the governance check; installs no runtime"
 
-# Optional provider publication is pending (#108, ackredit#22). This tracked full
-# commit is consumer-test evidence, not a public installation or 3.14 claim.
+# Required provider publication is pending. No public floor/build is invented:
+# --release fails until these entries are removed and public pins are verified.
+[unpublished_required_dependencies.ackredit]
+reason = "portable capture API needs a stable version and public build on Python 3.11–3.14 (ackredit#75, #22, #80)"
+issue = "https://github.com/uibcdf/sabueso/issues/108"
+
+# Development/CI only; the 3.14 metadata override is an explicit source probe.
 [source_routes]
 applicable = true
-routes = [".github/workflows/ci.yml:ackredit-pilot"]
+routes = [".github/workflows/ci.yml:test", ".github/workflows/ci.yml:ackredit-pilot"]
 
 [[source_routes.candidates]]
 repository = "uibcdf/ackredit"
-commit = "4228444cc865a4decb550d1b14b1ffeb046a10eb"
+dependency = "ackredit"
+constraint = ""
+path = ".ackredit-candidate"
+commit = "561989e5dfa0c48e172440b0f130a1efae961e95"
 python = ">=3.11,<3.14"
-reason = "portable capture APIs are provisional and not available on configured public channels; optional packet-composition consumer pilot only"
+experimental_python = "3.14"
+reason = "required portable capture APIs unavailable on public channels; normal source installs on 3.11–3.13, metadata override only for the 3.14 compatibility probe (ackredit#80); no public installation claim"

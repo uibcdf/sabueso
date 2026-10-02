@@ -27,19 +27,19 @@ def main():
         europepmc_client=FixtureEuropePMCClient(args.fixtures),
     )
     store.save(card)
+    records = []
     with ackredit.session("public Sabueso attribution pilot"):
         with ackredit.capture("knowledge workflow") as workflow:
             with ackredit.scope("application.prepare"):
-                with sabueso.attribution() as run:
-                    for name, aspects in (
-                        ("identity", ["identity"]),
-                        ("literature", ["literature"]),
-                    ):
-                        packet = sabueso.compose_packet(
-                            sabueso.KnowledgeQuery("P60174", aspects=aspects), card
-                        )
-                        store.save_packet(packet, name)
-        records = run.records
+                for name, aspects in (
+                    ("identity", ["identity"]),
+                    ("literature", ["literature"]),
+                ):
+                    packet = sabueso.compose_packet(
+                        sabueso.KnowledgeQuery("P60174", aspects=aspects), card
+                    )
+                    store.save_packet(packet, name)
+                    records.append(packet.attribution)
         assert len(records) == 2
         for name, record in zip(("identity", "literature"), records, strict=True):
             assert record["provider"]["status"] == "available", record["provider"]
@@ -71,7 +71,11 @@ def main():
                 original = ackredit.Attribution.from_dict(
                     record["provider"]["attribution"]
                 )
-                for format, extension in (("text", "txt"), ("csl-json", "csl.json")):
+                for format, extension in (
+                    ("text", "txt"),
+                    ("csl-json", "csl.json"),
+                    ("bibtex", "bib"),
+                ):
                     (args.output / f"{name}.references.{extension}").write_text(
                         original.report(format=format), encoding="utf-8"
                     )

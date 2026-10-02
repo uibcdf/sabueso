@@ -1,24 +1,24 @@
 ---
-summary: Optional result and workflow attribution for knowledge pipelines.
+summary: Required automatic result and workflow attribution for knowledge pipelines.
 issue: uibcdf/sabueso#108
 status: open
 opened: 2026-10-02
 closed:
 verification: local_runtime_tested
 area: [attribution, knowledge_packets, source_access]
-blocked_by: [uibcdf/moli#36, uibcdf/ackredit#75, uibcdf/ackredit#22, uibcdf/ackredit#78]
+blocked_by: [uibcdf/moli#36, uibcdf/ackredit#75, uibcdf/ackredit#22, uibcdf/ackredit#80]
 supersedes: []
 ---
 
-# Optional attribution for knowledge pipelines
+# Required attribution for knowledge pipelines
 
-Status: initial optional packet-composition adapter implemented; broader pipeline
-coverage and public dependency adoption remain open.
+Status: required automatic packet-composition adapter implemented; broader pipeline
+coverage and stable public dependency closure remain open and block the next release.
 Owner: [uibcdf/sabueso#108](https://github.com/uibcdf/sabueso/issues/108).
 Shared boundary: [uibcdf/moli#36](https://github.com/uibcdf/moli/issues/36).
 Provider: [uibcdf/ackredit#75](https://github.com/uibcdf/ackredit/issues/75).
 Reviewed: 2026-10-02, Ackredit source
-`4228444cc865a4decb550d1b14b1ffeb046a10eb`.
+`561989e5dfa0c48e172440b0f130a1efae961e95`.
 
 ## What the consumer needs
 
@@ -78,7 +78,8 @@ exact grouping lineage, which was not recorded.
 
 These read-time operations keep their support/terms meaning. The initial runtime
 adapter now follows the same stored-statement closure independently of licence
-verdicts, after completed composition in an explicit `sabueso.attribution()` context.
+verdicts, automatically after every completed composition. `packet.attribution` owns
+the detached record; `sabueso.attribution()` optionally collects several results.
 It records `sabueso.packet_attribution@1` locally, credits selected stored knowledge
 and executed software, and contributes per-result references to the application's
 Ackredit session/captures. It observes no source requests or arbitrary card views.
@@ -89,28 +90,31 @@ literature packets for HsTIM from frozen public responses. Both retain reused Un
 references; only literature credits Europe PMC. Their enclosing workflow holds the
 union. Saved JSON readers preserve versions and add no credits. Real-provider tests
 exercise reused resources, nested scopes, detached ownership, installed failure,
-fresh-process genuine absence, lazy import and scientific result parity. Recorded
+fresh-process missing required provider diagnostics, lazy import and scientific result parity. Recorded
 empty source outcomes do not imply new acquisition. Acquisition/replay/empty request
 observation remains the next adapter, not a claimed feature of composition.
 
 Complete UniProt/Europe PMC description citations were verified against primary
 publication records; missing descriptions and target article/annotation-provider
-bibliography remain gaps. Explicit literal authors are preserved in CSL-JSON/text.
-BibTeX stringifies author dictionaries in the inspected provider; reproduction and
-requested correction were reported in
-[Ackredit #78](https://github.com/uibcdf/ackredit/issues/78). No renderer is copied.
+bibliography remain gaps. The required candidate includes the correction reported
+in [Ackredit #78](https://github.com/uibcdf/ackredit/issues/78): explicit CSL corporate
+and personal author objects render correctly in BibTeX. Saved-reader consumer
+regressions check original metadata in text, CSL-JSON and BibTeX without new credits.
+No renderer is copied.
 
 Consumer CI installs the full source commit above and requires real-provider tests
-and the public workflow on Python 3.11–3.13. It verifies installed imports outside
-both checkouts. Sabueso's ordinary CI remains provider-free on Python 3.11–3.14.
+and the public workflow on Python 3.11–3.13. Every runtime CI lane installs the
+provider and verifies installed imports outside both checkouts. Python 3.14 uses an
+explicitly marked metadata-override compatibility probe (ackredit#80), which is not
+normal supported-provider or public-installation evidence.
 `devtools/dependency_routes.toml` inventories this provisional source route.
 
 ## Adoption gates
 
-- Keep the provider optional and lazy through DepDigest; host-owned provenance and
-  results survive absence. A broken installed provider emits SMonitor diagnostics
-  instead of being treated as absence; failures cannot overwrite scientific results.
-- Applications opt into attribution and own sessions. Libraries enable no import
+- Keep Ackredit required in metadata and the recipe. Lazy required import keeps
+  saved readers free of backend loading. Missing/broken installations emit SMonitor
+  diagnostics and retain failed attribution alongside completed scientific results.
+- Results receive attribution automatically; applications own sessions. Libraries enable no import
   hooks, persistence journals, automatic enrichment or reminders.
 - Exercise a real provider with two results reusing sources, an enclosing workflow,
   cached/offline and evaluated-empty requests, genuine absence, failure, fresh-process
@@ -118,14 +122,19 @@ both checkouts. Sabueso's ordinary CI remains provider-free on Python 3.11–3.1
 - Obtain published provider/dependency closure for every claimed Python minor.
   The inspected provider declares `>=3.11,<3.14`; Sabueso supports 3.11–3.14.
   Capture APIs are provisional and channel publication is pending in
-  [Ackredit #22](https://github.com/uibcdf/ackredit/issues/22). No public extra or
-  released-installation claim follows from source inspection or an editable pilot.
+  [Ackredit #22](https://github.com/uibcdf/ackredit/issues/22). Provider 3.14 support
+  is requested in [Ackredit #80](https://github.com/uibcdf/ackredit/issues/80).
+  No public-installation claim follows from source tests. The first stable API
+  floor and exact public build pins must be set when the provider publishes.
 - Coordinate the attribution/knowledge/terms boundary in MOLI #36; Ackredit and
   MolSysSuite keep ownership of provider/member contracts and rollout.
 
-The maintainer requested early optional integration on 2026-10-02. The bounded local
-composition adapter is implemented now; publication/shared-boundary gates still
-apply to broader adoption, public extras and installation claims. Next work observes
+The maintainer first requested early integration on 2026-10-02, then chose a hard
+dependency and automatic attribution. The initial optional decision is superseded.
+`dependency_preflight.py --release` blocks build, staged installed-package and
+promotion workflows until normal public closure is verified on Python 3.11–3.14.
+The unversioned required metadata does not assert that old tagged APIs suffice.
+Next work observes
 actual acquisition boundaries, distinguishes successful/empty/replayed/failed
 requests, and expands verified resource bibliography. This change makes no release.
 
@@ -135,15 +144,16 @@ requests, and expands verified resource bibliography. This change makes no relea
   sources and lacks complete bibliography and runtime meaning.
 - Use terms reports as usage logs: rejected because permissions/obligations and
   execution usage answer different questions.
-- Make Ackredit required now: rejected because absence must preserve results and
-  published dependency/Python closure has not been established.
+- Keep Ackredit optional: superseded by the maintainer's hard-dependency decision.
+  Failure tolerance and installation requirements are separate decisions; missing
+  public closure blocks the next release rather than weakening the product contract.
 
 ## Acceptance criteria and resolution
 
 Two public offline packet results retain their own original attribution, including
 reused resources, and the application's workflow captures both. Unused sources earn
 no credit. Saved readers, absence and provider failures preserve result knowledge.
-The local composition pilot passes; published compatibility and shared boundary
+The local automatic-composition pilot passes; published compatibility and shared boundary
 gates remain open. #108 is kept open for acquisition/further-result coverage, complete
 bibliography, provider publication and supported-Python closure. This is an initial
-runtime integration, not a claim of full pipeline coverage or a published extra.
+runtime integration, not a claim of full pipeline coverage or a public installation route.
