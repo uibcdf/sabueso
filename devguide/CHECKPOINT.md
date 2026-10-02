@@ -130,6 +130,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 - The public HsTIM literature review draft and isolated rehearsal are in
   `examples/literature_curation/`; three statements keep their content, outcomes and
   historical support on rebuild. Human validation of the draft remains unset (#92).
+- `tools.db.europepmc.get_annotations(article_ids)` returns located accession-number
+  annotations for explicitly named articles, keeping the source's ids, provider,
+  section, tags and quote fragments. The public fixture includes P60174 in a figure
+  of PMC12400196 (CC BY 4.0). It does not enrich cards or extract claims (#92).
 
 ## Package layout
 
@@ -169,7 +173,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1196 tests passed, 25 online tests deselected (2026-10-02). Run with
+- Offline suite: 1221 tests passed, 25 online tests deselected (2026-10-02). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.
@@ -179,8 +183,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 - Plan and status of every objective: `ROADMAP.md`. It integrates the foundational plan
   and the pilot-driven route.
-- **Next:** the public literature draft awaits human review before actual curation
-  intake. Further candidates are in `ROADMAP.md` ("Next candidates") and in the user
+- **Next:** located mentions are available at source access; their explicit intake
+  into cards and own extraction remain #92. The public literature draft awaits human
+  review before actual curation intake. Further candidates are in `ROADMAP.md`
+  ("Next candidates") and in the user
   guide's gaps (`DOCS_GAPS.md`: wave-2 sources and the
   comparative context have no pages of their own).
 - **Waiting on Nextia:** MOLI accepted the index level (uibcdf/moli#22, 2026-10-01). It
@@ -193,8 +199,6 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   first attempt was repeated, because ChEMBL's API answered HTTP 500 to every request;
   the second was clean. #103 was verified on 0.9.0 and closed.
 - **Open issues, by kind:**
-  - implemented after 0.10.0: #104 (spaced assertion references), #105
-    (extractions exported as curation), #106 (local/UTC dates in temporal tests);
   - released, open for a follow-up: #100
     (archive and mirrors: next phases, #101, postponed), #98 (heavily studied targets), #92
     (literature: located mentions, own extraction), #91 (scientific operations), #88

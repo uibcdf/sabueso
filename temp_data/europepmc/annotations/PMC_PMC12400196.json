@@ -1,0 +1,128 @@
+{
+  "retrieved_at": "2026-10-02",
+  "version": null,
+  "record": [
+    {
+      "source": "MED",
+      "extId": "40832834",
+      "pmcid": "PMC12400196",
+      "annotations": [
+        {
+          "prefix": " sapiens (PDB entry ",
+          "exact": "2jk2",
+          "postfix": "; Rodr\u00edguez-Almaz\u00e1",
+          "tags": [
+            {
+              "name": "2jk2",
+              "uri": "http://identifiers.org/pdbe/pdb:2jk2"
+            }
+          ],
+          "id": "http://europepmc.org/article/PMC/PMC12400196#europepmc-c997c650dde598de930ff43633400a7c",
+          "type": "Accession Numbers",
+          "section": "Methods (http://purl.org/orb/Methods)",
+          "provider": "Europe PMC",
+          "subType": "PDBe"
+        },
+        {
+          "prefix": "Protein Data Bank with accession code ",
+          "exact": "7qon",
+          "postfix": ". ",
+          "tags": [
+            {
+              "name": "7qon",
+              "uri": "http://identifiers.org/pdbe/pdb:7qon"
+            }
+          ],
+          "id": "http://europepmc.org/article/PMC/PMC12400196#europepmc-1f9252a6c30c0e2d34cf16cf8129c02d",
+          "type": "Accession Numbers",
+          "section": "Methods (http://purl.org/orb/Methods)",
+          "provider": "Europe PMC",
+          "subType": "PDBe"
+        },
+        {
+          "prefix": "PDB reference: ",
+          "exact": "7qon",
+          "postfix": " ",
+          "tags": [
+            {
+              "name": "7qon",
+              "uri": "http://identifiers.org/pdbe/pdb:7qon"
+            }
+          ],
+          "id": "http://europepmc.org/article/PMC/PMC12400196#europepmc-27d3f9d414f59e5081f4dc5af9136305",
+          "type": "Accession Numbers",
+          "section": "Supplementary material (http://purl.obolibrary.org/obo/IAO_0000326)",
+          "provider": "Europe PMC",
+          "subType": "PDBe"
+        },
+        {
+          "prefix": "a (Swiss-Prot entry ",
+          "exact": "S4UI50",
+          "postfix": "), B. taurus (Swiss-",
+          "tags": [
+            {
+              "name": "S4UI50",
+              "uri": "http://identifiers.org/uniprot:S4UI50"
+            }
+          ],
+          "id": "http://europepmc.org/article/PMC/PMC12400196#europepmc-10f552b2edaf4916b4904efcb0ee83e5",
+          "type": "Accession Numbers",
+          "section": "Figure (http://semanticscience.org/resource/SIO_000080)",
+          "provider": "Europe PMC",
+          "subType": "UniProt"
+        },
+        {
+          "prefix": "s (Swiss-Prot entry ",
+          "exact": "Q5E956",
+          "postfix": "), O. aries (UniProt",
+          "tags": [
+            {
+              "name": "Q5E956",
+              "uri": "http://identifiers.org/uniprot:Q5E956"
+            }
+          ],
+          "id": "http://europepmc.org/article/PMC/PMC12400196#europepmc-447048122b049f8d9a167c7c86dfb5f0",
+          "type": "Accession Numbers",
+          "section": "Figure (http://semanticscience.org/resource/SIO_000080)",
+          "provider": "Europe PMC",
+          "subType": "UniProt"
+        },
+        {
+          "prefix": "Y5) and H. sapiens (Swiss-Prot entry ",
+          "exact": "P60174",
+          "postfix": "). ",
+          "tags": [
+            {
+              "name": "P60174",
+              "uri": "http://identifiers.org/uniprot:P60174"
+            }
+          ],
+          "id": "http://europepmc.org/article/PMC/PMC12400196#europepmc-cc470bc360616c32a0e49806ef53b9fe",
+          "type": "Accession Numbers",
+          "section": "Figure (http://semanticscience.org/resource/SIO_000080)",
+          "provider": "Europe PMC",
+          "subType": "UniProt"
+        },
+        {
+          "prefix": "\u00c52)40.8\u2003PDB code ",
+          "exact": "7qon",
+          "postfix": " \u2020Rmeas = .\u2021CC1/",
+          "tags": [
+            {
+              "name": "7qon",
+              "uri": "http://identifiers.org/pdbe/pdb:7qon"
+            }
+          ],
+          "id": "http://europepmc.org/article/PMC/PMC12400196#europepmc-47604ce8a561aed1bd554740e8ee27b9",
+          "type": "Accession Numbers",
+          "section": "Table (http://semanticscience.org/resource/SIO_000419)",
+          "provider": "Europe PMC",
+          "subType": "PDBe"
+        }
+      ],
+      "fullTextIdList": [
+        "PMC12400196"
+      ]
+    }
+  ]
+}

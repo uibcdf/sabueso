@@ -1,6 +1,6 @@
 # Sabueso — Public API
 
-The public surface as of main after release 0.7.0. Anything not listed here, or not exported by
+The public surface as of main after release 0.10.0. Anything not listed here, or not exported by
 `sabueso`, is internal. Tools, views, stores and source access check their arguments
 through ArgDigest. Plain accessors (`get`, `set`, `sort`…) do not, and fail loudly on
 wrong types (`ARGUMENT_CONTRACTS.md` lists which is which). The user guide (`docs/`)
@@ -181,6 +181,11 @@ Raw records in a provenance envelope, one client per source (`SOURCE_ACCESS.md`)
 - `unichem.get_compound`, `stringdb.get_partners`;
 - `ncbi_taxonomy.get_taxon`, `ncbi_gene.get_gene`;
 - `skempi.get_mutations`, `mondo.get_term`, `medgen.get_concepts`;
+- `europepmc.get_mentions(identifier, limit=5000)` and
+  `europepmc.get_annotations(article_ids)`: bibliography by explicit accession, or
+  located accession annotations for explicit MED/PMC articles. The latter returns
+  source-native sections, providers, tags and quote fragments without enriching cards
+  or extracting scientific claims; article terms govern fragment storage (#92);
 - `gnomad.get_variants`, `gnomad.get_transcript_variants`, `klifs.get_kinases`,
   `klifs.get_structures`, `gpcrdb.get_receptor`, `sabdab.get_complexes`, `oma.get_orthologs`, `uniref.get_clusters`.
 

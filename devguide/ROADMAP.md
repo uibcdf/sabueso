@@ -234,8 +234,12 @@ In order:
    - Released in 0.7.0: Europe PMC's text-mined accession mentions (`mentioned_in`). Its gene
      and protein annotations were reviewed and set aside: they ground names without
      the organism.
-   - Next, when use asks: located mentions (section, sentence) of PDB ids and
-     accessions, and an extraction Sabueso runs itself, with its tool and version.
+   - Implemented after 0.10.0: source access to located accession annotations for
+     explicit articles (`get_annotations`), with provider, section and quote
+     fragments. A public P60174 mention in a figure verifies the route. These
+     fragments are not complete sentences. Next: explicit intake into cards, PDB
+     mentions linked through stated structure identity, and an extraction Sabueso
+     runs itself, with its tool and version.
    - Validated after 0.10.0: a public review draft and hypothetical curation rehearsal
      (`examples/literature_curation/`), preserving outcomes and historical support on
      rebuild. The draft awaits human review; #105 prevents extraction provenance from

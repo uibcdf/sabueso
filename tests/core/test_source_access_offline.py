@@ -17,6 +17,7 @@ from sabueso.tools.db import (
     clinicaltrials,
     clinvar,
     diseases,
+    europepmc,
     gnomad,
     gpcrdb,
     gtex,
@@ -48,6 +49,9 @@ ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 BTS_KEY = "XBNHRNFODJOFRU-UHFFFAOYSA-N"
 
 CALLS = {
+    "europepmc.get_annotations": lambda: europepmc.get_annotations(
+        "PMC:PMC12400196", client=europepmc.FixtureEuropePMCClient("temp_data")
+    ),
     "pubchem_bioassay.get_assays": lambda: pubchem_bioassay.get_assays(
         "P52270", client=pubchem_bioassay.FixturePubChemBioAssayClient("temp_data")
     ),

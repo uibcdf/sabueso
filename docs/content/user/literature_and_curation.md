@@ -53,7 +53,40 @@ for rel in card.relationships("mentioned_in"):
 - These are not UniProt's curated references, which come as `described_in`
   (`cited_by`).
 - Every article is fetched, up to 5000, and a cut is reported. HsTIM is mentioned in
-  354.
+  354 in the frozen search of 2026-09-29; live totals change.
+
+### Locate a stated accession in an explicit article
+
+`get_annotations` reads Europe PMC's accession-number annotations for a named
+publication, preserving its provider, annotation link, section and text fragments:
+
+```python
+from sabueso.tools.db.europepmc import get_annotations, FixtureEuropePMCClient
+
+response = get_annotations(
+    "PMC:PMC12400196", client=FixtureEuropePMCClient("temp_data")
+)  # omit client for the live source
+for article in response["record"]:
+    for annotation in article["annotations"]:
+        if (
+            annotation.get("subType") == "UniProt"
+            and annotation.get("exact") == "P60174"
+        ):
+            print(annotation["section"], annotation["id"])
+            print(annotation["prefix"], annotation["exact"], annotation["postfix"])
+```
+
+This public example is a figure annotation in [Kontellas et al. (2025)](
+https://doi.org/10.1107/S2053230X25006454), whose article is CC BY 4.0. The raw tag
+also states `http://identifiers.org/uniprot:P60174`. The API returns a MED record
+with a `pmcid` for this PMC request; both original identifiers are kept.
+One article id or a list is accepted, using `MED:<pmid>` or `PMC:PMC<id>`.
+
+`prefix`, `exact` and `postfix` are fragments, not a complete sentence. An empty
+annotations answer does not establish that an accession is absent from the paper.
+Failures raise `ConnectorError`. This route returns source records; it does not add
+locations or scientific claims to a card. Article terms govern storage of text
+fragments, and the response's `version` is None when no source release is stated.
 
 ## Curated literature assertions
 

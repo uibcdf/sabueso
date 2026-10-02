@@ -1899,3 +1899,25 @@ uibcdf/sabueso#92, #105.
   temporal navigation tests now control the store's UTC clock, derive the day from it
   and exercise an equivalent instant in a negative timezone offset. Revisions advance
   explicitly without a sleep; production UTC semantics are unchanged.
+
+## Located accession annotations start at source access (2026-10-02)
+uibcdf/sabueso#92.
+- `tools.db.europepmc.get_annotations(article_ids)` asks the Annotations API for
+  accession-number annotations of explicit `MED:<pmid>` or `PMC:PMC<id>` articles.
+  Requests use bounded batches; raw records retain the returned publication ids,
+  annotation links, providers, sections, tags and quote fragments. No pipeline
+  release is stated, so the envelope's version is None. The API's documentation
+  version is not an extraction-tool version.
+- The real public example is P60174 in a figure of PMC12400196. Its original article
+  is CC BY 4.0, verified in its full-text XML; the fixture records only the complete
+  accession-annotation response and its attribution. The API may return a MED record
+  for a PMC request; both identifiers remain source-native.
+- `prefix`, `exact` and `postfix` are quote fragments, not a complete sentence or a
+  scientific claim. The returned accession tags do not justify grounding a protein
+  name. A successful empty annotations response is kept as such, without concluding
+  that the article has no accession; a failed request remains a ConnectorError.
+- This increment is source access only: existing card enrichment stays bibliographic.
+  Incorporating locations into cards requires explicit intake and recorded article
+  terms, especially when a PDB mention is related to a protein through stated
+  structure identity. Those mappings and own scientific extraction remain #92.
+  Card schema 0.3.10 is unchanged.

@@ -44,6 +44,13 @@
 
 ## Source access (`sabueso.tools.db`)
 
+### `sabueso.tools.db.europepmc`
+
+```{eval-rst}
+.. automodule:: sabueso.tools.db.europepmc
+   :members:
+```
+
 ### `sabueso.tools.db.uniprot`
 
 ```{eval-rst}
@@ -163,4 +170,3 @@
    :members:
    :undoc-members:
 ```
-

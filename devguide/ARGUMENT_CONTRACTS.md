@@ -31,6 +31,10 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
 - **Tools:** `resolve`, `resolve_protein_card`, `resolve_molecule_card`, `ligand_deck`,
   `ambiguity_deck`, `knowledge_packet`, `to_dataframe`, `expand`, and every
   source-access function (`get_*`, `uniprot.search`).
+  Europe PMC's `get_annotations` digests `article_ids`: one `MED:<pmid>` or
+  `PMC:PMC<id>` string, or a non-empty list/tuple, normalized to uppercase with
+  duplicates removed in input order. Names, bare accessions and malformed ids are
+  refused before requesting annotations.
 - **Card views and operations:**
   - `bioactivities`, `structures`, `ligands`, `compare_ligands`, `compare_knowledge`;
   - `claims`, `table`, `extract`;

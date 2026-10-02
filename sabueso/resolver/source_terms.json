@@ -63,7 +63,7 @@
    "statement": "https://www.ebi.ac.uk/about/terms-of-use",
    "reviewed": "2026-09-29",
    "caveats": [
-    "Articles keep their own licences; only ids and bibliographic data are kept."
+    "Articles keep their own licences. Cards keep bibliographic data; direct get_annotations returns quote fragments and their storage follows article terms."
    ]
   },
   "GPCRdb": {

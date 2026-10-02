@@ -21,8 +21,16 @@ when no article mentions the accession.
 version, e.g. 6.9). ``FixtureEuropePMCClient`` reads
 ``<directory>/europepmc/<ACCESSION>.json``.
 
+``annotations(article_ids)`` reads accession-number annotations of explicitly named
+articles through the Annotations API. Its raw records retain annotation ids, providers,
+sections, tags and quote fragments (``prefix``, ``exact``, ``postfix``), when stated.
+They are not complete sentences or scientific claims. Returned article ids may use
+MED even when the request used PMC. An empty answer does not establish absence in the
+article. This source-access route does not enrich cards or infer identity from names.
+
 Terms: EMBL-EBI places no restrictions of its own on the data and expects attribution;
-each article keeps its licence. Sabueso keeps ids and bibliographic data, not text.
+each article keeps its licence. Card enrichment keeps bibliographic data only. Direct
+annotation access returns text fragments; their storage follows the article's licence.
 """
 
 from __future__ import annotations
@@ -40,6 +48,9 @@ from sabueso.tools.db._record import online, source_record
 
 SOURCE = "Europe PMC"
 SEARCH = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
+ANNOTATIONS = "https://www.ebi.ac.uk/europepmc/annotations_api/annotationsByArticleIds"
+#: Sabueso's bounded batch size, not a claim about the server's maximum.
+ANNOTATION_BATCH = 8
 #: Every mention up to a safety ceiling, unless ``europepmc={"limit": n}`` asks for
 #: fewer; a cut is reported (#88).
 DEFAULT_LIMIT = 5000
@@ -62,9 +73,50 @@ def query(accession: str) -> str:
     return f"ACCESSION_ID:{accession} AND ACCESSION_TYPE:uniprot"
 
 
+def _annotation_record(value: Any) -> list[dict]:
+    if not isinstance(value, list) or any(
+        not isinstance(article, dict)
+        or not isinstance(article.get("annotations"), list)
+        or any(not isinstance(item, dict) for item in article["annotations"])
+        for article in value
+    ):
+        raise ConnectorError("Europe PMC annotations returned an unreadable record")
+    return value
+
+
 class OnlineEuropePMCClient:
     def __init__(self, timeout: float = 60.0) -> None:
         self.timeout = timeout
+
+    def annotations(self, article_ids: list[str]) -> Dict[str, Any]:
+        """Raw accession annotations, in bounded batches; no source release is stated."""
+        retrieval = stamp(SOURCE)
+        records = []
+        for start in range(0, len(article_ids), ANNOTATION_BATCH):
+            batch = article_ids[start : start + ANNOTATION_BATCH]
+            params = {
+                "articleIds": ",".join(batch),
+                "format": "JSON",
+                "type": "Accession Numbers",
+            }
+            try:
+                with urlopen(  # nosec - trusted endpoint
+                    request(f"{ANNOTATIONS}?{urlencode(params)}"),
+                    timeout=self.timeout,
+                    expect_json=True,
+                ) as resp:
+                    records.extend(
+                        _annotation_record(json.loads(resp.read().decode("utf-8")))
+                    )
+            except HTTPError as exc:
+                raise ConnectorError(
+                    f"Europe PMC annotations for {batch} failed: HTTP {exc.code}"
+                ) from exc
+            except (URLError, TimeoutError, OSError, ValueError) as exc:
+                raise ConnectorError(
+                    f"Europe PMC annotations for {batch} failed: {exc}"
+                ) from exc
+        return {"retrieved_at": retrieval.value, "version": None, "record": records}
 
     def mentions(self, accession: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
         retrieval = stamp(SOURCE)
@@ -127,6 +179,34 @@ class FixtureEuropePMCClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    def annotations(self, article_ids: list[str]) -> Dict[str, Any]:
+        records, retrieved = [], []
+        for article_id in article_ids:
+            if article_id in self.failing:
+                raise ConnectorError(
+                    f"Europe PMC annotations for {article_id} failed (simulated)"
+                )
+            path = (
+                self.directory
+                / "europepmc"
+                / "annotations"
+                / f"{article_id.replace(':', '_')}.json"
+            )
+            if not path.is_file():
+                raise RecordNotFoundError(
+                    f"No saved Europe PMC annotation response for {article_id}"
+                )
+            saved = json.loads(path.read_text(encoding="utf-8"))
+            records.extend(_annotation_record(saved["record"]))
+            retrieved.append(saved.get("retrieved_at", self.retrieved_at))
+        return {
+            "retrieved_at": retrieved[0]
+            if len(set(retrieved)) == 1
+            else self.retrieved_at,
+            "version": None,
+            "record": records,
+        }
+
     def mentions(self, accession: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
         if accession in self.failing:
             raise ConnectorError(
@@ -144,6 +224,31 @@ class FixtureEuropePMCClient:
 
 
 # --- Public source access (uibcdf/sabueso#49) -----------------------------------------
+
+
+@arg_digest()
+def get_annotations(
+    article_ids: Any,
+    client: Any = None,
+    skip_digestion: bool = False,
+):
+    """Raw accession-number annotations for ``MED:<pmid>`` or ``PMC:PMC<id>``.
+
+    One id or a list is accepted. Sections and text fragments remain source-native,
+    with the provider and annotation link. Missing annotations do not establish that
+    an accession is absent from an article. No annotation becomes a curated reading,
+    an extracted scientific claim or a card's identity finding through this function.
+    Article licences govern storage of the returned fragments.
+    """
+    response = online(client, OnlineEuropePMCClient).annotations(article_ids)
+    return source_record(
+        SOURCE,
+        "annotations",
+        {"article_ids": article_ids, "type": "Accession Numbers"},
+        response.get("retrieved_at"),
+        response.get("version"),
+        response["record"],
+    )
 
 
 @arg_digest()
