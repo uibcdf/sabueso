@@ -693,19 +693,20 @@ resources:
     proposed_by: "Sabueso maintainers, literature beyond manual curation (#92)"
     decided_by: "Sabueso maintainers (2026-09-29)"
     reason: "The publications whose text states a protein's UniProt accession (ACCESSION_ID search, text-mined by Europe PMC). Its gene and protein annotations are not used: they ground a name without the organism (a human TPI paper is tagged with a yeast entry)."
-    access: "REST search (ACCESSION_ID, cursor paging), no key, when resolve(..., europepmc={}); get_annotations(article_ids) additionally reads located accession annotations for explicit MED/PMC articles, at source access only"
-    licence: "EMBL-EBI terms of use: no restrictions of its own, attribution expected; each article keeps its licence. Cards keep ids and bibliographic data; direct annotation access returns quote fragments whose storage follows article terms"
+    access: "REST search (ACCESSION_ID, cursor paging), no key, when resolve(..., europepmc={}); get_annotations(article_ids) reads located accession annotations for explicit MED/PMC articles; unreleased card intake uses europepmc={article_ids: ...}"
+    licence: "EMBL-EBI terms of use: no restrictions of its own, attribution expected; each article keeps its licence. Search keeps bibliography; explicit annotation intake also keeps quote fragments governed by article terms, unknown when the response states no licence"
     limit:
       constant: sabueso.tools.db.europepmc.DEFAULT_LIMIT
       of: "articles mentioning the accession, newest first; europepmc={\"limit\": n} asks for fewer"
     terms:
       source_names: ["Europe PMC"]
       licence: NO-OWN-RESTRICTIONS
+      retention_licence: PUBLICATION-TERMS
       attribution: "Europe PMC (https://europepmc.org/)"
       statement: https://www.ebi.ac.uk/about/terms-of-use
       reviewed: 2026-09-29
       caveats:
-        - "Articles keep their own licences. Cards keep bibliographic data; direct get_annotations returns quote fragments and their storage follows article terms."
+        - "Articles keep their own licences. Located accession annotations retain text fragments; Card.terms judges them separately as Europe PMC Annotations (publication terms, unknown when unrecorded), and terms profiles exclude them. The bibliographic search remains governed by service terms."
     module: [sabueso.tools.db.europepmc, sabueso.mappings.europepmc]
     links: ["#92"]
   - id: kegg_pathway

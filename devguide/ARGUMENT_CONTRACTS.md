@@ -35,6 +35,9 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   `PMC:PMC<id>` string, or a non-empty list/tuple, normalized to uppercase with
   duplicates removed in input order. Names, bare accessions and malformed ids are
   refused before requesting annotations.
+  The card option `europepmc={"article_ids": ...}` uses the same digester. It is
+  separate from the bibliographic search's `{}` or `{"limit": n}`; combining
+  `article_ids` and `limit` is refused.
 - **Card views and operations:**
   - `bioactivities`, `structures`, `ligands`, `compare_ligands`, `compare_knowledge`;
   - `claims`, `table`, `extract`;

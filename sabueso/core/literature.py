@@ -113,14 +113,22 @@ def literature_view(card: Any) -> Dict[str, Any]:
         q = rel.get("qualifiers", {})
         pub = entry(rel["object_ref"])
         fill(pub, q)
-        pub["mentions"].append(
-            {
-                "source": q.get("source"),
-                "mention": q.get("mention"),
-                "open_access": q.get("open_access"),
-                "relationship_id": rel["id"],
-            }
-        )
+        mention = {
+            "source": q.get("source"),
+            "mention": q.get("mention"),
+            "open_access": q.get("open_access"),
+            "relationship_id": rel["id"],
+        }
+        if "locations" in q:
+            from copy import deepcopy
+
+            mention["article"] = deepcopy(q["article"])
+            mention["locations"] = deepcopy(q["locations"])
+        if rel.get("qualifier_conflicts"):
+            from copy import deepcopy
+
+            mention["qualifier_conflicts"] = deepcopy(rel["qualifier_conflicts"])
+        pub["mentions"].append(mention)
 
     for rel in card.relationships("has_bioactivity"):
         document = rel.get("qualifiers", {}).get("document") or {}

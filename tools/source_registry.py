@@ -105,6 +105,11 @@ def terms_export(data: Dict[str, Any]) -> str:
                 "attribution": terms["attribution"],
                 "statement": terms["statement"],
                 "reviewed": str(terms["reviewed"]),
+                **(
+                    {"retention_licence": terms["retention_licence"]}
+                    if terms.get("retention_licence")
+                    else {}
+                ),
                 **({"caveats": terms["caveats"]} if terms.get("caveats") else {}),
                 **(
                     {"depositors": terms["depositors"]}
@@ -176,6 +181,13 @@ def problems(data: Dict[str, Any]) -> List[str]:
                 out.append(f"{rid}: terms licence {terms['licence']} is not classified")
             elif not isinstance(terms["reviewed"], datetime.date):
                 out.append(f"{rid}: terms reviewed is a date (YYYY-MM-DD)")
+            if (
+                terms.get("retention_licence")
+                and terms["retention_licence"] not in _licences()
+            ):
+                out.append(
+                    f"{rid}: retention licence {terms['retention_licence']} is not classified"
+                )
         if "limit" in r:
             limit = r["limit"] or {}
             if set(limit) != {"constant", "of"}:

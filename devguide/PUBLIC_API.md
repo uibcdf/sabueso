@@ -29,6 +29,10 @@ shows how to use them.
       `medgen` and `disease_identity` (identity of the card's diseases through MedGen
       and MONDO, #90), `europepmc` (publications whose text states the accession,
       #92);
+      `europepmc={"article_ids": "PMC:PMC12400196"}` instead adds located accession
+      mentions from explicit articles, with native locators and per-occurrence support
+      (unreleased). One MED/PMC id or a non-empty list is accepted; `limit` is not
+      accepted with `article_ids`. It does not read names or scientific claims.
     - each source's `*_client`, and `resolver`.
   - For small molecules: `unichem`, `pubchem`, `chebi` (#83), `indications` and
     `trials` (#81).

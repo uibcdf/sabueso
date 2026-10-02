@@ -275,7 +275,7 @@ class RetrievalArchive:
 
     def sources(self) -> Dict[str, Any]:
         """Per source, how many answers the archive holds, and what its licence allows
-        with them (``retention_from_licence@1``)."""
+        with them (``retention_from_licence@2``)."""
         with self._session() as conn:
             rows = conn.execute(
                 "SELECT source, COUNT(*) FROM retrievals GROUP BY source ORDER BY source"

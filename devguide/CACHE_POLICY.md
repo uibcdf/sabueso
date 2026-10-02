@@ -51,9 +51,14 @@ Built, released in 0.8.0 (`sabueso.RetrievalArchive`):
   the time its answer was read.
 - each answer is attributed to its source (the client's `stamp(source)`, the name its
   SourceAssertions carry), and what the source's licence allows with it is derived when
-  read (`retention_from_licence@1`, `sabueso.core.terms.retention`; `archive.sources()`):
+  read (`retention_from_licence@2`, `sabueso.core.terms.retention`; `archive.sources()`):
   `keep` (yes, or internal only) and `share` (yes with its conditions, or unknown when
   terms are per record or not recorded);
+  the registry can state a separate `retention_licence` for raw responses containing
+  third-party content. Europe PMC uses publication terms for archived responses,
+  which can contain article fragments: internal retention, sharing unknown. This
+  conservative archive report also applies to its bibliographic responses; Card
+  terms still judge bibliographic support under the service terms.
 - `card.explain(ids)` links a statement to the answers its source gave the build
   (`retrievals`, basis `source_in_build`). A link to the exact record, per
   SourceAssertion, waits for a use that needs it.

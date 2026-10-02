@@ -26,11 +26,13 @@ articles through the Annotations API. Its raw records retain annotation ids, pro
 sections, tags and quote fragments (``prefix``, ``exact``, ``postfix``), when stated.
 They are not complete sentences or scientific claims. Returned article ids may use
 MED even when the request used PMC. An empty answer does not establish absence in the
-article. This source-access route does not enrich cards or infer identity from names.
+article. Explicit card intake uses ``europepmc={"article_ids": ...}``; source access
+does not infer identity from names.
 
 Terms: EMBL-EBI places no restrictions of its own on the data and expects attribution;
-each article keeps its licence. Card enrichment keeps bibliographic data only. Direct
-annotation access returns text fragments; their storage follows the article's licence.
+each article keeps its licence. Accession search keeps bibliography. Explicit annotation
+intake keeps text fragments; their storage follows the article's licence, which the
+annotations response does not state.
 """
 
 from __future__ import annotations

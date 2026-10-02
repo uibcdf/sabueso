@@ -23,7 +23,9 @@ Each module holds the source's clients and its public `get_*` functions:
 - `gnomad`, GraphQL.
 Europe PMC additionally exposes `get_annotations(article_ids)` for explicit MED/PMC
 articles. It keeps accession-number annotations with source-native locations and
-quote fragments; card enrichment still keeps bibliographic mentions only (#92).
+quote fragments. Explicit card intake uses `europepmc={"article_ids": ...}`
+(unreleased, #92); the accession search keeps bibliography. Each located occurrence
+has its own SourceAssertion, and its fragments remain governed by article terms.
 Clients added since #82 name Sabueso over HTTP through `tools/db/_http.py`.
 Card building uses the same clients, so there is one way to query each source. The
 registry (`sources/registry.yaml`) must list each module as `in_use`, and a test checks

@@ -237,6 +237,14 @@ def resolve_protein_card(
     found them by text mining (``mentioned_in``, #92). Only a stated accession counts:
     a protein named in a paper is never matched to the entry by its name.
 
+    ``europepmc={"article_ids": "PMC:PMC12400196"}`` instead reads located accession
+    annotations for explicit MED/PMC articles (one id or a list). Each occurrence
+    preserves native article ids, provider, annotation id, section and quote fragments
+    with its own SourceAssertion. Both the printed accession and the UniProt tag must
+    identify this card. Empty answers do not establish absence in the article.
+    ``article_ids`` and ``limit`` are separate routes. Article terms govern fragments;
+    a terms profile excludes them while those terms are unknown.
+
     ``terms`` (``"commercial"`` or ``"non_commercial"``) builds the card only from
     sources whose stated terms allow that use (#94): the others are not queried, their
     records say why (``not_queried``), and ``quality["terms_profile"]`` keeps the
@@ -284,14 +292,19 @@ def resolve_protein_card(
 
         profile = TermsProfile(terms)
 
-    def admitted(source: str) -> bool:
+    def admitted(
+        source: str,
+        record_source: str | None = None,
+        request_record: Dict[str, Any] | None = None,
+    ) -> bool:
         """Whether the terms profile admits a source; if not, the record says why."""
         if profile is None or profile.admits(source):
             return True
         enrichments.append(
             {
-                "source": source,
+                "source": record_source or source,
                 "identifier": anchor,
+                **(request_record or {}),
                 "status": "not_queried",
                 "detail": profile.detail(source),
             }
@@ -383,14 +396,18 @@ def resolve_protein_card(
         "disease_identity": (disease_identity, mondo_client),
         "europepmc": (europepmc, europepmc_client),
     }
+    context = Context(anchor, entry, mappings)
     if profile is not None:
         from sabueso.enrichers import ENRICHERS
 
         for enricher in ENRICHERS:
             options, client = requested.get(enricher.option, (None, None))
-            if enricher.requested(options) and not admitted(enricher.source):
+            if enricher.requested(options) and not admitted(
+                enricher.terms_source(options),
+                enricher.source,
+                enricher.record(context, options),
+            ):
                 requested[enricher.option] = (None, client)
-    context = Context(anchor, entry, mappings)
     run_stage("after_structures", context, requested, mappings, enrichments)
 
     if chembl is not None:

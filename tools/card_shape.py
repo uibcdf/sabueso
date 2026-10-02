@@ -353,7 +353,14 @@ def fixture_cards() -> List[dict]:
         )
         # A disease card, resolved from an Orphanet id through MONDO (0.3.7).
         disease, _ = sabueso.resolve("ORPHA:868", mondo_client=FixtureMONDOClient(data))
+        located, _ = sabueso.resolve(
+            "P60174",
+            resolver=resolver,
+            europepmc={"article_ids": ["PMC:PMC12400196", "MED:18562316"]},
+            europepmc_client=FixtureEuropePMCClient(data),
+        )
     cards = (
+        located,
         tctim,
         hstim,
         molecule,

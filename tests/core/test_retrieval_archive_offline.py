@@ -164,6 +164,7 @@ def test_every_client_names_a_source_whose_terms_are_recorded():
         ("Reactome", "yes", "yes", []),
         ("UniProt", "yes", "yes", ["attribution"]),
         ("PubChem BioAssay", "internal", "unknown", None),
+        ("Europe PMC", "internal", "unknown", None),
         ("Nowhere", "internal", "unknown", None),
     ],
 )
@@ -171,7 +172,7 @@ def test_retention_is_derived_from_the_licence(source, keep, share, conditions):
     from sabueso.core.terms import retention
 
     answer = retention(source)
-    assert answer["rule"] == "retention_from_licence@1"
+    assert answer["rule"] == "retention_from_licence@2"
     assert (answer["keep"], answer["share"]) == (keep, share)
     if conditions is not None:
         assert answer["conditions"] == conditions

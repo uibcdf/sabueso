@@ -79,6 +79,9 @@ card.quality["terms_profile"]  # the profile, and the sources it excluded, with 
   depositors are left out, counted in the enrichment record and in
   `terms_profile["excluded_records"]`.
 - Curated statements you apply are yours: the profile does not filter them.
+- In development after 0.11.0, refresh preserves the recorded profile unless you
+  explicitly override `terms`. Located Europe PMC article fragments have unrecorded
+  publication terms, so both profiles exclude that intake before fetching.
 
 Some sources need an account, a key, an academic licence or a written agreement before
 they can be asked at all. They are listed, with what each needs, on the *Data sources*

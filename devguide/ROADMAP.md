@@ -244,7 +244,10 @@ In order:
    - Released in 0.11.0: source access to located accession annotations for
      explicit articles (`get_annotations`), with provider, section and quote
      fragments. A public P60174 mention in a figure verifies the route. These
-     fragments are not complete sentences. Next: explicit intake into cards, PDB
+     fragments are not complete sentences. Implemented after 0.11.0 (unreleased):
+     explicit UniProt accession intake into cards, with native article ids,
+     per-occurrence locations and SourceAssertions, terms and refresh through the
+     recorded article requests (schema 0.3.11). Next: PDB
      mentions linked through stated structure identity, and an extraction Sabueso
      runs itself, with its tool and version.
    - Included in 0.11.0: a public review draft and hypothetical curation rehearsal

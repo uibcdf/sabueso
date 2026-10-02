@@ -3,12 +3,16 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 from typing import Any, Dict
 
 import yaml
 
-SCHEMA = Path("schemas/card_schema_0.3.10.yaml")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from sabueso.core.card import CARD_SCHEMA_VERSION  # noqa: E402
+
+SCHEMA = Path(f"schemas/card_schema_{CARD_SCHEMA_VERSION}.yaml")
 
 
 def _load_schema() -> Dict[str, Any]:

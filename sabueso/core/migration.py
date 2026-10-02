@@ -290,6 +290,26 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "entity_types": ("protein",),
         },
     ],
+    "0.3.11": [
+        {
+            "path": path,
+            "filled_by": "europepmc",
+            "entity_types": ("protein",),
+            "explicit_only": True,
+            **({"qualifier": True} if path.startswith("relationships.") else {}),
+        }
+        for path in (
+            "relationships.mentioned_in.locations",
+            "relationships.mentioned_in.article",
+            "source_assertion_store[].source_metadata.content_kind",
+            "source_assertion_store[].source_metadata.requested_article",
+            "source_assertion_store[].source_metadata.article",
+            "source_assertion_store[].source_metadata.identity_basis",
+            "quality.enrichments[].article_ids",
+            "quality.enrichments[].annotation_count",
+            "quality.enrichments[].returned_annotations",
+        )
+    ],
 }
 
 #: Qualifiers every relationship of their predicate has when fetched with the schema
@@ -385,6 +405,8 @@ def within_line_gaps(
             continue
         entity_type = (data.get("meta") or {}).get("entity_type")
         for change in changes:
+            if change.get("explicit_only"):
+                continue  # Only explicit article ids ask for located annotations.
             if entity_type not in change.get("entity_types", (entity_type,)):
                 continue
             if _has(data, change["path"]):
@@ -490,6 +512,7 @@ def rebuild_options(card: Any) -> Dict[str, Any]:
     """The enrichment options a card records it was built with, to build it again."""
     options: Dict[str, Any] = {}
     structures = []
+    annotation_articles = []
     for e in card.quality.get("enrichments") or []:
         source, kind = e.get("source"), e.get("data")
         if source == "RCSB PDB" and e.get("structure"):
@@ -514,8 +537,18 @@ def rebuild_options(card: Any) -> Dict[str, Any]:
             options["bindingdb"] = {}
         elif source == "PubChem BioAssay":
             options["pubchem_bioassay"] = True
+        elif source == "Europe PMC":
+            if e.get("data") == "located_accession_annotations":
+                annotation_articles.extend(e.get("article_ids") or [])
+            else:
+                options["europepmc"] = {"limit": e["limit"]} if e.get("limit") else {}
+    if annotation_articles:
+        options["europepmc"] = {"article_ids": list(dict.fromkeys(annotation_articles))}
     if structures:
         options["structures"] = sorted(set(structures))
+    profile = (card.quality.get("terms_profile") or {}).get("profile")
+    if profile is not None:
+        options["terms"] = profile
     decision = (card.quality.get("entity_resolution") or {}).get("decision") or {}
     if any(s.get("name") == "NCBI Gene" for s in decision.get("sources") or []):
         options["ncbi_gene"] = True

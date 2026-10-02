@@ -46,6 +46,10 @@ print(refreshed.quality["migration"][-1]["completed"])
 - `refresh_card` rebuilds the card with the options it records, re-applies curations
   (keeping their ids), and says which gaps it completed and which the sources still do
   not state.
+  In development after 0.11.0, it also preserves explicit Europe PMC article requests
+  and the recorded terms profile unless overridden. Located annotations are fetched
+  again; saved historical assertions remain readable by their pins. Optional locations
+  do not become migration gaps when no articles were requested.
 
 ## Deprecated functions
 

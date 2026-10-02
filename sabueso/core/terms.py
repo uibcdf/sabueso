@@ -121,6 +121,15 @@ SHARED = {
 }
 #: Built-in terms of sources that are not registry resources.
 BUILT_IN = {
+    "Europe PMC Annotations": {
+        "licence": "PUBLICATION-TERMS",
+        "attribution": "Credit Europe PMC, the annotation provider and the publication.",
+        "statement": "https://www.ebi.ac.uk/about/terms-of-use",
+        "reviewed": "2026-10-02",
+        "caveats": [
+            "Located annotations contain article text fragments. The response does not state the article's licence; Europe PMC's service terms do not license those fragments."
+        ],
+    },
     "Literature": {
         "licence": "PUBLICATION-TERMS",
         "attribution": "Cite the publication each statement was curated from.",
@@ -130,7 +139,7 @@ BUILT_IN = {
             "A curated statement records a fact a publication states, with its locator "
             "and at most a short quote; the publication's own terms are not recorded."
         ],
-    }
+    },
 }
 
 
@@ -142,12 +151,12 @@ def source_terms() -> Dict[str, Dict[str, Any]]:
     return {**data["sources"], **BUILT_IN}
 
 
-RETENTION_RULE = "retention_from_licence@1"
+RETENTION_RULE = "retention_from_licence@2"
 
 
 def retention(name: str | None) -> Dict[str, Any]:
     """What a source's stated licence allows with an archived answer (#100), under
-    ``retention_from_licence@1``: ``keep`` (a copy for the user's own work) and
+    ``retention_from_licence@2``: ``keep`` (a copy for the user's own work) and
     ``share`` (passing the copy on). Derived from the licence, never assumed:
 
     - no terms recorded, or answers whose terms are each record's (a depositor's, a
@@ -158,7 +167,10 @@ def retention(name: str | None) -> Dict[str, Any]:
       to check (``caveats``).
     """
     terms = source_terms().get(name or "")
-    licence = LICENCES.get(terms["licence"]) if terms else None
+    # A service can expose bibliography under its own terms and article fragments
+    # under publication terms. Raw answers need the registry's retention licence.
+    licence_id = terms.get("retention_licence", terms["licence"]) if terms else None
+    licence = LICENCES.get(licence_id)
     base: Dict[str, Any] = {"rule": RETENTION_RULE, "source": name}
     if licence is None or licence.get("per_record"):
         return {
@@ -166,7 +178,7 @@ def retention(name: str | None) -> Dict[str, Any]:
             "keep": "internal",
             "share": "unknown",
             "reason": "per_record_terms" if licence else "no_terms_recorded",
-            **({"licence": terms["licence"]} if terms else {}),
+            **({"licence": licence_id} if terms else {}),
         }
     conditions = [
         c
@@ -179,7 +191,7 @@ def retention(name: str | None) -> Dict[str, Any]:
     ]
     return {
         **base,
-        "licence": terms["licence"],
+        "licence": licence_id,
         "keep": "yes",
         "share": "yes",
         "conditions": conditions,
@@ -256,12 +268,18 @@ def _items(card: Any) -> List[Dict[str, Any]]:
     store = card.source_assertion_store
 
     def sources(ids: Iterable[str]) -> List[str]:
-        return sorted(
-            {
-                ((store.get(i) or {}).get("source") or {}).get("name") or "unknown"
-                for i in ids
-            }
-        )
+        def label(identifier):
+            assertion = store.get(identifier) or {}
+            name = (assertion.get("source") or {}).get("name") or "unknown"
+            if (
+                name == "Europe PMC"
+                and (assertion.get("source_metadata") or {}).get("content_kind")
+                == "located_accession_annotation"
+            ):
+                return "Europe PMC Annotations"
+            return name
+
+        return sorted({label(i) for i in ids})
 
     items = []
     for path in card.list_fields():
@@ -290,6 +308,30 @@ def _items(card: Any) -> List[Dict[str, Any]]:
                 **({"derived": True} if not ids and rel.get("derivation") else {}),
             }
         )
+        # Bibliographic support may allow the relationship while the attached text
+        # remains governed by an article's unrecorded licence. Judge each separately.
+        if rel.get("predicate") != "mentioned_in":
+            continue
+        locations = list((rel.get("qualifiers") or {}).get("locations") or [])
+        for alternative in (rel.get("qualifier_conflicts") or {}).get(
+            "locations"
+        ) or []:
+            locations.extend(alternative)
+        seen = set()
+        for location in locations:
+            identifier = location["source_assertion_id"]
+            if identifier in seen:
+                continue
+            seen.add(identifier)
+            items.append(
+                {
+                    "kind": "literature_location",
+                    "id": identifier,
+                    "predicate": rel["predicate"],
+                    "object_ref": rel["object_ref"],
+                    "sources": sources([identifier]),
+                }
+            )
     return items
 
 
@@ -324,7 +366,9 @@ def terms_report(
                 outcome = "lost"
                 lost += 1
                 lost_items.append({**item, "verdicts": answers})
-            if item["kind"] == "relationship" and item.get("object_ref"):
+            if item["kind"] in ("relationship", "literature_location") and item.get(
+                "object_ref"
+            ):
                 entry = objects.setdefault(
                     item["object_ref"],
                     {"predicates": set(), "sources": set(), "outcomes": set()},

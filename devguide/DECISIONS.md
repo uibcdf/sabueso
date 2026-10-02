@@ -1,5 +1,33 @@
 # Sabueso — Decision Log
 
+## Explicit located accession intake (2026-10-02, #92)
+
+- `europepmc={"article_ids": ...}` is an explicit alternative to accession search,
+  through the existing declared enricher. Packets do not guess articles to annotate.
+- An occurrence reaches `mentioned_in` only when its printed accession and native
+  UniProt tag both name the card's anchor. Source-native article ids and annotation
+  content remain intact; every occurrence has its own SourceAssertion. Names and
+  PDB mentions are outside this increment.
+- Acquisition remains `database` with `origin: text_mining`: Sabueso imports Europe
+  PMC's annotations, and does not know its pipeline release. No complete sentence,
+  scientific claim, extraction by Sabueso or human validation is asserted.
+- The additive stored shape is schema 0.3.11 (unpublished); published 0.3.10 is
+  frozen. Optional locations are not migration gaps, because refresh cannot guess
+  article ids. Recorded explicit requests, including excluded and failed requests,
+  are preserved for refresh, together with the terms profile unless overridden.
+- Terms reports judge article fragments separately from bibliography, including
+  qualifier alternatives. The content label `Europe PMC Annotations` names
+  publication terms, not another SourceAssertion source. The API does not state the
+  article licence; it stays unknown, and terms profiles exclude intake before
+  fetching. The public fixture's separately verified licence is not invented as a
+  statement of the API.
+- Raw Europe PMC responses may include article fragments. The registry states
+  `retention_licence: PUBLICATION-TERMS` separately from the service's bibliographic
+  terms. `retention_from_licence@2` uses this override for archived responses, including
+  historical records when read: internal retention, sharing unknown. It conservatively
+  applies to all of that source's raw answers; Card terms still distinguish bibliography
+  and fragments (#100).
+
 ## Language & Ecosystem
 - Language: **Python**.
 - Scientific OSS standards:

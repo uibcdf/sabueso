@@ -42,6 +42,8 @@ Enricher
   organisms     taxa it covers (None: all; (9606,): human only)
   option_kind   "flag" (True) or "options" ({} or {"limit": …})
   client        the online client's factory
+  record_kinds the enrichment data kinds this option records (derived from match by default)
+  terms_source(options)  terms governing the requested content (source by default)
   run(context, options, client) -> [(mapping, enrichment record), ...]
 ```
 
@@ -55,6 +57,14 @@ Enricher
     source never hides another's knowledge;
   - truncation;
   - the fixed order of the results.
+
+Before fetching, a terms profile judges `terms_source(options)`. Europe PMC uses
+its service terms for bibliography and publication terms for explicit located
+annotations, which contain article fragments. An excluded request keeps the
+enricher's record, including explicit article ids, so refresh cannot silently turn
+it into a bibliographic search. `record_kinds` includes both Europe PMC routes for
+the migration map; automatic packet requests still ask only for bibliography.
+Refresh preserves the card's recorded terms profile unless the caller overrides it.
 
 From the declarations, the other tables are **derived** instead of maintained by hand:
 - the knowledge-state rows (area, source);

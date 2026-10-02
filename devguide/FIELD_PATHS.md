@@ -182,6 +182,13 @@ Anchored at a MONDO term (`sabueso:disease:mondo:MONDO:0014221`).
 ---
 
 ## Notes
+- Since card schema 0.3.11 (unpublished), `mentioned_in` optionally carries
+  `qualifiers.article` (native article identifiers) and `qualifiers.locations[]`
+  (`annotation`, unchanged from Europe PMC, and `source_assertion_id`). Each occurrence
+  has its own SourceAssertion; its `source_metadata.identity_basis` records the
+  printed accession and matching UniProt tag. These are relationship qualifiers,
+  not section field paths. `quality.enrichments` records explicit `article_ids`,
+  `data: located_accession_annotations`, `annotation_count` and `returned_annotations`.
 - GO annotations, family/domain classifications, curated interactions and experimental
   structures are **relationships**, not field paths: `annotated_with`, `classified_in`,
   `interacts_with` and `has_structure` (see the Relationship contract in `SCHEMA.md`).

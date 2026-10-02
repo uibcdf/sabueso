@@ -2,6 +2,10 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
+  - `0.3.11` is the unpublished additive schema: explicit Europe PMC article
+    annotations add native article ids and per-occurrence locations to `mentioned_in`,
+    with their SourceAssertions and identity basis. Enrichment records preserve the
+    article requests for refresh. These optional locations are not migration gaps;
   - `0.3.10` is the schema of release 0.10.0: `identifiers.ensembl_transcripts` (UniProt's
     Ensembl transcripts per isoform) and `annotations.tissue_terms` (GTEx's ontology
     term for each pext tissue), #102;

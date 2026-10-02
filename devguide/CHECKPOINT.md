@@ -43,11 +43,13 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     Windows × 3.11–3.14, and a clean public install on Python 3.14.
   - Zenodo archive: 10.5281/zenodo.23077926, verified to be identical to its tag; 0.7.0
     (10.5281/zenodo.23048186) and 0.6.0 (10.5281/zenodo.23038465) too.
-- **Card schema:** 0.3.10 (`schemas/card_schema_0.3.10.yaml`), published by 0.10.0. The
-  next additive change goes to a new version, 0.3.11.
+- **Current card schema:** 0.3.11 (`schemas/card_schema_0.3.11.yaml`), unpublished:
+  located UniProt accession annotations in explicit articles add optional locations
+  and native article ids to `mentioned_in` (#92). Release 0.11.0 writes 0.3.10.
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
     0.3.10.
-  - The recorded shape of 0.3.10 is `schemas/card_shape_0.3.10.json`, now fixed.
+  - The recorded shape of 0.3.10 is `schemas/card_shape_0.3.10.json`, fixed; current
+    development records `schemas/card_shape_0.3.11.json`.
 - **In 0.8.0:**
   - an integrity fix for users of 0.7.0: gnomAD changes next to exons the canonical
     transcript lacks are no longer placed on canonical residues through UniProt's
@@ -151,6 +153,26 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   section, tags and quote fragments. The public fixture includes P60174 in a figure
   of PMC12400196 (CC BY 4.0). It does not enrich cards or extract claims (#92).
 
+## Development after 0.11.0 (unreleased)
+
+- Explicit located UniProt accession intake uses
+  `europepmc={"article_ids": "PMC:PMC12400196"}` through the declared enricher (#92).
+  Every occurrence retains native article ids, annotation content and its own
+  SourceAssertion. The printed accession and matching UniProt tag state the identity
+  basis. Literature shows the locations and qualifier alternatives; no scientific
+  claim or human validation is created.
+- Schema 0.3.11 adds optional `mentioned_in.article` and `mentioned_in.locations`,
+  with per-article request and outcome records. Empty answers, unavailable fixtures
+  and failures remain distinct. Refresh preserves explicit requests, historical
+  assertion reads and the recorded terms profile unless overridden (#94).
+- Article fragments are judged separately from bibliography, with publication terms
+  unknown when the API states no licence. Terms profiles exclude their intake before
+  fetching. Raw Europe PMC responses have the separate registry retention licence
+  `PUBLICATION-TERMS`; `retention_from_licence@2` reports internal retention and
+  sharing unknown, including historical archive records when read (#100).
+- The live public P60174 figure annotation passed card intake (2026-10-02), in
+  addition to the offline storage/refresh/historical-reference acceptance tests.
+
 ## Package layout
 
 - `sabueso/core/`: the domain.
@@ -189,7 +211,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1221 tests passed, 25 online tests deselected (2026-10-02). Run with
+- Offline suite: 1242 tests passed, 26 online tests deselected (2026-10-02). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.
@@ -200,8 +222,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 - Plan and status of every objective: `ROADMAP.md`. It integrates the foundational plan
   and the pilot-driven route.
-- **Next:** located mentions are available at source access; their explicit intake
-  into cards and own extraction remain #92. The public literature draft awaits human
+- **Next:** explicit located UniProt accession mentions now enter cards in development
+  (#92), with per-occurrence support, unknown article terms and recorded refresh
+  requests (schema 0.3.11, unpublished). PDB mentions through stated structure identity
+  and own extraction remain open. The public literature draft awaits human
   review before actual curation intake. Further candidates are in `ROADMAP.md`
   ("Next candidates") and in the user
   guide's gaps (`DOCS_GAPS.md`: wave-2 sources and the

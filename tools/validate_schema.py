@@ -1,14 +1,18 @@
-"""Validate FIELD_PATHS vs card_schema_0.3.10.yaml"""
+"""Validate FIELD_PATHS against the current card schema."""
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 from typing import Any, List
 
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from sabueso.core.card import CARD_SCHEMA_VERSION  # noqa: E402
+
 FIELD_PATHS = Path("devguide/FIELD_PATHS.md")
-SCHEMA = Path("schemas/card_schema_0.3.10.yaml")
+SCHEMA = Path(f"schemas/card_schema_{CARD_SCHEMA_VERSION}.yaml")
 
 
 def load_schema_paths() -> List[str]:

@@ -88,6 +88,41 @@ Failures raise `ConnectorError`. This route returns source records; it does not 
 locations or scientific claims to a card. Article terms govern storage of text
 fragments, and the response's `version` is None when no source release is stated.
 
+### Keep located mentions on a card (unreleased)
+
+Use explicit articles to add their located accession mentions to a protein card:
+
+```python
+card, _ = sabueso.resolve("P60174", europepmc={"article_ids": "PMC:PMC12400196"})
+for publication in card.literature()["publications"]:
+    for mention in publication["mentions"]:
+        for location in mention.get("locations", []):
+            annotation = location["annotation"]
+            print(annotation.get("section"), annotation.get("id"))
+            print(card.explain([location["source_assertion_id"]]))
+```
+
+`article_ids` accepts the same ids as `get_annotations`; it cannot be combined with
+the search's `limit`. Requests are isolated per article, with outcomes in
+`card.quality["enrichments"]`. The native MED and PMC ids remain as returned. The
+printed accession and its UniProt tag must both identify the card's anchor. Names,
+PDB tags and other accessions are not used for this intake.
+
+Each occurrence keeps its annotation unchanged and its own SourceAssertion, imported
+from Europe PMC with `acquisition={"method": "database", "origin": "text_mining"}`.
+There is no human validation or scientific claim. Different qualifier answers stay
+visible in `qualifier_conflicts`. Refresh asks the recorded article ids again; a
+stored historical assertion remains readable by its pin after refresh.
+
+Article terms govern these fragments. The annotation response does not state the
+article's licence, so `card.terms("redistribution")` reports **Europe PMC Annotations**
+as unknown, separately from bibliography, and includes every located fragment among
+its items. This remains unknown even for the CC BY public example: its fixture licence
+was checked separately, and is not invented as a statement of the annotation API.
+The `commercial` and `non_commercial` terms profiles exclude this intake before
+fetching. Schema 0.3.11 adds these optional locations; published 0.3.10 cards are kept
+unchanged.
+
 ## Curated literature assertions
 
 When you read a paper, record what it states on the card. Sabueso keeps where the

@@ -135,6 +135,11 @@ class Enricher:
         return {"source": self.source}
 
     @property
+    def record_kinds(self) -> Tuple[str | None, ...]:
+        """Kinds of enrichment records produced by this option."""
+        return (self.match.get("data"),)
+
+    @property
     def default_request(self) -> Any:
         """The option's value that asks for everything by default (packets use it)."""
         return True if self.option_kind == "flag" else {}
@@ -144,6 +149,10 @@ class Enricher:
 
     def client(self) -> Any:
         raise NotImplementedError
+
+    def terms_source(self, options: Any) -> str:
+        """The terms governing this request's content (normally the source's)."""
+        return self.source
 
     def record(self, context: Context, options: Any) -> Dict[str, Any]:
         """Fields every record of this source starts with."""
@@ -311,7 +320,7 @@ def knowledge_areas(
 
 def options_by_source() -> Dict[Tuple[str, str | None], set]:
     """Which resolve option produced an enrichment record, by source and data kind."""
-    return {(e.source, e.match.get("data")): {e.option} for e in ENRICHERS}
+    return {(e.source, kind): {e.option} for e in ENRICHERS for kind in e.record_kinds}
 
 
 def run_stage(
