@@ -9,6 +9,11 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Release and schema
 
+- **Release candidate:** 0.11.0, staged route requested on 2026-10-02. It includes
+  the development listed below, notably the acquisition-integrity fix (#105).
+  CI at its final SHA and the exact installed artifact on all twelve OS/Python
+  combinations must pass before publication. Schema and store formats are unchanged.
+
 - **Latest release:** 0.10.0 (2026-10-01).
   - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
   - Staged candidate d41c7f7; sha256 `5217c5ce…0248`.

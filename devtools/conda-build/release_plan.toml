@@ -1,7 +1,7 @@
-version = "0.10.0"
+version = "0.11.0"
 route = "staged"
-reason = "A substantial set: tissues as GTEx's UBERON terms and isoforms without exons explained (isoform_exon_usage@2, #102); a knowledge packet's level of detail, an index by reference, with the guarantees agreed in uibcdf/moli#22 (knowledge_query@2, knowledge_packet@3, packet_index@1, #88); packet_aspects@5; the pext enrichment record counts its regions (it counted 0 since 0.8.0). First publication of card schema 0.3.10. Clean installed-package gates, Windows included, must pass before public visibility."
-decision_by = "Diego Prada (Sabueso maintainer), 2026-10-01"
+reason = "An integrity correction for published users: CurationStore never exports rule/model extractions as human curation, including validated extractions (#105); existing source assertion identifiers with spaces are readable by their pins (#104). Adds pinned structural inventory explanations (structure_inventory_explanation@1, #91), explicit-article located accession annotations at source access (#92), and a public hypothetical curation rehearsal. Temporal tests are independent of local dates (#106). Card schema 0.3.10 and store formats remain unchanged. The same immutable staged artifact must pass clean installed-package gates on Linux, macOS and Windows with Python 3.11-3.14 before publication."
+decision_by = "Diego Prada (Sabueso maintainer), release continuation requested 2026-10-02; plan prepared by Codex"
 required_workflows = [
   ".github/workflows/ci.yml",
   ".github/workflows/moli-governance.yml",
