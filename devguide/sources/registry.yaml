@@ -693,7 +693,7 @@ resources:
     proposed_by: "Sabueso maintainers, literature beyond manual curation (#92)"
     decided_by: "Sabueso maintainers (2026-09-29)"
     reason: "The publications whose text states a protein's UniProt accession (ACCESSION_ID search, text-mined by Europe PMC). Its gene and protein annotations are not used: they ground a name without the organism (a human TPI paper is tagged with a yeast entry)."
-    access: "REST search (ACCESSION_ID, cursor paging), no key, when resolve(..., europepmc={}); get_annotations(article_ids) reads located accession annotations for explicit MED/PMC articles; unreleased card intake uses europepmc={article_ids: ...}"
+    access: "REST search (ACCESSION_ID, cursor paging), no key, when resolve(..., europepmc={}); get_annotations(article_ids) reads located accession annotations for explicit MED/PMC articles; unreleased card intake uses europepmc={article_ids: ...} for direct UniProt mentions and source-supported PDB mention context"
     licence: "EMBL-EBI terms of use: no restrictions of its own, attribution expected; each article keeps its licence. Search keeps bibliography; explicit annotation intake also keeps quote fragments governed by article terms, unknown when the response states no licence"
     limit:
       constant: sabueso.tools.db.europepmc.DEFAULT_LIMIT

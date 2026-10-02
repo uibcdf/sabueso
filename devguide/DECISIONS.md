@@ -1,5 +1,37 @@
 # Sabueso — Decision Log
 
+## Source-supported PDB mention context (2026-10-02, #92)
+
+- The explicit article route now also reads printed four-character PDB codes with
+  matching source-native PDBe names and identifier URIs. Expanded codes and protein
+  names remain unhandled. Original annotation content and article ids stay intact.
+- A raw occurrence is a Europe PMC SourceAssertion about the PDB entry, not about
+  the protein. Supported source-stated `has_structure` pairs already mapped on the
+  card supply the protein association (UniProt xrefs or RCSB stated pairs, including
+  RCSB assertions about the structure whose value names the protein). No automatic
+  retrieval or structural selection is triggered by an annotation. Derived-only,
+  dangling or mismatched support is refused.
+- `structure_mentioned_in` is a distinct derived protein → publication relationship,
+  identified also by `structure_ref`. Rule `structure_mention_context@1` names both
+  the raw occurrence and all structural relationships/assertions in its inputs.
+  Structural context has `scope: entry_association`; a complex or chimera does not
+  establish whole-entry identity, chain/residue scope, or the author's focus.
+  Neither scientific claims nor Nextia Evidence are created.
+- Direct relationship support holds only raw mention assertions; the structural
+  support is explicit in context and derivation. This avoids letting a structural
+  source's terms license attached article fragments. All locations and their
+  alternatives remain visible in literature and terms. Merging the same rule and
+  parameters retains every input from different occurrences.
+- `knowledge_state@4` uses per-area counts and request selectors declared by
+  enrichers. `located_accession_mapping@2` records processing of both mention kinds;
+  historical direct-only requests cannot imply that PDB mentions were queried.
+  Valid PDB occurrences without a supported association are reported as unlinked,
+  never as negative protein identity or article absence.
+- Schema 0.3.11 remains unpublished and accumulates these additive records. Public
+  2JK2 in Methods tests the real UniProt association; public 7QON occurrences have
+  no supported association on that card. A clearly marked synthetic in-memory 1HTI
+  annotation tests accumulated UniProt and RCSB support without altering fixtures.
+
 ## Explicit located accession intake (2026-10-02, #92)
 
 - `europepmc={"article_ids": ...}` is an explicit alternative to accession search,

@@ -1,16 +1,27 @@
-"""Europe PMC: the publications whose text mentions the protein (``mentioned_in``)."""
+"""Europe PMC: direct accession mentions and supported structure mention context."""
 
 from __future__ import annotations
 
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.enrichers import Enricher, Request
+from sabueso.mappings.europepmc import ANNOTATION_MAPPING
 
 
 class EuropePMC(Enricher):
     option = "europepmc"
     source = "Europe PMC"
     registry_id = "europepmc"
-    areas = ("relationships.mentioned_in",)
+    areas = ("relationships.mentioned_in", "relationships.structure_mentioned_in")
+    area_matches = {
+        "relationships.structure_mentioned_in": {
+            "data": "located_accession_annotations",
+            "mapping": ANNOTATION_MAPPING,
+        }
+    }
+    area_counts = {
+        "relationships.mentioned_in": "uniprot_mention_count",
+        "relationships.structure_mentioned_in": "structure_mention_count",
+    }
     option_kind = "options"
     record_kinds = (None, "located_accession_annotations")
 
@@ -20,6 +31,7 @@ class EuropePMC(Enricher):
             record.update(
                 data="located_accession_annotations",
                 article_ids=list(options["article_ids"]),
+                mapping=ANNOTATION_MAPPING,
             )
         return record
 
@@ -37,6 +49,7 @@ class EuropePMC(Enricher):
                     "identifier": article_id,
                     "article_ids": [article_id],
                     "data": "located_accession_annotations",
+                    "mapping": ANNOTATION_MAPPING,
                 },
             )
             for article_id in options["article_ids"]
@@ -64,23 +77,43 @@ class EuropePMC(Enricher):
 
     def map(self, context, request, response, options):
         if "article_ids" in options:
-            from sabueso.mappings.europepmc import map_annotations
+            from sabueso.mappings.europepmc import (
+                map_annotations,
+                structure_associations,
+            )
 
             mapped = map_annotations(
                 response["record"],
                 context.anchor,
                 response.get("retrieved_at", ""),
                 request.identifier,
+                structures=structure_associations(context.mappings, context.anchor),
             )
             return mapped, {
                 "status": "added",
                 "version": response.get("version"),
                 "count": len(mapped["relationships"]),
                 "annotation_count": len(mapped["source_assertions"]),
+                "uniprot_mention_count": sum(
+                    r["predicate"] == "mentioned_in" for r in mapped["relationships"]
+                ),
+                "structure_mention_count": sum(
+                    r["predicate"] == "structure_mentioned_in"
+                    for r in mapped["relationships"]
+                ),
+                "uniprot_annotation_count": sum(
+                    a["subject_ref"].startswith("uniprot:")
+                    for a in mapped["source_assertions"]
+                ),
+                "pdb_annotation_count": sum(
+                    a["subject_ref"].startswith("pdb:")
+                    for a in mapped["source_assertions"]
+                ),
+                "unlinked_pdb_mentions": mapped["unlinked_pdb_mentions"],
                 "returned_annotations": sum(
                     len(a["annotations"]) for a in response["record"]
                 ),
-                "detail": "Only accession-number annotations that explicitly state this UniProt accession are included; an empty answer does not establish absence in the article.",
+                "detail": "Direct UniProt mentions require the stated accession; PDB mention context requires a source-supported has_structure link on the card. An empty answer does not establish absence in the article.",
             }
         from sabueso.mappings.europepmc import map_mentions
         from sabueso.tools.db.europepmc import DEFAULT_LIMIT

@@ -151,7 +151,7 @@ def test_names_other_tags_and_wrong_namespaces_never_establish_identity(change):
     card = resolve(client=Answer(record))
     assert not card.relationships("mentioned_in")
     assert records(card)[0]["returned_annotations"] == 7
-    assert records(card)[0]["annotation_count"] == 0
+    assert records(card)[0]["uniprot_annotation_count"] == 0
 
 
 @pytest.mark.parametrize(
@@ -235,7 +235,10 @@ def test_terms_of_fragments_are_unknown_and_profiles_do_not_fetch_them():
 def test_declared_enricher_keeps_explicit_article_requests_out_of_automatic_search():
     enricher = next(e for e in ENRICHERS if e.option == "europepmc")
     assert enricher.default_request == {}
-    assert enricher.areas == ("relationships.mentioned_in",)
+    assert enricher.areas == (
+        "relationships.mentioned_in",
+        "relationships.structure_mentioned_in",
+    )
     from sabueso.core.migration import _enrichment_options
     from sabueso.enrichers import options_by_source
 
@@ -266,7 +269,7 @@ def test_multiple_occurrences_and_duplicate_annotations_keep_individual_support(
     (rel,) = card.relationships("mentioned_in")
     assert len(rel["source_assertion_ids"]) == 2
     assert len(rel["qualifiers"]["locations"]) == 2
-    assert records(card)[0]["annotation_count"] == 2
+    assert records(card)[0]["uniprot_annotation_count"] == 2
     for location in rel["qualifiers"]["locations"]:
         (explanation,) = card.explain([location["source_assertion_id"]])
         assert explanation["asserted_value"]["annotation"] == location["annotation"]
@@ -292,7 +295,7 @@ def test_bibliographic_support_does_not_license_attached_fragments():
     (unknown_location,) = [
         item
         for item in report["cards"][0]["unknown"]
-        if item["kind"] == "literature_location"
+        if item["kind"] == "literature_location" and item["predicate"] == "mentioned_in"
     ]
     assert unknown_location["object_ref"] == "pubmed:40832834"
     assert report["cards"][0]["objects"]["pubmed:40832834"]["status"] == "partial"
@@ -300,6 +303,7 @@ def test_bibliographic_support_does_not_license_attached_fragments():
         item["kind"] == "relationship"
         for item in report["cards"][0]["unknown"]
         if item["object_ref"] == "pubmed:40832834"
+        and item["predicate"] == "mentioned_in"
     )
 
 
@@ -331,7 +335,7 @@ def test_different_located_answers_remain_visible_in_literature_and_terms():
     locations = [
         item
         for item in card.terms("redistribution")["cards"][0]["unknown"]
-        if item["kind"] == "literature_location"
+        if item["kind"] == "literature_location" and item["predicate"] == "mentioned_in"
     ]
     assert {item["id"] for item in locations} == set(rel["source_assertion_ids"])
 

@@ -189,6 +189,19 @@ Anchored at a MONDO term (`sabueso:disease:mondo:MONDO:0014221`).
   printed accession and matching UniProt tag. These are relationship qualifiers,
   not section field paths. `quality.enrichments` records explicit `article_ids`,
   `data: located_accession_annotations`, `annotation_count` and `returned_annotations`.
+- The same unpublished schema adds derived `structure_mentioned_in` relationships
+  (protein → publication, one per `structure_ref`), with `article`, `locations`,
+  `structure_ref` and `structure_context` qualifiers. Context records `protein_ref`,
+  `structure_ref`, structural `relationship_ids`, supporting `source_assertion_ids`
+  and `scope: entry_association`. Raw PDB mention assertions use
+  `relationships.mentioned_in` with a PDB subject and `stated_pdb_accession` identity
+  basis. Rule `structure_mention_context@1` retains both legs; it never creates an
+  assertion for the derived protein link. Enrichment records add
+  `mapping: located_accession_mapping@2`, `uniprot_mention_count`,
+  `structure_mention_count`, `uniprot_annotation_count`, `pdb_annotation_count`, and
+  `unlinked_pdb_mentions[]` (`structure_ref`, native `annotation_id`, `reason`).
+  `Card.literature()` adds `structure_mentions` only to publications with these
+  links, keeping context, locations, support, derivation and qualifier alternatives.
 - GO annotations, family/domain classifications, curated interactions and experimental
   structures are **relationships**, not field paths: `annotated_with`, `classified_in`,
   `interacts_with` and `has_structure` (see the Relationship contract in `SCHEMA.md`).

@@ -45,7 +45,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     (10.5281/zenodo.23048186) and 0.6.0 (10.5281/zenodo.23038465) too.
 - **Current card schema:** 0.3.11 (`schemas/card_schema_0.3.11.yaml`), unpublished:
   located UniProt accession annotations in explicit articles add optional locations
-  and native article ids to `mentioned_in` (#92). Release 0.11.0 writes 0.3.10.
+  and native article ids to `mentioned_in`, and supported PDB mentions add derived
+  `structure_mentioned_in` context (#92). Release 0.11.0 writes 0.3.10.
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
     0.3.10.
   - The recorded shape of 0.3.10 is `schemas/card_shape_0.3.10.json`, fixed; current
@@ -165,6 +166,16 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   with per-article request and outcome records. Empty answers, unavailable fixtures
   and failures remain distinct. Refresh preserves explicit requests, historical
   assertion reads and the recorded terms profile unless overridden (#94).
+- Located PDB mentions now enter as `structure_mentioned_in` only through
+  source-supported `has_structure` associations already mapped on the card. Rule
+  `structure_mention_context@1` retains the raw PDB mention and the structural
+  relationship and assertions. `literature().structure_mentions` separates this
+  context from direct protein mentions. Public 2JK2/Methods exercises the route;
+  7QON mentions lack association support and remain explicitly unlinked. No chain,
+  whole-entry identity, author focus or scientific claim is inferred. Four-character
+  codes and matching PDBe tags are required. `knowledge_state@4` distinguishes
+  counts and coverage of both areas; historical direct-only requests do not claim
+  PDB coverage. Storage and refresh retain both legs and historical pins.
 - Article fragments are judged separately from bibliography, with publication terms
   unknown when the API states no licence. Terms profiles exclude their intake before
   fetching. Raw Europe PMC responses have the separate registry retention licence
@@ -211,7 +222,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1242 tests passed, 26 online tests deselected (2026-10-02). Run with
+- Offline suite: 1259 tests passed, 26 online tests deselected (2026-10-02). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.
@@ -224,12 +235,15 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   and the pilot-driven route.
 - **Next:** explicit located UniProt accession mentions now enter cards in development
   (#92), with per-occurrence support, unknown article terms and recorded refresh
-  requests (schema 0.3.11, unpublished). PDB mentions through stated structure identity
-  and own extraction remain open. The public literature draft awaits human
+  requests (schema 0.3.11, unpublished). Supported PDB mention context is also
+  implemented. Own extraction remains open. The public literature draft awaits human
   review before actual curation intake. Further candidates are in `ROADMAP.md`
   ("Next candidates") and in the user
   guide's gaps (`DOCS_GAPS.md`: wave-2 sources and the
   comparative context have no pages of their own).
+- **Literature packets:** the frozen `packet_aspects@5` literature area filter omits
+  both mention predicates from the index and unknowns, although full facts expose
+  them. A new aspect mapping version must cover them (#71); see the recorded risk.
 - **Waiting on Nextia:** MOLI accepted the index level (uibcdf/moli#22, 2026-10-01). It
   closes with a consumer test (index, an item read by its pin, a Nextia Evidence, a
   citation that survives a new acquisition), when Nextia has its first persistent

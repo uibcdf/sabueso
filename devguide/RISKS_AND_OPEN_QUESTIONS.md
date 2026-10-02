@@ -7,6 +7,13 @@
 - **Clinical Data Volatility**: Clinical information changes more frequently than core physchem data.
 
 ## Architecture Risks (General)
+- **Literature packet area coverage** (#71, #92): `packet_aspects@5` filters the
+  literature index and unknowns to `relationships.described_in` and `literature.*`.
+  A full facts view of an existing card includes direct `mentioned_in` and derived
+  `structure_mentioned_in` via `Card.literature()`, but its index and area-filtered
+  unknowns omit them. The published aspect mapping must stay frozen. A new mapping
+  version must explicitly add both areas while keeping historical packets readable;
+  explicit article ids must never be guessed during automatic acquisition.
 - **SourceAssertion growth**: preserving all values can create very large cards and stores.
 - **Mapping fragility**: changes in source APIs can break field mappings.
 - **Ambiguity**: input resolution may produce multiple valid entities.

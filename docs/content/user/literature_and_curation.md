@@ -105,8 +105,32 @@ for publication in card.literature()["publications"]:
 `article_ids` accepts the same ids as `get_annotations`; it cannot be combined with
 the search's `limit`. Requests are isolated per article, with outcomes in
 `card.quality["enrichments"]`. The native MED and PMC ids remain as returned. The
-printed accession and its UniProt tag must both identify the card's anchor. Names,
-PDB tags and other accessions are not used for this intake.
+printed accession and its UniProt tag must both identify the card's anchor for a
+direct protein mention. Names and other UniProt accessions do not establish identity.
+
+PDB mentions use a separate route within the same request. A printed four-character
+PDB code and matching PDBe tag identify the mentioned entry. If a source-supported
+`has_structure` relationship already associates that entry with the protein, the
+card adds a derived `structure_mentioned_in` relationship. No structures are fetched
+or selected because an article mentions them. PDB mentions without association
+support are listed in the request's `unlinked_pdb_mentions`.
+
+```python
+for publication in card.literature()["publications"]:
+    for mention in publication.get("structure_mentions", []):
+        print(mention["structure_ref"], mention["locations"])
+        context = mention["structure_context"]
+        print(card.explain(context["source_assertion_ids"]))
+        print(mention["derivation"])
+```
+
+This view retains both the article's raw PDB mention and the structural source's
+association with the protein, under rule `structure_mention_context@1`. It describes
+an entry association: a PDB entry may contain a complex or chimera. It does not infer
+which chain, residues or molecule the author discusses, whole-entry identity, or a
+scientific claim. It stays separate from `mentions`. In the public example, the
+2JK2 mention in Methods has UniProt support; 7QON mentions remain unlinked. Expanded
+PDB codes are currently unhandled.
 
 Each occurrence keeps its annotation unchanged and its own SourceAssertion, imported
 from Europe PMC with `acquisition={"method": "database", "origin": "text_mining"}`.
@@ -120,7 +144,7 @@ as unknown, separately from bibliography, and includes every located fragment am
 its items. This remains unknown even for the CC BY public example: its fixture licence
 was checked separately, and is not invented as a statement of the annotation API.
 The `commercial` and `non_commercial` terms profiles exclude this intake before
-fetching. Schema 0.3.11 adds these optional locations; published 0.3.10 cards are kept
+fetching. Schema 0.3.11 adds these optional locations and structure context; published 0.3.10 cards are kept
 unchanged.
 
 ## Curated literature assertions

@@ -110,6 +110,9 @@ class Enricher:
     registry_id: str
     entity_type: str = "protein"
     areas: Tuple[str, ...] = ()
+    #: Additional record selectors and count fields for each knowledge area.
+    area_matches: Dict[str, Dict[str, Any]] = {}
+    area_counts: Dict[str, str] = {}
     #: Taxa the source covers; None for every organism.
     organisms: Tuple[int, ...] | None = None
     coverage_detail: str | None = None
@@ -311,11 +314,18 @@ def knowledge_areas(
     """``(area, source, match)`` rows for the knowledge state, from the declarations.
     ``match`` selects the enrichment records that answer the area."""
     return [
-        (area, e.source, e.match)
+        (area, e.source, {**e.match, **e.area_matches.get(area, {})})
         for e in ENRICHERS
         if e.entity_type == entity_type
         for area in e.areas
     ]
+
+
+def count_by_area() -> Dict[Tuple[str, str], str]:
+    """The declared count field for a knowledge area's enrichment records."""
+    return {
+        (area, e.source): key for e in ENRICHERS for area, key in e.area_counts.items()
+    }
 
 
 def options_by_source() -> Dict[Tuple[str, str | None], set]:

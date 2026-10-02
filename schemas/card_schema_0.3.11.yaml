@@ -221,6 +221,22 @@ schema:
     recorded article ids again. Optional locations are not automatic migration gaps.
     Annotation fragments are governed by each article's terms, reported separately
     from bibliography; unknown article terms are excluded by terms profiles (#92).
+    This unpublished version also adds derived structure_mentioned_in relationships
+    (protein to publication, one per structure_ref). A printed four-character PDB code
+    and its matching native PDBe tag yield a raw mentioned_in SourceAssertion about
+    the PDB entry; rule structure_mention_context@1 relates it to the protein only
+    through supported source-stated has_structure links already mapped on the card.
+    Qualifiers retain article, locations, structure_ref and structure_context
+    (protein_ref, structure_ref, relationship_ids, source_assertion_ids, scope
+    entry_association). Derivation inputs retain both statements and their structural
+    relationships. Raw mention support alone is in the derived relationship's
+    source_assertion_ids; structural-source terms never license attached fragments.
+    No whole-entry identity, chain, residue, author focus or scientific claim is
+    inferred. quality.enrichments adds mapping located_accession_mapping@2,
+    uniprot_mention_count, structure_mention_count, uniprot_annotation_count,
+    pdb_annotation_count and unlinked_pdb_mentions (structure_ref, annotation_id,
+    reason no_supported_has_structure_on_card). knowledge_state@4 counts the two
+    areas separately; historical direct-only requests do not claim PDB coverage.
     Additive, so a 0.3.10 card is valid without these optional records.
 
 card_base:

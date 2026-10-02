@@ -40,6 +40,7 @@ PREDICATES = frozenset(
         "participates_in",  # protein -> pathway or reaction (Reactome), #83
         "subclass_of",  # disease -> broader disease term (MONDO is_a), #90
         "mentioned_in",  # protein -> publication whose text states its accession, #92
+        "structure_mentioned_in",  # protein -> publication mentioning a stated structure
         "ortholog_of",  # protein -> protein (OMA pairwise orthology), #83
         "clustered_with",  # protein -> protein or UniParc sequence (UniRef90), #103
     }
@@ -50,6 +51,7 @@ PREDICATES = frozenset(
 # the (protein, structure) pair: UniProt cross-references do not name polymer entities,
 # so entity-level details are qualifiers and sources stating the pair can agree.
 IDENTITY_QUALIFIERS: Dict[str, tuple] = {
+    "structure_mentioned_in": ("structure_ref",),
     "isoform_of": ("isoform",),
     # One relationship per measurement: the same molecule is often measured several
     # times (assays, papers), and each measurement keeps its own support and context.
@@ -183,7 +185,18 @@ class RelationshipStore:
         if ids:
             existing["source_assertion_ids"] = list(dict.fromkeys(ids))
         if "derivation" in relationship and "derivation" not in existing:
-            existing["derivation"] = relationship["derivation"]
+            existing["derivation"] = copy.deepcopy(relationship["derivation"])
+        elif "derivation" in relationship:
+            previous, incoming = existing["derivation"], relationship["derivation"]
+            # The same rule and parameters applied to another occurrence retain
+            # every input; merging source support must not hide part of the basis.
+            if all(
+                previous.get(k) == incoming.get(k)
+                for k in ("rule", "parameters", "sabueso_version")
+            ):
+                previous["inputs"] = sorted(
+                    set(previous.get("inputs", []) + incoming.get("inputs", []))
+                )
         qualifiers = existing.setdefault("qualifiers", {})
         for key, value in relationship.get("qualifiers", {}).items():
             if key not in qualifiers:

@@ -20,14 +20,15 @@
 
 These are knowledge states, not Evidence. "Not stated by UniProt at release 120" is a
 fact about a source; what the absence means for a project is interpreted in Nextia.
-Rule ``knowledge_state@3``.
+Rule ``knowledge_state@4`` separates counts and request coverage of areas answered
+by the same enricher (direct accession mentions versus derived structure context).
 """
 
 from __future__ import annotations
 
 from typing import Any, Dict, List
 
-KNOWLEDGE_STATE_RULE = "knowledge_state@3"
+KNOWLEDGE_STATE_RULE = "knowledge_state@4"
 
 #: Protein enrichments: (area, source, which enrichment records answer it).
 PROTEIN_ENRICHMENTS = (
@@ -71,8 +72,13 @@ def _enrichment_row(area: str, source: str, records: List[Dict[str, Any]]):
         details = sorted({r["detail"] for r in records if r.get("detail")})
         return _row(area, source, "not_queried", detail="; ".join(details) or None)
     statuses = [r.get("status") for r in records]
+    from sabueso.enrichers import count_by_area
+
+    count_key = count_by_area().get((area, source), "count")
     count = sum(
-        r.get("count") or 0 for r in records if r.get("status") in ("added", "partial")
+        r.get(count_key, r.get("count")) or 0
+        for r in records
+        if r.get("status") in ("added", "partial")
     )
 
     def which(status: str) -> List[str] | None:

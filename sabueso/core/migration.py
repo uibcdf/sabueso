@@ -296,11 +296,20 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "filled_by": "europepmc",
             "entity_types": ("protein",),
             "explicit_only": True,
-            **({"qualifier": True} if path.startswith("relationships.") else {}),
+            **(
+                {"qualifier": True}
+                if path.startswith("relationships.") and path.count(".") > 1
+                else {}
+            ),
         }
         for path in (
             "relationships.mentioned_in.locations",
             "relationships.mentioned_in.article",
+            "relationships.structure_mentioned_in",
+            "relationships.structure_mentioned_in.structure_ref",
+            "relationships.structure_mentioned_in.structure_context",
+            "relationships.structure_mentioned_in.locations",
+            "relationships.structure_mentioned_in.article",
             "source_assertion_store[].source_metadata.content_kind",
             "source_assertion_store[].source_metadata.requested_article",
             "source_assertion_store[].source_metadata.article",
@@ -308,6 +317,12 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "quality.enrichments[].article_ids",
             "quality.enrichments[].annotation_count",
             "quality.enrichments[].returned_annotations",
+            "quality.enrichments[].mapping",
+            "quality.enrichments[].uniprot_mention_count",
+            "quality.enrichments[].structure_mention_count",
+            "quality.enrichments[].uniprot_annotation_count",
+            "quality.enrichments[].pdb_annotation_count",
+            "quality.enrichments[].unlinked_pdb_mentions",
         )
     ],
 }

@@ -39,6 +39,8 @@ Enricher
   registry_id   its entry in sources/registry.yaml ("clinvar")
   entity_type   "protein" | "small_molecule"
   areas         the knowledge areas it answers ("annotations.clinical_variants")
+  area_matches  additional request selectors for each area (empty by default)
+  area_counts   the count field for each area ("count" by default)
   organisms     taxa it covers (None: all; (9606,): human only)
   option_kind   "flag" (True) or "options" ({} or {"limit": …})
   client        the online client's factory
@@ -65,6 +67,13 @@ enricher's record, including explicit article ids, so refresh cannot silently tu
 it into a bibliographic search. `record_kinds` includes both Europe PMC routes for
 the migration map; automatic packet requests still ask only for bibliography.
 Refresh preserves the card's recorded terms profile unless the caller overrides it.
+
+`knowledge_state@4` reads each area's declared selectors and count field. Europe PMC
+counts direct UniProt mentions separately from derived structure mention context.
+Only requests marked `located_accession_mapping@2` cover the latter; an older
+direct-only request or a bibliographic search cannot imply that PDB mentions were
+queried. The explicit article route uses source-supported structural associations
+already in `context.mappings`, without fetching or selecting extra structures.
 
 From the declarations, the other tables are **derived** instead of maintained by hand:
 - the knowledge-state rows (area, source);

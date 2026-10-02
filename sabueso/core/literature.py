@@ -1,6 +1,6 @@
 """Which publications support which statements on a card (uibcdf/sabueso#41, part 1).
 
-A publication reaches a card in three ways, and ``literature_view`` puts them together per
+A publication reaches a card in several ways, and ``literature_view`` puts them together per
 publication (``pubmed:<id>``, else ``doi:<doi>``, else UniProt's own citation id):
 
 - a source cites it for a topic: ``described_in`` relationships, for example a UniProt
@@ -14,7 +14,11 @@ publication (``pubmed:<id>``, else ``doi:<doi>``, else UniProt's own citation id
   reference numbers;
 - its text states the protein's accession, as Europe PMC found it by text mining
   (``mentioned_in``, ``mentions``, #92). A mention says the paper names the entry, not
-  what it states about it.
+  what it states about it;
+- its text states a PDB accession associated with the protein by a source-supported
+  ``has_structure`` link (``structure_mentioned_in``, ``structure_mentions``, #92).
+  Rule ``structure_mention_context@1`` retains both statements. An entry association
+  does not establish whole-entry identity, chain or residue scope, or author focus.
 
 Nothing here reads a paper. How a publication bears on a project's hypotheses is Nextia
 Evidence, not Sabueso's.
@@ -22,6 +26,7 @@ Evidence, not Sabueso's.
 
 from __future__ import annotations
 
+from copy import deepcopy
 from typing import Any, Dict, List
 
 
@@ -120,15 +125,28 @@ def literature_view(card: Any) -> Dict[str, Any]:
             "relationship_id": rel["id"],
         }
         if "locations" in q:
-            from copy import deepcopy
-
             mention["article"] = deepcopy(q["article"])
             mention["locations"] = deepcopy(q["locations"])
         if rel.get("qualifier_conflicts"):
-            from copy import deepcopy
-
             mention["qualifier_conflicts"] = deepcopy(rel["qualifier_conflicts"])
         pub["mentions"].append(mention)
+
+    for rel in card.relationships("structure_mentioned_in"):
+        q = rel.get("qualifiers", {})
+        pub = entry(rel["object_ref"])
+        mention = {
+            "source": q.get("source"),
+            "structure_ref": q["structure_ref"],
+            "structure_context": deepcopy(q["structure_context"]),
+            "article": deepcopy(q["article"]),
+            "locations": deepcopy(q["locations"]),
+            "relationship_id": rel["id"],
+            "source_assertion_ids": list(rel["source_assertion_ids"]),
+            "derivation": deepcopy(rel["derivation"]),
+        }
+        if rel.get("qualifier_conflicts"):
+            mention["qualifier_conflicts"] = deepcopy(rel["qualifier_conflicts"])
+        pub.setdefault("structure_mentions", []).append(mention)
 
     for rel in card.relationships("has_bioactivity"):
         document = rel.get("qualifiers", {}).get("document") or {}

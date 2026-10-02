@@ -310,7 +310,7 @@ def _items(card: Any) -> List[Dict[str, Any]]:
         )
         # Bibliographic support may allow the relationship while the attached text
         # remains governed by an article's unrecorded licence. Judge each separately.
-        if rel.get("predicate") != "mentioned_in":
+        if rel.get("predicate") not in {"mentioned_in", "structure_mentioned_in"}:
             continue
         locations = list((rel.get("qualifiers") or {}).get("locations") or [])
         for alternative in (rel.get("qualifier_conflicts") or {}).get(

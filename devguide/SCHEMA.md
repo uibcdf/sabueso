@@ -4,6 +4,7 @@
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
   - `0.3.11` is the unpublished additive schema: explicit Europe PMC article
     annotations add native article ids and per-occurrence locations to `mentioned_in`,
+    and source-supported PDB mentions add derived `structure_mentioned_in` context,
     with their SourceAssertions and identity basis. Enrichment records preserve the
     article requests for refresh. These optional locations are not migration gaps;
   - `0.3.10` is the schema of release 0.10.0: `identifiers.ensembl_transcripts` (UniProt's
@@ -404,6 +405,22 @@ A Relationship is first-class, traceable knowledge:
     `journal`, `year`, `open_access`, and `preprint`. Its SourceAssertions record
     `acquisition: {method: database, origin: text_mining}`. A mention says the paper
     names the entry, never what it states about it.
+    Schema 0.3.11 (unpublished) adds optional `article` and `locations` qualifiers
+    for explicit article annotations, and a distinct derived predicate:
+    `structure_mentioned_in` (protein → publication, one per `structure_ref`).
+    A printed legacy PDB code and matching PDBe tag identify the mentioned entry;
+    supported source-stated `has_structure` links already on the card supply its
+    association with the protein. Qualifiers keep `article`, `locations`,
+    `structure_ref` and `structure_context` (`protein_ref`, `structure_ref`, structural
+    `relationship_ids`, `source_assertion_ids`, `scope: entry_association`).
+    Rule `structure_mention_context@1` records both legs as derivation inputs. Raw
+    mention assertions have PDB subjects and `relationships.mentioned_in` paths;
+    the derived link's direct support contains only these mention assertions. It
+    creates no assertion for the derived protein link and infers no chain, residue,
+    whole-entry identity, author focus or scientific claim. Expanded PDB codes and
+    name annotations are unhandled. Duplicate occurrences preserve all rule inputs
+    and qualifier alternatives. Terms judge attached fragments independently of
+    the structural sources' terms.
   - pathways (added in #83, schema 0.3.6):
     - `participates_in` (protein → `reactome:<stId>`), one per Reactome event mapping
       the UniProt accession. Qualifiers: `kind` (`pathway`, lowest level, or

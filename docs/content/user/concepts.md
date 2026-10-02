@@ -39,7 +39,7 @@ source:
   (`unavailable_for`, `incomplete_for`, `truncated_for`).
 
 Each row carries the source release and the basis. An absence is reported as a fact
-about a source, never as evidence against something (rule `knowledge_state@3`).
+about a source, never as evidence against something (rule `knowledge_state@4`).
 
 ## Structures
 
@@ -192,4 +192,3 @@ See {doc}`field_paths`.
 
 Sabueso supports in-memory work by default and explicit persistence by user choice.
 Recommended project layout and storage tradeoffs are documented in {doc}`storage`.
-

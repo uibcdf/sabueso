@@ -247,9 +247,11 @@ In order:
      fragments are not complete sentences. Implemented after 0.11.0 (unreleased):
      explicit UniProt accession intake into cards, with native article ids,
      per-occurrence locations and SourceAssertions, terms and refresh through the
-     recorded article requests (schema 0.3.11). Next: PDB
-     mentions linked through stated structure identity, and an extraction Sabueso
-     runs itself, with its tool and version.
+     recorded article requests (schema 0.3.11). Supported PDB mentions are now
+     derived `structure_mentioned_in` context through source-stated `has_structure`
+     links, retaining both statements and separating them from direct UniProt
+     mentions. Public 2JK2/Methods verifies it; unsupported 7QON remains unlinked.
+     Next: an extraction Sabueso runs itself, with its tool and version.
    - Included in 0.11.0: a public review draft and hypothetical curation rehearsal
      (`examples/literature_curation/`), preserving outcomes and historical support on
      rebuild. The draft awaits human review; #105 prevents extraction provenance from

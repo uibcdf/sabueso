@@ -33,6 +33,10 @@ shows how to use them.
       mentions from explicit articles, with native locators and per-occurrence support
       (unreleased). One MED/PMC id or a non-empty list is accepted; `limit` is not
       accepted with `article_ids`. It does not read names or scientific claims.
+      Direct UniProt mentions remain `mentioned_in`. PDB mentions supported by
+      source-stated structural associations add derived `structure_mentioned_in`
+      relationships and conditional `literature().publications[].structure_mentions`,
+      with both identity and occurrence support retained (unreleased).
     - each source's `*_client`, and `resolver`.
   - For small molecules: `unichem`, `pubchem`, `chebi` (#83), `indications` and
     `trials` (#81).
