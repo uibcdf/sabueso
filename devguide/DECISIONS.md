@@ -1,5 +1,30 @@
 # Sabueso — Decision Log
 
+## Read-time literature explanations and packet terms (2026-10-02, #91, #29)
+
+- `literature_explanation@1` walks a publication's stored citation, mention,
+  structural citation, measurement and curated/ECO support links. It exposes both
+  legs of structural mention context and every qualifier alternative, with exact
+  card/item pins. Unlinked annotations remain request outcomes, not SourceAssertions.
+  Missing recorded support is partial; missing links never establish article absence.
+- `packet_terms@1` is a read-time query over exact saved card pins and the packet's
+  represented statements/conflicts/dependencies. Full/index have the same scope for
+  the unpublished `packet_aspects@6`; older mappings remain readable, but the terms
+  query refuses them until a scope adapter exists. No current mapping substitutes for
+  a historical mapping. Index view rules must match the available producer rules.
+- Term-bearing statements retain their own resource label, separating article
+  fragments from bibliography. A derived relationship requires every recorded
+  support leg; source alternatives within a leg use `terms_propagation@1`.
+  Disease grouping includes stored MONDO/MedGen identity/hierarchy context because
+  exact grouping input lineage was not recorded; it does not claim minimal lineage.
+- Registry terms are today's packaged records with their review dates, not terms
+  reconstructed as of acquisition. Reports are detached and carry their scope;
+  they change no packet hashes/payloads, card schema/shape or store formats.
+- Ackredit can provide future runtime/result/workflow bibliography, distinct from
+  knowledge support and terms. The optional integration is proposed in #108 and
+  moli#36, with consumer feedback to ackredit#75. Provider APIs/publication/Python
+  closure remain adoption gates; no runtime dependency is introduced here.
+
 ## Literature packet coverage: `packet_aspects@6` (2026-10-02, #71, #92)
 
 - The unpublished mapping adds `relationships.mentioned_in` and

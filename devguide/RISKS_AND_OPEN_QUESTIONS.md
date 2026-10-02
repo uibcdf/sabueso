@@ -7,6 +7,16 @@
 - **Clinical Data Volatility**: Clinical information changes more frequently than core physchem data.
 
 ## Architecture Risks (General)
+- **Packet terms scope and registry history** (#29): `packet_terms@1` supports
+  `packet_aspects@6` only. Historical mappings need their own scope adapter and are
+  refused by that query, without changing packet readability. Terms use the current
+  packaged registry and review dates, not a historical registry snapshot. Stored
+  statement support is available, but exact mapping/qualifier lineage is not always
+  recorded; disease grouping includes broader MONDO/MedGen identity/hierarchy context.
+- **Optional pipeline attribution** (#108, moli#36): Ackredit source capture APIs
+  are provisional, publication is pending and its declared Python range does not yet
+  cover Sabueso's 3.14 claim. Complete offline resource bibliography, real-provider
+  consumer evidence and published dependency closure are required before adoption.
 - **SourceAssertion growth**: preserving all values can create very large cards and stores.
 - **Mapping fragility**: changes in source APIs can break field mappings.
 - **Ambiguity**: input resolution may produce multiple valid entities.

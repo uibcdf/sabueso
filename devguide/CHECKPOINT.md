@@ -192,6 +192,21 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   acquisition. Packet history now reports mappings/detail levels as non-comparable,
   consistently with `same_knowledge`. Missing search fixtures report unavailable.
   Query/packet/card/store formats are unchanged.
+- `Card.explain_literature(publication_ref)` now exposes stored publication links,
+  pinned assertions and structural context, including alternatives and unlinked
+  request records (`literature_explanation@1`, #91). It reads without acquisition;
+  missing links are `not_on_card`, and missing recorded support is `partial`.
+- `KnowledgePacket.terms(use, store)` reports represented statement support,
+  conflicts and stored dependencies at exact card pins (`packet_terms@1`, #29).
+  Full/index agree for `packet_aspects@6`; other mappings need a scope adapter.
+  Bibliography never licenses fragments. Disease identity context is broader than
+  exact grouping inputs, which were not recorded. The terms registry is the current
+  packaged registry with review dates, not a reconstructed historical registry.
+  This read-time report changes no stored formats, card shapes or packet hashes.
+- Ackredit's provisional portable capture API was reviewed at
+  `4228444cc865a4decb550d1b14b1ffeb046a10eb`. Optional pipeline attribution is
+  proposed in #108 and moli#36, with provider feedback in ackredit#75. There is no
+  runtime integration: publication and the 3.11–3.14 dependency closure remain gates.
 
 ## Package layout
 
@@ -231,7 +246,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1271 tests passed, 26 online tests deselected (2026-10-02). Run with
+- Offline suite: 1290 tests passed, 26 online tests deselected (2026-10-02). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.

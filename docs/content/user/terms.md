@@ -6,7 +6,7 @@ what each source states about its own terms, and what knowledge remains if you k
 only the sources that allow that use.
 
 ```{note}
-This is on main, not yet in a release. It is a report of what the sources state, not
+Card/deck reports were released in 0.7.0; packet reports below are unreleased. This is a report of what the sources state, not
 legal advice: the decision, and the responsibility for it, stay with you.
 ```
 
@@ -54,6 +54,35 @@ BioAssay results deposited by ChEMBL).
 Each source's terms, with the statement they come from and the date they were reviewed,
 are listed on the *Data sources* page. A record older than a year is flagged
 `review_due`.
+
+## Terms of a packet (unreleased)
+
+```python
+report = packet.terms("redistribution", store)
+report["sources"]  # stated terms, review dates and attribution
+report["scope"]["subject"]  # exact card pin and each represented support item
+report["unknown"]  # includes article fragments whose publication terms are unstated
+```
+
+`packet_terms@1` reads exact card pins from the knowledge store. It reports the
+SourceAssertions represented by the asked views, their conflicts and stored
+relationship dependencies, rather than every source on the entire card. Full and
+index packets share this support scope. Counts are statements and relationships,
+not unique scientific facts. Both legs of a derived structural mention must remain
+for the derived relationship to remain; source alternatives within a leg are
+judged separately. Allowed bibliography never licenses attached text fragments.
+
+This operation currently supports `packet_aspects@6`. Older packets remain readable,
+but their terms query raises `StorageError` until a historical scope adapter exists.
+Missing cards or support are also refused; current heads never replace historical
+pins. Index view rules must be recognized before views are reconstructed.
+
+The report uses the current packaged terms registry with its review dates. It does
+not reconstruct the terms registry as of the card's acquisition. Exact mapping and
+qualifier lineage was not always recorded; disease grouping includes the stored
+MONDO/MedGen identity/hierarchy context rather than claiming minimal inputs. These
+limits are stated in the report. It is detached, changes no packet hashes or payload,
+and does not record runtime usage or produce a pipeline bibliography.
 
 ## Building under a terms profile
 

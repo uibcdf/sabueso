@@ -66,6 +66,8 @@ Every document is one of four kinds:
 
 - `pending_bugs/`, `pending_proposals/`: analyses of active issues, each tied to its
   issue.
+  `pending_proposals/ackredit_knowledge_pipeline_attribution.md` records the optional
+  pipeline attribution study (#108, moli#36); runtime adoption remains pending.
 - `templates/report.md`: the report template (MOLI reporting protocol).
 - `archive/`: resolved reports and superseded documents, indexed in
   `archive/README.md`. The original plans are there, and `ROADMAP.md` still tracks them.

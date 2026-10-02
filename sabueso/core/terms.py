@@ -263,23 +263,24 @@ def labelled_verdict(label: str, use: str, today: date | None = None) -> Dict[st
     return {**verdict(mapped, use, today), "basis": {**basis, "terms_of": mapped}}
 
 
+def assertion_label(assertion: Dict[str, Any]) -> str:
+    """The terms-bearing resource of a statement, distinct from its service."""
+    name = (assertion.get("source") or {}).get("name") or "unknown"
+    if (
+        name == "Europe PMC"
+        and (assertion.get("source_metadata") or {}).get("content_kind")
+        == "located_accession_annotation"
+    ):
+        return "Europe PMC Annotations"
+    return name
+
+
 def _items(card: Any) -> List[Dict[str, Any]]:
     """Every field and relationship of a card, with the sources that state it."""
     store = card.source_assertion_store
 
     def sources(ids: Iterable[str]) -> List[str]:
-        def label(identifier):
-            assertion = store.get(identifier) or {}
-            name = (assertion.get("source") or {}).get("name") or "unknown"
-            if (
-                name == "Europe PMC"
-                and (assertion.get("source_metadata") or {}).get("content_kind")
-                == "located_accession_annotation"
-            ):
-                return "Europe PMC Annotations"
-            return name
-
-        return sorted({label(i) for i in ids})
+        return sorted({assertion_label(store.get(i) or {}) for i in ids})
 
     items = []
     for path in card.list_fields():
@@ -339,15 +340,26 @@ def terms_report(
     cards: Iterable[Any], use: str, today: date | None = None
 ) -> Dict[str, Any]:
     """The terms of the knowledge in ``cards`` for ``use``; see the module docstring."""
+    return report_items(((card.id, _items(card)) for card in cards), use, today)
+
+
+def report_items(
+    groups: Iterable[tuple[str, List[Dict[str, Any]]]],
+    use: str,
+    today: date | None = None,
+) -> Dict[str, Any]:
+    """Report terms for explicit item groups. All requirement groups of a derived
+    item must remain; alternatives within each group use the ordinary source rule.
+    """
     if use not in USES:
         raise ValueError(f"use must be one of {USES}, not {use!r}")
     verdicts: Dict[str, Dict[str, Any]] = {}
     per_card = []
-    for card in cards:
+    for card_id, items in groups:
         remains = lost = unknown = 0
         lost_items, unknown_items = [], []
         objects: Dict[str, Dict[str, Any]] = {}
-        for item in _items(card):
+        for item in items:
             if item.get("derived"):
                 continue
             answers = {}
@@ -355,10 +367,37 @@ def terms_report(
                 if name not in verdicts:
                     verdicts[name] = labelled_verdict(name, use, today)
                 answers[name] = verdicts[name]["verdict"]
-            if "allowed" in answers.values():
+            requirements = item.get("requirements")
+            if requirements is not None:
+                states = []
+                for group in requirements:
+                    values = [answers[name] for name in group]
+                    states.append(
+                        "remains"
+                        if "allowed" in values
+                        else "unknown"
+                        if "unknown" in values or not values
+                        else "lost"
+                    )
+                selected = (
+                    "lost"
+                    if "lost" in states
+                    else "unknown"
+                    if "unknown" in states or not states
+                    else "remains"
+                )
+            else:
+                selected = (
+                    "remains"
+                    if "allowed" in answers.values()
+                    else "unknown"
+                    if "unknown" in answers.values() or not answers
+                    else "lost"
+                )
+            if selected == "remains":
                 outcome = "remains"
                 remains += 1
-            elif "unknown" in answers.values() or not answers:
+            elif selected == "unknown":
                 outcome = "unknown"
                 unknown += 1
                 unknown_items.append({**item, "verdicts": answers})
@@ -378,7 +417,7 @@ def terms_report(
                 entry["outcomes"].add(outcome)
         per_card.append(
             {
-                "card_id": card.id,
+                "card_id": card_id,
                 "items": remains + lost + unknown,
                 "remains": remains,
                 "lost": lost_items,

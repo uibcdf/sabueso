@@ -77,6 +77,11 @@ shows how to use them.
   `query`, `ref`, `format`, `detail`; `snapshot_id()`, `content_id()`,
   `same_knowledge(other)` (None across formats, aspect mappings and levels of detail),
   `cite(role, item_id)`, `item(role, item_id, store)`, `to_dict()`.
+  `terms(use, store)` reads exact saved card pins and reports represented statement
+  support, conflicts and stored dependencies (`packet_terms@1`, unpublished).
+  Full/index share the scope at `packet_aspects@6`; other mappings need an adapter.
+  It uses the current packaged terms registry with review dates, without changing
+  packet hashes/payloads or reconstructing a historical terms-registry snapshot.
 
 ## Card
 
@@ -120,6 +125,10 @@ shows how to use them.
   - `Card.from_dict(data)`, `Card.from_json(path)`, `Card.from_sqlite(path, ...)`.
 - **Provenance.** `explain(source_assertion_ids)`: each SourceAssertion's field,
   subject, source, record, version, retrieval and asserted value (#91).
+  `explain_literature(publication_ref)` explains the publication's links and both
+  legs of structural mention context, with pinned references, qualifier alternatives
+  and recorded unlinked PDB mentions (`literature_explanation@1`, unpublished).
+  Missing links are `not_on_card`; missing stored support is `partial`.
 - **Other.** `to_deck()`, `expand(predicate, ...)` (see `sabueso.expand`).
 
 ## Deck

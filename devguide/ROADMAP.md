@@ -228,12 +228,18 @@ In order:
    and a disease's targets and drugs. Open: EFO terms MONDO does not map (#96).
 2. **What may be done with the knowledge (#29).** Released in 0.7.0: `Card.terms`,
    `Deck.terms`, `Deck.admissible`, depositor terms per PubChem assay, and terms
-   profiles (#94). Next: terms in packets, and the shared vocabulary with MOLI.
+   profiles (#94). Implemented after 0.11.0 (unreleased): read-time
+   `KnowledgePacket.terms(use, store)` for `packet_aspects@6`, with pinned support,
+   separate bibliography/fragment terms and full/index parity. Next: historical
+   scope adapters as use asks, and the shared vocabulary with MOLI.
 3. **Scientific operations (#91).** Released in 0.7.0: `expand` (relationships into decks),
    `explain` (a deck member and a card's SourceAssertions), and the store's `as_of` and
    `changed_since`. Released in 0.11.0: an inventory item through
    `Deck.explain(card_id, structure_ref=..., ...)`, with the pinned relationship and
    SourceAssertion support of every group member (`structure_inventory_explanation@1`).
+   Implemented after 0.11.0 (unreleased): `Card.explain_literature(publication_ref)`
+   traces stored publication links and both legs of structural mention context,
+   preserving alternatives and recorded unlinked requests (`literature_explanation@1`).
    Next, as use asks: other views' derived items, including disease groups.
 4. **Literature beyond manual curation (#92).**
    - Released in 0.7.0: how each statement entered (`acquisition`: database, curation, rule
@@ -283,6 +289,10 @@ In order:
    - exchange with TopoMT (positions, interface mutations), MolSysViewer (features to
      show) and PharmacophoreMT (ligand decks). Use cases 3, 4 and 7 are partial for
      want of these.
+   - optional Ackredit attribution for knowledge pipelines (#108, moli#36), studied
+     against provisional provider capture APIs (ackredit#75). Runtime adoption,
+     complete verified resource bibliography and published Python dependency closure
+     remain pending; the local support/terms reports do not record execution usage.
 
 Each is proposed as an issue before work starts, and the order is revisited at each
 release.

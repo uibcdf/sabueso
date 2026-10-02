@@ -489,6 +489,18 @@ class Card:
             )
         return out
 
+    @arg_digest()
+    def explain_literature(
+        self, publication_ref: str, skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """Explain a publication's stored links, statement support and structure
+        context (``literature_explanation@1``). Read a historical card from the store
+        first to explain its pin. Missing links are ``not_on_card``, never absence
+        in the article. This operation does not fetch or select knowledge."""
+        from .literature_explanation import explain_literature
+
+        return explain_literature(self, publication_ref)
+
     def acquisition(self) -> Dict[str, Any]:
         """How the card's statements entered (#92), counted by method and source:
         imported from a database, curated from a publication, or extracted from a text

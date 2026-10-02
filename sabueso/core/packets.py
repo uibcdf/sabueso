@@ -817,6 +817,21 @@ class KnowledgePacket:
             return store.relationship(ref)
         return store.source_assertion(ref)
 
+    @arg_digest()
+    def terms(
+        self, use: str, store: Any, skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """Report terms of the packet's stored statement support (``packet_terms@1``).
+        Read exact card pins from ``store``; bibliography and article fragments have
+        separate terms. Full and index use the same support scope at aspect mapping
+        ``@6``. Other mappings need an adapter and are refused by this operation.
+        The report uses today's packaged registry with its stated review dates;
+        it is not added to the immutable packet or credited to a runtime session.
+        """
+        from .packet_terms import packet_terms
+
+        return packet_terms(self, use, store)
+
     def __repr__(self) -> str:
         roles = ", ".join(f"{r}={e['card_id']}" for r, e in self.entities.items())
         return f"KnowledgePacket({roles}; aspects={list(self.facts)})"

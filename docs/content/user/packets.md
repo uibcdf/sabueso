@@ -156,6 +156,15 @@ Sabueso does not authorize. An index reveals what exists, how much and from wher
 without values. Before an index, a packet or an item reaches anyone, the platform
 applies the recipient's disclosure policy (uibcdf/moli#22).
 
+## Read the support's terms (unreleased)
+
+`packet.terms("redistribution", store)` follows represented statement support at
+the exact saved card pins. It reports source-stated terms, attribution, restrictions
+and unknowns, including publication terms for article fragments. Full and index
+share the scope at `packet_aspects@6`; other mappings need a scope adapter. The
+detached report uses the current packaged registry with review dates and does not
+change the packet. See [terms](terms.md) for its scope and lineage limits.
+
 ## Deterministic, with two ids
 
 A packet never calls a language model, never ranks, and never summarizes: a full packet

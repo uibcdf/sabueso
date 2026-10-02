@@ -147,6 +147,35 @@ The `commercial` and `non_commercial` terms profiles exclude this intake before
 fetching. Schema 0.3.11 adds these optional locations and structure context; published 0.3.10 cards are kept
 unchanged.
 
+### Explain a publication's links (unreleased)
+
+```python
+explanation = card.explain_literature("pubmed:40832834")
+explanation["card_ref"]  # exact state read
+for link in explanation["links"]:
+    print(link["relationship_ref"], link["source_assertions"])
+    print(link["structure_contexts"])  # both legs, when linked through a PDB entry
+explanation["unlinked_pdb_mentions"]  # recorded rejected occurrences, with reasons
+```
+
+`literature_explanation@1` follows stored citation, mention, primary structural
+citation, measurement and curated/ECO support. It keeps each relationship and its
+alternatives, with pinned assertion references. It neither acquires articles nor
+selects structures. Its structural context still has only `entry_association` scope.
+
+Use the exact `publication_ref` listed by `card.literature()`. Native `pubmed:`,
+`doi:`, `europepmc:MED:`, `europepmc:PMC:` and `uniprot.citation:` references are
+accepted; aliases are not guessed. `not_on_card` means no stored link, and `partial`
+means support is missing from the stored card. Recorded annotation requests retain
+their own outcomes; neither status establishes absence in the publication.
+
+To explain an earlier observation, load its card pin first:
+
+```python
+historical = store.load(saved_card_ref)
+explanation = historical.explain_literature("pubmed:40832834")
+```
+
 ## Curated literature assertions
 
 When you read a paper, record what it states on the card. Sabueso keeps where the

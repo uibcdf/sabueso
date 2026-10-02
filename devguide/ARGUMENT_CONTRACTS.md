@@ -25,7 +25,7 @@ support-library policy requires (uibcdf/sabueso#31) and as the sibling component
 
 `tests/core/test_argument_contracts_offline.py` discovers them. It finds every `get_*`
 of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
-`KnowledgeStore` and `CurationStore`, so that a new one cannot miss its digesters. As of
+`KnowledgeStore`, `CurationStore` and `KnowledgePacket`, so that a new one cannot miss its digesters. As of
 2026-09-26 they are:
 
 - **Tools:** `resolve`, `resolve_protein_card`, `resolve_molecule_card`, `ligand_deck`,
@@ -45,6 +45,9 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   - `expand` (a predicate, or several, from the relationship vocabulary; `options`
     keyed by entity type) and `explain` (#91).
   `Card.compare` and `Deck.compare` reach their field paths through `Card.extract`.
+  `explain_literature(publication_ref)` accepts the literature view's native
+  `pubmed:`, `doi:`, `europepmc:MED:`, `europepmc:PMC:` and `uniprot.citation:`
+  references, with whitespace stripped. It neither guesses aliases nor matches names.
 - **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,
   `group_by_rank`, `expand`, `explain`.
   `explain` accepts `structure_ref=None` for membership, or `pdb:<four-character id>`
@@ -58,6 +61,8 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   and `constraints`. `knowledge_packet` takes `**clients` and admits the
   `source_clients` domain, the resolver and the `*_client` options of
   `resolve_protein_card`. So a keyword never changes what a query asks.
+  **KnowledgePacket**: `terms(use, store)` uses the existing `use` and `store`
+  digesters; a missing store is refused by the method, never replaced by fresh data.
 - **Resolver:** `EntityResolver(uniprot_client, policy, rcsb_client, ncbi_gene_client)`.
 - **SQLite storage**, where the table name is interpolated into SQL:
   - `save_card_sqlite`, `load_card_sqlite`;
