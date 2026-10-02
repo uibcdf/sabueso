@@ -68,6 +68,8 @@ One resolution, end to end: `sabueso.resolve(query, **options)`.
   - `literature`, `claims`, `knowledge_state`;
   - `compare_knowledge`.
 - On decks: `identity_audit`, `structure_inventory`, `unique_names`, `group_by_rank`…
+- `Deck.explain(card_id, structure_ref=..., ...)` follows an inventory item to its
+  rules, stored inputs and supporting statements; all cards and items are pinned.
 - `card.table(view)` gives flat rows. `sabueso.to_dataframe(rows)` gives a DataFrame,
   with quantities kept.
 

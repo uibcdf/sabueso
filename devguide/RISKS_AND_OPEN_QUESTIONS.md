@@ -27,6 +27,11 @@
   re-applying gives the same id. If a field's item shape changes in a new schema version,
   re-application raises instead of silently changing the id. Stores then need a
   migration.
+- **Previously exported extraction provenance** (#105): before the export guard,
+  `CurationStore` could export a rule/model extraction without its acquisition and
+  replay it as human curation. Those JSONL records cannot reconstruct the omitted
+  provenance automatically. Check the original acquired card state before accepting
+  or reapplying such a record; the guard prevents new exports of this kind.
 - **Snapshots of rebuilds** (#7): a snapshot id covers everything a card stores,
   `retrieved_at` included. Two builds from unchanged sources on different days are
   therefore two snapshots. That is exact, since what was read on each day is part of the
@@ -139,6 +144,11 @@
   flag decides `ligand_of_interest`. It is missing for some older entries (`unstated`)
   and can mark a buffer component. The inventory groups by these states; it must never
   be read as a recommendation.
+- **Relationship-level support is not qualifier-level lineage** (#91). Inventory
+  explanations preserve all supporting SourceAssertions and expose the pinned card's
+  sequence context. RCSB mappings did not record which exact selected sequence and
+  length they read, or a support list per qualifier. The explanation states this
+  boundary; reproducing the original mapping would require recorded mapping inputs.
 - **The rank vocabulary is Sabueso's copy of NCBI's.** `group_by_rank` refuses a rank
   outside `NCBI_RANKS` (`_private/argdigest/argument/rank.py`), so that a typo is not
   answered with an empty grouping. A rank NCBI adds later (as "realm" and "cellular

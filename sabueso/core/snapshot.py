@@ -38,7 +38,9 @@ from .errors import StorageError
 ALGORITHM = "sha256"
 SNAPSHOT_ID = re.compile(r"sha256:[0-9a-f]{64}\Z")
 CARD_ID = re.compile(r"sabueso:[a-z_]+:[^\s@#]+\Z")
-ITEM_ID = re.compile(r"(SA|REL)_[^\s@#]+\Z")
+# Assertion ids retain their source name (e.g. "RCSB PDB"). Keep existing ids and
+# pins readable, while refusing control whitespace and reference delimiters.
+ITEM_ID = re.compile(r"(?:SA_[^\s@#]+(?: +[^\s@#]+)*|REL_[^\s@#]+)\Z")
 #: Stored keys that are not part of the snapshot content.
 DERIVED = ("quantities",)
 ORDERLESS = ("source_assertion_store", "relationship_store")

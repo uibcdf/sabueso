@@ -1,0 +1,52 @@
+{
+  "status": "draft_for_human_review",
+  "prepared_by": {"agent": "Codex", "model": "GPT-6", "date": "2026-10-01"},
+  "read_scope": "Published abstract only; no figure, table or full-text claim",
+  "entity": "uniprot:P60174",
+  "publication": {
+    "ref": "pubmed:18562316",
+    "doi": "10.1074/jbc.M802145200",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18562316/",
+    "label": "Rodriguez-Almazan et al., human TIM E104D study (2008)"
+  },
+  "placement": {
+    "structure_ref": "pdb:2VOM",
+    "chain": "A",
+    "author_position": "104",
+    "uniprot_position": 105,
+    "reference_residue": "E",
+    "alternate_residue": "D"
+  },
+  "candidates": [
+    {
+      "id": "variant-water-network",
+      "field_path": "features_positional.natural_variant",
+      "locator": "Abstract, description of the mutant interfacial water network",
+      "value": {
+        "start": 105,
+        "substitution": {"original": "E", "alternatives": ["D"]},
+        "description": "E104D in the paper's numbering perturbs the interfacial water network and weakens contacts between subunits."
+      }
+    },
+    {
+      "id": "recombinant-mutant-stability",
+      "field_path": "literature.claims",
+      "locator": "Abstract, purified recombinant mutant compared with wild type",
+      "value": {
+        "topic": "stability",
+        "text": "The purified recombinant E104D mutant retains catalytic activity but forms active dimers less readily, has reduced thermal stability, and monomerizes under conditions where wild type remains dimeric.",
+        "about": ["residues:105"]
+      }
+    },
+    {
+      "id": "interfacial-water-bridges",
+      "field_path": "literature.claims",
+      "locator": "Abstract, conserved buried water network between the subunits",
+      "value": {
+        "topic": "interface",
+        "text": "A conserved buried water network bridges the subunits; the E104D mutant weakens and reduces interactions within that network.",
+        "about": ["pdb:2VOM", "residues:105"]
+      }
+    }
+  ]
+}

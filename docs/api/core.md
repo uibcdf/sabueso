@@ -101,6 +101,15 @@ Cards, decks, stores, views and their derivation rules.
    :show-inheritance:
 ```
 
+## `sabueso.core.structure_explanation`
+
+```{eval-rst}
+.. automodule:: sabueso.core.structure_explanation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```
+
 ## `sabueso.core.bioactivities`
 
 ```{eval-rst}
@@ -244,4 +253,3 @@ Cards, decks, stores, views and their derivation rules.
    :undoc-members:
    :show-inheritance:
 ```
-

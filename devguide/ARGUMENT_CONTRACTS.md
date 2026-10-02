@@ -40,6 +40,9 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   `Card.compare` and `Deck.compare` reach their field paths through `Card.extract`.
 - **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,
   `group_by_rank`, `expand`, `explain`.
+  `explain` accepts `structure_ref=None` for membership, or `pdb:<four-character id>`
+  (normalized to uppercase) for an inventory item. Inventory options use the same
+  digesters as `structure_inventory`; non-default options require a structure selector.
 - **KnowledgeStore:** `save`, `load`, `history`, `source_assertion`, `relationship`,
   `relationships`, `save_deck`, `load_deck`, `deck_history`, `save_packet`,
   `load_packet`, `packet_history`, `import_card_table`, `as_of`, `revision_as_of`,

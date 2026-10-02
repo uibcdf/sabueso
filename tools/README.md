@@ -11,6 +11,10 @@ Helper scripts for development and validation.
 - `build_showcase_notebook.py`: builds `docs/content/showcase/knowledge_baseline.ipynb`
   and executes it against live services. Its offline twin is
   `tests/core/test_knowledge_baseline_offline.py`.
+- `rehearse_public_curation.py`: rehearses the public HsTIM review draft on frozen
+  fixtures, with explicitly simulated curations; verifies conflicts, rebuilds and
+  historical support. Run as `python -m tools.rehearse_public_curation --output DIR`.
+  See `examples/literature_curation/README.md` for its scope and actual intake.
 
 Usage:
 

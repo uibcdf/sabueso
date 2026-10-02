@@ -224,8 +224,10 @@ In order:
    profiles (#94). Next: terms in packets, and the shared vocabulary with MOLI.
 3. **Scientific operations (#91).** Released in 0.7.0: `expand` (relationships into decks),
    `explain` (a deck member and a card's SourceAssertions), and the store's `as_of` and
-   `changed_since`. Next, as use asks: explaining a view's derived items (a group, a
-   state) through the same path.
+   `changed_since`. Implemented after 0.10.0: an inventory item through
+   `Deck.explain(card_id, structure_ref=..., ...)`, with the pinned relationship and
+   SourceAssertion support of every group member (`structure_inventory_explanation@1`).
+   Next, as use asks: other views' derived items, including disease groups.
 4. **Literature beyond manual curation (#92).**
    - Released in 0.7.0: how each statement entered (`acquisition`: database, curation, rule
      extraction, model extraction, validation).
@@ -234,6 +236,10 @@ In order:
      the organism.
    - Next, when use asks: located mentions (section, sentence) of PDB ids and
      accessions, and an extraction Sabueso runs itself, with its tool and version.
+   - Validated after 0.10.0: a public review draft and hypothetical curation rehearsal
+     (`examples/literature_curation/`), preserving outcomes and historical support on
+     rebuild. The draft awaits human review; #105 prevents extraction provenance from
+     being replaced with human curation during export/replay.
 5. **Continuing, in parallel when a need or a slot appears:**
    - sources of wave 2 (#83), complete, orthology through OMA instead of Ensembl:
      ChEBI, KLIFS, GPCRdb, SAbDab, OMA and membrane segments through RCSB

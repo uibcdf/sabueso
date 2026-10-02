@@ -72,11 +72,66 @@ class Deck:
         return Deck(list(cards), meta=meta)
 
     @arg_digest()
-    def explain(self, card_id: str, skip_digestion: bool = False) -> Dict[str, Any]:
+    def explain(
+        self,
+        card_id: str,
+        skip_digestion: bool = False,
+        *,
+        structure_ref: str | None = None,
+        regions: Any = None,
+        include_fragments: bool = False,
+        group_by: Any = None,
+        residue_maps: Any = None,
+        reference: str | None = None,
+    ) -> Dict[str, Any]:
         """Why a card is in this deck (#91): its membership basis (the rule, and the
         statements that brought it, with their SourceAssertions when the tool that
         built the deck recorded them), the deck's rule and origin, and the operations
-        that derived the deck. A card that was left out says why."""
+        that derived the deck. A card that was left out says why.
+
+        With ``structure_ref="pdb:1SUX"``, explain that protein's structure in the
+        structural inventory instead: its state, group or exclusion, named rules,
+        stored relationship inputs and supporting SourceAssertions, all pinned to the
+        cards read. The remaining keyword options are those of
+        ``structure_inventory`` and must match the inventory being explained.
+        Nothing is fetched or selected; a historical explanation uses a deck loaded
+        by its pinned reference."""
+        if structure_ref is not None:
+            from .structure_explanation import explain_structure_inventory
+
+            inventory = self.structure_inventory(
+                regions=regions,
+                include_fragments=include_fragments,
+                group_by=group_by,
+                residue_maps=residue_maps,
+                reference=reference,
+                skip_digestion=True,
+            )
+            return explain_structure_inventory(
+                self.cards,
+                card_id,
+                structure_ref,
+                inventory,
+                regions=regions,
+                include_fragments=include_fragments,
+                residue_maps=residue_maps,
+                reference=reference,
+            )
+        if (
+            regions is not None
+            or include_fragments
+            or group_by is not None
+            or residue_maps is not None
+            or reference is not None
+        ):
+            from .errors import ArgumentError
+
+            raise ArgumentError(
+                argument="structure_ref",
+                value=structure_ref,
+                caller="Deck.explain",
+                reason="inventory options require a structure_ref",
+            )
         basis = self.basis(card_id)
         excluded = [
             e for e in self.meta.get("excluded") or [] if e["candidate"] == card_id

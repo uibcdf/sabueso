@@ -31,6 +31,7 @@ from typing import Any, Dict, List, Tuple
 
 from .curation import CURATED_ID_SCHEME, legacy_curated_id
 from .errors import StorageError
+from .source_assertion_store import acquisition_of
 
 HEADER = "sabueso_curations"
 FORMAT = 1
@@ -61,6 +62,11 @@ def _records_of(card: Any) -> List[Tuple[Dict[str, Any], str]]:
             continue
         metadata = assertion.get("source_metadata") or {}
         curation = metadata.get("curation") or {}
+        method = acquisition_of(assertion)["method"]
+        # The same boundary as literature_view: an extraction remains an extraction,
+        # even after a person validates it. Replay must never turn it into curation.
+        if method != "curation" and not (method == "not_recorded" and curation):
+            continue
         record: Dict[str, Any] = {
             "source_assertion_id": assertion["id"],
             "entity": assertion["subject_ref"],

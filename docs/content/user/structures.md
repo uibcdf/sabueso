@@ -84,9 +84,9 @@ from sabueso.core.deck import Deck
 
 focus, _ = sabueso.resolve("P52270", structures="all")
 other, _ = sabueso.resolve("P60174", structures="all")
-inventory = Deck([focus, other]).structure_inventory(
-    regions={focus.id: [[12, 20]], other.id: [[12, 20]]},  # each in its own numbering
-)
+deck = Deck([focus, other])
+regions = {focus.id: [[12, 20]], other.id: [[12, 20]]}  # each in its own numbering
+inventory = deck.structure_inventory(regions=regions)
 for group in inventory["states"]:
     print(group["shared"], group["state"], group["structures"])
 print(inventory["not_inventoried"])  # structures without a known state, with the reason
@@ -112,6 +112,54 @@ print(inventory["not_inventoried"])  # structures without a known state, with th
     positions.
 
 The inventory states facts and groups them; it never chooses a structure.
+
+### Explain an inventory item
+
+Pass the same inventory options to `deck.explain`, with the protein's card id and a
+`structure_ref`:
+
+```python
+why = deck.explain(focus.id, structure_ref="pdb:1SUX", regions=regions)
+print(why["status"], why["reason"], why["item"], why["group"])
+for member in why["members"]:
+    print(member["relationship_ref"])
+    for assertion in member["source_assertions"]:
+        print(assertion["source_assertion_ref"], assertion["asserted_value"])
+```
+
+`structure_inventory_explanation@1` records every protein card's exact pin and the
+normalized options, including residue maps. `rules` names the coverage, state and
+inventory rules. For a grouped item, `members` holds the stored relationship and
+supporting SourceAssertions of **every member of its group**. Each reference is pinned
+to the card state read. The statements retain their own subject, source, version,
+retrieval and acquisition, together with retrieval-archive links when recorded.
+
+`status` is `grouped`, `excluded`, `not_inventoried` or `not_on_card`. Excluded fragments
+keep their classification; unknown states keep the inventory's reason. `not_on_card`
+means no such relationship is recorded, never that the structure does not exist.
+Conflicts, unknown values and assembly disagreements remain inspectable.
+
+Support is attributed to the relationship (`support_basis: relationship`), rather than
+inventing separate attribution for each qualifier. `reference_context` shows the pinned
+card's sequence and length with their support and conflicts. These are stored context;
+older mappings did not record the exact sequence and length they read when building
+their qualifiers. The explanation does not claim to recover those historical inputs.
+
+Explaining reads stored knowledge and does not contact a source. To revisit an exact
+historical state, save the deck and load its returned pin:
+
+```python
+store = sabueso.KnowledgeStore("knowledge.db")
+deck_ref = store.save_deck(deck, "comparison")
+historical = store.load_deck(deck_ref)
+why = historical.explain(focus.id, structure_ref="pdb:1SUX", regions=regions)
+assertion = why["members"][0]["source_assertions"][0]
+stored = store.source_assertion(assertion["source_assertion_ref"])
+```
+
+The pin stays readable after another acquisition is saved. A store lacking that pin
+raises an error. Saving is required before resolving the returned item references in a
+store; computing an explanation does not save anything.
 
 ## Predicted structures
 

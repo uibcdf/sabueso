@@ -250,4 +250,13 @@ print(card.quality["curation_store"])  # applied, skipped_retracted, changed
 - **Retraction.** `store.retract(source_assertion_id, reason, curator)` keeps the record,
   with who retracted it, why and when. It is never applied again.
 - **Scope.** Records of other entities in the same store are ignored.
+- **Acquisition.** Only curated literature assertions are exported. Rule/model
+  extractions remain extractions, including those a person validated; they are left
+  out rather than relabelled on replay. Legacy curations with curation metadata are
+  still exported. Use `KnowledgeStore` to retain an extraction's exact acquired card
+  state. Curation records previously exported without their extraction provenance
+  cannot recover it automatically; consult the original card state.
 
+A small public [review draft and preservation rehearsal](https://github.com/uibcdf/sabueso/tree/main/examples/literature_curation)
+uses HsTIM and one published abstract. It produces explicitly hypothetical artifacts
+for checking outcomes and rebuilds, with human validation left unset.

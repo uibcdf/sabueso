@@ -6,6 +6,7 @@ import pytest
 
 import sabueso
 from sabueso.core.errors import StorageError
+from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 from sabueso.tools.card.small_molecule import single_molecule_card
 
@@ -86,6 +87,60 @@ def test_saving_twice_changes_nothing(resolver, tmp_path):
     before = (tmp_path / "curation.jsonl").read_text(encoding="utf-8")
     assert store.save(card) == {"added": 0, "updated": 0, "total": 3}
     assert (tmp_path / "curation.jsonl").read_text(encoding="utf-8") == before
+
+
+@pytest.mark.parametrize("method", ["rule_extraction", "model_extraction"])
+@pytest.mark.parametrize("validated", [False, True])
+def test_extractions_never_become_curations_on_rebuild(
+    resolver, tmp_path, method, validated
+):
+    card = _hstim(resolver)
+    curated = card.add_literature_claim(
+        "other", "Synthetic human-curated statement.", "doi:10.0000/curation", "test"
+    )
+    acquisition = {"method": method, "tool": "synthetic-extractor", "version": "1"}
+    if validated:
+        acquisition["validated_by"] = {"curator": "test", "at": "2026-10-01"}
+    extracted = make_source_assertion(
+        "literature.claims",
+        {"topic": "other", "text": "Synthetic extracted statement."},
+        "Literature",
+        "doi:10.0000/extraction",
+        "2026-10-01",
+        source_type="literature",
+        subject_ref="uniprot:P60174",
+        acquisition=acquisition,
+    )
+    # Even metadata from a prior processing step must not override acquisition.
+    extracted["source_metadata"] = {
+        "curation": {"curator": "test", "curated_at": "2026-10-01", "locator": "test"}
+    }
+    card.source_assertion_store.add(extracted)
+    store = sabueso.CurationStore(tmp_path / "curation.jsonl")
+    assert store.save(card) == {"added": 1, "updated": 0, "total": 1}
+    assert store.records()[0]["source_assertion_id"] == curated["source_assertion_id"]
+    rebuilt = _hstim(resolver, curations=store)
+    assert rebuilt.quality["curation_store"]["applied"] == 1
+    assert rebuilt.source_assertion_store.get(extracted["id"]) is None
+    # KnowledgeStore can retain the exact acquired state without relabelling it.
+    knowledge = sabueso.KnowledgeStore(tmp_path / "knowledge.db")
+    pin = knowledge.save(card)
+    assert knowledge.source_assertion(f"{pin}#{extracted['id']}") == extracted
+    assert (
+        card.source_assertion_store.get(extracted["id"])["acquisition"] == acquisition
+    )
+
+
+def test_legacy_curations_still_survive_rebuilds(resolver, tmp_path):
+    card = _hstim(resolver)
+    record = card.add_literature_claim(
+        "other", "Synthetic legacy statement.", "doi:10.0000/legacy", "test"
+    )
+    card.source_assertion_store.get(record["source_assertion_id"]).pop("acquisition")
+    store = sabueso.CurationStore(tmp_path / "curation.jsonl")
+    assert store.save(card)["added"] == 1
+    rebuilt = _hstim(resolver, curations=store)
+    assert rebuilt.source_assertion_store.get(record["source_assertion_id"])
 
 
 def test_a_changed_outcome_is_reported(resolver, tmp_path):

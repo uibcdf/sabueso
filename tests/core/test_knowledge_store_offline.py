@@ -122,6 +122,32 @@ def test_references_are_parsed_strictly():
             parse_ref(bad)
 
 
+@pytest.mark.parametrize("source", ["RCSB PDB", "AlphaFold DB", "NCBI Gene"])
+def test_assertion_references_preserve_spaces_in_source_names(source):
+    item_id = f"SA_{source}_record_0123456789abcdef"
+    ref = f"sabueso:protein:uniprot:P52270@sha256:{'a' * 64}#{item_id}"
+    parsed = parse_ref(ref)
+    assert parsed.item_id == item_id
+    assert str(parsed) == ref
+
+
+@pytest.mark.parametrize(
+    "item_id",
+    [
+        "SA_RCSB\tPDB_record",
+        "SA_RCSB\nPDB_record",
+        "SA_RCSB\rPDB_record",
+        "SA_RCSB@PDB_record",
+        "SA_RCSB#PDB_record",
+        "SA_ RCSB PDB_record",
+        "REL_RCSB PDB_record",
+    ],
+)
+def test_item_references_refuse_control_whitespace_and_delimiters(item_id):
+    with pytest.raises(StorageError):
+        parse_ref(f"sabueso:protein:uniprot:P52270@sha256:{'a' * 64}#{item_id}")
+
+
 # --- pinned reads ---------------------------------------------------------------------------
 
 
@@ -180,9 +206,14 @@ def test_a_missing_pin_fails_and_never_returns_the_latest(tmp_path, tctim, hstim
 def test_items_are_cited_in_a_pinned_state(tmp_path, tctim):
     store = sabueso.KnowledgeStore(tmp_path / "knowledge.db")
     ref = store.save(tctim)
-    assertion = tctim.source_assertion_store.to_list()[0]
+    assertions = tctim.source_assertion_store.to_list()
+    assertion = assertions[0]
     relationship = tctim.relationship_store.to_list()[0]
-    assert store.source_assertion(f"{ref}#{assertion['id']}") == assertion
+    # One real statement from each source covers names with spaces without repeating
+    # whole-snapshot verification for every statement of the same source (#104).
+    by_source = {record["source"]["name"]: record for record in assertions}
+    for record in by_source.values():
+        assert store.source_assertion(f"{ref}#{record['id']}") == record
     assert store.relationship(f"{ref}#{relationship['id']}") == relationship
     with pytest.raises(StorageError, match="holds no"):
         store.source_assertion(f"{ref}#SA_UniProt_absent")
@@ -363,6 +394,14 @@ def test_a_pinned_item_read_is_verified_like_a_card_read(tmp_path, tctim):
         item_id = _tamper(path, table, id_column)
         with pytest.raises(StorageError, match="changed outside Sabueso"):
             getattr(store, read)(f"{ref}#{item_id}")
+        # A spaced assertion id still verifies the entire snapshot (#104).
+        rcsb = next(
+            sa
+            for sa in tctim.source_assertion_store.to_list()
+            if sa["source"]["name"] == "RCSB PDB"
+        )
+        with pytest.raises(StorageError, match="changed outside Sabueso"):
+            store.source_assertion(f"{ref}#{rcsb['id']}")
         with pytest.raises(StorageError, match="changed outside Sabueso"):
             store.load(ref)
 

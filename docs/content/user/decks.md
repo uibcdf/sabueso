@@ -76,6 +76,10 @@ ids = [a["id"] for s in why["basis"]["statements"] for a in s["source_assertions
 card.explain(ids)  # field, subject, source, record, version, retrieval, value
 ```
 
+`deck.explain(card_id, structure_ref="pdb:1SUX", ...)` instead explains an item of the
+structural inventory, including the pinned support of every member of its group. Pass
+the same inventory options; see {doc}`structures`.
+
 An id the card does not hold is reported as `found: False`, never dropped.
 
 ## Deriving decks

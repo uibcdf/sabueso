@@ -114,6 +114,10 @@ shows how to use them.
   `exclude(candidate, reason, by=None)`, `basis(card_id)`.
 - **Explain.** `explain(card_id)`: why a card is in the deck, or why it was left out,
   and the operations that produced the deck (#91).
+  With `structure_ref="pdb:1SUX"` and the keyword options of `structure_inventory`,
+  explains that protein's inventory item, its group or exclusion, named rules and
+  relationship-level SourceAssertion support for all group members. Card and item
+  references are pinned; no source is asked (`structure_inventory_explanation@1`).
 - **Derive.** Each derived deck records the operation that produced it:
   - `filter(predicate)`, `sort(key, reverse=False)`;
   - `intersect(other)`, `difference(other)`;

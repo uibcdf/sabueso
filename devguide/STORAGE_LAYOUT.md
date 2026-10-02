@@ -26,6 +26,11 @@ exactly (pinned references) and read back as it was. The files are for exchange 
 inspection. A curation store belongs to whoever curates, and it can serve several
 projects.
 
+`CurationStore.save` exports only curated literature (including legacy records with
+curation metadata). Rule/model extractions, even when human-validated, keep their own
+acquisition and are not exported as curation (#105). `KnowledgeStore` can retain their
+exact acquired state; replaying extractions across builds remains separate work (#92).
+
 ## Deck files (uibcdf/sabueso#26)
 A deck is its cards plus its `meta`: the traces that make it interpretable, such as the
 decision of an `ambiguity_deck`, or the source outcomes and unanchored records of a

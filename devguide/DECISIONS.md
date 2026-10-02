@@ -1851,3 +1851,51 @@ uibcdf/moli#22 (a MOLI maintainer's answer, 2026-10-01), #88, #71.
   acquisition. It also covers an unresolvable pin and an index with unauthorized
   content.
 
+## Explain structural inventory items through exact card states (2026-10-01)
+uibcdf/sabueso#91, #104.
+- `Deck.explain(card_id)` keeps its membership explanation. The keyword selector
+  `structure_ref` explains an experimental structure's inventory item using the same
+  options as `structure_inventory`.
+- `structure_inventory_explanation@1` records every protein card's pin and the full
+  normalized options, including supplied residue maps. Existing coverage, state and
+  inventory rules determine the result; the explanation does not classify separately.
+- A group exposes all of its members' stored relationships and SourceAssertions, with
+  pinned references. An exclusion keeps its classification; unknown states keep their
+  reasons. No relationship on the card means `not_on_card`, not scientific absence.
+- Support is relationship-level. The pinned card's sequence and length are exposed as
+  context with their support and conflicts, without claiming they were the exact inputs
+  of an older mapping. This limit remains explicit until mappings record their inputs.
+- The view reads stored knowledge, never asks sources, and returns detached records.
+  Historical use loads a saved deck pin; missing pins fail instead of reading latest.
+- #104 fixes a reader mismatch discovered by this path: generated assertion ids retain
+  source names with spaces, such as `RCSB PDB`, but the item-reference parser rejected
+  them. Ordinary internal spaces are accepted for assertions; control whitespace and
+  reference delimiters remain invalid. Existing ids, hashes, card schemas and the
+  store format are unchanged, and snapshot verification still applies.
+
+## Public literature rehearsal and curation acquisition integrity (2026-10-01)
+uibcdf/sabueso#92, #105.
+- A three-reading review draft and an offline preservation rehearsal use only the
+  published abstract of PMID 18562316 and public HsTIM fixtures. The proposal records
+  Codex as its preparer; no human validation is claimed. The rehearsal's cards identify
+  their curator as an acceptance-test simulation, apart from accepted knowledge.
+- UniProt's link to 2VOM, RCSB's primary citation and author numbering, and the canonical
+  residue/mapped mutation anchor E104D in the paper at canonical position 105. The
+  script verifies these statements instead of assuming equal numbering or identity.
+- The mechanical outcomes are one `differs` and two `not_compared`. Existing source
+  values and conflicts remain visible; three assertions and two free-text claims are
+  retained through rebuilds, with historical support pinned. This is not a claim of
+  scientific novelty or a judgment of contradiction.
+- #105 was discovered during preparation: `CurationStore` exported any literature
+  SourceAssertion, then replayed it as `curation`, even if its acquisition was
+  `model_extraction` or `rule_extraction`. Export now uses the same acquisition boundary
+  as `literature_view`: curations and legacy curations with metadata only. Human
+  validation does not turn an extraction into curation. `KnowledgeStore` preserves
+  extraction states unchanged. No stored schema or format changes.
+- The acquisition contract of #92 governs new intake. Earlier entries that allowed
+  agent-curated readings precede that distinction; an agent-prepared draft is not a
+  person's validation. Durable extraction intake/replay remains #92 work.
+- The full suite exposed a local-date assumption after midnight UTC (#106). The two
+  temporal navigation tests now control the store's UTC clock, derive the day from it
+  and exercise an equivalent instant in a negative timezone offset. Revisions advance
+  explicitly without a sleep; production UTC semantics are unchanged.

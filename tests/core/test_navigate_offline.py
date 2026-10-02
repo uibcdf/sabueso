@@ -2,14 +2,14 @@
 is there, and read what a store knew on a date."""
 
 import json
-import time
 import warnings
-from datetime import date, datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone
 
 import pytest
 
 import sabueso
 from sabueso._private.smonitor.warnings import EnrichmentTruncatedWarning
+from sabueso.core import knowledge_store
 from sabueso.core.card import Card
 from sabueso.core.deck import Deck
 from sabueso.core.errors import ArgumentError
@@ -33,6 +33,17 @@ def _expand(card, predicate, **kwargs):
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         return sabueso.expand(card, predicate, options=DISEASE_OPTIONS, **kwargs)
+
+
+@pytest.fixture
+def stored_clock(monkeypatch):
+    # UTC has crossed midnight while Mexico City's local day is still yesterday.
+    # An explicit clock avoids both timezone assumptions and sleep races (#106).
+    clock = [datetime(2026, 10, 2, 0, 5, tzinfo=timezone.utc)]
+    monkeypatch.setattr(
+        knowledge_store, "_now", lambda: clock[0].isoformat(timespec="seconds")
+    )
+    return clock
 
 
 def test_related_entities_become_a_deck_with_their_statements(hstim):
@@ -99,18 +110,23 @@ def test_only_known_predicates_are_followed(hstim):
         sabueso.expand(hstim, "likes")
 
 
-def test_what_the_store_knew_on_a_date(hstim, tmp_path):
+def test_what_the_store_knew_on_a_date(hstim, tmp_path, stored_clock):
     store = sabueso.KnowledgeStore(tmp_path / "k.db")
     store.save(hstim)
-    yesterday = date.today() - timedelta(days=1)
+    today = stored_clock[0].date()
+    yesterday = today - timedelta(days=1)
     assert store.as_of(hstim.id, yesterday) is None  # nothing stored by then
-    assert store.as_of(hstim.id, date.today()).id == hstim.id
-    assert store.as_of(hstim.id, datetime.now(timezone.utc)).id == hstim.id
+    assert store.as_of(hstim.id, today).id == hstim.id
+    assert store.as_of(hstim.id, stored_clock[0]).id == hstim.id
+    # The same instant in Mexico City's offset still means the same UTC instant.
+    local_instant = stored_clock[0].astimezone(timezone(timedelta(hours=-6)))
+    assert local_instant.date() == yesterday
+    assert store.as_of(hstim.id, local_instant).id == hstim.id
     assert store.changed_since(hstim.id, yesterday)["changed"] is None
-    assert store.changed_since(hstim.id, date.today())["changed"] is False
-    # The store keeps times to the second: the next revision is a second later.
-    first_saved = datetime.now(timezone.utc)
-    time.sleep(1.1)
+    assert store.changed_since(hstim.id, today)["changed"] is False
+    # The store keeps times to the second: explicitly advance to a later instant.
+    first_saved = stored_clock[0]
+    stored_clock[0] += timedelta(seconds=2)
     # A new revision with different knowledge is a change.
     changed = Card.from_dict(json.loads(json.dumps(hstim.to_dict())))
     changed.add_literature_assertion(
@@ -118,14 +134,14 @@ def test_what_the_store_knew_on_a_date(hstim, tmp_path):
     )
     store.save(changed)
     assert store.changed_since(hstim.id, first_saved)["changed"] is True
-    assert store.changed_since(hstim.id, date.today())["changed"] is False
+    assert store.changed_since(hstim.id, today)["changed"] is False
     with pytest.raises(sabueso.StorageError):
-        store.as_of("sabueso:protein:uniprot:NOWHERE", date.today())
+        store.as_of("sabueso:protein:uniprot:NOWHERE", today)
 
 
-def test_a_deck_as_of_a_date(hstim, tmp_path):
+def test_a_deck_as_of_a_date(hstim, tmp_path, stored_clock):
     store = sabueso.KnowledgeStore(tmp_path / "k.db")
     store.save_deck(Deck([hstim]), "tim")
-    assert store.as_of("tim", date.today()).cards[0].id == hstim.id
+    assert store.as_of("tim", stored_clock[0].date()).cards[0].id == hstim.id
     with pytest.raises(ArgumentError):
         store.as_of("tim", "not a date")

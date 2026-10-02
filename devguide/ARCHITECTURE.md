@@ -46,6 +46,8 @@ through these parts; `PUBLIC_API.md` lists the public surface.
    - Card and deck methods read the stored knowledge and return views.
    - Everything a view derives (a class, a group, a state, a finding) carries the named,
      versioned rule that produced it, and is never stored as a SourceAssertion.
+   - `core.structure_explanation` explains an inventory item and every member of its
+     group through pinned relationships and SourceAssertions (`Deck.explain`, #91).
 7. **Decks** (`core.deck`). Collections of cards that record:
    - why each card is in (membership);
    - which candidates were left out;
