@@ -34,6 +34,10 @@ Sabueso is distributed through the `uibcdf` conda channel:
 conda install -c uibcdf -c conda-forge 'sabueso>=0.10.0'
 ```
 
+macOS support is currently limited to Apple Silicon (arm64). Intel-based macOS
+(x86_64) is not part of the supported platform matrix. Support may be
+reconsidered if there is demonstrated user demand.
+
 The latest release is 0.10.0 (card schema 0.3.10). To work on Sabueso itself, see `Developers`.
 
 ## Start Here

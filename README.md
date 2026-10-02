@@ -19,7 +19,8 @@ Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the o
 
 - **Latest release:** [0.10.0](https://github.com/uibcdf/sabueso/releases/tag/0.10.0)
   (2026-10-01), distributed through the `uibcdf` conda channel.
-  - One `noarch` package for Linux, macOS and Windows, on Python 3.11–3.14.
+  - One `noarch` package for Linux, macOS Apple Silicon (arm64) and Windows,
+    on Python 3.11–3.14.
   - Before publication, the exact package was inspected, then tested on all 12
     combinations.
   - It writes card schema 0.3.10; `sabueso.migrate_card` reports what older cards lack.
@@ -68,7 +69,10 @@ components:
 conda install -c uibcdf -c conda-forge sabueso
 ```
 
-It runs on Linux, macOS and Windows with Python 3.11–3.14. `pandas` is optional; install
+It runs on Linux, macOS Apple Silicon (arm64) and Windows with Python 3.11–3.14.
+macOS support is currently limited to Apple Silicon (arm64). Intel-based macOS
+(x86_64) is not part of the supported platform matrix. Support may be
+reconsidered if there is demonstrated user demand. `pandas` is optional; install
 it (`conda install -c conda-forge pandas`) to turn tables into DataFrames. Avoid 0.1.0:
 its package lacks a data file and cannot build cards (#35). Sabueso is not published on
 PyPI.
