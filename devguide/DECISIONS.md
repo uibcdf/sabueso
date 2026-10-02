@@ -25,6 +25,11 @@
   Source tests do not establish publication or optional 3.14 closure. Acquisition,
   further result types, public extra and shared boundary coordination remain #108
   work; no release is made by this integration.
+- Provider-free subprocess tests identify a missing module with
+  `ModuleNotFoundError.name`, as Python does. Public DepDigest 0.12 correctly
+  preserves an unnamed/unrelated discovery failure rather than calling it absence;
+  the initial CI exposed an incorrectly unnamed test exception. Production results
+  and installed-provider tests were unaffected; the consumer test was corrected.
 
 ## Read-time literature explanations and packet terms (2026-10-02, #91, #29)
 

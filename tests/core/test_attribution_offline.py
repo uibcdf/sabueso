@@ -313,7 +313,9 @@ def test_fresh_process_absence_laziness_and_saved_reading(tmp_path):
         class Absent(importlib.abc.MetaPathFinder):
             def find_spec(self, fullname, path=None, target=None):
                 if fullname == "ackredit" or fullname.startswith("ackredit."):
-                    raise ModuleNotFoundError("Ackredit is absent in this process")
+                    # DepDigest >=0.12 preserves unrelated/broken discovery errors.
+                    # Python identifies a genuinely missing module through name.
+                    raise ModuleNotFoundError("Ackredit is absent in this process", name=fullname)
         sys.meta_path.insert(0, Absent())
         import sabueso
         from sabueso.core.card import Card
