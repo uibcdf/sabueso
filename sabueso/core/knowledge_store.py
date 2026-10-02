@@ -933,8 +933,9 @@ class KnowledgeStore:
         """Every revision of a packet, oldest first, each with its pinned reference,
         its format, its content-equivalence id, and whether its knowledge changed from
         the previous revision (``knowledge_changed``: None for the first, and when the
-        two are in different formats, whose ids cannot be compared)."""
-        from .packets import PACKET_PREFIX
+        two are in different formats, aspect mappings or detail levels, whose ids
+        cannot be compared)."""
+        from .packets import PACKET_PREFIX, _comparison_scope
 
         name, _ = self._packet_name(packet_name)
         with self._session() as conn:
@@ -946,8 +947,10 @@ class KnowledgeStore:
             ).fetchall()
         history, previous = [], None
         for revision, sid, stored_at, note, content_id, document in rows:
-            packet_format = json.loads(_unpack(document)).get("format")
-            comparable = previous is not None and previous[1] == packet_format
+            data = json.loads(_unpack(document))
+            packet_format = data.get("format")
+            scope = _comparison_scope(data)
+            comparable = previous is not None and previous[1] == scope
             history.append(
                 {
                     "revision": revision,
@@ -962,7 +965,7 @@ class KnowledgeStore:
                     "note": note,
                 }
             )
-            previous = (content_id, packet_format)
+            previous = (content_id, scope)
         return history
 
     def packet_names(self) -> List[str]:

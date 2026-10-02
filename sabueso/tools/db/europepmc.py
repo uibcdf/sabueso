@@ -20,6 +20,7 @@ when no article mentions the accession.
 ``OnlineEuropePMCClient`` pages the REST search (no key; ``version`` is the service's
 version, e.g. 6.9). ``FixtureEuropePMCClient`` reads
 ``<directory>/europepmc/<ACCESSION>.json``.
+An unsaved search is unavailable (``ConnectorError``), never an empty source answer.
 
 ``annotations(article_ids)`` reads accession-number annotations of explicitly named
 articles through the Annotations API. Its raw records retain annotation ids, providers,
@@ -216,8 +217,8 @@ class FixtureEuropePMCClient:
             )
         path = self.directory / "europepmc" / f"{accession}.json"
         if not path.is_file():
-            raise RecordNotFoundError(
-                f"No Europe PMC article mentions UniProt {accession}"
+            raise ConnectorError(
+                f"No saved Europe PMC search response for UniProt {accession}"
             )
         saved = json.loads(path.read_text(encoding="utf-8"))
         record = dict(saved["record"])

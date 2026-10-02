@@ -183,6 +183,15 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   sharing unknown, including historical archive records when read (#100).
 - The live public P60174 figure annotation passed card intake (2026-10-02), in
   addition to the offline storage/refresh/historical-reference acceptance tests.
+- `packet_aspects@6` adds direct and structural mentions to the literature index and
+  unknowns (#71, #92). Automatic acquisition asks Europe PMC bibliography only;
+  located article annotations require explicit requests on prebuilt cards. Missing
+  PDB annotation requests are `not_queried` with an explanation, not an empty answer.
+  Index `full_rules` names `structure_mention_context@1`. The public frozen @5 index
+  reads unchanged; historical mention and structural-support pins survive later
+  acquisition. Packet history now reports mappings/detail levels as non-comparable,
+  consistently with `same_knowledge`. Missing search fixtures report unavailable.
+  Query/packet/card/store formats are unchanged.
 
 ## Package layout
 
@@ -222,7 +231,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1259 tests passed, 26 online tests deselected (2026-10-02). Run with
+- Offline suite: 1271 tests passed, 26 online tests deselected (2026-10-02). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.
@@ -241,9 +250,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   ("Next candidates") and in the user
   guide's gaps (`DOCS_GAPS.md`: wave-2 sources and the
   comparative context have no pages of their own).
-- **Literature packets:** the frozen `packet_aspects@5` literature area filter omits
-  both mention predicates from the index and unknowns, although full facts expose
-  them. A new aspect mapping version must cover them (#71); see the recorded risk.
+- **Literature packets:** both mention areas are covered in unpublished
+  `packet_aspects@6`, including their index references, rule and unknowns (#71).
 - **Waiting on Nextia:** MOLI accepted the index level (uibcdf/moli#22, 2026-10-01). It
   closes with a consumer test (index, an item read by its pin, a Nextia Evidence, a
   citation that survives a new acquisition), when Nextia has its first persistent

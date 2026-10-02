@@ -1,0 +1,493 @@
+{
+  "aspect_mapping": "packet_aspects@5",
+  "conflicts": {
+    "subject": []
+  },
+  "detail": "index",
+  "entities": {
+    "subject": {
+      "card_id": "sabueso:protein:uniprot:P60174",
+      "content_id": "sha256:1ce06edc371cbc37ca297c2482888cdda784f15251c6e0b217feac6881f61280",
+      "ref": "sabueso:protein:uniprot:P60174@sha256:117049fa934edb8e8541b2ab29ca768bd413c806526d88265771227a35ea505a"
+    }
+  },
+  "facts": {
+    "literature": {
+      "subject": {
+        "areas": {
+          "relationships.described_in": {
+            "by_source": {
+              "UniProt": 41
+            },
+            "count": 41,
+            "relationship_ids": [
+              "REL_0434f20c0554ea8d",
+              "REL_0932aa420dffc286",
+              "REL_0da51988729c35f4",
+              "REL_165b7aa70810a9c1",
+              "REL_16783a6ed6f583bd",
+              "REL_180708f06da14def",
+              "REL_1dc88eec27c1c0dd",
+              "REL_22ec60631122aa16",
+              "REL_23dbe14ee1c39c58",
+              "REL_265ce643092c21f8",
+              "REL_281cc75283cf2e95",
+              "REL_2f204d248eedfd63",
+              "REL_2fff069770c5d7a1",
+              "REL_349ffc58f3422bab",
+              "REL_3b23aec3ae282765",
+              "REL_3c2be5e9f33d961c",
+              "REL_3d67c580d062d408",
+              "REL_3e6704276d3c59d1",
+              "REL_4ae6f0faf342fae9",
+              "REL_4def0d287cb8a5ce",
+              "REL_5095c235869b97c4",
+              "REL_5ac57fd8f3e09d77",
+              "REL_67eea7be72748bbd",
+              "REL_6d3a38f609423f90",
+              "REL_6f3513f7b97755ab",
+              "REL_77eecc0a3b958829",
+              "REL_791141ff25ef6c9f",
+              "REL_80427d402201f48d",
+              "REL_91233674239d16d3",
+              "REL_92086d2b35d677c8",
+              "REL_92dea5d50695990c",
+              "REL_a15bf28d5cbe1ce7",
+              "REL_a73415c98c4bca9f",
+              "REL_ba16796097b0f54e",
+              "REL_c1a93135c907959e",
+              "REL_c4cccd421d233ef9",
+              "REL_cad8420a5f6f8310",
+              "REL_d3a48ede7d29a42a",
+              "REL_e4f3a66e5d8196da",
+              "REL_ecf3188d9dc719af",
+              "REL_fc42f057f5edb205"
+            ]
+          }
+        },
+        "full_rules": [],
+        "full_views": [
+          "literature",
+          "claims"
+        ],
+        "rule": "packet_index@1"
+      }
+    }
+  },
+  "format": "knowledge_packet@3",
+  "provenance": {
+    "subject": {
+      "enrichments": {
+        "AlphaFold DB": {
+          "added": 1
+        },
+        "BindingDB": {
+          "added": 1
+        },
+        "ChEMBL": {
+          "added": 1
+        },
+        "ClinVar": {
+          "added": 1
+        },
+        "DISEASES": {
+          "added": 1
+        },
+        "Europe PMC": {
+          "added": 1
+        },
+        "GPCRdb": {
+          "not_found": 1
+        },
+        "GTEx": {
+          "added": 1
+        },
+        "InterPro": {
+          "added": 1
+        },
+        "KLIFS": {
+          "not_found": 1
+        },
+        "MONDO": {
+          "added": 1
+        },
+        "MedGen": {
+          "added": 1
+        },
+        "NCBI Taxonomy": {
+          "added": 1
+        },
+        "OMA": {
+          "added": 1
+        },
+        "Open Targets": {
+          "added": 1
+        },
+        "Orphanet": {
+          "added": 1
+        },
+        "PDBe-KB interface_residues": {
+          "added": 1
+        },
+        "PDBe-KB ligand_sites": {
+          "added": 1
+        },
+        "RCSB PDB": {
+          "added": 4
+        },
+        "Reactome": {
+          "added": 1
+        },
+        "SAbDab": {
+          "not_found": 1
+        },
+        "STRING": {
+          "added": 1
+        },
+        "gnomAD": {
+          "added": 1
+        },
+        "gnomAD pext": {
+          "added": 1
+        }
+      },
+      "sources": {
+        "AlphaFold DB": {
+          "acquisition": {
+            "database": 3
+          },
+          "assertions": 3,
+          "releases": [
+            "6"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "BindingDB": {
+          "acquisition": {
+            "database": 23
+          },
+          "assertions": 23,
+          "releases": [],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "ChEMBL": {
+          "acquisition": {
+            "database": 33
+          },
+          "assertions": 33,
+          "releases": [
+            "ChEMBL_37"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "ClinVar": {
+          "acquisition": {
+            "database": 21
+          },
+          "assertions": 21,
+          "releases": [
+            "Build260924-0125.1"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "DISEASES": {
+          "acquisition": {
+            "database": 2,
+            "database (text_mining)": 42
+          },
+          "assertions": 44,
+          "releases": [
+            "knowledge 2026-09-18",
+            "textmining 2026-09-20"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "Europe PMC": {
+          "acquisition": {
+            "database (text_mining)": 25
+          },
+          "assertions": 25,
+          "releases": [
+            "6.9"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "GTEx": {
+          "acquisition": {
+            "database": 49
+          },
+          "assertions": 49,
+          "releases": [
+            "gtex_v10"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "InterPro": {
+          "acquisition": {
+            "database": 3
+          },
+          "assertions": 3,
+          "releases": [
+            "110.0"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "MONDO": {
+          "acquisition": {
+            "database": 47
+          },
+          "assertions": 47,
+          "releases": [
+            "2026-09-01"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "MedGen": {
+          "acquisition": {
+            "database": 2
+          },
+          "assertions": 2,
+          "releases": [
+            "2026/09/28 23:56"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "NCBI Taxonomy": {
+          "acquisition": {
+            "database": 1
+          },
+          "assertions": 1,
+          "releases": [],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "OMA": {
+          "acquisition": {
+            "database": 7
+          },
+          "assertions": 7,
+          "releases": [],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "Open Targets": {
+          "acquisition": {
+            "database": 20
+          },
+          "assertions": 20,
+          "releases": [
+            "26.09"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "Orphanet": {
+          "acquisition": {
+            "database": 1
+          },
+          "assertions": 1,
+          "releases": [
+            "2026-06-23"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "PDBe-KB": {
+          "acquisition": {
+            "database": 17
+          },
+          "assertions": 17,
+          "releases": [],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "RCSB PDB": {
+          "acquisition": {
+            "database": 4
+          },
+          "assertions": 4,
+          "releases": [],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "Reactome": {
+          "acquisition": {
+            "database": 4
+          },
+          "assertions": 4,
+          "releases": [
+            "97"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "STRING": {
+          "acquisition": {
+            "database": 50
+          },
+          "assertions": 50,
+          "releases": [
+            "12.0"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "UniProt": {
+          "acquisition": {
+            "database": 199
+          },
+          "assertions": 199,
+          "releases": [
+            "212"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        },
+        "gnomAD": {
+          "acquisition": {
+            "database": 32
+          },
+          "assertions": 32,
+          "releases": [
+            "gnomad_r4",
+            "gnomad_r4 pext (GTEx v10)"
+          ],
+          "retrieved_at": [
+            "fixture",
+            "fixture"
+          ]
+        }
+      }
+    }
+  },
+  "query": {
+    "aspects": [
+      "literature"
+    ],
+    "comparator": null,
+    "constraints": {
+      "bioactivity_sources": [
+        "ChEMBL"
+      ]
+    },
+    "detail": "index",
+    "format": "knowledge_query@2",
+    "subject": "uniprot:P60174"
+  },
+  "unknowns": {
+    "subject": {
+      "rows": [],
+      "rule": {
+        "inputs": [
+          "sections",
+          "relationships",
+          "quality.enrichments",
+          "quality.conflicts"
+        ],
+        "parameters": {
+          "states": [
+            "known",
+            "conflicting",
+            "not_stated",
+            "not_queried",
+            "unavailable",
+            "partial"
+          ],
+          "uniprot_fields": [
+            "annotations.alternative_products",
+            "annotations.catalytic_activity",
+            "annotations.disease",
+            "annotations.function",
+            "annotations.isoforms",
+            "annotations.lineage",
+            "annotations.organism",
+            "annotations.pathway",
+            "annotations.polymorphism",
+            "annotations.ptm",
+            "annotations.subcellular_location",
+            "annotations.subunit",
+            "annotations.taxon_id",
+            "annotations.tissue_specificity",
+            "features_positional.active_site",
+            "features_positional.alternative_sequence",
+            "features_positional.binding_site",
+            "features_positional.disulfide_bond",
+            "features_positional.glycosylation",
+            "features_positional.modified_residue",
+            "features_positional.mutagenesis",
+            "features_positional.natural_variant",
+            "features_positional.secondary_structure",
+            "identifiers.ensembl_transcripts",
+            "identifiers.gene_loci",
+            "identifiers.uniprot",
+            "names.abbreviations",
+            "names.canonical_name",
+            "names.gene_names",
+            "names.synonyms",
+            "sequence.checksums",
+            "sequence.length",
+            "sequence.molecular_weight",
+            "sequence.primary"
+          ],
+          "uniprot_predicates": [
+            "annotated_with",
+            "classified_in",
+            "described_in",
+            "has_structure",
+            "interacts_with"
+          ]
+        },
+        "rule": "knowledge_state@4",
+        "sabueso_version": "0.5.0+20.g3278c98.dirty"
+      }
+    }
+  }
+}

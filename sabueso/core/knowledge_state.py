@@ -64,7 +64,10 @@ def _row(area, source, state, release=None, count=None, **basis) -> Dict[str, An
 
 def _enrichment_row(area: str, source: str, records: List[Dict[str, Any]]):
     if not records:
-        return _row(area, source, "not_queried")
+        from sabueso.enrichers import not_queried_details_by_area
+
+        detail = not_queried_details_by_area().get((area, source))
+        return _row(area, source, "not_queried", detail=detail)
     if all(r.get("status") in ("not_applicable", "not_queried") for r in records):
         # The source does not cover this entity (e.g. a human-only source and a parasite
         # protein), or needs a key it was not given: nothing was asked, so nothing is

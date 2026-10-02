@@ -34,7 +34,10 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping, `packet_aspects@5`. `@5` adds GTEx's tissue terms
+by a named, versioned mapping. Development after 0.11.0 uses `packet_aspects@6`
+(unreleased): direct UniProt mentions and supported PDB mention context join the
+literature index and unknowns. Automatic acquisition asks Europe PMC for
+bibliography only. Released `@5` added GTEx's tissue terms
 (UBERON, or EFO for a cell line) to `biological_context`, next to the gnomAD pext they
 name. `@4` added UniRef to `identity`
 (the entry's clusters and the entries `clustered_with` it, #103). `@3` added to `@2` the kinase and
@@ -45,9 +48,10 @@ different mappings are not compared (`same_knowledge` is `None`). Keyword argume
 `knowledge_packet` only choose how the sources are reached (a `resolver`, or source
 clients such as `chembl_client`); they never change what is asked.
 
-An aspect asks every source that answers one of its knowledge areas, so a packet never
-reports as not queried what its own aspects could have asked. What stays not queried
-always says why: the source does not cover the organism (a human-only source for a
+An aspect asks the default acquisition route of each source that answers its areas.
+Located article annotations require separate explicit requests; bibliography cannot
+query them, so PDB mention context remains `not_queried` with that explanation.
+Other reasons include a source that does not cover the organism (a human-only source for a
 parasite protein), only curation states the area, or the query did not name the source
 (`bioactivity_sources`). `sabueso.core.packets.aspect_options(aspect)` lists what an
 aspect asks for.
@@ -85,7 +89,7 @@ pinned reference, which `store.source_assertion(ref)` reads back.
 ## An index instead of the facts
 
 A full packet holds every view's output. For a well-studied protein that is large: the
-TcTIM/HsTIM packet with three bioactivity sources is 2.1 MB, 861 KB of it
+0.10.0 measurement of a TcTIM/HsTIM packet with three bioactivity sources was 2.1 MB, 861 KB of it
 bioactivities. `detail="index"` asks for what the cards hold instead, by reference:
 
 ```python
@@ -103,12 +107,47 @@ Per aspect and protein, an index gives each field the card holds (how many items
 which sources, and the SourceAssertions that state them) and each relationship area (how
 many, from which sources, and every relationship's id). It names the views a full packet
 would hold (`full_views`) and the rules they apply (`full_rules`), which the pinned
-cards compute. The level of detail never changes what is asked of the sources, so what
+cards compute or carry. The level of detail never changes what is asked of the sources, so what
 an index reports as `not_queried` a full packet would not have asked either. Nothing is ranked, selected
 or summarized beyond counting (`packet_index@1`), and `unknowns`, `conflicts` and
-`provenance` are whole. The same packet is 135 KB as an index.
+`provenance` are whole. That 0.10.0 packet was 135 KB as an index.
 
 An index and a full packet are never compared (`same_knowledge` is `None`).
+
+### Literature mentions (unreleased)
+
+The literature index distinguishes `relationships.mentioned_in` (a direct UniProt
+mention) from `relationships.structure_mentioned_in` (a PDB mention with a
+source-supported association to the protein). The latter keeps both statements
+under `structure_mention_context@1`; it infers no chain, author focus or scientific
+claim. An index names that rule in `full_rules` and cites each relationship without
+copying article fragments.
+
+To index located annotations, build a card with explicit articles, then compose:
+
+```python
+card, _ = sabueso.resolve("P60174", europepmc={"article_ids": "PMC:PMC12400196"})
+query = sabueso.KnowledgeQuery("P60174", aspects=["literature"], detail="index")
+packet = sabueso.compose_packet(query, card)
+store.save(card)
+store.save_packet(packet, "located_literature")
+area = packet.facts["literature"]["subject"]["areas"][
+    "relationships.structure_mentioned_in"
+]
+relationship = packet.item("subject", area["relationship_ids"][0], store)
+context = relationship["qualifiers"]["structure_context"]
+support = [
+    packet.item("subject", identifier, store)
+    for identifier in context["source_assertion_ids"]
+]
+```
+
+These reads use the packet's exact card state even after a later acquisition.
+Composing a card without these requests reports `not_queried`; a returned empty
+annotation answer is `not_stated`, a failed request is `unavailable`, and a mixture
+of supported mentions and failed requests is `partial`. Both detail levels report
+the same gaps. Missing offline search fixtures are also unavailable; they do not
+establish an absence of articles.
 
 `packet.item` reads the exact card state the packet pins. A store that does not hold
 it refuses (`StorageError`); the latest state is never read in its place.
@@ -140,7 +179,8 @@ whole, as an opaque string: its public form is still being agreed in MOLI
 `store.packet_history("tim_pair")` lists each saved revision with its format, its
 `content_id` and `knowledge_changed`. So "has anything changed since the last time?"
 has an answer. Packets saved by earlier releases (`knowledge_packet@1`, `@2`) are still
-read; `@3` states its level of detail. Two revisions of different formats are not compared: `knowledge_changed` and
+read; `@3` states its level of detail. Revisions with different formats, aspect
+mappings or detail levels are not compared: `knowledge_changed` and
 `same_knowledge` are `None`, never a change that did not happen.
 
 ## Stored packets

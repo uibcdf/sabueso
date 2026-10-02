@@ -1,5 +1,30 @@
 # Sabueso — Decision Log
 
+## Literature packet coverage: `packet_aspects@6` (2026-10-02, #71, #92)
+
+- The unpublished mapping adds `relationships.mentioned_in` and
+  `relationships.structure_mentioned_in` to the literature aspect. Its index counts
+  and cites both separately, and both detail levels expose the same unknowns.
+  `full_rules` names `structure_mention_context@1`, read from the producing module.
+  Indexes carry references, never copies of quote fragments or structural context.
+- Automatic acquisition now requests Europe PMC bibliography (`europepmc={}`). It
+  never guesses article ids or fetches located annotations. Explicit article intake
+  enters through prebuilt cards and `compose_packet`. PDB context without a matching
+  annotation request remains `not_queried`, with a declared per-area explanation.
+- `knowledge_query@2`, `knowledge_packet@3`, `packet_index@1`, card schema 0.3.11
+  and store format 2 are unchanged. Existing @5 packets read exactly as stored and
+  are not compared with @6. A frozen public @5 index was generated with packet code
+  at 0ec1423 from the published frozen 0.3.10 card, with provenance in the fixture
+  notice; it verifies exact hashing, storage, historical reads and non-comparability.
+- The compatibility test exposed that `packet_history` checked format alone and
+  reported knowledge changes across incompatible mappings or detail levels. History
+  and `same_knowledge` now share the same comparison scope (format, mapping, detail).
+  This corrects read-time reporting without rewriting stored packets or hashes.
+- Automatic offline acquisition also exposed that an unsaved Europe PMC search
+  fixture claimed no article mentions the accession. It now raises `ConnectorError`
+  and the packet reports `unavailable`; a real source-stated zero remains
+  `not_stated`. No negative literature knowledge is invented from missing fixtures.
+
 ## Source-supported PDB mention context (2026-10-02, #92)
 
 - The explicit article route now also reads printed four-character PDB codes with

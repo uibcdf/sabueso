@@ -22,6 +22,12 @@ class EuropePMC(Enricher):
         "relationships.mentioned_in": "uniprot_mention_count",
         "relationships.structure_mentioned_in": "structure_mention_count",
     }
+    area_not_queried_details = {
+        "relationships.structure_mentioned_in": (
+            "Located PDB mention context requires explicit article_ids; "
+            "bibliographic search does not query article annotations."
+        )
+    }
     option_kind = "options"
     record_kinds = (None, "located_accession_annotations")
 

@@ -41,6 +41,7 @@ Enricher
   areas         the knowledge areas it answers ("annotations.clinical_variants")
   area_matches  additional request selectors for each area (empty by default)
   area_counts   the count field for each area ("count" by default)
+  area_not_queried_details  why no matching request leaves an area not queried
   organisms     taxa it covers (None: all; (9606,): human only)
   option_kind   "flag" (True) or "options" ({} or {"limit": …})
   client        the online client's factory
@@ -74,6 +75,8 @@ Only requests marked `located_accession_mapping@2` cover the latter; an older
 direct-only request or a bibliographic search cannot imply that PDB mentions were
 queried. The explicit article route uses source-supported structural associations
 already in `context.mappings`, without fetching or selecting extra structures.
+`area_not_queried_details` explains required separate requests. For PDB mention
+context, a bibliographic search cannot count as querying article annotations.
 
 From the declarations, the other tables are **derived** instead of maintained by hand:
 - the knowledge-state rows (area, source);

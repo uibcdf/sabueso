@@ -67,6 +67,12 @@ shows how to use them.
   curations=None, **clients)` resolves, composes, and optionally stores.
 - `sabueso.compose_packet(knowledge_query, subject, comparator=None)` composes from
   existing cards.
+  In unpublished `packet_aspects@6`, the literature aspect includes direct UniProt
+  mentions and derived PDB mention context in both the index and unknowns. Automatic
+  `knowledge_packet` acquisition requests bibliography only (`europepmc={}`);
+  located annotations enter via explicit article intake on prebuilt cards, then
+  `compose_packet`. The index cites separate relationships and names the structure
+  mention rule; it does not copy fragments. Earlier packets keep their stored mapping.
 - `KnowledgePacket`: `entities`, `facts`, `conflicts`, `unknowns`, `provenance`,
   `query`, `ref`, `format`, `detail`; `snapshot_id()`, `content_id()`,
   `same_knowledge(other)` (None across formats, aspect mappings and levels of detail),

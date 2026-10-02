@@ -25,6 +25,7 @@ from sabueso.tools.db.alphafold import FixtureAlphaFoldClient
 from sabueso.tools.db.chembl import FixtureChEMBLClient
 from sabueso.tools.db.clinvar import FixtureClinVarClient
 from sabueso.tools.db.diseases import FixtureDISEASESClient
+from sabueso.tools.db.europepmc import FixtureEuropePMCClient
 from sabueso.tools.db.gnomad import FixtureGnomADClient
 from sabueso.tools.db.gpcrdb import FixtureGPCRdbClient
 from sabueso.tools.db.gtex import FixtureGTExClient
@@ -72,6 +73,7 @@ def clients():
         oma_client=FixtureOMAClient("temp_data"),
         uniref_client=FixtureUniRefClient("temp_data"),
         gtex_client=FixtureGTExClient("temp_data"),
+        europepmc_client=FixtureEuropePMCClient("temp_data"),
     )
 
 
@@ -111,8 +113,8 @@ def test_a_query_is_declared_and_normalized(query):
     assert sabueso.KnowledgeQuery.from_dict(query.to_dict()) == query
     # What the aspects ask of the sources is fixed per mapping version. The options are
     # derived from the declared enrichers, so a new enricher in an aspect's areas fails
-    # here: that is a new mapping version (packet_aspects@6), never a silent change.
-    assert ASPECT_MAPPING == "packet_aspects@5"
+    # here: that is a new mapping version (packet_aspects@7), never a silent change.
+    assert ASPECT_MAPPING == "packet_aspects@6"
     assert query.options() == {
         "clinvar": {},
         "diseases": {},
@@ -137,6 +139,7 @@ def test_a_query_is_declared_and_normalized(query):
         "medgen": True,
         "disease_identity": True,
         "chembl": {},
+        "europepmc": {},
     }
     narrow = sabueso.KnowledgeQuery(
         "P60174",
@@ -314,9 +317,6 @@ def test_a_packet_never_leaves_unasked_what_its_aspects_could_ask(packet, query)
 #: Enrichers no aspect covers yet, and why.
 OUTSIDE_PACKETS = {
     "string": "functional association networks are not a packet aspect yet",
-    # Hundreds of articles per well-studied protein: packet size is watched (#88), and
-    # real use decides whether the literature aspect asks for them (#71).
-    "europepmc": "text-mined mentions are not asked by a packet aspect yet",
 }
 
 

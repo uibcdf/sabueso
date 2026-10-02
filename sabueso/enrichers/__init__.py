@@ -113,6 +113,8 @@ class Enricher:
     #: Additional record selectors and count fields for each knowledge area.
     area_matches: Dict[str, Dict[str, Any]] = {}
     area_counts: Dict[str, str] = {}
+    #: Why an area with no matching recorded request remains not queried.
+    area_not_queried_details: Dict[str, str] = {}
     #: Taxa the source covers; None for every organism.
     organisms: Tuple[int, ...] | None = None
     coverage_detail: str | None = None
@@ -325,6 +327,15 @@ def count_by_area() -> Dict[Tuple[str, str], str]:
     """The declared count field for a knowledge area's enrichment records."""
     return {
         (area, e.source): key for e in ENRICHERS for area, key in e.area_counts.items()
+    }
+
+
+def not_queried_details_by_area() -> Dict[Tuple[str, str], str]:
+    """Explanations for areas requiring a separately declared request."""
+    return {
+        (area, e.source): detail
+        for e in ENRICHERS
+        for area, detail in e.area_not_queried_details.items()
     }
 
 

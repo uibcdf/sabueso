@@ -21,7 +21,7 @@ the Sabueso version that built the cards, so two assemblies of unchanged knowled
 the same ``content_id`` even when the sources were read again (``same_knowledge``).
 
 What each aspect asks the sources for, and which knowledge areas it covers, is fixed by
-the mapping (``packet_aspects@5`` now). It never changes once published: a change is a new
+the mapping (``packet_aspects@6`` now). It never changes once published: a change is a new
 version, and a test pins what each version asks. ``@1`` was published in 0.6.0; ``@2``
 (0.7.0) adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83), and MONDO's
 disease identity and the grouped diseases to ``disease_association`` (#90). ``@3``
@@ -33,6 +33,9 @@ when named (#83). ``@4`` adds UniRef to ``identity``: the entry's sequence clust
 the entries ``clustered_with`` it, never the same entity (#103). ``@5`` adds GTEx's
 tissue terms (UBERON, or EFO for a cell line) to ``biological_context``, next to the
 pext they name (#102).
+``@6`` adds direct UniProt mentions and derived PDB mention context to ``literature``.
+Automatic acquisition asks Europe PMC for bibliography only; located annotations
+require explicit article ids and can enter a packet through prebuilt cards.
 
 The shared contract (query and packet shapes, references, the boundary with MOLI's
 Context Assembly) is proposed in uibcdf/moli#22; this is Sabueso's prototype of it.
@@ -79,13 +82,15 @@ FULL_VIEWS = {
     "biological_context": (),
     "orthology": (),
 }
-ASPECT_MAPPING = "packet_aspects@5"
+ASPECT_MAPPING = "packet_aspects@6"
 #: Aspect mappings a packet can carry; packets of different mappings are not compared.
 #: ``@3`` adds KLIFS and GPCRdb (identity, structures, ligand sites, sequence features),
 #: SAbDab (structures) and the ``orthology`` aspect (OMA), which a query asks for by
 #: name: a protein has thousands of orthologs (#83, #88). ``@4`` adds UniRef to
 #: ``identity``: the entry's clusters, and the entries ``clustered_with`` it (#103).
 #: ``@5`` adds GTEx's tissue terms to ``biological_context`` (#102).
+#: ``@6`` adds both mention areas to ``literature`` and asks Europe PMC bibliography
+#: automatically, without guessing article ids (#71, #92).
 PACKET_PREFIX = "sabueso:packet:"
 
 #: Keys left out of a content-equivalence id: when the sources were read, and which
@@ -118,12 +123,12 @@ STRUCTURE_FIELDS = (
     "annotations.antibody_complexes",
 )
 
-#: ``packet_aspects@5``: per aspect, the knowledge areas (field paths and relationships,
+#: ``packet_aspects@6``: per aspect, the knowledge areas (field paths and relationships,
 #: as ``knowledge_state`` names them) whose facts, conflicts and unknowns it reports,
 #: matched by prefix; and the options of the bespoke sources it needs. The options of
 #: declared enrichers are derived (``aspect_options``): an aspect asks every enricher
-#: that answers one of its areas, so a packet never reports as "not queried" what its
-#: own aspects could have asked (#86).
+#: that answers one of its areas through its default request. Areas requiring a
+#: separate explicit request remain not queried with a declared explanation (#86).
 ASPECTS: Dict[str, Dict[str, Any]] = {
     "identity": {
         "bespoke_options": {},
@@ -183,7 +188,12 @@ ASPECTS: Dict[str, Dict[str, Any]] = {
     },
     "literature": {
         "bespoke_options": {},
-        "areas": ("relationships.described_in", "literature."),
+        "areas": (
+            "relationships.described_in",
+            "relationships.mentioned_in",
+            "relationships.structure_mentioned_in",
+            "literature.",
+        ),
     },
     "disease_association": {
         "bespoke_options": {},
@@ -224,7 +234,7 @@ DEFAULT_ASPECTS = tuple(sorted(a for a in ASPECTS if a != "orthology"))
 
 def aspect_options(aspect: str) -> Dict[str, Any]:
     """The resolve options an aspect needs: its bespoke sources', and every declared
-    enricher answering one of its areas (``packet_aspects@5``)."""
+    enricher answering one of its areas (``packet_aspects@6``)."""
     from sabueso.enrichers import ENRICHERS
 
     options = dict(ASPECTS[aspect]["bespoke_options"])
@@ -252,7 +262,7 @@ class KnowledgeQuery:
     """A declared question about a protein, optionally beside a comparator.
 
     ``subject`` and ``comparator`` are UniProt accessions (``P60174`` or
-    ``uniprot:P60174``). ``aspects`` are names of ``packet_aspects@5`` (default: all
+    ``uniprot:P60174``). ``aspects`` are names of ``packet_aspects@6`` (default: all
     of them but ``orthology``). ``constraints``: ``bioactivity_sources``, among ChEMBL, BindingDB and
     PubChem BioAssay (default ChEMBL). ``detail``: ``"full"`` (default), the views'
     output whole, or ``"index"``, per aspect what the cards hold and the reference of
@@ -308,7 +318,7 @@ class KnowledgeQuery:
         )
 
     def options(self) -> Dict[str, Any]:
-        """The resolve options the aspects need (``packet_aspects@5``)."""
+        """The resolve options the aspects need (``packet_aspects@6``)."""
         options: Dict[str, Any] = {}
         for aspect in self.aspects:
             options.update(aspect_options(aspect))
@@ -556,6 +566,8 @@ def full_rules() -> Dict[str, List[str]]:
     """Per aspect, the named rules a full packet's views apply (``FULL_VIEWS``), read
     from the modules that define them, so an index names the rules a reader would get
     by computing the views from the pinned cards."""
+    from sabueso.mappings.europepmc import STRUCTURE_MENTION_RULE
+
     from . import (
         bioactivities,
         diseases,
@@ -587,6 +599,7 @@ def full_rules() -> Dict[str, List[str]]:
             measurements.MEASUREMENT_RULE,
         ],
         "disease_association": [diseases.RULE],
+        "literature": [STRUCTURE_MENTION_RULE],
     }
     return {aspect: sorted(rules.get(aspect, [])) for aspect in ASPECTS}
 
@@ -738,6 +751,11 @@ def _provenance(card: Any) -> Dict[str, Any]:
     }
 
 
+def _comparison_scope(data: Mapping[str, Any]) -> tuple:
+    """Formats, aspect mappings and detail levels define comparable knowledge."""
+    return data.get("format"), data.get("aspect_mapping"), data.get("detail", "full")
+
+
 class KnowledgePacket:
     """A composed, pinned answer to a KnowledgeQuery. Build it with
     ``compose_packet`` or ``sabueso.knowledge_packet``; read ``facts``, ``unknowns``,
@@ -780,11 +798,7 @@ class KnowledgePacket:
         """Whether two packets hold the same knowledge, however often it was read.
         None when they are in different formats, aspect mappings or levels of detail:
         their ids cannot be compared."""
-        if (
-            self.format != other.format
-            or self._data.get("aspect_mapping") != other._data.get("aspect_mapping")
-            or self.detail != other.detail
-        ):
+        if _comparison_scope(self._data) != _comparison_scope(other._data):
             return None
         return self.content_id() == other.content_id()
 
