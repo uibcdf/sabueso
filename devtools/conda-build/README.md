@@ -45,7 +45,8 @@ digest against the producer receipts, the version it embeds (`info/index.json`,
 the only claimed public route (the `noarch` conda package); Sabueso publishes no wheel. The gate checks artifact
 digest, source channel, public dependency provenance, package version, and
 an API smoke test (a card whose quantities are sealed by `to_dict()` and verified by
-`from_dict()`) in clean Linux, macOS and Windows environments for Python 3.11–3.14, with the
+`from_dict()`) in clean Linux, macOS Apple Silicon (arm64) and Windows
+environments for Python 3.11–3.14, with the
 public SMonitor, PyUnitWizard and DepDigest builds.
 Do not publish a stable GitHub Release until every cell passes.
 
