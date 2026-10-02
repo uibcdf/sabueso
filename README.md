@@ -23,14 +23,21 @@ the displayed report may briefly lag a new push while CI finishes.
 
 ## Current release status
 
-- **Latest release:** [0.10.0](https://github.com/uibcdf/sabueso/releases/tag/0.10.0)
-  (2026-10-01), distributed through the `uibcdf` conda channel.
+- **Latest release:** [0.11.0](https://github.com/uibcdf/sabueso/releases/tag/0.11.0)
+  (2026-10-02), distributed through the `uibcdf` conda channel.
   - One `noarch` package for Linux, macOS Apple Silicon (arm64) and Windows,
     on Python 3.11–3.14.
-  - Before publication, the exact package was inspected, then tested on all 12
-    combinations.
+  - The exact package was inspected and tested on all 12 combinations, including
+    an explicit Apple Silicon architecture check. A clean public install on Python
+    3.14 verified its digest, quantities and the new behavior.
   - It writes card schema 0.3.10; `sabueso.migrate_card` reports what older cards lack.
   - Archived on Zenodo, verified to be identical to its tag:
+    [10.5281/zenodo.23099139](https://doi.org/10.5281/zenodo.23099139).
+  - Users who exported literature extractions with earlier versions: upgrade.
+    `CurationStore` now keeps rule/model extractions out of human-curation export;
+    already-exported records need their original acquired state to recover omitted
+    provenance (#105; see the release notes).
+  - 0.10.0 is archived on Zenodo, verified to be identical to its tag:
     [10.5281/zenodo.23089116](https://doi.org/10.5281/zenodo.23089116).
   - 0.9.0 is archived on Zenodo, verified to be identical to its tag:
     [10.5281/zenodo.23084553](https://doi.org/10.5281/zenodo.23084553).

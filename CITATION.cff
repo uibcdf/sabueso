@@ -17,7 +17,10 @@ doi: 10.5281/zenodo.22937375
 identifiers:
   - type: doi
     value: 10.5281/zenodo.22937375
-    description: Concept DOI, all versions (Zenodo, verified 2026-09-24)
+    description: Concept DOI, all versions (Zenodo, verified 2026-10-02)
+  - type: doi
+    value: 10.5281/zenodo.23099139
+    description: Version 0.11.0 (Zenodo, verified 2026-10-02)
   - type: doi
     value: 10.5281/zenodo.23089116
     description: Version 0.10.0 (Zenodo, verified 2026-10-01)

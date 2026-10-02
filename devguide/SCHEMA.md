@@ -5,6 +5,8 @@
   - `0.3.10` is the schema of release 0.10.0: `identifiers.ensembl_transcripts` (UniProt's
     Ensembl transcripts per isoform) and `annotations.tissue_terms` (GTEx's ontology
     term for each pext tissue), #102;
+    release 0.11.0 continues to write this schema: its views, integrity corrections
+    and direct annotation access do not add stored card fields;
   - `0.3.9` is the schema of release 0.9.0: `identifiers.uniref` and `clustered_with`
     (UniProt's UniRef clusters, never identity, #103), and `quality.retries` (#97);
   - `0.3.8` is the schema of release 0.8.0: it records the ordering rule of a capped

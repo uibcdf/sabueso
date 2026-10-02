@@ -37,7 +37,7 @@ status, so that none is lost because a pilot has not asked for it yet.
 - **Maintainers may schedule a foundational objective on its own.** The pilots do not
   own the plan.
 
-## Delivered so far (0.1.0 → 0.10.0)
+## Delivered so far (0.1.0 → 0.11.0)
 
 - **Foundations.**
   - Card, Deck, `SourceAssertionStore` and `RelationshipStore`.
@@ -104,6 +104,13 @@ status, so that none is lost because a pilot has not asked for it yet.
     (`isoform_exon_usage@2`, #102).
   - A knowledge packet as an index by reference, with the guarantees agreed in
     uibcdf/moli#22 (`packet_index@1`, #88); `packet_aspects@5`.
+- **Since 0.11.0.**
+  - Pinned explanations of structural inventory items and all group members
+    (`structure_inventory_explanation@1`, #91), without fetching or selecting.
+  - Located accession annotations for explicit articles at source access (#92),
+    and a public hypothetical review rehearsal that preserves historical support.
+  - Curation export preserves extraction acquisition (#105); existing source
+    identifiers with spaces are readable by their pins (#104).
 
 ## Status of the foundational plan
 
@@ -224,7 +231,7 @@ In order:
    profiles (#94). Next: terms in packets, and the shared vocabulary with MOLI.
 3. **Scientific operations (#91).** Released in 0.7.0: `expand` (relationships into decks),
    `explain` (a deck member and a card's SourceAssertions), and the store's `as_of` and
-   `changed_since`. Implemented after 0.10.0: an inventory item through
+   `changed_since`. Released in 0.11.0: an inventory item through
    `Deck.explain(card_id, structure_ref=..., ...)`, with the pinned relationship and
    SourceAssertion support of every group member (`structure_inventory_explanation@1`).
    Next, as use asks: other views' derived items, including disease groups.
@@ -234,13 +241,13 @@ In order:
    - Released in 0.7.0: Europe PMC's text-mined accession mentions (`mentioned_in`). Its gene
      and protein annotations were reviewed and set aside: they ground names without
      the organism.
-   - Implemented after 0.10.0: source access to located accession annotations for
+   - Released in 0.11.0: source access to located accession annotations for
      explicit articles (`get_annotations`), with provider, section and quote
      fragments. A public P60174 mention in a figure verifies the route. These
      fragments are not complete sentences. Next: explicit intake into cards, PDB
      mentions linked through stated structure identity, and an extraction Sabueso
      runs itself, with its tool and version.
-   - Validated after 0.10.0: a public review draft and hypothetical curation rehearsal
+   - Included in 0.11.0: a public review draft and hypothetical curation rehearsal
      (`examples/literature_curation/`), preserving outcomes and historical support on
      rebuild. The draft awaits human review; #105 prevents extraction provenance from
      being replaced with human curation during export/replay.

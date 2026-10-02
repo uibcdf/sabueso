@@ -5,16 +5,27 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-10-02, with development after release 0.10.0.*
+*Last updated: 2026-10-02, after release 0.11.0.*
 
 ## Release and schema
 
-- **Release candidate:** 0.11.0, staged route requested on 2026-10-02. It includes
-  the development listed below, notably the acquisition-integrity fix (#105).
-  CI at its final SHA and the exact installed artifact on all twelve OS/Python
-  combinations must pass before publication. Schema and store formats are unchanged.
-
-- **Latest release:** 0.10.0 (2026-10-01).
+- **Latest release:** 0.11.0 (2026-10-02).
+  - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
+  - Staged candidate b1f3b6e; sha256
+    `670f2bf6a390c01e45d12b2cd203f79057aa8e9c7fe2166ea3fb1b075058c43f`.
+  - The same artifact passed installed-package gates on Linux, macOS Apple Silicon
+    and Windows × 3.11–3.14, including the explicit arm64 runner check (run
+    [36987191885](https://github.com/uibcdf/sabueso/actions/runs/36987191885)).
+  - Promotion and its public poststate passed (run
+    [36987747905](https://github.com/uibcdf/sabueso/actions/runs/36987747905)). A clean
+    public install on Python 3.14 verified the artifact, sealed quantities, inventory
+    explanations, spaced assertion pins, extraction export integrity and located
+    annotations. Card schema 0.3.10 and store formats are unchanged.
+  - Zenodo archive: [10.5281/zenodo.23099139](https://doi.org/10.5281/zenodo.23099139).
+    Its single source ZIP (2,968,369 bytes, MD5 `7e1c8e2dc8eb3d6dd02737e0d28753cb`)
+    contains the same 1129 files as the tag. Both concept and version DOIs resolve to
+    that record. The Conda package is distributed separately.
+- **0.10.0** (2026-10-01).
   - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
   - Staged candidate d41c7f7; sha256 `5217c5ce…0248`.
   - The exact staged file passed the installed-package gate on Linux, macOS and
@@ -121,7 +132,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     pair; `knowledge_query@2`, `knowledge_packet@3`.
 - **Watched:** card and packet size with the default ceilings (#88).
 
-## Development after 0.10.0
+## In 0.11.0
 
 - `Deck.explain(card_id, structure_ref=..., ...)` explains an inventory item, its
   group or exclusion, and the pinned relationship and SourceAssertion support of
@@ -182,7 +193,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.
-- CI (`.github/workflows/ci.yml`): Linux and Windows × Python 3.11–3.14, macOS 3.13.
+- CI (`.github/workflows/ci.yml`): Linux and Windows × Python 3.11–3.14, macOS
+  Apple Silicon 3.13; offline coverage from Linux 3.13 after pushes to main.
 
 ## Open work
 
