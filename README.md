@@ -2,6 +2,8 @@
 
 [![MOLI: Knowledge](https://img.shields.io/badge/MOLI-Knowledge-blue.svg)](https://github.com/uibcdf/moli)
 [![MOLI governance](https://github.com/uibcdf/sabueso/actions/workflows/moli-governance.yml/badge.svg)](https://github.com/uibcdf/sabueso/actions/workflows/moli-governance.yml)
+[![Offline tests](https://github.com/uibcdf/sabueso/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/uibcdf/sabueso/actions/workflows/ci.yml)
+[![Codecov](https://codecov.io/gh/uibcdf/sabueso/branch/main/graph/badge.svg)](https://app.codecov.io/gh/uibcdf/sabueso)
 [![Python 3.11–3.14](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue.svg)](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_policy.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -14,6 +16,10 @@ Given a molecular system (protein, peptide, small molecule, etc.), it produces a
 Active early-stage implementation. Sabueso is directly governed by MOLI for shared platform and engineering contracts while retaining ownership of its implementation, scientific behavior, tests, and local API.
 
 Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the offline CI suite. Python 3.14 is explicitly admitted under MOLI's active Python transition.
+
+The coverage badge measures the Sabueso package with offline pytest on
+Linux/Python 3.13 after pushes to `main`. It does not cover online service tests;
+the displayed report may briefly lag a new push while CI finishes.
 
 ## Current release status
 
