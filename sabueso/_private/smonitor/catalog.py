@@ -50,6 +50,12 @@ CATALOG = {
         "ArgumentError": _exception("SABUESO-E-ARG-001", "argument", "argument"),
     },
     "warnings": {
+        "AttributionTrackingWarning": {
+            "code": "SABUESO-W-ATTRIBUTION-001",
+            "source": "sabueso.warning.attribution_tracking",
+            "category": "attribution",
+            "level": "WARNING",
+        },
         "EnrichmentFailedWarning": {
             "code": "SABUESO-W-ENRICH-001",
             "source": "sabueso.warning.enrichment_failed",
@@ -98,6 +104,12 @@ CATALOG = {
 _RAISE_SITE = {"title": "Sabueso error", "user_message": "{message}"}
 
 CODES = {
+    "SABUESO-W-ATTRIBUTION-001": {
+        "title": "Attribution incomplete",
+        "user_message": "Attribution failed for {operation}; the scientific result is retained.",
+        "dev_message": "Attribution failed for {operation}: {reason}",
+        "user_hint": "Inspect the attribution record's status and retained host metadata.",
+    },
     "SABUESO-E-GENERIC-001": {**_RAISE_SITE, "title": "Sabueso error"},
     "SABUESO-E-RESOLVE-001": {**_RAISE_SITE, "title": "Resolution failed"},
     "SABUESO-E-SCHEMA-001": {**_RAISE_SITE, "title": "Schema error"},
@@ -167,6 +179,7 @@ CODES = {
 }
 
 SIGNALS = {
+    "sabueso.warning.attribution_tracking": {"extra_required": ["operation", "reason"]},
     "sabueso.warning.enrichment_failed": {
         "extra_required": ["source", "subject", "detail"]
     },

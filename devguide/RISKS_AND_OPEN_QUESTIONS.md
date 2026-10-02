@@ -15,8 +15,14 @@
   recorded; disease grouping includes broader MONDO/MedGen identity/hierarchy context.
 - **Optional pipeline attribution** (#108, moli#36): Ackredit source capture APIs
   are provisional, publication is pending and its declared Python range does not yet
-  cover Sabueso's 3.14 claim. Complete offline resource bibliography, real-provider
-  consumer evidence and published dependency closure are required before adoption.
+  cover Sabueso's 3.14 claim. The first runtime adapter observes packet composition;
+  source acquisition and further result types still need adapters. Only UniProt and
+  Europe PMC description papers are declared so far; other citations remain explicit
+  gaps. Real-provider source CI covers 3.11–3.13, independently of ordinary Sabueso's
+  provider-free 3.11–3.14 CI. Published dependency closure remains a release gate for
+  any optional installation claim. Explicit literal authors are misrendered in
+  BibTeX (ackredit#78); use CSL-JSON/text until corrected. Failed tracking can leave
+  partial workflow credits; result records retain failure status and host support.
 - **SourceAssertion growth**: preserving all values can create very large cards and stores.
 - **Mapping fragility**: changes in source APIs can break field mappings.
 - **Ambiguity**: input resolution may produce multiple valid entities.

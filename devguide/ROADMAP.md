@@ -289,10 +289,13 @@ In order:
    - exchange with TopoMT (positions, interface mutations), MolSysViewer (features to
      show) and PharmacophoreMT (ligand decks). Use cases 3, 4 and 7 are partial for
      want of these.
-   - optional Ackredit attribution for knowledge pipelines (#108, moli#36), studied
-     against provisional provider capture APIs (ackredit#75). Runtime adoption,
-     complete verified resource bibliography and published Python dependency closure
-     remain pending; the local support/terms reports do not record execution usage.
+   - optional Ackredit attribution for knowledge pipelines (#108, moli#36): the
+     initial opt-in packet-composition adapter and public offline workflow are
+     implemented against provisional capture APIs (ackredit#75). Source acquisition,
+     further result types, complete resource bibliography and published Python
+     dependency closure remain next work. Explicit author-object BibTeX rendering is
+     tracked upstream in ackredit#78. Knowledge support, runtime use and terms retain
+     their separate meanings; scientific payloads are unchanged.
 
 Each is proposed as an issue before work starts, and the order is revisited at each
 release.

@@ -44,6 +44,7 @@ literature_and_curation
 decks
 terms
 packets
+attribution
 storage
 upgrading
 field_paths

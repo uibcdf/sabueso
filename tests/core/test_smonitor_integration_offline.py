@@ -19,6 +19,7 @@ from sabueso._private.smonitor import CATALOG
 from sabueso._private.smonitor.catalog import CODES
 from sabueso._private.smonitor.outcomes import report_outcomes, report_unanchored
 from sabueso._private.smonitor.warnings import (
+    AttributionTrackingWarning,
     EnrichmentFailedWarning,
     EnrichmentTruncatedWarning,
     UnanchoredRecordsWarning,
@@ -95,6 +96,8 @@ def test_check3_every_code_renders_in_every_profile(profile):
                     "count": 1,
                     "total": 2,
                     "examples": "e",
+                    "operation": "packet composition",
+                    "reason": "provider unavailable",
                 },
             )[0]
         ]
@@ -106,6 +109,9 @@ def test_check3_every_code_renders_in_every_profile(profile):
 @pytest.mark.parametrize(
     "build",
     [
+        lambda: AttributionTrackingWarning(
+            operation="compose_packet", reason="broken provider"
+        ),
         lambda: EnrichmentFailedWarning(source="STRING", subject="u", detail="down"),
         lambda: EnrichmentTruncatedWarning(
             source="ChEMBL", subject="u", count=1, total=2

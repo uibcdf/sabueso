@@ -13,6 +13,21 @@ class SabuesoWarning(CatalogWarning):
     """Base class of Sabueso's catalog warnings."""
 
 
+class AttributionTrackingWarning(SabuesoWarning):
+    """Optional attribution failed; the scientific result remains usable."""
+
+    catalog_key = "AttributionTrackingWarning"
+
+    def __init__(self, message=None, *, operation=None, reason=None):
+        extra = {"operation": operation, "reason": reason} if message is None else None
+        super().__init__(
+            message,
+            catalog=CATALOG if extra else None,
+            meta=META if extra else None,
+            extra=extra,
+        )
+
+
 class EnrichmentFailedWarning(SabuesoWarning):
     """A source could not be consulted; the result was built without it."""
 

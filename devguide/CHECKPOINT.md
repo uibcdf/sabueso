@@ -203,10 +203,20 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   exact grouping inputs, which were not recorded. The terms registry is the current
   packaged registry with review dates, not a reconstructed historical registry.
   This read-time report changes no stored formats, card shapes or packet hashes.
-- Ackredit's provisional portable capture API was reviewed at
-  `4228444cc865a4decb550d1b14b1ffeb046a10eb`. Optional pipeline attribution is
-  proposed in #108 and moli#36, with provider feedback in ackredit#75. There is no
-  runtime integration: publication and the 3.11–3.14 dependency closure remain gates.
+- Optional Ackredit integration (#108, moli#36), first local runtime adapter:
+  `sabueso.attribution()` observes completed packet composition, with detached
+  `sabueso.packet_attribution@1` records. Actual selected stored support/conflicts
+  and relationship dependencies define resource scope; each result retains reused
+  resources and contributes to the application's workflow. Packet/card/store payloads
+  and hashes are unchanged. Absence and failure retain knowledge and host records;
+  saved readers add no credit. The public offline pilot is `examples/ackredit_pilot/`.
+  CI tests real provider commit `4228444cc865a4decb550d1b14b1ffeb046a10eb` on
+  Python 3.11–3.13; ordinary Sabueso CI still covers 3.11–3.14. UniProt/Europe PMC
+  description citations are verified offline; other descriptions, target articles
+  and annotation-provider bibliography remain explicit gaps. Acquisition coverage,
+  provider publication, 3.14 closure and the shared record boundary remain open.
+  Corporate-author BibTeX rendering was reported as ackredit#78; the pilot uses
+  CSL-JSON and text.
 
 ## Package layout
 
@@ -246,7 +256,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1290 tests passed, 26 online tests deselected (2026-10-02). Run with
+- Offline suite: 1303 tests passed, 26 online tests deselected (2026-10-02, with the
+  real optional Ackredit source provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.

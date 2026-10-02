@@ -41,7 +41,7 @@ kind = "pins"
 
 [routes.".github/workflows/ci.yml"]
 kind = "excluded"
-reason = "installs test_env.yaml (checked above), Sabueso itself with pip --no-deps, and ruff; no runtime library of its own"
+reason = "installs test_env.yaml (checked above), Sabueso itself and the separately inventoried optional Ackredit source candidate with pip --no-deps, and ruff"
 
 [routes.".github/workflows/build_and_upload_conda_packages.yaml"]
 kind = "excluded"
@@ -59,8 +59,14 @@ reason = "installs build_env.yaml only, to remove a label"
 kind = "excluded"
 reason = "runs the governance check; installs no runtime"
 
-# No required lane installs a sibling library from source (--no-deps from a Git
-# checkout): siblings come from the uibcdf conda channel. The source-candidate check of
-# the policy is therefore not applicable; adding such a lane must add it here.
+# Optional provider publication is pending (#108, ackredit#22). This tracked full
+# commit is consumer-test evidence, not a public installation or 3.14 claim.
 [source_routes]
-applicable = false
+applicable = true
+routes = [".github/workflows/ci.yml:ackredit-pilot"]
+
+[[source_routes.candidates]]
+repository = "uibcdf/ackredit"
+commit = "4228444cc865a4decb550d1b14b1ffeb046a10eb"
+python = ">=3.11,<3.14"
+reason = "portable capture APIs are provisional and not available on configured public channels; optional packet-composition consumer pilot only"

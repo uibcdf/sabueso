@@ -11,9 +11,11 @@ the composed answer. It is a composition over cards, not a new kind of knowledge
   for the areas of the aspects asked (``knowledge_state@4``);
 - ``provenance``: the sources, their releases and retrieval dates.
 
-**Deterministic.** Composition is a pure function of the query and the card states. It
+**Deterministic.** The packet payload is a pure function of the query and card states. It
 never calls an LLM, never ranks, never summarizes, and holds the aspects the query
 declares, nothing else. The same query and the same card states give the same packet.
+An explicit ``sabueso.attribution()`` context may collect detached composition
+attribution; those records never enter the packet or its hashes.
 
 **Two ids.** ``snapshot_id`` is the exact state, retrieval times included: the citable
 pin, ``sabueso:packet:<name>@sha256:…``. ``content_id`` leaves out retrieval times and
@@ -840,10 +842,11 @@ class KnowledgePacket:
 def compose_packet(
     knowledge_query: KnowledgeQuery, subject: Any, comparator: Any = None
 ) -> KnowledgePacket:
-    """Compose the packet of a query from card states; pure and deterministic.
+    """Compose a deterministic packet payload from a query and card states.
 
     The cards are used as they are: an aspect whose sources they were not built with
     shows as ``not_queried`` in ``unknowns``, never as absent knowledge.
+    An active attribution context collects a detached record after composition.
     """
     roles: List[Tuple[str, Any]] = [("subject", subject)]
     if comparator is not None:
@@ -889,4 +892,8 @@ def compose_packet(
     }
     # The packet is what its canonical JSON states, so a stored packet reads back
     # identical, with every quantity as a node.
-    return KnowledgePacket(json.loads(canonical_json(as_stated(data))))
+    packet = KnowledgePacket(json.loads(canonical_json(as_stated(data))))
+    from .attribution import _record_packet
+
+    _record_packet(packet, roles)
+    return packet

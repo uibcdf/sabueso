@@ -1,0 +1,236 @@
+"""Opt-in packet attribution, detached from immutable scientific payloads (#108).
+
+The application owns Ackredit sessions. This first adapter observes completed packet
+composition over stored statements, not source requests or every calculation in the
+process. Reading saved packets or JSON records never credits another composition.
+"""
+
+from __future__ import annotations
+
+from contextlib import contextmanager
+from contextvars import ContextVar
+from copy import deepcopy
+
+from depdigest import dep_digest, is_installed
+
+_runs: ContextVar[tuple] = ContextVar("sabueso_attribution_runs", default=())
+FORMAT = "sabueso.packet_attribution@1"
+
+
+class AttributionRun:
+    """Completed composition records collected by ``sabueso.attribution()``.
+
+    ``records`` returns detached JSON-compatible records. Save them beside packets;
+    they retain original producer versions, card pins and source-record versions.
+    A record's ``provider.attribution`` can be read by Ackredit's ``Attribution``.
+    """
+
+    def __init__(self):
+        self._records = []
+
+    @property
+    def records(self) -> list[dict]:
+        """Independent copies; changing them cannot change this run or a packet."""
+        return deepcopy(self._records)
+
+
+@contextmanager
+def attribution():
+    """Observe packet composition in this context, with lazy optional Ackredit.
+
+    Yields an ``AttributionRun``. Nested contexts observe their contained results;
+    the outer context also retains them. No backend is loaded on entry or exit, and
+    no Ackredit session, import hook, journal or enrichment is created.
+    """
+    run = AttributionRun()
+    token = _runs.set((*_runs.get(), run))
+    try:
+        yield run
+    finally:
+        _runs.reset(token)
+
+
+@dep_digest("ackredit")
+def _load_backend():
+    import ackredit
+
+    return ackredit
+
+
+def _warning(operation, reason):
+    from sabueso._private.smonitor.emitter import warn
+    from sabueso._private.smonitor.outcomes import _user_stacklevel
+    from sabueso._private.smonitor.warnings import AttributionTrackingWarning
+
+    warn(
+        AttributionTrackingWarning(operation=operation, reason=reason),
+        stacklevel=_user_stacklevel(),
+    )
+
+
+def _support(packet, roles):
+    from .attribution_bibliography import descriptions, software
+    from .packet_terms import _items
+    from .packets import _facts, full_rules
+    from .snapshot import canonical_json, digest
+
+    resources, scope, gaps = {}, {}, []
+    bibliography = {item["id"]: item for item in [software()]}
+    for role, card in roles:
+        # Use the same stored-support closure as packet terms, including conflicts
+        # and both legs of derived relationships; never infer usage from terms.
+        facts = {aspect: _facts(aspect, card) for aspect in packet.query.aspects}
+        items = _items(card, facts, role, packet.conflicts.get(role) or [])
+        scope[role] = {"card_ref": card.pinned_ref(), "items": items}
+        for item in items:
+            if item["kind"] != "source_assertion":
+                continue
+            assertion = card.source_assertion_store.get(item["id"])
+            source = assertion["source"]
+            # Version is source-record metadata. It is NOT promoted to a global
+            # database release; an unstated version remains None.
+            identity = {
+                key: source.get(key) for key in ("name", "type", "record_id", "version")
+            }
+            identifier = "sabueso:source-record:" + digest(canonical_json(identity))
+            if identifier not in resources:
+                citations = descriptions(source.get("name"))
+                bibliography.update({c["id"]: c for c in citations})
+                resources[identifier] = {
+                    "id": identifier,
+                    "source": identity,
+                    "description_citation_ids": [c["id"] for c in citations],
+                    "uses": [],
+                }
+                if not citations:
+                    gaps.append(
+                        {
+                            "resource_id": identifier,
+                            "reason": "description_citation_not_declared",
+                        }
+                    )
+            usage = {
+                "role": role,
+                "card_ref": card.pinned_ref(),
+                "source_assertion_ref": item["source_assertion_ref"],
+                "retrieved_at": assertion.get("retrieved_at"),
+                "acquisition": assertion.get("acquisition"),
+            }
+            resources[identifier]["uses"].append(usage)
+            if "Europe PMC Annotations" in item["sources"]:
+                annotation = (assertion.get("asserted_value") or {}).get(
+                    "annotation"
+                ) or {}
+                usage["annotation_provider"] = annotation.get("provider")
+                gaps.append(
+                    {
+                        "resource_id": identifier,
+                        "source_assertion_ref": item["source_assertion_ref"],
+                        "reason": "article_and_annotation_provider_citations_not_declared",
+                    }
+                )
+    return {
+        "scope": scope,
+        "resources": list(resources.values()),
+        "bibliography": list(bibliography.values()),
+        "bibliography_gaps": gaps,
+        "support_basis": "stored_statement_support",
+        "aspect_mapping": packet.to_dict()["aspect_mapping"],
+        "view_rules": {aspect: full_rules()[aspect] for aspect in packet.query.aspects},
+        "lineage_note": "Includes represented support and conflicts; unrecorded mapping lineage is not reconstructed. Disease grouping includes stored MONDO/MedGen identity and hierarchy context. Source-record versions are not database releases. Source acquisition and other Sabueso operations are outside this adapter.",
+    }
+
+
+def _credit(record):
+    """Provider failures cannot replace a completed scientific result."""
+    backend = None
+    try:
+        if not is_installed("ackredit"):
+            return {"status": "absent", "version": None, "attribution": None}
+        backend = _load_backend()
+        context = {
+            "producer": record["producer"],
+            "packet_snapshot_id": record["packet_snapshot_id"],
+        }
+        with backend.capture("sabueso.compose_packet", context=context) as capture:
+            with backend.scope("sabueso.compose_packet"):
+                for item in record["bibliography"]:
+                    backend.register_item(**item)
+                software_id = record["bibliography"][0]["id"]
+                backend.track_item(
+                    software_id, roles=["executed_software"], context=context
+                )
+                for resource in record["resources"]:
+                    source = resource["source"]
+                    item = {
+                        "id": resource["id"],
+                        "type": "dataset" if source["type"] == "database" else "other",
+                        "title": f"{source['name']} record {source['record_id']}",
+                        "note": "Stored source record used in packet composition; no new acquisition is claimed.",
+                    }
+                    if source["version"] is not None:
+                        item["version"] = source["version"]
+                    backend.register_item(**item)
+                    for usage in resource["uses"]:
+                        use_context = {**context, **usage, "source_record": source}
+                        backend.track_item(
+                            resource["id"],
+                            roles=["stored_knowledge"],
+                            context=use_context,
+                        )
+                        for identifier in resource["description_citation_ids"]:
+                            backend.track_item(
+                                identifier,
+                                roles=["resource_description"],
+                                context=use_context,
+                            )
+        return {
+            "status": "available",
+            "version": backend.__version__,
+            "attribution": capture.attribution.to_dict(),
+        }
+    except Exception as error:
+        # Only attribution code runs inside this boundary. A scientific exception
+        # raised during composition never enters it.
+        reason = f"{type(error).__name__}: {error}"
+        _warning("compose_packet", reason)
+        return {
+            "status": "failed",
+            "version": getattr(backend, "__version__", None),
+            "reason": reason,
+            "attribution": None,
+        }
+
+
+def _record_packet(packet, roles):
+    runs = _runs.get()
+    if not runs:
+        return
+    from sabueso import __version__
+
+    record = {
+        "format": FORMAT,
+        "operation": "compose_packet",
+        "packet_snapshot_id": packet.snapshot_id(),
+        "producer": {
+            "name": "sabueso",
+            "version": __version__,
+            "version_basis": "runtime_package_metadata",
+        },
+    }
+    try:
+        record.update(_support(packet, roles))
+    except Exception as error:
+        reason = f"{type(error).__name__}: {error}"
+        record["support_status"] = "unavailable"
+        record["provider"] = {
+            "status": "not_attempted",
+            "reason": reason,
+            "attribution": None,
+        }
+        _warning("packet support attribution", reason)
+    else:
+        record["support_status"] = "available"
+        record["provider"] = _credit(record)
+    for run in runs:
+        run._records.append(deepcopy(record))

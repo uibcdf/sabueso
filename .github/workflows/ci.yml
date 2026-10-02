@@ -12,6 +12,54 @@ permissions:
   contents: read
 
 jobs:
+  ackredit-pilot:
+    name: Ackredit source pilot (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Ackredit's declared range; ordinary Sabueso CI still covers 3.14.
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v6
+        with:
+          repository: uibcdf/ackredit
+          ref: 4228444cc865a4decb550d1b14b1ffeb046a10eb
+          path: .ackredit-candidate
+          fetch-depth: 0
+      - uses: mamba-org/setup-micromamba@v3.2.1
+        with:
+          environment-file: devtools/conda-envs/test_env.yaml
+          environment-name: test
+          condarc: |
+            channels:
+              - uibcdf
+              - conda-forge
+            channel_priority: strict
+          create-args: >-
+            python=${{ matrix.python-version }}
+      - name: Install the pinned source candidate and consumer
+        shell: bash -l {0}
+        run: |
+          python -m pip install --no-deps --no-build-isolation .ackredit-candidate
+          python -m pip install --no-deps --no-build-isolation .
+      - name: Verify installed imports outside both checkouts
+        shell: bash -l {0}
+        run: |
+          cd "$RUNNER_TEMP"
+          python -c "import ackredit,sabueso; assert 'site-packages' in ackredit.__file__, ackredit.__file__; assert 'site-packages' in sabueso.__file__, sabueso.__file__; assert callable(ackredit.capture)"
+      - name: Exercise the real optional provider
+        shell: bash -l {0}
+        env:
+          SABUESO_REQUIRE_ACKREDIT: "1"
+        run: python -m pytest tests/core/test_attribution_offline.py -m "not online" --receptor=ci
+      - name: Run the public offline workflow
+        shell: bash -l {0}
+        run: python -m examples.ackredit_pilot.run --output "$RUNNER_TEMP/ackredit-pilot"
+
   test:
     name: Offline tests (${{ matrix.os }}, Python ${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}

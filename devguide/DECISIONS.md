@@ -1,5 +1,31 @@
 # Sabueso — Decision Log
 
+## Early optional Ackredit integration (2026-10-02, #108, moli#36)
+
+- Integrate a bounded runtime adapter now, before the knowledge API grows further.
+  `sabueso.attribution()` explicitly observes completed packet composition. It
+  collects local detached records (`sabueso.packet_attribution@1`) beside immutable
+  knowledge; no shared MOLI payload, card schema, store format or packet hash changes.
+- Follow selected stored statements, conflicts and represented relationship
+  dependencies with the existing packet-terms support closure, independently of its
+  licence verdicts. Full/index scope agrees. Source-record versions remain as stated;
+  database releases are not inferred. Broader disease grouping lineage is disclosed.
+- Applications own provider sessions. Per-result captures retain reused references
+  and contribute to enclosing workflows. Ordinary operations, empty contexts and
+  saved readers do not import or credit the provider. Nested observation uses
+  ContextVars. Genuine absence retains host records; installed provider failure is
+  a catalogued warning with result failure status, never a replacement result.
+- Verify complete UniProt/Europe PMC resource-description bibliography offline;
+  missing descriptions, target articles and annotation-provider records remain
+  explicit gaps. Preserve explicit corporate authors. Report provider defects
+  upstream: ackredit#78 owns incorrect author-object BibTeX output. Use CSL-JSON/text
+  in the public pilot until the provider fixes it.
+- Track a full-commit Ackredit candidate in consumer CI on its declared Python
+  3.11–3.13 range. Keep Sabueso's normal 3.11–3.14 CI and public dependency surface.
+  Source tests do not establish publication or optional 3.14 closure. Acquisition,
+  further result types, public extra and shared boundary coordination remain #108
+  work; no release is made by this integration.
+
 ## Read-time literature explanations and packet terms (2026-10-02, #91, #29)
 
 - `literature_explanation@1` walks a publication's stored citation, mention,

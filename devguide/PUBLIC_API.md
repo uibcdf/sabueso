@@ -59,6 +59,16 @@ shows how to use them.
 
 ## Knowledge packets (prototype, #71; contract in uibcdf/moli#22)
 
+- `sabueso.attribution()` (unreleased, #108) yields an `AttributionRun`; its
+  `records` accessor returns detached JSON records for completed packet composition.
+  Applications own Ackredit sessions. The optional lazy adapter preserves per-result
+  reused resources and contributes to enclosing captures/workflows; absence/failure
+  preserves knowledge and host records. Records carry source-record versions and
+  exact support pins, separately from packets/terms. Acquisition and resolve-only
+  attribution remain outside this first adapter. No public extra is declared while
+  provider publication/3.14 closure are pending. See the user attribution page and
+  `examples/ackredit_pilot/`.
+
 - `sabueso.KnowledgeQuery(subject, comparator=None, aspects=None, constraints=None,
   detail="full")`: `to_dict()`, `from_dict(data)`, `options()`. `detail="index"` gives,
   per aspect, what the cards hold and the reference of every item, without values

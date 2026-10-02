@@ -4,15 +4,16 @@ issue: uibcdf/sabueso#108
 status: open
 opened: 2026-10-02
 closed:
-verification: source_reviewed
+verification: local_runtime_tested
 area: [attribution, knowledge_packets, source_access]
-blocked_by: [uibcdf/moli#36, uibcdf/ackredit#75, uibcdf/ackredit#22]
+blocked_by: [uibcdf/moli#36, uibcdf/ackredit#75, uibcdf/ackredit#22, uibcdf/ackredit#78]
 supersedes: []
 ---
 
 # Optional attribution for knowledge pipelines
 
-Status: proposed, runtime integration pending.
+Status: initial optional packet-composition adapter implemented; broader pipeline
+coverage and public dependency adoption remain open.
 Owner: [uibcdf/sabueso#108](https://github.com/uibcdf/sabueso/issues/108).
 Shared boundary: [uibcdf/moli#36](https://github.com/uibcdf/moli/issues/36).
 Provider: [uibcdf/ackredit#75](https://github.com/uibcdf/ackredit/issues/75).
@@ -26,7 +27,7 @@ with citation records for each result and the enclosing application workflow.
 Ackredit's provisional `capture`, contextual `track_item`, detached `Attribution`
 and `get_attribution` fit this need. Its canonical
 [integration guide](https://github.com/uibcdf/ackredit/blob/main/standards/ACKREDIT_GUIDE.md)
-owns the provider API; this report records Sabueso's prospective use of it.
+owns the provider API; this report records Sabueso's initial use and remaining needs.
 
 Three records have different responsibilities:
 
@@ -54,8 +55,9 @@ database's description citation. Nextia Evidence remains separate from all three
    application session; do not create isolated component sessions or infer a
    result's bibliography by subtracting deduplicated session IDs.
 4. **Saved readers:** preserve original attribution and render it without new credit,
-   backend loading or DOI enrichment. Runtime history is stored beside scientific
-   data only after the local/shared payload boundaries are agreed.
+   backend loading or DOI enrichment. The initial local record is stored beside
+   scientific data, with no change to shared knowledge payloads. Shared record
+   coordination remains MOLI #36.
 
 Bibliographic declarations must be complete, verified offline against original
 works, and versioned where appropriate. Sabueso's registry currently supplies
@@ -74,9 +76,34 @@ exact saved cards and follows represented statements, conflicts and stored
 relationship dependencies. Disease identity context is explicitly broader than
 exact grouping lineage, which was not recorded.
 
-These read-time operations provide useful support information for a future adapter.
-They do not measure runtime usage, register bibliographic records or integrate
-Ackredit. Query, packet, card and store payloads remain unchanged.
+These read-time operations keep their support/terms meaning. The initial runtime
+adapter now follows the same stored-statement closure independently of licence
+verdicts, after completed composition in an explicit `sabueso.attribution()` context.
+It records `sabueso.packet_attribution@1` locally, credits selected stored knowledge
+and executed software, and contributes per-result references to the application's
+Ackredit session/captures. It observes no source requests or arbitrary card views.
+Query, packet, card and store payloads remain unchanged.
+
+The public offline pilot in `examples/ackredit_pilot/` composes identity and
+literature packets for HsTIM from frozen public responses. Both retain reused UniProt
+references; only literature credits Europe PMC. Their enclosing workflow holds the
+union. Saved JSON readers preserve versions and add no credits. Real-provider tests
+exercise reused resources, nested scopes, detached ownership, installed failure,
+fresh-process genuine absence, lazy import and scientific result parity. Recorded
+empty source outcomes do not imply new acquisition. Acquisition/replay/empty request
+observation remains the next adapter, not a claimed feature of composition.
+
+Complete UniProt/Europe PMC description citations were verified against primary
+publication records; missing descriptions and target article/annotation-provider
+bibliography remain gaps. Explicit literal authors are preserved in CSL-JSON/text.
+BibTeX stringifies author dictionaries in the inspected provider; reproduction and
+requested correction were reported in
+[Ackredit #78](https://github.com/uibcdf/ackredit/issues/78). No renderer is copied.
+
+Consumer CI installs the full source commit above and requires real-provider tests
+and the public workflow on Python 3.11–3.13. It verifies installed imports outside
+both checkouts. Sabueso's ordinary CI remains provider-free on Python 3.11–3.14.
+`devtools/dependency_routes.toml` inventories this provisional source route.
 
 ## Adoption gates
 
@@ -96,9 +123,11 @@ Ackredit. Query, packet, card and store payloads remain unchanged.
 - Coordinate the attribution/knowledge/terms boundary in MOLI #36; Ackredit and
   MolSysSuite keep ownership of provider/member contracts and rollout.
 
-The next implementation is an opt-in local consumer pilot once its scope is
-agreed in #108, with full bibliography and original producer/source versions.
-It is separate from the current release candidate.
+The maintainer requested early optional integration on 2026-10-02. The bounded local
+composition adapter is implemented now; publication/shared-boundary gates still
+apply to broader adoption, public extras and installation claims. Next work observes
+actual acquisition boundaries, distinguishes successful/empty/replayed/failed
+requests, and expands verified resource bibliography. This change makes no release.
 
 ## Alternatives
 
@@ -114,5 +143,7 @@ It is separate from the current release candidate.
 Two public offline packet results retain their own original attribution, including
 reused resources, and the application's workflow captures both. Unused sources earn
 no credit. Saved readers, absence and provider failures preserve result knowledge.
-The provider pilot, published compatibility and shared boundary gates above pass.
-Runtime integration remains open; this record is the consumer study, not adoption.
+The local composition pilot passes; published compatibility and shared boundary
+gates remain open. #108 is kept open for acquisition/further-result coverage, complete
+bibliography, provider publication and supported-Python closure. This is an initial
+runtime integration, not a claim of full pipeline coverage or a published extra.
