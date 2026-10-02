@@ -6,7 +6,7 @@ opened: 2026-10-02
 closed:
 verification: local_runtime_tested
 area: [attribution, knowledge_packets, source_access]
-blocked_by: [uibcdf/moli#36, uibcdf/ackredit#75, uibcdf/ackredit#22, uibcdf/ackredit#80]
+blocked_by: [uibcdf/moli#36, uibcdf/ackredit#75, uibcdf/ackredit#22]
 supersedes: []
 ---
 
@@ -18,7 +18,7 @@ Owner: [uibcdf/sabueso#108](https://github.com/uibcdf/sabueso/issues/108).
 Shared boundary: [uibcdf/moli#36](https://github.com/uibcdf/moli/issues/36).
 Provider: [uibcdf/ackredit#75](https://github.com/uibcdf/ackredit/issues/75).
 Reviewed: 2026-10-02, Ackredit source
-`561989e5dfa0c48e172440b0f130a1efae961e95`.
+`e4a006a6931f3fb5f97be5b09767c144dfb35662`.
 
 ## What the consumer needs
 
@@ -103,10 +103,10 @@ regressions check original metadata in text, CSL-JSON and BibTeX without new cre
 No renderer is copied.
 
 Consumer CI installs the full source commit above and requires real-provider tests
-and the public workflow on Python 3.11–3.13. Every runtime CI lane installs the
-provider and verifies installed imports outside both checkouts. Python 3.14 uses an
-explicitly marked metadata-override compatibility probe (ackredit#80), which is not
-normal supported-provider or public-installation evidence.
+and the public workflow on Python 3.11–3.14. Every runtime CI lane installs the
+provider normally and verifies installed imports outside both checkouts. The
+provider interpreter contract is corrected under ackredit#80; no Requires-Python
+override is used. Ordinary source installation is separate from public artifacts.
 `devtools/dependency_routes.toml` inventories this provisional source route.
 
 ## Adoption gates
@@ -120,10 +120,11 @@ normal supported-provider or public-installation evidence.
   cached/offline and evaluated-empty requests, genuine absence, failure, fresh-process
   lazy import, detached ownership and saved readers without new credit.
 - Obtain published provider/dependency closure for every claimed Python minor.
-  The inspected provider declares `>=3.11,<3.14`; Sabueso supports 3.11–3.14.
+  The pinned provider declares `>=3.11,<3.15`, matching Sabueso's 3.11–3.14 range.
   Capture APIs are provisional and channel publication is pending in
-  [Ackredit #22](https://github.com/uibcdf/ackredit/issues/22). Provider 3.14 support
-  is requested in [Ackredit #80](https://github.com/uibcdf/ackredit/issues/80).
+  [Ackredit #22](https://github.com/uibcdf/ackredit/issues/22). The source interpreter
+  contract is corrected under [Ackredit #80](https://github.com/uibcdf/ackredit/issues/80);
+  its public-delivery qualification still requires an artifact and clean installation.
   No public-installation claim follows from source tests. The first stable API
   floor and exact public build pins must be set when the provider publishes.
 - Coordinate the attribution/knowledge/terms boundary in MOLI #36; Ackredit and

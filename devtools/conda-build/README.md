@@ -82,10 +82,10 @@ that schema's recorded shape is fixed.
 
 The development line now requires Ackredit for automatic packet attribution (#108).
 Its portable API has no verified stable public build across Python 3.11–3.14 yet
-(ackredit#22/#75/#80). Build, staged installed-package and promotion workflows run
+(ackredit#22/#75; public-delivery evidence is also tracked in #80). Build, staged installed-package and promotion workflows run
 `python devtools/dependency_preflight.py --release` and stop while this dependency
 is declared unpublished in `devtools/dependency_routes.toml`. Do not infer public
-closure from the source CI candidate or its experimental 3.14 metadata override.
+closure from the source CI candidate, whose normal installation now covers 3.11–3.14.
 Once the provider publishes, set the actual API floor and exact public build pins,
 verify normal clean installs on all supported interpreters, and remove the tracked
 source overlay and blocker together. The published 0.11.0 route is unchanged.

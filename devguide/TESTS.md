@@ -42,8 +42,11 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   per-result/workflow reuse, exact support scope, real provider failure, saved readers,
   context isolation and genuine fresh-process absence. CI installs a tracked full
   source commit in every runtime lane, without skipping provider tests. Python
-  3.11–3.13 use normal source installs; 3.14 is an explicitly named metadata-override
-  compatibility probe (ackredit#80), not a supported provider-installation claim.
+  3.11–3.14 use normal source installs under the provider's corrected interpreter
+  contract (ackredit#80), without metadata overrides. The source candidate is not
+  a public-channel installation claim. The preflight rejects required source
+  candidates whose interpreter range excludes a supported Sabueso minor or whose
+  workflow installation bypasses Requires-Python.
   The public workflow also runs in the provider lane. `dependency_preflight.py
   --release` blocks build, staged installation and promotion until the stable
   provider API and public dependency closure are verified (#108, ackredit#22/#75).

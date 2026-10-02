@@ -6,12 +6,11 @@ This section summarizes how to work on Sabueso code and documentation.
 
 Published dependencies come from the `uibcdf` and `conda-forge` Conda channels.
 The required Ackredit portable-API candidate is temporarily provisioned from a
-tracked source commit. Use Python 3.13 for normal development while its 3.14 metadata
-support is pending (ackredit#80):
+tracked source commit supporting Python 3.11–3.14 (ackredit#80). Python 3.13 remains
+the routine development version:
 
 ```bash
 conda env create -n sabueso-dev -f devtools/conda-envs/development_env.yaml
-conda install -n sabueso-dev "python=3.13"
 conda activate sabueso-dev
 ```
 

@@ -90,12 +90,11 @@ it (`conda install -c conda-forge pandas`) to turn tables into DataFrames. Avoid
 its package lacks a data file and cannot build cards (#35). Sabueso is not published on
 PyPI.
 
-For development, provision the Conda environment on Python 3.13 while the required
-Ackredit candidate's 3.14 support is pending:
+For development, provision the Conda environment. The required Ackredit source
+candidate supports Python 3.11–3.14; Python 3.13 remains the routine development version:
 
 ```bash
 conda env create -n sabueso-dev -f devtools/conda-envs/development_env.yaml
-conda install -n sabueso-dev "python=3.13"
 conda activate sabueso-dev
 ```
 

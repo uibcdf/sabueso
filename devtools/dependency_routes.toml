@@ -46,7 +46,7 @@ pending_public_dependencies = ["ackredit"]
 
 [routes.".github/workflows/ci.yml"]
 kind = "excluded"
-reason = "installs the Conda portion of test_env.yaml (checked above), the required full-commit Ackredit source candidate, Sabueso with pip --no-deps, and ruff; Python 3.14 is a tracked compatibility probe (ackredit#80)"
+reason = "installs the Conda portion of test_env.yaml (checked above), the required full-commit Ackredit source candidate normally on Python 3.11–3.14, Sabueso with pip --no-deps, and ruff"
 
 [routes.".github/workflows/build_and_upload_conda_packages.yaml"]
 kind = "excluded"
@@ -67,10 +67,10 @@ reason = "runs the governance check; installs no runtime"
 # Required provider publication is pending. No public floor/build is invented:
 # --release fails until these entries are removed and public pins are verified.
 [unpublished_required_dependencies.ackredit]
-reason = "portable capture API needs a stable version and public build on Python 3.11–3.14 (ackredit#75, #22, #80)"
+reason = "portable capture API needs a stable version and verified public build on Python 3.11–3.14 (ackredit#75, #22); source interpreter metadata is aligned under ackredit#80"
 issue = "https://github.com/uibcdf/sabueso/issues/108"
 
-# Development/CI only; the 3.14 metadata override is an explicit source probe.
+# Normal installed source route on every supported minor; publication is separate.
 [source_routes]
 applicable = true
 routes = [".github/workflows/ci.yml:test", ".github/workflows/ci.yml:ackredit-pilot"]
@@ -80,7 +80,6 @@ repository = "uibcdf/ackredit"
 dependency = "ackredit"
 constraint = ""
 path = ".ackredit-candidate"
-commit = "561989e5dfa0c48e172440b0f130a1efae961e95"
-python = ">=3.11,<3.14"
-experimental_python = "3.14"
-reason = "required portable capture APIs unavailable on public channels; normal source installs on 3.11–3.13, metadata override only for the 3.14 compatibility probe (ackredit#80); no public installation claim"
+commit = "e4a006a6931f3fb5f97be5b09767c144dfb35662"
+python = ">=3.11,<3.15"
+reason = "required portable capture APIs unavailable on public channels; normal source installs on Python 3.11–3.14 without metadata overrides; no public installation claim"

@@ -77,12 +77,12 @@ diagnostics before claiming completeness.
 The adapter uses a lazy required import, without DepDigest's optional-library path.
 This pilot does not enable import
 hooks, journals, automatic DOI enrichment or reminders. Its reviewed capture API is
-provisional; channel publication and Python 3.14 compatibility remain open. No public
+provisional; stable API publication and public dependency closure remain open. No public
 installation route for the development candidate is claimed. All runtime CI installs
-the required full-commit source candidate. Python 3.11–3.13 use normal source installs;
-3.14 uses an explicitly marked metadata-override compatibility probe
-([Ackredit #80](https://github.com/uibcdf/ackredit/issues/80)), which does not prove
-supported or publicly installable provider compatibility. The next Sabueso release
+the required full-commit source candidate normally on Python 3.11–3.14, following
+the provider's interpreter contract correction
+([Ackredit #80](https://github.com/uibcdf/ackredit/issues/80)). No metadata override
+is used. The next Sabueso release
 is blocked until a stable API version and public dependency closure are verified
 on every supported Python minor. The published 0.11.0 installation remains unchanged.
 

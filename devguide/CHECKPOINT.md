@@ -212,14 +212,15 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   and hashes are unchanged. Missing/broken providers diagnose failed attribution
   while retaining knowledge and host records;
   saved readers add no credit. The public offline pilot is `examples/ackredit_pilot/`.
-  All runtime CI tests real provider commit `561989e5dfa0c48e172440b0f130a1efae961e95`.
-  Python 3.11–3.13 use normal source installation; 3.14 is a metadata-override
-  compatibility probe (ackredit#80), not supported-provider/public-install evidence.
+  All runtime CI tests real provider commit `e4a006a6931f3fb5f97be5b09767c144dfb35662`.
+  Python 3.11–3.14 use normal source installation under the corrected provider
+  interpreter contract (ackredit#80), without metadata overrides. Source testing
+  does not establish a publicly released dependency closure.
   The next release is blocked by `dependency_preflight.py --release` until a stable
   provider API and public dependency closure exist on 3.11–3.14. UniProt/Europe PMC
   description citations are verified offline; other descriptions, target articles
   and annotation-provider bibliography remain explicit gaps. Acquisition coverage,
-  provider publication, 3.14 closure and the shared record boundary remain open.
+  provider publication, public closure and the shared record boundary remain open.
   Corporate-author BibTeX rendering was reported as ackredit#78 and corrected by
   the provider; the pinned candidate includes it, with CSL-JSON/text/BibTeX reader tests.
 
@@ -261,7 +262,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1308 tests passed, 26 online tests deselected (2026-10-02, with the
+- Offline suite: 1310 tests passed, 26 online tests deselected (2026-10-02, with the
   required real Ackredit source provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card

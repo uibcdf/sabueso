@@ -1,6 +1,25 @@
 # Sabueso — Decision Log
 
-## Required Ackredit and automatic result attribution (2026-10-02, #108, moli#36)
+## Adopt Ackredit's corrected Python 3.14 contract (2026-10-02, #108, ackredit#80)
+
+- Pin provider source `e4a006a6931f3fb5f97be5b09767c144dfb35662`, which declares
+  `>=3.11,<3.15` and aligns its recipe, environments and required CI. Its routine
+  CI passed at this exact commit. This supersedes the temporary interpreter
+  exception in the original required-dependency decision below.
+- Install the candidate normally in every consumer runtime lane. Remove the
+  Requires-Python override and experimental 3.14 labels; include 3.14 in the
+  dedicated real-provider/public-workflow matrix. The preflight rejects a source
+  candidate whose declared range excludes a supported Sabueso minor.
+- Preserve the required Ackredit/product contract and the automatic attribution
+  behavior. No runtime/card/packet/store schemas or science change.
+- Keep the public-release blocker: source compatibility and ordinary source
+  installation do not supply a stable portable-API version or a public Conda build
+  with a verified clean dependency closure. Those remain ackredit#75/#22; #80
+  continues to track the provider's public-delivery qualification. Set the real
+  version floor and exact public pins when published; never infer publication from
+  a closed issue or a source CI result.
+
+## Required Ackredit and automatic result attribution (2026-10-02, #108, moli#36; interpreter exception superseded)
 
 - The maintainer chose Ackredit as a hard runtime dependency: bibliography and
   attribution are part of Sabueso's knowledge product. This supersedes the initial

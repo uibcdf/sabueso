@@ -55,6 +55,26 @@ def test_release_is_blocked_until_required_ackredit_is_published():
     assert "Release blocked: ackredit" in problems[0]
 
 
+def test_required_source_cannot_exclude_a_supported_python_minor(root):
+    _edit(
+        root / "devtools/dependency_routes.toml",
+        'python = ">=3.11,<3.15"',
+        'python = ">=3.11,<3.14"',
+    )
+    (problem,) = preflight(root)
+    assert "ackredit: source candidate does not cover Python >=3.11,<3.15" in problem
+
+
+def test_required_source_installation_cannot_bypass_interpreter_metadata(root):
+    _edit(
+        root / ".github/workflows/ci.yml",
+        "pip install --no-deps --no-build-isolation .ackredit-candidate",
+        "pip install --no-deps --no-build-isolation --ignore-requires-python .ackredit-candidate",
+    )
+    (problem,) = preflight(root)
+    assert "ackredit-pilot: source installation must respect Requires-Python" in problem
+
+
 def test_source_overlay_needs_the_actual_pinned_provider_install(root):
     inventory = tomllib.loads((root / "devtools/dependency_routes.toml").read_text())
     commit = inventory["source_routes"]["candidates"][0]["commit"]

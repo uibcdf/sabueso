@@ -293,8 +293,9 @@ In order:
      automatic packet-composition adapter and public offline workflow are
      implemented against provisional capture APIs (ackredit#75). Source acquisition,
      further result types, complete resource bibliography and published Python
-     dependency closure remain next work and block the next release. Python 3.14
-     provider support is requested in ackredit#80. The provider corrected explicit
+     dependency closure remain next work and block the next release. The provider
+     source contract now covers Python 3.14 under ackredit#80; normal consumer source
+     installation replaces the earlier metadata override. The provider corrected explicit
      author-object BibTeX rendering in ackredit#78; the pinned candidate includes it.
      Knowledge support, runtime use and terms retain
      their separate meanings; scientific payloads are unchanged.

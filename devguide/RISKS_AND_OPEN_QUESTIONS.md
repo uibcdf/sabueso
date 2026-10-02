@@ -14,13 +14,13 @@
   statement support is available, but exact mapping/qualifier lineage is not always
   recorded; disease grouping includes broader MONDO/MedGen identity/hierarchy context.
 - **Required pipeline attribution / release blocker** (#108, moli#36): Ackredit source capture APIs
-  are provisional, publication is pending and its declared Python range does not yet
-  cover Sabueso's 3.14 claim. The first runtime adapter observes packet composition;
+  are provisional and publication is pending. Its corrected source contract covers
+  Sabueso's Python 3.11–3.14 range (ackredit#80). The first runtime adapter observes packet composition;
   source acquisition and further result types still need adapters. Only UniProt and
   Europe PMC description papers are declared so far; other citations remain explicit
   gaps. Every runtime CI lane installs the full-commit source provider. Python
-  3.11–3.13 use normal source installs; 3.14 uses an explicit metadata-override probe
-  (ackredit#80), which cannot establish supported or public provider closure.
+  3.11–3.14 use normal source installs, without metadata overrides; this cannot
+  establish public provider closure until a released artifact is verified.
   `dependency_preflight.py --release` blocks build, installed-package and promotion
   routes until a stable API version and exact public provider pins are verified
   on every supported Python minor. The unversioned required metadata is temporary:

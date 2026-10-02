@@ -221,6 +221,15 @@ def preflight(root: Path, *, release: bool = False) -> List[str]:
             )
         if candidate.get("constraint") != required.get(name):
             problems.append(f"{name}: source constraint differs from pyproject.toml")
+        floor, ceiling, _ = _bounds(candidate.get("python", ""))
+        public_floor, public_ceiling, _ = _bounds(python)
+        if (
+            floor is None
+            or ceiling is None
+            or (public_floor and floor > public_floor)
+            or (public_ceiling and ceiling < public_ceiling)
+        ):
+            problems.append(f"{name}: source candidate does not cover Python {python}")
         if release:
             problems.append(f"Release blocked: {name}: {entry.get('reason')}")
     for route, entry in sorted(routes.items()):
@@ -268,6 +277,8 @@ def preflight(root: Path, *, release: bool = False) -> List[str]:
             re.M | re.S,
         )
         body = match.group(1) if match else ""
+        if "--ignore-requires-python" in body:
+            problems.append(f"{lane}: source installation must respect Requires-Python")
         for name, candidate in candidates.items():
             if not re.search(
                 r"^\s+ref: " + re.escape(candidate.get("commit", "")) + r"\s*$",
