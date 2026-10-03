@@ -20,7 +20,9 @@
   further result types still need adapters. Detached traces must be explicitly saved
   by the application; payload-only readers cannot reconstruct original execution.
   MOLI ProjectRecord/Recorda routing, correlation and strict recording policy remain
-  platform-owned open work, not guarantees of this local slice. Only UniProt and
+  platform-owned open work, not guarantees of this local slice. The prepared 0.12.0
+  scope (#110) states these gaps; it does not claim complete pipeline traceability.
+  Only UniProt and
   Europe PMC description papers are declared so far; other citations remain explicit
   gaps. Every runtime CI lane installs the full-commit source provider. Python
   3.11–3.14 use normal source installs, without metadata overrides; this cannot

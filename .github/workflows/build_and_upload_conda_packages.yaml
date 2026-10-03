@@ -181,7 +181,8 @@ jobs:
       - name: Build, test, and upload the staging candidate
         id: conda_staging
         if: github.event_name == 'workflow_dispatch'
-        uses: uibcdf/action-build-and-upload-conda-packages@v2.1.0
+        # Qualified environment-aware builder (provider #46/#47; Sabueso #110).
+        uses: uibcdf/action-build-and-upload-conda-packages@8da628d9b393e184c3bf3722708b19dcfbf7ef0a
         env:
           SABUESO_CONDA_BUILD_NUMBER: ${{ inputs.build_number }}
         with:
@@ -199,7 +200,7 @@ jobs:
       - name: Build, test, and upload the unstaged release
         id: conda_release
         if: github.event_name == 'release' && steps.plan.outputs.route == 'direct'
-        uses: uibcdf/action-build-and-upload-conda-packages@v2.1.0
+        uses: uibcdf/action-build-and-upload-conda-packages@8da628d9b393e184c3bf3722708b19dcfbf7ef0a
         env:
           SABUESO_CONDA_BUILD_NUMBER: 0
         with:

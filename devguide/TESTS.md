@@ -39,7 +39,12 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   (`ARGUMENT_CONTRACTS.md`).
 - **Installed-package gates.** Release candidates are tested from the exact conda
   artifact, on Linux, macOS and Windows × Python 3.11–3.14, before publication
-  (`devtools/conda-build/README.md`).
+  (`devtools/conda-build/README.md`). The prepared 0.12.0 gate additionally rejects
+  source-shadowed/inconsistent or incomplete Ackredit imports, then runs unchanged
+  acquisition/attribution tests and the public saved-reader workflow outside both
+  checkouts. Public Pytest/Receptor tooling is installed with Conda; no runtime
+  source/pip overlay substitutes for the artifact. Provider public pins remain
+  pending, so this prepared matrix is not an installed-file success receipt (#110).
 - **Required Ackredit integration.** `tests/core/test_attribution_offline.py` exercises
   automatic per-result attachment without a collector,
   per-result/workflow reuse, exact support scope, real provider failure, saved readers,

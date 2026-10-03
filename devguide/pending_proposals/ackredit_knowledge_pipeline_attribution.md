@@ -14,7 +14,8 @@ supersedes: []
 
 Status: required automatic packet-composition and bounded source-acquisition adapters
 implemented; broader pipeline
-coverage and stable public dependency closure remain open and block the next release.
+coverage remains open with explicit gaps in the prepared 0.12.0 scope (#110).
+Stable public dependency closure blocks building and publishing that release.
 Owner: [uibcdf/sabueso#108](https://github.com/uibcdf/sabueso/issues/108).
 Shared boundary: [uibcdf/moli#36](https://github.com/uibcdf/moli/issues/36).
 Provider: [uibcdf/ackredit#75](https://github.com/uibcdf/ackredit/issues/75).
@@ -149,6 +150,12 @@ MolSysSuite #78. Repeat receiving qualification against the eventual exact
 staged/public file; a new build with the same version is not the same artifact.
 
 ## Adoption gates
+
+The staged 0.12.0 preparation is tracked in #110. Its installed-file matrix now
+requires provider import/metadata/API checks, the unchanged acquisition/attribution
+regressions and the public workflow on every supported OS/minor, outside both
+checkouts. This is a prepared gate, not an artifact receipt. Public delivery and a
+clean installed frozen 0.3.11 card precede selection of the final candidate.
 
 - Keep Ackredit required in metadata and the recipe. Lazy required import keeps
   saved readers free of backend loading. Missing/broken installations emit SMonitor

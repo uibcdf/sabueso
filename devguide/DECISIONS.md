@@ -1,5 +1,33 @@
 # Sabueso — Decision Log
 
+## Prepare bounded staged 0.12.0 release (2026-10-03, #110)
+
+- The maintainer accepted a substantial 0.12.0 preparation combining located
+  literature/structural context, pinned terms and explanations, required packet
+  attribution and the first source-acquisition trace. The draft notes and plan
+  record this scope without claiming publication or a final candidate SHA.
+  `CITATION.cff` follows the planned version, keeping the verified concept/historical
+  DOIs; its release date is omitted during blocked preparation, not invented.
+- Keep traceability mandatory and state the acquisition slice's actual built-in
+  UniProt/Europe PMC coverage. Further sources/results, bibliography gaps and MOLI
+  Recorda integration remain #108/#36 work; this release does not claim full coverage.
+  The earlier roadmap wording grouped coverage work with the public-release blocker;
+  the bounded scope now separates their completion from dependency delivery.
+- Use the staged route for a new required provider and schema 0.3.11. Adopt exact
+  qualified builder `8da628d9b393e184c3bf3722708b19dcfbf7ef0a` (provider #46/#47),
+  preserving immutable coordinates, producer evidence and promotion controls.
+- Extend the actual staged-file matrix with required-provider origin/metadata/API
+  checks, unchanged copied acquisition/attribution regressions and the public
+  saved-reader workflow outside both checkouts. Source CI alone cannot verify the
+  eventual Conda file. New Pytest/Receptor dependencies are gate tooling only.
+- Leave the public-provider preflight block intact. After verified Ackredit delivery,
+  set its real floor/public pins and remove source overlays/blocker together.
+  Freeze the new schema from a clean installed candidate before tagging; no frozen
+  compatibility artifact is made from the editable workspace.
+- Exact final-candidate CI, staged archive inspection and the installed
+  Linux/macOS/Windows × Python 3.11–3.14 matrix precede stable publication.
+  A builder-pin adoption or preparation receipt is not a staged-build receipt.
+
 ## Required source traceability and first acquisition slice (2026-10-03, #108, moli#36)
 
 - The maintainer requires traceability as part of Sabueso's knowledge product and

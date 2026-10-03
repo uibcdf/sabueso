@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use Sabueso, please cite the software using this metadata."
+message: "Development metadata for planned Sabueso 0.12.0. For a published version, use the metadata of its release tag."
 title: Sabueso
 type: software
 authors:
@@ -11,8 +11,8 @@ authors:
     given-names: Liliana M.
     orcid: "https://orcid.org/0000-0003-2812-1499"
     affiliation: Hospital Infantil de México Federico Gómez (HIMFG) – UIBCDF
-version: 0.11.0
-date-released: 2026-10-02
+# Planned release; the publication date is unset during blocked preparation.
+version: 0.12.0
 doi: 10.5281/zenodo.22937375
 identifiers:
   - type: doi

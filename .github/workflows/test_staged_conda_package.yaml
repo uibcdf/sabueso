@@ -129,6 +129,8 @@ jobs:
             uibcdf::argdigest=0.13.0=py_1
             uibcdf::depdigest=0.11.0=py_2
             uibcdf::smonitor=0.17.0=py_0
+            pytest>=8
+            uibcdf::pytest-receptor=1.2.0
       - name: Verify installed artifact and smoke test outside the source checkout
         shell: bash -l {0}
         env:
@@ -147,3 +149,23 @@ jobs:
           python "$checker" installed --prefix "$CONDA_PREFIX" \
             --sha256 "$EXPECTED_SHA256" --version "$CANDIDATE_VERSION" \
             --build-number "$BUILD_NUMBER" --python-version "$PYTHON_VERSION"
+      - name: Exercise required attribution and source traceability on the installed file
+        shell: bash -l {0}
+        run: |
+          set -euo pipefail
+          # Only public fixtures and unchanged tests enter this directory. Neither
+          # consumer nor provider is replaced by a checkout/source overlay (#110).
+          if [[ "$RUNNER_OS" == "Windows" ]]; then
+            client_dir="$(cygpath -u "$RUNNER_TEMP")/sabueso-installed-attribution"
+          else
+            client_dir="$RUNNER_TEMP/sabueso-installed-attribution"
+          fi
+          mkdir -p "$client_dir"
+          cp "$GITHUB_WORKSPACE/tests/core/test_attribution_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/core/test_source_acquisition_offline.py" "$client_dir/"
+          cp -R "$GITHUB_WORKSPACE/temp_data" "$client_dir/temp_data"
+          cd "$client_dir"
+          python -m pytest test_attribution_offline.py test_source_acquisition_offline.py \
+            -m "not online" --receptor=ci
+          python "$GITHUB_WORKSPACE/examples/ackredit_pilot/run.py" \
+            --fixtures temp_data --output pilot

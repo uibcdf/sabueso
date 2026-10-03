@@ -71,7 +71,12 @@ def test_noarch_workflow_has_one_job_and_retains_producer_evidence():
     workflow = WORKFLOW.read_text(encoding="utf-8")
 
     assert "matrix:" not in workflow
-    assert "@v2.1.0" in workflow
+    assert (
+        workflow.count(
+            "uibcdf/action-build-and-upload-conda-packages@8da628d9b393e184c3bf3722708b19dcfbf7ef0a"
+        )
+        == 2
+    )
     assert "--python" not in workflow
     assert "platform_linux-64: false" in workflow
     assert "platform_win-64: false" in workflow

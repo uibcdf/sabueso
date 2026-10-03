@@ -50,6 +50,12 @@ an API smoke test (a card whose quantities are sealed by `to_dict()` and verifie
 `from_dict()`) in clean Linux, macOS Apple Silicon (arm64) and Windows
 environments for Python 3.11–3.14, with the
 public SMonitor, PyUnitWizard and DepDigest builds.
+The installed check also rejects an Ackredit import from a source checkout,
+inconsistent provider metadata or missing portable capture/reader APIs. Each
+installed lane then runs the unchanged acquisition/packet-attribution regressions
+and public offline workflow outside both checkouts, using only copied public
+fixtures and the installed provider/consumer. Pytest and published Pytest Receptor
+are gate tooling; no runtime source overlay or pip replacement is installed.
 Do not publish a stable GitHub Release until every cell passes.
 
 For a staged release, the release event verifies the plan and does not
@@ -89,3 +95,38 @@ closure from the source CI candidate, whose normal installation now covers 3.11�
 Once the provider publishes, set the actual API floor and exact public build pins,
 verify normal clean installs on all supported interpreters, and remove the tracked
 source overlay and blocker together. The published 0.11.0 route is unchanged.
+
+## Prepared 0.12.0 scope (#110)
+
+`release_plan.toml` selects 0.12.0 and the staged route;
+`release_notes_0.12.0.md` contains the reusable draft. No final candidate SHA,
+staged artifact, frozen 0.3.11 card or publication receipt is claimed yet.
+
+The preparation includes the exact qualified builder
+`8da628d9b393e184c3bf3722708b19dcfbf7ef0a`, retaining upload, immutable coordinate,
+producer-receipt and promotion contracts. Provider #46/#47 and the MolSysSuite #78
+handoff supply environment-aware compilation qualification; this pin adoption is
+not an actual Sabueso staged-build receipt.
+
+Before selecting the final candidate:
+
+1. Verify Ackredit's published portable API artifact and normal clean dependency
+   closure; set its real minimum version and exact public build pins. Remove the
+   source overlays and blocker together. Reconcile public pins with the provider's
+   transitive requirements, then pass `dependency_preflight.py --release`.
+2. Build a local, unpublished candidate Conda file and install it in a separate
+   clean environment. Generate the 0.3.11 frozen public card from that installed
+   code, record its candidate/fixture/version/licence receipt in `temp_data/NOTICE.md`,
+   and commit it. Do not freeze a card from the editable workspace.
+3. Review the final notes and set the actual release date in `CITATION.cff`, which
+   already follows the planned version and retains the concept/historical DOIs.
+   Run local gates, inspect exact final-SHA CI/governance and confirm the registry
+   coordinate before dispatching the staged build.
+4. Inspect the staged archive and complete Linux/macOS/Windows × Python 3.11–3.14
+   installed gates, including required-provider regressions.
+5. Then publish the stable GitHub release, promote the tested file, verify a clean
+   public install and archive the identical tag on Zenodo.
+
+Broader source/result coverage, undeclared bibliography and Recorda integration
+remain issue-backed work with explicit release limits. This bounded scope retains
+the required traceability target without asserting full pipeline provenance.

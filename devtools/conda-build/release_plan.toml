@@ -1,7 +1,7 @@
-version = "0.11.0"
+version = "0.12.0"
 route = "staged"
-reason = "An integrity correction for published users: CurationStore never exports rule/model extractions as human curation, including validated extractions (#105); existing source assertion identifiers with spaces are readable by their pins (#104). Adds pinned structural inventory explanations (structure_inventory_explanation@1, #91), explicit-article located accession annotations at source access (#92), and a public hypothetical curation rehearsal. Temporal tests are independent of local dates (#106). Card schema 0.3.10 and store formats remain unchanged. The same immutable staged artifact must pass clean installed-package gates on Linux, macOS and Windows with Python 3.11-3.14 before publication."
-decision_by = "Diego Prada (Sabueso maintainer), release continuation requested 2026-10-02; plan prepared by Codex"
+reason = "A substantial knowledge and traceability release: located article intake and source-supported structural mention context (card schema 0.3.11), pinned literature explanations and packet terms, required automatic Ackredit packet attribution, and bounded UniProt/Europe PMC source-acquisition traces (#110, #108). A new required dependency and additive schema require the staged route. Building remains blocked until the portable provider API has a verified public artifact and clean supported dependency closure. Freeze schema 0.3.11 from a clean installed candidate before tagging. The same immutable staged artifact must pass clean installed-package gates, real attribution/acquisition regressions and the public workflow on Linux, macOS and Windows with Python 3.11-3.14 before publication."
+decision_by = "Diego Prada (Sabueso maintainer), release preparation continuation requested 2026-10-03; plan prepared by Codex; publication remains gated"
 required_workflows = [
   ".github/workflows/ci.yml",
   ".github/workflows/moli-governance.yml",

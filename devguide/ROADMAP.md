@@ -37,6 +37,22 @@ status, so that none is lost because a pilot has not asked for it yet.
 - **Maintainers may schedule a foundational objective on its own.** The pilots do not
   own the plan.
 
+## Prepared next release: 0.12.0 (#110)
+
+The maintainer requested preparation on 2026-10-03. This staged candidate combines
+located literature and structural context, literature explanations, pinned packet
+terms, required Ackredit attribution and the first automatic acquisition trace.
+It advances foundational support/terms/reference integrity and the pilot-driven
+need to retain original source access and per-result/workflow references.
+
+The agreed acquisition scope is built-in UniProt/Europe PMC. Other sources/custom
+clients, further result types, undeclared bibliography and Recorda integration
+remain open with explicit gaps; they do not claim completed coverage in this slice.
+Publication is gated by actual public Ackredit closure, a clean installed frozen
+0.3.11 card, exact final-SHA CI and the staged artifact's full installed matrix.
+See the committed release plan, draft notes and route checklist in
+`devtools/conda-build/`. Preparation does not publish a version.
+
 ## Delivered so far (0.1.0 → 0.11.0)
 
 - **Foundations.**
@@ -297,8 +313,10 @@ In order:
      fixture/reuse/replay, empty answers, failure and original response identities,
      automatically on cards, resolutions and one-call packets. The public pilot
      saves those detached traces and credits completed access in the workflow.
-     Other sources/custom clients, further result types, complete resource bibliography and published Python
-     dependency closure remain next work and block the next release. The provider
+     Other sources/custom clients, further result types and complete resource
+     bibliography remain coverage work with explicit gaps in the prepared 0.12.0
+     scope (#110). Published Python dependency closure blocks building and
+     publishing that release. The provider
      source contract now covers Python 3.14 under ackredit#80; normal consumer source
      installation replaces the earlier metadata override. The provider corrected explicit
      author-object BibTeX rendering in ackredit#78; the pinned candidate includes it.

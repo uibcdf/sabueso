@@ -7,6 +7,21 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 *Last updated: 2026-10-03, after release 0.11.0.*
 
+## Release preparation
+
+- **Proposed 0.12.0, staged route (#110):** literature context, pinned terms and
+  explanations, required Ackredit attribution and bounded source-acquisition traces.
+  The committed plan is `devtools/conda-build/release_plan.toml`; reusable draft
+  notes are `devtools/conda-build/release_notes_0.12.0.md`.
+- Preparation adopts qualified builder `8da628d9b393e184c3bf3722708b19dcfbf7ef0a`
+  and extends the exact installed-file matrix with provider origin/API checks,
+  copied attribution/acquisition regressions and the public offline workflow.
+- **Build/publication remains blocked:** verify public Ackredit delivery (#22/#75),
+  set the actual dependency floor and public pins, remove source overlays/blocker
+  together, then generate the frozen 0.3.11 public card from a clean installed
+  candidate. No final release SHA, candidate Conda file or 0.12.0 publication is
+  claimed. Latest published release remains 0.11.0.
+
 ## Release and schema
 
 - **Latest release:** 0.11.0 (2026-10-02).
@@ -284,7 +299,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1332 tests passed, 26 online tests deselected (2026-10-03, in
+- Offline suite: 1336 tests passed, 26 online tests deselected (2026-10-03, in
   `molsyssuite@uibcdf_3.14`, with all installed workspace packages editable and the
   required real Ackredit source provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.

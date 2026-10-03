@@ -167,6 +167,7 @@ def test_installed_gate_accepts_exact_stage_and_public_dependencies(
         ),
     )
     monkeypatch.setattr(verifier, "api_smoke", lambda: True)
+    monkeypatch.setitem(sys.modules, "ackredit", _provider(tmp_path))
     verifier.verify_installed(
         tmp_path,
         DIGEST,
@@ -174,6 +175,40 @@ def test_installed_gate_accepts_exact_stage_and_public_dependencies(
         0,
         f"{sys.version_info.major}.{sys.version_info.minor}",
     )
+
+
+def _provider(prefix):
+    return SimpleNamespace(
+        __version__=VERSION,
+        __file__=prefix / "lib" / "site-packages" / "ackredit" / "__init__.py",
+        capture=lambda: None,
+        get_attribution=lambda: None,
+        scope=lambda: None,
+        register_item=lambda: None,
+        track_item=lambda: None,
+        Attribution=SimpleNamespace(from_dict=lambda: None),
+    )
+
+
+@pytest.mark.parametrize(
+    ("changed", "message"),
+    [
+        ({"__file__": SCRIPT}, "Ackredit source checkout"),
+        ({"__version__": "0.0.0+stale"}, "Ackredit distribution version mismatch"),
+        ({"capture": None}, "Ackredit lacks capture"),
+        ({"Attribution": None}, "Ackredit lacks portable Attribution.from_dict"),
+    ],
+)
+def test_required_provider_gate_rejects_source_shadows_or_incomplete_api(
+    tmp_path, monkeypatch, changed, message
+):
+    provider = _provider(tmp_path)
+    for name, value in changed.items():
+        setattr(provider, name, value)
+    monkeypatch.setitem(sys.modules, "ackredit", provider)
+    monkeypatch.setattr(verifier.importlib.metadata, "version", lambda _: VERSION)
+    with pytest.raises(ValueError, match=message):
+        verifier.verify_required_provider(tmp_path)
 
 
 @pytest.mark.parametrize(

@@ -211,7 +211,28 @@ def verify_installed(
         Path(sabueso.__file__).resolve().is_relative_to(prefix.resolve()),
         "Imported the source checkout instead of the installed package",
     )
+    verify_required_provider(prefix)
     _require(api_smoke(), "Installed API smoke failed")
+
+
+def verify_required_provider(prefix: Path) -> None:
+    """Reject source shadows, inconsistent metadata or an older required-provider API."""
+    import ackredit
+
+    _require(
+        Path(ackredit.__file__).resolve().is_relative_to(prefix.resolve()),
+        "Imported the Ackredit source checkout instead of the installed package",
+    )
+    _require(
+        ackredit.__version__ == importlib.metadata.version("ackredit"),
+        "Ackredit distribution version mismatch",
+    )
+    for name in ("capture", "get_attribution", "scope", "register_item", "track_item"):
+        _require(callable(getattr(ackredit, name, None)), f"Ackredit lacks {name}")
+    _require(
+        callable(getattr(getattr(ackredit, "Attribution", None), "from_dict", None)),
+        "Ackredit lacks portable Attribution.from_dict",
+    )
 
 
 def api_smoke() -> bool:

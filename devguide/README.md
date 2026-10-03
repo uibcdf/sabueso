@@ -19,6 +19,10 @@ Every document is one of four kinds:
 | `DECISIONS.md` | living (log) | Every design decision, dated, with its reason |
 | `RISKS_AND_OPEN_QUESTIONS.md` | living | Risks for the future, and decisions to re-evaluate |
 
+Release preparation lives in `../devtools/conda-build/`: the committed plan, route
+checklist and draft `release_notes_0.12.0.md` (#110). Published state stays in
+`CHECKPOINT.md`; a preparation plan is not a release receipt.
+
 ## Design
 
 | Document | Kind | What it holds |
