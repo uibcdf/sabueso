@@ -19,8 +19,8 @@ Stable public dependency closure blocks building and publishing that release.
 Owner: [uibcdf/sabueso#108](https://github.com/uibcdf/sabueso/issues/108).
 Shared boundary: [uibcdf/moli#36](https://github.com/uibcdf/moli/issues/36).
 Provider: [uibcdf/ackredit#75](https://github.com/uibcdf/ackredit/issues/75).
-Reviewed: 2026-10-03, Ackredit source
-`383a64b2fdbc5472a7cdeb92c464b87433aabd76`.
+Reviewed: 2026-10-03, CI source `383a64b2fdbc5472a7cdeb92c464b87433aabd76`
+and independently installed staging source `598abf993a2409c025de5e912acd7eb45a257ebd`.
 
 ## What the consumer needs
 
@@ -137,17 +137,62 @@ dedicated lanes copy unchanged integration tests to a temporary working director
 and run the public workflow outside both checkouts, exercising installed code.
 
 The provider accepted the portable contract for its prepared 0.9.0 candidate under
-Ackredit #75; public delivery remains open. Local receiving-consumer proof uses the
-actual diagnostic Conda file built from `15b1958b9752a89974bb1d0df882a17841ed62b4`,
-SHA-256 `99e6f9b9f0a3b0a22c66e476230dddabd2ba0017c59beb3253fbadc781d665c6`.
-On Linux Python 3.14.7, Sabueso and Ackredit both import from isolated site-packages;
-14 unchanged integration tests, the public workflow and pip check pass with public
-runtime dependencies. The
-[receiving receipt](https://github.com/uibcdf/sabueso/issues/108#issuecomment-5968486124)
-also links the provider handoff. This supplements source tests without certifying a
-hosted staged-file matrix or public channel. Shared publisher adoption remains
-MolSysSuite #78. Repeat receiving qualification against the eventual exact
-staged/public file; a new build with the same version is not the same artifact.
+Ackredit #75; public delivery remains open. The earlier
+[local diagnostic receipt](https://github.com/uibcdf/sabueso/issues/108#issuecomment-5968486124)
+is superseded for receiving qualification by the actual staging file below.
+
+## Independent exact-staging receiving qualification (2026-10-03)
+
+The provider's [handoff](https://github.com/uibcdf/sabueso/issues/108#issuecomment-5971254953)
+supplies `noarch/ackredit-0.9.0-py_0.tar.bz2`, built from
+`598abf993a2409c025de5e912acd7eb45a257ebd` in successful producer
+[37136075066](https://github.com/uibcdf/ackredit/actions/runs/37136075066).
+Independent download SHA-256 is
+`37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1`.
+It matches retained `noarch-artifact.json` and the verified `uibcdf.conda-upload@1`
+staging receipt in artifact `noarch-publication-37136075066-1`, including producer
+identity, source, label and coordinate. Archive metadata also matches 0.9.0/py_0/noarch.
+
+Sabueso independently repeats the receiving tests with its prepared source
+`7352cf4437dca6d0249c3af9777ad123926d2f31`. A disposable clone supplies a normal
+local wheel, SHA-256
+`2520fd3e07fa6db5c65f66f3087175c7657a3c7b519fbf9a1cf3c4d9ccf38f61`.
+All 348 Python modules excluding generated `_version.py`, plus packaged
+selection/profile/terms resources, match that source without extra modules.
+Cleaning tracked generated build copies in the disposable clone explains its
+development suffix; this wheel is compatibility input, not a published artifact.
+
+Four fresh Linux environments use strict public channels and the exact core builds
+planned for Sabueso's installed gate: SMonitor 0.17.0/py_0, ArgDigest 0.13.0/py_1,
+DepDigest 0.11.0/py_2 and PyUnitWizard 0.27.0/py_0. Public Pytest/Receptor tooling
+is installed with Conda. Only the verified Ackredit file comes from staging; the
+consumer wheel is installed normally with `pip --no-deps`, not editable.
+
+| Python | Unchanged acquisition/attribution cases | Public workflow | Pip check |
+| --- | --- | --- | --- |
+| 3.11.16 | 36 passed, no skips | passed | passed |
+| 3.12.14 | 36 passed, no skips | passed | passed |
+| 3.13.15 | 36 passed, no skips | passed | passed |
+| 3.14.7 | 36 passed, no skips | passed | passed |
+
+Tests execute outside both checkouts using only frozen public fixtures. Provider,
+consumer and core dependencies import non-editable code from the isolated prefix's
+site-packages; runtime and distribution versions agree. Installed package bytes
+match their archive/wheel, and the installed Conda record keeps the exact staging
+URL/version/build/SHA-256. The pilot verifies the original trace, two result
+bibliographies, reused references, workflow union and saved readers without new credit.
+The compact durable
+[receiving receipt](../../devtools/conda-build/receipts/ackredit_0.9.0_staging_2026-10-03.json)
+retains file/source identities, pins and each result. The primary workspace environment
+retains editable packages.
+
+This establishes Linux receiving compatibility with the actual staged provider,
+including Sabueso's older public core pins. It does not replace Ackredit's hosted
+Linux/macOS-arm64 installed matrix or Sabueso's eventual Conda installed matrix.
+The hosted descriptor/caller needs are already owned by MolSysSuite #89/#88;
+promotion and verified public installation remain Ackredit #22/#75 work. Keep
+`dependency_preflight.py --release` blocked and retain source overlays/public-pin
+placeholders. Repeat qualification if the bytes change; a version alone is no artifact identity.
 
 ## Adoption gates
 
@@ -170,8 +215,9 @@ clean installed frozen 0.3.11 card precede selection of the final candidate.
   The portable contract is accepted for prepared 0.9.0; channel publication is pending in
   [Ackredit #22](https://github.com/uibcdf/ackredit/issues/22). The source interpreter
   contract is corrected under [Ackredit #80](https://github.com/uibcdf/ackredit/issues/80);
-  its public-delivery qualification still requires an artifact and clean installation.
-  No public-installation claim follows from source or local diagnostic tests. The
+  the exact staging file has Linux receiver proof but hosted qualification and clean
+  public installation remain pending. No public-installation claim follows from
+  source, diagnostic or staging tests. The
   accepted API's floor and exact public build pins must be set after the published
   artifact is verified.
 - Coordinate the attribution/knowledge/terms boundary in MOLI #36; Ackredit and

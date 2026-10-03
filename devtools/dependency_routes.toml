@@ -67,7 +67,7 @@ reason = "runs the governance check; installs no runtime"
 # Required provider publication is pending. No public floor/build is invented:
 # --release fails until these entries are removed and public pins are verified.
 [unpublished_required_dependencies.ackredit]
-reason = "accepted portable contract is assigned to the prepared 0.9.0 candidate; staging, exact-file qualification and verified public installation on Python 3.11–3.14 remain pending (ackredit#22, #75, #80; shared publisher adoption molsyssuite#78)"
+reason = "portable 0.9.0 has a verified staging file and independent Linux receiving tests on Python 3.11–3.14; hosted exact-file qualification, promotion and verified clean public installation remain pending (ackredit#22, #75; molsyssuite#88/#89)"
 issue = "https://github.com/uibcdf/sabueso/issues/108"
 
 # Normal installed source route on every supported minor; publication is separate.

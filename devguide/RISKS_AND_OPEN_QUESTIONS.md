@@ -27,6 +27,10 @@
   gaps. Every runtime CI lane installs the full-commit source provider. Python
   3.11–3.14 use normal source installs, without metadata overrides; this cannot
   establish public provider closure until a released artifact is verified.
+  Independent Linux receiving tests against the real 0.9.0 staging file pass on
+  all four minors with the planned public core pins. Hosted provider qualification,
+  promotion and clean public installation remain pending (molsyssuite#88/#89;
+  ackredit#22/#75); staging evidence does not remove the release blocker.
   `dependency_preflight.py --release` blocks build, installed-package and promotion
   routes until a stable API version and exact public provider pins are verified
   on every supported Python minor. The unversioned required metadata is temporary:

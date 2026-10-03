@@ -96,6 +96,16 @@ Once the provider publishes, set the actual API floor and exact public build pin
 verify normal clean installs on all supported interpreters, and remove the tracked
 source overlay and blocker together. The published 0.11.0 route is unchanged.
 
+Independent receiving qualification on 2026-10-03 verifies the real Ackredit
+staging file from producer 37136075066 and runs all 36 attribution/acquisition
+cases, the public workflow and pip check on fresh Linux Python 3.11–3.14
+environments with the planned public core pins. See
+`receipts/ackredit_0.9.0_staging_2026-10-03.json` and the #108 report. The
+consumer is a local wheel whose source/resources and installed bytes are checked;
+this is not a Sabueso Conda release or public-provider closure. The hosted provider
+qualification/caller repairs remain molsyssuite#88/#89, followed by promotion and
+verified clean public installation. Keep the release preflight blocked.
+
 ## Prepared 0.12.0 scope (#110)
 
 `release_plan.toml` selects 0.12.0 and the staged route;

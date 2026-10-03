@@ -16,6 +16,11 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 - Preparation adopts qualified builder `8da628d9b393e184c3bf3722708b19dcfbf7ef0a`
   and extends the exact installed-file matrix with provider origin/API checks,
   copied attribution/acquisition regressions and the public offline workflow.
+- Ackredit's real 0.9.0 staging file is independently verified. Fresh Linux
+  receiving installs pass all 36 attribution/acquisition cases and the public
+  workflow on Python 3.11–3.14 with Sabueso's exact public runtime pins; receipt:
+  `devtools/conda-build/receipts/ackredit_0.9.0_staging_2026-10-03.json`.
+  This uses a local consumer wheel, not a staged Sabueso Conda file.
 - **Build/publication remains blocked:** verify public Ackredit delivery (#22/#75),
   set the actual dependency floor and public pins, remove source overlays/blocker
   together, then generate the frozen 0.3.11 public card from a clean installed
@@ -233,13 +238,18 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   Python 3.11–3.14 use normal source installation under the corrected provider
   interpreter contract (ackredit#80), without metadata overrides. Source testing
   does not establish a publicly released dependency closure.
-  Local installed receiving tests on Linux Python 3.14.7 pass 14 integration cases,
-  the public workflow and pip check against the exact diagnostic 0.9.0 Conda file
-  (SHA-256 `99e6f9b9f0a3b0a22c66e476230dddabd2ba0017c59beb3253fbadc781d665c6`);
-  evidence is linked in #108 and ackredit#22/#75. That local file is not public delivery.
+  Independent installed receiving tests on fresh Linux Python 3.11–3.14 pass 36
+  integration cases per minor, the public workflow and pip check against the real
+  staging 0.9.0 Conda file from provider source `598abf9`, producer 37136075066
+  (SHA-256 `37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1`).
+  Consumer source `7352cf4` is installed as a local wheel outside both checkouts;
+  all 348 source modules and packaged rule/profile/terms resources match that SHA.
+  The receipt retains Sabueso's exact public core pins, installed archive/source
+  identity and non-editable origins. This is receiving compatibility, not public delivery.
   The next release is blocked by `dependency_preflight.py --release` until the
   accepted API is published and public dependency closure exists on 3.11–3.14.
-  Shared publisher adoption remains molsyssuite#78. UniProt/Europe PMC
+  Ackredit's hosted installed descriptor/caller fixes remain molsyssuite#88/#89;
+  #78 tracks shared delivery. UniProt/Europe PMC
   description citations are verified offline; other descriptions, target articles
   and annotation-provider bibliography remain explicit gaps. Broader acquisition coverage,
   provider publication, public closure and the shared record boundary remain open.

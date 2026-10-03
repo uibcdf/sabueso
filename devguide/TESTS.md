@@ -58,7 +58,13 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   Dedicated provider lanes run the unchanged integration tests and public workflow
   outside both checkouts, using installed consumer/provider code and public fixtures.
   The portable contract is accepted for prepared 0.9.0; source-installed CI and
-  local exact-file receiving proof remain distinct from public delivery.
+  independent exact-staging-file receiving proof remain distinct from public delivery.
+  Fresh Linux receiving environments at Python 3.11–3.14 run the 36 unchanged
+  attribution/acquisition cases, public workflow and pip check with the planned
+  exact public core builds. Their artifact/source/installed-byte and origin receipt
+  is `devtools/conda-build/receipts/ackredit_0.9.0_staging_2026-10-03.json`.
+  The consumer is a local wheel with all source modules/resources checked against
+  its commit; these are not Sabueso's staged Conda installed-package gates.
   `test_source_acquisition_offline.py` checks automatic card/resolution/one-call
   packet traces, final refresh pins, original versions/hashes, fixtures, archive
   replay/reuse, evaluated-empty access, HTTP absence, missing fixtures, timeouts,

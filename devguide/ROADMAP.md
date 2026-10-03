@@ -50,6 +50,9 @@ clients, further result types, undeclared bibliography and Recorda integration
 remain open with explicit gaps; they do not claim completed coverage in this slice.
 Publication is gated by actual public Ackredit closure, a clean installed frozen
 0.3.11 card, exact final-SHA CI and the staged artifact's full installed matrix.
+Independent Linux receiving qualification against the real Ackredit staging file
+passes on Python 3.11–3.14 with the planned public core pins. Hosted provider
+qualification, promotion and clean public delivery still precede release work.
 See the committed release plan, draft notes and route checklist in
 `devtools/conda-build/`. Preparation does not publish a version.
 

@@ -1,0 +1,131 @@
+{
+  "scope": "Independent Linux receiving compatibility against the exact Ackredit staging file; not public delivery or a Sabueso Conda release",
+  "date": "2026-10-03",
+  "owner_issue": "https://github.com/uibcdf/sabueso/issues/108",
+  "provider": {
+    "repository": "uibcdf/ackredit",
+    "source_commit": "598abf993a2409c025de5e912acd7eb45a257ebd",
+    "filename": "ackredit-0.9.0-py_0.tar.bz2",
+    "version": "0.9.0",
+    "build": "py_0",
+    "url": "https://conda.anaconda.org/uibcdf/label/staging/noarch/ackredit-0.9.0-py_0.tar.bz2",
+    "sha256": "37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1",
+    "producer_run": "https://github.com/uibcdf/ackredit/actions/runs/37136075066",
+    "producer_artifact": "noarch-publication-37136075066-1",
+    "upload_receipt": {
+      "candidate_sha": "598abf993a2409c025de5e912acd7eb45a257ebd",
+      "checked_at": "2026-10-03T16:16:11.693167+00:00",
+      "coordinate": {
+        "filename": "ackredit-0.9.0-py_0.tar.bz2",
+        "owner": "uibcdf",
+        "package": "ackredit",
+        "subdir": "noarch",
+        "version": "0.9.0"
+      },
+      "label": "staging",
+      "preflight": {
+        "scope": "all-labels",
+        "state": "absent"
+      },
+      "schema": "uibcdf.conda-upload@1",
+      "sha256": "37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1",
+      "state": "verified",
+      "subject": {
+        "repository": "uibcdf/ackredit",
+        "run_attempt": "1",
+        "run_id": "37136075066"
+      }
+    },
+    "verification": [
+      "independent download matches producer artifact and verified upload receipt",
+      "archive index identity",
+      "installed Conda source URL, version/build and SHA-256",
+      "installed package bytes match archive",
+      "runtime/distribution version agreement"
+    ]
+  },
+  "consumer": {
+    "repository": "uibcdf/sabueso",
+    "source_commit": "7352cf4437dca6d0249c3af9777ad123926d2f31",
+    "local_wheel": "sabueso-0.11.0+17.g7352cf4.dirty-py3-none-any.whl",
+    "sha256": "2520fd3e07fa6db5c65f66f3087175c7657a3c7b519fbf9a1cf3c4d9ccf38f61",
+    "matching_source_modules": 348,
+    "matching_resources": [
+      "selection_rules.json",
+      "enrichment_profiles.json",
+      "source_terms.json"
+    ],
+    "generated_version": "Development suffix after cleaning tracked generated build copies in a disposable clone; not a release version",
+    "verification": [
+      "all Python modules except generated _version.py match source commit with no extra modules",
+      "installed package bytes match wheel",
+      "runtime/distribution version agreement"
+    ]
+  },
+  "public_runtime_pins": {
+    "smonitor": {
+      "version": "0.17.0",
+      "build": "py_0",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/smonitor-0.17.0-py_0.tar.bz2",
+      "sha256": "44cbba98544dc1da6244b81a87b3f7f06f53e781c1eeaecec83ddf04f7bddfd1"
+    },
+    "argdigest": {
+      "version": "0.13.0",
+      "build": "py_1",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/argdigest-0.13.0-py_1.tar.bz2",
+      "sha256": "273ae5053d0aaa2d207ec9a2c684588fe3da539219b1d91cdea3b1f8dd265007"
+    },
+    "depdigest": {
+      "version": "0.11.0",
+      "build": "py_2",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/depdigest-0.11.0-py_2.tar.bz2",
+      "sha256": "b6ba665d9125f49506b7e4231e6065f164d3b643117a22288b44baafceff270f"
+    },
+    "pyunitwizard": {
+      "version": "0.27.0",
+      "build": "py_0",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/pyunitwizard-0.27.0-py_0.tar.bz2",
+      "sha256": "2102b1bd4e8188d4d150f90fcf093425d07fa2858993984016a6e7de10c3aaac"
+    }
+  },
+  "gate_tooling": {
+    "pytest-receptor": "1.2.0",
+    "pytest": ">=8; public Conda solve"
+  },
+  "isolation": "Four fresh strict-channel environments; non-editable prefix/site-packages imports; no source overlays; only public fixtures",
+  "results": [
+    {
+      "python": "3.11.16",
+      "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+      "passed": 36,
+      "skipped": 0,
+      "pip_check": "passed",
+      "public_workflow": "passed: source trace, two result bibliographies, reused credits, workflow union and saved readers without new credit"
+    },
+    {
+      "python": "3.12.14",
+      "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+      "passed": 36,
+      "skipped": 0,
+      "pip_check": "passed",
+      "public_workflow": "passed: source trace, two result bibliographies, reused credits, workflow union and saved readers without new credit"
+    },
+    {
+      "python": "3.13.15",
+      "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+      "passed": 36,
+      "skipped": 0,
+      "pip_check": "passed",
+      "public_workflow": "passed: source trace, two result bibliographies, reused credits, workflow union and saved readers without new credit"
+    },
+    {
+      "python": "3.14.7",
+      "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+      "passed": 36,
+      "skipped": 0,
+      "pip_check": "passed",
+      "public_workflow": "passed: source trace, two result bibliographies, reused credits, workflow union and saved readers without new credit"
+    }
+  ],
+  "release_blocker": "Ackredit hosted exact-file qualification, promotion and verified clean public installation remain pending; source overlays and public preflight block retained"
+}
