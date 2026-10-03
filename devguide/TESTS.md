@@ -45,7 +45,10 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   checkouts. Public Pytest/Receptor tooling is installed with Conda; no runtime
   source/pip overlay substitutes for the artifact. Ackredit is pinned to public
   0.9.0/py_0 with its qualified SHA-256; a different digest or staging import fails.
-  The actual Sabueso installed-file receipt remains #110 work.
+  The qualified 0.12.0 file passes all 12 installed lanes, 36 integration tests
+  and the public workflow per lane. The producer/archive/matrix and independent
+  clean Linux pip-check receipt is
+  `devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json` (#110).
 - **Required Ackredit integration.** `tests/core/test_attribution_offline.py` exercises
   automatic per-result attachment without a collector,
   per-result/workflow reuse, exact support scope, real provider failure, saved readers,

@@ -209,7 +209,12 @@ This delivery closes the provider dependency gate. Sabueso's preliminary local
 Conda candidate now passes all four Linux minors and supplies the clean-installed
 frozen 0.3.11 card; receipt:
 `devtools/conda-build/receipts/sabueso_0.12.0_local_schema_freeze_2026-10-03.json`.
-Its actual staged Conda candidate OS/minor qualification remains separate.
+Its final candidate `4ef9ddc` now passes the actual staged archive and all 12
+Linux/macOS-arm64/Windows × Python 3.11–3.14 installed lanes, with 36 integration
+tests and the public workflow in each. Independent clean Linux 3.14 also verifies
+installed bytes, the frozen card and pip check; receipt:
+`devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json`.
+Stable publication and promotion remain pending.
 
 The maintainer's editable workspace remains distinct: Ackredit's Git-derived
 checkout version is still 0.8.0-based and cannot satisfy the correct new floor.
@@ -223,8 +228,9 @@ and MOLI record work remain open in #108/#36.
 The staged 0.12.0 preparation is tracked in #110. Its installed-file matrix now
 requires provider import/metadata/API checks, the unchanged acquisition/attribution
 regressions and the public workflow on every supported OS/minor, outside both
-checkouts. Public delivery and the clean-installed frozen 0.3.11 card are verified; select
-the final candidate and complete its actual staged artifact gates next.
+checkouts. Public delivery and the clean-installed frozen 0.3.11 card are verified. The
+final candidate remains `4ef9ddc`, whose actual staged artifact gates pass.
+Stable publication, promotion, clean public install and archival are next under #110.
 
 - Keep Ackredit required in metadata and the recipe. Lazy required import keeps
   saved readers free of backend loading. Missing/broken installations emit SMonitor
@@ -237,8 +243,8 @@ the final candidate and complete its actual staged artifact gates next.
 - Published provider/dependency closure is verified and adopted for every supported
   Python minor. The released portable API minimum is 0.9.0; installed gates pin the
   actual public build/hash. Ackredit #22/#75/#80 are resolved. Sabueso's own Conda
-  installed matrix remains separate from receiving tests. The editable version
-  consistency need is tracked in Ackredit #81.
+  installed matrix passes separately from receiving tests; see its staged receipt.
+  The editable version consistency need is tracked in Ackredit #81.
 - Coordinate the attribution/knowledge/terms boundary in MOLI #36; Ackredit and
   MolSysSuite keep ownership of provider/member contracts and rollout.
 

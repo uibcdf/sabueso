@@ -30,9 +30,18 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   workflow and pip check on Linux × Python 3.11–3.14. Its clean 3.14 install writes
   `schema_0.3.11__P60174.json`; receipt:
   `devtools/conda-build/receipts/sabueso_0.12.0_local_schema_freeze_2026-10-03.json`.
-  The schema/shape are now frozen. Select the final SHA and complete the actual
-  staged package's OS/minor matrix. No 0.12.0 publication is claimed; latest
-  published release remains 0.11.0. Ackredit #81 tracks editable Git-version
+  The schema/shape are now frozen.
+- **Staged candidate qualified:** `4ef9ddc7dc8a9e01ce430ef3d30f5d9cb94006a6`
+  passes CI 37159503827 (15/15) and governance 37159503801. Producer 37159798707
+  builds `sabueso-0.12.0-py_0.tar.bz2`, SHA-256
+  `8a3910eacd4f63945708d9fe6339cf578ae2a9d1958a02a391db2dbc23c6b347`.
+  Installed workflow 37160115178 passes its producer check and all 12
+  Linux/macOS-arm64/Windows × Python 3.11–3.14 installs, with 36 integration
+  tests and the public workflow per lane. Independent clean Linux 3.14 verifies
+  installed bytes, the frozen card, APIs and pip check. Receipt:
+  `devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json`.
+  Publication, promotion, clean public installation and Zenodo remain pending.
+  Latest published release remains 0.11.0. Ackredit #81 tracks editable Git-version
   consistency; clean public package qualification is unaffected.
 
 ## Release and schema

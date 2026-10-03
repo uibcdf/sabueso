@@ -51,8 +51,11 @@ remain open with explicit gaps; they do not claim completed coverage in this sli
 Ackredit's public 0.9.0 delivery is adopted, with the published floor and exact
 public build/hash. Independent Linux receiving qualification passes on Python
 3.11–3.14 with the planned public core pins. The preliminary local Conda candidate passes the four Linux minors and supplies
-the clean-installed frozen 0.3.11 card. Publication still needs exact final-SHA CI
-and Sabueso's actual staged-file matrix.
+the clean-installed frozen 0.3.11 card. Final candidate `4ef9ddc` passes exact-SHA CI and the actual staged-file
+Linux/macOS-arm64/Windows × Python 3.11–3.14 matrix; receipt:
+`devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json`.
+Stable publication, same-file promotion, clean public installation and archival
+remain pending.
 See the committed release plan, draft notes and route checklist in
 `devtools/conda-build/`. Preparation does not publish a version.
 

@@ -110,7 +110,7 @@ Conda candidate at `01d5bf2` passes installed checks on all four Linux minors
 and supplies `schema_0.3.11__P60174.json` from its clean Python 3.14.7 install.
 The local artifact/hash, source, public pins, regressions and schema-freeze receipt
 are in `receipts/sabueso_0.12.0_local_schema_freeze_2026-10-03.json`.
-No staging or publication receipt is claimed by this local qualification.
+Local qualification is separate from the actual staging receipt below.
 
 The preparation includes the exact qualified builder
 `8da628d9b393e184c3bf3722708b19dcfbf7ef0a`, retaining upload, immutable coordinate,
@@ -141,3 +141,22 @@ Before selecting the final candidate:
 Broader source/result coverage, undeclared bibliography and Recorda integration
 remain issue-backed work with explicit release limits. This bounded scope retains
 the required traceability target without asserting full pipeline provenance.
+
+## Qualified 0.12.0 candidate (publication pending)
+
+Final candidate `4ef9ddc7dc8a9e01ce430ef3d30f5d9cb94006a6` passes exact-SHA
+CI 37159503827 (15/15) and governance 37159503801. Staging producer 37159798707
+builds `sabueso-0.12.0-py_0.tar.bz2`, SHA-256
+`8a3910eacd4f63945708d9fe6339cf578ae2a9d1958a02a391db2dbc23c6b347`.
+Independent download verifies the receipts, embedded versions, resources and all
+351 non-version Python/JSON files against that source. Installed workflow
+37160115178 passes its producer check and every Linux/macOS-arm64/Windows ×
+Python 3.11–3.14 lane, including 36 integration regressions and the public workflow
+per lane. Independent clean Linux 3.14 also checks installed bytes, the frozen card
+and pip metadata. The durable receipt is
+`receipts/sabueso_0.12.0_staged_2026-10-03.json`.
+
+Evidence-only follow-up commits do not replace that qualified source SHA. The
+release tag must select it and promotion must preserve its archive digest.
+Stable publication, promotion, clean public installation and Zenodo are still
+pending; the latest published version is 0.11.0.
