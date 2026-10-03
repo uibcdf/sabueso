@@ -86,6 +86,7 @@ def test_staged_matrix_uses_candidate_verifier_and_supported_lanes():
     assert "uibcdf::depdigest=0.11.0=py_2" in workflow
     assert "uibcdf::pyunitwizard=0.27.0=py_0" in workflow
     assert "uibcdf::argdigest=0.13.0=py_1" in workflow
+    assert "uibcdf::ackredit=0.9.0=py_0" in workflow
     assert "pip install" not in workflow
 
 
@@ -145,7 +146,7 @@ def _installed_records(tmp_path: Path) -> None:
             "version": version,
             "build": build,
             "subdir": "noarch",
-            "sha256": sha256,
+            "sha256": verifier.PUBLIC_DEPENDENCY_DIGESTS.get(name, sha256),
             "url": f"{channel}/{filename}",
         }
         (meta / f"{name}-{version}-{build}.json").write_text(
@@ -158,7 +159,11 @@ def test_installed_gate_accepts_exact_stage_and_public_dependencies(
 ):
     _installed_records(tmp_path)
     monkeypatch.setattr(sys, "prefix", str(tmp_path))
-    monkeypatch.setattr(verifier.importlib.metadata, "version", lambda _: VERSION)
+    monkeypatch.setattr(
+        verifier.importlib.metadata,
+        "version",
+        lambda name: "0.9.0" if name == "ackredit" else VERSION,
+    )
     monkeypatch.setitem(
         sys.modules,
         "sabueso",
@@ -179,7 +184,7 @@ def test_installed_gate_accepts_exact_stage_and_public_dependencies(
 
 def _provider(prefix):
     return SimpleNamespace(
-        __version__=VERSION,
+        __version__="0.9.0",
         __file__=prefix / "lib" / "site-packages" / "ackredit" / "__init__.py",
         capture=lambda: None,
         get_attribution=lambda: None,
@@ -206,8 +211,19 @@ def test_required_provider_gate_rejects_source_shadows_or_incomplete_api(
     for name, value in changed.items():
         setattr(provider, name, value)
     monkeypatch.setitem(sys.modules, "ackredit", provider)
-    monkeypatch.setattr(verifier.importlib.metadata, "version", lambda _: VERSION)
+    monkeypatch.setattr(verifier.importlib.metadata, "version", lambda _: "0.9.0")
     with pytest.raises(ValueError, match=message):
+        verifier.verify_required_provider(tmp_path)
+
+
+def test_provider_pip_replacement_cannot_hide_behind_a_valid_conda_record(
+    tmp_path, monkeypatch
+):
+    provider = _provider(tmp_path)
+    provider.__version__ = "0.8.0"
+    monkeypatch.setitem(sys.modules, "ackredit", provider)
+    monkeypatch.setattr(verifier.importlib.metadata, "version", lambda _: "0.8.0")
+    with pytest.raises(ValueError, match="runtime version differs from public pin"):
         verifier.verify_required_provider(tmp_path)
 
 
@@ -215,6 +231,12 @@ def test_required_provider_gate_rejects_source_shadows_or_incomplete_api(
     ("record", "field", "bad_value"),
     [
         ("sabueso", "sha256", "0" * 64),
+        ("ackredit", "sha256", "0" * 64),
+        (
+            "ackredit",
+            "url",
+            f"{verifier.STAGING_CHANNEL}/ackredit-0.9.0-py_0.tar.bz2",
+        ),
         (
             "sabueso",
             "url",

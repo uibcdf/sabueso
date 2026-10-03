@@ -19,13 +19,17 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 - Ackredit's real 0.9.0 staging file is independently verified. Fresh Linux
   receiving installs pass all 36 attribution/acquisition cases and the public
   workflow on Python 3.11–3.14 with Sabueso's exact public runtime pins; receipt:
-  `devtools/conda-build/receipts/ackredit_0.9.0_staging_2026-10-03.json`.
+  `devtools/conda-build/receipts/ackredit_0.9.0_public_2026-10-03.json`.
   This uses a local consumer wheel, not a staged Sabueso Conda file.
-- **Build/publication remains blocked:** verify public Ackredit delivery (#22/#75),
-  set the actual dependency floor and public pins, remove source overlays/blocker
-  together, then generate the frozen 0.3.11 public card from a clean installed
-  candidate. No final release SHA, candidate Conda file or 0.12.0 publication is
-  claimed. Latest published release remains 0.11.0.
+- **Public provider adopted:** Ackredit 0.9.0/py_0 is published with the same
+  qualified SHA-256. Metadata/recipe/environments require `>=0.9.0`; the installed
+  gate pins and checks its public file/hash. CI obtains it from public Conda;
+  the source overlays and public-dependency blocker are removed together.
+- **Candidate verification next:** generate the frozen 0.3.11 card from a clean
+  installed local candidate, then select the final SHA and complete the actual
+  staged package's OS/minor matrix. No 0.12.0 publication is claimed; latest
+  published release remains 0.11.0. Ackredit #81 tracks editable Git-version
+  consistency; clean public package qualification is unaffected.
 
 ## Release and schema
 
@@ -232,27 +236,22 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   and hashes are unchanged. Missing/broken providers diagnose failed attribution
   while retaining knowledge and host records;
   saved readers add no credit. The public offline pilot is `examples/ackredit_pilot/`.
-  All runtime CI tests real provider commit `383a64b2fdbc5472a7cdeb92c464b87433aabd76`,
-  carrying the accepted portable contract for prepared 0.9.0 (ackredit#75).
-  Dedicated pilot lanes test the installed consumer/provider outside both checkouts.
-  Python 3.11–3.14 use normal source installation under the corrected provider
-  interpreter contract (ackredit#80), without metadata overrides. Source testing
-  does not establish a publicly released dependency closure.
-  Independent installed receiving tests on fresh Linux Python 3.11–3.14 pass 36
-  integration cases per minor, the public workflow and pip check against the real
-  staging 0.9.0 Conda file from provider source `598abf9`, producer 37136075066
-  (SHA-256 `37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1`).
-  Consumer source `7352cf4` is installed as a local wheel outside both checkouts;
-  all 348 source modules and packaged rule/profile/terms resources match that SHA.
-  The receipt retains Sabueso's exact public core pins, installed archive/source
-  identity and non-editable origins. This is receiving compatibility, not public delivery.
-  The next release is blocked by `dependency_preflight.py --release` until the
-  accepted API is published and public dependency closure exists on 3.11–3.14.
-  Ackredit's hosted installed descriptor/caller fixes remain molsyssuite#88/#89;
-  #78 tracks shared delivery. UniProt/Europe PMC
-  description citations are verified offline; other descriptions, target articles
-  and annotation-provider bibliography remain explicit gaps. Broader acquisition coverage,
-  provider publication, public closure and the shared record boundary remain open.
+  Runtime CI now installs public Ackredit; dedicated pilot lanes pin 0.9.0/py_0
+  and exercise the consumer outside the checkout on Python 3.11–3.14. The published
+  floor is `ackredit>=0.9.0`, with no source overlay or interpreter override.
+  Independent Linux receiving tests first qualified the real staging file from
+  provider `598abf9`, producer 37136075066, then ordinary clean public-channel
+  installs on all four minors. Each passes 36 acquisition/attribution cases,
+  the public workflow and pip check with the exact planned public core pins.
+  Provider installed matrix 37152044426 and promotion 37152421084 succeed;
+  Ackredit #22/#75/#80 and central #78/#88/#89 are resolved.
+  The immutable provider digest is
+  `37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1`.
+  These receipts verify provider delivery/receiving compatibility; Sabueso's
+  actual staged Conda candidate remains separately gated in #110.
+  UniProt/Europe PMC description citations are verified offline; other descriptions,
+  target articles and annotation-provider bibliography remain explicit gaps.
+  Broader acquisition coverage and the shared record boundary remain open.
   Corporate-author BibTeX rendering was reported as ackredit#78 and corrected by
   the provider; the pinned candidate includes it, with CSL-JSON/text/BibTeX reader tests.
 - Required source-acquisition traceability (#108, moli#36), first slice:
@@ -309,9 +308,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1336 tests passed, 26 online tests deselected (2026-10-03, in
+- Offline suite: 1341 tests passed, 26 online tests deselected (2026-10-03, in
   `molsyssuite@uibcdf_3.14`, with all installed workspace packages editable and the
-  required real Ackredit source provider available). Run with
+  required real Ackredit editable provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.

@@ -45,17 +45,53 @@ def _edit(path: Path, old: str, new: str) -> None:
     path.write_text(text.replace(old, new, 1), encoding="utf-8")
 
 
+@pytest.fixture
+def source_root(root):
+    """Rehearse a future unpublished sibling without depending on current delivery."""
+    inventory = root / "devtools/dependency_routes.toml"
+    text = inventory.read_text().replace(
+        "[source_routes]\napplicable = false",
+        "[source_routes]\napplicable = true\n"
+        'routes = [".github/workflows/ci.yml:ackredit-pilot", ".github/workflows/ci.yml:test"]',
+    )
+    text += "\n[unpublished_required_dependencies.ackredit]\n"
+    text += 'reason = "Synthetic unpublished-provider rehearsal"\n'
+    text += 'issue = "https://github.com/uibcdf/sabueso/issues/108"\n'
+    text += "\n[[source_routes.candidates]]\n"
+    text += 'dependency = "ackredit"\nconstraint = ">=0.9.0"\n'
+    text += 'commit = "' + "a" * 40 + '"\n'
+    text += 'python = ">=3.11,<3.15"\npath = ".ackredit-candidate"\n'
+    inventory.write_text(text)
+    workflow = root / ".github/workflows/ci.yml"
+    step = "      - uses: mamba-org/setup-micromamba@v3.2.1"
+    checkout = (
+        "      - uses: actions/checkout@v6\n        with:\n"
+        "          ref: " + "a" * 40 + "\n"
+        "      - run: python -m pip install --no-deps --no-build-isolation .ackredit-candidate\n"
+    )
+    text = workflow.read_text()
+    assert text.count(step) == 2
+    workflow.write_text(text.replace(step, checkout + step))
+    assert preflight(root) == []
+    return root
+
+
 def test_the_repository_passes():
     assert preflight(ROOT) == []
 
 
-def test_release_is_blocked_until_required_ackredit_is_published():
-    problems = preflight(ROOT, release=True)
+def test_the_published_dependency_closure_passes_release_preflight():
+    assert preflight(ROOT, release=True) == []
+
+
+def test_release_is_blocked_for_a_future_unpublished_required_provider(source_root):
+    problems = preflight(source_root, release=True)
     assert len(problems) == 1
     assert "Release blocked: ackredit" in problems[0]
 
 
-def test_required_source_cannot_exclude_a_supported_python_minor(root):
+def test_required_source_cannot_exclude_a_supported_python_minor(source_root):
+    root = source_root
     _edit(
         root / "devtools/dependency_routes.toml",
         'python = ">=3.11,<3.15"',
@@ -65,7 +101,8 @@ def test_required_source_cannot_exclude_a_supported_python_minor(root):
     assert "ackredit: source candidate does not cover Python >=3.11,<3.15" in problem
 
 
-def test_required_source_installation_cannot_bypass_interpreter_metadata(root):
+def test_required_source_installation_cannot_bypass_interpreter_metadata(source_root):
+    root = source_root
     _edit(
         root / ".github/workflows/ci.yml",
         "pip install --no-deps --no-build-isolation .ackredit-candidate",
@@ -75,7 +112,8 @@ def test_required_source_installation_cannot_bypass_interpreter_metadata(root):
     assert "ackredit-pilot: source installation must respect Requires-Python" in problem
 
 
-def test_source_overlay_needs_the_actual_pinned_provider_install(root):
+def test_source_overlay_needs_the_actual_pinned_provider_install(source_root):
+    root = source_root
     inventory = tomllib.loads((root / "devtools/dependency_routes.toml").read_text())
     commit = inventory["source_routes"]["candidates"][0]["commit"]
     _edit(
@@ -87,14 +125,24 @@ def test_source_overlay_needs_the_actual_pinned_provider_install(root):
     assert "ackredit-pilot: does not install the pinned ackredit source" in problem
 
 
-def test_pending_public_pins_cannot_be_silently_omitted(root):
+def test_the_published_ackredit_pin_cannot_be_silently_omitted(root):
     _edit(
-        root / "devtools/dependency_routes.toml",
-        'pending_public_dependencies = ["ackredit"]',
+        root / ".github/workflows/test_staged_conda_package.yaml",
+        "uibcdf::ackredit=0.9.0=py_0",
         "",
     )
     (problem,) = preflight(root)
     assert "missing required runtime dependency ackredit" in problem
+
+
+def test_an_ackredit_pin_below_the_portable_api_floor_fails(root):
+    _edit(
+        root / ".github/workflows/test_staged_conda_package.yaml",
+        "uibcdf::ackredit=0.9.0=py_0",
+        "uibcdf::ackredit=0.8.0=py_0",
+    )
+    (problem,) = preflight(root)
+    assert "ackredit =0.8.0 is weaker than the public floor >=0.9.0" in problem
 
 
 def test_a_missing_recipe_dependency_fails(root):

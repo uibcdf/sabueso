@@ -15,7 +15,12 @@ PUBLIC_DEPENDENCIES = (
     ("pyunitwizard", "0.27.0", "py_0"),
     ("argdigest", "0.13.0", "py_1"),
     ("depdigest", "0.11.0", "py_2"),
+    ("ackredit", "0.9.0", "py_0"),
 )
+# The first published portable API: retain the qualified file's immutable identity.
+PUBLIC_DEPENDENCY_DIGESTS = {
+    "ackredit": "37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1",
+}
 STAGING_CHANNEL = "https://conda.anaconda.org/uibcdf/label/staging/noarch"
 PUBLIC_CHANNEL = "https://conda.anaconda.org/uibcdf/noarch"
 PRODUCER_WORKFLOW = ".github/workflows/build_and_upload_conda_packages.yaml"
@@ -200,6 +205,12 @@ def verify_installed(
             == f"{PUBLIC_CHANNEL}/{dependency}-{dependency_version}-{dependency_build}.tar.bz2",
             "Dependency not from public channel",
         )
+        if dependency in PUBLIC_DEPENDENCY_DIGESTS:
+            _require(
+                dependency_record.get("sha256")
+                == PUBLIC_DEPENDENCY_DIGESTS[dependency],
+                f"{dependency} public artifact digest mismatch",
+            )
 
     _require(
         importlib.metadata.version(PACKAGE) == version, "Distribution version mismatch"
@@ -226,6 +237,13 @@ def verify_required_provider(prefix: Path) -> None:
     _require(
         ackredit.__version__ == importlib.metadata.version("ackredit"),
         "Ackredit distribution version mismatch",
+    )
+    expected_version = next(
+        version for name, version, _ in PUBLIC_DEPENDENCIES if name == "ackredit"
+    )
+    _require(
+        ackredit.__version__ == expected_version,
+        "Ackredit runtime version differs from public pin",
     )
     for name in ("capture", "get_attribution", "scope", "register_item", "track_item"):
         _require(callable(getattr(ackredit, name, None)), f"Ackredit lacks {name}")

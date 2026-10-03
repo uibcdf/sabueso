@@ -13,15 +13,13 @@ dynamic = ["version"]
 # Runtime dependencies, identical to the conda recipe's `requirements: run`. They are
 # normally published on the uibcdf conda channel, not on PyPI: install them with conda and use
 # `pip install --no-deps` for Sabueso itself (MOLI distribution policy, #34).
-# Ackredit is required. The accepted portable contract targets prepared 0.9.0, whose
-# public delivery is pending (#75, #22). Set the floor after that artifact is verified;
-# the tracked source candidate supplies development/CI only (#108).
+# Ackredit 0.9.0 is the first published portable-attribution contract (#108).
 dependencies = [
   "smonitor>=0.17.0",
   "pyunitwizard>=0.27.0",
   "argdigest>=0.13.0",
   "depdigest>=0.11.0",
-  "ackredit",
+  "ackredit>=0.9.0",
 ]
 classifiers = [
   "Programming Language :: Python :: 3",

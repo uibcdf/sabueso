@@ -13,31 +13,22 @@
   packaged registry and review dates, not a historical registry snapshot. Stored
   statement support is available, but exact mapping/qualifier lineage is not always
   recorded; disease grouping includes broader MONDO/MedGen identity/hierarchy context.
-- **Required pipeline attribution / release blocker** (#108, moli#36): Ackredit source capture APIs
-  are accepted for prepared 0.9.0, with public delivery pending. Its corrected source contract covers
-  Sabueso's Python 3.11–3.14 range (ackredit#80). Runtime adapters observe packet composition
-  and built-in UniProt/Europe PMC acquisition. Other sources/custom clients and
-  further result types still need adapters. Detached traces must be explicitly saved
-  by the application; payload-only readers cannot reconstruct original execution.
-  MOLI ProjectRecord/Recorda routing, correlation and strict recording policy remain
-  platform-owned open work, not guarantees of this local slice. The prepared 0.12.0
-  scope (#110) states these gaps; it does not claim complete pipeline traceability.
-  Only UniProt and
-  Europe PMC description papers are declared so far; other citations remain explicit
-  gaps. Every runtime CI lane installs the full-commit source provider. Python
-  3.11–3.14 use normal source installs, without metadata overrides; this cannot
-  establish public provider closure until a released artifact is verified.
-  Independent Linux receiving tests against the real 0.9.0 staging file pass on
-  all four minors with the planned public core pins. Hosted provider qualification,
-  promotion and clean public installation remain pending (molsyssuite#88/#89;
-  ackredit#22/#75); staging evidence does not remove the release blocker.
-  `dependency_preflight.py --release` blocks build, installed-package and promotion
-  routes until a stable API version and exact public provider pins are verified
-  on every supported Python minor. The unversioned required metadata is temporary:
-  set the accepted API's real floor after its public artifact is verified. No floor or public
-  build is invented. The pinned candidate includes the explicit CSL-author BibTeX
-  correction (ackredit#78), checked by saved-reader regressions. Failed tracking can leave
-  partial workflow credits; result records retain failure status and host support.
+- **Required pipeline attribution / remaining coverage** (#108, moli#36): Ackredit's
+  portable API is publicly delivered as 0.9.0/py_0 for Python 3.11–3.14. Metadata,
+  environments and recipe adopt `>=0.9.0`; CI uses public Conda, and installed gates
+  pin the qualified public file/hash. The public-dependency blocker is resolved.
+  Independent receiving tests on all four Linux minors pass with the planned public
+  core pins. Ackredit #81 tracks the separate editable checkout's Git-version
+  mismatch with the published minimum; it does not invalidate the public artifact.
+  Runtime adapters observe packet composition and built-in UniProt/Europe PMC
+  acquisition. Other sources/custom clients, further result types and full
+  bibliography remain gaps. Original runtime JSON must be explicitly saved;
+  payload-only readers cannot reconstruct earlier execution. MOLI ProjectRecord/
+  Recorda routing, correlation and strict recording policy remain platform-owned
+  work. The 0.12.0 scope (#110) does not claim complete pipeline traceability.
+  Failed tracking can leave partial workflow credits; result records retain
+  failure status and host support. Sabueso's own actual Conda candidate still needs
+  frozen schema/installed OS-minor qualification before release.
 - **SourceAssertion growth**: preserving all values can create very large cards and stores.
 - **Mapping fragility**: changes in source APIs can break field mappings.
 - **Ambiguity**: input resolution may produce multiple valid entities.

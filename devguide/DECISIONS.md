@@ -1,5 +1,22 @@
 # Sabueso — Decision Log
 
+## Adopt delivered public Ackredit 0.9.0 (2026-10-03, #108/#110)
+
+- The provider's published handoff closes #22/#75/#80. Hosted installed matrix
+  37152044426 and promotion 37152421084 preserve the previously received archive;
+  an independent public download verifies the same SHA-256.
+- Adopt `ackredit>=0.9.0` in metadata, recipe and all runtime environments.
+  Installed gates pin public 0.9.0/py_0 and its qualified digest, version and API.
+  Remove source overlays/public-pin placeholders and the dependency blocker
+  together; keep the generic preflight safeguards for future unpublished providers.
+- Runtime CI obtains the provider from public Conda. Dedicated receiving lanes pin
+  the first published portable API on all supported minors. Public receiving proof
+  remains separate from Sabueso's own Conda installed matrix and schema freeze.
+- Preserve the editable primary workspace. The provider's still-0.8.0-based Git
+  version cannot satisfy the delivered minimum; report that need as Ackredit #81
+  rather than lowering the public floor or inventing a provider tag/version.
+  This is a workspace metadata issue, not a public-package delivery blocker.
+
 ## Prepare bounded staged 0.12.0 release (2026-10-03, #110)
 
 - The maintainer accepted a substantial 0.12.0 preparation combining located

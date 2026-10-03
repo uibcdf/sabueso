@@ -6,7 +6,7 @@ opened: 2026-10-02
 closed:
 verification: local_runtime_tested
 area: [attribution, knowledge_packets, source_access]
-blocked_by: [uibcdf/moli#36, uibcdf/ackredit#75, uibcdf/ackredit#22]
+blocked_by: [uibcdf/moli#36]
 supersedes: []
 ---
 
@@ -15,12 +15,12 @@ supersedes: []
 Status: required automatic packet-composition and bounded source-acquisition adapters
 implemented; broader pipeline
 coverage remains open with explicit gaps in the prepared 0.12.0 scope (#110).
-Stable public dependency closure blocks building and publishing that release.
+Public Ackredit 0.9.0 delivery is adopted; Sabueso's own candidate/release gates remain.
 Owner: [uibcdf/sabueso#108](https://github.com/uibcdf/sabueso/issues/108).
 Shared boundary: [uibcdf/moli#36](https://github.com/uibcdf/moli/issues/36).
 Provider: [uibcdf/ackredit#75](https://github.com/uibcdf/ackredit/issues/75).
-Reviewed: 2026-10-03, CI source `383a64b2fdbc5472a7cdeb92c464b87433aabd76`
-and independently installed staging source `598abf993a2409c025de5e912acd7eb45a257ebd`.
+Reviewed: 2026-10-03, published Ackredit 0.9.0/py_0 from source
+`598abf993a2409c025de5e912acd7eb45a257ebd`.
 
 ## What the consumer needs
 
@@ -127,19 +127,15 @@ and personal author objects render correctly in BibTeX. Saved-reader consumer
 regressions check original metadata in text, CSL-JSON and BibTeX without new credits.
 No renderer is copied.
 
-Consumer CI installs the full source commit above and requires real-provider tests
-and the public workflow on Python 3.11–3.14. Every runtime CI lane installs the
-provider normally and verifies installed imports outside both checkouts. The
-provider interpreter contract is corrected under ackredit#80; no Requires-Python
-override is used. Ordinary source installation is separate from public artifacts.
-`devtools/dependency_routes.toml` inventories this unpublished source route. The
-dedicated lanes copy unchanged integration tests to a temporary working directory
-and run the public workflow outside both checkouts, exercising installed code.
+Consumer CI now obtains Ackredit from public Conda on every runtime lane;
+dedicated receiving lanes pin 0.9.0/py_0 on Python 3.11–3.14. Metadata, recipe and
+all runtime environments require `ackredit>=0.9.0`; the source overlay and blocker
+are removed together. The installed Conda gate retains the delivered public SHA-256
+and rejects a different hash, channel, imported version or portable API.
 
-The provider accepted the portable contract for its prepared 0.9.0 candidate under
-Ackredit #75; public delivery remains open. The earlier
+The earlier
 [local diagnostic receipt](https://github.com/uibcdf/sabueso/issues/108#issuecomment-5968486124)
-is superseded for receiving qualification by the actual staging file below.
+is superseded for receiving qualification by the actual staging/public file below.
 
 ## Independent exact-staging receiving qualification (2026-10-03)
 
@@ -189,10 +185,35 @@ retains editable packages.
 This establishes Linux receiving compatibility with the actual staged provider,
 including Sabueso's older public core pins. It does not replace Ackredit's hosted
 Linux/macOS-arm64 installed matrix or Sabueso's eventual Conda installed matrix.
-The hosted descriptor/caller needs are already owned by MolSysSuite #89/#88;
-promotion and verified public installation remain Ackredit #22/#75 work. Keep
-`dependency_preflight.py --release` blocked and retain source overlays/public-pin
-placeholders. Repeat qualification if the bytes change; a version alone is no artifact identity.
+At that checkpoint, the hosted descriptor/caller needs were MolSysSuite #89/#88
+work and public dependency closure remained blocked. Those delivery gates have now
+closed through the public handoff below. Repeat qualification if the bytes change;
+a version alone is no artifact identity.
+
+## Public delivery adoption (2026-10-03)
+
+The [published handoff](https://github.com/uibcdf/sabueso/issues/108#issuecomment-5973768120)
+identifies the first released portable minimum, **Ackredit >=0.9.0**.
+[Installed 37152044426](https://github.com/uibcdf/ackredit/actions/runs/37152044426)
+passes all eight Linux/macOS-arm64 × Python 3.11–3.14 cells;
+[promotion 37152421084](https://github.com/uibcdf/ackredit/actions/runs/37152421084)
+preserves the same archive. Independent anonymous public download matches the
+staging bytes and digest. Normal clean public-channel receiving installs on all
+four Linux minors repeat the 36 tests, public workflow and pip check with the
+planned exact public core builds. Ackredit #22/#75/#80 are closed.
+
+Sabueso adopts the published floor in metadata, recipe and environments, pins
+0.9.0/py_0 and the qualified digest in installed gates, and removes source overlays
+and the public-dependency blocker together. Development and release preflight pass.
+This delivery closes the provider dependency gate; Sabueso still needs its own
+installed frozen 0.3.11 card and actual Conda candidate OS/minor qualification.
+
+The maintainer's editable workspace remains distinct: Ackredit's Git-derived
+checkout version is still 0.8.0-based and cannot satisfy the correct new floor.
+[Provider #81](https://github.com/uibcdf/ackredit/issues/81) requests owning version
+consistency; no provider tag/version or metadata override is fabricated here.
+Clean public distributions satisfy the floor; broader trace/result/bibliography
+and MOLI record work remain open in #108/#36.
 
 ## Adoption gates
 
@@ -210,24 +231,19 @@ clean installed frozen 0.3.11 card precede selection of the final candidate.
 - Exercise a real provider with two results reusing sources, an enclosing workflow,
   cached/offline and evaluated-empty requests, genuine absence, failure, fresh-process
   lazy import, detached ownership and saved readers without new credit.
-- Obtain published provider/dependency closure for every claimed Python minor.
-  The pinned provider declares `>=3.11,<3.15`, matching Sabueso's 3.11–3.14 range.
-  The portable contract is accepted for prepared 0.9.0; channel publication is pending in
-  [Ackredit #22](https://github.com/uibcdf/ackredit/issues/22). The source interpreter
-  contract is corrected under [Ackredit #80](https://github.com/uibcdf/ackredit/issues/80);
-  the exact staging file has Linux receiver proof but hosted qualification and clean
-  public installation remain pending. No public-installation claim follows from
-  source, diagnostic or staging tests. The
-  accepted API's floor and exact public build pins must be set after the published
-  artifact is verified.
+- Published provider/dependency closure is verified and adopted for every supported
+  Python minor. The released portable API minimum is 0.9.0; installed gates pin the
+  actual public build/hash. Ackredit #22/#75/#80 are resolved. Sabueso's own Conda
+  installed matrix remains separate from receiving tests. The editable version
+  consistency need is tracked in Ackredit #81.
 - Coordinate the attribution/knowledge/terms boundary in MOLI #36; Ackredit and
   MolSysSuite keep ownership of provider/member contracts and rollout.
 
 The maintainer first requested early integration on 2026-10-02, then chose a hard
 dependency and automatic attribution. The initial optional decision is superseded.
-`dependency_preflight.py --release` blocks build, staged installed-package and
-promotion workflows until normal public closure is verified on Python 3.11–3.14.
-The unversioned required metadata does not assert that old tagged APIs suffice.
+`dependency_preflight.py --release` now passes public closure on Python 3.11–3.14.
+Its generic safeguards still reject stale floors, omitted pins and future unpublished
+providers. Required metadata names the delivered minimum 0.9.0.
 Next work extends observed acquisition to other sources and result types, expands
 verified resource bibliography and coordinates the platform record boundary.
 This change makes no release.
@@ -240,14 +256,14 @@ This change makes no release.
   execution usage answer different questions.
 - Keep Ackredit optional: superseded by the maintainer's hard-dependency decision.
   Failure tolerance and installation requirements are separate decisions; missing
-  public closure blocks the next release rather than weakening the product contract.
+  a missing public closure blocks release rather than weakening the product contract.
 
 ## Acceptance criteria and resolution
 
 Two public offline packet results retain their own original attribution, including
 reused resources, and the application's workflow captures both. Unused sources earn
 no credit. Saved readers, absence and provider failures preserve result knowledge.
-The local automatic-composition pilot passes; published compatibility and shared boundary
-gates remain open. #108 is kept open for remaining acquisition/further-result coverage, complete
-bibliography, provider publication and supported-Python closure. This is an initial
+The automatic-composition/acquisition pilot and published receiving compatibility
+pass. #108 is kept open for remaining acquisition/further-result coverage, complete
+bibliography and the shared record boundary; #110 owns Sabueso release qualification. This is an initial
 runtime integration, not a claim of full pipeline coverage or a public installation route.

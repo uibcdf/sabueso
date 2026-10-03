@@ -1,5 +1,3 @@
-# Conda portion only: required Ackredit is provisioned separately from the full-commit
-# source candidate in devtools/dependency_routes.toml. See devtools/conda-envs/README.md.
 # Development environment for Sabueso (uibcdf/sabueso#34). Users install the package
 # from the uibcdf conda channel; pip is only for the local editable install:
 #   conda env create -n sabueso-dev -f devtools/conda-envs/development_env.yaml
@@ -14,6 +12,7 @@ dependencies:
 - pyunitwizard >=0.27.0
 - argdigest >=0.13.0
 - depdigest >=0.11.0
+- ackredit >=0.9.0
 - pandas >=2   # optional; sabueso.to_dataframe (#46)
 - pip
 - setuptools >=61.0

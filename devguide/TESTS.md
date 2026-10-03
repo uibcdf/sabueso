@@ -43,26 +43,24 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   source-shadowed/inconsistent or incomplete Ackredit imports, then runs unchanged
   acquisition/attribution tests and the public saved-reader workflow outside both
   checkouts. Public Pytest/Receptor tooling is installed with Conda; no runtime
-  source/pip overlay substitutes for the artifact. Provider public pins remain
-  pending, so this prepared matrix is not an installed-file success receipt (#110).
+  source/pip overlay substitutes for the artifact. Ackredit is pinned to public
+  0.9.0/py_0 with its qualified SHA-256; a different digest or staging import fails.
+  The actual Sabueso installed-file receipt remains #110 work.
 - **Required Ackredit integration.** `tests/core/test_attribution_offline.py` exercises
   automatic per-result attachment without a collector,
   per-result/workflow reuse, exact support scope, real provider failure, saved readers,
-  context isolation and genuine fresh-process absence. CI installs a tracked full
-  source commit in every runtime lane, without skipping provider tests. Python
-  3.11–3.14 use normal source installs under the provider's corrected interpreter
-  contract (ackredit#80), without metadata overrides. The source candidate is not
-  a public-channel installation claim. The preflight rejects required source
-  candidates whose interpreter range excludes a supported Sabueso minor or whose
-  workflow installation bypasses Requires-Python.
-  Dedicated provider lanes run the unchanged integration tests and public workflow
-  outside both checkouts, using installed consumer/provider code and public fixtures.
-  The portable contract is accepted for prepared 0.9.0; source-installed CI and
-  independent exact-staging-file receiving proof remain distinct from public delivery.
+  context isolation and genuine fresh-process absence. All runtime CI lanes
+  obtain the required provider from public Conda; dedicated receiving lanes pin
+  Ackredit 0.9.0/py_0 on Python 3.11–3.14. No source overlay or Requires-Python
+  override remains. The generic preflight's unpublished-provider safeguards are
+  retained through synthetic negative rehearsals, independently of current delivery.
+  Dedicated lanes run unchanged integration tests and the public workflow outside
+  the checkout using installed code and public fixtures. The delivered portable
+  minimum is `ackredit>=0.9.0` (ackredit#22/#75/#80).
   Fresh Linux receiving environments at Python 3.11–3.14 run the 36 unchanged
   attribution/acquisition cases, public workflow and pip check with the planned
   exact public core builds. Their artifact/source/installed-byte and origin receipt
-  is `devtools/conda-build/receipts/ackredit_0.9.0_staging_2026-10-03.json`.
+  is `devtools/conda-build/receipts/ackredit_0.9.0_public_2026-10-03.json`.
   The consumer is a local wheel with all source modules/resources checked against
   its commit; these are not Sabueso's staged Conda installed-package gates.
   `test_source_acquisition_offline.py` checks automatic card/resolution/one-call
@@ -71,9 +69,9 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   partial batches, retries, provider/pin-recording failure, separate nested collectors,
   custom-client coverage and saved readers without new credit. Dedicated lanes copy
   these unchanged tests alongside packet-attribution tests outside both checkouts.
-  `dependency_preflight.py
-  --release` blocks build, staged installation and promotion until the stable
-  provider API and public dependency closure are verified (#108, ackredit#22/#75).
+  `dependency_preflight.py --release` now passes the adopted public closure;
+  stale floors, omitted public pins and future unpublished providers still fail.
+  Ackredit #81 separately tracks the editable checkout's old Git-derived version.
 
 ## Fixtures
 

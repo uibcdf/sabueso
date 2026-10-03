@@ -1,27 +1,23 @@
-# Development environments and the required Ackredit source candidate
+# Development environments
 
-The runtime authority is `pyproject.toml`. Ackredit is required, but the portable
-capture contract is accepted for prepared 0.9.0, with no public-channel build yet
-(ackredit#22/#75). These environment
-files provision the available Conda dependencies. They are not complete until the
-required provider is installed from the full commit recorded in
-`../dependency_routes.toml`:
+The runtime authority is `pyproject.toml`. The environment files provision public
+Conda dependencies, including **Ackredit >=0.9.0**, the first published portable
+`ackredit.attribution@1` contract. Its exact public build 0.9.0/py_0 is pinned by
+the installed-package gate; no provider source overlay is needed in CI.
+
+Create and activate the chosen development/test/docs environment, then install
+Sabueso from the repository root:
 
 ```bash
-git clone https://github.com/uibcdf/ackredit.git /tmp/sabueso-ackredit-source
-git -C /tmp/sabueso-ackredit-source checkout 383a64b2fdbc5472a7cdeb92c464b87433aabd76
-python -m pip install --no-deps --no-build-isolation /tmp/sabueso-ackredit-source
 python -m pip install --no-deps --editable .
 ```
 
-Run these commands in the activated development/test/docs environment, from the
-Sabueso root. The candidate declares Python 3.11–3.14 under
-[ackredit#80](https://github.com/uibcdf/ackredit/issues/80). Every source CI lane uses
-normal installation; no Requires-Python override is needed. Source installation
-evidence remains separate from a released public build and its clean installation.
+In the maintainer's `molsyssuite@uibcdf_3.14` workspace, all installed local
+MolSysSuite packages remain editable. Clean qualification environments use the
+public distributions and the candidate artifact.
 
-All runtime CI lanes install the pinned provider and test the real API. The dependency
-preflight validates the source overlay and reports the unresolved release blocker.
-`python devtools/dependency_preflight.py --release` fails until a stable provider
-version, exact public build pins, and normal clean installs on Python 3.11–3.14 are
-verified. This is development provisioning, not a public installation route.
+Every runtime CI lane obtains the required provider from the public Conda channel.
+Dedicated receiving lanes exercise its first published API on Python 3.11–3.14
+outside both checkouts. `python devtools/dependency_preflight.py --release` verifies
+that metadata, recipe, environments and exact public build pins agree. Public
+provider delivery is recorded under Sabueso #108 and Ackredit #22/#75/#80.

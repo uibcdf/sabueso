@@ -48,11 +48,10 @@ need to retain original source access and per-result/workflow references.
 The agreed acquisition scope is built-in UniProt/Europe PMC. Other sources/custom
 clients, further result types, undeclared bibliography and Recorda integration
 remain open with explicit gaps; they do not claim completed coverage in this slice.
-Publication is gated by actual public Ackredit closure, a clean installed frozen
-0.3.11 card, exact final-SHA CI and the staged artifact's full installed matrix.
-Independent Linux receiving qualification against the real Ackredit staging file
-passes on Python 3.11–3.14 with the planned public core pins. Hosted provider
-qualification, promotion and clean public delivery still precede release work.
+Ackredit's public 0.9.0 delivery is adopted, with the published floor and exact
+public build/hash. Independent Linux receiving qualification passes on Python
+3.11–3.14 with the planned public core pins. Publication still needs a clean
+installed frozen 0.3.11 card, exact final-SHA CI and Sabueso's staged-file matrix.
 See the committed release plan, draft notes and route checklist in
 `devtools/conda-build/`. Preparation does not publish a version.
 
@@ -318,10 +317,11 @@ In order:
      saves those detached traces and credits completed access in the workflow.
      Other sources/custom clients, further result types and complete resource
      bibliography remain coverage work with explicit gaps in the prepared 0.12.0
-     scope (#110). Published Python dependency closure blocks building and
-     publishing that release. The provider
-     source contract now covers Python 3.14 under ackredit#80; normal consumer source
-     installation replaces the earlier metadata override. The provider corrected explicit
+     scope (#110). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;
+     its published minimum and exact public pins replace the source overlay and
+     release blocker. Sabueso's own frozen-card/candidate/installed matrix still
+     precedes its release. The provider interpreter contract is delivered under
+     ackredit#80, without metadata overrides. The provider corrected explicit
      author-object BibTeX rendering in ackredit#78; the pinned candidate includes it.
      Knowledge support, runtime use and terms retain
      their separate meanings; scientific payloads are unchanged.

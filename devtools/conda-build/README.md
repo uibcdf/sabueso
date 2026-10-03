@@ -84,27 +84,23 @@ write the card from the fixtures there
 (see `devguide/SCHEMA.md`, "Versioning policy", and uibcdf/sabueso#42). From then on,
 that schema's recorded shape is fixed.
 
-## Unreleased required dependency gate
+## Delivered required provider
 
-The development line now requires Ackredit for automatic packet attribution (#108).
-Its portable API has no verified stable public build across Python 3.11–3.14 yet
-(ackredit#22/#75; public-delivery evidence is also tracked in #80). Build, staged installed-package and promotion workflows run
-`python devtools/dependency_preflight.py --release` and stop while this dependency
-is declared unpublished in `devtools/dependency_routes.toml`. Do not infer public
-closure from the source CI candidate, whose normal installation now covers 3.11–3.14.
-Once the provider publishes, set the actual API floor and exact public build pins,
-verify normal clean installs on all supported interpreters, and remove the tracked
-source overlay and blocker together. The published 0.11.0 route is unchanged.
+Ackredit 0.9.0/py_0 is public, carrying the first published portable attribution
+contract (#108; ackredit#22/#75/#80). Metadata, recipe and environments require
+`ackredit>=0.9.0`; CI uses public Conda without a source overlay. The installed-file
+matrix pins the public build and rejects any other archive digest:
+`37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1`.
+The public bytes match the previously independently verified staging file.
 
-Independent receiving qualification on 2026-10-03 verifies the real Ackredit
-staging file from producer 37136075066 and runs all 36 attribution/acquisition
-cases, the public workflow and pip check on fresh Linux Python 3.11–3.14
-environments with the planned public core pins. See
-`receipts/ackredit_0.9.0_staging_2026-10-03.json` and the #108 report. The
-consumer is a local wheel whose source/resources and installed bytes are checked;
-this is not a Sabueso Conda release or public-provider closure. The hosted provider
-qualification/caller repairs remain molsyssuite#88/#89, followed by promotion and
-verified clean public installation. Keep the release preflight blocked.
+Provider installed run 37152044426 covers Linux/macOS arm64 × Python 3.11–3.14;
+promotion 37152421084 preserves the archive. Independent receiving compatibility
+on all four Linux minors passes the 36 tests, public workflow and pip check with
+Sabueso's planned exact public core pins. Staging/public receiving receipts remain
+separate from Sabueso's actual Conda candidate qualification. `dependency_preflight.py
+--release` passes the adopted closure; it retains generic future-provider guards.
+The primary workspace keeps editable packages; provider #81 owns its Git-derived
+version mismatch with the published minimum.
 
 ## Prepared 0.12.0 scope (#110)
 
@@ -120,10 +116,9 @@ not an actual Sabueso staged-build receipt.
 
 Before selecting the final candidate:
 
-1. Verify Ackredit's published portable API artifact and normal clean dependency
-   closure; set its real minimum version and exact public build pins. Remove the
-   source overlays and blocker together. Reconcile public pins with the provider's
-   transitive requirements, then pass `dependency_preflight.py --release`.
+1. Provider delivery is verified and adopted: minimum 0.9.0, public build/hash,
+   compatible public core pins and no source overlay. Re-run
+   `dependency_preflight.py --release` before every build/installed/promotion route.
 2. Build a local, unpublished candidate Conda file and install it in a separate
    clean environment. Generate the 0.3.11 frozen public card from that installed
    code, record its candidate/fixture/version/licence receipt in `temp_data/NOTICE.md`,

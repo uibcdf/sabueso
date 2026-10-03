@@ -19,16 +19,13 @@ kind = "recipe"
 
 [routes."devtools/conda-envs/test_env.yaml"]
 kind = "environment"
-source_dependencies = ["ackredit"]
 used_by = ".github/workflows/ci.yml (offline tests, every OS and Python)"
 
 [routes."devtools/conda-envs/development_env.yaml"]
 kind = "environment"
-source_dependencies = ["ackredit"]
 
 [routes."devtools/conda-envs/docs_env.yaml"]
 kind = "environment"
-source_dependencies = ["ackredit"]
 
 [routes."devtools/conda-envs/build_env.yaml"]
 kind = "excluded"
@@ -36,17 +33,15 @@ reason = "builds, uploads and promotes the package; never installs Sabueso's run
 
 [routes.".github/workflows/test_staged_conda_package.yaml"]
 kind = "pins"
-pending_public_dependencies = ["ackredit"]
 
 [routes."devtools/conda-build/verify_staged_install.py"]
 kind = "pins"
-pending_public_dependencies = ["ackredit"]
 # PUBLIC_DEPENDENCIES: the exact public builds the installed-package gate checks. They
 # must equal the workflow's pins (tests/tools/test_dependency_preflight_offline.py).
 
 [routes.".github/workflows/ci.yml"]
 kind = "excluded"
-reason = "installs the Conda portion of test_env.yaml (checked above), the required full-commit Ackredit source candidate normally on Python 3.11–3.14, Sabueso with pip --no-deps, and ruff"
+reason = "installs public runtime dependencies from test_env.yaml (checked above), Sabueso with pip --no-deps, and ruff; dedicated receiving lanes pin published Ackredit 0.9.0/py_0"
 
 [routes.".github/workflows/build_and_upload_conda_packages.yaml"]
 kind = "excluded"
@@ -64,22 +59,6 @@ reason = "installs build_env.yaml only, to remove a label"
 kind = "excluded"
 reason = "runs the governance check; installs no runtime"
 
-# Required provider publication is pending. No public floor/build is invented:
-# --release fails until these entries are removed and public pins are verified.
-[unpublished_required_dependencies.ackredit]
-reason = "portable 0.9.0 has a verified staging file and independent Linux receiving tests on Python 3.11–3.14; hosted exact-file qualification, promotion and verified clean public installation remain pending (ackredit#22, #75; molsyssuite#88/#89)"
-issue = "https://github.com/uibcdf/sabueso/issues/108"
-
-# Normal installed source route on every supported minor; publication is separate.
+# All required providers have public builds; no source overlay remains.
 [source_routes]
-applicable = true
-routes = [".github/workflows/ci.yml:test", ".github/workflows/ci.yml:ackredit-pilot"]
-
-[[source_routes.candidates]]
-repository = "uibcdf/ackredit"
-dependency = "ackredit"
-constraint = ""
-path = ".ackredit-candidate"
-commit = "383a64b2fdbc5472a7cdeb92c464b87433aabd76"
-python = ">=3.11,<3.15"
-reason = "required portable capture APIs unavailable on public channels; normal source installs on Python 3.11–3.14 without metadata overrides; no public installation claim"
+applicable = false
