@@ -22,19 +22,25 @@ The provider's portable contract is accepted for the prepared 0.9.0 candidate;
 staging and public delivery remain pending (ackredit#22/#75).
 The next release requires normal public-provider installation on 3.11–3.14.
 
-The output contains a knowledge store, two detached result attribution records,
+The output contains a knowledge store, an original `acquisition.trace.json`, two detached result attribution records,
 their text, CSL-JSON and BibTeX references, and the application's workflow attribution.
 Both results credit reused UniProt knowledge. Only the literature result credits
-Europe PMC. The workflow contains their union; saved readers add no credit.
+Europe PMC. Source intake also credits its actual local fixture access. The workflow
+contains the union of intake and composition references; saved readers add no credit.
 Composition supplies `packet.attribution` automatically; this workflow uses no
 Sabueso attribution collector to activate it. The records are saved beside packets.
 
-The initial adapter observes completed composition over pinned stored statements.
-The explicit source intake is outside that adapter. The records state this scope,
+Traceability is required. The separate acquisition adapter observes built-in
+UniProt entry/search and Europe PMC mentions/annotations, preserving original
+versions, response identities, routes, empty responses and failures. Other sources
+and custom clients are explicitly unobserved. The packet adapter observes completed
+composition over pinned stored statements. The records state their separate scopes,
 preserve source-record versions without calling them database releases, and list
 missing bibliography. The service-description articles are complete; they do not
 replace the bibliography of the target article or its annotation provider, and do
 not grant reuse rights for text fragments. See `docs/content/user/attribution.md`.
+Saved card/packet payloads have no runtime trace; the workflow saves original JSON
+beside them. MOLI ProjectRecord/Recorda routing remains future platform work.
 
 The pinned provider includes the explicit CSL-author BibTeX correction
 ([Ackredit #78](https://github.com/uibcdf/ackredit/issues/78)). Saved readers render

@@ -26,6 +26,7 @@ from smonitor import signal
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.card import Card
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.resolver.entity_resolver import EntityQuery, EntityResolution
 
 PROTEIN, SMALL_MOLECULE, DISEASE = "protein", "small_molecule", "disease"
@@ -118,6 +119,7 @@ def _organism_fits(card: Card, organism: Any) -> bool:
 
 @signal(tags=["api"])
 @arg_digest()
+@capture_acquisitions
 def resolve(
     query: EntityQuery | str,
     entity_type: str | None = None,

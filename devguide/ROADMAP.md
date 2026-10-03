@@ -292,14 +292,20 @@ In order:
    - required Ackredit attribution for knowledge pipelines (#108, moli#36): the
      automatic packet-composition adapter and public offline workflow are
      implemented against the accepted portable contract assigned to Ackredit's
-     prepared 0.9.0 candidate (ackredit#75). Source acquisition,
-     further result types, complete resource bibliography and published Python
+     prepared 0.9.0 candidate (ackredit#75). Traceability is mandatory: the first
+     source-acquisition slice records built-in UniProt/Europe PMC access, including
+     fixture/reuse/replay, empty answers, failure and original response identities,
+     automatically on cards, resolutions and one-call packets. The public pilot
+     saves those detached traces and credits completed access in the workflow.
+     Other sources/custom clients, further result types, complete resource bibliography and published Python
      dependency closure remain next work and block the next release. The provider
      source contract now covers Python 3.14 under ackredit#80; normal consumer source
      installation replaces the earlier metadata override. The provider corrected explicit
      author-object BibTeX rendering in ackredit#78; the pinned candidate includes it.
      Knowledge support, runtime use and terms retain
      their separate meanings; scientific payloads are unchanged.
+     MOLI owns ProjectRecord composition and future Recorda routing; the local trace
+     is a receiving experiment, not an implemented platform provenance contract.
 
 Each is proposed as an issue before work starts, and the order is revisited at each
 release.

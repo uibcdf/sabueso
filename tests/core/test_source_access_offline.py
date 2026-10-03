@@ -46,6 +46,7 @@ from sabueso.tools.db import (
 )
 
 ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
+TRACED = {"uniprot.get_entry", "uniprot.search", "europepmc.get_annotations"}
 BTS_KEY = "XBNHRNFODJOFRU-UHFFFAOYSA-N"
 
 CALLS = {
@@ -176,7 +177,8 @@ CALLS = {
 def test_every_source_returns_its_record_in_the_envelope(name):
     result = CALLS[name]()
     # "truncated" only where the source cut its answer and says so.
-    assert set(result) - {"truncated"} == ENVELOPE
+    expected = ENVELOPE | ({"acquisition_trace"} if name in TRACED else set())
+    assert set(result) - {"truncated"} == expected
     assert result["record"]
     assert result["retrieved_at"]
     assert result["query"]

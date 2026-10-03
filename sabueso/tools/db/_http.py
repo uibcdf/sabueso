@@ -39,6 +39,7 @@ from __future__ import annotations
 
 import contextlib
 import contextvars
+import hashlib
 import io
 import json
 import threading
@@ -59,6 +60,62 @@ TRANSIENT = {429, 500, 502, 503, 504}
 _RETRIED: contextvars.ContextVar = contextvars.ContextVar(
     "sabueso_retried", default=None
 )
+_REQUESTS: contextvars.ContextVar = contextvars.ContextVar(
+    "sabueso_requests", default=()
+)
+_REQUEST: contextvars.ContextVar = contextvars.ContextVar(
+    "sabueso_request", default=None
+)
+
+
+@contextlib.contextmanager
+def observing_requests():
+    """Observe transport facts for a source call, without enabling an archive."""
+    observed = []
+    token = _REQUESTS.set((*_REQUESTS.get(), observed))
+    try:
+        yield observed
+    finally:
+        _REQUESTS.reset(token)
+
+
+def _route_observed(route, record=None):
+    observed = _REQUEST.get()
+    if observed is not None:
+        observed["route"] = route
+        if record is not None:
+            observed.update(
+                retrieval_ref=record.get("ref"),
+                retrieved_at=record.get("retrieved_at"),
+                response_sha256=record.get("content_hash"),
+                status=record.get("status"),
+            )
+
+
+class _ObservedAnswer:
+    def __init__(self, answer, observed):
+        self.answer, self.observed = answer, observed
+
+    def __getattr__(self, name):
+        return getattr(self.answer, name)
+
+    def read(self, *args):
+        try:
+            content = self.answer.read(*args)
+            self.observed["response_sha256"] = hashlib.sha256(content).hexdigest()
+            return content
+        except Exception as error:
+            self.observed.update(outcome="failed", error=type(error).__name__)
+            raise
+        finally:
+            self.observed["finished_at"] = _clock()
+
+    def __enter__(self):
+        self.answer.__enter__()
+        return self
+
+    def __exit__(self, *args):
+        return self.answer.__exit__(*args)
 
 
 @contextlib.contextmanager
@@ -79,6 +136,9 @@ def _note_retry(url: str, reason: str) -> None:
     noted = _RETRIED.get()
     if noted is not None:
         noted.append({"source": _source(), "reason": reason, "url": url})
+    observed = _REQUEST.get()
+    if observed is not None:
+        observed["retries"].append(reason)
 
 
 def retries_summary(noted: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -220,6 +280,8 @@ def urlopen(
         if _readable_json(content) or attempt == RETRIES:
             return Answer(content, status, headers, getattr(answer, "retrieved_at", ""))
         _note_retry(_named(target).full_url, "unreadable_body")
+        if isinstance(answer, _ObservedAnswer):
+            answer.observed["retries"].append("unreadable_body")
         sleep(_wait(attempt, None))
     raise AssertionError("unreachable")  # pragma: no cover
 
@@ -233,6 +295,39 @@ def _readable_json(content: bytes) -> bool:
 
 
 def _urlopen_once(target: Any, timeout: float, sleep):
+    collectors = _REQUESTS.get()
+    if not collectors:
+        return _urlopen_transport(target, timeout, sleep)
+    named = _named(target)
+    observed = {
+        "method": named.get_method(),
+        "url": named.full_url,
+        "request_sha256": hashlib.sha256(named.data).hexdigest()
+        if named.data is not None
+        else None,
+        "route": "not_reached",
+        "network_attempts": 0,
+        "started_at": _clock(),
+        "retries": [],
+    }
+    for collector in collectors:
+        collector.append(observed)
+    token = _REQUEST.set(observed)
+    try:
+        answer = _urlopen_transport(named, timeout, sleep)
+        observed.update(outcome="received", status=getattr(answer, "status", None))
+        return _ObservedAnswer(answer, observed)
+    except Exception as error:
+        observed.update(outcome="failed", error=type(error).__name__)
+        if isinstance(error, HTTPError):
+            observed["status"] = error.code
+        raise
+    finally:
+        observed["finished_at"] = _clock()
+        _REQUEST.reset(token)
+
+
+def _urlopen_transport(target: Any, timeout: float, sleep):
     from sabueso.tools.db import _archive, _mirror
 
     mode = _archive.active()
@@ -252,6 +347,7 @@ def _urlopen_once(target: Any, timeout: float, sleep):
             )
         )
         if kept is not None:
+            _route_observed(mode.name, kept)
             return _from_archive(kept)
         if mode.name == "replay":
             from sabueso.core.errors import NotArchivedError
@@ -278,6 +374,7 @@ def _urlopen_once(target: Any, timeout: float, sleep):
             source=_source(),
         )
         _archive.note(record)
+        _route_observed("network", record)
         _answered_at(retrieved_at)
         raise HTTPError(
             exc.url, exc.code, exc.msg, exc.headers, io.BytesIO(content)
@@ -290,6 +387,7 @@ def _urlopen_once(target: Any, timeout: float, sleep):
         method, url, body, status, _kept(headers), content, retrieved_at, _source()
     )
     _archive.note(record)
+    _route_observed("network", record)
     _answered_at(retrieved_at)
     return Answer(content, status, headers, retrieved_at)
 
@@ -333,6 +431,10 @@ def _open(target: Any, timeout: float, sleep):
     named = _named(target)
     for attempt in range(RETRIES + 1):
         try:
+            _route_observed("network")
+            observed = _REQUEST.get()
+            if observed is not None:
+                observed["network_attempts"] += 1
             return _urlopen(named, timeout=timeout)
         except HTTPError as exc:
             if exc.code not in TRANSIENT or attempt == RETRIES:

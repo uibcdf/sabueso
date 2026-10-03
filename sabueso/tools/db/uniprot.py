@@ -21,6 +21,11 @@ from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.source_acquisition import (
+    acquisition,
+    capture_acquisitions,
+    missing_fixture,
+)
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -124,6 +129,7 @@ class OnlineUniProtClient:
     def __init__(self, timeout: float = 30.0) -> None:
         self.timeout = timeout
 
+    @acquisition("UniProt", "entry")
     def fetch_entry(self, accession: str) -> Tuple[Dict[str, Any], str]:
         request = Request(
             f"{UNIPROT_REST}/{accession}.json", headers={"Accept": "application/json"}
@@ -143,6 +149,7 @@ class OnlineUniProtClient:
                 f"UniProt request for {accession} failed: {exc}"
             ) from exc
 
+    @acquisition("UniProt", "search")
     def search(
         self, name: str, organism: int | str, include_subtaxa: bool = False
     ) -> Dict[str, Any]:
@@ -199,6 +206,7 @@ class FixtureUniProtClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @acquisition("UniProt", "entry", fixture=True)
     def fetch_entry(self, accession: str) -> Tuple[Dict[str, Any], str]:
         if accession in self.failing:
             raise ConnectorError(f"UniProt request for {accession} failed (simulated)")
@@ -207,6 +215,7 @@ class FixtureUniProtClient:
             raise RecordNotFoundError(f"UniProt has no record {accession}")
         return json.loads(path.read_text(encoding="utf-8")), self.retrieved_at
 
+    @acquisition("UniProt", "search", fixture=True)
     def search(
         self, name: str, organism: int | str, include_subtaxa: bool = False
     ) -> Dict[str, Any]:
@@ -215,7 +224,7 @@ class FixtureUniProtClient:
             raise ConnectorError(f"UniProt search {key} failed (simulated)")
         path = self.directory / "uniprot_search" / f"{key}.json"
         if not path.is_file():
-            raise ConnectorError(f"No saved UniProt search response for {key}")
+            raise missing_fixture(f"No saved UniProt search response for {key}")
         saved = json.loads(path.read_text(encoding="utf-8"))
         return {**saved, "retrieved_at": self.retrieved_at}
 
@@ -224,6 +233,7 @@ class FixtureUniProtClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_entry(identifier: str, client: Any = None, skip_digestion: bool = False):
     """The UniProtKB entry of an accession, in a provenance envelope.
 
@@ -237,6 +247,7 @@ def get_entry(identifier: str, client: Any = None, skip_digestion: bool = False)
 
 
 @arg_digest()
+@capture_acquisitions
 def search(
     name: str,
     organism: int | str,

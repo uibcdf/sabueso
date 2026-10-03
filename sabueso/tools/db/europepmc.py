@@ -46,6 +46,11 @@ from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.source_acquisition import (
+    acquisition,
+    capture_acquisitions,
+    missing_fixture,
+)
 from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -91,6 +96,7 @@ class OnlineEuropePMCClient:
     def __init__(self, timeout: float = 60.0) -> None:
         self.timeout = timeout
 
+    @acquisition(SOURCE, "annotations")
     def annotations(self, article_ids: list[str]) -> Dict[str, Any]:
         """Raw accession annotations, in bounded batches; no source release is stated."""
         retrieval = stamp(SOURCE)
@@ -121,6 +127,7 @@ class OnlineEuropePMCClient:
                 ) from exc
         return {"retrieved_at": retrieval.value, "version": None, "record": records}
 
+    @acquisition(SOURCE, "mentions")
     def mentions(self, accession: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
         retrieval = stamp(SOURCE)
         articles, cursor, hits, version = [], "*", 0, None
@@ -182,6 +189,7 @@ class FixtureEuropePMCClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @acquisition(SOURCE, "annotations", fixture=True)
     def annotations(self, article_ids: list[str]) -> Dict[str, Any]:
         records, retrieved = [], []
         for article_id in article_ids:
@@ -210,6 +218,7 @@ class FixtureEuropePMCClient:
             "record": records,
         }
 
+    @acquisition(SOURCE, "mentions", fixture=True)
     def mentions(self, accession: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
         if accession in self.failing:
             raise ConnectorError(
@@ -217,7 +226,7 @@ class FixtureEuropePMCClient:
             )
         path = self.directory / "europepmc" / f"{accession}.json"
         if not path.is_file():
-            raise ConnectorError(
+            raise missing_fixture(
                 f"No saved Europe PMC search response for UniProt {accession}"
             )
         saved = json.loads(path.read_text(encoding="utf-8"))
@@ -230,6 +239,7 @@ class FixtureEuropePMCClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_annotations(
     article_ids: Any,
     client: Any = None,
@@ -255,6 +265,7 @@ def get_annotations(
 
 
 @arg_digest()
+@capture_acquisitions
 def get_mentions(
     identifier: str,
     limit: int = DEFAULT_LIMIT,

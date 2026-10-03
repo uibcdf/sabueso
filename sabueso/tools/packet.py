@@ -15,6 +15,7 @@ from smonitor import signal
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ResolverError
 from sabueso.core.packets import KnowledgePacket, KnowledgeQuery, compose_packet
+from sabueso.core.source_acquisition import capture_acquisitions
 
 
 def _card(accession: str, role: str, options: dict, curations: Any) -> Any:
@@ -34,6 +35,7 @@ def _card(accession: str, role: str, options: dict, curations: Any) -> Any:
 
 @signal(tags=["api"])
 @arg_digest()
+@capture_acquisitions
 def knowledge_packet(
     knowledge_query: KnowledgeQuery,
     store: Any = None,

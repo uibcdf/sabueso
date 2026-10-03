@@ -15,8 +15,12 @@
   recorded; disease grouping includes broader MONDO/MedGen identity/hierarchy context.
 - **Required pipeline attribution / release blocker** (#108, moli#36): Ackredit source capture APIs
   are accepted for prepared 0.9.0, with public delivery pending. Its corrected source contract covers
-  Sabueso's Python 3.11–3.14 range (ackredit#80). The first runtime adapter observes packet composition;
-  source acquisition and further result types still need adapters. Only UniProt and
+  Sabueso's Python 3.11–3.14 range (ackredit#80). Runtime adapters observe packet composition
+  and built-in UniProt/Europe PMC acquisition. Other sources/custom clients and
+  further result types still need adapters. Detached traces must be explicitly saved
+  by the application; payload-only readers cannot reconstruct original execution.
+  MOLI ProjectRecord/Recorda routing, correlation and strict recording policy remain
+  platform-owned open work, not guarantees of this local slice. Only UniProt and
   Europe PMC description papers are declared so far; other citations remain explicit
   gaps. Every runtime CI lane installs the full-commit source provider. Python
   3.11–3.14 use normal source installs, without metadata overrides; this cannot

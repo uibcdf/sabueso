@@ -63,6 +63,18 @@ class Card:
         self.relationship_store = relationship_store
         self.selection_rules = selection_rules or {}
         self.quality = quality or {}
+        self._acquisition_trace = None
+
+    @property
+    def acquisition_trace(self) -> Dict[str, Any] | None:
+        """Original runtime source access, detached from the scientific card payload.
+
+        Save it beside the card. Payload-only readers return None and perform no
+        acquisition or attribution. Coverage is explicit in the trace.
+        """
+        from copy import deepcopy
+
+        return deepcopy(self._acquisition_trace)
 
     @property
     def id(self) -> str | None:

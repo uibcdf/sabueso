@@ -774,6 +774,7 @@ class KnowledgePacket:
         # Runtime attribution belongs to the result, outside its scientific hash.
         # A saved scientific payload alone cannot reconstruct an original capture.
         self._attribution = None
+        self._acquisition_trace = None
         self.ref = ref
 
     @property
@@ -784,6 +785,15 @@ class KnowledgePacket:
         source versions. Reading a packet never creates a replacement capture.
         """
         return copy.deepcopy(self._attribution)
+
+    @property
+    def acquisition_trace(self) -> dict | None:
+        """Original source access during ``knowledge_packet``; None on saved reads.
+
+        Composition over existing cards makes no new source-acquisition claim.
+        Save the original runtime trace separately from the scientific payload.
+        """
+        return copy.deepcopy(self._acquisition_trace)
 
     format = property(lambda self: self._data["format"])
     #: ``full`` or ``index`` (``knowledge_packet@3``); earlier formats are ``full``.

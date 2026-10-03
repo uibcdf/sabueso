@@ -46,6 +46,15 @@ shows how to use them.
   - An option the tool does not take is refused, never ignored.
 - `sabueso.resolve_protein_card`, `sabueso.resolve_molecule_card`: the card tools behind
   `resolve`; diseases through `sabueso.resolve_disease_card` (#90).
+- `Card.acquisition_trace`, `EntityResolution.acquisition_trace` and
+  `KnowledgePacket.acquisition_trace` (unreleased, #108): detached runtime source
+  events for declared built-in UniProt/Europe PMC boundaries. Resolution failures
+  returning no card retain their trace; escaping exceptions also carry it.
+  `knowledge_packet` retains its intake, while composition from existing cards
+  creates no new acquisition trace. Independent copies preserve original versions,
+  routes, response identities, empty answers and failures. Saved scientific payloads
+  return `None`; retain original JSON sidecars. Other sources/custom clients are
+  explicitly unobserved. `SOURCE_ACCESS.md` defines the coverage and local formats.
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
   Deck.
 - `sabueso.resolve_disease_card(identifier)`, `sabueso.disease_targets(disease,
@@ -65,11 +74,13 @@ shows how to use them.
   Save the original JSON sidecar alongside the scientific packet.
   `sabueso.attribution()` yields an `AttributionRun`; its
   `records` accessor returns detached JSON records for completed packet composition.
+  Its separate `acquisitions` accessor retains observed source operations, including
+  failures. Collection is optional; runtime attachment is automatic.
   Applications own Ackredit sessions. The required lazy adapter preserves per-result
   reused resources and contributes to enclosing captures/workflows; provider failures
   preserves knowledge and host records. Records carry source-record versions and
-  exact support pins, separately from packets/terms. Acquisition and resolve-only
-  attribution remain outside this first adapter. Ackredit is required in runtime
+  exact support pins, separately from packets/terms. Acquisition uses the separate
+  bounded source adapter described above. Ackredit is required in runtime
   metadata/recipe; the next release is blocked by stable API/publication/3.14 closure.
   See the user attribution page and
   `examples/ackredit_pilot/`.

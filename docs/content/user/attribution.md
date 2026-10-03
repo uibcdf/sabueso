@@ -1,9 +1,12 @@
-# Automatic packet attribution
+# Automatic traceability and attribution
 
 In development after 0.11.0, every completed packet composition attaches
 `packet.attribution`. It keeps the resources behind selected stored statements, their
 original source-record versions and pins, and the software executing composition.
 The records are separate from the packet, its hashes and its terms report.
+Traceability is a required Sabueso property. The first source-access slice also
+retains automatic acquisition traces for built-in UniProt and Europe PMC clients;
+its declared gaps prevent a claim of complete pipeline coverage.
 
 The application owns the Ackredit session:
 
@@ -62,10 +65,56 @@ The knowledge store and `packet.to_dict()` retain scientific payloads only: a pa
 loaded from them has `attribution is None`. Retain and read the original JSON sidecar
 alongside it; never manufacture execution attribution while loading saved knowledge.
 
+## Source acquisition
+
+`resolve` and `refresh_card` retain `card.acquisition_trace` and
+`resolution.acquisition_trace`. A failed resolution returning no card still has a
+trace on its resolution; an escaping exception retains `error.acquisition_trace`.
+`knowledge_packet` attaches its intake trace to `packet.acquisition_trace`.
+`compose_packet` reads existing knowledge and makes no new acquisition claim.
+
+```python
+with ackredit.session("my source workflow"):
+    with ackredit.capture("workflow") as workflow:
+        card, resolution = sabueso.resolve("P60174")
+
+trace = resolution.acquisition_trace
+Path("acquisition.trace.json").write_text(json.dumps(trace, indent=2))
+```
+
+These traces observe built-in UniProt entry/search and Europe PMC
+mentions/explicit-annotation clients. The corresponding public source envelopes
+add `acquisition_trace` while retaining the original raw `record`. Other sources
+and custom clients are explicitly unobserved. A source not asked has no event or
+credit. `sabueso.attribution()` can collect the same events as `run.acquisitions`,
+separately from completed packet composition in `run.records`.
+
+Each event keeps the query, original producer and source versions, observed route,
+original retrieval time, response identity and outcome. Entry versions, service
+versions and database releases have distinct bases. Archive reuse/replay retains
+original response hashes and retrieval references with no new network attempt.
+Fixture reads are local fixture access. Empty answers, actual HTTP absence,
+unavailable fixtures, unqueried offline requests and failures remain distinct;
+partial failed batches retain their completed transport observations.
+
+Completed access contributes contextual uses and references to the application's
+Ackredit capture, including evaluated-empty answers and local replay. A failed or
+unqueried access remains in the host trace with provider status `not_attempted`;
+it does not claim successful acquisition. Provider or recording failures diagnose
+explicit gaps while preserving the scientific return or exception.
+
+Save original JSON beside the scientific objects. The provisional local formats
+`sabueso.acquisition_trace@1` and `sabueso.source_acquisition@1` are separate from
+card and packet schemas. Payload-only saved readers have `acquisition_trace is None`
+and add no execution credit. There is no implicit persistence. MOLI owns future
+ProjectRecord/Recorda correlation, routing and recording policy; this local slice
+does not establish a complete project record.
+
 ## Dependency and failures
 
 Ackredit is a required runtime dependency. Importing Sabueso and entering an empty
-collector do not load it; composition automatically loads it and credits the result.
+collector do not load it; composition and completed observed source access
+automatically load it and credit their respective uses.
 A missing or broken provider in an invalid installation produces
 `SABUESO-W-ATTRIBUTION-001`, marks attribution
 `failed`, and preserves the completed packet and host record. Missing stored support
@@ -89,11 +138,11 @@ on every supported Python minor. The published 0.11.0 installation remains uncha
 
 ## Scope and bibliography
 
-The initial adapter observes **composition over stored statements**. It does not
-observe source acquisition, resolve-only calls, arbitrary card views or every
-resource of a pipeline. It does not infer a new download from card provenance,
-replay metadata, an evaluated-empty outcome or a failed request. Source acquisition
-is a separate next adapter in [Sabueso #108](https://github.com/uibcdf/sabueso/issues/108).
+The packet adapter observes **composition over stored statements**. The separate
+acquisition adapter observes the bounded clients above. Arbitrary card views,
+other sources and further result types remain open in
+[Sabueso #108](https://github.com/uibcdf/sabueso/issues/108). Neither adapter infers
+a new download from stored card provenance or a failed request.
 
 Full and index packets use the same stored-support closure as packet terms. Unused
 statements receive no credit. Exact unrecorded mapping lineage cannot be recovered:

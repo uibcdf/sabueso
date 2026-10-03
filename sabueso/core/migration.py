@@ -34,6 +34,7 @@ from typing import Any, Callable, Dict, List, Tuple
 
 from .errors import StorageError
 from .schema_version import parse, same_line
+from .source_acquisition import capture_acquisitions
 
 MIGRATION_RULE = "card_migration@1"
 
@@ -570,6 +571,7 @@ def rebuild_options(card: Any) -> Dict[str, Any]:
     return options
 
 
+@capture_acquisitions
 def refresh_card(
     card: Any, curations: Any = None, store: Any = None, **options: Any
 ) -> Tuple[Any, Any]:

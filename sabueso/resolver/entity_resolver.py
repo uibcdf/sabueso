@@ -24,6 +24,7 @@ from sabueso.core.relationship_store import (
     Relationship,
     make_relationship,
 )
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.core.source_assertion_store import SourceAssertion, make_source_assertion
 from sabueso.tools.db.rcsb import OnlineRCSBClient
 from sabueso.tools.db.uniprot import OnlineUniProtClient
@@ -68,6 +69,13 @@ class EntityResolution:
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
+
+    @property
+    def acquisition_trace(self) -> Dict[str, Any] | None:
+        """Detached runtime access, including when resolution produces no card."""
+        from copy import deepcopy
+
+        return deepcopy(getattr(self, "_acquisition_trace", None))
 
 
 def protein_ref(accession: str) -> str:
@@ -205,6 +213,7 @@ class EntityResolver:
             return self._read[accession]
         return self.uniprot.fetch_entry(accession)
 
+    @capture_acquisitions
     def resolve(self, query: EntityQuery | str) -> EntityResolution:
         self._read = {}  # only what this resolution reads
         if isinstance(query, str):

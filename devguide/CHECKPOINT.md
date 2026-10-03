@@ -226,10 +226,25 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   accepted API is published and public dependency closure exists on 3.11–3.14.
   Shared publisher adoption remains molsyssuite#78. UniProt/Europe PMC
   description citations are verified offline; other descriptions, target articles
-  and annotation-provider bibliography remain explicit gaps. Acquisition coverage,
+  and annotation-provider bibliography remain explicit gaps. Broader acquisition coverage,
   provider publication, public closure and the shared record boundary remain open.
   Corporate-author BibTeX rendering was reported as ackredit#78 and corrected by
   the provider; the pinned candidate includes it, with CSL-JSON/text/BibTeX reader tests.
+- Required source-acquisition traceability (#108, moli#36), first slice:
+  built-in UniProt entry/search and Europe PMC mentions/annotations record their
+  actual fixture/network/archive route, original versions, retrieval time, response
+  hashes/references, retry/attempt counts and distinct empty/unavailable/unqueried/
+  failed outcomes. Partial failed batches retain observed transport. Automatic
+  `acquisition_trace` attaches to cards/resolutions, including resolution without
+  a card, final refresh pins and one-call packets; supported public source envelopes
+  retain it beside raw records. Other sources/custom clients are explicitly unobserved.
+  `AttributionRun.acquisitions` separately collects source events; completed access
+  contributes contextual bibliography to the application's Ackredit capture.
+  Failures remain host records without completed-acquisition credit. Original JSON
+  sidecars survive saved reading without new credit; scientific formats/hashes stay
+  unchanged. The public pilot saves and checks both intake and composition.
+  MOLI owns future ProjectRecord/Recorda routing and strict recording policy; this
+  bounded local experiment does not establish complete project provenance.
 
 ## Package layout
 
@@ -269,13 +284,14 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1310 tests passed, 26 online tests deselected (2026-10-02, with the
+- Offline suite: 1332 tests passed, 26 online tests deselected (2026-10-03, in
+  `molsyssuite@uibcdf_3.14`, with all installed workspace packages editable and the
   required real Ackredit source provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.
 - Ruff format and check are clean. The MOLI governance check passes. The recorded card
   shape matches, and the source registry matches its page.
 - CI (`.github/workflows/ci.yml`): Linux and Windows × Python 3.11–3.14, macOS
-  Apple Silicon 3.13; offline coverage from Linux 3.13 after pushes to main.
+  Apple Silicon 3.14; offline coverage from Linux 3.14 after pushes to main.
 
 ## Open work
 

@@ -54,6 +54,12 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   outside both checkouts, using installed consumer/provider code and public fixtures.
   The portable contract is accepted for prepared 0.9.0; source-installed CI and
   local exact-file receiving proof remain distinct from public delivery.
+  `test_source_acquisition_offline.py` checks automatic card/resolution/one-call
+  packet traces, final refresh pins, original versions/hashes, fixtures, archive
+  replay/reuse, evaluated-empty access, HTTP absence, missing fixtures, timeouts,
+  partial batches, retries, provider/pin-recording failure, separate nested collectors,
+  custom-client coverage and saved readers without new credit. Dedicated lanes copy
+  these unchanged tests alongside packet-attribution tests outside both checkouts.
   `dependency_preflight.py
   --release` blocks build, staged installation and promotion until the stable
   provider API and public dependency closure are verified (#108, ackredit#22/#75).

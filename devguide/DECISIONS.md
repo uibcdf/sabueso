@@ -1,5 +1,32 @@
 # Sabueso — Decision Log
 
+## Required source traceability and first acquisition slice (2026-10-03, #108, moli#36)
+
+- The maintainer requires traceability as part of Sabueso's knowledge product and
+  MOLI's consuming workflows. Observation is automatic for supported boundaries;
+  an application collector is a convenience, not activation of the requirement.
+- Instrument built-in UniProt entry/search and Europe PMC mentions/annotations
+  first. Keep source-operation identities independent of card/packet identities.
+  Record actual fixture/network/reuse/replay access, original versions and response
+  identities, empty responses, unavailable fixtures, unqueried requests and failures.
+  Partial failed batches preserve completed transport without claiming completed intake.
+- Attach detached traces to cards/resolutions, including no-card failures, final
+  refresh states and one-call packets. Public source envelopes add a separate trace;
+  client return protocols and raw records remain intact. Scientific payloads, hashes,
+  card schema and knowledge-store formats are unchanged. Applications save original
+  JSON sidecars; saved reading neither reconstructs nor credits execution.
+- Credit completed resource access and verified descriptions in the application's
+  Ackredit capture. Failed/unqueried access remains in host records with no successful
+  acquisition credit. Provider/recording failure diagnoses explicit gaps and preserves
+  the scientific result or exception. Bibliography does not establish reuse rights.
+- Local formats `sabueso.acquisition_trace@1` and `sabueso.source_acquisition@1`
+  are provisional component records. Other sources/custom clients, further results
+  and undeclared citations remain explicit gaps in #108. MOLI owns ProjectRecord
+  composition and future Recorda routing/correlation/reliability policy (#36);
+  this experiment does not implement those platform contracts.
+- Keep the existing required-provider public-release gate. Source-installed tests
+  and a public-fixture pilot do not establish public dependency delivery.
+
 ## Adopt the accepted portable Ackredit contract (2026-10-03, #108, ackredit#75/#22)
 
 - Pin provider source `383a64b2fdbc5472a7cdeb92c464b87433aabd76`, containing the

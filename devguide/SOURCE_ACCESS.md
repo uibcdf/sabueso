@@ -60,11 +60,67 @@ it.
 `{source, kind, query, retrieved_at, version, record}` (`tools/db/_record.py`):
 
 - `record` is raw, as the source gave it;
-- `version` is None when the source states no release;
+- `version` is the original source-record version, or None when unstated; an entry
+  version or service version is not a database release;
 - arguments go through ArgDigest: `identifier`, `identifiers`, `client`, `limit`,
   `name`, `organism`, `include_subtaxa`, `species`, `required_score`;
 - the functions are listed in `tests/core/test_argument_contracts_offline.py`, and
   their envelopes are tested in `tests/core/test_source_access_offline.py`.
+
+## Required acquisition traceability (#108, moli#36)
+
+Traceability is mandatory and automatic for supported boundaries. The first slice
+in development covers the built-in online and fixture clients for UniProt entry
+and search, and Europe PMC mentions and explicit article annotations. Other sources
+and custom clients are explicitly `not_observed`; this is incomplete pipeline
+coverage. New sources must declare their observation coverage and test its gaps.
+
+These four public envelopes add `acquisition_trace` outside the unchanged raw
+`record`. `resolve`, `resolve_protein_card`, `EntityResolver.resolve` and
+`refresh_card` attach independent runtime copies to `Card.acquisition_trace` and
+`EntityResolution.acquisition_trace`, including resolutions returning no card.
+`knowledge_packet` retains its observed intake in `KnowledgePacket.acquisition_trace`,
+with the packet snapshot and card pins. Composition from existing cards does not
+claim new intake. Exceptions escaping these wrappers retain `acquisition_trace`.
+Direct client methods keep their original returns; a `sabueso.attribution()`
+collector exposes their events in `run.acquisitions`, separately from completed
+packet `run.records`.
+
+The provisional local formats are `sabueso.acquisition_trace@1` and
+`sabueso.source_acquisition@1`. A trace has an operation identity independent of
+the scientific object, declared coverage, result status and original source events.
+Successful card returns name the final card pin, including refresh history. Each
+source event records source, operation, query, original executing package version,
+start/finish times, original retrieval time and a source version with an explicit
+basis (`entry_version`, `database_release`, `service_version`, `not_stated`).
+Decoded response identity uses canonical JSON (`response_identity.hash`); observed
+HTTP bodies additionally retain their raw `response_sha256` and archive reference
+where available. These are different identities. No raw response content is copied
+into the runtime trace.
+
+Observed access is `network`, `fixture`, `reuse`, `replay`, `mixed` or explicitly
+unobserved/not reached. Request records retain method, URL, request-body hash,
+HTTP status, retry reasons and actual network-attempt counts. Archive reuse/replay
+keeps original retrieval identities and times with zero new network attempts.
+Outcomes distinguish `received`, `empty`, `not_found`, `unavailable`, `not_queried`,
+`failed` and `unobserved`. A missing fixture cannot establish source absence.
+An unasked source has no event or usage credit. A partial failed annotation batch
+retains completed transport records without claiming completed source access.
+
+Completed access, including evaluated-empty/not-found answers and local replay,
+contributes contextual resource use and bibliography to the enclosing application's
+Ackredit capture. Failed/unqueried/unavailable access stays in the host trace with
+`provider.status: not_attempted`. Provider or pin-recording failures emit SMonitor
+diagnostics and explicit gaps, preserving the original scientific return/exception.
+They never establish complete provenance. References do not establish reuse rights.
+
+Applications save original JSON traces beside scientific objects. Card/packet
+serialization, hashes, schemas and knowledge-store formats remain unchanged;
+payload-only saved readers have `acquisition_trace is None` and add no credit.
+There is no implicit journal, project destination or Recorda integration. MOLI
+owns future ProjectRecord routing/correlation and recording reliability policy.
+Regression tests are in `tests/core/test_source_acquisition_offline.py`; the public
+installed-consumer workflow is `examples/ackredit_pilot/`.
 
 ## Deprecated (removed before 1.0)
 

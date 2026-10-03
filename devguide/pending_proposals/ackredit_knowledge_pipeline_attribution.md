@@ -12,7 +12,8 @@ supersedes: []
 
 # Required attribution for knowledge pipelines
 
-Status: required automatic packet-composition adapter implemented; broader pipeline
+Status: required automatic packet-composition and bounded source-acquisition adapters
+implemented; broader pipeline
 coverage and stable public dependency closure remain open and block the next release.
 Owner: [uibcdf/sabueso#108](https://github.com/uibcdf/sabueso/issues/108).
 Shared boundary: [uibcdf/moli#36](https://github.com/uibcdf/moli/issues/36).
@@ -29,11 +30,12 @@ and `get_attribution` fit this need. Its canonical
 [integration guide](https://github.com/uibcdf/ackredit/blob/main/standards/ACKREDIT_GUIDE.md)
 owns the provider API; this report records Sabueso's initial use and remaining needs.
 
-Three records have different responsibilities:
+Four records have different responsibilities:
 
 | Record | Responsibility |
 | --- | --- |
 | SourceAssertions and pinned relationships | What sources state and what supports returned knowledge |
+| Acquisition trace | Observed source operation, route, response identity and outcome, including failures |
 | Runtime attribution | Resources and software actually reached, with bibliography and contextual uses |
 | Terms report | Source-stated obligations, restrictions and unknowns for an intended use |
 
@@ -82,17 +84,39 @@ verdicts, automatically after every completed composition. `packet.attribution` 
 the detached record; `sabueso.attribution()` optionally collects several results.
 It records `sabueso.packet_attribution@1` locally, credits selected stored knowledge
 and executed software, and contributes per-result references to the application's
-Ackredit session/captures. It observes no source requests or arbitrary card views.
+Ackredit session/captures. Composition itself observes no source requests or arbitrary card views.
 Query, packet, card and store payloads remain unchanged.
+
+Traceability is required by the maintainer and MOLI. The first acquisition slice
+automatically observes built-in UniProt entry/search and Europe PMC
+mentions/annotations. Provisional host records `sabueso.source_acquisition@1` in a
+`sabueso.acquisition_trace@1` retain independent operation identities, actual routes,
+original producer/source versions with explicit bases, retrieval times, decoded/raw
+response identities and archive references. Empty/not-found, unavailable fixtures,
+unqueried offline access, failure and partial transport remain distinguishable.
+Supported public envelopes retain the trace separately from raw records. Cards,
+resolutions (including no-card failures), refreshed final states and one-call
+packets retain independent copies. Exceptions retain their failed trace.
+
+Completed access contributes contextual resource use and bibliography through the
+accepted Ackredit API, including empty/local replay access. Failed/unqueried access
+remains a host record without completed-access credit. `AttributionRun.acquisitions`
+collects these source events separately from packet composition `records`.
+Other sources/custom clients are explicitly unobserved. Original JSON sidecars are
+saved by the application; payload-only readers have no trace and add no execution
+credit. MOLI owns ProjectRecord composition and future Recorda routing/correlation/
+reliability policy; the local experiment does not implement that platform boundary.
 
 The public offline pilot in `examples/ackredit_pilot/` composes identity and
 literature packets for HsTIM from frozen public responses. Both retain reused UniProt
 references; only literature credits Europe PMC. Their enclosing workflow holds the
-union. Saved JSON readers preserve versions and add no credits. Real-provider tests
+union of intake and composition references. The pilot saves the original acquisition
+trace beside the knowledge store. Saved JSON readers preserve versions and add no credits. Real-provider tests
 exercise reused resources, nested scopes, detached ownership, installed failure,
 fresh-process missing required provider diagnostics, lazy import and scientific result parity. Recorded
-empty source outcomes do not imply new acquisition. Acquisition/replay/empty request
-observation remains the next adapter, not a claimed feature of composition.
+empty source outcomes do not imply a new download. Source regression tests verify
+replay/reuse, empty answers, absence/failure, partial batches, retry facts, custom-client
+coverage, refresh pins and one-call packet intake independently of composition.
 
 Complete UniProt/Europe PMC description citations were verified against primary
 publication records; missing descriptions and target article/annotation-provider
@@ -151,9 +175,9 @@ dependency and automatic attribution. The initial optional decision is supersede
 `dependency_preflight.py --release` blocks build, staged installed-package and
 promotion workflows until normal public closure is verified on Python 3.11–3.14.
 The unversioned required metadata does not assert that old tagged APIs suffice.
-Next work observes
-actual acquisition boundaries, distinguishes successful/empty/replayed/failed
-requests, and expands verified resource bibliography. This change makes no release.
+Next work extends observed acquisition to other sources and result types, expands
+verified resource bibliography and coordinates the platform record boundary.
+This change makes no release.
 
 ## Alternatives
 
@@ -171,6 +195,6 @@ Two public offline packet results retain their own original attribution, includi
 reused resources, and the application's workflow captures both. Unused sources earn
 no credit. Saved readers, absence and provider failures preserve result knowledge.
 The local automatic-composition pilot passes; published compatibility and shared boundary
-gates remain open. #108 is kept open for acquisition/further-result coverage, complete
+gates remain open. #108 is kept open for remaining acquisition/further-result coverage, complete
 bibliography, provider publication and supported-Python closure. This is an initial
 runtime integration, not a claim of full pipeline coverage or a public installation route.

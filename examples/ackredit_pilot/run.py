@@ -1,4 +1,4 @@
-"""A public offline workflow with two independently attributed knowledge packets."""
+"""A public offline workflow with source traces and two attributed knowledge packets."""
 
 import argparse
 import json
@@ -18,18 +18,28 @@ def main():
 
     args.output.mkdir(parents=True, exist_ok=True)
     store = sabueso.KnowledgeStore(args.output / "knowledge.db")
-    # Intake is explicit and outside the initial composition adapter. It reads
-    # only frozen public UniProt/Europe PMC responses, never private pilot data.
-    card, _ = sabueso.resolve(
-        "P60174",
-        resolver=EntityResolver(FixtureUniProtClient(args.fixtures)),
-        europepmc={"article_ids": "PMC:PMC12400196"},
-        europepmc_client=FixtureEuropePMCClient(args.fixtures),
-    )
-    store.save(card)
     records = []
     with ackredit.session("public Sabueso attribution pilot"):
         with ackredit.capture("knowledge workflow") as workflow:
+            # Intake reads only declared frozen public responses. Its runtime
+            # trace is saved separately from the scientific card and packets.
+            card, resolution = sabueso.resolve(
+                "P60174",
+                resolver=EntityResolver(FixtureUniProtClient(args.fixtures)),
+                europepmc={"article_ids": "PMC:PMC12400196"},
+                europepmc_client=FixtureEuropePMCClient(args.fixtures),
+            )
+            trace = card.acquisition_trace
+            assert trace == resolution.acquisition_trace
+            assert trace["card_ref"] == card.pinned_ref()
+            assert len(trace["records"]) == 2
+            assert all(r["access"] == "fixture" for r in trace["records"])
+            assert all(r["network_attempts"] == 0 for r in trace["records"])
+            assert all(r["provider"]["status"] == "available" for r in trace["records"])
+            store.save(card)
+            (args.output / "acquisition.trace.json").write_text(
+                json.dumps(trace, indent=2), encoding="utf-8"
+            )
             with ackredit.scope("application.prepare"):
                 for name, aspects in (
                     ("identity", ["identity"]),
@@ -54,14 +64,29 @@ def main():
             for record in records
         ]
         assert "doi:10.1093/nar/gkae1010" in ids[0] & ids[1]
-        assert {item["id"] for item in workflow.attribution.to_dict()["items"]} == ids[
-            0
-        ] | ids[1]
+        intake_ids = {
+            item["id"]
+            for record in trace["records"]
+            for item in record["provider"]["attribution"]["items"]
+        }
+        assert {item["id"] for item in workflow.attribution.to_dict()["items"]} == (
+            intake_ids | ids[0] | ids[1]
+        )
 
     # A new reader session renders original records without registering or
     # crediting a new composition. Original producer/source versions stay intact.
     with ackredit.session("saved reader"):
         with sabueso.attribution() as reader:
+            saved_trace = json.loads(
+                (args.output / "acquisition.trace.json").read_text()
+            )
+            assert saved_trace == trace
+            assert store.load(card.id).acquisition_trace is None
+            for record in saved_trace["records"]:
+                original = ackredit.Attribution.from_dict(
+                    record["provider"]["attribution"]
+                )
+                original.report(format="bibtex")
             for name in ("identity", "literature"):
                 record = json.loads(
                     (args.output / f"{name}.attribution.json").read_text()
@@ -80,9 +105,10 @@ def main():
                         original.report(format=format), encoding="utf-8"
                     )
         assert not reader.records
+        assert not reader.acquisitions
         assert not ackredit.get_attribution().to_dict()["items"]
     print(
-        f"PASS: two result bibliographies, workflow union and saved readers ({args.output})"
+        f"PASS: source traces, two result bibliographies, workflow union and saved readers ({args.output})"
     )
 
 

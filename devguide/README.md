@@ -41,7 +41,7 @@ Every document is one of four kinds:
 | `INTERFACES_MINIMAL.md` | normative | Core interfaces: Card, Deck, stores, resolvers |
 | `RESOLVER.md` | normative | FieldResolver contract and selection rules |
 | `SELECTION_RULES_EXAMPLES.md` | normative | Selection rules, field by field |
-| `SOURCE_ACCESS.md` | normative | Source clients and `get_*` functions |
+| `SOURCE_ACCESS.md` | normative | Source clients, `get_*` functions and required acquisition traceability |
 | `ARGUMENT_CONTRACTS.md` | normative | ArgDigest: one digester per argument |
 | `DIAGNOSTICS.md` | normative | SMonitor codes and outcomes |
 | `LICENSING_AND_COMPLIANCE.md` | normative | Source licences and obligations |
@@ -67,8 +67,8 @@ Every document is one of four kinds:
 - `pending_bugs/`, `pending_proposals/`: analyses of active issues, each tied to its
   issue.
   `pending_proposals/ackredit_knowledge_pipeline_attribution.md` records the required
-  pipeline attribution plan (#108, moli#36), its automatic composition
-  adapter and remaining acquisition/publication gates.
+  pipeline attribution plan (#108, moli#36), its automatic composition and bounded
+  acquisition adapters, and remaining coverage/publication gates.
 - `templates/report.md`: the report template (MOLI reporting protocol).
 - `archive/`: resolved reports and superseded documents, indexed in
   `archive/README.md`. The original plans are there, and `ROADMAP.md` still tracks them.

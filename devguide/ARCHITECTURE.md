@@ -5,6 +5,15 @@ through these parts; `PUBLIC_API.md` lists the public surface.
 
 ## Layers
 
+Traceability is a required Sabueso product property, including failed or empty
+source access. Knowledge support, observed execution and bibliography retain their
+separate meanings. Runtime records must state their coverage and gaps; a returned
+card or a citation list alone cannot establish complete pipeline provenance.
+The first acquisition slice covers built-in UniProt and Europe PMC entry, search,
+mentions and annotation clients (#108, moli#36). See `SOURCE_ACCESS.md`.
+MOLI owns ProjectRecord composition and the future Recorda boundary; local records
+do not implement project routing, EventLedger persistence or strict commit policy.
+
 1. **Source access** (`sabueso.tools.db.<source>`, `SOURCE_ACCESS.md`).
    - Each source has:
      - a client with an online and a fixture implementation, sharing one protocol;

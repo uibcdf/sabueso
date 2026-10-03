@@ -57,9 +57,10 @@ jobs:
           client_dir="$RUNNER_TEMP/ackredit-client"
           mkdir -p "$client_dir"
           cp tests/core/test_attribution_offline.py "$client_dir/"
+          cp tests/core/test_source_acquisition_offline.py "$client_dir/"
           ln -s "$GITHUB_WORKSPACE/temp_data" "$client_dir/temp_data"
           cd "$client_dir"
-          python -m pytest test_attribution_offline.py -m "not online" --receptor=ci
+          python -m pytest test_attribution_offline.py test_source_acquisition_offline.py -m "not online" --receptor=ci
       - name: Run the public offline workflow
         shell: bash -l {0}
         run: |

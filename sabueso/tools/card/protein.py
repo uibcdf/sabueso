@@ -31,6 +31,7 @@ from sabueso.core.card import Card
 from sabueso.core.deck import Deck
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.core.merge import merge_mapping_results
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.mappings.chembl import map_bioactivities
 from sabueso.mappings.rcsb_structures import map_structure_entities
@@ -46,6 +47,7 @@ UNIPROT_PREFIX = "sabueso:protein:uniprot:"
 
 @signal(tags=["api", "protein"])
 @arg_digest()
+@capture_acquisitions
 def resolve_protein_card(
     query: EntityQuery | str,
     resolver: EntityResolver | None = None,

@@ -1,8 +1,8 @@
 """Automatic packet attribution, detached from immutable scientific payloads (#108).
 
-The application owns Ackredit sessions. This first adapter observes completed packet
-composition over stored statements, not source requests or every calculation in the
-process. Reading saved packets or JSON records never credits another composition.
+The application owns Ackredit sessions. Packet composition observes stored support;
+the source-acquisition adapter separately observes its declared built-in clients.
+Reading saved knowledge or JSON records never credits another execution.
 """
 
 from __future__ import annotations
@@ -16,25 +16,33 @@ FORMAT = "sabueso.packet_attribution@1"
 
 
 class AttributionRun:
-    """Completed composition records collected by ``sabueso.attribution()``.
+    """Composition and source-operation records collected by ``sabueso.attribution()``.
 
     ``records`` returns detached JSON-compatible records. Save them beside packets;
     they retain original producer versions, card pins and source-record versions.
     A record's ``provider.attribution`` can be read by Ackredit's ``Attribution``.
+    ``acquisitions`` independently retains observed source operations, including
+    failures, without adding them to the completed-composition ``records``.
     """
 
     def __init__(self):
         self._records = []
+        self._acquisitions = []
 
     @property
     def records(self) -> list[dict]:
         """Independent copies; changing them cannot change this run or a packet."""
         return deepcopy(self._records)
 
+    @property
+    def acquisitions(self) -> list[dict]:
+        """Detached source-operation records, separate from packet composition."""
+        return deepcopy(self._acquisitions)
+
 
 @contextmanager
 def attribution():
-    """Collect automatic packet attribution records in this context.
+    """Collect automatic packet attribution and source-operation records.
 
     Yields an ``AttributionRun``. Nested contexts observe their contained results;
     the outer context also retains them. No backend is loaded on entry or exit, and
