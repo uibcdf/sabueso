@@ -76,8 +76,9 @@ diagnostics before claiming completeness.
 
 The adapter uses a lazy required import, without DepDigest's optional-library path.
 This pilot does not enable import
-hooks, journals, automatic DOI enrichment or reminders. Its reviewed capture API is
-provisional; stable API publication and public dependency closure remain open. No public
+hooks, journals, automatic DOI enrichment or reminders. Its portable capture contract
+is accepted for Ackredit's prepared 0.9.0 candidate; exact installed qualification,
+publication and public dependency closure remain open. No public
 installation route for the development candidate is claimed. All runtime CI installs
 the required full-commit source candidate normally on Python 3.11–3.14, following
 the provider's interpreter contract correction

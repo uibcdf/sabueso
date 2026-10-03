@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           repository: uibcdf/ackredit
-          ref: e4a006a6931f3fb5f97be5b09767c144dfb35662
+          ref: 383a64b2fdbc5472a7cdeb92c464b87433aabd76
           path: .ackredit-candidate
           fetch-depth: 0
       - uses: mamba-org/setup-micromamba@v3.2.1
@@ -51,12 +51,21 @@ jobs:
         run: |
           cd "$RUNNER_TEMP"
           python -c "import ackredit,sabueso; assert 'site-packages' in ackredit.__file__, ackredit.__file__; assert 'site-packages' in sabueso.__file__, sabueso.__file__; assert callable(ackredit.capture)"
-      - name: Exercise the real required provider
+      - name: Exercise the installed required provider and consumer
         shell: bash -l {0}
-        run: python -m pytest tests/core/test_attribution_offline.py -m "not online" --receptor=ci
+        run: |
+          client_dir="$RUNNER_TEMP/ackredit-client"
+          mkdir -p "$client_dir"
+          cp tests/core/test_attribution_offline.py "$client_dir/"
+          ln -s "$GITHUB_WORKSPACE/temp_data" "$client_dir/temp_data"
+          cd "$client_dir"
+          python -m pytest test_attribution_offline.py -m "not online" --receptor=ci
       - name: Run the public offline workflow
         shell: bash -l {0}
-        run: python -m examples.ackredit_pilot.run --output "$RUNNER_TEMP/ackredit-pilot"
+        run: |
+          cd "$RUNNER_TEMP"
+          python "$GITHUB_WORKSPACE/examples/ackredit_pilot/run.py" \
+            --fixtures "$GITHUB_WORKSPACE/temp_data" --output "$RUNNER_TEMP/ackredit-pilot"
 
   test:
     name: Offline tests (${{ matrix.os }}, Python ${{ matrix.python-version }})
@@ -79,7 +88,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           repository: uibcdf/ackredit
-          ref: e4a006a6931f3fb5f97be5b09767c144dfb35662
+          ref: 383a64b2fdbc5472a7cdeb92c464b87433aabd76
           path: .ackredit-candidate
           fetch-depth: 0
       - name: Verify Apple Silicon macOS runner

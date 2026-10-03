@@ -14,7 +14,7 @@
   statement support is available, but exact mapping/qualifier lineage is not always
   recorded; disease grouping includes broader MONDO/MedGen identity/hierarchy context.
 - **Required pipeline attribution / release blocker** (#108, moli#36): Ackredit source capture APIs
-  are provisional and publication is pending. Its corrected source contract covers
+  are accepted for prepared 0.9.0, with public delivery pending. Its corrected source contract covers
   Sabueso's Python 3.11–3.14 range (ackredit#80). The first runtime adapter observes packet composition;
   source acquisition and further result types still need adapters. Only UniProt and
   Europe PMC description papers are declared so far; other citations remain explicit
@@ -24,7 +24,7 @@
   `dependency_preflight.py --release` blocks build, installed-package and promotion
   routes until a stable API version and exact public provider pins are verified
   on every supported Python minor. The unversioned required metadata is temporary:
-  set the real stable API floor when the provider publishes it. No floor or public
+  set the accepted API's real floor after its public artifact is verified. No floor or public
   build is invented. The pinned candidate includes the explicit CSL-author BibTeX
   correction (ackredit#78), checked by saved-reader regressions. Failed tracking can leave
   partial workflow credits; result records retain failure status and host support.

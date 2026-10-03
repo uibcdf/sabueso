@@ -12,10 +12,14 @@ python -m examples.ackredit_pilot.run --output /tmp/sabueso-ackredit-pilot
 ```
 
 CI builds and installs Ackredit commit
-`e4a006a6931f3fb5f97be5b09767c144dfb35662` with `--no-deps`, using the Conda test
+`383a64b2fdbc5472a7cdeb92c464b87433aabd76` with `--no-deps`, using the Conda test
 environment, on Python 3.11–3.14 without metadata overrides (ackredit#80). This is a
 tracked source test, not a published installation route. All runtime CI installs
-the required source provider normally on every supported minor.
+the required source provider normally on every supported minor. The dedicated
+pilot tests both installed packages outside their checkouts, with only unchanged
+integration tests and public fixture access in the temporary working directory.
+The provider's portable contract is accepted for the prepared 0.9.0 candidate;
+staging and public delivery remain pending (ackredit#22/#75).
 The next release requires normal public-provider installation on 3.11–3.14.
 
 The output contains a knowledge store, two detached result attribution records,

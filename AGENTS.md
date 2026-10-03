@@ -69,6 +69,10 @@ commit messages, issues, pull requests, release notes and documentation.
 
 ## Tests and fixtures
 
+- Local workspace development uses `molsyssuite@uibcdf_3.14`. Sabueso and every
+  MolSysSuite package installed in that environment must use its local checkout
+  through `pip install --no-deps --editable .`. Verify editable metadata outside
+  the checkout. Use separate environments for installed-artifact qualification.
 - Run pytest through the receptor, as `MOLI_GUIDE.md` asks:
   `python -m pytest -m "not online" --receptor=llm`.
 - Fixtures in `temp_data/` are frozen **public** responses, each declared in

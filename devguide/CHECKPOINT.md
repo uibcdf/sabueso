@@ -5,7 +5,7 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-10-02, after release 0.11.0.*
+*Last updated: 2026-10-03, after release 0.11.0.*
 
 ## Release and schema
 
@@ -212,12 +212,19 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   and hashes are unchanged. Missing/broken providers diagnose failed attribution
   while retaining knowledge and host records;
   saved readers add no credit. The public offline pilot is `examples/ackredit_pilot/`.
-  All runtime CI tests real provider commit `e4a006a6931f3fb5f97be5b09767c144dfb35662`.
+  All runtime CI tests real provider commit `383a64b2fdbc5472a7cdeb92c464b87433aabd76`,
+  carrying the accepted portable contract for prepared 0.9.0 (ackredit#75).
+  Dedicated pilot lanes test the installed consumer/provider outside both checkouts.
   Python 3.11–3.14 use normal source installation under the corrected provider
   interpreter contract (ackredit#80), without metadata overrides. Source testing
   does not establish a publicly released dependency closure.
-  The next release is blocked by `dependency_preflight.py --release` until a stable
-  provider API and public dependency closure exist on 3.11–3.14. UniProt/Europe PMC
+  Local installed receiving tests on Linux Python 3.14.7 pass 14 integration cases,
+  the public workflow and pip check against the exact diagnostic 0.9.0 Conda file
+  (SHA-256 `99e6f9b9f0a3b0a22c66e476230dddabd2ba0017c59beb3253fbadc781d665c6`);
+  evidence is linked in #108 and ackredit#22/#75. That local file is not public delivery.
+  The next release is blocked by `dependency_preflight.py --release` until the
+  accepted API is published and public dependency closure exists on 3.11–3.14.
+  Shared publisher adoption remains molsyssuite#78. UniProt/Europe PMC
   description citations are verified offline; other descriptions, target articles
   and annotation-provider bibliography remain explicit gaps. Acquisition coverage,
   provider publication, public closure and the shared record boundary remain open.

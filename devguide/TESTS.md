@@ -50,7 +50,11 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   a public-channel installation claim. The preflight rejects required source
   candidates whose interpreter range excludes a supported Sabueso minor or whose
   workflow installation bypasses Requires-Python.
-  The public workflow also runs in the provider lane. `dependency_preflight.py
+  Dedicated provider lanes run the unchanged integration tests and public workflow
+  outside both checkouts, using installed consumer/provider code and public fixtures.
+  The portable contract is accepted for prepared 0.9.0; source-installed CI and
+  local exact-file receiving proof remain distinct from public delivery.
+  `dependency_preflight.py
   --release` blocks build, staged installation and promotion until the stable
   provider API and public dependency closure are verified (#108, ackredit#22/#75).
 

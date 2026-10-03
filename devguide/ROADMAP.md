@@ -291,7 +291,8 @@ In order:
      want of these.
    - required Ackredit attribution for knowledge pipelines (#108, moli#36): the
      automatic packet-composition adapter and public offline workflow are
-     implemented against provisional capture APIs (ackredit#75). Source acquisition,
+     implemented against the accepted portable contract assigned to Ackredit's
+     prepared 0.9.0 candidate (ackredit#75). Source acquisition,
      further result types, complete resource bibliography and published Python
      dependency closure remain next work and block the next release. The provider
      source contract now covers Python 3.14 under ackredit#80; normal consumer source

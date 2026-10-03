@@ -67,7 +67,7 @@ reason = "runs the governance check; installs no runtime"
 # Required provider publication is pending. No public floor/build is invented:
 # --release fails until these entries are removed and public pins are verified.
 [unpublished_required_dependencies.ackredit]
-reason = "portable capture API needs a stable version and verified public build on Python 3.11–3.14 (ackredit#75, #22); source interpreter metadata is aligned under ackredit#80"
+reason = "accepted portable contract is assigned to the prepared 0.9.0 candidate; staging, exact-file qualification and verified public installation on Python 3.11–3.14 remain pending (ackredit#22, #75, #80; shared publisher adoption molsyssuite#78)"
 issue = "https://github.com/uibcdf/sabueso/issues/108"
 
 # Normal installed source route on every supported minor; publication is separate.
@@ -80,6 +80,6 @@ repository = "uibcdf/ackredit"
 dependency = "ackredit"
 constraint = ""
 path = ".ackredit-candidate"
-commit = "e4a006a6931f3fb5f97be5b09767c144dfb35662"
+commit = "383a64b2fdbc5472a7cdeb92c464b87433aabd76"
 python = ">=3.11,<3.15"
 reason = "required portable capture APIs unavailable on public channels; normal source installs on Python 3.11–3.14 without metadata overrides; no public installation claim"

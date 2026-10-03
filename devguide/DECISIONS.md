@@ -1,5 +1,28 @@
 # Sabueso — Decision Log
 
+## Adopt the accepted portable Ackredit contract (2026-10-03, #108, ackredit#75/#22)
+
+- Pin provider source `383a64b2fdbc5472a7cdeb92c464b87433aabd76`, containing the
+  accepted `ackredit.attribution@1` contract assigned to prepared 0.9.0. This
+  supersedes the earlier provisional-API description and source pin, while retaining
+  normal Python 3.11–3.14 installs and automatic required attribution.
+- Exercise the installed consumer and provider outside both checkouts in each
+  dedicated CI pilot lane, with unchanged tests and frozen public fixture access.
+  Testing the source tree alone cannot establish the installed client's behavior.
+- Keep the receiving proof for the exact local diagnostic Conda file separate from
+  public delivery: Linux Python 3.14.7 passes 14 integration tests, the public
+  two-result workflow and pip check. Provider and consumer import from site-packages.
+  The archive/installed metadata match SHA-256
+  `99e6f9b9f0a3b0a22c66e476230dddabd2ba0017c59beb3253fbadc781d665c6`.
+  The receipt is in #108 and ackredit#22/#75; source was
+  `15b1958b9752a89974bb1d0df882a17841ed62b4`.
+- Preserve release blocking and unversioned required metadata until the accepted
+  API's actual public artifact and full supported dependency closure are verified.
+  Prepared 0.9.0 is a provider decision, not a public release. Shared publisher
+  adoption (molsyssuite#78), staging and hosted exact-file gates remain provider work.
+  Repeat receiving tests against the eventual staged/public file and then set the
+  actual dependency floor/public pins. No scientific payload or stored schema changes.
+
 ## Adopt Ackredit's corrected Python 3.14 contract (2026-10-02, #108, ackredit#80)
 
 - Pin provider source `e4a006a6931f3fb5f97be5b09767c144dfb35662`, which declares

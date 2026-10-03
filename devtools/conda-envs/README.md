@@ -1,14 +1,15 @@
 # Development environments and the required Ackredit source candidate
 
 The runtime authority is `pyproject.toml`. Ackredit is required, but the portable
-capture API has no stable public-channel build yet (ackredit#22/#75). These environment
+capture contract is accepted for prepared 0.9.0, with no public-channel build yet
+(ackredit#22/#75). These environment
 files provision the available Conda dependencies. They are not complete until the
 required provider is installed from the full commit recorded in
 `../dependency_routes.toml`:
 
 ```bash
 git clone https://github.com/uibcdf/ackredit.git /tmp/sabueso-ackredit-source
-git -C /tmp/sabueso-ackredit-source checkout e4a006a6931f3fb5f97be5b09767c144dfb35662
+git -C /tmp/sabueso-ackredit-source checkout 383a64b2fdbc5472a7cdeb92c464b87433aabd76
 python -m pip install --no-deps --no-build-isolation /tmp/sabueso-ackredit-source
 python -m pip install --no-deps --editable .
 ```

@@ -17,14 +17,14 @@ coverage and stable public dependency closure remain open and block the next rel
 Owner: [uibcdf/sabueso#108](https://github.com/uibcdf/sabueso/issues/108).
 Shared boundary: [uibcdf/moli#36](https://github.com/uibcdf/moli/issues/36).
 Provider: [uibcdf/ackredit#75](https://github.com/uibcdf/ackredit/issues/75).
-Reviewed: 2026-10-02, Ackredit source
-`e4a006a6931f3fb5f97be5b09767c144dfb35662`.
+Reviewed: 2026-10-03, Ackredit source
+`383a64b2fdbc5472a7cdeb92c464b87433aabd76`.
 
 ## What the consumer needs
 
 A pipeline should retain which sources, datasets and executed software it used,
 with citation records for each result and the enclosing application workflow.
-Ackredit's provisional `capture`, contextual `track_item`, detached `Attribution`
+Ackredit's accepted `capture`, contextual `track_item`, detached `Attribution`
 and `get_attribution` fit this need. Its canonical
 [integration guide](https://github.com/uibcdf/ackredit/blob/main/standards/ACKREDIT_GUIDE.md)
 owns the provider API; this report records Sabueso's initial use and remaining needs.
@@ -107,7 +107,22 @@ and the public workflow on Python 3.11–3.14. Every runtime CI lane installs th
 provider normally and verifies installed imports outside both checkouts. The
 provider interpreter contract is corrected under ackredit#80; no Requires-Python
 override is used. Ordinary source installation is separate from public artifacts.
-`devtools/dependency_routes.toml` inventories this provisional source route.
+`devtools/dependency_routes.toml` inventories this unpublished source route. The
+dedicated lanes copy unchanged integration tests to a temporary working directory
+and run the public workflow outside both checkouts, exercising installed code.
+
+The provider accepted the portable contract for its prepared 0.9.0 candidate under
+Ackredit #75; public delivery remains open. Local receiving-consumer proof uses the
+actual diagnostic Conda file built from `15b1958b9752a89974bb1d0df882a17841ed62b4`,
+SHA-256 `99e6f9b9f0a3b0a22c66e476230dddabd2ba0017c59beb3253fbadc781d665c6`.
+On Linux Python 3.14.7, Sabueso and Ackredit both import from isolated site-packages;
+14 unchanged integration tests, the public workflow and pip check pass with public
+runtime dependencies. The
+[receiving receipt](https://github.com/uibcdf/sabueso/issues/108#issuecomment-5968486124)
+also links the provider handoff. This supplements source tests without certifying a
+hosted staged-file matrix or public channel. Shared publisher adoption remains
+MolSysSuite #78. Repeat receiving qualification against the eventual exact
+staged/public file; a new build with the same version is not the same artifact.
 
 ## Adoption gates
 
@@ -121,12 +136,13 @@ override is used. Ordinary source installation is separate from public artifacts
   lazy import, detached ownership and saved readers without new credit.
 - Obtain published provider/dependency closure for every claimed Python minor.
   The pinned provider declares `>=3.11,<3.15`, matching Sabueso's 3.11–3.14 range.
-  Capture APIs are provisional and channel publication is pending in
+  The portable contract is accepted for prepared 0.9.0; channel publication is pending in
   [Ackredit #22](https://github.com/uibcdf/ackredit/issues/22). The source interpreter
   contract is corrected under [Ackredit #80](https://github.com/uibcdf/ackredit/issues/80);
   its public-delivery qualification still requires an artifact and clean installation.
-  No public-installation claim follows from source tests. The first stable API
-  floor and exact public build pins must be set when the provider publishes.
+  No public-installation claim follows from source or local diagnostic tests. The
+  accepted API's floor and exact public build pins must be set after the published
+  artifact is verified.
 - Coordinate the attribution/knowledge/terms boundary in MOLI #36; Ackredit and
   MolSysSuite keep ownership of provider/member contracts and rollout.
 
