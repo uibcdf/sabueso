@@ -90,6 +90,8 @@ MOLI owns the engineering baseline for directly governed components. Applicable 
 
 For directly governed repositories carrying the `python-package` capability, the baseline includes Python support, CI coverage, Ruff/pytest quality tooling, applicable UIBCDF support libraries, developer receptors, distribution, release-version semantics, repository badge evidence, and archival/DOI rules when applicable. MolSysSuite sets corresponding requirements for its members.
 
+Routine local development and push/PR tests for directly governed Python packages use Python 3.14. Keep the full required test matrix for every supported minor, currently 3.11–3.14. MolSysSuite sets its member rule independently in its own registry and guide.
+
 Linux and macOS are the operating-system support baseline for public Python packages. Linux has a routine gating lane; macOS needs recurring tests and installed-package evidence before release. Windows is optional and is claimed only after equivalent evidence. Record current claims in the component README and in `moli.toml` for direct components; MolSysSuite records member claims internally. Follow [MOLI's Python CI policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_ci_policy.md) for cadence, release checks and bounded macOS exceptions.
 
 macOS support is currently limited to Apple Silicon (arm64). Intel-based macOS (x86_64) is not part of the supported platform matrix. Support may be reconsidered if there is demonstrated user demand. A component claims arm64 only after its own installed-package and runtime evidence; noarch packaging or a solver result alone is insufficient. MolSysSuite governs the architecture rollout for its members.

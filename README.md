@@ -15,10 +15,10 @@ Given a molecular system (protein, peptide, small molecule, etc.), it produces a
 
 Active early-stage implementation. Sabueso is directly governed by MOLI for shared platform and engineering contracts while retaining ownership of its implementation, scientific behavior, tests, and local API.
 
-Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the offline CI suite. Python 3.14 is explicitly admitted under MOLI's active Python transition.
+Python 3.11, 3.12, 3.13, and 3.14 are currently supported and exercised by the offline CI suite. Python 3.14 is the routine development version under MOLI's direct-component baseline.
 
 The coverage badge measures the Sabueso package with offline pytest on
-Linux/Python 3.13 after pushes to `main`. It does not cover online service tests;
+Linux/Python 3.14 after pushes to `main`. It does not cover online service tests;
 the displayed report may briefly lag a new push while CI finishes.
 
 ## Current release status
@@ -91,7 +91,7 @@ its package lacks a data file and cannot build cards (#35). Sabueso is not publi
 PyPI.
 
 For development, provision the Conda environment. The required Ackredit source
-candidate supports Python 3.11–3.14; Python 3.13 remains the routine development version:
+candidate supports Python 3.11–3.14; Python 3.14 is the routine development version:
 
 ```bash
 conda env create -n sabueso-dev -f devtools/conda-envs/development_env.yaml

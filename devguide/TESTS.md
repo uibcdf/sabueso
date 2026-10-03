@@ -5,6 +5,9 @@
 Agents run pytest through pytest-receptor, as MOLI's developer-tools policy asks
 (`MOLI_GUIDE.md`):
 
+Use the Python 3.14 development environment for routine local tests. The
+supported 3.11–3.13 interpreters remain in CI and release compatibility gates.
+
 ```bash
 python -m pytest -m "not online" --receptor=llm   # offline suite, the default
 python -m pytest -m online --receptor=llm         # online tests, on demand
