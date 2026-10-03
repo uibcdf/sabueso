@@ -71,6 +71,17 @@ When work in one component exposes a missing or limiting capability in another:
 3. cross-link local workaround or blocked work;
 4. escalate to `uibcdf/moli` when the issue changes a contract between MOLI components or requires platform policy.
 
+When changing a shared auxiliary library or UIBCDF development action, also
+notify the governance domain of any plausible effect on other packages through
+an issue: `uibcdf/moli` for direct components or a platform contract,
+`uibcdf/molsyssuite` for suite members, and both when each has distinct work.
+Link the provider issue, affected consumers, compatibility and release impact,
+and owner-local follow-ups. Give notice before publishing the provider change
+or starting consumer rollout when the impact is known in advance; report later
+discoveries promptly.
+An existing issue can carry the notice. Follow the
+[cross-component feedback rule](https://github.com/uibcdf/moli/blob/main/devguide/governance/cross_component_feedback.md#changes-to-shared-auxiliary-providers).
+
 ## UIBCDF development infrastructure supporting MOLI
 
 UIBCDF maintains four shared resources used by MOLI development. They are [registered separately from scientific components](https://github.com/uibcdf/moli/blob/main/devguide/governance/support_infrastructure.md). Use each where its boundary applies:
