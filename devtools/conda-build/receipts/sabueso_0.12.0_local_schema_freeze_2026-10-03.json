@@ -1,0 +1,123 @@
+{
+  "scope": "Preliminary local Sabueso Conda candidate used to freeze schema 0.3.11; not a staging or public publication receipt",
+  "date": "2026-10-03",
+  "owner_issue": "https://github.com/uibcdf/sabueso/issues/110",
+  "candidate_sha": "01d5bf2474ac9765f162d88b3ab52c7d25714124",
+  "archive": {
+    "filename": "sabueso-0.12.0-py_0.tar.bz2",
+    "version": "0.12.0",
+    "build": "py_0",
+    "sha256": "5cd6b0fb3a16a4da37d6d875f9b4a1e57282cb7de71b0e1e49007405030e86a7",
+    "upload": "none"
+  },
+  "build": {
+    "recipe": "devtools/conda-build/meta.yaml",
+    "version_override": "SABUESO_CONDA_VERSION=0.12.0",
+    "package_format": 1,
+    "recipe_tests": "passed"
+  },
+  "archive_checks": [
+    "SHA-256 and index/embedded/dist-info version agreement",
+    "all 351 non-version Python/JSON files match candidate source, with no extra or missing files",
+    "installed package bytes match the local archive",
+    "runtime/distribution versions and prefix origins agree; no editable imports",
+    "required provider public URL, build, SHA-256 and portable API",
+    "API smoke, quantity seals, public resource loading and pip check"
+  ],
+  "public_runtime_pins": {
+    "smonitor": {
+      "version": "0.17.0",
+      "build": "py_0",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/smonitor-0.17.0-py_0.tar.bz2",
+      "sha256": "44cbba98544dc1da6244b81a87b3f7f06f53e781c1eeaecec83ddf04f7bddfd1"
+    },
+    "pyunitwizard": {
+      "version": "0.27.0",
+      "build": "py_0",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/pyunitwizard-0.27.0-py_0.tar.bz2",
+      "sha256": "2102b1bd4e8188d4d150f90fcf093425d07fa2858993984016a6e7de10c3aaac"
+    },
+    "argdigest": {
+      "version": "0.13.0",
+      "build": "py_1",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/argdigest-0.13.0-py_1.tar.bz2",
+      "sha256": "273ae5053d0aaa2d207ec9a2c684588fe3da539219b1d91cdea3b1f8dd265007"
+    },
+    "depdigest": {
+      "version": "0.11.0",
+      "build": "py_2",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/depdigest-0.11.0-py_2.tar.bz2",
+      "sha256": "b6ba665d9125f49506b7e4231e6065f164d3b643117a22288b44baafceff270f"
+    },
+    "ackredit": {
+      "version": "0.9.0",
+      "build": "py_0",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/ackredit-0.9.0-py_0.tar.bz2",
+      "sha256": "37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1"
+    }
+  },
+  "linux_installed_checks": [
+    {
+      "python": "3.11.16",
+      "passed": 36,
+      "skipped": 0,
+      "api_smoke": "passed",
+      "pip_check": "passed",
+      "public_workflow": "passed: source traces, result bibliographies, workflow union and saved readers"
+    },
+    {
+      "python": "3.12.14",
+      "passed": 36,
+      "skipped": 0,
+      "api_smoke": "passed",
+      "pip_check": "passed",
+      "public_workflow": "passed: source traces, result bibliographies, workflow union and saved readers"
+    },
+    {
+      "python": "3.13.15",
+      "passed": 36,
+      "skipped": 0,
+      "api_smoke": "passed",
+      "pip_check": "passed",
+      "public_workflow": "passed: source traces, result bibliographies, workflow union and saved readers"
+    },
+    {
+      "python": "3.14.7",
+      "passed": 36,
+      "skipped": 0,
+      "api_smoke": "passed",
+      "pip_check": "passed",
+      "public_workflow": "passed: source traces, result bibliographies, workflow union and saved readers"
+    }
+  ],
+  "frozen_card": {
+    "file": "schema_0.3.11__P60174.json",
+    "sha256": "1b690eb4b7e3fd3794a4ace7d7623d8194eecab1f67e6bf106b040f0f95d8b30",
+    "schema_version": "0.3.11",
+    "entity": "sabueso:protein:uniprot:P60174",
+    "writer_version": "0.12.0",
+    "python": "3.14.7",
+    "writer_origin": "Clean Python 3.14.7 Conda prefix, lib/python3.14/site-packages/sabueso/__init__.py; no editable/source overlay",
+    "candidate_sha": "01d5bf2474ac9765f162d88b3ab52c7d25714124",
+    "archive_sha256": "5cd6b0fb3a16a4da37d6d875f9b4a1e57282cb7de71b0e1e49007405030e86a7",
+    "public_inputs": [
+      "P60174.json",
+      "rcsb/1HTI.json",
+      "rcsb/1KLG.json",
+      "rcsb/4UNK.json",
+      "europepmc/annotations/PMC_PMC12400196.json"
+    ],
+    "round_trip": "passed",
+    "quantity_seal": "passed",
+    "structures": [
+      "1HTI",
+      "1KLG",
+      "4UNK"
+    ],
+    "located_mentions": [
+      "mentioned_in",
+      "structure_mentioned_in"
+    ]
+  },
+  "remaining_gate": "Select final candidate SHA after committing the frozen card; verify exact-SHA CI, staging producer/archive, and clean installed Linux/macOS-arm64/Windows \u00d7 Python 3.11\u20133.14 before publication"
+}

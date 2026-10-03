@@ -206,8 +206,8 @@ schema:
     states for it, UBERON or EFO for a cell line, with its IRI). A term never replaces
     the tissue, since two GTEx tissues can share one (uibcdf/sabueso#102). Additive, so a
     0.3.9 card is a valid 0.3.10 card without them.
-    0.3.11 (unpublished) adds optional mentioned_in qualifiers article (the native
-    source, extId, pmcid and fullTextIdList when stated) and locations (one annotation
+    0.3.11 (frozen for the 0.12.0 candidate; publication pending) adds optional
+    mentioned_in qualifiers article (the native source, extId, pmcid and fullTextIdList when stated) and locations (one annotation
     and source_assertion_id per located UniProt accession mention in an explicitly
     requested MED/PMC article). An annotation keeps its provider, id, section, tags,
     prefix, exact and postfix as returned, without constructing a sentence. Every
@@ -221,7 +221,7 @@ schema:
     recorded article ids again. Optional locations are not automatic migration gaps.
     Annotation fragments are governed by each article's terms, reported separately
     from bibliography; unknown article terms are excluded by terms profiles (#92).
-    This unpublished version also adds derived structure_mentioned_in relationships
+    This version also adds derived structure_mentioned_in relationships
     (protein to publication, one per structure_ref). A printed four-character PDB code
     and its matching native PDBe tag yield a raw mentioned_in SourceAssertion about
     the PDB entry; rule structure_mention_context@1 relates it to the protein only

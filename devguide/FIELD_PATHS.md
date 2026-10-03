@@ -182,14 +182,14 @@ Anchored at a MONDO term (`sabueso:disease:mondo:MONDO:0014221`).
 ---
 
 ## Notes
-- Since card schema 0.3.11 (unpublished), `mentioned_in` optionally carries
+- Since card schema 0.3.11 (frozen for the 0.12.0 candidate), `mentioned_in` optionally carries
   `qualifiers.article` (native article identifiers) and `qualifiers.locations[]`
   (`annotation`, unchanged from Europe PMC, and `source_assertion_id`). Each occurrence
   has its own SourceAssertion; its `source_metadata.identity_basis` records the
   printed accession and matching UniProt tag. These are relationship qualifiers,
   not section field paths. `quality.enrichments` records explicit `article_ids`,
   `data: located_accession_annotations`, `annotation_count` and `returned_annotations`.
-- The same unpublished schema adds derived `structure_mentioned_in` relationships
+- The same frozen candidate schema adds derived `structure_mentioned_in` relationships
   (protein → publication, one per `structure_ref`), with `article`, `locations`,
   `structure_ref` and `structure_context` qualifiers. Context records `protein_ref`,
   `structure_ref`, structural `relationship_ids`, supporting `source_assertion_ids`

@@ -29,7 +29,8 @@ gates in `release_plan.toml` and `README.md`.
   support at exact saved card pins. Full/index packets at `packet_aspects@6` share
   support scope. Terms use the packaged registry and its review dates, without
   reconstructing a historical registry.
-- Ackredit becomes a required runtime dependency. Every completed composition
+- Ackredit >=0.9.0 becomes a required runtime dependency (portable
+  `ackredit.attribution@1`). Every completed composition
   automatically receives `packet.attribution`, preserving original producer/source
   versions, selected support, conflicts, reused resources and bibliography gaps.
   Results contribute to the application's Ackredit captures/session.

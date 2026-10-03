@@ -11,7 +11,7 @@ authors:
     given-names: Liliana M.
     orcid: "https://orcid.org/0000-0003-2812-1499"
     affiliation: Hospital Infantil de México Federico Gómez (HIMFG) – UIBCDF
-# Planned release; the publication date is unset during blocked preparation.
+# Candidate metadata; the optional publication date is unset until publication.
 version: 0.12.0
 doi: 10.5281/zenodo.22937375
 identifiers:

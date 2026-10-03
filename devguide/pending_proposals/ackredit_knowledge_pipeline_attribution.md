@@ -205,8 +205,11 @@ planned exact public core builds. Ackredit #22/#75/#80 are closed.
 Sabueso adopts the published floor in metadata, recipe and environments, pins
 0.9.0/py_0 and the qualified digest in installed gates, and removes source overlays
 and the public-dependency blocker together. Development and release preflight pass.
-This delivery closes the provider dependency gate; Sabueso still needs its own
-installed frozen 0.3.11 card and actual Conda candidate OS/minor qualification.
+This delivery closes the provider dependency gate. Sabueso's preliminary local
+Conda candidate now passes all four Linux minors and supplies the clean-installed
+frozen 0.3.11 card; receipt:
+`devtools/conda-build/receipts/sabueso_0.12.0_local_schema_freeze_2026-10-03.json`.
+Its actual staged Conda candidate OS/minor qualification remains separate.
 
 The maintainer's editable workspace remains distinct: Ackredit's Git-derived
 checkout version is still 0.8.0-based and cannot satisfy the correct new floor.
@@ -220,8 +223,8 @@ and MOLI record work remain open in #108/#36.
 The staged 0.12.0 preparation is tracked in #110. Its installed-file matrix now
 requires provider import/metadata/API checks, the unchanged acquisition/attribution
 regressions and the public workflow on every supported OS/minor, outside both
-checkouts. This is a prepared gate, not an artifact receipt. Public delivery and a
-clean installed frozen 0.3.11 card precede selection of the final candidate.
+checkouts. Public delivery and the clean-installed frozen 0.3.11 card are verified; select
+the final candidate and complete its actual staged artifact gates next.
 
 - Keep Ackredit required in metadata and the recipe. Lazy required import keeps
   saved readers free of backend loading. Missing/broken installations emit SMonitor

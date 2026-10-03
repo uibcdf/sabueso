@@ -1,5 +1,22 @@
 # Sabueso — Decision Log
 
+## Freeze 0.3.11 from the clean installed local candidate (2026-10-03, #110)
+
+- Build preliminary Conda 0.12.0 from `01d5bf2` in an isolated builder without an
+  upload. Normal installs on Python 3.11–3.14 verify the same archive digest,
+  installed bytes, all source modules/resources, public runtime pins and APIs;
+  each passes 36 integration regressions, the public workflow and pip check.
+- The clean Python 3.14.7 install writes the HsTIM compatibility card from declared
+  public UniProt, RCSB and Europe PMC fixtures. It preserves the new located protein
+  and derived structure mentions, their assertions/rule and sealed quantities.
+  Record the immutable card/archive/source identity in the local receipt and NOTICE.
+  The frozen 0.3.11 shape now follows the existing immutability guard even while
+  candidate publication remains pending.
+- Keep local qualification separate from final-SHA CI and the actual staged-file
+  Linux/macOS-arm64/Windows matrix. Stable publication remains gated.
+  Omit the optional CFF publication date during qualification rather than inventing
+  a publication event; the eventual release and archive state their actual dates.
+
 ## Adopt delivered public Ackredit 0.9.0 (2026-10-03, #108/#110)
 
 - The provider's published handoff closes #22/#75/#80. Hosted installed matrix

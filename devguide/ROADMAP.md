@@ -50,8 +50,9 @@ clients, further result types, undeclared bibliography and Recorda integration
 remain open with explicit gaps; they do not claim completed coverage in this slice.
 Ackredit's public 0.9.0 delivery is adopted, with the published floor and exact
 public build/hash. Independent Linux receiving qualification passes on Python
-3.11–3.14 with the planned public core pins. Publication still needs a clean
-installed frozen 0.3.11 card, exact final-SHA CI and Sabueso's staged-file matrix.
+3.11–3.14 with the planned public core pins. The preliminary local Conda candidate passes the four Linux minors and supplies
+the clean-installed frozen 0.3.11 card. Publication still needs exact final-SHA CI
+and Sabueso's actual staged-file matrix.
 See the committed release plan, draft notes and route checklist in
 `devtools/conda-build/`. Preparation does not publish a version.
 

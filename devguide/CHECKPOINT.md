@@ -25,8 +25,12 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   qualified SHA-256. Metadata/recipe/environments require `>=0.9.0`; the installed
   gate pins and checks its public file/hash. CI obtains it from public Conda;
   the source overlays and public-dependency blocker are removed together.
-- **Candidate verification next:** generate the frozen 0.3.11 card from a clean
-  installed local candidate, then select the final SHA and complete the actual
+- **Local candidate verified:** the preliminary Conda 0.12.0 file at `01d5bf2`
+  passes installed-byte/origin/API checks, all 36 integration regressions, the public
+  workflow and pip check on Linux × Python 3.11–3.14. Its clean 3.14 install writes
+  `schema_0.3.11__P60174.json`; receipt:
+  `devtools/conda-build/receipts/sabueso_0.12.0_local_schema_freeze_2026-10-03.json`.
+  The schema/shape are now frozen. Select the final SHA and complete the actual
   staged package's OS/minor matrix. No 0.12.0 publication is claimed; latest
   published release remains 0.11.0. Ackredit #81 tracks editable Git-version
   consistency; clean public package qualification is unaffected.
@@ -67,14 +71,14 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     Windows × 3.11–3.14, and a clean public install on Python 3.14.
   - Zenodo archive: 10.5281/zenodo.23077926, verified to be identical to its tag; 0.7.0
     (10.5281/zenodo.23048186) and 0.6.0 (10.5281/zenodo.23038465) too.
-- **Current card schema:** 0.3.11 (`schemas/card_schema_0.3.11.yaml`), unpublished:
+- **Current card schema:** 0.3.11 (`schemas/card_schema_0.3.11.yaml`), frozen for 0.12.0:
   located UniProt accession annotations in explicit articles add optional locations
   and native article ids to `mentioned_in`, and supported PDB mentions add derived
   `structure_mentioned_in` context (#92). Release 0.11.0 writes 0.3.10.
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
-    0.3.10.
+    0.3.10; the clean-installed candidate freezes 0.3.11 before publication.
   - The recorded shape of 0.3.10 is `schemas/card_shape_0.3.10.json`, fixed; current
-    development records `schemas/card_shape_0.3.11.json`.
+    development uses the frozen `schemas/card_shape_0.3.11.json`.
 - **In 0.8.0:**
   - an integrity fix for users of 0.7.0: gnomAD changes next to exons the canonical
     transcript lacks are no longer placed on canonical residues through UniProt's
@@ -308,7 +312,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1341 tests passed, 26 online tests deselected (2026-10-03, in
+- Offline suite: 1343 tests passed, 26 online tests deselected (2026-10-03, in
   `molsyssuite@uibcdf_3.14`, with all installed workspace packages editable and the
   required real Ackredit editable provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.
@@ -323,7 +327,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   and the pilot-driven route.
 - **Next:** explicit located UniProt accession mentions now enter cards in development
   (#92), with per-occurrence support, unknown article terms and recorded refresh
-  requests (schema 0.3.11, unpublished). Supported PDB mention context is also
+  requests (schema 0.3.11, frozen candidate). Supported PDB mention context is also
   implemented. Own extraction remains open. The public literature draft awaits human
   review before actual curation intake. Further candidates are in `ROADMAP.md`
   ("Next candidates") and in the user

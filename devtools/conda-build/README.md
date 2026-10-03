@@ -77,8 +77,8 @@ channel; staging and source tests alone are not publication.
 
 The release notes state the card schema the release writes. If the release publishes a
 card schema no earlier release published, add its frozen card before tagging:
-`temp_data/frozen_cards/schema_<version>__P52270.json`. Build it with the candidate's
-package: `SABUESO_CONDA_VERSION=X.Y.Z conda build devtools/conda-build
+`temp_data/frozen_cards/schema_<version>__<public accession>.json`. Build it with
+the candidate's package: `SABUESO_CONDA_VERSION=X.Y.Z conda build devtools/conda-build
 --no-anaconda-upload --output-folder <tmp>`, install it in a clean environment, and
 write the card from the fixtures there
 (see `devguide/SCHEMA.md`, "Versioning policy", and uibcdf/sabueso#42). From then on,
@@ -105,8 +105,12 @@ version mismatch with the published minimum.
 ## Prepared 0.12.0 scope (#110)
 
 `release_plan.toml` selects 0.12.0 and the staged route;
-`release_notes_0.12.0.md` contains the reusable draft. No final candidate SHA,
-staged artifact, frozen 0.3.11 card or publication receipt is claimed yet.
+`release_notes_0.12.0.md` contains the reusable draft. The preliminary local
+Conda candidate at `01d5bf2` passes installed checks on all four Linux minors
+and supplies `schema_0.3.11__P60174.json` from its clean Python 3.14.7 install.
+The local artifact/hash, source, public pins, regressions and schema-freeze receipt
+are in `receipts/sabueso_0.12.0_local_schema_freeze_2026-10-03.json`.
+No staging or publication receipt is claimed by this local qualification.
 
 The preparation includes the exact qualified builder
 `8da628d9b393e184c3bf3722708b19dcfbf7ef0a`, retaining upload, immutable coordinate,
@@ -123,8 +127,10 @@ Before selecting the final candidate:
    clean environment. Generate the 0.3.11 frozen public card from that installed
    code, record its candidate/fixture/version/licence receipt in `temp_data/NOTICE.md`,
    and commit it. Do not freeze a card from the editable workspace.
-3. Review the final notes and set the actual release date in `CITATION.cff`, which
-   already follows the planned version and retains the concept/historical DOIs.
+3. Review the final notes and `CITATION.cff`, which follows the planned version
+   and retains the concept/historical DOIs. Its optional publication date stays
+   unset while qualifying the candidate; the release and archive record the actual
+   publication date.
    Run local gates, inspect exact final-SHA CI/governance and confirm the registry
    coordinate before dispatching the staged build.
 4. Inspect the staged archive and complete Linux/macOS/Windows × Python 3.11–3.14
