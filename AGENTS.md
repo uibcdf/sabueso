@@ -8,6 +8,12 @@ This repository remains authoritative for its own implementation, tests, local A
 
 Use `uibcdf/moli` when a change affects a shared MOLI contract, terminology, architecture boundary, or coordination policy. Report provider-specific limitations to the provider repository and cross-link consumer work.
 
+For a needed fix in another repository, use its issue when no fix is ready or
+submit a ready fix as a pull request for owner review. If urgent work is done
+by or directly with Diego or Liliana, ask them whether to use a direct push,
+pull request or issue; direct push needs explicit permission. Follow
+`MOLI_GUIDE.md#cross-component-feedback`.
+
 Do not expose confidential vertical-pilot content in public issues or documentation.
 
 # Working in Sabueso
@@ -52,7 +58,11 @@ commit messages, issues, pull requests, release notes and documentation.
     state and migration read it; a test checks its wiring;
   - an `in_use` entry in `devguide/sources/registry.yaml` (then
     `python tools/source_registry.py --write`).
-- Python 3.11–3.14 are supported.
+- Python 3.11–3.14 are supported. Use Python 3.14 for routine local development
+  and pytest; provision the Conda environment and install this checkout with
+  `python -m pip install --no-deps --editable .`. Install other participating
+  Python components editable in a compatible shared environment when testing
+  their integration, and verify import paths.
 - Report bugs of UIBCDF tools, such as ArgDigest, PyUnitWizard, SMonitor, DepDigest or
   the receptors, upstream in their repositories, and cross-link them.
 
