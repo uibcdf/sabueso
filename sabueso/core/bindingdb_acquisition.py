@@ -56,9 +56,11 @@ def summarize(result, query, fixture, requests, responses, client, mirror):
             if isinstance(payload, dict)
             else None
         )
-        records = (
-            (envelope.get("affinities") or []) if isinstance(envelope, dict) else []
-        )
+        records = envelope.get("affinities") if isinstance(envelope, dict) else None
+        if not isinstance(records, list) or any(
+            not isinstance(r, dict) for r in records
+        ):
+            records = []
         received.extend(records)
         pages.append(
             {

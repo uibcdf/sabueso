@@ -61,8 +61,15 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   totals/caps/order, native DOI/PubMed forms, original archive identities, retries,
   declared mirror origins and release manifests. Cutoff/retrieval-time
   bases remain explicit; REST versions/origins and bibliography gaps stay unknown.
-  Card science/schema are unchanged. Existing empty-string parser incompatibility
-  remains #114 with regression coverage and explicit failed traces.
+  Card science/schema are unchanged. The source-local parser fix (#114) recognizes
+  documented empty strings as evaluated-empty while malformed responses remain
+  failed; original wire/archive identities and times survive replay and card builds.
+- Disease-group explanation (#91): `Card.explain_disease(disease_ref)` reads a
+  MONDO group at the exact card pin under `disease_group_explanation@1`, retaining
+  association/selected-annotation support, MedGen/MONDO links, hierarchy steps,
+  conflicts and whole-card ungrouped context without acquisition or new credit.
+  Missing support and alternative same-source identity targets are explicit partial
+  results; the existing order-dependent grouping lookup remains #115.
 - Design/architecture review (#112): `pending_proposals/design_implementation_review.md`
   maps original plans and scientific functions to code/tests, remaining work, owners
   and bounded acceptance criteria. Peptides, much of the clinical layer and persistent
@@ -72,7 +79,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   A stale incremental wheel is rejected; a clean installed wheel passes all 89
   unchanged integration cases and the public three-packet saved-reader workflow.
   Published Conda artifacts and their qualification receipts remain immutable.
-- Local validation: 1,468 offline cases and 160 installed integration cases pass
+- Local validation: 1,493 offline cases and 183 installed integration cases pass
   with public Ackredit 0.9.0. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote

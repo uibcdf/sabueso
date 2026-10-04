@@ -597,6 +597,19 @@ class Card:
 
         return diseases_view(self)
 
+    @arg_digest()
+    def explain_disease(
+        self, disease_ref: str, skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """Explain a MONDO disease group through its pinned statements and stored
+        identity/hierarchy support (``disease_group_explanation@1``). Reads the
+        current card or a loaded historical pin, without acquisition or mutation.
+        Ungrouped statements are whole-card context, never inferred absence.
+        """
+        from .disease_explanation import explain_disease
+
+        return explain_disease(self, disease_ref)
+
     def interface_mutations(self) -> Dict[str, Any]:
         """Mutations at the interfaces of this protein's complexes and their binding
         changes, as SKEMPI states them, each with ΔΔG under ``binding_ddg@1`` (#83)."""

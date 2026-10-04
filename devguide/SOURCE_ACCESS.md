@@ -206,9 +206,15 @@ source forms and fuller host references. Missing title/authors/year remain expli
 no DOI enrichment is performed. The verified BindingDB resource description is a
 separate citation. REST measurement origins remain unknown; the mirror's declared
 `data_source` is preserved without claiming that imported providers were consulted.
-The documented empty-string wire forms remain an existing parser limitation (#114):
-raw empty bodies and JSON empty strings fail, whereas decoded empty affinity lists
-are evaluated-empty access. Tests preserve that distinction pending the owner fix.
+The source-local parser fix (#114) treats an exactly empty HTTP 200 body, a JSON
+empty string and decoded empty affinity lists as evaluated-empty access. Only this
+client opts into an empty body in the shared JSON transport; other clients keep
+their unreadable-body retries. Whitespace-only bodies, malformed JSON, unexpected
+nonempty payloads and HTTP errors remain failures. Original wire hashes, archive
+identities and retrieval times are retained, including replay and saved fixtures.
+The official REST documentation declares an empty string; a public no-match probe
+on 2026-10-04 returned HTTP 200 with the native empty affinities array. Compatibility
+tests exercise the documented string forms synthetically, not as a claimed live outage.
 See `tests/core/test_bindingdb_acquisition_offline.py`, also run unchanged in
 installed-provider CI and future staged gates.
 

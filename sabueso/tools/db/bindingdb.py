@@ -19,6 +19,10 @@ that the same answer keeps the same records. ``total_count`` is what BindingDB r
 Each kept monomer needs a UniChem lookup for its identity, so the ceiling also bounds
 those. ``OnlineBindingDBClient`` queries the REST service; ``FixtureBindingDBClient``
 reads ``<directory>/bindingdb/<accession>.json``.
+
+The documented empty-string response (an exactly empty HTTP 200 body or JSON
+``""``) and an empty native affinities list mean no matching records (#114).
+Malformed or unexpected nonempty responses remain connector failures.
 """
 
 from __future__ import annotations
@@ -45,8 +49,20 @@ DEFAULT_LIMIT = 5000
 RECORD_ORDER = "bindingdb_record_order@1"
 
 
-def _affinities(data: Dict[str, Any]) -> list:
-    return (data.get("getLindsByUniprotsResponse") or {}).get("affinities") or []
+def _decode(content: bytes) -> Any:
+    return "" if content == b"" else json.loads(content.decode("utf-8"))
+
+
+def _affinities(data: Any) -> list:
+    if data == "":
+        return []
+    envelope = (
+        data.get("getLindsByUniprotsResponse") if isinstance(data, dict) else None
+    )
+    records = envelope.get("affinities") if isinstance(envelope, dict) else None
+    if not isinstance(records, list) or any(not isinstance(r, dict) for r in records):
+        raise ConnectorError("BindingDB returned an unexpected affinity response.")
+    return records
 
 
 def _kept(
@@ -88,9 +104,15 @@ class OnlineBindingDBClient:
         retrieval = stamp("BindingDB")
         try:
             with urlopen(
-                f"{BINDINGDB_REST}?{query}", timeout=self.timeout, expect_json=True
+                f"{BINDINGDB_REST}?{query}",
+                timeout=self.timeout,
+                expect_json=True,
+                allow_empty_body=True,
             ) as resp:  # nosec
-                data = json.loads(resp.read().decode("utf-8"))
+                content = resp.read()
+                data = _decode(content)
+                if data == "" and getattr(resp, "status", 200) != 200:
+                    raise ValueError("an empty BindingDB response requires HTTP 200")
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(
                 f"BindingDB request for {accession} failed: {exc}"
@@ -127,7 +149,7 @@ class FixtureBindingDBClient:
         path = self.directory / "bindingdb" / f"{accession}.json"
         records = []
         if path.is_file():
-            data = json.loads(path.read_text(encoding="utf-8"))
+            data = _decode(path.read_bytes())
             note_response(data)
             records = _affinities(data)
         if not records:

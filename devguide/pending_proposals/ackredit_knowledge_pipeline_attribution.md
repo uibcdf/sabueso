@@ -314,7 +314,7 @@ Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
 CI/release tests, alongside `test_literature_intake_offline.py` for original support
 and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
-The current checkpoint passes 1,468 source offline cases and 160 unchanged installed
+The current checkpoint passes 1,493 source offline cases and 183 unchanged installed
 integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
@@ -369,8 +369,16 @@ query observation.
 
 Decoded-empty, absent-fixture, offline-unqueried, failed and partial-before-processing
 outcomes remain distinct. Original HTTP and corrupt-index failures are retained.
-The documented empty-string compatibility gap is owned by Sabueso #114, with
-regressions preserving its failure receipts and no successful credit.
+The source-local #114 parser fix recognizes the documented empty-string absence
+forms (exactly empty HTTP 200 body or JSON empty string), preserving wire hashes,
+archive references and retrieval times. Malformed/unexpected responses remain
+failed without completed-data credit; other clients keep default JSON retries.
 `test_bindingdb_acquisition_offline.py` joins unchanged installed-provider CI and
 future staged gates; saved readers add no credit. Other sources/custom clients,
 full bibliography and MOLI's shared record/consumer coordination remain open.
+
+`Card.explain_disease` (#91) reads pinned disease groups without acquisition or
+new Ackredit credit. Original association/selected-annotation support, stored
+identity/hierarchy links, alternatives and whole-card ungrouped outcomes remain
+visible. The existing order-dependent lookup is reported in #115; alternative
+same-source targets are exposed as partial rather than unique identity.

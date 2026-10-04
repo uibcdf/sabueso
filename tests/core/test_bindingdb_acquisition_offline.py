@@ -467,12 +467,8 @@ def test_provider_failure_preserves_scientific_result_and_custom_client_gap(
     )
 
 
-@pytest.mark.parametrize("body,error", [(b"", ConnectorError), (b'""', AttributeError)])
-def test_documented_empty_string_limitation_retains_failure_receipt(
-    monkeypatch, body, error
-):
-    # BindingDB documents an empty string for no matches. Preserve the existing
-    # client's exception pending the owning source-compatibility issue.
+@pytest.mark.parametrize("body", [b"", b'""'])
+def test_documented_empty_strings_retain_evaluated_empty_receipts(monkeypatch, body):
     monkeypatch.setattr(_http, "_wait", lambda *args: 0)
 
     def response(request, timeout):
@@ -481,14 +477,84 @@ def test_documented_empty_string_limitation_retains_failure_receipt(
         return answer
 
     monkeypatch.setattr(_http, "_urlopen", response)
-    with pytest.raises(error) as caught:
+    with pytest.raises(RecordNotFoundError) as caught:
         bindingdb.get_affinities("P60174")
     observed = caught.value.acquisition_trace["records"][0]
     assert (
-        observed["outcome"] == "failed"
-        and observed["provider"]["status"] == "not_attempted"
+        observed["outcome"] == "empty" and observed["provider"]["status"] == "available"
     )
     assert observed["requests"][0]["status"] == 200
+    assert (
+        observed["network_attempts"] == 1 and observed["requests"][0]["retries"] == []
+    )
+    assert (
+        observed["requests"][0]["response_sha256"] == hashlib.sha256(body).hexdigest()
+    )
+
+
+@pytest.mark.parametrize(
+    "body",
+    [
+        b" ",
+        b"<html>busy</html>",
+        b"null",
+        b"{}",
+        b'"busy"',
+        b'{"getLindsByUniprotsResponse":{"affinities":null}}',
+        b'{"getLindsByUniprotsResponse":{"affinities":[1]}}',
+    ],
+)
+def test_malformed_or_unexpected_responses_remain_failed(monkeypatch, body):
+    monkeypatch.setattr(_http, "_wait", lambda *args: 0)
+
+    def response(request, timeout):
+        answer = io.BytesIO(body)
+        answer.status, answer.headers = 200, Message()
+        return answer
+
+    monkeypatch.setattr(_http, "_urlopen", response)
+    with pytest.raises(ConnectorError) as caught:
+        bindingdb.get_affinities("P60174")
+    observed = caught.value.acquisition_trace["records"][0]
+    assert observed["outcome"] == "failed"
+    assert observed["provider"]["status"] == "not_attempted"
+
+
+@pytest.mark.parametrize("body", [b"", b'""'])
+def test_empty_forms_keep_original_archive_identities_and_fixture_absence(
+    monkeypatch, tmp_path, body
+):
+    def response(request, timeout):
+        answer = io.BytesIO(body)
+        answer.status, answer.headers = 200, Message()
+        return answer
+
+    monkeypatch.setattr(_http, "_urlopen", response)
+    archive = sabueso.RetrievalArchive(tmp_path / "empty.db")
+    with archive.recording(), pytest.raises(RecordNotFoundError) as caught:
+        bindingdb.get_affinities("P60174")
+    original = caught.value.acquisition_trace["records"][0]
+    monkeypatch.setattr(
+        _http, "_urlopen", lambda *a, **k: pytest.fail("no new network")
+    )
+    with archive.replaying(), pytest.raises(RecordNotFoundError) as caught:
+        bindingdb.get_affinities("P60174")
+    replayed = caught.value.acquisition_trace["records"][0]
+    assert replayed["outcome"] == "empty" and replayed["network_attempts"] == 0
+    assert replayed["retrieved_at"] == original["retrieved_at"]
+    assert (
+        replayed["requests"][0]["retrieval_ref"]
+        == original["requests"][0]["retrieval_ref"]
+    )
+    path = tmp_path / "bindingdb" / "P60174.json"
+    path.parent.mkdir()
+    path.write_bytes(body)
+    with pytest.raises(RecordNotFoundError) as caught:
+        bindingdb.get_affinities(
+            "P60174", client=bindingdb.FixtureBindingDBClient(tmp_path)
+        )
+    observed = caught.value.acquisition_trace["records"][0]
+    assert observed["outcome"] == "empty" and observed["access"] == "fixture"
 
 
 def test_nested_collectors_keep_independent_fixture_receipts():
@@ -505,3 +571,52 @@ def test_nested_collectors_keep_independent_fixture_receipts():
     changed = inner.acquisitions
     changed[0]["query"].clear()
     assert inner.acquisitions[0]["query"]
+
+
+@pytest.mark.parametrize("body", [b"", b'""'])
+def test_empty_forms_on_cards_are_source_answers_without_failure_warning(
+    monkeypatch, body, recwarn
+):
+    from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
+
+    def response(request, timeout):
+        answer = io.BytesIO(body)
+        answer.status, answer.headers = 200, Message()
+        return answer
+
+    monkeypatch.setattr(_http, "_urlopen", response)
+    card, _ = sabueso.resolve(
+        "P60174",
+        resolver=EntityResolver(FixtureUniProtClient(DATA)),
+        bindingdb={},
+        bindingdb_client=bindingdb.OnlineBindingDBClient(),
+        unichem_client=FixtureUniChemClient(DATA),
+    )
+    outcome = next(e for e in card.quality["enrichments"] if e["source"] == "BindingDB")
+    assert outcome["status"] == "not_found"
+    assert not any(issubclass(w.category, EnrichmentFailedWarning) for w in recwarn)
+    assert (
+        next(
+            r for r in card.acquisition_trace["records"] if r["source"] == "BindingDB"
+        )["outcome"]
+        == "empty"
+    )
+
+
+@pytest.mark.parametrize("body", [b"", b'""'])
+def test_declared_empty_strings_with_unexpected_status_are_failed(monkeypatch, body):
+    monkeypatch.setattr(_http, "_wait", lambda *args: 0)
+
+    def response(request, timeout):
+        answer = io.BytesIO(body)
+        answer.status, answer.headers = 204, Message()
+        return answer
+
+    monkeypatch.setattr(_http, "_urlopen", response)
+    with pytest.raises(ConnectorError) as caught:
+        bindingdb.get_affinities("P60174")
+    observed = caught.value.acquisition_trace["records"][0]
+    assert (
+        observed["outcome"] == "failed"
+        and observed["provider"]["status"] == "not_attempted"
+    )

@@ -116,8 +116,18 @@ forms and host citation preservation, archive reuse/replay, retries, decoded-emp
 responses, missing fixtures, offline-unqueried access, original failures and partial
 received-data credit. Mirror corruption, public card storage/refresh, nested
 collectors, inert readers, provider failure and custom-client gaps are exercised.
-The empty-string source-compatibility limitation (#114) retains its failure receipts.
+The #114 regressions distinguish source-declared empty strings, unexpected status,
+malformed/unexpected payloads, default shared-transport retries, archived empty
+replay, fixture absence and card-level not-found outcomes without failure warnings.
 These tests run unchanged in installed-provider and future staged gates.
+
+`test_disease_explanation_offline.py` checks the five-source public disease group,
+selected annotation members, multi-hop MedGen/MONDO support, hierarchy steps,
+exact historical card/item pins, missing support, selection/qualifier alternatives,
+ungrouped/conflicting identity and unqueried context, inert attribution and argument
+validation. Alternative same-source identity targets expose the existing lookup
+limitation (#115) as partial rather than hiding it. These tests also run unchanged
+outside the checkout in installed-provider CI and future staged gates.
 
 Local diagnostic wheels additionally pass
 `devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):

@@ -217,14 +217,17 @@ times identify the query. Query tracing does not cover mirror installation/updat
 The cutoff is a `{value, unit}` quantity with its application basis. REST receives
 it as a query; the mirror applies it locally. The existing fixture client does not
 reapply the cutoff to its frozen response, and the trace states that explicitly.
-Scientific return values and exceptions remain unchanged.
+Scientific records and cutoff selection remain unchanged.
 
 Decoded empty answers, unavailable fixtures, unqueried offline access, failures
 and data received before a processing failure are distinct. An HTTP 404 remains a
 connector failure under BindingDB's existing client contract. The documented
-empty-string forms still expose a parser limitation tracked in
-[Sabueso #114](https://github.com/uibcdf/sabueso/issues/114); those failures retain
-their receipts and receive no completed-data credit.
+empty-string forms are handled by the unreleased fix in
+[Sabueso #114](https://github.com/uibcdf/sabueso/issues/114): an exactly empty HTTP
+200 body or a JSON empty string is an evaluated-empty answer, retaining the client's
+`RecordNotFoundError` outcome and original receipt. Unexpected payloads and malformed
+nonempty bodies remain failures. The shared transport accepts an empty body only
+when this source opts in; other sources retain their existing JSON checks.
 
 BindingDB's resource-description paper and measurement DOI/PubMed pointers have
 separate roles. Incomplete pointers retain their own metadata-based identities,

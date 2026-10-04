@@ -1,5 +1,34 @@
 # Sabueso — Decision Log
 
+## Source-defined empty BindingDB responses and pinned disease explanations (2026-10-04, #114/#91)
+
+- Accept an exactly empty HTTP 200 body or JSON empty string as BindingDB's
+  documented no-match answer, using the same RecordNotFoundError contract as an
+  empty native affinities array. Keep whitespace/malformed JSON, unexpected
+  nonempty payloads and HTTP errors failed. Only BindingDB opts into empty-body
+  acceptance in the shared JSON transport; default behavior remains unchanged.
+- The [official REST contract](https://www.bindingdb.org/rwd/bind/BindingDBRESTfulAPI.jsp)
+  declares an empty string. A public synthetic no-match identifier probe on
+  2026-10-04 returned HTTP 200, text/json, and the native empty affinities array
+  (65 bytes, SHA-256 `09bc0dde35898b010ae89187a1db4d6823b1268b81306ca5cb346dc97201d7bb`).
+  String compatibility is documentation-backed synthetic regression evidence,
+  not a verified live outage. Preserve original wire/archive identities and times.
+- Add `Card.explain_disease(disease_ref)` under `disease_group_explanation@1`,
+  selecting only a MONDO group at the current or loaded historical card pin.
+  Read existing grouping output; retain selected association/annotation-member
+  support, source-native identity links, hierarchy steps and their named rules.
+  No acquisition, mapping rerun, card mutation or new attribution credit occurs.
+- Preserve stored qualifier/selection alternatives and all ungrouped outcomes as
+  explicitly whole-card context. Missing support is partial; never infer absence
+  or reconstruct lineage that the card does not record.
+- The existing `_same_as` lookup discards other same-source targets. Reported as
+  #115, with a synthetic reproduction and versioned grouping acceptance. The
+  explanation exposes both targets and lookup selection as partial; it does not
+  silently change `disease_grouping@1`. Other derived views remain #91 work.
+- The parser defect affects published clients; the next qualified release should
+  include this integrity fix. This development checkpoint publishes no new artifact
+  and does not overwrite the verified 0.12.0 release or frozen schema.
+
 ## Observe BindingDB affinity queries and installed mirrors (2026-10-04, #108/#112)
 
 - Instrument existing REST, fixture and mirror query methods, preserving raw

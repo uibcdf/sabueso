@@ -270,7 +270,11 @@ In order:
    Released in 0.12.0: `Card.explain_literature(publication_ref)`
    traces stored publication links and both legs of structural mention context,
    preserving alternatives and recorded unlinked requests (`literature_explanation@1`).
-   Next, as use asks: other views' derived items, including disease groups.
+   Unreleased `Card.explain_disease(disease_ref)` now explains MONDO disease
+   groups with pinned association/selected-annotation support, identity/hierarchy
+   steps, stored alternatives and whole-card ungrouped context. The existing
+   order-dependent identity lookup is exposed as partial and remains #115.
+   Next, as use asks: other views' derived items, including knowledge states.
 4. **Literature beyond manual curation (#92).**
    - Released in 0.7.0: how each statement entered (`acquisition`: database, curation, rule
      extraction, model extraction, validation).
@@ -350,7 +354,8 @@ In order:
      BindingDB REST/fixture/mirror affinity queries are also observed, retaining
      queries/cutoff bases, totals/caps/order, DOI/PubMed forms, declared origins and
      mirror manifests/releases, including empty and failed queries. REST versions
-     remain unknown; the existing empty-string parsing issue is tracked in #114.
+     remain unknown. The source-local #114 fix recognizes documented empty-string
+     absence while malformed responses remain failed, retaining wire/archive identity.
      Other sources/custom clients, further result types and complete resource
      bibliography remain coverage work with explicit gaps in the published 0.12.0
      scope (#108). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;

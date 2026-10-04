@@ -8,12 +8,14 @@
   (``Retry-After`` is honoured, up to ``MAX_WAIT`` seconds). Every Sabueso request is a
   read (GraphQL posts too), so a retry changes nothing on the source.
 - **What is not retried.** A timeout: the source has already had its time, and asking
-  again would multiply it. Any other error reaches the client unchanged, which keeps
-  its own reading: a 404 is "not found", never a failure.
+  again would multiply it. Any other error reaches the client unchanged, which
+  decides whether a source's 404 states absence or is a connector failure.
 - **An unreadable answer** (#97). A client that reads JSON asks with
   ``expect_json=True``: a 200 whose body is empty or not JSON is asked again, the same
   number of times, since services sometimes answer a request with a page that is not the
   answer. A second failure reaches the client, which reports it as an error.
+  A client may opt into an exactly empty HTTP 200 body when its source documents
+  that absence form; other clients keep the default unreadable-body behavior.
 - **Retries are recorded** (#97). Inside ``noting_retries()`` (a card's build), each
   retry is noted with its source and reason, and the card lists them
   (``quality.retries``): an answer that needed a retry is never silent.
@@ -263,12 +265,18 @@ def _kept(headers: Any) -> Dict[str, str]:
 
 
 def urlopen(
-    target: Any, timeout: float = 30.0, sleep=time.sleep, expect_json: bool = False
+    target: Any,
+    timeout: float = 30.0,
+    sleep=time.sleep,
+    expect_json: bool = False,
+    allow_empty_body: bool = False,
 ):
     """``urllib.request.urlopen`` with Sabueso's user agent and retries for transient
     failures, and the answer archived when an archive is recording; with
     ``expect_json``, a 200 whose body is not JSON is asked again. See the module
-    docstring."""
+    docstring. ``allow_empty_body`` accepts only an exactly empty HTTP 200 body
+    when a source documents that form; all other JSON checks and retries remain.
+    """
     if not expect_json:
         return _urlopen_once(target, timeout, sleep)
     for attempt in range(RETRIES + 1):
@@ -277,7 +285,8 @@ def urlopen(
             content = answer.read()
             status = getattr(answer, "status", 200)
             headers = answer.headers
-        if _readable_json(content) or attempt == RETRIES:
+        declared_empty = allow_empty_body and status == 200 and content == b""
+        if declared_empty or _readable_json(content) or attempt == RETRIES:
             return Answer(content, status, headers, getattr(answer, "retrieved_at", ""))
         _note_retry(_named(target).full_url, "unreadable_body")
         if isinstance(answer, _ObservedAnswer):

@@ -55,6 +55,10 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   `explain_literature(publication_ref)` accepts the literature view's native
   `pubmed:`, `doi:`, `europepmc:MED:`, `europepmc:PMC:` and `uniprot.citation:`
   references, with whitespace stripped. It neither guesses aliases nor matches names.
+  Unreleased `explain_disease(disease_ref)` selects a MONDO group using
+  `mondo:MONDO:<seven-digit id>` or `MONDO:<seven-digit id>`; namespace case and
+  surrounding whitespace are normalized. Other ontologies, names and malformed
+  identifiers are refused; no equivalence lookup or acquisition occurs.
 - **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,
   `group_by_rank`, `expand`, `explain`.
   `explain` accepts `structure_ref=None` for membership, or `pdb:<four-character id>`

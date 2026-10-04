@@ -142,6 +142,23 @@ def test_without_expect_json_a_text_answer_is_not_asked_again(monkeypatch):
     assert len(seen) == 1
 
 
+@pytest.mark.parametrize("status,attempts", [(200, 1), (204, _http.RETRIES + 1)])
+def test_source_declared_empty_body_opt_in_accepts_only_http_200(
+    monkeypatch, status, attempts
+):
+    seen = []
+    monkeypatch.setattr(
+        _http, "_urlopen", _opener([_Response(b"", status=status)] * attempts, seen)
+    )
+    answer = _http.urlopen(
+        "https://example.org/x",
+        sleep=lambda s: None,
+        expect_json=True,
+        allow_empty_body=True,
+    )
+    assert answer.read() == b"" and len(seen) == attempts
+
+
 def test_retries_are_summarized_per_source_and_reason(monkeypatch):
     outcomes = [_http_error(502), _http_error(502), "ok", _http_error(500), "ok"]
     monkeypatch.setattr(_http, "_urlopen", _opener(outcomes, []))

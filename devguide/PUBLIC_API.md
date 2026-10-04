@@ -177,6 +177,13 @@ shows how to use them.
   legs of structural mention context, with pinned references, qualifier alternatives
   and recorded unlinked PDB mentions (`literature_explanation@1`, since 0.12.0).
   Missing links are `not_on_card`; missing stored support is `partial`.
+  Unreleased `explain_disease(disease_ref)` explains a MONDO disease group at the
+  exact card pin (`disease_group_explanation@1`), following stored association and
+  selected annotation-member support, MedGen/MONDO identity and hierarchy steps.
+  Stored alternatives/conflicts and whole-card ungrouped context remain visible;
+  missing or ambiguous support is `partial`. The grouping rule is unchanged and
+  no source is asked. `MONDO:<seven-digit id>` and `mondo:MONDO:<seven-digit id>`
+  select groups, never names or cross-ontology aliases.
 - **Other.** `to_deck()`, `expand(predicate, ...)` (see `sabueso.expand`).
 
 ## Deck

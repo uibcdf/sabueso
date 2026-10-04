@@ -238,7 +238,7 @@ view = card.diseases()
 for disease in view["diseases"]:
     print(disease["mondo"], disease.get("mondo_name"), disease["sources"])
 for item in view["ungrouped"]:
-    print(item["ref"], item["source"], item["reason"])
+    print(item["refs"], item["source"], item["reason"])
 print(view["rule"]["rule"])  # disease_grouping@1
 ```
 
@@ -270,6 +270,39 @@ print(view["rule"]["rule"])  # disease_grouping@1
   statement (`narrower`), with MONDO's chain of terms (`mondo_hierarchy@1`).
 - `disease_identity` reads the diseases the other sources put on the card, so ask for
   them in the same call.
+
+## Explain a disease group (unreleased)
+
+```python
+explanation = card.explain_disease("mondo:MONDO:0014221")
+print(explanation["status"], explanation["card_ref"])
+for row in explanation["statements"]:
+    print(row["statement"]["source"], row["input"]["source_assertions"])
+```
+
+`disease_group_explanation@1` reads the existing `disease_grouping@1` view at one
+exact card snapshot. Associations keep their relationship and SourceAssertions;
+UniProt/ClinVar members are matched to the selected stored annotation values.
+MedGen/MONDO identity links and each stored hierarchy step have pinned item
+references readable through the knowledge store. Source versions, acquisition
+metadata, qualifier conflicts and field-selection alternatives remain visible.
+Field context describes the stored selected fields, not reconstructed historical
+mapping inputs or a newly resolved disease.
+
+Only MONDO group selectors are accepted, including `MONDO:0014221`; names and
+other ontology aliases are refused. A missing group is `not_on_card`, never evidence
+that the protein has no disease. `ungrouped_context` retains the **whole card's**
+ungrouped statements and their reasons; it does not associate all of them with the
+requested term. Missing stored support produces `partial` with explicit gaps.
+
+The existing grouping lookup can select the last stored target when one identifier
+has multiple same-source identity links ([#115](https://github.com/uibcdf/sabueso/issues/115)).
+The explanation preserves that view, exposes selected and alternative links and
+marks it partial; it does not claim a unique identity or silently change the rule.
+
+Load an original pinned card from `KnowledgeStore` to explain a historical state.
+The operation does not fetch, mutate the card, rebuild mappings or add execution
+credit. Its records are detached from the card; scientific serialization is unchanged.
 
 ## From a disease to its targets and its drugs
 
