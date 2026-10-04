@@ -45,19 +45,22 @@ terms, required Ackredit attribution and the first automatic acquisition trace.
 It advances foundational support/terms/reference integrity and the pilot-driven
 need to retain original source access and per-result/workflow references.
 
-The agreed acquisition scope is built-in UniProt/Europe PMC. Other sources/custom
-clients, further result types, undeclared bibliography and Recorda integration
+On 2026-10-04 the maintainer extended acquisition to built-in RCSB single/batch
+structure queries and requested publication after qualification. The agreed scope
+is built-in UniProt/Europe PMC/RCSB. Other sources/custom clients, further result types, undeclared bibliography and Recorda integration
 remain open with explicit gaps; they do not claim completed coverage in this slice.
 Ackredit's public 0.9.0 delivery is adopted, with the published floor and exact
 public build/hash. Independent Linux receiving qualification passes on Python
-3.11–3.14 with the planned public core pins. The preliminary local Conda candidate passes the four Linux minors and supplies
-the clean-installed frozen 0.3.11 card. Final candidate `4ef9ddc` passes exact-SHA CI and the actual staged-file
+3.11–3.14 with the planned public core pins. The preliminary local Conda candidate
+passed the four Linux minors and supplied the clean-installed frozen 0.3.11 card.
+Preliminary candidate `4ef9ddc` passed exact-SHA CI and the actual staged-file
 Linux/macOS-arm64/Windows × Python 3.11–3.14 matrix; receipt:
 `devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json`.
-Stable publication, same-file promotion, clean public installation and archival
-remain pending.
+The RCSB extension requires a new source SHA and build `py_1`, preserving the old
+receipt/archive. Fresh exact-SHA CI and installed qualification precede stable
+publication, same-file promotion, clean public installation and archival.
 See the committed release plan, draft notes and route checklist in
-`devtools/conda-build/`. Preparation does not publish a version.
+`devtools/conda-build/`. Publication is authorized after these gates pass.
 
 ## Delivered so far (0.1.0 → 0.11.0)
 
@@ -314,8 +317,8 @@ In order:
    - required Ackredit attribution for knowledge pipelines (#108, moli#36): the
      automatic packet-composition adapter and public offline workflow are
      implemented against the accepted portable contract assigned to Ackredit's
-     prepared 0.9.0 candidate (ackredit#75). Traceability is mandatory: the first
-     source-acquisition slice records built-in UniProt/Europe PMC access, including
+     published 0.9.0 provider (ackredit#75). Traceability is mandatory: the first
+     source-acquisition slice records built-in UniProt/Europe PMC/RCSB access, including
      fixture/reuse/replay, empty answers, failure and original response identities,
      automatically on cards, resolutions and one-call packets. The public pilot
      saves those detached traces and credits completed access in the workflow.

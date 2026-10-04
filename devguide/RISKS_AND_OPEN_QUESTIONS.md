@@ -21,15 +21,18 @@
   core pins. The 0.9.0-based editable now satisfies the floor with a passing
   primary-environment pip check; Ackredit #81 records the earlier mismatch and
   receiving confirmation.
-  Runtime adapters observe packet composition and built-in UniProt/Europe PMC
+  Runtime adapters observe packet composition and built-in UniProt/Europe PMC/RCSB
   acquisition. Other sources/custom clients, further result types and full
   bibliography remain gaps. Original runtime JSON must be explicitly saved;
   payload-only readers cannot reconstruct earlier execution. MOLI ProjectRecord/
   Recorda routing, correlation and strict recording policy remain platform-owned
   work. The 0.12.0 scope (#110) does not claim complete pipeline traceability.
   Failed tracking can leave partial workflow credits; result records retain
-  failure status and host support. Sabueso's actual Conda candidate has its frozen
-  schema and passes all installed OS/minor gates; stable publication remains pending.
+  failure status and host support. Sabueso's preliminary Conda candidate has its frozen
+  schema and passed all installed OS/minor gates. The RCSB extension requires a new
+  immutable build and fresh qualification before stable publication. RCSB's primary
+  citation fields may be incomplete; gaps and different stated metadata forms remain
+  explicit, without runtime enrichment.
 - **SourceAssertion growth**: preserving all values can create very large cards and stores.
 - **Mapping fragility**: changes in source APIs can break field mappings.
 - **Ambiguity**: input resolution may produce multiple valid entities.

@@ -46,7 +46,12 @@ from sabueso.tools.db import (
 )
 
 ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
-TRACED = {"uniprot.get_entry", "uniprot.search", "europepmc.get_annotations"}
+TRACED = {
+    "uniprot.get_entry",
+    "uniprot.search",
+    "europepmc.get_annotations",
+    "rcsb.get_entry",
+}
 BTS_KEY = "XBNHRNFODJOFRU-UHFFFAOYSA-N"
 
 CALLS = {

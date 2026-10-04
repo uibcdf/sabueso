@@ -18,11 +18,14 @@ from . import attribution as adapter
 _collectors: ContextVar[tuple] = ContextVar(
     "sabueso_acquisition_collectors", default=()
 )
+_aggregated_sources: ContextVar[tuple] = ContextVar(
+    "sabueso_aggregated_acquisition_sources", default=()
+)
 FORMAT = "sabueso.source_acquisition@1"
 TRACE_FORMAT = "sabueso.acquisition_trace@1"
 COVERAGE = {
-    "sources": ["UniProt", "Europe PMC"],
-    "boundary": "built_in_entry_search_mentions_annotations_clients",
+    "sources": ["UniProt", "Europe PMC", "RCSB PDB"],
+    "boundary": "built_in_entry_search_mentions_annotations_structure_clients",
     "other_sources_and_custom_clients": "not_observed",
 }
 
@@ -154,7 +157,7 @@ def missing_fixture(message):
     return error
 
 
-def acquisition(source, operation, *, fixture=False):
+def acquisition(source, operation, *, fixture=False, summarize=None, aggregate=False):
     """Instrument a built-in client method; its original result/exception is preserved."""
 
     def decorate(function):
@@ -162,6 +165,8 @@ def acquisition(source, operation, *, fixture=False):
 
         @wraps(function)
         def observed(*args, **kwargs):
+            if source in _aggregated_sources.get():
+                return function(*args, **kwargs)
             from sabueso import __version__
             from sabueso.tools.db import _http
 
@@ -186,6 +191,11 @@ def acquisition(source, operation, *, fixture=False):
                 "started_at": _http._clock(),
             }
             with _http.observing_requests() as requests:
+                token = _aggregated_sources.set(
+                    (*_aggregated_sources.get(), source)
+                    if aggregate
+                    else _aggregated_sources.get()
+                )
                 try:
                     result = function(*args, **kwargs)
                 except Exception as error:
@@ -193,6 +203,16 @@ def acquisition(source, operation, *, fixture=False):
                         outcome=_terminal(error, fixture, requests),
                         error={"type": type(error).__name__, "message": str(error)},
                     )
+                    if summarize is not None:
+                        try:
+                            record.update(summarize(error, query, fixture, requests))
+                        except Exception as recording_error:
+                            record["recording_error"] = (
+                                f"{type(recording_error).__name__}: {recording_error}"
+                            )
+                            adapter._warning(
+                                "source acquisition", record["recording_error"]
+                            )
                     if record["outcome"] in {"empty", "not_found"}:
                         record["count"] = 0
                     if requests and not fixture:
@@ -209,21 +229,24 @@ def acquisition(source, operation, *, fixture=False):
                     raise
                 else:
                     try:
-                        payload, retrieved, version, basis, count = _response(
-                            operation, result
-                        )
-                        from .snapshot import canonical_json, digest
+                        if summarize is not None:
+                            record.update(summarize(result, query, fixture, requests))
+                        else:
+                            payload, retrieved, version, basis, count = _response(
+                                operation, result
+                            )
+                            from .snapshot import canonical_json, digest
 
-                        record.update(
-                            outcome="received" if count else "empty",
-                            count=count,
-                            retrieved_at=retrieved,
-                            source_version={"value": version, "basis": basis},
-                            response_identity={
-                                "basis": "decoded_client_result",
-                                "hash": digest(canonical_json(payload)),
-                            },
-                        )
+                            record.update(
+                                outcome="received" if count else "empty",
+                                count=count,
+                                retrieved_at=retrieved,
+                                source_version={"value": version, "basis": basis},
+                                response_identity={
+                                    "basis": "decoded_client_result",
+                                    "hash": digest(canonical_json(payload)),
+                                },
+                            )
                     except Exception as error:
                         record.update(
                             outcome="unobserved",
@@ -234,6 +257,8 @@ def acquisition(source, operation, *, fixture=False):
                         )
                     _finish(record, requests, fixture)
                     return result
+                finally:
+                    _aggregated_sources.reset(token)
 
         return observed
 
@@ -284,11 +309,27 @@ def _credit(record):
 
     record["bibliography"] = [software(), *descriptions(record["source"])]
     record["bibliography_gaps"] = []
+    primary_ids = set()
+    if record["source"] == "RCSB PDB":
+        from .attribution_bibliography import structure_citations
+
+        citations, gaps = structure_citations(record.get("entries", []))
+        primary_ids = {item["id"] for item in citations}
+        record["bibliography"] = list(
+            {
+                item["id"]: item for item in [*record["bibliography"], *citations]
+            }.values()
+        )
+        record["bibliography_gaps"].extend(gaps)
     if record["operation"] == "annotations":
         record["bibliography_gaps"].append(
             "article_and_annotation_provider_citations_not_declared"
         )
-    if record["outcome"] not in ("received", "empty", "not_found"):
+    completed_partial = record["outcome"] == "partial" and record.get("completed_ids")
+    if (
+        record["outcome"] not in ("received", "empty", "not_found")
+        and not completed_partial
+    ):
         return {
             "status": "not_attempted",
             "reason": "source_access_not_completed",
@@ -313,6 +354,9 @@ def _credit(record):
                 "requests",
             )
         }
+        for key in ("entries", "completed_ids"):
+            if key in record:
+                context[key] = deepcopy(record[key])
         resource = "sabueso:source-access:" + digest(
             canonical_json(
                 {
@@ -338,7 +382,13 @@ def _credit(record):
                 backend.track_item(resource, roles=["resource_access"], context=context)
                 for item in record["bibliography"][1:]:
                     backend.track_item(
-                        item["id"], roles=["resource_description"], context=context
+                        item["id"],
+                        roles=[
+                            "structure_primary_citation"
+                            if item["id"] in primary_ids
+                            else "resource_description"
+                        ],
+                        context=context,
                     )
         return {
             "status": "available",

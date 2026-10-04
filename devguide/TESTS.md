@@ -45,7 +45,7 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   checkouts. Public Pytest/Receptor tooling is installed with Conda; no runtime
   source/pip overlay substitutes for the artifact. Ackredit is pinned to public
   0.9.0/py_0 with its qualified SHA-256; a different digest or staging import fails.
-  The qualified 0.12.0 file passes all 12 installed lanes, 36 integration tests
+  The preliminary 0.12.0/py_0 file passed all 12 installed lanes, 36 integration tests
   and the public workflow per lane. The producer/archive/matrix and independent
   clean Linux pip-check receipt is
   `devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json` (#110).
@@ -72,6 +72,12 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   partial batches, retries, provider/pin-recording failure, separate nested collectors,
   custom-client coverage and saved readers without new credit. Dedicated lanes copy
   these unchanged tests alongside packet-attribution tests outside both checkouts.
+  `test_rcsb_acquisition_offline.py` adds native entry revisions (including zero
+  minor versions), source citations, differing citation forms, single/batch archive
+  reuse, empty/unavailable/unqueried/failure outcomes, chunking, fallbacks, partial
+  completed credit, retries and saved readers. CI and the installed matrix copy and
+  run it against the public Ackredit floor. The RCSB extension supersedes `py_0`
+  with a fresh `py_1` candidate and full installed qualification.
   `dependency_preflight.py --release` now passes the adopted public closure;
   stale floors, omitted public pins and future unpublished providers still fail.
   Ackredit #81 tracks the earlier editable Git-version mismatch. The current

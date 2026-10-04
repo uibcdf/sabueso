@@ -1,5 +1,31 @@
 # Sabueso — Decision Log
 
+## Extend RCSB traceability before authorized 0.12.0 publication (2026-10-04, #108/#110)
+
+- The maintainer requested structural queries, native versions, reuse, empty answers,
+  failures, attribution and citations before publishing 0.12.0. Observe built-in
+  online/fixture single and batch clients. One logical batch owns normalized ids,
+  every chunk/fallback request, and distinct per-entry results/completed ids.
+  Credit only completed access, including evaluated-empty results and completed
+  subsets in partial batches. Never infer a global database release from entry revisions.
+- Request RCSB's native revision fields and primary authors. Preserve only stated
+  primary citation metadata, explicitly reporting missing fields. Identical metadata
+  reuses a reference; different source-stated forms receive distinct content-based
+  identities, preserving earlier references in Ackredit's enclosing workflow.
+  The verified resource-description citation remains separate from primary publications.
+- Keep runtime traces/citations outside immutable scientific payloads. Schema 0.3.11
+  and its clean-installed frozen public card remain frozen. Stored structural support
+  credits the RCSB description; applications save intake/workflow sidecars to retain
+  the source operation's full original citation metadata.
+- The preliminary `4ef9ddc`/`py_0` candidate passed its original gates but lacks this
+  requested extension. Preserve its archive/receipts. Qualify a new source SHA and
+  `py_1`, including the extended public three-packet workflow and unchanged copied
+  RCSB tests in every installed lane. Publish the stable tag at the newly qualified
+  SHA, promote the same bytes, verify a clean public install, then verify Zenodo.
+- Ackredit #81 is closed through #82; public 0.9.0 is the required portable minimum.
+  Broader source/result coverage and MOLI's shared record boundary remain #108/#36 work.
+
+
 ## Freeze 0.3.11 from the clean installed local candidate (2026-10-03, #110)
 
 - Build preliminary Conda 0.12.0 from `01d5bf2` in an isolated builder without an

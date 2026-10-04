@@ -41,13 +41,18 @@ gates in `release_plan.toml` and `README.md`.
 ## Source-acquisition traceability
 
 - Traceability is required. This release's acquisition coverage is the built-in
-  UniProt entry/search and Europe PMC mentions/annotation clients. Other sources
+  UniProt entry/search, Europe PMC mentions/annotation and RCSB structure clients. Other sources
   and custom clients are explicitly unobserved.
 - Operations preserve query, original versions with distinct entry/service/release
   bases, retrieval times, decoded/raw response identities, archive references and
   fixture/network/reuse/replay routes. Replay claims no new download. Empty answers,
   HTTP absence, unavailable fixtures, unqueried requests, retries, failures and
   partial batches remain distinguishable.
+- RCSB single/batch queries preserve native per-entry revisions, primary citations,
+  distinct per-entry outcomes and every batch/instance-field fallback. Unknown
+  revisions are explicit; no entry revision becomes a global database release.
+  Completed entries in mixed batches contribute attribution. Different source-stated
+  citation forms are retained separately; repeated identical references are reused.
 - Cards, resolutions including no-card failures, final refresh states, one-call
   packets and covered public source envelopes retain `acquisition_trace` automatically.
   `sabueso.attribution()` optionally collects source events in `run.acquisitions`,
@@ -67,12 +72,12 @@ gates in `release_plan.toml` and `README.md`.
 - Runtime attribution/traces remain separate from scientific serialization/hashes.
   Covered source envelopes add `acquisition_trace` beside unchanged raw records;
   client return protocols stay intact.
-- Verified UniProt/Europe PMC description citations are declared. Other descriptions
+- Verified UniProt/Europe PMC/RCSB description citations are declared. Other descriptions
   and target article/annotation-provider bibliography remain explicit gaps. Terms,
   source support and Nextia Evidence retain separate meanings.
 - Local trace formats are provisional. MOLI ProjectRecord/Recorda routing,
   correlation and durable recording policy remain coordinated future work.
-- `examples/ackredit_pilot/` saves source traces, two result bibliographies and the
+- `examples/ackredit_pilot/` saves source traces, three result bibliographies, original structural-intake references and the
   workflow union, then reads original records without new credit. It uses public HsTIM data.
 
 Tracking: Sabueso #110 (release), #108 (coverage/attribution), #92 (literature),

@@ -48,7 +48,7 @@ shows how to use them.
   `resolve`; diseases through `sabueso.resolve_disease_card` (#90).
 - `Card.acquisition_trace`, `EntityResolution.acquisition_trace` and
   `KnowledgePacket.acquisition_trace` (unreleased, #108): detached runtime source
-  events for declared built-in UniProt/Europe PMC boundaries. Resolution failures
+  events for declared built-in UniProt/Europe PMC/RCSB boundaries. Resolution failures
   returning no card retain their trace; escaping exceptions also carry it.
   `knowledge_packet` retains its intake, while composition from existing cards
   creates no new acquisition trace. Independent copies preserve original versions,

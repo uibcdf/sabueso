@@ -71,11 +71,11 @@ it.
 
 Traceability is mandatory and automatic for supported boundaries. The first slice
 in development covers the built-in online and fixture clients for UniProt entry
-and search, and Europe PMC mentions and explicit article annotations. Other sources
-and custom clients are explicitly `not_observed`; this is incomplete pipeline
+and search, Europe PMC mentions and explicit article annotations, and RCSB
+single/batch structure lookup. Other sources and custom clients are explicitly `not_observed`; this is incomplete pipeline
 coverage. New sources must declare their observation coverage and test its gaps.
 
-These four public envelopes add `acquisition_trace` outside the unchanged raw
+These five public envelopes add `acquisition_trace` outside the unchanged raw
 `record`. `resolve`, `resolve_protein_card`, `EntityResolver.resolve` and
 `refresh_card` attach independent runtime copies to `Card.acquisition_trace` and
 `EntityResolution.acquisition_trace`, including resolutions returning no card.
@@ -92,18 +92,20 @@ the scientific object, declared coverage, result status and original source even
 Successful card returns name the final card pin, including refresh history. Each
 source event records source, operation, query, original executing package version,
 start/finish times, original retrieval time and a source version with an explicit
-basis (`entry_version`, `database_release`, `service_version`, `not_stated`).
+basis (`entry_version`, `database_release`, `service_version`, `entry_revision`,
+`per_entry_revision`, `not_stated`).
 Decoded response identity uses canonical JSON (`response_identity.hash`); observed
 HTTP bodies additionally retain their raw `response_sha256` and archive reference
-where available. These are different identities. No raw response content is copied
-into the runtime trace.
+where available. These are different identities. No whole raw response is copied
+into the runtime trace. RCSB entries retain their
+source-stated revision and primary-citation metadata.
 
 Observed access is `network`, `fixture`, `reuse`, `replay`, `mixed` or explicitly
 unobserved/not reached. Request records retain method, URL, request-body hash,
 HTTP status, retry reasons and actual network-attempt counts. Archive reuse/replay
 keeps original retrieval identities and times with zero new network attempts.
 Outcomes distinguish `received`, `empty`, `not_found`, `unavailable`, `not_queried`,
-`failed` and `unobserved`. A missing fixture cannot establish source absence.
+`failed`, `partial` and `unobserved`. A missing fixture cannot establish source absence.
 An unasked source has no event or usage credit. A partial failed annotation batch
 retains completed transport records without claiming completed source access.
 
@@ -119,7 +121,16 @@ serialization, hashes, schemas and knowledge-store formats remain unchanged;
 payload-only saved readers have `acquisition_trace is None` and add no credit.
 There is no implicit journal, project destination or Recorda integration. MOLI
 owns future ProjectRecord routing/correlation and recording reliability policy.
-Regression tests are in `tests/core/test_source_acquisition_offline.py`; the public
+RCSB logical batches own all chunks and fallback requests. Their `entries` preserve
+per-entry outcomes, native revision metadata and primary citations; `completed_ids`
+bounds successful-access credit, including empty and partial received entries.
+Unknown entry revisions remain unstated, not an invented database release.
+Identical primary metadata reuses a reference; different stated forms retain
+separate identities without overwriting earlier citations. Missing citation fields
+are explicit gaps. See `docs/content/user/attribution.md` for verified metadata sources.
+
+Regression tests are in `tests/core/test_source_acquisition_offline.py` and
+`tests/core/test_rcsb_acquisition_offline.py`; the public
 installed-consumer workflow is `examples/ackredit_pilot/`.
 
 ## Deprecated (removed before 1.0)

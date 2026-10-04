@@ -5,7 +5,7 @@ In development after 0.11.0, every completed packet composition attaches
 original source-record versions and pins, and the software executing composition.
 The records are separate from the packet, its hashes and its terms report.
 Traceability is a required Sabueso property. The first source-access slice also
-retains automatic acquisition traces for built-in UniProt and Europe PMC clients;
+retains automatic acquisition traces for built-in UniProt, Europe PMC and RCSB PDB clients;
 its declared gaps prevent a claim of complete pipeline coverage.
 
 The application owns the Ackredit session:
@@ -82,8 +82,8 @@ trace = resolution.acquisition_trace
 Path("acquisition.trace.json").write_text(json.dumps(trace, indent=2))
 ```
 
-These traces observe built-in UniProt entry/search and Europe PMC
-mentions/explicit-annotation clients. The corresponding public source envelopes
+These traces observe built-in UniProt entry/search, Europe PMC
+mentions/explicit-annotation and RCSB structure clients. The corresponding public source envelopes
 add `acquisition_trace` while retaining the original raw `record`. Other sources
 and custom clients are explicitly unobserved. A source not asked has no event or
 credit. `sabueso.attribution()` can collect the same events as `run.acquisitions`,
@@ -110,6 +110,36 @@ and add no execution credit. There is no implicit persistence. MOLI owns future
 ProjectRecord/Recorda correlation, routing and recording policy; this local slice
 does not establish a complete project record.
 
+## Structural queries and citations
+
+A built-in RCSB lookup records the normalized PDB identifiers and GraphQL request
+identities. A batch is one logical acquisition event with `entries` and
+`completed_ids`; its `requests` include every chunk, retry and individual or
+instance-field fallback. Per-entry outcomes retain received, partial, empty and
+failed results without treating a failed entry as acquired. An empty identifier
+list is `not_queried`; a missing fixture is `unavailable`. A mixed batch is `partial`
+and credits only its completed entries, with failed entries retained in context.
+
+RCSB's native `major_revision`, `minor_revision` and `revision_date` are retained
+when stated. Complete entry revisions use `entry_revision`; a batch reports
+`per_entry_revision`. Missing revisions remain `not_stated`, with any supplied date
+retained as partial metadata. These are entry revisions, never a global database
+release: the public RCSB envelope's `version` remains `null`. Archive reuse/replay
+retains original revisions, citations, retrieval times and response hashes.
+The GraphQL query also requests `rcsb_authors` for primary citations; existing raw
+records are returned without tracing edits. Native field names are documented in
+RCSB's [data migration guide](https://data.rcsb.org/migration-guide.html).
+
+Completed structural intake credits the RCSB description and each source-stated
+primary publication, including DOI/PubMed identifiers, title, authors, year and
+journal when supplied. Missing citation metadata is an explicit bibliography gap;
+no runtime lookup fills it. Identical citation metadata reuses one reference.
+Different source-stated forms retain distinct metadata-based identifiers so that
+partial or changed references cannot overwrite earlier ones in the same workflow.
+The original per-entry metadata remains in the trace. A structure packet's stored
+support credits the RCSB description; save the intake or enclosing workflow record
+to retain its original primary-publication references as well.
+
 ## Dependency and failures
 
 Ackredit is a required runtime dependency. Importing Sabueso and entering an empty
@@ -124,17 +154,15 @@ some credits can leave a partial enclosing workflow; inspect the result records 
 diagnostics before claiming completeness.
 
 The adapter uses a lazy required import, without DepDigest's optional-library path.
-This pilot does not enable import
-hooks, journals, automatic DOI enrichment or reminders. Its portable capture contract
-is accepted for Ackredit's prepared 0.9.0 candidate; exact installed qualification,
-publication and public dependency closure remain open. No public
-installation route for the development candidate is claimed. All runtime CI installs
-the required full-commit source candidate normally on Python 3.11–3.14, following
-the provider's interpreter contract correction
-([Ackredit #80](https://github.com/uibcdf/ackredit/issues/80)). No metadata override
-is used. The next Sabueso release
-is blocked until a stable API version and public dependency closure are verified
-on every supported Python minor. The published 0.11.0 installation remains unchanged.
+This integration does not enable import hooks, journals, automatic DOI enrichment
+or reminders. Ackredit **>=0.9.0** supplies the published portable contract
+`ackredit.attribution@1`. Runtime CI installs public Conda dependencies; the receiving
+lanes pin public Ackredit 0.9.0/py_0 on Python 3.11–3.14 and run the unchanged
+integration tests and public workflow outside both checkouts. Provider delivery
+issues [#22](https://github.com/uibcdf/ackredit/issues/22),
+[#75](https://github.com/uibcdf/ackredit/issues/75) and
+[#80](https://github.com/uibcdf/ackredit/issues/80) are closed. Sabueso 0.12.0 still
+requires its own exact-artifact qualification and public installation checks.
 
 ## Scope and bibliography
 
@@ -150,7 +178,7 @@ disease grouping includes broader stored MONDO/MedGen identity and hierarchy con
 The record says so. A resource's version is its source-record version, not an inferred
 global database release.
 
-The initial offline resource-description declarations were verified on 2026-10-02:
+The offline resource-description declarations were verified on 2026-10-02/04:
 
 - UniProt's [recommended citation](https://www.uniprot.org/help/publications), with
   complete metadata from the [original paper](https://academic.oup.com/nar/article/53/D1/D609/7902999):
@@ -158,6 +186,12 @@ The initial offline resource-description declarations were verified on 2026-10-0
 - Europe PMC's *Europe PMC in 2023*, with the full 22-author list and metadata from
   [the publication record](https://pubmed.ncbi.nlm.nih.gov/37994696/), DOI
   `10.1093/nar/gkad1085`. Its bibliographic year is 2024; the title is not its year.
+- RCSB's [citation policy](https://www.rcsb.org/pages/policies) recommends
+  *Updated resources for exploring experimentally-determined PDB structures and
+  Computed Structure Models at the RCSB Protein Data Bank*, DOI
+  `10.1093/nar/gkae1091`. The full 51-author metadata comes from the
+  [publisher-deposited Crossref record](https://api.crossref.org/works/10.1093/nar/gkae1091).
+  Its bibliographic issue year is 2025, distinct from its online publication date.
 - Sabueso's software metadata comes from its `CITATION.cff`, using the project
   concept DOI and the executing package's version. A preceding release's version DOI
   is not attached to an unreleased checkout.
@@ -167,8 +201,7 @@ providers also need their own citations; a service-description paper does not re
 them. No missing authors, dates or release identifiers are invented. Terms and
 fragment reuse rights are answered separately by the terms report.
 
-CSL-JSON, text and BibTeX preserve the corporate UniProt author. The required source
-candidate includes the provider's correction for explicit CSL author objects
+CSL-JSON, text and BibTeX preserve the corporate UniProt author. The published minimum includes the provider's correction for explicit CSL author objects
 ([Ackredit #78](https://github.com/uibcdf/ackredit/issues/78)); saved-reader regression
 tests check corporate-name grouping and Europe PMC's personal names without new credit.
 

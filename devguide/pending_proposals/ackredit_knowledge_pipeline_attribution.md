@@ -89,8 +89,9 @@ Ackredit session/captures. Composition itself observes no source requests or arb
 Query, packet, card and store payloads remain unchanged.
 
 Traceability is required by the maintainer and MOLI. The first acquisition slice
-automatically observes built-in UniProt entry/search and Europe PMC
-mentions/annotations. Provisional host records `sabueso.source_acquisition@1` in a
+automatically observes built-in UniProt entry/search, Europe PMC
+mentions/annotations and RCSB single/batch structure lookup. Provisional host records
+`sabueso.source_acquisition@1` in a
 `sabueso.acquisition_trace@1` retain independent operation identities, actual routes,
 original producer/source versions with explicit bases, retrieval times, decoded/raw
 response identities and archive references. Empty/not-found, unavailable fixtures,
@@ -119,7 +120,7 @@ empty source outcomes do not imply a new download. Source regression tests verif
 replay/reuse, empty answers, absence/failure, partial batches, retry facts, custom-client
 coverage, refresh pins and one-call packet intake independently of composition.
 
-Complete UniProt/Europe PMC description citations were verified against primary
+Complete UniProt/Europe PMC/RCSB description citations were verified against primary
 publication records; missing descriptions and target article/annotation-provider
 bibliography remain gaps. The required candidate includes the correction reported
 in [Ackredit #78](https://github.com/uibcdf/ackredit/issues/78): explicit CSL corporate
@@ -209,7 +210,7 @@ This delivery closes the provider dependency gate. Sabueso's preliminary local
 Conda candidate now passes all four Linux minors and supplies the clean-installed
 frozen 0.3.11 card; receipt:
 `devtools/conda-build/receipts/sabueso_0.12.0_local_schema_freeze_2026-10-03.json`.
-Its final candidate `4ef9ddc` now passes the actual staged archive and all 12
+Its preliminary candidate `4ef9ddc` passed the actual staged archive and all 12
 Linux/macOS-arm64/Windows × Python 3.11–3.14 installed lanes, with 36 integration
 tests and the public workflow in each. Independent clean Linux 3.14 also verifies
 installed bytes, the frozen card and pip check; receipt:
@@ -221,7 +222,7 @@ mismatch, reported in [provider #81](https://github.com/uibcdf/ackredit/issues/8
 On 2026-10-04 the provider's 0.9.0 tag yields editable
 `0.9.0+8.ga8219b8.dirty`; runtime/distribution versions agree, the floor is met
 and the primary environment's pip check passes. All 14 workspace packages remain
-editable. Receiving confirmation is reported upstream; #81 awaits owner closure.
+editable. Receiving confirmation is reported upstream; #81 is closed through provider #82.
 Clean public distributions satisfy the floor; broader trace/result/bibliography
 and MOLI record work remain open in #108/#36.
 
@@ -231,15 +232,19 @@ The staged 0.12.0 preparation is tracked in #110. Its installed-file matrix now
 requires provider import/metadata/API checks, the unchanged acquisition/attribution
 regressions and the public workflow on every supported OS/minor, outside both
 checkouts. Public delivery and the clean-installed frozen 0.3.11 card are verified. The
-final candidate remains `4ef9ddc`, whose actual staged artifact gates pass.
-Stable publication, promotion, clean public install and archival are next under #110.
+preliminary candidate `4ef9ddc` passed its actual staged artifact gates. On
+2026-10-04 the maintainer requested RCSB before stable publication: native revisions,
+per-entry batch outcomes, all fallback requests and original primary citations.
+A new source SHA and build `py_1` must repeat all gates with the extended tests/pilot.
+The historical `py_0` receipt/archive stays immutable. Stable publication, promotion,
+clean public install and archival follow under #110.
 
 - Keep Ackredit required in metadata and the recipe. Lazy required import keeps
   saved readers free of backend loading. Missing/broken installations emit SMonitor
   diagnostics and retain failed attribution alongside completed scientific results.
 - Results receive attribution automatically; applications own sessions. Libraries enable no import
   hooks, persistence journals, automatic enrichment or reminders.
-- Exercise a real provider with two results reusing sources, an enclosing workflow,
+- Exercise a real provider with three results reusing sources, an enclosing workflow,
   cached/offline and evaluated-empty requests, genuine absence, failure, fresh-process
   lazy import, detached ownership and saved readers without new credit.
 - Published provider/dependency closure is verified and adopted for every supported

@@ -32,6 +32,8 @@ from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.rcsb_acquisition import summarize
+from sabueso.core.source_acquisition import acquisition, capture_acquisitions
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -40,9 +42,10 @@ STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
   rcsb_id
   exptl { method }
   rcsb_primary_citation {
-    pdbx_database_id_PubMed pdbx_database_id_DOI title journal_abbrev year }
+    pdbx_database_id_PubMed pdbx_database_id_DOI title journal_abbrev year rcsb_authors }
   rcsb_entry_info { resolution_combined polymer_entity_count_protein }
-  rcsb_accession_info { deposit_date initial_release_date }
+  rcsb_accession_info { deposit_date initial_release_date
+    major_revision minor_revision revision_date }
   refine { pdbx_refine_id ls_R_factor_R_free ls_R_factor_R_work }
   assemblies {
     rcsb_assembly_container_identifiers { assembly_id }
@@ -130,6 +133,7 @@ class OnlineRCSBClient:
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"RCSB request for {pdb_id} failed: {exc}") from exc
 
+    @acquisition("RCSB PDB", "structure", summarize=summarize)
     def fetch_structure(self, pdb_id: str) -> Tuple[Dict[str, Any], str]:
         """The entry, or, when RCSB fails on its instance-level fields, the entry
         without them, marked ``_partial`` (``{"missing": [...], "reason": ...}``)."""
@@ -156,6 +160,11 @@ class OnlineRCSBClient:
 
     def fetch_structures(self, pdb_ids: Any) -> Dict[str, Any]:
         ids = list(dict.fromkeys(p.upper() for p in pdb_ids))
+        return self._fetch_structures(ids)
+
+    @acquisition("RCSB PDB", "structures", summarize=summarize, aggregate=True)
+    def _fetch_structures(self, pdb_ids: list[str]) -> Dict[str, Any]:
+        ids = pdb_ids
         out: Dict[str, Any] = {}
         for i in range(0, len(ids), BATCH_SIZE):
             batch = ids[i : i + BATCH_SIZE]
@@ -209,6 +218,7 @@ class FixtureRCSBClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @acquisition("RCSB PDB", "structure", fixture=True, summarize=summarize)
     def fetch_structure(self, pdb_id: str) -> Tuple[Dict[str, Any], str]:
         pdb_id = pdb_id.upper()
         if pdb_id in self.failing:
@@ -218,10 +228,26 @@ class FixtureRCSBClient:
             raise RecordNotFoundError(f"RCSB has no entry {pdb_id}")
         return json.loads(path.read_text(encoding="utf-8")), self.retrieved_at
 
+    def fetch_structures(self, pdb_ids: Any) -> Dict[str, Any]:
+        return self._fetch_structures(list(dict.fromkeys(p.upper() for p in pdb_ids)))
+
+    @acquisition(
+        "RCSB PDB", "structures", fixture=True, summarize=summarize, aggregate=True
+    )
+    def _fetch_structures(self, pdb_ids: list[str]) -> Dict[str, Any]:
+        out = {}
+        for pdb_id in pdb_ids:
+            try:
+                out[pdb_id] = self.fetch_structure(pdb_id)
+            except (RecordNotFoundError, ConnectorError) as error:
+                out[pdb_id] = error
+        return out
+
 
 # --- Public source access (uibcdf/sabueso#49) -----------------------------------------
 
 
+@capture_acquisitions
 @arg_digest()
 def get_entry(identifier: str, client: Any = None, skip_digestion: bool = False):
     """The RCSB PDB entry Sabueso maps (GraphQL: entities, UniProt alignments,

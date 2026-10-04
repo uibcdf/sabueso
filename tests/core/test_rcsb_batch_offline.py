@@ -80,6 +80,9 @@ def test_batches_of_twenty_five():
 def test_a_client_without_batches_is_asked_one_entry_at_a_time():
     from sabueso.tools.db.rcsb import FixtureRCSBClient, fetch_many
 
-    out = fetch_many(FixtureRCSBClient("temp_data"), ["1sux", "NONE"])
+    class SingleClient:
+        fetch_structure = FixtureRCSBClient("temp_data").fetch_structure
+
+    out = fetch_many(SingleClient(), ["1sux", "NONE"])
     assert out["1SUX"][0]["rcsb_id"] == "1SUX"
     assert isinstance(out["NONE"], RecordNotFoundError)

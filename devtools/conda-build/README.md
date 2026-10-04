@@ -144,9 +144,9 @@ Broader source/result coverage, undeclared bibliography and Recorda integration
 remain issue-backed work with explicit release limits. This bounded scope retains
 the required traceability target without asserting full pipeline provenance.
 
-## Qualified 0.12.0 candidate (publication pending)
+## Preliminary 0.12.0 candidate (historical qualification)
 
-Final candidate `4ef9ddc7dc8a9e01ce430ef3d30f5d9cb94006a6` passes exact-SHA
+Preliminary candidate `4ef9ddc7dc8a9e01ce430ef3d30f5d9cb94006a6` passed exact-SHA
 CI 37159503827 (15/15) and governance 37159503801. Staging producer 37159798707
 builds `sabueso-0.12.0-py_0.tar.bz2`, SHA-256
 `8a3910eacd4f63945708d9fe6339cf578ae2a9d1958a02a391db2dbc23c6b347`.
@@ -158,7 +158,11 @@ per lane. Independent clean Linux 3.14 also checks installed bytes, the frozen c
 and pip metadata. The durable receipt is
 `receipts/sabueso_0.12.0_staged_2026-10-03.json`.
 
-Evidence-only follow-up commits do not replace that qualified source SHA. The
-release tag must select it and promotion must preserve its archive digest.
+On 2026-10-04 the maintainer requested RCSB traceability before stable publication.
+This implementation change supersedes the preliminary source scope. Preserve `py_0`
+and its historical receipts; select a new full SHA, build `py_1`, and repeat exact-SHA
+CI, archive inspection and the full installed matrix with the RCSB tests and extended
+public workflow. The stable tag must select the newly qualified SHA, and promotion
+must preserve that new archive digest. Evidence-only follow-ups do not change it.
 Stable publication, promotion, clean public installation and Zenodo are still
 pending; the latest published version is 0.11.0.

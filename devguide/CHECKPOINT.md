@@ -9,8 +9,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Release preparation
 
-- **Proposed 0.12.0, staged route (#110):** literature context, pinned terms and
-  explanations, required Ackredit attribution and bounded source-acquisition traces.
+- **Authorized 0.12.0, staged route (#110):** literature context, pinned terms and
+  explanations, required Ackredit attribution and bounded
+  UniProt/Europe PMC/RCSB source-acquisition traces.
   The committed plan is `devtools/conda-build/release_plan.toml`; reusable draft
   notes are `devtools/conda-build/release_notes_0.12.0.md`.
 - Preparation adopts qualified builder `8da628d9b393e184c3bf3722708b19dcfbf7ef0a`
@@ -31,7 +32,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   `schema_0.3.11__P60174.json`; receipt:
   `devtools/conda-build/receipts/sabueso_0.12.0_local_schema_freeze_2026-10-03.json`.
   The schema/shape are now frozen.
-- **Staged candidate qualified:** `4ef9ddc7dc8a9e01ce430ef3d30f5d9cb94006a6`
+- **Preliminary staged candidate qualified (superseded scope):** `4ef9ddc7dc8a9e01ce430ef3d30f5d9cb94006a6`
   passes CI 37159503827 (15/15) and governance 37159503801. Producer 37159798707
   builds `sabueso-0.12.0-py_0.tar.bz2`, SHA-256
   `8a3910eacd4f63945708d9fe6339cf578ae2a9d1958a02a391db2dbc23c6b347`.
@@ -40,13 +41,17 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   tests and the public workflow per lane. Independent clean Linux 3.14 verifies
   installed bytes, the frozen card, APIs and pip check. Receipt:
   `devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json`.
+  The maintainer requested RCSB coverage before stable publication on 2026-10-04.
+  Preserve this historical receipt/archive. A new source SHA and `py_1` candidate
+  must pass fresh CI, staging and all 12 installed lanes before publication.
   Publication, promotion, clean public installation and Zenodo remain pending.
   Latest published release remains 0.11.0.
 - **Editable workspace verified (2026-10-04):** all 14 installed workspace packages
   remain editable in `molsyssuite@uibcdf_3.14`. Ackredit now derives
-  `0.9.0+8.ga8219b8.dirty` from its 0.9.0 tag; runtime/distribution versions agree
+  a 0.9.0-based development version from its 0.9.0 tag; runtime/distribution
+  versions agree
   and the environment's pip check passes. The receiving fix is reported in provider
-  #81, which remains open pending its owner's closure.
+  #81, now closed through provider #82.
 
 ## Release and schema
 
@@ -265,18 +270,22 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   The immutable provider digest is
   `37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1`.
   These receipts verify provider delivery/receiving compatibility; Sabueso's
-  actual staged Conda candidate passes its separate OS/minor matrix in #110;
+  preliminary staged Conda candidate passed its separate OS/minor matrix in #110;
+  the RCSB extension requires a new `py_1` candidate and fresh qualification;
   stable publication remains pending.
-  UniProt/Europe PMC description citations are verified offline; other descriptions,
+  UniProt/Europe PMC/RCSB description citations are verified offline; other descriptions,
   target articles and annotation-provider bibliography remain explicit gaps.
   Broader acquisition coverage and the shared record boundary remain open.
   Corporate-author BibTeX rendering was reported as ackredit#78 and corrected by
   the provider; the pinned candidate includes it, with CSL-JSON/text/BibTeX reader tests.
 - Required source-acquisition traceability (#108, moli#36), first slice:
-  built-in UniProt entry/search and Europe PMC mentions/annotations record their
+  built-in UniProt entry/search, Europe PMC mentions/annotations and RCSB
+  single/batch structure clients record their
   actual fixture/network/archive route, original versions, retrieval time, response
   hashes/references, retry/attempt counts and distinct empty/unavailable/unqueried/
-  failed outcomes. Partial failed batches retain observed transport. Automatic
+  failed outcomes. RCSB batches retain per-entry revisions, primary citations and
+  completed subsets alongside all fallback requests. Partial failed batches retain
+  observed transport. Automatic
   `acquisition_trace` attaches to cards/resolutions, including resolution without
   a card, final refresh pins and one-call packets; supported public source envelopes
   retain it beside raw records. Other sources/custom clients are explicitly unobserved.

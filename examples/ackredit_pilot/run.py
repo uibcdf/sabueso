@@ -1,4 +1,4 @@
-"""A public offline workflow with source traces and two attributed knowledge packets."""
+"""A public offline workflow with source traces and three attributed knowledge packets."""
 
 import argparse
 import json
@@ -7,6 +7,7 @@ from pathlib import Path
 import sabueso
 from sabueso.resolver import EntityResolver, FixtureUniProtClient
 from sabueso.tools.db.europepmc import FixtureEuropePMCClient
+from sabueso.tools.db.rcsb import FixtureRCSBClient
 
 
 def main():
@@ -25,14 +26,18 @@ def main():
             # trace is saved separately from the scientific card and packets.
             card, resolution = sabueso.resolve(
                 "P60174",
-                resolver=EntityResolver(FixtureUniProtClient(args.fixtures)),
+                resolver=EntityResolver(
+                    FixtureUniProtClient(args.fixtures),
+                    rcsb_client=FixtureRCSBClient(args.fixtures),
+                ),
+                structures=["1HTI", "1KLG"],
                 europepmc={"article_ids": "PMC:PMC12400196"},
                 europepmc_client=FixtureEuropePMCClient(args.fixtures),
             )
             trace = card.acquisition_trace
             assert trace == resolution.acquisition_trace
             assert trace["card_ref"] == card.pinned_ref()
-            assert len(trace["records"]) == 2
+            assert len(trace["records"]) == 3
             assert all(r["access"] == "fixture" for r in trace["records"])
             assert all(r["network_attempts"] == 0 for r in trace["records"])
             assert all(r["provider"]["status"] == "available" for r in trace["records"])
@@ -44,14 +49,17 @@ def main():
                 for name, aspects in (
                     ("identity", ["identity"]),
                     ("literature", ["literature"]),
+                    ("structures", ["structures"]),
                 ):
                     packet = sabueso.compose_packet(
                         sabueso.KnowledgeQuery("P60174", aspects=aspects), card
                     )
                     store.save_packet(packet, name)
                     records.append(packet.attribution)
-        assert len(records) == 2
-        for name, record in zip(("identity", "literature"), records, strict=True):
+        assert len(records) == 3
+        for name, record in zip(
+            ("identity", "literature", "structures"), records, strict=True
+        ):
             assert record["provider"]["status"] == "available", record["provider"]
             (args.output / f"{name}.attribution.json").write_text(
                 json.dumps(record, indent=2), encoding="utf-8"
@@ -64,13 +72,19 @@ def main():
             for record in records
         ]
         assert "doi:10.1093/nar/gkae1010" in ids[0] & ids[1]
+        assert "doi:10.1093/nar/gkae1091" in ids[2]
         intake_ids = {
             item["id"]
             for record in trace["records"]
             for item in record["provider"]["attribution"]["items"]
         }
         assert {item["id"] for item in workflow.attribution.to_dict()["items"]} == (
-            intake_ids | ids[0] | ids[1]
+            intake_ids | set().union(*ids)
+        )
+        assert any(
+            item.get("url") == "https://pubmed.ncbi.nlm.nih.gov/8061610/"
+            for record in trace["records"]
+            for item in record["bibliography"]
         )
 
     # A new reader session renders original records without registering or
@@ -86,8 +100,19 @@ def main():
                 original = ackredit.Attribution.from_dict(
                     record["provider"]["attribution"]
                 )
-                original.report(format="bibtex")
-            for name in ("identity", "literature"):
+                for format, extension in (("csl-json", "csl.json"), ("bibtex", "bib")):
+                    (
+                        args.output
+                        / f"intake.{record['source'].replace(' ', '_')}.{extension}"
+                    ).write_text(original.report(format=format), encoding="utf-8")
+            original_workflow = ackredit.Attribution.from_dict(
+                json.loads((args.output / "workflow.attribution.json").read_text())
+            )
+            for format, extension in (("csl-json", "csl.json"), ("bibtex", "bib")):
+                (args.output / f"workflow.references.{extension}").write_text(
+                    original_workflow.report(format=format), encoding="utf-8"
+                )
+            for name in ("identity", "literature", "structures"):
                 record = json.loads(
                     (args.output / f"{name}.attribution.json").read_text()
                 )
@@ -108,7 +133,7 @@ def main():
         assert not reader.acquisitions
         assert not ackredit.get_attribution().to_dict()["items"]
     print(
-        f"PASS: source traces, two result bibliographies, workflow union and saved readers ({args.output})"
+        f"PASS: source traces, three result bibliographies, workflow union and saved readers ({args.output})"
     )
 
 
