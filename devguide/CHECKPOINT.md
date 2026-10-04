@@ -5,7 +5,7 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-10-03, after release 0.11.0.*
+*Last updated: 2026-10-04, after release 0.11.0.*
 
 ## Release preparation
 
@@ -41,8 +41,12 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   installed bytes, the frozen card, APIs and pip check. Receipt:
   `devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json`.
   Publication, promotion, clean public installation and Zenodo remain pending.
-  Latest published release remains 0.11.0. Ackredit #81 tracks editable Git-version
-  consistency; clean public package qualification is unaffected.
+  Latest published release remains 0.11.0.
+- **Editable workspace verified (2026-10-04):** all 14 installed workspace packages
+  remain editable in `molsyssuite@uibcdf_3.14`. Ackredit now derives
+  `0.9.0+8.ga8219b8.dirty` from its 0.9.0 tag; runtime/distribution versions agree
+  and the environment's pip check passes. The receiving fix is reported in provider
+  #81, which remains open pending its owner's closure.
 
 ## Release and schema
 
@@ -261,7 +265,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   The immutable provider digest is
   `37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1`.
   These receipts verify provider delivery/receiving compatibility; Sabueso's
-  actual staged Conda candidate remains separately gated in #110.
+  actual staged Conda candidate passes its separate OS/minor matrix in #110;
+  stable publication remains pending.
   UniProt/Europe PMC description citations are verified offline; other descriptions,
   target articles and annotation-provider bibliography remain explicit gaps.
   Broader acquisition coverage and the shared record boundary remain open.
@@ -321,7 +326,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1343 tests passed, 26 online tests deselected (2026-10-03, in
+- Offline suite: 1343 tests passed, 26 online tests deselected (2026-10-04, in
   `molsyssuite@uibcdf_3.14`, with all installed workspace packages editable and the
   required real Ackredit editable provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.

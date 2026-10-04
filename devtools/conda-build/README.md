@@ -99,8 +99,10 @@ on all four Linux minors passes the 36 tests, public workflow and pip check with
 Sabueso's planned exact public core pins. Staging/public receiving receipts remain
 separate from Sabueso's actual Conda candidate qualification. `dependency_preflight.py
 --release` passes the adopted closure; it retains generic future-provider guards.
-The primary workspace keeps editable packages; provider #81 owns its Git-derived
-version mismatch with the published minimum.
+The primary workspace keeps all 14 installed workspace packages editable. Its
+current 0.9.0-based Ackredit editable satisfies the public minimum, with runtime/
+distribution agreement and a passing pip check (2026-10-04). Provider #81 records
+the earlier Git-version mismatch and receiving confirmation.
 
 ## Prepared 0.12.0 scope (#110)
 

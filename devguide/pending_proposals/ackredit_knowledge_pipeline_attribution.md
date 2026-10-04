@@ -216,10 +216,12 @@ installed bytes, the frozen card and pip check; receipt:
 `devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json`.
 Stable publication and promotion remain pending.
 
-The maintainer's editable workspace remains distinct: Ackredit's Git-derived
-checkout version is still 0.8.0-based and cannot satisfy the correct new floor.
-[Provider #81](https://github.com/uibcdf/ackredit/issues/81) requests owning version
-consistency; no provider tag/version or metadata override is fabricated here.
+The maintainer's editable workspace initially exposed a 0.8.0-based Git-version
+mismatch, reported in [provider #81](https://github.com/uibcdf/ackredit/issues/81).
+On 2026-10-04 the provider's 0.9.0 tag yields editable
+`0.9.0+8.ga8219b8.dirty`; runtime/distribution versions agree, the floor is met
+and the primary environment's pip check passes. All 14 workspace packages remain
+editable. Receiving confirmation is reported upstream; #81 awaits owner closure.
 Clean public distributions satisfy the floor; broader trace/result/bibliography
 and MOLI record work remain open in #108/#36.
 
@@ -244,7 +246,7 @@ Stable publication, promotion, clean public install and archival are next under 
   Python minor. The released portable API minimum is 0.9.0; installed gates pin the
   actual public build/hash. Ackredit #22/#75/#80 are resolved. Sabueso's own Conda
   installed matrix passes separately from receiving tests; see its staged receipt.
-  The editable version consistency need is tracked in Ackredit #81.
+  The consumer verifies the editable version consistency fix in Ackredit #81.
 - Coordinate the attribution/knowledge/terms boundary in MOLI #36; Ackredit and
   MolSysSuite keep ownership of provider/member contracts and rollout.
 
