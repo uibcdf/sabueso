@@ -97,7 +97,17 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
 - Refetching a fixture can change counts in other tests. Update them as findings, not
   silently.
 
-## Local gates before a commit
+## Local checks and CI checkpoints
+
+Select checks by the actual changed surface. Run every selected command on its
+own and read its exit status. A short documentation or research-evidence commit
+does not require the entire offline scientific suite. A change to public or
+numerical behavior needs targeted regressions; run the full offline suite at
+the next unskipped code checkpoint and inspect the CI run for that exact head.
+If a changed area is not covered by a targeted test, add or identify a
+meaningful guard before claiming it validated.
+
+Use the relevant commands below:
 
 ```bash
 ruff format --check .
@@ -110,6 +120,29 @@ python devtools/moli_governance.py
 python devtools/dependency_preflight.py
 ```
 
+- Python code or tests: Ruff format/check and the affected pytest selectors;
+  run the full offline suite before an ordinary code checkpoint is declared
+  complete. Source, schema and quantity changes also need their specific
+  guards and scientific regression cases.
+- Source registry or generated source terms: `tools/source_registry.py --check`.
+  Card-shape and schema changes: `tools/card_shape.py` and
+  `tools/validate_schema.py`, plus the relevant tests.
+- `AGENTS.md`, `MOLI_GUIDE.md` or governance files: `devtools/moli_governance.py`.
+  Dependency metadata, Conda environments, recipes or CI acquisition:
+  `devtools/dependency_preflight.py` and the relevant package/CI checks.
+- Documentation and recorded evidence: validate changed links, examples and
+  generated content as applicable; use the docs build below for `docs/` or
+  docstring changes. Do not claim a scientific equivalence or package result
+  merely because a document check passed.
+
+Keep several exploratory commits local when remote visibility is unnecessary.
+For now, `[skip ci]` is limited to authorized direct documentation/evidence
+pushes whose applicable local checks pass and whose changes cannot affect
+runtime behavior, test inputs, package contents or publication. Code changes
+use an ordinary push; Sabueso has no accepted recovery route for skipped code
+pushes. Do not use the marker on a PR head with required checks, release
+candidate or publication route. A skipped run is not passing evidence.
+
 When `docs/` or a docstring changes, also build the documentation, failing on any
 warning. Use the environment of `devtools/conda-envs/docs_env.yaml`, with the checkout
 installed:
@@ -121,10 +154,11 @@ sphinx-build -W --keep-going -b html docs <output directory>
 The API reference renders module docstrings, so a malformed RST list in a docstring
 fails this build.
 
-- Run each gate on its own and read its result.
+- Run each selected gate on its own and read its result.
 - Never pipe a gate through `tail` or `grep`, and never chain a commit after a command
   whose own exit code does not reflect the gate. Both have let a failure through before.
-- After pushing, verify CI by the commit SHA.
+- After an unskipped push, verify CI by the exact commit SHA. Preserve local
+  check results and mark deferred remote checks as pending until they run.
 
 ## Quality rules for knowledge
 

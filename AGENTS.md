@@ -8,6 +8,18 @@ This repository remains authoritative for its own implementation, tests, local A
 
 Use `uibcdf/moli` when a change affects a shared MOLI contract, terminology, architecture boundary, or coordination policy. Report provider-specific limitations to the provider repository and cross-link consumer work.
 
+For a needed fix in another repository, use its issue when no fix is ready or
+submit a ready fix as a pull request for owner review. If urgent work is done
+by or directly with Diego or Liliana, ask them whether to use a direct push,
+pull request or issue; direct push needs explicit permission. Follow
+`MOLI_GUIDE.md#cross-component-feedback`.
+
+For authorized direct pushes, batch short local commits when practical and
+choose local checks and CI according to the changed behavior. Consider
+`[skip ci]` only where this repository permits it and deferred tests have a
+recovery route; verify a final code checkpoint before claiming completion.
+Follow `MOLI_GUIDE.md#moli-engineering-baseline` and the local CI policy.
+
 Do not expose confidential vertical-pilot content in public issues or documentation.
 
 # Working in Sabueso
@@ -52,7 +64,11 @@ commit messages, issues, pull requests, release notes and documentation.
     state and migration read it; a test checks its wiring;
   - an `in_use` entry in `devguide/sources/registry.yaml` (then
     `python tools/source_registry.py --write`).
-- Python 3.11–3.14 are supported.
+- Python 3.11–3.14 are supported. Use Python 3.14 for routine local development
+  and pytest; provision the Conda environment and install this checkout with
+  `python -m pip install --no-deps --editable .`. Install other participating
+  Python components editable in a compatible shared environment when testing
+  their integration, and verify import paths.
 - Report bugs of UIBCDF tools, such as ArgDigest, PyUnitWizard, SMonitor, DepDigest or
   the receptors, upstream in their repositories, and cross-link them.
 
@@ -78,15 +94,21 @@ commit messages, issues, pull requests, release notes and documentation.
 - Fixtures in `temp_data/` are frozen **public** responses, each declared in
   `temp_data/NOTICE.md` with its source, date and licence. No private or pilot data, ever.
   TcTIM and HsTIM may be used as public test systems.
-- Local gates before every commit are listed in `devguide/TESTS.md`.
-  - Run each gate on its own and read its result.
+- Select applicable local gates for the changed files and behavior from
+  `devguide/TESTS.md`. The full offline pytest suite is a code-validation
+  checkpoint, not a requirement for every documentation or exploratory commit.
+  - Run each selected gate on its own and read its result.
   - Never pipe a gate through `tail` or `grep`, and never chain a commit after a command
     whose exit code does not reflect the gate.
 
 ## Commits, CI and releases
 
-- Maintainers commit directly to `main` once the local gates pass, then verify CI by the
-  commit SHA.
+- Maintainers may commit directly to `main` once the applicable local gates pass.
+  Batch short commits locally when a remote checkpoint is unnecessary. For now,
+  use `[skip ci]` only on locally checked documentation/evidence-only direct
+  pushes with no executable or packaging effect; push code checkpoints without
+  the marker and verify CI by the exact commit SHA. See `devguide/TESTS.md` and
+  `MOLI_GUIDE.md#moli-engineering-baseline`.
 - Releases follow the staged route in `devtools/conda-build/README.md`:
   - the candidate's CI, a staging build, and the installed-package gates on Linux,
     macOS and Windows;
