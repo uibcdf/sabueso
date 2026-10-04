@@ -314,7 +314,7 @@ Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
 CI/release tests, alongside `test_literature_intake_offline.py` for original support
 and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
-The current checkpoint passes 1,450 source offline cases and 142 unchanged installed
+The current checkpoint passes 1,468 source offline cases and 160 unchanged installed
 integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
@@ -323,7 +323,7 @@ and two composition records with available attribution, plus original sidecars.
 Private content stays outside public reports and repositories; original notebooks
 remain unchanged.
 
-The design review (#112) makes BindingDB and further sources/results,
+The design review (#112) makes further sources/results,
 complete bibliography and MOLI record/consumer boundaries explicit remaining work.
 Local wheel testing uncovered stale incremental `build/lib` modules (#113); a
 source-byte/membership guard rejects them before installed receiving qualification.
@@ -348,4 +348,29 @@ does not receive completed-data credit. Scientific payloads, exceptions and sche
 
 `test_pubchem_acquisition_offline.py` is copied unchanged into installed-provider
 CI and future staged gates. These component-local traces do not define the shared
-MOLI ProjectRecord/Recorda contract. BindingDB remains the next chemical source slice.
+MOLI ProjectRecord/Recorda contract.
+
+## BindingDB development slice after 0.12.0 (#108)
+
+Built-in REST, fixture and mirror affinity queries are observed without scientific
+payload/exception/schema changes. Queries, cutoff/limit/order, total/kept counts,
+original response hashes, DOI/PubMed forms, archive reuse/replay and retries survive.
+Resource-description citations and native measurement pointers retain separate
+roles; incomplete forms cannot replace fuller host citations. REST versions/origins
+and missing bibliography remain unknown. A mirror's declared data origin does not
+claim direct access to an imported provider.
+
+Mirror queries retain local access, known manifest release/URL/checksum/installation
+time and a manifest hash without network attempts. The manifest does not prove
+live REST release or index integrity on every query; its installation-time retrieval
+basis and current event times stay distinct. Fixture cutoffs are not reapplied;
+their scope is explicit. Installation/update and constructor failures remain outside
+query observation.
+
+Decoded-empty, absent-fixture, offline-unqueried, failed and partial-before-processing
+outcomes remain distinct. Original HTTP and corrupt-index failures are retained.
+The documented empty-string compatibility gap is owned by Sabueso #114, with
+regressions preserving its failure receipts and no successful credit.
+`test_bindingdb_acquisition_offline.py` joins unchanged installed-provider CI and
+future staged gates; saved readers add no credit. Other sources/custom clients,
+full bibliography and MOLI's shared record/consumer coordination remain open.

@@ -7,6 +7,27 @@ Metadata sources are recorded in docs/content/user/attribution.md.
 from copy import deepcopy
 
 _DESCRIPTIONS = {
+    "BindingDB": {
+        "id": "doi:10.1093/nar/gkae1075",
+        "type": "article",
+        "title": "BindingDB in 2024: a FAIR knowledgebase of protein-small molecule binding data",
+        "authors": [
+            "Liu, Tiqing",
+            "Hwang, Linda",
+            "Burley, Stephen K",
+            "Nitsche, Carmen I",
+            "Southan, Christopher",
+            "Walters, W Patrick",
+            "Gilson, Michael K",
+        ],
+        "year": 2025,
+        "journal": "Nucleic Acids Research",
+        "volume": "53",
+        "number": "D1",
+        "pages": "D1633-D1644",
+        "doi": "10.1093/nar/gkae1075",
+        "url": "https://doi.org/10.1093/nar/gkae1075",
+    },
     "PubChem": {
         "id": "doi:10.1093/nar/gkae1059",
         "type": "article",
@@ -211,6 +232,35 @@ def pubchem_citations(publication_ids):
         gaps.append(
             {
                 "publication_ref": "pubmed:" + pubmed,
+                "citation_id": identifier,
+                "reason": "measurement_citation_metadata_not_stated",
+                "fields": ["title", "authors", "year"],
+            }
+        )
+    return citations, gaps
+
+
+def bindingdb_citations(publications):
+    """Retain native DOI/PubMed forms without replacing fuller host citations."""
+    from .snapshot import canonical_json, digest
+
+    citations, gaps = [], []
+    for publication in publications:
+        identifier = "sabueso:bindingdb-primary-citation:" + digest(
+            canonical_json(publication)
+        )
+        item = {"id": identifier, "type": "article"}
+        if publication.get("doi"):
+            item.update(
+                doi=deepcopy(publication["doi"]),
+                url="https://doi.org/" + str(publication["doi"]),
+            )
+        elif publication.get("pmid"):
+            item["url"] = f"https://pubmed.ncbi.nlm.nih.gov/{publication['pmid']}/"
+        citations.append(item)
+        gaps.append(
+            {
+                "publication": deepcopy(publication),
                 "citation_id": identifier,
                 "reason": "measurement_citation_metadata_not_stated",
                 "fields": ["title", "authors", "year"],

@@ -1,5 +1,28 @@
 # Sabueso — Decision Log
 
+## Observe BindingDB affinity queries and installed mirrors (2026-10-04, #108/#112)
+
+- Instrument existing REST, fixture and mirror query methods, preserving raw
+  results, exceptions, scientific mappings and schema. Honor an adapter's declared
+  local access route when there are no transport requests.
+- Retain cutoff/limit/order, total/kept counts, received response identities,
+  archive/retry metadata and native DOI/PubMed forms. Incomplete citations use
+  metadata-based identities to preserve fuller host references and alternatives.
+- Record mirror release/manifest/installation time as their stated basis, without
+  claiming live REST release proof or independent index integrity. Installation,
+  update and constructor failures stay outside query observation. Fixture cutoffs
+  are not reapplied; record this existing behavior explicitly.
+- Mirror data origins are declarations; imported sources are not credited as
+  directly consulted. REST origins/global release and absent bibliography stay
+  unknown. The verified resource-description paper has a separate role.
+- Distinguish decoded-empty responses, missing fixtures, offline-unqueried access,
+  original connector/index failures and received data before processing failure.
+  The existing documented empty-string parsing incompatibility is reported in #114,
+  with failure receipts and no completed-access credit; this slice does not hide it.
+- Exercise original traces, saved readers, refresh, provider failures and citation
+  conflicts against the public Ackredit floor. Other sources/custom clients,
+  result breadth and MOLI record/consumer coordination remain #108 work.
+
 ## Observe PubChem compound, structure and BioAssay access (2026-10-04, #108/#112)
 
 - Extend the existing detached source-operation adapter to the three built-in

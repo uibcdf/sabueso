@@ -347,6 +347,10 @@ In order:
      caps/batches, PubMed pointers, declarative depositors, rejected inputs and
      received subsets on later failure. Unstated global versions remain unknown;
      assay summaries do not prove versions of every row or compound property.
+     BindingDB REST/fixture/mirror affinity queries are also observed, retaining
+     queries/cutoff bases, totals/caps/order, DOI/PubMed forms, declared origins and
+     mirror manifests/releases, including empty and failed queries. REST versions
+     remain unknown; the existing empty-string parsing issue is tracked in #114.
      Other sources/custom clients, further result types and complete resource
      bibliography remain coverage work with explicit gaps in the published 0.12.0
      scope (#108). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;

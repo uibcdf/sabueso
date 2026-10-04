@@ -76,6 +76,7 @@ single/batch structure lookup. Unreleased development also observes ChEMBL
 bioactivities, assay activities, molecules, indications and disease indications.
 It also observes PubChem compound properties, structure matches and BioAssay target
 rows with their summary/compound batches.
+BindingDB REST, fixture and installed-mirror affinity queries are also observed.
 Other sources and custom clients are explicitly `not_observed`; this is incomplete pipeline
 coverage. New sources must declare their observation coverage and test its gaps.
 
@@ -176,6 +177,40 @@ Its original publication id remains in the trace and bibliography-gap record.
 forms remain on observed response pages. Stored readers add no credit. Coverage is
 tested by `tests/core/test_pubchem_acquisition_offline.py`, also copied unchanged
 into installed-provider and future staged-artifact gates. Cards and schema are unchanged.
+
+BindingDB's unreleased adapter retains accession/cutoff/limit, the applied
+`bindingdb_record_order@1`, totals/caps, native response identities, retries and
+original DOI/PubMed pointer forms. Successful REST and fixture responses state no
+global version. The cutoff is recorded as `{value, unit}` in `cutoff_scope`, with
+its application basis: submitted to REST, applied to the mirror index, or not
+reapplied by the existing fixture client. Fixture selection behavior is unchanged.
+
+`MirrorBindingDBClient.ligands` is observed as `access: mirror` without HTTP
+requests or network attempts. Its release comes from the installed manifest, which
+is retained with its original URL, checksum, installation time and a content hash.
+This is client-manifest metadata, not live REST/version proof or independent index
+integrity verification. `retrieved_at` retains the client's installation-time basis;
+`started_at`/`finished_at` identify the current query. Mirror installation/update and
+client-constructor failures remain outside this query boundary.
+
+Decoded empty answers, absent fixtures, offline-unqueried queries and failures
+remain distinct. HTTP errors preserve BindingDB's native `ConnectorError`; a 404
+is not reinterpreted as record absence. Received data that fails local processing
+is `partial`, retaining the response identity and count basis before completion.
+Corrupt mirror reads retain known manifest metadata but get no completed-access
+credit. Saved readers add no credit. Card payloads, source mappings and schema are
+unchanged.
+
+Publication pointers use content-based citation identities, preserving differing
+source forms and fuller host references. Missing title/authors/year remain explicit;
+no DOI enrichment is performed. The verified BindingDB resource description is a
+separate citation. REST measurement origins remain unknown; the mirror's declared
+`data_source` is preserved without claiming that imported providers were consulted.
+The documented empty-string wire forms remain an existing parser limitation (#114):
+raw empty bodies and JSON empty strings fail, whereas decoded empty affinity lists
+are evaluated-empty access. Tests preserve that distinction pending the owner fix.
+See `tests/core/test_bindingdb_acquisition_offline.py`, also run unchanged in
+installed-provider CI and future staged gates.
 
 ## Deprecated (removed before 1.0)
 

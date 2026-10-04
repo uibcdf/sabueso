@@ -30,7 +30,9 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
+from sabueso.core.bindingdb_acquisition import note_response, observe
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -73,6 +75,7 @@ class OnlineBindingDBClient:
     def __init__(self, timeout: float = 60.0) -> None:
         self.timeout = timeout
 
+    @observe()
     def ligands(
         self,
         accession: str,
@@ -92,6 +95,7 @@ class OnlineBindingDBClient:
             raise ConnectorError(
                 f"BindingDB request for {accession} failed: {exc}"
             ) from exc
+        note_response(data)
         records = _affinities(data)
         if not records:
             raise RecordNotFoundError(f"BindingDB has no affinities for {accession}")
@@ -109,6 +113,7 @@ class FixtureBindingDBClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @observe(fixture=True)
     def ligands(
         self,
         accession: str,
@@ -120,11 +125,11 @@ class FixtureBindingDBClient:
                 f"BindingDB request for {accession} failed (simulated)"
             )
         path = self.directory / "bindingdb" / f"{accession}.json"
-        records = (
-            _affinities(json.loads(path.read_text(encoding="utf-8")))
-            if path.is_file()
-            else []
-        )
+        records = []
+        if path.is_file():
+            data = json.loads(path.read_text(encoding="utf-8"))
+            note_response(data)
+            records = _affinities(data)
         if not records:
             raise RecordNotFoundError(f"BindingDB has no affinities for {accession}")
         return _kept(accession, self.retrieved_at, records, limit)
@@ -134,6 +139,7 @@ class FixtureBindingDBClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_affinities(
     identifier: str,
     limit: int = DEFAULT_LIMIT,

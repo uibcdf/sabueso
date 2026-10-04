@@ -8,8 +8,8 @@ Traceability is a required Sabueso property. The first source-access slice also
 retains automatic acquisition traces for built-in UniProt, Europe PMC and RCSB PDB clients;
 its declared gaps prevent a claim of complete pipeline coverage.
 
-Unreleased development extends that boundary to the built-in ChEMBL and PubChem clients and
-adds detached attribution for `extract_literature_mentions`.
+Unreleased development extends that boundary to the built-in ChEMBL, PubChem and
+BindingDB clients and adds detached attribution for `extract_literature_mentions`.
 
 The application owns the Ackredit session:
 
@@ -199,6 +199,40 @@ with ackredit.session("compound lookup"):
     trace = answer["acquisition_trace"]
 ```
 
+## BindingDB queries (unreleased)
+
+REST, saved fixtures and installed-mirror affinity queries automatically retain
+detached traces through `get_affinities` and card acquisition. They record the
+accession, cutoff, record limit/order, retained/total counts, native response hashes,
+retries and original DOI/PubMed pointers. Archive reuse/replay preserves original
+retrieval times and identities without new network attempts.
+
+REST and fixtures do not declare a global release. A mirror query records
+`access: mirror`, its installed monthly release and original manifest with URL,
+checksum and installation time. These describe the installed release manifest;
+they do not prove the live service's version or independently verify the index at
+every read. The client's retrieval time is its installation time; event start/end
+times identify the query. Query tracing does not cover mirror installation/update.
+
+The cutoff is a `{value, unit}` quantity with its application basis. REST receives
+it as a query; the mirror applies it locally. The existing fixture client does not
+reapply the cutoff to its frozen response, and the trace states that explicitly.
+Scientific return values and exceptions remain unchanged.
+
+Decoded empty answers, unavailable fixtures, unqueried offline access, failures
+and data received before a processing failure are distinct. An HTTP 404 remains a
+connector failure under BindingDB's existing client contract. The documented
+empty-string forms still expose a parser limitation tracked in
+[Sabueso #114](https://github.com/uibcdf/sabueso/issues/114); those failures retain
+their receipts and receive no completed-data credit.
+
+BindingDB's resource-description paper and measurement DOI/PubMed pointers have
+separate roles. Incomplete pointers retain their own metadata-based identities,
+preserving fuller host citations and differing source forms. Missing bibliographic
+metadata stays unknown. Mirror-declared origins such as ChEMBL are declarations,
+not claims of direct access to those databases. REST origins remain unstated.
+Save the original acquisition/workflow record; payload-only readers add no credit.
+
 ## Dependency and failures
 
 Ackredit is a required runtime dependency. Importing Sabueso and entering an empty
@@ -266,6 +300,11 @@ The offline resource-description declarations were verified on 2026-10-02/04:
   The bibliographic issue year is 2025, distinct from online publication in 2024.
   This description also covers the BioAssay resource; it does not replace the
   experimental publications identified in received target rows.
+- BindingDB's [original resource article](https://www.bindingdb.org/rwd/bind/gkae1075.pdf),
+  *BindingDB in 2024: a FAIR knowledgebase of protein-small molecule binding data*,
+  provides its seven authors, DOI `10.1093/nar/gkae1075` and bibliographic issue
+  metadata (2025, 53/D1, D1633-D1644). The title's year and online publication date
+  differ from the issue year. It is separate from measurement DOI/PubMed pointers.
 
 Other resource descriptions are explicit gaps. Target publications and annotation
 providers also need their own citations; a service-description paper does not replace

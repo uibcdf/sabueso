@@ -66,15 +66,19 @@ composition. Unreleased development extends observation to ChEMBL's five logical
 operations, preserving page/chunk identities, retries, empty answers, unavailable
 fixtures, failures and received subsets. It also observes PubChem compound/structure
 lookups and BioAssay target queries, with native per-assay revisions, batches/caps,
-PubMed pointers and declarative depositor context. Resource descriptions and source-native
-primary citations remain separate; missing metadata stays explicit. The new
+PubMed pointers and declarative depositor context. BindingDB REST/fixture/mirror
+affinity observation retains query/cutoff bases, caps/order, native publication
+forms, original response identities and declared mirror manifests/releases. The
+existing empty-string parsing limitation remains #114 with explicit failure receipts.
+Resource descriptions and source-native primary citations remain separate;
+missing metadata stays explicit. The new
 `literal_uniprot_mention@1` returns original extraction attribution. Explicit intake
 and `ExtractionStore` preserve its original support and supplied runtime receipts;
 refresh does not rerun extraction. Scientific intake metadata starts unpublished
 schema 0.3.12; published 0.3.11 stays fixed. Payload-only refresh states the missing
 original runtime sidecar, and unknown fragment terms cannot bypass terms profiles.
 
-#108 is still partial: BindingDB and other built-ins/custom clients remain
+#108 is still partial: other built-ins/custom clients remain
 unobserved; arbitrary views/deck operations and full bibliography are not covered.
 Applications explicitly persist original runtime sidecars. Payload-only readers
 cannot reconstruct execution and add no credit. ChEMBL's existing release cache is
@@ -88,9 +92,9 @@ operational test, not disclosure of pilot scientific content, validation of ever
 source's availability, or a claim that every source is observed. Original notebooks
 remain unchanged. Their application must explicitly retain sidecars when adopted.
 
-The development checkpoint passes 1,450 offline cases in the required Python 3.14
+The development checkpoint passes 1,468 offline cases in the required Python 3.14
 editable environment (26 online cases deselected). A byte-checked clean diagnostic
-wheel passes 142 unchanged acquisition/attribution/extraction/intake integration cases
+wheel passes 160 unchanged acquisition/attribution/extraction/intake integration cases
 outside the checkout with public Ackredit 0.9.0, the public three-packet workflow
 and pip check. Ruff, frozen card shape, schema/registry, governance, dependency
 preflight and warning-failing Sphinx gates pass. The wheel check also rejects the
@@ -114,10 +118,13 @@ Evidence; MolSysSuite owns calculations, alignments and modeling interfaces.
 2. **Extend chemical observation (#108).** PubChem compound/structure/BioAssay
    observation is implemented, including native per-assay revisions, batches/caps,
    original PubMed pointers and distinct empty/rejected/unavailable/failure outcomes.
-   Assay summaries do not prove row/property versions. Next: BindingDB, based on exercised
-   use. Preserve source-specific queries, versions, caps, native citations and actual
-   local/network/archive routes; test empty/unavailable/unqueried/failed/partial
-   outcomes with the published Ackredit floor. Keep custom-client gaps explicit.
+   BindingDB REST/fixture/mirror affinity observation is also implemented, with
+   native response/manifest identities, cutoff/retrieval-time bases, limits/order,
+   DOI/PubMed forms and original empty/unavailable/unqueried/failed/partial outcomes.
+   Assay summaries do not prove row/property versions; mirror manifests do not
+   establish a live REST release. Keep custom-client gaps explicit. The existing
+   empty-string parser incompatibility remains #114. Further source slices follow
+   exercised use; the next scientific item is the explanation gap below.
 3. **Close one derived explanation gap (#91).** Disease groups should explain the
    selected sources, source-stated identities/hierarchy, alternatives and named
    grouping rule at exact pins without source requests or silent recomputation.

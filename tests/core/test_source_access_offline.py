@@ -47,6 +47,7 @@ from sabueso.tools.db import (
 
 ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 TRACED = {
+    "bindingdb.get_affinities",
     "pubchem.get_compound",
     "pubchem_bioassay.get_assays",
     "chembl.get_bioactivities",

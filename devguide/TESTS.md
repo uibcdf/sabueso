@@ -110,6 +110,15 @@ received-row credit after later failures. Public fixture cards, refresh, saved
 readers, nested collectors, custom-client gaps and provider failure are exercised.
 These tests also run unchanged outside the checkout with public Ackredit 0.9.0.
 
+`test_bindingdb_acquisition_offline.py` covers REST/fixture/mirror queries, native
+response/manifest identities, version and cutoff bases, caps/order, DOI/PubMed
+forms and host citation preservation, archive reuse/replay, retries, decoded-empty
+responses, missing fixtures, offline-unqueried access, original failures and partial
+received-data credit. Mirror corruption, public card storage/refresh, nested
+collectors, inert readers, provider failure and custom-client gaps are exercised.
+The empty-string source-compatibility limitation (#114) retains its failure receipts.
+These tests run unchanged in installed-provider and future staged gates.
+
 Local diagnostic wheels additionally pass
 `devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):
 module/resource bytes and membership must match the source, excluding generated

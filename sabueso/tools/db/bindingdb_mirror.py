@@ -31,6 +31,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterator, List
 
+from sabueso.core.bindingdb_acquisition import note_response, observe
 from sabueso.core.errors import ConnectorError, RecordNotFoundError, StorageError
 
 SOURCE = "BindingDB"
@@ -230,7 +231,9 @@ class MirrorBindingDBClient:
         info = json.loads((self.directory / "release.json").read_text("utf-8"))
         self.release = info["release"]
         self.installed_at = info["installed_at"]
+        self._release_info = info
 
+    @observe(mirror=True)
     def ligands(
         self, accession: str, cutoff: float | None = None, limit: int | None = None
     ) -> Dict[str, Any]:
@@ -280,6 +283,7 @@ class MirrorBindingDBClient:
                     "data_source": origin,
                 }
             )
+        note_response({"getLindsByUniprotsResponse": {"affinities": records}})
         if not records:
             raise RecordNotFoundError(
                 f"BindingDB {self.release} has no affinities for {accession}",

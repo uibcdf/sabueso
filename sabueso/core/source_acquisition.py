@@ -31,6 +31,7 @@ COVERAGE = {
         "ChEMBL",
         "PubChem",
         "PubChem BioAssay",
+        "BindingDB",
     ],
     "boundary": "built_in_entry_search_mentions_annotations_structure_chemical_clients",
     "other_sources_and_custom_clients": "not_observed",
@@ -278,7 +279,7 @@ def _finish(record, requests, fixture):
     record["finished_at"] = _clock()
     record["requests"] = deepcopy(requests)
     routes = {request["route"] for request in requests}
-    record["access"] = (
+    record["access"] = record.get("access") or (
         "fixture"
         if fixture
         else next(iter(routes))
@@ -361,6 +362,23 @@ def _credit(record):
             record["bibliography_gaps"].append(
                 "measurement_publication_ids_not_returned"
             )
+    if record["source"] == "BindingDB":
+        from .attribution_bibliography import bindingdb_citations
+
+        citations, gaps = bindingdb_citations(record.get("publications", []))
+        primary_ids = {item["id"] for item in citations}
+        primary_role = "measurement_primary_citation"
+        record["bibliography"].extend(citations)
+        record["bibliography_gaps"].extend(gaps)
+        if not citations:
+            record["bibliography_gaps"].append(
+                "measurement_publication_pointers_not_returned"
+            )
+        if any(
+            origin["basis"] == "not_stated"
+            for origin in record.get("record_origins", [])
+        ):
+            record["bibliography_gaps"].append("measurement_origin_not_stated")
     if record["operation"] == "annotations":
         record["bibliography_gaps"].append(
             "article_and_annotation_provider_citations_not_declared"
@@ -411,6 +429,13 @@ def _credit(record):
             "aids",
             "count_basis",
             "terminal_outcome",
+            "publications",
+            "record_origins",
+            "record_order",
+            "mirror",
+            "retrieved_at_basis",
+            "cutoff_scope",
+            "effective_limit",
         ):
             if key in record:
                 context[key] = deepcopy(record[key])
