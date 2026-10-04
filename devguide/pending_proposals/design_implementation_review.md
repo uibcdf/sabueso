@@ -35,11 +35,11 @@ decision replaced the original representation), **direction** (non-binding visio
 | Entity resolution before composition | Implemented for proteins, small molecules and MONDO-anchored diseases: `tools/resolve.py`, `resolver/entity_resolver.py`, `tools/card/disease.py`; resolution/identity/disease tests | EFO identities without a MONDO anchor remain #96; FASTA/structure-file intake needs a separate identity contract |
 | Source-supported identity and explicit ambiguity | Implemented: identity audits, source-stated cross-references, molecule InChIKey anchors, `core/entities.py`; unreleased deterministic disease grouping `@2` preserves all identity paths (#115) | Explicit historical `@1` retains its exposed lookup limitation. Similarity, names and equal residue numbers never authorize merging; sequence alignment belongs to MolSysMT |
 | First-class relationships | Implemented: `core/relationship_store.py`, supported predicates and qualifiers; relationship/measurement/curation tests | More predicates require a scientific use and support contract; storage re-evaluation stays #19 |
-| Derived knowledge with named rules | Implemented: structure inventory, oligomer, ligand classes, measurement groups, diseases, identity audits, knowledge state; pinned disease-group explanations `@2` with explicit historical `@1` in unreleased development | Explanation of every derived view remains partial (#91); other views, including knowledge states, still need pinned item support |
+| Derived knowledge with named rules | Implemented: structure inventory, oligomer, ligand classes, measurement groups, diseases, identity audits, knowledge state; unreleased pinned disease-group and knowledge-state explanations | Explanation of every derived view remains partial (#91); measurement/ligand classes and other derived items still need pinned support |
 | Reproducible decks | Implemented: `core/deck.py`, membership, exclusions, lineage, intersect/difference, comparison and pinned revision tests | General heterogeneous joins, rankings, neighbors and subgraphs remain directions, not missing promised API |
 | Physical quantities across boundaries | Implemented: `core/quantities.py`, PyUnitWizard quantities/seals, integrity and measurement tests | New fields and consumer exchanges must negotiate units; they cannot use bare values or computed field-name units |
 | History, pins and exact item reads | Implemented: `core/snapshot.py`, `knowledge_store.py`, migration/refresh and pin regression tests | Shared reference acceptance still depends on MOLI #3/#53; application-level runtime persistence is separate |
-| Known/conflicting/not stated/not queried/unavailable | Implemented: `core/knowledge_state.py`, source/enricher coverage and regression tests | Extend declared coverage with each source; an empty result remains limited to the actual query |
+| Known/conflicting/not stated/not queried/unavailable | Implemented: `core/knowledge_state.py`, source/enricher coverage, pinned classification-input explanations and regression tests; all UniProt versions retained (#116) | Extend declared coverage with each source; an empty result remains limited to the actual query. Enrichment reports do not record per-request assertion membership |
 | Two access levels | Implemented: source `get_*` envelopes and semantic resolution/views | Raw access does not by itself imply complete semantic, licensing or runtime observation coverage |
 
 ## Intended scientific functions
@@ -93,9 +93,9 @@ operational test, not disclosure of pilot scientific content, validation of ever
 source's availability, or a claim that every source is observed. Original notebooks
 remain unchanged. Their application must explicitly retain sidecars when adopted.
 
-The development checkpoint passes 1,511 offline cases in the required Python 3.14
+The development checkpoint passes 1,545 offline cases in the required Python 3.14
 editable environment (26 online cases deselected). A byte-checked clean diagnostic
-wheel passes 201 unchanged acquisition/attribution/extraction/intake/explanation integration cases
+wheel passes 235 unchanged acquisition/attribution/extraction/intake/explanation integration cases
 outside the checkout with public Ackredit 0.9.0, the public three-packet workflow
 and pip check. Ruff, frozen card shape, schema/registry, governance, dependency
 preflight and warning-failing Sphinx gates pass. The wheel check also rejects the
@@ -134,7 +134,12 @@ Evidence; MolSysSuite owns calculations, alignments and modeling interfaces.
    retains every identity path, leaves contradictory or unfinished branches
    ungrouped and preserves alternative labels/hierarchy paths. Explicit `@1`
    reproduces historical lookup and partial explanation at original pins.
-   Other derived-view explanations, including knowledge states, remain #91 work.
+   `Card.explain_knowledge_state` now retains exact classification inputs and
+   selected/alternative scientific support at original pins, separately from
+   source coverage and request outcomes. Missing support is partial, including
+   rows lost through missing assertions; absence never becomes a negative assertion.
+   #116 fixes the multi-version UniProt crash without choosing a release. Other
+   derived-view explanations, including measurement/ligand classes, remain #91 work.
 4. **Receive consumer acceptance (#71/#53, MOLI #22/#3/#36).** Implement a real
    persistent consumer exercise in the consumer repository when ready. This is a
    coordination dependency, not missing Nextia code to add inside Sabueso.

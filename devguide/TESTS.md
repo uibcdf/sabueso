@@ -132,6 +132,15 @@ source/version differences, qualifier alternatives and all hierarchy paths. Expl
 default `@2` never chooses an ambiguous target. These tests also run unchanged
 outside the checkout in installed-provider CI and future staged gates.
 
+`test_knowledge_state_explanation_offline.py` checks exact row/classification
+parity, selected and competing support, conflicts, UniProt absence/relationship
+coverage, unqueried curation, empty/failure/cut/partial reports, area-specific
+Europe PMC counts, original report locators and historical item pins. Missing
+field/relationship/conflict support stays partial rather than hiding behind a
+derived absence. Original UniProt versions survive reversed support order (#116).
+Selectors are digested; readers stay inert. The tests run unchanged outside the
+checkout with the public provider and in future staged installed-package gates.
+
 Local diagnostic wheels additionally pass
 `devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):
 module/resource bytes and membership must match the source, excluding generated

@@ -276,7 +276,12 @@ In order:
    `disease_grouping@2`/`disease_group_explanation@2` (#115) retain all identity
    paths and leave conflicting or unfinished branches ungrouped. Explicit `@1`
    selection preserves historical behavior without replacing stored cards.
-   Next, as use asks: other views' derived items, including knowledge states.
+   Unreleased `Card.explain_knowledge_state` now traces exact classification
+   inputs, selected/alternative scientific support, coverage and request reports
+   at original pins (`knowledge_state_explanation@1`). Missing support is partial;
+   absence and missing queries never become negative assertions. #116 retains
+   multiple original UniProt versions without changing the working state rule.
+   Next, as use asks: other views' derived items, including measurement/ligand classes.
 4. **Literature beyond manual curation (#92).**
    - Released in 0.7.0: how each statement entered (`acquisition`: database, curation, rule
      extraction, model extraction, validation).

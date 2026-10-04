@@ -314,7 +314,7 @@ Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
 CI/release tests, alongside `test_literature_intake_offline.py` for original support
 and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
-The current checkpoint passes 1,511 source offline cases and 201 unchanged installed
+The current checkpoint passes 1,545 source offline cases and 235 unchanged installed
 integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
@@ -384,3 +384,10 @@ visible. Default `disease_grouping@2`/`disease_group_explanation@2` (#115) retai
 all identity paths and leaves contradictory or unfinished branches ungrouped.
 Explicit `grouping_rule="disease_grouping@1"` preserves historical lookup and its
 partial explanation at the unchanged card pin. Neither rule acquires new credit.
+
+`Card.explain_knowledge_state` (#91/#116) reads exact classification branches,
+selected/alternative support, source coverage and matched request reports at the
+original card pin. Scientific support is separate from query outcome/count reports;
+per-request assertion membership is explicitly not recorded. Missing support remains
+partial, and negative assertions are never invented. The reader changes no payload,
+fetches no source and adds no credit. Multiple original UniProt versions are retained.

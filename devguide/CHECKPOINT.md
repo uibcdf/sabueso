@@ -74,6 +74,15 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   never select identity. Explicit `grouping_rule="disease_grouping@1"` reproduces
   historical lookup/explanation, including its exposed ambiguity, at original pins.
   Alternative labels and hierarchy paths remain visible; stored schema is unchanged.
+- Knowledge-state explanation (#91): `Card.explain_knowledge_state` reads exact
+  classification inputs at the card pin under `knowledge_state_explanation@1`.
+  Selected fields, alternatives/conflicts, source-supported relationships, UniProt
+  coverage inference and declared enrichment report/count scopes stay distinct.
+  Missing support remains partial even when no classified row survives; report
+  locators point to the original pinned card. No negative assertion, per-request
+  assertion membership, source access or new credit is invented. The #116 integrity
+  fix retains all supporting UniProt versions instead of crashing; the working
+  classifications and `knowledge_state@4` remain unchanged.
 - Design/architecture review (#112): `pending_proposals/design_implementation_review.md`
   maps original plans and scientific functions to code/tests, remaining work, owners
   and bounded acceptance criteria. Peptides, much of the clinical layer and persistent
@@ -83,7 +92,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   A stale incremental wheel is rejected; a clean installed wheel passes all 89
   unchanged integration cases and the public three-packet saved-reader workflow.
   Published Conda artifacts and their qualification receipts remain immutable.
-- Local validation: 1,511 offline cases and 201 installed integration cases pass
+- Local validation: 1,545 offline cases and 235 installed integration cases pass
   with public Ackredit 0.9.0. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote

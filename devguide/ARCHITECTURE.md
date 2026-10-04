@@ -60,6 +60,10 @@ do not implement project routing, EventLedger persistence or strict commit polic
      versioned rule that produced it, and is never stored as a SourceAssertion.
    - `core.structure_explanation` explains an inventory item and every member of its
      group through pinned relationships and SourceAssertions (`Deck.explain`, #91).
+   - Unreleased `Card.explain_disease` and `Card.explain_knowledge_state` trace
+     stored disease identity and state classification at exact pins. Scientific
+     support, coverage inference and request reports retain separate bases; missing
+     support remains explicit. Readers never fetch, mutate cards or add credit.
 7. **Decks** (`core.deck`). Collections of cards that record:
    - why each card is in (membership);
    - which candidates were left out;

@@ -187,6 +187,17 @@ shows how to use them.
   `disease_group_explanation@1`, including its exposed lookup ambiguity. No source
   is asked. `MONDO:<seven-digit id>` and `mondo:MONDO:<seven-digit id>`
   select groups, never names or cross-ontology aliases.
+  Unreleased `explain_knowledge_state(knowledge_area=None, knowledge_source=None)`
+  explains all state rows or an exact area/source selection at the current or
+  loaded historical card pin (`knowledge_state_explanation@1`). Selected fields,
+  alternatives/conflicts and counted UniProt relationships have original support;
+  absence/curation coverage and matched enrichment reports are classification
+  inputs, not negative assertions. Report locators use the pin, field path and
+  index; load that card to read them. Related scientific knowledge is separate
+  context with per-request membership explicitly `not_recorded`.
+  Missing support is `partial`, including fields/relationships whose source can
+  no longer be identified. A missing row is `not_on_card`, never evidence of absence.
+  No source is asked, mappings rerun, card changed or execution credit added.
 - **Other.** `to_deck()`, `expand(predicate, ...)` (see `sabueso.expand`).
 
 ## Deck

@@ -1,5 +1,31 @@
 # Sabueso — Decision Log
 
+## Explain pinned knowledge-state inputs without inventing absence support (2026-10-04, #91/#116)
+
+- Add `Card.explain_knowledge_state(knowledge_area=None, knowledge_source=None)`
+  under `knowledge_state_explanation@1`. Collect support descriptors in the actual
+  `knowledge_state@4` branches; do not duplicate or change their classification.
+  Select exact area/source names, or all rows, through ArgDigest.
+- Explain selected fields with their source-specific assertions, complete selected
+  support, alternatives, selection rules and conflicts. Counted UniProt predicates
+  retain exact relationships and support. Missing support is partial even when its
+  loss removes the classified row or makes a predicate appear not stated.
+- UniProt absent-field inference and unqueried curation retain their stored anchor,
+  source coverage and route. They are classification decisions, never negative
+  SourceAssertions or project Evidence. Do not claim reconstructed source history.
+- Enrichment states retain exactly matched reports, original versions, count-field
+  selection/fallback and coverage outcomes. A locator identifies the stored report
+  by card pin, field path and index; it is not an invented KnowledgeStore item id.
+  Related scientific support is separate source/area context: per-request assertion
+  membership is not recorded and counts are not rebuilt from nearby assertions.
+- The reproducible #116 defect unpacked several supporting UniProt versions into
+  one value. Join all stated versions deterministically, retaining original unknown
+  values in support. This removes a crash, preserves working outputs and keeps the
+  existing `knowledge_state@4`; no source version is selected by order or recency.
+- These read-time views change no scientific serialization, card pin, acquisition
+  or execution credit. Published cards/artifacts/receipts remain immutable. Other
+  derived-view explanations stay #91 work.
+
 ## Versioned deterministic disease grouping with explicit historical compatibility (2026-10-04, #115/#91)
 
 - Adopt `disease_grouping@2` and `disease_group_explanation@2` as the unreleased

@@ -41,6 +41,36 @@ source:
 Each row carries the source release and the basis. An absence is reported as a fact
 about a source, never as evidence against something (rule `knowledge_state@4`).
 
+In unreleased development, explain the rows at the current card snapshot:
+
+```python
+explanation = card.explain_knowledge_state(
+    knowledge_area="annotations.function", knowledge_source="UniProt"
+)
+print(explanation["status"], explanation["card_ref"])
+for item in explanation["rows"]:
+    print(item["row"], item["classification_inputs"])
+```
+
+Omit either selector to include every matching area or source. Names match exactly;
+an unknown name returns `not_on_card`, not a statement about the underlying entity.
+`knowledge_state_explanation@1` preserves the existing `knowledge_state@4` rows.
+Selected fields and counted UniProt relationships retain pinned SourceAssertions,
+alternatives and conflicts. A field inferred not stated uses the stored UniProt
+anchor and declared source coverage; unqueried curation uses its recorded route.
+Neither creates a negative assertion.
+
+Enrichment states keep exactly matched query reports, versions, counts and failure/
+truncation details. Each report's `locator` names the card pin, field path and index;
+read it from `store.load(locator["card_ref"])`. Related scientific support is separate
+`stored_knowledge_context`: its per-request membership is `not_recorded`, and the
+reported count is not reconstructed from nearby assertions. Missing stored support
+produces `partial`, including support whose loss removes a classified row.
+
+Load an original pinned card to explain its historical state. The operation fetches
+no source, changes no card and adds no execution credit. Several supporting UniProt
+versions are all retained; no newer version silently replaces the original support.
+
 ## Structures
 
 A protein's experimental structures are `has_structure` relationships, and its predicted

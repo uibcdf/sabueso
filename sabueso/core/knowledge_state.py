@@ -139,13 +139,19 @@ def _supporting_sources(card: Any, ids: List[str]) -> Dict[str, set]:
     return by_source
 
 
-def knowledge_state(card: Any) -> Dict[str, Any]:
+def knowledge_state(card: Any, *, _support: list | None = None) -> Dict[str, Any]:
     """``{"rows": [...], "rule": {...}}``; see the module docstring."""
     from sabueso.mappings.uniprot import STATED_FIELDS, STATED_PREDICATES
 
     from .relationship_store import make_derivation
 
     rows: List[Dict[str, Any]] = []
+
+    def emit(row, **inputs):
+        rows.append(row)
+        if _support is not None:
+            _support.append(inputs)
+
     conflicting = {c.get("field") for c in card.quality.get("conflicts", [])}
     fields = {}
     for path in card.list_fields():
@@ -158,14 +164,21 @@ def knowledge_state(card: Any) -> Dict[str, Any]:
         sources = _supporting_sources(card, fields[path]["source_assertion_ids"])
         for source, releases in sorted(sources.items()):
             value = fields[path].get("value")
-            rows.append(
+            emit(
                 _row(
                     path,
                     source,
                     "conflicting" if path in conflicting else "known",
                     "; ".join(sorted(r for r in releases if r)) or None,
                     len(value) if isinstance(value, list) else None,
-                )
+                ),
+                basis="selected_field",
+                field_path=path,
+                source_assertion_ids=[
+                    identifier
+                    for identifier in fields[path]["source_assertion_ids"]
+                    if source in _supporting_sources(card, [identifier])
+                ],
             )
 
     is_protein = card.meta.get("entity_type") == "protein"
@@ -182,12 +195,21 @@ def knowledge_state(card: Any) -> Dict[str, Any]:
     if is_protein and (uniprot or "identifiers.uniprot" in fields):
         release = None
         if "identifiers.uniprot" in fields:
-            (release,) = _supporting_sources(
+            releases = _supporting_sources(
                 card, fields["identifiers.uniprot"]["source_assertion_ids"]
-            ).get("UniProt", {None}) or {None}
+            ).get("UniProt", set())
+            release = "; ".join(sorted(r for r in releases if r)) or None
         # What UniProt could have stated and did not.
         for path in sorted(STATED_FIELDS - set(fields)):
-            rows.append(_row(path, "UniProt", "not_stated", release or None, 0))
+            emit(
+                _row(path, "UniProt", "not_stated", release or None, 0),
+                basis="uniprot_field_not_stored",
+                field_path=path,
+                consultation_sources=uniprot,
+                anchor_field="identifiers.uniprot"
+                if "identifiers.uniprot" in fields
+                else None,
+            )
         relationships = card.relationship_store.to_list()
         for predicate in sorted(STATED_PREDICATES):
             count = sum(
@@ -197,14 +219,26 @@ def knowledge_state(card: Any) -> Dict[str, Any]:
                 and "UniProt"
                 in _supporting_sources(card, r.get("source_assertion_ids") or [])
             )
-            rows.append(
+            emit(
                 _row(
                     f"relationships.{predicate}",
                     "UniProt",
                     "known" if count else "not_stated",
                     release or None,
                     count,
-                )
+                ),
+                basis="uniprot_relationship_count",
+                relationship_ids=[
+                    r["id"]
+                    for r in relationships
+                    if r["predicate"] == predicate
+                    and "UniProt"
+                    in _supporting_sources(card, r.get("source_assertion_ids") or [])
+                ],
+                consultation_sources=uniprot,
+                anchor_field="identifiers.uniprot"
+                if "identifiers.uniprot" in fields
+                else None,
             )
 
     if is_protein:
@@ -214,8 +248,10 @@ def knowledge_state(card: Any) -> Dict[str, Any]:
 
         for path in CONTEXT_FIELDS:
             if path not in fields:
-                rows.append(
-                    _row(path, "Literature", "not_queried", None, route="curation")
+                emit(
+                    _row(path, "Literature", "not_queried", None, route="curation"),
+                    basis="curation_field_not_stored",
+                    field_path=path,
                 )
 
     enrichments = card.quality.get("enrichments") or []
@@ -227,13 +263,31 @@ def knowledge_state(card: Any) -> Dict[str, Any]:
             records = [
                 r for r in enrichments if all(r.get(k) == v for k, v in match.items())
             ]
-            rows.append(_enrichment_row(area, source, records))
+            emit(
+                _enrichment_row(area, source, records),
+                basis="enrichment_reports",
+                match=match,
+                enrichment_indexes=[
+                    i
+                    for i, r in enumerate(enrichments)
+                    if all(r.get(k) == v for k, v in match.items())
+                ],
+            )
     else:
         by_source: Dict[str, List[Dict[str, Any]]] = {}
         for record in enrichments:
             by_source.setdefault(record.get("source") or "unknown", []).append(record)
         for source, records in sorted(by_source.items()):
-            rows.append(_enrichment_row("records", source, records))
+            emit(
+                _enrichment_row("records", source, records),
+                basis="enrichment_reports",
+                match={"source": source},
+                enrichment_indexes=[
+                    i
+                    for i, r in enumerate(enrichments)
+                    if (r.get("source") or "unknown") == source
+                ],
+            )
 
     return {
         "rows": rows,

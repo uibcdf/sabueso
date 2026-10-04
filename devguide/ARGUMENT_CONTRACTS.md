@@ -64,6 +64,11 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   historical compatibility). Unknown versions and non-string selectors are refused.
   `explain_disease` takes this selector as a keyword-only argument, preserving its
   existing positional `skip_digestion` argument.
+  Unreleased `explain_knowledge_state` digests `knowledge_area` and
+  `knowledge_source`: None selects all; a nonempty string selects an exact native
+  row name with surrounding whitespace stripped. No case/name alias matching or
+  source lookup occurs. Unknown selectors return no matching row; malformed shapes
+  and empty strings are refused.
 - **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,
   `group_by_rank`, `expand`, `explain`.
   `explain` accepts `structure_ref=None` for membership, or `pdb:<four-character id>`

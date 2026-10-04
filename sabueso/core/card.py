@@ -436,6 +436,24 @@ class Card:
 
         return knowledge_state(self)
 
+    @arg_digest()
+    def explain_knowledge_state(
+        self,
+        knowledge_area: str | None = None,
+        knowledge_source: str | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Explain stored state rows at this card's pin (``knowledge_state_explanation@1``).
+
+        Optional selectors match exact area/source names. Preserve classification
+        inputs, selected and alternative support, conflicts and query outcomes.
+        Reports of absence or unqueried areas never become negative assertions.
+        No acquisition, card mutation or new execution credit occurs.
+        """
+        from .knowledge_state_explanation import explain_knowledge_state
+
+        return explain_knowledge_state(self, knowledge_area, knowledge_source)
+
     def entities(self) -> Dict[str, Any]:
         """The glossary of molecular entities this card mentions, each once (#52)."""
         from .entities import build_entities
