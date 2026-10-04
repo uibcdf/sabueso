@@ -8,7 +8,7 @@ Traceability is a required Sabueso property. The first source-access slice also
 retains automatic acquisition traces for built-in UniProt, Europe PMC and RCSB PDB clients;
 its declared gaps prevent a claim of complete pipeline coverage.
 
-Unreleased development extends that boundary to the built-in ChEMBL clients and
+Unreleased development extends that boundary to the built-in ChEMBL and PubChem clients and
 adds detached attribution for `extract_literature_mentions`.
 
 The application owns the Ackredit session:
@@ -162,6 +162,43 @@ retrieval times and response identities without new network attempts. ChEMBL's
 native document metadata contributes primary citations, with missing authors and
 other fields left unknown. Original readers add no execution credit.
 
+## PubChem queries (unreleased)
+
+Compound property lookups, structure matches (SMILES/InChI) and BioAssay target
+queries automatically retain detached traces. Public `get_compound`,
+`get_structure_match` and `get_assays` envelopes keep their raw scientific records.
+Their traces preserve queries, POST-body hashes, received response hashes, retries,
+original retrieval times and archive reuse/replay without new network attempts.
+
+BioAssay additionally records summary/compound batches, retained/total target-row
+counts, the row-order rule and caps. Native assay `Version`, `Revision` and
+`LastDataChange` are preserved per received summary. They do not describe a global
+PubChem release or prove the version of every target row. Compound and structure
+responses without versions explicitly say `not_stated`.
+
+A failing later batch retains a `partial` event with the completed responses and
+terminal outcome while the original exception still escapes. Its count means
+received target rows before completion. Empty responses, HTTP absence, rejected
+structure input, missing fixtures and offline unqueried access remain distinct.
+Rejected input adds no completed-data-access credit.
+
+PubChem's resource-description citation and the measurements' PubMed pointers have
+different roles. Unknown publication metadata remains a bibliography gap; no lookup
+fills it. Source-stated depositor names/ids are retained, but do not claim those
+databases were consulted or their citations recovered.
+Pointer citations retain separate content-based identities, preserving a fuller
+publication citation already credited by the host under the original PubMed id.
+Save the original trace or
+workflow attribution to retain these references; payload-only readers add no credit.
+
+```python
+from sabueso.tools.db.pubchem import FixturePubChemClient, get_compound
+
+with ackredit.session("compound lookup"):
+    answer = get_compound("5978", client=FixturePubChemClient("temp_data"))
+    trace = answer["acquisition_trace"]
+```
+
 ## Dependency and failures
 
 Ackredit is a required runtime dependency. Importing Sabueso and entering an empty
@@ -223,6 +260,12 @@ The offline resource-description declarations were verified on 2026-10-02/04:
 - Sabueso's software metadata comes from its `CITATION.cff`, using the project
   concept DOI and the executing package's version. A preceding release's version DOI
   is not attached to an unreleased checkout.
+- PubChem's [citation guidelines](https://pubchem.ncbi.nlm.nih.gov/citations.html)
+  recommend *PubChem 2025 update*, DOI `10.1093/nar/gkae1059`. Its 13-author list and
+  volume/issue/pages come from the [original article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11701573/).
+  The bibliographic issue year is 2025, distinct from online publication in 2024.
+  This description also covers the BioAssay resource; it does not replace the
+  experimental publications identified in received target rows.
 
 Other resource descriptions are explicit gaps. Target publications and annotation
 providers also need their own citations; a service-description paper does not replace

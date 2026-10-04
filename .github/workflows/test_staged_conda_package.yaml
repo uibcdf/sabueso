@@ -166,11 +166,12 @@ jobs:
           cp "$GITHUB_WORKSPACE/tests/core/test_source_acquisition_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_rcsb_acquisition_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_chembl_acquisition_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/core/test_pubchem_acquisition_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_rule_literature_extraction_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_literature_intake_offline.py" "$client_dir/"
           cp -R "$GITHUB_WORKSPACE/temp_data" "$client_dir/temp_data"
           cd "$client_dir"
-          python -m pytest test_attribution_offline.py test_source_acquisition_offline.py test_rcsb_acquisition_offline.py test_chembl_acquisition_offline.py test_rule_literature_extraction_offline.py test_literature_intake_offline.py \
+          python -m pytest test_attribution_offline.py test_source_acquisition_offline.py test_rcsb_acquisition_offline.py test_chembl_acquisition_offline.py test_pubchem_acquisition_offline.py test_rule_literature_extraction_offline.py test_literature_intake_offline.py \
             -m "not online" --receptor=ci
           python "$GITHUB_WORKSPACE/examples/ackredit_pilot/run.py" \
             --fixtures temp_data --output pilot

@@ -24,8 +24,15 @@ _aggregated_sources: ContextVar[tuple] = ContextVar(
 FORMAT = "sabueso.source_acquisition@1"
 TRACE_FORMAT = "sabueso.acquisition_trace@1"
 COVERAGE = {
-    "sources": ["UniProt", "Europe PMC", "RCSB PDB", "ChEMBL"],
-    "boundary": "built_in_entry_search_mentions_annotations_structure_chembl_clients",
+    "sources": [
+        "UniProt",
+        "Europe PMC",
+        "RCSB PDB",
+        "ChEMBL",
+        "PubChem",
+        "PubChem BioAssay",
+    ],
+    "boundary": "built_in_entry_search_mentions_annotations_structure_chemical_clients",
     "other_sources_and_custom_clients": "not_observed",
 }
 
@@ -341,6 +348,19 @@ def _credit(record):
             record["bibliography_gaps"].append(
                 "indication_reference_metadata_not_declared"
             )
+    if record["source"] == "PubChem BioAssay":
+        from .attribution_bibliography import pubchem_citations
+
+        citations, gaps = pubchem_citations(record.get("publication_ids", []))
+        primary_ids = {item["id"] for item in citations}
+        primary_role = "measurement_primary_citation"
+        record["bibliography"].extend(citations)
+        record["bibliography_gaps"].extend(gaps)
+        record["bibliography_gaps"].append("assay_depositor_bibliography_not_declared")
+        if not citations:
+            record["bibliography_gaps"].append(
+                "measurement_publication_ids_not_returned"
+            )
     if record["operation"] == "annotations":
         record["bibliography_gaps"].append(
             "article_and_annotation_provider_citations_not_declared"
@@ -385,6 +405,12 @@ def _credit(record):
             "truncated",
             "missing",
             "incomplete",
+            "assays",
+            "publication_ids",
+            "row_order",
+            "aids",
+            "count_basis",
+            "terminal_outcome",
         ):
             if key in record:
                 context[key] = deepcopy(record[key])

@@ -49,6 +49,14 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   sidecars; inconsistent support, different subjects and unknown fragment terms
   under a terms profile are refused. Broader statements and article metadata/terms
   remain pending; extraction never becomes human curation.
+- PubChem observation (#108): compound properties, structure matches and BioAssay
+  target queries retain requests/POST identities, native per-assay revisions,
+  summary/property batches, row caps/order, PubMed pointers, declarative depositor
+  context, retries, original archive identities and received subsets on later
+  failure. Empty, absent, rejected, unavailable and unqueried outcomes stay distinct.
+  Compound/structure versions and missing bibliography remain explicit unknowns;
+  assay revisions are not global release or per-row/property proof. Scientific
+  payloads/exceptions and schema 0.3.12 are unchanged.
 - Design/architecture review (#112): `pending_proposals/design_implementation_review.md`
   maps original plans and scientific functions to code/tests, remaining work, owners
   and bounded acceptance criteria. Peptides, much of the clinical layer and persistent
@@ -58,7 +66,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   A stale incremental wheel is rejected; a clean installed wheel passes all 89
   unchanged integration cases and the public three-packet saved-reader workflow.
   Published Conda artifacts and their qualification receipts remain immutable.
-- Local validation: 1,415 offline cases and 107 installed integration cases pass
+- Local validation: 1,450 offline cases and 142 installed integration cases pass
   with public Ackredit 0.9.0. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote

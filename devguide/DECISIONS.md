@@ -1,5 +1,27 @@
 # Sabueso — Decision Log
 
+## Observe PubChem compound, structure and BioAssay access (2026-10-04, #108/#112)
+
+- Extend the existing detached source-operation adapter to the three built-in
+  online/fixture routes, preserving scientific results, exceptions and schemas.
+  Trace native summary revisions per assay, including zero; never infer a global
+  database release or row/property version from these revisions.
+- Preserve POST input identities, CSV/summary/property response identities, caps,
+  row-order rules, retries, local/archive routes and original retrieval times.
+  A later failing batch retains received source subsets and the terminal outcome;
+  partial counts explicitly describe received rows before completion.
+- Separate PubChem's verified resource description from PubMed measurement pointers
+  and source-stated depositors. Missing publication metadata and depositor
+  bibliography remain gaps. A named depositor is not a directly consulted resource.
+  Incomplete pointers use content-based citation identities, preserving fuller host
+  citations under original PubMed ids without provider metadata conflicts.
+- Distinguish evaluated-empty answers, HTTP absence, rejected input, unavailable
+  fixtures and unqueried offline access. Rejected input receives no completed-data
+  credit. Readers add no execution credit; runtime traces stay outside card hashes.
+- Run unchanged regression cases against the public Ackredit floor outside the
+  checkout and extend receiving CI/future staged gates. BindingDB, custom clients,
+  broader result coverage and shared MOLI record policy remain open work.
+
 ## Complete exact-artifact 0.12.0 publication and archival (2026-10-04, #110)
 
 - Select qualified `7739317` for the immutable 0.12.0 tag. Its `py_1` archive matches

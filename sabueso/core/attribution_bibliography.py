@@ -7,6 +7,33 @@ Metadata sources are recorded in docs/content/user/attribution.md.
 from copy import deepcopy
 
 _DESCRIPTIONS = {
+    "PubChem": {
+        "id": "doi:10.1093/nar/gkae1059",
+        "type": "article",
+        "title": "PubChem 2025 update",
+        "authors": [
+            "Kim, Sunghwan",
+            "Chen, Jie",
+            "Cheng, Tiejun",
+            "Gindulyte, Asta",
+            "He, Jia",
+            "He, Siqian",
+            "Li, Qingliang",
+            "Shoemaker, Benjamin A",
+            "Thiessen, Paul A",
+            "Yu, Bo",
+            "Zaslavsky, Leonid",
+            "Zhang, Jian",
+            "Bolton, Evan E",
+        ],
+        "year": 2025,
+        "journal": "Nucleic Acids Research",
+        "volume": "53",
+        "number": "D1",
+        "pages": "D1516-D1525",
+        "doi": "10.1093/nar/gkae1059",
+        "url": "https://doi.org/10.1093/nar/gkae1059",
+    },
     "ChEMBL": {
         "id": "doi:10.1093/nar/gkad1004",
         "type": "article",
@@ -159,8 +186,37 @@ _DESCRIPTIONS = {
 
 
 def descriptions(source):
-    item = _DESCRIPTIONS.get(source)
+    item = _DESCRIPTIONS.get("PubChem" if source == "PubChem BioAssay" else source)
     return [deepcopy(item)] if item else []
+
+
+def pubchem_citations(publication_ids):
+    """PubMed pointers remain incomplete citations, never DOI/name enriched."""
+    from .snapshot import canonical_json, digest
+
+    citations, gaps = [], []
+    for pubmed in publication_ids:
+        # A source-stated pointer cannot overwrite a fuller citation already used
+        # by the host under its publication identifier.
+        identifier = "sabueso:pubchem-primary-citation:" + digest(
+            canonical_json({"pubmed_id": pubmed})
+        )
+        citations.append(
+            {
+                "id": identifier,
+                "type": "article",
+                "url": f"https://pubmed.ncbi.nlm.nih.gov/{pubmed}/",
+            }
+        )
+        gaps.append(
+            {
+                "publication_ref": "pubmed:" + pubmed,
+                "citation_id": identifier,
+                "reason": "measurement_citation_metadata_not_stated",
+                "fields": ["title", "authors", "year"],
+            }
+        )
+    return citations, gaps
 
 
 def chembl_citations(documents):

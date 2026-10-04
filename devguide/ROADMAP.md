@@ -239,7 +239,7 @@ Open, pilot-related:
 The maintainer-requested [implementation review](pending_proposals/design_implementation_review.md)
 (#112, 2026-10-04) compares original phases, conceptual schema, architecture, scientific
 potential and use cases against code/tests. The foundations are implemented; complete
-runtime coverage, extraction intake/replay, derived explanations, consumer acceptance,
+runtime coverage, broader literature extraction, derived explanations, consumer acceptance,
 peptides/suppliers and much of the clinical layer remain partial or pending. Illustrative
 graph/query APIs are directions, not implied delivery obligations. Its bounded priority
 proposal complements the two routes below; #101 remains postponed.
@@ -342,6 +342,11 @@ In order:
      document citations, retries and received-page subsets remain observable even
      when the original exception escapes. Client-reported cached releases are
      explicitly not per-page release proof.
+     Unreleased development also covers PubChem compound properties, structure
+     matches and BioAssay target queries, including native per-assay revisions,
+     caps/batches, PubMed pointers, declarative depositors, rejected inputs and
+     received subsets on later failure. Unstated global versions remain unknown;
+     assay summaries do not prove versions of every row or compound property.
      Other sources/custom clients, further result types and complete resource
      bibliography remain coverage work with explicit gaps in the published 0.12.0
      scope (#108). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;

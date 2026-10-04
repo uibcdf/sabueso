@@ -74,6 +74,8 @@ released in 0.12.0 covers the built-in online and fixture clients for UniProt en
 and search, Europe PMC mentions and explicit article annotations, and RCSB
 single/batch structure lookup. Unreleased development also observes ChEMBL
 bioactivities, assay activities, molecules, indications and disease indications.
+It also observes PubChem compound properties, structure matches and BioAssay target
+rows with their summary/compound batches.
 Other sources and custom clients are explicitly `not_observed`; this is incomplete pipeline
 coverage. New sources must declare their observation coverage and test its gaps.
 
@@ -148,6 +150,32 @@ verified independently for each page. Cached release metadata must not be read a
 proof that every reused page belongs to that release. Native document metadata is
 preserved without DOI enrichment; missing authors and indication bibliography stay
 explicit gaps. `tests/core/test_chembl_acquisition_offline.py` covers this boundary.
+
+PubChem's unreleased adapter observes built-in online and fixture `compound`,
+`structure` and BioAssay `assays` operations. Compound properties and structure
+matches declare `source_version: {value: null, basis: not_stated}`. BioAssay retains
+native `Version`, `Revision` (including zero) and `LastDataChange` per received assay
+summary; these are assay revisions, never a global database release or proof of the
+version of every CSV row/compound property. Incomplete revision pairs remain unknown.
+
+Decoded response identities and transport records preserve POST-body identities,
+CSV rows for the requested target, summary/property chunks, row-order rules and
+caps. A later batch failure retains received pages and their PubMed pointers as
+`partial`, with the terminal outcome and original exception; its count explicitly
+means received target rows before completion. Received empty rows, HTTP absence,
+rejected structure input, unavailable fixtures and unqueried offline access remain
+distinct. Rejected input is not credited as completed source-data access. No raw
+scientific return or exception is changed.
+
+PubChem's verified resource description is separate from measurement PubMed pointers.
+Missing pointer metadata and depositor bibliography remain explicit.
+Pointer citations use content-based identities, so an incomplete source pointer
+cannot replace a fuller host citation under the same PubMed publication identifier.
+Its original publication id remains in the trace and bibliography-gap record.
+`SourceName` and `SourceID` do not imply direct access to that depositor. Full native summary
+forms remain on observed response pages. Stored readers add no credit. Coverage is
+tested by `tests/core/test_pubchem_acquisition_offline.py`, also copied unchanged
+into installed-provider and future staged-artifact gates. Cards and schema are unchanged.
 
 ## Deprecated (removed before 1.0)
 

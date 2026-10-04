@@ -102,6 +102,14 @@ explicit missing-sidecar gaps, alternative fragments, empty fragment scope, prov
 failure, exact subject/refused inconsistent closure and terms-profile boundaries.
 It also runs unchanged in installed-provider lanes and future staged artifact gates.
 
+`test_pubchem_acquisition_offline.py` covers compound/structure/BioAssay traces,
+native per-assay revisions (including zero), caps/chunks, original PubMed pointers,
+depositor context, POST-body identity, archive reuse/replay, retries, evaluated-empty
+access, rejected inputs, missing fixtures, offline unqueried access and partial
+received-row credit after later failures. Public fixture cards, refresh, saved
+readers, nested collectors, custom-client gaps and provider failure are exercised.
+These tests also run unchanged outside the checkout with public Ackredit 0.9.0.
+
 Local diagnostic wheels additionally pass
 `devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):
 module/resource bytes and membership must match the source, excluding generated

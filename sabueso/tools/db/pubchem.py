@@ -10,6 +10,8 @@ from urllib.parse import quote, urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.pubchem_acquisition import note_response, observe
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -61,6 +63,7 @@ class OnlinePubChemClient:
     def __init__(self, timeout: float = 30.0) -> None:
         self.timeout = timeout
 
+    @observe("compound")
     def compound(self, cid: str) -> Dict[str, Any]:
         url = f"{PUBCHEM_PUG}/{cid}/property/{quote(PROPERTIES, safe=',')}/JSON"
         retrieval = stamp("PubChem")
@@ -75,8 +78,10 @@ class OnlinePubChemClient:
             ) from exc
         except (URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"PubChem request for {cid} failed: {exc}") from exc
+        note_response(url, data)
         return {"retrieved_at": retrieval.value, "record": data}
 
+    @observe("structure_match")
     def structure(self, notation: str, structure: str) -> Dict[str, Any]:
         """The compounds PubChem states a structure is (#93): PubChem standardizes the
         structure and matches it to its compounds, so the answer is PubChem's
@@ -109,6 +114,7 @@ class OnlinePubChemClient:
             ) from exc
         except (URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"PubChem structure lookup failed: {exc}") from exc
+        note_response(url, body)
         return {"retrieved_at": retrieval.value, **_matched(body)}
 
 
@@ -142,6 +148,7 @@ class FixturePubChemClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @observe("compound", fixture=True)
     def compound(self, cid: str) -> Dict[str, Any]:
         if str(cid) in self.failing:
             raise ConnectorError(f"PubChem request for {cid} failed (simulated)")
@@ -154,6 +161,7 @@ class FixturePubChemClient:
                 return {"retrieved_at": self.retrieved_at, "record": data}
         raise RecordNotFoundError(f"PubChem has no compound {cid}")
 
+    @observe("structure_match", fixture=True)
     def structure(self, notation: str, structure: str) -> Dict[str, Any]:
         """A saved structure lookup (``<directory>/pubchem/structures.json``)."""
         path = self.directory / "pubchem" / "structures.json"
@@ -194,6 +202,7 @@ def create_compound_card_online(cid: str, retrieved_at: str) -> Any:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_compound(identifier: str, client: Any = None, skip_digestion: bool = False):
     """The PubChem property table of a compound, by CID, in a provenance envelope."""
     response = online(client, OnlinePubChemClient).compound(identifier)
@@ -208,6 +217,7 @@ def get_compound(identifier: str, client: Any = None, skip_digestion: bool = Fal
 
 
 @arg_digest()
+@capture_acquisitions
 def get_structure_match(
     structure: str,
     notation: str = "smiles",

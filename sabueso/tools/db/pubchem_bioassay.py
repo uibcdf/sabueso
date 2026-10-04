@@ -43,6 +43,8 @@ from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.pubchem_acquisition import note_response, observe
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -119,8 +121,10 @@ class OnlinePubChemBioAssayClient:
         except (URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"PubChem request {path} failed: {exc}") from exc
         time.sleep(PAUSE)
+        note_response(path, data)
         return data
 
+    @observe("assays")
     def assays(self, accession: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
         retrieval = stamp("PubChem BioAssay")
         # One request for every result of the target, in every assay (#98).
@@ -179,6 +183,7 @@ class FixturePubChemBioAssayClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @observe("assays", fixture=True)
     def assays(self, accession: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
         if accession in self.failing:
             raise ConnectorError(f"PubChem request for {accession} failed (simulated)")
@@ -198,6 +203,7 @@ class FixturePubChemBioAssayClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_assays(
     identifier: str,
     limit: int = DEFAULT_LIMIT,

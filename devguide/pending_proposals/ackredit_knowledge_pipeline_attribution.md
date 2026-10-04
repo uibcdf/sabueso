@@ -314,7 +314,7 @@ Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
 CI/release tests, alongside `test_literature_intake_offline.py` for original support
 and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
-The current checkpoint passes 1,415 source offline cases and 107 unchanged installed
+The current checkpoint passes 1,450 source offline cases and 142 unchanged installed
 integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
@@ -323,8 +323,29 @@ and two composition records with available attribution, plus original sidecars.
 Private content stays outside public reports and repositories; original notebooks
 remain unchanged.
 
-The design review (#112) makes PubChem/BindingDB and further sources/results,
+The design review (#112) makes BindingDB and further sources/results,
 complete bibliography and MOLI record/consumer boundaries explicit remaining work.
 Local wheel testing uncovered stale incremental `build/lib` modules (#113); a
 source-byte/membership guard rejects them before installed receiving qualification.
 Published 0.12.0's independently qualified public Conda artifact is unaffected.
+
+## PubChem development slice after 0.12.0 (#108)
+
+Built-in online/fixture compound, structure-match and BioAssay target operations are
+observed. Native per-assay version/revision/date metadata (including zero) is
+preserved without inventing global or per-row versions. Source-described depositors
+are contextual declarations, not directly consulted providers. Resource-description
+citations and original PubMed pointers retain distinct roles; absent publication
+metadata and depositor bibliography remain explicit gaps.
+
+Queries, POST-body identities, CSV/summary/property hashes, row totals/caps/order,
+chunks, retries and archive reuse/replay retain original retrieval times. Received
+subsets survive a later failing batch, with the terminal outcome and counts explicitly
+scoped to received target rows before completion. Empty, absent, rejected-input,
+unavailable-fixture and offline-unqueried outcomes remain distinct. Rejected input
+does not receive completed-data credit. Scientific payloads, exceptions and schema
+0.3.12 are unchanged; saved readers add no credit.
+
+`test_pubchem_acquisition_offline.py` is copied unchanged into installed-provider
+CI and future staged gates. These component-local traces do not define the shared
+MOLI ProjectRecord/Recorda contract. BindingDB remains the next chemical source slice.
