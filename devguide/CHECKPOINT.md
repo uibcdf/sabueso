@@ -100,10 +100,20 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   context stays explicit; stored identity locators invent no assertion membership.
   Missing support is partial, missing items are not inactivity, and readers add
   no acquisition or credit. Scientific rules and stored schema are unchanged;
-  ligand deck/site aggregation and other derived explanations remain pending.
-  Existing activity-only unresolved-copy diagnostics omit absent originals (#117);
-  exact raw pointers remain visible, and the correction is separately tracked.
-- Local validation: 1,574 offline cases and 264 installed integration cases pass
+  other derived explanations remain pending.
+  The #117 fix retains missing activity-only originals as `original_not_on_card`
+  with exact raw pointers. Later provenance/statement resolution removes the
+  singleton diagnostic without changing groups, voters or classes. Historical
+  pinned reads retain their original diagnostic/support, with no acquisition or credit.
+- Ligand crossing/site explanations (#91): `Card.explain_ligand_site` retains
+  actual overlap classes, selected annotated fields/conflicts and structural
+  instance support. `Card.explain_ligand` retains exact protein/molecule pins,
+  source-stated identity, class/name choices, sites, structure flags and native
+  deck snapshot/membership context. Duplicate members remain explicit and partial;
+  missing support never becomes absence. Readers acquire nothing or add credit.
+  The existing source-record counter labelled measurements is reported in #118;
+  explanations state its actual basis alongside nested group/record counts.
+- Local validation: 1,606 offline cases and 296 installed integration cases pass
   with public Ackredit 0.9.0. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote

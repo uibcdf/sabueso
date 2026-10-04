@@ -215,10 +215,30 @@ shows how to use them.
   is `partial`; a missing item is `not_on_card`, never inactivity. These readers fetch
   nothing, change no card or credit and do not resolve aliases or explain ligand
   deck/site aggregation. The existing scientific rules and stored schema are unchanged.
-  Existing `measurement_identity@1` omits an unresolved activity-only copy pointer
-  from its diagnostic list when the original is absent (#117). The explanation
-  preserves that rule output and the exact raw pointer; an empty diagnostic list
-  therefore does not prove that every declared copy was resolved.
+  Unreleased `explain_ligand_site(ligand_site_ref)` selects the native `REL_` id
+  from `ligand_sites()` (`ligand_site_explanation@1`). It retains the actual
+  `annotated_site_overlap@2` result, selected annotation fields, alternatives,
+  conflicts, original support, numbering and stored structural-instance context.
+  No stored annotation/overlap is not external absence; absent instance data keeps
+  `spans_chains=None`, and source relevance statements remain separate.
+  Unreleased `explain_ligand(molecule_ref, deck, include_indirect=False, thresholds=None)`
+  selects the exact SmallMoleculeCard id from `ligands(deck)`
+  (`ligand_deck_explanation@1`). Protein and molecule inputs keep distinct pins.
+  Actual identity links, class selection, names, measured groups, sites, structure
+  flags and deck membership remain visible. Duplicate deck members are retained
+  as multiple `items` with partial status, never selected by snapshot/order.
+  The deck's native snapshot id and metadata locate its supplied contents; they
+  are not invented KnowledgeStore deck references. Load a saved named/pinned deck
+  separately for historical reads. Missing support is partial, missing items are
+  not absence, and readers acquire nothing or add credit.
+  The existing ligand view's `bioactivity.measurements` counts source records
+  (#118); this explanation states that basis and retains nested group/record counts.
+  Correcting that public counter is separate work; site/class policies are unchanged.
+  Missing activity-only originals retain the exact `copy_of` pointer with
+  `original_not_on_card` in unresolved-copy diagnostics (#117, unreleased fix).
+  A later provenance or statement join removes that singleton diagnostic. This
+  describes final local grouping, not external absence or proof that a named
+  original was acquired; original pointers remain in pinned relationship support.
 - **Other.** `to_deck()`, `expand(predicate, ...)` (see `sabueso.expand`).
 
 ## Deck

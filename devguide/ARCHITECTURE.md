@@ -69,8 +69,13 @@ do not implement project routing, EventLedger persistence or strict commit polic
      threshold quantities retain units; copies, ambiguity and discordance remain
      explicit. Whole-card candidate/glossary inputs are context with exact support;
      stored identity metadata has locators, not invented assertion membership.
-     These readers preserve the scientific rules/schema. Deck and ligand-site
-     aggregation explanations remain #91 work.
+     These readers preserve the scientific rules/schema.
+   - Unreleased `Card.explain_ligand_site` and `Card.explain_ligand` explain
+     annotated overlaps and the protein/molecule deck crossing. Exact multi-card
+     support, actual identity/class/name choices, annotated fields/conflicts,
+     structure instances and native deck snapshot/membership metadata remain
+     explicit. Duplicate deck members are not selected silently. Other derived
+     views remain #91 work; the ligand record/group counter correction is #118.
 7. **Decks** (`core.deck`). Collections of cards that record:
    - why each card is in (membership);
    - which candidates were left out;

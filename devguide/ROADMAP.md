@@ -284,7 +284,12 @@ In order:
    Unreleased measurement-group and molecule bioactivity-class explanations now
    retain actual joins, precision, copy/voter decisions, original quantities and
    exact pinned source support. Whole-card candidate/glossary context remains
-   explicit. Next, as use asks: ligand deck/site aggregation and other derived items.
+   explicit. Unreleased `Card.explain_ligand_site` and `Card.explain_ligand` now
+   trace actual annotated overlap and protein/molecule crossing support at distinct
+   card pins, with native deck snapshot/membership context. Duplicate members,
+   absence/numbering/instance limits and original source conflicts remain explicit.
+   Other derived explanations remain open; ligand record/group count correction
+   is #118. Missing activity-only copy diagnostics are corrected in #117.
 4. **Literature beyond manual curation (#92).**
    - Released in 0.7.0: how each statement entered (`acquisition`: database, curation, rule
      extraction, model extraction, validation).

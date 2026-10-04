@@ -148,8 +148,21 @@ cross-group discordance, direct-assay filtering and non-default quantity thresho
 Ranges, single-point concentrations, unknown units, not-determined measurements,
 ambiguity/candidate support, consistency flags, stored identity locators, missing
 lineage, historical pins, ArgDigest and inert detached readers have regressions.
+The #117 guards cover missing activity-only originals, successful exact pointers,
+assay fallback and later statement resolution, both current and historical.
+Diagnostic completeness changes neither groups/classes nor original copy support;
+readers remain inert, and later acquisition cannot resolve an older pinned card.
 The file runs unchanged with public Ackredit outside the checkout in installed
 CI and future staged gates. No new source fixture or stored card field is introduced.
+
+`test_ligand_explanation_offline.py` checks public TcTIM/HsTIM native site/crossing
+parity, distinct protein/molecule pins, source-stated identity and actual class/name
+choices, quantity thresholds, numbering/absent-annotation distinctions and
+instance-level spanning. Relevance statements, selected/competing field support,
+missing assertions/conflict support, duplicate deck members, historical card/deck
+reads, exact selectors and detached inert readers have regressions. The existing
+record-based ligand counter is explicitly exposed (#118). The file runs unchanged
+outside the checkout with public Ackredit and in future staged installed gates.
 
 Local diagnostic wheels additionally pass
 `devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):

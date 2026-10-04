@@ -53,6 +53,8 @@ def ligands_view(
     deck: Any,
     include_indirect: bool = False,
     thresholds: Dict[str, Any] | None = None,
+    *,
+    _support=None,
 ) -> Dict[str, Any]:
     """Per molecule of ``deck``: its bioactivity on ``card`` and its structures.
 
@@ -75,7 +77,8 @@ def ligands_view(
 
     items: List[Dict[str, Any]] = []
     covered: Set[str] = set()
-    for molecule_card in deck.cards:
+    decisions = []
+    for index, molecule_card in enumerate(deck.cards):
         records = _records(molecule_card)
         measured = [by_molecule[r] for r in sorted(records) if r in by_molecule]
         seen = {s: f for r in records for s, f in in_structures.get(r, {}).items()}
@@ -87,13 +90,23 @@ def ligands_view(
         covered |= records
         best = min(measured, key=lambda m: CLASS_ORDER.index(m["class"]), default=None)
         name = molecule_card.get("names.canonical_name")
-        name = (name or {}).get("value") or next(
+        name_link = next(
             (
-                rel["qualifiers"].get("name")
+                rel
                 for rel in molecule_card.relationships("same_as")
                 if (rel.get("qualifiers") or {}).get("name")
             ),
             None,
+        )
+        name_basis = (
+            "names.canonical_name"
+            if (name or {}).get("value")
+            else "same_as_name"
+            if name_link
+            else "not_stated"
+        )
+        name = (name or {}).get("value") or (
+            name_link["qualifiers"]["name"] if name_link else None
         )
         shown = sorted(r for r in records if r.startswith(("chembl:", "pdb.ligand:")))
         text, source = molecule_label(name, shown, molecule_card.id)
@@ -139,11 +152,31 @@ def ligands_view(
                 ],
             }
         )
+        if _support is not None:
+            decisions.append(
+                {
+                    "deck_index": index,
+                    "item": items[-1],
+                    "records": sorted(records),
+                    "measured_refs": [m["molecule_ref"] for m in measured],
+                    "best_class_ref": best["molecule_ref"] if best else None,
+                    "structure_flags": seen,
+                    "site_relationship_ids": [
+                        site["relationship_id"] for site in own_sites
+                    ],
+                    "name_basis": name_basis,
+                    "name_relationship_id": name_link["id"]
+                    if name_basis == "same_as_name"
+                    else None,
+                }
+            )
     items.sort(key=_rank)
     # Structure ligands count as molecules of the protein only where the PDB declares them
     # subject of investigation; additives and ions stay out of ``unmatched``.
     of_interest = {r for r, flags in in_structures.items() if any(flags.values())}
     referenced = set(by_molecule) | set(excluded) | of_interest
+    if _support is not None:
+        _support.update(decisions=decisions, bioactivity=bio, site_lookup=sites)
     return {
         "items": items,
         "unmatched": sorted(referenced - covered),

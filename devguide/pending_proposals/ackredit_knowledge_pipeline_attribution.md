@@ -314,7 +314,7 @@ Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
 CI/release tests, alongside `test_literature_intake_offline.py` for original support
 and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
-The current checkpoint passes 1,574 source offline cases and 264 unchanged installed
+The current checkpoint passes 1,606 source offline cases and 296 unchanged installed
 integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
@@ -398,4 +398,17 @@ Copies, ambiguity, precision quantities, thresholds, raw units, ranges, single-p
 concentrations, consistency checks and discordance remain visible. Whole-card
 candidate/glossary inputs are explicit context; stored identity metadata has locators,
 not invented per-assertion membership. These readers add no acquisition or credit and
-change no scientific serialization. Ligand deck/site aggregation remains separate work.
+change no scientific serialization.
+The #117 diagnostic fix retains missing activity-only originals and exact pointers;
+later provenance/statement resolution removes the singleton diagnostic. Groups,
+voters/classes and current/historical source support remain unchanged, without
+new acquisition or credit. Local grouping never proves external source absence.
+
+`Card.explain_ligand_site` and `Card.explain_ligand` (#91) extend inert pinned
+readers to annotated overlap and the protein/molecule deck crossing. Source-stated
+identity, actual class/name choices, annotations/conflicts, structural instances
+and native deck snapshot/membership metadata retain distinct support. Duplicate
+deck members remain explicit and partial; source absence is never invented.
+The source-record counter labelled measurements is separately tracked in #118;
+the explanation states its actual basis beside nested group/record counts.
+These readers change no scientific schema or attribution and add no execution credit.

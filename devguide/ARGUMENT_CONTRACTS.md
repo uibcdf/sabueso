@@ -76,6 +76,12 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   case changes, whitespace normalization or identifier resolution. It reuses
   `include_indirect` and quantity-bearing `thresholds` contracts. A well-formed
   missing native item returns `not_on_card`, never a negative measurement.
+  Unreleased `explain_ligand_site` digests `ligand_site_ref`: an exact local
+  `REL_` id from `ligand_sites()`. Source ligand identifiers, groups and pinned
+  fragments are refused. `explain_ligand` reuses `molecule_ref` with its caller
+  contract: the exact `sabueso:small_molecule:<namespace>:<id>` from `ligands(deck)`;
+  a bioactivity source-record key is refused instead of silently returning an
+  empty crossing. It reuses `deck`, `include_indirect` and quantity `thresholds`.
 - **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,
   `group_by_rank`, `expand`, `explain`.
   `explain` accepts `structure_ref=None` for membership, or `pdb:<four-character id>`

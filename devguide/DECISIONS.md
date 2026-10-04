@@ -1,5 +1,43 @@
 # Sabueso — Decision Log
 
+## Explain stored ligand crossings and site classes at distinct card pins (2026-10-04, #91/#118)
+
+- Add `Card.explain_ligand_site(ligand_site_ref)` under
+  `ligand_site_explanation@1` and `Card.explain_ligand(molecule_ref, deck, ...)`
+  under `ligand_deck_explanation@1`. Exact native site ids and SmallMoleculeCard
+  ids/options are digested. No alias resolution or source acquisition occurs.
+- Retain actual `annotated_site_overlap@2` outputs with complete selected field
+  support, alternatives/conflicts, numbering and structure-instance context.
+  No stored annotation/overlap is not source absence; aggregate contacts never
+  imply instance-level chain spanning. Relevance statements retain source roles.
+- Collect actual deck-crossing identity/class/name choices; protein and molecule
+  inputs retain distinct relationship/assertion pins and original source versions.
+  Nested measurement/site explanations keep their own rules and quantity policies.
+  Duplicate deck members remain multiple partial items instead of selecting a pin.
+- Record native deck snapshot/membership/metadata context without inventing a
+  KnowledgeStore reference. Load the original saved deck separately for historical
+  reads. Readers fetch nothing, mutate no card/deck/attribution and add no credit.
+- Report the reproduced source-record counter labelled measurements in #118.
+  Preserve the existing public view here and state its actual counting basis;
+  nested bioactivity support retains group/record counts. Its correction is separate
+  work. Scientific class policies, stored schema and published artifacts are unchanged.
+
+## Retain unresolved activity-only copy pointers without changing grouping (2026-10-04, #117)
+
+- The provenance branch previously skipped an absent activity-only original when
+  no assay pointer was present. Record the existing `original_not_on_card`
+  diagnostic with the exact `copy_of` pointer before that early exit.
+- Keep the final singleton filter: later provenance/statement resolution removes
+  the diagnostic. Successful exact pointers, assay recovery, candidate selection,
+  grouping edges, class voters and copy-only fallback are unchanged.
+- This completes an existing diagnostic contract, so retain `measurement_identity@1`
+  and `bioactivity_class@3`. No scientific grouping or classification policy changes;
+  stored card schema and published artifacts remain immutable.
+- An unresolved pointer describes the local stored card, never negative source
+  knowledge. A statement join does not prove that the named original was acquired.
+  Exact pointers/source support survive current and historical explanations without
+  new acquisition, assertions, card mutation or execution credit.
+
 ## Explain actual measurement joins and bioactivity voters at card pins (2026-10-04, #91)
 
 - Add `Card.explain_measurement(measurement_ref)` and

@@ -106,6 +106,31 @@ others, mostly crystallisation additives and ions, are listed in
 catalytic metal may not be flagged. Pass `structure_ligands="all"` to keep every ligand. Resolve a single molecule with
 `sabueso.resolve_molecule_card("pdb.ligand:BTS")` (or `chembl:<id>`, `inchikey:<key>`).
 
+The unreleased readers explain that crossing and a stored site:
+
+```python
+item = card.ligands(deck)["items"][0]
+support = card.explain_ligand(item["molecule_ref"], deck)
+for explained in support["items"]:
+    print(explained["identity"], explained["bioactivities"], explained["sites"])
+sites = card.ligand_sites()["items"]
+if sites:  # When the card also holds ligand-site statements.
+    site_support = card.explain_ligand_site(sites[0]["relationship_id"])
+```
+
+Protein and molecule support keep distinct pins, original source versions and
+actual identity, class and name choices. Deck membership and its snapshot describe
+the supplied deck; load the original saved deck separately for historical reads.
+Duplicate members are retained as multiple partial items. The existing ligand
+counter called `bioactivity.measurements` counts source records (#118); the
+explanation states that basis beside the nested measurement-group/record counts.
+
+Site support retains selected annotated fields, alternatives/conflicts and stored
+structure instances. No annotated overlap is not external absence or proof of
+binding elsewhere. Missing instance data keeps `spans_chains=None`; relevance
+statements from different sources remain separate. These readers fetch nothing,
+change no cards/decks and add no execution credit.
+
 
 ## A second source: BindingDB
 
@@ -137,14 +162,18 @@ default: confirmatory rows with a value first, then other rows with a value, the
 without one (`pubchem_row_order@1`), and a cut is reported. Most are copies of ChEMBL or BindingDB data, and PubChem says so: each
 assay names its depositor and the depositor's assay id.
 
-- A copy is grouped with its original (`copy_of`), never counted as a confirmation,
-  and never decides a class, because PubChem's table drops the relation (`>`).
+- A copy joins its original through `copy_of` and does not vote alongside non-copy
+  records. When only copies are included, the group uses an explicit copy-only
+  fallback; these records remain copies, never independent confirmation. PubChem's
+  table can drop the original relation (`>`).
 - A copy whose original the card lacks leads to it: the ChEMBL assay it names is
   fetched from ChEMBL. This recovers measurements a truncated or target-based query
   missed.
 - `card.explain_bioactivity(item_key)["measurement_identity"]["unresolved_copies"]`
   (unreleased) retains the grouping engine's unresolved-copy diagnostics. The
   ordinary bioactivity view retains its existing groups, ambiguity and review output.
-  An existing limitation (#117) omits absent activity-only pointers from that list;
-  their raw `copy_of` is retained in pinned relationship support. An empty list
-  does not prove that every declared copy was resolved.
+  The unreleased #117 fix also reports missing activity-only originals, retaining
+  the exact pointer and `original_not_on_card`. A later provenance or statement
+  join removes that singleton diagnostic. This describes grouping on the stored
+  card; it does not establish absence from an external source or prove that the
+  named original was acquired. Raw `copy_of` remains in pinned relationship support.

@@ -209,6 +209,13 @@ def measurement_groups(card: Any, *, _support=None) -> Dict[str, Any]:
             }
             continue
         if not copy.get("assay"):
+            unresolved_copies.append(
+                {
+                    "record": rid,
+                    "copy_of": copy,
+                    "reason": "original_not_on_card",
+                }
+            )
             continue
         in_assay = [
             o

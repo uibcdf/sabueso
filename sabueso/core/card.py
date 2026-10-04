@@ -718,6 +718,19 @@ class Card:
         return ligand_sites_view(self)
 
     @arg_digest()
+    def explain_ligand_site(
+        self, ligand_site_ref: str, skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """Explain a native site relationship's class and contacts at this card pin.
+
+        ``ligand_site_explanation@1`` retains selected annotations, their support
+        and structure-instance context without acquisition, mutation or new credit.
+        """
+        from .ligand_explanation import explain_ligand_site
+
+        return explain_ligand_site(self, ligand_site_ref)
+
+    @arg_digest()
     def ligands(
         self,
         deck: Any,
@@ -729,6 +742,25 @@ class Card:
         from .ligands import ligands_view
 
         return ligands_view(self, deck, include_indirect, thresholds)
+
+    @arg_digest()
+    def explain_ligand(
+        self,
+        molecule_ref: str,
+        deck: Any,
+        include_indirect: bool = False,
+        thresholds: Dict[str, Any] | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Explain this protein's crossing with an exact molecule card id in a deck.
+
+        ``ligand_deck_explanation@1`` retains protein/molecule pins, source-stated
+        identities, measured classes, structural/site support and deck membership.
+        Duplicate members remain explicit; no identifier resolution or acquisition occurs.
+        """
+        from .ligand_explanation import explain_ligand
+
+        return explain_ligand(self, molecule_ref, deck, include_indirect, thresholds)
 
     @arg_digest()
     def compare_ligands(

@@ -176,6 +176,83 @@ def test_copy_only_group_is_explicitly_a_fallback_not_confirmation():
     )
 
 
+@pytest.mark.parametrize("historical", [False, True])
+@pytest.mark.parametrize("mode", ["missing", "exact", "assay", "statement"])
+def test_activity_only_copy_diagnostic_tracks_final_resolution_and_original_pin(
+    mode, historical, tmp_path, monkeypatch
+):
+    """Missing pointers remain explicit; successful/later joins keep their classes (#117)."""
+    from sabueso.tools.db import _http
+
+    card = synthetic()
+    pointer = {"source": "ChEMBL", "activity_id": 9}
+    original = None
+    if mode == "exact":
+        original = record(card, 9)
+    elif mode == "assay":
+        original = record(card, 10)
+        pointer["assay"] = "assay:10"
+    elif mode == "statement":
+        original = record(card, 10, source="BindingDB")
+    copied = record(card, 2, source="PubChem", copy_of=pointer)
+    copied_id = copied["id"]
+    if historical:
+        store = sabueso.KnowledgeStore(tmp_path / "copy-pointers.db")
+        pin = store.save(card)
+        # A later exact original cannot retroactively resolve the old snapshot.
+        record(card, 9, 200000)
+        store.save(card)
+        card = store.load(pin)
+    before = card.to_dict()
+    monkeypatch.setattr(
+        _http, "_urlopen", lambda *a, **k: pytest.fail("no acquisition")
+    )
+    with ackredit.session("stored copy diagnostics"):
+        credited = ackredit.get_attribution().to_dict()
+        identity = measurement_groups(card)
+        measurement = card.explain_measurement(copied_id)
+        answer = card.explain_bioactivity(MOLECULE)
+        assert ackredit.get_attribution().to_dict() == credited
+    expected = (
+        [{"record": copied_id, "copy_of": pointer, "reason": "original_not_on_card"}]
+        if mode == "missing"
+        else []
+    )
+    assert identity["unresolved_copies"] == expected
+    assert measurement["diagnostics"]["unresolved_copies"] == expected
+    assert answer["measurement_identity"]["unresolved_copies"] == expected
+    assert identity["rule"]["rule"] == "measurement_identity@1"
+    assert answer["classification"]["rule"] == "bioactivity_class@3"
+    (group,) = answer["groups"]
+    assert group["class"] == answer["item"]["class"] == "active"
+    assert answer["item"]["measurement_count"] == 1
+    if original is None:
+        assert identity["groups"] == []
+        assert group["basis"] == "copies_only" and group["voters"] == [copied_id]
+        assert measurement["group"]["records"] == [copied_id]
+    else:
+        assert set(group["records"]) == {copied_id, original["id"]}
+        assert group["voters"] == [original["id"]]
+        assert measurement["group"]["basis"] == [
+            "statement" if mode == "statement" else "provenance"
+        ]
+    link = next(
+        r for r in measurement["records"] if r["relationship"]["id"] == copied_id
+    )
+    (assertion,) = link["source_assertions"]
+    assert assertion["asserted_value"]["copy_of"] == pointer
+    assert assertion["version"] == "original-PubChem"
+    if historical:
+        assert store.relationship(link["relationship_ref"]) == link["relationship"]
+        assert (
+            store.source_assertion(assertion["source_assertion_ref"])["asserted_value"][
+                "copy_of"
+            ]
+            == pointer
+        )
+    assert card.to_dict() == before
+
+
 def test_disagreement_within_one_measurement_is_inconclusive():
     card = synthetic()
     record(card, 1, 10000, measurement={"stated_value": "10000"})
