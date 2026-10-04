@@ -168,6 +168,14 @@ comparisons, exact counted ids, historical source support and ArgDigest have gua
 The file runs unchanged
 outside the checkout with public Ackredit and in future staged installed gates.
 
+`test_chemical_identity_acquisition_offline.py` covers CCD batches and both UniChem
+lookup methods: normalized iterable queries, POST/wire/decoded identities, original
+times and archive references, retries, empty/missing-fixture/offline/failure outcomes,
+received subsets before later failures, native source forms and citation roles.
+Threaded capture context, molecular resolution, ligand-deck input/result pins,
+detached readers, unknown versions, provider/pin failures and custom gaps have guards.
+The file runs unchanged in public-provider CI and future staged installed gates.
+
 Local diagnostic wheels additionally pass
 `devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):
 module/resource bytes and membership must match the source, excluding generated

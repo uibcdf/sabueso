@@ -10,6 +10,8 @@ its declared gaps prevent a claim of complete pipeline coverage.
 
 Unreleased development extends that boundary to the built-in ChEMBL, PubChem and
 BindingDB clients and adds detached attribution for `extract_literature_mentions`.
+It also observes PDB CCD and UniChem chemical identity access, molecular resolution
+and ligand-deck construction.
 
 The application owns the Ackredit session:
 
@@ -142,6 +144,40 @@ partial or changed references cannot overwrite earlier ones in the same workflow
 The original per-entry metadata remains in the trace. A structure packet's stored
 support credits the RCSB description; save the intake or enclosing workflow record
 to retain its original primary-publication references as well.
+
+## Chemical identity queries (unreleased)
+
+CCD component batches and UniChem's InChIKey/source-id lookups retain their original
+queries, POST identities, response hashes, retrieval times, retries and archive
+reuse/replay. CCD batches retain an outcome for each requested component. A missing
+fixture is unavailable, not a source-empty answer; mixed batches credit completed
+access only. Received components before a later GraphQL or fixture read failure
+remain partial while the original exception escapes.
+
+Source versions remain `not_stated`. CCD release status/dates and UniChem compound
+ids do not prove release versions. UniChem's linked source records are retained as
+its statements; their presence does not establish direct access to those databases.
+The trace states the client's existing first-returned-compound selection basis.
+Original identity and source-selection behavior are unchanged.
+
+`resolve_molecule_card` retains card/resolution traces. `ligand_deck` retains
+`deck.acquisition_trace`, including its native snapshot id, result card pins and
+input protein pin. Save the original JSON beside the scientific objects, just as
+for a protein card:
+
+```python
+with ackredit.session("ligand intake"):
+    deck = sabueso.ligand_deck(protein_card, unichem=True)
+
+Path("ligands.acquisition.json").write_text(
+    json.dumps(deck.acquisition_trace, indent=2)
+)
+```
+
+`protein_card` is supplied by the application. Payload-only saved decks have no
+acquisition trace; ordinary deck operations create no trace or credit. Resource
+descriptions cite CCD and its RCSB distribution service, and UniChem itself, without
+claiming experimental primary citations or access to UniChem's linked providers.
 
 ## ChEMBL queries (unreleased)
 
@@ -277,6 +313,17 @@ global database release.
 
 The offline resource-description declarations were verified on 2026-10-02/04:
 
+- CCD's [official description](https://www.wwpdb.org/data/ccd) cites
+  *The chemical component dictionary: complete descriptions of constituent
+  molecules in experimentally determined 3D macromolecules in the Protein Data Bank*,
+  DOI `10.1093/bioinformatics/btu789`. The six authors and issue metadata come from
+  [its publication record](https://pubmed.ncbi.nlm.nih.gov/25540181/): 2015, 31(8),
+  1274–1278, distinct from the 2014 online publication date. The RCSB description
+  below separately describes the API distributing the CCD records.
+- UniChem's [original resource article](https://pmc.ncbi.nlm.nih.gov/articles/PMC3616875/),
+  *UniChem: a unified chemical structure cross-referencing and identifier tracking
+  system*, and [publication record](https://pubmed.ncbi.nlm.nih.gov/23317286/)
+  provide its ten authors, DOI `10.1186/1758-2946-5-3` and issue metadata (2013, 5(1), 3).
 - UniProt's [recommended citation](https://www.uniprot.org/help/publications), with
   complete metadata from the [original paper](https://academic.oup.com/nar/article/53/D1/D609/7902999):
   *UniProt: the Universal Protein Knowledgebase in 2025*, DOI `10.1093/nar/gkae1010`.

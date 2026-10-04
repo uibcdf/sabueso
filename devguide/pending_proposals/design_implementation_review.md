@@ -79,6 +79,15 @@ refresh does not rerun extraction. Scientific intake metadata starts unpublished
 schema 0.3.12; published 0.3.11 stays fixed. Payload-only refresh states the missing
 original runtime sidecar, and unknown fragment terms cannot bypass terms profiles.
 
+Chemical identity observation now covers CCD batches and both UniChem lookup
+methods, retaining normalized POST/query identities, native forms, original archive
+times, retries, distinct empty/unavailable/unqueried/failed outcomes and completed
+subsets on later failures. Versions stay unknown; linked providers are declarative
+context. Verified CCD/RCSB and UniChem resource descriptions have separate roles
+from source statements. Molecular resolution and ligand-deck construction retain
+detached exact result/input pins; saved/ordinarily derived decks acquire nothing.
+Identity/mapping/schema policies and published artifacts remain unchanged.
+
 #108 is still partial: other built-ins/custom clients remain
 unobserved; arbitrary views/deck operations and full bibliography are not covered.
 Applications explicitly persist original runtime sidecars. Payload-only readers
@@ -93,9 +102,9 @@ operational test, not disclosure of pilot scientific content, validation of ever
 source's availability, or a claim that every source is observed. Original notebooks
 remain unchanged. Their application must explicitly retain sidecars when adopted.
 
-The development checkpoint passes 1,631 offline cases in the required Python 3.14
+The development checkpoint passes 1,669 offline cases in the required Python 3.14
 editable environment (26 online cases deselected). A byte-checked clean diagnostic
-wheel passes 321 unchanged acquisition/attribution/extraction/intake/explanation integration cases
+wheel passes 359 unchanged acquisition/attribution/extraction/intake/explanation integration cases
 outside the checkout with public Ackredit 0.9.0, the public three-packet workflow
 and pip check. Ruff, frozen card shape, schema/registry, governance, dependency
 preflight and warning-failing Sphinx gates pass. The wheel check also rejects the

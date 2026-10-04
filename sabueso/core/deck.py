@@ -25,6 +25,18 @@ class Deck:
     ) -> None:
         self.cards = cards or []
         self.meta = meta or {}
+        self._acquisition_trace = None
+
+    @property
+    def acquisition_trace(self) -> Dict[str, Any] | None:
+        """Original ligand-deck intake, separate from its scientific payload.
+
+        Save the original runtime sidecar beside the deck. Payload-only readers
+        and ordinary deck operations acquire nothing and do not create a trace.
+        """
+        from copy import deepcopy
+
+        return deepcopy(self._acquisition_trace)
 
     def add(self, card: Any, basis: Dict[str, Any] | None = None) -> None:
         """Add a card; ``basis`` records why it belongs (a query, a rule, a curator)."""

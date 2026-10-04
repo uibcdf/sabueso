@@ -77,6 +77,10 @@ bioactivities, assay activities, molecules, indications and disease indications.
 It also observes PubChem compound properties, structure matches and BioAssay target
 rows with their summary/compound batches.
 BindingDB REST, fixture and installed-mirror affinity queries are also observed.
+PDB CCD component batches and UniChem InChIKey/source-id lookups are observed too.
+`resolve_molecule_card` retains card/resolution traces; `ligand_deck` exposes detached
+`Deck.acquisition_trace`, with its native snapshot, result card pins and input protein
+pin. Ordinary deck operations and payload-only readers create no runtime trace.
 Other sources and custom clients are explicitly `not_observed`; this is incomplete pipeline
 coverage. New sources must declare their observation coverage and test its gaps.
 
@@ -133,6 +137,25 @@ Unknown entry revisions remain unstated, not an invented database release.
 Identical primary metadata reuses a reference; different stated forms retain
 separate identities without overwriting earlier citations. Missing citation fields
 are explicit gaps. See `docs/content/user/attribution.md` for verified metadata sources.
+
+Chemical identity access remains source-scoped: CCD's `components` event materializes
+its normalized identifier batch once, including generator inputs, and retains each
+requested component's `received`, `empty`, `unavailable` or failed/unqueried outcome.
+Successful network omissions are evaluated-empty; missing fixture files are local
+unavailability. `completed_ids` bounds completed access, including evaluated-empty
+network entries but never unavailable/failed ones. Received subsets survive later
+GraphQL/fixture processing failures as partial while the original exception escapes.
+
+UniChem's `compound` and `compound_by_source` events retain POST/query identities,
+native compound/source-record forms and the existing first-returned-compound
+selection basis. Linked source ids/names/records do not establish direct access to
+those providers. A decoded empty answer or declared empty source fixture is distinct
+from a missing file. Both resources keep source versions explicitly unstated; CCD
+release status/dates and UniChem compound ids do not become database release versions.
+CCD/RCSB-distribution and UniChem resource descriptions are verified separately.
+Original identity policies, mappings, raw returns/exceptions and card/deck schemas
+are unchanged. `test_chemical_identity_acquisition_offline.py` covers this slice,
+also copied unchanged into public-provider and future staged receiving gates.
 
 Regression tests are in `tests/core/test_source_acquisition_offline.py` and
 `tests/core/test_rcsb_acquisition_offline.py`; the public

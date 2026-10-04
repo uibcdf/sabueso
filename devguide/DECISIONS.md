@@ -1,5 +1,30 @@
 # Sabueso — Decision Log
 
+## Observe chemical identity acquisition and ligand-deck intake (2026-10-04, #108)
+
+- Observe CCD component batches and UniChem InChIKey/source-id lookups through the
+  existing required acquisition adapter. Keep normalized logical queries, native
+  POST/wire/decoded response identities, original archive times/references, retries
+  and completed subsets. A CCD iterable is materialized once before observation.
+- Distinguish evaluated empty answers, unavailable fixtures, unqueried offline
+  access and original failures. Mixed CCD batches retain per-component outcomes;
+  received data before a processing/read failure remains partial, never a complete
+  acquisition. Missing fixtures never establish external source absence.
+- Keep source versions explicitly unstated. CCD release status/dates and UniChem
+  UCI values do not become release versions. Preserve UniChem's native linked
+  source forms and existing first-returned-compound selection basis without
+  claiming those providers were queried, inferring identity or changing mappings.
+- Credit verified CCD/RCSB distribution and UniChem resource descriptions. These
+  describe the resources, never experimental findings or linked-provider access.
+- Capture `resolve_molecule_card` intake at exact card/resolution pins and expose
+  detached `Deck.acquisition_trace` for `ligand_deck`, with native deck snapshot,
+  result card pins and input protein pin. Original JSON sidecars remain host-owned;
+  loading payloads or deriving a deck creates no trace or credit. Other deck
+  operations/results, other sources and custom clients remain explicitly uncovered.
+- Scientific schema, hashes, serialized cards/decks, source returns/exceptions,
+  identity/class rules, published fixtures and release receipts remain unchanged.
+  MOLI still owns ProjectRecord/Recorda persistence and correlation contracts.
+
 ## Count ligand measurements separately from source records (2026-10-04, #118)
 
 - Default to `ligand_measurement_count@2`: count distinct included group ids across

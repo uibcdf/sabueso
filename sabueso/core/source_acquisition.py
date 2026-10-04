@@ -32,6 +32,8 @@ COVERAGE = {
         "PubChem",
         "PubChem BioAssay",
         "BindingDB",
+        "PDB CCD",
+        "UniChem",
     ],
     "boundary": "built_in_entry_search_mentions_annotations_structure_chemical_clients",
     "other_sources_and_custom_clients": "not_observed",
@@ -88,14 +90,26 @@ def capture_acquisitions(function):
             trace = _trace(records, getattr(result, "status", "returned"))
             if hasattr(result, "snapshot_id"):
                 try:
-                    trace["packet_snapshot_id"] = result.snapshot_id()
-                    trace["card_refs"] = {
-                        role: entity["ref"] for role, entity in result.entities.items()
-                    }
+                    if hasattr(result, "cards"):
+                        trace["deck_snapshot_id"] = result.snapshot_id()
+                        trace["card_refs"] = [c.pinned_ref() for c in result.cards]
+                        protein = (
+                            signature(function)
+                            .bind(*args, **kwargs)
+                            .arguments.get("protein_card")
+                        )
+                        if protein is not None:
+                            trace["input_card_refs"] = [protein.pinned_ref()]
+                    else:
+                        trace["packet_snapshot_id"] = result.snapshot_id()
+                        trace["card_refs"] = {
+                            role: entity["ref"]
+                            for role, entity in result.entities.items()
+                        }
                 except Exception as error:
                     trace["recording_error"] = f"{type(error).__name__}: {error}"
                     adapter._warning(
-                        "source acquisition packet pin", trace["recording_error"]
+                        "source acquisition result pin", trace["recording_error"]
                     )
             result._acquisition_trace = trace
         return result
@@ -439,6 +453,8 @@ def _credit(record):
         ):
             if key in record:
                 context[key] = deepcopy(record[key])
+        if "identity_lookup" in record:
+            context["identity_lookup"] = deepcopy(record["identity_lookup"])
         resource = "sabueso:source-access:" + digest(
             canonical_json(
                 {

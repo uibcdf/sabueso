@@ -314,7 +314,7 @@ Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
 CI/release tests, alongside `test_literature_intake_offline.py` for original support
 and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
-The current checkpoint passes 1,631 source offline cases and 321 unchanged installed
+The current checkpoint passes 1,669 source offline cases and 359 unchanged installed
 integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
@@ -414,3 +414,24 @@ items (`ligand_measurement_count@2`), retaining explicit source-record counts an
 counted ids in `ligand_deck_explanation@2`. Explicit `@1` retains the published
 numeric policy at current/historical pins. Original grouping/class support survives.
 These readers change no scientific schema or attribution and add no execution credit.
+
+## Chemical identity observation (#108)
+
+CCD component batches and UniChem InChIKey/source-id lookups retain normalized
+queries, POST/wire/decoded identities, retries, original archive references/times,
+native linked source forms and distinct empty/unavailable/unqueried/failed outcomes.
+Received components/compound data before later processing or read failures remain
+partial; the original exception survives. CCD batches retain per-component outcomes
+and completed ids; fixtures cannot establish absence in an external source.
+
+Versions remain unstated. CCD release status/dates and UniChem compound ids are not
+database releases. UniChem linked resources are its statements, not direct access;
+existing identity/mapping/first-returned-compound policies are unchanged. Verified
+CCD/RCSB-distribution and UniChem description bibliography is credited independently.
+
+`resolve_molecule_card` retains card/resolution traces and `ligand_deck` exposes
+detached `Deck.acquisition_trace` with native snapshot, result pins and input protein
+pin. Payload-only saved or ordinarily derived decks create no trace or credit;
+original sidecars remain host-owned. Shared MOLI persistence/correlation contracts
+and broader source/result/custom-client observation remain open. The unchanged
+chemical identity tests join public-provider CI and future staged receiving gates.

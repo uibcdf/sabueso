@@ -66,6 +66,12 @@ shows how to use them.
   routes, response identities, empty answers and failures. Saved scientific payloads
   return `None`; retain original JSON sidecars. Other sources/custom clients are
   explicitly unobserved. `SOURCE_ACCESS.md` defines the coverage and local formats.
+  Unreleased chemical identity access adds CCD batches and both UniChem lookup
+  methods, alongside ChEMBL/PubChem/BindingDB observation. `resolve_molecule_card`
+  retains card/resolution traces; `ligand_deck` exposes `Deck.acquisition_trace`,
+  including its native snapshot id, output card pins and input protein pin.
+  The trace is detached from deck metadata/hashes. Saved or ordinarily derived
+  decks have no new trace; preserve original sidecars explicitly.
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
   Deck.
 - `sabueso.resolve_disease_card(identifier)`, `sabueso.disease_targets(disease,

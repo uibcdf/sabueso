@@ -27,7 +27,9 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
+from sabueso.core.chemical_identity_acquisition import note_response, observe
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -61,6 +63,7 @@ class OnlineUniChemClient:
     def __init__(self, timeout: float = 30.0) -> None:
         self.timeout = timeout
 
+    @observe("UniChem", "compound")
     def compound(self, inchikey: str) -> Dict[str, Any]:
         body = json.dumps({"type": "inchikey", "compound": inchikey}).encode("utf-8")
         request = Request(
@@ -70,6 +73,7 @@ class OnlineUniChemClient:
         try:
             with urlopen(request, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
+                note_response(data)
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(
                 f"UniChem request for {inchikey} failed: {exc}"
@@ -79,6 +83,7 @@ class OnlineUniChemClient:
             raise RecordNotFoundError(f"UniChem has no compound {inchikey}")
         return {"retrieved_at": retrieval.value, "compound": _compound(compounds[0])}
 
+    @observe("UniChem", "compound_by_source")
     def compound_by_source(self, source_id: int, compound_id: str) -> Dict[str, Any]:
         body = json.dumps(
             {
@@ -95,6 +100,7 @@ class OnlineUniChemClient:
         try:
             with urlopen(request, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
+                note_response(data)
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"UniChem request for {label} failed: {exc}") from exc
         compounds = data.get("compounds") or []
@@ -114,6 +120,7 @@ class FixtureUniChemClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @observe("UniChem", "compound", fixture=True)
     def compound(self, inchikey: str) -> Dict[str, Any]:
         if inchikey in self.failing:
             raise ConnectorError(f"UniChem request for {inchikey} failed (simulated)")
@@ -121,14 +128,18 @@ class FixtureUniChemClient:
         if not path.is_file():
             raise RecordNotFoundError(f"UniChem has no compound {inchikey}")
         saved = json.loads(path.read_text(encoding="utf-8"))
+        note_response(saved)
         return {"retrieved_at": self.retrieved_at, "compound": saved}
 
+    @observe("UniChem", "compound_by_source", fixture=True)
     def compound_by_source(self, source_id: int, compound_id: str) -> Dict[str, Any]:
         label = f"source {source_id} compound {compound_id}"
         if str(compound_id) in self.failing:
             raise ConnectorError(f"UniChem request for {label} failed (simulated)")
         path = self.directory / "unichem" / f"source{source_id}__{compound_id}.json"
         saved = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else None
+        if saved is not None:
+            note_response(saved)
         if not saved or saved.get("not_found"):
             raise RecordNotFoundError(f"UniChem has no {label}")
         return {"retrieved_at": self.retrieved_at, "compound": saved}
@@ -138,6 +149,7 @@ class FixtureUniChemClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_compound(identifier: str, client: Any = None, skip_digestion: bool = False):
     """The records other resources hold for a standard InChIKey (UniChem)."""
     response = online(client, OnlineUniChemClient).compound(identifier)

@@ -375,6 +375,11 @@ In order:
      mirror manifests/releases, including empty and failed queries. REST versions
      remain unknown. The source-local #114 fix recognizes documented empty-string
      absence while malformed responses remain failed, retaining wire/archive identity.
+     Unreleased CCD batches and UniChem InChIKey/source-id
+     lookups now retain query/response identities, reuse, retry/empty/failure outcomes
+     and completed subsets. Linked databases stay declarative; versions stay unknown.
+     Molecular resolution and ligand decks keep detached input/result pins and
+     original resource-description citations without changing stored card/deck science.
      Other sources/custom clients, further result types and complete resource
      bibliography remain coverage work with explicit gaps in the published 0.12.0
      scope (#108). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;

@@ -64,6 +64,15 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   Card science/schema are unchanged. The source-local parser fix (#114) recognizes
   documented empty strings as evaluated-empty while malformed responses remain
   failed; original wire/archive identities and times survive replay and card builds.
+- Chemical identity observation (#108): CCD component batches and both UniChem
+  lookup methods retain normalized queries, POST/wire/decoded identities, original
+  retrieval times, retries, empty answers, unavailable fixtures and partial subsets.
+  Versions remain unstated; CCD release status/dates and UniChem compound ids are
+  not release versions. Linked databases are declarative context, not direct access.
+  Resource descriptions retain verified CCD/RCSB and UniChem bibliography.
+  Molecular resolution and ligand-deck construction retain detached traces with
+  exact result/input pins. Payload-only or ordinarily derived decks add no trace
+  or credit. Scientific serialization, mappings and identity policies stay fixed.
 - Disease-group explanation (#91): `Card.explain_disease(disease_ref)` reads a
   MONDO group at the exact card pin under `disease_group_explanation@2`, retaining
   association/selected-annotation support, MedGen/MONDO links, hierarchy steps,
@@ -116,7 +125,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   Explicit `@1` reproduces the published numeric counter. Views/comparisons retain
   pinned counting derivations; `ligand_deck_explanation@2` lists counted group and
   record ids with original support. Class/voter/scope policies and storage stay fixed.
-- Local validation: 1,631 offline cases and 321 installed integration cases pass
+- Local validation: 1,669 offline cases and 359 installed integration cases pass
   with public Ackredit 0.9.0. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote

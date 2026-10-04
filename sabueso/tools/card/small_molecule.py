@@ -28,6 +28,7 @@ from sabueso.core.card import Card, make_card_id
 from sabueso.core.deck import Deck
 from sabueso.core.errors import ConnectorError, RecordNotFoundError, SchemaError
 from sabueso.core.merge import merge_mapping_results
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.mappings.molecule_identity import (
     anchor_ref,
     is_standard_inchikey,
@@ -224,6 +225,7 @@ def _clients(chembl_client, ccd_client, unichem_client):
 
 @signal(tags=["api", "small_molecule"])
 @arg_digest()
+@capture_acquisitions
 def resolve_molecule_card(
     identifier: str,
     chembl_client: Any | None = None,
@@ -675,6 +677,7 @@ def _notes(structure_ligands: str | None) -> List[str]:
 
 @signal(tags=["api", "small_molecule", "deck"])
 @arg_digest()
+@capture_acquisitions
 def ligand_deck(
     protein_card: Card,
     structure_ligands: str | None = "of_interest",

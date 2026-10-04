@@ -22,7 +22,9 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
+from sabueso.core.chemical_identity_acquisition import note_response, observe
 from sabueso.core.errors import ConnectorError
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -41,6 +43,7 @@ class OnlineCCDClient:
     def __init__(self, timeout: float = 30.0) -> None:
         self.timeout = timeout
 
+    @observe("PDB CCD", "components")
     def components(self, comp_ids: Iterable[str]) -> Dict[str, Any]:
         codes = _codes(comp_ids)
         retrieval = stamp("PDB CCD")
@@ -55,6 +58,7 @@ class OnlineCCDClient:
         try:
             with urlopen(request, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
+                note_response(data)
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"CCD request for {codes} failed: {exc}") from exc
         if data.get("errors"):
@@ -82,6 +86,7 @@ class FixtureCCDClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @observe("PDB CCD", "components", fixture=True)
     def components(self, comp_ids: Iterable[str]) -> Dict[str, Any]:
         codes = _codes(comp_ids)
         if self.failing & set(codes):
@@ -91,6 +96,7 @@ class FixtureCCDClient:
             path = self.directory / "pdb_ccd" / f"{code}.json"
             if path.is_file():
                 found[code] = json.loads(path.read_text(encoding="utf-8"))
+                note_response(found[code], code=code)
         return {
             "retrieved_at": self.retrieved_at,
             "components": found,
@@ -102,6 +108,7 @@ class FixtureCCDClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_components(identifiers: Any, client: Any = None, skip_digestion: bool = False):
     """PDB Chemical Component Dictionary records by component code."""
     response = online(client, OnlineCCDClient).components(identifiers)

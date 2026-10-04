@@ -7,6 +7,50 @@ Metadata sources are recorded in docs/content/user/attribution.md.
 from copy import deepcopy
 
 _DESCRIPTIONS = {
+    "PDB CCD": {
+        "id": "doi:10.1093/bioinformatics/btu789",
+        "type": "article",
+        "title": "The chemical component dictionary: complete descriptions of constituent molecules in experimentally determined 3D macromolecules in the Protein Data Bank",
+        "authors": [
+            "Westbrook, John D",
+            "Shao, Chenghua",
+            "Feng, Zukang",
+            "Zhuravleva, Marina",
+            "Velankar, Sameer",
+            "Young, Jasmine",
+        ],
+        "year": 2015,
+        "journal": "Bioinformatics",
+        "volume": "31",
+        "number": "8",
+        "pages": "1274-1278",
+        "doi": "10.1093/bioinformatics/btu789",
+        "url": "https://doi.org/10.1093/bioinformatics/btu789",
+    },
+    "UniChem": {
+        "id": "doi:10.1186/1758-2946-5-3",
+        "type": "article",
+        "title": "UniChem: a unified chemical structure cross-referencing and identifier tracking system",
+        "authors": [
+            "Chambers, Jon",
+            "Davies, Mark",
+            "Gaulton, Anna",
+            "Hersey, Anne",
+            "Velankar, Sameer",
+            "Petryszak, Robert",
+            "Hastings, Janna",
+            "Bellis, Louisa",
+            "McGlinchey, Shaun",
+            "Overington, John P",
+        ],
+        "year": 2013,
+        "journal": "Journal of Cheminformatics",
+        "volume": "5",
+        "number": "1",
+        "pages": "3",
+        "doi": "10.1186/1758-2946-5-3",
+        "url": "https://doi.org/10.1186/1758-2946-5-3",
+    },
     "BindingDB": {
         "id": "doi:10.1093/nar/gkae1075",
         "type": "article",
@@ -208,7 +252,11 @@ _DESCRIPTIONS = {
 
 def descriptions(source):
     item = _DESCRIPTIONS.get("PubChem" if source == "PubChem BioAssay" else source)
-    return [deepcopy(item)] if item else []
+    items = [item] if item else []
+    if source == "PDB CCD":
+        # CCD defines the data; RCSB distributes it through the queried API.
+        items.append(_DESCRIPTIONS["RCSB PDB"])
+    return deepcopy(items)
 
 
 def pubchem_citations(publication_ids):
