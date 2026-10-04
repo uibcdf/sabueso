@@ -84,7 +84,7 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   `dependency_preflight.py --release` now passes the adopted public closure;
   stale floors, omitted public pins and future unpublished providers still fail.
   Ackredit #81 tracks the earlier editable Git-version mismatch. The current
-  0.9.0-based editable satisfies the floor and the primary environment passes pip
+  editable satisfies the published minimum and the primary environment passes pip
   check; all workspace packages remain editable.
 
 ## Unreleased traceability and extraction guards

@@ -18,10 +18,10 @@
   environments and recipe adopt `>=0.9.0`; CI uses public Conda, and installed gates
   pin the qualified public file/hash. The public-dependency blocker is resolved.
   Independent receiving tests on all four Linux minors pass with the planned public
-  core pins. The 0.9.0-based editable now satisfies the floor with a passing
+  core pins. The current editable satisfies the published minimum with a passing
   primary-environment pip check; Ackredit #81 records the earlier mismatch and
   receiving confirmation.
-  Runtime adapters observe packet composition and built-in UniProt/Europe PMC/RCSB
+  Published runtime adapters observe packet composition and built-in UniProt/Europe PMC/RCSB
   acquisition. Other sources/custom clients, further result types and full
   bibliography remain gaps. Original runtime JSON must be explicitly saved;
   payload-only readers cannot reconstruct earlier execution. MOLI ProjectRecord/

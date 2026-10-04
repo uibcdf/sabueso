@@ -28,7 +28,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   recorded in `sabueso_0.12.0_local_schema_freeze_2026-10-03.json`; runtime RCSB
   traceability adds no fields to scientific serialization.
 - **Editable workspace:** all 14 installed workspace packages remain editable in
-  `molsyssuite@uibcdf_3.14`. Ackredit's 0.9.0-based runtime/distribution versions agree;
+  `molsyssuite@uibcdf_3.14`. Ackredit's editable runtime/distribution versions agree;
   the environment's pip check passes. Provider #81 is closed through #82.
   Separate environments qualify public/candidate distributions.
 
