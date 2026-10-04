@@ -163,6 +163,37 @@ class Card:
         )
 
     @arg_digest()
+    def explain_measurement(
+        self, measurement_ref: str, skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """Explain a stored ``REL_`` record's group or an ``MG_`` group at this card pin.
+
+        ``measurement_group_explanation@1`` retains the grouping rule, actual joins,
+        ambiguity and exact source support. It reads without acquisition or mutation.
+        """
+        from .bioactivity_explanation import explain_measurement
+
+        return explain_measurement(self, measurement_ref)
+
+    @arg_digest()
+    def explain_bioactivity(
+        self,
+        molecule_ref: str,
+        include_indirect: bool = False,
+        thresholds: Dict[str, Any] | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Explain an exact molecule item from ``bioactivities()`` at this card pin.
+
+        ``bioactivity_explanation@1`` retains units, thresholds, group voters and
+        stored source support. Use the same options as the view being explained.
+        This does not resolve another identifier or explain a ligand deck/site.
+        """
+        from .bioactivity_explanation import explain_bioactivity
+
+        return explain_bioactivity(self, molecule_ref, include_indirect, thresholds)
+
+    @arg_digest()
     def add_literature_assertion(
         self,
         field_path: str,

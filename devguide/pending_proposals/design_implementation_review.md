@@ -35,7 +35,7 @@ decision replaced the original representation), **direction** (non-binding visio
 | Entity resolution before composition | Implemented for proteins, small molecules and MONDO-anchored diseases: `tools/resolve.py`, `resolver/entity_resolver.py`, `tools/card/disease.py`; resolution/identity/disease tests | EFO identities without a MONDO anchor remain #96; FASTA/structure-file intake needs a separate identity contract |
 | Source-supported identity and explicit ambiguity | Implemented: identity audits, source-stated cross-references, molecule InChIKey anchors, `core/entities.py`; unreleased deterministic disease grouping `@2` preserves all identity paths (#115) | Explicit historical `@1` retains its exposed lookup limitation. Similarity, names and equal residue numbers never authorize merging; sequence alignment belongs to MolSysMT |
 | First-class relationships | Implemented: `core/relationship_store.py`, supported predicates and qualifiers; relationship/measurement/curation tests | More predicates require a scientific use and support contract; storage re-evaluation stays #19 |
-| Derived knowledge with named rules | Implemented: structure inventory, oligomer, ligand classes, measurement groups, diseases, identity audits, knowledge state; unreleased pinned disease-group and knowledge-state explanations | Explanation of every derived view remains partial (#91); measurement/ligand classes and other derived items still need pinned support |
+| Derived knowledge with named rules | Implemented: structure inventory, oligomer, ligand classes, measurement groups, diseases, identity audits, knowledge state; unreleased pinned disease-group, knowledge-state, measurement-group and molecule bioactivity-class explanations | Explanation of every derived view remains partial (#91); ligand deck/site aggregation and other derived items still need pinned support |
 | Reproducible decks | Implemented: `core/deck.py`, membership, exclusions, lineage, intersect/difference, comparison and pinned revision tests | General heterogeneous joins, rankings, neighbors and subgraphs remain directions, not missing promised API |
 | Physical quantities across boundaries | Implemented: `core/quantities.py`, PyUnitWizard quantities/seals, integrity and measurement tests | New fields and consumer exchanges must negotiate units; they cannot use bare values or computed field-name units |
 | History, pins and exact item reads | Implemented: `core/snapshot.py`, `knowledge_store.py`, migration/refresh and pin regression tests | Shared reference acceptance still depends on MOLI #3/#53; application-level runtime persistence is separate |
@@ -93,9 +93,9 @@ operational test, not disclosure of pilot scientific content, validation of ever
 source's availability, or a claim that every source is observed. Original notebooks
 remain unchanged. Their application must explicitly retain sidecars when adopted.
 
-The development checkpoint passes 1,545 offline cases in the required Python 3.14
+The development checkpoint passes 1,574 offline cases in the required Python 3.14
 editable environment (26 online cases deselected). A byte-checked clean diagnostic
-wheel passes 235 unchanged acquisition/attribution/extraction/intake/explanation integration cases
+wheel passes 264 unchanged acquisition/attribution/extraction/intake/explanation integration cases
 outside the checkout with public Ackredit 0.9.0, the public three-packet workflow
 and pip check. Ruff, frozen card shape, schema/registry, governance, dependency
 preflight and warning-failing Sphinx gates pass. The wheel check also rejects the
@@ -139,7 +139,12 @@ Evidence; MolSysSuite owns calculations, alignments and modeling interfaces.
    source coverage and request outcomes. Missing support is partial, including
    rows lost through missing assertions; absence never becomes a negative assertion.
    #116 fixes the multi-version UniProt crash without choosing a release. Other
-   derived-view explanations, including measurement/ligand classes, remain #91 work.
+   derived-view explanations remain #91 work. `Card.explain_measurement` and
+   `Card.explain_bioactivity` now retain actual grouping/class-voter decisions,
+   precision/threshold quantities and original support at exact pins. Whole-card
+   candidate/glossary context and stored identity locators remain explicit; no
+   identity path or assertion membership is invented. Ligand deck/site aggregation
+   and other derived items still need explanations.
 4. **Receive consumer acceptance (#71/#53, MOLI #22/#3/#36).** Implement a real
    persistent consumer exercise in the consumer repository when ready. This is a
    coordination dependency, not missing Nextia code to add inside Sabueso.

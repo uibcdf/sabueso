@@ -405,6 +405,8 @@ def bioactivities_view(
     card: Any,
     include_indirect: bool = False,
     thresholds: Dict[str, Any] | None = None,
+    *,
+    _support=None,
 ) -> Dict[str, Any]:
     """Molecule-centric summary of the card's ``has_bioactivity`` relationships.
 
@@ -422,7 +424,9 @@ def bioactivities_view(
     documents: Dict[str, int] = {}
     # One measurement stated by several sources is one group (#66): classes and counts
     # are per measurement, never per record.
-    identity = measurement_groups(card)
+    identity_support = {} if _support is not None else None
+    identity = measurement_groups(card, _support=identity_support)
+    record_decisions, group_decisions = [], []
     group_of = identity["group_of"]
     # A molecule another source names differently (bindingdb:…) joins the ChEMBL entry of
     # the same entity, through the card's glossary.
@@ -450,6 +454,13 @@ def bioactivities_view(
                     "assay": assay.get("id"),
                     "reason": f"target_assignment:{assignment}",
                     "assay_organism": assay.get("organism"),
+                }
+            )
+            record_decisions.append(
+                {
+                    "relationship_id": rel["id"],
+                    "included": False,
+                    "reason": f"target_assignment:{assignment}",
                 }
             )
             continue
@@ -518,6 +529,9 @@ def bioactivities_view(
             entry["name"] = q.get("molecule_name") or entry["name"]
             entry["smiles"] = _stated_smiles(card, rel) or entry["smiles"]
         entry["measurements"].append(measurement)
+        record_decisions.append(
+            {"relationship_id": rel["id"], "included": True, "molecule_ref": key}
+        )
         entry["potencies"].append(
             node["value"]
             if node and node["unit"] == CONCENTRATION_UNIT and not ranged
@@ -532,11 +546,24 @@ def bioactivities_view(
         for x in measurements:
             by_group.setdefault(x["group"], []).append(x)
         classes: Dict[str, int] = {}
-        for members in by_group.values():
+        for group_id, members in by_group.items():
             voters = [x for x in members if not x["copy"]] or members
             found = {x["class"] for x in voters}
             # Sources of one measurement that classify it differently: inconclusive.
             cls = found.pop() if len(found) == 1 else "inconclusive"
+            group_decisions.append(
+                {
+                    "molecule_ref": entry["molecule_ref"],
+                    "group": group_id,
+                    "records": [x["relationship_id"] for x in members],
+                    "voters": [x["relationship_id"] for x in voters],
+                    "voter_classes": sorted({x["class"] for x in voters}),
+                    "class": cls,
+                    "basis": "non_copy_records"
+                    if any(not x["copy"] for x in members)
+                    else "copies_only",
+                }
+            )
             classes[cls] = classes.get(cls, 0) + 1
         pchembls = [x["pchembl"] for x in measurements if x["pchembl"] is not None]
         items.append(
@@ -576,6 +603,13 @@ def bioactivities_view(
             i["molecule_ref"],
         )
     )
+    if _support is not None:
+        _support.update(
+            identity=identity,
+            identity_support=identity_support,
+            records=record_decisions,
+            groups=group_decisions,
+        )
     return {
         "items": items,
         "excluded": sorted(excluded, key=_activity_order),

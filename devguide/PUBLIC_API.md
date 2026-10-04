@@ -198,6 +198,27 @@ shows how to use them.
   Missing support is `partial`, including fields/relationships whose source can
   no longer be identified. A missing row is `not_on_card`, never evidence of absence.
   No source is asked, mappings rerun, card changed or execution credit added.
+  Unreleased `explain_measurement(measurement_ref)` selects an exact native `REL_`
+  record or `MG_` group at this card pin (`measurement_group_explanation@1`). It
+  retains actual grouping joins, publication/molecule keys, precision quantities,
+  provenance selectors, ambiguity, unresolved-copy and review diagnostics.
+  Unreleased `explain_bioactivity(molecule_ref, include_indirect=False, thresholds=None)`
+  selects the exact namespaced item key returned by `bioactivities()`
+  (`bioactivity_explanation@1`). Pass the same options as the explained view. Each
+  group retains included records, voters, voter classes and copy-only fallback;
+  strongest-class selection and discordance remain explicit. Original measurement
+  units, ranges, single-point concentrations, thresholds and consistency checks survive.
+  Both readers retain exact relationship/assertion pins and original source versions.
+  Whole-card grouping/glossary inputs are separate context because candidate
+  uniqueness depends on them. Stored identity records have card/field/key locators,
+  never invented SourceAssertion membership or identity paths. Missing input support
+  is `partial`; a missing item is `not_on_card`, never inactivity. These readers fetch
+  nothing, change no card or credit and do not resolve aliases or explain ligand
+  deck/site aggregation. The existing scientific rules and stored schema are unchanged.
+  Existing `measurement_identity@1` omits an unresolved activity-only copy pointer
+  from its diagnostic list when the original is absent (#117). The explanation
+  preserves that rule output and the exact raw pointer; an empty diagnostic list
+  therefore does not prove that every declared copy was resolved.
 - **Other.** `to_deck()`, `expand(predicate, ...)` (see `sabueso.expand`).
 
 ## Deck

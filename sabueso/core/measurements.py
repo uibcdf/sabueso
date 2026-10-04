@@ -150,7 +150,7 @@ def _review(
     return sorted(merged.values(), key=lambda r: r["records"])
 
 
-def measurement_groups(card: Any) -> Dict[str, Any]:
+def measurement_groups(card: Any, *, _support=None) -> Dict[str, Any]:
     """``{"rule", "groups", "ambiguous", "unresolved_copies", "review", "group_of"}``;
     see the module docstring. ``unresolved_copies`` are declared copies whose original
     is not on the card: pointers to follow (#68).
@@ -186,6 +186,7 @@ def measurement_groups(card: Any) -> Dict[str, Any]:
         }
 
     edges: List[Tuple[str, str, str]] = []
+    selectors = {}
     ambiguous: List[Dict[str, Any]] = []
     unresolved_copies: List[Dict[str, Any]] = []
     review: List[Dict[str, Any]] = []
@@ -202,6 +203,10 @@ def measurement_groups(card: Any) -> Dict[str, Any]:
         original = by_source_activity.get((copy.get("source"), copy.get("activity_id")))
         if original and original != rid:
             edges.append((rid, original, "provenance"))
+            selectors[(rid, original)] = {
+                "basis": "source_activity_id",
+                "precision_used": False,
+            }
             continue
         if not copy.get("assay"):
             continue
@@ -220,12 +225,19 @@ def measurement_groups(card: Any) -> Dict[str, Any]:
             blocks = _blocks(i["molecules"])
             found = [o for o in in_assay if _blocks(info[o]["molecules"]) & blocks]
             stereo = bool(found)
-        if len(found) > 1:
+        precision_used = len(found) > 1
+        if precision_used:
             found = [
                 o for o in found if _agree(i["measurement"], info[o]["measurement"])
             ]
         if len(found) == 1:
             edges.append((rid, found[0], "provenance"))
+            selectors[(rid, found[0])] = {
+                "basis": "named_assay_connectivity"
+                if stereo
+                else "named_assay_molecule",
+                "precision_used": precision_used,
+            }
             if stereo:
                 review.append(
                     {
@@ -357,6 +369,8 @@ def measurement_groups(card: Any) -> Dict[str, Any]:
                 "basis": sorted(basis.get(root, set())),
             }
         )
+    if _support is not None:
+        _support.update(info=info, edges=edges, selectors=selectors)
     return {
         "rule": make_derivation(
             MEASUREMENT_RULE,

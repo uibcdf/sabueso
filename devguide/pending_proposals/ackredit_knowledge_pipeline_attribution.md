@@ -314,7 +314,7 @@ Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
 CI/release tests, alongside `test_literature_intake_offline.py` for original support
 and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
-The current checkpoint passes 1,545 source offline cases and 235 unchanged installed
+The current checkpoint passes 1,574 source offline cases and 264 unchanged installed
 integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
@@ -391,3 +391,11 @@ original card pin. Scientific support is separate from query outcome/count repor
 per-request assertion membership is explicitly not recorded. Missing support remains
 partial, and negative assertions are never invented. The reader changes no payload,
 fetches no source and adds no credit. Multiple original UniProt versions are retained.
+
+`Card.explain_measurement` and `Card.explain_bioactivity` (#91) retain exact original
+relationship/assertion pins, source versions and actual grouping/class-voter decisions.
+Copies, ambiguity, precision quantities, thresholds, raw units, ranges, single-point
+concentrations, consistency checks and discordance remain visible. Whole-card
+candidate/glossary inputs are explicit context; stored identity metadata has locators,
+not invented per-assertion membership. These readers add no acquisition or credit and
+change no scientific serialization. Ligand deck/site aggregation remains separate work.

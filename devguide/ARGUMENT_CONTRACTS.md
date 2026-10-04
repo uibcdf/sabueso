@@ -69,6 +69,13 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   row name with surrounding whitespace stripped. No case/name alias matching or
   source lookup occurs. Unknown selectors return no matching row; malformed shapes
   and empty strings are refused.
+  Unreleased `explain_measurement` digests `measurement_ref`: an exact local
+  `REL_` id or `MG_` plus 16 lowercase hexadecimal digits. Pinned fragments,
+  activity ids and malformed selectors are refused. `explain_bioactivity` digests
+  `molecule_ref`: the exact namespaced item key from `bioactivities()`, without
+  case changes, whitespace normalization or identifier resolution. It reuses
+  `include_indirect` and quantity-bearing `thresholds` contracts. A well-formed
+  missing native item returns `not_on_card`, never a negative measurement.
 - **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,
   `group_by_rank`, `expand`, `explain`.
   `explain` accepts `structure_ref=None` for membership, or `pdb:<four-character id>`

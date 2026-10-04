@@ -92,7 +92,18 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   A stale incremental wheel is rejected; a clean installed wheel passes all 89
   unchanged integration cases and the public three-packet saved-reader workflow.
   Published Conda artifacts and their qualification receipts remain immutable.
-- Local validation: 1,545 offline cases and 235 installed integration cases pass
+- Measurement/bioactivity explanations (#91): `Card.explain_measurement` and
+  `Card.explain_bioactivity` retain exact pinned source inputs and actual grouping,
+  provenance selectors, precision quantities, included records and class voters.
+  Copies, ambiguity, strongest-class selection, discordance, source versions,
+  original units, thresholds and checks survive. Whole-card grouping/glossary
+  context stays explicit; stored identity locators invent no assertion membership.
+  Missing support is partial, missing items are not inactivity, and readers add
+  no acquisition or credit. Scientific rules and stored schema are unchanged;
+  ligand deck/site aggregation and other derived explanations remain pending.
+  Existing activity-only unresolved-copy diagnostics omit absent originals (#117);
+  exact raw pointers remain visible, and the correction is separately tracked.
+- Local validation: 1,574 offline cases and 264 installed integration cases pass
   with public Ackredit 0.9.0. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote

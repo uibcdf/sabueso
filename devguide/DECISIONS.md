@@ -1,5 +1,33 @@
 # Sabueso — Decision Log
 
+## Explain actual measurement joins and bioactivity voters at card pins (2026-10-04, #91)
+
+- Add `Card.explain_measurement(measurement_ref)` and
+  `Card.explain_bioactivity(molecule_ref, include_indirect=False, thresholds=None)`
+  under `measurement_group_explanation@1` and `bioactivity_explanation@1`.
+  ArgDigest checks exact native selectors and existing quantity-bearing options.
+- Collect the actual decisions of `measurement_identity@1` and
+  `bioactivity_class@3`; preserve their ordinary outputs. Joins retain publication,
+  molecule keys, declared-copy selector and precision quantities. Connectivity
+  inside a named copied assay is measurement provenance, never molecular identity.
+- Retain each included group's voters and classes, non-copy preference and explicit
+  copy-only fallback. Strongest-class selection never hides discordance. Original
+  units, ranges, single-point concentrations, thresholds and consistency flags survive.
+- Link every stored input relationship/assertion to the current or loaded historical
+  card pin and original source versions. Candidate uniqueness and glossary mapping
+  need whole-card context, which remains separate from selected records. Stored
+  identity records have locators into serialized `entities`; do not invent their
+  SourceAssertion membership or minimal identity paths. Missing support is partial;
+  an unknown item is not inactivity or evidence of absence.
+- These readers fetch nothing, mutate no cards or attribution and create no
+  SourceAssertions. Stored schema, frozen fixtures and published release receipts
+  stay unchanged. Ligand deck/site aggregation and other derived explanations remain
+  #91 work; these APIs explain the protein's measured molecule items only.
+- Report the reproduced existing diagnostic omission as #117: an absent
+  activity-only copy pointer exits before `unresolved_copies` is populated.
+  Preserve the raw pointer and current rule output here; do not claim an empty
+  diagnostic list proves all pointers resolved. Its correction is separate work.
+
 ## Explain pinned knowledge-state inputs without inventing absence support (2026-10-04, #91/#116)
 
 - Add `Card.explain_knowledge_state(knowledge_area=None, knowledge_source=None)`

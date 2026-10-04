@@ -141,6 +141,16 @@ derived absence. Original UniProt versions survive reversed support order (#116)
 Selectors are digested; readers stay inert. The tests run unchanged outside the
 checkout with the public provider and in future staged installed-package gates.
 
+`test_bioactivity_explanation_offline.py` checks public TcTIM/HsTIM group/class
+parity, exact source versions, coarser stated precision with units, declared copies,
+assay/precision/connectivity selectors, copy-only voters, group disagreement,
+cross-group discordance, direct-assay filtering and non-default quantity thresholds.
+Ranges, single-point concentrations, unknown units, not-determined measurements,
+ambiguity/candidate support, consistency flags, stored identity locators, missing
+lineage, historical pins, ArgDigest and inert detached readers have regressions.
+The file runs unchanged with public Ackredit outside the checkout in installed
+CI and future staged gates. No new source fixture or stored card field is introduced.
+
 Local diagnostic wheels additionally pass
 `devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):
 module/resource bytes and membership must match the source, excluding generated

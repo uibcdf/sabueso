@@ -48,6 +48,34 @@ Two consistency checks add flags to a measurement. Both rules are listed in
 
 Neither check corrects a value; they point at the measurements to look at.
 
+## Explain a stored measurement or class (unreleased)
+
+Use an item key or measurement group from the view being explained:
+
+```python
+item = view["items"][0]
+group = item["measurements"][0]["group"]
+measurement_support = card.explain_measurement(group)
+class_support = card.explain_bioactivity(item["molecule_ref"])
+# Pass the same include_indirect/thresholds options if the view used custom ones.
+print(measurement_support["joins"], measurement_support["diagnostics"])
+print(class_support["groups"])  # actual voters and each group's class
+```
+
+These read-only explanations carry named rules and exact pinned relationship and
+SourceAssertion references, retaining original source versions. Group joins expose
+publication/molecule keys, coarser precision as quantities and declared-copy selectors.
+Each class group says which included records vote: copies do not vote alongside an
+original, and copy-only fallback is explicit. Disagreement within a group remains
+inconclusive; discordance across groups remains visible beside the strongest class.
+
+Whole-card candidate/glossary inputs are separate context. Stored identity metadata
+has locators into the pinned card, without invented assertion membership. Missing
+source support is `partial`; an unknown native key is `not_on_card`, never inactive.
+Load an original card pin from `KnowledgeStore` to explain that version. The readers
+fetch no source, change no card and add no execution credit. They explain measured
+molecule items; ligand deck crossings and binding-site classes remain separate work.
+
 Clients: `sabueso.tools.db.chembl.OnlineChEMBLClient` and `FixtureChEMBLClient`.
 
 ## Ligand decks
@@ -114,5 +142,9 @@ assay names its depositor and the depositor's assay id.
 - A copy whose original the card lacks leads to it: the ChEMBL assay it names is
   fetched from ChEMBL. This recovers measurements a truncated or target-based query
   missed.
-- `view["measurement_identity"]["unresolved_copies"]` lists the copies whose original
-  could not be found, with the reason.
+- `card.explain_bioactivity(item_key)["measurement_identity"]["unresolved_copies"]`
+  (unreleased) retains the grouping engine's unresolved-copy diagnostics. The
+  ordinary bioactivity view retains its existing groups, ambiguity and review output.
+  An existing limitation (#117) omits absent activity-only pointers from that list;
+  their raw `copy_of` is retained in pinned relationship support. An empty list
+  does not prove that every declared copy was resolved.

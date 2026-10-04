@@ -281,7 +281,10 @@ In order:
    at original pins (`knowledge_state_explanation@1`). Missing support is partial;
    absence and missing queries never become negative assertions. #116 retains
    multiple original UniProt versions without changing the working state rule.
-   Next, as use asks: other views' derived items, including measurement/ligand classes.
+   Unreleased measurement-group and molecule bioactivity-class explanations now
+   retain actual joins, precision, copy/voter decisions, original quantities and
+   exact pinned source support. Whole-card candidate/glossary context remains
+   explicit. Next, as use asks: ligand deck/site aggregation and other derived items.
 4. **Literature beyond manual curation (#92).**
    - Released in 0.7.0: how each statement entered (`acquisition`: database, curation, rule
      extraction, model extraction, validation).

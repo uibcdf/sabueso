@@ -64,6 +64,13 @@ do not implement project routing, EventLedger persistence or strict commit polic
      stored disease identity and state classification at exact pins. Scientific
      support, coverage inference and request reports retain separate bases; missing
      support remains explicit. Readers never fetch, mutate cards or add credit.
+   - Unreleased `Card.explain_measurement` and `Card.explain_bioactivity` collect
+     actual grouping and class-voter decisions at the card pin. Precision and
+     threshold quantities retain units; copies, ambiguity and discordance remain
+     explicit. Whole-card candidate/glossary inputs are context with exact support;
+     stored identity metadata has locators, not invented assertion membership.
+     These readers preserve the scientific rules/schema. Deck and ligand-site
+     aggregation explanations remain #91 work.
 7. **Decks** (`core.deck`). Collections of cards that record:
    - why each card is in (membership);
    - which candidates were left out;
