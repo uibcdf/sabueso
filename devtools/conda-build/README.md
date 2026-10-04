@@ -195,6 +195,9 @@ route. Incremental setuptools builds can reuse stale `build/lib` modules when
 cached timestamps are newer than the source (#113). Preserve/remove generated
 build output before a clean build, then verify every packaged source module and
 resource before installing it:
+Generated root `sabueso.egg-info` can also shadow installed editable version metadata
+inside the checkout. Preserve it outside the checkout after diagnostic builds and
+verify editable runtime/distribution versions both inside and outside the checkout.
 
 ```bash
 python -m pip wheel --no-deps --no-build-isolation --no-cache-dir . --wheel-dir /tmp/sabueso-wheels

@@ -52,7 +52,7 @@ decision replaced the original representation), **direction** (non-binding visio
 | Clinical knowledge | Partial: `core/clinical.py`, ChEMBL phase/indications and cited NCT trials | ADMET, pharmacovigilance, pharmacology, contraindications and drug interactions are unimplemented; source/terms review first (#81/#83/#95). DrugBank remains deferred |
 | Tissue-specific isoforms and variants | Partial: UniProt alternative products, gnomAD pext/consequences and GTEx terms, `core/tissue_usage.py` | Isoform sequences are not fetched (#80); additional transcripts only when actual coverage needs them (#102) |
 | Comparing proteins and ligand sets | Implemented within stored source-supported identity and supplied residue-map scope: `card_diff.py`, `ligands.py`, `sequences.py` | General structure/sequence similarity and chemical-family enrichment are modeling/analysis or new scoped derived operations; never implicit identity |
-| Literature as knowledge | Partial: curated assertions/claims, located Europe PMC annotations, explanations and the new detached `tools/literature.py` literal rule | #92: original extraction intake/replay without relabeling it as curation, article metadata/terms, broader statement rules and explicit human validation; model extraction comes later |
+| Literature as knowledge | Partial: curated assertions/claims, located Europe PMC annotations, explanations and literal extraction with explicit intake/replay and original support/receipt persistence | #92: article metadata/terms, broader statement rules and explicit human validation; model extraction comes later |
 | Structural representations and model preparation | Partial: structures, constructs, author numbering, sites/interfaces and pinned inventory explanations | Structure-level cards are a design re-evaluation (#20), not a prerequisite for current inventory; modeling exchange needs MOLI/MolSysSuite owner agreement |
 | Query/packet contribution to Scientific Context | Partial: `core/packets.py`, pinned full/index packets, conflicts/unknowns, terms and automatic attribution | #71 / MOLI #22: bounded protein subject/aspects today; persistent Nextia consumer acceptance still needs an index, pinned read, explicit Evidence and citation surviving reacquisition |
 | Temporal knowledge | Partial: saved revisions, local `as_of`/`changed_since` and source versions | #91/#100: asking remote sources at historical releases is not implemented; local store time is not source-release time |
@@ -66,8 +66,11 @@ composition. Unreleased development extends observation to ChEMBL's five logical
 operations, preserving page/chunk identities, retries, empty answers, unavailable
 fixtures, failures and received subsets. Resource descriptions and source-native
 primary citations remain separate; missing metadata stays explicit. The new
-`literal_uniprot_mention@1` returns original extraction attribution without changing
-stored card schema 0.3.11. It is a detached extraction, not automatic card intake.
+`literal_uniprot_mention@1` returns original extraction attribution. Explicit intake
+and `ExtractionStore` preserve its original support and supplied runtime receipts;
+refresh does not rerun extraction. Scientific intake metadata starts unpublished
+schema 0.3.12; published 0.3.11 stays fixed. Payload-only refresh states the missing
+original runtime sidecar, and unknown fragment terms cannot bypass terms profiles.
 
 #108 is still partial: PubChem, BindingDB and other built-ins/custom clients remain
 unobserved; arbitrary views/deck operations and full bibliography are not covered.
@@ -83,9 +86,9 @@ operational test, not disclosure of pilot scientific content, validation of ever
 source's availability, or a claim that every source is observed. Original notebooks
 remain unchanged. Their application must explicitly retain sidecars when adopted.
 
-The development checkpoint passes 1,397 offline cases in the required Python 3.14
+The development checkpoint passes 1,415 offline cases in the required Python 3.14
 editable environment (26 online cases deselected). A byte-checked clean diagnostic
-wheel passes 89 unchanged acquisition/attribution/extraction integration cases
+wheel passes 107 unchanged acquisition/attribution/extraction/intake integration cases
 outside the checkout with public Ackredit 0.9.0, the public three-packet workflow
 and pip check. Ruff, frozen card shape, schema/registry, governance, dependency
 preflight and warning-failing Sphinx gates pass. The wheel check also rejects the
@@ -100,11 +103,12 @@ Evidence; MolSysSuite owns calculations, alignments and modeling interfaces.
 
 ## Proposed order and acceptance
 
-1. **Complete extraction intake (#92).** A publication-scoped, explicitly invoked
-   intake/replay path must preserve each original text identity/location, named tool
-   and version, terms gaps and original attribution. Save/load/refresh retains
-   historical support and does not route extractions through `CurationStore` as
-   human assertions. Any added persisted metadata starts the next unpublished schema.
+1. **Literal extraction intake (#92): implemented within the delivered rule.**
+   Explicit intake/replay preserves original text identity/location, tool/version,
+   terms gaps and supplied original attribution. Save/load/refresh retain historical
+   support; no extraction passes through `CurationStore` as human curation. Schema
+   0.3.12 is unpublished. Article metadata/terms, broader statement rules and later
+   validated model extraction remain bounded future work in #92.
 2. **Extend chemical observation (#108).** PubChem then BindingDB, based on exercised
    use. Preserve source-specific queries, versions, caps, native citations and actual
    local/network/archive routes; test empty/unavailable/unqueried/failed/partial

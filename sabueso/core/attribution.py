@@ -28,6 +28,12 @@ class AttributionRun:
     def __init__(self):
         self._records = []
         self._acquisitions = []
+        self._literature = []
+
+    @property
+    def literature(self) -> list[dict]:
+        """Original literal extraction/intake events, with distinct execution routes."""
+        return deepcopy(self._literature)
 
     @property
     def records(self) -> list[dict]:
@@ -60,6 +66,11 @@ def _load_backend():
     import ackredit
 
     return ackredit
+
+
+def _observe_literature(record):
+    for run in _runs.get():
+        run._literature.append(deepcopy(record))
 
 
 def _warning(operation, reason):

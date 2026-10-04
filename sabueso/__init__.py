@@ -21,6 +21,7 @@ from sabueso.core.errors import (
     SchemaError,
     StorageError,
 )
+from sabueso.core.extraction_store import ExtractionStore
 from sabueso.core.knowledge_store import KnowledgeStore
 from sabueso.core.migration import migrate_card, refresh_card
 from sabueso.core.packets import KnowledgePacket, KnowledgeQuery, compose_packet
@@ -78,6 +79,7 @@ __all__ = [
     "compose_packet",
     "knowledge_packet",
     "CurationStore",
+    "ExtractionStore",
     "KnowledgeStore",
     "RetrievalArchive",
     "migrate_card",

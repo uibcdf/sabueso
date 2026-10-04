@@ -129,6 +129,7 @@ def extract_literature_mentions(
         "bibliography_gaps": ["supplied_publication_metadata_not_declared"],
     }
     trace["provider"] = _credit(trace)
+    adapter._observe_literature(trace)
     return {
         "source_assertions": assertions,
         "relationships": relationships,

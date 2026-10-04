@@ -74,6 +74,15 @@ Cards, decks, stores, views and their derivation rules.
    :show-inheritance:
 ```
 
+## `sabueso.core.extraction_store`
+
+```{eval-rst}
+.. automodule:: sabueso.core.extraction_store
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```
+
 ## `sabueso.core.migration`
 
 ```{eval-rst}

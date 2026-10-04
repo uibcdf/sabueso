@@ -326,6 +326,13 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "quality.enrichments[].unlinked_pdb_mentions",
         )
     ],
+    "0.3.12": [
+        {"path": path, "filled_by": "extractions", "explicit_only": True}
+        for path in (
+            "quality.literature_extractions",
+            "relationships.mentioned_in.locations (literal extraction)",
+        )
+    ],
 }
 
 #: Qualifiers every relationship of their predicate has when fetched with the schema
@@ -611,6 +618,9 @@ def refresh_card(
         ),
     }
     refreshed.quality["migration"] = history + [record]
+    from .literature_extraction import preserve_extractions
+
+    preserve_extractions(card, refreshed)
     if store is not None:
         store.save(refreshed, note="refreshed from the sources")
     return refreshed, resolution

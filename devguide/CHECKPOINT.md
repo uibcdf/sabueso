@@ -43,8 +43,12 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 - Literal literature extraction (#92): `extract_literature_mentions` runs named rule
   `literal_uniprot_mention@1` on identified supplied fragments, with explicit
   namespace/official URL, Unicode offsets, input hash, original acquisition and
-  detached Ackredit attribution. Card intake/replay, broader statements and article
-  metadata/terms remain pending; extraction never becomes human curation.
+  detached Ackredit attribution. Explicit `Card.add_literature_extraction` and
+  `ExtractionStore` now preserve original support through storage/refresh and reuse
+  supplied original attribution. Payload-only refresh reports missing runtime
+  sidecars; inconsistent support, different subjects and unknown fragment terms
+  under a terms profile are refused. Broader statements and article metadata/terms
+  remain pending; extraction never becomes human curation.
 - Design/architecture review (#112): `pending_proposals/design_implementation_review.md`
   maps original plans and scientific functions to code/tests, remaining work, owners
   and bounded acceptance criteria. Peptides, much of the clinical layer and persistent
@@ -54,7 +58,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   A stale incremental wheel is rejected; a clean installed wheel passes all 89
   unchanged integration cases and the public three-packet saved-reader workflow.
   Published Conda artifacts and their qualification receipts remain immutable.
-- Local validation: 1,397 offline cases pass in Python 3.14; Ruff, schema/card shape,
+- Local validation: 1,415 offline cases and 107 installed integration cases pass
+  with public Ackredit 0.9.0. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote
   checkpoint CI is recorded in the owning issues after the ordinary code push.
@@ -109,14 +114,18 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     Windows × 3.11–3.14, and a clean public install on Python 3.14.
   - Zenodo archive: 10.5281/zenodo.23077926, verified to be identical to its tag; 0.7.0
     (10.5281/zenodo.23048186) and 0.6.0 (10.5281/zenodo.23038465) too.
-- **Current card schema:** 0.3.11 (`schemas/card_schema_0.3.11.yaml`), published in 0.12.0:
+- **Current development schema:** 0.3.12 (`schemas/card_schema_0.3.12.yaml`), unpublished:
+  explicit literal extraction intake adds scientific intake metadata and fragment
+  locations. Runtime records remain detached. Shape recorded separately; migration
+  is explicit and adds no automatic extraction gaps.
+- **Latest published card schema:** 0.3.11 (`schemas/card_schema_0.3.11.yaml`), published in 0.12.0:
   located UniProt accession annotations in explicit articles add optional locations
   and native article ids to `mentioned_in`, and supported PDB mentions add derived
   `structure_mentioned_in` context (#92). Release 0.11.0 writes 0.3.10.
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
     0.3.11; the clean-installed candidate froze 0.3.11 before publication.
   - The recorded shape of 0.3.10 is `schemas/card_shape_0.3.10.json`, fixed; current
-    development uses the frozen `schemas/card_shape_0.3.11.json`.
+    development uses `schemas/card_shape_0.3.12.json`; published shapes stay fixed.
 - **In 0.8.0:**
   - an integrity fix for users of 0.7.0: gnomAD changes next to exons the canonical
     transcript lacks are no longer placed on canonical residues through UniProt's

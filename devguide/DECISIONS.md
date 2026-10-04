@@ -2289,3 +2289,32 @@ remain #92; shared project routing stays MOLI #36/#18.
 The original-design review #112 maps actual implementation and remaining functions
 without converting illustrative future APIs into commitments. Clinical/peptide
 scope, persistent consumer acceptance and deferred mirrors retain their owners.
+
+## Explicit literal extraction intake and replay (2026-10-04)
+
+The maintainer authorized continuing the first design-review follow-up (#92/#112).
+`Card.add_literature_extraction` intakes the delivered `literal_uniprot_mention@1`
+result only for the exact UniProt subject, validating its original occurrence
+identity and relationship support before mutation. Existing occurrences keep their
+first stored retrieval times; alternative fragments retain support and qualifier
+forms. New scientific intake metadata starts unpublished schema 0.3.12; every
+published schema/shape remains immutable. Older cards require explicit migration.
+
+`ExtractionStore` is a component-local, versioned JSONL store of exact original
+results, independently of cards and human curation. It retains original portable
+attribution and unknown fragment terms; a content address detects changed records.
+Readers add no credit. Explicit application credits reused references with original
+use contexts and producer versions, and separately credits current intake software.
+Runtime intake records remain detached from scientific card hashes. Their card pin
+is the state at intake, before any subsequent mutation.
+
+Refresh preserves stored scientific support without re-executing the rule. Original
+receipts are reused only when supplied through the extraction store; otherwise a
+detached stored-support event states that original runtime attribution is missing.
+Missing historical assertions/relationships fail explicitly, and changing the
+subject never silently transfers an extraction. Unknown-rights fragments cannot
+enter a terms-profile card. `CurationStore` remains exclusively human curation.
+
+Article metadata/terms, broader statement rules and validated model extraction remain
+#92. This store and runtime format are Sabueso-local; MOLI still owns shared
+ProjectRecord/Recorda contracts and Nextia owns project Evidence.

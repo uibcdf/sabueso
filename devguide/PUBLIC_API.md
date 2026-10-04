@@ -16,8 +16,11 @@ shows how to use them.
   token boundaries and Unicode offsets are required. It makes no card intake,
   curation, identity merge, article fetch or biological inference (#92).
 
-- `sabueso.resolve(query, entity_type=None, profile=None, curations=None, **options)`
+- `sabueso.resolve(query, entity_type=None, profile=None, curations=None, extractions=None, **options)`
   returns `(card | None, resolution)`.
+  - Unreleased: `extractions` accepts an `ExtractionStore` or its path. It explicitly
+    applies original literal-rule results for the exact UniProt subject and records
+    reuse. It does not execute extraction; fragment terms remain unknown.
   - `query` is an identifier (UniProt accession, `pdb:`, `pubchem:`, `chembl:`,
     `pdb.ligand:`, `inchikey:`, a structure (`smiles:`, `inchi:`, matched by PubChem,
     #93), a disease id: `mondo:`, `doid:`, `orphanet:`, `omim:`,
@@ -84,12 +87,14 @@ shows how to use them.
   `records` accessor returns detached JSON records for completed packet composition.
   Its separate `acquisitions` accessor retains observed source operations, including
   failures. Collection is optional; runtime attachment is automatic.
+  Unreleased `literature` separately collects original literal-extraction execution
+  and intake/reuse events, including stored-support-only refresh gaps.
   Applications own Ackredit sessions. The required lazy adapter preserves per-result
   reused resources and contributes to enclosing captures/workflows; provider failures
   preserves knowledge and host records. Records carry source-record versions and
   exact support pins, separately from packets/terms. Acquisition uses the separate
   bounded source adapter described above. Ackredit is required in runtime
-  metadata/recipe; the next release is blocked by stable API/publication/3.14 closure.
+  metadata/recipe; public Ackredit 0.9.0 satisfies the qualified API floor.
   See the user attribution page and
   `examples/ackredit_pilot/`.
 
@@ -147,6 +152,15 @@ shows how to use them.
   - `compare(other, fields=None)` and `compare_knowledge(other, residue_map=None)`.
 - **Tables.** `table(view, **options)` gives flat rows; `sabueso.to_dataframe(rows,
   units=None)` needs pandas.
+- **Literal extraction (unreleased).**
+  - Unreleased `Card.add_literature_extraction(extraction)` preserves delivered
+    literal-rule support and returns a detached reuse event. An older card must be
+    explicitly migrated first; different subjects and inconsistent support are refused.
+    `Card.literature_intake_traces` returns copies of original runtime events and is
+    empty for payload-only readers. Unknown fragment terms cannot enter a terms-profile
+    card. `ExtractionStore(path).save(extraction)` preserves the exact original result;
+    `records()` reads without credit and `apply(card)` explicitly reuses matching
+    records. Neither API uses `CurationStore`.
 - **Curation.**
   - `add_literature_assertion(field_path, value, publication, curator, ...)`;
   - `add_literature_relationship(...)`;

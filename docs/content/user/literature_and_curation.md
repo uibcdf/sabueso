@@ -27,11 +27,48 @@ Publication metadata and fragment terms remain unknown when not supplied; a
 publication reference grants no reuse rights. Provider failures warn and preserve
 the scientific extraction with explicit failed attribution.
 
-This first rule runs entirely on supplied text. It does not fetch full text or
-automatically intake its result into a card or `CurationStore`; extraction and
-human curation remain distinct. Card intake, replay on refresh, article metadata
-and broader statement extraction remain tracked in Sabueso #92. Stored card schema
-0.3.11 is fixed.
+This rule runs entirely on supplied text. Explicit intake and original-result
+replay are available in unreleased development; article metadata/terms and broader
+statement extraction remain Sabueso #92. Intake starts unpublished card schema
+0.3.12; published 0.3.11 is fixed.
+
+### Intake, persistence and reuse (unreleased)
+
+```python
+extractions = sabueso.ExtractionStore("extractions.jsonl")
+extractions.save(result)  # exact original support and runtime attribution
+card, resolution = sabueso.resolve("uniprot:P60174", extractions=extractions)
+# Alternatively, explicitly intake into an existing current-schema card:
+event = card.add_literature_extraction(result)
+refreshed, resolution = sabueso.refresh_card(card, extractions=extractions)
+```
+
+The card retains the original SourceAssertions and supported relationships,
+including each occurrence's location, input hash and named extraction tool/version.
+Alternative fragments keep their support and qualifier forms. Intake requires the
+exact UniProt subject and rejects inconsistent support before mutation. Migrate an
+older card explicitly with `sabueso.migrate_card(card.to_dict())` first. Extraction
+is never exported or replayed as human curation through `CurationStore`.
+
+`ExtractionStore.records()` and saved card/portable readers add no credit. Explicit
+store application credits **reused references**, retaining original use contexts and
+producer versions, and credits the current intake software separately. Repeated
+intake does not change scientific payloads. The store holds original result JSON;
+it neither fetches text nor reruns extraction. Original terms remain unknown;
+intake cannot add unknown-rights fragments to a card built under a terms profile.
+
+Save `card.literature_intake_traces` separately for the intake execution record,
+or collect original extraction/intake events through `sabueso.attribution()` and
+its `literature` accessor. The event's card pin identifies the state at intake;
+later card mutations may create a different pin. Runtime records stay outside
+scientific card payloads and hashes.
+
+A refresh without an original extraction store still preserves stored scientific
+support and its original retrieval times. Its detached event says `stored_support`
+and `original_runtime_sidecar_not_supplied`; it cannot recreate original runtime
+credit. Supply the original store when attribution reuse is required. Missing
+stored support fails explicitly instead of reconstructing it. Provider failures
+preserve the scientific result with a diagnosed attribution gap.
 
 ## Literature on a card
 

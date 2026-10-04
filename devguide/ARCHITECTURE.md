@@ -72,8 +72,11 @@ do not implement project routing, EventLedger persistence or strict commit polic
    - kept across rebuilds by a `CurationStore`.
    Unreleased `tools.literature.extract_literature_mentions` runs a named literal
    rule on identified supplied text. Its statements, relationships and original
-   attribution remain detached; card intake and extraction replay are still #92.
-   Extractions never become human curation through `CurationStore`.
+   attribution remain detached. Explicit card intake preserves original support;
+   `ExtractionStore` retains exact original results independently of cards and
+   human curation. Refresh preserves support and explicitly reuses supplied original
+   receipts; a payload-only refresh reports missing runtime sidecars. Extractions
+   never become human curation through `CurationStore` (#92).
 9. **Storage and references** (`core.snapshot`, `core.knowledge_store`,
    `core.migration`, `tools.card.storage`, `tools.deck.storage`).
    - Content-addressed snapshots and pinned references, for cards, their items and

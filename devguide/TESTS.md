@@ -96,6 +96,12 @@ verifies exact namespaces/token boundaries, Unicode offsets, repeated occurrence
 support, original rule acquisition, input identity, saved attribution and provider
 failure. Both run unchanged outside the checkout in installed-provider CI lanes.
 
+`test_literature_intake_offline.py` adds original support/receipt replay, inert
+store and card readers, saved historical pins, refresh without rerunning extraction,
+explicit missing-sidecar gaps, alternative fragments, empty fragment scope, provider
+failure, exact subject/refused inconsistent closure and terms-profile boundaries.
+It also runs unchanged in installed-provider lanes and future staged artifact gates.
+
 Local diagnostic wheels additionally pass
 `devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):
 module/resource bytes and membership must match the source, excluding generated

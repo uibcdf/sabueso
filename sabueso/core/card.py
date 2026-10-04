@@ -10,7 +10,7 @@ from .quantities import field_node, quantity_columns, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
-CARD_SCHEMA_VERSION = "0.3.11"
+CARD_SCHEMA_VERSION = "0.3.12"
 
 
 def make_card_id(entity_type: str, subject_ref: str) -> str:
@@ -64,6 +64,32 @@ class Card:
         self.selection_rules = selection_rules or {}
         self.quality = quality or {}
         self._acquisition_trace = None
+        self._literature_intake_traces = []
+
+    @property
+    def literature_intake_traces(self) -> List[Dict[str, Any]]:
+        """Original intake/reuse events, detached from scientific serialization.
+
+        Save separately, or retain original results in an ExtractionStore. Readers
+        return an empty list; stored support alone cannot recreate execution credit.
+        """
+        from copy import deepcopy
+
+        return deepcopy(self._literature_intake_traces)
+
+    @arg_digest()
+    def add_literature_extraction(
+        self, extraction: Dict[str, Any], skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """Intake an original literal-rule result for this exact UniProt subject.
+
+        Original assertions, occurrence offsets and tool/configuration are retained.
+        The returned runtime event reuses original attribution without re-extraction.
+        Migrate an older card explicitly first. This is never human curation.
+        """
+        from .literature_extraction import add_extraction
+
+        return add_extraction(self, extraction)
 
     @property
     def acquisition_trace(self) -> Dict[str, Any] | None:

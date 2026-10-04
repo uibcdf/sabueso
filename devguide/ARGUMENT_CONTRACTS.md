@@ -25,7 +25,7 @@ support-library policy requires (uibcdf/sabueso#31) and as the sibling component
 
 `tests/core/test_argument_contracts_offline.py` discovers them. It finds every `get_*`
 of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
-`KnowledgeStore`, `CurationStore` and `KnowledgePacket`, so that a new one cannot miss its digesters. As of
+`KnowledgeStore`, `CurationStore`, `ExtractionStore` and `KnowledgePacket`, so that a new one cannot miss its digesters. As of
 2026-09-26 they are:
 
 - **Tools:** `resolve`, `resolve_protein_card`, `resolve_molecule_card`, `ligand_deck`,
@@ -34,6 +34,10 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   Unreleased `extract_literature_mentions` digests `text`, `identifier`, `publication`
   and `locator`; its semantic boundary additionally requires a canonical UniProt
   accession and an explicit fragment location. The public tool guard includes it.
+  `extraction` accepts a result mapping; semantic validation checks the delivered
+  rule, occurrence identity and relationship support before mutation. `extractions`
+  accepts an `ExtractionStore`, its path or None. Store constructor/save/apply and
+  `Card.add_literature_extraction` are digested; plain `records()` is an inert reader.
   Europe PMC's `get_annotations` digests `article_ids`: one `MED:<pmid>` or
   `PMC:PMC<id>` string, or a non-empty list/tuple, normalized to uppercase with
   duplicates removed in input order. Names, bare accessions and malformed ids are

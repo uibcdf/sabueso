@@ -10,6 +10,7 @@ project_root/
   data/
     knowledge.db        # KnowledgeStore: cards and decks with their revisions
     curation.jsonl      # CurationStore: curated statements, kept across rebuilds
+    extractions.jsonl   # ExtractionStore (unreleased): original rule results and attribution
     raw/                # optional: raw source payloads (tools.db get_* records)
     retrievals/         # optional: RetrievalArchive files, e.g. one per run (<run>.db)
     exports/            # optional: files to share

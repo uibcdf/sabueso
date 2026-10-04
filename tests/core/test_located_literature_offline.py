@@ -5,6 +5,7 @@ from copy import deepcopy
 import pytest
 
 import sabueso
+from sabueso.core.card import CARD_SCHEMA_VERSION
 from sabueso.core.errors import ArgumentError
 from sabueso.core.migration import rebuild_options
 from sabueso.core.snapshot import pinned_ref
@@ -69,7 +70,7 @@ def test_public_figure_mention_is_supported_by_its_own_source_statement():
 def test_round_trip_refresh_and_historical_assertion_reads(tmp_path):
     card = resolve([ARTICLE, "MED:18562316"])
     before = card.to_dict()
-    assert before["meta"]["schema_version"] == "0.3.11"
+    assert before["meta"]["schema_version"] == CARD_SCHEMA_VERSION
     store = sabueso.KnowledgeStore(tmp_path / "knowledge.db")
     store.save(card)
     assert store.load(card.pinned_ref()).to_dict() == before

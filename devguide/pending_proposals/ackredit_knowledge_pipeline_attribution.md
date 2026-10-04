@@ -303,12 +303,19 @@ Scientific returns/exceptions and the frozen card schema remain unchanged.
 The first standalone literal extraction in #92 additionally retains detached original
 Ackredit attribution without treating it as packet composition, human curation or a
 source download. `literal_uniprot_mention@1` names its tool/version/configuration and
-input hash. The application saves its original extraction result/trace; card intake
-and refresh replay are future work.
+input hash. Explicit `Card.add_literature_extraction` and `ExtractionStore` now
+preserve original scientific support and supplied runtime receipts through
+storage/refresh. Reuse retains original producer/use contexts; readers add no credit.
+Payload-only refresh states the missing sidecar instead of reconstructing attribution.
+New scientific intake fields use unpublished schema 0.3.12, with all published
+schemas/receipts unchanged. Broader rules and article metadata/terms remain #92.
 
 Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
-CI/release tests. Source and installed diagnostic receiving evidence uses public
+CI/release tests, alongside `test_literature_intake_offline.py` for original support
+and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
+The current checkpoint passes 1,415 source offline cases and 107 unchanged installed
+integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
 instrumentation preserves 19 observed acquisition records (18 received, one empty)

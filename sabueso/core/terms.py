@@ -132,11 +132,11 @@ BUILT_IN = {
     },
     "Literature": {
         "licence": "PUBLICATION-TERMS",
-        "attribution": "Cite the publication each statement was curated from.",
+        "attribution": "Cite the publication each statement was curated or extracted from.",
         "statement": None,
         "reviewed": None,
         "caveats": [
-            "A curated statement records a fact a publication states, with its locator "
+            "A curated or extracted statement records what a publication states, with its locator "
             "and at most a short quote; the publication's own terms are not recorded."
         ],
     },

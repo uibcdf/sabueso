@@ -7,7 +7,7 @@ from pathlib import Path
 import yaml
 
 import sabueso
-from sabueso.core.card import Card
+from sabueso.core.card import CARD_SCHEMA_VERSION, Card
 from sabueso.tools.db.uniprot import create_protein_card_from_file
 
 EVIDENCE = re.compile(r"evidence", re.IGNORECASE)
@@ -53,7 +53,7 @@ def test_card_has_stable_identity_from_primary_subject(tmp_path: Path):
         "temp_data/P52789.json", retrieved_at="2026-02-01"
     )
     assert card.id == "sabueso:protein:uniprot:P52789"
-    assert card.meta["schema_version"] == "0.3.11"
+    assert card.meta["schema_version"] == CARD_SCHEMA_VERSION
 
     db = tmp_path / "cards.db"
     card.to_sqlite(str(db))

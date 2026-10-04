@@ -83,7 +83,7 @@ def _discovered():
     import pkgutil
 
     import sabueso.tools.db as db
-    from sabueso import CurationStore, KnowledgeStore
+    from sabueso import CurationStore, ExtractionStore, KnowledgeStore
     from sabueso.core.packets import KnowledgePacket
 
     found = []
@@ -98,7 +98,14 @@ def _discovered():
             and callable(f)
             and getattr(f, "__module__", None) == module.__name__
         ]
-    for cls in (Card, Deck, KnowledgeStore, CurationStore, KnowledgePacket):
+    for cls in (
+        Card,
+        Deck,
+        KnowledgeStore,
+        CurationStore,
+        ExtractionStore,
+        KnowledgePacket,
+    ):
         for name, f in vars(cls).items():
             f = getattr(f, "__func__", f)
             if not name.startswith("_") and callable(f) and inspect.unwrap(f) is not f:

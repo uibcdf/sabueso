@@ -126,6 +126,7 @@ def resolve(
     profile: str | None = None,
     curations: Any = None,
     skip_digestion: bool = False,
+    extractions: Any = None,
     **options: Any,
 ) -> Tuple[Card | None, EntityResolution]:
     """Resolve ``query`` and build the card of its entity: ``(card, resolution)``.
@@ -141,6 +142,10 @@ def resolve(
     ``curations`` (a ``CurationStore`` or the path of one) applies the curated literature
     assertions recorded for the entity, with their outcomes recomputed against the
     fresh sources (``card.quality["curation_store"]``).
+
+    ``extractions`` (an ``ExtractionStore`` or its path) explicitly reuses original
+    literal-rule results for the exact UniProt subject, preserving original support
+    and detached attribution. It does not run an extractor or human curation.
 
     Inside ``RetrievalArchive.recording()``, every answer the build receives is
     archived, and the card lists them (``card.quality["retrievals"]``, #100).
@@ -166,6 +171,8 @@ def resolve(
                 _not_asked(card)
     if card is not None and retried:
         card.quality["retries"] = _http.retries_summary(retried)
+    if card is not None and extractions is not None:
+        extractions.apply(card)
     return card, resolution
 
 

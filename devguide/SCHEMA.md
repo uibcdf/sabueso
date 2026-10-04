@@ -2,6 +2,10 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
+  - `0.3.12` is unpublished development (#92): explicit literal extraction intake
+    adds `quality.literature_extractions` and occurrence locations with Unicode
+    offsets, locator and input hash. Original rule acquisition/support is retained;
+    detached runtime attribution stays in an `ExtractionStore` or sidecar;
   - `0.3.11` is the frozen schema of release 0.12.0: explicit Europe PMC article
     annotations add native article ids and per-occurrence locations to `mentioned_in`,
     and source-supported PDB mentions add derived `structure_mentioned_in` context,
@@ -135,9 +139,12 @@ Every SourceAssertion stored in `source_assertion_store` must include:
     (curator and date) records a person's confirmation. These are for extractions
     whose tool and version are known because Sabueso or its user ran them; a source
     that serves text-mined records is `database` with its `origin`. No extraction is
-    run automatically during card building yet. Unreleased
+    run automatically during card building. Unreleased
     `extract_literature_mentions` runs a named literal rule and returns detached
-    statements; its automatic card intake is still pending in #92.
+    statements. Explicit `Card.add_literature_extraction` or
+    `resolve(..., extractions=ExtractionStore(...))` preserves that original support;
+    refresh does not rerun the rule. Broader extraction and article metadata/terms
+    remain #92.
   An older SourceAssertion has none, and reads as `not_recorded`
   (`acquisition_of`), until its card is built again.
 

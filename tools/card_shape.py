@@ -282,6 +282,14 @@ def fixture_cards() -> List[dict]:
             covalent_residue=12,
             method="shape",
         )
+        # Synthetic, explicitly supplied mentions exercise original extraction
+        # intake and alternative fragment locations (0.3.12); no article is fetched.
+        for fragment in ("UniProt:P60174", "α UniProtKB:P60174"):
+            hstim.add_literature_extraction(
+                sabueso.extract_literature_mentions(
+                    fragment, "P60174", "pubmed:1", "Synthetic shape fragment"
+                )
+            )
         molecule, _ = sabueso.resolve(
             "pdb.ligand:BTS",
             chembl_client=chembl,

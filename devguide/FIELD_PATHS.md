@@ -106,6 +106,10 @@ Records of how the card was resolved and enriched, not source-stated fields:
 - `quality.alternatives` (values of different methods, representations or sources, not compared)
 - `quality.enrichments` (per-source enrichment outcomes)
 - `quality.entity_resolution` (resolution trace)
+- `quality.literature_extractions` (unpublished 0.3.12: scientific intake identity,
+  named intake/extraction rules, subject/publication, locator/input hash, original
+  assertion and relationship IDs, and unknown fragment terms; runtime records remain
+  separate)
 
 ---
 

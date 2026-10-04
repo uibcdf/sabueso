@@ -291,8 +291,13 @@ In order:
      fragments, returning detached per-occurrence SourceAssertions, supported
      relationships and original Ackredit attribution. It requires an explicit
      namespace/official URL; no names, bare accessions or biological findings.
-     Next: extraction intake/replay with original provenance, article metadata/terms
-     and broader statement rules, without relabeling extraction as curation.
+     Explicit intake/replay is implemented for this literal rule through
+     `Card.add_literature_extraction` and `ExtractionStore`: original support and
+     supplied receipts survive reuse, storage and refresh without human relabeling.
+     Payload-only refresh reports the missing original runtime sidecar. New scientific
+     intake metadata starts unpublished schema 0.3.12; 0.3.11 stays fixed.
+     Next: article metadata/terms and broader statement rules; unknown fragment
+     terms cannot bypass a source-admissibility profile.
      Literature packet coverage is published in `packet_aspects@6`
      (#71): both mention areas are indexed and their unknowns reported; automatic
      acquisition asks bibliography only, without guessing article ids.
