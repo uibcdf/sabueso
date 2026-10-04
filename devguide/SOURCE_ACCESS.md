@@ -80,6 +80,7 @@ BindingDB REST, fixture and installed-mirror affinity queries are also observed.
 PDB CCD component batches and UniChem InChIKey/source-id lookups are observed too.
 PDBe-KB ligand-site and interface-residue aggregates are also observed.
 AlphaFold DB model-list queries are observed with native per-model versions.
+InterPro family-site residue queries are observed with native header/fixture releases.
 `resolve_molecule_card` retains card/resolution traces; `ligand_deck` exposes detached
 `Deck.acquisition_trace`, with its native snapshot, result card pins and input protein
 pin. Ordinary deck operations and payload-only readers create no runtime trace.
@@ -104,7 +105,8 @@ Successful card returns name the final card pin, including refresh history. Each
 source event records source, operation, query, original executing package version,
 start/finish times, original retrieval time and a source version with an explicit
 basis (`entry_version`, `database_release`, `service_version`, `entry_revision`,
-`per_entry_revision`, `model_version`, `per_model_version`, `not_stated`).
+`per_entry_revision`, `model_version`, `per_model_version`, `response_header_release`,
+`fixture_declared_release`, `not_stated`).
 Decoded response identity uses canonical JSON (`response_identity.hash`); observed
 HTTP bodies additionally retain their raw `response_sha256` and archive reference
 where available. These are different identities. No whole raw response is copied
@@ -139,6 +141,30 @@ Unknown entry revisions remain unstated, not an invented database release.
 Identical primary metadata reuses a reference; different stated forms retain
 separate identities without overwriting earlier citations. Missing citation fields
 are explicit gaps. See `docs/content/user/attribution.md` for verified metadata sources.
+
+InterPro observes `site_residues`, the existing protein-scoped family-site query,
+not the complete domain/family catalog. `InterPro-Version` is a response-header
+release; fixture `version` is a fixture-declared release. Missing releases remain
+unknown, and no member/signature version or independently consulted UniProt release
+is inferred. Archive reuse/replay preserves the original header, retrieval time
+and decoded/wire identities, with no network attempts.
+
+Returned signature keys, native accession/name/member-database forms, location
+records and declared fragments retain source scope. Counts measure signature
+records, not mapped family sites or validated protein identity. Invalid signature
+records remain unobserved or partial, with actual received-subset credit. Signature
+receipt does not validate downstream mapping. Source-provided sequence positions
+do not imply a local alignment, InterProScan execution or member-database access.
+
+Empty objects/bodies and HTTP 204 preserve the existing evaluated-empty contract;
+HTTP 404 remains not-found. Neither proves whether the source knows the accession
+or simply states no sites. Missing fixtures are unavailable, offline access is
+unqueried, and failures keep their original exceptions. Unexpected decoded envelopes
+do not establish completed annotation credit. Resource-description bibliography is
+verified separately; member/signature/site citations and rights are not supplied
+by this operation. Scientific mapping, payloads, schema and inert saved readers
+remain unchanged. `test_interpro_acquisition_offline.py` runs unchanged in installed
+public-provider and future staged gates.
 
 Chemical identity access remains source-scoped: CCD's `components` event materializes
 its normalized identifier batch once, including generator inputs, and retains each

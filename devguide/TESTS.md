@@ -191,6 +191,15 @@ raw return parity, card/refresh pins, saved-reader inactivity, provider failure,
 custom gaps and concurrent capture have guards. The file runs unchanged with the
 public Ackredit floor in installed-provider CI and future staged gates.
 
+`test_interpro_acquisition_offline.py` covers native family-site residue queries,
+signature/member/position context, header/fixture releases (including zero/unknown),
+resource-description roles, original archive time/wire/header reuse, transport retries,
+empty bodies/objects/HTTP 204, ambiguous absence, HTTP 404 and original failures.
+Missing/malformed fixtures, unexpected/partial signature shapes, raw parity,
+card/refresh pins, inert saved readers, provider failure, custom-client gaps and
+concurrent capture have guards. The file runs unchanged with the public Ackredit
+floor in installed-provider CI and future staged gates.
+
 Local diagnostic wheels additionally pass
 `devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):
 module/resource bytes and membership must match the source, excluding generated

@@ -25,6 +25,8 @@ from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.interpro_acquisition import note_response, note_version, observe
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -36,6 +38,7 @@ class OnlineInterProClient:
     def __init__(self, timeout: float = 60.0) -> None:
         self.timeout = timeout
 
+    @observe()
     def site_residues(self, accession: str) -> Dict[str, Any]:
         url = f"{INTERPRO_API}/protein/uniprot/{accession}/?residues"
         request = Request(url, headers={"Accept": "application/json"})
@@ -44,7 +47,9 @@ class OnlineInterProClient:
             with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 body = resp.read()
                 version = resp.headers.get("InterPro-Version")
+                note_version(version)
         except HTTPError as exc:
+            note_version(exc.headers.get("InterPro-Version") if exc.headers else None)
             if exc.code in (204, 404):
                 raise RecordNotFoundError(NO_RESIDUES.format(accession)) from exc
             raise ConnectorError(
@@ -56,6 +61,7 @@ class OnlineInterProClient:
             ) from exc
         try:
             residues = json.loads(body) if body else {}
+            note_response(residues)
         except ValueError as exc:
             raise ConnectorError(
                 f"InterPro request for {accession} failed: {exc}"
@@ -81,6 +87,7 @@ class FixtureInterProClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @observe(fixture=True)
     def site_residues(self, accession: str) -> Dict[str, Any]:
         if accession in self.failing:
             raise ConnectorError(f"InterPro request for {accession} failed (simulated)")
@@ -88,6 +95,7 @@ class FixtureInterProClient:
         if not path.is_file():
             raise RecordNotFoundError(NO_RESIDUES.format(accession))
         saved = json.loads(path.read_text(encoding="utf-8"))
+        note_response(saved)
         return {
             "accession": accession,
             "retrieved_at": self.retrieved_at,
@@ -100,6 +108,7 @@ class FixtureInterProClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_site_residues(
     identifier: str, client: Any = None, skip_digestion: bool = False
 ):

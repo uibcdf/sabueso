@@ -2587,3 +2587,20 @@ description credit, separately from unreturned model-specific references; Sabues
 alone receives executed-software credit for this query. Original sidecars remain
 host-owned; saved readers stay inert. Shared MOLI persistence and consumer acceptance
 retain their existing owners.
+
+## 2026-10-04 — Observe InterPro's family-site query without inferring member execution
+
+The existing `site_residues` operation now retains native signature keys and
+accession/name/member forms, source-supplied locations, header/fixture release
+bases, original decoded/wire/archive identities, retries and reuse/replay (#108).
+Counts measure returned signature records, not mapped sites. Empty objects/bodies
+and HTTP 204 retain the original absence contract; HTTP 404 stays not-found.
+Neither distinguishes an unknown accession from no site annotation. Missing
+fixtures, unqueried access, unexpected/partial records and failure remain distinct.
+
+InterPro's resource description has verified complete bibliography. Unreturned
+member/signature/site references stay gaps; declared providers and source-provided
+positions do not claim direct member access, local alignment or InterProScan
+execution. Scientific mappings, identity, schema and original returns/exceptions
+remain unchanged. Saved readers remain inert. Applications retain original runtime
+sidecars; this local adapter does not establish a shared MOLI persistence contract.

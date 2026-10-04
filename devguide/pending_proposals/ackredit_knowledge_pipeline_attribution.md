@@ -314,7 +314,7 @@ Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
 CI/release tests, alongside `test_literature_intake_offline.py` for original support
 and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
-The current checkpoint passes 1,738 source offline cases and 428 unchanged installed
+The current checkpoint passes 1,779 source offline cases and 469 unchanged installed
 integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
@@ -468,3 +468,26 @@ description roles, with explicit gaps for model-specific method/provider citatio
 Raw returns, scientific maps, experimental/predicted separation and schema stay fixed.
 Card/refresh pins, inert saved reads and concurrent enclosing-capture contexts have
 guards. The unchanged regression file joins public-provider and future staged gates.
+
+## InterPro family-site residue observation (#108)
+
+Built-in online/fixture `site_residues` queries retain native signature keys,
+accession/name/member forms, locations/fragments and source-scoped counts. Counts
+measure returned signatures, not mapped sites. `InterPro-Version` and fixture
+`version` have header/fixture release bases; unknown versions are never filled
+from signature/member identifiers or independent UniProt metadata.
+
+Original decoded/wire/archive identities, retrieval times, retries and reuse/replay
+survive. Empty objects/bodies and HTTP 204, HTTP absence, unavailable fixtures,
+unqueried offline access and failures remain distinct. Empty answers cannot
+distinguish accession existence from missing site annotation. Unexpected shapes
+retain their receipt without completed annotation credit; partial signature maps
+retain actual received subsets. Scientific returns/exceptions, mappings, schema,
+card/refresh pins and inert saved readers stay unchanged.
+
+Verified InterPro resource-description bibliography has full original author and
+publication metadata. Missing member/signature/site citations stay explicit.
+Source-supplied positions and declared member resources do not claim local alignment,
+InterProScan execution or direct member access. Concurrent capture and installed
+public Ackredit receiving tests exercise this slice. Other built-ins/custom clients,
+further result types and application-side original-record persistence remain open.

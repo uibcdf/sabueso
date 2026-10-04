@@ -175,6 +175,28 @@ Card and refresh traces name exact final pins. Persist original JSON sidecars
 explicitly; saved card readers, prediction views and citation rendering add no
 new acquisition or execution credit.
 
+## InterPro family-site residues (unreleased)
+
+`interpro.get_site_residues` observes the existing protein-scoped site-residue
+query. Native signature keys/accessions, member-database declarations, locations
+and fragments retain their source scope. Counts mean returned signature records,
+not mapped family sites. The source provides the positions; Sabueso runs no
+alignment, InterProScan or member-database analysis in this operation.
+
+`InterPro-Version` and fixture `version` retain distinct header/fixture release
+bases. Missing versions remain unknown; member signatures and queried UniProt
+accessions do not establish additional releases or direct provider access.
+Archive reuse/replay retains original versions, response identities and retrieval
+times. Empty bodies/objects and HTTP 204, HTTP absence, unavailable fixtures,
+unqueried offline access and failures remain distinct. An empty answer cannot
+distinguish an unknown accession from one with no stated sites. Unexpected shapes
+receive no invented completed annotation credit; partial maps retain actual subsets.
+
+The InterPro resource-description citation is separate from missing member,
+signature and site citations. Source declaration does not establish rights to all
+member resources. Scientific cards/mappings/schema remain unchanged. Persist the
+original runtime sidecars; saved readers and bibliography rendering add no credit.
+
 ## PDBe-KB aggregate queries (unreleased)
 
 `pdbe_kb.get_ligand_sites` and `pdbe_kb.get_interface_residues` retain separate
@@ -367,6 +389,11 @@ global database release.
 
 The offline resource-description declarations were verified on 2026-10-02/04:
 
+- InterPro's [official resource references](https://www.ebi.ac.uk/training/online/courses/interpro-functional-and-structural-analysis/references/)
+  and [publisher metadata](https://api.crossref.org/works/10.1093/nar/gkae1082)
+  verify *InterPro: the protein sequence classification resource in 2025*, all 34
+  authors, Nucleic Acids Research 53/D1 D444-D456, DOI
+  `10.1093/nar/gkae1082`. Its issue year is 2025 (online in 2024).
 - AlphaFold's [official citation guidance](https://www.ebi.ac.uk/training/online/courses/alphafold/accessing-and-predicting-protein-structures-with-alphafold/how-to-cite-alphafold/)
   recommends the database papers `10.1093/nar/gkad1011` and `10.1093/nar/gkab1061`,
   and the background method paper `10.1038/s41586-021-03819-2`.

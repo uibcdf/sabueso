@@ -47,6 +47,7 @@ from sabueso.tools.db import (
 
 ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 TRACED = {
+    "interpro.get_site_residues",
     "alphafold.get_prediction",
     "pdbe_kb.get_ligand_sites",
     "pdbe_kb.get_interface_residues",

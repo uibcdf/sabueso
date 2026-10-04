@@ -388,6 +388,11 @@ In order:
      tool/provider/URL declarations, archive reuse, empty lists and failures.
      Model versions do not become database releases or experimental revisions;
      generation and coordinate download are not executed by this access.
+     InterPro family-site residue queries retain native signatures, locations,
+     header/fixture releases, archive reuse and distinct empty/unavailable/failure
+     outcomes. Empty answers cannot establish accession existence. Member-database
+     declarations do not claim direct access, alignment or InterProScan execution;
+     missing site/signature citations and release versions remain explicit.
      Other sources/custom clients, further result types and complete resource
      bibliography remain coverage work with explicit gaps in the published 0.12.0
      scope (#108). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;

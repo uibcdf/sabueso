@@ -78,6 +78,9 @@ shows how to use them.
   Unreleased AlphaFold DB `prediction` access keeps native model identities,
   per-model versions, declared tool/provider/URL context and original source receipts.
   It downloads no linked artifact and claims no local model-generation execution.
+  Unreleased InterPro `site_residues` access retains native signature/site context,
+  header/fixture releases, original archive receipts, empty and failed outcomes.
+  It runs no alignment/InterProScan and claims no direct member-database access.
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
   Deck.
 - `sabueso.resolve_disease_card(identifier)`, `sabueso.disease_targets(disease,

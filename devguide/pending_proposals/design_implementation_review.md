@@ -102,6 +102,14 @@ Recommended resource/background citations remain distinct from unreturned model-
 specific method/provider references. Unknown versions, partial lists, empty answers,
 original archives and failures remain explicit. Existing science and schemas stay fixed.
 
+InterPro's existing family-site residue query now retains signature/member/position
+scope, native header/fixture releases, original archive identities and distinct
+empty/absent/unavailable/unqueried/failed outcomes. Empty answers cannot establish
+accession existence. Member resources are declarations, not direct access;
+positions are source-supplied, with no local alignment/InterProScan execution.
+Resource-description credit does not fill missing member/signature/site citations.
+Scientific maps/cards/schema and payload-only saved readers remain unchanged.
+
 #108 is still partial: other built-ins/custom clients remain
 unobserved; arbitrary views/deck operations and full bibliography are not covered.
 Applications explicitly persist original runtime sidecars. Payload-only readers
@@ -116,9 +124,9 @@ operational test, not disclosure of pilot scientific content, validation of ever
 source's availability, or a claim that every source is observed. Original notebooks
 remain unchanged. Their application must explicitly retain sidecars when adopted.
 
-The development checkpoint passes 1,738 offline cases in the required Python 3.14
+The development checkpoint passes 1,779 offline cases in the required Python 3.14
 editable environment (26 online cases deselected). A byte-checked clean diagnostic
-wheel passes 428 unchanged acquisition/attribution/extraction/intake/explanation integration cases
+wheel passes 469 unchanged acquisition/attribution/extraction/intake/explanation integration cases
 outside the checkout with public Ackredit 0.9.0, the public three-packet workflow
 and pip check. Ruff, frozen card shape, schema/registry, governance, dependency
 preflight and warning-failing Sphinx gates pass. The wheel check also rejects the
