@@ -1,0 +1,361 @@
+{
+  "scope": "Published Sabueso 0.12.0/py_1: expanded RCSB traceability, exact staged qualification, unchanged public promotion, clean public installation and identical-tag Zenodo archive",
+  "date": "2026-10-04",
+  "owner_issues": [
+    "https://github.com/uibcdf/sabueso/issues/110",
+    "https://github.com/uibcdf/sabueso/issues/108"
+  ],
+  "candidate": {
+    "candidate_sha": "7739317e40623d70513d4c2bb483f015b3f3247c",
+    "producer_run_id": 37190652548,
+    "url": "https://conda.anaconda.org/uibcdf/label/staging/noarch/sabueso-0.12.0-py_1.tar.bz2",
+    "sha256": "8f18330174de99cd8a9c8ff3e281ad27f4e894b9ac9f692b6643253b64d65382",
+    "filename": "sabueso-0.12.0-py_1.tar.bz2",
+    "version": "0.12.0",
+    "build": "py_1",
+    "source_files_verified": 352,
+    "archive_check": "passed",
+    "provider_floor": "ackredit>=0.9.0"
+  },
+  "ci": {
+    "run_id": 37189004296,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/37189004296",
+    "candidate_sha": "7739317e40623d70513d4c2bb483f015b3f3247c",
+    "conclusion": "success",
+    "jobs": 15
+  },
+  "governance": {
+    "run_id": 37189004230,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/37189004230",
+    "conclusion": "success"
+  },
+  "producer_run": {
+    "run_id": 37190652548,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/37190652548",
+    "attempt": 1,
+    "conclusion": "success"
+  },
+  "producer_receipt": {
+    "events": [
+      {
+        "artifact": "sabueso-0.12.0-py_1.tar.bz2",
+        "build": "success",
+        "kind": "conda.package",
+        "platform": "noarch",
+        "sha256": "8f18330174de99cd8a9c8ff3e281ad27f4e894b9ac9f692b6643253b64d65382",
+        "upload": "success"
+      }
+    ],
+    "producer": {
+      "ref": "8da628d9b393e184c3bf3722708b19dcfbf7ef0a",
+      "repository": "uibcdf/action-build-and-upload-conda-packages"
+    },
+    "schema": "gh-run-receptor.events@1",
+    "subject": {
+      "head_sha": "7739317e40623d70513d4c2bb483f015b3f3247c",
+      "job_key": "conda_deployment_with_new_tag",
+      "matrix_index": null,
+      "repository": "uibcdf/sabueso",
+      "run_attempt": 1,
+      "run_id": 37190652548
+    }
+  },
+  "release_route_receipt": {
+    "candidate_sha": "7739317e40623d70513d4c2bb483f015b3f3247c",
+    "checked_at": "2026-10-04T08:58:51.061941+00:00",
+    "decision_by": "Diego Prada (Sabueso maintainer), RCSB extension and stable publication requested 2026-10-04; plan prepared by Codex; publication follows exact-artifact gates",
+    "gates": [
+      {
+        "run_id": 37189004296,
+        "workflow": ".github/workflows/ci.yml"
+      },
+      {
+        "run_id": 37189004230,
+        "workflow": ".github/workflows/moli-governance.yml"
+      }
+    ],
+    "reason": "A substantial knowledge and traceability release: located article intake and source-supported structural mention context (card schema 0.3.11), pinned literature explanations and packet terms, required automatic Ackredit packet attribution, and bounded UniProt/Europe PMC/RCSB source-acquisition traces (#110, #108). A new required dependency and additive schema require the staged route. Ackredit 0.9.0/py_0 is publicly delivered with verified portable API and supported dependency closure; metadata and public pins adopt the published minimum. Schema 0.3.11 is frozen from a clean installed preliminary candidate. The maintainer extended the scope to RCSB on 2026-10-04; use build 1 and a new source SHA rather than overwrite preliminary build 0. The same immutable staged artifact must pass clean installed-package gates, real attribution/acquisition regressions and the public workflow on Linux, macOS and Windows with Python 3.11-3.14 before publication.",
+    "route": "staged",
+    "schema": "sabueso.conda-route@1",
+    "version": "0.12.0"
+  },
+  "independent_archive_checks": [
+    "anonymous staging download matches producer SHA-256",
+    "index/embedded/distribution versions and package-critical resources",
+    "all 352 non-version Python/JSON files equal the candidate source; no extra/missing files",
+    "Conda and distribution metadata require ackredit>=0.9.0"
+  ],
+  "public_runtime_pins": {
+    "smonitor": {
+      "version": "0.17.0",
+      "build": "py_0",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/smonitor-0.17.0-py_0.tar.bz2",
+      "sha256": "44cbba98544dc1da6244b81a87b3f7f06f53e781c1eeaecec83ddf04f7bddfd1"
+    },
+    "pyunitwizard": {
+      "version": "0.27.0",
+      "build": "py_0",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/pyunitwizard-0.27.0-py_0.tar.bz2",
+      "sha256": "2102b1bd4e8188d4d150f90fcf093425d07fa2858993984016a6e7de10c3aaac"
+    },
+    "argdigest": {
+      "version": "0.13.0",
+      "build": "py_1",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/argdigest-0.13.0-py_1.tar.bz2",
+      "sha256": "273ae5053d0aaa2d207ec9a2c684588fe3da539219b1d91cdea3b1f8dd265007"
+    },
+    "depdigest": {
+      "version": "0.11.0",
+      "build": "py_2",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/depdigest-0.11.0-py_2.tar.bz2",
+      "sha256": "b6ba665d9125f49506b7e4231e6065f164d3b643117a22288b44baafceff270f"
+    },
+    "ackredit": {
+      "version": "0.9.0",
+      "build": "py_0",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/ackredit-0.9.0-py_0.tar.bz2",
+      "sha256": "37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1"
+    }
+  },
+  "installed_workflow": {
+    "run_id": 37190968604,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604",
+    "candidate_sha": "7739317e40623d70513d4c2bb483f015b3f3247c",
+    "conclusion": "success",
+    "jobs": 13,
+    "producer_check": "passed",
+    "installed_matrix": [
+      {
+        "name": "Install ubuntu-latest / Python 3.12",
+        "job_id": 111402890710,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604/job/111402890710",
+        "conclusion": "success",
+        "installed_gate": "passed",
+        "integration_tests": 56,
+        "public_three_packet_workflow": "passed",
+        "macos_arm64_check": "not applicable"
+      },
+      {
+        "name": "Install ubuntu-latest / Python 3.13",
+        "job_id": 111402890715,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604/job/111402890715",
+        "conclusion": "success",
+        "installed_gate": "passed",
+        "integration_tests": 56,
+        "public_three_packet_workflow": "passed",
+        "macos_arm64_check": "not applicable"
+      },
+      {
+        "name": "Install macos-26 / Python 3.12",
+        "job_id": 111402890720,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604/job/111402890720",
+        "conclusion": "success",
+        "installed_gate": "passed",
+        "integration_tests": 56,
+        "public_three_packet_workflow": "passed",
+        "macos_arm64_check": "passed"
+      },
+      {
+        "name": "Install macos-26 / Python 3.14",
+        "job_id": 111402890730,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604/job/111402890730",
+        "conclusion": "success",
+        "installed_gate": "passed",
+        "integration_tests": 56,
+        "public_three_packet_workflow": "passed",
+        "macos_arm64_check": "passed"
+      },
+      {
+        "name": "Install windows-latest / Python 3.14",
+        "job_id": 111402890731,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604/job/111402890731",
+        "conclusion": "success",
+        "installed_gate": "passed",
+        "integration_tests": 56,
+        "public_three_packet_workflow": "passed",
+        "macos_arm64_check": "not applicable"
+      },
+      {
+        "name": "Install ubuntu-latest / Python 3.14",
+        "job_id": 111402890756,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604/job/111402890756",
+        "conclusion": "success",
+        "installed_gate": "passed",
+        "integration_tests": 56,
+        "public_three_packet_workflow": "passed",
+        "macos_arm64_check": "not applicable"
+      },
+      {
+        "name": "Install macos-26 / Python 3.11",
+        "job_id": 111402890768,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604/job/111402890768",
+        "conclusion": "success",
+        "installed_gate": "passed",
+        "integration_tests": 56,
+        "public_three_packet_workflow": "passed",
+        "macos_arm64_check": "passed"
+      },
+      {
+        "name": "Install windows-latest / Python 3.12",
+        "job_id": 111402890773,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604/job/111402890773",
+        "conclusion": "success",
+        "installed_gate": "passed",
+        "integration_tests": 56,
+        "public_three_packet_workflow": "passed",
+        "macos_arm64_check": "not applicable"
+      },
+      {
+        "name": "Install ubuntu-latest / Python 3.11",
+        "job_id": 111402890776,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604/job/111402890776",
+        "conclusion": "success",
+        "installed_gate": "passed",
+        "integration_tests": 56,
+        "public_three_packet_workflow": "passed",
+        "macos_arm64_check": "not applicable"
+      },
+      {
+        "name": "Install windows-latest / Python 3.13",
+        "job_id": 111402890783,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604/job/111402890783",
+        "conclusion": "success",
+        "installed_gate": "passed",
+        "integration_tests": 56,
+        "public_three_packet_workflow": "passed",
+        "macos_arm64_check": "not applicable"
+      },
+      {
+        "name": "Install macos-26 / Python 3.13",
+        "job_id": 111402890791,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604/job/111402890791",
+        "conclusion": "success",
+        "installed_gate": "passed",
+        "integration_tests": 56,
+        "public_three_packet_workflow": "passed",
+        "macos_arm64_check": "passed"
+      },
+      {
+        "name": "Install windows-latest / Python 3.11",
+        "job_id": 111402890815,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37190968604/job/111402890815",
+        "conclusion": "success",
+        "installed_gate": "passed",
+        "integration_tests": 56,
+        "public_three_packet_workflow": "passed",
+        "macos_arm64_check": "not applicable"
+      }
+    ]
+  },
+  "independent_staged_linux_check": {
+    "python": "3.14.7",
+    "platform": "Linux",
+    "mode": "fresh ordinary Conda installation of the exact staged file; no editable or source overlays",
+    "prefix": "fresh independent Linux/Python 3.14.7 Conda environment",
+    "module_origin": "lib/python3.14/site-packages/sabueso/__init__.py inside that prefix",
+    "version": "0.12.0",
+    "sha256": "8f18330174de99cd8a9c8ff3e281ad27f4e894b9ac9f692b6643253b64d65382",
+    "installed_byte_check": "passed",
+    "production_installed_gate": "passed",
+    "frozen_card_round_trip": "passed",
+    "integration_tests": 56,
+    "skipped": 0,
+    "public_workflow": "passed",
+    "pip_check": "passed"
+  },
+  "github_release": {
+    "id": 402936748,
+    "url": "https://github.com/uibcdf/sabueso/releases/tag/0.12.0",
+    "tag": "0.12.0",
+    "tag_commit": "7739317e40623d70513d4c2bb483f015b3f3247c",
+    "draft": false,
+    "prerelease": false,
+    "published_at": "2026-10-04T09:15:28Z"
+  },
+  "release_event_workflow": {
+    "run_id": 37191571990,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/37191571990",
+    "conclusion": "success",
+    "route": "staged: no rebuild/public upload from release event"
+  },
+  "promotion_run": {
+    "run_id": 37191632488,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/37191632488",
+    "conclusion": "success"
+  },
+  "promotion_receipt": {
+    "package": "uibcdf/sabueso/0.12.0/noarch/sabueso-0.12.0-py_1.tar.bz2",
+    "schema": "uibcdf.conda-promotion@1",
+    "sha256": "8f18330174de99cd8a9c8ff3e281ad27f4e894b9ac9f692b6643253b64d65382",
+    "source_label": "staging",
+    "status": "verified",
+    "target_label": "main"
+  },
+  "public_poststate": {
+    "build_number": 1,
+    "checked_at": "2026-10-04T09:17:35.388452+00:00",
+    "coordinate": "noarch/sabueso-0.12.0-py_1.tar.bz2",
+    "labels": [
+      "main",
+      "staging"
+    ],
+    "registry": "https://api.anaconda.org/package/uibcdf/sabueso",
+    "schema": "sabueso.conda-poststate@1",
+    "sha256": "8f18330174de99cd8a9c8ff3e281ad27f4e894b9ac9f692b6643253b64d65382",
+    "state": "occupied",
+    "version": "0.12.0"
+  },
+  "independent_public_download": {
+    "url": "https://conda.anaconda.org/uibcdf/noarch/sabueso-0.12.0-py_1.tar.bz2",
+    "sha256": "8f18330174de99cd8a9c8ff3e281ad27f4e894b9ac9f692b6643253b64d65382",
+    "same_bytes_as_staging": true,
+    "labels": [
+      "staging",
+      "main"
+    ],
+    "filename": "sabueso-0.12.0-py_1.tar.bz2",
+    "version": "0.12.0",
+    "build": "py_1",
+    "date": "2026-10-04"
+  },
+  "independent_clean_public_install": {
+    "python": "3.14.7",
+    "platform": "Linux",
+    "mode": "fresh public-only Conda installation of the exact promoted file; no staging or source overlays",
+    "prefix": "fresh independent Linux/Python 3.14.7 Conda environment",
+    "module_origin": "lib/python3.14/site-packages/sabueso/__init__.py inside that prefix",
+    "version": "0.12.0",
+    "sha256": "8f18330174de99cd8a9c8ff3e281ad27f4e894b9ac9f692b6643253b64d65382",
+    "installed_byte_check": "passed",
+    "public_origin_and_production_api_checks": "passed",
+    "frozen_card_round_trip": "passed",
+    "integration_tests": 56,
+    "skipped": 0,
+    "public_workflow": "passed",
+    "pip_check": "passed"
+  },
+  "zenodo": {
+    "record_id": 23134375,
+    "version": "0.12.0",
+    "doi": "10.5281/zenodo.23134375",
+    "concept_doi": "10.5281/zenodo.22937375",
+    "url": "https://zenodo.org/records/23134375",
+    "archive": "uibcdf/sabueso-0.12.0.zip",
+    "size": 3154834,
+    "checksum": "md5:e471dce4d1b2cd839dabb1395b28b0b0",
+    "sha256": "9d9c0dd592bfb577c25052398e23433b357956b3ea5eaf46803b76534e18d744",
+    "source_files_verified": 1160,
+    "tag": "0.12.0",
+    "candidate_sha": "7739317e40623d70513d4c2bb483f015b3f3247c",
+    "source_comparison": "all archive files equal the qualified tag",
+    "date": "2026-10-04"
+  },
+  "frozen_card_receipt": "sabueso_0.12.0_local_schema_freeze_2026-10-03.json",
+  "superseded_preliminary_candidate_receipt": "sabueso_0.12.0_staged_2026-10-03.json",
+  "remaining_scope_gaps": [
+    "other sources/custom clients and further result types (#108)",
+    "unstated primary metadata and remaining resource/article/annotation bibliography",
+    "MOLI ProjectRecord/Recorda routing and durable recording policy (#36)"
+  ],
+  "pending_publication": []
+}

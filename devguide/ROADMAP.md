@@ -37,32 +37,27 @@ status, so that none is lost because a pilot has not asked for it yet.
 - **Maintainers may schedule a foundational objective on its own.** The pilots do not
   own the plan.
 
-## Prepared next release: 0.12.0 (#110)
+## Latest release: 0.12.0 (#110)
 
-The maintainer requested preparation on 2026-10-03. This staged candidate combines
-located literature and structural context, literature explanations, pinned packet
-terms, required Ackredit attribution and the first automatic acquisition trace.
+Published 2026-10-04 from qualified `7739317`, with unchanged `py_1` promotion,
+clean public installation and an identical-tag Zenodo archive. The 12 installed
+OS/minor lanes each pass 56 integration cases and the public three-packet workflow;
+receipt: `devtools/conda-build/receipts/sabueso_0.12.0_public_2026-10-04.json`.
+The superseded preliminary `py_0` archive/receipt remain immutable.
+
+This release combines located literature and supported structural mention context,
+literature explanations, pinned packet terms, required Ackredit attribution and
+UniProt/Europe PMC/RCSB acquisition traces. RCSB retains native entry revisions,
+primary citations, reuse, empty answers and per-entry failures with every fallback.
 It advances foundational support/terms/reference integrity and the pilot-driven
 need to retain original source access and per-result/workflow references.
+Schema 0.3.11 is frozen; original runtime JSON stays beside scientific payloads.
 
-On 2026-10-04 the maintainer extended acquisition to built-in RCSB single/batch
-structure queries and requested publication after qualification. The agreed scope
-is built-in UniProt/Europe PMC/RCSB. Other sources/custom clients, further result types, undeclared bibliography and Recorda integration
-remain open with explicit gaps; they do not claim completed coverage in this slice.
-Ackredit's public 0.9.0 delivery is adopted, with the published floor and exact
-public build/hash. Independent Linux receiving qualification passes on Python
-3.11–3.14 with the planned public core pins. The preliminary local Conda candidate
-passed the four Linux minors and supplied the clean-installed frozen 0.3.11 card.
-Preliminary candidate `4ef9ddc` passed exact-SHA CI and the actual staged-file
-Linux/macOS-arm64/Windows × Python 3.11–3.14 matrix; receipt:
-`devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json`.
-The RCSB extension requires a new source SHA and build `py_1`, preserving the old
-receipt/archive. Fresh exact-SHA CI and installed qualification precede stable
-publication, same-file promotion, clean public installation and archival.
-See the committed release plan, draft notes and route checklist in
-`devtools/conda-build/`. Publication is authorized after these gates pass.
+Other sources/custom clients, further result types, incomplete bibliography and
+MOLI ProjectRecord/Recorda integration remain open in #108/#36. Traceability remains
+mandatory. The next slices follow observed use and the foundational objectives below.
 
-## Delivered so far (0.1.0 → 0.11.0)
+## Delivered so far (0.1.0 → 0.12.0)
 
 - **Foundations.**
   - Card, Deck, `SourceAssertionStore` and `RelationshipStore`.
@@ -253,7 +248,7 @@ In order:
    and a disease's targets and drugs. Open: EFO terms MONDO does not map (#96).
 2. **What may be done with the knowledge (#29).** Released in 0.7.0: `Card.terms`,
    `Deck.terms`, `Deck.admissible`, depositor terms per PubChem assay, and terms
-   profiles (#94). Implemented after 0.11.0 (unreleased): read-time
+   profiles (#94). Released in 0.12.0: read-time
    `KnowledgePacket.terms(use, store)` for `packet_aspects@6`, with pinned support,
    separate bibliography/fragment terms and full/index parity. Next: historical
    scope adapters as use asks, and the shared vocabulary with MOLI.
@@ -262,7 +257,7 @@ In order:
    `changed_since`. Released in 0.11.0: an inventory item through
    `Deck.explain(card_id, structure_ref=..., ...)`, with the pinned relationship and
    SourceAssertion support of every group member (`structure_inventory_explanation@1`).
-   Implemented after 0.11.0 (unreleased): `Card.explain_literature(publication_ref)`
+   Released in 0.12.0: `Card.explain_literature(publication_ref)`
    traces stored publication links and both legs of structural mention context,
    preserving alternatives and recorded unlinked requests (`literature_explanation@1`).
    Next, as use asks: other views' derived items, including disease groups.
@@ -275,7 +270,7 @@ In order:
    - Released in 0.11.0: source access to located accession annotations for
      explicit articles (`get_annotations`), with provider, section and quote
      fragments. A public P60174 mention in a figure verifies the route. These
-     fragments are not complete sentences. Implemented after 0.11.0 (unreleased):
+     fragments are not complete sentences. Released in 0.12.0:
      explicit UniProt accession intake into cards, with native article ids,
      per-occurrence locations and SourceAssertions, terms and refresh through the
      recorded article requests (schema 0.3.11). Supported PDB mentions are now
@@ -323,11 +318,11 @@ In order:
      automatically on cards, resolutions and one-call packets. The public pilot
      saves those detached traces and credits completed access in the workflow.
      Other sources/custom clients, further result types and complete resource
-     bibliography remain coverage work with explicit gaps in the prepared 0.12.0
-     scope (#110). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;
+     bibliography remain coverage work with explicit gaps in the published 0.12.0
+     scope (#108). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;
      its published minimum and exact public pins replace the source overlay and
-     release blocker. Sabueso's own frozen-card/candidate/installed matrix still
-     precedes its release. The provider interpreter contract is delivered under
+     release blocker. Sabueso's own exact `py_1` archive passes all installed
+     OS/minor gates, public installation and archival under #110. The provider interpreter contract is delivered under
      ackredit#80, without metadata overrides. The provider corrected explicit
      author-object BibTeX rendering in ackredit#78; the pinned candidate includes it.
      Knowledge support, runtime use and terms retain

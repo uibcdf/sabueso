@@ -14,7 +14,7 @@ supersedes: []
 
 Status: required automatic packet-composition and bounded source-acquisition adapters
 implemented; broader pipeline
-coverage remains open with explicit gaps in the prepared 0.12.0 scope (#110).
+coverage remains open with explicit gaps in the published 0.12.0 scope (#108).
 Public Ackredit 0.9.0 delivery is adopted; Sabueso's own candidate/release gates remain.
 Owner: [uibcdf/sabueso#108](https://github.com/uibcdf/sabueso/issues/108).
 Shared boundary: [uibcdf/moli#36](https://github.com/uibcdf/moli/issues/36).
@@ -215,7 +215,10 @@ Linux/macOS-arm64/Windows × Python 3.11–3.14 installed lanes, with 36 integra
 tests and the public workflow in each. Independent clean Linux 3.14 also verifies
 installed bytes, the frozen card and pip check; receipt:
 `devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json`.
-Stable publication and promotion remain pending.
+The final RCSB extension is published from `7739317` as `py_1`, after fresh
+CI/installed qualification, unchanged promotion, clean public installation and
+identical-tag Zenodo archival. Its complete receipt is
+`devtools/conda-build/receipts/sabueso_0.12.0_public_2026-10-04.json`.
 
 The maintainer's editable workspace initially exposed a 0.8.0-based Git-version
 mismatch, reported in [provider #81](https://github.com/uibcdf/ackredit/issues/81).
@@ -235,9 +238,12 @@ checkouts. Public delivery and the clean-installed frozen 0.3.11 card are verifi
 preliminary candidate `4ef9ddc` passed its actual staged artifact gates. On
 2026-10-04 the maintainer requested RCSB before stable publication: native revisions,
 per-entry batch outcomes, all fallback requests and original primary citations.
-A new source SHA and build `py_1` must repeat all gates with the extended tests/pilot.
-The historical `py_0` receipt/archive stays immutable. Stable publication, promotion,
-clean public install and archival follow under #110.
+Final source `7739317` and build `py_1` repeat every gate: all 12 installed lanes
+and independent clean public installation pass 56 integration cases and the public
+three-packet workflow. Stable publication, unchanged promotion and identical-tag
+Zenodo archival are complete under #110. The historical `py_0` receipt/archive stays
+immutable. Native primary citations retain different stated metadata forms without
+overwriting earlier references; missing fields remain explicit.
 
 - Keep Ackredit required in metadata and the recipe. Lazy required import keeps
   saved readers free of backend loading. Missing/broken installations emit SMonitor

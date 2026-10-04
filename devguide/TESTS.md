@@ -39,7 +39,7 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   (`ARGUMENT_CONTRACTS.md`).
 - **Installed-package gates.** Release candidates are tested from the exact conda
   artifact, on Linux, macOS and Windows × Python 3.11–3.14, before publication
-  (`devtools/conda-build/README.md`). The prepared 0.12.0 gate additionally rejects
+  (`devtools/conda-build/README.md`). The 0.12.0 gate additionally rejects
   source-shadowed/inconsistent or incomplete Ackredit imports, then runs unchanged
   acquisition/attribution tests and the public saved-reader workflow outside both
   checkouts. Public Pytest/Receptor tooling is installed with Conda; no runtime
@@ -77,7 +77,10 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   reuse, empty/unavailable/unqueried/failure outcomes, chunking, fallbacks, partial
   completed credit, retries and saved readers. CI and the installed matrix copy and
   run it against the public Ackredit floor. The RCSB extension supersedes `py_0`
-  with a fresh `py_1` candidate and full installed qualification.
+  with the qualified `7739317`/`py_1` archive: all 12 installed lanes and clean
+  public installation pass 56 cases and the three-packet workflow. Publication,
+  unchanged promotion, public origins/bytes/API and identical-tag Zenodo are recorded
+  in `devtools/conda-build/receipts/sabueso_0.12.0_public_2026-10-04.json`.
   `dependency_preflight.py --release` now passes the adopted public closure;
   stale floors, omitted public pins and future unpublished providers still fail.
   Ackredit #81 tracks the earlier editable Git-version mismatch. The current

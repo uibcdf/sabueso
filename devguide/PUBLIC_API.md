@@ -1,6 +1,6 @@
 # Sabueso — Public API
 
-The public surface as of main after release 0.11.0. Anything not listed here, or not exported by
+The public surface as of main after release 0.12.0. Anything not listed here, or not exported by
 `sabueso`, is internal. Tools, views, stores and source access check their arguments
 through ArgDigest. Plain accessors (`get`, `set`, `sort`…) do not, and fail loudly on
 wrong types (`ARGUMENT_CONTRACTS.md` lists which is which). The user guide (`docs/`)
@@ -31,12 +31,12 @@ shows how to use them.
       #92);
       `europepmc={"article_ids": "PMC:PMC12400196"}` instead adds located accession
       mentions from explicit articles, with native locators and per-occurrence support
-      (unreleased). One MED/PMC id or a non-empty list is accepted; `limit` is not
+      (since 0.12.0). One MED/PMC id or a non-empty list is accepted; `limit` is not
       accepted with `article_ids`. It does not read names or scientific claims.
       Direct UniProt mentions remain `mentioned_in`. PDB mentions supported by
       source-stated structural associations add derived `structure_mentioned_in`
       relationships and conditional `literature().publications[].structure_mentions`,
-      with both identity and occurrence support retained (unreleased).
+      with both identity and occurrence support retained (since 0.12.0).
     - each source's `*_client`, and `resolver`.
   - For small molecules: `unichem`, `pubchem`, `chebi` (#83), `indications` and
     `trials` (#81).
@@ -47,7 +47,7 @@ shows how to use them.
 - `sabueso.resolve_protein_card`, `sabueso.resolve_molecule_card`: the card tools behind
   `resolve`; diseases through `sabueso.resolve_disease_card` (#90).
 - `Card.acquisition_trace`, `EntityResolution.acquisition_trace` and
-  `KnowledgePacket.acquisition_trace` (unreleased, #108): detached runtime source
+  `KnowledgePacket.acquisition_trace` (since 0.12.0, #108): detached runtime source
   events for declared built-in UniProt/Europe PMC/RCSB boundaries. Resolution failures
   returning no card retain their trace; escaping exceptions also carry it.
   `knowledge_packet` retains its intake, while composition from existing cards
@@ -68,7 +68,7 @@ shows how to use them.
 
 ## Knowledge packets (prototype, #71; contract in uibcdf/moli#22)
 
-- `KnowledgePacket.attribution` (unreleased, #108) automatically retains a detached
+- `KnowledgePacket.attribution` (since 0.12.0, #108) automatically retains a detached
   composition record outside the scientific payload and hashes. Its accessor returns
   an independent copy; payload-only saved readers return `None` and add no credit.
   Save the original JSON sidecar alongside the scientific packet.

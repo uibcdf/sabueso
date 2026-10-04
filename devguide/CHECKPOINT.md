@@ -5,57 +5,46 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-10-04, after release 0.11.0.*
+*Last updated: 2026-10-04, after release 0.12.0.*
 
-## Release preparation
+## Release qualification
 
-- **Authorized 0.12.0, staged route (#110):** literature context, pinned terms and
-  explanations, required Ackredit attribution and bounded
-  UniProt/Europe PMC/RCSB source-acquisition traces.
-  The committed plan is `devtools/conda-build/release_plan.toml`; reusable draft
-  notes are `devtools/conda-build/release_notes_0.12.0.md`.
-- Preparation adopts qualified builder `8da628d9b393e184c3bf3722708b19dcfbf7ef0a`
-  and extends the exact installed-file matrix with provider origin/API checks,
-  copied attribution/acquisition regressions and the public offline workflow.
-- Ackredit's real 0.9.0 staging file is independently verified. Fresh Linux
-  receiving installs pass all 36 attribution/acquisition cases and the public
-  workflow on Python 3.11–3.14 with Sabueso's exact public runtime pins; receipt:
-  `devtools/conda-build/receipts/ackredit_0.9.0_public_2026-10-03.json`.
-  This uses a local consumer wheel, not a staged Sabueso Conda file.
-- **Public provider adopted:** Ackredit 0.9.0/py_0 is published with the same
-  qualified SHA-256. Metadata/recipe/environments require `>=0.9.0`; the installed
-  gate pins and checks its public file/hash. CI obtains it from public Conda;
-  the source overlays and public-dependency blocker are removed together.
-- **Local candidate verified:** the preliminary Conda 0.12.0 file at `01d5bf2`
-  passes installed-byte/origin/API checks, all 36 integration regressions, the public
-  workflow and pip check on Linux × Python 3.11–3.14. Its clean 3.14 install writes
-  `schema_0.3.11__P60174.json`; receipt:
-  `devtools/conda-build/receipts/sabueso_0.12.0_local_schema_freeze_2026-10-03.json`.
-  The schema/shape are now frozen.
-- **Preliminary staged candidate qualified (superseded scope):** `4ef9ddc7dc8a9e01ce430ef3d30f5d9cb94006a6`
-  passes CI 37159503827 (15/15) and governance 37159503801. Producer 37159798707
-  builds `sabueso-0.12.0-py_0.tar.bz2`, SHA-256
-  `8a3910eacd4f63945708d9fe6339cf578ae2a9d1958a02a391db2dbc23c6b347`.
-  Installed workflow 37160115178 passes its producer check and all 12
-  Linux/macOS-arm64/Windows × Python 3.11–3.14 installs, with 36 integration
-  tests and the public workflow per lane. Independent clean Linux 3.14 verifies
-  installed bytes, the frozen card, APIs and pip check. Receipt:
-  `devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json`.
-  The maintainer requested RCSB coverage before stable publication on 2026-10-04.
-  Preserve this historical receipt/archive. A new source SHA and `py_1` candidate
-  must pass fresh CI, staging and all 12 installed lanes before publication.
-  Publication, promotion, clean public installation and Zenodo remain pending.
-  Latest published release remains 0.11.0.
-- **Editable workspace verified (2026-10-04):** all 14 installed workspace packages
-  remain editable in `molsyssuite@uibcdf_3.14`. Ackredit now derives
-  a 0.9.0-based development version from its 0.9.0 tag; runtime/distribution
-  versions agree
-  and the environment's pip check passes. The receiving fix is reported in provider
-  #81, now closed through provider #82.
+- **0.12.0 published (#110):** qualified source/tag
+  `7739317e40623d70513d4c2bb483f015b3f3247c`, with required public Ackredit >=0.9.0.
+  CI 37189004296 passes 15/15 and governance 37189004230 passes. Producer 37190652548
+  builds `sabueso-0.12.0-py_1.tar.bz2`; all 352 non-version Python/JSON files match
+  the source. Installed matrix 37190968604 passes 13/13: producer evidence and all
+  Linux/macOS-arm64/Windows × Python 3.11–3.14 lanes, each with 56 integration
+  cases and the public three-packet saved-reader workflow.
+- Promotion 37191632488 preserves digest
+  `8f18330174de99cd8a9c8ff3e281ad27f4e894b9ac9f692b6643253b64d65382` and verifies
+  the public poststate. Independent anonymous public download matches staging bytes.
+  A fresh public-only Linux/Python 3.14.7 install with a new cache passes installed
+  bytes/origins/API, frozen-card reading, all 56 cases, the workflow and pip check.
+  Zenodo's 1160 source files equal the tag. Complete receipt:
+  `devtools/conda-build/receipts/sabueso_0.12.0_public_2026-10-04.json`.
+- The superseded `4ef9ddc`/`py_0` staged archive and original qualification receipt
+  remain immutable. Schema 0.3.11 remains the clean-installed frozen public card
+  recorded in `sabueso_0.12.0_local_schema_freeze_2026-10-03.json`; runtime RCSB
+  traceability adds no fields to scientific serialization.
+- **Editable workspace:** all 14 installed workspace packages remain editable in
+  `molsyssuite@uibcdf_3.14`. Ackredit's 0.9.0-based runtime/distribution versions agree;
+  the environment's pip check passes. Provider #81 is closed through #82.
+  Separate environments qualify public/candidate distributions.
 
 ## Release and schema
 
-- **Latest release:** 0.11.0 (2026-10-02).
+- **Latest release:** 0.12.0 (2026-10-04).
+  - Public `uibcdf` noarch package for Linux, macOS Apple Silicon and Windows ×
+    Python 3.11–3.14, built and promoted without replacing its verified archive.
+  - Located article/structural mentions, pinned packet terms and literature explanations.
+    Required automatic packet attribution and UniProt/Europe PMC/RCSB acquisition
+    traces retain versions, citations, reuse, empty answers and failures.
+  - Card schema 0.3.11; runtime trace formats remain separate and provisional.
+  - Zenodo archive: [10.5281/zenodo.23134375](https://doi.org/10.5281/zenodo.23134375),
+    source ZIP 3,154,834 bytes, MD5 `e471dce4d1b2cd839dabb1395b28b0b0`, all 1160
+    files identical to the qualified tag. Conda is distributed separately.
+- **0.11.0** (2026-10-02).
   - Published on the `uibcdf` conda channel, as a `noarch` package for Python 3.11–3.14.
   - Staged candidate b1f3b6e; sha256
     `670f2bf6a390c01e45d12b2cd203f79057aa8e9c7fe2166ea3fb1b075058c43f`.
@@ -89,12 +78,12 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     Windows × 3.11–3.14, and a clean public install on Python 3.14.
   - Zenodo archive: 10.5281/zenodo.23077926, verified to be identical to its tag; 0.7.0
     (10.5281/zenodo.23048186) and 0.6.0 (10.5281/zenodo.23038465) too.
-- **Current card schema:** 0.3.11 (`schemas/card_schema_0.3.11.yaml`), frozen for 0.12.0:
+- **Current card schema:** 0.3.11 (`schemas/card_schema_0.3.11.yaml`), published in 0.12.0:
   located UniProt accession annotations in explicit articles add optional locations
   and native article ids to `mentioned_in`, and supported PDB mentions add derived
   `structure_mentioned_in` context (#92). Release 0.11.0 writes 0.3.10.
   - Published versions keep their frozen cards in `temp_data/frozen_cards/`: 0.3.0 to
-    0.3.10; the clean-installed candidate freezes 0.3.11 before publication.
+    0.3.11; the clean-installed candidate froze 0.3.11 before publication.
   - The recorded shape of 0.3.10 is `schemas/card_shape_0.3.10.json`, fixed; current
     development uses the frozen `schemas/card_shape_0.3.11.json`.
 - **In 0.8.0:**
@@ -200,7 +189,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   section, tags and quote fragments. The public fixture includes P60174 in a figure
   of PMC12400196 (CC BY 4.0). It does not enrich cards or extract claims (#92).
 
-## Development after 0.11.0 (unreleased)
+## Delivered in 0.12.0
 
 - Explicit located UniProt accession intake uses
   `europepmc={"article_ids": "PMC:PMC12400196"}` through the declared enricher (#92).
@@ -270,9 +259,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   The immutable provider digest is
   `37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1`.
   These receipts verify provider delivery/receiving compatibility; Sabueso's
-  preliminary staged Conda candidate passed its separate OS/minor matrix in #110;
-  the RCSB extension requires a new `py_1` candidate and fresh qualification;
-  stable publication remains pending.
+  final `7739317`/`py_1` candidate passes its separate OS/minor matrix and public
+  installation under #110; stable publication, promotion and Zenodo are complete.
   UniProt/Europe PMC/RCSB description citations are verified offline; other descriptions,
   target articles and annotation-provider bibliography remain explicit gaps.
   Broader acquisition coverage and the shared record boundary remain open.
@@ -335,7 +323,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1343 tests passed, 26 online tests deselected (2026-10-04, in
+- Offline suite: 1363 tests passed, 26 online tests deselected (2026-10-04, in
   `molsyssuite@uibcdf_3.14`, with all installed workspace packages editable and the
   required real Ackredit editable provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.
@@ -348,16 +336,17 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 - Plan and status of every objective: `ROADMAP.md`. It integrates the foundational plan
   and the pilot-driven route.
-- **Next:** explicit located UniProt accession mentions now enter cards in development
+- **Next:** explicit located UniProt accession mentions now enter cards in 0.12.0
   (#92), with per-occurrence support, unknown article terms and recorded refresh
-  requests (schema 0.3.11, frozen candidate). Supported PDB mention context is also
+  requests (published schema 0.3.11). Supported PDB mention context is also
   implemented. Own extraction remains open. The public literature draft awaits human
   review before actual curation intake. Further candidates are in `ROADMAP.md`
   ("Next candidates") and in the user
   guide's gaps (`DOCS_GAPS.md`: wave-2 sources and the
   comparative context have no pages of their own).
-- **Literature packets:** both mention areas are covered in unpublished
-  `packet_aspects@6`, including their index references, rule and unknowns (#71).
+- **Literature packets:** both mention areas are covered in
+  `packet_aspects@6`, published in 0.12.0, including their index references, rule and
+  unknowns (#71).
 - **Waiting on Nextia:** MOLI accepted the index level (uibcdf/moli#22, 2026-10-01). It
   closes with a consumer test (index, an item read by its pin, a Nextia Evidence, a
   citation that survives a new acquisition), when Nextia has its first persistent

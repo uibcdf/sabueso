@@ -35,7 +35,7 @@ A `KnowledgeQuery` is structured, not free text:
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
 by a named, versioned mapping. Development after 0.11.0 uses `packet_aspects@6`
-(unreleased): direct UniProt mentions and supported PDB mention context join the
+(since 0.12.0): direct UniProt mentions and supported PDB mention context join the
 literature index and unknowns. Automatic acquisition asks Europe PMC for
 bibliography only. Released `@5` added GTEx's tissue terms
 (UBERON, or EFO for a cell line) to `biological_context`, next to the gnomAD pext they
@@ -114,7 +114,7 @@ or summarized beyond counting (`packet_index@1`), and `unknowns`, `conflicts` an
 
 An index and a full packet are never compared (`same_knowledge` is `None`).
 
-### Literature mentions (unreleased)
+### Literature mentions (since 0.12.0)
 
 The literature index distinguishes `relationships.mentioned_in` (a direct UniProt
 mention) from `relationships.structure_mentioned_in` (a PDB mention with a
@@ -156,7 +156,7 @@ Sabueso does not authorize. An index reveals what exists, how much and from wher
 without values. Before an index, a packet or an item reaches anyone, the platform
 applies the recipient's disclosure policy (uibcdf/moli#22).
 
-## Read the support's terms (unreleased)
+## Read the support's terms (since 0.12.0)
 
 `packet.terms("redistribution", store)` follows represented statement support at
 the exact saved card pins. It reports source-stated terms, attribution, restrictions

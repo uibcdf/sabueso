@@ -88,7 +88,7 @@ Failures raise `ConnectorError`. This route returns source records; it does not 
 locations or scientific claims to a card. Article terms govern storage of text
 fragments, and the response's `version` is None when no source release is stated.
 
-### Keep located mentions on a card (unreleased)
+### Keep located mentions on a card (since 0.12.0)
 
 Use explicit articles to add their located accession mentions to a protein card:
 
@@ -147,7 +147,7 @@ The `commercial` and `non_commercial` terms profiles exclude this intake before
 fetching. Schema 0.3.11 adds these optional locations and structure context; published 0.3.10 cards are kept
 unchanged.
 
-### Explain a publication's links (unreleased)
+### Explain a publication's links (since 0.12.0)
 
 ```python
 explanation = card.explain_literature("pubmed:40832834")

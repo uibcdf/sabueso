@@ -1,6 +1,6 @@
 # Automatic traceability and attribution
 
-In development after 0.11.0, every completed packet composition attaches
+Since 0.12.0, every completed packet composition attaches
 `packet.attribution`. It keeps the resources behind selected stored statements, their
 original source-record versions and pins, and the software executing composition.
 The records are separate from the packet, its hashes and its terms report.
@@ -161,8 +161,9 @@ lanes pin public Ackredit 0.9.0/py_0 on Python 3.11–3.14 and run the unchanged
 integration tests and public workflow outside both checkouts. Provider delivery
 issues [#22](https://github.com/uibcdf/ackredit/issues/22),
 [#75](https://github.com/uibcdf/ackredit/issues/75) and
-[#80](https://github.com/uibcdf/ackredit/issues/80) are closed. Sabueso 0.12.0 still
-requires its own exact-artifact qualification and public installation checks.
+[#80](https://github.com/uibcdf/ackredit/issues/80) are closed. Sabueso 0.12.0 passes its own exact-artifact OS/minor matrix and clean
+public installation, with the full receipt in the repository's
+`devtools/conda-build/receipts/sabueso_0.12.0_public_2026-10-04.json`.
 
 ## Scope and bibliography
 

@@ -23,15 +23,22 @@ the displayed report may briefly lag a new push while CI finishes.
 
 ## Current release status
 
-- **Latest release:** [0.11.0](https://github.com/uibcdf/sabueso/releases/tag/0.11.0)
-  (2026-10-02), distributed through the `uibcdf` conda channel.
+- **Latest release:** [0.12.0](https://github.com/uibcdf/sabueso/releases/tag/0.12.0)
+  (2026-10-04), distributed through the `uibcdf` conda channel.
   - One `noarch` package for Linux, macOS Apple Silicon (arm64) and Windows,
-    on Python 3.11–3.14.
-  - The exact package was inspected and tested on all 12 combinations, including
-    an explicit Apple Silicon architecture check. A clean public install on Python
-    3.14 verified its digest, quantities and the new behavior.
-  - It writes card schema 0.3.10; `sabueso.migrate_card` reports what older cards lack.
-  - Archived on Zenodo, verified to be identical to its tag:
+    on Python 3.11–3.14. The exact `py_1` archive passes all 12 installed lanes;
+    a fresh public-only Linux/Python 3.14 install verifies its bytes, quantities,
+    56 attribution/acquisition cases, the public workflow and pip check.
+  - Card schema 0.3.11 adds located article mentions and source-supported structural
+    mention context. Pinned terms and literature explanations preserve support.
+  - Ackredit >=0.9.0 is required. Automatic packet and UniProt/Europe PMC/RCSB
+    acquisition records preserve versions, reused references, empty answers and
+    failures. Structural intake retains native entry revisions and primary citations.
+    Save original runtime JSON beside scientific objects; broader coverage stays explicit.
+  - Archived on Zenodo, all 1160 source files verified against the qualified tag:
+    [10.5281/zenodo.23134375](https://doi.org/10.5281/zenodo.23134375).
+  - Complete [publication receipt](devtools/conda-build/receipts/sabueso_0.12.0_public_2026-10-04.json).
+  - 0.11.0 is archived on Zenodo, verified to be identical to its tag:
     [10.5281/zenodo.23099139](https://doi.org/10.5281/zenodo.23099139).
   - Users who exported literature extractions with earlier versions: upgrade.
     `CurationStore` now keeps rule/model extractions out of human-curation export;
@@ -90,16 +97,16 @@ it (`conda install -c conda-forge pandas`) to turn tables into DataFrames. Avoid
 its package lacks a data file and cannot build cards (#35). Sabueso is not published on
 PyPI.
 
-For development, provision the Conda environment. The required Ackredit source
-candidate supports Python 3.11–3.14; Python 3.14 is the routine development version:
+For development, provision the Conda environment with public runtime dependencies,
+including Ackredit >=0.9.0. Python 3.14 is the routine development version:
 
 ```bash
 conda env create -n sabueso-dev -f devtools/conda-envs/development_env.yaml
 conda activate sabueso-dev
 ```
 
-Install the pinned required Ackredit source candidate using
-[the development provisioning instructions](devtools/conda-envs/README.md), then:
+Follow [the development provisioning instructions](devtools/conda-envs/README.md),
+then install the local checkout:
 
 ```bash
 pip install --no-deps --editable .
@@ -115,7 +122,7 @@ Start with:
 - `devguide/CHECKPOINT.md` for the current repository baseline, and
   `devguide/ROADMAP.md` for the plan (the foundational plan and the pilot-driven route,
   integrated);
-- `schemas/card_schema_0.3.4.yaml` for the current card schema, and
+- `schemas/card_schema_0.3.11.yaml` for the current card schema, and
   `schemas/card_schema.yaml` for the conceptual draft it grew from.
 
 Common quality gates:

@@ -1,5 +1,24 @@
 # Sabueso — Decision Log
 
+## Complete exact-artifact 0.12.0 publication and archival (2026-10-04, #110)
+
+- Select qualified `7739317` for the immutable 0.12.0 tag. Its `py_1` archive matches
+  all 352 non-version Python/JSON source files, passes exact-SHA CI/governance and
+  all 12 installed OS/minor lanes, with 56 integration cases and the public workflow.
+- Publish the stable GitHub release and promote those same staging bytes. Verify
+  the public registry poststate and an independent anonymous download. A public-only
+  clean Linux/Python 3.14.7 environment with a new cache checks origins, installed
+  bytes/API, frozen-card reading, 56 cases, the workflow and pip check.
+- Verify Zenodo 10.5281/zenodo.23134375: its source ZIP checksum/size and all 1160
+  files equal the qualified tag. Keep Conda distribution separate from source archival.
+  Record all evidence in `sabueso_0.12.0_public_2026-10-04.json`, preserving the
+  superseded `py_0` and schema-freeze receipts without overwriting them.
+- Add the actual publication date/version DOI and current released behavior to
+  maintained documentation in a follow-up metadata/receipt commit. This does not
+  move the qualified tag or rebuild the public archive. #110 completes the release;
+  #108 remains open for source/result/bibliography coverage and MOLI's record boundary.
+
+
 ## Extend RCSB traceability before authorized 0.12.0 publication (2026-10-04, #108/#110)
 
 - The maintainer requested structural queries, native versions, reuse, empty answers,

@@ -2,7 +2,7 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
-  - `0.3.11` is frozen for the 0.12.0 candidate (publication pending): explicit Europe PMC article
+  - `0.3.11` is the frozen schema of release 0.12.0: explicit Europe PMC article
     annotations add native article ids and per-occurrence locations to `mentioned_in`,
     and source-supported PDB mentions add derived `structure_mentioned_in` context,
     with their SourceAssertions and identity basis. Enrichment records preserve the
@@ -405,7 +405,7 @@ A Relationship is first-class, traceable knowledge:
     `journal`, `year`, `open_access`, and `preprint`. Its SourceAssertions record
     `acquisition: {method: database, origin: text_mining}`. A mention says the paper
     names the entry, never what it states about it.
-    Schema 0.3.11 (frozen for the 0.12.0 candidate) adds optional `article` and `locations` qualifiers
+    Schema 0.3.11 (published in 0.12.0) adds optional `article` and `locations` qualifiers
     for explicit article annotations, and a distinct derived predicate:
     `structure_mentioned_in` (protein → publication, one per `structure_ref`).
     A printed legacy PDB code and matching PDBe tag identify the mentioned entry;

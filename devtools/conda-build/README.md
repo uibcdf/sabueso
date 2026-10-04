@@ -164,5 +164,26 @@ and its historical receipts; select a new full SHA, build `py_1`, and repeat exa
 CI, archive inspection and the full installed matrix with the RCSB tests and extended
 public workflow. The stable tag must select the newly qualified SHA, and promotion
 must preserve that new archive digest. Evidence-only follow-ups do not change it.
-Stable publication, promotion, clean public installation and Zenodo are still
-pending; the latest published version is 0.11.0.
+The subsequent RCSB candidate is published as 0.12.0/py_1; its completed receipt
+is below. The old py_0 archive is historical and was never promoted.
+
+## Published 0.12.0 with RCSB traceability
+
+Qualified source/tag `7739317e40623d70513d4c2bb483f015b3f3247c` passes CI
+37189004296 (15/15) and governance 37189004230. Producer 37190652548 builds
+`sabueso-0.12.0-py_1.tar.bz2`, SHA-256
+`8f18330174de99cd8a9c8ff3e281ad27f4e894b9ac9f692b6643253b64d65382`.
+All 352 non-version Python/JSON files equal the source. Installed matrix
+37190968604 passes producer evidence and all 12 OS/minor lanes, each with 56
+integration cases and the public identity/literature/structures workflow.
+
+The stable GitHub release selects that tag. Promotion 37191632488 preserves the
+same archive and verifies its public labels/digest. An anonymous public download
+matches the staging bytes. A fresh public-only Linux/Python 3.14.7 environment,
+with a new package cache, passes installed bytes/origins/API, the frozen card,
+56 cases, the workflow and pip check. Zenodo DOI `10.5281/zenodo.23134375` holds
+1160 source files identical to the qualified tag; the Conda artifact is separate.
+The complete receipt is `receipts/sabueso_0.12.0_public_2026-10-04.json`.
+
+Post-publication metadata and receipt commits do not change the release tag or
+archive. The preliminary `py_0` receipt remains historical; never overwrite it.

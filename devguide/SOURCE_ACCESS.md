@@ -24,7 +24,7 @@ Each module holds the source's clients and its public `get_*` functions:
 Europe PMC additionally exposes `get_annotations(article_ids)` for explicit MED/PMC
 articles. It keeps accession-number annotations with source-native locations and
 quote fragments. Explicit card intake uses `europepmc={"article_ids": ...}`
-(unreleased, #92); the accession search keeps bibliography. Each located occurrence
+(since 0.12.0, #92); the accession search keeps bibliography. Each located occurrence
 has its own SourceAssertion, and its fragments remain governed by article terms.
 Clients added since #82 name Sabueso over HTTP through `tools/db/_http.py`.
 Card building uses the same clients, so there is one way to query each source. The
@@ -70,7 +70,7 @@ it.
 ## Required acquisition traceability (#108, moli#36)
 
 Traceability is mandatory and automatic for supported boundaries. The first slice
-in development covers the built-in online and fixture clients for UniProt entry
+released in 0.12.0 covers the built-in online and fixture clients for UniProt entry
 and search, Europe PMC mentions and explicit article annotations, and RCSB
 single/batch structure lookup. Other sources and custom clients are explicitly `not_observed`; this is incomplete pipeline
 coverage. New sources must declare their observation coverage and test its gaps.

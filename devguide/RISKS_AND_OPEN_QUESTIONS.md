@@ -28,10 +28,9 @@
   Recorda routing, correlation and strict recording policy remain platform-owned
   work. The 0.12.0 scope (#110) does not claim complete pipeline traceability.
   Failed tracking can leave partial workflow credits; result records retain
-  failure status and host support. Sabueso's preliminary Conda candidate has its frozen
-  schema and passed all installed OS/minor gates. The RCSB extension requires a new
-  immutable build and fresh qualification before stable publication. RCSB's primary
-  citation fields may be incomplete; gaps and different stated metadata forms remain
+  failure status and host support. Sabueso's final `7739317`/`py_1` archive passes
+  all 12 installed lanes and a fresh public-only installation; stable publication, unchanged promotion and identical-tag
+  Zenodo archival are complete. RCSB's primary citation fields may be incomplete; gaps and different stated metadata forms remain
   explicit, without runtime enrichment.
 - **SourceAssertion growth**: preserving all values can create very large cards and stores.
 - **Mapping fragility**: changes in source APIs can break field mappings.

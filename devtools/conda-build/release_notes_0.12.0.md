@@ -1,8 +1,9 @@
 # Sabueso 0.12.0 — Literature context and automatic traceability
 
-Draft for the staged candidate; this version has not been published. Publication
-requires the verified public Ackredit dependency and the exact installed-package
-gates in `release_plan.toml` and `README.md`.
+Published 2026-10-04 from qualified source `7739317`, after exact-SHA CI,
+the complete installed-package matrix and unchanged promotion. Clean public
+installation and identical-tag Zenodo archival are verified in
+`receipts/sabueso_0.12.0_public_2026-10-04.json`.
 
 ## Located literature context
 
