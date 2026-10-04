@@ -121,9 +121,21 @@ if sites:  # When the card also holds ligand-site statements.
 Protein and molecule support keep distinct pins, original source versions and
 actual identity, class and name choices. Deck membership and its snapshot describe
 the supplied deck; load the original saved deck separately for historical reads.
-Duplicate members are retained as multiple partial items. The existing ligand
-counter called `bioactivity.measurements` counts source records (#118); the
-explanation states that basis beside the nested measurement-group/record counts.
+Duplicate members are retained as multiple partial items. In unreleased development,
+`bioactivity.measurements` counts distinct included measurement groups across all
+matched molecule records; `bioactivity.records` counts included source records.
+An original and its declared copy are one group and two records, even when they
+appear in separate matched molecule items. Counts do not imply independent
+experimental confirmation. The named default is `ligand_measurement_count@2` (#118).
+
+Release 0.12.0 counts source records in `bioactivity.measurements`. To reproduce
+that numeric policy in development, pass
+`counting_rule="ligand_measurement_count@1"` to `ligands`, `compare_ligands` or
+`explain_ligand`. Both policies retain the new `records` field and
+`measurement_counting` metadata. The explanation uses `ligand_deck_explanation@2`
+and lists exact counted group/record ids beside the pinned source support.
+Load historical card/deck pins separately; the count policy is explicit and changes
+no stored card, measurement grouping, class voters or attribution.
 
 Site support retains selected annotated fields, alternatives/conflicts and stored
 structure instances. No annotated overlap is not external absence or proof of

@@ -75,7 +75,10 @@ do not implement project routing, EventLedger persistence or strict commit polic
      support, actual identity/class/name choices, annotated fields/conflicts,
      structure instances and native deck snapshot/membership metadata remain
      explicit. Duplicate deck members are not selected silently. Other derived
-     views remain #91 work; the ligand record/group counter correction is #118.
+     views remain #91 work. The #118 count correction uses versioned
+     `ligand_measurement_count@2` across all matched items, separately retaining
+     source records and exact counted ids (`ligand_deck_explanation@2`). Explicit
+     `@1` reproduces the published numeric counter without changing stored cards.
 7. **Decks** (`core.deck`). Collections of cards that record:
    - why each card is in (membership);
    - which candidates were left out;

@@ -16,6 +16,9 @@ from typing import Any, Dict, List, Set
 
 from .bioactivities import CLASS_ORDER
 from .labels import molecule_label
+from .relationship_store import make_derivation
+
+COUNTING_RULE = "ligand_measurement_count@2"
 
 
 def _records(molecule_card: Any) -> Set[str]:
@@ -54,15 +57,22 @@ def ligands_view(
     include_indirect: bool = False,
     thresholds: Dict[str, Any] | None = None,
     *,
+    counting_rule: str = COUNTING_RULE,
     _support=None,
 ) -> Dict[str, Any]:
     """Per molecule of ``deck``: its bioactivity on ``card`` and its structures.
 
-    Returns ``{"items", "unmatched", "scope", "classification"}``. Each item lists the
-    structures where the molecule is observed and, among them, those where the PDB
+    Returns items, unmatched records, scope, classification and measurement counting.
+    ``ligand_measurement_count@2`` counts distinct included measurement groups across
+    matched molecule records. ``@1`` reproduces the legacy source-record counter.
+    ``bioactivity.records`` always counts distinct included source relationships.
+    Each item lists the structures where the molecule is observed and, among them,
+    those where the PDB
     declares it subject of investigation. ``unmatched`` lists the molecule records of the
     protein card that no card of the deck covers.
     """
+    if counting_rule not in {"ligand_measurement_count@1", COUNTING_RULE}:
+        raise ValueError(f"Unknown ligand counting rule: {counting_rule!r}")
     bio = card.bioactivities(include_indirect=include_indirect, thresholds=thresholds)
     by_molecule = {item["molecule_ref"]: item for item in bio["items"]}
     excluded: Dict[str, int] = {}
@@ -89,6 +99,11 @@ def ligands_view(
             continue
         covered |= records
         best = min(measured, key=lambda m: CLASS_ORDER.index(m["class"]), default=None)
+        measured_records = {
+            m["relationship_id"]: m for entry in measured for m in entry["measurements"]
+        }
+        groups = sorted({m["group"] for m in measured_records.values()})
+        record_ids = sorted(measured_records)
         name = molecule_card.get("names.canonical_name")
         name_link = next(
             (
@@ -123,7 +138,10 @@ def ligands_view(
                         (m["best_pchembl"] for m in measured if m["best_pchembl"]),
                         default=None,
                     ),
-                    "measurements": sum(len(m["measurements"]) for m in measured),
+                    "measurements": len(groups)
+                    if counting_rule == COUNTING_RULE
+                    else sum(len(m["measurements"]) for m in measured),
+                    "records": len(record_ids),
                 }
                 if best
                 else None,
@@ -159,6 +177,8 @@ def ligands_view(
                     "item": items[-1],
                     "records": sorted(records),
                     "measured_refs": [m["molecule_ref"] for m in measured],
+                    "measurement_group_ids": groups,
+                    "measurement_record_ids": record_ids,
                     "best_class_ref": best["molecule_ref"] if best else None,
                     "structure_flags": seen,
                     "site_relationship_ids": [
@@ -182,6 +202,17 @@ def ligands_view(
         "unmatched": sorted(referenced - covered),
         "scope": bio["scope"],
         "classification": bio["classification"],
+        "measurement_counting": make_derivation(
+            counting_rule,
+            inputs=[card.pinned_ref(), *[c.pinned_ref() for c in deck.cards]],
+            parameters={
+                "measurement_identity": bio["measurement_identity"]["rule"],
+                "measurements": "distinct included measurement group ids across matched molecule items"
+                if counting_rule == COUNTING_RULE
+                else "included source records summed across matched molecule items (legacy)",
+                "records": "distinct included source relationship ids across matched molecule items",
+            },
+        ),
     }
 
 
@@ -192,17 +223,22 @@ def compare_ligands(
     other_deck: Any,
     include_indirect: bool = False,
     thresholds: Dict[str, Any] | None = None,
+    *,
+    counting_rule: str = COUNTING_RULE,
 ) -> Dict[str, Any]:
     """Molecules related to both proteins, side by side, and those related to only one.
 
-    Returns ``{"self_ref", "other_ref", "shared", "only_self", "only_other", "classification"}``. The comparison
-    juxtaposes the two ligand views and derives nothing new.
+    Returns protein refs, shared/unique molecules, classification and both pinned
+    counting derivations. The comparison juxtaposes the two ligand views and
+    derives nothing new.
     """
-    mine = {
-        i["molecule_ref"]: i
-        for i in ligands_view(card, deck, include_indirect, thresholds)["items"]
-    }
-    view = ligands_view(other, other_deck, include_indirect, thresholds)
+    mine_view = ligands_view(
+        card, deck, include_indirect, thresholds, counting_rule=counting_rule
+    )
+    mine = {i["molecule_ref"]: i for i in mine_view["items"]}
+    view = ligands_view(
+        other, other_deck, include_indirect, thresholds, counting_rule=counting_rule
+    )
     theirs = {i["molecule_ref"]: i for i in view["items"]}
 
     def side(entry: Dict[str, Any]) -> Dict[str, Any]:
@@ -233,4 +269,8 @@ def compare_ligands(
         "only_self": sorted(set(mine) - set(theirs)),
         "only_other": sorted(set(theirs) - set(mine)),
         "classification": view["classification"],
+        "measurement_counting": {
+            "self": mine_view["measurement_counting"],
+            "other": view["measurement_counting"],
+        },
     }

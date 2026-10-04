@@ -1,5 +1,25 @@
 # Sabueso — Decision Log
 
+## Count ligand measurements separately from source records (2026-10-04, #118)
+
+- Default to `ligand_measurement_count@2`: count distinct included group ids across
+  every matched measured-molecule item, including source/parent forms. Summing
+  each item's group count could still count a cross-item group more than once.
+  Add `bioactivity.records` for distinct included source relationship ids.
+- Expose keyword-only `counting_rule` through `ligands`, `compare_ligands` and
+  `explain_ligand`, preserving positional compatibility and validating through
+  ArgDigest. Explicit `ligand_measurement_count@1` reproduces the published numeric
+  source-record counter; both rules add record counts and pinned counting metadata.
+  This is a versioned read-time integrity correction, not a stored-schema migration.
+- Advance the unreleased crossing explanation to `ligand_deck_explanation@2`:
+  preserve exact counted group/record ids, selected counting basis and original
+  pinned source support. Historical card/deck reads apply the explicitly selected
+  policy without acquisition, new credit or rewriting saved knowledge.
+- Retain `measurement_identity@1`, `bioactivity_class@3`, assay filters, ambiguity,
+  discordance, class voters, copy-only fallback, unmatched records and site rules.
+  Groups never imply independent experimental confirmation. Published 0.12.0
+  artifacts, schemas, fixtures and release receipts remain immutable.
+
 ## Explain stored ligand crossings and site classes at distinct card pins (2026-10-04, #91/#118)
 
 - Add `Card.explain_ligand_site(ligand_site_ref)` under

@@ -737,11 +737,20 @@ class Card:
         include_indirect: bool = False,
         thresholds: Dict[str, Any] | None = None,
         skip_digestion: bool = False,
+        *,
+        counting_rule: str = "ligand_measurement_count@2",
     ) -> Dict[str, Any]:
-        """This protein crossed with a deck of SmallMoleculeCards (``ligand_deck``)."""
+        """This protein crossed with a deck of SmallMoleculeCards (``ligand_deck``).
+
+        ``bioactivity.measurements`` counts distinct included groups and ``records``
+        counts source records. Explicit ``counting_rule="ligand_measurement_count@1"``
+        reproduces the legacy measurement counter; the stored cards stay unchanged.
+        """
         from .ligands import ligands_view
 
-        return ligands_view(self, deck, include_indirect, thresholds)
+        return ligands_view(
+            self, deck, include_indirect, thresholds, counting_rule=counting_rule
+        )
 
     @arg_digest()
     def explain_ligand(
@@ -751,16 +760,26 @@ class Card:
         include_indirect: bool = False,
         thresholds: Dict[str, Any] | None = None,
         skip_digestion: bool = False,
+        *,
+        counting_rule: str = "ligand_measurement_count@2",
     ) -> Dict[str, Any]:
         """Explain this protein's crossing with an exact molecule card id in a deck.
 
-        ``ligand_deck_explanation@1`` retains protein/molecule pins, source-stated
+        ``ligand_deck_explanation@2`` retains protein/molecule pins, source-stated
         identities, measured classes, structural/site support and deck membership.
+        It records exact counted group/record ids and the selected counting rule.
         Duplicate members remain explicit; no identifier resolution or acquisition occurs.
         """
         from .ligand_explanation import explain_ligand
 
-        return explain_ligand(self, molecule_ref, deck, include_indirect, thresholds)
+        return explain_ligand(
+            self,
+            molecule_ref,
+            deck,
+            include_indirect,
+            thresholds,
+            counting_rule=counting_rule,
+        )
 
     @arg_digest()
     def compare_ligands(
@@ -771,12 +790,20 @@ class Card:
         include_indirect: bool = False,
         thresholds: Dict[str, Any] | None = None,
         skip_digestion: bool = False,
+        *,
+        counting_rule: str = "ligand_measurement_count@2",
     ) -> Dict[str, Any]:
         """Molecules related to this protein and to ``other``, side by side."""
         from .ligands import compare_ligands
 
         return compare_ligands(
-            self, deck, other, other_deck, include_indirect, thresholds
+            self,
+            deck,
+            other,
+            other_deck,
+            include_indirect,
+            thresholds,
+            counting_rule=counting_rule,
         )
 
     @arg_digest()

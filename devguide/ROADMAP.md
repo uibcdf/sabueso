@@ -288,8 +288,12 @@ In order:
    trace actual annotated overlap and protein/molecule crossing support at distinct
    card pins, with native deck snapshot/membership context. Duplicate members,
    absence/numbering/instance limits and original source conflicts remain explicit.
-   Other derived explanations remain open; ligand record/group count correction
-   is #118. Missing activity-only copy diagnostics are corrected in #117.
+   Other derived explanations remain open. The #118 correction counts distinct
+   included groups across matched molecule items (`ligand_measurement_count@2`),
+   retaining explicit source-record counts, selected rules and exact counted ids
+   under `ligand_deck_explanation@2`. Explicit `@1` preserves the published numeric
+   counter; scientific grouping/classes, stored cards and historical pins stay fixed.
+   Missing activity-only copy diagnostics are corrected in #117.
 4. **Literature beyond manual curation (#92).**
    - Released in 0.7.0: how each statement entered (`acquisition`: database, curation, rule
      extraction, model extraction, validation).

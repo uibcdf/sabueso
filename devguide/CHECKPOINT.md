@@ -111,9 +111,12 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   source-stated identity, class/name choices, sites, structure flags and native
   deck snapshot/membership context. Duplicate members remain explicit and partial;
   missing support never becomes absence. Readers acquire nothing or add credit.
-  The existing source-record counter labelled measurements is reported in #118;
-  explanations state its actual basis alongside nested group/record counts.
-- Local validation: 1,606 offline cases and 296 installed integration cases pass
+  The #118 correction defaults to `ligand_measurement_count@2`: distinct included
+  groups across matched molecule items, plus explicit source `records`.
+  Explicit `@1` reproduces the published numeric counter. Views/comparisons retain
+  pinned counting derivations; `ligand_deck_explanation@2` lists counted group and
+  record ids with original support. Class/voter/scope policies and storage stay fixed.
+- Local validation: 1,631 offline cases and 321 installed integration cases pass
   with public Ackredit 0.9.0. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote

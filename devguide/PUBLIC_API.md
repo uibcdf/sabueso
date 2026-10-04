@@ -144,6 +144,11 @@ shows how to use them.
     `terms_propagation@1`, #29; also `Deck.terms(use)` and `Deck.admissible(use)`);
   - `bioactivities(include_indirect=False, thresholds=None)`;
   - `ligands(deck, ...)` and `compare_ligands(deck, other, other_deck, ...)`;
+    unreleased keyword-only `counting_rule="ligand_measurement_count@2"` counts
+    distinct included groups across matched molecule items; explicit `@1` retains
+    the published source-record counter. `bioactivity.records` reports distinct
+    included source relationships under either rule. `measurement_counting` records
+    the rule, original input pins and counting bases (per side for comparisons);
   - `literature()` and `claims(topic=None)`;
   - `clinical()` (molecules: indications and trials, #81);
   - `knowledge_state()`;
@@ -221,9 +226,9 @@ shows how to use them.
   conflicts, original support, numbering and stored structural-instance context.
   No stored annotation/overlap is not external absence; absent instance data keeps
   `spans_chains=None`, and source relevance statements remain separate.
-  Unreleased `explain_ligand(molecule_ref, deck, include_indirect=False, thresholds=None)`
+  Unreleased `explain_ligand(molecule_ref, deck, include_indirect=False, thresholds=None, *, counting_rule="ligand_measurement_count@2")`
   selects the exact SmallMoleculeCard id from `ligands(deck)`
-  (`ligand_deck_explanation@1`). Protein and molecule inputs keep distinct pins.
+  (`ligand_deck_explanation@2`). Protein and molecule inputs keep distinct pins.
   Actual identity links, class selection, names, measured groups, sites, structure
   flags and deck membership remain visible. Duplicate deck members are retained
   as multiple `items` with partial status, never selected by snapshot/order.
@@ -231,9 +236,14 @@ shows how to use them.
   are not invented KnowledgeStore deck references. Load a saved named/pinned deck
   separately for historical reads. Missing support is partial, missing items are
   not absence, and readers acquire nothing or add credit.
-  The existing ligand view's `bioactivity.measurements` counts source records
-  (#118); this explanation states that basis and retains nested group/record counts.
-  Correcting that public counter is separate work; site/class policies are unchanged.
+  The #118 correction counts distinct included group ids in `bioactivity.measurements`
+  and source relationship ids in `bioactivity.records`. Crossing inputs retain both
+  sorted id lists, including groups spanning matched molecule/parent items.
+  Explicit `counting_rule="ligand_measurement_count@1"` reproduces the published
+  numeric counter, including at historical pins; it still adds the new `records`
+  field and counting metadata. Neither historical views nor saved cards are rewritten.
+  The explanation records its selected count policy alongside nested support;
+  measurement identity, class/voter, assay-scope and site policies are unchanged.
   Missing activity-only originals retain the exact `copy_of` pointer with
   `original_not_on_card` in unresolved-copy diagnostics (#117, unreleased fix).
   A later provenance or statement join removes that singleton diagnostic. This

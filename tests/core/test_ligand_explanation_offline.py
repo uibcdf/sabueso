@@ -285,7 +285,7 @@ def test_crossing_exposes_actual_identity_class_selection_and_quantity_policy():
         "active_max"
     ] == {"value": 1, "unit": "micromolar"}
     assert explained["sites"][0]["item"]["site_class"] == "overlaps_annotated_site"
-    assert answer["rule"]["rule"] == "ligand_deck_explanation@1"
+    assert answer["rule"]["rule"] == "ligand_deck_explanation@2"
     assert before == (card.to_dict(), molecule.to_dict(), deck.meta)
 
 
@@ -312,23 +312,237 @@ def test_missing_molecular_identity_support_is_partial_without_changing_the_cros
     assert any(g["reason"] == "missing_source_assertion" for g in answer["gaps"])
 
 
-def test_existing_ligand_counter_is_explicitly_record_based_and_copies_stay_copies():
+@pytest.mark.parametrize("legacy", [False, True])
+def test_ligand_counter_separates_groups_from_records_and_copies_stay_copies(legacy):
     card, _, deck = synthetic()
     q = deepcopy(card.relationships("has_bioactivity")[0]["qualifiers"])
     q.update(
         source="PubChem", activity_id=2, copy_of={"source": "ChEMBL", "activity_id": 1}
     )
     relationship(card, "has_bioactivity", CHEMBL, q, "PubChem", record="copy")
-    answer = card.explain_ligand(MOLECULE, deck)
+    rule = f"ligand_measurement_count@{1 if legacy else 2}"
+    answer = card.explain_ligand(MOLECULE, deck, counting_rule=rule)
     (measured,) = answer["items"][0]["bioactivities"]
     assert measured["item"]["measurement_count"] == 1
     assert measured["item"]["record_count"] == 2
-    assert answer["items"][0]["item"]["bioactivity"]["measurements"] == 2
+    item = answer["items"][0]
+    assert item["item"]["bioactivity"]["measurements"] == (2 if legacy else 1)
+    assert item["item"]["bioactivity"]["records"] == 2
+    assert answer["measurement_counting"]["rule"] == rule
+    assert len(item["crossing_inputs"]["measurement_group_ids"]) == 1
+    assert len(item["crossing_inputs"]["measurement_record_ids"]) == 2
     assert (
         answer["rule"]["parameters"]["bioactivity_measurements"]
-        == "included source records, as counted by the existing ligand view"
+        == answer["measurement_counting"]["parameters"]["measurements"]
     )
     assert len(measured["groups"][0]["voters"]) == 1
+
+
+def add_measurement(
+    card,
+    activity,
+    *,
+    source="ChEMBL",
+    molecule=CHEMBL,
+    value=5000,
+    assignment="D",
+    copy_of=None,
+    parent=None,
+):
+    q = {
+        "activity_id": activity,
+        "source": source,
+        "measurement": {
+            "type": "IC50",
+            "value": value,
+            "units": "nM",
+            "relation": "=",
+            "normalized": normalized_measurement(value, "nM"),
+        },
+        "assay": {"relationship_type": assignment},
+        "document": {"pubmed": "1"},
+    }
+    if copy_of:
+        q["copy_of"] = copy_of
+    if parent:
+        q["parent_molecule"] = parent
+    return relationship(
+        card, "has_bioactivity", molecule, q, source, record=str(activity)
+    )
+
+
+@pytest.mark.parametrize(
+    "mode", ["statement", "same_source", "ambiguous", "discordant", "copy_only"]
+)
+def test_group_count_preserves_statement_ambiguity_independence_and_class_policy(mode):
+    card, _, deck = synthetic(bioactivity=mode != "copy_only")
+    if mode == "copy_only":
+        add_measurement(
+            card, 2, source="PubChem", copy_of={"source": "ChEMBL", "activity_id": 1}
+        )
+    else:
+        add_measurement(
+            card,
+            2,
+            source="ChEMBL" if mode == "same_source" else "BindingDB",
+            value=1000000 if mode == "discordant" else 5000,
+        )
+        if mode == "ambiguous":
+            add_measurement(card, 3)
+    native = card.bioactivities()["items"][0]
+    expected_groups = {
+        "statement": 1,
+        "same_source": 2,
+        "ambiguous": 3,
+        "discordant": 2,
+        "copy_only": 1,
+    }[mode]
+    answer = card.explain_ligand(MOLECULE, deck)
+    item = answer["items"][0]
+    assert native["measurement_count"] == expected_groups
+    assert item["item"]["bioactivity"] == {
+        "class": native["class"],
+        "best_pchembl": native["best_pchembl"],
+        "measurements": expected_groups,
+        "records": native["record_count"],
+    }
+    assert item["bioactivities"][0]["item"] == native
+    if mode == "statement":
+        assert item["bioactivities"][0]["groups"][0]["joins"][0]["basis"] == "statement"
+    elif mode == "ambiguous":
+        assert item["bioactivities"][0]["measurement_identity"]["ambiguous"]
+    elif mode == "discordant":
+        assert native["discordant"]
+    elif mode == "copy_only":
+        assert item["bioactivities"][0]["groups"][0]["basis"] == "copies_only"
+
+
+@pytest.mark.parametrize("legacy", [False, True])
+@pytest.mark.parametrize("parent", [False, True])
+def test_a_group_crossing_matched_molecule_items_is_counted_once(parent, legacy):
+    card, molecule, deck = synthetic(bioactivity=False)
+    original_ref = "chembl:SALT" if parent else CHEMBL
+    original = add_measurement(
+        card, 1, molecule=original_ref, parent=CHEMBL if parent else None
+    )
+    alternate = "pubchem:2"
+    copied = add_measurement(
+        card,
+        2,
+        source="PubChem",
+        molecule=alternate,
+        copy_of={"source": "ChEMBL", "activity_id": 1},
+    )
+    relationship(molecule, "same_as", ANCHOR, {}, subject=alternate, record=alternate)
+    native = card.bioactivities()
+    assert len(native["items"]) == 2
+    assert sum(i["measurement_count"] for i in native["items"]) == 2
+    assert len({m["group"] for i in native["items"] for m in i["measurements"]}) == 1
+    rule = f"ligand_measurement_count@{1 if legacy else 2}"
+    answer = card.explain_ligand(MOLECULE, deck, counting_rule=rule)
+    item = answer["items"][0]
+    assert item["item"] == card.ligands(deck, counting_rule=rule)["items"][0]
+    assert item["item"]["bioactivity"]["measurements"] == (2 if legacy else 1)
+    assert item["item"]["bioactivity"]["records"] == 2
+    assert item["crossing_inputs"]["measurement_record_ids"] == sorted(
+        [original["id"], copied["id"]]
+    )
+    assert len(item["crossing_inputs"]["measurement_group_ids"]) == 1
+    assert {
+        m["relationship_id"]
+        for i in item["bioactivities"]
+        for m in i["item"]["measurements"]
+    } == {original["id"], copied["id"]}
+
+
+@pytest.mark.parametrize("include_indirect", [False, True])
+def test_counts_only_include_records_admitted_by_the_selected_assay_scope(
+    include_indirect,
+):
+    card, _, deck = synthetic()
+    add_measurement(card, 2, assignment="H", value=1000000)
+    view = card.ligands(deck, include_indirect=include_indirect)
+    item = view["items"][0]
+    assert (
+        item["bioactivity"]["measurements"]
+        == item["bioactivity"]["records"]
+        == 1 + int(include_indirect)
+    )
+    assert item["excluded_measurements"] == int(not include_indirect)
+    assert view["scope"]["target_assignment"] == ("any" if include_indirect else "D")
+
+
+@pytest.mark.parametrize("legacy", [False, True])
+def test_comparison_uses_the_same_counting_policy_and_distinct_input_pins(legacy):
+    card, _, deck = synthetic()
+    other, _, other_deck = synthetic()
+    add_measurement(
+        card, 2, source="PubChem", copy_of={"source": "ChEMBL", "activity_id": 1}
+    )
+    rule = f"ligand_measurement_count@{1 if legacy else 2}"
+    answer = card.compare_ligands(deck, other, other_deck, counting_rule=rule)
+    (item,) = answer["shared"]
+    assert item["self"]["bioactivity"]["measurements"] == (2 if legacy else 1)
+    assert item["self"]["bioactivity"]["records"] == 2
+    assert (
+        item["other"]["bioactivity"]["measurements"]
+        == item["other"]["bioactivity"]["records"]
+        == 1
+    )
+    for side, protein in (("self", card), ("other", other)):
+        assert answer["measurement_counting"][side]["rule"] == rule
+        assert answer["measurement_counting"][side]["inputs"][0] == protein.pinned_ref()
+
+
+@pytest.mark.parametrize("legacy", [False, True])
+def test_historical_counting_preserves_original_group_record_and_assertion_support(
+    tmp_path, monkeypatch, legacy
+):
+    from sabueso.tools.db import _http
+
+    card, molecule, deck = synthetic()
+    add_measurement(
+        card, 2, source="PubChem", copy_of={"source": "ChEMBL", "activity_id": 1}
+    )
+    rule = f"ligand_measurement_count@{1 if legacy else 2}"
+    store = sabueso.KnowledgeStore(tmp_path / "counting.db")
+    pin = store.save(card)
+    deck_pin = store.save_deck(deck, "ligands")
+    expected = card.explain_ligand(MOLECULE, deck, counting_rule=rule)
+    add_measurement(card, 3)
+    store.save(card)
+    monkeypatch.setattr(
+        _http, "_urlopen", lambda *a, **k: pytest.fail("no acquisition")
+    )
+    with ackredit.session("historical counting"):
+        credit = ackredit.get_attribution().to_dict()
+        old = store.load(pin)
+        old_deck = store.load_deck(deck_pin)
+        restored = old.explain_ligand(MOLECULE, old_deck, counting_rule=rule)
+        assert restored == expected
+        assert ackredit.get_attribution().to_dict() == credit
+    assert restored["measurement_counting"]["inputs"] == [pin, molecule.pinned_ref()]
+    for record in restored["items"][0]["bioactivities"][0]["records"]:
+        for sa in record["source_assertions"]:
+            assert (
+                store.source_assertion(sa["source_assertion_ref"])["source"]["version"]
+                == "original-release"
+            )
+
+
+@pytest.mark.parametrize("method", ["ligands", "compare_ligands", "explain_ligand"])
+@pytest.mark.parametrize("value", [None, "ligand_measurement_count@3", []])
+def test_counting_rule_is_digested_at_every_public_crossing(method, value):
+    card, _, deck = synthetic()
+    args = (
+        (MOLECULE, deck)
+        if method == "explain_ligand"
+        else (deck, card, deck)
+        if method == "compare_ligands"
+        else (deck,)
+    )
+    with pytest.raises(ArgumentError):
+        getattr(card, method)(*args, counting_rule=value)
 
 
 def test_duplicate_deck_members_are_retained_without_selecting_a_snapshot():

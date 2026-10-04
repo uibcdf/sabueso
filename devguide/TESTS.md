@@ -161,7 +161,11 @@ choices, quantity thresholds, numbering/absent-annotation distinctions and
 instance-level spanning. Relevance statements, selected/competing field support,
 missing assertions/conflict support, duplicate deck members, historical card/deck
 reads, exact selectors and detached inert readers have regressions. The existing
-record-based ligand counter is explicitly exposed (#118). The file runs unchanged
+ligand count correction (#118) checks distinct groups across matched molecule/parent
+items, declared copies, statement restatements, same-source independence, ambiguity,
+discordance, copy-only fallback and assay filtering. Versioned current/legacy counts,
+comparisons, exact counted ids, historical source support and ArgDigest have guards.
+The file runs unchanged
 outside the checkout with public Ackredit and in future staged installed gates.
 
 Local diagnostic wheels additionally pass

@@ -314,7 +314,7 @@ Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
 CI/release tests, alongside `test_literature_intake_offline.py` for original support
 and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
-The current checkpoint passes 1,606 source offline cases and 296 unchanged installed
+The current checkpoint passes 1,631 source offline cases and 321 unchanged installed
 integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
@@ -409,6 +409,8 @@ readers to annotated overlap and the protein/molecule deck crossing. Source-stat
 identity, actual class/name choices, annotations/conflicts, structural instances
 and native deck snapshot/membership metadata retain distinct support. Duplicate
 deck members remain explicit and partial; source absence is never invented.
-The source-record counter labelled measurements is separately tracked in #118;
-the explanation states its actual basis beside nested group/record counts.
+The #118 correction defaults to distinct included measurement groups across matched
+items (`ligand_measurement_count@2`), retaining explicit source-record counts and
+counted ids in `ligand_deck_explanation@2`. Explicit `@1` retains the published
+numeric policy at current/historical pins. Original grouping/class support survives.
 These readers change no scientific schema or attribution and add no execution credit.

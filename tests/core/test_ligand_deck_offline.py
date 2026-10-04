@@ -113,6 +113,7 @@ def test_structure_meets_bioactivity(cards, decks):
         "class": "weak",
         "best_pchembl": 4.48,
         "measurements": 1,
+        "records": 1,
     }
     assert SULFATE not in items
     assert view["unmatched"] == []  # additives and ions are not unmatched molecules

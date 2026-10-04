@@ -35,7 +35,7 @@ decision replaced the original representation), **direction** (non-binding visio
 | Entity resolution before composition | Implemented for proteins, small molecules and MONDO-anchored diseases: `tools/resolve.py`, `resolver/entity_resolver.py`, `tools/card/disease.py`; resolution/identity/disease tests | EFO identities without a MONDO anchor remain #96; FASTA/structure-file intake needs a separate identity contract |
 | Source-supported identity and explicit ambiguity | Implemented: identity audits, source-stated cross-references, molecule InChIKey anchors, `core/entities.py`; unreleased deterministic disease grouping `@2` preserves all identity paths (#115) | Explicit historical `@1` retains its exposed lookup limitation. Similarity, names and equal residue numbers never authorize merging; sequence alignment belongs to MolSysMT |
 | First-class relationships | Implemented: `core/relationship_store.py`, supported predicates and qualifiers; relationship/measurement/curation tests | More predicates require a scientific use and support contract; storage re-evaluation stays #19 |
-| Derived knowledge with named rules | Implemented: structure inventory, oligomer, ligand classes, measurement groups, diseases, identity audits, knowledge state; unreleased pinned disease-group, knowledge-state, measurement-group, bioactivity-class, ligand-crossing and site-class explanations | Explanation of every derived view remains partial (#91); other derived items still need pinned support; ligand record/group count correction is #118 |
+| Derived knowledge with named rules | Implemented: structure inventory, oligomer, ligand classes, measurement groups, diseases, identity audits, knowledge state; unreleased pinned disease-group, knowledge-state, measurement-group, bioactivity-class, ligand-crossing and site-class explanations; versioned ligand group/record count correction (#118) | Explanation of every derived view remains partial (#91); other derived items still need pinned support |
 | Reproducible decks | Implemented: `core/deck.py`, membership, exclusions, lineage, intersect/difference, comparison and pinned revision tests | General heterogeneous joins, rankings, neighbors and subgraphs remain directions, not missing promised API |
 | Physical quantities across boundaries | Implemented: `core/quantities.py`, PyUnitWizard quantities/seals, integrity and measurement tests | New fields and consumer exchanges must negotiate units; they cannot use bare values or computed field-name units |
 | History, pins and exact item reads | Implemented: `core/snapshot.py`, `knowledge_store.py`, migration/refresh and pin regression tests | Shared reference acceptance still depends on MOLI #3/#53; application-level runtime persistence is separate |
@@ -93,9 +93,9 @@ operational test, not disclosure of pilot scientific content, validation of ever
 source's availability, or a claim that every source is observed. Original notebooks
 remain unchanged. Their application must explicitly retain sidecars when adopted.
 
-The development checkpoint passes 1,606 offline cases in the required Python 3.14
+The development checkpoint passes 1,631 offline cases in the required Python 3.14
 editable environment (26 online cases deselected). A byte-checked clean diagnostic
-wheel passes 296 unchanged acquisition/attribution/extraction/intake/explanation integration cases
+wheel passes 321 unchanged acquisition/attribution/extraction/intake/explanation integration cases
 outside the checkout with public Ackredit 0.9.0, the public three-packet workflow
 and pip check. Ruff, frozen card shape, schema/registry, governance, dependency
 preflight and warning-failing Sphinx gates pass. The wheel check also rejects the
@@ -147,8 +147,11 @@ Evidence; MolSysSuite owns calculations, alignments and modeling interfaces.
    and `Card.explain_ligand` now trace site classes and protein/molecule crossing,
    retaining annotated fields/conflicts, structural instances, actual identity/class
    choices and native deck snapshot/membership metadata. Duplicate members remain
-   explicit. Other derived items still need explanations; #118 owns the existing
-   source-record counter labelled measurements.
+   explicit. Other derived items still need explanations. The #118 correction
+   counts distinct included groups across matched molecule/parent items under
+   `ligand_measurement_count@2`, with explicit source records, exact counted ids
+   and `ligand_deck_explanation@2`. Explicit `@1` retains the published numeric
+   counter at current/historical pins. Group/class/voter/scope policies stay fixed.
    The #117 correction reports missing activity-only originals while preserving
    groups/classes and exact copy pointers; later local joins remove the singleton
    diagnostic. Current and historical readers remain inert.

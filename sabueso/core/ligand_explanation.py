@@ -10,7 +10,7 @@ from copy import deepcopy
 from .bioactivities import CLASS_ORDER
 from .bioactivity_explanation import _Support
 from .ligand_sites import ANNOTATED_SITES, ligand_sites_view
-from .ligands import ligands_view
+from .ligands import COUNTING_RULE, ligands_view
 from .relationship_store import make_derivation
 
 
@@ -84,10 +84,25 @@ def explain_ligand_site(card, ligand_site_ref):
     )
 
 
-def explain_ligand(card, molecule_ref, deck, include_indirect=False, thresholds=None):
+def explain_ligand(
+    card,
+    molecule_ref,
+    deck,
+    include_indirect=False,
+    thresholds=None,
+    *,
+    counting_rule=COUNTING_RULE,
+):
     support = _Support(card)
     trace = {}
-    view = ligands_view(card, deck, include_indirect, thresholds, _support=trace)
+    view = ligands_view(
+        card,
+        deck,
+        include_indirect,
+        thresholds,
+        counting_rule=counting_rule,
+        _support=trace,
+    )
     members = [c for c in deck.cards if c.id == molecule_ref]
     gaps = list(support.gaps)
     if len(members) > 1:
@@ -145,7 +160,7 @@ def explain_ligand(card, molecule_ref, deck, include_indirect=False, thresholds=
     return deepcopy(
         {
             "rule": make_derivation(
-                "ligand_deck_explanation@1",
+                "ligand_deck_explanation@2",
                 inputs=[support.pin, *[c.pinned_ref() for c in members]],
                 parameters={
                     "molecule_ref": molecule_ref,
@@ -157,7 +172,13 @@ def explain_ligand(card, molecule_ref, deck, include_indirect=False, thresholds=
                     },
                     "class_order": list(CLASS_ORDER),
                     "bioactivity_class": "strongest matched measured-molecule class",
-                    "bioactivity_measurements": "included source records, as counted by the existing ligand view",
+                    "counting_rule": counting_rule,
+                    "bioactivity_measurements": view["measurement_counting"][
+                        "parameters"
+                    ]["measurements"],
+                    "bioactivity_records": view["measurement_counting"]["parameters"][
+                        "records"
+                    ],
                 },
             ),
             "card_ref": support.pin,
@@ -174,6 +195,7 @@ def explain_ligand(card, molecule_ref, deck, include_indirect=False, thresholds=
             else None,
             "items": explanations,
             "classification": view["classification"],
+            "measurement_counting": view["measurement_counting"],
             "scope": view["scope"],
             "deck": {
                 "snapshot_id": snapshot,

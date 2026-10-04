@@ -82,6 +82,11 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   contract: the exact `sabueso:small_molecule:<namespace>:<id>` from `ligands(deck)`;
   a bioactivity source-record key is refused instead of silently returning an
   empty crossing. It reuses `deck`, `include_indirect` and quantity `thresholds`.
+  `ligands`, `compare_ligands` and `explain_ligand` digest keyword-only
+  `counting_rule`: exactly `ligand_measurement_count@1` (published numeric counter)
+  or `ligand_measurement_count@2` (default, distinct included groups).
+  Unsupported versions, aliases and non-string values are refused; existing
+  positional arguments, including `skip_digestion`, retain their positions.
 - **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,
   `group_by_rank`, `expand`, `explain`.
   `explain` accepts `structure_ref=None` for membership, or `pdb:<four-character id>`
