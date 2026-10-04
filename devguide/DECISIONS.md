@@ -1,5 +1,29 @@
 # Sabueso — Decision Log
 
+## Versioned deterministic disease grouping with explicit historical compatibility (2026-10-04, #115/#91)
+
+- Adopt `disease_grouping@2` and `disease_group_explanation@2` as the unreleased
+  defaults. Enumerate every stored direct or MedGen/MONDO identity path, retaining
+  exact relationship ids and original SourceAssertions. This is a bounded source
+  contract traversal, not a general identity closure or similarity-based merge.
+- Contradictory targets of one identifier remain `conflicting_identity`, even if
+  they share a MONDO hierarchy. Granularity applies across separately stated ids
+  with unique targets, only when one stated term is broader than all others.
+  Converging paths retain all support; unfinished stored branches alongside a
+  reached term remain `incomplete_identity`. Unknown equivalence is never agreement.
+- Names, source versions and storage order never select identity. Retain all stored
+  MONDO labels, selecting `mondo_name` only for a unique label. Preserve alternative
+  hierarchy paths and source qualifier conflicts; never select the latest version.
+- Explicit `grouping_rule="disease_grouping@1"` reproduces the historical lookup
+  and `disease_group_explanation@1`, including selected/alternative links and its
+  partial ambiguity diagnostic. The rule selector is digested; unknown versions
+  are refused. Existing positional explanation arguments remain compatible.
+- A stored card pin identifies source knowledge, not an implicit grouping rule.
+  Explain a loaded pin with an explicit rule to reproduce historical behavior;
+  default `@2` is a newly named view of that same knowledge. Neither changes the
+  pin, serialized schema, acquisition or credit. Published cards/artifacts remain
+  immutable. Other derived-view explanations remain #91 work.
+
 ## Source-defined empty BindingDB responses and pinned disease explanations (2026-10-04, #114/#91)
 
 - Accept an exactly empty HTTP 200 body or JSON empty string as BindingDB's

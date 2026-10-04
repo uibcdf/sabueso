@@ -1,29 +1,35 @@
 """Explain existing disease groups through pinned, source-stated support (#91).
 
-The grouping rule remains unchanged. Selected annotation members are matched to
-their stored asserted values; identity lookup alternatives and qualifier conflicts
-remain visible. This view neither resolves entities nor creates SourceAssertions.
+Selected annotation members are matched to their stored asserted values. Every
+identity path and qualifier conflict remains visible. The historical lookup and
+its explanation are available explicitly. No view creates SourceAssertions.
 """
 
 from copy import deepcopy
 
-from .diseases import _same_as, disease_statements
+from .disease_grouping import _sources
+from .diseases import LEGACY_RULE, _same_as, disease_statements
+from .diseases import RULE as GROUPING_RULE
 from .relationship_store import make_derivation
 from .source_assertion_store import assertion_value
 
-RULE = "disease_group_explanation@1"
+RULE = "disease_group_explanation@2"
 FIELDS = {
     "uniprot_disease": "annotations.disease",
     "clinvar_condition": "annotations.clinical_variants",
 }
 
 
-def explain_disease(card, disease_ref):
+def explain_disease(card, disease_ref, grouping_rule=GROUPING_RULE):
     pin = card.pinned_ref()
-    view = card.diseases()
+    view = card.diseases(grouping_rule=grouping_rule)
     term = disease_ref.split(":", 1)[1]
     group = next((g for g in view["diseases"] if g["mondo"] == term), None)
-    mondo, medgen = _same_as(card, "MONDO"), _same_as(card, "MedGen")
+    mondo, medgen = (
+        (_same_as(card, "MONDO"), _same_as(card, "MedGen"))
+        if grouping_rule == LEGACY_RULE
+        else ({}, {})
+    )
     unresolved = {
         u["curie"]
         for e in card.quality.get("enrichments") or []
@@ -57,7 +63,39 @@ def explain_disease(card, disease_ref):
             "source_assertions": assertions(rel.get("source_assertion_ids") or []),
         }
 
-    def identity(curie):
+    def identity(curie, statement):
+        if grouping_rule != LEGACY_RULE:
+            paths = [
+                p for p in statement.get("identity_paths") or [] if p["id"] == curie
+            ]
+            links = {
+                identifier: relationship(
+                    card.relationship_store.get(identifier),
+                    selected="grouped_by" in statement,
+                )
+                for path in paths
+                for identifier in path["relationship_ids"]
+            }
+            for identifier, link in links.items():
+                if link is None:
+                    gaps.append(
+                        {
+                            "reason": "missing_relationship",
+                            "relationship_ref": f"{pin}#{identifier}",
+                        }
+                    )
+            return {
+                "id": curie,
+                "paths": [
+                    {
+                        **p,
+                        "links": [links[i] for i in p["relationship_ids"] if links[i]],
+                    }
+                    for p in paths
+                ],
+                "links": [link for _, link in sorted(links.items()) if link],
+                "alternatives": [],
+            }
         links, alternatives = [], []
         if curie.startswith("MONDO:") and curie not in unresolved:
             return {
@@ -101,7 +139,7 @@ def explain_disease(card, disease_ref):
         support = {
             "statement": statement,
             "input": None,
-            "identity": [identity(c) for c in statement["curies"]],
+            "identity": [identity(c, statement) for c in statement["curies"]],
             "hierarchy": [],
         }
         if rel_id:
@@ -160,13 +198,20 @@ def explain_disease(card, disease_ref):
                 for r in card.relationships("subclass_of")
                 if r["subject_ref"] == f"mondo:{narrow}"
                 and r["object_ref"] == disease_ref
-                and (r.get("qualifiers") or {}).get("source") == "MONDO"
+                and (
+                    (r.get("qualifiers") or {}).get("source") == "MONDO"
+                    if grouping_rule == LEGACY_RULE
+                    else "MONDO" in _sources(r)
+                )
             ]
             support["hierarchy"].append(
                 {
                     "term": narrow,
-                    "path": basis["path"],
-                    "links": [relationship(r) for r in relationships],
+                    **{k: basis[k] for k in ("path", "paths") if k in basis},
+                    "links": [
+                        relationship(r)
+                        for r in sorted(relationships, key=lambda r: r["id"])
+                    ],
                 }
             )
             if not relationships:
@@ -206,7 +251,16 @@ def explain_disease(card, disease_ref):
     return deepcopy(
         {
             "rule": make_derivation(
-                RULE, inputs=[pin], parameters={"disease_ref": disease_ref}
+                "disease_group_explanation@1" if grouping_rule == LEGACY_RULE else RULE,
+                inputs=[pin],
+                parameters={
+                    "disease_ref": disease_ref,
+                    **(
+                        {"grouping_rule": grouping_rule}
+                        if grouping_rule != LEGACY_RULE
+                        else {}
+                    ),
+                },
             ),
             "card_ref": pin,
             "disease_ref": disease_ref,

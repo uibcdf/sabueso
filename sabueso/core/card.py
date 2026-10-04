@@ -590,25 +590,37 @@ class Card:
 
         return terms_report([self], use)
 
-    def diseases(self) -> Dict[str, Any]:
+    @arg_digest()
+    def diseases(
+        self, grouping_rule: str = "disease_grouping@2", skip_digestion: bool = False
+    ) -> Dict[str, Any]:
         """The diseases every source states for this protein, grouped by MONDO term
-        only through MONDO's stated equivalences (``disease_grouping@1``, #90)."""
+        through every stored identity path (``disease_grouping@2``). Conflicting
+        targets remain ungrouped. Pass ``grouping_rule="disease_grouping@1"``
+        explicitly to reproduce the historical lookup, including its limitations.
+        """
         from .diseases import diseases_view
 
-        return diseases_view(self)
+        return diseases_view(self, grouping_rule)
 
     @arg_digest()
     def explain_disease(
-        self, disease_ref: str, skip_digestion: bool = False
+        self,
+        disease_ref: str,
+        skip_digestion: bool = False,
+        *,
+        grouping_rule: str = "disease_grouping@2",
     ) -> Dict[str, Any]:
         """Explain a MONDO disease group through its pinned statements and stored
-        identity/hierarchy support (``disease_group_explanation@1``). Reads the
+        identity/hierarchy support (``disease_group_explanation@2``). An explicit
+        ``grouping_rule="disease_grouping@1"`` uses the historical explanation.
+        Reads the
         current card or a loaded historical pin, without acquisition or mutation.
         Ungrouped statements are whole-card context, never inferred absence.
         """
         from .disease_explanation import explain_disease
 
-        return explain_disease(self, disease_ref)
+        return explain_disease(self, disease_ref, grouping_rule)
 
     def interface_mutations(self) -> Dict[str, Any]:
         """Mutations at the interfaces of this protein's complexes and their binding

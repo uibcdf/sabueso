@@ -59,6 +59,11 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   `mondo:MONDO:<seven-digit id>` or `MONDO:<seven-digit id>`; namespace case and
   surrounding whitespace are normalized. Other ontologies, names and malformed
   identifiers are refused; no equivalence lookup or acquisition occurs.
+  `diseases` and `explain_disease` digest `grouping_rule`: exactly
+  `disease_grouping@2` (unreleased default) or `disease_grouping@1` (explicit
+  historical compatibility). Unknown versions and non-string selectors are refused.
+  `explain_disease` takes this selector as a keyword-only argument, preserving its
+  existing positional `skip_digestion` argument.
 - **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,
   `group_by_rank`, `expand`, `explain`.
   `explain` accepts `structure_ref=None` for membership, or `pdb:<four-character id>`

@@ -206,7 +206,7 @@ def hstim(mondo):
 def test_one_disease_across_every_source_that_states_it(hstim):
     card, _ = hstim
     view = card.diseases()
-    assert view["rule"]["rule"] == "disease_grouping@1"
+    assert view["rule"]["rule"] == "disease_grouping@2"
     (tpi,) = [d for d in view["diseases"] if d["mondo"] == "MONDO:0014221"]
     assert tpi["mondo_name"] == "triosephosphate isomerase deficiency"
     assert tpi["sources"] == [
@@ -244,6 +244,7 @@ def test_what_mondo_does_not_state_stays_apart_with_its_reason(hstim):
         "no_stated_equivalence",
         "condition_not_provided",
         "no_id_stated",
+        "incomplete_identity",
     }
     # ClinVar's "not provided" and "not specified" are not diseases.
     placeholders = [u for u in ungrouped if u["reason"] == "condition_not_provided"]

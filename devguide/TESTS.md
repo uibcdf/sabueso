@@ -125,8 +125,11 @@ These tests run unchanged in installed-provider and future staged gates.
 selected annotation members, multi-hop MedGen/MONDO support, hierarchy steps,
 exact historical card/item pins, missing support, selection/qualifier alternatives,
 ungrouped/conflicting identity and unqueried context, inert attribution and argument
-validation. Alternative same-source identity targets expose the existing lookup
-limitation (#115) as partial rather than hiding it. These tests also run unchanged
+validation. Versioned grouping guards (#115) reverse relationship insertion order,
+retain converging/conflicting/unfinished MedGen branches, direct naming conflicts,
+source/version differences, qualifier alternatives and all hierarchy paths. Explicit
+`@1` reproduces the historical lookup/partial explanation at the unchanged card pin;
+default `@2` never chooses an ambiguous target. These tests also run unchanged
 outside the checkout in installed-provider CI and future staged gates.
 
 Local diagnostic wheels additionally pass

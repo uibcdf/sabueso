@@ -70,9 +70,9 @@ def test_public_group_retains_each_source_and_exact_annotation_members(
         answer = public_card.explain_disease(TERM)
         assert ackredit.get_attribution().to_dict() == credited
     assert answer["status"] == "on_card" and not answer["gaps"]
-    assert answer["rule"]["rule"] == "disease_group_explanation@1"
+    assert answer["rule"]["rule"] == "disease_group_explanation@2"
     assert answer["rule"]["inputs"] == [public_card.pinned_ref()]
-    assert answer["grouping_rule"]["rule"] == "disease_grouping@1"
+    assert answer["grouping_rule"]["rule"] == "disease_grouping@2"
     assert answer["group"] == next(
         g for g in public_card.diseases()["diseases"] if g["mondo"] == "MONDO:0014221"
     )
@@ -255,7 +255,9 @@ def test_lookup_alternatives_and_qualifier_conflicts_remain_visible():
     rel["qualifier_conflicts"] = {
         "mondo_name": ["synthetic name", "synthetic alternative"]
     }
-    answer = subject.explain_disease("MONDO:0000002")
+    answer = subject.explain_disease(
+        "MONDO:0000002", grouping_rule="disease_grouping@1"
+    )
     assert answer["status"] == "partial"
     (path,) = answer["statements"][0]["identity"]
     assert len(path["links"]) == len(path["alternatives"]) == 1
@@ -316,3 +318,229 @@ def test_missing_group_unqueried_identity_and_argument_validation(public_card):
         public_card.explain_disease(TERM, surprise=True)
     with pytest.raises(StorageError):
         Card().explain_disease(TERM)
+
+
+def add_identity(card, subject, target, source="MedGen", version="synthetic"):
+    assertion = make_source_assertion(
+        "relationships.same_as",
+        {"target": target, "version": version},
+        source,
+        target,
+        "2026-01-01",
+        subject_ref=subject,
+    )
+    assertion["source"]["version"] = version
+    card.source_assertion_store.add(assertion)
+    card.relationship_store.add(
+        make_relationship(
+            subject,
+            "same_as",
+            target,
+            qualifiers={"source": source},
+            source_assertion_ids=[assertion["id"]],
+        )
+    )
+    return assertion["id"]
+
+
+@pytest.mark.parametrize("hierarchy", [(), ("MONDO:0000001", "MONDO:0000002")])
+def test_multiple_targets_of_one_id_stay_conflicting_in_every_storage_order(hierarchy):
+    pairs = [("OMIM:1", "MONDO:0000001"), ("OMIM:1", "MONDO:0000002")]
+    cards = [
+        synthetic([{"xrefs": ["OMIM:1"]}], order, hierarchy)
+        for order in (pairs, pairs[::-1])
+    ]
+    assert cards[0].diseases() == cards[1].diseases()
+    for card in cards:
+        before = card.to_dict()
+        answer = card.explain_disease("MONDO:0000001")
+        assert answer["status"] == "not_on_card" and answer["group"] is None
+        (row,) = answer["ungrouped_context"]["statements"]
+        assert row["statement"]["reason"] == "conflicting_identity"
+        assert {p["term"] for p in row["identity"][0]["paths"]} == {p[1] for p in pairs}
+        links = row["identity"][0]["links"]
+        assert len(links) == 2 and all(not r["selected"] for r in links)
+        assert all(r["source_assertions"][0]["found"] for r in links)
+        assert card.to_dict() == before
+
+
+@pytest.mark.parametrize(
+    "targets",
+    [
+        ("MONDO:0000001", "MONDO:0000002"),
+        ("MONDO:0000001", "MONDO:0000001"),
+        ("MONDO:0000001", None),
+    ],
+)
+def test_every_medgen_branch_is_retained_without_selecting_a_uid(targets):
+    cards = []
+    for order in ((0, 1), (1, 0)):
+        card = synthetic([{"xrefs": ["MEDGEN:C1"]}])
+        for i in order:
+            uid = f"MEDGEN:{i + 1}"
+            add_identity(card, "MEDGEN:C1", uid)
+            if targets[i]:
+                add_identity(card, uid, f"mondo:{targets[i]}", "MONDO")
+        cards.append(card)
+    assert cards[0].diseases() == cards[1].diseases()
+    answer = cards[0].explain_disease("MONDO:0000001")
+    rows = answer["statements"] or answer["ungrouped_context"]["statements"]
+    paths = rows[0]["identity"][0]["paths"]
+    assert len(paths) == 2 and {p["term"] for p in paths} == set(targets)
+    assert all(len(p["links"]) == (2 if p["term"] else 1) for p in paths)
+    if len(set(targets)) == 1:
+        assert answer["status"] == "on_card"
+    else:
+        assert answer["group"] is None
+        assert rows[0]["statement"]["reason"] == (
+            "incomplete_identity" if None in targets else "conflicting_identity"
+        )
+
+
+def test_direct_naming_does_not_hide_a_contradictory_stored_equivalence():
+    card = synthetic(
+        [{"xrefs": ["MONDO:0000001"]}], [("MONDO:0000001", "MONDO:0000002")]
+    )
+    (row,) = card.diseases()["ungrouped"]
+    assert row["reason"] == "conflicting_identity"
+    assert {p["basis"] for p in row["identity_paths"]} == {"named_directly", "same_as"}
+    assert (
+        card.diseases(grouping_rule="disease_grouping@1")["diseases"][0]["mondo"]
+        == "MONDO:0000001"
+    )
+
+
+def test_ambiguous_mondo_targets_after_a_single_medgen_hop_keep_both_chains():
+    card = synthetic([{"xrefs": ["MEDGEN:C1"]}])
+    add_identity(card, "MEDGEN:C1", "MEDGEN:1")
+    for term in ("MONDO:0000001", "MONDO:0000002"):
+        add_identity(card, "MEDGEN:1", f"mondo:{term}", "MONDO")
+    answer = card.explain_disease("MONDO:0000001")
+    (row,) = answer["ungrouped_context"]["statements"]
+    assert row["statement"]["reason"] == "conflicting_identity"
+    (identity,) = row["identity"]
+    assert len(identity["links"]) == 3
+    assert {p["term"] for p in identity["paths"]} == {"MONDO:0000001", "MONDO:0000002"}
+    assert all(len(p["links"]) == 2 for p in identity["paths"])
+
+
+@pytest.mark.parametrize("source", ["MONDO", "Unrelated source"])
+def test_source_and_version_do_not_silently_select_an_identity(source):
+    cards = []
+    ids = set()
+    for order in ((0, 1), (1, 0)):
+        card = synthetic([{"xrefs": ["OMIM:1"]}])
+        for i in order:
+            ids.add(
+                add_identity(
+                    card,
+                    "OMIM:1",
+                    f"mondo:MONDO:000000{i + 1}",
+                    "MONDO" if i == 0 else source,
+                    f"202{i}",
+                )
+            )
+        cards.append(card)
+    assert cards[0].diseases() == cards[1].diseases()
+    answer = cards[0].explain_disease("MONDO:0000001")
+    if source == "MONDO":
+        assert answer["group"] is None
+        supported = [
+            a
+            for r in relationships(answer)
+            for a in r["source_assertions"]
+            if a["id"] in ids
+        ]
+        assert {a["version"] for a in supported} == {"2020", "2021"}
+    else:
+        assert answer["status"] == "on_card"
+        assert len(answer["statements"][0]["identity"][0]["paths"]) == 1
+
+
+def test_converging_versions_and_source_qualifier_conflicts_keep_every_support():
+    cards = []
+    for sources in (("Unrelated source", "MONDO"), ("MONDO", "Unrelated source")):
+        card = synthetic([{"xrefs": ["OMIM:1"]}])
+        for source in sources:
+            for version in ("older", "newer"):
+                add_identity(card, "OMIM:1", "mondo:MONDO:0000001", source, version)
+        cards.append(card)
+    assert cards[0].diseases() == cards[1].diseases()
+    for card in cards:
+        answer = card.explain_disease("MONDO:0000001")
+        (link,) = answer["statements"][0]["identity"][0]["links"]
+        assert answer["status"] == "on_card" and len(link["source_assertions"]) == 4
+        assert set(link["relationship"]["qualifier_conflicts"]["source"]) == {
+            "MONDO",
+            "Unrelated source",
+        }
+
+
+def test_name_conflicts_are_retained_without_choosing_a_label():
+    card = synthetic([{"xrefs": ["OMIM:1"]}], [("OMIM:1", "MONDO:0000001")])
+    rel = card.relationships("same_as")[0]
+    rel["qualifiers"]["mondo_name"] = "first label"
+    rel["qualifier_conflicts"] = {"mondo_name": ["first label", "second label"]}
+    (group,) = card.diseases()["diseases"]
+    assert group["mondo_names"] == ["first label", "second label"]
+    assert "mondo_name" not in group
+    rel["qualifiers"]["mondo_name"] = "second label"
+    rel["qualifier_conflicts"]["mondo_name"].reverse()
+    assert card.diseases()["diseases"] == [group]
+
+
+def test_hierarchy_path_alternatives_are_preserved_in_group_and_explanation():
+    narrow, broad = "MONDO:0000001", "MONDO:0000009"
+    card = synthetic([{"xrefs": [narrow, broad]}], hierarchy=[narrow, broad])
+    rel = card.relationships("subclass_of")[0]
+    alternatives = [[narrow, broad], [narrow, "MONDO:0000005", broad]]
+    rel["qualifier_conflicts"] = {"path": alternatives}
+    expected = card.diseases()
+    answer = card.explain_disease(broad)
+    assert answer["statements"][0]["hierarchy"][0]["paths"] == sorted(alternatives)
+    rel["qualifiers"]["path"] = alternatives[-1]
+    rel["qualifier_conflicts"]["path"] = alternatives[::-1]
+    assert card.diseases() == expected
+
+
+def test_explicit_legacy_view_and_explanation_survive_historical_storage(tmp_path):
+    card = synthetic(
+        [{"xrefs": ["OMIM:1"]}],
+        [("OMIM:1", "MONDO:0000001"), ("OMIM:1", "MONDO:0000002")],
+    )
+    store = sabueso.KnowledgeStore(tmp_path / "rules.db")
+    before = card.to_dict()
+    pin = store.save(card)
+    legacy = card.explain_disease("MONDO:0000002", grouping_rule="disease_grouping@1")
+    current = card.explain_disease("MONDO:0000002")
+    assert legacy["rule"]["rule"] == "disease_group_explanation@1"
+    assert legacy["group"]["mondo"] == "MONDO:0000002" and legacy["status"] == "partial"
+    assert (
+        current["group"] is None
+        and current["rule"]["rule"] == "disease_group_explanation@2"
+    )
+    loaded = store.load(pin)
+    assert (
+        loaded.explain_disease("MONDO:0000002", grouping_rule="disease_grouping@1")
+        == legacy
+    )
+    assert loaded.explain_disease("MONDO:0000002") == current
+    for link in relationships(current):
+        assert store.relationship(link["relationship_ref"]) == link["relationship"]
+        for assertion in link["source_assertions"]:
+            assert (
+                store.source_assertion(assertion["source_assertion_ref"])[
+                    "asserted_value"
+                ]
+                == assertion["asserted_value"]
+            )
+    assert card.to_dict() == before and card.pinned_ref() == pin
+
+
+@pytest.mark.parametrize("invalid", [None, "disease_grouping@3", "@2", 2, []])
+def test_grouping_rule_arguments_refuse_unknown_versions(invalid):
+    card = synthetic([])
+    with pytest.raises(ArgumentError):
+        card.diseases(grouping_rule=invalid)
+    with pytest.raises(ArgumentError):
+        card.explain_disease("MONDO:0000001", grouping_rule=invalid)

@@ -272,8 +272,10 @@ In order:
    preserving alternatives and recorded unlinked requests (`literature_explanation@1`).
    Unreleased `Card.explain_disease(disease_ref)` now explains MONDO disease
    groups with pinned association/selected-annotation support, identity/hierarchy
-   steps, stored alternatives and whole-card ungrouped context. The existing
-   order-dependent identity lookup is exposed as partial and remains #115.
+   steps, stored alternatives and whole-card ungrouped context. Versioned
+   `disease_grouping@2`/`disease_group_explanation@2` (#115) retain all identity
+   paths and leave conflicting or unfinished branches ungrouped. Explicit `@1`
+   selection preserves historical behavior without replacing stored cards.
    Next, as use asks: other views' derived items, including knowledge states.
 4. **Literature beyond manual curation (#92).**
    - Released in 0.7.0: how each statement entered (`acquisition`: database, curation, rule

@@ -239,7 +239,7 @@ for disease in view["diseases"]:
     print(disease["mondo"], disease.get("mondo_name"), disease["sources"])
 for item in view["ungrouped"]:
     print(item["refs"], item["source"], item["reason"])
-print(view["rule"]["rule"])  # disease_grouping@1
+print(view["rule"]["rule"])  # disease_grouping@2 in unreleased development
 ```
 
 - Each id MONDO states is the same disease becomes a `same_as` relationship to its
@@ -247,8 +247,10 @@ print(view["rule"]["rule"])  # disease_grouping@1
 - Statements are grouped only through those, or when they name the same id. For human
   triosephosphate isomerase, triosephosphate isomerase deficiency is one disease stated
   by ClinVar, DISEASES, Open Targets, Orphanet and UniProt.
-- A ClinVar condition is one statement with every id ClinVar states for it. It joins a
-  disease when any of those ids does.
+- A ClinVar condition is one statement with every id ClinVar states for it. The
+  unreleased `@2` rule retains every direct and MedGen/MONDO path in `identity_paths`.
+  A conflicting target of one identifier prevents grouping, even if MONDO places
+  the candidate terms in a hierarchy. Names and newer source versions never choose.
 - `medgen=True` asks MedGen which record each MedGen concept id is (`C1860808` is
   record 349893). MONDO states its equivalences by those records, so a condition named
   only by a MedGen concept id reaches MONDO through two statements, MedGen's and
@@ -260,8 +262,11 @@ print(view["rule"]["rule"])  # disease_grouping@1
   - `no_stated_equivalence`: for example some EFO terms, or phenotypic traits;
   - `no_id_stated`: a condition named only by text;
   - `namespace_not_mapped`: for example HP phenotype terms;
-  - `conflicting_identity`: the ids of one condition reach two MONDO terms, and MONDO
-    does not place one under the other. All are listed, and none is chosen.
+  - `conflicting_identity`: one identifier has contradictory MONDO targets, or
+    separately stated identifiers reach terms without a unique supported broader
+    term. All candidates and paths are retained, and none is chosen;
+  - `incomplete_identity` (unreleased `@2`): a candidate reaches MONDO but another
+    stored identity branch is unfinished. Retain both instead of claiming agreement.
 - A condition named at two granularities joins the broader disease. ClinVar sometimes
   gives a broader Orphanet id next to the MONDO and OMIM ids of a subtype, or names
   "Obesity" with the Orphanet id of obesity due to MC4R deficiency. When MONDO places
@@ -280,7 +285,7 @@ for row in explanation["statements"]:
     print(row["statement"]["source"], row["input"]["source_assertions"])
 ```
 
-`disease_group_explanation@1` reads the existing `disease_grouping@1` view at one
+`disease_group_explanation@2` reads the `disease_grouping@2` view at one
 exact card snapshot. Associations keep their relationship and SourceAssertions;
 UniProt/ClinVar members are matched to the selected stored annotation values.
 MedGen/MONDO identity links and each stored hierarchy step have pinned item
@@ -295,10 +300,24 @@ that the protein has no disease. `ungrouped_context` retains the **whole card's*
 ungrouped statements and their reasons; it does not associate all of them with the
 requested term. Missing stored support produces `partial` with explicit gaps.
 
-The existing grouping lookup can select the last stored target when one identifier
-has multiple same-source identity links ([#115](https://github.com/uibcdf/sabueso/issues/115)).
-The explanation preserves that view, exposes selected and alternative links and
-marks it partial; it does not claim a unique identity or silently change the rule.
+Published 0.12.0 uses `disease_grouping@1`. To reproduce that historical lookup in
+unreleased development, select it explicitly in both views:
+
+```python
+historical_view = card.diseases(grouping_rule="disease_grouping@1")
+historical_explanation = card.explain_disease(
+    "MONDO:0014221", grouping_rule="disease_grouping@1"
+)
+```
+
+The historical lookup may choose the last stored target of one identifier;
+`disease_group_explanation@1` exposes its selected/alternative links as partial.
+Default `@2` removes this storage-order dependence
+([#115](https://github.com/uibcdf/sabueso/issues/115)), retaining every candidate
+path and its pinned support. Compatible converging paths can group; contradictory
+targets remain ungrouped. A unique MONDO label is `mondo_name`; all stored labels
+remain in `mondo_names`. Multiple hierarchy paths stay in `narrower[term]["paths"]`
+instead of selecting one; a unique path retains the existing `"path"` field.
 
 Load an original pinned card from `KnowledgeStore` to explain a historical state.
 The operation does not fetch, mutate the card, rebuild mappings or add execution

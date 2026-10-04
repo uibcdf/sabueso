@@ -16,8 +16,13 @@ Diseases reach a protein card from several sources, each with its own ids:
 - ``disease_identity``: which ids MONDO states are the same disease as one of its terms
   (→ ``mondo:<term>``, rule ``mondo_equivalence@1``), MedGen UIDs included.
 
-``diseases_view`` (``Card.diseases()``) groups the statements by MONDO term, under the
-rule ``disease_grouping@1``:
+The historical rule ``disease_grouping@1`` groups statements by MONDO term as follows.
+It remains available through an explicit ``grouping_rule`` selector. The default
+``disease_grouping@2`` retains every stored identity path, rejects conflicting
+targets of one identifier before granularity, and preserves unfinished MedGen
+branches and alternative labels/paths (see :mod:`sabueso.core.disease_grouping`).
+
+Historical behavior:
 - a statement joins a MONDO term when one of its ids is that term, or reaches it
   through the stated ``same_as`` chain. Nothing groups by name;
 - a statement whose ids reach several terms joins the broadest one when MONDO places
@@ -42,7 +47,8 @@ from typing import Any, Callable, Dict, List
 
 from .relationship_store import make_derivation
 
-RULE = "disease_grouping@1"
+RULE = "disease_grouping@2"
+LEGACY_RULE = "disease_grouping@1"
 #: ClinVar's condition placeholders, by the MedGen concept ids it uses for them.
 CLINVAR_PLACEHOLDERS = {
     "MEDGEN:C3661900": "not provided",
@@ -122,7 +128,18 @@ def _same_as(card: Any, source: str) -> Dict[str, Dict[str, Any]]:
     }
 
 
-def diseases_view(card: Any) -> Dict[str, Any]:
+def diseases_view(card: Any, grouping_rule: str = RULE) -> Dict[str, Any]:
+    """Read a versioned grouping view; historical lookup is available explicitly."""
+    if grouping_rule == LEGACY_RULE:
+        return _legacy_diseases_view(card)
+    if grouping_rule != RULE:
+        raise ValueError(f"Unsupported disease grouping rule: {grouping_rule}")
+    from .disease_grouping import diseases_view_v2
+
+    return diseases_view_v2(card)
+
+
+def _legacy_diseases_view(card: Any) -> Dict[str, Any]:
     """The card's disease statements grouped by MONDO term; see the module docstring."""
     mondo_of = _same_as(card, "MONDO")
     narrower_of: Dict[str, Dict[str, List[str]]] = {}
@@ -242,7 +259,7 @@ def diseases_view(card: Any) -> Dict[str, Any]:
         "diseases": diseases,
         "ungrouped": ungrouped,
         "rule": make_derivation(
-            RULE,
+            LEGACY_RULE,
             inputs=[
                 "relationships.associated_with",
                 "annotations.disease",

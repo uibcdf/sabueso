@@ -314,7 +314,7 @@ Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
 CI/release tests, alongside `test_literature_intake_offline.py` for original support
 and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
-The current checkpoint passes 1,493 source offline cases and 183 unchanged installed
+The current checkpoint passes 1,511 source offline cases and 201 unchanged installed
 integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
@@ -380,5 +380,7 @@ full bibliography and MOLI's shared record/consumer coordination remain open.
 `Card.explain_disease` (#91) reads pinned disease groups without acquisition or
 new Ackredit credit. Original association/selected-annotation support, stored
 identity/hierarchy links, alternatives and whole-card ungrouped outcomes remain
-visible. The existing order-dependent lookup is reported in #115; alternative
-same-source targets are exposed as partial rather than unique identity.
+visible. Default `disease_grouping@2`/`disease_group_explanation@2` (#115) retains
+all identity paths and leaves contradictory or unfinished branches ungrouped.
+Explicit `grouping_rule="disease_grouping@1"` preserves historical lookup and its
+partial explanation at the unchanged card pin. Neither rule acquires new credit.

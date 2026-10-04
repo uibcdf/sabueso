@@ -137,8 +137,9 @@ shows how to use them.
     `gtex=True`, each tissue's UBERON or EFO term, `gtex_tissue_key@1`);
   - `sequence_differences(other)` (the positions where two equal-length sequences
     differ, nothing aligned, `equal_length_positions@1`, #103);
-  - `diseases()` (a protein's diseases grouped by MONDO term, `disease_grouping@1`,
-    #90);
+  - `diseases(grouping_rule="disease_grouping@2")` (unreleased default: every stored
+    identity path, explicit contradictory/unfinished branches, #90/#115).
+    `grouping_rule="disease_grouping@1"` reproduces the published historical lookup;
   - `terms(use)` (what the sources state about a use of the card's knowledge,
     `terms_propagation@1`, #29; also `Deck.terms(use)` and `Deck.admissible(use)`);
   - `bioactivities(include_indirect=False, thresholds=None)`;
@@ -178,11 +179,13 @@ shows how to use them.
   and recorded unlinked PDB mentions (`literature_explanation@1`, since 0.12.0).
   Missing links are `not_on_card`; missing stored support is `partial`.
   Unreleased `explain_disease(disease_ref)` explains a MONDO disease group at the
-  exact card pin (`disease_group_explanation@1`), following stored association and
+  exact card pin (`disease_group_explanation@2`), following stored association and
   selected annotation-member support, MedGen/MONDO identity and hierarchy steps.
   Stored alternatives/conflicts and whole-card ungrouped context remain visible;
-  missing or ambiguous support is `partial`. The grouping rule is unchanged and
-  no source is asked. `MONDO:<seven-digit id>` and `mondo:MONDO:<seven-digit id>`
+  missing support is `partial`; contradictory targets are ungrouped. Keyword-only
+  `grouping_rule="disease_grouping@1"` explicitly uses the historical view and
+  `disease_group_explanation@1`, including its exposed lookup ambiguity. No source
+  is asked. `MONDO:<seven-digit id>` and `mondo:MONDO:<seven-digit id>`
   select groups, never names or cross-ontology aliases.
 - **Other.** `to_deck()`, `expand(predicate, ...)` (see `sabueso.expand`).
 
