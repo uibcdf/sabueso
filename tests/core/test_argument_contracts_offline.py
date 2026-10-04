@@ -13,6 +13,7 @@ import pytest
 
 from sabueso import (
     ambiguity_deck,
+    extract_literature_mentions,
     ligand_deck,
     resolve,
     resolve_molecule_card,
@@ -106,6 +107,7 @@ def _discovered():
 
 
 PUBLIC_TOOLS = [
+    extract_literature_mentions,
     *_discovered(),
     *SOURCE_FUNCTIONS,
     resolve,

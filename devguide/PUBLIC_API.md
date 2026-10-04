@@ -8,6 +8,14 @@ shows how to use them.
 
 ## Entry point
 
+- Unreleased: `sabueso.extract_literature_mentions(text, identifier, publication, locator)`
+  runs `literal_uniprot_mention@1` on supplied text with an explicit canonical UniProt
+  accession and publication reference. It returns detached per-occurrence
+  `source_assertions`, supported `relationships` and original `extraction_trace` with
+  portable Ackredit attribution. Explicit namespace/official URL, case-sensitive
+  token boundaries and Unicode offsets are required. It makes no card intake,
+  curation, identity merge, article fetch or biological inference (#92).
+
 - `sabueso.resolve(query, entity_type=None, profile=None, curations=None, **options)`
   returns `(card | None, resolution)`.
   - `query` is an identifier (UniProt accession, `pdb:`, `pubchem:`, `chembl:`,
@@ -93,7 +101,7 @@ shows how to use them.
   curations=None, **clients)` resolves, composes, and optionally stores.
 - `sabueso.compose_packet(knowledge_query, subject, comparator=None)` composes from
   existing cards.
-  In unpublished `packet_aspects@6`, the literature aspect includes direct UniProt
+  In published `packet_aspects@6`, the literature aspect includes direct UniProt
   mentions and derived PDB mention context in both the index and unknowns. Automatic
   `knowledge_packet` acquisition requests bibliography only (`europepmc={}`);
   located annotations enter via explicit article intake on prebuilt cards, then
@@ -104,7 +112,7 @@ shows how to use them.
   `same_knowledge(other)` (None across formats, aspect mappings and levels of detail),
   `cite(role, item_id)`, `item(role, item_id, store)`, `to_dict()`.
   `terms(use, store)` reads exact saved card pins and reports represented statement
-  support, conflicts and stored dependencies (`packet_terms@1`, unpublished).
+  support, conflicts and stored dependencies (`packet_terms@1`, since 0.12.0).
   Full/index share the scope at `packet_aspects@6`; other mappings need an adapter.
   It uses the current packaged terms registry with review dates, without changing
   packet hashes/payloads or reconstructing a historical terms-registry snapshot.
@@ -153,7 +161,7 @@ shows how to use them.
   subject, source, record, version, retrieval and asserted value (#91).
   `explain_literature(publication_ref)` explains the publication's links and both
   legs of structural mention context, with pinned references, qualifier alternatives
-  and recorded unlinked PDB mentions (`literature_explanation@1`, unpublished).
+  and recorded unlinked PDB mentions (`literature_explanation@1`, since 0.12.0).
   Missing links are `not_on_card`; missing stored support is `partial`.
 - **Other.** `to_deck()`, `expand(predicate, ...)` (see `sabueso.expand`).
 

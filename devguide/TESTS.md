@@ -87,6 +87,21 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   0.9.0-based editable satisfies the floor and the primary environment passes pip
   check; all workspace packages remain editable.
 
+## Unreleased traceability and extraction guards
+
+`test_chembl_acquisition_offline.py` verifies paginated/chunked access, native releases,
+original document citations, archive reuse/replay, retries, partial received-page credit,
+fixtures, empty answers and failures. `test_rule_literature_extraction_offline.py`
+verifies exact namespaces/token boundaries, Unicode offsets, repeated occurrence
+support, original rule acquisition, input identity, saved attribution and provider
+failure. Both run unchanged outside the checkout in installed-provider CI lanes.
+
+Local diagnostic wheels additionally pass
+`devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):
+module/resource bytes and membership must match the source, excluding generated
+`_version.py`. The negative regression rejects stale, missing and ghost modules.
+Clean local wheel receiving tests are diagnostic evidence, not public Conda delivery.
+
 ## Fixtures
 
 - Fixtures are frozen public responses, saved as the source returns them (trimmed only

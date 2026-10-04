@@ -4,6 +4,35 @@ What sources say about publications, and what a curator reads in them. A curated
 statement is a SourceAssertion whose source is the paper: it is compared with the
 databases, never given priority, and kept across rebuilds.
 
+## Literal extraction from supplied text (unreleased)
+
+`sabueso.extract_literature_mentions(text, identifier, publication, locator)` runs
+the fixed rule `literal_uniprot_mention@1`. Supply the exact text fragment, its
+canonical UniProt accession, a `pubmed:` or `doi:` reference and its location in
+that publication. It accepts explicit `UniProt:P60174`, `UniProtKB:P60174` or an
+official UniProt entry URL. Names, bare accessions, isoform suffixes and longer tokens
+do not match. Matching is case sensitive and does not establish sequence identity
+or a biological finding.
+
+The result has one detached `SourceAssertion` per occurrence, with the literal
+text, zero-based Unicode offsets (exclusive end), locator and input SHA-256, plus
+supported `mentioned_in` relationships. Acquisition is `rule_extraction`, with
+the tool, version and configuration; no human validation is invented. An empty
+result concerns the supplied fragment only.
+
+Save the result's original `extraction_trace` alongside its statements. It credits
+the executed software, identified publication and input fragment through Ackredit.
+Saved portable readers render those original references without new credit.
+Publication metadata and fragment terms remain unknown when not supplied; a
+publication reference grants no reuse rights. Provider failures warn and preserve
+the scientific extraction with explicit failed attribution.
+
+This first rule runs entirely on supplied text. It does not fetch full text or
+automatically intake its result into a card or `CurationStore`; extraction and
+human curation remain distinct. Card intake, replay on refresh, article metadata
+and broader statement extraction remain tracked in Sabueso #92. Stored card schema
+0.3.11 is fixed.
+
 ## Literature on a card
 
 `card.literature()` answers "which publications support which statements on this

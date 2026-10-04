@@ -2268,3 +2268,24 @@ uibcdf/sabueso#92.
   terms, especially when a PDB mention is related to a protein through stated
   structure identity. Those mappings and own scientific extraction remain #92.
   Card schema 0.3.10 is unchanged.
+
+## Bounded local literature extraction and original attribution (2026-10-04)
+
+Maintainer-approved post-0.12.0 work (#92/#108) starts with the deterministic
+`literal_uniprot_mention@1` rule on explicitly identified supplied text fragments.
+An explicit UniProt namespace or official entry URL is required; names, bare ids,
+isoform suffixes and longer tokens do not establish a canonical entry mention.
+Each occurrence retains its exact text, Unicode offsets, locator, input identity
+and rule-extraction tool/version/configuration. It is an extraction of a printed
+identifier, not a biological claim, human validation or entity merge.
+
+The initial API returns detached assertions, supported relationships and original
+Ackredit attribution. It does not change published card schema 0.3.11 or route
+extractions through `CurationStore`. Publication metadata and fragment rights stay
+unknown rather than inferred. Provider failures preserve scientific results and
+explicit attribution gaps. Card intake/replay and broader statement extraction
+remain #92; shared project routing stays MOLI #36/#18.
+
+The original-design review #112 maps actual implementation and remaining functions
+without converting illustrative future APIs into commitments. Clinical/peptide
+scope, persistent consumer acceptance and deferred mirrors retain their owners.

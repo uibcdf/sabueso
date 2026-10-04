@@ -289,3 +289,35 @@ The automatic-composition/acquisition pilot and published receiving compatibilit
 pass. #108 is kept open for remaining acquisition/further-result coverage, complete
 bibliography and the shared record boundary; #110 owns Sabueso release qualification. This is an initial
 runtime integration, not a claim of full pipeline coverage or a public installation route.
+
+## ChEMBL development slice after 0.12.0 (#108)
+
+All five built-in online/fixture logical operations are observed. Normalized queries,
+page/chunk metadata, raw transport identities, retries, caps, documents and received
+subsets survive original failures. Native document citation forms use content-based
+identities; missing authors/indication bibliography remain gaps. Empty answers,
+unavailable fixture datasets and empty/unqueried batches remain distinct. Existing
+client release-cache metadata is explicitly not independent release proof per page.
+Scientific returns/exceptions and the frozen card schema remain unchanged.
+
+The first standalone literal extraction in #92 additionally retains detached original
+Ackredit attribution without treating it as packet composition, human curation or a
+source download. `literal_uniprot_mention@1` names its tool/version/configuration and
+input hash. The application saves its original extraction result/trace; card intake
+and refresh replay are future work.
+
+Tests: `test_chembl_acquisition_offline.py` and
+`test_rule_literature_extraction_offline.py` join the unchanged installed-provider
+CI/release tests. Source and installed diagnostic receiving evidence uses public
+Ackredit 0.9.0; this development slice is not a new published Conda package.
+All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
+instrumentation preserves 19 observed acquisition records (18 received, one empty)
+and two composition records with available attribution, plus original sidecars.
+Private content stays outside public reports and repositories; original notebooks
+remain unchanged.
+
+The design review (#112) makes PubChem/BindingDB and further sources/results,
+complete bibliography and MOLI record/consumer boundaries explicit remaining work.
+Local wheel testing uncovered stale incremental `build/lib` modules (#113); a
+source-byte/membership guard rejects them before installed receiving qualification.
+Published 0.12.0's independently qualified public Conda artifact is unaffected.

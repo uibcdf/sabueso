@@ -1,6 +1,7 @@
 # Sabueso — Architecture
 
-What Sabueso is built of, as of release 0.6.0. `DATA_FLOW.md` follows one resolution
+What Sabueso is built of, after release 0.12.0 and the current development slices.
+`DATA_FLOW.md` follows one resolution
 through these parts; `PUBLIC_API.md` lists the public surface.
 
 ## Layers
@@ -9,8 +10,10 @@ Traceability is a required Sabueso product property, including failed or empty
 source access. Knowledge support, observed execution and bibliography retain their
 separate meanings. Runtime records must state their coverage and gaps; a returned
 card or a citation list alone cannot establish complete pipeline provenance.
-The first acquisition slice covers built-in UniProt and Europe PMC entry, search,
-mentions and annotation clients (#108, moli#36). See `SOURCE_ACCESS.md`.
+Published acquisition covers built-in UniProt, Europe PMC and RCSB entry, search,
+mentions, annotations and structural clients. Unreleased development adds ChEMBL
+logical operations and detached literal literature extraction (#108/#92, moli#36).
+See `SOURCE_ACCESS.md` and the [implementation review](pending_proposals/design_implementation_review.md).
 MOLI owns ProjectRecord composition and the future Recorda boundary; local records
 do not implement project routing, EventLedger persistence or strict commit policy.
 
@@ -38,7 +41,7 @@ do not implement project routing, EventLedger persistence or strict commit polic
    - Alternatives and conflicts are kept, never discarded.
 4. **Entity resolution** (`resolver.entity_resolver`, `tools.resolve`).
    - `sabueso.resolve(query)` routes a query by namespace, to a protein card or a
-     small-molecule card.
+     small-molecule or MONDO-anchored disease card.
    - The EntityResolver decides which entity a query or record refers to. It reports
      ambiguity instead of choosing, and audits identities
      (`protein_identity_audit@1`).
@@ -67,6 +70,10 @@ do not implement project routing, EventLedger persistence or strict commit polic
    - field assertions, relationships, bioactivities, engagements and typed claims;
    - compared with the sources, never given priority;
    - kept across rebuilds by a `CurationStore`.
+   Unreleased `tools.literature.extract_literature_mentions` runs a named literal
+   rule on identified supplied text. Its statements, relationships and original
+   attribution remain detached; card intake and extraction replay are still #92.
+   Extractions never become human curation through `CurationStore`.
 9. **Storage and references** (`core.snapshot`, `core.knowledge_store`,
    `core.migration`, `tools.card.storage`, `tools.deck.storage`).
    - Content-addressed snapshots and pinned references, for cards, their items and
@@ -81,6 +88,8 @@ do not implement project routing, EventLedger persistence or strict commit polic
       (`ARGUMENT_CONTRACTS.md`).
     - Diagnostics through SMonitor (`DIAGNOSTICS.md`).
     - Optional dependencies through DepDigest.
+    - Required runtime attribution through Ackredit, with application-owned sessions
+      and explicitly saved original records separate from scientific payloads.
 
 ## Core objects
 
@@ -128,7 +137,8 @@ do not implement project routing, EventLedger persistence or strict commit polic
 - **Inputs by sequence or structure file.** Resolution takes identifiers, names, and
   SMILES or InChI matched by PubChem (#93).
 - **KnowledgeQuery and knowledge packets** (`SCIENTIFIC_POTENTIAL.md`): a prototype,
-  released in 0.6.0 (`sabueso/core/packets.py`, #71). Its shared contract waits on
-  uibcdf/moli#22.
+  released in 0.6.0 (`sabueso/core/packets.py`, #71), now with pinned full/index
+  content, terms and attribution. MOLI #22 accepted the index guarantees; persistent
+  consumer acceptance is still pending. General semantic query coverage remains partial.
 
 Their status is tracked in `ROADMAP.md`.

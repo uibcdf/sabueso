@@ -72,10 +72,12 @@ it.
 Traceability is mandatory and automatic for supported boundaries. The first slice
 released in 0.12.0 covers the built-in online and fixture clients for UniProt entry
 and search, Europe PMC mentions and explicit article annotations, and RCSB
-single/batch structure lookup. Other sources and custom clients are explicitly `not_observed`; this is incomplete pipeline
+single/batch structure lookup. Unreleased development also observes ChEMBL
+bioactivities, assay activities, molecules, indications and disease indications.
+Other sources and custom clients are explicitly `not_observed`; this is incomplete pipeline
 coverage. New sources must declare their observation coverage and test its gaps.
 
-These five public envelopes add `acquisition_trace` outside the unchanged raw
+The corresponding public envelopes add `acquisition_trace` outside the unchanged raw
 `record`. `resolve`, `resolve_protein_card`, `EntityResolver.resolve` and
 `refresh_card` attach independent runtime copies to `Card.acquisition_trace` and
 `EntityResolution.acquisition_trace`, including resolutions returning no card.
@@ -132,6 +134,20 @@ are explicit gaps. See `docs/content/user/attribution.md` for verified metadata 
 Regression tests are in `tests/core/test_source_acquisition_offline.py` and
 `tests/core/test_rcsb_acquisition_offline.py`; the public
 installed-consumer workflow is `examples/ackredit_pilot/`.
+
+ChEMBL's unreleased adapter retains normalized logical queries, all transport
+requests, pagination/chunks, caps, decoded page identities and original document
+citation forms. A failure after received content pages is `partial`, with those
+pages in `completed_pages`; the original exception still escapes. Completed subsets
+receive contextual credit without claiming the whole operation succeeded. Missing
+fixture datasets are `unavailable`, even where the original fixture API returns an
+empty mapping. An empty logical identifier batch is `not_queried`.
+The database release is the client's reported ChEMBL version. Its origin distinguishes
+status responses, fixtures and the existing client cache; it is explicitly not
+verified independently for each page. Cached release metadata must not be read as
+proof that every reused page belongs to that release. Native document metadata is
+preserved without DOI enrichment; missing authors and indication bibliography stay
+explicit gaps. `tests/core/test_chembl_acquisition_offline.py` covers this boundary.
 
 ## Deprecated (removed before 1.0)
 

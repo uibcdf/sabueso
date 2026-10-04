@@ -71,6 +71,9 @@ not a release receipt.
 
 - `pending_bugs/`, `pending_proposals/`: analyses of active issues, each tied to its
   issue.
+  `pending_proposals/design_implementation_review.md` compares original design,
+  scientific capabilities and current implementation, with concrete gaps and owning
+  acceptance criteria (#112).
   `pending_proposals/ackredit_knowledge_pipeline_attribution.md` records the required
   pipeline attribution plan (#108, moli#36), its automatic composition and bounded
   acquisition adapters, and remaining coverage/publication gates.

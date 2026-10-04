@@ -32,6 +32,37 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   the environment's pip check passes. Provider #81 is closed through #82.
   Separate environments qualify public/candidate distributions.
 
+## Unreleased development after 0.12.0
+
+- ChEMBL observation (#108): all five built-in logical operations retain normalized
+  queries, pages/chunks, native document forms, totals/caps, retries, empty answers,
+  unavailable fixtures, archive reuse/replay and partial received-page credit.
+  Original scientific returns/exceptions and schema 0.3.11 remain unchanged.
+  Source-version origins distinguish status/fixture/client cache and do not claim
+  independent release proof for each page.
+- Literal literature extraction (#92): `extract_literature_mentions` runs named rule
+  `literal_uniprot_mention@1` on identified supplied fragments, with explicit
+  namespace/official URL, Unicode offsets, input hash, original acquisition and
+  detached Ackredit attribution. Card intake/replay, broader statements and article
+  metadata/terms remain pending; extraction never becomes human curation.
+- Design/architecture review (#112): `pending_proposals/design_implementation_review.md`
+  maps original plans and scientific functions to code/tests, remaining work, owners
+  and bounded acceptance criteria. Peptides, much of the clinical layer and persistent
+  consumer acceptance remain gaps; generalized illustrative APIs are directions.
+- Local packaging integrity (#113): remove 259 versioned generated `build/` files,
+  ignore that cache and check diagnostic wheel membership/bytes against source.
+  A stale incremental wheel is rejected; a clean installed wheel passes all 89
+  unchanged integration cases and the public three-packet saved-reader workflow.
+  Published Conda artifacts and their qualification receipts remain immutable.
+- Local validation: 1,397 offline cases pass in Python 3.14; Ruff, schema/card shape,
+  source registry, governance, dependency preflight and Sphinx with `-W` pass.
+  All eight pilot notebook copies pass with installed public 0.12.0. Exact remote
+  checkpoint CI is recorded in the owning issues after the ordinary code push.
+- PR #109 / #111 is integrated: applicable local gates by changed behavior, targeted
+  regressions, full offline tests at code checkpoints, ordinary unskipped code pushes
+  and preserved compatibility/release gates. Exact merge SHA `f2cbe20` has green
+  CI/governance; skipped documentation pushes are not passing code evidence.
+
 ## Release and schema
 
 - **Latest release:** 0.12.0 (2026-10-04).
@@ -353,7 +384,12 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   consumer.
 - **Postponed by the maintainers (2026-10-01):** local mirrors in real work (#101),
   ChEMBL as a mirror and builds from cached sources.
-- **Last pilot run:** 0.10.0, 2026-10-01, from scratch on the published package. The
+- **Last pilot validation:** 0.12.0, 2026-10-04: all eight read-only notebook
+  copies execute in a separate public installed-package environment from a fresh
+  temporary store. Original traces/portable attribution are saved through temporary
+  application instrumentation; original private notebooks remain unchanged. Execution
+  success does not prove every source was available or fully observed.
+  The previous recorded run was 0.10.0, 2026-10-01, from scratch on the published package. The
   first attempt was repeated, because ChEMBL's API answered HTTP 500 to every request;
   the second was clean. #103 was verified on 0.9.0 and closed.
 - **Open issues, by kind:**

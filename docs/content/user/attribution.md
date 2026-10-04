@@ -8,6 +8,9 @@ Traceability is a required Sabueso property. The first source-access slice also
 retains automatic acquisition traces for built-in UniProt, Europe PMC and RCSB PDB clients;
 its declared gaps prevent a claim of complete pipeline coverage.
 
+Unreleased development extends that boundary to the built-in ChEMBL clients and
+adds detached attribution for `extract_literature_mentions`.
+
 The application owns the Ackredit session:
 
 ```python
@@ -140,6 +143,25 @@ The original per-entry metadata remains in the trace. A structure packet's store
 support credits the RCSB description; save the intake or enclosing workflow record
 to retain its original primary-publication references as well.
 
+## ChEMBL queries (unreleased)
+
+Built-in bioactivity, assay-activity, molecule and indication operations retain
+normalized queries, pages and chunks, source totals/caps, transport retries and
+native document citations. Public `get_*` envelopes retain the original raw record
+and add the detached acquisition trace. A failure after received content pages keeps
+those pages and their hashes in a `partial` event; the scientific API still raises
+its original exception. Credit covers the received subset, with the failed requests
+retained in context. Empty answers, unavailable fixture datasets and unqueried
+logical batches remain distinct.
+
+`source_version.origin` distinguishes a fetched status response, a fixture and the
+existing client's release cache. Its scope is explicitly
+`client_reported_release_not_verified_per_page`; cached status metadata cannot prove
+the release of each archived or live page. Archive reuse/replay retains original
+retrieval times and response identities without new network attempts. ChEMBL's
+native document metadata contributes primary citations, with missing authors and
+other fields left unknown. Original readers add no execution credit.
+
 ## Dependency and failures
 
 Ackredit is a required runtime dependency. Importing Sabueso and entering an empty
@@ -193,6 +215,11 @@ The offline resource-description declarations were verified on 2026-10-02/04:
   `10.1093/nar/gkae1091`. The full 51-author metadata comes from the
   [publisher-deposited Crossref record](https://api.crossref.org/works/10.1093/nar/gkae1091).
   Its bibliographic issue year is 2025, distinct from its online publication date.
+- ChEMBL's [recommended citation](https://chembl.gitbook.io/chembl-interface-documentation/frequently-asked-questions/general-questions)
+  lists the 20 authors and issue metadata of *The ChEMBL Database in 2023: a drug
+  discovery platform spanning multiple bioactivity data types and time periods*,
+  DOI `10.1093/nar/gkad1004`, bibliographic year 2024. This resource description is
+  separate from the original publications cited by its measurements.
 - Sabueso's software metadata comes from its `CITATION.cff`, using the project
   concept DOI and the executing package's version. A preceding release's version DOI
   is not attached to an unreleased checkout.

@@ -187,3 +187,23 @@ The complete receipt is `receipts/sabueso_0.12.0_public_2026-10-04.json`.
 
 Post-publication metadata and receipt commits do not change the release tag or
 archive. The preliminary `py_0` receipt remains historical; never overwrite it.
+
+## Local diagnostic wheels
+
+A local wheel is an installed-consumer diagnostic, not a published installation
+route. Incremental setuptools builds can reuse stale `build/lib` modules when
+cached timestamps are newer than the source (#113). Preserve/remove generated
+build output before a clean build, then verify every packaged source module and
+resource before installing it:
+
+```bash
+python -m pip wheel --no-deps --no-build-isolation --no-cache-dir . --wheel-dir /tmp/sabueso-wheels
+python devtools/conda-build/check_local_wheel.py /tmp/sabueso-wheels/<exact-wheel-file>.whl
+```
+
+The guard rejects changed bytes, missing files and unexpected retired modules,
+excluding only generated `_version.py`. Install the verified wheel in a separate
+environment and run unchanged tests outside the checkout with the published
+provider floor. A passing source suite cannot substitute for this artifact check.
+The public Conda route continues using its independent clean-source, exact-archive,
+installed-package and promotion gates above. Development remains editable.

@@ -47,6 +47,9 @@ from sabueso.tools.db import (
 
 ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 TRACED = {
+    "chembl.get_bioactivities",
+    "chembl.get_indications",
+    "chembl.get_molecules",
     "uniprot.get_entry",
     "uniprot.search",
     "europepmc.get_annotations",

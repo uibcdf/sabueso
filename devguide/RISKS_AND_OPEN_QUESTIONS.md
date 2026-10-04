@@ -363,3 +363,10 @@ Answered since the first list (2026-01):
 - the schema versioning policy: `SCHEMA.md` (#42), and migration (#51);
 - the local store: `CACHE_POLICY.md`, `STORAGE_LAYOUT.md` (#7, #27). Cards are stored
   whole, so the question of partial cards does not arise.
+
+- Local incremental wheel builds can silently retain older modules from versioned generated
+  `build/lib` when cached timestamps exceed source timestamps (#113). The observed
+  artifact failed fresh import despite passing source tests. Clean/preserve generated
+  caches and use `devtools/conda-build/check_local_wheel.py` before installed
+  diagnostics. Published Conda receipts verify source bytes separately; no public
+  wheel route is claimed.

@@ -51,6 +51,7 @@ from sabueso.tools.db.uniprot import (
     create_protein_card_online,
 )
 from sabueso.tools.deck.storage import save_deck_jsonl, save_deck_sqlite
+from sabueso.tools.literature import extract_literature_mentions
 from sabueso.tools.navigate import expand
 from sabueso.tools.packet import knowledge_packet
 from sabueso.tools.resolve import resolve
@@ -59,6 +60,7 @@ from sabueso.tools.resolve import resolve
 _ensure_smonitor_configured(_SMONITOR_PACKAGE_ROOT)
 
 __all__ = [
+    "extract_literature_mentions",
     "attribution",
     "create_protein_card_from_file",
     "create_protein_card_from_json",

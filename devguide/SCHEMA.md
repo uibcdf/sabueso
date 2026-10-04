@@ -135,7 +135,9 @@ Every SourceAssertion stored in `source_assertion_store` must include:
     (curator and date) records a person's confirmation. These are for extractions
     whose tool and version are known because Sabueso or its user ran them; a source
     that serves text-mined records is `database` with its `origin`. No extraction is
-    run yet.
+    run automatically during card building yet. Unreleased
+    `extract_literature_mentions` runs a named literal rule and returns detached
+    statements; its automatic card intake is still pending in #92.
   An older SourceAssertion has none, and reads as `not_recorded`
   (`acquisition_of`), until its card is built again.
 

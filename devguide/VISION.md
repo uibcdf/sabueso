@@ -31,7 +31,7 @@ biology, and computer‑assisted molecular design, and the MOLI components and a
 work for them.
 
 ## Scope
-- **Entities.** Proteins and small molecules today. Peptides are in the schema, without
+- **Entities.** Proteins, small molecules and MONDO-anchored diseases today. Peptides are in the schema, without
   a peptide source or view yet.
 - **Sources.** The original plan named UniProt, PDB, ChEMBL, PubChem, eMolecules,
   ChemSpider and DrugBank.
@@ -61,6 +61,7 @@ The initial scope deliberately remains narrow, but early design decisions should
 See [SCIENTIFIC_POTENTIAL.md](SCIENTIFIC_POTENTIAL.md) for this non-binding long-term scientific direction. It is a vision document, not an MVP commitment or frozen API.
 
 ## Non‑Goals (for now)
-- No offline‑only mode. Sabueso is online‑first, but supports local card caching.
+- Sabueso is online-first, with fixtures, saved knowledge and explicit archive/mirror
+  offline modes. Offline access states when a requested answer is unavailable.
 - No forced selection rules until SourceAssertions are fully collected and traceable.
 - Sabueso does not produce project Evidence, hypotheses, or decisions (those belong to Nextia).

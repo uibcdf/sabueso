@@ -9,7 +9,9 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
+from sabueso.core.chembl_acquisition import note_page, observe
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -165,7 +167,9 @@ def _chembl_get(path: str, params: Dict[str, Any], timeout: float) -> Any:
         url += "?" + urlencode(params)
     try:
         with urlopen(url, timeout=timeout, expect_json=True) as resp:  # nosec - trusted endpoint
-            return json.loads(resp.read().decode("utf-8"))
+            payload = json.loads(resp.read().decode("utf-8"))
+            note_page(path, params, payload)
+            return payload
     except HTTPError as exc:
         if exc.code == 404:
             raise RecordNotFoundError(f"ChEMBL has no record for {path}") from exc
@@ -197,6 +201,7 @@ class OnlineChEMBLClient:
             self._version = status.get("chembl_db_version")
         return self._version
 
+    @observe("bioactivities")
     def bioactivities(
         self, target: str, limit: int = DEFAULT_ACTIVITY_LIMIT
     ) -> Dict[str, Any]:
@@ -278,6 +283,7 @@ class OnlineChEMBLClient:
                 )
         return assays, documents
 
+    @observe("assay_activities")
     def assay_activities(
         self, assay_ids: Iterable[str], limit: int = DEFAULT_ACTIVITY_LIMIT
     ) -> Dict[str, Any]:
@@ -318,6 +324,7 @@ class OnlineChEMBLClient:
             "documents": documents,
         }
 
+    @observe("molecules")
     def molecules(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
         """Molecule records by ChEMBL id: ``{version, retrieved_at, molecules, missing}``."""
         ids = sorted({i for i in chembl_ids if i})
@@ -343,6 +350,7 @@ class OnlineChEMBLClient:
             "missing": [i for i in ids if i not in found],
         }
 
+    @observe("indications")
     def indications(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
         """Indications by molecule ChEMBL id: ``{version, retrieved_at, indications,
         missing}``. ``missing`` lists molecules ChEMBL states no indication for."""
@@ -378,6 +386,7 @@ class OnlineChEMBLClient:
             "missing": [i for i in ids if i not in found],
         }
 
+    @observe("indications_for")
     def indications_for(self, disease_ids: Iterable[str]) -> Dict[str, Any]:
         """Indications naming a disease, by the ids ChEMBL states for it (#90):
         ``EFO:…``/``MONDO:…`` (``efo_id``) or ``MESH:D…`` (``mesh_id``). Returns
@@ -443,6 +452,7 @@ class FixtureChEMBLClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @observe("bioactivities", fixture=True)
     def bioactivities(
         self, target: str, limit: int = DEFAULT_ACTIVITY_LIMIT
     ) -> Dict[str, Any]:
@@ -461,6 +471,7 @@ class FixtureChEMBLClient:
             "activities": activities,
         }
 
+    @observe("assay_activities", fixture=True)
     def assay_activities(
         self, assay_ids: Iterable[str], limit: int = DEFAULT_ACTIVITY_LIMIT
     ) -> Dict[str, Any]:
@@ -499,6 +510,7 @@ class FixtureChEMBLClient:
             "documents": documents,
         }
 
+    @observe("molecules", fixture=True)
     def molecules(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
         ids = sorted({i for i in chembl_ids if i})
         if self.failing & set(ids):
@@ -519,6 +531,7 @@ class FixtureChEMBLClient:
             "missing": [i for i in ids if i not in found],
         }
 
+    @observe("indications", fixture=True)
     def indications(self, chembl_ids: Iterable[str]) -> Dict[str, Any]:
         ids = sorted({i for i in chembl_ids if i})
         if self.failing & set(ids):
@@ -539,6 +552,7 @@ class FixtureChEMBLClient:
             "missing": [i for i in ids if i not in found],
         }
 
+    @observe("indications_for", fixture=True)
     def indications_for(self, disease_ids: Iterable[str]) -> Dict[str, Any]:
         ids = sorted({i for i in disease_ids if i})
         if self.failing & set(ids):
@@ -566,6 +580,7 @@ class FixtureChEMBLClient:
 # --- Public source access (uibcdf/sabueso#49) -----------------------------------------
 
 
+@capture_acquisitions
 @arg_digest()
 def get_bioactivities(
     identifier: str,
@@ -589,6 +604,7 @@ def get_bioactivities(
     )
 
 
+@capture_acquisitions
 @arg_digest()
 def get_molecules(identifiers: Any, client: Any = None, skip_digestion: bool = False):
     """ChEMBL molecule records by ChEMBL id; ``missing`` lists ids ChEMBL does not hold."""
@@ -603,6 +619,7 @@ def get_molecules(identifiers: Any, client: Any = None, skip_digestion: bool = F
     )
 
 
+@capture_acquisitions
 @arg_digest()
 def get_indications(identifiers: Any, client: Any = None, skip_digestion: bool = False):
     """ChEMBL's indications of molecules, by ChEMBL id, with the references it cites;

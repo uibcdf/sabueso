@@ -24,8 +24,8 @@ _aggregated_sources: ContextVar[tuple] = ContextVar(
 FORMAT = "sabueso.source_acquisition@1"
 TRACE_FORMAT = "sabueso.acquisition_trace@1"
 COVERAGE = {
-    "sources": ["UniProt", "Europe PMC", "RCSB PDB"],
-    "boundary": "built_in_entry_search_mentions_annotations_structure_clients",
+    "sources": ["UniProt", "Europe PMC", "RCSB PDB", "ChEMBL"],
+    "boundary": "built_in_entry_search_mentions_annotations_structure_chembl_clients",
     "other_sources_and_custom_clients": "not_observed",
 }
 
@@ -310,6 +310,7 @@ def _credit(record):
     record["bibliography"] = [software(), *descriptions(record["source"])]
     record["bibliography_gaps"] = []
     primary_ids = set()
+    primary_role = "structure_primary_citation"
     if record["source"] == "RCSB PDB":
         from .attribution_bibliography import structure_citations
 
@@ -321,11 +322,32 @@ def _credit(record):
             }.values()
         )
         record["bibliography_gaps"].extend(gaps)
+    if record["source"] == "ChEMBL":
+        from .attribution_bibliography import chembl_citations
+
+        citations, gaps = chembl_citations(record.get("documents", {}))
+        primary_ids = {item["id"] for item in citations}
+        primary_role = "measurement_primary_citation"
+        record["bibliography"].extend(citations)
+        record["bibliography_gaps"].extend(gaps)
+        if (
+            record["operation"] in {"bioactivities", "assay_activities"}
+            and not citations
+        ):
+            record["bibliography_gaps"].append(
+                "measurement_document_citations_not_returned"
+            )
+        if record["operation"] in {"indications", "indications_for"}:
+            record["bibliography_gaps"].append(
+                "indication_reference_metadata_not_declared"
+            )
     if record["operation"] == "annotations":
         record["bibliography_gaps"].append(
             "article_and_annotation_provider_citations_not_declared"
         )
-    completed_partial = record["outcome"] == "partial" and record.get("completed_ids")
+    completed_partial = record["outcome"] == "partial" and (
+        record.get("completed_ids") or record.get("completed_pages")
+    )
     if (
         record["outcome"] not in ("received", "empty", "not_found")
         and not completed_partial
@@ -354,7 +376,16 @@ def _credit(record):
                 "requests",
             )
         }
-        for key in ("entries", "completed_ids"):
+        for key in (
+            "entries",
+            "completed_ids",
+            "pages",
+            "completed_pages",
+            "total_count",
+            "truncated",
+            "missing",
+            "incomplete",
+        ):
             if key in record:
                 context[key] = deepcopy(record[key])
         resource = "sabueso:source-access:" + digest(
@@ -384,7 +415,7 @@ def _credit(record):
                     backend.track_item(
                         item["id"],
                         roles=[
-                            "structure_primary_citation"
+                            primary_role
                             if item["id"] in primary_ids
                             else "resource_description"
                         ],

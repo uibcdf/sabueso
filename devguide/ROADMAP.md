@@ -198,7 +198,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Temporal knowledge | partial | snapshots, revisions, source releases; the store's `as_of` and `changed_since` (#91); no source asked as of a past release |
 | Knowledge from Nextia not imported automatically | done (as a boundary) | promotion of derived knowledge open in uibcdf/moli#17 |
 | Literature as a knowledge source | partial | human curation and literature views; automated extraction pending |
-| KnowledgeQuery (semantic queries over sources) | partial | prototype released in 0.6.0 (#71): a protein subject, a fixed aspect mapping (`packet_aspects@5` since 0.10.0; unpublished @6 adds literature mentions and their index/unknowns); contract in uibcdf/moli#22 |
+| KnowledgeQuery (semantic queries over sources) | partial | prototype released in 0.6.0 (#71): a protein subject, a fixed aspect mapping (`packet_aspects@5` since 0.10.0; published @6 adds literature mentions and their index/unknowns); contract in uibcdf/moli#22 |
 | Knowledge packets (entities, facts, conflicts, unknowns) | partial | prototype released in 0.6.0 (#71): pinned, stored, with a content-equivalence id; since 0.10.0, an index level by reference for size (#88), accepted in uibcdf/moli#22, which closes with a consumer test |
 | Unknowns as first-class output | done | `knowledge_state()` (#56) |
 | Two levels of access (semantic and raw) | done | `resolve` and views; `tools.db.*.get_*` |
@@ -233,6 +233,16 @@ Open, pilot-related:
 - #30, ligand proximity to sites (deferred);
 - correspondence of regions across proteins. This one belongs to MolSysMT; Sabueso takes
   its residue maps (`residue_map`, `residue_maps`).
+
+## Design review after 0.12.0
+
+The maintainer-requested [implementation review](pending_proposals/design_implementation_review.md)
+(#112, 2026-10-04) compares original phases, conceptual schema, architecture, scientific
+potential and use cases against code/tests. The foundations are implemented; complete
+runtime coverage, extraction intake/replay, derived explanations, consumer acceptance,
+peptides/suppliers and much of the clinical layer remain partial or pending. Illustrative
+graph/query APIs are directions, not implied delivery obligations. Its bounded priority
+proposal complements the two routes below; #101 remains postponed.
 
 ## Next candidates
 
@@ -277,8 +287,13 @@ In order:
      derived `structure_mentioned_in` context through source-stated `has_structure`
      links, retaining both statements and separating them from direct UniProt
      mentions. Public 2JK2/Methods verifies it; unsupported 7QON remains unlinked.
-     Next: an extraction Sabueso runs itself, with its tool and version.
-     Literature packet coverage is implemented in unpublished `packet_aspects@6`
+     Unreleased: Sabueso runs `literal_uniprot_mention@1` on identified supplied
+     fragments, returning detached per-occurrence SourceAssertions, supported
+     relationships and original Ackredit attribution. It requires an explicit
+     namespace/official URL; no names, bare accessions or biological findings.
+     Next: extraction intake/replay with original provenance, article metadata/terms
+     and broader statement rules, without relabeling extraction as curation.
+     Literature packet coverage is published in `packet_aspects@6`
      (#71): both mention areas are indexed and their unknowns reported; automatic
      acquisition asks bibliography only, without guessing article ids.
    - Included in 0.11.0: a public review draft and hypothetical curation rehearsal
@@ -317,6 +332,11 @@ In order:
      fixture/reuse/replay, empty answers, failure and original response identities,
      automatically on cards, resolutions and one-call packets. The public pilot
      saves those detached traces and credits completed access in the workflow.
+     Unreleased development adds ChEMBL bioactivities, assay activities, molecules
+     and indication operations: pagination/chunks, source totals/caps, original
+     document citations, retries and received-page subsets remain observable even
+     when the original exception escapes. Client-reported cached releases are
+     explicitly not per-page release proof.
      Other sources/custom clients, further result types and complete resource
      bibliography remain coverage work with explicit gaps in the published 0.12.0
      scope (#108). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;

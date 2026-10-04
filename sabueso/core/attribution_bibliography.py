@@ -7,6 +7,40 @@ Metadata sources are recorded in docs/content/user/attribution.md.
 from copy import deepcopy
 
 _DESCRIPTIONS = {
+    "ChEMBL": {
+        "id": "doi:10.1093/nar/gkad1004",
+        "type": "article",
+        "title": "The ChEMBL Database in 2023: a drug discovery platform spanning multiple bioactivity data types and time periods",
+        "authors": [
+            "Zdrazil, B",
+            "Felix, E",
+            "Hunter, F",
+            "Manners, EJ",
+            "Blackshaw, J",
+            "Corbett, S",
+            "de Veij, M",
+            "Ioannidis, H",
+            "Lopez, DM",
+            "Mosquera, JF",
+            "Magarinos, MP",
+            "Bosc, N",
+            "Arcila, R",
+            "Kizilören, T",
+            "Gaulton, A",
+            "Bento, AP",
+            "Adasme, MF",
+            "Monecke, P",
+            "Landrum, GA",
+            "Leach, AR",
+        ],
+        "year": 2024,
+        "journal": "Nucleic Acids Research",
+        "volume": "52",
+        "number": "D1",
+        "pages": "D1180-D1192",
+        "doi": "10.1093/nar/gkad1004",
+        "url": "https://doi.org/10.1093/nar/gkad1004",
+    },
     "UniProt": {
         "id": "doi:10.1093/nar/gkae1010",
         "type": "article",
@@ -127,6 +161,37 @@ _DESCRIPTIONS = {
 def descriptions(source):
     item = _DESCRIPTIONS.get(source)
     return [deepcopy(item)] if item else []
+
+
+def chembl_citations(documents):
+    """Original document forms remain distinct; missing authors are never inferred."""
+    from .snapshot import canonical_json, digest
+
+    citations, gaps = [], []
+    for document_id, document in sorted(documents.items()):
+        identifier = "sabueso:chembl-document-citation:" + digest(
+            canonical_json(document)
+        )
+        item = {"id": identifier, "type": "article"}
+        for key in ("title", "year", "journal", "doi"):
+            if document.get(key):
+                item[key] = deepcopy(document[key])
+        if document.get("doi"):
+            item["url"] = "https://doi.org/" + document["doi"]
+        elif document.get("pubmed_id"):
+            item["url"] = f"https://pubmed.ncbi.nlm.nih.gov/{document['pubmed_id']}/"
+        gaps.append(
+            {
+                "document_id": document_id,
+                "citation_id": identifier,
+                "reason": "document_citation_metadata_not_stated",
+                "fields": [
+                    key for key in ("title", "authors", "year") if not item.get(key)
+                ],
+            }
+        )
+        citations.append(item)
+    return citations, gaps
 
 
 def structure_citations(entries):
