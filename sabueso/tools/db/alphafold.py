@@ -23,7 +23,9 @@ from typing import Any, Dict
 from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
+from sabueso.core.alphafold_acquisition import note_response, observe
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -34,6 +36,7 @@ class OnlineAlphaFoldClient:
     def __init__(self, timeout: float = 30.0) -> None:
         self.timeout = timeout
 
+    @observe()
     def prediction(self, accession: str) -> Dict[str, Any]:
         retrieval = stamp("AlphaFold DB")
         try:
@@ -41,6 +44,7 @@ class OnlineAlphaFoldClient:
                 f"{ALPHAFOLD_API}/{accession}", timeout=self.timeout, expect_json=True
             ) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
+                note_response(data)
         except HTTPError as exc:
             if exc.code == 404:
                 raise RecordNotFoundError(
@@ -69,6 +73,7 @@ class FixtureAlphaFoldClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @observe(fixture=True)
     def prediction(self, accession: str) -> Dict[str, Any]:
         if accession in self.failing:
             raise ConnectorError(
@@ -77,10 +82,12 @@ class FixtureAlphaFoldClient:
         path = self.directory / "alphafold" / f"{accession}.json"
         if not path.is_file():
             raise RecordNotFoundError(f"AlphaFold DB has no model for {accession}")
+        record = json.loads(path.read_text(encoding="utf-8"))
+        note_response(record)
         return {
             "accession": accession,
             "retrieved_at": self.retrieved_at,
-            "record": json.loads(path.read_text(encoding="utf-8")),
+            "record": record,
         }
 
 
@@ -88,6 +95,7 @@ class FixtureAlphaFoldClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_prediction(identifier: str, client: Any = None, skip_digestion: bool = False):
     """The predicted structural models of a UniProt protein (AlphaFold DB)."""
     response = online(client, OnlineAlphaFoldClient).prediction(identifier)

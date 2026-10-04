@@ -384,6 +384,10 @@ In order:
      native structural reference forms, archive reuse, empty answers and failures.
      Versions and missing underlying citations stay unknown; listed providers and
      structures do not become additional direct access.
+     AlphaFold DB model queries retain original per-record ids/versions,
+     tool/provider/URL declarations, archive reuse, empty lists and failures.
+     Model versions do not become database releases or experimental revisions;
+     generation and coordinate download are not executed by this access.
      Other sources/custom clients, further result types and complete resource
      bibliography remain coverage work with explicit gaps in the published 0.12.0
      scope (#108). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;

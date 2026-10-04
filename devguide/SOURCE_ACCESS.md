@@ -79,6 +79,7 @@ rows with their summary/compound batches.
 BindingDB REST, fixture and installed-mirror affinity queries are also observed.
 PDB CCD component batches and UniChem InChIKey/source-id lookups are observed too.
 PDBe-KB ligand-site and interface-residue aggregates are also observed.
+AlphaFold DB model-list queries are observed with native per-model versions.
 `resolve_molecule_card` retains card/resolution traces; `ligand_deck` exposes detached
 `Deck.acquisition_trace`, with its native snapshot, result card pins and input protein
 pin. Ordinary deck operations and payload-only readers create no runtime trace.
@@ -103,7 +104,7 @@ Successful card returns name the final card pin, including refresh history. Each
 source event records source, operation, query, original executing package version,
 start/finish times, original retrieval time and a source version with an explicit
 basis (`entry_version`, `database_release`, `service_version`, `entry_revision`,
-`per_entry_revision`, `not_stated`).
+`per_entry_revision`, `model_version`, `per_model_version`, `not_stated`).
 Decoded response identity uses canonical JSON (`response_identity.hash`); observed
 HTTP bodies additionally retain their raw `response_sha256` and archive reference
 where available. These are different identities. No whole raw response is copied
@@ -178,6 +179,32 @@ No runtime bibliography lookup is added. Existing maps, raw returns/exceptions,
 card/refresh pins and saved-reader behavior remain unchanged. See
 `tests/core/test_pdbe_kb_acquisition_offline.py`, also copied unchanged into installed
 public-provider and future staged gates.
+
+AlphaFold DB's `prediction` event retains each native model-list index and both
+`entryId`/`modelEntityId` forms; its reference choice names the existing mapping's
+basis, without inventing equivalence between different identifiers. Native
+`latestVersion`, including zero when stated, is retained per record. Missing latest
+versions remain unknown even when `allVersions` lists historical versions; those
+older models were not queried. Repeated ids keep separate indexed versions. Model,
+sequence and creation dates are not global database versions or experimental revisions.
+
+The trace retains native tool/provider, accession/range/checksum and artifact URL
+metadata without copying sequences or downloading coordinates, confidence files or
+MSAs. Listed providers/UniProt were not separately consulted, and a declared
+generation tool does not claim a local prediction execution. The three verified
+resource/background citations follow the database's recommendation; they do not
+prove each returned model's method or replace missing provider/model-specific citations.
+
+Requests, original response/wire/archive identities and times, retries, evaluated
+empty lists, HTTP absence, fixture unavailability, offline unqueried access and
+original failures stay distinct. Unexpected non-list envelopes are unobserved,
+preserving original client returns/exceptions without completed-model credit.
+Partially invalid lists retain received subsets and incomplete context; original
+public processing failures still escape with their trace. Counts measure returned
+records, not mapped relationships or validated identities. Card maps/schemas,
+experimental/predicted separation, refresh pins and inert saved reads remain fixed.
+`tests/core/test_alphafold_acquisition_offline.py` exercises the slice unchanged
+in installed public-provider CI and future staged gates.
 
 Regression tests are in `tests/core/test_source_acquisition_offline.py` and
 `tests/core/test_rcsb_acquisition_offline.py`; the public

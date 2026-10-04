@@ -13,6 +13,7 @@ BindingDB clients and adds detached attribution for `extract_literature_mentions
 It also observes PDB CCD and UniChem chemical identity access, molecular resolution
 and ligand-deck construction.
 PDBe-KB ligand-site and interface-residue aggregates are observed too.
+AlphaFold DB queries retain each returned model's native identity and version.
 
 The application owns the Ackredit session:
 
@@ -145,6 +146,34 @@ partial or changed references cannot overwrite earlier ones in the same workflow
 The original per-entry metadata remains in the trace. A structure packet's stored
 support credits the RCSB description; save the intake or enclosing workflow record
 to retain its original primary-publication references as well.
+
+## AlphaFold DB models (unreleased)
+
+`alphafold.get_prediction` retains the protein query and native per-record model
+identifiers, versions, original response/archive hashes and retrieval times.
+Empty model lists, HTTP absence, unavailable fixtures, unqueried offline access and
+failures stay distinct. Unexpected non-list responses do not claim completed-model
+credit. Partly invalid lists retain received subsets while the original public
+processing exception escapes with its trace.
+
+`latestVersion` belongs to each source record. Missing values remain unknown even
+when `allVersions` lists past versions; those historical models were not consulted.
+Isoform/fragment accessions, ranges, checksums, dates and native identifier forms
+remain declared context. Repeated model ids keep separate indexed versions.
+Model and sequence versions never become a global database release or an experimental
+structure revision. Counts measure returned source records, not mapped relationships.
+
+Declared tools/providers and artifact URLs do not claim a local prediction execution,
+additional source access or coordinate/PAE/MSA downloads. The three recommended
+database/background papers retain `resource_description` roles; Sabueso alone
+receives the query's `executed_software` role. Those papers do not prove each model's
+method or replace missing model-specific method/provider citations. No runtime
+bibliography lookup fills the gap. Scientific mappings and the separation of
+experimental/predicted structures remain unchanged.
+
+Card and refresh traces name exact final pins. Persist original JSON sidecars
+explicitly; saved card readers, prediction views and citation rendering add no
+new acquisition or execution credit.
 
 ## PDBe-KB aggregate queries (unreleased)
 
@@ -338,6 +367,16 @@ global database release.
 
 The offline resource-description declarations were verified on 2026-10-02/04:
 
+- AlphaFold's [official citation guidance](https://www.ebi.ac.uk/training/online/courses/alphafold/accessing-and-predicting-protein-structures-with-alphafold/how-to-cite-alphafold/)
+  recommends the database papers `10.1093/nar/gkad1011` and `10.1093/nar/gkab1061`,
+  and the background method paper `10.1038/s41586-021-03819-2`.
+  Publisher-deposited Crossref metadata supplies the full author lists and issue
+  dates: [2024 database description](https://api.crossref.org/works/10.1093/nar/gkad1011)
+  (23 authors, 52/D1, D368–D375), [original database description](https://api.crossref.org/works/10.1093/nar/gkab1061)
+  (27 authors, 2022, 50/D1, D439–D444) and [method background](https://api.crossref.org/works/10.1038/s41586-021-03819-2)
+  (34 authors, 2021, 596/7873, 583–589). The database papers' issue years differ
+  from their online publication years (2023 and 2021). They do not establish
+  the method of every model or a prediction execution by Sabueso.
 - PDBe-KB's [resource citation guidance](https://www.ebi.ac.uk/pdbe/pdbe-kb)
   recommends *PDBe-KB: collaboratively defining the biological context of structural
   data*, DOI `10.1093/nar/gkab988`. The [original article](https://academic.oup.com/nar/article/50/D1/D534/6424755)

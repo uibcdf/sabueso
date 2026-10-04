@@ -35,6 +35,7 @@ COVERAGE = {
         "PDB CCD",
         "UniChem",
         "PDBe-KB",
+        "AlphaFold DB",
     ],
     "boundary": "built_in_entry_search_mentions_annotations_structure_chemical_clients",
     "other_sources_and_custom_clients": "not_observed",
@@ -404,6 +405,10 @@ def _credit(record):
                 "underlying_structure_primary_citations_not_returned",
                 "annotation_method_and_provider_citations_not_returned",
             ]
+        )
+    if record["source"] == "AlphaFold DB":
+        record["bibliography_gaps"].append(
+            "model_specific_method_and_provider_citations_not_returned"
         )
     completed_partial = record["outcome"] == "partial" and (
         record.get("completed_ids") or record.get("completed_pages")

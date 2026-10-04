@@ -2569,3 +2569,21 @@ identity equivalence or underlying structure version. Verified PDBe-KB descripti
 bibliography is credited independently of missing structure/method/provider citations.
 Saved readers remain inert; hosts persist original runtime JSON explicitly. Shared
 MOLI persistence/correlation policy and broader source observation remain open.
+
+## AlphaFold DB acquisition observation (2026-10-04)
+
+The maintainer authorized the next required source-observation slice (#108).
+AlphaFold DB model-list queries retain original response/archive identities,
+per-record model versions, native identifier forms, retries and honest terminal
+outcomes, while scientific returns/exceptions, maps and card schema remain fixed.
+Missing latest versions remain unknown; historical versions are declarations,
+not additional access. Repeated ids retain separate versioned record indices.
+
+Source-declared tools/providers, isoform/fragment ranges and artifact URLs establish
+no additional source access, coordinate download, identity equivalence or current
+generation execution. Model versions are not experimental revisions or database
+releases. The database's recommended three papers receive resource/background
+description credit, separately from unreturned model-specific references; Sabueso
+alone receives executed-software credit for this query. Original sidecars remain
+host-owned; saved readers stay inert. Shared MOLI persistence and consumer acceptance
+retain their existing owners.

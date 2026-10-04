@@ -183,6 +183,14 @@ fixtures, unqueried offline access, processing failures and concurrent capture.
 Card/refresh pins, stored-reader inactivity, provider failure and custom-client gaps
 have guards. The file runs unchanged in public-provider CI and future staged gates.
 
+`test_alphafold_acquisition_offline.py` covers model-list queries, native per-record
+versions/identifiers, unknown latest versions, historical-version/URL/provider
+declarations and citation roles. Original archive times/wire identities, retries,
+empty/absent/unavailable/unqueried outcomes, unexpected envelopes, partial lists,
+raw return parity, card/refresh pins, saved-reader inactivity, provider failure,
+custom gaps and concurrent capture have guards. The file runs unchanged with the
+public Ackredit floor in installed-provider CI and future staged gates.
+
 Local diagnostic wheels additionally pass
 `devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):
 module/resource bytes and membership must match the source, excluding generated

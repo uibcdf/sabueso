@@ -95,6 +95,13 @@ description credit does not replace missing structure/method/provider citations;
 listed resources are PDBe-KB statements, not direct access. Original mapping,
 scientific cards, refresh and payload-only saved reads remain unchanged.
 
+AlphaFold DB observation retains native per-record model identities/versions,
+including isoforms/fragments and distinct versions at repeated ids. Declared tools,
+providers and artifact URLs are context, not extra access or generation execution.
+Recommended resource/background citations remain distinct from unreturned model-
+specific method/provider references. Unknown versions, partial lists, empty answers,
+original archives and failures remain explicit. Existing science and schemas stay fixed.
+
 #108 is still partial: other built-ins/custom clients remain
 unobserved; arbitrary views/deck operations and full bibliography are not covered.
 Applications explicitly persist original runtime sidecars. Payload-only readers
@@ -109,9 +116,9 @@ operational test, not disclosure of pilot scientific content, validation of ever
 source's availability, or a claim that every source is observed. Original notebooks
 remain unchanged. Their application must explicitly retain sidecars when adopted.
 
-The development checkpoint passes 1,709 offline cases in the required Python 3.14
+The development checkpoint passes 1,738 offline cases in the required Python 3.14
 editable environment (26 online cases deselected). A byte-checked clean diagnostic
-wheel passes 399 unchanged acquisition/attribution/extraction/intake/explanation integration cases
+wheel passes 428 unchanged acquisition/attribution/extraction/intake/explanation integration cases
 outside the checkout with public Ackredit 0.9.0, the public three-packet workflow
 and pip check. Ruff, frozen card shape, schema/registry, governance, dependency
 preflight and warning-failing Sphinx gates pass. The wheel check also rejects the

@@ -314,7 +314,7 @@ Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
 CI/release tests, alongside `test_literature_intake_offline.py` for original support
 and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
-The current checkpoint passes 1,709 source offline cases and 399 unchanged installed
+The current checkpoint passes 1,738 source offline cases and 428 unchanged installed
 integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
@@ -451,3 +451,20 @@ exceptions, maps and card schemas remain unchanged; card/refresh pins and inert
 saved-reader behavior survive. Concurrent queries retain original contexts in the
 enclosing capture with the public Ackredit floor. The unchanged PDBe-KB regression
 file joins installed-provider CI and future staged receiving gates.
+
+## AlphaFold DB model observation (#108)
+
+Built-in model-list queries retain original per-record ids/versions, response/wire/
+archive identities, retrieval times, retries, evaluated-empty lists, HTTP absence,
+fixture unavailability, unqueried offline access and original failures. Unknown
+latest versions and partially invalid lists stay explicit; repeated ids never
+collapse distinct indexed versions. Counts refer to source records, not mapped
+relationships. Historical versions are not consulted models or database releases.
+
+Native tools/providers, isoform/fragment accessions/ranges and artifact URLs remain
+context; no additional source access, coordinate/PAE/MSA download or current model
+generation is claimed. The three recommended resource/background references keep
+description roles, with explicit gaps for model-specific method/provider citations.
+Raw returns, scientific maps, experimental/predicted separation and schema stay fixed.
+Card/refresh pins, inert saved reads and concurrent enclosing-capture contexts have
+guards. The unchanged regression file joins public-provider and future staged gates.
