@@ -176,6 +176,13 @@ Threaded capture context, molecular resolution, ligand-deck input/result pins,
 detached readers, unknown versions, provider/pin failures and custom gaps have guards.
 The file runs unchanged in public-provider CI and future staged installed gates.
 
+`test_pdbe_kb_acquisition_offline.py` covers both aggregate queries, native structural
+scope and record/count bases, raw return parity, citation roles, original archive
+times/wire identities, retries, empty/HTTP-not-found outcomes, unavailable and malformed
+fixtures, unqueried offline access, processing failures and concurrent capture.
+Card/refresh pins, stored-reader inactivity, provider failure and custom-client gaps
+have guards. The file runs unchanged in public-provider CI and future staged gates.
+
 Local diagnostic wheels additionally pass
 `devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):
 module/resource bytes and membership must match the source, excluding generated

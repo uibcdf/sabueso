@@ -7,6 +7,19 @@ Metadata sources are recorded in docs/content/user/attribution.md.
 from copy import deepcopy
 
 _DESCRIPTIONS = {
+    "PDBe-KB": {
+        "id": "doi:10.1093/nar/gkab988",
+        "type": "article",
+        "title": "PDBe-KB: collaboratively defining the biological context of structural data",
+        "authors": [{"literal": "PDBe-KB consortium"}],
+        "year": 2022,
+        "journal": "Nucleic Acids Research",
+        "volume": "50",
+        "number": "D1",
+        "pages": "D534-D542",
+        "doi": "10.1093/nar/gkab988",
+        "url": "https://doi.org/10.1093/nar/gkab988",
+    },
     "PDB CCD": {
         "id": "doi:10.1093/bioinformatics/btu789",
         "type": "article",

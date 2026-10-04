@@ -34,6 +34,7 @@ COVERAGE = {
         "BindingDB",
         "PDB CCD",
         "UniChem",
+        "PDBe-KB",
     ],
     "boundary": "built_in_entry_search_mentions_annotations_structure_chemical_clients",
     "other_sources_and_custom_clients": "not_observed",
@@ -397,6 +398,13 @@ def _credit(record):
         record["bibliography_gaps"].append(
             "article_and_annotation_provider_citations_not_declared"
         )
+    if record["source"] == "PDBe-KB":
+        record["bibliography_gaps"].extend(
+            [
+                "underlying_structure_primary_citations_not_returned",
+                "annotation_method_and_provider_citations_not_returned",
+            ]
+        )
     completed_partial = record["outcome"] == "partial" and (
         record.get("completed_ids") or record.get("completed_pages")
     )
@@ -455,6 +463,8 @@ def _credit(record):
                 context[key] = deepcopy(record[key])
         if "identity_lookup" in record:
             context["identity_lookup"] = deepcopy(record["identity_lookup"])
+        if "structural_context" in record:
+            context["structural_context"] = deepcopy(record["structural_context"])
         resource = "sabueso:source-access:" + digest(
             canonical_json(
                 {

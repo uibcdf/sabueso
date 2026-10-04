@@ -88,6 +88,13 @@ from source statements. Molecular resolution and ligand-deck construction retain
 detached exact result/input pins; saved/ordinarily derived decks acquire nothing.
 Identity/mapping/schema policies and published artifacts remain unchanged.
 
+PDBe-KB ligand-site and interface-residue queries now retain separate aggregate
+traces, native group locators, distinct mapped/interacting structural references,
+unknown versions, original archive identities and empty/failure outcomes. Resource
+description credit does not replace missing structure/method/provider citations;
+listed resources are PDBe-KB statements, not direct access. Original mapping,
+scientific cards, refresh and payload-only saved reads remain unchanged.
+
 #108 is still partial: other built-ins/custom clients remain
 unobserved; arbitrary views/deck operations and full bibliography are not covered.
 Applications explicitly persist original runtime sidecars. Payload-only readers
@@ -102,9 +109,9 @@ operational test, not disclosure of pilot scientific content, validation of ever
 source's availability, or a claim that every source is observed. Original notebooks
 remain unchanged. Their application must explicitly retain sidecars when adopted.
 
-The development checkpoint passes 1,669 offline cases in the required Python 3.14
+The development checkpoint passes 1,709 offline cases in the required Python 3.14
 editable environment (26 online cases deselected). A byte-checked clean diagnostic
-wheel passes 359 unchanged acquisition/attribution/extraction/intake/explanation integration cases
+wheel passes 399 unchanged acquisition/attribution/extraction/intake/explanation integration cases
 outside the checkout with public Ackredit 0.9.0, the public three-packet workflow
 and pip check. Ruff, frozen card shape, schema/registry, governance, dependency
 preflight and warning-failing Sphinx gates pass. The wheel check also rejects the

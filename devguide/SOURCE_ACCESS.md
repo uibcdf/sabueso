@@ -78,6 +78,7 @@ It also observes PubChem compound properties, structure matches and BioAssay tar
 rows with their summary/compound batches.
 BindingDB REST, fixture and installed-mirror affinity queries are also observed.
 PDB CCD component batches and UniChem InChIKey/source-id lookups are observed too.
+PDBe-KB ligand-site and interface-residue aggregates are also observed.
 `resolve_molecule_card` retains card/resolution traces; `ligand_deck` exposes detached
 `Deck.acquisition_trace`, with its native snapshot, result card pins and input protein
 pin. Ordinary deck operations and payload-only readers create no runtime trace.
@@ -156,6 +157,27 @@ CCD/RCSB-distribution and UniChem resource descriptions are verified separately.
 Original identity policies, mappings, raw returns/exceptions and card/deck schemas
 are unchanged. `test_chemical_identity_acquisition_offline.py` covers this slice,
 also copied unchanged into public-provider and future staged receiving gates.
+
+PDBe-KB observes `ligand_sites` and `interface_residues` as separate protein-scoped
+aggregate queries. Native response/wire/archive identities, original retrieval times,
+retries, evaluated-empty/HTTP-not-found answers, fixture unavailability and failures
+remain distinct. Decoded unexpected envelopes retain their receipt and original
+processing failure without completed-data credit. Versions remain `not_stated`;
+neither a PDB identifier nor the query's UniProt accession is a release version.
+
+Each returned group keeps its zero-based original response index, native accession,
+name/type, numbering kinds, residue-record count and decoded identity. Listed PDB ids,
+all mapped PDB ids and interacting PDB/entity/chain forms remain separate. The count
+is returned aggregate groups, not mapped relationships or validated identities.
+An omitted/null aggregate `data` field has an explicitly unknown count; a returned
+empty record/list remains empty under the existing source-client contract.
+These are PDBe-KB statements, not additional access to UniProt, PDB entries, PISA
+or annotation providers. The verified PDBe-KB resource description does not replace
+underlying structure/method/provider citations; their missing metadata is explicit.
+No runtime bibliography lookup is added. Existing maps, raw returns/exceptions,
+card/refresh pins and saved-reader behavior remain unchanged. See
+`tests/core/test_pdbe_kb_acquisition_offline.py`, also copied unchanged into installed
+public-provider and future staged gates.
 
 Regression tests are in `tests/core/test_source_acquisition_offline.py` and
 `tests/core/test_rcsb_acquisition_offline.py`; the public

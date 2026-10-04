@@ -29,6 +29,8 @@ from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.pdbe_kb_acquisition import note_response, observe
+from sabueso.core.source_acquisition import capture_acquisitions
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -53,6 +55,7 @@ class OnlinePDBeKBClient:
         try:
             with urlopen(url, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
+                note_response(data)
         except HTTPError as exc:
             if exc.code == 404:
                 raise RecordNotFoundError(missing) from exc
@@ -72,9 +75,11 @@ class OnlinePDBeKBClient:
             "record": record,
         }
 
+    @observe("ligand_sites")
     def ligand_sites(self, accession: str) -> Dict[str, Any]:
         return self._fetch("ligand_sites", accession)
 
+    @observe("interface_residues")
     def interface_residues(self, accession: str) -> Dict[str, Any]:
         return self._fetch("interface_residues", accession)
 
@@ -97,15 +102,18 @@ class FixturePDBeKBClient:
         if not path.is_file():
             raise RecordNotFoundError(f"PDBe-KB has no {KINDS[kind]} for {accession}")
         record = json.loads(path.read_text(encoding="utf-8"))
+        note_response(record)
         return {
             "accession": accession,
             "retrieved_at": self.retrieved_at,
             "record": record,
         }
 
+    @observe("ligand_sites", fixture=True)
     def ligand_sites(self, accession: str) -> Dict[str, Any]:
         return self._read("ligand_sites", accession)
 
+    @observe("interface_residues", fixture=True)
     def interface_residues(self, accession: str) -> Dict[str, Any]:
         return self._read("interface_residues", accession)
 
@@ -114,6 +122,7 @@ class FixturePDBeKBClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_ligand_sites(identifier: str, client: Any = None, skip_digestion: bool = False):
     """The residues each ligand contacts in a UniProt protein's structures (PDBe-KB)."""
     response = online(client, OnlinePDBeKBClient).ligand_sites(identifier)
@@ -128,6 +137,7 @@ def get_ligand_sites(identifier: str, client: Any = None, skip_digestion: bool =
 
 
 @arg_digest()
+@capture_acquisitions
 def get_interface_residues(
     identifier: str, client: Any = None, skip_digestion: bool = False
 ):

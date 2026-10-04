@@ -380,6 +380,10 @@ In order:
      and completed subsets. Linked databases stay declarative; versions stay unknown.
      Molecular resolution and ligand decks keep detached input/result pins and
      original resource-description citations without changing stored card/deck science.
+     PDBe-KB ligand-site/interface aggregates also retain separate queries,
+     native structural reference forms, archive reuse, empty answers and failures.
+     Versions and missing underlying citations stay unknown; listed providers and
+     structures do not become additional direct access.
      Other sources/custom clients, further result types and complete resource
      bibliography remain coverage work with explicit gaps in the published 0.12.0
      scope (#108). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;

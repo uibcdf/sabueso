@@ -12,6 +12,7 @@ Unreleased development extends that boundary to the built-in ChEMBL, PubChem and
 BindingDB clients and adds detached attribution for `extract_literature_mentions`.
 It also observes PDB CCD and UniChem chemical identity access, molecular resolution
 and ligand-deck construction.
+PDBe-KB ligand-site and interface-residue aggregates are observed too.
 
 The application owns the Ackredit session:
 
@@ -144,6 +145,30 @@ partial or changed references cannot overwrite earlier ones in the same workflow
 The original per-entry metadata remains in the trace. A structure packet's stored
 support credits the RCSB description; save the intake or enclosing workflow record
 to retain its original primary-publication references as well.
+
+## PDBe-KB aggregate queries (unreleased)
+
+`pdbe_kb.get_ligand_sites` and `pdbe_kb.get_interface_residues` retain separate
+protein-scoped queries, original retrieval times, response identities, archive
+reuse/replay and retries. Completed empty answers and HTTP absence remain distinct
+from unavailable fixtures, offline unqueried access and failures. Direct client
+methods keep their original scientific envelopes; public functions expose the
+detached record in `acquisition_trace`, and card/refresh operations keep their pins.
+
+Source versions remain unstated. The trace keeps native group identifiers and
+response indices, numbering kinds and distinct listed/mapped/interacting PDB
+references, including original entity/chain forms. These are PDBe-KB statements;
+they do not claim direct access to UniProt, PDB entries, PISA or other providers.
+The group count is a source response count, not mapped relationships or validated
+identities. Full original scientific records remain in the source response/card.
+An omitted/null aggregate data field has an unknown count, distinct from a returned
+empty record/list under the existing client contract.
+
+The resource-description citation is separate from underlying structure and
+annotation method/provider publications, whose missing metadata remains explicit.
+No extra bibliography request is made. Save original JSON sidecars explicitly;
+loading saved cards, rendering citations and reading ligand/interface views add
+no new acquisition or execution credit.
 
 ## Chemical identity queries (unreleased)
 
@@ -313,6 +338,12 @@ global database release.
 
 The offline resource-description declarations were verified on 2026-10-02/04:
 
+- PDBe-KB's [resource citation guidance](https://www.ebi.ac.uk/pdbe/pdbe-kb)
+  recommends *PDBe-KB: collaboratively defining the biological context of structural
+  data*, DOI `10.1093/nar/gkab988`. The [original article](https://academic.oup.com/nar/article/50/D1/D534/6424755)
+  provides its consortium author and issue metadata: 2022, 50/D1, D534–D542,
+  distinct from online publication in 2021. This description does not replace
+  underlying structure or method/provider citations.
 - CCD's [official description](https://www.wwpdb.org/data/ccd) cites
   *The chemical component dictionary: complete descriptions of constituent
   molecules in experimentally determined 3D macromolecules in the Protein Data Bank*,

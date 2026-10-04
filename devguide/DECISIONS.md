@@ -2553,3 +2553,19 @@ enter a terms-profile card. `CurationStore` remains exclusively human curation.
 Article metadata/terms, broader statement rules and validated model extraction remain
 #92. This store and runtime format are Sabueso-local; MOLI still owns shared
 ProjectRecord/Recorda contracts and Nextia owns project Evidence.
+
+## PDBe-KB aggregate acquisition observation (2026-10-04)
+
+The maintainer authorized extending required traceability (#108) to the two existing
+PDBe-KB aggregate clients. Ligand-site and interface-residue queries retain separate
+operation/response identities, retries, original archive times, explicit unknown
+versions and empty/unavailable/unqueried/failed outcomes without changing scientific
+returns, exceptions, mappings or schemas. Group counts measure returned source
+records, not validated identities or mapped relationships.
+
+Native group indices, numbering and listed/mapped/interacting structure references
+remain PDBe-KB declarations. They establish no additional direct provider access,
+identity equivalence or underlying structure version. Verified PDBe-KB description
+bibliography is credited independently of missing structure/method/provider citations.
+Saved readers remain inert; hosts persist original runtime JSON explicitly. Shared
+MOLI persistence/correlation policy and broader source observation remain open.

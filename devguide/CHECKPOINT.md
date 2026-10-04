@@ -73,6 +73,13 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   Molecular resolution and ligand-deck construction retain detached traces with
   exact result/input pins. Payload-only or ordinarily derived decks add no trace
   or credit. Scientific serialization, mappings and identity policies stay fixed.
+- PDBe-KB observation (#108): separate ligand-site and interface-residue aggregate
+  queries retain response/wire identities, original archive references/times,
+  retries, empty/HTTP-not-found answers, unavailable fixtures and failures.
+  Native group indices/identifiers, numbering and structural reference forms stay
+  scoped to PDBe-KB; listed providers/entries are not additional direct access.
+  Versions and missing underlying citations remain unknown; verified resource
+  bibliography is retained. Scientific maps, returns/exceptions and schema stay fixed.
 - Disease-group explanation (#91): `Card.explain_disease(disease_ref)` reads a
   MONDO group at the exact card pin under `disease_group_explanation@2`, retaining
   association/selected-annotation support, MedGen/MONDO links, hierarchy steps,
@@ -125,7 +132,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   Explicit `@1` reproduces the published numeric counter. Views/comparisons retain
   pinned counting derivations; `ligand_deck_explanation@2` lists counted group and
   record ids with original support. Class/voter/scope policies and storage stay fixed.
-- Local validation: 1,669 offline cases and 359 installed integration cases pass
+- Local validation: 1,709 offline cases and 399 installed integration cases pass
   with public Ackredit 0.9.0. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote

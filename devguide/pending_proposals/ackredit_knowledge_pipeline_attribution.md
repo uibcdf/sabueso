@@ -314,7 +314,7 @@ Tests: `test_chembl_acquisition_offline.py` and
 `test_rule_literature_extraction_offline.py` join the unchanged installed-provider
 CI/release tests, alongside `test_literature_intake_offline.py` for original support
 and receipt replay, terms-profile boundaries and honest missing-sidecar refresh.
-The current checkpoint passes 1,669 source offline cases and 359 unchanged installed
+The current checkpoint passes 1,709 source offline cases and 399 unchanged installed
 integration cases. Source and installed diagnostic receiving evidence uses public
 Ackredit 0.9.0; this development slice is not a new published Conda package.
 All eight read-only public-installed 0.12.0 notebook copies execute. Temporary host
@@ -435,3 +435,19 @@ pin. Payload-only saved or ordinarily derived decks create no trace or credit;
 original sidecars remain host-owned. Shared MOLI persistence/correlation contracts
 and broader source/result/custom-client observation remain open. The unchanged
 chemical identity tests join public-provider CI and future staged receiving gates.
+
+## PDBe-KB aggregate observation (#108)
+
+Built-in ligand-site and interface-residue queries retain separate operation records,
+native aggregate/group identities, original wire/archive hashes and retrieval times,
+retries, evaluated-empty/HTTP-not-found answers and unqueried/unavailable/failed access.
+Group indices and native accession/type/numbering/structural reference forms preserve
+source scope. The count is returned aggregate records, not mapped relationships.
+
+Versions remain unstated. Referenced PDB entries and linked providers are declarations,
+not additional direct access or source versions. Verified PDBe-KB description credit
+does not substitute for missing structure/method/provider citations. Raw returns,
+exceptions, maps and card schemas remain unchanged; card/refresh pins and inert
+saved-reader behavior survive. Concurrent queries retain original contexts in the
+enclosing capture with the public Ackredit floor. The unchanged PDBe-KB regression
+file joins installed-provider CI and future staged receiving gates.
