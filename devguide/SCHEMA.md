@@ -2,8 +2,9 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
-  - `0.3.12` is unpublished development (#92): explicit literal extraction intake
-    adds `quality.literature_extractions` and occurrence locations with Unicode
+  - `0.3.12` is frozen for candidate 0.13.0 (#121), generated from clean
+    installed local Conda code; publication is pending. Explicit literal extraction
+    intake (#92) adds `quality.literature_extractions` and occurrence locations with Unicode
     offsets, locator and input hash. Original rule acquisition/support is retained;
     detached runtime attribution stays in an `ExtractionStore` or sidecar. Explicit
     `article_metadata_binding@1` adds separate native bibliographic assertions and

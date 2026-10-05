@@ -1,6 +1,7 @@
 # Sabueso 0.13.0 — Traced source access and pinned explanations
 
-Prepared candidate scope (#121). Publication follows exact-SHA CI, immutable staging,
+Prepared candidate scope (#121); schema 0.3.12 is frozen from clean installed
+local Conda code. Publication follows exact-SHA CI, immutable staging,
 the installed-package matrix, unchanged promotion, clean public installation and
 identical-tag Zenodo archival. These notes are not a publication receipt.
 

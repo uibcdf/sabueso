@@ -111,9 +111,14 @@ limits are in `release_notes_0.13.0.md`. The preparation uses the qualified publ
 minimum dependency closure listed above and all 19 installed receiving test files
 already wired in the matrix (613 cases at the preceding code checkpoint).
 
-Build an unpublished local Conda candidate and freeze schema 0.3.12 from clean
-installed code with public inputs and a source/archive/fixture receipt. Commit that
-fixture before selecting the final candidate SHA. Then run exact-SHA CI/governance,
+The unpublished local Conda candidate `c236e4f` passes archive/source/installed-byte
+qualification, all 613 unchanged receiving cases, public workflow, API and pip check
+on Python 3.14.7 with the exact public minimum closure. Its clean installed writer
+freezes `schema_0.3.12__P60174.json`, including original literal extraction and public
+article metadata. The source/input/archive/writer receipt is
+`receipts/sabueso_0.13.0_local_schema_freeze_2026-10-05.json`; this is local evidence,
+not the final staged archive. Commit that fixture before selecting the final candidate
+SHA. Then run exact-SHA CI/governance,
 stage one immutable `sabueso-0.13.0-py_0.tar.bz2`, inspect its producer receipts/bytes,
 and pass all 12 Linux/macOS-arm64/Windows × Python 3.11–3.14 installed lanes.
 Only then publish/promote, verify a clean public install and archive the identical

@@ -38,7 +38,17 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   literal extraction/article-metadata intake, pinned explanations, versioned
   integrity corrections and persisted public application exercise.
   The committed plan and draft notes are in `devtools/conda-build/`.
-  Schema 0.3.12 must be frozen from a clean installed local Conda candidate.
+  Schema 0.3.12 is frozen from clean installed local Conda candidate `c236e4f`:
+  archive SHA-256 `6f461bd1ca13ebfeda60cd724ec6b5af9fa5c46348e3fae82d36afac6dc3840c`.
+  All 382 non-version Python/JSON files match source; installed origins/bytes,
+  public minimum dependencies, 613 receiving cases, the public workflow, API and
+  pip check pass. The installed Python 3.14.7 writer retains explicit synthetic
+  extraction and public article metadata in `schema_0.3.12__P60174.json`;
+  source/input/archive/writer qualification is in
+  `devtools/conda-build/receipts/sabueso_0.13.0_local_schema_freeze_2026-10-05.json`.
+  The full local offline checkpoint passes 1,926 cases (26 online deselected),
+  including the new frozen-card read/migration cases; 69 packaging/route cases and
+  applicable Ruff/schema/registry/governance/preflight/Sphinx checks pass.
   Final candidate CI, staging/archive inspection, the 12 OS/minor installed lanes,
   stable publication, public installation and Zenodo remain pending.
   Required traceability retains the explicit coverage/bibliography gaps in #108;
