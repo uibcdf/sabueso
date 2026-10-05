@@ -27,8 +27,10 @@ Two derived judgements, never stored:
   - ``undetermined``: some of its structures are not on the card with the data needed.
 
   The basis is given per structure.
-- ``interface_site_agreement@1`` compares the homomeric interface residues with each
-  family interface site. Positions are matched exactly, in UniProt numbering.
+- ``interface_site_agreement@2`` compares exact positions only with confirmed
+  UniProt numbering, matching family sequence identity and 1-based indexing.
+  Unknown/incompatible context is reported without computed residue sets.
+  Explicit ``@1`` reproduces the historical integer-only comparison (#120).
 
 Interfaces are not computed from coordinates here; that is modelling (uibcdf/sabueso#30).
 """
@@ -38,11 +40,13 @@ from __future__ import annotations
 import re
 from typing import Any, Dict, List
 
+from .ligand_sites import _positions as site_positions
 from .ligand_sites import annotated_sites
 from .structures import coverage_class
 
 PARTNER_RULE = "interface_partner_class@1"
-AGREEMENT_RULE = "interface_site_agreement@1"
+LEGACY_AGREEMENT_RULE = "interface_site_agreement@1"
+AGREEMENT_RULE = "interface_site_agreement@2"
 INTERFACE_SITE = re.compile(r"\binterface\b", re.IGNORECASE)
 
 
@@ -120,7 +124,79 @@ def _partner_class(subject: str, partner_ref: str, basis: Dict[str, str]) -> str
     return "chimera_or_fragment"
 
 
-def oligomer_derivations() -> List[Dict[str, Any]]:
+def _family_positions(value):
+    sequence = (value.get("location") or {}).get("sequence") or {}
+    spans = sequence.get("fragments") or (
+        [{"start": sequence["start"], "end": sequence.get("end")}]
+        if sequence.get("start") is not None
+        else []
+    )
+    return site_positions(spans)
+
+
+def _family_inputs(card):
+    """Original field/index members in the native family-interface view order."""
+    members = []
+    for index, value in enumerate(
+        (card.get("features_positional.family_site") or {}).get("value") or []
+    ):
+        positions = _family_positions(value)
+        if positions and INTERFACE_SITE.search(value.get("description") or ""):
+            members.append((positions[0], value.get("description") or "", index, value))
+    return sorted(members, key=lambda member: member[:2])
+
+
+def agreement_context(subject, interface, family_value):
+    """Read native numbering declarations; never infer a residue correspondence."""
+    q = interface.get("qualifiers") or {}
+    sequence = (family_value.get("location") or {}).get("sequence") or {}
+    missing, incompatible = [], []
+    numbering = q.get("numbering")
+    if not numbering:
+        missing.append("interface_numbering_not_stated")
+    elif numbering != "uniprot":
+        incompatible.append("interface_numbering_not_uniprot")
+    if not interface.get("subject_ref"):
+        missing.append("interface_subject_not_stated")
+    elif interface["subject_ref"] != subject:
+        incompatible.append("interface_subject_not_card_subject")
+    if not subject.startswith("uniprot:"):
+        missing.append("card_subject_not_uniprot")
+    if not sequence.get("sequence_id"):
+        missing.append("family_sequence_id_not_stated")
+    elif subject.startswith("uniprot:") and sequence["sequence_id"] != (
+        f"UniProt:{subject.split(':', 1)[1]}"
+    ):
+        incompatible.append("family_sequence_not_card_subject")
+    if not sequence.get("indexing"):
+        missing.append("family_indexing_not_stated")
+    elif sequence["indexing"] != "1-based":
+        incompatible.append("family_indexing_not_1_based")
+    if q.get("residues") is None:
+        missing.append("interface_residues_not_stated")
+    elif any(row.get("start") is None for row in q["residues"]):
+        missing.append("interface_residue_positions_not_stated")
+    if any(position < 1 for position in _positions(q.get("residues") or [])):
+        incompatible.append("interface_positions_not_1_based")
+    if any(position < 1 for position in _family_positions(family_value)):
+        incompatible.append("family_positions_not_1_based")
+    for key in ("numbering", "residues"):
+        if (interface.get("qualifier_conflicts") or {}).get(key):
+            missing.append(f"interface_{key}_conflicted")
+    return {
+        "status": "not_comparable"
+        if incompatible
+        else "undetermined"
+        if missing
+        else "comparable",
+        "reasons": incompatible + missing,
+        "interface_numbering": numbering,
+        "interface_subject_ref": interface.get("subject_ref"),
+        "family_sequence": sequence,
+    }
+
+
+def oligomer_derivations(agreement_rule=AGREEMENT_RULE) -> List[Dict[str, Any]]:
     from .relationship_store import make_derivation
 
     return [
@@ -144,14 +220,33 @@ def oligomer_derivations() -> List[Dict[str, Any]]:
             },
         ),
         make_derivation(
-            AGREEMENT_RULE,
-            inputs=["has_interface_with.residues", "features_positional.family_site"],
-            parameters={"match": "exact residue position", "numbering": "uniprot"},
+            agreement_rule,
+            inputs=["has_interface_with.residues", "features_positional.family_site"]
+            + (
+                [
+                    "has_interface_with.numbering",
+                    "has_interface_with.subject_ref",
+                    "meta.card_id",
+                    "has_interface_with.qualifier_conflicts",
+                ]
+                if agreement_rule == AGREEMENT_RULE
+                else []
+            ),
+            parameters={"match": "exact residue position", "numbering": "uniprot"}
+            | (
+                {
+                    "family_sequence": "exact card UniProt reference",
+                    "indexing": "1-based",
+                    "unconfirmed": "no computed residue sets",
+                }
+                if agreement_rule == AGREEMENT_RULE
+                else {}
+            ),
         ),
     ]
 
 
-def oligomer_view(card: Any) -> Dict[str, Any]:
+def oligomer_view(card: Any, agreement_rule=AGREEMENT_RULE) -> Dict[str, Any]:
     """``{"subunit", "assemblies", "without_assembly_data", "interfaces",
     "family_interface_sites", "agreement", "rules"}`` for a protein card."""
     subject = card.meta.get("card_id", "").replace("sabueso:protein:", "", 1)
@@ -203,18 +298,32 @@ def oligomer_view(card: Any) -> Dict[str, Any]:
     ]
     homomeric = next((i for i in interfaces if i["class"] == "homomeric"), None)
     agreement = []
+    members = _family_inputs(card) if agreement_rule == AGREEMENT_RULE else []
     if homomeric:
         observed = set(homomeric["positions"])
-        for site in family:
+        for index, site in enumerate(family):
             annotated = set(site["positions"])
+            context = (
+                agreement_context(
+                    subject,
+                    card.relationship_store.get(homomeric["relationship_id"]),
+                    members[index][3],
+                )
+                if agreement_rule == AGREEMENT_RULE
+                else None
+            )
+            comparable = context is None or context["status"] == "comparable"
             agreement.append(
                 {
                     "family_site": site["description"],
                     "signature": site["signature"],
                     "source": site["source"],
-                    "both": sorted(annotated & observed),
-                    "family_only": sorted(annotated - observed),
-                    "observed_only": sorted(observed - annotated),
+                    "both": sorted(annotated & observed) if comparable else None,
+                    "family_only": sorted(annotated - observed) if comparable else None,
+                    "observed_only": sorted(observed - annotated)
+                    if comparable
+                    else None,
+                    **({"comparison": context} if context is not None else {}),
                 }
             )
 
@@ -225,5 +334,37 @@ def oligomer_view(card: Any) -> Dict[str, Any]:
         "interfaces": interfaces,
         "family_interface_sites": family,
         "agreement": agreement,
-        "rules": oligomer_derivations(),
+        "rules": oligomer_derivations(agreement_rule),
+        **(
+            {
+                "agreement_state": {
+                    "status": "not_computed"
+                    if not agreement
+                    else "computed"
+                    if all(
+                        row["comparison"]["status"] == "comparable" for row in agreement
+                    )
+                    else "partial"
+                    if any(
+                        row["comparison"]["status"] == "comparable" for row in agreement
+                    )
+                    else "not_computed",
+                    "reasons": (
+                        ["no_homomeric_interface_on_card"] if homomeric is None else []
+                    )
+                    + (["no_family_interface_site_on_card"] if not family else [])
+                    + (
+                        ["no_comparable_interface_sites_on_card"]
+                        if agreement
+                        and not any(
+                            row["comparison"]["status"] == "comparable"
+                            for row in agreement
+                        )
+                        else []
+                    ),
+                }
+            }
+            if agreement_rule == AGREEMENT_RULE
+            else {}
+        ),
     }

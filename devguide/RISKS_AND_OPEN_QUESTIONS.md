@@ -372,7 +372,8 @@ Answered since the first list (2026-01):
   wheel route is claimed.
 
 - Published `interface_site_agreement@1` compares integer positions without
-  verifying interface numbering or family sequence/indexing (#120). The unreleased
-  explanation flags unconfirmed comparisons as partial while retaining the actual
-  result. Correct the scientific rule under a new version, keeping explicit legacy
-  selection and historical support; never infer a residue map from equal numbers.
+  verifying interface numbering or family sequence/indexing (#120). Default
+  agreement `@2` now refuses unconfirmed/conflicted comparisons with explicit
+  reasons and uncomputed sets. Explicit legacy selection retains the original
+  limitation for reproducibility, and the matching explanation flags its gap.
+  Missing original numbering cannot be reconstructed from equal numbers or names.

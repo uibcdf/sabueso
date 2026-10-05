@@ -95,7 +95,7 @@ for row in explanation["interfaces"]:
         print(support["source_assertion_ref"], support["source"], support["version"])
 ```
 
-`oligomer_explanation@1` exposes the existing partner and agreement rules with
+`oligomer_explanation@2` exposes the selected partner and agreement rules with
 their actual pinned inputs. `structures` retains complete relationships, source
 assembly methods and alternatives, original primary citations and assertion
 support. `fields`, `subunit` and `family_interface_sites` retain selected and
@@ -107,15 +107,35 @@ not mean Sabueso ran InterProScan, PISA or a contact calculation.
 `not_stated_on_card`, `stated_empty` and `stated` distinguish assembly states.
 `context.reports` retains original query outcomes and locators; missing queries,
 failed queries and zero returned records never imply external absence. Missing
-stored support yields `partial`. The published agreement rule compares integer
-positions even when numbering is unconfirmed (#120); the explanation keeps that
-result, exposes the original numbering/sequence context and reports the gap.
-It does not establish residue correspondence from equal numbers.
+stored support yields `partial`.
+
+The default `interface_site_agreement@2` compares only declared UniProt interface
+positions with family sites on the exact same UniProt entry in 1-based indexing.
+The interface must refer to that entry, and its contacts must have located positive
+positions. Conflicting interface numbering or positions also block comparison. Each agreement
+row retains `comparison.status`, `reasons` and the native numbering/sequence context:
+`comparable`, `undetermined` for missing/conflicting data, or `not_comparable` for
+incompatible declarations. Uncomputed residue sets are None, while computed empty
+sets are empty lists. `agreement_state` distinguishes missing inputs, no comparable
+site, partially computed and fully computed views. It does not infer correspondence
+from equal numbers, names or sequences.
+
+Explicit legacy selection reproduces the historical integer-only result and its
+`oligomer_explanation@1`, even on a saved card whose numbering is unconfirmed:
+
+```python
+legacy = card.oligomer(agreement_rule="interface_site_agreement@1")
+why_legacy = card.explain_oligomer(agreement_rule="interface_site_agreement@1")
+assert why_legacy["view"] == legacy
+```
 
 The same method works on `store.load(pin)`: later acquisition cannot rewrite
 historical assertion/relationship references. Readers change no card, make no
 source call and add no Ackredit credit. Keep original operation/attribution
 sidecars separately when a workflow needs execution history and citation credit.
+New full/index packets name agreement `@2`; existing saved packets retain their
+original rule, facts and hashes. Packet aspect/source scope and stored card schema
+are unchanged.
 
 ## Interface mutations (SKEMPI 2.0)
 

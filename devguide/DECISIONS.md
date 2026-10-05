@@ -2661,3 +2661,20 @@ The published agreement rule compares integer positions without confirming their
 numbering. Preserve its actual result, expose the native numbering/sequence data,
 and mark unconfirmed agreement partial. A versioned scientific correction with
 explicit legacy behavior belongs to #120; equal numbers never establish identity.
+
+## 2026-10-05 — Version interface comparison and preserve explicit legacy selection
+
+For #120, default `interface_site_agreement@2` compares only declared UniProt
+interface positions for the exact card subject with family sites on that entry in
+1-based indexing. Missing/conflicting context, unlocated contacts, nonpositive
+positions and incompatible declarations retain reasons and uncomputed None sets.
+Computed empty sets remain lists; partial family scope and missing comparison
+inputs are explicit. Equal residue numbers never establish correspondence.
+
+Both `Card.oligomer` and `Card.explain_oligomer` digest keyword-only `agreement_rule`.
+Explicit `@1` preserves the original view and `oligomer_explanation@1`, including
+historical pins. Default explanation `@2` retains native rule inputs and original
+support without new acquisition, mutation or credit. No stored card schema changes.
+New full/index packets advertise `@2`; saved payloads are read as originally stored.
+`packet_aspects@6` retains its frozen source/area scope: the changed scientific rule
+is named in the new facts and index, rather than rewriting an existing packet.

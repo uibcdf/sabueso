@@ -290,8 +290,11 @@ In order:
    absence/numbering/instance limits and original source conflicts remain explicit.
    Unreleased `Card.explain_oligomer()` now retains actual partner/agreement rules,
    source assembly alternatives, exact family members, original support and
-   historical pins under `oligomer_explanation@1`. Readers remain inert; unconfirmed
-   numbering is explicit and partial. Versioned scientific correction remains #120.
+   historical pins under `oligomer_explanation@2`. The #120 correction defaults to
+   agreement `@2`, computing only confirmed UniProt/1-based comparisons; unknown,
+   incompatible or conflicted inputs keep explicit reasons and uncomputed sets.
+   Explicit agreement `@1` reproduces the legacy view/explanation at historical
+   pins. Readers remain inert; stored cards and packet source scope stay fixed.
    Other derived explanations remain open. The #118 correction counts distinct
    included groups across matched molecule items (`ligand_measurement_count@2`),
    retaining explicit source-record counts, selected rules and exact counted ids

@@ -124,9 +124,9 @@ operational test, not disclosure of pilot scientific content, validation of ever
 source's availability, or a claim that every source is observed. Original notebooks
 remain unchanged. Their application must explicitly retain sidecars when adopted.
 
-The development checkpoint passes 1,888 offline cases in the required Python 3.14
+The development checkpoint passes 1,924 offline cases in the required Python 3.14
 editable environment (26 online cases deselected). A byte-checked clean diagnostic
-wheel passes 577 unchanged acquisition/attribution/extraction/intake/explanation/application cases
+wheel passes 613 unchanged acquisition/attribution/extraction/intake/explanation/application cases
 outside the checkout with public Ackredit 0.9.0, the public three-packet workflow
 and pip check. Ruff, frozen card shape, schema/registry, governance, dependency
 preflight and warning-failing Sphinx gates pass. The wheel check also rejects the
@@ -180,8 +180,11 @@ Evidence; MolSysSuite owns calculations, alignments and modeling interfaces.
    choices and native deck snapshot/membership metadata. Duplicate members remain
    explicit. `Card.explain_oligomer()` now retains actual partner/agreement inputs,
    source assemblies/alternatives, family members, original support and historical
-   pins (`oligomer_explanation@1`). Missing support and unconfirmed numbering stay
-   partial; versioned agreement correction remains #120. Other derived items still
+   pins (`oligomer_explanation@2`). Missing support and unconfirmed numbering stay
+   partial. The #120 correction defaults to confirmed agreement `@2`, with native
+   reasons/uncomputed sets for unknown, incompatible or conflicting inputs.
+   Explicit agreement `@1` reproduces the prior view/explanation at historical
+   pins; existing packet payloads stay unchanged. Other derived items still
    need explanations. The #118 correction
    counts distinct included groups across matched molecule/parent items under
    `ligand_measurement_count@2`, with explicit source records, exact counted ids

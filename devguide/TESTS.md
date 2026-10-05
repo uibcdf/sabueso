@@ -222,7 +222,12 @@ identity bases, selected/competing/conflicting support and qualifier alternative
 Missing inputs, empty/failure/unqueried reports, unconfirmed numbering (#120),
 historical card/item pins and detached inert readers have guards. The file runs
 unchanged outside the checkout with public Ackredit in CI and future staged gates.
-The reader changes neither scientific rules nor stored card shape.
+The #120 guards cover default confirmed-numbering agreement `@2`, incompatible
+and missing sequence/indexing, qualifier conflicts, absent versus explicit empty
+contacts, partial family scope, missing comparison inputs and exact ArgDigest
+selectors. Explicit `@1` retains the legacy view/explanation at historical pins;
+new full/index packets declare `@2` and saved packet payloads remain unchanged.
+Stored card shape is unchanged.
 
 ## Fixtures
 

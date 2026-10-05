@@ -168,19 +168,25 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 - Oligomer explanation (#91): `Card.explain_oligomer()` retains the complete native
   view, actual partner/agreement rules, source assembly alternatives/methods, exact
   family members, selected/competing/conflicting support and original item pins.
-  `oligomer_explanation@1` is detached and inert, with relationship-level support
+  `oligomer_explanation@2` is detached and inert, with relationship-level support
   and explicit unknown qualifier lineage/runtime credit. Missing inputs and
   unconfirmed numbering are partial; absence states and query reports stay distinct.
-  Versioned agreement correction remains #120; scientific rules/schema stay fixed.
-- Local validation: 1,888 offline cases pass in the Python 3.14 development environment;
-  577 unchanged receiving integration cases pass with installed Sabueso and public
+  The #120 correction defaults to agreement `@2`: confirmed UniProt/1-based
+  comparison only, with no conflicting numbering/positions. Unknown/incompatible
+  inputs retain reasons and None residue sets; computed empty sets remain lists.
+  Explicit agreement `@1` reproduces the legacy view/explanation at historical pins.
+  New full/index packets declare `@2`; existing packets and card schema stay fixed.
+- Local validation: 1,924 offline cases pass in the Python 3.14 development environment;
+  613 unchanged receiving integration cases pass with installed Sabueso and public
   Ackredit 0.9.0 outside both checkouts, including 54 article-metadata cases and
-  13 independent persisted-application cases and 41 oligomer explanation cases.
+  13 independent persisted-application cases and 77 oligomer explanation cases.
   The diagnostic wheel's modules/resources equal the source, and the public
   three-packet saved-reader workflow and receiving pip check pass. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote
   checkpoint CI is recorded in the owning issues after the ordinary code push.
+  The versioned agreement checkpoint's remote gates are pending;
+  the following receipts qualify the preceding oligomer explanation checkpoint.
   Code SHA `b5bd5f0` passes all 14 scientific/test/integration/quality CI jobs
   (37285490631) and governance (37285490470). At 08:54 UTC the required coverage
   publisher downloads CLI v11.3.1 and verifies its integrity, then fails after
@@ -492,7 +498,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Current development offline suite: 1888 tests passed, 26 online tests deselected (2026-10-05, in
+- Current development offline suite: 1924 tests passed, 26 online tests deselected (2026-10-05, in
   `molsyssuite@uibcdf_3.14`, with all installed workspace packages editable and the
   required real Ackredit editable provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.

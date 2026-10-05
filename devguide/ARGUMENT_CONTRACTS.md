@@ -91,9 +91,11 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   or `ligand_measurement_count@2` (default, distinct included groups).
   Unsupported versions, aliases and non-string values are refused; existing
   positional arguments, including `skip_digestion`, retain their positions.
-  Unreleased `explain_oligomer()` reads the complete native oligomer view and
-  reuses `skip_digestion`. It introduces no selector or identifier resolution;
-  partial support does not filter/recompute the existing scientific result.
+  Unreleased `oligomer` and `explain_oligomer` digest keyword-only
+  `agreement_rule`: exactly `interface_site_agreement@1` (legacy integer-only)
+  or `interface_site_agreement@2` (default, confirmed UniProt/1-based comparison).
+  Aliases, unsupported versions and non-string values are refused. No identifier
+  resolution occurs; `explain_oligomer` retains its positional `skip_digestion`.
 - **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,
   `group_by_rank`, `expand`, `explain`.
   `explain` accepts `structure_ref=None` for membership, or `pdb:<four-character id>`

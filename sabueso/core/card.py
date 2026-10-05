@@ -705,23 +705,39 @@ class Card:
 
         return isoform_tissue_usage_view(self, threshold)
 
-    def oligomer(self) -> Dict[str, Any]:
-        """What sources state about this protein's quaternary structure and interfaces."""
+    @arg_digest()
+    def oligomer(
+        self,
+        skip_digestion: bool = False,
+        *,
+        agreement_rule: str = "interface_site_agreement@2",
+    ) -> Dict[str, Any]:
+        """Source-stated assemblies/interfaces and a versioned position comparison.
+
+        Default agreement ``@2`` requires the card's UniProt subject, confirmed
+        numbering and located 1-based positions. Explicit ``@1`` reproduces the
+        historical integer-only comparison at the same stored card pin.
+        """
         from .oligomer import oligomer_view
 
-        return oligomer_view(self)
+        return oligomer_view(self, agreement_rule)
 
     @arg_digest()
-    def explain_oligomer(self, skip_digestion: bool = False) -> Dict[str, Any]:
+    def explain_oligomer(
+        self,
+        skip_digestion: bool = False,
+        *,
+        agreement_rule: str = "interface_site_agreement@2",
+    ) -> Dict[str, Any]:
         """Explain the complete oligomer view at this exact card pin.
 
-        ``oligomer_explanation@1`` retains the actual partner and agreement rules,
+        ``oligomer_explanation@2`` retains the actual partner and agreement rules,
         source assemblies, selected/competing support and missing inputs. Readers
         fetch nothing, change no stored knowledge and add no acquisition credit.
         """
         from .oligomer_explanation import explain_oligomer
 
-        return explain_oligomer(self)
+        return explain_oligomer(self, agreement_rule)
 
     def ligand_sites(self) -> Dict[str, Any]:
         """Residues each ligand contacts, next to the protein's annotated sites."""

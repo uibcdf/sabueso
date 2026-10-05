@@ -144,7 +144,7 @@ shows how to use them.
   `relationships(predicate=None, object_ref=None)`.
 - **Views.** Each derives knowledge with a named rule:
   - `structures(include_fragments=False, region=None)` and `predicted_structures()`;
-  - `oligomer()` and `ligand_sites()`;
+  - `oligomer(*, agreement_rule="interface_site_agreement@2")` and `ligand_sites()`;
   - `interface_mutations()` (SKEMPI, with ΔΔG under `binding_ddg@1`, #83);
   - `variant_tissue_usage(threshold=0.1)` and `isoform_tissue_usage(threshold=0.1)`
     (the tissues expressing a variant's position or an isoform's coding bases, from
@@ -241,8 +241,9 @@ shows how to use them.
   conflicts, original support, numbering and stored structural-instance context.
   No stored annotation/overlap is not external absence; absent instance data keeps
   `spans_chains=None`, and source relevance statements remain separate.
-  Unreleased `explain_oligomer()` explains the complete `oligomer()` view under
-  `oligomer_explanation@1`: actual partner-class and agreement rules, the card
+  Unreleased `explain_oligomer(*, agreement_rule="interface_site_agreement@2")`
+  explains the complete matching `oligomer()` view under `oligomer_explanation@2`:
+  actual partner-class and agreement rules, the card
   anchor, source assembly alternatives/methods, interfaces and exact family-site
   members. Relationships/assertions and field/index locators retain the original
   pin, versions and bibliography; selected, competing and conflicting support
@@ -250,8 +251,18 @@ shows how to use them.
   lineage for individual qualifiers. Source aggregate residues are not allocated
   to individual assemblies. Missing/empty assembly data and original source
   request outcomes remain distinct. Missing support is partial; no stored input
-  is `not_on_card`, never external absence. Unconfirmed numbering preserves the
-  published agreement result but marks the explanation partial (#120). No
+  is `not_on_card`, never external absence. Default agreement `@2` requires
+  declared UniProt numbering, the exact family sequence reference and 1-based
+  indexing, with no conflicting interface numbering/positions (#120).
+  The interface must state the card's exact subject; missing positions and
+  nonpositive indices prevent comparison even with a numbering declaration.
+  A row is `comparable`, `undetermined` or `not_comparable`, with original context
+  and reasons. Uncomputed `both`/`family_only`/`observed_only` are None; a computed
+  empty set is an empty list. `agreement_state` distinguishes missing inputs,
+  no comparable site, partial and fully computed views. Unconfirmed comparisons
+  keep the explanation partial. Explicit `agreement_rule="interface_site_agreement@1"`
+  in either reader reproduces the legacy integer-only view and
+  `oligomer_explanation@1`, including at historical pins. No
   acquisition, credit, alias resolution, schema change or local method execution
   occurs; saved scientific payloads cannot recreate original runtime attribution.
   Unreleased `explain_ligand(molecule_ref, deck, include_indirect=False, thresholds=None, *, counting_rule="ligand_measurement_count@2")`

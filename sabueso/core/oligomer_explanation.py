@@ -8,20 +8,25 @@ cannot recover original runtime credit or per-qualifier mapping lineage.
 from copy import deepcopy
 
 from .bioactivity_explanation import _Support
-from .ligand_sites import _positions
-from .oligomer import AGREEMENT_RULE, INTERFACE_SITE, PARTNER_RULE, oligomer_view
+from .oligomer import (
+    AGREEMENT_RULE,
+    PARTNER_RULE,
+    _family_inputs,
+    oligomer_view,
+)
 from .relationship_store import make_derivation
 from .structures import coverage_derivation
 
-RULE = "oligomer_explanation@1"
+LEGACY_RULE = "oligomer_explanation@1"
+RULE = "oligomer_explanation@2"
 SUBUNIT = "annotations.subunit"
 FAMILY = "features_positional.family_site"
 
 
-def explain_oligomer(card):
+def explain_oligomer(card, agreement_rule=AGREEMENT_RULE):
     support = _Support(card, predicates={"has_structure", "has_interface_with"})
     pin = support.pin
-    view = oligomer_view(card)
+    view = oligomer_view(card, agreement_rule)
     fields = {path: support.field(path) for path in (SUBUNIT, FAMILY)}
     subject = card.id.replace("sabueso:protein:", "", 1)
 
@@ -134,18 +139,7 @@ def explain_oligomer(card):
         )
 
     # Keep the exact original member, including sequence indexing/signature data.
-    members = []
-    for index, value in enumerate((card.get(FAMILY) or {}).get("value") or []):
-        sequence = (value.get("location") or {}).get("sequence") or {}
-        spans = sequence.get("fragments") or (
-            [{"start": sequence["start"], "end": sequence.get("end")}]
-            if sequence.get("start") is not None
-            else []
-        )
-        positions = _positions(spans)
-        if positions and INTERFACE_SITE.search(value.get("description") or ""):
-            members.append((positions[0], value.get("description") or "", index, value))
-    members.sort(key=lambda member: member[:2])
+    members = _family_inputs(card)
     family = [
         {
             "item": item,
@@ -168,6 +162,8 @@ def explain_oligomer(card):
             and sequence.get("sequence_id") == f"UniProt:{subject.split(':', 1)[1]}"
             and sequence.get("indexing") == "1-based"
         )
+        if agreement_rule == AGREEMENT_RULE:
+            comparable = item["comparison"]["status"] == "comparable"
         if not comparable:
             support.gaps.append(
                 {
@@ -179,14 +175,19 @@ def explain_oligomer(card):
         agreement.append(
             {
                 "item": item,
-                "rule": AGREEMENT_RULE,
+                "rule": agreement_rule,
                 "observed_interface_ref": homomeric["interface"]["relationship_ref"],
                 "family_site_locator": site["locator"],
                 "selection_basis": "first_homomeric_interface_in_native_view",
                 "numbering": numbering,
                 "family_sequence": sequence,
                 "numbering_confirmed": comparable,
-                "comparison_basis": "exact_integer_positions_as_used_by_interface_site_agreement@1",
+                "comparison_basis": f"exact_integer_positions_as_used_by_{agreement_rule}",
+                **(
+                    {"comparison": item["comparison"]}
+                    if agreement_rule == AGREEMENT_RULE
+                    else {}
+                ),
             }
         )
     reports = [
@@ -204,7 +205,13 @@ def explain_oligomer(card):
     stored = bool(support.links or any(field["stored"] for field in fields.values()))
     return deepcopy(
         {
-            "rule": make_derivation(RULE, inputs=[pin]),
+            "rule": make_derivation(
+                RULE if agreement_rule == AGREEMENT_RULE else LEGACY_RULE,
+                inputs=[pin],
+                parameters={"agreement_rule": agreement_rule}
+                if agreement_rule == AGREEMENT_RULE
+                else None,
+            ),
             "card_ref": pin,
             "status": "partial"
             if support.gaps
