@@ -35,6 +35,24 @@ then produces a secondary GPG error. Whole-workflow CI is failed, not green.
 Local 1,834 offline/523 installed integration cases, the public workflow and
 applicable source/schema/docs gates pass; #92/#108/#112 retain that distinction.
 
+The next ordinary code SHA `1a49a5c73f0893cd5c2ae55958851647ead71244` reproduces
+the incident in [CI 37279215592](https://github.com/uibcdf/sabueso/actions/runs/37279215592):
+all 14 scientific/test/integration/quality jobs pass, and
+[governance 37279215549](https://github.com/uibcdf/sabueso/actions/runs/37279215549) passes.
+At 07:52:55 UTC the same CLI download fails with curl 35 / TLS handshake error;
+at 07:53:05 the absent signature produces the downstream GPG error. The XML
+artifact is retained, and whole-workflow CI remains failed. Local 1,847 offline/
+536 installed-public-provider cases and applicable quality/docs gates pass. The
+[updated consumer receipt](https://github.com/uibcdf/sabueso/issues/119#issuecomment-5990468852)
+retains exact code/result boundaries; no additional retry is attempted during
+the unrecovered incident.
+
+Both public GH Run Receptor 1.1.1 and editable 1.2.0+3 replay prioritize the
+secondary GPG line as the sole root cause. The original logs establish the
+download-first sequence; the actionable diagnostic-ranking improvement is
+[gh-run-receptor#59](https://github.com/uibcdf/gh-run-receptor/issues/59).
+That reporting defect does not cause the TLS failure or change GitHub's conclusion.
+
 ## Why
 
 An external service incident must remain visible rather than be counted as passing
@@ -53,6 +71,8 @@ the required failing upload gate remain enabled.
 - The provider restores its HTTPS download/upload endpoints.
 - Repeat only the failed coverage job for the original code SHA:
   `gh run rerun 37272400000 --failed --repo uibcdf/sabueso`.
+- Recover the later code checkpoint independently, preserving its SHA:
+  `gh run rerun 37279215592 --failed --repo uibcdf/sabueso`.
 - Verify actual upload and whole-workflow success, preserve the exact-SHA receipt
   and update #92/#108/#112/#119 and the checkpoint.
 

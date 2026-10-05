@@ -174,10 +174,15 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote
   checkpoint CI is recorded in the owning issues after the ordinary code push.
-  Previous code SHA `7f980c0` passes 14 scientific/test/quality CI jobs and governance;
-  the required coverage publisher fails in two attempts during Codecov's TLS
-  incident (#119, codecov/codecov-action#1975). Whole-workflow CI remains failed
-  pending provider recovery; this is not green CI or release qualification.
+  Code SHA `1a49a5c` passes 14 scientific/test/integration/quality CI jobs
+  (37279215592) and governance (37279215549). The required coverage publisher
+  fails at 07:52 UTC with the same initial Codecov TLS/download error, followed
+  by the missing-signature GPG symptom (#119, codecov/codecov-action#1975).
+  Whole-workflow CI remains failed pending provider recovery; this is not green
+  CI or release qualification. The receptor's secondary-GPG diagnostic ranking
+  is independently reported in gh-run-receptor#59. A real bundle from installed
+  Sabueso/public Ackredit 0.9.0 also reads/reuses in the newer editable consumer/
+  provider, keeping original receipts and current execution versions distinct.
 - PR #109 / #111 is integrated: applicable local gates by changed behavior, targeted
   regressions, full offline tests at code checkpoints, ordinary unskipped code pushes
   and preserved compatibility/release gates. Exact merge SHA `f2cbe20` has green
