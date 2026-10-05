@@ -45,6 +45,24 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
+from sabueso.core.article_acquisition import (
+    note_response as note_article_response,
+)
+from sabueso.core.article_acquisition import (
+    observe as observe_article,
+)
+from sabueso.core.article_metadata import (
+    fixture_name,
+)
+from sabueso.core.article_metadata import (
+    normalize as normalize_article,
+)
+from sabueso.core.article_metadata import (
+    query as article_query,
+)
+from sabueso.core.article_metadata import (
+    response as article_response,
+)
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.core.source_acquisition import (
     acquisition,
@@ -95,6 +113,46 @@ def _annotation_record(value: Any) -> list[dict]:
 class OnlineEuropePMCClient:
     def __init__(self, timeout: float = 60.0) -> None:
         self.timeout = timeout
+
+    @observe_article()
+    def article(self, identifier: str) -> Dict[str, Any]:
+        """Core metadata for an explicit native publication identifier; no full-text access."""
+        normalize_article(identifier)
+        retrieval = stamp(SOURCE)
+        params = {
+            "query": article_query(identifier),
+            "resultType": "core",
+            "format": "json",
+            "pageSize": 10,
+        }
+        try:
+            with urlopen(
+                request(f"{SEARCH}?{urlencode(params)}"),
+                timeout=self.timeout,
+                expect_json=True,
+            ) as resp:
+                payload = json.loads(resp.read().decode("utf-8"))
+                note_article_response(payload)
+            record = article_response(payload, identifier)
+        except HTTPError as exc:
+            if exc.code == 404:
+                raise RecordNotFoundError(
+                    f"Europe PMC has no article metadata for {identifier}"
+                ) from exc
+            raise ConnectorError(
+                f"Europe PMC article request failed: HTTP {exc.code}"
+            ) from exc
+        except (URLError, TimeoutError, OSError, ValueError) as exc:
+            raise ConnectorError(f"Europe PMC article request failed: {exc}") from exc
+        if record["total_count"] == 0:
+            raise RecordNotFoundError(
+                f"Europe PMC has no article metadata for {identifier}"
+            )
+        return {
+            "record": record,
+            "version": payload.get("version"),
+            "retrieved_at": retrieval.value,
+        }
 
     @acquisition(SOURCE, "annotations")
     def annotations(self, article_ids: list[str]) -> Dict[str, Any]:
@@ -188,6 +246,27 @@ class FixtureEuropePMCClient:
         self.directory = Path(directory)
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
+
+    @observe_article(fixture=True)
+    def article(self, identifier: str) -> Dict[str, Any]:
+        normalize_article(identifier)
+        if identifier in self.failing:
+            raise ConnectorError(
+                f"Europe PMC article request for {identifier} failed (simulated)"
+            )
+        path = self.directory / "europepmc" / "articles" / fixture_name(identifier)
+        if not path.is_file():
+            raise RecordNotFoundError(
+                f"No saved Europe PMC article metadata for {identifier}"
+            )
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        note_article_response(payload)
+        record = article_response(payload, identifier)
+        return {
+            "record": record,
+            "version": payload.get("version"),
+            "retrieved_at": self.retrieved_at,
+        }
 
     @acquisition(SOURCE, "annotations", fixture=True)
     def annotations(self, article_ids: list[str]) -> Dict[str, Any]:
@@ -283,4 +362,27 @@ def get_mentions(
         response.get("version"),
         record,
         truncated=record["hitCount"] > len(record["articles"]),
+    )
+
+
+# Explicit metadata lookup keeps the existing mention/annotation APIs independent.
+@arg_digest()
+@capture_acquisitions
+def get_article(identifier: str, client: Any = None, skip_digestion: bool = False):
+    """Metadata for pubmed:<id>, pmc:PMC<id> or doi:<doi>, without full-text lookup.
+
+    The core endpoint can return an abstract; the public projection excludes it.
+    Licence literals are source declarations, not grants for supplied fragments.
+    Multiple matching records remain explicit and cannot be silently bound to a fragment.
+    """
+    normalize_article(identifier)
+    response = online(client, OnlineEuropePMCClient).article(identifier)
+    return source_record(
+        SOURCE,
+        "article",
+        {"identifier": identifier},
+        response.get("retrieved_at"),
+        response.get("version"),
+        response.get("record"),
+        truncated=(response.get("record") or {}).get("truncated"),
     )

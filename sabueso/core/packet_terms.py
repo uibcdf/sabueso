@@ -128,6 +128,12 @@ def _items(card: Any, facts: dict, role: str, conflicts: list) -> list[dict]:
         }
         for identifier, sa in sorted(assertions.items())
     ]
+    from .article_metadata import article_terms
+
+    for item in items:
+        sa = assertions[item["id"]]
+        if sa.get("field_path") == "literature.article_metadata":
+            item["article_terms"] = article_terms(sa["asserted_value"])
     for identifier, rel in sorted(relationships.items()):
         direct = set(rel.get("source_assertion_ids") or [])
         requirements = [sources(direct)] if direct else []

@@ -47,6 +47,7 @@ from sabueso.tools.db import (
 
 ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 TRACED = {
+    "europepmc.get_article",
     "interpro.get_site_residues",
     "alphafold.get_prediction",
     "pdbe_kb.get_ligand_sites",
@@ -67,6 +68,9 @@ TRACED = {
 BTS_KEY = "XBNHRNFODJOFRU-UHFFFAOYSA-N"
 
 CALLS = {
+    "europepmc.get_article": lambda: europepmc.get_article(
+        "pubmed:40832834", client=europepmc.FixtureEuropePMCClient("temp_data")
+    ),
     "europepmc.get_annotations": lambda: europepmc.get_annotations(
         "PMC:PMC12400196", client=europepmc.FixtureEuropePMCClient("temp_data")
     ),

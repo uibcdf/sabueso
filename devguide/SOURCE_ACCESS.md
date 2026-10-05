@@ -388,3 +388,23 @@ Every client uses the shared services in `sabueso/tools/db/`:
 - **Envelope drift.** The `record` of a source changes when the source changes its API.
   Mappings absorb that; direct users of `get_*` see it. The envelope is stable, the
   record is not.
+
+## Explicit article metadata acquisition (unreleased, #92/#108)
+
+Europe PMC `get_article(identifier)` explicitly queries REST search with `resultType=core`
+using EXT_ID + SRC:MED, PMCID or DOI. The returned projection includes native identifiers,
+title, full returned author records, journal/date/pages, licence/open-access declarations
+and native URL/reference forms. It excludes `abstractText` and never follows a full-text
+URL. Official endpoint semantics: <https://europepmc.org/RestfulWebService>.
+Multiple matching records and a capped/incomplete answer remain visible; fragment
+binding refuses absence, ambiguity and missing source-stated publication identity.
+
+Queries retain service-version basis (not article revision), wire/decoded/archive
+identities, original times, retries, explicit empty/HTTP-absence/failed/unavailable/
+unqueried outcomes, received subsets and original per-result/portable references.
+The bibliographic projection's exact field set is `core.article_metadata.FIELDS`.
+Unknown native author/year/journal/page fields remain citation gaps; no secondary
+lookup or inferred alias fills them. Saved raw core answers may contain abstracts;
+existing `PUBLICATION-TERMS` raw retention stays unchanged. Metadata is explicit
+support for supplied-fragment intake, not an automatic card enrichment or new article
+coverage claim. No enricher/bulk/knowledge-packet request is added.

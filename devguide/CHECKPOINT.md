@@ -5,7 +5,7 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-10-04, after release 0.12.0.*
+*Last updated: 2026-10-05, unreleased development after 0.12.0.*
 
 ## Release qualification
 
@@ -47,8 +47,15 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   `ExtractionStore` now preserve original support through storage/refresh and reuse
   supplied original attribution. Payload-only refresh reports missing runtime
   sidecars; inconsistent support, different subjects and unknown fragment terms
-  under a terms profile are refused. Broader statements and article metadata/terms
-  remain pending; extraction never becomes human curation.
+  under a terms profile are refused. Explicit `europepmc.get_article` now supplies
+  bibliographic support with native identifiers/authors/journal/pages and licence
+  literals under `article_metadata_binding@1`. Source-stated identity binds it to
+  the fragment publication; alternatives, original support, citations and declared
+  terms survive store/card refresh and pinned full/index packet reads. Service
+  version is not article revision; no abstract or full text enters the projection.
+  Queries retain original wire/archive identity, reuse, empty, partial and failed
+  outcomes. Fragment rights, broader statements and validation remain pending;
+  extraction never becomes human curation.
 - PubChem observation (#108): compound properties, structure matches and BioAssay
   target queries retain requests/POST identities, native per-assay revisions,
   summary/property batches, row caps/order, PubMed pointers, declarative depositor
@@ -148,8 +155,11 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   Explicit `@1` reproduces the published numeric counter. Views/comparisons retain
   pinned counting derivations; `ligand_deck_explanation@2` lists counted group and
   record ids with original support. Class/voter/scope policies and storage stay fixed.
-- Local validation: 1,779 offline cases and 469 installed integration cases pass
-  with public Ackredit 0.9.0. Ruff, schema/card shape,
+- Local validation: 1,834 offline cases pass in the Python 3.14 development environment;
+  523 unchanged receiving integration cases pass with installed Sabueso and public
+  Ackredit 0.9.0 outside both checkouts, including 54 new article-metadata cases.
+  The diagnostic wheel's modules/resources equal the source, and the public
+  three-packet saved-reader workflow and receiving pip check pass. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote
   checkpoint CI is recorded in the owning issues after the ordinary code push.
@@ -453,7 +463,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Offline suite: 1363 tests passed, 26 online tests deselected (2026-10-04, in
+- Current development offline suite: 1834 tests passed, 26 online tests deselected (2026-10-05, in
   `molsyssuite@uibcdf_3.14`, with all installed workspace packages editable and the
   required real Ackredit editable provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.
@@ -469,7 +479,9 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 - **Next:** explicit located UniProt accession mentions now enter cards in 0.12.0
   (#92), with per-occurrence support, unknown article terms and recorded refresh
   requests (published schema 0.3.11). Supported PDB mention context is also
-  implemented. Own extraction remains open. The public literature draft awaits human
+  implemented. The literal rule, explicit intake/replay and source-stated article
+  bibliography/declared terms are implemented in unreleased development; broader
+  extraction, fragment rights and validation remain open. The public literature draft awaits human
   review before actual curation intake. Further candidates are in `ROADMAP.md`
   ("Next candidates") and in the user
   guide's gaps (`DOCS_GAPS.md`: wave-2 sources and the

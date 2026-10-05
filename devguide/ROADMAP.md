@@ -319,8 +319,13 @@ In order:
      supplied receipts survive reuse, storage and refresh without human relabeling.
      Payload-only refresh reports the missing original runtime sidecar. New scientific
      intake metadata starts unpublished schema 0.3.12; 0.3.11 stays fixed.
-     Next: article metadata/terms and broader statement rules; unknown fragment
-     terms cannot bypass a source-admissibility profile.
+     Explicit article metadata/declared terms are now implemented through
+     `europepmc.get_article` and `article_metadata_binding@1`: source-stated identity,
+     native authors/bibliography/licence, alternatives, original access/support and
+     citations survive stored replay, refresh and pinned packet reads. Service
+     version is not article revision; no abstract or full text is projected.
+     Next: supplied-fragment rights, broader statement rules and validation; unknown
+     fragment terms cannot bypass a source-admissibility profile.
      Literature packet coverage is published in `packet_aspects@6`
      (#71): both mention areas are indexed and their unknowns reported; automatic
      acquisition asks bibliography only, without guessing article ids.

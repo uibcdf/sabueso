@@ -46,8 +46,8 @@ def literature_basis(card: Any, publication: dict) -> tuple[list[dict], list[str
     assertions = sorted(
         {
             row["source_assertion_id"]
-            for key in ("curated", "supports")
-            for row in publication[key]
+            for key in ("curated", "supports", "article_metadata")
+            for row in publication.get(key, [])
         }
     )
     return sorted(relationships, key=lambda r: r["id"]), assertions

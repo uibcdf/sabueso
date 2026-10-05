@@ -136,6 +136,26 @@ def _support(packet, roles):
                 "acquisition": assertion.get("acquisition"),
             }
             resources[identifier]["uses"].append(usage)
+            if assertion.get("field_path") == "literature.article_metadata":
+                from .article_metadata import (
+                    article_terms,
+                )
+                from .article_metadata import (
+                    citations as article_citations,
+                )
+
+                articles, missing = article_citations([assertion["asserted_value"]])
+                bibliography.update({c["id"]: c for c in articles})
+                usage["publication_citation_ids"] = [c["id"] for c in articles]
+                usage["article_terms"] = article_terms(assertion["asserted_value"])
+                usage["metadata_binding_rule"] = "article_metadata_binding@1"
+                gaps.extend(
+                    {
+                        "source_assertion_ref": item["source_assertion_ref"],
+                        "reason": reason,
+                    }
+                    for reason in missing
+                )
             if "Europe PMC Annotations" in item["sources"]:
                 annotation = (assertion.get("asserted_value") or {}).get(
                     "annotation"
@@ -199,6 +219,12 @@ def _credit(record):
                             backend.track_item(
                                 identifier,
                                 roles=["resource_description"],
+                                context=use_context,
+                            )
+                        for identifier in usage.get("publication_citation_ids", []):
+                            backend.track_item(
+                                identifier,
+                                roles=["source_publication"],
                                 context=use_context,
                             )
         return {

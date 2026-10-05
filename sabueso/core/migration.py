@@ -331,6 +331,12 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
         for path in (
             "quality.literature_extractions",
             "relationships.mentioned_in.locations (literal extraction)",
+            "quality.literature_extractions[].article_metadata_source_assertion_ids",
+            "quality.literature_extractions[].metadata_binding_rule",
+            "source_assertion_store[].source_metadata.requested_identifier (article metadata)",
+            "source_assertion_store[].source_metadata.publication_ref (article metadata)",
+            "source_assertion_store[].source_metadata.service_version (article metadata)",
+            "source_assertion_store[].source_metadata.version_basis (article metadata)",
         )
     ],
 }

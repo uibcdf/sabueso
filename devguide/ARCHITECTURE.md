@@ -96,6 +96,11 @@ do not implement project routing, EventLedger persistence or strict commit polic
    human curation. Refresh preserves support and explicitly reuses supplied original
    receipts; a payload-only refresh reports missing runtime sidecars. Extractions
    never become human curation through `CurationStore` (#92).
+   Explicit `article_metadata_binding@1` adds separate source-stated publication
+   bibliography/declared terms and original query support to supplied-fragment
+   results. It retains native alternatives, original citations and service-version
+   basis through stored replay/refresh and pinned packets. Article declarations
+   neither authenticate arbitrary supplied text nor grant fragment rights.
 9. **Storage and references** (`core.snapshot`, `core.knowledge_store`,
    `core.migration`, `tools.card.storage`, `tools.deck.storage`).
    - Content-addressed snapshots and pinned references, for cards, their items and

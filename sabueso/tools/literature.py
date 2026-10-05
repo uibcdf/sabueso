@@ -26,6 +26,8 @@ def extract_literature_mentions(
     publication: str,
     locator: str,
     skip_digestion: bool = False,
+    *,
+    article_metadata: dict | None = None,
 ) -> dict:
     """Find explicitly namespaced UniProt mentions in an identified text fragment.
 
@@ -33,6 +35,11 @@ def extract_literature_mentions(
     or DOI reference; ``locator`` identifies the supplied fragment. Matches require
     ``UniProt:<accession>``, ``UniProtKB:<accession>`` or an official UniProt URL.
     Names, bare accessions, isoform suffixes and longer tokens are not matches.
+
+    Optional ``article_metadata`` is an explicit ``europepmc.get_article`` envelope.
+    Binding requires source-stated publication identity; its database assertion and
+    original access attribution stay separate from fragment extraction. A declared
+    article licence never establishes permission for the supplied fragment.
 
     Returns detached SourceAssertions, supported mention relationships and original
     execution attribution. It does not mutate a card, curate a claim, fetch text
@@ -53,7 +60,12 @@ def extract_literature_mentions(
             "sabueso.extract_literature_mentions",
             "expected the location of the supplied text",
         )
+    from sabueso.core.article_metadata import citations, prepare
     from sabueso.core.attribution_bibliography import software
+
+    binding = (
+        prepare(article_metadata, publication) if article_metadata is not None else None
+    )
 
     started = datetime.now(timezone.utc).isoformat(timespec="seconds")
     accession = re.escape(identifier)
@@ -128,16 +140,34 @@ def extract_literature_mentions(
         "terms": {"state": "unknown", "scope": "supplied_text_fragment"},
         "bibliography_gaps": ["supplied_publication_metadata_not_declared"],
     }
-    trace["provider"] = _credit(trace)
+    if binding is not None:
+        _, gaps = citations([binding["source_assertion"]["asserted_value"]])
+        trace["bibliography_gaps"] = gaps
+        records = (binding.get("original_acquisition_trace") or {}).get("records") or []
+        if not records or any(
+            (r.get("provider") or {}).get("attribution") is None for r in records
+        ):
+            trace["bibliography_gaps"].append(
+                "original_metadata_attribution_not_available"
+            )
+        trace["article_metadata_support"] = {
+            "source_assertion_id": binding["source_assertion"]["id"],
+            "identity_basis": "source_stated_publication_identifier",
+            "fragment_terms": "unknown",
+        }
+    trace["provider"] = _credit(trace, binding)
     adapter._observe_literature(trace)
-    return {
+    result = {
         "source_assertions": assertions,
         "relationships": relationships,
         "extraction_trace": trace,
     }
+    if binding is not None:
+        result["article_metadata"] = binding
+    return result
 
 
-def _credit(trace):
+def _credit(trace, binding=None):
     backend = None
     try:
         backend = adapter._load_backend()
@@ -161,10 +191,14 @@ def _credit(trace):
             "id": "sabueso:literature-publication:" + digest(publication),
             "type": "article",
         }
-        if publication.startswith("doi:"):
+        if binding is not None:
+            from sabueso.core.article_metadata import citations
+
+            citation = citations([binding["source_assertion"]["asserted_value"]])[0][0]
+        if binding is None and publication.startswith("doi:"):
             citation["doi"] = publication[4:]
             citation["url"] = "https://doi.org/" + publication[4:]
-        else:
+        elif binding is None:
             citation["url"] = "https://pubmed.ncbi.nlm.nih.gov/" + publication[7:] + "/"
         with backend.capture(
             "sabueso.extract_literature_mentions", context=context
@@ -188,6 +222,25 @@ def _credit(trace):
                 backend.track_item(
                     resource, roles=["extraction_input"], context=context
                 )
+                # Supplied original metadata receipts contribute reuse, not a new lookup.
+                original = (binding or {}).get("original_acquisition_trace") or {}
+                for record in original.get("records", []):
+                    attribution = (record.get("provider") or {}).get("attribution")
+                    if attribution is None:
+                        continue
+                    saved = backend.Attribution.from_dict(attribution).to_dict()
+                    for item in saved["items"]:
+                        backend.register_item(**item)
+                    for use in saved["uses"]:
+                        backend.track_item(
+                            use["item_id"],
+                            roles=["reused_reference"],
+                            context={
+                                **context,
+                                "original_use": deepcopy(use),
+                                "metadata_acquisition_id": record["id"],
+                            },
+                        )
         return {
             "status": "available",
             "version": backend.__version__,

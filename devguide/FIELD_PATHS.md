@@ -108,8 +108,13 @@ Records of how the card was resolved and enriched, not source-stated fields:
 - `quality.entity_resolution` (resolution trace)
 - `quality.literature_extractions` (unpublished 0.3.12: scientific intake identity,
   named intake/extraction rules, subject/publication, locator/input hash, original
-  assertion and relationship IDs, and unknown fragment terms; runtime records remain
-  separate)
+  assertion and relationship IDs, and unknown fragment terms; optional
+  `article_metadata_source_assertion_ids` and `metadata_binding_rule` name separate
+  native bibliographic support under `article_metadata_binding@1`. Metadata assertions
+  have `field_path: literature.article_metadata` and publication subject;
+  `source_metadata` retains `content_kind`, `requested_identifier`, `publication_ref`,
+  `identity_basis`, `service_version` and `version_basis`. Native metadata lives in
+  `asserted_value`, not selected card fields. Runtime records remain separate)
 
 ---
 

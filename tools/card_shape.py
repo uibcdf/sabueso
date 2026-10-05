@@ -290,6 +290,21 @@ def fixture_cards() -> List[dict]:
                     fragment, "P60174", "pubmed:1", "Synthetic shape fragment"
                 )
             )
+        # Bind a public bibliographic projection to a labelled synthetic fragment;
+        # this does not assert that the article contains the synthetic text.
+        from sabueso.tools.db.europepmc import get_article
+
+        hstim.add_literature_extraction(
+            sabueso.extract_literature_mentions(
+                "UniProt:P60174",
+                "P60174",
+                "pubmed:40832834",
+                "Synthetic shape fragment",
+                article_metadata=get_article(
+                    "pubmed:40832834", client=FixtureEuropePMCClient(data)
+                ),
+            )
+        )
         molecule, _ = sabueso.resolve(
             "pdb.ligand:BTS",
             chembl_client=chembl,

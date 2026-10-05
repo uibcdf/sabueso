@@ -491,3 +491,17 @@ Source-supplied positions and declared member resources do not claim local align
 InterProScan execution or direct member access. Concurrent capture and installed
 public Ackredit receiving tests exercise this slice. Other built-ins/custom clients,
 further result types and application-side original-record persistence remain open.
+
+## Explicit article metadata attribution (#92/#108)
+
+Europe PMC article core queries now retain native bibliography/declared licence,
+service-version basis, original wire/archive hashes/times, reuse and distinct empty,
+partial, unavailable, unqueried and failed outcomes. Full author/page/journal forms
+credit the source publication; incomplete metadata retains explicit gaps. Explicit
+fragment binding reuses supplied original access attribution without a new lookup.
+Independent database metadata assertions and original extraction support survive
+stored replay/refresh; pinned packet composition credits only represented stored
+article citations. Reader calls remain inert. Service versions are not article
+revisions, open access is not permission, and declared article licences grant no
+rights to arbitrary supplied fragments. Raw archive retention stays per-publication;
+broader bibliography/results and application-record coordination remain open.

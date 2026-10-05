@@ -2604,3 +2604,27 @@ positions do not claim direct member access, local alignment or InterProScan
 execution. Scientific mappings, identity, schema and original returns/exceptions
 remain unchanged. Saved readers remain inert. Applications retain original runtime
 sidecars; this local adapter does not establish a shared MOLI persistence contract.
+
+## Explicit bibliography binding with separate fragment rights (2026-10-05)
+
+For #92/#108, query Europe PMC core metadata only for an explicitly supplied native
+publication identifier. Bind one complete result to a supplied-fragment publication
+only when the source states that identifier. Native PMID/PMCID/DOI declarations,
+returned authors/journal/pages/dates and licence literals remain original database
+support under `article_metadata_binding@1`, separate from `literal_uniprot_mention@1`.
+No abstract/full text is projected, no article URL is followed, and an arbitrary
+supplied fragment is not authenticated as article text.
+
+The unpublished 0.3.12 intake manifest adds optional metadata support IDs/rule.
+Assertion identities include explicit alias/service context, excluding retrieval time;
+alternatives never replace prior metadata or another source's citation fields.
+ExtractionStore retains original bindings/access sidecars; refresh preserves support
+without a query or rule execution. Saved readers remain inert; composition credits
+represented stored article citations without new access. Native incomplete bibliography
+and unavailable original credit remain gaps.
+
+Service versions are not article revisions. Licence literals remain unnormalized;
+open-access status is not permission, and article terms do not license an arbitrary
+supplied fragment. Fragment terms/profile boundaries and raw publication-term archive
+retention remain unchanged. Broader extraction, supplied-fragment rights, model/human
+validation and the MOLI application-record boundary remain open.

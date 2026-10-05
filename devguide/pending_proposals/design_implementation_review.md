@@ -52,7 +52,7 @@ decision replaced the original representation), **direction** (non-binding visio
 | Clinical knowledge | Partial: `core/clinical.py`, ChEMBL phase/indications and cited NCT trials | ADMET, pharmacovigilance, pharmacology, contraindications and drug interactions are unimplemented; source/terms review first (#81/#83/#95). DrugBank remains deferred |
 | Tissue-specific isoforms and variants | Partial: UniProt alternative products, gnomAD pext/consequences and GTEx terms, `core/tissue_usage.py` | Isoform sequences are not fetched (#80); additional transcripts only when actual coverage needs them (#102) |
 | Comparing proteins and ligand sets | Implemented within stored source-supported identity and supplied residue-map scope: `card_diff.py`, `ligands.py`, `sequences.py` | General structure/sequence similarity and chemical-family enrichment are modeling/analysis or new scoped derived operations; never implicit identity |
-| Literature as knowledge | Partial: curated assertions/claims, located Europe PMC annotations, explanations and literal extraction with explicit intake/replay and original support/receipt persistence | #92: article metadata/terms, broader statement rules and explicit human validation; model extraction comes later |
+| Literature as knowledge | Partial: curated assertions/claims, located Europe PMC annotations, explanations, literal intake/replay, explicit source-stated article bibliography/declared terms and original support/receipt persistence | #92: supplied-fragment rights, broader statement rules and explicit human validation; model extraction comes later |
 | Structural representations and model preparation | Partial: structures, constructs, author numbering, sites/interfaces and pinned inventory explanations | Structure-level cards are a design re-evaluation (#20), not a prerequisite for current inventory; modeling exchange needs MOLI/MolSysSuite owner agreement |
 | Query/packet contribution to Scientific Context | Partial: `core/packets.py`, pinned full/index packets, conflicts/unknowns, terms and automatic attribution | #71 / MOLI #22: bounded protein subject/aspects today; persistent Nextia consumer acceptance still needs an index, pinned read, explicit Evidence and citation surviving reacquisition |
 | Temporal knowledge | Partial: saved revisions, local `as_of`/`changed_since` and source versions | #91/#100: asking remote sources at historical releases is not implemented; local store time is not source-release time |
@@ -198,3 +198,14 @@ descriptor/fingerprint calculations, automatic project-to-knowledge promotion or
 an immediate new release as implied by this review. The implemented foundations
 support focused scientific additions; the remaining gaps above have distinct owners
 and acceptance conditions.
+
+## Explicit article metadata follow-up (#92/#108)
+
+The literal intake route now accepts explicit source-stated article metadata under
+`article_metadata_binding@1`: native complete returned authors/bibliography/identifiers,
+licence literals and original acquisition/support survive store replay, card refresh
+and pinned full/index packet reads. Alternatives stay separate; no text is fetched
+through full-text access or inferred from metadata. Fragment rights, broader rules,
+validation, full application-persistence acceptance and remaining source coverage
+remain open. This extends foundational support/terms integrity and the generic need
+to preserve original source references across receiving pipelines.

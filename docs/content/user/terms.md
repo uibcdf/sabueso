@@ -115,3 +115,13 @@ card.quality["terms_profile"]  # the profile, and the sources it excluded, with 
 Some sources need an account, a key, an academic licence or a written agreement before
 they can be asked at all. They are listed, with what each needs, on the *Data sources*
 page.
+
+## Declared article terms (unreleased)
+
+Explicit article metadata supplied to literal extraction retains the source's licence
+literal and open-access declaration. Card and exact-pinned packet terms expose optional
+`declared_article_terms`, each linked to its original metadata SourceAssertion. This is
+declarative context: an unspecified licence version is not inferred, and an open-access
+flag grants no supplied-fragment permission. The fragment still reports unknown terms
+and cannot bypass a terms profile. Raw Europe PMC core archives keep publication-term
+retention independently of the bibliography-only public projection.

@@ -105,6 +105,18 @@ def validate(extraction):
             f"uniprot:{identifier}", publication, assertions
         ):
             raise ValueError("inconsistent relationship support closure")
+        if "article_metadata" in data:
+            from .article_metadata import validate as validate_metadata
+
+            binding = validate_metadata(data["article_metadata"], publication)
+            if trace.get("article_metadata_support") != {
+                "source_assertion_id": binding["source_assertion"]["id"],
+                "identity_basis": "source_stated_publication_identifier",
+                "fragment_terms": "unknown",
+            }:
+                raise ValueError("inconsistent article metadata support")
+        elif "article_metadata_support" in trace:
+            raise ValueError("missing original article metadata support")
         return data
     except (KeyError, TypeError, ValueError, AttributeError) as error:
         raise SchemaError(f"Invalid literal literature extraction: {error}") from error
@@ -132,18 +144,25 @@ def _relationships(subject, publication, assertions):
     ]
 
 
-def _merge(card, assertions, relationships, record, preserve_original=False):
+def _merge(
+    card,
+    assertions,
+    relationships,
+    record,
+    preserve_original=False,
+    metadata_assertions=(),
+):
     if assertions and card.quality.get("terms_profile"):
         raise SchemaError("Unknown fragment terms cannot enter a terms-profile card.")
     # Check the whole incoming support before changing anything. The same occurrence
     # may have been extracted again; its first recorded retrieval time stays intact.
-    for assertion in assertions:
+    for assertion in [*assertions, *metadata_assertions]:
         existing = card.source_assertion_store.get(assertion["id"])
         if existing and {k: v for k, v in existing.items() if k != "retrieved_at"} != {
             k: v for k, v in assertion.items() if k != "retrieved_at"
         }:
             raise SchemaError(f"Conflicting extraction support id {assertion['id']}")
-    for assertion in assertions:
+    for assertion in [*assertions, *metadata_assertions]:
         if (
             preserve_original
             or card.source_assertion_store.get(assertion["id"]) is None
@@ -183,7 +202,23 @@ def add_extraction(card, extraction):
         "terms": deepcopy(trace["terms"]),
     }
     record["id"] = digest(canonical_json(record))
-    _merge(card, data["source_assertions"], data["relationships"], record)
+    metadata_assertions = []
+    if "article_metadata" in data:
+        metadata_assertions = [data["article_metadata"]["source_assertion"]]
+        record["article_metadata_source_assertion_ids"] = [
+            a["id"] for a in metadata_assertions
+        ]
+        record["metadata_binding_rule"] = "article_metadata_binding@1"
+        record["id"] = digest(
+            canonical_json({k: v for k, v in record.items() if k != "id"})
+        )
+    _merge(
+        card,
+        data["source_assertions"],
+        data["relationships"],
+        record,
+        metadata_assertions=metadata_assertions,
+    )
     event = {
         "format": "sabueso.literature_intake@1",
         "route": "reused_extraction",
@@ -273,6 +308,19 @@ def preserve_extractions(previous, refreshed):
             raise SchemaError(
                 "Cannot refresh literature extraction with missing original support."
             )
+        metadata_assertions = [
+            previous.source_assertion_store.get(i)
+            for i in record.get("article_metadata_source_assertion_ids", [])
+        ]
+        if any(
+            a is None
+            or a.get("field_path") != "literature.article_metadata"
+            or a.get("subject_ref") != record["publication_ref"]
+            for a in metadata_assertions
+        ):
+            raise SchemaError(
+                "Cannot refresh literature metadata with missing or inconsistent original support."
+            )
         if any(
             previous.relationship_store.get(i) is None
             for i in record["relationship_ids"]
@@ -287,7 +335,14 @@ def preserve_extractions(previous, refreshed):
             raise SchemaError(
                 "Cannot refresh inconsistent literature extraction relationships."
             )
-        _merge(refreshed, assertions, relationships, record, preserve_original=True)
+        _merge(
+            refreshed,
+            assertions,
+            relationships,
+            record,
+            preserve_original=True,
+            metadata_assertions=metadata_assertions,
+        )
         if not any(
             t["intake_id"] == record["id"] for t in refreshed._literature_intake_traces
         ):

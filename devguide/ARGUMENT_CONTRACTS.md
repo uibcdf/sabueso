@@ -32,8 +32,12 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   `ambiguity_deck`, `knowledge_packet`, `to_dataframe`, `expand`, and every
   source-access function (`get_*`, `uniprot.search`).
   Unreleased `extract_literature_mentions` digests `text`, `identifier`, `publication`
-  and `locator`; its semantic boundary additionally requires a canonical UniProt
-  accession and an explicit fragment location. The public tool guard includes it.
+  and `locator`, plus optional `article_metadata` (a mapping or None); its semantic boundary additionally requires a canonical UniProt
+  accession and an explicit fragment location. The public tool guard includes it. Metadata binding validates the explicit
+  Europe PMC article envelope, source-stated identity, unique complete result and
+  consistent original receipt before extraction. `get_article(identifier)` digests
+  `identifier` and semantically requires pubmed:<id>, pmc:PMC<id> or doi:<doi>; names
+  and guessed identifiers are refused before access.
   `extraction` accepts a result mapping; semantic validation checks the delivered
   rule, occurrence identity and relationship support before mutation. `extractions`
   accepts an `ExtractionStore`, its path or None. Store constructor/save/apply and

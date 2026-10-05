@@ -415,6 +415,19 @@ def _credit(record):
         record["bibliography_gaps"].append(
             "member_database_signature_and_site_citations_not_returned"
         )
+    if record["source"] == "Europe PMC" and record["operation"] == "article":
+        from .article_metadata import citations
+
+        articles = [
+            e["article"]
+            for e in record.get("entries", [])
+            if e["outcome"] == "received"
+        ]
+        native, gaps = citations(articles)
+        primary_ids = {item["id"] for item in native}
+        primary_role = "source_publication"
+        record["bibliography"].extend(native)
+        record["bibliography_gaps"].extend(gaps)
     completed_partial = record["outcome"] == "partial" and (
         record.get("completed_ids") or record.get("completed_pages")
     )
@@ -477,6 +490,8 @@ def _credit(record):
             context["structural_context"] = deepcopy(record["structural_context"])
         if "annotation_context" in record:
             context["annotation_context"] = deepcopy(record["annotation_context"])
+        if "article_context" in record:
+            context["article_context"] = deepcopy(record["article_context"])
         resource = "sabueso:source-access:" + digest(
             canonical_json(
                 {

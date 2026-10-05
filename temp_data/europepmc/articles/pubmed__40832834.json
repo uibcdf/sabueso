@@ -1,0 +1,188 @@
+{
+  "version": "6.9",
+  "hitCount": 1,
+  "resultList": {
+    "result": [
+      {
+        "id": "40832834",
+        "source": "MED",
+        "pmid": "40832834",
+        "pmcid": "PMC12400196",
+        "doi": "10.1107/s2053230x25006454",
+        "title": "Triosephosphate isomerase from Fasciola hepatica: high-resolution crystal structure as a drug target.",
+        "authorString": "Kontellas G, Studholme DJ, van der Giezen M, Timson DJ, Littlechild JA, Isupov MN.",
+        "authorList": {
+          "author": [
+            {
+              "fullName": "Kontellas G",
+              "lastName": "Kontellas",
+              "firstName": "Georgios",
+              "initials": "G",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0002-7537-3544"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Henry Wellcome Building for Biocatalysis, Biosciences, Faculty of Health and Life Sciences, University of Exeter, Exeter EX4 4QD, United Kingdom."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Studholme DJ",
+              "lastName": "Studholme",
+              "firstName": "David J",
+              "initials": "DJ",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0002-3010-6637"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Biosciences, Faculty of Health and Life Sciences, University of Exeter, Exeter EX4 4QD, United Kingdom."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "van der Giezen M",
+              "lastName": "van der Giezen",
+              "firstName": "Mark",
+              "initials": "M",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0002-1033-1335"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Biosciences, Faculty of Health and Life Sciences, University of Exeter, Exeter EX4 4QD, United Kingdom."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Timson DJ",
+              "lastName": "Timson",
+              "firstName": "David J",
+              "initials": "DJ",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0002-0985-8818"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "School of Pharmacy and Biomolecular Sciences, University of Brighton, Brighton BN2 4GJ, United Kingdom."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Littlechild JA",
+              "lastName": "Littlechild",
+              "firstName": "Jennifer A",
+              "initials": "JA",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0002-7649-3986"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Henry Wellcome Building for Biocatalysis, Biosciences, Faculty of Health and Life Sciences, University of Exeter, Exeter EX4 4QD, United Kingdom."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Isupov MN",
+              "lastName": "Isupov",
+              "firstName": "Michail N",
+              "initials": "MN",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0001-6842-4289"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Henry Wellcome Building for Biocatalysis, Biosciences, Faculty of Health and Life Sciences, University of Exeter, Exeter EX4 4QD, United Kingdom."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "journalInfo": {
+          "issue": "Pt 9",
+          "volume": "81",
+          "journalIssueId": 4005300,
+          "dateOfPublication": "2025 Sep",
+          "monthOfPublication": 9,
+          "yearOfPublication": 2025,
+          "journal": {
+            "medlineAbbreviation": "Acta Crystallogr F Struct Biol Commun",
+            "title": "Acta crystallographica. Section F, Structural biology communications",
+            "essn": "2053-230X",
+            "issn": "2053-230X",
+            "nlmid": "101620319",
+            "isoabbreviation": "Acta Crystallogr F Struct Biol Commun"
+          },
+          "printPublicationDate": "2025-09-01"
+        },
+        "pubYear": "2025",
+        "firstPublicationDate": "2025-08-20",
+        "license": "cc by",
+        "isOpenAccess": "Y",
+        "fullTextUrlList": {
+          "fullTextUrl": [
+            {
+              "availability": "Open access",
+              "availabilityCode": "OA",
+              "documentStyle": "doi",
+              "site": "Unpaywall",
+              "url": "https://doi.org/10.1107/s2053230x25006454"
+            },
+            {
+              "availability": "Subscription required",
+              "availabilityCode": "S",
+              "documentStyle": "doi",
+              "site": "DOI",
+              "url": "https://doi.org/10.1107/S2053230X25006454"
+            },
+            {
+              "availability": "Open access",
+              "availabilityCode": "OA",
+              "documentStyle": "html",
+              "site": "Europe_PMC",
+              "url": "https://europepmc.org/articles/PMC12400196"
+            },
+            {
+              "availability": "Open access",
+              "availabilityCode": "OA",
+              "documentStyle": "pdf",
+              "site": "Europe_PMC",
+              "url": "https://europepmc.org/articles/PMC12400196?pdf=render"
+            }
+          ]
+        },
+        "fullTextIdList": {
+          "fullTextId": [
+            "PMC12400196"
+          ]
+        },
+        "pubTypeList": {
+          "pubType": [
+            "research-article",
+            "Journal Article"
+          ]
+        },
+        "pageInfo": "381-387"
+      }
+    ]
+  }
+}

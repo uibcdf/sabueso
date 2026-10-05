@@ -209,7 +209,39 @@ def literature_view(card: Any) -> Dict[str, Any]:
                 }
             )
 
+    # Explicit supplementary metadata never replaces a source's citation fields.
+    # Preserve alternatives and missing support at their original assertion ids.
+    from .article_metadata import article_terms, citations
+
+    for record in card.quality.get("literature_extractions") or []:
+        for identifier in record.get("article_metadata_source_assertion_ids") or []:
+            pub = entry(record["publication_ref"])
+            rows = pub.setdefault("article_metadata", [])
+            if any(row["source_assertion_id"] == identifier for row in rows):
+                continue
+            assertion = card.source_assertion_store.get(identifier)
+            row = {
+                "source_assertion_id": identifier,
+                "found": assertion is not None,
+                "rule": record["metadata_binding_rule"],
+            }
+            if assertion is not None:
+                article = deepcopy(assertion["asserted_value"])
+                bibliography, gaps = citations([article])
+                row.update(
+                    article=article,
+                    terms=article_terms(article),
+                    bibliography=bibliography,
+                    bibliography_gaps=gaps,
+                    source=deepcopy(assertion["source"]),
+                    source_metadata=deepcopy(assertion["source_metadata"]),
+                    retrieved_at=assertion["retrieved_at"],
+                )
+            rows.append(row)
+
     for pub in publications.values():
+        if "article_metadata" in pub:
+            pub["article_metadata"].sort(key=lambda row: row["source_assertion_id"])
         pub["primary_citation_of"].sort()
         pub["supports"].sort(key=lambda s: (s["field_path"] or "", str(s["value"])))
     ordered = sorted(

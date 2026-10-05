@@ -64,7 +64,7 @@
    "reviewed": "2026-09-29",
    "retention_licence": "PUBLICATION-TERMS",
    "caveats": [
-    "Articles keep their own licences. Located accession annotations retain text fragments; Card.terms judges them separately as Europe PMC Annotations (publication terms, unknown when unrecorded), and terms profiles exclude them. The bibliographic search remains governed by service terms."
+    "Articles keep their own licences. Located accession annotations retain text fragments; Card.terms judges them separately as Europe PMC Annotations (publication terms, unknown when unrecorded), and terms profiles exclude them. The bibliographic search and explicit core bibliographic projection remain governed by service terms. Core licence literals are preserved separately without inferring a version, mapping open-access status to permission or granting rights to supplied fragments. Raw core answers may contain abstracts and retain publication-term archive policy."
    ]
   },
   "GPCRdb": {

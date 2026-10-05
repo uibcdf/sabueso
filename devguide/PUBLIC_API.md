@@ -368,3 +368,17 @@ Diagnostics are SMonitor signals with stable codes (`DIAGNOSTICS.md`).
 - Stored cards follow the card schema's versioning policy (`SCHEMA.md`), and older
   cards are read or migrated (`migrate_card`).
 - The reference forms are provisional until uibcdf/moli#3 (#53).
+
+## Explicit article metadata (unreleased, #92/#108)
+
+`tools.db.europepmc.get_article(identifier, client=None)` returns the standard source
+envelope for pubmed:/pmc:/doi: identifiers, with a detached acquisition trace. Its core
+bibliographic projection excludes abstract/full text, preserves native identifiers,
+author records, journal/pages/dates and licence declarations, and exposes matching
+alternatives/truncation. `extract_literature_mentions(..., article_metadata=envelope)`
+explicitly binds one complete source-stated publication identity with separate database
+support under `article_metadata_binding@1`. Original fragment assertions/rule/unknown
+rights stay unchanged. ExtractionStore, intake and refresh preserve original support;
+literature views/explanations and exact packet support retain alternatives/citations.
+`Card.terms` and pinned packet terms expose optional `declared_article_terms`; neither
+the native licence literal nor an open-access flag grants supplied-fragment rights.

@@ -286,3 +286,13 @@ fails this build.
 - Relationships cite SourceAssertions present on the card.
 - Quantities are stored as `{value, unit}` and sealed. The seal is verified on load.
 - Derived knowledge carries its rule. A test fixes each rule's observable behaviour.
+
+`test_article_metadata_offline.py` guards explicit PMID/PMCID/DOI identity, core
+bibliographic projection, full native authors, service-version/unknown article-revision
+bases, original wire/archive reuse, raw publication-term retention, empty/failure/
+unavailable/unqueried/partial outcomes and rejected ambiguity. Separate binding support,
+alias/metadata alternatives, original receipt consistency, incomplete bibliography,
+unknown fragment rights, original store/card refresh, exact full/index packet support,
+inert readers, source-scoped citations, custom gaps, provider failure and concurrent
+queries are covered. The file runs unchanged outside the checkout in public-provider
+CI and future staged installed-package gates.

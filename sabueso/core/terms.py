@@ -36,6 +36,7 @@ differ across jurisdictions. The report says so in ``disclaimer``.
 from __future__ import annotations
 
 import json
+from copy import deepcopy
 from datetime import date
 from functools import lru_cache
 from pathlib import Path
@@ -333,6 +334,18 @@ def _items(card: Any) -> List[Dict[str, Any]]:
                     "sources": sources([identifier]),
                 }
             )
+    from .article_metadata import article_terms
+
+    for assertion in store.find_by_field("literature.article_metadata"):
+        items.append(
+            {
+                "kind": "article_metadata",
+                "id": assertion["id"],
+                "source_assertion_id": assertion["id"],
+                "sources": sources([assertion["id"]]),
+                "article_terms": article_terms(assertion["asserted_value"]),
+            }
+        )
     return items
 
 
@@ -355,11 +368,14 @@ def report_items(
         raise ValueError(f"use must be one of {USES}, not {use!r}")
     verdicts: Dict[str, Dict[str, Any]] = {}
     per_card = []
+    declarations = []
     for card_id, items in groups:
         remains = lost = unknown = 0
         lost_items, unknown_items = [], []
         objects: Dict[str, Dict[str, Any]] = {}
         for item in items:
+            if "article_terms" in item:
+                declarations.append({"card_id": card_id, **deepcopy(item)})
             if item.get("derived"):
                 continue
             answers = {}
@@ -465,6 +481,7 @@ def report_items(
         "unknown": sorted(n for n, v in verdicts.items() if v["verdict"] == "unknown"),
         "rule": RULE,
         "disclaimer": DISCLAIMER,
+        **({"declared_article_terms": declarations} if declarations else {}),
     }
 
 

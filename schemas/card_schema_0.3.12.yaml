@@ -254,6 +254,22 @@ schema:
     rule. Original runtime attribution remains in an independent ExtractionStore
     or sidecar; it is never embedded in the card or reconstructed by a reader.
 
+    Explicit article metadata binding (unpublished 0.3.12, #92/#108) adds optional
+    article_metadata_source_assertion_ids and metadata_binding_rule
+    article_metadata_binding@1 to quality.literature_extractions. Separate
+    database SourceAssertions at literature.article_metadata retain native
+    bibliographic fields, identifiers and licence literals. Their subject_ref
+    is the supplied publication, confirmed by source-stated publication identity.
+    source_metadata records content_kind article_metadata, requested_identifier,
+    publication_ref, identity_basis source_stated_publication_identifier,
+    service_version and version_basis service_version_not_article_revision.
+    Assertion identity includes native values and explicit binding context,
+    excluding retrieval time; alternative native forms and alias bindings remain
+    separate support. Service versions never become article revisions. Declared
+    article licences do not grant supplied-fragment permission. No abstract or
+    full article is in the bibliographic projection. Metadata remains explicit:
+    neither migration nor refresh queries it, and missing support is not rebuilt.
+
 card_base:
   meta:
     card_id:

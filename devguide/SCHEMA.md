@@ -5,7 +5,10 @@
   - `0.3.12` is unpublished development (#92): explicit literal extraction intake
     adds `quality.literature_extractions` and occurrence locations with Unicode
     offsets, locator and input hash. Original rule acquisition/support is retained;
-    detached runtime attribution stays in an `ExtractionStore` or sidecar;
+    detached runtime attribution stays in an `ExtractionStore` or sidecar. Explicit
+    `article_metadata_binding@1` adds separate native bibliographic assertions and
+    optional metadata assertion IDs/rule in the intake record, preserving declared
+    licence literals without changing fragment rights;
   - `0.3.11` is the frozen schema of release 0.12.0: explicit Europe PMC article
     annotations add native article ids and per-occurrence locations to `mentioned_in`,
     and source-supported PDB mentions add derived `structure_mentioned_in` context,

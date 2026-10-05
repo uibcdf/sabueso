@@ -28,8 +28,8 @@ publication reference grants no reuse rights. Provider failures warn and preserv
 the scientific extraction with explicit failed attribution.
 
 This rule runs entirely on supplied text. Explicit intake and original-result
-replay are available in unreleased development; article metadata/terms and broader
-statement extraction remain Sabueso #92. Intake starts unpublished card schema
+replay and explicit article bibliography/declared terms are available in unreleased
+development; supplied-fragment rights, broader statements and validation remain #92. Intake starts unpublished card schema
 0.3.12; published 0.3.11 is fixed.
 
 ### Intake, persistence and reuse (unreleased)
@@ -69,6 +69,51 @@ and `original_runtime_sidecar_not_supplied`; it cannot recreate original runtime
 credit. Supply the original store when attribution reuse is required. Missing
 stored support fails explicitly instead of reconstructing it. Provider failures
 preserve the scientific result with a diagnosed attribution gap.
+
+### Explicit article bibliography and declared terms (unreleased)
+
+```python
+from sabueso.tools.db import europepmc
+
+metadata = europepmc.get_article("pubmed:40832834")
+# `text` is an independently supplied fragment, with its real location.
+result = sabueso.extract_literature_mentions(
+    text, "P60174", "pubmed:40832834", locator, article_metadata=metadata
+)
+extractions.save(result)
+card.add_literature_extraction(result)
+```
+
+`get_article` accepts `pubmed:<id>`, `pmc:PMC<id>` or `doi:<doi>`. Europe PMC's core
+response supplies bibliography, native identifiers, complete returned author records,
+journal/pages/dates and literal licence declarations. The public projection excludes
+the abstract; no full-text endpoint or linked article is consulted. Its service
+version is recorded separately from the unstated article revision. Multiple matching
+records and truncated results remain explicit and cannot be silently bound.
+
+Binding requires a unique complete record stating the fragment's publication identity.
+Metadata is a separate database SourceAssertion under `article_metadata_binding@1`;
+the occurrence assertions retain `rule_extraction`. Source-declared aliases support
+the explicit binding, never an identity guessed from names or titles. Nothing verifies
+that an arbitrary supplied fragment is a quotation from that article.
+
+`card.literature()` and `card.explain_literature(ref)` expose `article_metadata`
+alternatives, original support IDs, retrieval times, bibliography and declared terms.
+These do not overwrite existing source citation fields. `card.terms(use)` and pinned
+packet terms report `declared_article_terms` separately: a literal such as `cc by`
+does not state a licence version, and an open-access flag is not a reuse grant.
+Supplied-fragment terms remain unknown and keep the existing terms-profile guard.
+Raw archived core answers may include an abstract and retain the publication-term
+retention policy; the bibliographic projection does not relax raw-answer sharing.
+
+The original query trace records received/empty/partial/failed/unavailable/unqueried
+outcomes, request hashes, service-version basis and original archive reuse. Supply
+the original envelope to reuse its detached attribution through extraction/intake;
+missing original metadata credit is reported. `ExtractionStore` saves this exact
+binding. Card refresh preserves stored metadata without querying or rerunning the
+rule, and saved readers remain inert. Packet composition credits represented stored
+article citations only, without claiming new source access. Incomplete bibliography
+retains the native available fields and explicit gaps.
 
 ## Literature on a card
 
@@ -388,7 +433,8 @@ card.explain([source_assertion_id])[0]["acquisition"]
   mentions, `origin` says `text_mining`.
 - `curation`: a person read the publication and recorded it, as above.
 - `rule_extraction` and `model_extraction`: extracted from a text by a named tool or
-  model, with its version, run by Sabueso or by you. None is run yet. A model-extracted statement is
+  model, with its version, run by Sabueso or by you. The unreleased literal rule
+  above is implemented; broader rules and model extraction remain pending. A model-extracted statement is
   never reported as curated.
 - Cards saved before this was recorded read as `not_recorded` until they are built
   again.
