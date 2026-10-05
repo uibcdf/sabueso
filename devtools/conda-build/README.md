@@ -104,7 +104,23 @@ current 0.9.0-based Ackredit editable satisfies the public minimum, with runtime
 distribution agreement and a passing pip check (2026-10-04). Provider #81 records
 the earlier Git-version mismatch and receiving confirmation.
 
-## Prepared 0.12.0 scope (#110)
+## Planned 0.13.0 (#121)
+
+`release_plan.toml` selects 0.13.0 and the staged route; draft scope and compatibility
+limits are in `release_notes_0.13.0.md`. The preparation uses the qualified public
+minimum dependency closure listed above and all 19 installed receiving test files
+already wired in the matrix (613 cases at the preceding code checkpoint).
+
+Build an unpublished local Conda candidate and freeze schema 0.3.12 from clean
+installed code with public inputs and a source/archive/fixture receipt. Commit that
+fixture before selecting the final candidate SHA. Then run exact-SHA CI/governance,
+stage one immutable `sabueso-0.13.0-py_0.tar.bz2`, inspect its producer receipts/bytes,
+and pass all 12 Linux/macOS-arm64/Windows × Python 3.11–3.14 installed lanes.
+Only then publish/promote, verify a clean public install and archive the identical
+tag. Historical 0.12.0 artifacts, notes, frozen cards and receipts stay immutable.
+
+## Prepared 0.12.0 scope (#110, historical)
+
 
 `release_plan.toml` selects 0.12.0 and the staged route;
 `release_notes_0.12.0.md` contains the reusable draft. The preliminary local

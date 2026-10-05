@@ -32,6 +32,18 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   the environment's pip check passes. Provider #81 is closed through #82.
   Separate environments qualify public/candidate distributions.
 
+## Next release preparation
+
+- **0.13.0 planned (#121):** staged release of the implemented source-observation,
+  literal extraction/article-metadata intake, pinned explanations, versioned
+  integrity corrections and persisted public application exercise.
+  The committed plan and draft notes are in `devtools/conda-build/`.
+  Schema 0.3.12 must be frozen from a clean installed local Conda candidate.
+  Final candidate CI, staging/archive inspection, the 12 OS/minor installed lanes,
+  stable publication, public installation and Zenodo remain pending.
+  Required traceability retains the explicit coverage/bibliography gaps in #108;
+  consumer/platform acceptance and broader #91/#92 work stay open.
+
 ## Unreleased development after 0.12.0
 
 - Persisted public application exercise (#108/#112): `examples/persisted_pipeline/`

@@ -20,8 +20,8 @@ Every document is one of four kinds:
 | `RISKS_AND_OPEN_QUESTIONS.md` | living | Risks for the future, and decisions to re-evaluate |
 
 Release preparation and receipts live in `../devtools/conda-build/`: the committed
-plan, route checklist, `release_notes_0.12.0.md` and exact-artifact publication
-receipt (#110). Published state stays in `CHECKPOINT.md`; a preparation plan is
+plan, route checklist, `release_notes_0.13.0.md` for the planned staged release (#121), and the
+immutable 0.12.0 notes/publication receipt (#110). Published state stays in `CHECKPOINT.md`; a preparation plan is
 not a release receipt.
 
 ## Design

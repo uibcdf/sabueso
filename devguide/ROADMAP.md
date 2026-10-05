@@ -57,6 +57,17 @@ Other sources/custom clients, further result types, incomplete bibliography and
 MOLI ProjectRecord/Recorda integration remain open in #108/#36. Traceability remains
 mandatory. The next slices follow observed use and the foundational objectives below.
 
+## Planned 0.13.0 (#121)
+
+The maintainer accepted a staged release of the substantial implemented development
+block: eight additional source families observed, original literal extraction and
+article metadata, pinned derived explanations, versioned integrity corrections and
+the independent persisted application exercise. This advances foundational support,
+identity, schema and reference integrity alongside receiving-workflow traceability.
+The scope stays bounded by #108/#91/#92; shared consumer/record acceptance remains
+MOLI work. Publication requires schema 0.3.12 frozen from installed code and the full
+exact-candidate/artifact route; this section is a plan, not a release receipt.
+
 ## Delivered so far (0.1.0 → 0.12.0)
 
 - **Foundations.**
