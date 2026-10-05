@@ -8,7 +8,7 @@ Traceability is a required Sabueso property. The first source-access slice also
 retains automatic acquisition traces for built-in UniProt, Europe PMC and RCSB PDB clients;
 its declared gaps prevent a claim of complete pipeline coverage.
 
-Unreleased development extends that boundary to the built-in ChEMBL, PubChem and
+Since 0.13.0, Sabueso extends that boundary to the built-in ChEMBL, PubChem and
 BindingDB clients and adds detached attribution for `extract_literature_mentions`.
 It also observes PDB CCD and UniChem chemical identity access, molecular resolution
 and ligand-deck construction.
@@ -147,7 +147,7 @@ The original per-entry metadata remains in the trace. A structure packet's store
 support credits the RCSB description; save the intake or enclosing workflow record
 to retain its original primary-publication references as well.
 
-## AlphaFold DB models (unreleased)
+## AlphaFold DB models (since 0.13.0)
 
 `alphafold.get_prediction` retains the protein query and native per-record model
 identifiers, versions, original response/archive hashes and retrieval times.
@@ -175,7 +175,7 @@ Card and refresh traces name exact final pins. Persist original JSON sidecars
 explicitly; saved card readers, prediction views and citation rendering add no
 new acquisition or execution credit.
 
-## InterPro family-site residues (unreleased)
+## InterPro family-site residues (since 0.13.0)
 
 `interpro.get_site_residues` observes the existing protein-scoped site-residue
 query. Native signature keys/accessions, member-database declarations, locations
@@ -197,7 +197,7 @@ signature and site citations. Source declaration does not establish rights to al
 member resources. Scientific cards/mappings/schema remain unchanged. Persist the
 original runtime sidecars; saved readers and bibliography rendering add no credit.
 
-## PDBe-KB aggregate queries (unreleased)
+## PDBe-KB aggregate queries (since 0.13.0)
 
 `pdbe_kb.get_ligand_sites` and `pdbe_kb.get_interface_residues` retain separate
 protein-scoped queries, original retrieval times, response identities, archive
@@ -221,7 +221,7 @@ No extra bibliography request is made. Save original JSON sidecars explicitly;
 loading saved cards, rendering citations and reading ligand/interface views add
 no new acquisition or execution credit.
 
-## Chemical identity queries (unreleased)
+## Chemical identity queries (since 0.13.0)
 
 CCD component batches and UniChem's InChIKey/source-id lookups retain their original
 queries, POST identities, response hashes, retrieval times, retries and archive
@@ -255,7 +255,7 @@ acquisition trace; ordinary deck operations create no trace or credit. Resource
 descriptions cite CCD and its RCSB distribution service, and UniChem itself, without
 claiming experimental primary citations or access to UniChem's linked providers.
 
-## ChEMBL queries (unreleased)
+## ChEMBL queries (since 0.13.0)
 
 Built-in bioactivity, assay-activity, molecule and indication operations retain
 normalized queries, pages and chunks, source totals/caps, transport retries and
@@ -274,7 +274,7 @@ retrieval times and response identities without new network attempts. ChEMBL's
 native document metadata contributes primary citations, with missing authors and
 other fields left unknown. Original readers add no execution credit.
 
-## PubChem queries (unreleased)
+## PubChem queries (since 0.13.0)
 
 Compound property lookups, structure matches (SMILES/InChI) and BioAssay target
 queries automatically retain detached traces. Public `get_compound`,
@@ -311,7 +311,7 @@ with ackredit.session("compound lookup"):
     trace = answer["acquisition_trace"]
 ```
 
-## BindingDB queries (unreleased)
+## BindingDB queries (since 0.13.0)
 
 REST, saved fixtures and installed-mirror affinity queries automatically retain
 detached traces through `get_affinities` and card acquisition. They record the
@@ -334,7 +334,7 @@ Scientific records and cutoff selection remain unchanged.
 Decoded empty answers, unavailable fixtures, unqueried offline access, failures
 and data received before a processing failure are distinct. An HTTP 404 remains a
 connector failure under BindingDB's existing client contract. The documented
-empty-string forms are handled by the unreleased fix in
+empty-string forms are handled by the 0.13.0 fix in
 [Sabueso #114](https://github.com/uibcdf/sabueso/issues/114): an exactly empty HTTP
 200 body or a JSON empty string is an evaluated-empty answer, retaining the client's
 `RecordNotFoundError` outcome and original receipt. Unexpected payloads and malformed
@@ -369,9 +369,9 @@ lanes pin public Ackredit 0.9.0/py_0 on Python 3.11–3.14 and run the unchanged
 integration tests and public workflow outside both checkouts. Provider delivery
 issues [#22](https://github.com/uibcdf/ackredit/issues/22),
 [#75](https://github.com/uibcdf/ackredit/issues/75) and
-[#80](https://github.com/uibcdf/ackredit/issues/80) are closed. Sabueso 0.12.0 passes its own exact-artifact OS/minor matrix and clean
+[#80](https://github.com/uibcdf/ackredit/issues/80) are closed. Sabueso 0.13.0 passes its own exact-artifact OS/minor matrix and clean
 public installation, with the full receipt in the repository's
-`devtools/conda-build/receipts/sabueso_0.12.0_public_2026-10-04.json`.
+`devtools/conda-build/receipts/sabueso_0.13.0_public_2026-10-05.json`.
 
 ## Scope and bibliography
 
@@ -465,7 +465,7 @@ tests check corporate-name grouping and Europe PMC's personal names without new 
 The complete runnable public workflow is in `examples/ackredit_pilot/`, using only
 the frozen public HsTIM fixtures declared in `temp_data/NOTICE.md`.
 
-Unreleased development also includes `examples/persisted_pipeline/`: independent
+Since 0.13.0, Sabueso also includes `examples/persisted_pipeline/`: independent
 producer, reader and reuse processes retain full/index packets, an exact index-item
 read, original extraction/article metadata and portable workflow attribution.
 The reader verifies sidecar hashes and result bindings before rendering historical

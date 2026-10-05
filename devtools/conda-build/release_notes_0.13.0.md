@@ -1,9 +1,13 @@
 # Sabueso 0.13.0 — Traced source access and pinned explanations
 
-Prepared candidate scope (#121); schema 0.3.12 is frozen from clean installed
-local Conda code. Publication follows exact-SHA CI, immutable staging,
-the installed-package matrix, unchanged promotion, clean public installation and
-identical-tag Zenodo archival. These notes are not a publication receipt.
+Published and verified 2026-10-05 from qualified source/tag `7e78d07` (#121).
+CI passes 15/15; all 12 installed OS/minor lanes pass 613 integration cases and
+the public workflow. Promotion preserves the tested archive, and a clean public
+Python 3.14 installation passes bytes/origins/API, frozen-card reading, the same
+613 cases, workflow and pip check. Zenodo DOI
+[10.5281/zenodo.23162373](https://doi.org/10.5281/zenodo.23162373) archives all 960
+source files identical to the qualified tag. Complete qualification:
+[publication receipt](receipts/sabueso_0.13.0_public_2026-10-05.json).
 
 ## Source acquisition and citations
 

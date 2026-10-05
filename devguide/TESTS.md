@@ -87,7 +87,7 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   editable satisfies the published minimum and the primary environment passes pip
   check; all workspace packages remain editable.
 
-## Unreleased traceability and extraction guards
+## Traceability and extraction guards delivered in 0.13.0
 
 `test_chembl_acquisition_offline.py` verifies paginated/chunked access, native releases,
 original document citations, archive reuse/replay, retries, partial received-page credit,

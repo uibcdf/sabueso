@@ -14,8 +14,8 @@ supersedes: []
 
 Status: required automatic packet-composition and bounded source-acquisition adapters
 implemented; broader pipeline
-coverage remains open with explicit gaps in the published 0.12.0 scope (#108).
-Public Ackredit 0.9.0 delivery is adopted and Sabueso 0.12.0 is published/qualified.
+coverage remains open with explicit gaps in the published 0.13.0 scope (#108).
+Public Ackredit 0.9.0 delivery is adopted and Sabueso 0.13.0 is published/qualified.
 Unreleased changes require their own validation; the public application exercise
 does not replace future exact-artifact release gates.
 Owner: [uibcdf/sabueso#108](https://github.com/uibcdf/sabueso/issues/108).
@@ -524,3 +524,14 @@ article citations. Reader calls remain inert. Service versions are not article
 revisions, open access is not permission, and declared article licences grant no
 rights to arbitrary supplied fragments. Raw archive retention stays per-publication;
 broader bibliography/results and application-record coordination remain open.
+
+## Public 0.13.0 delivery (2026-10-05, #121)
+
+The source-observation, literal intake/article metadata, pinned explanations and
+independent persisted application slices above are published in 0.13.0 with
+public Ackredit >=0.9.0. Exact CI passes 15/15; all 12 installed OS/minor lanes
+and a clean public install pass 613 cases and the public workflow. Promotion
+preserves the staged digest; all 960 Zenodo source files equal the qualified tag.
+Receipt: `devtools/conda-build/receipts/sabueso_0.13.0_public_2026-10-05.json`.
+Broader #108 coverage and the shared MOLI/Nextia/Recorda acceptance remain open;
+the dated earlier sections retain their original qualification boundaries.

@@ -1,6 +1,6 @@
 # Sabueso — Public API
 
-The public surface as of main after release 0.12.0. Anything not listed here, or not exported by
+The public surface as of release 0.13.0. Anything not listed here, or not exported by
 `sabueso`, is internal. Tools, views, stores and source access check their arguments
 through ArgDigest. Plain accessors (`get`, `set`, `sort`…) do not, and fail loudly on
 wrong types (`ARGUMENT_CONTRACTS.md` lists which is which). The user guide (`docs/`)
@@ -8,7 +8,7 @@ shows how to use them.
 
 ## Entry point
 
-- Unreleased: `sabueso.extract_literature_mentions(text, identifier, publication, locator)`
+- Since 0.13.0: `sabueso.extract_literature_mentions(text, identifier, publication, locator)`
   runs `literal_uniprot_mention@1` on supplied text with an explicit canonical UniProt
   accession and publication reference. It returns detached per-occurrence
   `source_assertions`, supported `relationships` and original `extraction_trace` with
@@ -18,7 +18,7 @@ shows how to use them.
 
 - `sabueso.resolve(query, entity_type=None, profile=None, curations=None, extractions=None, **options)`
   returns `(card | None, resolution)`.
-  - Unreleased: `extractions` accepts an `ExtractionStore` or its path. It explicitly
+  - Since 0.13.0: `extractions` accepts an `ExtractionStore` or its path. It explicitly
     applies original literal-rule results for the exact UniProt subject and records
     reuse. It does not execute extraction; fragment terms remain unknown.
   - `query` is an identifier (UniProt accession, `pdb:`, `pubchem:`, `chembl:`,
@@ -66,19 +66,19 @@ shows how to use them.
   routes, response identities, empty answers and failures. Saved scientific payloads
   return `None`; retain original JSON sidecars. Other sources/custom clients are
   explicitly unobserved. `SOURCE_ACCESS.md` defines the coverage and local formats.
-  Unreleased chemical identity access adds CCD batches and both UniChem lookup
+  Since 0.13.0, chemical identity access adds CCD batches and both UniChem lookup
   methods, alongside ChEMBL/PubChem/BindingDB observation. `resolve_molecule_card`
   retains card/resolution traces; `ligand_deck` exposes `Deck.acquisition_trace`,
   including its native snapshot id, output card pins and input protein pin.
   The trace is detached from deck metadata/hashes. Saved or ordinarily derived
   decks have no new trace; preserve original sidecars explicitly.
-  Unreleased PDBe-KB ligand-site and interface-residue access also retains
+  Since 0.13.0, PDBe-KB ligand-site and interface-residue access also retains
   separate aggregate query traces, native structural references and unknown versions.
   Listed providers/structures do not claim additional direct source access.
-  Unreleased AlphaFold DB `prediction` access keeps native model identities,
+  Since 0.13.0, AlphaFold DB `prediction` access keeps native model identities,
   per-model versions, declared tool/provider/URL context and original source receipts.
   It downloads no linked artifact and claims no local model-generation execution.
-  Unreleased InterPro `site_residues` access retains native signature/site context,
+  Since 0.13.0, InterPro `site_residues` access retains native signature/site context,
   header/fixture releases, original archive receipts, empty and failed outcomes.
   It runs no alignment/InterProScan and claims no direct member-database access.
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
@@ -102,7 +102,7 @@ shows how to use them.
   `records` accessor returns detached JSON records for completed packet composition.
   Its separate `acquisitions` accessor retains observed source operations, including
   failures. Collection is optional; runtime attachment is automatic.
-  Unreleased `literature` separately collects original literal-extraction execution
+  Since 0.13.0, `literature` separately collects original literal-extraction execution
   and intake/reuse events, including stored-support-only refresh gaps.
   Applications own Ackredit sessions. The required lazy adapter preserves per-result
   reused resources and contributes to enclosing captures/workflows; provider failures
@@ -152,14 +152,14 @@ shows how to use them.
     `gtex=True`, each tissue's UBERON or EFO term, `gtex_tissue_key@1`);
   - `sequence_differences(other)` (the positions where two equal-length sequences
     differ, nothing aligned, `equal_length_positions@1`, #103);
-  - `diseases(grouping_rule="disease_grouping@2")` (unreleased default: every stored
+  - `diseases(grouping_rule="disease_grouping@2")` (default since 0.13.0: every stored
     identity path, explicit contradictory/unfinished branches, #90/#115).
     `grouping_rule="disease_grouping@1"` reproduces the published historical lookup;
   - `terms(use)` (what the sources state about a use of the card's knowledge,
     `terms_propagation@1`, #29; also `Deck.terms(use)` and `Deck.admissible(use)`);
   - `bioactivities(include_indirect=False, thresholds=None)`;
   - `ligands(deck, ...)` and `compare_ligands(deck, other, other_deck, ...)`;
-    unreleased keyword-only `counting_rule="ligand_measurement_count@2"` counts
+    since 0.13.0, keyword-only `counting_rule="ligand_measurement_count@2"` counts
     distinct included groups across matched molecule items; explicit `@1` retains
     the published source-record counter. `bioactivity.records` reports distinct
     included source relationships under either rule. `measurement_counting` records
@@ -173,8 +173,8 @@ shows how to use them.
   - `compare(other, fields=None)` and `compare_knowledge(other, residue_map=None)`.
 - **Tables.** `table(view, **options)` gives flat rows; `sabueso.to_dataframe(rows,
   units=None)` needs pandas.
-- **Literal extraction (unreleased).**
-  - Unreleased `Card.add_literature_extraction(extraction)` preserves delivered
+- **Literal extraction (since 0.13.0).**
+  - Since 0.13.0, `Card.add_literature_extraction(extraction)` preserves delivered
     literal-rule support and returns a detached reuse event. An older card must be
     explicitly migrated first; different subjects and inconsistent support are refused.
     `Card.literature_intake_traces` returns copies of original runtime events and is
@@ -198,7 +198,7 @@ shows how to use them.
   legs of structural mention context, with pinned references, qualifier alternatives
   and recorded unlinked PDB mentions (`literature_explanation@1`, since 0.12.0).
   Missing links are `not_on_card`; missing stored support is `partial`.
-  Unreleased `explain_disease(disease_ref)` explains a MONDO disease group at the
+  Since 0.13.0, `explain_disease(disease_ref)` explains a MONDO disease group at the
   exact card pin (`disease_group_explanation@2`), following stored association and
   selected annotation-member support, MedGen/MONDO identity and hierarchy steps.
   Stored alternatives/conflicts and whole-card ungrouped context remain visible;
@@ -207,7 +207,7 @@ shows how to use them.
   `disease_group_explanation@1`, including its exposed lookup ambiguity. No source
   is asked. `MONDO:<seven-digit id>` and `mondo:MONDO:<seven-digit id>`
   select groups, never names or cross-ontology aliases.
-  Unreleased `explain_knowledge_state(knowledge_area=None, knowledge_source=None)`
+  Since 0.13.0, `explain_knowledge_state(knowledge_area=None, knowledge_source=None)`
   explains all state rows or an exact area/source selection at the current or
   loaded historical card pin (`knowledge_state_explanation@1`). Selected fields,
   alternatives/conflicts and counted UniProt relationships have original support;
@@ -218,11 +218,11 @@ shows how to use them.
   Missing support is `partial`, including fields/relationships whose source can
   no longer be identified. A missing row is `not_on_card`, never evidence of absence.
   No source is asked, mappings rerun, card changed or execution credit added.
-  Unreleased `explain_measurement(measurement_ref)` selects an exact native `REL_`
+  Since 0.13.0, `explain_measurement(measurement_ref)` selects an exact native `REL_`
   record or `MG_` group at this card pin (`measurement_group_explanation@1`). It
   retains actual grouping joins, publication/molecule keys, precision quantities,
   provenance selectors, ambiguity, unresolved-copy and review diagnostics.
-  Unreleased `explain_bioactivity(molecule_ref, include_indirect=False, thresholds=None)`
+  Since 0.13.0, `explain_bioactivity(molecule_ref, include_indirect=False, thresholds=None)`
   selects the exact namespaced item key returned by `bioactivities()`
   (`bioactivity_explanation@1`). Pass the same options as the explained view. Each
   group retains included records, voters, voter classes and copy-only fallback;
@@ -235,13 +235,13 @@ shows how to use them.
   is `partial`; a missing item is `not_on_card`, never inactivity. These readers fetch
   nothing, change no card or credit and do not resolve aliases or explain ligand
   deck/site aggregation. The existing scientific rules and stored schema are unchanged.
-  Unreleased `explain_ligand_site(ligand_site_ref)` selects the native `REL_` id
+  Since 0.13.0, `explain_ligand_site(ligand_site_ref)` selects the native `REL_` id
   from `ligand_sites()` (`ligand_site_explanation@1`). It retains the actual
   `annotated_site_overlap@2` result, selected annotation fields, alternatives,
   conflicts, original support, numbering and stored structural-instance context.
   No stored annotation/overlap is not external absence; absent instance data keeps
   `spans_chains=None`, and source relevance statements remain separate.
-  Unreleased `explain_oligomer(*, agreement_rule="interface_site_agreement@2")`
+  Since 0.13.0, `explain_oligomer(*, agreement_rule="interface_site_agreement@2")`
   explains the complete matching `oligomer()` view under `oligomer_explanation@2`:
   actual partner-class and agreement rules, the card
   anchor, source assembly alternatives/methods, interfaces and exact family-site
@@ -265,7 +265,7 @@ shows how to use them.
   `oligomer_explanation@1`, including at historical pins. No
   acquisition, credit, alias resolution, schema change or local method execution
   occurs; saved scientific payloads cannot recreate original runtime attribution.
-  Unreleased `explain_ligand(molecule_ref, deck, include_indirect=False, thresholds=None, *, counting_rule="ligand_measurement_count@2")`
+  Since 0.13.0, `explain_ligand(molecule_ref, deck, include_indirect=False, thresholds=None, *, counting_rule="ligand_measurement_count@2")`
   selects the exact SmallMoleculeCard id from `ligands(deck)`
   (`ligand_deck_explanation@2`). Protein and molecule inputs keep distinct pins.
   Actual identity links, class selection, names, measured groups, sites, structure
@@ -284,7 +284,7 @@ shows how to use them.
   The explanation records its selected count policy alongside nested support;
   measurement identity, class/voter, assay-scope and site policies are unchanged.
   Missing activity-only originals retain the exact `copy_of` pointer with
-  `original_not_on_card` in unresolved-copy diagnostics (#117, unreleased fix).
+  `original_not_on_card` in unresolved-copy diagnostics (#117, released in 0.13.0).
   A later provenance or statement join removes that singleton diagnostic. This
   describes final local grouping, not external absence or proof that a named
   original was acquired; original pointers remain in pinned relationship support.
@@ -393,7 +393,7 @@ Diagnostics are SMonitor signals with stable codes (`DIAGNOSTICS.md`).
   cards are read or migrated (`migrate_card`).
 - The reference forms are provisional until uibcdf/moli#3 (#53).
 
-## Explicit article metadata (unreleased, #92/#108)
+## Explicit article metadata (since 0.13.0, #92/#108)
 
 `tools.db.europepmc.get_article(identifier, client=None)` returns the standard source
 envelope for pubmed:/pmc:/doi: identifiers, with a detached acquisition trace. Its core

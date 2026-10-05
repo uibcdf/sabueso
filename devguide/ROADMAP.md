@@ -37,7 +37,21 @@ status, so that none is lost because a pilot has not asked for it yet.
 - **Maintainers may schedule a foundational objective on its own.** The pilots do not
   own the plan.
 
-## Latest release: 0.12.0 (#110)
+## Latest release: 0.13.0 (#121)
+
+Published 2026-10-05 from qualified `7e78d07`, with unchanged `py_0` promotion,
+clean public installation and an identical-tag Zenodo archive. All 12 installed
+OS/minor lanes pass 613 receiving cases and the public workflow; receipt:
+`devtools/conda-build/receipts/sabueso_0.13.0_public_2026-10-05.json`.
+
+The release adds eight source families to required acquisition observation, original
+literal extraction/article bibliography, pinned derived explanations, versioned
+integrity corrections and an independent persisted application exercise. It advances
+foundational identity/support/schema/reference integrity and receiving-pipeline
+traceability. Schema 0.3.12 is frozen. Broader #108/#91/#92 and consumer-owned
+Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain open.
+
+## Previous release: 0.12.0 (#110)
 
 Published 2026-10-04 from qualified `7739317`, with unchanged `py_1` promotion,
 clean public installation and an identical-tag Zenodo archive. The 12 installed
@@ -57,18 +71,7 @@ Other sources/custom clients, further result types, incomplete bibliography and
 MOLI ProjectRecord/Recorda integration remain open in #108/#36. Traceability remains
 mandatory. The next slices follow observed use and the foundational objectives below.
 
-## Planned 0.13.0 (#121)
-
-The maintainer accepted a staged release of the substantial implemented development
-block: eight additional source families observed, original literal extraction and
-article metadata, pinned derived explanations, versioned integrity corrections and
-the independent persisted application exercise. This advances foundational support,
-identity, schema and reference integrity alongside receiving-workflow traceability.
-The scope stays bounded by #108/#91/#92; shared consumer/record acceptance remains
-MOLI work. Publication requires schema 0.3.12 frozen from installed code and the full
-exact-candidate/artifact route; this section is a plan, not a release receipt.
-
-## Delivered so far (0.1.0 → 0.12.0)
+## Delivered so far (0.1.0 → 0.13.0)
 
 - **Foundations.**
   - Card, Deck, `SourceAssertionStore` and `RelationshipStore`.
@@ -208,7 +211,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Entity resolution as a central piece | done | EntityResolver, identity audit, curated names; a reference entry related to its genome-strain entry, never merged (#103) |
 | Temporal knowledge | partial | snapshots, revisions, source releases; the store's `as_of` and `changed_since` (#91); no source asked as of a past release |
 | Knowledge from Nextia not imported automatically | done (as a boundary) | promotion of derived knowledge open in uibcdf/moli#17 |
-| Literature as a knowledge source | partial | human curation and literature views; automated extraction pending |
+| Literature as a knowledge source | partial | human curation and literature views; literal rule extraction/intake and explicit article metadata since 0.13.0 (#92); broader extraction/validation pending |
 | KnowledgeQuery (semantic queries over sources) | partial | prototype released in 0.6.0 (#71): a protein subject, a fixed aspect mapping (`packet_aspects@5` since 0.10.0; published @6 adds literature mentions and their index/unknowns); contract in uibcdf/moli#22 |
 | Knowledge packets (entities, facts, conflicts, unknowns) | partial | prototype released in 0.6.0 (#71): pinned, stored, with a content-equivalence id; since 0.10.0, an index level by reference for size (#88), accepted in uibcdf/moli#22, which closes with a consumer test |
 | Unknowns as first-class output | done | `knowledge_state()` (#56) |
@@ -281,25 +284,25 @@ In order:
    Released in 0.12.0: `Card.explain_literature(publication_ref)`
    traces stored publication links and both legs of structural mention context,
    preserving alternatives and recorded unlinked requests (`literature_explanation@1`).
-   Unreleased `Card.explain_disease(disease_ref)` now explains MONDO disease
+   Released in 0.13.0 `Card.explain_disease(disease_ref)` now explains MONDO disease
    groups with pinned association/selected-annotation support, identity/hierarchy
    steps, stored alternatives and whole-card ungrouped context. Versioned
    `disease_grouping@2`/`disease_group_explanation@2` (#115) retain all identity
    paths and leave conflicting or unfinished branches ungrouped. Explicit `@1`
    selection preserves historical behavior without replacing stored cards.
-   Unreleased `Card.explain_knowledge_state` now traces exact classification
+   Released in 0.13.0 `Card.explain_knowledge_state` now traces exact classification
    inputs, selected/alternative scientific support, coverage and request reports
    at original pins (`knowledge_state_explanation@1`). Missing support is partial;
    absence and missing queries never become negative assertions. #116 retains
    multiple original UniProt versions without changing the working state rule.
-   Unreleased measurement-group and molecule bioactivity-class explanations now
+   Released in 0.13.0 measurement-group and molecule bioactivity-class explanations now
    retain actual joins, precision, copy/voter decisions, original quantities and
    exact pinned source support. Whole-card candidate/glossary context remains
-   explicit. Unreleased `Card.explain_ligand_site` and `Card.explain_ligand` now
+   explicit. Released in 0.13.0 `Card.explain_ligand_site` and `Card.explain_ligand` now
    trace actual annotated overlap and protein/molecule crossing support at distinct
    card pins, with native deck snapshot/membership context. Duplicate members,
    absence/numbering/instance limits and original source conflicts remain explicit.
-   Unreleased `Card.explain_oligomer()` now retains actual partner/agreement rules,
+   Released in 0.13.0 `Card.explain_oligomer()` now retains actual partner/agreement rules,
    source assembly alternatives, exact family members, original support and
    historical pins under `oligomer_explanation@2`. The #120 correction defaults to
    agreement `@2`, computing only confirmed UniProt/1-based comparisons; unknown,
@@ -328,7 +331,7 @@ In order:
      derived `structure_mentioned_in` context through source-stated `has_structure`
      links, retaining both statements and separating them from direct UniProt
      mentions. Public 2JK2/Methods verifies it; unsupported 7QON remains unlinked.
-     Unreleased: Sabueso runs `literal_uniprot_mention@1` on identified supplied
+     Released in 0.13.0: Sabueso runs `literal_uniprot_mention@1` on identified supplied
      fragments, returning detached per-occurrence SourceAssertions, supported
      relationships and original Ackredit attribution. It requires an explicit
      namespace/official URL; no names, bare accessions or biological findings.
@@ -336,7 +339,7 @@ In order:
      `Card.add_literature_extraction` and `ExtractionStore`: original support and
      supplied receipts survive reuse, storage and refresh without human relabeling.
      Payload-only refresh reports the missing original runtime sidecar. New scientific
-     intake metadata starts unpublished schema 0.3.12; 0.3.11 stays fixed.
+     intake metadata uses published schema 0.3.12; 0.3.11 stays fixed.
      Explicit article metadata/declared terms are now implemented through
      `europepmc.get_article` and `article_metadata_binding@1`: source-stated identity,
      native authors/bibliography/licence, alternatives, original access/support and
@@ -383,12 +386,12 @@ In order:
      fixture/reuse/replay, empty answers, failure and original response identities,
      automatically on cards, resolutions and one-call packets. The public pilot
      saves those detached traces and credits completed access in the workflow.
-     Unreleased development adds ChEMBL bioactivities, assay activities, molecules
+     Released in 0.13.0 adds ChEMBL bioactivities, assay activities, molecules
      and indication operations: pagination/chunks, source totals/caps, original
      document citations, retries and received-page subsets remain observable even
      when the original exception escapes. Client-reported cached releases are
      explicitly not per-page release proof.
-     Unreleased development also covers PubChem compound properties, structure
+     Released in 0.13.0 also covers PubChem compound properties, structure
      matches and BioAssay target queries, including native per-assay revisions,
      caps/batches, PubMed pointers, declarative depositors, rejected inputs and
      received subsets on later failure. Unstated global versions remain unknown;
@@ -398,7 +401,7 @@ In order:
      mirror manifests/releases, including empty and failed queries. REST versions
      remain unknown. The source-local #114 fix recognizes documented empty-string
      absence while malformed responses remain failed, retaining wire/archive identity.
-     Unreleased CCD batches and UniChem InChIKey/source-id
+     Released in 0.13.0 CCD batches and UniChem InChIKey/source-id
      lookups now retain query/response identities, reuse, retry/empty/failure outcomes
      and completed subsets. Linked databases stay declarative; versions stay unknown.
      Molecular resolution and ligand decks keep detached input/result pins and
@@ -417,7 +420,7 @@ In order:
      declarations do not claim direct access, alignment or InterProScan execution;
      missing site/signature citations and release versions remain explicit.
      Other sources/custom clients, further result types and complete resource
-     bibliography remain coverage work with explicit gaps in the published 0.12.0
+     bibliography remain coverage work with explicit gaps in the published 0.13.0
      scope (#108). Ackredit 0.9.0 is publicly qualified on Python 3.11–3.14;
      its published minimum and exact public pins replace the source overlay and
      release blocker. Sabueso's own exact `py_1` archive passes all installed
@@ -428,7 +431,7 @@ In order:
      their separate meanings; scientific payloads are unchanged.
      MOLI owns ProjectRecord composition and future Recorda routing; the local trace
      is a receiving experiment, not an implemented platform provenance contract.
-     Unreleased `examples/persisted_pipeline/` exercises separate producer, reader
+     Released in 0.13.0 `examples/persisted_pipeline/` exercises separate producer, reader
      and reuse processes: full/index packets, exact historical item reads, original
      extraction/article support and workflow credit survive reacquisition.
      Missing/changed/misbound sidecars and inconsistent workflow context are refused.

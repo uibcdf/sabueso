@@ -31,7 +31,7 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
 - **Tools:** `resolve`, `resolve_protein_card`, `resolve_molecule_card`, `ligand_deck`,
   `ambiguity_deck`, `knowledge_packet`, `to_dataframe`, `expand`, and every
   source-access function (`get_*`, `uniprot.search`).
-  Unreleased `extract_literature_mentions` digests `text`, `identifier`, `publication`
+  Since 0.13.0, `extract_literature_mentions` digests `text`, `identifier`, `publication`
   and `locator`, plus optional `article_metadata` (a mapping or None); its semantic boundary additionally requires a canonical UniProt
   accession and an explicit fragment location. The public tool guard includes it. Metadata binding validates the explicit
   Europe PMC article envelope, source-stated identity, unique complete result and
@@ -59,28 +59,28 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   `explain_literature(publication_ref)` accepts the literature view's native
   `pubmed:`, `doi:`, `europepmc:MED:`, `europepmc:PMC:` and `uniprot.citation:`
   references, with whitespace stripped. It neither guesses aliases nor matches names.
-  Unreleased `explain_disease(disease_ref)` selects a MONDO group using
+  Since 0.13.0, `explain_disease(disease_ref)` selects a MONDO group using
   `mondo:MONDO:<seven-digit id>` or `MONDO:<seven-digit id>`; namespace case and
   surrounding whitespace are normalized. Other ontologies, names and malformed
   identifiers are refused; no equivalence lookup or acquisition occurs.
   `diseases` and `explain_disease` digest `grouping_rule`: exactly
-  `disease_grouping@2` (unreleased default) or `disease_grouping@1` (explicit
+  `disease_grouping@2` (default since 0.13.0) or `disease_grouping@1` (explicit
   historical compatibility). Unknown versions and non-string selectors are refused.
   `explain_disease` takes this selector as a keyword-only argument, preserving its
   existing positional `skip_digestion` argument.
-  Unreleased `explain_knowledge_state` digests `knowledge_area` and
+  Since 0.13.0, `explain_knowledge_state` digests `knowledge_area` and
   `knowledge_source`: None selects all; a nonempty string selects an exact native
   row name with surrounding whitespace stripped. No case/name alias matching or
   source lookup occurs. Unknown selectors return no matching row; malformed shapes
   and empty strings are refused.
-  Unreleased `explain_measurement` digests `measurement_ref`: an exact local
+  Since 0.13.0, `explain_measurement` digests `measurement_ref`: an exact local
   `REL_` id or `MG_` plus 16 lowercase hexadecimal digits. Pinned fragments,
   activity ids and malformed selectors are refused. `explain_bioactivity` digests
   `molecule_ref`: the exact namespaced item key from `bioactivities()`, without
   case changes, whitespace normalization or identifier resolution. It reuses
   `include_indirect` and quantity-bearing `thresholds` contracts. A well-formed
   missing native item returns `not_on_card`, never a negative measurement.
-  Unreleased `explain_ligand_site` digests `ligand_site_ref`: an exact local
+  Since 0.13.0, `explain_ligand_site` digests `ligand_site_ref`: an exact local
   `REL_` id from `ligand_sites()`. Source ligand identifiers, groups and pinned
   fragments are refused. `explain_ligand` reuses `molecule_ref` with its caller
   contract: the exact `sabueso:small_molecule:<namespace>:<id>` from `ligands(deck)`;
@@ -91,7 +91,7 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   or `ligand_measurement_count@2` (default, distinct included groups).
   Unsupported versions, aliases and non-string values are refused; existing
   positional arguments, including `skip_digestion`, retain their positions.
-  Unreleased `oligomer` and `explain_oligomer` digest keyword-only
+  Since 0.13.0, `oligomer` and `explain_oligomer` digest keyword-only
   `agreement_rule`: exactly `interface_site_agreement@1` (legacy integer-only)
   or `interface_site_agreement@2` (default, confirmed UniProt/1-based comparison).
   Aliases, unsupported versions and non-string values are refused. No identifier

@@ -48,7 +48,7 @@ Two consistency checks add flags to a measurement. Both rules are listed in
 
 Neither check corrects a value; they point at the measurements to look at.
 
-## Explain a stored measurement or class (unreleased)
+## Explain a stored measurement or class (since 0.13.0)
 
 Use an item key or measurement group from the view being explained:
 
@@ -106,7 +106,7 @@ others, mostly crystallisation additives and ions, are listed in
 catalytic metal may not be flagged. Pass `structure_ligands="all"` to keep every ligand. Resolve a single molecule with
 `sabueso.resolve_molecule_card("pdb.ligand:BTS")` (or `chembl:<id>`, `inchikey:<key>`).
 
-The unreleased readers explain that crossing and a stored site:
+The readers released in 0.13.0 explain that crossing and a stored site:
 
 ```python
 item = card.ligands(deck)["items"][0]
@@ -121,7 +121,7 @@ if sites:  # When the card also holds ligand-site statements.
 Protein and molecule support keep distinct pins, original source versions and
 actual identity, class and name choices. Deck membership and its snapshot describe
 the supplied deck; load the original saved deck separately for historical reads.
-Duplicate members are retained as multiple partial items. In unreleased development,
+Duplicate members are retained as multiple partial items. Since 0.13.0,
 `bioactivity.measurements` counts distinct included measurement groups across all
 matched molecule records; `bioactivity.records` counts included source records.
 An original and its declared copy are one group and two records, even when they
@@ -182,9 +182,9 @@ assay names its depositor and the depositor's assay id.
   fetched from ChEMBL. This recovers measurements a truncated or target-based query
   missed.
 - `card.explain_bioactivity(item_key)["measurement_identity"]["unresolved_copies"]`
-  (unreleased) retains the grouping engine's unresolved-copy diagnostics. The
+  (since 0.13.0) retains the grouping engine's unresolved-copy diagnostics. The
   ordinary bioactivity view retains its existing groups, ambiguity and review output.
-  The unreleased #117 fix also reports missing activity-only originals, retaining
+  The #117 fix released in 0.13.0 also reports missing activity-only originals, retaining
   the exact pointer and `original_not_on_card`. A later provenance or statement
   join removes that singleton diagnostic. This describes grouping on the stored
   card; it does not establish absence from an external source or prove that the

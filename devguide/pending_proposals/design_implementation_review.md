@@ -33,9 +33,9 @@ decision replaced the original representation), **direction** (non-binding visio
 | --- | --- | --- |
 | Uniform assertions, aggregation and field selection | Implemented: `core/source_assertion_store.py`, `aggregator.py`, `merge.py`, `resolver/field_resolver.py`; mapping, selection and conflict tests | Additional sources must retain alternative assertions and declared selection rules; no alternative knowledge model is needed |
 | Entity resolution before composition | Implemented for proteins, small molecules and MONDO-anchored diseases: `tools/resolve.py`, `resolver/entity_resolver.py`, `tools/card/disease.py`; resolution/identity/disease tests | EFO identities without a MONDO anchor remain #96; FASTA/structure-file intake needs a separate identity contract |
-| Source-supported identity and explicit ambiguity | Implemented: identity audits, source-stated cross-references, molecule InChIKey anchors, `core/entities.py`; unreleased deterministic disease grouping `@2` preserves all identity paths (#115) | Explicit historical `@1` retains its exposed lookup limitation. Similarity, names and equal residue numbers never authorize merging; sequence alignment belongs to MolSysMT |
+| Source-supported identity and explicit ambiguity | Implemented: identity audits, source-stated cross-references, molecule InChIKey anchors, `core/entities.py`; 0.13.0 deterministic disease grouping `@2` preserves all identity paths (#115) | Explicit historical `@1` retains its exposed lookup limitation. Similarity, names and equal residue numbers never authorize merging; sequence alignment belongs to MolSysMT |
 | First-class relationships | Implemented: `core/relationship_store.py`, supported predicates and qualifiers; relationship/measurement/curation tests | More predicates require a scientific use and support contract; storage re-evaluation stays #19 |
-| Derived knowledge with named rules | Implemented: structure inventory, oligomer, ligand classes, measurement groups, diseases, identity audits, knowledge state; unreleased pinned disease-group, knowledge-state, measurement-group, bioactivity-class, ligand-crossing, site-class and oligomer explanations; versioned ligand group/record count correction (#118) | Explanation of every derived view remains partial (#91); other derived items still need pinned support |
+| Derived knowledge with named rules | Implemented: structure inventory, oligomer, ligand classes, measurement groups, diseases, identity audits, knowledge state; 0.13.0 pinned disease-group, knowledge-state, measurement-group, bioactivity-class, ligand-crossing, site-class and oligomer explanations; versioned ligand group/record count correction (#118) | Explanation of every derived view remains partial (#91); other derived items still need pinned support |
 | Reproducible decks | Implemented: `core/deck.py`, membership, exclusions, lineage, intersect/difference, comparison and pinned revision tests | General heterogeneous joins, rankings, neighbors and subgraphs remain directions, not missing promised API |
 | Physical quantities across boundaries | Implemented: `core/quantities.py`, PyUnitWizard quantities/seals, integrity and measurement tests | New fields and consumer exchanges must negotiate units; they cannot use bare values or computed field-name units |
 | History, pins and exact item reads | Implemented: `core/snapshot.py`, `knowledge_store.py`, migration/refresh and pin regression tests | Shared reference acceptance still depends on MOLI #3/#53; application-level runtime persistence is separate |
@@ -62,7 +62,7 @@ decision replaced the original representation), **direction** (non-binding visio
 ## Required traceability and operational closure
 
 Published 0.12.0 observes UniProt, Europe PMC and RCSB acquisition and pinned packet
-composition. Unreleased development extends observation to ChEMBL's five logical
+composition. Release 0.13.0 extends observation to ChEMBL's five logical
 operations, preserving page/chunk identities, retries, empty answers, unavailable
 fixtures, failures and received subsets. It also observes PubChem compound/structure
 lookups and BioAssay target queries, with native per-assay revisions, batches/caps,
@@ -75,7 +75,7 @@ Resource descriptions and source-native primary citations remain separate;
 missing metadata stays explicit. The new
 `literal_uniprot_mention@1` returns original extraction attribution. Explicit intake
 and `ExtractionStore` preserve its original support and supplied runtime receipts;
-refresh does not rerun extraction. Scientific intake metadata starts unpublished
+refresh does not rerun extraction. Scientific intake metadata uses published
 schema 0.3.12; published 0.3.11 stays fixed. Payload-only refresh states the missing
 original runtime sidecar, and unknown fragment terms cannot bypass terms profiles.
 
@@ -145,7 +145,7 @@ Evidence; MolSysSuite owns calculations, alignments and modeling interfaces.
    Explicit intake/replay preserves original text identity/location, tool/version,
    terms gaps and supplied original attribution. Save/load/refresh retain historical
    support; no extraction passes through `CurationStore` as human curation. Schema
-   0.3.12 is unpublished. Explicit article bibliography/declared terms are implemented;
+   0.3.12 is published and frozen in 0.13.0. Explicit article bibliography/declared terms are implemented;
    fragment rights, broader rules and validated model extraction remain #92 work.
 2. **Extend chemical observation (#108).** PubChem compound/structure/BioAssay
    observation is implemented, including native per-assay revisions, batches/caps,
@@ -221,3 +221,14 @@ through full-text access or inferred from metadata. Fragment rights, broader rul
 validation, shared platform/consumer acceptance and remaining source coverage
 remain open. This extends foundational support/terms integrity and the generic need
 to preserve original source references across receiving pipelines.
+
+## Published 0.13.0 checkpoint (#121)
+
+The bounded implementation above is published and exact-artifact qualified in
+0.13.0: CI 15/15, all 12 installed OS/minor lanes and clean public installation
+pass 613 receiving cases and the public workflow; all 960 Zenodo source files
+equal the qualified tag. The local full offline checkpoint passes 1,926 cases.
+Receipt: `devtools/conda-build/receipts/sabueso_0.13.0_public_2026-10-05.json`.
+Broader source/result/bibliography coverage, extraction/explanation gaps and
+consumer-owned Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain
+the next work, not completed by publication.

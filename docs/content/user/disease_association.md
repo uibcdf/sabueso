@@ -239,7 +239,7 @@ for disease in view["diseases"]:
     print(disease["mondo"], disease.get("mondo_name"), disease["sources"])
 for item in view["ungrouped"]:
     print(item["refs"], item["source"], item["reason"])
-print(view["rule"]["rule"])  # disease_grouping@2 in unreleased development
+print(view["rule"]["rule"])  # disease_grouping@2 since 0.13.0
 ```
 
 - Each id MONDO states is the same disease becomes a `same_as` relationship to its
@@ -248,7 +248,7 @@ print(view["rule"]["rule"])  # disease_grouping@2 in unreleased development
   triosephosphate isomerase, triosephosphate isomerase deficiency is one disease stated
   by ClinVar, DISEASES, Open Targets, Orphanet and UniProt.
 - A ClinVar condition is one statement with every id ClinVar states for it. The
-  unreleased `@2` rule retains every direct and MedGen/MONDO path in `identity_paths`.
+  0.13.0 `@2` rule retains every direct and MedGen/MONDO path in `identity_paths`.
   A conflicting target of one identifier prevents grouping, even if MONDO places
   the candidate terms in a hierarchy. Names and newer source versions never choose.
 - `medgen=True` asks MedGen which record each MedGen concept id is (`C1860808` is
@@ -265,7 +265,7 @@ print(view["rule"]["rule"])  # disease_grouping@2 in unreleased development
   - `conflicting_identity`: one identifier has contradictory MONDO targets, or
     separately stated identifiers reach terms without a unique supported broader
     term. All candidates and paths are retained, and none is chosen;
-  - `incomplete_identity` (unreleased `@2`): a candidate reaches MONDO but another
+  - `incomplete_identity` (0.13.0 `@2`): a candidate reaches MONDO but another
     stored identity branch is unfinished. Retain both instead of claiming agreement.
 - A condition named at two granularities joins the broader disease. ClinVar sometimes
   gives a broader Orphanet id next to the MONDO and OMIM ids of a subtype, or names
@@ -276,7 +276,7 @@ print(view["rule"]["rule"])  # disease_grouping@2 in unreleased development
 - `disease_identity` reads the diseases the other sources put on the card, so ask for
   them in the same call.
 
-## Explain a disease group (unreleased)
+## Explain a disease group (since 0.13.0)
 
 ```python
 explanation = card.explain_disease("mondo:MONDO:0014221")
@@ -300,8 +300,8 @@ that the protein has no disease. `ungrouped_context` retains the **whole card's*
 ungrouped statements and their reasons; it does not associate all of them with the
 requested term. Missing stored support produces `partial` with explicit gaps.
 
-Published 0.12.0 uses `disease_grouping@1`. To reproduce that historical lookup in
-unreleased development, select it explicitly in both views:
+Published 0.12.0 uses `disease_grouping@1`. To reproduce that historical lookup since
+0.13.0, select it explicitly in both views:
 
 ```python
 historical_view = card.diseases(grouping_rule="disease_grouping@1")

@@ -83,7 +83,7 @@ for row in view["agreement"]:  # family dimer interface vs observed interface
     them.
 - Interfaces are not computed from coordinates; that is modelling (uibcdf/sabueso#30).
 
-### Explain the stored oligomer view (unreleased)
+### Explain the stored oligomer view (since 0.13.0)
 
 ```python
 explanation = card.explain_oligomer()

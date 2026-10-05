@@ -2,8 +2,8 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
-  - `0.3.12` is frozen for candidate 0.13.0 (#121), generated from clean
-    installed local Conda code; publication is pending. Explicit literal extraction
+  - `0.3.12` is published/frozen in release 0.13.0 (#121), generated from clean
+    installed local Conda code. Explicit literal extraction
     intake (#92) adds `quality.literature_extractions` and occurrence locations with Unicode
     offsets, locator and input hash. Original rule acquisition/support is retained;
     detached runtime attribution stays in an `ExtractionStore` or sidecar. Explicit
@@ -143,7 +143,7 @@ Every SourceAssertion stored in `source_assertion_store` must include:
     (curator and date) records a person's confirmation. These are for extractions
     whose tool and version are known because Sabueso or its user ran them; a source
     that serves text-mined records is `database` with its `origin`. No extraction is
-    run automatically during card building. Unreleased
+    run automatically during card building. Since 0.13.0,
     `extract_literature_mentions` runs a named literal rule and returns detached
     statements. Explicit `Card.add_literature_extraction` or
     `resolve(..., extractions=ExtractionStore(...))` preserves that original support;
@@ -843,7 +843,7 @@ A disease is an entity of its own (`entity_type: disease`), anchored at a MONDO 
   `mondo_name`. With `medgen`, also `same_as` (`MEDGEN:<concept id>` → `MEDGEN:<uid>`),
   qualifiers `basis` (`medgen_concept@1`) and `source` (`MedGen`). `Card.diseases()`
   groups the card's disease statements through them (published `disease_grouping@1`,
-  unreleased default `disease_grouping@2`); a ClinVar
+  default `disease_grouping@2` since 0.13.0); a ClinVar
   condition is one statement with all its ids. When the ids of one statement reach
   several terms, also `subclass_of` (`mondo:<term>` → `mondo:<broader term>`) for each
   pair MONDO places one under the other. Qualifiers: `source` (`MONDO`) and `path` (the

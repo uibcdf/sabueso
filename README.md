@@ -23,21 +23,25 @@ the displayed report may briefly lag a new push while CI finishes.
 
 ## Current release status
 
-- **Latest release:** [0.12.0](https://github.com/uibcdf/sabueso/releases/tag/0.12.0)
-  (2026-10-04), distributed through the `uibcdf` conda channel.
+- **Latest release:** [0.13.0](https://github.com/uibcdf/sabueso/releases/tag/0.13.0)
+  (2026-10-05), distributed through the `uibcdf` conda channel.
   - One `noarch` package for Linux, macOS Apple Silicon (arm64) and Windows,
-    on Python 3.11–3.14. The exact `py_1` archive passes all 12 installed lanes;
-    a fresh public-only Linux/Python 3.14 install verifies its bytes, quantities,
-    56 attribution/acquisition cases, the public workflow and pip check.
-  - Card schema 0.3.11 adds located article mentions and source-supported structural
-    mention context. Pinned terms and literature explanations preserve support.
-  - Ackredit >=0.9.0 is required. Automatic packet and UniProt/Europe PMC/RCSB
-    acquisition records preserve versions, reused references, empty answers and
-    failures. Structural intake retains native entry revisions and primary citations.
-    Save original runtime JSON beside scientific objects; broader coverage stays explicit.
-  - Archived on Zenodo, all 1160 source files verified against the qualified tag:
+    on Python 3.11–3.14. The exact `py_0` file passes all 12 installed lanes,
+    each with 613 integration cases and the public attribution workflow. A clean
+    public Linux/Python 3.14 installation verifies bytes, origins, API, frozen-card
+    reading, those 613 cases, workflow and pip check.
+  - Card schema 0.3.12 retains original literal extraction and explicit article
+    bibliography. Pinned disease/state/bioactivity/ligand/oligomer explanations
+    preserve support; versioned corrections retain explicit legacy rules.
+  - Required Ackredit >=0.9.0 attribution now observes ChEMBL, PubChem, BindingDB,
+    CCD, UniChem, PDBe-KB, AlphaFold DB and InterPro alongside UniProt, Europe PMC
+    and RCSB. Save original runtime JSON with scientific objects; broader coverage
+    and bibliography gaps remain explicit.
+  - Zenodo [10.5281/zenodo.23162373](https://doi.org/10.5281/zenodo.23162373):
+    all 960 source files verified against the qualified tag.
+  - Complete [publication receipt](devtools/conda-build/receipts/sabueso_0.13.0_public_2026-10-05.json).
+  - 0.12.0 remains archived on Zenodo, identical to its tag:
     [10.5281/zenodo.23134375](https://doi.org/10.5281/zenodo.23134375).
-  - Complete [publication receipt](devtools/conda-build/receipts/sabueso_0.12.0_public_2026-10-04.json).
   - 0.11.0 is archived on Zenodo, verified to be identical to its tag:
     [10.5281/zenodo.23099139](https://doi.org/10.5281/zenodo.23099139).
   - Users who exported literature extractions with earlier versions: upgrade.

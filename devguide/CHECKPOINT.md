@@ -5,10 +5,26 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-10-05, unreleased development after 0.12.0.*
+*Last updated: 2026-10-05, 0.13.0 published and verified.*
 
 ## Release qualification
 
+- **0.13.0 published (#121):** source/tag `7e78d078111ac8dd51e08746c3818108ebd825a4`;
+  exact CI 37308420258 passes 15/15 and governance 37308420271 passes.
+  Staging 37309502566 builds `sabueso-0.13.0-py_0.tar.bz2`, SHA-256
+  `1e8f80375cbc08c04df452dbbb55084dc4ff41c6242fbb07e3479f0cd4c7361c`;
+  all 382 non-version Python/JSON files match source. Installed matrix 37310099058
+  passes 13/13: producer plus all 12 Linux/macOS-arm64/Windows × Python 3.11–3.14
+  lanes, each with 613 integration cases and the public workflow.
+  Release event 37311427178 verifies without rebuilding; promotion 37311466982
+  preserves the digest and verifies the public poststate. An anonymous public
+  download equals staging; a fresh public-only Python 3.14.7 install passes
+  bytes/origins/API, frozen-card read, all 613 cases, workflow and pip check.
+  Zenodo [10.5281/zenodo.23162373](https://doi.org/10.5281/zenodo.23162373)
+  archives all 960 source files identical to the qualified tag.
+  Card schema 0.3.12 is frozen from clean installed local Conda code; existing
+  schemas/receipts stay immutable. Complete receipt:
+  `devtools/conda-build/receipts/sabueso_0.13.0_public_2026-10-05.json`.
 - **0.12.0 published (#110):** qualified source/tag
   `7739317e40623d70513d4c2bb483f015b3f3247c`, with required public Ackredit >=0.9.0.
   CI 37189004296 passes 15/15 and governance 37189004230 passes. Producer 37190652548
@@ -32,29 +48,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   the environment's pip check passes. Provider #81 is closed through #82.
   Separate environments qualify public/candidate distributions.
 
-## Next release preparation
-
-- **0.13.0 planned (#121):** staged release of the implemented source-observation,
-  literal extraction/article-metadata intake, pinned explanations, versioned
-  integrity corrections and persisted public application exercise.
-  The committed plan and draft notes are in `devtools/conda-build/`.
-  Schema 0.3.12 is frozen from clean installed local Conda candidate `c236e4f`:
-  archive SHA-256 `6f461bd1ca13ebfeda60cd724ec6b5af9fa5c46348e3fae82d36afac6dc3840c`.
-  All 382 non-version Python/JSON files match source; installed origins/bytes,
-  public minimum dependencies, 613 receiving cases, the public workflow, API and
-  pip check pass. The installed Python 3.14.7 writer retains explicit synthetic
-  extraction and public article metadata in `schema_0.3.12__P60174.json`;
-  source/input/archive/writer qualification is in
-  `devtools/conda-build/receipts/sabueso_0.13.0_local_schema_freeze_2026-10-05.json`.
-  The full local offline checkpoint passes 1,926 cases (26 online deselected),
-  including the new frozen-card read/migration cases; 69 packaging/route cases and
-  applicable Ruff/schema/registry/governance/preflight/Sphinx checks pass.
-  Final candidate CI, staging/archive inspection, the 12 OS/minor installed lanes,
-  stable publication, public installation and Zenodo remain pending.
-  Required traceability retains the explicit coverage/bibliography gaps in #108;
-  consumer/platform acceptance and broader #91/#92 work stay open.
-
-## Unreleased development after 0.12.0
+## Capabilities delivered in 0.13.0
 
 - Persisted public application exercise (#108/#112): `examples/persisted_pipeline/`
   starts independent producer, reader and reuse processes. Original extraction/
@@ -198,7 +192,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   inputs retain reasons and None residue sets; computed empty sets remain lists.
   Explicit agreement `@1` reproduces the legacy view/explanation at historical pins.
   New full/index packets declare `@2`; existing packets and card schema stay fixed.
-- Local validation: 1,924 offline cases pass in the Python 3.14 development environment;
+- Local validation: 1,926 offline cases pass in the Python 3.14 development environment;
   613 unchanged receiving integration cases pass with installed Sabueso and public
   Ackredit 0.9.0 outside both checkouts, including 54 article-metadata cases and
   13 independent persisted-application cases and 77 oligomer explanation cases.
@@ -206,21 +200,11 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   three-packet saved-reader workflow and receiving pip check pass. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0.
-  Exact code SHA `30331f26418db8b4774f6f9736581976ea838e8f` passes all 15 CI jobs
-  ([37290854247](https://github.com/uibcdf/sabueso/actions/runs/37290854247)) and
-  governance ([37290854288](https://github.com/uibcdf/sabueso/actions/runs/37290854288)).
-  The required Codecov publisher verifies CLI integrity and sends 103,749 bytes;
-  at 09:44:06 UTC the log confirms the upload is queued for processing.
-  The three earlier checkpoints also pass 15/15 after failed-only coverage retries:
-  `7f980c0` / 37272400000 attempt 3, `1a49a5c` / 37279215592 attempt 2,
-  and `b5bd5f0` / 37285490631 attempt 2. Their logs confirm accepted uploads
-  at 09:45:27, 09:45:33 and 09:45:34 UTC, respectively. Original scientific
-  jobs, SHAs and measured XML artifacts are retained; no TLS/integrity bypass
-  or CI-policy change was needed. Consumer #119 is resolved; the
-  [archived incident report](archive/codecov_tls_coverage_upload_2026-10-05.md)
-  preserves the original failures and recovery receipts. The secondary-GPG
-  diagnostic ranking remains independently reported in gh-run-receptor#59.
-  These are development checkpoints, not a new release qualification.
+  Current exact-candidate CI and installed/public/archive gates are recorded above.
+  Coverage incident #119 is resolved; the
+  [archived report](archive/codecov_tls_coverage_upload_2026-10-05.md) retains
+  the original failures and successful exact-SHA recovery. Diagnostic ranking
+  remains independently reported in gh-run-receptor#59.
   A real bundle from installed
   Sabueso/public Ackredit 0.9.0 also reads/reuses in the newer editable consumer/
   provider, keeping original receipts and current execution versions distinct.
@@ -231,7 +215,12 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Release and schema
 
-- **Latest release:** 0.12.0 (2026-10-04).
+- **Latest release:** 0.13.0 (2026-10-05).
+  - Expanded acquisition observation, original literature intake/article metadata,
+    pinned explanations and versioned identity/count/numbering corrections.
+  - Card schema 0.3.12; exact-public-file and source archive receipts are above.
+  - Zenodo: [10.5281/zenodo.23162373](https://doi.org/10.5281/zenodo.23162373).
+- **0.12.0** (2026-10-04).
   - Public `uibcdf` noarch package for Linux, macOS Apple Silicon and Windows ×
     Python 3.11–3.14, built and promoted without replacing its verified archive.
   - Located article/structural mentions, pinned packet terms and literature explanations.
@@ -275,7 +264,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
     Windows × 3.11–3.14, and a clean public install on Python 3.14.
   - Zenodo archive: 10.5281/zenodo.23077926, verified to be identical to its tag; 0.7.0
     (10.5281/zenodo.23048186) and 0.6.0 (10.5281/zenodo.23038465) too.
-- **Current development schema:** 0.3.12 (`schemas/card_schema_0.3.12.yaml`), unpublished:
+- **Current schema:** 0.3.12 (`schemas/card_schema_0.3.12.yaml`), published/frozen in 0.13.0:
   explicit literal extraction intake adds scientific intake metadata and fragment
   locations. Runtime records remain detached. Shape recorded separately; migration
   is explicit and adds no automatic extraction gaps.
@@ -541,7 +530,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   (#92), with per-occurrence support, unknown article terms and recorded refresh
   requests (published schema 0.3.11). Supported PDB mention context is also
   implemented. The literal rule, explicit intake/replay and source-stated article
-  bibliography/declared terms are implemented in unreleased development; broader
+  bibliography/declared terms are released in 0.13.0; broader
   extraction, fragment rights and validation remain open. The public literature draft awaits human
   review before actual curation intake. Further candidates are in `ROADMAP.md`
   ("Next candidates") and in the user

@@ -4,7 +4,7 @@ What sources say about publications, and what a curator reads in them. A curated
 statement is a SourceAssertion whose source is the paper: it is compared with the
 databases, never given priority, and kept across rebuilds.
 
-## Literal extraction from supplied text (unreleased)
+## Literal extraction from supplied text (since 0.13.0)
 
 `sabueso.extract_literature_mentions(text, identifier, publication, locator)` runs
 the fixed rule `literal_uniprot_mention@1`. Supply the exact text fragment, its
@@ -28,11 +28,11 @@ publication reference grants no reuse rights. Provider failures warn and preserv
 the scientific extraction with explicit failed attribution.
 
 This rule runs entirely on supplied text. Explicit intake and original-result
-replay and explicit article bibliography/declared terms are available in unreleased
-development; supplied-fragment rights, broader statements and validation remain #92. Intake starts unpublished card schema
+replay and explicit article bibliography/declared terms are available since
+0.13.0; supplied-fragment rights, broader statements and validation remain #92. Intake uses published card schema
 0.3.12; published 0.3.11 is fixed.
 
-### Intake, persistence and reuse (unreleased)
+### Intake, persistence and reuse (since 0.13.0)
 
 ```python
 extractions = sabueso.ExtractionStore("extractions.jsonl")
@@ -70,7 +70,7 @@ credit. Supply the original store when attribution reuse is required. Missing
 stored support fails explicitly instead of reconstructing it. Provider failures
 preserve the scientific result with a diagnosed attribution gap.
 
-### Explicit article bibliography and declared terms (unreleased)
+### Explicit article bibliography and declared terms (since 0.13.0)
 
 ```python
 from sabueso.tools.db import europepmc
@@ -433,7 +433,7 @@ card.explain([source_assertion_id])[0]["acquisition"]
   mentions, `origin` says `text_mining`.
 - `curation`: a person read the publication and recorded it, as above.
 - `rule_extraction` and `model_extraction`: extracted from a text by a named tool or
-  model, with its version, run by Sabueso or by you. The unreleased literal rule
+  model, with its version, run by Sabueso or by you. The literal rule released in 0.13.0
   above is implemented; broader rules and model extraction remain pending. A model-extracted statement is
   never reported as curated.
 - Cards saved before this was recorded read as `not_recorded` until they are built

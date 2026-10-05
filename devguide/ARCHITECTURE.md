@@ -11,7 +11,7 @@ source access. Knowledge support, observed execution and bibliography retain the
 separate meanings. Runtime records must state their coverage and gaps; a returned
 card or a citation list alone cannot establish complete pipeline provenance.
 Published acquisition covers built-in UniProt, Europe PMC and RCSB entry, search,
-mentions, annotations and structural clients. Unreleased development adds ChEMBL
+mentions, annotations and structural clients. Since 0.13.0, Sabueso adds ChEMBL
 logical operations and detached literal literature extraction (#108/#92, moli#36).
 See `SOURCE_ACCESS.md` and the [implementation review](pending_proposals/design_implementation_review.md).
 MOLI owns ProjectRecord composition and the future Recorda boundary; local records
@@ -60,17 +60,17 @@ do not implement project routing, EventLedger persistence or strict commit polic
      versioned rule that produced it, and is never stored as a SourceAssertion.
    - `core.structure_explanation` explains an inventory item and every member of its
      group through pinned relationships and SourceAssertions (`Deck.explain`, #91).
-   - Unreleased `Card.explain_disease` and `Card.explain_knowledge_state` trace
+   - Since 0.13.0, `Card.explain_disease` and `Card.explain_knowledge_state` trace
      stored disease identity and state classification at exact pins. Scientific
      support, coverage inference and request reports retain separate bases; missing
      support remains explicit. Readers never fetch, mutate cards or add credit.
-   - Unreleased `Card.explain_measurement` and `Card.explain_bioactivity` collect
+   - Since 0.13.0, `Card.explain_measurement` and `Card.explain_bioactivity` collect
      actual grouping and class-voter decisions at the card pin. Precision and
      threshold quantities retain units; copies, ambiguity and discordance remain
      explicit. Whole-card candidate/glossary inputs are context with exact support;
      stored identity metadata has locators, not invented assertion membership.
      These readers preserve the scientific rules/schema.
-   - Unreleased `Card.explain_ligand_site` and `Card.explain_ligand` explain
+   - Since 0.13.0, `Card.explain_ligand_site` and `Card.explain_ligand` explain
      annotated overlaps and the protein/molecule deck crossing. Exact multi-card
      support, actual identity/class/name choices, annotated fields/conflicts,
      structure instances and native deck snapshot/membership metadata remain
@@ -89,7 +89,7 @@ do not implement project routing, EventLedger persistence or strict commit polic
    - field assertions, relationships, bioactivities, engagements and typed claims;
    - compared with the sources, never given priority;
    - kept across rebuilds by a `CurationStore`.
-   Unreleased `tools.literature.extract_literature_mentions` runs a named literal
+   Since 0.13.0, `tools.literature.extract_literature_mentions` runs a named literal
    rule on identified supplied text. Its statements, relationships and original
    attribution remain detached. Explicit card intake preserves original support;
    `ExtractionStore` retains exact original results independently of cards and

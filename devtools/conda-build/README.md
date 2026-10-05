@@ -104,9 +104,9 @@ current 0.9.0-based Ackredit editable satisfies the public minimum, with runtime
 distribution agreement and a passing pip check (2026-10-04). Provider #81 records
 the earlier Git-version mismatch and receiving confirmation.
 
-## Planned 0.13.0 (#121)
+## Published 0.13.0 (#121)
 
-`release_plan.toml` selects 0.13.0 and the staged route; draft scope and compatibility
+`release_plan.toml` selects 0.13.0 and the staged route; scope and compatibility
 limits are in `release_notes_0.13.0.md`. The preparation uses the qualified public
 minimum dependency closure listed above and all 19 installed receiving test files
 already wired in the matrix (613 cases at the preceding code checkpoint).
@@ -118,11 +118,20 @@ freezes `schema_0.3.12__P60174.json`, including original literal extraction and 
 article metadata. The source/input/archive/writer receipt is
 `receipts/sabueso_0.13.0_local_schema_freeze_2026-10-05.json`; this is local evidence,
 not the final staged archive. Commit that fixture before selecting the final candidate
-SHA. Then run exact-SHA CI/governance,
-stage one immutable `sabueso-0.13.0-py_0.tar.bz2`, inspect its producer receipts/bytes,
-and pass all 12 Linux/macOS-arm64/Windows × Python 3.11–3.14 installed lanes.
-Only then publish/promote, verify a clean public install and archive the identical
-tag. Historical 0.12.0 artifacts, notes, frozen cards and receipts stay immutable.
+SHA.
+
+Final source/tag `7e78d07` passes CI 37308420258 (15/15) and governance 37308420271.
+Staging producer 37309502566 builds `sabueso-0.13.0-py_0.tar.bz2`, SHA-256
+`1e8f80375cbc08c04df452dbbb55084dc4ff41c6242fbb07e3479f0cd4c7361c`;
+all 382 non-version Python/JSON files equal source. Installed matrix 37310099058
+passes producer evidence and all 12 OS/minor lanes, each with 613 cases and the
+public workflow. Release event 37311427178 verifies without rebuilding; promotion
+37311466982 preserves the archive and verifies its public poststate. Anonymous
+public bytes equal staging; a fresh public-only Linux/Python 3.14.7 install passes
+bytes/origins/API, frozen-card read, all 613 cases, workflow and pip check.
+Zenodo DOI `10.5281/zenodo.23162373` holds all 960 source files identical to the tag.
+Complete receipt: `receipts/sabueso_0.13.0_public_2026-10-05.json`.
+Historical tags, artifacts and receipts stay immutable.
 
 ## Prepared 0.12.0 scope (#110, historical)
 

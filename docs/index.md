@@ -38,7 +38,7 @@ macOS support is currently limited to Apple Silicon (arm64). Intel-based macOS
 (x86_64) is not part of the supported platform matrix. Support may be
 reconsidered if there is demonstrated user demand.
 
-The latest release is 0.12.0 (card schema 0.3.11). To work on Sabueso itself, see `Developers`.
+The latest release is 0.13.0 (card schema 0.3.12). To work on Sabueso itself, see `Developers`.
 
 ## Start Here
 

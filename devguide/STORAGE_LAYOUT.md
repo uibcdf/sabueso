@@ -10,7 +10,7 @@ project_root/
   data/
     knowledge.db        # KnowledgeStore: cards and decks with their revisions
     curation.jsonl      # CurationStore: curated statements, kept across rebuilds
-    extractions.jsonl   # ExtractionStore (unreleased): original rule results and attribution
+    extractions.jsonl   # ExtractionStore (since 0.13.0): original rule results and attribution
     raw/                # optional: raw source payloads (tools.db get_* records)
     retrievals/         # optional: RetrievalArchive files, e.g. one per run (<run>.db)
     exports/            # optional: files to share
@@ -30,7 +30,7 @@ projects.
 `CurationStore.save` exports only curated literature (including legacy records with
 curation metadata). Rule/model extractions, even when human-validated, keep their own
 acquisition and are not exported as curation (#105). `KnowledgeStore` can retain their
-exact acquired state. Unreleased `ExtractionStore` retains original literal-rule
+exact acquired state. Since 0.13.0, `ExtractionStore` retains original literal-rule
 results, article metadata/support and attribution for explicit replay across builds
 without rerunning extraction (#92).
 

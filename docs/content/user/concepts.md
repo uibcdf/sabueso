@@ -41,7 +41,7 @@ source:
 Each row carries the source release and the basis. An absence is reported as a fact
 about a source, never as evidence against something (rule `knowledge_state@4`).
 
-In unreleased development, explain the rows at the current card snapshot:
+Since 0.13.0, explain the rows at the current card snapshot:
 
 ```python
 explanation = card.explain_knowledge_state(

@@ -6,7 +6,7 @@ what each source states about its own terms, and what knowledge remains if you k
 only the sources that allow that use.
 
 ```{note}
-Card/deck reports were released in 0.7.0; packet reports below are unreleased. This is a report of what the sources state, not
+Card/deck reports were released in 0.7.0; packet reports below were released in 0.12.0. This is a report of what the sources state, not
 legal advice: the decision, and the responsibility for it, stay with you.
 ```
 
@@ -55,7 +55,7 @@ Each source's terms, with the statement they come from and the date they were re
 are listed on the *Data sources* page. A record older than a year is flagged
 `review_due`.
 
-## Terms of a packet (unreleased)
+## Terms of a packet (since 0.12.0)
 
 ```python
 report = packet.terms("redistribution", store)
@@ -116,7 +116,7 @@ Some sources need an account, a key, an academic licence or a written agreement 
 they can be asked at all. They are listed, with what each needs, on the *Data sources*
 page.
 
-## Declared article terms (unreleased)
+## Declared article terms (since 0.13.0)
 
 Explicit article metadata supplied to literal extraction retains the source's licence
 literal and open-access declaration. Card and exact-pinned packet terms expose optional

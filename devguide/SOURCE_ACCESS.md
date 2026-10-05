@@ -72,7 +72,7 @@ it.
 Traceability is mandatory and automatic for supported boundaries. The first slice
 released in 0.12.0 covers the built-in online and fixture clients for UniProt entry
 and search, Europe PMC mentions and explicit article annotations, and RCSB
-single/batch structure lookup. Unreleased development also observes ChEMBL
+single/batch structure lookup. Since 0.13.0, Sabueso also observes ChEMBL
 bioactivities, assay activities, molecules, indications and disease indications.
 It also observes PubChem compound properties, structure matches and BioAssay target
 rows with their summary/compound batches.
@@ -236,7 +236,7 @@ Regression tests are in `tests/core/test_source_acquisition_offline.py` and
 `tests/core/test_rcsb_acquisition_offline.py`; the public
 installed-consumer workflow is `examples/ackredit_pilot/`.
 
-ChEMBL's unreleased adapter retains normalized logical queries, all transport
+ChEMBL's adapter (since 0.13.0) retains normalized logical queries, all transport
 requests, pagination/chunks, caps, decoded page identities and original document
 citation forms. A failure after received content pages is `partial`, with those
 pages in `completed_pages`; the original exception still escapes. Completed subsets
@@ -250,7 +250,7 @@ proof that every reused page belongs to that release. Native document metadata i
 preserved without DOI enrichment; missing authors and indication bibliography stay
 explicit gaps. `tests/core/test_chembl_acquisition_offline.py` covers this boundary.
 
-PubChem's unreleased adapter observes built-in online and fixture `compound`,
+PubChem's adapter (since 0.13.0) observes built-in online and fixture `compound`,
 `structure` and BioAssay `assays` operations. Compound properties and structure
 matches declare `source_version: {value: null, basis: not_stated}`. BioAssay retains
 native `Version`, `Revision` (including zero) and `LastDataChange` per received assay
@@ -276,7 +276,7 @@ forms remain on observed response pages. Stored readers add no credit. Coverage 
 tested by `tests/core/test_pubchem_acquisition_offline.py`, also copied unchanged
 into installed-provider and future staged-artifact gates. Cards and schema are unchanged.
 
-BindingDB's unreleased adapter retains accession/cutoff/limit, the applied
+BindingDB's adapter (since 0.13.0) retains accession/cutoff/limit, the applied
 `bindingdb_record_order@1`, totals/caps, native response identities, retries and
 original DOI/PubMed pointer forms. Successful REST and fixture responses state no
 global version. The cutoff is recorded as `{value, unit}` in `cutoff_scope`, with
@@ -389,7 +389,7 @@ Every client uses the shared services in `sabueso/tools/db/`:
   Mappings absorb that; direct users of `get_*` see it. The envelope is stable, the
   record is not.
 
-## Explicit article metadata acquisition (unreleased, #92/#108)
+## Explicit article metadata acquisition (since 0.13.0, #92/#108)
 
 Europe PMC `get_article(identifier)` explicitly queries REST search with `resultType=core`
 using EXT_ID + SRC:MED, PMCID or DOI. The returned projection includes native identifiers,
