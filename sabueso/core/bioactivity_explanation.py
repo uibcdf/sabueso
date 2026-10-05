@@ -24,14 +24,14 @@ GLOSSARY_PREDICATES = {
 
 
 class _Support:
-    def __init__(self, card):
+    def __init__(self, card, *, predicates=GLOSSARY_PREDICATES):
         self.card = card
         self.pin = card.pinned_ref()
         self.gaps = []
         self.links = {
             rel["id"]: self.relationship(rel)
             for rel in card.relationships()
-            if rel["predicate"] in GLOSSARY_PREDICATES
+            if rel["predicate"] in predicates
         }
 
     def relationship(self, rel):

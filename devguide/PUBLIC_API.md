@@ -241,6 +241,19 @@ shows how to use them.
   conflicts, original support, numbering and stored structural-instance context.
   No stored annotation/overlap is not external absence; absent instance data keeps
   `spans_chains=None`, and source relevance statements remain separate.
+  Unreleased `explain_oligomer()` explains the complete `oligomer()` view under
+  `oligomer_explanation@1`: actual partner-class and agreement rules, the card
+  anchor, source assembly alternatives/methods, interfaces and exact family-site
+  members. Relationships/assertions and field/index locators retain the original
+  pin, versions and bibliography; selected, competing and conflicting support
+  stay separate. Structural support is relationship-level, not invented mapping
+  lineage for individual qualifiers. Source aggregate residues are not allocated
+  to individual assemblies. Missing/empty assembly data and original source
+  request outcomes remain distinct. Missing support is partial; no stored input
+  is `not_on_card`, never external absence. Unconfirmed numbering preserves the
+  published agreement result but marks the explanation partial (#120). No
+  acquisition, credit, alias resolution, schema change or local method execution
+  occurs; saved scientific payloads cannot recreate original runtime attribution.
   Unreleased `explain_ligand(molecule_ref, deck, include_indirect=False, thresholds=None, *, counting_rule="ligand_measurement_count@2")`
   selects the exact SmallMoleculeCard id from `ligands(deck)`
   (`ligand_deck_explanation@2`). Protein and molecule inputs keep distinct pins.

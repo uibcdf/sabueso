@@ -2646,3 +2646,18 @@ multi-file delivery, journaling and ProjectRecord/Recorda reliability remain MOL
 #36/#18; Nextia owns explicit project interpretation/Evidence. The public fragment
 is synthetic with unknown rights. Published 0.12.0's compatible pilot and immutable
 release receipts remain that release's qualification.
+
+## 2026-10-05 — Explain original oligomer inputs without rewriting scientific rules
+
+For #91, `Card.explain_oligomer()` explains the whole native view with
+`oligomer_explanation@1`. It retains source assemblies/methods, actual partner
+branches, family-site members, original source versions and current/historical
+item pins. All matching selected annotation assertions remain support; alternatives
+and conflicts remain context. Relationship-level support does not manufacture
+per-qualifier mapping lineage or original execution attribution. Readers are inert
+and detached, with no stored schema change or new SourceAssertion.
+
+The published agreement rule compares integer positions without confirming their
+numbering. Preserve its actual result, expose the native numbering/sequence data,
+and mark unconfirmed agreement partial. A versioned scientific correction with
+explicit legacy behavior belongs to #120; equal numbers never establish identity.

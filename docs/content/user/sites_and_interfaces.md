@@ -83,6 +83,40 @@ for row in view["agreement"]:  # family dimer interface vs observed interface
     them.
 - Interfaces are not computed from coordinates; that is modelling (uibcdf/sabueso#30).
 
+### Explain the stored oligomer view (unreleased)
+
+```python
+explanation = card.explain_oligomer()
+assert explanation["view"] == card.oligomer()
+print(explanation["card_ref"], explanation["status"], explanation["gaps"])
+for row in explanation["interfaces"]:
+    print(row["item"]["class"], row["classification_inputs"])
+    for support in row["interface"]["source_assertions"]:
+        print(support["source_assertion_ref"], support["source"], support["version"])
+```
+
+`oligomer_explanation@1` exposes the existing partner and agreement rules with
+their actual pinned inputs. `structures` retains complete relationships, source
+assembly methods and alternatives, original primary citations and assertion
+support. `fields`, `subunit` and `family_interface_sites` retain selected and
+competing annotations, exact member locators and source versions. Relationship
+support does not reconstruct which assertion contributed each qualifier.
+Family signatures and assembly methods describe what a source reports; they do
+not mean Sabueso ran InterProScan, PISA or a contact calculation.
+
+`not_stated_on_card`, `stated_empty` and `stated` distinguish assembly states.
+`context.reports` retains original query outcomes and locators; missing queries,
+failed queries and zero returned records never imply external absence. Missing
+stored support yields `partial`. The published agreement rule compares integer
+positions even when numbering is unconfirmed (#120); the explanation keeps that
+result, exposes the original numbering/sequence context and reports the gap.
+It does not establish residue correspondence from equal numbers.
+
+The same method works on `store.load(pin)`: later acquisition cannot rewrite
+historical assertion/relationship references. Readers change no card, make no
+source call and add no Ackredit credit. Keep original operation/attribution
+sidecars separately when a workflow needs execution history and citation credit.
+
 ## Interface mutations (SKEMPI 2.0)
 
 SKEMPI 2.0 curates, from publications, how mutations at the interface of a complex of

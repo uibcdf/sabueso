@@ -711,6 +711,18 @@ class Card:
 
         return oligomer_view(self)
 
+    @arg_digest()
+    def explain_oligomer(self, skip_digestion: bool = False) -> Dict[str, Any]:
+        """Explain the complete oligomer view at this exact card pin.
+
+        ``oligomer_explanation@1`` retains the actual partner and agreement rules,
+        source assemblies, selected/competing support and missing inputs. Readers
+        fetch nothing, change no stored knowledge and add no acquisition credit.
+        """
+        from .oligomer_explanation import explain_oligomer
+
+        return explain_oligomer(self)
+
     def ligand_sites(self) -> Dict[str, Any]:
         """Residues each ligand contacts, next to the protein's annotated sites."""
         from .ligand_sites import ligand_sites_view

@@ -370,3 +370,9 @@ Answered since the first list (2026-01):
   caches and use `devtools/conda-build/check_local_wheel.py` before installed
   diagnostics. Published Conda receipts verify source bytes separately; no public
   wheel route is claimed.
+
+- Published `interface_site_agreement@1` compares integer positions without
+  verifying interface numbering or family sequence/indexing (#120). The unreleased
+  explanation flags unconfirmed comparisons as partial while retaining the actual
+  result. Correct the scientific rule under a new version, keeping explicit legacy
+  selection and historical support; never infer a residue map from equal numbers.

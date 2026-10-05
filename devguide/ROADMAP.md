@@ -288,6 +288,10 @@ In order:
    trace actual annotated overlap and protein/molecule crossing support at distinct
    card pins, with native deck snapshot/membership context. Duplicate members,
    absence/numbering/instance limits and original source conflicts remain explicit.
+   Unreleased `Card.explain_oligomer()` now retains actual partner/agreement rules,
+   source assembly alternatives, exact family members, original support and
+   historical pins under `oligomer_explanation@1`. Readers remain inert; unconfirmed
+   numbering is explicit and partial. Versioned scientific correction remains #120.
    Other derived explanations remain open. The #118 correction counts distinct
    included groups across matched molecule items (`ligand_measurement_count@2`),
    retaining explicit source-record counts, selected rules and exact counted ids

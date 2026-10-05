@@ -215,6 +215,15 @@ Missing/altered files, result/scope/item misbinding, workflow bibliography/conte
 loss and overwrite attempts are refused. Installed-provider and future staged lanes
 copy the unchanged script and tests outside both checkouts; libraries are installed.
 
+`test_oligomer_explanation_offline.py` checks public TcTIM/HsTIM view parity,
+source assembly alternatives/methods, actual partner-class branches, exact family
+members and agreement inputs, original versions (including zero/unknown), native
+identity bases, selected/competing/conflicting support and qualifier alternatives.
+Missing inputs, empty/failure/unqueried reports, unconfirmed numbering (#120),
+historical card/item pins and detached inert readers have guards. The file runs
+unchanged outside the checkout with public Ackredit in CI and future staged gates.
+The reader changes neither scientific rules nor stored card shape.
+
 ## Fixtures
 
 - Fixtures are frozen public responses, saved as the source returns them (trimmed only

@@ -165,15 +165,24 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   Explicit `@1` reproduces the published numeric counter. Views/comparisons retain
   pinned counting derivations; `ligand_deck_explanation@2` lists counted group and
   record ids with original support. Class/voter/scope policies and storage stay fixed.
-- Local validation: 1,847 offline cases pass in the Python 3.14 development environment;
-  536 unchanged receiving integration cases pass with installed Sabueso and public
+- Oligomer explanation (#91): `Card.explain_oligomer()` retains the complete native
+  view, actual partner/agreement rules, source assembly alternatives/methods, exact
+  family members, selected/competing/conflicting support and original item pins.
+  `oligomer_explanation@1` is detached and inert, with relationship-level support
+  and explicit unknown qualifier lineage/runtime credit. Missing inputs and
+  unconfirmed numbering are partial; absence states and query reports stay distinct.
+  Versioned agreement correction remains #120; scientific rules/schema stay fixed.
+- Local validation: 1,888 offline cases pass in the Python 3.14 development environment;
+  577 unchanged receiving integration cases pass with installed Sabueso and public
   Ackredit 0.9.0 outside both checkouts, including 54 article-metadata cases and
-  13 independent persisted-application cases.
+  13 independent persisted-application cases and 41 oligomer explanation cases.
   The diagnostic wheel's modules/resources equal the source, and the public
   three-packet saved-reader workflow and receiving pip check pass. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote
   checkpoint CI is recorded in the owning issues after the ordinary code push.
+  The new oligomer checkpoint's remote gates are pending; the following remote
+  receipts qualify the preceding application checkpoint only.
   Code SHA `1a49a5c` passes 14 scientific/test/integration/quality CI jobs
   (37279215592) and governance (37279215549). The required coverage publisher
   fails at 07:52 UTC with the same initial Codecov TLS/download error, followed
@@ -483,7 +492,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Current development offline suite: 1834 tests passed, 26 online tests deselected (2026-10-05, in
+- Current development offline suite: 1888 tests passed, 26 online tests deselected (2026-10-05, in
   `molsyssuite@uibcdf_3.14`, with all installed workspace packages editable and the
   required real Ackredit editable provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.
