@@ -14,8 +14,9 @@ supersedes: []
 
 ## What
 
-The final Codecov upload fails before uploader execution. The provider owns the
-HTTPS incident in [codecov-action#1975](https://github.com/codecov/codecov-action/issues/1975);
+The initial Codecov attempts fail before uploader execution. The latest attempt
+downloads and verifies the CLI but fails at coverage ingestion. The provider owns
+the HTTPS incident in [codecov-action#1975](https://github.com/codecov/codecov-action/issues/1975);
 Sabueso's [upstream receipt](https://github.com/codecov/codecov-action/issues/1975#issuecomment-5989530840)
 and consumer [#119](https://github.com/uibcdf/sabueso/issues/119) preserve the evidence.
 
@@ -53,6 +54,25 @@ download-first sequence; the actionable diagnostic-ranking improvement is
 [gh-run-receptor#59](https://github.com/uibcdf/gh-run-receptor/issues/59).
 That reporting defect does not cause the TLS failure or change GitHub's conclusion.
 
+The oligomer checkpoint `b5bd5f0484188cd29bd13cc585cda11c44173fdc` passes all
+14 scientific/test/integration/quality jobs in
+[CI 37285490631](https://github.com/uibcdf/sabueso/actions/runs/37285490631), and
+[governance 37285490470](https://github.com/uibcdf/sabueso/actions/runs/37285490470) passes.
+Local 1,888 offline/577 installed-public-provider cases and applicable gates pass.
+At 08:54:13 UTC the CLI download completes (v11.3.1), its GPG signature is good,
+and integrity verification passes. Upload execution starts at 08:54:14; three
+request retries end at 08:54:18 with
+`Request failed after too many retries` at
+`ingest.codecov.io/upload/github/uibcdf::::sabueso/upload-coverage`.
+The log does not expose the underlying request/TLS reason. This is partial
+download recovery, not successful ingestion; the provider thread independently
+reports an [unresolved ingestion endpoint](https://github.com/codecov/codecov-action/issues/1975#issuecomment-5991102836).
+The [consumer receipt](https://github.com/uibcdf/sabueso/issues/119#issuecomment-5991281399)
+and [upstream update](https://github.com/codecov/codecov-action/issues/1975#issuecomment-5991281807)
+retain the changed symptom. The XML artifact remains retained and
+whole-workflow CI remains failed. No integrity/TLS bypass or extra failed-only
+retry is introduced while ingestion remains unavailable.
+
 ## Why
 
 An external service incident must remain visible rather than be counted as passing
@@ -73,6 +93,8 @@ the required failing upload gate remain enabled.
   `gh run rerun 37272400000 --failed --repo uibcdf/sabueso`.
 - Recover the later code checkpoint independently, preserving its SHA:
   `gh run rerun 37279215592 --failed --repo uibcdf/sabueso`.
+- Recover the oligomer checkpoint separately after ingestion is available:
+  `gh run rerun 37285490631 --failed --repo uibcdf/sabueso`.
 - Verify actual upload and whole-workflow success, preserve the exact-SHA receipt
   and update #92/#108/#112/#119 and the checkpoint.
 

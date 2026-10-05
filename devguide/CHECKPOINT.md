@@ -181,15 +181,15 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote
   checkpoint CI is recorded in the owning issues after the ordinary code push.
-  The new oligomer checkpoint's remote gates are pending; the following remote
-  receipts qualify the preceding application checkpoint only.
-  Code SHA `1a49a5c` passes 14 scientific/test/integration/quality CI jobs
-  (37279215592) and governance (37279215549). The required coverage publisher
-  fails at 07:52 UTC with the same initial Codecov TLS/download error, followed
-  by the missing-signature GPG symptom (#119, codecov/codecov-action#1975).
+  Code SHA `b5bd5f0` passes all 14 scientific/test/integration/quality CI jobs
+  (37285490631) and governance (37285490470). At 08:54 UTC the required coverage
+  publisher downloads CLI v11.3.1 and verifies its integrity, then fails after
+  retries at `ingest.codecov.io/upload/github/uibcdf::::sabueso/upload-coverage`.
+  This is partial provider recovery from earlier TLS/download failures (#119,
+  codecov/codecov-action#1975), not an accepted upload. The XML artifact is retained.
   Whole-workflow CI remains failed pending provider recovery; this is not green
-  CI or release qualification. The receptor's secondary-GPG diagnostic ranking
-  is independently reported in gh-run-receptor#59. A real bundle from installed
+  CI or release qualification. The earlier secondary-GPG diagnostic ranking
+  remains independently reported in gh-run-receptor#59. A real bundle from installed
   Sabueso/public Ackredit 0.9.0 also reads/reuses in the newer editable consumer/
   provider, keeping original receipts and current execution versions distinct.
 - PR #109 / #111 is integrated: applicable local gates by changed behavior, targeted
