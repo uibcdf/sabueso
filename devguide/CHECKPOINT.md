@@ -163,6 +163,10 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote
   checkpoint CI is recorded in the owning issues after the ordinary code push.
+  Code SHA `7f980c0` passes 14 scientific/test/quality CI jobs and governance;
+  the required coverage publisher fails in two attempts during Codecov's TLS
+  incident (#119, codecov/codecov-action#1975). Whole-workflow CI remains failed
+  pending provider recovery; this is not green CI or release qualification.
 - PR #109 / #111 is integrated: applicable local gates by changed behavior, targeted
   regressions, full offline tests at code checkpoints, ordinary unskipped code pushes
   and preserved compatibility/release gates. Exact merge SHA `f2cbe20` has green
