@@ -1,21 +1,26 @@
 ---
-summary: External Codecov TLS incident blocks required coverage publication.
+summary: Required coverage uploads recovered after the external Codecov incident.
 issue: uibcdf/sabueso#119
-status: open
+status: resolved
 opened: 2026-10-05
-closed:
+closed: 2026-10-05
 verification: observed
 area: [ci, coverage]
-blocked_by: [codecov/codecov-action#1975]
+blocked_by: []
 supersedes: []
 ---
 
 # Required coverage upload blocked by external TLS incident
 
+Archived on 2026-10-05 after verified consumer recovery: all four exact-SHA
+workflows pass, and their logs confirm accepted uploads. The current state is
+recorded in [CHECKPOINT.md](../CHECKPOINT.md); the observations below preserve
+the incident history and do not describe a current Sabueso blockage.
+
 ## What
 
-The initial Codecov attempts fail before uploader execution. The latest attempt
-downloads and verifies the CLI but fails at coverage ingestion. The provider owns
+The initial Codecov attempts failed before uploader execution. The last failed
+attempt downloaded and verified the CLI but failed at coverage ingestion. The provider owns
 the HTTPS incident in [codecov-action#1975](https://github.com/codecov/codecov-action/issues/1975);
 Sabueso's [upstream receipt](https://github.com/codecov/codecov-action/issues/1975#issuecomment-5989530840)
 and consumer [#119](https://github.com/uibcdf/sabueso/issues/119) preserve the evidence.
@@ -100,5 +105,31 @@ the required failing upload gate remain enabled.
 
 ## Resolution
 
-Pending provider recovery. No scientific/runtime/package/fixture or CI-policy
-change is made for this external incident.
+Consumer recovery was verified on 2026-10-05. The versioned agreement code SHA
+`30331f26418db8b4774f6f9736581976ea838e8f` passes all 15 jobs in
+[CI 37290854247](https://github.com/uibcdf/sabueso/actions/runs/37290854247) and
+[governance 37290854288](https://github.com/uibcdf/sabueso/actions/runs/37290854288).
+The coverage job verifies CLI integrity, sends 103,749 bytes and records
+`Upload queued for processing complete` at 09:44:06 UTC. This confirms accepted
+upload, not completion of downstream dashboard processing.
+
+Only the failed coverage jobs were rerun for the three earlier checkpoints:
+
+| Code SHA | Run / attempt | Accepted upload (UTC) | Bytes | Workflow |
+| --- | --- | --- | --- | --- |
+| `7f980c02b7e335b8904b0a9021211d846ed378a0` | [37272400000](https://github.com/uibcdf/sabueso/actions/runs/37272400000/attempts/3) / 3 | 09:45:27 | 103,009 | 15/15 success |
+| `1a49a5c73f0893cd5c2ae55958851647ead71244` | [37279215592](https://github.com/uibcdf/sabueso/actions/runs/37279215592/attempts/2) / 2 | 09:45:33 | 103,181 | 15/15 success |
+| `b5bd5f0484188cd29bd13cc585cda11c44173fdc` | [37285490631](https://github.com/uibcdf/sabueso/actions/runs/37285490631/attempts/2) / 2 | 09:45:34 | 103,468 | 15/15 success |
+
+Each log confirms the exact-SHA Codecov commit URL, bytes sent and completed
+queue acceptance. The original scientific jobs, SHAs and measured XML artifacts
+remain unchanged. No scientific/runtime/package/fixture or CI-policy change,
+TLS bypass or integrity bypass was made for this incident. Consumer #119 is
+resolved; this receipt does not assert closure of the provider's broader incident.
+The independent diagnostic-ranking report gh-run-receptor#59 remains open.
+
+Final receipts: [consumer resolution](https://github.com/uibcdf/sabueso/issues/119#issuecomment-5992255236)
+and [provider feedback](https://github.com/codecov/codecov-action/issues/1975#issuecomment-5992257742).
+Related gate boundaries were updated in [#92](https://github.com/uibcdf/sabueso/issues/92#issuecomment-5992255961),
+[#108](https://github.com/uibcdf/sabueso/issues/108#issuecomment-5992256565) and
+[#112](https://github.com/uibcdf/sabueso/issues/112#issuecomment-5992256973).

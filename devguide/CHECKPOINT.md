@@ -183,19 +183,23 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   The diagnostic wheel's modules/resources equal the source, and the public
   three-packet saved-reader workflow and receiving pip check pass. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
-  All eight pilot notebook copies pass with installed public 0.12.0. Exact remote
-  checkpoint CI is recorded in the owning issues after the ordinary code push.
-  The versioned agreement checkpoint's remote gates are pending;
-  the following receipts qualify the preceding oligomer explanation checkpoint.
-  Code SHA `b5bd5f0` passes all 14 scientific/test/integration/quality CI jobs
-  (37285490631) and governance (37285490470). At 08:54 UTC the required coverage
-  publisher downloads CLI v11.3.1 and verifies its integrity, then fails after
-  retries at `ingest.codecov.io/upload/github/uibcdf::::sabueso/upload-coverage`.
-  This is partial provider recovery from earlier TLS/download failures (#119,
-  codecov/codecov-action#1975), not an accepted upload. The XML artifact is retained.
-  Whole-workflow CI remains failed pending provider recovery; this is not green
-  CI or release qualification. The earlier secondary-GPG diagnostic ranking
-  remains independently reported in gh-run-receptor#59. A real bundle from installed
+  All eight pilot notebook copies pass with installed public 0.12.0.
+  Exact code SHA `30331f26418db8b4774f6f9736581976ea838e8f` passes all 15 CI jobs
+  ([37290854247](https://github.com/uibcdf/sabueso/actions/runs/37290854247)) and
+  governance ([37290854288](https://github.com/uibcdf/sabueso/actions/runs/37290854288)).
+  The required Codecov publisher verifies CLI integrity and sends 103,749 bytes;
+  at 09:44:06 UTC the log confirms the upload is queued for processing.
+  The three earlier checkpoints also pass 15/15 after failed-only coverage retries:
+  `7f980c0` / 37272400000 attempt 3, `1a49a5c` / 37279215592 attempt 2,
+  and `b5bd5f0` / 37285490631 attempt 2. Their logs confirm accepted uploads
+  at 09:45:27, 09:45:33 and 09:45:34 UTC, respectively. Original scientific
+  jobs, SHAs and measured XML artifacts are retained; no TLS/integrity bypass
+  or CI-policy change was needed. Consumer #119 is resolved; the
+  [archived incident report](archive/codecov_tls_coverage_upload_2026-10-05.md)
+  preserves the original failures and recovery receipts. The secondary-GPG
+  diagnostic ranking remains independently reported in gh-run-receptor#59.
+  These are development checkpoints, not a new release qualification.
+  A real bundle from installed
   Sabueso/public Ackredit 0.9.0 also reads/reuses in the newer editable consumer/
   provider, keeping original receipts and current execution versions distinct.
 - PR #109 / #111 is integrated: applicable local gates by changed behavior, targeted

@@ -35,3 +35,8 @@ Their objectives are not dropped: `devguide/ROADMAP.md` tracks the status of eac
 - `native_store.md`: the native read/write store (#27).
 - `measurement_identity.md`: one measurement across bioactivity sources (#66).
 - `moli_ruff_baseline.md`: adopting MOLI's Ruff baseline (#11).
+
+## Infrastructure incidents (resolved)
+
+- [codecov_tls_coverage_upload_2026-10-05.md](codecov_tls_coverage_upload_2026-10-05.md):
+  required coverage publication recovered for four exact-SHA checkpoints (#119).
