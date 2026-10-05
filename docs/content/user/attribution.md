@@ -464,3 +464,13 @@ tests check corporate-name grouping and Europe PMC's personal names without new 
 
 The complete runnable public workflow is in `examples/ackredit_pilot/`, using only
 the frozen public HsTIM fixtures declared in `temp_data/NOTICE.md`.
+
+Unreleased development also includes `examples/persisted_pipeline/`: independent
+producer, reader and reuse processes retain full/index packets, an exact index-item
+read, original extraction/article metadata and portable workflow attribution.
+The reader verifies sidecar hashes and result bindings before rendering historical
+citations; reading adds no credit. Reacquisition advances current heads while old
+pins and original bibliography remain readable. A missing fixture stays unavailable,
+without an external absence claim. The fragment is explicitly synthetic with unknown
+reuse rights. This example requires the development API; its manifest is local,
+and shared ProjectRecord/Recorda integration remains open.

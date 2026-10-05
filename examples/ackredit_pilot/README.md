@@ -40,3 +40,8 @@ See `docs/content/user/attribution.md` for coverage and citation metadata source
 Card/packet payloads have no runtime trace. This workflow saves original JSON beside
 them. MOLI ProjectRecord/Recorda routing remains future platform work. The published
 provider includes the corporate-author BibTeX correction (Ackredit #78).
+
+For the unreleased API, [the persisted pipeline example](../persisted_pipeline/README.md)
+adds independent producer/reader/reuse processes, original article support and
+attribution, full/index item reads and verified sidecar bindings. This pilot
+continues to exercise the published 0.12.0 API.

@@ -206,6 +206,15 @@ module/resource bytes and membership must match the source, excluding generated
 `_version.py`. The negative regression rejects stale, missing and ghost modules.
 Clean local wheel receiving tests are diagnostic evidence, not public Conda delivery.
 
+`test_persisted_pipeline_offline.py` launches independent producer, guarded reader
+and reuse processes over `examples/persisted_pipeline/`. Historical full/index pins,
+exact item support, native author/page citations, original versions, unavailable
+fixture outcomes and reused credit survive reacquisition. A different reader
+version and forbidden credit/source calls leave original records unchanged.
+Missing/altered files, result/scope/item misbinding, workflow bibliography/context
+loss and overwrite attempts are refused. Installed-provider and future staged lanes
+copy the unchanged script and tests outside both checkouts; libraries are installed.
+
 ## Fixtures
 
 - Fixtures are frozen public responses, saved as the source returns them (trimmed only

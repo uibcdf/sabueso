@@ -15,7 +15,9 @@ supersedes: []
 Status: required automatic packet-composition and bounded source-acquisition adapters
 implemented; broader pipeline
 coverage remains open with explicit gaps in the published 0.12.0 scope (#108).
-Public Ackredit 0.9.0 delivery is adopted; Sabueso's own candidate/release gates remain.
+Public Ackredit 0.9.0 delivery is adopted and Sabueso 0.12.0 is published/qualified.
+Unreleased changes require their own validation; the public application exercise
+does not replace future exact-artifact release gates.
 Owner: [uibcdf/sabueso#108](https://github.com/uibcdf/sabueso/issues/108).
 Shared boundary: [uibcdf/moli#36](https://github.com/uibcdf/moli/issues/36).
 Provider: [uibcdf/ackredit#75](https://github.com/uibcdf/ackredit/issues/75).
@@ -490,7 +492,24 @@ publication metadata. Missing member/signature/site citations stay explicit.
 Source-supplied positions and declared member resources do not claim local alignment,
 InterProScan execution or direct member access. Concurrent capture and installed
 public Ackredit receiving tests exercise this slice. Other built-ins/custom clients,
-further result types and application-side original-record persistence remain open.
+further result types and shared application-record coordination remain open.
+
+## Persisted application exercise (#108/#112)
+
+`examples/persisted_pipeline/` persists public fixture knowledge, original literal
+extraction/article support and detached operation/result/workflow attribution.
+Separate producer/reader/reuse processes exercise full/index packets and exact item
+reads. Reacquisition advances current heads while original pins, native authors/
+pages/citations and original use/version context survive. The reader validates
+sidecar hashes, semantic bindings and bibliography/contextual-use closure; it
+acquires nothing and adds no credit. A missing fixture stays unavailable without
+external absence claims; the fragment is synthetic with unknown rights.
+
+Thirteen regressions refuse missing/changed/misbound files and overwrite attempts,
+also in unchanged installed-public-provider gates. The manifest is local application
+data, not a shared ProjectRecord schema or transactional journal. Nextia Evidence
+and MOLI Recorda correlation/reliability acceptance remain with their owners;
+broader source/result/bibliographic coverage stays open.
 
 ## Explicit article metadata attribution (#92/#108)
 

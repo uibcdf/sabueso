@@ -34,6 +34,16 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Unreleased development after 0.12.0
 
+- Persisted public application exercise (#108/#112): `examples/persisted_pipeline/`
+  starts independent producer, reader and reuse processes. Original extraction/
+  article metadata, full/index packets, pinned item support and workflow attribution
+  survive fixture reacquisition and advanced heads. Missing/modified/misbound files,
+  inconsistent bibliography/context and overwriting existing stages are refused.
+  Saved readers add no credit, retain original versions and need no source fixtures.
+  A missing fixture remains unavailable, not external source absence. The manifest
+  is local; Nextia interpretation and MOLI ProjectRecord/Recorda reliability and
+  transactional delivery remain open. Thirteen regressions run unchanged in
+  installed-provider CI and future staging lanes.
 - ChEMBL observation (#108): all five built-in logical operations retain normalized
   queries, pages/chunks, native document forms, totals/caps, retries, empty answers,
   unavailable fixtures, archive reuse/replay and partial received-page credit.
@@ -155,15 +165,16 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   Explicit `@1` reproduces the published numeric counter. Views/comparisons retain
   pinned counting derivations; `ligand_deck_explanation@2` lists counted group and
   record ids with original support. Class/voter/scope policies and storage stay fixed.
-- Local validation: 1,834 offline cases pass in the Python 3.14 development environment;
-  523 unchanged receiving integration cases pass with installed Sabueso and public
-  Ackredit 0.9.0 outside both checkouts, including 54 new article-metadata cases.
+- Local validation: 1,847 offline cases pass in the Python 3.14 development environment;
+  536 unchanged receiving integration cases pass with installed Sabueso and public
+  Ackredit 0.9.0 outside both checkouts, including 54 article-metadata cases and
+  13 independent persisted-application cases.
   The diagnostic wheel's modules/resources equal the source, and the public
   three-packet saved-reader workflow and receiving pip check pass. Ruff, schema/card shape,
   source registry, governance, dependency preflight and Sphinx with `-W` pass.
   All eight pilot notebook copies pass with installed public 0.12.0. Exact remote
   checkpoint CI is recorded in the owning issues after the ordinary code push.
-  Code SHA `7f980c0` passes 14 scientific/test/quality CI jobs and governance;
+  Previous code SHA `7f980c0` passes 14 scientific/test/quality CI jobs and governance;
   the required coverage publisher fails in two attempts during Codecov's TLS
   incident (#119, codecov/codecov-action#1975). Whole-workflow CI remains failed
   pending provider recovery; this is not green CI or release qualification.

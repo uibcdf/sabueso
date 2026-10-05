@@ -124,9 +124,9 @@ operational test, not disclosure of pilot scientific content, validation of ever
 source's availability, or a claim that every source is observed. Original notebooks
 remain unchanged. Their application must explicitly retain sidecars when adopted.
 
-The development checkpoint passes 1,779 offline cases in the required Python 3.14
+The development checkpoint passes 1,847 offline cases in the required Python 3.14
 editable environment (26 online cases deselected). A byte-checked clean diagnostic
-wheel passes 469 unchanged acquisition/attribution/extraction/intake/explanation integration cases
+wheel passes 536 unchanged acquisition/attribution/extraction/intake/explanation/application cases
 outside the checkout with public Ackredit 0.9.0, the public three-packet workflow
 and pip check. Ruff, frozen card shape, schema/registry, governance, dependency
 preflight and warning-failing Sphinx gates pass. The wheel check also rejects the
@@ -145,8 +145,8 @@ Evidence; MolSysSuite owns calculations, alignments and modeling interfaces.
    Explicit intake/replay preserves original text identity/location, tool/version,
    terms gaps and supplied original attribution. Save/load/refresh retain historical
    support; no extraction passes through `CurationStore` as human curation. Schema
-   0.3.12 is unpublished. Article metadata/terms, broader statement rules and later
-   validated model extraction remain bounded future work in #92.
+   0.3.12 is unpublished. Explicit article bibliography/declared terms are implemented;
+   fragment rights, broader rules and validated model extraction remain #92 work.
 2. **Extend chemical observation (#108).** PubChem compound/structure/BioAssay
    observation is implemented, including native per-assay revisions, batches/caps,
    original PubMed pointers and distinct empty/rejected/unavailable/failure outcomes.
@@ -189,6 +189,11 @@ Evidence; MolSysSuite owns calculations, alignments and modeling interfaces.
 4. **Receive consumer acceptance (#71/#53, MOLI #22/#3/#36).** Implement a real
    persistent consumer exercise in the consumer repository when ready. This is a
    coordination dependency, not missing Nextia code to add inside Sabueso.
+   `examples/persisted_pipeline/` now closes the bounded public application exercise:
+   independent producer/reader/reuse processes, full/index packets, exact historical
+   item reads, original metadata/extraction support and verified sidecar/workflow
+   bindings survive reacquisition. Consumer-owned Evidence and shared ProjectRecord/
+   Recorda reliability acceptance remain open.
 5. **Scope the next scientific expansion.** Choose peptide/supplier or clinical
    coverage from a stated use, define identity, quantities and rights before a
    connector. Keep #101 mirror work postponed until the maintainer reschedules it.
@@ -206,6 +211,6 @@ The literal intake route now accepts explicit source-stated article metadata und
 licence literals and original acquisition/support survive store replay, card refresh
 and pinned full/index packet reads. Alternatives stay separate; no text is fetched
 through full-text access or inferred from metadata. Fragment rights, broader rules,
-validation, full application-persistence acceptance and remaining source coverage
+validation, shared platform/consumer acceptance and remaining source coverage
 remain open. This extends foundational support/terms integrity and the generic need
 to preserve original source references across receiving pipelines.

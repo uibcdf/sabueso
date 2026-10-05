@@ -30,7 +30,17 @@ projects.
 `CurationStore.save` exports only curated literature (including legacy records with
 curation metadata). Rule/model extractions, even when human-validated, keep their own
 acquisition and are not exported as curation (#105). `KnowledgeStore` can retain their
-exact acquired state; replaying extractions across builds remains separate work (#92).
+exact acquired state. Unreleased `ExtractionStore` retains original literal-rule
+results, article metadata/support and attribution for explicit replay across builds
+without rerunning extraction (#92).
+
+Original runtime records remain separate from scientific payloads. The development
+example `examples/persisted_pipeline/` keeps application-owned manifests and sidecars,
+reads full/index packets and a historical item in a fresh process, then reacquires
+fixture knowledge while preserving original extraction/citation context. It checks
+file hashes and result bindings; the mutable knowledge database is checked through
+immutable snapshot pins. Missing sidecars fail explicitly. The manifest is local;
+journaling, transactional delivery and Recorda coordination remain MOLI #36/#18.
 
 ## Deck files (uibcdf/sabueso#26)
 A deck is its cards plus its `meta`: the traces that make it interpretable, such as the

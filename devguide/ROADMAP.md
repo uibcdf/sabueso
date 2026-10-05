@@ -410,6 +410,12 @@ In order:
      their separate meanings; scientific payloads are unchanged.
      MOLI owns ProjectRecord composition and future Recorda routing; the local trace
      is a receiving experiment, not an implemented platform provenance contract.
+     Unreleased `examples/persisted_pipeline/` exercises separate producer, reader
+     and reuse processes: full/index packets, exact historical item reads, original
+     extraction/article support and workflow credit survive reacquisition.
+     Missing/changed/misbound sidecars and inconsistent workflow context are refused.
+     Consumer-owned Nextia interpretation and shared Recorda/ProjectRecord acceptance
+     remain with their owners.
 
 Each is proposed as an issue before work starts, and the order is revisited at each
 release.

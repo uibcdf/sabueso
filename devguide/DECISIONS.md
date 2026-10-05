@@ -2628,3 +2628,21 @@ open-access status is not permission, and article terms do not license an arbitr
 supplied fragment. Fragment terms/profile boundaries and raw publication-term archive
 retention remain unchanged. Broader extraction, supplied-fragment rights, model/human
 validation and the MOLI application-record boundary remain open.
+
+## 2026-10-05 — Exercise application persistence without freezing a shared record
+
+For #108/#112, retain an application-owned example bundle of pinned knowledge,
+original ExtractionStore results, operation/result sidecars and portable Ackredit
+workflow attribution. Run its producer, reader and reuse in independent processes;
+verify file digests, result/item bindings and workflow contextual-use closure before
+rendering original references. Fixture reacquisition advances current heads while
+historical item pins, native bibliography and original attribution remain intact.
+Reading does not acquire knowledge or credit another execution; missing original
+sidecars are refused rather than reconstructed from current payloads or versions.
+
+The manifest is provisional local application data, not a platform contract.
+Content hashes detect inconsistency, not authenticity or permission. Transactional
+multi-file delivery, journaling and ProjectRecord/Recorda reliability remain MOLI
+#36/#18; Nextia owns explicit project interpretation/Evidence. The public fragment
+is synthetic with unknown rights. Published 0.12.0's compatible pilot and immutable
+release receipts remain that release's qualification.
