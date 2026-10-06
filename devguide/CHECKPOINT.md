@@ -16,12 +16,15 @@ test counts are receipts for earlier slices, not the latest validation baseline.
 
 - **Published:** 0.13.0, qualified tag `7e78d078111ac8dd51e08746c3818108ebd825a4`;
   card schema 0.3.12 is frozen. Release receipts below remain authoritative.
-- **Workspace/code checkpoint:** the accumulated development below is included
-  in the implementation checkpoint on `main`, following published-state commit
-  `c1bab2d`. The maintainer authorized commit/push on 2026-10-06. Exact remote CI
-  is being verified; the completion receipt will be recorded here. A staged
-  OS/minor installed-artifact matrix and new publication remain separate work.
-  Earlier local wheel versions/hashes are historical qualification receipts.
+- **Workspace/code checkpoint:** all accumulated changes are committed and pushed
+  to `origin/main`: implementation `413cdf6` and UTF-8 regression correction
+  `74c8c3d34299a59784b29937361be03da2c29640`. [Exact-head CI](https://github.com/uibcdf/sabueso/actions/runs/37438528677) passes 15/15 jobs;
+  [MOLI governance](https://github.com/uibcdf/sabueso/actions/runs/37438528644) also passes. The checkout is clean and
+  synchronized at completion. A following documentation/evidence-only receipt
+  commit uses `[skip ci]`, as local policy permits, with no executable, test,
+  fixture, packaging or workflow changes. The qualified code remains identical.
+  No new staged Conda artifact or public release is claimed; older local wheel
+  versions/hashes remain historical receipts.
 - **Implemented since 0.13.0:** all three independent public SDK journeys; versioned
   molecular knowledge-state correction (#122); exact disease membership/input/member
   support and conservative whole-context admission (#29/#91/#126); MONDO,
@@ -36,16 +39,17 @@ test counts are receipts for earlier slices, not the latest validation baseline.
   for exact code, test, fixture and package qualification receipts. Latest gates:
   2272 offline cases pass (693.93 seconds), 178 focused installed cases pass
   with public Ackredit 0.9.0 (19.50 seconds), and warning-fatal Sphinx passes.
-- **Open delivery issues:** #122–#128 remain open; implemented local corrections
-  are not fixes delivered to users of 0.13.0. #108/#112 remain broader umbrella work.
+- **Open delivery issues:** #122–#128 have fixes in the qualified upstream code
+  checkpoint and remain open for public-package delivery. Users of public 0.13.0
+  still need that release. #108/#112 remain broader umbrella work.
 - **Working environment:** Python 3.14.7 in `molsyssuite@uibcdf_3.14`;
   all 14 workspace packages have verified editable metadata and checkout imports
   outside the repository. Current shared-environment `pip check` fails for
   unrelated installed Amber/preparation packages; details and the passing separate
   installed-candidate environment are in the clinical checkpoint. This replaces
   earlier claims of a passing shared-environment check.
-- **Resume action:** verify the code-checkpoint delivery receipt, then integrate
-  explicitly scoped clinical bibliography into a versioned saved public journey.
+- **Resume action:** integrate explicitly scoped clinical bibliography into a
+  versioned saved public journey. The upstream code checkpoint is already verified.
   Use the latest receipts rather than rerunning completed checks without a change.
   Follow the roadmap for remaining query/terms discussions. A release needs its
   own approved substantial scope and full staged qualification.

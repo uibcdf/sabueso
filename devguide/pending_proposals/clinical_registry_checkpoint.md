@@ -16,7 +16,7 @@ related: [uibcdf/sabueso#112, uibcdf/sabueso#127, uibcdf/sabueso#128]
 Updated 2026-10-06. This is the latest bounded local slice; the published release
 remains 0.13.0. The diagnostic receipts below were produced locally from
 `c1bab2d` plus uncommitted changes. Those changes are included in the maintainer-
-authorized implementation checkpoint; current remote verification is recorded
+authorized implementation checkpoint; successful remote qualification is recorded
 in `CHECKPOINT.md`. Historical wheel versions/hashes remain unchanged.
 The [resume section](../CHECKPOINT.md#resume-here) and
 [immediate roadmap](../ROADMAP.md#immediate-resumption-sequence) own current priorities.
@@ -136,8 +136,8 @@ and gates in `../TESTS.md`; qualification must use installed imports outside the
 checkout with the public Ackredit minimum. Rebuild a diagnostic artifact if needed
 and compare package bytes before making an installed-code claim.
 
-Owner issues #127/#128 have final local implementation/test receipts and still need delivered-code
-verification; keep them open until delivery. #108/#112 cover the wider remaining
+Owner issues #127/#128 have final implementation/test receipts and qualified
+upstream code; keep them open for public-package delivery. #108/#112 cover the wider remaining
 work. Recorded receipts: [client integrity #127](https://github.com/uibcdf/sabueso/issues/127#issuecomment-6012209247),
 [collective authors #128](https://github.com/uibcdf/sabueso/issues/128#issuecomment-6012209679),
 [traceability #108](https://github.com/uibcdf/sabueso/issues/108#issuecomment-6012210029)
@@ -147,3 +147,28 @@ example: its current manifest stays `@5`. The next integration needs explicit NC
 PMID scope, a versioned example and original sidecars through readers/reacquisition.
 Broader bibliography, fine terms filtering, non-protein packet contracts and shared
 MOLI/Recorda guarantees remain separate work; see the immediate roadmap.
+
+
+## Verified upstream completion (2026-10-06)
+
+All accumulated code, public fixtures/examples, tests and documentation were pushed
+to `origin/main` in `413cdf6674c947dca960c301d938775aa07e66a8`; the only subsequent
+test correction is `74c8c3d34299a59784b29937361be03da2c29640`. The first run's four Windows failures were the same
+UTF-8 fixture-comparison defect (2271 other cases passed per lane); the cp1252 probe
+passes after correction, as do all 59 article-metadata cases in development
+(5.59 seconds) and with installed public Ackredit 0.9.0 (3.77 seconds).
+
+[Final exact-head CI](https://github.com/uibcdf/sabueso/actions/runs/37438528677) passes **15/15 jobs**, including Linux/
+Windows Python 3.11–3.14, macOS arm64 Python 3.14, four installed public Ackredit
+0.9.0 clients, Ruff and coverage publication. [Governance](https://github.com/uibcdf/sabueso/actions/runs/37438528644)
+passes against the same SHA. The source/client tests and public workflow run
+against installed imports outside the checkout. This qualifies a development
+code checkpoint; the full staged Conda artifact matrix and public release are
+still pending. The final receipt-only commit has no runtime/test/fixture/package/
+workflow effect and uses `[skip ci]` within the locally checked documentation policy.
+Genuine historical receipts and frozen schema 0.3.12 remain unchanged.
+
+The clone is clean and synchronized at completion. The next action is the bounded
+saved-journey clinical bibliography integration in the immediate roadmap; current
+public release remains 0.13.0. Owner issues #122–#128 remain open for public-package
+delivery, while #108/#112 retain their broader feature/architecture scopes.

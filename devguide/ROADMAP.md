@@ -274,13 +274,13 @@ Detailed acceptance and local receipts: [journey audit](pending_proposals/indepe
 and [clinical checkpoint](pending_proposals/clinical_registry_checkpoint.md).
 This sequence narrows the approved roadmap; it does not replace either route.
 
-1. **Verify the code-checkpoint receipt.** The maintainer authorized committing
-   and pushing the accumulated changes on 2026-10-06. This implementation checkpoint
-   includes the code, public examples/fixtures, guards and source/package receipts
-   without `[skip ci]`; its exact remote CI is being verified. Read the completion
-   receipt in `CHECKPOINT.md` before resuming. #122–#128 still need their delivery
-   state reviewed. Candidate staging and a public release remain separate work;
-   no release number is decided here.
+1. **Code checkpoint completed (2026-10-06).** The accumulated implementation
+   and public examples/fixtures/guards are pushed to `origin/main` in `413cdf6`,
+   with the UTF-8 test correction in `74c8c3d`. [Exact-head CI](https://github.com/uibcdf/sabueso/actions/runs/37438528677)
+   passes 15/15 jobs and MOLI governance passes. `CHECKPOINT.md` records
+   the final receipt; no repeat is needed without a new change. #122–#128 remain
+   open for public-package delivery. Candidate staging and a release remain
+   separate work; no release number is decided here. Resume at step 2.
 2. **Integrate the bounded clinical bibliography into a saved public journey
    (#108/#112).** Source-level registry/reference observation and explicit Europe PMC
    metadata are implemented. Next, declare which cited NCT ids and native PMID are

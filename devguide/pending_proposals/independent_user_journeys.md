@@ -617,3 +617,14 @@ non-version package files match checkout, exact wheel and installed bytes.
 Original disease `@1`–`@5` readers remain inert, docs/format/schema/registry gates
 pass, and no remote/public delivery is claimed. The checkpoint also records current
 shared-environment dependency conflicts and the ordered resumption route.
+
+## Upstream code checkpoint completed (2026-10-06)
+
+The accumulated development and corrected UTF-8 regression are committed and
+pushed in `413cdf6` and `74c8c3d`. [Exact-head CI](https://github.com/uibcdf/sabueso/actions/runs/37438528677) passes 15/15
+jobs and [MOLI governance](https://github.com/uibcdf/sabueso/actions/runs/37438528644) passes. Current resumption no longer
+needs committing the accumulated changes: start at immediate roadmap step 2.
+The following documentation-only receipt is locally checked and has no executable
+effect. Public 0.13.0 is unchanged; release/staged qualification remains separate.
+Original dated local receipts, wheel hashes and genuine historical reports stay
+unchanged. The clinical checkpoint holds complete delivery and environment details.
