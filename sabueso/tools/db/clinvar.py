@@ -26,6 +26,8 @@ from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError
+from sabueso.core.ncbi_disease_acquisition import note_fixture, observe, validate
+from sabueso.core.source_acquisition import capture_acquisitions, missing_fixture
 from sabueso.tools.db import _keys
 from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
@@ -56,7 +58,9 @@ def _get(
     url = f"{EUTILS}/{path}?" + urlencode(query)
     try:
         with urlopen(request(url), timeout=timeout, expect_json=True) as resp:  # nosec - trusted
-            return json.loads(resp.read().decode("utf-8"))
+            payload = json.loads(resp.read().decode("utf-8"))
+        validate(SOURCE, path, params, payload)
+        return payload
     except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
         detail = _keys.scrub(str(exc), api_key)
         raise ConnectorError(f"ClinVar {path} failed: {detail}") from (
@@ -94,6 +98,7 @@ class OnlineClinVarClient:
         self.timeout = timeout
         self._api_key = api_key
 
+    @observe(SOURCE, "variants")
     def variants(
         self, gene_ids: Iterable[str], limit: int = DEFAULT_LIMIT
     ) -> Dict[str, Any]:
@@ -148,6 +153,7 @@ class FixtureClinVarClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @observe(SOURCE, "variants", fixture=True)
     def variants(
         self, gene_ids: Iterable[str], limit: int = DEFAULT_LIMIT
     ) -> Dict[str, Any]:
@@ -155,12 +161,36 @@ class FixtureClinVarClient:
         if self.failing & set(genes):
             raise ConnectorError(f"ClinVar request for {genes} failed (simulated)")
         records, total, version = [], 0, None
+        seen_version = False
         for gene in genes:
             path = self.directory / f"{gene}.json"
             if not path.is_file():
-                continue
-            saved = json.loads(path.read_text(encoding="utf-8"))
-            version = saved.get("version")
+                raise missing_fixture(f"ClinVar fixture for Gene {gene} is unavailable")
+            try:
+                saved = json.loads(path.read_text(encoding="utf-8"))
+                if (
+                    not isinstance(saved, dict)
+                    or not isinstance(saved.get("record"), list)
+                    or type(saved.get("total_count")) is not int
+                    or saved["total_count"] < len(saved["record"])
+                    or not all(isinstance(row, dict) for row in saved["record"])
+                ):
+                    raise ValueError("invalid variant envelope")
+                current = saved.get("version")
+                if current is not None and not isinstance(current, str):
+                    raise ValueError("invalid database version")
+            except (OSError, ValueError) as error:
+                raise ConnectorError(
+                    f"ClinVar fixture for Gene {gene} is invalid: {error}"
+                ) from error
+            note_fixture({"gene_ids": [gene], "limit": limit}, saved, SOURCE)
+            if seen_version:
+                if current != version:
+                    raise ConnectorError(
+                        "ClinVar fixtures have inconsistent database versions"
+                    )
+            version = current
+            seen_version = True
             total += saved["total_count"]
             records.extend(saved["record"][:limit])
         return {
@@ -176,6 +206,7 @@ class FixtureClinVarClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_variants(
     identifiers: Any,
     limit: int = DEFAULT_LIMIT,

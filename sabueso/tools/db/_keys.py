@@ -44,4 +44,9 @@ def required(service: str, api_key: str | None = None, source: str | None = None
 
 def scrub(text: str, api_key: str | None) -> str:
     """``text`` without the key, for messages that could echo a URL carrying it."""
-    return text.replace(api_key, "<key>") if api_key else text
+    from urllib.parse import quote, quote_plus
+
+    if api_key:
+        for value in (quote_plus(api_key), quote(api_key, safe=""), api_key):
+            text = text.replace(value, "<key>")
+    return text

@@ -33,10 +33,17 @@ from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
+from sabueso.core.diseases_acquisition import (
+    ObservedIndex,
+    note_channel,
+    observe,
+    origin,
+)
 from sabueso.core.errors import ConnectorError
+from sabueso.core.source_acquisition import capture_acquisitions, missing_fixture
 from sabueso.tools.db import _release
+from sabueso.tools.db._http import observing_requests, stamp, urlopen
 from sabueso.tools.db._http import request as http_request
-from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
 SOURCE = "DISEASES"
@@ -80,6 +87,30 @@ def _select(
     return {"record": record, "missing": [p for p in proteins if p not in named]}
 
 
+def _parse_document(payload, channel):
+    text = payload.decode("utf-8")
+    # A filtered download is TSV, not an HTML error page with HTTP 200.
+    for line in text.splitlines():
+        if line.strip() and len(line.split("\t")) < 4 + len(COLUMNS[channel]):
+            raise ValueError("invalid filtered TSV row")
+    return parse_channel(text, channel)
+
+
+def _validate_index(index):
+    if not isinstance(index, dict) or not all(
+        isinstance(protein, str)
+        and isinstance(rows, list)
+        and all(
+            isinstance(row, dict)
+            and row.get("protein") == protein
+            and isinstance(row.get("disease"), str)
+            for row in rows
+        )
+        for protein, rows in index.items()
+    ):
+        raise ValueError("invalid cached channel index")
+
+
 class OnlineDISEASESClient:
     def __init__(self, timeout: float = 300.0, cache_dir: str | Path | None = None):
         self.timeout = timeout
@@ -91,7 +122,10 @@ class OnlineDISEASESClient:
         # The server refuses Python's default user agent; Sabueso names itself.
         request = http_request(url)
         try:
-            with urlopen(request, timeout=self.timeout) as resp:  # nosec - trusted
+            with (
+                observing_requests() as requests,
+                urlopen(request, timeout=self.timeout) as resp,
+            ):  # nosec - trusted
                 modified = resp.headers.get("Last-Modified")
                 version = (
                     parsedate_to_datetime(modified).date().isoformat()
@@ -100,6 +134,8 @@ class OnlineDISEASESClient:
                 )
                 kept = _release.recall(SOURCE, (channel, version))
                 if version is not None and kept is not None:
+                    _validate_index(kept)
+                    note_channel(channel, version, kept, access="memory")
                     return version, kept
                 cached = (
                     self.cache_dir / f"{channel}_{version}.json"
@@ -108,16 +144,25 @@ class OnlineDISEASESClient:
                 )
                 if cached is not None and cached.is_file():
                     index = json.loads(cached.read_text(encoding="utf-8"))
+                    _validate_index(index)
+                    access = "disk"
                 else:
-                    index = parse_channel(resp.read().decode("utf-8"), channel)
+                    payload = resp.read()
+                    index = ObservedIndex(
+                        _parse_document(payload, channel),
+                        origin(payload, stamp_time(requests), requests),
+                    )
+                    access = "download"
                     if cached is not None:
                         _release.write_file(cached, json.dumps(index))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"DISEASES {channel} download failed: {exc}") from exc
         if version is not None:
             _release.keep(SOURCE, (channel, version), index)
+        note_channel(channel, version, index, access=access)
         return version, index
 
+    @observe()
     def associations(
         self, proteins: Iterable[str], channels: Iterable[str] = CHANNELS
     ) -> Dict[str, Any]:
@@ -126,9 +171,14 @@ class OnlineDISEASESClient:
         versions, indexes = {}, {}
         for channel in channels:
             versions[channel], indexes[channel] = self._fetch(channel)
-        return {"retrieved_at": retrieval.value, "version": versions} | _select(
-            indexes, ids
-        )
+        dates = [
+            (getattr(index, "origin", None) or {}).get("retrieved_at")
+            for index in indexes.values()
+        ]
+        return {
+            "retrieved_at": min(dates) if dates and all(dates) else retrieval.value,
+            "version": versions,
+        } | _select(indexes, ids)
 
 
 class FixtureDISEASESClient:
@@ -142,20 +192,38 @@ class FixtureDISEASESClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @observe(fixture=True)
     def associations(
         self, proteins: Iterable[str], channels: Iterable[str] = CHANNELS
     ) -> Dict[str, Any]:
         ids = sorted({p.split(".")[0] for p in proteins if p})
         if self.failing & set(ids):
             raise ConnectorError(f"DISEASES request for {ids} failed (simulated)")
-        versions = json.loads((self.directory / "versions.json").read_text())
-        indexes = {
-            channel: parse_channel(
-                (self.directory / f"{channel}.tsv").read_text(encoding="utf-8"),
-                channel,
-            )
-            for channel in channels
-        }
+        indexes = {}
+        try:
+            versions = json.loads((self.directory / "versions.json").read_text())
+            if not isinstance(versions, dict) or any(
+                value is not None and not isinstance(value, str)
+                for value in versions.values()
+            ):
+                raise ValueError("invalid channel dates")
+            for channel in channels:
+                payload = (self.directory / f"{channel}.tsv").read_bytes()
+                indexes[channel] = ObservedIndex(
+                    _parse_document(payload, channel),
+                    origin(payload, self.retrieved_at, fixture=True),
+                )
+                note_channel(
+                    channel, versions.get(channel), indexes[channel], access="fixture"
+                )
+        except FileNotFoundError as error:
+            raise missing_fixture(
+                f"DISEASES channel fixture is unavailable: {error.filename}"
+            ) from error
+        except (OSError, ValueError) as error:
+            raise ConnectorError(
+                f"DISEASES channel fixture is invalid: {error}"
+            ) from error
         return {
             "retrieved_at": self.retrieved_at,
             "version": {c: versions.get(c) for c in channels},
@@ -166,6 +234,7 @@ class FixtureDISEASESClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_associations(
     identifiers: Any, client: Any = None, skip_digestion: bool = False
 ):
@@ -179,4 +248,13 @@ def get_associations(
         "; ".join(f"{c} {v}" for c, v in sorted(response["version"].items()) if v)
         or None,
         {"associations": response["record"], "missing": response["missing"]},
+    )
+
+
+def stamp_time(requests):
+    from sabueso.tools.db._http import _STAMP
+
+    return next(
+        (r.get("retrieved_at") for r in requests if r.get("retrieved_at")),
+        _STAMP.get().value,
     )

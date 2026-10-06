@@ -1,0 +1,134 @@
+{
+  "version": "6.9",
+  "hitCount": 1,
+  "resultList": {
+    "result": [
+      {
+        "id": "19753491",
+        "source": "MED",
+        "pmid": "19753491",
+        "doi": "10.1590/s0074-02762009000900042",
+        "title": "The BENEFIT trial: testing the hypothesis that trypanocidal therapy is beneficial for patients with chronic Chagas heart disease.",
+        "authorString": "Marin-Neto JA, Rassi A, Avezum A, Mattos AC, Rassi A, Morillo CA, Sosa-Estani S, Yusuf S, BENEFIT Investigators.",
+        "authorList": {
+          "author": [
+            {
+              "fullName": "Marin-Neto JA",
+              "lastName": "Marin-Neto",
+              "firstName": "J Antonio",
+              "initials": "JA",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0002-8651-8833"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Faculdade de Medicina de Ribeirão Preto, Universidade de São Paulo, Ribeirão Preto, SP, Brasil. marin_neto@yahoo.com"
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Rassi A Jr",
+              "lastName": "Rassi",
+              "firstName": "Anis",
+              "initials": "A"
+            },
+            {
+              "fullName": "Avezum A Jr",
+              "lastName": "Avezum",
+              "firstName": "Alvaro",
+              "initials": "A"
+            },
+            {
+              "fullName": "Mattos AC",
+              "lastName": "Mattos",
+              "firstName": "Antonio C",
+              "initials": "AC",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0001-8420-098X"
+              }
+            },
+            {
+              "fullName": "Rassi A",
+              "lastName": "Rassi",
+              "firstName": "Anis",
+              "initials": "A"
+            },
+            {
+              "fullName": "Morillo CA",
+              "lastName": "Morillo",
+              "firstName": "Carlos A",
+              "initials": "CA"
+            },
+            {
+              "fullName": "Sosa-Estani S",
+              "lastName": "Sosa-Estani",
+              "firstName": "Sergio",
+              "initials": "S"
+            },
+            {
+              "fullName": "Yusuf S",
+              "lastName": "Yusuf",
+              "firstName": "Salim",
+              "initials": "S",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0003-4776-5601"
+              }
+            },
+            {
+              "collectiveName": "BENEFIT Investigators"
+            }
+          ]
+        },
+        "journalInfo": {
+          "volume": "104 Suppl 1",
+          "journalIssueId": 1652336,
+          "dateOfPublication": "2009 Jul",
+          "monthOfPublication": 7,
+          "yearOfPublication": 2009,
+          "journal": {
+            "medlineAbbreviation": "Mem Inst Oswaldo Cruz",
+            "title": "Memorias do Instituto Oswaldo Cruz",
+            "essn": "1678-8060",
+            "issn": "0074-0276",
+            "isoabbreviation": "Mem Inst Oswaldo Cruz",
+            "nlmid": "7502619"
+          },
+          "printPublicationDate": "2009-07-01"
+        },
+        "pubYear": "2009",
+        "firstPublicationDate": "2009-07-01",
+        "isOpenAccess": "N",
+        "fullTextUrlList": {
+          "fullTextUrl": [
+            {
+              "availability": "Open access",
+              "availabilityCode": "OA",
+              "documentStyle": "pdf",
+              "site": "Unpaywall",
+              "url": "https://www.scielo.br/j/mioc/a/c5NrCHc6bMd9BX6qyc3k5zM/?lang=en&format=pdf"
+            },
+            {
+              "availability": "Subscription required",
+              "availabilityCode": "S",
+              "documentStyle": "doi",
+              "site": "DOI",
+              "url": "https://doi.org/10.1590/s0074-02762009000900042"
+            }
+          ]
+        },
+        "pubTypeList": {
+          "pubType": [
+            "Research Support, Non-U.S. Gov't",
+            "Journal Article"
+          ]
+        },
+        "pageInfo": "319-324"
+      }
+    ]
+  }
+}

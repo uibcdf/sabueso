@@ -89,10 +89,10 @@ trace = resolution.acquisition_trace
 Path("acquisition.trace.json").write_text(json.dumps(trace, indent=2))
 ```
 
-These traces observe built-in UniProt entry/search, Europe PMC
-mentions/explicit-annotation and RCSB structure clients. The corresponding public source envelopes
-add `acquisition_trace` while retaining the original raw `record`. Other sources
-and custom clients are explicitly unobserved. A source not asked has no event or
+These traces observe the built-in clients listed in {doc}`source_coverage`.
+The corresponding public source envelopes add `acquisition_trace` while retaining
+the original raw `record`. Sources outside that declared boundary and custom clients
+are explicitly unobserved. A source not asked has no event or
 credit. `sabueso.attribution()` can collect the same events as `run.acquisitions`,
 separately from completed packet composition in `run.records`.
 
@@ -116,6 +116,108 @@ card and packet schemas. Payload-only saved readers have `acquisition_trace is N
 and add no execution credit. There is no implicit persistence. MOLI owns future
 ProjectRecord/Recorda correlation, routing and recording policy; this local slice
 does not establish a complete project record.
+
+## References cited by ChEMBL indications (development)
+
+Built-in `get_indications` and the disease builder's `indications_for` query now contribute the references
+ChEMBL declares to the enclosing Ackredit workflow. These include trial-registry
+pointers, regulatory labels and classifications. Sabueso preserves native reference
+types, identifiers and URLs, including grouped identifiers, without following them.
+They carry the role `source_cited_reference`: ChEMBL was consulted; the referenced
+target was not consulted by that operation.
+
+`indication_reference_context` in each acquisition record keeps the exact indication,
+molecule and disease IDs, page/query/hash and every reference occurrence. Fixtures
+retain the original decoded result basis. Duplicate bibliography entries share one
+citation, while occurrences from different rows or query pages remain distinct.
+References from received pages survive a subsequent failure. Archive reuse/replay
+keeps original times, versions and reference forms.
+
+Missing titles, authors, dates and reference-target access remain explicit gaps.
+These incomplete citations can be exported from saved portable attribution without
+requests or new credit. They do not establish efficacy, approval, target permissions
+or a complete bibliography of underlying studies. Scientific card data is unchanged.
+
+## MONDO identity queries (development)
+
+Built-in MONDO term and stated-equivalence queries now retain the normalized
+identifier, native OBO data-version and file identity, checksum basis and original
+index origin. The source's `MONDO:equivalentTo` statements establish identity;
+names and related cross-references do not. Definition and imported-resource pointers
+are declared context, without querying their publications or linked terminologies.
+
+The same downloaded index can answer many queries. `memory` means local index
+reuse; `mixed` can combine a current release-selector lookup with that old index.
+Original download receipts remain distinct from current requests/network counts.
+Archive reuse/replay keeps the original response time, hashes and references.
+A pre-existing index without a receipt explicitly lacks its original time/origin.
+
+Fixture subsets do not establish absence from the whole release. Empty equivalence
+lookups, missing fixture terms/files, offline-unqueried access and download/checksum
+failures retain separate outcomes. Non-OBO and invalid UTF-8 documents are connector
+failures and receive no completed query credit. Source results and runtime events
+preserve the same original release response time. A pre-existing index without a
+receipt retains the legacy client-clock fallback in its source result, while the
+trace explicitly reports an unknown original retrieval time.
+
+Completed queries contribute MONDO's resource description to the enclosing Ackredit
+capture, including evaluated-empty queries and index reuse. Direct disease
+resolution retains its original card/resolution trace and exact card pin. Save that
+JSON beside the scientific objects; saved readers add no credit.
+
+## Disease associations and deck builds (development)
+
+Open Targets `associations` and `targets` record raw/normalized identifiers,
+GraphQL page queries and hashes, native data versions, source order and returned/
+total counts. A source-row limit differs from a built-card limit. Completed pages
+remain visible if a later page fails; mixed versions/counts are refused rather than
+merged into a scientific result. Null entities are evaluated absence; missing
+fields, GraphQL errors and malformed documents are failures, not absence.
+
+Orphanet `associations` and `genes` retain the exact XML file identity, its header
+date and original index receipt. Memory/archive reuse keeps the original scientific
+and runtime retrieval time. Bare older indexes explicitly lack origins. Lookups
+cover SwissProt-indexed associations, not all native genes or inherited disease
+classification; fixture subsets and missing files remain scoped. Native validation
+pointers survive without claiming access to their publications.
+
+Completed queries contribute resource bibliography to Ackredit. Open Targets uses
+its [recommended publication](https://platform-docs.opentargets.org/citation.md),
+[doi:10.1093/nar/gkae1128](https://doi.org/10.1093/nar/gkae1128), with all 32 authors,
+2025 issue date and journal/pages from
+[primary public metadata](https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1093/nar/gkae1128&format=json&resultType=core).
+Orphadata uses its [recommended dataset citation](https://www.orphadata.com/faq/),
+with the native XML date retained as version. Copyright 1999 is not an invented
+publication date. Underlying association/validation study metadata remains an
+explicit bibliography gap; no runtime publication lookup is added.
+
+`disease_targets` and `disease_drugs` expose detached traces with original disease
+input/support pins, final deck/member pins, executing version/times, rule/limit,
+source statuses and exclusions. Stored disease cards do not create fresh MONDO
+access, and custom clients remain unobserved. Save traces beside science;
+payload-only readers acquire/credit nothing. Development DISEASES, ClinVar and MedGen
+queries also retain original source access. Complete underlying study bibliography
+and shared MOLI recording guarantees remain pending.
+
+DISEASES preserves publication dates and original file/index origins per channel;
+knowledge, experiments and text mining retain their own score and reference scope.
+Older disk indexes declare unknown original times. ClinVar preserves per-gene
+search totals/caps, returned variant UID/accession versions and classification
+conflicts. MedGen preserves source-stated concept/UID pairs; ambiguous identity
+and capped searches fail explicitly. Both retain NCBI page queries, hashes and
+original archive times, with build versus database-last-update version bases.
+Unavailable fixtures and invalid answers are distinct from evaluated absence.
+Recorded request identities exclude personal API keys.
+
+Resource bibliography uses [DISEASES's recommended description](https://diseases.jensenlab.org/cgi/About),
+[doi:10.1093/database/baac019](https://doi.org/10.1093/database/baac019),
+with all four authors and native 2022 journal metadata;
+[ClinVar's recommended original paper](https://www.ncbi.nlm.nih.gov/clinvar/docs/faq/),
+[doi:10.1093/nar/gkt1113](https://doi.org/10.1093/nar/gkt1113), with all seven authors
+in the initials stated by NCBI; and [MedGen's recommended resource citation](https://www.ncbi.nlm.nih.gov/medgen/docs/faq/),
+with its 2012 start year, separate from query/update dates. These descriptions do
+not establish access to the underlying studies, ClinVar submissions or terminology
+publications; those remain explicit bibliography gaps. No DOI enrichment runs at runtime.
 
 ## Structural queries and citations
 
@@ -387,7 +489,14 @@ disease grouping includes broader stored MONDO/MedGen identity and hierarchy con
 The record says so. A resource's version is its source-record version, not an inferred
 global database release.
 
-The offline resource-description declarations were verified on 2026-10-02/04:
+The offline resource-description declarations were verified on 2026-10-02/04/05:
+
+- MONDO's [official resource page](https://mondo.monarchinitiative.org/) links
+  *Mondo: integrating disease terminology across communities*, DOI
+  `10.1093/genetics/iyaf215`. [Europe PMC's public core metadata](https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:41052288%20AND%20SRC:MED&format=json&resultType=core)
+  supplies the full returned 115-author list and Genetics 232/4, iyaf215, issue year
+  2026 (first online in 2025). This is resource-description metadata, not a citation
+  for every imported term or an additional runtime article lookup.
 
 - InterPro's [official resource references](https://www.ebi.ac.uk/training/online/courses/interpro-functional-and-structural-analysis/references/)
   and [publisher metadata](https://api.crossref.org/works/10.1093/nar/gkae1082)
@@ -474,3 +583,43 @@ pins and original bibliography remain readable. A missing fixture stays unavaila
 without an external absence claim. The fragment is explicitly synthetic with unknown
 reuse rights. This example requires the development API; its manifest is local,
 and shared ProjectRecord/Recorda integration remains open.
+
+## ClinicalTrials.gov references (development)
+
+Study and explicit reference queries retain native NCT identity, all continuation
+pages, decoded response identities, original times, archive reuse, empty answers and
+failures. The registry data timestamp, API protocol version and study update date
+have distinct meanings; none supplies a publication year. Missing studies are
+reported only after a complete query. An absent fixture answer is unavailable.
+
+For references, query a stated NCT id explicitly:
+
+```python
+import ackredit
+from sabueso.tools.db import clinicaltrials, europepmc
+
+with ackredit.capture("registry-bibliography") as workflow:
+    registry = clinicaltrials.get_study_references("NCT00123916")
+    study = registry["record"]["studies"]["NCT00123916"]
+    references = (
+        study["protocolSection"].get("referencesModule", {}).get("references", [])
+    )
+    articles = [
+        europepmc.get_article("pubmed:" + ref["pmid"])
+        for ref in references
+        if ref.get("pmid")
+    ]
+
+original = workflow.attribution.to_dict()
+```
+
+The registry query credits the registry and its declared references with separate
+roles. It does not follow PMID, see-also, participant-data or retraction links.
+The explicit Europe PMC queries above contribute their own observed metadata and
+source versions. Returned collective authors remain literal names alongside personal
+authors (#128). Missing citation metadata, article permissions and unqueried targets
+remain explicit. Free citation text is preserved without identity extraction or
+clinical interpretation. Save the original attribution alongside the source envelopes;
+saved bibliography rendering adds no requests or credits. Card schema 0.3.12 and
+existing clinical SourceAssertions are unchanged. Public release 0.13.0 does not
+include this development extension.

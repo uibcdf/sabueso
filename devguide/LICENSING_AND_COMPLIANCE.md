@@ -93,6 +93,16 @@ is never reported as "no restriction".
 
 A first milestone is built (2026-09-29): `Card.terms(use)`, `Deck.terms(use)` and
 `Deck.admissible(use)`, rule `terms_propagation@1`.
+
+Development disease decks with portable support use `disease_deck_admission@1`:
+complete pinned shared context must permit the use, then each unchanged member is
+checked against resolved knowledge and every retained raw SourceAssertion.
+Unknown/restricted shared context refuses with an item-level `admission_report` on
+`ArgumentError`; finer filtering by terms of use is not implemented. Removed member identity pins
+are explicitly historical, separate from retained native candidate support.
+Per-record rights for projected relationships do not license complete raw records.
+Current registry review dates and obligations remain recorded; historical terms,
+raw per-record licensing and finer filtering by terms of use remain #29 work.
 - **Where the terms live.** Each source in use states them in
   `sources/registry.yaml` (`terms`): its SourceAssertion names, a classified licence,
   the attribution text, the statement's URL, the review date and caveats. The export

@@ -29,6 +29,8 @@ from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.open_targets_acquisition import note_page, observe
+from sabueso.core.source_acquisition import capture_acquisitions, missing_fixture
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -73,11 +75,27 @@ def disease_id(curie: str) -> str:
 
 
 def _version(meta: Dict[str, Any]) -> str | None:
-    data = (meta or {}).get("dataVersion") or {}
+    data = meta.get("dataVersion") if isinstance(meta, dict) else None
+    if not isinstance(data, dict):
+        return None
     if not data.get("year"):
+        return None
+    if not data.get("month"):
         return None
     version = f"{data['year']}.{data['month']}"
     return f"{version}.{data['iteration']}" if data.get("iteration") else version
+
+
+def _consistent_page(
+    previous_count, previous_version, entity, native, collection, version
+):
+    page = native.get(collection) or {}
+    if previous_count is not None and (
+        page.get("count") != previous_count or version != previous_version
+    ):
+        raise ConnectorError(
+            f"Open Targets {entity} changed count or version across pages."
+        )
 
 
 class OnlineOpenTargetsClient:
@@ -94,10 +112,36 @@ class OnlineOpenTargetsClient:
                 data = json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"Open Targets request failed: {exc}") from exc
+        note_page(variables, data)
+        if not isinstance(data, dict):
+            raise ConnectorError("Open Targets response is not a GraphQL object.")
         if data.get("errors"):
             raise ConnectorError(f"Open Targets answered with errors: {data['errors']}")
-        return data.get("data") or {}
+        decoded = data.get("data")
+        entity, collection, required = (
+            ("target", "associatedDiseases", ("id", "approvedSymbol", "proteinIds"))
+            if query == QUERY
+            else ("disease", "associatedTargets", ("id", "name"))
+        )
+        if not isinstance(decoded, dict) or entity not in decoded:
+            raise ConnectorError(f"Open Targets response has no {entity} field.")
+        native = decoded[entity]
+        if native is not None:
+            page = native.get(collection) if isinstance(native, dict) else None
+            if (
+                not isinstance(page, dict)
+                or not isinstance(page.get("rows"), list)
+                or type(page.get("count")) is not int
+                or page["count"] < len(page["rows"])
+                or not all(isinstance(row, dict) for row in page["rows"])
+                or any(key not in native for key in required)
+            ):
+                raise ConnectorError(
+                    "Open Targets response has invalid association fields."
+                )
+        return decoded
 
+    @observe("associations")
     def associations(self, gene: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
         retrieval = stamp(SOURCE)
         rows, index, count, target, version = [], 0, None, None, None
@@ -106,11 +150,19 @@ class OnlineOpenTargetsClient:
                 {"gene": gene, "index": index, "size": min(PAGE_SIZE, limit)}
             )
             target = data.get("target")
-            version = _version(data.get("meta"))
+            current_version = _version(data.get("meta"))
             if target is None:
+                if count is not None:
+                    raise ConnectorError(
+                        f"Open Targets target {gene} disappeared across pages."
+                    )
                 raise RecordNotFoundError(
-                    f"Open Targets has no target {gene}", version=version
+                    f"Open Targets has no target {gene}", version=current_version
                 )
+            _consistent_page(
+                count, version, gene, target, "associatedDiseases", current_version
+            )
+            version = current_version
             page = target.get("associatedDiseases") or {}
             count = page.get("count") or 0
             batch = page.get("rows") or []
@@ -130,6 +182,7 @@ class OnlineOpenTargetsClient:
             },
         }
 
+    @observe("targets")
     def targets(self, disease: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
         """A disease's associated targets, in Open Targets' order (overall score), at
         most ``limit`` of ``count``: ``{"retrieved_at", "version", "record":
@@ -146,11 +199,19 @@ class OnlineOpenTargetsClient:
                 DISEASE_QUERY,
             )
             found = data.get("disease")
-            version = _version(data.get("meta"))
+            current_version = _version(data.get("meta"))
             if found is None:
+                if count is not None:
+                    raise ConnectorError(
+                        f"Open Targets disease {disease} disappeared across pages."
+                    )
                 raise RecordNotFoundError(
-                    f"Open Targets has no disease {disease}", version=version
+                    f"Open Targets has no disease {disease}", version=current_version
                 )
+            _consistent_page(
+                count, version, disease, found, "associatedTargets", current_version
+            )
+            version = current_version
             page = found.get("associatedTargets") or {}
             count = page.get("count") or 0
             batch = page.get("rows") or []
@@ -180,19 +241,40 @@ class FixtureOpenTargetsClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    def _read(self, path):
+        if not path.is_file():
+            raise missing_fixture(f"Open Targets fixture is unavailable: {path.name}")
+        try:
+            saved = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as error:
+            raise ConnectorError(
+                f"Open Targets fixture could not be read: {error}"
+            ) from error
+        record = saved.get("record") if isinstance(saved, dict) else None
+        if (
+            not isinstance(record, dict)
+            or not isinstance(record.get("rows"), list)
+            or type(record.get("count")) is not int
+            or record["count"] < len(record["rows"])
+            or not all(isinstance(row, dict) for row in record["rows"])
+        ):
+            raise ConnectorError("Open Targets fixture has invalid association fields.")
+        return saved
+
+    @observe("associations", fixture=True)
     def associations(self, gene: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
         if gene in self.failing:
             raise ConnectorError(f"Open Targets request for {gene} failed (simulated)")
         path = self.directory / "open_targets" / f"{gene}.json"
-        if not path.is_file():
-            raise RecordNotFoundError(f"Open Targets has no target {gene}")
-        saved = json.loads(path.read_text(encoding="utf-8"))
+        saved = self._read(path)
+        note_page({"gene": gene, "limit": limit}, saved, fixture=True)
         return {
             "retrieved_at": self.retrieved_at,
             "version": saved.get("version"),
             "record": {**saved["record"], "rows": saved["record"]["rows"][:limit]},
         }
 
+    @observe("targets", fixture=True)
     def targets(self, disease: str, limit: int = DEFAULT_LIMIT) -> Dict[str, Any]:
         """Reads ``<directory>/open_targets/diseases/<MONDO_…>.json``."""
         key = disease_id(disease)
@@ -201,9 +283,8 @@ class FixtureOpenTargetsClient:
                 f"Open Targets request for {disease} failed (simulated)"
             )
         path = self.directory / "open_targets" / "diseases" / f"{key}.json"
-        if not path.is_file():
-            raise RecordNotFoundError(f"Open Targets has no disease {disease}")
-        saved = json.loads(path.read_text(encoding="utf-8"))
+        saved = self._read(path)
+        note_page({"disease": key, "limit": limit}, saved, fixture=True)
         return {
             "retrieved_at": self.retrieved_at,
             "version": saved.get("version"),
@@ -215,6 +296,7 @@ class FixtureOpenTargetsClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_associations(
     identifier: str,
     limit: int = DEFAULT_LIMIT,

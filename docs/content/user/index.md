@@ -8,6 +8,8 @@ working with decks, curating the literature, and keeping knowledge so it can be 
 - {doc}`quickstart`
 - {doc}`resolving`
 - {doc}`concepts`
+- {doc}`journeys`
+- {doc}`molecules`
 
 **What a protein card knows**
 - {doc}`structures`
@@ -24,6 +26,7 @@ working with decks, curating the literature, and keeping knowledge so it can be 
 - {doc}`field_paths`
 - {doc}`selection_rules`
 - {doc}`data_sources`
+- {doc}`source_coverage`
 - {doc}`testing`
 - {doc}`tools/index`
 
@@ -35,6 +38,8 @@ overview
 quickstart
 resolving
 concepts
+journeys
+molecules
 structures
 sites_and_interfaces
 bioactivities
@@ -50,6 +55,7 @@ upgrading
 field_paths
 selection_rules
 data_sources
+source_coverage
 testing
 tools/index
 ```

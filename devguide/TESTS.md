@@ -84,10 +84,34 @@ or `FAIL`, with the exit code) before doing anything that depends on the result.
   `dependency_preflight.py --release` now passes the adopted public closure;
   stale floors, omitted public pins and future unpublished providers still fail.
   Ackredit #81 tracks the earlier editable Git-version mismatch. The current
-  editable satisfies the published minimum and the primary environment passes pip
-  check; all workspace packages remain editable.
+  editable satisfies the published minimum; all workspace packages remain editable.
+  The latest primary-environment check reports unrelated external dependency
+  conflicts, recorded in `CHECKPOINT.md`; installed-candidate pip check passes.
+
+## Clinical registry and bibliography guards in development
+
+`test_clinicaltrials_acquisition_offline.py` checks both registry operations,
+version/page/entry scope, continuation after empty pages, chunks, invalid envelopes,
+conflicting duplicates, repeated tokens, reuse and partial completed credit.
+Unavailable fixtures never become biological negatives. Explicit native reference
+lookup and three separately queried Europe PMC articles preserve native PMID,
+pointer forms, host citations, full personal/collective authors, saved CSL-JSON and
+BibTeX readers, concurrent context and provider failure. Existing clinical assertions
+and frozen card shape remain unchanged. `test_article_metadata_offline.py` adds
+mixed and collective-only author regressions (#128). Both test modules are copied
+and executed unchanged outside the checkout by installed-provider CI and the
+future staged package matrix; this local slice is not yet publicly delivered.
 
 ## Traceability and extraction guards delivered in 0.13.0
+
+`test_indication_bibliography_offline.py` guards the development ChEMBL reference
+projection: both indication queries, exact native grouped identifiers and row/page
+bases, overlapping disease queries, duplicate/alternative reference forms, later
+failures, original archive versions/times and empty/unavailable/unqueried outcomes.
+Malformed and identifier-only forms keep explicit gaps and unchanged raw returns.
+Host citation preservation, per-reference roles, concurrent queries and inert
+CSL-JSON/BibTeX exports are checked. The file runs unchanged outside the checkout
+in installed public-provider CI and future staged installed-package gates.
 
 `test_chembl_acquisition_offline.py` verifies paginated/chunked access, native releases,
 original document citations, archive reuse/replay, retries, partial received-page credit,
@@ -229,6 +253,92 @@ selectors. Explicit `@1` retains the legacy view/explanation at historical pins;
 new full/index packets declare `@2` and saved packet payloads remain unchanged.
 Stored card shape is unchanged.
 
+## Independent-user journey acceptance (#112, after 0.13.0)
+
+`tests/core/test_molecule_knowledge_state_offline.py` guards the #122 correction:
+native molecular record/compound counts, unusable/unknown counts, true empty versus
+missing/partial/failed/unqueried outcomes, separate identity/indication/study areas,
+exact counting-report indexes, original version/support and inert pinned readers
+after a new head. `knowledge_state@5` and `knowledge_state_explanation@2` change
+derived output only; published cards and frozen packets keep their bytes/rules.
+The file runs unchanged outside the checkout in installed-provider/staged gates.
+
+`tests/core/test_user_journeys_offline.py` starts genuinely separate producer,
+reader and reacquisition processes for `examples/user_journeys/protein_comparison.py`.
+The reader has no fixture directory, uses a different reported Sabueso version,
+and refuses new acquisition/composition/credit. Tests verify exact historical
+card/deck/packet support, original reports, physical units, identity alternatives,
+unmapped positions, partial RCSB fixture access and bibliography after reacquisition.
+Missing/changed sidecars, mismatched comparison roles/report inputs/item pins and
+overwrite attempts are refused. These are local example/SDK acceptance gates,
+separate from installed-artifact and actual Nextia consumer qualification.
+
+`tests/core/test_molecule_target_journey_offline.py` independently produces, reads
+and reacquires `examples/user_journeys/molecule_target.py`. It verifies source-stated
+ChEMBL/CCD identity, exact molecular/target/deck pins, assay context, IC50 and
+single-point quantities, undetermined values, clinical indication support and
+unfetched trials, source versions, unavailable fixture scope and original citations.
+The reader refuses new acquisition, credit and scientific derivation. Missing
+workflow files, mismatched trace/packet/molecular/item bindings and altered assay
+statements are refused before export. Copy both example scripts when running
+outside the checkout; this is local application bookkeeping, not a shared format.
+`tests/core/test_disease_entities_journey_offline.py` starts separate producer,
+reader and reacquisition processes for `examples/user_journeys/disease_entities.py`.
+It preserves MONDO equivalence/unresolved EFO identity, target/drug metadata,
+scores/phases, exclusions/caps, exact card/group support and original partial
+runtime credit. Readers forbid acquisition, current-rule explanation and new
+credit, and need no fixtures. Missing workflow files, changed membership/support,
+wrong trace/member/item pins and overstated coverage fail before export.
+Copy all three example scripts together outside the checkout. Its development `@2`
+format checks native membership/input pins; `@3` adds MONDO observations and `@4`
+adds Open Targets/Orphanet observations and pinned disease-build traces. Readers
+keep original `@1`/`@2`/`@3`/`@4` reports and gaps readable. `@5` adds
+DISEASES/ClinVar/MedGen observation; underlying study bibliography remains partial. Misbound deck traces fail before export.
+
+`tests/core/test_disease_source_acquisition_offline.py` guards native Open Targets
+pagination/order/counts/versions, partial later-page failure, invalid/null answers,
+mixed-version/count refusal, full resource bibliography and host capture. Orphadata
+cases guard original XML identity/time across memory/archive reuse, unknown origins,
+SwissProt-index scope, validation pointers, fixture subsets and failed/unavailable/
+unqueried access. Both sources keep portable credit and provider failures preserve
+science. Disease-build cases verify exact input/support/deck/member pins, detached
+copies, saved readers without acquisition/credit, failed resolution and custom-client
+gaps. The unchanged file runs in installed-provider/staged lanes.
+
+`tests/core/test_disease_lookup_acquisition_offline.py` adds 64 regressions for
+DISEASES channel/file/index dates and unknown disk origins, native channel order
+and scores, single-pass iterable inputs, fixture subsets and partial channel failure.
+NCBI cases guard raw/normalized queries, build/update/accession version bases,
+per-gene counts and caps, overlapping UIDs, complete native summaries, malformed
+classification shapes, ambiguous/capped MedGen identity, missing/mixed fixtures,
+partial later failures, archive reuse/replay and credential-free recorded metadata.
+Original resource bibliography, host captures, provider failure and inert portable
+readers are covered. The unchanged file runs outside the checkout in installed
+provider lanes and future staged artifact gates.
+
+`tests/core/test_disease_deck_support_offline.py` guards development disease rules
+`@2`: complete native rows/order/counts/indication references, original MONDO and
+member identity pins, kept/unbuilt/capped support, inert saved readers after new
+heads, save-deck-only persistence and self-contained JSONL/SQLite reimport. Missing
+or wrong support, rank/score disagreement and rewritten embedded input are reported
+partial or refused atomically. Empty/failed source scopes and legacy metadata-only
+decks remain readable without fabricated statements. Terms include embedded
+sources; unsupported member-only admission is refused. The file runs unchanged
+in installed-provider and staged gates.
+
+`test_mondo_acquisition_offline.py` covers normalized term/equivalence queries,
+native OBO versions and byte identities, checksum verification, index-memory and
+archive reuse/replay, original scientific/runtime response times and unknown-origin
+client-clock fallback,
+fixture subset/absence scopes, retries and unavailable/unqueried/failed/unobserved
+outcomes. Unknown versions/origins remain explicit. Complete resource bibliography,
+concurrent host attribution, provider failure, original card/resolution pins and inert
+saved reads have guards. The unchanged file runs in installed-provider/staged gates.
+
+All three journey files and unchanged example scripts are copied into the installed
+public-provider CI lane and the staged installed-package gate. Their local installed
+SDK acceptance does not replace future remote matrix results for these workflow changes.
+
 ## Fixtures
 
 - Fixtures are frozen public responses, saved as the source returns them (trimmed only
@@ -309,6 +419,16 @@ fails this build.
 - Relationships cite SourceAssertions present on the card.
 - Quantities are stored as `{value, unit}` and sealed. The seal is verified on load.
 - Derived knowledge carries its rule. A test fixes each rule's observable behaviour.
+
+`test_disease_deck_admission_offline.py` checks all five use contexts, whole embedded
+support, unused/unknown/per-record raw statements, non-commercial restrictions,
+broken membership bindings (including another candidate's valid basis and a changed
+resolved identifier with unrelated original support, #126), historical exclusions, empty/repeated admission and
+current-registry changes. JSONL/SQLite exports and advanced-head store reads retain
+exact original support and admission decisions without source access or new credit.
+The unchanged file runs with its support fixture module outside the checkout in
+public-provider CI and future staged installed-package gates. Finer filtering by terms of use
+is deliberately refused rather than treated as completed admission.
 
 `test_article_metadata_offline.py` guards explicit PMID/PMCID/DOI identity, core
 bibliographic projection, full native authors, service-version/unknown article-revision

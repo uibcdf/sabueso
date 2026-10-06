@@ -226,7 +226,7 @@ The maintainer's editable workspace initially exposed a 0.8.0-based Git-version
 mismatch, reported in [provider #81](https://github.com/uibcdf/ackredit/issues/81).
 On 2026-10-04 the provider's 0.9.0 tag yields editable
 `0.9.0+8.ga8219b8.dirty`; runtime/distribution versions agree, the floor is met
-and the primary environment's pip check passes. All 14 workspace packages remain
+  and the primary environment's pip check passed at that checkpoint. All 14 workspace packages remain
 editable. Receiving confirmation is reported upstream; #81 is closed through provider #82.
 Clean public distributions satisfy the floor; broader trace/result/bibliography
 and MOLI record work remain open in #108/#36.
@@ -535,3 +535,128 @@ preserves the staged digest; all 960 Zenodo source files equal the qualified tag
 Receipt: `devtools/conda-build/receipts/sabueso_0.13.0_public_2026-10-05.json`.
 Broader #108 coverage and the shared MOLI/Nextia/Recorda acceptance remain open;
 the dated earlier sections retain their original qualification boundaries.
+
+## MONDO index-query observation (development, #108/#123)
+
+Built-in term/equivalence queries retain normalized identifiers, native equivalence
+and definition-reference forms, OBO header versions, exact file/lookup identities,
+asset tags/URLs/checksum verification and original index origins. A private indexed
+tuple carries its download receipt in the existing process cache; clearing that
+cache drops the same index/receipt without a second cache or default persistence.
+Subsequent `memory` queries and `mixed` selector/index queries distinguish current
+requests/attempts from the original download. Archive replay/reuse keeps original
+times, versions, wire hashes and retrieval references.
+
+The #123 client correction preserves the original response time in scientific
+results as well as runtime records, and rejects obvious non-OBO/invalid UTF-8 input
+as connector failures instead of apparent missing terms. Missing fixture files are
+unavailable connector failures. Native partial term-stanza fixtures remain supported;
+the public parser utility is unchanged. Pre-existing indexes without receipts state
+unknown original origins/times and explicitly identify the legacy source-time fallback.
+Valid scientific mappings/identity, card fields/schema and stored states stay fixed.
+
+Received/empty queries contribute the complete MONDO resource-description citation
+to the enclosing Ackredit capture; unqueried/failed/unavailable accesses acquire no
+completed credit. Definition pointers and imported terminology declarations do not
+establish additional access or complete term bibliography. Direct disease resolution
+retains exact final card/resolution traces. `get_term` adds the standard detached
+envelope trace; raw client records keep their shape. Provider failures stay explicit.
+
+The disease example `@3` saves MONDO observations beside its original scientific
+support and workflow. Independent readers also accept genuine original `@1`/`@2`
+bundles without changing their coverage gaps or generating credit. Public Ackredit
+0.9.0 remains the receiving floor; no provider change is required. At that checkpoint,
+Open Targets/Orphanet, other disease sources, deck operations and shared
+recording/consumer acceptance remained pending. Local gate receipts are in the independent
+journey audit; no new public release or remote matrix qualification is claimed.
+
+## Association intake and disease-build traces (development, #108/#124)
+
+Open Targets now observes both association directions with native GraphQL query/
+page/hash/version/order/count and partial completed intake. Changed count/version
+or disappearing entities across pages cause connector failure, preventing mixed
+scientific source states. Explicit null entities remain evaluated absence; missing
+native fields/errors/malformed input and unavailable fixtures stay separate.
+
+Orphadata retains original XML/index receipts, byte hash, header date and indexed
+SwissProt scope. Original scientific/runtime times survive memory/archive reuse.
+Bare indexes explicitly lack origins; native validation pointers do not establish
+consulted publications. These client-integrity corrections belong to #124, without
+an upstream Ackredit change or altered public parser/card schema/default persistence.
+
+Disease builders retain detached executing version/time, original input/support
+pins, final deck/member pins, rule/limit and source/exclusion outcomes. Existing
+science and custom clients do not establish new observed access. The example `@4`
+binds these traces and reads genuine `@1`/`@2`/`@3` reports inertly. Completed queries
+contribute the full Open Targets resource article and recommended Orphadata dataset
+citation to host capture; underlying study bibliography remains incomplete.
+
+At that checkpoint, DISEASES/ClinVar/MedGen observation, full study bibliography, support-aware admission
+(#29), non-protein packets (#71), shared consumers and publication/remote matrix
+qualification remain pending. Detailed receipts live in the independent journey audit.
+
+## Disease channel, variant and identity observation (2026-10-06, #108/#125)
+
+Development DISEASES, ClinVar and MedGen built-ins now contribute observed access
+and verified resource citations to host captures. DISEASES preserves native channel
+date/file/index origins and reports unknown older disk-cache history. NCBI preserves
+native page queries/hashes/order/counts and completed subsets, separates ClinVar
+build/accession versions from MedGen last-update times, and refuses incomplete or
+ambiguous identity. Missing fixtures remain unavailable; invalid protocols do not
+establish absence. Personal keys are excluded from recorded request identities.
+
+The example `@5` preserves its original workflow credit and reads genuine `@1`–`@4`
+bundles without reconstruction or new credit. Scientific serialization, identity
+rules and default persistence remain fixed. No new Ackredit provider contract or
+provider workaround is needed; #125 owns the Sabueso integrity corrections.
+Underlying study/submission/terminology bibliography, finer support admission (#29),
+non-protein packets (#71), shared consumer guarantees and qualified public delivery
+remain pending. Final artifact and test receipts are in the journey audit.
+
+## Conservative disease-deck admission (2026-10-06, #29)
+
+Development `disease_deck_admission@1` creates a distinct derived deck only when
+all embedded native context permits the requested use. It then checks every raw
+member statement, rather than using resolved alternatives to license retained
+copies. Removed members retain historical identity references and native candidate
+bases; unknown/restricted shared terms refuse with an item-level report. Finer
+filtering by terms of use and raw per-record rights remain pending.
+
+Admission and saved JSONL/SQLite/store reads acquire nothing and add no runtime
+credit. The original deck's acquisition/portable attribution sidecars remain
+original, rather than becoming a receipt for the derived deck. No new Ackredit
+contract or workaround is needed. Separate SDK tests and installed-artifact
+qualification are recorded in the journey audit; existing `@5` example receipts
+are unchanged.
+
+## Native ChEMBL indication references (2026-10-06, #108)
+
+`chembl_indication_references@1` preserves native reference forms and all row/page
+occurrences in the existing detached source acquisition record and portable host
+capture. It distinguishes `source_cited_reference` from executed resource access.
+Grouped identifiers remain grouped; native alternative forms have separate
+content-based citation IDs and never replace a fuller host citation. Completed
+pages remain creditable before later failures; fixture result identity, original
+times, source release bases and archive reuse/replay remain explicit.
+
+Valid native URLs become incomplete web citations; identifier-only forms retain
+their exact original form as `other`. No title/author/year, target version, article
+identity or permission is inferred. Missing/malformed forms and unqueried target
+metadata remain explicit gaps. Source scientific returns, frozen schema and
+example `@5` reports stay fixed. Linked study/publication metadata and observation
+of ClinicalTrials.gov remain a subsequent bounded #108 slice.
+
+## Development clinical registry extension (2026-10-06)
+
+ClinicalTrials.gov `studies` and explicit `study_references` add native registry
+page/entry/version, reuse, empty/unavailable and partial/failure observation.
+`clinicaltrials_registry_observation@1` distinguishes API protocol, data timestamp
+and study update date. Registry records and cited pointers contribute different
+roles, with native alternatives and occurrence scope. Explicit Europe PMC lookups
+add original article metadata and preserve returned collective authors (#128).
+The client integrity fixes are owned by Sabueso #127; author projection by #128.
+This uses public Ackredit 0.9.0 APIs without a provider workaround or new shared
+contract. Linked-target access, permissions, clinical efficacy, full bibliography
+and MOLI/Recorda guarantees are not inferred. The accumulated implementation
+is included in the authorized 2026-10-06 code checkpoint; current delivery
+and exact remote CI are recorded in `../CHECKPOINT.md`, Resume here.

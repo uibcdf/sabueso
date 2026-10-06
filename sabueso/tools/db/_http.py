@@ -137,7 +137,7 @@ def noting_retries() -> Iterator[List[Dict[str, Any]]]:
 def _note_retry(url: str, reason: str) -> None:
     noted = _RETRIED.get()
     if noted is not None:
-        noted.append({"source": _source(), "reason": reason, "url": url})
+        noted.append({"source": _source(), "reason": reason, "url": _safe_url(url)})
     observed = _REQUEST.get()
     if observed is not None:
         observed["retries"].append(reason)
@@ -303,6 +303,26 @@ def _readable_json(content: bytes) -> bool:
     return True
 
 
+def _safe_url(url: str) -> str:
+    """Keep transport credentials out of observations and archive request identity."""
+    from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+
+    parts = urlsplit(url)
+    fields = parse_qsl(parts.query, keep_blank_values=True)
+    if not any(name.lower() == "api_key" for name, _ in fields):
+        return url
+    return urlunsplit(
+        parts._replace(
+            query=urlencode(
+                [
+                    (name, "<key>" if name.lower() == "api_key" else value)
+                    for name, value in fields
+                ]
+            )
+        )
+    )
+
+
 def _urlopen_once(target: Any, timeout: float, sleep):
     collectors = _REQUESTS.get()
     if not collectors:
@@ -310,7 +330,7 @@ def _urlopen_once(target: Any, timeout: float, sleep):
     named = _named(target)
     observed = {
         "method": named.get_method(),
-        "url": named.full_url,
+        "url": _safe_url(named.full_url),
         "request_sha256": hashlib.sha256(named.data).hexdigest()
         if named.data is not None
         else None,
@@ -345,7 +365,7 @@ def _urlopen_transport(target: Any, timeout: float, sleep):
         return _open(target, timeout, sleep)
     archive = mode.archive
     named = _named(target)
-    method, url, body = named.get_method(), named.full_url, named.data
+    method, url, body = named.get_method(), _safe_url(named.full_url), named.data
     if mode.name in ("replay", "reuse"):
         planned = mode.planned(method, url, body)
         kept = (
@@ -411,7 +431,7 @@ def _refuse_offline(target: Any) -> None:
         from sabueso.core.errors import OfflineError
 
         url = target.full_url if isinstance(target, Request) else str(target)
-        raise OfflineError(f"{OFFLINE}: {url}")
+        raise OfflineError(f"{OFFLINE}: {_safe_url(url)}")
 
 
 def _from_archive(kept: Dict[str, Any]):

@@ -741,3 +741,79 @@ def test_metadata_does_not_overwrite_citations_or_host_bibliography():
         )
         == host_item
     )
+
+
+@pytest.mark.parametrize(
+    "name",
+    ["Synthetic Research Group", "Synthetic A and B, Consortium", "Synthetic Équipe"],
+)
+def test_collective_authors_keep_native_order_and_indivisible_names(name):
+    from sabueso.core.article_metadata import citations
+
+    article = {
+        "authorString": "Compact native string must not replace the returned list",
+        "authorList": {
+            "author": [
+                {"fullName": "Person A", "lastName": "Person", "firstName": "A"},
+                {"collectiveName": name},
+                {"fullName": "Person B", "lastName": "Person", "firstName": "B"},
+            ]
+        },
+    }
+    original = deepcopy(article)
+    (citation,), gaps = citations([article])
+    assert citation["authors"] == [
+        {"family": "Person", "given": "A"},
+        {"literal": name},
+        {"family": "Person", "given": "B"},
+    ]
+    assert "author_list_not_returned_preserved_native_author_string" not in gaps
+    assert article == original
+    ackredit.register_item(**citation)
+    ackredit.track_item(citation["id"])
+    csl = json.loads(ackredit.get_attribution().report(format="csl-json"))
+    assert next(item for item in csl if item["id"] == citation["id"])["author"][1] == {
+        "literal": name
+    }
+
+
+def test_all_collective_authors_are_preserved_without_a_compact_author_string():
+    from sabueso.core.article_metadata import citations
+
+    article = {
+        "authorList": {
+            "author": [
+                {"collectiveName": "Synthetic Group A"},
+                {"collectiveName": "Synthetic Group B"},
+            ]
+        }
+    }
+    (citation,), gaps = citations([article])
+    assert citation["authors"] == [
+        {"literal": "Synthetic Group A"},
+        {"literal": "Synthetic Group B"},
+    ]
+    assert "article_authors_not_stated" not in gaps
+
+
+def test_public_mixed_author_list_preserves_every_person_and_collective_author():
+    result = europepmc.get_article(
+        "pubmed:26323937", client=europepmc.FixtureEuropePMCClient(DATA)
+    )
+    article = result["record"]["articles"][0]
+    original = json.loads(
+        (DATA / "europepmc/articles/pubmed__26323937.json").read_text()
+    )["resultList"]["result"][0]
+    assert article == original
+    record = result["acquisition_trace"]["records"][0]
+    bibliography = next(
+        item
+        for item in record["bibliography"]
+        if item.get("doi", "").casefold() == "10.1056/nejmoa1507574"
+    )
+    assert len(bibliography["authors"]) == len(original["authorList"]["author"]) == 22
+    assert bibliography["authors"][-1] == {"literal": "BENEFIT Investigators"}
+    assert (
+        "author_list_not_returned_preserved_native_author_string"
+        not in record["bibliography_gaps"]
+    )

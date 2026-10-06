@@ -7,6 +7,46 @@
 - **Clinical Data Volatility**: Clinical information changes more frequently than core physchem data.
 
 ## Architecture Risks (General)
+- **Disease deck support/observation gaps** (#91/#108/#112): the independent
+  disease example retains exact card/group support; published rules `@1`
+  store membership as metadata without supporting SourceAssertion/input pins.
+  A matching card nearby cannot reconstruct that membership's original support.
+  Development rules `@2` preserve native rows/order, original input and member
+  identity with atomic/portable support; delivery remains pending. Terms include
+  embedded sources. Development `disease_deck_admission@1` supports whole-context
+  admission and unchanged member filtering; shared unknown/restricted terms refuse
+  rather than filtering native context. Finer filtering by terms of use and per-record raw-content
+  licensing remain #29; resolved alternatives never license retained raw copies.
+  The #126 local integrity fix checks native candidates against the actual member's
+  source-stated identifiers; resolving pins alone does not establish identity.
+  MONDO term/equivalence observation is implemented locally, with original index/file
+  origins and bibliography. Open Targets/Orphanet and disease-deck build observation
+  are also local, including DISEASES/ClinVar/MedGen access (#125).
+  Native ChEMBL indication references retain exact observed occurrence scope and
+  portable pointer citations; linked targets are not separately consulted.
+  Complete underlying workflow bibliography remains pending. Source row totals, candidate limits and successfully built cards
+  are different counts; fixture-only card failures must not become external absence.
+- **MONDO published release integrity** (#123): 0.13.0 can change scientific retrieval
+  times during index/archive reuse, and interpret obvious non-OBO input as an absent
+  term. Both defects are corrected locally; delivery remains pending. Existing stored
+  times cannot be repaired without original receipts. Pre-existing unobserved indexes
+  retain explicit original-time/origin gaps rather than invented history. The client
+  document sanity guard is not a complete OBO validator.
+- **Disease-source published integrity** (#124): Orphadata 0.13.0 can change
+  scientific times during index reuse. Malformed/unrelated XML, incomplete Open
+  Targets fields and missing fixtures may be misclassified or leak raw errors.
+  Local corrections keep original file time, require native answer fields, refuse
+  mixed-version/count page merges, and distinguish invalid/unavailable from absent.
+  Delivery remains pending; stored times require original receipts to repair.
+  Orphadata lookups cover SwissProt-indexed rows, not every native gene.
+- **Disease lookup published integrity** (#125): older DISEASES cached-index
+  times, exhausted fixture channel iterables, missing/invalid NCBI result fields,
+  skipped ClinVar fixtures and mixed fixture versions can misstate scientific
+  scope. MedGen can choose a UID by response order or infer absence from a capped
+  search. Local guards and acquisition regressions correct these paths; public
+  delivery remains pending. Older DISEASES disk caches lack original receipts;
+  their history is not reconstructed. Incomplete/ambiguous MedGen lookup now fails
+  explicitly, rather than adding unsupported identity to a card.
 - **Packet terms scope and registry history** (#29): `packet_terms@1` supports
   `packet_aspects@6` only. Historical mappings need their own scope adapter and are
   refused by that query, without changing packet readability. Terms use the current
@@ -18,20 +58,23 @@
   environments and recipe adopt `>=0.9.0`; CI uses public Conda, and installed gates
   pin the qualified public file/hash. The public-dependency blocker is resolved.
   Independent receiving tests on all four Linux minors pass with the planned public
-  core pins. The current editable satisfies the published minimum with a passing
-  primary-environment pip check; Ackredit #81 records the earlier mismatch and
-  receiving confirmation.
-  Published runtime adapters observe packet composition and built-in UniProt/Europe PMC/RCSB
-  acquisition. Other sources/custom clients, further result types and full
+  core pins. The current editable satisfies the published minimum; Ackredit #81
+  records the earlier mismatch and receiving confirmation. The latest shared
+  environment check has unrelated
+  Amber/preparation dependency conflicts; see `CHECKPOINT.md`, Resume here.
+  Published 0.13.0 adapters observe packet composition and built-in UniProt,
+  Europe PMC, RCSB, ChEMBL, PubChem/BioAssay, BindingDB, CCD, UniChem, PDBe-KB,
+  AlphaFold DB and InterPro operations within their declared boundaries.
+  Other sources/custom clients, further result types and full
   bibliography remain gaps. Original runtime JSON must be explicitly saved;
   payload-only readers cannot reconstruct earlier execution. MOLI ProjectRecord/
   Recorda routing, correlation and strict recording policy remain platform-owned
-  work. The 0.12.0 scope (#110) does not claim complete pipeline traceability.
+  work. The 0.13.0 scope (#121) does not claim complete pipeline traceability.
   Failed tracking can leave partial workflow credits; result records retain
-  failure status and host support. Sabueso's final `7739317`/`py_1` archive passes
-  all 12 installed lanes and a fresh public-only installation; stable publication, unchanged promotion and identical-tag
-  Zenodo archival are complete. RCSB's primary citation fields may be incomplete; gaps and different stated metadata forms remain
-  explicit, without runtime enrichment.
+  failure status and host support. The published 0.12.0 (#110) and 0.13.0 (#121)
+  receipts record qualified archives, unchanged promotion, fresh public installation
+  and identical-tag Zenodo archival. RCSB's primary citation fields may be incomplete;
+  gaps and different stated metadata forms remain explicit, without runtime enrichment.
 - **SourceAssertion growth**: preserving all values can create very large cards and stores.
 - **Mapping fragility**: changes in source APIs can break field mappings.
 - **Ambiguity**: input resolution may produce multiple valid entities.
@@ -332,6 +375,26 @@
   private cards is as private as the store it came from.
 
 ## Open Questions
+
+The maintainer-approved [next roadmap](ROADMAP.md#next-roadmap-after-0130)
+(2026-10-05, #112) schedules these decisions before broad API expansion:
+
+- **Scientific query scope** (#71/#112, MOLI #22): agree a small catalog of
+  questions, entity/collection types, scientific context, constraints and coverage
+  guarantees beyond the protein/comparator prototype.
+- **Entity representations** (#112/#20/#96): define modified-peptide identity,
+  isoform/construct boundaries, FASTA/structure-file intake and the need for
+  structure-level cards. Source-stated identity and scientific similarity remain
+  separate; sequence/name matches cannot authorize merging.
+- **Reproducibility and export** (#100/#53, MOLI #3/#33): decide what a standalone
+  export retains and how historical state, source release, downloaded responses
+  and observed execution relate. Address retention and unavailable references
+  explicitly; local history does not establish historical source availability.
+- **Public contract stability** (#112 and feature issues): identify the guarantees
+  to stabilize for queries, explanations, terms, references and export, and their
+  version/deprecation and historical-read policies. Shared promises require owner
+  agreement in MOLI.
+
 - **Which isoforms, and which variants, are tissue-specific?** (#102; a need the
   maintainers recorded on 2026-09-30. **Variants: answered on 2026-10-01** by gnomAD's
   pext and `Card.variant_tissue_usage()`, `pext_at_variant@1`. Isoforms: answered the
@@ -339,20 +402,20 @@
   statements restricted to each isoform. Tissues as GTEx's UBERON terms, and isoforms
   without exons explained, on main (`isoform_exon_usage@2`). What remains: most
   isoforms without exons have no transcript any source states, so their tissues stay
-  unknown.) A card states a protein's isoforms and places
-  each population variant on the canonical isoform, or says why not
-  (`isoform_specific_position`, `not_coding_on_canonical`, `transcript_not_canonical`).
-  It does not say where each isoform is expressed. So it cannot tell a change that
-  matters only in one tissue from one that matters everywhere, for example PKM1 against
-  PKM2, or MAPT's neuronal exons. Resolving it needs a stated source of isoform
-  expression by tissue (gnomAD's `pext`, GTEx transcript expression), with its release.
-  It also needs a named rule that places a variant within the transcripts each tissue
-  expresses. The source and the rule are open.
-- What is the **LLM integration policy** (provider, prompts, and SourceAssertion tracking)?
-  An LLM output would be stored as a SourceAssertion whose source is the model, the
-  prompt and the documents it read, never as Evidence. Nothing is decided beyond that.
-- Should Sabueso keep a **raw-payload cache** for heavy enrichments, and how would
-  licences constrain it (`CACHE_POLICY.md`)?
+  unknown.) Remaining expansion needs source-stated transcript/exon correspondence,
+  isoform sequences and explicit expression scope/releases. No alignment or guessed
+  transcript identity can fill these gaps.
+- **Literature extraction and validation** (#92/#29/#112): define supplied-fragment
+  rights, human validation, correction/retraction and broader statement rules before
+  model-assisted extraction. Record method/model/configuration and exact source
+  location. An extracted SourceAssertion must state what the external source
+  actually says; a model-generated interpretation does not automatically become
+  one. Provider/prompt policy remains undecided. Project-derived promotion is a
+  separate MOLI #17 boundary, and project Evidence remains Nextia's.
+- **Coherent cache/replay and historical source access** (#100): the retrieval
+  archive and explicit reuse/replay modes exist. Agree release coherence, rights
+  and availability guarantees for heavier workflows and historical queries
+  (`CACHE_POLICY.md`); #101 real-mirror work remains postponed.
 - Which **reference form** will MOLI agree for cited knowledge (uibcdf/moli#3, #53)?
 - How does **derived knowledge promoted by a project** live in Sabueso, if at all
   (uibcdf/moli#17)?
@@ -377,3 +440,12 @@ Answered since the first list (2026-01):
   reasons and uncomputed sets. Explicit legacy selection retains the original
   limitation for reproducibility, and the matching explanation flags its gap.
   Missing original numbering cannot be reconstructed from equal numbers or names.
+
+- **Clinical registry scope and delivery** (#108/#127/#128): development observation
+  and explicit native references are implemented, with local false-absence,
+  continuation and duplicate-integrity fixes. The registry timestamp is reported
+  independently of pages, so coherent per-page revision is unknown. Linked references
+  can be incomplete, retracted or permission-restricted; declared links do not prove
+  access, article rights or efficacy. Explicit Europe PMC metadata preserves complete
+  returned personal/collective authors. Wider clinical semantics and bibliography
+  across other providers remain pending; these fixes need a delivery checkpoint.

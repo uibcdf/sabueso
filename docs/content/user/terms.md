@@ -22,6 +22,36 @@ card_report["objects"]  # per related entity (a measured molecule…): complete,
 deck.admissible("commercial_product")  # only cards whose knowledge all remains
 ```
 
+## Development disease-deck admission
+
+For portable disease support (`sabueso.disease_deck_support@1`), admission follows
+`disease_deck_admission@1`. All embedded disease snapshots, native returned rows and
+excluded-candidate context must permit the requested use. Each member is then
+checked as an unchanged card: an allowed alternative for a resolved value does not
+license other raw SourceAssertions that would also be exported. Unused native
+statements are checked too. Per-record rights not declared for raw content remain
+unknown, even when an individual projected relationship has known depositor terms.
+
+```python
+admitted = deck.admissible("redistribution")
+admitted.meta["admission"]["terms"]  # original admission scope and obligations
+admitted.meta["admission"]["input_deck_snapshot_id"]  # original deck content address
+admitted.meta["excluded"]  # rejected cards, item reasons and historical identity pins
+```
+
+Shared unknown/restricted terms raise `ArgumentError`; its `admission_report`
+contains exact item locators and registry verdicts without asserted values. No
+derived deck is produced in that case. Pruning an individual source from complete
+native context is not implemented. Malformed or incomplete support raises
+`StorageError` before admission. Retained members keep their exact card pins; removed
+member identity references are historical, separate from the still-readable native
+candidate basis. JSONL/SQLite and knowledge-store reads preserve that distinction.
+
+The operation changes no original deck, acquires nothing and adds no runtime credit.
+Keep original acquisition/attribution sidecars beside the original deck. The report
+uses the current packaged registry and its review dates, not historical terms at
+acquisition. These are development capabilities; #29 remains open.
+
 ## Uses
 
 `internal_research`, `academic_publication`, `redistribution`, `derived_dataset` and

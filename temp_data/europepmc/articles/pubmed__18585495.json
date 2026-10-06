@@ -1,0 +1,118 @@
+{
+  "version": "6.9",
+  "hitCount": 1,
+  "resultList": {
+    "result": [
+      {
+        "id": "18585495",
+        "source": "MED",
+        "pmid": "18585495",
+        "doi": "10.1016/j.ahj.2008.04.001",
+        "title": "Rationale and design of a randomized placebo-controlled trial assessing the effects of etiologic treatment in Chagas' cardiomyopathy: the BENznidazole Evaluation For Interrupting Trypanosomiasis (BENEFIT).",
+        "authorString": "Marin-Neto JA, Rassi A, Morillo CA, Avezum A, Connolly SJ, Sosa-Estani S, Rosas F, Yusuf S, BENEFIT Investigators.",
+        "authorList": {
+          "author": [
+            {
+              "fullName": "Marin-Neto JA",
+              "lastName": "Marin-Neto",
+              "firstName": "Jose Antonio",
+              "initials": "JA",
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "Medical School of Ribeirao Preto, University of Sao Paulo, Ribeirão Preto, Sao Paulo, Brazil. marin_neto@yahoo.com"
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Rassi A Jr",
+              "lastName": "Rassi",
+              "firstName": "Anis",
+              "initials": "A"
+            },
+            {
+              "fullName": "Morillo CA",
+              "lastName": "Morillo",
+              "firstName": "Carlos A",
+              "initials": "CA"
+            },
+            {
+              "fullName": "Avezum A",
+              "lastName": "Avezum",
+              "firstName": "Alvaro",
+              "initials": "A"
+            },
+            {
+              "fullName": "Connolly SJ",
+              "lastName": "Connolly",
+              "firstName": "Stuart J",
+              "initials": "SJ"
+            },
+            {
+              "fullName": "Sosa-Estani S",
+              "lastName": "Sosa-Estani",
+              "firstName": "Sergio",
+              "initials": "S"
+            },
+            {
+              "fullName": "Rosas F",
+              "lastName": "Rosas",
+              "firstName": "Fernando",
+              "initials": "F"
+            },
+            {
+              "fullName": "Yusuf S",
+              "lastName": "Yusuf",
+              "firstName": "Salim",
+              "initials": "S"
+            },
+            {
+              "collectiveName": "BENEFIT Investigators"
+            }
+          ]
+        },
+        "journalInfo": {
+          "issue": "1",
+          "volume": "156",
+          "journalIssueId": 1538483,
+          "dateOfPublication": "2008 Jul",
+          "monthOfPublication": 7,
+          "yearOfPublication": 2008,
+          "journal": {
+            "medlineAbbreviation": "Am Heart J",
+            "title": "American heart journal",
+            "essn": "1097-6744",
+            "issn": "0002-8703",
+            "isoabbreviation": "Am Heart J",
+            "nlmid": "0370465"
+          },
+          "printPublicationDate": "2008-07-01"
+        },
+        "pubYear": "2008",
+        "firstPublicationDate": "2008-07-01",
+        "isOpenAccess": "N",
+        "fullTextUrlList": {
+          "fullTextUrl": [
+            {
+              "availability": "Subscription required",
+              "availabilityCode": "S",
+              "documentStyle": "doi",
+              "site": "DOI",
+              "url": "https://doi.org/10.1016/j.ahj.2008.04.001"
+            }
+          ]
+        },
+        "pubTypeList": {
+          "pubType": [
+            "Research Support, Non-U.S. Gov't",
+            "Multicenter Study",
+            "Randomized Controlled Trial",
+            "Journal Article"
+          ]
+        },
+        "pageInfo": "37-43"
+      }
+    ]
+  }
+}

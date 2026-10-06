@@ -23,17 +23,37 @@ what is now covered is noted, and what remains is below.
 - Source access: `user/tools/db/sources.md`, which lists every `get_*`. The deprecated
   pages are marked, each pointing to its replacement.
 - The API reference covers every module of `core`, `tools` and `mappings`.
+- Since the post-0.13.0 journey slice (#112):
+  - `user/journeys.md` and `examples/user_journeys/protein_comparison.py`: the
+    independently readable public protein/comparator journey, with saved original
+    results/support/attribution and fixture reacquisition;
+  - `user/molecules.md`: molecular identity, physchem, clinical scope and the
+    target/molecule activity crossing, with the independently readable public
+    BTS/benznidazole journey in `examples/user_journeys/molecule_target.py`;
+  - `user/source_coverage.md`: source contributions and scientific/runtime limits
+    for the three journeys;
+  - `user/journeys.md` and `examples/user_journeys/disease_entities.py`: independent
+    disease saved-reader/reacquisition demonstration with original membership
+    metadata, exact card support and explicit support/observation gaps.
 
 ## Open gaps
+
+The [approved roadmap after 0.13.0](ROADMAP.md#next-roadmap-after-0130) schedules
+documentation around three independent-user journeys: protein/comparator,
+molecule/activities and disease/related entities. Each needs a public runnable
+example, supported-source/limit/terms explanations, original runtime sidecar
+preservation and an independent saved reader. Review closure under #112 alongside
+the implementation issues; consumer-owned MOLI contracts remain separate.
 
 - **The showcase notebook** was run on 0.3.0. It lacks:
   - the identity audit with NCBI Gene;
   - measurements across sources;
   - names;
   - the structural inventory.
-  Rebuild it (`tools/build_showcase_notebook.py`) with the next release.
+  Rebuild it (`tools/build_showcase_notebook.py`) during the user-journey work.
 - **Per-source coverage tables** for users: which fields and relationships each source
-  fills. They live only in `devguide/DATA_SOURCES_STATUS.md`.
+  fills. The journey-level table is now in `user/source_coverage.md`; full field/path
+  and relationship coverage for every source remains in `devguide/DATA_SOURCES_STATUS.md`.
 - **Integration contracts** with MolSysSuite (MolSysMT, TopoMT, PharmacophoreMT) and with
   Nextia (citing references). Not written, because not agreed yet (uibcdf/moli#3,
   moli#17).
@@ -43,5 +63,13 @@ what is now covered is noted, and what remains is below.
   No page shows what they state or how to read it: kinase pockets, GPCR numbering,
   antibody complexes, orthologs, a reference entry against its genome-strain entry
   (`clustered_with`, `Card.sequence_differences`).
-- **Small-molecule cards** have no page of their own. Resolution, ligand decks and
-  entities cover them in part.
+- **Remaining disease guarantees:** the bounded demonstration and independent
+  saved reader and development membership assertion/input pins exist (#112/#91);
+  MONDO/Open Targets/Orphanet and disease-deck build observation are local; remaining
+  full underlying study bibliography (#108) remains required. Conservative
+  whole-context admission is local (#29); finer filtering by terms of use and raw per-record rights
+  remain pending.
+  Broad molecular reverse queries and clinical/source-operation observation remain
+  #71/#108 work; the molecule example fetches ChEMBL indications, not clinical studies.
+  Source-record aggregate knowledge-state counts are corrected locally under
+  versioned rules (#122); delivery in a published replacement remains pending.

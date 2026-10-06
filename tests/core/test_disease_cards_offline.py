@@ -495,7 +495,7 @@ def test_a_disease_s_targets_with_every_statement_that_brought_them(mondo):
     ids = [c.id for c in deck.cards]
     assert ids[0] == "sabueso:protein:uniprot:P60174"
     basis = deck.basis(ids[0])
-    assert basis["rule"] == "disease_targets@1"
+    assert basis["rule"] == "disease_targets@2"
     assert {s["source"] for s in basis["statements"]} == {"Open Targets", "Orphanet"}
     ot = next(s for s in basis["statements"] if s["source"] == "Open Targets")
     assert (ot["rank"], ot["symbol"], ot["disease"]) == (1, "TPI1", "MONDO:0014221")
@@ -550,6 +550,6 @@ def test_the_drugs_whose_indications_name_the_disease(mondo):
     assert deck.meta["disease"] == "sabueso:disease:mondo:MONDO:0001444"
     (drug,) = deck.cards  # benznidazole
     basis = deck.basis(drug.id)
-    assert basis["rule"] == "disease_drugs@1"
+    assert basis["rule"] == "disease_drugs@2"
     assert {i["max_phase_for_ind"] for i in basis["indications"]} == {"4.0"}
     assert {i["molecule_chembl_id"] for i in basis["indications"]} == {"CHEMBL110"}

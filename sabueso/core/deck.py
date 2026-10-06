@@ -29,7 +29,7 @@ class Deck:
 
     @property
     def acquisition_trace(self) -> Dict[str, Any] | None:
-        """Original ligand-deck intake, separate from its scientific payload.
+        """Original ligand/disease-deck intake, separate from its scientific payload.
 
         Save the original runtime sidecar beside the deck. Payload-only readers
         and ordinary deck operations acquire nothing and do not create a trace.
@@ -148,7 +148,7 @@ class Deck:
         excluded = [
             e for e in self.meta.get("excluded") or [] if e["candidate"] == card_id
         ]
-        return {
+        result = {
             "card_id": card_id,
             "in_deck": any(c.id == card_id for c in self.cards),
             "basis": basis,
@@ -160,6 +160,11 @@ class Deck:
             },
             "operations": self.meta.get("operations") or [],
         }
+        if self.meta.get("kind") in ("disease_targets", "disease_drugs"):
+            from .disease_deck_support import explain_support
+
+            result["support"] = explain_support(self, card_id)
+        return result
 
     @arg_digest()
     def expand(
@@ -179,8 +184,16 @@ class Deck:
     @arg_digest()
     def terms(self, use: str, skip_digestion: bool = False) -> Dict[str, Any]:
         """What the sources of the deck's knowledge state about ``use``, card by card
-        (``terms_propagation@1``, #29). Not legal advice."""
+        (``terms_propagation@1``, #29). Disease decks with portable support include
+        their input and native statements (``disease_deck_terms@1``). Not legal advice."""
         from .terms import terms_report
+
+        if self.meta.get("kind") in ("disease_targets", "disease_drugs"):
+            from .disease_deck_support import terms_for_support
+
+            support_report = terms_for_support(self, use)
+            if support_report is not None:
+                return support_report
 
         return terms_report(self.cards, use)
 
@@ -188,7 +201,17 @@ class Deck:
     def admissible(self, use: str, skip_digestion: bool = False) -> "Deck":
         """The cards all of whose knowledge has a source allowed for ``use``. The others
         are excluded with the reason (``partially_admissible``, ``not_admissible``), and
-        the operation is recorded (#29)."""
+        the operation is recorded (#29). Disease decks require all embedded support
+        to be admissible, then retain only whole admissible member cards under
+        ``disease_deck_admission@1``. Unknown shared terms refuse the operation."""
+        if (
+            self.meta.get("kind") in ("disease_targets", "disease_drugs")
+            and isinstance(self.meta.get("support"), dict)
+            and self.meta["support"].get("format") == "sabueso.disease_deck_support@1"
+        ):
+            from .disease_deck_admission import admit
+
+            return admit(self, use)
         report = self.terms(use)
         status = {c["card_id"]: c["status"] for c in report["cards"]}
         kept = [c for c in self.cards if status.get(c.id) == "complete"]

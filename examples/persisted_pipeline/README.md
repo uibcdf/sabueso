@@ -1,8 +1,8 @@
-# Persisted public knowledge pipeline (unreleased)
+# Persisted public knowledge pipeline
 
-Run this development example with the editable checkout or a qualified diagnostic
-wheel. Published Sabueso 0.12.0 does not contain the explicit article-metadata API
-used here. The published-compatible example remains [the Ackredit pilot](../ackredit_pilot/README.md).
+This example was delivered and qualified with Sabueso 0.13.0. It uses explicit
+article metadata and literal-extraction APIs unavailable in 0.12.0. The smaller
+[Ackredit pilot](../ackredit_pilot/README.md) also works with 0.12.0.
 
 Each command starts a separate Python process. From the repository root:
 

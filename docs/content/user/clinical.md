@@ -43,7 +43,8 @@ for trial in view["trials"][:3]:
   - the interventions, as written.
 
   `cited_for` names the indications that cite the trial. A cited id that
-  ClinicalTrials.gov does not hold is kept, with `registry: not_found`.
+  ClinicalTrials.gov does not return after a complete query is kept, with
+  `registry: not_found`. Failed or unavailable access does not establish absence.
 - **Not fetched.** `not_fetched` lists cited trials the card did not fetch, because
   trials were not requested or were past the limit.
 
@@ -57,3 +58,11 @@ chembl_drug_indication`).
 
 DrugBank's clinical content is not used: its licence (CC BY-NC 4.0) does not allow
 redistribution across MOLI.
+
+## Native references in development
+
+`clinicaltrials.get_study_references(nct_id)` retrieves native registry bibliography
+separately from card clinical fields. It preserves declared PMID and links without
+following them. To obtain article metadata, query Europe PMC explicitly and retain
+both operations' original attribution; see {doc}`attribution`. Registry statements
+are source assertions, not proof of efficacy. This extension is not in public 0.13.0.

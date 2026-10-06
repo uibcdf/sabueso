@@ -47,6 +47,14 @@ from sabueso.tools.db import (
 
 ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 TRACED = {
+    "clinicaltrials.get_studies",
+    "clinicaltrials.get_study_references",
+    "diseases.get_associations",
+    "clinvar.get_variants",
+    "medgen.get_concepts",
+    "open_targets.get_associations",
+    "orphadata.get_associations",
+    "mondo.get_term",
     "europepmc.get_article",
     "interpro.get_site_residues",
     "alphafold.get_prediction",
@@ -68,6 +76,9 @@ TRACED = {
 BTS_KEY = "XBNHRNFODJOFRU-UHFFFAOYSA-N"
 
 CALLS = {
+    "clinicaltrials.get_study_references": lambda: clinicaltrials.get_study_references(
+        ["NCT00123916"], client=clinicaltrials.FixtureClinicalTrialsClient("temp_data")
+    ),
     "europepmc.get_article": lambda: europepmc.get_article(
         "pubmed:40832834", client=europepmc.FixtureEuropePMCClient("temp_data")
     ),

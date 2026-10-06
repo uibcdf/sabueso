@@ -180,7 +180,8 @@ This document is a living checkpoint of the data sources (DBs) currently integra
   - saved responses in `temp_data/chembl/indications.json` and `temp_data/clinicaltrials/studies.json`.
 - **Quality**: green for the listed coverage.
   - Verified live on benznidazole (CHEMBL110): 4 indications, all phase 4 (ChEMBL_37), and the 16 trials they cite (API v2, data of 2026-09-25).
-  - An NCT id ClinicalTrials.gov does not hold is returned as missing.
+  - Missing NCT ids require a completed paginated query. Invalid responses and
+    unavailable fixture answers do not establish absence (#127, development fix).
 - **Coverage**:
   - `investigated_for`: disease term, MeSH heading, maximum phase and cited references;
   - `tested_in`: title, status, phases, study type, enrolment, dates, conditions, interventions as written, lead sponsor, and whether results are posted;
@@ -188,6 +189,11 @@ This document is a living checkpoint of the data sources (DBs) currently integra
 - **Notes**:
   - Trials come only through the NCT ids ChEMBL cites, never by matching intervention names.
   - Adverse events (openFDA/FAERS) are not covered.
+  - Development `get_study_references` retrieves native reference modules separately
+    from card clinical assertions. Study/reference acquisition preserves native
+    page, version, reuse and failure scope (#108); explicit Europe PMC article
+    queries retain complete personal/collective authors (#128). Linked targets are
+    never fetched automatically. The public release remains 0.13.0.
   - Licences: ChEMBL CC BY-SA 3.0; ClinicalTrials.gov is a US government work (credit NLM).
 
 ### ChEMBL bioactivities

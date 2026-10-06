@@ -52,6 +52,16 @@
   (`ROADMAP.md`).
 
 ## Nested Structure
+
+Disease-deck support in development (#91) adds `meta.support` under the local
+`sabueso.disease_deck_support@1` format. It embeds unchanged disease input and a
+separate assertion-bearing card revision, using existing SourceAssertion fields
+and existing `relationships.associated_with` / `relationships.investigated_for`
+assertion paths. Native rows and full returned source records are assertion values;
+membership/ranking rules live in deck metadata. No card field, predicate, migration
+step or schema version is added; published 0.3.12 remains frozen. Deck metadata and
+source-data values are not new card field paths. See `STORAGE_LAYOUT.md` for pins.
+
 Cards are **nested** to preserve hierarchy and order. Each card type (protein, peptide, small molecule) inherits from a shared base.
 
 ## Field Path Contract (Approved)

@@ -693,7 +693,7 @@ resources:
     proposed_by: "Sabueso maintainers, literature beyond manual curation (#92)"
     decided_by: "Sabueso maintainers (2026-09-29)"
     reason: "The publications whose text states a protein's UniProt accession (ACCESSION_ID search, text-mined by Europe PMC). Its gene and protein annotations are not used: they ground a name without the organism (a human TPI paper is tagged with a yeast entry)."
-    access: "get_article(identifier) explicitly queries core bibliography by pubmed:/pmc:/doi:, retaining source-stated identifiers and licence without abstract/full-text lookup; REST search (ACCESSION_ID, cursor paging), no key, when resolve(..., europepmc={}); get_annotations(article_ids) reads located accession annotations for explicit MED/PMC articles; unreleased card intake uses europepmc={article_ids: ...} for direct UniProt mentions and source-supported PDB mention context"
+    access: "get_article(identifier) explicitly queries core bibliography by pubmed:/pmc:/doi:, retaining source-stated identifiers and licence without abstract/full-text lookup; REST search (ACCESSION_ID, cursor paging), no key, when resolve(..., europepmc={}); get_annotations(article_ids) reads located accession annotations for explicit MED/PMC articles; card intake since 0.12.0 uses europepmc={article_ids: ...} for direct UniProt mentions and source-supported PDB mention context"
     licence: "EMBL-EBI terms of use: no restrictions of its own, attribution expected; each article keeps its licence. Search keeps bibliography; explicit annotation intake also keeps quote fragments governed by article terms, unknown when the response states no licence"
     limit:
       constant: sabueso.tools.db.europepmc.DEFAULT_LIMIT
@@ -1419,7 +1419,7 @@ resources:
     since: 2026-01-31
     proposed_by: "Original plan: clinical layer and use case 8 (clinical trials for ligands)"
     reason: "The clinical layer of molecule cards (#81). Studies name interventions only as text, so Sabueso asks only for the NCT ids ChEMBL's drug indications cite, and never matches a trial to a molecule by name."
-    access: "API v2 (studies by NCT id, in batches), no key, when resolve(..., trials={})"
+    access: "API v2 (paginated studies by explicit NCT id), no key; resolve(..., trials={}) or get_studies. Development get_study_references retrieves native references separately; cited targets are not followed."
     limit:
       constant: sabueso.tools.card.small_molecule.DEFAULT_TRIAL_LIMIT
       of: trials per molecule, among those ChEMBL's indications cite
@@ -1431,7 +1431,7 @@ resources:
       statement: https://clinicaltrials.gov/about-site/terms-conditions
       reviewed: 2026-09-29
     module: [sabueso.tools.db.clinicaltrials, sabueso.mappings.clinical]
-    links: ["#81", "#83"]
+    links: ["#81", "#83", "#108", "#127"]
   - id: medgen
     name: "MedGen (NCBI)"
     url: https://www.ncbi.nlm.nih.gov/medgen/

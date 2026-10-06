@@ -4,6 +4,12 @@ The developer guide is the repository's memory: what Sabueso is, how it is built
 was decided and why, and what comes next. Start with `CHECKPOINT.md` and `ROADMAP.md`.
 Contributors and agents also read `../AGENTS.md`.
 
+To resume after a pause, read [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here),
+then [ROADMAP.md, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).
+These separate published behavior, accumulated local work, latest qualification
+and the next implementation/design steps. Detailed receipts remain linked; neither
+a previous test count nor a diagnostic local wheel establishes a public release.
+
 Every document is one of four kinds:
 - **normative**: rules and contracts that code must follow;
 - **living**: the current state, kept true;
@@ -15,7 +21,7 @@ Every document is one of four kinds:
 | Document | Kind | What it holds |
 |---|---|---|
 | `CHECKPOINT.md` | living | The current state: release, schema, layout, quality baseline, open work |
-| `ROADMAP.md` | living | Both routes (foundational plan and pilot-driven), and the status of every objective |
+| `ROADMAP.md` | living | Both routes, objective status, and the approved next roadmap after 0.13.0: user journeys, query/traceability guarantees, peptides and parallel consumer contracts |
 | `DECISIONS.md` | living (log) | Every design decision, dated, with its reason |
 | `RISKS_AND_OPEN_QUESTIONS.md` | living | Risks for the future, and decisions to re-evaluate |
 
@@ -74,9 +80,16 @@ not a release receipt.
   `pending_proposals/design_implementation_review.md` compares original design,
   scientific capabilities and current implementation, with concrete gaps and owning
   acceptance criteria (#112).
+  `pending_proposals/independent_user_journeys.md` scopes the three standalone SDK
+  journeys, the implemented protein comparison, molecule/target and bounded disease
+  examples, exact disease membership support, conservative whole-context admission
+  and remaining filtering by terms of use, clinical, query and observation gaps
+  (#112, #29/#91/#71/#108). The source-state
+  correction is implemented locally under versioned rules (#122); delivery is pending.
   `pending_proposals/ackredit_knowledge_pipeline_attribution.md` records the required
   pipeline attribution plan (#108, moli#36), its automatic composition and bounded
-  acquisition adapters, and remaining coverage/publication gates.
+  acquisition adapters (including development ClinicalTrials.gov native references
+  and explicit Europe PMC bibliography), and remaining coverage/publication gates.
 - `templates/report.md`: the report template (MOLI reporting protocol).
 - `archive/`: resolved reports and superseded documents, indexed in
   `archive/README.md`. The original plans are there, and `ROADMAP.md` still tracks them.

@@ -11,7 +11,7 @@
   does not cover the entity (``basis.detail`` says why, e.g. a human-only source), the
   source needs a personal key that was not given, or,
   for the biological context only curation states (#60), nothing has been curated;
-- ``unavailable``: the source failed, so nothing can be said;
+- ``unavailable``: the source failed or its request outcome cannot be evaluated;
 - ``partial``: the source stated some of it, but failed, or answered incompletely, for
   some requests (e.g. two structures of many), or its answer was cut at a limit (e.g.
   the first 5000 associations of a gene). ``basis`` names them (``unavailable_for``,
@@ -22,13 +22,16 @@ These are knowledge states, not Evidence. "Not stated by UniProt at release 120"
 fact about a source; what the absence means for a project is interpreted in Nextia.
 Rule ``knowledge_state@4`` separates counts and request coverage of areas answered
 by the same enricher (direct accession mentions versus derived structure context).
+Rule ``knowledge_state@5`` counts native molecular record ids and UniChem compounds,
+keeps unknown counts unknown, separates molecular identity from clinical intake,
+and exposes missing subsets without changing cards or original saved reports.
 """
 
 from __future__ import annotations
 
 from typing import Any, Dict, List
 
-KNOWLEDGE_STATE_RULE = "knowledge_state@4"
+KNOWLEDGE_STATE_RULE = "knowledge_state@5"
 
 #: Protein enrichments: (area, source, which enrichment records answer it).
 PROTEIN_ENRICHMENTS = (
@@ -62,6 +65,58 @@ def _row(area, source, state, release=None, count=None, **basis) -> Dict[str, An
     }
 
 
+def _enrichment_counts(area: str, source: str, records: List[Dict[str, Any]]):
+    """Reported counts, never a reconstruction of per-request assertion membership."""
+    from sabueso.enrichers import count_by_area
+
+    count_key = count_by_area().get((area, source), "count")
+    counts = []
+    for index, record in enumerate(records):
+        count, basis, field = None, "request_not_counted", None
+        if record.get("status") in ("added", "partial"):
+            field = count_key if count_key in record else "count"
+            reported = record.get(field)
+            if (
+                isinstance(reported, (int, float))
+                and not isinstance(reported, bool)
+                and reported >= 0
+                and reported < float("inf")
+            ):
+                count, basis = reported, "reported_count"
+            elif area == "records" and source in ("ChEMBL", "PDB CCD", "PubChem"):
+                ids = record.get("records")
+                if isinstance(ids, list) and all(isinstance(i, str) and i for i in ids):
+                    count, basis, field = len(set(ids)), "native_record_ids", "records"
+                else:
+                    basis = "count_not_reported"
+            elif area == "records" and source == "UniChem":
+                compound = record.get("uci")
+                if (
+                    isinstance(compound, (int, str))
+                    and not isinstance(compound, bool)
+                    and str(compound)
+                ):
+                    count, basis, field = 1, "native_compound_id", "uci"
+                else:
+                    basis = "count_not_reported"
+            else:
+                basis = "count_not_reported"
+        counts.append(
+            {"report_index": index, "count": count, "basis": basis, "field": field}
+        )
+    successful = [
+        item
+        for item, record in zip(counts, records)
+        if record.get("status") in ("added", "partial")
+    ]
+    total = (
+        None
+        if any(item["count"] is None for item in successful)
+        else sum(item["count"] for item in successful)
+    )
+    return total, counts
+
+
 def _enrichment_row(area: str, source: str, records: List[Dict[str, Any]]):
     if not records:
         from sabueso.enrichers import not_queried_details_by_area
@@ -75,14 +130,7 @@ def _enrichment_row(area: str, source: str, records: List[Dict[str, Any]]):
         details = sorted({r["detail"] for r in records if r.get("detail")})
         return _row(area, source, "not_queried", detail="; ".join(details) or None)
     statuses = [r.get("status") for r in records]
-    from sabueso.enrichers import count_by_area
-
-    count_key = count_by_area().get((area, source), "count")
-    count = sum(
-        r.get(count_key, r.get("count")) or 0
-        for r in records
-        if r.get("status") in ("added", "partial")
-    )
+    count, counts = _enrichment_counts(area, source, records)
 
     def which(status: str) -> List[str] | None:
         found = [
@@ -101,28 +149,61 @@ def _enrichment_row(area: str, source: str, records: List[Dict[str, Any]]):
         errors=statuses.count("error") or None,
         detail="; ".join(details) or None,
     )
-    if count:
-        failed, incomplete = which("error"), which("partial")
-        truncated = [
-            str(r.get("structure") or r.get("identifier") or r.get("data") or "")
-            for r in records
-            if r.get("truncated")
-        ] or None
-        if failed or incomplete or truncated:
-            return _row(
-                area,
-                source,
-                "partial",
-                release,
-                count,
-                unavailable_for=failed,
-                incomplete_for=incomplete,
-                truncated_for=truncated,
-                **basis,
-            )
+    unrecognized = [
+        i
+        for i, status in enumerate(statuses)
+        if status
+        not in (
+            "added",
+            "partial",
+            "error",
+            "not_found",
+            "not_queried",
+            "not_applicable",
+        )
+    ]
+    if unrecognized:
+        basis["unrecognized_outcomes"] = unrecognized
+    unknown = [c["report_index"] for c in counts if c["basis"] == "count_not_reported"]
+    if unknown:
+        basis["count_unknown_for"] = unknown
+        basis["reported_count_subtotal"] = sum(c["count"] or 0 for c in counts)
+    missing = sorted(
+        {str(item) for record in records for item in record.get("missing") or []}
+    )
+    if missing:
+        basis["missing"] = missing
+    failed, incomplete = which("error"), which("partial")
+    truncated = [
+        str(r.get("structure") or r.get("identifier") or r.get("data") or "")
+        for r in records
+        if r.get("truncated")
+    ] or None
+    # Missing batch members and declared partial/capped responses remain partial
+    # even if the returned subset is empty or its count was not reported.
+    if (
+        incomplete
+        or truncated
+        or (
+            any(status in ("added", "partial") for status in statuses)
+            and (missing or failed or unrecognized)
+        )
+    ):
+        return _row(
+            area,
+            source,
+            "partial",
+            release,
+            count,
+            unavailable_for=failed,
+            incomplete_for=incomplete,
+            truncated_for=truncated,
+            **basis,
+        )
+    if count is None or count > 0:
         return _row(area, source, "known", release, count, **basis)
-    if "error" in statuses:
-        # Nothing stated, and at least one request failed: nothing can be said.
+    if "error" in statuses or unrecognized:
+        # No received subset, and a failed/unrecognized request: not evaluated empty.
         return _row(area, source, "unavailable", release, **basis)
     return _row(area, source, "not_stated", release, 0, **basis)
 
@@ -274,19 +355,30 @@ def knowledge_state(card: Any, *, _support: list | None = None) -> Dict[str, Any
                 ],
             )
     else:
-        by_source: Dict[str, List[Dict[str, Any]]] = {}
-        for record in enrichments:
-            by_source.setdefault(record.get("source") or "unknown", []).append(record)
-        for source, records in sorted(by_source.items()):
+        by_area: Dict[tuple, list] = {}
+        for index, record in enumerate(enrichments):
+            source = record.get("source") or "unknown"
+            area = "records"
+            if card.meta.get("entity_type") == "small_molecule":
+                if source == "ChEMBL" and record.get("data") == "indications":
+                    area = "relationships.investigated_for"
+                elif source == "ClinicalTrials.gov":
+                    area = "relationships.tested_in"
+            by_area.setdefault((area, source), []).append(index)
+        for (area, source), indexes in sorted(by_area.items()):
+            match = {"source": source}
+            excluded_data = []
+            if card.meta.get("entity_type") == "small_molecule" and source == "ChEMBL":
+                if area == "relationships.investigated_for":
+                    match["data"] = "indications"
+                else:
+                    excluded_data = ["indications"]
             emit(
-                _enrichment_row("records", source, records),
+                _enrichment_row(area, source, [enrichments[i] for i in indexes]),
                 basis="enrichment_reports",
-                match={"source": source},
-                enrichment_indexes=[
-                    i
-                    for i, r in enumerate(enrichments)
-                    if (r.get("source") or "unknown") == source
-                ],
+                match=match,
+                excluded_data=excluded_data,
+                enrichment_indexes=indexes,
             )
 
     return {
@@ -310,6 +402,12 @@ def knowledge_state(card: Any, *, _support: list | None = None) -> Dict[str, Any
                 ],
                 "uniprot_fields": sorted(STATED_FIELDS),
                 "uniprot_predicates": sorted(STATED_PREDICATES),
+                "enrichment_counts": "reported area count; native molecular record ids or UniChem compound id; unknown is not zero",
+                "missing_subsets": "partial for received or declared incomplete requests; native not_found reports retain their missing ids",
+                "molecular_clinical_areas": [
+                    "relationships.investigated_for",
+                    "relationships.tested_in",
+                ],
             },
         ),
     }

@@ -28,6 +28,8 @@ from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError
+from sabueso.core.ncbi_disease_acquisition import note_fixture, observe, validate
+from sabueso.core.source_acquisition import capture_acquisitions, missing_fixture
 from sabueso.tools.db import _keys
 from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
@@ -57,13 +59,16 @@ class OnlineMedGenClient:
                 timeout=self.timeout,
                 expect_json=True,
             ) as resp:
-                return json.loads(resp.read().decode("utf-8"))
+                payload = json.loads(resp.read().decode("utf-8"))
+            validate(SOURCE, path, params, payload)
+            return payload
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             detail = _keys.scrub(str(exc), api_key)
             raise ConnectorError(f"MedGen {path} failed: {detail}") from (
                 None if api_key else exc  # a key never reaches a traceback
             )
 
+    @observe(SOURCE, "concepts")
     def concepts(self, concept_ids: Iterable[str]) -> Dict[str, Any]:
         ids = _ids(concept_ids)
         retrieval = stamp(SOURCE)
@@ -79,6 +84,10 @@ class OnlineMedGenClient:
                 "esearch.fcgi", {"db": "medgen", "term": term, "retmax": 10 * BATCH}
             )
             uids = (found.get("esearchresult") or {}).get("idlist") or []
+            if int(found["esearchresult"]["count"]) > len(uids):
+                raise ConnectorError(
+                    "MedGen identity search is incomplete; missing concepts cannot be established"
+                )
             if not uids:
                 continue
             summary = self._get("esummary.fcgi", {"db": "medgen", "id": ",".join(uids)})
@@ -86,6 +95,10 @@ class OnlineMedGenClient:
             for uid in result.get("uids") or []:
                 concept = (result.get(uid) or {}).get("conceptid")
                 if concept in chunk:
+                    if concept in record and record[concept] != str(uid):
+                        raise ConnectorError(
+                            f"MedGen states multiple UIDs for concept {concept}; identity is ambiguous"
+                        )
                     record[concept] = str(uid)
         return {
             "retrieved_at": retrieval.value,
@@ -106,11 +119,33 @@ class FixtureMedGenClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @observe(SOURCE, "concepts", fixture=True)
     def concepts(self, concept_ids: Iterable[str]) -> Dict[str, Any]:
         ids = _ids(concept_ids)
         if self.failing & set(ids):
             raise ConnectorError(f"MedGen request for {ids} failed (simulated)")
-        saved = json.loads(self.path.read_text(encoding="utf-8"))
+        if not self.path.is_file():
+            raise missing_fixture("MedGen concept fixture is unavailable")
+        try:
+            saved = json.loads(self.path.read_text(encoding="utf-8"))
+            if (
+                not isinstance(saved, dict)
+                or not isinstance(saved.get("record"), dict)
+                or not all(
+                    isinstance(c, str) and isinstance(uid, str) and uid.isdigit()
+                    for c, uid in saved["record"].items()
+                )
+                or (
+                    saved.get("version") is not None
+                    and not isinstance(saved["version"], str)
+                )
+            ):
+                raise ValueError("invalid concept envelope")
+        except (OSError, ValueError) as error:
+            raise ConnectorError(
+                f"MedGen concept fixture is invalid: {error}"
+            ) from error
+        note_fixture({"concept_ids": ids}, saved, SOURCE)
         record = {c: saved["record"][c] for c in ids if c in saved["record"]}
         return {
             "retrieved_at": self.retrieved_at,
@@ -124,6 +159,7 @@ class FixtureMedGenClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_concepts(identifiers: Any, client: Any = None, skip_digestion: bool = False):
     """The MedGen record (UID) of each concept id, as MedGen states it."""
     response = online(client, OnlineMedGenClient).concepts(identifiers)

@@ -1,0 +1,220 @@
+{
+  "version": "6.9",
+  "hitCount": 1,
+  "resultList": {
+    "result": [
+      {
+        "id": "26323937",
+        "source": "MED",
+        "pmid": "26323937",
+        "doi": "10.1056/nejmoa1507574",
+        "title": "Randomized Trial of Benznidazole for Chronic Chagas' Cardiomyopathy.",
+        "authorString": "Morillo CA, Marin-Neto JA, Avezum A, Sosa-Estani S, Rassi A, Rosas F, Villena E, Quiroz R, Bonilla R, Britto C, Guhl F, Velazquez E, Bonilla L, Meeks B, Rao-Melacini P, Pogue J, Mattos A, Lazdins J, Rassi A, Connolly SJ, Yusuf S, BENEFIT Investigators.",
+        "authorList": {
+          "author": [
+            {
+              "fullName": "Morillo CA",
+              "lastName": "Morillo",
+              "firstName": "Carlos A",
+              "initials": "CA",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0002-8739-2099"
+              },
+              "authorAffiliationDetailsList": {
+                "authorAffiliation": [
+                  {
+                    "affiliation": "From the Population Health Research Institute, Hamilton Health Sciences and McMaster University, Hamilton, ON, Canada (C.A.M., L.B., B.M., P.R.-M., J.P., S.J.C., S.Y.); Cardiology Division, Internal Medicine Department, Medical School of Riberao Preto (J.A.M.-N.), Instituto Dante Pazzanese de Cardiologia, São Paulo (A.A., A.M.), Hospital do Coração Anis Rassi, Goiãnia (A. Rassi Jr., A. Rassi), and Fiocruz, Instituto Oswaldo Cruz, Laboratório de Biologia Molecular e Doenças Endêmicas, Rio de Janeiro (C.B.) - all in Brazil; Instituto Nacional de Parasitología Dr. Mario Fatala Chaben-Administración Nacional de Laboratorios e Institutos de Salud, Buenos Aires (S.S.-E., E. Velazquez); Fundación Clínica Abood Shaio (F.R.) and CIMPAT-Facultad de Ciencias, Universidad de los Andes (F.G.), Bogota, and Fundación Cardiovascular de Colombia, Bucaramanga (R.Q.) - all in Colombia; Hospital Eduardo Eguia, Programa Chagas, Tupiza, Bolivia (E. Villena); Hospital Nacional Rosales, San Salvador, El Salvador (R.B.); and Independent Advisor, Neglected Tropical Diseases, Geneva (J.L.)."
+                  }
+                ]
+              }
+            },
+            {
+              "fullName": "Marin-Neto JA",
+              "lastName": "Marin-Neto",
+              "firstName": "Jose Antonio",
+              "initials": "JA",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0002-8651-8833"
+              }
+            },
+            {
+              "fullName": "Avezum A",
+              "lastName": "Avezum",
+              "firstName": "Alvaro",
+              "initials": "A",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0002-3073-6890"
+              }
+            },
+            {
+              "fullName": "Sosa-Estani S",
+              "lastName": "Sosa-Estani",
+              "firstName": "Sergio",
+              "initials": "S"
+            },
+            {
+              "fullName": "Rassi A Jr",
+              "lastName": "Rassi",
+              "firstName": "Anis",
+              "initials": "A"
+            },
+            {
+              "fullName": "Rosas F",
+              "lastName": "Rosas",
+              "firstName": "Fernando",
+              "initials": "F"
+            },
+            {
+              "fullName": "Villena E",
+              "lastName": "Villena",
+              "firstName": "Erick",
+              "initials": "E"
+            },
+            {
+              "fullName": "Quiroz R",
+              "lastName": "Quiroz",
+              "firstName": "Roberto",
+              "initials": "R"
+            },
+            {
+              "fullName": "Bonilla R",
+              "lastName": "Bonilla",
+              "firstName": "Rina",
+              "initials": "R"
+            },
+            {
+              "fullName": "Britto C",
+              "lastName": "Britto",
+              "firstName": "Constança",
+              "initials": "C",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0003-0788-7030"
+              }
+            },
+            {
+              "fullName": "Guhl F",
+              "lastName": "Guhl",
+              "firstName": "Felipe",
+              "initials": "F"
+            },
+            {
+              "fullName": "Velazquez E",
+              "lastName": "Velazquez",
+              "firstName": "Elsa",
+              "initials": "E"
+            },
+            {
+              "fullName": "Bonilla L",
+              "lastName": "Bonilla",
+              "firstName": "Laura",
+              "initials": "L"
+            },
+            {
+              "fullName": "Meeks B",
+              "lastName": "Meeks",
+              "firstName": "Brandi",
+              "initials": "B"
+            },
+            {
+              "fullName": "Rao-Melacini P",
+              "lastName": "Rao-Melacini",
+              "firstName": "Purnima",
+              "initials": "P"
+            },
+            {
+              "fullName": "Pogue J",
+              "lastName": "Pogue",
+              "firstName": "Janice",
+              "initials": "J"
+            },
+            {
+              "fullName": "Mattos A",
+              "lastName": "Mattos",
+              "firstName": "Antonio",
+              "initials": "A",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0001-8420-098X"
+              }
+            },
+            {
+              "fullName": "Lazdins J",
+              "lastName": "Lazdins",
+              "firstName": "Janis",
+              "initials": "J"
+            },
+            {
+              "fullName": "Rassi A",
+              "lastName": "Rassi",
+              "firstName": "Anis",
+              "initials": "A"
+            },
+            {
+              "fullName": "Connolly SJ",
+              "lastName": "Connolly",
+              "firstName": "Stuart J",
+              "initials": "SJ"
+            },
+            {
+              "fullName": "Yusuf S",
+              "lastName": "Yusuf",
+              "firstName": "Salim",
+              "initials": "S",
+              "authorId": {
+                "type": "ORCID",
+                "value": "0000-0003-4776-5601"
+              }
+            },
+            {
+              "collectiveName": "BENEFIT Investigators"
+            }
+          ]
+        },
+        "journalInfo": {
+          "issue": "14",
+          "volume": "373",
+          "journalIssueId": 2328222,
+          "dateOfPublication": "2015 Oct",
+          "monthOfPublication": 10,
+          "yearOfPublication": 2015,
+          "journal": {
+            "medlineAbbreviation": "N Engl J Med",
+            "title": "The New England journal of medicine",
+            "essn": "1533-4406",
+            "issn": "0028-4793",
+            "isoabbreviation": "N Engl J Med",
+            "nlmid": "0255562"
+          },
+          "printPublicationDate": "2015-10-01"
+        },
+        "pubYear": "2015",
+        "firstPublicationDate": "2015-09-01",
+        "isOpenAccess": "N",
+        "fullTextUrlList": {
+          "fullTextUrl": [
+            {
+              "availability": "Subscription required",
+              "availabilityCode": "S",
+              "documentStyle": "doi",
+              "site": "DOI",
+              "url": "https://doi.org/10.1056/NEJMoa1507574"
+            }
+          ]
+        },
+        "pubTypeList": {
+          "pubType": [
+            "Research Support, Non-U.S. Gov't",
+            "Multicenter Study",
+            "Randomized Controlled Trial",
+            "Journal Article"
+          ]
+        },
+        "pageInfo": "1295-1306"
+      }
+    ]
+  }
+}

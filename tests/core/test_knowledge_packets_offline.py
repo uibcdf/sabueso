@@ -191,7 +191,7 @@ def test_unknowns_follow_the_query(packet, query, clients):
     assert rows[("relationships.has_bioactivity", "BindingDB")] == "not_queried"
     assert ("relationships.has_bioactivity", "ChEMBL") not in rows
     assert rows[("features_positional.mutagenesis", "UniProt")] == "not_stated"
-    assert packet.unknowns["subject"]["rule"]["rule"] == "knowledge_state@4"
+    assert packet.unknowns["subject"]["rule"]["rule"] == "knowledge_state@5"
     # A packet that asks only about identity reports only identity's unknowns.
     only = _packet(sabueso.KnowledgeQuery("P60174", aspects=["identity"]), clients)
     assert set(only.facts) == {"identity"}
@@ -268,7 +268,7 @@ def test_a_changed_packet_is_refused(tmp_path, query, clients):
             text = (
                 zlib.decompress(document)
                 .decode()
-                .replace("knowledge_state@4", "knowledge_state@9")
+                .replace("knowledge_state@5", "knowledge_state@9")
             )
             conn.execute(
                 "UPDATE packet_snapshots SET document = ? WHERE snapshot_id = ?",

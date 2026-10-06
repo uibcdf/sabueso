@@ -41,6 +41,10 @@ def note_page(path, params, payload):
         )
     if path == "document.json":
         page["documents"] = deepcopy(records)
+    if path == "drug_indication.json":
+        from .indication_bibliography import reference_rows
+
+        page["indication_reference_rows"] = reference_rows(records)
     if path == "status.json":
         page["database_release"] = payload.get("chembl_db_version")
     pages.append(page)
@@ -182,4 +186,36 @@ def summarize(result, query, fixture, requests, operation, pages, client):
                 metadata[key] = deepcopy(result[key])
     else:
         metadata["incomplete"] = True
+    if operation in {"indications", "indications_for"}:
+        from .indication_bibliography import reference_rows
+
+        observations = [
+            {
+                "basis": "decoded_api_page",
+                "page_index": index,
+                "query": deepcopy(page["query"]),
+                "response_identity": deepcopy(page["response_identity"]),
+                "rows": deepcopy(page["indication_reference_rows"]),
+            }
+            for index, page in enumerate(pages)
+            if "indication_reference_rows" in page
+        ]
+        if not observations and not failed and outcome == "received":
+            observations.append(
+                {
+                    "basis": "decoded_client_result",
+                    "query": deepcopy(query),
+                    "response_identity": deepcopy(metadata["response_identity"]),
+                    "rows": reference_rows(
+                        row
+                        for rows in (result.get("indications") or {}).values()
+                        for row in rows
+                    ),
+                }
+            )
+        metadata["indication_reference_context"] = {
+            "rule": "chembl_indication_references@1",
+            "target_access": "not_queried_by_this_operation",
+            "observations": observations,
+        }
     return metadata

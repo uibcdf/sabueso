@@ -23,7 +23,10 @@ from typing import Any, Dict, Tuple
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card, make_card_id
+from sabueso.core.disease_deck_support import DiseaseDeckSupport
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.source_acquisition import capture_acquisitions
+from sabueso.mappings.disease_decks import native_assertion
 from sabueso.mappings.mondo import disease_ref, map_disease
 from sabueso.resolver.entity_resolver import EntityResolution
 from sabueso.tools.db.mondo import normalize
@@ -36,6 +39,7 @@ def disease_card_id(mondo_id: str) -> str:
 
 
 @arg_digest()
+@capture_acquisitions
 def resolve_disease_card(
     identifier: str,
     mondo_client: Any | None = None,
@@ -142,8 +146,8 @@ def resolve_disease_card(
 #: at least), so a deck asks for fewer than an enrichment does; the cut is recorded in
 #: ``deck.meta`` and reported, and ``limit`` asks for more.
 DEFAULT_DECK_LIMIT = 50
-TARGETS_RULE = "disease_targets@1"
-DRUGS_RULE = "disease_drugs@1"
+TARGETS_RULE = "disease_targets@2"
+DRUGS_RULE = "disease_drugs@2"
 
 
 def _disease_card(disease: Any, mondo_client: Any) -> Card:
@@ -176,6 +180,7 @@ def _deck(cards, meta, sources, subject):
 
 
 @arg_digest()
+@capture_acquisitions
 def disease_targets(
     disease: Any,
     limit: int = DEFAULT_DECK_LIMIT,
@@ -185,7 +190,7 @@ def disease_targets(
     mondo_client: Any | None = None,
     skip_digestion: bool = False,
 ) -> Any:
-    """Deck of the protein cards of a disease's targets (rule ``disease_targets@1``).
+    """Deck of the protein cards of a disease's targets (rule ``disease_targets@2``).
 
     ``disease`` is a disease card or any id ``resolve_disease_card`` takes. The targets
     are those the sources state, through the disease's MONDO id and the ids MONDO states
@@ -204,6 +209,7 @@ def disease_targets(
     from sabueso.tools.card.protein import resolve_protein_card
 
     card = _disease_card(disease, mondo_client)
+    support = DiseaseDeckSupport(card, TARGETS_RULE, limit)
     mondo, equivalents = _ids(card)
     candidates: Dict[str, list] = {}
     excluded = []
@@ -225,6 +231,15 @@ def disease_targets(
             sources.append({**record, "status": "error", "detail": str(exc)})
             continue
         rows = response["record"]["rows"]
+        response_assertion_id = support.add(
+            native_assertion(
+                "Open Targets",
+                f"disease:{disease_id}",
+                response["record"],
+                response,
+                disease_ref(disease_id),
+            )
+        )
         sources.append(
             {
                 **record,
@@ -237,6 +252,15 @@ def disease_targets(
         )
         for rank, row in enumerate(rows, 1):
             target = row.get("target") or {}
+            assertion_id = support.add(
+                native_assertion(
+                    "Open Targets",
+                    f"{target.get('id')}:{disease_id}",
+                    {"disease": response["record"].get("disease"), "row": row},
+                    response,
+                    f"ensembl:{target.get('id')}",
+                )
+            )
             swissprot = sorted(
                 p["id"]
                 for p in target.get("proteinIds") or []
@@ -248,6 +272,11 @@ def disease_targets(
                         "candidate": f"ensembl:{target.get('id')}",
                         "reason": "no_swissprot_product",
                         "by": "Open Targets",
+                        "basis": support.basis(
+                            f"ensembl:{target.get('id')}",
+                            [disease_id],
+                            [assertion_id, response_assertion_id],
+                        ),
                     }
                 )
             for accession in swissprot:
@@ -260,6 +289,7 @@ def disease_targets(
                         "score": row.get("score"),
                         "rank": rank,
                         "version": response.get("version"),
+                        "source_assertion_ids": [assertion_id, response_assertion_id],
                     }
                 )
         break  # the first id Open Targets holds answers for the disease
@@ -287,6 +317,15 @@ def disease_targets(
             }
         )
         for row in response["record"]:
+            assertion_id = support.add(
+                native_assertion(
+                    "Orphanet",
+                    f"ORPHA:{row.get('orpha_code')}:{row.get('gene_symbol')}",
+                    row,
+                    response,
+                    f"uniprot:{row['uniprot']}",
+                )
+            )
             candidates.setdefault(row["uniprot"], []).append(
                 {
                     "source": "Orphanet",
@@ -295,6 +334,7 @@ def disease_targets(
                     "association_type": row.get("association_type"),
                     "association_status": row.get("association_status"),
                     "version": response.get("version"),
+                    "source_assertion_ids": [assertion_id],
                 }
             )
 
@@ -309,6 +349,18 @@ def disease_targets(
         ),
     )
     cards, membership = [], {}
+
+    def basis(accession):
+        rows = candidates[accession]
+        return support.basis(
+            f"uniprot:{accession}",
+            [r["disease"] for r in rows],
+            [i for r in rows for i in r["source_assertion_ids"]],
+            target_of=card.id,
+            rule=TARGETS_RULE,
+            statements=rows,
+        )
+
     for accession in ordered[:limit]:
         try:
             protein, _ = resolve_protein_card(accession, resolver=resolver)
@@ -317,23 +369,27 @@ def disease_targets(
                 {
                     "candidate": f"uniprot:{accession}",
                     "reason": f"card_not_built: {exc}",
+                    "basis": basis(accession),
                 }
             )
             continue
         if protein is None:
             excluded.append(
-                {"candidate": f"uniprot:{accession}", "reason": "card_not_built"}
+                {
+                    "candidate": f"uniprot:{accession}",
+                    "reason": "card_not_built",
+                    "basis": basis(accession),
+                }
             )
             continue
         cards.append(protein)
-        membership[protein.id] = {
-            "target_of": card.id,
-            "rule": TARGETS_RULE,
-            "statements": candidates[accession],
-        }
+        membership[protein.id] = support.bind(basis(accession), protein)
     excluded += [
-        {"candidate": f"uniprot:{a}", "reason": "limit"} for a in ordered[limit:]
+        {"candidate": f"uniprot:{a}", "reason": "limit", "basis": basis(a)}
+        for a in ordered[limit:]
     ]
+    for exclusion in excluded:
+        support.bind(exclusion["basis"])
     if len(ordered) > limit:
         sources.append(
             {
@@ -355,6 +411,7 @@ def disease_targets(
             "excluded": excluded,
             "sources": sources,
             "limit": limit,
+            "support": support.to_dict(),
         },
         sources,
         card.id,
@@ -362,6 +419,7 @@ def disease_targets(
 
 
 @arg_digest()
+@capture_acquisitions
 def disease_drugs(
     disease: Any,
     limit: int = DEFAULT_DECK_LIMIT,
@@ -372,7 +430,7 @@ def disease_drugs(
     skip_digestion: bool = False,
 ) -> Any:
     """Deck of the small-molecule cards whose ChEMBL drug indications name a disease
-    (rule ``disease_drugs@1``).
+    (rule ``disease_drugs@2``).
 
     ChEMBL names an indication's disease by an EFO or MONDO id (``efo_id``) and a MeSH
     heading. The disease is asked by its MONDO id and by the EFO and MeSH ids MONDO
@@ -383,6 +441,7 @@ def disease_drugs(
     from sabueso.tools.card.small_molecule import resolve_molecule_card
 
     card = _disease_card(disease, mondo_client)
+    support = DiseaseDeckSupport(card, DRUGS_RULE, limit)
     mondo, equivalents = _ids(card)
     asked = [mondo] + [e for e in equivalents if e.startswith(("EFO:", "MESH:"))]
     if chembl_client is None:
@@ -398,11 +457,28 @@ def disease_drugs(
         return _deck(
             [],
             {"kind": "disease_drugs", "disease": card.id, "rule": DRUGS_RULE,
-             "sources": sources},
+             "sources": sources, "membership": {}, "excluded": [],
+             "limit": limit, "support": support.to_dict()},
             sources,
             card.id,
         )  # fmt: skip
     found = response["indications"]
+    assertion_ids = {
+        molecule: [
+            support.add(
+                native_assertion(
+                    "ChEMBL",
+                    str(row.get("drugind_id") or f"{molecule}:{index}"),
+                    row,
+                    response,
+                    f"chembl:{molecule}",
+                    indication=True,
+                )
+            )
+            for index, row in enumerate(rows)
+        ]
+        for molecule, rows in found.items()
+    }
     sources = [
         {
             **record,
@@ -416,6 +492,17 @@ def disease_drugs(
         return max(float(i.get("max_phase_for_ind") or 0) for i in found[molecule])
 
     ordered = sorted(found, key=lambda m: (-phase(m), m))
+
+    def basis(molecule):
+        return support.basis(
+            f"chembl:{molecule}",
+            asked,
+            assertion_ids[molecule],
+            investigated_for=card.id,
+            rule=DRUGS_RULE,
+            indications=found[molecule],
+        )
+
     for molecule in ordered[:limit]:
         drug, resolution = resolve_molecule_card(
             f"chembl:{molecule}",
@@ -428,18 +515,18 @@ def disease_drugs(
                 {
                     "candidate": f"chembl:{molecule}",
                     "reason": f"card_not_built: {resolution.status}",
+                    "basis": basis(molecule),
                 }
             )
             continue
         cards.append(drug)
-        membership[drug.id] = {
-            "investigated_for": card.id,
-            "rule": DRUGS_RULE,
-            "indications": found[molecule],
-        }
+        membership[drug.id] = support.bind(basis(molecule), drug)
     excluded += [
-        {"candidate": f"chembl:{m}", "reason": "limit"} for m in ordered[limit:]
+        {"candidate": f"chembl:{m}", "reason": "limit", "basis": basis(m)}
+        for m in ordered[limit:]
     ]
+    for exclusion in excluded:
+        support.bind(exclusion["basis"])
     if len(ordered) > limit:
         sources.append(
             {
@@ -461,6 +548,7 @@ def disease_drugs(
             "excluded": excluded,
             "sources": sources,
             "limit": limit,
+            "support": support.to_dict(),
         },
         sources,
         card.id,

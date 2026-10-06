@@ -81,11 +81,43 @@ shows how to use them.
   Since 0.13.0, InterPro `site_residues` access retains native signature/site context,
   header/fixture releases, original archive receipts, empty and failed outcomes.
   It runs no alignment/InterProScan and claims no direct member-database access.
+  Development MONDO `term`/`equivalent` access retains normalized queries, native
+  OBO versions, original index/file origins, memory/archive reuse and bibliography.
+  `tools.db.mondo.get_term` adds the usual detached envelope trace; direct
+  `resolve_disease_card` retains its card/resolution traces. Scientific retrieval
+  times now preserve the original response and invalid documents are connector
+  failures (#123). No card field/schema or signature changes are introduced.
+  Development Open Targets `associations`/`targets` and Orphadata
+  `associations`/`genes` also retain native query/page/file versions, original
+  retrieval/reuse, scoped absence/failures and resource citations (#108/#124).
+  Their public association envelopes add detached acquisition traces.
+- Development DISEASES `associations`, ClinVar `variants` and MedGen `concepts`
+  retain detached channel/page/identity acquisition records, including original
+  version/time origins, reuse, caps and completed subsets on failure (#108/#125).
+  Their public source envelopes add `acquisition_trace`. Native protocol omissions,
+  invalid summaries and ambiguous/capped MedGen identity are connector failures;
+  missing fixtures are unavailable. Valid scientific records and signatures stay
+  fixed. Resource citations do not replace underlying study/submission metadata.
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
   Deck.
 - `sabueso.resolve_disease_card(identifier)`, `sabueso.disease_targets(disease,
   limit=50)` and `sabueso.disease_drugs(disease, limit=50)`: a disease card, and decks
   of its targets and of the drugs whose indications name it (#90).
+  Development after 0.13.0 (#91): rules `disease_targets@2` / `disease_drugs@2`
+  additionally pin native membership assertions, source row order, original MONDO
+  input and member identity, including exclusions. `Deck.explain` exposes original
+  `disease_deck_explanation@1` support or explicit gaps. Saving/exporting the deck
+  preserves its embedded scientific support. `Deck.terms` includes embedded sources;
+  `Deck.admissible` now uses development `disease_deck_admission@1`: whole embedded
+  support must allow the use; unknown/restricted members are excluded with historical
+  references. Finer filtering by terms of use remains #29 work. No signature changes
+  or complete source-observation/bibliography guarantees are introduced.
+  The local #126 correction rejects another candidate's valid native basis when
+  the actual member's bound identifier assertions do not state that candidate.
+  Development (#108): both disease builders expose `Deck.acquisition_trace`
+  with executing version/times, original disease input/support pins, final
+  deck/member pins, rule/limit, source outcomes and exclusions. Reading stored
+  payloads creates no new trace or credit; retain original sidecars.
 - `sabueso.ligand_deck(protein_card, ...)`: the small-molecule cards of a protein's
   ligands and measured molecules.
 - `sabueso.expand(card, predicate, limit=50, options=None, terms=None)`: a deck of the
@@ -406,3 +438,15 @@ rights stay unchanged. ExtractionStore, intake and refresh preserve original sup
 literature views/explanations and exact packet support retain alternatives/citations.
 `Card.terms` and pinned packet terms expose optional `declared_article_terms`; neither
 the native licence literal nor an open-access flag grants supplied-fragment rights.
+
+## Development ClinicalTrials.gov reference access (#108/#127)
+
+`sabueso.tools.db.clinicaltrials.get_study_references(identifiers, client=None)`
+accepts one NCT id or a nonempty list through ArgDigest and returns the standard
+source envelope (`kind: study_references`, `record: {studies, missing}`). Online and
+fixture clients expose `study_references(nct_ids)`. Native reference modules are
+returned independently of clinical card fields. Both existing study lookup and
+this explicit lookup attach original acquisition/portable attribution sidecars;
+no linked target is consulted. Explicit Europe PMC article access can enrich the
+enclosing workflow bibliography, retaining collective authors as literal CSL names.
+This is unreleased development work; the public release remains 0.13.0.

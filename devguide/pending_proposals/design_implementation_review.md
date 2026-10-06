@@ -10,6 +10,13 @@ first literal literature-extraction slice. This is an implementation audit and
 priority proposal, not a replacement architecture or a commitment to every
 illustrative capability in the long-term vision.
 
+After publication of 0.13.0, the maintainer approved the next development roadmap
+on 2026-10-05: standalone user journeys, the query/explanation/traceability guarantees
+they need, peptide scope, and parallel consumer contracts. The current order and
+decision/acceptance matrix live in [ROADMAP](../ROADMAP.md#next-roadmap-after-0130).
+The matrices below remain implementation evidence and capability gaps; the earlier
+slice order is retained as a record of what led to 0.13.0.
+
 ## Inputs and interpretation
 
 The original [phases 0–5](../archive/ROADMAP_original_2026-01.md) and conceptual
@@ -110,6 +117,12 @@ positions are source-supplied, with no local alignment/InterProScan execution.
 Resource-description credit does not fill missing member/signature/site citations.
 Scientific maps/cards/schema and payload-only saved readers remain unchanged.
 
+Development ClinicalTrials.gov study/reference queries now observe native NCT,
+page/version/reuse/empty/failure scope; explicit Europe PMC lookups contribute
+original article metadata, including collective authors (#127/#128). Clinical
+SourceAssertions and frozen schema remain unchanged. Linked targets are not followed
+automatically; wider clinical semantics and bibliography remain pending.
+
 #108 is still partial: other built-ins/custom clients remain
 unobserved; arbitrary views/deck operations and full bibliography are not covered.
 Applications explicitly persist original runtime sidecars. Payload-only readers
@@ -139,7 +152,11 @@ recording policy belong to MOLI #36/#18. Sabueso's provisional record formats mu
 not be promoted unilaterally to a shared platform contract. Nextia owns project
 Evidence; MolSysSuite owns calculations, alignments and modeling interfaces.
 
-## Proposed order and acceptance
+## Implementation slices reviewed before 0.13.0
+
+This earlier sequence records delivered slices and remaining acceptance boundaries.
+For the approved next priorities, use
+[the roadmap after 0.13.0](../ROADMAP.md#next-roadmap-after-0130).
 
 1. **Literal extraction intake (#92): implemented within the delivered rule.**
    Explicit intake/replay preserves original text identity/location, tool/version,

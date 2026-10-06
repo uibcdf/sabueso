@@ -5,7 +5,50 @@ it with each release, and whenever a change makes a line below false. History do
 belong here. Decisions go to `DECISIONS.md`, and the previous log is
 `archive/CHECKPOINT_log_to_0.4.0.md`.
 
-*Last updated: 2026-10-05, 0.13.0 published and verified.*
+*Last updated: 2026-10-06, 0.13.0 published and verified; next roadmap approved.*
+
+## Resume here
+
+Read this section, then [the immediate sequence](ROADMAP.md#immediate-resumption-sequence)
+and [the journey audit](pending_proposals/independent_user_journeys.md).
+The sections below retain detailed capability and qualification records; older
+test counts are receipts for earlier slices, not the latest validation baseline.
+
+- **Published:** 0.13.0, qualified tag `7e78d078111ac8dd51e08746c3818108ebd825a4`;
+  card schema 0.3.12 is frozen. Release receipts below remain authoritative.
+- **Workspace/code checkpoint:** the accumulated development below is included
+  in the implementation checkpoint on `main`, following published-state commit
+  `c1bab2d`. The maintainer authorized commit/push on 2026-10-06. Exact remote CI
+  is being verified; the completion receipt will be recorded here. A staged
+  OS/minor installed-artifact matrix and new publication remain separate work.
+  Earlier local wheel versions/hashes are historical qualification receipts.
+- **Implemented since 0.13.0:** all three independent public SDK journeys; versioned
+  molecular knowledge-state correction (#122); exact disease membership/input/member
+  support and conservative whole-context admission (#29/#91/#126); MONDO,
+  Open Targets, Orphanet, DISEASES, ClinVar and MedGen observation/integrity
+  (#108/#123–#125); native ChEMBL indication pointer bibliography; ClinicalTrials.gov
+  study/reference observation and integrity (#108/#127), plus native collective
+  Europe PMC authors (#128). The original disease example remains `@5`.
+- **Latest bounded slice:** explicit registry-reference access and separately
+  requested article metadata. It changes runtime/source APIs, preserves existing
+  clinical SourceAssertions, and adds no automatic link traversal or clinical
+  inference. See [the clinical checkpoint](pending_proposals/clinical_registry_checkpoint.md)
+  for exact code, test, fixture and package qualification receipts. Latest gates:
+  2272 offline cases pass (693.93 seconds), 178 focused installed cases pass
+  with public Ackredit 0.9.0 (19.50 seconds), and warning-fatal Sphinx passes.
+- **Open delivery issues:** #122–#128 remain open; implemented local corrections
+  are not fixes delivered to users of 0.13.0. #108/#112 remain broader umbrella work.
+- **Working environment:** Python 3.14.7 in `molsyssuite@uibcdf_3.14`;
+  all 14 workspace packages have verified editable metadata and checkout imports
+  outside the repository. Current shared-environment `pip check` fails for
+  unrelated installed Amber/preparation packages; details and the passing separate
+  installed-candidate environment are in the clinical checkpoint. This replaces
+  earlier claims of a passing shared-environment check.
+- **Resume action:** verify the code-checkpoint delivery receipt, then integrate
+  explicitly scoped clinical bibliography into a versioned saved public journey.
+  Use the latest receipts rather than rerunning completed checks without a change.
+  Follow the roadmap for remaining query/terms discussions. A release needs its
+  own approved substantial scope and full staged qualification.
 
 ## Release qualification
 
@@ -45,7 +88,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   traceability adds no fields to scientific serialization.
 - **Editable workspace:** all 14 installed workspace packages remain editable in
   `molsyssuite@uibcdf_3.14`. Ackredit's editable runtime/distribution versions agree;
-  the environment's pip check passes. Provider #81 is closed through #82.
+  the current shared-environment pip check has external dependency conflicts
+  recorded in the resume section. Provider #81 is closed through #82.
   Separate environments qualify public/candidate distributions.
 
 ## Capabilities delivered in 0.13.0
@@ -147,7 +191,8 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   locators point to the original pinned card. No negative assertion, per-request
   assertion membership, source access or new credit is invented. The #116 integrity
   fix retains all supporting UniProt versions instead of crashing; the working
-  classifications and `knowledge_state@4` remain unchanged.
+  classifications stayed on `knowledge_state@4` in 0.13.0. The local #122 correction
+  below introduces new rule versions without changing published card states.
 - Design/architecture review (#112): `pending_proposals/design_implementation_review.md`
   maps original plans and scientific functions to code/tests, remaining work, owners
   and bounded acceptance criteria. Peptides, much of the clinical layer and persistent
@@ -513,7 +558,7 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 ## Quality baseline
 
-- Current development offline suite: 1924 tests passed, 26 online tests deselected (2026-10-05, in
+- Current development offline suite: 2272 tests passed, 26 online tests deselected (2026-10-06, in
   `molsyssuite@uibcdf_3.14`, with all installed workspace packages editable and the
   required real Ackredit editable provider available). Run with
   `python -m pytest -m "not online" --receptor=llm`.
@@ -526,14 +571,240 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
 
 - Plan and status of every objective: `ROADMAP.md`. It integrates the foundational plan
   and the pilot-driven route.
-- **Next:** explicit located UniProt accession mentions now enter cards in 0.12.0
+- **Next roadmap (#112, approved 2026-10-05):** demonstrate independent-user
+  journeys for protein/comparator, molecule/activities and disease/related entities;
+  extend the queries, explanations and mandatory traceability those journeys need;
+  scope peptide identity and a first scientific use as the next expansion.
+  Coordinate Nextia, MOLI recording and modeling exchanges in parallel. Pending
+  decisions cover query scope, entity representations, reproducibility/export,
+  literature validation and public contract stability. See `ROADMAP.md`,
+  "Next roadmap after 0.13.0", for ownership and acceptance criteria.
+- **First independent-user journey (#112, development):**
+  `examples/user_journeys/protein_comparison.py` resolves public TcTIM/HsTIM, compares
+  source-supported fields/ligands, retains original reports/units, and saves both
+  proteins, ligand decks and full/index packets with original runtime sidecars.
+  Separate saved readers and fixture reacquisition preserve historical item support
+  and bibliography. Source subsets and missing-fixture/positional limits stay explicit.
+  User pages now cover the journey, molecules and source coverage. Disease/deck
+  acceptance and broader molecular/clinical guarantees remain; current gaps are tracked in
+  `pending_proposals/independent_user_journeys.md`. The live showcase still needs
+  a fresh run/review, and no new publication or consumer acceptance is claimed.
+  All seven journey regressions also pass unchanged outside this checkout with
+  public Sabueso 0.13.0, Ackredit 0.9.0 and PyUnitWizard 0.27.0 on Linux/Python 3.14.7.
+  That slice's primary offline checkpoint passed 1933 cases, Ruff and warning-failing Sphinx.
+  The source registry's stale Europe PMC publication label is corrected at
+  its canonical origin (#83); generated packaged terms remain unchanged.
+- **Molecule/declared-target journey (#112, development):**
+  `examples/user_journeys/molecule_target.py` crosses explicitly selected BTS and
+  benznidazole cards with TcTIM's ChEMBL activities and requested 1SUX structural
+  context. Original identity, assay/target assignments, IC50 and single-point
+  quantities, undetermined values, source versions and ChEMBL indications retain
+  exact support and named rules. The two-molecule deck and narrow report remain
+  separate from the broad target-context index packet. Separate readers preserve
+  original reports/citations after fixture reacquisition without new sources,
+  derivations or credit; invalid/missing sidecars and molecular/assay bindings fail.
+  Other targets and clinical studies are unqueried; the missing benznidazole
+  UniChem fixture is unavailable. Aggregate source-record state misclassification
+  was found and reported in #122, and is corrected locally below without inventing absence.
+  Full explanations produce about 30 MB of JSON per fixture acquisition (#98/#88).
+  Broader molecular queries/clinical journey integration remain #71/#108; bounded disease
+  acceptance continues below. No new release or consumer acceptance is claimed.
+  All eight new regressions pass in the primary editable environment and unchanged
+  outside the checkout with installed public Sabueso 0.13.0, Ackredit 0.9.0 and
+  PyUnitWizard 0.27.0 on Linux/Python 3.14.7. The full offline checkpoint passes
+  1941 cases (342.97 seconds; 26 online cases deselected, five expected fixture warnings).
+  Ruff checks all 690 Python files; warning-failing Sphinx, registry and dependency
+  preflight pass. Both journeys are wired into public-provider/staged installed
+  CI gates; remote qualification of these local workflow changes remains pending.
+- **Molecular source-state correction (#122, development):** `knowledge_state@5`
+  counts native molecular record ids/UniChem compounds, keeps unusable/unknown
+  counts unknown, and reports missing/partial/capped subsets even when no items
+  were returned. Clinical indication/study reports have separate areas from identity
+  intake. `knowledge_state_explanation@2` retains exact original report indexes and
+  counting bases, with scientific support as separate context; per-request assertion
+  membership is not invented. Card schema 0.3.12 and published card payloads stay
+  fixed. Frozen packets/original reports keep their original rules; saved readers
+  acquire/recompute nothing and add no credit. This correction is local; published
+  replacement and remote CI remain pending. Disease guarantees continue below.
+  The 131 affected state/explanation/packet regressions pass; full offline checkpoint:
+  1965 passed in 338.84 seconds, 26 online cases deselected and five expected fixture
+  warnings. A scratch wheel (0.13.0+1.gc1bab2d.dirty; SHA-256
+  `963d214ffdc46ee0dafba619dc268955cf1e29003668288991829529199e9fb1`) contains
+  the exact corrected source bytes and passes 73 unchanged state/explanation/journey
+  cases outside the checkout with installed Ackredit 0.9.0 and PyUnitWizard 0.27.0.
+  That installed reader also reads the original pre-correction molecule report
+  without recomputing it. Schema/card shape, Ruff, warning-failing Sphinx, dependency
+  preflight, workflow YAML/bindings and 69 route/dependency regressions pass.
+  Sabueso is reinstalled editable with `--no-deps --editable . --no-build-isolation`
+  in `molsyssuite@uibcdf_3.14`; outside-checkout source/distribution versions agree,
+  all 14 workspace distributions were editable and pip check passed at that receipt. The 60
+  attribution/source-acquisition/molecular-state regressions pass after reinstall.
+  These receipts do not qualify a new public or staged release artifact.
+- **Disease/related-entity journey (#112, development):**
+  `examples/user_journeys/disease_entities.py` resolves two separate MONDO-anchored
+  disease questions, saves target/drug decks and enriched HsTIM grouping context,
+  and preserves exact card/group support plus original membership metadata,
+  exclusions, limits, unresolved EFO identity and original partial runtime credit.
+  Independent readers inspect saved items and original bases without fetching,
+  recomputing or crediting; reacquisition preserves original reports/references.
+  Exact membership/input pins are implemented locally below (#91). Complete
+  acceptance remains open: disease source/deck operation observation (#108),
+  finer support admission (#29) and non-protein packets (#71). Conservative
+  whole-context admission is implemented locally below.
+  No SourceAssertions or complete bibliography are fabricated from membership
+  metadata. Source rows, attempted candidates and built cards remain distinct.
+  Local/installed gates are recorded in the journey audit; remote CI and release
+  qualification remain pending. No published behavior/schema change is claimed.
+  The initial metadata-only `@1` nine journey cases passed locally (44.78 seconds); 63 existing disease
+  identity/explanation and 69 route/staging/dependency cases also pass. All 14
+  workspace packages remain editable with verified outside-checkout import origins;
+  pip check, Ruff, workflow bindings and dependency preflight pass.
+  All nine initial `@1` cases also passed unchanged outside the checkout with installed
+  public Sabueso 0.13.0/Ackredit 0.9.0/PyUnitWizard 0.27.0 (43.40 seconds;
+  Linux/Python 3.14.7, site-packages imports). Warning-failing Sphinx passes.
+- **Exact disease membership support (#91, development):** `disease_targets@2`
+  and `disease_drugs@2` retain source-native rows/order/counts/indications as
+  SourceAssertions in a separate support revision of the original MONDO input.
+  Kept, unbuilt, capped and unsupported-product candidates retain exact native
+  item pins and disease identity; kept members also retain their actual identity
+  and card pins. `disease_deck_explanation@1` reports gaps, wrong bindings and
+  rank/score disagreement without acquiring or crediting sources.
+  `meta.support` embeds unchanged input and assertion revision snapshots under
+  `sabueso.disease_deck_support@1`; save-deck-only persistence is atomic and portable
+  JSONL/SQLite reimport preserves support. Card schema 0.3.12/store tables stay fixed.
+  `disease_deck_terms@1` includes embedded sources; conservative
+  `disease_deck_admission@1` supersedes the initial member-only refusal below.
+  Original disease example `@1` reports remain readable;
+  the `@2` reader introduced exact membership support (also retained in `@3`). Native science does
+  not establish observed access or full bibliography (#108). Delivery remains local;
+  the final offline suite passes 2000 cases (443.12 seconds; six expected fixture
+  warnings), with 26 online cases deselected. The final diagnostic wheel passes
+  133 unchanged support/journey/disease/storage/terms cases outside the checkout
+  with public Ackredit 0.9.0 and PyUnitWizard 0.27.0. All 384 non-version Python/JSON
+  files equal the checkout. Detailed receipts are in the journey audit; remote CI
+  and the OS/minor installed-artifact matrix remain pending.
+- **MONDO identity observation (#108, development; integrity correction #123):**
+  Built-in term/equivalence queries retain raw/normalized identifiers, native
+  identity/reference forms, OBO versions, exact file/lookup hashes and original
+  index/download receipts. Memory/archive reuse keeps original versions, response
+  identities and retrieval times; current selector/download attempts remain separate.
+  Scientific results now preserve that same response time. Invalid OBO/UTF-8 input
+  and missing fixture files are connector failures; source absence, fixture subsets,
+  empty equivalence, unavailable, unqueried and failed outcomes remain distinct.
+  Complete resource-description bibliography contributes to the enclosing Ackredit
+  capture; imported terminology/definition citations stay explicit gaps. Direct
+  disease resolution retains card/resolution pins and trace copies. The example
+  `@3` introduced MONDO observation and original `@1`/`@2` reading without new credit.
+  No card field/schema, valid identity/mapping or default persistence changes.
+  The final offline suite passes 2031 cases (492.30 seconds; six expected fixture
+  warnings), with 26 online cases deselected. The final diagnostic wheel passes
+  217 unchanged MONDO/source/disease/journey/storage/terms cases outside the
+  checkout with public Ackredit 0.9.0 and PyUnitWizard 0.27.0. Its 385 non-version
+  Python/JSON files equal the checkout; original `@1`/`@2` bundles remain readable.
+  All 14 workspace packages remain editable; detailed artifact/environment receipts
+  are in the journey audit. Delivery and remote qualification remain pending.
+  Other disease-source coverage is
+  still required for complete acceptance.
+- **Association-source/disease-build observation (#108, development; integrity #124):**
+  Open Targets retains GraphQL pages/queries/native versions/order/counts and partial
+  intake. Changed versions/counts or disappearing entities cannot merge silently.
+  Orphadata retains original XML/index origins and scientific/runtime time across
+  memory/archive reuse. Scoped absence, fixture unavailability and malformed/failed
+  answers stay distinct. Completed access contributes resource bibliography to host
+  Ackredit; underlying studies remain explicit gaps. Disease-build traces bind
+  original disease input/support, final deck/members, executing version/times,
+  rule/limit, source outcomes and exclusions. Existing inputs/custom clients create
+  no invented source access. The example `@4` reads genuine `@1`/`@2`/`@3` bundles
+  inertly. Valid scientific rules/card schema 0.3.12 and default persistence stay fixed.
+  Final source/build/public-envelope gates pass 100 cases; the verified diagnostic
+  wheel passes 265 unchanged cases outside the checkout with public Ackredit 0.9.0
+  and PyUnitWizard 0.27.0. Its 387 non-version Python/JSON files equal the checkout.
+  Original `@1`/`@2`/`@3` bundles remain readable. Detailed receipts are in the journey audit.
+  The final full offline checkpoint passes 2079 cases (420.50 seconds, 26 online
+  deselected, eight expected fixture warnings) in the primary editable Python 3.14.7
+  environment; all 14 workspace packages retained checkout imports and pip check passed
+  at that receipt (the current discrepancy is recorded in Resume here).
+  Delivery/remote qualification remain pending. At that checkpoint, the next slice
+  was DISEASES/ClinVar/MedGen observation; its local implementation is recorded below.
+- **Disease channel/variant/identity observation (#108, development; integrity #125):**
+  DISEASES retains per-channel publication dates, file hashes and original memory
+  index receipts. Header checks do not redate the index; disk/bare index origins
+  remain unknown with an explicit legacy client-clock fallback. Native channel
+  scores/resource/text-mining pointers stay separate. ClinVar/MedGen retain native
+  EInfo/ESearch/ESummary queries/hashes/order/counts, original archive times and
+  completed subsets on failure. ClinVar build and variant accession versions differ
+  from MedGen database last-update times. Counts/caps are scoped per gene/batch;
+  overlapping variant UIDs are not silently deduplicated. Incomplete/ambiguous
+  MedGen identity fails explicitly. Invalid protocols, missing fixtures and mixed
+  fixture versions cannot establish absence or silently merged knowledge (#125).
+  Recorded request/retry/archive identities exclude personal keys. Resource
+  descriptions contribute to host Ackredit captures; underlying study/submission/
+  terminology bibliography remains incomplete. Example `@5` reads genuine `@1`–`@4`
+  reports without acquisition, derivation or new credit. Card schema 0.3.12 and valid
+  scientific mappings remain fixed. Sixty-four new regressions pass; the combined
+  acquisition/journey gate passes 74 cases, and transport/archive/release gates
+  pass 109. The exact diagnostic wheel passes 344 unchanged cases outside the
+  checkout with public Ackredit 0.9.0 and PyUnitWizard 0.27.0; all 389 non-version
+  Python/JSON files equal the checkout. Imports, pip check and original readers pass.
+  Full offline checkpoint: 2143 cases pass in 399.12 seconds, with 26 online cases deselected and six expected fixture warnings. Detailed receipts are in the
+  journey audit. Public delivery/remote qualification remain pending; next are
+  underlying study bibliography and finer support admission (#29), with non-protein
+  packets (#71) and shared consumer guarantees still required.
+- **Conservative disease-deck admission (#29; identity correction #126, development):**
+  `disease_deck_admission@1` requires complete exact input/member/native support and
+  admissible whole embedded context. Unknown/restricted shared terms refuse with a
+  detached `admission_report`; finer filtering by terms of use remains pending. Every retained raw
+  member SourceAssertion is checked independently of resolved source alternatives,
+  including unused statements and unknown raw per-record rights. Excluded members
+  retain native/input candidate support and separate historical member identity pins;
+  their raw card payloads are not exported or imported into an empty store.
+  The #126 fix checks that native candidate identifiers are actually stated by the
+  member's bound identity assertions and resolved fields; another candidate's valid
+  basis or a changed resolved identifier with unrelated original support is partial
+  and cannot be admitted. The unpublished explanation is tightened without changing
+  stored card fields, source-stated identity or original saved reports.
+  JSONL/SQLite/store reads through advanced heads preserve decisions without source
+  access or new credit. Original runtime sidecars remain original. Sixty-five
+  admission/support cases pass. Full offline checkpoint: 2182 cases pass in
+  706.53 seconds, with 26 online cases deselected and eight expected fixture warnings.
+  The exact final diagnostic wheel passes 383 unchanged cases outside the checkout
+  with public Ackredit 0.9.0 and PyUnitWizard 0.27.0 (371.81 seconds).
+  All 390 non-version Python/JSON files match checkout and installed bytes; genuine
+  original `@1`–`@5` bundles remain readable without acquiring, deriving, admitting,
+  modifying receipts or adding credit. The initial pre-#126 wheel is superseded and
+  preserved separately. Detailed receipts are in the journey audit. No new Ackredit
+  contract/workaround is introduced.
+  Ordinary/legacy admission semantics remain unchanged; finer filtering by terms of use, raw
+  per-record rights, historical registries and wider packet scopes remain #29 work.
+  The original receipt was local/uncommitted/unpushed; current code delivery
+  is recorded in Resume here. No new public release is claimed.
+- **ChEMBL indication reference attribution (#108, development):**
+  `chembl_indication_references@1` retains exact native reference forms and every
+  occurrence with indication/molecule/disease IDs, received page/query/hash or
+  original fixture-result identity. Overlapping disease queries preserve observed
+  occurrences even when scientific returns deduplicate the row. Grouped reference
+  identifiers remain grouped. Completed pages survive later failures; original
+  times, release bases and archive reuse/replay remain scoped explicitly.
+  Portable per-operation and enclosing Ackredit captures credit
+  `source_cited_reference`, without claiming target access, article identity,
+  metadata or permission. Missing/malformed pointers and incomplete metadata stay
+  explicit. Scientific returns/SourceAssertions and frozen card schema remain
+  unchanged. The example keeps `@5`; genuine original `@1`–`@5` readers preserve
+  original reports without acquisition or new credit. Full underlying study
+  metadata and ClinicalTrials.gov observation were the next #108 slice; its bounded
+  implementation is now recorded in the clinical checkpoint. That slice's local
+  checkpoint: 2211 offline cases pass (593.50 seconds), and 425 unchanged installed
+  cases pass with public Ackredit 0.9.0 (267.37 seconds). All 391 non-version
+  Python/JSON package files equal checkout and installed bytes. Detailed receipts
+  are in the journey audit; no public delivery is claimed.
+- **Literature follow-up:** explicit located UniProt accession mentions now enter cards in 0.12.0
   (#92), with per-occurrence support, unknown article terms and recorded refresh
   requests (published schema 0.3.11). Supported PDB mention context is also
   implemented. The literal rule, explicit intake/replay and source-stated article
   bibliography/declared terms are released in 0.13.0; broader
   extraction, fragment rights and validation remain open. The public literature draft awaits human
-  review before actual curation intake. Further candidates are in `ROADMAP.md`
-  ("Next candidates") and in the user
+  review before actual curation intake. Remaining capabilities are in `ROADMAP.md`
+  ("Capability backlog and dependencies") and in the user
   guide's gaps (`DOCS_GAPS.md`: wave-2 sources and the
   comparative context have no pages of their own).
 - **Literature packets:** both mention areas are covered in
@@ -566,3 +837,21 @@ belong here. Decisions go to `DECISIONS.md`, and the previous log is
   - deferred or experiments: #87 (parallel enrichers), #60 step 2 (VEuPathDB), #30
     (ligand proximity), #36 (an ArgDigest experiment).
 - Risks: `RISKS_AND_OPEN_QUESTIONS.md`.
+
+## Clinical registry and native bibliography extension (2026-10-06, development)
+
+Built-in ClinicalTrials.gov study and explicit reference lookup preserve native
+queries, pagination, registry/API/update-date bases, reuse, empty answers and
+partial/failure scope. #127 fixes omitted continuations, false absence, contradictory
+duplicates and exhausted generator queries. Missing fixture answers are unavailable.
+Registry citations and native reference pointers retain separate roles, raw forms
+and exact occurrences, without fetching links or changing clinical SourceAssertions.
+Explicit Europe PMC metadata contributes its own original acquisition and complete
+returned personal/collective authors (#128). New public fixtures cover NCT00123916
+and its three native PMID references. Frozen card schema 0.3.12 remains unchanged.
+The disease example and genuine historical reports remain `@5` and earlier.
+Final local qualification: 2272 offline cases pass; the corrected installed
+178-case clinical/source-envelope/article gate passes with public Ackredit 0.9.0.
+All 393 non-version package files match checkout/wheel/installed bytes. Detailed
+receipts, the initial client-fixture setup failure and resumption constraints are
+in `pending_proposals/clinical_registry_checkpoint.md`. No new public delivery is claimed.

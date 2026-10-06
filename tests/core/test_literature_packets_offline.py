@@ -217,6 +217,7 @@ def test_the_frozen_previous_mapping_reads_unchanged_and_is_not_compared(tmp_pat
         == "sha256:ae66464608dd98a34f8e7520afbf2a794280a6d91681cb0dcde005afeabb4bc2"
     )
     assert historical.to_dict()["aspect_mapping"] == "packet_aspects@5"
+    assert historical.unknowns["subject"]["rule"]["rule"] == "knowledge_state@4"
     subject = Card.from_dict(
         json.loads(
             Path("temp_data/frozen_cards/schema_0.3.10__P60174.json").read_text()
@@ -228,6 +229,8 @@ def test_the_frozen_previous_mapping_reads_unchanged_and_is_not_compared(tmp_pat
     store.save_packet(historical, "literature")
     assert store.load_packet(historical.ref).to_dict() == document
     current = sabueso.compose_packet(query(), subject)
+    assert current.unknowns["subject"]["rule"]["rule"] == "knowledge_state@5"
+    assert store.load_packet(historical.ref).unknowns == document["unknowns"]
     assert current.same_knowledge(historical) is None
     assert historical.same_knowledge(current) is None
     assert set(historical.facts["literature"]["subject"]["areas"]) == {

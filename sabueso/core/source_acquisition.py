@@ -37,6 +37,13 @@ COVERAGE = {
         "PDBe-KB",
         "AlphaFold DB",
         "InterPro",
+        "MONDO",
+        "Open Targets",
+        "Orphanet",
+        "DISEASES",
+        "ClinVar",
+        "MedGen",
+        "ClinicalTrials.gov",
     ],
     "boundary": "built_in_entry_search_mentions_annotations_structure_chemical_clients",
     "other_sources_and_custom_clients": "not_observed",
@@ -75,6 +82,10 @@ def capture_acquisitions(function):
 
     @wraps(function)
     def captured(*args, **kwargs):
+        from sabueso import __version__
+        from sabueso.tools.db._http import _clock
+
+        started = _clock()
         with collecting() as records:
             try:
                 result = function(*args, **kwargs)
@@ -103,6 +114,30 @@ def capture_acquisitions(function):
                         )
                         if protein is not None:
                             trace["input_card_refs"] = [protein.pinned_ref()]
+                        if result.meta.get("kind") in (
+                            "disease_targets",
+                            "disease_drugs",
+                        ):
+                            support = result.meta["support"]
+                            trace["input_card_refs"] = [support["input"]["card_ref"]]
+                            trace["operation"] = {
+                                "name": result.meta["kind"],
+                                "producer": {
+                                    "name": "sabueso",
+                                    "version": __version__,
+                                    "version_basis": "runtime_package_metadata",
+                                },
+                                "started_at": started,
+                                "finished_at": _clock(),
+                                "rule": result.meta["rule"],
+                                "limit": result.meta["limit"],
+                                "support_card_ref": support["assertions"]["card_ref"],
+                                "sources": deepcopy(result.meta.get("sources", [])),
+                                "excluded_count": len(result.meta.get("excluded", [])),
+                                "built_count": len(result.cards),
+                                "support_basis": "original_disease_input_and_native_membership_pins",
+                                "source_access_basis": "observed_built_in_clients_only; stored_inputs_and_custom_clients_do_not_establish_access",
+                            }
                     else:
                         trace["packet_snapshot_id"] = result.snapshot_id()
                         trace["card_refs"] = {
@@ -335,6 +370,7 @@ def _credit(record):
     record["bibliography"] = [software(), *descriptions(record["source"])]
     record["bibliography_gaps"] = []
     primary_ids = set()
+    reference_occurrences = {}
     primary_role = "structure_primary_citation"
     if record["source"] == "RCSB PDB":
         from .attribution_bibliography import structure_citations
@@ -363,9 +399,22 @@ def _credit(record):
                 "measurement_document_citations_not_returned"
             )
         if record["operation"] in {"indications", "indications_for"}:
-            record["bibliography_gaps"].append(
-                "indication_reference_metadata_not_declared"
-            )
+            from .indication_bibliography import citations as indication_citations
+
+            context = record.get("indication_reference_context")
+            if context is not None:
+                native, gaps, occurrences = indication_citations(context)
+                record["bibliography"].extend(native)
+                record["bibliography_gaps"].extend(gaps)
+                context["citation_occurrences"] = occurrences
+                for occurrence in occurrences:
+                    reference_occurrences.setdefault(
+                        occurrence["citation_id"], []
+                    ).append(occurrence)
+            else:
+                record["bibliography_gaps"].append(
+                    "indication_reference_metadata_not_declared"
+                )
     if record["source"] == "PubChem BioAssay":
         from .attribution_bibliography import pubchem_citations
 
@@ -415,6 +464,43 @@ def _credit(record):
         record["bibliography_gaps"].append(
             "member_database_signature_and_site_citations_not_returned"
         )
+    if record["source"] == "MONDO":
+        record["bibliography_gaps"].append(
+            "term_definition_and_imported_terminology_citations_not_returned"
+        )
+    if record["source"] in {"Open Targets", "Orphanet"}:
+        record["bibliography_gaps"].append(
+            "underlying_association_validation_publications_not_fetched"
+        )
+    if record["source"] == "DISEASES":
+        record["bibliography_gaps"].append(
+            "underlying_channel_publications_not_fetched"
+        )
+    if record["source"] == "ClinVar":
+        record["bibliography_gaps"].append(
+            "submission_and_variant_publications_not_fetched"
+        )
+    if record["source"] == "MedGen":
+        record["bibliography_gaps"].append(
+            "underlying_terminology_citations_not_fetched"
+        )
+    if record["source"] == "ClinicalTrials.gov":
+        from .clinicaltrials_bibliography import citations
+
+        native, primary_ids, occurrences, gaps = citations(
+            record.get("entries", []),
+            references_requested=record.get("clinical_context", {}).get(
+                "references_requested", False
+            ),
+        )
+        primary_role = "source_registry_record"
+        record["bibliography"].extend(native)
+        record["bibliography_gaps"].extend(gaps)
+        record["clinical_context"]["citation_occurrences"] = occurrences
+        for occurrence in occurrences:
+            reference_occurrences.setdefault(occurrence["citation_id"], []).append(
+                occurrence
+            )
     if record["source"] == "Europe PMC" and record["operation"] == "article":
         from .article_metadata import citations
 
@@ -481,6 +567,10 @@ def _credit(record):
             "retrieved_at_basis",
             "cutoff_scope",
             "effective_limit",
+            "normalized_query",
+            "association_context",
+            "indication_reference_context",
+            "clinical_context",
         ):
             if key in record:
                 context[key] = deepcopy(record[key])
@@ -508,6 +598,12 @@ def _credit(record):
                     id=resource,
                     type="dataset",
                     title=f"{record['source']} {record['operation']} access",
+                    **(
+                        {"version": record["source_version"]["value"]}
+                        if record["source"] == "Orphanet"
+                        and record["source_version"]["value"] is not None
+                        else {}
+                    ),
                 )
                 backend.track_item(
                     record["bibliography"][0]["id"],
@@ -516,14 +612,24 @@ def _credit(record):
                 )
                 backend.track_item(resource, roles=["resource_access"], context=context)
                 for item in record["bibliography"][1:]:
+                    item_context = context
+                    if item["id"] in reference_occurrences:
+                        item_context = {
+                            **context,
+                            "cited_reference_occurrences": deepcopy(
+                                reference_occurrences[item["id"]]
+                            ),
+                        }
                     backend.track_item(
                         item["id"],
                         roles=[
-                            primary_role
+                            "source_cited_reference"
+                            if item["id"] in reference_occurrences
+                            else primary_role
                             if item["id"] in primary_ids
                             else "resource_description"
                         ],
-                        context=context,
+                        context=item_context,
                     )
         return {
             "status": "available",

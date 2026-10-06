@@ -1,5 +1,224 @@
 # Sabueso — Decision Log
 
+## Preserve references declared by ChEMBL indications (2026-10-06, #108)
+
+- Project native `indication_refs` as incomplete pointer citations, with the role
+  `source_cited_reference`. A trial registry, regulatory label or classification
+  pointer is not automatically a scientific article or an observed target access.
+- `chembl_indication_references@1` retains each native form and every occurrence,
+  bound to its indication/molecule/disease row, received page/query/hash or original
+  fixture result. Preserve grouped identifiers and overlapping EFO/MeSH query
+  occurrences even when the scientific client deduplicates the returned row.
+- Credit only received pointers, including completed pages before later failure.
+  Keep target access, missing metadata and malformed/absent forms explicit. Do
+  not follow links, invent authors/titles/years, infer permissions or overwrite
+  fuller host citations. Original references survive archive reuse and inert
+  portable Ackredit exports in the enclosing workflow.
+- Keep scientific client returns, SourceAssertions and frozen card schema fixed.
+  Example `@5` keeps its format: study metadata remains undeclared and cited
+  studies remain unfetched. Full underlying study bibliography is still #108 work.
+- Call the possible finer #29 operation **filtering by terms of use**, rather
+  than source pruning. It would produce a derived view/deck with explicit support
+  changes; it must preserve original provenance, citations and the original deck.
+
+
+## Observe disease channel and identity/variant lookups (2026-10-06, #108/#125)
+
+- Observe built-in DISEASES channel access, ClinVar `variants` and MedGen `concepts`
+  in enrichments and public source envelopes. Retain native query/page/file hashes,
+  version bases, original access, counts/caps/order and completed intake on failure.
+  Do not claim direct access to publications from nearby source statements.
+- Keep each DISEASES original receipt on its existing memory index. Header checks
+  do not redate the scientific index. Preserve disk JSON format; older cached
+  origins/times remain unknown, with the legacy client-clock fallback explicit.
+  Channel scores and native resource/text-mining pointers stay separate.
+- Treat missing native E-utilities fields, omitted summary UIDs and malformed
+  classification shapes as connector failures. Missing fixtures are unavailable;
+  ClinVar fixture database versions cannot merge silently. Distinguish ClinVar
+  database build and accession revisions from MedGen database `lastupdate`.
+  Counts/limits are per gene or concept batch, not unique workflow entities.
+- Refuse MedGen identity when native records name multiple UIDs for one concept
+  or its search is capped. Preserve those native pairs and received scope in the
+  failed trace; never choose by response order or infer absence from a cut.
+- Keep transport credentials out of recorded request/retry/archive identities.
+  Send the actual key only on the service request, retain native response bytes
+  and permit credential rotation for the same archived scientific query.
+- Compile verified DISEASES/ClinVar descriptions and the recommended MedGen resource
+  citation. Underlying studies, submissions and terminology citations remain
+  explicit gaps. Example `@5` retains original `@1`–`@4` reports and their gaps;
+  no reconstruction, new reader credit or scientific schema change is introduced.
+  Support-aware admission (#29), non-protein packets (#71), public delivery and
+  shared consumer guarantees remain pending.
+
+## Observe association intake and disease-deck builds (2026-10-05, #108/#124)
+
+- Observe built-in Open Targets `associations`/`targets` and Orphadata
+  `associations`/`genes`, including public envelopes and ordinary enrichments.
+  Preserve queries, page/file/lookup identities, versions, source order/counts,
+  original retrieval and actual attempts. Scores remain native statements, not efficacy.
+- Keep Open Targets page versions/counts separate; refuse scientific merges across
+  changed versions/counts and retain completed page intake with its terminal failure.
+  Explicit null entities are evaluated absence; missing fields and malformed
+  JSON/native fields are connector failures. Missing files are unavailable (#124).
+- Keep Orphadata's receipt on the exact existing cached index. Preserve original
+  scientific/runtime times across memory/archive reuse (#124); old bare indexes
+  cannot recover origins. Reject malformed/unrelated XML in client loading,
+  preserving the public parser. Absence covers indexed SwissProt associations;
+  fixture subsets and native validation pointers retain their limited scope.
+- Disease builders expose detached intake traces with original input/support pins,
+  final deck/member pins, executing package/times, rule/limit, source outcomes and
+  exclusions. Stored inputs and custom clients do not establish source access.
+  Scientific rules, card schema and default storage stay unchanged.
+- Compile the complete Open Targets article and Orphadata's recommended dataset
+  citation from primary metadata; underlying study metadata remains a gap. Advance
+  the example to `@4`, preserving genuine `@1`/`@2`/`@3` reports without acquisition
+  or new credit. Other disease families, admission (#29), packets (#71) and shared
+  consumer contracts remain open. Delivery and remote qualification are pending.
+
+## Observe MONDO index queries and preserve release integrity (2026-10-05, #108/#123)
+
+- Observe built-in term/equivalence access through the existing runtime formats and
+  host Ackredit capture. Keep raw/normalized identifiers, native identity/reference
+  forms, OBO header version, exact file/lookup identities and source-scoped bibliography.
+  MONDO declarations do not establish access to imported terminologies or publications.
+- Carry the original download receipt with the exact process-cached index. Memory
+  lookup and release-selector requests have separate scopes and current attempt counts.
+  Preserve original file response times in scientific results as well as runtime
+  records across memory/archive reuse. A pre-existing index without a receipt states
+  unknown origins and retains an explicitly identified legacy source-time fallback.
+- Correct the source-client integrity defects in #123: reject obvious non-OBO and
+  invalid UTF-8 documents as connector failures before caching; distinguish missing
+  fixture files from absent terms. Keep native partial term-stanza fixtures supported.
+  The public parser utility remains unchanged; this is no complete OBO validation.
+- Keep fixture subsets, empty equivalence queries, unavailable, unqueried and failed
+  outcomes distinct. Failed access adds no completed-source credit. Valid mappings,
+  identity rules, card field shape/schema, stored snapshots and default persistence
+  remain fixed. Direct disease resolution retains exact result/resolution traces.
+- Version the local disease example as `@3` for MONDO observation; accept original
+  `@1`/`@2` bundles without recreating missing science or credit. Required Open Targets,
+  Orphanet, other disease sources and deck-operation observation remain #108 work.
+  Delivery is local; no new release or shared recording contract is claimed.
+
+## Admit disease decks conservatively with complete retained support (2026-10-06, #29)
+
+- `disease_deck_admission@1` requires complete exact membership/input bindings and
+  admissible whole embedded support. Unknown/restricted shared context refuses the
+  operation with a detached item-level report, rather than returning a deck with
+  absent support. Source pruning remains pending; no historical registry is inferred.
+- The #126 integrity fix checks that each built candidate is actually stated by
+  the current member's bound identifier assertions and resolved identifier fields.
+  Another candidate's valid native basis is partial, never admissible identity.
+  This tightens the unpublished explanation rule without changing historical
+  stored reports, source-stated equivalence or the card schema.
+- Judge resolved items and every retained raw SourceAssertion separately, including
+  unused statements. An allowed alternative does not license a retained raw copy.
+  Known depositor terms for a projected relationship do not establish permission
+  for the complete raw source record; undeclared per-record rights stay unknown.
+- Filter whole member cards only. Preserve native candidate/input bases and exact
+  retained member pins. Move removed member identity references into explicitly
+  historical exclusion metadata; never present missing identity as active support.
+- Record original deck/member/support pins, current registry declarations, reasons,
+  obligations and versioned operation in a separate derived deck. JSONL/SQLite and
+  pinned knowledge-store reads preserve them without source access or runtime credit.
+  Original acquisition/attribution sidecars remain bound to the original deck.
+- Delivery remains local and #29 remains open for finer admission, per-record raw
+  rights, historical registries and packet scopes. The disease journey keeps its
+  existing `@5` receipt format; separate SDK tests exercise this bounded operation.
+
+## Pin disease membership to native rows and original identity (2026-10-05, #91/#112)
+
+- Version builders as `disease_targets@2` and `disease_drugs@2`. Keep source-native
+  rows as SourceAssertions; membership, ranking and identity projection remain
+  named derivations. Retain Open Targets' full returned record/order/count as well
+  as individual rows, Orphanet's native rows and ChEMBL's complete indications.
+- Keep the supplied MONDO card unchanged. A separate revision carries additional
+  native assertions. `meta.support` under `sabueso.disease_deck_support@1` embeds
+  both snapshots/pins for portable JSONL/SQLite decks; it adds no card field,
+  predicate, schema or knowledge-store table. Source rows remain scoped context,
+  without constructing new selected disease fields or project Evidence.
+- Bind kept, capped, unbuilt and unsupported-product candidates to exact native
+  assertion items and original MONDO identity. Kept members also bind their actual
+  card state and molecular/protein identity support. `disease_deck_explanation@1`
+  checks missing/misbound identity, native rows, scores and source row order without
+  acquisition or new credit. Old metadata-only decks explicitly lack that support.
+- Saving a deck alone stores its input, assertion-bearing revision and members
+  atomically. The disease head can advance to the support revision; the original
+  input pin remains readable. Export/import preserves the embedded support.
+- `disease_deck_terms@1` reports member and all embedded native-source terms.
+  Member-only admission cannot prune this support correctly. The initial refusal
+  is superseded by conservative `disease_deck_admission@1` above; source pruning
+  remains #29. Reports do not grant rights.
+  The bounded admission need is recorded in
+  [#29](https://github.com/uibcdf/sabueso/issues/29#issuecomment-6003107144).
+- Version the local disease example as `@2`; its reader still accepts original
+  `@1` bundles and preserves their reports/gaps. Required disease-source observation
+  and full bibliography remain #108; non-protein packets remain #71. Delivery is local.
+
+## Keep disease journey support and observation gaps explicit (2026-10-05, #112/#91/#108)
+
+- Exercise existing disease resolution/deck/grouping routes in a public independent
+  producer/reader/reacquisition example before extending the SDK. Use separate
+  MONDO-anchored target and drug questions; infer neither cross-disease links nor
+  efficacy, approval or identity from names/phase metadata.
+- Preserve exact card/group statement pins and original named explanations. Keep
+  original disease-deck membership metadata with its missing assertion/input pins
+  explicit; never manufacture statement support or an observed execution from it.
+- Export original runtime attribution for observed operations only. Unobserved
+  disease sources and missing indication bibliography remain declared gaps.
+- Scope the next implementation to exact disease-deck membership/input support
+  (#91), then disease source/deck-operation observation (#108). Disease packets
+  remain #71 work; the example does not define a shared MOLI recording format.
+
+## Correct molecular source counts without inventing absence (2026-10-05, #122)
+
+- Version the corrected classification as `knowledge_state@5`. A successful report
+  with no usable count is `known` with `count=None`; a mixed/incomplete response
+  remains `partial`. Keep the known subtotal and exact unknown-count report indexes.
+  Never turn a missing/unusable count or unrecognized outcome into evaluated empty.
+- For molecular record intake, ChEMBL/CCD/PubChem native returned record-id lists
+  can supply a count. A UniChem native compound id counts one returned compound;
+  its linked databases are not direct acquisitions and are not additional records
+  from those databases. Explicit area counts take precedence. Do not reconstruct
+  request membership/counts from nearby SourceAssertions.
+- Keep missing batch ids, failed/incomplete/capped requests and original report
+  versions visible. A declared partial/capped empty subset is still partial.
+  Native `not_found` reports retain their missing ids and query scope; they do not
+  establish external absence when the fixture/archive is unavailable.
+- Separate small-molecule ChEMBL indication reports into
+  `relationships.investigated_for` and ClinicalTrials.gov reports into
+  `relationships.tested_in`; molecular record intake stays in `records`.
+  Requested study counts are not returned study counts. This classifies existing
+  reports; it does not reconstruct unrecorded operations or query new sources.
+- Version the explanation as `knowledge_state_explanation@2`, with each counting
+  basis, field, relative report index and original `quality.enrichments` index.
+  Exact pinned SourceAssertions remain separate scientific context with
+  per-request membership explicitly `not_recorded`.
+- Card intake/schema/source assertions stay unchanged. New classifications and
+  packets use the new rules; frozen packets and original producer reports retain
+  their original rules, pins and attribution. Payload-only readers fetch nothing
+  and add no credit. This is local development, not a published replacement yet.
+
+## Adopt the next roadmap after 0.13.0 (2026-10-05, #112)
+
+- The maintainer approved the review of the original architecture, MOLI Knowledge
+  role and independent-user promise as the basis for the next roadmap.
+- First define and demonstrate three standalone SDK journeys: protein/comparator,
+  molecule/activities and disease/related entities. Use their gaps to schedule
+  bounded query, explanation, required traceability, history and scale work.
+  User documentation and independently readable saved support are acceptance
+  requirements, alongside scientific examples and appropriate regressions.
+- Prioritize peptide identity and a bounded use as the next scientific expansion,
+  before selecting sources or suppliers. Keep clinical, isoform and literature
+  objectives visible; local-mirror work #101 remains postponed.
+- Coordinate Nextia/Context Assembly, ProjectRecord/Recorda and modeling exchanges
+  in parallel with their owners. Standalone Sabueso development does not wait for
+  consumer readiness. Shared contracts remain with MOLI; modeling remains with
+  MolSysSuite. Both foundational and pilot-driven routes continue.
+- Record pending decisions on query scope, entity representations, reproducibility/
+  export, literature validation and public contract stability in `ROADMAP.md` and
+  `RISKS_AND_OPEN_QUESTIONS.md`. This adopts development priorities, not new API
+  semantics, shared contracts or a release schedule.
+
 ## Observe chemical identity acquisition and ligand-deck intake (2026-10-04, #108)
 
 - Observe CCD component batches and UniChem InChIKey/source-id lookups through the
@@ -2678,3 +2897,19 @@ support without new acquisition, mutation or credit. No stored card schema chang
 New full/index packets advertise `@2`; saved payloads are read as originally stored.
 `packet_aspects@6` retains its frozen source/area scope: the changed scientific rule
 is named in the new facts and index, rather than rewriting an existing packet.
+
+## 2026-10-06 — Observe clinical queries; retrieve reference modules explicitly (#108/#127/#128)
+
+- Keep clinical card SourceAssertions and published schema 0.3.12 frozen. Add a
+  separate source-envelope reference query and runtime acquisition context.
+- Complete native pagination before classifying absence; refuse malformed answers,
+  unrelated NCT ids, conflicting duplicate records and token loops. Unavailable
+  fixture answers remain unavailable, including partial saved subsets (#127).
+- Preserve native citations, links, update dates and exact occurrences. Registry
+  timestamps are not verified per-page versions or publication years. Free citations
+  are not parsed for identity, and linked targets are never followed automatically.
+- Let explicit Europe PMC queries contribute their own native bibliographic metadata
+  to the enclosing workflow. Preserve collective authors as literal names in their
+  original order; compact author strings cannot replace a complete native list (#128).
+- Retain bibliography gaps, separate resource/registry/pointer roles and inert saved
+  readers using the existing public Ackredit minimum. No new provider contract is needed.

@@ -143,10 +143,21 @@ def citations(articles):
         if (
             isinstance(authors, list)
             and authors
-            and all(isinstance(a, dict) and a.get("fullName") for a in authors)
+            and all(
+                isinstance(a, dict)
+                and (
+                    isinstance(a.get("fullName"), str)
+                    and a["fullName"]
+                    or isinstance(a.get("collectiveName"), str)
+                    and a["collectiveName"]
+                )
+                for a in authors
+            )
         ):
             item["authors"] = [
-                {"family": a["lastName"], "given": a.get("firstName", "")}
+                {"literal": a["collectiveName"]}
+                if isinstance(a.get("collectiveName"), str) and a["collectiveName"]
+                else {"family": a["lastName"], "given": a.get("firstName", "")}
                 if a.get("lastName")
                 else {"literal": a["fullName"]}
                 for a in authors

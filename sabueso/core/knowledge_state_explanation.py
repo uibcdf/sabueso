@@ -7,10 +7,10 @@ Absent fields, missing queries and failed requests never become source assertion
 
 from copy import deepcopy
 
-from .knowledge_state import _supporting_sources, knowledge_state
+from .knowledge_state import _enrichment_counts, _supporting_sources, knowledge_state
 from .relationship_store import make_derivation
 
-RULE = "knowledge_state_explanation@1"
+RULE = "knowledge_state_explanation@2"
 
 
 def explain_knowledge_state(card, knowledge_area=None, knowledge_source=None):
@@ -160,10 +160,23 @@ def explain_knowledge_state(card, knowledge_area=None, knowledge_source=None):
             from sabueso.enrichers import count_by_area, not_queried_details_by_area
 
             key = (row["area"], row["source"])
+            _, counts = _enrichment_counts(
+                *key,
+                [card.quality["enrichments"][i] for i in basis["enrichment_indexes"]],
+            )
             support["classification_inputs"] = {
                 **basis,
                 "count_field": count_by_area().get(key, "count"),
                 "count_fallback": "count",
+                "count_inputs": [
+                    {
+                        **item,
+                        "enrichment_index": basis["enrichment_indexes"][
+                            item["report_index"]
+                        ],
+                    }
+                    for item in counts
+                ],
                 "not_queried_detail": not_queried_details_by_area().get(key),
                 "reports": [
                     {

@@ -8,7 +8,8 @@ the composed answer. It is a composition over cards, not a new kind of knowledge
 - ``facts``: per aspect, the output of Sabueso's views, each with its named rule;
 - ``conflicts``: where sources disagree, as the cards record it;
 - ``unknowns``: per source, what is not stated, not queried, unavailable or partial,
-  for the areas of the aspects asked (``knowledge_state@4``);
+  for the areas of the aspects asked (``knowledge_state@5`` in current compositions;
+  historical packets keep their original rule);
 - ``provenance``: the sources, their releases and retrieval dates.
 
 **Deterministic.** The packet payload is a pure function of the query and card states. It

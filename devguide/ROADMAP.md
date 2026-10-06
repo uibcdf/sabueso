@@ -255,17 +255,223 @@ The maintainer-requested [implementation review](pending_proposals/design_implem
 potential and use cases against code/tests. The foundations are implemented; complete
 runtime coverage, broader literature extraction, derived explanations, consumer acceptance,
 peptides/suppliers and much of the clinical layer remain partial or pending. Illustrative
-graph/query APIs are directions, not implied delivery obligations. Its bounded priority
-proposal complements the two routes below; #101 remains postponed.
+graph/query APIs are directions, not implied delivery obligations. The review retains
+the earlier slice sequence; the approved next roadmap below sets the current order
+across both routes. #101 remains postponed.
 
-## Next candidates
+## Next roadmap after 0.13.0
 
-Pilot route: whatever running the pilots' notebooks exposes; nothing is scheduled ahead
-of that use.
+Approved by the maintainer on 2026-10-05 after reviewing the original architecture,
+MOLI's Knowledge role and Sabueso's promise to independent scientific users (#112).
+This is the next development order. The capability status below remains the record
+of what exists and what is incomplete; illustrative long-term APIs remain design
+directions until a bounded use and acceptance criteria are agreed.
 
-Foundational route. Reviewed on 2026-09-29 against `SCIENTIFIC_POTENTIAL.md`, the
-conceptual schema and the use cases, to work beyond what the pilots have asked for.
-In order:
+### Immediate resumption sequence
+
+Current state: [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here).
+Detailed acceptance and local receipts: [journey audit](pending_proposals/independent_user_journeys.md)
+and [clinical checkpoint](pending_proposals/clinical_registry_checkpoint.md).
+This sequence narrows the approved roadmap; it does not replace either route.
+
+1. **Verify the code-checkpoint receipt.** The maintainer authorized committing
+   and pushing the accumulated changes on 2026-10-06. This implementation checkpoint
+   includes the code, public examples/fixtures, guards and source/package receipts
+   without `[skip ci]`; its exact remote CI is being verified. Read the completion
+   receipt in `CHECKPOINT.md` before resuming. #122–#128 still need their delivery
+   state reviewed. Candidate staging and a public release remain separate work;
+   no release number is decided here.
+2. **Integrate the bounded clinical bibliography into a saved public journey
+   (#108/#112).** Source-level registry/reference observation and explicit Europe PMC
+   metadata are implemented. Next, declare which cited NCT ids and native PMID are
+   in the journey's requested scope, save original per-result/workflow sidecars,
+   and verify independent saved readers and reacquisition. Keep genuine disease
+   `@1`–`@5` reports unchanged; version a changed example/manifest. Declare all
+   unqueried links and remaining bibliography gaps. Refresh the broader live
+   showcase separately; fixtures are not live-source acceptance.
+3. **Discuss the next bounded contract, then implement it.** Choose one explicit
+   non-protein question/result for #71/#91, or finer filtering by terms of use for
+   #29. Filtering needs a separate derived view/deck with declared kept/excluded
+   support and its original references/citations; conservative admission already
+   exists. Decide shared versus member scope and partial/missing-support behavior
+   before implementation. No silent deletion from original saved knowledge.
+4. **Continue the foundational expansion and parallel consumer work.** Scope peptide
+   identity and one scientific use (#112/#83/#95), as described below. Keep Nextia
+   persistent Evidence acceptance and MOLI/Recorda recording with their owners;
+   independent SDK work can proceed while those consumers develop.
+
+The shared development environment's current external dependency conflicts are a
+separate maintenance task. Diagnose their ownership and compatibility before
+changing shared package versions; use clean installed qualification environments
+for artifact claims. Do not treat those conflicts as a Sabueso source defect.
+
+Both routes continue. An observed pilot blocker takes priority in its smallest
+useful form. Foundational work also proceeds on its own: a scientist must be able
+to use Sabueso without a MOLI project, while MOLI consumes the same authoritative
+knowledge through agreed contracts. Consumer readiness does not block independent
+SDK, documentation or scientific improvements. Public acceptance uses public data
+and generic questions only.
+
+### 1. Complete three independent-user journeys
+
+Define and demonstrate these end-to-end journeys through the existing public SDK
+first. Record missing behavior before adding a connector or changing an API.
+
+| Journey | Scientific question and expected output | Acceptance |
+| --- | --- | --- |
+| Protein and comparator | What is known about each protein, where do sources disagree, and which structures, ligands and measurements can be compared? | Resolve and audit identities; inspect supported values, alternatives, conflicts and unknowns; compare within stated identity/numbering scope; save both states and read their exact support later. |
+| Molecule and activities | What do sources state about a molecule, its measured activities and reported clinical context? | Resolve the molecule; retain measurement types, units, assay context, source-supported identity and clinical coverage limits; inspect original statements and citations; save and reopen the result. |
+| Disease and related entities | Which targets and drugs do sources associate with a disease, and on what basis? | Resolve a MONDO-anchored disease; build target/drug decks; retain relationship support, grouping rules, ungrouped identity paths and conflicts; save and inspect exact historical items. |
+
+Each journey needs a runnable public example and user-guide instructions that do
+not require knowledge of provider endpoints or MOLI internals. Explain source
+coverage, limits, terms and partial/unavailable outcomes. Preserve original runtime
+JSON beside saved scientific objects, with per-result/workflow citations and explicit
+observation gaps. An independent saved reader must recover the cited state without
+source access; reacquisition must leave those historical references meaningful.
+
+Refresh the showcase and add a dedicated small-molecule page, user-facing source
+coverage tables and examples for comparative/source-specific views where used.
+Track the journey audit in #112 and [DOCS_GAPS.md](DOCS_GAPS.md); use #71, #91,
+#108 and the relevant source issues for implementation gaps. The SDK is the current
+entry point; evaluate a CLI only when a journey demonstrates a need.
+
+Development progress (2026-10-05, #112): the protein/comparator journey is implemented
+in `examples/user_journeys/protein_comparison.py`, with separate producer, reader
+and reacquisition processes, exact support for both proteins, original reports,
+unit-preserving serialization and original runtime/bibliography records. Its scope
+is explicit public fixture subsets, without positional alignment or a claim of
+current online availability. The user guide now covers this journey, small-molecule
+cards and source coverage for the three workflows. The molecule/declared-target
+journey now preserves BTS/benznidazole identity, assay measurements and ChEMBL
+clinical indications, with a selected molecular deck, target-context packet,
+original reports/attribution, separate saved readers and fixture reacquisition.
+Other targets and cited clinical studies are explicitly unqueried. Its source-state
+counting defect is corrected locally in #122 under `knowledge_state@5` and
+`knowledge_state_explanation@2`, with unknown/native counts, missing subsets and
+separate clinical areas. Published delivery remains pending; broader molecular
+queries and integration of observed clinical bibliography remain #71/#108. The disease journey now has a
+bounded producer, independent saved reader and reacquisition example preserving
+MONDO/card support, original target/drug membership metadata, disease-group
+explanations and partial runtime attribution. Development disease rules `@2` now
+preserve exact native membership, original MONDO input and member identity pins,
+including excluded/unbuilt candidates, with portable support and atomic saves (#91).
+MONDO term/equivalence observation is implemented locally with original index/file
+origins, versions, reuse and bibliography. Complete acceptance remains open:
+Open Targets/Orphanet and disease-deck build observation are also implemented locally
+(#108/#124), including page/file receipts and exact input/result pins.
+DISEASES/ClinVar/MedGen observation is also implemented locally (#108/#125).
+Conservative `disease_deck_admission@1` is also implemented locally (#29): exact
+embedded context must allow the use; all raw member statements are checked, and
+excluded member identity pins become explicit historical references. Unknown or
+restricted shared context refuses the operation; finer filtering by terms of use
+remains pending. Native ChEMBL indication pointers now contribute to workflow
+attribution, retaining exact row/page/query occurrences and explicit unfetched-target
+and metadata gaps (#108). Development ClinicalTrials.gov observation and explicit
+registry-reference/Europe PMC bibliography are implemented (#127/#128); broader
+underlying study bibliography remains pending.
+Non-protein packets remain
+#71 work; see
+[the journey audit](pending_proposals/independent_user_journeys.md) for concrete
+query/observation gaps. The broader live showcase refresh remains open.
+
+### 2. Extend queries, explanations and required traceability
+
+Use the journey gaps to define a small catalog of precise scientific queries.
+Examples to scope include ligands with specified measurements, structures that
+represent a requested region, and drugs associated with a disease. Agree identity,
+context, constraints, selection, completeness and result support before choosing
+public method names.
+
+- **Queries (#71).** Extend beyond the current protein/comparator and fixed aspects
+  toward molecule, disease and collection questions in bounded slices. Source
+  routing and normalized output belong to Sabueso. Every slice declares its
+  supported constraints and reports unsupported requests explicitly; full/index
+  results retain exact authoritative references, conflicts, unknowns and terms.
+- **Explanations (#91).** Extend the named-rule/pinned-support readers to the derived
+  results those journeys expose. Show inputs, parameters, exclusions, alternatives
+  and partial support. Historical reads must not acquire data or silently change
+  rules. General joins, ranking and graph navigation need separate scientific scopes.
+- **Traceability (#108).** Extend observed source/client/operation coverage along
+  these exercised paths, including reuse, versions with their actual basis, retries,
+  empty answers, caps, partial returns and failures. Keep bibliography and missing
+  citations explicit. Scientific support, observed execution and terms retain
+  distinct meanings; coverage cannot be inferred from a returned card alone.
+- **History and scale (#100/#98/#88).** Measure large journeys and make limits and
+  truncation inspectable. Scope coherent replay, historical source access and export
+  guarantees separately from local store history. Preserve pins and original
+  receipts; local `as_of` is a stored-state date, not a historical database query.
+
+Acceptance for each slice includes a public scientific example, meaningful
+regressions, saved historical support after refresh/reacquisition, explicit coverage
+and user documentation. New packet mappings/rules are versioned; published cards,
+schemas and historical packets retain their meaning.
+
+### 3. Scope peptides as the next scientific expansion
+
+Prioritize the original peptide-card promise after the journey and contract work
+above. Begin with identity and a bounded scientific use, before adding a source.
+Define sequence, modifications, termini/cyclization and source-stated cross-references;
+distinguish a peptide from a protein fragment, construct or isoform. Establish how
+supplier products and availability relate to the scientific entity without merging
+them by name or sequence similarity.
+
+Then select a source whose access and terms fit that use, implement its client,
+mapping/enricher and peptide views, and demonstrate a public save/read/cite journey.
+Commercial availability must state the provider, product/context and observation
+date; missing availability is not proof that a peptide cannot be obtained. Scope
+CPPsite/eMolecules/ChemSpider against the actual question rather than adopting all
+three automatically. #112/#83/#95 coordinate the initial scope; open a focused
+owner issue before peptide implementation starts.
+
+The clinical layer, isoform sequences/additional transcript coverage and broader
+literature extraction remain objectives in the capability backlog below. Select
+their next slices from a stated need. DrugBank still needs a terms/access decision;
+local-mirror work #101 remains postponed until the maintainer reschedules it.
+
+### 4. Close consumer contracts in parallel
+
+- **Nextia and Context Assembly (#53/#71, MOLI #3/#22).** Receive actual consumer
+  acceptance: persist an index, read an exact historical item, create consumer-owned
+  Evidence with an explicit interpretation, and retain its original citation after
+  new acquisition. `examples/persisted_pipeline/` already exercises Sabueso's public
+  application side; it does not replace a persistent Nextia consumer test.
+- **Platform recording (#108, MOLI #36/#18).** Agree correlation, persistence,
+  availability and failure policy with the owners of ProjectRecord/Recorda. Sabueso
+  supplies knowledge support and observed use; MOLI owns their platform composition.
+- **Modeling exchanges.** Agree adapters with MolSysMT, TopoMT, PharmacophoreMT and
+  MolSysViewer for entity references, source-supported residue/construct mappings,
+  features and ligand decks. Preserve units, numbering, versions and support across
+  exchanges. MOLI owns the Sabueso-to-MolSysSuite boundary; MolSysSuite governs its
+  internal member contracts. Modeling and calculation remain with their owners.
+
+These are coordination tasks, not consumer implementations to add inside Sabueso.
+Keep consumer acceptance separate from standalone journey acceptance.
+
+### Decisions to close before broadening the API
+
+| Decision | Questions to settle | Tracking / owner |
+| --- | --- | --- |
+| Scientific query catalog | Which questions and entity/collection types are supported? What context, constraints and coverage make a response meaningful? | Sabueso #71/#112; shared packet meaning in MOLI #22 |
+| Entity and representation scope | Identity for modified peptides, isoforms, constructs, FASTA/structure-file inputs; whether structure-level cards are needed; EFO identity without a MONDO anchor | Sabueso #112/#20/#96; modeling exchanges with their owners |
+| Reproducibility and export | Distinguish stored state, source release, downloaded response and execution; decide reference-only versus self-contained exports, retention and missing-target outcomes | Sabueso #100/#53; shared references/retention in MOLI #3 and retrieval boundary in MOLI #33 |
+| Literature validation | Rights of supplied fragments; extraction/validation, correction and retraction; trace a statement to its actual source location and retain extraction method/version | Sabueso #92/#29; project-to-knowledge promotion in MOLI #17 |
+| Public contract stability | Guarantees for queries, explanations, terms, references and export; version/deprecation policy and historical readers for each new slice | Sabueso #112 and feature issues; shared commitments in MOLI |
+
+Model-generated interpretations do not automatically become SourceAssertions.
+Extracted statements need support in the external source; project conclusions need
+an explicit curation/promotion boundary. See
+[RISKS_AND_OPEN_QUESTIONS.md](RISKS_AND_OPEN_QUESTIONS.md) for the outstanding decisions
+and [DECISIONS.md](DECISIONS.md) for adoption of this order.
+
+This roadmap schedules work, not a release date or a frozen new API. Revisit the
+order against both routes at each release and when real use exposes a blocker.
+
+## Capability backlog and dependencies
+
+The following entries retain the progress and remaining work from the foundational
+review begun on 2026-09-29. Their numbering groups capabilities; the next development
+order is the approved roadmap above.
 
 1. **The disease as an entity (#90).** Released in 0.7.0: disease cards anchored at
    MONDO, a protein's diseases grouped through stated identity and MONDO's hierarchy,

@@ -33,13 +33,18 @@ source:
 - `conflicting`: sources disagree;
 - `not_stated`: the source was consulted and states nothing;
 - `not_queried`: it was not requested;
-- `unavailable`: the source failed;
+- `unavailable`: acquisition failed or its recorded outcome cannot be evaluated;
 - `partial`: the source answered for some requests and failed, or answered
   incompletely, for others, or its answer was cut at a limit. `basis` names which
   (`unavailable_for`, `incomplete_for`, `truncated_for`).
 
 Each row carries the source release and the basis. An absence is reported as a fact
-about a source, never as evidence against something (rule `knowledge_state@4`).
+about a source, never as evidence against something. Development rule
+`knowledge_state@5` corrects molecular record counts from the published
+`knowledge_state@4` ([#122](https://github.com/uibcdf/sabueso/issues/122)).
+Received records with an unknown count remain known with `count=None`; they are
+not evaluated empty. Missing batch members and capped/partial empty subsets stay
+explicitly partial. Original reports retain the rule that produced them.
 
 Since 0.13.0, explain the rows at the current card snapshot:
 
@@ -54,7 +59,9 @@ for item in explanation["rows"]:
 
 Omit either selector to include every matching area or source. Names match exactly;
 an unknown name returns `not_on_card`, not a statement about the underlying entity.
-`knowledge_state_explanation@1` preserves the existing `knowledge_state@4` rows.
+Published `knowledge_state_explanation@1` explains `knowledge_state@4` rows.
+The development `knowledge_state_explanation@2` explains `knowledge_state@5`,
+including original per-report count bases and pinned report indexes.
 Selected fields and counted UniProt relationships retain pinned SourceAssertions,
 alternatives and conflicts. A field inferred not stated uses the stored UniProt
 anchor and declared source coverage; unqueried curation uses its recorded route.
@@ -67,9 +74,22 @@ read it from `store.load(locator["card_ref"])`. Related scientific support is se
 reported count is not reconstructed from nearby assertions. Missing stored support
 produces `partial`, including support whose loss removes a classified row.
 
+For molecule cards, native ChEMBL/CCD/PubChem returned ids count source records;
+one native UniChem compound id counts one compound. Linked resource ids do not
+count as direct access. ChEMBL indications and ClinicalTrials.gov studies have
+separate `relationships.investigated_for` and `relationships.tested_in` rows:
+identity intake does not mean clinical data was queried. A count of requested
+studies is not a count of returned studies. Inspect the actual recorded request
+scope and original outcome before interpreting a zero.
+Counts are scoped to each recorded report; their aggregate is not a count of
+distinct entities across repeated requests or a reconstruction of assertion membership.
+
 Load an original pinned card to explain its historical state. The operation fetches
 no source, changes no card and adds no execution credit. Several supporting UniProt
 versions are all retained; no newer version silently replaces the original support.
+An explanation of a loaded card uses the installed classification rule. Preserve
+the producer's original explanation/report or saved packet when the exact earlier
+derived result is required; loading a card does not replay an older rule implicitly.
 
 ## Structures
 

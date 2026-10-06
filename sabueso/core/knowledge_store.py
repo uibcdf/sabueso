@@ -715,12 +715,20 @@ class KnowledgeStore:
         One transaction: a failure stores nothing. Saving a deck again under its name
         adds a revision, unless its content is the latest one; earlier revisions keep
         resolving (#58).
+
+        Disease decks with portable support also store their original input and
+        native-assertion revision. The latter may advance the disease's head; both
+        pinned revisions remain available.
         """
         name, pinned = self._deck_name(deck_name)
         if pinned:
             raise StorageError("A deck is saved under its name, not under a pin.")
         deck_name = name
         with self._session() as conn:
+            from .disease_deck_support import support_cards
+
+            for card in support_cards(deck.meta).values():
+                self._save(conn, card, note)
             members = [self._save(conn, card, note) for card in deck.cards]
             sid = deck_snapshot_id(deck.meta, members)
             conn.execute(

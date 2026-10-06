@@ -81,6 +81,21 @@ decision of an `ambiguity_deck`, or the source outcomes and unanchored records o
   states of its cards, content-addressed. It returns `sabueso:deck:<name>@sha256:…`.
   `store.load_deck(name or ref)` gives the latest revision or the exact pinned one, and
   `store.deck_history(name)` lists the revisions (#58).
+  Development disease-deck rules `@2` additionally store the two scientific card
+  snapshots embedded in `meta.support` (`sabueso.disease_deck_support@1`): original
+  MONDO input and a separate revision with native membership assertions. This is
+  part of the same transaction; invalid/misbound snapshots store nothing. The
+  disease head may advance to that support revision; the original input pin stays
+  valid. No new SQL table or store format is needed. Exact native assertion items,
+  MONDO identity and member identity use ordinary `store.source_assertion(ref)`.
+  JSONL/SQLite deck metadata carries those snapshots, so importing an exported deck
+  into an empty store can recover its support without source access. Original
+  runtime attribution remains a separate sidecar; embedded science is not execution.
+  Development `disease_deck_admission@1` adds detached input/decision pins and
+  historical removed-member identity references in metadata. An empty-store import
+  stores retained support and members only; removed card payloads are not imported
+  to make those historical references resolvable. Active native candidate bases
+  remain self-contained and separate from the removed identity leg.
 - `store.save_packet(packet, packet_name)` stores a knowledge packet revision
   (`sabueso:packet:<name>@sha256:…`) once every card state it cites is in the store.
   `store.load_packet(name or ref)` verifies the packet and those states;

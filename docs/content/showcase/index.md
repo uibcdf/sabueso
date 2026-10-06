@@ -3,6 +3,10 @@
 This page captures representative Sabueso workflows supported by the current
 architecture.
 
+For independently readable offline protein and disease journeys with saved
+support, original attribution and explicit coverage gaps, see {doc}`../user/journeys`.
+The molecule/declared-target journey is in {doc}`../user/molecules`.
+
 ## Notebooks
 
 - {doc}`knowledge_baseline`: a traceable knowledge baseline for two proteins. It covers

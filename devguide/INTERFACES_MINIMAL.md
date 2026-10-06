@@ -49,6 +49,14 @@ may rely on. They are implemented, and this document is kept true to the code
 - `ids() -> list[str]`, `snapshot_id() -> str`, `to_list() -> list[dict]`
 - Deck views (`identity_audit`, `structure_inventory`, `unique_names`) are listed in
   `PUBLIC_API.md`.
+- Development disease rules `@2`: `explain(card_id)` includes
+  `disease_deck_explanation@1` support for native membership, original MONDO input,
+  member identity and excluded candidates. `meta.support` embeds those scientific
+  snapshots for portable persistence; it changes no member count. `terms(use)`
+  includes embedded sources under `disease_deck_terms@1`. Development
+  `admissible(use)` uses `disease_deck_admission@1`: shared context must be fully
+  admissible, then whole members are checked against all retained statements.
+  Finer filtering by terms of use remains pending (#29).
 
 ## SourceAssertionStore
 **Purpose:** Registry of the SourceAssertions referenced by a card. A SourceAssertion

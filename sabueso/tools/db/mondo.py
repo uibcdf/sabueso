@@ -28,6 +28,8 @@ from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.mondo_acquisition import ObservedIndex, document, note_index, observe
+from sabueso.core.source_acquisition import capture_acquisitions, missing_fixture
 from sabueso.tools.db import _release
 from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
@@ -155,6 +157,18 @@ def _answer(index: tuple, retrieved_at: str) -> Dict[str, Any]:
     return {"retrieved_at": retrieved_at, "version": version}
 
 
+def _parse_document(payload: bytes, origin: Dict[str, Any]) -> tuple:
+    try:
+        text = payload.decode("utf-8")
+    except UnicodeDecodeError as error:
+        raise ConnectorError("MONDO document is not UTF-8 OBO text.") from error
+    if not origin["format_declared"] and not (
+        "[Term]" in text and re.search(r"(?m)^id: MONDO:", text)
+    ):
+        raise ConnectorError("MONDO document has no OBO header or MONDO term stanzas.")
+    return parse_release(text)
+
+
 class _Index:
     """Lookups shared by the online and fixture clients."""
 
@@ -191,7 +205,15 @@ class OnlineMONDOClient(_Index):
         self._when = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
     def _retrieved_at(self) -> str:
-        return self._when
+        return getattr(self, "_source_when", None) or self._when
+
+    @observe("term")
+    def term(self, mondo_id: str) -> Dict[str, Any]:
+        return super().term(mondo_id)
+
+    @observe("equivalent")
+    def equivalent(self, curie: str) -> Dict[str, Any]:
+        return super().equivalent(curie)
 
     def _asset(self) -> Dict[str, str]:
         stamp(SOURCE)  # what an archive keeps of this lookup is MONDO's
@@ -215,21 +237,39 @@ class OnlineMONDOClient(_Index):
         }
 
     def _download(self, asset: Dict[str, str]) -> tuple:
-        stamp(SOURCE)
+        from sabueso.tools.db._http import observing_requests
+
+        retrieval = stamp(SOURCE)
         try:
-            with urlopen(request(asset["url"]), timeout=self.timeout) as resp:  # nosec
+            with (
+                observing_requests() as receipts,
+                urlopen(request(asset["url"]), timeout=self.timeout) as resp,
+            ):  # nosec
                 payload = resp.read()
         except (HTTPError, URLError, TimeoutError, OSError) as exc:
             raise ConnectorError(f"MONDO download failed: {exc}") from exc
+        origin = document(
+            payload,
+            asset=asset,
+            retrieved_at=getattr(resp, "retrieved_at", None) or retrieval.value,
+            requests=receipts,
+        )
         if asset["sha256"]:
             _release.verify_sha256(payload, asset["sha256"], f"MONDO {asset['tag']}")
-        return parse_release(payload.decode("utf-8"))
+            origin["checksum"]["verified"] = True
+        note_index(None, origin)
+        return ObservedIndex(_parse_document(payload, origin), origin)
 
     def _index(self) -> tuple:
         if not hasattr(self, "_asset_info"):
             self._asset_info = self._asset()
         asset = self._asset_info
-        return _release.remembered(SOURCE, asset["tag"], lambda: self._download(asset))
+        reused = _release.recall(SOURCE, asset["tag"]) is not None
+        index = _release.remembered(SOURCE, asset["tag"], lambda: self._download(asset))
+        origin = getattr(index, "origin", None)
+        self._source_when = (origin or {}).get("retrieved_at")
+        note_index(index, origin, reused=reused)
+        return index
 
 
 class FixtureMONDOClient(_Index):
@@ -247,13 +287,24 @@ class FixtureMONDOClient(_Index):
         return self.retrieved_at
 
     def _index(self) -> tuple:
-        return parse_release(self.path.read_text(encoding="utf-8"))
+        try:
+            payload = self.path.read_bytes()
+        except FileNotFoundError as error:
+            raise missing_fixture(f"MONDO fixture unavailable: {self.path}") from error
+        except OSError as error:
+            raise ConnectorError(f"MONDO fixture read failed: {error}") from error
+        origin = document(payload, retrieved_at=self.retrieved_at, fixture=True)
+        index = _parse_document(payload, origin)
+        note_index(index, origin)
+        return index
 
+    @observe("term", fixture=True)
     def term(self, mondo_id: str) -> Dict[str, Any]:
         if mondo_id in self.failing:
             raise ConnectorError(f"MONDO request for {mondo_id} failed (simulated)")
         return super().term(mondo_id)
 
+    @observe("equivalent", fixture=True)
     def equivalent(self, curie: str) -> Dict[str, Any]:
         if curie in self.failing:
             raise ConnectorError(f"MONDO request for {curie} failed (simulated)")
@@ -264,6 +315,7 @@ class FixtureMONDOClient(_Index):
 
 
 @arg_digest()
+@capture_acquisitions
 def get_term(identifier: str, client: Any = None, skip_digestion: bool = False):
     """A MONDO term as stated: name, definition, synonyms, xrefs (each marked
     equivalent or not), parents, subsets, and obsolescence."""

@@ -82,6 +82,19 @@ the same inventory options; see {doc}`structures`.
 
 An id the card does not hold is reported as `found: False`, never dropped.
 
+In the development rules `disease_targets@2` and `disease_drugs@2`, `explain()` also
+reports the exact original disease identity and native association or indication
+statements under `support`. This includes candidates excluded by a limit or whose
+cards could not be built. Older decks remain readable and report support that was
+not recorded; see {doc}`disease_association`.
+
+For these development decks, `terms(use)` includes the members and all embedded
+source context, including excluded candidates. Development `admissible(use)` uses
+`disease_deck_admission@1`: all embedded context must allow the use, then whole
+member cards are admitted only if their resolved knowledge and every stored native
+statement allow it. Shared unknown/restricted terms refuse the operation; finer
+filtering by terms of use is not implemented. See {doc}`terms` for the report and historical pins.
+
 ## Deriving decks
 
 Each derived deck lists the operations that produced it in `meta["operations"]`. An
@@ -132,3 +145,7 @@ same = store.load_deck(ref)  # each card in the state it was saved in
 Decks can also be written as JSONL or SQLite files (`deck.to_jsonl(path)`,
 `deck.to_sqlite(path, ...)`, `Deck.from_jsonl(path)`, `Deck.from_sqlite(path, ...)`), which
 keep the deck's meta. See {doc}`storage`.
+
+Saving a development disease deck also saves its original input and the revision
+holding its native support. The support revision can become the disease's latest
+state; the original input remains available under its exact pin.

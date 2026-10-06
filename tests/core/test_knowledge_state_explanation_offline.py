@@ -56,8 +56,8 @@ def test_every_public_row_is_explained_without_changing_classification_or_credit
     assert answer["status"] == "on_card" and not answer["gaps"]
     assert [r["row"] for r in answer["rows"]] == state["rows"]
     assert answer["state_rule"] == state["rule"]
-    assert answer["rule"]["rule"] == "knowledge_state_explanation@1"
-    assert answer["state_rule"]["rule"] == "knowledge_state@4"
+    assert answer["rule"]["rule"] == "knowledge_state_explanation@2"
+    assert answer["state_rule"]["rule"] == "knowledge_state@5"
     assert answer["rule"]["inputs"] == [public_card.pinned_ref()]
     answer["rows"].clear()
     assert public_card.to_dict() == before

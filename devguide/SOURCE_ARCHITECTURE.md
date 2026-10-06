@@ -69,7 +69,13 @@ it into a bibliographic search. `record_kinds` includes both Europe PMC routes f
 the migration map; automatic packet requests still ask only for bibliography.
 Refresh preserves the card's recorded terms profile unless the caller overrides it.
 
-`knowledge_state@4` reads each area's declared selectors and count field. Europe PMC
+`knowledge_state@5` retains the per-area selectors/count fields introduced in `@4`.
+Molecular record intake can count native returned record ids or a UniChem compound;
+missing counts remain unknown. ChEMBL indications and ClinicalTrials.gov studies
+are classified in separate areas. Their reports and count bases stay inspectable
+without inferring per-request assertion membership. Missing/capped/partial subsets
+stay incomplete even with zero returned items (#122).
+Europe PMC
 counts direct UniProt mentions separately from derived structure mention context.
 Only requests marked `located_accession_mapping@2` cover the latter; an older
 direct-only request or a bibliographic search cannot imply that PDB mentions were

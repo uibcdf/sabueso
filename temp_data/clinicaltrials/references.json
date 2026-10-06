@@ -1,0 +1,49 @@
+{
+  "version": "2026-10-05T09:00:05",
+  "api_version": "2.0.5",
+  "studies": {
+    "NCT00123916": {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT00123916",
+          "briefTitle": "BENEFIT: Evaluation of the Use of Antiparasital Drug (Benznidazole) in the Treatment of Chronic Chagas' Disease"
+        },
+        "statusModule": {
+          "lastUpdatePostDateStruct": {
+            "date": "2020-03-03",
+            "type": "ACTUAL"
+          }
+        },
+        "referencesModule": {
+          "references": [
+            {
+              "pmid": "18585495",
+              "type": "BACKGROUND",
+              "citation": "Marin-Neto JA, Rassi A Jr, Morillo CA, Avezum A, Connolly SJ, Sosa-Estani S, Rosas F, Yusuf S; BENEFIT Investigators. Rationale and design of a randomized placebo-controlled trial assessing the effects of etiologic treatment in Chagas' cardiomyopathy: the BENznidazole Evaluation For Interrupting Trypanosomiasis (BENEFIT). Am Heart J. 2008 Jul;156(1):37-43. doi: 10.1016/j.ahj.2008.04.001."
+            },
+            {
+              "pmid": "26323937",
+              "type": "DERIVED",
+              "citation": "Morillo CA, Marin-Neto JA, Avezum A, Sosa-Estani S, Rassi A Jr, Rosas F, Villena E, Quiroz R, Bonilla R, Britto C, Guhl F, Velazquez E, Bonilla L, Meeks B, Rao-Melacini P, Pogue J, Mattos A, Lazdins J, Rassi A, Connolly SJ, Yusuf S; BENEFIT Investigators. Randomized Trial of Benznidazole for Chronic Chagas' Cardiomyopathy. N Engl J Med. 2015 Oct;373(14):1295-306. doi: 10.1056/NEJMoa1507574. Epub 2015 Sep 1."
+            },
+            {
+              "pmid": "19753491",
+              "type": "DERIVED",
+              "citation": "Marin-Neto JA, Rassi A Jr, Avezum A Jr, Mattos AC, Rassi A, Morillo CA, Sosa-Estani S, Yusuf S; BENEFIT Investigators. The BENEFIT trial: testing the hypothesis that trypanocidal therapy is beneficial for patients with chronic Chagas heart disease. Mem Inst Oswaldo Cruz. 2009 Jul;104 Suppl 1:319-24. doi: 10.1590/s0074-02762009000900042."
+            }
+          ],
+          "seeAlsoLinks": [
+            {
+              "label": "Population Health Research Institute",
+              "url": "http://www.phri.ca"
+            },
+            {
+              "label": "Instituto Dante Pazzanese de Cardiologia",
+              "url": "http://www.idpc.org.br/pesquisa/"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

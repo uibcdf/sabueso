@@ -353,3 +353,23 @@ for card in drugs.cards:
   build 50 members by default (`limit=`). The rest are listed in `meta["excluded"]` with
   the reason `limit`, and the cut is reported with a warning. A gene with no Swiss-Prot
   product is excluded with its reason.
+
+In development after 0.13.0, `disease_targets@2` and `disease_drugs@2` preserve native
+membership assertions, exact original MONDO identity and member-card identity.
+`deck.explain(card.id)["support"]` shows the original source items and their pins,
+or explicit missing/misbound support. Open Targets' returned record preserves row
+order/counts; its score is source-stated and the position is derived from that
+returned order. Excluded and unbuilt candidates keep their supporting rows too.
+
+`store.save_deck(deck, "targets")` atomically saves members and the embedded
+scientific support. The original disease input remains unchanged; a separate
+assertion-bearing revision may advance the stored disease head. Later
+`store.source_assertion(ref)` reads exact native support even after new acquisitions.
+JSONL/SQLite deck exports preserve it for reimport into an empty store. Native
+statements do not establish observed access or a complete bibliography; preserve
+original runtime sidecars separately. The new deck terms report includes all
+embedded sources. Development `Deck.admissible` requires all shared context to
+permit the use, then filters whole members against all their stored statements
+under `disease_deck_admission@1`. Unknown/restricted shared terms refuse; finer
+filtering by terms of use remains pending. Published rules `@1` remain readable with their
+original support gaps.

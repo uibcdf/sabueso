@@ -31,10 +31,30 @@
     CC BY 4.0).
   - DISEASES updates its files in place, so its cache is keyed by each file's
     publication date (`diseases/<channel>_<date>.json`). A newer file is a new entry.
+  - In development, each DISEASES memory index carries its original file/time
+    receipt. A new header check does not redownload or redate that scientific
+    index. Its receipt is discarded with the index; no second cache is added.
+    Existing disk JSON indexes keep their format and explicitly lack original
+    response/time receipts. Their legacy client query-clock fallback is reported.
   - Orphadata's file is dated only inside it, so it is kept in memory only.
   - All three share one implementation (`tools/db/_release.py`, #86): the same memory
     store, the same resolution of the cache directory, and atomic writes (staged, then
     renamed), so an interrupted write never leaves a release half cached.
+
+MONDO also uses this process cache by release tag. In development, its indexed
+tuple carries the original download receipt for acquisition observation (#108).
+The receipt belongs to that exact cached index and is dropped with it; no second
+cache or default path is introduced. Local query events distinguish index reuse
+from a current release-selector request. Scientific results keep the original file
+response time too; a pre-existing unobserved index explicitly lacks its origin and
+retains the client-clock fallback rather than manufacturing an earlier response.
+
+Development Orphadata observation follows the same receipt lifetime for its
+`en_product6` index, whose actual date is in the XML header. Queries reuse the
+original file response time in science and runtime records (#124), including
+archive replay. A bare pre-existing index cannot recover its original receipt.
+The mutable URL is not a new release identity; no disk mirror or automatic expiry
+is added. Source versions and original XML byte hashes remain distinct.
 
 ## Direction adopted (2026-09-30, #100)
 
