@@ -86,6 +86,19 @@ gate provide the receiving coverage; the entire 19-module gate was not repeated.
 Future requalification must copy all current fixtures, not reuse an older client
 subset. CI uses the complete fixture tree and the staged gate copies it.
 
+## First remote checkpoint and Windows fixture correction
+
+Implementation commit `413cdf6674c947dca960c301d938775aa07e66a8` was pushed to
+`origin/main` on 2026-10-06. Its governance run 37436917556 passes. In CI run
+37436917488, the four Linux public Ackredit clients and Linux/macOS offline lanes
+pass. Windows exposed one regression-test defect: the comparison read the UTF-8
+public PMID 26323937 fixture with the platform's default encoding, corrupting
+non-ASCII author metadata. The source client already uses explicit UTF-8 correctly.
+The same assertion failure is reproduced locally with a cp1252-default probe.
+The fixture comparison now declares UTF-8; package code and public fixture bytes
+are unchanged. The correction receives a new ordinary push and exact-head CI;
+the final completion receipt is recorded in `CHECKPOINT.md`, Resume here.
+
 ## Shared environment discrepancy
 
 The current primary-environment `pip check` fails, superseding earlier passing

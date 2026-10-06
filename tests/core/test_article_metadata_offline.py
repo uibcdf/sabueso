@@ -802,7 +802,7 @@ def test_public_mixed_author_list_preserves_every_person_and_collective_author()
     )
     article = result["record"]["articles"][0]
     original = json.loads(
-        (DATA / "europepmc/articles/pubmed__26323937.json").read_text()
+        (DATA / "europepmc/articles/pubmed__26323937.json").read_text(encoding="utf-8")
     )["resultList"]["result"][0]
     assert article == original
     record = result["acquisition_trace"]["records"][0]
