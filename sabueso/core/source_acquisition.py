@@ -44,6 +44,21 @@ COVERAGE = {
         "ClinVar",
         "MedGen",
         "ClinicalTrials.gov",
+        "AAindex",
+        "DisProt",
+        "UniParc",
+        "AlphaMissense",
+        "MobiDB",
+        "SIFTS",
+        "PDBe Validation",
+        "EPPIC",
+        "PDB-REDO",
+        "GlyGen",
+        "AlphaFill",
+        "LIGYSIS",
+        "IntAct",
+        "AmyPro",
+        "SWISS-MODEL Repository",
     ],
     "boundary": "built_in_entry_search_mentions_annotations_structure_chemical_clients",
     "other_sources_and_custom_clients": "not_observed",
@@ -463,6 +478,120 @@ def _credit(record):
     if record["source"] == "InterPro":
         record["bibliography_gaps"].append(
             "member_database_signature_and_site_citations_not_returned"
+        )
+    if record["source"] == "AAindex":
+        record["bibliography_gaps"].append(
+            "native_index_publication_metadata_not_fetched"
+        )
+    if record["source"] == "DisProt":
+        record["bibliography_gaps"].append(
+            "underlying_disorder_publication_metadata_not_fetched"
+        )
+    if record["source"] == "UniParc":
+        record["bibliography_gaps"].append(
+            "referenced_sequence_databases_and_entry_publications_not_fetched"
+        )
+    if record["source"] == "AlphaMissense":
+        record["bibliography_gaps"].append("prediction_artifact_revision_not_stated")
+    if record["source"] == "MobiDB":
+        record["bibliography_gaps"].append(
+            "underlying_annotation_provider_and_method_publications_not_fetched"
+        )
+    if record["source"] == "SIFTS":
+        record["bibliography_gaps"].append(
+            "mapping_release_and_referenced_sequence_revisions_not_stated"
+        )
+    if record["source"] == "PDBe Validation":
+        record["bibliography_gaps"].append(
+            "validation_pipeline_and_comparison_population_revisions_not_stated"
+        )
+    if record["source"] == "EPPIC":
+        record["bibliography_gaps"].append(
+            "prediction_record_revision_and_current_UniProt_coordinate_equivalence_not_stated"
+        )
+    if record["source"] == "PDB-REDO":
+        record["bibliography_gaps"].append(
+            "databank_record_revision_not_stated; pipeline_and_input_revisions_are_separate"
+        )
+    if record["source"] == "AlphaFill":
+        record["bibliography_gaps"].extend(
+            [
+                "metadata_record_and_current_source_sequence_revisions_not_stated",
+                "template_structure_primary_publications_not_fetched",
+            ]
+        )
+    if record["source"] == "LIGYSIS":
+        record["bibliography_gaps"].extend(
+            [
+                "result_and_source_sequence_revisions_not_stated",
+                "underlying_ligand_structure_and_method_publications_not_fetched",
+            ]
+        )
+    if record["source"] == "GlyGen":
+        record["bibliography_gaps"].extend(
+            [
+                "protein_record_and_source_sequence_revisions_not_stated",
+                "underlying_modification_sources_and_publication_metadata_not_fetched",
+            ]
+        )
+    if record["source"] == "IntAct":
+        record["bibliography_gaps"].extend(
+            [
+                "interaction_record_and_participant_sequence_revisions_not_stated",
+                "native_publication_and_method_metadata_not_fetched",
+            ]
+        )
+    if record["source"] == "UniProt" and record["operation"] in {
+        "isoform_parent",
+        "isoform_fasta",
+    }:
+        record["bibliography_gaps"].extend(
+            [
+                "isoform_sequence_revision_not_stated; parent_entry_and_canonical_sequence_versions_are_separate",
+                "isoform_specific_publications_not_fetched",
+            ]
+        )
+    if record["source"] == "SIGNOR":
+        record["bibliography_gaps"].extend(
+            [
+                "export_relation_sequence_and_score_revisions_not_stated; website_release_separate",
+                "native_PMID_and_sentence_context_only; underlying_publications_not_fetched",
+            ]
+        )
+    if record["source"] == "APPRIS":
+        record["bibliography_gaps"].extend(
+            [
+                "dataset_assembly_record_transcript_and_sequence_revisions_not_stated",
+                "underlying_method_sequence_and_publication_support_not_fetched",
+            ]
+        )
+    if record["source"] == "Complex Portal":
+        record["bibliography_gaps"].extend(
+            [
+                "complex_record_and_participant_sequence_revisions_not_stated; release_dates_separate",
+                "underlying_curation_prediction_support_and_publications_not_fetched",
+            ]
+        )
+    if record["source"] == "CATH":
+        record["bibliography_gaps"].extend(
+            [
+                "response_release_record_and_sequence_revisions_not_stated; release_is_requested_route",
+                "underlying_structure_and_annotation_publications_not_fetched",
+            ]
+        )
+    if record["source"] == "SWISS-MODEL Repository":
+        record["bibliography_gaps"].extend(
+            [
+                "metadata_model_and_source_sequence_revisions_not_stated",
+                "underlying_PDB_and_template_primary_publications_not_fetched",
+            ]
+        )
+    if record["source"] == "AmyPro":
+        record["bibliography_gaps"].extend(
+            [
+                "export_entry_and_investigated_sequence_revisions_not_stated",
+                "entry_level_publications_not_fetched; region_methods_and_specific_support_not_returned",
+            ]
         )
     if record["source"] == "MONDO":
         record["bibliography_gaps"].append(

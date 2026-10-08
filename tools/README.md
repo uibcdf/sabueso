@@ -8,6 +8,10 @@ Helper scripts for development and validation.
   writes, per card schema version (`schemas/card_shape_<version>.json`, #42).
 - `source_registry.py`: validates `devguide/sources/registry.yaml` and generates
   `docs/content/user/data_sources.md` (`--write`, `--check`).
+- `build_hk2_test_system.py`: rebuilds the public HK2 card and notebook offline
+  from the qualified UniProt response, using the current schema. Run as
+  `python -m tools.build_hk2_test_system --output DIR`; see
+  [the HK2 test system](../devguide/HK2_TEST_SYSTEM.md).
 - `build_showcase_notebook.py`: builds `docs/content/showcase/knowledge_baseline.ipynb`
   and executes it against live services. Its offline twin is
   `tests/core/test_knowledge_baseline_offline.py`.

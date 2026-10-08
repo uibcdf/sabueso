@@ -31,7 +31,7 @@ Versioning: **x.y.z** (no leading `v`).
 - `identifiers.other` (list/dict for rare IDs)
 
 ### names.*
-- `names.canonical_name` (UniProt's recommended name; an unreviewed entry without one gives its first submission name, with `source_metadata.uniprot_name: submission`)
+- `names.canonical_name` (source-native molecule names include ChEBI and PubChem summary-page `Title` (`source_metadata.pubchem_property: Title`); UniProt's recommended name; an unreviewed entry without one gives its first submission name, with `source_metadata.uniprot_name: submission`)
 - `names.synonyms` (list of `{name, kind}`; UniProt's alternative names, `kind: alternative_name`, and the submitter's other names, `submission_name`; curatable as `{name}`: a name a publication uses for the entry, which anchors resolution by name through a curation store, #55. A curated `{name}` that UniProt states corroborates it: `kind` describes the item, it does not state it)
 - `names.abbreviations` (list of `{name, of}`; UniProt's short names, with the full name each shortens)
 - `names.gene_names` (list of `{name, kind, gene}`; UniProt's gene names, `kind` one of `gene_name`, `synonym`, `ordered_locus`, `orf`; `gene` numbers the gene within the entry, since an entry can be encoded by several)
@@ -61,13 +61,25 @@ Versioning: **x.y.z** (no leading `v`).
 - `annotations.taxonomy` (`{tax_id, name, rank, ancestors: [{tax_id, name, rank}]}` from NCBI Taxonomy: ranks and ancestor ids, root first; opt-in enrichment `taxonomy=True`, #67)
 - `annotations.ptm`
 - `annotations.polymorphism`
+- `annotations.activity_regulation` (UniProt native activity regulation text; development schema 0.3.13)
+- `annotations.domain_notes` (UniProt native domain notes text; development schema 0.3.13)
+- `annotations.similarity` (UniProt native similarity text; development schema 0.3.13)
+- `annotations.source_cautions` (UniProt native source cautions text; development schema 0.3.13)
+- `annotations.miscellaneous` (UniProt native miscellaneous text; development schema 0.3.13)
 - `annotations.domains` (non-positional summary; reserved, not currently produced)
 
 ### literature.*
 - `literature.claims` (list of `{topic, text, about?}`; curated free-text claims typed by topic, never compared, #43)
 
 ### features_positional.*
-- `features_positional.domains` (positional domains)
+- `features_positional.domains` (UniProt positional domains, active in development 0.3.13; independent ECO, original bounds/molecule scope and sequence revision)
+- `features_positional.chain` (UniProt native chain feature; development schema 0.3.13)
+- `features_positional.lipidation` (UniProt native lipidation feature; development schema 0.3.13)
+- `features_positional.motif` (UniProt native motif feature; development schema 0.3.13)
+- `features_positional.region` (UniProt native region feature; development schema 0.3.13)
+- `features_positional.sequence_conflict` (UniProt native sequence conflict feature; development schema 0.3.13)
+- `features_positional.topological_domain` (UniProt native topological domain feature; development schema 0.3.13)
+- `features_positional.transmembrane` (UniProt native transmembrane feature; development schema 0.3.13)
 - `features_positional.active_site`
 - `features_positional.binding_site`
 - `features_positional.family_site` (sites an InterPro member database places on the sequence, e.g. CDD catalytic triad; one item per site, with its signature)

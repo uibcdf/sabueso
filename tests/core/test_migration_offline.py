@@ -60,6 +60,19 @@ def test_gaps_say_what_a_refresh_would_bring_and_what_can_be_asked_for():
         "features_positional.secondary_structure",
         "relationships.has_structure.secondary_structure",
         "source_assertion_store[].acquisition",  # since 0.3.7: how each entered
+        "annotations.activity_regulation",  # since 0.3.13: native UniProt statements
+        "annotations.domain_notes",
+        "annotations.similarity",
+        "annotations.source_cautions",
+        "annotations.miscellaneous",
+        "features_positional.domains",
+        "features_positional.chain",
+        "features_positional.lipidation",
+        "features_positional.motif",
+        "features_positional.region",
+        "features_positional.sequence_conflict",
+        "features_positional.topological_domain",
+        "features_positional.transmembrane",
     }
 
 

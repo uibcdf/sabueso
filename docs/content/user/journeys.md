@@ -88,6 +88,18 @@ ChEMBL/BindingDB measurements, builds ligand decks, preserves units and alternat
 and saves both full and index packets. The reader validates original files and
 support before exporting CSL-JSON and BibTeX references.
 
+Development example format `@2` also retains canonical active-site residues stated
+by each source and the composition of that selected set. The caller's selection
+is named `source_active_site_selection@1`; composition uses
+`residue_set_composition@1`. Each protein keeps its own sequence axis and exact
+historical SourceAssertions. Equal residue numbers or compositions do not establish
+a correspondence. These derived views currently lack dedicated execution sidecars;
+their rules and source support do not imply complete operation observation.
+
+The reader accepts original `@1` bundles without adding or recomputing residue
+context. In either format it checks original inputs and retains the producer's
+report, rather than rerunning derived rules. See {doc}`source_annotations`.
+
 Reacquisition reads the same fixtures at a later observation time. It advances
 current heads without changing earlier citations, reports or bibliography. No
 network access occurs. The missing 1IIG RCSB fixture is unavailable; the example

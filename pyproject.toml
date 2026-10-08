@@ -52,6 +52,7 @@ include = ["sabueso*"]
 sabueso = ["resolver/*.json"]
 
 [tool.pytest.ini_options]
+norecursedirs = [".*", "build", "dist", "recovered_work"]
 markers = [
   "online: tests that require network access",
 ]

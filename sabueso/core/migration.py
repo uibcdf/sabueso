@@ -44,6 +44,73 @@ MIGRATION_RULE = "card_migration@1"
 #: templates. ``entity_types``, when given, limits a change to the cards it applies to
 #: (a molecule has no pathogen phenotypes, a protein no indications).
 SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
+    "0.3.13": [
+        {
+            "path": "annotations.activity_regulation",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "annotations.domain_notes",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "annotations.similarity",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "annotations.source_cautions",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "annotations.miscellaneous",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "features_positional.domains",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "features_positional.chain",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "features_positional.lipidation",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "features_positional.motif",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "features_positional.region",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "features_positional.sequence_conflict",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "features_positional.topological_domain",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "features_positional.transmembrane",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+    ],
     "0.3.1": [{"path": "annotations.disease", "filled_by": "refresh"}],
     "0.3.2": [
         {"path": "annotations.taxon_id", "filled_by": "refresh"},

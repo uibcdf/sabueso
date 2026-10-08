@@ -62,9 +62,22 @@ DISCLAIMER = (
 #: What each licence allows, as its text states. ``None`` for a use means the licence
 #: alone does not answer (terms per record).
 LICENCES: Dict[str, Dict[str, Any]] = {
+    "NOT-STATED": {"name": "No reuse licence stated", "not_stated": True},
+    "PDBTM-CONDITIONAL": {
+        "name": "PDBTM unchanged-content nonprofit/commercial-agreement terms",
+        "classification_unknown": True,
+    },
+    "HPO-CONSORTIUM": {
+        "name": "HPO Consortium unchanged-content and attribution terms",
+        "classification_unknown": True,
+    },
+    "GNU-LIBRARY-GPL-UNVERSIONED": {
+        "name": "GNU Library GPL (version unspecified)",
+        "classification_unknown": True,
+    },
     "CC0-1.0": {"name": "CC0 1.0", "attribution": None, "share_alike": False},
     "US-PD": {
-        "name": "US public domain (NLM policy)",
+        "name": "US public domain (source policy)",
         "attribution": "credit_requested",
         "share_alike": False,
     },
@@ -108,6 +121,12 @@ LICENCES: Dict[str, Dict[str, Any]] = {
         "name": "CC BY-NC 4.0",
         "attribution": "attribution",
         "share_alike": False,
+        "non_commercial": True,
+    },
+    "CC-BY-NC-SA-4.0": {
+        "name": "CC BY-NC-SA 4.0",
+        "attribution": "attribution",
+        "share_alike": True,
         "non_commercial": True,
     },
     "DEPOSITOR-TERMS": {"name": "each record's depositor's terms", "per_record": True},
@@ -160,7 +179,7 @@ def retention(name: str | None) -> Dict[str, Any]:
     ``retention_from_licence@2``: ``keep`` (a copy for the user's own work) and
     ``share`` (passing the copy on). Derived from the licence, never assumed:
 
-    - no terms recorded, or answers whose terms are each record's (a depositor's, a
+    - no terms recorded, an unstated reuse licence, or terms for each record (a depositor's, a
       publication's): ``keep: internal``, ``share: unknown``, to review;
     - otherwise ``keep: yes``, and ``share`` with the licence's conditions:
       ``attribution``, ``share_alike``, ``non_commercial`` (none for CC0 and public
@@ -173,12 +192,25 @@ def retention(name: str | None) -> Dict[str, Any]:
     licence_id = terms.get("retention_licence", terms["licence"]) if terms else None
     licence = LICENCES.get(licence_id)
     base: Dict[str, Any] = {"rule": RETENTION_RULE, "source": name}
-    if licence is None or licence.get("per_record"):
+    if licence and licence.get("classification_unknown"):
+        return {
+            **base,
+            "licence": licence_id,
+            "keep": "internal",
+            "share": "unknown",
+            "reason": "licence_not_classified",
+            **({"caveats": terms["caveats"]} if terms.get("caveats") else {}),
+        }
+    if licence is None or licence.get("per_record") or licence.get("not_stated"):
         return {
             **base,
             "keep": "internal",
             "share": "unknown",
-            "reason": "per_record_terms" if licence else "no_terms_recorded",
+            "reason": "licence_not_stated"
+            if licence and licence.get("not_stated")
+            else "per_record_terms"
+            if licence
+            else "no_terms_recorded",
             **({"licence": licence_id} if terms else {}),
         }
     conditions = [
@@ -219,8 +251,10 @@ def verdict(name: str, use: str, today: date | None = None) -> Dict[str, Any]:
         REVIEW_DAYS
     ):
         out["review_due"] = True
-    if licence is None:
+    if licence is None or licence.get("classification_unknown"):
         return {**out, "verdict": "unknown", "reason": "licence_not_classified"}
+    if licence.get("not_stated"):
+        return {**out, "verdict": "unknown", "reason": "licence_not_stated"}
     if licence.get("per_record"):
         return {**out, "verdict": "unknown", "reason": "terms_per_record"}
     if use == "commercial_product" and licence.get("non_commercial"):

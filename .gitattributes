@@ -1,0 +1,4 @@
+# Frozen source responses retain their original bytes on every platform.
+temp_data/** -text -whitespace
+# The maintained notice is documentation rather than a native response.
+temp_data/NOTICE.md text eol=lf !whitespace

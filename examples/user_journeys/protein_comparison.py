@@ -12,6 +12,7 @@ import pyunitwizard as puw
 
 import sabueso
 from sabueso.core.errors import SabuesoError
+from sabueso.core.source_assertion_store import assertion_value
 from sabueso.resolver import EntityQuery, EntityResolver, FixtureUniProtClient
 from sabueso.tools.db.bindingdb import FixtureBindingDBClient
 from sabueso.tools.db.chembl import FixtureChEMBLClient
@@ -19,7 +20,8 @@ from sabueso.tools.db.pdb_ccd import FixtureCCDClient
 from sabueso.tools.db.rcsb import FixtureRCSBClient
 from sabueso.tools.db.unichem import FixtureUniChemClient
 
-FORMAT = "sabueso.protein_comparison_example@1"
+FORMAT = "sabueso.protein_comparison_example@2"
+READABLE_FORMATS = {"sabueso.protein_comparison_example@1", FORMAT}
 ROLES = {"subject": ("P52270", 5693), "comparator": ("P60174", 9606)}
 ASPECTS = ["identity", "structures", "bioactivities", "literature"]
 STRUCTURES = {"subject": ["1TCD", "1IIG"], "comparator": ["1HTI", "1KLG"]}
@@ -61,6 +63,53 @@ def read_json(path):
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def residue_context(card):
+    """Read source-active-site positions on their own canonical axis, without alignment."""
+    residues = card.get_residues()
+    selected = [
+        row
+        for row in residues
+        if any(
+            item["field_path"] == "features_positional.active_site"
+            and item["support_status"] == "complete"
+            for item in row["annotations"]
+        )
+    ]
+    positions = [row["position"] for row in selected]
+    assertions = set()
+    for row in selected:
+        assertions.update(row["sequence_support"]["source_assertion_ids"])
+        for item in row["annotations"]:
+            assertions.update(item["source_assertion_ids"])
+    composition = card.residue_composition(positions)
+    assertions.update(composition["sequence_support"]["source_assertion_ids"])
+    unplaced = [
+        item
+        for item in (residues[0]["unmapped"] if residues else [])
+        if item["field_path"] == "features_positional.active_site"
+    ]
+    return {
+        "card_ref": card.pinned_ref(),
+        "selection": {
+            "rule": "source_active_site_selection@1",
+            "basis": "caller selects canonical positions with completely supported source active-site annotations",
+            "positions": positions,
+            "unplaced": unplaced,
+        },
+        "residues": selected,
+        "composition": composition,
+        "support_refs": [card.pinned_ref() + "#" + item for item in sorted(assertions)],
+        "comparison": {
+            "status": "not_compared",
+            "reason": "no source-stated residue correspondence",
+        },
+        "execution_observation": {
+            "status": "not_observed",
+            "reason": "derived readers provide rules and support without dedicated operation sidecars",
+        },
+    }
 
 
 @contextmanager
@@ -159,6 +208,7 @@ def produce(output, fixtures, stage):
                 "proteins": {},
             }
             manifest["items"] = {}
+            manifest["residue_items"] = {}
             for role, card in cards.items():
                 node = card.get("annotations.subunit")
                 activity = card.bioactivities()["items"][0]
@@ -190,6 +240,9 @@ def produce(output, fixtures, stage):
                     "terms": card.terms("redistribution"),
                     "ligand_sources": decks[role].meta.get("sources", []),
                 }
+                context = residue_context(card)
+                report["proteins"][role]["residue_context"] = context
+                manifest["residue_items"][role] = context["support_refs"]
             write_json(output / f"{stage}.report.json", report)
         write_json(output / f"{stage}.traces.json", traces)
         write_json(
@@ -211,7 +264,7 @@ def produce(output, fixtures, stage):
 def read_stage(output, stage):
     """Check original sidecars and exact scientific references before any export."""
     manifest = read_json(output / f"{stage}.manifest.json")
-    require(manifest["format"] == FORMAT, "Unsupported example manifest")
+    require(manifest["format"] in READABLE_FORMATS, "Unsupported example manifest")
     require(manifest["stage"] == stage, "Stage differs from manifest")
     require(set(manifest["cards"]) == set(ROLES), "Expected both proteins")
     require(set(manifest["decks"]) == set(ROLES), "Expected both ligand decks")
@@ -269,6 +322,89 @@ def read_stage(output, stage):
                 item == card.source_assertion_store.get(item_ref.rsplit("#", 1)[1]),
                 "Historical item differs from its card",
             )
+        if manifest["format"] == FORMAT:
+            context = report["proteins"][role]["residue_context"]
+            require(
+                context["card_ref"] == ref, "Residue context belongs to another card"
+            )
+            require(
+                context["composition"]["card_ref"] == ref,
+                "Composition belongs to another card",
+            )
+            require(
+                context["selection"]["rule"] == "source_active_site_selection@1",
+                "Unsupported residue selection",
+            )
+            require(
+                context["support_refs"] == manifest["residue_items"][role],
+                "Residue support pins differ",
+            )
+            require(
+                context["composition"]["selection"]["requested_positions"]
+                == context["selection"]["positions"],
+                "Residue selection differs from composition",
+            )
+            for item_ref in context["support_refs"]:
+                require(
+                    item_ref.startswith(ref + "#"),
+                    "Residue support belongs to another card",
+                )
+                item = store.source_assertion(item_ref)
+                require(
+                    item == card.source_assertion_store.get(item_ref.rsplit("#", 1)[1]),
+                    "Residue support differs from its pinned card",
+                )
+            # Validate preserved inputs, not derived results under current rules.
+            expected_sequence = card.get("sequence.primary")["value"]
+            require(
+                context["composition"]["sequence_sha256"]
+                == hashlib.sha256(expected_sequence.encode()).hexdigest(),
+                "Composition sequence differs from its card",
+            )
+            for row in context["residues"]:
+                require(row["card_ref"] == ref, "Residue row belongs to another card")
+                position = row["position"]
+                require(
+                    1 <= position <= len(expected_sequence),
+                    "Residue position outside its sequence",
+                )
+                require(
+                    row["amino_acid"] == expected_sequence[position - 1],
+                    "Residue symbol differs from its source sequence",
+                )
+                for annotation in row["annotations"]:
+                    if annotation["support_status"] == "complete":
+                        require(
+                            annotation["source_assertion_ids"],
+                            "Complete annotation has no source support",
+                        )
+                    for identifier in annotation["source_assertion_ids"]:
+                        require(
+                            ref + "#" + identifier in context["support_refs"],
+                            "Annotation support is absent from the manifest",
+                        )
+                        assertion = store.source_assertion(ref + "#" + identifier)
+                        require(
+                            assertion["field_path"] == annotation["field_path"]
+                            and assertion_value(assertion) == annotation["annotation"],
+                            "Residue annotation differs from its pinned source statement",
+                        )
+            require(
+                [row["position"] for row in context["residues"]]
+                == context["selection"]["positions"],
+                "Residue rows differ from the selected positions",
+            )
+            for support in context["composition"]["sequence_support"]["support"]:
+                identifier = support["source_assertion_id"]
+                require(
+                    ref + "#" + identifier in context["support_refs"],
+                    "Composition sequence support is absent from the manifest",
+                )
+                require(
+                    support["assertion"]
+                    == store.source_assertion(ref + "#" + identifier),
+                    "Composition sequence support differs from its pinned statement",
+                )
     for detail, binding in manifest["packets"].items():
         packet = store.load_packet(binding["ref"])
         record = read_json(output / binding["attribution_file"])

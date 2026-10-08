@@ -11,6 +11,18 @@ Cards, decks, stores, views and their derivation rules.
    :show-inheritance:
 ```
 
+## `sabueso.core.residue_knowledge`
+
+```{eval-rst}
+.. automodule:: sabueso.core.residue_knowledge
+```
+
+## `sabueso.core.residue_composition`
+
+```{eval-rst}
+.. automodule:: sabueso.core.residue_composition
+```
+
 ## `sabueso.core.deck`
 
 ```{eval-rst}

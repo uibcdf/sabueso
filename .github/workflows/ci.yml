@@ -151,7 +151,10 @@ jobs:
         run: |
           python --version
           micromamba list | grep -E "^ *(python|pytest|pytest-receptor) " || true
-      - name: Run offline tests
+      - name: Check reviewed fixture publication scope
+        shell: bash -l {0}
+        run: python tools/fixture_delivery.py --check
+      - name: Run repository-input offline tests
         shell: bash -l {0}
         env:
           PYTHON_VERSION: ${{ matrix.python-version }}

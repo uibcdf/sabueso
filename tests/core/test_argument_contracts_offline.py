@@ -59,6 +59,8 @@ from sabueso.tools.deck.storage import (
     read_deck_sqlite,
     save_deck_sqlite,
 )
+from sabueso.tools.sequence import find_protein_candidates
+from sabueso.tools.source_snapshot import load_source_snapshot
 
 SOURCE_FUNCTIONS = [
     _uniprot.get_entry,
@@ -114,6 +116,8 @@ def _discovered():
 
 
 PUBLIC_TOOLS = [
+    find_protein_candidates,
+    load_source_snapshot,
     extract_literature_mentions,
     *_discovered(),
     *SOURCE_FUNCTIONS,

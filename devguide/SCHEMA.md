@@ -2,6 +2,14 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
+  - `0.3.13` is the unpublished development version: native UniProt activity
+    regulation, domain notes, similarity, source cautions and miscellaneous text;
+    additional positional chain, lipidation, motif, region, sequence-conflict,
+    topological-domain and transmembrane fields, plus active positional domains.
+    Every feature keeps original bounds/modifiers, molecule scope, ECO support and
+    sequence revision. Residue views leave uncertain, foreign or revision-mismatched
+    intervals unplaced. These optional fields refresh through `SCHEMA_CHANGES`;
+    similarity is never identity and source cautions are not quality conclusions;
   - `0.3.12` is published/frozen in release 0.13.0 (#121), generated from clean
     installed local Conda code. Explicit literal extraction
     intake (#92) adds `quality.literature_extractions` and occurrence locations with Unicode

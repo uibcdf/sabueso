@@ -104,6 +104,7 @@ def verify_receipts(
 #: Package-critical runtime resources the artifact must carry (uibcdf/sabueso#77): the
 #: package data files. A test keeps this list equal to the files package-data ships.
 REQUIRED_RESOURCES = (
+    "site-packages/sabueso/resolver/source_catalog.json",
     "site-packages/sabueso/resolver/enrichment_profiles.json",
     "site-packages/sabueso/resolver/selection_rules.json",
     # The terms of every source (#29): without them every verdict would be unknown.

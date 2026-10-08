@@ -66,7 +66,7 @@ def baseline():
         )
         for label, card in cards.items()
     }
-    # The state as built, kept to cite it after the curation of test 7 (section 10).
+    # Independent uncurated snapshot for the section-10 storage exercise.
     cards["HsTIM as built"] = Card.from_dict(cards["HsTIM"].to_dict())
     return cards, resolutions, decks
 
@@ -150,22 +150,26 @@ def test_7_literature(baseline):
     assert "HOMODIMERIZATION" in pubs["pubmed:9761683"]["cited_by"][0]["scope"]
 
 
+def _add_showcase_claim(card):
+    return card.add_literature_assertion(
+        "features_positional.natural_variant",
+        {
+            "start": 105,
+            "substitution": {"original": "E", "alternatives": ["D"]},
+            "description": "alters a conserved water network at the dimer interface",
+        },
+        publication="pubmed:18562316",
+        curator="showcase",
+        locator="Title",
+    )
+
+
 def test_8_a_claim_read_in_a_paper_is_compared_not_imposed(baseline):
-    hstim = baseline[0]["HsTIM"]
+    hstim = Card.from_dict(baseline[0]["HsTIM"].to_dict())
     field = "features_positional.natural_variant"
     before = [dict(i) for i in hstim.get(field)["value"]]
     with pytest.warns(CuratedDisagreementWarning):
-        record = hstim.add_literature_assertion(
-            field,
-            {
-                "start": 105,
-                "substitution": {"original": "E", "alternatives": ["D"]},
-                "description": "alters a conserved water network at the dimer interface",
-            },
-            publication="pubmed:18562316",
-            curator="showcase",
-            locator="Title",
-        )
+        record = _add_showcase_claim(hstim)
     assert record["outcome"] == "differs"
     assert all(item in hstim.get(field)["value"] for item in before)  # nothing lost
 
@@ -181,7 +185,10 @@ def test_9_the_two_proteins_side_by_side(baseline):
 
 
 def test_10_cite_store_and_read_back_exactly(baseline, tmp_path):
-    cards = baseline[0]
+    cards = dict(baseline[0])
+    cards["HsTIM"] = Card.from_dict(cards["HsTIM as built"].to_dict())
+    with pytest.warns(CuratedDisagreementWarning):
+        _add_showcase_claim(cards["HsTIM"])
     store = sabueso.KnowledgeStore(tmp_path / "baseline.db")
     before = store.save(cards["HsTIM as built"], note="as built")
     after = store.save(cards["HsTIM"], note="with the curated claims")

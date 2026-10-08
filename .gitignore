@@ -5,3 +5,26 @@ sandbox/
 docs/_build/
 sabueso/_version.py
 /build/
+/recovered_work/
+
+# Local native-response qualification; delivery inventory: devguide/sources/fixture_delivery.json
+/temp_data/3did/
+/temp_data/amypro/
+/temp_data/channelsdb/
+/temp_data/disprot/
+/temp_data/ecod/
+/temp_data/eppic/
+/temp_data/gwas_catalog/
+/temp_data/hpo/
+/temp_data/interactome3d/
+/temp_data/ligysis/
+/temp_data/merops/
+/temp_data/metalpdb/
+/temp_data/monarch/
+/temp_data/pdbe_validation/
+/temp_data/pdbtm/
+/temp_data/pharos/
+/temp_data/probis/
+/temp_data/sifts/
+/temp_data/tcdb/
+/temp_data/ttd/

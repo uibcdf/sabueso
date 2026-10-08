@@ -1,0 +1,381 @@
+{
+  "checksum": "A8D44FC2C980A7677A3B54788D0FA323",
+  "total": 1,
+  "version": "2026_03",
+  "retrieved_at": null,
+  "truncated": false,
+  "results": [
+    {
+      "uniParcId": "UPI000002F08E",
+      "crossReferenceCount": 457,
+      "commonTaxons": [
+        {
+          "topLevel": "other entries",
+          "commonTaxon": "artificial sequences",
+          "commonTaxonId": 81077
+        },
+        {
+          "topLevel": "cellular organisms",
+          "commonTaxon": "Boreoeutheria",
+          "commonTaxonId": 1437010
+        }
+      ],
+      "uniProtKBAccessions": [
+        "A0A2J8TBH3.1",
+        "P60175",
+        "P60174",
+        "P60174.2",
+        "P60174-1",
+        "A0A7N5JJ02",
+        "Q6FHP9.1",
+        "A0A2J8JEK3.1",
+        "V9HWK1"
+      ],
+      "sequence": {
+        "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+        "length": 249,
+        "molWeight": 26669,
+        "crc64": "73844175635F858E",
+        "md5": "A8D44FC2C980A7677A3B54788D0FA323"
+      },
+      "sequenceFeatures": [
+        {
+          "interproGroup": {
+            "id": "IPR000652",
+            "name": "Triosephosphate isomerase"
+          },
+          "database": "Pfam",
+          "databaseId": "PF00121",
+          "locations": [
+            {
+              "start": 8,
+              "end": 247
+            }
+          ]
+        },
+        {
+          "database": "FunFam",
+          "databaseId": "G3DSA:3.20.20.70:FF:000025",
+          "locations": [
+            {
+              "start": 1,
+              "end": 249
+            }
+          ]
+        },
+        {
+          "interproGroup": {
+            "id": "IPR035990",
+            "name": "Triosephosphate isomerase superfamily"
+          },
+          "database": "SUPFAM",
+          "databaseId": "SSF51351",
+          "locations": [
+            {
+              "start": 3,
+              "end": 247
+            }
+          ]
+        },
+        {
+          "interproGroup": {
+            "id": "IPR000652",
+            "name": "Triosephosphate isomerase"
+          },
+          "database": "NCBIfam",
+          "databaseId": "TIGR00419",
+          "locations": [
+            {
+              "start": 8,
+              "end": 240
+            }
+          ]
+        },
+        {
+          "interproGroup": {
+            "id": "IPR013785",
+            "name": "Aldolase-type TIM barrel"
+          },
+          "database": "Gene3D",
+          "databaseId": "G3DSA:3.20.20.70",
+          "locations": [
+            {
+              "start": 1,
+              "end": 249
+            }
+          ]
+        },
+        {
+          "interproGroup": {
+            "id": "IPR022896",
+            "name": "Triosephosphate isomerase, bacterial/eukaryotic"
+          },
+          "database": "HAMAP",
+          "databaseId": "MF_00147_B",
+          "locations": [
+            {
+              "start": 5,
+              "end": 247,
+              "alignment": "33M7D15M1D6M8D12M1D30M1D53M2D44M1D40M1D10M"
+            }
+          ]
+        },
+        {
+          "interproGroup": {
+            "id": "IPR020861",
+            "name": "Triosephosphate isomerase, active site"
+          },
+          "database": "PROSITE",
+          "databaseId": "PS00171",
+          "locations": [
+            {
+              "start": 164,
+              "end": 174,
+              "alignment": "11M"
+            }
+          ]
+        },
+        {
+          "interproGroup": {
+            "id": "IPR000652",
+            "name": "Triosephosphate isomerase"
+          },
+          "database": "CDD",
+          "databaseId": "cd00311",
+          "locations": [
+            {
+              "start": 7,
+              "end": 246
+            }
+          ]
+        },
+        {
+          "interproGroup": {
+            "id": "IPR000652",
+            "name": "Triosephosphate isomerase"
+          },
+          "database": "PROSITE",
+          "databaseId": "PS51440",
+          "locations": [
+            {
+              "start": 6,
+              "end": 247,
+              "alignment": "26M1I5M2D19M1I100M1D81M1D9M"
+            }
+          ]
+        },
+        {
+          "interproGroup": {
+            "id": "IPR000652",
+            "name": "Triosephosphate isomerase"
+          },
+          "database": "PANTHER",
+          "databaseId": "PTHR21139",
+          "locations": [
+            {
+              "start": 3,
+              "end": 246
+            }
+          ]
+        }
+      ],
+      "oldestCrossRefCreated": "2003-03-12",
+      "mostRecentCrossRefUpdated": "2026-09-02"
+    }
+  ],
+  "pages": [
+    {
+      "url": "https://rest.uniprot.org/uniparc/search?query=checksum%3AA8D44FC2C980A7677A3B54788D0FA323&format=json&size=2",
+      "total": 1,
+      "release": "2026_03",
+      "record": {
+        "results": [
+          {
+            "uniParcId": "UPI000002F08E",
+            "crossReferenceCount": 457,
+            "commonTaxons": [
+              {
+                "topLevel": "other entries",
+                "commonTaxon": "artificial sequences",
+                "commonTaxonId": 81077
+              },
+              {
+                "topLevel": "cellular organisms",
+                "commonTaxon": "Boreoeutheria",
+                "commonTaxonId": 1437010
+              }
+            ],
+            "uniProtKBAccessions": [
+              "A0A2J8TBH3.1",
+              "P60175",
+              "P60174",
+              "P60174.2",
+              "P60174-1",
+              "A0A7N5JJ02",
+              "Q6FHP9.1",
+              "A0A2J8JEK3.1",
+              "V9HWK1"
+            ],
+            "sequence": {
+              "value": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+              "length": 249,
+              "molWeight": 26669,
+              "crc64": "73844175635F858E",
+              "md5": "A8D44FC2C980A7677A3B54788D0FA323"
+            },
+            "sequenceFeatures": [
+              {
+                "interproGroup": {
+                  "id": "IPR000652",
+                  "name": "Triosephosphate isomerase"
+                },
+                "database": "Pfam",
+                "databaseId": "PF00121",
+                "locations": [
+                  {
+                    "start": 8,
+                    "end": 247
+                  }
+                ]
+              },
+              {
+                "database": "FunFam",
+                "databaseId": "G3DSA:3.20.20.70:FF:000025",
+                "locations": [
+                  {
+                    "start": 1,
+                    "end": 249
+                  }
+                ]
+              },
+              {
+                "interproGroup": {
+                  "id": "IPR035990",
+                  "name": "Triosephosphate isomerase superfamily"
+                },
+                "database": "SUPFAM",
+                "databaseId": "SSF51351",
+                "locations": [
+                  {
+                    "start": 3,
+                    "end": 247
+                  }
+                ]
+              },
+              {
+                "interproGroup": {
+                  "id": "IPR000652",
+                  "name": "Triosephosphate isomerase"
+                },
+                "database": "NCBIfam",
+                "databaseId": "TIGR00419",
+                "locations": [
+                  {
+                    "start": 8,
+                    "end": 240
+                  }
+                ]
+              },
+              {
+                "interproGroup": {
+                  "id": "IPR013785",
+                  "name": "Aldolase-type TIM barrel"
+                },
+                "database": "Gene3D",
+                "databaseId": "G3DSA:3.20.20.70",
+                "locations": [
+                  {
+                    "start": 1,
+                    "end": 249
+                  }
+                ]
+              },
+              {
+                "interproGroup": {
+                  "id": "IPR022896",
+                  "name": "Triosephosphate isomerase, bacterial/eukaryotic"
+                },
+                "database": "HAMAP",
+                "databaseId": "MF_00147_B",
+                "locations": [
+                  {
+                    "start": 5,
+                    "end": 247,
+                    "alignment": "33M7D15M1D6M8D12M1D30M1D53M2D44M1D40M1D10M"
+                  }
+                ]
+              },
+              {
+                "interproGroup": {
+                  "id": "IPR020861",
+                  "name": "Triosephosphate isomerase, active site"
+                },
+                "database": "PROSITE",
+                "databaseId": "PS00171",
+                "locations": [
+                  {
+                    "start": 164,
+                    "end": 174,
+                    "alignment": "11M"
+                  }
+                ]
+              },
+              {
+                "interproGroup": {
+                  "id": "IPR000652",
+                  "name": "Triosephosphate isomerase"
+                },
+                "database": "CDD",
+                "databaseId": "cd00311",
+                "locations": [
+                  {
+                    "start": 7,
+                    "end": 246
+                  }
+                ]
+              },
+              {
+                "interproGroup": {
+                  "id": "IPR000652",
+                  "name": "Triosephosphate isomerase"
+                },
+                "database": "PROSITE",
+                "databaseId": "PS51440",
+                "locations": [
+                  {
+                    "start": 6,
+                    "end": 247,
+                    "alignment": "26M1I5M2D19M1I100M1D81M1D9M"
+                  }
+                ]
+              },
+              {
+                "interproGroup": {
+                  "id": "IPR000652",
+                  "name": "Triosephosphate isomerase"
+                },
+                "database": "PANTHER",
+                "databaseId": "PTHR21139",
+                "locations": [
+                  {
+                    "start": 3,
+                    "end": 246
+                  }
+                ]
+              }
+            ],
+            "oldestCrossRefCreated": "2003-03-12",
+            "mostRecentCrossRefUpdated": "2026-09-02"
+          }
+        ]
+      }
+    }
+  ],
+  "native_headers": {
+    "X-Total-Results": "1",
+    "X-UniProt-Release": "2026_03",
+    "X-UniProt-Release-Date": "02-September-2026",
+    "Date": "Tue, 06 Oct 2026 12:26:08 GMT"
+  },
+  "original_response_sha256": "5ce9fffb29818f15d00df60948f0d5788c5b5656d84e39c577beea2db8cef186"
+}

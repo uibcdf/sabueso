@@ -56,6 +56,18 @@ do not implement project routing, EventLedger persistence or strict commit polic
    `core.oligomer`, `core.ligand_sites`, `core.literature`, `core.knowledge_state`,
    `core.card_diff`, `core.identity_audit`, `core.measurements`, `core.names`…).
    - Card and deck methods read the stored knowledge and return views.
+   - Development `core.residue_knowledge` reads original type references, positional
+     tracks and source regions through `Card.residue_knowledge`. Its named rule
+     retains full input assertion snapshots and sequence scope, separates provider
+     metrics/state definitions and reports missing/unplaced values. Explicit source
+     or isoform sequences come from subject-bound native declarations. No acquisition,
+     card intake, coordinate inference or persisted field is added.
+   - Development `Card.residue_composition` reads one explicitly identified sequence
+     axis and a caller-selected position set under `residue_set_composition@1`.
+     Unique positions, original selection/duplicates, ambiguous types in the full
+     denominator and complete original sequence assertion snapshots remain explicit.
+     This derives composition, not cavity membership, geometry or source assertions;
+     structural projection and new modeling calculations remain outside this reader.
    - Everything a view derives (a class, a group, a state, a finding) carries the named,
      versioned rule that produced it, and is never stored as a SourceAssertion.
    - `core.structure_explanation` explains an inventory item and every member of its
@@ -163,6 +175,11 @@ do not implement project routing, EventLedger persistence or strict commit polic
 - **Peptide cards.** `entity_type: peptide` exists; peptide sources and views do not.
 - **Inputs by sequence or structure file.** Resolution takes identifiers, names, and
   SMILES or InChI matched by PubChem (#93).
+  Development `tools.sequence.find_protein_candidates` separately accepts one
+  raw/FASTA sequence under `exact_sequence_candidates@1`: native UniParc archive
+  associations and verified current UniProt sequences remain independent support.
+  It makes no identity merge, alias traversal, choice or card. Sequence/structure
+  inputs in the automatic resolver remain unimplemented.
 - **KnowledgeQuery and knowledge packets** (`SCIENTIFIC_POTENTIAL.md`): a prototype,
   released in 0.6.0 (`sabueso/core/packets.py`, #71), now with pinned full/index
   content, terms and attribution. MOLI #22 accepted the index guarantees; persistent

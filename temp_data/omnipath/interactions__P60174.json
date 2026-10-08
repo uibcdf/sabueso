@@ -1,0 +1,3 @@
+[
+{"source": "P29466", "target": "P60174", "is_directed": true, "is_stimulation": false, "is_inhibition": true, "consensus_direction": true, "consensus_stimulation": false, "consensus_inhibition": true, "sources": ["SPIKE", "SPIKE_LC"], "references": "SPIKE:17959595;SPIKE_LC:17959595"}
+]

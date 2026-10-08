@@ -11,7 +11,9 @@ entity, with its identity links, structures and enrichments, use
 
 from __future__ import annotations
 
+import hashlib
 import json
+from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Tuple
@@ -21,13 +23,22 @@ from urllib.request import Request
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.snapshot import canonical_json, digest
 from sabueso.core.source_acquisition import (
+    _terminal,
     acquisition,
     capture_acquisitions,
     missing_fixture,
 )
+from sabueso.mappings.uniprot_isoforms import (
+    isoform_id,
+    parse_fasta,
+    select_isoform,
+    validate_components,
+)
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
+from sabueso.tools.source_snapshot import _json, load_source_snapshot
 
 
 def load_json(path: str | Path) -> Dict[str, Any]:
@@ -232,6 +243,246 @@ class FixtureUniProtClient:
 # --- Public source access (uibcdf/sabueso#49) -----------------------------------------
 
 
+def _isoform_parent_summary(result, query, fixture, requests):
+    if isinstance(result, Exception):
+        return {"outcome": _terminal(result, fixture, requests)}
+    _, status = select_isoform(result["record"], query["identifier"])
+    out = {
+        "outcome": "received",
+        "count": 1,
+        "retrieved_at": result.get("retrieved_at"),
+        "source_version": {
+            "value": (result["record"].get("entryAudit") or {}).get("entryVersion"),
+            "basis": "parent_entry_version",
+        },
+        "response_identity": {
+            "basis": "native_parent_entry",
+            "hash": digest(canonical_json(result["record"])),
+        },
+        "isoform_declaration_status": status,
+    }
+    if "snapshot_receipt" in result:
+        out.update(
+            access="supplied_file",
+            snapshot_receipt=deepcopy(result["snapshot_receipt"]),
+        )
+    return out
+
+
+def _isoform_fasta_summary(result, query, fixture, requests):
+    if isinstance(result, Exception):
+        return {"outcome": _terminal(result, fixture, requests)}
+    value, _ = parse_fasta(result["record"], query["identifier"])
+    out = {
+        "outcome": "received",
+        "count": 1,
+        "sequence_length": len(value),
+        "retrieved_at": result.get("retrieved_at"),
+        "source_version": {
+            "value": None,
+            "basis": "isoform_sequence_revision_not_stated",
+        },
+        "database_release": result.get("database_release"),
+        "response_identity": {
+            "basis": "native_isoform_FASTA",
+            "hash": "sha256:" + hashlib.sha256(result["record"].encode()).hexdigest(),
+        },
+        "completeness_scope": "one_explicit_isoform; other_isoforms_unqueried",
+    }
+    if "snapshot_receipt" in result:
+        out.update(
+            access="supplied_file",
+            snapshot_receipt=deepcopy(result["snapshot_receipt"]),
+        )
+    return out
+
+
+class OnlineUniProtIsoformClient:
+    """Read a native parent declaration and one explicitly requested isoform FASTA."""
+
+    def __init__(self, timeout=30.0):
+        self.timeout = timeout
+
+    @acquisition("UniProt", "isoform_parent", summarize=_isoform_parent_summary)
+    def parent(self, identifier):
+        identifier = isoform_id(identifier)
+        retrieval = stamp("UniProt")
+        try:
+            with urlopen(
+                f"{UNIPROT_REST}/{identifier.rsplit('-', 1)[0]}.json",
+                timeout=self.timeout,
+                expect_json=True,
+            ) as response:
+                payload = _json(response.read().decode("utf-8"))
+        except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            raise ConnectorError(
+                f"UniProt isoform parent access failed: {error}"
+            ) from error
+        select_isoform(payload, identifier)
+        return {"record": payload, "retrieved_at": retrieval.value}
+
+    @acquisition("UniProt", "isoform_fasta", summarize=_isoform_fasta_summary)
+    def sequence(self, identifier):
+        identifier = isoform_id(identifier)
+        retrieval = stamp("UniProt")
+        try:
+            with urlopen(
+                f"{UNIPROT_REST}/{identifier}.fasta", timeout=self.timeout
+            ) as response:
+                document = response.read().decode("utf-8")
+                release = response.headers.get("X-UniProt-Release")
+        except (HTTPError, URLError, OSError, UnicodeError) as error:
+            raise ConnectorError(
+                f"UniProt isoform FASTA access failed: {error}"
+            ) from error
+        parse_fasta(document, identifier)
+        return {
+            "record": document,
+            "retrieved_at": retrieval.value,
+            "version": None,
+            "database_release": release,
+        }
+
+
+class FixtureUniProtIsoformClient:
+    """Unmodified parent JSON and explicit FASTA files in ``uniprot_isoforms``."""
+
+    def __init__(self, directory="temp_data", retrieved_at=None):
+        self.directory = Path(directory) / "uniprot_isoforms"
+        self.retrieved_at = retrieved_at
+
+    @acquisition(
+        "UniProt", "isoform_parent", fixture=True, summarize=_isoform_parent_summary
+    )
+    def parent(self, identifier):
+        identifier = isoform_id(identifier)
+        accession = identifier.rsplit("-", 1)[0]
+        path = self.directory / f"{accession}.json"
+        if not path.is_file():
+            raise missing_fixture(
+                f"UniProt isoform parent fixture is unavailable: {path}"
+            )
+        result = load_source_snapshot(
+            path,
+            source_metadata={
+                "source": "UniProt",
+                "kind": "isoform_parent",
+                "query": {"accession": accession},
+                "retrieved_at": self.retrieved_at,
+            },
+        )
+        select_isoform(result["record"], identifier)
+        return result
+
+    @acquisition(
+        "UniProt", "isoform_fasta", fixture=True, summarize=_isoform_fasta_summary
+    )
+    def sequence(self, identifier):
+        identifier = isoform_id(identifier)
+        path = self.directory / f"{identifier}.fasta"
+        if not path.is_file():
+            raise missing_fixture(
+                f"UniProt isoform FASTA fixture is unavailable: {path}"
+            )
+        try:
+            raw = path.read_bytes()
+            document = raw.decode("utf-8")
+        except (OSError, UnicodeError) as error:
+            raise ConnectorError(
+                f"UniProt isoform FASTA fixture is unreadable: {error}"
+            ) from error
+        parse_fasta(document, identifier)
+        return {
+            "record": document,
+            "retrieved_at": self.retrieved_at,
+            "version": None,
+            "database_release": None,
+            "snapshot_receipt": {
+                "format": "sabueso.uniprot_supplied_isoform_fasta@1",
+                "access": "supplied_file",
+                "path": str(path.resolve()),
+                "read_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                "document_sha256": hashlib.sha256(raw).hexdigest(),
+                "file_format": "fasta",
+                "source_metadata_basis": "fixture_client_declaration",
+                "source_access_observed": False,
+            },
+        }
+
+
+@arg_digest()
+@capture_acquisitions
+def get_isoform_sequence(identifier, client=None, skip_digestion=False):
+    """Read one source-declared isoform sequence without reconstructing variants.
+
+    The parent JSON and selected FASTA retain separate times and hashes. Unknown,
+    not-described and external sequences remain unqueried; names never define IDs.
+    The result does not enrich a card or query all isoforms automatically.
+    """
+    identifier = isoform_id(identifier)
+    client = online(client, OnlineUniProtIsoformClient)
+    result = client.parent(identifier)
+    if not isinstance(result, dict) or result.get("truncated", False) is not False:
+        raise ConnectorError("UniProt isoform parent client response is malformed.")
+    _, status = select_isoform(result.get("record"), identifier)
+    native_version = (result["record"].get("entryAudit") or {}).get("entryVersion")
+    if result.get("version") is not None and str(result["version"]) != str(
+        native_version
+    ):
+        raise ConnectorError(
+            "UniProt parent client revision differs from the native audit."
+        )
+    parent = source_record(
+        "UniProt",
+        "isoform_parent",
+        {"accession": identifier.rsplit("-", 1)[0]},
+        result.get("retrieved_at"),
+        native_version,
+        deepcopy(result["record"]),
+        truncated=False,
+    )
+    if "snapshot_receipt" in result:
+        parent["snapshot_receipt"] = deepcopy(result["snapshot_receipt"])
+    sequence = None
+    if status == "declared":
+        received = client.sequence(identifier)
+        if (
+            not isinstance(received, dict)
+            or received.get("version") is not None
+            or received.get("truncated", False) is not False
+        ):
+            raise ConnectorError(
+                "UniProt isoform FASTA client revision/response is unsupported."
+            )
+        parse_fasta(received.get("record"), identifier)
+        sequence = source_record(
+            "UniProt",
+            "isoform_fasta",
+            {"isoform_id": identifier},
+            received.get("retrieved_at"),
+            None,
+            received["record"],
+            truncated=False,
+        )
+        sequence["database_release"] = received.get("database_release")
+        if "snapshot_receipt" in received:
+            sequence["snapshot_receipt"] = deepcopy(received["snapshot_receipt"])
+    _, status, _ = validate_components(parent, sequence, identifier)
+    return source_record(
+        "UniProt",
+        "isoform_sequence",
+        {"isoform_id": identifier},
+        (sequence or parent).get("retrieved_at"),
+        None,
+        {
+            "parent_entry": parent,
+            "isoform_sequence": sequence,
+            "selection_status": status,
+        },
+        truncated=False,
+    )
+
+
 @arg_digest()
 @capture_acquisitions
 def get_entry(identifier: str, client: Any = None, skip_digestion: bool = False):
@@ -240,6 +491,11 @@ def get_entry(identifier: str, client: Any = None, skip_digestion: bool = False)
     ``version`` is the entry version. Raises RecordNotFoundError or ConnectorError.
     """
     entry, retrieved_at = online(client, OnlineUniProtClient).fetch_entry(identifier)
+    if not isinstance(entry, dict) or (
+        entry.get("entryAudit") is not None
+        and not isinstance(entry["entryAudit"], dict)
+    ):
+        raise ConnectorError("UniProt entry or entry audit response is malformed.")
     version = (entry.get("entryAudit") or {}).get("entryVersion")
     return source_record(
         "UniProt", "entry", {"accession": identifier}, retrieved_at, version, entry

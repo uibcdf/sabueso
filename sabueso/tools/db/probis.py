@@ -1,0 +1,214 @@
+"""Read the native ProBiS reference-chain catalog for one exact PDB.chain literal."""
+
+from __future__ import annotations
+
+import gzip
+import hashlib
+import zlib
+from copy import deepcopy
+from datetime import datetime, timezone
+from pathlib import Path
+from urllib.error import HTTPError, URLError
+
+from smonitor import signal
+
+from sabueso._private.argdigest import arg_digest
+from sabueso._private.argdigest.argument.expected_sha256 import digest_expected_sha256
+from sabueso._private.argdigest.argument.source_metadata import digest_source_metadata
+from sabueso.core.errors import ConnectorError
+from sabueso.core.source_acquisition import (
+    _terminal,
+    acquisition,
+    capture_acquisitions,
+    missing_fixture,
+)
+from sabueso.mappings.probis import (
+    URL,
+    parse_chain_catalog,
+    response_query,
+    selected_rows,
+)
+from sabueso.tools.db._http import stamp, urlopen
+from sabueso.tools.db._record import online, source_record
+
+
+def _summarize(result, query, fixture, requests):
+    if isinstance(result, Exception):
+        return {"outcome": _terminal(result, fixture, requests)}
+    rows = parse_chain_catalog(result["record"])
+    selected = selected_rows(rows, query["identifier"])
+    out = {
+        "outcome": "received" if selected else "not_found",
+        "count": len(selected),
+        "received_export_count": len(rows),
+        "retrieved_at": result.get("retrieved_at"),
+        "source_version": {
+            "value": None,
+            "basis": "dated_filename_is_artifact_label; dataset_PDB_and_sequence_revisions_not_stated",
+        },
+        "response_identity": {
+            "basis": "original_native_headerless_reference_chain_catalog",
+            "hash": "sha256:"
+            + hashlib.sha256(result["record"].encode("utf-8")).hexdigest(),
+        },
+        "coverage": "full_received_export; not_listed_is_not_biological_absence; no_native_total",
+        "truncated": False,
+    }
+    if "download_sha256" in result:
+        out["download_sha256"] = result["download_sha256"]
+    if "snapshot_receipt" in result:
+        out.update(
+            access="supplied_file",
+            snapshot_receipt=deepcopy(result["snapshot_receipt"]),
+        )
+    return out
+
+
+def _load(path, metadata, expected_sha256):
+    """Retain this native headerless TSV; generic TSV snapshots require headers."""
+    path = Path(path).expanduser().resolve()
+    try:
+        raw = path.read_bytes()
+    except OSError as error:
+        raise missing_fixture(f"ProBiS snapshot is unavailable: {path}") from error
+    checksum = hashlib.sha256(raw).hexdigest()
+    if expected_sha256 is not None and checksum != expected_sha256:
+        raise ConnectorError(f"SHA-256 mismatch for supplied ProBiS snapshot: {path}")
+    compressed = path.suffix.lower() == ".gz"
+    try:
+        text = (gzip.decompress(raw) if compressed else raw).decode("utf-8")
+    except (OSError, EOFError, UnicodeError, zlib.error) as error:
+        raise ConnectorError(f"Unreadable supplied ProBiS snapshot: {error}") from error
+    envelope = source_record(
+        metadata["source"],
+        metadata["kind"],
+        metadata.get("query", {}),
+        metadata.get("retrieved_at"),
+        metadata.get("version"),
+        text,
+    )
+    envelope["snapshot_receipt"] = {
+        "format": "sabueso.supplied_snapshot@1",
+        "access": "supplied_file",
+        "path": str(path),
+        "read_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "document_sha256": checksum,
+        "digest_verification": "matched_caller_digest"
+        if expected_sha256
+        else "not_requested",
+        "file_format": "tsv",
+        "native_format": "ProBiS_headerless_reference_chain_catalog_five_columns",
+        "compression": "gzip" if compressed else None,
+        "records_key": None,
+        "source_metadata_basis": "caller_declaration",
+        "declared_terms": deepcopy(metadata.get("terms")),
+        "source_access_observed": False,
+    }
+    return envelope
+
+
+class OnlineProBiSClient:
+    def __init__(self, timeout=30.0):
+        self.timeout = timeout
+
+    @acquisition("ProBiS-Database", "reference_chain_catalog", summarize=_summarize)
+    def chain_catalog(self, identifier):
+        response_query(identifier)
+        retrieval = stamp("ProBiS-Database")
+        try:
+            with urlopen(URL, timeout=self.timeout) as response:
+                raw = response.read()
+                text = raw.decode("utf-8")
+        except (HTTPError, URLError, OSError, UnicodeError) as error:
+            raise ConnectorError(f"ProBiS export access failed: {error}") from error
+        parse_chain_catalog(text)
+        return {
+            "record": text,
+            "retrieved_at": retrieval.value,
+            "version": None,
+            "download_sha256": hashlib.sha256(raw).hexdigest(),
+        }
+
+
+class SnapshotProBiSClient:
+    def __init__(self, path, *, source_metadata, expected_sha256=None):
+        self.path = path
+        self.source_metadata = digest_source_metadata(source_metadata)
+        self.expected_sha256 = digest_expected_sha256(expected_sha256)
+
+    @acquisition(
+        "ProBiS-Database", "reference_chain_catalog", fixture=True, summarize=_summarize
+    )
+    def chain_catalog(self, identifier):
+        query = response_query(identifier)
+        result = _load(self.path, self.source_metadata, self.expected_sha256)
+        if (
+            result["source"] != "ProBiS-Database"
+            or result["kind"] != "reference_chain_catalog"
+            or result["query"] != query
+            or result["version"] is not None
+        ):
+            raise ConnectorError(
+                "Supplied ProBiS source/kind/query/revision differ from the request."
+            )
+        parse_chain_catalog(result["record"])
+        return result
+
+
+class FixtureProBiSClient:
+    def __init__(self, directory="temp_data", retrieved_at=None):
+        self.directory = Path(directory) / "probis"
+        self.retrieved_at = retrieved_at
+
+    def chain_catalog(self, identifier):
+        return SnapshotProBiSClient(
+            self.directory / "nrpdb-2015-07-31.txt",
+            source_metadata={
+                "source": "ProBiS-Database",
+                "kind": "reference_chain_catalog",
+                "query": response_query(identifier),
+                "retrieved_at": self.retrieved_at,
+            },
+        ).chain_catalog(identifier)
+
+
+@signal(tags=["api", "source"])
+@arg_digest()
+@capture_acquisitions
+def get_chain_catalog(identifier, client=None, skip_digestion=False):
+    """Receive the full native reference-chain catalog and select one PDB.chain.
+
+    Every five-column row validates before exact case-sensitive selection. Keep
+    padding, unknown columns, repeated chains and original row/hash support. The
+    dated filename is not a qualified PDB/sequence revision. No representative
+    mapping, alignment, similarity/function transfer, coordinate acquisition,
+    protein identity, score/weight interpretation or automatic card intake.
+    """
+    query = response_query(identifier)
+    result = online(client, OnlineProBiSClient).chain_catalog(identifier)
+    if (
+        not isinstance(result, dict)
+        or result.get("version") is not None
+        or ("source" in result and result["source"] != "ProBiS-Database")
+        or ("kind" in result and result["kind"] != "reference_chain_catalog")
+        or ("query" in result and result["query"] != query)
+        or ("truncated" in result and result["truncated"] is not False)
+    ):
+        raise ConnectorError(
+            "ProBiS client response/query/revision/cut is unsupported."
+        )
+    text = result.get("record")
+    parse_chain_catalog(text)
+    envelope = source_record(
+        "ProBiS-Database",
+        "reference_chain_catalog",
+        query,
+        result.get("retrieved_at"),
+        None,
+        text,
+        truncated=False,
+    )
+    for k in ("snapshot_receipt", "download_sha256"):
+        if k in result:
+            envelope[k] = deepcopy(result[k])
+    return envelope

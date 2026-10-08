@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+from copy import deepcopy
 from typing import Any, Dict, List, Tuple
 
+from sabueso.core.errors import ConnectorError
 from sabueso.core.quantities import LENGTH_UNIT, quantity_node
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
@@ -19,12 +21,29 @@ _TEXT_COMMENTS = {
     "TISSUE SPECIFICITY": "annotations.tissue_specificity",
     "PTM": "annotations.ptm",
     "POLYMORPHISM": "annotations.polymorphism",
+    "ACTIVITY REGULATION": "annotations.activity_regulation",
+    "DOMAIN": "annotations.domain_notes",
+    "SIMILARITY": "annotations.similarity",
+    "CAUTION": "annotations.source_cautions",
+    "MISCELLANEOUS": "annotations.miscellaneous",
+}
+
+_RECOVERED_FEATURES = {
+    "Domain": "features_positional.domains",
+    "Chain": "features_positional.chain",
+    "Lipidation": "features_positional.lipidation",
+    "Motif": "features_positional.motif",
+    "Region": "features_positional.region",
+    "Sequence conflict": "features_positional.sequence_conflict",
+    "Topological domain": "features_positional.topological_domain",
+    "Transmembrane": "features_positional.transmembrane",
 }
 
 # Positional feature types → canonical field paths. Natural variants (observed in a
 # population) and mutagenesis (an experiment the authors performed) stay apart: they are
 # different kinds of statement about a position (uibcdf/sabueso#33).
 _FEATURES = {
+    **_RECOVERED_FEATURES,
     "Binding site": "features_positional.binding_site",
     "Active site": "features_positional.active_site",
     "Modified residue": "features_positional.modified_residue",
@@ -590,6 +609,11 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         "annotations.tissue_specificity",
         "annotations.ptm",
         "annotations.polymorphism",
+        "annotations.activity_regulation",
+        "annotations.domain_notes",
+        "annotations.similarity",
+        "annotations.source_cautions",
+        "annotations.miscellaneous",
     ):
         assert_list(fp, text_items[fp], fields)
 
@@ -673,18 +697,41 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         fp = _FEATURES.get(f.get("type"))
         if not fp:
             continue
+        recovered_feature = f.get("type") in _RECOVERED_FEATURES
+        if recovered_feature:
+            native_location = f.get("location")
+            if native_location is not None and not isinstance(native_location, dict):
+                raise ConnectorError(
+                    "UniProt feature location must be a native object."
+                )
+            for endpoint in ("start", "end"):
+                native_endpoint = (native_location or {}).get(endpoint)
+                if native_endpoint is not None and not isinstance(
+                    native_endpoint, dict
+                ):
+                    raise ConnectorError(
+                        "UniProt feature endpoint must be a native object."
+                    )
         loc = f.get("location", {}) or {}
         start = get_in(loc, ["start", "value"])
         end = get_in(loc, ["end", "value"])
-        if start is None:
+        if start is None and not recovered_feature:
             continue
+        if recovered_feature and any(
+            value is not None
+            and (isinstance(value, bool) or not isinstance(value, int))
+            for value in (start, end)
+        ):
+            raise ConnectorError(
+                f"UniProt {f['type'].lower()} endpoints must be integers or unstated."
+            )
         item = {
             "location": {
                 "kind": "sequence",
                 "sequence": {
                     "sequence_id": f"UniProt:{primary}" if primary else None,
                     "start": start,
-                    "end": end if end is not None else start,
+                    "end": end if recovered_feature or end is not None else start,
                     "indexing": "1-based",
                 },
             },
@@ -735,7 +782,24 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         }
         if ligand:
             item["ligand"] = ligand
-        feature_items[fp].append((item, _eco(f.get("evidences"))))
+        metadata = {}
+        if recovered_feature:
+            coordinates = item["location"]["sequence"]
+            for endpoint in ("start", "end"):
+                modifier = get_in(loc, [endpoint, "modifier"])
+                if modifier is not None:
+                    coordinates[f"{endpoint}_modifier"] = modifier
+            # A molecule label does not identify its sequence as the canonical one.
+            if f.get("molecule") and f["molecule"] not in (
+                primary,
+                f"UniProt:{primary}",
+            ):
+                coordinates["sequence_id"] = None
+            metadata["uniprot_feature"] = deepcopy(f)
+            sequence_version = get_in(uniprot_json, ["entryAudit", "sequenceVersion"])
+            if sequence_version is not None:
+                metadata["sequence_version"] = sequence_version
+        feature_items[fp].append((item, _eco(f.get("evidences")), metadata))
     for fp in feature_items:
         assert_list(fp, feature_items[fp], features)
 

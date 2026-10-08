@@ -9,7 +9,12 @@ staging candidate, as selected in `release_plan.toml`.
 Before a release, update the plan to the proposed three-part version and
 record the route, reason, reviewer, and required exact-commit workflows.
 Sabueso's full matrix (`ci.yml`: Ruff and the offline suite on Python 3.11–3.14)
-and the MOLI governance check (`moli-governance.yml`) are required. Run them at the final candidate SHA. A direct route is appropriate
+and the MOLI governance check (`moli-governance.yml`) are required. CI's offline
+scope uses reviewed repository inputs; protected local-only originals are not
+release inputs. Retain applicable opted-in native qualification separately, and
+pass `python tools/fixture_delivery.py --check` before publishing the candidate
+source. See [test scopes](../../devguide/TESTS.md).
+Run them at the final candidate SHA. A direct route is appropriate
 only when no pre-public installed-artifact or coupled-consumer gate is needed;
 the registry must confirm that the version is unoccupied. A staged route is
 required for a new interpreter, dependency, packaging contract, or other
@@ -43,7 +48,9 @@ same coordinates and successful staging run ID. Before any installation, it down
 the exact staged file and inspects it (`verify_staged_install.py archive`, #77): its
 digest against the producer receipts, the version it embeds (`info/index.json`,
 `_version.py` and the `dist-info` metadata), and the package-critical resources
-(`REQUIRED_RESOURCES`: the packaged selection rules and enrichment profiles). This is
+(`REQUIRED_RESOURCES`: the packaged selection rules, enrichment profiles, source
+terms and development metadata catalog). The catalog is an unreleased resource;
+older release receipts remain scoped to the resources present in those artifacts. This is
 the only claimed public route (the `noarch` conda package); Sabueso publishes no wheel. The gate checks artifact
 digest, source channel, public dependency provenance, package version, and
 an API smoke test (a card whose quantities are sealed by `to_dict()` and verified by

@@ -7,6 +7,7 @@ working with decks, curating the literature, and keeping knowledge so it can be 
 - {doc}`overview`
 - {doc}`quickstart`
 - {doc}`resolving`
+- {doc}`sequence_candidates`
 - {doc}`concepts`
 - {doc}`journeys`
 - {doc}`molecules`
@@ -16,6 +17,9 @@ working with decks, curating the literature, and keeping knowledge so it can be 
 - {doc}`sites_and_interfaces`
 - {doc}`bioactivities`
 - {doc}`literature_and_curation`
+- {doc}`protein_notebooks`
+- {doc}`variant_predictions`
+- {doc}`source_annotations`
 
 **Collections, storage and upgrades**
 - {doc}`decks`
@@ -26,6 +30,7 @@ working with decks, curating the literature, and keeping knowledge so it can be 
 - {doc}`field_paths`
 - {doc}`selection_rules`
 - {doc}`data_sources`
+- {doc}`source_capabilities`
 - {doc}`source_coverage`
 - {doc}`testing`
 - {doc}`tools/index`
@@ -37,6 +42,7 @@ working with decks, curating the literature, and keeping knowledge so it can be 
 overview
 quickstart
 resolving
+sequence_candidates
 concepts
 journeys
 molecules
@@ -46,6 +52,9 @@ bioactivities
 clinical
 disease_association
 literature_and_curation
+protein_notebooks
+variant_predictions
+source_annotations
 decks
 terms
 packets
@@ -55,6 +64,7 @@ upgrading
 field_paths
 selection_rules
 data_sources
+source_capabilities
 source_coverage
 testing
 tools/index

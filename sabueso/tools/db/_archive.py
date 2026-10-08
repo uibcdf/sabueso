@@ -50,6 +50,13 @@ from sabueso.core.terms import retention
 PREFIX = "sabueso:retrieval:"
 #: Headers clients read; the rest of a response's headers are not kept.
 KEPT_HEADERS = (
+    "X-PSICQUIC-Count",
+    "X-PSICQUIC-Impl",
+    "X-PSICQUIC-Impl-Version",
+    "X-PSICQUIC-Spec-Version",
+    "X-Next-Cursor",
+    "X-Page-Limit",
+    "X-Returned-Count",
     "Content-Type",
     "Last-Modified",
     "InterPro-Version",

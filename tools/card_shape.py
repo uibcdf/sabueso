@@ -1,6 +1,6 @@
 """The shape of the cards Sabueso writes, as key paths (card schema policy, #42).
 
-``python tools/card_shape.py --check`` compares the shape of cards built from the
+``python tools/card_shape.py`` compares the shape of cards built from the
 fixtures with ``schemas/card_shape_<CARD_SCHEMA_VERSION>.json``; ``--write`` records it.
 
 A shape is every key path a stored card holds, without values: sections, SourceAssertion

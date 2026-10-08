@@ -23,10 +23,13 @@ def invoke(action, output):
             """
 import runpy, sys
 import ackredit, sabueso
+from sabueso.core.card import Card
 def forbidden(*args, **kwargs):
     raise RuntimeError('An independent reader cannot acquire or generate credit')
 ackredit.register_item = ackredit.track_item = forbidden
 sabueso.resolve = sabueso.ligand_deck = sabueso.compose_packet = forbidden
+for name in ('get_residues', 'get_residue', 'residue_composition', 'residue_knowledge'):
+    setattr(Card, name, forbidden)
 sabueso.__version__ = '999.reader'
 script = sys.argv.pop(1)
 runpy.run_path(script, run_name='__main__')
@@ -118,7 +121,21 @@ def test_independent_reader_preserves_original_comparison_support_units_and_cita
     assert (bundle / "original.references.bib").read_text(encoding="utf-8")
 
 
-@pytest.mark.parametrize("defect", ["missing", "changed", "role", "report", "item"])
+@pytest.mark.parametrize(
+    "defect",
+    [
+        "missing",
+        "changed",
+        "role",
+        "report",
+        "item",
+        "residue_role",
+        "residue_item",
+        "residue_position",
+        "residue_literal",
+        "residue_selection",
+    ],
+)
 def test_reader_refuses_missing_changed_or_misbound_support(bundle, tmp_path, defect):
     output = tmp_path / "copy"
     shutil.copytree(bundle, output)
@@ -132,6 +149,28 @@ def test_reader_refuses_missing_changed_or_misbound_support(bundle, tmp_path, de
             target.write_text("{}", encoding="utf-8")
     elif defect == "item":
         manifest["items"]["subject"] = manifest["items"]["comparator"]
+    elif defect.startswith("residue_"):
+        filename = "original.report.json"
+        target = output / filename
+        report = load(target)
+        context = report["proteins"]["subject"]["residue_context"]
+        if defect == "residue_role":
+            context["card_ref"] = manifest["cards"]["comparator"]
+        elif defect == "residue_item":
+            context["support_refs"][0] = load(output / "original.report.json")[
+                "proteins"
+            ]["comparator"]["residue_context"]["support_refs"][0]
+            manifest["residue_items"]["subject"] = context["support_refs"]
+        elif defect == "residue_position":
+            context["residues"][0]["amino_acid"] = "X"
+        elif defect == "residue_literal":
+            context["residues"][0]["annotations"][0]["annotation"]["description"] = (
+                "forged statement"
+            )
+        else:
+            context["selection"]["positions"] = [1]
+        target.write_text(json.dumps(report), encoding="utf-8")
+        manifest["files"][filename] = hashlib.sha256(target.read_bytes()).hexdigest()
     else:
         filename = (
             "original.full.attribution.json"
@@ -163,3 +202,56 @@ def test_completed_stages_cannot_be_overwritten(bundle):
         result = invoke(action, bundle)
         assert result.returncode == 2
     assert (bundle / "original.manifest.json").read_bytes() == before
+
+
+def test_source_residue_context_retains_independent_axes_original_support_and_rules(
+    bundle,
+):
+    manifest = load(bundle / "original.manifest.json")
+    assert manifest["format"] == "sabueso.protein_comparison_example@2"
+    report = load(bundle / "original.report.json")
+    for role, positions in (("subject", [96, 168]), ("comparator", [96, 166])):
+        context = report["proteins"][role]["residue_context"]
+        assert context["selection"]["positions"] == positions
+        assert context["selection"]["rule"] == "source_active_site_selection@1"
+        assert context["composition"]["rule"] == "residue_set_composition@1"
+        assert context["composition"]["total"] == 2
+        assert context["composition"]["counts"] == {"E": 1, "H": 1}
+        assert context["comparison"]["status"] == "not_compared"
+        assert context["execution_observation"]["status"] == "not_observed"
+        assert context["support_refs"] == manifest["residue_items"][role]
+        assert all(
+            pin.startswith(manifest["cards"][role] + "#")
+            for pin in context["support_refs"]
+        )
+    assert load(bundle / "original.reader.json")["original_report"] == report
+    assert (
+        load(bundle / "later.report.json")["proteins"]["subject"]["residue_context"][
+            "card_ref"
+        ]
+        != report["proteins"]["subject"]["residue_context"]["card_ref"]
+    )
+
+
+def test_legacy_manifest_does_not_require_or_recompute_new_residue_context(
+    bundle, tmp_path
+):
+    output = tmp_path / "legacy"
+    shutil.copytree(bundle, output)
+    (output / "later.manifest.json").unlink()
+    manifest_path = output / "original.manifest.json"
+    manifest = load(manifest_path)
+    manifest["format"] = "sabueso.protein_comparison_example@1"
+    manifest.pop("residue_items")
+    report_path = output / "original.report.json"
+    report = load(report_path)
+    for row in report["proteins"].values():
+        row.pop("residue_context")
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+    manifest["files"][report_path.name] = hashlib.sha256(
+        report_path.read_bytes()
+    ).hexdigest()
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    result = invoke("read", output)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert load(output / "original.reader.json")["original_report"] == report

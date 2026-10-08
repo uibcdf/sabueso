@@ -1,5 +1,31 @@
 # What may be done with the knowledge
 
+Development FDA OOPD detailed pages retain the explicitly linked
+[FDA website policy](https://www.fda.gov/about-fda/about-website/website-policies):
+public-domain reuse unless otherwise noted, with independent contributing-source
+and other rights retained. Credit is requested, together with source URL and copy
+date. The shared US-PD display label now refers to the source's policy; it does not
+substitute NLM or openFDA terms for FDA OOPD. Rights metadata is independent of the
+online client's current HTTP-404 access failure.
+
+Development TTD target listings retain NOT-STATED data terms: public access
+qualifies source fidelity, while automated use/sharing remain unknown and archive
+retention internal. Original factual qualification stays local unreleased. iPTMnet
+report database terms are CC BY-NC-SA 4.0 with attribution, noncommercial and
+share-alike conditions; independent contributing-source rights remain separate.
+
+Development BRENDA EC-class descriptions carry the provider's CC BY 4.0 data
+terms and BRENDA/DSMZ/current-publication attribution. SOAP account and bulk
+active acceptance concern separate acquisition routes. ASD's research-only data
+conditions prohibit third-party distribution; TTD's public export has no qualified
+data grant. Article and frontend software licences do not replace data terms.
+
+Development DepMap model metadata retains the selected public **24Q4 article v1**
+CC BY 4.0 grant, attribution and original native file support. That grant is not
+propagated to other releases or collaborator datasets. Pharos/TCRD selected-target
+outputs keep contributing-source rights separate and a distinct data grant
+`NOT-STATED`; software/article licences do not qualify automated redistribution.
+
 Every value and relationship on a card traces to the SourceAssertions that state it, and
 each SourceAssertion names its source. Sabueso can therefore say, for a use you name,
 what each source states about its own terms, and what knowledge remains if you keep
@@ -21,6 +47,22 @@ card_report["objects"]  # per related entity (a measured molecule…): complete,
 # partial, unknown or none
 deck.admissible("commercial_product")  # only cards whose knowledge all remains
 ```
+
+Development raw-response retention also preserves `NOT-STATED` licences as
+`share="unknown"` with `reason="licence_not_stated"`. A reviewed service page or
+software licence does not grant redistribution of its data. EPPIC's prediction-data
+reuse remains unknown; PDB-REDO's recorded usage policy permits reuse with its stated
+attribution and parent-data conditions.
+
+AlphaFill's recorded usage policy permits reuse with source/parent acknowledgement
+and AlphaFold parent conditions. LIGYSIS data redistribution remains unknown:
+free/commercial website access, MIT software and publication terms are distinct
+from the raw site's data terms. These development connectors retain the registry's
+recorded terms in transport/archive receipts.
+
+GlyGen's recorded CC BY 4.0 database-set grant retains GlyGen/original-provider
+attribution. Native pointers do not change contributing-source licences or grant
+rights to linked publications; the source lists those licences separately.
 
 ## Development disease-deck admission
 

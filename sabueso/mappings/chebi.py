@@ -5,6 +5,8 @@ The entry joins a card only through the InChIKey ChEBI states for its structure
 It states:
 
 - ``identifiers.chebi`` (``CHEBI:<n>``);
+- ``names.canonical_name`` and ``properties.physchem.formula``: the native entry's
+  name and formula, without deriving identity or rewriting their spelling;
 - ``annotations.chemical_classes``: the classes ChEBI says the molecule is a member of
   (``is a``), ``{chebi_id, name}``;
 - ``annotations.chemical_roles``: its roles, ``{chebi_id, name, direct, biological_role,
@@ -22,6 +24,7 @@ import html
 import re
 from typing import Any, Dict, Tuple
 
+from sabueso.core.errors import ConnectorError
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.mappings.molecule_identity import anchor_ref, is_standard_inchikey
@@ -44,6 +47,18 @@ def map_chebi_identity(
     }
     if not chebi_id or not is_standard_inchikey(key):
         return mapping, None
+    chemical = data.get("chemical_data")
+    if chemical is not None and not isinstance(chemical, dict):
+        raise ConnectorError("ChEBI chemical_data must be a native object or null.")
+    descriptive = {
+        "names.canonical_name": data.get("name"),
+        "properties.physchem.formula": (chemical or {}).get("formula"),
+    }
+    for path, value in descriptive.items():
+        if value is not None and (
+            not isinstance(value, str) or (value and not value.strip())
+        ):
+            raise ConnectorError(f"ChEBI {path} must be native text or null.")
     number = chebi_id.split(":", 1)[1]
     metadata = {"stars": data.get("stars"), "modified_on": data.get("modified_on")}
 
@@ -63,6 +78,8 @@ def map_chebi_identity(
         r.get("final_id") for r in relations if r.get("relation_type") == "has role"
     }
     field("identifiers.chebi", chebi_id)
+    for path, value in descriptive.items():
+        field(path, value)
     field(
         "annotations.chemical_classes",
         [

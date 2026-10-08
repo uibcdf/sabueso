@@ -55,6 +55,958 @@ categories:
   software: Open-source software ecosystems
   literature: Literature and text mining
 resources:
+  - id: ema_orphan
+    name: EMA Orphan Designations
+    url: https://www.ema.europa.eu/en/scientific-guidelines/download-website-data-json-data-format
+    category: target_validation
+    status: in_use
+    since: 2026-10-06
+    description: Native orphan-designation page occurrences, original EU references and independent regulatory/date/product context.
+    reason: Recover explicit exact-EU-number declarations without transferring designation status to proteins or inferring authorisation, modality or
+      efficacy.
+    access: One public complete JSON export GET; native declared total and all rows validated before local exact EU-number selection. Unchanged fixture
+      and bound JSON/gzip snapshots.
+    licence: EMA-owned content may be reproduced/distributed for commercial and noncommercial use with EMA acknowledgement in each copy; third-party
+      material remains excluded.
+    module:
+    - sabueso.tools.db.ema_orphan
+    - sabueso.mappings.ema_orphan
+    note: Repeated EU numbers retain separate original page identities and occurrence indices. Native unresolved number literals, empty names/product
+      links, status and dates survive. File generation is not retrieval or scientific revision. No product/protein identity merge, status conversion,
+      linked-page/document acquisition or automatic card intake. See devguide/archive/local_work_2026-07/batch_06_source_review.md.
+    terms:
+      source_names:
+      - EMA Orphan Designations
+      licence: FREE-WITH-ACKNOWLEDGEMENT
+      attribution: European Medicines Agency (EMA); native orphan-designation JSON URL and actual access month/year. Retain EMA acknowledgement in each
+        copy.
+      statement: https://www.ema.europa.eu/en/about-us/about-website/legal-notice
+      reviewed: 2026-10-06
+      caveat: Grant applies to EMA-owned content; third-party material/documents and logo rights remain separate. These are source procedural declarations,
+        not inferred clinical efficacy or marketing authorisation.
+  - id: fda_orphan
+    name: FDA Orphan Drug Designations and Approvals
+    url: https://www.accessdata.fda.gov/scripts/opdlisting/oopd/index.cfm
+    category: target_validation
+    status: in_use
+    since: 2026-10-06
+    description: Source orphan-product designations and independently stated approval, sponsor, indication and procedural dates.
+    reason: Recover separate native designation and marketing-approval declarations on their source page without inferred product or protein identity.
+    access: Original public detailed-page artifacts and bound HTML/gzip/hash/time readers qualified. The shared one-GET online client receives HTTP 404 in live qualification; restored automated access is not claimed. Search and complete exports remain separate.
+    licence: FDA website public-domain policy applies unless otherwise noted; contributing material and other rights remain separate. No openFDA CC0 substitution.
+    module: [sabueso.tools.db.fda_orphan, sabueso.mappings.fda_orphan]
+    note: "Follow-up 20 observes native HTTP-200 original detailed pages with one designation and zero or three independent approval tables; subsequent shared-transport live qualification receives HTTP 404 and is not passing evidence. Native supplied-artifact reading and imported-original archive replay are qualified separately. The HTML does not echo cfgridkey; observed request URL or caller declaration binds a page, not a stable designation/product/protein ID. Dates, N/A, blank exclusivity fields, repeated names and sponsor qualifiers stay literal. No target/modality/status defaults, clinical conclusions, search completeness, linked acquisition or card enrichment. Earlier excessive-request blocks remain historical failures. See devguide/archive/local_work_2026-07/followup_20_pending_resource_recovery.md."
+    links: [https://www.fda.gov/about-fda/about-website/website-policies, https://www.fda.gov/industry/designating-orphan-product-drugs-and-biological-products/instructions-searchable-designation-database]
+    terms:
+      source_names: [FDA Orphan Drug Designations and Approvals]
+      licence: US-PD
+      attribution: U.S. Food and Drug Administration, Office of Orphan Products Development; retain original page URL and acquisition date.
+      statement: https://www.fda.gov/about-fda/about-website/website-policies
+      reviewed: 2026-10-07
+      caveats:
+        - FDA website policy states public-domain reuse unless otherwise noted; independent contributing-source and other rights remain separate. Credit is requested rather than mandatory.
+        - The received page states source regulatory declarations with unknown revisions; no current clinical advice or protein-target inference. Date, source link and original support are retained.
+  - id: civic
+    name: CIViC
+    url: https://civicdb.org/
+    category: target_validation
+    status: in_use
+    since: 2026-10-06
+    description: Native accepted items on complete molecular profiles, with explicit monthly releases and original disease/therapy/support context.
+    reason: Recover exact source profile declarations without clinical inference, profile expansion or protein identity projection.
+    access: One public monthly accepted-evidence TSV GET; complete validation then exact molecular-profile ID selection. Unchanged fixture and bound
+      TSV/gzip snapshots.
+    licence: CIViC content CC0 1.0; software MIT and contributing publications retain their own rights.
+    module:
+    - sabueso.tools.db.civic
+    - sabueso.mappings.civic
+    note: All 25 native fields and independent occurrences survive. Accepted includes flagged records. Directions, significance, levels, ratings, therapies
+      and combinations stay literal. Explicit export label is separate from entity/sequence revision. No submitted items, CIViC Assertions, linked publication
+      downloads, gene/protein merge, clinical interpretation or automatic card intake. See devguide/archive/local_work_2026-07/batch_05_source_review.md.
+    terms:
+      source_names:
+      - CIViC
+      licence: CC0-1.0
+      attribution: CIViC contributors and Griffith et al. (2017), doi:10.1038/ng.3774; original citations remain in native records.
+      statement: https://docs.civicdb.org/en/latest/about/faq.html#how-is-civic-licensed
+      reviewed: 2026-10-06
+      caveat: CC0 applies to CIViC content; linked publication and third-party rights remain separate. Source Evidence Items are CIViC concepts, not
+        MOLI Evidence.
+  - id: channelsdb
+    name: ChannelsDB 2.0
+    url: https://channelsdb2.biodata.ceitec.cz/
+    category: sites_families
+    description: Independent native entry/residue annotations, channel membership tables and separate channel comments on one explicitly queried PDB context.
+    reason: Recover literal function/reaction/reference context without collapsing source groups or assigning caller protein identity and residue placement.
+    access: Separate public annotations/pdb and channels/pdb GETs; original JSON fixture and source-kind-query-bound JSON/gzip snapshots with hash/time and archive replay.
+    licence: Separate data grant NOT-STATED; frontend Apache 2.0, article CC BY 4.0 and input-resource rights remain separate.
+    module: [sabueso.tools.db.channelsdb, sabueso.mappings.channelsdb]
+    note: Full native EntryAnnotations and independent ChannelsDB/UniProt residue groups are validated before mapping. Native Id/Chain/reference/text literals retain duplicates, conflicts and HTML entities. Numbering, sequence/model/assembly axes and annotation revisions remain unqualified. No tunnel/assembly join, identity merge, coordinates, AlphaFill lookup, jobs or automatic card enrichment. The separate channel reader validates all twelve category arrays and native membership/annotation items, preserving 26 channel occurrences, 910 layer residue/index arrays and seven independent comments. Native MOLE/CAVER Id/Auto types, HetResidues labels and differing array cardinalities stay literal; no token decoding, index resolution, chemical class, geometry/property mapping, annotation join or current projection. Raw channel geometry remains unqualified independently. See devguide/archive/local_work_2026-07/followup_25_channelsdb_membership.md.
+    status: in_use
+    since: 2026-10-06
+    terms:
+      source_names: [ChannelsDB]
+      licence: NOT-STATED
+      attribution: ChannelsDB 2.0 contributors, doi:10.1093/nar/gkad1012; retain native input labels and reference literals.
+      statement: https://channelsdb2.biodata.ceitec.cz/documentation.html
+      reviewed: 2026-10-08
+      caveat: Public annotations and existing channel records are readable; separate data redistribution permission is not established. Original annotation and channel responses remain local unpublished recovery. Software, article and underlying UniProt/publication rights are not assigned as a blanket data grant.
+  - id: pride
+    name: PRIDE Archive
+    url: https://www.ebi.ac.uk/pride/archive/
+    category: targets_sequence
+    description: Native public PRIDE project metadata, depositor protocols, CV terms, dates, publications and individual dataset licence declarations.
+    reason: Recover source-scoped project context while correcting the historical conflation of integrated Proteins API data with PRIDE archive provenance.
+    access: One public Archive v2 project JSON GET for an exact PXD accession; original JSON/gzip fixture and query-bound snapshot clients.
+    licence: Per-project depositor terms; qualified PXD013616 declares Creative Commons Public Domain CC0.
+    module: [sabueso.tools.db.pride, sabueso.mappings.pride]
+    note: API spec version 3.0, route v2 and submission/publication dates do not state a project or sequence revision. Native CV objects differ from some schema array types; do not stringify or rename them. Individual peptide/PTM/HPP records from Proteins API remain separately unintegrated with PeptideAtlas/ProteomicsDB/unknown origins. No protein/result projection, analysis job, file acquisition or card enrichment is added.
+    status: in_use
+    since: 2026-10-06
+    links: [https://www.ebi.ac.uk/pride/ws/archive/v2/v3/api-docs, https://www.ebi.ac.uk/pride/archive/projects/PXD013616]
+    terms:
+      source_names: [PRIDE]
+      licence: DEPOSITOR-TERMS
+      attribution: PRIDE Archive and original dataset depositors/publications; cite the exact PXD project and retain its native licence.
+      statement: https://www.ebi.ac.uk/pride/archive/projects/PXD013616
+      reviewed: 2026-10-07
+      caveats:
+        - Each project retains its native licence declaration. PXD013616 states Creative Commons Public Domain CC0; that grant is not propagated to arbitrary projects or integrated Proteins API providers.
+        - Linked publications and files retain independent rights and are not acquired; missing licence declarations remain unknown.
+        - Depositor protocols/descriptions and project CV categories do not establish per-peptide/protein support, abundance, canonical modification placement or MOLI Evidence.
+  - id: castp
+    name: CASTp / CASTpFold
+    url: https://cfold.bme.uic.edu/castpfold/
+    category: sites_families
+    description: Precomputed topographic pockets/cavities/channels and independently predicted functional annotations.
+    reason: "Useful existing-result pocket/cavity geometry requirements, but previously declared result routes returned an HTML shell and the old portal failed; public tutorials supply no original scientific result."
+    access: Official info index and linked manuscript examples/tutorial return native documentation. Existing-result basic JSON for official PDB 6m0j and AF2 A0A2N0QT79 examples, and 6m0j measure JSON, each return the same 713-byte HTML application shell (HTTP 200); no native pocket result is qualified.
+    licence: Official news states free access with citation; data redistribution grant remains unqualified and article rights are separate.
+    note: "Follow-up 16 preserved current frontend still declares the same basic/measure routes; failed scientific-result routes are not repeated without a changed native-data condition. One distinct previous official sts.bioe.uic.edu/castp homepage GET fails to connect (curl exit 7, HTTP 000, zero bytes); browser gateway failure is separate. No native pocket artifact or retirement claim. Require original existing result/model/assembly/sequence/parameters/units and applicable grant. No protocol/host/TLS bypass, coordinate acquisition, uploads or jobs. See devguide/archive/local_work_2026-07/followup_16_source_review.md."
+    status: deferred
+    since: 2026-10-08
+    revisit_when: "An existing native CASTp/CASTpFold scientific result is received through a functioning provider-declared route or an authorized supplied file, with structure/model/assembly/sequence/parameters and separate SA/SE quantities plus applicable rights qualified; no new calculation is needed."
+    decided_by: Maintainer-requested local recovery assessment
+    # Follow-up 27 closes active recovery triage; conditional reactivation is tracked in #83.
+  - id: probis
+    name: ProBiS-Database
+    url: http://probis.cmm.ki.si/?what=database
+    category: sites_families
+    description: Native nonredundant reference-chain catalog; alignment/representative-query relations remain separately unqualified.
+    reason: Recover literal source catalog occurrences without transferring similarity, binding sites, protein identity or function.
+    access: One public HTTP GET to the provider-linked nrpdb-2015-07-31.txt; complete headerless five-column validation before exact PDB.chain selection, original fixture and bound TSV/gzip/hash/time snapshots with replay.
+    licence: Separate data grant NOT-STATED; software/publication rights and input resources remain independent.
+    module: [sabueso.tools.db.probis, sabueso.mappings.probis]
+    note: "Follow-up 14 receives all 42270 original catalog rows, including first data row, padded opaque columns, gaps and repeated PDB.chain selectors. 5a2q.h has three occurrences and 2ww9.L five. Actual 1ytb.A listing differs from documented 1ytb.B alignment example; no repair or representative relation is inferred. The dated filename is an artifact label, not current PDB/sequence revision or full database coverage. Original factual fixture stays local unreleased. Earlier failed alignment/representative routes are not retried; no similarity/protein/chain merge, score or unit guess, coordinates, scan/align job, ligand/function transfer or card intake. See devguide/archive/local_work_2026-07/followup_14_source_integration.md."
+    status: in_use
+    since: 2026-10-06
+    terms:
+      source_names: [ProBiS-Database]
+      licence: NOT-STATED
+      attribution: ProBiS-Database and its native reference-chain catalog URL, artifact label and original row/hash support.
+      statement: http://probis.cmm.ki.si/?what=database
+      reviewed: 2026-10-07
+      caveat: No separate native data grant qualified. Original public factual catalog is local unreleased recovery; automated sharing unknown. Publication/software licences and input-resource rights stay separate; no inferred representative mapping, binding/function or current coverage.
+  - id: drugcentral
+    name: DrugCentral
+    url: https://drugcentral.org/
+    category: bioactivity
+    status: in_use
+    since: 2026-10-06
+    description: Native drug-target observations, compound target groups, activity/MOA literals and original support.
+    reason: Recover independent exact-accession observations without target-group expansion, potency conversion, molecule identity guesses or clinical inference.
+    access: One public compressed TSV export GET through shared transport; complete validation before exact local pipe-token selection, unchanged public fixture
+      and bound TSV/gzip snapshots.
+    licence: CC BY-SA 4.0 under the official DrugCentral resource licence; contributing data/publications retain their own rights.
+    module:
+    - sabueso.tools.db.drugcentral
+    - sabueso.mappings.drugcentral
+    note: Preserve every native occurrence and all 20 fields. ACT_UNIT is empty throughout the qualified export; no physical unit or logarithmic scale is
+      inferred. MOA and source pointers stay separate. Website 2027 and dump date are not this export or sequence revision. Native composite targets remain
+      composite subjects, not per-protein observations. No SQL server, chemical/sequence search, linked data, indication mapping or automatic card intake.
+      See devguide/archive/local_work_2026-07/batch_04_source_review.md.
+    terms:
+      source_names:
+      - DrugCentral
+      licence: CC-BY-SA-4.0
+      attribution: DrugCentral and original contributing data providers; Ursu et al., DrugCentral, Nucleic Acids Research (2017), doi:10.1093/nar/gkw993.
+      statement: https://drugcentral.org/privacy
+      reviewed: 2026-10-06
+      caveats:
+      - The resource licence applies CC BY-SA 4.0; credit the source, link the licence, indicate changes and retain share-alike where applicable. The public
+        fixture preserves the original compressed export unchanged. Linked source/publication rights remain separate; no underlying article, database or label
+        is independently acquired.
+  - id: metalpdb
+    name: MetalPDB
+    url: https://metalpdb.cerm.unifi.it/
+    category: sites_families
+    status: in_use
+    since: 2026-10-06
+    description: Native site/structure context, metal and original ligand/donor occurrences with unit-qualified donor distances.
+    reason: Recover independently supported site records without attaching caller protein identity or a universal experimental class.
+    access: One public site-ID JSON GET; original JSON fixture and query-bound JSON/gzip snapshots with raw/decoded hash, original time and archive replay.
+    licence: Separate site-data grant NOT-STATED; publication/software and underlying input-resource rights remain separate.
+    module: [sabueso.tools.db.metalpdb, sabueso.mappings.metalpdb]
+    links: [https://metalpdb.cerm.unifi.it/api_help, 'https://metalpdb.cerm.unifi.it/pdbSearchResult?id=12ca_2']
+    note: Native metals/pdb and string classification fields differ from documented examples. The actual public Coordination Sphere declares Distance (Å), with three rounded donor values matching the native JSON. Donor distances are angstrom quantity nodes; source geometry/pattern/counts and false representative flags stay literal. Metal chain/model/assembly/insertions and sequence/scientific revisions remain unstated; ligand chains do not fill metal chain identity. UniProt is a pointer only. No physiological/catalytic interpretation, evidence class, canonical projection, coordinates, sequence, job or card intake. Original public JSON and the declared small HTML table excerpt remain local unreleased recovery. See devguide/archive/local_work_2026-07/followup_08_source_integration.md.
+    terms:
+      source_names: [MetalPDB]
+      licence: NOT-STATED
+      attribution: MetalPDB and CERM/University of Florence; retain native site/PDB/metal/ligand/donor context and provider API URL.
+      statement: https://metalpdb.cerm.unifi.it/api_help
+      reviewed: 2026-10-07
+      caveat: Public access and required resource citations do not establish separate site-data redistribution permission. Original small factual JSON and declared unit-qualification HTML excerpt stay local unreleased recovery. Article/software and original input-resource rights remain separate; no blanket grant is inferred.
+  - id: ecod
+    name: ECOD
+    url: http://prodata.swmed.edu/ecod/
+    category: structures_models
+    status: in_use
+    since: 2026-10-06
+    description: Native evolutionary classification and opaque source partitions for one explicit experimental-domain UID.
+    reason: Recover original domain identity and classification without assigning caller protein identity or projecting source ranges.
+    access: One public HTTP api/v1/domains/UID JSON GET; original JSON fixture and query-bound JSON/gzip snapshots with hash/time and archive replay. No silent protocol fallback.
+    licence: Separate domain-data grant NOT-STATED; publication CC BY and underlying input-resource rights remain separate.
+    module: [sabueso.tools.db.ecod, sabueso.mappings.ecod]
+    links: [http://prodata.swmed.edu/ecod/documentation/api, http://prodata.swmed.edu/ecod/domain/80374]
+    note: Native classification id/name objects differ from documentation strings. UID padding is numeric; domain/chain case remains exact. Experimental structure is a provider origin label, not an independently asserted method or MOLI Evidence. Range remains opaque with unstated axes/revisions; UniProt is only a native pointer. API v1 and distribution v295.2 are not record revisions. AlphaFold/DPAM, full exports, other domains, coordinates, sequences, search and jobs are unqueried. No card enrichment or identity merge. Original factual fixture remains local unreleased recovery. See devguide/archive/local_work_2026-07/followup_07_source_integration.md.
+    terms:
+      source_names: [ECOD]
+      licence: NOT-STATED
+      attribution: ECOD and Grishin Laboratory; retain native UID, domain, structure/chain, classification and API URL.
+      statement: http://prodata.swmed.edu/ecod/documentation
+      reviewed: 2026-10-07
+      caveat: Public API access is documented without authentication; separate domain-data redistribution permission is not established. Original small factual response remains local unreleased recovery. Software/publication and underlying PDB/Pfam/UniProt rights are separate; no blanket grant is inferred.
+  - id: 3did
+    name: 3did
+    url: https://3did.irbbarcelona.org/
+    category: interactions
+    status: in_use
+    since: 2026-10-06
+    description: Independent native domain-motif structural instances with original patterns, PDB bounds and contact-count/topology literals.
+    reason: Recover native source instance/support requirements without synthetic caller protein identity, coordinate arithmetic or motif computation.
+    access: One public current DMI gzip export GET; complete ID/PT/3D/end validation before exact lowercase PDB selection, original gzip fixture and bound text/gzip/hash/time snapshots with archive replay.
+    licence: Separate export-data grant NOT-STATED; original provider/input attribution remains and article/software licences are separate.
+    module: [sabueso.tools.db.threedid, sabueso.mappings.threedid]
+    note: "Follow-up 12 observes restored public download access and receives the unchanged DMI export: 1657 pairs and 17478 structural occurrences. PDB 7m5l has six independent instances. Preserve native domain/motif source labels, opaque pattern/date, chain/range/sequence and zero contextual-contact/topology literals. Source range spans need not equal motif sequence length; repeated lowercase chain tokens are not decoded. Current route and pattern dates do not establish scientific/PDB/Pfam/sequence revisions. DDI residue contacts and HMM profile/global interfaces remain separately unintegrated. No search, coordinates, protein/function inference, MOLI Evidence or automatic card intake. Original factual export stays local unreleased. See devguide/archive/local_work_2026-07/followup_12_source_integration.md."
+    links: [https://3did.irbbarcelona.org/download.php, https://3did.irbbarcelona.org/about.php]
+    terms:
+      source_names: [3did]
+      licence: NOT-STATED
+      attribution: 3did and the Structural Bioinformatics and Network Biology Group at IRB Barcelona; retain native domain/motif source labels and structural-instance support.
+      statement: https://3did.irbbarcelona.org/download.php
+      reviewed: 2026-10-07
+      caveats:
+        - The provider documents public flat-file access without a separate export-data grant. Free access, source articles and software licences do not establish blanket data redistribution or input rights.
+        - Native Pfam and PLoS_CB_2010 labels are source declarations, not complete per-instance publication or current input licences. Linked inputs, structures, sequences and publications are not acquired.
+        - The unchanged factual DMI gzip remains local unreleased qualification material. Public fixture or derivative-collection distribution requires separate qualification; automated sharing stays unknown.
+  - id: gwas_catalog
+    name: GWAS Catalog
+    url: https://www.ebi.ac.uk/gwas/
+    category: target_validation
+    status: in_use
+    since: 2026-10-06
+    description: Independent literature-curated variant-trait-study associations with native gene mapping and statistical context.
+    reason: Recover independent native association occurrences from an explicitly bounded standard mapped-gene HAL page without causal-gene or protein projection.
+    access: One public v2 associations GET with exact mapped_gene, extended_geneset=false, page and size; online, fixture and bound original JSON/gzip snapshot clients.
+    licence: Other curated Catalog data uses EBI Services Terms of Use; summary-statistics CC0 has individual-study exceptions and is not assigned to curated
+      API rows.
+    module: [sabueso.tools.db.gwas_catalog, sabueso.mappings.gwas_catalog]
+    note: The scoped reader uses the standard gene set only; literal gene symbols and mapped/nearest annotations do not identify causal genes or proteins. Validate native page counts and exact official-host links without following them. Original mantissa/exponent, numeric/text statistics, alleles and study/trait/location context survive without recalculation, guessed units/assembly, summary-statistics acquisition or clinical interpretation. API 2.0 and mapping/update dates are not scientific revisions. See devguide/archive/local_work_2026-07/followup_04_source_integration.md.
+    terms:
+      source_names: [GWAS Catalog]
+      licence: NO-OWN-RESTRICTIONS
+      attribution: NHGRI-EBI GWAS Catalog and the original study authors; cite the native association/study and publication pointers.
+      statement: https://www.ebi.ac.uk/about/terms-of-use/
+      reviewed: 2026-10-07
+      caveats:
+        - Curated associations use EMBL-EBI Services Terms of Use; original owners retain their rights. This is not a uniform open-data grant.
+        - Summary-statistics CC0, visualisation CC BY and software Apache do not license arbitrary curated rows or linked publications. No article, summary-statistics file or participant-level data is acquired.
+        - The original factual HBB and TPI1 page fixtures retain source attribution and these terms; exact first acquisition times and native scientific revisions remain unstated.
+  - id: biocyc
+    name: BioCyc
+    url: https://biocyc.org/
+    category: organism_context
+    status: deferred
+    since: 2026-10-08
+    description: Organism-database-qualified pathway, reaction and participant declarations.
+    reason: "Useful organism-scoped pathway/reaction relations, but applicable agreement and original organism/database export are not available in this recovery."
+    access: Documented session/cookie web services and authorized exports; no current Sabueso connector.
+    licence: Limited Use License distinguishes two Open Databases with attribution/notification/distribution obligations from Limited Databases without redistribution; subscription conditions also apply.
+    requires: [account, licence]
+    requires_note: Provider session is required even for free databases; qualify the exact database and applicable data agreement without sharing credentials.
+    note: "Follow-up 15 current native flat-file request still requires agreement and manual review before emailed download instructions. Open-versus-Limited Database scope and provider-notification redistribution obligations remain distinct from account/session/subscription. No agreement, form or provider message. Require authorized native organism/release/frame/gene/protein/reaction/pathway relations and exact grant. See devguide/archive/local_work_2026-07/followup_15_source_integration.md."
+    revisit_when: "An authorized original named organism/database/release/frame export is available under the applicable Open or Limited Database agreement, with session/subscription and retention/distribution obligations qualified."
+    decided_by: Maintainer-requested local recovery assessment
+    # Follow-up 27 closes active recovery triage; conditional reactivation is tracked in #83.
+  - id: omim
+    name: OMIM
+    url: https://omim.org/
+    category: target_validation
+    status: deferred
+    since: 2026-10-08
+    description: Native gene/locus-phenotype declarations with MIM identities, inheritance and mapping keys.
+    reason: "Useful MIM gene/locus-phenotype declarations, but registered native input and exact applicable use/retention/redistribution terms remain unqualified in this recovery."
+    access: Registered API and native download routes; public agreement and API documentation returned HTTP 403 in this review.
+    licence: Current provider agreement and authorized export redistribution remain unqualified; publication access is not a data grant.
+    requires: [key, licence]
+    requires_note: Provider-authored API documentation describes registered personal keys; qualify current access and applicable reuse agreement for the exact native data.
+    note: "Follow-up 16 current NCBI description points to OMIM.org/API without native entries or a data grant; restricted native routes are not retried. Require authorized current release and exact applicable terms, with MIM gene/locus, phenotype, allelic variant and narrative scopes independent. Synthetic caller protein projection and HPO pointers do not supply native OMIM records or licences. No keys, account or substitute dataset. See devguide/archive/local_work_2026-07/followup_16_source_review.md."
+    revisit_when: "Authorized original OMIM entries or registered API access are available under exact current use/retention/redistribution terms, with native MIM gene/locus/phenotype/variant/narrative scopes separate."
+    decided_by: Maintainer-requested local recovery assessment
+    # Follow-up 27 closes active recovery triage; conditional reactivation is tracked in #83.
+  - id: interactome3d
+    name: Interactome3D
+    url: https://interactome3d.irbbarcelona.org/
+    category: structures_models
+    status: in_use
+    since: 2026-10-06
+    description: Native archived human representative protein structure/model occurrences with original ranks, templates, bounds and percent identity/coverage.
+    reason: Recover the historical structure/model metadata requirement with a qualified native export and independent occurrence support.
+    access: One public HTTPS GET to the exact linked 2024_12 human representative proteins.dat; full fourteen-column validation before exact accession selection, fixture and query-bound TSV/gzip/hash/time clients with archive replay.
+    licence: Separate data grant NOT-STATED; source attribution and contributing-resource rights remain independent.
+    module: [sabueso.tools.db.interactome3d, sabueso.mappings.interactome3d]
+    note: "Follow-up 15 receives the complete unchanged 18000-row archived representative protein table after a new archive directory and native metadata route become reachable. P60174 has one structure occurrence; Q8WZ42 has thirty. Preserve blank/whitespace chains, native case, rank pairs and opaque negative score literals. Identity/coverage are percent quantities qualified from native help; reported endpoints are not exact full-chain correspondence. Selected archive label is not a native export/PDB/sequence revision. Original factual fixture stays local unreleased. Complete tables, interaction-pair/API scope, coordinates, modelling, alignment and automatic card intake remain unqualified. See devguide/archive/local_work_2026-07/followup_15_source_integration.md."
+    terms:
+      source_names: [Interactome3D]
+      licence: NOT-STATED
+      attribution: Interactome3D, Structural Bioinformatics and Network Biology Group at IRB Barcelona; retain native dataset route, original row/hash and selected archive scope.
+      statement: https://interactome3d.irbbarcelona.org/about.php
+      reviewed: 2026-10-07
+      caveat: Public metadata access does not establish a separate redistribution grant. Original factual artifact stays local unreleased; automated sharing unknown. Software, articles and input resources retain independent rights; no current complete-database or interaction coverage is claimed.
+  - id: pdbtm
+    name: PDBTM
+    url: https://pdbtm.unitmp.org/
+    category: structures_models
+    status: in_use
+    since: 2026-10-06
+    description: Structure-chain transmembrane topology, original sequences/endpoints and membrane/assembly transforms.
+    reason: Recover native chain topology as independent occurrences with original XML/copyright retained; no canonical or transform projection.
+    access: One public native per-entry XML GET; unchanged 1c3w local qualification and source/kind/query-bound XML/gzip/hash/time snapshots with archive replay.
+    licence: Embedded conditional unchanged-content nonprofit/commercial-agreement statement; automated use and redistribution remain unknown.
+    module: [sabueso.tools.db.pdbtm, sabueso.mappings.pdbtm]
+    note: "Follow-up 13 retains all three 1c3w chains and 45 regions with independent sequence/PDB bounds, TMP/type/TM-count strings and XML-decoded sequence text. Each assertion keeps the complete unchanged original XML and copyright. Duplicate/generated chains are not merged, history/site labels do not pin sequence revisions and nonuniform numbering is not repaired. Original biological/membrane transforms and raw scores remain uninterpreted XML, with units/axes unqualified. No coordinate acquisition, transform execution, canonical placement or card intake. Local unreleased fixture; commercial agreement and distribution scope remain requirements. See devguide/archive/local_work_2026-07/followup_13_source_integration.md."
+    terms:
+      source_names: [PDBTM]
+      licence: PDBTM-CONDITIONAL
+      attribution: PDBTM, Institute of Enzymology, Budapest; preserve the entire original XML and embedded COPYRIGHT statement with every occurrence.
+      statement: https://pdbtm.unitmp.org/api/v1/entry/1c3w.xml
+      reviewed: 2026-10-07
+      caveat: Embedded statement permits nonprofit-institution use conditional on unchanged content/copyright; use by and for commercial entities requires an agreement. Automated use and sharing stay unknown; no MIT or general open-data grant. Input-resource rights and transforms/units remain separate. Original qualification stays local unreleased.
+  - id: tcdb
+    name: TCDB
+    url: https://tcdb.org/
+    category: sites_families
+    status: in_use
+    since: 2026-10-06
+    description: Independent native accession-literal to TC-system occurrences from the full public headerless export.
+    reason: Recover exact source assignments without namespace guesses, case repair, occurrence loss or function/identity transfer.
+    access: One public acc2tcid GET; complete validation before literal selection, original TSV fixture and query-bound TSV/gzip/hash/time snapshots with archive replay.
+    licence: Separate export-data grant NOT-STATED; website-text CC BY-SA 3.0/GFDL and input-resource rights remain separate.
+    module: [sabueso.tools.db.tcdb, sabueso.mappings.tcdb]
+    note: All 24956 received rows remain native, including thirteen unbound blank accessions, case variants, versioned identifiers, duplicate pairs and two six-component TC codes. Exact case-sensitive selection does not resolve accession namespaces or protein identity. No substrate/mechanism/role/taxonomy/sequence, family hierarchy or experimental class is inferred. Export/scientific revisions and native database total remain unknown; not-listed differs from acquisition failure. Original fixture stays local unreleased recovery. No linked acquisition, sequence search or card enrichment. See devguide/archive/local_work_2026-07/followup_06_source_integration.md.
+    terms:
+      source_names: [TCDB]
+      licence: NOT-STATED
+      attribution: TCDB and Saier Laboratory; retain original native accession and TC-system literals and export URL.
+      statement: https://tcdb.org/faq.php
+      reviewed: 2026-10-07
+      caveat: Website text states CC BY-SA 3.0 and GFDL; a separate assignment-export/data-rights grant is not established. The original small factual export remains local unreleased recovery. No blanket redistribution permission or underlying input licence is assigned.
+  - id: clingen
+    name: ClinGen
+    url: https://clinicalgenome.org/
+    category: target_validation
+    status: in_use
+    since: 2026-10-06
+    description: Native gene-disease validity classifications with original inheritance, SOP, date, expert-panel and report context.
+    reason: Recover independent gene declarations from the complete native CSV without strongest-class selection, gene/protein merging or variant/clinical inference.
+    access: One public gene-validity CSV export GET through shared transport and exact local HGNC selection; original CSV/gzip fixture and query-bound snapshot clients.
+    licence: CC0 1.0 for curated content published by ClinGen.
+    module: [sabueso.tools.db.clingen, sabueso.mappings.clingen]
+    links: [https://search.clinicalgenome.org/kb/gene-validity/download, https://clinicalgenome.org/docs/terms-of-use/]
+    note: All received rows are validated before selection. Native file/classification dates are not scientific revisions; legacy dates may omit timezone. Not listed in the received export differs from an explicit No Known Disease Relationship classification and failed access. No report/publication/sequence acquisition or automatic card enrichment.
+    terms:
+      source_names: [ClinGen]
+      licence: CC0-1.0
+      attribution: ClinGen Clinical Genome Resource and original Gene Curation Expert Panels; credit the source and access date when available.
+      statement: https://clinicalgenome.org/docs/terms-of-use/
+      reviewed: 2026-10-06
+      caveats:
+        - Curated ClinGen content has CC0; linked reports, underlying publications and external input resources remain separate acquisitions and rights.
+        - Resource and access-date attribution is requested; native classification/file dates do not establish the retrieval time.
+  - id: cosmic
+    name: COSMIC
+    url: https://www.cosmickb.org/
+    category: target_validation
+    status: deferred
+    since: 2026-10-08
+    description: Source-scoped somatic variants, tumor/sample context and source interpretation declarations.
+    note: "Follow-up 16 current primary terms retain registration/applicable institutional licence acceptance for use/download and restricted sharing. No-registration modules do not independently qualify data-use/download/sharing or historical core variants. No dataset, account or agreement acceptance acquired. Require exact authorized module/release/assembly/transcript/sample/count context and applicable rights. See devguide/archive/local_work_2026-07/followup_16_source_review.md."
+    requires: [account, licence]
+    requires_note: Use provider-authorized access and an applicable academic or commercial licence; public redistribution needs its own permitted basis.
+    links: [https://www.cosmickb.org/terms/]
+    reason: "Useful source-scoped somatic variant and sample context, but accepted institutional licensing and an authorized native export are not available in this recovery."
+    revisit_when: "An applicable accepted institutional licence and authorized original module/release/assembly/transcript/sample export are available, with permitted local retention and fixture/distribution scope recorded."
+    decided_by: Maintainer-requested local recovery assessment
+    # Follow-up 27 closes active recovery triage; conditional reactivation is tracked in #83.
+  - id: hpo
+    name: Human Phenotype Ontology
+    url: https://obophenotype.github.io/human-phenotype-ontology/
+    category: target_validation
+    status: in_use
+    since: 2026-10-06
+    description: Independent native gene/disease phenotype annotations with unchanged frequency literals and dated artifact support.
+    reason: Recover exact NCBI Gene occurrences without symbol selection, contributor guesses, ancestor expansion or protein projection.
+    access: One public dated GitHub release asset GET; complete original six-column TSV, fixture and query/release-bound TSV/gzip/hash/time snapshots with archive replay.
+    licence: HPO Consortium requires acknowledgement/citation, date/version for public display and unchanged content/logical relationships; contributor rights remain separate.
+    module: [sabueso.tools.db.hpo, sabueso.mappings.hpo]
+    note: "Follow-up 11 locates the licence component in the public official JAX website repository, rather than treating the old route's 404 as missing terms. The exact v2026-09-01 public release has 333983 rows; all validate before exact NCBI Gene selection. Disease-associated fractions, percentages, HP frequency terms and missing '-' remain literals. Six-column summaries do not state full contributor/publication/evidence/modifier context. Exact release route does not supply individual gene/ontology/input revisions. Original file stays unchanged and local unreleased; automated reuse/sharing verdicts remain unknown. No clinical interpretation, input acquisition, ontology propagation or automatic card intake. See devguide/archive/local_work_2026-07/followup_11_source_integration.md."
+    links: [https://obophenotype.github.io/human-phenotype-ontology/annotations/genes_to_phenotype/, https://github.com/TheJacksonLaboratory/hpo-web/blob/a85f0fa92835a9f6a37881b89b6260ca3b9f4960/src/app/static/resources/license/license.component.html, https://github.com/obophenotype/human-phenotype-ontology/releases/download/v2026-09-01/genes_to_phenotype.txt]
+    terms:
+      source_names: [HPO]
+      licence: HPO-CONSORTIUM
+      attribution: Human Phenotype Ontology Consortium; cite HPO and retain the exact artifact version and original disease/term/gene pointers.
+      statement: https://github.com/TheJacksonLaboratory/hpo-web/blob/a85f0fa92835a9f6a37881b89b6260ca3b9f4960/src/app/static/resources/license/license.component.html
+      reviewed: 2026-10-07
+      caveats:
+        - All HPO-provided files are subject to attribution/citation, public date/version display and unchanged content/logical relationships. Retain the complete original file; mapping does not modify it or infer new relationships.
+        - The official website's data terms are separate from software licences. OMIM/Orphanet and other input rights remain separate; a disease namespace is not per-occurrence contributor or publication support.
+        - This original release fixture and licence support remain local unreleased qualification artifacts. No blanket commercial, derivative-dataset or public-distribution verdict is assigned; automated use and sharing remain unknown.
+  - id: omnipath
+    name: OmniPath
+    url: https://omnipathdb.org/
+    category: target_validation
+    status: in_use
+    since: 2026-10-06
+    description: Aggregated native signaling observations with direction/effect conflicts and source-specific support.
+    reason: Recover independent native human signaling occurrences with opposing effects, consensus and original aggregate resource support, without a universal binding or experimental class.
+    access: One public interactions JSON GET for an exact base UniProt partner, human organism and omnipath dataset with explicit academic filter; original JSON/gzip fixture and query-bound snapshot clients.
+    licence: Resource-specific input licences; no blanket data grant. The SPIKE/SPIKE_LC-only TPI1 fixture is separately qualified under their declared CC BY 4.0.
+    module: [sabueso.tools.db.omnipath, sabueso.mappings.omnipath]
+    links: [https://omnipathdb.org/queries/interactions, 'https://omnipathdb.org/resources?format=json', https://omnipathdb.org/info, https://r.omnipathdb.org/reference/import_omnipath_interactions.html]
+    terms:
+      source_names: [OmniPath]
+      licence: NOT-STATED
+      attribution: OmniPath and original contributing resources and publications; retain native resource labels and resource-prefixed references.
+      statement: https://omnipathdb.org/info
+      reviewed: 2026-10-06
+      caveats:
+        - Native resource metadata carries individual licences; qualify all contributing input rights before reuse or sharing. Query academic/commercial filters do not grant rights.
+        - Resource and dataset filters select aggregate rows without removing other resource annotations. No client-side strict evidence reconstruction is performed.
+        - The qualified one-row SPIKE/SPIKE_LC fixture is CC BY 4.0; that grant is not propagated to arbitrary OmniPath responses.
+        - Human query scope and unknown revisions/totals remain explicit; mouse/rat translation, direct binding and experimental classes are not inferred.
+  - id: elm
+    name: Eukaryotic Linear Motif resource
+    url: https://elm.eu.org/
+    category: sites_families
+    status: deferred
+    since: 2026-10-08
+    description: Native linear-motif classes and experimentally described instances with original sequence/functional context.
+    note: "Follow-up 20 native HTTPS download-page GET also times out; browser licence/example pages deliver no data. No native artifact or agreement bytes received. Require exact applicable data grant and native motif class/regex versus validated instance, source sequence/revision/bounds/status/context/support. Synthetic historical instances and caller protein attachment are not native support. No motif computation, canonical projection, agreement acceptance or account action. See devguide/archive/local_work_2026-07/followup_20_pending_resource_recovery.md."
+    links: [https://elm.eu.org/downloads.html, https://elm.eu.org/media/Elm_academic_license.pdf, https://elm.eu.org/elms/elmPages/DOC_MAPK_MEF2A_6.html]
+    reason: "Useful motif-class and observed-instance distinctions, but official access has not supplied an original export or applicable agreement; browser checks still fail and previous native download timed out."
+    revisit_when: "An original provider class/instance export and its applicable data grant are received through restored official access or an authorized supplied file, with native sequence/revision/bounds/status/publication scope qualified."
+    decided_by: Maintainer-requested local recovery assessment
+    # Follow-up 27 closes active recovery triage; conditional reactivation is tracked in #83.
+  - id: hpa
+    name: Human Protein Atlas
+    url: https://www.proteinatlas.org/
+    category: organism_context
+    status: in_use
+    since: 2026-10-06
+    description: Native single-gene JSON subset and independent RNA/protein categorical expression summaries.
+    reason: Recover tissue/cell-type summary categories on the exact native gene subject while retaining the full response and independent quantitative/assay scope.
+    access: One public ENSG JSON GET through shared transport; original JSON/gzip fixture and query-bound snapshot clients.
+    licence: CC BY 4.0 for copyrightable database parts; third-party constraints remain applicable.
+    module: [sabueso.tools.db.hpa, sabueso.mappings.hpa]
+    links: [https://www.proteinatlas.org/about/download, https://www.proteinatlas.org/about/licence]
+    terms:
+      source_names: [Human Protein Atlas]
+      licence: CC-BY-4.0
+      attribution: Credit Human Protein Atlas, the specific gene/data URL and the appropriate primary publication (including Uhlen et al. 2015, doi:10.1126/science.1260419, for tissue context).
+      statement: https://www.proteinatlas.org/about/licence
+      reviewed: 2026-10-06
+      caveats:
+        - Third-party input constraints remain applicable; linked datasets and publications have independent rights.
+        - Cite the specific gene/data URL; website release does not establish a revision of the received JSON or a sequence.
+        - This native JSON route is a subset of search data, not a full quantitative tissue or assay export.
+  - id: gtopdb
+    name: IUPHAR/BPS Guide to Pharmacology
+    url: https://www.guidetopharmacology.org/
+    category: targets_sequence
+    status: deferred
+    since: 2026-10-08
+    description: Curated target/ligand pharmacology, endogenous ligands, transduction and channel-property context.
+    note: "Follow-up 20 official REST documentation explicitly requires registered access and an API key (GTP-API-Key header recommended); previous download/login receipt remains valid. Historical public_api classification and older no-auth descriptions do not establish current authorization. Require authorized native target/subunit/ligand identity and original unit-qualified measurements; database ODbL and content CC BY-SA stay separate. No direct DATA guesses, account or credentials. See devguide/archive/local_work_2026-07/followup_20_pending_resource_recovery.md."
+    requires: [account, key]
+    requires_note: Register with the provider and request an API key; no authenticated data or credentials were used in this review.
+    links: [https://www.guidetopharmacology.org/webServices.jsp]
+    reason: "Useful curated pharmacology, but current official REST access requires a registered API key; no key or qualified original artifact is available in this recovery."
+    revisit_when: "A provider-authorized API key or permitted original target/subunit/ligand export is available, with native identity/release/measurement units and separate database ODbL/content CC BY-SA obligations qualified."
+    decided_by: Maintainer-requested local recovery assessment
+    # Follow-up 27 closes active recovery triage; conditional reactivation is tracked in #83.
+  - id: wikipathways
+    name: WikiPathways
+    url: https://www.wikipathways.org/
+    category: target_validation
+    status: in_use
+    since: 2026-10-06
+    description: Community pathway context and namespaced cross-references from native public snapshots.
+    module: [sabueso.tools.db.wikipathways, sabueso.mappings.wikipathways]
+    reason: Recover independent native pathway cross-references with exact token selection and complete received-export validation.
+    access: One public complete findPathwaysByXref JSON GET, full validation and exact local namespaced-token selection; fixture and bound JSON/gzip snapshot clients.
+    licence: CC0 1.0 for WikiPathways content; scientific source and contributor attribution retained.
+    note: Native references can have prefixes differing from their field name, empty aliases and free text. Preserve all original fields and exact match positions without column repair, alias identity merging, species filtering or GPML node/role/experimental participation inference. Pathway date labels remain separate from unknown dataset/GPML/entity/sequence revisions. No linked acquisition or automatic card enrichment. See devguide/archive/local_work_2026-07/followup_01_source_integration.md.
+    links: [https://www.wikipathways.org/terms.html, https://www.wikipathways.org/json/findPathwaysByXref.json]
+    terms:
+      source_names: [WikiPathways]
+      licence: CC0-1.0
+      attribution: WikiPathways and original pathway authors and contributing resources.
+      statement: https://www.wikipathways.org/terms.html
+      reviewed: 2026-10-06
+      caveats: [WikiPathways content is CC0; retain source and pathway-author attribution and make the CC0 terms clear. Linked publications and external resources keep independent rights and are not acquired.]
+  - id: monarch
+    name: Monarch Initiative
+    url: https://monarchinitiative.org/
+    category: target_validation
+    status: in_use
+    since: 2026-10-06
+    description: Native gene/disease/phenotype associations with original and aggregator source context.
+    reason: Recover bounded native associations about exact source entities, retaining all categories, qualifiers, support and page coverage without protein transfer or an assigned inference class.
+    access: One public expanded association JSON GET with exact direct subject, explicit limit 1–500 and nonnegative offset; query-bound original JSON/gzip snapshot and fixture clients.
+    licence: Input-specific data grants; no blanket Monarch KG grant. BioGRID-only fixture inputs have an explicit MIT download-files grant with original notice retained.
+    module: [sabueso.tools.db.monarch, sabueso.mappings.monarch]
+    note: API version 0.1.0 does not version the KG, entities or relationships. Direct is exact query matching, not physical binding. Native totals/cuts remain explicit without automatic pagination, gene-to-protein transfer or card enrichment.
+    links: [https://monarchinitiative.org/kg/terms, https://monarch-app.monarchinitiative.org/Sources/, https://monarch-app.monarchinitiative.org/FastAPI/Endpoints/]
+    terms:
+      source_names: [Monarch]
+      licence: NOT-STATED
+      attribution: Monarch Initiative and original contributing resources/publications; native primary and aggregator knowledge sources remain distinct.
+      statement: https://monarch-app.monarchinitiative.org/Licensing/
+      reviewed: 2026-10-07
+      caveats:
+        - Individual input grants apply; source-wide terms do not propagate BSD software terms or recommended CC0/CC BY licences to arbitrary KG data.
+        - The qualified BioGRID-only TPI1 page retains the original MIT download-files notice. Monarch ingest documentation separately names BSD-3-Clause; software terms are documented independently.
+        - Native ECO codes and knowledge/agent labels are source claims, not MOLI Evidence or an assigned experimental/inference class.
+        - One expanded direct-subject page retains limit/offset/total; an empty page beyond the total is not biological absence or KG completeness.
+  - id: merops
+    name: MEROPS
+    url: https://www.ebi.ac.uk/merops/
+    category: sites_families
+    status: in_use
+    since: 2026-10-06
+    description: Independent native accession peptidase/inhibitor classifications with full export support and unresolved-row context.
+    reason: Recover native three-column assignments without repairing displaced four-column rows, losing occurrences or inferring activity and protein identity.
+    access: One public full dnld_list GET; native TSV fixture and source-kind-query-bound TSV/gzip/hash/time snapshots with archive replay. All rows validate before selection; unresolved rows prevent a complete-selection claim.
+    licence: GNU Library GPL declares complete database content the Library, without a precise version. Local unshared use qualified; sharing and derived-dataset obligations remain unqualified.
+    module: [sabueso.tools.db.merops, sabueso.mappings.merops]
+    note: "All 116744 raw lines survive. Three displaced four-column rows retain exact fields without join/shift/repair or column-semantic assignment; line 108853 retains the quoted literal swissprot:\"Q96CC. Four named representation issues prevent a complete-selection claim. Every selected three-column occurrence retains native Trembl/swissprot/PIR prefix, family and taxonomy literals including blanks/spaces. Duplicate/conflicting assignments stay independent. No namespace/protein merge, activity, role, substrate, cleavage, sequence, MOLI Evidence, linked acquisition or automatic card intake. Export/assignment/sequence revisions are unstated; current_release and website labels do not version the body. Original data/licence support stay local unreleased recovery; public distribution is separately unqualified. See devguide/archive/local_work_2026-07/followup_10_source_integration.md."
+    links: [https://www.ebi.ac.uk/merops/about/availability.shtml, https://www.ebi.ac.uk/merops/download_list.shtml]
+    terms:
+      source_names: [MEROPS]
+      licence: GNU-LIBRARY-GPL-UNVERSIONED
+      attribution: MEROPS and EMBL-EBI; retain original accession/family/taxonomy text, export URL and full source support. Database content is the provider-declared Library.
+      statement: https://www.ebi.ac.uk/merops/about/availability.shtml
+      reviewed: 2026-10-07
+      caveats:
+        - Provider calls its whole database the Library under GNU Library GPL but does not specify a version; preserve that declaration rather than substituting MIT, CC0 or no stated licence.
+        - The linked GNU LGPL text and historical Library GPL distinguish local use from distribution. This local unshared reader and unchanged factual export do not qualify public fixture, derived-dataset or package redistribution.
+        - Automated use verdicts remain unknown for the version-unqualified declaration; archive retention is internal and sharing unknown. No LGPL version is selected for the provider or its contributors.
+        - Software/data and underlying input rights remain separate. No code licence is assigned to data, no raw/derived dataset is published and no full-length sequence, cleavage library or analysis job is acquired.
+  - id: signor
+    name: SIGNOR
+    url: https://signor.uniroma2.it/
+    category: target_validation
+    status: in_use
+    since: 2026-10-06
+    description: Native causal interaction occurrences with regulator/target roles, effects, mechanisms and original support/context.
+    reason: Recover headerless native tables without first-row loss, entity merging, direct-binding inference or experimental classification.
+    access: One public getData.php GET for an exact base UniProt accession and requested organism 9606/10090/10116 through shared transport; native TSV/gzip fixture/snapshot clients.
+    licence: CC BY 4.0, under the official SIGNOR 4.0 data statement.
+    module: [sabueso.tools.db.signor, sabueso.mappings.signor]
+    links: [https://signor.uniroma2.it/APIs.php, https://signor.uniroma2.it/documentation/]
+    note: Direct access only. Headerless 28-field order and optional empty trailing field are qualified; all rows keep original text and query participant roles. Requested organism is separate from native taxonomy, which can include other species, blank or in-vitro -1. Native DIRECT flags and scores do not establish physical binding, probability or MOLI Evidence. Residue/sequence context is unprojected; scientific revisions and completeness remain unknown. No network/pathway expansion, linked publications or automatic card intake.
+    terms:
+      source_names: [SIGNOR]
+      licence: CC-BY-4.0
+      attribution: SIGNOR and original contributing curators and publications.
+      statement: https://signor.uniroma2.it/documentation/
+      reviewed: 2026-10-06
+      caveats: [Attribute SIGNOR, link CC BY 4.0 and indicate changes. Native sentence/publication pointers are retained as source-served context; underlying publications and input resources retain independent rights and are not acquired.]
+  - id: appris
+    name: APPRIS
+    url: https://appris.bioinfo.cnio.es/
+    category: targets_sequence
+    status: in_use
+    since: 2026-10-06
+    description: Independent native annotation occurrences for one explicitly selected human Ensembl gene.
+    reason: Recover isoform annotation context without overwriting repeated transcripts or selecting a principal isoform.
+    access: One public default exporter JSON GET for an exact human ENSG identifier through shared transport; fixture and query-bound JSON/gzip snapshots.
+    licence: CC BY-NC-SA 4.0, under the official APPRIS statement.
+    module: [sabueso.tools.db.appris, sabueso.mappings.appris]
+    links: [https://apprisws.bioinfo.cnio.es/apidoc/, https://apprisws.bioinfo.cnio.es/apidoc/gold/exporter]
+    note: Direct access only. Default response can repeat transcripts with different genomic coordinates, names or principal declarations; retain every occurrence. Genomic assembly, dataset, record and sequence revisions are unstated in returned rows. Original scores, flags and notes do not create experimental classes, probabilities or protein sequence positions. No name lookup, filter, principal selection, sequence retrieval or card enrichment.
+    terms:
+      source_names: [APPRIS]
+      licence: CC-BY-NC-SA-4.0
+      attribution: APPRIS and original contributing annotation methods and sequence resources.
+      statement: https://appris.bioinfo.cnio.es/partials/license.html
+      reviewed: 2026-10-06
+      caveats: [Noncommercial use with attribution and licence link; indicate changes and apply share-alike to adaptations. Native contributing method labels are retained; linked input resources and publications have independent terms and are not acquired.]
+  - id: complexportal
+    name: Complex Portal
+    url: https://www.ebi.ac.uk/complexportal/
+    category: interactions
+    status: in_use
+    since: 2026-10-06
+    description: Explicit native complex context and independent participant occurrences with original stoichiometry, ECO/MI terms and feature/reference context.
+    reason: Recover complex declarations without collapsing participant alternatives, inferring experimental support or expanding membership into binary interactions.
+    access: One public JSON GET for an exact primary CPX accession through shared transport/archive; fixture and query-bound supplied JSON/gzip clients.
+    licence: CC0 1.0 for Complex Portal data, including webservice responses; Apache 2.0 applies separately to software.
+    module: [sabueso.tools.db.complex_portal, sabueso.mappings.complex_portal]
+    links: [https://www.ebi.ac.uk/intact/complex-ws/complex/, https://raw.githubusercontent.com/Complex-Portal/complex-portal-documentation/master/documentation/data_content.md]
+    note: Direct access only; no card enrichment or protein/name search. Native prediction flags, ECO codes and confidence stars stay literal; no MOLI Evidence, probability or experimental class is inferred. Null/zero stoichiometry is not an absent participant. Feature ranges and references stay unprojected; reference closure is not claimed. Release dates are separate from unknown complex/sequence revisions. Secondary IDs and versioned accession routes are not followed; linked resources are not acquired.
+    terms:
+      source_names: [Complex Portal]
+      licence: CC0-1.0
+      attribution: Complex Portal, EMBL-EBI and original contributing curation/prediction resources; attribution encouraged by the provider.
+      statement: https://raw.githubusercontent.com/Complex-Portal/complex-portal-documentation/master/about/license_privacy.md
+      reviewed: 2026-10-06
+      caveats: [The official CC0 statement explicitly covers data accessed via webpages/services. Software and branding are Apache 2.0; underlying linked resources and publications retain independent rights and are not fetched.]
+  - id: cath
+    name: CATH
+    url: https://www.cathdb.info/
+    category: structures_models
+    status: in_use
+    since: 2026-10-06
+    description: Explicit native structural domain summaries with classification, independent ATOM/COMBS sequences and original residue/segment correspondences.
+    reason: Recover domain context without creating a generic protein card, merging UniProt identity or projecting structural numbering.
+    access: One public domain-summary GET on an explicitly selected fixed release route; fixture and query-bound supplied JSON/gzip clients with optional SHA-256 verification.
+    licence: CC BY 4.0, under the official CATH resource statement.
+    module: [sabueso.tools.db.cath, sabueso.mappings.cath]
+    links: [https://github.com/UCLOrengoGroup/cath-api-docs, https://www.cathdb.info/wiki]
+    note: The release selector is a request declaration; the native response does not state its release or record/sequence revision. Full native GO/EC context stays raw; no independent function or experimental assertion is inferred. Other domains, UniProt references, alignments, coordinates and jobs remain unqueried. No automatic card enrichment or frozen schema change.
+    terms:
+      source_names: [CATH]
+      licence: CC-BY-4.0
+      attribution: CATH Protein Structure Classification Database; I. Sillitoe, N. Dawson, T. Lewis, D. Lee, J. Lees and C. Orengo, University College London (https://www.cathdb.info/).
+      statement: https://www.cathdb.info/
+      reviewed: 2026-10-06
+      caveats: [Attribute CATH and link CC BY 4.0; indicate modifications. Underlying PDB and UniProt resources and publications retain their own terms; linked records and coordinates are not acquired.]
+  - id: swissmodel
+    name: SWISS-MODEL Repository
+    url: https://swissmodel.expasy.org/repository
+    category: structures_models
+    status: in_use
+    since: 2026-10-06
+    description: Precomputed homology models and experimental PDB references with native target sequences and chain alignments.
+    reason: Recover all native repository occurrences and modelling context while preserving source sequence identity and mutable model pointers.
+    access: One public unfiltered metadata GET for a base UniProt accession through shared transport/archive; unchanged native v2 supplied-file fixture.
+    licence: CC BY-SA 4.0 for SWISS-MODEL generated data; original contributing resources retain their terms.
+    module: [sabueso.tools.db.swissmodel, sabueso.mappings.swissmodel]
+    links: [https://swissmodel.expasy.org/docs/repository_help, https://swissmodel.expasy.org/repository/api-docs]
+    note: All providers and chain segments survive; each target alignment matches the returned source sequence. Native MD5 identifies the full target sequence, not a model. Coordinate/ModelCIF URLs are mutable pointers, not acquired files or immutable IDs. API/query/creation/release dates are separate from unknown metadata, model and sequence revisions. Scores remain native literals; no ranking, probability or quality class is inferred. No coordinate/template/publication queries, current UniProt projection, model selection, job submission or card enrichment.
+    terms:
+      source_names: [SWISS-MODEL Repository]
+      licence: CC-BY-SA-4.0
+      attribution: SWISS-MODEL Repository; Bienert et al., Nucleic Acids Research 45(D1), D313–D319 (2017), doi:10.1093/nar/gkw1132; Waterhouse et al., Nucleic Acids Research 46(W1), W296–W303 (2018), doi:10.1093/nar/gky427.
+      statement: https://swissmodel.expasy.org/docs/terms_of_use
+      reviewed: 2026-10-06
+      caveats: [Credit the source and link CC BY-SA 4.0; indicate modifications and retain share-alike conditions for adaptations. Original UniProt/PDB inputs and publications keep their own terms; SWISS-MODEL licensing does not replace them. Public Repository metadata access is separate from beta service restrictions and modelling job submission.]
+  - id: amypro
+    name: AmyPro
+    url: https://amypro.net/
+    category: targets_sequence
+    status: in_use
+    since: 2026-10-06
+    description: Amyloid categories and declared regions on an investigated AmyPro entry sequence.
+    reason: Recover native amyloid-region context with explicit entry identity and original sequence instead of assigning an experimental class or projecting parent numbering.
+    access: One GET of the whole public JSON export, fully validated before exact AmyPro entry ID selection; shared transport/archive and supplied-file fixture.
+    licence: Separate data reuse licence not established; open download and the article licence are not data grants.
+    module: [sabueso.tools.db.amypro, sabueso.mappings.amypro]
+    note: Original export array and every entry literal survive. Parent UniProt/PDB/publication pointers, bounds, mutations, prion strings and categories remain source declarations. Entry regions match the investigated sequence; parent equivalence and current UniProt placement are not inferred. No native total/current export revision is stated. Individual .json downloads currently contain Python literals and are not used. No method or region-specific publication support is supplied, no linked resources queried, no card enrichment.
+    terms:
+      source_names: [AmyPro]
+      licence: NOT-STATED
+      attribution: AmyPro; Varadi, De Baets, Vranken, Tompa and Pancsa, Nucleic Acids Research 46(D1), D387–D392 (2018), doi:10.1093/nar/gkx950.
+      statement: https://amypro.net/#/help
+      reviewed: 2026-10-06
+      caveats: [Separate export data licence not established on the public help/download/footer pages. The resource paper's CC BY-NC 4.0 grant is not assigned to response data. Original public export bytes remain local unreleased recovery; redistribution permission is unknown.]
+  - id: consurfdb
+    name: ConSurfDB
+    url: https://consurfdb.tau.ac.il/
+    category: structures_models
+    status: deferred
+    since: 2026-10-06
+    description: Precomputed evolutionary conservation profiles of PDB protein chains.
+    reason: Useful historical conservation requirements, but official terms restrict academic noncommercial research and prohibit transferring database content to third parties; the synthetic legacy mapper does not qualify a native contract.
+    revisit_when: A permitted access/reuse scope is established for the intended application and native chain, sequence, score and revision contracts are qualified.
+    requires: [academic_licence]
+    requires_note: Official terms require an academic end user outside commercially sponsored work; nonacademic users must obtain provider terms separately.
+    links: [https://consurfdb.tau.ac.il/terms/]
+    note: No native result data or fixture is fetched in this review. Site-wide update date is not a per-chain result revision; conservation grades are not physical quantities or experimental classes.
+  - id: fireprotdb
+    name: FireProtDB
+    url: https://loschmidt.chemi.muni.cz/fireprotdb/
+    category: targets_sequence
+    status: deferred
+    since: 2026-10-06
+    description: Protein stability experiments with source/target sequences, mutations and experimental conditions.
+    reason: Useful historical measurement requirements, but v2 distinguishes sequence and mutant experiments; official service terms restrict transfer of output rights and no separate data reuse grant was established.
+    revisit_when: Data reuse and fixture-sharing scope is established and native v2 measurement units, sign conventions, source/target sequences and experiment revisions are qualified.
+    links: [https://loschmidt.chemi.muni.cz/fireprotdb/api-docs/, https://loschmidt.chemi.muni.cz/fireprotdb/terms-of-use/]
+    note: Only public documentation is read. No native experiments, downloads or jobs are fetched. The old synthetic ddG row lacks the native measurement/condition/sequence contract and is not restored as an experimental assertion.
+  - id: alphafill
+    name: AlphaFill
+    url: https://alphafill.eu/
+    category: structures_models
+    status: in_use
+    since: 2026-10-06
+    description: Precomputed filled-model and transplant metadata with native templates, alignment and quality metrics.
+    reason: Recover model-specific ligand/cofactor context without claiming observed target binding or merging chemical/model identities.
+    access: Public metadata GET for a base UniProt accession; shared transport/archive and unchanged public fixture. Explicit source/kind/query-bound original JSON/gzip clients validate native content and optional original-byte SHA before output.
+    licence: AlphaFill Usage Policy; free commercial/non-commercial use with AlphaFill/AlphaFold and parent-file attribution conditions.
+    module: [sabueso.tools.db.alphafill, sabueso.mappings.alphafill]
+    note: Native returned model/fragment ID is explicit. Compound and analogue labels remain distinct; RMSD and TCS carry angstrom quantities. Run version/date/input file are not a current metadata revision. Donor/model numbering and PAE/validation remain source-scoped. No coordinate downloads, optimization/job submission, fabricated URLs, current-UniProt projection, experimental binding claims or card enrichment. Bound files retain caller-declared retrieval time and terms separately from local read time; no remote observation or permission is inferred. See devguide/archive/local_work_2026-07/followup_26_bound_native_snapshots.md.
+    terms:
+      source_names: [AlphaFill]
+      licence: FREE-WITH-ACKNOWLEDGEMENT
+      attribution: AlphaFill and AlphaFold; Hekkelman, de Vries, Joosten and Perrakis, Nature Methods 20, 205–213 (2023), doi:10.1038/s41592-022-01685-y.
+      statement: https://alphafill.eu/license
+      reviewed: 2026-10-06
+      caveats: [Original archival files may be redistributed freely. Modified files require parent-file attribution. Parent AlphaFold policies apply where applicable. BSD software licence is not assigned to data; the policy does not name a separate Creative Commons licence.]
+  - id: ligysis
+    name: LIGYSIS
+    url: https://www.compbio.dundee.ac.uk/ligysis/
+    category: sites_families
+    status: in_use
+    since: 2026-10-06
+    description: Site summary scores and residue membership for an explicitly selected public result segment, its initial displayed residue-panel declarations, received directed structure/chain correspondence dictionaries and separately requested native chain/accession remappings.
+    reason: Recover provider-calculated site context and original numbering without functional inference or ligand identity guesses.
+    access: Public results page GET with base UniProt accession and explicit positive segment; six JSON literals parsed without JavaScript execution; documented read-only structure-mapping POST with explicit PDB ID and original JSON tables. Explicit source/kind/query-bound original HTML or JSON/gzip clients validate native content and optional original-byte SHA before output.
+    licence: Separate dataset reuse licence not established; MIT software and open website access are not data licences.
+    module: [sabueso.tools.db.ligysis, sabueso.mappings.ligysis]
+    note: Full native HTML remains the raw record. Bounded site parser validates exact page identity, table/segment counts, bounds, site IDs and membership. The additional displayed-residue mapper validates cc/newChartData column order and every row, retaining UPResNum/MSACol, AA/SS, DS/MES/p, independent repeated/conflicting positions and unknown declared columns. Selected-site identity is not inferred by equal membership; initial display is not all-site coverage. RSA uses percent quantities; missing native NaN literals remain explicit. Sequence/alignment/result revisions are unknown. Additional Pdb2UpDict/Up2PdbDict reading retains four native directed chain dictionaries and 491 entries per direction on one structure, without merging/repairing opposite directions or assigning the page protein to chains. In the HTML literals, chain-to-accession, chain/numbering namespaces, insertion codes and scientific revisions remain unknown; signed/zero labels stay literal. No inferred function/significance, current-UniProt projection, other-segment/individual-ligand access, coordinate download, page asset loading, analysis job or card enrichment. A separate native structure-mapping POST now retains four directed residue tables, explicit chain2acc declarations and eight remappings as 14 independent assertions. Structure is echoed; protein/segment are caller/transport context only. Chain2acc namespace, residue insertion/numbering and revisions remain unknown; no cross-table or old-page identity join. See devguide/archive/local_work_2026-07/followup_24_ligysis_structure_mapping.md. Bound files retain caller-declared retrieval time and terms separately from local read time; no remote observation or permission is inferred. See devguide/archive/local_work_2026-07/followup_26_bound_native_snapshots.md.
+    terms:
+      source_names: [LIGYSIS]
+      licence: NOT-STATED
+      attribution: LIGYSIS and the Barton Group; Utgés et al., LIGYSIS-web, Nucleic Acids Research (2025), doi:10.1093/nar/gkaf411.
+      statement: https://www.compbio.dundee.ac.uk/ligysis/about
+      reviewed: 2026-10-08
+      caveats: [Official page allows website access including commercial users and links an MIT code licence. No separate dataset redistribution licence was established; article CC BY is not assigned to dataset responses. Retain source/reference attribution and unknown sharing permission.]
+  - id: glygen
+    name: GlyGen
+    url: https://www.glygen.org/
+    category: targets_sequence
+    status: in_use
+    since: 2026-10-06
+    description: Native protein records with independent glycosylation and phosphorylation assertions on the source-declared sequence.
+    reason: Recover modification/glycan/support context while retaining native categories, isoform correspondence comments and ambiguous placement.
+    access: Public protein detail GET without pagination; observed shared transport/archive and public fixture. Explicit source/kind/query-bound original JSON/gzip clients validate native content and optional original-byte SHA before output.
+    licence: CC BY 4.0 for database sets; original contributing sources retain their terms.
+    module: [sabueso.tools.db.glygen, sabueso.mappings.glygen]
+    note: Complete glycosylation/phosphorylation rows must equal native table totals. Other raw sections remain unqualified. Native ranges and missing coordinates do not become single-residue placement. Introduction history and Swagger version are not current data revisions. Initial public native download succeeded; subsequent built-in 30/60-second live checks and repeated curl timed out, so online health remains unqualified. No direct access to linked providers, automatic card enrichment or current UniProt coordinate equivalence. Bound files retain caller-declared retrieval time and terms separately from local read time; no remote observation or permission is inferred. See devguide/archive/local_work_2026-07/followup_26_bound_native_snapshots.md.
+    terms:
+      source_names: [GlyGen]
+      licence: CC-BY-4.0
+      attribution: GlyGen project and original annotation/data providers.
+      statement: https://www.glygen.org/license.html
+      reviewed: 2026-10-06
+      caveats: [Official licence page applies CC BY 4.0 to database sets and lists contributing-source licences separately. Original annotation and publication pointers retain their source identity; linked provider access and article rights are not inferred.]
+  - id: iptmnet
+    name: iPTMnet
+    url: https://research.bioinformatics.udel.edu/iptmnet/
+    category: targets_sequence
+    status: in_use
+    since: 2026-10-07
+    description: Native HTML substrate-report rows, separate source groups, original modification/site/score literals and hidden source/publication support.
+    reason: Recover successful original public report acquisition without substituting failed REST access or inferred sequence and curation semantics.
+    access: One public GET to /iptmnet/entry/<exact base accession>/; validate native accession declaration, every tab/table/header/row in asSubTabPanel. Fixture and bound HTML/gzip/hash/time clients plus zero-network archive replay; no scripts executed or linked acquisition.
+    module: [sabueso.tools.db.iptmnet, sabueso.mappings.iptmnet]
+    licence: Database CC BY-NC-SA 4.0, independently stated on the official provider licence page; software and contributing-source rights remain separate.
+    terms:
+      source_names: [iPTMnet]
+      licence: CC-BY-NC-SA-4.0
+      attribution: iPTMnet, University of Delaware / Protein Information Resource and Georgetown University; native report URL, database licence and original contributing source/publication links.
+      statement: https://research.bioinformatics.udel.edu/iptmnet/license
+      reviewed: 2026-10-07
+      caveats: ["Noncommercial use, attribution and share-alike apply to database content. Independent contributing-source rights remain separate. No experimental confirmation, sequence/canonical correspondence, dataset revision or scoring-rule revision is inferred."]
+    note: Native P60174 HTML has 72 substrate rows in three groups (62/7/3); provider sample Q15796 has 60 in three groups (42/15/3). Empty sites, native score0 labels, hidden PMID/source links and repeated/conflicting rows survive. Assertions use independent iptmnet report-group subjects, preserving raw HTML/identity/query/hash support. Earlier REST HTTP 503 remains a failed acquisition and is not retried or reclassified. Expanded view, other report sections, linked sources, sequence/isoform merge and automatic card intake remain unqueried. No guessed curated/inferred status or Sabueso confidence rule.
+    links: ["#83"]
+  - id: eppic
+    name: EPPIC
+    url: https://www.eppic-web.org/
+    category: structures_models
+    status: in_use
+    since: 2026-10-06
+    description: Precomputed native interface and assembly method interpretations for an explicitly identified public PDB entry.
+    reason: Recover provider-calculated structural context with original scores, alternatives, chain operators and run parameters.
+    access: EPPIC RCSB REST v3 entry, interfaces, assemblies and explicitly selected interfaceResidues endpoints; observed shared transport and public fixtures.
+    licence: Separate prediction-data reuse licence not established; software/API licences are not assigned to data.
+    module: [sabueso.tools.db.eppic, sabueso.mappings.eppic]
+    note: Three native annotation components remain separate. Explicit residue detail reads interface context and one selected residue table with independent times/hashes. ASA/BSA carry square-angstrom quantities; zero area and quoted NaN fractions survive. Native side/serial/region is not canonical, author or label numbering or contact membership. No coordinate download, current UniProt projection or automatic card enrichment.
+    terms:
+      source_names: [EPPIC]
+      licence: NOT-STATED
+      attribution: EPPIC team; Bliven et al., PLoS Computational Biology (2018), doi:10.1371/journal.pcbi.1006104.
+      statement: https://www.eppic-web.org/downloads
+      reviewed: 2026-10-06
+      caveats: [Official website describes public REST downloads and GPL software; served OpenAPI describes Apache 2.0 API software. Neither establishes a separate prediction-data reuse licence. Provider interpretations are not experimental confirmation.]
+  - id: pdb_redo
+    name: PDB-REDO
+    url: https://pdb-redo.eu/
+    category: structures_models
+    status: in_use
+    since: 2026-10-06
+    description: Existing databank statistics and separately requested input/software revision descriptions.
+    reason: Recover deposited, baseline, restrained and final refinement context without model replacement or inventing coordinate URLs.
+    access: Public data.json and versions.json files for one four-character PDB ID; shared transport/archive and frozen public fixtures.
+    licence: PDB-REDO Usage Policy; freely usable and redistributable with stated attribution and parent-data conditions.
+    module: [sabueso.tools.db.pdb_redo, sabueso.mappings.pdb_redo]
+    note: Independent structure-subject assertions. Raw full properties and residue arrays stay native metadata; typed mappings retain distinct R-factor stages and native input/software revisions. Pipeline VERSION and TIME are not a databank revision. No new refinement job, coordinate download, computed improvement or card enrichment.
+    terms:
+      source_names: [PDB-REDO]
+      licence: FREE-WITH-ACKNOWLEDGEMENT
+      attribution: PDB-REDO and original structure-data authors; Maarten L. Hekkelman, Anastassis Perrakis and Robbie P. Joosten, Netherlands Cancer Institute.
+      statement: https://pdb-redo.eu/license
+      reviewed: 2026-10-06
+      caveats: [Original databank files may be redistributed without restriction; modified files require parent-file attribution. Parent PDB usage policy applies where applicable. The source does not name a Creative Commons licence for this policy.]
+  - id: pdbe_validation
+    name: PDBe Validation
+    url: https://www.ebi.ac.uk/pdbe/api/
+    category: structures_models
+    status: in_use
+    since: 2026-10-06
+    description: Native entry-wide validation raw values with archive-wide and comparable-entry percentile ranks.
+    reason: Recover structural quality context beyond RCSB refinement values without inventing quality classes or selecting structures automatically.
+    access: PDBe global-percentiles entry API for one four-character PDB ID; shared online transport and frozen public fixtures.
+    licence: EMBL-EBI Terms of Use; separate API-response reuse licence not established in this review.
+    module: [sabueso.tools.db.pdbe_validation, sabueso.mappings.pdbe_validation]
+    note: Independent structure-subject assertions only. Native metric names and values remain unchanged; optional relative percentiles may be absent. No automatic card enrichment, quality thresholds or residue projection. Validation/statistical revisions and comparison population counts are not stated.
+    terms:
+      source_names: [PDBe Validation]
+      licence: NOT-STATED
+      attribution: PDBe and wwPDB validation teams (https://www.ebi.ac.uk/pdbe/api/).
+      statement: https://www.ebi.ac.uk/about/terms-of-use/
+      reviewed: 2026-10-06
+      caveats: [EMBL-EBI imposes no additional restrictions over original owners. wwPDB CC0 policy applies to archive data files; this review does not establish that policy as a separate licence for the PDBe API response. PDBe-KB CC BY 4.0 is not assigned by inference.]
+  - id: sifts
+    name: SIFTS
+    url: https://www.ebi.ac.uk/pdbe/docs/sifts/
+    category: structures_models
+    status: in_use
+    since: 2026-10-06
+    description: Explicit PDBe-to-UniProt segment correspondences with author and internal residue numbering preserved.
+    reason: Recover source-declared structural mapping context without extrapolating offsets, matching entities by sequence or losing insertion codes.
+    access: PDBe UniProt mapping API for one four-character PDB ID; shared online transport and frozen public fixtures. Explicit source/kind/query-bound original JSON/gzip clients validate native content and optional original-byte SHA before output.
+    licence: EMBL-EBI Terms of Use; no separate SIFTS-wide reuse licence established in this review.
+    module: [sabueso.tools.db.sifts, sabueso.mappings.sifts]
+    note: Direct source assertions only; no automatic card enrichment, per-residue remapping, sequence reconstruction or inferred identity. Native response states no release. Author chains, label asym IDs and endpoint numbering remain distinct. Bound files retain caller-declared retrieval time and terms separately from local read time; no remote observation or permission is inferred. See devguide/archive/local_work_2026-07/followup_26_bound_native_snapshots.md.
+    terms:
+      source_names: [SIFTS]
+      licence: NOT-STATED
+      attribution: SIFTS, PDBe and UniProt teams at EMBL-EBI (https://www.ebi.ac.uk/pdbe/docs/sifts/).
+      statement: https://www.ebi.ac.uk/about/terms-of-use/
+      reviewed: 2026-10-06
+      caveats: [EMBL-EBI imposes no additional restrictions over original owners; this does not establish a separate SIFTS reuse licence or erase third-party rights. PDBe-KB CC BY 4.0 terms are not automatically assigned to SIFTS.]
+  - id: mobidb
+    name: MobiDB
+    url: https://mobidb.org/
+    category: targets_sequence
+    status: in_use
+    since: 2026-10-06
+    description: Explicit native v1 protein exports with annotation sets, sequence, release and representation issues; independent disorder and modified-residue mappings.
+    reason: Recover disorder and positional modification support without merging homology with curation or guessing current UniProt coordinates.
+    access: Single canonical accession JSON export through shared HTTP transport; frozen public body/header fixtures.
+    licence: CC BY 4.0, under MobiDB content terms.
+    module: [sabueso.tools.db.mobidb, sabueso.mappings.mobidb]
+    note: Direct source access only; no automatic card enrichment. Native annotation bases and per-residue series remain distinct. Mapping omits sets with reported conversion issues and retains the complete export. API version is separate from the native database release.
+    terms:
+      source_names: [MobiDB]
+      licence: CC-BY-4.0
+      attribution: MobiDB database (https://mobidb.org/); preserve native annotation providers, methods and provenance.
+      statement: https://mobidb.org/about#license
+      reviewed: 2026-10-06
+      caveats: [The native evidence field is the provider's annotation basis, not MOLI Evidence; underlying provider publications and experimental support are not independently acquired.]
+  - id: alphamissense
+    name: AlphaMissense
+    url: https://github.com/google-deepmind/alphamissense
+    category: targets_sequence
+    status: in_use
+    since: 2026-10-06
+    description: Explicit access to precomputed canonical human amino-acid substitution predictions through a source-declared AlphaFold DB artifact.
+    reason: Recover native variant parsing with exact source identity, sequence/reference checks, unknown prediction revision and separate predicted context.
+    access: AlphaFold DB metadata discovery and native CSV artifact; shared online transport and frozen public fixtures.
+    licence: CC BY 4.0 for predictions; the separately published model code is Apache 2.0.
+    module: [sabueso.tools.db.alphamissense, sabueso.mappings.alphamissense]
+    note: Direct source access only. No inference, clinical assertion or automatic card enrichment. Full canonical human descriptors only; score revision is unstated and is not the AlphaFold model version. Source sequence coordinates are not automatically current UniProt coordinates.
+    limit:
+      constant: sabueso.tools.db.alphamissense.DEFAULT_LIMIT
+      of: Returned variant rows after validation of the complete declared artifact
+    terms:
+      source_names: [AlphaMissense]
+      licence: CC-BY-4.0
+      attribution: "AlphaMissense, DeepMind Technologies Limited; Cheng et al., Science (2023), doi:10.1126/science.adg7492."
+      statement: https://github.com/google-deepmind/alphamissense#alphamissense-predictions-license
+      reviewed: 2026-10-06
+  - id: uniparc
+    name: UniParc (UniProt Archive)
+    url: https://www.uniprot.org/help/uniparc
+    category: targets_sequence
+    status: in_use
+    since: 2026-10-06
+    description: Explicit checksum search and native archive sequences with returned current, historical and isoform UniProtKB references.
+    reason: Recover exact sequence candidate lookup with full sequence verification, bounded pagination and explicit identity/coverage scope.
+    access: REST checksum search; validated pagination and frozen public fixtures.
+    licence: CC BY 4.0, under UniProt database terms.
+    module: [sabueso.tools.db.uniparc, sabueso.mappings.uniparc]
+    note: Search key is MD5; actual sequences are compared. Native references do not prove protein entity equivalence. Only current canonical UniProtKB sequences are verified; isoforms remain explicit unqueried references.
+    limit:
+      constant: sabueso.tools.db.uniparc.DEFAULT_LIMIT
+      of: UniParc search rows; find_protein_candidates separately caps current canonical UniProtKB entry checks
+    terms:
+      source_names: [UniParc]
+      licence: CC-BY-4.0
+      attribution: UniParc, UniProt Consortium (https://www.uniprot.org/help/uniparc), CC BY 4.0.
+      statement: https://rest.uniprot.org/help/license
+      reviewed: 2026-10-06
+  - id: disprot
+    name: DisProt
+    url: https://disprot.org/
+    category: targets_sequence
+    status: in_use
+    description: Explicit native disorder-region access, scoped to DisProt's stated sequence and returned annotation subset.
+    since: 2026-10-06
+    reason: Recover source access and native disorder assertions without guessing canonical placement or changing frozen card schema.
+    access: Public search API by canonical UniProt accession; fixture and supplied-file clients.
+    licence: CC BY 4.0 (database); embedded publication fragments retain their own rights.
+    module: [sabueso.tools.db.disprot, sabueso.mappings.disprot]
+    note: Direct access only; no automatic card enrichment. Search version is unstated; native region revision/release and default subset remain distinct.
+    terms:
+      source_names: [DisProt]
+      licence: CC-BY-4.0
+      attribution: DisProt database (https://disprot.org/); preserve native region and publication references.
+      statement: https://disprot.org/
+      reviewed: 2026-10-06
+      caveats: [Database terms do not independently settle rights to embedded article quotations; supplied metadata does not prove source access or reuse permission.]
+  - id: aaindex
+    name: AAindex
+    url: https://www.genome.jp/aaindex/
+    category: targets_sequence
+    status: in_use
+    description: Native amino-acid reference indices, accessed explicitly; no automatic protein property calculation or positional prediction.
+    since: 2026-10-06
+    reason: Recover the July prototype's paired-row parser as direct source access with original literals, missing values and publication pointers.
+    access: AAindex1 public text artifact; online and supplied-file clients.
+    licence: Not stated in the consulted AAindex-specific documentation.
+    module: [sabueso.tools.db.aaindex, sabueso.mappings.aaindex]
+    note: The native artifact has no structured unit or release field. Do not infer either from the historical prototype or a separate web page. Protein enrichment remains unimplemented.
+    terms:
+      source_names: [AAindex]
+      licence: NOT-STATED
+      attribution: "AAindex: Amino Acid Index Database (https://www.genome.jp/aaindex/); retain native publication references."
+      statement: https://www.genome.jp/aaindex/aaindex_help.html
+      reviewed: 2026-10-06
+      caveats: [Public download access is not a stated redistribution licence; the consulted AAindex-specific format page does not settle reuse terms.]
   # --- in use -----------------------------------------------------------------------
   - id: uniprot
     name: UniProtKB
@@ -64,7 +1016,7 @@ resources:
     description: Canonical protein sequences, isoforms, features, annotations and cross-references; the identity anchor of protein cards.
     since: 2026-02-06
     reason: Protein identity anchor and primary annotation source.
-    access: REST API (entries and search)
+    access: REST API (entries, search and explicit parent-declared isoform FASTA access)
     limit:
       constant: sabueso.tools.db.uniprot.SEARCH_SIZE
       of: candidates of a name or gene search (kept low on purpose; more than this is ambiguous, and the resolution records search_truncated)
@@ -75,7 +1027,8 @@ resources:
       attribution: "UniProtKB, UniProt Consortium (https://www.uniprot.org/), CC BY 4.0"
       statement: https://rest.uniprot.org/help/license
       reviewed: 2026-09-29
-    module: [sabueso.tools.db.uniprot, sabueso.mappings.uniprot]
+    module: [sabueso.tools.db.uniprot, sabueso.mappings.uniprot, sabueso.mappings.uniprot_isoforms]
+    note: Development get_isoform_sequence reads the full parent declaration then only one exact Displayed/Described FASTA. Names do not define IDs. Independent component times/hashes, unknown isoform revision and separate parent/canonical/release context survive. Missing/not-listed/unsupported declaration scope does not trigger speculative queries. No variant reconstruction, canonical/structural projection, implicit isoform resolution or automatic card intake.
     links: ["#6", "#13"]
   - id: uniref
     name: UniRef (UniProt)
@@ -292,13 +1245,24 @@ resources:
     url: https://www.ebi.ac.uk/intact/
     category: interactions
     status: in_use
-    description: Curated experimental binary molecular interactions (PSI-MI).
+    description: Native molecular interaction observations, including association/proximity, negation and complex expansion (PSI-MI).
     since: 2026-09-23
-    reason: Physical interactions read from UniProt INTERACTION comments, which derive from IntAct.
-    access: via UniProt
+    reason: Direct bounded PSICQUIC MITAB 2.7 access and source-scoped observations; existing UniProt INTERACTION support remains separate.
+    access: REST PSICQUIC single-page query; also via UniProt
     licence: CC BY 4.0
+    terms:
+      source_names: ["IntAct"]
+      licence: CC-BY-4.0
+      attribution: "IntAct, EMBL-EBI and contributing curation teams (https://www.ebi.ac.uk/intact/), CC BY 4.0"
+      statement: https://www.imexconsortium.org/about/#licence
+      reviewed: 2026-10-06
+      caveats:
+        - "Native publication pointers do not license linked articles. Source dates and service versions do not identify interaction or sequence revisions."
     via: uniprot
-    module: [sabueso.mappings.uniprot]
+    module: [sabueso.tools.db.intact, sabueso.mappings.intact, sabueso.mappings.uniprot]
+    limit:
+      constant: sabueso.tools.db.intact.LIMIT
+      of: MIQL result rows on one page; Sabueso ceiling, not a service or unique-partner limit
     links: ["#21"]
   - id: rhea
     name: Rhea
@@ -598,13 +1562,23 @@ resources:
     name: "Pharos / TCRD (IDG)"
     url: https://pharos.nih.gov/
     category: target_validation
-    status: evaluating
-    description: "Human target development levels (Tclin, Tchem, Tbio, Tdark) and aggregated target knowledge, keyed by UniProt, HGNC, Ensembl and NCBI Gene."
+    status: in_use
+    description: Native exact-accession target metadata and provider target-development-level literals through the public GraphQL target operation.
     since: 2026-09-27
     proposed_by: "Source coverage plan (#83): target assessment"
-    licence: "No licence of its own: each primary source's terms apply"
-    access: "GraphQL API; SQL dumps"
+    licence: Separate selected-target data grant not established; software/article licences and contributing-source rights remain independent.
+    access: One documented pharos-api.ncats.io/graphql GET; online, fixture and query-bound native JSON/gzip clients with original-time archive replay.
     links: ["#83"]
+    reason: Recover explicit native target identity, name, symbol, family and TDL without search truncation or computed druggability ranking.
+    module: [sabueso.tools.db.pharos, sabueso.mappings.pharos]
+    note: Reviewed 2026-10-07. Native P60174 Tbio and P31749 Tchem responses qualify the five requested fields; P00000 returns an explicit null target. GraphQL errors, exact identity mismatches and malformed fields fail. Native null and future class literals survive. Dataset, target, sequence and TDL-rule revisions are unstated. No novelty, ligand counts, aggregate associations, linked acquisition or automatic card enrichment. Public frontend access errors are separate from successful documented GraphQL access.
+    terms:
+      source_names: [Pharos/TCRD]
+      licence: NOT-STATED
+      attribution: Pharos / Target Central Resource Database, NIH IDG Knowledge Management Center; contributing sources retain their own rights.
+      statement: https://pmc.ncbi.nlm.nih.gov/articles/PMC9825581/
+      reviewed: 2026-10-07
+      caveats: [The provider paper documents the public GraphQL endpoint but does not independently grant selected-target data redistribution. Software and article licences are not assigned to database outputs. Original factual fixtures remain local unreleased qualification material.]
   - id: tdr_targets
     name: "TDR Targets"
     url: https://tdrtargets.org/
@@ -636,14 +1610,25 @@ resources:
     links: ["#83"]
   - id: ttd
     name: "TTD (Therapeutic Target Database)"
-    url: https://idrblab.org/ttd/
+    url: https://ttd.idrblab.cn/
     category: target_validation
-    status: evaluating
-    description: "Molecular targets, their clinical status, diseases and resistance mutations."
-    since: 2026-09-25
+    status: in_use
+    description: Native target listing declarations and original cross-reference/type literals, without protein identity or clinical inference.
+    since: 2026-10-07
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "No data licence found (only the article's CC BY-NC)"
+    reason: Recover the qualified public native target listing on exact TTD subjects, retaining all original key semantics and unknown data rights.
+    access: The official legacy redirect and download component advertise /files/download/P2-01-TTD_uniprot_all.txt. One full public GET, validation of every native four-field block, then exact T plus five-digit ID selection; fixture and bound text/gzip/hash/time clients plus archive replay.
+    module: [sabueso.tools.db.ttd, sabueso.mappings.ttd]
+    licence: Separate data grant not stated; current provider footer reserves rights. Article and frontend software rights remain separate.
+    terms:
+      source_names: [TTD]
+      licence: NOT-STATED
+      attribution: Therapeutic Target Database; IDRB, Zhejiang University and BIDD, National University of Singapore; native export header and provider URL.
+      statement: https://ttd.idrblab.cn/full-data-download
+      reviewed: 2026-10-07
+      caveats: [Public acquisition does not grant reuse or redistribution. Automated use and sharing remain unknown; the original factual export stays local unreleased qualification material. Article and frontend software licences are not assigned to data.]
     links: ["#83"]
+    note: The original 525950-byte export has 4298 target blocks and 613 NOUNIPROTAC declarations. Native header states version 10.1.01 (2024.01.10), independent of the 2026 website citation. UNIPROID entry names/placeholders stay literal; TARGETID identifies an independent TTD subject. All rows validate before selection, blanks and conflicting/duplicate occurrences survive. TARGTYPE remains a provider declaration. No protein/gene/complex merge, accession inference, drug/disease/activity/variant join, clinical conclusion or automatic card intake. Broader scientific coverage and redistribution rights remain separately unqualified.
   - id: dgidb
     name: "DGIdb"
     url: https://dgidb.org/
@@ -658,12 +1643,23 @@ resources:
     name: "DepMap"
     url: https://depmap.org/
     category: target_validation
-    status: evaluating
-    description: "CRISPR and RNAi screens of gene essentiality and dependencies in cancer cell lines."
+    status: in_use
+    description: Original DepMap 24Q4 public Model.csv descriptive model and cell-line context selected by exact ModelID.
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "CC BY 4.0 (public release; some files carry their own terms)"
+    licence: CC BY 4.0 for the qualified DepMap 24Q4 public article version 1; other datasets and releases require independent review.
     links: ["#83"]
+    reason: Recover independently supported cell-line/model context before separate gene-effect and dependency integration.
+    access: Fixed Figshare file 51065297 from article 27993248 version 1; one-GET digest-pinned native CSV, fixture and bound CSV/gzip/hash/time clients.
+    module: [sabueso.tools.db.depmap, sabueso.mappings.depmap]
+    note: Reviewed 2026-10-07. All 2105 original 47-column rows validate before exact ACH model selection. Native blank fields, quoting and repeated occurrences survive; names and RRID do not merge models. Public model metadata only; gene-effect matrices, essentiality, screen/condition mappings, patient interpretation and protein-target projection remain unqueried. Individual model/ontology revisions stay unknown. Portal download catalog currently presents a human-verification page; the independent provider publication supplies the original public metadata, file identity, digest and CC BY grant. No verification bypass.
+    terms:
+      source_names: [DepMap]
+      licence: CC-BY-4.0
+      attribution: DepMap, Broad Institute (2024), DepMap 24Q4 Public, doi:10.25452/figshare.plus.27993248.v1; cite the DepMap portal and program.
+      statement: https://api.figshare.com/v2/articles/27993248/versions/1
+      reviewed: 2026-10-07
+      caveats: [The original provider publication states CC BY 4.0 and identifies Model.csv by file ID and MD5. Qualification is limited to this fixed public release and article version; no grant is propagated to collaborator datasets or other files. Model metadata do not establish gene dependencies.]
   - id: reactome
     name: "Reactome"
     url: https://reactome.org/
@@ -959,12 +1955,18 @@ resources:
     name: "ASD (Allosteric Database)"
     url: http://mdl.shsmu.edu.cn/ASD/
     category: sites_families
-    status: evaluating
+    status: deferred
     description: "Allosteric modulators, regulatory sites and conformational communication."
-    since: 2026-09-25
+    since: 2026-10-08
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "Article under CC BY 4.0 (ASD2023); data terms to confirm"
+    licence: "Data for research use only; third-party distribution prohibited; licence application required for downloads. Article rights remain separate."
     links: ["#83"]
+    reason: "Useful allosteric-site/modulator requirements, but downloads require an application/login and research-only terms prohibit third-party redistribution; no authorized native artifact is available."
+    access: The official download page links module/download/js/download.js; the script lists named release artifacts and only displays download links after a licence application/login state. No application submitted or gated artifact acquired.
+    note: Reviewed 2026-10-07. The original 18694-byte script identifies release 5.1 site/PPI and 5.01 protein XML/potential-site artifacts, and explicit research-only/no-third-party-distribution conditions. Filename dates differ by artifact; no universal release inferred. Native identity, residue/structure scope and authorized input receipt remain required. Predicted potential sites stay separate from recorded allosteric sites. Legacy caller-accession fallback and universal curated status are not restored.
+    revisit_when: "An authorized original ASD artifact and applicable research-use agreement are available, including a lawful verification route without third-party redistribution and native recorded-versus-potential-site/structure/residue/release scope."
+    decided_by: Maintainer-requested local recovery assessment
+    # Follow-up 27 closes active recovery triage; conditional reactivation is tracked in #83.
   - id: klifs
     name: "KLIFS"
     url: https://klifs.net/
@@ -1053,14 +2055,22 @@ resources:
     name: "BRENDA"
     url: https://brenda-enzymes.org/
     category: sites_families
-    status: evaluating
-    description: "Enzyme information: kinetics (Km, kcat), inhibitors, cofactors and conditions."
-    since: 2026-09-25
-    requires: ["account"]
-    requires_note: "A free account (email and password) for the SOAP web service; the data is CC BY 4.0."
+    status: in_use
+    description: "Explicit EC-class label, systematic name and description through the public SPARQL prototype; broader enzyme kinetics remain unqueried."
+    since: 2026-10-07
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
-    licence: "CC BY 4.0; the API needs a registered account (key rule)"
-    note: "Reviewed 2026-09-29 (#94): data CC BY 4.0 (its licence page); the SOAP web service needs a registered account (email and password). Fits every terms profile. Strong candidate: kinetics (Km, kcat, Ki) and inhibitors per EC number and organism, e.g. TIM (EC 5.3.1.1) of T. cruzi and human. Waits on a user's account for the key rule."
+    reason: Recover source EC-class descriptions on their exact native URI without inferring a protein assignment or catalytic activity.
+    access: One public GET to the officially linked https://sparql.dsmz.de/api/brenda for a fixed four-field exact numeric EC query, without LIMIT or OFFSET; fixture and bound JSON/gzip/hash/time clients plus archive replay.
+    module: [sabueso.tools.db.brenda, sabueso.mappings.brenda]
+    licence: CC BY 4.0 for BRENDA data and online use; SOAP account and bulk active acceptance are separate routes.
+    terms:
+      source_names: [BRENDA]
+      licence: CC-BY-4.0
+      attribution: BRENDA Enzyme Database, DSMZ Digital Diversity; Hauenstein et al. (2026), doi:10.1093/nar/gkaf1113; CC BY 4.0.
+      statement: https://brenda-enzymes.org/license.php
+      reviewed: 2026-10-07
+      caveats: [This slice contains EC-class descriptions only. The prototype does not declare its dataset or individual EC record revision; the main website release is not assigned to it. SOAP requires registration and bulk files require active licence acceptance; neither route is used.]
+    note: Native EC 5.3.1.1 and 2.7.1.1 plus an empty exact-query response qualify this descriptive slice. RDF URI/language/datatype terms, missing OPTIONAL bindings, empty literals and repeated/conflicting solutions retain full native support. Every received solution validates before mapping. No kinetics, inhibitors, cofactors, protein/organism assignment, linked acquisition or automatic card enrichment. The prior inhibitor HTTP 500 remains a separate unqualified scope and is not retried.
     links: ["#83", "#94"]
   - id: sabio_rk
     name: "SABIO-RK"
@@ -1342,7 +2352,7 @@ resources:
     since: 2026-09-25
     proposed_by: "Diego Prada, inventory of open resources for drug design (2026-09-25)"
     decided_by: "Sabueso maintainers (2026-09-30)"
-    reason: "A molecule's chemical classes and roles (biological, chemical, applications), stated per entry, joined through UniChem's link and the InChIKey ChEBI states."
+    reason: "A molecule's native name, formula, chemical classes and roles (biological, chemical, applications), independently supported per entry, joined through UniChem's link and the InChIKey ChEBI states."
     access: "ChEBI 2.0 API (compounds, 200 per request), no key, when resolve(..., chebi=True)"
     licence: "CC BY 4.0 (ChEBI 2.0 API)"
     terms:

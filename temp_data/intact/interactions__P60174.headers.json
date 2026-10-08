@@ -1,0 +1,14 @@
+{
+  "response_query": {
+    "miql": "id:P60174",
+    "format": "tab27",
+    "first_result": 0,
+    "max_results": 200
+  },
+  "response_headers": {
+    "X-PSICQUIC-Count": "80",
+    "X-PSICQUIC-Impl": "Reference Implementation",
+    "X-PSICQUIC-Impl-Version": "1.5.3",
+    "X-PSICQUIC-Spec-Version": "1.4"
+  }
+}

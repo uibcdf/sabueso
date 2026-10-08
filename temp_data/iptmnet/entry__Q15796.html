@@ -1,0 +1,3988 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="en">
+    <title>iPTMnet Report Q15796 SMAD2 </title>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    
+    <!-- iptmnet -->
+    <link rel="stylesheet" type="text/css" href="/iptmnet_test/static/iptmnet/style.css?v=073113" />
+    <link rel="stylesheet" type="text/css" href="/iptmnet_test/static/iptmnet/client/style.css?v=073113" >
+    <script type="text/javascript" src="/iptmnet_test/static/iptmnet/client/iptm2.js"></script>
+
+    <!-- google analytics tracking -->
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E")); 
+    </script>
+    <script type="text/javascript">
+        var pageTracker = _gat._getTracker("UA-4232355-1");
+        pageTracker._initData();
+        pageTracker._trackPageview();
+    </script>
+
+    <!-- PRO or other scripts -->
+     
+<!-- DataTables -->
+<link rel="stylesheet" type="text/css" href="/iptmnet_test/static/iptmnet/client/datatable/css/jquery.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="/iptmnet_test/static/iptmnet/client/datatable/js/jquery.dataTables.min.js"></script>
+<!-- multiselect -->
+<link rel="stylesheet" type="text/css" href="/iptmnet_test/static/iptmnet/client/multiselect/bootstrap-multiselect.css">
+<script type="text/javascript" src="/iptmnet_test/static/iptmnet/client/multiselect/bootstrap-multiselect.js"></script>
+<!-- iptmnet -->
+<script type="text/javascript"> 
+	var cytoEventUrl = "/iptmnet/visual/cytoscape/event/";
+	var msaEntryUrl = "/iptmnet/visual/msa/view/entry/Q15796/";
+
+	$(function(){
+  		var hash = window.location.hash;
+  		hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+		if (hash.includes('-')) { //only reload to top for tab based hashes 
+		  setTimeout(function() {
+			$('html,body').animate({scrollTop:0}, 'fast');
+		  }, 1);
+		}
+
+		
+	});
+</script>
+<script type="text/javascript" src="/iptmnet_test/static/iptmnet/client/func_entry.js?v=0913"></script>
+
+  </head>
+
+<body>
+<div id="download-container">
+</div>
+
+<div id="container">
+	<div id="main">
+ 
+    
+  <nav class="iptm-masthead navbar-fixed-top" role="navigation" id="iptm-navbar">
+  <div class="container-fluid">
+      <div class="collapse navbar-collapse">
+    <!-- Nav tabs -->
+    <ul class="iptm-nav">
+      <li class="iptm-nav-item"><a href="/iptmnet/">
+          <span id="text-logo"> 
+              <span class="iptm-orange">i</span><span style="color:#f6f9fc;">PTM</span><span class="black">net</span>
+          </span>
+        </a></li>
+      <li class="iptm-nav-item ">
+          <a href="/iptmnet/">
+              <span class="glyphicon glyphicon-home btn-xs"></span>Home</a></li>
+      <li class="iptm-nav-item ">
+          <a href="/iptmnet/browse">
+              <span class="glyphicon glyphicon-th-list btn-xs"></span>Browse </a></li>
+      <li class="iptm-nav-item ">
+          <a href="/iptmnet/stat">
+              <span class="glyphicon glyphicon-stats btn-xs"></span>Statistics</a></li>
+      <li class="iptm-nav-item dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <span class="glyphicon glyphicon-book btn-xs"></span>Project Info<span class="caret"></span></a>
+        <ul class="dropdown-menu" id="project_info" role="menu">
+          <li role="presentation"><a href="/iptmnet/about">About iPTMnet</a></li>
+          <li role="presentation"><a href="/iptmnet/publication">Publications</a></li>
+          <li role="presentation"><a href="/iptmnet/license"> License</a></li>
+          <li role="presentation"><a href="/iptmnet/cite" class="text-danger"> Citation</a></li>
+          <li role="presentation"><a href="/iptmnet/download" > Download</a></li>
+        </ul>
+      </li>
+      <li class="iptm-nav-item"><a href="/iptmnet_test/static/iptmnet/files/iPTMnet_Help.pdf" target="_blank"> Help</a></li>
+    
+      
+      <li class="iptm-nav-item active">
+          <a href="#result">
+          Result</a></li>
+      
+      
+    
+        <li class="iptm-nav-item pull-right" id="navbar-search">
+        <form action="/iptmnet/handle/" method="POST" role="search">
+            <div style="width:300px;">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='hSySL1nmuxMTY85Vx1dS2cpeDkrlRGEU' />
+                        <tr><th></th><td><select class="form-control" id="searchCriteria" name="searchCriteria">
+<option value="all">All</option>
+<option value="uniprot">UniProt AC/ID</option>
+<option value="name">Protein/Gene Name</option>
+<option value="pmid">PMID</option>
+</select></td></tr>
+                        <tr><th></th><td><input class="form-control" id="searchQuery" maxlength="200" name="searchQuery" placeholder="Search" type="text" /></td></tr>
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-search"></span></button>
+                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-cog"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        
+                        <div class="dropdown-menu pull-right" role="menu" id="iptm-search-option">
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><strong>PTM Type</strong></td>
+                                    <td>
+                                        <div class="select-all small"> Select <span class="span-link"
+                                                                                    onclick="iptm_checkall('searchMod',true)">All</span>,
+                                            <span class="span-link"
+                                                  onclick="iptm_checkall('searchMod',false)">None</span></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> <label for="searchMod_0"><input checked="" id="searchMod_0" name="searchMod" type="checkbox" value="ac" /> Acetylation</label> </td>
+                                    
+                                    <td> <label for="searchMod_1"><input checked="" id="searchMod_1" name="searchMod" type="checkbox" value="gn" /> N-Glycosylation</label> </td>
+                                    
+                                    <td> <label for="searchMod_2"><input checked="" id="searchMod_2" name="searchMod" type="checkbox" value="go" /> O-Glycosylation</label> </td>
+                                    </tr>
+                                        <tr>
+                                    <td> <label for="searchMod_3"><input checked="" id="searchMod_3" name="searchMod" type="checkbox" value="gc" /> C-Glycosylation</label> </td>
+                                    
+                                    <td> <label for="searchMod_4"><input checked="" id="searchMod_4" name="searchMod" type="checkbox" value="gs" /> S-Glycosylation</label> </td>
+                                    
+                                    <td> <label for="searchMod_5"><input checked="" id="searchMod_5" name="searchMod" type="checkbox" value="me" /> Methylation</label> </td>
+                                    </tr>
+                                        <tr>
+                                    <td> <label for="searchMod_6"><input checked="" id="searchMod_6" name="searchMod" type="checkbox" value="my" /> Myristoylation</label> </td>
+                                    
+                                    <td> <label for="searchMod_7"><input checked="" id="searchMod_7" name="searchMod" type="checkbox" value="p" /> Phosphorylation</label> </td>
+                                    
+                                    <td> <label for="searchMod_8"><input checked="" id="searchMod_8" name="searchMod" type="checkbox" value="su" /> Sumoylation</label> </td>
+                                    </tr>
+                                        <tr>
+                                    <td> <label for="searchMod_9"><input checked="" id="searchMod_9" name="searchMod" type="checkbox" value="ub" /> Ubiquitination</label> </td>
+                                    
+                                    <td> <label for="searchMod_10"><input checked="" id="searchMod_10" name="searchMod" type="checkbox" value="sno" /> S-Nitrosylation</label> </td>
+                                     </tr>
+                                </tbody>
+                            </table>
+                            <div class="divider"></div>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td><strong>Has Role</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><p> <select class="iptm-index-protein" id="searchRole" name="searchRole">
+<option value="role-enzORsub">Enzyme or Substrate</option>
+<option value="role-enz">Enzyme</option>
+<option value="role-sub">Substrate</option>
+<option value="role-enzANDsub">Enzyme and Substrate</option>
+</select></p></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="divider"></div>
+                            <table id="iptm-organism-table">
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><strong>Select organisms</strong></td>
+                                    <td>
+                                        <div class="select-all small"> Select <span class="span-link"
+                                                                                    onclick="iptm_checkall('selectOrg',true)">All</span>,
+                                            <span class="span-link"
+                                                  onclick="iptm_checkall('selectOrg',false)">None</span></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> <label for="selectOrg_0"><input id="selectOrg_0" name="selectOrg" type="checkbox" value="9606" /> Human</label> </td>
+                                    
+                                    <td> <label for="selectOrg_1"><input id="selectOrg_1" name="selectOrg" type="checkbox" value="10090" /> Mouse</label> </td>
+                                    
+                                    <td> <label for="selectOrg_2"><input id="selectOrg_2" name="selectOrg" type="checkbox" value="10116" /> Rat</label> </td>
+                                    </tr>
+                                        <tr>
+                                    <td> <label for="selectOrg_3"><input id="selectOrg_3" name="selectOrg" type="checkbox" value="9913" /> Cow</label> </td>
+                                    
+                                    <td> <label for="selectOrg_4"><input id="selectOrg_4" name="selectOrg" type="checkbox" value="9031" /> Chicken</label> </td>
+                                    
+                                    <td> <label for="selectOrg_5"><input id="selectOrg_5" name="selectOrg" type="checkbox" value="7955" /> Zebrafish</label> </td>
+                                    </tr>
+                                        <tr>
+                                    <td> <label for="selectOrg_6"><input id="selectOrg_6" name="selectOrg" type="checkbox" value="7277" /> Fruit fly</label> </td>
+                                    
+                                    <td> <label for="selectOrg_7"><input id="selectOrg_7" name="selectOrg" type="checkbox" value="6239" /> C. elegans</label> </td>
+                                    
+                                    <td> <label for="selectOrg_8"><input id="selectOrg_8" name="selectOrg" type="checkbox" value="4932" /> Baker&#39;s yeast</label> </td>
+                                    </tr>
+                                        <tr>
+                                    <td> <label for="selectOrg_9"><input id="selectOrg_9" name="selectOrg" type="checkbox" value="4896" /> Fission yeast</label> </td>
+                                    
+                                    <td> <label for="selectOrg_10"><input id="selectOrg_10" name="selectOrg" type="checkbox" value="3702" /> A. thaliana</label> </td>
+                                    
+                                    <td> <label for="selectOrg_11"><input id="selectOrg_11" name="selectOrg" type="checkbox" value="381124" /> Maize</label> </td>
+                                    </tr>
+                                        <tr>
+                                    <td> <label for="selectOrg_12"><input id="selectOrg_12" name="selectOrg" type="checkbox" value="428386" /> M. truncatula</label> </td>
+                                    
+                                    <td> <label for="selectOrg_13"><input id="selectOrg_13" name="selectOrg" type="checkbox" value="39947" /> Rice (japonica)</label> </td>
+                                    
+                                    <td> <label for="selectOrg_14"><input id="selectOrg_14" name="selectOrg" type="checkbox" value="39946" /> Rice (indica)</label> </td>
+                                    </tr>
+                                        <tr></tr>
+                                </tbody>
+                            </table>
+                            <div class="divider"></div>
+                            <table id="iptm-more-organism-table">
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><strong>Or input other organisms</strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><p> <input id="inputOrg" maxlength="50" name="inputOrg" placeholder="Separate by comma" type="text" /></p></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </li>
+    
+    </ul>
+  </div>
+  </div>
+  </nav>
+
+  <div class="tab-content">
+	<div class="tab-pane " id="browse">   </div>
+	<div class="tab-pane " id="statistics">   </div>
+	<div class="tab-pane active" id="result"> 
+<div class="iptm-main">
+<div id="iptm-entry-report" class="container-fluid">
+	<div class="row">
+	<div id="iptm-entry-navigation" class="col-sm-3 col-md-2 sidebar">
+		<ul class="nav iptm-entry-navigation-ul">
+			<li class="navigation-title">Display</li>
+            
+			<li><a href="#request"> Protein Information </a></li>
+	    	<li><a href="#msa"> Interactive Sequence View </a></li>
+            
+	  		
+	    	<li><a href="#asSub" > Q15796 (SMAD2) as Substrate </a></li>
+	    	
+	  		
+	    	
+	    	<li><a href="#proteo"> Proteoforms </a></li>
+	    	
+            
+	    	<li><a href="#efip"> PTM-dependent PPI </a></li>
+	    	
+            
+                <li><a href="#paf"> Proteoform PPIs </a></li>
+            
+			
+				<li><a href="#pav"> PTM sites affected in variants </a></li>
+            
+	   		<li><a href="#main" class="text-right">
+	    	<span class="glyphicon glyphicon-chevron-up btn-xs" aria-hidden="true"></span><small>Back to top </small></a></li>
+        </ul>
+<!--
+        <ul class="nav iptm-entry-navigation-ul">
+            <li class="navigation-title">
+                <img class="iptm-icons" src="/iptmnet_test/static/iptmnet/images/cy3logoOrange.svg">Cytoscape View
+                <button type="button" id="cytoscape-clear" class="pull-right btn-xs" onclick="cyto.clear()">Clear</button>
+            </li>
+            
+            <div id="iptm-entry-cyto">
+			</div>
+            <li><a id="iptm-entry-cyto-submit" class="text-right disabled" 
+                   href="" type="submit" target="_blank" >
+                <small><span class="glyphicon glyphicon-play btn-xs iptm-orange"></span>Submit</small>
+            </a>
+			</li>
+	    </ul>
+-->
+	</div>	
+
+
+	<div id="iptm-entry-page" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div id="iptm-entry-title">
+		<h2 class="page-header">iPTMnet Report for Q15796 (SMAD2)
+
+        </h2>
+		</div>
+		<br/>
+		<div id="iptm-entry-result">
+        
+		<div id="request">
+			<h4 class="sub-header">Protein Information</h4>
+            <span class="pull-right">
+                <div class="iptm-entry-icons-div">
+                    <a target="_blank" href="/iptmnet/visual/cytoscape/entry/Q15796/" >
+                        <img class="iptm-icons" src="/iptmnet_test/static/iptmnet/images/cy3logoOrange.svg"> Cytoscape View</a>
+                </div></span>
+            <br/>
+			<br/>
+			<table class="table tablesorter">
+			<tbody>
+				<tr><td class="entry-proid-head col-md-2">UniProt AC / UniProt ID</td>
+				    <td class="col-md-10"><a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="To UniProt">Q15796</a> / SMAD2_HUMAN</td>
+				</tr>
+				
+				    <tr><td class="entry-protein-head col-md-2">Protein Name </td>
+				    	<td class="col-md-10">Mothers against decapentaplegic homolog 2<br /> </td>
+				    </tr>
+				
+				    <tr><td class="entry-protein-head col-md-2">Gene Name </td>
+				    	<td class="col-md-10">Name: SMAD2<br />Synonyms:MADH2,MADR2; </td>
+				    </tr>
+				
+				    <tr><td class="entry-protein-head col-md-2">Organism </td>
+				    	<td class="col-md-10">Homo sapiens (Human) </td>
+				    </tr>
+				
+			</tbody>
+			</table>
+		</div>
+		
+			<div id="mapping">
+			<br/>
+			<table class="table tablesorter">
+			<tbody>
+				<tr><td class="entry-proid-head col-md-2">PRO ID </td>
+					<td class="col-md-10"><a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="To PRO">PR:Q15796</a>
+						<div class="iptm-entry-icons-div pull-right"><a target="_blank" href="https://proconsortium.org/cgi-bin/browser_pro?ids=PR:Q15796#top"><img class="iptm-icons" src="/iptmnet_test/static/iptmnet/images/hierarchy.png" /> DAG View</a></div>
+					</td>
+				</tr>
+				
+				  <tr><td class="entry-proid-head col-md-2">PRO Name </td>
+					  <td class="col-md-10">mothers against decapentaplegic homolog 2 (human) </td>
+				  </tr>
+				
+				  <tr><td class="entry-proid-head col-md-2">Definition </td>
+					  <td class="col-md-10">A smad2 that is encoded in the genome of human. </td>
+				  </tr>
+				
+				  <tr><td class="entry-proid-head col-md-2">Short Label </td>
+					  <td class="col-md-10">hSMAD2 </td>
+				  </tr>
+				
+				  <tr><td class="entry-proid-head col-md-2">Category </td>
+					  <td class="col-md-10">organism-gene </td>
+				  </tr>
+				
+			</tbody>
+			</table>
+		  	</div>
+		  
+
+	  	<div id="msa">
+	  	<br/>
+	  	<h4 class="sub-header">Interactive Sequence View</h4>
+		<table class="table">
+			<thead><tr>
+				<th></th>
+			<th id="msa-view-more" class="text-right">
+				<a href="/iptmnet/visual/msa/tree/Q15796/" target="_blank">
+                    <span class="glyphicon glyphicon-tree-conifer iptm-green"></span>Select/align proteoforms across species</a>
+            </th>
+			</tr></thead>
+	 	<tbody><tr><td colspan="2" id="msaCell" height="110" align="center">
+	 		<!-- <img id="loadImg" height=50 src="/iptmnet_test/static/iptmnet/images/loading.gif"/> -->
+	 		<div id="msaResult"></div>
+	 	</td></tr></tbody></table>
+	  </div>
+        
+        
+	  
+	  <div id="asSub">
+	  	<br/><br/>
+		<h4 class="sub-header">Q15796 (SMAD2) as Substrate</h4> <br/><br/>
+	  	<div role="tabpanel" id="asSubTabPanel">
+			<ul class="nav nav-tabs" role="tablist">
+				
+					<li role="presentation"  class="active" ><a href="#asSub-Q15796" aria-controls="asSub-Q15796" role="tab" data-toggle="tab">Q15796</a></li>
+				
+					<li role="presentation" ><a href="#asSub-Q15796-1" aria-controls="asSub-Q15796-1" role="tab" data-toggle="tab">Q15796-1</a></li>
+				
+					<li role="presentation" ><a href="#asSub-Q15796-2" aria-controls="asSub-Q15796-2" role="tab" data-toggle="tab">Q15796-2</a></li>
+				
+			    <span class="pull-right">
+                     
+                         <a href="/iptmnet/entry/Q15796/expand">Expanded View</a>
+                     
+                </span>
+            </ul>
+            
+			<div class="tab-content">
+				
+					<div role="tabpanel" class="tab-pane  active " id="asSub-Q15796">
+						<table class="table table-hover table-bordered iptm-entry-table" id="asSubTable-Q15796">
+                        	<colgroup>
+                                <col> 
+                           		<col class="col-md-1"> 
+                           		<col class="col-md-1"> 
+                           		<col class="col-md-3"> 
+                           		<col class="col-md-1"> 
+                           		<col class="col-md-3"> 
+                           		<col class="col-md-3"> 
+                            </colgroup>
+							<thead>
+								<tr>
+                                    <th><img class="iptm-icons pull-right" note="icon"
+                                             src="/iptmnet_test/static/iptmnet/images/cy3logoOrange.svg" 
+                                             title="add PTM relationship to Cytoscape View"></th>
+                                    <th>Site</th>
+                                    <th>PTM Type</th>
+                                    <th>PTM Enzyme</th>
+                                    <th style="cursor: pointer; color: #2a6496;"
+                                        title="The score ranges from 0 to 4 stars, with 4 yellow-colored stars being the highest confidence data. The score for each information row is calculated based on the quality of the source, the number of sources supporting the data and the number of low throughput publications.">
+                                        Score
+                                    </th>
+                                    <th>Source</th>
+                                    <th>PMID</th>
+								</tr>
+							</thead>
+                            <tbody>
+                                <script>var ASSUB_MODE = "collapse";</script>
+                                 
+							        
+
+
+
+    
+        
+            <tr class="mod-Ubiquitination">
+                <td></td>
+                <td> </td>
+                <td>Ubiquitination </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Acetylation">
+                <td></td>
+                <td>S2 </td>
+                <td>Acetylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19413330" title="PubMed">19413330</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/22814378" title="PubMed">22814378</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/22223895" title="PubMed">22223895</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/20068231" title="PubMed">20068231</a></span> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S2 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S3 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score0</span><span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/30356176" title="rlimsp (Text mining tool: Automatic method, where false positives may exist.)">RLIMS-P</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30356176" title="PubMed">30356176</a> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>T8 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P27361" title="To UniProt">P27361</a> (MAPK3)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P24941" title="To UniProt">P24941</a> (CDK2)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="https://www.nextprot.org/entry/NX_Q15796/" title="npro">neXtProt</a> &nbsp;&nbsp;<a target="_blank" href="http://phospho.elm.eu.org/byAccession/Q15796.html" title="pelm">phospho.ELM</a> &nbsp;&nbsp;<a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/18691976,23186163,17081983,12193595,15241418,10197981,19201832,30343527,19115199,20068231,11027280" title="rlimsp (Text mining tool: Automatic method, where false positives may exist.)">RLIMS-P</a> &nbsp;&nbsp;<a target="_blank" href="http://signor.uniroma2.it/relation_result.php?id=Q15796" title="sign">Signor</a> &nbsp;&nbsp;<a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/18691976" title="PubMed">18691976</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23186163" title="PubMed">23186163</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17081983" title="PubMed">17081983</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/15241418" title="PubMed">15241418</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/10197981" title="PubMed">10197981</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19201832" title="PubMed">19201832</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30343527" title="PubMed">30343527</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19115199" title="PubMed">19115199</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/20068231" title="PubMed">20068231</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a></span> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Ubiquitination">
+                <td></td>
+                <td>K13 </td>
+                <td>Ubiquitination </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Acetylation">
+                <td></td>
+                <td>K19 </td>
+                <td>Acetylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score3</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17074756" title="PubMed">17074756</a> </td>
+            </tr>
+        
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Acetylation">
+                <td></td>
+                <td>K20 </td>
+                <td>Acetylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S21 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Acetylation">
+                <td></td>
+                <td>K39 </td>
+                <td>Acetylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Sumoylation">
+                <td></td>
+                <td>K46 </td>
+                <td>Sumoylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S47 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Acetylation">
+                <td></td>
+                <td>K54 </td>
+                <td>Acetylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Ubiquitination">
+                <td></td>
+                <td>K63 </td>
+                <td>Ubiquitination </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Methylation">
+                <td></td>
+                <td>C81 </td>
+                <td>Methylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="https://www.iedb.org/epitope/1059624" title="iedb">IEDB</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/31844290" title="PubMed">31844290</a> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>T98 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score0</span><span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/28912531" title="rlimsp (Text mining tool: Automatic method, where false positives may exist.)">RLIMS-P</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/28912531" title="PubMed">28912531</a> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>Y102 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S110 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q9UQM7" title="To UniProt">Q9UQM7</a> (CAMK2A)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q9H4A3" title="To UniProt">Q9H4A3</a> (WNK1)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="https://www.nextprot.org/entry/NX_Q15796/" title="npro">neXtProt</a> &nbsp;&nbsp;<a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="http://signor.uniroma2.it/relation_result.php?id=Q15796" title="sign">Signor</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17392271" title="PubMed">17392271</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S118 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Ubiquitination">
+                <td></td>
+                <td>K121 </td>
+                <td>Ubiquitination </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>Y128 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Sumoylation">
+                <td></td>
+                <td>K156 </td>
+                <td>Sumoylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Ubiquitination">
+                <td></td>
+                <td>K156 </td>
+                <td>Ubiquitination </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Ubiquitination">
+                <td></td>
+                <td>K157 </td>
+                <td>Ubiquitination </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>Y165 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>T172 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>T197 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P25098" title="To UniProt">P25098</a> (GRK2)
+                        
+                    
+                </td>
+                <td><span class="hidden">score2</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/16121194" title="PubMed">16121194</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>T220 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P28482" title="To UniProt">P28482</a> (MAPK1)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P27361" title="To UniProt">P27361</a> (MAPK3)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="https://www.nextprot.org/entry/NX_Q15796/" title="npro">neXtProt</a> &nbsp;&nbsp;<a target="_blank" href="http://phospho.elm.eu.org/byAccession/Q15796.html" title="pelm">phospho.ELM</a> &nbsp;&nbsp;<a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> &nbsp;&nbsp;<a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=PR:Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/12193595,25316549,10197981,30343527,19115199,11027280" title="rlimsp (Text mining tool: Automatic method, where false positives may exist.)">RLIMS-P</a> &nbsp;&nbsp;<a target="_blank" href="http://signor.uniroma2.it/relation_result.php?id=PR:Q15796" title="sign">Signor</a> &nbsp;&nbsp;<a target="_blank" href="https://www.uniprot.org/uniprot/PR:Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/25316549" title="PubMed">25316549</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/10197981" title="PubMed">10197981</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30343527" title="PubMed">30343527</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19115199" title="PubMed">19115199</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a></span> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S240 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q9UQM7" title="To UniProt">Q9UQM7</a> (CAMK2A)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/11879191,11027280" title="rlimsp (Text mining tool: Automatic method, where false positives may exist.)">RLIMS-P</a> &nbsp;&nbsp;<a target="_blank" href="http://signor.uniroma2.it/relation_result.php?id=Q15796" title="sign">Signor</a> &nbsp;&nbsp;<a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11879191" title="PubMed">11879191</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S245 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P27361" title="To UniProt">P27361</a> (MAPK3)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q14680" title="To UniProt">Q14680</a> (MELK)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P28482" title="To UniProt">P28482</a> (MAPK1)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="https://www.nextprot.org/entry/NX_Q15796/" title="npro">neXtProt</a> &nbsp;&nbsp;<a target="_blank" href="http://phospho.elm.eu.org/byAccession/Q15796.html" title="pelm">phospho.ELM</a> &nbsp;&nbsp;<a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/12193595,23437179,26194464,29259896,23077590,25316549,30072727,10197981,26057631,22880011,20659902,23831640,18032924,19115199,11027280" title="rlimsp (Text mining tool: Automatic method, where false positives may exist.)">RLIMS-P</a> &nbsp;&nbsp;<a target="_blank" href="http://signor.uniroma2.it/relation_result.php?id=Q15796" title="sign">Signor</a> &nbsp;&nbsp;<a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23437179" title="PubMed">23437179</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/26194464" title="PubMed">26194464</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/29259896" title="PubMed">29259896</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23077590" title="PubMed">23077590</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/25316549" title="PubMed">25316549</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30072727" title="PubMed">30072727</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/10197981" title="PubMed">10197981</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/26057631" title="PubMed">26057631</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/22880011" title="PubMed">22880011</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/20659902" title="PubMed">20659902</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23831640" title="PubMed">23831640</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/18032924" title="PubMed">18032924</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19115199" title="PubMed">19115199</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a></span> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S250 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P28482" title="To UniProt">P28482</a> (MAPK1)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P27361" title="To UniProt">P27361</a> (MAPK3)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="https://www.nextprot.org/entry/NX_Q15796/" title="npro">neXtProt</a> &nbsp;&nbsp;<a target="_blank" href="http://phospho.elm.eu.org/byAccession/Q15796.html" title="pelm">phospho.ELM</a> &nbsp;&nbsp;<a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/18032924,23437179,26194464,29259896,23077590,25316549,30072727,10197981,26057631,22880011,23831640,29577978,30343527,12193595,19115199,33676893,11027280" title="rlimsp (Text mining tool: Automatic method, where false positives may exist.)">RLIMS-P</a> &nbsp;&nbsp;<a target="_blank" href="http://signor.uniroma2.it/relation_result.php?id=Q15796" title="sign">Signor</a> &nbsp;&nbsp;<a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/18032924" title="PubMed">18032924</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23437179" title="PubMed">23437179</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/26194464" title="PubMed">26194464</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/29259896" title="PubMed">29259896</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23077590" title="PubMed">23077590</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/25316549" title="PubMed">25316549</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30072727" title="PubMed">30072727</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/10197981" title="PubMed">10197981</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/26057631" title="PubMed">26057631</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/22880011" title="PubMed">22880011</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23831640" title="PubMed">23831640</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/29577978" title="PubMed">29577978</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30343527" title="PubMed">30343527</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19115199" title="PubMed">19115199</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/33676893" title="PubMed">33676893</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a></span> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S255 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P27361" title="To UniProt">P27361</a> (MAPK3)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P28482" title="To UniProt">P28482</a> (MAPK1)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="https://www.nextprot.org/entry/NX_Q15796/" title="npro">neXtProt</a> &nbsp;&nbsp;<a target="_blank" href="http://phospho.elm.eu.org/byAccession/Q15796.html" title="pelm">phospho.ELM</a> &nbsp;&nbsp;<a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/12193595,23437179,26194464,29259896,18032924,25316549,30072727,10197981,26057631,22880011,23831640,23077590,30343527,19115199,11027280" title="rlimsp (Text mining tool: Automatic method, where false positives may exist.)">RLIMS-P</a> &nbsp;&nbsp;<a target="_blank" href="http://signor.uniroma2.it/relation_result.php?id=Q15796" title="sign">Signor</a> &nbsp;&nbsp;<a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23437179" title="PubMed">23437179</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/26194464" title="PubMed">26194464</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/29259896" title="PubMed">29259896</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/18032924" title="PubMed">18032924</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/25316549" title="PubMed">25316549</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30072727" title="PubMed">30072727</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/10197981" title="PubMed">10197981</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/26057631" title="PubMed">26057631</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/22880011" title="PubMed">22880011</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23831640" title="PubMed">23831640</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23077590" title="PubMed">23077590</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30343527" title="PubMed">30343527</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19115199" title="PubMed">19115199</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a></span> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S260 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q9UQM7" title="To UniProt">Q9UQM7</a> (CAMK2A)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q9H4A3" title="To UniProt">Q9H4A3</a> (WNK1)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="https://www.nextprot.org/entry/NX_Q15796/" title="npro">neXtProt</a> &nbsp;&nbsp;<a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="http://signor.uniroma2.it/relation_result.php?id=Q15796" title="sign">Signor</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17392271" title="PubMed">17392271</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S317 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>T324 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score3</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/28400474" title="rlimsp (Text mining tool: Automatic method, where false positives may exist.)">RLIMS-P</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/28400474" title="PubMed">28400474</a> </td>
+            </tr>
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S417 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q13177" title="To UniProt">Q13177</a> (PAK2)
+                        
+                    
+                </td>
+                <td><span class="hidden">score2</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/22393057" title="PubMed">22393057</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+            <tr class="mod-Acetylation">
+                <td></td>
+                <td>K420 </td>
+                <td>Acetylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> </td>
+                <td> </td>
+            </tr>
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S458 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score2</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://phospho.elm.eu.org/byAccession/Q15796.html" title="pelm">phospho.ELM</a> &nbsp;&nbsp;<a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/18669648" title="PubMed">18669648</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23186163" title="PubMed">23186163</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/20068231" title="PubMed">20068231</a> </td>
+            </tr>
+        
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S460 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score2</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/20068231" title="PubMed">20068231</a> </td>
+            </tr>
+        
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S464 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P36897" title="To UniProt">P36897</a> (TGFBR1)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/O00238" title="To UniProt">O00238</a> (BMPR1B)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="https://www.nextprot.org/entry/NX_Q15796/" title="npro">neXtProt</a> &nbsp;&nbsp;<a target="_blank" href="http://phospho.elm.eu.org/byAccession/Q15796.html" title="pelm">phospho.ELM</a> &nbsp;&nbsp;<a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/9346908,9892009,8980228,9136927" title="rlimsp (Text mining tool: Automatic method, where false positives may exist.)">RLIMS-P</a> &nbsp;&nbsp;<a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346908" title="PubMed">9346908</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9892009" title="PubMed">9892009</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/8980228" title="PubMed">8980228</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9136927" title="PubMed">9136927</a></span> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S465 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q9H4A3" title="To UniProt">Q9H4A3</a> (WNK1)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P36897" title="To UniProt">P36897</a> (TGFBR1)
+                        , 
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025963" title="To PRO">PR:000025963</a> (h(TGFBR2/iso:1/SigPep-/Phos:1)*2)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/O00238" title="To UniProt">O00238</a> (BMPR1B)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/O96013" title="To UniProt">O96013</a> (PAK4)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q8NER5" title="To UniProt">Q8NER5</a> (ACVR1C)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="https://www.nextprot.org/entry/NX_Q15796/" title="npro">neXtProt</a> &nbsp;&nbsp;<a target="_blank" href="http://phospho.elm.eu.org/byAccession/Q15796.html" title="pelm">phospho.ELM</a> &nbsp;&nbsp;<a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> &nbsp;&nbsp;<a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=PR:Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/30135653,26057631,22880011,9346966,17392271,9346908,23478445,31817988,30072727,16709598,24759784,20717921,17099224,33406242,23934187,12660320,30805303,18032924,9136927,8980228,15134444,9892009,23937725" title="rlim+ (Output from RLIMS-P text mining tool reviewed by a curator)">RLIMS-P+</a> &nbsp;&nbsp;<a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/30135653,26057631,22880011,9346966,17392271,9346908,23478445,31817988,30072727,16709598,24759784,20717921,17099224,33406242,23934187,12660320,30805303,18032924,9136927,8980228,15134444,9892009,23937725" title="rlimsp (Text mining tool: Automatic method, where false positives may exist.)">RLIMS-P</a> &nbsp;&nbsp;<a target="_blank" href="https://www.uniprot.org/uniprot/PR:Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30135653" title="PubMed">30135653</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/26057631" title="PubMed">26057631</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/22880011" title="PubMed">22880011</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346966" title="PubMed">9346966</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17392271" title="PubMed">17392271</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346908" title="PubMed">9346908</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23478445" title="PubMed">23478445</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/31817988" title="PubMed">31817988</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30072727" title="PubMed">30072727</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/16709598" title="PubMed">16709598</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/24759784" title="PubMed">24759784</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/20717921" title="PubMed">20717921</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17099224" title="PubMed">17099224</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/33406242" title="PubMed">33406242</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23934187" title="PubMed">23934187</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12660320" title="PubMed">12660320</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30805303" title="PubMed">30805303</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/18032924" title="PubMed">18032924</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9136927" title="PubMed">9136927</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/8980228" title="PubMed">8980228</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/15134444" title="PubMed">15134444</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9892009" title="PubMed">9892009</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23937725" title="PubMed">23937725</a></span> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S467 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q8NER5" title="To UniProt">Q8NER5</a> (ACVR1C)
+                        , 
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025963" title="To PRO">PR:000025963</a> (h(TGFBR2/iso:1/SigPep-/Phos:1)*2)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/O00238" title="To UniProt">O00238</a> (BMPR1B)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P36897" title="To UniProt">P36897</a> (TGFBR1)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="https://www.nextprot.org/entry/NX_Q15796/" title="npro">neXtProt</a> &nbsp;&nbsp;<a target="_blank" href="http://phospho.elm.eu.org/byAccession/Q15796.html" title="pelm">phospho.ELM</a> &nbsp;&nbsp;<a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> &nbsp;&nbsp;<a target="_blank" href="http://www.phosphosite.org/uniprotAccAction?id=PR:Q15796" title="psp">PhosphoSitePlus</a> &nbsp;&nbsp;<a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/rlims/all/30135653,26057631,22880011,9346966,9346908,23934187,31817988,30072727,16709598,24759784,20717921,17099224,33406242,23478445,23937725,30805303,18032924,9136927,8980228,15134444,9892009,12660320" title="rlimsp (Text mining tool: Automatic method, where false positives may exist.)">RLIMS-P</a> &nbsp;&nbsp;<a target="_blank" href="https://www.uniprot.org/uniprot/PR:Q15796" title="uniprot">UniProt</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30135653" title="PubMed">30135653</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/26057631" title="PubMed">26057631</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/22880011" title="PubMed">22880011</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346966" title="PubMed">9346966</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346908" title="PubMed">9346908</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23934187" title="PubMed">23934187</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/31817988" title="PubMed">31817988</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30072727" title="PubMed">30072727</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/16709598" title="PubMed">16709598</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/24759784" title="PubMed">24759784</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/20717921" title="PubMed">20717921</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17099224" title="PubMed">17099224</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/33406242" title="PubMed">33406242</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23478445" title="PubMed">23478445</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/23937725" title="PubMed">23937725</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/30805303" title="PubMed">30805303</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/18032924" title="PubMed">18032924</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9136927" title="PubMed">9136927</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/8980228" title="PubMed">8980228</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/15134444" title="PubMed">15134444</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9892009" title="PubMed">9892009</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12660320" title="PubMed">12660320</a></span> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+                                
+                            </tbody>
+						</table>
+					</div>
+				
+					<div role="tabpanel" class="tab-pane " id="asSub-Q15796-1">
+						<table class="table table-hover table-bordered iptm-entry-table" id="asSubTable-Q15796-1">
+                        	<colgroup>
+                                <col> 
+                           		<col class="col-md-1"> 
+                           		<col class="col-md-1"> 
+                           		<col class="col-md-3"> 
+                           		<col class="col-md-1"> 
+                           		<col class="col-md-3"> 
+                           		<col class="col-md-3"> 
+                            </colgroup>
+							<thead>
+								<tr>
+                                    <th><img class="iptm-icons pull-right" note="icon"
+                                             src="/iptmnet_test/static/iptmnet/images/cy3logoOrange.svg" 
+                                             title="add PTM relationship to Cytoscape View"></th>
+                                    <th>Site</th>
+                                    <th>PTM Type</th>
+                                    <th>PTM Enzyme</th>
+                                    <th style="cursor: pointer; color: #2a6496;"
+                                        title="The score ranges from 0 to 4 stars, with 4 yellow-colored stars being the highest confidence data. The score for each information row is calculated based on the quality of the source, the number of sources supporting the data and the number of low throughput publications.">
+                                        Score
+                                    </th>
+                                    <th>Source</th>
+                                    <th>PMID</th>
+								</tr>
+							</thead>
+                            <tbody>
+                                <script>var ASSUB_MODE = "collapse";</script>
+                                 
+							        
+
+
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S2 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score0</span><span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/20068231" title="PubMed">20068231</a> </td>
+            </tr>
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>T8 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P27361" title="To UniProt">P27361</a> (MAPK3)
+                        , 
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000026189" title="To PRO">PR:000026189</a> (hMAPK3/iso:1/Phos:1)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> &nbsp;&nbsp;<a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19413330" title="PubMed">19413330</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/18491316" title="PubMed">18491316</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/18691976" title="PubMed">18691976</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19651622" title="PubMed">19651622</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/20068231" title="PubMed">20068231</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a></span> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Acetylation">
+                <td></td>
+                <td>K19 </td>
+                <td>Acetylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score2</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17074756" title="PubMed">17074756</a> </td>
+            </tr>
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S110 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q9UQM7" title="To UniProt">Q9UQM7</a> (CAMK2A)
+                        
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>T220 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000026196" title="To PRO">PR:000026196</a> (MAP2K1/iso:1/Phos:1)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P28482" title="To UniProt">P28482</a> (MAPK1)
+                        , 
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000026189" title="To PRO">PR:000026189</a> (hMAPK3/iso:1/Phos:1)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> &nbsp;&nbsp;<a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/10197981" title="PubMed">10197981</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S240 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q9UQM7" title="To UniProt">Q9UQM7</a> (CAMK2A)
+                        , 
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000003197" title="To PRO">PR:000003197</a> (calcium/calmodulin-dependent protein kinase type II chain)
+                        
+                    
+                </td>
+                <td><span class="hidden">score3</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> &nbsp;&nbsp;<a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S245 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000026189" title="To PRO">PR:000026189</a> (hMAPK3/iso:1/Phos:1)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P28482" title="To UniProt">P28482</a> (MAPK1)
+                        , 
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000026196" title="To PRO">PR:000026196</a> (MAP2K1/iso:1/Phos:1)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> &nbsp;&nbsp;<a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/10197981" title="PubMed">10197981</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S250 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P28482" title="To UniProt">P28482</a> (MAPK1)
+                        , 
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000026196" title="To PRO">PR:000026196</a> (MAP2K1/iso:1/Phos:1)
+                        , 
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000026189" title="To PRO">PR:000026189</a> (hMAPK3/iso:1/Phos:1)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> &nbsp;&nbsp;<a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/10197981" title="PubMed">10197981</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S255 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000026189" title="To PRO">PR:000026189</a> (hMAPK3/iso:1/Phos:1)
+                        , 
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000026196" title="To PRO">PR:000026196</a> (MAP2K1/iso:1/Phos:1)
+                        
+                    
+                </td>
+                <td><span class="hidden">score3</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/10197981" title="PubMed">10197981</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S260 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/Q9UQM7" title="To UniProt">Q9UQM7</a> (CAMK2A)
+                        
+                    
+                </td>
+                <td><span class="hidden">score1</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S458 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score0</span><span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/18691976" title="PubMed">18691976</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/18669648" title="PubMed">18669648</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19415658" title="PubMed">19415658</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/20068231" title="PubMed">20068231</a></span> </td>
+            </tr>
+        
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S460 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score0</span><span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/20068231" title="PubMed">20068231</a> </td>
+            </tr>
+        
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S464 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P36897" title="To UniProt">P36897</a> (TGFBR1)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P36896" title="To UniProt">P36896</a> (ACVR1B)
+                        
+                    
+                </td>
+                <td><span class="hidden">score2</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346908" title="PubMed">9346908</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9892009" title="PubMed">9892009</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S465 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025963" title="To PRO">PR:000025963</a> (h(TGFBR2/iso:1/SigPep-/Phos:1)*2)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P36896" title="To UniProt">P36896</a> (ACVR1B)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P36897" title="To UniProt">P36897</a> (TGFBR1)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> &nbsp;&nbsp;<a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17074756" title="PubMed">17074756</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/8980228" title="PubMed">8980228</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346966" title="PubMed">9346966</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346908" title="PubMed">9346908</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9892009" title="PubMed">9892009</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a></span> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S467 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P36896" title="To UniProt">P36896</a> (ACVR1B)
+                        , 
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025963" title="To PRO">PR:000025963</a> (h(TGFBR2/iso:1/SigPep-/Phos:1)*2)
+                        , 
+                    
+                        <a target="_blank" href="https://www.uniprot.org/uniprot/P36897" title="To UniProt">P36897</a> (TGFBR1)
+                        
+                    
+                </td>
+                <td><span class="hidden">score4</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span>  </td>
+                <td><a target="_blank" href="http://www.hprd.org/resultsQuery?multiplefound=&prot_name=&external=SwissProt&accession_id=Q15796&hprd=&gene_symbol=&chromo_locus=&function=&ptm_type=&localization=&domain=&motif=&expression=&prot_start=&prot_end=&limit=0&mole_start=&mole_end=&disease=&query_submit=Search" title="hprd">HPRD</a> &nbsp;&nbsp;<a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17074756" title="PubMed">17074756</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/8980228" title="PubMed">8980228</a>, <span class="iptm-entry-show-pmid">...</span><span class="iptm-entry-hide-pmid"><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346966" title="PubMed">9346966</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346908" title="PubMed">9346908</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9892009" title="PubMed">9892009</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a></span> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+
+                                
+                            </tbody>
+						</table>
+					</div>
+				
+					<div role="tabpanel" class="tab-pane " id="asSub-Q15796-2">
+						<table class="table table-hover table-bordered iptm-entry-table" id="asSubTable-Q15796-2">
+                        	<colgroup>
+                                <col> 
+                           		<col class="col-md-1"> 
+                           		<col class="col-md-1"> 
+                           		<col class="col-md-3"> 
+                           		<col class="col-md-1"> 
+                           		<col class="col-md-3"> 
+                           		<col class="col-md-3"> 
+                            </colgroup>
+							<thead>
+								<tr>
+                                    <th><img class="iptm-icons pull-right" note="icon"
+                                             src="/iptmnet_test/static/iptmnet/images/cy3logoOrange.svg" 
+                                             title="add PTM relationship to Cytoscape View"></th>
+                                    <th>Site</th>
+                                    <th>PTM Type</th>
+                                    <th>PTM Enzyme</th>
+                                    <th style="cursor: pointer; color: #2a6496;"
+                                        title="The score ranges from 0 to 4 stars, with 4 yellow-colored stars being the highest confidence data. The score for each information row is calculated based on the quality of the source, the number of sources supporting the data and the number of low throughput publications.">
+                                        Score
+                                    </th>
+                                    <th>Source</th>
+                                    <th>PMID</th>
+								</tr>
+							</thead>
+                            <tbody>
+                                <script>var ASSUB_MODE = "collapse";</script>
+                                 
+							        
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Acetylation">
+                <td></td>
+                <td>K19 </td>
+                <td>Acetylation </td>
+                <td>
+                    
+                </td>
+                <td><span class="hidden">score2</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17074756" title="PubMed">17074756</a> </td>
+            </tr>
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S435 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025963" title="To PRO">PR:000025963</a> (h(TGFBR2/iso:1/SigPep-/Phos:1)*2)
+                        
+                    
+                </td>
+                <td><span class="hidden">score2</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17074756" title="PubMed">17074756</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+        
+            <tr class="mod-Phosphorylation">
+                <td></td>
+                <td>S437 </td>
+                <td>Phosphorylation </td>
+                <td>
+                    
+                        <a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025963" title="To PRO">PR:000025963</a> (h(TGFBR2/iso:1/SigPep-/Phos:1)*2)
+                        
+                    
+                </td>
+                <td><span class="hidden">score2</span><span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star iptm-orange"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span> <span class="glyphicon glyphicon-star" style="color:#d3d3d3;"></span>  </td>
+                <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q15796" title="pro">PRO</a> </td>
+                <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17074756" title="PubMed">17074756</a> </td>
+            </tr>
+        
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+                                
+                            </tbody>
+						</table>
+					</div>
+				
+			</div>	
+		</div>
+	  </div>
+	  
+
+	  
+
+	  
+	  <div id="proteo">
+	  	<br/>
+	  	<br/>
+		<h4 class="sub-header">Proteoforms</h4>
+		<table class="table table-hover table-bordered iptm-entry-table">
+		<colgroup>
+			<col> 
+			<col class="col-md-3"> 
+			<col class="col-md-3"> 
+			<col class="col-md-3"> 
+			<col class="col-md-1"> 
+			<col class="col-md-2"> 
+		</colgroup>
+		<thead>
+			<tr>
+				<th><img note="icon"/></th>
+				<th>PRO ID (Short Label)</th>
+				<th>Sites</th>
+				<th>PTM Enzyme</th>
+				<th>Source</th>
+				<th>PMID</th>
+			</tr>	
+		</thead>
+		<tbody>
+			
+			    <tr class="mod-Phosphorylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000049282&"
+                               label="PR:000049282-"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000049282" title="To PRO">PR:000049282</a> (hSMAD2/InitMet-/Phos:1) </td>
+					<td>pS465,pS467 </td>
+					<td></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000049282" title="pro">PRO</a> </td>
+					<td> </td>
+			    </tr>
+			
+			    <tr class="mod-Phosphorylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000049283&"
+                               label="PR:000049283-"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000049283" title="To PRO">PR:000049283</a> (hSMAD2/InitMet-/Phos:5) </td>
+					<td>pT220,pS465,pS467 </td>
+					<td></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000049283" title="pro">PRO</a> </td>
+					<td> </td>
+			    </tr>
+			
+			    <tr class="mod-Ubiquitination">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000049284&"
+                               label="PR:000049284-"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000049284" title="To PRO">PR:000049284</a> (hSMAD2/InitMet-/UbiqLys+) </td>
+					<td>ub </td>
+					<td></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000049284" title="pro">PRO</a> </td>
+					<td> </td>
+			    </tr>
+			
+			    <tr class="mod-Phosphorylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000050145&PR:000025963"
+                               label="PR:000050145-PR:000025963"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000050145" title="To PRO">PR:000050145</a> (hSMAD2/Phos:1) </td>
+					<td>pS465,pS467 </td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025963" title="To PRO">PR:000025963</a> (h(TGFBR2/iso:1/SigPep-/Phos:1)*2)</td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000050145" title="pro">PRO</a> </td>
+					<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/8980228" title="PubMed">8980228</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346966" title="PubMed">9346966</a> </td>
+			    </tr>
+			
+			    <tr class="mod-Phosphorylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000025934&PR:000025963"
+                               label="PR:000025934-PR:000025963"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025934" title="To PRO">PR:000025934</a> (hSMAD2/iso:Long/Phos:1) </td>
+					<td>pS465,pS467 </td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025963" title="To PRO">PR:000025963</a> (h(TGFBR2/iso:1/SigPep-/Phos:1)*2)</td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025934" title="pro">PRO</a> </td>
+					<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/8980228" title="PubMed">8980228</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346966" title="PubMed">9346966</a> </td>
+			    </tr>
+			
+			    <tr class="mod-Phosphorylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000025935&PR:000025963"
+                               label="PR:000025935-PR:000025963"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025935" title="To PRO">PR:000025935</a> (hSMAD2/iso:Long/Phos:2) </td>
+					<td>pS465,pS467 </td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025963" title="To PRO">PR:000025963</a> (h(TGFBR2/iso:1/SigPep-/Phos:1)*2)</td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025935" title="pro">PRO</a> </td>
+					<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a> </td>
+			    </tr>
+			
+			    <tr class="mod-Phosphorylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000025935&PR:000026189"
+                               label="PR:000025935-PR:000026189"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025935" title="To PRO">PR:000025935</a> (hSMAD2/iso:Long/Phos:2) </td>
+					<td>pT8,pT220,pS245,pS250,pS255 </td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000026189" title="To PRO">PR:000026189</a> (hMAPK3/iso:1/Phos:1)</td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025935" title="pro">PRO</a> </td>
+					<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a> </td>
+			    </tr>
+			
+			    <tr class="mod-Phosphorylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000025936&PR:000003197"
+                               label="PR:000025936-PR:000003197"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025936" title="To PRO">PR:000025936</a> (hSMAD2/iso:Long/Phos:3) </td>
+					<td>pS240 </td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000003197" title="To PRO">PR:000003197</a> (calcium/calmodulin-dependent protein kinase type II chain)</td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025936" title="pro">PRO</a> </td>
+					<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a> </td>
+			    </tr>
+			
+			    <tr class="mod-Phosphorylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000025936&PR:000025963"
+                               label="PR:000025936-PR:000025963"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025936" title="To PRO">PR:000025936</a> (hSMAD2/iso:Long/Phos:3) </td>
+					<td>pS465,pS467 </td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025963" title="To PRO">PR:000025963</a> (h(TGFBR2/iso:1/SigPep-/Phos:1)*2)</td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025936" title="pro">PRO</a> </td>
+					<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a> </td>
+			    </tr>
+			
+			    <tr class="mod-Phosphorylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000025937&PR:000026196"
+                               label="PR:000025937-PR:000026196"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025937" title="To PRO">PR:000025937</a> (hSMAD2/iso:Long/Phos:4) </td>
+					<td>pT220,pS245,pS250,pS255 </td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000026196" title="To PRO">PR:000026196</a> (MAP2K1/iso:1/Phos:1)</td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025937" title="pro">PRO</a> </td>
+					<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/10197981" title="PubMed">10197981</a> </td>
+			    </tr>
+			
+			    <tr class="mod-Acetylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000036554&"
+                               label="PR:000036554-"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000036554" title="To PRO">PR:000036554</a> (hSMAD2/iso:Long/AcPhos:1) </td>
+					<td>acK19 </td>
+					<td></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000036554" title="pro">PRO</a> </td>
+					<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17074756" title="PubMed">17074756</a> </td>
+			    </tr>
+			
+			    <tr class="mod-Phosphorylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000036554&"
+                               label="PR:000036554-"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000036554" title="To PRO">PR:000036554</a> (hSMAD2/iso:Long/AcPhos:1) </td>
+					<td>pS465,pS467 </td>
+					<td></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000036554" title="pro">PRO</a> </td>
+					<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17074756" title="PubMed">17074756</a> </td>
+			    </tr>
+			
+			    <tr class="mod-Phosphorylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000025938&PR:000025963"
+                               label="PR:000025938-PR:000025963"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025938" title="To PRO">PR:000025938</a> (hSMAD2/iso:Short/Phos:1) </td>
+					<td>pS435,pS437 </td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025963" title="To PRO">PR:000025963</a> (h(TGFBR2/iso:1/SigPep-/Phos:1)*2)</td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025938" title="pro">PRO</a> </td>
+					<td> </td>
+			    </tr>
+			
+			    <tr class="mod-Acetylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000036556&"
+                               label="PR:000036556-"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000036556" title="To PRO">PR:000036556</a> (hSMAD2/iso:Short/AcPhos:1) </td>
+					<td>acK19 </td>
+					<td></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000036556" title="pro">PRO</a> </td>
+					<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17074756" title="PubMed">17074756</a> </td>
+			    </tr>
+			
+			    <tr class="mod-Phosphorylation">
+                    <td><input type="checkbox"
+                               class="iptm-check pull-right"
+                               onclick="cyto.click(this)"
+                               value="proPR:000036556&"
+                               label="PR:000036556-"></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000036556" title="To PRO">PR:000036556</a> (hSMAD2/iso:Short/AcPhos:1) </td>
+					<td>pS435,pS437 </td>
+					<td></td>
+					<td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000036556" title="pro">PRO</a> </td>
+					<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/17074756" title="PubMed">17074756</a> </td>
+			    </tr>
+			
+		</tbody>
+		</table>
+	  </div>
+	  
+
+		
+			<div id="efip">
+				<br/>
+				<br/>
+				<h4 class="sub-header">PTM-dependent PPI</h4>
+				<table class="table table-hover table-striped table-bordered iptm-entry-table">
+                <colgroup>
+                    <col style="width:50px!important; "> 
+                	<col class="col-md-1"> 
+
+                	<col class="col-md-2"> 
+                	<col class="col-md-1"> 
+                	<col class="col-md-2"> 
+                	<col class="col-md-2"> 
+                	<col class="col-md-1"> 
+                	<col class="col-md-3"> 
+                </colgroup>
+					<thead>
+					<tr>
+                        <th><img class="iptm-icons pull-right" note="icon"
+                                 src="/iptmnet_test/static/iptmnet/images/cy3logoOrange.svg"
+                                 title="add PTM relationship to Cytoscape View"></th>
+                        <th>PTM type</th>
+
+                        <th>Substrate</th>
+                        <th>Site</th>
+                        <th>Interactant</th>
+                        <th>Association type</th>
+                        <th>Source</th>
+                        <th>PMID</th>
+					</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+                        	<td><input type="checkbox"
+                                           class="iptm-check pull-right"
+                                           onclick="cyto.click(this)"
+                                           value="efip1015625&325169"
+                                           label="(i)O43683-Q15796"></td>
+							<td>Phosphorylation </td>
+
+							<td><a target="_blank" href="https://www.uniprot.org/uniprot/O43683" title="To UniProt">O43683</a> (BUB1) </td>
+							<td>S318 </td>
+							<td><a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="To UniProt">Q15796</a> (SMAD2) </td>
+							<td>unknown </td>
+							<td><a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/efip/all/32143140" title="efip (Text mining tool: Automatic method, where false positives may exist.)">eFIP</a> </td>
+							<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/32143140" title="PubMed">32143140</a> </td>
+						</tr>
+					
+						<tr>
+                        	<td><input type="checkbox"
+                                           class="iptm-check pull-right"
+                                           onclick="cyto.click(this)"
+                                           value="efip1016532&742731"
+                                           label="(i)Q15796-Q13485"></td>
+							<td>Phosphorylation </td>
+
+							<td><a target="_blank" href="https://www.uniprot.org/uniprot/Q15796" title="To UniProt">Q15796</a> (SMAD2) </td>
+							<td>S465 </td>
+							<td><a target="_blank" href="https://www.uniprot.org/uniprot/Q13485" title="To UniProt">Q13485</a> (SMAD4) </td>
+							<td>unknown </td>
+							<td><a target="_blank" href="https://research.bioinformatics.udel.edu/itextmine/integrate/search/efip/all/9346908" title="efip (Text mining tool: Automatic method, where false positives may exist.)">eFIP</a> </td>
+							<td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9346908" title="PubMed">9346908</a> </td>
+						</tr>
+					
+					</tbody>
+				</table>
+			</div>
+		
+
+		
+			<div id="paf">
+				<br/>
+				<br/>
+				<h4 class="sub-header">Proteoform PPIs</h4>
+				<table class="table table-hover table-bordered iptm-entry-table">
+                    <colgroup>
+                        <col style="width:50px!important; "> 
+                        <col class="col-md-3"> 
+                        <col class="col-md-2"> 
+                        <col class="col-md-3"> 
+                        <col class="col-md-1"> 
+                        <col class="col-md-3"> 
+                    </colgroup>
+					<thead>
+					<tr>
+                        <th><img class="iptm-icons pull-right" note="icon"
+                                 src="/iptmnet_test/static/iptmnet/images/cy3logoOrange.svg"
+                                 title="add PTM relationship to Cytoscape View"></th>
+                        <th>Protein 1</th>
+                        <th>Relation</th>
+                        <th>Protein 2</th>
+                        <th>Source</th>
+                        <th>PMID</th>
+					</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+                            <td><input type="checkbox"
+                                   class="iptm-check pull-right"
+                                   onclick="cyto.click(this)"
+                                   value="pafPR:000025934&PR:Q13485"
+                                   label="(i)PR:000025934-PR:Q13485"></td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025934" title="To PRO">PR:000025934</a> (hSMAD2/iso:Long/Phos:1) </td>
+                            <td> Interaction </td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q13485" title="To PRO">PR:Q13485</a> (hSMAD4)</td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025934" title="pro">PRO</a> </td>
+                            <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9311995" title="PubMed">9311995</a> </td>
+						</tr>
+					
+						<tr>
+                            <td><input type="checkbox"
+                                   class="iptm-check pull-right"
+                                   onclick="cyto.click(this)"
+                                   value="pafPR:000025935&PR:Q13485"
+                                   label="(i)PR:000025935-PR:Q13485"></td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025935" title="To PRO">PR:000025935</a> (hSMAD2/iso:Long/Phos:2) </td>
+                            <td> Interaction </td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q13485" title="To PRO">PR:Q13485</a> (hSMAD4)</td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025935" title="pro">PRO</a> </td>
+                            <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/12193595" title="PubMed">12193595</a> </td>
+						</tr>
+					
+						<tr>
+                            <td><input type="checkbox"
+                                   class="iptm-check pull-right"
+                                   onclick="cyto.click(this)"
+                                   value="pafPR:000025936&PR:Q13485"
+                                   label="(i)PR:000025936-PR:Q13485"></td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025936" title="To PRO">PR:000025936</a> (hSMAD2/iso:Long/Phos:3) </td>
+                            <td> Interaction </td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_Q13485" title="To PRO">PR:Q13485</a> (hSMAD4)</td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025936" title="pro">PRO</a> </td>
+                            <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11027280" title="PubMed">11027280</a> </td>
+						</tr>
+					
+						<tr>
+                            <td><input type="checkbox"
+                                   class="iptm-check pull-right"
+                                   onclick="cyto.click(this)"
+                                   value="pafPR:000045371&"
+                                   label="(i)PR:000045371-"></td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000045371" title="To PRO">PR:000045371</a> (hSMAD2/iso:Long/UnPhos:1) </td>
+                            <td> Interaction </td>
+                            <td></td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000045371" title="pro">PRO</a> </td>
+                            <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/8980228" title="PubMed">8980228</a> </td>
+						</tr>
+					
+						<tr>
+                            <td><input type="checkbox"
+                                   class="iptm-check pull-right"
+                                   onclick="cyto.click(this)"
+                                   value="pafPR:O95405-1&PR:000025960"
+                                   label="(i)PR:O95405-1-PR:000025960"></td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_O95405-1" title="To PRO">PR:O95405-1</a> (hZFYVE9/iso:1) </td>
+                            <td> Interaction </td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_000025960" title="To PRO">PR:000025960</a> (hSMAD2/iso:[Long/Short]/UnPhos:1)</td>
+                            <td><a target="_blank" href="http://purl.obolibrary.org/obo/PR_O95405-1" title="pro">PRO</a> </td>
+                            <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11877415" title="PubMed">11877415</a>, <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9865696" title="PubMed">9865696</a> </td>
+						</tr>
+					
+					</tbody>
+				</table>
+			</div>
+		
+
+		
+		<div id="pav">
+			<br/>
+			<br/>
+			<h4 class="sub-header">PTM sites affected in variants</h4>
+			<table class="table table-hover table-bordered iptm-entry-table">
+				<colgroup>
+					<col class="col-md-1"> 
+					<col class="col-md-1"> 
+					<col class="col-md-2"> 
+					<col class="col-md-1"> 
+					<col class="col-md-5"> 
+				</colgroup>
+				<thead>
+				<tr>
+					<th>Site</th>
+					<th>Variant</th>
+					<th>Source</th>
+					<th>PMID</th>
+					<th>Disease [Sample source]</th>
+				</tr>
+				</thead>
+				<tbody>
+					
+						<tr>
+                            <td>S2 </td>
+                            <td>* </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A target="_blank">
+										
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S2 </td>
+                            <td>P2 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S2 </td>
+                            <td>L2 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S3 </td>
+                            <td>F3 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A4159 target="_blank">
+										DOID:4159 / skin cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>K20 </td>
+                            <td>N20 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S21 </td>
+                            <td>L21 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A4159 target="_blank">
+										DOID:4159 / skin cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>K54 </td>
+                            <td>T54 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>K63 </td>
+                            <td>Q63 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A363 target="_blank">
+										DOID:363 / uterine cancer
+									</a>
+									[
+									<span>
+										cosmic, icgc
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S118 </td>
+                            <td>F118 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A target="_blank">
+										
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>Y128 </td>
+                            <td>* </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>K156 </td>
+                            <td>E156 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A4159 target="_blank">
+										DOID:4159 / skin cancer
+									</a>
+									[
+									<span>
+										cosmic, icgc
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>K157 </td>
+                            <td>T157 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic, icgc
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>Y165 </td>
+                            <td>* </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A10534 target="_blank">
+										DOID:10534 / stomach cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>Y165 </td>
+                            <td>F165 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1612 target="_blank">
+										DOID:1612 / breast cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>Y165 </td>
+                            <td>D165 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A4159 target="_blank">
+										DOID:4159 / skin cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>T220 </td>
+                            <td>A220 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>T220 </td>
+                            <td>M220 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A363 target="_blank">
+										DOID:363 / uterine cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1319 target="_blank">
+										DOID:1319 / brain cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A10534 target="_blank">
+										DOID:10534 / stomach cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S240 </td>
+                            <td>R240 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1612 target="_blank">
+										DOID:1612 / breast cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S245 </td>
+                            <td>C245 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1324 target="_blank">
+										DOID:1324 / lung cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S250 </td>
+                            <td>F250 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A4159 target="_blank">
+										DOID:4159 / skin cancer
+									</a>
+									[
+									<span>
+										cosmic, icgc
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S255 </td>
+                            <td>F255 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A4159 target="_blank">
+										DOID:4159 / skin cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S417 </td>
+                            <td>R417 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A363 target="_blank">
+										DOID:363 / uterine cancer
+									</a>
+									[
+									<span>
+										icgc
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S417 </td>
+                            <td>N417 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>K420 </td>
+                            <td>Q420 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S435 </td>
+                            <td>N435 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S435 </td>
+                            <td>I435 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1725 target="_blank">
+										DOID:1725 / peritoneum cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S435 </td>
+                            <td>R435 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1725 target="_blank">
+										DOID:1725 / peritoneum cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S437 </td>
+                            <td>L437 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1612 target="_blank">
+										DOID:1612 / breast cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1725 target="_blank">
+										DOID:1725 / peritoneum cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S437 </td>
+                            <td>T437 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S437 </td>
+                            <td>P437 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic, icgc
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S460 </td>
+                            <td>* </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S464 </td>
+                            <td>L464 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1725 target="_blank">
+										DOID:1725 / peritoneum cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S464 </td>
+                            <td>* </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1612 target="_blank">
+										DOID:1612 / breast cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1324 target="_blank">
+										DOID:1324 / lung cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A10283 target="_blank">
+										DOID:10283 / prostate cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A4159 target="_blank">
+										DOID:4159 / skin cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A5041 target="_blank">
+										DOID:5041 / esophageal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1793 target="_blank">
+										DOID:1793 / pancreatic cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A10534 target="_blank">
+										DOID:10534 / stomach cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A263 target="_blank">
+										DOID:263 / kidney cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic, tcga
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A11054 target="_blank">
+										DOID:11054 / urinary bladder cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S465 </td>
+                            <td>N465 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S465 </td>
+                            <td>I465 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1725 target="_blank">
+										DOID:1725 / peritoneum cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S465 </td>
+                            <td>R465 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1725 target="_blank">
+										DOID:1725 / peritoneum cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S467 </td>
+                            <td>T467 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S467 </td>
+                            <td>P467 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic, icgc
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+						<tr>
+                            <td>S467 </td>
+                            <td>L467 </td>
+                            <td> 
+								<a href=https://hive.biochemistry.gwu.edu/biomuta/proteinview/Q15796 target="_blank">
+									Biomuta
+								</a> 
+							</td>
+                            <td>
+								
+							</td>
+                            <td> 
+								
+									<a href=http://disease-ontology.org/term/DOID%3A9256 target="_blank">
+										DOID:9256 / colorectal cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1612 target="_blank">
+										DOID:1612 / breast cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+									<a href=http://disease-ontology.org/term/DOID%3A1725 target="_blank">
+										DOID:1725 / peritoneum cancer
+									</a>
+									[
+									<span>
+										cosmic
+									</span>
+									]
+								
+							</td>
+						</tr>
+					
+				</tbody>
+			</table>
+		</div>
+		
+
+ 	</div>
+        
+	</div>
+	</div>
+</div>
+</div>
+
+
+ </div>
+	<div class="tab-pane " id="info"
+        style="padding: 0 2%; padding-top: 40px; "> 
+          
+        </div>
+  </div>
+
+	
+
+	 
+	
+	</div>
+
+	 
+	<div id="footer" style="z-index: 500;"><table><tbody><tr><td><img src="/iptmnet_test/static/iptmnet/images/pirwww/images/pirlogo2.png"></td><td><div id="ud-footer"><a href="http://bioinformatics.udel.edu">University of Delaware</a><br>15 Innovation Way, Suite 205<br>Newark, DE 19711, USA</div></td><td><div id="ge-footer"><a href="http://gumc.georgetown.edu"> Georgetown University Medical Center</a> <br>3300 Whitehaven Street, NW, Suite 1200 <br>Washington, DC 20007, USA</div></td></tr></tbody></table></div>
+	
+
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "Date": "Tue, 06 Oct 2026 13:56:49 GMT",
+  "Server": "mobidb-ws",
+  "access-control-allow-origin": "*",
+  "access-control-allow-methods": "GET",
+  "access-control-allow-headers": "Content-Type, X-Requested-With, Authorization",
+  "access-control-expose-headers": "Content-Disposition, X-Next-Cursor, X-Page-Limit, X-Returned-Count",
+  "content-type": "application/json",
+  "content-disposition": "attachment; filename=\"mobidb-P37840.json\"",
+  "x-page-limit": "1",
+  "x-returned-count": "1",
+  "Transfer-Encoding": "chunked"
+}

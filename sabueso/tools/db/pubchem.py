@@ -52,7 +52,7 @@ PUBCHEM_COMPOUND = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound"
 #: Structure notations PubChem matches to its compounds (#93).
 NOTATIONS = ("smiles", "inchi")
 PROPERTIES = (
-    "MolecularWeight,MolecularFormula,XLogP,TPSA,HBondDonorCount,HBondAcceptorCount,"
+    "Title,MolecularWeight,MolecularFormula,XLogP,TPSA,HBondDonorCount,HBondAcceptorCount,"
     "RotatableBondCount,InChI,InChIKey,SMILES,ConnectivitySMILES"
 )
 

@@ -1,5 +1,225 @@
 # Automatic traceability and attribution
 
+Development FDA OOPD page declarations credit the U.S. Food and Drug
+Administration, Office of Orphan Products Development, retaining each requested
+page URL, acquisition date, original HTML/table/hash and separate approval
+occurrences. FDA's policy requests credit rather than requiring it; exceptions
+and contributing-source rights remain explicit. Native clinical/product literals
+remain source statements and do not establish protein-target or clinical findings.
+
+Development TTD target listings credit the Therapeutic Target Database, IDRB /
+Zhejiang University and BIDD / National University of Singapore, retaining native
+header release/date/provider URL and row support. No separate data grant is inferred.
+Development iPTMnet reports credit iPTMnet, University of Delaware / Protein
+Information Resource and Georgetown University, retaining original source/PMID
+links and the [database licence](https://research.bioinformatics.udel.edu/iptmnet/license).
+These source declarations do not constitute MOLI Evidence or clinical conclusions.
+
+Development BRENDA EC-class descriptions credit the BRENDA Enzyme Database,
+DSMZ Digital Diversity and [Hauenstein et al. (2026)](https://doi.org/10.1093/nar/gkaf1113),
+*BRENDA in 2026: a Global Core Biodata Resource for functional enzyme and metabolic
+data within the DSMZ Digital Diversity*, as requested by the
+[provider citation page](https://brenda-enzymes.org/references.php), checked 2026-10-07.
+These describe the resource; they are not experimental evidence for a queried class.
+
+Development Pharos target metadata credits [Pharos/TCRD](https://pharos.nih.gov/)
+and keeps contributing-source rights separate. Unknown target/TDL-rule revisions
+and unstated data reuse terms remain explicit.
+
+Development DepMap model context credits **DepMap, Broad Institute (2024),
+DepMap 24Q4 Public**, [article version 1](https://doi.org/10.25452/figshare.plus.27993248.v1),
+the DepMap portal and program. The article states CC BY 4.0; its grant applies to
+the qualified release rather than every collaborator dataset.
+
+Development Interactome3D metadata credits
+[Interactome3D](https://interactome3d.irbbarcelona.org/about.php) and IRB Barcelona's
+Structural Bioinformatics and Network Biology Group, with original row/hash and
+selected archived representative scope. Data terms remain NOT-STATED; original
+factual qualification is local unreleased with automated sharing unknown.
+
+Development ProBiS catalog listings credit
+[ProBiS-Database](http://probis.cmm.ki.si/?what=database) and retain native artifact,
+row/line and full-document hash. The dated filename is not a scientific revision.
+Data terms remain NOT-STATED; software/article licences do not qualify this export.
+Original factual qualification stays local unreleased with automated sharing unknown.
+
+Development PDBTM topology keeps the complete original XML and embedded COPYRIGHT
+with every independent chain occurrence. Credit [PDBTM](https://pdbtm.unitmp.org/)
+and the Institute of Enzymology, Budapest, as the native statement records.
+Builtin resource bibliography is separate from per-entry scientific support.
+Conditional nonprofit unchanged-content/copyright and commercial-agreement terms
+remain explicit; automated use/sharing is unknown and qualification local unreleased.
+PDB/source inputs and software rights are independent of Sabueso's MIT licence.
+
+Development 3did DMI instances retain original block, pattern/date and structural
+row support, with domain/motif input labels and full export hash. Credit
+[3did and IRB Barcelona](https://3did.irbbarcelona.org/) independently of Pfam and
+PLoS_CB_2010 source declarations. The builtin resource bibliography does not supply
+per-instance experimental papers or current input licences. Data rights remain
+NOT-STATED and original factual qualification bytes stay local unreleased; no
+article/software grant or MOLI Evidence is assigned.
+
+
+Development HPO gene/disease annotations retain original Gene/HP/disease/frequency
+literals with native row/hash and dated release. Credit the
+[Human Phenotype Ontology Consortium](https://hpo.jax.org/), preserving artifact
+version `v2026-09-01`. The builtin dataset bibliography describes HPO and does not
+supply per-occurrence experimental publication or contributor support. Its custom
+unchanged-content/data terms and original input rights remain separate from
+Sabueso's MIT licence; unchanged qualification artifacts stay local unreleased.
+
+
+Development MEROPS classifications retain every native selected occurrence with
+full-export hash, original namespace/family/taxonomy text and unresolved-row support.
+Credit [MEROPS and EMBL-EBI](https://www.ebi.ac.uk/merops/) separately from native
+row support. The [provider's whole-database Library GPL declaration](https://www.ebi.ac.uk/merops/about/availability.shtml)
+is preserved with unspecified version. Local unshared qualification does not
+establish publication/redistribution rights: automated use verdicts remain unknown,
+archive retention internal and sharing unknown. Input/software/article rights stay
+separate; no cleavage, activity or protein identity is inferred.
+
+
+Development MetalPDB site assertions retain original site/PDB and metal/ligand/
+donor context, response hash and donor-distance unit qualification. Credit MetalPDB
+and CERM/University of Florence; the resource bibliography points to
+[MetalPDB](https://metalpdb.cerm.unifi.it/) separately from site support. The
+[public Coordination Sphere](https://metalpdb.cerm.unifi.it/pdbSearchResult?id=12ca_2)
+declares Distance (Å); the native API's matching donor values retain full precision.
+The API/about statement supplies no separate data redistribution grant. Terms
+remain NOT-STATED; original JSON and the declared small HTML table excerpt stay
+local unreleased work. Publication/software and input-resource rights are separate.
+
+
+Development ECOD domain assertions retain native UID/domain, structure/chain,
+classification and API URL. Credit ECOD and Grishin Laboratory; the resource
+bibliography points to [ECOD](http://prodata.swmed.edu/ecod/), separate from domain
+support. The [official API documentation](http://prodata.swmed.edu/ecod/documentation/api),
+read on 2026-10-07, permits public unauthenticated access but supplies no separate
+data redistribution grant. Terms remain NOT-STATED; original factual bytes stay
+local unreleased work. Software/publication and PDB/Pfam/UniProt rights are separate.
+
+
+Development TCDB assignments retain original accession/TC-system literals,
+independent line occurrences and full-export hash. Credit TCDB and Saier Laboratory;
+the resource bibliography points to [TCDB](https://tcdb.org/), separately from row
+support. The [official FAQ](https://tcdb.org/faq.php), verified by direct public GET
+2026-10-07, declares CC BY-SA 3.0 and GFDL for website text. That statement is not
+assigned as a blanket grant for the assignment export or input resources: separate
+export terms remain NOT-STATED and the original fixture stays local unreleased
+work. No family, sequence or publication record is acquired.
+
+Development ChannelsDB annotations retain original source groups and reference
+literals. Credit ChannelsDB 2.0 contributors and the resource description,
+[doi:10.1093/nar/gkad1012](https://doi.org/10.1093/nar/gkad1012), verified against
+[the primary resource article](https://academic.oup.com/nar/article/52/D1/D413/7416806)
+on 2026-10-07. This describes the resource, not the support for each annotation.
+The [official documentation](https://channelsdb2.biodata.ceitec.cz/documentation.html)
+does not establish a separate annotation-data redistribution grant in this review.
+Keep data terms `NOT-STATED`; frontend Apache, article CC BY and underlying
+UniProt/publication rights remain separate. No linked publications are acquired.
+
+Development GWAS Catalog association pages retain native association/study IDs,
+publication pointers, exact query/page boundaries and original statistical context.
+Credit NHGRI-EBI GWAS Catalog and original study authors; the unchanged HBB fixture
+retains PMID 39024449 and Verma et al., doi:10.1126/science.adj1182. [Catalog terms](https://www.ebi.ac.uk/gwas/docs/about/)
+apply [EMBL-EBI Services Terms of Use](https://www.ebi.ac.uk/about/terms-of-use/),
+with original-owner rights. Summary-statistics CC0, visualisation CC BY and software
+Apache are separate; no blanket licence is inferred for curated rows or articles.
+No article text, summary-statistics dataset or participant data is acquired. Original
+JSON/gzip/hash/time and replay keep source support without new access credit.
+
+Development Monarch association pages retain native primary and aggregator sources,
+ECO and publication pointers. The BioGRID-only fixture retains its original MIT
+download-files notice with contributor attribution; arbitrary KG inputs keep their
+own rights. Recommended data and BSD software terms are separate. Development
+PRIDE project metadata retains the depositor's native per-project licence and source
+publication context. PXD013616 declares CC0; cite its PXD identity and depositors.
+That grant is not assigned to other projects or Proteins API providers. Neither
+reader acquires linked content or creates new experimental support.
+
+Development OmniPath access retains original aggregate resource names and
+resource-prefixed publication references. Credit OmniPath and those contributors.
+Resource/dataset/licence filters do not remove all other input annotations or grant
+reuse rights. The SPIKE/SPIKE_LC-only TPI1 fixture is separately qualified under
+CC BY 4.0 in `temp_data/NOTICE.md`; that grant is not propagated to arbitrary
+OmniPath responses. Source-wide sharing terms remain unknown; input/publication
+rights and the original snapshot time stay explicit.
+
+Development WikiPathways native pathway cross-references retain [CC0 content
+terms](https://www.wikipathways.org/terms.html), original pathway authors and
+contributing-resource context. Credit WikiPathways and make the content terms
+clear. Linked publications/external resources have separate rights and are not
+acquired. Original snapshot bytes/time and replay receipts do not add access credit.
+
+
+Development EMA orphan access preserves one original complete JSON acquisition,
+its declared total and generation timestamp, independent page declarations and
+original byte identity/retrieval time. Acknowledge European Medicines Agency (EMA)
+in each copy, retaining the native data URL and actual access month/year.
+EMA-owned metadata reproduction permits commercial and noncommercial use;
+third-party material and linked documents keep separate rights. Supplied snapshots
+add a local receipt; replay keeps original time without new remote access credit.
+
+Development CIViC retains a complete native monthly accepted-items acquisition
+with original bytes/time, explicit export label and independent row support.
+CIViC contributors, native citations and Griffith et al. (2017), doi:10.1038/ng.3774,
+remain attributable. Its content is CC0; linked publication rights are separate.
+Supplied TSV/gzip adds declared metadata and a local receipt; replay retains the
+original time and release without new source access credit.
+
+
+Development DrugCentral supplies independent native drug-target observations with
+full raw activity/MOA/source context and original composite-target scope. It does
+not infer potency, molecule identity, clinical effects or automatic card enrichment.
+Data retains [DrugCentral CC BY-SA 4.0](https://drugcentral.org/privacy), original
+provider attribution, modification notices and applicable share-alike.
+
+Development ClinGen retains one complete native CSV acquisition, original document
+hash and independent matched row support. Native file/classification labels are
+separate from actually observed retrieval time and unknown scientific revisions.
+Source curated content has CC0; ClinGen requests source/access-date and appropriate
+panel attribution. Linked reports and publications are not acquired. Supplied native
+CSV/gzip files retain caller-declared original time and byte hashes without new
+remote credit; archive replay keeps the original acquisition time.
+
+Development HPA retains one native single-gene JSON subset acquisition and
+independent categorical support with response hashes and the specific gene/data
+URL. HPA requests resource and primary-publication attribution. CC BY 4.0 covers
+copyrightable database parts; third-party input constraints remain independent.
+Native dataset/gene/sequence revisions stay unknown. Linked assays, datasets and
+publications are not acquired. Supplied JSON/gzip files retain declared original
+times and local hashes without new remote-access credit.
+
+Development SIGNOR retains one original native causal table acquisition with
+row-level publication pointers, source-served sentences and regulator/target
+context. Dataset bibliography does not fetch underlying article or sequence
+support. Scientific revisions and score-model version remain unstated; CC BY 4.0
+terms accompany the source without licensing independently linked publications.
+
+Development APPRIS retains one native human-gene exporter acquisition and
+independent row occurrences with original contributing-method labels. Dataset
+bibliography does not imply acquisition of underlying sequence/structure/method
+support or publications. Dataset/assembly/record/sequence revisions remain unstated.
+The source's CC BY-NC-SA 4.0 obligations accompany terms and archive retention;
+commercial products are restricted by this stated licence.
+
+Development Complex Portal retains one native complex acquisition, complete
+response hash, original release-date/prediction/ECO declarations and a resource
+bibliography description. Original cross-reference qualifiers and pointers survive;
+underlying experimental/prediction support and publications are not acquired.
+Record/participant sequence revisions remain unstated. Query-bound supplied files
+retain separate local receipts and optional SHA-256 checks without remote-access
+credit. Official CC0 1.0 covers the data; software and linked resource/article rights
+remain independent.
+
+Development CATH domain summaries retain one original access receipt, full native
+response hash and CATH dataset description. Required release selectors describe the
+request route; response release, record and sequence revisions remain unstated.
+Underlying structure/GO/EC publications are not fetched. Query-bound supplied
+snapshots add local file receipts with optional SHA-256 verification, without original
+remote-access credit. CATH resource data retain CC BY 4.0 attribution and separate
+parent-resource rights.
+
 Since 0.12.0, every completed packet composition attaches
 `packet.attribution`. It keeps the resources behind selected stored statements, their
 original source-record versions and pins, and the software executing composition.
@@ -14,6 +234,65 @@ It also observes PDB CCD and UniChem chemical identity access, molecular resolut
 and ligand-deck construction.
 PDBe-KB ligand-site and interface-residue aggregates are observed too.
 AlphaFold DB queries retain each returned model's native identity and version.
+Development AAindex1 direct access retains original document/record identities,
+literal publication pointers and an AAindex dataset description. Source release,
+structured units and linked publication metadata remain explicit gaps. Notebook
+reports and residue readers use stored knowledge and create no acquisition credit.
+Development UniParc checksum search retains native pages, totals, release headers
+and original archive-replay times, with a UniParc dataset citation. Its explicit
+sequence candidate tool separately records current UniProt entry checks. Other
+sequence databases and underlying publications are not fetched; their bibliography
+gaps remain visible. Equal sequences do not establish protein identity.
+Development AlphaMissense queries record host metadata discovery and the declared
+prediction CSV as separate accesses. The prediction record retains its byte hash,
+score revision gap and the requested Cheng et al. (2023) citation. Missing artifact
+declarations create no prediction-resource credit. Mapping saved records acquires
+no source or new credit; predicted classes remain separate from clinical assertions.
+
+Development MobiDB v1 exports and SIFTS mapping queries retain their own acquisition
+records, dataset descriptions, original source scope and bibliography gaps.
+MobiDB database release differs from its API version. SIFTS releases and referenced
+sequence revisions are unstated. Underlying provider/method publications are not
+fetched; raw annotation provenance remains available. Metadata catalog and
+detached source readers create no acquisition credit.
+
+Development explicit UniProt isoform access records parent JSON and selected native
+FASTA as separate operations with original times/hashes and UniProt resource credit.
+Parent entry/canonical versions and database release remain separate from unknown
+isoform sequence revision. Native declaration/VAR_SEQ pointers remain contextual;
+isoform-specific publications and other isoforms are unqueried. Failed sequence
+access keeps the successful parent observation. Supplied-file receipts do not prove
+remote access. Mapping into supplied residue-reader input creates no acquisition or
+new credit. The [official FASTA contract](https://www.uniprot.org/help/fasta-headers)
+and [CC BY 4.0 data statement](https://rest.uniprot.org/help/license) were reviewed
+on 2026-10-06; the alternative-isoform header carries no canonical PE/SV fields.
+
+Development SWISS-MODEL Repository access retains the full unfiltered response,
+native provider/target/alignment context, original retrieval time/hash and separate
+API/query/creation/release dates. Resource credit uses Bienert et al. (2017),
+[doi:10.1093/nar/gkw1132](https://doi.org/10.1093/nar/gkw1132), and the provider-requested
+method citation, Waterhouse et al. (2018),
+[doi:10.1093/nar/gky427](https://doi.org/10.1093/nar/gky427), verified against the
+[official help](https://swissmodel.expasy.org/docs/repository_help) on 2026-10-06.
+Neither is a primary citation for each PDB/template entry. Linked publications are
+unqueried; metadata/model/sequence revisions remain gaps. Mapping saved responses
+creates no new access or credit. Data follow the provider's CC BY-SA 4.0 statement,
+with separate parent PDB/UniProt and article rights.
+
+Development AmyPro access retains the whole export, original entry selection,
+time/hash, native entry-level PubMed pointers and the Varadi et al. resource citation
+(doi:10.1093/nar/gkx950). Export/sequence revisions and per-region method/publication
+support remain gaps. Mapping saved entries queries no linked resource or new credit;
+the article licence is separate from unstated database-export reuse rights.
+
+Development direct IntAct access retains original query/page/count/byte identity,
+native publication pointers and dataset attribution. Service versions are not
+interaction revisions; the underlying publication/method metadata and participant
+sequence revisions remain explicit gaps. Fixture/archive replay retains original
+scope and times without new remote credit. Native MITAB data follows the
+[IntAct CC BY 4.0 statement](https://www.imexconsortium.org/about/#licence), separately
+from software and linked article rights. Existing UniProt interaction access remains
+attributed to UniProt; a provider pointer does not establish separate IntAct access.
 
 The application owns the Ackredit session:
 

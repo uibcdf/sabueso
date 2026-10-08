@@ -10,7 +10,7 @@ import pytest
 import sabueso
 from sabueso._private.smonitor.warnings import AttributionTrackingWarning
 from sabueso.core import attribution as adapter
-from sabueso.core.card import Card
+from sabueso.core.card import CARD_SCHEMA_VERSION, Card
 from sabueso.core.errors import ArgumentError, SchemaError, StorageError
 from sabueso.resolver import EntityResolver, FixtureUniProtClient
 
@@ -255,9 +255,31 @@ def test_migration_is_explicit_and_does_not_claim_original_extraction(tmp_path):
         older.add_literature_extraction(extract())
     assert older.to_dict() == original
     current = sabueso.migrate_card(original)
-    assert current.meta["schema_version"] == "0.3.12"
+    assert current.meta["schema_version"] == CARD_SCHEMA_VERSION
     assert "literature_extractions" not in current.quality
-    assert current.quality["migration"][-1]["steps"][0]["gaps"] == []
+    assert current.quality["migration"][-1]["steps"][0]["gaps"] == [
+        {
+            "introduced_in": "0.3.13",
+            "path": path,
+            "filled_by": "refresh",
+            "kind": "missing",
+        }
+        for path in (
+            "annotations.activity_regulation",
+            "annotations.domain_notes",
+            "annotations.similarity",
+            "annotations.source_cautions",
+            "annotations.miscellaneous",
+            "features_positional.domains",
+            "features_positional.chain",
+            "features_positional.lipidation",
+            "features_positional.motif",
+            "features_positional.region",
+            "features_positional.sequence_conflict",
+            "features_positional.topological_domain",
+            "features_positional.transmembrane",
+        )
+    ]
     current.add_literature_extraction(extract())
 
 

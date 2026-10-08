@@ -1,0 +1,1121 @@
+{
+  "format": "sabueso.fixture_delivery@1",
+  "reviewed": "2026-10-08",
+  "issue": "uibcdf/sabueso#112",
+  "scope": "Recovered fixture file set; existing committed fixtures retain their own notices.",
+  "files": [
+    {
+      "path": "temp_data/3did/3did_dmi_flat.gz",
+      "source_id": "3did",
+      "sha256": "ef3d339e7643efb3ae2ed1857ecbbc3c350d3cf08ff9ef79daea4c667907bdfb",
+      "bytes": 149724,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "https://3did.irbbarcelona.org/download.php",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "c1ec900c139682bec7b339a225c7f6ad1f9b5e538bf32f7ad636f0f5f927084c"
+    },
+    {
+      "path": "temp_data/alphafill/metadata__P60174.json",
+      "source_id": "alphafill",
+      "sha256": "129911c1a03216cc15ae03479f2bdb3fb8604712c7ad3a4e866464c1e49bd58c",
+      "bytes": 207002,
+      "delivery": "repository",
+      "recorded_licence": "FREE-WITH-ACKNOWLEDGEMENT",
+      "reviewed": "2026-10-06",
+      "statement": "https://alphafill.eu/license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "69e6dfda96c5c92dc983acd6cd65fde305fc958b0fddb1d19c860f2f8bf45d81"
+    },
+    {
+      "path": "temp_data/alphamissense/AF-P60174-F1-aa-substitutions.csv",
+      "source_id": "alphamissense",
+      "sha256": "d5831f6d4971e3440a51c665de67443ad79b8ff9910788e419a0899c963a8796",
+      "bytes": 90193,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://github.com/google-deepmind/alphamissense#alphamissense-predictions-license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "4573efff43ee513e9a54b99f3d85f893607de7b74ff7673ffd36b288fa2aa555"
+    },
+    {
+      "path": "temp_data/alphamissense/alphafold/P60174.json",
+      "source_id": "alphamissense",
+      "sha256": "f2ec3d0776b465f5264a4ebc9bc041b33da224e61dae8979e93ca34aef70b15e",
+      "bytes": 6046,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://github.com/google-deepmind/alphamissense#alphamissense-predictions-license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "4573efff43ee513e9a54b99f3d85f893607de7b74ff7673ffd36b288fa2aa555"
+    },
+    {
+      "path": "temp_data/amypro/entries.json",
+      "source_id": "amypro",
+      "sha256": "9b7d31b89406499611cbd6d349eaaaa8cdd4d065c3fc964c5bbfd51379770cdd",
+      "bytes": 115711,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-06",
+      "statement": "https://amypro.net/#/help",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "b66d1726a3fd728a8107216f285b7fefb5315d3d5a860e9cc7758e3742d0ca92"
+    },
+    {
+      "path": "temp_data/appris/annotations__ENSG00000111669.json",
+      "source_id": "appris",
+      "sha256": "e9b7a1f300e76ac359bfc845af03b28f043c9c5b6db14b41a670dd6794de5a95",
+      "bytes": 252247,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-NC-SA-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://appris.bioinfo.cnio.es/partials/license.html",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "f68fe484aa8341440e69b1612be94cec59cbe02dd4efbef3b5e7cee3472e4df0"
+    },
+    {
+      "path": "temp_data/brenda/enzyme_class__2.7.1.1.json",
+      "source_id": "brenda",
+      "sha256": "e87e87600b3e42395afa8b9c045462667494faa34dee53543ba2be88e4903b30",
+      "bytes": 484,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-07",
+      "statement": "https://brenda-enzymes.org/license.php",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "7d36177592682a991370ede9bd408b61f6283e02bf87afcfd752e476be0b234e"
+    },
+    {
+      "path": "temp_data/brenda/enzyme_class__5.3.1.1.json",
+      "source_id": "brenda",
+      "sha256": "9c1b4c3cc16247040a01d6112c420a7e06cae0342498a4e3e1af7120424eff30",
+      "bytes": 346,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-07",
+      "statement": "https://brenda-enzymes.org/license.php",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "7d36177592682a991370ede9bd408b61f6283e02bf87afcfd752e476be0b234e"
+    },
+    {
+      "path": "temp_data/brenda/enzyme_class__7.99.99.99999.json",
+      "source_id": "brenda",
+      "sha256": "c638f070fbc8317157ddd05f2ae6a46f59e7ab1228044324a60f7cedd3db835b",
+      "bytes": 79,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-07",
+      "statement": "https://brenda-enzymes.org/license.php",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "7d36177592682a991370ede9bd408b61f6283e02bf87afcfd752e476be0b234e"
+    },
+    {
+      "path": "temp_data/cath/v4_4_0/domain_summary__1cukA01.json",
+      "source_id": "cath",
+      "sha256": "b2824b38a5b930a258f65e71c11d5b285c14aa152c322b4f18b039fe678dc909",
+      "bytes": 6626,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.cathdb.info/",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "fab12f194b766d02a207eaa5f637dd52bff33fa3847b16eea63e6504864fd691"
+    },
+    {
+      "path": "temp_data/cath/v4_4_0/domain_summary__1htiA00.json",
+      "source_id": "cath",
+      "sha256": "f476ec51fe7bba6e1251604c3a8ef05b4bc6b953f5960fef72fba9e19da2189f",
+      "bytes": 15056,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.cathdb.info/",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "fab12f194b766d02a207eaa5f637dd52bff33fa3847b16eea63e6504864fd691"
+    },
+    {
+      "path": "temp_data/cath/v4_4_0/domain_summary__3a85A01.json",
+      "source_id": "cath",
+      "sha256": "89529bcf1891e06c758d167681873baa54dd3de3987edf7bffadc90d8836ccb5",
+      "bytes": 9023,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.cathdb.info/",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "fab12f194b766d02a207eaa5f637dd52bff33fa3847b16eea63e6504864fd691"
+    },
+    {
+      "path": "temp_data/cath/v4_4_0/domain_summary__3g06A01.json",
+      "source_id": "cath",
+      "sha256": "47764bbed4d5639efd56ab4b4f1f739ff98dd317d89a85617d07270a05046b5f",
+      "bytes": 18549,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.cathdb.info/",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "fab12f194b766d02a207eaa5f637dd52bff33fa3847b16eea63e6504864fd691"
+    },
+    {
+      "path": "temp_data/channelsdb/annotations__1tqn.json",
+      "source_id": "channelsdb",
+      "sha256": "9279b3cf4e1329addc20ffd861e18969f65698daf860d310ebb7d11d89d64c5c",
+      "bytes": 13127,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-08",
+      "statement": "https://channelsdb2.biodata.ceitec.cz/documentation.html",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "42e945321948adc8091bc878703391d47b453b7450a87a7d47bdfc7915d360c8"
+    },
+    {
+      "path": "temp_data/channelsdb/channels__1tqn.json",
+      "source_id": "channelsdb",
+      "sha256": "f279ce91ee43ec6df7854923b8c46b723c31c2ebca204ae0309c3923ba5dd7f7",
+      "bytes": 751462,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-08",
+      "statement": "https://channelsdb2.biodata.ceitec.cz/documentation.html",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "42e945321948adc8091bc878703391d47b453b7450a87a7d47bdfc7915d360c8"
+    },
+    {
+      "path": "temp_data/civic/01-Oct-2026-AcceptedClinicalEvidenceSummaries.tsv",
+      "source_id": "civic",
+      "sha256": "a618939c33c7cc9cc530be5f0a51fc330b29ad46b3f9a5bebeddcd871375e086",
+      "bytes": 4154685,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://docs.civicdb.org/en/latest/about/faq.html#how-is-civic-licensed",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "3d1ab9b634a2dcdfe9cf765aabef9ba3e10e1617c84ed49e2ee502a0be742ea9"
+    },
+    {
+      "path": "temp_data/clingen/gene_validity.csv",
+      "source_id": "clingen",
+      "sha256": "979e814b2371a13133ab11ef14b613c58f11967928634b2af128df0632865016",
+      "bytes": 1129673,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://clinicalgenome.org/docs/terms-of-use/",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "8d6c19aac3e68d6d0470ef0dbb42319d945ef40e8745259413776d8184dce8f6"
+    },
+    {
+      "path": "temp_data/complex_portal/complex__CPX-14819.json",
+      "source_id": "complexportal",
+      "sha256": "c2784febffa50c9d10fea56f0af0e4d163e2e34a6def5715394623957fcb9214",
+      "bytes": 6819,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://raw.githubusercontent.com/Complex-Portal/complex-portal-documentation/master/about/license_privacy.md",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "bda37efc89aefde292348d8ab5901cf62c7bf741ee163b89d571c00d6b7171dc"
+    },
+    {
+      "path": "temp_data/complex_portal/complex__CPX-2158.json",
+      "source_id": "complexportal",
+      "sha256": "bd960ad715608e19a1c2f0e57e4c651172365617e8f8d2c79cc45636aa76dca3",
+      "bytes": 30432,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://raw.githubusercontent.com/Complex-Portal/complex-portal-documentation/master/about/license_privacy.md",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "bda37efc89aefde292348d8ab5901cf62c7bf741ee163b89d571c00d6b7171dc"
+    },
+    {
+      "path": "temp_data/complex_portal/complex__CPX-3055.json",
+      "source_id": "complexportal",
+      "sha256": "2e04fc10a879a4b6ac87992e870c47756d27038b95791c338038b477efe8722c",
+      "bytes": 20074,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://raw.githubusercontent.com/Complex-Portal/complex-portal-documentation/master/about/license_privacy.md",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "bda37efc89aefde292348d8ab5901cf62c7bf741ee163b89d571c00d6b7171dc"
+    },
+    {
+      "path": "temp_data/depmap/24Q4__Model.csv",
+      "source_id": "depmap",
+      "sha256": "b7a0c1385e6cef30132b56aff61f1261d11e3f490490b355c430d32ee0dbdcfa",
+      "bytes": 645696,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-07",
+      "statement": "https://api.figshare.com/v2/articles/27993248/versions/1",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "ec96928c290a6ea5512b9f7288fffa764907d9c25f5861b794725787be8a1825"
+    },
+    {
+      "path": "temp_data/depmap/24Q4__README.txt",
+      "source_id": "depmap",
+      "sha256": "f744a5cf5c112e01276e772679157aac8e85cdc4a8f6d3b86d808e3bfd332891",
+      "bytes": 43103,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-07",
+      "statement": "https://api.figshare.com/v2/articles/27993248/versions/1",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "ec96928c290a6ea5512b9f7288fffa764907d9c25f5861b794725787be8a1825"
+    },
+    {
+      "path": "temp_data/depmap/24Q4__figshare_27993248__v1.json",
+      "source_id": "depmap",
+      "sha256": "a1e5865cdd4d34e59d2f95614cc485efc6b1b5f5e43df2a842293b72b4bfa17f",
+      "bytes": 26542,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-07",
+      "statement": "https://api.figshare.com/v2/articles/27993248/versions/1",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "ec96928c290a6ea5512b9f7288fffa764907d9c25f5861b794725787be8a1825"
+    },
+    {
+      "path": "temp_data/disprot/records__P37840.json",
+      "source_id": "disprot",
+      "sha256": "37ba18b6ca95cc53b8c8305a43bdc09e5290d38c4e4b0fb388e8f30714f579af",
+      "bytes": 10861,
+      "delivery": "local_only",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://disprot.org/",
+      "basis": "Database CC BY does not independently settle embedded article-quotation rights; preserve original locally pending a file-specific decision.",
+      "terms_sha256": "91005d420cd6081a91b8ff6b0840c930f0348ba092397992910de616acf0f933"
+    },
+    {
+      "path": "temp_data/drugcentral/target_relations.tsv.gz",
+      "source_id": "drugcentral",
+      "sha256": "1908684983a79a067a44da952e1f6fd26b0f34cc36560cd9be0f0843bbfee1e1",
+      "bytes": 956583,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-SA-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://drugcentral.org/privacy",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "dc439cfbc1c411422d1b906e60f39d9221b50bcd22dc5b872a09baa5f4fcab0c"
+    },
+    {
+      "path": "temp_data/ecod/domain__80374.json",
+      "source_id": "ecod",
+      "sha256": "8768342d13ff78fe8f1f3a1328c0108f96a733eb85e1ac979a699cec912f2c5e",
+      "bytes": 617,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "http://prodata.swmed.edu/ecod/documentation",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "aef31b174ce32a45f7137c0573ebbae8dfa88f68f6f5939f8ae1862b50c987f9"
+    },
+    {
+      "path": "temp_data/ema_orphan/designations.json",
+      "source_id": "ema_orphan",
+      "sha256": "8a83500533765c0d43a63b58581ef9c51d2df6f709fdc1d61c6f0ac74a80fd54",
+      "bytes": 2070548,
+      "delivery": "repository",
+      "recorded_licence": "FREE-WITH-ACKNOWLEDGEMENT",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.ema.europa.eu/en/about-us/about-website/legal-notice",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "5c247062ba5798cdf41ba1bb3a25b650367ca1757e283c868fc986da4cefb759"
+    },
+    {
+      "path": "temp_data/eppic/assemblies__1hti.json",
+      "source_id": "eppic",
+      "sha256": "e293ee5a35165c7178811d49f1b0632aa71505ef56f7ea655ddd85aad1d203c0",
+      "bytes": 50173,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.eppic-web.org/downloads",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "a40a9b52bea36506769b0c4641865ab40710d2a26bcd6157c7fe8ccaf9ac55d6"
+    },
+    {
+      "path": "temp_data/eppic/entry__1hti.json",
+      "source_id": "eppic",
+      "sha256": "948a1fde23a6b81cc2646a7952d07b8f3e15c08a60a6371faf68a4972defdd69",
+      "bytes": 1189,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.eppic-web.org/downloads",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "a40a9b52bea36506769b0c4641865ab40710d2a26bcd6157c7fe8ccaf9ac55d6"
+    },
+    {
+      "path": "temp_data/eppic/interface_residues__1hti__1.json",
+      "source_id": "eppic",
+      "sha256": "b21afdcf1aca5e0974eecc2dc3297808a4f59ed37aba56db5e40e9459b174c61",
+      "bytes": 78142,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.eppic-web.org/downloads",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "a40a9b52bea36506769b0c4641865ab40710d2a26bcd6157c7fe8ccaf9ac55d6"
+    },
+    {
+      "path": "temp_data/eppic/interfaces__1hti.json",
+      "source_id": "eppic",
+      "sha256": "681ab10013e975c2e33073861a51d13b7c1e0a314ccbf9405fe822613558ce2d",
+      "bytes": 10705,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.eppic-web.org/downloads",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "a40a9b52bea36506769b0c4641865ab40710d2a26bcd6157c7fe8ccaf9ac55d6"
+    },
+    {
+      "path": "temp_data/fda_orphan/page__106597.html",
+      "source_id": "fda_orphan",
+      "sha256": "3afd99f87e17caeaf2d91469c76c2db7b61e16ae93060f8f6c3d121ce9998d23",
+      "bytes": 36357,
+      "delivery": "repository",
+      "recorded_licence": "US-PD",
+      "reviewed": "2026-10-07",
+      "statement": "https://www.fda.gov/about-fda/about-website/website-policies",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "9f14aa1081d63af15d064e3d1ac71f51ce88883229ec28a523f580dfd70ecc02"
+    },
+    {
+      "path": "temp_data/fda_orphan/page__476815.html",
+      "source_id": "fda_orphan",
+      "sha256": "549798ff1dada54a7d34d52876d13962136392ef903db59dda2fda2a196e08f4",
+      "bytes": 30002,
+      "delivery": "repository",
+      "recorded_licence": "US-PD",
+      "reviewed": "2026-10-07",
+      "statement": "https://www.fda.gov/about-fda/about-website/website-policies",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "9f14aa1081d63af15d064e3d1ac71f51ce88883229ec28a523f580dfd70ecc02"
+    },
+    {
+      "path": "temp_data/fda_orphan/search_form.html",
+      "source_id": "fda_orphan",
+      "sha256": "6bbe6fe07e08d5361d16d0eff3ce03f3f0895308cdf263fe1b6539e4fd645b65",
+      "bytes": 34331,
+      "delivery": "repository",
+      "recorded_licence": "US-PD",
+      "reviewed": "2026-10-07",
+      "statement": "https://www.fda.gov/about-fda/about-website/website-policies",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "9f14aa1081d63af15d064e3d1ac71f51ce88883229ec28a523f580dfd70ecc02"
+    },
+    {
+      "path": "temp_data/glygen/protein__P60174.json",
+      "source_id": "glygen",
+      "sha256": "81c1dc5ea38978d8c507ea86886005baebf2b035253a7a19adccf7c2ae28f481",
+      "bytes": 432627,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.glygen.org/license.html",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "3f586f497fa42dcf2da9e193a9261ce1e089beafcfd6434820e9869c73559c45"
+    },
+    {
+      "path": "temp_data/gwas_catalog/associations__HBB__size2__page0.json",
+      "source_id": "gwas_catalog",
+      "sha256": "14f63516b1a620e3e41ddbd681acf507bc88f5685229103ece6c61a172b05786",
+      "bytes": 2485,
+      "delivery": "local_only",
+      "recorded_licence": "NO-OWN-RESTRICTIONS",
+      "reviewed": "2026-10-07",
+      "statement": "https://www.ebi.ac.uk/about/terms-of-use/",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "ffaf35a72eb5b502c8475e280fe8aae4380ee38e8219efc938596d04b532b796"
+    },
+    {
+      "path": "temp_data/gwas_catalog/associations__TPI1__size2__page0.json",
+      "source_id": "gwas_catalog",
+      "sha256": "4dde3abd2cc12114cc229c93e6acb95e07d1467d2ebee03b3c18376ae1df92b7",
+      "bytes": 198,
+      "delivery": "local_only",
+      "recorded_licence": "NO-OWN-RESTRICTIONS",
+      "reviewed": "2026-10-07",
+      "statement": "https://www.ebi.ac.uk/about/terms-of-use/",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "ffaf35a72eb5b502c8475e280fe8aae4380ee38e8219efc938596d04b532b796"
+    },
+    {
+      "path": "temp_data/hpa/profile__ENSG00000111669.json",
+      "source_id": "hpa",
+      "sha256": "62b81e47662b8c4d74a51cb41c4ba68803cf339150a34441f49ae37f9b85401a",
+      "bytes": 9394,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.proteinatlas.org/about/licence",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "7ae89fd4c6d4565c2a40660ac89951895461ba8604d63e0e1ae27431a134c866"
+    },
+    {
+      "path": "temp_data/hpo/license.component.html",
+      "source_id": "hpo",
+      "sha256": "cdd288c39f224b07642e59c1b4cd3f81d9f4210cbd4dbf18428dd2749be6c8cd",
+      "bytes": 1764,
+      "delivery": "local_only",
+      "recorded_licence": "HPO-CONSORTIUM",
+      "reviewed": "2026-10-07",
+      "statement": "https://github.com/TheJacksonLaboratory/hpo-web/blob/a85f0fa92835a9f6a37881b89b6260ca3b9f4960/src/app/static/resources/license/license.component.html",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "4ea603c69372a2ec10ab209eef3f7d0e169637ec90c70a54f9fdb3e5605a41b1"
+    },
+    {
+      "path": "temp_data/hpo/v2026-09-01/genes_to_phenotype.txt",
+      "source_id": "hpo",
+      "sha256": "507a17bff9c49e6329fbd88b1f91734fa7e9fdea5c06304044c0892eb6ab248c",
+      "bytes": 20821704,
+      "delivery": "local_only",
+      "recorded_licence": "HPO-CONSORTIUM",
+      "reviewed": "2026-10-07",
+      "statement": "https://github.com/TheJacksonLaboratory/hpo-web/blob/a85f0fa92835a9f6a37881b89b6260ca3b9f4960/src/app/static/resources/license/license.component.html",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "4ea603c69372a2ec10ab209eef3f7d0e169637ec90c70a54f9fdb3e5605a41b1"
+    },
+    {
+      "path": "temp_data/intact/interactions__P60174.headers.json",
+      "source_id": "intact",
+      "sha256": "2465d2a4b8119f4c4445677650a3578ab11c58de7f68a0d3f1a4a05b18681fa2",
+      "bytes": 311,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.imexconsortium.org/about/#licence",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "6d627ac22fa04ccbd9198c2bae6cb07c0521861e5c509d482a1fb3214dbe20fc"
+    },
+    {
+      "path": "temp_data/intact/interactions__P60174.mitab",
+      "source_id": "intact",
+      "sha256": "48b43fc580ad3ba7af9a2446ca6041168768938cca29bb5017c7924cad914762",
+      "bytes": 898329,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.imexconsortium.org/about/#licence",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "6d627ac22fa04ccbd9198c2bae6cb07c0521861e5c509d482a1fb3214dbe20fc"
+    },
+    {
+      "path": "temp_data/interactome3d/human__2024_12__representative__proteins.dat",
+      "source_id": "interactome3d",
+      "sha256": "bb1671bedacab71e528a18c1d7f662046fe61d299b70da791f1b61325098d83d",
+      "bytes": 1618274,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "https://interactome3d.irbbarcelona.org/about.php",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "2924a77aff05e0404e5f28a20967d0315d6364b5958f518e9760732f93a767dd"
+    },
+    {
+      "path": "temp_data/iptmnet/entry__P60174.html",
+      "source_id": "iptmnet",
+      "sha256": "13c3f90770bff2cbc34463508d453758fe518ebf9069491d229a7a623d6a9f90",
+      "bytes": 95748,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-NC-SA-4.0",
+      "reviewed": "2026-10-07",
+      "statement": "https://research.bioinformatics.udel.edu/iptmnet/license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "7aa279372014a1702986bd973fdafc4d97149b06a4ed23a6656b8bf85f95288f"
+    },
+    {
+      "path": "temp_data/iptmnet/entry__Q15796.html",
+      "source_id": "iptmnet",
+      "sha256": "82833fa0fa7a1a6da2a9a7821c79eb8592211b7b86056cc53ad5584f1c681300",
+      "bytes": 166093,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-NC-SA-4.0",
+      "reviewed": "2026-10-07",
+      "statement": "https://research.bioinformatics.udel.edu/iptmnet/license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "7aa279372014a1702986bd973fdafc4d97149b06a4ed23a6656b8bf85f95288f"
+    },
+    {
+      "path": "temp_data/ligysis/mapping__P60174__1__7t0q.json",
+      "source_id": "ligysis",
+      "sha256": "31cecd5b839f7c513fb2d330dfa618abc86b99d1756a8ab0ee37580e961be836",
+      "bytes": 9185,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-08",
+      "statement": "https://www.compbio.dundee.ac.uk/ligysis/about",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "335c1e35b0da6e6b0d009b464718ee28cd7991ab2c9b8ed2d898e8636fda2a13"
+    },
+    {
+      "path": "temp_data/ligysis/result__P60174__1.html",
+      "source_id": "ligysis",
+      "sha256": "3ccb0df740fe353b1f2a12f1362459e0296e6cfacda1736ca8a4e23479d6aacc",
+      "bytes": 96597,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-08",
+      "statement": "https://www.compbio.dundee.ac.uk/ligysis/about",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "335c1e35b0da6e6b0d009b464718ee28cd7991ab2c9b8ed2d898e8636fda2a13"
+    },
+    {
+      "path": "temp_data/merops/GNU-GPL-3.0.txt",
+      "source_id": "merops",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "bytes": 35149,
+      "delivery": "local_only",
+      "recorded_licence": "GNU-LIBRARY-GPL-UNVERSIONED",
+      "reviewed": "2026-10-07",
+      "statement": "https://www.ebi.ac.uk/merops/about/availability.shtml",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "b5c6f0dcf235306bae6ac82c7619f0b14265fd2986b6a75283a4298ff50d3286"
+    },
+    {
+      "path": "temp_data/merops/GNU-LGPL-3.0.txt",
+      "source_id": "merops",
+      "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
+      "bytes": 7652,
+      "delivery": "local_only",
+      "recorded_licence": "GNU-LIBRARY-GPL-UNVERSIONED",
+      "reviewed": "2026-10-07",
+      "statement": "https://www.ebi.ac.uk/merops/about/availability.shtml",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "b5c6f0dcf235306bae6ac82c7619f0b14265fd2986b6a75283a4298ff50d3286"
+    },
+    {
+      "path": "temp_data/merops/GNU-LIBRARY-GPL-2.0.txt",
+      "source_id": "merops",
+      "sha256": "cc535c21133c895b56b374c8a1dc1eb948d99003ed2b47372069456b62f42b24",
+      "bytes": 25270,
+      "delivery": "local_only",
+      "recorded_licence": "GNU-LIBRARY-GPL-UNVERSIONED",
+      "reviewed": "2026-10-07",
+      "statement": "https://www.ebi.ac.uk/merops/about/availability.shtml",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "b5c6f0dcf235306bae6ac82c7619f0b14265fd2986b6a75283a4298ff50d3286"
+    },
+    {
+      "path": "temp_data/merops/accession_assignments.tsv",
+      "source_id": "merops",
+      "sha256": "9758b658cd7d5f043311d5babf439590baf88b97623ad2a5d42e7e6827abc711",
+      "bytes": 2914699,
+      "delivery": "local_only",
+      "recorded_licence": "GNU-LIBRARY-GPL-UNVERSIONED",
+      "reviewed": "2026-10-07",
+      "statement": "https://www.ebi.ac.uk/merops/about/availability.shtml",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "b5c6f0dcf235306bae6ac82c7619f0b14265fd2986b6a75283a4298ff50d3286"
+    },
+    {
+      "path": "temp_data/merops/availability.html",
+      "source_id": "merops",
+      "sha256": "caf8b691977e408f0814fd52dcc96c199aed93b7c9b12a7b0244d87e3e1ffacc",
+      "bytes": 7930,
+      "delivery": "local_only",
+      "recorded_licence": "GNU-LIBRARY-GPL-UNVERSIONED",
+      "reviewed": "2026-10-07",
+      "statement": "https://www.ebi.ac.uk/merops/about/availability.shtml",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "b5c6f0dcf235306bae6ac82c7619f0b14265fd2986b6a75283a4298ff50d3286"
+    },
+    {
+      "path": "temp_data/metalpdb/donor_distance_table__12ca_2.html",
+      "source_id": "metalpdb",
+      "sha256": "e389920434736f4ae6e813d94c71d12d4dd90692529890a0c641435d9b4fc283",
+      "bytes": 10906,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "https://metalpdb.cerm.unifi.it/api_help",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "11889ebb777b87c5a1636fe592b7dcd877432f8e3368e38eadbe62255e40e929"
+    },
+    {
+      "path": "temp_data/metalpdb/site__12ca_2.json",
+      "source_id": "metalpdb",
+      "sha256": "4fbde4d64312472953cd7fc7eafe2da327a7fa1b67881bf56a9eddc45f8e68c4",
+      "bytes": 849,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "https://metalpdb.cerm.unifi.it/api_help",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "11889ebb777b87c5a1636fe592b7dcd877432f8e3368e38eadbe62255e40e929"
+    },
+    {
+      "path": "temp_data/mobidb/annotations__P37840.headers.json",
+      "source_id": "mobidb",
+      "sha256": "75598114b2315aa1f4a0a08f3189cfceeaa15e150923a2bf390f00d77a294cc6",
+      "bytes": 532,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://mobidb.org/about#license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "44df1abf5164d0322d4dae75ef1278acb7829ffd2d61f82d3ccba702e2df31b9"
+    },
+    {
+      "path": "temp_data/mobidb/annotations__P37840.json",
+      "source_id": "mobidb",
+      "sha256": "2bb758834ea0bf2c5c7582e261027f5990d9ff76c1538a0854ce5984b209b5ea",
+      "bytes": 2110525,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://mobidb.org/about#license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "44df1abf5164d0322d4dae75ef1278acb7829ffd2d61f82d3ccba702e2df31b9"
+    },
+    {
+      "path": "temp_data/mobidb/annotations__P60174.headers.json",
+      "source_id": "mobidb",
+      "sha256": "822eb16f0a73d384ef0487309c4d359dc320d6f5e5f817633b6afb4b05584016",
+      "bytes": 532,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://mobidb.org/about#license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "44df1abf5164d0322d4dae75ef1278acb7829ffd2d61f82d3ccba702e2df31b9"
+    },
+    {
+      "path": "temp_data/mobidb/annotations__P60174.json",
+      "source_id": "mobidb",
+      "sha256": "ff827772f4e6f05d057eb005d5791168a660172f0b0fa072d9af623b54410456",
+      "bytes": 67096,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://mobidb.org/about#license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "44df1abf5164d0322d4dae75ef1278acb7829ffd2d61f82d3ccba702e2df31b9"
+    },
+    {
+      "path": "temp_data/monarch/BioGRID-LICENSE.txt",
+      "source_id": "monarch",
+      "sha256": "39a74f854f2d9370b8d349ca329cb6bd37390b8b47b6b5edd5825276721a1391",
+      "bytes": 1094,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "https://monarch-app.monarchinitiative.org/Licensing/",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "202b03c2785e09493c660ba86bc2683d2bc32252aa59352015acae80f5a3a4e9"
+    },
+    {
+      "path": "temp_data/monarch/Monarch-software-LICENSE.txt",
+      "source_id": "monarch",
+      "sha256": "a768a54062e03d696719c37f2c505609e2a965248ad3e2667d33c3c16c1c5f57",
+      "bytes": 1519,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "https://monarch-app.monarchinitiative.org/Licensing/",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "202b03c2785e09493c660ba86bc2683d2bc32252aa59352015acae80f5a3a4e9"
+    },
+    {
+      "path": "temp_data/monarch/associations__HGNC_12009__limit2__offset0.json",
+      "source_id": "monarch",
+      "sha256": "0456c3b120f0922eab4a0508f4169ac253ba973a5191bce625da65cc2607e858",
+      "bytes": 5205,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "https://monarch-app.monarchinitiative.org/Licensing/",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "202b03c2785e09493c660ba86bc2683d2bc32252aa59352015acae80f5a3a4e9"
+    },
+    {
+      "path": "temp_data/omnipath/interactions__P60174.json",
+      "source_id": "omnipath",
+      "sha256": "6f5a542228162871e4645e3f7897eba1bc660fb4c9ffc7bf75d9f852030d4e6a",
+      "bytes": 288,
+      "delivery": "repository",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-06",
+      "statement": "https://omnipathdb.org/info",
+      "basis": "Only the qualified SPIKE/SPIKE_LC one-row response, with input-specific CC BY 4.0 declarations; not a grant for arbitrary aggregate responses.",
+      "terms_sha256": "99c3e38078667cacb5404f3e3397cfeee4b5b56315c17ad9f3a23433d9bea507"
+    },
+    {
+      "path": "temp_data/pdb_redo/entry__1cbs.json",
+      "source_id": "pdb_redo",
+      "sha256": "b61c728e49ac0ffdde336360f229b3b8940da1b1737ac8e584d1d79db34a6cbf",
+      "bytes": 25592,
+      "delivery": "repository",
+      "recorded_licence": "FREE-WITH-ACKNOWLEDGEMENT",
+      "reviewed": "2026-10-06",
+      "statement": "https://pdb-redo.eu/license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "f2173db7d0e4331f2708d66b77ff04db57b1031dd240fb8b7f719de5d0132518"
+    },
+    {
+      "path": "temp_data/pdb_redo/versions__1cbs.json",
+      "source_id": "pdb_redo",
+      "sha256": "9fd8a90154eefc30316c3b6585aa63964aada47e74df30ec927480721d6e30ad",
+      "bytes": 4869,
+      "delivery": "repository",
+      "recorded_licence": "FREE-WITH-ACKNOWLEDGEMENT",
+      "reviewed": "2026-10-06",
+      "statement": "https://pdb-redo.eu/license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "f2173db7d0e4331f2708d66b77ff04db57b1031dd240fb8b7f719de5d0132518"
+    },
+    {
+      "path": "temp_data/pdbe_validation/global_percentiles__1cbs.json",
+      "source_id": "pdbe_validation",
+      "sha256": "fb6374c0276e3b5aa1c09233cdaad644801241f1f014d6ef9bacf09dcfd49607",
+      "bytes": 361,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.ebi.ac.uk/about/terms-of-use/",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "ecd74c63d406b6668ff517a1b1a1e87461503848d52390b0a4295f5637bbbd84"
+    },
+    {
+      "path": "temp_data/pdbe_validation/global_percentiles__1hti.json",
+      "source_id": "pdbe_validation",
+      "sha256": "e2a53971c2e5b2d228cd648726d5f418959a5e79dc623b36c9d8321499bb2c3d",
+      "bytes": 222,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.ebi.ac.uk/about/terms-of-use/",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "ecd74c63d406b6668ff517a1b1a1e87461503848d52390b0a4295f5637bbbd84"
+    },
+    {
+      "path": "temp_data/pdbtm/1c3w.xml",
+      "source_id": "pdbtm",
+      "sha256": "37ae24e30f12457eb91fb9198c5a7a6643e46e33efa0c039048784ff5b7ac55e",
+      "bytes": 6866,
+      "delivery": "local_only",
+      "recorded_licence": "PDBTM-CONDITIONAL",
+      "reviewed": "2026-10-07",
+      "statement": "https://pdbtm.unitmp.org/api/v1/entry/1c3w.xml",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "bf300042596b9c96d9a65030118df078cc17337c91690f341030a2201e220da2"
+    },
+    {
+      "path": "temp_data/pharos/target__P00000.json",
+      "source_id": "pharos_tcrd",
+      "sha256": "04c7cce1c2a2855f9e7fc5ee7406319e718cbd2cf4f3fa7ab18f844d4624e073",
+      "bytes": 25,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9825581/",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "64912ef7f4d1e8960bde7a93896281b050a8fe1ead354174ff05d41e761dd6d5"
+    },
+    {
+      "path": "temp_data/pharos/target__P31749.json",
+      "source_id": "pharos_tcrd",
+      "sha256": "42f1992f3fa2807e8e641401ade4c53fcaaa3c201814561eb540dd19b96f23f2",
+      "bytes": 134,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9825581/",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "64912ef7f4d1e8960bde7a93896281b050a8fe1ead354174ff05d41e761dd6d5"
+    },
+    {
+      "path": "temp_data/pharos/target__P60174.json",
+      "source_id": "pharos_tcrd",
+      "sha256": "e311efdf4da4ce8897b7559b6670cdcf529fa7feb7397e94b163aa27895bb6ed",
+      "bytes": 117,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9825581/",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "64912ef7f4d1e8960bde7a93896281b050a8fe1ead354174ff05d41e761dd6d5"
+    },
+    {
+      "path": "temp_data/pride/project__PXD013616.json",
+      "source_id": "pride",
+      "sha256": "b5ff728947d5e0e394633022e26ba57622ccbfad2d6e9da46b8a60add6c2de71",
+      "bytes": 8484,
+      "delivery": "repository",
+      "recorded_licence": "DEPOSITOR-TERMS",
+      "reviewed": "2026-10-07",
+      "statement": "https://www.ebi.ac.uk/pride/archive/projects/PXD013616",
+      "basis": "Only the qualified PXD013616 project metadata, whose native licence is CC0; not a grant for arbitrary PRIDE projects.",
+      "terms_sha256": "33227b941bab7c8f15cc671de8f62f2a0de023be15b509b6e529d35ed617d9f5"
+    },
+    {
+      "path": "temp_data/probis/nrpdb-2015-07-31.txt",
+      "source_id": "probis",
+      "sha256": "2a4f3dd8f3f186f482541c51f177899cbf3c174cc21838dd6a9b185646c12c0a",
+      "bytes": 1003440,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "http://probis.cmm.ki.si/?what=database",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "7e9c5a3a199f947409f117fe0b96a90f5709e91880a54b319a9621d48ff61ea0"
+    },
+    {
+      "path": "temp_data/pubchem/titles__66414_3717450_2244.json",
+      "source_id": "pubchem",
+      "sha256": "546d7d0dfda191b17b90986531817b9a71541c593d3039c7f72c577816a95f1a",
+      "bytes": 2202,
+      "delivery": "repository",
+      "recorded_licence": "US-PD",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "faa4b23c54ce384eada426d36e2efd2f1aaf36fffc29150b45fcd0a763ea889d"
+    },
+    {
+      "path": "temp_data/sifts/mappings__1hti.json",
+      "source_id": "sifts",
+      "sha256": "c89e616ce17f23da172b5dd044e071a166e9db22a7639a7beb6cfd1566470a78",
+      "bytes": 648,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.ebi.ac.uk/about/terms-of-use/",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "82da77951a0e7da419d18fc9919eecccb9959952a0865a1d6f1affd78c47890e"
+    },
+    {
+      "path": "temp_data/signor/relations__P31749__10090.tsv",
+      "source_id": "signor",
+      "sha256": "998dddbd7011f78f68ca8d7b6e4ba910c10b98d60a2e1e39ace8bfc3de0cce4c",
+      "bytes": 16,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://signor.uniroma2.it/documentation/",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "420f3c25c21036f9f9d611ca761120536d853ece05be3eb6875ef5060955306a"
+    },
+    {
+      "path": "temp_data/signor/relations__P31749__9606.tsv",
+      "source_id": "signor",
+      "sha256": "33fba2855ea54311e73773181e33992286d164da674806916ac1c6d242db556f",
+      "bytes": 197038,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://signor.uniroma2.it/documentation/",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "420f3c25c21036f9f9d611ca761120536d853ece05be3eb6875ef5060955306a"
+    },
+    {
+      "path": "temp_data/signor/relations__P60174__9606.tsv",
+      "source_id": "signor",
+      "sha256": "bf6a5d23113c3576e33cddd9367826cd953becd9ad158b06bc1497115d503537",
+      "bytes": 1272,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://signor.uniroma2.it/documentation/",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "420f3c25c21036f9f9d611ca761120536d853ece05be3eb6875ef5060955306a"
+    },
+    {
+      "path": "temp_data/swissmodel/metadata__P60174.json",
+      "source_id": "swissmodel",
+      "sha256": "71ef900ff67d4b25c3fa3295165ce6c527aae666bf63a000c0f09da5e97e710a",
+      "bytes": 79925,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-SA-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://swissmodel.expasy.org/docs/terms_of_use",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "31ce1de18e233d58ee617eef1df6d69ba8d9fe91388592fb27f53fe7ec124e50"
+    },
+    {
+      "path": "temp_data/tcdb/accession_assignments.tsv",
+      "source_id": "tcdb",
+      "sha256": "c59e2b2c5293e0f33e75bcc0bf89e0eb6988be54fb7f2121935749bda3feef8a",
+      "bytes": 486702,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "https://tcdb.org/faq.php",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "7b8ef8beb1fd060e7156e59d6b1abaf6edded480a8a79c04d9adcba0a1573c7d"
+    },
+    {
+      "path": "temp_data/ttd/P2-01-TTD_uniprot_all.txt",
+      "source_id": "ttd",
+      "sha256": "74b2dbb4c03e14b01d02b54bdce45507da0da1e457859e1669cdf76b39feb22e",
+      "bytes": 525950,
+      "delivery": "local_only",
+      "recorded_licence": "NOT-STATED",
+      "reviewed": "2026-10-07",
+      "statement": "https://ttd.idrblab.cn/full-data-download",
+      "basis": "Redistribution is unknown, conditional or explicitly local/unreleased in the recorded source terms and fixture notice; no permission is inferred.",
+      "terms_sha256": "f280303715cdca4917710ae3a8e1ced99d460b27e07a3c878ab2d436803485db"
+    },
+    {
+      "path": "temp_data/uniparc/search__A8D44FC2C980A7677A3B54788D0FA323.json",
+      "source_id": "uniparc",
+      "sha256": "2c3ba4abdcae3b299a9b623403ace4c186001c353d681b11851874ed8086ddd6",
+      "bytes": 10887,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://rest.uniprot.org/help/license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "c296f1b2388154c6d7f425b18b71df900cb4c6c7e827eafe26dd3b3c2021d9c6"
+    },
+    {
+      "path": "temp_data/uniprot_isoforms/P60174-1.fasta",
+      "source_id": "uniprot",
+      "sha256": "4f2e6a59a3fd7c780ca6686dfbbeb67cb2d2812b0f1ccffe7043d27b98c65375",
+      "bytes": 349,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://rest.uniprot.org/help/license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "019086f3c64f25f4f3e70bbc966a4b90e22b756ed1d8de981a3832bf2dcd788a"
+    },
+    {
+      "path": "temp_data/uniprot_isoforms/P60174-3.fasta",
+      "source_id": "uniprot",
+      "sha256": "ecb73ad7021fcbc244ad4b42a79354439818dbad69ea56e78ae3a831bf0810dc",
+      "bytes": 386,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://rest.uniprot.org/help/license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "019086f3c64f25f4f3e70bbc966a4b90e22b756ed1d8de981a3832bf2dcd788a"
+    },
+    {
+      "path": "temp_data/uniprot_isoforms/P60174-4.fasta",
+      "source_id": "uniprot",
+      "sha256": "79ca8380928aed003ef40f9e29ffb567ea5b5b5db442ea63edbb011d0edd66df",
+      "bytes": 265,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://rest.uniprot.org/help/license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "019086f3c64f25f4f3e70bbc966a4b90e22b756ed1d8de981a3832bf2dcd788a"
+    },
+    {
+      "path": "temp_data/uniprot_isoforms/P60174.json",
+      "source_id": "uniprot",
+      "sha256": "25b200a9f5f22f24d68d7f64445b447770b1875126829b1de2f9e7e01cc6acdd",
+      "bytes": 86279,
+      "delivery": "repository",
+      "recorded_licence": "CC-BY-4.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://rest.uniprot.org/help/license",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "019086f3c64f25f4f3e70bbc966a4b90e22b756ed1d8de981a3832bf2dcd788a"
+    },
+    {
+      "path": "temp_data/wikipathways/findPathwaysByXref.json",
+      "source_id": "wikipathways",
+      "sha256": "09da862b2d2dc08c98c0a0d98640892c076668d5ad251ee373502dcf89bbce22",
+      "bytes": 12084935,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-10-06",
+      "statement": "https://www.wikipathways.org/terms.html",
+      "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
+      "terms_sha256": "6227d3fa395264cfda59fb0dc5e6924f1c6f82409e8737632280c99ef4a31ce1"
+    }
+  ],
+  "local_qualification_tests": {
+    "tests/tools/test_amypro_offline.py": [
+      "amypro"
+    ],
+    "tests/tools/test_channelsdb_membership_offline.py": [
+      "channelsdb"
+    ],
+    "tests/tools/test_channelsdb_offline.py": [
+      "channelsdb"
+    ],
+    "tests/tools/test_disprot_offline.py": [
+      "disprot"
+    ],
+    "tests/tools/test_ecod_offline.py": [
+      "ecod"
+    ],
+    "tests/tools/test_eppic_residues_offline.py": [
+      "eppic"
+    ],
+    "tests/tools/test_gwas_catalog_offline.py": [
+      "gwas_catalog"
+    ],
+    "tests/tools/test_hpo_offline.py": [
+      "hpo"
+    ],
+    "tests/tools/test_interactome3d_offline.py": [
+      "interactome3d"
+    ],
+    "tests/tools/test_ligand_context_recovery_offline.py": [
+      "ligysis"
+    ],
+    "tests/tools/test_ligysis_correspondences_offline.py": [
+      "ligysis"
+    ],
+    "tests/tools/test_ligysis_residues_offline.py": [
+      "ligysis"
+    ],
+    "tests/tools/test_ligysis_structure_mapping_offline.py": [
+      "ligysis"
+    ],
+    "tests/tools/test_merops_offline.py": [
+      "merops"
+    ],
+    "tests/tools/test_metalpdb_offline.py": [
+      "metalpdb"
+    ],
+    "tests/tools/test_monarch_offline.py": [
+      "monarch"
+    ],
+    "tests/tools/test_pdbe_validation_offline.py": [
+      "pdbe_validation"
+    ],
+    "tests/tools/test_pdbtm_offline.py": [
+      "pdbtm"
+    ],
+    "tests/tools/test_pharos_offline.py": [
+      "pharos"
+    ],
+    "tests/tools/test_probis_offline.py": [
+      "probis"
+    ],
+    "tests/tools/test_sifts_offline.py": [
+      "sifts"
+    ],
+    "tests/tools/test_structural_context_recovery_offline.py": [
+      "eppic"
+    ],
+    "tests/tools/test_tcdb_offline.py": [
+      "tcdb"
+    ],
+    "tests/tools/test_threedid_offline.py": [
+      "3did"
+    ],
+    "tests/tools/test_ttd_offline.py": [
+      "ttd"
+    ]
+  },
+  "local_qualification_cases": {
+    "tests/tools/test_bound_native_snapshots_offline.py": "Only original-byte tests for SIFTS/LIGYSIS are marked local_source_inputs; binding/malformed-input tests remain public.",
+    "tests/core/test_residue_tracks_offline.py": "Only test_native_disprot_sequence_is_kept_separate_even_when_strings_match requires the local DisProt original; synthetic track and sequence-axis tests remain public."
+  }
+}

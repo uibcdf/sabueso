@@ -1,12 +1,81 @@
 {
  "note": "Generated from devguide/sources/registry.yaml by `python tools/source_registry.py --write`. Do not edit by hand.",
  "sources": {
+  "3did": {
+   "registry_id": "3did",
+   "licence": "NOT-STATED",
+   "attribution": "3did and the Structural Bioinformatics and Network Biology Group at IRB Barcelona; retain native domain/motif source labels and structural-instance support.",
+   "statement": "https://3did.irbbarcelona.org/download.php",
+   "reviewed": "2026-10-07",
+   "caveats": [
+    "The provider documents public flat-file access without a separate export-data grant. Free access, source articles and software licences do not establish blanket data redistribution or input rights.",
+    "Native Pfam and PLoS_CB_2010 labels are source declarations, not complete per-instance publication or current input licences. Linked inputs, structures, sequences and publications are not acquired.",
+    "The unchanged factual DMI gzip remains local unreleased qualification material. Public fixture or derivative-collection distribution requires separate qualification; automated sharing stays unknown."
+   ]
+  },
+  "AAindex": {
+   "registry_id": "aaindex",
+   "licence": "NOT-STATED",
+   "attribution": "AAindex: Amino Acid Index Database (https://www.genome.jp/aaindex/); retain native publication references.",
+   "statement": "https://www.genome.jp/aaindex/aaindex_help.html",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Public download access is not a stated redistribution licence; the consulted AAindex-specific format page does not settle reuse terms."
+   ]
+  },
+  "APPRIS": {
+   "registry_id": "appris",
+   "licence": "CC-BY-NC-SA-4.0",
+   "attribution": "APPRIS and original contributing annotation methods and sequence resources.",
+   "statement": "https://appris.bioinfo.cnio.es/partials/license.html",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Noncommercial use with attribution and licence link; indicate changes and apply share-alike to adaptations. Native contributing method labels are retained; linked input resources and publications have independent terms and are not acquired."
+   ]
+  },
+  "AlphaFill": {
+   "registry_id": "alphafill",
+   "licence": "FREE-WITH-ACKNOWLEDGEMENT",
+   "attribution": "AlphaFill and AlphaFold; Hekkelman, de Vries, Joosten and Perrakis, Nature Methods 20, 205–213 (2023), doi:10.1038/s41592-022-01685-y.",
+   "statement": "https://alphafill.eu/license",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Original archival files may be redistributed freely. Modified files require parent-file attribution. Parent AlphaFold policies apply where applicable. BSD software licence is not assigned to data; the policy does not name a separate Creative Commons licence."
+   ]
+  },
   "AlphaFold DB": {
    "registry_id": "alphafold_db",
    "licence": "CC-BY-4.0",
    "attribution": "AlphaFold Protein Structure Database, DeepMind and EMBL-EBI (https://alphafold.ebi.ac.uk/), CC BY 4.0",
    "statement": "https://alphafold.ebi.ac.uk/faq",
    "reviewed": "2026-09-29"
+  },
+  "AlphaMissense": {
+   "registry_id": "alphamissense",
+   "licence": "CC-BY-4.0",
+   "attribution": "AlphaMissense, DeepMind Technologies Limited; Cheng et al., Science (2023), doi:10.1126/science.adg7492.",
+   "statement": "https://github.com/google-deepmind/alphamissense#alphamissense-predictions-license",
+   "reviewed": "2026-10-06"
+  },
+  "AmyPro": {
+   "registry_id": "amypro",
+   "licence": "NOT-STATED",
+   "attribution": "AmyPro; Varadi, De Baets, Vranken, Tompa and Pancsa, Nucleic Acids Research 46(D1), D387–D392 (2018), doi:10.1093/nar/gkx950.",
+   "statement": "https://amypro.net/#/help",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Separate export data licence not established on the public help/download/footer pages. The resource paper's CC BY-NC 4.0 grant is not assigned to response data. Original public export bytes remain local unreleased recovery; redistribution permission is unknown."
+   ]
+  },
+  "BRENDA": {
+   "registry_id": "brenda",
+   "licence": "CC-BY-4.0",
+   "attribution": "BRENDA Enzyme Database, DSMZ Digital Diversity; Hauenstein et al. (2026), doi:10.1093/nar/gkaf1113; CC BY 4.0.",
+   "statement": "https://brenda-enzymes.org/license.php",
+   "reviewed": "2026-10-07",
+   "caveats": [
+    "This slice contains EC-class descriptions only. The prototype does not declare its dataset or individual EC record revision; the main website release is not assigned to it. SOAP requires registration and bulk files require active licence acceptance; neither route is used."
+   ]
   },
   "BindingDB": {
    "registry_id": "bindingdb",
@@ -17,6 +86,23 @@
    "caveats": [
     "Treated as CC BY-SA 3.0: the records Sabueso reads do not state their origin."
    ]
+  },
+  "CATH": {
+   "registry_id": "cath",
+   "licence": "CC-BY-4.0",
+   "attribution": "CATH Protein Structure Classification Database; I. Sillitoe, N. Dawson, T. Lewis, D. Lee, J. Lees and C. Orengo, University College London (https://www.cathdb.info/).",
+   "statement": "https://www.cathdb.info/",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Attribute CATH and link CC BY 4.0; indicate modifications. Underlying PDB and UniProt resources and publications retain their own terms; linked records and coordinates are not acquired."
+   ]
+  },
+  "CIViC": {
+   "registry_id": "civic",
+   "licence": "CC0-1.0",
+   "attribution": "CIViC contributors and Griffith et al. (2017), doi:10.1038/ng.3774; original citations remain in native records.",
+   "statement": "https://docs.civicdb.org/en/latest/about/faq.html#how-is-civic-licensed",
+   "reviewed": "2026-10-06"
   },
   "ChEBI": {
    "registry_id": "chebi",
@@ -31,6 +117,24 @@
    "attribution": "ChEMBL, EMBL-EBI (https://www.ebi.ac.uk/chembl/), CC BY-SA 3.0",
    "statement": "https://chembl.gitbook.io/chembl-interface-documentation/about",
    "reviewed": "2026-09-29"
+  },
+  "ChannelsDB": {
+   "registry_id": "channelsdb",
+   "licence": "NOT-STATED",
+   "attribution": "ChannelsDB 2.0 contributors, doi:10.1093/nar/gkad1012; retain native input labels and reference literals.",
+   "statement": "https://channelsdb2.biodata.ceitec.cz/documentation.html",
+   "reviewed": "2026-10-08"
+  },
+  "ClinGen": {
+   "registry_id": "clingen",
+   "licence": "CC0-1.0",
+   "attribution": "ClinGen Clinical Genome Resource and original Gene Curation Expert Panels; credit the source and access date when available.",
+   "statement": "https://clinicalgenome.org/docs/terms-of-use/",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Curated ClinGen content has CC0; linked reports, underlying publications and external input resources remain separate acquisitions and rights.",
+    "Resource and access-date attribution is requested; native classification/file dates do not establish the retrieval time."
+   ]
   },
   "ClinVar": {
    "registry_id": "clinvar",
@@ -49,12 +153,76 @@
    "statement": "https://clinicaltrials.gov/about-site/terms-conditions",
    "reviewed": "2026-09-29"
   },
+  "Complex Portal": {
+   "registry_id": "complexportal",
+   "licence": "CC0-1.0",
+   "attribution": "Complex Portal, EMBL-EBI and original contributing curation/prediction resources; attribution encouraged by the provider.",
+   "statement": "https://raw.githubusercontent.com/Complex-Portal/complex-portal-documentation/master/about/license_privacy.md",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "The official CC0 statement explicitly covers data accessed via webpages/services. Software and branding are Apache 2.0; underlying linked resources and publications retain independent rights and are not fetched."
+   ]
+  },
   "DISEASES": {
    "registry_id": "diseases_jensen",
    "licence": "CC-BY-4.0",
    "attribution": "DISEASES, Jensen lab (https://diseases.jensenlab.org/), CC BY 4.0",
    "statement": "https://diseases.jensenlab.org/Downloads",
    "reviewed": "2026-09-29"
+  },
+  "DepMap": {
+   "registry_id": "depmap",
+   "licence": "CC-BY-4.0",
+   "attribution": "DepMap, Broad Institute (2024), DepMap 24Q4 Public, doi:10.25452/figshare.plus.27993248.v1; cite the DepMap portal and program.",
+   "statement": "https://api.figshare.com/v2/articles/27993248/versions/1",
+   "reviewed": "2026-10-07",
+   "caveats": [
+    "The original provider publication states CC BY 4.0 and identifies Model.csv by file ID and MD5. Qualification is limited to this fixed public release and article version; no grant is propagated to collaborator datasets or other files. Model metadata do not establish gene dependencies."
+   ]
+  },
+  "DisProt": {
+   "registry_id": "disprot",
+   "licence": "CC-BY-4.0",
+   "attribution": "DisProt database (https://disprot.org/); preserve native region and publication references.",
+   "statement": "https://disprot.org/",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Database terms do not independently settle rights to embedded article quotations; supplied metadata does not prove source access or reuse permission."
+   ]
+  },
+  "DrugCentral": {
+   "registry_id": "drugcentral",
+   "licence": "CC-BY-SA-4.0",
+   "attribution": "DrugCentral and original contributing data providers; Ursu et al., DrugCentral, Nucleic Acids Research (2017), doi:10.1093/nar/gkw993.",
+   "statement": "https://drugcentral.org/privacy",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "The resource licence applies CC BY-SA 4.0; credit the source, link the licence, indicate changes and retain share-alike where applicable. The public fixture preserves the original compressed export unchanged. Linked source/publication rights remain separate; no underlying article, database or label is independently acquired."
+   ]
+  },
+  "ECOD": {
+   "registry_id": "ecod",
+   "licence": "NOT-STATED",
+   "attribution": "ECOD and Grishin Laboratory; retain native UID, domain, structure/chain, classification and API URL.",
+   "statement": "http://prodata.swmed.edu/ecod/documentation",
+   "reviewed": "2026-10-07"
+  },
+  "EMA Orphan Designations": {
+   "registry_id": "ema_orphan",
+   "licence": "FREE-WITH-ACKNOWLEDGEMENT",
+   "attribution": "European Medicines Agency (EMA); native orphan-designation JSON URL and actual access month/year. Retain EMA acknowledgement in each copy.",
+   "statement": "https://www.ema.europa.eu/en/about-us/about-website/legal-notice",
+   "reviewed": "2026-10-06"
+  },
+  "EPPIC": {
+   "registry_id": "eppic",
+   "licence": "NOT-STATED",
+   "attribution": "EPPIC team; Bliven et al., PLoS Computational Biology (2018), doi:10.1371/journal.pcbi.1006104.",
+   "statement": "https://www.eppic-web.org/downloads",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Official website describes public REST downloads and GPL software; served OpenAPI describes Apache 2.0 API software. Neither establishes a separate prediction-data reuse licence. Provider interpretations are not experimental confirmation."
+   ]
   },
   "Europe PMC": {
    "registry_id": "europepmc",
@@ -65,6 +233,17 @@
    "retention_licence": "PUBLICATION-TERMS",
    "caveats": [
     "Articles keep their own licences. Located accession annotations retain text fragments; Card.terms judges them separately as Europe PMC Annotations (publication terms, unknown when unrecorded), and terms profiles exclude them. The bibliographic search and explicit core bibliographic projection remain governed by service terms. Core licence literals are preserved separately without inferring a version, mapping open-access status to permission or granting rights to supplied fragments. Raw core answers may contain abstracts and retain publication-term archive policy."
+   ]
+  },
+  "FDA Orphan Drug Designations and Approvals": {
+   "registry_id": "fda_orphan",
+   "licence": "US-PD",
+   "attribution": "U.S. Food and Drug Administration, Office of Orphan Products Development; retain original page URL and acquisition date.",
+   "statement": "https://www.fda.gov/about-fda/about-website/website-policies",
+   "reviewed": "2026-10-07",
+   "caveats": [
+    "FDA website policy states public-domain reuse unless otherwise noted; independent contributing-source and other rights remain separate. Credit is requested rather than mandatory.",
+    "The received page states source regulatory declarations with unknown revisions; no current clinical advice or protein-target inference. Date, source link and original support are retained."
    ]
   },
   "GPCRdb": {
@@ -84,6 +263,62 @@
     "Acknowledge the GTEx Portal and the date the data were obtained."
    ]
   },
+  "GWAS Catalog": {
+   "registry_id": "gwas_catalog",
+   "licence": "NO-OWN-RESTRICTIONS",
+   "attribution": "NHGRI-EBI GWAS Catalog and the original study authors; cite the native association/study and publication pointers.",
+   "statement": "https://www.ebi.ac.uk/about/terms-of-use/",
+   "reviewed": "2026-10-07",
+   "caveats": [
+    "Curated associations use EMBL-EBI Services Terms of Use; original owners retain their rights. This is not a uniform open-data grant.",
+    "Summary-statistics CC0, visualisation CC BY and software Apache do not license arbitrary curated rows or linked publications. No article, summary-statistics file or participant-level data is acquired.",
+    "The original factual HBB and TPI1 page fixtures retain source attribution and these terms; exact first acquisition times and native scientific revisions remain unstated."
+   ]
+  },
+  "GlyGen": {
+   "registry_id": "glygen",
+   "licence": "CC-BY-4.0",
+   "attribution": "GlyGen project and original annotation/data providers.",
+   "statement": "https://www.glygen.org/license.html",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Official licence page applies CC BY 4.0 to database sets and lists contributing-source licences separately. Original annotation and publication pointers retain their source identity; linked provider access and article rights are not inferred."
+   ]
+  },
+  "HPO": {
+   "registry_id": "hpo",
+   "licence": "HPO-CONSORTIUM",
+   "attribution": "Human Phenotype Ontology Consortium; cite HPO and retain the exact artifact version and original disease/term/gene pointers.",
+   "statement": "https://github.com/TheJacksonLaboratory/hpo-web/blob/a85f0fa92835a9f6a37881b89b6260ca3b9f4960/src/app/static/resources/license/license.component.html",
+   "reviewed": "2026-10-07",
+   "caveats": [
+    "All HPO-provided files are subject to attribution/citation, public date/version display and unchanged content/logical relationships. Retain the complete original file; mapping does not modify it or infer new relationships.",
+    "The official website's data terms are separate from software licences. OMIM/Orphanet and other input rights remain separate; a disease namespace is not per-occurrence contributor or publication support.",
+    "This original release fixture and licence support remain local unreleased qualification artifacts. No blanket commercial, derivative-dataset or public-distribution verdict is assigned; automated use and sharing remain unknown."
+   ]
+  },
+  "Human Protein Atlas": {
+   "registry_id": "hpa",
+   "licence": "CC-BY-4.0",
+   "attribution": "Credit Human Protein Atlas, the specific gene/data URL and the appropriate primary publication (including Uhlen et al. 2015, doi:10.1126/science.1260419, for tissue context).",
+   "statement": "https://www.proteinatlas.org/about/licence",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Third-party input constraints remain applicable; linked datasets and publications have independent rights.",
+    "Cite the specific gene/data URL; website release does not establish a revision of the received JSON or a sequence.",
+    "This native JSON route is a subset of search data, not a full quantitative tissue or assay export."
+   ]
+  },
+  "IntAct": {
+   "registry_id": "intact",
+   "licence": "CC-BY-4.0",
+   "attribution": "IntAct, EMBL-EBI and contributing curation teams (https://www.ebi.ac.uk/intact/), CC BY 4.0",
+   "statement": "https://www.imexconsortium.org/about/#licence",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Native publication pointers do not license linked articles. Source dates and service versions do not identify interaction or sequence revisions."
+   ]
+  },
   "InterPro": {
    "registry_id": "interpro",
    "licence": "CC0-1.0",
@@ -94,6 +329,13 @@
     "Member databases may carry their own terms."
    ]
   },
+  "Interactome3D": {
+   "registry_id": "interactome3d",
+   "licence": "NOT-STATED",
+   "attribution": "Interactome3D, Structural Bioinformatics and Network Biology Group at IRB Barcelona; retain native dataset route, original row/hash and selected archive scope.",
+   "statement": "https://interactome3d.irbbarcelona.org/about.php",
+   "reviewed": "2026-10-07"
+  },
   "KLIFS": {
    "registry_id": "klifs",
    "licence": "NO-OWN-RESTRICTIONS",
@@ -103,6 +345,29 @@
    "caveats": [
     "No formal licence: the FAQ states the data is free and open for academia and industry.",
     "Structures come from the PDB (CC0); KLIFS's annotations are its own."
+   ]
+  },
+  "LIGYSIS": {
+   "registry_id": "ligysis",
+   "licence": "NOT-STATED",
+   "attribution": "LIGYSIS and the Barton Group; Utgés et al., LIGYSIS-web, Nucleic Acids Research (2025), doi:10.1093/nar/gkaf411.",
+   "statement": "https://www.compbio.dundee.ac.uk/ligysis/about",
+   "reviewed": "2026-10-08",
+   "caveats": [
+    "Official page allows website access including commercial users and links an MIT code licence. No separate dataset redistribution licence was established; article CC BY is not assigned to dataset responses. Retain source/reference attribution and unknown sharing permission."
+   ]
+  },
+  "MEROPS": {
+   "registry_id": "merops",
+   "licence": "GNU-LIBRARY-GPL-UNVERSIONED",
+   "attribution": "MEROPS and EMBL-EBI; retain original accession/family/taxonomy text, export URL and full source support. Database content is the provider-declared Library.",
+   "statement": "https://www.ebi.ac.uk/merops/about/availability.shtml",
+   "reviewed": "2026-10-07",
+   "caveats": [
+    "Provider calls its whole database the Library under GNU Library GPL but does not specify a version; preserve that declaration rather than substituting MIT, CC0 or no stated licence.",
+    "The linked GNU LGPL text and historical Library GPL distinguish local use from distribution. This local unshared reader and unchanged factual export do not qualify public fixture, derived-dataset or package redistribution.",
+    "Automated use verdicts remain unknown for the version-unqualified declaration; archive retention is internal and sharing unknown. No LGPL version is selected for the provider or its contributors.",
+    "Software/data and underlying input rights remain separate. No code licence is assigned to data, no raw/derived dataset is published and no full-length sequence, cleavage library or analysis job is acquired."
    ]
   },
   "MONDO": {
@@ -120,6 +385,37 @@
    "reviewed": "2026-09-29",
    "caveats": [
     "Names from integrated vocabularies may carry their own terms; Sabueso keeps only ids."
+   ]
+  },
+  "MetalPDB": {
+   "registry_id": "metalpdb",
+   "licence": "NOT-STATED",
+   "attribution": "MetalPDB and CERM/University of Florence; retain native site/PDB/metal/ligand/donor context and provider API URL.",
+   "statement": "https://metalpdb.cerm.unifi.it/api_help",
+   "reviewed": "2026-10-07"
+  },
+  "MobiDB": {
+   "registry_id": "mobidb",
+   "licence": "CC-BY-4.0",
+   "attribution": "MobiDB database (https://mobidb.org/); preserve native annotation providers, methods and provenance.",
+   "statement": "https://mobidb.org/about#license",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "The native evidence field is the provider's annotation basis",
+    "not MOLI Evidence; underlying provider publications and experimental support are not independently acquired."
+   ]
+  },
+  "Monarch": {
+   "registry_id": "monarch",
+   "licence": "NOT-STATED",
+   "attribution": "Monarch Initiative and original contributing resources/publications; native primary and aggregator knowledge sources remain distinct.",
+   "statement": "https://monarch-app.monarchinitiative.org/Licensing/",
+   "reviewed": "2026-10-07",
+   "caveats": [
+    "Individual input grants apply; source-wide terms do not propagate BSD software terms or recommended CC0/CC BY licences to arbitrary KG data.",
+    "The qualified BioGRID-only TPI1 page retains the original MIT download-files notice. Monarch ingest documentation separately names BSD-3-Clause; software terms are documented independently.",
+    "Native ECO codes and knowledge/agent labels are source claims, not MOLI Evidence or an assigned experimental/inference class.",
+    "One expanded direct-subject page retains limit/offset/total; an empty page beyond the total is not biological absence or KG completeness."
    ]
   },
   "NCBI Gene": {
@@ -147,6 +443,19 @@
     "The FAQ (older) states CC BY-SA 2.5 for the OMA Browser; the Terms of Use state CC BY 4.0 for the data."
    ]
   },
+  "OmniPath": {
+   "registry_id": "omnipath",
+   "licence": "NOT-STATED",
+   "attribution": "OmniPath and original contributing resources and publications; retain native resource labels and resource-prefixed references.",
+   "statement": "https://omnipathdb.org/info",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Native resource metadata carries individual licences; qualify all contributing input rights before reuse or sharing. Query academic/commercial filters do not grant rights.",
+    "Resource and dataset filters select aggregate rows without removing other resource annotations. No client-side strict evidence reconstruction is performed.",
+    "The qualified one-row SPIKE/SPIKE_LC fixture is CC BY 4.0; that grant is not propagated to arbitrary OmniPath responses.",
+    "Human query scope and unknown revisions/totals remain explicit; mouse/rat translation, direct binding and experimental classes are not inferred."
+   ]
+  },
   "Open Targets": {
    "registry_id": "open_targets",
    "licence": "CC0-1.0",
@@ -171,6 +480,33 @@
    "statement": "https://www.wwpdb.org/about/usage-policies",
    "reviewed": "2026-09-29"
   },
+  "PDB-REDO": {
+   "registry_id": "pdb_redo",
+   "licence": "FREE-WITH-ACKNOWLEDGEMENT",
+   "attribution": "PDB-REDO and original structure-data authors; Maarten L. Hekkelman, Anastassis Perrakis and Robbie P. Joosten, Netherlands Cancer Institute.",
+   "statement": "https://pdb-redo.eu/license",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Original databank files may be redistributed without restriction; modified files require parent-file attribution. Parent PDB usage policy applies where applicable. The source does not name a Creative Commons licence for this policy."
+   ]
+  },
+  "PDBTM": {
+   "registry_id": "pdbtm",
+   "licence": "PDBTM-CONDITIONAL",
+   "attribution": "PDBTM, Institute of Enzymology, Budapest; preserve the entire original XML and embedded COPYRIGHT statement with every occurrence.",
+   "statement": "https://pdbtm.unitmp.org/api/v1/entry/1c3w.xml",
+   "reviewed": "2026-10-07"
+  },
+  "PDBe Validation": {
+   "registry_id": "pdbe_validation",
+   "licence": "NOT-STATED",
+   "attribution": "PDBe and wwPDB validation teams (https://www.ebi.ac.uk/pdbe/api/).",
+   "statement": "https://www.ebi.ac.uk/about/terms-of-use/",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "EMBL-EBI imposes no additional restrictions over original owners. wwPDB CC0 policy applies to archive data files; this review does not establish that policy as a separate licence for the PDBe API response. PDBe-KB CC BY 4.0 is not assigned by inference."
+   ]
+  },
   "PDBe-KB": {
    "registry_id": "pdbe_kb",
    "licence": "CC-BY-4.0",
@@ -184,6 +520,35 @@
    "attribution": "PHI-base (https://phi-base.org/), CC BY 4.0",
    "statement": "https://zenodo.org/records/10722192",
    "reviewed": "2026-09-29"
+  },
+  "PRIDE": {
+   "registry_id": "pride",
+   "licence": "DEPOSITOR-TERMS",
+   "attribution": "PRIDE Archive and original dataset depositors/publications; cite the exact PXD project and retain its native licence.",
+   "statement": "https://www.ebi.ac.uk/pride/archive/projects/PXD013616",
+   "reviewed": "2026-10-07",
+   "caveats": [
+    "Each project retains its native licence declaration. PXD013616 states Creative Commons Public Domain CC0; that grant is not propagated to arbitrary projects or integrated Proteins API providers.",
+    "Linked publications and files retain independent rights and are not acquired; missing licence declarations remain unknown.",
+    "Depositor protocols/descriptions and project CV categories do not establish per-peptide/protein support, abundance, canonical modification placement or MOLI Evidence."
+   ]
+  },
+  "Pharos/TCRD": {
+   "registry_id": "pharos_tcrd",
+   "licence": "NOT-STATED",
+   "attribution": "Pharos / Target Central Resource Database, NIH IDG Knowledge Management Center; contributing sources retain their own rights.",
+   "statement": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9825581/",
+   "reviewed": "2026-10-07",
+   "caveats": [
+    "The provider paper documents the public GraphQL endpoint but does not independently grant selected-target data redistribution. Software and article licences are not assigned to database outputs. Original factual fixtures remain local unreleased qualification material."
+   ]
+  },
+  "ProBiS-Database": {
+   "registry_id": "probis",
+   "licence": "NOT-STATED",
+   "attribution": "ProBiS-Database and its native reference-chain catalog URL, artifact label and original row/hash support.",
+   "statement": "http://probis.cmm.ki.si/?what=database",
+   "reviewed": "2026-10-07"
   },
   "PubChem": {
    "registry_id": "pubchem",
@@ -230,6 +595,27 @@
    "statement": "https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabdab/api/openapi.json",
    "reviewed": "2026-09-30"
   },
+  "SIFTS": {
+   "registry_id": "sifts",
+   "licence": "NOT-STATED",
+   "attribution": "SIFTS, PDBe and UniProt teams at EMBL-EBI (https://www.ebi.ac.uk/pdbe/docs/sifts/).",
+   "statement": "https://www.ebi.ac.uk/about/terms-of-use/",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "EMBL-EBI imposes no additional restrictions over original owners; this does not establish a separate SIFTS reuse licence or erase third-party rights. PDBe-KB CC BY 4.0 terms are not automatically assigned to SIFTS."
+   ]
+  },
+  "SIGNOR": {
+   "registry_id": "signor",
+   "licence": "CC-BY-4.0",
+   "attribution": "SIGNOR and original contributing curators and publications.",
+   "statement": "https://signor.uniroma2.it/documentation/",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Attribute SIGNOR",
+    "link CC BY 4.0 and indicate changes. Native sentence/publication pointers are retained as source-served context; underlying publications and input resources retain independent rights and are not acquired."
+   ]
+  },
   "SKEMPI": {
    "registry_id": "skempi",
    "licence": "CC-BY-4.0",
@@ -244,6 +630,33 @@
    "statement": "https://string-db.org/cgi/access",
    "reviewed": "2026-09-29"
   },
+  "SWISS-MODEL Repository": {
+   "registry_id": "swissmodel",
+   "licence": "CC-BY-SA-4.0",
+   "attribution": "SWISS-MODEL Repository; Bienert et al., Nucleic Acids Research 45(D1), D313–D319 (2017), doi:10.1093/nar/gkw1132; Waterhouse et al., Nucleic Acids Research 46(W1), W296–W303 (2018), doi:10.1093/nar/gky427.",
+   "statement": "https://swissmodel.expasy.org/docs/terms_of_use",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "Credit the source and link CC BY-SA 4.0; indicate modifications and retain share-alike conditions for adaptations. Original UniProt/PDB inputs and publications keep their own terms; SWISS-MODEL licensing does not replace them. Public Repository metadata access is separate from beta service restrictions and modelling job submission."
+   ]
+  },
+  "TCDB": {
+   "registry_id": "tcdb",
+   "licence": "NOT-STATED",
+   "attribution": "TCDB and Saier Laboratory; retain original native accession and TC-system literals and export URL.",
+   "statement": "https://tcdb.org/faq.php",
+   "reviewed": "2026-10-07"
+  },
+  "TTD": {
+   "registry_id": "ttd",
+   "licence": "NOT-STATED",
+   "attribution": "Therapeutic Target Database; IDRB, Zhejiang University and BIDD, National University of Singapore; native export header and provider URL.",
+   "statement": "https://ttd.idrblab.cn/full-data-download",
+   "reviewed": "2026-10-07",
+   "caveats": [
+    "Public acquisition does not grant reuse or redistribution. Automated use and sharing remain unknown; the original factual export stays local unreleased qualification material. Article and frontend software licences are not assigned to data."
+   ]
+  },
   "UniChem": {
    "registry_id": "unichem",
    "licence": "NO-OWN-RESTRICTIONS",
@@ -254,12 +667,29 @@
     "The linked resources' rights apply to their records."
    ]
   },
+  "UniParc": {
+   "registry_id": "uniparc",
+   "licence": "CC-BY-4.0",
+   "attribution": "UniParc, UniProt Consortium (https://www.uniprot.org/help/uniparc), CC BY 4.0.",
+   "statement": "https://rest.uniprot.org/help/license",
+   "reviewed": "2026-10-06"
+  },
   "UniProt": {
    "registry_id": "uniref",
    "licence": "CC-BY-4.0",
    "attribution": "UniRef, UniProt Consortium (https://www.uniprot.org/), CC BY 4.0",
    "statement": "https://rest.uniprot.org/help/license",
    "reviewed": "2026-10-01"
+  },
+  "WikiPathways": {
+   "registry_id": "wikipathways",
+   "licence": "CC0-1.0",
+   "attribution": "WikiPathways and original pathway authors and contributing resources.",
+   "statement": "https://www.wikipathways.org/terms.html",
+   "reviewed": "2026-10-06",
+   "caveats": [
+    "WikiPathways content is CC0; retain source and pathway-author attribution and make the CC0 terms clear. Linked publications and external resources keep independent rights and are not acquired."
+   ]
   },
   "gnomAD": {
    "registry_id": "gnomad",
@@ -270,6 +700,16 @@
    "caveats": [
     "Some annotations, not read by Sabueso, carry other terms.",
     "pext (read since 2026-10-01) is gnomAD's computation from GTEx v10 isoform quantifications; GTEx's own terms for its summary data were not reviewed separately."
+   ]
+  },
+  "iPTMnet": {
+   "registry_id": "iptmnet",
+   "licence": "CC-BY-NC-SA-4.0",
+   "attribution": "iPTMnet, University of Delaware / Protein Information Resource and Georgetown University; native report URL, database licence and original contributing source/publication links.",
+   "statement": "https://research.bioinformatics.udel.edu/iptmnet/license",
+   "reviewed": "2026-10-07",
+   "caveats": [
+    "Noncommercial use, attribution and share-alike apply to database content. Independent contributing-source rights remain separate. No experimental confirmation, sequence/canonical correspondence, dataset revision or scoring-rule revision is inferred."
    ]
   }
  }

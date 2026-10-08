@@ -1,0 +1,2009 @@
+{
+  "api_version": "2.0",
+  "query": {
+    "ac": "P60174",
+    "identifiers": "P60174"
+  },
+  "query_date": "2026-10-06T20:01:04.880Z",
+  "result": {
+    "crc64": "73844175635F858E",
+    "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+    "sequence": "MAPSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+    "sequence_length": 249,
+    "structures": [
+      {
+        "chains": [
+          {
+            "id": "C",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "GELIGTLNAAKVPAD",
+                  "description": "Triosephosphate isomerase peptide",
+                  "from": 1,
+                  "to": 15
+                },
+                "uniprot": {
+                  "aligned_sequence": "GELIGTLNAAKVPAD",
+                  "from": 23,
+                  "to": 37
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=23-37&template=1klu&provider=pdb",
+        "coverage": 0.06,
+        "created_date": "2002-08-02",
+        "from": 23,
+        "in_complex_with": {
+          "A": [
+            {
+              "description": "HLA CLASS II HISTOCOMPATIBILITY ANTIGEN, DR ALPHA CHAIN",
+              "uniprot_ac": "P01903"
+            }
+          ],
+          "B": [
+            {
+              "description": "HLA CLASS II HISTOCOMPATIBILITY ANTIGEN, DR-1 BETA CHAIN",
+              "uniprot_ac": "P01911"
+            }
+          ],
+          "D": [
+            {
+              "description": "ENTEROTOXIN TYPE C-3",
+              "uniprot_ac": "P0A0L5"
+            }
+          ]
+        },
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "heteromer",
+        "provider": "PDB",
+        "template": "1klu",
+        "to": 37
+      },
+      {
+        "chains": [
+          {
+            "id": "C",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "GELIGILNAAKVPAD",
+                  "description": "Triosephosphate isomerase peptide",
+                  "from": 1,
+                  "to": 15
+                },
+                "uniprot": {
+                  "aligned_sequence": "GELIGTLNAAKVPAD",
+                  "from": 23,
+                  "to": 37
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=23-37&template=1klg&provider=pdb",
+        "coverage": 0.06,
+        "created_date": "2002-08-02",
+        "from": 23,
+        "in_complex_with": {
+          "A": [
+            {
+              "description": "HLA CLASS II HISTOCOMPATIBILITY ANTIGEN, DR ALPHA CHAIN",
+              "uniprot_ac": "P01903"
+            }
+          ],
+          "B": [
+            {
+              "description": "HLA CLASS II HISTOCOMPATIBILITY ANTIGEN, DR-1 BETA CHAIN",
+              "uniprot_ac": "P01911"
+            }
+          ],
+          "D": [
+            {
+              "description": "ENTEROTOXIN TYPE C-3",
+              "uniprot_ac": "P0A0L5"
+            }
+          ]
+        },
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "heteromer",
+        "provider": "PDB",
+        "template": "1klg",
+        "to": 37
+      },
+      {
+        "chains": [
+          {
+            "id": "C",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "GELIGILNAAKVPAD",
+                  "description": "Triosephosphate isomerase",
+                  "from": 1,
+                  "to": 15
+                },
+                "uniprot": {
+                  "aligned_sequence": "GELIGTLNAAKVPAD",
+                  "from": 23,
+                  "to": 37
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=23-37&template=4e41&provider=pdb",
+        "coverage": 0.06,
+        "created_date": "2012-08-29",
+        "from": 23,
+        "in_complex_with": {
+          "A": [
+            {
+              "description": "HLA class II histocompatibility antigen, DR alpha chain",
+              "uniprot_ac": "P01903"
+            }
+          ],
+          "B": [
+            {
+              "description": "HLA class II histocompatibility antigen, DRB1-1 beta chain",
+              "uniprot_ac": "P01911"
+            }
+          ],
+          "D": [
+            {
+              "description": "T cell receptor G4 alpha chain"
+            }
+          ],
+          "E": [
+            {
+              "description": "T cell receptor G4 beta chain"
+            }
+          ]
+        },
+        "ligand_chains": [
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "SODIUM ION",
+                "hetid": "NA"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "heteromer",
+        "provider": "PDB",
+        "template": "4e41",
+        "to": 37
+      },
+      {
+        "chains": [
+          {
+            "id": "C",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "GELIGILNAAKVPAD",
+                  "description": "15-mer peptide from Triosephosphate isomerase",
+                  "from": 1,
+                  "to": 15
+                },
+                "uniprot": {
+                  "aligned_sequence": "GELIGTLNAAKVPAD",
+                  "from": 23,
+                  "to": 37
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=23-37&template=2iam&provider=pdb",
+        "coverage": 0.06,
+        "created_date": "2007-04-03",
+        "from": 23,
+        "in_complex_with": {
+          "A": [
+            {
+              "description": "HLA class II histocompatibility antigen, DR alpha chain",
+              "uniprot_ac": "P01903"
+            }
+          ],
+          "B": [
+            {
+              "description": "HLA class II histocompatibility antigen, DRB1-1 beta chain",
+              "uniprot_ac": "P01911"
+            }
+          ],
+          "D": [
+            {
+              "description": "CD4+ T cell receptor E8 alpha chain",
+              "uniprot_ac": "P01848"
+            }
+          ],
+          "E": [
+            {
+              "description": "CD4+ T cell receptor E8 beta chain",
+              "uniprot_ac": "P01850"
+            }
+          ]
+        },
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "heteromer",
+        "provider": "PDB",
+        "template": "2iam",
+        "to": 37
+      },
+      {
+        "chains": [
+          {
+            "id": "C",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "GELIGTLNAAKVPAD",
+                  "description": "15-mer peptide from Triosephosphate isomerase",
+                  "from": 1,
+                  "to": 15
+                },
+                "uniprot": {
+                  "aligned_sequence": "GELIGTLNAAKVPAD",
+                  "from": 23,
+                  "to": 37
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=23-37&template=2ian&provider=pdb",
+        "coverage": 0.06,
+        "created_date": "2007-04-03",
+        "from": 23,
+        "in_complex_with": {
+          "A": [
+            {
+              "description": "HLA class II histocompatibility antigen, DR alpha chain",
+              "uniprot_ac": "P01903"
+            }
+          ],
+          "B": [
+            {
+              "description": "HLA class II histocompatibility antigen, DRB1-1 beta chain",
+              "uniprot_ac": "P01911"
+            }
+          ],
+          "D": [
+            {
+              "description": "CD4+ T cell receptor E8 alpha chain",
+              "uniprot_ac": "P01848"
+            }
+          ],
+          "E": [
+            {
+              "description": "CD4+ T cell receptor E8 beta chain",
+              "uniprot_ac": "P01850"
+            }
+          ]
+        },
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "heteromer",
+        "provider": "PDB",
+        "template": "2ian",
+        "to": 37
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 3,
+                  "to": 250
+                },
+                "uniprot": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 2,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 3,
+                  "to": 250
+                },
+                "uniprot": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 2,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 3,
+                  "to": 250
+                },
+                "uniprot": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 2,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "D",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 3,
+                  "to": 250
+                },
+                "uniprot": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 2,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=2-249&template=1wyi&provider=pdb",
+        "coverage": 0.996,
+        "created_date": "2005-04-12",
+        "from": 2,
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-4-mer",
+        "provider": "PDB",
+        "template": "1wyi",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWA--------PQPAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 2,
+                  "to": 249
+                },
+                "uniprot": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 2,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIG--------PAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 4,
+                  "to": 249
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=2-249&template=7rde&provider=pdb",
+        "coverage": 0.996,
+        "created_date": "2022-05-04",
+        "from": 2,
+        "ligand_chains": [
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "BROMIDE ION",
+                "hetid": "BR"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "CALCIUM ION",
+                "hetid": "CA"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "7rde",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "TRIOSEPHOSPHATE ISOMERASE",
+                  "from": 1,
+                  "to": 248
+                },
+                "uniprot": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 2,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "TRIOSEPHOSPHATE ISOMERASE",
+                  "from": 1,
+                  "to": 248
+                },
+                "uniprot": {
+                  "aligned_sequence": "APSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 2,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=2-249&template=1hti&provider=pdb",
+        "coverage": 0.996,
+        "created_date": "1995-01-26",
+        "from": 2,
+        "ligand_chains": [
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "2-PHOSPHOGLYCOLIC ACID",
+                "hetid": "PGA"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "1hti",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 9,
+                  "to": 254
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 8,
+                  "to": 254
+                },
+                "uniprot": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 3,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=3-249&template=4poc&provider=pdb",
+        "coverage": 0.992,
+        "created_date": "2015-01-14",
+        "from": 3,
+        "ligand_chains": [
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "POTASSIUM ION",
+                "hetid": "K"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "SODIUM ION",
+                "hetid": "NA"
+              }
+            ]
+          },
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "BROMIDE ION",
+                "hetid": "BR"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "PHOSPHATE ION",
+                "hetid": "PO4"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "4poc",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPELVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 6,
+                  "to": 252
+                },
+                "uniprot": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 3,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPELVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 6,
+                  "to": 252
+                },
+                "uniprot": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 3,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=3-249&template=6upf&provider=pdb",
+        "coverage": 0.992,
+        "created_date": "2020-07-01",
+        "from": 3,
+        "ligand_chains": [
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "2-PHOSPHOGLYCOLIC ACID",
+                "hetid": "PGA"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "GLYCEROL",
+                "hetid": "GOL"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "6upf",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWMMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 10,
+                  "to": 254
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 5,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "PSRKFFVGGNWMMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 8,
+                  "to": 254
+                },
+                "uniprot": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 3,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=3-249&template=4zvj&provider=pdb",
+        "coverage": 0.992,
+        "created_date": "2016-03-09",
+        "from": 3,
+        "ligand_chains": [
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "SODIUM ION",
+                "hetid": "NA"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "POTASSIUM ION",
+                "hetid": "K"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "4zvj",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 7,
+                  "to": 252
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 6,
+                  "to": 252
+                },
+                "uniprot": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 3,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=3-249&template=6up5&provider=pdb",
+        "coverage": 0.992,
+        "created_date": "2020-07-01",
+        "from": 3,
+        "ligand_chains": [
+          {
+            "count": 3,
+            "ligands": [
+              {
+                "description": "GLYCEROL",
+                "hetid": "GOL"
+              }
+            ]
+          },
+          {
+            "count": 3,
+            "ligands": [
+              {
+                "description": "ISOPROPYL ALCOHOL",
+                "hetid": "IPA"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "2-PHOSPHOGLYCOLIC ACID",
+                "hetid": "PGA"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "6up5",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLRVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 4,
+                  "to": 249
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLRVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 3,
+                  "to": 249
+                },
+                "uniprot": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 3,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=3-249&template=7uxb&provider=pdb",
+        "coverage": 0.992,
+        "created_date": "2023-05-24",
+        "from": 3,
+        "ligand_chains": [
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "ISOPROPYL ALCOHOL",
+                "hetid": "IPA"
+              }
+            ]
+          },
+          {
+            "count": 4,
+            "ligands": [
+              {
+                "description": "GLYCEROL",
+                "hetid": "GOL"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "7uxb",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLRVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 4,
+                  "to": 249
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLRVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 3,
+                  "to": 249
+                },
+                "uniprot": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 3,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=3-249&template=7uxv&provider=pdb",
+        "coverage": 0.992,
+        "created_date": "2023-05-10",
+        "from": 3,
+        "ligand_chains": [
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "2-PHOSPHOGLYCOLIC ACID",
+                "hetid": "PGA"
+              }
+            ]
+          },
+          {
+            "count": 4,
+            "ligands": [
+              {
+                "description": "GLYCEROL",
+                "hetid": "GOL"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "ISOPROPYL ALCOHOL",
+                "hetid": "IPA"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "7uxv",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 4,
+                  "to": 249
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 4,
+                  "to": 249
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=4-249&template=9ffc&provider=pdb",
+        "coverage": 0.988,
+        "created_date": "2025-03-12",
+        "from": 4,
+        "ligand_chains": [
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "SN-GLYCEROL-3-PHOSPHATE",
+                "hetid": "G3P"
+              }
+            ]
+          },
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "BROMIDE ION",
+                "hetid": "BR"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "9ffc",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTDGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "TRIOSEPHOSPHATE ISOMERASE",
+                  "from": 3,
+                  "to": 248
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTDGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "TRIOSEPHOSPHATE ISOMERASE",
+                  "from": 3,
+                  "to": 248
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=4-249&template=4unl&provider=pdb",
+        "coverage": 0.988,
+        "created_date": "2015-02-04",
+        "from": 4,
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "4unl",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "TRIOSEPHOSPHATE ISOMERASE",
+                  "from": 6,
+                  "to": 250
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 5,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "TRIOSEPHOSPHATE ISOMERASE",
+                  "from": 5,
+                  "to": 250
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=4-249&template=2jk2&provider=pdb",
+        "coverage": 0.988,
+        "created_date": "2008-07-01",
+        "from": 4,
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "2jk2",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 8,
+                  "to": 252
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 5,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 7,
+                  "to": 252
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=4-249&template=6up1&provider=pdb",
+        "coverage": 0.988,
+        "created_date": "2020-07-01",
+        "from": 4,
+        "ligand_chains": [
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "ISOPROPYL ALCOHOL",
+                "hetid": "IPA"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "6up1",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGDSDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "TRIOSEPHOSPHATE ISOMERASE",
+                  "from": 6,
+                  "to": 250
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 5,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGDSDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "TRIOSEPHOSPHATE ISOMERASE",
+                  "from": 5,
+                  "to": 250
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=4-249&template=2vom&provider=pdb",
+        "coverage": 0.988,
+        "created_date": "2008-06-17",
+        "from": 4,
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "2vom",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEK----------KVVFEQTKVIADNVKDWSKVVLAYEPVWA-------TPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "TRIOSEPHOSPHATE ISOMERASE",
+                  "from": 2,
+                  "to": 246
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 5,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "TRIOSEPHOSPHATE ISOMERASE",
+                  "from": 1,
+                  "to": 246
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=4-249&template=4br1&provider=pdb",
+        "coverage": 0.988,
+        "created_date": "2013-06-12",
+        "from": 4,
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "4br1",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAVGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 10,
+                  "to": 254
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 5,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAVGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAK",
+                  "description": "Triosephosphate isomerase",
+                  "from": 9,
+                  "to": 253
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAK",
+                  "from": 4,
+                  "to": 248
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=4-249&template=4pod&provider=pdb",
+        "coverage": 0.988,
+        "created_date": "2015-01-14",
+        "from": 4,
+        "ligand_chains": [
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "POTASSIUM ION",
+                "hetid": "K"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "SODIUM ION",
+                "hetid": "NA"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "PHOSPHATE ION",
+                "hetid": "PO4"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "BROMIDE ION",
+                "hetid": "BR"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "4pod",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPELVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 7,
+                  "to": 252
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPELVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 7,
+                  "to": 252
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=4-249&template=6up8&provider=pdb",
+        "coverage": 0.988,
+        "created_date": "2020-07-01",
+        "from": 4,
+        "ligand_chains": [
+          {
+            "count": 5,
+            "ligands": [
+              {
+                "description": "ISOPROPYL ALCOHOL",
+                "hetid": "IPA"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "6up8",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNMKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 4,
+                  "to": 248
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 5,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNMKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 3,
+                  "to": 248
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=4-249&template=7t0q&provider=pdb",
+        "coverage": 0.988,
+        "created_date": "2022-12-14",
+        "from": 4,
+        "ligand_chains": [
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "2-PHOSPHOGLYCOLIC ACID",
+                "hetid": "PGA"
+              }
+            ]
+          },
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "GLYCEROL",
+                "hetid": "GOL"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "ISOPROPYL ALCOHOL",
+                "hetid": "IPA"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "7t0q",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 2,
+                  "to": 246
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 5,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 1,
+                  "to": 246
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=4-249&template=6d43&provider=pdb",
+        "coverage": 0.988,
+        "created_date": "2018-05-16",
+        "from": 4,
+        "ligand_chains": [
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "ISOPROPYL ALCOHOL",
+                "hetid": "IPA"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "6d43",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNMKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 5,
+                  "to": 249
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 5,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNMKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 4,
+                  "to": 249
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=4-249&template=7sx1&provider=pdb",
+        "coverage": 0.988,
+        "created_date": "2022-11-30",
+        "from": 4,
+        "ligand_chains": [
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "ISOPROPYL ALCOHOL",
+                "hetid": "IPA"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "7sx1",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 1,
+                  "to": 245
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 5,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 1,
+                  "to": 245
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 5,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=5-249&template=9f69&provider=pdb",
+        "coverage": 0.984,
+        "created_date": "2025-03-12",
+        "from": 5,
+        "ligand_chains": [
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "METHYLMALONIC ACID",
+                "hetid": "DXX"
+              }
+            ]
+          },
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "BROMIDE ION",
+                "hetid": "BR"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "9f69",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "PSRKFFVGGNWKMDGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINA",
+                  "description": "TRIOSEPHOSPHATE ISOMERASE",
+                  "from": 4,
+                  "to": 248
+                },
+                "uniprot": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINA",
+                  "from": 3,
+                  "to": 247
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMDGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIIN",
+                  "description": "TRIOSEPHOSPHATE ISOMERASE",
+                  "from": 6,
+                  "to": 247
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIIN",
+                  "from": 5,
+                  "to": 246
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=3-247&template=4unk&provider=pdb",
+        "coverage": 0.984,
+        "created_date": "2015-02-04",
+        "from": 3,
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "4unk",
+        "to": 247
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "KFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLAGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 2,
+                  "to": 245
+                },
+                "uniprot": {
+                  "aligned_sequence": "KFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 6,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "KFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWA------ATPQQAQEVHEKLAGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 2,
+                  "to": 245
+                },
+                "uniprot": {
+                  "aligned_sequence": "KFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 6,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=6-249&template=6nlh&provider=pdb",
+        "coverage": 0.98,
+        "created_date": "2019-06-19",
+        "from": 6,
+        "ligand_chains": [
+          {
+            "count": 4,
+            "ligands": [
+              {
+                "description": "SODIUM ION",
+                "hetid": "NA"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "BROMIDE ION",
+                "hetid": "BR"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "PHOSPHATE ION",
+                "hetid": "PO4"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "6nlh",
+        "to": 249
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLMGGASLKPEFVDIINAK",
+                  "description": "Triosephosphate isomerase",
+                  "from": 5,
+                  "to": 248
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAK",
+                  "from": 5,
+                  "to": 248
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "pdb": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIG-GKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLMGGASLKPEFVDIINAK",
+                  "description": "Triosephosphate isomerase",
+                  "from": 5,
+                  "to": 248
+                },
+                "uniprot": {
+                  "aligned_sequence": "RKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAK",
+                  "from": 5,
+                  "to": 248
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=5-248&template=6c2g&provider=pdb",
+        "coverage": 0.98,
+        "created_date": "2018-03-21",
+        "from": 5,
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "X-RAY DIFFRACTION",
+        "oligo-state": "homo-2-mer",
+        "provider": "PDB",
+        "template": "6c2g",
+        "to": 248
+      },
+      {
+        "chains": [
+          {
+            "id": "A",
+            "segments": [
+              {
+                "smtl": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 9,
+                  "to": 254
+                },
+                "uniprot": {
+                  "aligned_sequence": "SRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 4,
+                  "to": 249
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "segments": [
+              {
+                "smtl": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "description": "Triosephosphate isomerase",
+                  "from": 8,
+                  "to": 254
+                },
+                "uniprot": {
+                  "aligned_sequence": "PSRKFFVGGNWKMNGRKQSLGELIGTLNAAKVPADTEVVCAPPTAYIDFARQKLDPKIAVAAQNCYKVTNGAFTGEISPGMIKDCGATWVVLGHSERRHVFGESDELIGQKVAHALAEGLGVIACIGEKLDEREAGITEKVVFEQTKVIADNVKDWSKVVLAYEPVWAIGTGKTATPQQAQEVHEKLRGWLKSNVSDAVAQSTRIIYGGSVTGATCKELASQPDVDGFLVGGASLKPEFVDIINAKQ",
+                  "from": 3,
+                  "to": 249
+                }
+              }
+            ]
+          }
+        ],
+        "coordinates": "https://swissmodel.expasy.org/repository/uniprot/P60174.pdb?range=3-249&template=4poc.1.A&provider=swissmodel",
+        "coverage": 0.992,
+        "created_date": "2026-09-25T23:30:24.839000+00:00",
+        "found_by": "HHblits",
+        "from": 3,
+        "gmqe": 0.968,
+        "identity": 100.0,
+        "ligand_chains": [
+          {
+            "count": 2,
+            "ligands": [
+              {
+                "description": "POTASSIUM ION",
+                "hetid": "K"
+              }
+            ]
+          },
+          {
+            "count": 1,
+            "ligands": [
+              {
+                "description": "BROMIDE ION",
+                "hetid": "BR"
+              }
+            ]
+          }
+        ],
+        "md5": "a8d44fc2c980a7677a3b54788d0fa323",
+        "method": "HOMOLOGY MODELLING",
+        "modelcif": "https://swissmodel.expasy.org/repository/uniprot/P60174.cif?range=3-249&template=4poc.1.A&provider=swissmodel",
+        "oligo-state": "homo-2-mer",
+        "provider": "SWISSMODEL",
+        "qmean": {
+          "acc_agreement_norm_score": 0.625,
+          "acc_agreement_z_score": -0.811,
+          "avg_local_score": 0.902,
+          "avg_local_score_error": 0.053,
+          "cbeta_norm_score": -0.008,
+          "cbeta_z_score": -1.358,
+          "interaction_norm_score": -0.026,
+          "interaction_z_score": 1.262,
+          "packing_norm_score": -0.36,
+          "packing_z_score": -0.019,
+          "qmean4_norm_score": 0.782,
+          "qmean4_z_score": 0.439,
+          "qmean6_norm_score": 0.79,
+          "qmean6_z_score": 0.484,
+          "ss_agreement_norm_score": 0.802,
+          "ss_agreement_z_score": 1.928,
+          "torsion_norm_score": -0.378,
+          "torsion_z_score": 0.659
+        },
+        "similarity": 0.613,
+        "template": "4poc.1.A",
+        "template_qsqe": 1.0,
+        "to": 249
+      }
+    ],
+    "uniprot_entries": [
+      {
+        "ac": "P60174",
+        "id": "TPIS_HUMAN",
+        "isoid": 1
+      }
+    ]
+  }
+}

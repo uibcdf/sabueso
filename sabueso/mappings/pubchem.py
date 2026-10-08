@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
-from sabueso.core.errors import SchemaError
+from sabueso.core.errors import ConnectorError, SchemaError
 from sabueso.core.source_assertion_store import make_source_assertion
 
 from .base import get_in
@@ -119,6 +119,12 @@ def map_compound(pubchem_json: Dict[str, Any], retrieved_at: str) -> Dict[str, A
 
     p0 = _property_record(pubchem_json)
     record_id = str(p0.get("CID", ""))
+    # The summary-page title is source descriptive text, never a structure key.
+    title = p0.get("Title")
+    if title is not None and title != "":
+        if not isinstance(title, str) or not title.strip():
+            raise ConnectorError("PubChem Title must be nonblank native text.")
+        add("names.canonical_name", title, metadata={"pubchem_property": "Title"})
 
     mw = p0.get("MolecularWeight")
     if mw is not None:

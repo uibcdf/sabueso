@@ -2,6 +2,7 @@
 
 import copy
 import importlib.util
+import json
 from pathlib import Path
 
 import pytest
@@ -27,11 +28,111 @@ def test_the_page_is_generated_from_the_registry(data):
     assert page == registry.render(data), "run: python tools/source_registry.py --write"
 
 
+def test_packaged_catalog_preserves_all_decisions_and_separates_profile_statuses(
+    data, monkeypatch
+):
+    from sabueso.tools.db import _http
+    from sabueso.tools.sources import get_catalog
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("Reading source metadata must not acquire data")
+
+    monkeypatch.setattr(_http, "urlopen", forbidden)
+    expected = json.loads(registry.catalog_export(data))
+    catalog = get_catalog()
+    assert catalog == expected
+    assert Path(
+        "sabueso/resolver/source_catalog.json"
+    ).read_text() == registry.catalog_export(data)
+    by_id = {r["id"]: r for r in catalog["resources"]}
+    assert len(by_id) == len(data["resources"])
+    assert {r["status"] for r in by_id.values()} >= {
+        "in_use",
+        "deferred",
+        "retired",
+        "evaluating",
+        "out_of_scope",
+    }
+    for profile in catalog["profiles"].values():
+        assert all(by_id[r]["status"] == "in_use" for r in profile["in_use"])
+        assert all(
+            by_id[r]["status"] == status
+            for status, members in profile["other_statuses"].items()
+            for r in members
+        )
+    assert by_id["alphamissense"]["limit"]["value"] == 10000
+    assert by_id["mobidb"]["module"] == [
+        "sabueso.tools.db.mobidb",
+        "sabueso.mappings.mobidb",
+    ]
+    assert "verified" not in catalog["profiles"]
+    catalog["resources"].clear()
+    assert get_catalog() == expected
+
+
 def test_every_source_module_is_in_use(data):
     in_use = {
         m for r in data["resources"] if r["status"] == "in_use" for m in r["module"]
     }
     assert "sabueso.tools.db.alphafold" in in_use
+
+
+def test_capabilities_distinguish_native_access_from_declared_card_contribution(data):
+    capabilities = registry.capability_inventory(data)
+    rows = capabilities["resources"]
+    assert rows["mobidb"]["get_functions"]
+    assert rows["mobidb"]["mapping_functions"]
+    assert rows["mobidb"]["declared_enrichers"] == []
+    assert rows["clinvar"]["declared_enrichers"]
+    assert rows["asd"]["adoption_status"] == "deferred"
+    assert rows["asd"]["get_functions"] == []
+    assert all(
+        r["live_health"] == "not_assessed_by_offline_inventory" for r in rows.values()
+    )
+    assert all(
+        r["consumer_acceptance"] == "not_assessed_by_offline_inventory"
+        for r in rows.values()
+    )
+
+
+def test_capabilities_keep_file_specific_public_local_scope_and_enricher_ownership(
+    data,
+):
+    from sabueso.enrichers import ENRICHERS
+
+    rows = registry.capability_inventory(data)["resources"]
+    assert rows["hpo"]["recovery_inputs"]["local_only"]
+    assert rows["hpo"]["recovery_inputs"]["repository"] == []
+    assert rows["civic"]["recovery_inputs"]["repository"]
+    assert rows["civic"]["recovery_inputs"]["local_only"] == []
+    assert sum(len(row["declared_enrichers"]) for row in rows.values()) == len(
+        ENRICHERS
+    )
+    for enricher in ENRICHERS:
+        assert any(
+            e["option"] == enricher.option and e["areas"] == list(enricher.areas)
+            for e in rows[enricher.registry_id]["declared_enrichers"]
+        )
+
+
+def test_capability_page_is_current_and_readers_are_detached_without_source_access(
+    data, monkeypatch
+):
+    from sabueso.tools.db import _http
+    from sabueso.tools.sources import get_catalog
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("Capability inspection must not acquire a source")
+
+    monkeypatch.setattr(_http, "_urlopen", forbidden)
+    assert registry.CAPABILITIES_PAGE.read_text() == registry.render_capabilities(data)
+    expected = get_catalog()["capabilities"]
+    changed = get_catalog()
+    changed["capabilities"]["resources"]["hpo"]["recovery_inputs"]["local_only"].clear()
+    assert get_catalog()["capabilities"] == expected
+    assert "Code declarations do not establish scientific completeness" in " ".join(
+        expected["limits"]
+    )
 
 
 @pytest.mark.parametrize(

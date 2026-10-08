@@ -10,7 +10,7 @@ from .quantities import field_node, quantity_columns, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
-CARD_SCHEMA_VERSION = "0.3.12"
+CARD_SCHEMA_VERSION = "0.3.13"
 
 
 def make_card_id(entity_type: str, subject_ref: str) -> str:
@@ -131,6 +131,72 @@ class Card:
     ) -> List[Relationship]:
         """Relationships carried by this card, optionally filtered."""
         return self.relationship_store.find(predicate=predicate, object_ref=object_ref)
+
+    @arg_digest()
+    def get_residue(
+        self,
+        position: int,
+        *,
+        sequence: str = "canonical",
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Read stored annotations at a 1-based canonical sequence position.
+
+        Each item retains its actual SourceAssertions. No sequence alignment,
+        structure projection, acquisition or prediction is performed.
+        """
+        from .residues import residue_view
+
+        return residue_view(self, position)
+
+    @arg_digest()
+    def get_residues(
+        self, *, sequence: str = "canonical", skip_digestion: bool = False
+    ) -> List[Dict[str, Any]]:
+        """Read every position of the stored canonical sequence."""
+        from .residues import residues_view
+
+        return residues_view(self)
+
+    @arg_digest()
+    def residue_knowledge(
+        self,
+        position: int,
+        *,
+        sequence_ref: str = "canonical",
+        source_assertions: List[Dict[str, Any]] | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Read supported type references, positional tracks and source regions.
+
+        ``residue_knowledge@1`` retains independent values, source sequence scope
+        and exact input support. Supplied assertions are read without card intake,
+        acquisition or prediction. Noncanonical sequences must be explicitly
+        declared in the original assertion metadata; no alignment is performed.
+        """
+        from .residue_knowledge import residue_knowledge
+
+        return residue_knowledge(self, position, sequence_ref, source_assertions)
+
+    @arg_digest()
+    def residue_composition(
+        self,
+        residues: List[int],
+        *,
+        sequence_ref: str = "canonical",
+        source_assertions: List[Dict[str, Any]] | None = None,
+        skip_digestion: bool = False,
+    ) -> Dict[str, Any]:
+        """Summarize an explicit set of positions on one identified sequence axis.
+
+        ``residue_set_composition@1`` counts each position once and retains
+        ambiguous types in the denominator. Original sequence support and input
+        revisions remain explicit. Selection is caller-declared, not a cavity
+        membership assertion; no geometry, alignment or source query is performed.
+        """
+        from .residue_composition import residue_composition
+
+        return residue_composition(self, residues, sequence_ref, source_assertions)
 
     @arg_digest()
     def structures(
@@ -935,6 +1001,31 @@ class Card:
         from sabueso.tools.card.storage import save_card_json
 
         save_card_json(self, path)
+
+    @arg_digest()
+    def to_notebook(
+        self,
+        path=".",
+        *,
+        title=None,
+        mode="full",
+        language="en",
+        include_code=True,
+        include_card_snapshot=False,
+        skip_digestion=False,
+    ):
+        """Write an offline notebook report of this exact card snapshot."""
+        from sabueso.tools.card.notebook import write_notebook
+
+        return write_notebook(
+            self,
+            path,
+            title=title,
+            mode=mode,
+            language=language,
+            include_code=include_code,
+            include_card_snapshot=include_card_snapshot,
+        )
 
     def to_sqlite(
         self, path: str, table: str = "cards", id_field: str | None = None
