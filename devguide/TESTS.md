@@ -1,370 +1,133 @@
 # Sabueso — Tests and Quality Gates
 
+Select verification by changed behavior and state its scope. Detailed provider
+cases are in [the native test reference](sources/NATIVE_TEST_REFERENCE.md); dated
+receipts remain [archived](archive/consolidation_2026-10-08/TESTS.md). A passing
+source test does not complete a scientific journey, consumer contract or release.
+
 ## Running the tests
 
-Agents run pytest through pytest-receptor, as MOLI's developer-tools policy asks
-(`MOLI_GUIDE.md`):
+Use Python 3.14 in the existing editable `molsyssuite@uibcdf_3.14` environment.
+Install Sabueso and participating installable workspace packages from their local
+checkouts with `python -m pip install --no-deps --editable .`. Verify editable
+metadata and import paths outside the checkout. Keep installed-artifact
+qualification separate from workspace development.
 
-Use the Python 3.14 development environment for routine local tests. The
-supported 3.11–3.13 interpreters remain in CI and release compatibility gates.
+Public/repository-input offline suite:
 
 ```bash
-python -m pytest -m "not online" --receptor=llm   # offline suite, the default
-python -m pytest -m online --receptor=llm         # online tests, on demand
+python -m pytest -n 12 -m "not online" --receptor=llm
 ```
 
-CI runs the offline suite with `--receptor=ci`. Read the receptor's summary line (`PASS`
-or `FAIL`, with the exit code) before doing anything that depends on the result.
+Full local suite including verified unshared native originals:
+
+```bash
+python -m pytest -n 12 -m "not online" --receptor=llm --local-source-inputs
+```
+
+The default excludes 25 native-only modules before import and explicitly skips
+ten mixed native cases. Synthetic binding/malformed-input and public sequence-axis
+tests remain active. The local option verifies original digests and includes that
+coverage; unavailable or changed originals fail before collection. See the exact
+[fixture delivery scope](sources/FIXTURE_DELIVERY.md). Test counts must identify
+which command ran. Historical 5,554-case receipts precede this separation.
+
+For a smaller changed scope, append its individual test paths. A private pilot
+execution, an online test and a public fixture replay are different acceptance
+routes. Run online tests only for an authorized concrete source/use scope; a
+fixture does not establish current live availability.
 
 ## Test kinds
 
-- **Offline tests** (`tests/core`, `tests/ops`, `tests/resolver`, `tests/tools`). They
-  need no network, and read frozen public responses from `temp_data/`.
-- **Acceptance tests.** Flows on real test systems, TcTIM (P52270) and HsTIM (P60174),
-  from public data. Examples: the knowledge baseline (`test_knowledge_baseline_offline`),
-  identity hygiene, measurement identity, the structural inventory.
-- **Online tests** (`@pytest.mark.online`). Smoke tests against live services. Any test
-  that reaches a remote endpoint must carry the mark. Some skip when a service is slow
-  or needs a key (BioGRID: `BIOGRID_ACCESS_KEY`).
-- **Schema guards.**
-  - Frozen cards (`temp_data/frozen_cards/`) of every published card schema must stay
-    readable, and must migrate.
-  - The recorded card shape (`schemas/card_shape_<version>.json`) must match the cards
-    built from the fixtures (`tools/card_shape.py`). An unannounced change fails.
-  - `tools/validate_schema.py` keeps `FIELD_PATHS.md` and the schema aligned.
-- **Registry guard.** Every source module is an `in_use` entry of
-  `sources/registry.yaml`, and the generated page matches it
-  (`tools/source_registry.py --check`).
-- **Argument contracts.** Every public signature has its digesters
-  (`ARGUMENT_CONTRACTS.md`).
-- **Installed-package gates.** Release candidates are tested from the exact conda
-  artifact, on Linux, macOS and Windows × Python 3.11–3.14, before publication
-  (`devtools/conda-build/README.md`). The 0.12.0 gate additionally rejects
-  source-shadowed/inconsistent or incomplete Ackredit imports, then runs unchanged
-  acquisition/attribution tests and the public saved-reader workflow outside both
-  checkouts. Public Pytest/Receptor tooling is installed with Conda; no runtime
-  source/pip overlay substitutes for the artifact. Ackredit is pinned to public
-  0.9.0/py_0 with its qualified SHA-256; a different digest or staging import fails.
-  The preliminary 0.12.0/py_0 file passed all 12 installed lanes, 36 integration tests
-  and the public workflow per lane. The producer/archive/matrix and independent
-  clean Linux pip-check receipt is
-  `devtools/conda-build/receipts/sabueso_0.12.0_staged_2026-10-03.json` (#110).
-- **Required Ackredit integration.** `tests/core/test_attribution_offline.py` exercises
-  automatic per-result attachment without a collector,
-  per-result/workflow reuse, exact support scope, real provider failure, saved readers,
-  context isolation and genuine fresh-process absence. All runtime CI lanes
-  obtain the required provider from public Conda; dedicated receiving lanes pin
-  Ackredit 0.9.0/py_0 on Python 3.11–3.14. No source overlay or Requires-Python
-  override remains. The generic preflight's unpublished-provider safeguards are
-  retained through synthetic negative rehearsals, independently of current delivery.
-  Dedicated lanes run unchanged integration tests and the public workflow outside
-  the checkout using installed code and public fixtures. The delivered portable
-  minimum is `ackredit>=0.9.0` (ackredit#22/#75/#80).
-  Fresh Linux receiving environments at Python 3.11–3.14 run the 36 unchanged
-  attribution/acquisition cases, public workflow and pip check with the planned
-  exact public core builds. Their artifact/source/installed-byte and origin receipt
-  is `devtools/conda-build/receipts/ackredit_0.9.0_public_2026-10-03.json`.
-  The consumer is a local wheel with all source modules/resources checked against
-  its commit; these are not Sabueso's staged Conda installed-package gates.
-  `test_source_acquisition_offline.py` checks automatic card/resolution/one-call
-  packet traces, final refresh pins, original versions/hashes, fixtures, archive
-  replay/reuse, evaluated-empty access, HTTP absence, missing fixtures, timeouts,
-  partial batches, retries, provider/pin-recording failure, separate nested collectors,
-  custom-client coverage and saved readers without new credit. Dedicated lanes copy
-  these unchanged tests alongside packet-attribution tests outside both checkouts.
-  `test_rcsb_acquisition_offline.py` adds native entry revisions (including zero
-  minor versions), source citations, differing citation forms, single/batch archive
-  reuse, empty/unavailable/unqueried/failure outcomes, chunking, fallbacks, partial
-  completed credit, retries and saved readers. CI and the installed matrix copy and
-  run it against the public Ackredit floor. The RCSB extension supersedes `py_0`
-  with the qualified `7739317`/`py_1` archive: all 12 installed lanes and clean
-  public installation pass 56 cases and the three-packet workflow. Publication,
-  unchanged promotion, public origins/bytes/API and identical-tag Zenodo are recorded
-  in `devtools/conda-build/receipts/sabueso_0.12.0_public_2026-10-04.json`.
-  `dependency_preflight.py --release` now passes the adopted public closure;
-  stale floors, omitted public pins and future unpublished providers still fail.
-  Ackredit #81 tracks the earlier editable Git-version mismatch. The current
-  editable satisfies the published minimum; all workspace packages remain editable.
-  The latest primary-environment check reports unrelated external dependency
-  conflicts, recorded in `CHECKPOINT.md`; installed-candidate pip check passes.
+- Unit/contract tests verify errors, identities, assertion support, quantities and
+  transformations, including deliberately synthetic parser inputs.
+- Native response tests preserve qualified original wire/file content and scopes.
+- Integration tests combine resolution, cards/decks, packets, persistence and
+  original runtime/bibliography sidecars.
+- Independent-user tests exercise separate producer, inert reader and reacquisition
+  processes outside the checkout with exact original support.
+- Installed-artifact tests establish the behavior and complete dependency closure
+  of the exact built/published package, independent of workspace imports.
+
+## Behavior-based gate selection
+
+| Changed behavior | Select these test files / gates |
+| --- | --- |
+| Public arguments/diagnostics | `tests/core/test_argument_contracts_offline.py`; owning API cases; SMonitor/diagnostic cases |
+| Source/assertion identity and acquisition | `test_source_assertions_offline.py`, `test_source_acquisition_offline.py`, `test_source_access_offline.py`; owning source/mapping cases |
+| Native supplied files | `tests/tools/test_source_snapshot_offline.py`, `test_bound_native_snapshots_offline.py`; affected source tests with applicable public/local scope |
+| Source registration/card contribution | `test_source_registry_offline.py`, `test_enrichers_offline.py`, knowledge-state and packet coverage; `tools/source_registry.py --check` |
+| Fixture delivery | `test_fixture_delivery_offline.py`, `test_fixture_licensing_offline.py`; `tools/fixture_delivery.py --check`; prove public tests with local inputs absent |
+| Identity/relationships/selection | Owning resolver/mapping/aggregation/conflict tests; no sequence/name/number similarity merge |
+| Card/schema/migration | Card, migration and frozen-card tests; `tools/card_shape.py`, `tools/validate_schema.py`; unpublished additive changes only |
+| Quantities | Quantity/measurement/native-unit tests, seals and non-default unit policy across serialization and consumers |
+| Pinned persistence/packets | `test_knowledge_store_offline.py`, `test_knowledge_packets_offline.py`; historical pins, tampering, foreign/missing states, migration |
+| Derived residue knowledge | `test_residue_knowledge_offline.py`, `test_residue_tracks_offline.py`, `test_residue_composition_offline.py`; declared axes, support and ambiguous denominator |
+| Terms/admission | `test_terms_offline.py`, `test_packet_terms_offline.py`, `test_disease_deck_admission_offline.py`; original kept/excluded support |
+| Attribution/literature/clinical | Source acquisition and relevant attribution/extraction/article/reference tests; original portable sidecars and bibliography gaps |
+| Independent scientific journeys | `test_user_journeys_offline.py`, `test_molecule_target_journey_offline.py`, `test_disease_entities_journey_offline.py`; public examples and original readers |
+| HK2/notebook reports | `test_hk2_test_system_offline.py`, `tests/tools/test_card_notebook_offline.py`; exact saved card/report regeneration |
+
+Core filenames in the table are relative to `tests/core/` unless another directory
+is stated. Broaden the selected scope when changes affect shared contracts, schemas
+or multiple routes. The full offline suite is a code checkpoint; it is not required
+for every documentation-only or exploratory change.
 
 ## Clinical registry and bibliography guards in development
 
-`test_clinicaltrials_acquisition_offline.py` checks both registry operations,
-version/page/entry scope, continuation after empty pages, chunks, invalid envelopes,
-conflicting duplicates, repeated tokens, reuse and partial completed credit.
-Unavailable fixtures never become biological negatives. Explicit native reference
-lookup and three separately queried Europe PMC articles preserve native PMID,
-pointer forms, host citations, full personal/collective authors, saved CSL-JSON and
-BibTeX readers, concurrent context and provider failure. Existing clinical assertions
-and frozen card shape remain unchanged. `test_article_metadata_offline.py` adds
-mixed and collective-only author regressions (#128). Both test modules are copied
-and executed unchanged outside the checkout by installed-provider CI and the
-future staged package matrix; this local slice is not yet publicly delivered.
+Native ClinicalTrials.gov study/reference observation, exact integrity, explicit
+Europe PMC bibliography and collective authors preserve separate requested scopes,
+original sidecars, missing/failed/unqueried states and publication pointers. The
+[clinical report](pending_proposals/clinical_registry_checkpoint.md) records its
+receipts; complete clinical breadth and bibliography remain #108 work. When this
+slice enters a journey, test independent reading and reacquisition without adding
+credit or following unasked links.
 
 ## Traceability and extraction guards delivered in 0.13.0
 
-`test_indication_bibliography_offline.py` guards the development ChEMBL reference
-projection: both indication queries, exact native grouped identifiers and row/page
-bases, overlapping disease queries, duplicate/alternative reference forms, later
-failures, original archive versions/times and empty/unavailable/unqueried outcomes.
-Malformed and identifier-only forms keep explicit gaps and unchanged raw returns.
-Host citation preservation, per-reference roles, concurrent queries and inert
-CSL-JSON/BibTeX exports are checked. The file runs unchanged outside the checkout
-in installed public-provider CI and future staged installed-package gates.
-
-`test_chembl_acquisition_offline.py` verifies paginated/chunked access, native releases,
-original document citations, archive reuse/replay, retries, partial received-page credit,
-fixtures, empty answers and failures. `test_rule_literature_extraction_offline.py`
-verifies exact namespaces/token boundaries, Unicode offsets, repeated occurrence
-support, original rule acquisition, input identity, saved attribution and provider
-failure. Both run unchanged outside the checkout in installed-provider CI lanes.
-
-`test_literature_intake_offline.py` adds original support/receipt replay, inert
-store and card readers, saved historical pins, refresh without rerunning extraction,
-explicit missing-sidecar gaps, alternative fragments, empty fragment scope, provider
-failure, exact subject/refused inconsistent closure and terms-profile boundaries.
-It also runs unchanged in installed-provider lanes and future staged artifact gates.
-
-`test_pubchem_acquisition_offline.py` covers compound/structure/BioAssay traces,
-native per-assay revisions (including zero), caps/chunks, original PubMed pointers,
-depositor context, POST-body identity, archive reuse/replay, retries, evaluated-empty
-access, rejected inputs, missing fixtures, offline unqueried access and partial
-received-row credit after later failures. Public fixture cards, refresh, saved
-readers, nested collectors, custom-client gaps and provider failure are exercised.
-These tests also run unchanged outside the checkout with public Ackredit 0.9.0.
-
-`test_bindingdb_acquisition_offline.py` covers REST/fixture/mirror queries, native
-response/manifest identities, version and cutoff bases, caps/order, DOI/PubMed
-forms and host citation preservation, archive reuse/replay, retries, decoded-empty
-responses, missing fixtures, offline-unqueried access, original failures and partial
-received-data credit. Mirror corruption, public card storage/refresh, nested
-collectors, inert readers, provider failure and custom-client gaps are exercised.
-The #114 regressions distinguish source-declared empty strings, unexpected status,
-malformed/unexpected payloads, default shared-transport retries, archived empty
-replay, fixture absence and card-level not-found outcomes without failure warnings.
-These tests run unchanged in installed-provider and future staged gates.
-
-`test_disease_explanation_offline.py` checks the five-source public disease group,
-selected annotation members, multi-hop MedGen/MONDO support, hierarchy steps,
-exact historical card/item pins, missing support, selection/qualifier alternatives,
-ungrouped/conflicting identity and unqueried context, inert attribution and argument
-validation. Versioned grouping guards (#115) reverse relationship insertion order,
-retain converging/conflicting/unfinished MedGen branches, direct naming conflicts,
-source/version differences, qualifier alternatives and all hierarchy paths. Explicit
-`@1` reproduces the historical lookup/partial explanation at the unchanged card pin;
-default `@2` never chooses an ambiguous target. These tests also run unchanged
-outside the checkout in installed-provider CI and future staged gates.
-
-`test_knowledge_state_explanation_offline.py` checks exact row/classification
-parity, selected and competing support, conflicts, UniProt absence/relationship
-coverage, unqueried curation, empty/failure/cut/partial reports, area-specific
-Europe PMC counts, original report locators and historical item pins. Missing
-field/relationship/conflict support stays partial rather than hiding behind a
-derived absence. Original UniProt versions survive reversed support order (#116).
-Selectors are digested; readers stay inert. The tests run unchanged outside the
-checkout with the public provider and in future staged installed-package gates.
-
-`test_bioactivity_explanation_offline.py` checks public TcTIM/HsTIM group/class
-parity, exact source versions, coarser stated precision with units, declared copies,
-assay/precision/connectivity selectors, copy-only voters, group disagreement,
-cross-group discordance, direct-assay filtering and non-default quantity thresholds.
-Ranges, single-point concentrations, unknown units, not-determined measurements,
-ambiguity/candidate support, consistency flags, stored identity locators, missing
-lineage, historical pins, ArgDigest and inert detached readers have regressions.
-The #117 guards cover missing activity-only originals, successful exact pointers,
-assay fallback and later statement resolution, both current and historical.
-Diagnostic completeness changes neither groups/classes nor original copy support;
-readers remain inert, and later acquisition cannot resolve an older pinned card.
-The file runs unchanged with public Ackredit outside the checkout in installed
-CI and future staged gates. No new source fixture or stored card field is introduced.
-
-`test_ligand_explanation_offline.py` checks public TcTIM/HsTIM native site/crossing
-parity, distinct protein/molecule pins, source-stated identity and actual class/name
-choices, quantity thresholds, numbering/absent-annotation distinctions and
-instance-level spanning. Relevance statements, selected/competing field support,
-missing assertions/conflict support, duplicate deck members, historical card/deck
-reads, exact selectors and detached inert readers have regressions. The existing
-ligand count correction (#118) checks distinct groups across matched molecule/parent
-items, declared copies, statement restatements, same-source independence, ambiguity,
-discordance, copy-only fallback and assay filtering. Versioned current/legacy counts,
-comparisons, exact counted ids, historical source support and ArgDigest have guards.
-The file runs unchanged
-outside the checkout with public Ackredit and in future staged installed gates.
-
-`test_chemical_identity_acquisition_offline.py` covers CCD batches and both UniChem
-lookup methods: normalized iterable queries, POST/wire/decoded identities, original
-times and archive references, retries, empty/missing-fixture/offline/failure outcomes,
-received subsets before later failures, native source forms and citation roles.
-Threaded capture context, molecular resolution, ligand-deck input/result pins,
-detached readers, unknown versions, provider/pin failures and custom gaps have guards.
-The file runs unchanged in public-provider CI and future staged installed gates.
-
-`test_pdbe_kb_acquisition_offline.py` covers both aggregate queries, native structural
-scope and record/count bases, raw return parity, citation roles, original archive
-times/wire identities, retries, empty/HTTP-not-found outcomes, unavailable and malformed
-fixtures, unqueried offline access, processing failures and concurrent capture.
-Card/refresh pins, stored-reader inactivity, provider failure and custom-client gaps
-have guards. The file runs unchanged in public-provider CI and future staged gates.
-
-`test_alphafold_acquisition_offline.py` covers model-list queries, native per-record
-versions/identifiers, unknown latest versions, historical-version/URL/provider
-declarations and citation roles. Original archive times/wire identities, retries,
-empty/absent/unavailable/unqueried outcomes, unexpected envelopes, partial lists,
-raw return parity, card/refresh pins, saved-reader inactivity, provider failure,
-custom gaps and concurrent capture have guards. The file runs unchanged with the
-public Ackredit floor in installed-provider CI and future staged gates.
-
-`test_interpro_acquisition_offline.py` covers native family-site residue queries,
-signature/member/position context, header/fixture releases (including zero/unknown),
-resource-description roles, original archive time/wire/header reuse, transport retries,
-empty bodies/objects/HTTP 204, ambiguous absence, HTTP 404 and original failures.
-Missing/malformed fixtures, unexpected/partial signature shapes, raw parity,
-card/refresh pins, inert saved readers, provider failure, custom-client gaps and
-concurrent capture have guards. The file runs unchanged with the public Ackredit
-floor in installed-provider CI and future staged gates.
-
-Local diagnostic wheels additionally pass
-`devtools/conda-build/check_local_wheel.py <exact-wheel>` before installation (#113):
-module/resource bytes and membership must match the source, excluding generated
-`_version.py`. The negative regression rejects stale, missing and ghost modules.
-Clean local wheel receiving tests are diagnostic evidence, not public Conda delivery.
-
-`test_persisted_pipeline_offline.py` launches independent producer, guarded reader
-and reuse processes over `examples/persisted_pipeline/`. Historical full/index pins,
-exact item support, native author/page citations, original versions, unavailable
-fixture outcomes and reused credit survive reacquisition. A different reader
-version and forbidden credit/source calls leave original records unchanged.
-Missing/altered files, result/scope/item misbinding, workflow bibliography/context
-loss and overwrite attempts are refused. Installed-provider and future staged lanes
-copy the unchanged script and tests outside both checkouts; libraries are installed.
-
-`test_oligomer_explanation_offline.py` checks public TcTIM/HsTIM view parity,
-source assembly alternatives/methods, actual partner-class branches, exact family
-members and agreement inputs, original versions (including zero/unknown), native
-identity bases, selected/competing/conflicting support and qualifier alternatives.
-Missing inputs, empty/failure/unqueried reports, unconfirmed numbering (#120),
-historical card/item pins and detached inert readers have guards. The file runs
-unchanged outside the checkout with public Ackredit in CI and future staged gates.
-The #120 guards cover default confirmed-numbering agreement `@2`, incompatible
-and missing sequence/indexing, qualifier conflicts, absent versus explicit empty
-contacts, partial family scope, missing comparison inputs and exact ArgDigest
-selectors. Explicit `@1` retains the legacy view/explanation at historical pins;
-new full/index packets declare `@2` and saved packet payloads remain unchanged.
-Stored card shape is unchanged.
+Per-source acquisition cases cover native bytes, query/time/version bases,
+empty/failure/reuse/retries/cuts and detached traces. Attribution, extraction,
+article metadata, pinned explanation and persisted-pipeline cases retain original
+scientific support separately from observed execution and bibliography. Saved
+readers forbid source access, derivation and new credit. Source-specific coverage
+and the detailed delivered cases remain in the archived test descriptions and
+[SOURCE_ACCESS.md](SOURCE_ACCESS.md).
 
 ## Independent-user journey acceptance (#112, after 0.13.0)
 
-`tests/core/test_molecule_knowledge_state_offline.py` guards the #122 correction:
-native molecular record/compound counts, unusable/unknown counts, true empty versus
-missing/partial/failed/unqueried outcomes, separate identity/indication/study areas,
-exact counting-report indexes, original version/support and inert pinned readers
-after a new head. `knowledge_state@5` and `knowledge_state_explanation@2` change
-derived output only; published cards and frozen packets keep their bytes/rules.
-The file runs unchanged outside the checkout in installed-provider/staged gates.
+The [journey acceptance report](pending_proposals/independent_user_journeys.md)
+records protein/comparator, molecule/activity and bounded disease/entity behavior.
+Examples live in `examples/user_journeys/`; regression tests run producers/readers/
+reacquisition in independent processes and reject modified or misbound artifacts.
+Original reports preserve their named format/rules and gaps. A current reader must
+not silently recompute an old report under new rules.
 
-`tests/core/test_user_journeys_offline.py` starts genuinely separate producer,
-reader and reacquisition processes for `examples/user_journeys/protein_comparison.py`.
-The reader has no fixture directory, uses a different reported Sabueso version,
-and refuses new acquisition/composition/credit. Tests verify exact historical
-card/deck/packet support, original reports, physical units, identity alternatives,
-unmapped positions, partial RCSB fixture access and bibliography after reacquisition.
-Missing/changed sidecars, mismatched comparison roles/report inputs/item pins and
-overwrite attempts are refused. These are local example/SDK acceptance gates,
-separate from installed-artifact and actual Nextia consumer qualification.
-
-`tests/core/test_molecule_target_journey_offline.py` independently produces, reads
-and reacquires `examples/user_journeys/molecule_target.py`. It verifies source-stated
-ChEMBL/CCD identity, exact molecular/target/deck pins, assay context, IC50 and
-single-point quantities, undetermined values, clinical indication support and
-unfetched trials, source versions, unavailable fixture scope and original citations.
-The reader refuses new acquisition, credit and scientific derivation. Missing
-workflow files, mismatched trace/packet/molecular/item bindings and altered assay
-statements are refused before export. Copy both example scripts when running
-outside the checkout; this is local application bookkeeping, not a shared format.
-`tests/core/test_disease_entities_journey_offline.py` starts separate producer,
-reader and reacquisition processes for `examples/user_journeys/disease_entities.py`.
-It preserves MONDO equivalence/unresolved EFO identity, target/drug metadata,
-scores/phases, exclusions/caps, exact card/group support and original partial
-runtime credit. Readers forbid acquisition, current-rule explanation and new
-credit, and need no fixtures. Missing workflow files, changed membership/support,
-wrong trace/member/item pins and overstated coverage fail before export.
-Copy all three example scripts together outside the checkout. Its development `@2`
-format checks native membership/input pins; `@3` adds MONDO observations and `@4`
-adds Open Targets/Orphanet observations and pinned disease-build traces. Readers
-keep original `@1`/`@2`/`@3`/`@4` reports and gaps readable. `@5` adds
-DISEASES/ClinVar/MedGen observation; underlying study bibliography remains partial. Misbound deck traces fail before export.
-
-`tests/core/test_disease_source_acquisition_offline.py` guards native Open Targets
-pagination/order/counts/versions, partial later-page failure, invalid/null answers,
-mixed-version/count refusal, full resource bibliography and host capture. Orphadata
-cases guard original XML identity/time across memory/archive reuse, unknown origins,
-SwissProt-index scope, validation pointers, fixture subsets and failed/unavailable/
-unqueried access. Both sources keep portable credit and provider failures preserve
-science. Disease-build cases verify exact input/support/deck/member pins, detached
-copies, saved readers without acquisition/credit, failed resolution and custom-client
-gaps. The unchanged file runs in installed-provider/staged lanes.
-
-`tests/core/test_disease_lookup_acquisition_offline.py` adds 64 regressions for
-DISEASES channel/file/index dates and unknown disk origins, native channel order
-and scores, single-pass iterable inputs, fixture subsets and partial channel failure.
-NCBI cases guard raw/normalized queries, build/update/accession version bases,
-per-gene counts and caps, overlapping UIDs, complete native summaries, malformed
-classification shapes, ambiguous/capped MedGen identity, missing/mixed fixtures,
-partial later failures, archive reuse/replay and credential-free recorded metadata.
-Original resource bibliography, host captures, provider failure and inert portable
-readers are covered. The unchanged file runs outside the checkout in installed
-provider lanes and future staged artifact gates.
-
-`tests/core/test_disease_deck_support_offline.py` guards development disease rules
-`@2`: complete native rows/order/counts/indication references, original MONDO and
-member identity pins, kept/unbuilt/capped support, inert saved readers after new
-heads, save-deck-only persistence and self-contained JSONL/SQLite reimport. Missing
-or wrong support, rank/score disagreement and rewritten embedded input are reported
-partial or refused atomically. Empty/failed source scopes and legacy metadata-only
-decks remain readable without fabricated statements. Terms include embedded
-sources; unsupported member-only admission is refused. The file runs unchanged
-in installed-provider and staged gates.
-
-`test_mondo_acquisition_offline.py` covers normalized term/equivalence queries,
-native OBO versions and byte identities, checksum verification, index-memory and
-archive reuse/replay, original scientific/runtime response times and unknown-origin
-client-clock fallback,
-fixture subset/absence scopes, retries and unavailable/unqueried/failed/unobserved
-outcomes. Unknown versions/origins remain explicit. Complete resource bibliography,
-concurrent host attribution, provider failure, original card/resolution pins and inert
-saved reads have guards. The unchanged file runs in installed-provider/staged gates.
-
-All three journey files and unchanged example scripts are copied into the installed
-public-provider CI lane and the staged installed-package gate. Their local installed
-SDK acceptance does not replace future remote matrix results for these workflow changes.
+Public TcTIM/HsTIM/HK2 inputs provide generic acceptance without private program
+content. Real consumer-owned Evidence, modeling and shared Recorda interpretation
+remain independent owner-local integration work; stand-in consumers cannot close
+those contracts.
 
 ## Fixtures
 
-- Fixtures are frozen public responses, saved as the source returns them (trimmed only
-  when stated).
-- Each set is declared in `temp_data/NOTICE.md`: source, what it holds, retrieval date
-  and licence. A test checks the declaration.
-- No private or pilot data, ever.
-- Refetching a fixture can change counts in other tests. Update them as findings, not
-  silently.
+Frozen public source responses keep their own declarations in `temp_data/NOTICE.md`.
+No private/pilot data enters fixtures. Preserve source, date, applicable licence,
+native revision basis and modifications. Code MIT does not license source data.
+
+The reviewed recovery inventory records repository versus local-only file delivery.
+Local-only originals are ignored and rejected from the Git index by the delivery
+gate; they remain available for explicit local native qualification. New fixtures
+need reviewed file decisions; changed bytes or source terms invalidate an old
+receipt. Unknown permission never becomes permission through a successful test.
 
 ## Local checks and CI checkpoints
 
-Select checks by the actual changed surface. Run every selected command on its
-own and read its exit status. A short documentation or research-evidence commit
-does not require the entire offline scientific suite. A change to public or
-numerical behavior needs targeted regressions; run the full offline suite at
-the next unskipped code checkpoint and inspect the CI run for that exact head.
-If a changed area is not covered by a targeted test, add or identify a
-meaningful guard before claiming it validated.
-
-Use the relevant commands below:
+Run each applicable gate separately and read its result:
 
 ```bash
 ruff format --check .
 ruff check .
-python -m pytest -m "not online" --receptor=llm
+python tools/fixture_delivery.py --check
+python -m pytest -n 12 -m "not online" --receptor=llm
 python tools/card_shape.py
 python tools/source_registry.py --check
 python tools/validate_schema.py
@@ -372,70 +135,43 @@ python devtools/moli_governance.py
 python devtools/dependency_preflight.py
 ```
 
-- Python code or tests: Ruff format/check and the affected pytest selectors;
-  run the full offline suite before an ordinary code checkpoint is declared
-  complete. Source, schema and quantity changes also need their specific
-  guards and scientific regression cases.
-- Source registry or generated source terms: `tools/source_registry.py --check`.
-  Card-shape and schema changes: `tools/card_shape.py` and
-  `tools/validate_schema.py`, plus the relevant tests.
-- `AGENTS.md`, `MOLI_GUIDE.md` or governance files: `devtools/moli_governance.py`.
-  Dependency metadata, Conda environments, recipes or CI acquisition:
-  `devtools/dependency_preflight.py` and the relevant package/CI checks.
-- Documentation and recorded evidence: validate changed links, examples and
-  generated content as applicable; use the docs build below for `docs/` or
-  docstring changes. Do not claim a scientific equivalence or package result
-  merely because a document check passed.
+When local native source code changes, include its explicit qualification selectors
+and a full local checkpoint as appropriate. Public CI validates its available
+repository-input scope; retain local-original receipts separately. Do not pipe a
+gate through `tail`/`grep` or chain a commit after a command whose exit code does not
+reflect the gate.
 
-Keep several exploratory commits local when remote visibility is unnecessary.
-For now, `[skip ci]` is limited to authorized direct documentation/evidence
-pushes whose applicable local checks pass and whose changes cannot affect
-runtime behavior, test inputs, package contents or publication. Code changes
-use an ordinary push; Sabueso has no accepted recovery route for skipped code
-pushes. Do not use the marker on a PR head with required checks, release
-candidate or publication route. A skipped run is not passing evidence.
-
-When `docs/` or a docstring changes, also build the documentation, failing on any
-warning. Use the environment of `devtools/conda-envs/docs_env.yaml`, with the checkout
-installed:
+Documentation/evidence changes need applicable link/example/generated-content
+checks. When `docs/` or a docstring changes, build with warnings fatal:
 
 ```bash
 sphinx-build -W --keep-going -b html docs <output directory>
 ```
 
-The API reference renders module docstrings, so a malformed RST list in a docstring
-fails this build.
+Use the provisioned docs dependencies with the checkout installed. Nitpicky `-n`
+is additional qualification; unresolved references from that run are not a passing
+nitpicky receipt. Source shape and published frozen-card gates remain separate.
 
-- Run each selected gate on its own and read its result.
-- Never pipe a gate through `tail` or `grep`, and never chain a commit after a command
-  whose own exit code does not reflect the gate. Both have let a failure through before.
-- After an unskipped push, verify CI by the exact commit SHA. Preserve local
-  check results and mark deferred remote checks as pending until they run.
+Batch short exploratory commits locally when remote visibility is unnecessary.
+`[skip ci]` is allowed only for locally checked documentation/evidence direct pushes
+with no executable, packaging or test-input effect. Code checkpoints use an
+unskipped push and exact-SHA CI inspection through gh-run-receptor. GitHub's
+conclusions remain authoritative; native `gh run view` is the fallback. Skipped or
+older runs are not current validation. Source/data delivery must pass before a
+public checkpoint, then [staged installed-package gates](../devtools/conda-build/README.md)
+qualify releases across the required OS/minor matrix.
 
 ## Quality rules for knowledge
 
-- Every selected field has at least one entry in `source_assertion_ids`, and every
-  referenced id exists in the card's `source_assertion_store`.
-- Relationships cite SourceAssertions present on the card.
-- Quantities are stored as `{value, unit}` and sealed. The seal is verified on load.
-- Derived knowledge carries its rule. A test fixes each rule's observable behaviour.
-
-`test_disease_deck_admission_offline.py` checks all five use contexts, whole embedded
-support, unused/unknown/per-record raw statements, non-commercial restrictions,
-broken membership bindings (including another candidate's valid basis and a changed
-resolved identifier with unrelated original support, #126), historical exclusions, empty/repeated admission and
-current-registry changes. JSONL/SQLite exports and advanced-head store reads retain
-exact original support and admission decisions without source access or new credit.
-The unchanged file runs with its support fixture module outside the checkout in
-public-provider CI and future staged installed-package gates. Finer filtering by terms of use
-is deliberately refused rather than treated as completed admission.
-
-`test_article_metadata_offline.py` guards explicit PMID/PMCID/DOI identity, core
-bibliographic projection, full native authors, service-version/unknown article-revision
-bases, original wire/archive reuse, raw publication-term retention, empty/failure/
-unavailable/unqueried/partial outcomes and rejected ambiguity. Separate binding support,
-alias/metadata alternatives, original receipt consistency, incomplete bibliography,
-unknown fragment rights, original store/card refresh, exact full/index packet support,
-inert readers, source-scoped citations, custom gaps, provider failure and concurrent
-queries are covered. The file runs unchanged outside the checkout in public-provider
-CI and future staged installed-package gates.
+- Every selected value retains supporting SourceAssertions; selection preserves
+  alternatives and conflicts. Relationships retain their exact assertion support.
+- Physical quantities keep `{value, unit}` and verified seals through boundaries.
+- Derived classes/groups/states/findings carry named versioned rules and are never
+  stored as SourceAssertions.
+- Identity merging requires source-stated correspondence; equal names, sequences
+  or residue numbers are insufficient.
+- Missing, failed, unasked, unavailable and source-stated absence remain distinct.
+- Every pin returns its original verified state or fails; it never falls back to
+  a newer state. Independent saved readers add no acquisition or credit.
+- Each receipt identifies code/artifact, input scope, environment and applicable
+  limits; a local diagnostic wheel is not a public release.

@@ -13,7 +13,7 @@ other.
    vertical pilots, pull platform development: a pilot needs something, Sabueso builds
    the smallest useful slice, and real use shows what is missing. Pilots are private.
    Their needs enter this public repository phrased generically, with public test
-   systems (TcTIM and HsTIM, public data only).
+   systems (TcTIM, HsTIM and HK2, public data only).
 
 The pilot route decided the *order* of the work since 2026-09-23, not its *scope*. The
 objectives of the foundational plan stay objectives. This document tracks each one's
@@ -50,6 +50,21 @@ integrity corrections and an independent persisted application exercise. It adva
 foundational identity/support/schema/reference integrity and receiving-pipeline
 traceability. Schema 0.3.12 is frozen. Broader #108/#91/#92 and consumer-owned
 Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain open.
+
+## Current consolidation after recovery (#112)
+
+Approved by the maintainer on 2026-10-08, following the
+[global audit](pending_proposals/post_recovery_global_audit.md). Consolidate fixture
+delivery and current guidance, expose source maturity, then integrate selected
+recovered capabilities into the approved journeys and parallel consumer acceptance.
+This serves both routes; it does not replace their objectives or make provider
+count a scientific acceptance criterion. Current state: [CHECKPOINT.md](CHECKPOINT.md).
+Detailed recovery chronology is [archived](archive/consolidation_2026-10-08/ROADMAP.md).
+The local consolidation is implemented and verified in the
+[consolidation report](pending_proposals/post_recovery_consolidation.md): protected
+inputs, scoped full suites, structured guides, generated capability inventory,
+protein residue context, measured costs and a ready MOLI documentation PR.
+Public code delivery and real shared consumer-contract acceptance remain separate.
 
 ## Previous release: 0.12.0 (#110)
 
@@ -176,7 +191,7 @@ Status: **done**, **partial** (part delivered, the rest named), **pending**, or
 | Peptide cards | pending | `entity_type: peptide` exists in the schema; no peptide source or view (CPPsite queued) |
 | Inputs: identifiers, names | done | UniProt, `pdb:`, `pubchem:`, `chembl:`, `pdb.ligand:`, `inchikey:`, name + organism |
 | Inputs: SMILES, InChI | done | matched by PubChem, never a computed key (`pubchem_structure_lookup`, #93) |
-| Inputs: sequence (FASTA), structure files | pending | resolution by sequence or structure file would need its own identity rules |
+| Inputs: sequence (FASTA), structure files | partial development | explicit `exact_sequence_candidates@1` accepts raw/FASTA, verifies full archive/current canonical sequences and retains ambiguity, caps, failures and unqueried isoforms. Automatic sequence/structure-file resolution remains pending and needs its own identity rules. |
 | Disease associations of a protein | done | `annotations.disease` (#39) |
 | Ligands with a role (inhibitor…) | changed | a role is a derived class, never asserted (#25): `bioactivity_class@3`, `ligand_deck` |
 | Deck of inhibitors of a protein | done | `ligand_deck(card)` with derived classes |
@@ -270,47 +285,44 @@ directions until a bounded use and acceptance criteria are agreed.
 ### Immediate resumption sequence
 
 Current state: [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here).
-Detailed acceptance and local receipts: [journey audit](pending_proposals/independent_user_journeys.md)
-and [clinical checkpoint](pending_proposals/clinical_registry_checkpoint.md).
-This sequence narrows the approved roadmap; it does not replace either route.
+Detailed acceptance: [global audit](pending_proposals/post_recovery_global_audit.md),
+[journey audit](pending_proposals/independent_user_journeys.md) and
+[clinical checkpoint](pending_proposals/clinical_registry_checkpoint.md).
 
-1. **Code checkpoint completed (2026-10-06).** The accumulated implementation
-   and public examples/fixtures/guards are pushed to `origin/main` in `413cdf6`,
-   with the UTF-8 test correction in `74c8c3d`. [Exact-head CI](https://github.com/uibcdf/sabueso/actions/runs/37438528677)
-   passes 15/15 jobs and MOLI governance passes. `CHECKPOINT.md` records
-   the final receipt; no repeat is needed without a new change. #122–#128 remain
-   open for public-package delivery. Candidate staging and a release remain
-   separate work; no release number is decided here. Resume at step 2.
-2. **Integrate the bounded clinical bibliography into a saved public journey
-   (#108/#112).** Source-level registry/reference observation and explicit Europe PMC
-   metadata are implemented. Next, declare which cited NCT ids and native PMID are
-   in the journey's requested scope, save original per-result/workflow sidecars,
-   and verify independent saved readers and reacquisition. Keep genuine disease
-   `@1`–`@5` reports unchanged; version a changed example/manifest. Declare all
-   unqueried links and remaining bibliography gaps. Refresh the broader live
-   showcase separately; fixtures are not live-source acceptance.
-3. **Discuss the next bounded contract, then implement it.** Choose one explicit
-   non-protein question/result for #71/#91, or finer filtering by terms of use for
-   #29. Filtering needs a separate derived view/deck with declared kept/excluded
-   support and its original references/citations; conservative admission already
-   exists. Decide shared versus member scope and partial/missing-support behavior
-   before implementation. No silent deletion from original saved knowledge.
-4. **Continue the foundational expansion and parallel consumer work.** Scope peptide
-   identity and one scientific use (#112/#83/#95), as described below. Keep Nextia
-   persistent Evidence acceptance and MOLI/Recorda recording with their owners;
-   independent SDK work can proceed while those consumers develop.
+The five-step recovery consolidation is locally verified; do not restart native
+provider triage or repeat the archived chronology. Resume with:
 
-The shared development environment's current external dependency conflicts are a
-separate maintenance task. Diagnose their ownership and compatibility before
-changing shared package versions; use clean installed qualification environments
-for artifact claims. Do not treat those conflicts as a Sabueso source defect.
+1. **Qualify a public code checkpoint.** Preserve the 49/37 input boundary and both
+   scoped pytest receipts; create reviewable code checkpoints and verify exact-SHA
+   CI before remote qualification. Installed-artifact/release gates remain separate.
+2. **Return to real consumer use.** After exact-SHA CI, revalidate the applicable
+   private MOLI Python/Jupyter workflows under
+   [#132](https://github.com/uibcdf/sabueso/issues/132). Keep the pilot checkout
+   read-only and all original content/results in a private workspace. Check
+   scientific usefulness, support/unknowns/units, saved readers/reacquisition and
+   measured cost; expose only generic component findings publicly. Prior pilot
+   receipts and public fixtures do not qualify the recovered checkpoint.
+3. **Advance the next bounded scientific slice.** Source-active-site residue context
+   and selected composition are now in protein example `@2`, with original `@1`
+   readers preserved. Continue the approved molecule/activity and disease/entity
+   acceptance. The next clinical bibliography slice (#108/#112) declares which native
+   NCT/PMID links are asked, saves original per-result/workflow sidecars and reports
+   all unqueried links. Keep original disease `@1`–`@5` reports unchanged.
+4. **Coordinate consumer-owned acceptance.** Review MOLI PR #65's evidence correction
+   and perform the smallest ready exercise when Nextia's persistent slice exists.
+   Shared references (#53/MOLI #3), packets (#71/MOLI #22) and recording
+   (#108/MOLI #36) keep their respective owners. Extend the recorded bounded
+   time/memory/storage measurements before optimizing larger workloads.
 
-Both routes continue. An observed pilot blocker takes priority in its smallest
-useful form. Foundational work also proceeds on its own: a scientist must be able
-to use Sabueso without a MOLI project, while MOLI consumes the same authoritative
-knowledge through agreed contracts. Consumer readiness does not block independent
-SDK, documentation or scientific improvements. Public acceptance uses public data
-and generic questions only.
+Keep guide/registry/capability freshness and fixture protection as normal gates for
+each next slice, rather than separate provider-count milestones.
+
+After these bounded slices, choose one explicit non-protein query/explanation
+(#71/#91) or finer use-term filter (#29) before implementation. Filtering produces
+a separate declared view/deck with kept/excluded support; it never deletes original
+knowledge silently. Continue peptide scoping and foundational work below.
+Qualify public code checkpoints and exact CI before staged release work; earlier
+`74c8c3d` CI and local receipts do not qualify new recovery changes.
 
 ### 1. Complete three independent-user journeys
 
@@ -444,6 +456,9 @@ local-mirror work #101 remains postponed until the maintainer reschedules it.
   features and ligand decks. Preserve units, numbering, versions and support across
   exchanges. MOLI owns the Sabueso-to-MolSysSuite boundary; MolSysSuite governs its
   internal member contracts. Modeling and calculation remain with their owners.
+  [Reviewed legacy projection requirements](archive/local_work_2026-07/consumer_projection_requirements.md)
+  retain concrete receiving cases for owner review, without an accepted exchange
+  schema or new exporter claim.
 
 These are coordination tasks, not consumer implementations to add inside Sabueso.
 Keep consumer acceptance separate from standalone journey acceptance.

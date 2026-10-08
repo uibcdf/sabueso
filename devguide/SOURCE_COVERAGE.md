@@ -1,5 +1,111 @@
 # Sabueso — Source coverage
 
+The twenty-eighth follow-up reviews **five small-molecule implementation originals**
+and recovers ChEBI's native name and formula into independent SourceAssertions.
+Current identity, resolver conflict, molecule/ligand deck and clinical workflows
+replace the old implemented paths. Direct ChEBI admission, additional qualified
+chemical metadata and patent/clinical acceptance requirements are preserved with
+concrete conditions in the report, independently of the stash. This adds no source
+adoption or schema change. Full offline checkpoint: **5472 passed in 155.74 seconds**,
+pytest-receptor with **12 workers**, 10 expected warnings, existing editable Python
+3.14.7. The stash and 87 originals remain intact. Other implementation areas still
+need residual-gap assessment; stash deletion is not yet ready for a recommendation.
+See [follow-up 28](archive/local_work_2026-07/followup_28_small_molecule_recovery.md).
+
+At the twenty-seventh checkpoint, the follow-up **finished the pending-provider actionability review**.
+None of ASD, GtoPdb, COSMIC, ELM, BioCyc, OMIM or CASTp has a qualified original
+input/access/rights condition available in this recovery. All seven are now
+`deferred`, with individual `revisit_when` triggers tracked in [#83](https://github.com/uibcdf/sabueso/issues/83)
+and access follow-up in [#95](https://github.com/uibcdf/sabueso/issues/95).
+This is disposition, not adoption: the expanded 13-resource queue is **6 scoped /
+0 active pending / 7 conditional deferrals**; the original 27-list is **21 scoped /
+0 active pending / 6 conditional deferrals**. Historical 87-source catalog is
+**65 in use / 0 evaluating / 18 deferred / 3 retired / 1 out of scope**. Other
+registry evaluations are outside this recovered candidate set. Source grants and
+existing reader behavior do not change. The stash and 87 originals remain intact.
+Continue with other preserved implementation requirements; reopen a provider when
+its named condition changes. See [follow-up 27](archive/local_work_2026-07/followup_27_provider_disposition.md).
+
+At the twenty-sixth checkpoint, the follow-up recovers **five bound original-file pathways** for
+AlphaFill metadata, GlyGen protein detail, SIFTS mappings, LIGYSIS result HTML and
+LIGYSIS structure-mapping JSON. Four explicit snapshot clients reuse qualified
+native readers, preserve original byte hashes and declared retrieval context, and
+reject foreign source/kind/query/revision declarations before file access. Native
+validation and standalone assertion support remain mandatory. Plain/gzip originals
+work without source requests. This utility adds no provider adoption: expanded
+queue stays **6 scoped / 7 pending**, original 27-list **21 / 6**. Stash and 87
+originals remain intact, index empty, recovery local/uncommitted/unpushed.
+See [follow-up 26](archive/local_work_2026-07/followup_26_bound_native_snapshots.md) for qualification and remaining intake boundaries.
+
+The twenty-fifth follow-up recovers **ChannelsDB native tunnel membership and
+channel annotations**. One public existing-result GET retains the unchanged
+751462-byte 1tqn response: 26 channel occurrences, 910 layers and seven independent
+channel comments/references. Native residue-flow, HetResidues and layer membership/
+index arrays remain literal and separate across all twelve categories, including
+MOLE/CAVER representation differences. No inferred identity, annotation join,
+geometry conversion, canonical placement, job or schema/card enrichment is added.
+Expanded queue stays **6 scoped / 7 pending**, original 27-list **21 / 6**. Stash
+and 87 originals remain intact; the index is empty and recovery stays local.
+See [follow-up 25](archive/local_work_2026-07/followup_25_channelsdb_membership.md) for qualification and remaining boundaries.
+
+The twenty-fourth follow-up recovers **LIGYSIS native structure mapping** through
+one documented read-only POST for HsTIM context and PDB 7t0q. The unchanged 9185-byte
+response supplies four directed residue tables, two explicit chain-to-accession
+declarations and eight native chain remappings. Online/fixture reading and 14
+standalone assertions preserve original support and separate table identities.
+The structure is echoed; protein/segment remain caller/transport context. Scientific
+revisions and residue/chain namespaces remain unknown; no old-page join or current
+canonical projection occurs. Expanded queue stays **6 scoped / 7 pending**, original
+27-list **21 / 6**. Stash and 87 originals remain intact, index empty, recovery local.
+See [follow-up 24](archive/local_work_2026-07/followup_24_ligysis_structure_mapping.md) for qualification and remaining boundaries.
+
+Development LIGYSIS now also maps the received directed correspondence dictionaries
+for two chains of one structure, with 491 native entries per direction. Literal
+parent/key case, signs, order and original support survive. Page query does not bind
+chains to the protein; numbering namespaces, insertion codes and scientific revisions
+remain unknown. No projection or source adoption is added. See
+[follow-up 23](archive/local_work_2026-07/followup_23_ligysis_correspondences.md).
+
+Development LIGYSIS additionally maps the initial displayed residue table from an
+already received segment page. Twenty native HsTIM fixture rows retain original
+numbering/alignment columns, AA/SS and DS/MES/p labels, percent RSA and independent
+support. Selected-site identity, full source sequence and all relevant revisions
+remain unknown. Other site tables, coordinate projection and automatic card intake
+remain unqualified. This adds a scoped reader slice and does not reduce the provider
+queue. See [follow-up 22](archive/local_work_2026-07/followup_22_ligysis_residue_panel.md).
+
+Development FDA OOPD now reads original public detailed-page artifacts on
+requested page subjects. Designation and approval tables, procedural dates, blank
+exclusivity fields, N/A and sponsor qualifiers stay independent. The HTML does not
+echo cfgridkey; the requested URL or supplied declaration binds a page, not a stable
+designation, product or protein ID. No target/modality defaults, clinical conclusion,
+search completeness or automatic card enrichment. The later shared-transport live
+check receives HTTP 404; native supplied-artifact reading is qualified separately
+from restored automated access. See
+[follow-up 20](archive/local_work_2026-07/followup_20_pending_resource_recovery.md).
+
+At follow-up 20 the expanded queue had 6 scoped resources / 7 pending, and the
+original 27-list had 21 scoped readers / 6 pending. Follow-up 27 closes those active
+pending rows as conditional deferrals without increasing reader counts. Wider
+unqueried scopes and FDA online access remain separate from provider disposition.
+
+Development TTD now supplies exact native target-listing context and iPTMnet
+supplies public HTML substrate-report rows with independent native groups.
+TTD entry-name/placeholder cross-references do not identify a protein; its unknown
+data terms keep sharing unqualified. iPTMnet's CC BY-NC-SA database terms and source
+support survive, while canonical positions, linked resources and other report
+sections remain separate. These two broaden the expanded queue to 5 scoped
+resources / 8 pending without changing the original 27-list's 20 / 7 counts.
+
+Development BRENDA now has a scoped EC-class description reader on native EC
+subjects. This covers labels/systematic names/descriptions; protein assignment,
+kinetic constants, inhibitors, cofactors and conditions remain separate. ASD needs
+an authorized source input under research-only/no-redistribution conditions. TTD's
+received native cross-reference export exposes entry names and placeholders;
+its TTD-ID listing reader is now qualified, while applicable sharing rights remain
+unknown. These are distinct from the original seven-candidate queue and from
+full resource coverage.
+
 Sabueso is MOLI's tracker of the outside world. The more sources it reaches, the more MOLI
 can reason about, as long as every statement stays traceable and identity is never merged
 by similarity. This document is the plan for reaching them (uibcdf/sabueso#83):
@@ -150,7 +256,7 @@ That is not a data licence, and is recorded as "no data licence found".
 
 | Source | Why |
 |---|---|
-| BRENDA | CC BY 4.0, but its API needs a registered account (email and password): the key rule applies |
+| BRENDA | CC BY 4.0; SOAP needs a registered account. Official public SPARQL prototype has a qualified EC-class description reader; scientific kinetics remain unqualified (2026-10-07) |
 | Tox21 / ToxCast | Summary files CC0; the CTX API needs a key. Bulk files are usable |
 | DGIdb, Pharos/TCRD | Aggregators: each field keeps its primary source's terms (wave 1) |
 
@@ -167,11 +273,12 @@ That is not a data licence, and is recorded as "no data licence found".
 
 | Source | Status on 2026-09-29 |
 |---|---|
-| TTD | Only the article's CC BY-NC; downloads available |
+| TTD | Public native target cross-reference export received; applicable data grant remains unstated. Article/software rights are separate |
 | ProThermDB | Only the article's CC BY-NC; download by form |
 | PROTAC-DB | Only the article's CC BY 4.0 |
 | ModelArchive | Terms page gave no text |
-| sc-PDB, ASD | Only the article's CC BY 4.0; data terms to confirm |
+| sc-PDB | Only the article's CC BY 4.0; data terms to confirm |
+| ASD | Original download script requires a licence application; research-only data use, no third-party distribution. Article rights are separate |
 | mpstruc | No licence found |
 | Binding MOAD | Sunset; its affinity backend licensed to Chemical Abstracts Service (deferred) |
 | 2P2Idb, CoDNaS, CovPDB, PDBbind, CSAR, PiSITE | No answer; PDBbind also needs registration |
@@ -222,12 +329,12 @@ profile, and one that needs a key can take the user's own. Checked live on 2026-
 
 | Source | Terms, as stated | Access | Profiles that admit it | Worth it |
 |---|---|---|---|---|
-| **BRENDA** | CC BY 4.0 (licence page) | SOAP service, registered account | every profile | **High:** Km, kcat, Ki and inhibitors per EC number and organism (TIM is EC 5.3.1.1) |
+| **BRENDA** | CC BY 4.0 (licence page) | SOAP service, registered account; public SPARQL EC-class description reader qualified; kinetics separate | every profile | **High:** Km, kcat, Ki and inhibitors per EC number and organism (TIM is EC 5.3.1.1) |
 | **DrugBank** (full) | CC BY-NC 4.0, under DrugBank's Academic License (academic institution, research not primarily for a commercial third party) | download (204 MB, 5.1.22) with the user's account | `non_commercial`, with an academic account | **High:** the clinical layer still lacks pharmacology, mechanisms, interactions and transporters |
 | DrugBank (Open Data) | CC0 (vocabulary, structures) | download, also behind a login (403) | every profile | Low: drug names and synonyms; identity already comes from UniChem |
 | **BioGRID** | MIT | REST, personal key | every profile | Medium: genetic interactions IntAct does not hold |
 | Guide to PHARMACOLOGY | database ODbL 1.0, contents CC BY-SA 4.0 | REST, personal key (401) | every profile, with share-alike | Medium: curated ligand-target pharmacology; no test target is linked yet |
-| SABIO-RK | CC BY-NC (earlier review) | REST; did not answer | `non_commercial` | Low while BRENDA covers kinetics |
+| SABIO-RK | CC BY-NC (earlier review) | REST; did not answer | `non_commercial` | Kinetics need independent qualification; BRENDA descriptive reader does not cover them |
 | KEGG | academic website use only; services need a licence, academic ones too | licence | none without a licence | stays out; Reactome covers pathways |
 | ZINC | major portions may not be redistributed | downloads | none | stays out |
 | PhosphoSitePlus | internal research use only: no downloads, no commercial use, no sharing, no automated access (terms read on 2026-09-29, beta site) | login | none | stays retired; querying it would need a written agreement with Cell Signaling Technology |
@@ -240,7 +347,7 @@ profile, and one that needs a key can take the user's own. Checked live on 2026-
 3. **BioGRID**, then **Guide to PHARMACOLOGY** when a target needs them.
 
 **What it needs from a user.** Each of the first three needs the user's own account or
-key: a BRENDA account, a DrugBank academic account, a BioGRID key. Every source that needs
+key: a BRENDA SOAP account, a DrugBank academic account, a BioGRID key. Every source that needs
 an account, a key or a licence is listed on the *Data sources* page and tracked in #95. Sabueso never stores,
 logs or ships any of them. Fixtures are then the public responses of those accounts,
 under each source's licence.

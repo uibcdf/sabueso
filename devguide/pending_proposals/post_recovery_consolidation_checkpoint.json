@@ -1,0 +1,95 @@
+{
+  "format": "sabueso.consolidation_local_checkpoint@1",
+  "date": "2026-10-08",
+  "base_commit": "68dac8f8bfc35944f5b6dd59aca8cb2a2819388d",
+  "tree_state": "local_uncommitted_unpushed; not a release or remote code checkpoint",
+  "python_file_set": {
+    "count": 753,
+    "sha256": "80808b2dddd6c3478d08905e633f5f38fc8045bf768937429ebfb837caa81e48",
+    "basis": "sorted git ls-files --cached --others --exclude-standard *.py; each path UTF-8, NUL, decimal byte length, NUL, raw bytes"
+  },
+  "environment": {
+    "name": "molsyssuite@uibcdf_3.14",
+    "python": "3.14.7",
+    "editable_checkout_verified_outside_checkout": true
+  },
+  "tests": {
+    "public_absence": {
+      "command": "python -m pytest -n 12 -m \"not online\" --receptor=llm",
+      "passed": 4021,
+      "skipped": 10,
+      "warnings": 10,
+      "seconds": 130.19,
+      "local_input_directories_temporarily_absent": [
+        "3did",
+        "amypro",
+        "channelsdb",
+        "disprot",
+        "ecod",
+        "eppic",
+        "gwas_catalog",
+        "hpo",
+        "interactome3d",
+        "ligysis",
+        "merops",
+        "metalpdb",
+        "monarch",
+        "pdbe_validation",
+        "pdbtm",
+        "pharos",
+        "probis",
+        "sifts",
+        "tcdb",
+        "ttd"
+      ],
+      "all_directories_restored": true,
+      "pytest_exit_code": 0
+    },
+    "full_local": {
+      "command": "python -m pytest -n 12 -m \"not online\" --receptor=llm --local-source-inputs",
+      "passed": 5574,
+      "skipped": 0,
+      "warnings": 10,
+      "seconds": 164.11,
+      "pytest_exit_code": 0
+    },
+    "selected_protein_journey": {
+      "passed": 14,
+      "seconds": 73.01,
+      "pytest_exit_code": 0
+    }
+  },
+  "inputs": {
+    "repository_delivery": 49,
+    "protected_local_only": 37,
+    "inventory_sha256": "7ed541265e1e1ad21cabeca34b11d280ed527a75e22a037dbe7e31b07fa87b59"
+  },
+  "integrity": {
+    "historical_originals_verified": 87,
+    "backup_verified": true,
+    "markdown_file_targets_checked": 405,
+    "missing_targets": []
+  },
+  "gates": {
+    "ruff_check": "passed",
+    "ruff_format": "passed",
+    "source_registry": "passed",
+    "fixture_delivery_with_local_inputs": "passed",
+    "recorded_card_shape": "passed",
+    "schema_field_paths": "passed",
+    "dependency_preflight": "passed",
+    "moli_governance": "passed",
+    "sphinx_W_HTML": "passed",
+    "git_diff_check": "passed"
+  },
+  "consumer_coordination": {
+    "ready_owner_pr": "https://github.com/uibcdf/moli/pull/65",
+    "head_sha": "1f7052fa1fd982a02e40e8453cb8121d3b1be095",
+    "ci_url": "https://github.com/uibcdf/moli/actions/runs/37810530518",
+    "ci_conclusion": "success; governance passed, default-branch publication skipped",
+    "inspection": "gh-run-receptor; exact head confirmed",
+    "nextia_feedback": "https://github.com/uibcdf/nextia/issues/1#issuecomment-6064647778",
+    "moli_feedback": "https://github.com/uibcdf/moli/issues/3#issuecomment-6064648832",
+    "shared_contract_acceptance": false
+  }
+}

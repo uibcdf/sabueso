@@ -14,6 +14,14 @@ The accumulated implementation is now included in the maintainer-authorized
 below describe their original receipt state; current delivery and exact CI
 are recorded in `../CHECKPOINT.md`, Resume here.
 
+The 2026-10-08 consolidation adds bounded source-active-site residue/composition
+context to protein example `@2`, with pinned source support and an independent
+reader that still accepts original `@1` reports. Dedicated derived-operation
+observation and cross-protein residue correspondence remain absent. See the
+[consolidation report](post_recovery_consolidation.md) for current scoped gates,
+cost measurements and consumer-owned acceptance; historical receipts below remain
+dated evidence of their original implementation.
+
 ## Journey matrix
 
 | Journey | Existing route and support | Initial slice / remaining gap |

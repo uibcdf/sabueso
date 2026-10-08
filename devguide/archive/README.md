@@ -17,6 +17,15 @@ Their objectives are not dropped: `devguide/ROADMAP.md` tracks the status of eac
 
 ## Superseded working documents
 
+- [consolidation_2026-10-08/README.md](consolidation_2026-10-08/README.md): complete
+  pre-consolidation checkpoint, roadmap, API, source and test guidance. Current
+  entry documents replace these snapshots; source-specific contracts remain in
+  living `devguide/sources/` references.
+- [local_work_2026-07/README.md](local_work_2026-07/README.md): triage and current
+  recovery of 91 pre-pull local paths, original stash and 87-file local export.
+  The current architecture/schema supersede the original prototypes; active APIs
+  are described in `devguide/PUBLIC_API.md` and the user notebook guide.
+
 - `CHECKPOINT_log_to_0.4.0.md`: the checkpoint as a log, from Phase 0 to release 0.4.0.
 - `QUALITY_AND_TESTS_2026-01.md`: first quality notes, merged into `devguide/TESTS.md`.
 - `EVAL_CARDS.md`: decision templates, never used.

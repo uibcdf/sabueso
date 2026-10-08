@@ -5,6 +5,10 @@ status: active
 
 # Design and implementation review after 0.12.0
 
+The [post-recovery global audit](post_recovery_global_audit.md) supplements this
+matrix with measured local source expansion, architectural alignment, documentation
+drift and proposed consolidation/delivery acceptance after stash closure (#112).
+
 Reviewed 2026-10-04 at the maintainer's request, after the ChEMBL observation and
 first literal literature-extraction slice. This is an implementation audit and
 priority proposal, not a replacement architecture or a commitment to every
@@ -57,7 +61,7 @@ decision replaced the original representation), **direction** (non-binding visio
 | Disease as a knowledge entity | Implemented within MONDO scope: cards, disease groups and target/drug decks | #96 for EFO terms lacking source-stated MONDO identity; richer mechanistic knowledge needs explicit sources |
 | Peptide cards and commercial availability | Pending: `entity_type: peptide` and supplier fields are placeholders | Define identity, peptide modifications/sequence scope and a real supplier use before CPPsite/eMolecules/ChemSpider integration; audit #112 and registry queue |
 | Clinical knowledge | Partial: `core/clinical.py`, ChEMBL phase/indications and cited NCT trials | ADMET, pharmacovigilance, pharmacology, contraindications and drug interactions are unimplemented; source/terms review first (#81/#83/#95). DrugBank remains deferred |
-| Tissue-specific isoforms and variants | Partial: UniProt alternative products, gnomAD pext/consequences and GTEx terms, `core/tissue_usage.py` | Isoform sequences are not fetched (#80); additional transcripts only when actual coverage needs them (#102) |
+| Tissue-specific isoforms and variants | Partial: UniProt alternative products, gnomAD pext/consequences and GTEx terms, `core/tissue_usage.py` | Explicit native isoform FASTA access is recovered in development; automatic reconstruction/resolution/remapping and additional transcripts remain scoped future work (#80/#102) |
 | Comparing proteins and ligand sets | Implemented within stored source-supported identity and supplied residue-map scope: `card_diff.py`, `ligands.py`, `sequences.py` | General structure/sequence similarity and chemical-family enrichment are modeling/analysis or new scoped derived operations; never implicit identity |
 | Literature as knowledge | Partial: curated assertions/claims, located Europe PMC annotations, explanations, literal intake/replay, explicit source-stated article bibliography/declared terms and original support/receipt persistence | #92: supplied-fragment rights, broader statement rules and explicit human validation; model extraction comes later |
 | Structural representations and model preparation | Partial: structures, constructs, author numbering, sites/interfaces and pinned inventory explanations | Structure-level cards are a design re-evaluation (#20), not a prerequisite for current inventory; modeling exchange needs MOLI/MolSysSuite owner agreement |
@@ -65,6 +69,104 @@ decision replaced the original representation), **direction** (non-binding visio
 | Temporal knowledge | Partial: saved revisions, local `as_of`/`changed_since` and source versions | #91/#100: asking remote sources at historical releases is not implemented; local store time is not source-release time |
 | Patents and controlled/internal knowledge | Deferred/direction: SureChEMBL mentions do not establish patent-claim scope | #83/#29 and MOLI #17: access, rights and explicit promotion boundary; no automatic ingestion of project conclusions |
 | CLI and developer experience | SDK, Sphinx, tests and immutable release qualification implemented | CLI has no demonstrated user need; showcase, small-molecule and per-source user documentation gaps remain in `DOCS_GAPS.md` |
+
+## Final historical review and public HK2 baseline (#112/#83/#95)
+
+[Follow-up 35](../archive/local_work_2026-07/followup_35_final_review_and_hk2.md)
+closes all remaining file and scientific-artifact reviews. Native GO-term subject
+scope, peptide/supplier/clinical/patent scope and historical query-hint qualification
+are retained in [the owning issue update](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6062691987). No further ready generic
+runtime restoration is required from the old tree. Future native capabilities and
+access-dependent providers retain their own acceptance; audit closure is not their
+implementation. [HK2](../HK2_TEST_SYSTEM.md) is now a current public regression
+baseline rebuilt from the qualified UniProt response; multi-source expansion needs
+additional native fixtures, rather than migration of old cards or notebook outputs.
+
+## Grouped knowledge mapper review follow-up (#112/#83/#95)
+
+[Follow-up 34](../archive/local_work_2026-07/followup_34_grouped_knowledge_mapper_review.md)
+reconciles four grouped mappers (30 functions) and ten historical enrichment tests.
+Current native measurements, ligand/disease identity, pathways, population/variant
+context, source-specific observations, composition and persistent reports replace
+their ready behavior. Future native scopes remain explicit: Proteins API peptide/
+PTM/HPP provenance beyond PRIDE projects; Open Targets drug/clinical candidates;
+DepMap dependencies and quantitative HPA expression; interaction pairs/DDI contacts,
+conservation/stability/pocket geometry; direct Rhea descriptions and additional
+PDBe-KB provider predictions. Each needs actual native scope, identity, numbering,
+units, revisions, support and rights rather than defaults from a synthetic mapper.
+Current adoption/deferral decisions remain in force. The
+[owning issue update](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6062086611)
+preserves acceptance independently of the stash and obsolete Evidence/card fields.
+
+## Protein-query review follow-up (#112/#83)
+
+[Follow-up 33](../archive/local_work_2026-07/followup_33_protein_query_review.md)
+reconciles five original resolver/test/UniProt/SCOPe helpers. Current named identity
+resolution, exact-sequence candidates without entity resolution and explicit native
+isoforms replace their ready behavior. Additional taxonomy common-name/alias
+normalization, explicit gene/entry-name lookup and PDB chain/polymer selection are
+future native query contracts, with source identity, revisions, namespace, requested
+scope, alternatives and failure distinctions preserved independently of the stash.
+SCOPe remains retired; a SUNID description row is not a protein or coordinate map.
+The [owning issue update](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6061946457)
+records acceptance without reviving automatic ranking or sequence identity fallback.
+
+## Native annotation and specialist review follow-up (#83/#112)
+
+[Follow-up 32](../archive/local_work_2026-07/followup_32_uniprot_and_specialist_review.md)
+recovers 57 native UniProt statements in unpublished schema 0.3.13: five additional
+comment kinds and eight positional kinds with original bounds/molecule scope,
+ECO and entry/sequence revisions. Uncertain and revision-mismatched placements are
+refused while source statements remain supported. Published 0.3.12 stays frozen.
+The preceding UniProt comment/feature requirements are now implemented for these
+explicit kinds; broader native metadata and other kinds remain separate.
+
+Five grouped specialist mappers are individually reconciled against bounded current
+routes and registry decisions. Remaining gene-level GTEx expression, BRENDA/SABIO-RK
+kinetics, NCBI Gene descriptive metadata, QuickGO qualifiers/extensions and richer
+Pharos/reference-site/transcript context have explicit native identity/unit/rights/
+revision/query/placement acceptance in the report. Existing source adoption or a
+prototype caller-protein label does not establish these richer capabilities. Provider
+conditional matrices and computation ownership remain authoritative.
+
+## Remaining source metadata and domain requirements (#83/#112)
+
+[Follow-up 31](../archive/local_work_2026-07/followup_31_native_mapper_review.md)
+reviews five native mappers and recovers PubChem's independently supported summary
+title. Current scoped routes replace the old Evidence constructors. Remaining
+requirements have explicit scientific boundaries and can be evaluated without the
+historical package tree: additional UniProt comment/feature kinds and record metadata,
+protein-associated InterPro domain fragments, structure-scoped RCSB entry titles and
+conditionally re-evaluated TED predicted-domain assignments. Current accession dates
+and primary citation already belong to RCSB structure context.
+
+Native public UniProt fixtures already include additional text and positional kinds;
+that is input availability, not complete typed mapping. Comments need appropriate
+unpublished schema decisions; domain endpoints need original modifiers, source
+sequence/isoform/revision and separate occurrence support before placement. InterPro
+family sites and classification links do not supply matched-domain boundaries. TED
+remains retired until native access/rights and model/sequence/domain identity qualify.
+Source similarity, cautions, prediction/confidence and classification stay source
+statements rather than identity, experimental Evidence or quality conclusions.
+The [source acceptance](https://github.com/uibcdf/sabueso/issues/83#issuecomment-6061022497) and report retain individual
+conditions and distinguish existing routes from these
+remaining capabilities; #83 owns source scope and #112 the implementation review.
+
+## Historical source configuration and persistence requirements
+
+[Follow-up 30](../archive/local_work_2026-07/followup_30_configuration_and_persistence_review.md)
+closes two five-file reviews against current source access, versioned resolution
+profiles, detached registry metadata, explicit archive reuse and verified card/deck
+storage. Useful implemented behavior is already covered; the old dispatcher,
+indefinite cache and Evidence store do not supply a further runtime feature.
+
+A unified source input convenience API remains a proposal, with explicit exclusive
+client/payload/file choices, native validators and source identity/quantity/sequence
+binding, declared-versus-observed retrieval, rights, status and profile override
+acceptance retained independently of historical code. Existing bounded supplied-file
+routes remain #131; provider/native scope remains #83. Additional convenience
+must reuse declared adapters rather than silently activate historical comprehensive
+profiles or treat caller licences/releases as source grants/revisions.
 
 ## Required traceability and operational closure
 

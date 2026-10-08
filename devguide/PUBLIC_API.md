@@ -1,10 +1,28 @@
 # Sabueso — Public API
 
-The public surface as of release 0.13.0. Anything not listed here, or not exported by
-`sabueso`, is internal. Tools, views, stores and source access check their arguments
-through ArgDigest. Plain accessors (`get`, `set`, `sort`…) do not, and fail loudly on
-wrong types (`ARGUMENT_CONTRACTS.md` lists which is which). The user guide (`docs/`)
-shows how to use them.
+This document records the public surface of release 0.13.0 and explicitly labelled
+development additions. Anything not listed here, or not exported by `sabueso`, is internal.
+Tools, views, stores and source access check their arguments through ArgDigest.
+Plain accessors (`get`, `set`, `sort`…) do not, and fail loudly on wrong types
+(`ARGUMENT_CONTRACTS.md` lists which is which). The user guide (`docs/`) shows how
+to use them. Development entries do not establish public delivery, automatic card
+enrichment or live-service qualification.
+
+## Development recovery after 0.13.0
+
+`sabueso.tools.sources.get_catalog()` reads detached, packaged registry metadata
+without source access. Its `capabilities` inventory names native function/client
+declarations, declared card contributions and reviewed new fixture delivery under
+`source_capability_inventory@1`. This development surface does not assess live
+health, consumer acceptance or scientific completeness; absence of a declared
+enricher also does not characterize established bespoke card routes.
+
+The [development native-source API](sources/DEVELOPMENT_API.md) lists recovered
+`get_*` functions, independent mapping subjects and their exact scientific scope.
+These are standalone unless a card contribution is explicitly declared. Supplied
+snapshots, sequence/isoform candidates, notebook reports and residue views retain
+their separate public interfaces below and in the user guide. Source `in_use` does
+not promise card enrichment, live availability or public-package delivery.
 
 ## Entry point
 
@@ -51,6 +69,8 @@ shows how to use them.
     - each source's `*_client`, and `resolver`.
   - For small molecules: `unichem`, `pubchem`, `chebi` (#83), `indications` and
     `trials` (#81).
+    Optional ChEBI enrichment retains native name and formula as independent
+    SourceAssertions; names and formulas do not establish chemical identity.
   - For diseases: `mondo_client`.
   - Every card tool takes `terms` (`"commercial"` or `"non_commercial"`): only sources
     whose stated terms allow that use are asked (#94).
@@ -450,3 +470,27 @@ this explicit lookup attach original acquisition/portable attribution sidecars;
 no linked target is consulted. Explicit Europe PMC article access can enrich the
 enclosing workflow bibliography, retaining collective authors as literal CSL names.
 This is unreleased development work; the public release remains 0.13.0.
+
+## Development bound native originals
+
+`SnapshotAlphaFillClient`, `SnapshotGlyGenClient`, `SnapshotSIFTSClient` and
+`SnapshotLigysisClient` accept `(path, *, source_metadata, expected_sha256=None)`
+for the existing public `get_*` reader's `client` argument. They cover metadata,
+protein detail, mappings, result-page HTML and structure-mapping JSON respectively.
+All support gzip. Source, kind, normalized exact query and unknown scientific
+revision are checked before file access; the native reader fixes JSON/HTML format
+and validates native identity/shape before output. Declared time/terms are caller
+context, not independently observed retrieval or permission. Original file hash
+covers compressed bytes before decoding. These clients add no automatic card
+admission, schema/enricher, cross-source identity join or provider adoption.
+
+### Native UniProt annotation extension (development 0.3.13)
+
+Existing protein card construction/refresh now retains five additional native text
+kinds and eight positional feature kinds, including domains, under the unpublished
+0.3.13 schema. Public signatures and acquisition routes do not change.
+`Card.get_residue` preserves source endpoint modifiers and rejects known UniProt
+sequence-revision mismatches for placement; retained original features and ECO
+support remain available. Source cautions and similarity do not create quality or
+identity findings. Migration records the optional refresh gaps. See `SCHEMA.md`,
+`FIELD_PATHS.md` and `tests/core/test_uniprot_domain_recovery_offline.py`.

@@ -16,6 +16,9 @@ Every document is one of four kinds:
 - **design**: vision and architecture;
 - **historical**: kept, not maintained.
 
+The public [HK2 test system](HK2_TEST_SYSTEM.md) complements TcTIM/HsTIM with
+current-source rebuilding and an integrated saved-card/report regression.
+
 ## Where to start
 
 | Document | Kind | What it holds |
@@ -68,6 +71,9 @@ not a release receipt.
 | `DATA_SOURCES_STATUS.md` | living | Technical detail of each source in use |
 | `SOURCE_COVERAGE.md` | living | Knowledge areas, the source rubric, and evaluations by wave (#83) |
 | `SOURCE_ARCHITECTURE.md` | living | Declared enrichers, the runner and shared services for many sources (#86) |
+| `sources/FIXTURE_DELIVERY.md` | normative | Reviewed recovery file delivery, protected local originals and explicit public/local pytest scopes |
+| `sources/NATIVE_ACCESS_REFERENCE.md` | living | Source-specific native protocols, fields, observation and qualification limits |
+| `sources/DEVELOPMENT_API.md` | living | Unpublished recovered source reader/mapping APIs |
 | `STORAGE_LAYOUT.md` | living | Knowledge store, files, recommended project layout |
 | `CACHE_POLICY.md` | living | What is stored and what is not, and open questions |
 | `CARD_SIZE_RISKS.md` | living | Card growth, measurements, mitigations |
@@ -75,6 +81,19 @@ not a release receipt.
 
 ## Working folders
 
+- `pending_proposals/post_recovery_public_checkpoint.md`: authorized code delivery,
+  exact-SHA CI and private-consumer revalidation scheduling (#112/#132).
+- `pending_proposals/post_recovery_consolidation.md`: implemented input-delivery
+  boundaries, guide restructuring, generated capability scope, protein residue
+  integration, measured costs and owner-local consumer coordination (#112).
+- `pending_proposals/post_recovery_global_audit.md`: architectural alignment,
+  measured source expansion and the proposed consolidation/delivery acceptance
+  after stash closure (#112). This distinguishes useful native access from complete
+  scientific journeys and preserves the approved development order.
+- `pending_proposals/historical_provider_reactivation.md`: seven recovered sources
+  deferred after complete actionability review (#83/#95). Each has an explicit
+  reactivation trigger and native requirements preserved independently of the stash.
+  This does not add active implementation work without new input/access.
 - `pending_bugs/`, `pending_proposals/`: analyses of active issues, each tied to its
   issue.
   `pending_proposals/design_implementation_review.md` compares original design,

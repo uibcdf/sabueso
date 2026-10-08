@@ -1,0 +1,72 @@
+{
+  "format": "sabueso.local_work_review_closure@1",
+  "date": "2026-10-08",
+  "inventory_paths": 91,
+  "originals_verified": 87,
+  "remaining_individual_file_reviews": 0,
+  "scientific_artifacts_reviewed": 9,
+  "automatic_notebook_checkpoints_reviewed": 3,
+  "backup": {
+    "path": "recovered_work/local_work_2026-07_verified_originals.tar.gz",
+    "bytes": 4514238,
+    "sha256": "2db9803c8d2404a481ad2fa5b40481c417d3afa21009dcf3d04c2bc7f3ead482",
+    "original_members_verified": 87
+  },
+  "ligand_query_manifest": "recovered_work/audit_2026-10-08/ligand_query_candidates.json",
+  "ligand_query_occurrences": 188,
+  "historical_observations_with_parent_support": 313,
+  "new_current_HK2_baseline": {
+    "format": "sabueso.hk2_test_system@1",
+    "card_ref": "sabueso:protein:uniprot:P52789@sha256:9b0f89eb38dd9530a151d0c64957d91749c5924d95912d6b1b3295b5b5a360e4",
+    "schema_version": "0.3.13",
+    "resolution_status": "resolved",
+    "fixture": "temp_data/P52789.json",
+    "fixture_sha256": "b62f3bcc443a9b275ea479dbaeb632de00d7b49509f760643580ad63e8cb6e82",
+    "fixture_retrieved_at": "2026-09-23",
+    "source_assertions": 239,
+    "qualified_scope": [
+      "UniProt entry and its source-supported declarations"
+    ],
+    "source_requests": 0,
+    "historical_cards_imported": false,
+    "card_file": "HK2_human.card.json",
+    "notebook_file": "HK2_human.ipynb"
+  },
+  "native_scientific_expansion_requirements": "qualified future native inputs; not additional unreviewed stash files",
+  "public_issue_acceptance": "https://github.com/uibcdf/sabueso/issues/112#issuecomment-6062691987",
+  "stash": "db04d97fef5a318c6d09f8312971558eafd9d14c",
+  "stash_deleted": true,
+  "historical_review_complete": true,
+  "implementation_committed": false,
+  "implementation_pushed": false,
+  "stash_deletion_requires_maintainer_decision": false,
+  "HK2_issue_acceptance": "https://github.com/uibcdf/sabueso/issues/112#issuecomment-6062813640",
+  "full_offline_checkpoint": {
+    "passed": 5554,
+    "seconds": 173.0,
+    "warnings": 10,
+    "workers": 12,
+    "receptor": "llm",
+    "python": "3.14.7"
+  },
+  "HK2_integrated_tests": 5,
+  "gates": {
+    "ruff": "pass",
+    "source_registry": "pass",
+    "card_shape": "pass",
+    "strict_sphinx_W_HTML": "pass",
+    "maintained_links": "pass (16 targets)",
+    "original_and_backup_integrity": "pass",
+    "git_diff_check": "pass",
+    "editable_outside_checkout_replay": "pass"
+  },
+  "stash_deletion": {
+    "at_utc": "2026-10-08T15:20:51+00:00",
+    "authorization": "Explicit maintainer instruction to delete the reviewed stash",
+    "method": "git stash drop stash@{0}",
+    "remaining_stash_count": 0,
+    "verified_working_files_unchanged": 381,
+    "head_and_index_unchanged": true,
+    "original_backup_retained_and_verified": true
+  }
+}

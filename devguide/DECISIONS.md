@@ -1,5 +1,637 @@
 # Sabueso — Decision Log
 
+## Publish recovered checkpoint and return to real consumers (2026-10-08)
+
+The maintainer authorized publishing the recovery/consolidation checkpoint and
+requested a later return to MOLI vertical-pilot use. After exact-SHA CI, revalidate
+applicable private consumer workflows under
+[#132](https://github.com/uibcdf/sabueso/issues/132), before broadening providers or
+APIs. Keep the private checkout read-only, record executions/results privately,
+and expose only generic needs and sanitized engineering receipts publicly. Source
+outcomes and scientific conclusions remain separate. Existing SDK tests and older
+pilot receipts cannot establish acceptance of this recovered checkpoint.
+
+
+## Consolidate recovery before adding provider breadth (2026-10-08)
+
+The maintainer approved the audit's order: fixture delivery, guide structure,
+explicit source capability scope, selected recovered knowledge in scientific
+journeys, and consumer coordination with measured costs. Preserve the existing
+foundational and pilot-driven routes. Classify exact recovered inputs into 49
+repository-delivery files and 37 protected local-only originals; verify public
+and opted-in local qualification separately in the existing development environment.
+Retain complete historical guide snapshots while keeping current entry documents
+focused. Generate access/mapping/enricher/input scope without inferring live health
+or consumer acceptance. Integrate source-active-site residue/composition context
+in the protein/comparator journey under named rules and pinned support, with
+independent legacy readers and explicit correspondence/operation-observation gaps.
+Submit ready cross-component documentation fixes for owner review; shared contract
+acceptance remains with MOLI and consumers. See the
+[consolidation report](pending_proposals/post_recovery_consolidation.md), #112.
+
+
+## Finish recovered-provider triage with conditional deferrals (2026-10-08)
+
+Review the seven remaining recovered providers together at the maintainer's request.
+No qualified original scientific input or authorized access/rights context is
+available for immediate native implementation. Mark ASD, GtoPdb, COSMIC, ELM,
+BioCyc, OMIM and CASTp `deferred` with individual concrete `revisit_when` triggers;
+retain their scientific requirements and earlier receipts. Five primarily await
+authorized access/agreements; ELM and CASTp await original native results and their
+applicable grant. This is neither a retirement decision nor an access impossibility
+claim. Credentials checked by known environment-variable presence only are absent;
+that does not audit private files or all possible access held by maintainers.
+
+The expanded 13-resource queue is 6 scoped / 0 active pending / 7 conditional
+deferrals; the original 27-list is 21 scoped / 0 active pending / 6 conditional
+deferrals. The historical catalog becomes 65 in use / 0 evaluating / 18 deferred /
+3 retired / 1 out of scope. These counts are distinct from the whole registry.
+Existing source terms, code, published card and original exports stay intact.
+Track reactivation in [#83](https://github.com/uibcdf/sabueso/issues/83) and access
+needs in [#95](https://github.com/uibcdf/sabueso/issues/95), with
+[pending input conditions](pending_proposals/historical_provider_reactivation.md).
+Continue the remaining implementation/consumer requirements rather than repeating
+failed or gated requests. Keep the stash until the broader recovery is accounted.
+
+## Recover exact native WikiPathways cross-references (2026-10-06)
+
+Follow up five reviewed candidates: WikiPathways, HPO, GWAS Catalog, ECOD and
+ChannelsDB. Recover the complete native WikiPathways bulk export with exact
+namespaced-token matching across seven original xref fields. Preserve heterogeneous
+column content, blank/free-text aliases, original match positions, species, authors,
+pathway date labels and independent repeated/conflicting rows. The native template
+already uniques/compacts xrefs and shortens descriptions; no GPML-node occurrence
+coverage, role, mechanism, experimental class or biological identity is inferred.
+Bound JSON/gzip/replay retains original bytes/time and CC0/source attribution.
+
+The other four retain evaluating status: HPO annotation/input terms are unresolved;
+GWAS needs bounded exact paging and original-owner/statistical scope; ECOD's newly
+accessible version catalog qualifies release pointers and separate axes, not a
+native domain export or data licence; ChannelsDB's assembly endpoint declares a
+preferred assembly independently of geometry. No blocked endpoint was bypassed,
+source prediction/search job submitted or unqualified probe made a fixture.
+Historical counts become 45 in use, 27 evaluating, 11 deferred, 3 retired,
+1 out of scope, 0 unregistered; 21 reviewed candidates await integration. Preserve
+stash and all 87 originals. Details: `archive/local_work_2026-07/followup_01_source_integration.md`.
+
+
+## Finish historical source triage and recover native EMA designations (2026-10-06)
+
+Review the final FDA Orphan and EMA Orphan candidates together. Recover EMA's
+complete native orphan JSON export with validated declared coverage, exact EU-number
+selection and independent original page occurrences. Preserve duplicate numbers,
+conflicting dates, unresolved references, empty fields, status/product/substance
+context, generation versus retrieval times, original bytes and bound snapshot/replay.
+Do not infer protein/product identity, modality, efficacy or marketing authorisation.
+Keep EMA attribution in each copy and separate third-party/linked-document rights.
+
+One direct FDA GET returned a provider excessive-requests apology with HTTP 404;
+no retry/bypass was performed. Its native query/date/approval/page/export and exact
+terms remain pending. No FDA fixture/connector or clinical assertions were added.
+All 87 source declarations now have registry comparisons: 44 in use, 28 evaluating,
+11 deferred, 3 retired, 1 out of scope and 0 unregistered. Twenty-two batch candidates
+remain pending integration; review completion does not make them implemented.
+Keep the stash and all 87 original exports. Details: `archive/local_work_2026-07/batch_06_source_review.md`.
+
+## Review batch 05 and recover native CIViC profile items (2026-10-06)
+
+Review ChannelsDB, PRIDE, CIViC, CASTp and ProBiS together. Recover CIViC native
+monthly accepted-items TSV with exact profile/release selection, full validation,
+all literal fields and independent occurrences on complete molecular-profile
+subjects. Preserve accepted flags, contradictions, combined profiles/therapies,
+original citations/time/byte SHA, source-bound snapshots and CC0. CIViC Evidence
+Items are source terminology, not MOLI Evidence. No protein identity transfer,
+clinical interpretation, profile expansion, extra linked acquisition or frozen
+card intake follows. Read-only live acquisition and replay use the shared environment.
+
+The other four retain concrete format/provenance/access/rights requirements in
+`archive/local_work_2026-07/batch_05_source_review.md`. Counts are 43 in use,
+27 evaluating, 11 deferred, 3 retired, 1 out of scope and 2 unregistered. Twenty-one
+batch candidates await integration; FDA/EMA Orphan remain unreviewed. Preserve the
+original stash and 87 exports. No external issue/message or analysis job was sent.
+
+## Review batch 04 and recover native DrugCentral observations (2026-10-06)
+
+Review MetalPDB, ECOD, 3did, DrugCentral and GWAS Catalog together. Recover the
+complete native DrugCentral 20-column TSV/gzip through shared transport and exact
+local accession-token selection. Preserve independent occurrences, source-native
+single/composite target subjects, drug IDs, activity/units/MOA and original support.
+Do not expand target groups, guess physical/log scales, merge molecules by name,
+interpret clinical indications or change frozen cards. Keep CC BY-SA 4.0, full
+text/compressed byte identities, unknown revisions and bound snapshot/replay scope.
+
+The other four retain native format/coverage/axes/access/rights requirements in
+`archive/local_work_2026-07/batch_04_source_review.md`. Historical counts are 42
+in use, 23 evaluating, 11 deferred, 3 retired, 1 out of scope and 7 unregistered;
+seventeen candidates from four reviewed batches await integration. Preserve the
+original stash and all 87 original export hashes. No provider messages, accounts,
+analysis jobs or separate development environment are introduced.
+
+
+## Review the third five-source batch without claiming new connectors (2026-10-06)
+
+Review BioCyc, OMIM, Interactome3D, PDBTM and TCDB together and register all five
+as evaluating. Preserve current access, native identity/format/coverage and reuse
+requirements in `archive/local_work_2026-07/batch_03_source_review.md`. BioCyc
+needs a session and database-specific limited/open terms; OMIM needs authorized
+native data and current agreement. Correct Interactome3D's historical query
+requirements: one protein uses uniprot_ac, an interaction uses queryProt1/queryProt2.
+Observed access failure does not establish no-result or retirement.
+
+The public PDBTM XML probe retains separate chain sequence/PDB axes, transforms,
+history and an embedded nonprofit/commercial/no-modification agreement. The TCDB
+probe is a headerless mixed-namespace assignment table with repeated pairs and
+multiple assignments, not a protein-function inference. Keep both bodies outside
+package data until applicable representation/redistribution terms and native
+contracts are qualified. No credential, form submission, provider contact, data
+fixture, analysis job, card mutation or delivered connector is added in this batch.
+
+Historical counts are now 41 in use, 19 evaluating, 11 deferred, 3 retired, 1 out
+of scope and 12 unregistered. Thirteen candidates from three reviewed batches
+await integration; counts of completed reviews and delivered functionality stay
+separate. Preserve the original stash and 87 original file hashes.
+
+## Review a second five-source batch and recover native ClinGen validity (2026-10-06)
+
+Review COSMIC, HPO, ClinGen, OmniPath and ELM together. Recover the public ClinGen
+native gene-validity CSV with full preamble/document preservation, validation before
+exact HGNC selection and independent native classification/inheritance/SOP/panel/
+report/date assertions. Keep legacy report namespaces and unknown timezone;
+file/classification dates do not supply scientific revisions. Not listed differs
+from an explicit No Known Disease Relationship classification and access failure.
+No strongest-class ranking, gene/protein merge, variant/clinical inference or
+frozen card change. Curated content retains CC0 and requested attribution.
+
+The other four remain evaluating with concrete requirements: COSMIC authorized
+native data and redistribution; HPO exact release and current annotation/input
+terms; OmniPath original-resource rights and opposing effects; ELM exact data
+agreement and native class/instance/sequence scope. No authenticated or private data,
+provider contact, motif-search job or external write. Historical counts are now
+41 in use, 14 evaluating, 11 deferred, 3 retired, 1 out of scope and 17 unregistered.
+Eight candidates from two completed batches are reviewed and awaiting integration;
+review and delivered-connector counts differ. Preserve the original stash and
+all 87 original file hashes. See `archive/local_work_2026-07/batch_02_source_review.md`.
+
+## Review historical candidates in batches of five; recover scoped HPA summaries (2026-10-06)
+
+Review HPA, GtoPdb, WikiPathways, Monarch and MEROPS together. Recover the
+qualified HPA native single-gene JSON reader and independent literal RNA/protein
+categorical assertions with exact gene scope, full raw response, unknown native
+revisions and source terms. Do not restore the old gene/total-protein projection,
+quantitative shortcuts or automatic enrichment. The other four remain evaluating:
+current authorized native GtoPdb access and dual rights; exact WikiPathways
+cross-reference selection; Monarch per-source rights and paging; MEROPS precise
+native export/release/sequence scope and database licence.
+
+A review outcome is separate from a delivered connector. The historical catalog
+now has 40 in-use declarations, 10 evaluating, 11 deferred, 3 retired, 1 out of
+scope and 22 unregistered candidates. Four from this batch are reviewed and still
+await implementation. Preserve the original stash and all 87 original file hashes.
+See `archive/local_work_2026-07/batch_01_source_review.md` for exact native probes,
+prototype defects and next qualification steps; no external write was made.
+
+## Recover SIGNOR headerless causal declarations without first-row loss (2026-10-06)
+
+The preserved `fetch_signor` passed a headerless native TSV to `csv.DictReader`,
+losing the first interaction and treating its values as keys. Recover the documented
+field order with complete native text/column validation and independent standalone
+SourceAssertions. Retain regulator A and regulated B, effect/mechanism, DIRECT,
+residue/sequence/modification context, score, publication pointers and source
+sentences. No query-name join, complex expansion, physical binding claim,
+experimental class, principal pathway selection or current sequence projection.
+Native TAX_ID can differ from the requested organism, or be blank/in-vitro -1;
+do not relabel it. Native `No result found.` remains a query declaration, separate
+from HTTP failure and biological absence. Unknown scientific revisions and received
+scope remain explicit. Native supplied TSV/gzip readers preserve the original bytes
+and bind exact metadata; generic snapshot TSV still requires a header. CC BY 4.0
+comes from SIGNOR's own statement; linked publications retain independent rights.
+Published release 0.13.0 and frozen card schema 0.3.12 do not change.
+
+## Preserve APPRIS native annotation occurrences without transcript overwrite (2026-10-06)
+
+Recover the historical `protein_drug_discovery.map_appris` requirement through
+one qualified explicit-human-gene native exporter and independent standalone
+SourceAssertions. The old transcript dictionary combined all rows and overwrote
+principal attributes and dropped genomic range context; the actual TPI1 response repeats transcript IDs with
+conflicting principal labels, names and genomic coordinates. Keep every native
+occurrence and its response/index support. Do not select a principal isoform,
+merge protein identity, parse genomic notes into residues or infer experimental
+support. Provider-default scope, unknown assembly/dataset/record/sequence revisions,
+empty received arrays and failed/missing access remain explicit. Query-bound
+JSON/gzip snapshots and original-time archive replay use existing contracts.
+APPRIS's own CC BY-NC-SA 4.0 statement is recorded, with both noncommercial and
+share-alike flags in the existing terms rule; parent method inputs and publications
+retain independent rights. Frozen schema 0.3.12 and release 0.13.0 do not change.
+
+## Recover native Complex Portal declarations and independent participants (2026-10-06)
+
+- The legacy mapper selected guessed search shapes, collapsed participant context
+  and assigned predicted/curated classes from a boolean. Its query-protein check only
+  read `interactors`. Recover one exact native CPX declaration and its full original
+  participant occurrences instead; protein-wide search remains separately unqualified.
+- Preserve complex prediction flags, ECO codes and confidence stars literally.
+  Native HsTIM-containing CPX-14819 is ML-predicted and has null stoichiometry;
+  absence of a flag or a zero/unknown count never establishes experimental support
+  or an absent participant. ECO is source context, not Nextia Evidence.
+- Keep features, unknown ranges, linked objects and native type/role alternatives.
+  Some returned references do not close over the feature array. Do not repair the
+  graph, infer binding contacts, expand membership into binary interactions or
+  project positions onto current source sequences. Complex species is not imposed
+  on every participant, and equal identifiers do not merge entities/occurrences.
+- Preserve independent full-response support and exact query identity; native
+  release dates do not supply record/sequence revisions or accession versions.
+  Query-bound JSON/gzip snapshots retain caller declarations and optional original-
+  byte digest verification. Replay retains original acquisition time.
+- Official CC0 1.0 applies to the native service data; Apache software/branding and
+  linked publication/resource rights remain separate. No card intake/schema change,
+  search, secondary ID following, linked acquisition or calculation job is added.
+
+## Recover native CATH domains and query-bound supplied files (2026-10-06)
+
+- The historical CATH prototype retained domain ID/label in a generic protein card.
+  Replace that shortcut with one explicit native domain summary and a source-domain
+  subject. The historical protein-wide fetch declaration is not a qualified API.
+- Require an explicit fixed release route, retaining it as the request declaration.
+  Native responses do not state their release, record or sequence revisions.
+  Do not fabricate observed versions from the route, hierarchy or retrieval date.
+- Preserve independent ATOM/COMBS sequences, null PDB locations, ordered discontinuous
+  segments and literal SEQRES/PDB correspondences. Do not infer UniProt identity or
+  offsets. Native GO/EC assertions/support stay context, without new function classes.
+- Bound supplied JSON/gzip files reuse strict snapshot intake with exact source/kind/
+  domain/release checks and optional original-byte SHA-256. Caller metadata does not
+  establish original remote access. Online/fixture/archive receipts stay distinct.
+- Recover direct access only: no card schema change, source search, coordinate fetch,
+  sequence scan or calculation job. Official CATH resource data carry CC BY 4.0;
+  attribution and parent resource/publication rights survive separately.
+
+## Complete the recovered isoform reader with explicit native sequence access (2026-10-06)
+
+- The preserved residue tests supplied synthetic isoform sequences. Keep the recovered
+  reader and add explicit UniProt parent-declaration/FASTA access, rather than making
+  canonical sequence resolution or card creation fetch all isoforms automatically.
+- IDs are source-declared, independent of names: P60174 isoform name `2` is ID
+  `P60174-3`; suffix `-2` is not declared in the observed parent. Query only the
+  explicitly selected `Displayed`/`Described` FASTA after validating all declarations.
+- Missing/partial declaration scope, explicit not-listed selection, unknown/external/
+  not-described sequences, unavailable files and failures remain separate. Do not
+  repair FASTA, substitute canonical sequences or follow external sequence references.
+- Keep the native FASTA and parent JSON, independent times/hashes and source-declared
+  association. Parent entry/canonical versions and database release do not supply an
+  isoform sequence revision. VAR_SEQ pointers remain raw; no variant reconstruction,
+  canonical offset, structural mapping or automatic card intake is introduced.
+- Independent sequence assertions can supply the existing `residue_knowledge@1`
+  reader with original support. The frozen card and current canonical annotations
+  remain unchanged; this adds no persisted schema field. UniProt data keep CC BY 4.0.
+
+## Recover full native SWISS-MODEL Repository metadata (2026-10-06)
+
+- Replace the preserved model-only synthetic projection with an unfiltered native
+  v2 response and one assertion per occurrence. PDB references and homology models
+  retain chains, paired alignments, scores, ligand/complex context and download URLs.
+- Validate target sequence length/MD5 and every target alignment. MD5 hashes the
+  target sequence, not a model; equal hashes/templates/rows do not merge occurrences.
+  CRC64 stays literal. Template numbering is not an author/label mapping.
+- Native API/query/creation/release dates do not state record/model/sequence revisions.
+  Scores stay literal; no ranking, probability, quality class or current UniProt
+  equivalence is inferred. Coordinates/ModelCIF/templates/publications/jobs remain
+  unqueried; automatic card intake and frozen schema remain unchanged.
+- Record the provider's CC BY-SA 4.0 data grant with attribution/share-alike and
+  separate parent-resource/article terms. Resource/method citations describe the
+  service, not the primary findings of returned PDB/template entries.
+
+## Recover native AmyPro entries and qualify specialist prototypes (2026-10-06)
+
+- The preserved AmyPro mapper accepted synthetic regions and assigned a default
+  amyloidogenic/experimental class. Recover exact native entry access instead:
+  one full public JSON export, validated before selection, with independent entry
+  context and region assertions on the investigated sequence. Parent UniProt/PDB
+  pointers, bounds, mutation strings, categories and prion strings remain literal.
+- Individual `.json` downloads currently contain Python literals. Use the valid
+  official complete JSON export without evaluating scripts/literals or repairing
+  payloads. Received export count is not a native total or current completeness
+  claim. Missing selection is export-scoped; empty regions retain entry context.
+- Keep every distinct region ID, full sequence and native support hash. Parent
+  bounds can disagree with investigated sequence length; preserve the discrepancy
+  without applying an offset, merging identities or querying parent sequences.
+  Export/entry/sequence revisions, methods and region-specific support are unstated.
+  Native publication pointers remain entry-level declarations, not acquired articles.
+- AmyPro data reuse stays NOT-STATED; its resource paper's licence is separate.
+  ConSurfDB and FireProtDB are explicitly deferred with concrete reuse/native-contract
+  triggers after reviewing official terms and v2 documentation. No restricted native
+  results or fixtures are acquired for those two providers. Their legacy synthetic
+  conservation/ddG rows do not establish a qualified scientific connector.
+- The original stash and 87 exported files remain intact. No card intake, schema
+  change, analysis job, publication or release is added.
+
+## Recover explicitly selected EPPIC residue detail (2026-10-06)
+
+- The legacy reader included `interfaceResidues` but silently accumulated later
+  failures into a largely valid-looking bundle. Add a standalone explicit interface
+  API: read full native context, validate the requested interface, then read only
+  its residue detail. Preserve independent times/hashes and successful earlier
+  acquisition on a later failure; no missing detail becomes an empty table.
+- Keep all per-side result occurrences, including zero buried area, quoted NaN
+  fractions, unknown region codes, entropy sentinels, null labels and native serials.
+  The response includes non-contact residues, so its row count never becomes contact
+  membership. ASA/BSA follow the source's square-angstrom convention, retaining raw
+  native values. Equal names/numbers on both sides are not merged.
+- Provider code documents SEQRES/no-SEQRES numbering ambiguity. Preserve original
+  serials and native interface/chain/operator context without canonical, author/
+  insertion or label projection. Source sequence/calculation revisions are unknown;
+  two GETs do not establish an atomic calculation revision. Other interfaces,
+  sequences, coordinates and jobs stay unqueried; no card enrichment or schema change.
+- Existing EPPIC data reuse remains NOT-STATED; software/paper rights are separate.
+  The public native test response is declared in the fixture notice and remains
+  local unreleased recovery. No new redistribution permission is inferred.
+
+## Recover IntAct with native participant and page scope (2026-10-06)
+
+- Replace the 15-column prototype and its assumption that the query must be B
+  whenever it is not A. Require exact `uniprotkb` declarations in primary/alternative
+  ID cells, preserving all 42 MITAB 2.7 columns, native interaction identifiers
+  and result occurrence locators. Parse quoted delimiters only in identifier cells.
+- Read one bounded first page, retaining native counts, full observed text, caller
+  cap and `intact_mitab_page@1` scope. Query rows are not unique partners or complete
+  biological coverage. Validate all supplied rows before selection; failed,
+  unavailable and explicitly empty responses remain distinct.
+- Map independent `interactions.observations.intact` SourceAssertions. Keep native
+  negation, association/proximity, complex expansion, roles, methods, score literals,
+  features and parameters. No `interacts_with` relationship, experimental/direct
+  class, calibrated probability, parameter unit or canonical placement is guessed.
+- Service versions/native dates are context, not record or sequence revisions.
+  Archive replay retains original times and count/service headers. Data follows
+  the official IntAct CC BY 4.0 statement; software and linked publication rights
+  stay separate. Existing UniProt interaction support remains; no enricher is added.
+
+## Recover residue-set composition with explicit selection and denominator (2026-10-06)
+
+- The legacy helper counted repeated residue rows, mixed one-/three-letter labels
+  and dropped unnamed rows from its denominator. Recover the counting requirement
+  through `Card.residue_composition`, reading concrete positions on one supported
+  sequence axis under `residue_set_composition@1`. Sequence characters determine
+  types; caller row names do not. Repeated positions count once, while each original
+  duplicate occurrence remains visible. Equal numbers on other chains/sequences
+  are not identity and are not automatically projected.
+- Preserve B/J/X/Z explicitly as unresolved types in the full unique-position
+  denominator. U/O remain concrete symbols; infer no biochemical classes or parent
+  types. Concrete fractions plus the unresolved fraction cover the denominator.
+  Empty selection yields count zero and no invented undefined fraction; missing
+  sequence and invalid/out-of-range selections fail instead of yielding emptiness.
+- Sequence support keeps the actual source subject, source/retrieval/revision,
+  complete assertion snapshot hashes and stored card pin. Noncanonical axes need
+  native subject-bound sequence declarations; different content under one sequence
+  reference is refused. Invalid matching declarations are reported separately;
+  canonical support gaps stay explicit. Identical sequences never imply projection.
+- The selected set is caller-declared. This reader does not establish cavity/site
+  membership or copy the prototype's remote DoGSite orchestration. Original cavity
+  declarations and exact structural mappings remain separate future inputs. No
+  geometry, jobs, source acquisition/credit, card mutation, SourceAssertion creation,
+  persisted schema field or cross-component exchange contract is added.
+
+## Recover AlphaFill/LIGYSIS with native model and segment scope (2026-10-06)
+
+- AlphaFill metadata describes an existing filled model and independent transplant
+  alternatives. Keep the exact AFDB fragment, native compound/analogue labels and
+  donor/alignment numbering; do not infer chemical equivalence or observed target
+  binding. Keep RMSD and transplant clash score as angstrom quantities, with full
+  original PAE/clash/validation context. Software/run date is not record revision.
+  Validate the native payload directly because the served schema has misplaced
+  properties and names that differ from current responses. No silent schema repair.
+- LIGYSIS exposes public result HTML for an explicitly chosen segment. Read the six
+  source JSON literals, preserve the entire page and fail on changed/ambiguous
+  layouts. Do not evaluate JavaScript, invent a JSON API, fetch linked assets or
+  use embedded server paths as downloadable URLs. Map the full site table, not
+  the initially selected site's partial residue table. Retain clusters/scores,
+  percent RSA, native membership/counts and unknown sequence/revision. No canonical
+  projection, reconstructed individual ligand references or functional ranking.
+- Both connectors use shared transport, original-time archive replay, source-local
+  validation, ArgDigest and detached acquisition. Unknown versus null/zero remains
+  explicit. Missing fixtures/HTTP failure never establish biological absence.
+  Provider source terms govern data: AlphaFill acknowledgement and parent terms
+  remain distinct from BSD software; LIGYSIS data reuse remains NOT-STATED despite
+  free/commercial web access, MIT code and an open-access paper.
+- This is standalone development source access. Automatic card intake, residue
+  projections, downloads/jobs and frozen schema 0.3.12 changes are not implemented.
+
+## Recover GlyGen modification context without guessed PTM status (2026-10-06)
+
+- Replace the preserved parser's assumed exact canonical placement and universal
+  curated class with literal native categories, original support pointers and
+  explicitly source-scoped sequence coordinates. Keep glycosylation and
+  phosphorylation as separate independent assertions, including alternatives.
+  Peptide `site_seq` is not a residue name. Provider isoform correspondence remains
+  a native comment; no local alignment or current-UniProt coordinate claim follows.
+- Use the provider's public GET detail route without pagination. Require native
+  accession/sequence/length and exact modification-table totals. Other raw sections
+  remain unqualified. Only a positive single site within the source sequence gains
+  a normalized location; ranges, missing numbering and out-of-axis values stay raw.
+  Local row index/hash locators retain duplicates without claiming provider IDs.
+- Keep current record/sequence revisions unknown. Introduction history and Swagger
+  version are separate context. Source categories and listed publications/providers
+  are not experimental confirmation, automatic curation or separately acquired credit.
+- Record reviewed CC BY 4.0 database terms with original-source attribution and
+  separate underlying rights. Freeze the full unmodified public HsTIM response.
+  Add no automatic card enrichment, residue-view extension or frozen-schema change.
+- Register iPTMnet as evaluating: both public substrate checks returned HTTP 503.
+  Its preserved parser remains useful but unqualified; failure is not source absence.
+  No synthetic replacement is claimed as a native response.
+
+## Recover EPPIC/PDB-REDO without silent structure replacement (2026-10-06)
+
+- EPPIC bundles unchanged entry/interface/assembly responses, preserving separate
+  acquisition, source times/hashes and native run parameters. Validate exact entry,
+  interface and cluster identities and original numeric domains. Preserve native
+  method calls, score sentinels, alternative and unit-cell assemblies. IDs/chains/
+  operators stay source-scoped; no residue or current-UniProt projection is inferred.
+- Map interface area as a PyUnitWizard quantity in square angstroms, as the official
+  EPPIC interface table states. Keep raw source objects/coordinates in metadata;
+  calculate no geometry and select no assembly. EPPIC software versions, releaseDate
+  and the UniProt run release do not establish a prediction-record revision.
+- PDB-REDO reads existing data.json and separately requested versions.json, keeping
+  original files intact. Map deposited, baseline, restrained and final R-factors
+  independently; preserve null/zero/missing values and native input/software context.
+  Pipeline version/date is not a databank revision. Do not fabricate coordinate URLs,
+  replace models, calculate an improvement or submit a re-refinement job.
+- Keep success/empty/unavailable/failed access distinct. A later EPPIC component
+  failure retains earlier access receipts and cannot produce a complete bundle.
+  PDB-REDO's observed 1HTI HTTP 500 establishes only a failed request.
+- Preserve EPPIC data reuse as NOT-STATED; neither GPL software nor Apache API
+  documentation grants a prediction-data licence. Classify PDB-REDO's explicit
+  original-file reuse policy as FREE-WITH-ACKNOWLEDGEMENT with original/parent
+  attribution conditions. Fix the unpublished NOT-STATED retention branch to keep
+  redistribution unknown instead of granting it; established licences are unchanged.
+- Make the existing showcase storage/curation tests prepare their own detached
+  cards. The full 12-worker run exposed their dependence on another test executing
+  first; original/curated snapshot integrity must be meaningful in isolated runs.
+- Add no automatic card enrichment, persisted field or frozen-schema change. Retain
+  the stash and 87 byte-identical original exports. Other specialist sources remain
+  separately scoped candidates; no remote publication is part of this recovery.
+
+## Recover PDBe validation as literal structure-scoped metrics (2026-10-06)
+
+- Recover explicit entry-wide percentile access from the preserved prototype,
+  using the current documented PDBe route and one PDB ID per call. Validate exact
+  native entry identity, finite raw values and 0–100 percentile domains. Preserve
+  unknown metrics, additional native context and optional relative percentiles.
+- Keep raw values distinct from archive-wide and comparable-entry ranks. Do not
+  fabricate missing metrics, experimental methods, metric units, quality classes,
+  thresholds, comparison population counts or pipeline/statistical revisions.
+  The API service version is not the unstated scientific-data revision.
+- Emit one independent SourceAssertion per metric with the PDB structure subject.
+  Do not apply the old `experimental_quality_assessment`/`database_inference`
+  classes, enrich cards, project residue positions or alter frozen schema 0.3.12.
+- Observe online and supplied-file acquisition and original-time HTTP archive
+  replay. An explicit empty metric collection differs from missing fixtures and
+  failed requests; a 404 alone does not prove validation absence.
+- Review EMBL-EBI terms and wwPDB archive CC0 scope independently. A separate
+  PDBe validation API-response licence remains `NOT-STATED`; PDBe-KB terms are
+  not transferred. Preserve native public fixture bytes, hashes and retrieval gaps.
+  Retain the original stash and exports; EPPIC/PDB-REDO remain separate candidates.
+
+## Recover MobiDB, SIFTS and source metadata on current contracts (2026-10-06)
+
+- Use the documented MobiDB v1 single-protein export instead of restoring the
+  legacy document endpoint. Validate the complete native identity/sequence/release,
+  intervals and count/continuation headers. Preserve all annotation sets, series,
+  semantic/unit declarations, native normalized/stored coverage and reported issues.
+- Preserve curated, homology, derived and prediction bases as the provider states
+  them. Do not interpret native `evidence` as MOLI Evidence. Map disorder and PTM
+  intervals independently, retaining original labels, providers and provenance;
+  unknown PTM experimental basis remains unknown. Exclude sets with reported
+  normalization losses under `mobidb_valid_region_sets@1`, retaining them raw.
+- Extend the unpublished `residue_knowledge@1` reader to native MobiDB disorder
+  features on its explicitly selected source axis, with exact subject and complete
+  sequence/hash support. Do not fabricate an IDPO term or place same-sequence
+  observations on the canonical card axis automatically.
+- Recover SIFTS as one explicit PDB mapping query, keeping every native protein
+  or isoform reference, entity, author chain, label asym ID and endpoint/insertion
+  number. Independent assertions have the structure subject. Source endpoints do
+  not justify calculated residue offsets or entity/sequence equivalence. Release
+  and referenced sequence revisions stay unknown. Review EMBL-EBI terms without
+  assigning an unverified SIFTS-wide or PDBe-KB licence.
+- Preserve MobiDB's required continuation/count headers in the existing shared
+  HTTP archive. Replay still uses original source times and never new network
+  requests. Add no competing transport or runtime dependency.
+- Generate the public metadata catalog and category profiles from the current
+  registry under `registry_catalog@1`, with all statuses/access/terms/limitations
+  and code-derived limits. Package JSON for offline reading. Adoption status is
+  not health, readiness, complete coverage or a query activation policy; old
+  hard-coded `verified`/`production_ready` profiles are not restored.
+- Add no automatic card enrichment, new persisted field or frozen-schema change.
+  Retain the complete stash and all original exports; other specialist integrations
+  and consumer projections remain qualified separately.
+
+## Recover direct AlphaMissense substitutions with explicit prediction scope (2026-10-06)
+
+- Select one exact full canonical human AlphaFold DB descriptor and its declared
+  native amino-acid substitution artifact. Keep the full discovery response,
+  including unqueried isoforms. Refuse ambiguous/fragmented descriptors, unrelated
+  proteins, unsupported sequence scope and changed host/artifact identity.
+- Validate every CSV row before a positive output cap: headers/width, unique
+  substitutions, positions, reference amino acids, alternatives and finite scores
+  in [0, 1]. Retain native numeric literals, missing values and provider classes;
+  unknown classes remain explicit. Do not reconstruct or threshold classes.
+  Keep code recognition under `native_alphamissense_class_vocabulary@1` in
+  validation metadata, separate from the provider's asserted classification.
+- Map independent source assertions with `knowledge_class=predicted` and an
+  explicit AlphaMissense source sequence/hash. Host discovery sequence binding
+  does not establish current UniProt or isoform coordinate equivalence.
+  The host model version/date is not the unstated prediction-artifact revision.
+- Preserve native CSV bytes/hash, parsed row count, output cap and named
+  `single_aa_substitution_coverage@1` grid coverage separately. Missing grid rows
+  do not establish biological absence. Missing declarations do not query/credit
+  the score resource; failed declared downloads remain failures.
+- Keep host discovery and prediction artifact acquisition separate, with shared
+  HTTP archive replay and original times. Consumer-specific discovery validation
+  preserves the existing AlphaFold public failure contract. Register reviewed
+  CC BY 4.0 prediction terms and a native public fixture, with requested bibliography.
+- Add no automatic card enrichment, persisted fields, isoform/genomic artifact
+  reconstruction, clinical assertion or new model inference. Frozen schema 0.3.12
+  and the complete original stash remain unchanged.
+
+## Recover explicit sequence candidates without changing entity resolution (2026-10-06)
+
+- Add `exact_sequence_candidates@1` as a standalone raw/FASTA candidate tool.
+  Reject invalid/multiple records before access. Normalize whitespace/case and
+  an optional final stop, retaining input hashes and the literal header.
+- Search UniParc with native MD5, then compare full archive and current UniProt
+  canonical sequences. Keep every matching entry separate. Equal sequences,
+  shared archive records and historical references do not establish entity identity.
+  Require exact queried primary accessions; redirected/alias responses are explicit
+  validation failures. Optional taxonomy filtering is exact, without descendants.
+- Preserve native `.N` revisions as associations, without fetching historical
+  sequence versions. Explicitly exclude `-N` isoform references as unqueried.
+  Cap archive rows and canonical checks separately; keep native reference order,
+  unfinished scope and per-entry failures. Retain accepted rows/candidates if a
+  later page fails. A single candidate in a partial report is not unique identity.
+- Use shared online/fixture acquisition and archive replay, with native totals,
+  same-source/query continuation guards, consistent releases and page receipts.
+  Map archive declarations separately from current sequence support, retaining
+  full assertion snapshot hashes, original native metadata and retrieval gaps.
+- Register UniParc under official CC BY 4.0 database terms and declare the public
+  native fixture. Other database/publication rights remain separate. Add no card
+  enrichment, automatic resolver heuristic, identity merge or frozen-schema change.
+
+## Recover richer residue reading as a detached view (2026-10-06)
+
+- Add `Card.residue_knowledge`, named rule `residue_knowledge@1`, separately from
+  the existing `residue_annotations@1` readers. Keep their previous results intact.
+- Read amino-acid-type properties/statistics independently from position tracks
+  and DisProt region assertions. Retain providers, metrics, state definitions,
+  sample context, units and exact original SourceAssertions. A reference frequency
+  does not become a positional probability; native AAindex `NA` is not zero.
+- Require explicit full source sequence/id/subject and optional matching hash for
+  positional inputs. Canonical placement requires exactly matching identity and
+  content. Explicitly selected source/isoform sequences remain on their own axes;
+  equality to the canonical string does not establish identity or placement.
+- Pin complete input assertion records, including metadata/revisions, so different
+  revisions sharing an assertion id remain distinct. Missing samples and incompatible
+  scope remain separate from zero/received data. Invalid dense/sparse positions and
+  conflicting declarations are refused or reported unplaced.
+- Add no new card field/schema, source access, attribution, prediction, alignment
+  or isoform reconstruction. Supplied original assertions remain separate from
+  card persistence and runtime acquisition sidecars.
+
+## Recover supplied snapshot intake and bounded DisProt access (2026-10-06)
+
+- Add explicit JSON/JSONL/NDJSON/CSV/TSV/gzip reading with original byte hashes,
+  optional SHA-256 verification and detached caller declarations. Local read time
+  never substitutes for original source retrieval. The generic loader provides
+  neither acquisition credit nor card intake; native clients validate its payload.
+- Add direct DisProt accession search with online, fixture and bound supplied-file
+  clients. Retain native search/region counts, acquisition/replay identity and
+  incomplete default-region scope. Failed API routes never establish source absence.
+- Map only the explicit native disorder structural-state term, with coordinates
+  on the identified DisProt sequence. Shared UniProt accessions do not establish
+  coordinate equivalence; no current-sequence or isoform placement is inferred.
+  Retain native region revisions and publication pointers, unknown global release
+  and missing underlying bibliography. These remain database SourceAssertions.
+- Keep the retrieved public fixture's native coordinates and all returned regions;
+  trim publication quotations/HTML and unrelated fields, document hashes and CC BY
+  4.0 database terms. Linked article rights remain separate. No automatic protein
+  enrichment or frozen card-schema change is made.
+
+## Recover useful pre-pull local work without reverting current contracts (2026-10-06)
+
+- Preserve the complete original stash and export original bytes locally. Inventory
+  all 91 paths; keep the 87 useful historical files under ignored `recovered_work/`.
+  Archive the source catalog and requirements with current-registry dispositions.
+- Reimplement notebook reports, canonical residue readers (`residue_annotations@1`)
+  and explicit AAindex1 source access on current cards, SourceAssertions, argument
+  contracts and shared acquisition transport. Do not change frozen schema 0.3.12.
+- Reports and residue views are offline derived readers. They preserve pinned
+  input/support, units and gaps without new credit, identity resolution or isoform
+  reconstruction. Disulfide annotations apply only to their endpoints.
+- AAindex native values are reference assertions about amino-acid types. Preserve
+  literal numbers/NA, bibliographic pointers and unknown units/version/terms; do
+  not reuse the prototype's guessed units or infer positional protein properties.
+- Legacy evidence stores, unbound ligand cards and the mislabeled PTGS2 file stay
+  historical until scientific identity/support and migration can be established.
+  Newer current implementations supersede old resolution, caching and governance.
+- Use the shared Python 3.14 development environment for all recovery validation,
+  as the maintainer requests. No separate installed-artifact qualification is
+  part of this local recovery. See `archive/local_work_2026-07/README.md`.
+
 ## Preserve references declared by ChEMBL indications (2026-10-06, #108)
 
 - Project native `indication_refs` as incomplete pointer citations, with the role
@@ -2913,3 +3545,17 @@ is named in the new facts and index, rather than rewriting an existing packet.
   original order; compact author strings cannot replace a complete native list (#128).
 - Retain bibliography gaps, separate resource/registry/pointer roles and inert saved
   readers using the existing public Ackredit minimum. No new provider contract is needed.
+
+
+## 2026-10-08 — Rebuild HK2 as a current public test system
+
+Use human HK2 (UniProt P52789) alongside TcTIM/HsTIM as a public regression
+system. Rebuild cards and notebooks from qualified native responses using the
+current API, rather than promoting historical card exports to expected knowledge.
+The initial integrated baseline uses the existing unchanged UniProt fixture;
+additional provider responses require their own qualification and rights.
+Historical artifacts remain a temporary local backup and unverified query/case
+reference, not a maintained parallel scientific baseline. The misleading old
+PTGS2 filename does not create a PTGS2 test system. See
+[HK2_TEST_SYSTEM.md](HK2_TEST_SYSTEM.md) and
+[the final historical review](archive/local_work_2026-07/followup_35_final_review_and_hk2.md).

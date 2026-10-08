@@ -1,5 +1,9 @@
 # Sabueso — API Conventions
 
+Common naming, argument and derived-view contracts. Source-specific standalone
+subjects/fields live in [native mapping scopes](sources/NATIVE_MAPPING_CONVENTIONS.md),
+and access/qualification in [SOURCE_ACCESS.md](SOURCE_ACCESS.md).
+
 ## Naming
 - Use `snake_case` for fields in Python objects.
 - Field path notation is **dot‑separated** and is now the frozen convention.
@@ -56,4 +60,3 @@ See `CHECKPOINT.md` ("Package layout"). The rules that stay:
 - Molecule items carry `label` and `label_source`. The label is the name, else the
   ChEMBL id, else the PDB component code, else the InChIKey
   (`sabueso.core.labels.molecule_label`).
-

@@ -7,6 +7,13 @@
 - **Clinical Data Volatility**: Clinical information changes more frequently than core physchem data.
 
 ## Architecture Risks (General)
+- **Recovered capabilities need real consumer revalidation**
+  ([#132](https://github.com/uibcdf/sabueso/issues/132)): public fixture tests and
+  independent SDK journeys establish bounded support/persistence behavior, but
+  not the usefulness or completeness of current private Python/Jupyter workflows.
+  Revisit those workflows after exact-SHA CI, with original results/receipts kept
+  private and the checkout read-only. Route generic findings to the owning
+  component or shared MOLI contract rather than expanding sources by count.
 - **Disease deck support/observation gaps** (#91/#108/#112): the independent
   disease example retains exact card/group support; published rules `@1`
   store membership as metadata without supporting SourceAssertion/input pins.

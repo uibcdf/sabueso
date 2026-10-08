@@ -1,0 +1,70 @@
+{
+  "format": "sabueso.consolidation_measurement@1",
+  "measurement_scope": "single Linux run; elapsed includes imports; peak RSS is per process; not a release benchmark",
+  "processes": [
+    {
+      "bundle": "consolidation_protein_v1",
+      "action": "read",
+      "exit_code": 0,
+      "elapsed_seconds": 4.150668670074083,
+      "peak_rss_kib": 192224
+    },
+    {
+      "bundle": "consolidation_protein_v2_final",
+      "action": "produce",
+      "exit_code": 0,
+      "elapsed_seconds": 16.648822023067623,
+      "peak_rss_kib": 191704
+    },
+    {
+      "bundle": "consolidation_protein_v2_final",
+      "action": "read",
+      "exit_code": 0,
+      "elapsed_seconds": 4.956885622930713,
+      "peak_rss_kib": 195524
+    },
+    {
+      "bundle": "consolidation_protein_v2_final",
+      "action": "reacquire",
+      "exit_code": 0,
+      "elapsed_seconds": 17.303260624059476,
+      "peak_rss_kib": 188628
+    },
+    {
+      "bundle": "consolidation_protein_v2_final",
+      "action": "read",
+      "exit_code": 0,
+      "elapsed_seconds": 9.168589700944722,
+      "peak_rss_kib": 233508
+    }
+  ],
+  "genuine_v1_scientific_files_unchanged": true,
+  "original_bundle_sizes": {
+    "original.traces.json": 1348992,
+    "original.full.attribution.json": 2795886,
+    "original.index.attribution.json": 2795886,
+    "original.report.json": 18099826,
+    "original.observations.json": 7357513,
+    "original.workflow.json": 3784676,
+    "original.manifest.json": 3252
+  },
+  "knowledge_store_bytes_after_reacquisition": 6279168,
+  "residue_context_json_bytes": {
+    "subject": 5739,
+    "comparator": 5713
+  },
+  "residue_selection": {
+    "subject": [
+      96,
+      168
+    ],
+    "comparator": [
+      96,
+      166
+    ]
+  },
+  "card_refs": {
+    "subject": "sabueso:protein:uniprot:P52270@sha256:38b0b9827cd0120065d286935cf29c3d47d41ec08eb13a3543568b944f5e3e2d",
+    "comparator": "sabueso:protein:uniprot:P60174@sha256:4d86f9bf20121f73dca411fbb3993f02b7dd8e7134e97508c6d2d9bf40c8b313"
+  }
+}

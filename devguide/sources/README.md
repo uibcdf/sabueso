@@ -2,7 +2,8 @@
 
 `registry.yaml` records every online resource Sabueso uses, has set aside, or has yet to
 review, with the reason for each decision. It is the source of truth. The user page
-`docs/content/user/data_sources.md` is generated from it:
+`docs/content/user/data_sources.md`, packaged source terms and the public offline
+metadata catalog `sabueso/resolver/source_catalog.json` are generated from it:
 
 ```bash
 python tools/source_registry.py --write   # regenerate the page
@@ -10,6 +11,18 @@ python tools/source_registry.py --check   # validate the registry, compare the p
 ```
 
 `tests/core/test_source_registry_offline.py` runs the same checks in CI.
+`sabueso.tools.sources.get_catalog()` reads that packaged metadata without importing
+YAML or querying a source. Category profiles preserve status decisions, indirect
+access routes and limitations; they do not claim live readiness or activate sources.
+
+The same generator derives `source_capability_inventory@1` from local Python
+declarations, `ENRICHERS` and the reviewed recovery fixture inventory. The generated
+`docs/content/user/source_capabilities.md` and packaged catalog distinguish native
+access/mapping, declared card contribution and repository/local input scope.
+Imported aliases and established bespoke routes have explicit inventory limits;
+the inventory does not qualify live health or consumer acceptance.
+The file-specific [delivery inventory](FIXTURE_DELIVERY.md) complements the registry
+and never replaces its source decisions or grants.
 
 ## Statuses
 

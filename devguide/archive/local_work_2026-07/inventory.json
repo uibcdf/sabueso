@@ -1,0 +1,1296 @@
+{
+  "format": "sabueso.local_work_recovery@1",
+  "stash": "db04d97fef5a318c6d09f8312971558eafd9d14c",
+  "base_commit": "bd459f640d4ac7529d87877c172be7793f86d4df",
+  "files": [
+    {
+      "path": "devguide/CHECKPOINT.md",
+      "disposition": "historical_original",
+      "sha256": "8f25aa5681f183bed165473d671cc826c46e69324b5b939005c2648e23dc4264",
+      "bytes": 4597,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/DATA_SOURCES_STATUS.md",
+      "disposition": "historical_original",
+      "sha256": "54e97840635526aa3cd8e45ff782fba229c50c89e1ace071d6149ac4b735970b",
+      "bytes": 35480,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence",
+      "integration_followup_05": "native_ChannelsDB_PDB_annotations_recovered_without_geometry_or_canonical_placement; ECOD_CASTp_ProBiS_FDA_native_access_scope_and_terms_reviewed; see_followup_05_source_integration.md",
+      "integration_followup_06": "native_TCDB_full_headerless_export_and_literal_assignment_occurrences_recovered; HPO_MEROPS_PDBTM_ELM_scope_terms_and_access_reviewed; see_followup_06_source_integration.md",
+      "integration_followup_07": "native_ECOD_experimental_UID_classification_reader_recovered_without_residue_projection_or_identity_merge; MetalPDB_Interactome3D_3did_GtoPdb_requirements_retained; see_followup_07_source_integration.md",
+      "integration_followup_08": "native_MetalPDB_site_reader_and_Coordination_Sphere_qualified_angstrom_distances_recovered; MEROPS_HPO_PDBTM_ELM_native_representation_scope_access_and_terms_preserved; see_followup_08_source_integration.md",
+      "integration_followup_09": "CASTpFold_official_result_routes_and_area_volume_units_ProBiS_representative_lookup_Interactome3D_metadata_export_3did_and_FDA_scope_reviewed; native_acquisition_still_pending; original_bytes_preserved; see_followup_09_source_integration.md",
+      "integration_followup_10": "MEROPS_native_accession_classification_reader_recovered_with_three_unassigned_four_column_rows_and_one_exact_quoted_literal; all_original_bytes_preserved; cleavage_and_distribution_unqualified; see_followup_10_source_integration.md",
+      "integration_followup_11": "HPO_native_dated_complete_gene_disease_phenotype_export_recovered_with_original_frequencies_and_custom_attribution_unchanged_content_terms; COSMIC_BioCyc_OMIM_PDBTM_conditions_preserved; original_bytes_unchanged; see_followup_11_source_integration.md",
+      "integration_followup_12": "3did_native_DMI_flat_export_and_structural_instances_recovered; literal_patterns_ranges_counts_chain_encoding_preserved; GtoPdb_ELM_CASTp_ProBiS_conditions_reviewed; original_bytes_unchanged; see_followup_12_source_integration.md",
+      "integration_followup_13": "PDBTM_native_chain_topology_recovered_with_unchanged_original_XML_copyright_and_independent_endpoints; BioCyc_OMIM_Interactome3D_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_13_source_integration.md",
+      "integration_followup_14": "ProBiS_native_full_reference_chain_catalog_and_literal_occurrences_recovered; GtoPdb_COSMIC_ELM_CASTpFold_current_conditions_reviewed; original_bytes_unchanged; see_followup_14_source_integration.md",
+      "integration_followup_15": "Interactome3D_native_archived_representative_protein_metadata_recovered; BioCyc_OMIM_ELM_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_15_source_integration.md",
+      "integration_followup_16": "CASTp_GtoPdb_COSMIC_ELM_OMIM_current_access_and_terms_reviewed; previous_CASTp_portal_connection_fails_without_body; no_new_native_reader; original_bytes_unchanged; see_followup_16_source_review.md",
+      "integration_followup_18": "BRENDA_native_EC_class_description_reader_recovered_without_historical_kinetics_claim; ASD_original_license_application_and_no_redistribution_conditions_qualified; TTD_original_public_crossreference_export_and_key_version_semantics_received; original_bytes_unchanged; see_followup_18_pending_source_integration.md",
+      "integration_followup_19": "TTD_native_target_listing_and_iPTMnet_original_HTML_substrate_report_readers_recovered; exact_native_key_group_release_hidden_support_and_terms_preserved; eight_resources_remain_pending_access_or_native_data_conditions; original_bytes_unchanged; see_followup_19_native_target_and_ptm_context.md"
+    },
+    {
+      "path": "devguide/DECISIONS.md",
+      "disposition": "historical_original",
+      "sha256": "ba8f6393316727f2a18975dffc8d1973ad6cd08c3340ec23c4f6f125028be33d",
+      "bytes": 10149,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/FIELD_PATHS.md",
+      "disposition": "historical_original",
+      "sha256": "847824dbd810f5876d0d1feaba46f4c062893368da1e8a90237c4881a581a143",
+      "bytes": 5870,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/ROADMAP.md",
+      "disposition": "historical_original",
+      "sha256": "bf3d3fb8c17f3827976047d758c34d710fd6159a864a8d549d72d077e834bc42",
+      "bytes": 2076,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/SCHEMA.md",
+      "disposition": "historical_original",
+      "sha256": "288cab966533323af42657642ee1a2e8fa72e7f71fdf3f16833f4f2eceb4c6dc",
+      "bytes": 5567,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "docs/api/mappings.md",
+      "disposition": "historical_original",
+      "sha256": "3946ddbc6882a5a0b648219cf25373c870b3a3fe96c74afe93d270032cdc8539",
+      "bytes": 1679,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence",
+      "integration_followup_05": "native_ChannelsDB_PDB_annotations_recovered_without_geometry_or_canonical_placement; ECOD_CASTp_ProBiS_FDA_native_access_scope_and_terms_reviewed; see_followup_05_source_integration.md",
+      "integration_followup_06": "native_TCDB_full_headerless_export_and_literal_assignment_occurrences_recovered; HPO_MEROPS_PDBTM_ELM_scope_terms_and_access_reviewed; see_followup_06_source_integration.md"
+    },
+    {
+      "path": "docs/api/resolver.md",
+      "disposition": "historical_original",
+      "sha256": "404d60dd9d7fc15499e13fdac8f5d9ea4f6d8a3fcec4d0ca5959ad5a58f05de7",
+      "bytes": 536,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "docs/api/tools.md",
+      "disposition": "historical_original",
+      "sha256": "ba0911960b0cf5ebf8c98aae8c9b7445a987268e863287ede888037d5e47a71f",
+      "bytes": 2702,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence",
+      "integration_followup_05": "native_ChannelsDB_PDB_annotations_recovered_without_geometry_or_canonical_placement; ECOD_CASTp_ProBiS_FDA_native_access_scope_and_terms_reviewed; see_followup_05_source_integration.md",
+      "integration_followup_06": "native_TCDB_full_headerless_export_and_literal_assignment_occurrences_recovered; HPO_MEROPS_PDBTM_ELM_scope_terms_and_access_reviewed; see_followup_06_source_integration.md"
+    },
+    {
+      "path": "docs/content/user/index.md",
+      "disposition": "historical_original",
+      "sha256": "f375dade898425c33f68ca0f9dc40c8952c7c5f38d06a53a6d47bc86cedbbd49",
+      "bytes": 675,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "docs/content/user/quickstart.md",
+      "disposition": "historical_original",
+      "sha256": "0638ed1963469845a755ce46dbb35f250c66b0f6b58875d6c10d4899e294890e",
+      "bytes": 2301,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "sabueso/__init__.py",
+      "disposition": "historical_original",
+      "sha256": "c325b6fac5a1b4eeca6b5341fe8862aaefc014f0e9ccbd6d22d0dde58dbcd59f",
+      "bytes": 4579,
+      "recovery": "reviewed_followup_35_current_contracts_and_final_native_acceptance",
+      "implementation_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "Current public SDK exports supersede legacy grouped constructors, query records and generic Evidence objects."
+      }
+    },
+    {
+      "path": "sabueso/core/__init__.py",
+      "disposition": "historical_original",
+      "sha256": "e2bb3a8e36dd8ac9799850e40b68b16463dcd2c2a919a3600da5d7c8ffc5d4ba",
+      "bytes": 364,
+      "recovery": "reviewed_followup_35_current_contracts_and_final_native_acceptance",
+      "implementation_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "Current quantity/relationship/derived-composition APIs supersede six generic prototype exports."
+      }
+    },
+    {
+      "path": "sabueso/core/card.py",
+      "disposition": "historical_original",
+      "sha256": "707ff53d60e50137fcfa78a6b75b9ca94b94f041c93d8264462a1ea9d3c3a65f",
+      "bytes": 23671,
+      "recovery": "residue_view_adapted_other_card_changes_superseded; explicit_native_UniProt_isoform_sequence_access_and_existing_reader_integration"
+    },
+    {
+      "path": "sabueso/core/deck.py",
+      "disposition": "historical_original",
+      "sha256": "b020443a13f5fe14f3cfb252afc5daa269bb87b10e657d982e94a098ec9a4614",
+      "bytes": 2294,
+      "recovery": "reviewed_followup_30_current_equivalents_and_retained_configuration_acceptance",
+      "implementation_review_followup_30": {
+        "status": "reviewed",
+        "block": "persistence_and_selection",
+        "report": "devguide/archive/local_work_2026-07/followup_30_configuration_and_persistence_review.md",
+        "current_equivalents": [
+          "sabueso/core/deck.py",
+          "tests/core/test_deck_membership_offline.py",
+          "tests/core/test_deck_meta_offline.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Self-contained future input/profile/freshness/diagnostic acceptance in report; current SourceAssertions/pins supersede old Evidence storage."
+      }
+    },
+    {
+      "path": "sabueso/core/errors.py",
+      "disposition": "historical_original",
+      "sha256": "67709fca9400bf858e10e231016603facdfcd916dff7a12c14e60cce1fda3259",
+      "bytes": 1193,
+      "recovery": "reviewed_followup_30_current_equivalents_and_retained_configuration_acceptance",
+      "implementation_review_followup_30": {
+        "status": "reviewed",
+        "block": "persistence_and_selection",
+        "report": "devguide/archive/local_work_2026-07/followup_30_configuration_and_persistence_review.md",
+        "current_equivalents": [
+          "sabueso/core/errors.py",
+          "devguide/DIAGNOSTICS.md",
+          "tests/core/test_entity_resolver_offline.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Self-contained future input/profile/freshness/diagnostic acceptance in report; current SourceAssertions/pins supersede old Evidence storage."
+      }
+    },
+    {
+      "path": "sabueso/core/evidence_store.py",
+      "disposition": "historical_original",
+      "sha256": "5ba63bc3ed57ca057ba600bfdd9b969eec356d7f6646468d2ca9df1e4b58c7bf",
+      "bytes": 2596,
+      "recovery": "reviewed_followup_30_current_equivalents_and_retained_configuration_acceptance",
+      "implementation_review_followup_30": {
+        "status": "reviewed",
+        "block": "persistence_and_selection",
+        "report": "devguide/archive/local_work_2026-07/followup_30_configuration_and_persistence_review.md",
+        "current_equivalents": [
+          "sabueso/core/source_assertion_store.py",
+          "sabueso/core/knowledge_store.py",
+          "tests/core/test_source_assertions_offline.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Self-contained future input/profile/freshness/diagnostic acceptance in report; current SourceAssertions/pins supersede old Evidence storage."
+      }
+    },
+    {
+      "path": "sabueso/core/merge.py",
+      "disposition": "historical_original",
+      "sha256": "9225f4b799177665a39c39254fdd28ca2e77b0f7076783199376aeb1b2e8fd19",
+      "bytes": 3000,
+      "recovery": "reviewed_followup_28_current_equivalents_and_retained_requirements",
+      "implementation_review_followup_28": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_28_small_molecule_recovery.md",
+        "current_equivalents": [
+          "sabueso/core/merge.py",
+          "sabueso/core/aggregator.py",
+          "tests/core/test_aggregator_resolver.py",
+          "tests/core/test_chebi_descriptive_recovery_offline.py"
+        ],
+        "recovered_behavior": "Native ChEBI name/formula with independent SourceAssertions; current identity and conflict contracts retained.",
+        "future_requirements": "See the self-contained requirement/acceptance table in the report; no historical implementation needed."
+      }
+    },
+    {
+      "path": "sabueso/mappings/interpro.py",
+      "disposition": "historical_original",
+      "sha256": "5300a7a042bf5557c23f05aa51669091ddb66eb881a6e6d907dfeb1904c97a20",
+      "bytes": 3016,
+      "recovery": "reviewed_followup_31_native_scope_and_retained_metadata_domain_acceptance",
+      "implementation_review_followup_31": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_31_native_mapper_review.md",
+        "current_equivalents": [
+          "sabueso/mappings/interpro.py",
+          "sabueso/tools/db/interpro.py",
+          "tests/core/test_interpro_acquisition_offline.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Source-scoped UniProt comments/features, native InterPro/TED domain assignments and RCSB entry-title acceptance are independently preserved in the report; PubChem native Title recovered with separate support."
+      }
+    },
+    {
+      "path": "sabueso/mappings/pdb.py",
+      "disposition": "historical_original",
+      "sha256": "fdd92a3440ed1619027f0c647f07860b2a7d6225cacb6833544e0e506b0b628e",
+      "bytes": 7616,
+      "recovery": "reviewed_followup_31_native_scope_and_retained_metadata_domain_acceptance",
+      "implementation_review_followup_31": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_31_native_mapper_review.md",
+        "current_equivalents": [
+          "sabueso/mappings/rcsb_structures.py",
+          "sabueso/tools/db/rcsb.py",
+          "sabueso/core/structures.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Source-scoped UniProt comments/features, native InterPro/TED domain assignments and RCSB entry-title acceptance are independently preserved in the report; PubChem native Title recovered with separate support."
+      }
+    },
+    {
+      "path": "sabueso/mappings/pubchem.py",
+      "disposition": "historical_original",
+      "sha256": "b6b2d6e11753ab7662329d857eb0820fe223907f14120c0b49c4dd656cf3fc61",
+      "bytes": 7790,
+      "recovery": "reviewed_followup_31_native_scope_and_retained_metadata_domain_acceptance",
+      "implementation_review_followup_31": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_31_native_mapper_review.md",
+        "current_equivalents": [
+          "sabueso/mappings/pubchem.py",
+          "sabueso/tools/db/pubchem.py",
+          "tests/core/test_pubchem_title_recovery_offline.py"
+        ],
+        "ready_runtime_gap_found": true,
+        "residual_requirements": "Source-scoped UniProt comments/features, native InterPro/TED domain assignments and RCSB entry-title acceptance are independently preserved in the report; PubChem native Title recovered with separate support."
+      }
+    },
+    {
+      "path": "sabueso/mappings/ted.py",
+      "disposition": "historical_original",
+      "sha256": "3d42cef0da27420c52b3bcd9da8182033622d7138cb30aceda0a9f0f6379def4",
+      "bytes": 2181,
+      "recovery": "reviewed_followup_31_native_scope_and_retained_metadata_domain_acceptance",
+      "implementation_review_followup_31": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_31_native_mapper_review.md",
+        "current_equivalents": [
+          "devguide/sources/registry.yaml",
+          "devguide/pending_proposals/design_implementation_review.md"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Source-scoped UniProt comments/features, native InterPro/TED domain assignments and RCSB entry-title acceptance are independently preserved in the report; PubChem native Title recovered with separate support."
+      }
+    },
+    {
+      "path": "sabueso/mappings/uniprot.py",
+      "disposition": "historical_original",
+      "sha256": "5849eda17e9f137330b982a6f6050e4f22d53ec9add8098ef3132cce1f4a950b",
+      "bytes": 14734,
+      "recovery": "reviewed_followup_31_native_scope_and_retained_metadata_domain_acceptance; native_additional_text_and_positional_annotations_recovered_in_unpublished_schema_0.3.13",
+      "implementation_review_followup_31": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_31_native_mapper_review.md",
+        "current_equivalents": [
+          "sabueso/mappings/uniprot.py",
+          "tests/core/test_uniprot_mapping_completeness_offline.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Source-scoped UniProt comments/features, native InterPro/TED domain assignments and RCSB entry-title acceptance are independently preserved in the report; PubChem native Title recovered with separate support."
+      },
+      "implementation_recovery_followup_32": {
+        "report": "devguide/archive/local_work_2026-07/followup_32_uniprot_and_specialist_review.md",
+        "native_fixtures": 5,
+        "new_native_source_assertions": 57,
+        "comment_types": 5,
+        "feature_types": 8,
+        "schema": "0.3.13_unpublished"
+      }
+    },
+    {
+      "path": "sabueso/resolver/__init__.py",
+      "disposition": "historical_original",
+      "sha256": "3967fc42ac2d23cd603b965a948469d51e6e3f41188d8099b1e69ab43ac5f7ca",
+      "bytes": 569,
+      "recovery": "reviewed_followup_33_protein_query_and_retired_constructor_acceptance",
+      "implementation_review_followup_33": {
+        "status": "reviewed",
+        "report": "followup_33_protein_query_review.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "current_EntityQuery_EntityResolution_EntityResolver_exports_replace_legacy_ProteinQuery_wrappers"
+      }
+    },
+    {
+      "path": "sabueso/resolver/field_resolver.py",
+      "disposition": "historical_original",
+      "sha256": "56acbfeb3b6b9c940489599a4204ce8c9bc4ebf26cb593585b38209757d30c5d",
+      "bytes": 6229,
+      "recovery": "reviewed_followup_30_current_equivalents_and_retained_configuration_acceptance",
+      "implementation_review_followup_30": {
+        "status": "reviewed",
+        "block": "persistence_and_selection",
+        "report": "devguide/archive/local_work_2026-07/followup_30_configuration_and_persistence_review.md",
+        "current_equivalents": [
+          "sabueso/resolver/field_resolver.py",
+          "tests/core/test_resolver.py",
+          "tests/core/test_aggregator_resolver.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Self-contained future input/profile/freshness/diagnostic acceptance in report; current SourceAssertions/pins supersede old Evidence storage."
+      }
+    },
+    {
+      "path": "sabueso/tools/card/__init__.py",
+      "disposition": "historical_original",
+      "sha256": "817c8b0205265ce3669238c7ced995963ea5e964c3f30b12b49fe7016b7ef216",
+      "bytes": 254,
+      "recovery": "reviewed_followup_30_current_equivalents_and_retained_configuration_acceptance",
+      "implementation_review_followup_30": {
+        "status": "reviewed",
+        "block": "configuration",
+        "report": "devguide/archive/local_work_2026-07/followup_30_configuration_and_persistence_review.md",
+        "current_equivalents": [
+          "sabueso/tools/card/__init__.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Self-contained future input/profile/freshness/diagnostic acceptance in report; current SourceAssertions/pins supersede old Evidence storage."
+      }
+    },
+    {
+      "path": "sabueso/tools/db/go.py",
+      "disposition": "historical_original",
+      "sha256": "7236c25deacca5143d25f13845c4ee9b4757ac8eba7224d59028590ca9004522",
+      "bytes": 1183,
+      "recovery": "reviewed_followup_35_current_contracts_and_final_native_acceptance",
+      "implementation_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "UniProt GO cross-reference support replaces ready protein annotation access; independent native ontology-term intake requires a correctly scoped subject, transport, release and rights."
+      }
+    },
+    {
+      "path": "sabueso/tools/db/scope.py",
+      "disposition": "historical_original",
+      "sha256": "c728b2ad78c6b6b2c1299ab3d53bcf732391131b286ed2669556cd46b57aa2e0",
+      "bytes": 2335,
+      "recovery": "reviewed_followup_33_protein_query_and_retired_constructor_acceptance",
+      "implementation_review_followup_33": {
+        "status": "reviewed",
+        "report": "followup_33_protein_query_review.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "retired_SCOPe_constructor_not_restored; future_native_classification_hierarchy_chain_numbering_and_stated_correspondence_requirements_preserved"
+      }
+    },
+    {
+      "path": "sabueso/tools/db/uniprot.py",
+      "disposition": "historical_original",
+      "sha256": "a2c89712ac2621685e07d29752c1c78194d1a53a8e51b974298d1969c0e2cb5c",
+      "bytes": 3947,
+      "recovery": "reviewed_followup_33_protein_query_and_retired_constructor_acceptance; explicit_native_UniProt_isoform_sequence_access_and_existing_reader_integration",
+      "implementation_review_followup_33": {
+        "status": "reviewed",
+        "report": "followup_33_protein_query_review.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "current_record_card_access_acquisition_source_versions_and_explicit_isoform_readers_replace_historical_metadata_defaults"
+      }
+    },
+    {
+      "path": "schemas/card_schema.yaml",
+      "disposition": "historical_original",
+      "sha256": "c19fa804727cfcc804f8f18b7827b5bb070491b398f7591bbf54a9fef111f43f",
+      "bytes": 14950,
+      "recovery": "reviewed_followup_35_current_contracts_and_final_native_acceptance",
+      "implementation_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "Conceptual field requirements reconciled with current schema and native-source acceptance; peptide/supplier/clinical/patent scopes retain owning work."
+      }
+    },
+    {
+      "path": "schemas/card_schema_0.1.0.yaml",
+      "disposition": "historical_original",
+      "sha256": "09a2c4c133659c868d5061f0889bd2049b7255f8bdd67f0972f5035c78fd70df",
+      "bytes": 12129,
+      "recovery": "reviewed_followup_35_current_contracts_and_final_native_acceptance",
+      "implementation_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "Prototype shape and Evidence terminology superseded; published current schemas remain immutable, development schema is 0.3.13."
+      }
+    },
+    {
+      "path": "tests/core/test_storage_offline.py",
+      "disposition": "historical_original",
+      "sha256": "4fe52f68e1e6e2e31785005a9d28f2ae366f439d6814dd1e32238a3c36839dcf",
+      "bytes": 2771,
+      "recovery": "reviewed_followup_30_current_equivalents_and_retained_configuration_acceptance",
+      "implementation_review_followup_30": {
+        "status": "reviewed",
+        "block": "persistence_and_selection",
+        "report": "devguide/archive/local_work_2026-07/followup_30_configuration_and_persistence_review.md",
+        "current_equivalents": [
+          "tests/core/test_storage_offline.py",
+          "tests/core/test_deck_meta_offline.py",
+          "tests/core/test_knowledge_store_offline.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Self-contained future input/profile/freshness/diagnostic acceptance in report; current SourceAssertions/pins supersede old Evidence storage."
+      }
+    },
+    {
+      "path": ".antigravitycli/075045a4-1bb6-427e-9c59-aa64fea054ab.json",
+      "disposition": "tool_state_or_notebook_checkpoint",
+      "recovery": "excluded_tool_state"
+    },
+    {
+      "path": "Hexokinase-2.ipynb",
+      "disposition": "historical_original",
+      "sha256": "026fe88638296758a355e92042b13d3afdb4cec1e5d96371c293ad23752a1f3e",
+      "bytes": 33113,
+      "recovery": "reporting_adapted_or_original_preserved",
+      "scientific_artifact_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "disposition": "current_native_HK2_regression_replaces_legacy_baseline; original_preserved_locally; query_hints_and_future_cases_unqualified"
+      }
+    },
+    {
+      "path": "PTGS2_human.card.json",
+      "disposition": "historical_original",
+      "sha256": "6a9dd748dd603d70e1110bc7bfdd3b17f98b8041bafab4cd07aea096422546a7",
+      "bytes": 434726,
+      "recovery": "historical_scientific_artifact_preserved",
+      "scientific_artifact_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "disposition": "current_native_HK2_regression_replaces_legacy_baseline; original_preserved_locally; query_hints_and_future_cases_unqualified"
+      }
+    },
+    {
+      "path": "PTGS2_human.ipynb",
+      "disposition": "historical_original",
+      "sha256": "a183f3edd2e64466f53b86879c51a53292af2d058fdab4ad6fd0d723d2ea97c5",
+      "bytes": 33916,
+      "recovery": "reporting_adapted_or_original_preserved",
+      "scientific_artifact_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "disposition": "current_native_HK2_regression_replaces_legacy_baseline; original_preserved_locally; query_hints_and_future_cases_unqualified"
+      }
+    },
+    {
+      "path": "Sandbox/.ipynb_checkpoints/Hexokinase-2-checkpoint.ipynb",
+      "disposition": "tool_state_or_notebook_checkpoint",
+      "recovery": "excluded_tool_state",
+      "excluded_artifact_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "disposition": "duplicate_rendered_cells_or_empty_notebook; no_additional_scientific_content"
+      }
+    },
+    {
+      "path": "Sandbox/.ipynb_checkpoints/test-checkpoint.ipynb",
+      "disposition": "tool_state_or_notebook_checkpoint",
+      "recovery": "excluded_tool_state",
+      "excluded_artifact_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "disposition": "duplicate_rendered_cells_or_empty_notebook; no_additional_scientific_content"
+      }
+    },
+    {
+      "path": "Sandbox/.ipynb_checkpoints/test2-checkpoint.ipynb",
+      "disposition": "tool_state_or_notebook_checkpoint",
+      "recovery": "excluded_tool_state",
+      "excluded_artifact_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "disposition": "duplicate_rendered_cells_or_empty_notebook; no_additional_scientific_content"
+      }
+    },
+    {
+      "path": "Sandbox/Hexokinase-2.ipynb",
+      "disposition": "historical_original",
+      "sha256": "68d3826d7a839a328412f6d2569e721ba24da5da28341e330e7d95167ad76eac",
+      "bytes": 37772,
+      "recovery": "historical_scientific_artifact_preserved",
+      "scientific_artifact_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "disposition": "current_native_HK2_regression_replaces_legacy_baseline; original_preserved_locally; query_hints_and_future_cases_unqualified"
+      }
+    },
+    {
+      "path": "Sandbox/test.ipynb",
+      "disposition": "historical_original",
+      "sha256": "0143d6ad17658154235d8a9db910bc2ee4e1773fa58233d572098d8263d9f67c",
+      "bytes": 436994,
+      "recovery": "historical_scientific_artifact_preserved",
+      "scientific_artifact_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "disposition": "current_native_HK2_regression_replaces_legacy_baseline; original_preserved_locally; query_hints_and_future_cases_unqualified"
+      }
+    },
+    {
+      "path": "Sandbox/test2.ipynb",
+      "disposition": "historical_original",
+      "sha256": "73c8d657dd55bed1c0db9601f65aa4f72755e167ee8fc75ee7ae07ceebbe35bc",
+      "bytes": 1685,
+      "recovery": "historical_scientific_artifact_preserved",
+      "scientific_artifact_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "disposition": "current_native_HK2_regression_replaces_legacy_baseline; original_preserved_locally; query_hints_and_future_cases_unqualified"
+      }
+    },
+    {
+      "path": "devguide/ENTITY_CARD_BOUNDARIES.md",
+      "disposition": "historical_original",
+      "sha256": "2d868b13166e86fcc07da756a294f78ab5d42c78c55d12a0fb67e4093b7f2daf",
+      "bytes": 4408,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/IMPLEMENTATION_PLAN.md",
+      "disposition": "historical_original",
+      "sha256": "0cc54228a6c720c2ae79b2887b5f852da16f35148c7d4d0518c9d871252914e9",
+      "bytes": 4098,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/MOLSYSSUITE_INTEGRATION.md",
+      "disposition": "historical_original",
+      "sha256": "942147e413691d1ad528160d083ac2c0e193e30b696ea782ef3e1bad95cd8b97",
+      "bytes": 8041,
+      "recovery": "consumer_projection_requirements_reviewed_under_current_MOLI_owners_no_exchange_API"
+    },
+    {
+      "path": "devguide/NOTEBOOK_REPORTS.md",
+      "disposition": "historical_original",
+      "sha256": "f76ada8a1b5328d1936eeb4b9e72071c6fabb76067e287d26ef231a34ad936e1",
+      "bytes": 5612,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/PROTEIN_KNOWLEDGE_CATALOG.md",
+      "disposition": "historical_original",
+      "sha256": "de6bc8508c4c51f14a9cb38eba4351f8d8ff4e48e98bd92d3dad4c2c0049e516",
+      "bytes": 24337,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/PROTEIN_QUERY_RESOLUTION.md",
+      "disposition": "historical_original",
+      "sha256": "e2b4fd22c9dec477c46f9c1569e8327758e4ea40b2541c9d7df95d9435650aa9",
+      "bytes": 6446,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/README.md",
+      "disposition": "historical_original",
+      "sha256": "6f256afd4dd5bf6c1190bc966816ca4b144a8313838a7fbfff3c9c8ae72aab68",
+      "bytes": 1441,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/SCIENTIFIC_PRODUCT_VISION.md",
+      "disposition": "historical_original",
+      "sha256": "cf85c30cd47d9ef050a0823a35e68cc754db095ca191e5d704ac81d2e714fc45",
+      "bytes": 7027,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/pending_proposals/analisis_literatura_post_1_0_0.md",
+      "disposition": "historical_original",
+      "sha256": "f010e0e935745be15dfcea95d661aad0088b9e19a05aade80e2555cda64b19ac",
+      "bytes": 3510,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/pending_proposals/requisitos_proteinas.md",
+      "disposition": "historical_original",
+      "sha256": "304b7901136cb9320c9b5ebdfff7c00c4173f09ef7bb37be3bfecaf5d585f86b",
+      "bytes": 11047,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "devguide/pending_proposals/requisitos_proteinas_viabilidad_web.md",
+      "disposition": "historical_original",
+      "sha256": "da11bf075e4902181fff63e078e851c5dd2cd6a9569e757713c31450ee184ebf",
+      "bytes": 35766,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "docs/content/user/protein_cards.md",
+      "disposition": "historical_original",
+      "sha256": "6980e7a55b6efec260b3a24e0b32a0d00278994977611bb46cb89c58d38d17ff",
+      "bytes": 11644,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "docs/content/user/protein_notebooks.md",
+      "disposition": "historical_original",
+      "sha256": "e9ddced0d80996da010e1d123dcaa03b6dfedb6c4e62fb695f90ab32bb37b875",
+      "bytes": 3550,
+      "recovery": "reviewed_followup_29_reporting_recovered_and_historical_artifacts_accounted",
+      "implementation_review_followup_29": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_29_notebook_regeneration.md",
+        "current_equivalents": [
+          "docs/content/user/protein_notebooks.md",
+          "devguide/PUBLIC_API.md"
+        ],
+        "recovered_behavior": "Offline snapshot-checked generated-cell regeneration preserves original title/mode/language and supports moving the saved pair.",
+        "future_requirements": "Self-contained presentation/deck/bundle/native-data admission conditions in report; no historical notebook execution or scientific import."
+      }
+    },
+    {
+      "path": "docs/content/user/small_molecule_cards.md",
+      "disposition": "historical_original",
+      "sha256": "715839123a056e3a56efa118d28ae6f57acc43957354a7afa21ed316c5a7ae0f",
+      "bytes": 1988,
+      "recovery": "historical_requirements_preserved_current_contracts_take_precedence"
+    },
+    {
+      "path": "notebooks/HK2_human.card.json",
+      "disposition": "historical_original",
+      "sha256": "5c4d3a46b6e7cb8ad600c7b95fc4b3a4b6588e1615564cb169509a76bacebf51",
+      "bytes": 69316180,
+      "recovery": "reporting_adapted_or_original_preserved",
+      "scientific_artifact_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "disposition": "current_native_HK2_regression_replaces_legacy_baseline; original_preserved_locally; query_hints_and_future_cases_unqualified"
+      }
+    },
+    {
+      "path": "notebooks/HK2_human.ipynb",
+      "disposition": "historical_original",
+      "sha256": "8cfb5e25a316c2f0a52c2ec3d82ec6725e4b682eff464d2f7d8da3f78f33cdfb",
+      "bytes": 91023,
+      "recovery": "reviewed_followup_29_reporting_recovered_and_historical_artifacts_accounted",
+      "implementation_review_followup_29": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_29_notebook_regeneration.md",
+        "current_equivalents": [
+          "docs/content/user/protein_notebooks.md",
+          "tests/tools/test_card_notebook_offline.py"
+        ],
+        "recovered_behavior": "Offline snapshot-checked generated-cell regeneration preserves original title/mode/language and supports moving the saved pair.",
+        "future_requirements": "Self-contained presentation/deck/bundle/native-data admission conditions in report; no historical notebook execution or scientific import."
+      },
+      "scientific_artifact_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "disposition": "current_native_HK2_regression_replaces_legacy_baseline; original_preserved_locally; query_hints_and_future_cases_unqualified"
+      }
+    },
+    {
+      "path": "notebooks/HK2_human_ligands.jsonl",
+      "disposition": "historical_original",
+      "sha256": "e38243099f9fc0ed90686a54d8ae38f240f1d7624038a8157b63ecced6a0a915",
+      "bytes": 460778,
+      "recovery": "reporting_adapted_or_original_preserved",
+      "scientific_artifact_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "disposition": "current_native_HK2_regression_replaces_legacy_baseline; original_preserved_locally; query_hints_and_future_cases_unqualified"
+      }
+    },
+    {
+      "path": "notebooks/README.md",
+      "disposition": "historical_original",
+      "sha256": "cb65724dab87299be30993c92957a3d8331a5d9d379d23d23c2cf76da2d53838",
+      "bytes": 1426,
+      "recovery": "reviewed_followup_29_reporting_recovered_and_historical_artifacts_accounted",
+      "implementation_review_followup_29": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_29_notebook_regeneration.md",
+        "current_equivalents": [
+          "docs/content/user/protein_notebooks.md",
+          "sabueso/tools/deck/storage.py"
+        ],
+        "recovered_behavior": "Offline snapshot-checked generated-cell regeneration preserves original title/mode/language and supports moving the saved pair.",
+        "future_requirements": "Self-contained presentation/deck/bundle/native-data admission conditions in report; no historical notebook execution or scientific import."
+      }
+    },
+    {
+      "path": "sabueso/core/knowledge.py",
+      "disposition": "historical_original",
+      "sha256": "4ac884d3d8b487de5dd09e6c2d5cf5bf9dd69c2161f3868527ba0369eed4ee1d",
+      "bytes": 4257,
+      "recovery": "residue_set_composition_requirement_adapted_other_record_prototypes_preserved",
+      "integration_followup_04": "native_GWAS_standard_mapped_gene_HAL_pages_recovered; GtoPdb_COSMIC_BioCyc_OMIM_authorized_access_and_scope_terms_preserved; original_bytes_unchanged"
+    },
+    {
+      "path": "sabueso/mappings/knowledge.py",
+      "disposition": "historical_original",
+      "sha256": "d31382e5a0eee77585e58fa2c6d0bd1107052d7d7d5bfef1d382c0a82a94d561",
+      "bytes": 23436,
+      "recovery": "reviewed_followup_34_grouped_knowledge_and_translational_native_acceptance",
+      "batch_01_review": "HPA native categorical reader recovered; GtoPdb/WikiPathways/Monarch/MEROPS requirements reviewed with current access/terms/native context. See batch_01_source_review.md.",
+      "implementation_review_followup_34": {
+        "status": "reviewed",
+        "report": "followup_34_grouped_knowledge_mapper_review.md",
+        "ready_runtime_gap_found": false,
+        "functions": 10,
+        "disposition": "current_qualified_measurement_ligand_pathway_disease_and_HPA_routes_replace_ready_behavior; richer_Open_Targets_clinical_PDBe_predictions_and_direct_Rhea_contracts_retained"
+      }
+    },
+    {
+      "path": "sabueso/mappings/protein_annotations.py",
+      "disposition": "historical_original",
+      "sha256": "6d455eeb55465ba7f162775b49c8f46553fcc2b5d54aed77958f742a5cd46e28",
+      "bytes": 21252,
+      "recovery": "reviewed_followup_32_native_scope_and_retained_specialist_acceptance; native_Complex_Portal_context_participant_occurrences_and_query_bound_snapshot",
+      "integration_followup_19": "TTD_native_target_listing_and_iPTMnet_original_HTML_substrate_report_readers_recovered; exact_native_key_group_release_hidden_support_and_terms_preserved; eight_resources_remain_pending_access_or_native_data_conditions; original_bytes_unchanged; see_followup_19_native_target_and_ptm_context.md",
+      "implementation_review_followup_32": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_32_uniprot_and_specialist_review.md",
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Current bounded native routes supersede old class/subject defaults; independent gene-expression, kinetic, gene-description and richer annotation/context acceptance retained in report."
+      }
+    },
+    {
+      "path": "sabueso/mappings/protein_context.py",
+      "disposition": "historical_original",
+      "sha256": "91b08700b65ed4c6e6ad10976111aa4ca975955f2962a27686dafa1554f7625c",
+      "bytes": 12090,
+      "recovery": "reviewed_followup_32_native_scope_and_retained_specialist_acceptance; intact_direct_mitab27_observations_with_exact_query_binding_and_native_scope; native_signor_headerless_causal_occurrences_recovered_without_first_row_loss",
+      "batch_01_review": "HPA native categorical reader recovered; GtoPdb/WikiPathways/Monarch/MEROPS requirements reviewed with current access/terms/native context. See batch_01_source_review.md.",
+      "integration_followup_01": "native_WikiPathways_bulk_xrefs_recovered; exact_token_selection; original_bytes_preserved",
+      "implementation_review_followup_32": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_32_uniprot_and_specialist_review.md",
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Current bounded native routes supersede old class/subject defaults; independent gene-expression, kinetic, gene-description and richer annotation/context acceptance retained in report."
+      }
+    },
+    {
+      "path": "sabueso/mappings/protein_drug_discovery.py",
+      "disposition": "historical_original",
+      "sha256": "dc591ba01af03236aebda08858a92c088efe70c27095144f4626773c60a2e468",
+      "bytes": 14428,
+      "recovery": "reviewed_followup_32_native_scope_and_retained_specialist_acceptance; explicit_native_appris_gene_occurrences_recovered_without_overwrite",
+      "batch_01_review": "HPA native categorical reader recovered; GtoPdb/WikiPathways/Monarch/MEROPS requirements reviewed with current access/terms/native context. See batch_01_source_review.md.",
+      "integration_followup_03": "native_Monarch_association_pages_and_PRIDE_project_metadata_recovered; original_bytes_preserved; three_source_contracts_still_pending",
+      "integration_followup_17": "Pharos_exact_native_target_TDL_and_DepMap_fixed_public_model_context_recovered; all_13_remaining_source_conditions_reviewed; BRENDA_public_SPARQL_prototype_qualified_only_for_EC_label_probe; original_bytes_unchanged; see_followup_17_expanded_source_integration.md",
+      "integration_followup_18": "BRENDA_native_EC_class_description_reader_recovered_without_historical_kinetics_claim; ASD_original_license_application_and_no_redistribution_conditions_qualified; TTD_original_public_crossreference_export_and_key_version_semantics_received; original_bytes_unchanged; see_followup_18_pending_source_integration.md",
+      "integration_followup_19": "TTD_native_target_listing_and_iPTMnet_original_HTML_substrate_report_readers_recovered; exact_native_key_group_release_hidden_support_and_terms_preserved; eight_resources_remain_pending_access_or_native_data_conditions; original_bytes_unchanged; see_followup_19_native_target_and_ptm_context.md",
+      "implementation_review_followup_32": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_32_uniprot_and_specialist_review.md",
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Current bounded native routes supersede old class/subject defaults; independent gene-expression, kinetic, gene-description and richer annotation/context acceptance retained in report."
+      }
+    },
+    {
+      "path": "sabueso/mappings/protein_expansion.py",
+      "disposition": "historical_original",
+      "sha256": "8cdeacdc2762d4bb794fadd80d8cff76001adec3cbd96a37ca183722afb8adf7",
+      "bytes": 13939,
+      "recovery": "reviewed_followup_32_native_scope_and_retained_specialist_acceptance; swissmodel_full_native_metadata_and_alignments_recovered",
+      "batch_01_review": "HPA native categorical reader recovered; GtoPdb/WikiPathways/Monarch/MEROPS requirements reviewed with current access/terms/native context. See batch_01_source_review.md.",
+      "batch_02_review": "ClinGen native gene-validity CSV reader recovered; COSMIC/HPO/OmniPath/ELM requirements reviewed with current access/terms/scope. See batch_02_source_review.md.",
+      "integration_followup_02": "native_OmniPath_aggregate_interactions_recovered; MEROPS_actual_export_and_other_pending_contracts_preserved; original_bytes_unchanged",
+      "integration_followup_04": "native_GWAS_standard_mapped_gene_HAL_pages_recovered; GtoPdb_COSMIC_BioCyc_OMIM_authorized_access_and_scope_terms_preserved; original_bytes_unchanged",
+      "integration_followup_06": "native_TCDB_full_headerless_export_and_literal_assignment_occurrences_recovered; HPO_MEROPS_PDBTM_ELM_scope_terms_and_access_reviewed; see_followup_06_source_integration.md",
+      "integration_followup_10": "MEROPS_native_accession_classification_reader_recovered_with_three_unassigned_four_column_rows_and_one_exact_quoted_literal; all_original_bytes_preserved; cleavage_and_distribution_unqualified; see_followup_10_source_integration.md",
+      "integration_followup_11": "HPO_native_dated_complete_gene_disease_phenotype_export_recovered_with_original_frequencies_and_custom_attribution_unchanged_content_terms; COSMIC_BioCyc_OMIM_PDBTM_conditions_preserved; original_bytes_unchanged; see_followup_11_source_integration.md",
+      "integration_followup_17": "Pharos_exact_native_target_TDL_and_DepMap_fixed_public_model_context_recovered; all_13_remaining_source_conditions_reviewed; BRENDA_public_SPARQL_prototype_qualified_only_for_EC_label_probe; original_bytes_unchanged; see_followup_17_expanded_source_integration.md",
+      "integration_followup_18": "BRENDA_native_EC_class_description_reader_recovered_without_historical_kinetics_claim; ASD_original_license_application_and_no_redistribution_conditions_qualified; TTD_original_public_crossreference_export_and_key_version_semantics_received; original_bytes_unchanged; see_followup_18_pending_source_integration.md",
+      "integration_followup_19": "TTD_native_target_listing_and_iPTMnet_original_HTML_substrate_report_readers_recovered; exact_native_key_group_release_hidden_support_and_terms_preserved; eight_resources_remain_pending_access_or_native_data_conditions; original_bytes_unchanged; see_followup_19_native_target_and_ptm_context.md",
+      "implementation_review_followup_32": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_32_uniprot_and_specialist_review.md",
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Current bounded native routes supersede old class/subject defaults; independent gene-expression, kinetic, gene-description and richer annotation/context acceptance retained in report."
+      }
+    },
+    {
+      "path": "sabueso/mappings/protein_priority_sources.py",
+      "disposition": "historical_original",
+      "sha256": "20aa2c76c20eb59757750ac106cd17fea5719bbd4a55aa46243514a16adf4932",
+      "bytes": 6342,
+      "recovery": "reviewed_followup_34_grouped_knowledge_and_translational_native_acceptance; native_LIGYSIS_initial_displayed_residue_occurrences_recovered_without_selected_site_or_canonical_placement; native_LIGYSIS_directed_correspondence_tables_recovered_without_chain_protein_identity_or_projection; native_LIGYSIS_structure_mapping_POST_chain_accession_and_remapping_declarations_recovered_without_old_page_join_or_projection",
+      "implementation_review_followup_34": {
+        "status": "reviewed",
+        "report": "followup_34_grouped_knowledge_mapper_review.md",
+        "ready_runtime_gap_found": false,
+        "functions": 3,
+        "disposition": "current_native_LIGYSIS_AlphaFill_and_transcript_aware_gnomAD_replace_synthetic_wrappers_without_default_classes_or_caller_identity"
+      }
+    },
+    {
+      "path": "sabueso/mappings/protein_specialist.py",
+      "disposition": "historical_original",
+      "sha256": "093358690727caf09ae0390bd5b1fb93808761f976c4189fa7631f193a84626c",
+      "bytes": 11746,
+      "recovery": "reviewed_followup_32_native_scope_and_retained_specialist_acceptance; native_AmyPro_entry_context_and_investigated_sequence_regions; specialist_reuse_and_contract_review",
+      "batch_02_review": "ClinGen native gene-validity CSV reader recovered; COSMIC/HPO/OmniPath/ELM requirements reviewed with current access/terms/scope. See batch_02_source_review.md.",
+      "batch_03_review": "BioCyc/OMIM/Interactome3D/PDBTM/TCDB native requirements and current access/terms reviewed; all five awaiting integration. Correct Interactome3D parameters, PDBTM axes/embedded terms and TCDB independent mixed-namespace assignments preserved. See batch_03_source_review.md.",
+      "integration_followup_02": "native_OmniPath_aggregate_interactions_recovered; MEROPS_actual_export_and_other_pending_contracts_preserved; original_bytes_unchanged",
+      "integration_followup_04": "native_GWAS_standard_mapped_gene_HAL_pages_recovered; GtoPdb_COSMIC_BioCyc_OMIM_authorized_access_and_scope_terms_preserved; original_bytes_unchanged",
+      "integration_followup_06": "native_TCDB_full_headerless_export_and_literal_assignment_occurrences_recovered; HPO_MEROPS_PDBTM_ELM_scope_terms_and_access_reviewed; see_followup_06_source_integration.md",
+      "integration_followup_11": "HPO_native_dated_complete_gene_disease_phenotype_export_recovered_with_original_frequencies_and_custom_attribution_unchanged_content_terms; COSMIC_BioCyc_OMIM_PDBTM_conditions_preserved; original_bytes_unchanged; see_followup_11_source_integration.md",
+      "integration_followup_13": "PDBTM_native_chain_topology_recovered_with_unchanged_original_XML_copyright_and_independent_endpoints; BioCyc_OMIM_Interactome3D_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_13_source_integration.md",
+      "integration_followup_14": "ProBiS_native_full_reference_chain_catalog_and_literal_occurrences_recovered; GtoPdb_COSMIC_ELM_CASTpFold_current_conditions_reviewed; original_bytes_unchanged; see_followup_14_source_integration.md",
+      "integration_followup_15": "Interactome3D_native_archived_representative_protein_metadata_recovered; BioCyc_OMIM_ELM_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_15_source_integration.md",
+      "integration_followup_16": "CASTp_GtoPdb_COSMIC_ELM_OMIM_current_access_and_terms_reviewed; previous_CASTp_portal_connection_fails_without_body; no_new_native_reader; original_bytes_unchanged; see_followup_16_source_review.md",
+      "integration_followup_17": "Pharos_exact_native_target_TDL_and_DepMap_fixed_public_model_context_recovered; all_13_remaining_source_conditions_reviewed; BRENDA_public_SPARQL_prototype_qualified_only_for_EC_label_probe; original_bytes_unchanged; see_followup_17_expanded_source_integration.md",
+      "integration_followup_18": "BRENDA_native_EC_class_description_reader_recovered_without_historical_kinetics_claim; ASD_original_license_application_and_no_redistribution_conditions_qualified; TTD_original_public_crossreference_export_and_key_version_semantics_received; original_bytes_unchanged; see_followup_18_pending_source_integration.md",
+      "integration_followup_19": "TTD_native_target_listing_and_iPTMnet_original_HTML_substrate_report_readers_recovered; exact_native_key_group_release_hidden_support_and_terms_preserved; eight_resources_remain_pending_access_or_native_data_conditions; original_bytes_unchanged; see_followup_19_native_target_and_ptm_context.md",
+      "integration_followup_20": "FDA_native_page_artifact_reader_recovered_without_historical_defaults; seven_access_data_conditions_retained; original_bytes_unchanged; see_followup_20_pending_resource_recovery.md",
+      "implementation_review_followup_32": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_32_uniprot_and_specialist_review.md",
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Current bounded native routes supersede old class/subject defaults; independent gene-expression, kinetic, gene-description and richer annotation/context acceptance retained in report."
+      }
+    },
+    {
+      "path": "sabueso/mappings/protein_structural_context.py",
+      "disposition": "historical_original",
+      "sha256": "27ad3d112eb5e4090241021d0c32f0a651d2ed4f78412d88d774157c708581a1",
+      "bytes": 9010,
+      "recovery": "reviewed_followup_34_grouped_knowledge_and_translational_native_acceptance; explicit_EPPIC_interface_residue_detail_with_native_sides_serials_and_component_support",
+      "batch_03_review": "BioCyc/OMIM/Interactome3D/PDBTM/TCDB native requirements and current access/terms reviewed; all five awaiting integration. Correct Interactome3D parameters, PDBTM axes/embedded terms and TCDB independent mixed-namespace assignments preserved. See batch_03_source_review.md.",
+      "batch_04_review": "DrugCentral native TSV and source-scoped target/compound-target observations recovered; MetalPDB/ECOD/3did/GWAS Catalog native requirements and access/terms reviewed. See batch_04_source_review.md.",
+      "integration_followup_03": "native_Monarch_association_pages_and_PRIDE_project_metadata_recovered; original_bytes_preserved; three_source_contracts_still_pending",
+      "integration_followup_05": "native_ChannelsDB_PDB_annotations_recovered_without_geometry_or_canonical_placement; ECOD_CASTp_ProBiS_FDA_native_access_scope_and_terms_reviewed; see_followup_05_source_integration.md",
+      "integration_followup_06": "native_TCDB_full_headerless_export_and_literal_assignment_occurrences_recovered; HPO_MEROPS_PDBTM_ELM_scope_terms_and_access_reviewed; see_followup_06_source_integration.md",
+      "integration_followup_07": "native_ECOD_experimental_UID_classification_reader_recovered_without_residue_projection_or_identity_merge; MetalPDB_Interactome3D_3did_GtoPdb_requirements_retained; see_followup_07_source_integration.md",
+      "integration_followup_08": "native_MetalPDB_site_reader_and_Coordination_Sphere_qualified_angstrom_distances_recovered; MEROPS_HPO_PDBTM_ELM_native_representation_scope_access_and_terms_preserved; see_followup_08_source_integration.md",
+      "integration_followup_09": "CASTpFold_official_result_routes_and_area_volume_units_ProBiS_representative_lookup_Interactome3D_metadata_export_3did_and_FDA_scope_reviewed; native_acquisition_still_pending; original_bytes_preserved; see_followup_09_source_integration.md",
+      "integration_followup_10": "MEROPS_native_accession_classification_reader_recovered_with_three_unassigned_four_column_rows_and_one_exact_quoted_literal; all_original_bytes_preserved; cleavage_and_distribution_unqualified; see_followup_10_source_integration.md",
+      "integration_followup_11": "HPO_native_dated_complete_gene_disease_phenotype_export_recovered_with_original_frequencies_and_custom_attribution_unchanged_content_terms; COSMIC_BioCyc_OMIM_PDBTM_conditions_preserved; original_bytes_unchanged; see_followup_11_source_integration.md",
+      "integration_followup_12": "3did_native_DMI_flat_export_and_structural_instances_recovered; literal_patterns_ranges_counts_chain_encoding_preserved; GtoPdb_ELM_CASTp_ProBiS_conditions_reviewed; original_bytes_unchanged; see_followup_12_source_integration.md",
+      "integration_followup_13": "PDBTM_native_chain_topology_recovered_with_unchanged_original_XML_copyright_and_independent_endpoints; BioCyc_OMIM_Interactome3D_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_13_source_integration.md",
+      "integration_followup_15": "Interactome3D_native_archived_representative_protein_metadata_recovered; BioCyc_OMIM_ELM_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_15_source_integration.md",
+      "implementation_review_followup_34": {
+        "status": "reviewed",
+        "report": "followup_34_grouped_knowledge_mapper_review.md",
+        "ready_runtime_gap_found": false,
+        "functions": 10,
+        "disposition": "current_scoped_native_EPPIC_Interactome3D_PDBTM_TCDB_MetalPDB_ECOD_3did_routes_replace_ready_behavior; interaction_pairs_DDI_contacts_and_deferred_conservation_stability_membrane_contracts_retained"
+      }
+    },
+    {
+      "path": "sabueso/mappings/protein_translational_sources.py",
+      "disposition": "historical_original",
+      "sha256": "5067bb619041a7e49ce1fd050d175645091cbc3e559158ad5ca0f9517d1e5732",
+      "bytes": 13115,
+      "recovery": "reviewed_followup_34_grouped_knowledge_and_translational_native_acceptance; original_ChannelsDB_tunnel_membership_and_comment_declarations_recovered_without_predicted_class_caller_protein_assignment_or_geometry_projection",
+      "batch_04_review": "DrugCentral native TSV and source-scoped target/compound-target observations recovered; MetalPDB/ECOD/3did/GWAS Catalog native requirements and access/terms reviewed. See batch_04_source_review.md.",
+      "batch_05_review": "CIViC native monthly accepted items recovered on molecular-profile subjects; ChannelsDB/Proteins API/CASTpFold/ProBiS native requirements and provenance/access/terms reviewed. See batch_05_source_review.md.",
+      "batch_06_review": "EMA native JSON and independent orphan-designation page declarations recovered; FDA query/status/date/access/terms requirements reviewed. All historical source declarations now triaged; pending integration remains separate. See batch_06_source_review.md.",
+      "integration_followup_03": "native_Monarch_association_pages_and_PRIDE_project_metadata_recovered; original_bytes_preserved; three_source_contracts_still_pending",
+      "integration_followup_04": "native_GWAS_standard_mapped_gene_HAL_pages_recovered; GtoPdb_COSMIC_BioCyc_OMIM_authorized_access_and_scope_terms_preserved; original_bytes_unchanged",
+      "integration_followup_05": "native_ChannelsDB_PDB_annotations_recovered_without_geometry_or_canonical_placement; ECOD_CASTp_ProBiS_FDA_native_access_scope_and_terms_reviewed; see_followup_05_source_integration.md",
+      "integration_followup_06": "native_TCDB_full_headerless_export_and_literal_assignment_occurrences_recovered; HPO_MEROPS_PDBTM_ELM_scope_terms_and_access_reviewed; see_followup_06_source_integration.md",
+      "integration_followup_07": "native_ECOD_experimental_UID_classification_reader_recovered_without_residue_projection_or_identity_merge; MetalPDB_Interactome3D_3did_GtoPdb_requirements_retained; see_followup_07_source_integration.md",
+      "integration_followup_08": "native_MetalPDB_site_reader_and_Coordination_Sphere_qualified_angstrom_distances_recovered; MEROPS_HPO_PDBTM_ELM_native_representation_scope_access_and_terms_preserved; see_followup_08_source_integration.md",
+      "integration_followup_09": "CASTpFold_official_result_routes_and_area_volume_units_ProBiS_representative_lookup_Interactome3D_metadata_export_3did_and_FDA_scope_reviewed; native_acquisition_still_pending; original_bytes_preserved; see_followup_09_source_integration.md",
+      "integration_followup_12": "3did_native_DMI_flat_export_and_structural_instances_recovered; literal_patterns_ranges_counts_chain_encoding_preserved; GtoPdb_ELM_CASTp_ProBiS_conditions_reviewed; original_bytes_unchanged; see_followup_12_source_integration.md",
+      "integration_followup_13": "PDBTM_native_chain_topology_recovered_with_unchanged_original_XML_copyright_and_independent_endpoints; BioCyc_OMIM_Interactome3D_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_13_source_integration.md",
+      "integration_followup_14": "ProBiS_native_full_reference_chain_catalog_and_literal_occurrences_recovered; GtoPdb_COSMIC_ELM_CASTpFold_current_conditions_reviewed; original_bytes_unchanged; see_followup_14_source_integration.md",
+      "integration_followup_15": "Interactome3D_native_archived_representative_protein_metadata_recovered; BioCyc_OMIM_ELM_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_15_source_integration.md",
+      "integration_followup_16": "CASTp_GtoPdb_COSMIC_ELM_OMIM_current_access_and_terms_reviewed; previous_CASTp_portal_connection_fails_without_body; no_new_native_reader; original_bytes_unchanged; see_followup_16_source_review.md",
+      "integration_followup_17": "Pharos_exact_native_target_TDL_and_DepMap_fixed_public_model_context_recovered; all_13_remaining_source_conditions_reviewed; BRENDA_public_SPARQL_prototype_qualified_only_for_EC_label_probe; original_bytes_unchanged; see_followup_17_expanded_source_integration.md",
+      "integration_followup_18": "BRENDA_native_EC_class_description_reader_recovered_without_historical_kinetics_claim; ASD_original_license_application_and_no_redistribution_conditions_qualified; TTD_original_public_crossreference_export_and_key_version_semantics_received; original_bytes_unchanged; see_followup_18_pending_source_integration.md",
+      "integration_followup_19": "TTD_native_target_listing_and_iPTMnet_original_HTML_substrate_report_readers_recovered; exact_native_key_group_release_hidden_support_and_terms_preserved; eight_resources_remain_pending_access_or_native_data_conditions; original_bytes_unchanged; see_followup_19_native_target_and_ptm_context.md",
+      "integration_followup_20": "FDA_native_page_artifact_reader_recovered_without_historical_defaults; seven_access_data_conditions_retained; original_bytes_unchanged; see_followup_20_pending_resource_recovery.md",
+      "implementation_review_followup_34": {
+        "status": "reviewed",
+        "report": "followup_34_grouped_knowledge_mapper_review.md",
+        "ready_runtime_gap_found": false,
+        "functions": 7,
+        "disposition": "current_scoped_native_variant_AAindex_GWAS_PRIDE_drug_orphan_CIViC_DepMap_and_geometry_context_routes_replace_ready_behavior; peptide_PTMs_dependency_and_clinical_projection_contracts_retained"
+      }
+    },
+    {
+      "path": "sabueso/mappings/small_molecule_context.py",
+      "disposition": "historical_original",
+      "sha256": "95d5ef437e76f8f9f3ae90d03260f8f8728c6cf8d6d46dc1c12d27499864a234",
+      "bytes": 12793,
+      "recovery": "reviewed_followup_28_current_equivalents_and_retained_requirements",
+      "implementation_review_followup_28": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_28_small_molecule_recovery.md",
+        "current_equivalents": [
+          "sabueso/mappings/chebi.py",
+          "sabueso/mappings/molecule_identity.py",
+          "sabueso/mappings/pubchem.py"
+        ],
+        "recovered_behavior": "Native ChEBI name/formula with independent SourceAssertions; current identity and conflict contracts retained.",
+        "future_requirements": "See the self-contained requirement/acceptance table in the report; no historical implementation needed."
+      }
+    },
+    {
+      "path": "sabueso/resolver/protein.py",
+      "disposition": "historical_original",
+      "sha256": "e57c068bcd38054982c41d1ab5e3abb63e6d97f9d935f5523215d6bd3d3f7247",
+      "bytes": 19988,
+      "recovery": "reviewed_followup_33_protein_query_and_retired_constructor_acceptance",
+      "implementation_review_followup_33": {
+        "status": "reviewed",
+        "report": "followup_33_protein_query_review.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "current_named_identity_resolution_exact_sequence_candidates_and_explicit_isoform_routes_cover_ready_behavior; taxonomy_gene_and_PDB_chain_native_acceptance_preserved"
+      }
+    },
+    {
+      "path": "sabueso/tools/card/notebook.py",
+      "disposition": "historical_original",
+      "sha256": "a946f9e02cf2678b8f34ee27c705a9e7600d17d494c935a1b56136ade63367c2",
+      "bytes": 32622,
+      "recovery": "reviewed_followup_29_reporting_recovered_and_historical_artifacts_accounted",
+      "implementation_review_followup_29": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_29_notebook_regeneration.md",
+        "current_equivalents": [
+          "sabueso/tools/card/notebook.py",
+          "sabueso/core/card.py"
+        ],
+        "recovered_behavior": "Offline snapshot-checked generated-cell regeneration preserves original title/mode/language and supports moving the saved pair.",
+        "future_requirements": "Self-contained presentation/deck/bundle/native-data admission conditions in report; no historical notebook execution or scientific import."
+      }
+    },
+    {
+      "path": "sabueso/tools/protein.py",
+      "disposition": "historical_original",
+      "sha256": "39baae28b95b0bf58675d73ad8993ae14b74dd3f5dd7b527ec4c1b86858f8d7e",
+      "bytes": 77220,
+      "recovery": "reviewed_followup_35_current_contracts_and_final_native_acceptance; native_AmyPro_entry_context_and_investigated_sequence_regions; specialist_reuse_and_contract_review; explicit_native_CATH_domain_summary_and_query_bound_snapshot_intake; native_Complex_Portal_context_participant_occurrences_and_query_bound_snapshot; explicit_native_appris_gene_occurrences_recovered_without_overwrite; native_signor_headerless_causal_occurrences_recovered_without_first_row_loss",
+      "batch_01_review": "HPA native categorical reader recovered; GtoPdb/WikiPathways/Monarch/MEROPS requirements reviewed with current access/terms/native context. See batch_01_source_review.md.",
+      "batch_02_review": "ClinGen native gene-validity CSV reader recovered; COSMIC/HPO/OmniPath/ELM requirements reviewed with current access/terms/scope. See batch_02_source_review.md.",
+      "batch_03_review": "BioCyc/OMIM/Interactome3D/PDBTM/TCDB native requirements and current access/terms reviewed; all five awaiting integration. Correct Interactome3D parameters, PDBTM axes/embedded terms and TCDB independent mixed-namespace assignments preserved. See batch_03_source_review.md.",
+      "batch_04_review": "DrugCentral native TSV and source-scoped target/compound-target observations recovered; MetalPDB/ECOD/3did/GWAS Catalog native requirements and access/terms reviewed. See batch_04_source_review.md.",
+      "batch_05_review": "CIViC native monthly accepted items recovered on molecular-profile subjects; ChannelsDB/Proteins API/CASTpFold/ProBiS native requirements and provenance/access/terms reviewed. See batch_05_source_review.md.",
+      "batch_06_review": "EMA native JSON and independent orphan-designation page declarations recovered; FDA query/status/date/access/terms requirements reviewed. All historical source declarations now triaged; pending integration remains separate. See batch_06_source_review.md.",
+      "integration_followup_01": "native_WikiPathways_bulk_xrefs_recovered; exact_token_selection; original_bytes_preserved",
+      "integration_followup_10": "MEROPS_native_accession_classification_reader_recovered_with_three_unassigned_four_column_rows_and_one_exact_quoted_literal; all_original_bytes_preserved; cleavage_and_distribution_unqualified; see_followup_10_source_integration.md",
+      "integration_followup_20": "FDA_native_page_artifact_reader_recovered_without_historical_defaults; seven_access_data_conditions_retained; original_bytes_unchanged; see_followup_20_pending_resource_recovery.md",
+      "implementation_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "Current resolver, bounded source routes, source acquisition and named knowledge views replace generic orchestration, maturity defaults and caller identity; remote calculations remain outside Sabueso."
+      }
+    },
+    {
+      "path": "sabueso/tools/protein_sources.py",
+      "disposition": "historical_original",
+      "sha256": "9067bf82484fe28290a981fdc13ad25cd856b5296d323e7ad78c01982e0524c8",
+      "bytes": 49329,
+      "recovery": "reviewed_followup_35_current_contracts_and_final_native_acceptance; intact_direct_mitab27_observations_with_exact_query_binding_and_native_scope; explicit_EPPIC_interface_residue_detail_with_native_sides_serials_and_component_support; swissmodel_full_native_metadata_and_alignments_recovered; explicit_native_appris_gene_occurrences_recovered_without_overwrite; native_signor_headerless_causal_occurrences_recovered_without_first_row_loss",
+      "batch_01_review": "HPA native categorical reader recovered; GtoPdb/WikiPathways/Monarch/MEROPS requirements reviewed with current access/terms/native context. See batch_01_source_review.md.",
+      "batch_02_review": "ClinGen native gene-validity CSV reader recovered; COSMIC/HPO/OmniPath/ELM requirements reviewed with current access/terms/scope. See batch_02_source_review.md.",
+      "batch_03_review": "BioCyc/OMIM/Interactome3D/PDBTM/TCDB native requirements and current access/terms reviewed; all five awaiting integration. Correct Interactome3D parameters, PDBTM axes/embedded terms and TCDB independent mixed-namespace assignments preserved. See batch_03_source_review.md.",
+      "batch_04_review": "DrugCentral native TSV and source-scoped target/compound-target observations recovered; MetalPDB/ECOD/3did/GWAS Catalog native requirements and access/terms reviewed. See batch_04_source_review.md.",
+      "batch_05_review": "CIViC native monthly accepted items recovered on molecular-profile subjects; ChannelsDB/Proteins API/CASTpFold/ProBiS native requirements and provenance/access/terms reviewed. See batch_05_source_review.md.",
+      "batch_06_review": "EMA native JSON and independent orphan-designation page declarations recovered; FDA query/status/date/access/terms requirements reviewed. All historical source declarations now triaged; pending integration remains separate. See batch_06_source_review.md.",
+      "integration_followup_01": "native_WikiPathways_bulk_xrefs_recovered; exact_token_selection; original_bytes_preserved",
+      "integration_followup_02": "native_OmniPath_aggregate_interactions_recovered; MEROPS_actual_export_and_other_pending_contracts_preserved; original_bytes_unchanged",
+      "integration_followup_03": "native_Monarch_association_pages_and_PRIDE_project_metadata_recovered; original_bytes_preserved; three_source_contracts_still_pending",
+      "integration_followup_04": "native_GWAS_standard_mapped_gene_HAL_pages_recovered; GtoPdb_COSMIC_BioCyc_OMIM_authorized_access_and_scope_terms_preserved; original_bytes_unchanged",
+      "integration_followup_09": "CASTpFold_official_result_routes_and_area_volume_units_ProBiS_representative_lookup_Interactome3D_metadata_export_3did_and_FDA_scope_reviewed; native_acquisition_still_pending; original_bytes_preserved; see_followup_09_source_integration.md",
+      "integration_followup_10": "MEROPS_native_accession_classification_reader_recovered_with_three_unassigned_four_column_rows_and_one_exact_quoted_literal; all_original_bytes_preserved; cleavage_and_distribution_unqualified; see_followup_10_source_integration.md",
+      "integration_followup_11": "HPO_native_dated_complete_gene_disease_phenotype_export_recovered_with_original_frequencies_and_custom_attribution_unchanged_content_terms; COSMIC_BioCyc_OMIM_PDBTM_conditions_preserved; original_bytes_unchanged; see_followup_11_source_integration.md",
+      "integration_followup_12": "3did_native_DMI_flat_export_and_structural_instances_recovered; literal_patterns_ranges_counts_chain_encoding_preserved; GtoPdb_ELM_CASTp_ProBiS_conditions_reviewed; original_bytes_unchanged; see_followup_12_source_integration.md",
+      "integration_followup_13": "PDBTM_native_chain_topology_recovered_with_unchanged_original_XML_copyright_and_independent_endpoints; BioCyc_OMIM_Interactome3D_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_13_source_integration.md",
+      "integration_followup_14": "ProBiS_native_full_reference_chain_catalog_and_literal_occurrences_recovered; GtoPdb_COSMIC_ELM_CASTpFold_current_conditions_reviewed; original_bytes_unchanged; see_followup_14_source_integration.md",
+      "integration_followup_15": "Interactome3D_native_archived_representative_protein_metadata_recovered; BioCyc_OMIM_ELM_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_15_source_integration.md",
+      "integration_followup_16": "CASTp_GtoPdb_COSMIC_ELM_OMIM_current_access_and_terms_reviewed; previous_CASTp_portal_connection_fails_without_body; no_new_native_reader; original_bytes_unchanged; see_followup_16_source_review.md",
+      "integration_followup_17": "Pharos_exact_native_target_TDL_and_DepMap_fixed_public_model_context_recovered; all_13_remaining_source_conditions_reviewed; BRENDA_public_SPARQL_prototype_qualified_only_for_EC_label_probe; original_bytes_unchanged; see_followup_17_expanded_source_integration.md",
+      "integration_followup_18": "BRENDA_native_EC_class_description_reader_recovered_without_historical_kinetics_claim; ASD_original_license_application_and_no_redistribution_conditions_qualified; TTD_original_public_crossreference_export_and_key_version_semantics_received; original_bytes_unchanged; see_followup_18_pending_source_integration.md",
+      "integration_followup_19": "TTD_native_target_listing_and_iPTMnet_original_HTML_substrate_report_readers_recovered; exact_native_key_group_release_hidden_support_and_terms_preserved; eight_resources_remain_pending_access_or_native_data_conditions; original_bytes_unchanged; see_followup_19_native_target_and_ptm_context.md",
+      "implementation_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "Current native clients, retrieval archive and transport qualify scope and replay; first-page search, implicit gene/protein joins and generic payload permissions are not restored."
+      }
+    },
+    {
+      "path": "sabueso/tools/small_molecule.py",
+      "disposition": "historical_original",
+      "sha256": "debcdb8f52cc74b02bd84d1047e0c4b01028bd52df23c320c0959b0b524b5584",
+      "bytes": 7570,
+      "recovery": "reviewed_followup_28_current_equivalents_and_retained_requirements",
+      "implementation_review_followup_28": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_28_small_molecule_recovery.md",
+        "current_equivalents": [
+          "sabueso/tools/card/small_molecule.py",
+          "tests/core/test_molecule_identity_offline.py",
+          "tests/core/test_ligand_deck_offline.py"
+        ],
+        "recovered_behavior": "Native ChEBI name/formula with independent SourceAssertions; current identity and conflict contracts retained.",
+        "future_requirements": "See the self-contained requirement/acceptance table in the report; no historical implementation needed."
+      }
+    },
+    {
+      "path": "sabueso/tools/small_molecule_sources.py",
+      "disposition": "historical_original",
+      "sha256": "fe8fef1e4954ddd87113542ef32b2e4aabe84a788efadba555d8884f3170320a",
+      "bytes": 1963,
+      "recovery": "reviewed_followup_28_current_equivalents_and_retained_requirements",
+      "implementation_review_followup_28": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_28_small_molecule_recovery.md",
+        "current_equivalents": [
+          "sabueso/tools/db/chebi.py",
+          "sabueso/tools/db/unichem.py",
+          "sabueso/tools/db/pdb_ccd.py",
+          "sabueso/tools/db/pubchem.py"
+        ],
+        "recovered_behavior": "Native ChEBI name/formula with independent SourceAssertions; current identity and conflict contracts retained.",
+        "future_requirements": "See the self-contained requirement/acceptance table in the report; no historical implementation needed."
+      }
+    },
+    {
+      "path": "sabueso/tools/source_options.py",
+      "disposition": "historical_original",
+      "sha256": "7fae3cdb24c70a04c0b692f67bf6f6bd97edaef847b2be447b4efef871e494f3",
+      "bytes": 3602,
+      "recovery": "reviewed_followup_30_current_equivalents_and_retained_configuration_acceptance; explicit_native_CATH_domain_summary_and_query_bound_snapshot_intake; native_Complex_Portal_context_participant_occurrences_and_query_bound_snapshot; explicit_native_appris_gene_occurrences_recovered_without_overwrite; native_signor_headerless_causal_occurrences_recovered_without_first_row_loss; literal_UTF8_HTML_TXT_shared_supplied_loader_adapted_with_native_FDA_IPTMnet_validation_and_original_hash_time; five_bound_native_original_file_pathways_recovered_for_AlphaFill_GlyGen_SIFTS_and_LIGYSIS_with_pre_IO_context_binding_original_hash_and_native_validation_without_generic_card_dispatch",
+      "implementation_review_followup_30": {
+        "status": "reviewed",
+        "block": "configuration",
+        "report": "devguide/archive/local_work_2026-07/followup_30_configuration_and_persistence_review.md",
+        "current_equivalents": [
+          "sabueso/tools/source_snapshot.py",
+          "sabueso/tools/db/_snapshot.py",
+          "tests/tools/test_bound_native_snapshots_offline.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Self-contained future input/profile/freshness/diagnostic acceptance in report; current SourceAssertions/pins supersede old Evidence storage."
+      }
+    },
+    {
+      "path": "tests/core/test_residue_knowledge_offline.py",
+      "disposition": "historical_original",
+      "sha256": "c8b48463ff961e2e4d1bfed6e651e2d81e474322393bf9ba73f49a8eceb0f0c3",
+      "bytes": 6361,
+      "recovery": "residue_view_adapted_other_card_changes_superseded; explicit_native_UniProt_isoform_sequence_access_and_existing_reader_integration"
+    },
+    {
+      "path": "tests/resolver/test_protein_resolution_offline.py",
+      "disposition": "historical_original",
+      "sha256": "cd497c15879e3147521cb40fdbd01faba2691bc9cf80048a50ebb1bb7322ae16",
+      "bytes": 5057,
+      "recovery": "reviewed_followup_33_protein_query_and_retired_constructor_acceptance",
+      "implementation_review_followup_33": {
+        "status": "reviewed",
+        "report": "followup_33_protein_query_review.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "current_native_resolver_identity_sequence_and_isoform_guards_replace_synthetic_HK2_mouse_and_automatic_score_expectations"
+      }
+    },
+    {
+      "path": "tests/tools/test_aaindex_offline.py",
+      "disposition": "historical_original",
+      "sha256": "761827907c1fde33ce297736d1f9bf05036054ab62ed293475a6e6f3126d1951",
+      "bytes": 1684,
+      "recovery": "aaindex_access_adapted"
+    },
+    {
+      "path": "tests/tools/test_card_notebook_offline.py",
+      "disposition": "historical_original",
+      "sha256": "1f75816976bb04fc8f63746024941217766bb0b6dcb16ec2c83ae638d51f1012",
+      "bytes": 4275,
+      "recovery": "reviewed_followup_29_reporting_recovered_and_historical_artifacts_accounted",
+      "implementation_review_followup_29": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_29_notebook_regeneration.md",
+        "current_equivalents": [
+          "tests/tools/test_card_notebook_offline.py",
+          "tests/core/test_storage_offline.py"
+        ],
+        "recovered_behavior": "Offline snapshot-checked generated-cell regeneration preserves original title/mode/language and supports moving the saved pair.",
+        "future_requirements": "Self-contained presentation/deck/bundle/native-data admission conditions in report; no historical notebook execution or scientific import."
+      }
+    },
+    {
+      "path": "tests/tools/test_knowledge_enrichment_offline.py",
+      "disposition": "historical_original",
+      "sha256": "bb34a77dc757fdf52d6f5622568114c39191c3cc085c452899621468044c1c20",
+      "bytes": 13743,
+      "recovery": "reviewed_followup_34_grouped_knowledge_and_translational_native_acceptance",
+      "implementation_review_followup_34": {
+        "status": "reviewed",
+        "report": "followup_34_grouped_knowledge_mapper_review.md",
+        "ready_runtime_gap_found": false,
+        "test_functions": 10,
+        "disposition": "current_native_measurement_ligand_disease_source_scope_composition_storage_and_reporting_guards_replace_synthetic_Evidence_and_guessed_unit_expectations"
+      }
+    },
+    {
+      "path": "tests/tools/test_online_protein_priority_sources.py",
+      "disposition": "historical_original",
+      "sha256": "42951f048d1e2d8697b47d51a17fce34b2553becccd25b5b23823a57021357fb",
+      "bytes": 844,
+      "recovery": "reviewed_followup_35_current_contracts_and_final_native_acceptance",
+      "integration_followup_09": "CASTpFold_official_result_routes_and_area_volume_units_ProBiS_representative_lookup_Interactome3D_metadata_export_3did_and_FDA_scope_reviewed; native_acquisition_still_pending; original_bytes_preserved; see_followup_09_source_integration.md",
+      "integration_followup_10": "MEROPS_native_accession_classification_reader_recovered_with_three_unassigned_four_column_rows_and_one_exact_quoted_literal; all_original_bytes_preserved; cleavage_and_distribution_unqualified; see_followup_10_source_integration.md",
+      "implementation_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "Three historical nonempty/retired-route tests superseded by current offline native qualification and separate online-health scope; not executed."
+      }
+    },
+    {
+      "path": "tests/tools/test_protein_annotation_sources_offline.py",
+      "disposition": "historical_original",
+      "sha256": "74ec64caf09c24c969238d6216f02f02a29aa36419639ad35c0de2aeb95e4719",
+      "bytes": 48006,
+      "recovery": "reviewed_followup_35_current_contracts_and_final_native_acceptance; explicit_EPPIC_interface_residue_detail_with_native_sides_serials_and_component_support; native_AmyPro_entry_context_and_investigated_sequence_regions; specialist_reuse_and_contract_review; swissmodel_full_native_metadata_and_alignments_recovered; native_Complex_Portal_context_participant_occurrences_and_query_bound_snapshot; explicit_native_appris_gene_occurrences_recovered_without_overwrite; native_signor_headerless_causal_occurrences_recovered_without_first_row_loss",
+      "integration_followup_01": "native_WikiPathways_bulk_xrefs_recovered; exact_token_selection; original_bytes_preserved",
+      "integration_followup_11": "HPO_native_dated_complete_gene_disease_phenotype_export_recovered_with_original_frequencies_and_custom_attribution_unchanged_content_terms; COSMIC_BioCyc_OMIM_PDBTM_conditions_preserved; original_bytes_unchanged; see_followup_11_source_integration.md",
+      "integration_followup_12": "3did_native_DMI_flat_export_and_structural_instances_recovered; literal_patterns_ranges_counts_chain_encoding_preserved; GtoPdb_ELM_CASTp_ProBiS_conditions_reviewed; original_bytes_unchanged; see_followup_12_source_integration.md",
+      "implementation_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "Fourteen synthetic tests reconciled with current source-specific access/support, partial-success/error, rights, quantities and identity guards; undeclared native scopes remain future requirements."
+      }
+    },
+    {
+      "path": "tests/tools/test_protein_card_multisource_offline.py",
+      "disposition": "historical_original",
+      "sha256": "e9296cb04a5b8a96f8fa02f85c5b22edb5cb7aa9d2d4dc38c61e0f836896ee72",
+      "bytes": 4022,
+      "recovery": "reviewed_followup_30_current_equivalents_and_retained_configuration_acceptance",
+      "implementation_review_followup_30": {
+        "status": "reviewed",
+        "block": "configuration",
+        "report": "devguide/archive/local_work_2026-07/followup_30_configuration_and_persistence_review.md",
+        "current_equivalents": [
+          "sabueso/tools/card/protein.py",
+          "tests/core/test_entity_resolver_offline.py",
+          "tests/core/test_enrichers_offline.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Self-contained future input/profile/freshness/diagnostic acceptance in report; current SourceAssertions/pins supersede old Evidence storage."
+      }
+    },
+    {
+      "path": "tests/tools/test_protein_priority_sources_offline.py",
+      "disposition": "historical_original",
+      "sha256": "0f337c584fd0a84d6d4b2d08a9c7c81095b89518fe1308a5c49db83b9e3e7056",
+      "bytes": 6024,
+      "recovery": "reviewed_followup_35_current_contracts_and_final_native_acceptance; explicit_native_CATH_domain_summary_and_query_bound_snapshot_intake",
+      "integration_followup_15": "Interactome3D_native_archived_representative_protein_metadata_recovered; BioCyc_OMIM_ELM_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_15_source_integration.md",
+      "integration_followup_16": "CASTp_GtoPdb_COSMIC_ELM_OMIM_current_access_and_terms_reviewed; previous_CASTp_portal_connection_fails_without_body; no_new_native_reader; original_bytes_unchanged; see_followup_16_source_review.md",
+      "integration_followup_17": "Pharos_exact_native_target_TDL_and_DepMap_fixed_public_model_context_recovered; all_13_remaining_source_conditions_reviewed; BRENDA_public_SPARQL_prototype_qualified_only_for_EC_label_probe; original_bytes_unchanged; see_followup_17_expanded_source_integration.md",
+      "integration_followup_18": "BRENDA_native_EC_class_description_reader_recovered_without_historical_kinetics_claim; ASD_original_license_application_and_no_redistribution_conditions_qualified; TTD_original_public_crossreference_export_and_key_version_semantics_received; original_bytes_unchanged; see_followup_18_pending_source_integration.md",
+      "integration_followup_19": "TTD_native_target_listing_and_iPTMnet_original_HTML_substrate_report_readers_recovered; exact_native_key_group_release_hidden_support_and_terms_preserved; eight_resources_remain_pending_access_or_native_data_conditions; original_bytes_unchanged; see_followup_19_native_target_and_ptm_context.md",
+      "implementation_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "Four synthetic tests superseded by current native LIGYSIS/AlphaFill/gnomAD, source catalog and query-bound snapshot tests; no retired-source reactivation."
+      }
+    },
+    {
+      "path": "tests/tools/test_protein_source_catalog_offline.py",
+      "disposition": "historical_original",
+      "sha256": "b0acf51247ed4f6f1dde86380429bb338ad22061b074d7118b13f9d53c292d14",
+      "bytes": 1097,
+      "recovery": "reviewed_followup_30_current_equivalents_and_retained_configuration_acceptance",
+      "integration_followup_05": "native_ChannelsDB_PDB_annotations_recovered_without_geometry_or_canonical_placement; ECOD_CASTp_ProBiS_FDA_native_access_scope_and_terms_reviewed; see_followup_05_source_integration.md",
+      "integration_followup_06": "native_TCDB_full_headerless_export_and_literal_assignment_occurrences_recovered; HPO_MEROPS_PDBTM_ELM_scope_terms_and_access_reviewed; see_followup_06_source_integration.md",
+      "integration_followup_07": "native_ECOD_experimental_UID_classification_reader_recovered_without_residue_projection_or_identity_merge; MetalPDB_Interactome3D_3did_GtoPdb_requirements_retained; see_followup_07_source_integration.md",
+      "integration_followup_08": "native_MetalPDB_site_reader_and_Coordination_Sphere_qualified_angstrom_distances_recovered; MEROPS_HPO_PDBTM_ELM_native_representation_scope_access_and_terms_preserved; see_followup_08_source_integration.md",
+      "integration_followup_11": "HPO_native_dated_complete_gene_disease_phenotype_export_recovered_with_original_frequencies_and_custom_attribution_unchanged_content_terms; COSMIC_BioCyc_OMIM_PDBTM_conditions_preserved; original_bytes_unchanged; see_followup_11_source_integration.md",
+      "integration_followup_12": "3did_native_DMI_flat_export_and_structural_instances_recovered; literal_patterns_ranges_counts_chain_encoding_preserved; GtoPdb_ELM_CASTp_ProBiS_conditions_reviewed; original_bytes_unchanged; see_followup_12_source_integration.md",
+      "implementation_review_followup_30": {
+        "status": "reviewed",
+        "block": "configuration",
+        "report": "devguide/archive/local_work_2026-07/followup_30_configuration_and_persistence_review.md",
+        "current_equivalents": [
+          "sabueso/tools/sources.py",
+          "sabueso/resolver/enrichment_profiles.json",
+          "tests/core/test_source_registry_offline.py",
+          "tests/core/test_resolve_offline.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Self-contained future input/profile/freshness/diagnostic acceptance in report; current SourceAssertions/pins supersede old Evidence storage."
+      }
+    },
+    {
+      "path": "tests/tools/test_protein_source_http_offline.py",
+      "disposition": "historical_original",
+      "sha256": "bdcd2abb6657a18d0cf36073339dfcbb66e9f597959812e20172f5f09590ea92",
+      "bytes": 3565,
+      "recovery": "reviewed_followup_30_current_equivalents_and_retained_configuration_acceptance",
+      "integration_followup_15": "Interactome3D_native_archived_representative_protein_metadata_recovered; BioCyc_OMIM_ELM_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_15_source_integration.md",
+      "implementation_review_followup_30": {
+        "status": "reviewed",
+        "block": "configuration",
+        "report": "devguide/archive/local_work_2026-07/followup_30_configuration_and_persistence_review.md",
+        "current_equivalents": [
+          "sabueso/tools/db/_http.py",
+          "tests/core/test_http_offline.py",
+          "tests/core/test_retrieval_archive_offline.py"
+        ],
+        "ready_runtime_gap_found": false,
+        "residual_requirements": "Self-contained future input/profile/freshness/diagnostic acceptance in report; current SourceAssertions/pins supersede old Evidence storage."
+      }
+    },
+    {
+      "path": "tests/tools/test_protein_translational_sources_offline.py",
+      "disposition": "historical_original",
+      "sha256": "7f392a73e312b417d4756884771723066518fc608a3bb30ccad5e4a61414e415",
+      "bytes": 5324,
+      "recovery": "reviewed_followup_35_current_contracts_and_final_native_acceptance",
+      "batch_06_review": "EMA native JSON and independent orphan-designation page declarations recovered; FDA query/status/date/access/terms requirements reviewed. All historical source declarations now triaged; pending integration remains separate. See batch_06_source_review.md.",
+      "integration_followup_03": "native_Monarch_association_pages_and_PRIDE_project_metadata_recovered; original_bytes_preserved; three_source_contracts_still_pending",
+      "integration_followup_04": "native_GWAS_standard_mapped_gene_HAL_pages_recovered; GtoPdb_COSMIC_BioCyc_OMIM_authorized_access_and_scope_terms_preserved; original_bytes_unchanged",
+      "integration_followup_05": "native_ChannelsDB_PDB_annotations_recovered_without_geometry_or_canonical_placement; ECOD_CASTp_ProBiS_FDA_native_access_scope_and_terms_reviewed; see_followup_05_source_integration.md",
+      "integration_followup_06": "native_TCDB_full_headerless_export_and_literal_assignment_occurrences_recovered; HPO_MEROPS_PDBTM_ELM_scope_terms_and_access_reviewed; see_followup_06_source_integration.md",
+      "integration_followup_09": "CASTpFold_official_result_routes_and_area_volume_units_ProBiS_representative_lookup_Interactome3D_metadata_export_3did_and_FDA_scope_reviewed; native_acquisition_still_pending; original_bytes_preserved; see_followup_09_source_integration.md",
+      "integration_followup_11": "HPO_native_dated_complete_gene_disease_phenotype_export_recovered_with_original_frequencies_and_custom_attribution_unchanged_content_terms; COSMIC_BioCyc_OMIM_PDBTM_conditions_preserved; original_bytes_unchanged; see_followup_11_source_integration.md",
+      "integration_followup_12": "3did_native_DMI_flat_export_and_structural_instances_recovered; literal_patterns_ranges_counts_chain_encoding_preserved; GtoPdb_ELM_CASTp_ProBiS_conditions_reviewed; original_bytes_unchanged; see_followup_12_source_integration.md",
+      "integration_followup_13": "PDBTM_native_chain_topology_recovered_with_unchanged_original_XML_copyright_and_independent_endpoints; BioCyc_OMIM_Interactome3D_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_13_source_integration.md",
+      "integration_followup_14": "ProBiS_native_full_reference_chain_catalog_and_literal_occurrences_recovered; GtoPdb_COSMIC_ELM_CASTpFold_current_conditions_reviewed; original_bytes_unchanged; see_followup_14_source_integration.md",
+      "integration_followup_15": "Interactome3D_native_archived_representative_protein_metadata_recovered; BioCyc_OMIM_ELM_FDA_conditions_reviewed; original_bytes_unchanged; see_followup_15_source_integration.md",
+      "integration_followup_16": "CASTp_GtoPdb_COSMIC_ELM_OMIM_current_access_and_terms_reviewed; previous_CASTp_portal_connection_fails_without_body; no_new_native_reader; original_bytes_unchanged; see_followup_16_source_review.md",
+      "integration_followup_17": "Pharos_exact_native_target_TDL_and_DepMap_fixed_public_model_context_recovered; all_13_remaining_source_conditions_reviewed; BRENDA_public_SPARQL_prototype_qualified_only_for_EC_label_probe; original_bytes_unchanged; see_followup_17_expanded_source_integration.md",
+      "integration_followup_18": "BRENDA_native_EC_class_description_reader_recovered_without_historical_kinetics_claim; ASD_original_license_application_and_no_redistribution_conditions_qualified; TTD_original_public_crossreference_export_and_key_version_semantics_received; original_bytes_unchanged; see_followup_18_pending_source_integration.md",
+      "integration_followup_19": "TTD_native_target_listing_and_iPTMnet_original_HTML_substrate_report_readers_recovered; exact_native_key_group_release_hidden_support_and_terms_preserved; eight_resources_remain_pending_access_or_native_data_conditions; original_bytes_unchanged; see_followup_19_native_target_and_ptm_context.md",
+      "integration_followup_20": "FDA_native_page_artifact_reader_recovered_without_historical_defaults; seven_access_data_conditions_retained; original_bytes_unchanged; see_followup_20_pending_resource_recovery.md",
+      "implementation_review_followup_35": {
+        "status": "reviewed",
+        "report": "followup_35_final_review_and_hk2.md",
+        "ready_runtime_gap_found": false,
+        "disposition": "Three synthetic tests superseded by qualified variant/proteomic/drug/orphan/native-snapshot coverage and preserved future peptide/PTM/clinical requirements."
+      }
+    },
+    {
+      "path": "tests/tools/test_small_molecule_context_offline.py",
+      "disposition": "historical_original",
+      "sha256": "3fa1f4d06ba5cfa3c23fc1f2523619053529673d172294a2c5c199d5ad5b8b69",
+      "bytes": 9431,
+      "recovery": "reviewed_followup_28_current_equivalents_and_retained_requirements",
+      "implementation_review_followup_28": {
+        "status": "reviewed",
+        "report": "devguide/archive/local_work_2026-07/followup_28_small_molecule_recovery.md",
+        "current_equivalents": [
+          "tests/core/test_chebi_descriptive_recovery_offline.py",
+          "tests/core/test_molecule_identity_offline.py",
+          "tests/core/test_ligand_deck_offline.py",
+          "tests/core/test_clinical_offline.py"
+        ],
+        "recovered_behavior": "Native ChEBI name/formula with independent SourceAssertions; current identity and conflict contracts retained.",
+        "future_requirements": "See the self-contained requirement/acceptance table in the report; no historical implementation needed."
+      }
+    }
+  ],
+  "warning": "Historical originals, not current APIs or validated migrated cards. Do not import the legacy sabueso tree into the development environment.",
+  "stash_deleted": true,
+  "stash_deleted_at_utc": "2026-10-08T15:20:51+00:00",
+  "retained_backup": "recovered_work/local_work_2026-07_verified_originals.tar.gz"
+}

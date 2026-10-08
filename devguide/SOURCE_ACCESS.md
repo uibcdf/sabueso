@@ -1,529 +1,177 @@
 # Source access (uibcdf/sabueso#49)
 
-Sabueso has three public layers:
-
-1. **Source access** (`sabueso.tools.db.<source>`): raw records in a provenance envelope.
-2. **Mappings** (`sabueso.mappings`): records become SourceAssertions and relationships.
-3. **Cards and decks** (`sabueso.resolve`, `Card`, `Deck`): resolved knowledge.
+The common acquisition, validation and card-contribution contract. Provider-specific
+protocols, native fields and qualification limits are maintained in the
+[native access reference](sources/NATIVE_ACCESS_REFERENCE.md),
+[development API](sources/DEVELOPMENT_API.md) and
+[mapping scopes](sources/NATIVE_MAPPING_CONVENTIONS.md).
+The [registry](sources/registry.yaml) owns source adoption/terms; the
+[fixture delivery inventory](sources/FIXTURE_DELIVERY.md) owns reviewed input delivery.
 
 ## One module per source
 
-Each module holds the source's clients and its public `get_*` functions:
-- `uniprot`, `rcsb`, `pdb_ccd`, `pdbe_kb`, `interpro`, `alphafold`;
-- `chembl`, `bindingdb`, `pubchem`, `pubchem_bioassay`, `unichem`;
-- `stringdb`, `ncbi_taxonomy`, `ncbi_gene`;
-- `phi_base`, whose online client works on versioned releases rather than an API
-  (`CACHE_POLICY.md`);
-- `clinicaltrials`, asked only for the NCT ids another source states (#81);
-- `diseases` (DISEASES), whose channel files are versioned downloads, like `phi_base`;
-- `open_targets`, GraphQL;
-- `orphadata`, one dated XML file indexed in memory;
-- `reactome`, the Content Service;
-- `clinvar`, NCBI's E-utilities;
-- `gnomad`, GraphQL.
-Europe PMC additionally exposes `get_annotations(article_ids)` for explicit MED/PMC
-articles. It keeps accession-number annotations with source-native locations and
-quote fragments. Explicit card intake uses `europepmc={"article_ids": ...}`
-(since 0.12.0, #92); the accession search keeps bibliography. Each located occurrence
-has its own SourceAssertion, and its fragments remain governed by article terms.
-Clients added since #82 name Sabueso over HTTP through `tools/db/_http.py`.
-Card building uses the same clients, so there is one way to query each source. The
-registry (`sources/registry.yaml`) must list each module as `in_use`, and a test checks
-it.
-`sabueso.resolver.uniprot_client` and `rcsb_client` are aliases until 1.0.
+An active source accessed directly has a `sabueso.tools.db.<source>` module, public `get_*` functions
+and a mapping in `sabueso.mappings.<source>`. It is declared `in_use` in the
+registry, including access, applicable data terms, acquisition requirements and
+scientific scope. `in_use` means Sabueso reads it directly or through stated
+cross-references; it does not establish live health, card contribution or release.
+
+Survey the provider's documented batch, per-record and release routes before
+designing a client. Respect required keys/agreements and response/throttling
+semantics. A reachable website, current software version or article licence does
+not qualify arbitrary responses or identify scientific record revisions.
 
 ## Client protocol
 
-- Two interchangeable clients per source:
-  - `Online<Source>Client(timeout=30.0)` queries the service;
-  - `Fixture<Source>Client(directory="temp_data", retrieved_at="fixture", failing=None)`
-    reads saved responses from `<directory>/<source>/...`.
-  - `failing` simulates a failing source for the given ids.
-- Methods are named after what they return:
-  - `fetch_entry`, `fetch_structure`, `search`;
-  - `bioactivities`, `assay_activities`, `molecules`, `ligands`, `assays`;
-  - `components`, `compound`, `compound_by_source`;
-  - `site_residues`, `ligand_sites`, `interface_residues`;
-  - `partners`, `prediction`, `taxa`, `gene`, and `version` where a source states its
-    release. Each returns the record together with `retrieved_at`, and with
-  the source release when the source states one.
-- Errors:
-  - `RecordNotFoundError`: the source answered and holds no such record;
-  - `ConnectorError`: it could not answer (HTTP error, timeout, malformed response).
+Online, fixture and supplied-snapshot implementations share the source's explicit
+method/query contract. Native responses validate against the requested source,
+record and scope; parsing is separate from acquisition. Preserve original
+response identity, fields, literal blanks, occurrences, unknowns and conflicts.
+Validate the received scope before selecting: malformed later rows cannot silently
+become absence or an apparently complete selected record.
 
-  Never a bare `urllib` exception, and never "not found" for a failure.
-- Every request has a timeout.
+- `record` preserves source content; normalized knowledge belongs in mappings.
+- `query` states the exact normalized request; supplied declarations remain
+  distinguishable from a provider's native echo.
+- `retrieved_at` states an original observed or declared acquisition time. Local
+  read time, HTTP modification time and procedural dates have separate bases.
+- `version` retains the qualified native record/release revision or `None` when
+  unstated. Service, code and route versions are not interchangeable with it.
+- Received cuts, limits and totals keep their own declared scope. Retaining all
+  bytes is not proof of database completeness.
+
+Source-stated empty/not-listed responses differ from unasked, unavailable,
+unauthorized, malformed and failed acquisition. Use the existing connector and
+not-found errors; card enrichment isolates per-source/per-request outcomes.
+Do not bypass access gates or infer permission from availability.
+
+### Supplied originals
+
+`load_source_snapshot` parses explicit supported formats and preserves original
+compressed-byte identity, caller binding/terms/time and the local read receipt.
+It does not authenticate the caller, prove source access, grant reuse rights or
+admit knowledge into cards. Source-specific snapshot clients additionally validate
+their native record shape and source/query/identity. Shared bound clients reject
+foreign source/kind/query/revision declarations before file I/O.
+
+Raw JSON duplicate keys/nonfinite values, malformed tables and mismatched supplied
+digests fail. Hash equality is integrity, not authenticity or a scientific revision.
+No source links, embedded scripts or referenced calculations execute on file intake.
+See the native reference for the exact formats and binding contract of each client.
 
 ## Public functions
 
-`get_*(identifier | identifiers, ..., client=None)` returns
-`{source, kind, query, retrieved_at, version, record}` (`tools/db/_record.py`):
-
-- `record` is raw, as the source gave it;
-- `version` is the original source-record version, or None when unstated; an entry
-  version or service version is not a database release;
-- arguments go through ArgDigest: `identifier`, `identifiers`, `client`, `limit`,
-  `name`, `organism`, `include_subtaxa`, `species`, `required_score`;
-- the functions are listed in `tests/core/test_argument_contracts_offline.py`, and
-  their envelopes are tested in `tests/core/test_source_access_offline.py`.
+Public `get_*` arguments use ArgDigest, one digester per argument name. Diagnostics
+use SMonitor; optional dependencies use DepDigest. `skip_digestion` is not permission
+to bypass native validation or acquire an invalid scope. Test invalid public
+arguments before source access as well as caller/file copying and original support.
+The [argument contract](ARGUMENT_CONTRACTS.md) lists the public boundaries and plain
+accessor exceptions; [PUBLIC_API.md](PUBLIC_API.md) records exposed interfaces.
 
 ## Required acquisition traceability (#108, moli#36)
 
-Traceability is mandatory and automatic for supported boundaries. The first slice
-released in 0.12.0 covers the built-in online and fixture clients for UniProt entry
-and search, Europe PMC mentions and explicit article annotations, and RCSB
-single/batch structure lookup. Since 0.13.0, Sabueso also observes ChEMBL
-bioactivities, assay activities, molecules, indications and disease indications.
-It also observes PubChem compound properties, structure matches and BioAssay target
-rows with their summary/compound batches.
-BindingDB REST, fixture and installed-mirror affinity queries are also observed.
-PDB CCD component batches and UniChem InChIKey/source-id lookups are observed too.
-PDBe-KB ligand-site and interface-residue aggregates are also observed.
-AlphaFold DB model-list queries are observed with native per-model versions.
-InterPro family-site residue queries are observed with native header/fixture releases.
-`resolve_molecule_card` retains card/resolution traces; `ligand_deck` exposes detached
-`Deck.acquisition_trace`, with its native snapshot, result card pins and input protein
-pin. Ordinary deck operations and payload-only readers create no runtime trace.
-Other sources and custom clients are explicitly `not_observed`; this is incomplete pipeline
-coverage. New sources must declare their observation coverage and test its gaps.
+Scientific support, observed runtime and bibliography retain separate meanings.
+Supported clients observe acquisition automatically through the common services.
+Trace successful, empty, reused, unavailable, failed, truncated and unqueried scope;
+preserve original response identities and times through archive replay. A custom
+or uncovered boundary states `not_observed`, rather than claiming complete provenance.
 
-Development MONDO observation covers built-in `term` and `equivalent` index queries,
-`get_term`, `resolve_disease_card` and the same accesses during normal card builds.
-The runtime event retains the raw/normalized query, native `MONDO:equivalentTo`
-statements or definition reference forms, exact OBO byte hash, header data-version,
-declared asset tag/URL/checksum and verification basis. Header versions are distinct
-from GitHub tags; missing versions and pre-existing cache origins remain unknown.
+The native reference records published and development observation coverage for
+each route. It includes UniProt/Europe PMC/RCSB, ChEMBL/PubChem/BindingDB,
+PDB CCD/UniChem, PDBe-KB/AlphaFold/InterPro and later disease/clinical slices.
+Each new source must declare and test its observation coverage and gaps.
+Per-result and workflow sidecars preserve original citations and producer context;
+saved readers add no source access, recomputation or credit.
 
-An index retains its original download receipt for its existing process-cache lifetime.
-Subsequent local queries use `access: memory`; a new release-selector request combined
-with an old index is `mixed`. Current HTTP requests/network counts stay separate from
-the index's original receipt. Archive reuse/replay preserves the original file/hash/
-time/reference. Fixture reads retain `fixture_subset` scope; an empty equivalence
-lookup does not establish global absence, and a missing term in that subset remains
-`unavailable`. Download/checksum failures get no completed credit. Non-OBO or
-invalid UTF-8 documents are connector failures rather than absent terms. Missing
-fixture files are declared unavailable connector failures.
-
-Runtime `retrieved_at` names the original file response or supplied fixture time.
-The online client's scientific timestamp now keeps that same original response
-time across memory/archive reuse. Pre-existing indexes without a receipt report an
-unknown original time in the trace and retain the legacy client-clock fallback in
-the source result, with an explicit `client_time_basis`. This corrects release-time
-and invalid-document integrity while changing no scientific mapping, identity rule,
-card field/schema or default persistence. Direct disease resolution retains final card pins,
-including unsupported/failed/unresolved outcomes.
-
-Development Open Targets observation covers built-in `associations` and `targets`,
-and Orphadata covers `associations` and `genes`, including public envelopes and
-card/deck enrichments. Open Targets retains each GraphQL page/query/hash, native
-metadata version (`graphql_meta_data_version`), returned order/count and total.
-Source-row and deck-member limits differ. Completed pages survive a later failure
-as partial intake; malformed/error pages receive no completed credit. Explicit null
-entities are evaluated absence; missing fields are connector failures. Changed
-versions/counts across pages prevent scientific merges. Scores are never recomputed.
-
-Orphadata retains XML byte identity, original index/download receipt and header
-date (`xml_header_date`). Memory/archive reuse keeps original scientific/runtime
-time; bare indexes explicitly lack their receipt/time and retain a scoped query-clock
-fallback. Published checksum availability remains unknown. Absence concerns indexed
-SwissProt association rows, not all genes or inherited disease classification.
-Fixtures remain subsets. Validation pointers do not establish publication access.
-Malformed/unrelated XML and missing files are failed/unavailable connector outcomes
-(#124). The public parser and valid mappings stay unchanged.
-
-`disease_targets` and `disease_drugs` retain detached build traces with original
-disease input/support pins, deck/member pins, executing package/times, rule/limit,
-source statuses, exclusions and built count. Existing cards create no new MONDO
-access; custom clients remain unobserved. Empty/error decks retain scoped outcomes;
-escaping exceptions carry failed traces. Scientific readers remain inert.
-Development DISEASES observation retains each selected channel's native rows,
-publication date, file-byte identity, original index receipt and filtered scope.
-The process cache carries that exact receipt; current header checks are distinct
-from the original scientific retrieval. Older disk/bare indexes have unknown
-origins/times and an explicit client query-clock fallback. Channel scores, sources
-and text-mining URL pointers remain separate, without fetching cited studies.
-
-ClinVar `variants` and MedGen `concepts` observe EInfo/ESearch/ESummary queries,
-native page hashes/order/counts, completed subsets, archive reuse/replay and
-terminal outcomes. ClinVar's `dbbuild` is a database build; its variant accession
-versions are separate native context. Counts/caps are per queried gene, including
-overlapping UIDs. MedGen's `lastupdate` is a database update time, not a release or
-record revision. Only native concept-to-UID statements establish identity.
-Ambiguous or capped MedGen searches are refused; missing native result fields and
-incomplete summaries fail rather than establish absence. Missing fixtures are
-unavailable and mixed ClinVar fixture versions are refused (#125). Iterable inputs
-are consumed once. Transport keys are omitted from recorded URLs, retry context
-and archive request identity while still sent to NCBI; rotating a key does not
-change an archived scientific query. Raw source responses remain native data.
-Complete underlying study/submission/terminology bibliography remains #108 work.
-
-The corresponding public envelopes add `acquisition_trace` outside the unchanged raw
-`record`. `resolve`, `resolve_protein_card`, `EntityResolver.resolve` and
-`refresh_card` attach independent runtime copies to `Card.acquisition_trace` and
-`EntityResolution.acquisition_trace`, including resolutions returning no card.
-`knowledge_packet` retains its observed intake in `KnowledgePacket.acquisition_trace`,
-with the packet snapshot and card pins. Composition from existing cards does not
-claim new intake. Exceptions escaping these wrappers retain `acquisition_trace`.
-Direct client methods keep their original returns; a `sabueso.attribution()`
-collector exposes their events in `run.acquisitions`, separately from completed
-packet `run.records`.
-
-The provisional local formats are `sabueso.acquisition_trace@1` and
-`sabueso.source_acquisition@1`. A trace has an operation identity independent of
-the scientific object, declared coverage, result status and original source events.
-Successful card returns name the final card pin, including refresh history. Each
-source event records source, operation, query, original executing package version,
-start/finish times, original retrieval time and a source version with an explicit
-basis (`entry_version`, `database_release`, `service_version`, `entry_revision`,
-`per_entry_revision`, `model_version`, `per_model_version`, `response_header_release`,
-`fixture_declared_release`, `not_stated`).
-Decoded response identity uses canonical JSON (`response_identity.hash`); observed
-HTTP bodies additionally retain their raw `response_sha256` and archive reference
-where available. These are different identities. No whole raw response is copied
-into the runtime trace. RCSB entries retain their
-source-stated revision and primary-citation metadata.
-
-Observed access is `network`, `fixture`, `reuse`, `replay`, `memory`, `mixed` or explicitly
-unobserved/not reached. Request records retain method, URL, request-body hash,
-HTTP status, retry reasons and actual network-attempt counts. Archive reuse/replay
-keeps original retrieval identities and times with zero new network attempts.
-Outcomes distinguish `received`, `empty`, `not_found`, `unavailable`, `not_queried`,
-`failed`, `partial` and `unobserved`. A missing fixture cannot establish source absence.
-An unasked source has no event or usage credit. A partial failed annotation batch
-retains completed transport records without claiming completed source access.
-
-Completed access, including evaluated-empty/not-found answers and local replay,
-contributes contextual resource use and bibliography to the enclosing application's
-Ackredit capture. Failed/unqueried/unavailable access stays in the host trace with
-`provider.status: not_attempted`. Provider or pin-recording failures emit SMonitor
-diagnostics and explicit gaps, preserving the original scientific return/exception.
-They never establish complete provenance. References do not establish reuse rights.
-
-Applications save original JSON traces beside scientific objects. Card/packet
-serialization, hashes, schemas and knowledge-store formats remain unchanged;
-payload-only saved readers have `acquisition_trace is None` and add no credit.
-There is no implicit journal, project destination or Recorda integration. MOLI
-owns future ProjectRecord routing/correlation and recording reliability policy.
-RCSB logical batches own all chunks and fallback requests. Their `entries` preserve
-per-entry outcomes, native revision metadata and primary citations; `completed_ids`
-bounds successful-access credit, including empty and partial received entries.
-Unknown entry revisions remain unstated, not an invented database release.
-Identical primary metadata reuses a reference; different stated forms retain
-separate identities without overwriting earlier citations. Missing citation fields
-are explicit gaps. See `docs/content/user/attribution.md` for verified metadata sources.
-
-InterPro observes `site_residues`, the existing protein-scoped family-site query,
-not the complete domain/family catalog. `InterPro-Version` is a response-header
-release; fixture `version` is a fixture-declared release. Missing releases remain
-unknown, and no member/signature version or independently consulted UniProt release
-is inferred. Archive reuse/replay preserves the original header, retrieval time
-and decoded/wire identities, with no network attempts.
-
-Returned signature keys, native accession/name/member-database forms, location
-records and declared fragments retain source scope. Counts measure signature
-records, not mapped family sites or validated protein identity. Invalid signature
-records remain unobserved or partial, with actual received-subset credit. Signature
-receipt does not validate downstream mapping. Source-provided sequence positions
-do not imply a local alignment, InterProScan execution or member-database access.
-
-Empty objects/bodies and HTTP 204 preserve the existing evaluated-empty contract;
-HTTP 404 remains not-found. Neither proves whether the source knows the accession
-or simply states no sites. Missing fixtures are unavailable, offline access is
-unqueried, and failures keep their original exceptions. Unexpected decoded envelopes
-do not establish completed annotation credit. Resource-description bibliography is
-verified separately; member/signature/site citations and rights are not supplied
-by this operation. Scientific mapping, payloads, schema and inert saved readers
-remain unchanged. `test_interpro_acquisition_offline.py` runs unchanged in installed
-public-provider and future staged gates.
-
-Chemical identity access remains source-scoped: CCD's `components` event materializes
-its normalized identifier batch once, including generator inputs, and retains each
-requested component's `received`, `empty`, `unavailable` or failed/unqueried outcome.
-Successful network omissions are evaluated-empty; missing fixture files are local
-unavailability. `completed_ids` bounds completed access, including evaluated-empty
-network entries but never unavailable/failed ones. Received subsets survive later
-GraphQL/fixture processing failures as partial while the original exception escapes.
-
-UniChem's `compound` and `compound_by_source` events retain POST/query identities,
-native compound/source-record forms and the existing first-returned-compound
-selection basis. Linked source ids/names/records do not establish direct access to
-those providers. A decoded empty answer or declared empty source fixture is distinct
-from a missing file. Both resources keep source versions explicitly unstated; CCD
-release status/dates and UniChem compound ids do not become database release versions.
-CCD/RCSB-distribution and UniChem resource descriptions are verified separately.
-Original identity policies, mappings, raw returns/exceptions and card/deck schemas
-are unchanged. `test_chemical_identity_acquisition_offline.py` covers this slice,
-also copied unchanged into public-provider and future staged receiving gates.
-
-PDBe-KB observes `ligand_sites` and `interface_residues` as separate protein-scoped
-aggregate queries. Native response/wire/archive identities, original retrieval times,
-retries, evaluated-empty/HTTP-not-found answers, fixture unavailability and failures
-remain distinct. Decoded unexpected envelopes retain their receipt and original
-processing failure without completed-data credit. Versions remain `not_stated`;
-neither a PDB identifier nor the query's UniProt accession is a release version.
-
-Each returned group keeps its zero-based original response index, native accession,
-name/type, numbering kinds, residue-record count and decoded identity. Listed PDB ids,
-all mapped PDB ids and interacting PDB/entity/chain forms remain separate. The count
-is returned aggregate groups, not mapped relationships or validated identities.
-An omitted/null aggregate `data` field has an explicitly unknown count; a returned
-empty record/list remains empty under the existing source-client contract.
-These are PDBe-KB statements, not additional access to UniProt, PDB entries, PISA
-or annotation providers. The verified PDBe-KB resource description does not replace
-underlying structure/method/provider citations; their missing metadata is explicit.
-No runtime bibliography lookup is added. Existing maps, raw returns/exceptions,
-card/refresh pins and saved-reader behavior remain unchanged. See
-`tests/core/test_pdbe_kb_acquisition_offline.py`, also copied unchanged into installed
-public-provider and future staged gates.
-
-AlphaFold DB's `prediction` event retains each native model-list index and both
-`entryId`/`modelEntityId` forms; its reference choice names the existing mapping's
-basis, without inventing equivalence between different identifiers. Native
-`latestVersion`, including zero when stated, is retained per record. Missing latest
-versions remain unknown even when `allVersions` lists historical versions; those
-older models were not queried. Repeated ids keep separate indexed versions. Model,
-sequence and creation dates are not global database versions or experimental revisions.
-
-The trace retains native tool/provider, accession/range/checksum and artifact URL
-metadata without copying sequences or downloading coordinates, confidence files or
-MSAs. Listed providers/UniProt were not separately consulted, and a declared
-generation tool does not claim a local prediction execution. The three verified
-resource/background citations follow the database's recommendation; they do not
-prove each returned model's method or replace missing provider/model-specific citations.
-
-Requests, original response/wire/archive identities and times, retries, evaluated
-empty lists, HTTP absence, fixture unavailability, offline unqueried access and
-original failures stay distinct. Unexpected non-list envelopes are unobserved,
-preserving original client returns/exceptions without completed-model credit.
-Partially invalid lists retain received subsets and incomplete context; original
-public processing failures still escape with their trace. Counts measure returned
-records, not mapped relationships or validated identities. Card maps/schemas,
-experimental/predicted separation, refresh pins and inert saved reads remain fixed.
-`tests/core/test_alphafold_acquisition_offline.py` exercises the slice unchanged
-in installed public-provider CI and future staged gates.
-
-Regression tests are in `tests/core/test_source_acquisition_offline.py` and
-`tests/core/test_rcsb_acquisition_offline.py`; the public
-installed-consumer workflow is `examples/ackredit_pilot/`.
-
-ChEMBL's adapter (since 0.13.0) retains normalized logical queries, all transport
-requests, pagination/chunks, caps, decoded page identities and original document
-citation forms. A failure after received content pages is `partial`, with those
-pages in `completed_pages`; the original exception still escapes. Completed subsets
-receive contextual credit without claiming the whole operation succeeded. Missing
-fixture datasets are `unavailable`, even where the original fixture API returns an
-empty mapping. An empty logical identifier batch is `not_queried`.
-The database release is the client's reported ChEMBL version. Its origin distinguishes
-status responses, fixtures and the existing client cache; it is explicitly not
-verified independently for each page. Cached release metadata must not be read as
-proof that every reused page belongs to that release. Native document metadata is
-preserved without DOI enrichment; missing authors and indication bibliography stay
-explicit gaps. `tests/core/test_chembl_acquisition_offline.py` covers this boundary.
-
-In development, indication observation also retains native reference pointers under
-`chembl_indication_references@1`. `indication_reference_context` binds every occurrence
-to its received page/query/decoded hash and indication/molecule/disease row; fixture
-reads instead bind to the original decoded client result. Overlapping disease query
-pages retain separate occurrences even when the returned row is deduplicated.
-Completed pages survive a later-page or release-lookup failure. Source release and
-retrieval bases retain their existing scope, not a verified reference-target version.
-Native grouped identifiers stay grouped. Valid HTTP(S) pointers are incomplete web
-citations; identifier-only forms are `other`, with their original form in the note.
-Content-based IDs preserve alternative forms and avoid replacing fuller host citations.
-Their role is `source_cited_reference`, with target access explicitly
-`not_queried_by_this_operation`; no linked-source resource access is credited.
-Absent/malformed forms and missing target metadata remain explicit bibliography gaps.
-No extra requests, publication enrichment, permission inference or schema changes
-are made. `tests/core/test_indication_bibliography_offline.py` covers the slice.
-
-PubChem's adapter (since 0.13.0) observes built-in online and fixture `compound`,
-`structure` and BioAssay `assays` operations. Compound properties and structure
-matches declare `source_version: {value: null, basis: not_stated}`. BioAssay retains
-native `Version`, `Revision` (including zero) and `LastDataChange` per received assay
-summary; these are assay revisions, never a global database release or proof of the
-version of every CSV row/compound property. Incomplete revision pairs remain unknown.
-
-Decoded response identities and transport records preserve POST-body identities,
-CSV rows for the requested target, summary/property chunks, row-order rules and
-caps. A later batch failure retains received pages and their PubMed pointers as
-`partial`, with the terminal outcome and original exception; its count explicitly
-means received target rows before completion. Received empty rows, HTTP absence,
-rejected structure input, unavailable fixtures and unqueried offline access remain
-distinct. Rejected input is not credited as completed source-data access. No raw
-scientific return or exception is changed.
-
-PubChem's verified resource description is separate from measurement PubMed pointers.
-Missing pointer metadata and depositor bibliography remain explicit.
-Pointer citations use content-based identities, so an incomplete source pointer
-cannot replace a fuller host citation under the same PubMed publication identifier.
-Its original publication id remains in the trace and bibliography-gap record.
-`SourceName` and `SourceID` do not imply direct access to that depositor. Full native summary
-forms remain on observed response pages. Stored readers add no credit. Coverage is
-tested by `tests/core/test_pubchem_acquisition_offline.py`, also copied unchanged
-into installed-provider and future staged-artifact gates. Cards and schema are unchanged.
-
-BindingDB's adapter (since 0.13.0) retains accession/cutoff/limit, the applied
-`bindingdb_record_order@1`, totals/caps, native response identities, retries and
-original DOI/PubMed pointer forms. Successful REST and fixture responses state no
-global version. The cutoff is recorded as `{value, unit}` in `cutoff_scope`, with
-its application basis: submitted to REST, applied to the mirror index, or not
-reapplied by the existing fixture client. Fixture selection behavior is unchanged.
-
-`MirrorBindingDBClient.ligands` is observed as `access: mirror` without HTTP
-requests or network attempts. Its release comes from the installed manifest, which
-is retained with its original URL, checksum, installation time and a content hash.
-This is client-manifest metadata, not live REST/version proof or independent index
-integrity verification. `retrieved_at` retains the client's installation-time basis;
-`started_at`/`finished_at` identify the current query. Mirror installation/update and
-client-constructor failures remain outside this query boundary.
-
-Decoded empty answers, absent fixtures, offline-unqueried queries and failures
-remain distinct. HTTP errors preserve BindingDB's native `ConnectorError`; a 404
-is not reinterpreted as record absence. Received data that fails local processing
-is `partial`, retaining the response identity and count basis before completion.
-Corrupt mirror reads retain known manifest metadata but get no completed-access
-credit. Saved readers add no credit. Card payloads, source mappings and schema are
-unchanged.
-
-Publication pointers use content-based citation identities, preserving differing
-source forms and fuller host references. Missing title/authors/year remain explicit;
-no DOI enrichment is performed. The verified BindingDB resource description is a
-separate citation. REST measurement origins remain unknown; the mirror's declared
-`data_source` is preserved without claiming that imported providers were consulted.
-The source-local parser fix (#114) treats an exactly empty HTTP 200 body, a JSON
-empty string and decoded empty affinity lists as evaluated-empty access. Only this
-client opts into an empty body in the shared JSON transport; other clients keep
-their unreadable-body retries. Whitespace-only bodies, malformed JSON, unexpected
-nonempty payloads and HTTP errors remain failures. Original wire hashes, archive
-identities and retrieval times are retained, including replay and saved fixtures.
-The official REST documentation declares an empty string; a public no-match probe
-on 2026-10-04 returned HTTP 200 with the native empty affinities array. Compatibility
-tests exercise the documented string forms synthetically, not as a claimed live outage.
-See `tests/core/test_bindingdb_acquisition_offline.py`, also run unchanged in
-installed-provider CI and future staged gates.
-
-## Deprecated (removed before 1.0)
-
-Each warns with `DeprecatedUsageWarning` (`SABUESO-W-DEPRECATED-001`, also a
-`FutureWarning`) and still works:
-
-- `fetch_uniprot_json`, `fetch_chembl_json`, `fetch_pubchem_json` and
-  `tools.db.pdb.fetch_pdb_json`: use `get_*`;
-- `create_protein_card_online`, `create_molecule_card_online` and
-  `create_compound_card_online`: use `sabueso.resolve`, which takes `pubchem:<cid>`
-  since #50.
-
-`create_*_card_from_json` and `create_*_card_from_file` stay, for offline work and tests.
+Source authors, native publication pointers, acquired article metadata and complete
+bibliography have distinct coverage. A PMID or article title alone does not prove
+that its publication content was acquired or that bibliography is complete.
+MOLI owns shared ProjectRecord/Recorda composition; local envelopes/sidecars are
+not shared recording or consumer-Evidence acceptance. Follow #108 and the
+[attribution proposal](pending_proposals/ackredit_knowledge_pipeline_attribution.md).
 
 ## Enriching cards (#86)
 
-A source that adds knowledge to cards declares an enricher in `sabueso/enrichers/`
-(`devguide/SOURCE_ARCHITECTURE.md`). The declaration has:
-- the option and source name;
-- the registry id;
-- the knowledge areas it answers;
-- the organisms it covers;
-- `requests`, `fetch` and `map`.
+Standalone mappings retain their original subject: an EC class, structure, cell
+model or regulatory page is not a protein merely because an identifier is linked.
+Decide an integration from a concrete scientific use. Source-stated identity,
+numbering/sequence axes, revisions and units are required before transfer.
 
-The runner applies what every source needs: coverage (`not_applicable`), `not_found`
-and `error` per request, and a fixed order. The knowledge-state rows and the migration
-map are derived from the declarations.
+A source that contributes to cards declares an enricher in `sabueso/enrichers/`:
+option, source name, registry id, areas, organism coverage, `requests`, `fetch` and
+`map`. The shared runner derives knowledge-state and migration coverage and applies
+deterministic ordering and per-request outcomes. Packet options derive from those
+declarations. See [SOURCE_ARCHITECTURE.md](SOURCE_ARCHITECTURE.md).
 
-To add one:
-1. Write the client, the `get_*` function and the mapping, as above.
-2. Write the enricher, and register it in `ENRICHERS` in the order it runs.
-   `stage` places it among the bespoke enrichments; new sources use the default,
-   `after_bioactivity`.
-3. Add the option and its client to `resolve_protein_card`, with their digesters.
-4. Add fixtures, and a card in the card-shape builder.
+1. Implement the native client, public function and source mapping.
+2. Declare/register the justified enricher in the appropriate stage/order.
+3. Add its resolution option/client and corresponding argument digesters.
+4. Add qualified fixture support, a representative card-shape case and wiring tests.
 
-`tests/core/test_enrichers_offline.py` checks the wiring: the parameters, the
-digesters, the registry entry `in_use`, and the derived rows.
+`tests/core/test_enrichers_offline.py` checks declarations, arguments, digesters,
+registry and derived coverage. RCSB structures, the bioactivity group and NCBI Gene
+remain explicitly bespoke for the reasons in the source architecture. Absence from
+the enricher registry alone does not characterize those established routes.
 
-RCSB structures, the ChEMBL/BindingDB/PubChem BioAssay group and NCBI Gene stay
-bespoke, for the reasons in the architecture document.
+## Shared transport and source services
 
-Before designing a client, survey the server's own programmatic access: batch queries
-(RCSB GraphQL `entries`), per-target queries (PubChem `assay/target/accession`), bulk
-release files, usage policies and throttling headers. Test them live, and check that a
-faster route keeps a stated identity (#98).
+- Use `_http.urlopen` for user identification/retries; JSON requests pass
+  `expect_json=True` when an unreadable body is a failed response.
+- `_http.gather` supports documented per-record pacing; offline saved responses
+  require no source requests. Do not add parallel fetching without measurements.
+- `_release` supports explicitly qualified release declarations.
+- `_keys.required` handles user-supplied credentials without storing/logging them;
+  a missing key remains `not_queried`, not biological absence.
 
-Every client uses the shared services in `sabueso/tools/db/`:
-- `_http.urlopen`, never `urllib.request.urlopen`, for the user agent and the retries
-  (a test checks it). A request that reads JSON passes `expect_json=True`, so that an
-  unreadable 200 answer is asked again (#97). Leave it out where an empty or non-JSON
-  body is an answer (InterPro's empty body, Reactome's plain-text version);
-- `_http.gather`, for a service answered one record per request, with the pace its
-  online client states (`workers`, `per_second`); saved answers need none (#98);
-- `_release`, for a source published as whole releases;
-- `_keys`, for a source that takes a personal key. A client that needs one calls
-  `_keys.required(...)` when asked, and the runner records `not_queried` if the key is
-  missing. A key never goes into a record, a message or a cache.
+Bounded source-specific original representations and validation stay local to
+their clients/mappings. Shared parsing must preserve source semantics, not erase
+differences to make providers superficially uniform.
+
+## Fixtures and qualification
+
+Every fixture declares original source, date, revision basis, applicable terms and
+modifications in `temp_data/NOTICE.md`. No private/pilot data enters public fixtures.
+Public access and code MIT do not license external data. The reviewed recovery
+inventory protects local-only originals and separates public from full local
+native qualification. Follow [TESTS.md](TESTS.md) and
+[FIXTURE_DELIVERY.md](sources/FIXTURE_DELIVERY.md).
+
+Native fixture replay, public parser-contract regressions, live acquisition, saved
+scientific journeys, consumer acceptance and release delivery are separate gates.
+Record the scope of each passing result. Reopen deferred sources only when the
+registry's named access/input/terms condition changes.
+
+## Deprecated (removed before 1.0)
+
+Legacy `fetch_*_json` and `create_*_card_online` aliases are replaced by `get_*` and
+`sabueso.resolve`. Offline `create_*_card_from_json`/`create_*_card_from_file` routes
+remain. The provider reference preserves the exact compatibility list.
 
 ## Boundaries
 
-- **MolSysMT.** Sabueso retrieves knowledge records, not coordinate files.
-- **Licensing (#29).** Returning a record to the caller is fine. Storing or
-  redistributing it depends on each source's terms.
+Source-reported predictions, geometry, ranks, potential sites and regulatory status
+remain their original source assertions. They do not establish Sabueso calculations,
+experimental confirmation, clinical interpretation or Nextia Evidence. Derived
+views name their versioned rule and support; they are not stored as SourceAssertions.
 
 ## Possible future problems
 
-- **Caching.** Sources have rate limits, and no client caches on its own. Reuse goes
-  through the retrieval archive the user asks for (`reusing(max_age)`, #100), which
-  records what it served and when; what may be kept follows each source's terms (#29).
-- **Envelope drift.** The `record` of a source changes when the source changes its API.
-  Mappings absorb that; direct users of `get_*` see it. The envelope is stable, the
-  record is not.
+Measure full-export parsing and original-support retention on bounded journeys
+before changing caches/storage (#98/#100). Keep missing identity, coordinate axes,
+input revisions and rights explicit; the registry and owning issues record
+reactivation conditions and design decisions.
 
 ## Explicit article metadata acquisition (since 0.13.0, #92/#108)
 
-Europe PMC `get_article(identifier)` explicitly queries REST search with `resultType=core`
-using EXT_ID + SRC:MED, PMCID or DOI. The returned projection includes native identifiers,
-title, full returned author records, journal/date/pages, licence/open-access declarations
-and native URL/reference forms. It excludes `abstractText` and never follows a full-text
-URL. Official endpoint semantics: <https://europepmc.org/RestfulWebService>.
-Multiple matching records and a capped/incomplete answer remain visible; fragment
-binding refuses absence, ambiguity and missing source-stated publication identity.
-
-Queries retain service-version basis (not article revision), wire/decoded/archive
-identities, original times, retries, explicit empty/HTTP-absence/failed/unavailable/
-unqueried outcomes, received subsets and original per-result/portable references.
-The bibliographic projection's exact field set is `core.article_metadata.FIELDS`.
-Unknown native author/year/journal/page fields remain citation gaps; no secondary
-lookup or inferred alias fills them. Saved raw core answers may contain abstracts;
-existing `PUBLICATION-TERMS` raw retention stays unchanged. Metadata is explicit
-support for supplied-fragment intake, not an automatic card enrichment or new article
-coverage claim. No enricher/bulk/knowledge-packet request is added.
+Explicit Europe PMC PMID/PMCID/DOI metadata and source-stated binding preserve
+native alternatives, authors/citations/terms and original query support. Supplied
+fragment text is not authenticated by its bibliography or granted article rights.
+See the [native reference](sources/NATIVE_ACCESS_REFERENCE.md) and
+[literature user guide](../docs/content/user/literature_and_curation.md).
 
 ## ClinicalTrials.gov observation and native references (development, #108/#127)
 
-Built-in `studies` and `study_references` preserve logical/normalized NCT queries,
-version and page requests, decoded identities, native entries, continuation tokens,
-original retrieval times and archive reuse. The rule
-`clinicaltrials_registry_observation@1` distinguishes the API protocol version,
-registry-reported data timestamp and native study update date. The timestamp is
-client-reported, not independently verified for each page; update dates are neither
-publication years nor content revisions. All continuations, including after an empty
-page, must finish before reporting missing ids. Equal duplicate records retain all
-observed occurrences; contradictory same-NCT records fail rather than choose a value.
-Malformed envelopes, unrelated identities and repeated tokens also fail. Completed
-page/version scope survives later failures as `partial`; no failed request invents
-a missing study. Empty batches are `not_queried`; evaluated empty responses differ
-from unavailable fixture files or identifiers outside a frozen subset. Fixture
-negative answers require an explicit `missing` declaration.
-
-`get_study_references(identifiers, client=None)` returns the usual source envelope
-with `kind: study_references` and `record: {studies, missing}`. It asks for native
-identification, last-update and reference modules separately from existing clinical
-fields. Native PMID, reference type/free citation, retractions, see-also and IPD
-links are retained, with their exact page/entry/hash occurrence. Registry records
-use `source_registry_record`; declared pointers use `source_cited_reference`.
-Free citations are not parsed into invented title, author, year or DOI fields.
-References without metadata and absent/malformed modules retain explicit gaps.
-No linked publication or dataset is fetched. The caller may explicitly pass a
-native PMID to Europe PMC `get_article`; that separate acquisition contributes its
-own source/version and complete returned personal/collective authors (#128).
-Citation or registry terms do not license linked articles or participant data.
-Clinical SourceAssertions, mappings and frozen schema 0.3.12 remain unchanged.
-`test_clinicaltrials_acquisition_offline.py` exercises both operations, public
-registry/article fixtures, workflow capture and inert saved bibliography readers.
+Explicit study/reference access and separately requested article metadata retain
+their own acquisition/bibliography scope. No automatic linked acquisition or
+clinical inference follows. The [clinical checkpoint](pending_proposals/clinical_registry_checkpoint.md)
+records precise implementations and qualification receipts.
