@@ -287,7 +287,7 @@ def test_bound_tsv_and_gzip_preserve_original_time_hash_padding_and_terms(
 )
 def test_snapshot_cannot_relabel_source_query_or_revision(tmp_path, key, value):
     path = tmp_path / "catalog.tsv"
-    path.write_text(NATIVE)
+    path.write_text(NATIVE, encoding="utf-8", newline="")
     scope = metadata()
     scope[key] = value
     with pytest.raises(ConnectorError):

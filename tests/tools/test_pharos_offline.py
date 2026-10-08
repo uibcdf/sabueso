@@ -23,7 +23,7 @@ from sabueso.tools.db.pharos import (
 )
 
 PATH = Path("temp_data/pharos/target__P60174.json")
-NATIVE = json.loads(PATH.read_text())
+NATIVE = json.loads(PATH.read_text(encoding="utf-8"))
 
 
 class Client:

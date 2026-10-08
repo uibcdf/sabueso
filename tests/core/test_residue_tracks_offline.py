@@ -293,10 +293,12 @@ def test_saved_reader_preserves_versions_units_and_input_pins(tmp_path):
     assert len({item["support"]["snapshot_id"] for item in view["residue_tracks"]}) == 2
     assert view["residue_tracks"][0]["value"]["value"] == {"value": 0.0, "unit": "nm"}
     path = tmp_path / "inputs.json"
-    path.write_text(json.dumps(assertions))
+    path.write_text(json.dumps(assertions), encoding="utf-8", newline="")
     reader = Card.from_dict(card.to_dict())
     assert (
-        reader.residue_knowledge(1, source_assertions=json.loads(path.read_text()))
+        reader.residue_knowledge(
+            1, source_assertions=json.loads(path.read_text(encoding="utf-8"))
+        )
         == view
     )
     card.set("sequence.primary", "MAT", [])

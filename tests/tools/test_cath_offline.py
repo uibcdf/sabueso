@@ -322,7 +322,7 @@ def test_supplied_snapshot_must_declare_exact_source_domain_and_route(change):
 )
 def test_supplied_invalid_json_is_failed_not_empty(tmp_path, document):
     path = tmp_path / "invalid.json"
-    path.write_text(document)
+    path.write_text(document, encoding="utf-8", newline="")
     with pytest.raises(ConnectorError):
         get_domain_summary(
             "1htiA00",

@@ -24,7 +24,7 @@ PATH = Path("temp_data/pdbe_validation/global_percentiles__1hti.json")
 
 
 def native():
-    return json.loads(PATH.read_text())
+    return json.loads(PATH.read_text(encoding="utf-8"))
 
 
 def metric(payload):

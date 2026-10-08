@@ -22,7 +22,7 @@ def hk2(tmp_path_factory):
 
 def test_native_subject_sequence_and_quantity_are_supported(hk2):
     card, receipt, _ = hk2
-    original = json.loads(FIXTURE.read_text())
+    original = json.loads(FIXTURE.read_text(encoding="utf-8"))
     assert card.id == "sabueso:protein:uniprot:P52789"
     assert receipt["resolution_status"] == "resolved"
     assert card.get("names.canonical_name")["value"] == "Hexokinase-2"
@@ -93,7 +93,7 @@ def test_current_hk2_report_regenerates_without_acquisition(hk2, tmp_path, monke
     regenerated = stored.to_notebook(
         tmp_path / "regenerated.ipynb", include_card_snapshot=True
     )
-    report = json.loads(regenerated.read_text())
+    report = json.loads(regenerated.read_text(encoding="utf-8"))
     assert report["metadata"]["sabueso"]["card_ref"] == card.pinned_ref()
     assert report["metadata"]["sabueso"]["missing_source_assertion_ids"] == []
     assert (
@@ -121,8 +121,8 @@ def test_cli_relative_output_is_resolved_from_the_callers_directory(tmp_path):
         "HK2_human.ipynb",
         "receipt.json",
     }
-    receipt = json.loads((output / "receipt.json").read_text())
+    receipt = json.loads((output / "receipt.json").read_text(encoding="utf-8"))
     card = Card.from_json(output / receipt["card_file"])
-    report = json.loads((output / receipt["notebook_file"]).read_text())
+    report = json.loads((output / receipt["notebook_file"]).read_text(encoding="utf-8"))
     assert receipt["card_ref"] == card.pinned_ref()
     assert report["metadata"]["sabueso"]["card_ref"] == card.pinned_ref()

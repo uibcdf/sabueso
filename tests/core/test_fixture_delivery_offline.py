@@ -40,7 +40,11 @@ def checkout(tmp_path):
         "reviewed": "2026-10-08",
         "statement": "https://example.invalid/terms",
     }
-    catalog.write_text(json.dumps({"resources": [{"id": "example", "terms": terms}]}))
+    catalog.write_text(
+        json.dumps({"resources": [{"id": "example", "terms": terms}]}),
+        encoding="utf-8",
+        newline="",
+    )
     original = b"synthetic parser input, not an external response\n"
     path = tmp_path / "temp_data/example/original.txt"
     path.parent.mkdir(parents=True)
@@ -68,8 +72,10 @@ def checkout(tmp_path):
         "files": [row],
         "local_qualification_tests": {},
     }
-    manifest.write_text(json.dumps(data))
-    (tmp_path / ".gitignore").write_text("/temp_data/example/\n")
+    manifest.write_text(json.dumps(data), encoding="utf-8", newline="")
+    (tmp_path / ".gitignore").write_text(
+        "/temp_data/example/\n", encoding="utf-8", newline=""
+    )
     return tmp_path, path, manifest, data, git
 
 
@@ -91,7 +97,7 @@ def test_forced_git_add_of_a_local_original_is_rejected(checkout):
 
 def test_removing_ignore_protection_is_rejected_before_staging(checkout):
     root, _, _, _, _ = checkout
-    (root / ".gitignore").write_text("")
+    (root / ".gitignore").write_text("", encoding="utf-8", newline="")
     assert any("not protected" in p for p in delivery.problems(root))
 
 
@@ -109,28 +115,56 @@ def test_terms_changes_require_review_instead_of_automatic_publication(
 ):
     root, _, _, _, _ = checkout
     catalog = root / "sabueso/resolver/source_catalog.json"
-    data = json.loads(catalog.read_text())
+    data = json.loads(catalog.read_text(encoding="utf-8"))
     data["resources"][0]["terms"].update(changed)
-    catalog.write_text(json.dumps(data))
+    catalog.write_text(json.dumps(data), encoding="utf-8", newline="")
     assert any("source terms changed" in p for p in delivery.problems(root))
 
 
 def test_unreviewed_new_input_and_external_path_are_rejected(checkout):
     root, _, manifest, data, _ = checkout
-    (root / "temp_data/unreviewed.json").write_text("{}")
+    (root / "temp_data/unreviewed.json").write_text("{}", encoding="utf-8", newline="")
     assert any("no reviewed delivery" in p for p in delivery.problems(root))
     data["files"][0]["path"] = "../external.txt"
-    manifest.write_text(json.dumps(data))
+    manifest.write_text(json.dumps(data), encoding="utf-8", newline="")
     assert any("contained temp_data" in p for p in delivery.problems(root))
 
 
 def test_repository_delivery_requires_the_reviewed_bytes(checkout):
     root, path, manifest, data, _ = checkout
     data["files"][0]["delivery"] = "repository"
-    manifest.write_text(json.dumps(data))
+    manifest.write_text(json.dumps(data), encoding="utf-8", newline="")
     assert delivery.problems(root) == []
     path.unlink()
     assert any("missing" in p for p in delivery.problems(root))
+
+
+def test_utf8_source_terms_do_not_depend_on_windows_default_encoding(
+    checkout, monkeypatch
+):
+    root, _, manifest, data, _ = checkout
+    catalog = root / "sabueso/resolver/source_catalog.json"
+    contents = json.loads(catalog.read_text(encoding="utf-8"))
+    terms = contents["resources"][0]["terms"]
+    terms["attribution"] = "Müller et al. — original provider"
+    data["files"][0]["terms_sha256"] = hashlib.sha256(
+        json.dumps(
+            terms, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+        ).encode()
+    ).hexdigest()
+    catalog.write_text(json.dumps(contents, ensure_ascii=False), encoding="utf-8")
+    manifest.write_text(json.dumps(data), encoding="utf-8")
+    original_open = Path.open
+
+    def windows_open(
+        path, mode="r", buffering=-1, encoding=None, errors=None, newline=None
+    ):
+        if "b" not in mode and encoding in (None, "locale"):
+            encoding = "cp1252"
+        return original_open(path, mode, buffering, encoding, errors, newline)
+
+    monkeypatch.setattr(Path, "open", windows_open)
+    assert delivery.problems(root, local_inputs=True) == []
 
 
 def test_fixture_checkout_preserves_original_bytes_with_windows_line_endings(checkout):
@@ -151,17 +185,23 @@ def test_fixture_checkout_preserves_original_bytes_with_windows_line_endings(che
 
 def collection_project(checkout):
     root, _, manifest, data, _ = checkout
-    (root / "conftest.py").write_text(Path("conftest.py").read_text())
+    (root / "conftest.py").write_text(
+        Path("conftest.py").read_text(encoding="utf-8"), encoding="utf-8", newline=""
+    )
     tests = root / "tests"
     tests.mkdir()
-    (tests / "test_public.py").write_text("def test_public():\n    assert True\n")
+    (tests / "test_public.py").write_text(
+        "def test_public():\n    assert True\n", encoding="utf-8", newline=""
+    )
     (tests / "test_local.py").write_text(
         "from pathlib import Path\n"
         "RAW = Path('temp_data/example/original.txt').read_bytes()\n"
-        "def test_local():\n    assert RAW.startswith(b'synthetic')\n"
+        "def test_local():\n    assert RAW.startswith(b'synthetic')\n",
+        encoding="utf-8",
+        newline="",
     )
     data["local_qualification_tests"] = {"tests/test_local.py": ["example"]}
-    manifest.write_text(json.dumps(data))
+    manifest.write_text(json.dumps(data), encoding="utf-8", newline="")
     return root
 
 
@@ -195,7 +235,7 @@ def test_local_opt_in_runs_original_regressions_and_rejects_changed_bytes(checko
     local = run_collection(root, "--local-source-inputs")
     assert local.returncode == 0, local.stdout + local.stderr
     assert "2 passed" in local.stdout
-    checkout[1].write_text("changed original")
+    checkout[1].write_text("changed original", encoding="utf-8", newline="")
     changed = run_collection(root, "--local-source-inputs")
     assert changed.returncode != 0
     assert "original digest differs" in changed.stdout + changed.stderr

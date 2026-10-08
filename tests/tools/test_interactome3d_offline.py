@@ -300,7 +300,7 @@ def test_snapshot_identity_revision_and_organism_are_not_rewritten(
     tmp_path, key, value
 ):
     path = tmp_path / "proteins.dat"
-    path.write_text(NATIVE)
+    path.write_text(NATIVE, encoding="utf-8", newline="")
     scope = metadata()
     scope[key] = value
     with pytest.raises(ConnectorError):

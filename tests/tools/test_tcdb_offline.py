@@ -116,7 +116,7 @@ def test_native_identical_pairs_keep_independent_occurrence_ids():
 
 def test_not_listed_selection_is_distinct_from_unavailable_or_empty_export():
     e = get_assignments("P60174", client=FixtureTCDBClient())
-    assert map_assignments(e) == [] and e["record"] == PATH.read_text()
+    assert map_assignments(e) == [] and e["record"] == PATH.read_text(encoding="utf-8")
     trace = e["acquisition_trace"]["records"][0]
     assert trace["outcome"] == "not_found" and trace["received_export_count"] == 24956
     assert trace["truncated"] is False
@@ -242,7 +242,7 @@ def test_bound_native_snapshot_keeps_original_bytes_case_time_and_terms(
     m["query"]["accession_literal"] = "other"
     e = get_assignments("Q39253", client=client)
     assert (
-        e["record"] == PATH.read_text()
+        e["record"] == PATH.read_text(encoding="utf-8")
         and e["retrieved_at"] == "2026-10-07T12:00:00+00:00"
     )
     receipt = e["snapshot_receipt"]
@@ -347,7 +347,7 @@ def test_one_export_get_and_archive_replay_never_fetch_sequence_or_family(
     with archive.replaying():
         second = get_assignments("Q39253")
     assert calls == [URL]
-    assert first["record"] == second["record"] == PATH.read_text()
+    assert first["record"] == second["record"] == PATH.read_text(encoding="utf-8")
     assert first["retrieved_at"] == second["retrieved_at"]
     assert (
         first["download_sha256"]

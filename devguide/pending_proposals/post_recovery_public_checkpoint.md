@@ -44,6 +44,38 @@ The original tested Python set is unchanged after excluding that added test.
 The candidate's final staged file boundary, gates and exact-SHA CI are recorded
 below when qualification completes. Earlier CI cannot qualify this candidate.
 
+## First published checkpoint and portability correction
+
+Implementation/contracts/inputs were committed as
+`e6fd384ec106253f4876f761d5a1262498148d6c`; guidance/history as
+`4d771f38c709b4496139af43f2c4a6ac7ef38e6e`. Both were pushed together to main.
+All 49 published fixture blobs retain their original hashes; all 37 protected
+originals remain outside Git. The private pilot checkout remained clean.
+
+Exact-head [governance](https://github.com/uibcdf/sabueso/actions/runs/37834575279)
+passed through gh-run-receptor. The
+[first CI run](https://github.com/uibcdf/sabueso/actions/runs/37834575148)
+exposed two qualification gaps: Windows default decoding changed five UTF-8
+source-term digests, and notebook validation lacked its `nbformat` test dependency.
+Neither is a provider term change or altered original response.
+
+A synthetic CP1252-default regression reproduces the false term rejection before
+the fix. Delivery/catalog/test-collection metadata now uses explicit UTF-8.
+Recovered fixture tests also read/write their declared UTF-8 inputs explicitly,
+without host newline conversion; native bytes and parser/runtime semantics are
+unchanged. Fifteen delivered UTF-8 public inputs would be misdecoded or rejected
+under CP1252; fixture tests cannot borrow a host's default codec.
+`nbformat>=5` is added to the CI environment and `test` extra solely for notebook
+validation. The selected metadata/delivery/enricher gate passed 64 tests / 5.04 s
+before the broader fixture-test portability adjustment. Final qualification uses
+the correction's own gates and SHA; the first run is not a passing checkpoint.
+
+The complete corrected local-input suite passed **5,576 tests / 179.55 s** with
+pytest-receptor, 12 workers and Python 3.14.7. Its ten warnings exercise fixture
+failure/truncation reporting. Registry, protected-input hashes, dependency
+preflight, governance and Ruff checks also passed. Remote qualification remains
+pending for the correction's exact SHA.
+
 ## Return to consumer workflows
 
 The maintainer explicitly requests a return to MOLI vertical-pilot use.

@@ -24,7 +24,7 @@ def native():
 
 
 def fasta(sequence, identifier="P60174-3"):
-    header = (DIRECTORY / "P60174-3.fasta").read_text().splitlines()[0]
+    header = (DIRECTORY / "P60174-3.fasta").read_text(encoding="utf-8").splitlines()[0]
     return header.replace("|P60174-3|", f"|{identifier}|") + "\n" + sequence + "\n"
 
 
@@ -52,7 +52,7 @@ class Client:
         return {
             "record": self.fasta
             if self.fasta is not None
-            else (DIRECTORY / f"{identifier}.fasta").read_text(),
+            else (DIRECTORY / f"{identifier}.fasta").read_text(encoding="utf-8"),
             "retrieved_at": "2026-01-02",
             "version": self.version,
         }
@@ -88,10 +88,9 @@ def test_native_hstim_keeps_exact_isoform_name_id_and_independent_revisions(
     assert metadata["parent_entry"]["version"] == "212"
     assert metadata["parent_entry"]["record"]["entryAudit"]["sequenceVersion"] == 4
     assert metadata["parent_entry"]["record"] == native()
-    assert (
-        metadata["isoform_sequence"]["record"]
-        == (DIRECTORY / f"{identifier}.fasta").read_text()
-    )
+    assert metadata["isoform_sequence"]["record"] == (
+        DIRECTORY / f"{identifier}.fasta"
+    ).read_text(encoding="utf-8")
     assert (
         metadata["sequence"]["sha256"]
         == hashlib.sha256(value["value"].encode()).hexdigest()
@@ -118,7 +117,7 @@ def test_native_hstim_keeps_exact_isoform_name_id_and_independent_revisions(
 
 def test_source_isoform_sequence_is_readable_without_canonical_annotations_or_card_mutation():
     path = Path("temp_data/frozen_cards/schema_0.3.12__P60174.json")
-    card = Card.from_dict(json.loads(path.read_text()))
+    card = Card.from_dict(json.loads(path.read_text(encoding="utf-8")))
     before = card.to_dict()
     (assertion,) = map_isoform_sequence(
         get_isoform_sequence("P60174-3", client=FixtureUniProtIsoformClient())
@@ -207,7 +206,9 @@ def test_same_sequence_different_ids_and_changed_parent_support_remain_independe
         get_isoform_sequence("P60174-1", client=Client(payload))
     )
     document = (
-        (DIRECTORY / "P60174-1.fasta").read_text().replace("|P60174-1|", "|P60174-99|")
+        (DIRECTORY / "P60174-1.fasta")
+        .read_text(encoding="utf-8")
+        .replace("|P60174-1|", "|P60174-99|")
     )
     (b,) = map_isoform_sequence(
         get_isoform_sequence("P60174-99", client=Client(payload, document))
@@ -311,7 +312,11 @@ def test_malformed_or_wrong_fasta_is_not_repaired_or_canonical_fallback(document
 
 
 def test_displayed_sequence_disagreement_and_client_revision_are_refused():
-    document = (DIRECTORY / "P60174-1.fasta").read_text().replace("MAPSR", "AAPSR")
+    document = (
+        (DIRECTORY / "P60174-1.fasta")
+        .read_text(encoding="utf-8")
+        .replace("MAPSR", "AAPSR")
+    )
     with pytest.raises(ConnectorError):
         get_isoform_sequence("P60174-1", client=Client(fasta=document))
     with pytest.raises(ConnectorError):

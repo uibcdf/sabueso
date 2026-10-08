@@ -18,7 +18,9 @@ CHECKSUM = "A8D44FC2C980A7677A3B54788D0FA323"
 
 
 def native():
-    return json.loads(Path(f"temp_data/uniparc/search__{CHECKSUM}.json").read_text())
+    return json.loads(
+        Path(f"temp_data/uniparc/search__{CHECKSUM}.json").read_text(encoding="utf-8")
+    )
 
 
 def row(number=1):
@@ -249,7 +251,9 @@ def test_fixture_scope_and_page_receipts_are_validated(tmp_path, change):
     directory.mkdir()
     payload = native()
     change(payload)
-    (directory / f"search__{CHECKSUM}.json").write_text(json.dumps(payload))
+    (directory / f"search__{CHECKSUM}.json").write_text(
+        json.dumps(payload), encoding="utf-8", newline=""
+    )
     with pytest.raises(ConnectorError):
         uniparc.get_records(CHECKSUM, client=uniparc.FixtureUniParcClient(tmp_path))
 

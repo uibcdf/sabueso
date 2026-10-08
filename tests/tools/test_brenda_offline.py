@@ -30,7 +30,7 @@ from sabueso.tools.db.brenda import (
 )
 
 PATH = Path("temp_data/brenda/enzyme_class__5.3.1.1.json")
-NATIVE = json.loads(PATH.read_text())
+NATIVE = json.loads(PATH.read_text(encoding="utf-8"))
 
 
 class Client:

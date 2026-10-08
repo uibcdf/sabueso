@@ -7,7 +7,9 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parent
-DELIVERY = json.loads((ROOT / "devguide/sources/fixture_delivery.json").read_text())
+DELIVERY = json.loads(
+    (ROOT / "devguide/sources/fixture_delivery.json").read_text(encoding="utf-8")
+)
 LOCAL_MODULES = set(DELIVERY["local_qualification_tests"])
 
 

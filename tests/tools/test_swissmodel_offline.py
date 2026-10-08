@@ -228,7 +228,9 @@ def test_explicit_empty_structure_array_is_scoped_received_absence(tmp_path):
     payload["result"]["structures"] = []
     directory = tmp_path / "swissmodel"
     directory.mkdir()
-    (directory / PATH.name).write_text(json.dumps(payload))
+    (directory / PATH.name).write_text(
+        json.dumps(payload), encoding="utf-8", newline=""
+    )
     envelope = get_metadata("P60174", client=FixtureSwissModelClient(tmp_path))
     assert map_structures(envelope) == []
     access = envelope["acquisition_trace"]["records"][0]

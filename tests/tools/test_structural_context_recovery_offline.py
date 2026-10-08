@@ -22,14 +22,16 @@ from sabueso.tools.db.pdb_redo import FixturePDBRedoClient, get_entry, get_versi
 def eppic_native():
     return {
         component: json.loads(
-            Path(f"temp_data/eppic/{component}__1hti.json").read_text()
+            Path(f"temp_data/eppic/{component}__1hti.json").read_text(encoding="utf-8")
         )
         for component in ("entry", "interfaces", "assemblies")
     }
 
 
 def redo_native(component="entry"):
-    return json.loads(Path(f"temp_data/pdb_redo/{component}__1cbs.json").read_text())
+    return json.loads(
+        Path(f"temp_data/pdb_redo/{component}__1cbs.json").read_text(encoding="utf-8")
+    )
 
 
 class EPPICClient:

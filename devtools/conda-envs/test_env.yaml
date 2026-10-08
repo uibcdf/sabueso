@@ -19,4 +19,5 @@ dependencies:
   - pytest >=8
   - pytest-cov >=7,<8
   - pytest-receptor ==1.2.0
+  - nbformat >=5  # validates generated notebook reports; test tooling only
   - pyyaml >=6

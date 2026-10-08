@@ -80,7 +80,7 @@ class Rows(HTMLParser):
 
 def test_provider_unit_header_and_rounded_donors_match_independent_native_api():
     parser = Rows()
-    parser.feed(TABLE.read_text())
+    parser.feed(TABLE.read_text(encoding="utf-8"))
     assert parser.rows[0][6] == "Distance (Å)"
     source_rows = {r[0]: r for r in parser.rows[1:]}
     assert len(source_rows) == 3

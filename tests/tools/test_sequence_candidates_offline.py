@@ -13,14 +13,18 @@ from sabueso.tools.db.uniprot import FixtureUniProtClient
 from sabueso.tools.sequence import find_protein_candidates
 
 CHECKSUM = "A8D44FC2C980A7677A3B54788D0FA323"
-SEQUENCE = json.loads(Path("temp_data/P60174.json").read_text())["sequence"]["value"]
+SEQUENCE = json.loads(Path("temp_data/P60174.json").read_text(encoding="utf-8"))[
+    "sequence"
+]["value"]
 
 
 class Search:
     def __init__(self, references=None):
         self.calls = []
         self.result = json.loads(
-            Path(f"temp_data/uniparc/search__{CHECKSUM}.json").read_text()
+            Path(f"temp_data/uniparc/search__{CHECKSUM}.json").read_text(
+                encoding="utf-8"
+            )
         )
         self.result["pages"] = []
         if references is not None:
@@ -35,7 +39,9 @@ class Entries:
     def __init__(self):
         self.calls = []
         self.records = {
-            accession: json.loads(Path(f"temp_data/{accession}.json").read_text())
+            accession: json.loads(
+                Path(f"temp_data/{accession}.json").read_text(encoding="utf-8")
+            )
             for accession in ["P60174", "P60175"]
         }
 

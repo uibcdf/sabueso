@@ -247,7 +247,9 @@ def test_unavailable_or_malformed_file_is_failed_access(tmp_path):
         get_channels("1tqn", client=FixtureChannelsDBClient(tmp_path))
     directory = tmp_path / "channelsdb"
     directory.mkdir()
-    (directory / PATH.name).write_text('{"Channels":{},"Channels":{}}')
+    (directory / PATH.name).write_text(
+        '{"Channels":{},"Channels":{}}', encoding="utf-8", newline=""
+    )
     with pytest.raises(ConnectorError):
         get_channels("1tqn", client=FixtureChannelsDBClient(tmp_path))
 

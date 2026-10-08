@@ -29,7 +29,7 @@ def fill_native():
 
 
 def page_native():
-    return LIGYSIS.read_text()
+    return LIGYSIS.read_text(encoding="utf-8")
 
 
 def replace_literal(document, variable, value):

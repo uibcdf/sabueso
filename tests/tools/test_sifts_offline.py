@@ -18,7 +18,7 @@ PATH = Path("temp_data/sifts/mappings__1hti.json")
 
 
 def native():
-    return json.loads(PATH.read_text())
+    return json.loads(PATH.read_text(encoding="utf-8"))
 
 
 def segment(payload):

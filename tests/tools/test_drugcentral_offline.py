@@ -248,7 +248,7 @@ def test_website_version_and_unqualified_cuts_are_not_supported(context):
 )
 def test_supplied_snapshot_bindings_are_exact(tmp_path, key, value):
     p = tmp_path / "export.tsv"
-    p.write_text(encode(small()))
+    p.write_text(encode(small()), encoding="utf-8", newline="")
     m = metadata()
     m[key] = value
     with pytest.raises(ConnectorError):

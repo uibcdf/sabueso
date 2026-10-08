@@ -23,7 +23,7 @@ HEADER = "protein_variant,am_pathogenicity,am_class\r\n"
 
 
 def native_models():
-    return json.loads((ROOT / "alphafold/P60174.json").read_text())
+    return json.loads((ROOT / "alphafold/P60174.json").read_text(encoding="utf-8"))
 
 
 def descriptor():
@@ -147,9 +147,13 @@ def test_duplicate_variants_and_native_accession_disagreement_are_refused():
 def test_zero_missing_and_future_classification_stay_distinct(tmp_path):
     base = tmp_path / "alphamissense"
     (base / "alphafold").mkdir(parents=True)
-    (base / "alphafold/P60174.json").write_text(json.dumps(native_models()))
+    (base / "alphafold/P60174.json").write_text(
+        json.dumps(native_models()), encoding="utf-8", newline=""
+    )
     (base / "AF-P60174-F1-aa-substitutions.csv").write_text(
-        HEADER + "M1A,0,FutureState\nM1C,,\nM1D,NA,LPath\n"
+        HEADER + "M1A,0,FutureState\nM1C,,\nM1D,NA,LPath\n",
+        encoding="utf-8",
+        newline="",
     )
     result = get_annotations("P60174", client=FixtureAlphaMissenseClient(tmp_path))
     assertions = map_variants(result)
@@ -282,7 +286,7 @@ def test_all_rows_are_checked_before_cap_and_missing_fixture_is_unavailable(tmp_
     directory = tmp_path / "alphamissense"
     directory.mkdir()
     (directory / "AF-P60174-F1-aa-substitutions.csv").write_text(
-        HEADER + "M1A,0.2,LBen\nA1C,0.2,LBen\n"
+        HEADER + "M1A,0.2,LBen\nA1C,0.2,LBen\n", encoding="utf-8", newline=""
     )
     client = FixtureAlphaMissenseClient(tmp_path, alphafold_client=Discovery())
     with pytest.raises(ConnectorError):
@@ -302,7 +306,9 @@ def test_all_rows_are_checked_before_cap_and_missing_fixture_is_unavailable(tmp_
 def test_header_only_csv_is_an_empty_artifact_with_incomplete_grid(tmp_path):
     directory = tmp_path / "alphamissense"
     directory.mkdir()
-    (directory / "AF-P60174-F1-aa-substitutions.csv").write_text(HEADER)
+    (directory / "AF-P60174-F1-aa-substitutions.csv").write_text(
+        HEADER, encoding="utf-8", newline=""
+    )
     result = get_annotations(
         "P60174",
         client=FixtureAlphaMissenseClient(tmp_path, alphafold_client=Discovery()),

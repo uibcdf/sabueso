@@ -194,7 +194,7 @@ def test_fixture_missing_and_malformed_are_failures(tmp_path):
         )
     path = tmp_path / "ligysis" / PATH.name
     path.parent.mkdir()
-    path.write_text('{"chain2acc": {}, "chain2acc": {}}')
+    path.write_text('{"chain2acc": {}, "chain2acc": {}}', encoding="utf-8", newline="")
     with pytest.raises(ConnectorError):
         get_structure_mapping(
             "P60174", 1, "7t0q", client=FixtureLigysisClient(tmp_path)

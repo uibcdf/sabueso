@@ -26,7 +26,9 @@ FEATURES = {
     "Transmembrane": "features_positional.transmembrane",
 }
 ORIGINALS = {
-    accession: json.loads(Path(f"temp_data/{accession}.json").read_text())
+    accession: json.loads(
+        Path(f"temp_data/{accession}.json").read_text(encoding="utf-8")
+    )
     for accession in ["P52789", "P35372", "A0A140VJM9", "P60174", "P52270"]
 }
 

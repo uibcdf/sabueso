@@ -24,7 +24,9 @@ ROOT = Path("temp_data/mobidb")
 
 
 def native(identifier="P60174"):
-    return json.loads((ROOT / f"annotations__{identifier}.json").read_text())
+    return json.loads(
+        (ROOT / f"annotations__{identifier}.json").read_text(encoding="utf-8")
+    )
 
 
 class Client:

@@ -365,7 +365,7 @@ def test_snapshot_declarations_must_match_exact_source_and_query(change):
 )
 def test_bad_supplied_json_is_failed_not_an_empty_complex(tmp_path, document):
     path = tmp_path / "bad.json"
-    path.write_text(document)
+    path.write_text(document, encoding="utf-8", newline="")
     with pytest.raises(ConnectorError):
         get_complex(
             "CPX-2158",

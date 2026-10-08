@@ -29,7 +29,7 @@ from sabueso.mappings.depmap import (
 from sabueso.tools.db.depmap import FixtureDepMapClient, SnapshotDepMapClient, get_model
 
 PATH = Path("temp_data/depmap") / ARTIFACT
-ROWS = parse_models(PATH.read_text())
+ROWS = parse_models(PATH.read_text(encoding="utf-8"))
 ROW = next(r["fields"] for r in ROWS if r["fields"][0] == "ACH-000019")
 
 
@@ -69,7 +69,9 @@ def test_full_original_public_release_hash_metadata_grant_and_mcf7_context():
     raw = PATH.read_bytes()
     assert len(raw) == 645696 and hashlib.sha256(raw).hexdigest() == SHA256
     native_metadata = json.loads(
-        Path("temp_data/depmap/24Q4__figshare_27993248__v1.json").read_text()
+        Path("temp_data/depmap/24Q4__figshare_27993248__v1.json").read_text(
+            encoding="utf-8"
+        )
     )
     assert (
         native_metadata["title"] == "DepMap 24Q4 Public"

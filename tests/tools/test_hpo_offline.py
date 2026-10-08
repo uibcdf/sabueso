@@ -289,7 +289,7 @@ def test_supplied_metadata_cannot_override_source_kind_id_or_release(
     tmp_path, key, value
 ):
     path = tmp_path / "native.tsv"
-    path.write_text(NATIVE)
+    path.write_text(NATIVE, encoding="utf-8", newline="")
     scope = metadata()
     scope[key] = value
     with pytest.raises(ConnectorError):
@@ -323,7 +323,9 @@ def test_missing_fixture_http_failure_and_received_not_listed_are_distinct(
     with pytest.raises(ConnectorError):
         get_gene_annotations(ID, client=FixtureHPOClient(tmp_path))
     path = tmp_path / "native.tsv"
-    path.write_text(HEADER + "\n" + ROW.replace("7167", "7168"))
+    path.write_text(
+        HEADER + "\n" + ROW.replace("7167", "7168"), encoding="utf-8", newline=""
+    )
     empty = get_gene_annotations(
         ID, client=SnapshotHPOClient(path, source_metadata=metadata())
     )

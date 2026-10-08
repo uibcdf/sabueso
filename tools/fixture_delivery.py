@@ -37,7 +37,9 @@ def problems(
     out = []
     if data.get("format") != "sabueso.fixture_delivery@1":
         out.append("Unsupported fixture delivery inventory format.")
-    catalog = json.loads((root / "sabueso/resolver/source_catalog.json").read_text())
+    catalog = json.loads(
+        (root / "sabueso/resolver/source_catalog.json").read_text(encoding="utf-8")
+    )
     resources = {r["id"]: r for r in catalog["resources"]}
     versioned = _git_paths(root) if versioned_paths is None else set(versioned_paths)
     candidates = (

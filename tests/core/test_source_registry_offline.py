@@ -41,9 +41,9 @@ def test_packaged_catalog_preserves_all_decisions_and_separates_profile_statuses
     expected = json.loads(registry.catalog_export(data))
     catalog = get_catalog()
     assert catalog == expected
-    assert Path(
-        "sabueso/resolver/source_catalog.json"
-    ).read_text() == registry.catalog_export(data)
+    assert Path("sabueso/resolver/source_catalog.json").read_text(
+        encoding="utf-8"
+    ) == registry.catalog_export(data)
     by_id = {r["id"]: r for r in catalog["resources"]}
     assert len(by_id) == len(data["resources"])
     assert {r["status"] for r in by_id.values()} >= {
@@ -125,7 +125,9 @@ def test_capability_page_is_current_and_readers_are_detached_without_source_acce
         raise AssertionError("Capability inspection must not acquire a source")
 
     monkeypatch.setattr(_http, "_urlopen", forbidden)
-    assert registry.CAPABILITIES_PAGE.read_text() == registry.render_capabilities(data)
+    assert registry.CAPABILITIES_PAGE.read_text(
+        encoding="utf-8"
+    ) == registry.render_capabilities(data)
     expected = get_catalog()["capabilities"]
     changed = get_catalog()
     changed["capabilities"]["resources"]["hpo"]["recovery_inputs"]["local_only"].clear()

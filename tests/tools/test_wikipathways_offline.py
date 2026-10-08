@@ -337,7 +337,7 @@ def test_bound_snapshot_hash_time_metadata_and_no_new_access_credit(
 )
 def test_supplied_snapshot_binding_is_exact(tmp_path, key, value):
     p = tmp_path / "native.json"
-    p.write_text(json.dumps(small()))
+    p.write_text(json.dumps(small()), encoding="utf-8", newline="")
     m = metadata()
     m[key] = value
     with pytest.raises(ConnectorError):

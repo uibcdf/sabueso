@@ -298,7 +298,7 @@ def test_snapshot_metadata_cannot_relabel_native_source_query_or_revision(
     tmp_path, key, value
 ):
     path = tmp_path / "native.txt"
-    path.write_text(NATIVE)
+    path.write_text(NATIVE, encoding="utf-8", newline="")
     scope = metadata()
     scope[key] = value
     with pytest.raises(ConnectorError):
@@ -334,7 +334,7 @@ def test_missing_fixture_http_failure_and_received_not_listed_remain_distinct(
     with pytest.raises(ConnectorError):
         get_motif_interactions(ID, client=FixtureThreeDIDClient(tmp_path))
     path = tmp_path / "native.txt"
-    path.write_text(NATIVE.replace(ID, "7m5m"))
+    path.write_text(NATIVE.replace(ID, "7m5m"), encoding="utf-8", newline="")
     empty = get_motif_interactions(
         ID, client=SnapshotThreeDIDClient(path, source_metadata=metadata())
     )

@@ -20,7 +20,9 @@ from sabueso.tools.db.disprot import (
 
 
 def native():
-    return json.loads(Path("temp_data/disprot/records__P37840.json").read_text())
+    return json.loads(
+        Path("temp_data/disprot/records__P37840.json").read_text(encoding="utf-8")
+    )
 
 
 def test_native_fixture_retains_subset_and_distinct_source_sequence():

@@ -12,7 +12,9 @@ from sabueso.core.merge import merge_mapping_results
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.mappings.chebi import map_chebi_identity
 
-ORIGINALS = json.loads(Path("temp_data/chebi/compounds.json").read_text())["compounds"]
+ORIGINALS = json.loads(
+    Path("temp_data/chebi/compounds.json").read_text(encoding="utf-8")
+)["compounds"]
 
 
 @pytest.mark.parametrize("identifier", sorted(ORIGINALS))

@@ -21,3 +21,7 @@ Dedicated receiving lanes exercise its first published API on Python 3.11–3.14
 outside both checkouts. `python devtools/dependency_preflight.py --release` verifies
 that metadata, recipe, environments and exact public build pins agree. Public
 provider delivery is recorded under Sabueso #108 and Ackredit #22/#75/#80.
+
+The test environment includes `nbformat>=5` to validate generated notebook reports,
+matching the `test` extra. Report generation itself uses the standard library;
+the validator is test tooling, not a runtime dependency or a Jupyter execution engine.

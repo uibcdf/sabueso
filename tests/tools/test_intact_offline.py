@@ -22,7 +22,7 @@ CONTEXT = BODY.with_suffix(".headers.json")
 
 
 def native_row():
-    return BODY.read_text().splitlines()[0].split("\t")
+    return BODY.read_text(encoding="utf-8").splitlines()[0].split("\t")
 
 
 class Client:
@@ -195,13 +195,14 @@ def test_explicit_isoform_query_does_not_match_the_base_accession():
 def test_supplied_fixture_is_validated_in_full_before_a_smaller_result_cap(tmp_path):
     envelope = get_interactions("P60174", limit=2, client=FixtureIntActClient())
     assert len(map_interactions(envelope)) == 2 and envelope["truncated"] is True
-    assert (
-        envelope["scope"]["observed_rows"] == 80
-        and envelope["record"] == BODY.read_text()
-    )
+    assert envelope["scope"]["observed_rows"] == 80 and envelope[
+        "record"
+    ] == BODY.read_text(encoding="utf-8")
     directory = tmp_path / "intact"
     directory.mkdir()
-    (directory / BODY.name).write_text(BODY.read_text() + "invalid row\n")
+    (directory / BODY.name).write_text(
+        BODY.read_text(encoding="utf-8") + "invalid row\n", encoding="utf-8", newline=""
+    )
     (directory / CONTEXT.name).write_bytes(CONTEXT.read_bytes())
     with pytest.raises(ConnectorError, match="42 nonempty"):
         get_interactions("P60174", limit=2, client=FixtureIntActClient(tmp_path))

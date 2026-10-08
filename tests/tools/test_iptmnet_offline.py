@@ -121,7 +121,7 @@ def test_explicit_empty_panels_differ_from_missing_panels(tmp_path):
     for row in parsed["rows"]:
         html = html.replace(row["raw_html"], "", 1)
     path = tmp_path / "empty-report.html"
-    path.write_text(html)
+    path.write_text(html, encoding="utf-8", newline="")
     e = get_substrate_report(
         "P60174", client=SnapshotIPTMnetClient(path, source_metadata=metadata())
     )

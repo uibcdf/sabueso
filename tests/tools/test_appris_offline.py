@@ -297,7 +297,7 @@ def test_supplied_source_and_query_declarations_must_match(change):
 )
 def test_bad_native_json_fails_instead_of_becoming_an_empty_result(tmp_path, document):
     path = tmp_path / "bad.json"
-    path.write_text(document)
+    path.write_text(document, encoding="utf-8", newline="")
     with pytest.raises(ConnectorError):
         get_gene_annotations(
             GENE, client=SnapshotApprisClient(path, source_metadata=metadata())

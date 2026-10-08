@@ -135,7 +135,9 @@ def capability_inventory(data, *, enrichers=None):
         from sabueso.enrichers import ENRICHERS
 
         enrichers = ENRICHERS
-    delivery = json.loads((ROOT / "devguide/sources/fixture_delivery.json").read_text())
+    delivery = json.loads(
+        (ROOT / "devguide/sources/fixture_delivery.json").read_text(encoding="utf-8")
+    )
     resources = {}
     for resource in sorted(data["resources"], key=lambda r: r["id"]):
         getters, mappings, clients = [], [], []

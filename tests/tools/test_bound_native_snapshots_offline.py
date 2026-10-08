@@ -208,7 +208,7 @@ def test_valid_binding_and_hash_do_not_override_native_identity_validation(
 )
 def test_duplicate_json_keys_are_refused_in_each_native_reader(case, tmp_path):
     path = tmp_path / "original.json"
-    path.write_text('{"id": 1, "id": 2}')
+    path.write_text('{"id": 1, "id": 2}', encoding="utf-8", newline="")
     client = case[4](path, source_metadata=declaration(case))
     with pytest.raises(ConnectorError, match="Repeated JSON key"):
         case[6](*case[7], client=client)

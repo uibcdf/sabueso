@@ -32,7 +32,7 @@ PATH = Path(f"temp_data/civic/{RELEASE}-AcceptedClinicalEvidenceSummaries.tsv")
 
 
 def native():
-    return PATH.read_text()
+    return PATH.read_text(encoding="utf-8")
 
 
 def small():
@@ -265,7 +265,7 @@ def test_supplied_snapshot_binds_source_kind_query_and_monthly_release(
     tmp_path, key, value
 ):
     p = tmp_path / "native.tsv"
-    p.write_text(encode(small()))
+    p.write_text(encode(small()), encoding="utf-8", newline="")
     m = metadata()
     m[key] = value
     with pytest.raises(ConnectorError):

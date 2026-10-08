@@ -15,7 +15,7 @@ FIELD = "features_positional.domains"
 
 
 def original(accession="P52789"):
-    return json.loads(Path(f"temp_data/{accession}.json").read_text())
+    return json.loads(Path(f"temp_data/{accession}.json").read_text(encoding="utf-8"))
 
 
 def build(record):
