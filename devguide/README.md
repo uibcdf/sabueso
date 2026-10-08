@@ -81,6 +81,10 @@ not a release receipt.
 
 ## Working folders
 
+- `pending_proposals/private_consumer_revalidation.md`: bounded live/editable
+  consumer execution, exact saved readers and original-answer replay (#132),
+  measured costs and the exercised NCBI Taxonomy operation-observation gap (#108).
+  Original content/results stay private; broader consumer acceptance remains open.
 - `pending_proposals/post_recovery_public_checkpoint.md`: authorized code delivery,
   exact-SHA CI and private-consumer revalidation scheduling (#112/#132), with its
   [machine-readable receipt](pending_proposals/post_recovery_public_checkpoint.json).

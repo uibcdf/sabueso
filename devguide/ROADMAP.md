@@ -296,13 +296,19 @@ provider triage or repeat the archived chronology. Resume with:
    and governance; the [publication receipt](pending_proposals/post_recovery_public_checkpoint.md)
    retains both input scopes and portability corrections. Preserve the 49/37
    boundary. Installed-artifact/release gates remain separate.
-2. **Return to real consumer use next.** Revalidate the applicable
+2. **Continue bounded real consumer use.** Revalidate the applicable
    private MOLI Python/Jupyter workflows under
    [#132](https://github.com/uibcdf/sabueso/issues/132). Keep the pilot checkout
    read-only and all original content/results in a private workspace. Check
    scientific usefulness, support/unknowns/units, saved readers/reacquisition and
    measured cost; expose only generic component findings publicly. Prior pilot
    receipts and public fixtures do not qualify the recovered checkpoint.
+   The [bounded development exercise](pending_proposals/private_consumer_revalidation.md)
+   now passes 14 original cells, exact saved-result reading and original-answer
+   replay. First instrument the exercised NCBI Taxonomy acquisition-operation gap
+   (#108), then extend the original routes with explicit source scope. Full profile/
+   packet acquisition and overall #132 acceptance remain open; missing historical
+   stores cannot be reconstructed from current cards.
 3. **Advance the next bounded scientific slice.** Source-active-site residue context
    and selected composition are now in protein example `@2`, with original `@1`
    readers preserved. Continue the approved molecule/activity and disease/entity

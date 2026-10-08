@@ -15,9 +15,9 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | --- | --- | --- |
 | Fixture delivery | 49 repository inputs; 37 protected local originals; public absence suite passes with originals restored and verified | Requalification of local delivery only with applicable declarations; retain both test scopes |
 | Guide | Six complete entry-document snapshots archived; common guidance separated from provider details; warning-failing Sphinx passes | Keep current guidance true alongside the next implementation |
-| Source maturity | Generated native/mapping/enricher/input scope; 83 `in_use`, 37 deferred, 11 evaluating; 24 declared enricher instances | Integration by scientific question; live health and consumer acceptance stay explicitly unassessed |
+| Source maturity | Generated native/mapping/enricher/input scope; 83 `in_use`, 37 deferred, 11 evaluating; 24 declared enricher instances | Integration by scientific question; portfolio-wide live health and consumer acceptance remain unassessed |
 | Scientific journeys | Protein example `@2` retains active-site residue/composition support; independent legacy reader and reacquisition pass | Next bounded clinical bibliography/query/explanation work; complete derived-operation observation remains open |
-| Consumers | Ready MOLI correction in PR #65 with exact-head CI; Nextia #1 retains persistent Evidence ownership; costs measured | Private workflow revalidation #132 next; owner review and concrete acceptance under MOLI #3/#22/#36 and Sabueso #53/#71/#108 |
+| Consumers | Bounded private revalidation passes 14 original cells, exact independent saved reading and original-answer replay; ready MOLI correction in PR #65; Nextia #1 retains persistent Evidence ownership | Instrument the exercised NCBI Taxonomy operation gap #108, then extend declared consumer scope #132; broader owner acceptance stays open |
 
 The accumulated recovery/consolidation code checkpoint is published as
 `dc4642414c46744f39d85cb666094b0d52dd705a`, with
@@ -29,6 +29,10 @@ and [machine-readable record](pending_proposals/post_recovery_public_checkpoint.
 retain both input scopes and the portability corrections. No new release is claimed.
 Current scoped acceptance and measurements are in the
 [consolidation report](pending_proposals/post_recovery_consolidation.md).
+The [bounded consumer report](pending_proposals/private_consumer_revalidation.md)
+records live versus replayed inputs, persisted support, measured costs and the
+remaining acquisition observation gap. Overall private workflow acceptance stays
+open; no installed artifact or scientific Evidence is qualified by this exercise.
 
 ## Release and schema
 
@@ -140,9 +144,15 @@ gh-run-receptor when a code checkpoint is pushed. See [TESTS.md](TESTS.md).
 ## Open work
 
 Follow the [immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).
-The recovered checkpoint's CI is qualified. Return next to the private MOLI consumer workflows
-under [#132](https://github.com/uibcdf/sabueso/issues/132) before broadening sources
-or APIs. Keep their checkout read-only and their content/results private.
+The recovered checkpoint's CI is qualified. Bounded private MOLI consumer
+revalidation under [#132](https://github.com/uibcdf/sabueso/issues/132) now passes
+14 original cells, exact saved-state reading and original-answer replay.
+First instrument the exercised NCBI Taxonomy acquisition-operation gap under
+[#108](https://github.com/uibcdf/sabueso/issues/108), then extend the existing
+consumer routes with declared source scope before broadening sources or APIs.
+Keep their checkout read-only and their content/results private. Broad profiles,
+full packet acquisition, unavailable historical pins and overall acceptance remain
+unqualified; see the [bounded report](pending_proposals/private_consumer_revalidation.md).
 Independent SDK acceptance remains useful while consumer-owned work proceeds.
 Queries/non-protein packets (#71), derived explanations (#91), complete observed
 pipeline/bibliography (#108), finer use-term filtering (#29), peptide identity

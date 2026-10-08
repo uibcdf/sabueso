@@ -660,3 +660,20 @@ contract. Linked-target access, permissions, clinical efficacy, full bibliograph
 and MOLI/Recorda guarantees are not inferred. The accumulated implementation
 is included in the authorized 2026-10-06 code checkpoint; current delivery
 and exact remote CI are recorded in `../CHECKPOINT.md`, Resume here.
+
+## Exercised taxonomy observation gap (2026-10-08, #108/#132)
+
+The [bounded consumer revalidation](private_consumer_revalidation.md) at qualified
+code `dc46424` preserves eight original raw source responses but observes only
+four UniProt operations. The four NCBI Taxonomy responses retain native source/
+retrieval metadata; their built-in client is outside the explicitly declared
+34-source observation coverage. This is a remaining Sabueso adapter gap, not an
+Ackredit defect or permission to claim complete bibliography.
+
+Prioritize operation observation for the existing online and fixture `taxa` routes
+before broader consumer acquisition. Preserve batch/request scope, partial and
+missing results, failures, archive reuse/replay and original scientific retrieval
+times. Unknown source versions and bibliographic metadata must remain unknown.
+Regression inputs must be public fixtures or synthetic responses; private consumer
+outputs stay private. No implementation or complete #108 acceptance is claimed
+by this report.
