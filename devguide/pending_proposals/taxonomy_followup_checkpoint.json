@@ -6,8 +6,8 @@
     "uibcdf/sabueso#98",
     "uibcdf/sabueso#132"
   ],
-  "code_commit": null,
-  "status": "local_qualified_remote_pending",
+  "code_commit": "a05e0a3132a43bf3a7bd53b94217db9690f39693",
+  "status": "qualified_code_checkpoint",
   "release_claim": false,
   "schema_changed": false,
   "input_boundary": {
@@ -97,8 +97,210 @@
     "original_unprofiled_linux_peak": "not_recorded"
   },
   "ci": {
-    "status": "pending_publication",
+    "status": "success",
     "inspection": "gh-run-receptor",
-    "runs": []
+    "receptor_version": "1.2.0+13.gf1a5901",
+    "runs": [
+      {
+        "id": 37847914597,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37847914597",
+        "workflow": "CI",
+        "head_sha": "a05e0a3132a43bf3a7bd53b94217db9690f39693",
+        "attempt": 1,
+        "conclusion": "success",
+        "jobs": [
+          {
+            "id": 113553311233,
+            "name": "Ruff",
+            "conclusion": "success"
+          },
+          {
+            "id": 113553311379,
+            "name": "Ackredit public-package pilot (Python 3.13)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 981,
+              "skipped": 0,
+              "deselected": 0,
+              "seconds": 280.05,
+              "warnings": 2,
+              "sqlite_resource_warnings": 0
+            }
+          },
+          {
+            "id": 113553311434,
+            "name": "Ackredit public-package pilot (Python 3.12)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 981,
+              "skipped": 0,
+              "deselected": 0,
+              "seconds": 272.3,
+              "warnings": 2,
+              "sqlite_resource_warnings": 0
+            }
+          },
+          {
+            "id": 113553311487,
+            "name": "Offline tests (macos-26, Python 3.14)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 4039,
+              "skipped": 10,
+              "deselected": 26,
+              "seconds": 460.05,
+              "warnings": 6,
+              "sqlite_resource_warnings": 0
+            }
+          },
+          {
+            "id": 113553311505,
+            "name": "Ackredit public-package pilot (Python 3.11)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 981,
+              "skipped": 0,
+              "deselected": 0,
+              "seconds": 324.85,
+              "warnings": 2,
+              "sqlite_resource_warnings": 0
+            }
+          },
+          {
+            "id": 113553311525,
+            "name": "Ackredit public-package pilot (Python 3.14)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 981,
+              "skipped": 0,
+              "deselected": 0,
+              "seconds": 263.8,
+              "warnings": 2,
+              "sqlite_resource_warnings": 0
+            }
+          },
+          {
+            "id": 113553311562,
+            "name": "Offline tests (windows-latest, Python 3.11)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 4039,
+              "skipped": 10,
+              "deselected": 26,
+              "seconds": 777.38,
+              "warnings": 6,
+              "sqlite_resource_warnings": 0
+            }
+          },
+          {
+            "id": 113553311577,
+            "name": "Offline tests (windows-latest, Python 3.12)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 4039,
+              "skipped": 10,
+              "deselected": 26,
+              "seconds": 898.8,
+              "warnings": 6,
+              "sqlite_resource_warnings": 0
+            }
+          },
+          {
+            "id": 113553311583,
+            "name": "Offline tests (ubuntu-latest, Python 3.14)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 4039,
+              "skipped": 10,
+              "deselected": 26,
+              "seconds": 508.37,
+              "warnings": 73,
+              "sqlite_resource_warnings": 67
+            }
+          },
+          {
+            "id": 113553311595,
+            "name": "Offline tests (ubuntu-latest, Python 3.13)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 4039,
+              "skipped": 10,
+              "deselected": 26,
+              "seconds": 441.67,
+              "warnings": 6,
+              "sqlite_resource_warnings": 0
+            }
+          },
+          {
+            "id": 113553311633,
+            "name": "Offline tests (ubuntu-latest, Python 3.12)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 4039,
+              "skipped": 10,
+              "deselected": 26,
+              "seconds": 419.37,
+              "warnings": 6,
+              "sqlite_resource_warnings": 0
+            }
+          },
+          {
+            "id": 113553311635,
+            "name": "Offline tests (windows-latest, Python 3.14)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 4039,
+              "skipped": 10,
+              "deselected": 26,
+              "seconds": 778.03,
+              "warnings": 6,
+              "sqlite_resource_warnings": 0
+            }
+          },
+          {
+            "id": 113553311706,
+            "name": "Offline tests (ubuntu-latest, Python 3.11)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 4039,
+              "skipped": 10,
+              "deselected": 26,
+              "seconds": 587.95,
+              "warnings": 6,
+              "sqlite_resource_warnings": 0
+            }
+          },
+          {
+            "id": 113553311754,
+            "name": "Offline tests (windows-latest, Python 3.13)",
+            "conclusion": "success",
+            "test_summary": {
+              "passed": 4039,
+              "skipped": 10,
+              "deselected": 26,
+              "seconds": 772.84,
+              "warnings": 6,
+              "sqlite_resource_warnings": 0
+            }
+          },
+          {
+            "id": 113559473260,
+            "name": "Publish default-branch coverage",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 37847914659,
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/37847914659",
+        "workflow": "MOLI governance",
+        "head_sha": "a05e0a3132a43bf3a7bd53b94217db9690f39693",
+        "conclusion": "success",
+        "jobs_passed": 1
+      }
+    ],
+    "installed_receiving_provider": "uibcdf::ackredit=0.9.0=py_0",
+    "repository_scope": "Linux and Windows Python 3.11\u20133.14; Apple Silicon macOS Python 3.14",
+    "warning_limit": "Linux Python 3.14 reports 67 unclosed SQLite warnings under #133; no allocation owner or fix established."
   }
 }

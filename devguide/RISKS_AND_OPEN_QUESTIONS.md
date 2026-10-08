@@ -14,6 +14,8 @@
   already closes its connection in `finally`. Investigate a bounded reproduction
   and close the owning connections without suppressing diagnostics. This warning
   group is separate from deliberate source-fixture failure/truncation warnings.
+  Follow-up `a05e0a3` also passes, with 67 such warnings on Linux Python 3.14;
+  the current receipt retains that warning scope. No connection-owner fix is claimed.
 - **Recovered capabilities need real consumer revalidation**
   ([#132](https://github.com/uibcdf/sabueso/issues/132)): public fixture tests and
   independent SDK journeys establish bounded support/persistence behavior, but

@@ -140,6 +140,8 @@ An independent reader rechecks the original persisted cards, support, units, dec
 packet and immutable files without acquisition, derivation or fresh credit. Original
 archives, execution receipts and the private checkout remain unchanged. All new
 fixtures/regression inputs are public or synthetic; no private data enters Git.
+Earlier four-operation sidecars remain original; new replay traces describe the
+actual replay and do not reconstruct missing historical credit.
 
 Memory sampling starts before importing Sabueso and records Linux `VmRSS`/`VmHWM`
 alongside `resource.ru_maxrss` and Python allocation tracking. The live process
@@ -155,8 +157,16 @@ unprofiled replay. No 942 MiB SDK allocation or memory optimization is establish
 Final selected regressions pass **173 tests / 23.43 s**; full local-original qualification
 passes **5,592 tests / 196.16 s**, with ten expected fixture warnings. Both use
 Python 3.14.7, pytest-receptor and 12 workers. Warning-failing Sphinx passes;
-registry, protected-input delivery, Ruff and governance checks pass. The new code
-checkpoint's exact-SHA CI remains pending until publication. #108 remains open
+registry, protected-input delivery, Ruff and governance checks pass. Published
+code `a05e0a3132a43bf3a7bd53b94217db9690f39693` passes
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/37847914597)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/37847914659), inspected
+with gh-run-receptor. All nine Linux/Windows/macOS repository-input lanes pass
+4,039 cases with ten native skips and 26 online deselections. Four installed public
+Ackredit 0.9.0 receiving lanes pass 981 cases each and the public workflow. Linux
+Python 3.14 retains 67 unclosed SQLite warnings, separately tracked in #133;
+other repository lanes have six expected fixture warnings and receiving lanes two.
+This is code/receiving qualification, not a new Sabueso release. #108 remains open
 for other source/derived-operation/bibliography gaps; #132 remains open for the
 unexecuted consumer routes and actual scientific acceptance.
 The [sanitized qualification receipt](taxonomy_followup_checkpoint.json) records

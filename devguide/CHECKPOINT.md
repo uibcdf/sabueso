@@ -17,7 +17,7 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | Guide | Six complete entry-document snapshots archived; common guidance separated from provider details; warning-failing Sphinx passes | Keep current guidance true alongside the next implementation |
 | Source maturity | Generated native/mapping/enricher/input scope; 83 `in_use`, 37 deferred, 11 evaluating; 24 declared enricher instances | Integration by scientific question; portfolio-wide live health and consumer acceptance remain unassessed |
 | Scientific journeys | Protein example `@2` retains active-site residue/composition support; independent legacy reader and reacquisition pass | Next bounded clinical bibliography/query/explanation work; complete derived-operation observation remains open |
-| Consumers | Bounded private revalidation passes 14 original cells, saved reading and replay; taxonomy observation gap now implemented and rechecked; ready MOLI correction in PR #65; Nextia #1 retains Evidence ownership | Qualify the follow-up code's exact-SHA CI, then extend declared consumer scope #132; broader #108/owner acceptance stays open |
+| Consumers | Bounded private revalidation passes 14 original cells, saved reading and replay; taxonomy observation/fixture-state follow-up passes local and exact-SHA CI; ready MOLI correction in PR #65; Nextia #1 retains Evidence ownership | Extend declared consumer scope #132; broader #108/owner acceptance and SQLite lifetime #133 stay open |
 
 The accumulated recovery/consolidation code checkpoint is published as
 `dc4642414c46744f39d85cb666094b0d52dd705a`, with
@@ -33,6 +33,11 @@ The [bounded consumer report](pending_proposals/private_consumer_revalidation.md
 records live versus replayed inputs, persisted support, measured costs and the
 taxonomy observation follow-up and corrected memory measurement. Overall private workflow acceptance stays
 open; no installed artifact or scientific Evidence is qualified by this exercise.
+The follow-up code `a05e0a3132a43bf3a7bd53b94217db9690f39693` is published with
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/37847914597)
+and [passing governance](https://github.com/uibcdf/sabueso/actions/runs/37847914659),
+inspected with gh-run-receptor. The [sanitized receipt](pending_proposals/taxonomy_followup_checkpoint.json)
+retains local and remote scopes, measured cost correction and remaining limits.
 
 ## Release and schema
 
@@ -142,8 +147,13 @@ Local pytest uses **pytest-receptor and 12 workers**; exact remote CI inspection
 gh-run-receptor when a code checkpoint is pushed. See [TESTS.md](TESTS.md).
 The final taxonomy-operation/fixture-state follow-up passes **173 selected tests / 23.43 s** and
 **5,592 full local-original tests / 196.16 s**, ten expected fixture warnings,
-using the same environment/receptor/12 workers. New exact-SHA CI qualification
-remains pending until publication; earlier CI does not qualify this follow-up.
+using the same environment/receptor/12 workers. Its nine remote repository-input
+lanes each pass **4,039 tests**, ten native skips and 26 online deselections;
+four installed public Ackredit 0.9.0 receiving lanes each pass **981 cases** and
+the public workflow. Eight repository lanes report six expected fixture warnings;
+Linux Python 3.14 reports those six plus **67 unclosed SQLite warnings** (#133).
+The receiving lanes report two expected fixture warnings each. This qualifies the
+exact follow-up code, not a new Sabueso release or overall private-pilot acceptance.
 
 ## Open work
 
@@ -154,7 +164,7 @@ revalidation under [#132](https://github.com/uibcdf/sabueso/issues/132) now pass
 The exercised NCBI Taxonomy acquisition-operation gap under
 [#108](https://github.com/uibcdf/sabueso/issues/108) is implemented and rechecked
 in live/replayed private scope, with original scientific content retained.
-Qualify its exact-SHA CI, then extend the existing consumer routes with declared
+Its exact-SHA CI is qualified; extend the existing consumer routes with declared
 source scope before broadening sources or APIs. The previously reported 942 MiB
 counter predates SDK imports; matched Linux sampling shows 132/129 MiB live/replay
 with profiler overhead, rather than a new 942 MiB SDK allocation.
@@ -171,7 +181,8 @@ Release qualification follows [the staged route](../devtools/conda-build/README.
 ## Release qualification
 
 Published receipts prove only their exact source and artifact. The recovered code
-checkpoint is qualified at `dc46424`; subsequent code revisions need their own
+checkpoint and taxonomy follow-up are qualified at `dc46424` and `a05e0a3`;
+subsequent code revisions need their own
 applicable gates and exact-SHA CI. Staged installed-package/platform gates remain
 required before release.
 Older diagnostic wheels, local native inputs and historical pilot execution are

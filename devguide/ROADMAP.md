@@ -292,9 +292,11 @@ Detailed acceptance: [global audit](pending_proposals/post_recovery_global_audit
 The five-step recovery consolidation is locally verified; do not restart native
 provider triage or repeat the archived chronology. Resume with:
 
-1. **Public code checkpoint qualified.** `dc46424` passes 15/15 exact-SHA CI jobs
-   and governance; the [publication receipt](pending_proposals/post_recovery_public_checkpoint.md)
-   retains both input scopes and portability corrections. Preserve the 49/37
+1. **Public code checkpoint qualified.** The recovered `dc46424` checkpoint and
+   taxonomy follow-up `a05e0a3` each pass 15/15 exact-SHA CI jobs and governance.
+   The [publication receipt](pending_proposals/post_recovery_public_checkpoint.md)
+   and [follow-up receipt](pending_proposals/taxonomy_followup_checkpoint.json)
+   retain their own input scopes and qualification. Preserve the 49/37
    boundary. Installed-artifact/release gates remain separate.
 2. **Continue bounded real consumer use.** Revalidate the applicable
    private MOLI Python/Jupyter workflows under
@@ -306,8 +308,8 @@ provider triage or repeat the archived chronology. Resume with:
    The [bounded development exercise](pending_proposals/private_consumer_revalidation.md)
    now passes 14 original cells, exact saved-result reading and original-answer
    replay. The exercised NCBI Taxonomy acquisition-operation gap (#108) is now
-   implemented and rechecked with live/original-answer scope; qualify the follow-up
-   code's exact-SHA CI, then extend the original routes with explicit source scope. Full profile/
+   implemented, rechecked with live/original-answer scope and qualified by exact-SHA
+   CI. Extend the original routes with explicit source scope. Full profile/
    packet acquisition and overall #132 acceptance remain open; missing historical
    stores cannot be reconstructed from current cards.
 3. **Advance the next bounded scientific slice.** Source-active-site residue context
