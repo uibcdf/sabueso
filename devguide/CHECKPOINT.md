@@ -17,12 +17,16 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | Guide | Six complete entry-document snapshots archived; common guidance separated from provider details; warning-failing Sphinx passes | Keep current guidance true alongside the next implementation |
 | Source maturity | Generated native/mapping/enricher/input scope; 83 `in_use`, 37 deferred, 11 evaluating; 24 declared enricher instances | Integration by scientific question; live health and consumer acceptance stay explicitly unassessed |
 | Scientific journeys | Protein example `@2` retains active-site residue/composition support; independent legacy reader and reacquisition pass | Next bounded clinical bibliography/query/explanation work; complete derived-operation observation remains open |
-| Consumers | Ready MOLI correction in PR #65 with exact-head CI; Nextia #1 retains persistent Evidence ownership; costs measured | Owner review and concrete consumer acceptance under MOLI #3/#22/#36 and Sabueso #53/#71/#108 |
+| Consumers | Ready MOLI correction in PR #65 with exact-head CI; Nextia #1 retains persistent Evidence ownership; costs measured | Private workflow revalidation #132 next; owner review and concrete acceptance under MOLI #3/#22/#36 and Sabueso #53/#71/#108 |
 
-The maintainer authorized publishing the accumulated recovery/consolidation code
-checkpoint on 2026-10-08. Its exact-SHA remote qualification is recorded below
-when complete in the [publication receipt](pending_proposals/post_recovery_public_checkpoint.md);
-older remote CI does not qualify it. No new release is claimed.
+The accumulated recovery/consolidation code checkpoint is published as
+`dc4642414c46744f39d85cb666094b0d52dd705a`, with
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/37838441204)
+and [passing governance](https://github.com/uibcdf/sabueso/actions/runs/37838441190),
+inspected with gh-run-receptor. The
+[publication receipt](pending_proposals/post_recovery_public_checkpoint.md)
+and [machine-readable record](pending_proposals/post_recovery_public_checkpoint.json)
+retain both input scopes and the portability corrections. No new release is claimed.
 Current scoped acceptance and measurements are in the
 [consolidation report](pending_proposals/post_recovery_consolidation.md).
 
@@ -65,7 +69,7 @@ additional source observations, ChEMBL indication references and explicit
 ClinicalTrials.gov/Europe PMC observation/bibliography (#122–#128).
 Public-package delivery of those fixes remains open.
 
-Local recovery adds bounded native-source readers/mappings, supplied original
+The published development checkpoint adds bounded native-source readers/mappings, supplied original
 snapshots, canonical residue/source-sequence knowledge and composition, isoform/
 exact-sequence candidates, notebook reports and additional UniProt/PubChem/ChEBI
 annotations. Source-specific subjects and revisions remain explicit. New native
@@ -100,8 +104,9 @@ Complete evidence stays in the [recovery archive](archive/local_work_2026-07/REA
   and maintained implementation/design guidance.
 - `tools/`, `devtools/`: repository gates, build/release and governance tooling.
 
-Package subdirectories above are relative to `sabueso/`; other paths are repository
-directories. See [ARCHITECTURE.md](ARCHITECTURE.md) for semantic ownership.
+Core, resolver, native/public tools, mappings, enrichers and argument digesters
+above are relative to `sabueso/`; schemas, fixtures, tests and documentation are
+repository directories. See [ARCHITECTURE.md](ARCHITECTURE.md) for semantic ownership.
 
 ## Quality baseline
 
@@ -114,22 +119,28 @@ shared versions without their owner-local compatibility evidence.
 Pre-consolidation full local checkpoint: **5,554 passed / 173.00 s**, ten expected
 fixture warnings; architectural audit selected gate: **395 passed / 128.46 s**.
 Those precede the explicit public/local input split and subsequent implementation.
-Current gates and scope are recorded in the consolidation report.
+Earlier consolidation gates and scope are recorded in the consolidation report.
 Public input qualification passed **4,021 tests / 130.19 s**, ten explicit native
 skips and ten expected warnings, with protected originals physically absent.
 Full verified local-original qualification passed **5,574 tests / 164.11 s**,
 ten expected warnings and no skips. Both scopes include all three independent
 scientific journeys; complete receipts are in that report.
-Publication-only follow-up adds a synthetic Windows Git-checkout regression for
-unchanged fixture bytes; its 15-case delivery/licensing gate passes. Those full
-suite counts precede that added case; exact-head CI is recorded separately.
+Final public checkpoint `dc46424` passes **5,576 local-original tests / 175.56 s**,
+ten source-fixture warnings and no skips. Its nine remote repository-input lanes
+each pass **4,023 tests**, ten native skips and 26 online deselections; four
+installed public Ackredit receiving lanes each pass 965 cases. Git checkout-byte,
+UTF-8 metadata and bounded pytest case-name regressions protect Windows validation;
+notebook schema validation declares its `nbformat` test dependency. Linux Python
+3.14.8 additionally reports 66 unclosed SQLite connection warnings tracked in
+[#133](https://github.com/uibcdf/sabueso/issues/133). See the publication receipt
+for exact-SHA/platform results, warning scopes and qualification limits.
 Local pytest uses **pytest-receptor and 12 workers**; exact remote CI inspection uses
 gh-run-receptor when a code checkpoint is pushed. See [TESTS.md](TESTS.md).
 
 ## Open work
 
 Follow the [immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).
-After the recovered checkpoint's CI, return to the private MOLI consumer workflows
+The recovered checkpoint's CI is qualified. Return next to the private MOLI consumer workflows
 under [#132](https://github.com/uibcdf/sabueso/issues/132) before broadening sources
 or APIs. Keep their checkout read-only and their content/results private.
 Independent SDK acceptance remains useful while consumer-owned work proceeds.
@@ -141,8 +152,10 @@ Release qualification follows [the staged route](../devtools/conda-build/README.
 
 ## Release qualification
 
-Published receipts prove only their exact source and artifact. The current working
-tree needs its applicable local gates and exact-SHA CI before code-checkpoint
-qualification, then staged installed-package/platform gates before release.
+Published receipts prove only their exact source and artifact. The recovered code
+checkpoint is qualified at `dc46424`; subsequent code revisions need their own
+applicable gates and exact-SHA CI. Staged installed-package/platform gates remain
+required before release.
 Older diagnostic wheels, local native inputs and historical pilot execution are
-not qualification of this working tree. See [the audit](pending_proposals/post_recovery_global_audit.md).
+not qualification of a new release or private-consumer acceptance. See
+[the audit](pending_proposals/post_recovery_global_audit.md).

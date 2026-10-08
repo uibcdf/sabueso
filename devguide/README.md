@@ -82,7 +82,8 @@ not a release receipt.
 ## Working folders
 
 - `pending_proposals/post_recovery_public_checkpoint.md`: authorized code delivery,
-  exact-SHA CI and private-consumer revalidation scheduling (#112/#132).
+  exact-SHA CI and private-consumer revalidation scheduling (#112/#132), with its
+  [machine-readable receipt](pending_proposals/post_recovery_public_checkpoint.json).
 - `pending_proposals/post_recovery_consolidation.md`: implemented input-delivery
   boundaries, guide restructuring, generated capability scope, protein residue
   integration, measured costs and owner-local consumer coordination (#112).

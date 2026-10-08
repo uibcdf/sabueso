@@ -1,0 +1,330 @@
+{
+  "format": "sabueso.public_code_checkpoint@1",
+  "date": "2026-10-08",
+  "code_sha": "dc4642414c46744f39d85cb666094b0d52dd705a",
+  "qualification": "public_code_checkpoint_passed; not a release or private-consumer acceptance",
+  "python_file_set": {
+    "count": 753,
+    "sha256": "358f5a8418b5eda04df19d12bc644f384235e7b2b79d6b977a6dbda37ea042a6",
+    "basis": "sorted git ls-files *.py; path UTF-8, NUL, decimal byte length, NUL, raw bytes"
+  },
+  "local_full_suite": {
+    "passed": 5576,
+    "skipped": 0,
+    "warnings": 10,
+    "seconds": 175.56,
+    "command": "python -m pytest -n 12 -m \"not online\" --receptor=llm --local-source-inputs",
+    "python": "3.14.7",
+    "environment": "molsyssuite@uibcdf_3.14",
+    "exit_code": 0,
+    "code_sha": "dc4642414c46744f39d85cb666094b0d52dd705a",
+    "tool_versions": {
+      "pytest": "9.1.1",
+      "pytest-xdist": "3.8.0",
+      "pytest-receptor": "1.2.1+13.gac0aa03",
+      "gh-run-receptor": "1.2.0+13.gf1a5901",
+      "nbformat": "5.11.1"
+    },
+    "editable_checkout_verified_outside_checkout": true
+  },
+  "inputs": {
+    "repository_delivery": 49,
+    "protected_local_only": 37,
+    "all_original_digests_verified": true,
+    "inventory_sha256": "7ed541265e1e1ad21cabeca34b11d280ed527a75e22a037dbe7e31b07fa87b59"
+  },
+  "historical_integrity": {
+    "historical_originals_verified": 87,
+    "backup_sha256": "2db9803c8d2404a481ad2fa5b40481c417d3afa21009dcf3d04c2bc7f3ead482",
+    "backup_verified": true,
+    "stash_empty": true
+  },
+  "release": {
+    "published_version": "0.13.0",
+    "published_schema": "0.3.12",
+    "development_schema": "0.3.13",
+    "new_release": false,
+    "installed_release_artifact_qualification": false
+  },
+  "consumer_revalidation": {
+    "issue": "https://github.com/uibcdf/sabueso/issues/132",
+    "status": "pending",
+    "private_workflows_executed_in_this_checkpoint": false
+  },
+  "previous_local_receipt": "post_recovery_consolidation_checkpoint.json",
+  "gates": {
+    "ruff_check": "passed",
+    "ruff_format": "passed",
+    "source_registry": "passed",
+    "fixture_delivery_with_local_inputs": "passed",
+    "dependency_preflight": "passed",
+    "moli_governance": "passed",
+    "git_diff_check": "passed",
+    "sphinx_W_HTML": "passed before portability-only test/dependency adjustments; user docs unchanged"
+  },
+  "portable_test_ids": {
+    "collected": 4033,
+    "longest_node_id_characters": 1172,
+    "windows_environment_limit": 32767,
+    "all_names_fit_with_pytest_phase_suffix": true,
+    "focused_modules_passed": 93,
+    "focused_seconds": 2.76
+  },
+  "ci": {
+    "run_id": 37838441204,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/37838441204",
+    "head_sha": "dc4642414c46744f39d85cb666094b0d52dd705a",
+    "status": "completed",
+    "inspection": "gh-run-receptor",
+    "expected_jobs": 15,
+    "conclusion": "success",
+    "job_counts": {
+      "success": 15
+    },
+    "receptor_assessment": "PASS",
+    "jobs": [
+      {
+        "id": 113521395556,
+        "name": "Ruff",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 113521395884,
+        "name": "Ackredit public-package pilot (Python 3.12)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 965,
+          "skipped": 0,
+          "deselected": 0,
+          "seconds": 259.36,
+          "warnings": 2
+        }
+      },
+      {
+        "id": 113521395940,
+        "name": "Ackredit public-package pilot (Python 3.13)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 965,
+          "skipped": 0,
+          "deselected": 0,
+          "seconds": 256.33,
+          "warnings": 2
+        }
+      },
+      {
+        "id": 113521395957,
+        "name": "Ackredit public-package pilot (Python 3.11)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 965,
+          "skipped": 0,
+          "deselected": 0,
+          "seconds": 324.61,
+          "warnings": 2
+        }
+      },
+      {
+        "id": 113521396015,
+        "name": "Ackredit public-package pilot (Python 3.14)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 965,
+          "skipped": 0,
+          "deselected": 0,
+          "seconds": 237.85,
+          "warnings": 2
+        }
+      },
+      {
+        "id": 113521396048,
+        "name": "Offline tests (macos-26, Python 3.14)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 4023,
+          "skipped": 10,
+          "deselected": 26,
+          "seconds": 445.97,
+          "warnings": 6
+        }
+      },
+      {
+        "id": 113521396086,
+        "name": "Offline tests (windows-latest, Python 3.13)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 4023,
+          "skipped": 10,
+          "deselected": 26,
+          "seconds": 976.75,
+          "warnings": 6
+        }
+      },
+      {
+        "id": 113521396092,
+        "name": "Offline tests (windows-latest, Python 3.11)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 4023,
+          "skipped": 10,
+          "deselected": 26,
+          "seconds": 945.16,
+          "warnings": 6
+        }
+      },
+      {
+        "id": 113521396107,
+        "name": "Offline tests (windows-latest, Python 3.12)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 4023,
+          "skipped": 10,
+          "deselected": 26,
+          "seconds": 945.94,
+          "warnings": 6
+        }
+      },
+      {
+        "id": 113521396132,
+        "name": "Offline tests (ubuntu-latest, Python 3.14)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 4023,
+          "skipped": 10,
+          "deselected": 26,
+          "seconds": 515.64,
+          "warnings": 72
+        }
+      },
+      {
+        "id": 113521396158,
+        "name": "Offline tests (ubuntu-latest, Python 3.11)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 4023,
+          "skipped": 10,
+          "deselected": 26,
+          "seconds": 606.68,
+          "warnings": 6
+        }
+      },
+      {
+        "id": 113521396177,
+        "name": "Offline tests (ubuntu-latest, Python 3.12)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 4023,
+          "skipped": 10,
+          "deselected": 26,
+          "seconds": 573.22,
+          "warnings": 6
+        }
+      },
+      {
+        "id": 113521396235,
+        "name": "Offline tests (ubuntu-latest, Python 3.13)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 4023,
+          "skipped": 10,
+          "deselected": 26,
+          "seconds": 383.15,
+          "warnings": 6
+        }
+      },
+      {
+        "id": 113521396455,
+        "name": "Offline tests (windows-latest, Python 3.14)",
+        "status": "completed",
+        "conclusion": "success",
+        "test_summary": {
+          "passed": 4023,
+          "skipped": 10,
+          "deselected": 26,
+          "seconds": 488.17,
+          "warnings": 6
+        }
+      },
+      {
+        "id": 113529572702,
+        "name": "Publish default-branch coverage",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "input_scope": "Repository-delivery inputs only; protected local originals are absent from the GitHub checkout.",
+    "pytest_receptor_version": "1.2.0"
+  },
+  "governance": {
+    "run_id": 37838441190,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/37838441190",
+    "head_sha": "dc4642414c46744f39d85cb666094b0d52dd705a",
+    "status": "completed",
+    "conclusion": "success",
+    "passed_jobs": 1,
+    "inspection": "gh-run-receptor",
+    "job_counts": {
+      "success": 1
+    },
+    "receptor_assessment": "PASS"
+  },
+  "qualification_history": [
+    {
+      "code_sha": "4d771f38c709b4496139af43f2c4a6ac7ef38e6e",
+      "run_id": 37834575148,
+      "conclusion": "failure",
+      "findings": [
+        "Implicit Windows decoding changes UTF-8 source-term hashes.",
+        "Notebook validation missing nbformat test dependency."
+      ]
+    },
+    {
+      "code_sha": "434e43f78b6af8e1c075d64792b55768489f54b6",
+      "run_id": 37836686752,
+      "conclusion": "cancelled after two completed Windows failures; two remaining Windows jobs superseded by corrected commit",
+      "findings": [
+        "FDA/iPTMnet HTML parameter IDs exceed Windows environment-variable length limit."
+      ],
+      "completed_successful_jobs": 11,
+      "completed_failed_jobs": 2,
+      "cancelled_jobs": 2
+    }
+  ],
+  "known_followups": [
+    {
+      "issue": "https://github.com/uibcdf/sabueso/issues/132",
+      "scope": "Private MOLI consumer usefulness and exact-checkpoint revalidation.",
+      "status": "pending"
+    },
+    {
+      "issue": "https://github.com/uibcdf/sabueso/issues/133",
+      "scope": "Determine allocation/lifetime owner of unclosed SQLite connections in Python 3.14 validation.",
+      "status": "pending",
+      "observation": {
+        "code_sha": "dc4642414c46744f39d85cb666094b0d52dd705a",
+        "job_id": 113521396132,
+        "resource_warnings": 66,
+        "total_warnings": 72,
+        "source_fixture_warnings": 6
+      }
+    }
+  ],
+  "documentation_receipt_policy": {
+    "ci_skip_permitted": true,
+    "scope": "Locally checked Markdown/JSON documentation only; no executable, packaging or test-input effect.",
+    "recovery_route": "The next changed-code checkpoint uses an unskipped exact-SHA CI; release still requires staged installed-artifact qualification."
+  }
+}

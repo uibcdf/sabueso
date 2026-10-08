@@ -7,6 +7,13 @@
 - **Clinical Data Volatility**: Clinical information changes more frequently than core physchem data.
 
 ## Architecture Risks (General)
+- **SQLite connection lifetime in Python 3.14 validation**
+  ([#133](https://github.com/uibcdf/sabueso/issues/133)): Linux Python 3.14.8
+  validation at `434e43f` passes but reports 66 unclosed-connection warnings.
+  Their allocation/lifetime owner remains unconfirmed; `KnowledgeStore._session()`
+  already closes its connection in `finally`. Investigate a bounded reproduction
+  and close the owning connections without suppressing diagnostics. This warning
+  group is separate from deliberate source-fixture failure/truncation warnings.
 - **Recovered capabilities need real consumer revalidation**
   ([#132](https://github.com/uibcdf/sabueso/issues/132)): public fixture tests and
   independent SDK journeys establish bounded support/persistence behavior, but

@@ -292,10 +292,11 @@ Detailed acceptance: [global audit](pending_proposals/post_recovery_global_audit
 The five-step recovery consolidation is locally verified; do not restart native
 provider triage or repeat the archived chronology. Resume with:
 
-1. **Qualify a public code checkpoint.** Preserve the 49/37 input boundary and both
-   scoped pytest receipts; create reviewable code checkpoints and verify exact-SHA
-   CI before remote qualification. Installed-artifact/release gates remain separate.
-2. **Return to real consumer use.** After exact-SHA CI, revalidate the applicable
+1. **Public code checkpoint qualified.** `dc46424` passes 15/15 exact-SHA CI jobs
+   and governance; the [publication receipt](pending_proposals/post_recovery_public_checkpoint.md)
+   retains both input scopes and portability corrections. Preserve the 49/37
+   boundary. Installed-artifact/release gates remain separate.
+2. **Return to real consumer use next.** Revalidate the applicable
    private MOLI Python/Jupyter workflows under
    [#132](https://github.com/uibcdf/sabueso/issues/132). Keep the pilot checkout
    read-only and all original content/results in a private workspace. Check

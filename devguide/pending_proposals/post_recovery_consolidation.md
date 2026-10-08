@@ -22,7 +22,8 @@ Provider breadth is not the scientific acceptance criterion.
 
 This report describes the accumulated development checkout, not a new release.
 The maintainer authorized its public code checkpoint after the local qualification.
-Exact-SHA publication/CI receipts are added separately when complete. Published 0.13.0 and
+[Exact-SHA publication/CI receipts](post_recovery_public_checkpoint.md) qualify
+`dc46424` with 15/15 CI jobs and passing governance. Published 0.13.0 and
 frozen schema 0.3.12 are unchanged; development schema 0.3.13 remains unpublished.
 There is no new schema change in this consolidation.
 
@@ -193,8 +194,9 @@ documentation CI identity. It is a local receipt, not an immutable commit or rel
 - Revalidate current private MOLI consumer workflows after the code checkpoint's
   CI under [#132](https://github.com/uibcdf/sabueso/issues/132), preserving private
   content and original results. SDK receipts are not real-consumer acceptance.
-- Create reviewable Sabueso code checkpoints and verify exact-SHA CI before remote
-  qualification; qualify installed artifacts/platforms separately before release.
+- The recovered public code checkpoint is qualified at `dc46424`; subsequent code
+  changes need their own gates and exact-SHA CI. Qualify installed release
+  artifacts/platforms separately before release.
 - Requalify protected originals only when their exact delivery conditions are met.
   Their local native regressions remain useful without distributing the inputs.
 - Review MOLI PR #65 and decide the shared contracts with real consumer owners.
