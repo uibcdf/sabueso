@@ -17,7 +17,7 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | Guide | Six complete entry-document snapshots archived; common guidance separated from provider details; warning-failing Sphinx passes | Keep current guidance true alongside the next implementation |
 | Source maturity | Generated native/mapping/enricher/input scope; 83 `in_use`, 37 deferred, 11 evaluating; 24 declared enricher instances | Integration by scientific question; portfolio-wide live health and consumer acceptance remain unassessed |
 | Scientific journeys | Protein example `@2` retains active-site residue/composition support; independent legacy reader and reacquisition pass | Next bounded clinical bibliography/query/explanation work; complete derived-operation observation remains open |
-| Consumers | Bounded private revalidation passes 14 original cells, exact independent saved reading and original-answer replay; ready MOLI correction in PR #65; Nextia #1 retains persistent Evidence ownership | Instrument the exercised NCBI Taxonomy operation gap #108, then extend declared consumer scope #132; broader owner acceptance stays open |
+| Consumers | Bounded private revalidation passes 14 original cells, saved reading and replay; taxonomy observation gap now implemented and rechecked; ready MOLI correction in PR #65; Nextia #1 retains Evidence ownership | Qualify the follow-up code's exact-SHA CI, then extend declared consumer scope #132; broader #108/owner acceptance stays open |
 
 The accumulated recovery/consolidation code checkpoint is published as
 `dc4642414c46744f39d85cb666094b0d52dd705a`, with
@@ -31,7 +31,7 @@ Current scoped acceptance and measurements are in the
 [consolidation report](pending_proposals/post_recovery_consolidation.md).
 The [bounded consumer report](pending_proposals/private_consumer_revalidation.md)
 records live versus replayed inputs, persisted support, measured costs and the
-remaining acquisition observation gap. Overall private workflow acceptance stays
+taxonomy observation follow-up and corrected memory measurement. Overall private workflow acceptance stays
 open; no installed artifact or scientific Evidence is qualified by this exercise.
 
 ## Release and schema
@@ -140,6 +140,10 @@ notebook schema validation declares its `nbformat` test dependency. Linux Python
 for exact-SHA/platform results, warning scopes and qualification limits.
 Local pytest uses **pytest-receptor and 12 workers**; exact remote CI inspection uses
 gh-run-receptor when a code checkpoint is pushed. See [TESTS.md](TESTS.md).
+The final taxonomy-operation/fixture-state follow-up passes **173 selected tests / 23.43 s** and
+**5,592 full local-original tests / 196.16 s**, ten expected fixture warnings,
+using the same environment/receptor/12 workers. New exact-SHA CI qualification
+remains pending until publication; earlier CI does not qualify this follow-up.
 
 ## Open work
 
@@ -147,9 +151,13 @@ Follow the [immediate resumption sequence](ROADMAP.md#immediate-resumption-seque
 The recovered checkpoint's CI is qualified. Bounded private MOLI consumer
 revalidation under [#132](https://github.com/uibcdf/sabueso/issues/132) now passes
 14 original cells, exact saved-state reading and original-answer replay.
-First instrument the exercised NCBI Taxonomy acquisition-operation gap under
-[#108](https://github.com/uibcdf/sabueso/issues/108), then extend the existing
-consumer routes with declared source scope before broadening sources or APIs.
+The exercised NCBI Taxonomy acquisition-operation gap under
+[#108](https://github.com/uibcdf/sabueso/issues/108) is implemented and rechecked
+in live/replayed private scope, with original scientific content retained.
+Qualify its exact-SHA CI, then extend the existing consumer routes with declared
+source scope before broadening sources or APIs. The previously reported 942 MiB
+counter predates SDK imports; matched Linux sampling shows 132/129 MiB live/replay
+with profiler overhead, rather than a new 942 MiB SDK allocation.
 Keep their checkout read-only and their content/results private. Broad profiles,
 full packet acquisition, unavailable historical pins and overall acceptance remain
 unqualified; see the [bounded report](pending_proposals/private_consumer_revalidation.md).

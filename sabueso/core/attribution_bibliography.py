@@ -7,6 +7,12 @@ Metadata sources are recorded in docs/content/user/attribution.md.
 from copy import deepcopy
 
 _DESCRIPTIONS = {
+    "NCBI Taxonomy": {
+        "id": "url:https://www.ncbi.nlm.nih.gov/taxonomy",
+        "type": "dataset",
+        "title": "NCBI Taxonomy",
+        "url": "https://www.ncbi.nlm.nih.gov/taxonomy",
+    },
     "BRENDA": {
         "id": "doi:10.1093/nar/gkaf1113",
         "type": "article-journal",

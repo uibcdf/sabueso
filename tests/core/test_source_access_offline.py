@@ -47,6 +47,7 @@ from sabueso.tools.db import (
 
 ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 TRACED = {
+    "ncbi_taxonomy.get_taxon",
     "clinicaltrials.get_studies",
     "clinicaltrials.get_study_references",
     "diseases.get_associations",

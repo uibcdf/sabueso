@@ -1,0 +1,104 @@
+{
+  "format": "sabueso.taxonomy_followup_checkpoint@1",
+  "date": "2026-10-08",
+  "owner_issues": [
+    "uibcdf/sabueso#108",
+    "uibcdf/sabueso#98",
+    "uibcdf/sabueso#132"
+  ],
+  "code_commit": null,
+  "status": "local_qualified_remote_pending",
+  "release_claim": false,
+  "schema_changed": false,
+  "input_boundary": {
+    "repository_inputs": 49,
+    "protected_local_originals": 37,
+    "new_private_inputs_in_git": 0
+  },
+  "implementation": {
+    "observed_source": "NCBI Taxonomy",
+    "declared_observed_sources": 35,
+    "routes": [
+      "OnlineNCBITaxonomyClient.taxa",
+      "FixtureNCBITaxonomyClient.taxa",
+      "get_taxon",
+      "existing_card_packet_taxonomy_enrichment"
+    ],
+    "rule": "ncbi_taxonomy_observation@1",
+    "fixture_state_correction": "unavailable_organism_fixture_is_connector_failure_and_unavailable_card_state; source_stated_empty_online_answer_remains_not_found",
+    "unknowns": [
+      "taxonomy_record_revision",
+      "underlying_taxonomic_publication_metadata",
+      "uncovered_sources_and_custom_clients"
+    ]
+  },
+  "local": {
+    "python": "3.14.7",
+    "ackredit": "0.10.1",
+    "editable_environment": true,
+    "pytest_receptor": "llm",
+    "workers": 12,
+    "selected": {
+      "passed": 173,
+      "seconds": 23.43
+    },
+    "full_local_original": {
+      "passed": 5592,
+      "seconds": 196.16,
+      "warnings": 10,
+      "command": "python -m pytest -n12 -m \"not online\" --receptor=llm --local-source-inputs"
+    },
+    "gates_passed": [
+      "ruff_check",
+      "ruff_format",
+      "fixture_delivery",
+      "source_registry",
+      "moli_governance",
+      "warning_failing_sphinx",
+      "local_links_and_receiving_workflow_yaml"
+    ]
+  },
+  "bounded_consumer_followup": {
+    "live_operations": {
+      "UniProt": 4,
+      "NCBI Taxonomy": 4
+    },
+    "original_answer_replay_operations": 8,
+    "final_replay_cells_passed": 5,
+    "final_replay_seconds": 5.798,
+    "scientific_cards_identical_to_original_answers": 2,
+    "original_archives_and_receipts_unchanged": true,
+    "independent_saved_reader": {
+      "original_card_pins": 2,
+      "current_card_pins": 2,
+      "exact_source_assertions": 10,
+      "unit_bearing_quantities": 2,
+      "deck_pins": 1,
+      "packet_pins": 1,
+      "immutable_files": 11,
+      "new_acquisitions": 0,
+      "new_derivations": 0,
+      "new_credit": 0,
+      "seconds": 1.217
+    },
+    "overall_consumer_acceptance": "partial; broader routes and scientist/Nextia Evidence acceptance remain open"
+  },
+  "memory_correction": {
+    "initially_reported_ru_maxrss_kib": 964916,
+    "live_ru_maxrss_before_sdk_import_kib": 964916,
+    "live_ru_maxrss_unchanged_during_execution": true,
+    "live_linux_vmhwm_before_sdk_import_kib": 19236,
+    "sampled_live_linux_peak_kib": 135120,
+    "sampled_replay_linux_peak_kib": 131688,
+    "live_python_tracked_peak_bytes": 41485398,
+    "replay_python_tracked_peak_bytes": 41188718,
+    "scope": "one_level_tracemalloc_and_process_sampling; profiler_overhead_included",
+    "conclusion": "942_MiB_counter_predates_SDK_execution; no_942_MiB_identity_allocation_established",
+    "original_unprofiled_linux_peak": "not_recorded"
+  },
+  "ci": {
+    "status": "pending_publication",
+    "inspection": "gh-run-receptor",
+    "runs": []
+  }
+}

@@ -27,7 +27,21 @@ This file documents concrete risks and mitigation strategies.
   about 6 MB (BRCA1, ClinVar, 5000 of 16094 records). At about 2 KB per item on the card,
   such a card can reach tens of MB. Watched in #88.
 
+## Measurement scope
+
+For process-memory measurements, record a pre-import baseline and the metric's
+scope. In the bounded 2026-10-08 follow-up (#98/#132), `resource.ru_maxrss` already
+reported 942.30 MiB before importing Sabueso, while Linux `VmHWM` was 18.79 MiB.
+The counter remained unchanged through acquisition; sampled Linux peaks were
+131.95 MiB live and 128.60 MiB replay, including profiler overhead. This does not
+establish a 942 MiB card allocation. Preserve original measurements and corrections
+in the [consumer report](pending_proposals/private_consumer_revalidation.md#taxonomy-and-memory-follow-up).
+Original response bytes, compressed archive bytes, stored card bytes and process
+RSS describe different scopes; do not sum overlapping values or optimize retained
+scientific support from an unexplained process-history counter.
+
 ## Mitigations (Recommended)
+
 1) **Lazy SourceAssertion loading**
    - Store only SourceAssertion IDs in the card.
    - Fetch full SourceAssertions on demand.

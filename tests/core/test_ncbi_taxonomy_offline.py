@@ -118,9 +118,10 @@ def test_knowledge_states(resolver, tmp_path):
     assert state(_card(resolver, "P52270")) == "known"
     plain, _ = sabueso.resolve("P52270", resolver=resolver)
     assert state(plain) == "not_queried"
-    assert state(_card(resolver, "P52270", FixtureNCBITaxonomyClient(tmp_path))) == (
-        "not_stated"
-    )
+    with pytest.warns(EnrichmentFailedWarning):
+        assert state(
+            _card(resolver, "P52270", FixtureNCBITaxonomyClient(tmp_path))
+        ) == ("unavailable")
     with pytest.warns(EnrichmentFailedWarning):
         failed = _card(
             resolver, "P52270", FixtureNCBITaxonomyClient("temp_data", failing={5693})

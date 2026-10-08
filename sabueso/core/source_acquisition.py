@@ -44,6 +44,7 @@ COVERAGE = {
         "ClinVar",
         "MedGen",
         "ClinicalTrials.gov",
+        "NCBI Taxonomy",
         "AAindex",
         "DisProt",
         "UniParc",
@@ -613,6 +614,13 @@ def _credit(record):
         record["bibliography_gaps"].append(
             "underlying_terminology_citations_not_fetched"
         )
+    if record["source"] == "NCBI Taxonomy":
+        record["bibliography_gaps"].extend(
+            [
+                "taxonomy_record_revision_not_stated",
+                "taxonomic_publications_not_queried",
+            ]
+        )
     if record["source"] == "ClinicalTrials.gov":
         from .clinicaltrials_bibliography import citations
 
@@ -700,6 +708,7 @@ def _credit(record):
             "association_context",
             "indication_reference_context",
             "clinical_context",
+            "taxonomy_context",
         ):
             if key in record:
                 context[key] = deepcopy(record[key])

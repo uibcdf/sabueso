@@ -305,8 +305,9 @@ provider triage or repeat the archived chronology. Resume with:
    receipts and public fixtures do not qualify the recovered checkpoint.
    The [bounded development exercise](pending_proposals/private_consumer_revalidation.md)
    now passes 14 original cells, exact saved-result reading and original-answer
-   replay. First instrument the exercised NCBI Taxonomy acquisition-operation gap
-   (#108), then extend the original routes with explicit source scope. Full profile/
+   replay. The exercised NCBI Taxonomy acquisition-operation gap (#108) is now
+   implemented and rechecked with live/original-answer scope; qualify the follow-up
+   code's exact-SHA CI, then extend the original routes with explicit source scope. Full profile/
    packet acquisition and overall #132 acceptance remain open; missing historical
    stores cannot be reconstructed from current cards.
 3. **Advance the next bounded scientific slice.** Source-active-site residue context

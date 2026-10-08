@@ -27,6 +27,12 @@ class Taxonomy(Enricher):
         if request.identifier is None:
             return {"organism": {"record": []}, "lineage": None}
         organism = client.taxa([request.identifier])
+        if organism.get("unavailable"):
+            from sabueso.core.source_acquisition import missing_fixture
+
+            raise missing_fixture(
+                f"NCBI Taxonomy organism fixture is unavailable for {request.identifier}"
+            )
         lineage = None
         if organism["record"]:
             lineage = client.taxa(organism["record"][0].get("lineage") or [])

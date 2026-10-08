@@ -73,23 +73,26 @@ The next bounded Sabueso slice under #108 should instrument the existing
 scope, failures/missing records, original replay times and unknown source versions.
 Use existing public fixtures or synthetic responses for regression qualification;
 private execution inputs must not become public fixtures. This requires no new
-provider and no shared-contract change. Instrumentation is not implemented by
-this documentation checkpoint.
+provider and no shared-contract change. Instrumentation was not implemented by
+the original documentation checkpoint; the subsequent implementation is recorded
+below.
 
 ## Measured cost
 
-| Exercise | Seconds | Process peak RSS (MiB) |
+| Exercise | Seconds | Initially reported `ru_maxrss` (MiB) |
 | --- | ---: | ---: |
 | Live identity acquisition | 13.801 | 942.30 |
 | Local cells and supplemental saved views | 1.679 | 93.16 |
 | Independent saved-result reader | 0.952 | 86.60 |
 | Original-answer replay | 6.179 | 84.19 |
 
-Timers start after process imports/setup; peak RSS covers process lifetime.
+Timers start after process imports/setup; the RSS counter covers process history.
 These are single-run observations, not matched sustained-memory samples or a
-release benchmark. The unexpectedly high live peak needs an allocation profile
-before attributing it to retained knowledge. Replay does not isolate every live
-allocation, and no optimization or memory defect ownership is established here.
+release benchmark. The initially reported live value used `resource.ru_maxrss`;
+the follow-up below shows that this counter already had that value before importing
+Sabueso. It must not be attributed to the identity operation or retained knowledge.
+The original unprofiled process's Linux high-water mark was not recorded, so it
+cannot be reconstructed from this receipt.
 At the identity-stage boundary, enumerated retained files total 1,159,163 bytes;
 the archive records 213,460 response-content bytes, compressed to 30,920 stored
 content bytes. These nested measurements are not additive, and the file total
@@ -103,11 +106,58 @@ documented consumer routes without an executable baseline remain unqualified.
 Historical notebook outputs exist, but their original stores/archives are absent;
 current cards cannot reconstruct or qualify those historical pins or credit.
 
-First close the observed taxonomy-operation gap under #108 and recheck the bounded
-reader/replay behavior. Then choose the next existing consumer route with an
+The follow-up closes the observed taxonomy-operation gap under #108 and rechecks
+bounded reader/replay behavior. Choose the next existing consumer route with an
 explicit source-access scope; avoid widening queries or downloading mirrors merely
 to finish a checklist. Continue the foundational scientific journey/query work in
 [ROADMAP.md](../ROADMAP.md#immediate-resumption-sequence), with persistent Nextia
 Evidence and shared MOLI recording acceptance retained by their owners. Earlier
 [public CI qualification](post_recovery_public_checkpoint.md) remains the code
 baseline; this report adds bounded editable-consumer evidence only.
+
+## Taxonomy and memory follow-up
+
+The existing built-in online and fixture `taxa` routes are now observed, including
+public `get_taxon` and normal card/packet enrichment. `get_taxon` carries a detached
+trace in its source envelope; native taxon returns, scientific card serialization
+and schema remain unchanged. `ncbi_taxonomy_observation@1` records completed
+batches, source omissions, unavailable local inputs and unanswered failure scope.
+Completed batches remain creditable after later failure, and archive replay
+preserves original scientific retrieval times. Route `v2` is not a record revision;
+unknown revisions and taxonomic-publication metadata remain explicit.
+
+The coherence review also corrects a pre-existing fixture-state inconsistency:
+an unavailable organism fixture was previously mapped to `not_found` and card
+knowledge state `not_stated`. Fixture metadata now declares unavailable IDs;
+public lookup reports a connector failure and enrichment reports `unavailable`.
+A source-stated empty online answer remains not found. Native records and
+partially available ancestor support are preserved; no new source access follows.
+
+With the new adapter, both the authorized live execution and original-answer replay
+record eight operations: four UniProt and four NCBI Taxonomy. Replaying the original
+answers still yields identical SourceAssertions and stored scientific sections.
+An independent reader rechecks the original persisted cards, support, units, deck,
+packet and immutable files without acquisition, derivation or fresh credit. Original
+archives, execution receipts and the private checkout remain unchanged. All new
+fixtures/regression inputs are public or synthetic; no private data enters Git.
+
+Memory sampling starts before importing Sabueso and records Linux `VmRSS`/`VmHWM`
+alongside `resource.ru_maxrss` and Python allocation tracking. The live process
+starts at **19,236 KiB VmHWM**, while `ru_maxrss` already reports **964,916 KiB**;
+that counter remains constant throughout execution. Its 942.30 MiB value predates
+the SDK execution rather than measuring new identity-operation allocations.
+The sampled live Linux peak is **135,120 KiB (131.95 MiB)**; replay peaks at
+**131,688 KiB (128.60 MiB)**. Python tracked allocation peaks are 41,485,398 and
+41,188,718 bytes, respectively. These measurements include profiler overhead and
+are not uninstrumented production benchmarks or a comparison to the earlier
+unprofiled replay. No 942 MiB SDK allocation or memory optimization is established.
+
+Final selected regressions pass **173 tests / 23.43 s**; full local-original qualification
+passes **5,592 tests / 196.16 s**, with ten expected fixture warnings. Both use
+Python 3.14.7, pytest-receptor and 12 workers. Warning-failing Sphinx passes;
+registry, protected-input delivery, Ruff and governance checks pass. The new code
+checkpoint's exact-SHA CI remains pending until publication. #108 remains open
+for other source/derived-operation/bibliography gaps; #132 remains open for the
+unexecuted consumer routes and actual scientific acceptance.
+The [sanitized qualification receipt](taxonomy_followup_checkpoint.json) records
+this follow-up separately from the original bounded-consumer checkpoint.

@@ -1,5 +1,14 @@
 # Automatic traceability and attribution
 
+Development NCBI Taxonomy access credits the
+[NCBI Taxonomy resource](https://www.ncbi.nlm.nih.gov/taxonomy), verified
+2026-10-08. Built-in online/fixture `taxa` operations and public `get_taxon`
+retain original batch/query/response identities and missing/unavailable/failed
+scope. Completed batches remain creditable before later failures. Replay preserves
+original acquisition times; saved readers add no source access or fresh credit.
+The Datasets API route version is not a taxonomy record revision, and the resource
+description does not supply underlying taxonomic publications or a data-use grant.
+
 Development FDA OOPD page declarations credit the U.S. Food and Drug
 Administration, Office of Orphan Products Development, retaining each requested
 page URL, acquisition date, original HTML/table/hash and separate approval

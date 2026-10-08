@@ -92,6 +92,14 @@ not promise card enrichment, live availability or public-package delivery.
   including its native snapshot id, output card pins and input protein pin.
   The trace is detached from deck metadata/hashes. Saved or ordinarily derived
   decks have no new trace; preserve original sidecars explicitly.
+  Development NCBI Taxonomy online/fixture `taxa` and public `get_taxon` now retain
+  original batch/query/response identities, missing or unavailable scope and
+  failure/reuse/replay observation. `get_taxon` adds a detached `acquisition_trace`
+  envelope; native records and card serialization remain unchanged. A fixture
+  omitted locally is unavailable, not source-stated absence. API route version
+  and taxonomy record revision remain distinct; unreported revisions stay unknown.
+  An unavailable organism fixture produces a connector failure and card knowledge
+  state `unavailable`; a source-stated empty online answer remains not found.
   Since 0.13.0, PDBe-KB ligand-site and interface-residue access also retains
   separate aggregate query traces, native structural references and unknown versions.
   Listed providers/structures do not claim additional direct source access.

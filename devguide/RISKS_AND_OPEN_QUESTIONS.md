@@ -21,6 +21,12 @@
   Revisit those workflows after exact-SHA CI, with original results/receipts kept
   private and the checkout read-only. Route generic findings to the owning
   component or shared MOLI contract rather than expanding sources by count.
+  The bounded follow-up passes original cells, saved readers and answer replay;
+  NCBI Taxonomy operation observation is implemented. The earlier 942 MiB counter
+  predates SDK imports; matched Linux process sampling, including profiler overhead,
+  shows about 132/129 MiB live/replay. This does not establish a 942 MiB SDK allocation
+  or complete consumer acceptance. See the
+  [bounded report](pending_proposals/private_consumer_revalidation.md#taxonomy-and-memory-follow-up).
 - **Disease deck support/observation gaps** (#91/#108/#112): the independent
   disease example retains exact card/group support; published rules `@1`
   store membership as metadata without supporting SourceAssertion/input pins.

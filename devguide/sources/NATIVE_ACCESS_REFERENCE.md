@@ -770,6 +770,26 @@ pin. Ordinary deck operations and payload-only readers create no runtime trace.
 Other sources and custom clients are explicitly `not_observed`; this is incomplete pipeline
 coverage. New sources must declare their observation coverage and test its gaps.
 
+Development NCBI Taxonomy observation covers built-in online/fixture `taxa` and
+public `get_taxon`, including the existing taxonomy enrichment during card/packet
+intake. It records normalized taxon IDs, batches, decoded response hashes,
+completed IDs, source omissions, unavailable fixture IDs and unanswered failure
+scope under `ncbi_taxonomy_observation@1`. Completed batches remain creditable
+before a later request fails. Empty requests receive no resource-access credit.
+Fixture omissions retain the original client `missing` return but appear as
+unavailable in operation metadata, rather than implying biological absence.
+The fixture client additionally declares these IDs as `unavailable` outside its
+native record. Public `get_taxon` and card enrichment treat an unavailable
+organism fixture as a connector failure; its knowledge state is `unavailable`.
+Explicit empty source answers retain not-found behavior. Available taxon records
+and partially available ancestor records keep their original scientific content.
+Archive reuse/replay preserves original source times, page identities and retrieval
+references; saved scientific readers add no trace or credit. The Datasets `v2`
+route is not a taxonomy revision. Unknown record versions and underlying
+taxonomic-publication metadata remain explicit gaps. Resource bibliography
+identifies [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy), verified
+2026-10-08, without claiming a complete scientific bibliography or data-use grant.
+
 Development MONDO observation covers built-in `term` and `equivalent` index queries,
 `get_term`, `resolve_disease_card` and the same accesses during normal card builds.
 The runtime event retains the raw/normalized query, native `MONDO:equivalentTo`

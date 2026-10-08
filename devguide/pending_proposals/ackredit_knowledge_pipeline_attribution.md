@@ -670,10 +670,12 @@ retrieval metadata; their built-in client is outside the explicitly declared
 34-source observation coverage. This is a remaining Sabueso adapter gap, not an
 Ackredit defect or permission to claim complete bibliography.
 
-Prioritize operation observation for the existing online and fixture `taxa` routes
-before broader consumer acquisition. Preserve batch/request scope, partial and
-missing results, failures, archive reuse/replay and original scientific retrieval
-times. Unknown source versions and bibliographic metadata must remain unknown.
-Regression inputs must be public fixtures or synthetic responses; private consumer
-outputs stay private. No implementation or complete #108 acceptance is claimed
-by this report.
+That original report preceded implementation. The follow-up now observes existing
+online and fixture `taxa` routes and public `get_taxon`: batch/request scope,
+partial and missing results, unavailable fixture IDs, failures, archive reuse/replay
+and original scientific retrieval times. Unknown source versions and underlying
+bibliographic metadata remain unknown. Regression inputs use public fixtures and
+synthetic responses; private consumer outputs stay private. Coverage is now 35
+declared sources, with other sources/custom clients still unobserved. See the
+[follow-up qualification and memory correction](private_consumer_revalidation.md#taxonomy-and-memory-follow-up).
+Complete #108 and overall consumer acceptance remain open.

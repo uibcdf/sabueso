@@ -78,7 +78,8 @@ or uncovered boundary states `not_observed`, rather than claiming complete prove
 
 The native reference records published and development observation coverage for
 each route. It includes UniProt/Europe PMC/RCSB, ChEMBL/PubChem/BindingDB,
-PDB CCD/UniChem, PDBe-KB/AlphaFold/InterPro and later disease/clinical slices.
+PDB CCD/UniChem, PDBe-KB/AlphaFold/InterPro and later disease/clinical and
+NCBI Taxonomy slices.
 Each new source must declare and test its observation coverage and gaps.
 Per-result and workflow sidecars preserve original citations and producer context;
 saved readers add no source access, recomputation or credit.

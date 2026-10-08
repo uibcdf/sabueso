@@ -383,7 +383,12 @@ def test_one_call_packet_keeps_acquisitions_that_composition_does_not_repeat():
         packet = sabueso.knowledge_packet(
             query, resolver=EntityResolver(FixtureUniProtClient("temp_data")), **clients
         )
-    assert len(run.records) == 1 and len(run.acquisitions) == 1
+    assert len(run.records) == 1
+    assert [(r["source"], r["operation"]) for r in run.acquisitions] == [
+        ("UniProt", "entry"),
+        ("NCBI Taxonomy", "taxa"),
+        ("NCBI Taxonomy", "taxa"),
+    ]
     trace = packet.acquisition_trace
     assert trace["packet_snapshot_id"] == packet.snapshot_id()
     assert trace["card_refs"]["subject"] == packet.entities["subject"]["ref"]
