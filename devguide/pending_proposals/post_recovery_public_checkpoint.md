@@ -76,6 +76,22 @@ failure/truncation reporting. Registry, protected-input hashes, dependency
 preflight, governance and Ruff checks also passed. Remote qualification remains
 pending for the correction's exact SHA.
 
+The correction `434e43f78b6af8e1c075d64792b55768489f54b6` passed Linux/macOS
+offline validation and all four installed public Ackredit consumer lanes. Windows
+then exposed two test-setup errors: default pytest parameter IDs embedded complete
+FDA/iPTMnet HTML responses and exceeded its 32,767-character environment-variable
+limit. Explicit case names preserve all native input bytes and rejection assertions.
+The two affected modules pass **93 tests / 2.76 s**; collection of all 4,033 public
+cases confirms a longest node ID of 1,172 characters, including the ten native
+cases that are intentionally skipped at execution. Full remote qualification
+still requires the corrected test-ID commit's own exact-SHA CI.
+
+The passing Linux Python 3.14.8 suite reports 66 unclosed SQLite connection
+warnings, separately from six source-fixture warnings. The allocation/lifetime
+owner is unconfirmed; [#133](https://github.com/uibcdf/sabueso/issues/133) records
+bounded investigation rather than warning suppression. This is a remaining
+cleanup item, not a failing functional test or private-consumer acceptance.
+
 ## Return to consumer workflows
 
 The maintainer explicitly requests a return to MOLI vertical-pilot use.

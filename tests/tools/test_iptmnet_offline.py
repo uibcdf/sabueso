@@ -175,6 +175,7 @@ def test_malformed_late_group_fails_before_mapping_any_good_rows():
         "<html>Service unavailable</html>",
         NATIVE[: NATIVE.index('id="asSubTable-P60174-3"')],
     ],
+    ids=["missing", "empty", "error-page", "partial-report"],
 )
 def test_error_empty_and_partial_reports_never_mean_no_modification(html):
     with pytest.raises(ConnectorError):

@@ -145,6 +145,7 @@ def test_repeated_conflicting_tables_and_labels_keep_all_occurrences():
         "<html>Error</html>",
         Path("temp_data/fda_orphan/search_form.html").read_bytes().decode(),
     ],
+    ids=["empty", "error-page", "returned-search-form"],
 )
 def test_empty_error_or_returned_form_is_never_a_designation(text):
     with pytest.raises(ConnectorError):
