@@ -3628,7 +3628,7 @@
   "limits": [
    "Function/client lists describe local top-level definitions; imported aliases are not counted.",
    "An absent declared enricher does not describe established bespoke card routes.",
-   "Recovery inputs cover new recovered files, not all existing fixtures.",
+   "Recovery inputs cover reviewed recovered files and release compatibility cards, not all existing fixtures.",
    "Code declarations do not establish scientific completeness or public-package delivery."
   ],
   "resources": {
@@ -6526,6 +6526,7 @@
     "declared_enrichers": [],
     "recovery_inputs": {
      "repository": [
+      "temp_data/frozen_cards/schema_0.3.13__P60174.json",
       "temp_data/uniprot_isoforms/P60174-1.fasta",
       "temp_data/uniprot_isoforms/P60174-3.fasta",
       "temp_data/uniprot_isoforms/P60174-4.fasta",

@@ -9,7 +9,7 @@ public-package delivery. Established bespoke card routes are documented in
 the source architecture; absence of an enricher declaration alone does not
 describe those routes.
 
-The input counts below cover **new recovered files only**. They do not count
+The input counts below cover **reviewed recovery inputs and release compatibility cards**. They do not count
 older fixtures or grant reuse rights. Local-only originals are not distributed
 with the public repository. Native qualification of those scopes requires
 the explicit local test route; public tests use reviewed repository inputs.
@@ -17,7 +17,7 @@ the explicit local test route; public tests use reviewed repository inputs.
 Use `sabueso.tools.sources.get_catalog()['capabilities']` to inspect full
 function/class names and file scopes under `source_capability_inventory@1`.
 
-| Source | Declared getters / mappings | Declared card options | New inputs: repository / local |
+| Source | Declared getters / mappings | Declared card options | Reviewed inputs: repository / local |
 | --- | --- | --- | --- |
 | [3did](https://3did.irbbarcelona.org/) | 1 / 1 | none declared | 0 / 1 |
 | [AAindex](https://www.genome.jp/aaindex/) | 1 / 1 | none declared | 0 / 0 |
@@ -97,7 +97,7 @@ function/class names and file scopes under `source_capability_inventory@1`.
 | [TTD (Therapeutic Target Database)](https://ttd.idrblab.cn/) | 1 / 1 | none declared | 0 / 1 |
 | [UniChem](https://www.ebi.ac.uk/unichem/) | 1 / 0 | none declared | 0 / 0 |
 | [UniParc (UniProt Archive)](https://www.uniprot.org/help/uniparc) | 1 / 1 | none declared | 1 / 0 |
-| [UniProtKB](https://www.uniprot.org/) | 2 / 2 | none declared | 4 / 0 |
+| [UniProtKB](https://www.uniprot.org/) | 2 / 2 | none declared | 5 / 0 |
 | [UniRef (UniProt)](https://www.uniprot.org/help/uniref) | 1 / 1 | `uniref` | 0 / 0 |
 | [VEuPathDB gene identifiers](https://veupathdb.org/) | 0 / 1; via `uniprot` | none declared | 0 / 0 |
 | [WikiPathways](https://www.wikipathways.org/) | 1 / 1 | none declared | 1 / 0 |

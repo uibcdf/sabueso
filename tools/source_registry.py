@@ -188,7 +188,7 @@ def capability_inventory(data, *, enrichers=None):
         "limits": [
             "Function/client lists describe local top-level definitions; imported aliases are not counted.",
             "An absent declared enricher does not describe established bespoke card routes.",
-            "Recovery inputs cover new recovered files, not all existing fixtures.",
+            "Recovery inputs cover reviewed recovered files and release compatibility cards, not all existing fixtures.",
             "Code declarations do not establish scientific completeness or public-package delivery.",
         ],
         "resources": resources,
@@ -209,7 +209,7 @@ def render_capabilities(data):
         "the source architecture; absence of an enricher declaration alone does not",
         "describe those routes.",
         "",
-        "The input counts below cover **new recovered files only**. They do not count",
+        "The input counts below cover **reviewed recovery inputs and release compatibility cards**. They do not count",
         "older fixtures or grant reuse rights. Local-only originals are not distributed",
         "with the public repository. Native qualification of those scopes requires",
         "the explicit local test route; public tests use reviewed repository inputs.",
@@ -217,7 +217,7 @@ def render_capabilities(data):
         "Use `sabueso.tools.sources.get_catalog()['capabilities']` to inspect full",
         "function/class names and file scopes under `source_capability_inventory@1`.",
         "",
-        "| Source | Declared getters / mappings | Declared card options | New inputs: repository / local |",
+        "| Source | Declared getters / mappings | Declared card options | Reviewed inputs: repository / local |",
         "| --- | --- | --- | --- |",
     ]
     for source in sorted(data["resources"], key=lambda r: r["name"].lower()):

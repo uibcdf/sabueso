@@ -111,9 +111,34 @@ current 0.9.0-based Ackredit editable satisfies the public minimum, with runtime
 distribution agreement and a passing pip check (2026-10-04). Provider #81 records
 the earlier Git-version mismatch and receiving confirmation.
 
+## Candidate 0.14.0 (#134)
+
+The current `release_plan.toml` selects 0.14.0 and the staged route;
+`release_notes_0.14.0.md` states the consolidation scope and known limits. The
+installed matrix now includes taxonomy observation and unchanged residue,
+isoform/sequence, supplied-file, notebook and public HK2 regressions, alongside
+clinical attribution and independent public journeys. Nbformat is gate tooling
+for notebook validation; it does not become a runtime dependency.
+
+Preliminary local source `5fbd3ed` builds one unuploaded Conda file, SHA-256
+`1e2f5e2bc1ec145428477e5838111f9e24f4fc606c465712eec028a809e1a8e7`.
+All 517 implementation/resource files equal source and the clean installation.
+The public-minimum Python 3.14.8 installed writer freezes
+`schema_0.3.13__P60174.json` from the existing public UniProt/RCSB inputs. Original
+retrieval dates remain separate from generation. The local qualification receipt
+is `receipts/sabueso_0.14.0_local_schema_freeze_2026-10-09.json`.
+The local installed gate passes 1,277 cases with one explicitly excluded native
+DisProt original, the public workflow and pip check. This is preliminary local
+evidence, not the final staging file or publication.
+Select the final candidate only after committing that frozen card and passing its
+schema, fixture-delivery and applicable local gates. Stable publication remains
+blocked until exact-SHA CI/governance and every installed OS/minor lane pass.
+Full private consumer acceptance (#132), SQLite connection lifetime (#133) and
+broader source observation/bibliography (#108) remain explicit limits.
+
 ## Published 0.13.0 (#121)
 
-`release_plan.toml` selects 0.13.0 and the staged route; scope and compatibility
+The 0.13.0 release selected the staged route; scope and compatibility
 limits are in `release_notes_0.13.0.md`. The preparation uses the qualified public
 minimum dependency closure listed above and all 19 installed receiving test files
 already wired in the matrix (613 cases at the preceding code checkpoint).

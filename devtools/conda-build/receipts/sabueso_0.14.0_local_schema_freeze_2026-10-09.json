@@ -1,0 +1,149 @@
+{
+  "scope": "Preliminary local Conda writer; no staging or public publication",
+  "date": "2026-10-09",
+  "owner_issue": "https://github.com/uibcdf/sabueso/issues/134",
+  "candidate_sha": "5fbd3edead997222bde702dba1c80d733a87c7fa",
+  "archive": {
+    "filename": "sabueso-0.14.0-py_0.tar.bz2",
+    "version": "0.14.0",
+    "build": "py_0",
+    "sha256": "1e2f5e2bc1ec145428477e5838111f9e24f4fc606c465712eec028a809e1a8e7",
+    "source_files_verified": 517,
+    "upload": "none",
+    "recipe_tests": "passed"
+  },
+  "installed_receiving": {
+    "python": "3.14.8",
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+    "runtime_origins": {
+      "sabueso": {
+        "version": "0.14.0",
+        "module": "/tmp/sabueso-0140/py314/lib/python3.14/site-packages/sabueso/__init__.py"
+      },
+      "smonitor": {
+        "version": "0.17.0",
+        "module": "/tmp/sabueso-0140/py314/lib/python3.14/site-packages/smonitor/__init__.py"
+      },
+      "pyunitwizard": {
+        "version": "0.27.0",
+        "module": "/tmp/sabueso-0140/py314/lib/python3.14/site-packages/pyunitwizard/__init__.py"
+      },
+      "argdigest": {
+        "version": "0.13.0",
+        "module": "/tmp/sabueso-0140/py314/lib/python3.14/site-packages/argdigest/__init__.py"
+      },
+      "depdigest": {
+        "version": "0.11.0",
+        "module": "/tmp/sabueso-0140/py314/lib/python3.14/site-packages/depdigest/__init__.py"
+      },
+      "ackredit": {
+        "version": "0.9.0",
+        "module": "/tmp/sabueso-0140/py314/lib/python3.14/site-packages/ackredit/__init__.py"
+      }
+    },
+    "conda_records": {
+      "sabueso": {
+        "version": "0.14.0",
+        "build": "py_0",
+        "url": "file:///tmp/sabueso-0140/local-conda/noarch/sabueso-0.14.0-py_0.tar.bz2",
+        "sha256": "1e2f5e2bc1ec145428477e5838111f9e24f4fc606c465712eec028a809e1a8e7"
+      },
+      "smonitor": {
+        "version": "0.17.0",
+        "build": "py_0",
+        "url": "https://conda.anaconda.org/uibcdf/noarch/smonitor-0.17.0-py_0.tar.bz2",
+        "sha256": "44cbba98544dc1da6244b81a87b3f7f06f53e781c1eeaecec83ddf04f7bddfd1"
+      },
+      "pyunitwizard": {
+        "version": "0.27.0",
+        "build": "py_0",
+        "url": "https://conda.anaconda.org/uibcdf/noarch/pyunitwizard-0.27.0-py_0.tar.bz2",
+        "sha256": "2102b1bd4e8188d4d150f90fcf093425d07fa2858993984016a6e7de10c3aaac"
+      },
+      "argdigest": {
+        "version": "0.13.0",
+        "build": "py_1",
+        "url": "https://conda.anaconda.org/uibcdf/noarch/argdigest-0.13.0-py_1.tar.bz2",
+        "sha256": "273ae5053d0aaa2d207ec9a2c684588fe3da539219b1d91cdea3b1f8dd265007"
+      },
+      "depdigest": {
+        "version": "0.11.0",
+        "build": "py_2",
+        "url": "https://conda.anaconda.org/uibcdf/noarch/depdigest-0.11.0-py_2.tar.bz2",
+        "sha256": "b6ba665d9125f49506b7e4231e6065f164d3b643117a22288b44baafceff270f"
+      },
+      "ackredit": {
+        "version": "0.9.0",
+        "build": "py_0",
+        "url": "https://conda.anaconda.org/uibcdf/noarch/ackredit-0.9.0-py_0.tar.bz2",
+        "sha256": "37661090f6ad19a74b8155d8a4d4b4a068c9099f4ceba0743b3abfe887e97fe1"
+      }
+    },
+    "source_files_verified": 517,
+    "tests": {
+      "passed": 1277,
+      "skipped": 1,
+      "seconds": 108.86,
+      "scope": "40 unchanged receiving test files outside the checkout; repository/public inputs only; one deliberately excluded native DisProt original"
+    },
+    "public_workflow": "passed",
+    "pip_check": "passed"
+  },
+  "frozen_card": {
+    "file": "schema_0.3.13__P60174.json",
+    "sha256": "f44dc762f25f1c280707e083f8718ef5390a98540bcd1fd2a306a7f7de38cd15",
+    "schema_version": "0.3.13",
+    "entity": "sabueso:protein:uniprot:P60174",
+    "writer_version": "0.14.0",
+    "writer_origin": "/tmp/sabueso-0140/py314/lib/python3.14/site-packages/sabueso/__init__.py",
+    "python": "3.14.8",
+    "candidate_sha": "5fbd3edead997222bde702dba1c80d733a87c7fa",
+    "archive_sha256": "1e2f5e2bc1ec145428477e5838111f9e24f4fc606c465712eec028a809e1a8e7",
+    "public_inputs": [
+      "P60174.json",
+      "rcsb/1HTI.json",
+      "rcsb/1KLG.json",
+      "rcsb/4UNK.json"
+    ],
+    "round_trip": "passed",
+    "quantity_seal": "passed",
+    "structures": [
+      "1HTI",
+      "1KLG",
+      "4UNK"
+    ]
+  },
+  "local_validation": {
+    "offline_native": {
+      "passed": 5592,
+      "workers": 12,
+      "seconds": 169.92,
+      "receptor": "llm",
+      "scope": "Repository inputs + verified protected local originals before adding the frozen card"
+    },
+    "schema_and_fixture_regressions": {
+      "passed": 43,
+      "seconds": 9.86
+    },
+    "release_route_regressions": {
+      "passed": 60,
+      "seconds": 2.67
+    },
+    "checks": [
+      "Ruff check/format",
+      "dependency release preflight",
+      "MOLI governance",
+      "card shape 0.3.13",
+      "schema/field-path alignment",
+      "fixture delivery with 50 repository/37 local-only entries"
+    ]
+  },
+  "remaining_gates": [
+    "Final exact-SHA CI/governance",
+    "Immutable staging producer/archive verification",
+    "12 OS/Python installed lanes",
+    "Stable release",
+    "Exact-file promotion and clean public install",
+    "Identical-tag Zenodo archive verification"
+  ]
+}

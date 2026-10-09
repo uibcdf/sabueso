@@ -1,13 +1,14 @@
 # Reviewed recovery fixture delivery
 
-The [file inventory](fixture_delivery.json) records the exact 86 new recovery
-inputs, their source, digest, size, recorded terms and delivery decision (#112/#95).
+The [file inventory](fixture_delivery.json) records the exact 86 recovery inputs
+and the derived 0.14.0 schema compatibility card (#134), with their source, digest,
+size, recorded terms and delivery decision (#112/#95).
 Existing committed fixtures retain their source-specific notice. This inventory
 records file decisions; the [source registry](registry.yaml) remains authoritative
 for source adoption and terms. No access route or software/article licence grants
 unrecorded data rights.
 
-There are **49 repository-delivery inputs** under the recorded declarations and
+There are **50 repository-delivery inputs** under the recorded declarations and
 file-specific obligations in [the fixture notice](../../temp_data/NOTICE.md), and
 **37 local-only originals** in protected directories. Unknown, conditional or
 explicitly unshared scopes remain local. The original DisProt response also

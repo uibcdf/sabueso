@@ -29,7 +29,8 @@ current-source rebuilding and an integrated saved-card/report regression.
 | `RISKS_AND_OPEN_QUESTIONS.md` | living | Risks for the future, and decisions to re-evaluate |
 
 Release preparation and receipts live in `../devtools/conda-build/`: the committed
-plan, route checklist, `release_notes_0.13.0.md` and exact-artifact publication receipt (#121), plus the
+plan, route checklist and `release_notes_0.14.0.md` for the staged candidate (#134),
+with immutable `release_notes_0.13.0.md` and its publication receipt (#121), plus the
 immutable 0.12.0 notes/publication receipt (#110). Published state stays in `CHECKPOINT.md`; a preparation plan is
 not a release receipt.
 

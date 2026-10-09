@@ -51,8 +51,11 @@ identical-tag Zenodo archival were verified. Complete
 [publication receipt](../devtools/conda-build/receipts/sabueso_0.13.0_public_2026-10-05.json).
 
 Published schema **0.3.12** and its shapes/frozen cards remain immutable.
-Current additive development schema **0.3.13** is unpublished. Every intended
-shape change follows [SCHEMA.md](SCHEMA.md), migrations and recorded-shape gates.
+Schema **0.3.13** is frozen from the clean installed preliminary Conda writer
+for the staged **0.14.0** candidate (#134); stable publication is pending. The
+[release notes](../devtools/conda-build/release_notes_0.14.0.md) define its scope
+and limits. Every further shape change follows [SCHEMA.md](SCHEMA.md), migrations
+and recorded-shape gates, preserving the frozen shape.
 Earlier release receipts remain in `../devtools/conda-build/receipts/`.
 
 ## Capabilities delivered in 0.13.0
