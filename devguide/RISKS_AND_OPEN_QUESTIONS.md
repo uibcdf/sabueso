@@ -13,7 +13,10 @@
   envelopes or unanswered fields as empty/absent knowledge. Development guards
   validate the consumed containers and complete requested consequence aliases;
   public synthetic regressions cover failure/absence and card knowledge states.
-  They are not a complete native field validator or new installed delivery.
+  Code `09cf912` passes 15/15 exact-SHA CI and governance; the
+  [source receipt](pending_proposals/comparative_response_contracts_checkpoint.json)
+  preserves both local/public scopes. This is not a complete native field validator
+  or new installed delivery.
   These comparative routes still need declared source-operation/bibliography
   observation and pinned sequence/tissue explanation acceptance. In particular,
   gnomAD's existing pext release label is client-declared; it must not be presented

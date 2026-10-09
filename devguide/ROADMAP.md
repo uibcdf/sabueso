@@ -363,6 +363,9 @@ provider triage or repeat the archived chronology. Resume with:
    Continue with targeted inspection, pinned explanations and operation coverage.
    Public synthetic response guards (#137) keep malformed comparative-source
    envelopes and unanswered consequence aliases separate from explicit absence.
+   Code `09cf912` passes 15/15 exact-SHA CI and governance; its
+   [receipt](pending_proposals/comparative_response_contracts_checkpoint.json)
+   retains public/local input scopes and shared editable-environment verification.
 3. **Advance the next bounded scientific slice.** Source-active-site residue context
    and selected composition are now in protein example `@2`, with original `@1`
    readers preserved. Continue the approved molecule/activity and disease/entity

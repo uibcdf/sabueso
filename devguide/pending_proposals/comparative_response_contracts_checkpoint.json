@@ -1,0 +1,221 @@
+{
+  "format": "sabueso.comparative_response_contracts_checkpoint@1",
+  "date": "2026-10-09",
+  "issue": "uibcdf/sabueso#137",
+  "qualified_source_sha": "09cf9121b0b6f8134dea8ae04c0925dafa69a391",
+  "published_0140_artifact_changed": false,
+  "correction": {
+    "clients": [
+      "OMA",
+      "UniRef",
+      "gnomAD",
+      "GTEx"
+    ],
+    "required_native_container_validation": true,
+    "unanswered_consequence_aliases_are_failure": true,
+    "partial_graphql_errors_are_failure": true,
+    "explicit_empty_null_and_not_found_answers_retained": true,
+    "published_card_schema_changed": false,
+    "original_native_fixture_bytes_changed": false,
+    "scientific_rules_changed": false,
+    "new_runtime_observation_coverage": false
+  },
+  "regression_module": "tests/core/test_comparative_response_contracts_offline.py",
+  "new_regressions": 96,
+  "red_proof": {
+    "initial_cases": 90,
+    "cases_failed_before_fix": 77,
+    "scope": "Synthetic public native JSON and actual built-in clients; no live service calls."
+  },
+  "local": {
+    "selected_passed": 223,
+    "selected_seconds": 4.66,
+    "full_local_originals_passed": 5723,
+    "full_seconds": 144.33,
+    "full_warnings": 10,
+    "workers": 12,
+    "python": "3.14.7",
+    "pytest_receptor": "llm",
+    "fatal_sqlite_and_unraisable_guards": true
+  },
+  "checks": [
+    "Ruff format/check",
+    "Fixture delivery: 50 repository / 37 protected originals",
+    "Dependency preflight",
+    "MOLI governance and canonical guide equality",
+    "Warning-fatal Sphinx",
+    "Git diff whitespace"
+  ],
+  "editable_environment_followup": {
+    "ackredit_before_distribution": "0.10.1",
+    "ackredit_before_generated_module": "0.12.0+1.g887b81c.dirty",
+    "ackredit_after_distribution_and_module": "0.12.0+2.g1342f0f",
+    "provider_tracked_files_changed": false,
+    "selected_integration_cases_passed": 49,
+    "selected_seconds": 13.47,
+    "workers": 12,
+    "pytest_receptor": "llm",
+    "runtime_requirements_satisfied": true,
+    "global_environment_pip_check_qualified": false,
+    "owner_receipt": "https://github.com/uibcdf/ackredit/issues/81#issuecomment-6090746605"
+  },
+  "ci": {
+    "run_id": 38001895441,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38001895441",
+    "head_sha": "09cf9121b0b6f8134dea8ae04c0925dafa69a391",
+    "conclusion": "success",
+    "jobs_passed": 15,
+    "jobs_total": 15,
+    "inspection": "GH Run Receptor complete full capture/replay; all manifest members independently hashed",
+    "capture_manifest_sha256": "4ccc1c93a01a61eb7b5954e6a36826d82e59a0b57d40e24f63ea21b8ccf55041",
+    "test_jobs": [
+      {
+        "job_id": 114061681122,
+        "name": "Ackredit public-package pilot (Python 3.12)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 304.44,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114061681137,
+        "name": "Offline tests (windows-latest, Python 3.12)",
+        "passed": 4170,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 919.89,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114061681166,
+        "name": "Offline tests (ubuntu-latest, Python 3.13)",
+        "passed": 4170,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 338.31,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114061681172,
+        "name": "Ackredit public-package pilot (Python 3.13)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 286.72,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114061681180,
+        "name": "Offline tests (windows-latest, Python 3.14)",
+        "passed": 4170,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 565.62,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114061681201,
+        "name": "Offline tests (ubuntu-latest, Python 3.14)",
+        "passed": 4170,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 416.01,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114061681227,
+        "name": "Offline tests (ubuntu-latest, Python 3.11)",
+        "passed": 4170,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 551.02,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114061681249,
+        "name": "Offline tests (windows-latest, Python 3.11)",
+        "passed": 4170,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 844.92,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114061681251,
+        "name": "Ackredit public-package pilot (Python 3.14)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 279.7,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114061681270,
+        "name": "Ackredit public-package pilot (Python 3.11)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 223.57,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114061681338,
+        "name": "Offline tests (ubuntu-latest, Python 3.12)",
+        "passed": 4170,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 494.93,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114061681385,
+        "name": "Offline tests (macos-26, Python 3.14)",
+        "passed": 4170,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 366.28,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114061681412,
+        "name": "Offline tests (windows-latest, Python 3.13)",
+        "passed": 4170,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 857.51,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      }
+    ]
+  },
+  "governance": {
+    "run_id": 38001895436,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38001895436",
+    "head_sha": "09cf9121b0b6f8134dea8ae04c0925dafa69a391",
+    "conclusion": "success",
+    "jobs_passed": 1,
+    "jobs_total": 1,
+    "inspection": "GH Run Receptor complete full capture/replay; all manifest members independently hashed",
+    "capture_manifest_sha256": "ccedcfa370f96ee97bb3c430acc8577ce5f70000207e901287cbf4cecdf80f4e"
+  },
+  "qualification_limits": [
+    "Development source checkpoint, not new installed-artifact delivery or release publication.",
+    "Public CI excludes protected originals and online requests; each qualification retains its own input scope.",
+    "Required-container checks do not validate every nested native field, infer source revisions or complete operation/bibliography coverage.",
+    "Private consumer inputs and results are absent from this public receipt.",
+    "Human scientific and consumer-owned Evidence acceptance remain separate."
+  ]
+}

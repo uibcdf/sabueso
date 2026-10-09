@@ -88,6 +88,10 @@ not a release receipt.
   measured costs, implemented NCBI Taxonomy operation observation (#108) and the
   correction separating a pre-import memory counter from actual process sampling.
   Original content/results stay private; broader consumer acceptance remains open.
+- `pending_proposals/comparative_response_contracts_checkpoint.json`: qualified
+  source correction for malformed OMA/UniRef/gnomAD/GTEx responses (#137), public
+  regressions, exact-SHA CI and shared editable-environment verification. This does
+  not qualify a new installed artifact or complete comparative operation coverage.
 - `pending_proposals/post_recovery_public_checkpoint.md`: authorized code delivery,
   exact-SHA CI and private-consumer revalidation scheduling (#112/#132), with its
   [machine-readable receipt](pending_proposals/post_recovery_public_checkpoint.json).
@@ -108,7 +112,7 @@ not a release receipt.
   scientific capabilities and current implementation, with concrete gaps and owning
   acceptance criteria (#112). Its
   [quality completion proposal](pending_proposals/design_implementation_review.md#quality-completion-proposal-2026-10-09-112)
-  defines bounded inspection, explanation, literature, cost and delivery acceptance
+  records the accepted bounded inspection, explanation, literature, cost and delivery acceptance
   within the approved roadmap.
   `pending_proposals/independent_user_journeys.md` scopes the three standalone SDK
   journeys, the implemented protein comparison, molecule/target and bounded disease
