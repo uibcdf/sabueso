@@ -267,8 +267,9 @@ def test_an_answer_is_archived_once_and_read_back_verified(tmp_path, monkeypatch
         "X-UniProt-Release": "7"
     }
     import sqlite3
+    from contextlib import closing
 
-    with sqlite3.connect(tmp_path / "a.db") as conn:
+    with closing(sqlite3.connect(tmp_path / "a.db")) as conn, conn:
         conn.execute("UPDATE contents SET body = ?", (zlib.compress(b"tampered"),))
     with pytest.raises(StorageError, match="changed outside Sabueso"):
         archive.get(made[0]["ref"])

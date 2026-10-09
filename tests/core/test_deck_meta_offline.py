@@ -6,6 +6,7 @@ resolution, or the source outcomes and unanchored records of a ligand deck.
 
 import json
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 
 import pytest
@@ -110,7 +111,7 @@ def test_the_tutorial_imports_work():
 def test_the_sqlite_layout(decks, tmp_path: Path):
     path = tmp_path / "decks.db"
     decks["ligands"].to_sqlite(str(path), table="ligands")
-    with sqlite3.connect(path) as conn:
+    with closing(sqlite3.connect(path)) as conn, conn:
         tables = {
             r[0]
             for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")

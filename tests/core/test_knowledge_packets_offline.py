@@ -5,6 +5,7 @@ HsTIM (P60174) as subject and TcTIM (P52270) as comparator, on frozen responses.
 
 import sqlite3
 import warnings
+from contextlib import closing
 
 import argdigest
 import pytest
@@ -261,7 +262,7 @@ def test_a_changed_packet_is_refused(tmp_path, query, clients):
     packet = _packet(query, clients, store=store, packet_name="tim_pair")
     import zlib
 
-    with sqlite3.connect(path) as conn:
+    with closing(sqlite3.connect(path)) as conn, conn:
         for sid, document in conn.execute(
             "SELECT snapshot_id, document FROM packet_snapshots"
         ).fetchall():

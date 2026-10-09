@@ -331,6 +331,13 @@ provider triage or repeat the archived chronology. Resume with:
    CI. Extend the original routes with explicit source scope. Full profile/
    packet acquisition and overall #132 acceptance remain open; missing historical
    stores cannot be reconstructed from current cards.
+   Fourteen additional original cards/inventory cells pass with explicit
+   repository-fixture client injection and zero network attempts. Keep that
+   orchestration result separate from the earlier live/local scope: it does not
+   qualify full profile acquisition, native answers or source absence. The
+   post-release SQLite lifetime fix (#133) passes eight regressions and the
+   5,602-case local-original suite; require exact-SHA Python 3.14 CI before closing
+   its remote acceptance. Neither slice changes the published 0.14.0 artifact.
 3. **Advance the next bounded scientific slice.** Source-active-site residue context
    and selected composition are now in protein example `@2`, with original `@1`
    readers preserved. Continue the approved molecule/activity and disease/entity

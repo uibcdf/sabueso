@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 from typing import Any, Dict
 
@@ -41,7 +42,7 @@ def save_card_sqlite(
         node = card.get(id_field)
         card_id = _unwrap_value(node)
 
-    with sqlite3.connect(out) as conn:
+    with closing(sqlite3.connect(out)) as conn, conn:
         cur = conn.cursor()
         cur.execute(
             f"CREATE TABLE IF NOT EXISTS {table} ("
@@ -93,7 +94,7 @@ def _read_card_sqlite(
     """
     table = digest_table(table, caller="sabueso.core.card.Card.from_sqlite")
     out = Path(path)
-    with sqlite3.connect(out) as conn:
+    with closing(sqlite3.connect(out)) as conn, conn:
         cur = conn.cursor()
         if card_id is None:
             cur.execute(f"SELECT card_json FROM {table} ORDER BY id DESC LIMIT 1")

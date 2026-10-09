@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-09, verified substantial release 0.14.0 (#134).
+Last updated: 2026-10-09, post-release SQLite lifetime and bounded fixture consumers (#133/#132).
 
 ## Resume here
 
@@ -17,7 +17,8 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | Guide | Six complete entry-document snapshots archived; common guidance separated from provider details; warning-failing Sphinx passes | Keep current guidance true alongside the next implementation |
 | Source maturity | Generated native/mapping/enricher/input scope; 83 `in_use`, 37 deferred, 11 evaluating; 24 declared enricher instances | Integration by scientific question; portfolio-wide live health and consumer acceptance remain unassessed |
 | Scientific journeys | Protein example `@2` retains active-site residue/composition support; independent legacy reader and reacquisition pass | Next bounded clinical bibliography/query/explanation work; complete derived-operation observation remains open |
-| Consumers | Bounded private revalidation passes 14 original cells, saved reading and replay; taxonomy observation/fixture-state follow-up passes local and exact-SHA CI; ready MOLI correction in PR #65; Nextia #1 retains Evidence ownership | Extend declared consumer scope #132; broader #108/owner acceptance and SQLite lifetime #133 stay open |
+| Consumers | Bounded private revalidation passes 14 live/local original cells; 14 additional cards/inventory cells pass with declared repository-fixture transport; ready MOLI correction in PR #65; Nextia #1 retains Evidence ownership | Extend explicit original-answer/live scope #132; fixture execution does not qualify full acquisition or scientific acceptance |
+| SQLite lifetime | Card/deck readers and writers and direct test queries close connections; eight lifetime regressions reproduce the defect before the fix; 5,602 local-original tests pass with fatal unclosed-database warnings | Exact-SHA Python 3.14 CI confirmation under #133; published 0.14.0 retains its original behavior |
 
 The accumulated recovery/consolidation code checkpoint is published as
 `dc4642414c46744f39d85cb666094b0d52dd705a`, with
@@ -189,6 +190,23 @@ with profiler overhead, rather than a new 942 MiB SDK allocation.
 Keep their checkout read-only and their content/results private. Broad profiles,
 full packet acquisition, unavailable historical pins and overall acceptance remain
 unqualified; see the [bounded report](pending_proposals/private_consumer_revalidation.md).
+Fourteen additional original cards/inventory cells pass through an explicitly
+injected repository-fixture transport, with zero network attempts or warnings.
+This adds orchestration coverage only: synthetic/cut fixtures and missing local
+answers do not establish current source health, absence or full pilot acceptance.
+Original inputs and the read-only pilot checkout remain unchanged. See the
+[fixture follow-up](pending_proposals/private_consumer_revalidation.md#structural-fixture-orchestration-follow-up).
+
+The post-release SQLite fix (#133) explicitly closes legacy card/deck connections
+after their transaction exits and closes direct test queries. Allocation traces
+identify those owners; the KnowledgeStore and retrieval archive already close
+their sessions. Eight regressions fail on the earlier lifetime and pass with the
+fix, including empty/error reads and failed deck-replacement rollback. Full
+local-original qualification passes **5,602 cases / 189.81 s**, 12 workers and
+pytest-receptor, with ten intentional fixture warnings. Unclosed-database and
+unraisable-exception warnings are fatal in this checkpoint and in Linux Python
+3.14 CI. Exact-SHA remote confirmation remains pending; this is not a new release.
+
 Independent SDK acceptance remains useful while consumer-owned work proceeds.
 Queries/non-protein packets (#71), derived explanations (#91), complete observed
 pipeline/bibliography (#108), finer use-term filtering (#29), peptide identity

@@ -9,6 +9,7 @@ import copy
 import json
 import sqlite3
 import zlib
+from contextlib import closing
 from pathlib import Path
 
 import pytest
@@ -227,7 +228,7 @@ def test_items_are_cited_in_a_pinned_state(tmp_path, tctim):
 
 
 def _count(path, table):
-    with sqlite3.connect(path) as conn:
+    with closing(sqlite3.connect(path)) as conn, conn:
         return conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
 
 
@@ -343,7 +344,7 @@ def test_a_store_changed_outside_sabueso_is_refused(tmp_path, tctim):
     path = tmp_path / "knowledge.db"
     store = sabueso.KnowledgeStore(path)
     ref = store.save(tctim)
-    with sqlite3.connect(path) as conn:
+    with closing(sqlite3.connect(path)) as conn, conn:
         body_hash, body = conn.execute(
             "SELECT body_hash, body FROM sa_rows LIMIT 1"
         ).fetchone()
@@ -368,7 +369,7 @@ def _stored(text):
 
 def _tamper(path, table, id_column):
     """Change one row's body outside Sabueso, keeping its hash and the snapshot id."""
-    with sqlite3.connect(path) as conn:
+    with closing(sqlite3.connect(path)) as conn, conn:
         item_id, body_hash, body = conn.execute(
             f"SELECT {id_column}, body_hash, body FROM {table} LIMIT 1"
         ).fetchone()
@@ -419,7 +420,7 @@ def test_a_relationship_search_never_cites_a_changed_state(tmp_path, tctim):
 def test_the_store_states_its_format(tmp_path):
     path = tmp_path / "knowledge.db"
     sabueso.KnowledgeStore(path)
-    with sqlite3.connect(path) as conn:
+    with closing(sqlite3.connect(path)) as conn, conn:
         conn.execute("UPDATE store_meta SET value = '3' WHERE key = 'format'")
     with pytest.raises(StorageError, match="format 3"):
         sabueso.KnowledgeStore(path)
@@ -465,11 +466,11 @@ def test_unchanged_knowledge_read_again_adds_no_rows(tmp_path, tctim):
     store = sabueso.KnowledgeStore(path)
     first = store.save(tctim)
     count = "SELECT count(*) FROM sa_rows"
-    with sqlite3.connect(path) as conn:
+    with closing(sqlite3.connect(path)) as conn, conn:
         rows = conn.execute(count).fetchone()[0]
     again = store.save(_read_again(tctim))
     assert again != first  # another state: the retrieval times differ
-    with sqlite3.connect(path) as conn:
+    with closing(sqlite3.connect(path)) as conn, conn:
         assert conn.execute(count).fetchone()[0] == rows
     # Each revision still knows when each statement was read.
     old, new = store.load(first), store.load(again)
@@ -482,7 +483,7 @@ def test_unchanged_knowledge_read_again_adds_no_rows(tmp_path, tctim):
 def test_what_is_stored_is_compressed(tmp_path, tctim):
     path = tmp_path / "k.db"
     sabueso.KnowledgeStore(path).save(tctim)
-    with sqlite3.connect(path) as conn:
+    with closing(sqlite3.connect(path)) as conn, conn:
         (document,) = conn.execute("SELECT document FROM snapshots").fetchone()
         (body,) = conn.execute("SELECT body FROM sa_rows LIMIT 1").fetchone()
     assert isinstance(document, bytes) and isinstance(body, bytes)
@@ -516,7 +517,7 @@ def _format_1_store(path, card):
 
     stored = card.to_dict()
     sid = snapshot_id(stored)
-    with sqlite3.connect(path) as conn:
+    with closing(sqlite3.connect(path)) as conn, conn:
         conn.executescript(FORMAT_1)
         conn.execute("INSERT INTO store_meta VALUES ('format', '1')")
         document = {
@@ -574,7 +575,7 @@ def test_a_format_1_store_is_upgraded_in_place_and_still_read(tmp_path, tctim):
     path = tmp_path / "k.db"
     old_ref = _format_1_store(path, tctim)
     store = sabueso.KnowledgeStore(path)
-    with sqlite3.connect(path) as conn:
+    with closing(sqlite3.connect(path)) as conn, conn:
         assert conn.execute("SELECT value FROM store_meta").fetchone() == ("2",)
         tables = {n for (n,) in conn.execute("SELECT name FROM sqlite_master")}
     assert "source_assertions" not in tables and "sa_rows" in tables

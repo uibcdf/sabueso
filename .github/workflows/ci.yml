@@ -162,6 +162,8 @@ jobs:
         run: |
           if [[ "$RUNNER_OS" == "Linux" && "$PYTHON_VERSION" == "3.14" ]]; then
             python -m pytest -m "not online" --receptor=ci \
+              -W "error:unclosed database:ResourceWarning" \
+              -W error::pytest.PytestUnraisableExceptionWarning \
               --cov=sabueso --cov-branch --cov-report=xml:coverage.xml
           else
             python -m pytest -m "not online" --receptor=ci

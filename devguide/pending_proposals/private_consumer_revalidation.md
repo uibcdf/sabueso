@@ -171,3 +171,35 @@ for other source/derived-operation/bibliography gaps; #132 remains open for the
 unexecuted consumer routes and actual scientific acceptance.
 The [sanitized qualification receipt](taxonomy_followup_checkpoint.json) records
 this follow-up separately from the original bounded-consumer checkpoint.
+
+## Structural fixture orchestration follow-up
+
+On 2026-10-09, fourteen additional unchanged original cards and structural-inventory
+cells pass with an explicitly injected repository-fixture client transport.
+Execution uses the existing editable Python 3.14.7 development environment and
+the post-release SQLite lifetime correction under #133. Exact source head and
+working-diff binding, workflow revision, cells, inputs and output hashes remain in
+the ignored private receipt. Cell text is checked against the actual read-only
+notebooks before execution. No notebooks or earlier execution outputs are modified.
+
+The transport uses only tracked repository inputs; protected local-only originals
+are excluded. These fixtures include synthetic and cut inputs: this is neither
+native-response qualification nor replay/acquisition of the original baseline.
+Missing fixture answers cannot establish source absence or current availability.
+All network routes are blocked: **zero network attempts**, **zero warnings** and
+**8.743 s** for the fourteen cells. The fixture execution observes 62 source
+operations; those describe actual local client use, not historical or live access.
+
+Original orchestration constructs cards, activity/structural views and a saved
+inventory with `structure_inventory@1` / `structure_state@2`. Human selection stays
+empty; no scientific outcome, identity by similarity or Nextia Evidence is inferred.
+The earlier fourteen live/local cells retain their separate acceptance scope.
+Do not add the fixture count to claim twenty-eight real-pilot cells qualified.
+
+The run uses a separate artifact directory, not a separate development environment;
+it starts from a read-only copy of the earlier knowledge store. Original input files
+and the private checkout remain unchanged. Independent inert reading of the new
+saved outputs is in progress. Full original structural/activity/profile, packet
+and comparative acquisition and overall #132 acceptance remain open; the next
+source-access scope must be explicitly selected rather than inferred from this
+fixture exercise. No new live request is made or authorized by this receipt.

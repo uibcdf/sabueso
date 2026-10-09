@@ -62,6 +62,7 @@ fixture does not establish current live availability.
 | Card/schema/migration | Card, migration and frozen-card tests; `tools/card_shape.py`, `tools/validate_schema.py`; unpublished additive changes only |
 | Quantities | Quantity/measurement/native-unit tests, seals and non-default unit policy across serialization and consumers |
 | Pinned persistence/packets | `test_knowledge_store_offline.py`, `test_knowledge_packets_offline.py`; historical pins, tampering, foreign/missing states, migration |
+| SQLite connection lifetime | `test_sqlite_lifetime_offline.py`, `test_storage_offline.py`, `test_deck_meta_offline.py`; explicit closure on success, empty reads and failures, committed round trips and rollback of failed deck replacement (#133) |
 | Derived residue knowledge | `test_residue_knowledge_offline.py`, `test_residue_tracks_offline.py`, `test_residue_composition_offline.py`; declared axes, support and ambiguous denominator |
 | Terms/admission | `test_terms_offline.py`, `test_packet_terms_offline.py`, `test_disease_deck_admission_offline.py`; original kept/excluded support |
 | Attribution/literature/clinical | Source acquisition and relevant attribution/extraction/article/reference tests; original portable sidecars and bibliography gaps |
@@ -140,6 +141,14 @@ and a full local checkpoint as appropriate. Public CI validates its available
 repository-input scope; retain local-original receipts separately. Do not pipe a
 gate through `tail`/`grep` or chain a commit after a command whose exit code does not
 reflect the gate.
+
+Linux Python 3.14 CI promotes unclosed-database ResourceWarnings and pytest
+unraisable-exception warnings to errors (#133). The connection context manages
+transactions, not lifetime: SQLite readers/writers use `closing` around it, and
+direct test queries also close their handles. For a local checkpoint use
+`-W "error:unclosed database:ResourceWarning"` and
+`-W error::pytest.PytestUnraisableExceptionWarning`; unrelated ResourceWarnings
+are not suppressed or promoted by the database-specific filter.
 
 Documentation/evidence changes need applicable link/example/generated-content
 checks. When `docs/` or a docstring changes, build with warnings fatal:

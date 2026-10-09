@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
@@ -94,7 +95,7 @@ def save_deck_sqlite(
     out = Path(path)
     out.parent.mkdir(parents=True, exist_ok=True)
 
-    with sqlite3.connect(out) as conn:
+    with closing(sqlite3.connect(out)) as conn, conn:
         cur = conn.cursor()
         cur.execute(
             f"CREATE TABLE IF NOT EXISTS {table} ("
@@ -147,7 +148,7 @@ def _read_deck_sqlite(
     table name is digested here as well: it is interpolated into SQL.
     """
     table = digest_table(table, caller="sabueso.core.deck.Deck.from_sqlite")
-    with sqlite3.connect(Path(path)) as conn:
+    with closing(sqlite3.connect(Path(path))) as conn, conn:
         cur = conn.cursor()
         cur.execute(f"SELECT card_json FROM {table} ORDER BY id ASC")
         cards = [json.loads(r[0]) for r in cur.fetchall()]

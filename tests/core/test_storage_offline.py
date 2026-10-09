@@ -1,4 +1,5 @@
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 
 from sabueso.core.card import Card
@@ -61,7 +62,7 @@ def test_save_card_sqlite(tmp_path: Path):
     out = tmp_path / "cards.db"
     save_card_sqlite(card, out, id_field="identifiers.uniprot")
     assert out.exists()
-    with sqlite3.connect(out) as conn:
+    with closing(sqlite3.connect(out)) as conn, conn:
         cur = conn.cursor()
         cur.execute("SELECT COUNT(*) FROM cards")
         assert cur.fetchone()[0] == 1
@@ -84,7 +85,7 @@ def test_save_deck_sqlite(tmp_path: Path):
     out = tmp_path / "cards.db"
     save_deck_sqlite(deck, out, id_field="identifiers.uniprot")
     assert out.exists()
-    with sqlite3.connect(out) as conn:
+    with closing(sqlite3.connect(out)) as conn, conn:
         cur = conn.cursor()
         cur.execute("SELECT COUNT(*) FROM cards")
         assert cur.fetchone()[0] == 2
