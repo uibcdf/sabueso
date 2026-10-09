@@ -1,7 +1,7 @@
-version = "0.13.0"
+version = "0.14.0"
 route = "staged"
-reason = "A substantial traceability and supported-knowledge release after 0.12.0: observation of eight additional source families, original literal extraction/article metadata intake (additive card schema 0.3.12), pinned disease/state/bioactivity/ligand/oligomer explanations, versioned integrity corrections and independent persisted application exercise (#121, #108, #91, #92, #112). Published schemas and historical rule selection remain readable. Ackredit >=0.9.0 and the qualified public minimum dependency closure remain required. Freeze schema 0.3.12 from a clean installed preliminary local candidate; then qualify one immutable 0.13.0/py_0 staging archive with exact-SHA CI/governance and installed Linux/macOS-arm64/Windows x Python 3.11-3.14 gates before publication."
-decision_by = "Diego Prada (Sabueso maintainer), accepted staged 0.13.0 preparation and publication block on 2026-10-05; plan prepared by Codex; publication follows exact-artifact gates"
+reason = "A substantial consolidation release after 0.13.0: bounded native source and supplied-file access, explicit sequence/residue knowledge, independent protein/molecule/disease journeys, clinical bibliography, and conservative source-state and taxonomy integrity fixes. Freeze additive card schema 0.3.13 from a clean installed preliminary local Conda candidate. Retain protected originals outside publication and distinguish native access from card enrichment and live qualification. Ackredit >=0.9.0 and the qualified public minimum closure remain unchanged. Require exact-SHA CI/governance and all Linux/macOS-arm64/Windows x Python 3.11-3.14 installed gates for one immutable staging archive before publication. Complete private consumer routes (#132), SQLite connection lifetime (#133) and broader acquisition/bibliography coverage (#108) remain explicit limitations."
+decision_by = "Maintainer-approved substantial release preparation on 2026-10-09; plan prepared by Codex; stable publication follows exact-artifact gates"
 required_workflows = [
   ".github/workflows/ci.yml",
   ".github/workflows/moli-governance.yml",

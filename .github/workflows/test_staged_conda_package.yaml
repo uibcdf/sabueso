@@ -131,6 +131,7 @@ jobs:
             uibcdf::smonitor=0.17.0=py_0
             uibcdf::ackredit=0.9.0=py_0
             pytest>=8
+            nbformat>=5
             uibcdf::pytest-receptor=1.2.0
       - name: Verify installed artifact and smoke test outside the source checkout
         shell: bash -l {0}
@@ -164,6 +165,7 @@ jobs:
           mkdir -p "$client_dir"
           cp "$GITHUB_WORKSPACE/tests/core/test_attribution_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_source_acquisition_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/core/test_ncbi_taxonomy_acquisition_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_rcsb_acquisition_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_chembl_acquisition_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_indication_bibliography_offline.py" "$client_dir/"
@@ -192,6 +194,19 @@ jobs:
           cp "$GITHUB_WORKSPACE/tests/core/test_user_journeys_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_molecule_target_journey_offline.py" "$client_dir/"
           cp "$GITHUB_WORKSPACE/tests/core/test_disease_entities_journey_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/core/test_residue_knowledge_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/core/test_residue_tracks_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/core/test_residue_composition_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/core/test_hk2_test_system_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/tools/test_uniprot_isoforms_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/tools/test_uniparc_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/tools/test_sequence_candidates_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/tools/test_source_snapshot_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/tests/tools/test_card_notebook_offline.py" "$client_dir/"
+          cp "$GITHUB_WORKSPACE/conftest.py" "$client_dir/"
+          mkdir -p "$client_dir/devguide/sources" "$client_dir/tools"
+          cp "$GITHUB_WORKSPACE/devguide/sources/fixture_delivery.json" "$client_dir/devguide/sources/"
+          cp "$GITHUB_WORKSPACE/tools/build_hk2_test_system.py" "$client_dir/tools/"
           mkdir -p "$client_dir/examples/persisted_pipeline"
           cp "$GITHUB_WORKSPACE/examples/persisted_pipeline/run.py" "$client_dir/examples/persisted_pipeline/"
           mkdir -p "$client_dir/examples/user_journeys"
@@ -202,6 +217,7 @@ jobs:
           cd "$client_dir"
           python -m pytest test_attribution_offline.py test_source_acquisition_offline.py test_rcsb_acquisition_offline.py test_chembl_acquisition_offline.py test_pubchem_acquisition_offline.py test_bindingdb_acquisition_offline.py test_chemical_identity_acquisition_offline.py test_pdbe_kb_acquisition_offline.py test_alphafold_acquisition_offline.py test_interpro_acquisition_offline.py test_disease_explanation_offline.py test_knowledge_state_explanation_offline.py test_molecule_knowledge_state_offline.py test_bioactivity_explanation_offline.py test_ligand_explanation_offline.py test_oligomer_explanation_offline.py test_rule_literature_extraction_offline.py test_literature_intake_offline.py test_article_metadata_offline.py test_persisted_pipeline_offline.py \
             test_user_journeys_offline.py test_molecule_target_journey_offline.py test_disease_entities_journey_offline.py test_disease_deck_support_offline.py test_disease_deck_admission_offline.py test_mondo_acquisition_offline.py test_disease_source_acquisition_offline.py test_disease_lookup_acquisition_offline.py test_indication_bibliography_offline.py test_clinicaltrials_acquisition_offline.py \
-            -m "not online" --receptor=ci
+            test_ncbi_taxonomy_acquisition_offline.py \
+            test_residue_knowledge_offline.py test_residue_tracks_offline.py test_residue_composition_offline.py test_hk2_test_system_offline.py test_uniprot_isoforms_offline.py test_uniparc_offline.py test_sequence_candidates_offline.py test_source_snapshot_offline.py test_card_notebook_offline.py -m "not online" --receptor=ci
           python "$GITHUB_WORKSPACE/examples/ackredit_pilot/run.py" \
             --fixtures temp_data --output pilot
