@@ -95,32 +95,83 @@ def _licences() -> Dict[str, Any]:
     return LICENCES
 
 
-def terms_export(data: Dict[str, Any]) -> str:
-    """The terms of every source, by SourceAssertion source name, as packaged JSON."""
-    sources: Dict[str, Any] = {}
+def _terms_owners(data: Dict[str, Any]) -> Dict[str, Any]:
+    """One explicitly declared terms owner per scientific source name (#136)."""
+    resources = {r["id"]: r for r in data["resources"]}
+    if len(resources) != len(data["resources"]):
+        raise ValueError("Duplicated resource ids cannot identify terms owners")
+    owners: Dict[str, Any] = {}
     for r in data["resources"]:
         terms = r.get("terms")
         if not terms:
             continue
-        for name in terms["source_names"]:
-            sources[name] = {
-                "registry_id": r["id"],
-                "licence": terms["licence"],
-                "attribution": terms["attribution"],
-                "statement": terms["statement"],
-                "reviewed": str(terms["reviewed"]),
-                **(
-                    {"retention_licence": terms["retention_licence"]}
-                    if terms.get("retention_licence")
-                    else {}
-                ),
-                **({"caveats": terms["caveats"]} if terms.get("caveats") else {}),
-                **(
-                    {"depositors": terms["depositors"]}
-                    if terms.get("depositors")
-                    else {}
-                ),
+        names = terms.get("source_names")
+        if (
+            not isinstance(names, list)
+            or not names
+            or any(not isinstance(name, str) or not name.strip() for name in names)
+            or len(set(names)) != len(names)
+        ):
+            raise ValueError(
+                f"{r['id']}: terms source_names are unique nonempty strings"
+            )
+    for r in data["resources"]:
+        terms = r.get("terms")
+        if not terms:
+            continue
+        names = terms["source_names"]
+        owner = r
+        if "shared_with" in terms:
+            rid = terms["shared_with"]
+            if not isinstance(rid, str) or not rid or rid == r["id"]:
+                raise ValueError(f"{r['id']}: invalid shared terms owner {rid!r}")
+            owner = resources.get(rid)
+            owned = (owner or {}).get("terms") or {}
+            if (
+                not owned
+                or "shared_with" in owned
+                or not set(names) <= set(owned.get("source_names") or [])
+            ):
+                raise ValueError(
+                    f"{r['id']}: shared terms owner {rid!r} must directly declare {names}"
+                )
+            policy = {
+                k: v
+                for k, v in terms.items()
+                if k not in {"source_names", "shared_with"}
             }
+            canonical = {k: v for k, v in owned.items() if k != "source_names"}
+            if policy != canonical:
+                raise ValueError(f"{r['id']}: shared terms differ from owner {rid!r}")
+        for name in names:
+            if name in owners and owners[name]["id"] != owner["id"]:
+                raise ValueError(
+                    f"{name}: multiple terms owners {owners[name]['id']!r} and {owner['id']!r}; "
+                    "declare shared_with explicitly"
+                )
+            owners[name] = owner
+    return owners
+
+
+def terms_export(data: Dict[str, Any]) -> str:
+    """Terms by source name; refuse collisions even outside the registry gate."""
+    sources: Dict[str, Any] = {}
+    for name, owner in _terms_owners(data).items():
+        terms = owner["terms"]
+        sources[name] = {
+            "registry_id": owner["id"],
+            "licence": terms["licence"],
+            "attribution": terms["attribution"],
+            "statement": terms["statement"],
+            "reviewed": str(terms["reviewed"]),
+            **(
+                {"retention_licence": terms["retention_licence"]}
+                if terms.get("retention_licence")
+                else {}
+            ),
+            **({"caveats": terms["caveats"]} if terms.get("caveats") else {}),
+            **({"depositors": terms["depositors"]} if terms.get("depositors") else {}),
+        }
     body = {
         "note": "Generated from devguide/sources/registry.yaml by "
         "`python tools/source_registry.py --write`. Do not edit by hand.",
@@ -363,6 +414,10 @@ def problems(data: Dict[str, Any]) -> List[str]:
             elif not isinstance(_constant(limit["constant"]), int):
                 out.append(f"{rid}: limit constant {limit['constant']} is not an int")
     # Every source module is registered as in use.
+    try:
+        _terms_owners(data)
+    except ValueError as error:
+        out.append(str(error))
     registered = {
         m
         for r in resources

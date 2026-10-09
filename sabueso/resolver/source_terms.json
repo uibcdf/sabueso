@@ -675,11 +675,11 @@
    "reviewed": "2026-10-06"
   },
   "UniProt": {
-   "registry_id": "uniref",
+   "registry_id": "uniprot",
    "licence": "CC-BY-4.0",
-   "attribution": "UniRef, UniProt Consortium (https://www.uniprot.org/), CC BY 4.0",
+   "attribution": "UniProt Consortium (https://www.uniprot.org/), CC BY 4.0",
    "statement": "https://rest.uniprot.org/help/license",
-   "reviewed": "2026-10-01"
+   "reviewed": "2026-09-29"
   },
   "WikiPathways": {
    "registry_id": "wikipathways",

@@ -16,6 +16,21 @@ registry, including access, applicable data terms, acquisition requirements and
 scientific scope. `in_use` means Sabueso reads it directly or through stated
 cross-references; it does not establish live health, card contribution or release.
 
+### Shared source terms
+
+The packaged terms export has one canonical registry resource per
+`SourceAssertion.source.name`. A second resource using that same scientific source
+name declares `terms.shared_with: <owner resource id>` and the same complete terms
+record. The owner declares the name directly; chains, cycles, different policy
+records and undeclared duplicates are refused by both the registry gate and export.
+The result is independent of registry row order (#136).
+
+UniRef shares the `uniprot` resource's terms for the scientific source `UniProt`.
+The shared attribution names the UniProt Consortium; it does not imply that a
+UniProtKB-only build acquired UniRef. The canonical review date belongs to the
+owner's recorded terms. Source identities, source assertion support and historical
+saved terms reports are not relabeled or rewritten.
+
 Survey the provider's documented batch, per-record and release routes before
 designing a client. Respect required keys/agreements and response/throttling
 semantics. A reachable website, current software version or article licence does

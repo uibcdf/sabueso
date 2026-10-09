@@ -348,10 +348,12 @@ provider triage or repeat the archived chronology. Resume with:
    passes 15/15 exact-SHA CI and governance, recorded in the
    [technical receipt](pending_proposals/gtex_prerequisite_checkpoint.json).
    Historical reports and the published artifact stay fixed.
-   Correct the public registry's shared-source terms collision (#136): UniRef
-   must not silently replace UniProtKB attribution by row order. Declare canonical
-   ownership and reject unintended collisions without relabeling source identity
-   or rewriting saved reports.
+   The public registry's shared-source terms collision (#136) is corrected locally:
+   UniRef explicitly shares the `uniprot` resource's terms, whose provider-level
+   attribution applies to either route. Export and registry gates reject unintended
+   collisions or policy differences independently of row order. The 125 selected
+   and 5,627 full local-original cases pass; complete exact-SHA CI qualification.
+   Retain biological source identity, frozen fixture bytes and saved reports.
 3. **Advance the next bounded scientific slice.** Source-active-site residue context
    and selected composition are now in protein example `@2`, with original `@1`
    readers preserved. Continue the approved molecule/activity and disease/entity

@@ -62,6 +62,23 @@ def test_every_source_on_a_card_has_its_terms_recorded(hstim, tctim):
         assert names <= known, names - known
 
 
+def test_uniprotkb_only_card_credits_its_provider_without_inventing_uniref_access():
+    from sabueso.resolver import EntityResolver, FixtureUniProtClient
+
+    card, _ = sabueso.resolve(
+        "P60174", resolver=EntityResolver(FixtureUniProtClient("temp_data"))
+    )
+    assert {a["source"]["name"] for a in card.source_assertion_store.to_list()} == {
+        "UniProt"
+    }
+    report = card.terms("redistribution")
+    assert report["sources"]["UniProt"]["attribution_text"] == (
+        "UniProt Consortium (https://www.uniprot.org/), CC BY 4.0"
+    )
+    assert source_terms()["UniProt"]["registry_id"] == "uniprot"
+    assert report["sources"]["UniProt"]["licence"] == "CC-BY-4.0"
+
+
 @pytest.mark.parametrize(
     "use, obligations",
     [

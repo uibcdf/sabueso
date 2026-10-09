@@ -3575,3 +3575,19 @@ reference, not a maintained parallel scientific baseline. The misleading old
 PTGS2 filename does not create a PTGS2 test system. See
 [HK2_TEST_SYSTEM.md](HK2_TEST_SYSTEM.md) and
 [the final historical review](archive/local_work_2026-07/followup_35_final_review_and_hk2.md).
+
+## 2026-10-09 — Declare shared-source terms ownership (#136)
+
+Use one canonical resource for each scientific source name in the packaged terms
+export. Resource order never decides ownership. A resource sharing that source
+declares `terms.shared_with` and repeats the owner's complete policy record;
+validation refuses undeclared duplicate owners, mismatched records, missing or
+foreign-name owners, chains and cycles. Compare all policy fields, including
+retention, depositor restrictions and review dates, so a duplicate cannot hide a
+different restriction or claim a fresher review.
+
+UniProtKB owns the `UniProt` terms and UniRef declares that ownership. Both use
+provider-level UniProt Consortium attribution, with the owner's original recorded
+review date and unchanged CC-BY-4.0 licence/statement. This corrects attribution
+and registry ownership; it is not a new source licence review. Keep SourceAssertion
+names, biological identity, quantity/card schemas and original saved reports fixed.

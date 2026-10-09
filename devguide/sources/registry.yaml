@@ -1024,7 +1024,7 @@ resources:
     terms:
       source_names: ["UniProt"]
       licence: CC-BY-4.0
-      attribution: "UniProtKB, UniProt Consortium (https://www.uniprot.org/), CC BY 4.0"
+      attribution: "UniProt Consortium (https://www.uniprot.org/), CC BY 4.0"
       statement: https://rest.uniprot.org/help/license
       reviewed: 2026-09-29
     module: [sabueso.tools.db.uniprot, sabueso.mappings.uniprot, sabueso.mappings.uniprot_isoforms]
@@ -1047,10 +1047,11 @@ resources:
     licence: CC BY 4.0 (as UniProtKB; its statements are UniProt's, under UniProt's terms)
     terms:
       source_names: ["UniProt"]
+      shared_with: uniprot
       licence: CC-BY-4.0
-      attribution: "UniRef, UniProt Consortium (https://www.uniprot.org/), CC BY 4.0"
+      attribution: "UniProt Consortium (https://www.uniprot.org/), CC BY 4.0"
       statement: https://rest.uniprot.org/help/license
-      reviewed: 2026-10-01
+      reviewed: 2026-09-29
     module: [sabueso.tools.db.uniref, sabueso.mappings.uniref]
     links: ["#103"]
   - id: rcsb_pdb

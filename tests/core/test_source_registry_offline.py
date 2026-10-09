@@ -23,6 +23,84 @@ def test_the_registry_is_valid(data):
     assert registry.problems(data) == []
 
 
+def test_shared_source_terms_have_an_explicit_order_independent_owner(data):
+    expected = json.loads(registry.terms_export(data))["sources"]["UniProt"]
+    reordered = copy.deepcopy(data)
+    reordered["resources"].reverse()
+    assert (
+        json.loads(registry.terms_export(reordered))["sources"]["UniProt"] == expected
+    )
+    assert expected["registry_id"] == "uniprot"
+    assert expected["attribution"] == (
+        "UniProt Consortium (https://www.uniprot.org/), CC BY 4.0"
+    )
+
+
+def test_an_undeclared_shared_source_collision_is_refused(data):
+    broken = copy.deepcopy(data)
+    alias = next(r for r in broken["resources"] if r["id"] == "uniref")
+    alias["terms"].pop("shared_with", None)
+    assert any("multiple terms owners" in p for p in registry.problems(broken))
+    with pytest.raises(ValueError, match="multiple terms owners"):
+        registry.terms_export(broken)
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("licence", "CC0-1.0"),
+        ("attribution", "A different provider"),
+        ("statement", "https://example.org/terms"),
+        ("reviewed", "2026-01-01"),
+        ("retention_licence", "CC0-1.0"),
+        ("caveats", ["Different restrictions"]),
+        ("depositors", {"Another source": "ChEMBL"}),
+    ],
+)
+def test_shared_source_terms_cannot_override_the_owner(data, field, value):
+    broken = copy.deepcopy(data)
+    alias = next(r for r in broken["resources"] if r["id"] == "uniref")
+    alias["terms"][field] = value
+    with pytest.raises(ValueError, match="shared terms differ"):
+        registry.terms_export(broken)
+    assert any("shared terms differ" in p for p in registry.problems(broken))
+
+
+@pytest.mark.parametrize("owner", ["nowhere", "uniref", "aaindex", [], ""])
+def test_shared_source_terms_require_one_direct_matching_owner(data, owner):
+    broken = copy.deepcopy(data)
+    alias = next(r for r in broken["resources"] if r["id"] == "uniref")
+    alias["terms"]["shared_with"] = owner
+    with pytest.raises(ValueError, match="shared terms owner"):
+        registry.terms_export(broken)
+
+
+def test_shared_source_terms_refuse_chains_or_cycles(data):
+    broken = copy.deepcopy(data)
+    owner = next(r for r in broken["resources"] if r["id"] == "uniprot")
+    owner["terms"]["shared_with"] = "uniref"
+    with pytest.raises(ValueError, match="shared terms owner"):
+        registry.terms_export(broken)
+
+
+@pytest.mark.parametrize("names", ["UniProt", [], [""], ["UniProt", "UniProt"], [{}]])
+def test_invalid_owner_source_names_are_refused_even_before_its_row(data, names):
+    broken = copy.deepcopy(data)
+    owner = next(r for r in broken["resources"] if r["id"] == "uniprot")
+    owner["terms"]["source_names"] = names
+    broken["resources"].reverse()
+    with pytest.raises(ValueError, match="source_names"):
+        registry.terms_export(broken)
+
+
+def test_duplicate_resource_ids_cannot_hide_a_terms_owner(data):
+    broken = copy.deepcopy(data)
+    owner = next(r for r in broken["resources"] if r["id"] == "uniprot")
+    broken["resources"].append(copy.deepcopy(owner))
+    with pytest.raises(ValueError, match="Duplicated resource ids"):
+        registry.terms_export(broken)
+
+
 def test_the_page_is_generated_from_the_registry(data):
     page = Path("docs/content/user/data_sources.md").read_text(encoding="utf-8")
     assert page == registry.render(data), "run: python tools/source_registry.py --write"

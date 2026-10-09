@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-09, post-release source prerequisites and consumer validation (#135/#132).
+Last updated: 2026-10-09, shared-source terms ownership and consumer validation (#136/#132).
 
 ## Resume here
 
@@ -20,6 +20,7 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | Consumers | Bounded private revalidation passes 14 live/local original cells; 14 additional cards/inventory cells pass with declared repository-fixture transport; ready MOLI correction in PR #65; Nextia #1 retains Evidence ownership | Extend explicit original-answer/live scope #132; fixture execution does not qualify full acquisition or scientific acceptance |
 | SQLite lifetime | Card/deck readers and writers and direct test queries close connections; eight regressions and 5,602 local-original cases pass; exact-SHA CI passes 15/15 with no SQLite warning group (#133) | Keep fatal Linux Python 3.14 guards; correction is on development main, outside the published 0.14.0 artifact |
 | Dependent source requests | GTEx missing tissue/release prerequisites are `not_queried`; the runner stops before constructing a client; 113 selected and 5,605 full local-original cases pass; code `b28f8d3` passes 15/15 CI and governance (#135) | Retain unknown counts and historical source/report support; qualify a future installed artifact separately |
+| Shared source terms | UniRef explicitly shares canonical `uniprot` terms; collisions and policy differences are refused; 125 selected and 5,627 full local-original cases pass (#136) | Qualify exact-SHA CI; retain historical reports and separate installed-artifact gates |
 
 The accumulated recovery/consolidation code checkpoint is published as
 `dc4642414c46744f39d85cb666094b0d52dd705a`, with
@@ -192,11 +193,18 @@ capture/replay verifies the result. See the
 [technical receipt](pending_proposals/gtex_prerequisite_checkpoint.json).
 The published 0.14.0 artifact and historical stored cards/reports are unchanged.
 
-The public registry has an independently reproduced attribution collision:
-UniProtKB and UniRef both declare `UniProt`, and the export silently retains the
-last resource's terms (#136). Correct explicit shared-source ownership and add
-an order-independent collision gate before qualifying a new terms report. This
-finding does not establish a licence change; preserved reports remain historical.
+The shared-source attribution collision (#136) is corrected locally: UniRef
+declares `terms.shared_with: uniprot`, both records retain identical canonical
+policy, and the export refuses undeclared owners, differing policies and invalid
+references. A UniProtKB-only card credits the UniProt Consortium without implying
+UniRef access. **125 selected cases / 16.10 s** and **5,627 full local-original
+cases / 156.62 s** pass on Python 3.14.7 with pytest-receptor, 12 workers and fatal
+SQLite/unraisable warning guards. Five public UniProt fixture declarations were
+requalified for the attribution-only fingerprint; original bytes, licences,
+statement/review dates and delivery decisions remain fixed. Ruff, registry,
+fixture delivery, governance and warning-fatal Sphinx pass. Exact-SHA CI remains
+to be qualified. This correction does not establish a licence change; preserved
+reports remain historical.
 
 Follow the [immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).
 The recovered checkpoint's CI is qualified. Bounded private MOLI consumer
