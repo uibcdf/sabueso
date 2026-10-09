@@ -1,0 +1,202 @@
+{
+  "format": "sabueso.sqlite_lifetime_checkpoint@1",
+  "date": "2026-10-09",
+  "issue": "uibcdf/sabueso#133",
+  "qualified_source_sha": "5bbede0253992eaef96048ea20cd3f427d6686ad",
+  "published_0140_artifact_changed": false,
+  "ownership": {
+    "runtime": [
+      "sabueso/tools/card/storage.py",
+      "sabueso/tools/deck/storage.py"
+    ],
+    "runtime_contexts_corrected": 4,
+    "direct_test_query_contexts_corrected": 14,
+    "existing_explicitly_closed_sessions": [
+      "KnowledgeStore",
+      "RetrievalArchive"
+    ],
+    "schema_and_pins_changed": false
+  },
+  "reproduction": {
+    "python": "3.14.7",
+    "allocation_trace_test": "tests/core/test_storage_offline.py",
+    "tracemalloc_frames": 12,
+    "deterministic_lifetime_cases": 8,
+    "before_fix": "Eight teardown failures: real connections remained usable after the owning operation.",
+    "after_fix": "All eight closure checks pass; successful round trips, empty/error reads and failed replacement rollback verified."
+  },
+  "local": {
+    "python": "3.14.7",
+    "environment": "molsyssuite@uibcdf_3.14",
+    "scope": "Full offline local-original suite, including verified protected originals.",
+    "command": "python -m pytest -n 12 -m \"not online\" --receptor=llm --local-source-inputs -W \"error:unclosed database:ResourceWarning\" -W error::pytest.PytestUnraisableExceptionWarning",
+    "passed": 5602,
+    "seconds": 189.81,
+    "warnings": 10,
+    "warning_scope": "Intentional fixture failure/truncation warnings only.",
+    "checks": [
+      "Ruff format/check",
+      "Fixture delivery",
+      "Source registry",
+      "MOLI governance",
+      "Warning-fatal Sphinx"
+    ]
+  },
+  "ci": {
+    "run_id": 37976990044,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/37976990044",
+    "head_sha": "5bbede0253992eaef96048ea20cd3f427d6686ad",
+    "conclusion": "success",
+    "jobs_passed": 15,
+    "jobs_total": 15,
+    "receptor": "GH Run Receptor full capture",
+    "linux_python": "3.14.8",
+    "prior_linux_unclosed_sqlite_warnings": 67,
+    "current_linux_unclosed_sqlite_warnings": 0,
+    "test_jobs": [
+      {
+        "job_id": 113977676698,
+        "name": "Offline tests (windows-latest, Python 3.13)",
+        "passed": 4049,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 892.42,
+        "warnings": 6,
+        "unclosed_sqlite_warnings": 0
+      },
+      {
+        "job_id": 113977676666,
+        "name": "Ackredit public-package pilot (Python 3.11)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 308.5,
+        "warnings": 2,
+        "unclosed_sqlite_warnings": 0
+      },
+      {
+        "job_id": 113977676486,
+        "name": "Ackredit public-package pilot (Python 3.14)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 260.94,
+        "warnings": 2,
+        "unclosed_sqlite_warnings": 0
+      },
+      {
+        "job_id": 113977676593,
+        "name": "Offline tests (macos-26, Python 3.14)",
+        "passed": 4049,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 580.2,
+        "warnings": 6,
+        "unclosed_sqlite_warnings": 0
+      },
+      {
+        "job_id": 113977676632,
+        "name": "Offline tests (windows-latest, Python 3.11)",
+        "passed": 4049,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 956.05,
+        "warnings": 6,
+        "unclosed_sqlite_warnings": 0
+      },
+      {
+        "job_id": 113977676478,
+        "name": "Offline tests (ubuntu-latest, Python 3.11)",
+        "passed": 4049,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 600.44,
+        "warnings": 6,
+        "unclosed_sqlite_warnings": 0
+      },
+      {
+        "job_id": 113977676089,
+        "name": "Offline tests (ubuntu-latest, Python 3.12)",
+        "passed": 4049,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 570.81,
+        "warnings": 6,
+        "unclosed_sqlite_warnings": 0
+      },
+      {
+        "job_id": 113977676471,
+        "name": "Offline tests (windows-latest, Python 3.14)",
+        "passed": 4049,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 580.76,
+        "warnings": 6,
+        "unclosed_sqlite_warnings": 0
+      },
+      {
+        "job_id": 113977676484,
+        "name": "Offline tests (ubuntu-latest, Python 3.14)",
+        "passed": 4049,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 506.39,
+        "warnings": 6,
+        "unclosed_sqlite_warnings": 0,
+        "fatal_lifetime_warning_filters_verified": true
+      },
+      {
+        "job_id": 113977676426,
+        "name": "Offline tests (ubuntu-latest, Python 3.13)",
+        "passed": 4049,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 408.3,
+        "warnings": 6,
+        "unclosed_sqlite_warnings": 0
+      },
+      {
+        "job_id": 113977676271,
+        "name": "Offline tests (windows-latest, Python 3.12)",
+        "passed": 4049,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 789.2,
+        "warnings": 6,
+        "unclosed_sqlite_warnings": 0
+      },
+      {
+        "job_id": 113977676198,
+        "name": "Ackredit public-package pilot (Python 3.13)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 292.55,
+        "warnings": 2,
+        "unclosed_sqlite_warnings": 0
+      },
+      {
+        "job_id": 113977676211,
+        "name": "Ackredit public-package pilot (Python 3.12)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 263.92,
+        "warnings": 2,
+        "unclosed_sqlite_warnings": 0
+      }
+    ]
+  },
+  "governance": {
+    "run_id": 37976990029,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/37976990029",
+    "head_sha": "5bbede0253992eaef96048ea20cd3f427d6686ad",
+    "conclusion": "success",
+    "jobs_passed": 1
+  },
+  "qualification_limits": [
+    "Development code checkpoint; no new installed-artifact release.",
+    "Private #132 execution uses explicit fixture transport and remains separate from actual live scientific acceptance.",
+    "Published 0.14.0 keeps its original archived source and Conda artifact."
+  ]
+}

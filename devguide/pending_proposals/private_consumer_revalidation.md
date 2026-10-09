@@ -187,7 +187,7 @@ are excluded. These fixtures include synthetic and cut inputs: this is neither
 native-response qualification nor replay/acquisition of the original baseline.
 Missing fixture answers cannot establish source absence or current availability.
 All network routes are blocked: **zero network attempts**, **zero warnings** and
-**8.743 s** for the fourteen cells. The fixture execution observes 62 source
+**7.931 s** for the final fourteen-cell run at `5bbede0`. The fixture execution observes 62 source
 operations; those describe actual local client use, not historical or live access.
 
 Original orchestration constructs cards, activity/structural views and a saved
@@ -198,8 +198,20 @@ Do not add the fixture count to claim twenty-eight real-pilot cells qualified.
 
 The run uses a separate artifact directory, not a separate development environment;
 it starts from a read-only copy of the earlier knowledge store. Original input files
-and the private checkout remain unchanged. Independent inert reading of the new
-saved outputs is in progress. Full original structural/activity/profile, packet
+and the private checkout remain unchanged. An independent inert reader passes
+in **4.919 s**, verifying two original and two current card pins, **1,472 exact
+SourceAssertions** in the loaded verified snapshots, eighteen direct pinned-item
+reads (one per source on each card), two unit-bearing quantities, one deck and
+three immutable sidecar/report files. Saved inventory rules and supporting
+relationships are read as produced; they are not recomputed. Producer acquisition
+traces are captured before persistence and kept separately from stored cards.
+Bibliography exports use the original saved workflow attribution; acquisition,
+derivation and fresh credit are forbidden. A preliminary verifier incorrectly
+expected a detached acquisition trace on a stored card; that harness assumption
+was corrected, its earlier outputs preserved, and the original cells rerun in a
+new private directory. It is not an SDK defect or missing historical-credit repair.
+
+Full original structural/activity/profile, packet
 and comparative acquisition and overall #132 acceptance remain open; the next
 source-access scope must be explicitly selected rather than inferred from this
 fixture exercise. No new live request is made or authorized by this receipt.

@@ -52,9 +52,10 @@ disease journeys, clinical bibliography and conservative source-state/taxonomy
 integrity. Schema 0.3.13 is frozen. It advances foundational identity/support/
 reference integrity and bounded consumer-oriented acceptance together. Native
 access remains separate from card contribution and current live health. Full
-private consumer routes (#132), SQLite lifetime (#133), broader #108/#91/#92 and
+private consumer routes (#132), broader #108/#91/#92 and
 consumer-owned MOLI/Nextia/Recorda acceptance remain open; the next development
-order continues below.
+order continues below. SQLite lifetime (#133) is corrected and exact-SHA CI
+qualified on post-release main; the published 0.14.0 artifact remains unchanged.
 
 ## Preceding release: 0.13.0 (#121)
 
@@ -315,8 +316,9 @@ provider triage or repeat the archived chronology. Resume with:
    taxonomy follow-up `a05e0a3` each pass 15/15 exact-SHA CI jobs and governance.
    The [publication receipt](pending_proposals/post_recovery_public_checkpoint.md)
    and [follow-up receipt](pending_proposals/taxonomy_followup_checkpoint.json)
-   retain their own input scopes and qualification. Preserve the 49/37
-   boundary. Installed-artifact/release gates remain separate.
+   retain their own input scopes and qualification. Preserve the reviewed delivery
+   boundary: now 50 repository inputs, including the release compatibility card,
+   and 37 protected originals. Installed-artifact/release gates remain separate.
 2. **Continue bounded real consumer use.** Revalidate the applicable
    private MOLI Python/Jupyter workflows under
    [#132](https://github.com/uibcdf/sabueso/issues/132). Keep the pilot checkout
@@ -336,8 +338,10 @@ provider triage or repeat the archived chronology. Resume with:
    orchestration result separate from the earlier live/local scope: it does not
    qualify full profile acquisition, native answers or source absence. The
    post-release SQLite lifetime fix (#133) passes eight regressions and the
-   5,602-case local-original suite; require exact-SHA Python 3.14 CI before closing
-   its remote acceptance. Neither slice changes the published 0.14.0 artifact.
+   5,602-case local-original suite. Code `5bbede0` passes 15/15 exact-SHA CI and
+   governance; Linux Python 3.14 has only six intentional fixture warnings, with
+   no unclosed SQLite group. #133 is complete. Neither slice changes the published
+   0.14.0 artifact.
 3. **Advance the next bounded scientific slice.** Source-active-site residue context
    and selected composition are now in protein example `@2`, with original `@1`
    readers preserved. Continue the approved molecule/activity and disease/entity

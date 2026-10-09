@@ -18,7 +18,7 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | Source maturity | Generated native/mapping/enricher/input scope; 83 `in_use`, 37 deferred, 11 evaluating; 24 declared enricher instances | Integration by scientific question; portfolio-wide live health and consumer acceptance remain unassessed |
 | Scientific journeys | Protein example `@2` retains active-site residue/composition support; independent legacy reader and reacquisition pass | Next bounded clinical bibliography/query/explanation work; complete derived-operation observation remains open |
 | Consumers | Bounded private revalidation passes 14 live/local original cells; 14 additional cards/inventory cells pass with declared repository-fixture transport; ready MOLI correction in PR #65; Nextia #1 retains Evidence ownership | Extend explicit original-answer/live scope #132; fixture execution does not qualify full acquisition or scientific acceptance |
-| SQLite lifetime | Card/deck readers and writers and direct test queries close connections; eight lifetime regressions reproduce the defect before the fix; 5,602 local-original tests pass with fatal unclosed-database warnings | Exact-SHA Python 3.14 CI confirmation under #133; published 0.14.0 retains its original behavior |
+| SQLite lifetime | Card/deck readers and writers and direct test queries close connections; eight regressions and 5,602 local-original cases pass; exact-SHA CI passes 15/15 with no SQLite warning group (#133) | Keep fatal Linux Python 3.14 guards; correction is on development main, outside the published 0.14.0 artifact |
 
 The accumulated recovery/consolidation code checkpoint is published as
 `dc4642414c46744f39d85cb666094b0d52dd705a`, with
@@ -70,8 +70,9 @@ and source-sequence context, notebook reports and public HK2, three independent
 scientific journeys, clinical bibliography and conservative source-state/taxonomy
 integrity. It advances both foundational support/identity/schema integrity and
 bounded consumer-oriented workflows. Native access remains separate from declared
-card contributions; complete private consumer acceptance (#132), SQLite lifetime
-(#133) and broader acquisition/bibliography (#108) remain open.
+card contributions; complete private consumer acceptance (#132) and broader
+acquisition/bibliography (#108) remain open. The released artifact retains the
+SQLite lifetime behavior subsequently corrected and qualified on main under #133.
 
 ## Capabilities delivered in 0.13.0
 
@@ -205,7 +206,15 @@ fix, including empty/error reads and failed deck-replacement rollback. Full
 local-original qualification passes **5,602 cases / 189.81 s**, 12 workers and
 pytest-receptor, with ten intentional fixture warnings. Unclosed-database and
 unraisable-exception warnings are fatal in this checkpoint and in Linux Python
-3.14 CI. Exact-SHA remote confirmation remains pending; this is not a new release.
+3.14 CI. Code `5bbede0253992eaef96048ea20cd3f427d6686ad` passes
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/37976990044)
+and [1/1 governance](https://github.com/uibcdf/sabueso/actions/runs/37976990029),
+inspected with GH Run Receptor full captures. Nine repository-input lanes each
+pass 4,049 cases, ten native-only skips and 26 online deselections; four installed
+public Ackredit receiving lanes pass 981 cases and their public workflows.
+Linux Python 3.14.8 now has six intentional fixture warnings, with the former
+67 unclosed SQLite warnings absent. #133 is complete; this is not a new release.
+See the [sanitized checkpoint](pending_proposals/sqlite_lifetime_checkpoint.json).
 
 Independent SDK acceptance remains useful while consumer-owned work proceeds.
 Queries/non-protein packets (#71), derived explanations (#91), complete observed
