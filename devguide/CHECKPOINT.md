@@ -20,7 +20,7 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | Consumers | Bounded private revalidation passes 14 live/local original cells; 14 additional cards/inventory cells pass with declared repository-fixture transport; ready MOLI correction in PR #65; Nextia #1 retains Evidence ownership | Extend explicit original-answer/live scope #132; fixture execution does not qualify full acquisition or scientific acceptance |
 | SQLite lifetime | Card/deck readers and writers and direct test queries close connections; eight regressions and 5,602 local-original cases pass; exact-SHA CI passes 15/15 with no SQLite warning group (#133) | Keep fatal Linux Python 3.14 guards; correction is on development main, outside the published 0.14.0 artifact |
 | Dependent source requests | GTEx missing tissue/release prerequisites are `not_queried`; the runner stops before constructing a client; 113 selected and 5,605 full local-original cases pass; code `b28f8d3` passes 15/15 CI and governance (#135) | Retain unknown counts and historical source/report support; qualify a future installed artifact separately |
-| Shared source terms | UniRef explicitly shares canonical `uniprot` terms; collisions and policy differences are refused; 125 selected and 5,627 full local-original cases pass (#136) | Qualify exact-SHA CI; retain historical reports and separate installed-artifact gates |
+| Shared source terms | UniRef explicitly shares canonical `uniprot` terms; collisions and policy differences are refused; 125 selected and 5,627 full local-original cases pass; code `e0b80b2` passes 15/15 CI and governance (#136) | Retain historical reports; qualify a future installed artifact separately |
 
 The accumulated recovery/consolidation code checkpoint is published as
 `dc4642414c46744f39d85cb666094b0d52dd705a`, with
@@ -193,7 +193,7 @@ capture/replay verifies the result. See the
 [technical receipt](pending_proposals/gtex_prerequisite_checkpoint.json).
 The published 0.14.0 artifact and historical stored cards/reports are unchanged.
 
-The shared-source attribution collision (#136) is corrected locally: UniRef
+The shared-source attribution collision (#136) is corrected in code `e0b80b2`: UniRef
 declares `terms.shared_with: uniprot`, both records retain identical canonical
 policy, and the export refuses undeclared owners, differing policies and invalid
 references. A UniProtKB-only card credits the UniProt Consortium without implying
@@ -202,9 +202,17 @@ cases / 156.62 s** pass on Python 3.14.7 with pytest-receptor, 12 workers and fa
 SQLite/unraisable warning guards. Five public UniProt fixture declarations were
 requalified for the attribution-only fingerprint; original bytes, licences,
 statement/review dates and delivery decisions remain fixed. Ruff, registry,
-fixture delivery, governance and warning-fatal Sphinx pass. Exact-SHA CI remains
-to be qualified. This correction does not establish a licence change; preserved
-reports remain historical.
+fixture delivery, governance and warning-fatal Sphinx pass. Source
+`e0b80b2f3996419bda1909e1bc0a52ff0c6263f6` passes
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/37996066614)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/37996066521).
+Nine repository-input lanes pass **4,074 cases** each, with ten protected-input
+skips, 26 online deselections and six intentional fixture warnings. Four
+installed-Ackredit receiving lanes pass **981 cases** each. GH Run Receptor full
+capture/replay verifies the result; see the
+[technical receipt](pending_proposals/shared_source_terms_checkpoint.json).
+This correction does not establish a licence change; preserved reports remain
+historical and the published 0.14.0 artifact remains unchanged.
 
 Follow the [immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).
 The recovered checkpoint's CI is qualified. Bounded private MOLI consumer
