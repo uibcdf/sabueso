@@ -1,5 +1,21 @@
 # Sabueso — Decision Log
 
+## Keep missing dependent-source inputs unqueried (2026-10-09, #135)
+
+An enricher can be requested while lacking the upstream knowledge needed to
+formulate a source query. Introduce the internal `RequestPrerequisiteMissing`
+outcome at request planning: record `not_queried` with its input explanation before
+constructing or calling the client. Use it for GTEx when pext tissue keys or one
+stated GTEx release are unavailable. Do not select among conflicting releases or
+turn those missing prerequisites into source-stated absence.
+
+This corrects the recorded request outcome. Existing `knowledge_state@5` already
+classifies `not_queried` with an unknown count; its algorithm/version, published
+schema, original SourceAssertions and historical stored reports remain unchanged.
+Successful release-bound GTEx queries, received empty responses and actual source
+failures keep their separate outcomes. Public regressions verify the source is not
+called and the generic runner does not construct a blocked client.
+
 ## Publish recovered checkpoint and return to real consumers (2026-10-08)
 
 The maintainer authorized publishing the recovery/consolidation checkpoint and

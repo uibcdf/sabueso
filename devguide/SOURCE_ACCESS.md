@@ -45,6 +45,11 @@ unauthorized, malformed and failed acquisition. Use the existing connector and
 not-found errors; card enrichment isolates per-source/per-request outcomes.
 Do not bypass access gates or infer permission from availability.
 
+A declared enricher whose required upstream input is missing or ambiguous raises
+`RequestPrerequisiteMissing` before constructing or calling its client. The runner
+records `not_queried` and its prerequisite explanation. GTEx requires pext tissue
+keys and one source-stated GTEx release; missing inputs are not GTEx absence (#135).
+
 ### Supplied originals
 
 `load_source_snapshot` parses explicit supported formats and preserves original

@@ -342,6 +342,10 @@ provider triage or repeat the archived chronology. Resume with:
    governance; Linux Python 3.14 has only six intentional fixture warnings, with
    no unclosed SQLite group. #133 is complete. Neither slice changes the published
    0.14.0 artifact.
+   The subsequent GTEx prerequisite correction (#135) keeps absent tissue keys or
+   ambiguous/missing release inputs `not_queried` before constructing a source
+   client. Its 113 selected and 5,605 full local-original tests pass; exact-SHA CI
+   remains to be qualified. Historical reports and the published artifact stay fixed.
 3. **Advance the next bounded scientific slice.** Source-active-site residue context
    and selected composition are now in protein example `@2`, with original `@1`
    readers preserved. Continue the approved molecule/activity and disease/entity

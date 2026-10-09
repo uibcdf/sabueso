@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from sabueso.enrichers import Enricher, NothingToAsk, Request
+from sabueso.enrichers import Enricher, Request, RequestPrerequisiteMissing
 
 PEXT = "annotations.exon_usage_by_tissue"
 
@@ -32,12 +32,12 @@ class GTEx(Enricher):
                     releases.add(str((made.get("source") or {}).get("version") or ""))
         keys.discard(None)
         if not keys:
-            raise NothingToAsk(
+            raise RequestPrerequisiteMissing(
                 "the card states no pext tissues (ask exon_usage=True as well)"
             )
         datasets = sorted({f"gtex_{m}" for r in releases for m in _gtex(r)})
         if len(datasets) != 1:
-            raise NothingToAsk(
+            raise RequestPrerequisiteMissing(
                 f"the pext states no single GTEx release ({sorted(releases)})"
             )
         (dataset,) = datasets

@@ -7,7 +7,8 @@ covers, and three steps:
 - ``requests(context, options)``: what to ask (one request per gene, or one for the
   entry), each with the fields its enrichment record starts with. ``NothingToAsk`` when
   the entry states nothing to ask with (e.g. no Ensembl gene): ``not_found``, with the
-  reason;
+  reason; ``RequestPrerequisiteMissing`` when required upstream knowledge is absent
+  or ambiguous: ``not_queried``, with the blocking input described;
 - ``fetch(client, request, options)``: the source client's call;
 - ``map(context, request, response, options)``: the mapping, and the record's outcome
   (status, version, count, truncation).
@@ -37,6 +38,10 @@ from sabueso.core.errors import ConnectorError, MissingKeyError, RecordNotFoundE
 
 class NothingToAsk(Exception):
     """The entry states nothing this source can be asked with; the message says why."""
+
+
+class RequestPrerequisiteMissing(NothingToAsk):
+    """Required upstream knowledge is missing; the dependent source was not asked."""
 
 
 @dataclass
@@ -206,6 +211,15 @@ def run(
         return
     try:
         requests = enricher.requests(context, options)
+    except RequestPrerequisiteMissing as exc:
+        enrichments.append(
+            {
+                **enricher.record(context, options),
+                "status": "not_queried",
+                "detail": str(exc),
+            }
+        )
+        return
     except NothingToAsk as exc:
         enrichments.append(
             {

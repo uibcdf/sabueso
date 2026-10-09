@@ -94,9 +94,54 @@ def test_each_term_is_gtex_s_statement_with_its_release(card):
 
 
 def test_without_the_pext_gtex_is_not_asked(resolver):
-    record = _record(_card(resolver))
-    assert record["status"] == "not_found"
+    class Unasked:
+        def tissues(self, dataset):
+            pytest.fail("GTEx cannot be queried without pext tissues")
+
+    card, _ = sabueso.resolve(
+        "P60174", resolver=resolver, gtex=True, gtex_client=Unasked()
+    )
+    record = _record(card)
+    assert record["status"] == "not_queried"
     assert "exon_usage=True" in record["detail"]
+    row = next(
+        r
+        for r in card.knowledge_state()["rows"]
+        if r["source"] == "GTEx" and r["area"] == "annotations.tissue_terms"
+    )
+    assert (row["state"], row["count"]) == ("not_queried", None)
+    assert row["basis"]["detail"] == record["detail"]
+
+
+@pytest.mark.parametrize(
+    "versions", [("",), ("gnomad_r4 pext (GTEx v8)", "gnomad_r4 pext (GTEx v10)")]
+)
+def test_without_one_stated_gtex_release_the_source_is_not_queried(versions):
+    from sabueso.core.knowledge_state import _enrichment_row
+    from sabueso.enrichers import Context, run
+    from sabueso.enrichers.gtex import ENRICHER, PEXT
+
+    class Unasked:
+        def tissues(self, dataset):
+            pytest.fail("GTEx needs one source-stated release")
+
+    mappings = [
+        {
+            "fields": {PEXT: [{"tissues": [{"tissue": "Testis"}]}]},
+            "source_assertions": [
+                {"field_path": PEXT, "source": {"version": version}}
+                for version in versions
+            ],
+        }
+    ]
+    context = Context("P60174", {"organism": {"taxonId": 9606}}, mappings)
+    records, results = [], []
+    run(ENRICHER, context, True, Unasked(), results, records)
+    assert not results
+    assert records[0]["status"] == "not_queried"
+    assert "no single GTEx release" in records[0]["detail"]
+    row = _enrichment_row("annotations.tissue_terms", "GTEx", records)
+    assert (row["state"], row["count"]) == ("not_queried", None)
 
 
 def test_a_parasite_protein_is_not_applicable(resolver):

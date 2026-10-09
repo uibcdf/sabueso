@@ -56,6 +56,9 @@ Enricher
   catches errors itself.
 - **The runner** does what every source needs, in one place:
   - organism coverage (`not_applicable`);
+  - `RequestPrerequisiteMissing` from request planning → `not_queried`, before
+    constructing or calling a client; missing or ambiguous dependent inputs do not
+    establish source absence (GTEx pext tissues/release, #135);
   - `RecordNotFoundError` → `not_found`, and `ConnectorError` → `error`, so one failing
     source never hides another's knowledge;
   - truncation;

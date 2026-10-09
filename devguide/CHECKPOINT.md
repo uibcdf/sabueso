@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-09, post-release SQLite lifetime and bounded fixture consumers (#133/#132).
+Last updated: 2026-10-09, post-release source prerequisites and consumer validation (#135/#132).
 
 ## Resume here
 
@@ -19,6 +19,7 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | Scientific journeys | Protein example `@2` retains active-site residue/composition support; independent legacy reader and reacquisition pass | Next bounded clinical bibliography/query/explanation work; complete derived-operation observation remains open |
 | Consumers | Bounded private revalidation passes 14 live/local original cells; 14 additional cards/inventory cells pass with declared repository-fixture transport; ready MOLI correction in PR #65; Nextia #1 retains Evidence ownership | Extend explicit original-answer/live scope #132; fixture execution does not qualify full acquisition or scientific acceptance |
 | SQLite lifetime | Card/deck readers and writers and direct test queries close connections; eight regressions and 5,602 local-original cases pass; exact-SHA CI passes 15/15 with no SQLite warning group (#133) | Keep fatal Linux Python 3.14 guards; correction is on development main, outside the published 0.14.0 artifact |
+| Dependent source requests | GTEx missing tissue/release prerequisites are `not_queried`; the runner stops before constructing a client; 113 selected and 5,605 full local-original cases pass (#135) | Exact-SHA CI qualification; retain unknown counts and historical source/report support |
 
 The accumulated recovery/consolidation code checkpoint is published as
 `dc4642414c46744f39d85cb666094b0d52dd705a`, with
@@ -176,6 +177,14 @@ The receiving lanes report two expected fixture warnings each. This qualifies th
 exact follow-up code, not a new Sabueso release or overall private-pilot acceptance.
 
 ## Open work
+
+The GTEx prerequisite correction (#135) passes **113 selected cases / 19.05 s**
+and **5,605 full local-original cases / 148.22 s**, using Python 3.14.7,
+pytest-receptor, 12 workers and the fatal SQLite/unraisable warning guards.
+The ten full-suite warnings are intentional source-fixture outcomes. Ruff,
+source/fixture registry, unchanged schema 0.3.13 shape, governance and warning-failing
+Sphinx gates pass. Remote qualification is pending; the published 0.14.0 artifact
+and historical stored cards/reports are unchanged.
 
 Follow the [immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).
 The recovered checkpoint's CI is qualified. Bounded private MOLI consumer

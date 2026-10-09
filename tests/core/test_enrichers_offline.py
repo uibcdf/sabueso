@@ -13,6 +13,7 @@ from sabueso.enrichers import (
     Context,
     Enricher,
     NothingToAsk,
+    RequestPrerequisiteMissing,
     knowledge_areas,
     options_by_source,
     run,
@@ -123,6 +124,39 @@ def test_a_missing_key_is_not_queried_never_an_error():
     row = _enrichment_row("annotations.toy", "Toy", records)
     assert row["state"] == "not_queried"
     assert row["basis"]["detail"] == "Toy answers only with a personal key"
+
+
+def test_a_missing_prerequisite_does_not_construct_or_query_a_client():
+    from sabueso.core.knowledge_state import _enrichment_row
+
+    class Dependent(_Toy):
+        def requests(self, context, options):
+            raise RequestPrerequisiteMissing("the upstream response is unavailable")
+
+        def client(self):
+            pytest.fail("A blocked request must not construct a source client")
+
+    mappings, records = [], []
+    run(
+        Dependent(),
+        Context("P1", {"organism": {"taxonId": 9606}}),
+        True,
+        None,
+        mappings,
+        records,
+    )
+    assert not mappings
+    assert records == [
+        {
+            "source": "Toy",
+            "identifier": "P1",
+            "status": "not_queried",
+            "detail": "the upstream response is unavailable",
+        }
+    ]
+    row = _enrichment_row("annotations.toy", "Toy", records)
+    assert (row["state"], row["count"]) == ("not_queried", None)
+    assert row["basis"]["detail"] == records[0]["detail"]
 
 
 def test_not_found_states_the_release_it_was_checked_against():
