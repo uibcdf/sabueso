@@ -18,6 +18,7 @@ Every card states the card schema it was written with (`meta.schema_version`):
 | 0.9.0 | 0.3.9 |
 | 0.10.0, 0.11.0 | 0.3.10 |
 | 0.12.0 | 0.3.11 |
+| 0.14.0 | 0.3.13 |
 | 0.13.0 | 0.3.12 |
 
 - A card of an older version of the same line (`0.3.x`) is read as it is.

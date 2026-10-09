@@ -111,7 +111,7 @@ current 0.9.0-based Ackredit editable satisfies the public minimum, with runtime
 distribution agreement and a passing pip check (2026-10-04). Provider #81 records
 the earlier Git-version mismatch and receiving confirmation.
 
-## Candidate 0.14.0 (#134)
+## Published 0.14.0 (#134)
 
 The current `release_plan.toml` selects 0.14.0 and the staged route;
 `release_notes_0.14.0.md` states the consolidation scope and known limits. The
@@ -130,9 +130,19 @@ is `receipts/sabueso_0.14.0_local_schema_freeze_2026-10-09.json`.
 The local installed gate passes 1,277 cases with one explicitly excluded native
 DisProt original, the public workflow and pip check. This is preliminary local
 evidence, not the final staging file or publication.
-Select the final candidate only after committing that frozen card and passing its
-schema, fixture-delivery and applicable local gates. Stable publication remains
-blocked until exact-SHA CI/governance and every installed OS/minor lane pass.
+Final source/tag `78623d0` passes CI 37925885113 (15/15) and governance
+37925885489. Producer 37929742651 builds `sabueso-0.14.0-py_0.tar.bz2`, SHA-256
+`ceb940bc37c85934ca0fadfdeb315cc69095aea46ed255d73b7c5f3e33376daa`;
+all 517 implementation/resource files equal source. Installed matrix 37930116530
+passes producer verification and all twelve OS/minor lanes, each with 1,277 cases,
+one deliberate local-only DisProt exclusion and the public workflow. Release event
+37931493554 verifies without rebuilding; promotion 37931518272 preserves the file
+and verifies its public labels/digest. Anonymous public bytes equal staging.
+A fresh public-only Linux/Python 3.14.8 installation with a new cache passes
+bytes/origins/API, frozen-card reading, the same 1,277 cases/one exclusion,
+workflow and pip check. Zenodo DOI `10.5281/zenodo.23263488` archives all 1,318
+source files identical to the tag; both DOI destinations are verified. Complete
+receipt: `receipts/sabueso_0.14.0_public_2026-10-09.json`.
 Full private consumer acceptance (#132), SQLite connection lifetime (#133) and
 broader source observation/bibliography (#108) remain explicit limits.
 

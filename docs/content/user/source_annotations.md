@@ -1,13 +1,18 @@
 # Reading source annotations and correspondences
 
-These examples describe the development checkout. Some native readers require an
+The native reader/mapping extensions described here are delivered in 0.14.0.
+Code delivery does not publish protected original qualification inputs, grant
+reuse rights or establish current live health or automatic card enrichment.
+References to local/unreleased qualification describe those inputs and receipts.
+
+These examples describe the API delivered in 0.14.0. Some native readers require an
 original input supplied by the user under its applicable terms; their test inputs
 are kept local and are absent from a public checkout. Check the input scope in
 {doc}`source_capabilities` before running a fixture example.
 
 ## Additional UniProt annotations in development
 
-Development card schema 0.3.13 retains UniProt activity regulation, domain notes,
+Published card schema 0.3.13 retains UniProt activity regulation, domain notes,
 similarity, source cautions and miscellaneous text with independent source support.
 Source cautions are descriptive annotations; similarity does not establish identity.
 It also retains positional domains, chains, lipidation, motifs, regions, sequence

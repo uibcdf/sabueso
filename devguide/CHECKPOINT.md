@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-08, consolidation after completed local-work recovery (#112).
+Last updated: 2026-10-09, verified substantial release 0.14.0 (#134).
 
 ## Resume here
 
@@ -13,7 +13,7 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 
 | Work | Current state | Next acceptance |
 | --- | --- | --- |
-| Fixture delivery | 49 repository inputs; 37 protected local originals; public absence suite passes with originals restored and verified | Requalification of local delivery only with applicable declarations; retain both test scopes |
+| Fixture delivery | 50 repository entries, including the release compatibility card; 37 protected local originals; public absence suite passes with originals restored and verified | Requalification of local delivery only with applicable declarations; retain both test scopes |
 | Guide | Six complete entry-document snapshots archived; common guidance separated from provider details; warning-failing Sphinx passes | Keep current guidance true alongside the next implementation |
 | Source maturity | Generated native/mapping/enricher/input scope; 83 `in_use`, 37 deferred, 11 evaluating; 24 declared enricher instances | Integration by scientific question; portfolio-wide live health and consumer acceptance remain unassessed |
 | Scientific journeys | Protein example `@2` retains active-site residue/composition support; independent legacy reader and reacquisition pass | Next bounded clinical bibliography/query/explanation work; complete derived-operation observation remains open |
@@ -26,7 +26,8 @@ and [passing governance](https://github.com/uibcdf/sabueso/actions/runs/37838441
 inspected with gh-run-receptor. The
 [publication receipt](pending_proposals/post_recovery_public_checkpoint.md)
 and [machine-readable record](pending_proposals/post_recovery_public_checkpoint.json)
-retain both input scopes and the portability corrections. No new release is claimed.
+retain both input scopes and the portability corrections. These preceding code
+checkpoints remain historical; completed release qualification is recorded below.
 Current scoped acceptance and measurements are in the
 [consolidation report](pending_proposals/post_recovery_consolidation.md).
 The [bounded consumer report](pending_proposals/private_consumer_revalidation.md)
@@ -41,22 +42,35 @@ retains local and remote scopes, measured cost correction and remaining limits.
 
 ## Release and schema
 
-**Published release: 0.13.0**, qualified source/tag
-`7e78d078111ac8dd51e08746c3818108ebd825a4`, released 2026-10-05 (#121).
-The promoted `sabueso-0.13.0-py_0.tar.bz2` has SHA-256
-`1e8f80375cbc08c04df452dbbb55084dc4ff41c6242fbb07e3479f0cd4c7361c`.
-All 12 installed Linux/macOS-arm64/Windows × Python 3.11–3.14 lanes passed
-613 receiving cases and the public workflow; clean public installation and
-identical-tag Zenodo archival were verified. Complete
-[publication receipt](../devtools/conda-build/receipts/sabueso_0.13.0_public_2026-10-05.json).
+**Published release: 0.14.0**, qualified source/tag
+`78623d0258c4deab5226ea39a96331c7b643dc44`, released 2026-10-09 (#134).
+CI 37925885113 passes 15/15 and governance 37925885489 passes. The promoted
+`sabueso-0.14.0-py_0.tar.bz2` has SHA-256
+`ceb940bc37c85934ca0fadfdeb315cc69095aea46ed255d73b7c5f3e33376daa`.
+All 12 installed Linux/macOS-arm64/Windows × Python 3.11–3.14 lanes pass
+1,277 receiving cases, one intentional local-only input exclusion and the public
+workflow. Clean public installation verifies bytes/origins/API, the frozen card,
+the same cases, workflow and pip check. Zenodo
+[10.5281/zenodo.23263488](https://doi.org/10.5281/zenodo.23263488) archives all
+1,318 source files identical to the tag. Complete
+[publication receipt](../devtools/conda-build/receipts/sabueso_0.14.0_public_2026-10-09.json).
 
-Published schema **0.3.12** and its shapes/frozen cards remain immutable.
-Schema **0.3.13** is frozen from the clean installed preliminary Conda writer
-for the staged **0.14.0** candidate (#134); stable publication is pending. The
-[release notes](../devtools/conda-build/release_notes_0.14.0.md) define its scope
-and limits. Every further shape change follows [SCHEMA.md](SCHEMA.md), migrations
-and recorded-shape gates, preserving the frozen shape.
+Published schema **0.3.13**, written by the clean installed preliminary Conda
+candidate, and all earlier shapes/frozen cards remain immutable. The
+[release notes](../devtools/conda-build/release_notes_0.14.0.md) define the
+consolidation scope and remaining limits. Further shape changes follow
+[SCHEMA.md](SCHEMA.md), migrations and recorded-shape gates.
 Earlier release receipts remain in `../devtools/conda-build/receipts/`.
+
+## Capabilities delivered in 0.14.0
+
+The release consolidates bounded native/supplied-file access, explicit residue
+and source-sequence context, notebook reports and public HK2, three independent
+scientific journeys, clinical bibliography and conservative source-state/taxonomy
+integrity. It advances both foundational support/identity/schema integrity and
+bounded consumer-oriented workflows. Native access remains separate from declared
+card contributions; complete private consumer acceptance (#132), SQLite lifetime
+(#133) and broader acquisition/bibliography (#108) remain open.
 
 ## Capabilities delivered in 0.13.0
 
@@ -79,7 +93,8 @@ It implements the three independent SDK journeys, molecular knowledge-state
 correction, exact disease membership/build support and conservative admission,
 additional source observations, ChEMBL indication references and explicit
 ClinicalTrials.gov/Europe PMC observation/bibliography (#122–#128).
-Public-package delivery of those fixes remains open.
+Those fixes and the recovered native/residue/sequence/report capabilities are
+delivered in 0.14.0; the dated pre-release checkpoints remain historical.
 
 The published development checkpoint adds bounded native-source readers/mappings, supplied original
 snapshots, canonical residue/source-sequence knowledge and composition, isoform/
@@ -184,8 +199,8 @@ Release qualification follows [the staged route](../devtools/conda-build/README.
 ## Release qualification
 
 Published receipts prove only their exact source and artifact. The recovered code
-checkpoint and taxonomy follow-up are qualified at `dc46424` and `a05e0a3`;
-subsequent code revisions need their own
+checkpoint and taxonomy follow-up were qualified at `dc46424` and `a05e0a3`;
+0.14.0 qualifies their accumulated release at `78623d0`. Subsequent code revisions need their own
 applicable gates and exact-SHA CI. Staged installed-package/platform gates remain
 required before release.
 Older diagnostic wheels, local native inputs and historical pilot execution are

@@ -1,6 +1,6 @@
 # Notebook reports and residue annotations
 
-These development APIs after 0.13.0 recover an earlier prototype using the
+These APIs, delivered in 0.14.0, recover an earlier prototype using the
 current SourceAssertion model.
 
 ## Render stored knowledge

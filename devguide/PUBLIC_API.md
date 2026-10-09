@@ -1,7 +1,7 @@
 # Sabueso — Public API
 
-This document records the public surface of release 0.13.0 and explicitly labelled
-development additions. Anything not listed here, or not exported by `sabueso`, is internal.
+This document records the public surface of release 0.14.0 and explicitly labelled
+future development additions. Anything not listed here, or not exported by `sabueso`, is internal.
 Tools, views, stores and source access check their arguments through ArgDigest.
 Plain accessors (`get`, `set`, `sort`…) do not, and fail loudly on wrong types
 (`ARGUMENT_CONTRACTS.md` lists which is which). The user guide (`docs/`) shows how
@@ -9,6 +9,9 @@ to use them. Development entries do not establish public delivery, automatic car
 enrichment or live-service qualification.
 
 ## Development recovery after 0.13.0
+
+This historical section records the recovery delivered in 0.14.0 (#134).
+Native routes retain their individual fixture, terms and live-access limits.
 
 `sabueso.tools.sources.get_catalog()` reads detached, packaged registry metadata
 without source access. Its `capabilities` inventory names native function/client
@@ -477,7 +480,10 @@ returned independently of clinical card fields. Both existing study lookup and
 this explicit lookup attach original acquisition/portable attribution sidecars;
 no linked target is consulted. Explicit Europe PMC article access can enrich the
 enclosing workflow bibliography, retaining collective authors as literal CSL names.
-This is unreleased development work; the public release remains 0.13.0.
+This recovered API is delivered in 0.14.0 (#134), with exact-source and installed
+Conda qualification. The historical section anchor remains stable. Native access
+remains separate from card enrichment, complete private-consumer acceptance and
+current live provider health.
 
 ## Development bound native originals
 
@@ -495,8 +501,8 @@ admission, schema/enricher, cross-source identity join or provider adoption.
 ### Native UniProt annotation extension (development 0.3.13)
 
 Existing protein card construction/refresh now retains five additional native text
-kinds and eight positional feature kinds, including domains, under the unpublished
-0.3.13 schema. Public signatures and acquisition routes do not change.
+kinds and eight positional feature kinds, including domains, under the published
+0.3.13 schema (release 0.14.0). Public signatures and acquisition routes do not change.
 `Card.get_residue` preserves source endpoint modifiers and rejects known UniProt
 sequence-revision mismatches for placement; retained original features and ECO
 support remain available. Source cautions and similarity do not create quality or

@@ -1,9 +1,13 @@
 # Sabueso 0.14.0 — Consolidated native knowledge and scientific journeys
 
-Release candidate under qualification. Stable publication requires exact-source
-CI/governance and all twelve installed OS/Python lanes for one immutable staged
-Conda archive. Publication, public installation and Zenodo archival are separate
-gates; preceding source receipts do not establish them.
+Published and verified 2026-10-09 from qualified source/tag `78623d0` (#134).
+CI passes 15/15; all twelve installed OS/Python lanes pass 1,277 receiving cases,
+one deliberate local-only native-input exclusion and the public workflow.
+Promotion preserves the tested archive. Clean public Python 3.14 installation
+passes bytes/origins/API, frozen-card reading, the same cases, workflow and pip
+check. Zenodo [10.5281/zenodo.23263488](https://doi.org/10.5281/zenodo.23263488)
+archives all 1,318 source files identical to the tag. Complete qualification:
+[publication receipt](receipts/sabueso_0.14.0_public_2026-10-09.json).
 
 ## Knowledge access and explicit scientific context
 

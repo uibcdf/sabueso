@@ -1,0 +1,315 @@
+{
+  "schema": "sabueso.public-release-receipt@1",
+  "version": "0.14.0",
+  "date": "2026-10-09",
+  "owner_issue": "https://github.com/uibcdf/sabueso/issues/134",
+  "candidate_sha": "78623d0258c4deab5226ea39a96331c7b643dc44",
+  "tag": "0.14.0",
+  "card_schema": "0.3.13",
+  "github_release": "https://github.com/uibcdf/sabueso/releases/tag/0.14.0",
+  "published_at": "2026-10-09T12:39:37Z",
+  "candidate_gates": {
+    "candidate_sha": "78623d0258c4deab5226ea39a96331c7b643dc44",
+    "ci": {
+      "run_id": 37925885113,
+      "passed_jobs": 15,
+      "repository_lanes": 9,
+      "passed_per_repository_lane": 4041,
+      "expected_skips_per_repository_lane": 10,
+      "online_deselections": 26,
+      "public_ackredit_receiving_lanes": 4,
+      "passed_per_receiving_lane": 981,
+      "linux314_sqlite_resource_warnings": 67
+    },
+    "governance": {
+      "run_id": 37925885489,
+      "passed_jobs": 1
+    },
+    "source_inputs": {
+      "repository_entries": 50,
+      "protected_local_only_originals": 37,
+      "private_inputs": 0
+    }
+  },
+  "staging": {
+    "candidate_sha": "78623d0258c4deab5226ea39a96331c7b643dc44",
+    "version": "0.14.0",
+    "build": "py_0",
+    "filename": "sabueso-0.14.0-py_0.tar.bz2",
+    "sha256": "ceb940bc37c85934ca0fadfdeb315cc69095aea46ed255d73b7c5f3e33376daa",
+    "archive_check": "passed",
+    "source_files_verified": 517,
+    "producer_run_id": 37929742651,
+    "url": "https://conda.anaconda.org/uibcdf/label/staging/noarch/sabueso-0.14.0-py_0.tar.bz2",
+    "provider_floor": "ackredit>=0.9.0"
+  },
+  "installed_matrix": {
+    "run_id": 37930116530,
+    "candidate_sha": "78623d0258c4deab5226ea39a96331c7b643dc44",
+    "jobs": 13,
+    "conclusion": "success",
+    "lanes": [
+      {
+        "job_id": 113818583969,
+        "name": "Install macos-26 / Python 3.14",
+        "conclusion": "success",
+        "integration_tests": 1277,
+        "expected_local_input_skips": 1,
+        "public_workflow": "passed",
+        "installed_artifact_and_api": "passed",
+        "macos_architecture": "arm64 verified"
+      },
+      {
+        "job_id": 113818583987,
+        "name": "Install ubuntu-latest / Python 3.12",
+        "conclusion": "success",
+        "integration_tests": 1277,
+        "expected_local_input_skips": 1,
+        "public_workflow": "passed",
+        "installed_artifact_and_api": "passed",
+        "macos_architecture": "not applicable"
+      },
+      {
+        "job_id": 113818583990,
+        "name": "Install ubuntu-latest / Python 3.11",
+        "conclusion": "success",
+        "integration_tests": 1277,
+        "expected_local_input_skips": 1,
+        "public_workflow": "passed",
+        "installed_artifact_and_api": "passed",
+        "macos_architecture": "not applicable"
+      },
+      {
+        "job_id": 113818584009,
+        "name": "Install macos-26 / Python 3.12",
+        "conclusion": "success",
+        "integration_tests": 1277,
+        "expected_local_input_skips": 1,
+        "public_workflow": "passed",
+        "installed_artifact_and_api": "passed",
+        "macos_architecture": "arm64 verified"
+      },
+      {
+        "job_id": 113818584015,
+        "name": "Install macos-26 / Python 3.11",
+        "conclusion": "success",
+        "integration_tests": 1277,
+        "expected_local_input_skips": 1,
+        "public_workflow": "passed",
+        "installed_artifact_and_api": "passed",
+        "macos_architecture": "arm64 verified"
+      },
+      {
+        "job_id": 113818584059,
+        "name": "Install windows-latest / Python 3.11",
+        "conclusion": "success",
+        "integration_tests": 1277,
+        "expected_local_input_skips": 1,
+        "public_workflow": "passed",
+        "installed_artifact_and_api": "passed",
+        "macos_architecture": "not applicable"
+      },
+      {
+        "job_id": 113818584073,
+        "name": "Install macos-26 / Python 3.13",
+        "conclusion": "success",
+        "integration_tests": 1277,
+        "expected_local_input_skips": 1,
+        "public_workflow": "passed",
+        "installed_artifact_and_api": "passed",
+        "macos_architecture": "arm64 verified"
+      },
+      {
+        "job_id": 113818584121,
+        "name": "Install ubuntu-latest / Python 3.13",
+        "conclusion": "success",
+        "integration_tests": 1277,
+        "expected_local_input_skips": 1,
+        "public_workflow": "passed",
+        "installed_artifact_and_api": "passed",
+        "macos_architecture": "not applicable"
+      },
+      {
+        "job_id": 113818584128,
+        "name": "Install ubuntu-latest / Python 3.14",
+        "conclusion": "success",
+        "integration_tests": 1277,
+        "expected_local_input_skips": 1,
+        "public_workflow": "passed",
+        "installed_artifact_and_api": "passed",
+        "macos_architecture": "not applicable"
+      },
+      {
+        "job_id": 113818584133,
+        "name": "Install windows-latest / Python 3.13",
+        "conclusion": "success",
+        "integration_tests": 1277,
+        "expected_local_input_skips": 1,
+        "public_workflow": "passed",
+        "installed_artifact_and_api": "passed",
+        "macos_architecture": "not applicable"
+      },
+      {
+        "job_id": 113818584234,
+        "name": "Install windows-latest / Python 3.12",
+        "conclusion": "success",
+        "integration_tests": 1277,
+        "expected_local_input_skips": 1,
+        "public_workflow": "passed",
+        "installed_artifact_and_api": "passed",
+        "macos_architecture": "not applicable"
+      },
+      {
+        "job_id": 113818584268,
+        "name": "Install windows-latest / Python 3.14",
+        "conclusion": "success",
+        "integration_tests": 1277,
+        "expected_local_input_skips": 1,
+        "public_workflow": "passed",
+        "installed_artifact_and_api": "passed",
+        "macos_architecture": "not applicable"
+      }
+    ],
+    "captured_summaries": [
+      {
+        "job": "Install macos-26 _ Python 3.13",
+        "summary": "1277 passed, 1 skipped | 300.01s | 2 warnings",
+        "public_workflow": "passed"
+      },
+      {
+        "job": "Install windows-latest _ Python 3.12",
+        "summary": "1277 passed, 1 skipped | 461.77s | 2 warnings",
+        "public_workflow": "passed"
+      },
+      {
+        "job": "Install ubuntu-latest _ Python 3.14",
+        "summary": "1277 passed, 1 skipped | 277.94s | 2 warnings",
+        "public_workflow": "passed"
+      },
+      {
+        "job": "Install ubuntu-latest _ Python 3.13",
+        "summary": "1277 passed, 1 skipped | 219.88s | 2 warnings",
+        "public_workflow": "passed"
+      },
+      {
+        "job": "Install windows-latest _ Python 3.13",
+        "summary": "1277 passed, 1 skipped | 548.84s | 2 warnings",
+        "public_workflow": "passed"
+      },
+      {
+        "job": "Install windows-latest _ Python 3.14",
+        "summary": "1277 passed, 1 skipped | 408.43s | 2 warnings",
+        "public_workflow": "passed"
+      },
+      {
+        "job": "Install ubuntu-latest _ Python 3.11",
+        "summary": "1277 passed, 1 skipped | 333.61s | 2 warnings",
+        "public_workflow": "passed"
+      },
+      {
+        "job": "Install macos-26 _ Python 3.11",
+        "summary": "1277 passed, 1 skipped | 290.62s | 2 warnings",
+        "public_workflow": "passed"
+      },
+      {
+        "job": "Install macos-26 _ Python 3.12",
+        "summary": "1277 passed, 1 skipped | 344.31s | 2 warnings",
+        "public_workflow": "passed"
+      },
+      {
+        "job": "Install windows-latest _ Python 3.11",
+        "summary": "1277 passed, 1 skipped | 519.86s | 2 warnings",
+        "public_workflow": "passed"
+      },
+      {
+        "job": "Install ubuntu-latest _ Python 3.12",
+        "summary": "1277 passed, 1 skipped | 321.64s | 2 warnings",
+        "public_workflow": "passed"
+      },
+      {
+        "job": "Install macos-26 _ Python 3.14",
+        "summary": "1277 passed, 1 skipped | 313.45s | 2 warnings",
+        "public_workflow": "passed"
+      }
+    ]
+  },
+  "release_event": {
+    "run_id": 37931493554,
+    "conclusion": "success",
+    "route": "staged; verifies without rebuilding"
+  },
+  "promotion": {
+    "run_id": 37931518272,
+    "conclusion": "success",
+    "preserved_sha256": "ceb940bc37c85934ca0fadfdeb315cc69095aea46ed255d73b7c5f3e33376daa"
+  },
+  "public_archive": {
+    "build_number": 0,
+    "checked_at": "2026-10-09T12:42:18.760115+00:00",
+    "coordinate": "noarch/sabueso-0.14.0-py_0.tar.bz2",
+    "labels": [
+      "main",
+      "staging"
+    ],
+    "registry": "https://api.anaconda.org/package/uibcdf/sabueso",
+    "schema": "sabueso.conda-poststate@1",
+    "sha256": "ceb940bc37c85934ca0fadfdeb315cc69095aea46ed255d73b7c5f3e33376daa",
+    "state": "occupied",
+    "version": "0.14.0",
+    "url": "https://conda.anaconda.org/uibcdf/noarch/sabueso-0.14.0-py_0.tar.bz2",
+    "same_bytes_as_staging": true
+  },
+  "clean_public_installation": {
+    "candidate_sha": "78623d0258c4deab5226ea39a96331c7b643dc44",
+    "version": "0.14.0",
+    "build": "py_0",
+    "filename": "sabueso-0.14.0-py_0.tar.bz2",
+    "sha256": "ceb940bc37c85934ca0fadfdeb315cc69095aea46ed255d73b7c5f3e33376daa",
+    "archive_check": "passed",
+    "source_files_verified": 517,
+    "mode": "public",
+    "python": "3.14.8",
+    "module_origin": "/tmp/sabueso-0140/public-py314/lib/python3.14/site-packages/sabueso/__init__.py",
+    "installed_byte_check": "passed",
+    "origins_and_api": "passed",
+    "frozen_card_round_trip": "passed",
+    "tests": {
+      "passed": 1277,
+      "skipped": 1,
+      "seconds": 106.74,
+      "workers": 12,
+      "receptor": "llm",
+      "scope": "40 unchanged receiving files outside source checkout, public inputs only; one local-only DisProt original deliberately excluded"
+    },
+    "public_workflow": "passed",
+    "pip_check": "passed",
+    "cache": "fresh public-only package cache; no prior Sabueso or staging file in the environment"
+  },
+  "zenodo": {
+    "record_id": 23263488,
+    "version": "0.14.0",
+    "doi": "10.5281/zenodo.23263488",
+    "concept_doi": "10.5281/zenodo.22937375",
+    "url": "https://zenodo.org/records/23263488",
+    "archive": "uibcdf/sabueso-0.14.0.zip",
+    "size": 10397981,
+    "checksum": "md5:b2ee6bcddeded4ff893d73685460cf3e",
+    "sha256": "e73caa143886dfd60fdd06de27e7bda7b82cd2afdf72cf076994489f627f88cc",
+    "source_files_verified": 1318,
+    "tag": "0.14.0",
+    "candidate_sha": "78623d0258c4deab5226ea39a96331c7b643dc44",
+    "source_comparison": "all archive files equal the qualified tag",
+    "version_doi_resolves_to_record": true,
+    "concept_doi_resolves_to_record": true,
+    "date": "2026-10-09"
+  },
+  "local_schema_freeze_receipt": "sabueso_0.14.0_local_schema_freeze_2026-10-09.json",
+  "limits": [
+    "Native access does not imply card enrichment, current live health or input redistribution rights (#83/#95)",
+    "Complete private consumer workflow acceptance remains open (#132); bounded original cells/readers do not qualify full pilots",
+    "SQLite connection lifetime remains unknown (#133); 67 Linux/Python 3.14 source-suite ResourceWarnings are retained without suppression",
+    "Acquisition observation covers 35 source families; complete source/operation/bibliography coverage remains #108",
+    "Nextia Evidence and shared MOLI/Recorda interpretation remain independent consumer/platform responsibilities",
+    "37 protected local-only originals remain excluded from Git, public CI and release/archive inputs"
+  ]
+}

@@ -869,7 +869,7 @@ The reader verifies sidecar hashes and result bindings before rendering historic
 citations; reading adds no credit. Reacquisition advances current heads while old
 pins and original bibliography remain readable. A missing fixture stays unavailable,
 without an external absence claim. The fragment is explicitly synthetic with unknown
-reuse rights. This example requires the development API; its manifest is local,
+reuse rights. This example uses the API delivered in 0.14.0; its manifest is local,
 and shared ProjectRecord/Recorda integration remains open.
 
 ## ClinicalTrials.gov references (development)

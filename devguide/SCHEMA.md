@@ -2,8 +2,8 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
-  - `0.3.13` is frozen for the 0.14.0 candidate (#134), written by its clean
-    installed preliminary Conda package; stable publication is pending. It adds native UniProt activity
+  - `0.3.13` is published/frozen in release 0.14.0 (#134), written by its clean
+    installed preliminary Conda package. It adds native UniProt activity
     regulation, domain notes, similarity, source cautions and miscellaneous text;
     additional positional chain, lipidation, motif, region, sequence-conflict,
     topological-domain and transmembrane fields, plus active positional domains.

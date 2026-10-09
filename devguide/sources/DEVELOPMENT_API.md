@@ -1,7 +1,8 @@
 # Development native-source API
 
-Unpublished recovery reader/mapping scopes. This is a living API reference, not a
-public-release or automatic-enrichment claim. The [main API](../PUBLIC_API.md)
+Recovery reader/mapping scopes delivered in 0.14.0 (#134). The historical file
+name and section anchor remain stable. This living API reference does not
+establish automatic card enrichment, live health or input redistribution rights. The [main API](../PUBLIC_API.md)
 records cards/decks/stores and shared public entry points; source-specific
 validation and access are in [the native reference](NATIVE_ACCESS_REFERENCE.md).
 File delivery and local native qualification follow [FIXTURE_DELIVERY.md](FIXTURE_DELIVERY.md).

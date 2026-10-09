@@ -1,6 +1,6 @@
 # Finding protein candidates from a sequence
 
-This development API accepts one raw protein sequence or one FASTA record and
+This API, delivered in 0.14.0, accepts one raw protein sequence or one FASTA record and
 returns current UniProtKB candidates. It compares the full UniParc sequence and
 the full current UniProt canonical sequence with your input. Equal sequences can
 belong to different entries; every matching entry remains a separate candidate.

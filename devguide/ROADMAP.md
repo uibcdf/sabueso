@@ -37,7 +37,26 @@ status, so that none is lost because a pilot has not asked for it yet.
 - **Maintainers may schedule a foundational objective on its own.** The pilots do not
   own the plan.
 
-## Latest release: 0.13.0 (#121)
+## Latest release: 0.14.0 (#134)
+
+Published 2026-10-09 from qualified `78623d0`: exact-SHA CI/governance,
+independently verified staging, all twelve installed OS/Python lanes, exact-file
+promotion, clean public installation and identical-tag Zenodo archival pass.
+Each installed lane passes 1,277 receiving cases, one intentional local-only input
+exclusion and the public workflow. Complete receipt:
+`devtools/conda-build/receipts/sabueso_0.14.0_public_2026-10-09.json`.
+
+The release consolidates bounded native/supplied-file access, source-sequence and
+residue support, notebook reports and public HK2, independent protein/molecule/
+disease journeys, clinical bibliography and conservative source-state/taxonomy
+integrity. Schema 0.3.13 is frozen. It advances foundational identity/support/
+reference integrity and bounded consumer-oriented acceptance together. Native
+access remains separate from card contribution and current live health. Full
+private consumer routes (#132), SQLite lifetime (#133), broader #108/#91/#92 and
+consumer-owned MOLI/Nextia/Recorda acceptance remain open; the next development
+order continues below.
+
+## Preceding release: 0.13.0 (#121)
 
 Published 2026-10-05 from qualified `7e78d07`, with unchanged `py_0` promotion,
 clean public installation and an identical-tag Zenodo archive. All 12 installed
@@ -86,7 +105,7 @@ Other sources/custom clients, further result types, incomplete bibliography and
 MOLI ProjectRecord/Recorda integration remain open in #108/#36. Traceability remains
 mandatory. The next slices follow observed use and the foundational objectives below.
 
-## Delivered so far (0.1.0 → 0.13.0)
+## Delivered so far (0.1.0 → 0.14.0)
 
 - **Foundations.**
   - Card, Deck, `SourceAssertionStore` and `RelationshipStore`.

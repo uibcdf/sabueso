@@ -23,23 +23,29 @@ the displayed report may briefly lag a new push while CI finishes.
 
 ## Current release status
 
-- **Latest release:** [0.13.0](https://github.com/uibcdf/sabueso/releases/tag/0.13.0)
-  (2026-10-05), distributed through the `uibcdf` conda channel.
-  - One `noarch` package for Linux, macOS Apple Silicon (arm64) and Windows,
-    on Python 3.11–3.14. The exact `py_0` file passes all 12 installed lanes,
-    each with 613 integration cases and the public attribution workflow. A clean
-    public Linux/Python 3.14 installation verifies bytes, origins, API, frozen-card
-    reading, those 613 cases, workflow and pip check.
-  - Card schema 0.3.12 retains original literal extraction and explicit article
-    bibliography. Pinned disease/state/bioactivity/ligand/oligomer explanations
-    preserve support; versioned corrections retain explicit legacy rules.
-  - Required Ackredit >=0.9.0 attribution now observes ChEMBL, PubChem, BindingDB,
-    CCD, UniChem, PDBe-KB, AlphaFold DB and InterPro alongside UniProt, Europe PMC
-    and RCSB. Save original runtime JSON with scientific objects; broader coverage
-    and bibliography gaps remain explicit.
-  - Zenodo [10.5281/zenodo.23162373](https://doi.org/10.5281/zenodo.23162373):
-    all 960 source files verified against the qualified tag.
-  - Complete [publication receipt](devtools/conda-build/receipts/sabueso_0.13.0_public_2026-10-05.json).
+- **Latest release:** [0.14.0](https://github.com/uibcdf/sabueso/releases/tag/0.14.0)
+  (2026-10-09), distributed through the `uibcdf` Conda channel.
+  - One immutable `noarch` package for Linux, macOS Apple Silicon (arm64) and
+    Windows on Python 3.11–3.14. All 12 installed lanes pass 1,277 receiving
+    cases, one deliberate local-only native-input exclusion, and the public
+    attribution workflow. A clean public Linux/Python 3.14 installation verifies
+    bytes, origins, API, frozen-card reading, the same cases, workflow and pip check.
+  - Card schema 0.3.13 adds supported UniProt annotations and positional context.
+    Bounded native/supplied-file access, residue and sequence knowledge, notebook
+    reports and independent protein/molecule/disease journeys preserve original
+    assertions, named rules, quantities and historical pins.
+  - Required Ackredit >=0.9.0 observation covers 35 source families, including
+    bounded disease/clinical routes and NCBI Taxonomy. Missing fixtures remain
+    unavailable; bibliography never follows unasked links. Broader #108 coverage,
+    full private-consumer acceptance (#132) and SQLite lifetime (#133) remain open.
+  - Native access does not imply card enrichment, current live qualification or
+    redistribution rights. Protected local originals remain outside publication.
+  - Zenodo [10.5281/zenodo.23263488](https://doi.org/10.5281/zenodo.23263488):
+    all 1,318 source files verified against the qualified tag; the Conda archive
+    is published separately and preserves the tested staging bytes.
+  - Complete [publication receipt](devtools/conda-build/receipts/sabueso_0.14.0_public_2026-10-09.json).
+  - 0.13.0 remains archived on Zenodo, identical to its tag:
+    [10.5281/zenodo.23162373](https://doi.org/10.5281/zenodo.23162373).
   - 0.12.0 remains archived on Zenodo, identical to its tag:
     [10.5281/zenodo.23134375](https://doi.org/10.5281/zenodo.23134375).
   - 0.11.0 is archived on Zenodo, verified to be identical to its tag:

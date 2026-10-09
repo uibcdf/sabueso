@@ -133,12 +133,16 @@ both, together with enrichment reports and deck membership/exclusions. `not_stat
 `not_queried`, `unavailable`, `partial` and conflicting knowledge need different
 interpretations; none automatically establishes a biological negative.
 
-Sabueso 0.13.0 observes declared built-in UniProt, RCSB, Europe PMC, ChEMBL,
-PubChem/BioAssay, BindingDB, CCD, UniChem, PDBe-KB, AlphaFold DB and InterPro
-operations. MONDO, Open Targets, Orphanet, ClinicalTrials.gov, custom clients and
-additional result/operation types have remaining observation gaps. Disease-deck
-metadata records source outcomes but does not by itself establish complete runtime
-traceability. See {doc}`attribution` for the exact coverage and original sidecars.
+Sabueso 0.14.0 observes declared operations across 35 source families, including
+UniProt, RCSB, Europe PMC, ChEMBL, PubChem/BioAssay, BindingDB, CCD, UniChem,
+PDBe-KB, AlphaFold DB, InterPro, the bounded disease/clinical routes and NCBI
+Taxonomy. Coverage is per declared operation; additional built-ins, custom clients,
+arbitrary derived operations and complete bibliography remain explicit gaps.
+Disease-deck metadata records scientific outcomes separately from original runtime
+traceability. See {doc}`attribution` for exact scopes and original sidecars.
+
+The access and journey extensions below are delivered in 0.14.0. Their individual
+native input, licence, live-health and card-integration limits remain unchanged.
 
 Development direct IntAct access observes one bounded native MITAB 2.7 page with
 its query-total/result scope, body identity and service headers. Independent
