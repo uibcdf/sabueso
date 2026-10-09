@@ -33,6 +33,11 @@ retain both input scopes and the portability corrections. These preceding code
 checkpoints remain historical; completed release qualification is recorded below.
 Current scoped acceptance and measurements are in the
 [consolidation report](pending_proposals/post_recovery_consolidation.md).
+The [quality completion proposal](pending_proposals/design_implementation_review.md#quality-completion-proposal-2026-10-09-112)
+defines remaining acceptance within the approved roadmap. Delivery tracking for
+the seven bounded integrity defects #122–#128 is reconciled: qualified public
+0.14.0 includes their regression modules in all twelve installed OS/Python lanes.
+The broader #108/#112/#132 scopes remain open.
 The [bounded consumer report](pending_proposals/private_consumer_revalidation.md)
 records live versus replayed inputs, persisted support, measured costs and the
 taxonomy observation follow-up and corrected memory measurement. Overall private workflow acceptance stays

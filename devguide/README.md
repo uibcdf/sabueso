@@ -106,13 +106,16 @@ not a release receipt.
   issue.
   `pending_proposals/design_implementation_review.md` compares original design,
   scientific capabilities and current implementation, with concrete gaps and owning
-  acceptance criteria (#112).
+  acceptance criteria (#112). Its
+  [quality completion proposal](pending_proposals/design_implementation_review.md#quality-completion-proposal-2026-10-09-112)
+  defines bounded inspection, explanation, literature, cost and delivery acceptance
+  within the approved roadmap.
   `pending_proposals/independent_user_journeys.md` scopes the three standalone SDK
   journeys, the implemented protein comparison, molecule/target and bounded disease
   examples, exact disease membership support, conservative whole-context admission
   and remaining filtering by terms of use, clinical, query and observation gaps
   (#112, #29/#91/#71/#108). The source-state
-  correction is implemented locally under versioned rules (#122); delivery is pending.
+  correction is delivered in qualified 0.14.0 under versioned rules (#122).
   `pending_proposals/ackredit_knowledge_pipeline_attribution.md` records the required
   pipeline attribution plan (#108, moli#36), its automatic composition and bounded
   acquisition adapters (including development ClinicalTrials.gov native references

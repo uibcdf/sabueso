@@ -13,8 +13,17 @@ related: [uibcdf/sabueso#112, uibcdf/sabueso#127, uibcdf/sabueso#128]
 
 # Clinical registry and bibliography checkpoint
 
-Updated 2026-10-06. This is the latest bounded local slice; the published release
-remains 0.13.0. The diagnostic receipts below were produced locally from
+Current delivery update, 2026-10-09: the bounded fixes and tests in #122–#128
+are included in qualified public **0.14.0**, source/tag `78623d0`. Its twelve
+installed OS/Python lanes and clean public installation pass the receiving gate
+that includes the regression modules for those defects. See the
+[immutable publication receipt](../../devtools/conda-build/receipts/sabueso_0.14.0_public_2026-10-09.json).
+Broader #108/#112 work remains open. The dated 2026-10-06 text below retains
+what was qualified then; its local wheels, delivery instructions and 0.13.0
+statements are historical and do not describe current published state.
+
+Historical checkpoint, 2026-10-06: this was the latest bounded local slice;
+the published release then remained 0.13.0. The diagnostic receipts below were produced locally from
 `c1bab2d` plus uncommitted changes. Those changes are included in the maintainer-
 authorized implementation checkpoint; successful remote qualification is recorded
 in `CHECKPOINT.md`. Historical wheel versions/hashes remain unchanged.

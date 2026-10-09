@@ -1,7 +1,8 @@
 # Documentation Gaps
 
-What the user guide (`docs/`) lacks. The first list (2026-01) was reviewed on 2026-09-26:
-what is now covered is noted, and what remains is below.
+What the user guide (`docs/`) lacks. The initial list (2026-01) was reviewed on
+2026-09-26; delivery status was reconciled against qualified 0.14.0 on 2026-10-09.
+What is covered is noted below; historical checkpoints retain their original scope.
 
 ## Covered
 
@@ -64,12 +65,13 @@ the implementation issues; consumer-owned MOLI contracts remain separate.
   antibody complexes, orthologs, a reference entry against its genome-strain entry
   (`clustered_with`, `Card.sequence_differences`).
 - **Remaining disease guarantees:** the bounded demonstration and independent
-  saved reader and development membership assertion/input pins exist (#112/#91);
-  MONDO/Open Targets/Orphanet and disease-deck build observation are local; remaining
+  saved reader and membership assertion/input pins are delivered in 0.14.0 (#112/#91);
+  MONDO/Open Targets/Orphanet and disease-deck build observation are delivered; remaining
   full underlying study bibliography (#108) remains required. Conservative
-  whole-context admission is local (#29); finer filtering by terms of use and raw per-record rights
+  whole-context admission is delivered (#29); finer filtering by terms of use and raw per-record rights
   remain pending.
   Broad molecular reverse queries and clinical/source-operation observation remain
   #71/#108 work; the molecule example fetches ChEMBL indications, not clinical studies.
-  Source-record aggregate knowledge-state counts are corrected locally under
-  versioned rules (#122); delivery in a published replacement remains pending.
+  Source-record aggregate knowledge-state counts are corrected under versioned
+  rules (#122) in qualified 0.14.0. Full acceptance of the remaining bibliography,
+  query and observation scopes is separate.

@@ -351,3 +351,45 @@ Receipt: `devtools/conda-build/receipts/sabueso_0.13.0_public_2026-10-05.json`.
 Broader source/result/bibliography coverage, extraction/explanation gaps and
 consumer-owned Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain
 the next work, not completed by publication.
+
+## Quality completion proposal (2026-10-09, #112)
+
+This proposal makes the approved roadmap's acceptance concrete. The
+[roadmap](../ROADMAP.md#immediate-resumption-sequence) owns development order;
+this is neither a replacement architecture nor approval to publish a new release.
+Sabueso's strength is source-supported knowledge that a scientist can inspect,
+reuse and cite. Source counts and passing test counts measure bounded scope,
+not complete scientific usefulness.
+
+Current baseline: 0.14.0 is exact-artifact qualified. Subsequent SQLite lifetime
+(#133), GTEx prerequisite (#135) and shared-source attribution (#136) corrections
+are exact-SHA qualified on main and need separate installed-artifact delivery.
+The existing protein/comparator, molecule/activity and disease/entity examples
+provide public producer/reader/reacquisition routes. Broader consumer, bibliography,
+explanation, terms and query guarantees remain open.
+
+| Work package | Concrete improvement | Acceptance and owner |
+| --- | --- | --- |
+| Finish current consumer validation | Complete the declared original-answer routes and evaluate whether their outputs answer the scientific questions | Every exercised question has a supported answer, conflict, explicit unknown or failed/unqueried scope; saved independent readers preserve original statements, quantities, pins and citations. Human usefulness review and installed-artifact validation remain distinct. #132/#112 |
+| Reconcile delivery and maintained guidance | Remove false current claims that delivered fixes remain unpublished; link each completed defect to its actual release evidence | Issue closure cites the exact source/artifact and regression modules; living risk/gap documents agree with CHECKPOINT. Dated receipts and frozen reports remain unchanged. #112 |
+| Make scientific inspection consistent | Let users inspect values, alternatives, support, source scope, units, revisions, rights and gaps through the existing SDK views and reports | A public journey identifies those facts without private helper code; each selected value leads to its supporting assertions and each unknown explains its scope. Current-source terms are labelled separately from historical scientific state. #112/#91/#29 |
+| Complete explanations along exercised routes | Extend pinned explanations to remaining source-supported sequence/tissue/comparative findings where real use requires them | Exact inputs, rule/version, parameters, inclusion/exclusion and incomplete support remain inspectable at original pins; inert readers acquire nothing and never substitute current heads. #91 |
+| Complete observed operations and bibliography along those routes | Make actual access, reused answers, failed subsets and missing citations visible, independently of scientific support | Tests cover successful, empty, unavailable, failed, truncated and replayed operations; received response identities/times and portable sidecars survive independent reading. Uncovered/custom clients remain explicitly unobserved. #108 |
+| Extend literature beyond identifiers and bibliography | Add a bounded, rights-qualified way to retain a scientifically useful statement from its actual source location | The original fragment, article identity, extraction/curation method and version, review status and contradictory assertions remain inspectable and survive storage/refresh. A project interpretation remains consumer-owned Evidence. Broader extraction starts from a real question and explicit human validation. #92/#29/#112 |
+| Finish one bounded clinical/query/terms slice | Integrate explicit study/publication references into a saved journey, then select one non-protein question or finer use-term filter | Public example and regressions declare identity, constraints, terms, retained/excluded support and unresolved bibliography; historical examples keep their original versions. #108/#112, then #71/#91 or #29 |
+| Qualify cost and failure behavior | Measure a bounded ordinary workload and a larger workload before changing storage or acquisition defaults | Record import baseline, elapsed time, response/archive/card/store bytes and process-memory scope. Pagination, rate limits, retries and partial failures remain visible; bounded requests do not discard scientific support silently. Set workload-specific budgets from measurements. #98/#88/#100 |
+| Deliver a coherent installed checkpoint | Propose a maintenance release after the selected corrections and acceptance are ready | Candidate CI, exact staging artifact, all supported installed OS/Python lanes, clean public installation and archive checks pass for the same candidate. No earlier source or artifact receipt qualifies a later candidate. Local release governance |
+
+Treat consistency work as targeted changes to an exercised contract, with meaningful
+regressions. A new facade, broad refactor, source wave, automatic model interpretation
+or performance rewrite needs a demonstrated gap and its own bounded acceptance.
+The public showcase and comparative-source user pages should be refreshed from
+qualified public fixtures as these routes become ready; private consumer content
+and results stay in their controlled workspace.
+
+Cross-component acceptance remains with its owners: MOLI for shared references,
+packets and recording; Nextia for project Evidence; MolSysSuite for modeling,
+alignment and computed geometry. Nextia's recorded design pause does not prevent
+standalone Sabueso improvements and is not permission to implement Discovery here.
+Peptide identity and other domain expansion follow the approved roadmap after
+these journey and contract decisions.

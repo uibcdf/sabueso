@@ -10,8 +10,8 @@ Durable analyses for active proposals live here when needed. Every report must r
 - [Independent-user journey acceptance](independent_user_journeys.md)
   (#112): all three bounded public examples, exact disease support and conservative
   admission; remaining clinical/query/bibliography/terms gaps; source-state counting is corrected
-  locally under versioned rules (#122), with published delivery pending.
+  under versioned rules (#122), delivered in qualified 0.14.0.
 - [Clinical registry and bibliography checkpoint](clinical_registry_checkpoint.md)
-  (#108/#112/#127/#128): latest bounded local code/package qualification,
+  (#108/#112/#127/#128): historical local/remote receipts and qualified 0.14.0 delivery,
   explicit registry references and article metadata, preserved historical readers,
-  current environment discrepancy and delivery/integration work still pending.
+  shared-environment discrepancy and remaining journey integration.

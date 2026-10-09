@@ -7,15 +7,17 @@
 - **Clinical Data Volatility**: Clinical information changes more frequently than core physchem data.
 
 ## Architecture Risks (General)
-- **SQLite connection lifetime in Python 3.14 validation**
-  ([#133](https://github.com/uibcdf/sabueso/issues/133)): Linux Python 3.14.8
-  validation at `434e43f` passes but reports 66 unclosed-connection warnings.
-  Their allocation/lifetime owner remains unconfirmed; `KnowledgeStore._session()`
-  already closes its connection in `finally`. Investigate a bounded reproduction
-  and close the owning connections without suppressing diagnostics. This warning
-  group is separate from deliberate source-fixture failure/truncation warnings.
-  Follow-up `a05e0a3` also passes, with 67 such warnings on Linux Python 3.14;
-  the current receipt retains that warning scope. No connection-owner fix is claimed.
+- **Published SQLite lifetime and post-release integrity delivery**
+  ([#133](https://github.com/uibcdf/sabueso/issues/133)): the original 0.14.0
+  artifact retains the unclosed legacy card/deck connections reported during its
+  qualification. Development main explicitly closes the owning connections;
+  eight regressions, full local-original tests and 15/15 exact-SHA CI pass.
+  Fatal SQLite/unraisable warning guards remain active. See the
+  [qualified receipt](pending_proposals/sqlite_lifetime_checkpoint.json).
+  GTEx prerequisite classification (#135) and shared-source attribution (#136)
+  are also corrected and exact-SHA qualified on main, outside that published
+  artifact. A future installed artifact needs its own staging/platform gates;
+  historical receipts and stored reports stay fixed.
 - **Recovered capabilities need real consumer revalidation**
   ([#132](https://github.com/uibcdf/sabueso/issues/132)): public fixture tests and
   independent SDK journeys establish bounded support/persistence behavior, but
@@ -33,24 +35,25 @@
   disease example retains exact card/group support; published rules `@1`
   store membership as metadata without supporting SourceAssertion/input pins.
   A matching card nearby cannot reconstruct that membership's original support.
-  Development rules `@2` preserve native rows/order, original input and member
-  identity with atomic/portable support; delivery remains pending. Terms include
-  embedded sources. Development `disease_deck_admission@1` supports whole-context
+  Rules `@2` preserve native rows/order, original input and member
+  identity with atomic/portable support; this bounded behavior is delivered in
+  qualified 0.14.0. Terms include embedded sources. Published 0.14.0
+  `disease_deck_admission@1` supports whole-context
   admission and unchanged member filtering; shared unknown/restricted terms refuse
   rather than filtering native context. Finer filtering by terms of use and per-record raw-content
   licensing remain #29; resolved alternatives never license retained raw copies.
-  The #126 local integrity fix checks native candidates against the actual member's
+  The #126 integrity fix delivered in 0.14.0 checks native candidates against the actual member's
   source-stated identifiers; resolving pins alone does not establish identity.
-  MONDO term/equivalence observation is implemented locally, with original index/file
+  MONDO term/equivalence observation is delivered in 0.14.0, with original index/file
   origins and bibliography. Open Targets/Orphanet and disease-deck build observation
-  are also local, including DISEASES/ClinVar/MedGen access (#125).
+  are also delivered, including DISEASES/ClinVar/MedGen access (#125).
   Native ChEMBL indication references retain exact observed occurrence scope and
   portable pointer citations; linked targets are not separately consulted.
   Complete underlying workflow bibliography remains pending. Source row totals, candidate limits and successfully built cards
   are different counts; fixture-only card failures must not become external absence.
 - **MONDO published release integrity** (#123): 0.13.0 can change scientific retrieval
   times during index/archive reuse, and interpret obvious non-OBO input as an absent
-  term. Both defects are corrected locally; delivery remains pending. Existing stored
+  term. Both defects are corrected and delivered in qualified 0.14.0. Existing stored
   times cannot be repaired without original receipts. Pre-existing unobserved indexes
   retain explicit original-time/origin gaps rather than invented history. The client
   document sanity guard is not a complete OBO validator.
@@ -59,14 +62,15 @@
   Targets fields and missing fixtures may be misclassified or leak raw errors.
   Local corrections keep original file time, require native answer fields, refuse
   mixed-version/count page merges, and distinguish invalid/unavailable from absent.
-  Delivery remains pending; stored times require original receipts to repair.
+  The corrections are delivered in qualified 0.14.0; stored times require original
+  receipts to repair.
   Orphadata lookups cover SwissProt-indexed rows, not every native gene.
 - **Disease lookup published integrity** (#125): older DISEASES cached-index
   times, exhausted fixture channel iterables, missing/invalid NCBI result fields,
   skipped ClinVar fixtures and mixed fixture versions can misstate scientific
   scope. MedGen can choose a UID by response order or infer absence from a capped
-  search. Local guards and acquisition regressions correct these paths; public
-  delivery remains pending. Older DISEASES disk caches lack original receipts;
+  search. The guards and acquisition regressions are delivered in qualified 0.14.0.
+  Older DISEASES disk caches lack original receipts;
   their history is not reconstructed. Incomplete/ambiguous MedGen lookup now fails
   explicitly, rather than adding unsupported identity to a card.
 - **Packet terms scope and registry history** (#29): `packet_terms@1` supports
