@@ -7,6 +7,18 @@
 - **Clinical Data Volatility**: Clinical information changes more frequently than core physchem data.
 
 ## Architecture Risks (General)
+- **Comparative response integrity and revision/operation scope**
+  ([#137](https://github.com/uibcdf/sabueso/issues/137), #108/#91): the original
+  0.14.0 online OMA/UniRef/gnomAD/GTEx routes can misclassify missing JSON
+  envelopes or unanswered fields as empty/absent knowledge. Development guards
+  validate the consumed containers and complete requested consequence aliases;
+  public synthetic regressions cover failure/absence and card knowledge states.
+  They are not a complete native field validator or new installed delivery.
+  These comparative routes still need declared source-operation/bibliography
+  observation and pinned sequence/tissue explanation acceptance. In particular,
+  gnomAD's existing pext release label is client-declared; it must not be presented
+  as an independently verified native response revision. Keep query dataset,
+  source-reported release and service version bases separate in the next #108 slice.
 - **Published SQLite lifetime and post-release integrity delivery**
   ([#133](https://github.com/uibcdf/sabueso/issues/133)): the original 0.14.0
   artifact retains the unclosed legacy card/deck connections reported during its

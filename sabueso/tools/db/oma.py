@@ -84,16 +84,33 @@ class OnlineOMAClient:
         return {"retrieved_at": retrieval.value, "record": found}
 
     def xrefs(self, accession: str) -> Dict[str, Any]:
-        return self._get(f"{API}/protein/{accession}/xref/", f"protein {accession}")
+        return self._rows(
+            self._get(f"{API}/protein/{accession}/xref/", f"protein {accession}")
+        )
+
+    @staticmethod
+    def _rows(answer: Dict[str, Any]) -> Dict[str, Any]:
+        rows = answer["record"]
+        if not isinstance(rows, list) or not all(isinstance(row, dict) for row in rows):
+            raise ConnectorError("OMA response does not state a record list")
+        return answer
 
     def protein(self, entry_id: str) -> Dict[str, Any]:
         """An OMA protein entry: its canonical id, species and sequence length."""
-        return self._get(f"{API}/protein/{entry_id}/", f"protein {entry_id}")
+        answer = self._get(f"{API}/protein/{entry_id}/", f"protein {entry_id}")
+        record = answer["record"]
+        if not isinstance(record, dict) or not any(
+            record.get(key) for key in ("omaid", "canonicalid", "entry_nr")
+        ):
+            raise ConnectorError("OMA response does not identify a protein record")
+        return answer
 
     def orthologs(self, accession: str, rel_type: str | None = None) -> Dict[str, Any]:
         query = f"?{urlencode({'rel_type': rel_type})}" if rel_type else ""
-        return self._get(
-            f"{API}/protein/{accession}/orthologs/{query}", f"protein {accession}"
+        return self._rows(
+            self._get(
+                f"{API}/protein/{accession}/orthologs/{query}", f"protein {accession}"
+            )
         )
 
     def accessions(self, names: Iterable[str]) -> Dict[str, str]:
@@ -112,6 +129,15 @@ class OnlineOMAClient:
             answer = self._get(
                 f"{UNIPROT_SEARCH}?{query}", "entry names", source="UniProt"
             )
+            record = answer["record"]
+            if (
+                not isinstance(record, dict)
+                or not isinstance(record.get("results"), list)
+                or not all(isinstance(row, dict) for row in record["results"])
+            ):
+                raise ConnectorError(
+                    "UniProt entry-name response does not state a results list"
+                )
             found.update(active_accessions(answer["record"], chunk))
         return found
 

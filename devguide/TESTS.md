@@ -55,6 +55,7 @@ fixture does not establish current live availability.
 | --- | --- |
 | Public arguments/diagnostics | `tests/core/test_argument_contracts_offline.py`; owning API cases; SMonitor/diagnostic cases |
 | Source/assertion identity and acquisition | `test_source_assertions_offline.py`, `test_source_acquisition_offline.py`, `test_source_access_offline.py`; owning source/mapping cases |
+| Comparative native response contracts | `test_comparative_response_contracts_offline.py`, OMA/UniRef/gnomAD/GTEx cases; malformed and unanswered envelopes stay connector failures, while explicit empty/null answers preserve absence (#137) |
 | Native supplied files | `tests/tools/test_source_snapshot_offline.py`, `test_bound_native_snapshots_offline.py`; affected source tests with applicable public/local scope |
 | Source registration/card contribution | `test_source_registry_offline.py`, `test_enrichers_offline.py`, knowledge-state and packet coverage; `tools/source_registry.py --check` |
 | Fixture delivery | `test_fixture_delivery_offline.py`, `test_fixture_licensing_offline.py`; `tools/fixture_delivery.py --check`; prove public tests with local inputs absent |

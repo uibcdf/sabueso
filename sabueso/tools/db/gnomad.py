@@ -21,7 +21,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, Iterable
+from typing import Any, Dict, Iterable, List
 from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
@@ -84,6 +84,12 @@ CONSEQUENCE_FIELDS = (
 CONSEQUENCES_PER_REQUEST = 25
 
 
+def _objects(value: Any, field: str) -> List[Dict[str, Any]]:
+    if not isinstance(value, list) or not all(isinstance(row, dict) for row in value):
+        raise ConnectorError(f"gnomAD response does not state a {field} list")
+    return value
+
+
 class OnlineGnomADClient:
     def __init__(self, timeout: float = 120.0) -> None:
         self.timeout = timeout
@@ -104,14 +110,40 @@ class OnlineGnomADClient:
                 data = json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"gnomAD request failed: {exc}") from exc
-        found = (data.get("data") or {}).get(kind)
+        if not isinstance(data, dict):
+            raise ConnectorError("gnomAD response does not state a GraphQL object")
+        errors = data.get("errors")
+        envelope = data.get("data")
+        if errors:
+            # Retain the source's explicit not-found error form, but never treat a
+            # mixed error or a partial record as successful/absent knowledge.
+            absent = envelope is None or (
+                isinstance(envelope, dict)
+                and kind in envelope
+                and envelope[kind] is None
+            )
+            if (
+                absent
+                and isinstance(errors, list)
+                and all(
+                    isinstance(error, dict)
+                    and "not found" in str(error.get("message", "")).lower()
+                    for error in errors
+                )
+            ):
+                raise RecordNotFoundError(f"gnomAD has no {kind} {identifier}")
+            raise ConnectorError(f"gnomAD answered with errors: {errors}")
+        if not isinstance(envelope, dict) or kind not in envelope:
+            raise ConnectorError(f"gnomAD response does not answer {kind} {identifier}")
+        found = envelope[kind]
         if found is None:
-            if data.get("errors") and "not found" not in str(data["errors"]).lower():
-                raise ConnectorError(f"gnomAD answered with errors: {data['errors']}")
             raise RecordNotFoundError(f"gnomAD has no {kind} {identifier}")
+        if not isinstance(found, dict):
+            raise ConnectorError(f"gnomAD response does not state a {kind} object")
         if not variants:
             return {"retrieved_at": retrieval.value, "record": found}
-        listed = found.pop("variants") or []
+        listed = _objects(found.get("variants"), "variants")
+        found.pop("variants")
         return {
             "retrieved_at": retrieval.value,
             "version": DATASET,
@@ -146,21 +178,42 @@ class OnlineGnomADClient:
                     timeout=self.timeout,
                     expect_json=True,
                 ) as resp:
-                    data = json.loads(resp.read().decode("utf-8")).get("data") or {}
+                    response = json.loads(resp.read().decode("utf-8"))
             except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
                 raise ConnectorError(f"gnomAD request failed: {exc}") from exc
-            for alias, answer in data.items():
-                if answer:
-                    found[chunk[int(alias[1:])]] = (
-                        answer.get("transcript_consequences") or []
+            if (
+                not isinstance(response, dict)
+                or response.get("errors")
+                or not isinstance(response.get("data"), dict)
+                or set(response["data"]) != {f"v{n}" for n in range(len(chunk))}
+            ):
+                raise ConnectorError(
+                    "gnomAD response does not answer the consequence batch"
+                )
+            for n, identifier in enumerate(chunk):
+                answer = response["data"][f"v{n}"]
+                if answer is None:
+                    continue
+                if not isinstance(answer, dict):
+                    raise ConnectorError(
+                        "gnomAD response does not state a variant object"
                     )
+                found[identifier] = _objects(
+                    answer.get("transcript_consequences"), "transcript consequences"
+                )
         return {"retrieved_at": retrieval.value, "version": DATASET, "record": found}
 
     def pext(self, gene: str) -> Dict[str, Any]:
         answer = self._ask(PEXT_QUERY, "gene", gene, variants=False)
         found = answer["record"]
-        pext = found.pop("pext", None)
-        if not pext or not pext.get("regions"):
+        if "pext" not in found:
+            raise ConnectorError("gnomAD response does not answer the pext query")
+        pext = found.pop("pext")
+        if pext is None:
+            raise RecordNotFoundError(f"gnomAD states no pext for gene {gene}")
+        if not isinstance(pext, dict):
+            raise ConnectorError("gnomAD response does not state a pext object")
+        if not _objects(pext.get("regions"), "pext regions"):
             raise RecordNotFoundError(f"gnomAD states no pext for gene {gene}")
         return {
             "retrieved_at": answer["retrieved_at"],

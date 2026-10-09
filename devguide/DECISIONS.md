@@ -3591,3 +3591,21 @@ provider-level UniProt Consortium attribution, with the owner's original recorde
 review date and unchanged CC-BY-4.0 licence/statement. This corrects attribution
 and registry ownership; it is not a new source licence review. Keep SourceAssertion
 names, biological identity, quantity/card schemas and original saved reports fixed.
+
+## 2026-10-09 — Accept the quality completion work plan (#112)
+
+The maintainer accepted the bounded work packages in the
+[quality completion proposal](pending_proposals/design_implementation_review.md#quality-completion-proposal-2026-10-09-112).
+Continue real consumer validation before extending the exercised inspection,
+pinned explanations and source-operation/bibliography coverage. Follow with a
+rights-qualified literature statement, one clinical/query/terms slice and measured
+workload/failure behavior. These refine the existing roadmap; they do not authorize
+a new architecture, provider-count milestone or release publication.
+
+Keep engineering execution, installed-artifact qualification and human scientific
+acceptance separate. A source-supported result is useful only with inspectable
+identity, scope, support, quantities, revisions, rights and explicit gaps. Private
+consumer notebooks and results stay private and read-only. Project Evidence and
+Discovery remain with Nextia, whose design pause does not block standalone Sabueso
+quality work. Record concrete defects in their owning issues and correct observed
+contracts with public regressions.

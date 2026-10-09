@@ -63,7 +63,18 @@ Do not bypass access gates or infer permission from availability.
 A declared enricher whose required upstream input is missing or ambiguous raises
 `RequestPrerequisiteMissing` before constructing or calling its client. The runner
 records `not_queried` and its prerequisite explanation. GTEx requires pext tissue
-keys and one source-stated GTEx release; missing inputs are not GTEx absence (#135).
+keys and one unambiguous GTEx release label in the upstream record; missing inputs
+are not GTEx absence (#135). The label alone does not establish whether its revision
+basis is native or client-declared; that distinction remains explicit #108 work.
+
+The built-in online OMA, UniRef, gnomAD and GTEx routes validate the native
+containers they consume (#137). An omitted required envelope or list, wrong JSON
+container or unanswered gnomAD consequence alias is a connector failure, never an
+empty scientific result. A GraphQL error with a partial record is a failure; the
+existing explicit not-found error form and well-formed empty/null answers retain
+their own semantics. These checks do not qualify every nested native field or add
+source-operation observation to those routes. Original response bytes, source
+identity and card schemas stay fixed.
 
 ### Supplied originals
 

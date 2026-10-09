@@ -357,6 +357,10 @@ the next work, not completed by publication.
 This proposal makes the approved roadmap's acceptance concrete. The
 [roadmap](../ROADMAP.md#immediate-resumption-sequence) owns development order;
 this is neither a replacement architecture nor approval to publish a new release.
+The maintainer accepted this work plan on 2026-10-09. Continue its bounded
+consumer validation, then targeted inspection, explanations and operation coverage;
+the later literature, clinical, workload and installed-delivery packages retain
+their own acceptance. See [the decision](../DECISIONS.md#2026-10-09--accept-the-quality-completion-work-plan-112).
 Sabueso's strength is source-supported knowledge that a scientist can inspect,
 reuse and cite. Source counts and passing test counts measure bounded scope,
 not complete scientific usefulness.

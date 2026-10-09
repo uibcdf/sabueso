@@ -62,7 +62,13 @@ class OnlineGTExClient:
             raise ConnectorError(f"GTEx request failed: {exc}") from exc
         except (URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"GTEx request failed: {exc}") from exc
-        rows = found.get("data") or []
+        if (
+            not isinstance(found, dict)
+            or not isinstance(found.get("data"), list)
+            or not all(isinstance(row, dict) for row in found["data"])
+        ):
+            raise ConnectorError("GTEx response does not state a tissue data list")
+        rows = found["data"]
         if not rows:
             raise RecordNotFoundError(f"GTEx states no tissues for {dataset}")
         return {

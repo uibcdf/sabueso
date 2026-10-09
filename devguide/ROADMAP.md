@@ -357,6 +357,12 @@ provider triage or repeat the archived chronology. Resume with:
    [technical receipt](pending_proposals/shared_source_terms_checkpoint.json).
    Historical reports and the published artifact stay fixed.
    Retain biological source identity, frozen fixture bytes and saved reports.
+   Subsequent bounded native-answer scopes add comparative context with exact-build
+   replay and inert readers. Their payloads/results remain private; passing editable
+   SDK routes does not qualify the installed environment or human usefulness.
+   Continue with targeted inspection, pinned explanations and operation coverage.
+   Public synthetic response guards (#137) keep malformed comparative-source
+   envelopes and unanswered consequence aliases separate from explicit absence.
 3. **Advance the next bounded scientific slice.** Source-active-site residue context
    and selected composition are now in protein example `@2`, with original `@1`
    readers preserved. Continue the approved molecule/activity and disease/entity

@@ -12,11 +12,14 @@ supersedes: []
 
 # Bounded consumer revalidation after consolidation
 
-The qualified code checkpoint `dc4642414c46744f39d85cb666094b0d52dd705a`
+The initial qualified code checkpoint `dc4642414c46744f39d85cb666094b0d52dd705a`
 passes a bounded execution of existing consumer cells, exact saved-state reading
 and replay of original source answers. Overall consumer acceptance remains open
 in [#132](https://github.com/uibcdf/sabueso/issues/132). A concrete acquisition
 observation gap belongs to [#108](https://github.com/uibcdf/sabueso/issues/108).
+The initial exercise below retains its original scope and counts. Subsequent
+explicitly scoped evaluations extend that exercise; their current qualification
+limits are recorded at the end of this report and in the maintained CHECKPOINT.
 
 ## Scope and confidentiality
 
@@ -215,3 +218,27 @@ Full original structural/activity/profile, packet
 and comparative acquisition and overall #132 acceptance remain open; the next
 source-access scope must be explicitly selected rather than inferred from this
 fixture exercise. No new live request is made or authorized by this receipt.
+
+## Current bounded follow-up (2026-10-09)
+
+Subsequent explicitly authorized scopes exercise native structural, activity and
+comparative context using the original consumer calls. Independent saved readers
+verify sealed scientific states, exact assertions/support, unit-bearing quantities,
+packets and original credit. Exact-build archive replay preserves each build's own
+response times when a URL was queried repeatedly; an unscoped latest-answer replay
+cannot substitute for that history. Original private artifacts remain unchanged.
+Scope-specific inputs, counts, outputs and receipts stay private.
+
+This advances bounded editable SDK qualification, not complete scientific usefulness,
+installed-artifact environment acceptance or unavailable historical state recovery.
+Human source-text curation, structure selection and project Evidence still require
+their owning scientific review. Default source profiles without an archived or
+explicitly asked answer retain their unknown/unqueried scope.
+
+The next targeted #108/#91 work covers comparative source operations/bibliography
+and pinned explanations for source-supported sequence/tissue views. Native archives
+alone do not establish complete runtime observation. Public synthetic checks exposed
+missing-envelope/alias handling in OMA, UniRef, gnomAD and GTEx; #137 owns the
+component-local guards and regressions, separately from confidential consumer
+results. Keep the maintainer-approved quality work packages and existing roadmap
+as the development order.

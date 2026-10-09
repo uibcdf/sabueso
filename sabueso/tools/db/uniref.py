@@ -47,8 +47,17 @@ class OnlineUniRefClient:
     def _get(self, url: str) -> tuple:
         try:
             with urlopen(url, timeout=self.timeout, expect_json=True) as resp:
+                found = json.loads(resp.read().decode("utf-8"))
+                if (
+                    not isinstance(found, dict)
+                    or not isinstance(found.get("results"), list)
+                    or not all(isinstance(row, dict) for row in found["results"])
+                ):
+                    raise ConnectorError(
+                        "UniRef response does not state a results list"
+                    )
                 return (
-                    json.loads(resp.read().decode("utf-8")),
+                    found,
                     resp.headers.get("X-UniProt-Release"),
                     resp.headers.get("Link"),
                 )
