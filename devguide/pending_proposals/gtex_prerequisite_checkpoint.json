@@ -1,0 +1,203 @@
+{
+  "format": "sabueso.gtex_prerequisite_checkpoint@1",
+  "date": "2026-10-09",
+  "issue": "uibcdf/sabueso#135",
+  "qualified_source_sha": "b28f8d39760515026ed3ec7ab80d977ff1f2a3f4",
+  "published_0140_artifact_changed": false,
+  "correction": {
+    "missing_inputs": [
+      "pext tissue keys",
+      "single source-stated GTEx release"
+    ],
+    "request_status": "not_queried",
+    "unknown_count": null,
+    "client_constructed_without_prerequisites": false,
+    "legacy_NothingToAsk_behavior_changed": false,
+    "knowledge_state_rule_changed": false,
+    "published_card_schema_changed": false,
+    "historical_saved_reports_rewritten": false
+  },
+  "reproduction": {
+    "public_fixture_and_synthetic_missing_release_cases": 3,
+    "before": "Three prerequisite cases classified not_found before a query was made.",
+    "after": "Unqueried with unknown count; failing client factories prove no client is constructed."
+  },
+  "local": {
+    "python": "3.14.7",
+    "environment": "molsyssuite@uibcdf_3.14",
+    "selected": {
+      "passed": 113,
+      "seconds": 19.05
+    },
+    "full_local_originals": {
+      "passed": 5605,
+      "seconds": 148.22,
+      "warnings": 10
+    },
+    "workers": 12,
+    "pytest_receptor": "llm",
+    "fatal_sqlite_warning_filters": true,
+    "checks": [
+      "Ruff check/format",
+      "Fixture delivery (50 repository, 37 protected local)",
+      "Source registry",
+      "Published schema 0.3.13 card shape",
+      "Schema field paths",
+      "MOLI governance",
+      "Warning-fatal Sphinx"
+    ]
+  },
+  "ci": {
+    "run_id": 37992810217,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/37992810217",
+    "head_sha": "b28f8d39760515026ed3ec7ab80d977ff1f2a3f4",
+    "conclusion": "success",
+    "jobs_passed": 15,
+    "jobs_total": 15,
+    "inspection": "GH Run Receptor complete full capture/replay, ci profile",
+    "test_jobs": [
+      {
+        "job_id": 114031084975,
+        "name": "Offline tests (windows-latest, Python 3.12)",
+        "passed": 4052,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 900.92,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114031085084,
+        "name": "Offline tests (macos-26, Python 3.14)",
+        "passed": 4052,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 490.32,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114031085124,
+        "name": "Ackredit public-package pilot (Python 3.11)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 307.13,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114031085137,
+        "name": "Offline tests (windows-latest, Python 3.14)",
+        "passed": 4052,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 562.62,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114031085144,
+        "name": "Offline tests (ubuntu-latest, Python 3.14)",
+        "passed": 4052,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 496.16,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114031085160,
+        "name": "Offline tests (windows-latest, Python 3.11)",
+        "passed": 4052,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 929.02,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114031085162,
+        "name": "Ackredit public-package pilot (Python 3.12)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 298.3,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114031085166,
+        "name": "Ackredit public-package pilot (Python 3.13)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 203.3,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114031085168,
+        "name": "Offline tests (ubuntu-latest, Python 3.12)",
+        "passed": 4052,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 470.0,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114031085169,
+        "name": "Ackredit public-package pilot (Python 3.14)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 233.68,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114031085182,
+        "name": "Offline tests (windows-latest, Python 3.13)",
+        "passed": 4052,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 786.63,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114031085336,
+        "name": "Offline tests (ubuntu-latest, Python 3.11)",
+        "passed": 4052,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 515.74,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114031085391,
+        "name": "Offline tests (ubuntu-latest, Python 3.13)",
+        "passed": 4052,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 524.47,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      }
+    ]
+  },
+  "governance": {
+    "run_id": 37992810043,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/37992810043",
+    "head_sha": "b28f8d39760515026ed3ec7ab80d977ff1f2a3f4",
+    "conclusion": "success",
+    "jobs_passed": 1
+  },
+  "qualification_limits": [
+    "Development source checkpoint, not a new installed-package release.",
+    "Public CI repository scope excludes protected native originals and online requests.",
+    "No confidential consumer execution or results included."
+  ]
+}

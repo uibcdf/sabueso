@@ -19,7 +19,7 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | Scientific journeys | Protein example `@2` retains active-site residue/composition support; independent legacy reader and reacquisition pass | Next bounded clinical bibliography/query/explanation work; complete derived-operation observation remains open |
 | Consumers | Bounded private revalidation passes 14 live/local original cells; 14 additional cards/inventory cells pass with declared repository-fixture transport; ready MOLI correction in PR #65; Nextia #1 retains Evidence ownership | Extend explicit original-answer/live scope #132; fixture execution does not qualify full acquisition or scientific acceptance |
 | SQLite lifetime | Card/deck readers and writers and direct test queries close connections; eight regressions and 5,602 local-original cases pass; exact-SHA CI passes 15/15 with no SQLite warning group (#133) | Keep fatal Linux Python 3.14 guards; correction is on development main, outside the published 0.14.0 artifact |
-| Dependent source requests | GTEx missing tissue/release prerequisites are `not_queried`; the runner stops before constructing a client; 113 selected and 5,605 full local-original cases pass (#135) | Exact-SHA CI qualification; retain unknown counts and historical source/report support |
+| Dependent source requests | GTEx missing tissue/release prerequisites are `not_queried`; the runner stops before constructing a client; 113 selected and 5,605 full local-original cases pass; code `b28f8d3` passes 15/15 CI and governance (#135) | Retain unknown counts and historical source/report support; qualify a future installed artifact separately |
 
 The accumulated recovery/consolidation code checkpoint is published as
 `dc4642414c46744f39d85cb666094b0d52dd705a`, with
@@ -183,8 +183,20 @@ and **5,605 full local-original cases / 148.22 s**, using Python 3.14.7,
 pytest-receptor, 12 workers and the fatal SQLite/unraisable warning guards.
 The ten full-suite warnings are intentional source-fixture outcomes. Ruff,
 source/fixture registry, unchanged schema 0.3.13 shape, governance and warning-failing
-Sphinx gates pass. Remote qualification is pending; the published 0.14.0 artifact
-and historical stored cards/reports are unchanged.
+Sphinx gates pass. Code `b28f8d39760515026ed3ec7ab80d977ff1f2a3f4` passes
+**15/15 exact-SHA CI jobs** and governance: nine repository-input lanes on Linux,
+macOS arm64 and Windows pass **4,052 cases**, with ten protected-input skips,
+26 online deselections and six intentional fixture warnings each. The four
+installed-Ackredit receiving lanes pass **981 cases** each. GH Run Receptor full
+capture/replay verifies the result. See the
+[technical receipt](pending_proposals/gtex_prerequisite_checkpoint.json).
+The published 0.14.0 artifact and historical stored cards/reports are unchanged.
+
+The public registry has an independently reproduced attribution collision:
+UniProtKB and UniRef both declare `UniProt`, and the export silently retains the
+last resource's terms (#136). Correct explicit shared-source ownership and add
+an order-independent collision gate before qualifying a new terms report. This
+finding does not establish a licence change; preserved reports remain historical.
 
 Follow the [immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).
 The recovered checkpoint's CI is qualified. Bounded private MOLI consumer

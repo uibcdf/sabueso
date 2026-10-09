@@ -344,8 +344,14 @@ provider triage or repeat the archived chronology. Resume with:
    0.14.0 artifact.
    The subsequent GTEx prerequisite correction (#135) keeps absent tissue keys or
    ambiguous/missing release inputs `not_queried` before constructing a source
-   client. Its 113 selected and 5,605 full local-original tests pass; exact-SHA CI
-   remains to be qualified. Historical reports and the published artifact stay fixed.
+   client. Its 113 selected and 5,605 full local-original tests pass; code `b28f8d3`
+   passes 15/15 exact-SHA CI and governance, recorded in the
+   [technical receipt](pending_proposals/gtex_prerequisite_checkpoint.json).
+   Historical reports and the published artifact stay fixed.
+   Correct the public registry's shared-source terms collision (#136): UniRef
+   must not silently replace UniProtKB attribution by row order. Declare canonical
+   ownership and reject unintended collisions without relabeling source identity
+   or rewriting saved reports.
 3. **Advance the next bounded scientific slice.** Source-active-site residue context
    and selected composition are now in protein example `@2`, with original `@1`
    readers preserved. Continue the approved molecule/activity and disease/entity
