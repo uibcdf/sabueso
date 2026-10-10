@@ -10,7 +10,8 @@ coordinate/release correctness, installed delivery and human scientific usefulne
 remain separate from the bounded regression scope. Code `3bc1c53` passes 15/15
 exact-SHA CI; [the receipt](pending_proposals/comparative_tissue_scope_checkpoint.json)
 retains the qualified source and limits. Development #139 replaces the incomplete
-refresh routing list with declared selectors and saved arguments, under separate
+refresh routing list with declared selectors and saved arguments; code `ff32cb6`
+passes 15/15 exact-SHA CI and 5,896 local-original cases under separate
 [qualification](pending_proposals/refresh_request_scope.md). Historical missing
 parameters and unsupported selectors remain explicit limits; new acquisitions do
 not promise exact old requests. See [the correction](pending_proposals/comparative_tissue_scope.md).

@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-10, declared refresh request scope locally qualified (#139).
+Last updated: 2026-10-10, declared refresh request scope source-qualified (#139).
 
 Development refresh now uses all 24 declared enrichers' 25 source/data selectors,
 preserves supplied protein request options on every recorded outcome, and reports
@@ -11,9 +11,18 @@ Conflicting or missing essential known-route parameters require an explicit over
 before acquisition. `store=` retains original and refreshed pins. Unpublished
 schema 0.3.14 adds optional quality records; published 0.3.13 stays unchanged.
 [Refresh scope and limits](pending_proposals/refresh_request_scope.md).
-77 new regressions, 273 selected cases and 5,896 full local-original cases pass
-on Python 3.14.7 with twelve receptor workers. Exact-source CI is pending;
-this change is not covered by the earlier CI receipts below.
+Code `ff32cb684904910dcd4051def95ebba06120a256` passes
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38034709963)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/38034709969).
+The [source receipt](pending_proposals/refresh_request_scope_checkpoint.json)
+records 77 new regressions, 273 selected and 5,896 full local-original cases with
+twelve receptor workers on Python 3.14.7. All nine public offline CI lanes pass
+4,343 cases with ten declared fixture skips; four installed public-Ackredit lanes
+pass 981 cases. 116 refresh/migration/independent-report cases pass after updating
+editable metadata; all six participating imports are verified outside the checkout.
+Eight existing original SDK cells and five actual archived-context refreshes pass
+without provider queries. Independent readers retain ten original/refreshed pins,
+their exact sealed support and unchanged active-session credit. Details stay private.
 
 Development Card views default to `pext_at_variant@2` and `isoform_exon_usage@3`,
 with explanation `@2`, explicit historical `usage_rule` selection and per-tissue
@@ -24,7 +33,7 @@ migration reports missing context instead of inferring it. Recorded gnomAD
 variant/pext options and limits are restored during refresh. Both public report
 generations have inert readers and format-preserving reacquisition.
 
-Code `3bc1c53150e8743cdee5132a915d4aa19cf6d0d1` passes
+Earlier tissue-scope code `3bc1c53150e8743cdee5132a915d4aa19cf6d0d1` passes
 [15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38031754778)
 and [governance](https://github.com/uibcdf/sabueso/actions/runs/38031754777).
 The [source receipt](pending_proposals/comparative_tissue_scope_checkpoint.json)
@@ -38,8 +47,7 @@ archived native-answer/old-report revalidation pass without new provider queries
 Earlier `@1` explanation qualification at `3fa2fdf` retains its unchanged
 [receipt](pending_proposals/comparative_explanations_checkpoint.json). Published
 0.14.0, frozen 0.3.13 and stored historical reports remain unchanged.
-Next: finish [#139](https://github.com/uibcdf/sabueso/issues/139) source qualification,
-then comparative operation/bibliography observation #108. Installed
+Next: comparative operation/bibliography observation #108. Installed
 artifact qualification and human scientific acceptance remain separate.
 
 ## Resume here
@@ -59,7 +67,8 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | SQLite lifetime | Card/deck readers and writers and direct test queries close connections; eight regressions and 5,602 local-original cases pass; exact-SHA CI passes 15/15 with no SQLite warning group (#133) | Keep fatal Linux Python 3.14 guards; correction is on development main, outside the published 0.14.0 artifact |
 | Dependent source requests | GTEx missing tissue/release prerequisites are `not_queried`; the runner stops before constructing a client; 113 selected and 5,605 full local-original cases pass; code `b28f8d3` passes 15/15 CI and governance (#135) | Retain unknown counts and historical source/report support; qualify a future installed artifact separately |
 | Shared source terms | UniRef explicitly shares canonical `uniprot` terms; collisions and policy differences are refused; 125 selected and 5,627 full local-original cases pass; code `e0b80b2` passes 15/15 CI and governance (#136) | Retain historical reports; qualify a future installed artifact separately |
-| Comparative scientific scope | Default tissue rules and explanation versions check explicit genomic scope and resolved/missing/conflicting coverage; 41 scoped cases, both report generations and 5,819 local-original cases pass; code `3bc1c53` passes 15/15 CI and governance (#138) | Retain explicit legacy reproduction and missing historical coordinate context; broader declared-source refresh is #139, operation/bibliography #108 and installed/human acceptance remain separate |
+| Refresh requested scope | Declared selectors and recorded protein arguments survive failed/blocked/excluded requests; 77 new cases, 5,896 full local-original cases and exact-source CI 15/15 pass at `ff32cb6` (#139); original pins and scientific support remain readable | Historical unrecorded parameters use current defaults; unsupported routes are reported and omitted; all molecule/disease routes, comparative operation/bibliography #108 and installed/human acceptance remain separate |
+| Comparative scientific scope | Default tissue rules and explanation versions check explicit genomic scope and resolved/missing/conflicting coverage; 41 scoped cases, both report generations and 5,819 local-original cases pass; code `3bc1c53` passes 15/15 CI and governance (#138) | Retain explicit legacy reproduction and missing historical coordinate context; declared-source refresh is delivered in #139; operation/bibliography #108 and installed/human acceptance remain separate |
 | Comparative response integrity | Online OMA/UniRef/gnomAD/GTEx reject malformed required containers and unanswered consequence aliases; 96 new regressions, 223 selected and 5,723 full local-original cases pass; code `09cf912` passes 15/15 exact-SHA CI and governance (#137) | Retain declared source-version/operation gaps and qualify installed delivery separately; [source receipt](pending_proposals/comparative_response_contracts_checkpoint.json) |
 
 The accumulated recovery/consolidation code checkpoint is published as

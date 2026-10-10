@@ -2,7 +2,7 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
-  - `0.3.14` is unpublished development (#138). Optional gnomAD variant assertion
+  - `0.3.14` is unpublished development (#138/#139). Optional gnomAD variant assertion
     `source_metadata.coordinate_scope` records `assembly`, `basis`,
     `native_assembly_echo` and `rule`. `gnomad_query_coordinates@1` records GRCh38
     as the current client query/mapping contract; the source does not echo an

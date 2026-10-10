@@ -481,9 +481,10 @@ public method names.
   15/15 exact-SHA CI jobs; [its source receipt](pending_proposals/comparative_tissue_scope_checkpoint.json)
   retains public/local scopes and explicit legacy reproduction. Development #139
   now restores declared-source scope and saved arguments, reporting historical
-  missing parameters, overrides and unsupported selectors; [qualification](pending_proposals/refresh_request_scope.md)
-  precedes expanding comparative
-  operation/bibliography observation in #108.
+  missing parameters, overrides and unsupported selectors. Code `ff32cb6` passes
+  5,896 local-original cases and 15/15 exact-SHA CI; [qualification](pending_proposals/refresh_request_scope.md)
+  retains its [source receipt](pending_proposals/refresh_request_scope_checkpoint.json).
+  Continue with comparative operation/bibliography observation in #108.
 - **Traceability (#108).** Extend observed source/client/operation coverage along
   these exercised paths, including reuse, versions with their actual basis, retries,
   empty answers, caps, partial returns and failures. Keep bibliography and missing

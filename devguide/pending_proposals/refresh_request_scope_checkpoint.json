@@ -1,0 +1,267 @@
+{
+  "format": "sabueso.refresh_request_scope_checkpoint@1",
+  "date": "2026-10-10",
+  "issue": "uibcdf/sabueso#139",
+  "related_issues": [
+    "uibcdf/sabueso#86",
+    "uibcdf/sabueso#138",
+    "uibcdf/sabueso#108",
+    "uibcdf/sabueso#112",
+    "uibcdf/sabueso#132"
+  ],
+  "qualified_source_sha": "ff32cb684904910dcd4051def95ebba06120a256",
+  "published_0140_artifact_changed": false,
+  "scope": {
+    "restoration_rule": "enrichment_request_restoration@1",
+    "declared_enrichers": 24,
+    "declared_source_data_selectors": 25,
+    "bespoke_protein_routes": [
+      "RCSB PDB",
+      "ChEMBL",
+      "BindingDB",
+      "PubChem BioAssay"
+    ],
+    "new_request_options_recorded_before_acquisition": true,
+    "failed_blocked_excluded_and_inapplicable_requests_retained": true,
+    "historical_unrecorded_parameters_reported": true,
+    "caller_overrides_and_disabled_requests_preserved": true,
+    "known_conflicting_or_missing_essential_scope_refused_before_resolution": true,
+    "unsupported_selectors_reported_and_not_queried": true,
+    "dependent_copy_pointers_reacquired_from_new_source_answers_only": true,
+    "original_and_refreshed_pins_retained_with_store": true,
+    "fresh_acquisition_not_exact_historical_request_replay": true,
+    "development_schema": "0.3.14",
+    "optional_quality_additions": [
+      "quality.enrichments[].request_options",
+      "quality.migration[].request_restoration"
+    ],
+    "recorded_shape_paths": 1627,
+    "additional_recorded_shape_paths": 31,
+    "removed_card_paths": 0,
+    "existing_paths_newly_exercised_in_fixture_shape": [
+      "quality.enrichments[].cutoff",
+      "quality.enrichments[].filters",
+      "quality.migration"
+    ],
+    "published_schema_shape_frozen_cards_changed": false,
+    "native_fixture_bytes_changed": false,
+    "new_provider_queries": 0,
+    "new_runtime_operation_or_bibliography_coverage": false
+  },
+  "public_fixture_rebuilds": [
+    "UniRef",
+    "bounded and filtered OMA",
+    "gnomAD pext with GTEx",
+    "BindingDB"
+  ],
+  "regression_modules": [
+    "tests/core/test_refresh_scope_offline.py",
+    "tests/core/test_enrichers_offline.py",
+    "tests/core/test_migration_offline.py"
+  ],
+  "new_refresh_regression_cases": 76,
+  "new_runner_copy_regression_cases": 1,
+  "local": {
+    "selected_passed": 273,
+    "selected_seconds": 21.83,
+    "full_local_originals_passed": 5896,
+    "full_seconds": 155.16,
+    "full_warnings": 11,
+    "precommit_full_checkpoint_sabueso_metadata": "0.14.0+14.gf4e7758",
+    "qualified_executable_worktree_bytes_match": true,
+    "post_editable_refresh_passed": 116,
+    "post_editable_refresh_seconds": 18.72,
+    "workers": 12,
+    "python": "3.14.7",
+    "pytest_receptor": "llm",
+    "fatal_sqlite_and_unraisable_guards": true
+  },
+  "editable_environment": {
+    "sabueso_distribution_and_module": "0.14.0+15.gff32cb6",
+    "ackredit_distribution_and_module": "0.12.0+2.g1342f0f",
+    "all_six_participating_component_imports_and_metadata_verified_outside_checkout": true,
+    "global_environment_pip_check_qualified": false
+  },
+  "checks": [
+    "Ruff format/check",
+    "Fixture delivery: 50 repository / 37 protected originals",
+    "Additive recorded card shape and schema/field paths",
+    "Frozen published schema/shape/card files unchanged",
+    "Source registry",
+    "Dependency preflight",
+    "MOLI governance and canonical guide equality",
+    "Warning-fatal Sphinx",
+    "211 maintained relative links",
+    "Git diff whitespace"
+  ],
+  "ci": {
+    "run_id": 38034709963,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38034709963",
+    "head_sha": "ff32cb684904910dcd4051def95ebba06120a256",
+    "conclusion": "success",
+    "jobs_passed": 15,
+    "jobs_total": 15,
+    "inspection": "GH Run Receptor complete full capture/replay; all manifest members independently hashed",
+    "capture_manifest_sha256": "61a464a3110a02f5df17f3bf57165d87cbc1208420c4c8db75657f3c4f7f8bc9",
+    "test_jobs": [
+      {
+        "job_id": 114162633196,
+        "name": "Ackredit public-package pilot (Python 3.13)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 306.8,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114162633203,
+        "name": "Offline tests (ubuntu-latest, Python 3.12)",
+        "passed": 4343,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 578.69,
+        "warnings": 7,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114162633210,
+        "name": "Ackredit public-package pilot (Python 3.11)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 215.32,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114162633262,
+        "name": "Ackredit public-package pilot (Python 3.12)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 210.15,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114162633275,
+        "name": "Ackredit public-package pilot (Python 3.14)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 238.4,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114162633290,
+        "name": "Offline tests (ubuntu-latest, Python 3.14)",
+        "passed": 4343,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 521.51,
+        "warnings": 7,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114162633296,
+        "name": "Offline tests (ubuntu-latest, Python 3.13)",
+        "passed": 4343,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 522.18,
+        "warnings": 7,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114162633337,
+        "name": "Offline tests (ubuntu-latest, Python 3.11)",
+        "passed": 4343,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 536.28,
+        "warnings": 7,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114162633339,
+        "name": "Offline tests (windows-latest, Python 3.13)",
+        "passed": 4343,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 913.82,
+        "warnings": 7,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114162633345,
+        "name": "Offline tests (windows-latest, Python 3.11)",
+        "passed": 4343,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 969.34,
+        "warnings": 7,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114162633355,
+        "name": "Offline tests (macos-26, Python 3.14)",
+        "passed": 4343,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 454.33,
+        "warnings": 7,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114162633362,
+        "name": "Offline tests (windows-latest, Python 3.14)",
+        "passed": 4343,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 675.46,
+        "warnings": 7,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114162633417,
+        "name": "Offline tests (windows-latest, Python 3.12)",
+        "passed": 4343,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 935.14,
+        "warnings": 7,
+        "unclosed_sqlite_warning_groups": 0
+      }
+    ]
+  },
+  "governance": {
+    "run_id": 38034709969,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38034709969",
+    "head_sha": "ff32cb684904910dcd4051def95ebba06120a256",
+    "conclusion": "success",
+    "jobs_passed": 1,
+    "jobs_total": 1,
+    "inspection": "GH Run Receptor complete full capture/replay; all manifest members independently hashed",
+    "capture_manifest_sha256": "0684aefd2822d39b6c02b9d387139478639fedf8a81a17bc7b4d221817ab77bc"
+  },
+  "private_revalidation": {
+    "previous_original_cells_reconfirmed": 8,
+    "new_original_notebook_cells": 0,
+    "actual_archived_refresh_contexts": 5,
+    "independent_original_and_refreshed_pins": 10,
+    "new_provider_queries": 0,
+    "details_remain_private": true
+  },
+  "qualification_limits": [
+    "Development source checkpoint, not a new installed artifact or public release.",
+    "Recorded supplied arguments do not freeze omitted client defaults, source request identifiers, or native release versions.",
+    "Historical missing request parameters remain unknown and use current defaults; old records are never backfilled.",
+    "Known contradictory or missing essential route scope requires a caller override; unsupported selectors remain inspectable and omitted.",
+    "All molecule/disease refresh routes and consumer-owned scientific acceptance are not qualified by this protein slice.",
+    "Comparative source-operation and bibliography observation remain #108 work.",
+    "Private original-answer revalidation stays private and is not a public fixture or a new provider query.",
+    "The shared development environment has independent unrelated closure follow-ups; no global pip-check claim."
+  ]
+}

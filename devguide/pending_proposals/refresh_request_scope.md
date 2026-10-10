@@ -56,7 +56,23 @@ warning-fatal Sphinx, 211 maintained relative links and whitespace checks pass.
 The 31 additional recorded shape paths include previously existing filter/cutoff
 and migration keys exercised by expanded fixtures; only the request options and
 restoration quality records are new stored contracts. No paths were removed.
-Exact-source CI qualification remains pending the code checkpoint.
+Code `ff32cb684904910dcd4051def95ebba06120a256` passes
+[15/15 CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38034709963) and
+[1/1 governance](https://github.com/uibcdf/sabueso/actions/runs/38034709969).
+Nine public offline lanes pass 4,343 cases with ten declared skips and 26 online
+deselections; four installed public-Ackredit compatibility lanes pass 981 cases.
+GH Run Receptor full capture/replay and independent manifest member hashes verify
+the exact source; the [public receipt](refresh_request_scope_checkpoint.json)
+preserves these results. After editable metadata refresh, 116 scope/migration/
+independent-report cases pass, and all six participating imports/metadata agree
+outside the checkout.
+
+Private original-answer revalidation reconfirms eight existing original SDK cells
+and five actual archived-context refreshes against the current scientific baseline.
+An independent inert reader verifies ten original/refreshed pins and 9,094 exact
+assertions through sealed states, with thirty individual pin reads and unchanged
+active-session credit. Input directories remain unchanged; no provider query or
+additional original notebook cell is involved. Detailed receipts remain private.
 This slice does not provide frozen client defaults, native release verification,
 all molecule/disease refresh routes, new comparative acquisition observation or
 bibliography (#108), installed-artifact or human scientific acceptance.
