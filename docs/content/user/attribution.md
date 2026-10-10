@@ -1,5 +1,17 @@
 # Automatic traceability and attribution
 
+Development gnomAD variant/transcript/consequence/pext access retains actual
+GraphQL queries, original response identities/times and native transcript versions.
+Requested dataset/genome and client pext/GTEx labels stay separate from unknown
+native releases. Null consequence aliases differ from empty consequence lists;
+failed later batches retain completed access without returning partial science.
+Missing local files are unavailable. Missing upstream Ensembl gene identity stops
+as unqueried before source client construction. The existing GraphQL API URL is
+credited as a resource; entry/method publications and native revisions remain gaps.
+Received/client/card-selected counts are distinct, and original supplied-gene pins
+and saved attribution survive inert reading. Development coverage becomes 38
+source families; these changes are outside the unchanged published 0.14.0 artifact.
+
 Development OMA access retains separate xref, protein and ortholog observations.
 Entry-name resolution is attributed to UniProtKB, which supplies those bindings.
 Original response hashes, revision gaps, continuation, batch ambiguity and partial
@@ -9,7 +21,7 @@ publication metadata or sequence revision. Missing local files mean unavailable
 access. Client row counts differ from taxon/limit-selected card relationships;
 the card's quality record preserves that selected scope. Modified source mappings
 remain unjoined. Original scientific pins and saved credit remain readable without
-fresh operations. This extends development coverage to 37 source families and is
+fresh operations. This OMA slice extends coverage to 37 source families; gnomAD extends it above. It is
 outside the unchanged published 0.14.0 artifact.
 
 Development UniRef cluster/member access retains original page releases, links,

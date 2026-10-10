@@ -37,8 +37,11 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   source-qualified at `593ba76` with 6,031 local-original cases and 15/15 CI;
   [its receipt](pending_proposals/oma_observation_checkpoint.json) retains the limits.
   It separates OMA statements from UniProt name bindings, exposes revision/selection gaps and retains source-stated match gates.
-  gnomAD and derived-operation observation, complete bibliography and strict cost/
-  deadline limits remain open.
+  [Development gnomAD observation](pending_proposals/gnomad_observation.md) is
+  implemented with qualification in progress. It records query-versus-native scope
+  and completed alias batches; missing local inputs are unavailable, and missing
+  gene prerequisites no longer claim source absence (#141). Derived-operation
+  observation, complete bibliography and strict cost/deadline limits remain open.
   [Development UniRef observation](pending_proposals/uniref_observation.md)
   exposes individual page releases, caps and partial failures; the client's
   compatibility version is not proof of coherent pages. Code `c6cb0e3` passes

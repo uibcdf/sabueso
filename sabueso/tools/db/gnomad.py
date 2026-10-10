@@ -26,6 +26,14 @@ from urllib.error import HTTPError, URLError
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.gnomad_acquisition import (
+    note_completed,
+    note_response,
+    observe,
+    validate_consequences,
+    validate_fixture,
+)
+from sabueso.core.source_acquisition import capture_acquisitions, missing_fixture
 from sabueso.tools.db._http import request, stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -108,6 +116,9 @@ class OnlineGnomADClient:
                 expect_json=True,
             ) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
+                note_response(
+                    data, query={"query": query, "variables": {kind: identifier}}
+                )
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"gnomAD request failed: {exc}") from exc
         if not isinstance(data, dict):
@@ -131,12 +142,18 @@ class OnlineGnomADClient:
                     for error in errors
                 )
             ):
+                note_completed(
+                    {},
+                    kind=kind,
+                    absence="explicit_GraphQL_not_found_error; existing_client_message_policy",
+                )
                 raise RecordNotFoundError(f"gnomAD has no {kind} {identifier}")
             raise ConnectorError(f"gnomAD answered with errors: {errors}")
         if not isinstance(envelope, dict) or kind not in envelope:
             raise ConnectorError(f"gnomAD response does not answer {kind} {identifier}")
         found = envelope[kind]
         if found is None:
+            note_completed({}, kind=kind, absence="explicit_null_GraphQL_entity")
             raise RecordNotFoundError(f"gnomAD has no {kind} {identifier}")
         if not isinstance(found, dict):
             raise ConnectorError(f"gnomAD response does not state a {kind} object")
@@ -144,18 +161,22 @@ class OnlineGnomADClient:
             return {"retrieved_at": retrieval.value, "record": found}
         listed = _objects(found.get("variants"), "variants")
         found.pop("variants")
+        note_completed({kind: found, "variants": listed}, kind=kind)
         return {
             "retrieved_at": retrieval.value,
             "version": DATASET,
             "record": {kind: found, "variants": listed},
         }
 
+    @observe("gnomad_variants")
     def variants(self, gene: str) -> Dict[str, Any]:
         return self._ask(QUERY, "gene", gene)
 
+    @observe("gnomad_transcript_variants")
     def transcript_variants(self, transcript: str) -> Dict[str, Any]:
         return self._ask(TRANSCRIPT_QUERY, "transcript", transcript)
 
+    @observe("gnomad_consequences")
     def consequences(self, variant_ids: Iterable[str]) -> Dict[str, Any]:
         """``{variant_id: [consequence on each transcript]}``; a variant gnomAD does not
         hold is left out."""
@@ -179,6 +200,10 @@ class OnlineGnomADClient:
                     expect_json=True,
                 ) as resp:
                     response = json.loads(resp.read().decode("utf-8"))
+                    note_response(
+                        response,
+                        query={"query": f"query {{ {parts} }}", "variant_ids": chunk},
+                    )
             except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
                 raise ConnectorError(f"gnomAD request failed: {exc}") from exc
             if (
@@ -190,19 +215,30 @@ class OnlineGnomADClient:
                 raise ConnectorError(
                     "gnomAD response does not answer the consequence batch"
                 )
+            batch, absent, native_ids = {}, [], {}
             for n, identifier in enumerate(chunk):
                 answer = response["data"][f"v{n}"]
                 if answer is None:
+                    absent.append(identifier)
                     continue
                 if not isinstance(answer, dict):
                     raise ConnectorError(
                         "gnomAD response does not state a variant object"
                     )
-                found[identifier] = _objects(
+                batch[identifier] = _objects(
                     answer.get("transcript_consequences"), "transcript consequences"
                 )
+                native_ids[identifier] = answer.get("variant_id")
+            note_completed(
+                batch,
+                kind="consequences",
+                absent_ids=absent,
+                native_variant_ids=native_ids,
+            )
+            found.update(batch)
         return {"retrieved_at": retrieval.value, "version": DATASET, "record": found}
 
+    @observe("gnomad_pext")
     def pext(self, gene: str) -> Dict[str, Any]:
         answer = self._ask(PEXT_QUERY, "gene", gene, variants=False)
         found = answer["record"]
@@ -210,11 +246,14 @@ class OnlineGnomADClient:
             raise ConnectorError("gnomAD response does not answer the pext query")
         pext = found.pop("pext")
         if pext is None:
+            note_completed({}, kind="pext", absence="explicit_null_pext")
             raise RecordNotFoundError(f"gnomAD states no pext for gene {gene}")
         if not isinstance(pext, dict):
             raise ConnectorError("gnomAD response does not state a pext object")
         if not _objects(pext.get("regions"), "pext regions"):
+            note_completed({}, kind="pext", absence="explicit_empty_pext_regions")
             raise RecordNotFoundError(f"gnomAD states no pext for gene {gene}")
+        note_completed({"gene": found, "pext": pext}, kind="pext")
         return {
             "retrieved_at": answer["retrieved_at"],
             "version": PEXT_VERSION,
@@ -238,28 +277,53 @@ class FixtureGnomADClient:
             raise ConnectorError(f"gnomAD request for {identifier} failed (simulated)")
         path = self.directory / f"{identifier}.json"
         if not path.is_file():
-            raise RecordNotFoundError(f"gnomAD has no {kind} {identifier}")
-        saved = json.loads(path.read_text(encoding="utf-8"))
+            raise missing_fixture(f"gnomAD fixture is unavailable: {identifier}")
+        try:
+            saved = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            raise ConnectorError(
+                f"gnomAD fixture cannot be read: {identifier}"
+            ) from exc
+        note_response(saved, fixture=True)
+        validate_fixture(saved, kind)
+        note_completed(saved["record"], kind=kind, fixture_version=saved.get("version"))
         return {"retrieved_at": self.retrieved_at, **saved}
 
+    @observe("gnomad_variants", fixture=True)
     def variants(self, gene: str) -> Dict[str, Any]:
         return self._read("gene", gene)
 
+    @observe("gnomad_transcript_variants", fixture=True)
     def transcript_variants(self, transcript: str) -> Dict[str, Any]:
         return self._read("transcript", transcript)
 
+    @observe("gnomad_pext", fixture=True)
     def pext(self, gene: str) -> Dict[str, Any]:
         return self._read("pext", f"pext_{gene}")
 
+    @observe("gnomad_consequences", fixture=True)
     def consequences(self, variant_ids: Iterable[str]) -> Dict[str, Any]:
         path = self.directory / "consequences.json"
         if "consequences" in self.failing:
             raise ConnectorError("gnomAD request for consequences failed (simulated)")
-        saved = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+        if not path.is_file():
+            raise missing_fixture("gnomAD consequence fixture is unavailable")
+        try:
+            saved = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            raise ConnectorError("gnomAD consequence fixture cannot be read") from exc
+        note_response(saved, fixture=True)
+        validate_consequences(saved)
+        selected = {v: saved[v] for v in variant_ids if v in saved}
+        note_completed(
+            saved,
+            kind="consequences",
+            absent_ids=[v for v in variant_ids if v not in saved],
+        )
         return {
             "retrieved_at": self.retrieved_at,
             "version": DATASET,
-            "record": {v: saved[v] for v in variant_ids if v in saved},
+            "record": selected,
         }
 
 
@@ -267,6 +331,7 @@ class FixtureGnomADClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_variants(identifier: str, client: Any = None, skip_digestion: bool = False):
     """gnomAD's variants of a gene (an Ensembl gene id), with their frequencies."""
     response = online(client, OnlineGnomADClient).variants(identifier)
@@ -281,6 +346,7 @@ def get_variants(identifier: str, client: Any = None, skip_digestion: bool = Fal
 
 
 @arg_digest()
+@capture_acquisitions
 def get_transcript_variants(
     identifier: str, client: Any = None, skip_digestion: bool = False
 ):
@@ -298,6 +364,7 @@ def get_transcript_variants(
 
 
 @arg_digest()
+@capture_acquisitions
 def get_pext(identifier: str, client: Any = None, skip_digestion: bool = False):
     """gnomAD's pext of a gene (an Ensembl gene id): per coding region, the share of the
     gene's expression in each GTEx v10 tissue that includes it (GRCh38)."""

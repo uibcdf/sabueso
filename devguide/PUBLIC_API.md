@@ -154,6 +154,13 @@ not promise card enrichment, live availability or public-package delivery.
   local files are unavailable; failed name resolution installs no partial ortholog
   support. Normal scientific values and pins stay fixed.
   [Scope](pending_proposals/oma_observation.md).
+- Development gnomAD `variants`/`transcript_variants`/`consequences`/`pext`
+  retain GraphQL request/response scope under `gnomAD`; public `get_variants`,
+  `get_transcript_variants` and `get_pext` attach their traces. Client dataset/GTEx
+  labels never become native revisions. Received/client/card counts, null aliases,
+  partial failures and unavailable local inputs remain distinct. Missing upstream
+  gene identity is unqueried before client construction (#141). Normal supplied-gene
+  scientific pins stay fixed. [Scope](pending_proposals/gnomad_observation.md).
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
   Deck.
 - `sabueso.resolve_disease_card(identifier)`, `sabueso.disease_targets(disease,

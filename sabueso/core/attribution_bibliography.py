@@ -7,6 +7,12 @@ Metadata sources are recorded in docs/content/user/attribution.md.
 from copy import deepcopy
 
 _DESCRIPTIONS = {
+    "gnomAD": {
+        "id": "url:https://gnomad.broadinstitute.org/api",
+        "type": "dataset",
+        "title": "gnomAD GraphQL API",
+        "url": "https://gnomad.broadinstitute.org/api",
+    },
     "UniProtKB search": {
         "id": "url:https://rest.uniprot.org/uniprotkb/search",
         "type": "dataset",

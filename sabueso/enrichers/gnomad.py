@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from sabueso.enrichers import Enricher, NothingToAsk, Request
+from sabueso.enrichers import Enricher, Request, RequestPrerequisiteMissing
 
 #: Every protein-level variant, up to a safety ceiling; a cut is reported.
 DEFAULT_LIMIT = 5000
@@ -33,7 +33,9 @@ class GnomAD(Enricher):
             {v.split(".")[0] for v, _ in context.xref_properties("Ensembl", "GeneId")}
         )
         if not genes:
-            raise NothingToAsk("the entry cross-references no Ensembl gene")
+            raise RequestPrerequisiteMissing(
+                "the entry cross-references no Ensembl gene"
+            )
         canonical = context.transcripts["canonical"]
         # Transcripts UniProt states for its other isoforms: a change on one of them
         # would be placed through the isoform map (#102).
@@ -193,7 +195,9 @@ class GnomADPext(Enricher):
             {v.split(".")[0] for v, _ in context.xref_properties("Ensembl", "GeneId")}
         )
         if not genes:
-            raise NothingToAsk("the entry cross-references no Ensembl gene")
+            raise RequestPrerequisiteMissing(
+                "the entry cross-references no Ensembl gene"
+            )
         return [
             Request(g, {"source": self.source, "data": self.data, "identifier": g})
             for g in genes

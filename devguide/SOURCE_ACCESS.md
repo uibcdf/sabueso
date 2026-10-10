@@ -78,8 +78,12 @@ source-operation observation to every route. The separate development GTEx slice
 observes existing tissue access; development UniRef observes existing cluster/member
 pages with their individual release and limit bases. Development OMA observes
 xrefs/protein/ortholog operations separately from UniProt entry-name resolution;
-gnomAD and derived operation coverage remain open. Original
-response bytes, source identity and card schemas stay fixed.
+development gnomAD observes variant/transcript/consequence/pext GraphQL scope,
+query labels versus unknown native releases, and partial alias batches. Missing
+local consequence inputs are unavailable. Both gnomAD enrichers stop as unqueried
+when the entry states no Ensembl gene, before constructing a client (#141).
+Derived operation coverage remains open. Original response bytes, source identity
+and card schemas stay fixed. [gnomAD scope](pending_proposals/gnomad_observation.md).
 
 Online UniRef members use `uniref_member_pagination@1`: at most 100 logical pages,
 including empty pages, and no repeated exact request URL. Exhaustion or a cycle

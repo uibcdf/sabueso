@@ -3714,3 +3714,16 @@ consumer notebooks and results stay private and read-only. Project Evidence and
 Discovery remain with Nextia, whose design pause does not block standalone Sabueso
 quality work. Record concrete defects in their owning issues and correct observed
 contracts with public regressions.
+
+## 2026-10-10 — Observe gnomAD operation scope and unqueried gene prerequisites (#108/#141)
+
+Observe the four built-in variant/transcript/consequence/pext routes without
+altering normal supplied-gene scientific mapping or pins. Preserve actual GraphQL
+queries, native identities and transcript versions; requested dataset/genome and
+client GTEx labels are separate from unknown native release. Failed later batches
+retain completed scope but return no partial science. Missing local files are
+unavailable. Reuse the existing prerequisite gate for absent Ensembl gene identity:
+stop before client construction and record unqueried scope, not source absence.
+Credit the existing GraphQL resource without inventing publications. Source/CI,
+installed-artifact and human/consumer acceptance remain separate. See
+[scope and qualification](pending_proposals/gnomad_observation.md).

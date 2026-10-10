@@ -47,6 +47,9 @@ from sabueso.tools.db import (
 
 ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 TRACED = {
+    "gnomad.get_variants",
+    "gnomad.get_transcript_variants",
+    "gnomad.get_pext",
     "oma.get_orthologs",
     "gtex.get_tissues",
     "ncbi_taxonomy.get_taxon",

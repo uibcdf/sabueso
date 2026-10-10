@@ -737,3 +737,18 @@ full receptor captures. Original-answer replay and inert reading pass without
 new queries.
 No new provider queries or private fixtures; full installed-artifact/human
 acceptance and broader gnomAD/derived-operation/bibliography coverage stay open.
+
+## gnomAD operation observation (development, 2026-10-10, #108/#141)
+
+Variant/transcript/consequence/pext access retains actual GraphQL scope, response
+identities and per-batch transcript/variant bindings. Dataset/genome request labels
+and client pext/GTEx descriptions do not establish native releases. Received,
+returned and card-selected counts remain separate; failed later aliases retain
+completed partial scope without a partial scientific return. Missing local files
+are unavailable. Missing upstream gene identity is unqueried before source client
+construction (#141). Resource bibliography identifies the existing gnomAD GraphQL
+API and states publication/revision gaps. Normal supplied-gene scientific pins and
+original archive receipts survive independent inert reading. [Scope](gnomad_observation.md).
+Qualification is in progress for 54 new public regressions and exercised journeys;
+no new provider query or private fixture. Derived operations, full bibliography and
+installed-artifact/human/consumer acceptance remain separate.

@@ -47,6 +47,7 @@ COVERAGE = {
         "NCBI Taxonomy",
         "GTEx",
         "OMA",
+        "gnomAD",
         "AAindex",
         "DisProt",
         "UniParc",
@@ -650,6 +651,13 @@ def _credit(record):
         )
         if record["operation"] == "oma_entry_names":
             record["bibliography"].extend(descriptions("UniProtKB search"))
+    if record["source"] == "gnomAD":
+        record["bibliography_gaps"].extend(
+            [
+                "native_dataset_and_GTEx_revisions_not_stated",
+                "variant_and_pext_method_publications_not_queried",
+            ]
+        )
     if record["source"] == "ClinicalTrials.gov":
         from .clinicaltrials_bibliography import citations
 
@@ -741,6 +749,7 @@ def _credit(record):
             "tissue_context",
             "cluster_context",
             "orthology_context",
+            "variation_context",
         ):
             if key in record:
                 context[key] = deepcopy(record[key])

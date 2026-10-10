@@ -2,7 +2,17 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-10, OMA operation observation qualification (#108).
+Last updated: 2026-10-10, gnomAD operation observation qualification (#108/#141).
+
+Development [gnomAD observation](pending_proposals/gnomad_observation.md) is
+implemented and undergoing qualification. Variant/transcript/consequence/pext
+access retains actual GraphQL scope, original receipts, unknown native revisions
+and client-versus-card counts. Missing local consequence inputs are unavailable;
+missing Ensembl gene prerequisites are unqueried before client construction (#141).
+54 new public regressions exercise scientific pins, partial failure, reuse and
+independent reading. Declared coverage becomes 38 source families. Qualify this
+slice before derived comparative operation and bibliography coverage.
+Published 0.14.0 remains unchanged.
 
 Development [OMA operation observation](pending_proposals/oma_observation.md) is
 source-qualified at `593ba76`: xrefs/protein/ortholog access belongs to OMA;
@@ -16,8 +26,8 @@ The [source receipt](pending_proposals/oma_observation_checkpoint.json) retains
 4,478 cases per public offline lane, 1,116 per installed public-Ackredit lane,
 verified editable imports and independently hashed full receptor captures.
 Original-answer replay and inert reading pass without new queries. Declared
-observation coverage becomes 37 source families. Advance gnomAD and derived
-comparative operation/bibliography work. Published 0.14.0 remains unchanged.
+observation coverage becomes 37 source families. gnomAD qualification follows
+above; derived comparative operation/bibliography work remains open. Published 0.14.0 remains unchanged.
 
 The [development UniRef slice](pending_proposals/uniref_observation.md) retains
 per-page releases, continuation, received/kept counts and partial failure scope,
@@ -101,7 +111,7 @@ archived native-answer/old-report revalidation pass without new provider queries
 Earlier `@1` explanation qualification at `3fa2fdf` retains its unchanged
 [receipt](pending_proposals/comparative_explanations_checkpoint.json). Published
 0.14.0, frozen 0.3.13 and stored historical reports remain unchanged.
-Next: gnomAD and derived comparative operation/bibliography observation #108;
+Next: qualify gnomAD observation, then derived comparative operation/bibliography #108;
 OMA, GTEx and UniRef observation are qualified above. Installed
 artifact qualification and human scientific acceptance remain separate.
 

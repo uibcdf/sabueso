@@ -55,6 +55,7 @@ fixture does not establish current live availability.
 | --- | --- |
 | Public arguments/diagnostics | `tests/core/test_argument_contracts_offline.py`; owning API cases; SMonitor/diagnostic cases |
 | Source/assertion identity and acquisition | `test_source_assertions_offline.py`, `test_source_acquisition_offline.py`, `test_source_access_offline.py`; owning source/mapping cases |
+| gnomAD operation observation / prerequisites | `test_gnomad_acquisition_offline.py`, source/acquisition/refresh and comparative journeys; actual GraphQL aliases/revisions/count bases, unavailable fixtures, partial failure, exact pins, inert readers and no source client without gene identity (#108/#141) |
 | Comparative native response contracts | `test_comparative_response_contracts_offline.py`, OMA/UniRef/gnomAD/GTEx cases; malformed and unanswered envelopes stay connector failures, while explicit empty/null answers preserve absence (#137) |
 | Comparative genomic scope | `test_scoped_tissue_usage_offline.py`, gnomAD and migration cases; wrong/missing assemblies and chromosomes, transcript versions, union coverage, overlapping conflicts, nullable tissue values, explicit legacy behavior and both independent report formats (#138) |
 | Comparative explanations | `test_comparative_explanation_offline.py`, `test_comparative_support_journey_offline.py`; exact sequence/tissue pins, selected/alternative support, actual genomic intersections, term joins, incomplete/foreign scope, historical rules and inert independent readers (#91/#138) |

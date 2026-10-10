@@ -148,8 +148,11 @@ cluster/member pages, revisions, limits and partial failures within the same
 `UniProt` source family. Development OMA now observes xrefs/protein/ortholog access
 and separately attributes name resolution to UniProt, bringing declared coverage
 to 37 source families. Received/client rows precede card taxon/limit selection;
-continuation and unknown native OMA revisions stay explicit. gnomAD and derived
-comparative operation observation remain open. These extensions are outside
+continuation and unknown native OMA revisions stay explicit. Development gnomAD
+now observes variant/transcript/consequence/pext GraphQL access, bringing declared
+coverage to 38. Dataset/genome request labels differ from unknown native releases;
+partial batches, fixture availability and unqueried upstream gene prerequisites
+remain explicit. Derived comparative operation observation stays open. These extensions are outside
 published 0.14.0 and do not qualify whole-dataset or full consumer acceptance.
 Online UniRef members allow at most 100 logical pages and reject repeated request
 URLs. Exhaustion or cycles fail without installing partial card knowledge; the

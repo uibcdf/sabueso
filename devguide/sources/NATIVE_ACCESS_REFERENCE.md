@@ -8,6 +8,13 @@ Published and development scopes below keep their stated qualification boundarie
 
 # Provider qualification details
 
+Development gnomAD observes existing variant/transcript/consequence/pext GraphQL
+routes. Requested dataset/genome and client GTEx labels stay separate from unknown
+native releases; consequence aliases and transcript versions retain their source
+scope. Missing local files are unavailable, while missing Ensembl gene identity
+stops as unqueried before client construction (#141). Normal supplied-gene
+scientific pins stay fixed. [Scope](../pending_proposals/gnomad_observation.md).
+
 Development OMA observes existing xrefs/protein/ortholog routes under `OMA` and
 entry-name resolution under `UniProt`. Native continuation is disclosed without
 following additional links; OMA record revisions stay unknown, while UniProt search
