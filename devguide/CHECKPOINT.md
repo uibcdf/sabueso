@@ -2,13 +2,18 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-10, declared refresh request scope source-qualified (#139).
+Last updated: 2026-10-10, GTEx tissue observation source-qualified (#108).
 
-The next [development GTEx observation slice](pending_proposals/gtex_observation.md)
+The [development GTEx observation slice](pending_proposals/gtex_observation.md)
 records existing tissue access and portable attribution, distinguishes requested
 dataset labels from unknown native revisions, and classifies missing local files
 as unavailable. 34 new regressions, 343 selected cases and 5,930 local-original
-cases pass with twelve receptor workers; exact-source CI is pending. #108 stays open for
+cases pass with twelve receptor workers. Source `2b5db53` passes
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38038383487)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/38038383380). The
+[source receipt](pending_proposals/gtex_observation_checkpoint.json) retains 4,377
+cases per public offline lane, 1,015 per installed public-Ackredit lane, 76 post-editable
+cases and independently verified full receptor captures. #108 stays open for
 UniRef, OMA, gnomAD and derived comparative operations. Published 0.14.0 is unchanged.
 
 Development refresh now uses all 24 declared enrichers' 25 source/data selectors,
@@ -57,7 +62,8 @@ archived native-answer/old-report revalidation pass without new provider queries
 Earlier `@1` explanation qualification at `3fa2fdf` retains its unchanged
 [receipt](pending_proposals/comparative_explanations_checkpoint.json). Published
 0.14.0, frozen 0.3.13 and stored historical reports remain unchanged.
-Next: comparative operation/bibliography observation #108. Installed
+Next: remaining UniRef/OMA/gnomAD and derived comparative operation/bibliography
+observation #108; GTEx is qualified above. Installed
 artifact qualification and human scientific acceptance remain separate.
 
 ## Resume here

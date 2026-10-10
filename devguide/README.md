@@ -127,6 +127,13 @@ not a release receipt.
   [source receipt](pending_proposals/refresh_request_scope_checkpoint.json) record
   code `ff32cb6`, 5,896 local-original cases and 15/15 exact-SHA CI jobs.
   Comparative observation/bibliography #108 follows this correction.
+  The [development GTEx slice](pending_proposals/gtex_observation.md) adds actual
+  tissue access, requested-label/revision distinctions and original portable
+  resource credit; 34 new regressions and 5,930 local-original cases pass at
+  `2b5db53`, with 15/15 exact-SHA CI and governance. The
+  [source receipt](pending_proposals/gtex_observation_checkpoint.json) also records
+  4,377 cases per public offline lane and 1,015 per public-Ackredit lane. UniRef, OMA, gnomAD,
+  derived comparative operations and complete bibliography remain #108 work.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery

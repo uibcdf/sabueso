@@ -487,7 +487,9 @@ public method names.
   Continue with comparative operation/bibliography observation in #108.
   The [development GTEx slice](pending_proposals/gtex_observation.md) observes
   existing tissue requests, requested-label/revision distinctions and original
-  portable credit; UniRef, OMA, gnomAD and derived-operation coverage stay open.
+  portable credit; 5,930 local-original cases and 15/15 exact-SHA CI pass at
+  `2b5db53`, with [its source receipt](pending_proposals/gtex_observation_checkpoint.json).
+  UniRef, OMA, gnomAD and derived-operation coverage stay open.
 - **Traceability (#108).** Extend observed source/client/operation coverage along
   these exercised paths, including reuse, versions with their actual basis, retries,
   empty answers, caps, partial returns and failures. Keep bibliography and missing

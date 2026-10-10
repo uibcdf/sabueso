@@ -129,6 +129,14 @@ not promise card enrichment, live availability or public-package delivery.
   invalid summaries and ambiguous/capped MedGen identity are connector failures;
   missing fixtures are unavailable. Valid scientific records and signatures stay
   fixed. Resource citations do not replace underlying study/submission metadata.
+- Development GTEx `tissues` and public `tools.db.gtex.get_tissues` retain detached
+  acquisition traces and portable resource credit (#108). Requested dataset labels
+  remain separate from unknown native revisions; returned row counts are separate
+  from card-selected terms and do not prove full-dataset coverage. Missing local
+  files raise `ConnectorError` with `unavailable` observation. Blocked prerequisites
+  create no GTEx operation; original sidecars and exact pins have an inert reader.
+  Successful scientific returns and source assertion identities remain unchanged.
+  See [the GTEx scope](pending_proposals/gtex_observation.md).
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
   Deck.
 - `sabueso.resolve_disease_card(identifier)`, `sabueso.disease_targets(disease,

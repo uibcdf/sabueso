@@ -694,4 +694,7 @@ Detached sidecars remain readable from another process without new acquisition,
 derivation or credit. Development coverage becomes 36 declared source families;
 UniRef, OMA, gnomAD, derived comparative operations, complete bibliography and
 consumer-owned recording/Evidence acceptance remain open.
-[Behavior and qualification](gtex_observation.md).
+[Behavior and qualification](gtex_observation.md) /
+[source receipt](gtex_observation_checkpoint.json): code `2b5db53`, 34 new cases,
+5,930 local-original cases, 15/15 exact-source CI and governance. All nine public
+offline lanes pass 4,377 cases; all four installed public-Ackredit lanes pass 1,015.

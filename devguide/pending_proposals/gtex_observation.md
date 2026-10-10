@@ -56,7 +56,15 @@ expected fixture warnings and fatal SQLite/unraisable guards. Ruff, unchanged
 1,627-path card shape/schema, source registry, fixture delivery (50 repository /
 37 protected originals), dependency preflight, governance/canonical guide equality,
 warning-fatal Sphinx, 104 relative file links and whitespace checks pass. Exact-SHA
-CI qualification is pending this source checkpoint.
+CI qualification passes [15/15 jobs](https://github.com/uibcdf/sabueso/actions/runs/38038383487)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/38038383380) for exact
+source `2b5db5328e992bcd3eaf3a4c29b4b8de527f5adc`. The
+[public receipt](gtex_observation_checkpoint.json) verifies complete GH Run Receptor
+capture/replay, every captured member hash and all thirteen test-job summaries.
+Nine public offline lanes pass 4,377 cases with ten declared fixture skips and
+26 online deselections; four installed public-Ackredit lanes pass 1,015 cases.
+After editable metadata refresh, 76 access/independent-report cases pass in
+16.71 seconds; all six participating imports and metadata agree outside the checkout.
 All four installed public-Ackredit compatibility lanes also include these cases
 outside the checkout; local editable-provider tests do not establish that floor.
 No new provider queries or private fixtures are used.
