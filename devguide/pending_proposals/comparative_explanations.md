@@ -5,7 +5,11 @@ status: active
 
 # Pinned comparative explanation slice
 
-Development adds three Card readers: `explain_sequence_differences(other)`,
+Current development defaults to [scoped tissue rules and explanation @2](comparative_tissue_scope.md)
+(#138), with explicit historical `usage_rule` selection. The following describes
+the earlier `@1` slice qualified at `3fa2fdf`; its receipt remains unchanged.
+
+That slice added three Card readers: `explain_sequence_differences(other)`,
 `explain_variant_tissue_usage(threshold=0.1)` and
 `explain_isoform_tissue_usage(threshold=0.1)`. Their respective envelope rules are
 `sequence_differences_explanation@1`, `variant_tissue_usage_explanation@1` and
@@ -46,7 +50,7 @@ Ackredit registration, and change the reader version deliberately. Modified or
 misbound inputs are refused even when the report digest is updated.
 The manifest is a local example format, not a shared MOLI provenance contract.
 
-Historical view limits require a versioned correction in
+Historical view limits are corrected by new explicitly versioned rules in
 [#138](https://github.com/uibcdf/sabueso/issues/138): assembly/chromosome confirmation,
 overlapping pext coverage and per-tissue missingness. New explanations expose
 mixed-axis and duplicate-count gaps and compute uncovered bases from the union
@@ -73,4 +77,4 @@ each pass 981 cases. [Governance](https://github.com/uibcdf/sabueso/actions/runs
 passes at the same SHA. Complete GH Run Receptor capture/replay and independent
 member digest verification support the [machine-readable receipt](comparative_explanations_checkpoint.json).
 This does not qualify a new installed Sabueso artifact or close human scientific
-acceptance. The next correction is #138, followed by comparative #108 observation.
+acceptance. That checkpoint preceded #138 correction; comparative #108 observation follows its qualification.

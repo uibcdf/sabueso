@@ -389,9 +389,11 @@ regressions. A new facade, broad refactor, source wave, automatic model interpre
 or performance rewrite needs a demonstrated gap and its own bounded acceptance.
 Development comparative explanations now cover the exercised sequence and tissue
 rules with exact inputs and an independent saved-reader/reacquisition journey.
-See [the bounded scope](comparative_explanations.md). Genomic scope/coverage
-correction (#138), dedicated operation/bibliography observation (#108), installed
-delivery and scientific usefulness review remain separate acceptance work.
+See [the bounded scope](comparative_explanations.md). Development genomic
+scope/coverage correction (#138) is implemented in
+[versioned rules](comparative_tissue_scope.md), preserving explicit historical
+reproduction. Dedicated operation/bibliography (#108), installed delivery and
+scientific usefulness review remain separate acceptance work.
 The public showcase and comparative-source user pages should be refreshed from
 qualified public fixtures as these routes become ready; private consumer content
 and results stay in their controlled workspace.

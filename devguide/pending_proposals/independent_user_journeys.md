@@ -28,7 +28,10 @@ Development `comparative_support.py` adds an independent public sequence/tissue
 support journey (#91). It preserves P52270/Q4DV43 sequence explanations and P60174
 variant/isoform/term explanations at exact pins through later fixture reads.
 Source access, fresh derivation and credit are disabled in reader regressions.
-It does not change the three historical journey formats or qualify native live
+Development comparative format `@2` includes genomic-scope/coverage correction;
+its reader also retains historical `@1`, with explicit legacy production and
+format-preserving reacquisition (#138).
+It does not change the three other historical journey formats or qualify native live
 availability, comparative operation sidecars or an installed artifact. See
 [the bounded scope](comparative_explanations.md).
 

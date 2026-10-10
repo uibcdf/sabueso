@@ -209,21 +209,27 @@ not promise card enrichment, live availability or public-package delivery.
   - `structures(include_fragments=False, region=None)` and `predicted_structures()`;
   - `oligomer(*, agreement_rule="interface_site_agreement@2")` and `ligand_sites()`;
   - `interface_mutations()` (SKEMPI, with ΔΔG under `binding_ddg@1`, #83);
-  - `variant_tissue_usage(threshold=0.1)` and `isoform_tissue_usage(threshold=0.1)`
-    (the tissues expressing a variant's position or an isoform's coding bases, from
-    gnomAD's pext, `pext_at_variant@1` and `isoform_exon_usage@2`, #102; with
-    `gtex=True`, each tissue's UBERON or EFO term, `gtex_tissue_key@1`);
+  - `variant_tissue_usage(threshold=0.1, *, usage_rule="pext_at_variant@2")`
+    and `isoform_tissue_usage(threshold=0.1, *, usage_rule="isoform_exon_usage@3")`
+    derive tissue pext from explicit equal genomic scopes (#138). All overlapping
+    records must state the same tissue value; bases count once and missing/conflicting
+    coverage is separate. Means use resolved bases per tissue. Explicit
+    `usage_rule="pext_at_variant@1"` / `"isoform_exon_usage@2"` retain published
+    historical behavior. With `gtex=True`, each tissue retains its UBERON/EFO term
+    under `gtex_tissue_key@1`; shared ontology terms never merge tissues;
   - Development `explain_sequence_differences(other)`,
-    `explain_variant_tissue_usage(threshold=0.1)` and
-    `explain_isoform_tissue_usage(threshold=0.1)` retain the original views plus
+    `explain_variant_tissue_usage(threshold=0.1, *, usage_rule="pext_at_variant@2")`
+    and `explain_isoform_tissue_usage(threshold=0.1, *, usage_rule="isoform_exon_usage@3")`
+    retain the selected versioned views plus
     exact input pins, selected/alternative assertions, locators, rule parameters,
     source labels and gaps. Their explanation rules are respectively
-    `sequence_differences_explanation@1`, `variant_tissue_usage_explanation@1`
-    and `isoform_tissue_usage_explanation@1`. Cutoffs are finite dimensionless
+    `sequence_differences_explanation@1`, `variant_tissue_usage_explanation@2`
+    and `isoform_tissue_usage_explanation@2`; explicit legacy usage rules retain
+    historical explanation `@1`. Cutoffs are finite dimensionless
     numbers in [0, 1]. They neither acquire data nor reconstruct attribution.
     Equal sequence positions establish no residue correspondence or identity.
-    Tissue views expose historical genomic-scope/overlap limits (#138) and make
-    no pathogenicity or source-completeness claim.
+    Tissue views report genomic scope, rejected inputs and per-tissue coverage;
+    they make no pathogenicity or source-completeness claim.
   - `sequence_differences(other)` (the positions where two equal-length sequences
     differ, nothing aligned, `equal_length_positions@1`, #103);
   - `diseases(grouping_rule="disease_grouping@2")` (default since 0.13.0: every stored

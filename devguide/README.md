@@ -116,7 +116,8 @@ not a release receipt.
   within the approved roadmap.
   Development comparative explanations and their standalone public
   `examples/user_journeys/comparative_support.py` reader retain exact sequence and
-  tissue support (#91). Historical genomic scope and overlap limits need #138;
+  tissue support (#91). Development scoped tissue rules correct historical limits under #138;
+  [their scope](pending_proposals/comparative_tissue_scope.md) preserves explicit legacy rules and reports;
   operation/bibliography coverage is still #108.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and

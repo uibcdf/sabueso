@@ -10,7 +10,7 @@ from .quantities import field_node, quantity_columns, seal, to_quantity, verify
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
-CARD_SCHEMA_VERSION = "0.3.13"
+CARD_SCHEMA_VERSION = "0.3.14"
 
 
 def make_card_id(entity_type: str, subject_ref: str) -> str:
@@ -744,14 +744,25 @@ class Card:
 
         return interface_mutations_view(self)
 
-    def variant_tissue_usage(self, threshold: float = 0.1) -> Dict[str, Any]:
+    @arg_digest()
+    def variant_tissue_usage(
+        self,
+        threshold: float = 0.1,
+        skip_digestion: bool = False,
+        *,
+        usage_rule: str = "pext_at_variant@2",
+    ) -> Dict[str, Any]:
         """Each population variant with the share of its gene's expression, per GTEx
-        tissue, that includes its position (gnomAD's pext), under ``pext_at_variant@1``
+        tissue, that includes its position (gnomAD's pext), under ``pext_at_variant@2``
         (#102). Build the card with ``gnomad={}`` and ``exon_usage=True``; with
         ``gtex=True`` too, each tissue's ontology term (``tissue_terms``)."""
+        from .scoped_tissue_usage import check_arguments, variant_view
         from .tissue_usage import variant_tissue_usage_view
 
-        return variant_tissue_usage_view(self, threshold)
+        check_arguments(threshold, usage_rule, kind="variant")
+        if usage_rule == "pext_at_variant@1":
+            return variant_tissue_usage_view(self, threshold)
+        return variant_view(self, threshold)
 
     def sequence_differences(self, other: "Card") -> Dict[str, Any]:
         """The positions where this card's sequence and ``other``'s differ, when both
@@ -761,15 +772,26 @@ class Card:
 
         return sequence_differences_view(self, other)
 
-    def isoform_tissue_usage(self, threshold: float = 0.1) -> Dict[str, Any]:
+    @arg_digest()
+    def isoform_tissue_usage(
+        self,
+        threshold: float = 0.1,
+        skip_digestion: bool = False,
+        *,
+        usage_rule: str = "isoform_exon_usage@3",
+    ) -> Dict[str, Any]:
         """Per UniProt isoform: UniProt's tissue-specificity statements restricted to
         it, and the tissues expressing its own coding bases (gnomAD's pext), under
-        ``isoform_exon_usage@2`` (#102). An isoform without known exons says why, and
+        ``isoform_exon_usage@3`` (#138). An isoform without known exons says why, and
         own bases say whether every isoform's exons were known. Build the card with
         ``exon_usage=True``; with ``gtex=True`` too, each tissue's ontology term."""
+        from .scoped_tissue_usage import check_arguments, isoform_view
         from .tissue_usage import isoform_tissue_usage_view
 
-        return isoform_tissue_usage_view(self, threshold)
+        check_arguments(threshold, usage_rule, kind="isoform")
+        if usage_rule == "isoform_exon_usage@2":
+            return isoform_tissue_usage_view(self, threshold)
+        return isoform_view(self, threshold)
 
     @arg_digest()
     def explain_sequence_differences(
@@ -787,31 +809,40 @@ class Card:
 
     @arg_digest()
     def explain_variant_tissue_usage(
-        self, threshold: float = 0.1, skip_digestion: bool = False
+        self,
+        threshold: float = 0.1,
+        skip_digestion: bool = False,
+        *,
+        usage_rule: str = "pext_at_variant@2",
     ) -> Dict[str, Any]:
         """Explain genomic variant/pext joins at this pin, with original support.
 
-        ``variant_tissue_usage_explanation@1`` records the first matching region
-        and unplaced/outside-region cases. The dimensionless cutoff is in [0, 1]
+        ``variant_tissue_usage_explanation@2`` records genomic scope, every
+        intersecting input, conflicts and missing tissue values. Explicit historical
+        ``usage_rule="pext_at_variant@1"`` retains explanation @1. The cutoff is in [0, 1]
         and says nothing about pathogenicity. No source access or credit occurs.
         """
         from .comparative_explanation import explain_variant_tissue_usage
 
-        return explain_variant_tissue_usage(self, threshold)
+        return explain_variant_tissue_usage(self, threshold, usage_rule)
 
     @arg_digest()
     def explain_isoform_tissue_usage(
-        self, threshold: float = 0.1, skip_digestion: bool = False
+        self,
+        threshold: float = 0.1,
+        skip_digestion: bool = False,
+        *,
+        usage_rule: str = "isoform_exon_usage@3",
     ) -> Dict[str, Any]:
         """Explain isoform CDS subtraction and pext inputs at this exact card pin.
 
-        ``isoform_tissue_usage_explanation@1`` retains missing transcript/exon
+        ``isoform_tissue_usage_explanation@2`` retains missing transcript/exon
         support and incomplete own-base coverage. Source labels are preserved
         separately from verified native release identity and runtime attribution.
         """
         from .comparative_explanation import explain_isoform_tissue_usage
 
-        return explain_isoform_tissue_usage(self, threshold)
+        return explain_isoform_tissue_usage(self, threshold, usage_rule)
 
     @arg_digest()
     def oligomer(

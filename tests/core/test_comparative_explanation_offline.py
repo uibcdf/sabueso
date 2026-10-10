@@ -86,8 +86,12 @@ def test_public_explanations_preserve_existing_views_and_never_acquire_or_credit
         sequence = public_cards["P52270"].explain_sequence_differences(
             public_cards["Q4DV43"]
         )
-        variant = human.explain_variant_tissue_usage(0.2)
-        isoform = human.explain_isoform_tissue_usage(0.2)
+        variant = human.explain_variant_tissue_usage(
+            0.2, usage_rule="pext_at_variant@1"
+        )
+        isoform = human.explain_isoform_tissue_usage(
+            0.2, usage_rule="isoform_exon_usage@2"
+        )
         assert ackredit.get_attribution().to_dict() == credit
     assert sequence["view"] == public_cards["P52270"].sequence_differences(
         public_cards["Q4DV43"]
@@ -98,8 +102,12 @@ def test_public_explanations_preserve_existing_views_and_never_acquire_or_credit
         row["relationship"]["predicate"] == "clustered_with"
         for row in sequence["context"][0]["relationships"]
     )
-    assert variant["view"] == human.variant_tissue_usage(0.2)
-    assert isoform["view"] == human.isoform_tissue_usage(0.2)
+    assert variant["view"] == human.variant_tissue_usage(
+        0.2, usage_rule="pext_at_variant@1"
+    )
+    assert isoform["view"] == human.isoform_tissue_usage(
+        0.2, usage_rule="isoform_exon_usage@2"
+    )
     assert variant["rule"]["parameters"]["threshold"] == 0.2
     assert isoform["rule"]["parameters"]["threshold"] == 0.2
     for result in (variant, isoform):
@@ -196,7 +204,7 @@ def test_variant_join_uses_genomic_position_and_first_region_not_protein_positio
             {"hgvs_p": "p.Ala3Thr"},
         ],
     )
-    answer = card.explain_variant_tissue_usage()
+    answer = card.explain_variant_tissue_usage(usage_rule="pext_at_variant@1")
     assert answer["view"]["counts"] == {
         "in_region": 1,
         "outside_pext_regions": 1,
@@ -218,7 +226,7 @@ def test_row_support_never_invents_finer_assertion_membership(aggregate):
     card = synthetic()
     stated(card, REGIONS, [region()], aggregate=aggregate)
     stated(card, VARIANTS, [{"variant_id": "12-15-A-G"}])
-    answer = card.explain_variant_tissue_usage()
+    answer = card.explain_variant_tissue_usage(usage_rule="pext_at_variant@1")
     record = answer["items"][0]["region_input"]
     assert record["support_basis"] == (
         "selected_field_list" if aggregate else "exact_asserted_value"
@@ -238,7 +246,7 @@ def test_tissue_term_collision_preserves_candidates_and_actual_last_selection():
             {"gtex_id": "TESTIS", "ontology_id": "two"},
         ],
     )
-    answer = card.explain_variant_tissue_usage()
+    answer = card.explain_variant_tissue_usage(usage_rule="pext_at_variant@1")
     join = answer["tissue_terms"]["joins"][0]
     assert join["term_input"]["value"]["ontology_id"] == "two"
     assert join["other_matching_terms"][0]["value"]["ontology_id"] == "one"
@@ -272,7 +280,7 @@ def iso_card():
 
 def test_isoform_explanation_records_actual_weighted_intersections_and_incomplete_own_bases():
     card = iso_card()
-    answer = card.explain_isoform_tissue_usage()
+    answer = card.explain_isoform_tissue_usage(usage_rule="isoform_exon_usage@2")
     first = answer["items"][0]
     assert first["own_regions"] == [[10, 30]]
     assert first["pext_inputs"][0]["intersection"] == [10, 20]
@@ -292,7 +300,7 @@ def test_isoform_tissue_text_keeps_original_used_and_excluded_assertions():
         )
         assertion["source_metadata"] = {"molecule": molecule, "eco": ["ECO:0000269"]}
         card.source_assertion_store.add(assertion)
-    answer = card.explain_isoform_tissue_usage()
+    answer = card.explain_isoform_tissue_usage(usage_rule="isoform_exon_usage@2")
     decisions = answer["tissue_specificity_decisions"]
     assert [r["basis"] for r in decisions] == [
         "entry_scope",
@@ -321,7 +329,7 @@ def test_missing_exons_and_old_transcript_inputs_retain_original_basis(
     else:
         stated(card, TRANSCRIPTS, [{"isoform": "X-2", "transcript": "T2"}])
         expected = "transcript_not_in_gnomad"
-    answer = card.explain_isoform_tissue_usage()
+    answer = card.explain_isoform_tissue_usage(usage_rule="isoform_exon_usage@2")
     assert answer["items"][1]["item"]["pext"]["basis"] == expected
     assert any(g["reason"] == expected for g in answer["gaps"])
 
@@ -329,8 +337,10 @@ def test_missing_exons_and_old_transcript_inputs_retain_original_basis(
 def test_foreign_genomic_scopes_are_visible_without_silently_changing_historical_rule():
     card = iso_card()
     stated(card, REGIONS, [region(chromosome="1", assembly="GRCh37")])
-    answer = card.explain_isoform_tissue_usage()
-    assert answer["view"] == card.isoform_tissue_usage()
+    answer = card.explain_isoform_tissue_usage(usage_rule="isoform_exon_usage@2")
+    assert answer["view"] == card.isoform_tissue_usage(
+        usage_rule="isoform_exon_usage@2"
+    )
     assert any(g["reason"] == "genomic_scope_not_confirmed" for g in answer["gaps"])
     assert (
         answer["coordinate_scope"]["chromosome_matching"]
@@ -341,8 +351,10 @@ def test_foreign_genomic_scopes_are_visible_without_silently_changing_historical
 def test_overlapping_pext_regions_preserve_old_denominator_without_negative_missing_bases():
     card = iso_card()
     stated(card, REGIONS, [region(10, 30), region(10, 30, mean=1)])
-    answer = card.explain_isoform_tissue_usage()
-    assert answer["view"] == card.isoform_tissue_usage()
+    answer = card.explain_isoform_tissue_usage(usage_rule="isoform_exon_usage@2")
+    assert answer["view"] == card.isoform_tissue_usage(
+        usage_rule="isoform_exon_usage@2"
+    )
     assert answer["items"][0]["item"]["pext"]["bases_with_pext"] == 42
     assert answer["items"][0]["bases_without_pext"] == 0
     assert any(
@@ -369,9 +381,9 @@ def test_public_argument_guards_and_missing_pins(public_cards):
     with pytest.raises(ArgumentError):
         card.explain_sequence_differences("P52270")
     with pytest.raises(argdigest.UnknownArgumentError):
-        card.explain_variant_tissue_usage(extra=True)
+        card.explain_variant_tissue_usage(extra=True, usage_rule="pext_at_variant@1")
     with pytest.raises(StorageError):
-        Card().explain_isoform_tissue_usage()
+        Card().explain_isoform_tissue_usage(usage_rule="isoform_exon_usage@2")
 
 
 def test_historical_pin_never_substitutes_newer_sequence_and_fields_are_detached(

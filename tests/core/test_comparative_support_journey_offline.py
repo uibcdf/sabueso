@@ -14,7 +14,7 @@ SCRIPT = Path("examples/user_journeys/comparative_support.py").resolve()
 DATA = Path("temp_data").resolve()
 
 
-def invoke(action, output):
+def invoke(action, output, *, legacy=False):
     command = [sys.executable, str(SCRIPT)]
     if action == "read":
         command = [sys.executable, "-c", """
@@ -38,7 +38,7 @@ runpy.run_path(script, run_name='__main__')
     env = os.environ.copy()
     env.pop("PYTHONPATH", None)
     return subprocess.run(
-        [*command, action, "--output", str(output), "--fixtures",
+        [*command, action, *(["--legacy"] if legacy else []), "--output", str(output), "--fixtures",
          str(DATA if action != "read" else output / "no-fixtures")],
         cwd=output.parent, env=env, capture_output=True, text=True,
         timeout=120, check=False,
@@ -49,11 +49,11 @@ def load(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-@pytest.fixture(scope="module")
-def bundle(tmp_path_factory):
+@pytest.fixture(scope="module", params=["historical", "current"])
+def bundle(tmp_path_factory, request):
     output = tmp_path_factory.mktemp("comparative-support") / "bundle"
     for action in ("produce", "read", "reacquire", "read"):
-        result = invoke(action, output)
+        result = invoke(action, output, legacy=request.param == "historical")
         assert result.returncode == 0, result.stdout + result.stderr
     return output
 

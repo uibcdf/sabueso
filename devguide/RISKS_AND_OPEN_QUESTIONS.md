@@ -1,12 +1,14 @@
 # Sabueso — Risks and Open Questions
 
-Development comparative explanations expose historical tissue-rule limits:
-`pext_at_variant@1` does not verify assembly; `isoform_exon_usage@2` does not verify
-chromosome/assembly and counts overlapping region intersections separately.
-Synthetic mixed-axis/overlap regressions reproduce these assumptions, without
-establishing that the bounded public fixtures are affected. Explanations preserve
-original results and mark gaps; ordinary scientific behavior needs a separately
-versioned correction under [#138](https://github.com/uibcdf/sabueso/issues/138).
+Development tissue rules now require explicit coordinate scope and report
+per-tissue resolved/missing/conflicting coverage (#138). Explicit legacy rules
+retain their known assembly/chromosome and duplicate-count limitations. Old cards
+without variant coordinate context remain unknown under the new rule; migrating
+never synthesizes context. Conditional means over resolved bases must be read with
+coverage, never as complete gene/tissue expression or pathogenicity. Source-side
+coordinate/release correctness, installed delivery and human scientific usefulness
+remain separate from the bounded regression scope. See
+[the correction](pending_proposals/comparative_tissue_scope.md).
 
 ## Risks
 - **Licensing/Terms**: Some sources (DrugBank, eMolecules, ChemSpider) have licensing constraints that may affect redistribution and caching.
@@ -28,7 +30,7 @@ versioned correction under [#138](https://github.com/uibcdf/sabueso/issues/138).
   These comparative routes still need declared source-operation/bibliography
   observation. Development pinned sequence/tissue explanations now have an
   independent public fixture reader; [their scope](pending_proposals/comparative_explanations.md)
-  remains separate from #138 scientific correction and installed/human acceptance. In particular,
+  includes the versioned #138 scientific correction; installed/human acceptance remains separate. In particular,
   gnomAD's existing pext release label is client-declared; it must not be presented
   as an independently verified native response revision. Keep query dataset,
   source-reported release and service version bases separate in the next #108 slice.

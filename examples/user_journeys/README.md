@@ -19,9 +19,11 @@ python examples/user_journeys/comparative_support.py read --output /tmp/sabueso-
 It retains P52270/Q4DV43 sequence and P60174 variant/isoform/term explanations at
 exact pins. Original fields, assertions and genomic intersections remain
 inspectable after later fixture reads. Readers require no fixtures and add no
-source access, derivation or credit. Historical tissue-rule scope/overlap limits
-remain explicit (#138); comparative operation/bibliography coverage is separate
-(#108). This preserves existing example formats and is outside published 0.14.0.
+source access, derivation or credit. New reports use format `@2` with explicit
+coordinate scope and per-tissue coverage (#138). `produce --legacy` creates the
+historical `@1` format; reacquisition retains the original format and rules, and
+readers support both. Comparative operation/bibliography remains #108. These
+examples are outside published 0.14.0 and preserve the other journey formats.
 
 From the repository root, with this checkout installed editable:
 

@@ -115,7 +115,7 @@ without a protein change are left out, and the enrichment record counts them.
 For each coding region, it gives the share of the gene's expression in each GTEx v10
 tissue that includes the region. With the variants on the card,
 `card.variant_tissue_usage()` places each variant's genomic position in its region,
-under the rule `pext_at_variant@1`, and lists the tissues at or above a threshold
+under the published rule `pext_at_variant@1`, and lists the tissues at or above a threshold
 (0.1 by default).
 
 For TPI1, the variants in isoform 3's own N-terminal segment lie in a region expressed
@@ -170,6 +170,28 @@ view["tissue_terms"]["terms"]["muscle_skeletal"]
 A term never replaces a tissue. GTEx gives the cerebellum and the cerebellar
 hemisphere the same term, UBERON:0002037, and they stay two tissues.
 
+### Genomic scope and tissue coverage (development)
+
+Development views default to `pext_at_variant@2` and `isoform_exon_usage@3`.
+They require matching explicit chromosome and assembly, and compatible stated
+transcript links before comparing isoform coding bases. A variant's assembly
+comes from its explicit input or selected assertion coordinate context. Current
+gnomAD acquisitions retain the requested GRCh38 reference; old dataset labels
+alone cannot supply missing context. Migration reports the gap; rebuilding can
+obtain it. No sequence alignment or genome liftover occurs.
+
+Overlapping pext records contribute a base once only when every record states the
+same value for that tissue. Disagreements and missing values stay separate.
+`coverage_by_tissue` reports `bases_with_value`, `bases_missing_value`,
+`bases_conflicting_value` and `complete`; `by_tissue` is the mean over that tissue's
+resolved bases, or `None` when none are resolved. Read a mean with its coverage:
+unknown bases never count as zero expression. The top tissue and threshold list
+use only resolved means; they do not establish pathogenicity or total expression.
+
+Explicit `usage_rule="pext_at_variant@1"` or `"isoform_exon_usage@2"` on views
+and explanations reproduces the published historical behavior. Saved reports keep
+the rules and original support with which they were produced.
+
 ### Inspecting original comparative support (development)
 
 ```python
@@ -180,17 +202,18 @@ sequence_support = card.explain_sequence_differences(other_card)
 
 These explanations retain the existing `view`, exact card pins, original selected
 fields and assertions, alternatives, input locators, parameters and scope gaps.
-Variant explanations show the genomic position and actual first matching region;
-isoform explanations show CDS inputs, intersections and tissue-specificity
+Variant explanations show coordinate scope and every overlapping region;
+isoform explanations show CDS inputs, partitioned intersections and tissue-specificity
 inclusion/exclusion. Tissue joins retain the actual GTEx term statements. A source
 version label does not independently verify a native release, and stored scientific
 support does not reconstruct execution credit or bibliography.
 
 The original rules retain their historical limitations: variant joins do not
 check assembly; isoform subtraction/intersection does not check chromosome or
-assembly and counts overlapping pext regions separately. Explanations expose
-incompatible/unknown scopes and duplicate counts as gaps. The versioned correction
-is tracked in [#138](https://github.com/uibcdf/sabueso/issues/138). A low pext value
+assembly and counts overlapping pext regions separately. Explicit historical
+usage rules retain those limits and their original explanations. New rule versions
+correct scoped joins and per-tissue coverage under
+[#138](https://github.com/uibcdf/sabueso/issues/138). A low pext value
 does not establish harmlessness, and equal sequence positions establish neither
 residue correspondence nor identity. Cutoffs are dimensionless numbers in [0, 1].
 

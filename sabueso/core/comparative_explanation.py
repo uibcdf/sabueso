@@ -268,7 +268,12 @@ def _terms(support, view):
     }
 
 
-def explain_variant_tissue_usage(card, threshold):
+def explain_variant_tissue_usage(card, threshold, usage_rule="pext_at_variant@2"):
+    from .scoped_tissue_usage import check_arguments
+
+    check_arguments(threshold, usage_rule, kind="variant")
+    if usage_rule != "pext_at_variant@1":
+        return _scoped_explanation(card, threshold, kind="variant")
     from sabueso._private.argdigest.argument.threshold import digest_threshold
 
     threshold = digest_threshold(
@@ -333,7 +338,12 @@ def explain_variant_tissue_usage(card, threshold):
     )
 
 
-def explain_isoform_tissue_usage(card, threshold):
+def explain_isoform_tissue_usage(card, threshold, usage_rule="isoform_exon_usage@3"):
+    from .scoped_tissue_usage import check_arguments
+
+    check_arguments(threshold, usage_rule, kind="isoform")
+    if usage_rule != "isoform_exon_usage@2":
+        return _scoped_explanation(card, threshold, kind="isoform")
     from sabueso._private.argdigest.argument.threshold import digest_threshold
 
     threshold = digest_threshold(
@@ -495,4 +505,149 @@ def explain_isoform_tissue_usage(card, threshold):
             "own_bases": "may_be_shared_with_isoforms_without_known_exons",
             "outside_region": "not_zero_expression_or_harmlessness",
         },
+    )
+
+
+def _scoped_explanation(card, threshold, *, kind):
+    from .scoped_tissue_usage import isoform_view, variant_view
+
+    paths = (
+        [VARIANTS, REGIONS, TERMS]
+        if kind == "variant"
+        else [ISOFORMS, EXONS, REGIONS, TRANSCRIPTS, TISSUE_TEXT, TERMS]
+    )
+    support = _ComparativeSupport(card, paths)
+    for path in paths:
+        if path not in (TERMS, TISSUE_TEXT):
+            support.missing(path)
+    trace = {}
+    view = (variant_view if kind == "variant" else isoform_view)(
+        card, threshold, _support=trace
+    )
+
+    def segments(rows):
+        result = []
+        for row in rows:
+            result.append(
+                {
+                    **row,
+                    "region_inputs": [
+                        support.input(REGIONS, i) for i in row["region_indices"]
+                    ],
+                }
+            )
+            for tissue, decision in row["tissues"].items():
+                if decision["status"] != "resolved":
+                    support.gaps.append(
+                        {
+                            "reason": f"pext_tissue_value_{decision['status']}",
+                            "tissue": tissue,
+                            "intersection": row["intersection"],
+                            "card_ref": support.pin,
+                        }
+                    )
+        return result
+
+    def excluded(rows, path, index_key):
+        return [{**row, "input": support.input(path, row[index_key])} for row in rows]
+
+    def texts(rows):
+        return [
+            {
+                "item": row,
+                "source_assertions": support.assertions([row["source_assertion_id"]]),
+            }
+            for row in rows
+        ]
+
+    items = []
+    for item, inputs in zip(view["items"], trace.get("items", []), strict=True):
+        row = {"item": item, "pext_segments": segments(inputs["segments"])}
+        if kind == "variant":
+            row.update(
+                variant_input=support.input(VARIANTS, inputs["variant_index"]),
+                coordinate_scope=inputs["coordinate_scope"],
+                excluded_regions=excluded(
+                    inputs["excluded_regions"], REGIONS, "region_index"
+                ),
+            )
+        else:
+            row.update(
+                isoform_input=support.input(ISOFORMS, inputs["isoform_index"]),
+                transcript_inputs=[
+                    support.input(TRANSCRIPTS, i)
+                    for i, r in enumerate(
+                        (card.get(TRANSCRIPTS) or {}).get("value") or []
+                    )
+                    if r.get("isoform") == item["isoform"]
+                ],
+                coding_exon_inputs=[
+                    support.input(EXONS, i)
+                    for i, r in enumerate((card.get(EXONS) or {}).get("value") or [])
+                    if r.get("isoform") == item["isoform"]
+                ],
+                own_regions=inputs["own_regions"],
+                tissue_specificity=texts(item["uniprot_tissue_specificity"]),
+            )
+        basis = item["pext"].get("basis")
+        if basis != "resolved_tissue_values":
+            support.gaps.append(
+                {"reason": basis, "item_index": len(items), "card_ref": support.pin}
+            )
+        if item["pext"].get("bases_without_pext"):
+            support.gaps.append(
+                {
+                    "reason": "incomplete_pext_region_coverage",
+                    "item_index": len(items),
+                    "bases": item["pext"]["bases_without_pext"],
+                    "card_ref": support.pin,
+                }
+            )
+        items.append(row)
+    extra = {}
+    if kind == "isoform":
+        extra = {
+            "coordinate_scope": view["coordinate_scope"],
+            "excluded_coding_exons": excluded(
+                trace["excluded_exons"], EXONS, "exon_index"
+            ),
+            "excluded_pext_regions": excluded(
+                trace["excluded_regions"], REGIONS, "region_index"
+            ),
+            "subtraction_inputs": trace["cds_of"],
+            "variable_regions": [
+                {"item": row, "pext_segments": segments(inputs)}
+                for row, inputs in zip(
+                    view["variable_regions"], trace["variable_regions"], strict=True
+                )
+            ],
+            "entry_tissue_specificity": texts(view["entry_tissue_specificity"]),
+            "tissue_specificity_decisions": [
+                {
+                    **row,
+                    "source_assertions": support.assertions(
+                        [row["source_assertion_id"]]
+                    ),
+                }
+                for row in trace["text_decisions"]
+            ],
+        }
+        if not view["variable_regions_complete"]:
+            support.gaps.append(
+                {"reason": "incomplete_isoform_exon_support", "card_ref": support.pin}
+            )
+    return _envelope(
+        support,
+        view,
+        f"{kind}_tissue_usage_explanation@2",
+        items=items,
+        tissue_terms=_terms(support, view),
+        interpretation={
+            "threshold": "dimensionless_rule_parameter_not_pathogenicity",
+            "missing_value": "unknown_never_zero_expression",
+            "mean": "resolved_bases_only_read_with_per_tissue_coverage",
+            "overlap": "unanimous_stated_values_count_once_otherwise_missing_or_conflicting",
+            "coordinate_support": "stored_input_scope_not_native_release_verification_or_alignment",
+        },
+        **extra,
     )

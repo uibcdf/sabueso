@@ -14,16 +14,23 @@ from sabueso.tools.db.gnomad import FixtureGnomADClient
 from sabueso.tools.db.gtex import FixtureGTExClient
 from sabueso.tools.db.uniref import FixtureUniRefClient
 
-FORMAT = "sabueso.comparative_support_example@1"
+FORMAT = "sabueso.comparative_support_example@2"
+LEGACY_FORMAT = "sabueso.comparative_support_example@1"
 ACCESSIONS = {"subject": "P52270", "strain": "Q4DV43", "human": "P60174"}
 RULES = {
     "sequence": ("sequence_differences_explanation@1", "equal_length_positions@1"),
     "variants": ("variant_tissue_usage_explanation@1", "pext_at_variant@1"),
     "isoforms": ("isoform_tissue_usage_explanation@1", "isoform_exon_usage@2"),
 }
+CURRENT_RULES = {
+    "sequence": RULES["sequence"],
+    "variants": ("variant_tissue_usage_explanation@2", "pext_at_variant@2"),
+    "isoforms": ("isoform_tissue_usage_explanation@2", "isoform_exon_usage@3"),
+}
 
 
-def produce(output, fixtures, stage):
+def produce(output, fixtures, stage, *, legacy=False):
+    selected_format = LEGACY_FORMAT if legacy else FORMAT
     if stage == "original":
         require(
             not output.exists() or not any(output.iterdir()), "Output must be empty"
@@ -31,7 +38,9 @@ def produce(output, fixtures, stage):
         output.mkdir(parents=True, exist_ok=True)
     else:
         require(not (output / "later.manifest.json").exists(), "Later stage exists")
-        read_stage(output, "original")
+        original, _ = read_stage(output, "original")
+        selected_format = original["format"]
+    rules = RULES if selected_format == LEGACY_FORMAT else CURRENT_RULES
     store = sabueso.KnowledgeStore(output / "knowledge.db")
     timestamp = f"{stage} public fixture read"
     cards = {}
@@ -63,8 +72,12 @@ def produce(output, fixtures, stage):
         report = {
             "cards": pins,
             "sequence": cards["subject"].explain_sequence_differences(cards["strain"]),
-            "variants": cards["human"].explain_variant_tissue_usage(),
-            "isoforms": cards["human"].explain_isoform_tissue_usage(),
+            "variants": cards["human"].explain_variant_tissue_usage(
+                usage_rule=rules["variants"][1]
+            ),
+            "isoforms": cards["human"].explain_isoform_tissue_usage(
+                usage_rule=rules["isoforms"][1]
+            ),
             "execution_observation": {
                 "status": "not_observed",
                 "scope": "comparative_operations",
@@ -74,7 +87,7 @@ def produce(output, fixtures, stage):
     filename = f"{stage}.report.json"
     write_json(output / filename, report)
     manifest = {
-        "format": FORMAT,
+        "format": selected_format,
         "stage": stage,
         "cards": pins,
         "files": {filename: digest(output / filename)},
@@ -169,7 +182,8 @@ def check_support(value, cards):
 def read_stage(output, stage):
     manifest = read_json(output / f"{stage}.manifest.json")
     require(
-        manifest["format"] == FORMAT and manifest["stage"] == stage, "Wrong manifest"
+        manifest["format"] in (FORMAT, LEGACY_FORMAT) and manifest["stage"] == stage,
+        "Wrong manifest",
     )
     require(set(manifest["cards"]) == set(ACCESSIONS), "Wrong card roles")
     filename = f"{stage}.report.json"
@@ -192,7 +206,8 @@ def read_stage(output, stage):
     report = read_json(output / filename)
     require(report["cards"] == manifest["cards"], "Report roles differ")
     pins = [manifest["cards"][role] for role in ("subject", "strain")]
-    for key, (explanation_rule, view_rule) in RULES.items():
+    rules = RULES if manifest["format"] == LEGACY_FORMAT else CURRENT_RULES
+    for key, (explanation_rule, view_rule) in rules.items():
         explanation = report[key]
         require(
             explanation["rule"]["rule"] == explanation_rule
@@ -240,6 +255,10 @@ def read(output):
                 )
                 old = read_json(output / "original.manifest.json")
                 require(
+                    old["format"] == manifest["format"],
+                    "Reacquisition changed the scientific rule generation",
+                )
+                require(
                     all(old["cards"][r] != manifest["cards"][r] for r in ACCESSIONS),
                     "Reacquisition did not retain distinct revisions",
                 )
@@ -261,6 +280,11 @@ def main():
     parser.add_argument("action", choices=("produce", "read", "reacquire"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--fixtures", type=Path, default=Path("temp_data"))
+    parser.add_argument(
+        "--legacy",
+        action="store_true",
+        help="Produce the explicit historical @1 report format",
+    )
     args = parser.parse_args()
     try:
         if args.action == "read":
@@ -270,6 +294,7 @@ def main():
                 args.output,
                 args.fixtures,
                 "original" if args.action == "produce" else "later",
+                legacy=args.legacy,
             )
     except (ValueError, KeyError, OSError, SabuesoError) as exc:
         parser.exit(2, f"FAIL: {exc}\n")

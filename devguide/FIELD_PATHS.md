@@ -5,6 +5,13 @@ paths used by mappings, resolver rules, SourceAssertions, and downstream tools.
 
 Versioning: **x.y.z** (no leading `v`).
 
+Unpublished schema 0.3.14 adds optional gnomAD population-variant assertion metadata
+`source_metadata.coordinate_scope` (`assembly`, `basis`, `native_assembly_echo`,
+`rule`). This is requested-reference-genome context, not a new biological field,
+source value or verified native release. Frozen 0.3.13 remains unchanged; migration
+records missing context and refresh obtains it. Development tissue views default
+to `pext_at_variant@2` / `isoform_exon_usage@3`, with explicit legacy `usage_rule`.
+
 ---
 
 ## 1) Global Base Paths (all card types)
@@ -61,11 +68,11 @@ Versioning: **x.y.z** (no leading `v`).
 - `annotations.taxonomy` (`{tax_id, name, rank, ancestors: [{tax_id, name, rank}]}` from NCBI Taxonomy: ranks and ancestor ids, root first; opt-in enrichment `taxonomy=True`, #67)
 - `annotations.ptm`
 - `annotations.polymorphism`
-- `annotations.activity_regulation` (UniProt native activity regulation text; development schema 0.3.13)
-- `annotations.domain_notes` (UniProt native domain notes text; development schema 0.3.13)
-- `annotations.similarity` (UniProt native similarity text; development schema 0.3.13)
-- `annotations.source_cautions` (UniProt native source cautions text; development schema 0.3.13)
-- `annotations.miscellaneous` (UniProt native miscellaneous text; development schema 0.3.13)
+- `annotations.activity_regulation` (UniProt native activity regulation text; since published schema 0.3.13)
+- `annotations.domain_notes` (UniProt native domain notes text; since published schema 0.3.13)
+- `annotations.similarity` (UniProt native similarity text; since published schema 0.3.13)
+- `annotations.source_cautions` (UniProt native source cautions text; since published schema 0.3.13)
+- `annotations.miscellaneous` (UniProt native miscellaneous text; since published schema 0.3.13)
 - `annotations.domains` (non-positional summary; reserved, not currently produced)
 
 ### literature.*
@@ -73,13 +80,13 @@ Versioning: **x.y.z** (no leading `v`).
 
 ### features_positional.*
 - `features_positional.domains` (UniProt positional domains, active in development 0.3.13; independent ECO, original bounds/molecule scope and sequence revision)
-- `features_positional.chain` (UniProt native chain feature; development schema 0.3.13)
-- `features_positional.lipidation` (UniProt native lipidation feature; development schema 0.3.13)
-- `features_positional.motif` (UniProt native motif feature; development schema 0.3.13)
-- `features_positional.region` (UniProt native region feature; development schema 0.3.13)
-- `features_positional.sequence_conflict` (UniProt native sequence conflict feature; development schema 0.3.13)
-- `features_positional.topological_domain` (UniProt native topological domain feature; development schema 0.3.13)
-- `features_positional.transmembrane` (UniProt native transmembrane feature; development schema 0.3.13)
+- `features_positional.chain` (UniProt native chain feature; since published schema 0.3.13)
+- `features_positional.lipidation` (UniProt native lipidation feature; since published schema 0.3.13)
+- `features_positional.motif` (UniProt native motif feature; since published schema 0.3.13)
+- `features_positional.region` (UniProt native region feature; since published schema 0.3.13)
+- `features_positional.sequence_conflict` (UniProt native sequence conflict feature; since published schema 0.3.13)
+- `features_positional.topological_domain` (UniProt native topological domain feature; since published schema 0.3.13)
+- `features_positional.transmembrane` (UniProt native transmembrane feature; since published schema 0.3.13)
 - `features_positional.active_site`
 - `features_positional.binding_site`
 - `features_positional.family_site` (sites an InterPro member database places on the sequence, e.g. CDD catalytic triad; one item per site, with its signature)
@@ -154,8 +161,8 @@ Records of how the card was resolved and enriched, not source-stated fields:
 - `identifiers.uniref` (UniProt's UniRef clusters: `{uniref100, uniref90, uniref50}`; since 0.3.9, #103)
 - `identifiers.ensembl_transcripts` (UniProt's Ensembl cross-references: `{transcript, protein?, gene?, isoform?}`, `transcript` versioned as UniProt states it, `isoform` when UniProt names the isoform it encodes; read by `Card.isoform_tissue_usage()`; since 0.3.10, #102)
 - `annotations.tissue_terms` (GTEx, for each tissue the card's pext names: `{gtex_id, name, tissue_site?, ontology_id, ontology_iri?}`, the term UBERON or EFO as GTEx states it; joined to the pext's tissues by `gtex_tissue_key@1`; since 0.3.10, #102)
-- `annotations.exon_usage_by_tissue` (gnomAD pext: `{gene, assembly, chromosome, start, end, mean, tissues: [{tissue, value}]}`, per coding region in GRCh38, GTEx v10 tissues; read by `Card.variant_tissue_usage()`, rule `pext_at_variant@1`; since 0.3.8, #102)
-- `annotations.isoform_coding_exons` (gnomAD transcript exons, UniProt isoform per its cross-reference: `{isoform, transcript, transcript_version, assembly, chromosome, strand, cds: [[start, end]]}`; read by `Card.isoform_tissue_usage()`, rule `isoform_exon_usage@2`; since 0.3.8, #102)
+- `annotations.exon_usage_by_tissue` (gnomAD pext: `{gene, assembly, chromosome, start, end, mean, tissues: [{tissue, value}]}`, per coding region in GRCh38, GTEx v10 tissues; read by `Card.variant_tissue_usage()`, published rule `pext_at_variant@1`, development `@2`; since 0.3.8, #102)
+- `annotations.isoform_coding_exons` (gnomAD transcript exons, UniProt isoform per its cross-reference: `{isoform, transcript, transcript_version, assembly, chromosome, strand, cds: [[start, end]]}`; read by `Card.isoform_tissue_usage()`, published rule `isoform_exon_usage@2`, development `@3`; since 0.3.8, #102)
 - `annotations.antibody_complexes` (SAbDab: `{structure, model, heavy_chain?, light_chain?, antigen_chains, antigens}`; chains `{chain, entity, type, v_gene_subgroup?}`; antigens `{name, type, entity, chain, this_protein}`; joined through the PDB chains UniProt states; since 0.3.8)
 - `annotations.interface_mutations` (SKEMPI 2.0: `{structure, complex, sides, protein_chains, proteins, mutations, affinity, kinetics?, thermodynamics?, temperature?, temperature_assumed?, method?, reference?, reference_stated?, notes?, hold_out_type?, skempi_version?}`; each mutation `{chain, author_residue, original, change, location_class?, on, location?, placed_via?, not_placed?}`; placed through RCSB's author numbering, rule `rcsb_author_numbering@1`; quantities in molar, 1/(M·s), 1/s, kcal/mol, cal/(mol·K) and kelvin; since 0.3.7)
 - `annotations.pathogen_phenotypes` (PHI-base: `{annotation_type, phenotype, extensions?, high_level_terms?, genotype, pathogen, host?, diseases?, conditions?, method?, phi_ids?, publication?, curator_comment?}`; the genotype lists every allele, so a double mutant is never read as a single one)

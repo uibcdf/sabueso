@@ -186,6 +186,15 @@ def map_variants(
         )
         if version is not None:
             assertion["source"]["version"] = str(version)
+        if version == "gnomad_r4":
+            assertion["source_metadata"] = {
+                "coordinate_scope": {
+                    "assembly": "GRCh38",
+                    "basis": "requested_reference_genome_and_mapping_contract",
+                    "native_assembly_echo": "not_stated",
+                    "rule": "gnomad_query_coordinates@1",
+                }
+            }
         items.append(item)
         assertions.append(assertion)
     return {

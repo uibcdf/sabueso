@@ -473,12 +473,14 @@ public method names.
   actual region choices and weighted intersections, tissue terms and original
   source-version labels. The independent public comparative-support journey keeps
   original reports after reacquisition without re-derivation. Historical genomic
-  scope/overlap assumptions remain visible and need the versioned correction #138;
-  comparative operation observation remains #108.
+  scope/overlap assumptions remain explicitly selectable. Development correction
+  #138 introduces matching genomic scopes, union coverage, per-tissue missingness
+  and explanation `@2`; [its scope](pending_proposals/comparative_tissue_scope.md)
+  separates new and historical rules. Comparative operation observation remains #108.
   Code `3fa2fdf` is qualified by 5,768 local-original cases and 15/15 exact-SHA CI
   jobs; [the source receipt](pending_proposals/comparative_explanations_checkpoint.json)
-  retains its public/local scope. Correct #138 before expanding comparative
-  operation/bibliography observation in #108.
+  retains its public/local scope. Qualify the #138 correction before expanding
+  comparative operation/bibliography observation in #108.
 - **Traceability (#108).** Extend observed source/client/operation coverage along
   these exercised paths, including reuse, versions with their actual basis, retries,
   empty answers, caps, partial returns and failures. Keep bibliography and missing

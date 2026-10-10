@@ -44,6 +44,13 @@ MIGRATION_RULE = "card_migration@1"
 #: templates. ``entity_types``, when given, limits a change to the cards it applies to
 #: (a molecule has no pathogen phenotypes, a protein no indications).
 SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
+    "0.3.14": [
+        {
+            "path": "source_assertion_store[].source_metadata.coordinate_scope",
+            "filled_by": "gnomad",
+            "entity_types": ("protein",),
+        },
+    ],
     "0.3.13": [
         {
             "path": "annotations.activity_regulation",
@@ -435,6 +442,20 @@ def _now() -> str:
 
 def _has(data: Dict[str, Any], path: str) -> bool:
     """Whether a stored card holds ``path`` (a field, or a relationship template)."""
+    if path == "source_assertion_store[].source_metadata.coordinate_scope":
+        # This addition applies only to existing gnomAD variant assertions. Empty
+        # or unrelated cards have no missing coordinate context; migration never
+        # synthesizes it from an old dataset label or enrichment report.
+        assertions = [
+            row
+            for row in data.get("source_assertion_store") or []
+            if row.get("field_path") == "annotations.population_variants"
+            and (row.get("source") or {}).get("name") == "gnomAD"
+        ]
+        return all(
+            (row.get("source_metadata") or {}).get("coordinate_scope")
+            for row in assertions
+        )
     if path.startswith("relationships."):
         predicate = path.split(".")[1].split(" ")[0]
         rels = [
@@ -615,6 +636,10 @@ def rebuild_options(card: Any) -> Dict[str, Any]:
             structures.append(e["structure"])
         elif source == "ChEMBL" and not kind:
             options["chembl"] = {"limit": e["limit"]} if e.get("limit") else {}
+        elif source == "gnomAD" and kind is None:
+            options["gnomad"] = {"limit": e["limit"]} if "limit" in e else {}
+        elif source == "gnomAD" and kind == "pext":
+            options["exon_usage"] = True
         elif source == "PDBe-KB" and kind == "ligand_sites":
             options["ligand_sites"] = True
         elif source == "PDBe-KB" and kind == "interface_residues":

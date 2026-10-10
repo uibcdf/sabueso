@@ -2,6 +2,14 @@
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
+  - `0.3.14` is unpublished development (#138). Optional gnomAD variant assertion
+    `source_metadata.coordinate_scope` records `assembly`, `basis`,
+    `native_assembly_echo` and `rule`. `gnomad_query_coordinates@1` records GRCh38
+    as the current client query/mapping contract; the source does not echo an
+    assembly and this is not independent native-release verification. Source values
+    and biological card fields are unchanged. Migration records the missing context
+    on existing gnomAD variant assertions; refresh acquires it. Empty/unrelated
+    cards have no applicable coordinate-context gap. Published schemas stay frozen;
   - `0.3.13` is published/frozen in release 0.14.0 (#134), written by its clean
     installed preliminary Conda package. It adds native UniProt activity
     regulation, domain notes, similarity, source cautions and miscellaneous text;
@@ -520,14 +528,17 @@ A Relationship is first-class, traceable knowledge:
     region: `gene`, `assembly` (GRCh38), `chromosome`, `start`, `end`, `mean`, and
     `tissues` (`[{tissue, value}]`, the share of the gene's expression in each GTEx v10
     tissue that includes the region). `Card.variant_tissue_usage(threshold=0.1)` joins
-    each population variant's genomic position to its region (`pext_at_variant@1`);
+    each population variant's genomic position to its region (published
+    `pext_at_variant@1`; development `@2` confirms coordinate scope and reports
+    conflicting or missing tissue values separately);
     a variant outside every region is `outside_pext_regions` (pext covers coding
     regions only). Nothing derived is stored.
   - isoform coding exons (added in #102, schema 0.3.8):
     `annotations.isoform_coding_exons`, per Ensembl transcript UniProt states an isoform
     for (its cross-reference) and gnomAD annotates: `isoform`, `transcript`,
     `transcript_version`, `assembly`, `chromosome`, `strand`, and `cds` (GRCh38 ranges,
-    as gnomAD states them). `Card.isoform_tissue_usage()` (`isoform_exon_usage@2`) gives
+    as gnomAD states them). `Card.isoform_tissue_usage()` (published
+    `isoform_exon_usage@2`, development `@3` with explicit scope/coverage) gives
     per isoform UniProt's tissue-specificity statements restricted to it
     (`source_metadata.molecule`), its own coding bases (in no other isoform's
     transcript) and their mean pext per tissue, and the `variable_regions`: runs of

@@ -4,12 +4,12 @@ Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
 Last updated: 2026-10-10, pinned comparative explanations and source qualification (#91/#112/#138).
 
-Development comparative explanations (#91) now retain both sequence pins and
+The preceding qualified comparative explanation slice (#91) retained both sequence pins and
 the exact variant/isoform/pext/term inputs under three new explanation rules.
 The public `comparative_support.py` journey preserves original envelopes through
 inert reading and later fixture reacquisition. Historical scientific rules and
-card schemas remain unchanged. Mixed genomic scope and overlapping pext limits
-are explicit; their separately versioned correction is [#138](https://github.com/uibcdf/sabueso/issues/138).
+card schemas remained unchanged at that checkpoint. Mixed genomic scope and
+overlapping pext limits were explicit; their separately versioned correction is [#138](https://github.com/uibcdf/sabueso/issues/138).
 Comparative operation observation/bibliography (#108) and installed/human
 acceptance remain separate.
 Code `3fa2fdfa560245cf282a3ca2ebe7054ba1d6e516` passes
@@ -18,8 +18,20 @@ and [governance](https://github.com/uibcdf/sabueso/actions/runs/38028657216).
 The [source receipt](pending_proposals/comparative_explanations_checkpoint.json)
 records 45 new regressions, 123 selected and 5,768 full local-original cases;
 all nine public offline CI lanes pass 4,215 cases with ten declared fixture skips.
-Next: the versioned genomic-scope/coverage correction #138, then comparative
-operation/bibliography observation #108.
+The following #138 correction retains that earlier source receipt; its current
+qualification is recorded separately, before comparative #108 observation.
+
+Development #138 corrects tissue joins under `pext_at_variant@2` and
+`isoform_exon_usage@3`, with explanation `@2`, explicit historical `usage_rule`
+selection and per-tissue resolved/missing/conflicting coverage. Unpublished
+schema 0.3.14 adds requested-reference-genome context to new gnomAD variant
+assertions; migration reports missing context instead of inferring it. Both public
+report generations retain independent readers and format-preserving reacquisition.
+[Correction scope](pending_proposals/comparative_tissue_scope.md).
+Applicable local/exact-head qualification is recorded with the completed checkpoint;
+The refresh regression also exposed missing declared-source option restoration:
+bounded gnomAD variant/pext restoration is included; broader routing is #139.
+#108 operation/bibliography and installed/human acceptance remain separate.
 
 ## Resume here
 
@@ -81,7 +93,7 @@ the same cases, workflow and pip check. Zenodo
 1,318 source files identical to the tag. Complete
 [publication receipt](../devtools/conda-build/receipts/sabueso_0.14.0_public_2026-10-09.json).
 
-Published schema **0.3.13**, written by the clean installed preliminary Conda
+Current development schema **0.3.14** is unpublished; published schema **0.3.13**, written by the clean installed preliminary Conda
 candidate, and all earlier shapes/frozen cards remain immutable. The
 [release notes](../devtools/conda-build/release_notes_0.14.0.md) define the
 consolidation scope and remaining limits. Further shape changes follow

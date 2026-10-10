@@ -1,5 +1,29 @@
 # Sabueso — Decision Log
 
+## Version genomic tissue scope and per-tissue coverage (2026-10-10, #138)
+
+Development Card tissue views default to `pext_at_variant@2` and
+`isoform_exon_usage@3`; their explanations use `@2`. Explicit keyword `usage_rule`
+retains `pext_at_variant@1` / `isoform_exon_usage@2` and their original explanation
+`@1`. Stored reports are read as originally produced, without recomputation.
+Require equal explicit assembly/chromosome, source-stated transcript-to-isoform
+links with compatible versions, and one consistent CDS axis before subtraction.
+Missing or incompatible coordinates do not establish correspondence. Missing
+transcripts make own/variable-base support incomplete. Overlapping pext records
+must all state the same valid value for each tissue; agreeing bases count once,
+disagreement remains conflict, and missing values remain unknown. Each tissue mean
+uses its resolved bases and reports missing/conflicting coverage separately.
+
+New gnomAD variant assertions retain requested-reference-genome context in
+`source_metadata.coordinate_scope` under `gnomad_query_coordinates@1`. This is
+client query/mapping context, not a native assembly echo or verified release.
+Schema 0.3.14 is unpublished and additive; published 0.3.13 stays frozen. Migration
+records gaps and never invents context from old dataset labels. New example format
+`@2` and explicit `--legacy` keep independent reading/reacquisition of both rule
+generations. Recorded gnomAD variant/pext options and limits are restored during
+refresh; broader declared-source routing is #139. #108 operation/bibliography,
+installed delivery and human scientific acceptance remain separate.
+
 ## Pin comparative explanations without rewriting historical rules (2026-10-09, #91)
 
 Add sequence, variant-tissue and isoform-tissue explanation envelopes using the

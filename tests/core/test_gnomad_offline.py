@@ -262,8 +262,11 @@ def test_pext_is_kept_as_gnomad_states_it(pext_card):
 
 def test_each_variant_takes_the_pext_of_its_region(pext_card):
     view = pext_card.variant_tissue_usage()
-    assert view["rule"]["rule"] == "pext_at_variant@1"
-    assert view["rule"]["parameters"] == {"threshold": 0.1, "assembly": "GRCh38"}
+    assert view["rule"]["rule"] == "pext_at_variant@2"
+    assert (
+        view["rule"]["parameters"]["coordinate_policy"]
+        == "explicit_equal_assembly_and_chromosome"
+    )
     by_id = {i["variant_id"]: i for i in view["items"]}
     # E105D, on the canonical isoform, lies in a region every tissue expresses.
     e105d = by_id["12-6869174-G-C"]["pext"]
@@ -350,7 +353,7 @@ def test_each_isoform_takes_the_pext_of_its_own_coding_bases(pext_card):
     exons = pext_card.get("annotations.isoform_coding_exons")["value"]
     assert {e["isoform"] for e in exons} == {"P60174-1", "P60174-3", "P60174-4"}
     view = pext_card.isoform_tissue_usage()
-    assert view["rule"]["rule"] == "isoform_exon_usage@2"
+    assert view["rule"]["rule"] == "isoform_exon_usage@3"
     # Every isoform's exons are known, so own bases are counted against all of them.
     assert view["isoforms_without_exons"] == []
     assert view["variable_regions_complete"] is True

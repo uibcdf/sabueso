@@ -9,8 +9,8 @@ def digest_threshold(threshold, caller=None):
     if (
         isinstance(threshold, bool)
         or not isinstance(threshold, (int, float))
-        or not math.isfinite(threshold)
         or not 0 <= threshold <= 1
+        or not math.isfinite(threshold)
     ):
         raise refuse(
             "threshold",

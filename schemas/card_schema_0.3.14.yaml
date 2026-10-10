@@ -1,0 +1,1262 @@
+schema:
+  name: sabueso-card
+  version: 0.3.14
+  created_at: 2026-02-10
+  updated_at: 2026-10-10
+  note: |
+    0.3.14 is unpublished development (#138). Adds optional gnomAD population-variant
+    SourceAssertion source_metadata.coordinate_scope: assembly, basis,
+    native_assembly_echo and the mapping-context rule gnomad_query_coordinates@1.
+    GRCh38 is the requested reference genome under the current gnomad_r4 client
+    contract, not an echoed assembly or independently verified native release.
+    Historical assertions remain unchanged. Migration records the missing context;
+    refresh with gnomAD acquires it rather than inferring it from a dataset label.
+    Derived tissue rules and explanation envelopes are versioned outside the card.
+    Published 0.3.13 remains frozen. No biological field or SourceAssertion value changes.
+    0.3.13 is published/frozen in release 0.14.0. Adds native UniProt activity_regulation,
+    domain_notes, similarity, source_cautions and miscellaneous text; positional
+    chain, lipidation, motif, region, sequence_conflict, topological_domain and
+    transmembrane fields, and activates existing positional domains. Source bounds,
+    endpoint modifiers, molecule restrictions, original feature and sequence revision
+    remain supported; missing/fuzzy/foreign/revision-mismatched locations are unplaced.
+    Source similarity and cautions are neither identity nor quality conclusions.
+    Additive: 0.3.12 cards remain valid without these optional source annotations.
+    Formal draft aligned with devguide/FIELD_PATHS.md; enforcement via code later.
+    0.2.0 renames evidence_ids to source_assertion_ids (SourceAssertion terminology) and
+    adds meta.card_id / meta.schema_version (stable card identity). Structured
+    catalytic_activity / subcellular_location values and sequence.length /
+    molecular_weight (Da) / checksums added before any release (uibcdf/sabueso#13).
+    structure.entry_metadata.* was removed because structures are has_structure
+    relationships shown through Card.structures() (uibcdf/sabueso#6, uibcdf/sabueso#21).
+    annotations.go_terms was removed because GO annotations are annotated_with
+    relationships (uibcdf/sabueso#21). annotations.domains stays reserved (not produced), since domain
+    classifications are classified_in relationships. interactions.binding_partners was
+    removed because interactions are interacts_with (physical, IntAct) and
+    functionally_associated_with (STRING) relationships (uibcdf/sabueso#21). Measured
+    bioactivities are has_bioactivity relationships (uibcdf/sabueso#23). ligands.items
+    was removed because ligands are has_bioactivity and has_structure relationships
+    read through Card.ligands() with a deck of small-molecule cards
+    (uibcdf/sabueso#25), and a role such as inhibitor is a derived class, never
+    asserted.
+    0.3.0 stores every physical quantity as a node with its unit (uibcdf/sabueso#32);
+    section fields that are quantities carry `unit` (canonical PyUnitWizard name), the
+    has_structure qualifier resolution_angstrom became resolution {value, unit}, contact
+    min_distance_angstrom became min_distance {value, unit}, has_bioactivity
+    measurements gain normalized {value, unit} (nanomolar or percent), and every stored
+    card carries `quantities`, a PyUnitWizard QuantityRecordBundle that seals all
+    quantity nodes as columns and is verified on load.
+    0.3.1 adds annotations.disease (UniProt DISEASE comments, uibcdf/sabueso#39). The
+    change is additive, so a 0.3.0 card is a valid 0.3.1 card without the field.
+    0.3.2 adds two optional has_bioactivity measurement qualifiers (uibcdf/sabueso#37).
+    normalized_upper {value, unit} is the upper end of a range (ChEMBL
+    standard_upper_value, or a range read in a paper). normalized_uncertainty is an
+    uncertainty a publication states (kind sd, sem, unspecified or ci; half_width, or
+    lower and upper, as {value, unit} in the measurement's normalized unit; level; n).
+    Both are negotiated quantity paths. The change is additive, so a 0.3.1 card is a
+    valid 0.3.2 card without them. 0.3.2 also adds annotations.taxon_id,
+    annotations.lineage and identifiers.gene_loci, and classified_in relationships to
+    OrthoDB and eggNOG groups (uibcdf/sabueso#54), and has_predicted_structure
+    relationships to AlphaFold DB models (uibcdf/sabueso#57), and curated engages
+    relationships (uibcdf/sabueso#61), all additive.
+    0.3.3 adds the has_predicted_structure qualifier isoform, set when AlphaFold DB models
+    an isoform of the entry rather than the entry itself. Additive, so a 0.3.2 card is a
+    valid 0.3.3 card without it.
+    0.3.4 adds annotations.taxonomy, the organism's taxon with its rank and its ranked
+    ancestors from NCBI Taxonomy (uibcdf/sabueso#67). Additive, so a 0.3.3 card is a
+    valid 0.3.4 card without it.
+    0.3.4 also adds has_bioactivity qualifiers for other sources than ChEMBL
+    (uibcdf/sabueso#66), namely source, measurement.stated_value (the value as written, for its
+    precision) and assay.source, with BindingDB as the first such source. Additive.
+    It also adds copy_of (a copy's declared origin, its source and assay or activity
+    id), measurement.outcome, assay.depositor and assay.depositor_id (PubChem BioAssay),
+    and retrieved_via, set on ChEMBL records fetched because a copy named their assay
+    (uibcdf/sabueso#68). Additive.
+    It also adds literature.claims, curated free-text claims typed by topic and never
+    compared (uibcdf/sabueso#43). Additive.
+    It also adds names.gene_names, and fills names.synonyms and names.abbreviations from
+    UniProt. Synonyms are items with a name and a kind, abbreviations with a name and the
+    full name they shorten (of), gene names with a name, a kind and the gene they name.
+    Additive. The items of names.synonyms and names.abbreviations were described as
+    strings up to 0.3.3, but no source filled them, and curated synonyms have always been
+    items with a name. The description is corrected; no stored card changes.
+    It also adds has_structure qualifiers from RCSB for choosing a structure, namely
+    refinement (R-free and R-work), deposited and released dates, construct (length,
+    expression host and tags per polymer entity), mutations and sequence_differences in
+    UniProt numbering, and observed (per chain, the UniProt ranges with coordinates).
+    Additive, so a 0.3.3 card is a valid 0.3.4 card without them.
+    0.3.5 adds the has_structure qualifier author_numbering. It gives, per chain, the
+    author residue numbers of UniProt positions, as segments [uniprot_begin, uniprot_end,
+    author_begin], or [position, position, id] for an author id with an insertion code
+    (uibcdf/sabueso#73). Additive, so a 0.3.4 card is a valid 0.3.5 card without it.
+    0.3.6 maps what UniProt states about isoforms and secondary structure
+    (uibcdf/sabueso#80). annotations.isoforms holds one item per isoform (isoform_id,
+    name, synonyms, sequence_status, alternative_sequence_ids, note). Up to 0.3.5 it was
+    described as a list of strings that nothing filled, so no stored card changes.
+    annotations.alternative_products holds the events that produce the isoforms and the
+    note of UniProt's comment. features_positional.alternative_sequence holds the
+    segments an isoform replaces or lacks, with the isoform_ids the entry links to them.
+    features_positional.secondary_structure holds UniProt's helix, strand and turn
+    segments, each with the PDB structures it was read from. A substitution with
+    missing true is a deletion, UniProt's Missing, for natural variants, mutagenesis and
+    alternative sequences; before 0.3.6 such an item was kept with no substitution. It
+    also adds the has_structure qualifier secondary_structure, per chain the helices and
+    strands RCSB states for the entry in UniProt numbering, with the programs that
+    assigned them. It also adds the biological context of a target, curated from
+    publications (uibcdf/sabueso#60), namely annotations.stage_expression, essentiality,
+    accessibility and metabolic_role, items of stated text. It also adds
+    annotations.pathogen_phenotypes, the phenotypes PHI-base curates for mutants of a
+    pathogen gene, alone or on a host, each with its whole genotype, host, publication
+    and PHI-base release. It also adds the clinical layer of molecules
+    (uibcdf/sabueso#81) as two relationship predicates, investigated_for (a ChEMBL drug
+    indication, to its disease term) and tested_in (a ClinicalTrials.gov study an
+    indication cites, by NCT id). It also adds associated_with, a gene-disease
+    association DISEASES or Open Targets states for a human protein, one per disease,
+    source and channel (uibcdf/sabueso#82), and participates_in, the Reactome pathways
+    and reactions a protein takes part in (uibcdf/sabueso#83), and
+    annotations.clinical_variants, ClinVar's variants of a human gene with their
+    classification as stated, placed in UniProt numbering only through a transcript
+    UniProt states for the canonical isoform and a matching residue, and
+    annotations.population_variants, gnomAD's variants with a protein change and their
+    frequencies, placed by the same rule. A change stated on another isoform's
+    transcript is placed through rule uniprot_isoform_map@1, which applies UniProt's
+    own alternative-sequence edits (placed_via). All additive, so a 0.3.5 card is a valid 0.3.6 card without
+    them.
+    0.3.7 adds annotations.interface_mutations, SKEMPI 2.0's measured binding changes
+    of mutations at the interfaces of complexes of the protein (uibcdf/sabueso#83), one
+    item per SKEMPI row whose PDB entry has a chain UniProt states is this protein, with
+    the chains of each side, the mutations in the entry's author numbering (placed in
+    UniProt numbering only through the author numbering RCSB states for the chain, rule
+    rcsb_author_numbering@1, and a matching residue), the affinities of mutant and wild
+    type in molar, kinetics and thermodynamics where measured, the temperature, the
+    method and the publication. A bound keeps its relation and "n.b." is no_binding.
+    ΔΔG is not stored; the view derives it (binding_ddg@1). It also adds disease cards
+    (entity_type disease, uibcdf/sabueso#90), anchored at a MONDO term, with
+    identifiers.mondo, identifiers.equivalent_ids (the ids MONDO states are the same
+    disease, the only ones that join), identifiers.related_ids (xrefs that are not
+    identity), names, annotations.definition, annotations.disease_subsets, and
+    subclass_of relationships to the parent terms. On protein cards, disease_identity
+    also records subclass_of between the MONDO terms one disease statement reaches, when
+    MONDO places one under the other (each is_a step a MONDO SourceAssertion; a chain of
+    several steps derived, mondo_hierarchy@1). Every SourceAssertion also records
+    acquisition, how it entered (method database, curation, rule_extraction or
+    model_extraction; an extraction names its tool and version; origin text_mining when
+    a database states its record was mined from text; uibcdf/sabueso#92), and protein
+    cards may hold mentioned_in relationships to the publications whose text states the
+    UniProt accession (Europe PMC, text-mined, uibcdf/sabueso#92). Additive, so
+    a 0.3.6 card is a valid 0.3.7 card without them.
+    0.3.8 records, in quality.enrichments, the rule that chose which records a capped
+    source kept, record_order for BindingDB (bindingdb_record_order@1) and row_order
+    for PubChem BioAssay (pubchem_row_order@1), beside total_count and truncated. Both
+    sources now keep the 5000-record ceiling every other source keeps
+    (uibcdf/sabueso#88, uibcdf/sabueso#98). A card built while a retrieval archive is
+    recording lists, in quality.retrievals, every answer its build received, each kept
+    in the archive under its reference, and an enrichment read from a local mirror
+    records access mirror and the release (uibcdf/sabueso#100). Small molecule cards may
+    hold what ChEBI states for an entry UniChem links and whose stated InChIKey is the
+    anchor (uibcdf/sabueso#83), identifiers.chebi, annotations.chemical_classes (is a),
+    annotations.chemical_roles (direct or inherited, biological, chemical or an
+    application) and annotations.definition. gnomAD's population variants are also
+    asked for on each Ensembl transcript UniProt states for the canonical isoform
+    (uibcdf/sabueso#85), and an item keeps gnomAD's consequence on that transcript when
+    it states a protein change there, with transcript_version. When gnomAD states that
+    the variant changes no residue of the canonical transcript, the item keeps its
+    consequence on the other transcript, records canonical_consequence (transcript,
+    transcript_version, consequence, hgvs_c) and is not placed (not_coding_on_canonical).
+    The enrichment record lists the canonical transcripts (canonical_transcripts, each
+    with its version, or not_in_dataset when gnomAD does not annotate it, or not_found).
+    A transcript UniProt names no isoform for is canonical only in an entry that
+    describes no isoforms. Protein cards may hold what KLIFS states for a
+    kinase whose UniProt accession it states (uibcdf/sabueso#83),
+    annotations.kinase_classification (KLIFS kinase id and name, group, family,
+    subfamily, pocket sequence), annotations.kinase_structures (per KLIFS structure, the
+    PDB entry, chain and alternate location, the DFG and alpha-C helix conformations,
+    the orthosteric and allosteric ligands, quality score, resolution in angstrom, and
+    missing residues and atoms) and annotations.kinase_pocket (the 85 pocket positions
+    in KLIFS numbering, each with its residue, placed in UniProt numbering through one
+    structure's author numbering as RCSB states it, rules klifs_pocket_reference@1 and
+    rcsb_author_numbering@1, or not_placed with the reason). Protein cards may also
+    hold what GPCRdb states for a receptor whose UniProt accession it states,
+    annotations.gpcr_classification (entry name, class, family, numbering scheme),
+    annotations.gpcr_segments (runs of residues per segment), annotations.gpcr_residues
+    (residues with a generic number, in every scheme GPCRdb states) and
+    annotations.gpcr_structures (activation state, method, resolution in angstrom,
+    publication, ligands with their function, apo, signalling protein). Segments and
+    residues are in UniProt numbering only when GPCRdb's sequence is the entry's (rule
+    gpcrdb_sequence_numbering@1). The has_structure qualifier membrane_segments gives,
+    per chain, the transmembrane segments each resource RCSB integrates assigns (OPM,
+    PDBTM), as a list of assigned_by and UniProt ranges; it is set only when stated.
+    annotations.antibody_complexes holds SAbDab's antibody structures of the protein,
+    per antibody instance its heavy and light chains and every antigen SAbDab assigns
+    to it, for the PDB entries where a chain UniProt states is this protein is one of
+    those antigens. Protein cards may hold ortholog_of relationships to the orthologs
+    OMA states (uniprot:<accession> where OMA or UniProt states one, else oma:<OMA id>),
+    one per OMA protein, with qualifiers rel_type, species, taxon_id, oma_id, oma_group,
+    oma_hog_id, canonical_id, distance and score, only when OMA states the card's
+    accession with an exact sequence match.
+    annotations.exon_usage_by_tissue holds gnomAD's pext of the gene
+    (uibcdf/sabueso#102), per coding region in GRCh38 the mean and, per GTEx v10
+    tissue, the share of the gene's expression that includes the region; the view
+    Card.variant_tissue_usage joins it to each population variant's genomic position
+    (pext_at_variant@1), and nothing derived is stored.
+    annotations.isoform_coding_exons holds, per Ensembl transcript UniProt states an
+    isoform for and gnomAD annotates, the isoform, the transcript and version, and its
+    CDS exons in GRCh38 as gnomAD states them; the view Card.isoform_tissue_usage
+    (isoform_exon_usage@1) reads them with the pext.
+    A gnomAD change the isoform map would place is first asked of gnomAD variant by
+    variant, and is not placed when gnomAD states no protein change on the canonical
+    transcript (not_coding_on_canonical) or no consequence there
+    (no_consequence_on_canonical).
+    Additive, so a 0.3.7 card is a valid 0.3.8 card without them.
+    0.3.9 adds, on protein cards, identifiers.uniref (the UniRef100, UniRef90 and
+    UniRef50 clusters UniProt places the entry in) and clustered_with relationships to
+    the other members of its UniRef90 cluster (uniprot:<accession>, or uniparc:<UPI> for
+    a sequence without an entry), with qualifiers cluster, identity_level, member_id,
+    organism, taxon_id, sequence_length, uniref100 and same_uniref100. They are
+    UniProt's statements of sequence similarity, never identity (uibcdf/sabueso#103).
+    A card also lists, in quality.retries, the requests its build asked again, per
+    source and reason (a transient HTTP status, a connection, or an unreadable answer),
+    each with how many (uibcdf/sabueso#97). Additive, so a 0.3.8 card is a valid 0.3.9
+    card without them.
+    0.3.10 adds, on protein cards, identifiers.ensembl_transcripts (the Ensembl
+    transcripts UniProt cross-references, each with its protein, gene and the isoform it
+    encodes when UniProt names one), and annotations.tissue_terms (for each GTEx tissue
+    the card's pext names, GTEx's id, name, tissue site and the ontology term GTEx
+    states for it, UBERON or EFO for a cell line, with its IRI). A term never replaces
+    the tissue, since two GTEx tissues can share one (uibcdf/sabueso#102). Additive, so a
+    0.3.9 card is a valid 0.3.10 card without them.
+    0.3.11 (published in 0.12.0) adds optional
+    mentioned_in qualifiers article (the native source, extId, pmcid and fullTextIdList when stated) and locations (one annotation
+    and source_assertion_id per located UniProt accession mention in an explicitly
+    requested MED/PMC article). An annotation keeps its provider, id, section, tags,
+    prefix, exact and postfix as returned, without constructing a sentence. Every
+    occurrence has its own Europe PMC SourceAssertion, database acquisition with
+    origin text_mining, and source_metadata content_kind, requested_article, article
+    and identity_basis (stated_uniprot_accession with the matching native tags).
+    quality.enrichments records data located_accession_annotations, article_ids,
+    annotation_count and returned_annotations per explicit article; the bibliographic
+    search also records its requested limit for refresh. Empty answers,
+    unavailable fixtures and source failures remain distinct. Refresh asks the
+    recorded article ids again. Optional locations are not automatic migration gaps.
+    Annotation fragments are governed by each article's terms, reported separately
+    from bibliography; unknown article terms are excluded by terms profiles (#92).
+    This version also adds derived structure_mentioned_in relationships
+    (protein to publication, one per structure_ref). A printed four-character PDB code
+    and its matching native PDBe tag yield a raw mentioned_in SourceAssertion about
+    the PDB entry; rule structure_mention_context@1 relates it to the protein only
+    through supported source-stated has_structure links already mapped on the card.
+    Qualifiers retain article, locations, structure_ref and structure_context
+    (protein_ref, structure_ref, relationship_ids, source_assertion_ids, scope
+    entry_association). Derivation inputs retain both statements and their structural
+    relationships. Raw mention support alone is in the derived relationship's
+    source_assertion_ids; structural-source terms never license attached fragments.
+    No whole-entry identity, chain, residue, author focus or scientific claim is
+    inferred. quality.enrichments adds mapping located_accession_mapping@2,
+    uniprot_mention_count, structure_mention_count, uniprot_annotation_count,
+    pdb_annotation_count and unlinked_pdb_mentions (structure_ref, annotation_id,
+    reason no_supported_has_structure_on_card). knowledge_state@4 counts the two
+    areas separately; historical direct-only requests do not claim PDB coverage.
+    Additive, so a 0.3.10 card is valid without these optional records.
+
+    0.3.12 (unpublished, #92) adds optional quality.literature_extractions records,
+    id (scientific intake content identity), rule literal_mention_intake@1,
+    extraction_rule literal_uniprot_mention@1, subject_ref, publication_ref,
+    locator, input_sha256, source_assertion_ids, relationship_ids and terms.
+    Exact supplied-fragment occurrences add mentioned_in location qualifiers
+    text, start, end, locator and input_sha256, with their source_assertion_id.
+    Offsets count Unicode characters, zero-based with an exclusive end. Original
+    SourceAssertions retain rule_extraction tool/version/configuration and their
+    original retrieval times. These are explicit intake records, not a claim of
+    complete article coverage or human curation. They are not automatic migration
+    gaps. Refresh preserves stored scientific support without re-executing the
+    rule. Original runtime attribution remains in an independent ExtractionStore
+    or sidecar; it is never embedded in the card or reconstructed by a reader.
+
+    Explicit article metadata binding (unpublished 0.3.12, #92/#108) adds optional
+    article_metadata_source_assertion_ids and metadata_binding_rule
+    article_metadata_binding@1 to quality.literature_extractions. Separate
+    database SourceAssertions at literature.article_metadata retain native
+    bibliographic fields, identifiers and licence literals. Their subject_ref
+    is the supplied publication, confirmed by source-stated publication identity.
+    source_metadata records content_kind article_metadata, requested_identifier,
+    publication_ref, identity_basis source_stated_publication_identifier,
+    service_version and version_basis service_version_not_article_revision.
+    Assertion identity includes native values and explicit binding context,
+    excluding retrieval time; alternative native forms and alias bindings remain
+    separate support. Service versions never become article revisions. Declared
+    article licences do not grant supplied-fragment permission. No abstract or
+    full article is in the bibliographic projection. Metadata remains explicit:
+    neither migration nor refresh queries it, and missing support is not rebuilt.
+
+card_base:
+  meta:
+    card_id:
+      value: string
+      source_assertion_ids:
+      - string
+    schema_version:
+      value: string
+      source_assertion_ids:
+      - string
+    entity_type:
+      value: "enum[protein, peptide, small_molecule]"
+      source_assertion_ids:
+      - string
+    created_at:
+      value: date
+      source_assertion_ids:
+      - string
+    updated_at:
+      value: date
+      source_assertion_ids:
+      - string
+    sources:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+  identifiers:
+    uniprot:
+      value: string
+      source_assertion_ids:
+      - string
+    uniref:
+      value:
+        uniref100: string
+        uniref90: string
+        uniref50: string
+      source_assertion_ids:
+      - string
+    gene_loci:
+      value:
+      - database: string
+        id: string
+      source_assertion_ids:
+      - string
+    ensembl_transcripts:
+      value:
+      - transcript: string
+        protein: string
+        gene: string
+        isoform: string
+      source_assertion_ids:
+      - string
+    pdb:
+      value: string
+      source_assertion_ids:
+      - string
+    chembl:
+      value: string
+      source_assertion_ids:
+      - string
+    pubchem:
+      value: string
+      source_assertion_ids:
+      - string
+    drugbank:
+      value: string
+      source_assertion_ids:
+      - string
+    inchi:
+      value: string
+      source_assertion_ids:
+      - string
+    inchikey:
+      value: string
+      source_assertion_ids:
+      - string
+    smiles:
+      value: string
+      source_assertion_ids:
+      - string
+    smiles_connectivity:
+      value: string
+      source_assertion_ids:
+      - string
+    other:
+      value: any
+      source_assertion_ids:
+      - string
+  names:
+    canonical_name:
+      value: string
+      source_assertion_ids:
+      - string
+    synonyms:
+      value:
+      - name: string
+        kind: "enum[alternative_name, submission_name]"
+      source_assertion_ids:
+      - string
+    abbreviations:
+      value:
+      - name: string
+        of: string
+      source_assertion_ids:
+      - string
+    gene_names:
+      value:
+      - name: string
+        kind: "enum[gene_name, synonym, ordered_locus, orf]"
+        gene: integer
+      source_assertion_ids:
+      - string
+  properties:
+    physchem:
+      formula:
+        value: string
+        source_assertion_ids:
+        - string
+      molecular_weight:
+        value: number
+        unit: string
+        source_assertion_ids:
+        - string
+      logp:
+        value: number
+        source_assertion_ids:
+        - string
+      tpsa:
+        value: number
+        unit: string
+        source_assertion_ids:
+        - string
+      hbd:
+        value: number
+        source_assertion_ids:
+        - string
+      hba:
+        value: number
+        source_assertion_ids:
+        - string
+      rotatable_bonds:
+        value: number
+        source_assertion_ids:
+        - string
+      aromatic_rings:
+        value: number
+        source_assertion_ids:
+        - string
+      molecule_type:
+        value: string
+        source_assertion_ids:
+        - string
+  literature:
+    claims:
+      value:
+      - topic: string
+        text: string
+        about:
+        - string
+      source_assertion_ids:
+      - string
+  annotations:
+    function:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    catalytic_activity:
+      value:
+      - reaction: string
+        ec_number: string
+        rhea_id: string
+        molecule: string
+      source_assertion_ids:
+      - string
+    pathway:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    subunit:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    subcellular_location:
+      value:
+      - location: string
+        topology: string
+        orientation: string
+        molecule: string
+      source_assertion_ids:
+      - string
+    disease:
+      value:
+      - name: string
+        accession: string
+        acronym: string
+        description: string
+        cross_references:
+        - database: string
+          id: string
+        note: string
+      source_assertion_ids:
+      - string
+    tissue_specificity:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    organism:
+      value: string
+      source_assertion_ids:
+      - string
+    taxon_id:
+      value: integer
+      source_assertion_ids:
+      - string
+    lineage:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    taxonomy:
+      value:
+        tax_id: integer
+        name: string
+        rank: string
+        ancestors:
+        - tax_id: integer
+          name: string
+          rank: string
+      source_assertion_ids:
+      - string
+    ptm:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    polymorphism:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    activity_regulation:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    domain_notes:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    similarity:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    source_cautions:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    miscellaneous:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    domains:
+      value:
+      - id: string
+        name: string
+      source_assertion_ids:
+      - string
+  features_positional:
+    chain:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    lipidation:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    motif:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    region:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    sequence_conflict:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    topological_domain:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    transmembrane:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    domains:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    active_site:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    binding_site:
+      value:
+      - location: any
+        description: string
+        ligand:
+          name: string
+          id: string
+          label: string
+          note: string
+      source_assertion_ids:
+      - string
+    modified_residue:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    disulfide_bond:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+    natural_variant:
+      value:
+      - location: any
+        description: string
+        substitution:
+          original: string
+          alternatives:
+          - string
+          missing: boolean
+        feature_id: string
+        cross_references:
+        - database: string
+          id: string
+      source_assertion_ids:
+      - string
+    mutagenesis:
+      value:
+      - location: any
+        description: string
+        substitution:
+          original: string
+          alternatives:
+          - string
+          missing: boolean
+      source_assertion_ids:
+      - string
+    alternative_sequence:
+      value:
+      - location: any
+        description: string
+        substitution:
+          original: string
+          alternatives:
+          - string
+          missing: boolean
+        feature_id: string
+        isoform_ids:
+        - string
+      source_assertion_ids:
+      - string
+    secondary_structure:
+      value:
+      - location: any
+        description: string
+        element: string
+        structures:
+        - string
+      source_assertion_ids:
+      - string
+    family_site:
+      value:
+      - location: any
+        description: string
+        signature:
+          accession: string
+          source_database: string
+          name: string
+      source_assertion_ids:
+      - string
+    glycosylation:
+      value:
+      - location: any
+        description: string
+      source_assertion_ids:
+      - string
+  clinical: "*"
+  # quality holds records of how the card was resolved and enriched, not fields stated by
+  # a source, so its entries are not value/source_assertion_ids nodes (uibcdf/sabueso#10).
+  # Shapes: devguide/SCHEMA.md, "Quality records".
+  quality: "*"
+  # The seal over every quantity node of the card, written by Card.to_dict() and verified
+  # by Card.from_dict(): a PyUnitWizard QuantityRecordBundle (qrec-bundle/0.3) whose
+  # entries are columns "<path template>|<unit>" (uibcdf/sabueso#32).
+  quantities: "*"
+protein_card:
+  inherits: card_base
+  annotations:
+    enzyme_class:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    family:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    similar_proteins:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    isoforms:
+      value:
+      - isoform_id: string
+        isoform_ids:
+        - string
+        name: string
+        synonyms:
+        - string
+        sequence_status: string
+        alternative_sequence_ids:
+        - string
+        note: string
+      source_assertion_ids:
+      - string
+    alternative_products:
+      value:
+        events:
+        - string
+        note: string
+      source_assertion_ids:
+      - string
+    stage_expression:
+      value:
+      - stage: string
+        observation: string
+        host: string
+        method: string
+        level: string
+        note: string
+      source_assertion_ids:
+      - string
+    essentiality:
+      value:
+      - method: string
+        phenotype: string
+        stage: string
+        host: string
+        condition: string
+        call: string
+        note: string
+      source_assertion_ids:
+      - string
+    accessibility:
+      value:
+      - compartment: string
+        exposure: string
+        stage: string
+        host: string
+        method: string
+        note: string
+      source_assertion_ids:
+      - string
+    metabolic_role:
+      value:
+      - pathway: string
+        role: string
+        stage: string
+        host: string
+        method: string
+        note: string
+      source_assertion_ids:
+      - string
+    clinical_variants:
+      value:
+      - accession: string
+        title: string
+        variant_type: string
+        transcript: string
+        hgvs_c: string
+        hgvs_p: string
+        classification: string
+        review_status: string
+        last_evaluated: string
+        conditions:
+        - name: string
+          xrefs:
+          - string
+        consequences:
+        - string
+        location:
+          start: number
+          end: number
+        substitution:
+          original: string
+          change: string
+        placed_via:
+          rule: string
+          isoform: string
+          isoform_position: number
+        numbering: string
+        not_placed: string
+      source_assertion_ids:
+      - string
+    population_variants:
+      value:
+      - variant_id: string
+        consequence: string
+        transcript: string
+        transcript_version: string
+        hgvs_c: string
+        hgvs_p: string
+        flags:
+        - string
+        exome:
+          ac: number
+          an: number
+          af: number
+        genome:
+          ac: number
+          an: number
+          af: number
+        location:
+          start: number
+          end: number
+        substitution:
+          original: string
+          change: string
+        placed_via:
+          rule: string
+          isoform: string
+          isoform_position: number
+        numbering: string
+        not_placed: string
+        canonical_consequence:
+          transcript: string
+          transcript_version: string
+          consequence: string
+          hgvs_c: string
+      source_assertion_ids:
+      - string
+    interface_mutations:
+      value:
+      - structure: string
+        complex: string
+        sides:
+        - - string
+        protein_chains:
+        - string
+        proteins:
+        - string
+        mutations:
+        - chain: string
+          author_residue: string
+          original: string
+          change: string
+          location_class: string
+          'on': string
+          location:
+            start: number
+            end: number
+          placed_via:
+            rule: string
+            structure: string
+          not_placed: string
+          stated: string
+        affinity:
+          mutant:
+            value: number
+            unit: string
+          mutant_relation: string
+          mutant_no_binding: boolean
+          mutant_stated: string
+          wild_type:
+            value: number
+            unit: string
+          wild_type_relation: string
+          wild_type_no_binding: boolean
+          wild_type_stated: string
+        kinetics:
+          kon_mutant:
+            value: number
+            unit: string
+          kon_wild_type:
+            value: number
+            unit: string
+          koff_mutant:
+            value: number
+            unit: string
+          koff_mutant_relation: string
+          koff_wild_type:
+            value: number
+            unit: string
+          kon_mutant_relation: string
+          kon_wild_type_relation: string
+          koff_wild_type_relation: string
+        thermodynamics:
+          dh_mutant:
+            value: number
+            unit: string
+          dh_wild_type:
+            value: number
+            unit: string
+          ds_mutant:
+            value: number
+            unit: string
+          ds_wild_type:
+            value: number
+            unit: string
+        temperature:
+          value: number
+          unit: string
+        temperature_assumed: boolean
+        temperature_stated: string
+        method: string
+        reference: string
+        reference_stated: string
+        notes: string
+        hold_out_type: string
+        skempi_version: string
+      source_assertion_ids:
+      - string
+    kinase_classification:
+      value:
+      - kinase_id: number
+        name: string
+        group: string
+        family: string
+        subfamily: string
+        pocket_sequence: string
+      source_assertion_ids:
+      - string
+    kinase_structures:
+      value:
+      - kinase_id: number
+        klifs_structure_id: number
+        structure: string
+        chain: string
+        alt: string
+        dfg: string
+        ac_helix: string
+        ligand: string
+        allosteric_ligand: string
+        quality_score: number
+        resolution:
+          value: number
+          unit: string
+        missing_residues: number
+        missing_atoms: number
+      source_assertion_ids:
+      - string
+    kinase_pocket:
+      value:
+      - kinase_id: number
+        index: number
+        klifs_position: string
+        residue: string
+        location:
+          start: number
+          end: number
+        placed_via:
+          rule: string
+          reference_rule: string
+          structure: string
+          chain: string
+          author_position: string
+        numbering: string
+        not_placed: string
+      source_assertion_ids:
+      - string
+    gpcr_classification:
+      value:
+      - entry_name: string
+        name: string
+        receptor_class: string
+        family: string
+        numbering_scheme: string
+      source_assertion_ids:
+      - string
+    gpcr_segments:
+      value:
+      - segment: string
+        gpcrdb_start: number
+        gpcrdb_end: number
+        location:
+          start: number
+          end: number
+        numbering: string
+        not_placed: string
+      source_assertion_ids:
+      - string
+    gpcr_residues:
+      value:
+      - gpcrdb_position: number
+        residue: string
+        segment: string
+        generic_number: string
+        generic_numbers:
+        - scheme: string
+          label: string
+        location:
+          start: number
+          end: number
+        placed_via:
+          rule: string
+        numbering: string
+        not_placed: string
+      source_assertion_ids:
+      - string
+    gpcr_structures:
+      value:
+      - structure: string
+        chain: string
+        state: string
+        method: string
+        resolution:
+          value: number
+          unit: string
+        publication: string
+        publication_date: string
+        ligands:
+        - name: string
+          pdb_ccd: string
+          type: string
+          function: string
+        apo: boolean
+        signalling_protein:
+          type: string
+          partners:
+          - string
+      source_assertion_ids:
+      - string
+    antibody_complexes:
+      value:
+      - structure: string
+        model: number
+        heavy_chain:
+          chain: string
+          entity: number
+          type: string
+          v_gene_subgroup: string
+        light_chain:
+          chain: string
+          entity: number
+          type: string
+          v_gene_subgroup: string
+        antigen_chains:
+        - string
+        antigens:
+        - name: string
+          type: string
+          entity: number
+          chain: string
+          this_protein: boolean
+      source_assertion_ids:
+      - string
+    isoform_coding_exons:
+      value:
+      - isoform: string
+        transcript: string
+        transcript_version: string
+        assembly: string
+        chromosome: string
+        strand: string
+        cds:
+        - - number
+      source_assertion_ids:
+      - string
+    exon_usage_by_tissue:
+      value:
+      - gene: string
+        assembly: string
+        chromosome: string
+        start: number
+        end: number
+        mean: number
+        tissues:
+        - tissue: string
+          value: number
+      source_assertion_ids:
+      - string
+    tissue_terms:
+      value:
+      - gtex_id: string
+        name: string
+        tissue_site: string
+        ontology_id: string
+        ontology_iri: string
+      source_assertion_ids:
+      - string
+    pathogen_phenotypes:
+      value:
+      - annotation_type: string
+        phenotype: string
+        extensions:
+        - relation: string
+          term: string
+          label: string
+        high_level_terms:
+        - string
+        genotype:
+        - gene: string
+          allele: string
+          allele_type: string
+          expression: string
+        pathogen:
+          taxon_id: number
+          name: string
+          strain: string
+        host:
+          taxon_id: number
+          name: string
+          strain: string
+        diseases:
+        - string
+        conditions:
+        - string
+        method: string
+        phi_ids:
+        - string
+        publication: string
+        curator_comment: string
+      source_assertion_ids:
+      - string
+  disease:
+    associations:
+      value:
+      - disease_id: string
+        name: string
+        source: string
+      source_assertion_ids:
+      - string
+  sequence:
+    primary:
+      value: string
+      source_assertion_ids:
+      - string
+    length:
+      value: number
+      source_assertion_ids:
+      - string
+    molecular_weight:
+      value: number
+      unit: string
+      source_assertion_ids:
+      - string
+    checksums:
+      value:
+        crc64: string
+        md5: string
+      source_assertion_ids:
+      - string
+  structure:
+    primary:
+      value: any
+      source_assertion_ids:
+      - string
+    secondary_structure:
+      value: any
+      source_assertion_ids:
+      - string
+    chains:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    entities:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+peptide_card:
+  inherits: protein_card
+  note: Peptide cards may omit structure.* if not available.
+small_molecule_card:
+  inherits: card_base
+  identifiers:
+    chebi:
+      value: string
+      source_assertion_ids:
+      - string
+  annotations:
+    drug_class:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    chemical_classes:
+      value:
+      - chebi_id: string
+        name: string
+      source_assertion_ids:
+      - string
+    chemical_roles:
+      value:
+      - chebi_id: string
+        name: string
+        direct: boolean
+        biological_role: boolean
+        chemical_role: boolean
+        application: boolean
+      source_assertion_ids:
+      - string
+    definition:
+      value:
+        text: string
+      source_assertion_ids:
+      - string
+disease_card:
+  inherits: card_base
+  identifiers:
+    mondo:
+      value: string
+      source_assertion_ids:
+      - string
+    equivalent_ids:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+    related_ids:
+      value:
+      - string
+      source_assertion_ids:
+      - string
+  annotations:
+    definition:
+      value:
+        text: string
+        references:
+        - string
+      source_assertion_ids:
+      - string
+    disease_subsets:
+      value:
+      - string
+      source_assertion_ids:
+      - string

@@ -521,9 +521,9 @@ Rules for all of them:
 Development comparative explanation APIs reuse the protein-Card `other` digester.
 The new `threshold` digester admits only finite Python int/float dimensionless
 cutoffs in [0, 1], excluding bool. The explanation engines retain these semantic
-checks even when digestion is skipped. Historical ordinary comparative views keep
-their existing signatures and rules; no quantity or pathogenicity meaning is
-inferred from the cutoff.
+checks even when digestion is skipped. Development ordinary tissue views use the
+same guards; explicit historical usage rules retain their original algorithms.
+No quantity or pathogenicity meaning is inferred from the cutoff.
 
 `Card.residue_composition` reuses the shared `residues`, `sequence_ref` and
 `source_assertions` digesters. The existing `residues` digester also serves engagement
@@ -607,3 +607,11 @@ identifier/segment/PDB checks. Native JSON/HTML format is fixed by the reader;
 foreign declared context, invalid bytes, duplicate keys and native identity/shape
 mismatches cannot produce qualified source output. Missing files retain unavailable
 acquisition rather than an empty biological result. No generic card option is added.
+
+
+Development ordinary tissue views and their explanations share `usage_rule`
+digestion. A per-method guard refuses a variant rule on an isoform method (and the
+reverse), also when digestion is skipped. Defaults are `pext_at_variant@2` and
+`isoform_exon_usage@3`; explicit prior versions retain historical behavior. All four
+methods validate finite dimensionless `threshold` in [0, 1]; booleans, nonnumbers,
+nonfinite values and oversized integers fail through SMonitor/ArgumentError.
