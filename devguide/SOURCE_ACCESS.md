@@ -84,7 +84,7 @@ including empty pages, and no repeated exact request URL. Exhaustion or a cycle
 raises `ConnectorError`; completed pages remain observable without partial card
 assertions. The existing 5,000-row ceiling remains successful explicit truncation.
 Retries are bounded separately by shared transport policy; this is not a strict
-elapsed-time guarantee. [Policy and verification](pending_bugs/uniref_pagination.md).
+elapsed-time guarantee. [Policy and verification](archive/uniref_pagination.md).
 
 ### Supplied originals
 

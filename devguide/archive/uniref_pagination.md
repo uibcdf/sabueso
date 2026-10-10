@@ -1,16 +1,19 @@
 ---
 summary: Bound UniRef member pagination independently of retained row count.
 issue: uibcdf/sabueso#140
-status: open
+status: resolved
 opened: 2026-10-10
-closed:
-verification: local_runtime_tested
+closed: 2026-10-10
+verification: exact_source_ci_tested
 area: [source_access, attribution, knowledge_integrity]
 blocked_by: []
 supersedes: []
 ---
 
 # UniRef member pagination termination (#140)
+
+Resolved on development main and archived 2026-10-10. Published 0.14.0 remains
+unchanged; maintained access guidance is in [SOURCE_ACCESS.md](../SOURCE_ACCESS.md).
 
 Owner: [uibcdf/sabueso#140](https://github.com/uibcdf/sabueso/issues/140), following
 the [UniRef observation checkpoint](../pending_proposals/uniref_observation.md).
@@ -56,8 +59,19 @@ local-original cases in 171.92 seconds with twelve receptor workers on Python
 3.14.7. Thirteen expected fixture warnings remain; fatal SQLite/unraisable guards
 pass. Ruff, unchanged 1,627-path card shape/schema, source registry, fixture
 delivery, dependency preflight, governance/canonical guide equality, warning-fatal
-Sphinx, 140 relative file links and whitespace checks pass. Exact-source CI
-qualification is pending. The public fixture/synthetic module adds 21 cases
+Sphinx, 140 relative file links and whitespace checks pass. Exact source
+`3a4749082ba556ec635bc124225f758888d27e89` passes
+[15/15 CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38044453920)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/38044453934).
+The [source receipt](uniref_pagination_checkpoint.json) independently verifies all
+full GH Run Receptor capture member hashes and thirteen test summaries: nine public
+offline lanes pass 4,431 cases (ten declared fixture skips, 26 online deselections);
+four installed public-Ackredit compatibility lanes pass 1,069 cases. After editable
+metadata refresh, 96 acquisition/independent-report cases pass in 14.28 seconds;
+all six participating imports and metadata agree outside the checkout. Original
+archived-answer replay and independent inert reading pass without new provider
+queries; consumer artifacts remain private. The public fixture/synthetic module
+adds 21 cases
 for empty/nonempty single/multiple-URL cycles, distinct empty/nonempty chains at
 the real and reduced budgets, row-ceiling precedence, exact-boundary exhaustion,
 transient/nested unreadable-body retries, failed card support and original archive

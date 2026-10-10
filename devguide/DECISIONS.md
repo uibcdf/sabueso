@@ -11,7 +11,7 @@ when reached. Transport retries count separately from logical pages; their share
 limits and per-attempt timeout do not constitute a strict wall-clock deadline.
 The page ceiling permits sparse responses while bounding arbitrary distinct empty
 continuations. Fixtures retain their declared subset semantics. No card schema,
-source identity or original response bytes change. [Policy and qualification](pending_bugs/uniref_pagination.md).
+source identity or original response bytes change. [Policy and qualification](archive/uniref_pagination.md).
 
 ## Observe UniRef pages under the shared UniProt source (2026-10-10, #108)
 

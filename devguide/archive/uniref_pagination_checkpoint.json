@@ -1,0 +1,264 @@
+{
+  "format": "sabueso.uniref_pagination_checkpoint@1",
+  "date": "2026-10-10",
+  "issue": "uibcdf/sabueso#140",
+  "related_issues": [
+    "uibcdf/sabueso#108",
+    "uibcdf/sabueso#112"
+  ],
+  "qualified_source_sha": "3a4749082ba556ec635bc124225f758888d27e89",
+  "published_0140_artifact_changed": false,
+  "scope": {
+    "operation": "OnlineUniRefClient.members",
+    "scientific_source": "UniProt",
+    "policy": "uniref_member_pagination@1",
+    "max_logical_pages": 100,
+    "max_retained_members": 5000,
+    "exact_request_url_repetition_detected_before_request": true,
+    "empty_pages_consume_page_budget": true,
+    "cycle_or_page_budget_exhaustion": "ConnectorError; no partial scientific client result",
+    "completed_page_receipts_and_portable_resource_credit_preserved": true,
+    "member_ceiling": "successful explicit truncation; takes precedence when reached",
+    "route_exhaustion_at_page_budget": "successful when last page has no continuation",
+    "transport_retries_separate_from_logical_pages": true,
+    "current_max_transient_retries": 2,
+    "current_max_unreadable_body_retries": 2,
+    "current_max_transport_attempts_per_logical_page": 9,
+    "current_max_transport_attempts_per_member_operation": 900,
+    "strict_wall_clock_deadline": false,
+    "failed_enrichment_installs_partial_cluster_or_member_assertions": false,
+    "normal_order_native_page_releases_and_overrun_preserved": true,
+    "archive_reuse_replay_original_response_hashes_and_times_preserved": true,
+    "fixture_subset_semantics_unchanged": true,
+    "new_provider_queries": 0,
+    "new_private_fixtures": false,
+    "card_schemas_original_fixture_bytes_and_public_arguments_changed": false,
+    "recorded_card_shape_paths": 1627,
+    "remaining_comparative_operation_coverage": [
+      "OMA",
+      "gnomAD",
+      "derived comparative operations"
+    ]
+  },
+  "new_regression_cases": 21,
+  "regression_module": "tests/core/test_uniref_acquisition_offline.py",
+  "local": {
+    "selected_passed": 322,
+    "selected_seconds": 18.33,
+    "full_passed": 5984,
+    "full_seconds": 171.92,
+    "full_warnings": 13,
+    "post_editable_passed": 96,
+    "post_editable_seconds": 14.28,
+    "workers": 12,
+    "python": "3.14.7",
+    "pytest_receptor": "1.2.1+13.gac0aa03",
+    "precommit_sabueso_metadata": "0.14.0+21.g8832d72",
+    "fatal_sqlite_and_unraisable_guards": true,
+    "relative_file_links_checked": 140
+  },
+  "editable_environment": {
+    "components": [
+      {
+        "component": "sabueso",
+        "version": "0.14.0+22.g3a47490"
+      },
+      {
+        "component": "ackredit",
+        "version": "0.12.0+2.g1342f0f"
+      },
+      {
+        "component": "argdigest",
+        "version": "0.15.0+1.g5c6711e"
+      },
+      {
+        "component": "smonitor",
+        "version": "0.19.0"
+      },
+      {
+        "component": "depdigest",
+        "version": "0.13.0+3.g0568f9a"
+      },
+      {
+        "component": "pyunitwizard",
+        "version": "0.28.1+3.g2ab37a5"
+      }
+    ],
+    "all_six_participating_imports_and_metadata_verified_outside_checkout": true,
+    "global_pip_check_qualified": false
+  },
+  "checks": [
+    "Ruff check/format",
+    "unchanged card shape (1627 paths)",
+    "schema/FIELD_PATHS alignment",
+    "source registry",
+    "fixture delivery (50 repository, 37 protected local originals)",
+    "dependency preflight",
+    "local MOLI governance",
+    "canonical MOLI guide equality",
+    "warning-fatal Sphinx",
+    "relative file links",
+    "git diff --check"
+  ],
+  "ci": {
+    "run_id": 38044453920,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38044453920",
+    "head_sha": "3a4749082ba556ec635bc124225f758888d27e89",
+    "conclusion": "success",
+    "jobs_passed": 15,
+    "jobs_total": 15,
+    "inspection": "GH Run Receptor complete full capture/replay; all manifest members independently hashed",
+    "capture_manifest_sha256": "512fc49cd0fa4256826889e38610c483e579b305d66500087f9f60fcfdccc3b9",
+    "test_jobs": [
+      {
+        "job_id": 114191050274,
+        "name": "Ackredit public-package pilot (Python 3.14)",
+        "passed": 1069,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 339.17,
+        "warnings": 4,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114191050332,
+        "name": "Offline tests (windows-latest, Python 3.11)",
+        "passed": 4431,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 987.27,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114191050379,
+        "name": "Offline tests (macos-26, Python 3.14)",
+        "passed": 4431,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 562.74,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114191050387,
+        "name": "Offline tests (ubuntu-latest, Python 3.11)",
+        "passed": 4431,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 767.3,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114191050390,
+        "name": "Ackredit public-package pilot (Python 3.12)",
+        "passed": 1069,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 369.83,
+        "warnings": 4,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114191050396,
+        "name": "Ackredit public-package pilot (Python 3.13)",
+        "passed": 1069,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 397.01,
+        "warnings": 4,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114191050401,
+        "name": "Ackredit public-package pilot (Python 3.11)",
+        "passed": 1069,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 284.38,
+        "warnings": 4,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114191050434,
+        "name": "Offline tests (ubuntu-latest, Python 3.13)",
+        "passed": 4431,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 562.55,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114191050452,
+        "name": "Offline tests (ubuntu-latest, Python 3.12)",
+        "passed": 4431,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 634.42,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114191050456,
+        "name": "Offline tests (windows-latest, Python 3.13)",
+        "passed": 4431,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 921.87,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114191050466,
+        "name": "Offline tests (ubuntu-latest, Python 3.14)",
+        "passed": 4431,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 584.83,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114191050492,
+        "name": "Offline tests (windows-latest, Python 3.14)",
+        "passed": 4431,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 989.79,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114191050505,
+        "name": "Offline tests (windows-latest, Python 3.12)",
+        "passed": 4431,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 1019.69,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      }
+    ]
+  },
+  "governance": {
+    "run_id": 38044453934,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38044453934",
+    "head_sha": "3a4749082ba556ec635bc124225f758888d27e89",
+    "conclusion": "success",
+    "jobs_passed": 1,
+    "jobs_total": 1,
+    "inspection": "GH Run Receptor complete full capture/replay; all manifest members independently hashed",
+    "capture_manifest_sha256": "378890b9944e49fb035a29d1a1194633e923b59f8691ff0b97a97aff679fba17"
+  },
+  "qualification_limits": [
+    "Source checkpoint only; published 0.14.0 unchanged.",
+    "No new provider queries or private fixtures.",
+    "Exact URL cycle detection and a 100 logical-page cap do not constitute a strict wall-clock deadline.",
+    "Full installed-artifact and human/consumer-owned acceptance remain separate.",
+    "OMA, gnomAD, derived comparative operation and complete bibliography coverage remain #108 work.",
+    "No global pip-check qualification; unrelated Amber/preparation closure is tracked by MolSysSuite #82.",
+    "Four installed public-Ackredit compatibility lanes cover these regressions; this is not full installed Sabueso artifact qualification."
+  ]
+}

@@ -493,8 +493,10 @@ public method names.
   with per-page releases, limits and partial failures under source `UniProt`;
   code `c6cb0e3` passes 5,963 local-original cases and 15/15 exact-SHA CI;
   [its source receipt](pending_proposals/uniref_observation_checkpoint.json) retains
-  public/local/installed compatibility scopes. Qualify the implemented
-  [pagination correction #140](pending_bugs/uniref_pagination.md) before advancing OMA.
+  public/local/installed compatibility scopes. The [pagination correction #140](archive/uniref_pagination.md) is
+  source-qualified at `3a47490`: 21 new cases, 5,984 local-original cases and 15/15
+  exact-source CI; [its receipt](archive/uniref_pagination_checkpoint.json) retains
+  the public/installed compatibility scopes. Advance OMA.
   OMA, gnomAD and derived-operation coverage stay open.
 - **Traceability (#108).** Extend observed source/client/operation coverage along
   these exercised paths, including reuse, versions with their actual basis, retries,

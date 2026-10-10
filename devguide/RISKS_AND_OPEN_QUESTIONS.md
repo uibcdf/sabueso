@@ -39,9 +39,11 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   compatibility version is not proof of coherent pages. Code `c6cb0e3` passes
   15/15 source CI; [the source receipt](pending_proposals/uniref_observation_checkpoint.json)
   retains its exact scope. Published 0.14.0 retains the unbounded empty/cyclic
-  pagination defect. The subsequent [development correction #140](pending_bugs/uniref_pagination.md)
+  pagination defect. The subsequent [development correction #140](archive/uniref_pagination.md)
   detects repeated exact URLs and limits member operations to 100 logical pages;
-  its qualification is in progress. Shared retry limits and per-attempt timeouts
+  source `3a47490` passes 5,984 local-original cases and 15/15 exact-source CI.
+  [Its receipt](archive/uniref_pagination_checkpoint.json) retains the qualification
+  scope. Shared retry limits and per-attempt timeouts
   do not provide a strict wall-clock deadline. [Development GTEx observation](pending_proposals/gtex_observation.md)
   records requested dataset labels separately from unknown native revisions;
   one returned page does not prove complete dataset coverage. Development pinned

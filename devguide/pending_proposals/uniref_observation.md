@@ -28,7 +28,7 @@ inspectable even when the next page fails.
 
 At source checkpoint `c6cb0e3`, the row limit did not bound attempts across empty
 continuation pages or detect cyclic links. The subsequent
-[pagination correction #140](../pending_bugs/uniref_pagination.md) has separate
+[pagination correction #140](../archive/uniref_pagination.md) has separate
 qualification; it does not change this dated observation receipt.
 
 Later failures retain completed-page counts and identities as partial access,

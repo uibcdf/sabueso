@@ -49,3 +49,9 @@ Their objectives are not dropped: `devguide/ROADMAP.md` tracks the status of eac
 
 - [codecov_tls_coverage_upload_2026-10-05.md](codecov_tls_coverage_upload_2026-10-05.md):
   required coverage publication recovered for four exact-SHA checkpoints (#119).
+
+## Source integrity corrections (resolved on development main)
+
+- [uniref_pagination.md](uniref_pagination.md): exact-URL cycle detection and a
+  finite logical-page budget (#140); [exact-source receipt](uniref_pagination_checkpoint.json).
+  Published 0.14.0 retains the original loop.

@@ -146,7 +146,7 @@ not promise card enrichment, live availability or public-package delivery.
   including empty pages; repeated request URLs or an exhausted page budget raise
   `ConnectorError` without returning partial knowledge. The 5,000-member ceiling
   remains successful explicit truncation. See [the UniRef scope](pending_proposals/uniref_observation.md)
-  and [pagination policy](pending_bugs/uniref_pagination.md).
+  and [pagination policy](archive/uniref_pagination.md).
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
   Deck.
 - `sabueso.resolve_disease_card(identifier)`, `sabueso.disease_targets(disease,
