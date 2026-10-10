@@ -80,41 +80,50 @@ def _position(variant_id: str | None) -> Tuple[str, int] | None:
 
 
 def variant_tissue_usage_view(
-    card: Any, threshold: float = DEFAULT_THRESHOLD
+    card: Any, threshold: float = DEFAULT_THRESHOLD, *, _support=None
 ) -> Dict[str, Any]:
     """Each population variant with the pext of its region; see the module docstring."""
     regions = (card.get(REGIONS) or {}).get("value") or []
     variants = (card.get(VARIANTS) or {}).get("value") or []
     items: List[Dict[str, Any]] = []
     counts = {"in_region": 0, "outside_pext_regions": 0, "no_position": 0}
-    for variant in variants:
+    for variant_index, variant in enumerate(variants):
         item = {
             k: variant[k]
             for k in ("variant_id", "hgvs_p", "transcript", "location", "not_placed")
             if k in variant
         }
         where = _position(variant.get("variant_id"))
+        trace = {
+            "variant_index": variant_index,
+            "position": where,
+            "region_index": None,
+        }
+        if _support is not None:
+            _support.setdefault("items", []).append(trace)
         if where is None:
             item["pext"] = {"basis": "no_position"}
             counts["no_position"] += 1
             items.append(item)
             continue
         chromosome, position = where
-        region = next(
+        region_index = next(
             (
-                r
-                for r in regions
+                i
+                for i, r in enumerate(regions)
                 if str(r.get("chromosome")) == chromosome
                 and r.get("start") is not None
                 and r["start"] <= position <= r["end"]
             ),
             None,
         )
-        if region is None:
+        if region_index is None:
             item["pext"] = {"basis": "outside_pext_regions"}
             counts["outside_pext_regions"] += 1
             items.append(item)
             continue
+        trace["region_index"] = region_index
+        region = regions[region_index]
         by_tissue = {t["tissue"]: t["value"] for t in region.get("tissues") or []}
         top = max(by_tissue.items(), key=lambda kv: kv[1]) if by_tissue else None
         item["pext"] = {
@@ -179,7 +188,9 @@ def _minus(ranges: List[List[int]], others: List[List[int]]) -> List[List[int]]:
     return out
 
 
-def _uniprot_texts(card: Any, names: Dict[str, str]) -> Dict[str, List[Dict]]:
+def _uniprot_texts(
+    card: Any, names: Dict[str, str], *, _support=None
+) -> Dict[str, List[Dict]]:
     """UniProt's tissue-specificity statements restricted to an isoform, by isoform
     id; the ones without restriction under ``None``."""
     by_isoform: Dict[Any, List[Dict]] = {}
@@ -187,6 +198,22 @@ def _uniprot_texts(card: Any, names: Dict[str, str]) -> Dict[str, List[Dict]]:
         metadata = sa.get("source_metadata") or {}
         molecule = metadata.get("molecule")
         isoform = names.get(molecule) if molecule else None
+        if _support is not None:
+            _support.append(
+                {
+                    "source_assertion_id": sa["id"],
+                    "molecule": molecule,
+                    "isoform": isoform,
+                    "status": "excluded"
+                    if molecule and isoform is None
+                    else "included",
+                    "basis": "unknown_isoform_molecule"
+                    if molecule and isoform is None
+                    else "exact_isoform_name"
+                    if molecule
+                    else "entry_scope",
+                }
+            )
         if molecule and isoform is None:
             continue  # restricted to something other than a known isoform
         by_isoform.setdefault(isoform, []).append(
@@ -201,19 +228,28 @@ def _uniprot_texts(card: Any, names: Dict[str, str]) -> Dict[str, List[Dict]]:
 
 
 def _pext_over(
-    ranges: List[List[int]], regions: List[Dict[str, Any]]
+    ranges: List[List[int]], regions: List[Dict[str, Any]], *, _support=None
 ) -> Tuple[Dict[str, float], int]:
     """Per tissue, the mean pext over the bases of ``ranges``, each base taking the
     value of the region that contains it; and how many bases had a value."""
     totals: Dict[str, float] = {}
     counted = 0
-    for start, end in ranges:
-        for region in regions:
+    for range_index, (start, end) in enumerate(ranges):
+        for region_index, region in enumerate(regions):
             lo, hi = max(start, region["start"]), min(end, region["end"])
             if lo > hi:
                 continue
             length = hi - lo + 1
             counted += length
+            if _support is not None:
+                _support.append(
+                    {
+                        "range_index": range_index,
+                        "region_index": region_index,
+                        "intersection": [lo, hi],
+                        "bases": length,
+                    }
+                )
             for t in region.get("tissues") or []:
                 if t.get("value") is not None:
                     totals[t["tissue"]] = totals.get(t["tissue"], 0.0) + (
@@ -259,7 +295,7 @@ def variable_regions(cds_of: Dict[str, List[List[int]]]) -> List[Dict[str, Any]]
 
 
 def isoform_tissue_usage_view(
-    card: Any, threshold: float = DEFAULT_THRESHOLD
+    card: Any, threshold: float = DEFAULT_THRESHOLD, *, _support=None
 ) -> Dict[str, Any]:
     """Per UniProt isoform: what UniProt states about its tissues, and where its own
     coding bases are expressed (gnomAD's pext), under ``isoform_exon_usage@2``.
@@ -292,7 +328,8 @@ def isoform_tissue_usage_view(
     exons = (card.get(EXONS) or {}).get("value") or []
     regions = (card.get(REGIONS) or {}).get("value") or []
     names = {f"Isoform {i.get('name')}": i.get("isoform_id") for i in isoforms}
-    texts = _uniprot_texts(card, names)
+    text_decisions = [] if _support is not None else None
+    texts = _uniprot_texts(card, names, _support=text_decisions)
     cds_of: Dict[str, List[List[int]]] = {}
     transcripts_of: Dict[str, List[str]] = {}
     for item in exons:
@@ -307,9 +344,15 @@ def isoform_tissue_usage_view(
         i.get("isoform_id") for i in isoforms if i.get("isoform_id") not in cds_of
     ]
     complete = not without
+    if _support is not None:
+        _support.update(cds_of=cds_of, transcripts_of=transcripts_of, items=[])
+        _support["text_decisions"] = text_decisions
     items = []
-    for isoform in isoforms:
+    for isoform_index, isoform in enumerate(isoforms):
         iso_id = isoform.get("isoform_id")
+        trace = {"isoform_index": isoform_index, "own_regions": [], "pext_inputs": []}
+        if _support is not None:
+            _support["items"].append(trace)
         entry = {
             "isoform": iso_id,
             "name": isoform.get("name"),
@@ -328,6 +371,7 @@ def isoform_tissue_usage_view(
             continue
         others = [r for k, v in cds_of.items() if k != iso_id for r in v]
         own = _minus(cds_of[iso_id], others)
+        trace["own_regions"] = own
         entry["transcripts"] = sorted(transcripts_of[iso_id])
         entry["own_coding_bases"] = sum(e - s + 1 for s, e in own)
         entry["own_bases_complete"] = complete
@@ -335,7 +379,11 @@ def isoform_tissue_usage_view(
             entry["pext"] = {"basis": "no_own_coding_bases"}
             items.append(entry)
             continue
-        by_tissue, counted = _pext_over(own, regions)
+        by_tissue, counted = _pext_over(
+            own,
+            regions,
+            _support=trace["pext_inputs"] if _support is not None else None,
+        )
         if not counted:
             entry["pext"] = {"basis": "outside_pext_regions"}
             items.append(entry)
@@ -343,8 +391,15 @@ def isoform_tissue_usage_view(
         entry["pext"] = {"own_regions": own, **_summary(by_tissue, counted, threshold)}
         items.append(entry)
     variable = []
+    if _support is not None:
+        _support["variable_regions"] = []
     for run in variable_regions(cds_of):
-        by_tissue, counted = _pext_over([[run["start"], run["end"]]], regions)
+        inputs = [] if _support is not None else None
+        by_tissue, counted = _pext_over(
+            [[run["start"], run["end"]]], regions, _support=inputs
+        )
+        if _support is not None:
+            _support["variable_regions"].append(inputs)
         variable.append(
             {
                 **run,

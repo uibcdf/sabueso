@@ -213,6 +213,17 @@ not promise card enrichment, live availability or public-package delivery.
     (the tissues expressing a variant's position or an isoform's coding bases, from
     gnomAD's pext, `pext_at_variant@1` and `isoform_exon_usage@2`, #102; with
     `gtex=True`, each tissue's UBERON or EFO term, `gtex_tissue_key@1`);
+  - Development `explain_sequence_differences(other)`,
+    `explain_variant_tissue_usage(threshold=0.1)` and
+    `explain_isoform_tissue_usage(threshold=0.1)` retain the original views plus
+    exact input pins, selected/alternative assertions, locators, rule parameters,
+    source labels and gaps. Their explanation rules are respectively
+    `sequence_differences_explanation@1`, `variant_tissue_usage_explanation@1`
+    and `isoform_tissue_usage_explanation@1`. Cutoffs are finite dimensionless
+    numbers in [0, 1]. They neither acquire data nor reconstruct attribution.
+    Equal sequence positions establish no residue correspondence or identity.
+    Tissue views expose historical genomic-scope/overlap limits (#138) and make
+    no pathogenicity or source-completeness claim.
   - `sequence_differences(other)` (the positions where two equal-length sequences
     differ, nothing aligned, `equal_length_positions@1`, #103);
   - `diseases(grouping_rule="disease_grouping@2")` (default since 0.13.0: every stored

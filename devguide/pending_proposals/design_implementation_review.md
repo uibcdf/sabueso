@@ -387,6 +387,11 @@ explanation, terms and query guarantees remain open.
 Treat consistency work as targeted changes to an exercised contract, with meaningful
 regressions. A new facade, broad refactor, source wave, automatic model interpretation
 or performance rewrite needs a demonstrated gap and its own bounded acceptance.
+Development comparative explanations now cover the exercised sequence and tissue
+rules with exact inputs and an independent saved-reader/reacquisition journey.
+See [the bounded scope](comparative_explanations.md). Genomic scope/coverage
+correction (#138), dedicated operation/bibliography observation (#108), installed
+delivery and scientific usefulness review remain separate acceptance work.
 The public showcase and comparative-source user pages should be refreshed from
 qualified public fixtures as these routes become ready; private consumer content
 and results stay in their controlled workspace.

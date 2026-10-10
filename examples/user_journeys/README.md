@@ -7,6 +7,22 @@ checkout; its local validation is separate from published-package qualification.
 
 ## Protein and comparator
 
+Development pinned sequence/tissue support has a separate public example:
+
+```bash
+python examples/user_journeys/comparative_support.py produce --output /tmp/sabueso-comparative-support --fixtures temp_data
+python examples/user_journeys/comparative_support.py read --output /tmp/sabueso-comparative-support
+python examples/user_journeys/comparative_support.py reacquire --output /tmp/sabueso-comparative-support --fixtures temp_data
+python examples/user_journeys/comparative_support.py read --output /tmp/sabueso-comparative-support
+```
+
+It retains P52270/Q4DV43 sequence and P60174 variant/isoform/term explanations at
+exact pins. Original fields, assertions and genomic intersections remain
+inspectable after later fixture reads. Readers require no fixtures and add no
+source access, derivation or credit. Historical tissue-rule scope/overlap limits
+remain explicit (#138); comparative operation/bibliography coverage is separate
+(#108). This preserves existing example formats and is outside published 0.14.0.
+
 From the repository root, with this checkout installed editable:
 
 ```bash

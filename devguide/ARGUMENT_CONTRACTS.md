@@ -518,6 +518,13 @@ Rules for all of them:
 
 ## Guards
 
+Development comparative explanation APIs reuse the protein-Card `other` digester.
+The new `threshold` digester admits only finite Python int/float dimensionless
+cutoffs in [0, 1], excluding bool. The explanation engines retain these semantic
+checks even when digestion is skipped. Historical ordinary comparative views keep
+their existing signatures and rules; no quantity or pathogenicity meaning is
+inferred from the cutoff.
+
 `Card.residue_composition` reuses the shared `residues`, `sequence_ref` and
 `source_assertions` digesters. The existing `residues` digester also serves engagement
 APIs with their own accepted row shapes; the composition's semantic boundary requires

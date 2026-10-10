@@ -170,6 +170,35 @@ view["tissue_terms"]["terms"]["muscle_skeletal"]
 A term never replaces a tissue. GTEx gives the cerebellum and the cerebellar
 hemisphere the same term, UBERON:0002037, and they stay two tissues.
 
+### Inspecting original comparative support (development)
+
+```python
+variant_support = card.explain_variant_tissue_usage(threshold=0.1)
+isoform_support = card.explain_isoform_tissue_usage(threshold=0.1)
+sequence_support = card.explain_sequence_differences(other_card)
+```
+
+These explanations retain the existing `view`, exact card pins, original selected
+fields and assertions, alternatives, input locators, parameters and scope gaps.
+Variant explanations show the genomic position and actual first matching region;
+isoform explanations show CDS inputs, intersections and tissue-specificity
+inclusion/exclusion. Tissue joins retain the actual GTEx term statements. A source
+version label does not independently verify a native release, and stored scientific
+support does not reconstruct execution credit or bibliography.
+
+The original rules retain their historical limitations: variant joins do not
+check assembly; isoform subtraction/intersection does not check chromosome or
+assembly and counts overlapping pext regions separately. Explanations expose
+incompatible/unknown scopes and duplicate counts as gaps. The versioned correction
+is tracked in [#138](https://github.com/uibcdf/sabueso/issues/138). A low pext value
+does not establish harmlessness, and equal sequence positions establish neither
+residue correspondence nor identity. Cutoffs are dimensionless numbers in [0, 1].
+
+Save the original explanation alongside its pinned cards when a later reader must
+retain the producer's original rules and version. The public development example
+`examples/user_journeys/comparative_support.py` demonstrates independent inert
+reading and later fixture reacquisition. This API slice is outside published 0.14.0.
+
 The values come from isoform quantifications of adult tissues, so a low value is not
 proof that a change is harmless. By default every variant, up to 5000 (`{"limit": n}` asks for fewer); a cut is reported.
 

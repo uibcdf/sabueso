@@ -1,5 +1,13 @@
 # Sabueso — Risks and Open Questions
 
+Development comparative explanations expose historical tissue-rule limits:
+`pext_at_variant@1` does not verify assembly; `isoform_exon_usage@2` does not verify
+chromosome/assembly and counts overlapping region intersections separately.
+Synthetic mixed-axis/overlap regressions reproduce these assumptions, without
+establishing that the bounded public fixtures are affected. Explanations preserve
+original results and mark gaps; ordinary scientific behavior needs a separately
+versioned correction under [#138](https://github.com/uibcdf/sabueso/issues/138).
+
 ## Risks
 - **Licensing/Terms**: Some sources (DrugBank, eMolecules, ChemSpider) have licensing constraints that may affect redistribution and caching.
 - **API Rate Limits**: Public APIs may rate‑limit or change formats.
@@ -18,7 +26,9 @@
   preserves both local/public scopes. This is not a complete native field validator
   or new installed delivery.
   These comparative routes still need declared source-operation/bibliography
-  observation and pinned sequence/tissue explanation acceptance. In particular,
+  observation. Development pinned sequence/tissue explanations now have an
+  independent public fixture reader; [their scope](pending_proposals/comparative_explanations.md)
+  remains separate from #138 scientific correction and installed/human acceptance. In particular,
   gnomAD's existing pext release label is client-declared; it must not be presented
   as an independently verified native response revision. Keep query dataset,
   source-reported release and service version bases separate in the next #108 slice.

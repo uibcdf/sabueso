@@ -114,6 +114,10 @@ not a release receipt.
   [quality completion proposal](pending_proposals/design_implementation_review.md#quality-completion-proposal-2026-10-09-112)
   records the accepted bounded inspection, explanation, literature, cost and delivery acceptance
   within the approved roadmap.
+  Development comparative explanations and their standalone public
+  `examples/user_journeys/comparative_support.py` reader retain exact sequence and
+  tissue support (#91). Historical genomic scope and overlap limits need #138;
+  operation/bibliography coverage is still #108.
   `pending_proposals/independent_user_journeys.md` scopes the three standalone SDK
   journeys, the implemented protein comparison, molecule/target and bounded disease
   examples, exact disease membership support, conservative whole-context admission

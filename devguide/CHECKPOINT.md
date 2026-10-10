@@ -4,6 +4,15 @@ Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
 Last updated: 2026-10-09, approved quality work and comparative response integrity (#112/#132/#137).
 
+Development comparative explanations (#91) now retain both sequence pins and
+the exact variant/isoform/pext/term inputs under three new explanation rules.
+The public `comparative_support.py` journey preserves original envelopes through
+inert reading and later fixture reacquisition. Historical scientific rules and
+card schemas remain unchanged. Mixed genomic scope and overlapping pext limits
+are explicit; their separately versioned correction is [#138](https://github.com/uibcdf/sabueso/issues/138).
+Comparative operation observation/bibliography (#108) and installed/human
+acceptance remain separate.
+
 ## Resume here
 
 The maintainer authorized the consolidation order in the

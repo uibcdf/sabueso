@@ -772,6 +772,48 @@ class Card:
         return isoform_tissue_usage_view(self, threshold)
 
     @arg_digest()
+    def explain_sequence_differences(
+        self, other: "Card", skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """Explain the existing sequence comparison at both exact card pins.
+
+        Preserve selected sequences, alternatives and source support under
+        ``sequence_differences_explanation@1``. Equal integer positions establish
+        neither residue correspondence nor entity identity; no alignment occurs.
+        """
+        from .comparative_explanation import explain_sequence_differences
+
+        return explain_sequence_differences(self, other)
+
+    @arg_digest()
+    def explain_variant_tissue_usage(
+        self, threshold: float = 0.1, skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """Explain genomic variant/pext joins at this pin, with original support.
+
+        ``variant_tissue_usage_explanation@1`` records the first matching region
+        and unplaced/outside-region cases. The dimensionless cutoff is in [0, 1]
+        and says nothing about pathogenicity. No source access or credit occurs.
+        """
+        from .comparative_explanation import explain_variant_tissue_usage
+
+        return explain_variant_tissue_usage(self, threshold)
+
+    @arg_digest()
+    def explain_isoform_tissue_usage(
+        self, threshold: float = 0.1, skip_digestion: bool = False
+    ) -> Dict[str, Any]:
+        """Explain isoform CDS subtraction and pext inputs at this exact card pin.
+
+        ``isoform_tissue_usage_explanation@1`` retains missing transcript/exon
+        support and incomplete own-base coverage. Source labels are preserved
+        separately from verified native release identity and runtime attribution.
+        """
+        from .comparative_explanation import explain_isoform_tissue_usage
+
+        return explain_isoform_tissue_usage(self, threshold)
+
+    @arg_digest()
     def oligomer(
         self,
         skip_digestion: bool = False,

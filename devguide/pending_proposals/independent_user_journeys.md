@@ -24,6 +24,14 @@ dated evidence of their original implementation.
 
 ## Journey matrix
 
+Development `comparative_support.py` adds an independent public sequence/tissue
+support journey (#91). It preserves P52270/Q4DV43 sequence explanations and P60174
+variant/isoform/term explanations at exact pins through later fixture reads.
+Source access, fresh derivation and credit are disabled in reader regressions.
+It does not change the three historical journey formats or qualify native live
+availability, comparative operation sidecars or an installed artifact. See
+[the bounded scope](comparative_explanations.md).
+
 | Journey | Existing route and support | Initial slice / remaining gap |
 | --- | --- | --- |
 | Protein and comparator | `resolve(EntityQuery(...))`, `Card.compare_knowledge`, `ligand_deck`, `Card.compare_ligands`, full/index `compose_packet`, pinned `KnowledgeStore` reads; public TcTIM/HsTIM fixtures | `examples/user_journeys/protein_comparison.py` exercises independent producer/reader/reacquisition with original reports, units, support and runtime sidecars. Positions without a residue map remain unaligned. General semantic constraints and other derived explanations remain #71/#91 work. |

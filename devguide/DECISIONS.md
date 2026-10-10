@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Pin comparative explanations without rewriting historical rules (2026-10-09, #91)
+
+Add sequence, variant-tissue and isoform-tissue explanation envelopes using the
+existing Card/KnowledgeStore pins and SourceAssertion readers. Retain actual
+region/intersection and tissue-specificity inclusion/exclusion decisions, selected
+and alternative inputs, original source labels and missing/incomplete support.
+The public saved-reader journey preserves producer envelopes without acquisition,
+derivation or credit after later fixture reads. Card schemas and ordinary view
+rules remain unchanged. Genomic scope/overlap correction is separately tracked
+in #138; operation observation/bibliography is #108, and installed/human acceptance
+remains independent. This follows the accepted quality plan #112.
+
 ## Keep missing dependent-source inputs unqueried (2026-10-09, #135)
 
 An enricher can be requested while lacking the upstream knowledge needed to

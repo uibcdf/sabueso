@@ -468,6 +468,13 @@ public method names.
   results those journeys expose. Show inputs, parameters, exclusions, alternatives
   and partial support. Historical reads must not acquire data or silently change
   rules. General joins, ranking and graph navigation need separate scientific scopes.
+  Development `explain_sequence_differences`, `explain_variant_tissue_usage` and
+  `explain_isoform_tissue_usage` now retain exact pins, selected/alternative support,
+  actual region choices and weighted intersections, tissue terms and original
+  source-version labels. The independent public comparative-support journey keeps
+  original reports after reacquisition without re-derivation. Historical genomic
+  scope/overlap assumptions remain visible and need the versioned correction #138;
+  comparative operation observation remains #108.
 - **Traceability (#108).** Extend observed source/client/operation coverage along
   these exercised paths, including reuse, versions with their actual basis, retries,
   empty answers, caps, partial returns and failures. Keep bibliography and missing
