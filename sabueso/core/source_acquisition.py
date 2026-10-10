@@ -46,6 +46,7 @@ COVERAGE = {
         "ClinicalTrials.gov",
         "NCBI Taxonomy",
         "GTEx",
+        "OMA",
         "AAindex",
         "DisProt",
         "UniParc",
@@ -640,6 +641,15 @@ def _credit(record):
                 "tissue_publications_not_queried",
             ]
         )
+    if record["source"] == "OMA" or record["operation"] == "oma_entry_names":
+        record["bibliography_gaps"].extend(
+            [
+                "ortholog_and_referenced_sequence_record_revisions_not_stated",
+                "entry_and_orthology_method_publications_not_queried",
+            ]
+        )
+        if record["operation"] == "oma_entry_names":
+            record["bibliography"].extend(descriptions("UniProtKB search"))
     if record["source"] == "ClinicalTrials.gov":
         from .clinicaltrials_bibliography import citations
 
@@ -730,6 +740,7 @@ def _credit(record):
             "taxonomy_context",
             "tissue_context",
             "cluster_context",
+            "orthology_context",
         ):
             if key in record:
                 context[key] = deepcopy(record[key])

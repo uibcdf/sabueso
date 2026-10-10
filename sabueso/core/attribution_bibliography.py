@@ -1,4 +1,4 @@
-"""Offline resource descriptions, verified 2026-10-02/04/05; never DOI-enriched.
+"""Offline resource descriptions; never DOI-enriched.
 
 These works describe resources, not the experimental findings in their entries.
 Metadata sources are recorded in docs/content/user/attribution.md.
@@ -7,6 +7,18 @@ Metadata sources are recorded in docs/content/user/attribution.md.
 from copy import deepcopy
 
 _DESCRIPTIONS = {
+    "UniProtKB search": {
+        "id": "url:https://rest.uniprot.org/uniprotkb/search",
+        "type": "dataset",
+        "title": "UniProtKB search API",
+        "url": "https://rest.uniprot.org/uniprotkb/search",
+    },
+    "OMA": {
+        "id": "url:https://omabrowser.org/api",
+        "type": "dataset",
+        "title": "OMA REST API",
+        "url": "https://omabrowser.org/api",
+    },
     "UniRef": {
         "id": "url:https://rest.uniprot.org/uniref",
         "type": "dataset",

@@ -1,5 +1,17 @@
 # Automatic traceability and attribution
 
+Development OMA access retains separate xref, protein and ortholog observations.
+Entry-name resolution is attributed to UniProtKB, which supplies those bindings.
+Original response hashes, revision gaps, continuation, batch ambiguity and partial
+failures remain explicit. The OMA REST API resource and UniProtKB search API URL
+come from the existing connectors; resource credit supplies no entry/method
+publication metadata or sequence revision. Missing local files mean unavailable
+access. Client row counts differ from taxon/limit-selected card relationships;
+the card's quality record preserves that selected scope. Modified source mappings
+remain unjoined. Original scientific pins and saved credit remain readable without
+fresh operations. This extends development coverage to 37 source families and is
+outside the unchanged published 0.14.0 artifact.
+
 Development UniRef cluster/member access retains original page releases, links,
 received/kept counts and partial failure scope under source `UniProt`. Portable
 attribution credits the UniProt description and the specific UniRef API resource

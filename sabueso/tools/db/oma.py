@@ -33,6 +33,8 @@ from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.oma_acquisition import note_name_resolution, note_response, observe
+from sabueso.core.source_acquisition import capture_acquisitions, missing_fixture
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -55,7 +57,12 @@ def active_accessions(answer: Dict[str, Any], names: Iterable[str]) -> Dict[str,
     for row in answer.get("results") or []:
         name = row.get("uniProtkbId")
         if name in wanted and row.get("entryType") != "Inactive":
-            active.setdefault(name, []).append(row["primaryAccession"])
+            accession = row.get("primaryAccession")
+            if not isinstance(accession, str) or not accession:
+                raise ConnectorError(
+                    "UniProt entry-name row does not state an accession"
+                )
+            active.setdefault(name, []).append(accession)
     return {name: hits[0] for name, hits in active.items() if len(set(hits)) == 1}
 
 
@@ -63,7 +70,9 @@ class OnlineOMAClient:
     def __init__(self, timeout: float = 120.0) -> None:
         self.timeout = timeout
 
-    def _get(self, url: str, what: str, source: str = SOURCE) -> Dict[str, Any]:
+    def _get(
+        self, url: str, what: str, source: str = SOURCE, kind: str = "rows", names=None
+    ) -> Dict[str, Any]:
         # Entry names are resolved by UniProt, which states them; its answers are
         # UniProt's retrievals.
         retrieval = stamp("UniProt") if source == "UniProt" else stamp(SOURCE)
@@ -71,6 +80,17 @@ class OnlineOMAClient:
             try:
                 with urlopen(url, timeout=self.timeout, expect_json=True) as resp:
                     found = json.loads(resp.read().decode("utf-8"))
+                    headers = getattr(resp, "headers", {})
+                    note_response(
+                        found,
+                        kind=kind,
+                        url=url,
+                        release=headers.get("X-UniProt-Release")
+                        if source == "UniProt"
+                        else None,
+                        link=headers.get("Link"),
+                        names=names,
+                    )
                 break
             except HTTPError as exc:
                 if exc.code == 404:
@@ -83,6 +103,7 @@ class OnlineOMAClient:
                 raise ConnectorError(f"{source} request failed: {exc}") from exc
         return {"retrieved_at": retrieval.value, "record": found}
 
+    @observe("oma_xrefs")
     def xrefs(self, accession: str) -> Dict[str, Any]:
         return self._rows(
             self._get(f"{API}/protein/{accession}/xref/", f"protein {accession}")
@@ -95,9 +116,12 @@ class OnlineOMAClient:
             raise ConnectorError("OMA response does not state a record list")
         return answer
 
+    @observe("oma_protein")
     def protein(self, entry_id: str) -> Dict[str, Any]:
         """An OMA protein entry: its canonical id, species and sequence length."""
-        answer = self._get(f"{API}/protein/{entry_id}/", f"protein {entry_id}")
+        answer = self._get(
+            f"{API}/protein/{entry_id}/", f"protein {entry_id}", kind="protein"
+        )
         record = answer["record"]
         if not isinstance(record, dict) or not any(
             record.get(key) for key in ("omaid", "canonicalid", "entry_nr")
@@ -105,6 +129,7 @@ class OnlineOMAClient:
             raise ConnectorError("OMA response does not identify a protein record")
         return answer
 
+    @observe("oma_orthologs")
     def orthologs(self, accession: str, rel_type: str | None = None) -> Dict[str, Any]:
         query = f"?{urlencode({'rel_type': rel_type})}" if rel_type else ""
         return self._rows(
@@ -113,6 +138,7 @@ class OnlineOMAClient:
             )
         )
 
+    @observe("oma_entry_names")
     def accessions(self, names: Iterable[str]) -> Dict[str, str]:
         wanted = sorted({n for n in names if n})
         found: Dict[str, str] = {}
@@ -127,7 +153,11 @@ class OnlineOMAClient:
                 }
             )
             answer = self._get(
-                f"{UNIPROT_SEARCH}?{query}", "entry names", source="UniProt"
+                f"{UNIPROT_SEARCH}?{query}",
+                "entry names",
+                source="UniProt",
+                kind="names",
+                names=chunk,
             )
             record = answer["record"]
             if (
@@ -138,7 +168,9 @@ class OnlineOMAClient:
                 raise ConnectorError(
                     "UniProt entry-name response does not state a results list"
                 )
-            found.update(active_accessions(answer["record"], chunk))
+            resolved = active_accessions(answer["record"], chunk)
+            note_name_resolution(resolved)
+            found.update(resolved)
         return found
 
 
@@ -153,23 +185,33 @@ class FixtureOMAClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
-    def _read(self, name: str, what: str) -> Dict[str, Any]:
+    def _read(
+        self, name: str, what: str, kind: str = "rows", names=None
+    ) -> Dict[str, Any]:
         if name in self.failing:
             raise ConnectorError(f"OMA request for {name} failed (simulated)")
         path = self.directory / f"{name}.json"
         if not path.is_file():
-            raise RecordNotFoundError(f"OMA has no {what}")
+            raise missing_fixture(f"OMA fixture is unavailable: {name}")
+        try:
+            record = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            raise ConnectorError(f"OMA fixture cannot be read: {name}") from exc
+        note_response(record, kind=kind, fixture=True, names=names)
         return {
             "retrieved_at": self.retrieved_at,
-            "record": json.loads(path.read_text(encoding="utf-8")),
+            "record": record,
         }
 
+    @observe("oma_xrefs", fixture=True)
     def xrefs(self, accession: str) -> Dict[str, Any]:
         return self._read(f"xref_{accession}", f"protein {accession}")
 
+    @observe("oma_protein", fixture=True)
     def protein(self, entry_id: str) -> Dict[str, Any]:
-        return self._read(f"protein_{entry_id}", f"protein {entry_id}")
+        return self._read(f"protein_{entry_id}", f"protein {entry_id}", kind="protein")
 
+    @observe("oma_orthologs", fixture=True)
     def orthologs(self, accession: str, rel_type: str | None = None) -> Dict[str, Any]:
         found = self._read(f"orthologs_{accession}", f"protein {accession}")
         if rel_type:
@@ -178,15 +220,21 @@ class FixtureOMAClient:
             ]
         return found
 
+    @observe("oma_entry_names", fixture=True)
     def accessions(self, names: Iterable[str]) -> Dict[str, str]:
-        saved = self._read("entry_names", "entry names")["record"]
-        return {n: saved[n] for n in names if n in saved}
+        saved = self._read("entry_names", "entry names", kind="names", names=names)[
+            "record"
+        ]
+        resolved = {n: saved[n] for n in names if n in saved}
+        note_name_resolution(resolved)
+        return resolved
 
 
 # --- Public source access (uibcdf/sabueso#49) -----------------------------------------
 
 
 @arg_digest()
+@capture_acquisitions
 def get_orthologs(identifier: str, client: Any = None, skip_digestion: bool = False):
     """OMA's pairwise orthologs of the protein OMA maps a UniProt accession to, with the
     cross-references OMA states for that protein (``seq_match`` says whether OMA's

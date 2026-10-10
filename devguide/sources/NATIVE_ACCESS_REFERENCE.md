@@ -8,6 +8,15 @@ Published and development scopes below keep their stated qualification boundarie
 
 # Provider qualification details
 
+Development OMA observes existing xrefs/protein/ortholog routes under `OMA` and
+entry-name resolution under `UniProt`. Native continuation is disclosed without
+following additional links; OMA record revisions stay unknown, while UniProt search
+batch releases retain their actual header bases and conflicts. Received client rows
+remain separate from the enricher's taxon/limit-selected relations and original
+mapping quality counts. Missing local files are unavailable; partial name-batch
+failure returns no partial science. No strain/name/similarity identity merge, schema
+change or new provider query. [Scope and qualification](../pending_proposals/oma_observation.md).
+
 Development FDA OOPD qualifies original detailed-page HTML reading with online,
 fixture and bound HTML/gzip/hash/time clients. Every native table/column/required
 field validates before mapping. Native nested-table/wrapper-row irregularities

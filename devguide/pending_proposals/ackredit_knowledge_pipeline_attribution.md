@@ -716,3 +716,18 @@ The subsequent [pagination correction #140](../archive/uniref_pagination.md)
 is source-qualified at `3a47490`: 21 new cases, 5,984 local-original cases and
 15/15 exact-source CI; [its receipt](../archive/uniref_pagination_checkpoint.json)
 retains public/installed compatibility scopes. Advance OMA. OMA, gnomAD, derived operations and complete bibliography stay open.
+
+
+## OMA operation observation (development, 2026-10-10, #108)
+
+Built-in xrefs/protein/ortholog operations belong to OMA; entry-name resolution
+belongs to UniProt. Original response/continuation/revision bases, raw versus
+selected counts, per-batch ambiguity and partial failures remain explicit.
+Missing local files are unavailable. Source-stated match gates and strain
+relationships stay fixed; equivalent unobserved fixture clients produce the same
+scientific pins. Resource credit declares the actual OMA REST API and UniProtKB
+search API URLs; underlying publications and sequence revisions remain gaps.
+[Scope and qualification](oma_observation.md). Qualification is in progress for
+47 new public regressions, scientific journeys and independent original reading.
+No new provider queries or private fixtures; full installed-artifact/human
+acceptance and broader gnomAD/derived-operation/bibliography coverage stay open.

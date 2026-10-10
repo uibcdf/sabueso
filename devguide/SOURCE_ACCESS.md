@@ -76,7 +76,9 @@ existing explicit not-found error form and well-formed empty/null answers retain
 their own semantics. These checks do not qualify every nested native field or add
 source-operation observation to every route. The separate development GTEx slice
 observes existing tissue access; development UniRef observes existing cluster/member
-pages with their individual release and limit bases. OMA/gnomAD coverage remains open. Original
+pages with their individual release and limit bases. Development OMA observes
+xrefs/protein/ortholog operations separately from UniProt entry-name resolution;
+gnomAD and derived operation coverage remain open. Original
 response bytes, source identity and card schemas stay fixed.
 
 Online UniRef members use `uniref_member_pagination@1`: at most 100 logical pages,
@@ -122,7 +124,8 @@ each route. It includes UniProt/Europe PMC/RCSB, ChEMBL/PubChem/BindingDB,
 PDB CCD/UniChem, PDBe-KB/AlphaFold/InterPro and later disease/clinical and
 NCBI Taxonomy slices, plus
 [development GTEx tissue observation](pending_proposals/gtex_observation.md) and
-[development UniRef page observation](pending_proposals/uniref_observation.md).
+[development UniRef page observation](pending_proposals/uniref_observation.md) and
+[development OMA operation observation](pending_proposals/oma_observation.md).
 Each new source must declare and test its observation coverage and gaps.
 Per-result and workflow sidecars preserve original citations and producer context;
 saved readers add no source access, recomputation or credit.

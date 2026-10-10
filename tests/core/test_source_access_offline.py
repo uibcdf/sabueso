@@ -47,6 +47,7 @@ from sabueso.tools.db import (
 
 ENVELOPE = {"source", "kind", "query", "retrieved_at", "version", "record"}
 TRACED = {
+    "oma.get_orthologs",
     "gtex.get_tissues",
     "ncbi_taxonomy.get_taxon",
     "clinicaltrials.get_studies",

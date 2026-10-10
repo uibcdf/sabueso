@@ -145,8 +145,12 @@ Development main adds observed GTEx tissue access, bringing declared source-fami
 coverage to 36. Its requested dataset label remains separate from unknown native
 revision and whole-dataset completeness. Development UniRef now observes existing
 cluster/member pages, revisions, limits and partial failures within the same
-`UniProt` source family. OMA, gnomAD and derived comparative operation observation
-remain open; these extensions are outside published 0.14.0.
+`UniProt` source family. Development OMA now observes xrefs/protein/ortholog access
+and separately attributes name resolution to UniProt, bringing declared coverage
+to 37 source families. Received/client rows precede card taxon/limit selection;
+continuation and unknown native OMA revisions stay explicit. gnomAD and derived
+comparative operation observation remain open. These extensions are outside
+published 0.14.0 and do not qualify whole-dataset or full consumer acceptance.
 Online UniRef members allow at most 100 logical pages and reject repeated request
 URLs. Exhaustion or cycles fail without installing partial card knowledge; the
 5,000-member ceiling remains successful explicit truncation. Completed-page

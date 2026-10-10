@@ -147,6 +147,13 @@ not promise card enrichment, live availability or public-package delivery.
   `ConnectorError` without returning partial knowledge. The 5,000-member ceiling
   remains successful explicit truncation. See [the UniRef scope](pending_proposals/uniref_observation.md)
   and [pagination policy](archive/uniref_pagination.md).
+- Development OMA `xrefs`/`protein`/`orthologs` retain detached OMA observations;
+  entry-name `accessions` is a separate UniProt operation. Public
+  `tools.db.oma.get_orthologs` attaches its trace. Revision gaps, unasked continuation,
+  received/client-selected counts and partial batch failure remain explicit. Missing
+  local files are unavailable; failed name resolution installs no partial ortholog
+  support. Normal scientific values and pins stay fixed.
+  [Scope](pending_proposals/oma_observation.md).
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
   Deck.
 - `sabueso.resolve_disease_card(identifier)`, `sabueso.disease_targets(disease,

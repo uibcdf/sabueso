@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Observe OMA statements separately from UniProt name resolution (2026-10-10, #108)
+
+Observe existing xrefs/protein/ortholog operations under `OMA` and entry-name
+resolution under `UniProt`, using `oma_operation_observation@1`. Preserve source
+revision gaps, native continuation and received-versus-selected counts. Retain
+source-stated sequence-match gates and separate strain relationships; no similarity
+or shared-name identity merge is introduced. Partial batch failure preserves
+completed access and portable resource credit without a partial scientific result.
+Local missing files mean unavailable access. Names with missing consumed accession
+answers are connector failures. Scientific pins, schemas and original fixtures stay
+fixed; resource citations do not replace method/entry publications.
+[Scope and qualification](pending_proposals/oma_observation.md).
+
 ## Bound UniRef member pagination independently of row count (2026-10-10, #140)
 
 Use `uniref_member_pagination@1`: stop before requesting an exact URL twice or
