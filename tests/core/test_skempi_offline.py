@@ -209,9 +209,9 @@ def test_a_failing_source_is_an_error_and_the_state_knows_it(resolver):
 
 def test_nothing_to_ask_and_nothing_found_say_why(resolver):
     # Q4QGX0 cross-references no PDB entry; Q4D3W2 has 58, none in SKEMPI.
-    for accession, reason in (
-        ("Q4QGX0", "no PDB structure"),
-        ("Q4D3W2", "SKEMPI has no row"),
+    for accession, reason, status, state in (
+        ("Q4QGX0", "no PDB structure", "not_queried", "not_queried"),
+        ("Q4D3W2", "SKEMPI has no row", "not_found", "not_stated"),
     ):
         card, _ = sabueso.resolve(
             accession,
@@ -220,12 +220,10 @@ def test_nothing_to_ask_and_nothing_found_say_why(resolver):
             skempi_client=FixtureSKEMPIClient("temp_data"),
         )
         (record,) = [e for e in card.quality["enrichments"] if e["source"] == "SKEMPI"]
-        assert record["status"] == "not_found"
+        assert record["status"] == status
         assert reason in record["detail"]
         rows = {(r["area"], r["source"]): r for r in card.knowledge_state()["rows"]}
-        assert rows[("annotations.interface_mutations", "SKEMPI")]["state"] == (
-            "not_stated"
-        )
+        assert rows[("annotations.interface_mutations", "SKEMPI")]["state"] == state
 
 
 def test_the_public_function_returns_the_rows_in_the_envelope():

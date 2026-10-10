@@ -3739,3 +3739,19 @@ or historical saved cards. An explicit refresh may record the corrected outcome
 while the exact old pin remains readable. Keep legacy `NothingToAsk` compatibility
 in the generic runner and audit the remaining six source-local gates under #143;
 this bounded correction does not qualify those routes or live provider behavior.
+
+
+## 2026-10-10 — Six source-local prerequisite gates (#143)
+
+Classify absent upstream Ensembl protein, NCBI Gene, PDB, usable MedGen concept
+identity or a queryable named disease as unqueried in the six built-in dependent
+enrichers. MONDO needs a supported identifier or a MedGen UID; a text label,
+unsupported namespace, placeholder or unresolved concept cannot be queried.
+Use the existing exception before constructing clients; retain requested options
+and unknown knowledge counts. Preserve actual queried empty/missing/error outcomes,
+organism coverage, source-native mapping and the generic legacy exception contract.
+Explicit refresh records the correction while original SourceAssertions and both
+pins remain available; saved reading never reclassifies historical cards. Keep
+this bounded integrity correction separate from adding acquisition instrumentation
+to SKEMPI/SAbDab and from derived comparative operation/bibliography work (#108).
+See [scope and qualification](pending_bugs/source_prerequisites.md).

@@ -301,7 +301,7 @@ def test_a_protein_with_no_disease_has_nothing_to_ask(mondo):
         mondo_client=mondo,
     )
     (record,) = [e for e in card.quality["enrichments"] if e["source"] == "MONDO"]
-    assert record["status"] == "not_found"
+    assert record["status"] == "not_queried"
     assert record["detail"] == "the card names no disease"
 
 

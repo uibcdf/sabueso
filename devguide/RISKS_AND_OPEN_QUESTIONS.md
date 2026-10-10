@@ -31,11 +31,18 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   missing; [source qualification](archive/open_targets_prerequisite.md) passes
   at `94ad9eb` with 6,092 local-original tests and 15/15 CI.
   [Its receipt](archive/open_targets_prerequisite_checkpoint.json) retains the limits.
-  Six other legacy `NothingToAsk` gates reproduce the quality-record defect in
-  synthetic forbidden-constructor probes and still need per-source card regressions
-  and requestability review. Neither an upstream missing input nor an old saved
+  The six remaining built-in gates now use `RequestPrerequisiteMissing`, with
+  public per-source card, native-outcome and historical refresh regressions;
+  [qualification is in progress](pending_bugs/source_prerequisites.md). Neither an upstream missing input nor an old saved
   classification establishes native source absence. Actual queried protein-binding
   outcomes and stored historical pins retain their own scope.
+- **Derived disease identity coverage**
+  ([#144](https://github.com/uibcdf/sabueso/issues/144)): `disease_grouping@1/@2`
+  treat any MONDO enrichment record as proof that identity was queried. A synthetic
+  blocked MedGen-only condition can be labelled `no_stated_equivalence` despite
+  no source query. Add an explicitly versioned, identifier-scoped coverage rule;
+  preserve historical rule selection and stored pins. The #143 source-gate
+  correction does not qualify these derived explanations.
 - **Comparative response integrity and revision/operation scope**
   ([#137](https://github.com/uibcdf/sabueso/issues/137), #108/#91): the original
   0.14.0 online OMA/UniRef/gnomAD/GTEx routes can misclassify missing JSON

@@ -8,6 +8,13 @@ Published and development scopes below keep their stated qualification boundarie
 
 # Provider qualification details
 
+Development DISEASES, ClinVar, SKEMPI, SAbDab, MedGen and MONDO disease identity
+use an unqueried prerequisite boundary before client construction when their
+required upstream identity is missing (#143). Actual native empty/missing/error
+outcomes and saved historical pins retain their own scope.
+[Qualification](../pending_bugs/source_prerequisites.md) is in progress. This does
+not add SKEMPI/SAbDab acquisition observation.
+
 Development gnomAD observes existing variant/transcript/consequence/pext GraphQL
 routes. Requested dataset/genome and client GTEx labels stay separate from unknown
 native releases; consequence aliases and transcript versions retain their source

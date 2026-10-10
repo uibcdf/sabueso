@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from sabueso.enrichers import Enricher, NothingToAsk, Request
+from sabueso.enrichers import Enricher, Request, RequestPrerequisiteMissing
 
 DEFAULT_CHANNELS = ("knowledge", "experiments")
 
@@ -32,7 +32,9 @@ class DISEASES(Enricher):
             for value, isoform in context.xref_properties("Ensembl", "ProteinId")
         }
         if not isoform_of:
-            raise NothingToAsk("the entry cross-references no Ensembl protein")
+            raise RequestPrerequisiteMissing(
+                "the entry cross-references no Ensembl protein"
+            )
         record = self.record(context, options)
         return [
             Request(

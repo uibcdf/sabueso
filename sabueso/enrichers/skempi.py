@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from sabueso.enrichers import Enricher, NothingToAsk, Request
+from sabueso.enrichers import Enricher, Request, RequestPrerequisiteMissing
 
 
 class SKEMPI(Enricher):
@@ -19,7 +19,9 @@ class SKEMPI(Enricher):
     def requests(self, context, options):
         entries = sorted({x["id"].upper() for x in context.xrefs("PDB") if x.get("id")})
         if not entries:
-            raise NothingToAsk("the entry cross-references no PDB structure")
+            raise RequestPrerequisiteMissing(
+                "the entry cross-references no PDB structure"
+            )
         return [
             Request(
                 context.anchor,

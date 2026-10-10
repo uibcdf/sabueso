@@ -152,9 +152,10 @@ not a release receipt.
   [Open Targets prerequisite #142](archive/open_targets_prerequisite.md) is
   source-qualified at `94ad9eb`: seven new cases, 6,092 local-original tests and
   15/15 exact-source CI; [its receipt](archive/open_targets_prerequisite_checkpoint.json)
-  preserves public/installed compatibility scope. Review the six reproduced legacy
-  prerequisite gates (#143), then advance derived comparative operations and
-  complete bibliography #108.
+  preserves public/installed compatibility scope. The six remaining built-in
+  prerequisite gates are corrected together under
+  [#143](pending_bugs/source_prerequisites.md); source qualification is in progress.
+  Then advance derived comparative operations and complete bibliography #108.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery

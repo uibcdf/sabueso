@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from sabueso.enrichers import Enricher, NothingToAsk, Request
+from sabueso.enrichers import Enricher, Request, RequestPrerequisiteMissing
 
 
 class ClinVar(Enricher):
@@ -28,7 +28,9 @@ class ClinVar(Enricher):
 
     def requests(self, context, options):
         if not self._genes(context):
-            raise NothingToAsk("the entry cross-references no NCBI Gene id")
+            raise RequestPrerequisiteMissing(
+                "the entry cross-references no NCBI Gene id"
+            )
         return [Request(context.anchor, self.record(context, options))]
 
     def fetch(self, client, request, options):

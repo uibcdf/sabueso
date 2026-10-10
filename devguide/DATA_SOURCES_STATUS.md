@@ -939,6 +939,9 @@ pages and CIViC monthly accepted items are recovered. The implemented sections b
 ### ClinVar — variants and their clinical classification
 - **Status**: implemented as an enricher of `resolve_protein_card(..., clinvar={})` (uibcdf/sabueso#83)
 - **Access**: E-utilities (einfo for the build, esearch by NCBI Gene id, esummary), no key (`OnlineClinVarClient`); saved summaries in `temp_data/clinvar/`; `tools.db.clinvar.get_variants`
+- **Prerequisite**: missing upstream NCBI Gene identity is unqueried before client
+  construction (#143), with unknown counts; actual native empty results retain
+  their observed source scope.
 - **Quality**: green for the listed coverage. Verified live on TPI1 (GeneID 7167, Build260924-0125.1): 249 records in about 8 s. 110 have a protein change on the canonical transcript NM_000365.6, and those placed include UniProt's natural variants at 42, 105, 171 and 241.
 - **Coverage**: `annotations.clinical_variants`, with the classification, review status, conditions and consequences as stated. Positions are in UniProt numbering only through a canonical transcript UniProt states and a matching residue.
 - **Notes**: found by the NCBI Gene id UniProt cross-references, never by gene symbol. Every record of the gene by default, up to 5000; a cut is reported. Human genes only. Not for diagnostic use without review by a genetics professional.
@@ -1004,7 +1007,9 @@ pages and CIViC monthly accepted items are recovered. The implemented sections b
   - The text-mining channel's SourceAssertions record `acquisition: {method: database, origin: text_mining}` (#92): imported from DISEASES, which states they were mined from text.
   - Joined only through the Ensembl proteins UniProt cross-references.
   - Text mining links names, not molecules, and is added only when asked for.
-  - Human genes only: a non-human protein is `not_queried`, with the reason.
+  - Human genes only: a non-human protein is `not_applicable`, with the reason.
+  - Missing upstream Ensembl protein identity is `not_queried` before client
+    construction (#143); a gene or transcript id is not a protein cross-reference.
   - Licence: CC BY 4.0.
 
 ### ChEMBL indications and ClinicalTrials.gov — the clinical layer
@@ -1185,6 +1190,9 @@ pages and CIViC monthly accepted items are recovered. The implemented sections b
 
 ### SKEMPI 2.0 — interface mutations and binding changes
 - **Status**: implemented as an enricher (`skempi=True`, #83), card schema 0.3.7
+- **Prerequisite**: without a UniProt-stated PDB cross-reference, the source is
+  unqueried before client construction (#143); an actual queried entry with no
+  matching chain remains not found.
 - **Access**: the whole CSV file (1.6 MB), downloaded once per process and indexed by PDB entry; saved subset `temp_data/skempi/skempi_v2.csv` (barnase–barstar)
 - **Quality**: green, verified on barnase (P00648). Of its 89 mutations in SKEMPI, the 83 in 1BRS are placed through RCSB's author numbering when 1BRS is loaded, each with a matching residue; K27A has ΔΔG 5.38 kcal/mol under `binding_ddg@1`, as published.
 - **Coverage**: `annotations.interface_mutations`, 7085 rows over 345 PDB entries.
@@ -1224,6 +1232,9 @@ pages and CIViC monthly accepted items are recovered. The implemented sections b
 
 ### SAbDab — antibody structures of a protein
 - **Status**: implemented as an enricher (`sabdab=True`, #83), card schema 0.3.8
+- **Prerequisite**: without a UniProt-stated PDB cross-reference, the source is
+  unqueried before client construction (#143); a queried structure without a
+  source-stated antigen assignment remains not found.
 - **Access**: SAbDab2's annotations of the PDB (`api/rcsb-pdb-annotations`, about 15 MB of JSON, 22,201 antibody instances), downloaded once per process and indexed by PDB entry; the SHA-256 and the API version (2.1.4) recorded; saved subset `temp_data/sabdab/`; `tools.db.sabdab.get_complexes`
 - **Quality**: green, verified live (2026-09-30):
   - EGFR (P00533): 50 antibody instances in 28 structures (38 two-chain, 12 nanobodies), cetuximab in 1YY9 among them; 18.4 s with the download.

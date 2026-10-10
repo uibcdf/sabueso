@@ -508,9 +508,10 @@ public method names.
   [Open Targets prerequisite #142](archive/open_targets_prerequisite.md) is
   source-qualified at `94ad9eb`: seven new cases, 6,092 local-original tests and
   15/15 exact-source CI; [its receipt](archive/open_targets_prerequisite_checkpoint.json)
-  preserves public/installed compatibility scope. Review the six reproduced legacy
-  prerequisite gates (#143), then advance derived comparative operations and
-  complete bibliography #108.
+  preserves public/installed compatibility scope. The six remaining built-in
+  prerequisite gates are corrected together under
+  [#143](pending_bugs/source_prerequisites.md); source qualification is in progress.
+  Then advance derived comparative operations and complete bibliography #108.
 - **Traceability (#108).** Extend observed source/client/operation coverage along
   these exercised paths, including reuse, versions with their actual basis, retries,
   empty answers, caps, partial returns and failures. Keep bibliography and missing

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from sabueso.enrichers import Enricher, NothingToAsk, Request
+from sabueso.enrichers import Enricher, Request, RequestPrerequisiteMissing
 
 
 def concept_ids(context) -> list:
@@ -38,7 +38,9 @@ class MedGen(Enricher):
     def requests(self, context, options):
         ids = concept_ids(context)
         if not ids:
-            raise NothingToAsk("no disease on the card is named by a MedGen concept id")
+            raise RequestPrerequisiteMissing(
+                "no disease on the card is named by a MedGen concept id"
+            )
         return [
             Request(
                 context.anchor,

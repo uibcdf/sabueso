@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-10, Open Targets prerequisite qualification (#142).
+Last updated: 2026-10-10, six source-local prerequisite corrections (#143).
 
 Development [Open Targets prerequisite correction](archive/open_targets_prerequisite.md)
 (#142) is source-qualified at `94ad9eb`. Missing upstream Ensembl gene identity is
@@ -18,8 +18,9 @@ editable imports and independently hashed full receptor captures. Valid-gene
 scientific pins and historical stored states stay exact; explicit refresh retains
 both old and new pins. No new provider query or private fixture. Published 0.14.0
 is unchanged; full installed-artifact/human acceptance remains separate.
-Next: review the six reproduced legacy prerequisite gates (#143), then continue
-derived comparative operation/bibliography coverage (#108).
+Current: qualify the six source-local prerequisite corrections together
+([#143](pending_bugs/source_prerequisites.md)), then continue derived comparative
+operation/bibliography coverage (#108).
 
 Development [gnomAD observation](pending_proposals/gnomad_observation.md) is
 source-qualified at `682e226`. Variant/transcript/consequence/pext access retains
@@ -36,7 +37,7 @@ verified editable imports and independently hashed full receptor captures.
 Original-answer replay and inert reading pass without new queries; decoded page
 identities also match original wire bodies. Declared coverage becomes 38 source
 families. Open Targets prerequisite #142 is qualified above; the remaining
-legacy gates (#143) and derived comparative operation/bibliography stay open.
+gate qualification (#143) and derived comparative operation/bibliography stay open.
 Published 0.14.0 remains unchanged; full installed/human acceptance is separate.
 
 Development [OMA operation observation](pending_proposals/oma_observation.md) is

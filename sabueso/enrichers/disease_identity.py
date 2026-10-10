@@ -4,7 +4,7 @@ which of the terms they reach MONDO places under another (``subclass_of``,
 
 from __future__ import annotations
 
-from sabueso.enrichers import Enricher, NothingToAsk, Request
+from sabueso.enrichers import Enricher, Request, RequestPrerequisiteMissing
 
 
 class DiseaseIdentity(Enricher):
@@ -30,7 +30,7 @@ class DiseaseIdentity(Enricher):
             relationships.extend(mapping.get("relationships") or [])
         statements = disease_statements(fields.get, relationships)
         if not statements:
-            raise NothingToAsk("the card names no disease")
+            raise RequestPrerequisiteMissing("the card names no disease")
         # MONDO names MedGen records by UID: concept ids are asked through the UIDs
         # MedGen states for them (the medgen enrichment), not directly.
         uid_of = {
@@ -49,6 +49,11 @@ class DiseaseIdentity(Enricher):
             }
             | uids
         )
+        if not curies:
+            raise RequestPrerequisiteMissing(
+                "the card names no queryable disease id; MONDO needs a mapped "
+                "identifier or a MedGen UID"
+            )
         unmapped = sorted({r for s in statements for r in s["unmapped"]})
         # The ids each statement names together: MONDO's hierarchy is asked only
         # between the terms one statement reaches (mondo_hierarchy@1).
