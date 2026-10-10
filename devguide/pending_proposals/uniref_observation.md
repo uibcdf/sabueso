@@ -28,7 +28,7 @@ inspectable even when the next page fails.
 
 The existing row limit does not bound attempts across empty continuation pages
 or detect cyclic links. This observer preserves the existing pagination behavior;
-a separate termination policy remains #108 work before claiming bounded requests
+a separate termination policy is tracked in [#140](https://github.com/uibcdf/sabueso/issues/140) before claiming bounded requests
 for arbitrary malformed pagination.
 
 Later failures retain completed-page counts and identities as partial access,
@@ -65,5 +65,16 @@ seconds, with thirteen expected fixture warnings and fatal SQLite/unraisable
 guards. Ruff, unchanged 1,627-path card shape/schema, source registry, fixture
 delivery (50 repository / 37 protected originals), dependency preflight,
 governance/canonical guide equality, warning-fatal Sphinx, 128 relative file links
-and whitespace checks pass. Exact-source CI qualification is pending. No new
-provider queries or private fixtures are used.
+and whitespace checks pass. Exact source `c6cb0e3075681742dda3eba4d92b5bbbddc7c303`
+passes [15/15 CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38041493783)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/38041493793).
+The [public receipt](uniref_observation_checkpoint.json) independently verifies
+all captured member hashes and thirteen test-job summaries: nine public offline
+lanes pass 4,410 cases with ten fixture skips and 26 online deselections; four
+installed public-Ackredit lanes pass 1,048 cases outside the checkout. After
+editable metadata refresh, 75 access/independent-report cases pass in 21.15
+seconds; all six participating runtime imports and metadata agree outside the
+checkout. A separate synthetic transport reproduces the #140 termination defect;
+it is not fixed or counted among the 33 new regression cases. No new provider
+queries or private fixtures are used. Complete installed Sabueso artifact and
+human/consumer-owned acceptance remain separate.

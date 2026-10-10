@@ -709,4 +709,8 @@ native revisions. The actual UniRef API URL is credited alongside UniProt's
 description; member publications and sequence revisions remain gaps. Scientific
 pins remain equivalent to the same unobserved fixture client; saved readers render
 original credit without new operations. [Scope and qualification](uniref_observation.md)
-is in development. OMA, gnomAD, derived operations and complete bibliography stay open.
+records code `c6cb0e3`, 33 new cases, 5,963 local-original cases and 15/15 exact-source
+CI plus governance. The [source receipt](uniref_observation_checkpoint.json) verifies
+4,410 cases per public offline lane and 1,048 per installed public-Ackredit lane.
+Fix reproduced pagination termination [#140](https://github.com/uibcdf/sabueso/issues/140)
+before advancing OMA. OMA, gnomAD, derived operations and complete bibliography stay open.

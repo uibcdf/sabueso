@@ -491,7 +491,11 @@ public method names.
   `2b5db53`, with [its source receipt](pending_proposals/gtex_observation_checkpoint.json).
   [Development UniRef observation](pending_proposals/uniref_observation.md) follows
   with per-page releases, limits and partial failures under source `UniProt`;
-  qualification is pending. OMA, gnomAD and derived-operation coverage stay open.
+  code `c6cb0e3` passes 5,963 local-original cases and 15/15 exact-SHA CI;
+  [its source receipt](pending_proposals/uniref_observation_checkpoint.json) retains
+  public/local/installed compatibility scopes. Fix the reproduced request termination
+  defect [#140](https://github.com/uibcdf/sabueso/issues/140) before advancing OMA.
+  OMA, gnomAD and derived-operation coverage stay open.
 - **Traceability (#108).** Extend observed source/client/operation coverage along
   these exercised paths, including reuse, versions with their actual basis, retries,
   empty answers, caps, partial returns and failures. Keep bibliography and missing
