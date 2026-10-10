@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from sabueso.enrichers import Enricher, NothingToAsk, Request
+from sabueso.enrichers import Enricher, Request, RequestPrerequisiteMissing
 
 
 class OpenTargets(Enricher):
@@ -25,7 +25,9 @@ class OpenTargets(Enricher):
             {v.split(".")[0] for v, _ in context.xref_properties("Ensembl", "GeneId")}
         )
         if not genes:
-            raise NothingToAsk("the entry cross-references no Ensembl gene")
+            raise RequestPrerequisiteMissing(
+                "the entry cross-references no Ensembl gene"
+            )
         return [Request(g, {"source": self.source, "identifier": g}) for g in genes]
 
     def fetch(self, client, request, options):

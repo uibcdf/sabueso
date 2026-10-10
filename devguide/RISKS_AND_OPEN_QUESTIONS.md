@@ -24,12 +24,16 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Architecture Risks (General)
 
-- **Open Targets upstream gene prerequisite**
-  ([#142](https://github.com/uibcdf/sabueso/issues/142)): missing Ensembl gene identity
-  still becomes `not_found`/`not_stated` despite no source query. A public fixture
-  probe forbids client construction and reproduces zero operations. Reuse the
-  prerequisite gate; preserve the separate actual native result when a queried
-  target omits the caller protein. This is not fixed by the qualified gnomAD slice.
+- **Upstream prerequisite classification**
+  ([#142](https://github.com/uibcdf/sabueso/issues/142),
+  [#143](https://github.com/uibcdf/sabueso/issues/143)): development Open Targets
+  uses an unqueried gate before client construction when Ensembl gene identity is
+  missing; [qualification is in progress](pending_bugs/open_targets_prerequisite.md).
+  Six other legacy `NothingToAsk` gates reproduce the quality-record defect in
+  synthetic forbidden-constructor probes and still need per-source card regressions
+  and requestability review. Neither an upstream missing input nor an old saved
+  classification establishes native source absence. Actual queried protein-binding
+  outcomes and stored historical pins retain their own scope.
 - **Comparative response integrity and revision/operation scope**
   ([#137](https://github.com/uibcdf/sabueso/issues/137), #108/#91): the original
   0.14.0 online OMA/UniRef/gnomAD/GTEx routes can misclassify missing JSON

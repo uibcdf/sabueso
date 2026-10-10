@@ -62,7 +62,12 @@ Do not bypass access gates or infer permission from availability.
 
 A declared enricher whose required upstream input is missing or ambiguous raises
 `RequestPrerequisiteMissing` before constructing or calling its client. The runner
-records `not_queried` and its prerequisite explanation. GTEx requires pext tissue
+records `not_queried` and its prerequisite explanation. gnomAD and Open Targets
+require an upstream Ensembl gene cross-reference (#141/#142); missing gene identity
+creates no source operation or data-resource credit. This does not change an
+actually queried Open Targets target that omits the caller protein. Remaining
+legacy `NothingToAsk` gates need source-local review (#143); historical saved
+classifications are never rewritten during reads. GTEx requires pext tissue
 keys and one unambiguous GTEx release label in the upstream record; missing inputs
 are not GTEx absence (#135). Development GTEx observation records the dataset
 label as a request parameter and native revision as unknown; returned row counts

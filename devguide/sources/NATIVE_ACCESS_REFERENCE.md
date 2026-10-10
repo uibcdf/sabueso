@@ -836,6 +836,10 @@ Development Open Targets observation covers built-in `associations` and `targets
 and Orphadata covers `associations` and `genes`, including public envelopes and
 card/deck enrichments. Open Targets retains each GraphQL page/query/hash, native
 metadata version (`graphql_meta_data_version`), returned order/count and total.
+Its protein enricher requires UniProt's upstream Ensembl gene cross-reference;
+missing identity is unqueried before client construction, with unknown counts and
+no source credit (#142). This differs from a queried target that omits the protein.
+Historical stored classifications are not changed by reading.
 Source-row and deck-member limits differ. Completed pages survive a later failure
 as partial intake; malformed/error pages receive no completed credit. Explicit null
 entities are evaluated absence; missing fields are connector failures. Changed

@@ -16,6 +16,7 @@ import sabueso
 from sabueso.core import attribution as adapter
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
 from sabueso.core.snapshot import canonical_json, digest
+from sabueso.resolver import EntityResolver, FixtureUniProtClient
 from sabueso.tools.db import (
     _http,
     _mirror,
@@ -576,3 +577,165 @@ def test_failed_transport_preserves_actual_attempts_and_no_completed_credit(
         and record["provider"]["status"] == "not_attempted"
     )
     assert record["network_attempts"] == len(calls) == (3 if failure == 500 else 1)
+
+
+class WithoutGeneIds(FixtureUniProtClient):
+    def __init__(self, keep_protein_ids=False):
+        super().__init__("temp_data")
+        self.keep_protein_ids = keep_protein_ids
+
+    def fetch_entry(self, accession):
+        entry, when = super().fetch_entry(accession)
+        if self.keep_protein_ids:
+            for xref in entry.get("uniProtKBCrossReferences", []):
+                if xref.get("database") == "Ensembl":
+                    xref["properties"] = [
+                        p for p in xref.get("properties", []) if p["key"] != "GeneId"
+                    ]
+        else:
+            entry["uniProtKBCrossReferences"] = [
+                x
+                for x in entry.get("uniProtKBCrossReferences", [])
+                if x.get("database") != "Ensembl"
+            ]
+        return entry, when
+
+
+def open_targets_state(card):
+    return next(r for r in card.knowledge_state()["rows"] if r["source"] == ot.SOURCE)
+
+
+def open_targets_record(card):
+    return next(r for r in card.quality["enrichments"] if r["source"] == ot.SOURCE)
+
+
+@pytest.mark.parametrize("keep_protein_ids", [False, True])
+@pytest.mark.parametrize("supplied_client", [False, True])
+def test_open_targets_missing_gene_is_unqueried_without_operation_or_credit(
+    monkeypatch, keep_protein_ids, supplied_client
+):
+    def forbidden(*args, **kwargs):
+        pytest.fail("A missing upstream gene must not construct or call Open Targets")
+
+    class Client:
+        associations = forbidden
+
+    monkeypatch.setattr(ot, "OnlineOpenTargetsClient", forbidden)
+    card, _ = sabueso.resolve(
+        "P60174",
+        resolver=EntityResolver(WithoutGeneIds(keep_protein_ids)),
+        open_targets={"limit": 2},
+        open_targets_client=Client() if supplied_client else None,
+    )
+    record = open_targets_record(card)
+    assert record["status"] == "not_queried"
+    assert record["request_options"] == {"limit": 2}
+    assert "no Ensembl gene" in record["detail"]
+    row = open_targets_state(card)
+    assert row["state"] == "not_queried" and row["count"] is None
+    assert row["basis"] == {"detail": record["detail"]}
+    assert not card.relationships("associated_with")
+    assert not any(r["source"] == ot.SOURCE for r in card.acquisition_trace["records"])
+    assert "doi:10.1093/nar/gkae1128" not in {
+        item["id"] for item in ackredit.get_attribution().to_dict()["items"]
+    }
+    assert card.source_assertion_store.to_list()
+
+
+def test_open_targets_queried_target_omitting_protein_retains_native_access(
+    monkeypatch,
+):
+    payload = page("associations")
+    payload["data"]["target"]["proteinIds"] = [{"id": "Q00000", "source": "uniprot"}]
+    calls = serve(monkeypatch, payload)
+    card, _ = sabueso.resolve(
+        "P60174",
+        resolver=EntityResolver(FixtureUniProtClient("temp_data")),
+        open_targets={},
+        open_targets_client=ot.OnlineOpenTargetsClient(),
+    )
+    assert len(calls) == 1
+    assert open_targets_record(card)["status"] == "not_found"
+    assert "does not list P60174" in open_targets_record(card)["detail"]
+    assert open_targets_state(card)["state"] == "not_stated"
+    assert not card.relationships("associated_with")
+    (record,) = [
+        r for r in card.acquisition_trace["records"] if r["source"] == ot.SOURCE
+    ]
+    assert record["outcome"] == "empty" and record["completed_pages"]
+    assert "doi:10.1093/nar/gkae1128" in {
+        item["id"] for item in ackredit.get_attribution().to_dict()["items"]
+    }
+
+
+def test_open_targets_valid_gene_retains_exact_unobserved_science_and_pin():
+    class Unobserved(ot.FixtureOpenTargetsClient):
+        associations = ot.FixtureOpenTargetsClient.associations.__wrapped__
+
+    def build(client):
+        return sabueso.resolve(
+            "P60174",
+            resolver=EntityResolver(FixtureUniProtClient("temp_data")),
+            open_targets={"limit": 2},
+            open_targets_client=client,
+        )[0]
+
+    with pytest.warns(Warning):
+        current = build(
+            ot.FixtureOpenTargetsClient("temp_data", retrieved_at="original")
+        )
+    with pytest.warns(Warning):
+        unobserved = build(Unobserved("temp_data", retrieved_at="original"))
+    assert current.to_dict() == unobserved.to_dict()
+    assert current.pinned_ref() == unobserved.pinned_ref()
+    assert current.relationships("associated_with")
+    assert any(r["source"] == ot.SOURCE for r in current.acquisition_trace["records"])
+    assert not any(
+        r["source"] == ot.SOURCE for r in unobserved.acquisition_trace["records"]
+    )
+
+
+def test_open_targets_refresh_preserves_historical_unasked_pin(monkeypatch, tmp_path):
+    from sabueso.core import attribution, source_acquisition
+    from sabueso.enrichers import NothingToAsk
+    from sabueso.enrichers.open_targets import OpenTargets
+
+    def legacy_missing_gene(*args, **kwargs):
+        raise NothingToAsk("the entry cross-references no Ensembl gene")
+
+    def forbidden(*args, **kwargs):
+        pytest.fail(
+            "Neither prerequisite gates nor saved reads may access Open Targets"
+        )
+
+    monkeypatch.setattr(ot, "OnlineOpenTargetsClient", forbidden)
+    resolver = EntityResolver(WithoutGeneIds())
+    with monkeypatch.context() as old:
+        old.setattr(OpenTargets, "requests", legacy_missing_gene)
+        historical, _ = sabueso.resolve(
+            "P60174", resolver=resolver, open_targets={"limit": 2}
+        )
+    before = deepcopy(historical.to_dict())
+    store = sabueso.KnowledgeStore(tmp_path / "cards.db")
+    original_pin = store.save(historical)
+    assert open_targets_state(historical)["state"] == "not_stated"
+    refreshed, _ = sabueso.refresh_card(historical, store=store, resolver=resolver)
+    assert open_targets_state(refreshed)["state"] == "not_queried"
+    assert open_targets_state(refreshed)["count"] is None
+    assert open_targets_record(refreshed)["request_options"] == {"limit": 2}
+    assert (
+        refreshed.source_assertion_store.to_list()
+        == historical.source_assertion_store.to_list()
+    )
+    assert historical.to_dict() == before
+    assert original_pin != refreshed.pinned_ref()
+    monkeypatch.setattr(sabueso, "resolve", forbidden)
+    monkeypatch.setattr(attribution, "_credit", forbidden)
+    monkeypatch.setattr(source_acquisition, "_credit", forbidden)
+    with sabueso.attribution() as run:
+        credit_before = ackredit.get_attribution().to_dict()
+        loaded = store.load(original_pin)
+        assert loaded.to_dict() == before and loaded.pinned_ref() == original_pin
+        assert store.load(refreshed.pinned_ref()).to_dict() == refreshed.to_dict()
+        assert ackredit.get_attribution().to_dict() == credit_before
+        assert not run.acquisitions and not run.records

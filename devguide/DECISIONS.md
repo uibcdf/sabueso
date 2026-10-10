@@ -3727,3 +3727,15 @@ stop before client construction and record unqueried scope, not source absence.
 Credit the existing GraphQL resource without inventing publications. Source/CI,
 installed-artifact and human/consumer acceptance remain separate. See
 [scope and qualification](pending_proposals/gnomad_observation.md).
+
+
+## 2026-10-10 — Open Targets missing upstream gene scope (#142)
+
+Use the existing `RequestPrerequisiteMissing` gate for absent upstream Ensembl gene
+identity. Return `not_queried` before constructing or calling a source client,
+retain requested options, and report unknown counts with the blocking input.
+Do not change native target-to-protein binding gates, valid-gene scientific payloads
+or historical saved cards. An explicit refresh may record the corrected outcome
+while the exact old pin remains readable. Keep legacy `NothingToAsk` compatibility
+in the generic runner and audit the remaining six source-local gates under #143;
+this bounded correction does not qualify those routes or live provider behavior.

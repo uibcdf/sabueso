@@ -5,10 +5,11 @@ its source's name, its registry entry, the knowledge areas it answers, the organ
 covers, and three steps:
 
 - ``requests(context, options)``: what to ask (one request per gene, or one for the
-  entry), each with the fields its enrichment record starts with. ``NothingToAsk`` when
-  the entry states nothing to ask with (e.g. no Ensembl gene): ``not_found``, with the
-  reason; ``RequestPrerequisiteMissing`` when required upstream knowledge is absent
-  or ambiguous: ``not_queried``, with the blocking input described;
+  entry), each with the fields its enrichment record starts with.
+  ``RequestPrerequisiteMissing`` when required upstream knowledge is absent or
+  ambiguous: ``not_queried``, with the blocking input described. Legacy
+  ``NothingToAsk`` gates still report ``not_found``; this is not a source query or
+  proof of source-stated absence;
 - ``fetch(client, request, options)``: the source client's call;
 - ``map(context, request, response, options)``: the mapping, and the record's outcome
   (status, version, count, truncation).
