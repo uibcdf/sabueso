@@ -716,7 +716,8 @@ The subsequent [pagination correction #140](../archive/uniref_pagination.md)
 is source-qualified at `3a47490`: 21 new cases, 5,984 local-original cases and
 15/15 exact-source CI; [its receipt](../archive/uniref_pagination_checkpoint.json)
 retains public/installed compatibility scopes. OMA follows in the qualified slice
-below; gnomAD, derived operations and complete bibliography stay open.
+below; gnomAD follows in its qualified slice below, while derived operations
+and complete bibliography stay open.
 
 
 ## OMA operation observation (development, 2026-10-10, #108)
@@ -736,7 +737,8 @@ offline lane, 1,116 per installed public-Ackredit lane and independently hashed
 full receptor captures. Original-answer replay and inert reading pass without
 new queries.
 No new provider queries or private fixtures; full installed-artifact/human
-acceptance and broader gnomAD/derived-operation/bibliography coverage stay open.
+acceptance and broader derived-operation/bibliography coverage stay open; the
+gnomAD slice follows below.
 
 ## gnomAD operation observation (development, 2026-10-10, #108/#141)
 
@@ -749,6 +751,11 @@ are unavailable. Missing upstream gene identity is unqueried before source clien
 construction (#141). Resource bibliography identifies the existing gnomAD GraphQL
 API and states publication/revision gaps. Normal supplied-gene scientific pins and
 original archive receipts survive independent inert reading. [Scope](gnomad_observation.md).
-Qualification is in progress for 54 new public regressions and exercised journeys;
-no new provider query or private fixture. Derived operations, full bibliography and
+Source `682e226` passes 54 new cases, 340 selected and 6,085 full local-original
+tests with twelve workers, 89 post-editable cases and 15/15 exact-source CI plus
+governance. The [source receipt](gnomad_observation_checkpoint.json) verifies
+4,532 cases per public offline lane, 1,170 per installed public-Ackredit lane and
+independently hashed full receptor captures. Original-answer replay and inert
+reading pass with zero new provider queries; detailed artifacts stay private.
+No new provider query or private fixture. Derived operations, full bibliography and
 installed-artifact/human/consumer acceptance remain separate.

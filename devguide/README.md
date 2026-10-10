@@ -144,9 +144,13 @@ not a release receipt.
   is source-qualified at `593ba76`: 47 new cases, 6,031 local-original cases and
   15/15 exact-source CI; [its receipt](pending_proposals/oma_observation_checkpoint.json)
   retains public/installed compatibility and original-answer replay scope.
-  The [gnomAD slice](pending_proposals/gnomad_observation.md) is implemented with
-  qualification in progress, including unqueried gene prerequisites (#141).
-  Qualify it before derived comparative operations and complete bibliography #108.
+  The [gnomAD slice](pending_proposals/gnomad_observation.md) is source-qualified
+  at `682e226`, including unqueried gene prerequisites (#141): 54 new cases,
+  6,085 local-original tests and 15/15 exact-source CI;
+  [its receipt](pending_proposals/gnomad_observation_checkpoint.json) retains
+  public/installed compatibility and original-answer replay scope. Correct the
+  separately reproduced Open Targets prerequisite #142, then advance derived
+  comparative operations and complete bibliography #108.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery

@@ -1,0 +1,284 @@
+{
+  "format": "sabueso.gnomad_observation_checkpoint@1",
+  "date": "2026-10-10",
+  "issue": "uibcdf/sabueso#108",
+  "related_issues": [
+    "uibcdf/sabueso#112",
+    "uibcdf/sabueso#141"
+  ],
+  "qualified_source_sha": "682e2263bad6187324302d77e6edb043b791970c",
+  "published_0140_artifact_changed": false,
+  "scope": {
+    "clients": [
+      "OnlineGnomADClient",
+      "FixtureGnomADClient"
+    ],
+    "operations": [
+      "gnomad_variants",
+      "gnomad_transcript_variants",
+      "gnomad_consequences",
+      "gnomad_pext"
+    ],
+    "public_getters": [
+      "get_variants",
+      "get_transcript_variants",
+      "get_pext"
+    ],
+    "scientific_source": "gnomAD",
+    "rule": "gnomad_operation_observation@1",
+    "declared_source_families": 38,
+    "actual_GraphQL_queries_and_aliases_retained": true,
+    "request_body_and_original_wire_response_hashes_and_times_retained": true,
+    "native_gene_transcript_metadata_and_consequence_bindings_retained": true,
+    "native_dataset_revision": "unknown; requested dataset and client labels do not establish a release",
+    "requested_dataset": "gnomad_r4 for variants/transcript/consequence queries; no pext dataset argument",
+    "requested_reference_genome": "GRCh38 for gene/transcript/pext queries; not requested in the consequence query",
+    "pext_GTEx_revision": "unknown; existing client description is not a native declaration",
+    "source_stated_null_aliases_and_empty_consequence_lists_distinct": true,
+    "consequence_generators_materialized_once": true,
+    "received_variant_bindings_transcript_rows_returned_items_and_card_selection_separate": true,
+    "normal_supplied_gene_scientific_values_assertions_quantities_and_pins_equal_unobserved_fixture_client": true,
+    "coordinate_or_shared_protein_change_identity_merging": false,
+    "complete_dataset_or_biological_absence_established": false,
+    "fixture_access_scope": "saved subset; declared version labels do not prove live revision",
+    "missing_local_files": "unavailable, including consequences.json; no partial card assertions",
+    "unreadable_or_malformed_local_inputs": "ConnectorError before mapping",
+    "completed_batches_before_later_failure": "partial, including a completed zero-binding batch; no partial scientific return",
+    "explicit_native_absence": "existing RecordNotFoundError with decoded response receipt and absence basis; actual query scope only",
+    "empty_online_consequence_request": "not_queried; no HTTP access or data-resource credit",
+    "missing_Ensembl_gene_prerequisite": "not_queried with unknown counts and explanation before constructing either enricher client (#141)",
+    "historical_stored_cards_reclassified_on_read": false,
+    "transport_retries_separate_from_completed_batches": true,
+    "bibliography": "actual gnomAD GraphQL API resource; native dataset/GTEx revisions and variant/pext method publications remain gaps",
+    "archive_reuse_replay_original_body_wire_hashes_and_times_preserved": true,
+    "independent_saved_reader": "exact pins and original portable attribution; no acquisition, derivation or fresh credit",
+    "new_provider_queries": 0,
+    "new_private_fixtures": false,
+    "card_schemas_original_fixture_bytes_and_public_arguments_changed": false,
+    "recorded_card_shape_paths": 1627,
+    "remaining_comparative_operation_coverage": [
+      "derived comparative operations"
+    ]
+  },
+  "new_regression_cases": 54,
+  "regression_module": "tests/core/test_gnomad_acquisition_offline.py",
+  "local": {
+    "selected_passed": 340,
+    "selected_seconds": 18.04,
+    "full_passed": 6085,
+    "full_seconds": 158.48,
+    "full_warnings": 13,
+    "post_editable_passed": 89,
+    "post_editable_seconds": 13.33,
+    "workers": 12,
+    "python": "3.14.7",
+    "pytest_receptor": "1.2.1+13.gac0aa03",
+    "precommit_sabueso_metadata": "0.14.0+25.g688e384",
+    "fatal_sqlite_and_unraisable_guards": true,
+    "relative_file_links_checked": 174
+  },
+  "editable_environment": {
+    "components": [
+      {
+        "component": "sabueso",
+        "version": "0.14.0+26.g682e226"
+      },
+      {
+        "component": "ackredit",
+        "version": "0.12.0+2.g1342f0f"
+      },
+      {
+        "component": "argdigest",
+        "version": "0.15.0+1.g5c6711e"
+      },
+      {
+        "component": "smonitor",
+        "version": "0.19.0"
+      },
+      {
+        "component": "depdigest",
+        "version": "0.13.0+3.g0568f9a"
+      },
+      {
+        "component": "pyunitwizard",
+        "version": "0.28.1+3.g2ab37a5"
+      }
+    ],
+    "all_six_participating_imports_and_metadata_verified_outside_checkout": true,
+    "global_pip_check_qualified": false
+  },
+  "checks": [
+    "Ruff check/format",
+    "unchanged card shape (1627 paths)",
+    "schema/FIELD_PATHS alignment",
+    "source registry",
+    "fixture delivery (50 repository, 37 protected local originals)",
+    "dependency preflight",
+    "local MOLI governance",
+    "canonical MOLI guide equality",
+    "warning-fatal Sphinx",
+    "relative file links",
+    "git diff --check"
+  ],
+  "ci": {
+    "run_id": 38051715625,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38051715625",
+    "head_sha": "682e2263bad6187324302d77e6edb043b791970c",
+    "conclusion": "success",
+    "jobs_passed": 15,
+    "jobs_total": 15,
+    "inspection": "GH Run Receptor complete full capture/replay; all manifest members independently hashed",
+    "capture_manifest_sha256": "5ee55a3bbdd01662cfb675a9ff7fde367ecd699af8c864fcc864602e64e1c0d1",
+    "test_jobs": [
+      {
+        "job_id": 114212021789,
+        "name": "Offline tests (macos-26, Python 3.14)",
+        "passed": 4532,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 513.55,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114212021804,
+        "name": "Ackredit public-package pilot (Python 3.14)",
+        "passed": 1170,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 287.03,
+        "warnings": 4,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114212021842,
+        "name": "Ackredit public-package pilot (Python 3.11)",
+        "passed": 1170,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 247.66,
+        "warnings": 4,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114212021852,
+        "name": "Ackredit public-package pilot (Python 3.12)",
+        "passed": 1170,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 214.26,
+        "warnings": 4,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114212021858,
+        "name": "Ackredit public-package pilot (Python 3.13)",
+        "passed": 1170,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 299.69,
+        "warnings": 4,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114212021931,
+        "name": "Offline tests (ubuntu-latest, Python 3.12)",
+        "passed": 4532,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 590.31,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114212021942,
+        "name": "Offline tests (windows-latest, Python 3.14)",
+        "passed": 4532,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 772.58,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114212021949,
+        "name": "Offline tests (ubuntu-latest, Python 3.14)",
+        "passed": 4532,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 525.6,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114212021953,
+        "name": "Offline tests (windows-latest, Python 3.13)",
+        "passed": 4532,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 816.06,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114212021960,
+        "name": "Offline tests (ubuntu-latest, Python 3.13)",
+        "passed": 4532,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 537.49,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114212021962,
+        "name": "Offline tests (ubuntu-latest, Python 3.11)",
+        "passed": 4532,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 560.9,
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114212021965,
+        "name": "Offline tests (windows-latest, Python 3.12)",
+        "passed": 4532,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 1119.42,
+        "warnings": 11,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114212021986,
+        "name": "Offline tests (windows-latest, Python 3.11)",
+        "passed": 4532,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 867.28,
+        "warnings": 11,
+        "unclosed_sqlite_warning_groups": 0
+      }
+    ]
+  },
+  "governance": {
+    "run_id": 38051715622,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38051715622",
+    "head_sha": "682e2263bad6187324302d77e6edb043b791970c",
+    "conclusion": "success",
+    "jobs_passed": 1,
+    "jobs_total": 1,
+    "inspection": "GH Run Receptor complete full capture/replay; all manifest members independently hashed",
+    "capture_manifest_sha256": "9e28d17f1f7fd06824445dc8d67e9e6bf1ca713655e48f26cece6d2654aae2cc"
+  },
+  "qualification_limits": [
+    "Source checkpoint only; published 0.14.0 unchanged.",
+    "No new provider queries or private fixtures.",
+    "No general pagination/cost policy or strict wall-clock deadline is introduced.",
+    "Full installed-artifact and human/consumer-owned acceptance remain separate.",
+    "Derived comparative operations and complete bibliography remain #108 work.",
+    "No global pip-check qualification; unrelated Amber/preparation closure is tracked by MolSysSuite #82.",
+    "Four installed public-Ackredit compatibility lanes cover these regressions; this is not full installed Sabueso artifact qualification."
+  ]
+}

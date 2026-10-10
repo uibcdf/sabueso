@@ -23,6 +23,13 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 - **Clinical Data Volatility**: Clinical information changes more frequently than core physchem data.
 
 ## Architecture Risks (General)
+
+- **Open Targets upstream gene prerequisite**
+  ([#142](https://github.com/uibcdf/sabueso/issues/142)): missing Ensembl gene identity
+  still becomes `not_found`/`not_stated` despite no source query. A public fixture
+  probe forbids client construction and reproduces zero operations. Reuse the
+  prerequisite gate; preserve the separate actual native result when a queried
+  target omits the caller protein. This is not fixed by the qualified gnomAD slice.
 - **Comparative response integrity and revision/operation scope**
   ([#137](https://github.com/uibcdf/sabueso/issues/137), #108/#91): the original
   0.14.0 online OMA/UniRef/gnomAD/GTEx routes can misclassify missing JSON
@@ -38,7 +45,9 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   [its receipt](pending_proposals/oma_observation_checkpoint.json) retains the limits.
   It separates OMA statements from UniProt name bindings, exposes revision/selection gaps and retains source-stated match gates.
   [Development gnomAD observation](pending_proposals/gnomad_observation.md) is
-  implemented with qualification in progress. It records query-versus-native scope
+  source-qualified at `682e226` with 6,085 local-original tests and 15/15 CI;
+  [its receipt](pending_proposals/gnomad_observation_checkpoint.json) retains the limits.
+  It records query-versus-native scope
   and completed alias batches; missing local inputs are unavailable, and missing
   gene prerequisites no longer claim source absence (#141). Derived-operation
   observation, complete bibliography and strict cost/deadline limits remain open.

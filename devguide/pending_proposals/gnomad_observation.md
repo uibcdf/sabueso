@@ -84,8 +84,27 @@ Local qualification passed: 340 selected tests in 18.04 seconds and all 6,085
 offline tests in 158.48 seconds with 12 pytest-receptor workers. The full run
 retains 13 expected fixture warnings and makes SQLite/unraisable warnings fatal.
 Ruff, schema/shape, registry, fixture delivery, dependency preflight, MOLI governance,
-warning-fatal Sphinx and 174 relative-file links pass. Remote source qualification
-is in progress. The public fixture/synthetic module
+warning-fatal Sphinx and 174 relative-file links pass. Source
+`682e2263bad6187324302d77e6edb043b791970c` passes
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38051715625)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/38051715622).
+The [source receipt](gnomad_observation_checkpoint.json) independently verifies
+all full GH Run Receptor capture members and 13 terminal test summaries. Nine
+public offline lanes each pass 4,532 tests (10 declared fixture skips, 26 online
+deselections); four installed public-Ackredit lanes each pass 1,170 tests. After
+updating the shared editable installation, 89 cases pass in 13.33 seconds and all
+six participating imports/metadata match local checkouts outside the repository.
+The qualified producer is `0.14.0+26.g682e226`; later documentation metadata does
+not rewrite its receipt.
+
+Original archived-answer replay and independent inert reading pass with zero new
+provider queries. All four operation types retain original POST-body/wire hashes,
+times and portable credit; decoded response identities are independently checked
+against the original wire bodies. Native releases stay unknown. Detailed consumer
+artifacts remain private. This source checkpoint is separate from full installed
+Sabueso artifact and human/consumer-owned acceptance; published 0.14.0 stays fixed.
+
+The public fixture/synthetic module
 `test_gnomad_acquisition_offline.py` adds 54 cases for three public envelopes,
 four operations, native/query/fixture revision bases, consequence generators,
 alias/null/empty scope, partial failures, unavailable/unreadable/malformed local
