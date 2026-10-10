@@ -4,15 +4,22 @@ Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
 Last updated: 2026-10-10, Open Targets prerequisite qualification (#142).
 
-Development Open Targets prerequisite correction (#142) is implemented and
-undergoing source qualification. A missing upstream Ensembl gene is `not_queried`
-with unknown counts before client construction; an actually queried target that
-omits the protein keeps its distinct `not_found` outcome. Seven new public cases
-and 229 selected tests pass; all 6,092 local-original tests pass with twelve
-receptor workers. Valid-gene scientific pins and historical saved states remain
-exact. [Correction scope](pending_bugs/open_targets_prerequisite.md).
-The remaining legacy gates have a bounded audit in #143; derived comparative
-operation/bibliography and installed/human acceptance remain separate.
+Development [Open Targets prerequisite correction](archive/open_targets_prerequisite.md)
+(#142) is source-qualified at `94ad9eb`. Missing upstream Ensembl gene identity is
+`not_queried` with unknown counts before client construction; a queried target
+that omits the protein retains its actual `not_found` outcome and source receipt.
+Seven new public cases, 229 selected and all 6,092 local-original tests pass with
+12 receptor workers, plus 82 post-editable cases. Exact-source
+[CI passes 15/15](https://github.com/uibcdf/sabueso/actions/runs/38053932696) and
+[governance passes](https://github.com/uibcdf/sabueso/actions/runs/38053932729).
+The [source receipt](archive/open_targets_prerequisite_checkpoint.json) verifies
+4,539 cases per public offline lane, 1,177 per installed public-Ackredit lane,
+editable imports and independently hashed full receptor captures. Valid-gene
+scientific pins and historical stored states stay exact; explicit refresh retains
+both old and new pins. No new provider query or private fixture. Published 0.14.0
+is unchanged; full installed-artifact/human acceptance remains separate.
+Next: review the six reproduced legacy prerequisite gates (#143), then continue
+derived comparative operation/bibliography coverage (#108).
 
 Development [gnomAD observation](pending_proposals/gnomad_observation.md) is
 source-qualified at `682e226`. Variant/transcript/consequence/pext access retains
@@ -28,7 +35,7 @@ The [source receipt](pending_proposals/gnomad_observation_checkpoint.json) retai
 verified editable imports and independently hashed full receptor captures.
 Original-answer replay and inert reading pass without new queries; decoded page
 identities also match original wire bodies. Declared coverage becomes 38 source
-families. Open Targets prerequisite #142 is implemented above; the remaining
+families. Open Targets prerequisite #142 is qualified above; the remaining
 legacy gates (#143) and derived comparative operation/bibliography stay open.
 Published 0.14.0 remains unchanged; full installed/human acceptance is separate.
 

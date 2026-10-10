@@ -982,7 +982,7 @@ pages and CIViC monthly accepted items are recovered. The implemented sections b
   - GraphQL API v4, no key (`OnlineOpenTargetsClient`);
   - saved answers in `temp_data/open_targets/`;
   - `tools.db.open_targets.get_associations`.
-- **Quality**: green for the listed coverage. Verified live on TPI1 (ENSG00000111669, data 26.09): 483 associations, the first being TIM deficiency (MONDO_0014221, score 0.78). A missing gene is not found.
+- **Quality**: green for the listed coverage. Verified live on TPI1 (ENSG00000111669, data 26.09): 483 associations, the first being TIM deficiency (MONDO_0014221, score 0.78). A queried native gene that the source explicitly lacks is not found. An absent upstream Ensembl gene cross-reference is unqueried before client construction, with unknown counts and no source credit ([#142](archive/open_targets_prerequisite.md)); historical stored cards are not reclassified on read.
 - **Coverage**: `associated_with` relationships, with the overall score, the per-datatype scores and the rank, as stated.
 - **Notes**:
   - Joined through the Ensembl gene UniProt cross-references, only when Open Targets also lists the entry among the gene's products.

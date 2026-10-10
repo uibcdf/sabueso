@@ -28,7 +28,9 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   ([#142](https://github.com/uibcdf/sabueso/issues/142),
   [#143](https://github.com/uibcdf/sabueso/issues/143)): development Open Targets
   uses an unqueried gate before client construction when Ensembl gene identity is
-  missing; [qualification is in progress](pending_bugs/open_targets_prerequisite.md).
+  missing; [source qualification](archive/open_targets_prerequisite.md) passes
+  at `94ad9eb` with 6,092 local-original tests and 15/15 CI.
+  [Its receipt](archive/open_targets_prerequisite_checkpoint.json) retains the limits.
   Six other legacy `NothingToAsk` gates reproduce the quality-record defect in
   synthetic forbidden-constructor probes and still need per-source card regressions
   and requestability review. Neither an upstream missing input nor an old saved
