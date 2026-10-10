@@ -3754,4 +3754,4 @@ Explicit refresh records the correction while original SourceAssertions and both
 pins remain available; saved reading never reclassifies historical cards. Keep
 this bounded integrity correction separate from adding acquisition instrumentation
 to SKEMPI/SAbDab and from derived comparative operation/bibliography work (#108).
-See [scope and qualification](pending_bugs/source_prerequisites.md).
+See [scope and qualification](archive/source_prerequisites.md).

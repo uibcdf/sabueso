@@ -2,7 +2,26 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-10, six source-local prerequisite corrections (#143).
+Last updated: 2026-10-10, six source-local prerequisite qualification (#143).
+
+Development [six-source prerequisite correction](archive/source_prerequisites.md)
+(#143) is source-qualified at `c45af44`. DISEASES, ClinVar, SKEMPI, SAbDab, MedGen
+and MONDO disease identity record missing request inputs as `not_queried` with
+unknown counts before client construction. MONDO also blocks a named condition
+without a queryable identifier/MedGen UID. Actual source empty/missing/failing
+outcomes and generic legacy exception compatibility retain their own scope.
+51 new public cases, 292 selected and all 6,143 local-original offline tests pass
+with twelve receptor workers, plus 157 post-editable cases. Exact-source
+[CI passes 15/15](https://github.com/uibcdf/sabueso/actions/runs/38059778704) and
+[governance passes](https://github.com/uibcdf/sabueso/actions/runs/38059778786).
+The [source receipt](archive/source_prerequisites_checkpoint.json) verifies
+4,590 cases per public offline lane, 1,228 per installed public-Ackredit lane,
+complete receptor captures, editable imports, six exact valid-input science/pin
+comparisons and an independent inert reader of all twelve historical/corrected
+pins. No new provider query, private fixture, schema change or changes to
+published 0.14.0. Full installed-artifact/human acceptance remains separate.
+Next: version derived disease identity coverage (#144), then advance derived
+comparative operation/bibliography coverage (#108).
 
 Development [Open Targets prerequisite correction](archive/open_targets_prerequisite.md)
 (#142) is source-qualified at `94ad9eb`. Missing upstream Ensembl gene identity is
@@ -18,9 +37,8 @@ editable imports and independently hashed full receptor captures. Valid-gene
 scientific pins and historical stored states stay exact; explicit refresh retains
 both old and new pins. No new provider query or private fixture. Published 0.14.0
 is unchanged; full installed-artifact/human acceptance remains separate.
-Current: qualify the six source-local prerequisite corrections together
-([#143](pending_bugs/source_prerequisites.md)), then continue derived comparative
-operation/bibliography coverage (#108).
+The six source-local corrections (#143) are qualified above; derived identity
+coverage (#144) and comparative operation/bibliography coverage (#108) remain open.
 
 Development [gnomAD observation](pending_proposals/gnomad_observation.md) is
 source-qualified at `682e226`. Variant/transcript/consequence/pext access retains
@@ -36,8 +54,9 @@ The [source receipt](pending_proposals/gnomad_observation_checkpoint.json) retai
 verified editable imports and independently hashed full receptor captures.
 Original-answer replay and inert reading pass without new queries; decoded page
 identities also match original wire bodies. Declared coverage becomes 38 source
-families. Open Targets prerequisite #142 is qualified above; the remaining
-gate qualification (#143) and derived comparative operation/bibliography stay open.
+families. Open Targets prerequisite #142 and source-local gates #143 are qualified
+above; derived disease identity coverage (#144) and comparative operation/
+bibliography remain open.
 Published 0.14.0 remains unchanged; full installed/human acceptance is separate.
 
 Development [OMA operation observation](pending_proposals/oma_observation.md) is

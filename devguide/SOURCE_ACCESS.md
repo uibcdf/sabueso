@@ -69,7 +69,7 @@ actually queried Open Targets target that omits the caller protein. The
 built-in gates for DISEASES (Ensembl protein), ClinVar (NCBI Gene), SKEMPI and
 SAbDab (PDB), MedGen (usable concept id), and MONDO disease identity (a named
 disease with a queryable identity) now use the same prerequisite boundary (#143;
-[qualification](pending_bugs/source_prerequisites.md)). Generic legacy
+[qualification](archive/source_prerequisites.md)). Generic legacy
 `NothingToAsk` compatibility remains; historical saved classifications are never
 rewritten during reads. GTEx requires pext tissue
 keys and one unambiguous GTEx release label in the upstream record; missing inputs

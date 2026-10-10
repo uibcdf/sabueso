@@ -1,5 +1,8 @@
 # Source-local upstream prerequisites (#143)
 
+Archived on 2026-10-10 after exact-source qualification of development main.
+Published 0.14.0 and historical stored classifications remain unchanged.
+
 Six built-in request gates previously returned `not_found` before any source
 access: DISEASES without an Ensembl protein, ClinVar without an NCBI Gene id,
 SKEMPI and SAbDab without a PDB cross-reference, MedGen without a usable MedGen
@@ -35,8 +38,25 @@ Python 3.14 uses twelve pytest-receptor workers and fatal SQLite/unraisable guar
 Six separate valid-input comparisons preserve exact prechange scientific payloads
 and pins. Style, shape/schema (1,627 paths, 0.3.14), source registry, fixture delivery,
 dependency preflight, MOLI governance/canonical guide, warning-fatal Sphinx and
-201 relative-file links pass. Exact-source remote qualification is pending. This corrects six built-in source gates; it does not
-establish live source absence, new observation coverage, full installed-artifact
+201 relative-file links pass. Source `c45af442335bf7f2c0f898b16e3d12637a7c51fd` passes
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38059778704)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/38059778786).
+The [source receipt](source_prerequisites_checkpoint.json) independently verifies
+all full GH Run Receptor capture members and 13 terminal test summaries:
+nine public offline lanes each pass 4,590 cases (10 fixture skips, 26 online
+deselections), and four installed public-Ackredit lanes each pass 1,228 cases.
+After installing the source editable, 157 cases pass in 5.40 seconds and all six
+participating imports/metadata match local checkouts outside the repository.
+The qualified producer is `0.14.0+30.gc45af44`; later documentation metadata does
+not overwrite its original receipt.
+
+An independent public producer/reader pair outside the checkout retains all twelve
+historical and corrected scientific payloads/pins with source access, derivation
+and fresh credit forbidden in the reader. A changed runtime version cannot rewrite
+stored classifications. Six additional valid-input fixture comparisons preserve
+exact scientific payloads and pins of prechange source gates.
+
+This corrects six built-in source gates; it does not establish live source absence, new observation coverage, full installed-artifact
 qualification or human/consumer acceptance. No new provider queries, private
 fixtures, schema fields or changes to published 0.14.0.
 

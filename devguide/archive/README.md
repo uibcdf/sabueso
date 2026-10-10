@@ -55,3 +55,9 @@ Their objectives are not dropped: `devguide/ROADMAP.md` tracks the status of eac
 - [uniref_pagination.md](uniref_pagination.md): exact-URL cycle detection and a
   finite logical-page budget (#140); [exact-source receipt](uniref_pagination_checkpoint.json).
   Published 0.14.0 retains the original loop.
+
+- [source_prerequisites.md](source_prerequisites.md): six built-in prerequisite
+  gates report unqueried input before client construction (#143), including named
+  conditions without queryable MONDO identity;
+  [exact-source receipt](source_prerequisites_checkpoint.json). Historical grouping
+  coverage needs a separately versioned correction (#144).

@@ -12,8 +12,9 @@ Development DISEASES, ClinVar, SKEMPI, SAbDab, MedGen and MONDO disease identity
 use an unqueried prerequisite boundary before client construction when their
 required upstream identity is missing (#143). Actual native empty/missing/error
 outcomes and saved historical pins retain their own scope.
-[Qualification](../pending_bugs/source_prerequisites.md) is in progress. This does
-not add SKEMPI/SAbDab acquisition observation.
+[Source qualification](../archive/source_prerequisites.md) passes at `c45af44`
+with 6,143 local-original cases and 15/15 exact-source CI. This does not add
+SKEMPI/SAbDab acquisition observation or qualify derived disease grouping (#144).
 
 Development gnomAD observes existing variant/transcript/consequence/pext GraphQL
 routes. Requested dataset/genome and client GTEx labels stay separate from unknown
