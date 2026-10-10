@@ -64,7 +64,25 @@ offline suite of 6,031 tests in 161.39 seconds, with 12 pytest-receptor workers.
 The full run retains 13 expected fixture warnings and makes SQLite/unraisable
 warnings fatal. Ruff, schema/shape, registry, fixture delivery, dependency
 preflight, MOLI governance, warning-fatal Sphinx and relative-link checks passed.
-Remote source qualification is in progress. The public fixture/synthetic module
+Source `593ba7670d4ac87336372a4135c28da011b98a2f` passes
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38047383239)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/38047383246).
+The [source receipt](oma_observation_checkpoint.json) independently checks every
+full GH Run Receptor capture member and all 13 terminal test summaries: nine
+public offline lanes each pass 4,478 tests (10 fixture skips, 26 online deselections),
+and four installed public-Ackredit lanes each pass 1,116 tests. After updating the
+shared editable environment, 82 cases pass in 13.48 seconds and all six
+participating component imports and editable metadata match their local checkouts
+outside the repository. The qualified Sabueso producer is `0.14.0+24.g593ba76`;
+later documentation metadata does not rewrite that receipt.
+
+Original archived-answer replay and independent inert reading pass with zero new
+provider queries. Original wire hashes, times, headers, scientific source boundaries
+and portable credit are independently checked. Detailed consumer artifacts remain
+private. This source checkpoint does not qualify a new installed Sabueso artifact
+or human/consumer-owned acceptance; the published 0.14.0 receipt stays unchanged.
+
+The public fixture/synthetic module
 `test_oma_acquisition_offline.py` adds 47 cases for source boundaries, native and
 unknown revisions, name ambiguity, generators/batches, missing/malformed inputs,
 continuations, retry exhaustion, partial failure, archive reuse/replay, taxon/limit

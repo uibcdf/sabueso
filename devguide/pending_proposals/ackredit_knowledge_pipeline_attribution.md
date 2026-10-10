@@ -715,7 +715,8 @@ CI plus governance. The [source receipt](uniref_observation_checkpoint.json) ver
 The subsequent [pagination correction #140](../archive/uniref_pagination.md)
 is source-qualified at `3a47490`: 21 new cases, 5,984 local-original cases and
 15/15 exact-source CI; [its receipt](../archive/uniref_pagination_checkpoint.json)
-retains public/installed compatibility scopes. Advance OMA. OMA, gnomAD, derived operations and complete bibliography stay open.
+retains public/installed compatibility scopes. OMA follows in the qualified slice
+below; gnomAD, derived operations and complete bibliography stay open.
 
 
 ## OMA operation observation (development, 2026-10-10, #108)
@@ -727,7 +728,12 @@ Missing local files are unavailable. Source-stated match gates and strain
 relationships stay fixed; equivalent unobserved fixture clients produce the same
 scientific pins. Resource credit declares the actual OMA REST API and UniProtKB
 search API URLs; underlying publications and sequence revisions remain gaps.
-[Scope and qualification](oma_observation.md). Qualification is in progress for
-47 new public regressions, scientific journeys and independent original reading.
+[Scope and qualification](oma_observation.md) records `593ba76`, 47 new cases,
+323 selected and 6,031 full local-original cases with twelve workers, 82
+post-editable cases and 15/15 exact-source CI plus governance. The
+[source receipt](oma_observation_checkpoint.json) verifies 4,478 cases per public
+offline lane, 1,116 per installed public-Ackredit lane and independently hashed
+full receptor captures. Original-answer replay and inert reading pass without
+new queries.
 No new provider queries or private fixtures; full installed-artifact/human
 acceptance and broader gnomAD/derived-operation/bibliography coverage stay open.

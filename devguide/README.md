@@ -140,9 +140,11 @@ not a release receipt.
   public/installed compatibility scopes. The [pagination correction #140](archive/uniref_pagination.md) is
   source-qualified at `3a47490`: 21 new cases, 5,984 local-original cases and 15/15
   exact-source CI; [its receipt](archive/uniref_pagination_checkpoint.json) retains
-  the public/installed compatibility scopes. The [OMA slice](pending_proposals/oma_observation.md) is implemented with
-  qualification in progress; qualify it before advancing gnomAD. OMA, gnomAD,
-  derived comparative operations and complete bibliography remain #108 work.
+  the public/installed compatibility scopes. The [OMA slice](pending_proposals/oma_observation.md)
+  is source-qualified at `593ba76`: 47 new cases, 6,031 local-original cases and
+  15/15 exact-source CI; [its receipt](pending_proposals/oma_observation_checkpoint.json)
+  retains public/installed compatibility and original-answer replay scope.
+  Advance gnomAD; derived comparative operations and complete bibliography remain #108 work.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery

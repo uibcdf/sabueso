@@ -5,12 +5,19 @@ Current state and resumption guidance. Historical receipts belong to the
 Last updated: 2026-10-10, OMA operation observation qualification (#108).
 
 Development [OMA operation observation](pending_proposals/oma_observation.md) is
-implemented and undergoing qualification: xrefs/protein/ortholog access belongs to
-OMA; entry-name resolution belongs to UniProt. Forty-seven new regressions cover
+source-qualified at `593ba76`: xrefs/protein/ortholog access belongs to OMA;
+entry-name resolution belongs to UniProt. Forty-seven new regressions cover
 source/revision/count scope, partial failure, local availability, replay and exact
-scientific pins. Declared observation coverage becomes 37 source families. After
-qualification, advance gnomAD and derived comparative operation/bibliography work.
-Published 0.14.0 remains unchanged.
+scientific pins. 323 selected and all 6,031 local-original cases pass with twelve
+receptor workers, plus 82 post-editable cases. Source `593ba76` passes
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38047383239)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/38047383246).
+The [source receipt](pending_proposals/oma_observation_checkpoint.json) retains
+4,478 cases per public offline lane, 1,116 per installed public-Ackredit lane,
+verified editable imports and independently hashed full receptor captures.
+Original-answer replay and inert reading pass without new queries. Declared
+observation coverage becomes 37 source families. Advance gnomAD and derived
+comparative operation/bibliography work. Published 0.14.0 remains unchanged.
 
 The [development UniRef slice](pending_proposals/uniref_observation.md) retains
 per-page releases, continuation, received/kept counts and partial failure scope,
@@ -32,8 +39,7 @@ and [governance](https://github.com/uibcdf/sabueso/actions/runs/38044453934).
 The [source receipt](archive/uniref_pagination_checkpoint.json) retains 4,431 cases
 per public offline lane, 1,069 per installed public-Ackredit lane and 96
 post-editable cases. Original-answer replay and inert reading pass without new
-queries. OMA qualification now follows above; gnomAD and derived operation
-coverage stay open.
+queries. OMA is qualified above; gnomAD and derived operation coverage stay open.
 Published 0.14.0, schemas and original fixture bytes are unchanged.
 
 The [development GTEx observation slice](pending_proposals/gtex_observation.md)
@@ -46,7 +52,7 @@ and [governance](https://github.com/uibcdf/sabueso/actions/runs/38038383380). Th
 [source receipt](pending_proposals/gtex_observation_checkpoint.json) retains 4,377
 cases per public offline lane, 1,015 per installed public-Ackredit lane, 76 post-editable
 cases and independently verified full receptor captures. #108 stays open for
-OMA, gnomAD and derived comparative operations; UniRef has the development slice
+gnomAD and derived comparative operations; OMA and UniRef have development slices
 above. Published 0.14.0 is unchanged.
 
 Development refresh now uses all 24 declared enrichers' 25 source/data selectors,
@@ -95,9 +101,8 @@ archived native-answer/old-report revalidation pass without new provider queries
 Earlier `@1` explanation qualification at `3fa2fdf` retains its unchanged
 [receipt](pending_proposals/comparative_explanations_checkpoint.json). Published
 0.14.0, frozen 0.3.13 and stored historical reports remain unchanged.
-Next: qualify OMA observation, then gnomAD and derived
-comparative operation/bibliography observation #108; GTEx and UniRef observation
-are qualified above. Installed
+Next: gnomAD and derived comparative operation/bibliography observation #108;
+OMA, GTEx and UniRef observation are qualified above. Installed
 artifact qualification and human scientific acceptance remain separate.
 
 ## Resume here
@@ -120,7 +125,8 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | Refresh requested scope | Declared selectors and recorded protein arguments survive failed/blocked/excluded requests; 77 new cases, 5,896 full local-original cases and exact-source CI 15/15 pass at `ff32cb6` (#139); original pins and scientific support remain readable | Historical unrecorded parameters use current defaults; unsupported routes are reported and omitted; all molecule/disease routes, comparative operation/bibliography #108 and installed/human acceptance remain separate |
 | Comparative scientific scope | Default tissue rules and explanation versions check explicit genomic scope and resolved/missing/conflicting coverage; 41 scoped cases, both report generations and 5,819 local-original cases pass; code `3bc1c53` passes 15/15 CI and governance (#138) | Retain explicit legacy reproduction and missing historical coordinate context; declared-source refresh is delivered in #139; operation/bibliography #108 and installed/human acceptance remain separate |
 | Comparative response integrity | Online OMA/UniRef/gnomAD/GTEx reject malformed required containers and unanswered consequence aliases; 96 new regressions, 223 selected and 5,723 full local-original cases pass; code `09cf912` passes 15/15 exact-SHA CI and governance (#137) | Retain declared source-version/operation gaps and qualify installed delivery separately; [source receipt](pending_proposals/comparative_response_contracts_checkpoint.json) |
-| UniRef page observation | Per-page releases, limits, partial failures and portable resource credit under `UniProt`; 33 new cases, 5,963 local-original cases and 15/15 exact-source CI pass at `c6cb0e3` (#108) | Pagination correction #140 is source-qualified at `3a47490` (21 new cases, 5,984 local-original cases, CI 15/15); qualify the implemented OMA slice; gnomAD, derived operations, complete bibliography and installed/human acceptance remain open; [source receipt](pending_proposals/uniref_observation_checkpoint.json) |
+| UniRef page observation | Per-page releases, limits, partial failures and portable resource credit under `UniProt`; 33 new cases, 5,963 local-original cases and 15/15 exact-source CI pass at `c6cb0e3` (#108) | Pagination correction #140 is source-qualified at `3a47490` (21 new cases, 5,984 local-original cases, CI 15/15); OMA observation is qualified above; gnomAD, derived operations, complete bibliography and installed/human acceptance remain open; [source receipt](pending_proposals/uniref_observation_checkpoint.json) |
+| OMA operation observation | OMA xrefs/protein/orthologs and UniProt entry-name resolution retain original receipts, revision/count scope and partial failures; 47 new cases, 6,031 local-original cases and 15/15 exact-source CI pass at `593ba76` (#108) | gnomAD, derived comparative operations, complete bibliography and installed/human acceptance remain open; [source receipt](pending_proposals/oma_observation_checkpoint.json) |
 
 The accumulated recovery/consolidation code checkpoint is published as
 `dc4642414c46744f39d85cb666094b0d52dd705a`, with

@@ -33,9 +33,10 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   [source receipt](pending_proposals/comparative_response_contracts_checkpoint.json)
   preserves both local/public scopes. This is not a complete native field validator
   or new installed delivery.
-  [Development OMA observation](pending_proposals/oma_observation.md) is implemented
-  with qualification in progress. It separates OMA statements from UniProt name
-  bindings, exposes revision/selection gaps and retains source-stated match gates.
+  [Development OMA observation](pending_proposals/oma_observation.md) is
+  source-qualified at `593ba76` with 6,031 local-original cases and 15/15 CI;
+  [its receipt](pending_proposals/oma_observation_checkpoint.json) retains the limits.
+  It separates OMA statements from UniProt name bindings, exposes revision/selection gaps and retains source-stated match gates.
   gnomAD and derived-operation observation, complete bibliography and strict cost/
   deadline limits remain open.
   [Development UniRef observation](pending_proposals/uniref_observation.md)

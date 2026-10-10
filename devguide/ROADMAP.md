@@ -496,9 +496,11 @@ public method names.
   public/local/installed compatibility scopes. The [pagination correction #140](archive/uniref_pagination.md) is
   source-qualified at `3a47490`: 21 new cases, 5,984 local-original cases and 15/15
   exact-source CI; [its receipt](archive/uniref_pagination_checkpoint.json) retains
-  the public/installed compatibility scopes. The [OMA slice](pending_proposals/oma_observation.md) is implemented with
-  qualification in progress; qualify it before advancing gnomAD.
-  OMA qualification, gnomAD and derived-operation coverage stay open.
+  the public/installed compatibility scopes. The [OMA slice](pending_proposals/oma_observation.md)
+  is source-qualified at `593ba76`: 47 new cases, 6,031 local-original cases and
+  15/15 exact-source CI; [its receipt](pending_proposals/oma_observation_checkpoint.json)
+  retains public/installed compatibility and original-answer replay scope.
+  Advance gnomAD; derived comparative operations and complete bibliography remain #108 work.
 - **Traceability (#108).** Extend observed source/client/operation coverage along
   these exercised paths, including reuse, versions with their actual basis, retries,
   empty answers, caps, partial returns and failures. Keep bibliography and missing
