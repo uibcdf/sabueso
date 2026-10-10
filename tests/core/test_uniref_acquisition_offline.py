@@ -104,7 +104,11 @@ def test_member_limit_distinguishes_received_and_returned_rows(
         monkeypatch,
         [
             ({"results": [{"id": "first"}]}, "2026_03", NEXT),
-            ({"results": [{"id": i} for i in range(last_count)]}, "2026_03", next_url),
+            (
+                {"results": [{"id": i} for i in range(last_count)]},
+                "2026_03",
+                NEXT + "&last=1" if next_url else None,
+            ),
             ({"results": [{"id": "last"}]}, "2026_03"),
         ],
     )
@@ -165,6 +169,11 @@ def test_later_page_failure_retains_completed_scope_but_returns_no_partial_scien
     assert record["cluster_context"]["continuation"] == NEXT
     assert record["terminal_outcome"] == ("not_found" if failure == "404" else "failed")
     assert record["provider"]["status"] == "available"
+    pagination = record["cluster_context"]["pagination"]
+    assert pagination["requested_pages"] == 2
+    assert pagination["completed_pages"] == 1
+    assert pagination["stop_reason"] == "request_failed"
+    assert pagination["remaining_url"] == NEXT
 
 
 @pytest.mark.parametrize("payload", [None, [], {}, {"record": None}, {"record": [0]}])
@@ -437,3 +446,227 @@ with ackredit.session('independent reader'),sabueso.attribution() as run:
     )
     assert result.returncode == 0, result.stdout + result.stderr
     assert json.loads(sidecar.read_text()) == saved
+
+
+@pytest.mark.parametrize("cycle_length", [1, 3])
+@pytest.mark.parametrize("nonempty", [False, True])
+def test_member_cycles_stop_before_repeating_a_request(
+    monkeypatch, cycle_length, nonempty
+):
+    first = f"{uniref.API}/UniRef90_P52270/members?format=json&size={uniref.PAGE}"
+    urls = [first, NEXT, NEXT + "&third=1"][:cycle_length]
+    calls = serve(
+        monkeypatch,
+        [
+            ({"results": [{"id": i}] if nonempty else []}, "2026_03", following)
+            for i, following in enumerate(urls[1:] + urls[:1])
+        ],
+    )
+    with sabueso.attribution() as run, pytest.raises(ConnectorError) as caught:
+        uniref.OnlineUniRefClient().members("UniRef90_P52270")
+    (record,) = run.acquisitions
+    assert calls == urls
+    assert record["network_attempts"] == cycle_length
+    assert record["outcome"] == "partial" and record["terminal_outcome"] == "failed"
+    assert record["count"] == (cycle_length if nonempty else 0)
+    assert record["cluster_context"]["returned_rows"] is None
+    assert record["truncated"] is None and record["incomplete"]
+    pagination = record["cluster_context"]["pagination"]
+    assert pagination["rule"] == "uniref_member_pagination@1"
+    assert pagination["stop_reason"] == "repeated_url"
+    assert (
+        pagination["requested_pages"] == pagination["completed_pages"] == cycle_length
+    )
+    assert pagination["remaining_url"] == first
+    assert caught.value.extra["uniref_pagination"]["stop_reason"] == "repeated_url"
+    portable = ackredit.Attribution.from_dict(record["provider"]["attribution"])
+    assert "repeated_url" in json.dumps(portable.to_dict())
+
+
+@pytest.mark.parametrize("page_limit", [1, 3, 100])
+@pytest.mark.parametrize("nonempty", [False, True])
+def test_unique_member_chains_stop_at_page_budget_even_without_members(
+    monkeypatch, page_limit, nonempty
+):
+    assert uniref.MAX_MEMBER_PAGES == 100
+    monkeypatch.setattr(uniref, "MAX_MEMBER_PAGES", page_limit)
+    calls = serve(
+        monkeypatch,
+        [
+            (
+                {"results": [{"id": i}] if nonempty else []},
+                "2026_03",
+                NEXT + f"&page={i + 1}",
+            )
+            for i in range(page_limit)
+        ],
+    )
+    with sabueso.attribution() as run, pytest.raises(ConnectorError):
+        uniref.OnlineUniRefClient().members("UniRef90_P52270")
+    (record,) = run.acquisitions
+    assert len(calls) == len(set(calls)) == record["network_attempts"] == page_limit
+    assert record["outcome"] == "partial" and record["terminal_outcome"] == "failed"
+    assert record["count"] == (page_limit if nonempty else 0)
+    assert record["cluster_context"]["returned_rows"] is None
+    pagination = record["cluster_context"]["pagination"]
+    assert pagination["stop_reason"] == "page_limit"
+    assert pagination["requested_pages"] == pagination["completed_pages"] == page_limit
+    assert pagination["remaining_url"] == NEXT + f"&page={page_limit}"
+
+
+@pytest.mark.parametrize("cycle", [False, True])
+def test_member_ceiling_is_successful_even_at_page_budget_or_with_cycle(
+    monkeypatch, cycle
+):
+    monkeypatch.setattr(uniref, "MAX_MEMBERS", 1)
+    monkeypatch.setattr(uniref, "MAX_MEMBER_PAGES", 1)
+    first = f"{uniref.API}/UniRef90_P52270/members?format=json&size={uniref.PAGE}"
+    calls = serve(
+        monkeypatch,
+        [({"results": [{"id": "kept"}]}, "2026_03", first if cycle else NEXT)],
+    )
+    with sabueso.attribution() as run:
+        result = uniref.OnlineUniRefClient().members("UniRef90_P52270")
+    (record,) = run.acquisitions
+    assert result["record"] == [{"id": "kept"}] and result["truncated"]
+    assert len(calls) == 1 and record["outcome"] == "received"
+    assert record["cluster_context"]["pagination"]["stop_reason"] == "member_limit"
+
+
+def test_final_empty_page_at_budget_is_successful_route_exhaustion(monkeypatch):
+    monkeypatch.setattr(uniref, "MAX_MEMBER_PAGES", 2)
+    calls = serve(
+        monkeypatch,
+        [({"results": []}, "2026_03", NEXT), ({"results": []}, "2026_03")],
+    )
+    with sabueso.attribution() as run:
+        result = uniref.OnlineUniRefClient().members("UniRef90_P52270")
+    (record,) = run.acquisitions
+    assert len(calls) == 2 and result["record"] == [] and not result["truncated"]
+    assert record["outcome"] == "empty" and not record["incomplete"]
+    assert record["cluster_context"]["pagination"]["stop_reason"] == "route_exhausted"
+
+
+def test_member_transient_retry_consumes_one_logical_page(monkeypatch):
+    monkeypatch.setattr(uniref, "MAX_MEMBER_PAGES", 1)
+    calls = serve(
+        monkeypatch,
+        [HTTPError(uniref.API, 503, "test", None, None), ({"results": []}, "2026_03")],
+    )
+    with sabueso.attribution() as run:
+        uniref.OnlineUniRefClient().members("UniRef90_P52270")
+    (record,) = run.acquisitions
+    assert len(calls) == record["network_attempts"] == 2
+    assert record["cluster_context"]["pagination"]["requested_pages"] == 1
+
+
+def test_nested_transport_and_unreadable_body_retries_have_finite_attempts(monkeypatch):
+    monkeypatch.setattr(uniref, "MAX_MEMBER_PAGES", 1)
+    calls = []
+
+    def respond(request, timeout):
+        calls.append(request.full_url)
+        if len(calls) % (_http.RETRIES + 1):
+            raise HTTPError(request.full_url, 503, "test", None, None)
+        response = Response({})
+        response.seek(0)
+        response.truncate()
+        response.write(b"not JSON")
+        response.seek(0)
+        return response
+
+    monkeypatch.setattr(_http, "_urlopen", respond)
+    monkeypatch.setattr(_http, "_wait", lambda *args: 0)
+    with sabueso.attribution() as run, pytest.raises(ConnectorError):
+        uniref.OnlineUniRefClient().members("UniRef90_P52270")
+    (record,) = run.acquisitions
+    assert len(calls) == record["network_attempts"] == (_http.RETRIES + 1) ** 2
+    assert record["pages"] == [] and record["outcome"] == "failed"
+    pagination = record["cluster_context"]["pagination"]
+    assert pagination["requested_pages"] == 1 and pagination["completed_pages"] == 0
+    assert pagination["stop_reason"] == "request_failed"
+    assert pagination["remaining_url"] == calls[-1]
+
+
+@pytest.mark.parametrize("reason", ["repeated_url", "page_limit"])
+def test_failed_member_pagination_never_installs_partial_cluster_support(
+    monkeypatch, reason
+):
+    from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
+
+    monkeypatch.setattr(uniref, "MAX_MEMBER_PAGES", 1)
+    first = f"{uniref.API}/UniRef90_P52270/members?format=json&size={uniref.PAGE}"
+    calls = serve(
+        monkeypatch,
+        [
+            (
+                {"results": [{"id": "UniRef90_P52270", "entryType": "UniRef90"}]},
+                "2026_03",
+            ),
+            (
+                {"results": [{"accessions": ["Q4DV43"]}]},
+                "2026_03",
+                first if reason == "repeated_url" else NEXT,
+            ),
+        ],
+    )
+    with pytest.warns(EnrichmentFailedWarning):
+        card = build(uniref.OnlineUniRefClient())
+    records = [
+        r
+        for r in card.acquisition_trace["records"]
+        if r["operation"].startswith("uniref_")
+    ]
+    assert len(calls) == 2 and [r["outcome"] for r in records] == [
+        "received",
+        "partial",
+    ]
+    assert records[-1]["cluster_context"]["pagination"]["stop_reason"] == reason
+    assert card.get("identifiers.uniref") is None
+    assert card.relationships("clustered_with") == []
+    assert card.relationships("same_as", object_ref="uniprot:Q4DV43") == []
+    state = [
+        r for r in card.knowledge_state()["rows"] if r["area"] == "identifiers.uniref"
+    ]
+    assert state and all(
+        r["state"] == "unavailable" and r["count"] is None for r in state
+    )
+    quality = [
+        r for r in card.to_dict()["quality"]["enrichments"] if r.get("data") == "uniref"
+    ]
+    assert quality and all(r["status"] == "error" for r in quality)
+
+
+@pytest.mark.parametrize("mode", ["reuse", "replay"])
+@pytest.mark.parametrize("reason", ["repeated_url", "page_limit"])
+def test_archived_pagination_failure_keeps_original_receipts_without_network(
+    monkeypatch, tmp_path, mode, reason
+):
+    monkeypatch.setattr(uniref, "MAX_MEMBER_PAGES", 1)
+    first = f"{uniref.API}/UniRef90_P52270/members?format=json&size={uniref.PAGE}"
+    calls = serve(
+        monkeypatch,
+        [({"results": []}, "2026_03", first if reason == "repeated_url" else NEXT)],
+    )
+    archive = sabueso.RetrievalArchive(tmp_path / "archive.db")
+    with (
+        archive.recording(),
+        sabueso.attribution() as original,
+        pytest.raises(ConnectorError),
+    ):
+        uniref.OnlineUniRefClient().members("UniRef90_P52270")
+    context = (
+        archive.reusing(timedelta(days=1)) if mode == "reuse" else archive.replaying()
+    )
+    with context, sabueso.attribution() as restored, pytest.raises(ConnectorError):
+        uniref.OnlineUniRefClient().members("UniRef90_P52270")
+    (before,), (after,) = original.acquisitions, restored.acquisitions
+    assert (
+        len(calls) == 1 and after["network_attempts"] == 0 and after["access"] == mode
+    )
+    assert after["pages"] == before["pages"]
+    assert after["cluster_context"] == before["cluster_context"]
+    for field in ("response_sha256", "retrieved_at", "retrieval_ref"):
+        assert after["requests"][0][field] == before["requests"][0][field]
+    portable = ackredit.Attribution.from_dict(after["provider"]["attribution"])
+    assert reason in json.dumps(portable.to_dict())

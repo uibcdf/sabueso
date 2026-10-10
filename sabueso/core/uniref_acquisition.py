@@ -68,7 +68,7 @@ def observe(operation, *, fixture=False):
 
 
 def _summarize(result, query, fixture, requests, pages, operation):
-    from sabueso.tools.db.uniref import MAX_MEMBERS, PAGE
+    from sabueso.tools.db.uniref import MAX_MEMBER_PAGES, MAX_MEMBERS, PAGE
 
     failed = isinstance(result, Exception)
     completed = [page for page in pages if page["outcome"] in {"received", "empty"}]
@@ -140,6 +140,29 @@ def _summarize(result, query, fixture, requests, pages, operation):
             "reference_basis": "resource_description_only; member_publications_not_queried",
         },
     }
+    if operation == "uniref_members" and not fixture:
+        pagination = {
+            "rule": "uniref_member_pagination@1",
+            "page_limit": MAX_MEMBER_PAGES,
+            "requested_pages": max(
+                len(pages), len({request["url"] for request in requests})
+            ),
+            "completed_pages": len(completed),
+            "stop_reason": "request_failed"
+            if failed
+            else "member_limit"
+            if truncated
+            else "route_exhausted",
+            "remaining_url": (
+                requests[-1]["url"] if failed and requests else continuation
+            ),
+            "retry_basis": "shared_transport_limits; retries_are_not_new_logical_pages",
+        }
+        if failed:
+            pagination.update(
+                (getattr(result, "extra", None) or {}).get("uniref_pagination", {})
+            )
+        metadata["cluster_context"]["pagination"] = pagination
     if completed:
         metadata["response_identity"] = {
             "basis": "completed_page_receipts" if failed else "decoded_client_record",

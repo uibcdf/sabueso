@@ -147,6 +147,10 @@ revision and whole-dataset completeness. Development UniRef now observes existin
 cluster/member pages, revisions, limits and partial failures within the same
 `UniProt` source family. OMA, gnomAD and derived comparative operation observation
 remain open; these extensions are outside published 0.14.0.
+Online UniRef members allow at most 100 logical pages and reject repeated request
+URLs. Exhaustion or cycles fail without installing partial card knowledge; the
+5,000-member ceiling remains successful explicit truncation. Completed-page
+observations do not establish global absence or whole-cluster completeness.
 
 The access and journey extensions below are delivered in 0.14.0. Their individual
 native input, licence, live-health and card-integration limits remain unchanged.

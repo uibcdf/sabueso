@@ -142,7 +142,11 @@ not promise card enrichment, live availability or public-package delivery.
   page releases, continuation, received/kept counts and partial failures remain
   explicit; client version labels do not prove coherent pages. Missing fixtures
   raise `ConnectorError` with an unavailable observation. Successful scientific
-  returns and pins stay fixed. See [the UniRef scope](pending_proposals/uniref_observation.md).
+  returns and pins stay fixed. Online members allow at most 100 logical pages,
+  including empty pages; repeated request URLs or an exhausted page budget raise
+  `ConnectorError` without returning partial knowledge. The 5,000-member ceiling
+  remains successful explicit truncation. See [the UniRef scope](pending_proposals/uniref_observation.md)
+  and [pagination policy](pending_bugs/uniref_pagination.md).
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
   Deck.
 - `sabueso.resolve_disease_card(identifier)`, `sabueso.disease_targets(disease,

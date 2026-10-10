@@ -8,6 +8,12 @@ releases; missing headers stay unknown and fixture releases are declared labels.
 Missing local files mean unavailable access. Cluster membership remains similarity,
 and resource descriptions do not supply member publications or sequence revisions.
 Saved readers retain exact pins and original credit without fresh operations.
+Online member access stops before repeating a request URL or exceeding 100 logical
+pages, including empty pages. Either condition raises a connector error: the trace
+retains completed pages and the termination reason, while failed enrichment adds
+no partial cluster assertions. The 5,000-member ceiling remains a successful,
+explicitly truncated result. Transport retries have separate limits; the page
+budget does not provide a strict elapsed-time deadline.
 This extension is outside the unchanged published 0.14.0 artifact.
 
 Development GTEx tissue access credits the [GTEx Portal](https://gtexportal.org/),

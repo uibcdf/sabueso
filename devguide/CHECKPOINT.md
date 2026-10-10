@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-10, UniRef page observation source-qualified (#108).
+Last updated: 2026-10-10, UniRef pagination termination qualification (#140).
 
 The [development UniRef slice](pending_proposals/uniref_observation.md) retains
 per-page releases, continuation, received/kept counts and partial failure scope,
@@ -14,8 +14,10 @@ and [governance](https://github.com/uibcdf/sabueso/actions/runs/38041493793).
 The [source receipt](pending_proposals/uniref_observation_checkpoint.json) retains
 4,410 cases per public offline lane, 1,048 per installed public-Ackredit lane,
 75 post-editable cases and independently hashed full receptor captures.
-Next, fix the reproduced [pagination termination defect #140](https://github.com/uibcdf/sabueso/issues/140)
-before advancing OMA; gnomAD and derived comparative operation coverage stay open.
+The subsequent [pagination correction #140](pending_bugs/uniref_pagination.md)
+adds exact-URL cycle detection and a 100-logical-page budget; its qualification is
+in progress. After that checkpoint, advance OMA; gnomAD and derived comparative
+operation coverage stay open.
 Published 0.14.0, schemas and original fixture bytes are unchanged.
 
 The [development GTEx observation slice](pending_proposals/gtex_observation.md)
@@ -77,7 +79,7 @@ archived native-answer/old-report revalidation pass without new provider queries
 Earlier `@1` explanation qualification at `3fa2fdf` retains its unchanged
 [receipt](pending_proposals/comparative_explanations_checkpoint.json). Published
 0.14.0, frozen 0.3.13 and stored historical reports remain unchanged.
-Next: fix UniRef pagination termination #140, then OMA/gnomAD and derived
+Next: qualify UniRef pagination termination #140, then OMA/gnomAD and derived
 comparative operation/bibliography observation #108; GTEx and UniRef observation
 are qualified above. Installed
 artifact qualification and human scientific acceptance remain separate.
@@ -102,7 +104,7 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | Refresh requested scope | Declared selectors and recorded protein arguments survive failed/blocked/excluded requests; 77 new cases, 5,896 full local-original cases and exact-source CI 15/15 pass at `ff32cb6` (#139); original pins and scientific support remain readable | Historical unrecorded parameters use current defaults; unsupported routes are reported and omitted; all molecule/disease routes, comparative operation/bibliography #108 and installed/human acceptance remain separate |
 | Comparative scientific scope | Default tissue rules and explanation versions check explicit genomic scope and resolved/missing/conflicting coverage; 41 scoped cases, both report generations and 5,819 local-original cases pass; code `3bc1c53` passes 15/15 CI and governance (#138) | Retain explicit legacy reproduction and missing historical coordinate context; declared-source refresh is delivered in #139; operation/bibliography #108 and installed/human acceptance remain separate |
 | Comparative response integrity | Online OMA/UniRef/gnomAD/GTEx reject malformed required containers and unanswered consequence aliases; 96 new regressions, 223 selected and 5,723 full local-original cases pass; code `09cf912` passes 15/15 exact-SHA CI and governance (#137) | Retain declared source-version/operation gaps and qualify installed delivery separately; [source receipt](pending_proposals/comparative_response_contracts_checkpoint.json) |
-| UniRef page observation | Per-page releases, limits, partial failures and portable resource credit under `UniProt`; 33 new cases, 5,963 local-original cases and 15/15 exact-source CI pass at `c6cb0e3` (#108) | Fix reproduced pagination termination #140 before advancing OMA; gnomAD, derived operations, complete bibliography and installed/human acceptance remain open; [source receipt](pending_proposals/uniref_observation_checkpoint.json) |
+| UniRef page observation | Per-page releases, limits, partial failures and portable resource credit under `UniProt`; 33 new cases, 5,963 local-original cases and 15/15 exact-source CI pass at `c6cb0e3` (#108) | Qualify the implemented pagination correction #140 before advancing OMA; gnomAD, derived operations, complete bibliography and installed/human acceptance remain open; [source receipt](pending_proposals/uniref_observation_checkpoint.json) |
 
 The accumulated recovery/consolidation code checkpoint is published as
 `dc4642414c46744f39d85cb666094b0d52dd705a`, with

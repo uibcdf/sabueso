@@ -26,10 +26,10 @@ member-page choice. It is not proof that all pages or separate cluster/member
 operations share a revision. Original page metadata remains independently
 inspectable even when the next page fails.
 
-The existing row limit does not bound attempts across empty continuation pages
-or detect cyclic links. This observer preserves the existing pagination behavior;
-a separate termination policy is tracked in [#140](https://github.com/uibcdf/sabueso/issues/140) before claiming bounded requests
-for arbitrary malformed pagination.
+At source checkpoint `c6cb0e3`, the row limit did not bound attempts across empty
+continuation pages or detect cyclic links. The subsequent
+[pagination correction #140](../pending_bugs/uniref_pagination.md) has separate
+qualification; it does not change this dated observation receipt.
 
 Later failures retain completed-page counts and identities as partial access,
 with the original terminal failure and no returned scientific result. Empty

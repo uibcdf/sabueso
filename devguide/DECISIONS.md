@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Bound UniRef member pagination independently of row count (2026-10-10, #140)
+
+Use `uniref_member_pagination@1`: stop before requesting an exact URL twice or
+requesting more than 100 logical member pages, including empty pages. These
+conditions raise `ConnectorError`, retaining completed-page observations and
+portable resource credit but returning no partial scientific result. The existing
+5,000-member ceiling remains successful explicit truncation and takes precedence
+when reached. Transport retries count separately from logical pages; their shared
+limits and per-attempt timeout do not constitute a strict wall-clock deadline.
+The page ceiling permits sparse responses while bounding arbitrary distinct empty
+continuations. Fixtures retain their declared subset semantics. No card schema,
+source identity or original response bytes change. [Policy and qualification](pending_bugs/uniref_pagination.md).
+
 ## Observe UniRef pages under the shared UniProt source (2026-10-10, #108)
 
 Observe existing cluster/member access as separate logical operations, keeping

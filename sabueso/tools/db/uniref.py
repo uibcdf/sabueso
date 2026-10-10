@@ -12,7 +12,10 @@ does not merge them.
 
 - ``clusters(accession)``: the UniRef100, UniRef90 and UniRef50 clusters of an entry
   (one request);
-- ``members(cluster_id)``: a cluster's members (500 per request).
+- ``members(cluster_id)``: a cluster's members (500 per request, at most 100 pages).
+  Repeated request URLs or an exhausted page budget raise ``ConnectorError``;
+  the detached trace retains completed pages. The member ceiling remains a
+  successful, explicitly truncated result.
 
 Each answer is ``{"retrieved_at", "version", "record"}``, ``version`` the UniProt release
 the service states. ``OnlineUniRefClient`` queries UniProt's REST API (CC BY 4.0, as
@@ -40,6 +43,8 @@ API = "https://rest.uniprot.org/uniref"
 PAGE = 500
 #: Members of a cluster kept, at most; a cut is reported.
 MAX_MEMBERS = 5000
+#: Logical member pages requested, including empty pages; retries are separate.
+MAX_MEMBER_PAGES = 100
 
 
 class OnlineUniRefClient:
@@ -102,7 +107,13 @@ class OnlineUniRefClient:
         )
         members: List[Dict[str, Any]] = []
         release = None
+        requested_urls = set()
         while url and len(members) < MAX_MEMBERS:
+            if url in requested_urls:
+                raise _pagination_error("repeated_url", url, len(requested_urls))
+            if len(requested_urls) >= MAX_MEMBER_PAGES:
+                raise _pagination_error("page_limit", url, len(requested_urls))
+            requested_urls.add(url)
             found, release, link = self._get(url)
             members.extend(found.get("results") or [])
             url = _next(link)
@@ -112,6 +123,21 @@ class OnlineUniRefClient:
             "record": members[:MAX_MEMBERS],
             "truncated": bool(url) or len(members) > MAX_MEMBERS,
         }
+
+
+def _pagination_error(reason: str, url: str, requested_pages: int) -> ConnectorError:
+    return ConnectorError(
+        f"UniRef member pagination stopped ({reason}); no partial result returned",
+        extra={
+            "uniref_pagination": {
+                "rule": "uniref_member_pagination@1",
+                "stop_reason": reason,
+                "remaining_url": url,
+                "requested_pages": requested_pages,
+                "page_limit": MAX_MEMBER_PAGES,
+            }
+        },
+    )
 
 
 def _next(link: str | None) -> str | None:

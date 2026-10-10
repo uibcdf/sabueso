@@ -712,5 +712,5 @@ original credit without new operations. [Scope and qualification](uniref_observa
 records code `c6cb0e3`, 33 new cases, 5,963 local-original cases and 15/15 exact-source
 CI plus governance. The [source receipt](uniref_observation_checkpoint.json) verifies
 4,410 cases per public offline lane and 1,048 per installed public-Ackredit lane.
-Fix reproduced pagination termination [#140](https://github.com/uibcdf/sabueso/issues/140)
-before advancing OMA. OMA, gnomAD, derived operations and complete bibliography stay open.
+The subsequent [pagination correction #140](../pending_bugs/uniref_pagination.md)
+is implemented with qualification in progress before advancing OMA. OMA, gnomAD, derived operations and complete bibliography stay open.

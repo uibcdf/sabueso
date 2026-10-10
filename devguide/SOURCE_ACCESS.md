@@ -79,6 +79,13 @@ observes existing tissue access; development UniRef observes existing cluster/me
 pages with their individual release and limit bases. OMA/gnomAD coverage remains open. Original
 response bytes, source identity and card schemas stay fixed.
 
+Online UniRef members use `uniref_member_pagination@1`: at most 100 logical pages,
+including empty pages, and no repeated exact request URL. Exhaustion or a cycle
+raises `ConnectorError`; completed pages remain observable without partial card
+assertions. The existing 5,000-row ceiling remains successful explicit truncation.
+Retries are bounded separately by shared transport policy; this is not a strict
+elapsed-time guarantee. [Policy and verification](pending_bugs/uniref_pagination.md).
+
 ### Supplied originals
 
 `load_source_snapshot` parses explicit supported formats and preserves original

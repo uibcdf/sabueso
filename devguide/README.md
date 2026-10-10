@@ -137,8 +137,8 @@ not a release receipt.
   retains page releases, caps, partial failures and portable resource credit;
   code `c6cb0e3` passes 5,963 local-original cases and 15/15 exact-SHA CI.
   [Its source receipt](pending_proposals/uniref_observation_checkpoint.json) preserves
-  public/installed compatibility scopes. Fix the reproduced pagination termination
-  defect [#140](https://github.com/uibcdf/sabueso/issues/140) before advancing OMA. OMA, gnomAD,
+  public/installed compatibility scopes. Qualify the implemented
+  [pagination correction #140](pending_bugs/uniref_pagination.md) before advancing OMA. OMA, gnomAD,
   derived comparative operations and complete bibliography remain #108 work.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
