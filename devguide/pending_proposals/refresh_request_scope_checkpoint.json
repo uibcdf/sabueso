@@ -246,14 +246,6 @@
     "inspection": "GH Run Receptor complete full capture/replay; all manifest members independently hashed",
     "capture_manifest_sha256": "0684aefd2822d39b6c02b9d387139478639fedf8a81a17bc7b4d221817ab77bc"
   },
-  "private_revalidation": {
-    "previous_original_cells_reconfirmed": 8,
-    "new_original_notebook_cells": 0,
-    "actual_archived_refresh_contexts": 5,
-    "independent_original_and_refreshed_pins": 10,
-    "new_provider_queries": 0,
-    "details_remain_private": true
-  },
   "qualification_limits": [
     "Development source checkpoint, not a new installed artifact or public release.",
     "Recorded supplied arguments do not freeze omitted client defaults, source request identifiers, or native release versions.",

@@ -67,12 +67,9 @@ preserves these results. After editable metadata refresh, 116 scope/migration/
 independent-report cases pass, and all six participating imports/metadata agree
 outside the checkout.
 
-Private original-answer revalidation reconfirms eight existing original SDK cells
-and five actual archived-context refreshes against the current scientific baseline.
-An independent inert reader verifies ten original/refreshed pins and 9,094 exact
-assertions through sealed states, with thirty individual pin reads and unchanged
-active-session credit. Input directories remain unchanged; no provider query or
-additional original notebook cell is involved. Detailed receipts remain private.
+Private consumer revalidation remains separate under #132. Its execution details
+and derived metrics are retained only in the private workspace.
+
 This slice does not provide frozen client defaults, native release verification,
 all molecule/disease refresh routes, new comparative acquisition observation or
 bibliography (#108), installed-artifact or human scientific acceptance.

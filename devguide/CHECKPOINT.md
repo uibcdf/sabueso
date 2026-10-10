@@ -20,9 +20,8 @@ twelve receptor workers on Python 3.14.7. All nine public offline CI lanes pass
 4,343 cases with ten declared fixture skips; four installed public-Ackredit lanes
 pass 981 cases. 116 refresh/migration/independent-report cases pass after updating
 editable metadata; all six participating imports are verified outside the checkout.
-Eight existing original SDK cells and five actual archived-context refreshes pass
-without provider queries. Independent readers retain ten original/refreshed pins,
-their exact sealed support and unchanged active-session credit. Details stay private.
+Private consumer revalidation remains separately tracked under #132; its
+execution details and derived metrics remain outside the public receipt.
 
 Development Card views default to `pext_at_variant@2` and `isoform_exon_usage@3`,
 with explanation `@2`, explicit historical `usage_rule` selection and per-tissue
