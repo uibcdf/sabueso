@@ -386,6 +386,17 @@ def _credit(record):
 
     record["bibliography"] = [software(), *descriptions(record["source"])]
     record["bibliography_gaps"] = []
+    if record["source"] == "UniProt" and record["operation"] in {
+        "uniref_clusters",
+        "uniref_members",
+    }:
+        record["bibliography"].extend(descriptions("UniRef"))
+        record["bibliography_gaps"].extend(
+            [
+                "cluster_and_member_sequence_revisions_not_stated; page_releases_are_separate",
+                "member_publications_not_queried",
+            ]
+        )
     primary_ids = set()
     reference_occurrences = {}
     primary_role = "structure_primary_citation"
@@ -718,6 +729,7 @@ def _credit(record):
             "clinical_context",
             "taxonomy_context",
             "tissue_context",
+            "cluster_context",
         ):
             if key in record:
                 context[key] = deepcopy(record[key])

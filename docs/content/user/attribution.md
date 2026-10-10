@@ -1,5 +1,15 @@
 # Automatic traceability and attribution
 
+Development UniRef cluster/member access retains original page releases, links,
+received/kept counts and partial failure scope under source `UniProt`. Portable
+attribution credits the UniProt description and the specific UniRef API resource
+already used by the connector. Client version labels do not prove coherent page
+releases; missing headers stay unknown and fixture releases are declared labels.
+Missing local files mean unavailable access. Cluster membership remains similarity,
+and resource descriptions do not supply member publications or sequence revisions.
+Saved readers retain exact pins and original credit without fresh operations.
+This extension is outside the unchanged published 0.14.0 artifact.
+
 Development GTEx tissue access credits the [GTEx Portal](https://gtexportal.org/),
 whose URL and acknowledgement are declared in Sabueso's source registry and public
 fixture notice. Built-in online/fixture `tissues` and public `get_tissues` retain

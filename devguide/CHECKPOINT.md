@@ -2,7 +2,15 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-10, GTEx tissue observation source-qualified (#108).
+Last updated: 2026-10-10, UniRef page observation in development (#108).
+
+The [development UniRef slice](pending_proposals/uniref_observation.md) retains
+per-page releases, continuation, received/kept counts and partial failure scope,
+with operation-specific portable resource credit under source `UniProt`.
+Scientific results and pins remain equivalent to the same unobserved fixture
+client. 33 new regressions, 322 selected cases and all 5,963 local-original cases
+pass with twelve receptor workers. Exact-source CI qualification is pending;
+the GTEx checkpoint below retains its completed CI receipt.
 
 The [development GTEx observation slice](pending_proposals/gtex_observation.md)
 records existing tissue access and portable attribution, distinguishes requested
@@ -14,7 +22,8 @@ and [governance](https://github.com/uibcdf/sabueso/actions/runs/38038383380). Th
 [source receipt](pending_proposals/gtex_observation_checkpoint.json) retains 4,377
 cases per public offline lane, 1,015 per installed public-Ackredit lane, 76 post-editable
 cases and independently verified full receptor captures. #108 stays open for
-UniRef, OMA, gnomAD and derived comparative operations. Published 0.14.0 is unchanged.
+OMA, gnomAD and derived comparative operations; UniRef has the development slice
+above. Published 0.14.0 is unchanged.
 
 Development refresh now uses all 24 declared enrichers' 25 source/data selectors,
 preserves supplied protein request options on every recorded outcome, and reports

@@ -388,7 +388,9 @@ def test_one_call_packet_keeps_acquisitions_that_composition_does_not_repeat():
         ("UniProt", "entry"),
         ("NCBI Taxonomy", "taxa"),
         ("NCBI Taxonomy", "taxa"),
+        ("UniProt", "uniref_clusters"),
     ]
+    assert run.acquisitions[-1]["outcome"] == "unavailable"
     trace = packet.acquisition_trace
     assert trace["packet_snapshot_id"] == packet.snapshot_id()
     assert trace["card_refs"]["subject"] == packet.entities["subject"]["ref"]

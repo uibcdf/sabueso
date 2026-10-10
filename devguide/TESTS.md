@@ -71,6 +71,7 @@ fixture does not establish current live availability.
 | Terms/admission | `test_terms_offline.py`, `test_packet_terms_offline.py`, `test_disease_deck_admission_offline.py`; original kept/excluded support |
 | Attribution/literature/clinical | Source acquisition and relevant attribution/extraction/article/reference tests; original portable sidecars and bibliography gaps |
 | GTEx access observation | `test_gtex_acquisition_offline.py`, owning GTEx/acquisition/attribution/refresh cases; requested dataset versus unknown revision, returned versus selected rows, fixture unavailable/failed/empty states, archive replay/retries and an independent inert pinned reader (#108) |
+| UniRef page observation | `test_uniref_acquisition_offline.py`, owning UniRef/acquisition/attribution/refresh cases; individual page releases, caps, continuation, partial failure, fixture availability, replay/retries, scientific equivalence and independent inert pinned reading (#108) |
 | Independent scientific journeys | `test_user_journeys_offline.py`, `test_molecule_target_journey_offline.py`, `test_disease_entities_journey_offline.py`; public examples and original readers |
 | HK2/notebook reports | `test_hk2_test_system_offline.py`, `tests/tools/test_card_notebook_offline.py`; exact saved card/report regeneration |
 

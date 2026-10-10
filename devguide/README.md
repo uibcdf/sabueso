@@ -132,7 +132,10 @@ not a release receipt.
   resource credit; 34 new regressions and 5,930 local-original cases pass at
   `2b5db53`, with 15/15 exact-SHA CI and governance. The
   [source receipt](pending_proposals/gtex_observation_checkpoint.json) also records
-  4,377 cases per public offline lane and 1,015 per public-Ackredit lane. UniRef, OMA, gnomAD,
+  4,377 cases per public offline lane and 1,015 per public-Ackredit lane.
+  [Development UniRef observation](pending_proposals/uniref_observation.md) now
+  retains page releases, caps, partial failures and portable resource credit;
+  its qualification is pending. OMA, gnomAD,
   derived comparative operations and complete bibliography remain #108 work.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and

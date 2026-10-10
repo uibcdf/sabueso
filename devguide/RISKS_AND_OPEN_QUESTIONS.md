@@ -33,8 +33,10 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   [source receipt](pending_proposals/comparative_response_contracts_checkpoint.json)
   preserves both local/public scopes. This is not a complete native field validator
   or new installed delivery.
-  UniRef, OMA and gnomAD still need declared source-operation/bibliography
-  observation. [Development GTEx observation](pending_proposals/gtex_observation.md)
+  OMA and gnomAD still need declared source-operation/bibliography observation.
+  [Development UniRef observation](pending_proposals/uniref_observation.md)
+  exposes individual page releases, caps and partial failures; the client's
+  compatibility version is not proof of coherent pages. Qualification is pending. [Development GTEx observation](pending_proposals/gtex_observation.md)
   records requested dataset labels separately from unknown native revisions;
   one returned page does not prove complete dataset coverage. Development pinned
   sequence/tissue explanations now have an

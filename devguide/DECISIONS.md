@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Observe UniRef pages under the shared UniProt source (2026-10-10, #108)
+
+Observe existing cluster/member access as separate logical operations, keeping
+`UniProt` as scientific source and terms owner. Preserve page releases and unknown
+or conflicting revision bases; the client's compatibility version is not proof
+of coherent pages. Record continuation, received versus retained rows and partial
+failures without returning failed enrichment as scientific knowledge. Local
+missing fixtures mean unavailable access. Credit the actual UniRef resource URL
+alongside UniProt's description, retaining member-publication and sequence-revision
+gaps. No similarity-based identity merge or card-schema change is introduced.
+[Scope and verification](pending_proposals/uniref_observation.md).
+
 ## Observe GTEx access without upgrading requested labels to revisions (2026-10-10, #108)
 
 Observe the existing built-in tissue operation and public source getter using the

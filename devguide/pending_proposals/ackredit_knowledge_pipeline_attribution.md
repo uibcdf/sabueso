@@ -698,3 +698,15 @@ consumer-owned recording/Evidence acceptance remain open.
 [source receipt](gtex_observation_checkpoint.json): code `2b5db53`, 34 new cases,
 5,930 local-original cases, 15/15 exact-source CI and governance. All nine public
 offline lanes pass 4,377 cases; all four installed public-Ackredit lanes pass 1,015.
+
+## UniRef page observation (development, 2026-10-10, #108)
+
+Existing built-in cluster/member operations retain page identities, native release
+headers, continuation, received/kept counts and completed scope before failures.
+The shared scientific source remains `UniProt`; source-family coverage remains 36.
+Conflicting or unstated page releases are explicit, and fixture labels do not prove
+native revisions. The actual UniRef API URL is credited alongside UniProt's
+description; member publications and sequence revisions remain gaps. Scientific
+pins remain equivalent to the same unobserved fixture client; saved readers render
+original credit without new operations. [Scope and qualification](uniref_observation.md)
+is in development. OMA, gnomAD, derived operations and complete bibliography stay open.

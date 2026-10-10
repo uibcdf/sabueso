@@ -72,6 +72,7 @@ TRACED = {
     "chembl.get_molecules",
     "uniprot.get_entry",
     "uniprot.search",
+    "uniref.get_clusters",
     "europepmc.get_annotations",
     "rcsb.get_entry",
 }

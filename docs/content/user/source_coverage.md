@@ -143,8 +143,10 @@ traceability. See {doc}`attribution` for exact scopes and original sidecars.
 
 Development main adds observed GTEx tissue access, bringing declared source-family
 coverage to 36. Its requested dataset label remains separate from unknown native
-revision and whole-dataset completeness. UniRef, OMA, gnomAD and derived comparative
-operation observation remain open; this extension is outside published 0.14.0.
+revision and whole-dataset completeness. Development UniRef now observes existing
+cluster/member pages, revisions, limits and partial failures within the same
+`UniProt` source family. OMA, gnomAD and derived comparative operation observation
+remain open; these extensions are outside published 0.14.0.
 
 The access and journey extensions below are delivered in 0.14.0. Their individual
 native input, licence, live-health and card-integration limits remain unchanged.

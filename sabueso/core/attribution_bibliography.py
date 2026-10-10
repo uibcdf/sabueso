@@ -7,6 +7,12 @@ Metadata sources are recorded in docs/content/user/attribution.md.
 from copy import deepcopy
 
 _DESCRIPTIONS = {
+    "UniRef": {
+        "id": "url:https://rest.uniprot.org/uniref",
+        "type": "dataset",
+        "title": "UniProt Reference Clusters (UniRef)",
+        "url": "https://rest.uniprot.org/uniref",
+    },
     "GTEx": {
         "id": "url:https://gtexportal.org/",
         "type": "dataset",

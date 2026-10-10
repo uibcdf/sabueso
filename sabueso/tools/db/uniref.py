@@ -30,6 +30,8 @@ from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.source_acquisition import capture_acquisitions, missing_fixture
+from sabueso.core.uniref_acquisition import note_response, observe
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -48,14 +50,13 @@ class OnlineUniRefClient:
         try:
             with urlopen(url, timeout=self.timeout, expect_json=True) as resp:
                 found = json.loads(resp.read().decode("utf-8"))
-                if (
-                    not isinstance(found, dict)
-                    or not isinstance(found.get("results"), list)
-                    or not all(isinstance(row, dict) for row in found["results"])
-                ):
-                    raise ConnectorError(
-                        "UniRef response does not state a results list"
-                    )
+                note_response(
+                    found,
+                    url=url,
+                    release=resp.headers.get("X-UniProt-Release"),
+                    next_url=_next(resp.headers.get("Link")),
+                    total=resp.headers.get("X-Total-Results"),
+                )
                 return (
                     found,
                     resp.headers.get("X-UniProt-Release"),
@@ -68,6 +69,7 @@ class OnlineUniRefClient:
         except (URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"UniRef request failed: {exc}") from exc
 
+    @observe("uniref_clusters")
     def clusters(self, accession: str) -> Dict[str, Any]:
         retrieval = stamp(SOURCE)
         query = urlencode(
@@ -92,6 +94,7 @@ class OnlineUniRefClient:
             ],
         }
 
+    @observe("uniref_members")
     def members(self, cluster_id: str) -> Dict[str, Any]:
         retrieval = stamp(SOURCE)
         url = (
@@ -135,13 +138,23 @@ class FixtureUniRefClient:
             raise ConnectorError(f"UniRef request for {name} failed (simulated)")
         path = self.directory / f"{name}.json"
         if not path.is_file():
-            raise RecordNotFoundError(f"UniRef has no {name}")
-        saved = json.loads(path.read_text(encoding="utf-8"))
+            raise missing_fixture(f"UniRef fixture is unavailable: {name}")
+        try:
+            saved = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            raise ConnectorError(f"UniRef fixture cannot be read: {name}") from exc
+        note_response(
+            saved,
+            fixture=True,
+            release=saved.get("version") if isinstance(saved, dict) else None,
+        )
         return {"retrieved_at": self.retrieved_at, **saved}
 
+    @observe("uniref_clusters", fixture=True)
     def clusters(self, accession: str) -> Dict[str, Any]:
         return self._read(f"clusters_{accession}")
 
+    @observe("uniref_members", fixture=True)
     def members(self, cluster_id: str) -> Dict[str, Any]:
         return {"truncated": False, **self._read(f"members_{cluster_id}")}
 
@@ -150,6 +163,7 @@ class FixtureUniRefClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_clusters(identifier: str, client: Any = None, skip_digestion: bool = False):
     """The UniRef100, UniRef90 and UniRef50 clusters UniProt places an entry in."""
     response = online(client, OnlineUniRefClient).clusters(identifier)

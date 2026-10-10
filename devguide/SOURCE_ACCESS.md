@@ -75,7 +75,8 @@ empty scientific result. A GraphQL error with a partial record is a failure; the
 existing explicit not-found error form and well-formed empty/null answers retain
 their own semantics. These checks do not qualify every nested native field or add
 source-operation observation to every route. The separate development GTEx slice
-observes existing tissue access; UniRef/OMA/gnomAD coverage remains open. Original
+observes existing tissue access; development UniRef observes existing cluster/member
+pages with their individual release and limit bases. OMA/gnomAD coverage remains open. Original
 response bytes, source identity and card schemas stay fixed.
 
 ### Supplied originals
@@ -113,7 +114,8 @@ The native reference records published and development observation coverage for
 each route. It includes UniProt/Europe PMC/RCSB, ChEMBL/PubChem/BindingDB,
 PDB CCD/UniChem, PDBe-KB/AlphaFold/InterPro and later disease/clinical and
 NCBI Taxonomy slices, plus
-[development GTEx tissue observation](pending_proposals/gtex_observation.md).
+[development GTEx tissue observation](pending_proposals/gtex_observation.md) and
+[development UniRef page observation](pending_proposals/uniref_observation.md).
 Each new source must declare and test its observation coverage and gaps.
 Per-result and workflow sidecars preserve original citations and producer context;
 saved readers add no source access, recomputation or credit.

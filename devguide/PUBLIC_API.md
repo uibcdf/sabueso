@@ -137,6 +137,12 @@ not promise card enrichment, live availability or public-package delivery.
   create no GTEx operation; original sidecars and exact pins have an inert reader.
   Successful scientific returns and source assertion identities remain unchanged.
   See [the GTEx scope](pending_proposals/gtex_observation.md).
+- Development UniRef `clusters`/`members` retain detached `UniProt` acquisition
+  records; public `tools.db.uniref.get_clusters` attaches its trace. Individual
+  page releases, continuation, received/kept counts and partial failures remain
+  explicit; client version labels do not prove coherent pages. Missing fixtures
+  raise `ConnectorError` with an unavailable observation. Successful scientific
+  returns and pins stay fixed. See [the UniRef scope](pending_proposals/uniref_observation.md).
 - `sabueso.ambiguity_deck(resolution)`: the candidates of an ambiguous resolution as a
   Deck.
 - `sabueso.resolve_disease_card(identifier)`, `sabueso.disease_targets(disease,
