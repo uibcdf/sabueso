@@ -46,6 +46,8 @@ Enricher
   option_kind   "flag" (True) or "options" ({} or {"limit": …})
   client        the online client's factory
   record_kinds the enrichment data kinds this option records (derived from match by default)
+  historical_parameters  argument -> record path for restoring older requests
+  request_record(context, options)  record including independently copied request_options
   terms_source(options)  terms governing the requested content (source by default)
   run(context, options, client) -> [(mapping, enrichment record), ...]
 ```
@@ -71,6 +73,18 @@ enricher's record, including explicit article ids, so refresh cannot silently tu
 it into a bibliographic search. `record_kinds` includes both Europe PMC routes for
 the migration map; automatic packet requests still ask only for bibliography.
 Refresh preserves the card's recorded terms profile unless the caller overrides it.
+
+Development refresh (#139) also routes through the exact declared `(source, data)`
+selectors, including failed, excluded and blocked requests. The runner and terms
+gate retain `request_options` before acquisition; client factories and credentials
+are never recorded. Historical flags and available parameter paths are restored,
+with missing parameters reported as unrecorded. New omitted parameters still use
+the client's defaults, so saved arguments do not promise frozen defaults, native
+releases or request identifiers. Conflicting requests and missing explicit article
+ids require a caller override before any resolution or source access. A single
+Europe PMC option cannot express both bibliography and located annotations;
+refresh never silently chooses one. Unsupported selectors are listed separately
+and are not queried. See [the refresh scope report](pending_proposals/refresh_request_scope.md).
 
 `knowledge_state@5` retains the per-area selectors/count fields introduced in `@4`.
 Molecular record intake can count native returned record ids or a UniChem compound;

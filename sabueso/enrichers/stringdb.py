@@ -11,6 +11,7 @@ class STRING(Enricher):
     registry_id = "string"
     areas = ("relationships.functionally_associated_with",)
     option_kind = "options"
+    historical_parameters = {"required_score": "required_score", "limit": "limit"}
     stage = "after_structures"
     not_found_detail = False
 

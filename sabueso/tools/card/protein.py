@@ -20,6 +20,7 @@ of light candidate cards built only from what the source already reported.
 
 from __future__ import annotations
 
+import copy
 from typing import Any, Dict, Iterable, List, Tuple
 
 from smonitor import signal
@@ -254,8 +255,6 @@ def resolve_protein_card(
     excluded too.
     """
     if ncbi_gene:
-        import copy
-
         from sabueso.tools.db.ncbi_gene import OnlineNCBIGeneClient
 
         resolver = copy.copy(resolver) if resolver is not None else EntityResolver()
@@ -279,6 +278,7 @@ def resolve_protein_card(
     protein_mapping = map_protein(entry, retrieved_at)
     mappings: List[Dict[str, Any]] = [protein_mapping]
 
+    requested_structures = copy.deepcopy(structures)
     if structures == "all":
         structures = [
             rel["object_ref"].split(":", 1)[1]
@@ -313,11 +313,20 @@ def resolve_protein_card(
         )
         return False
 
-    if structures and not admitted("RCSB PDB"):
+    if structures and not admitted(
+        "RCSB PDB", request_record={"request_options": requested_structures}
+    ):
         structures = []
-    if chembl is not None and not admitted("ChEMBL"):
+    if chembl is not None and not admitted(
+        "ChEMBL", request_record={"request_options": copy.deepcopy(chembl)}
+    ):
         chembl = None
-    if bindingdb is not None and not (admitted("BindingDB") and admitted("UniChem")):
+    if bindingdb is not None and not (
+        admitted(
+            "BindingDB", request_record={"request_options": copy.deepcopy(bindingdb)}
+        )
+        and admitted("UniChem")
+    ):
         bindingdb = None
     # ``True``, or options (``{}``, ``{"limit": n}``), asks PubChem BioAssay: None
     # when it is not asked.
@@ -326,14 +335,21 @@ def resolve_protein_card(
         if isinstance(pubchem_bioassay, dict)
         else ({} if pubchem_bioassay else None)
     )
-    if pubchem_options is not None and not admitted("PubChem BioAssay"):
+    if pubchem_options is not None and not admitted(
+        "PubChem BioAssay",
+        request_record={"request_options": copy.deepcopy(pubchem_options)},
+    ):
         pubchem_options = None
     from sabueso.tools.db.rcsb import fetch_many
 
     # Many entries per request where the client can (#98); one record per structure.
     fetched = fetch_many(resolver.rcsb, structures) if structures else {}
     for pdb_id in structures:
-        record = {"source": "RCSB PDB", "structure": pdb_id}
+        record = {
+            "source": "RCSB PDB",
+            "structure": pdb_id,
+            "request_options": copy.deepcopy(requested_structures),
+        }
         answer = fetched.get(pdb_id.upper())
         if isinstance(answer, RecordNotFoundError):
             enrichments.append({**record, "status": "not_found"})
@@ -407,7 +423,7 @@ def resolve_protein_card(
             if enricher.requested(options) and not admitted(
                 enricher.terms_source(options),
                 enricher.source,
-                enricher.record(context, options),
+                enricher.request_record(context, options),
             ):
                 requested[enricher.option] = (None, client)
     run_stage("after_structures", context, requested, mappings, enrichments)
@@ -425,12 +441,18 @@ def resolve_protein_card(
             enrichments.append(
                 {
                     "source": "ChEMBL",
+                    "request_options": copy.deepcopy(chembl),
                     "status": "not_found",
                     "detail": "no ChEMBL cross-reference in the UniProt entry",
                 }
             )
         for target in targets:
-            record = {"source": "ChEMBL", "target": target, **chembl}
+            record = {
+                "source": "ChEMBL",
+                "target": target,
+                **chembl,
+                "request_options": copy.deepcopy(chembl),
+            }
             try:
                 response = client.bioactivities(target, **chembl)
             except RecordNotFoundError:
@@ -469,7 +491,12 @@ def resolve_protein_card(
             or _mirror.client_for("bindingdb")
             or OnlineBindingDBClient()
         )
-        record = {"source": "BindingDB", "identifier": anchor, **bindingdb}
+        record = {
+            "source": "BindingDB",
+            "identifier": anchor,
+            **bindingdb,
+            "request_options": copy.deepcopy(bindingdb),
+        }
         try:
             response = client.ligands(anchor, **bindingdb)
         except RecordNotFoundError as exc:
@@ -546,7 +573,12 @@ def resolve_protein_card(
         from sabueso.tools.db.pubchem_bioassay import OnlinePubChemBioAssayClient
 
         client = pubchem_bioassay_client or OnlinePubChemBioAssayClient()
-        record = {"source": "PubChem BioAssay", "identifier": anchor, **pubchem_options}
+        record = {
+            "source": "PubChem BioAssay",
+            "identifier": anchor,
+            **pubchem_options,
+            "request_options": copy.deepcopy(pubchem_options),
+        }
         try:
             response = client.assays(
                 anchor, pubchem_options.get("limit", PUBCHEM_LIMIT)

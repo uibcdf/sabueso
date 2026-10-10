@@ -14,6 +14,11 @@ class OMA(Enricher):
     registry_id = "oma"
     areas = ("relationships.ortholog_of",)
     option_kind = "options"
+    historical_parameters = {
+        "limit": "limit",
+        "rel_type": "filters.rel_type",
+        "taxa": "filters.taxa",
+    }
 
     def client(self):
         from sabueso.tools.db.oma import OnlineOMAClient

@@ -9,9 +9,11 @@ coverage, never as complete gene/tissue expression or pathogenicity. Source-side
 coordinate/release correctness, installed delivery and human scientific usefulness
 remain separate from the bounded regression scope. Code `3bc1c53` passes 15/15
 exact-SHA CI; [the receipt](pending_proposals/comparative_tissue_scope_checkpoint.json)
-retains the qualified source and limits. Broader declared-enricher refresh loses
-some requested options under its historical restoration list (#139); the bounded
-gnomAD route is corrected. See [the correction](pending_proposals/comparative_tissue_scope.md).
+retains the qualified source and limits. Development #139 replaces the incomplete
+refresh routing list with declared selectors and saved arguments, under separate
+[qualification](pending_proposals/refresh_request_scope.md). Historical missing
+parameters and unsupported selectors remain explicit limits; new acquisitions do
+not promise exact old requests. See [the correction](pending_proposals/comparative_tissue_scope.md).
 
 ## Risks
 - **Licensing/Terms**: Some sources (DrugBank, eMolecules, ChemSpider) have licensing constraints that may affect redistribution and caching.
@@ -254,6 +256,11 @@ gnomAD route is corrected. See [the correction](pending_proposals/comparative_ti
   enrichment record (a resolver preference policy, the name query a card came from)
   are not reproduced. A refresh resolves the card's anchor directly, so the entity
   cannot change, but its options may. `refresh_card(**options)` can override them.
+  Development #139 retains supplied protein enrichment arguments and restores
+  declared selectors even after failures. Older missing parameters still use
+  current defaults and are reported. Unsupported selectors are omitted explicitly;
+  conflicting known routes require an override before acquisition. Refresh may
+  therefore remain incomplete as a source portfolio even when resolution succeeds.
 - **Gaps of qualifier-level additions** (#51): `SCHEMA_CHANGES` names relationship
   qualifiers by their relationship, so an added qualifier (for example `isoform`) is
   reported only when the relationship itself is absent. The exception is a qualifier

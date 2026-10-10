@@ -97,6 +97,7 @@ def test_coverage_and_nothing_to_ask_are_not_errors():
         {
             "source": "Toy",
             "identifier": "P1",
+            "request_options": True,
             "status": "not_applicable",
             "detail": "Toy covers human genes only",
         }
@@ -117,6 +118,7 @@ def test_a_missing_key_is_not_queried_never_an_error():
         {
             "source": "Toy",
             "identifier": "g1",
+            "request_options": True,
             "status": "not_queried",
             "detail": "Toy answers only with a personal key",
         }
@@ -150,6 +152,7 @@ def test_a_missing_prerequisite_does_not_construct_or_query_a_client():
         {
             "source": "Toy",
             "identifier": "P1",
+            "request_options": True,
             "status": "not_queried",
             "detail": "the upstream response is unavailable",
         }
@@ -173,3 +176,28 @@ def test_not_found_states_the_release_it_was_checked_against():
     # A source that states no release keeps a not_found without one.
     _, records = _run({"organism": {"taxonId": 9606}, "genes": ["missing"]}, _client)
     assert "version" not in records[0]
+
+
+def test_requested_parameters_are_captured_before_calls_and_copied_per_outcome():
+    class Mutable(_Toy):
+        option_kind = "options"
+
+    options = {"limit": 2, "taxa": [9606]}
+
+    def mutate(gene):
+        options["taxa"].append(1)
+        return _client(gene)
+
+    mappings, records = [], []
+    run(
+        Mutable(),
+        Context("P1", {"organism": {"taxonId": 9606}, "genes": ["g1", "broken"]}),
+        options,
+        mutate,
+        mappings,
+        records,
+    )
+    assert [r["status"] for r in records] == ["added", "error"]
+    assert [r["request_options"] for r in records] == [{"limit": 2, "taxa": [9606]}] * 2
+    records[0]["request_options"]["taxa"].append(2)
+    assert records[1]["request_options"]["taxa"] == [9606]

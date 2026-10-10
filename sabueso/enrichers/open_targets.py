@@ -13,6 +13,7 @@ class OpenTargets(Enricher):
     organisms = (9606,)
     coverage_detail = "Open Targets covers Homo sapiens genes only"
     option_kind = "options"
+    historical_parameters = {"limit": "limit"}
 
     def client(self):
         from sabueso.tools.db.open_targets import OnlineOpenTargetsClient

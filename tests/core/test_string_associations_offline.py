@@ -38,6 +38,7 @@ def test_string_adds_scored_functional_associations(resolver):
     (enrichment,) = card.quality["enrichments"]
     assert enrichment == {
         "source": "STRING",
+        "request_options": {},
         "identifier": "P60174",
         "species": 9606,
         "required_score": 700,
@@ -78,6 +79,7 @@ def test_protein_absent_from_string_is_recorded_not_mixed(resolver):
     assert card.quality["enrichments"] == [
         {
             "source": "STRING",
+            "request_options": {},
             "identifier": "P52270",
             "species": 5693,
             "status": "not_found",

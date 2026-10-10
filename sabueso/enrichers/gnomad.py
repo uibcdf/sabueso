@@ -16,6 +16,7 @@ class GnomAD(Enricher):
     organisms = (9606,)
     coverage_detail = "gnomAD covers human variants only"
     option_kind = "options"
+    historical_parameters = {"limit": "limit"}
 
     @property
     def match(self):

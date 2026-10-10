@@ -9,7 +9,14 @@
     assembly and this is not independent native-release verification. Source values
     and biological card fields are unchanged. Migration records the missing context
     on existing gnomAD variant assertions; refresh acquires it. Empty/unrelated
-    cards have no applicable coordinate-context gap. Published schemas stay frozen;
+    cards have no applicable coordinate-context gap. #139 also adds optional
+    `quality.enrichments[].request_options` for supplied protein request flags and
+    dictionaries, and `quality.migration[].request_restoration` with
+    `enrichment_request_restoration@1`. The report distinguishes recorded arguments,
+    historical parameters/defaults, overrides, unsupported selectors and dependent
+    requests. Unrecorded parameters are never backfilled into old cards. These
+    quality keys are explicit-only in `SCHEMA_CHANGES`, not automatic gaps.
+    Published schemas stay frozen;
   - `0.3.13` is published/frozen in release 0.14.0 (#134), written by its clean
     installed preliminary Conda package. It adds native UniProt activity
     regulation, domain notes, similarity, source cautions and miscellaneous text;

@@ -396,7 +396,33 @@ def fixture_cards() -> List[dict]:
         kinase,
         receptor,
     )
-    return [c.to_dict() for c in cards]
+    # Exercise an actual bounded refresh as well as ordinary builds. Native
+    # content is unchanged; the new acquisition records its restoration basis.
+    bounded, _ = sabueso.resolve(
+        "P52270",
+        resolver=resolver,
+        uniref=True,
+        uniref_client=FixtureUniRefClient(data),
+        bindingdb={"cutoff": 25000, "limit": 5000},
+        bindingdb_client=FixtureBindingDBClient(data),
+        unichem_client=FixtureUniChemClient(data),
+    )
+    bounded, _ = sabueso.refresh_card(
+        bounded,
+        resolver=resolver,
+        uniref_client=FixtureUniRefClient(data),
+        bindingdb_client=FixtureBindingDBClient(data),
+        unichem_client=FixtureUniChemClient(data),
+    )
+    parameterized, _ = sabueso.resolve(
+        "P60174",
+        resolver=resolver,
+        oma={"limit": 5000, "rel_type": "1:1", "taxa": [9606, 353153]},
+        oma_client=FixtureOMAClient(data),
+        string={"required_score": 900, "limit": 5000},
+        string_client=FixtureStringClient(data),
+    )
+    return [c.to_dict() for c in (*cards, bounded, parameterized)]
 
 
 def current_shape() -> List[str]:

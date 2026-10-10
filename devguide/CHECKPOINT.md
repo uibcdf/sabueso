@@ -2,7 +2,18 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-10, versioned genomic tissue scope/coverage qualified (#138).
+Last updated: 2026-10-10, declared refresh request scope locally qualified (#139).
+
+Development refresh now uses all 24 declared enrichers' 25 source/data selectors,
+preserves supplied protein request options on every recorded outcome, and reports
+historical unrecorded parameters, explicit overrides and unsupported selectors.
+Conflicting or missing essential known-route parameters require an explicit override
+before acquisition. `store=` retains original and refreshed pins. Unpublished
+schema 0.3.14 adds optional quality records; published 0.3.13 stays unchanged.
+[Refresh scope and limits](pending_proposals/refresh_request_scope.md).
+77 new regressions, 273 selected cases and 5,896 full local-original cases pass
+on Python 3.14.7 with twelve receptor workers. Exact-source CI is pending;
+this change is not covered by the earlier CI receipts below.
 
 Development Card views default to `pext_at_variant@2` and `isoform_exon_usage@3`,
 with explanation `@2`, explicit historical `usage_rule` selection and per-tissue
@@ -27,8 +38,8 @@ archived native-answer/old-report revalidation pass without new provider queries
 Earlier `@1` explanation qualification at `3fa2fdf` retains its unchanged
 [receipt](pending_proposals/comparative_explanations_checkpoint.json). Published
 0.14.0, frozen 0.3.13 and stored historical reports remain unchanged.
-Next: [#139](https://github.com/uibcdf/sabueso/issues/139) declared-source refresh
-routing, then comparative operation/bibliography observation #108. Installed
+Next: finish [#139](https://github.com/uibcdf/sabueso/issues/139) source qualification,
+then comparative operation/bibliography observation #108. Installed
 artifact qualification and human scientific acceptance remain separate.
 
 ## Resume here

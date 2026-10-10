@@ -50,6 +50,16 @@ SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
             "filled_by": "gnomad",
             "entity_types": ("protein",),
         },
+        {
+            "path": "quality.enrichments[].request_options",
+            "filled_by": "refresh",
+            "explicit_only": True,
+        },
+        {
+            "path": "quality.migration[].request_restoration",
+            "filled_by": "refresh",
+            "explicit_only": True,
+        },
     ],
     "0.3.13": [
         {
@@ -627,52 +637,10 @@ def migrate_card(data: Dict[str, Any], store: Any = None) -> Any:
 
 def rebuild_options(card: Any) -> Dict[str, Any]:
     """The enrichment options a card records it was built with, to build it again."""
-    options: Dict[str, Any] = {}
-    structures = []
-    annotation_articles = []
-    for e in card.quality.get("enrichments") or []:
-        source, kind = e.get("source"), e.get("data")
-        if source == "RCSB PDB" and e.get("structure"):
-            structures.append(e["structure"])
-        elif source == "ChEMBL" and not kind:
-            options["chembl"] = {"limit": e["limit"]} if e.get("limit") else {}
-        elif source == "gnomAD" and kind is None:
-            options["gnomad"] = {"limit": e["limit"]} if "limit" in e else {}
-        elif source == "gnomAD" and kind == "pext":
-            options["exon_usage"] = True
-        elif source == "PDBe-KB" and kind == "ligand_sites":
-            options["ligand_sites"] = True
-        elif source == "PDBe-KB" and kind == "interface_residues":
-            options["interfaces"] = True
-        elif source == "InterPro":
-            options["family_sites"] = True
-        elif source == "STRING":
-            options["string"] = {
-                k: e[k] for k in ("required_score", "limit") if e.get(k) is not None
-            }
-        elif source == "AlphaFold DB":
-            options["predicted_structures"] = True
-        elif source == "NCBI Taxonomy":
-            options["taxonomy"] = True
-        elif source == "BindingDB":
-            options["bindingdb"] = {}
-        elif source == "PubChem BioAssay":
-            options["pubchem_bioassay"] = True
-        elif source == "Europe PMC":
-            if e.get("data") == "located_accession_annotations":
-                annotation_articles.extend(e.get("article_ids") or [])
-            else:
-                options["europepmc"] = {"limit": e["limit"]} if e.get("limit") else {}
-    if annotation_articles:
-        options["europepmc"] = {"article_ids": list(dict.fromkeys(annotation_articles))}
-    if structures:
-        options["structures"] = sorted(set(structures))
-    profile = (card.quality.get("terms_profile") or {}).get("profile")
-    if profile is not None:
-        options["terms"] = profile
-    decision = (card.quality.get("entity_resolution") or {}).get("decision") or {}
-    if any(s.get("name") == "NCBI Gene" for s in decision.get("sources") or []):
-        options["ncbi_gene"] = True
+    from .refresh_scope import apply_overrides, restoration_plan
+
+    options, report = restoration_plan(card)
+    apply_overrides(report, {})
     return options
 
 
@@ -690,7 +658,11 @@ def refresh_card(
     if not card.id:
         raise StorageError("A card without meta.card_id cannot be refreshed.")
     anchor = card.id.split(":", 2)[2]
-    given = {**rebuild_options(card), **options}
+    from .refresh_scope import RESTORATION_RULE, apply_overrides, restoration_plan
+
+    restored, scope = restoration_plan(card)
+    apply_overrides(scope, options)
+    given = {**restored, **options}
     refreshed, resolution = sabueso.resolve(anchor, curations=curations, **given)
     if refreshed is None:
         raise StorageError(f"Refreshing {card.id} failed: {resolution.status}.")
@@ -707,6 +679,7 @@ def refresh_card(
         "rule": MIGRATION_RULE,
         "at": _now(),
         "refresh_of": card.pinned_ref(),
+        "request_restoration": {"rule": RESTORATION_RULE, "requests": scope},
         "options": sorted(
             k for k in given if not k.endswith("_client") and k != "resolver"
         ),
@@ -720,5 +693,6 @@ def refresh_card(
 
     preserve_extractions(card, refreshed)
     if store is not None:
+        store.save(card, note="before refresh")
         store.save(refreshed, note="refreshed from the sources")
     return refreshed, resolution

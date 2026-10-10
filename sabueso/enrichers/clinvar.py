@@ -13,6 +13,7 @@ class ClinVar(Enricher):
     organisms = (9606,)
     coverage_detail = "ClinVar covers human variants only"
     option_kind = "options"
+    historical_parameters = {"limit": "limit"}
 
     def client(self):
         from sabueso.tools.db.clinvar import OnlineClinVarClient

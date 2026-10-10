@@ -48,6 +48,7 @@ def test_every_activity_record_is_a_supported_relationship(resolver):
     (enrichment,) = card.quality["enrichments"]
     assert enrichment == {
         "source": "ChEMBL",
+        "request_options": {},
         "target": "CHEMBL5834",  # from the UniProt ChEMBL cross-reference
         "status": "added",
         "version": "ChEMBL_37",

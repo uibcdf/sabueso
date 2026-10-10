@@ -63,6 +63,7 @@ fixture does not establish current live availability.
 | Fixture delivery | `test_fixture_delivery_offline.py`, `test_fixture_licensing_offline.py`; `tools/fixture_delivery.py --check`; prove public tests with local inputs absent |
 | Identity/relationships/selection | Owning resolver/mapping/aggregation/conflict tests; no sequence/name/number similarity merge |
 | Card/schema/migration | Card, migration and frozen-card tests; `tools/card_shape.py`, `tools/validate_schema.py`; unpublished additive changes only |
+| Refresh request scope | `test_refresh_scope_offline.py`, enricher/migration/source-acquisition and owning fixture cases; every declared selector, failed/blocked/excluded requests, nondefault parameters, historical gaps, conflicts before acquisition, caller overrides and exact original pins (#139) |
 | Quantities | Quantity/measurement/native-unit tests, seals and non-default unit policy across serialization and consumers |
 | Pinned persistence/packets | `test_knowledge_store_offline.py`, `test_knowledge_packets_offline.py`; historical pins, tampering, foreign/missing states, migration |
 | SQLite connection lifetime | `test_sqlite_lifetime_offline.py`, `test_storage_offline.py`, `test_deck_meta_offline.py`; explicit closure on success, empty reads and failures, committed round trips and rollback of failed deck replacement (#133) |

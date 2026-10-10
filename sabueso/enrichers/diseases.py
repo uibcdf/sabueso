@@ -15,6 +15,7 @@ class DISEASES(Enricher):
     organisms = (9606,)
     coverage_detail = "DISEASES covers Homo sapiens genes only"
     option_kind = "options"
+    historical_parameters = {"channels": "channels"}
 
     def client(self):
         from sabueso.tools.db.diseases import OnlineDISEASESClient

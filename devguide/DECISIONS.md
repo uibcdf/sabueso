@@ -1,5 +1,21 @@
 # Sabueso — Decision Log
 
+## Restore declared enrichment requests and disclose historical gaps (2026-10-10, #139)
+
+Derive protein refresh routing from declared exact source/data selectors. Record
+supplied validated `request_options` before acquisition, including failures,
+blocked prerequisites and terms exclusions. Restore historical flags and available
+parameters through declared record paths; report missing parameters rather than
+backfilling old records or promising frozen defaults. Conflicting parameters or
+missing essential known-route identifiers require an explicit override before
+resolution. Unsupported selectors remain inspectable and unqueried; dependent
+PubChem copy pointers are followed only from new source answers. Explicit caller
+options, including disabled sources, take precedence. Refresh is a new acquisition;
+`store=` keeps the original and refreshed pins. Unpublished schema 0.3.14 adds only
+optional quality records under `enrichment_request_restoration@1`; published schemas
+and source assertions are not rewritten. Comparative observation/bibliography
+#108 and installed/human qualification remain separate.
+
 ## Version genomic tissue scope and per-tissue coverage (2026-10-10, #138)
 
 Development Card tissue views default to `pext_at_variant@2` and

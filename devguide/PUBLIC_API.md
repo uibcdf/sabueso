@@ -429,6 +429,14 @@ not promise card enrichment, live availability or public-package delivery.
   `retract(source_assertion_id, reason, curator)`, `entities_named(name)`.
 - `sabueso.migrate_card(data, store=None)` and `sabueso.refresh_card(card,
   curations=None, store=None, **options)`.
+  Development refresh restores declared source/data requests and their saved
+  parameters, including failed/unqueried requests. Explicit options override them;
+  `None` disables dictionary options and `False` disables flags. Conflicting or
+  missing essential known-route parameters raise `StorageError` before acquisition
+  unless overridden. `quality.migration[-1].request_restoration` reports the
+  restoration basis, unrecorded historical parameters and unsupported selectors.
+  Unsupported routes are reported and omitted; refresh does not claim complete
+  source portfolio replay. `store=` saves the original and refreshed states.
 - Files: `save_card_json`, `save_card_sqlite`, `save_deck_jsonl`, `save_deck_sqlite`.
 
 ## Source access (`sabueso.tools.db`)

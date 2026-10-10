@@ -13,6 +13,19 @@ schema:
     refresh with gnomAD acquires it rather than inferring it from a dataset label.
     Derived tissue rules and explanation envelopes are versioned outside the card.
     Published 0.3.13 remains frozen. No biological field or SourceAssertion value changes.
+    Optional quality.enrichments.request_options preserves supplied validated flags
+    or option dictionaries for declared and bespoke protein requests, including
+    failures, missing prerequisites and terms exclusions (#139). These arguments
+    contain no clients or credentials; omitted arguments still use client defaults.
+    Refresh adds quality.migration.request_restoration with rule
+    enrichment_request_restoration@1 and requests: source, data, option,
+    record_indices, original_statuses, status, basis, unrecorded_parameters and detail.
+    Recorded options, historical flags/parameters, partially recorded requests,
+    explicit overrides, unsupported selectors and dependent copy pointers are
+    distinguished. Conflicting or missing essential known-route parameters require
+    an explicit override before acquisition. Unknown selectors remain unsupported
+    in the report and are not queried. Old records are not backfilled or claimed
+    as exact replay; these optional quality keys are not automatic migration gaps.
     0.3.13 is published/frozen in release 0.14.0. Adds native UniProt activity_regulation,
     domain_notes, similarity, source_cautions and miscellaneous text; positional
     chain, lipidation, motif, region, sequence_conflict, topological_domain and

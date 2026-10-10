@@ -479,8 +479,10 @@ public method names.
   separates new and historical rules. Comparative operation observation remains #108.
   Code `3bc1c53` qualifies the #138 correction with 5,819 local-original cases and
   15/15 exact-SHA CI jobs; [its source receipt](pending_proposals/comparative_tissue_scope_checkpoint.json)
-  retains public/local scopes and explicit legacy reproduction. Restore broader
-  declared-source refresh routing in #139 before expanding comparative
+  retains public/local scopes and explicit legacy reproduction. Development #139
+  now restores declared-source scope and saved arguments, reporting historical
+  missing parameters, overrides and unsupported selectors; [qualification](pending_proposals/refresh_request_scope.md)
+  precedes expanding comparative
   operation/bibliography observation in #108.
 - **Traceability (#108).** Extend observed source/client/operation coverage along
   these exercised paths, including reuse, versions with their actual basis, retries,

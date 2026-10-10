@@ -29,6 +29,7 @@ hand. See ``devguide/SOURCE_ARCHITECTURE.md``.
 
 from __future__ import annotations
 
+import copy
 from dataclasses import dataclass, field
 from functools import cached_property
 from typing import Any, Dict, List, Tuple
@@ -134,6 +135,8 @@ class Enricher:
     stage: str = "after_bioactivity"
     #: Whether a ``not_found`` record carries the source's message as ``detail``.
     not_found_detail: bool = True
+    #: Request arguments preserved by historical records (argument -> record path).
+    historical_parameters: Dict[str, str] = {}
 
     @property
     def client_argument(self) -> str:
@@ -168,6 +171,13 @@ class Enricher:
         """Fields every record of this source starts with."""
         return {"source": self.source, "identifier": context.anchor}
 
+    def request_record(self, context: Context, options: Any) -> Dict[str, Any]:
+        """Record the requested options even when acquisition cannot start."""
+        return {
+            **self.record(context, options),
+            "request_options": copy.deepcopy(options),
+        }
+
     def requests(self, context: Context, options: Any) -> List[Request]:
         return [Request(context.anchor, self.record(context, options))]
 
@@ -199,10 +209,17 @@ def run(
     enrichments: List[Dict[str, Any]],
 ) -> None:
     """Run one enricher and append its mappings and records; see the module docstring."""
+    # Capture before constructing/calling clients; their mutations cannot rewrite
+    # what was requested. Each outcome gets its own independent copy.
+    requested_options = copy.deepcopy(options)
+
+    def recorded(record):
+        return {**record, "request_options": copy.deepcopy(requested_options)}
+
     if enricher.organisms is not None and context.taxon not in enricher.organisms:
         enrichments.append(
             {
-                **enricher.record(context, options),
+                **recorded(enricher.record(context, options)),
                 "status": "not_applicable",
                 "detail": enricher.coverage_detail
                 or f"{enricher.source} does not cover this organism",
@@ -214,7 +231,7 @@ def run(
     except RequestPrerequisiteMissing as exc:
         enrichments.append(
             {
-                **enricher.record(context, options),
+                **recorded(enricher.record(context, options)),
                 "status": "not_queried",
                 "detail": str(exc),
             }
@@ -223,7 +240,7 @@ def run(
     except NothingToAsk as exc:
         enrichments.append(
             {
-                **enricher.record(context, options),
+                **recorded(enricher.record(context, options)),
                 "status": "not_found",
                 "detail": str(exc),
             }
@@ -233,7 +250,8 @@ def run(
         client = client or enricher.client()
     except MissingKeyError as exc:
         enrichments.extend(
-            {**r.record, "status": "not_queried", "detail": str(exc)} for r in requests
+            {**recorded(r.record), "status": "not_queried", "detail": str(exc)}
+            for r in requests
         )
         return
     for request in requests:
@@ -241,7 +259,11 @@ def run(
             response = enricher.fetch(client, request, options)
         except MissingKeyError as exc:
             enrichments.append(
-                {**request.record, "status": "not_queried", "detail": str(exc)}
+                {
+                    **recorded(request.record),
+                    "status": "not_queried",
+                    "detail": str(exc),
+                }
             )
             continue
         except RecordNotFoundError as exc:
@@ -250,18 +272,23 @@ def run(
             version = getattr(exc, "version", None)
             released = {"version": version} if version is not None else {}
             enrichments.append(
-                {**request.record, "status": "not_found", **released, **detail}
+                {
+                    **recorded(request.record),
+                    "status": "not_found",
+                    **released,
+                    **detail,
+                }
             )
             continue
         except ConnectorError as exc:
             enrichments.append(
-                {**request.record, "status": "error", "detail": str(exc)}
+                {**recorded(request.record), "status": "error", "detail": str(exc)}
             )
             continue
         mapping, outcome = enricher.map(context, request, response, options)
         if mapping is not None:
             mappings.append(_complete(mapping))
-        enrichments.append({**request.record, **outcome})
+        enrichments.append({**recorded(request.record), **outcome})
 
 
 def _registered() -> List[Enricher]:

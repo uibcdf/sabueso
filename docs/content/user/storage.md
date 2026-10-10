@@ -88,6 +88,25 @@ store.changed_since(card.id, date(2026, 9, 1))
 
 The reference forms are provisional until they are agreed across MOLI (uibcdf/moli#3).
 
+### Refreshing a saved card
+
+Development `sabueso.refresh_card(card, store=store, **options)` builds a new card
+from its anchor and recorded enrichment requests. It saves both original and new
+states in the store; reading the original pin continues to return its exact facts
+and supporting assertions. Refresh performs acquisition. Loading a saved card
+does not.
+
+Saved source options include failed and blocked requests. Explicit overrides can
+change them: `oma=None` disables OMA, `gtex=False` disables GTEx, and
+`oma={"limit": 20}` supplies a new OMA scope. Source clients can also be provided.
+Inspect `refreshed.quality["migration"][-1]["request_restoration"]` for which
+requests were restored or overridden, which historical parameters were not
+recorded, and which source routes are unsupported and were omitted. Missing old
+parameters use current defaults; this is not exact historical request replay.
+Conflicting parameters or missing essential article/structure ids require an
+explicit override before acquisition. New source responses can change facts and
+produce a new pin; the original state is retained.
+
 ## What was downloaded
 
 To keep what the sources answered, build inside a retrieval archive:

@@ -29,6 +29,7 @@ class EuropePMC(Enricher):
         )
     }
     option_kind = "options"
+    historical_parameters = {"limit": "limit"}
     record_kinds = (None, "located_accession_annotations")
 
     def record(self, context, options):

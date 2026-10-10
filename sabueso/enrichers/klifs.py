@@ -18,6 +18,7 @@ class KLIFS(Enricher):
         "annotations.kinase_pocket",
     )
     option_kind = "options"
+    historical_parameters = {"limit": "limit"}
 
     def client(self):
         from sabueso.tools.db.klifs import OnlineKLIFSClient

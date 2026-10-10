@@ -122,7 +122,9 @@ not a release receipt.
   The [scoped tissue source receipt](pending_proposals/comparative_tissue_scope_checkpoint.json)
   records code `3bc1c53`, 5,819 local-original cases, explicit legacy reproduction,
   schema 0.3.14 migration/refresh and 15/15 exact-SHA CI jobs. Broader declared-source
-  refresh routing is #139, followed by comparative observation/bibliography #108.
+  refresh routing now uses the declarations and preserves recorded request arguments
+  under #139; [its scope](pending_proposals/refresh_request_scope.md) is under
+  qualification, followed by comparative observation/bibliography #108.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery

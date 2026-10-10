@@ -19,6 +19,7 @@ class GPCRdb(Enricher):
         "annotations.gpcr_structures",
     )
     option_kind = "options"
+    historical_parameters = {"limit": "limit"}
 
     def client(self):
         from sabueso.tools.db.gpcrdb import OnlineGPCRdbClient

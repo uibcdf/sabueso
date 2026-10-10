@@ -12,6 +12,13 @@ source value or verified native release. Frozen 0.3.13 remains unchanged; migrat
 records missing context and refresh obtains it. Development tissue views default
 to `pext_at_variant@2` / `isoform_exon_usage@3`, with explicit legacy `usage_rule`.
 
+#139 adds optional quality paths `quality.enrichments[].request_options` (supplied
+validated flags/dictionaries, without clients or credentials) and
+`quality.migration[].request_restoration` (`rule`, `requests`). Each restoration row
+records `source`, `data`, `option`, `record_indices`, `original_statuses`, `status`,
+`basis`, `unrecorded_parameters` and `detail`. This records new acquisition scope;
+it does not assert exact replay or change scientific fields or SourceAssertions.
+
 ---
 
 ## 1) Global Base Paths (all card types)
