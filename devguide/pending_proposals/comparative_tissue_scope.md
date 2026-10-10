@@ -98,3 +98,18 @@ metadata paths and removes none. Independent historical archived-envelope readin
 and versioned native-answer replay pass without new provider queries; their
 payloads/results remain private. Exact-commit CI and current editable metadata
 confirmation are recorded in the completed source receipt.
+
+
+## Exact source checkpoint
+
+Code `3bc1c53150e8743cdee5132a915d4aa19cf6d0d1` passes
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/38031754778) and
+[governance](https://github.com/uibcdf/sabueso/actions/runs/38031754777).
+Nine public offline OS/Python lanes each pass 4,266 cases, ten declared fixture
+skips and 26 online deselections; four Ackredit compatibility lanes each pass
+981 cases. Full GH Run Receptor capture/replay and independent member hashing
+support [the source receipt](comparative_tissue_scope_checkpoint.json).
+The shared editable environment is verified outside the checkout; 61 scoped and
+both-format cases pass after its refresh (18.80 seconds). This is development
+source qualification; #139 broader refresh, #108 observation/bibliography,
+installed delivery and human scientific acceptance remain open.

@@ -1,0 +1,260 @@
+{
+  "format": "sabueso.comparative_tissue_scope_checkpoint@1",
+  "date": "2026-10-10",
+  "issue": "uibcdf/sabueso#138",
+  "related_issues": [
+    "uibcdf/sabueso#91",
+    "uibcdf/sabueso#102",
+    "uibcdf/sabueso#112",
+    "uibcdf/sabueso#139",
+    "uibcdf/sabueso#108"
+  ],
+  "qualified_source_sha": "3bc1c53150e8743cdee5132a915d4aa19cf6d0d1",
+  "published_0140_artifact_changed": false,
+  "scope": {
+    "default_view_rules": [
+      "pext_at_variant@2",
+      "isoform_exon_usage@3"
+    ],
+    "default_explanation_rules": [
+      "variant_tissue_usage_explanation@2",
+      "isoform_tissue_usage_explanation@2"
+    ],
+    "explicit_legacy_view_rules": [
+      "pext_at_variant@1",
+      "isoform_exon_usage@2"
+    ],
+    "explicit_legacy_explanation_rules": [
+      "variant_tissue_usage_explanation@1",
+      "isoform_tissue_usage_explanation@1"
+    ],
+    "coordinate_basis": "explicit_record_or_matching_selected_assertion_context",
+    "overlap_policy": "all_covering_records_must_state_the_same_valid_tissue_value",
+    "denominator": "resolved_bases_per_tissue",
+    "missing_and_conflicting_tissue_bases_separate": true,
+    "source_stated_transcript_links_with_compatible_versions": true,
+    "incomplete_declared_transcripts_reported": true,
+    "no_liftover_alignment_or_identity_inference": true,
+    "exact_partition_support_and_excluded_input_locators": true,
+    "development_schema": "0.3.14",
+    "frozen_published_schema_shape_cards_changed": false,
+    "added_metadata_paths": 5,
+    "removed_card_paths": 0,
+    "coordinate_context_rule": "gnomad_query_coordinates@1",
+    "coordinate_context_basis": "requested_reference_genome_and_mapping_contract_not_native_assembly_echo",
+    "migration_invents_historical_coordinate_context": false,
+    "refresh_scope": "recorded_gnomAD_variant_limit_and_pext_options_only",
+    "native_fixture_bytes_changed": false,
+    "new_provider_queries": 0,
+    "new_runtime_operation_or_bibliography_coverage": false
+  },
+  "public_journey": "examples/user_journeys/comparative_support.py",
+  "public_journey_formats": [
+    "sabueso.comparative_support_example@1",
+    "sabueso.comparative_support_example@2"
+  ],
+  "format_preserving_reacquisition_and_inert_readers": true,
+  "regression_modules": [
+    "tests/core/test_scoped_tissue_usage_offline.py",
+    "tests/core/test_comparative_explanation_offline.py",
+    "tests/core/test_comparative_support_journey_offline.py",
+    "tests/core/test_gnomad_offline.py",
+    "tests/core/test_migration_offline.py"
+  ],
+  "new_scoped_regression_cases": 41,
+  "additional_independent_report_format_cases": 10,
+  "local": {
+    "selected_passed": 187,
+    "selected_seconds": 19.14,
+    "full_local_originals_passed": 5819,
+    "full_seconds": 173.34,
+    "full_warnings": 10,
+    "post_editable_refresh_passed": 61,
+    "post_editable_refresh_seconds": 18.8,
+    "workers": 12,
+    "python": "3.14.7",
+    "pytest_receptor": "llm",
+    "fatal_sqlite_and_unraisable_guards": true
+  },
+  "editable_environment": {
+    "sabueso_distribution_and_module": "0.14.0+13.g3bc1c53",
+    "ackredit_distribution_and_module": "0.12.0+2.g1342f0f",
+    "all_six_participating_component_imports_and_metadata_verified_outside_checkout": true,
+    "global_environment_pip_check_qualified": false
+  },
+  "checks": [
+    "Ruff format/check",
+    "Fixture delivery: 50 repository / 37 protected originals",
+    "Recorded additive card shape and schema/field paths",
+    "Frozen published schema/shape/card files unchanged",
+    "Dependency preflight",
+    "MOLI governance and canonical guide equality",
+    "Warning-fatal Sphinx",
+    "Maintained relative links",
+    "Git diff whitespace"
+  ],
+  "ci": {
+    "run_id": 38031754778,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38031754778",
+    "head_sha": "3bc1c53150e8743cdee5132a915d4aa19cf6d0d1",
+    "conclusion": "success",
+    "jobs_passed": 15,
+    "jobs_total": 15,
+    "inspection": "GH Run Receptor complete full capture/replay; all manifest members independently hashed",
+    "capture_manifest_sha256": "6c7cdc943a478b3e7ea77526e9a991bb3762b3f9f462e73a14271efecc99025f",
+    "test_jobs": [
+      {
+        "job_id": 114153983063,
+        "name": "Offline tests (windows-latest, Python 3.13)",
+        "passed": 4266,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 911.65,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114153983091,
+        "name": "Ackredit public-package pilot (Python 3.12)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 288.13,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114153983108,
+        "name": "Ackredit public-package pilot (Python 3.14)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 247.9,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114153983159,
+        "name": "Offline tests (windows-latest, Python 3.11)",
+        "passed": 4266,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 737.52,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114153983192,
+        "name": "Ackredit public-package pilot (Python 3.11)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 259.39,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114153983195,
+        "name": "Offline tests (ubuntu-latest, Python 3.14)",
+        "passed": 4266,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 550.79,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114153983206,
+        "name": "Ackredit public-package pilot (Python 3.13)",
+        "passed": 981,
+        "skipped": 0,
+        "deselected": 0,
+        "seconds": 288.15,
+        "warnings": 2,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114153983214,
+        "name": "Offline tests (ubuntu-latest, Python 3.13)",
+        "passed": 4266,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 658.58,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114153983224,
+        "name": "Offline tests (ubuntu-latest, Python 3.11)",
+        "passed": 4266,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 636.25,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114153983226,
+        "name": "Offline tests (windows-latest, Python 3.12)",
+        "passed": 4266,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 1020.36,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114153983273,
+        "name": "Offline tests (ubuntu-latest, Python 3.12)",
+        "passed": 4266,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 561.14,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114153983288,
+        "name": "Offline tests (macos-26, Python 3.14)",
+        "passed": 4266,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 420.51,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 114153983370,
+        "name": "Offline tests (windows-latest, Python 3.14)",
+        "passed": 4266,
+        "skipped": 10,
+        "deselected": 26,
+        "seconds": 624.68,
+        "warnings": 6,
+        "unclosed_sqlite_warning_groups": 0
+      }
+    ]
+  },
+  "governance": {
+    "run_id": 38031754777,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38031754777",
+    "head_sha": "3bc1c53150e8743cdee5132a915d4aa19cf6d0d1",
+    "conclusion": "success",
+    "jobs_passed": 1,
+    "jobs_total": 1,
+    "inspection": "GH Run Receptor complete full capture/replay; all manifest members independently hashed",
+    "capture_manifest_sha256": "74aa4d3502b96453dd71cf8631bfbf89a2f0e4827cafb3f33c9c2324c789323f"
+  },
+  "qualification_limits": [
+    "Development source checkpoint, not a new installed artifact or public release.",
+    "Explicit legacy rules retain known historical genomic-scope and duplicate-count limitations.",
+    "Historical variant pins without coordinate context remain unknown; migration never guesses an assembly from a dataset label.",
+    "Conditional means over resolved bases require per-tissue coverage interpretation; no source-completeness or pathogenicity claim.",
+    "Coordinate context records the client query/mapping contract, not independently verified native assembly or release.",
+    "Broader declared-enricher refresh restoration remains #139; source-operation/bibliography observation remains #108.",
+    "Original historical and current versioned reports retain independent inert readers and original producer support.",
+    "Public CI excludes protected originals and online requests; qualification scopes remain distinct.",
+    "Archived native consumer revalidation adds no new provider queries; its payloads/results remain private and are absent here.",
+    "Human scientific usefulness and consumer-owned Evidence acceptance remain separate."
+  ]
+}

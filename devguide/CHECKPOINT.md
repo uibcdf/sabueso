@@ -2,36 +2,34 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-10, pinned comparative explanations and source qualification (#91/#112/#138).
+Last updated: 2026-10-10, versioned genomic tissue scope/coverage qualified (#138).
 
-The preceding qualified comparative explanation slice (#91) retained both sequence pins and
-the exact variant/isoform/pext/term inputs under three new explanation rules.
-The public `comparative_support.py` journey preserves original envelopes through
-inert reading and later fixture reacquisition. Historical scientific rules and
-card schemas remained unchanged at that checkpoint. Mixed genomic scope and
-overlapping pext limits were explicit; their separately versioned correction is [#138](https://github.com/uibcdf/sabueso/issues/138).
-Comparative operation observation/bibliography (#108) and installed/human
-acceptance remain separate.
-Code `3fa2fdfa560245cf282a3ca2ebe7054ba1d6e516` passes
-[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38028657256)
-and [governance](https://github.com/uibcdf/sabueso/actions/runs/38028657216).
-The [source receipt](pending_proposals/comparative_explanations_checkpoint.json)
-records 45 new regressions, 123 selected and 5,768 full local-original cases;
-all nine public offline CI lanes pass 4,215 cases with ten declared fixture skips.
-The following #138 correction retains that earlier source receipt; its current
-qualification is recorded separately, before comparative #108 observation.
+Development Card views default to `pext_at_variant@2` and `isoform_exon_usage@3`,
+with explanation `@2`, explicit historical `usage_rule` selection and per-tissue
+resolved/missing/conflicting coverage. Overlapping bases count once and incompatible
+or missing genomic scopes do not establish correspondence. Unpublished schema
+0.3.14 adds requested-reference-genome context to new gnomAD variant assertions;
+migration reports missing context instead of inferring it. Recorded gnomAD
+variant/pext options and limits are restored during refresh. Both public report
+generations have inert readers and format-preserving reacquisition.
 
-Development #138 corrects tissue joins under `pext_at_variant@2` and
-`isoform_exon_usage@3`, with explanation `@2`, explicit historical `usage_rule`
-selection and per-tissue resolved/missing/conflicting coverage. Unpublished
-schema 0.3.14 adds requested-reference-genome context to new gnomAD variant
-assertions; migration reports missing context instead of inferring it. Both public
-report generations retain independent readers and format-preserving reacquisition.
+Code `3bc1c53150e8743cdee5132a915d4aa19cf6d0d1` passes
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38031754778)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/38031754777).
+The [source receipt](pending_proposals/comparative_tissue_scope_checkpoint.json)
+records 41 new scoped regressions, ten additional independent-format cases,
+187 selected and 5,819 full local-original cases with twelve workers. All nine
+public offline CI lanes pass 4,266 cases with ten declared fixture skips; four
+Ackredit compatibility lanes pass 981 cases. Shared editable imports/metadata and
+archived native-answer/old-report revalidation pass without new provider queries.
 [Correction scope](pending_proposals/comparative_tissue_scope.md).
-Applicable local/exact-head qualification is recorded with the completed checkpoint;
-The refresh regression also exposed missing declared-source option restoration:
-bounded gnomAD variant/pext restoration is included; broader routing is #139.
-#108 operation/bibliography and installed/human acceptance remain separate.
+
+Earlier `@1` explanation qualification at `3fa2fdf` retains its unchanged
+[receipt](pending_proposals/comparative_explanations_checkpoint.json). Published
+0.14.0, frozen 0.3.13 and stored historical reports remain unchanged.
+Next: [#139](https://github.com/uibcdf/sabueso/issues/139) declared-source refresh
+routing, then comparative operation/bibliography observation #108. Installed
+artifact qualification and human scientific acceptance remain separate.
 
 ## Resume here
 
@@ -50,6 +48,7 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | SQLite lifetime | Card/deck readers and writers and direct test queries close connections; eight regressions and 5,602 local-original cases pass; exact-SHA CI passes 15/15 with no SQLite warning group (#133) | Keep fatal Linux Python 3.14 guards; correction is on development main, outside the published 0.14.0 artifact |
 | Dependent source requests | GTEx missing tissue/release prerequisites are `not_queried`; the runner stops before constructing a client; 113 selected and 5,605 full local-original cases pass; code `b28f8d3` passes 15/15 CI and governance (#135) | Retain unknown counts and historical source/report support; qualify a future installed artifact separately |
 | Shared source terms | UniRef explicitly shares canonical `uniprot` terms; collisions and policy differences are refused; 125 selected and 5,627 full local-original cases pass; code `e0b80b2` passes 15/15 CI and governance (#136) | Retain historical reports; qualify a future installed artifact separately |
+| Comparative scientific scope | Default tissue rules and explanation versions check explicit genomic scope and resolved/missing/conflicting coverage; 41 scoped cases, both report generations and 5,819 local-original cases pass; code `3bc1c53` passes 15/15 CI and governance (#138) | Retain explicit legacy reproduction and missing historical coordinate context; broader declared-source refresh is #139, operation/bibliography #108 and installed/human acceptance remain separate |
 | Comparative response integrity | Online OMA/UniRef/gnomAD/GTEx reject malformed required containers and unanswered consequence aliases; 96 new regressions, 223 selected and 5,723 full local-original cases pass; code `09cf912` passes 15/15 exact-SHA CI and governance (#137) | Retain declared source-version/operation gaps and qualify installed delivery separately; [source receipt](pending_proposals/comparative_response_contracts_checkpoint.json) |
 
 The accumulated recovery/consolidation code checkpoint is published as

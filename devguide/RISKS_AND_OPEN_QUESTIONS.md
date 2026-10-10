@@ -7,8 +7,11 @@ without variant coordinate context remain unknown under the new rule; migrating
 never synthesizes context. Conditional means over resolved bases must be read with
 coverage, never as complete gene/tissue expression or pathogenicity. Source-side
 coordinate/release correctness, installed delivery and human scientific usefulness
-remain separate from the bounded regression scope. See
-[the correction](pending_proposals/comparative_tissue_scope.md).
+remain separate from the bounded regression scope. Code `3bc1c53` passes 15/15
+exact-SHA CI; [the receipt](pending_proposals/comparative_tissue_scope_checkpoint.json)
+retains the qualified source and limits. Broader declared-enricher refresh loses
+some requested options under its historical restoration list (#139); the bounded
+gnomAD route is corrected. See [the correction](pending_proposals/comparative_tissue_scope.md).
 
 ## Risks
 - **Licensing/Terms**: Some sources (DrugBank, eMolecules, ChemSpider) have licensing constraints that may affect redistribution and caching.

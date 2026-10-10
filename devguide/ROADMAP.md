@@ -477,10 +477,11 @@ public method names.
   #138 introduces matching genomic scopes, union coverage, per-tissue missingness
   and explanation `@2`; [its scope](pending_proposals/comparative_tissue_scope.md)
   separates new and historical rules. Comparative operation observation remains #108.
-  Code `3fa2fdf` is qualified by 5,768 local-original cases and 15/15 exact-SHA CI
-  jobs; [the source receipt](pending_proposals/comparative_explanations_checkpoint.json)
-  retains its public/local scope. Qualify the #138 correction before expanding
-  comparative operation/bibliography observation in #108.
+  Code `3bc1c53` qualifies the #138 correction with 5,819 local-original cases and
+  15/15 exact-SHA CI jobs; [its source receipt](pending_proposals/comparative_tissue_scope_checkpoint.json)
+  retains public/local scopes and explicit legacy reproduction. Restore broader
+  declared-source refresh routing in #139 before expanding comparative
+  operation/bibliography observation in #108.
 - **Traceability (#108).** Extend observed source/client/operation coverage along
   these exercised paths, including reuse, versions with their actual basis, retries,
   empty answers, caps, partial returns and failures. Keep bibliography and missing

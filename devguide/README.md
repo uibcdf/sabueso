@@ -119,6 +119,10 @@ not a release receipt.
   tissue support (#91). Development scoped tissue rules correct historical limits under #138;
   [their scope](pending_proposals/comparative_tissue_scope.md) preserves explicit legacy rules and reports;
   operation/bibliography coverage is still #108.
+  The [scoped tissue source receipt](pending_proposals/comparative_tissue_scope_checkpoint.json)
+  records code `3bc1c53`, 5,819 local-original cases, explicit legacy reproduction,
+  schema 0.3.14 migration/refresh and 15/15 exact-SHA CI jobs. Broader declared-source
+  refresh routing is #139, followed by comparative observation/bibliography #108.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery
