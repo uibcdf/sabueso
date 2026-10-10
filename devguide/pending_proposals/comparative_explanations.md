@@ -54,3 +54,23 @@ of original recorded intersections, keeping historical denominators visible.
 This slice is outside published 0.14.0. Installed qualification and human
 scientific usefulness review remain open; the broader #91/#108/#112 scopes are
 not closed by this public fixture journey.
+
+## Source checkpoint qualification (2026-10-10)
+
+Code `3fa2fdfa560245cf282a3ca2ebe7054ba1d6e516` passes 123 selected cases and
+5,768 full local-original offline cases (170.40 seconds, ten expected source-failure
+warnings). Both gates use Python 3.14 and pytest-receptor with twelve workers;
+SQLite/unraisable guards are fatal in the full checkpoint. After refreshing the
+editable installation, all 45 new regressions pass again (10.19 seconds), with
+all six participating component imports and editable metadata verified outside
+the checkout. Ruff, fixture delivery, recorded card shape/schema, dependency
+preflight, governance, maintained relative links and warning-fatal Sphinx pass.
+
+[CI](https://github.com/uibcdf/sabueso/actions/runs/38028657256) passes 15/15 jobs:
+nine public offline OS/Python lanes each pass 4,215 cases, ten declared fixture
+skips and 26 online deselections; four Ackredit public-package compatibility lanes
+each pass 981 cases. [Governance](https://github.com/uibcdf/sabueso/actions/runs/38028657216)
+passes at the same SHA. Complete GH Run Receptor capture/replay and independent
+member digest verification support the [machine-readable receipt](comparative_explanations_checkpoint.json).
+This does not qualify a new installed Sabueso artifact or close human scientific
+acceptance. The next correction is #138, followed by comparative #108 observation.

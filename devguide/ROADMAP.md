@@ -475,6 +475,10 @@ public method names.
   original reports after reacquisition without re-derivation. Historical genomic
   scope/overlap assumptions remain visible and need the versioned correction #138;
   comparative operation observation remains #108.
+  Code `3fa2fdf` is qualified by 5,768 local-original cases and 15/15 exact-SHA CI
+  jobs; [the source receipt](pending_proposals/comparative_explanations_checkpoint.json)
+  retains its public/local scope. Correct #138 before expanding comparative
+  operation/bibliography observation in #108.
 - **Traceability (#108).** Extend observed source/client/operation coverage along
   these exercised paths, including reuse, versions with their actual basis, retries,
   empty answers, caps, partial returns and failures. Keep bibliography and missing

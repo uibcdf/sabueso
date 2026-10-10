@@ -118,6 +118,10 @@ not a release receipt.
   `examples/user_journeys/comparative_support.py` reader retain exact sequence and
   tissue support (#91). Historical genomic scope and overlap limits need #138;
   operation/bibliography coverage is still #108.
+  The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
+  records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
+  15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery
+  and human usefulness review remaining separate.
   `pending_proposals/independent_user_journeys.md` scopes the three standalone SDK
   journeys, the implemented protein comparison, molecule/target and bounded disease
   examples, exact disease membership support, conservative whole-context admission

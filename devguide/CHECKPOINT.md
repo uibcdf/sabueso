@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-09, approved quality work and comparative response integrity (#112/#132/#137).
+Last updated: 2026-10-10, pinned comparative explanations and source qualification (#91/#112/#138).
 
 Development comparative explanations (#91) now retain both sequence pins and
 the exact variant/isoform/pext/term inputs under three new explanation rules.
@@ -12,6 +12,14 @@ card schemas remain unchanged. Mixed genomic scope and overlapping pext limits
 are explicit; their separately versioned correction is [#138](https://github.com/uibcdf/sabueso/issues/138).
 Comparative operation observation/bibliography (#108) and installed/human
 acceptance remain separate.
+Code `3fa2fdfa560245cf282a3ca2ebe7054ba1d6e516` passes
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38028657256)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/38028657216).
+The [source receipt](pending_proposals/comparative_explanations_checkpoint.json)
+records 45 new regressions, 123 selected and 5,768 full local-original cases;
+all nine public offline CI lanes pass 4,215 cases with ten declared fixture skips.
+Next: the versioned genomic-scope/coverage correction #138, then comparative
+operation/bibliography observation #108.
 
 ## Resume here
 
