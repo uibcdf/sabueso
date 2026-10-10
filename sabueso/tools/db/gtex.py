@@ -10,7 +10,10 @@ tissues by them, in lower case.
   request.
 
 Each answer is ``{"retrieved_at", "version", "record"}``: ``record`` the tissues as GTEx
-states them (id, name, tissue site, ontology id and IRI), ``version`` the dataset.
+states them (id, name, tissue site, ontology id and IRI), ``version`` the requested
+dataset label, not a source-confirmed revision. Detached acquisition records retain
+that distinction and the single-response scope. A missing fixture is unavailable,
+not source-stated absence.
 ``OnlineGTExClient`` queries the GTEx Portal API (v2, open-access data, free to use with
 acknowledgement of the GTEx Portal); ``FixtureGTExClient`` reads
 ``<directory>/gtex/tissue_site_detail_<dataset>.json``.
@@ -26,6 +29,8 @@ from urllib.parse import urlencode
 
 from sabueso._private.argdigest import arg_digest
 from sabueso.core.errors import ConnectorError, RecordNotFoundError
+from sabueso.core.gtex_acquisition import note_response, observe
+from sabueso.core.source_acquisition import capture_acquisitions, missing_fixture
 from sabueso.tools.db._http import stamp, urlopen
 from sabueso.tools.db._record import online, source_record
 
@@ -49,6 +54,7 @@ class OnlineGTExClient:
     def __init__(self, timeout: float = 60.0) -> None:
         self.timeout = timeout
 
+    @observe()
     def tissues(self, dataset: str) -> Dict[str, Any]:
         retrieval = stamp(SOURCE)
         query = urlencode({"datasetId": dataset, "itemsPerPage": 250})
@@ -62,13 +68,7 @@ class OnlineGTExClient:
             raise ConnectorError(f"GTEx request failed: {exc}") from exc
         except (URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"GTEx request failed: {exc}") from exc
-        if (
-            not isinstance(found, dict)
-            or not isinstance(found.get("data"), list)
-            or not all(isinstance(row, dict) for row in found["data"])
-        ):
-            raise ConnectorError("GTEx response does not state a tissue data list")
-        rows = found["data"]
+        rows = note_response(dataset, found)
         if not rows:
             raise RecordNotFoundError(f"GTEx states no tissues for {dataset}")
         return {
@@ -89,13 +89,18 @@ class FixtureGTExClient:
         self.retrieved_at = retrieved_at
         self.failing = set(failing or ())
 
+    @observe(fixture=True)
     def tissues(self, dataset: str) -> Dict[str, Any]:
         if dataset in self.failing:
             raise ConnectorError(f"GTEx request for {dataset} failed (simulated)")
         path = self.directory / f"tissue_site_detail_{dataset}.json"
         if not path.is_file():
-            raise RecordNotFoundError(f"GTEx has no dataset {dataset}")
-        rows = json.loads(path.read_text(encoding="utf-8"))["data"]
+            raise missing_fixture(f"GTEx fixture is unavailable for {dataset}")
+        try:
+            found = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            raise ConnectorError(f"GTEx fixture could not be read: {exc}") from exc
+        rows = note_response(dataset, found, fixture=True)
         return {
             "retrieved_at": self.retrieved_at,
             "version": dataset,
@@ -107,6 +112,7 @@ class FixtureGTExClient:
 
 
 @arg_digest()
+@capture_acquisitions
 def get_tissues(dataset: str, client: Any = None, skip_digestion: bool = False):
     """The tissues of a GTEx release, with the ontology term GTEx states for each."""
     response = online(client, OnlineGTExClient).tissues(dataset)

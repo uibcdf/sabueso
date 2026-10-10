@@ -1,5 +1,17 @@
 # Automatic traceability and attribution
 
+Development GTEx tissue access credits the [GTEx Portal](https://gtexportal.org/),
+whose URL and acknowledgement are declared in Sabueso's source registry and public
+fixture notice. Built-in online/fixture `tissues` and public `get_tissues` retain
+original access records and portable attribution. The requested dataset label is
+separate from an unknown native revision; returned row counts differ from the
+terms selected into a card, and one response does not prove dataset completeness.
+Missing local fixtures are unavailable; malformed responses and failed requests
+do not establish absence. Blocked prerequisites create no GTEx operation. Archive
+replay retains original response times; saved readers add no fresh credit.
+Underlying publications remain explicit gaps. This extension is on development
+main and is outside the unchanged published 0.14.0 artifact.
+
 Development NCBI Taxonomy access credits the
 [NCBI Taxonomy resource](https://www.ncbi.nlm.nih.gov/taxonomy), verified
 2026-10-08. Built-in online/fixture `taxa` operations and public `get_taxon`

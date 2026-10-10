@@ -1,5 +1,20 @@
 # Sabueso — Decision Log
 
+## Observe GTEx access without upgrading requested labels to revisions (2026-10-10, #108)
+
+Observe the existing built-in tissue operation and public source getter using the
+common detached acquisition and Ackredit services. Keep scientific client/mapping
+records unchanged while reporting the requested dataset label separately from
+unknown native revision, returned rows separately from card-selected terms, and
+single-response success separately from dataset completeness. A missing local
+fixture is unavailable, not provider-stated absence. Preserve the established
+online HTTP 404/422 exception with its client-interpretation basis. Blocked
+prerequisites create no fictitious source operation; saved original sidecars and
+exact card pins can be read without acquisition, derivation or fresh credit.
+Credit only the declared GTEx Portal resource description; underlying publications
+and native revisions remain explicit gaps. Broader comparative observation #108
+and installed/human acceptance stay open.
+
 ## Restore declared enrichment requests and disclose historical gaps (2026-10-10, #139)
 
 Derive protein refresh routing from declared exact source/data selectors. Record

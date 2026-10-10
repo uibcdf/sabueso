@@ -675,7 +675,23 @@ online and fixture `taxa` routes and public `get_taxon`: batch/request scope,
 partial and missing results, unavailable fixture IDs, failures, archive reuse/replay
 and original scientific retrieval times. Unknown source versions and underlying
 bibliographic metadata remain unknown. Regression inputs use public fixtures and
-synthetic responses; private consumer outputs stay private. Coverage is now 35
+synthetic responses; private consumer outputs stay private. That checkpoint covers 35
 declared sources, with other sources/custom clients still unobserved. See the
 [follow-up qualification and memory correction](private_consumer_revalidation.md#taxonomy-and-memory-follow-up).
 Complete #108 and overall consumer acceptance remain open.
+
+## GTEx tissue observation (development, 2026-10-10, #108)
+
+Existing built-in online/fixture tissue operations and public `get_tissues` now
+retain observed query/row/envelope/transport identity, retries, original archive
+times and explicit empty/unavailable/failed/unqueried states. Requested dataset
+labels stay separate from unknown native revisions; a successful single response
+does not prove complete dataset coverage. Card-selected terms do not determine
+the acquired row count. The existing prerequisite gate creates no operation when
+required pext inputs are absent. Completed access credits the declared GTEx Portal
+resource description, with native-revision and underlying-publication gaps.
+Detached sidecars remain readable from another process without new acquisition,
+derivation or credit. Development coverage becomes 36 declared source families;
+UniRef, OMA, gnomAD, derived comparative operations, complete bibliography and
+consumer-owned recording/Evidence acceptance remain open.
+[Behavior and qualification](gtex_observation.md).

@@ -64,8 +64,9 @@ A declared enricher whose required upstream input is missing or ambiguous raises
 `RequestPrerequisiteMissing` before constructing or calling its client. The runner
 records `not_queried` and its prerequisite explanation. GTEx requires pext tissue
 keys and one unambiguous GTEx release label in the upstream record; missing inputs
-are not GTEx absence (#135). The label alone does not establish whether its revision
-basis is native or client-declared; that distinction remains explicit #108 work.
+are not GTEx absence (#135). Development GTEx observation records the dataset
+label as a request parameter and native revision as unknown; returned row counts
+and a single response do not establish whole-dataset coverage (#108).
 
 The built-in online OMA, UniRef, gnomAD and GTEx routes validate the native
 containers they consume (#137). An omitted required envelope or list, wrong JSON
@@ -73,8 +74,9 @@ container or unanswered gnomAD consequence alias is a connector failure, never a
 empty scientific result. A GraphQL error with a partial record is a failure; the
 existing explicit not-found error form and well-formed empty/null answers retain
 their own semantics. These checks do not qualify every nested native field or add
-source-operation observation to those routes. Original response bytes, source
-identity and card schemas stay fixed.
+source-operation observation to every route. The separate development GTEx slice
+observes existing tissue access; UniRef/OMA/gnomAD coverage remains open. Original
+response bytes, source identity and card schemas stay fixed.
 
 ### Supplied originals
 
@@ -110,7 +112,8 @@ or uncovered boundary states `not_observed`, rather than claiming complete prove
 The native reference records published and development observation coverage for
 each route. It includes UniProt/Europe PMC/RCSB, ChEMBL/PubChem/BindingDB,
 PDB CCD/UniChem, PDBe-KB/AlphaFold/InterPro and later disease/clinical and
-NCBI Taxonomy slices.
+NCBI Taxonomy slices, plus
+[development GTEx tissue observation](pending_proposals/gtex_observation.md).
 Each new source must declare and test its observation coverage and gaps.
 Per-result and workflow sidecars preserve original citations and producer context;
 saved readers add no source access, recomputation or credit.

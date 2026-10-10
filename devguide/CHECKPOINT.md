@@ -4,6 +4,13 @@ Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
 Last updated: 2026-10-10, declared refresh request scope source-qualified (#139).
 
+The next [development GTEx observation slice](pending_proposals/gtex_observation.md)
+records existing tissue access and portable attribution, distinguishes requested
+dataset labels from unknown native revisions, and classifies missing local files
+as unavailable. 34 new regressions, 343 selected cases and 5,930 local-original
+cases pass with twelve receptor workers; exact-source CI is pending. #108 stays open for
+UniRef, OMA, gnomAD and derived comparative operations. Published 0.14.0 is unchanged.
+
 Development refresh now uses all 24 declared enrichers' 25 source/data selectors,
 preserves supplied protein request options on every recorded outcome, and reports
 historical unrecorded parameters, explicit overrides and unsupported selectors.
@@ -20,8 +27,12 @@ twelve receptor workers on Python 3.14.7. All nine public offline CI lanes pass
 4,343 cases with ten declared fixture skips; four installed public-Ackredit lanes
 pass 981 cases. 116 refresh/migration/independent-report cases pass after updating
 editable metadata; all six participating imports are verified outside the checkout.
-Private consumer revalidation remains separately tracked under #132; its
-execution details and derived metrics remain outside the public receipt.
+With explicit maintainer authorization, the receipt publishes aggregate #132
+revalidation metrics: eight existing cells, five refreshes and ten exact
+original/refreshed pins; the independent reader verifies 9,094 sealed assertions
+and 30 individual pinned reads with unchanged active-session credit. No new
+provider query or original cell is involved. Detailed consumer artifacts remain
+private; installed-artifact and human scientific acceptance stay separate.
 
 Development Card views default to `pext_at_variant@2` and `isoform_exon_usage@3`,
 with explanation `@2`, explicit historical `usage_rule` selection and per-tissue

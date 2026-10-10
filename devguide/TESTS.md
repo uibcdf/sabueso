@@ -70,6 +70,7 @@ fixture does not establish current live availability.
 | Derived residue knowledge | `test_residue_knowledge_offline.py`, `test_residue_tracks_offline.py`, `test_residue_composition_offline.py`; declared axes, support and ambiguous denominator |
 | Terms/admission | `test_terms_offline.py`, `test_packet_terms_offline.py`, `test_disease_deck_admission_offline.py`; original kept/excluded support |
 | Attribution/literature/clinical | Source acquisition and relevant attribution/extraction/article/reference tests; original portable sidecars and bibliography gaps |
+| GTEx access observation | `test_gtex_acquisition_offline.py`, owning GTEx/acquisition/attribution/refresh cases; requested dataset versus unknown revision, returned versus selected rows, fixture unavailable/failed/empty states, archive replay/retries and an independent inert pinned reader (#108) |
 | Independent scientific journeys | `test_user_journeys_offline.py`, `test_molecule_target_journey_offline.py`, `test_disease_entities_journey_offline.py`; public examples and original readers |
 | HK2/notebook reports | `test_hk2_test_system_offline.py`, `tests/tools/test_card_notebook_offline.py`; exact saved card/report regeneration |
 

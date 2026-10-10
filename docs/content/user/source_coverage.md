@@ -141,6 +141,11 @@ arbitrary derived operations and complete bibliography remain explicit gaps.
 Disease-deck metadata records scientific outcomes separately from original runtime
 traceability. See {doc}`attribution` for exact scopes and original sidecars.
 
+Development main adds observed GTEx tissue access, bringing declared source-family
+coverage to 36. Its requested dataset label remains separate from unknown native
+revision and whole-dataset completeness. UniRef, OMA, gnomAD and derived comparative
+operation observation remain open; this extension is outside published 0.14.0.
+
 The access and journey extensions below are delivered in 0.14.0. Their individual
 native input, licence, live-health and card-integration limits remain unchanged.
 

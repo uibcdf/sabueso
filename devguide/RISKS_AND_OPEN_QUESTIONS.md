@@ -33,8 +33,11 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   [source receipt](pending_proposals/comparative_response_contracts_checkpoint.json)
   preserves both local/public scopes. This is not a complete native field validator
   or new installed delivery.
-  These comparative routes still need declared source-operation/bibliography
-  observation. Development pinned sequence/tissue explanations now have an
+  UniRef, OMA and gnomAD still need declared source-operation/bibliography
+  observation. [Development GTEx observation](pending_proposals/gtex_observation.md)
+  records requested dataset labels separately from unknown native revisions;
+  one returned page does not prove complete dataset coverage. Development pinned
+  sequence/tissue explanations now have an
   independent public fixture reader; [their scope](pending_proposals/comparative_explanations.md)
   includes the versioned #138 scientific correction; installed/human acceptance remains separate. In particular,
   gnomAD's existing pext release label is client-declared; it must not be presented

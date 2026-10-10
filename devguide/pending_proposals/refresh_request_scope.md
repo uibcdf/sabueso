@@ -67,8 +67,16 @@ preserves these results. After editable metadata refresh, 116 scope/migration/
 independent-report cases pass, and all six participating imports/metadata agree
 outside the checkout.
 
-Private consumer revalidation remains separate under #132. Its execution details
-and derived metrics are retained only in the private workspace.
+Maintainer-authorized aggregate revalidation metrics (#132, 2026-10-10): eight
+existing original SDK cells replay in 10.441 seconds, five actual original-context
+refreshes in 11.830 seconds, and the original five-card reader in 4.045 seconds.
+An independent reader of all ten original/refreshed pins verifies 9,094 exact
+assertions through sealed loads and 30 individual pinned reads in 4.413 seconds,
+with active-session credit unchanged. There are zero new network attempts,
+additional original cells, reader acquisitions, derivations or credit operations.
+Detailed artifacts remain private. These counts reconfirm only the exercised
+contexts, retaining earlier separately dated coverage; they do not establish
+installed-artifact or human scientific acceptance.
 
 This slice does not provide frozen client defaults, native release verification,
 all molecule/disease refresh routes, new comparative acquisition observation or

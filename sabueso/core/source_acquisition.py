@@ -45,6 +45,7 @@ COVERAGE = {
         "MedGen",
         "ClinicalTrials.gov",
         "NCBI Taxonomy",
+        "GTEx",
         "AAindex",
         "DisProt",
         "UniParc",
@@ -621,6 +622,13 @@ def _credit(record):
                 "taxonomic_publications_not_queried",
             ]
         )
+    if record["source"] == "GTEx":
+        record["bibliography_gaps"].extend(
+            [
+                "native_dataset_and_tissue_record_revisions_not_stated",
+                "tissue_publications_not_queried",
+            ]
+        )
     if record["source"] == "ClinicalTrials.gov":
         from .clinicaltrials_bibliography import citations
 
@@ -709,6 +717,7 @@ def _credit(record):
             "indication_reference_context",
             "clinical_context",
             "taxonomy_context",
+            "tissue_context",
         ):
             if key in record:
                 context[key] = deepcopy(record[key])

@@ -485,6 +485,9 @@ public method names.
   5,896 local-original cases and 15/15 exact-SHA CI; [qualification](pending_proposals/refresh_request_scope.md)
   retains its [source receipt](pending_proposals/refresh_request_scope_checkpoint.json).
   Continue with comparative operation/bibliography observation in #108.
+  The [development GTEx slice](pending_proposals/gtex_observation.md) observes
+  existing tissue requests, requested-label/revision distinctions and original
+  portable credit; UniRef, OMA, gnomAD and derived-operation coverage stay open.
 - **Traceability (#108).** Extend observed source/client/operation coverage along
   these exercised paths, including reuse, versions with their actual basis, retries,
   empty answers, caps, partial returns and failures. Keep bibliography and missing

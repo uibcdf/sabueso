@@ -253,7 +253,46 @@
     "Known contradictory or missing essential route scope requires a caller override; unsupported selectors remain inspectable and omitted.",
     "All molecule/disease refresh routes and consumer-owned scientific acceptance are not qualified by this protein slice.",
     "Comparative source-operation and bibliography observation remain #108 work.",
-    "Private original-answer revalidation stays private and is not a public fixture or a new provider query.",
+    "Detailed original-answer artifacts remain private; authorized aggregate metrics do not establish public fixtures or new provider queries.",
     "The shared development environment has independent unrelated closure follow-ups; no global pip-check claim."
-  ]
+  ],
+  "private_revalidation": {
+    "status": "passed",
+    "original_notebook_cells_reconfirmed": 8,
+    "additional_original_notebook_cells": 0,
+    "fresh_refresh_contexts": 5,
+    "archive_replay_seconds": 10.441,
+    "refresh_seconds": 11.83,
+    "inert_reader_seconds": 4.045,
+    "new_network_attempts": 0,
+    "original_native_scientific_support_and_original_pins_verified": true,
+    "publication": {
+      "authorization": "Explicit maintainer authorization for these aggregates in public issue #132 and public Sabueso documentation on 2026-10-10",
+      "scope": "Aggregate execution metrics only; detailed consumer content and artifacts remain private"
+    },
+    "independent_reader": {
+      "cards": 5,
+      "exact_source_assertions": 4547,
+      "archive_records_verified": 39,
+      "new_acquisition": 0,
+      "new_derivation": 0,
+      "new_credit": 0
+    },
+    "refresh_independent_reader": {
+      "status": "passed",
+      "exact_original_and_refreshed_pins": 10,
+      "exact_source_assertions_verified_through_sealed_load": 9094,
+      "individual_pinned_store_reads": 30,
+      "credit_before_after_unchanged": true,
+      "new_acquisition": 0,
+      "new_derivation": 0,
+      "new_credit": 0,
+      "seconds": 4.413
+    },
+    "qualification_limits": [
+      "Archived native answers only; no additional original notebook cell or provider query.",
+      "Earlier separately dated execution coverage is not relabeled as reconfirmed here.",
+      "Not installed-artifact qualification or human scientific acceptance."
+    ]
+  }
 }

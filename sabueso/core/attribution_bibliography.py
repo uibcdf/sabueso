@@ -7,6 +7,12 @@ Metadata sources are recorded in docs/content/user/attribution.md.
 from copy import deepcopy
 
 _DESCRIPTIONS = {
+    "GTEx": {
+        "id": "url:https://gtexportal.org/",
+        "type": "dataset",
+        "title": "Genotype-Tissue Expression (GTEx) Portal",
+        "url": "https://gtexportal.org/",
+    },
     "NCBI Taxonomy": {
         "id": "url:https://www.ncbi.nlm.nih.gov/taxonomy",
         "type": "dataset",
