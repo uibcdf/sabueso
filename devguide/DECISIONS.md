@@ -1,5 +1,23 @@
 # Sabueso — Decision Log
 
+## Source-bound annotation structural questions (2026-10-24, #148/#160/#161)
+
+Expose individual original positional annotations without merging similar items.
+`annotation_item_support@1` matches actual subject/field/value with exact JSON
+types. `annotation_structure_request@1` prepares an explicit existing canonical
+region question only from retained native UniProt feature scope and consistent
+original identity/sequence/length support. Preserve unknown native history,
+uncertain positions, compound/foreign axes, source conflicts and unstated sequence
+revisions. Disulfide endpoints do not imply an intervening interval. Preserve native
+feature data for every mapped UniProt type in unpublished 0.3.14; migration reports
+the absent input, and refresh records a new basis rather than recovering history.
+New navigation @3 retains separate @1/@2 verification. Bind every saved related
+operation to the actual originating item, in addition to verifying the link
+collection's own basis. Internally resealed swaps cannot borrow another item's
+valid links. Existing capsules, source assertions and external pins remain fixed.
+These changes target 0.15.0; broader scientific integration and combined human
+acceptance remain open. See the [scope](pending_proposals/card_annotation_regions.md).
+
 ## Accumulate implementations and corrections for 0.15.0 (2026-10-24, #112/#148)
 
 The maintainer confirmed 0.15.0 as the development and delivery target for all

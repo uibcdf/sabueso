@@ -3,12 +3,12 @@
 from itertools import islice
 
 
-def feature(value):
+def feature(value, *, include_description=True):
     from .card_exploration_render import preview
 
     if not isinstance(value, dict):
         return preview(value)
-    description = value.get("description")
+    description = value.get("description") if include_description else None
     location = value.get("location")
     if not isinstance(location, dict) or location.get("kind") != "sequence":
         return (

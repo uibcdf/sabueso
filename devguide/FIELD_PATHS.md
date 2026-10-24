@@ -130,6 +130,12 @@ Existing comparative values, original scientific rules and saved pins are unchan
 - `features_positional.topological_domain` (UniProt native topological domain feature; since published schema 0.3.13)
 - `features_positional.transmembrane` (UniProt native transmembrane feature; since published schema 0.3.13)
 - `features_positional.active_site`
+  Development schema 0.3.14 (#160) extends native UniProt feature input, endpoint
+  modifiers, unknown endpoints, molecule scope and stated sequence revision to
+  all mapped positional types below, rather than only the additional types in
+  0.3.13. The complete original feature is in the supporting assertion's
+  `source_metadata.uniprot_feature`; a foreign/unidentified molecule is unplaced.
+  Migration reports absent historical input; refresh records a new basis.
 - `features_positional.binding_site`
 - `features_positional.family_site` (sites an InterPro member database places on the sequence, e.g. CDD catalytic triad; one item per site, with its signature)
 - `features_positional.modified_residue`

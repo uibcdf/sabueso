@@ -21,6 +21,13 @@ remain unchanged. See [scope](pending_proposals/comparative_operations.md).
     historical parameters/defaults, overrides, unsupported selectors and dependent
     requests. Unrecorded parameters are never backfilled into old cards. These
     quality keys are explicit-only in `SCHEMA_CHANGES`, not automatic gaps.
+    #160 extends optional `source_metadata.uniprot_feature` and stated sequence
+    revision to every mapped UniProt positional type. Modifiers and unknown
+    endpoints survive normalization; noncanonical molecule scope stays unplaced.
+    Migration reports missing native feature input on applicable old assertions;
+    refresh records new inputs without repairing historical originals. The
+    [annotation exploration contract](pending_proposals/card_annotation_regions.md)
+    uses these inputs for explicit structural requests outside the Card schema.
     #156 adds optional `relationship_store[].derivation_applications` for distinct
     rule/input/parameter/engine/output contexts. Its migration entry is explicit-only:
     loading/migrating legacy records never reconstructs lost applications. See the
@@ -49,7 +56,7 @@ remain unchanged. See [scope](pending_proposals/comparative_operations.md).
     regulation, domain notes, similarity, source cautions and miscellaneous text;
     additional positional chain, lipidation, motif, region, sequence-conflict,
     topological-domain and transmembrane fields, plus active positional domains.
-    Every feature keeps original bounds/modifiers, molecule scope, ECO support and
+    Those added feature types keep original bounds/modifiers, molecule scope, ECO support and
     sequence revision. Residue views leave uncertain, foreign or revision-mismatched
     intervals unplaced. These optional fields refresh through `SCHEMA_CHANGES`;
     similarity is never identity and source cautions are not quality conclusions;

@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-24, confirmed 0.15.0 development target (#112/#148).
+Last updated: 2026-10-24, individual annotation navigation and original scope (#148/#160/#161).
 
 The maintainer confirmed that all ongoing implementations and corrections target
 **0.15.0**. The earlier proposal to evaluate an AlphaFold-only 0.14.1 patch/backport
@@ -11,6 +11,28 @@ continues toward the entire broad Card exploration design and validated human
 experience. Candidate selection, schema freezing, staging and publication remain
 paused until those requirements are met. See the
 [release scope](pending_proposals/release_consolidation_0150.md).
+
+The [annotation continuation](pending_proposals/card_annotation_regions.md) adds
+one original positional annotation per row, exact item support and explicit
+structural region questions with original input links and return navigation.
+Native UniProt feature/molecule/modifier/revision context now survives every
+mapped feature type (#160); unknown historical native context remains unverified.
+Uncertain, noncanonical, compound or conflicted scope cannot silently become an
+exact structural request. New navigation @3 retains @1/@2 readers. Saved related
+operations are bound to the originating item, rejecting internally resealed swaps
+(#161). Unpublished schema 0.3.14 records native scope and migration gaps; its shape
+has 1,907 paths. The final selected scope passes **1,264 cases / 157.77 seconds**
+with twelve receptor workers and fatal runtime/SQLite/unraisable guards; one
+local-original case is explicitly skipped by that repository-input command.
+The initial full local run passes 7,074 cases and fails one stale migration-gap
+expectation, now corrected and covered by the selected gate. Final committed-SDK
+full/remote qualification remains pending; no earlier receipt qualifies this source.
+Next: aggregate/instance/assembly integration, model fragments and broad
+nature/agent/human completion. All ongoing work targets 0.15.0; release preparation
+remains paused.
+Distinct noncanonical native feature contexts can still collide after normalization
+([#162](https://github.com/uibcdf/sabueso/issues/162)); canonical requests refuse
+those scopes, and broader isoform integration must resolve their preservation.
 
 The [AlphaFold context continuation](pending_proposals/card_alphafold_context.md)
 binds new MD5/identity/range findings to actual original model and UniProt inputs.

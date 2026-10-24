@@ -693,31 +693,34 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     for isoform, _ in isoforms:
         for vsp in isoform.get("alternative_sequence_ids") or []:
             isoforms_of.setdefault(vsp, []).append(isoform["isoform_id"])
-    for f in uniprot_json.get("features", []) or []:
+    native_features = uniprot_json.get("features")
+    if native_features is None:
+        native_features = []
+    if not isinstance(native_features, list):
+        raise ConnectorError("UniProt features must be a native array.")
+    for f in native_features:
+        if not isinstance(f, dict):
+            raise ConnectorError("UniProt features must be native objects.")
+        if not isinstance(f.get("type"), str) or not f["type"]:
+            raise ConnectorError(
+                "UniProt feature types must be nonempty native strings."
+            )
         fp = _FEATURES.get(f.get("type"))
         if not fp:
             continue
-        recovered_feature = f.get("type") in _RECOVERED_FEATURES
-        if recovered_feature:
-            native_location = f.get("location")
-            if native_location is not None and not isinstance(native_location, dict):
+        native_location = f.get("location")
+        if native_location is not None and not isinstance(native_location, dict):
+            raise ConnectorError("UniProt feature location must be a native object.")
+        for endpoint in ("start", "end"):
+            native_endpoint = (native_location or {}).get(endpoint)
+            if native_endpoint is not None and not isinstance(native_endpoint, dict):
                 raise ConnectorError(
-                    "UniProt feature location must be a native object."
+                    "UniProt feature endpoint must be a native object."
                 )
-            for endpoint in ("start", "end"):
-                native_endpoint = (native_location or {}).get(endpoint)
-                if native_endpoint is not None and not isinstance(
-                    native_endpoint, dict
-                ):
-                    raise ConnectorError(
-                        "UniProt feature endpoint must be a native object."
-                    )
         loc = f.get("location", {}) or {}
         start = get_in(loc, ["start", "value"])
         end = get_in(loc, ["end", "value"])
-        if start is None and not recovered_feature:
-            continue
-        if recovered_feature and any(
+        if any(
             value is not None
             and (isinstance(value, bool) or not isinstance(value, int))
             for value in (start, end)
@@ -731,7 +734,7 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
                 "sequence": {
                     "sequence_id": f"UniProt:{primary}" if primary else None,
                     "start": start,
-                    "end": end if recovered_feature or end is not None else start,
+                    "end": end,
                     "indexing": "1-based",
                 },
             },
@@ -782,23 +785,21 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         }
         if ligand:
             item["ligand"] = ligand
-        metadata = {}
-        if recovered_feature:
-            coordinates = item["location"]["sequence"]
-            for endpoint in ("start", "end"):
-                modifier = get_in(loc, [endpoint, "modifier"])
-                if modifier is not None:
-                    coordinates[f"{endpoint}_modifier"] = modifier
-            # A molecule label does not identify its sequence as the canonical one.
-            if f.get("molecule") and f["molecule"] not in (
-                primary,
-                f"UniProt:{primary}",
-            ):
-                coordinates["sequence_id"] = None
-            metadata["uniprot_feature"] = deepcopy(f)
-            sequence_version = get_in(uniprot_json, ["entryAudit", "sequenceVersion"])
-            if sequence_version is not None:
-                metadata["sequence_version"] = sequence_version
+        coordinates = item["location"]["sequence"]
+        for endpoint in ("start", "end"):
+            modifier = get_in(loc, [endpoint, "modifier"])
+            if modifier is not None:
+                coordinates[f"{endpoint}_modifier"] = modifier
+        # A molecule label does not identify its sequence as the canonical one.
+        if f.get("molecule") is not None and f["molecule"] not in (
+            primary,
+            f"UniProt:{primary}",
+        ):
+            coordinates["sequence_id"] = None
+        metadata = {"uniprot_feature": deepcopy(f)}
+        sequence_version = get_in(uniprot_json, ["entryAudit", "sequenceVersion"])
+        if sequence_version is not None:
+            metadata["sequence_version"] = sequence_version
         feature_items[fp].append((item, _eco(f.get("evidences")), metadata))
     for fp in feature_items:
         assert_list(fp, feature_items[fp], features)

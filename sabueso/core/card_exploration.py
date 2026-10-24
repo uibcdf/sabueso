@@ -27,6 +27,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "annotated_regions": (
+        "Annotated regions and structural context",
+        "Individual source annotations with their axes, original support and explicit structural questions.",
+    ),
     "ligand_instances": (
         "Ligand instances in structures",
         "Original structure-local ligand instances, recorded chains and contact coordinates/distances.",
@@ -130,6 +134,8 @@ class CardItem:
 
     @property
     def kind(self):
+        if self._view._field_panel == "annotated_regions":
+            return "annotation"
         if self._view._link_panel:
             return "link"
         if self._view._record_panel:
@@ -226,6 +232,10 @@ class CardItem:
 
     @property
     def support(self):
+        if self._view._field_panel == "annotated_regions":
+            from .card_annotation_regions_v1 import support
+
+            return support(self._view._explorer, self._entry.location)
         if self._view._link_panel:
             return deepcopy(self._entry.value["support"])
         if self._view._record_panel == "coverage":
@@ -249,6 +259,37 @@ class CardItem:
 
     @property
     def cells(self):
+        if self._view._field_panel == "annotated_regions":
+            from .card_annotation_regions_v1 import annotation_path, context
+
+            key, _ = annotation_path(self._entry.location)
+            value = self._entry.value
+            location = value.get("location")
+            axis = location.get("sequence") if isinstance(location, dict) else None
+            axis = axis if isinstance(axis, dict) else {}
+            binding = context(self._view._explorer, self._entry.location)
+            values = {
+                "label": self.label,
+                "kind": self.kind,
+                "feature_type": key,
+                "sequence_ref": axis.get("sequence_id"),
+                "start": axis.get("start"),
+                "end": axis.get("end"),
+                "context_state": binding["state"],
+                "value": value,
+                "type": "object",
+            }
+            basis = tuple(self.support)
+            return MappingProxyType(
+                {
+                    key: Cell(
+                        value,
+                        state="unknown" if value is None else "present",
+                        _support=basis,
+                    )
+                    for key, value in values.items()
+                }
+            )
         if self._view._field_panel == "ligand_instances":
             from .card_ligand_instances_v1 import context
 
@@ -748,6 +789,11 @@ class CardView:
             capabilities.update(
                 filter=self.schema["columns"], sort=self.schema["columns"], follow=True
             )
+        if self._field_panel:
+            capabilities.update(
+                filter=self.schema.get("selection_columns", ["label", "kind"]),
+                sort=self.schema.get("selection_columns", ["label", "kind"]),
+            )
         if self._record_panel:
             capabilities.update(
                 filter=self.schema["columns"], sort=self.schema["columns"]
@@ -789,6 +835,32 @@ class CardView:
                 return deepcopy(STRUCTURE_HUMAN_SCHEMA)
             if self._record_panel == "coverage":
                 return deepcopy(COVERAGE_HUMAN_SCHEMA)
+        if self._field_panel == "annotated_regions":
+            return {
+                "kind": "annotation",
+                "grain": "one original positional annotation",
+                "columns": [
+                    "label",
+                    "kind",
+                    "feature_type",
+                    "sequence_ref",
+                    "start",
+                    "end",
+                    "context_state",
+                    "value",
+                    "type",
+                ],
+                "selection_columns": [
+                    "label",
+                    "kind",
+                    "feature_type",
+                    "sequence_ref",
+                    "start",
+                    "end",
+                    "context_state",
+                ],
+                "presentations": ["summary", "table"],
+            }
         if self._link_panel:
             return {
                 "kind": "link",
@@ -1354,6 +1426,7 @@ class CardExplorer:
         from .card_exploration_profiles import PANELS, field_entries
 
         nature = PANELS[topic][0]
+        from .card_annotation_regions_v1 import SCOPE as ANNOTATION_SCOPE
         from .card_ligand_instances_v1 import SCOPE as INSTANCE_SCOPE
         from .card_protein_source_v1 import SCOPES
 
@@ -1367,7 +1440,9 @@ class CardExplorer:
                 "context": self.context,
                 "fields": {entry.key: entry.value for entry in entries},
                 "field_gaps": gaps,
-                "scope": INSTANCE_SCOPE
+                "scope": ANNOTATION_SCOPE
+                if topic == "annotated_regions"
+                else INSTANCE_SCOPE
                 if topic == "ligand_instances"
                 else SCOPES[topic]
                 if topic in SCOPES

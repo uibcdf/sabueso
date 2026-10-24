@@ -251,7 +251,12 @@ def _historical_resolution(access, target):
 def _verify_links(view):
     payload, access = view.native_payload, view._explorer.access
     require(
-        payload.get("rule") in ("retained_context_links@1", "retained_context_links@2"),
+        payload.get("rule")
+        in (
+            "retained_context_links@1",
+            "retained_context_links@2",
+            "retained_context_links@3",
+        ),
         "Unsupported navigation rule.",
     )
     source = payload["source_location"]
@@ -260,7 +265,11 @@ def _verify_links(view):
             require(
                 view._origin is not None
                 and view._origin.native_payload.get("rule")
-                in ("retained_context_links@1", "retained_context_links@2"),
+                in (
+                    "retained_context_links@1",
+                    "retained_context_links@2",
+                    "retained_context_links@3",
+                ),
                 "Missing retained link-detail origin.",
             )
             return
@@ -293,6 +302,16 @@ def _verify_links(view):
         return
     _, source = access._resolve(source)
     support = view._explorer._support(source)
+    question = None
+    if payload["rule"] == "retained_context_links@3":
+        from .card_annotation_regions_v1 import link as original_annotation_link
+
+        question = original_annotation_link(view._explorer, source)
+        require(
+            question is not None,
+            "Annotation navigation has no original annotation location.",
+        )
+        support = question["support"]
     relationship, statement = None, None
     segments = source["segments"]
     if (
@@ -330,7 +349,8 @@ def _verify_links(view):
             *basis.get("statements", basis.get("source_assertions", [])),
             *(
                 basis.get("derivation_input_statements", [])
-                if payload["rule"] == "retained_context_links@2"
+                if payload["rule"]
+                in ("retained_context_links@2", "retained_context_links@3")
                 else []
             ),
         ]
@@ -352,6 +372,8 @@ def _verify_links(view):
         )
     if statement is not None and isinstance(statement.get("subject_ref"), str):
         expected_targets.append(("subject", statement["subject_ref"]))
+    if question is not None:
+        expected_targets.append(("question", "region_coverage"))
     require(
         [(link["role"], link["target_ref"]) for link in payload["links"]]
         == expected_targets,
@@ -360,6 +382,12 @@ def _verify_links(view):
     for link in payload["links"]:
         require(link["rule"] == payload["rule"], "Link rule differs.")
         role, target = link["role"], link["target_ref"]
+        if role == "question":
+            require(
+                question is not None and equal(link, question),
+                "Annotation structural request differs from its original source/axis basis.",
+            )
+            continue
         if role == "source":
             original = [
                 record
@@ -759,6 +787,18 @@ def _verify_state(view, record, native, access):
             1
         ] and not isinstance(original, (dict, list)):
             expected_key, expected_ordinal = None, None
+        elif view._field_panel == "annotated_regions":
+            from .card_annotation_regions_v1 import annotation_path
+
+            path = annotation_path(owned)
+            require(
+                path is not None,
+                "Saved annotation has no original typed annotation location.",
+            )
+            expected_key, expected_ordinal = (
+                f"features_positional.{path[0]}[{path[1]}]",
+                path[1],
+            )
         elif (
             view._field_panel
             and owned["kind"] == "card"
@@ -924,6 +964,69 @@ def _verify_profile(view, native, access):
     from .card_exploration_adapter_v1 import _v1_region_request
 
     if (
+        view._origin is not None
+        and view._origin._link_panel
+        and view._origin.native_payload.get("rule") == "retained_context_links@3"
+    ):
+        questions = [
+            item._entry.value
+            for item in view._origin.items()
+            if item._entry.value.get("role") == "question"
+        ]
+        if view._selection._scientific is not None:
+            require(
+                len(questions) == 1
+                and questions[0]["annotation_context"]["state"] == "ready",
+                "Structural annotation destination lost its original question.",
+            )
+            request = questions[0]["annotation_context"]["request"]
+            effective, status, _ = _v1_region_request(
+                view._explorer, request["options"]
+            )
+            require(
+                status == "ok"
+                and equal(
+                    view._selection._scientific.options,
+                    {
+                        key: value
+                        for key, value in effective.items()
+                        if key != "sequence_ref"
+                    },
+                )
+                and (
+                    view.request is None
+                    or equal(
+                        view.request,
+                        {
+                            "question": request["question"],
+                            "topic": "structures",
+                            "options": effective,
+                        },
+                    )
+                ),
+                "Structural destination differs from its originating annotation question.",
+            )
+        elif (
+            isinstance(native, dict)
+            and "annotation_context" in native
+            and "link" in native
+        ):
+            require(
+                native["link"] in questions
+                and equal(
+                    native["annotation_context"], native["link"]["annotation_context"]
+                ),
+                "Unavailable annotation context lost its original question.",
+            )
+            basis = native["annotation_context"]
+            require(
+                basis["state"] != "ready"
+                and view._status == basis["state"]
+                and view._reason == basis["reason"],
+                "Unavailable annotation outcome differs from its recorded basis.",
+            )
+
+    if (
         view._request is not None
         and view._request.get("question") == "region_coverage"
         and view._selection._scientific is not None
@@ -982,13 +1085,16 @@ def _verify_profile(view, native, access):
             "Saved source/area row membership differs.",
         )
     if view._field_panel:
+        from .card_annotation_regions_v1 import entries as annotation_entries
         from .card_exploration_profiles import PANELS, field_entries
         from .card_ligand_instances_v1 import entries as instance_entries
         from .card_protein_source_v1 import TOPICS, entries
 
         expected_entries, gaps = (
             (
-                instance_entries(view._explorer)
+                annotation_entries(view._explorer)
+                if view._field_panel == "annotated_regions"
+                else instance_entries(view._explorer)
                 if view._field_panel == "ligand_instances"
                 else entries(view._explorer, view._field_panel)
                 if view._field_panel in TOPICS
@@ -1072,6 +1178,14 @@ def _verify_support(bundle, nodes):
             source = sources.get((focal, item_ref))
             require(source is not None, "Saved support references a foreign item.")
             native = nodes[key].native_payload
+            if operation == "links":
+                require(
+                    equal(
+                        native.get("source_location"),
+                        None if source._view._link_panel else source.payload_location,
+                    ),
+                    "Original related links belong to a different originating item.",
+                )
             if operation == "explanations":
                 if source._view._selection._scientific is not None:
                     from .card_exploration_science import _encode
@@ -1170,6 +1284,7 @@ def verify_views(bundle, nodes):
                 "predicted_structures",
                 "sites",
                 "ligand_instances",
+                "annotated_regions",
             )
             and view._record_panel in (None, "classification", "coverage"),
             "Unsupported saved profile adapter.",

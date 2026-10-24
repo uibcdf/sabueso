@@ -184,6 +184,8 @@ def _link(explorer, role, target, support, *, location=None):
         original, _ = explorer.access._resolve(location)
         fields = {
             "sequence.checksums": "reference sequence checksums",
+            "sequence.primary": "reference primary sequence",
+            "identifiers.uniprot": "reference UniProt identity",
             "sequence.length": "reference sequence length",
             "annotations.isoforms": "UniProt isoform declaration",
             "relationships.has_predicted_structure": "predicted model metadata",
@@ -216,10 +218,12 @@ def _link(explorer, role, target, support, *, location=None):
     }
 
 
-def _link_view(explorer, links, origin, title, *, source_location=None, status=None):
+def _link_view(
+    explorer, links, origin, title, *, source_location=None, status=None, rule=RULE
+):
     view = explorer._metadata(
         {
-            "rule": RULE,
+            "rule": rule,
             "inputs": explorer.context["captures"],
             "focal": explorer.access._focal_key,
             "source_location": source_location,
@@ -251,7 +255,9 @@ def _link_view(explorer, links, origin, title, *, source_location=None, status=N
         _link_panel=True,
         _status=status or ("ok" if links else "empty"),
         _request=origin.request,
-        _reason="Retained sources and explicit destinations only; no source queries or identity merge.",
+        _reason="Retained sources and an explicit local structural question; no source queries or identity merge."
+        if rule == "retained_context_links@3"
+        else "Retained sources and explicit destinations only; no source queries or identity merge.",
     )
 
 
@@ -272,6 +278,14 @@ def related(item):
         return _link_view(explorer, [], origin, "Related retained context")
     links = []
     support = item.support
+    from .card_annotation_regions_v1 import annotation_path
+    from .card_annotation_regions_v1 import link as annotation_link
+
+    annotation = annotation_path(item.payload_location)
+    question = None
+    if annotation is not None:
+        question = annotation_link(explorer, item.payload_location)
+        support = question["support"]
     seen = set()
     for basis in support:
         for statement in [
@@ -347,8 +361,18 @@ def related(item):
         )[0]
         if isinstance(record.get("subject_ref"), str):
             links.append(_link(explorer, "subject", record["subject_ref"], support))
+    rule = RULE
+    if annotation is not None:
+        rule = question["rule"]
+        links = [{**row, "rule": rule} for row in links]
+        links.append(question)
     return _link_view(
-        explorer, links, origin, f"Related to {item.label}", source_location=location
+        explorer,
+        links,
+        origin,
+        f"Related to {item.label}",
+        source_location=location,
+        rule=rule,
     )
 
 
@@ -371,6 +395,30 @@ def _destination(explorer, candidate, origin):
 
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
+    if (
+        link.get("role") == "question"
+        and link.get("rule") == "retained_context_links@3"
+    ):
+        basis = link["annotation_context"]
+        if basis["state"] == "ready":
+            request = basis["request"]
+            return explorer._answer(request["question"], request["options"], item._view)
+        from .card_exploration import CardView
+
+        selection = explorer.access.read(
+            explorer.access._object_location(
+                {"annotation_context": basis, "link": link}
+            )
+        )
+        return CardView(
+            explorer,
+            selection,
+            selection._entries,
+            "Annotation structural context unavailable",
+            item._view,
+            _status=basis["state"],
+            _reason=basis["reason"],
+        )
     candidates = link["candidates"]
     if len(candidates) == 1:
         return _destination(explorer, candidates[0], item._view)

@@ -46,6 +46,11 @@ MIGRATION_RULE = "card_migration@1"
 SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
     "0.3.14": [
         {
+            "path": "source_assertion_store[].source_metadata.uniprot_feature",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
             "path": "relationships.has_predicted_structure.sequence_context",
             "filled_by": "predicted_structures",
             "entity_types": ("protein",),
@@ -467,6 +472,22 @@ def _now() -> str:
 
 def _has(data: Dict[str, Any], path: str) -> bool:
     """Whether a stored card holds ``path`` (a field, or a relationship template)."""
+    if path == "source_assertion_store[].source_metadata.uniprot_feature":
+        relevant = [
+            row
+            for row in data.get("source_assertion_store", [])
+            if isinstance(row, dict)
+            and isinstance(row.get("source"), dict)
+            and row["source"].get("name") == "UniProt"
+            and isinstance(row.get("field_path"), str)
+            and row["field_path"].startswith("features_positional.")
+        ]
+        return all(
+            isinstance(row.get("source_metadata"), dict)
+            and isinstance(row["source_metadata"].get("uniprot_feature"), dict)
+            and isinstance(row["source_metadata"]["uniprot_feature"].get("type"), str)
+            for row in relevant
+        )
     if path == "relationships.has_predicted_structure.sequence_context":
         from types import SimpleNamespace
 

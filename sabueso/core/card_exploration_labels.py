@@ -89,6 +89,8 @@ def source_role(item):
     ref = item._entry.key
     for support in native.get("support", []):
         if ref in support.get("source_assertion_ids", []):
+            if support.get("basis") == "original_annotation_item":
+                return "Annotation item support"
             if support.get("basis") == "relationship_level":
                 return "Relationship support"
             if native.get("selection_support_state") == "declared":

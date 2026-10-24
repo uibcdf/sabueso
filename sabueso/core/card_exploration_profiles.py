@@ -49,12 +49,14 @@ PANELS = {
     "predicted_structures": ("protein", {}),
     "sites": ("protein", {}),
     "ligand_instances": ("protein", {}),
+    "annotated_regions": ("protein", {}),
 }
 NATURE_TOPICS = {
     "protein": (
         "function",
         "structures",
         "sequence",
+        "annotated_regions",
         "predicted_structures",
         "sites",
         "ligand_instances",
@@ -100,6 +102,10 @@ QUESTIONS = {
 def field_label(topic, entry, explorer=None):
     from .card_protein_source_v1 import TOPICS, label
 
+    if topic == "annotated_regions":
+        from .card_annotation_regions_v1 import label as annotation_label
+
+        return annotation_label(entry)
     if topic == "ligand_instances":
         from .card_ligand_instances_v1 import label as instance_label
 
@@ -127,6 +133,10 @@ def field_entries(explorer, topic):
     from .card_protein_source_v1 import TOPICS, entries
     from .errors import ArgumentError
 
+    if topic == "annotated_regions":
+        from .card_annotation_regions_v1 import entries as annotation_entries
+
+        return annotation_entries(explorer)
     if topic == "ligand_instances":
         from .card_ligand_instances_v1 import entries as instance_entries
 
@@ -201,6 +211,13 @@ def record_label(panel, row):
 
 
 def alternatives(explorer, entry):
+    from .card_annotation_regions_v1 import annotation_path
+
+    if annotation_path(entry.location) is not None:
+        return {
+            "annotation_source_membership": "Exact subject-bound annotation values; other field members remain in the original field.",
+            "stored_alternatives": [],
+        }
     if not is_field(entry):
         return {"alternative_source_assertions": [], "stored_alternatives": []}
     selected = entry.value.get("source_assertion_ids")

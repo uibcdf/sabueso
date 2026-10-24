@@ -282,10 +282,16 @@ def test_migration_is_explicit_and_does_not_claim_original_extraction(tmp_path):
     ] + [
         {
             "introduced_in": "0.3.14",
+            "path": "source_assertion_store[].source_metadata.uniprot_feature",
+            "filled_by": "refresh",
+            "kind": "missing",
+        },
+        {
+            "introduced_in": "0.3.14",
             "path": "relationships.has_structure.derivation",
             "filled_by": "structures",
             "kind": "missing",
-        }
+        },
     ]
     current.add_literature_extraction(extract())
 

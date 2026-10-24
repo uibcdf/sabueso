@@ -47,36 +47,40 @@ def test_gaps_say_what_a_refresh_would_bring_and_what_can_be_asked_for():
     recent = sabueso.migrate_card(_data("schema_0.3.3__P60174.json"))
     gaps = [g for s in recent.quality["migration"][0]["steps"] for g in s["gaps"]]
     # Since 0.3.4, UniProt's other names: a refresh brings them.
-    assert {g["path"] for g in gaps if g["kind"] == "missing"} == {
-        "names.synonyms",
-        "names.abbreviations",
-        "names.gene_names",
-        "relationships.has_structure.construct",
-        "relationships.has_structure.author_numbering",  # since 0.3.5
-        "relationships.has_structure.derivation",  # scoped RCSB contact basis, 0.3.14
-        # Original AlphaFold model inputs, since unpublished 0.3.14.
-        "relationships.has_predicted_structure.sequence_context",
-        "identifiers.ensembl_transcripts",  # since 0.3.10
-        "annotations.isoforms",  # since 0.3.6
-        "annotations.alternative_products",
-        "features_positional.alternative_sequence",
-        "features_positional.secondary_structure",
-        "relationships.has_structure.secondary_structure",
-        "source_assertion_store[].acquisition",  # since 0.3.7: how each entered
-        "annotations.activity_regulation",  # since 0.3.13: native UniProt statements
-        "annotations.domain_notes",
-        "annotations.similarity",
-        "annotations.source_cautions",
-        "annotations.miscellaneous",
-        "features_positional.domains",
-        "features_positional.chain",
-        "features_positional.lipidation",
-        "features_positional.motif",
-        "features_positional.region",
-        "features_positional.sequence_conflict",
-        "features_positional.topological_domain",
-        "features_positional.transmembrane",
-    }
+    assert (
+        {g["path"] for g in gaps if g["kind"] == "missing"}
+        == {
+            "names.synonyms",
+            "names.abbreviations",
+            "names.gene_names",
+            "relationships.has_structure.construct",
+            "relationships.has_structure.author_numbering",  # since 0.3.5
+            "relationships.has_structure.derivation",  # scoped RCSB contact basis, 0.3.14
+            # Original AlphaFold model inputs, since unpublished 0.3.14.
+            "relationships.has_predicted_structure.sequence_context",
+            "source_assertion_store[].source_metadata.uniprot_feature",  # all positional types, #160
+            "identifiers.ensembl_transcripts",  # since 0.3.10
+            "annotations.isoforms",  # since 0.3.6
+            "annotations.alternative_products",
+            "features_positional.alternative_sequence",
+            "features_positional.secondary_structure",
+            "relationships.has_structure.secondary_structure",
+            "source_assertion_store[].acquisition",  # since 0.3.7: how each entered
+            "annotations.activity_regulation",  # since 0.3.13: native UniProt statements
+            "annotations.domain_notes",
+            "annotations.similarity",
+            "annotations.source_cautions",
+            "annotations.miscellaneous",
+            "features_positional.domains",
+            "features_positional.chain",
+            "features_positional.lipidation",
+            "features_positional.motif",
+            "features_positional.region",
+            "features_positional.sequence_conflict",
+            "features_positional.topological_domain",
+            "features_positional.transmembrane",
+        }
+    )
 
 
 def test_the_store_keeps_the_original_and_the_migrated_card(tmp_path):

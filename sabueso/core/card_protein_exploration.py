@@ -13,6 +13,12 @@ FUNCTION_FIELDS = {
     "sequence.length": "Sequence length",
 }
 _SOURCE_QUESTIONS = {
+    "annotated_regions": {
+        "label": "Which individual annotations can I explore in structures?",
+        "topic": "annotated_regions",
+        "required_options": [],
+        "scope": "Original annotations and exact source-supported canonical-region questions; unplaced and unsupported records stay visible.",
+    },
     "structure_ligands": {
         "label": "Which ligand instances and contacts are declared in retained structures?",
         "topic": "ligand_instances",

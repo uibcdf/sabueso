@@ -146,6 +146,12 @@ binds actual MD5/identity/range inputs and conservatively exposes coverage of th
 original reference, with readable uncertainty and direct input destinations.
 Navigation `@2` and packet mapping `@9` preserve their historical readers; broad
 region/aggregate/assembly integration and human/agent acceptance continue under #148.
+The [individual annotation continuation](pending_proposals/card_annotation_regions.md)
+adds exact item support, native UniProt scope (#160), explicit annotation-to-region
+questions and inert saved reading. Navigation @3 keeps original @1/@2 readers;
+saved related operations are now bound to their actual originating items (#161).
+Aggregate/assembly integration, broader profiles, compact topic parity and human
+acceptance remain open for 0.15.0.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

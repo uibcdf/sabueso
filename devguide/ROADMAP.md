@@ -379,7 +379,12 @@ interpretation. The [derivation correction](pending_proposals/relationship_deriv
 preserves distinct merged applications (#156) without reconstructing lost legacy
 execution associations. The [AlphaFold continuation](pending_proposals/card_alphafold_context.md)
 now binds original MD5/identity/reference scope and leaves partial/unbound context
-uncomputed, with original-input links and historical readers. Finish derived/cross-topic/
+uncomputed, with original-input links and historical readers. The
+[individual annotation continuation](pending_proposals/card_annotation_regions.md)
+now adds exact item support and explicit region questions from retained native
+UniProt scope (#160), with new navigation @3 and unchanged @1/@2 historical reading.
+Saved related operations are bound to the actual originating item (#161).
+Historical missing native scope remains unverified. Finish derived/cross-topic/
 assembly integration, then activity/clinical/literature, comparative and
 association routes, shared saved/agent qualification and combined researcher
 acceptance. The public executable journey prepares the initial review without

@@ -210,6 +210,38 @@ invent per-annotation source membership. Stored fragments, unknown location
 modifiers, alternative source statements and conflicts remain available. No
 alignment, residue correspondence or source query is performed.
 
+## Explore individual annotations in structures
+
+```python
+regions = explorer.view("annotated_regions")
+regions.table()
+active = regions.filter("feature_type", equals="active_site")
+if len(active.items()):
+    annotation = active.items()[0]
+    annotation.open()  # complete original annotation
+    annotation.explain()  # this annotation's actual supporting statements
+    links = annotation.related()
+    structures = links.filter("role", equals="question").items()[0].open()
+    structures
+```
+
+Each row retains its original axis and bounds, including uncertain or unplaced
+annotations. Related links open the original annotation, identity, sequence and
+length inputs. A ready question uses the declared positions in the existing
+structural inventory; disulfide bonds select their endpoints. Sequence coverage
+does not establish coordinate completeness, and no structure is recommended.
+
+Older Cards may retain a position without its native UniProt scope. The question
+then explains that missing prerequisite instead of treating the position as a
+verified canonical mapping. Foreign axes, uncertain bounds, conflicting revisions
+and unsupported compound locations remain explicit. No browsing operation queries
+sources or refreshes a Card. A separate refresh can record a new source basis.
+
+Save a followed structural view with `structures.save(path)` to retain the
+annotation-to-question-to-result path. Reading it later does not rerun science;
+a question whose result was not materialized stays `not_saved`. Use `back()` to
+return through the original question and annotation selection.
+
 ## Inspect predicted models separately
 
 ```python

@@ -18,6 +18,21 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Risks
 
+- **Native feature identity collision ([#162](https://github.com/uibcdf/sabueso/issues/162)):**
+  two explicit synthetic noncanonical features with equal normalized values but
+  distinct source molecule labels receive the same SourceAssertion ID; the store
+  keeps only the last native context. The current canonical annotation request
+  refuses their scope. Fix context preservation before broad isoform integration;
+  evaluate any shared assertion-ID consequence with its owner. Possible sequence
+  revision/other-metadata collisions remain hypotheses requiring separate tests.
+- **Historical UniProt feature scope (#148/#160):** native molecule/modifier/revision
+  input was not retained for every old feature type. The
+  [correction and annotation route](pending_proposals/card_annotation_regions.md)
+  retain new inputs and leave unsupported historical positions inspectable but
+  unverified for automatic structural navigation. Neither a normalized canonical
+  axis nor an equal number recovers an old native feature. Compound and other-source
+  annotation mappings, aggregate/assembly integration and model-fragment routes
+  remain separate work. Unstated revisions are not evidence of agreement.
 - **Historical merged derivation loss ([#156](https://github.com/uibcdf/sabueso/issues/156), consuming #148):** the
   [correction](pending_proposals/relationship_derivation_applications.md) retains
   new distinct applications and their exact output contexts instead of dropping

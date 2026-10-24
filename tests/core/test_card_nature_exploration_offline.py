@@ -371,6 +371,7 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "predicted_structures",
                 "sites",
                 "ligand_instances",
+                "annotated_regions",
             },
             {
                 "function",
@@ -379,6 +380,7 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "predicted_models",
                 "retained_sites",
                 "structure_ligands",
+                "annotated_regions",
             },
         ),
         (

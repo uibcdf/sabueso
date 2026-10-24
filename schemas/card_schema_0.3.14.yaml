@@ -4,6 +4,15 @@ schema:
   created_at: 2026-02-10
   updated_at: 2026-10-24
   note: |
+    0.3.14 preserves original source_metadata.uniprot_feature and stated sequence
+    revision for every mapped UniProt positional annotation (#160), extending
+    the prior recovered-feature-only coverage. All feature types retain endpoint
+    modifiers and unknown endpoints; foreign/unidentified molecule scope stays
+    unplaced. Native feature data is retained unchanged. Migration reports missing
+    historical native feature input, without backfilling it; refresh records new
+    inputs. Existing SourceAssertions, frozen cards and published schemas stay
+    unchanged. The human annotation_structure_request@1 and navigation @3 rules
+    live outside the Card; old recorded locations are not native-scope verification.
     0.3.14 adds optional has_predicted_structure.qualifiers.sequence_context and
     scoped derivation alphafold_sequence_context@1 (#148). The original model stays
     unchanged in its AlphaFold assertion. Original UniProt checksum/length/isoform

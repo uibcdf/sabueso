@@ -376,6 +376,10 @@ def _parts(view):
 
         if view._field_panel == "ligand_instances":
             opening.append(INSTANCE_SUMMARY)
+        elif view._field_panel == "annotated_regions":
+            opening.append(
+                "Choose an annotation, then related() to inspect its structural question and original inputs. Unknown scope remains visible; no source query is made."
+            )
         elif view._field_panel in SCOPES:
             opening.append(SCOPES[view._field_panel])
     from .card_exploration_labels import (
@@ -456,6 +460,15 @@ def _parts(view):
         # native values without invoking a scientific adapter.
         value = item._entry.value
         if view._link_panel:
+            if value.get("role") == "question":
+                rows.append(
+                    (
+                        str(index),
+                        preview(item.label),
+                        f"{preview(value['availability'])} · {preview(value['annotation_context']['reason'], 240)}",
+                    )
+                )
+                continue
             rows.append(
                 (
                     str(index),
@@ -531,6 +544,30 @@ def _parts(view):
             )
             continue
         elif view._field_panel:
+            if view._field_panel == "annotated_regions":
+                from .card_annotation_regions_v1 import context
+                from .card_protein_source_render import feature
+
+                binding = context(view.explorer, item._entry.location)
+                status = (
+                    "Structural question available"
+                    if binding["state"] == "ready"
+                    else "Structural context unavailable: "
+                    + preview(binding["reason"], 170)
+                )
+                if (
+                    binding["state"] == "ready"
+                    and binding["sequence_revisions"]["state"] != "matching"
+                ):
+                    status += "; sequence revision agreement unknown"
+                rows.append(
+                    (
+                        str(index),
+                        preview(item.label),
+                        feature(value, include_description=False) + " · " + status,
+                    )
+                )
+                continue
             from .card_exploration_profiles import is_field
 
             if not is_field(item._entry):
