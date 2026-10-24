@@ -2,8 +2,23 @@ schema:
   name: sabueso-card
   version: 0.3.14
   created_at: 2026-02-10
-  updated_at: 2026-10-23
+  updated_at: 2026-10-24
   note: |
+    0.3.14 adds optional relationship_store[].derivation_applications (#156).
+    Each application retains binding, derivation, qualifiers, source_assertion_ids
+    and optional qualifier_conflicts. original_output binds the exact context at
+    make_relationship time; a rule's parameters can restrict its derived scope.
+    recorded_context retains only a legacy record observed at merge, whose original
+    application/output association remains unknown. Distinct input lists, rules,
+    parameters, engine versions and outputs are never unioned. Exact JSON-equivalent
+    applications deduplicate deterministically. derivation remains the first stored
+    compatibility record, not certification of every selected/alternative qualifier.
+    Original output/context quantities and merged alternatives have separate
+    negotiated/sealed columns under the new application contract. Legacy seals
+    retain their original column inventory; historical conflict quantities remain
+    tracked separately in #157.
+    Unique legacy records load unchanged; migration never reconstructs lost
+    applications. Refresh records new applications, not historical recovery.
     0.3.14 also adds optional has_structure.derivation for the scoped rule
     rcsb_ligand_contacts@1 (#148). Its inputs name the original RCSB assertion;
     parameters.qualifier_paths scopes it to ligands[].instances, input_path names

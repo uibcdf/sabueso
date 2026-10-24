@@ -316,7 +316,18 @@ def test_different_occurrences_keep_all_rule_inputs_locations_and_terms():
     )
     (rel,) = card.relationships("structure_mentioned_in")
     assert len(rel["source_assertion_ids"]) == 2
-    assert set(rel["source_assertion_ids"]) <= set(rel["derivation"]["inputs"])
+    applications = rel["derivation_applications"]
+    assert len(applications) == 2
+    assert set(rel["source_assertion_ids"]) <= {
+        identifier
+        for application in applications
+        for identifier in application["derivation"]["inputs"]
+    }
+    assert all(
+        len(set(application["source_assertion_ids"]) & set(rel["source_assertion_ids"]))
+        == 1
+        for application in applications
+    )
     assert len(rel["qualifier_conflicts"]["locations"]) == 2
     pub = next(
         p
@@ -327,6 +338,7 @@ def test_different_occurrences_keep_all_rule_inputs_locations_and_terms():
         pub["structure_mentions"][0]["qualifier_conflicts"]
         == rel["qualifier_conflicts"]
     )
+    assert pub["structure_mentions"][0]["derivation_applications"] == applications
     unknown = card.terms("redistribution")["cards"][0]["unknown"]
     assert {
         i["id"]

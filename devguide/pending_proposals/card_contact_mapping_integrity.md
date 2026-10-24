@@ -140,7 +140,9 @@ retains both source references and alternative qualifier values but drops the
 incoming derivation metadata. An exact synthetic reproduction is retained in
 `merge-followup.json` with owner #156. This block qualifies one scoped mapping occurrence; it does
 not claim complete merged derivation history. Resolve that core support path
-before combining derived occurrences in broader navigation/comparison.
+before combining derived occurrences in broader navigation/comparison. The later
+[derivation application correction](relationship_derivation_applications.md)
+implements that core preservation path; it does not recover already-lost history.
 
 Consumer coordination is observable in
 [MOLI #36](https://github.com/uibcdf/moli/issues/36#issuecomment-6373150846), with

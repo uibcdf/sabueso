@@ -144,6 +144,10 @@ def literature_view(card: Any) -> Dict[str, Any]:
             "source_assertion_ids": list(rel["source_assertion_ids"]),
             "derivation": deepcopy(rel["derivation"]),
         }
+        if "derivation_applications" in rel:
+            mention["derivation_applications"] = deepcopy(
+                rel["derivation_applications"]
+            )
         if rel.get("qualifier_conflicts"):
             mention["qualifier_conflicts"] = deepcopy(rel["qualifier_conflicts"])
         pub.setdefault("structure_mentions", []).append(mention)

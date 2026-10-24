@@ -89,6 +89,52 @@ class Relationship(TypedDict, total=False):
     ]  # values that supporting sources disagree on
     source_assertion_ids: List[str]
     derivation: Derivation
+    derivation_applications: List[Dict[str, Any]]
+
+
+def _application(relationship: Relationship, binding: str) -> Dict[str, Any]:
+    """Retain one derivation with its output, or explicitly unknown old context.
+
+    Qualifiers are the whole recorded output context, not a claim that every
+    qualifier was derived. A rule's parameters may declare a narrower scope.
+    """
+    return copy.deepcopy(
+        {
+            "binding": binding,
+            "derivation": relationship["derivation"],
+            "qualifiers": relationship.get("qualifiers", {}),
+            "source_assertion_ids": relationship.get("source_assertion_ids", []),
+            **(
+                {"qualifier_conflicts": relationship["qualifier_conflicts"]}
+                if "qualifier_conflicts" in relationship
+                else {}
+            ),
+        }
+    )
+
+
+def _applications(relationship: Relationship) -> List[Dict[str, Any]]:
+    if "derivation_applications" in relationship:
+        return relationship["derivation_applications"]
+    if relationship.get("derivation"):
+        # A legacy record may already have lost or combined applications. Its
+        # selected derivation cannot certify any of its retained alternatives.
+        return [_application(relationship, "recorded_context")]
+    return []
+
+
+def _merge_applications(first: Relationship, second: Relationship) -> None:
+    applications = _applications(first) + _applications(second)
+    if applications:
+        # Exact JSON equality, including original input lists and output context.
+        # Never union independent executions into a newly invented input set.
+        keyed = {
+            json.dumps(item, sort_keys=True, ensure_ascii=True): item
+            for item in applications
+        }
+        first["derivation_applications"] = copy.deepcopy(
+            [keyed[key] for key in sorted(keyed)]
+        )
 
 
 def generate_relationship_id(
@@ -120,7 +166,7 @@ def make_derivation(
     return {
         "rule": rule,
         "inputs": list(inputs or []),
-        "parameters": dict(parameters or {}),
+        "parameters": copy.deepcopy(parameters or {}),
         "sabueso_version": __version__,
     }
 
@@ -147,12 +193,15 @@ def make_relationship(
         "subject_ref": subject_ref,
         "predicate": predicate,
         "object_ref": object_ref,
-        "qualifiers": dict(qualifiers or {}),
+        "qualifiers": copy.deepcopy(qualifiers or {}),
     }
     if source_assertion_ids:
         relationship["source_assertion_ids"] = list(dict.fromkeys(source_assertion_ids))
     if derivation:
-        relationship["derivation"] = derivation
+        relationship["derivation"] = copy.deepcopy(derivation)
+        relationship["derivation_applications"] = [
+            _application(relationship, "original_output")
+        ]
     return relationship
 
 
@@ -179,6 +228,8 @@ class RelationshipStore:
             stored["id"] = rel_id
             self.store[rel_id] = stored
             return rel_id
+        # Capture each basis before changing either relationship's output context.
+        _merge_applications(existing, relationship)
         ids = existing.get("source_assertion_ids", []) + relationship.get(
             "source_assertion_ids", []
         )
@@ -186,28 +237,24 @@ class RelationshipStore:
             existing["source_assertion_ids"] = list(dict.fromkeys(ids))
         if "derivation" in relationship and "derivation" not in existing:
             existing["derivation"] = copy.deepcopy(relationship["derivation"])
-        elif "derivation" in relationship:
-            previous, incoming = existing["derivation"], relationship["derivation"]
-            # The same rule and parameters applied to another occurrence retain
-            # every input; merging source support must not hide part of the basis.
-            if all(
-                previous.get(k) == incoming.get(k)
-                for k in ("rule", "parameters", "sabueso_version")
-            ):
-                previous["inputs"] = sorted(
-                    set(previous.get("inputs", []) + incoming.get("inputs", []))
-                )
         qualifiers = existing.setdefault("qualifiers", {})
         for key, value in relationship.get("qualifiers", {}).items():
             if key not in qualifiers:
-                qualifiers[key] = value
+                qualifiers[key] = copy.deepcopy(value)
             elif qualifiers[key] != value:
                 # Sources disagree on a qualifier: keep every value visible.
                 seen = existing.setdefault("qualifier_conflicts", {}).setdefault(
                     key, [qualifiers[key]]
                 )
                 if value not in seen:
-                    seen.append(value)
+                    seen.append(copy.deepcopy(value))
+        for key, values in relationship.get("qualifier_conflicts", {}).items():
+            seen = existing.setdefault("qualifier_conflicts", {}).setdefault(
+                key, [copy.deepcopy(qualifiers[key])] if key in qualifiers else []
+            )
+            for value in values:
+                if value not in seen:
+                    seen.append(copy.deepcopy(value))
         return rel_id
 
     def get(self, relationship_id: str) -> Optional[Relationship]:

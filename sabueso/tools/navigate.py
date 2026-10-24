@@ -19,6 +19,7 @@ under the rule ``relationship_expansion@1``:
 
 from __future__ import annotations
 
+from copy import deepcopy
 from typing import Any, Dict, Iterable, List
 
 from sabueso._private.argdigest import arg_digest
@@ -64,7 +65,9 @@ def _statement(card: Any, rel: Dict[str, Any]) -> Dict[str, Any]:
         "source_assertions": assertions,
     }
     if rel.get("derivation"):
-        out["derivation"] = rel["derivation"]
+        out["derivation"] = deepcopy(rel["derivation"])
+    if "derivation_applications" in rel:
+        out["derivation_applications"] = deepcopy(rel["derivation_applications"])
     return out
 
 

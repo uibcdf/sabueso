@@ -137,6 +137,11 @@ The [contact integrity correction](pending_proposals/card_contact_mapping_integr
 now binds new RCSB contact instances to actual source inputs under a scoped rule,
 preserves ambiguous/unidentified context and prevents native position-axis mixing.
 Historical contact gaps and AlphaFold context binding remain explicit.
+The [relationship derivation correction](pending_proposals/relationship_derivation_applications.md)
+now preserves independent application/input/output contexts during merges (#156),
+including premerged alternatives, saved support and full/index terms. Legacy
+execution associations remain unknown; AlphaFold binding and broad integration
+continue under #148.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

@@ -18,12 +18,18 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Risks
 
-- **Alternative derivation loss on relationship merge ([#156](https://github.com/uibcdf/sabueso/issues/156), consuming #148):** a reproduced
-  synthetic merge with differing derivation parameters retains source references
-  and qualifier conflicts but drops the incoming derivation in `RelationshipStore.add`.
-  The contact rule/input correction does not fix that core history path. Preserve
-  all scoped derivations before combining derived occurrences in navigation or
-  comparison; do not transfer a selected derivation's certification to alternatives.
+- **Historical merged derivation loss ([#156](https://github.com/uibcdf/sabueso/issues/156), consuming #148):** the
+  [correction](pending_proposals/relationship_derivation_applications.md) retains
+  new distinct applications and their exact output contexts instead of dropping
+  metadata or unioning independent inputs. Old records may already have lost the
+  execution/output association. Their `recorded_context` is not an original
+  application; do not transfer the first singular derivation's certification to
+  every qualifier alternative or claim refresh recovers historical applications.
+- **Legacy conflict quantities ([#157](https://github.com/uibcdf/sabueso/issues/157)):**
+  raw legacy Card loading does not seal quantities in relationship qualifier
+  alternatives. The original external snapshot pin detects the demonstrated
+  content edit. New derivation-application outputs and their merged alternatives
+  are sealed; define a versioned historical route without rewriting old originals.
 - **Historical structure-contact mapping basis (#148):** new RCSB mappings now
   retain original inputs and scoped `rcsb_ligand_contacts@1` derivation, with
   explicit unidentified instances and ambiguous mappings. The

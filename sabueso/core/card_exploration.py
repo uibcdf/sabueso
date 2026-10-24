@@ -1618,7 +1618,11 @@ class CardExplorer:
                     else [],
                 }
                 if relationship:
-                    for key in ("derivation", "qualifier_conflicts"):
+                    for key in (
+                        "derivation",
+                        "derivation_applications",
+                        "qualifier_conflicts",
+                    ):
                         if key in node:
                             support[key] = deepcopy(node[key])
                 return [support]

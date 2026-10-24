@@ -368,8 +368,9 @@ now presents original sequence/annotation, model and site/contact declarations,
 including original structure-local ligand-instance selection and saved reading.
 The [RCSB contact correction](pending_proposals/card_contact_mapping_integrity.md)
 now retains scoped contact rules/original inputs and conservative identity/axis
-interpretation. Preserve merged derivation history ([#156](https://github.com/uibcdf/sabueso/issues/156)),
-finish AlphaFold model context binding and derived/cross-topic/
+interpretation. The [derivation correction](pending_proposals/relationship_derivation_applications.md)
+preserves distinct merged applications (#156) without reconstructing lost legacy
+execution associations. Finish AlphaFold model context binding and derived/cross-topic/
 assembly integration, then activity/clinical/literature, comparative and
 association routes, shared saved/agent qualification and combined researcher
 acceptance. The public executable journey prepares the initial review without

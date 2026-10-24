@@ -46,6 +46,11 @@ MIGRATION_RULE = "card_migration@1"
 SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
     "0.3.14": [
         {
+            "path": "relationship_store[].derivation_applications",
+            "filled_by": "refresh",
+            "explicit_only": True,
+        },
+        {
             "path": "relationships.has_structure.derivation",
             "filled_by": "structures",
             "entity_types": ("protein",),

@@ -2,7 +2,20 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-23, original RCSB contact mapping and native instance scope.
+Last updated: 2026-10-24, distinct relationship derivation applications (#156).
+
+The [derivation merge correction](pending_proposals/relationship_derivation_applications.md)
+now retains each original input/rule/parameter/engine/output context, with exact
+deduplication, all incoming premerged qualifier alternatives and detached support.
+The singular derivation remains the first record for compatibility; input sets
+are never unioned into an invented execution. Legacy records load unchanged and
+retain only explicitly unknown `recorded_context` if merged. Application output
+quantities are separately sealed, and human/saved inspection, literature,
+expansion basis and full/index packet terms keep the plural support. All 133 final selected cases pass with twelve receptor workers and fatal runtime/
+SQLite/unraisable guards. All **6,941 local-original offline cases / 764.78 seconds** pass with twelve
+pytest-receptor workers, thirteen expected fixture warnings and fatal SQLite/
+unraisable guards. Exact-head CI/governance remains pending under #156; no remote
+or installed-release qualification is claimed. AlphaFold input binding remains next; 0.15.0 consolidation stays paused.
 
 The [contact integrity continuation](pending_proposals/card_contact_mapping_integrity.md)
 now records original RCSB alignment/neighbour inputs with scoped
@@ -25,8 +38,9 @@ Packet mapping `packet_aspects@8` now declares the new instance rule; historical
 `@6`/`@7` facts/index rules/terms retain their frozen projection. A separate confirmed
 `RelationshipStore.add` follow-up loses incoming derivation metadata when parameters
 differ, despite retaining source references and qualifier conflicts. It remains
-owned by [#156](https://github.com/uibcdf/sabueso/issues/156) before merged derived navigation; current scoped contact delivery
-does not claim that core merge path is fixed.
+owned by [#156](https://github.com/uibcdf/sabueso/issues/156); the later correction
+above implements distinct application preservation. The preceding contact block
+alone does not qualify the core merge path.
 
 The [protein context continuation](pending_proposals/card_protein_source_exploration.md#original-structure-local-ligand-instances)
 now includes `ligand_instances` / `structure_ligands`: one original instance per

@@ -21,6 +21,11 @@ remain unchanged. See [scope](pending_proposals/comparative_operations.md).
     historical parameters/defaults, overrides, unsupported selectors and dependent
     requests. Unrecorded parameters are never backfilled into old cards. These
     quality keys are explicit-only in `SCHEMA_CHANGES`, not automatic gaps.
+    #156 adds optional `relationship_store[].derivation_applications` for distinct
+    rule/input/parameter/engine/output contexts. Its migration entry is explicit-only:
+    loading/migrating legacy records never reconstructs lost applications. See the
+    relationship contract below. Output-context quantities have separate negotiated
+    columns in the same PyUnitWizard seal.
     #148 adds optional `has_structure.derivation`, scoped to `ligands[].instances`
     under `rcsb_ligand_contacts@1`. `inputs` references the original RCSB assertion;
     parameters record `qualifier_paths`, `input_path` and source-scope/ambiguity
@@ -294,7 +299,8 @@ implemented in `sabueso/core/relationship_store.py`.
 
 A Relationship is first-class, traceable knowledge:
 - **Fields:** `id`, `subject_ref`, `predicate`, `object_ref`, `qualifiers`, and, when
-  present, `qualifier_conflicts`, `source_assertion_ids` and `derivation`.
+  present, `qualifier_conflicts`, `source_assertion_ids`, `derivation` and optional
+  `derivation_applications` (unpublished 0.3.14, #156).
 - **Predicates (vocabulary):**
   - identity: `same_as`, `possibly_same_as`, `isoform_of`, `superseded_by`. For small
     molecules (#25), `same_as` links a source record (`chembl:<id>`,
@@ -654,7 +660,28 @@ A Relationship is first-class, traceable knowledge:
   never masquerades as a SourceAssertion.
 - **Several sources:** when sources state the same relationship, their support is
   merged. Qualifier values they disagree on are kept in `qualifier_conflicts`, never
-  overwritten.
+  overwritten. This includes alternatives carried by an incoming premerged record.
+- **Distinct derivation applications (#156):** new `make_relationship` calls with a
+  derivation retain `derivation_applications`: `binding`, the exact `derivation`,
+  original `qualifiers`, original `source_assertion_ids`, and optional
+  `qualifier_conflicts`. `binding: original_output` records the output context at
+  construction; a rule's parameters (such as `qualifier_paths`) can limit which
+  values it derives. Other qualifiers remain context, not rule-certified values.
+  On merging a legacy record without applications, `binding: recorded_context`
+  retains only its observed derivation/qualifiers/conflicts/support; the association
+  with original executions is unknown. A unique legacy record loads unchanged.
+  Migration does not synthesize applications; refresh acquires new ones without
+  recovering the lost historical basis. `derivation` remains the first stored
+  compatibility record, never the basis of every alternative. Exact JSON-identical
+  applications deduplicate in canonical order; input-list order, types, parameters,
+  rule/version and output differences are retained. Independent input sets are
+  never unioned into a fabricated execution. Whole-context snapshots intentionally
+  retain extra values for inspection; they are not additional source assertions.
+  Application qualifier/conflict quantities use separately negotiated/sealed
+  columns, with the same units as their relationship paths. Merged relationship
+  alternatives are also sealed when the application contract is present. Legacy
+  records without that contract retain their original column inventory; the
+  historical conflict-quantity limit is tracked in #157.
 - **SourceAssertions that support a relationship** use
   `field_path = relationships.<predicate>`.
   UniProt binding-site features keep their `ligand` (`name`, ChEBI `id`, and the `label`

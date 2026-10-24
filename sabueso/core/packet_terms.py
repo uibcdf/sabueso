@@ -139,7 +139,11 @@ def _items(card: Any, facts: dict, role: str, conflicts: list) -> list[dict]:
         requirements = [sources(direct)] if direct else []
         if rel.get("derivation"):
             inputs, dependencies = _references(
-                {"qualifiers": rel.get("qualifiers"), "derivation": rel["derivation"]}
+                {
+                    "qualifiers": rel.get("qualifiers"),
+                    "derivation": rel["derivation"],
+                    "derivation_applications": rel.get("derivation_applications", []),
+                }
             )
             covered = set(direct)
             for dependency in sorted(dependencies):

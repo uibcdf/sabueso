@@ -1,5 +1,14 @@
 # Sabueso — Canonical Field Paths
 
+Development schema 0.3.14 also adds optional
+`relationship_store[].derivation_applications` (#156), with `binding`,
+`derivation`, original `qualifiers`/`source_assertion_ids` and optional
+`qualifier_conflicts`. `original_output` and legacy `recorded_context` distinguish
+retained application outputs from unknown historical execution associations.
+These are relationship metadata, not biological field paths or SourceAssertions.
+Their physical quantities retain the corresponding negotiated units and separate
+seal columns. Loading/migrating original cards never fabricates applications.
+
 Development schema 0.3.14 adds optional scoped contact lineage on
 `relationship_store[].derivation` for `has_structure` (#148), without a new
 section field. `rcsb_ligand_contacts@1` names its original RCSB assertion input,

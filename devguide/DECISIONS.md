@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Retain each relationship derivation application and its output context (2026-10-24, #156)
+
+Keep independent executions distinct even when their rule, parameters and engine
+version match. New derivation applications bind original input lists to original
+output context; exact JSON duplicates deduplicate deterministically. Do not union
+input sets or certify every retained alternative with the first derivation.
+Preserve the singular record for compatibility. Legacy records remain unchanged
+on load; if merged, label their observed basis `recorded_context`, without claiming
+the lost original application/output association. Accumulate optional application
+metadata in unpublished schema 0.3.14 and seal its output-context quantities.
+See the [implementation scope](pending_proposals/relationship_derivation_applications.md).
+
 ## Bind contact derivation to original source inputs and preserve unresolved identity (2026-10-23, #148)
 
 New RCSB mappings store raw contact/alignment inputs in their source assertion,

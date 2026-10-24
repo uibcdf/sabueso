@@ -82,6 +82,27 @@ NEGOTIATED_UNITS: Dict[str, Tuple[str, ...]] = {
     },
 }
 
+# Original output contexts of relationship derivations use the same units as the
+# corresponding relationship qualifiers. Keep separate columns: alternatives
+# must not silently borrow the selected output's seal (#156).
+NEGOTIATED_UNITS.update(
+    {
+        f"relationships.{predicate}.derivation_applications.{scope}.{rest}": units
+        for path, units in list(NEGOTIATED_UNITS.items())
+        if path.startswith("relationships.")
+        for _, predicate, rest in [path.split(".", 2)]
+        for scope in ("qualifiers", "qualifier_conflicts")
+    }
+)
+NEGOTIATED_UNITS.update(
+    {
+        f"relationships.{predicate}.qualifier_conflicts.{rest}": units
+        for path, units in list(NEGOTIATED_UNITS.items())
+        if path.startswith("relationships.") and ".derivation_applications." not in path
+        for _, predicate, rest in [path.split(".", 2)]
+    }
+)
+
 #: ChEMBL ``standard_units`` spellings Sabueso normalizes, and to what. Source strings are
 #: never handed to a unit parser: ``nM`` and ``nm`` differ only in case, and ChEMBL's
 #: ``ug.mL-1`` is not a valid pint expression. Anything else is left unnormalized.
@@ -204,6 +225,21 @@ def iter_quantity_nodes(
             relationship.get("qualifiers") or {},
             f"relationships.{relationship.get('predicate')}",
         )
+        if "derivation_applications" in relationship:
+            # The additive application contract seals the merged alternatives as
+            # well as the original per-application outputs. Legacy seals without
+            # this contract must keep their original column inventory.
+            yield from _walk(
+                relationship.get("qualifier_conflicts") or {},
+                f"relationships.{relationship.get('predicate')}.qualifier_conflicts",
+            )
+        for application in relationship.get("derivation_applications", []):
+            for scope in ("qualifiers", "qualifier_conflicts"):
+                yield from _walk(
+                    application.get(scope) or {},
+                    f"relationships.{relationship.get('predicate')}"
+                    f".derivation_applications.{scope}",
+                )
 
 
 def _columns(card_data: Mapping[str, Any]) -> Dict[str, Tuple[str, List[float]]]:
