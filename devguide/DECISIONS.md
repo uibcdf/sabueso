@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Accumulate implementations and corrections for 0.15.0 (2026-10-24, #112/#148)
+
+The maintainer confirmed 0.15.0 as the development and delivery target for all
+ongoing implementations and corrections, including the AlphaFold context fix.
+This supersedes the proposal to evaluate a separate 0.14.1 patch/backport; no
+parallel patch-release workstream is planned. Continue the complete broad Card
+exploration design, compact agent parity and validated human experience toward
+0.15.0. Target selection does not start candidate preparation or publication:
+schema freezing, staging, exact-candidate/installed-artifact gates and release
+acceptance retain their existing sequence after exploration acceptance. Published
+0.14.0 artifacts and historical scientific records remain immutable. See the
+[release scope](pending_proposals/release_consolidation_0150.md).
+
 ## Bind model interpretation to its actual original sequence inputs (2026-10-24, #148)
 
 Record `alphafold_sequence_context@1` against original AlphaFold and UniProt

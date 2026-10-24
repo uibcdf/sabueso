@@ -33,8 +33,10 @@ range by current Card length regardless of a false/unknown checksum comparison.
 These are Sabueso interpretation defects, not demonstrated provider defects.
 AST comparison confirms both reproduced functions are identical in published tag
 `0.14.0` and `40eb9c2`. The published-version impact is therefore confirmed at
-source level; a narrow patch/backport delivery should be evaluated under #112,
-separately from the paused 0.15.0 consolidation and mandatory artifact gates.
+source level. The maintainer's 2026-10-24 decision supersedes the earlier proposal
+to evaluate a narrow 0.14.1 patch/backport: this correction and the other ongoing
+implementations target 0.15.0 under #112. Release preparation and mandatory
+candidate/artifact gates remain separate from development.
 
 ## Original mapping inputs
 
@@ -114,7 +116,15 @@ while the summary is still dense and its literal isoform placeholder can be
 ambiguous beside a known focal context. Compact/grouped presentation and researcher
 review remain open under #148; this is not human acceptance.
 
-Exact-head remote qualification remains pending publication. Exact code, schema,
+Source `9d6f577abfc2afe595e6a6e4cf4c76b597eb47d8` is qualified by
+[CI 15/15 and governance 1/1](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6389433035).
+Each of nine OS/Python lanes passes 5,430 cases; each of four installed
+Ackredit/consumer lanes passes 1,431 and the public pipeline example. The measured
+coverage report was accepted/queued; no processed percentage is inferred.
+Post-install qualification passes 119 cases. Fresh public model views and all
+three nature walkthroughs reopen independently without fixtures or Card
+reconstruction; model reading also forbids current interpretation rules and
+merging. SDK/distribution labels agree at `0.14.0+90.g9d6f577`. Exact code, schema,
 gates, public examples and
 environment/remote receipts are owned by #148 in
 `recovered_work/alphafold_context_20261024/`, review at the next exploration checkpoint

@@ -310,6 +310,13 @@ directions until a bounded use and acceptance criteria are agreed.
 
 ### Immediate resumption sequence
 
+Development target, confirmed by the maintainer on 2026-10-24: accumulate all
+ongoing implementations and corrections for **0.15.0**. The earlier proposal to
+evaluate an AlphaFold-only 0.14.1 patch/backport is superseded. Complete the full
+exploration design and validated human experience before resuming candidate
+selection, schema freezing, staging or publication. See the
+[release scope](pending_proposals/release_consolidation_0150.md).
+
 Scheduling boundary, 2026-10-21: the
 [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
 checks retained results and prepares the primary-method review queue. The

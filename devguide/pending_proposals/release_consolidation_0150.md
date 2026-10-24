@@ -1,8 +1,11 @@
-# Proposed substantial follow-up release (#112)
+# 0.15.0 consolidation scope (#112)
 
-Proposed version: **0.15.0**, subject to maintainer acceptance. This is a scope
-proposal, not a release authorization or receipt. No version, tag, frozen schema,
-release plan, build, upload or public artifact is changed by this document.
+Target version: **0.15.0**, confirmed by the maintainer on 2026-10-24. All ongoing
+implementations and corrections accumulate toward that release; the earlier
+proposal to evaluate an AlphaFold-only 0.14.1 patch/backport is superseded. There
+is no separate patch-release workstream. This development target is not a release
+authorization or receipt. No version, tag, frozen schema, build, upload or public
+artifact is changed by this document.
 Published 0.14.0 and schema 0.3.13 remain immutable.
 
 **Scheduling pause, 2026-10-21:** after the

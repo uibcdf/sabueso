@@ -2,7 +2,15 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-24, original AlphaFold model sequence scope (#148).
+Last updated: 2026-10-24, confirmed 0.15.0 development target (#112/#148).
+
+The maintainer confirmed that all ongoing implementations and corrections target
+**0.15.0**. The earlier proposal to evaluate an AlphaFold-only 0.14.1 patch/backport
+is superseded; no separate patch-release workstream is planned. Development
+continues toward the entire broad Card exploration design and validated human
+experience. Candidate selection, schema freezing, staging and publication remain
+paused until those requirements are met. See the
+[release scope](pending_proposals/release_consolidation_0150.md).
 
 The [AlphaFold context continuation](pending_proposals/card_alphafold_context.md)
 binds new MD5/identity/range findings to actual original model and UniProt inputs.
@@ -16,10 +24,14 @@ Optional stored context belongs to unpublished 0.3.14; migration reports gaps an
 refresh acquires new bases without rewriting originals. All **6,983 local-original
 offline cases / 641.77 seconds** pass with twelve receptor workers, thirteen
 expected fixture warnings and fatal SQLite/unraisable guards. The final core
-subset passes 119/8.70 seconds with fatal runtime guards too. Exact-head remote
-qualification remains pending under #148; no older receipt qualifies this source.
+subset passes 119/8.70 seconds with fatal runtime guards too. Source `9d6f577`
+is qualified by [CI 15/15 and governance 1/1](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6389433035),
+with 119 post-install cases and SDK/distribution `0.14.0+90.g9d6f577`. Original
+public model and three-nature saved readings pass independently; this does not
+establish researcher acceptance or qualify a release artifact.
 Next: region/annotation/aggregate/assembly and broad nature/agent/human completion.
-Fragment comparison and #157/#158 remain explicit limits. 0.15.0 stays paused.
+Fragment comparison and #157/#158 remain explicit limits. Release preparation
+for 0.15.0 remains paused.
 
 The [derivation merge correction](pending_proposals/relationship_derivation_applications.md)
 now retains each original input/rule/parameter/engine/output context, with exact
