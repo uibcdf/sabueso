@@ -58,7 +58,7 @@ def annotated_sites(card: Any) -> List[Dict[str, Any]]:
         node = card.get(field_path) or {}
         assertions = [
             card.source_assertion_store.get(i)
-            for i in node.get("source_assertion_ids") or []
+            for i in dict.fromkeys(node.get("source_assertion_ids") or [])
         ]
         by_value: Dict[str, List[dict]] = {}
         for assertion in assertions:

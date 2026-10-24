@@ -192,6 +192,8 @@ def test_exact_native_duplicates_do_not_invent_distinct_assertions():
     node = card.get("features_positional.active_site")
     assert len(set(node["source_assertion_ids"])) == 1
     (ref,) = set(node["source_assertion_ids"])
+    (site,) = card.ligand_sites()["annotated_sites"]
+    assert site["source_assertion_id"] == ref
     assert (
         card.source_assertion_store.get(ref)["asserted_value"] == native["features"][0]
     )
