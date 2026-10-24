@@ -62,7 +62,7 @@ def test_variants_carry_the_evidence_of_their_own_assertion():
     assert len(node["value"]) == 8
     by_value = {
         json.dumps(
-            card.source_assertion_store.get(i)["asserted_value"], sort_keys=True
+            card.source_assertion_store.get(i)["normalized_value"], sort_keys=True
         ): i
         for i in node["source_assertion_ids"]
     }

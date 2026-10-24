@@ -18,13 +18,23 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Risks
 
-- **Native feature identity collision ([#162](https://github.com/uibcdf/sabueso/issues/162)):**
-  two explicit synthetic noncanonical features with equal normalized values but
-  distinct source molecule labels receive the same SourceAssertion ID; the store
-  keeps only the last native context. The current canonical annotation request
-  refuses their scope. Fix context preservation before broad isoform integration;
-  evaluate any shared assertion-ID consequence with its owner. Possible sequence
-  revision/other-metadata collisions remain hypotheses requiring separate tests.
+- **Ligand overlap annotation axis ([#163](https://github.com/uibcdf/sabueso/issues/163)):**
+  an explicit synthetic unplaced foreign annotation still participates in canonical
+  ligand-site overlap under `annotated_site_overlap@2`. Native/normalized source
+  identity (#162) preserves the original contexts but does not fix this separate
+  scientific coordinate admission. Keep uncomputed scope explicit and qualify
+  sequence/molecule/uncertainty/revision handling before broad aggregate/assembly
+  acceptance; do not silently classify unknown scope as overlap or absence.
+
+- **Historical native feature identity loss ([#162](https://github.com/uibcdf/sabueso/issues/162)):**
+  native molecule/citation/location contexts could collide after normalization,
+  leaving only the last SourceAssertion metadata. The
+  [correction](pending_bugs/uniprot_feature_identity.md) keeps new complete native
+  features in `asserted_value`, with separate normalized Card values. Migration
+  reports missing context; refresh does not recover a historical association.
+  Broader isoform integration still requires explicit source identity and mapping.
+  Cross-version and other-provider metadata collisions are not claimed fixed;
+  those separate scopes require their own tests before changing the generic store.
 - **Historical UniProt feature scope (#148/#160):** native molecule/modifier/revision
   input was not retained for every old feature type. The
   [correction and annotation route](pending_proposals/card_annotation_regions.md)

@@ -80,7 +80,8 @@ def test_all_native_extra_feature_occurrences_keep_locations_and_sequence_revisi
         ]
         assert len(assertions) == len(native)
         for item, source, assertion in zip(items, native, assertions):
-            assert assertion["asserted_value"] == item
+            assert assertion["asserted_value"] == source
+            assert assertion["normalized_value"] == item
             assert assertion["source_metadata"]["uniprot_feature"] == source
             assert (
                 assertion["source_metadata"]["sequence_version"]

@@ -33,7 +33,7 @@ def test_current_and_historical_instance_scopes_never_silently_change(
     store.save(card)
     query = sabueso.KnowledgeQuery("P52270", aspects=["ligand_sites"], detail=detail)
     current = sabueso.compose_packet(query, card)
-    assert current.to_dict()["aspect_mapping"] == "packet_aspects@9"
+    assert current.to_dict()["aspect_mapping"] == "packet_aspects@10"
     current_terms = current.terms("commercial_product", store=store)
     assert any(
         item.get("predicate") == "has_structure"
@@ -42,6 +42,7 @@ def test_current_and_historical_instance_scopes_never_silently_change(
     assert "RCSB PDB" in current_terms["sources"]
     assert full_rules()["ligand_sites"] == [
         "annotated_site_overlap@2",
+        "annotated_site_source_support@1",
         "ligand_instance_scope@1",
     ]
     payload = current.to_dict()

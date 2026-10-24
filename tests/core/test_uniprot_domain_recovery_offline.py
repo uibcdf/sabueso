@@ -52,7 +52,7 @@ def test_original_domains_preserve_bounds_support_and_native_revisions(accession
         (assertion,) = [
             card.source_assertion_store.get(support)
             for support in node["source_assertion_ids"]
-            if card.source_assertion_store.get(support)["asserted_value"] == item
+            if card.source_assertion_store.get(support)["normalized_value"] == item
         ]
         assert assertion["subject_ref"] == "uniprot:" + accession
         assert assertion["source"]["version"] == str(
@@ -84,7 +84,7 @@ def test_native_domain_membership_has_exact_item_support_and_inclusive_boundarie
         assert domain["support_status"] == "complete"
         (support,) = domain["source_assertion_ids"]
         assert (
-            card.source_assertion_store.get(support)["asserted_value"]
+            card.source_assertion_store.get(support)["normalized_value"]
             == domain["annotation"]
         )
     for position in [15, 459, 463, 907]:

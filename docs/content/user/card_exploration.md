@@ -234,8 +234,17 @@ does not establish coordinate completeness, and no structure is recommended.
 Older Cards may retain a position without its native UniProt scope. The question
 then explains that missing prerequisite instead of treating the position as a
 verified canonical mapping. Foreign axes, uncertain bounds, conflicting revisions
-and unsupported compound locations remain explicit. No browsing operation queries
+and unsupported compound locations remain explicit. Original source statements
+remain separate when their molecule labels, citations or other native context
+differ, even if the displayed annotation values match. Inspect the original source
+record for those distinctions. A molecule label alone does not identify an isoform
+or map its positions onto another sequence. No browsing operation queries
 sources or refreshes a Card. A separate refresh can record a new source basis.
+
+The separate `card.ligand_sites()` overlap reader still needs correction for
+unplaced/noncanonical annotation axes ([#163](https://github.com/uibcdf/sabueso/issues/163)).
+Its overlap class alone cannot establish a compatible sequence scope. The explicit
+annotation-to-structure question above refuses those unsupported axes.
 
 Save a followed structural view with `structures.save(path)` to retain the
 annotation-to-question-to-result path. Reading it later does not rerun science;

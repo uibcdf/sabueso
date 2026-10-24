@@ -34,9 +34,12 @@ import json
 from copy import deepcopy
 from typing import Any, Dict, List
 
+from .source_assertion_store import assertion_value
+
 # @1 compared UniProt sites only; @2 adds InterPro family sites (uibcdf/sabueso#28).
 SITE_OVERLAP_RULE = "annotated_site_overlap@2"
 INSTANCE_RULE = "ligand_instance_scope@1"
+ANNOTATION_SUPPORT_RULE = "annotated_site_source_support@1"
 ANNOTATED_SITES = {
     "active_site": "features_positional.active_site",
     "binding_site": "features_positional.binding_site",
@@ -57,7 +60,12 @@ def annotated_sites(card: Any) -> List[Dict[str, Any]]:
             card.source_assertion_store.get(i)
             for i in node.get("source_assertion_ids") or []
         ]
-        by_value = {_key(a["asserted_value"]): a for a in assertions if a}
+        by_value: Dict[str, List[dict]] = {}
+        for assertion in assertions:
+            if assertion:
+                by_value.setdefault(_key(assertion_value(assertion)), []).append(
+                    assertion
+                )
         for item in node.get("value") or []:
             sequence = (item.get("location") or {}).get("sequence") or {}
             spans = sequence.get("fragments") or (
@@ -68,26 +76,37 @@ def annotated_sites(card: Any) -> List[Dict[str, Any]]:
             positions = _positions(spans)
             if not positions:
                 continue
-            assertion = by_value.get(_key(item)) or {}
-            signature = item.get("signature") or {}
-            out.append(
-                {
-                    "kind": kind,
-                    "start": positions[0],
-                    "end": positions[-1],
-                    "positions": positions,
-                    "description": item.get("description") or None,
-                    "ligand": item.get("ligand"),
-                    "source": (assertion.get("source") or {}).get("name"),
-                    "signature": signature.get("accession"),
-                    "evidence": [
-                        e.get("code")
-                        for e in (assertion.get("source_metadata") or {}).get("eco")
-                        or []
-                    ],
-                    "source_assertion_id": assertion.get("id"),
-                }
-            )
+            # Native UniProt feature contexts stay separate (#162). InterPro
+            # family sites keep their original projection; they are outside this
+            # source-normalization change and also feed historical oligomer views.
+            matches = by_value.get(_key(item)) or [{}]
+            if kind == "family_site":
+                matches = matches[-1:]
+            for assertion in matches:
+                signature = item.get("signature") or {}
+                out.append(
+                    {
+                        "kind": kind,
+                        "start": positions[0],
+                        "end": positions[-1],
+                        "positions": positions,
+                        "description": item.get("description") or None,
+                        "ligand": item.get("ligand"),
+                        "source": (assertion.get("source") or {}).get("name"),
+                        "signature": signature.get("accession"),
+                        "evidence": [
+                            e.get("code")
+                            for e in (assertion.get("source_metadata") or {}).get("eco")
+                            or []
+                        ],
+                        "source_assertion_id": assertion.get("id"),
+                        **(
+                            {"source_support_rule": ANNOTATION_SUPPORT_RULE}
+                            if kind != "family_site"
+                            else {}
+                        ),
+                    }
+                )
     return sorted(out, key=lambda s: (s["start"], s["kind"], s["description"] or ""))
 
 

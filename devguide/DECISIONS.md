@@ -1,5 +1,25 @@
 # Sabueso — Decision Log
 
+## Native feature identity precedes normalization (2026-10-24, #162)
+
+Keep the complete original UniProt positional feature in `asserted_value` and the
+Card annotation in `normalized_value`, using the existing SourceAssertion contract
+and ID algorithm. Native molecule labels, citations, compound locations and other
+unprojected fields must not collapse into one normalized statement whose last
+metadata overwrites the others. Equal Card values may share all their exact original
+support; exact native duplicates do not invent new assertions. Preserve a stated
+molecule label in the normalized annotation without inferring isoform identity or
+sequence mapping. Fresh feature IDs change; original stored assertions and saved
+capsules/pins never do. Preserve the metadata copy for historical input bindings.
+Record the optional change in unpublished 0.3.14; migration reports missing context,
+and refresh acquires a new basis rather than reconstructing a lost association.
+The generic store/ID algorithm and other source mappings remain unchanged. See the
+[correction](pending_bugs/uniprot_feature_identity.md).
+The site reader retains each matching source context under
+`annotated_site_source_support@1`; packet mapping @10 declares this rule, while
+@8/@9 receive their frozen original site projection and @6/@7 keep the preceding
+projection. The separate overlap-coordinate rule is unchanged pending #163.
+
 ## Source-bound annotation structural questions (2026-10-24, #148/#160/#161)
 
 Expose individual original positional annotations without merging similar items.

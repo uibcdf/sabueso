@@ -4,6 +4,18 @@ schema:
   created_at: 2026-02-10
   updated_at: 2026-10-24
   note: |
+    0.3.14 retains the complete original native UniProt positional feature in
+    asserted_value, with the Card annotation in normalized_value (#162). Native
+    molecule, citation, compound-location and unprojected contexts therefore stay
+    distinct under the unchanged source+record+field+asserted-value ID algorithm.
+    IDs for freshly mapped features change; original stored assertions stay fixed.
+    A stated native molecule label also remains optional molecule in the normalized
+    annotation. It does not identify an isoform, sequence or canonical mapping;
+    missing/null labels add no member, and other/unidentified axes remain unplaced.
+    The complete feature stays in source_metadata.uniprot_feature too, preserving
+    historical input bindings. Migration reports missing native/normalized context
+    without backfill or invention of contexts lost in a legacy collision. Refresh
+    obtains a new source basis. Published schemas and pins are unchanged.
     0.3.14 preserves original source_metadata.uniprot_feature and stated sequence
     revision for every mapped UniProt positional annotation (#160), extending
     the prior recovered-feature-only coverage. All feature types retain endpoint
@@ -629,60 +641,70 @@ card_base:
       value:
       - location: any
         description: string
+        molecule: string
       source_assertion_ids:
       - string
     lipidation:
       value:
       - location: any
         description: string
+        molecule: string
       source_assertion_ids:
       - string
     motif:
       value:
       - location: any
         description: string
+        molecule: string
       source_assertion_ids:
       - string
     region:
       value:
       - location: any
         description: string
+        molecule: string
       source_assertion_ids:
       - string
     sequence_conflict:
       value:
       - location: any
         description: string
+        molecule: string
       source_assertion_ids:
       - string
     topological_domain:
       value:
       - location: any
         description: string
+        molecule: string
       source_assertion_ids:
       - string
     transmembrane:
       value:
       - location: any
         description: string
+        molecule: string
       source_assertion_ids:
       - string
     domains:
       value:
       - location: any
         description: string
+        molecule: string
       source_assertion_ids:
       - string
     active_site:
       value:
       - location: any
         description: string
+        molecule: string
       source_assertion_ids:
       - string
     binding_site:
       value:
       - location: any
         description: string
+        molecule: string
         ligand:
           name: string
           id: string
@@ -694,18 +716,21 @@ card_base:
       value:
       - location: any
         description: string
+        molecule: string
       source_assertion_ids:
       - string
     disulfide_bond:
       value:
       - location: any
         description: string
+        molecule: string
       source_assertion_ids:
       - string
     natural_variant:
       value:
       - location: any
         description: string
+        molecule: string
         substitution:
           original: string
           alternatives:
@@ -721,6 +746,7 @@ card_base:
       value:
       - location: any
         description: string
+        molecule: string
         substitution:
           original: string
           alternatives:
@@ -732,6 +758,7 @@ card_base:
       value:
       - location: any
         description: string
+        molecule: string
         substitution:
           original: string
           alternatives:
@@ -746,6 +773,7 @@ card_base:
       value:
       - location: any
         description: string
+        molecule: string
         element: string
         structures:
         - string
@@ -765,6 +793,7 @@ card_base:
       value:
       - location: any
         description: string
+        molecule: string
       source_assertion_ids:
       - string
   clinical: "*"

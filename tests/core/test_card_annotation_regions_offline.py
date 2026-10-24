@@ -92,7 +92,13 @@ def test_public_annotations_keep_individual_support_and_share_the_existing_struc
     assert len(refs) == 1
     source = first.explain().items()[0]
     assert source.label.startswith("Annotation item support")
-    assert source.open().native_payload["asserted_value"] == first.open().native_payload
+    assert (
+        source.open().native_payload["normalized_value"] == first.open().native_payload
+    )
+    assert (
+        source.open().native_payload["asserted_value"]
+        == source.open().native_payload["source_metadata"]["uniprot_feature"]
+    )
     assert first.explain().back() is active
     link = question(first)
     basis = link._entry.value["annotation_context"]
@@ -438,9 +444,11 @@ def test_resealed_related_operation_swaps_are_rejected_against_the_originating_i
             card.source_assertion_store.get(node["source_assertion_ids"][0])
         )
         source["id"] += "_SYNTHETIC_SECOND"
-        source["asserted_value"] = deepcopy(node["value"][0])
-        source["asserted_value"]["description"] = "second explicit synthetic annotation"
-        node["value"].append(deepcopy(source["asserted_value"]))
+        source["normalized_value"] = deepcopy(node["value"][0])
+        source["normalized_value"]["description"] = (
+            "second explicit synthetic annotation"
+        )
+        node["value"].append(deepcopy(source["normalized_value"]))
         node["source_assertion_ids"].append(source["id"])
         card.source_assertion_store.add(source)
     view = card.explore().view(topic)

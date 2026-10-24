@@ -34,8 +34,14 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping. Development uses `packet_aspects@9`: predicted
-models carry original MD5/identity/reference scope under
+by a named, versioned mapping. Development uses `packet_aspects@10`: original
+UniProt site statements retain their separate native contexts through normalized
+annotation support under `annotated_site_source_support@1`. Indexes declare this
+rule. Original `@8`/`@9` site projections stay frozen for historical terms/reading;
+InterPro family-site projection is unchanged. The separate annotation-axis
+limitation in overlap classification remains tracked in
+[#163](https://github.com/uibcdf/sabueso/issues/163).
+The inherited `@9` predicted models carry original MD5/identity/reference scope under
 `alphafold_sequence_context@1` and `predicted_structure_scope@1`. Missing,
 historical, partial or foreign context does not establish reference coverage;
 full/index terms retain the actual model and UniProt input support. Historical

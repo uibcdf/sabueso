@@ -25,7 +25,7 @@ the Sabueso version that built the cards, so two assemblies of unchanged knowled
 the same ``content_id`` even when the sources were read again (``same_knowledge``).
 
 What each aspect asks the sources for, and which knowledge areas it covers, is fixed by
-the mapping (``packet_aspects@8`` now). It never changes once published: a change is a new
+the mapping (``packet_aspects@10`` now). It never changes once published: a change is a new
 version, and a test pins what each version asks. ``@1`` was published in 0.6.0; ``@2``
 (0.7.0) adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83), and MONDO's
 disease identity and the grouped diseases to ``disease_association`` (#90). ``@3``
@@ -86,7 +86,7 @@ FULL_VIEWS = {
     "biological_context": (),
     "orthology": (),
 }
-ASPECT_MAPPING = "packet_aspects@9"
+ASPECT_MAPPING = "packet_aspects@10"
 #: Aspect mappings a packet can carry; packets of different mappings are not compared.
 #: ``@3`` adds KLIFS and GPCRdb (identity, structures, ligand sites, sequence features),
 #: SAbDab (structures) and the ``orthology`` aspect (OMA), which a query asks for by
@@ -97,6 +97,8 @@ ASPECT_MAPPING = "packet_aspects@9"
 #: automatically, without guessing article ids (#71, #92).
 #: ``@7`` uses disease_grouping@3 with identifier-scoped identity coverage (#144).
 #: ``@8`` adds explicit ligand-instance identity/axis scope (#148), retaining @6/@7 native projections.
+#: ``@9`` binds original AlphaFold sequence context; @10 retains all normalized/native
+#: annotation source contexts (#162), with frozen @8/@9 ligand-site projections.
 PACKET_PREFIX = "sabueso:packet:"
 
 #: Keys left out of a content-equivalence id: when the sources were read, and which
@@ -467,6 +469,10 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
             from ._ligand_sites_legacy_v1 import ligand_sites_view
 
             native = ligand_sites_view(card)
+        elif mapping in ("packet_aspects@8", "packet_aspects@9"):
+            from ._ligand_sites_legacy_v2 import ligand_sites_view
+
+            native = ligand_sites_view(card)
         else:
             native = card.ligand_sites()
         return {**native, **_fields(card, ["annotations.kinase_pocket"])}
@@ -633,6 +639,13 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
     }
     if mapping not in ("packet_aspects@6", "packet_aspects@7"):
         rules["ligand_sites"].append(ligand_sites.INSTANCE_RULE)
+    if mapping not in (
+        "packet_aspects@6",
+        "packet_aspects@7",
+        "packet_aspects@8",
+        "packet_aspects@9",
+    ):
+        rules["ligand_sites"].append(ligand_sites.ANNOTATION_SUPPORT_RULE)
     if mapping not in ("packet_aspects@6", "packet_aspects@7", "packet_aspects@8"):
         from .predicted_structures import CONTEXT_RULE
         from .predicted_structures import RULE as PREDICTED_RULE

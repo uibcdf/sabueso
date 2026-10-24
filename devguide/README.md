@@ -150,6 +150,11 @@ The [individual annotation continuation](pending_proposals/card_annotation_regio
 adds exact item support, native UniProt scope (#160), explicit annotation-to-region
 questions and inert saved reading. Navigation @3 keeps original @1/@2 readers;
 saved related operations are now bound to their actual originating items (#161).
+The [native feature identity correction](pending_bugs/uniprot_feature_identity.md)
+retains complete original feature statements separately from normalized Card
+annotations (#162), preventing source molecule/citation/location contexts from
+overwriting one another. Packet mapping @10 declares the native site-support rule
+while @8/@9 keep their frozen original projection. Historical losses remain explicit.
 Aggregate/assembly integration, broader profiles, compact topic parity and human
 acceptance remain open for 0.15.0.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)

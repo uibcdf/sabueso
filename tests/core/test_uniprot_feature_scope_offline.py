@@ -68,7 +68,8 @@ def test_all_feature_types_keep_native_molecule_uncertainty_and_revision(kind):
         "end_modifier": "EXACT",
     }
     (source,) = [a for a in result["source_assertions"] if a["field_path"] == field]
-    assert source["asserted_value"] == value
+    assert source["asserted_value"] == feature
+    assert source["normalized_value"] == value
     assert source["source_metadata"]["uniprot_feature"] == feature
     assert source["source_metadata"]["sequence_version"] == 7
     assert source["id"] in result["field_source_assertions"][field]

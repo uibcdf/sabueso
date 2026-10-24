@@ -136,6 +136,13 @@ Existing comparative values, original scientific rules and saved pins are unchan
   0.3.13. The complete original feature is in the supporting assertion's
   `source_metadata.uniprot_feature`; a foreign/unidentified molecule is unplaced.
   Migration reports absent historical input; refresh records a new basis.
+  #162 stores each complete native feature as `asserted_value` and the Card
+  annotation as `normalized_value`. All mapped UniProt feature items may retain
+  optional `molecule`, the source's literal label; other/unidentified axes stay
+  unplaced. Complete native contexts have distinct assertion IDs even when their
+  normalized annotations coincide. The original metadata location remains for
+  compatibility. Historical assertions/pins are unchanged; migration reports the
+  absent native/normalized basis rather than recovering lost contexts.
 - `features_positional.binding_site`
 - `features_positional.family_site` (sites an InterPro member database places on the sequence, e.g. CDD catalytic triad; one item per site, with its signature)
 - `features_positional.modified_residue`

@@ -422,7 +422,34 @@ def fixture_cards() -> List[dict]:
         string={"required_score": 900, "limit": 5000},
         string_client=FixtureStringClient(data),
     )
-    return [c.to_dict() for c in (*cards, bounded, parameterized)]
+    # Explicit synthetic source scope covers optional native molecule labels in
+    # every mapped feature field; no public record is claimed to state them.
+    from sabueso.core.aggregator import build_card_from_mapping
+    from sabueso.mappings.uniprot import _FEATURES, map_protein
+
+    native_scope = build_card_from_mapping(
+        map_protein(
+            {
+                "primaryAccession": "P52270",
+                "sequence": {"value": "M" * 10, "length": 10},
+                "features": [
+                    {
+                        "type": kind,
+                        "description": "Explicit synthetic shape annotation",
+                        "molecule": "Explicit synthetic noncanonical molecule",
+                        "location": {
+                            "start": {"value": 2, "modifier": "EXACT"},
+                            "end": {"value": 4, "modifier": "EXACT"},
+                        },
+                    }
+                    for kind in sorted(_FEATURES)
+                ],
+            },
+            "explicit synthetic shape input",
+        ),
+        meta={"entity_type": "protein"},
+    )
+    return [c.to_dict() for c in (*cards, bounded, parameterized, native_scope)]
 
 
 def current_shape() -> List[str]:

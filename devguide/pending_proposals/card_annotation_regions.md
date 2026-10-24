@@ -34,18 +34,23 @@ and unknown endpoints for every mapped feature type. Other/unidentified molecule
 scope stays unplaced. Native malformed shapes fail explicitly. Published source
 assertions, schemas and original Cards are never rewritten.
 
-Optional retention extends unpublished 0.3.14; the shape has 1,907 paths. Migration
+Optional retention extends unpublished 0.3.14; this checkpoint had 1,907 shape paths
+before the later #162 correction. Migration
 reports missing native feature input on applicable old UniProt assertions and
 does not backfill it. Refresh records a new basis while preserving original pins.
 Missing sequence revisions remain unknown rather than a promise of agreement.
 
-A separate explicit synthetic case confirms an unresolved input-identity limit
+A separate explicit synthetic case confirmed an input-identity limit
 ([#162](https://github.com/uibcdf/sabueso/issues/162)): two noncanonical features
 with equal normalized values but different native molecules receive the same
-assertion ID, so the Card store retains only the last native context. This is not
-fixed here. Both remain unsupported by the canonical structural route; resolve
-context preservation before claiming broad isoform exploration. Historical lost
-associations cannot be recovered merely by reinterpreting the remaining record.
+assertion ID, so the Card store retained only the last native context. This
+annotation block did not fix it. The later
+[native feature correction](../pending_bugs/uniprot_feature_identity.md) keeps
+complete source features distinct before normalization, including native citation
+and compound-location contexts with equal Card values. Noncanonical scopes still
+remain unsupported by the canonical structural route. Historical lost associations
+cannot be recovered merely by reinterpreting the remaining record; broad isoform
+exploration remains a separate scientific mapping requirement.
 
 ## Human route and exact support
 

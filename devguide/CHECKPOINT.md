@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-24, individual annotation navigation and original scope (#148/#160/#161).
+Last updated: 2026-10-24, native feature identity before normalization (#162).
 
 The maintainer confirmed that all ongoing implementations and corrections target
 **0.15.0**. The earlier proposal to evaluate an AlphaFold-only 0.14.1 patch/backport
@@ -12,6 +12,35 @@ experience. Candidate selection, schema freezing, staging and publication remain
 paused until those requirements are met. See the
 [release scope](pending_proposals/release_consolidation_0150.md).
 
+The [native feature identity correction](pending_bugs/uniprot_feature_identity.md)
+keeps each complete native UniProt positional feature in `asserted_value`, with
+the Card annotation in `normalized_value`. Native molecule/citation/compound/
+unprojected contexts remain distinct under the unchanged ID generator; exact native
+duplicates keep one ID. Fresh feature IDs change; old assertions/pins/capsules do
+not. Source-stated molecule labels stay inspectable without inferring isoform
+identity or a coordinate mapping. Equal Card values retain every original support
+record, and an original compound scope cannot be hidden by another exact feature.
+Unpublished 0.3.14 records the native/normalized migration gap without backfill;
+refresh obtains a new source basis. Shape coverage has 1,938 paths, including
+explicitly synthetic optional molecule coverage in all 17 mapped fields. The owning
+gate passes 251 cases / 22.27 seconds, with one explicit native-only skip. The
+subsequent integration gate passes 441 cases / 83.39 seconds, and final packet/
+history receiving passes 260 cases / 99.92 seconds; those latter gates include
+local originals. All use twelve receptor workers and fatal runtime/SQLite/
+unraisable guards. Forty new regressions cover native identity and frozen packet
+support. Corrected full local and final published-source qualification remain pending. Historical
+losses, generic cross-version/other-source metadata retention and broad isoform/
+aggregate/assembly/nature/agent/human acceptance remain separate requirements.
+The first full gate exposes six source-representation integration failures after
+7,106 passes; the ligand-site reader is now adapted to normalized values and keeps
+each original matching assertion with its own codes. Corrected full qualification
+remains required. New `annotated_site_source_support@1` is declared by packet
+mapping @10; @8/@9 site projections are frozen, and @6/@7 retain their previous
+projection. A distinct confirmed overlap-axis defect is tracked in
+[#163](https://github.com/uibcdf/sabueso/issues/163): unplaced foreign annotations
+must not share canonical contact positions merely by equal numbers. Address that
+scientific scope before aggregate/assembly acceptance; #162 does not claim its fix.
+
 The [annotation continuation](pending_proposals/card_annotation_regions.md) adds
 one original positional annotation per row, exact item support and explicit
 structural region questions with original input links and return navigation.
@@ -20,8 +49,8 @@ mapped feature type (#160); unknown historical native context remains unverified
 Uncertain, noncanonical, compound or conflicted scope cannot silently become an
 exact structural request. New navigation @3 retains @1/@2 readers. Saved related
 operations are bound to the originating item, rejecting internally resealed swaps
-(#161). Unpublished schema 0.3.14 records native scope and migration gaps; its shape
-has 1,907 paths. The final selected scope passes **1,264 cases / 157.77 seconds**
+(#161). Unpublished schema 0.3.14 records native scope and migration gaps; the shape
+at that checkpoint had 1,907 paths, before #162 above. The final selected scope passes **1,264 cases / 157.77 seconds**
 with twelve receptor workers and fatal runtime/SQLite/unraisable guards; one
 local-original case is explicitly skipped by that repository-input command.
 The final committed-SDK full local run passes **7,075 cases / 696.73 seconds**
@@ -29,14 +58,20 @@ with thirteen expected fixture warnings and fatal SQLite/unraisable guards.
 Source `17701d9` passes all Linux/macOS and Ackredit remote lanes; Windows exposes
 two new tamper tests decoding saved UTF-8 with the platform default. Explicit
 UTF-8 fixes the test harness; production save/read bytes are unchanged. A local
-Windows-codepage reproduction confirms the cause. Final corrected-head remote
-qualification remains pending; the failed run is diagnostic, not a green receipt.
+Windows-codepage reproduction confirms the cause. Corrected source `f206474` is
+qualified by [CI 15/15 and governance 1/1](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6390827770),
+with all native jobs/steps, nine OS lanes of 5,522 cases and four Ackredit lanes
+of 1,431 cases verified through full gh-run-receptor captures. SDK/distribution
+`0.14.0+93.gf206474` passes 43 corrected owning cases before/after installation;
+the implementation runtime/schema bytes are unchanged from `17701d9`. #160/#161
+are closed within their recorded scope. This qualifies the preceding block,
+not the newer #162 working tree. The failed run remains diagnostic.
 Next: aggregate/instance/assembly integration, model fragments and broad
 nature/agent/human completion. All ongoing work targets 0.15.0; release preparation
 remains paused.
-Distinct noncanonical native feature contexts can still collide after normalization
-([#162](https://github.com/uibcdf/sabueso/issues/162)); canonical requests refuse
-those scopes, and broader isoform integration must resolve their preservation.
+The later #162 correction above addresses native feature contexts that previously
+collided after normalization. Their original lost associations remain unknown;
+canonical requests still refuse unsupported noncanonical scope.
 
 The [AlphaFold context continuation](pending_proposals/card_alphafold_context.md)
 binds new MD5/identity/range findings to actual original model and UniProt inputs.

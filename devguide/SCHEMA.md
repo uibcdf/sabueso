@@ -21,6 +21,19 @@ remain unchanged. See [scope](pending_proposals/comparative_operations.md).
     historical parameters/defaults, overrides, unsupported selectors and dependent
     requests. Unrecorded parameters are never backfilled into old cards. These
     quality keys are explicit-only in `SCHEMA_CHANGES`, not automatic gaps.
+    #162 uses the complete original native UniProt positional feature as
+    `asserted_value` and its Card annotation as `normalized_value`. Original native
+    contexts, including molecule labels and citations omitted by normalization,
+    remain distinct under the unchanged source/record/field/asserted-value ID
+    algorithm. Fresh feature IDs change; stored originals stay fixed. Consumers
+    inspecting a fresh assertion use `normalized_value` for the Card representation
+    and `asserted_value` for the original source feature; existing normalized-value
+    readers retain their historical fallback when that member is absent.
+    Optional normalized annotation `molecule` retains a stated literal label without
+    inferring isoform identity or sequence mapping. Migration reports missing native/
+    normalized feature context, without constructing it from the last surviving
+    record. Refresh is a new basis. The shape has 1,938 paths, including explicitly
+    synthetic optional molecule coverage for all 17 mapped feature fields.
     #160 extends optional `source_metadata.uniprot_feature` and stated sequence
     revision to every mapped UniProt positional type. Modifiers and unknown
     endpoints survive normalization; noncanonical molecule scope stays unplaced.

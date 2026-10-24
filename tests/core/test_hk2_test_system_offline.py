@@ -50,7 +50,7 @@ def test_two_atp_site_groups_keep_their_positions_and_exact_support(hk2):
             continue
         groups.setdefault(site["ligand"]["label"], set()).update(site["positions"])
         assertion = card.source_assertion_store.get(site["source_assertion_id"])
-        assert assertion["asserted_value"]["ligand"] == site["ligand"]
+        assert assertion["normalized_value"]["ligand"] == site["ligand"]
         assert assertion["subject_ref"] == "uniprot:P52789"
     assert set(groups) == {"1", "2"}
     assert max(groups["1"]) < min(groups["2"])

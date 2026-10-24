@@ -46,6 +46,11 @@ MIGRATION_RULE = "card_migration@1"
 SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
     "0.3.14": [
         {
+            "path": "source_assertion_store[].normalized_value",
+            "filled_by": "refresh",
+            "entity_types": ("protein",),
+        },
+        {
             "path": "source_assertion_store[].source_metadata.uniprot_feature",
             "filled_by": "refresh",
             "entity_types": ("protein",),
@@ -472,6 +477,39 @@ def _now() -> str:
 
 def _has(data: Dict[str, Any], path: str) -> bool:
     """Whether a stored card holds ``path`` (a field, or a relationship template)."""
+    if path == "source_assertion_store[].normalized_value":
+        # Only native UniProt features use this change. Never reconstruct old
+        # lost source contexts by reinterpreting the remaining normalized value.
+        from .snapshot import canonical_json
+
+        for row in data.get("source_assertion_store", []):
+            if not (
+                isinstance(row, dict)
+                and isinstance(row.get("source"), dict)
+                and row["source"].get("name") == "UniProt"
+                and isinstance(row.get("field_path"), str)
+                and row["field_path"].startswith("features_positional.")
+            ):
+                continue
+            metadata = row.get("source_metadata")
+            native = (
+                metadata.get("uniprot_feature") if isinstance(metadata, dict) else None
+            )
+            value = row.get("normalized_value")
+            if not (
+                isinstance(native, dict)
+                and isinstance(row.get("asserted_value"), dict)
+                and canonical_json(native) == canonical_json(row["asserted_value"])
+                and isinstance(value, dict)
+                and (
+                    native.get("molecule") is None
+                    or isinstance(native["molecule"], str)
+                    and isinstance(value.get("molecule"), str)
+                    and value["molecule"] == native["molecule"]
+                )
+            ):
+                return False
+        return True
     if path == "source_assertion_store[].source_metadata.uniprot_feature":
         relevant = [
             row

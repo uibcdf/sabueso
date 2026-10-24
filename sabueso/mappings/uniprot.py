@@ -504,7 +504,22 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     def assert_value(
         fp: str, value: Any, metadata: Dict[str, Any] | None = None
     ) -> None:
-        assertion = make_source_assertion(fp, value, "UniProt", record_id, retrieved_at)
+        native = (
+            metadata.get("uniprot_feature")
+            if fp.startswith("features_positional.") and metadata
+            else None
+        )
+        assertion = make_source_assertion(
+            fp,
+            deepcopy(native) if native is not None else value,
+            "UniProt",
+            record_id,
+            retrieved_at,
+        )
+        if native is not None:
+            # Keep complete original contexts distinct, including citations and
+            # native fields not projected into the normalized annotation (#162).
+            assertion["normalized_value"] = deepcopy(value)
         if metadata:
             assertion["source_metadata"] = metadata
         source_assertions.append(assertion)
@@ -786,6 +801,16 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         if ligand:
             item["ligand"] = ligand
         coordinates = item["location"]["sequence"]
+        # Native molecule scope is part of the statement, not just its metadata.
+        # Otherwise equal unplaced positions collapse distinct source molecules
+        # under the deterministic assertion ID (#162). A label is not a mapping.
+        molecule = f.get("molecule")
+        if molecule is not None:
+            if not isinstance(molecule, str):
+                raise ConnectorError(
+                    "UniProt feature molecule must be a native string or unstated."
+                )
+            item["molecule"] = molecule
         for endpoint in ("start", "end"):
             modifier = get_in(loc, [endpoint, "modifier"])
             if modifier is not None:
