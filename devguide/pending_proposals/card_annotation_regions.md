@@ -112,10 +112,15 @@ exploration checkpoint or release. Ninety-two new regressions cover the new sour
 annotation, migration/refresh and saved-origin cases. The final selected scope
 passes **1,264 cases / 157.77 seconds**, twelve receptor workers and fatal
 runtime/SQLite/unraisable guards, with one explicit local-original skip and five
-expected fixture warnings. The initial full run passes 7,074 and fails one stale
-migration-gap expectation; the correction is covered by the selected gate.
-Final committed-SDK full and remote qualification remain pending. Earlier failed
-attempts are diagnostic; no prior full-suite receipt qualifies these changed bytes.
+expected fixture warnings. The final committed-SDK full run passes **7,075 cases /
+696.73 seconds**, thirteen expected fixture warnings and fatal SQLite/unraisable
+guards. Source `17701d9` passes every Linux/macOS and Ackredit remote lane. Windows
+finds two new tamper tests decoding the saved UTF-8 JSON with the platform default;
+this changes retained text before the intended origin check. An explicit Windows
+codepage reproduction confirms the cause. The corrected test uses UTF-8 for both
+operations, matching production save/read; runtime/schema bytes are unchanged.
+Final corrected-head remote qualification remains pending. Earlier failed attempts
+are diagnostic and do not establish a green remote receipt.
 Ruff format/lint (1,129 files), schema/shape alignment (1,907 paths), fixture delivery
 (51 reviewed / 37 protected), registry, dependency preflight and local governance
 pass. All 37 public guide blocks execute offline, syntax/links and Python 3.11

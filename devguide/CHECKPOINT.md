@@ -24,9 +24,13 @@ operations are bound to the originating item, rejecting internally resealed swap
 has 1,907 paths. The final selected scope passes **1,264 cases / 157.77 seconds**
 with twelve receptor workers and fatal runtime/SQLite/unraisable guards; one
 local-original case is explicitly skipped by that repository-input command.
-The initial full local run passes 7,074 cases and fails one stale migration-gap
-expectation, now corrected and covered by the selected gate. Final committed-SDK
-full/remote qualification remains pending; no earlier receipt qualifies this source.
+The final committed-SDK full local run passes **7,075 cases / 696.73 seconds**
+with thirteen expected fixture warnings and fatal SQLite/unraisable guards.
+Source `17701d9` passes all Linux/macOS and Ackredit remote lanes; Windows exposes
+two new tamper tests decoding saved UTF-8 with the platform default. Explicit
+UTF-8 fixes the test harness; production save/read bytes are unchanged. A local
+Windows-codepage reproduction confirms the cause. Final corrected-head remote
+qualification remains pending; the failed run is diagnostic, not a green receipt.
 Next: aggregate/instance/assembly integration, model fragments and broad
 nature/agent/human completion. All ongoing work targets 0.15.0; release preparation
 remains paused.

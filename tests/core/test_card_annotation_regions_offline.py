@@ -447,11 +447,11 @@ def test_resealed_related_operation_swaps_are_rejected_against_the_originating_i
     first, second = view.items()[:2]
     path = tmp_path / "swapped.json"
     view.save(path)
-    bundle = json.loads(path.read_text())
+    bundle = json.loads(path.read_text(encoding="utf-8"))
     links = bundle["navigation"]["links"]
     a, b = operation_key(first), operation_key(second)
     links[a], links[b] = links[b], links[a]
-    path.write_text(json.dumps(_seal(bundle)))
+    path.write_text(json.dumps(_seal(bundle)), encoding="utf-8")
     with pytest.raises(StorageError, match="different originating item"):
         sabueso.read_exploration(path)
 
