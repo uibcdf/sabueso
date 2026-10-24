@@ -251,7 +251,7 @@ def _historical_resolution(access, target):
 def _verify_links(view):
     payload, access = view.native_payload, view._explorer.access
     require(
-        payload.get("rule") == "retained_context_links@1",
+        payload.get("rule") in ("retained_context_links@1", "retained_context_links@2"),
         "Unsupported navigation rule.",
     )
     source = payload["source_location"]
@@ -260,7 +260,7 @@ def _verify_links(view):
             require(
                 view._origin is not None
                 and view._origin.native_payload.get("rule")
-                == "retained_context_links@1",
+                in ("retained_context_links@1", "retained_context_links@2"),
                 "Missing retained link-detail origin.",
             )
             return
@@ -324,8 +324,19 @@ def _verify_links(view):
             statement = owner
     expected_targets = []
     seen = set()
+
+    def statements(basis):
+        return [
+            *basis.get("statements", basis.get("source_assertions", [])),
+            *(
+                basis.get("derivation_input_statements", [])
+                if payload["rule"] == "retained_context_links@2"
+                else []
+            ),
+        ]
+
     for basis in support:
-        for original in basis.get("statements", basis.get("source_assertions", [])):
+        for original in statements(basis):
             if original["id"] not in seen:
                 expected_targets.append(("source", original["id"]))
                 seen.add(original["id"])
@@ -347,15 +358,13 @@ def _verify_links(view):
         "Retained link membership differs from original references.",
     )
     for link in payload["links"]:
-        require(link["rule"] == "retained_context_links@1", "Link rule differs.")
+        require(link["rule"] == payload["rule"], "Link rule differs.")
         role, target = link["role"], link["target_ref"]
         if role == "source":
             original = [
                 record
                 for basis in support
-                for record in basis.get(
-                    "statements", basis.get("source_assertions", [])
-                )
+                for record in statements(basis)
                 if record["id"] == target
             ]
             require(len(original) == 1, "Source link is not original support.")
@@ -674,8 +683,10 @@ def _verify_state(view, record, native, access):
             "View focal capture differs.",
         )
     expected_adapter = (
-        "retained_context_links@1"
-        if view._context_only or view._link_panel
+        anchor_payload["link"]["rule"]
+        if view._context_only
+        else native["rule"]
+        if view._link_panel
         else "structure_exploration@1"
         if view._selection._scientific is not None
         else "knowledge_coverage_exploration@1"

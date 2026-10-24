@@ -228,7 +228,11 @@ def _predicted_structures(view: Dict[str, Any]) -> List[Dict[str, Any]]:
             "range": "-".join(str(x) for x in i["range"] or [] if x is not None),
             "isoform": i["isoform"],
             "coverage": i["coverage"],
+            "coverage_scope": i.get("coverage_scope"),
             "sequence_matches": i["sequence_matches"],
+            "context_state": i.get("context_state"),
+            "recorded_isoform": i.get("recorded_isoform"),
+            "recorded_sequence_matches": i.get("recorded_sequence_matches"),
         }
         for i in view["items"]
     ]

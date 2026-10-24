@@ -26,6 +26,15 @@ remain unchanged. See [scope](pending_proposals/comparative_operations.md).
     loading/migrating legacy records never reconstructs lost applications. See the
     relationship contract below. Output-context quantities have separate negotiated
     columns in the same PyUnitWizard seal.
+    #148 adds optional `has_predicted_structure.qualifiers.sequence_context` and
+    `alphafold_sequence_context@1` derivation with actual original model and UniProt
+    checksum/length/isoform inputs, the supplied checksum argument and precise
+    qualifier scope. MD5 comparisons, stated isoforms, original reference range,
+    unknown reasons and computed/uncomputed coverage remain derived metadata,
+    never SourceAssertions. Migration marks missing or invalid historical basis;
+    refresh creates new bindings rather than recovering original executions.
+    The [model context contract](pending_proposals/card_alphafold_context.md)
+    distinguishes current prediction-API MD5 from older BigQuery CRC64.
     #148 adds optional `has_structure.derivation`, scoped to `ligands[].instances`
     under `rcsb_ligand_contacts@1`. `inputs` references the original RCSB assertion;
     parameters record `qualifier_paths`, `input_path` and source-scope/ambiguity

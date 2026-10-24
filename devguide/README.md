@@ -140,8 +140,12 @@ Historical contact gaps and AlphaFold context binding remain explicit.
 The [relationship derivation correction](pending_proposals/relationship_derivation_applications.md)
 now preserves independent application/input/output contexts during merges (#156),
 including premerged alternatives, saved support and full/index terms. Legacy
-execution associations remain unknown; AlphaFold binding and broad integration
-continue under #148.
+execution associations remain unknown. The
+[AlphaFold context continuation](pending_proposals/card_alphafold_context.md)
+binds actual MD5/identity/range inputs and conservatively exposes coverage of the
+original reference, with readable uncertainty and direct input destinations.
+Navigation `@2` and packet mapping `@9` preserve their historical readers; broad
+region/aggregate/assembly integration and human/agent acceptance continue under #148.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

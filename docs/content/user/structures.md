@@ -168,9 +168,22 @@ protein, and `card.predicted_structures()` lists them:
 
 - the model version and the mean pLDDT with its bands;
 - the range covered;
-- whether the model is of the entry's current sequence;
-- the isoform, when AlphaFold DB models one of the entry's isoforms. Such a model gives
-  no coverage of the entry.
+- the whole-sequence checksum comparison against the original reference input;
+- the isoform only where UniProt explicitly states that membership. A different
+  accession alone does not establish an isoform.
+
+In development, `predicted_structure_scope@1` verifies the stored
+`alphafold_sequence_context@1` inputs instead of using present Card fields as a
+substitute. Coverage refers to the **original whole-reference input** and is
+computed only for a source-declared focal accession, supported matching MD5 and
+valid whole-sequence range/length. It describes the declared sequence span, not
+observed atoms or experimental equivalence. Partial fragments, missing/conflicting
+inputs, other accessions and unbound historical context remain uncomputed.
+`coverage_scope`, `context_state` and the complete `sequence_context` explain the
+result. `recorded_isoform` and `recorded_sequence_matches` preserve old flags
+without certifying their missing original basis. A differing checksum does not
+identify the cause or age of a sequence difference. Migration reports the gap;
+refresh acquires a new context while the original pin remains unchanged.
 
 Models are kept apart from experimental structures: `card.structures()` never counts
 them.

@@ -2,7 +2,24 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-24, distinct relationship derivation applications (#156).
+Last updated: 2026-10-24, original AlphaFold model sequence scope (#148).
+
+The [AlphaFold context continuation](pending_proposals/card_alphafold_context.md)
+binds new MD5/identity/range findings to actual original model and UniProt inputs.
+Only source-stated isoforms receive that label. Current native model scope replays
+those inputs, distinguishes original reference coverage from present Card fields,
+and leaves fragments, unbound history and missing/conflicting prerequisites
+uncomputed. Source panes offer readable uncertainty and direct input destinations.
+Navigation `@2` preserves original `@1` saved membership; packet mapping `@9`
+declares the model rules while `@6`/`@7`/`@8` retain a frozen predicted projection.
+Optional stored context belongs to unpublished 0.3.14; migration reports gaps and
+refresh acquires new bases without rewriting originals. All **6,983 local-original
+offline cases / 641.77 seconds** pass with twelve receptor workers, thirteen
+expected fixture warnings and fatal SQLite/unraisable guards. The final core
+subset passes 119/8.70 seconds with fatal runtime guards too. Exact-head remote
+qualification remains pending under #148; no older receipt qualifies this source.
+Next: region/annotation/aggregate/assembly and broad nature/agent/human completion.
+Fragment comparison and #157/#158 remain explicit limits. 0.15.0 stays paused.
 
 The [derivation merge correction](pending_proposals/relationship_derivation_applications.md)
 now retains each original input/rule/parameter/engine/output context, with exact
@@ -14,8 +31,11 @@ quantities are separately sealed, and human/saved inspection, literature,
 expansion basis and full/index packet terms keep the plural support. All 133 final selected cases pass with twelve receptor workers and fatal runtime/
 SQLite/unraisable guards. All **6,941 local-original offline cases / 764.78 seconds** pass with twelve
 pytest-receptor workers, thirteen expected fixture warnings and fatal SQLite/
-unraisable guards. Exact-head CI/governance remains pending under #156; no remote
-or installed-release qualification is claimed. AlphaFold input binding remains next; 0.15.0 consolidation stays paused.
+unraisable guards. That preceding source `40eb9c2` is qualified by
+[CI 15/15 and governance 1/1](https://github.com/uibcdf/sabueso/issues/156#issuecomment-6388409439),
+with 52 post-install owning cases and SDK/distribution `0.14.0+89.g40eb9c2`.
+Its full receipt does not qualify the later AlphaFold source above. Installed
+release and full human/agent acceptance remain separate; 0.15.0 stays paused.
 
 The [contact integrity continuation](pending_proposals/card_contact_mapping_integrity.md)
 now records original RCSB alignment/neighbour inputs with scoped

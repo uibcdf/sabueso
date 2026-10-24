@@ -12,6 +12,11 @@ supersedes: []
 
 # Protein sequence and source context
 
+This report records the initial source-presentation slice. The later
+[AlphaFold continuation](card_alphafold_context.md) adds optional original input
+binding, conservative native model scope, packet `@9` and navigation `@2`, with
+separate source qualification. Earlier saved source membership/wording stays fixed.
+
 This continuation delivers four retained-context routes under the
 [complete exploration design required before 0.15.0](card_exploration_completion_0150.md).
 They present original retained protein knowledge with readable labels and shared

@@ -470,7 +470,7 @@ class CardItem:
     def _live_explain(self):
         if self._view._link_panel:
             return self._view._explorer._metadata(
-                {"rule": "retained_context_links@1", "link": self._entry.value},
+                {"rule": self._entry.value["rule"], "link": self._entry.value},
                 f"Link support for {self.label}",
                 self._view,
             )
@@ -672,7 +672,7 @@ class CardView:
         if self._context_override is not None:
             return deepcopy(self._context_override)
         if self._link_panel:
-            return {**self._explorer.context, "adapter": "retained_context_links@1"}
+            return {**self._explorer.context, "adapter": self.native_payload["rule"]}
         if self._selection._scientific is not None:
             return deepcopy(self._selection._scientific.wire["context"])
         if self._record_panel or self._field_panel:
@@ -1625,6 +1625,39 @@ class CardExplorer:
                     ):
                         if key in node:
                             support[key] = deepcopy(node[key])
+                    if (
+                        node.get("predicate") == "has_predicted_structure"
+                        and isinstance(node.get("qualifiers"), dict)
+                        and isinstance(
+                            (node.get("qualifiers") or {}).get("sequence_context"), dict
+                        )
+                    ):
+                        applications = node.get("derivation_applications")
+                        inputs = set()
+                        for app in (
+                            applications if isinstance(applications, list) else []
+                        ):
+                            derivation = (
+                                app.get("derivation") if isinstance(app, dict) else None
+                            )
+                            if (
+                                not isinstance(derivation, dict)
+                                or derivation.get("rule")
+                                != "alphafold_sequence_context@1"
+                            ):
+                                continue
+                            declared = derivation.get("inputs")
+                            if isinstance(declared, list):
+                                inputs.update(
+                                    ref
+                                    for ref in declared
+                                    if isinstance(ref, str) and ref.startswith("SA_")
+                                )
+                        support["derivation_input_statements"] = [
+                            self._statement(ref)
+                            for ref in sorted(inputs)
+                            if ref not in (refs if isinstance(refs, list) else [])
+                        ]
                 return [support]
         return [{"basis": "stored_literal", "location": deepcopy(location)}]
 

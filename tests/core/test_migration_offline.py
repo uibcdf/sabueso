@@ -54,6 +54,8 @@ def test_gaps_say_what_a_refresh_would_bring_and_what_can_be_asked_for():
         "relationships.has_structure.construct",
         "relationships.has_structure.author_numbering",  # since 0.3.5
         "relationships.has_structure.derivation",  # scoped RCSB contact basis, 0.3.14
+        # Original AlphaFold model inputs, since unpublished 0.3.14.
+        "relationships.has_predicted_structure.sequence_context",
         "identifiers.ensembl_transcripts",  # since 0.3.10
         "annotations.isoforms",  # since 0.3.6
         "annotations.alternative_products",

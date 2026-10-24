@@ -30,6 +30,11 @@ class AlphaFold(Enricher):
             context.anchor,
             response.get("retrieved_at", ""),
             sequence_md5=(context.entry.get("sequence") or {}).get("md5"),
+            input_assertions=[
+                row
+                for mapping in context.mappings
+                for row in mapping.get("source_assertions", [])
+            ],
         )
         versions = sorted(
             {r["qualifiers"]["model_version"] for r in mapped["relationships"]} - {None}

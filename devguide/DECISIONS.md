@@ -1,5 +1,21 @@
 # Sabueso — Decision Log
 
+## Bind model interpretation to its actual original sequence inputs (2026-10-24, #148)
+
+Record `alphafold_sequence_context@1` against original AlphaFold and UniProt
+checksum/length/isoform statements and the actual supplied argument. Do not infer
+isoforms from a different accession, compare a partial model checksum with a whole
+reference or substitute current selected Card fields for original inputs. Native
+`predicted_structure_scope@1` exposes original reference scope and leaves missing,
+conflicting, historical or fragment scope uncomputed; old recorded flags remain
+separately inspectable. Current prediction-API MD5 and older BigQuery CRC64 are
+distinct source contracts. Add optional stored context to unpublished 0.3.14;
+migration reports gaps and refresh acquires new bases without backfilling history.
+Packet mapping `@9` declares the new interpretation; `@6`/`@7`/`@8` retain a frozen
+projection. Navigation `retained_context_links@2` adds readable original input
+destinations while original `@1` saved membership stays fixed. See the
+[implementation scope](pending_proposals/card_alphafold_context.md).
+
 ## Retain each relationship derivation application and its output context (2026-10-24, #156)
 
 Keep independent executions distinct even when their rule, parameters and engine

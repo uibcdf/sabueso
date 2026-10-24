@@ -164,7 +164,7 @@ def test_source_links_missing_support_and_literal_text_are_not_joins():
     assert role(links, "source").open().outcome["status"] == "missing_prerequisite"
     assert (
         role(links, "source").explain().native_payload["rule"]
-        == "retained_context_links@1"
+        == "retained_context_links@2"
     )
     ordinary = explorer.inspect("names").items()[0]
     assert len(ordinary.related().items()) == 0
@@ -384,8 +384,8 @@ def test_exact_source_node_links_remain_accessible_and_source_roles_are_declared
     assert source_link.cells["role"].value == "source"
     assert source_link.cells["availability"].value == "available"
     assert source_link.kind == "link"
-    assert links.context["adapter"] == "retained_context_links@1"
-    assert links.native_payload["rule"] == "retained_context_links@1"
+    assert links.context["adapter"] == "retained_context_links@2"
+    assert links.native_payload["rule"] == "retained_context_links@2"
     # Opening a subfield of the original relationship retains its endpoint roles.
     subsection = next(
         i

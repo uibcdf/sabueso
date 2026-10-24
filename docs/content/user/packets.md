@@ -34,7 +34,12 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping. Development uses `packet_aspects@8`: ligand-site
+by a named, versioned mapping. Development uses `packet_aspects@9`: predicted
+models carry original MD5/identity/reference scope under
+`alphafold_sequence_context@1` and `predicted_structure_scope@1`. Missing,
+historical, partial or foreign context does not establish reference coverage;
+full/index terms retain the actual model and UniProt input support. Historical
+`@6`/`@7`/`@8` predicted-model projections remain frozen. The inherited `@8` ligand-site
 instances carry explicit identity/sequence scope under `ligand_instance_scope@1`,
 and indexes declare that rule. Foreign or unknown-axis contacts remain unplaced;
 unidentified instances cannot prove chain spanning. Instance/flag structure

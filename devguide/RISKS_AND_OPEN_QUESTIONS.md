@@ -38,14 +38,19 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   still lack their historical input/rule binding; migration marks the gap and never
   recreates it from current fields. Whole-structure derivation and safe derived
   region/aggregate/assembly transitions remain open beyond this contact-only scope.
-- **Recorded AlphaFold sequence-context basis (#148):** the current mapper
-  computes `sequence_matches` by checksum comparison and derives `isoform` context,
-  but retains no named derivation/original input binding for those qualifiers.
-  New exploration wording labels them recorded metadata and does not credit them
-  as direct source claims or certify their calculation. Complete model integration
-  must retain actual rule/input scope; current Card fields must not be substituted
-  for missing historical mapping provenance. Original qualifier values/source
-  records remain unchanged by the presentation correction.
+- **Historical/partial AlphaFold context (#148):** the
+  [correction](pending_proposals/card_alphafold_context.md) binds new findings to
+  actual original model/UniProt inputs and explicit MD5/identity/reference scope.
+  Old recorded flags lack that basis; current readers keep them separately and
+  leave coverage uncomputed. Partial-fragment comparison remains outside this
+  slice. A differing checksum proves neither cause nor sequence age. Current
+  Card fields, matching sequence or suffixes never substitute for source-stated
+  identity or original execution inputs. Historical packet projections stay fixed.
+- **Qualifier JSON-type equivalence ([#158](https://github.com/uibcdf/sabueso/issues/158)):**
+  generic qualifier merging still uses Python equality (`True == 1`), which can
+  hide a type-distinct alternative. Source references remain; exact derivation
+  application contexts already retain types. Define the separate type-aware
+  value-equivalence contract before claiming this generic edge is repaired.
 - **Licensing/Terms**: Some sources (DrugBank, eMolecules, ChemSpider) have licensing constraints that may affect redistribution and caching.
 - **API Rate Limits**: Public APIs may rate‑limit or change formats.
 - **Data Heterogeneity**: Conflicting values across sources require robust conflict handling.

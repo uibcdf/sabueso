@@ -1,5 +1,15 @@
 # Sabueso — Canonical Field Paths
 
+Development schema 0.3.14 adds optional
+`relationship_store[].qualifiers.sequence_context` on `has_predicted_structure`
+(#148), with named `alphafold_sequence_context@1` and original input assertions.
+It records focal/model accessions, explicit identity state, checksum contract and
+values, reference length, range, computed/unknown scope and original support.
+The relationship derivation scopes `isoform`, `sequence_matches` and this context;
+its parameters preserve the actual checksum argument and source selectors.
+These derived findings are not source-authored field values. Historical absence
+is not backfilled; see [SCHEMA.md](SCHEMA.md).
+
 Development schema 0.3.14 also adds optional
 `relationship_store[].derivation_applications` (#156), with `binding`,
 `derivation`, original `qualifiers`/`source_assertion_ids` and optional

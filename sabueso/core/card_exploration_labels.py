@@ -93,6 +93,11 @@ def source_role(item):
                 return "Relationship support"
             if native.get("selection_support_state") == "declared":
                 return "Selected support"
+        if any(
+            row.get("id") == ref
+            for row in support.get("derivation_input_statements", [])
+        ):
+            return "Original derivation input"
     for key, label in (
         ("alternative_source_assertions", "Alternative statement"),
         ("unclassified_field_source_assertions", "Selection role unknown"),

@@ -10,7 +10,7 @@ from .card_access import _Entry
 from .errors import StorageError
 from .snapshot import parse_ref
 
-RULE = "retained_context_links@1"
+RULE = "retained_context_links@2"
 
 
 def _location(capture, segments=()):
@@ -179,6 +179,17 @@ def _resolve_target(explorer, target):
 
 
 def _link(explorer, role, target, support, *, location=None):
+    label = f"{role.capitalize()} · {target}"
+    if role == "source" and location:
+        original, _ = explorer.access._resolve(location)
+        fields = {
+            "sequence.checksums": "reference sequence checksums",
+            "sequence.length": "reference sequence length",
+            "annotations.isoforms": "UniProt isoform declaration",
+            "relationships.has_predicted_structure": "predicted model metadata",
+        }
+        if isinstance(original, dict) and original.get("field_path") in fields:
+            label = f"Source · {fields[original['field_path']]} · {target}"
     resolution = (
         {
             "candidates": [
@@ -197,7 +208,7 @@ def _link(explorer, role, target, support, *, location=None):
     )
     return {
         "role": role,
-        "label": f"{role.capitalize()} · {target}",
+        "label": label,
         "target_ref": target,
         "support": deepcopy(support),
         "rule": RULE,
@@ -263,7 +274,10 @@ def related(item):
     support = item.support
     seen = set()
     for basis in support:
-        for statement in basis.get("statements", basis.get("source_assertions", [])):
+        for statement in [
+            *basis.get("statements", basis.get("source_assertions", [])),
+            *basis.get("derivation_input_statements", []),
+        ]:
             ref = statement["id"]
             if ref in seen:
                 continue

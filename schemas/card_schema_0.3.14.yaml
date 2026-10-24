@@ -4,6 +4,20 @@ schema:
   created_at: 2026-02-10
   updated_at: 2026-10-24
   note: |
+    0.3.14 adds optional has_predicted_structure.qualifiers.sequence_context and
+    scoped derivation alphafold_sequence_context@1 (#148). The original model stays
+    unchanged in its AlphaFold assertion. Original UniProt checksum/length/isoform
+    assertions and the supplied checksum argument bind identity, MD5 comparison,
+    reference length/range, unknown reasons and whole-reference coverage. The
+    current prediction API's sequenceChecksum is MD5, not the CRC64 column in the
+    older BigQuery contract. Different accessions alone never establish isoforms;
+    only source-stated isoform membership does. Partial or unbound reference scope
+    remains uncomputed. Original arguments without source support are explicitly
+    distinguished. Distinct applications use the #156 output-context contract.
+    Migration marks absent/invalid historical basis without reconstructing it;
+    refresh produces new bindings. Published schemas/cards/capsules stay unchanged.
+    Native predicted_structure_scope@1 and packet_aspects@9 are versioned outside
+    the card; packet @6/@7/@8 retain their frozen predicted-model projection.
     0.3.14 adds optional relationship_store[].derivation_applications (#156).
     Each application retains binding, derivation, qualifiers, source_assertion_ids
     and optional qualifier_conflicts. original_output binds the exact context at

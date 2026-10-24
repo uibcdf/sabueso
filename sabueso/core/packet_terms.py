@@ -10,7 +10,12 @@ from .literature_explanation import literature_basis
 from .terms import assertion_label, record_label, report_items
 
 RULE = "packet_terms@1"
-SUPPORTED_MAPPINGS = {"packet_aspects@6", "packet_aspects@7", "packet_aspects@8"}
+SUPPORTED_MAPPINGS = {
+    "packet_aspects@6",
+    "packet_aspects@7",
+    "packet_aspects@8",
+    "packet_aspects@9",
+}
 
 
 def _references(node: Any) -> tuple[set[str], set[str]]:
@@ -169,7 +174,7 @@ def _items(card: Any, facts: dict, role: str, conflicts: list) -> list[dict]:
 
 
 def packet_terms(packet: Any, use: str, store: Any) -> dict:
-    """Same support scope for full and index, from exact saved cards at mappings @6/@7/@8.
+    """Same support scope for full and index, from exact saved cards at mappings @6–@9.
 
     Historical mappings remain readable but require their own scope adapter. Never
     substitute current areas or rules for a mapping the packet actually recorded.

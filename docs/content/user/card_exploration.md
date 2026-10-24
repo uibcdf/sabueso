@@ -222,9 +222,14 @@ if len(models.items()):
 ```
 
 Model declarations retain source versions/tools, pLDDT values/bands where stated,
-source range and recorded isoform/sequence-match context. The recorded match flag
-can originate in checksum comparison during mapping; this pane does not attribute
-it directly to AlphaFold or certify its original derivation/input basis.
+source range and recorded isoform/sequence-match context. New original mapping
+context names its rule, original reference coverage and reasons it could not be
+computed. `model.related().filter("role", equals="source")` offers labeled links
+to reference checksums, reference length, isoform declarations and model metadata.
+Each opens the exact retained statement and returns to its original selection.
+New `retained_context_links@2` includes those declared rule inputs; saved `@1`
+navigation keeps its original membership. Historical flags without that named
+context remain recorded metadata, not direct AlphaFold claims or certified inputs.
 Zero metrics, a false sequence
 match and unknown values stay distinct. These are source metrics, not experimental
 resolution or an inferred ranking. This pane does not calculate current sequence

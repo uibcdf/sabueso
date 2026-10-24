@@ -86,7 +86,7 @@ FULL_VIEWS = {
     "biological_context": (),
     "orthology": (),
 }
-ASPECT_MAPPING = "packet_aspects@8"
+ASPECT_MAPPING = "packet_aspects@9"
 #: Aspect mappings a packet can carry; packets of different mappings are not compared.
 #: ``@3`` adds KLIFS and GPCRdb (identity, structures, ligand sites, sequence features),
 #: SAbDab (structures) and the ``orthology`` aspect (OMA), which a query asks for by
@@ -449,9 +449,15 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
             ),
         }
     if aspect == "structures":
+        if mapping in ("packet_aspects@6", "packet_aspects@7", "packet_aspects@8"):
+            from ._predicted_structures_legacy_v1 import predicted_structures_view
+
+            predicted = predicted_structures_view(card)
+        else:
+            predicted = card.predicted_structures()
         return {
             "experimental": card.structures(),
-            "predicted": card.predicted_structures(),
+            "predicted": predicted,
             **_fields(card, STRUCTURE_FIELDS),
         }
     if aspect == "oligomer":
@@ -627,6 +633,11 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
     }
     if mapping not in ("packet_aspects@6", "packet_aspects@7"):
         rules["ligand_sites"].append(ligand_sites.INSTANCE_RULE)
+    if mapping not in ("packet_aspects@6", "packet_aspects@7", "packet_aspects@8"):
+        from .predicted_structures import CONTEXT_RULE
+        from .predicted_structures import RULE as PREDICTED_RULE
+
+        rules["structures"].extend([CONTEXT_RULE, PREDICTED_RULE])
     return {aspect: sorted(rules.get(aspect, [])) for aspect in ASPECTS}
 
 

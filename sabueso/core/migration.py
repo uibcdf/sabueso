@@ -46,6 +46,11 @@ MIGRATION_RULE = "card_migration@1"
 SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
     "0.3.14": [
         {
+            "path": "relationships.has_predicted_structure.sequence_context",
+            "filled_by": "predicted_structures",
+            "entity_types": ("protein",),
+        },
+        {
             "path": "relationship_store[].derivation_applications",
             "filled_by": "refresh",
             "explicit_only": True,
@@ -462,6 +467,20 @@ def _now() -> str:
 
 def _has(data: Dict[str, Any], path: str) -> bool:
     """Whether a stored card holds ``path`` (a field, or a relationship template)."""
+    if path == "relationships.has_predicted_structure.sequence_context":
+        from types import SimpleNamespace
+
+        from .predicted_structures import bound_context
+
+        assertions = {
+            row["id"]: row for row in data.get("source_assertion_store") or []
+        }
+        reader = SimpleNamespace(source_assertion_store=assertions)
+        return all(
+            bound_context(reader, row, allow_alternatives=True) is not None
+            for row in data.get("relationship_store") or []
+            if row.get("predicate") == "has_predicted_structure"
+        )
     if path == "relationships.has_structure.derivation":
         assertions = {
             row["id"]: row for row in data.get("source_assertion_store") or []

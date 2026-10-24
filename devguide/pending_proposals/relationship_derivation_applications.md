@@ -80,8 +80,11 @@ qualify that later change. The full local-original checkpoint passes **6,941 cas
 pytest-receptor/twelve workers, thirteen expected fixture warnings and fatal
 SQLite/unraisable guards. Runtime/tests/shape are unchanged since that run began;
 the schema explanatory note was clarified without changing its parsed structure.
-Exact-head CI/governance remains pending under #156; no release qualification is
-claimed. Ruff format/lint, 359 Markdown targets/anchors, nine changed Python files
+Source `40eb9c2` subsequently passes exact-head
+[CI 15/15 and governance 1/1](https://github.com/uibcdf/sabueso/issues/156#issuecomment-6388409439),
+with 52 owning post-install cases and SDK/distribution `0.14.0+89.g40eb9c2`.
+This receipt does not qualify the later AlphaFold implementation or a release.
+Ruff format/lint, 359 Markdown targets/anchors, nine changed Python files
 parsed under 3.11, shape/schema alignment (1,794 paths), source registry, fixture
 delivery (51 reviewed / 37 protected), dependency routing, local governance and
 warning-fatal Sphinx pass. The three public Card walkthroughs and an independent
@@ -97,7 +100,10 @@ source-output observation is not total Card/save/session/RSS/token or general
 performance qualification. Whole-output context has a storage cost; do not remove
 its original value binding to optimize a preview.
 
-AlphaFold original sequence/MD5/isoform input binding remains the next prerequisite.
+The later [AlphaFold continuation](card_alphafold_context.md) implements original
+sequence/MD5/isoform input binding with its own qualification. Generic qualifier
+JSON-type equivalence remains separately owned by #158; the application records
+preserve exact JSON types without claiming that other merger repaired.
 The broad annotation/region/aggregate/assembly and nature-profile routes, agent
 conformance and measured researcher usefulness remain open before 0.15.0.
 Release consolidation remains paused. No new source queries or private pilot reads

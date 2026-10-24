@@ -370,7 +370,9 @@ The [RCSB contact correction](pending_proposals/card_contact_mapping_integrity.m
 now retains scoped contact rules/original inputs and conservative identity/axis
 interpretation. The [derivation correction](pending_proposals/relationship_derivation_applications.md)
 preserves distinct merged applications (#156) without reconstructing lost legacy
-execution associations. Finish AlphaFold model context binding and derived/cross-topic/
+execution associations. The [AlphaFold continuation](pending_proposals/card_alphafold_context.md)
+now binds original MD5/identity/reference scope and leaves partial/unbound context
+uncomputed, with original-input links and historical readers. Finish derived/cross-topic/
 assembly integration, then activity/clinical/literature, comparative and
 association routes, shared saved/agent qualification and combined researcher
 acceptance. The public executable journey prepares the initial review without

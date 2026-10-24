@@ -8,19 +8,22 @@ qualifiers are what a reader needs to judge a model:
 - the mean pLDDT (a confidence score from 0 to 100, not a physical quantity), and the
   fractions of residues in each confidence band;
 - the UniProt range the model covers;
-- whether the modelled sequence is the entry's current sequence (``sequence_matches``,
-  by MD5). A model of an older sequence version does not describe the current one;
-- ``isoform``: AlphaFold DB also models an entry's isoforms (``P60174-3``). Such a model
-  is of another sequence, so ``sequence_matches`` is None and the view gives no
-  coverage of the entry for it.
+- whole-sequence MD5 comparison against the original input, with named rule,
+  scope and source references. A different checksum establishes neither cause
+  nor age; partial model checksums are not compared to the whole reference;
+- ``isoform`` only where original UniProt statements name it. A different model
+  accession alone never establishes an isoform relationship. No focal-entry
+  coverage is computed for another accession or an unbound historical context.
 """
 
 from __future__ import annotations
 
 from typing import Any, Dict, List
 
-from sabueso.core.relationship_store import make_relationship
+from sabueso.core.relationship_store import make_derivation, make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
+
+from .alphafold_context_v1 import QUALIFIER_PATHS, RULE, interpret, original_inputs
 
 SOURCE = "AlphaFold DB"
 
@@ -30,6 +33,8 @@ def map_predictions(
     accession: str,
     retrieved_at: str,
     sequence_md5: str | None = None,
+    *,
+    input_assertions: List[Dict[str, Any]] | None = None,
 ) -> Dict[str, Any]:
     source_assertions: List[Dict[str, Any]] = []
     relationships: List[Dict[str, Any]] = []
@@ -49,11 +54,13 @@ def map_predictions(
         if model.get("latestVersion") is not None:
             assertion["source"]["version"] = str(model["latestVersion"])
         source_assertions.append(assertion)
-        checksum = model.get("sequenceChecksum")
-        # AlphaFold DB also models the entry's isoforms (e.g. P60174-3). Such a model is
-        # of another sequence: its coverage and sequence check do not apply to the entry.
-        modelled = model.get("uniprotAccession") or accession
-        isoform = modelled if modelled != accession else None
+        context = interpret(model, accession, sequence_md5, input_assertions)
+        inputs = original_inputs(input_assertions, accession)
+        isoform = (
+            context["model_accession"]
+            if context["identity_state"] == "source_stated_isoform"
+            else None
+        )
         relationships.append(
             make_relationship(
                 f"uniprot:{accession}",
@@ -72,11 +79,22 @@ def map_predictions(
                     },
                     "range": [model.get("uniprotStart"), model.get("uniprotEnd")],
                     "isoform": isoform,
-                    "sequence_matches": None
-                    if isoform or not (checksum and sequence_md5)
-                    else checksum.lower() == sequence_md5.lower(),
+                    "sequence_matches": context["sequence_matches"],
+                    "sequence_context": context,
                 },
                 source_assertion_ids=[assertion["id"]],
+                derivation=make_derivation(
+                    RULE,
+                    inputs=[assertion["id"], *sorted({r["id"] for r in inputs})],
+                    parameters={
+                        "qualifier_paths": QUALIFIER_PATHS,
+                        "model_input_path": ["asserted_value", "model"],
+                        "focal_accession": accession,
+                        "sequence_md5_argument": sequence_md5,
+                        "focal_input_assertion_ids": sorted({r["id"] for r in inputs}),
+                        "input_binding": context["input_binding"],
+                    },
+                ),
             )
         )
     return {

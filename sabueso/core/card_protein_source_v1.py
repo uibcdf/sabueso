@@ -39,7 +39,7 @@ SITE_FIELDS = ("active_site", "binding_site", "family_site")
 TOPICS = ("sequence", "predicted_structures", "sites")
 SCOPES = {
     "sequence": "Original sequence fields and positional annotations. Locations retain their stated axis, indexing and modifiers; no alignment or residue projection is performed.",
-    "predicted_structures": "Source model declarations, versions and metrics with recorded sequence/isoform context. No experimental equivalence, sequence comparison or coverage calculation is inferred. Recorded match/isoform flags are not attributed as direct source claims; this pane does not establish their derivation/input basis.",
+    "predicted_structures": "Source model declarations, versions and metrics with recorded sequence/isoform context. No experimental equivalence, sequence comparison or coverage calculation is inferred by this source pane. Named original mapping context is shown where retained; historical match/isoform flags without that basis remain recorded metadata. Recorded flags are not attributed as direct source claims.",
     "sites": "Original functional-site fields and exact-subject ligand/interface contact relationships. Aggregated contacts are not ligand instances; no site overlap, proximity or cavity is computed.",
 }
 MODEL_FIELDS = {

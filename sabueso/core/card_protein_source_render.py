@@ -81,9 +81,63 @@ def relationship(topic, row):
                 ) + (f" … ({len(value)} bands)" if len(value) > 4 else "")
             return preview(value)
 
-        return " · ".join(
+        rendered = " · ".join(
             f"{label}: {metric(key)}" for key, label in MODEL_FIELDS.items()
         )
+        context = q.get("sequence_context")
+        if isinstance(context, dict):
+            identity_state = context.get("identity_state")
+            identity = {
+                "focal_entry": "the declared focal accession",
+                "source_stated_isoform": "an isoform stated by UniProt",
+                "different_accession_unclassified": "a different accession; isoform relationship not established",
+                "model_accession_not_stated": "model accession not stated",
+                "invalid_model_accession": "model accession has an unrecognized shape",
+            }.get(
+                identity_state if isinstance(identity_state, str) else None,
+                "identity context unrecognized",
+            )
+            rendered += (
+                f" · Recorded mapping context: {identity}"
+                f" · Original context rule: {preview(context.get('rule'))}"
+                f" · Coverage of original reference input: {preview(context.get('coverage')) if context.get('coverage') is not None else 'not computed'}"
+                " · Full original inputs and uncertainty: open the relationship and its support"
+            )
+            reasons = context.get("reasons")
+            if isinstance(reasons, list) and reasons:
+                labels = {
+                    "source_stated_isoform": "the model refers to a source-stated isoform",
+                    "different_accession_unclassified": "a different accession does not establish an isoform",
+                    "model_accession_not_stated": "the model accession was not stated",
+                    "invalid_model_accession": "the model accession has an unrecognized shape",
+                    "focal_source_support_not_supplied": "original reference source support was not supplied",
+                    "focal_checksum_not_retained": "the original reference checksum is not retained",
+                    "invalid_focal_checksum": "the reference checksum does not satisfy the MD5 contract",
+                    "conflicting_focal_checksums": "the original inputs retain different reference checksums",
+                    "focal_checksum_argument_missing_or_invalid": "the checksum argument was missing or invalid",
+                    "supplied_checksum_differs_from_original_support": "the supplied checksum differs from its source support",
+                    "model_checksum_not_stated": "the model checksum was not stated",
+                    "invalid_model_checksum": "the model checksum does not satisfy the MD5 contract",
+                    "whole_focal_sequence_scope_not_established": "a whole-reference sequence comparison is not established",
+                    "whole_sequence_checksums_differ": "the checksums differ; cause and age are unknown",
+                }
+                rendered += (
+                    " · Why coverage may be unavailable: "
+                    + "; ".join(
+                        labels.get(reason, preview(reason))
+                        if isinstance(reason, str)
+                        else preview(reason)
+                        for reason in islice(reasons, 3)
+                    )
+                    + (
+                        f" … ({len(reasons)} recorded reasons)"
+                        if len(reasons) > 3
+                        else ""
+                    )
+                )
+        if row.get("qualifier_conflicts"):
+            rendered += " · Alternative model values are retained; inspect qualifier conflicts before interpreting this recorded context"
+        return rendered
     residues = q.get("residues")
     positions = (
         ", ".join(
