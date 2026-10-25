@@ -24,7 +24,12 @@ The first corrected selection passes 224 cases / 66.49 seconds with twelve recep
 workers and fatal runtime/SQLite/unraisable guards. The broader local-original
 integration passes **393 cases / 116.20 seconds**; static/schema/shape/fixture/registry/
 dependency/governance, 37 offline guide blocks and warning-fatal Sphinx pass. Final
-full and exact-SHA remote qualification remain pending. This is prerequisite work for the
+review also corrects canonical input references omitted by packet terms, with two
+full/index regressions. The intermediate `03abe2d` full run (1,131 passed /
+incomplete 7,177) and cancelled CI do not qualify this block. Final full and
+exact-SHA remote qualification will use the corrected source. The corrected
+full/index support gate passes **185 cases / 76.41 seconds** with twelve receptor
+workers, local originals and fatal runtime/SQLite/unraisable guards. This is prerequisite work for the
 broader region/site/aggregate/assembly experience, not its completion.
 
 The [native feature identity correction](pending_bugs/uniprot_feature_identity.md)

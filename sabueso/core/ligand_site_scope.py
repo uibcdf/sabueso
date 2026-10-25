@@ -88,6 +88,17 @@ def reference(card):
     fields = {
         path: node if isinstance(node, dict) else {} for path, node in fields.items()
     }
+    # Retain the declared inputs independently of admission, using the existing
+    # packet terms reference shape. A grouped per-field map alone is not a link.
+    result["inputs"] = sorted(
+        {
+            ref
+            for node in fields.values()
+            if isinstance(node.get("source_assertion_ids"), list)
+            for ref in node["source_assertion_ids"]
+            if isinstance(ref, str)
+        }
+    )
     accession = fields["identifiers.uniprot"].get("value")
     sequence = fields["sequence.primary"].get("value")
     length = fields["sequence.length"].get("value")

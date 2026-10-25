@@ -56,7 +56,10 @@ be scientifically incomparable. Derived scope/results are never SourceAssertions
 Default `packet_aspects@11` declares both new scientific rules alongside unchanged
 `annotated_site_source_support@1` and `ligand_instance_scope@1`. The exact native
 site reader from `b991384` is frozen for `@10`; `@8`/`@9` and `@6`/`@7` keep their
-previous readers. Full and index terms validate using the actual saved mapping,
+previous readers. Canonical input IDs use the existing flat `inputs` reference shape as well as
+the per-field grouping, so full/index terms retain the actual identity, sequence
+and length sources even when admission is uncomputed. Generic historical terms
+readers are unchanged. Full and index terms validate using the actual saved mapping,
 without reinterpreting historical results as current classifications.
 
 Oligomer family-site reading retains that original projection and its independent
@@ -82,3 +85,15 @@ Reproductions, exact frozen-body proof and gate logs are retained in
 `recovered_work/ligand_overlap_scope_163_20261024/`, owned by #163/#148 and reviewed
 at the next exploration checkpoint or release. Previous #162 originals remain
 unchanged. Scientific services queried: zero. Private pilot reads: zero.
+
+
+Final review of intermediate `03abe2d` exposed missing canonical sources in packet
+terms (the per-field grouped references alone were not traversed). Two full/index
+regressions reproduce the omission; the flat declared `inputs` list corrects it
+without changing historical readers. The intermediate full gate was deliberately
+stopped at 1,131 passed / incomplete 7,177 and its CI was cancelled; neither is a
+qualification receipt. Final validation uses the corrected source.
+
+The final corrected receiving gate passes **185 cases / 76.41 seconds**, including
+both new full/index support regressions and persisted packet reading, with twelve
+receptor workers, local originals and fatal runtime/SQLite/unraisable guards.

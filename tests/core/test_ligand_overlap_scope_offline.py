@@ -462,6 +462,32 @@ def test_stored_absence_is_distinct_from_an_unrecognized_annotation_collection()
 
 
 @pytest.mark.parametrize("detail", ["full", "index"])
+def test_current_packet_terms_include_all_actual_canonical_reference_inputs(
+    detail, tmp_path
+):
+    card = protein()
+    store = sabueso.KnowledgeStore(tmp_path / "reference.db")
+    store.save(card)
+    packet = sabueso.compose_packet(
+        sabueso.KnowledgeQuery("P52270", aspects=["ligand_sites"], detail=detail), card
+    )
+    report = packet.terms("redistribution", store)
+    ids = {row["id"] for row in report["scope"]["subject"]["items"]}
+    expected = {
+        ref
+        for path in ("identifiers.uniprot", "sequence.primary", "sequence.length")
+        for ref in card.get(path)["source_assertion_ids"]
+    }
+    assert len(expected) == 3
+    assert expected <= ids
+    before = packet.to_dict()
+    pin = store.save_packet(packet, "synthetic_reference_scope")
+    loaded = store.load_packet(pin)
+    assert loaded.terms("redistribution", store) == report
+    assert loaded.to_dict() == before
+
+
+@pytest.mark.parametrize("detail", ["full", "index"])
 def test_old_packet10_reading_keeps_original_projection_and_terms(
     detail, tmp_path, monkeypatch
 ):
