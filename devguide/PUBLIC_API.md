@@ -411,7 +411,7 @@ not promise card enrichment, live availability or public-package delivery.
   deck/site aggregation. The existing scientific rules and stored schema are unchanged.
   Since 0.13.0, `explain_ligand_site(ligand_site_ref)` selects the native `REL_` id
   from `ligand_sites()` (`ligand_site_explanation@1`). It retains the actual
-  `annotated_site_overlap@2` result, selected annotation fields, alternatives,
+  `annotated_site_overlap@3` result with explicit canonical/uncomputed scope, selected annotation fields, alternatives,
   conflicts, original support, numbering and stored structural-instance context.
   No stored annotation/overlap is not external absence; absent instance data keeps
   `spans_chains=None`, and source relevance statements remain separate.

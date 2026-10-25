@@ -366,7 +366,7 @@ def test_historical_packet_source_projection_remains_frozen(
     current = sabueso.compose_packet(
         sabueso.KnowledgeQuery("P52270", aspects=["ligand_sites"]), card
     )
-    assert current.to_dict()["aspect_mapping"] == "packet_aspects@10"
+    assert current.to_dict()["aspect_mapping"] == "packet_aspects@11"
     assert len(_facts("ligand_sites", card)["annotated_sites"]) == 2
     historical = _facts("ligand_sites", card, mapping=mapping)
     assert len(historical["annotated_sites"]) == 1

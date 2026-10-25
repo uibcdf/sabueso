@@ -21,6 +21,10 @@ def explain_ligand_site(card, ligand_site_ref):
         (i for i in view["items"] if i["relationship_id"] == ligand_site_ref), None
     )
     fields = [support.field(path) for path in ANNOTATED_SITES.values()]
+    reference_fields = [
+        support.field(path)
+        for path in ("identifiers.uniprot", "sequence.primary", "sequence.length")
+    ]
     for annotation in view["annotated_sites"]:
         if not annotation["source_assertion_id"]:
             support.gaps.append(
@@ -55,6 +59,8 @@ def explain_ligand_site(card, ligand_site_ref):
                 "annotated_site_count": len(view["annotated_sites"]),
                 "annotated_sites": view["annotated_sites"],
                 "fields": fields,
+                "reference_fields": reference_fields,
+                "coordinate_reference": view["canonical_reference"],
                 "absence_basis": "stored annotated positions only; never external source absence",
             },
             "site": support.links.get(ligand_site_ref) if item else None,

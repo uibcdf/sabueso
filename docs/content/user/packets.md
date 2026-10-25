@@ -34,13 +34,14 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping. Development uses `packet_aspects@10`: original
-UniProt site statements retain their separate native contexts through normalized
-annotation support under `annotated_site_source_support@1`. Indexes declare this
-rule. Original `@8`/`@9` site projections stay frozen for historical terms/reading;
-InterPro family-site projection is unchanged. The separate annotation-axis
-limitation in overlap classification remains tracked in
-[#163](https://github.com/uibcdf/sabueso/issues/163).
+by a named, versioned mapping. Development uses `packet_aspects@11`: ligand-site overlap now requires
+source-bound canonical coordinate scope (`annotated_site_overlap@3` and
+`ligand_site_coordinate_scope@1`). Unknown scope stays uncomputed, never a negative
+result. Original UniProt site statements retain their separate native contexts
+through `annotated_site_source_support@1`. Indexes declare these rules. Original
+`@10`, `@8`/`@9` and `@6`/`@7` site projections stay frozen for historical reading
+and terms; they are never silently reclassified. See
+[sites and interfaces](sites_and_interfaces.md) for comparison limits.
 The inherited `@9` predicted models carry original MD5/identity/reference scope under
 `alphafold_sequence_context@1` and `predicted_structure_scope@1`. Missing,
 historical, partial or foreign context does not establish reference coverage;

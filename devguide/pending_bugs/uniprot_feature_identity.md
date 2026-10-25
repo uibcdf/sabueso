@@ -1,9 +1,9 @@
 ---
 summary: Preserve complete native UniProt feature identity before normalization.
 issue: uibcdf/sabueso#162
-status: open
+status: resolved
 opened: 2026-10-24
-closed:
+closed: 2026-10-24
 verification: tested
 area: [knowledge-integrity, source-access, schema]
 blocked_by: []
@@ -47,7 +47,8 @@ under `annotated_site_source_support@1`. Packet mapping `packet_aspects@10` decl
 that new support rule for full/index receiving. Original @8/@9 site projections
 are frozen from `f206474`; @6/@7 keep their preceding frozen projection. Old packet
 values/terms are never reinterpreted by the new source-support reader. The overlap
-classification rule itself remains @2 pending the separate #163 scope correction.
+classification rule at this checkpoint remains @2; the separate
+[coordinate-scope correction](ligand_overlap_coordinate_scope.md) advances it to @3.
 
 The normalized annotation also retains a stated `molecule` literal, including an
 empty/unidentified string. Missing/null source labels add no such member. A label
@@ -64,6 +65,14 @@ retains the original pin. Shape coverage includes explicitly synthetic optional
 molecule labels for all 17 mapped fields; the shape has 1,938 paths.
 
 ## Verification and remaining work
+
+Final source `b991384` / SDK `0.14.0+95.gb991384` passes all **7,115 local-original
+cases / 659.24 seconds**, exact-SHA CI **15/15** and governance **1/1**. Nine OS lanes
+pass 5,562 public cases each and four Ackredit lanes pass 1,431 cases each. Full
+receptor captures and member hashes are verified; #162 is
+[closed within this scope](https://github.com/uibcdf/sabueso/issues/162#issuecomment-6391409715).
+The receipt is `recovered_work/native_feature_context_162_20261024/checkpoint.json`.
+Earlier exploratory failures below are superseded by that final checkpoint.
 
 Forty new regressions cover all 19 mapped feature types, distinct molecule
 labels, native citation/compound/unprojected contexts with equal normalized values,
@@ -91,9 +100,9 @@ Actual pre-fix synthetic Card/exploration inputs and hashes, failure reproductio
 and gate logs are retained under `recovered_work/native_feature_context_162_20261024/`,
 owned by #162/#148 for review at the next exploration checkpoint or release.
 The separate confirmed [overlap-axis defect #163](https://github.com/uibcdf/sabueso/issues/163)
-still lets an unplaced foreign annotation share canonical contact positions in
-the native ligand-overlap engine. This identity fix does not qualify that engine's
-coordinate scope; resolve it before broad aggregate/assembly acceptance.
+was confirmed under @2. Its [separate correction](ligand_overlap_coordinate_scope.md)
+qualifies coordinate scope independently before broad aggregate/assembly acceptance;
+this identity fix alone does not establish that scope.
 Historical lost associations, broad isoform/other-source mappings, generic
 cross-version metadata retention and full researcher acceptance are not claimed
 solved. All ongoing work targets 0.15.0; candidate preparation remains paused.

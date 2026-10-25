@@ -11,7 +11,7 @@ A ProteinCard can hold independent statements about where things bind:
   (``has_ligand_site`` relationships), in UniProt numbering.
 
 ``ligand_sites_view`` puts them side by side. Whether a ligand site overlaps an annotated
-site is derived knowledge, computed here with rule ``annotated_site_overlap@2``: an exact
+site is derived knowledge, computed here with rule ``annotated_site_overlap@3``: an exact
 match of residue positions in UniProt numbering, against every annotated site. It is
 never stored. Each overlap names the annotation and its source, because overlapping a
 catalytic triad and overlapping a dimer interface mean different things.
@@ -30,14 +30,11 @@ per-instance contacts (from RCSB) only for the structures it has fetched, so
 
 from __future__ import annotations
 
-import json
 from copy import deepcopy
 from typing import Any, Dict, List
 
-from .source_assertion_store import assertion_value
-
-# @1 compared UniProt sites only; @2 adds InterPro family sites (uibcdf/sabueso#28).
-SITE_OVERLAP_RULE = "annotated_site_overlap@2"
+# @1 compared UniProt sites; @2 adds family sites; @3 verifies coordinate scope.
+SITE_OVERLAP_RULE = "annotated_site_overlap@3"
 INSTANCE_RULE = "ligand_instance_scope@1"
 ANNOTATION_SUPPORT_RULE = "annotated_site_source_support@1"
 ANNOTATED_SITES = {
@@ -47,67 +44,80 @@ ANNOTATED_SITES = {
 }
 
 
-def _key(value: Any) -> str:
-    return json.dumps(value, sort_keys=True, default=str)
+def annotated_sites(card: Any, *, canonical=None) -> List[Dict[str, Any]]:
+    """Every retained annotation, with explicit comparable/uncomputed scope."""
+    from . import ligand_site_scope as scope
 
-
-def annotated_sites(card: Any) -> List[Dict[str, Any]]:
-    """The card's annotated functional sites, with the evidence of each one."""
-    out: List[Dict[str, Any]] = []
+    canonical = scope.reference(card) if canonical is None else canonical
+    out = []
     for kind, field_path in ANNOTATED_SITES.items():
-        node = card.get(field_path) or {}
-        assertions = [
-            card.source_assertion_store.get(i)
-            for i in dict.fromkeys(node.get("source_assertion_ids") or [])
-        ]
-        by_value: Dict[str, List[dict]] = {}
-        for assertion in assertions:
-            if assertion:
-                by_value.setdefault(_key(assertion_value(assertion)), []).append(
-                    assertion
-                )
-        for item in node.get("value") or []:
-            sequence = (item.get("location") or {}).get("sequence") or {}
-            spans = sequence.get("fragments") or (
-                [{"start": sequence["start"], "end": sequence.get("end")}]
-                if sequence.get("start") is not None
-                else []
+        node = card.get(field_path)
+        if node is None:
+            continue
+        values = node.get("value") if isinstance(node, dict) else None
+        rows = list(enumerate(values)) if isinstance(values, list) else [(None, values)]
+        for index, original in rows:
+            value = original if isinstance(original, dict) else {}
+            subject = canonical["sequence_ref"]
+            if (
+                subject is None
+                and isinstance(card.id, str)
+                and card.id.startswith("sabueso:protein:uniprot:")
+            ):
+                subject = card.id.removeprefix("sabueso:protein:")
+            sources, problems = scope.matching(
+                card, node, field_path, original, subject
             )
-            positions = _positions(spans)
-            if not positions:
-                continue
-            # Native UniProt feature contexts stay separate (#162). InterPro
-            # family sites keep their original projection; they are outside this
-            # source-normalization change and also feed historical oligomer views.
-            matches = by_value.get(_key(item)) or [{}]
-            if kind == "family_site":
-                matches = matches[-1:]
-            for assertion in matches:
-                signature = item.get("signature") or {}
+            context = scope.annotation(
+                card, canonical, kind, field_path, index, original, sources, problems
+            )
+            context["field_source_assertion_ids"] = (
+                deepcopy(node.get("source_assertion_ids"))
+                if isinstance(node, dict)
+                else None
+            )
+            if index is None:
+                context.update(
+                    status="not_computed",
+                    reason="unrecognized_annotation_collection",
+                    positions=None,
+                )
+            positions = context["positions"]
+            for assertion in sources or [{}]:
+                metadata = assertion.get("source_metadata")
+                codes = metadata.get("eco") if isinstance(metadata, dict) else None
                 out.append(
                     {
                         "kind": kind,
-                        "start": positions[0],
-                        "end": positions[-1],
-                        "positions": positions,
-                        "description": item.get("description") or None,
-                        "ligand": item.get("ligand"),
+                        "start": positions[0] if positions else None,
+                        "end": positions[-1] if positions else None,
+                        "positions": deepcopy(positions),
+                        "description": value.get("description") or None,
+                        "ligand": deepcopy(value.get("ligand")),
                         "source": (assertion.get("source") or {}).get("name"),
-                        "signature": signature.get("accession"),
+                        "signature": value["signature"].get("accession")
+                        if isinstance(value.get("signature"), dict)
+                        else None,
                         "evidence": [
-                            e.get("code")
-                            for e in (assertion.get("source_metadata") or {}).get("eco")
-                            or []
-                        ],
+                            e.get("code") for e in codes if isinstance(e, dict)
+                        ]
+                        if isinstance(codes, list)
+                        else [],
                         "source_assertion_id": assertion.get("id"),
-                        **(
-                            {"source_support_rule": ANNOTATION_SUPPORT_RULE}
-                            if kind != "family_site"
-                            else {}
-                        ),
+                        "source_support_rule": ANNOTATION_SUPPORT_RULE,
+                        "recorded_annotation": deepcopy(original),
+                        "scope": deepcopy(context),
                     }
                 )
-    return sorted(out, key=lambda s: (s["start"], s["kind"], s["description"] or ""))
+    return sorted(
+        out,
+        key=lambda row: (
+            row["start"] is None,
+            row["start"] or 0,
+            row["kind"],
+            str(row["description"] or ""),
+        ),
+    )
 
 
 def _positions(residues: List[Dict[str, Any]]) -> List[int]:
@@ -165,17 +175,31 @@ def _structure_statements(card: Any, code: str) -> tuple:
 
 
 def site_overlap_derivation() -> Dict[str, Any]:
+    from .ligand_site_scope import RULE as SCOPE_RULE
     from .relationship_store import make_derivation
 
     return make_derivation(
         SITE_OVERLAP_RULE,
         inputs=[
             "has_ligand_site.residues",
+            "has_ligand_site.numbering",
+            "has_ligand_site.subject_ref",
+            "identifiers.uniprot",
+            "sequence.primary",
+            "sequence.length",
+            "source_assertion_store",
+            "quality.conflicts",
             ANNOTATED_SITES["active_site"],
             ANNOTATED_SITES["binding_site"],
             ANNOTATED_SITES["family_site"],
         ],
-        parameters={"match": "exact residue position", "numbering": "uniprot"},
+        parameters={
+            "match": "exact declared canonical residue position",
+            "numbering": "uniprot",
+            "coordinate_scope_rule": SCOPE_RULE,
+            "uncomputed": "not a negative overlap; partial positives remain explicit",
+            "revision_agreement": "not inferred when unstated",
+        },
     )
 
 
@@ -203,36 +227,72 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
     (PDBe-KB ``is_solvent`` and ``significance``; the PDB ``subject_of_investigation``
     flag), and the annotated sites its positions overlap.
     """
-    annotated = annotated_sites(card)
+    from . import ligand_site_scope as scope
+
+    canonical = scope.reference(card)
+    annotated = annotated_sites(card, canonical=canonical)
+    uncomputed = [
+        index
+        for index, site in enumerate(annotated)
+        if site["scope"]["status"] != "comparable"
+    ]
     items: List[Dict[str, Any]] = []
     for rel in card.relationships("has_ligand_site"):
-        q = rel.get("qualifiers", {})
-        positions = _positions(q.get("residues") or [])
+        original_qualifiers = rel.get("qualifiers")
+        q = original_qualifiers if isinstance(original_qualifiers, dict) else {}
+        contact_scope = scope.contact(card, canonical, rel)
+        positions = contact_scope["positions"]
         code = rel["object_ref"].split(":", 1)[1]
         flags, instances, structure_relationships = _structure_statements(card, code)
         overlap = [
             {**site, "matched": sorted(set(site["positions"]) & set(positions))}
             for site in annotated
-            if set(site["positions"]) & set(positions)
+            if site["scope"]["status"] == "comparable"
+            and positions is not None
+            and set(site["positions"]) & set(positions)
         ]
         if q.get("numbering") != "uniprot":
-            site_class = "numbering_not_comparable"
-            overlap = []
+            site_class, status = "numbering_not_comparable", "not_computed"
         elif not annotated:
-            site_class = "no_annotated_sites"
-        else:
-            site_class = (
-                "overlaps_annotated_site" if overlap else "no_annotated_overlap"
+            site_class, status = "no_annotated_sites", "not_computed"
+        elif contact_scope["status"] != "comparable":
+            site_class, status = "comparison_not_computed", "not_computed"
+        elif overlap:
+            site_class, status = (
+                "overlaps_annotated_site",
+                "partial" if uncomputed else "computed",
             )
+        elif uncomputed:
+            site_class, status = "comparison_not_computed", "not_computed"
+        else:
+            site_class, status = "no_annotated_overlap", "computed"
+        if status == "not_computed":
+            overlap = []
         items.append(
             {
                 "ligand_ref": rel["object_ref"],
                 "name": q.get("ligand_name"),
                 "positions": positions,
                 "residues": [
-                    {"position": r["start"], "residue": r["residue"]}
+                    {"position": r["start"], "residue": r.get("residue")}
                     for r in q.get("residues") or []
-                ],
+                ]
+                if positions is not None
+                else None,
+                "recorded_residues": deepcopy(q.get("residues")),
+                "comparison": {
+                    "rule": SITE_OVERLAP_RULE,
+                    "status": status,
+                    "basis": "source-declared canonical numbering, not atom completeness or revision agreement",
+                    "contact_scope": contact_scope,
+                    "uncomputed_annotation_indices": uncomputed,
+                    "compared_annotation_indices": [
+                        index
+                        for index, site in enumerate(annotated)
+                        if contact_scope["status"] == "comparable"
+                        and site["scope"]["status"] == "comparable"
+                    ],
+                },
                 "structures": q.get("structures") or [],
                 "instances": instances,
                 "spans_chains": _chain_spans(instances),
@@ -255,6 +315,8 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
                             "source",
                             "signature",
                             "matched",
+                            "source_assertion_id",
+                            "scope",
                         )
                     }
                     for site in overlap
@@ -289,4 +351,5 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
         ),
         "annotated_sites": annotated,
         "classification": site_overlap_derivation(),
+        "canonical_reference": canonical,
     }

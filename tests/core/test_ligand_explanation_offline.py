@@ -41,7 +41,16 @@ def relationship(
     subject="uniprot:P52270",
     record="synthetic",
 ):
-    sa = assertion(card, f"relationships.{predicate}", qualifiers, source, record)
+    sa = assertion(
+        card,
+        f"relationships.{predicate}",
+        {"object_ref": obj, "qualifiers": qualifiers}
+        if predicate == "has_ligand_site"
+        else qualifiers,
+        source,
+        record,
+    )
+    card.source_assertion_store.get(sa)["subject_ref"] = subject
     rel = make_relationship(subject, predicate, obj, qualifiers, [sa])
     card.relationship_store.add(rel)
     return card.relationship_store.get(rel["id"])
@@ -55,8 +64,28 @@ def synthetic(
     instances=True,
     bioactivity=True,
 ):
-    card = Card(
-        meta={"card_id": "sabueso:protein:uniprot:P52270", "entity_type": "protein"}
+    from sabueso.core.aggregator import build_card_from_mapping
+    from sabueso.mappings.uniprot import map_protein
+
+    native = {
+        "primaryAccession": "P52270",
+        "sequence": {"value": "M" * 100, "length": 100},
+        "entryAudit": {"sequenceVersion": 7},
+        "features": [
+            {
+                "type": "Active site",
+                "description": "Synthetic annotated site",
+                "location": {
+                    "start": {"value": 71, "modifier": "EXACT"},
+                    "end": {"value": 71, "modifier": "EXACT"},
+                },
+            }
+        ]
+        if annotation
+        else [],
+    }
+    card = build_card_from_mapping(
+        map_protein(native, "synthetic"), meta={"entity_type": "protein"}
     )
     molecule = Card(meta={"card_id": MOLECULE, "entity_type": "small_molecule"})
     for source_ref in (CHEMBL, "pdb.ligand:BTS"):
@@ -68,13 +97,6 @@ def synthetic(
             subject=source_ref,
             record=source_ref,
         )
-    if annotation:
-        path = "features_positional.active_site"
-        site = {
-            "location": {"sequence": {"start": 71, "end": 71}},
-            "description": "Synthetic annotated site",
-        }
-        card.set(path, [site], [assertion(card, path, site, "UniProt")])
     relationship(
         card,
         "has_structure",
@@ -176,7 +198,7 @@ def test_public_site_and_crossing_match_native_views_with_distinct_pins(public):
     for site in card.ligand_sites()["items"]:
         explained = card.explain_ligand_site(site["relationship_id"])
         assert explained["item"] == site
-        assert explained["classification"]["rule"] == "annotated_site_overlap@2"
+        assert explained["classification"]["rule"] == "annotated_site_overlap@3"
         assert explained["site"]["relationship"]["id"] == site["relationship_id"]
         assert explained["rule"]["rule"] == "ligand_site_explanation@1"
         assert explained["status"] == "on_card"
@@ -230,10 +252,13 @@ def test_missing_annotation_match_retains_field_support_and_is_partial():
     card.source_assertion_store.get(node["source_assertion_ids"][0])[
         "asserted_value"
     ] = {"different": "synthetic"}
+    card.source_assertion_store.get(node["source_assertion_ids"][0])[
+        "normalized_value"
+    ] = {"different": "synthetic"}
     site = card.ligand_sites()["items"][0]
     answer = card.explain_ligand_site(site["relationship_id"])
     assert answer["status"] == "partial"
-    assert answer["item"]["site_class"] == "overlaps_annotated_site"
+    assert answer["item"]["site_class"] == "comparison_not_computed"
     assert answer["classification_inputs"]["fields"][0]["source_assertions"]
     assert any(
         g["reason"] == "no_matching_annotation_assertion" for g in answer["gaps"]
@@ -254,7 +279,7 @@ def test_selected_annotation_alternatives_conflicts_and_versions_are_preserved()
     assert field["source_assertions"][0]["source"] == "UniProt"
 
 
-def test_missing_conflict_support_is_partial_without_discarding_site_class():
+def test_missing_conflict_support_is_partial_without_inventing_a_site_class():
     card, _, _ = synthetic()
     card.quality["conflicts"] = [
         {
@@ -265,7 +290,7 @@ def test_missing_conflict_support_is_partial_without_discarding_site_class():
     site = card.ligand_sites()["items"][0]
     answer = card.explain_ligand_site(site["relationship_id"])
     assert answer["status"] == "partial"
-    assert answer["item"]["site_class"] == "overlaps_annotated_site"
+    assert answer["item"]["site_class"] == "comparison_not_computed"
     assert not answer["classification_inputs"]["fields"][0][
         "conflict_source_assertions"
     ][0]["found"]

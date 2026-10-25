@@ -183,8 +183,8 @@ Implemented in `sabueso/tools/card/protein.py` (#6, step 4c); exported at packag
     (`bioactivity_class@3`);
   - `ligand_sites=True` adds PDBe-KB `has_ligand_site` relationships.
     `Card.ligand_sites()` puts each ligand's contacted residues next to the UniProt active
-    and binding sites and InterPro family sites (`annotated_site_overlap@2`: overlaps_annotated_site,
-    no_annotated_overlap, no_annotated_sites or numbering_not_comparable), with the
+    and binding sites and InterPro family sites (`annotated_site_overlap@3`: overlaps_annotated_site,
+    no_annotated_overlap, no_annotated_sites, comparison_not_computed or numbering_not_comparable), with the
     per-instance contacts of the fetched structures and `spans_chains` (`None` when no
     instance-level data is available);
   - `family_sites=True` adds InterPro site residues (`features_positional.family_site`);

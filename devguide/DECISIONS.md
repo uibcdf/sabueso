@@ -4227,3 +4227,16 @@ structure/coverage persistence remains pending rather than being admitted as
 unverified scientific data. See the [scope](pending_proposals/card_saved_exploration.md).
 No Card schema, scientific rule, source intake or shared MOLI contract changes;
 0.15.0 consolidation remains paused.
+
+
+## 2026-10-24 — Admit original canonical coordinates before ligand overlap (#163)
+
+Use `ligand_site_coordinate_scope@1` before `annotated_site_overlap@3`: require
+matching focal identity/sequence/support and exact source-bound canonical axes.
+Retain all original annotations and contacts with explicit uncomputed reasons;
+never turn an incomparable input into a negative result. Partial positives and
+unstated revisions stay explicit. No alignment, identity merge or atom projection
+is performed. Packet mapping @11 freezes @10's exact original native reader;
+older readers and oligomer agreement keep their own interpretation. No stored
+Card schema change occurs. See the
+[scope and qualification](pending_bugs/ligand_overlap_coordinate_scope.md).

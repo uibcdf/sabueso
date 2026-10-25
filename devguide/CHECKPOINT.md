@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-24, native feature identity before normalization (#162).
+Last updated: 2026-10-24, canonical ligand-site coordinate admission (#163).
 
 The maintainer confirmed that all ongoing implementations and corrections target
 **0.15.0**. The earlier proposal to evaluate an AlphaFold-only 0.14.1 patch/backport
@@ -12,34 +12,30 @@ experience. Candidate selection, schema freezing, staging and publication remain
 paused until those requirements are met. See the
 [release scope](pending_proposals/release_consolidation_0150.md).
 
+The [coordinate-scope correction](pending_bugs/ligand_overlap_coordinate_scope.md)
+implements source-bound canonical admission before ligand overlap (#163), under
+`ligand_site_coordinate_scope@1` and `annotated_site_overlap@3`. Foreign, uncertain,
+unsupported or conflicted coordinates stay visible and uncomputed; partial
+positives remain explicit, while unknown inputs cannot become a negative overlap.
+Missing revisions never establish agreement. Default packet mapping @11 freezes
+@10's exact previous reader; older projections and oligomer agreement retain their
+own original semantics. No stored schema change occurs (0.3.14 / 1,938 paths).
+The first corrected selection passes 224 cases / 66.49 seconds with twelve receptor
+workers and fatal runtime/SQLite/unraisable guards. The broader local-original
+integration passes **393 cases / 116.20 seconds**; static/schema/shape/fixture/registry/
+dependency/governance, 37 offline guide blocks and warning-fatal Sphinx pass. Final
+full and exact-SHA remote qualification remain pending. This is prerequisite work for the
+broader region/site/aggregate/assembly experience, not its completion.
+
 The [native feature identity correction](pending_bugs/uniprot_feature_identity.md)
-keeps each complete native UniProt positional feature in `asserted_value`, with
-the Card annotation in `normalized_value`. Native molecule/citation/compound/
-unprojected contexts remain distinct under the unchanged ID generator; exact native
-duplicates keep one ID. Fresh feature IDs change; old assertions/pins/capsules do
-not. Source-stated molecule labels stay inspectable without inferring isoform
-identity or a coordinate mapping. Equal Card values retain every original support
-record, and an original compound scope cannot be hidden by another exact feature.
-Unpublished 0.3.14 records the native/normalized migration gap without backfill;
-refresh obtains a new source basis. Shape coverage has 1,938 paths, including
-explicitly synthetic optional molecule coverage in all 17 mapped fields. The owning
-gate passes 251 cases / 22.27 seconds, with one explicit native-only skip. The
-subsequent integration gate passes 441 cases / 83.39 seconds, and final packet/
-history receiving passes 260 cases / 99.92 seconds; those latter gates include
-local originals. All use twelve receptor workers and fatal runtime/SQLite/
-unraisable guards. Forty new regressions cover native identity and frozen packet
-support. Corrected full local and final published-source qualification remain pending. Historical
-losses, generic cross-version/other-source metadata retention and broad isoform/
-aggregate/assembly/nature/agent/human acceptance remain separate requirements.
-The first full gate exposes six source-representation integration failures after
-7,106 passes; the ligand-site reader is now adapted to normalized values and keeps
-each original matching assertion with its own codes. Corrected full qualification
-remains required. New `annotated_site_source_support@1` is declared by packet
-mapping @10; @8/@9 site projections are frozen, and @6/@7 retain their previous
-projection. A distinct confirmed overlap-axis defect is tracked in
-[#163](https://github.com/uibcdf/sabueso/issues/163): unplaced foreign annotations
-must not share canonical contact positions merely by equal numbers. Address that
-scientific scope before aggregate/assembly acceptance; #162 does not claim its fix.
+(#162) is qualified and closed at `b991384` / SDK `0.14.0+95.gb991384`: all **7,115
+local-original cases / 659.24 seconds**, CI **15/15**, governance **1/1**; nine OS
+lanes each pass 5,562 cases and four Ackredit lanes each pass 1,431 cases. Full
+captures and hashes are verified. It retains complete native feature statements
+separately from normalized annotations and original support; historical losses
+remain explicit. Its packet mapping @10 and source-support rule are preserved
+by the separate #163 correction above. Receipt:
+`recovered_work/native_feature_context_162_20261024/checkpoint.json`.
 
 The [annotation continuation](pending_proposals/card_annotation_regions.md) adds
 one original positional annotation per row, exact item support and explicit

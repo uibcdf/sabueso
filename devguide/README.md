@@ -155,8 +155,12 @@ retains complete original feature statements separately from normalized Card
 annotations (#162), preventing source molecule/citation/location contexts from
 overwriting one another. Packet mapping @10 declares the native site-support rule
 while @8/@9 keep their frozen original projection. Historical losses remain explicit.
-Aggregate/assembly integration, broader profiles, compact topic parity and human
-acceptance remain open for 0.15.0.
+The [coordinate-scope correction](pending_bugs/ligand_overlap_coordinate_scope.md)
+adds canonical source-bound admission before ligand overlap under @3, with explicit
+uncomputed inputs and partial positives. Packet @11 freezes @10's exact reader;
+older projections and oligomer agreement keep their original rules. No stored
+schema change occurs. Aggregate/assembly integration, broader profiles, compact
+topic parity and human acceptance remain open for 0.15.0.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

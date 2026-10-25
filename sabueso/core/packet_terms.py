@@ -16,6 +16,7 @@ SUPPORTED_MAPPINGS = {
     "packet_aspects@8",
     "packet_aspects@9",
     "packet_aspects@10",
+    "packet_aspects@11",
 }
 
 
@@ -175,7 +176,7 @@ def _items(card: Any, facts: dict, role: str, conflicts: list) -> list[dict]:
 
 
 def packet_terms(packet: Any, use: str, store: Any) -> dict:
-    """Same support scope for full and index, from exact saved cards at mappings @6–@10.
+    """Same support scope for full and index, from exact saved cards at mappings @6–@11.
 
     Historical mappings remain readable but require their own scope adapter. Never
     substitute current areas or rules for a mapping the packet actually recorded.

@@ -99,7 +99,7 @@ def test_two_sources_agree_on_the_human_active_site(resolver):
     # 2-phosphoglycolate, a transition-state analogue, contacts every annotated residue.
     assert [o["start"] for o in pga["annotated_overlap"]] == [12, 14, 96, 166]
     assert pga["site_class"] == "overlaps_annotated_site"
-    assert view["classification"]["rule"] == "annotated_site_overlap@2"
+    assert view["classification"]["rule"] == "annotated_site_overlap@3"
 
 
 def test_bts_binds_away_from_the_annotated_site_and_across_chains(resolver):

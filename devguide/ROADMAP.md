@@ -389,9 +389,12 @@ keeps complete source features distinct before normalization (#162); original
 native contexts no longer overwrite one another merely because Card values match.
 Stored historical losses remain unknown and fresh source IDs change explicitly.
 Packet mapping @10 declares native site support; @8/@9 site projections are frozen.
-The confirmed native overlap-axis defect [#163](https://github.com/uibcdf/sabueso/issues/163)
-is the next scientific prerequisite: an unplaced foreign annotation cannot become
-a canonical overlap merely by sharing residue numbers.
+The [coordinate-scope correction](pending_bugs/ligand_overlap_coordinate_scope.md)
+(#163) now admits source-bound canonical inputs before overlap @3, retaining
+unknown/foreign/fuzzy/conflicting inputs as uncomputed and partial positives as
+explicit. Packet @11 freezes @10's exact previous reader. Qualify this bounded
+scientific prerequisite before broader aggregate/assembly integration; equal
+residue numbers alone do not establish a shared axis.
 Historical missing native scope remains unverified. Finish derived/cross-topic/
 assembly integration, then activity/clinical/literature, comparative and
 association routes, shared saved/agent qualification and combined researcher

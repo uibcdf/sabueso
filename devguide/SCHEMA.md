@@ -388,8 +388,11 @@ A Relationship is first-class, traceable knowledge:
       chains do not say whether one ligand contacts several chains; that reading comes
       from the per-instance contacts of `has_structure`.
     - Overlap with annotated sites (UniProt and InterPro family sites) is derived by
-      `Card.ligand_sites()` (`annotated_site_overlap@2`), and only there. Each overlap names
-      the annotation, its source and the matched positions.
+      `Card.ligand_sites()` (`annotated_site_overlap@3`), and only there. Each overlap names
+      the annotation, its source and the matched positions. Canonical coordinate
+      admission (`ligand_site_coordinate_scope@1`) is a derived view; it adds no
+      stored field or migration. Original unknown/foreign/uncertain scope stays
+      inspectable and uncomputed, never a negative overlap.
   - literature (added in #41):
     - `described_in` (protein → `pubmed:<id>`, `doi:<doi>` or
       `uniprot.citation:<id>`), one relationship per publication a source cites. From

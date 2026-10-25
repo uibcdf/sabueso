@@ -27,7 +27,7 @@ for item in view["items"]:
     print(
         item["ligand_ref"], item["positions"], item["site_class"], item["spans_chains"]
     )
-print(view["classification"])  # rule annotated_site_overlap@2
+print(view["classification"])  # rule annotated_site_overlap@3
 ```
 
 - `family_sites=True` adds the sites InterPro member databases place on the protein's
@@ -36,6 +36,15 @@ print(view["classification"])  # rule annotated_site_overlap@2
   and each overlap names the annotation and its source. `no_annotated_overlap` does not
   mean the ligand binds elsewhere; proximity over coordinates is not computed (see
   uibcdf/sabueso#30).
+- Comparison first checks the canonical sequence, original source support and exact
+  coordinate scope (`ligand_site_coordinate_scope@1`). Unknown, foreign, uncertain,
+  conflicting or unsupported coordinates stay visible in `recorded_annotation`,
+  `recorded_residues` and the corresponding `scope` / `comparison` reason.
+  `comparison_not_computed` is not a negative overlap. A positive can be `partial`
+  when other annotations could not be compared; a negative requires every retained
+  annotation to be comparable. Unstated sequence revisions remain explicit and do
+  not establish revision agreement. This compares source-declared numbering, not
+  atomic contacts or proximity. `no_annotated_sites` only describes this Card.
 - `spans_chains` says whether one ligand instance contacts more than one chain. It is
   read from RCSB per-instance contacts of the structures the card holds, and it is `None`
   when none are available. PDBe-KB aggregates ligand copies, so its chains cannot answer

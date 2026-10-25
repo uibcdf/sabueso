@@ -40,8 +40,8 @@ from __future__ import annotations
 import re
 from typing import Any, Dict, List
 
+from ._ligand_sites_legacy_v3 import annotated_sites
 from .ligand_sites import _positions as site_positions
-from .ligand_sites import annotated_sites
 from .structures import coverage_class
 
 PARTNER_RULE = "interface_partner_class@1"

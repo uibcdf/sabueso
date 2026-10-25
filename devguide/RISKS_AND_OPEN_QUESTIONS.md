@@ -18,13 +18,14 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Risks
 
-- **Ligand overlap annotation axis ([#163](https://github.com/uibcdf/sabueso/issues/163)):**
-  an explicit synthetic unplaced foreign annotation still participates in canonical
-  ligand-site overlap under `annotated_site_overlap@2`. Native/normalized source
-  identity (#162) preserves the original contexts but does not fix this separate
-  scientific coordinate admission. Keep uncomputed scope explicit and qualify
-  sequence/molecule/uncertainty/revision handling before broad aggregate/assembly
-  acceptance; do not silently classify unknown scope as overlap or absence.
+- **Ligand overlap coordinate scope ([#163](https://github.com/uibcdf/sabueso/issues/163)):**
+  the [correction](pending_bugs/ligand_overlap_coordinate_scope.md) admits original
+  canonical inputs under `ligand_site_coordinate_scope@1` before overlap @3.
+  Unsupported coordinates remain visible/uncomputed; unknown scope cannot become
+  a negative overlap. Historical packet projections retain their original results.
+  Unstated sequence/contact revisions do not establish version agreement. Broader
+  isoform mappings, aggregate/assembly reconciliation and real researcher usefulness
+  still require separate acceptance.
 
 - **Historical native feature identity loss ([#162](https://github.com/uibcdf/sabueso/issues/162)):**
   native molecule/citation/location contexts could collide after normalization,
