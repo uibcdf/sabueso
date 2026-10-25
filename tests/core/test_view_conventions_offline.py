@@ -2,6 +2,7 @@
 
 A key whose value is a reference (``<namespace>:<id>``) ends in ``_ref`` in every view:
 ``molecule_ref``, ``ligand_ref``, ``structure_ref``, ``partner_ref``, ``publication_ref``.
+Literal retained inputs preserve their original keys, separately from derived fields.
 """
 
 import re
@@ -20,6 +21,8 @@ from sabueso.tools.db.pdbe_kb import FixturePDBeKBClient
 REF = re.compile(r"^(?:sabueso:)?[a-z][a-z0-9_.]*:\S")
 #: Keys whose value may be a reference without naming one: a summary of any value.
 EXEMPT = {"value"}
+#: These explicitly literal subtrees preserve source/Card spelling, not view keys.
+LITERAL_INPUTS = {"recorded_annotation", "recorded_residues"}
 
 
 @pytest.fixture(scope="module")
@@ -59,6 +62,8 @@ def views():
 def _offending(node, path=""):
     if isinstance(node, dict):
         for key, value in node.items():
+            if key in LITERAL_INPUTS:
+                continue
             here = f"{path}.{key}"
             if (
                 isinstance(value, str)

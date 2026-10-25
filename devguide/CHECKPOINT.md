@@ -29,7 +29,11 @@ full/index regressions. The intermediate `03abe2d` full run (1,131 passed /
 incomplete 7,177) and cancelled CI do not qualify this block. Final full and
 exact-SHA remote qualification will use the corrected source. The corrected
 full/index support gate passes **185 cases / 76.41 seconds** with twelve receptor
-workers, local originals and fatal runtime/SQLite/unraisable guards. This is prerequisite work for the
+workers, local originals and fatal runtime/SQLite/unraisable guards. The subsequent
+SDK97 full run completes at 7,178 passed / one naming-convention failure: explicitly
+literal retained residues were mistaken for normalized view fields. Only the test
+boundary is corrected; original source/Card keys remain unchanged. Final full and
+CI qualification are repeated; the cancelled SDK97 CI is not a receipt. This is prerequisite work for the
 broader region/site/aggregate/assembly experience, not its completion.
 
 The [native feature identity correction](pending_bugs/uniprot_feature_identity.md)

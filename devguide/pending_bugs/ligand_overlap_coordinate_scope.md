@@ -97,3 +97,16 @@ qualification receipt. Final validation uses the corrected source.
 The final corrected receiving gate passes **185 cases / 76.41 seconds**, including
 both new full/index support regressions and persisted packet reading, with twelve
 receptor workers, local originals and fatal runtime/SQLite/unraisable guards.
+
+The SDK97 full local-original gate completes with **7,178 passed / one failure**:
+the naming-convention detector traversed original `recorded_residues` and treated
+the retained Card key `observed_in[].structure` as a derived view key. The test
+boundary now excludes only the two explicitly literal `recorded_annotation` and
+`recorded_residues` subtrees. Derived view references still require `_ref`; raw
+original inputs are not renamed. No runtime/source data change is made by this
+follow-up. Final full qualification is repeated after this correction; the SDK97
+full result and cancelled CI remain diagnostic, not passing receipts.
+
+The corrected convention/literal-retention gate passes **89 cases / 13.95 seconds**
+with twelve receptor workers, local originals and fatal runtime/SQLite/unraisable
+guards. No runtime implementation changes occur in this final test-boundary fix.
