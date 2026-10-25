@@ -17,6 +17,11 @@ Their objectives are not dropped: `devguide/ROADMAP.md` tracks the status of eac
 
 ## Superseded working documents
 
+- [CHECKPOINT_before_pause_20261025.md](CHECKPOINT_before_pause_20261025.md): full
+  pre-pause chronology at upstream `680c6a1`, including dated qualification and
+  pending-source statements. The shorter current checkpoint owns resumption;
+  original receipts remain unchanged.
+
 - [consolidation_2026-10-08/README.md](consolidation_2026-10-08/README.md): complete
   pre-consolidation checkpoint, roadmap, API, source and test guidance. Current
   entry documents replace these snapshots; source-specific contracts remain in

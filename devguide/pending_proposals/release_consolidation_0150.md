@@ -61,6 +61,31 @@ Recorda is not added as a Sabueso runtime dependency.
 
 ## Preparation status after usefulness review
 
+Earlier next-step preparation was authorized on 2026-10-20. The
+[unpublished release-notes draft](../../devtools/conda-build/release_notes_0.15.0.md)
+retains a partial inclusion/compatibility draft. The later maintainer decision
+above fixes the target at 0.15.0 and pauses release consolidation until full
+exploration/human acceptance. The draft does not override that decision or
+select a candidate. `release_plan.toml` still describes published 0.14.0.
+
+| Scope | Proposed treatment |
+| --- | --- |
+| Completed integrity and comparative work | Include SQLite lifetime, prerequisites, malformed envelopes, pagination, genomic/tissue scope, refresh restoration, disease identity and retained explanations/operation credit. |
+| Public scientific journeys | Include dossier `@2`, historical readers, the corrected located-source draft route and the bounded clinical/reference journey `@6`; retain explicit unknowns and pending human review. |
+| Card schema | Qualify and freeze unpublished 0.3.14 only from the accepted installed candidate; keep 0.3.13 and earlier immutable. |
+| Research and later roadmap slices | Keep primary-method access, scientist decisions, broader clinical/reference coverage, larger workload measures and peptide identity open under their owning work. They are not delivered capabilities merely because these notes mention them. |
+
+The [clinical/reference journey](clinical_reference_journey.md) now integrates
+one explicitly cited study and three article metadata queries, with original
+support and saved readers. Its local receipt supplements the earlier review
+preparation; public dependency-floor receiving and installed delivery remain open.
+
+The [current preparation receipt](scientific_review_preparation_20261020.json)
+records passing static `dependency_preflight.py --release`, fixture delivery,
+34 selected journey tests and independent public example readers. The providers
+are current local editable checkouts; these checks do not qualify the complete
+installed public dependency closure, staging bytes or final-SHA hosted gates.
+
 | Gate | Current preparation | Remaining acceptance |
 | --- | --- | --- |
 | Scientific scope | Generic questions, inspectable support and remaining human/source-text needs are recorded; a native assay-context inspection gap has a bounded fix | Scientist usefulness/interpretation is separate from technical qualification |

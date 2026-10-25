@@ -75,3 +75,8 @@ original molecular card and records each metadata operation separately. Its read
 uses only saved inputs; reacquisition leaves original reports and citations intact.
 Other trials, linked websites, full text and efficacy remain outside that scope.
 This example is separate from published-package qualification.
+
+The combined {doc}`disease journey <journeys>` additionally retains a separate
+clinical card, source envelopes and reference access outcomes in format `@6`.
+Missing access, complete empty answers and unqueried links remain distinct.
+Neither registry results flags nor publication pointers establish efficacy.

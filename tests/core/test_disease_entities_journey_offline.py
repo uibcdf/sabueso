@@ -18,7 +18,7 @@ def load(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def invoke(action, output):
+def invoke(action, output, fixtures=DATA):
     command = [sys.executable, str(SCRIPT)]
     if action == "read":
         command = [sys.executable, "-c", """
@@ -32,6 +32,12 @@ def forbidden(*args, **kwargs):
 ackredit.register_item = ackredit.track_item = forbidden
 sabueso.resolve = sabueso.disease_targets = sabueso.disease_drugs = forbidden
 Card.diseases = Card.explain_disease = Card.knowledge_state = forbidden
+Card.clinical = forbidden
+from sabueso.tools.db import clinicaltrials, europepmc
+clinicaltrials.get_studies = clinicaltrials.get_study_references = forbidden
+clinicaltrials.FixtureClinicalTrialsClient.studies = forbidden
+clinicaltrials.FixtureClinicalTrialsClient.study_references = forbidden
+europepmc.get_article = europepmc.FixtureEuropePMCClient.article = forbidden
 Deck.explain = forbidden
 sabueso.__version__ = '999.reader'
 script = sys.argv.pop(1)
@@ -42,7 +48,7 @@ runpy.run_path(script, run_name='__main__')
     env.pop("PYTHONPATH", None)
     return subprocess.run(
         [*command, action, "--output", str(output), "--fixtures",
-         str(DATA if action != "read" else output / "no-fixtures")],
+         str(fixtures if action != "read" else output / "no-fixtures")],
         cwd=output.parent, env=env, capture_output=True, text=True,
         timeout=180, check=False,
     )  # fmt: skip
@@ -103,7 +109,7 @@ def test_saved_disease_identity_membership_grouping_and_partial_credit(bundle):
     assert {i["max_phase_for_ind"] for i in indications} == {"4.0"}
     assert {i["efo_id"] for i in indications} == {"EFO:0008559", "MONDO:0001444"}
     assert (
-        report["scope"]["trials"] == "not_queried"
+        report["scope"]["trials"]["limit"] == 1
         and report["scope"]["efficacy"] == "not_assessed"
     )
     group = report["group_explanation"]
@@ -138,6 +144,8 @@ def test_saved_disease_identity_membership_grouping_and_partial_credit(bundle):
         "DISEASES",
         "ClinVar",
         "MedGen",
+        "ClinicalTrials.gov",
+        "Europe PMC",
     }
     assert "MONDO" not in report["gaps"]["observation"]
     assert report["gaps"]["observation"] == []
@@ -225,3 +233,265 @@ def test_completed_stages_cannot_be_overwritten(bundle):
     assert invoke("produce", bundle).returncode == 2
     assert invoke("reacquire", bundle).returncode == 2
     assert (bundle / "original.manifest.json").read_bytes() == before
+
+
+def test_clinical_source_statements_and_explicit_reference_scope_survive(bundle):
+    report = load(bundle / "original.report.json")
+    clinical = report["clinical"]
+    assert clinical["rule"] == "clinical_registry_review@1"
+    assert clinical["efficacy"] == "not_assessed"
+    assert clinical["article_text"] == clinical["linked_websites"] == "not_queried"
+    assert clinical["card_ref"] == report["cards"]["clinical_drug"]
+    assert report["cards"]["drug"] != clinical["card_ref"]
+    view = clinical["view"]
+    assert len(view["indications"]) == 4 and len(view["not_fetched"]) == 15
+    (trial,) = view["trials"]
+    assert trial["trial"] == "nct:NCT00123916"
+    assert trial["cited_for"] == ["doid:DOID:10113", "mondo:MONDO:0001444"]
+    assert trial["enrollment"] == {"count": 2854, "type": "ACTUAL"}
+    assert trial["phases"] == ["PHASE3"] and trial["has_results"] is False
+    # A false registry results flag does not mean no publications or no effect.
+    registry = clinical["registry_references"]["envelope"]
+    module = registry["record"]["studies"]["NCT00123916"]["protocolSection"][
+        "referencesModule"
+    ]
+    assert [r["pmid"] for r in module["references"]] == [
+        "18585495",
+        "26323937",
+        "19753491",
+    ]
+    assert len(module["seeAlsoLinks"]) == 2
+    assertions = report["support"]["clinical_drug"]["assertions"]
+    relationships = report["support"]["clinical_drug"]["relationships"]
+    tested = [rel for rel in relationships if rel["predicate"] == "tested_in"]
+    (relationship,) = tested
+    by_id = {a["id"]: a for a in assertions}
+    assert {
+        by_id[i]["source"]["name"] for i in relationship["source_assertion_ids"]
+    } == {
+        "ChEMBL",
+        "ClinicalTrials.gov",
+    }
+    assert relationship["qualifiers"]["basis"] == "chembl_drug_indication"
+    assert all(a["source"]["name"] != "Europe PMC" for a in assertions)
+
+
+def test_original_clinical_operations_and_collective_authors_remain_distinct(bundle):
+    original, later = [
+        load(bundle / f"{stage}.observations.json")["acquisitions"]
+        for stage in ("original", "later")
+    ]
+    assert not {r["id"] for r in original} & {r["id"] for r in later}
+    registry = [r for r in original if r["source"] == "ClinicalTrials.gov"]
+    assert {r["operation"] for r in registry} == {"studies", "study_references"}
+    assert all(r["query"] == {"nct_ids": ["NCT00123916"]} for r in registry)
+    by_operation = {r["operation"]: r for r in registry}
+    assert by_operation["studies"]["source_version"]["value"] == "2026-09-25T09:00:04"
+    references = by_operation["study_references"]
+    assert references["source_version"]["value"] == "2026-10-05T09:00:05"
+    assert (
+        references["clinical_context"]["reference_target_access"]
+        == "not_queried_by_this_operation"
+    )
+    assert len(references["clinical_context"]["citation_occurrences"]) == 5
+    articles = [r for r in original if r["source"] == "Europe PMC"]
+    assert {r["query"]["identifier"] for r in articles} == {
+        "pubmed:18585495",
+        "pubmed:26323937",
+        "pubmed:19753491",
+    }
+    assert all(
+        r["operation"] == "article" and r["network_attempts"] == 0 for r in articles
+    )
+    assert all(
+        r["article_context"]["article_revision"] == "not_stated" for r in articles
+    )
+    assert "article_number_not_stated" in next(
+        r["bibliography_gaps"]
+        for r in articles
+        if r["query"]["identifier"] == "pubmed:19753491"
+    )
+    citations = load(bundle / "original.references.csl.json")
+    publications = [
+        r for r in citations if r["id"].startswith("sabueso:article-publication:")
+    ]
+    assert sorted(len(r["author"]) for r in publications) == [9, 9, 22]
+    assert all(
+        {"literal": "BENEFIT Investigators"} in r["author"] for r in publications
+    )
+    # Registry pointers keep their native citation text rather than borrowing metadata.
+    pointers = [
+        r
+        for r in references["bibliography"]
+        if "clinicaltrials-cited-reference:" in r["id"]
+    ]
+    assert all("authors" not in r and "year" not in r for r in pointers)
+    manifest = load(bundle / "original.manifest.json")
+    assert all(
+        hashlib.sha256((bundle / name).read_bytes()).hexdigest() == digest
+        for name, digest in manifest["files"].items()
+    )
+
+
+@pytest.mark.parametrize(
+    "defect",
+    [
+        "card",
+        "phase",
+        "trial",
+        "indication",
+        "duplicate_indication",
+        "cut",
+        "scope",
+        "registry_body",
+        "registry_trace",
+        "article_body",
+        "article_trace",
+        "article_scope",
+        "access_status",
+    ],
+)
+def test_reader_refuses_rehashed_clinical_rebinding_before_export(
+    bundle, tmp_path, defect
+):
+    output = tmp_path / "changed"
+    shutil.copytree(bundle, output)
+    manifest_path = output / "original.manifest.json"
+    manifest = load(manifest_path)
+    report_path = output / "original.report.json"
+    report = load(report_path)
+    clinical = report["clinical"]
+    article = clinical["article_metadata"]["pubmed:26323937"]
+    if defect == "card":
+        clinical["card_ref"] = report["cards"]["drug"]
+    elif defect == "phase":
+        clinical["view"]["max_phase"] = 3
+    elif defect == "trial":
+        clinical["view"]["trials"][0]["enrollment"]["count"] = 1
+    elif defect == "indication":
+        clinical["view"]["indications"][0]["trials"] = ["NCT00123916"]
+    elif defect == "duplicate_indication":
+        clinical["view"]["indications"][0] = clinical["view"]["indications"][1]
+    elif defect == "cut":
+        clinical["view"]["not_fetched"] = []
+    elif defect == "scope":
+        clinical["article_text"] = "read"
+    elif defect == "registry_body":
+        clinical["registry_references"]["envelope"]["record"]["studies"]["NCT00123916"][
+            "protocolSection"
+        ]["referencesModule"]["references"][0]["type"] = "DERIVED"
+    elif defect == "registry_trace":
+        clinical["registry_references"]["envelope"]["acquisition_trace"]["records"][0][
+            "query"
+        ]["nct_ids"] = ["NCT01162967"]
+    elif defect == "article_body":
+        article["envelope"]["record"]["articles"][0]["title"] = "Different publication"
+    elif defect == "article_trace":
+        article["envelope"]["acquisition_trace"] = clinical["article_metadata"][
+            "pubmed:18585495"
+        ]["envelope"]["acquisition_trace"]
+    elif defect == "article_scope":
+        del clinical["article_metadata"]["pubmed:19753491"]
+    else:
+        registry = clinical["registry_references"]
+        clinical["registry_references"] = {
+            "status": "unavailable",
+            "error": "Missing local answer",
+            "acquisition_trace": registry["envelope"]["acquisition_trace"],
+        }
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+    manifest["files"][report_path.name] = hashlib.sha256(
+        report_path.read_bytes()
+    ).hexdigest()
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    references = output / "original.references.csl.json"
+    references.unlink()
+    result = invoke("read", output)
+    assert result.returncode == 2 and "FAIL:" in result.stderr, (
+        result.stdout + result.stderr
+    )
+    assert not references.exists()
+
+
+@pytest.mark.parametrize(
+    "case",
+    [
+        "registry_unavailable",
+        "registry_failed",
+        "registry_empty",
+        "article_unavailable",
+        "article_failed",
+        "article_empty",
+    ],
+)
+def test_reference_access_gaps_survive_independent_reading(tmp_path, case):
+    fixtures = tmp_path / "fixtures"
+    shutil.copytree(DATA, fixtures, ignore=shutil.ignore_patterns(".source_snapshots"))
+    if case.startswith("registry"):
+        path = fixtures / "clinicaltrials/references.json"
+        if case.endswith("unavailable"):
+            path.unlink()
+        elif case.endswith("failed"):
+            path.write_text(json.dumps({"studies": []}), encoding="utf-8")
+        else:
+            path.write_text(
+                json.dumps(
+                    {
+                        "version": "synthetic-complete-negative",
+                        "studies": {},
+                        "missing": ["NCT00123916"],
+                    }
+                ),
+                encoding="utf-8",
+            )
+    else:
+        path = fixtures / "europepmc/articles/pubmed__26323937.json"
+        if case.endswith("unavailable"):
+            path.unlink()
+        else:
+            payload = load(path)
+            if case.endswith("empty"):
+                payload["hitCount"] = 0
+                payload["resultList"]["result"] = []
+            else:
+                payload["resultList"]["result"] = None
+            path.write_text(json.dumps(payload), encoding="utf-8")
+    output = tmp_path / "bundle"
+    for action in ("produce", "read"):
+        result = invoke(action, output, fixtures)
+        assert result.returncode == 0, result.stdout + result.stderr
+    clinical = load(output / "original.reader.json")["original_report"]["clinical"]
+    if case.startswith("registry"):
+        registry = clinical["registry_references"]
+        if case.endswith("empty"):
+            assert registry["status"] == "returned"
+            assert registry["envelope"]["record"] == {
+                "studies": {},
+                "missing": ["NCT00123916"],
+            }
+            assert (
+                registry["envelope"]["acquisition_trace"]["records"][0]["outcome"]
+                == "empty"
+            )
+        else:
+            assert registry["status"] == (
+                "unavailable" if case.endswith("unavailable") else "failed"
+            )
+            assert "envelope" not in registry
+            assert (
+                registry["acquisition_trace"]["records"][0]["outcome"]
+                == registry["status"]
+            )
+    else:
+        article = clinical["article_metadata"]["pubmed:26323937"]
+        if case.endswith("unavailable"):
+            assert article["status"] == "unavailable" and "envelope" not in article
+        elif case.endswith("failed"):
+            assert article["status"] == "failed" and "envelope" not in article
+        else:
+            assert article["status"] == "returned"
+            assert article["envelope"]["record"]["total_count"] == 0
+            assert (
+                article["envelope"]["acquisition_trace"]["records"][0]["outcome"]
+                == "empty"
+            )

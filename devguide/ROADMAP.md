@@ -713,6 +713,20 @@ original criterion rules and genuine historical reports retain their meaning;
 qualifies `fe69ec5` with CI 15/15 and governance 1/1; all capture hashes and
 thirteen test summaries are independently verified.
 
+The [2026-10-20 review packet](pending_proposals/scientific_review_packet_20261020.md)
+turns those questions into a scientist worksheet and selects the complete nine
+saved records for `CHEMBL1156043` as the first protocol case. Existing public
+producers/readers and 34 selected tests pass in the current editable environment;
+this closes preparation, while human review and authorized primary methods remain
+pending. The subsequent [clinical/reference journey](pending_proposals/clinical_reference_journey.md)
+implements example `@6` with explicit NCT/PMID scope, original sidecars and inert
+readers; 234 selected tests pass and genuine historical `@5` reacquisition keeps
+its old query scope. Those counts describe the 2026-10-20 local source, not the
+later exploration implementation. Workload measures and broader demonstrated
+clinical needs remain part of the maintainer's full exploration-before-0.15.0
+acceptance; they do not supersede the current immediate resumption sequence.
+Local execution does not establish installed delivery or scientific acceptance.
+
 ### 3. Scope peptides as the next scientific expansion
 
 Prioritize the original peptide-card promise after the journey and contract work

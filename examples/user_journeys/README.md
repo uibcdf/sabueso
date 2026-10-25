@@ -294,8 +294,25 @@ Two separate MONDO-anchored diseases exercise target and drug decks: Orphanet 86
 between those two diseases is inferred. The example keeps exact MONDO/card support,
 original Open Targets/Orphanet membership bases and ChEMBL indication rows,
 unbuilt/capped candidates and original HsTIM disease-group explanations, including
-ungrouped identity paths. Related EFO:0001360 remains unresolved. Trials, approvals,
-efficacy and disease packets are outside the declared query scope.
+ungrouped identity paths. Related EFO:0001360 remains unresolved. Efficacy, new
+approval judgments and disease packets are outside the declared query scope.
+
+Format `@6` adds a separate benznidazole card with `trials={"limit": 1}`. ChEMBL's
+explicit indication references supply the NCT identity; intervention names never
+join a study to a molecule. The report's `clinical` section retains one received
+study (NCT00123916), four indications and fifteen unfetched trials. The original
+drug-deck member remains a separate pinned state of the same molecule.
+The example explicitly asks for that study's reference module and Europe PMC
+metadata for PMID 18585495, 26323937 and 19753491. The three publications' complete
+returned author lists include the literal BENEFIT Investigators collective name.
+
+Registry pointers and separately consulted article metadata keep their own source
+operations, native versions, raw records, missing fields and credit. The study and
+reference fixtures have different data timestamps; they do not establish one
+coherent current source revision. Empty complete queries differ from failed or
+unavailable access. See-also websites, article text and participant data remain
+unqueried. The stored `has_results` flag does not establish whether publications
+exist or what treatment effect they report. No efficacy interpretation is made.
 
 The reader checks historical item support and original membership metadata rather
 than recreating them under its own rules. Original available runtime attribution
@@ -304,28 +321,33 @@ altered support/bases and overstated coverage fail before reference export.
 
 Development rules `@2` now preserve exact membership SourceAssertion pins, original
 MONDO input and member identity, including unbuilt/capped candidates (#91).
-The example `@5` reader also accepts original `@1`, `@2`, `@3` and `@4` reports, keeping their
+The example `@6` reader also accepts original `@1`–`@5` reports, keeping their
 support and observation gaps rather than recreating old knowledge. Exported decks carry embedded support;
 saving the deck alone into an empty store makes its scientific pins resolvable.
 Deck terms include that content. Development `disease_deck_admission@1` requires
 admissible whole embedded context and filters unchanged member cards by all stored
 statements. Shared unknown/restricted terms refuse; finer filtering by terms of use remains pending
-(#29). Separate SDK tests cover admission; this example keeps its `@5` format.
+(#29). Separate SDK tests cover admission. Reacquiring an original `@5` bundle
+keeps its pre-clinical scope and `@5` format; older original reports remain intact
+and their existing pre-clinical reacquisition route remains `@5`.
 
 Development MONDO term/equivalence access now retains original index/release
 observations and bibliography. Open Targets/Orphanet queries and disease-deck builds
 also retain native page/file/version/time, source outcomes and original input/result
 pins. DISEASES/ClinVar/MedGen source access is also observed (#108/#125).
-Acceptance remains partial: underlying study bibliography is incomplete. Stored card data never
+Acceptance remains partial: broader underlying study bibliography is incomplete. Stored card data never
 establishes new source credit.
 Source totals, attempted candidates and built cards are distinct scopes; the example
 reports each without interpreting a fixture gap as external absence. Keep all files
 beside the store; hashes are consistency checks, not authenticity or permissions.
 Native ChEMBL indication references now enter workflow attribution with original
 row/page occurrence scope and explicit unfetched-target/missing-metadata gaps.
-The example keeps `@5`: original reports and their declared gaps stay unchanged.
-Complete underlying study bibliography and finer filtering by terms of use remain pending.
-Broader molecular reverse queries and clinical observation remain separate work.
+New `@6` source envelopes are bound to their own original operations before the
+reader exports references. Rehashed changes to clinical values, source bodies,
+queries, trace bindings and access scope are refused. Original reports and their
+declared gaps stay unchanged. Complete underlying study bibliography and finer
+filtering by terms of use remain pending. Broader molecular reverse queries and
+clinical observation remain separate work.
 The #122 correction was delivered in 0.14.0; historical reports retain their original rules.
 
 ## Located primary-source review draft

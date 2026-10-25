@@ -1062,3 +1062,7 @@ keeps the molecular input workflow and new clinical workflow as separate origina
 records. Per-result acquisition sidecars bind the returned registry references and
 article metadata to the explicit selection. Saved reading verifies those bindings
 and original bibliography without new requests, scientific views or credit.
+
+The development {doc}`disease journey <journeys>` also offers a combined `@6`
+example with a separately pinned clinical card, explicit NCT/PMID scope and
+independent original reading. This example is outside published 0.14.0.

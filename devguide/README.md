@@ -4,6 +4,12 @@ The developer guide is the repository's memory: what Sabueso is, how it is built
 was decided and why, and what comes next. Start with `CHECKPOINT.md` and `ROADMAP.md`.
 Contributors and agents also read `../AGENTS.md`.
 
+**Pause handoff, 2026-10-25:** [CHECKPOINT](CHECKPOINT.md) is the concise current
+entry point; [its preceding chronology](archive/CHECKPOINT_before_pause_20261025.md)
+is historical. Resume the maintainer's broad Card exploration work (#148), with
+0.15.0 consolidation still paused. The [pause receipt](evidence/pause_checkpoint_20261025.json)
+records reconciled source, inputs, checks and retained resources.
+
 [Diagnostic receiving](DIAGNOSTIC_RECEIVING.md) records the retained standalone
 bootstrap, application precedence and bounded scoped argument/error fix (#150).
 [HTTP response lifetime](SOURCE_ACCESS.md#http-response-lifetime-151) records
@@ -49,6 +55,10 @@ resources after their last needed use; retain exact release artifacts and
 useful evidence with an owner and review trigger. Follow
 `../MOLI_GUIDE.md#temporary-development-resources` and the local test/release
 routes.
+
+The [unpublished 0.15.0 notes](../devtools/conda-build/release_notes_0.15.0.md)
+make the proposed follow-up scope reviewable. The committed release plan still
+describes 0.14.0; candidate selection and installed/publication gates remain open.
 
 Published receiving correction: [compact comparative credit](pending_proposals/comparative_credit_compaction.md)
 emits component operation `@2` with a versioned/hash-bound input-scope reference,
@@ -199,6 +209,17 @@ Exact historical support, original
 units, explicit unknown/partial scope and preserved credit are technical acceptance,
 with human usefulness and scientific interpretation still open.
 
+The [saved clinical/reference journey](pending_proposals/clinical_reference_journey.md)
+now adds a separate pinned clinical state, one explicitly cited NCT study and
+three article metadata queries in disease example `@6`. Original envelopes,
+source support and bibliography survive independent reading/reacquisition;
+Its 2026-10-20 local source passed 234 selected and 4,768 repository-input offline
+tests (ten explicit local-only skips); those are historical counts. The pause
+receipt owns current integrated qualification and original-input availability.
+Historical `@5` retains its pre-clinical query scope.
+The [local receipt](pending_proposals/clinical_reference_journey_20261020.json)
+separates editable-source acceptance from hosted and installed delivery.
+
 The [bounded usefulness review](pending_proposals/scientific_usefulness_review.md)
 now adds native assay/target/document inspection in dossier `@2`, with explicit
 missing saved qualifiers and historical `@1` compatibility. Twenty selected and
@@ -218,6 +239,15 @@ verifies the three shared document identities and their 497 stored activity rows
 across twelve assays. No complete methods were obtained; the institutional PDF
 was a library notice. It records the access gap without adding curated knowledge
 or changing the qualified SDK source.
+
+The [2026-10-20 review packet](pending_proposals/scientific_review_packet_20261020.md)
+now supplies a scientist worksheet and a first nine-record primary-assay case.
+Both existing public journeys and their independent saved readers run again;
+34 selected tests pass with updated editable providers. Its
+[preparation receipt](pending_proposals/scientific_review_preparation_20261020.json)
+retains exact source, environment and generated artifact hashes. Human review
+and authorized primary methods remain pending; no new scientific curation or
+installed-package qualification is claimed.
 
 | Document | Kind | What it holds |
 |---|---|---|

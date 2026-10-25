@@ -1,5 +1,15 @@
 # Primary assay-method access review (#92/#132/#112)
 
+Follow-up preparation, 2026-10-20: the
+[scientist worksheet](scientific_review_packet_20261020.md#first-primary-protocol-case)
+selects `CHEMBL1156043` first because all nine native activity rows across both
+proteins and three assays are inspectable in the saved dossier. Its
+[new local receipt](scientific_review_preparation_20261020.json) binds those rows
+to original relationship/SourceAssertion pins. The bounded public search supplies
+no newly verified primary body; an authorized original or institutional route has
+been requested. This preparation changes no protocol acceptance. The 2026-10-14
+research receipt and PDF inspection below remain historical and unchanged.
+
 The three documents shared by the complete public TcTIM/HsTIM ChEMBL fixtures
 have verified bibliographic identities. None of the consulted routes supplied
 their complete experimental methods. This is an access and source-scope review

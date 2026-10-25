@@ -1,0 +1,290 @@
+{
+  "format": "sabueso.pause_checkpoint@1",
+  "recorded_date": "2026-10-25",
+  "owner_issue": "uibcdf/sabueso#112",
+  "requested_action": "Reconcile local work and upstream, maintain restart guidance, publish and leave a clean synchronized clone.",
+  "source": {
+    "previous_local_head": "391ba08fb8b3dacfbc85743505536397e2da9a11",
+    "integrated_upstream": "680c6a1840783d4556f3f0d24fa407001f5e262c",
+    "new_example_and_test_sha256": {
+      "examples/user_journeys/disease_entities.py": "10918db75e7ca039eaa108f7a3986497cfa3312805be93a3c5a264240155efae",
+      "tests/core/test_disease_entities_journey_offline.py": "b3d05adf02e9694decc53be1a33922f433c4eaa043a6a4a2d8a372b21865ab71"
+    },
+    "sdk_schema_workflow_bytes": "Unchanged from integrated upstream; local implementation additions are the combined clinical example and its tests.",
+    "history": "Earlier local scientific preparation and combined example retained; later standalone bibliography, complete-exploration direction and source-integrity corrections retained."
+  },
+  "environment": {
+    "python": "3.14.7 | packaged by conda-forge | (main, Sep  2 2026, 21:08:32) [GCC 15.3.0]",
+    "executable": "/home/diego/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+    "verification_cwd": "/tmp",
+    "packages": {
+      "sabueso": {
+        "version": "0.14.0+98.g680c6a1.dirty",
+        "import_path": "/home/diego/repos@uibcdf/sabueso/sabueso/__init__.py",
+        "editable": true,
+        "origin": "file:///home/diego/repos%40uibcdf/sabueso"
+      },
+      "ackredit": {
+        "version": "0.12.1+2.ge233973",
+        "import_path": "/home/diego/repos@uibcdf/ackredit/ackredit/__init__.py",
+        "editable": true,
+        "origin": "file:///home/diego/repos%40uibcdf/ackredit"
+      },
+      "argdigest": {
+        "version": "0.16.0+1.g6dabaf7",
+        "import_path": "/home/diego/repos@uibcdf/argdigest/argdigest/__init__.py",
+        "editable": true,
+        "origin": "file:///home/diego/repos%40uibcdf/argdigest"
+      },
+      "depdigest": {
+        "version": "0.15.1+3.ga27172b",
+        "import_path": "/home/diego/repos@uibcdf/depdigest/depdigest/__init__.py",
+        "editable": true,
+        "origin": "file:///home/diego/repos%40uibcdf/depdigest"
+      },
+      "smonitor": {
+        "version": "0.21.0+1.gd6b2394",
+        "import_path": "/home/diego/repos@uibcdf/smonitor/smonitor/__init__.py",
+        "editable": true,
+        "origin": "file:///home/diego/repos%40uibcdf/smonitor"
+      },
+      "pyunitwizard": {
+        "version": "0.28.1+15.g6c62ca6",
+        "import_path": "/home/diego/repos@uibcdf/pyunitwizard/pyunitwizard/__init__.py",
+        "editable": true,
+        "origin": "file:///home/diego/repos%40uibcdf/pyunitwizard"
+      },
+      "pytest-receptor": {
+        "version": "1.2.1+22.g00a31c4",
+        "import_path": "/home/diego/repos@uibcdf/pytest-receptor/pytest_receptor/__init__.py",
+        "editable": true,
+        "origin": "file:///home/diego/repos%40uibcdf/pytest-receptor"
+      },
+      "gh-run-receptor": {
+        "version": "1.2.0+20.gd2551b2",
+        "import_path": "/home/diego/repos@uibcdf/gh-run-receptor/gh_run_receptor/__init__.py",
+        "editable": true,
+        "origin": "file:///home/diego/repos%40uibcdf/gh-run-receptor"
+      }
+    }
+  },
+  "input_availability": {
+    "local_only_count": 37,
+    "present": [],
+    "missing": [
+      "temp_data/3did/3did_dmi_flat.gz",
+      "temp_data/amypro/entries.json",
+      "temp_data/channelsdb/annotations__1tqn.json",
+      "temp_data/channelsdb/channels__1tqn.json",
+      "temp_data/disprot/records__P37840.json",
+      "temp_data/ecod/domain__80374.json",
+      "temp_data/eppic/assemblies__1hti.json",
+      "temp_data/eppic/entry__1hti.json",
+      "temp_data/eppic/interface_residues__1hti__1.json",
+      "temp_data/eppic/interfaces__1hti.json",
+      "temp_data/gwas_catalog/associations__HBB__size2__page0.json",
+      "temp_data/gwas_catalog/associations__TPI1__size2__page0.json",
+      "temp_data/hpo/license.component.html",
+      "temp_data/hpo/v2026-09-01/genes_to_phenotype.txt",
+      "temp_data/interactome3d/human__2024_12__representative__proteins.dat",
+      "temp_data/ligysis/mapping__P60174__1__7t0q.json",
+      "temp_data/ligysis/result__P60174__1.html",
+      "temp_data/merops/GNU-GPL-3.0.txt",
+      "temp_data/merops/GNU-LGPL-3.0.txt",
+      "temp_data/merops/GNU-LIBRARY-GPL-2.0.txt",
+      "temp_data/merops/accession_assignments.tsv",
+      "temp_data/merops/availability.html",
+      "temp_data/metalpdb/donor_distance_table__12ca_2.html",
+      "temp_data/metalpdb/site__12ca_2.json",
+      "temp_data/monarch/BioGRID-LICENSE.txt",
+      "temp_data/monarch/Monarch-software-LICENSE.txt",
+      "temp_data/monarch/associations__HGNC_12009__limit2__offset0.json",
+      "temp_data/pdbe_validation/global_percentiles__1cbs.json",
+      "temp_data/pdbe_validation/global_percentiles__1hti.json",
+      "temp_data/pdbtm/1c3w.xml",
+      "temp_data/pharos/target__P00000.json",
+      "temp_data/pharos/target__P31749.json",
+      "temp_data/pharos/target__P60174.json",
+      "temp_data/probis/nrpdb-2015-07-31.txt",
+      "temp_data/sifts/mappings__1hti.json",
+      "temp_data/tcdb/accession_assignments.tsv",
+      "temp_data/ttd/P2-01-TTD_uniprot_all.txt"
+    ]
+  },
+  "verified_upstream": {
+    "upstream-ci": {
+      "run_id": 40149749936,
+      "head_sha": "680c6a1840783d4556f3f0d24fa407001f5e262c",
+      "manifest_sha256": "d3fa7594d0e050e7a9ef5822ba321cb22c2e12190cf585853a904445ad67a7b7",
+      "jobs": 15,
+      "verified_members": 6,
+      "summaries": [
+        {
+          "member": "1_Offline tests (windows-latest, Python 3.14).txt",
+          "summary": "2026-10-25T01:46:40.1556297Z PASS exit=0 | 5626 passed, 10 skipped, 26 deselected | 1494.29s | 9 warnings"
+        },
+        {
+          "member": "2_Offline tests (macos-26, Python 3.14).txt",
+          "summary": "2026-10-25T01:32:20.7443300Z PASS exit=0 | 5626 passed, 10 skipped, 26 deselected | 818.49s | 9 warnings"
+        },
+        {
+          "member": "3_Ackredit public-package pilot (Python 3.11).txt",
+          "summary": "2026-10-25T01:53:38.0802344Z PASS exit=0 | 1431 passed | 597.88s | 4 warnings"
+        },
+        {
+          "member": "4_Offline tests (windows-latest, Python 3.11).txt",
+          "summary": "2026-10-25T01:43:55.8702140Z PASS exit=0 | 5626 passed, 10 skipped, 26 deselected | 1715.66s | 9 warnings"
+        },
+        {
+          "member": "5_Ackredit public-package pilot (Python 3.12).txt",
+          "summary": "2026-10-25T01:52:01.5598576Z PASS exit=0 | 1431 passed | 593.05s | 4 warnings"
+        },
+        {
+          "member": "6_Ackredit public-package pilot (Python 3.13).txt",
+          "summary": "2026-10-25T01:47:07.1355491Z PASS exit=0 | 1431 passed | 365.89s | 4 warnings"
+        },
+        {
+          "member": "7_Offline tests (ubuntu-latest, Python 3.12).txt",
+          "summary": "2026-10-25T01:48:22.0735767Z PASS exit=0 | 5626 passed, 10 skipped, 26 deselected | 891.53s | 9 warnings"
+        },
+        {
+          "member": "8_Offline tests (ubuntu-latest, Python 3.14).txt",
+          "summary": "2026-10-25T01:45:02.4310891Z PASS exit=0 | 5626 passed, 10 skipped, 26 deselected | 1103.64s | 9 warnings"
+        },
+        {
+          "member": "9_Offline tests (windows-latest, Python 3.13).txt",
+          "summary": "2026-10-25T01:40:43.9872696Z PASS exit=0 | 5626 passed, 10 skipped, 26 deselected | 1554.56s | 9 warnings"
+        },
+        {
+          "member": "10_Offline tests (ubuntu-latest, Python 3.11).txt",
+          "summary": "2026-10-25T01:40:35.5600351Z PASS exit=0 | 5626 passed, 10 skipped, 26 deselected | 894.60s | 9 warnings"
+        },
+        {
+          "member": "11_Ackredit public-package pilot (Python 3.14).txt",
+          "summary": "2026-10-25T01:23:01.8797930Z PASS exit=0 | 1431 passed | 533.06s | 4 warnings"
+        },
+        {
+          "member": "12_Offline tests (ubuntu-latest, Python 3.13).txt",
+          "summary": "2026-10-25T01:43:07.1220000Z PASS exit=0 | 5626 passed, 10 skipped, 26 deselected | 1167.28s | 9 warnings"
+        },
+        {
+          "member": "13_Offline tests (windows-latest, Python 3.12).txt",
+          "summary": "2026-10-25T01:36:50.6972436Z PASS exit=0 | 5626 passed, 10 skipped, 26 deselected | 1353.17s | 9 warnings"
+        }
+      ]
+    },
+    "upstream-governance": {
+      "run_id": 40149749833,
+      "head_sha": "680c6a1840783d4556f3f0d24fa407001f5e262c",
+      "manifest_sha256": "feff386f6c7e564085e0f301127818db22770af6c1e24b136a0d072164af130e",
+      "jobs": 1,
+      "verified_members": 6,
+      "summaries": []
+    }
+  },
+  "local_checks": [
+    {
+      "command": "ruff format --check .",
+      "exit_code": 0,
+      "formatted_files": 1140
+    },
+    {
+      "command": "ruff check .",
+      "exit_code": 0
+    },
+    {
+      "command": "python tools/fixture_delivery.py --check",
+      "exit_code": 0,
+      "reviewed_repository_inputs": 51,
+      "protected_originals": 37
+    },
+    {
+      "command": "python devtools/dependency_preflight.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python devtools/moli_governance.py",
+      "exit_code": 0
+    },
+    {
+      "command": "TMPDIR=recovered_work/pause_20261025/tmp python -m pytest -n 12 tests/core/test_disease_entities_journey_offline.py tests/core/test_clinical_bibliography_journey_offline.py tests/core/test_scientific_dossier_journey_offline.py tests/core/test_literature_source_review_journey_offline.py tests/core/test_clinical_offline.py tests/core/test_clinicaltrials_acquisition_offline.py tests/core/test_article_metadata_offline.py -m \"not online\" --receptor=llm -W error::RuntimeWarning -W \"error:unclosed database:ResourceWarning\" -W error::pytest.PytestUnraisableExceptionWarning",
+      "exit_code": 0,
+      "passed": 211,
+      "seconds": 329.76
+    },
+    {
+      "command": "sphinx-build -W --keep-going -b html docs recovered_work/pause_20261025/docs-html",
+      "exit_code": 0
+    },
+    {
+      "command": "python recovered_work/pause_20261025/check_handoff.py",
+      "exit_code": 0,
+      "local_markdown_links_and_anchors": 402,
+      "source_fingerprints": "match",
+      "sdk_schema_workflows": "unchanged from qualified upstream"
+    },
+    {
+      "command": "git diff --check HEAD",
+      "exit_code": 0
+    }
+  ],
+  "gate_scope": "Changed example/journey integration receives current local selected tests. Complete upstream SDK has exact-SHA public OS/Python/Ackredit CI. The new unskipped closeout push must receive and verify its own full CI/governance; older source gates are not transferred to a newer SHA.",
+  "publication_snapshot": {
+    "state": "Before the closeout commit/push at recording time. Final source-SHA evidence is in GitHub Actions and the owning #112 update.",
+    "remote": "origin = git@github.com:uibcdf/sabueso.git",
+    "branch": "main",
+    "force_push": false,
+    "release_or_tag": false,
+    "final_checks": [
+      "all intended work committed",
+      "no unmerged/tracked/untracked changes",
+      "temporary preservation stash removed after publication verification",
+      "HEAD equals origin/main and GitHub main ref",
+      "all applicable final-SHA CI and governance jobs verified through full receptor captures"
+    ]
+  },
+  "resumption": {
+    "entry": "devguide/CHECKPOINT.md#resume-here",
+    "priority": "Complete broad human/agent Card exploration under #148, starting from remaining structural/region/instance/aggregate/assembly transitions; follow the completion inventory.",
+    "release_target": "0.15.0",
+    "release_state": "Consolidation, candidate selection, schema freezing, staging and publication remain paused pending complete exploration and actual human acceptance.",
+    "scientific_review": "Authorized primary assay methods and scientist dossier/located-draft review remain pending."
+  },
+  "retained_resources": [
+    {
+      "path": "recovered_work/pause_20261025",
+      "owner": "uibcdf/sabueso#112",
+      "purpose": "Current source/environment/input checks, full CI captures and independent capture verification",
+      "review_trigger": "Resumption or 0.15.0 acceptance; disposable test/docs scratch removed after final use"
+    },
+    {
+      "path": "/tmp/sabueso-review-20261020-b51lwg9d",
+      "owner": "uibcdf/sabueso#112",
+      "purpose": "Original public scientific review bundles identified by the dated preparation receipt",
+      "review_trigger": "Scientist review or successful regeneration and verification"
+    },
+    {
+      "path": "/tmp/sabueso-clinical-final-20261020-s98cz_gp",
+      "owner": "uibcdf/sabueso#112",
+      "purpose": "Original combined clinical journey and independent process logs",
+      "review_trigger": "Resumption or successful regeneration and verification"
+    },
+    {
+      "path": "/tmp/sabueso-clinical-legacy-20261020-zo4wr0z4",
+      "owner": "uibcdf/sabueso#112",
+      "purpose": "Genuine original @5 producer, unchanged original bytes and scope-preserving reacquisition",
+      "review_trigger": "Resumption or successful regeneration and verification"
+    },
+    {
+      "path": "/tmp/sabueso-pause-20261025-backup",
+      "owner": "uibcdf/sabueso#112",
+      "purpose": "Temporary safety copy of the nineteen pre-sync local paths",
+      "review_trigger": "Remove after successful publication, clean clone and stash closeout"
+    }
+  ],
+  "limits": [
+    "No local-original requalification: all 37 protected inputs are absent.",
+    "No new scientific provider access, private pilot content or Evidence.",
+    "No claim of human acceptance, installed release artifact, or full remote qualification before its actual completion."
+  ]
+}

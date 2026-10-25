@@ -39,6 +39,20 @@ document queue prepares original-method review; access to complete methods and
 scientist acceptance remain open. The maintainer requested a pause for a separate
 matter before 0.15.0 consolidation.
 
+The [2026-10-20 scientist-review packet](scientific_review_packet_20261020.md)
+provides the concrete worksheet, original pins and first nine-record assay case.
+Both saved readers and original dossier support after fixture reacquisition pass
+again; 34 selected journey tests pass with current editable providers. This is
+review preparation, with actual reviewer decisions still pending. Its
+[receipt](scientific_review_preparation_20261020.json) is a new bounded local run;
+it does not replace the historical source or consumer receipts.
+
+The [saved clinical/reference journey](clinical_reference_journey.md) separately
+integrates one explicitly cited study and three article metadata queries. Exact
+source/clinical pins, reference gaps and original credit survive inert reading and
+reacquisition; 234 selected technical cases pass. This closes that bounded example
+integration, not complete clinical coverage or human scientific usefulness.
+
 The [public scientific dossier](scientific_dossier.md) implements the bounded
 structure/assay/located-mention review through existing APIs. It preserves exact
 support and original credit through independent reading and reacquisition.

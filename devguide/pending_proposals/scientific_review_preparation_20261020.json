@@ -1,0 +1,549 @@
+{
+  "format": "sabueso.scientific_review_preparation@1",
+  "date": "2026-10-20",
+  "preparation": {
+    "preparer": "Codex",
+    "kind": "agent",
+    "scientist_review": "pending",
+    "scientific_admission": "none",
+    "owning_issue": "uibcdf/sabueso#132",
+    "related_issues": [
+      "uibcdf/sabueso#92",
+      "uibcdf/sabueso#108",
+      "uibcdf/sabueso#112"
+    ]
+  },
+  "producer_source": "391ba08fb8b3dacfbc85743505536397e2da9a11",
+  "qualification_scope": "Bounded existing-example execution and review preparation from frozen public inputs. No new online SDK qualification, full suite, exact-candidate CI, installed artifact, source-text curation or human acceptance.",
+  "environment": {
+    "python": "3.14.7",
+    "executable": "/home/diego/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+    "verification_cwd": "/tmp",
+    "providers": {
+      "sabueso": {
+        "version": "0.14.0+51.g391ba08",
+        "import_path": "/home/diego/repos@uibcdf/sabueso/sabueso/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/sabueso",
+        "editable": true
+      },
+      "ackredit": {
+        "version": "0.12.0+11.g74f865d",
+        "import_path": "/home/diego/repos@uibcdf/ackredit/ackredit/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/ackredit",
+        "editable": true
+      },
+      "argdigest": {
+        "version": "0.16.0+1.g6dabaf7",
+        "import_path": "/home/diego/repos@uibcdf/argdigest/argdigest/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/argdigest",
+        "editable": true
+      },
+      "depdigest": {
+        "version": "0.15.1+3.ga27172b",
+        "import_path": "/home/diego/repos@uibcdf/depdigest/depdigest/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/depdigest",
+        "editable": true
+      },
+      "smonitor": {
+        "version": "0.21.0+1.gd6b2394",
+        "import_path": "/home/diego/repos@uibcdf/smonitor/smonitor/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/smonitor",
+        "editable": true
+      },
+      "pyunitwizard": {
+        "version": "0.28.1+15.g6c62ca6",
+        "import_path": "/home/diego/repos@uibcdf/pyunitwizard/pyunitwizard/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/pyunitwizard",
+        "editable": true
+      },
+      "pytest-receptor": {
+        "version": "1.2.1+22.g00a31c4",
+        "import_path": "/home/diego/repos@uibcdf/pytest-receptor/pytest_receptor/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/pytest-receptor",
+        "editable": true
+      }
+    },
+    "diagnostic_note": "Outside-checkout imports completed with exit 0 and three stderr messages: Failed to create stream fd: Operation not permitted. The receipt does not claim warning-free environment initialization."
+  },
+  "selected_input_sha256": {
+    "examples/user_journeys/scientific_dossier.py": "f2b6a810779ebecdd08f7febf2fa3de1f36b0a95f630b60dcfa73a266b50f348",
+    "examples/user_journeys/literature_source_review.py": "bcf23193d6b83094070f51388e91a35c06b9fcc962afc6b1509641a25290cf7b",
+    "temp_data/chembl/CHEMBL5834.json": "b49d0d0100df8883db2d583b2e34ee6345e8187106dfb3577641ac383b247a26",
+    "temp_data/chembl/CHEMBL4880.json": "85331b06a6d5f01abdcdea6c14903536b95ff79056404dd30e7a4a65f02bf5da"
+  },
+  "input_hash_scope": "The selected fixture hashes bind the first assay case; example hashes bind the executable journeys. Existing public fixture delivery policy remains authoritative for all other inputs.",
+  "execution_root": "/tmp/sabueso-review-20261020-b51lwg9d",
+  "retention": "Temporary generated bundles stay outside the repository. Hashes identify this execution; regeneration changes execution identities. Keep the complete bundle and knowledge.db for an independent saved reader.",
+  "artifact_hashes": {
+    "dossier": {
+      "later.dossier.json": {
+        "sha256": "6333751afcbf8ea15ece499f5f9f1e892120505fb7537c660d7840b7063c2ed6",
+        "bytes": 752031
+      },
+      "later.dossier.md": {
+        "sha256": "1d0732c9e07b69ada5de1acfe976fd11fa3f4b2890f0cb43200a49ce4e93655c",
+        "bytes": 85258
+      },
+      "later.manifest.json": {
+        "sha256": "190f7daeaab751d25cf1f722bc7665ff71afeaa33a293be0c4e8939493975b7e",
+        "bytes": 824
+      },
+      "later.reader.json": {
+        "sha256": "afc7ea7c4a43dff9d1e8c90e78c28a23fa4832cddefafdc15a58a40459de2cbf",
+        "bytes": 794220
+      },
+      "later.references.bib": {
+        "sha256": "55fa7b50eddc4584c778a738b7b72970d34b5e8dc70f6c18c5bcdbe7eed9f783",
+        "bytes": 27673
+      },
+      "later.references.csl.json": {
+        "sha256": "46b63e743d24c0c0022cdf125f7a00cb9f9f899c1ebf6d3dd160c5e09a9de270",
+        "bytes": 32180
+      },
+      "later.runtime.json": {
+        "sha256": "7a47ea02f28933a07056ccfdf1934496dc49dbb99566552f4a091aa717315c1a",
+        "bytes": 1730289
+      },
+      "original.dossier.json": {
+        "sha256": "76c846fba24c83c6a54f429a4dc21b46cd05c9a688718143b76f9c5d85abe577",
+        "bytes": 752040
+      },
+      "original.dossier.md": {
+        "sha256": "5a7947d66a29c21c6e352692a52fd09db7441682e7764b1e24ccd936d7a12acf",
+        "bytes": 85258
+      },
+      "original.manifest.json": {
+        "sha256": "2389a61a717d52f2255c220b39a5bd26b8aaa3567c268b1c5bb4acd26244f3f5",
+        "bytes": 738
+      },
+      "original.reader.json": {
+        "sha256": "bc5e777887ab51a6c3ab22b2199baad92b1686883b224afd20eac8045a4d55c4",
+        "bytes": 794229
+      },
+      "original.references.bib": {
+        "sha256": "55fa7b50eddc4584c778a738b7b72970d34b5e8dc70f6c18c5bcdbe7eed9f783",
+        "bytes": 27673
+      },
+      "original.references.csl.json": {
+        "sha256": "46b63e743d24c0c0022cdf125f7a00cb9f9f899c1ebf6d3dd160c5e09a9de270",
+        "bytes": 32180
+      },
+      "original.runtime.json": {
+        "sha256": "83d7119417272a7dc44e958e6e23f1a1862d75c991767069d6da74a82a188338",
+        "bytes": 1731948
+      }
+    },
+    "located": {
+      "manifest.json": {
+        "sha256": "2e01ff6a5e1f87a5802ff8da9575be522b1e245082c9606d15d3dbf1c57d09a1",
+        "bytes": 649
+      },
+      "original.references.bib": {
+        "sha256": "b41a61d89d971cbc8dc4594d04a174b69636249f1d87f9846f524e1560844820",
+        "bytes": 2406
+      },
+      "original.references.csl.json": {
+        "sha256": "76bcdbb2cff993e78e21bb773b250a85e84541ceee422e784fb2431c2a2681a2",
+        "bytes": 4434
+      },
+      "proposals.json": {
+        "sha256": "fb88437192049277758cf5f215e1c39cbc731495d152026fe6b9f45711a91c10",
+        "bytes": 2332
+      },
+      "report.json": {
+        "sha256": "0936de4e46059c06bb876036833a415f25057f6f3abed5222b97463c4ccfdddb",
+        "bytes": 105918
+      },
+      "review.md": {
+        "sha256": "1d06e56b9abc8a836252c1d5647075571cdd5a817136c152f68823a54ddb3228",
+        "bytes": 885
+      },
+      "runtime.json": {
+        "sha256": "31f2a282e22f5dbe8f34fdf585f052dfb837bc3d31be9e5fc625619241ee0a67",
+        "bytes": 130383
+      },
+      "source.xml": {
+        "sha256": "eff2c488e4b17ded8e30530b98ff949fdada1294329c957d26e6ab71945abfef",
+        "bytes": 78100
+      }
+    }
+  },
+  "database_hash_scope": "Mutable knowledge.db files are excluded from this file manifest. Original/later card pins and the SDK readers qualify their retained support.",
+  "original_scope": {
+    "subject": {
+      "card_ref": "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b",
+      "structure_status_counts": {
+        "insufficient_information": 3,
+        "meets_recorded_criteria": 2,
+        "does_not_meet_recorded_criteria": 2
+      },
+      "assay_status_counts": {
+        "meets_recorded_criteria": 20,
+        "does_not_meet_recorded_criteria": 22
+      }
+    },
+    "comparator": {
+      "card_ref": "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677",
+      "structure_status_counts": {
+        "meets_recorded_criteria": 1,
+        "does_not_meet_recorded_criteria": 7,
+        "insufficient_information": 21
+      },
+      "assay_status_counts": {
+        "does_not_meet_recorded_criteria": 34,
+        "meets_recorded_criteria": 14
+      }
+    }
+  },
+  "later_card_refs": {
+    "subject": "sabueso:protein:uniprot:P52270@sha256:106cd048a4eafa3770f3f4143aeff4ba2857ea15afbabe61e73f381bcdbb5e87",
+    "comparator": "sabueso:protein:uniprot:P60174@sha256:b908de5f782f0bd2b54cd83b7db15b21be8a3d47fb490d58815c549227740b67"
+  },
+  "located_review": {
+    "format": "sabueso.located_source_review_example@2",
+    "review": {
+      "preparer": "Codex",
+      "kind": "agent",
+      "scientist_review": "pending",
+      "status": "draft_only"
+    },
+    "cards": {
+      "baseline": "sabueso:protein:uniprot:P60174@sha256:64264ad3cdc4cc441511d1710180def5c22d121c61b8d258f32cf651db4e466e"
+    },
+    "native_xml_sha256": "eff2c488e4b17ded8e30530b98ff949fdada1294329c957d26e6ab71945abfef",
+    "drafts": [
+      {
+        "topic": "structure",
+        "about": [
+          "pdb:2JK2"
+        ],
+        "locator": "PMC12400196:sec2.4/p[1]"
+      },
+      {
+        "topic": "other",
+        "about": [
+          "uniprot:P60174"
+        ],
+        "locator": "PMC12400196:fig4/caption"
+      }
+    ]
+  },
+  "first_primary_case": {
+    "document": "CHEMBL1156043",
+    "pubmed": "19733070",
+    "doi": "10.1016/j.bmcl.2009.08.055",
+    "selection_basis": "All nine native records across three assays and both proteins are in the capped dossier. This is a bounded review scope, not protocol equivalence or compound priority.",
+    "method_status": "Authorized primary body not obtained; protocol and comparability not accepted.",
+    "records": [
+      {
+        "role": "subject",
+        "activity_id": 3011871,
+        "assay": "CHEMBL1049665",
+        "molecule_ref": "chembl:CHEMBL567076",
+        "relationship_ref": "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#REL_7de940aa86de6cd1",
+        "source_assertion_refs": [
+          "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#SA_ChEMBL_CHEMBL5834_99bbb3ec6d70e66a",
+          "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#SA_ChEMBL_CHEMBL1049665_6514c45321c54af2"
+        ],
+        "support_basis": "relationship_not_individual_qualifier_lineage",
+        "measurement_type": "IC50",
+        "relation": "=",
+        "original_quantity": {
+          "value": 6500.0,
+          "unit": "nM"
+        },
+        "normalized_quantity": {
+          "value": 6500.0,
+          "unit": "nanomolar"
+        },
+        "status": "meets_recorded_criteria"
+      },
+      {
+        "role": "subject",
+        "activity_id": 3011872,
+        "assay": "CHEMBL1049665",
+        "molecule_ref": "chembl:CHEMBL567077",
+        "relationship_ref": "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#REL_f47efbf4c2e93eb2",
+        "source_assertion_refs": [
+          "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#SA_ChEMBL_CHEMBL5834_be4bf3c34e315402",
+          "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#SA_ChEMBL_CHEMBL1049665_6514c45321c54af2"
+        ],
+        "support_basis": "relationship_not_individual_qualifier_lineage",
+        "measurement_type": "IC50",
+        "relation": "=",
+        "original_quantity": {
+          "value": 8000.0,
+          "unit": "nM"
+        },
+        "normalized_quantity": {
+          "value": 8000.0,
+          "unit": "nanomolar"
+        },
+        "status": "meets_recorded_criteria"
+      },
+      {
+        "role": "subject",
+        "activity_id": 3011873,
+        "assay": "CHEMBL1049665",
+        "molecule_ref": "chembl:CHEMBL568338",
+        "relationship_ref": "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#REL_22ebb924754de7ad",
+        "source_assertion_refs": [
+          "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#SA_ChEMBL_CHEMBL5834_cde581810ff1af46",
+          "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#SA_ChEMBL_CHEMBL1049665_6514c45321c54af2"
+        ],
+        "support_basis": "relationship_not_individual_qualifier_lineage",
+        "measurement_type": "IC50",
+        "relation": "=",
+        "original_quantity": {
+          "value": 14000.0,
+          "unit": "nM"
+        },
+        "normalized_quantity": {
+          "value": 14000.0,
+          "unit": "nanomolar"
+        },
+        "status": "meets_recorded_criteria"
+      },
+      {
+        "role": "subject",
+        "activity_id": 3011874,
+        "assay": "CHEMBL1049665",
+        "molecule_ref": "chembl:CHEMBL567497",
+        "relationship_ref": "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#REL_a58eb1dcbe46f25c",
+        "source_assertion_refs": [
+          "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#SA_ChEMBL_CHEMBL5834_b683c172f10cda77",
+          "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#SA_ChEMBL_CHEMBL1049665_6514c45321c54af2"
+        ],
+        "support_basis": "relationship_not_individual_qualifier_lineage",
+        "measurement_type": "IC50",
+        "relation": ">",
+        "original_quantity": {
+          "value": 1000000.0,
+          "unit": "nM"
+        },
+        "normalized_quantity": {
+          "value": 1000000.0,
+          "unit": "nanomolar"
+        },
+        "status": "does_not_meet_recorded_criteria"
+      },
+      {
+        "role": "subject",
+        "activity_id": 3011879,
+        "assay": "CHEMBL1049667",
+        "molecule_ref": "chembl:CHEMBL567076",
+        "relationship_ref": "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#REL_08f1f81d2a4b3f05",
+        "source_assertion_refs": [
+          "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#SA_ChEMBL_CHEMBL5834_90594149e8486f1b",
+          "sabueso:protein:uniprot:P52270@sha256:bf528e61e315816c773ff18602b9b87c54e062d50e1dbf8c039732aac95ab77b#SA_ChEMBL_CHEMBL1049667_6773f6ece1019eca"
+        ],
+        "support_basis": "relationship_not_individual_qualifier_lineage",
+        "measurement_type": "Kd",
+        "relation": "=",
+        "original_quantity": {
+          "value": 10400.0,
+          "unit": "nM"
+        },
+        "normalized_quantity": {
+          "value": 10400.0,
+          "unit": "nanomolar"
+        },
+        "status": "does_not_meet_recorded_criteria"
+      },
+      {
+        "role": "comparator",
+        "activity_id": 3011875,
+        "assay": "CHEMBL1049666",
+        "molecule_ref": "chembl:CHEMBL567076",
+        "relationship_ref": "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677#REL_ee18475487efb9dc",
+        "source_assertion_refs": [
+          "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677#SA_ChEMBL_CHEMBL4880_0ebfcfc4ef753d0e",
+          "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677#SA_ChEMBL_CHEMBL1049666_96cb0237caabbb8e"
+        ],
+        "support_basis": "relationship_not_individual_qualifier_lineage",
+        "measurement_type": "IC50",
+        "relation": ">",
+        "original_quantity": {
+          "value": 1000000.0,
+          "unit": "nM"
+        },
+        "normalized_quantity": {
+          "value": 1000000.0,
+          "unit": "nanomolar"
+        },
+        "status": "does_not_meet_recorded_criteria"
+      },
+      {
+        "role": "comparator",
+        "activity_id": 3011876,
+        "assay": "CHEMBL1049666",
+        "molecule_ref": "chembl:CHEMBL567077",
+        "relationship_ref": "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677#REL_9651a012a246b971",
+        "source_assertion_refs": [
+          "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677#SA_ChEMBL_CHEMBL4880_b8e1e8f3cd266590",
+          "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677#SA_ChEMBL_CHEMBL1049666_96cb0237caabbb8e"
+        ],
+        "support_basis": "relationship_not_individual_qualifier_lineage",
+        "measurement_type": "IC50",
+        "relation": ">",
+        "original_quantity": {
+          "value": 1000000.0,
+          "unit": "nM"
+        },
+        "normalized_quantity": {
+          "value": 1000000.0,
+          "unit": "nanomolar"
+        },
+        "status": "does_not_meet_recorded_criteria"
+      },
+      {
+        "role": "comparator",
+        "activity_id": 3011877,
+        "assay": "CHEMBL1049666",
+        "molecule_ref": "chembl:CHEMBL568338",
+        "relationship_ref": "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677#REL_032075c7af2f30f3",
+        "source_assertion_refs": [
+          "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677#SA_ChEMBL_CHEMBL4880_b2e5abe10b754d2f",
+          "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677#SA_ChEMBL_CHEMBL1049666_96cb0237caabbb8e"
+        ],
+        "support_basis": "relationship_not_individual_qualifier_lineage",
+        "measurement_type": "IC50",
+        "relation": ">",
+        "original_quantity": {
+          "value": 1000000.0,
+          "unit": "nM"
+        },
+        "normalized_quantity": {
+          "value": 1000000.0,
+          "unit": "nanomolar"
+        },
+        "status": "does_not_meet_recorded_criteria"
+      },
+      {
+        "role": "comparator",
+        "activity_id": 3011878,
+        "assay": "CHEMBL1049666",
+        "molecule_ref": "chembl:CHEMBL567497",
+        "relationship_ref": "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677#REL_bb9b169dad5e24ee",
+        "source_assertion_refs": [
+          "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677#SA_ChEMBL_CHEMBL4880_3133d650cccfd051",
+          "sabueso:protein:uniprot:P60174@sha256:20292b614cac0a09aa14ffa633686b96e05f8b55dd873dd46f1a1e1488485677#SA_ChEMBL_CHEMBL1049666_96cb0237caabbb8e"
+        ],
+        "support_basis": "relationship_not_individual_qualifier_lineage",
+        "measurement_type": "IC50",
+        "relation": ">",
+        "original_quantity": {
+          "value": 1000000.0,
+          "unit": "nM"
+        },
+        "normalized_quantity": {
+          "value": 1000000.0,
+          "unit": "nanomolar"
+        },
+        "status": "does_not_meet_recorded_criteria"
+      }
+    ]
+  },
+  "browser_access_review": {
+    "date": "2026-10-20",
+    "sdk_observed": false,
+    "new_primary_text_admitted": false,
+    "observations": [
+      {
+        "url": "https://www.uaeh.edu.mx/investigacion/productos/5359/",
+        "outcome": "Browser cache-miss failure; no delivered primary body verified."
+      },
+      {
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S0960894X09011913",
+        "outcome": "HTTP 403; no delivered primary body verified."
+      },
+      {
+        "url": "https://riquim.fq.edu.uy/items/show/2008",
+        "outcome": "Metadata and file link accessible. Earlier library-notice PDF result retained from 2026-10-14; PDF not downloaded or requalified in this run."
+      }
+    ],
+    "remaining": "Authorized local original or institutional route requested from maintainer; indexed third-party text is not admitted as the original."
+  },
+  "execution_checks": {
+    "recording_basis": "Agent-observed command exits and summaries; this receipt is not a receptor raw-capture archive.",
+    "results": [
+      {
+        "command": "python /home/diego/repos@uibcdf/sabueso/examples/user_journeys/scientific_dossier.py produce --output /tmp/sabueso-review-20261020-b51lwg9d/dossier --fixtures /home/diego/repos@uibcdf/sabueso/temp_data",
+        "cwd": "/tmp",
+        "exit_code": 0,
+        "expected_warning_scope": "ChEMBL fixture rows capped at 25 of 493 and 25 of 36"
+      },
+      {
+        "command": "python /home/diego/repos@uibcdf/sabueso/examples/user_journeys/literature_source_review.py produce --output /tmp/sabueso-review-20261020-b51lwg9d/located --fixtures /home/diego/repos@uibcdf/sabueso/temp_data",
+        "cwd": "/tmp",
+        "exit_code": 0,
+        "expected_warning_scope": null
+      },
+      {
+        "command": "python /home/diego/repos@uibcdf/sabueso/examples/user_journeys/scientific_dossier.py read --output /tmp/sabueso-review-20261020-b51lwg9d/dossier --fixtures /tmp/sabueso-review-20261020-b51lwg9d/absent-fixtures",
+        "cwd": "/tmp",
+        "exit_code": 0,
+        "expected_warning_scope": null
+      },
+      {
+        "command": "python /home/diego/repos@uibcdf/sabueso/examples/user_journeys/literature_source_review.py read --output /tmp/sabueso-review-20261020-b51lwg9d/located --fixtures /tmp/sabueso-review-20261020-b51lwg9d/absent-fixtures",
+        "cwd": "/tmp",
+        "exit_code": 0,
+        "expected_warning_scope": null
+      },
+      {
+        "command": "python /home/diego/repos@uibcdf/sabueso/examples/user_journeys/scientific_dossier.py reacquire --output /tmp/sabueso-review-20261020-b51lwg9d/dossier --fixtures /home/diego/repos@uibcdf/sabueso/temp_data",
+        "cwd": "/tmp",
+        "exit_code": 0,
+        "expected_warning_scope": "ChEMBL fixture rows capped at 25 of 493 and 25 of 36"
+      },
+      {
+        "command": "python /home/diego/repos@uibcdf/sabueso/examples/user_journeys/scientific_dossier.py read --output /tmp/sabueso-review-20261020-b51lwg9d/dossier --fixtures /tmp/sabueso-review-20261020-b51lwg9d/absent-fixtures",
+        "cwd": "/tmp",
+        "exit_code": 0,
+        "expected_warning_scope": null
+      },
+      {
+        "command": "python -m pytest -n 12 tests/core/test_scientific_dossier_journey_offline.py tests/core/test_literature_source_review_journey_offline.py -m \"not online\" --receptor=llm -W \"error:unclosed database:ResourceWarning\" -W error::pytest.PytestUnraisableExceptionWarning",
+        "cwd": "/home/diego/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "passed": 34,
+        "seconds": 20.2
+      },
+      {
+        "command": "python devtools/dependency_preflight.py --release",
+        "cwd": "/home/diego/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "scope": "Static declared release/dependency route consistency, not installed public closure."
+      },
+      {
+        "command": "python tools/fixture_delivery.py --check",
+        "cwd": "/home/diego/repos@uibcdf/sabueso",
+        "exit_code": 0,
+        "reviewed_repository_inputs": 51,
+        "protected_local_originals": 37
+      },
+      {
+        "command": "python devtools/moli_governance.py",
+        "exit_code": 0,
+        "result": "Local MOLI governance surface is valid."
+      },
+      {
+        "command": "git diff --check",
+        "exit_code": 0
+      },
+      {
+        "command": "python /tmp/sabueso_validate_preparation_20261020.py",
+        "exit_code": 0,
+        "scope": "214 local Markdown links/anchors, 22 generated artifact hashes, selected source hashes, all nine complete native activity records and saved relationship/assertion/quantity bindings; pending scientist status retained.",
+        "retention": "One-off local validation helper, not a maintained SDK gate."
+      }
+    ]
+  },
+  "pending": [
+    "Human usefulness and located-statement review",
+    "Authorized primary assay methods and supplements",
+    "Protocol-specific extraction and reviewed source binding",
+    "Final release candidate/version acceptance and all installed/publication gates"
+  ]
+}

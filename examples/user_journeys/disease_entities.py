@@ -9,11 +9,16 @@ from molecule_target import check_explanation_support
 from protein_comparison import digest, offline, read_json, require, write_json
 
 import sabueso
-from sabueso.core.errors import SabuesoError
+from sabueso.core.errors import ConnectorError, RecordNotFoundError, SabuesoError
 from sabueso.resolver import EntityResolver, FixtureUniProtClient
 from sabueso.tools.db.chembl import FixtureChEMBLClient
+from sabueso.tools.db.clinicaltrials import (
+    FixtureClinicalTrialsClient,
+    get_study_references,
+)
 from sabueso.tools.db.clinvar import FixtureClinVarClient
 from sabueso.tools.db.diseases import FixtureDISEASESClient
+from sabueso.tools.db.europepmc import FixtureEuropePMCClient, get_article
 from sabueso.tools.db.medgen import FixtureMedGenClient
 from sabueso.tools.db.mondo import FixtureMONDOClient
 from sabueso.tools.db.open_targets import FixtureOpenTargetsClient
@@ -21,7 +26,8 @@ from sabueso.tools.db.orphadata import FixtureOrphadataClient
 from sabueso.tools.db.pdb_ccd import FixtureCCDClient
 from sabueso.tools.db.unichem import FixtureUniChemClient
 
-FORMAT = "sabueso.disease_entities_example@5"
+FORMAT = "sabueso.disease_entities_example@6"
+CONTEXT_FORMAT = "sabueso.disease_entities_example@5"
 ASSOCIATION_FORMAT = "sabueso.disease_entities_example@4"
 MONDO_FORMAT = "sabueso.disease_entities_example@3"
 SUPPORT_FORMAT = "sabueso.disease_entities_example@2"
@@ -43,6 +49,24 @@ ANCHORS = {
     "target": "sabueso:protein:uniprot:P60174",
     "target_context": "sabueso:protein:uniprot:P60174",
     "drug": "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N",
+}
+CLINICAL_SCOPE = {
+    **SCOPE,
+    "trials": {
+        "molecule": "chembl:CHEMBL110",
+        "limit": 1,
+        "registry_references": ["NCT00123916"],
+        "article_metadata": ["pubmed:18585495", "pubmed:26323937", "pubmed:19753491"],
+    },
+}
+CLINICAL_ANCHORS = {**ANCHORS, "clinical_drug": ANCHORS["drug"]}
+CLINICAL_LIMITS = {
+    "rule": "clinical_registry_review@1",
+    "link_basis": "chembl_drug_indication; intervention_names_not_matched",
+    "article_text": "not_queried",
+    "linked_websites": "not_queried",
+    "participant_data": "not_queried",
+    "efficacy": "not_assessed",
 }
 LEGACY_GAPS = {
     "observation": [
@@ -79,10 +103,65 @@ ASSOCIATION_GAPS = {
     ],
     "deck_operations": "observed_disease_builders; custom_source_clients_remain_unobserved",
 }
-GAPS = {**ASSOCIATION_GAPS, "observation": []}
+CONTEXT_GAPS = {**ASSOCIATION_GAPS, "observation": []}
+GAPS = {
+    **CONTEXT_GAPS,
+    "indication_references": "explicit_registry_and_article_metadata; linked_websites_not_queried",
+}
+
+
+def source_result(function, *args, **kwargs):
+    """Retain source failures as failures, separately from complete empty answers."""
+    try:
+        return {"status": "returned", "envelope": function(*args, **kwargs)}
+    except (ConnectorError, RecordNotFoundError) as error:
+        trace = error.acquisition_trace
+        return {
+            "status": trace["records"][-1]["outcome"],
+            "error": str(error),
+            "acquisition_trace": trace,
+        }
+
+
+def collect_clinical(fixtures, stamp):
+    """Use explicit existing APIs; bibliography never becomes an efficacy finding."""
+    scope = CLINICAL_SCOPE["trials"]
+    card, _ = sabueso.resolve(
+        scope["molecule"],
+        trials={"limit": scope["limit"]},
+        chembl_client=FixtureChEMBLClient(fixtures, retrieved_at=stamp),
+        ccd_client=FixtureCCDClient(fixtures, retrieved_at=stamp),
+        unichem_client=FixtureUniChemClient(fixtures, retrieved_at=stamp),
+        clinicaltrials_client=FixtureClinicalTrialsClient(fixtures, retrieved_at=stamp),
+    )
+    require(card is not None and card.id == ANCHORS["drug"], "Wrong clinical molecule")
+    view = card.clinical()
+    cited = {nct for indication in view["indications"] for nct in indication["trials"]}
+    require(set(scope["registry_references"]) <= cited, "Study not cited by ChEMBL")
+    registry = source_result(
+        get_study_references,
+        scope["registry_references"],
+        client=FixtureClinicalTrialsClient(fixtures, retrieved_at=stamp),
+    )
+    articles = {
+        identifier: source_result(
+            get_article,
+            identifier,
+            client=FixtureEuropePMCClient(fixtures, retrieved_at=stamp),
+        )
+        for identifier in scope["article_metadata"]
+    }
+    return card, {
+        **CLINICAL_LIMITS,
+        "card_ref": card.pinned_ref(),
+        "view": view,
+        "registry_references": registry,
+        "article_metadata": articles,
+    }
 
 
 def produce(output, fixtures, stage):
+    current = True
     if stage == "original":
         require(
             not output.exists() or not any(output.iterdir()), "Output must be empty"
@@ -90,9 +169,16 @@ def produce(output, fixtures, stage):
         output.mkdir(parents=True, exist_ok=True)
     else:
         require(not (output / "later.manifest.json").exists(), "Later stage exists")
-        read_stage(output, "original")
+        original_manifest, _, _ = read_stage(output, "original")
+        current = original_manifest["format"] == FORMAT
     store = sabueso.KnowledgeStore(output / "knowledge.db")
-    manifest = {"format": FORMAT, "stage": stage, "scope": SCOPE, "cards": {}}
+    scope = CLINICAL_SCOPE if current else SCOPE
+    manifest = {
+        "format": FORMAT if current else CONTEXT_FORMAT,
+        "stage": stage,
+        "scope": scope,
+        "cards": {},
+    }
     with offline(), ackredit.session("public disease related entities"):
         with sabueso.attribution() as observed, ackredit.capture(stage) as workflow:
             stamp = f"{stage} fixture read"
@@ -164,6 +250,8 @@ def produce(output, fixtures, stage):
             )
             cards["target_context"] = context
             resolutions["target_context"] = resolution.to_dict()
+            if current:
+                cards["clinical_drug"], clinical = collect_clinical(fixtures, stamp)
             manifest["cards"] = {role: store.save(card) for role, card in cards.items()}
             decks = {"targets": target_deck, "drugs": drug_deck}
             manifest["decks"] = {
@@ -185,10 +273,10 @@ def produce(output, fixtures, stage):
                 for role, card in cards.items()
             }
             report = {
-                "scope": SCOPE,
+                "scope": scope,
                 "cards": manifest["cards"],
                 "decks": manifest["decks"],
-                "gaps": GAPS,
+                "gaps": GAPS if current else CONTEXT_GAPS,
                 "resolutions": resolutions,
                 "support": {
                     role: {
@@ -241,6 +329,14 @@ def produce(output, fixtures, stage):
                     "Runtime source credit is partial (#108); unobserved sources are not credited by this example.",
                 ],
             }
+            if current:
+                report["clinical"] = clinical
+                report["limits"].extend(
+                    [
+                        "Only one ChEMBL-cited registry study and three explicitly named article metadata records are requested.",
+                        "Registry references, article metadata and clinical card statements have distinct original support; article text and linked websites are not queried.",
+                    ]
+                )
             write_json(output / f"{stage}.report.json", report)
         write_json(
             output / f"{stage}.traces.json",
@@ -323,16 +419,176 @@ def check_membership_support(explanation, deck, store, disease_ref):
                 )
 
 
+def check_source_result(result, source, operation, query, operations):
+    """Bind the original envelope or failure to its own recorded source operation."""
+    returned = result["status"] == "returned"
+    trace = (
+        result["envelope"]["acquisition_trace"]
+        if returned
+        else result["acquisition_trace"]
+    )
+    require(len(trace["records"]) == 1, "Expected one explicit source operation")
+    record = trace["records"][0]
+    require(
+        operations.get(record["id"]) == record
+        and record["source"] == source
+        and record["operation"] == operation
+        and record["query"] == query,
+        "Misbound clinical reference operation",
+    )
+    if not returned:
+        require(
+            result["status"] in {"failed", "unavailable", "partial"}
+            and result["status"] == record["outcome"]
+            and "envelope" not in result
+            and isinstance(result["error"], str),
+            "Source failure presented as a returned answer",
+        )
+        return None
+    envelope = result["envelope"]
+    require(
+        envelope["source"] == source
+        and envelope["kind"] == operation
+        and envelope["query"] == query
+        and envelope["retrieved_at"] == record["retrieved_at"]
+        and envelope["version"] == record["source_version"]["value"],
+        "Original clinical envelope differs from its operation",
+    )
+    entries = [entry for entry in record["entries"] if entry["outcome"] == "received"]
+    native = envelope["record"]
+    if source == "ClinicalTrials.gov":
+        require(
+            record["outcome"] in {"received", "empty"}
+            and native
+            == {
+                "studies": {entry["nct_id"]: entry["study"] for entry in entries},
+                "missing": record["missing"],
+            },
+            "Original registry reference body differs",
+        )
+    else:
+        require(
+            record["outcome"] in {"received", "empty", "partial"}
+            and native["requested_identifier"] == query["identifier"]
+            and native["articles"] == [entry["article"] for entry in entries]
+            and native["total_count"] == record["total_count"]
+            and native["truncated"] == record["truncated"],
+            "Original article metadata differs",
+        )
+    return native
+
+
+def check_clinical(clinical, card, operations):
+    """Inspect original native bindings without rerunning Card.clinical or queries."""
+    require(
+        {key: clinical[key] for key in CLINICAL_LIMITS} == CLINICAL_LIMITS
+        and clinical["card_ref"] == card.pinned_ref(),
+        "Clinical scope or historical card differs",
+    )
+    view = clinical["view"]
+    phase = card.get("clinical.max_phase")
+    require(view["max_phase"] == phase["value"], "Original clinical phase differs")
+    indications = card.relationships(predicate="investigated_for")
+    require(
+        len(view["indications"]) == len(indications)
+        and {row["disease"] for row in view["indications"]}
+        == {rel["object_ref"] for rel in indications},
+        "Missing clinical indication",
+    )
+    for row in view["indications"]:
+        matches = [rel for rel in indications if rel["object_ref"] == row["disease"]]
+        require(len(matches) == 1, "Ambiguous original indication")
+        rel = matches[0]
+        q = rel["qualifiers"]
+        require(
+            row
+            == {
+                "molecule": rel["subject_ref"],
+                "disease": rel["object_ref"],
+                "disease_term": q.get("disease_term"),
+                "mesh_heading": q.get("mesh_heading"),
+                "max_phase": q.get("max_phase"),
+                "trials": q.get("trials") or [],
+                "reference_types": sorted(
+                    {r["type"] for r in q.get("references") or [] if r.get("type")}
+                ),
+            },
+            "Clinical indication differs from its source-supported relationship",
+        )
+    trials = card.relationships(predicate="tested_in")
+    require(
+        len(view["trials"]) == len(trials)
+        and {row["trial"] for row in view["trials"]}
+        == {rel["object_ref"] for rel in trials},
+        "Missing original trial",
+    )
+    for row in view["trials"]:
+        matches = [rel for rel in trials if rel["object_ref"] == row["trial"]]
+        require(len(matches) == 1, "Ambiguous original trial")
+        rel = matches[0]
+        require(
+            rel["qualifiers"]["basis"] == "chembl_drug_indication"
+            and row
+            == {
+                "molecule": rel["subject_ref"],
+                "trial": rel["object_ref"],
+                **{k: v for k, v in rel["qualifiers"].items() if k != "basis"},
+            },
+            "Clinical trial differs from its source-supported relationship",
+        )
+    cited = {nct for row in view["indications"] for nct in row["trials"]}
+    fetched = {row["trial"].split(":", 1)[1] for row in view["trials"]}
+    require(
+        view["not_fetched"] == sorted(cited - fetched)
+        and fetched <= set(sorted(cited)[: CLINICAL_SCOPE["trials"]["limit"]]),
+        "Clinical cut or not-fetched scope differs",
+    )
+    scope = CLINICAL_SCOPE["trials"]
+    require(
+        set(scope["registry_references"]) <= cited,
+        "Registry study lacks ChEMBL citation",
+    )
+    check_source_result(
+        clinical["registry_references"],
+        "ClinicalTrials.gov",
+        "study_references",
+        {"nct_ids": scope["registry_references"]},
+        operations,
+    )
+    require(
+        set(clinical["article_metadata"]) == set(scope["article_metadata"]),
+        "Article query scope differs",
+    )
+    for identifier, result in clinical["article_metadata"].items():
+        check_source_result(
+            result,
+            "Europe PMC",
+            "article",
+            {"identifier": identifier},
+            operations,
+        )
+
+
 def read_stage(output, stage):
     manifest = read_json(output / f"{stage}.manifest.json")
+    current = manifest["format"] == FORMAT
+    scope = CLINICAL_SCOPE if current else SCOPE
+    anchors = CLINICAL_ANCHORS if current else ANCHORS
     require(
         manifest["format"]
-        in (FORMAT, ASSOCIATION_FORMAT, MONDO_FORMAT, SUPPORT_FORMAT, LEGACY_FORMAT)
+        in (
+            FORMAT,
+            CONTEXT_FORMAT,
+            ASSOCIATION_FORMAT,
+            MONDO_FORMAT,
+            SUPPORT_FORMAT,
+            LEGACY_FORMAT,
+        )
         and manifest["stage"] == stage
-        and manifest["scope"] == SCOPE,
+        and manifest["scope"] == scope,
         "Wrong manifest or scope",
     )
-    require(set(manifest["cards"]) == set(ANCHORS), "Incomplete scientific roles")
+    require(set(manifest["cards"]) == set(anchors), "Incomplete scientific roles")
     require(set(manifest["decks"]) == {"targets", "drugs"}, "Missing disease deck")
     require(
         set(manifest["files"]) == {f"{stage}.{suffix}.json" for suffix in SUFFIXES},
@@ -355,10 +611,11 @@ def read_stage(output, stage):
     require(
         report["cards"] == manifest["cards"]
         and report["decks"] == manifest["decks"]
-        and report["scope"] == SCOPE
+        and report["scope"] == scope
         and report["gaps"]
         == {
             FORMAT: GAPS,
+            CONTEXT_FORMAT: CONTEXT_GAPS,
             ASSOCIATION_FORMAT: ASSOCIATION_GAPS,
             MONDO_FORMAT: MONDO_GAPS,
             SUPPORT_FORMAT: SUPPORT_GAPS,
@@ -378,7 +635,7 @@ def read_stage(output, stage):
     for role, card in cards.items():
         ref = manifest["cards"][role]
         require(
-            card.id == ANCHORS[role] and card.pinned_ref() == ref,
+            card.id == anchors[role] and card.pinned_ref() == ref,
             "Wrong card role or pin",
         )
         trace = traces["cards"][role]
@@ -456,6 +713,7 @@ def read_stage(output, stage):
             )
             if manifest["format"] in (
                 FORMAT,
+                CONTEXT_FORMAT,
                 ASSOCIATION_FORMAT,
                 MONDO_FORMAT,
                 SUPPORT_FORMAT,
@@ -478,6 +736,7 @@ def read_stage(output, stage):
             )
             if manifest["format"] in (
                 FORMAT,
+                CONTEXT_FORMAT,
                 ASSOCIATION_FORMAT,
                 MONDO_FORMAT,
                 SUPPORT_FORMAT,
@@ -487,7 +746,7 @@ def read_stage(output, stage):
                 )
         require(deck.acquisition_trace is None, "Reader created a deck trace")
         trace = traces["decks"][role]
-        if manifest["format"] in (FORMAT, ASSOCIATION_FORMAT):
+        if manifest["format"] in (FORMAT, CONTEXT_FORMAT, ASSOCIATION_FORMAT):
             require(
                 trace["deck_snapshot_id"] == deck.snapshot_id()
                 and trace["card_refs"] == original["members"]
@@ -518,6 +777,12 @@ def read_stage(output, stage):
         explanation["group"] in report["groups"]["diseases"], "Group report differs"
     )
     check_explanation_support(explanation, {c.pinned_ref(): c for c in cards.values()})
+    if current:
+        check_clinical(report["clinical"], cards["clinical_drug"], operations)
+    else:
+        require(
+            "clinical" not in report, "Historical scope contains a clinical extension"
+        )
     workflow = ackredit.Attribution.from_dict(
         read_json(output / f"{stage}.workflow.json")
     )
@@ -558,6 +823,14 @@ def read(output):
                 print(
                     f"{stage}: disease target/drug metadata retained; support and observation gaps explicit"
                 )
+                if "clinical" in report:
+                    clinical = report["clinical"]
+                    print(
+                        f"{stage}: {len(clinical['view']['trials'])} saved trial(s), "
+                        f"{len(clinical['view']['not_fetched'])} not fetched; "
+                        f"registry references {clinical['registry_references']['status']}; "
+                        "article text unqueried; efficacy not assessed"
+                    )
         require(
             not observed.acquisitions
             and not observed.records

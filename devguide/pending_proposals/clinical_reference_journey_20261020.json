@@ -1,0 +1,472 @@
+{
+  "format": "sabueso.clinical_reference_journey_checkpoint@1",
+  "date": "2026-10-20",
+  "owner_issue": "uibcdf/sabueso#108",
+  "related_issues": [
+    "uibcdf/sabueso#112",
+    "uibcdf/sabueso#132"
+  ],
+  "source": {
+    "base_commit": "391ba08fb8b3dacfbc85743505536397e2da9a11",
+    "state": "uncommitted example/test implementation; no new hosted SHA qualification",
+    "changed_code_sha256": {
+      "examples/user_journeys/disease_entities.py": "10918db75e7ca039eaa108f7a3986497cfa3312805be93a3c5a264240155efae",
+      "tests/core/test_disease_entities_journey_offline.py": "b3d05adf02e9694decc53be1a33922f433c4eaa043a6a4a2d8a372b21865ab71"
+    }
+  },
+  "environment": {
+    "python": "3.14.7",
+    "executable": "/home/diego/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+    "verification_cwd": "/tmp",
+    "providers": {
+      "sabueso": {
+        "version": "0.14.0+51.g391ba08",
+        "import_path": "/home/diego/repos@uibcdf/sabueso/sabueso/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/sabueso",
+        "editable": true
+      },
+      "ackredit": {
+        "version": "0.12.0+11.g74f865d",
+        "import_path": "/home/diego/repos@uibcdf/ackredit/ackredit/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/ackredit",
+        "editable": true
+      },
+      "argdigest": {
+        "version": "0.16.0+1.g6dabaf7",
+        "import_path": "/home/diego/repos@uibcdf/argdigest/argdigest/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/argdigest",
+        "editable": true
+      },
+      "depdigest": {
+        "version": "0.15.1+3.ga27172b",
+        "import_path": "/home/diego/repos@uibcdf/depdigest/depdigest/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/depdigest",
+        "editable": true
+      },
+      "smonitor": {
+        "version": "0.21.0+1.gd6b2394",
+        "import_path": "/home/diego/repos@uibcdf/smonitor/smonitor/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/smonitor",
+        "editable": true
+      },
+      "pyunitwizard": {
+        "version": "0.28.1+15.g6c62ca6",
+        "import_path": "/home/diego/repos@uibcdf/pyunitwizard/pyunitwizard/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/pyunitwizard",
+        "editable": true
+      },
+      "pytest-receptor": {
+        "version": "1.2.1+22.g00a31c4",
+        "import_path": "/home/diego/repos@uibcdf/pytest-receptor/pytest_receptor/__init__.py",
+        "editable_origin": "file:///home/diego/repos%40uibcdf/pytest-receptor",
+        "editable": true
+      }
+    },
+    "diagnostic_note": "Outside-checkout imports returned exit 0 with three stream-fd permission messages; initialization is not claimed warning-free."
+  },
+  "public_case": {
+    "example_format": "sabueso.disease_entities_example@6",
+    "rule": "clinical_registry_review@1",
+    "scope": {
+      "target_disease": "ORPHA:868",
+      "drug_disease": "mesh:D014355",
+      "target_limit": 3,
+      "drug_limit": 3,
+      "target_context": "P60174",
+      "unresolved_query": "efo:EFO:0001360",
+      "trials": {
+        "molecule": "chembl:CHEMBL110",
+        "limit": 1,
+        "registry_references": [
+          "NCT00123916"
+        ],
+        "article_metadata": [
+          "pubmed:18585495",
+          "pubmed:26323937",
+          "pubmed:19753491"
+        ]
+      },
+      "efficacy": "not_assessed",
+      "packet": "not_supported_for_diseases"
+    },
+    "original_cards": {
+      "target_disease": "sabueso:disease:mondo:MONDO:0014221@sha256:e9be2f4da582a7394f957264e12c7f58c1bb42f0162b5c95cf896301f38bf3ea",
+      "drug_disease": "sabueso:disease:mondo:MONDO:0001444@sha256:b9f6516a7f41aa9000baa1f960cf10dd205f3c0923db1e908d5a8f176e216340",
+      "target": "sabueso:protein:uniprot:P60174@sha256:ca2e5ea7e2a67f38da4ee2cc69c718de339d945e2dced59ca10e0683716ccb8d",
+      "drug": "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:96164253c76f65868f9da5616f73b8419d2ad867144a216aad9a204450c2f02d",
+      "target_context": "sabueso:protein:uniprot:P60174@sha256:281bc60fadebde7b10ba134a69598d2411c019b54f3d31cbbeb5cc90aeb9a75b",
+      "clinical_drug": "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:ae7b0cc9057761f80834d268fab96b9759699cd3fe15407133d34174018b2d17"
+    },
+    "later_cards": {
+      "target_disease": "sabueso:disease:mondo:MONDO:0014221@sha256:afaf25df65b4a6fec02a5ea716675298153d410b912c734fd3f416487cb16e3d",
+      "drug_disease": "sabueso:disease:mondo:MONDO:0001444@sha256:eff5bb4650367a8ba716f0e23723e61ab98400bd9be3091c511dffa4ee136dac",
+      "target": "sabueso:protein:uniprot:P60174@sha256:049c296b0ded4e4fa3287fcfb9c4831aae6fdd443b4a3cb311fe03925be943ad",
+      "drug": "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:dbaff292e2df299d946417e02401357c845cac1e45096e57da39e95145b7f3e9",
+      "target_context": "sabueso:protein:uniprot:P60174@sha256:a8468861ca5025eaa3f1a95c1b229c43d06d2c1f09e47ebc9fc5dda013f64aaa",
+      "clinical_drug": "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:23e050d331d065181efef7e936c6daf334611d589a20e856235aca015cd6de8a"
+    },
+    "indication_count": 4,
+    "study_count": 1,
+    "unfetched_count": 15,
+    "trial_support": [
+      {
+        "relationship_ref": "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:ae7b0cc9057761f80834d268fab96b9759699cd3fe15407133d34174018b2d17#REL_43c58f1e5b810ca5",
+        "source_assertion_refs": [
+          "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:ae7b0cc9057761f80834d268fab96b9759699cd3fe15407133d34174018b2d17#SA_ChEMBL_drug_indication:118508_f7ec86f1b702d047",
+          "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:ae7b0cc9057761f80834d268fab96b9759699cd3fe15407133d34174018b2d17#SA_ChEMBL_drug_indication:118510_9fa4a2949de0b363",
+          "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:ae7b0cc9057761f80834d268fab96b9759699cd3fe15407133d34174018b2d17#SA_ClinicalTrials.gov_NCT00123916_e87ee187ca6ee928"
+        ]
+      }
+    ],
+    "scientific_acceptance": "No efficacy interpretation, literature curation or Nextia Evidence."
+  },
+  "selected_public_input_sha256": {
+    "temp_data/clinicaltrials/studies.json": "b71401c584f9912639f5799d9c1c4049d1346e8fdab85e3fbd7d219f1afc3880",
+    "temp_data/clinicaltrials/references.json": "fce969fef19fae27da08b4d3800595026926c95c5630bc0e749911983033f081",
+    "temp_data/chembl/indications.json": "f9d4a1cdea454e302ea23bbd89c8df8e3f6e50365a0cb470cb301adbff81c97f",
+    "temp_data/chembl/molecules.json": "409fbf22b3a51747cce885dbeccba7bcea34e88e2de77a7f9015af8854f6ea5c",
+    "temp_data/europepmc/articles/pubmed__18585495.json": "d5fd7dd776a73a9a8e1d7fc9fe83df1be86aefc79a95f8db0713fa677bfa52a9",
+    "temp_data/europepmc/articles/pubmed__26323937.json": "6a94dc55cf11646b8d9ada04a13562cbc44ecfd683f5a4d259d8fe21ad127352",
+    "temp_data/europepmc/articles/pubmed__19753491.json": "6ca6ccba907113e8747d103c2d1ed51fb3bad11975773d7dd862462cf8ea72ce"
+  },
+  "input_hash_scope": "Selected new clinical/reference case inputs; existing fixture delivery policy governs other unchanged disease-journey inputs.",
+  "original_operations": [
+    {
+      "id": "sabueso:source-acquisition:1eaf529f-ec64-41cf-8e6b-3a05c47ca05b",
+      "source": "ClinicalTrials.gov",
+      "operation": "studies",
+      "query": {
+        "nct_ids": [
+          "NCT00123916"
+        ]
+      },
+      "outcome": "received",
+      "source_version": {
+        "value": "2026-09-25T09:00:04",
+        "basis": "fixture_declared_data_timestamp",
+        "origin": "fixture",
+        "scope": "client_reported_data_timestamp_not_verified_per_page"
+      },
+      "network_attempts": 0,
+      "bibliography_gaps": [
+        {
+          "citation_id": "sabueso:clinicaltrials-registry-record:sha256:5af4b40b5f8275f98d50d86ed1afe1ce24fdd92610f75a839df514ffca2e4be2",
+          "reason": "registry_citation_metadata_not_stated",
+          "fields": [
+            "authors",
+            "year"
+          ]
+        },
+        {
+          "page_index": 0,
+          "record_index": 0,
+          "nct_id": "NCT00123916",
+          "response_identity": {
+            "basis": "decoded_study_record",
+            "hash": "sha256:84d172356fbd478ee4e3008b6894bd8652d618c565ac3aee390596d80ccdba91"
+          },
+          "reason": "registry_references_not_requested"
+        }
+      ]
+    },
+    {
+      "id": "sabueso:source-acquisition:54a143cd-d89c-44a6-8843-4e37a17a3818",
+      "source": "ClinicalTrials.gov",
+      "operation": "study_references",
+      "query": {
+        "nct_ids": [
+          "NCT00123916"
+        ]
+      },
+      "outcome": "received",
+      "source_version": {
+        "value": "2026-10-05T09:00:05",
+        "basis": "fixture_declared_data_timestamp",
+        "origin": "fixture",
+        "scope": "client_reported_data_timestamp_not_verified_per_page"
+      },
+      "network_attempts": 0,
+      "bibliography_gaps": [
+        {
+          "citation_id": "sabueso:clinicaltrials-registry-record:sha256:57f4a7cc20436138126070f196e45764b2de4cb40ca512586543ee822e1af714",
+          "reason": "registry_citation_metadata_not_stated",
+          "fields": [
+            "authors",
+            "year"
+          ]
+        },
+        {
+          "citation_id": "sabueso:clinicaltrials-cited-reference:sha256:094bf6a44c2c57310939f401cb42cc1562fdd6998860f70d6adf39f704cb6a35",
+          "reason": "registry_reference_structured_metadata_not_projected",
+          "fields": [
+            "title",
+            "authors",
+            "year"
+          ]
+        },
+        {
+          "citation_id": "sabueso:clinicaltrials-cited-reference:sha256:77de811406b59332264c4340cf3dc2de9d94b3281742bef7c6ef347c650fb038",
+          "reason": "registry_reference_structured_metadata_not_projected",
+          "fields": [
+            "title",
+            "authors",
+            "year"
+          ]
+        },
+        {
+          "citation_id": "sabueso:clinicaltrials-cited-reference:sha256:7c113bd7568141039f06ee99a7ac1776f3c06c26cc1eb3dad7b0839f83bf7490",
+          "reason": "registry_reference_structured_metadata_not_projected",
+          "fields": [
+            "title",
+            "authors",
+            "year"
+          ]
+        },
+        {
+          "citation_id": "sabueso:clinicaltrials-cited-reference:sha256:895150a6c08363ae5edf541f5b08171173f2c4c4b7d3bd031d3dacd676a6c6ec",
+          "reason": "registry_reference_structured_metadata_not_projected",
+          "fields": [
+            "authors",
+            "year"
+          ]
+        },
+        {
+          "citation_id": "sabueso:clinicaltrials-cited-reference:sha256:f3ffb0e9f81e95f47a950d07bb03d0755676ce114b4b6a88a35314c1f6bdda6e",
+          "reason": "registry_reference_structured_metadata_not_projected",
+          "fields": [
+            "authors",
+            "year"
+          ]
+        },
+        "registry_reference_targets_not_queried"
+      ]
+    },
+    {
+      "id": "sabueso:source-acquisition:f1e2cea5-402a-445e-a039-14fc131b42d1",
+      "source": "Europe PMC",
+      "operation": "article",
+      "query": {
+        "identifier": "pubmed:18585495"
+      },
+      "outcome": "received",
+      "source_version": {
+        "value": "6.9",
+        "basis": "service_version"
+      },
+      "network_attempts": 0,
+      "bibliography_gaps": []
+    },
+    {
+      "id": "sabueso:source-acquisition:3b9cdbe5-5607-44bc-b569-68bc731c7129",
+      "source": "Europe PMC",
+      "operation": "article",
+      "query": {
+        "identifier": "pubmed:26323937"
+      },
+      "outcome": "received",
+      "source_version": {
+        "value": "6.9",
+        "basis": "service_version"
+      },
+      "network_attempts": 0,
+      "bibliography_gaps": []
+    },
+    {
+      "id": "sabueso:source-acquisition:5b1dcb10-a4f1-46aa-8f58-92f1ac4b5739",
+      "source": "Europe PMC",
+      "operation": "article",
+      "query": {
+        "identifier": "pubmed:19753491"
+      },
+      "outcome": "received",
+      "source_version": {
+        "value": "6.9",
+        "basis": "service_version"
+      },
+      "network_attempts": 0,
+      "bibliography_gaps": [
+        "article_number_not_stated"
+      ]
+    }
+  ],
+  "independent_execution": {
+    "root": "/tmp/sabueso-clinical-final-20261020-s98cz_gp",
+    "steps": [
+      {
+        "action": "produce",
+        "command": [
+          "/home/diego/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "/home/diego/repos@uibcdf/sabueso/examples/user_journeys/disease_entities.py",
+          "produce",
+          "--output",
+          "/tmp/sabueso-clinical-final-20261020-s98cz_gp/bundle",
+          "--fixtures",
+          "/home/diego/repos@uibcdf/sabueso/temp_data"
+        ],
+        "exit_code": 0
+      },
+      {
+        "action": "read",
+        "command": [
+          "/home/diego/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "/home/diego/repos@uibcdf/sabueso/examples/user_journeys/disease_entities.py",
+          "read",
+          "--output",
+          "/tmp/sabueso-clinical-final-20261020-s98cz_gp/bundle",
+          "--fixtures",
+          "/tmp/sabueso-clinical-final-20261020-s98cz_gp/absent-fixtures"
+        ],
+        "exit_code": 0
+      },
+      {
+        "action": "reacquire",
+        "command": [
+          "/home/diego/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "/home/diego/repos@uibcdf/sabueso/examples/user_journeys/disease_entities.py",
+          "reacquire",
+          "--output",
+          "/tmp/sabueso-clinical-final-20261020-s98cz_gp/bundle",
+          "--fixtures",
+          "/home/diego/repos@uibcdf/sabueso/temp_data"
+        ],
+        "exit_code": 0
+      },
+      {
+        "action": "read",
+        "command": [
+          "/home/diego/Myopt/miniconda3/envs/molsyssuite@uibcdf_3.14/bin/python",
+          "/home/diego/repos@uibcdf/sabueso/examples/user_journeys/disease_entities.py",
+          "read",
+          "--output",
+          "/tmp/sabueso-clinical-final-20261020-s98cz_gp/bundle",
+          "--fixtures",
+          "/tmp/sabueso-clinical-final-20261020-s98cz_gp/absent-fixtures"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "original_after_first_read_sha256": {
+      "original.reader.json": "a229e68f7494f4d0af70d60ff421d3327906e376e4a3c02bb24997444101249d",
+      "original.references.bib": "8e1ebeef325365abd38f8a317835c636b44e525e1a114230d3d3166a804dbf4d",
+      "original.references.csl.json": "7ea33e02622d138f405309bd1fe0c5b797b252269242b9f1b55037d2baf14e17",
+      "original.manifest.json": "48f90662879fcf235e85cc07e6921b72fd56154bbd35b56db1577698f739ef64",
+      "original.workflow.json": "778ebd9e2c55e52081be3a2e27d293ed12f0f7472388f6060dbcae9040de7d03",
+      "original.observations.json": "7098fce232f6450163ab4bba32d277c3a8b28ff5a425b469f997732c5fa91fa9",
+      "original.traces.json": "0dd79623e673f5ecd912e3681212593d47799007329d5ca13c5f9c4fa69da524",
+      "original.report.json": "fbdf4b478370860e1d7be1d870adb70eff2311dba5d721893a0b2725e1a0293d"
+    },
+    "original_bytes_unchanged_after_reacquisition": true,
+    "example_source_sha256": "10918db75e7ca039eaa108f7a3986497cfa3312805be93a3c5a264240155efae",
+    "generated_artifact_sha256": {
+      "later.manifest.json": "aa76bbf0042b017e243a73ec89b00c0fe6dc879892e3cc4c5d155575f688a304",
+      "later.observations.json": "d6e453f0325184beed1829c9b8bdb25918ec53c6999ba2a77f5ecb5a5cbdee8c",
+      "later.reader.json": "0d88d560d9c4fb43a4f3f875cbb313ce30c606d488c6d54233930f967dfe3da4",
+      "later.references.bib": "8e1ebeef325365abd38f8a317835c636b44e525e1a114230d3d3166a804dbf4d",
+      "later.references.csl.json": "7ea33e02622d138f405309bd1fe0c5b797b252269242b9f1b55037d2baf14e17",
+      "later.report.json": "906deb84b1694b27f05898e253e8399194749132a78e07002193eb09aed7f82e",
+      "later.traces.json": "038d39574f86f30d492c0fb910734b62725758ba6a25afad1acb11d929fa2e7d",
+      "later.workflow.json": "316a19c532420e1265b8063cde0caa1620bdfc634a303c2ca5b9e993e04992cf",
+      "original.manifest.json": "48f90662879fcf235e85cc07e6921b72fd56154bbd35b56db1577698f739ef64",
+      "original.observations.json": "7098fce232f6450163ab4bba32d277c3a8b28ff5a425b469f997732c5fa91fa9",
+      "original.reader.json": "a229e68f7494f4d0af70d60ff421d3327906e376e4a3c02bb24997444101249d",
+      "original.references.bib": "8e1ebeef325365abd38f8a317835c636b44e525e1a114230d3d3166a804dbf4d",
+      "original.references.csl.json": "7ea33e02622d138f405309bd1fe0c5b797b252269242b9f1b55037d2baf14e17",
+      "original.report.json": "fbdf4b478370860e1d7be1d870adb70eff2311dba5d721893a0b2725e1a0293d",
+      "original.traces.json": "0dd79623e673f5ecd912e3681212593d47799007329d5ca13c5f9c4fa69da524",
+      "original.workflow.json": "778ebd9e2c55e52081be3a2e27d293ed12f0f7472388f6060dbcae9040de7d03"
+    },
+    "retention": "Temporary generated bundle and logs stay outside the repository. Retain knowledge.db with the exact original sidecars; regenerated executions have new identities."
+  },
+  "genuine_historical_receiving": {
+    "root": "/tmp/sabueso-clinical-legacy-20261020-zo4wr0z4",
+    "receipt_sha256": "6ddf6503d3eb6ecba22a04d51bbba0dd9cc3e221ce6fcaaf2632efa3b3bd1c91",
+    "producer_source": "391ba08fb8b3dacfbc85743505536397e2da9a11",
+    "producer_script_sha256": "fe9ae536d5c05aedc06f326bdc7bb00699acca4cf62df1ba2c71a56494bd38da",
+    "original_sha256": {
+      "original.reader.json": "53923385851004f78c5626868a9524c4b471e3641f2de1e8a2284d31a37aab66",
+      "original.references.bib": "1b8151c08ddaf52d5b8174d43a60a08a17a2ff8c311f891ed9f629cd698dd868",
+      "original.references.csl.json": "bdd55ff856a96183ce4412b577333cf66798643f500210070cf973f52f72e14a",
+      "original.manifest.json": "29dba95a71fb4e46d0e8759be551a469212f78f8cb5dc82d1b00a4ef0bce35be",
+      "original.workflow.json": "4154067b82ebc5b307027440c59c0455cd003f0642304cb977f31d20a902ee46",
+      "original.observations.json": "932dc7960bf357b9b36841327309ceb48a89fcb6c8e3db04eea4fc2139f65afa",
+      "original.traces.json": "b7738e61298e293a6ae556050903083adf09d03d0cb7a8d4fc1f19bca148e5a3",
+      "original.report.json": "9030e38c6936bf458fefd198e585e8433e6b7b958f2a415c1f82c122333cf72c"
+    },
+    "result": "PASS",
+    "original_and_later_format": "sabueso.disease_entities_example@5",
+    "source_access_expansion": false
+  },
+  "checks": [
+    {
+      "command": "python -m pytest -n 12 tests/core/test_disease_entities_journey_offline.py tests/core/test_clinical_offline.py tests/core/test_clinicaltrials_acquisition_offline.py tests/core/test_article_metadata_offline.py tests/core/test_indication_bibliography_offline.py tests/core/test_source_access_offline.py -m \"not online\" --receptor=llm -W \"error:unclosed database:ResourceWarning\" -W error::pytest.PytestUnraisableExceptionWarning",
+      "exit_code": 0,
+      "passed": 234,
+      "seconds": 186.66
+    },
+    {
+      "command": "ruff format --check .",
+      "exit_code": 0,
+      "formatted_files": 1028
+    },
+    {
+      "command": "ruff check .",
+      "exit_code": 0
+    },
+    {
+      "command": "python tools/fixture_delivery.py --check",
+      "exit_code": 0,
+      "reviewed_repository_inputs": 51,
+      "protected_local_originals": 37
+    },
+    {
+      "command": "python devtools/dependency_preflight.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python devtools/moli_governance.py",
+      "exit_code": 0
+    },
+    {
+      "command": "sphinx-build -W --keep-going -b html docs /tmp/sabueso-clinical-docs-20261020",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m pytest -n 12 -m \"not online\" --receptor=llm --local-source-inputs -W \"error:unclosed database:ResourceWarning\" -W error::pytest.PytestUnraisableExceptionWarning",
+      "exit_code": 4,
+      "scope": "Stopped before collection: all 37 protected local originals are absent in this checkout. No local-original suite qualification is claimed."
+    },
+    {
+      "command": "python -m pytest -n 12 -m \"not online\" --receptor=llm -W \"error:unclosed database:ResourceWarning\" -W error::pytest.PytestUnraisableExceptionWarning",
+      "exit_code": 0,
+      "scope": "Complete repository-input offline suite",
+      "passed": 4768,
+      "skipped": 10,
+      "skip_basis": "Native original remains local-only; use --local-source-inputs.",
+      "warnings": 9,
+      "warning_basis": "Expected fixture failures/truncations in existing tests.",
+      "seconds": 289.92
+    },
+    {
+      "command": "python /tmp/sabueso_validate_preparation_20261020.py",
+      "exit_code": 0,
+      "local_links_and_anchors": 240,
+      "scope": "Changed/new local Markdown links and preserved earlier scientific-review source/artifact hashes; no scientific acceptance implied."
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    {
+      "scope": "Independent receipt integrity verification",
+      "exit_code": 0,
+      "checked": "Two current example/test hashes, seven new-case public inputs, sixteen generated artifacts, genuine historical receipt and SourceAssertion/relationship pins."
+    }
+  ],
+  "recording_basis": "Observed command exits and receptor summaries, plus independently recomputed input/artifact hashes; not a hosted receptor capture archive.",
+  "remaining_qualification": [
+    "All 37 protected originals required for local-original qualification",
+    "New hosted exact-SHA CI/governance",
+    "Installed public dependency-floor receiving and staged artifact qualification",
+    "Human scientific usefulness and authorized primary assay protocols"
+  ]
+}

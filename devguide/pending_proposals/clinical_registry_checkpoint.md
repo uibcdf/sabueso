@@ -20,6 +20,14 @@ inputs, separate source/workflow sidecars and inert saved reading. Its current
 qualification is recorded separately; the dated source-client receipts below
 retain their original scope.
 
+Earlier combined-example preparation, 2026-10-20: the
+[saved clinical/reference journey](clinical_reference_journey.md) implements the
+next bounded integration in example `@6`: explicit NCT/PMID scope, separate pinned
+clinical state, original sidecars and independent reading/reacquisition. Genuine
+preceding `@5` bundles retain their old query scope. This is local development
+qualification, separate from the public source-API delivery and historical
+receipts below; broader #108/#112 and human acceptance remain open.
+
 Current delivery update, 2026-10-09: the bounded fixes and tests in #122–#128
 are included in qualified public **0.14.0**, source/tag `78623d0`. Its twelve
 installed OS/Python lanes and clean public installation pass the receiving gate

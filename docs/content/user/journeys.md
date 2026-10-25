@@ -219,18 +219,33 @@ and ungrouped disease statements, exact card support and terms. In the fixture
 target query, 20 rows of a source-declared 252, three attempted candidates and one
 built card are different counts. Missing UniProt fixtures do not establish absence
 from UniProt. Drug indications and target associations do not establish clinical
-efficacy. Cited studies remain unqueried. See {doc}`disease_association`.
+efficacy. New format `@6` also saves a separate benznidazole card with one explicitly
+bounded clinical intake; the original drug-deck member stays pinned separately.
+It requests registry references for ChEMBL-cited NCT00123916 and metadata for
+PMID 18585495, 26323937 and 19753491 through explicit Europe PMC calls.
+See {doc}`clinical` and {doc}`disease_association`.
 
 Keep the complete output directory. The independent reader needs no fixtures,
 checks historical card items and original deck bases, and exports the original
 available bibliography without acquiring sources or deriving the report again.
 Reacquisition advances stored heads while the original references remain readable.
 
+Inspect `original.report.json` → `clinical` for the saved view, original registry
+envelope, explicitly requested article metadata and access outcomes. The public
+fixture scope receives one study and leaves fifteen cited trials unfetched. Study
+and reference fixtures have different data timestamps; service versions do not
+establish article revisions. Reference websites, article text and participant data
+remain unqueried. Missing fields and failed/unavailable access survive saving;
+complete empty answers stay distinct. Full returned author lists, including the
+BENEFIT Investigators collective name, survive original CSL-JSON/BibTeX export.
+
 Development disease rules `@2` now pin each membership's original native statements,
 MONDO input and member identity, including unbuilt/capped candidates. Saving a deck
 alone preserves those scientific snapshots; JSONL/SQLite exports carry them too.
-The example `@5` reader also accepts original `@1`, `@2`, `@3` and `@4` bundles with their
+The example `@6` reader also accepts original `@1`–`@5` bundles with their
 original support and observation gaps; it does not reconstruct missing work later.
+Reacquiring an original `@5` keeps its pre-clinical scope; the action does not
+silently add study or article queries to an old question.
 
 Development MONDO term/equivalence queries now retain original index/release
 observations and resource citations. Open Targets/Orphanet association queries and
@@ -243,7 +258,7 @@ not complete disease traceability or shared MOLI recording guarantees. The new
 deck terms report includes embedded support sources. Development `Deck.admissible`
 now supports conservative whole-context admission: shared unknown/restricted terms
 refuse the operation, and individual non-admissible members are excluded with their
-historical support references. This example still preserves its original `@5`
+historical support references. Historical bundles preserve their original
 reports; admission is covered separately by the SDK acceptance tests.
 
 ## Prepare located primary readings for review

@@ -3,11 +3,23 @@ summary: Admit source-bound canonical coordinates before ligand-site overlap.
 issue: uibcdf/sabueso#163
 status: open
 opened: 2026-10-24
-verification: in_progress
+verification: source_ci_verified
 area: [knowledge-integrity, scientific-views, packets]
 ---
 
 # Ligand overlap coordinate scope
+
+Qualification update, 2026-10-25: exact source
+`680c6a1840783d4556f3f0d24fa407001f5e262c` passes
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40149749936) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40149749833).
+Pause preparation independently verifies every full-capture member hash and
+thirteen test summaries: nine public lanes pass 5,626 cases each and four
+public-Ackredit lanes pass 1,431 each. See the
+[pause receipt](../evidence/pause_checkpoint_20261025.json). The failed/incomplete
+SDK97 results below are historical diagnostics. Current local originals are
+unavailable, so no new local-original count is claimed. Owner issue #163 retains
+closure; this source qualification does not complete broader #148 exploration.
 
 An explicitly synthetic native UniProt feature on an unidentified foreign molecule
 was compared with canonical PDBe-KB contact positions solely because their numbers
