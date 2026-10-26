@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-26**, economical ligand-site source membership following pause reconciliation
+Last updated: **2026-10-26**, original saved ligand-site comparisons following pause reconciliation
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.

@@ -43,3 +43,24 @@ unchanged public TcTIM input in `temp_data/NOTICE.md`; no private or pilot data.
 Compressed SHA-256: `9703027f0dbd1b097d89d2010908eda061a102e2797436d56e37dde6c758b381`.
 
 Uncompressed SHA-256: `4f88069416426c4b32cab97d8029dd061d167bac7769831da7aad0b4dd89a81d`.
+
+## Original ligand-site exploration
+
+`card_exploration_sites_v1.json.gz` contains the original format @3 exploration
+produced at `03da7c0fafd587d5d4e2cd890f163e1748107586`, editable SDK
+`0.14.0+104.g03da7c0`. It uses the explicitly synthetic protein/contact helper in
+`test_card_ligand_site_comparisons_offline.py`: artificial sequence and active-site
+annotation, a synthetic ATP contact and synthetic source declarations. Public
+identifier labels provide test context only; these assertions are not scientific
+claims about that protein. No source queries or private/pilot material are used.
+
+The capsule retains an original question/table, explanation, source-navigation
+trail and exact projected machine request. The independent-process test forbids
+current scientific readers, Card construction, live producer catalogs, fixture
+reads and sockets. Preserve these original bytes; never regenerate them to make
+a future reader pass. Gzip packages the fixture, not the public reader format.
+This exploration fixture does not freeze a Card schema version.
+
+Compressed SHA-256: `4acb555503c9f1d1e1b26635c11ead3a1423dc5f183cd720e343f96b748d2719`.
+
+Uncompressed SHA-256: `6fc3cfdef13b8bbd1fe1b53dc489dc3cd83fee96dc9bb6a471bc53f436f97c9e`.

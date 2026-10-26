@@ -1,5 +1,7 @@
 """Original comparison science and exact support survive independent saved reading."""
 
+import gzip
+import hashlib
 import importlib
 import json
 import socket
@@ -305,11 +307,31 @@ def test_empty_display_still_retains_original_explanation_for_an_underlying_item
     ]
 
 
+@pytest.mark.parametrize("origin", ["fresh", "original_producer"])
 def test_independent_original_reader_forbids_live_engines_sources_and_producer_catalog(
-    synthetic_bundle, tmp_path
+    origin, request, tmp_path, monkeypatch
 ):
     path = tmp_path / "synthetic.json"
-    path.write_text(json.dumps(synthetic_bundle))
+    if origin == "original_producer":
+        # Historical replay must not even prepare an unused current-writer fixture.
+        monkeypatch.setattr(
+            importlib.import_module("sabueso.core.card_exploration_storage"),
+            "save_exploration",
+            forbidden,
+        )
+        compressed = (
+            Path(__file__).parent / "data/card_exploration_sites_v1.json.gz"
+        ).read_bytes()
+        assert hashlib.sha256(compressed).hexdigest() == (
+            "4acb555503c9f1d1e1b26635c11ead3a1423dc5f183cd720e343f96b748d2719"
+        )
+        original = gzip.decompress(compressed)
+        assert hashlib.sha256(original).hexdigest() == (
+            "6fc3cfdef13b8bbd1fe1b53dc489dc3cd83fee96dc9bb6a471bc53f436f97c9e"
+        )
+        path.write_bytes(original)
+    else:
+        path.write_text(json.dumps(request.getfixturevalue("synthetic_bundle")))
     script = r"""
 import importlib, socket, sys
 import sabueso

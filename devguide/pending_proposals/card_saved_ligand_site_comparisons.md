@@ -3,7 +3,7 @@ summary: Original ligand-site comparisons, support, agent requests and navigatio
 issue: uibcdf/sabueso#148
 status: open
 opened: 2026-10-26
-verification: implementation_pending_qualification
+verification: selected_qualified_full_and_remote_pending
 area: [human-exploration, agent-access, persistence, scientific-views]
 ---
 
@@ -74,6 +74,24 @@ foreign/empty/missing inputs, mixed adapters, exact machine requests, typed and
 rehashed tampering, independent reading with current producers/catalogs/sockets
 forbidden, source navigation and stable repeat saves. Keep genuine original @1/@2
 and a separate actual-producer @3 capsule; replay must not depend on the writer.
+
+The final selected gate passes **876 local-original cases**, using twelve receptor
+workers with fatal runtime/SQLite/unraisable guards. It includes the genuine
+synthetic @3 capsule from `03da7c0`, SDK `0.14.0+104.g03da7c0`; original compressed
+and uncompressed hashes are recorded in `tests/core/data/README.md`. The initial
+capsule construction omitted materializing its machine view; the replay test
+exposed that test-input error before the capsule was frozen. Its corrected
+producer artifact retains the exact machine request. This is not a reader
+relaxation or regeneration of an already committed historical fixture.
+
+During qualification, two earlier cancelled tool sessions were found to have
+left their actual pytest descendants running. Only those verified owned trees
+were terminated; unrelated processes were preserved. The maintainer's killed
+process and its peak memory cannot be identified retrospectively. The operator
+cleanup failure and disposition are recorded in
+[#112](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6429998826).
+Interrupted executions are diagnostic only. Finish verification with one active
+pytest tree and record the final source's full and remote receipts separately.
 
 The owning issues carry selected/full/exact-source remote receipts, each with its
 own source and environment. The local evidence owner is #148/#112, with review
