@@ -4282,3 +4282,21 @@ native science, scientific result/item identity, display policy nor saved @1/@2.
 Qualify both default and small-page journeys before freezing saved comparison
 reading. The observed byte improvement is scoped to public examples, not a token
 or whole-workflow performance guarantee. See the [delivery continuation](pending_proposals/card_ligand_site_agent_selection.md#measured-source-path-delivery-continuation).
+
+
+## 2026-10-26 — Preserve original comparison science through saved exploration @3 (#148)
+
+Add explicit `sabueso.card_exploration@3` with `site_exploration_binding@1`, retaining
+original @1/@2 dispatch and meanings. Freeze canonical admission, overlap @3,
+source support, explanation and contextual-navigation predicates over sealed
+captures; expected records verify original output and never replace it as new
+knowledge. Bind human display and exact `ligand_site_access_selection@1` requests,
+full original support and actual related-operation origins. Preserve missing,
+partial, foreign, empty and non-applicable states; opening never uses current
+science, clients, latest store pins or new credit. Consistency is not source truth.
+
+Saving prepares finite original support once. Generated automatic views must not
+become new implicit exploration on the next save; explicit subsequent exploration
+remains recorded. Keep internal comparison-construction views out of that trail.
+A missing comparison destination carries its actual link rule rather than a
+generic rule. See [original comparison reading](pending_proposals/card_saved_ligand_site_comparisons.md).

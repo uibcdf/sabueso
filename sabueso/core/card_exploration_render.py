@@ -368,11 +368,14 @@ def _parts(view):
             + "; source/request states remain distinct. Unknown counts are not zero; no global completeness score is inferred."
         )
     if view._record_panel == "ligand_site_comparisons":
-        from .card_ligand_site_exploration import SCOPE
+        if view._explorer.mode == "saved":
+            from .card_ligand_site_history_v1 import SCOPE
+        else:
+            from .card_ligand_site_exploration import SCOPE
 
         opening.append(SCOPE)
         opening.append(
-            "This comparison view cannot be saved yet. Original source records and complete values remain inspectable."
+            "Saving preserves the original comparison, sources and navigation for verified independent reading."
         )
         if view.presentation == "detail" and view._selected:
             native = view._selected[0].value["item"]
@@ -697,7 +700,10 @@ def _parts(view):
 
 def _headers(view):
     if view._record_panel == "ligand_site_comparisons":
-        from .card_ligand_site_exploration import HEADERS
+        if view._explorer.mode == "saved":
+            from .card_ligand_site_history_v1 import HEADERS
+        else:
+            from .card_ligand_site_exploration import HEADERS
 
         return list(HEADERS)
     if view._record_panel:

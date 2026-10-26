@@ -277,7 +277,13 @@ class CardAccess:
                 rebound = replace(selection, _access=other)
                 other._selections.setdefault(rebound.selection_ref, rebound)
                 if rebound._scientific is not None:
-                    for entry in rebound._entries:
+                    registry_entries = (
+                        rebound._scientific.entries
+                        if rebound._scientific.wire["context"]["adapter"]
+                        == "ligand_site_exploration@1"
+                        else rebound._entries
+                    )
+                    for entry in registry_entries:
                         ref = _handle(
                             "XI_",
                             {
@@ -591,9 +597,10 @@ class CardAccess:
                 }
             }
             if self.profile == "protein":
-                from .card_scientific_access import descriptor
+                if self.mode == "live":
+                    from .card_scientific_access import descriptor
 
-                data["structures"] = descriptor()
+                    data["structures"] = descriptor()
                 if self.mode == "saved":
                     from .card_exploration_adapter_v1 import _descriptor
 
@@ -602,6 +609,8 @@ class CardAccess:
                         "retained"
                         if any(
                             selection._scientific is not None
+                            and selection._scientific.wire["context"]["adapter"]
+                            == "structure_exploration@1"
                             for selection in self._selections.values()
                         )
                         else "not_saved"
@@ -624,12 +633,20 @@ class CardAccess:
                     descriptor as site_descriptor,
                 )
 
+                if self.mode == "saved":
+                    from .card_ligand_site_history_v1 import (
+                        descriptor as site_descriptor,
+                    )
                 data[TOPIC] = site_descriptor()
                 data[TOPIC]["selection_availability"] = (
                     "retained_requests_only" if self.mode == "saved" else "live"
                 )
                 if self.mode == "saved":
-                    data[TOPIC]["availability"] = "not_saved"
+                    data[TOPIC]["availability"] = (
+                        "retained"
+                        if TOPIC in self.capabilities["scientific_topics"]
+                        else "not_saved"
+                    )
         else:
             # Freeze before creating this catalog's own selection.
             data = {
@@ -694,6 +711,12 @@ class CardAccess:
                 "Scientific selection supports structures and ligand_site_comparisons."
             )
         if topic == "ligand_site_comparisons":
+            if self.mode == "saved":
+                from .card_exploration_sites import saved_selection
+
+                return saved_selection(
+                    self, fields, options, where, item_refs, order_by
+                )
             from .card_ligand_site_access import materialize, options_for_sites
             from .card_ligand_site_selection_v1 import (
                 active,
@@ -705,12 +728,6 @@ class CardAccess:
 
             options, fields = options_for_sites(options), projection(fields)
             query = normalize(where, item_refs, order_by)
-            if self.mode == "saved":
-                from .card_exploration_storage import missing_selection
-
-                return missing_selection(
-                    self, topic, options, fields, query if active(query) else None
-                )
             result = materialize(self)
         else:
             result = None
@@ -847,7 +864,10 @@ class CardAccess:
     def _entry_frame(self, selection, index):
         entry = selection._entries[index]
         if selection._scientific is not None:
-            if selection._operation == "select:ligand_site_comparisons":
+            if (
+                selection._scientific.wire["context"]["adapter"]
+                == "ligand_site_exploration@1"
+            ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
 
@@ -892,8 +912,10 @@ class CardAccess:
 
     def _defer(self, item):
         if item.get("kind") == "ligand_contact_comparison":
-            from .card_ligand_site_access import defer_frame
-
+            if self.mode == "saved":
+                from .card_ligand_site_history_v1 import defer_frame
+            else:
+                from .card_ligand_site_access import defer_frame
             return defer_frame(item)
         if item.get("kind") == "structure":
             from .card_structure_page import defer_frame

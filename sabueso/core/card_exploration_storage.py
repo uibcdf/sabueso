@@ -51,19 +51,19 @@ def operation_key(item):
 
 def admitted_selection(selection):
     if selection._scientific is not None:
-        return (
-            selection._scientific.wire.get("context", {}).get("adapter")
-            == "structure_exploration@1"
+        return selection._scientific.wire.get("context", {}).get("adapter") in (
+            "structure_exploration@1",
+            "ligand_site_exploration@1",
         )
     try:
         node, location = selection._access._resolve(selection._target["location"])
         if location["kind"] == "result":
             if location["result_ref"] not in selection._access._metadata_refs:
-                return (
-                    selection._access._objects[location["result_ref"]]
-                    .get("context", {})
-                    .get("adapter")
-                    == "structure_exploration@1"
+                return selection._access._objects[location["result_ref"]].get(
+                    "context", {}
+                ).get("adapter") in (
+                    "structure_exploration@1",
+                    "ligand_site_exploration@1",
                 )
             node = selection._access._objects[location["result_ref"]]
             if isinstance(node, dict):
@@ -332,7 +332,10 @@ def _objects_for(access, records):
                             or (
                                 isinstance(obj, dict)
                                 and obj.get("context", {}).get("adapter")
-                                == "structure_exploration@1"
+                                in (
+                                    "structure_exploration@1",
+                                    "ligand_site_exploration@1",
+                                )
                             ),
                             "This view needs a scientific result whose historical verifier is not yet supported.",
                         )
@@ -358,10 +361,16 @@ def _prepare(root):
         "Required saved explanation/link closure was not retained. Return to a retained view or explicitly start a new local exploration.",
     )
     session = root._explorer._session
-    primary = [view for view in list(session["views"].values()) if admitted_view(view)]
+    automatic = session.setdefault("automatic_support_views", set())
+    primary = [
+        view
+        for view in list(session["views"].values())
+        if admitted_view(view) and id(view) not in automatic
+    ]
     # Explicit saving prepares only support/navigation for already materialized
     # literal results. No unvisited scientific topic or recursive support tree runs.
     if root._explorer.mode == "live":
+        before_support = set(session["views"])
         seen = set()
         for view in primary:
             for entry in view._selection._entries:
@@ -374,6 +383,7 @@ def _prepare(root):
                     item.explain()
                 if key not in session["links"]:
                     item.related()
+        automatic.update(set(session["views"]) - before_support)
     eligible = [view for view in list(session["views"].values()) if admitted_view(view)]
     # Include every actual originating step, preserving different histories for
     # equal semantic view handles. Identity is never an integer display position.
@@ -456,6 +466,31 @@ def _prepare(root):
                     )
                     bundle["scientific_results"][ref] = {"focal": focal}
         bundle["capabilities"]["scientific_saved_adapters"] = list(ADAPTERS)
+        from .card_exploration_sites import ADAPTER
+        from .card_exploration_sites import ADAPTERS as SITE_ADAPTERS
+        from .card_exploration_sites import FORMAT as SITE_FORMAT
+        from .card_exploration_sites import VERIFIER as SITE_VERIFIER
+
+        sites = {
+            ref: obj
+            for ref, obj in objects.items()
+            if ref not in access._metadata_refs
+            and isinstance(obj, dict)
+            and obj.get("context", {}).get("adapter") == ADAPTER
+        }
+        if sites:
+            bundle["format"] = SITE_FORMAT
+            bundle["producer"]["verifier"] = SITE_VERIFIER
+            bundle["capabilities"]["scientific_saved_adapters"] = list(SITE_ADAPTERS)
+            for ref, obj in sites.items():
+                context = obj["context"]
+                focal = next(
+                    key
+                    for key, capture in access._captures.items()
+                    if capture.pin == context["card_ref"]
+                    and capture.snapshot == context["snapshot_id"]
+                )
+                bundle["scientific_results"][ref] = {"focal": focal}
     return bundle
 
 
@@ -513,7 +548,7 @@ def _unique(pairs):
 
 @arg_digest()
 def read_exploration(path, expected_digest=None, skip_digestion=False):
-    """Validate and reopen supported saved views without scientific computation."""
+    """Validate original saved views without rerunning current scientific readers."""
     if not isinstance(path, (str, os.PathLike)) or not str(path):
         raise ArgumentError("path requires a nonempty file path.")
     if expected_digest is not None and (
@@ -647,7 +682,13 @@ def _restore_checked(bundle, expected_digest):
     for access in accesses.values():
         access._metadata_refs -= set(scientific_results)
     if "scientific_results" in bundle:
-        _verify_objects(bundle, accesses)
+        from .card_exploration_sites import FORMAT as SITE_FORMAT
+        from .card_exploration_sites import verify_objects
+
+        if bundle["format"] == SITE_FORMAT:
+            verify_objects(bundle, accesses)
+        else:
+            _verify_objects(bundle, accesses)
 
     def node(key, visiting=None):
         if key in nodes:
@@ -766,6 +807,8 @@ def _restore_checked(bundle, expected_digest):
             _origin=origin,
             _native_override=None
             if scientific_ref is not None
+            and scientific_results[scientific_ref].wire["context"]["adapter"]
+            != "ligand_site_exploration@1"
             else _decode(
                 record["native_payload"], record.get("native_encoding", "json")
             ),
@@ -777,7 +820,13 @@ def _restore_checked(bundle, expected_digest):
         )
         _bind_coverage(view, record["native_payload"])
         if selection._scientific is not None:
-            for entry in selection._entries:
+            registry_entries = (
+                selection._scientific.entries
+                if selection._scientific.wire["context"]["adapter"]
+                == "ligand_site_exploration@1"
+                else selection._entries
+            )
+            for entry in registry_entries:
                 explorer.access._scientific_items[CardItem(view, entry).item_ref] = (
                     selection._scientific,
                     entry.key,
@@ -814,6 +863,16 @@ def _restore_checked(bundle, expected_digest):
         from .card_exploration_science import _verification_report
 
         session["validation"].update(_verification_report(bundle))
+    from .card_exploration_sites import FORMAT as SITE_FORMAT
+    from .card_exploration_sites import VERIFIER as SITE_VERIFIER
+
+    if bundle["format"] == SITE_FORMAT:
+        session["validation"].update(
+            verifier=SITE_VERIFIER,
+            scientific_classifications=session["validation"][
+                "scientific_classifications"
+            ],
+        )
     root = nodes[bundle["root_navigation_ref"]]
     _require(
         root.view_ref == bundle["root_view_ref"], "Saved root view binding differs."
@@ -829,7 +888,9 @@ def saved_item_operation(item, kind):
     return replace(
         view,
         _explorer=explorer,
-        _origin=item.open() if kind == "links" else item._view,
+        _origin=item.open()
+        if kind == "links" and item._view._record_panel != "ligand_site_comparisons"
+        else item._view,
         _display_request=None,
     )
 
@@ -850,6 +911,7 @@ def not_saved(explorer, reason, origin=None):
 
 
 def saved_topic(explorer, topic, origin, options):
+    from .card_exploration_sites import unrestricted
     from .card_structure_selection_v1 import original
 
     if not isinstance(topic, str) or (
@@ -884,12 +946,18 @@ def saved_topic(explorer, topic, origin, options):
             and (
                 view._field_panel == topic
                 or (
-                    topic in ("classification", "coverage")
+                    topic in ("classification", "coverage", "ligand_site_comparisons")
                     and view._record_panel == topic
+                    and (
+                        topic != "ligand_site_comparisons"
+                        or unrestricted(view._selection)
+                    )
                 )
                 or (
                     topic == "structures"
                     and original(view._selection)
+                    and view._selection._scientific.wire["context"]["adapter"]
+                    == "structure_exploration@1"
                     and view._selection._scientific.options == options
                     and view._focus is None
                 )
@@ -913,7 +981,10 @@ def saved_topic(explorer, topic, origin, options):
 def saved_answer(explorer, question, options, origin):
     if (
         not isinstance(question, str)
-        or question not in explorer._questions
+        or (
+            question != "ligand_site_comparisons"
+            and question not in explorer._questions
+        )
         or not isinstance(options, dict)
     ):
         raise ArgumentError("Use a registered question and an options mapping.")
@@ -940,15 +1011,26 @@ def saved_answer(explorer, question, options, origin):
             and view.request is not None
             and view.request["question"] == question
             and (
-                view._field_panel == explorer._questions[question]["topic"]
+                view._field_panel
+                == (
+                    question
+                    if question == "ligand_site_comparisons"
+                    else explorer._questions[question]["topic"]
+                )
                 or (
                     view._selection._scientific is not None
+                    and question != "ligand_site_comparisons"
                     and explorer._questions[question]["topic"] == "structures"
                     and view._focus is None
                 )
                 or (
-                    view._record_panel == "classification"
-                    and explorer._questions[question]["topic"] == "classification"
+                    view._record_panel in ("classification", "ligand_site_comparisons")
+                    and view._record_panel
+                    == (
+                        question
+                        if question == "ligand_site_comparisons"
+                        else explorer._questions[question]["topic"]
+                    )
                 )
                 or (
                     question == "region_coverage"
@@ -1008,12 +1090,22 @@ def save_selection(selection, path, overwrite):
     if session is None:
         session = {"views": {}, "explanations": {}, "links": {}}
     explorer = _explorer(selection._access, session)
+    from .card_exploration_sites import TOPIC, is_result
+
+    flags = {}
+    if is_result(selection._scientific):
+        flags = {
+            "_record_panel": TOPIC,
+            "_native_override": selection._scientific.wire["native_payload"],
+            "_context_override": selection._scientific.wire["context"],
+        }
     view = CardView(
         explorer,
         selection,
         selection._entries,
         "Saved machine selection",
         _machine_ref=selection.selection_ref,
+        **flags,
     )
     return save_exploration(view, path, overwrite=overwrite)
 

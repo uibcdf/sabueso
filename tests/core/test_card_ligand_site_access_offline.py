@@ -10,7 +10,7 @@ import pytest
 from test_card_ligand_site_comparisons_offline import TOPIC, forbidden, protein
 
 from sabueso.core.card import Card
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.snapshot import canonical_json
 
 
@@ -210,7 +210,7 @@ def test_large_atomic_comparison_is_deferred_without_changing_complete_native_sc
     assert full["items"][0]["interpretation"] == exact
 
 
-def test_catalog_is_lazy_and_unverified_new_science_still_cannot_save(
+def test_catalog_is_lazy_and_scientific_selection_uses_verified_saving(
     tmp_path, monkeypatch
 ):
     explorer = protein().explore()
@@ -228,10 +228,10 @@ def test_catalog_is_lazy_and_unverified_new_science_still_cannot_save(
         ]
         assert TOPIC in explorer.access.capabilities["scientific_topics"]
     selection = explorer.access.select(TOPIC)
-    assert not selection.capabilities["save"]
-    with pytest.raises(StorageError):
-        selection.save(tmp_path / "unsupported.json")
-    assert not (tmp_path / "unsupported.json").exists()
+    assert selection.capabilities["save"]
+    target = tmp_path / "supported-sites.json"
+    selection.save(target)
+    assert json.loads(target.read_text())["format"] == "sabueso.card_exploration@3"
     sources_path = tmp_path / "supported-sources.json"
     explorer.view("sources").save(sources_path)
     assert sources_path.is_file()

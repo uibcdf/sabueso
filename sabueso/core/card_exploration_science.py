@@ -36,6 +36,12 @@ def _scientific_metadata(value):
 
 
 def _encoding(view):
+    if (
+        view._selection._scientific is not None
+        and view._selection._scientific.wire["context"]["adapter"]
+        == "ligand_site_exploration@1"
+    ):
+        return "json"
     if view._selection._scientific is not None:
         return "structure_row" if view._focus is not None else "structure_inventory"
     if view._saved_state is not None:
@@ -94,6 +100,10 @@ def _decode(value, encoding):
 
 
 def _restore_result(ref, wire):
+    if wire.get("context", {}).get("adapter") == "ligand_site_exploration@1":
+        from .card_ligand_site_history_v1 import restore_result
+
+        return restore_result(ref, wire)
     from .card_exploration_adapter_v1 import _HistoricalResult
 
     native = _decode(wire["native_payload"], "structure_inventory")
@@ -477,9 +487,18 @@ def _verification_report(bundle):
 
     for ref in bundle["scientific_results"]:
         wire = bundle["objects"][ref]
-        for rule in wire["context"]["rules"]:
+        for rule in wire["context"].get("rules", []):
             declared(rule)
         declared(wire["coverage"].get("rule"))
+        if wire["context"].get("adapter") == "ligand_site_exploration@1":
+            declared(wire["native_payload"].get("classification"))
+            declared(wire["native_payload"].get("canonical_reference"))
+            for annotation in wire["native_payload"].get("annotated_sites", []):
+                if isinstance(annotation.get("source_support_rule"), str):
+                    rules.add(annotation["source_support_rule"])
+            for item in wire["native_payload"].get("items", []):
+                if isinstance(item.get("instance_rule"), str):
+                    rules.add(item["instance_rule"])
         for explanation in wire["explanations"].values():
             declared(explanation["rule"])
     for value in bundle["objects"].values():

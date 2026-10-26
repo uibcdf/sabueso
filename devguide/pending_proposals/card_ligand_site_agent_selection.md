@@ -139,3 +139,10 @@ selected results do not substitute for the accumulated source's full/remote
 checkpoint. Its owner remains #148/#112; evidence is retained at
 `recovered_work/site_delivery_148_20261026/`, reviewed at the next exploration
 checkpoint or release acceptance. No scientific queries or private pilot reads.
+
+
+**Saved-reading continuation, 2026-10-26:** the
+[original comparison reader](card_saved_ligand_site_comparisons.md) supersedes this
+initial delivery's unsavable limitation. It adds explicit @3 scientific/source/
+request/navigation verification and preserves @1/@2. Missing/unvisited requests
+remain `not_saved`; broader profile/workload/researcher acceptance stays open.

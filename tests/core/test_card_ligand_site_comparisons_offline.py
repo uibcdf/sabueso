@@ -11,7 +11,7 @@ import pytest
 import sabueso
 from sabueso.core.aggregator import build_card_from_mapping
 from sabueso.core.card import Card
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.snapshot import canonical_json
 from sabueso.mappings.pdbe_kb import map_ligand_sites
 from sabueso.mappings.uniprot import map_protein
@@ -263,28 +263,27 @@ def test_unknown_options_are_rejected_even_with_digestion_skipped(operation):
         )
 
 
-def test_new_science_and_its_origin_are_not_saved_as_unverified_literal_data(tmp_path):
+def test_science_and_its_origin_use_explicit_verified_scientific_format(tmp_path):
     explorer = protein().explore()
     view = explorer.view(TOPIC)
-    for candidate in [
-        view,
-        view.items()[0].open(),
-        view.items()[0].explain(),
-        view.items()[0].related(),
-    ]:
-        assert not candidate.capabilities["save"]
-        with pytest.raises(StorageError):
-            candidate.save(tmp_path / "not-created.json")
-        assert not (tmp_path / "not-created.json").exists()
-    assert not explorer.access.read(view.items()[0].payload_location).capabilities[
-        "save"
-    ]
-    source_view = explorer.view("sources")
-    receipt = source_view.save(tmp_path / "original-sources.json")
-    loaded = sabueso.read_exploration(
-        tmp_path / "original-sources.json", expected_digest=receipt["bundle_digest"]
-    )
-    assert loaded.explorer.view(TOPIC).outcome["status"] == "not_saved"
+    for index, candidate in enumerate(
+        [
+            view,
+            view.items()[0].open(),
+            view.items()[0].explain(),
+            view.items()[0].related(),
+        ]
+    ):
+        assert candidate.capabilities["save"]
+        path = tmp_path / f"comparison-{index}.json"
+        candidate.save(path)
+        assert json.loads(path.read_text())["format"] == "sabueso.card_exploration@3"
+        assert sabueso.read_exploration(path).native_payload == candidate.native_payload
+    assert explorer.access.read(view.items()[0].payload_location).capabilities["save"]
+    path = tmp_path / "original-sources.json"
+    receipt = explorer.view("sources").save(path)
+    loaded = sabueso.read_exploration(path, expected_digest=receipt["bundle_digest"])
+    assert loaded.explorer.view(TOPIC).native_payload == view.native_payload
     assert loaded.explorer.answer(TOPIC).outcome["status"] == "not_saved"
 
 

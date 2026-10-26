@@ -1,7 +1,7 @@
 """Readable source-bound ligand-site comparisons over one captured Card (#148).
 
-The existing native readers own all science. This presentation has no historical
-verifier yet; its result and originating navigation are explicitly unsavable.
+The existing native readers own all science. Original saved reading uses an
+explicit versioned verifier over the same captured inputs and source scope.
 """
 
 from copy import deepcopy
@@ -233,6 +233,7 @@ def view(explorer, origin):
         location, origin, title="Ligand contacts and annotated-site comparisons"
     )
     entries = scientific.entries
+    explorer._session["views"].pop(id(result), None)
     return replace(
         result,
         _selection=replace(
@@ -282,6 +283,7 @@ def explain(item):
         for statement in support(item)[0]["source_assertions"]
         if statement["state"] == "present"
     )
+    explorer._session["views"].pop(id(result), None)
     return replace(
         result,
         _selection=replace(result._selection, _entries=entries),

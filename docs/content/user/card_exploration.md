@@ -388,11 +388,32 @@ Check `value_included`/`inspection_required` before using deferred item values o
 support. A small byte budget may defer a larger atomic record; its complete
 support remains reachable through `support_location`.
 
-**Saving this comparison is still unsupported.** Its capabilities state that
-limit; original source/instance panes and historical saved readers retain their
-existing behavior. Saved sessions report this unretained selection as `not_saved`
-and do not execute current science. Historical comparison verification remains
-required before 0.15.0.
+These comparisons can be saved with their original science, source support and
+navigation. Reading uses the original versioned verification recipe; it does not
+recalculate with the current scientific readers or query sources.
+
+```python
+import sabueso
+
+comparison_receipt = site_comparisons.save("site-comparisons.exploration.json")
+original_comparisons = sabueso.read_exploration(
+    "site-comparisons.exploration.json",
+    expected_digest=comparison_receipt["bundle_digest"],
+)
+assert original_comparisons.native_payload == site_comparisons.native_payload
+```
+
+Machine selections use the same `save()` and reader. Only exact retained requests
+can be selected again; another projection or filter is `not_saved`. A restricted
+machine request is not substituted for an unrestricted human topic. A question
+that was not visited stays `not_saved`. Use `start_new()` for a new interpretation.
+Repeated saving without further exploration preserves the same live content;
+saving does not recursively explore the support it prepared previously.
+
+The comparison uses saved exploration format `@3`; genuine `@1`/`@2` readers and
+source/instance panes retain their original meanings. Integrity checks establish
+consistency with the captured inputs, not the authenticity or truth of a source.
+Broader assembly/region/model integration and researcher acceptance remain open.
 
 ## Inspect individual ligand instances
 
@@ -779,7 +800,7 @@ described above; broader topic selection/conformance remains pending. No unsuppo
 ## Save a supported exploration and reopen it
 
 Supported literal/field views, disease hierarchy, experimental structures,
-canonical-region answers, knowledge coverage and contextual navigation can be
+canonical-region answers, knowledge coverage, ligand-site comparisons and contextual navigation can be
 saved. Check `view.capabilities["save"]` for the particular result and retained
 support closure. Complete captured data remains readable through inspection.
 

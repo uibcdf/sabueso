@@ -178,8 +178,11 @@ refuses unsupported scientific persistence. The [compact agent selector](pending
 now shares that exact result and item identity, with mandatory scope/support and
 atomic bounded delivery. Its versioned source membership now shares one captured
 store path instead of repeating it per source, preserving all IDs/states and
-original locations with measured public-page savings. Saved comparison verification and broad human acceptance
-remain open before 0.15.0.
+original locations with measured public-page savings. The [original comparison reader](pending_proposals/card_saved_ligand_site_comparisons.md)
+now adds explicit format @3, frozen scientific/source/navigation checks and exact
+retained agent requests. Repeat saving prepares finite support without recursively
+expanding generated views. Broader integration and human acceptance remain open
+before 0.15.0.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

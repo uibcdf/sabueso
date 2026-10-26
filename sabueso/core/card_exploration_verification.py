@@ -25,10 +25,14 @@ def verify_bundle(bundle, expected_digest):
     from .card_exploration_science import ADAPTERS
     from .card_exploration_science import FORMAT as SCIENCE_FORMAT
     from .card_exploration_science import VERIFIER as SCIENCE_VERIFIER
+    from .card_exploration_sites import ADAPTERS as SITE_ADAPTERS
+    from .card_exploration_sites import FORMAT as SITE_FORMAT
+    from .card_exploration_sites import VERIFIER as SITE_VERIFIER
     from .card_exploration_storage import FORMAT, VERIFIER
 
     require(
-        isinstance(bundle, dict) and bundle.get("format") in (FORMAT, SCIENCE_FORMAT),
+        isinstance(bundle, dict)
+        and bundle.get("format") in (FORMAT, SCIENCE_FORMAT, SITE_FORMAT),
         "Unsupported exploration format.",
     )
     names = {
@@ -47,13 +51,14 @@ def verify_bundle(bundle, expected_digest):
         "digests",
         "bundle_digest",
     }
-    scientific = bundle["format"] == SCIENCE_FORMAT
+    sites = bundle["format"] == SITE_FORMAT
+    scientific = bundle["format"] in (SCIENCE_FORMAT, SITE_FORMAT)
     if scientific:
         names.add("scientific_results")
     require(set(bundle) == names, "Missing or unsupported required bundle member.")
     require(
         bundle["producer"]["verifier"]
-        == (SCIENCE_VERIFIER if scientific else VERIFIER),
+        == (SITE_VERIFIER if sites else SCIENCE_VERIFIER if scientific else VERIFIER),
         "The required historical verifier is unavailable.",
     )
     actual = digest(
@@ -73,12 +78,22 @@ def verify_bundle(bundle, expected_digest):
     }
     require(members == bundle["digests"], "Exploration member digest differs.")
     require(
-        bundle["capabilities"]["scientific_saved_adapters"] == list(ADAPTERS)
+        bundle["capabilities"]["scientific_saved_adapters"]
+        == list(SITE_ADAPTERS if sites else ADAPTERS)
         if scientific
         else not bundle["capabilities"]["scientific_saved_adapters"],
         "Unsupported saved scientific adapter.",
     )
     for key, value in bundle["objects"].items():
+        if (
+            isinstance(value, dict)
+            and "native_payload" in value
+            and value.get("context", {}).get("adapter") == "ligand_site_exploration@1"
+        ):
+            require(
+                sites and key in bundle["scientific_results"],
+                "A site result is missing its explicit historical manifest.",
+            )
         if scientific and key in bundle["scientific_results"]:
             continue
         require(
@@ -249,6 +264,10 @@ def _historical_resolution(access, target):
 
 
 def _verify_links(view):
+    if view.native_payload.get("rule") == "ligand_site_context_links@1":
+        from .card_exploration_sites import verify_links
+
+        return verify_links(view)
     payload, access = view.native_payload, view._explorer.access
     require(
         payload.get("rule")
@@ -269,6 +288,7 @@ def _verify_links(view):
                     "retained_context_links@1",
                     "retained_context_links@2",
                     "retained_context_links@3",
+                    "ligand_site_context_links@1",
                 ),
                 "Missing retained link-detail origin.",
             )
@@ -450,7 +470,10 @@ def _verify_links(view):
 
 def _verify_request(view, access):
     from .card_exploration_science import _encode, _encoding, _verify_selection
+    from .card_exploration_sites import is_explanation, verify_explanation
 
+    if is_explanation(view):
+        return verify_explanation(view)
     if view._selection._scientific is not None:
         return _verify_selection(view)
     native, full = access._resolve(view._selection._target["location"])
@@ -671,6 +694,7 @@ def _verify_request(view, access):
 
 def _verify_state(view, record, native, access):
     from .card_exploration import CardItem
+    from .card_exploration_sites import is_explanation
     from .card_exploration_storage import _cell_record
 
     state = record["state"]
@@ -837,6 +861,7 @@ def _verify_state(view, record, native, access):
                 and (
                     native.get("basis") == "stored_literal"
                     or structural_explanation(view) is not None
+                    or is_explanation(view)
                 )
                 and segments[0]["value"] == "source_assertion_store"
             )
@@ -1145,6 +1170,7 @@ def _verify_profile(view, native, access):
 
 def _verify_support(bundle, nodes):
     from .card_exploration import CardItem
+    from .card_exploration_history import _require_matches
     from .card_exploration_storage import operation_key, required_views
 
     root = nodes[bundle["root_navigation_ref"]]
@@ -1187,7 +1213,16 @@ def _verify_support(bundle, nodes):
                     "Original related links belong to a different originating item.",
                 )
             if operation == "explanations":
-                if source._view._selection._scientific is not None:
+                if source._view._record_panel == "ligand_site_comparisons":
+                    wire = source._view._explorer.access._objects[
+                        source._view.result_ref
+                    ]
+                    _require_matches(
+                        native,
+                        wire["explanations"][source._entry.key],
+                        "site explanation actual item origin",
+                    )
+                elif source._view._selection._scientific is not None:
                     from .card_exploration_science import _encode
 
                     require(
@@ -1258,6 +1293,22 @@ def verify_views(bundle, nodes):
 
     for key, view in nodes.items():
         record, access = bundle["views"][key], view._explorer.access
+        from .card_exploration_sites import FORMAT as SITE_FORMAT
+        from .card_exploration_sites import is_view, verify_view
+
+        if is_view(view):
+            require(
+                bundle["format"] == SITE_FORMAT,
+                "Site comparison requires its explicit saved format.",
+            )
+            require(
+                view.result_ref in bundle["scientific_results"]
+                and bundle["scientific_results"][view.result_ref]["focal"]
+                == record["focal"],
+                "Site view has no original scientific manifest or has a foreign focal capture.",
+            )
+            verify_view(view, record)
+            continue
         from .card_exploration_science import _encode, _encoding
 
         require(

@@ -248,6 +248,8 @@ def _link_view(
         )
         for i, link in enumerate(links)
     )
+    if rule == "ligand_site_context_links@1":
+        explorer._session["views"].pop(id(view), None)
     return replace(
         view,
         _selection=replace(view._selection, _entries=entries),
@@ -470,7 +472,7 @@ def follow(item):
             "subject_ref": link["target_ref"],
             "profile": None,
             "mode": "live",
-            "adapter": RULE,
+            "adapter": link["rule"],
             "contributing_captures": sorted(contributors),
             "captures": explorer.context["captures"],
         },

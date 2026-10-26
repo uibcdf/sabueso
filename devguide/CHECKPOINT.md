@@ -100,9 +100,9 @@ structure-local component context and assembly-context links. It reuses native
 science once per captured protein and keeps partial/uncomputed scope visible.
 The [compact agent continuation](pending_proposals/card_ligand_site_agent_selection.md)
 now shares its captured scientific result and original item IDs, with exact textual
-selection and mandatory scope/support. Historical saved comparison reading remains
-open; the pane, its machine selections and originating navigation explicitly
-refuse saving. No stored
+selection and mandatory scope/support. The [original comparison reader](pending_proposals/card_saved_ligand_site_comparisons.md)
+now admits the pane, machine selections and originating navigation under explicit
+format @3 with frozen verification; original @1/@2 readers remain unchanged. No stored
 schema or scientific rule changes. Selected qualification passes 732 integration cases, 208 presentation/quantity
 cases and 100 final scope/context cases with twelve receptor workers. Full final
 and remote qualification are recorded separately in the owning report and #148.
@@ -130,7 +130,8 @@ The same two public six-row pages shrink from 61,187/56,653 to 32,354/31,705 byt
 records. These are scoped byte observations, not general token/workload budgets.
 Its integration gate passes **835 cases /84.78s**, followed by **58 owning cases /
 4.39s** including a later focal-capture/revision isolation guard. Broader full and
-remote receipts remain separate; saved comparison verification stays next.
+remote receipts remain separate. The new original comparison reader has its own
+selected/full/remote qualification; these older counts do not qualify it.
 Native coordinate admission remains unchanged; broader completion and release remain paused.
 
 ## Open work and boundaries
@@ -171,3 +172,13 @@ GitHub run IDs and durable summaries remain available upstream. Disposable owned
 scratch is removed after its final check; caller/private outputs and other work
 are protected. No release, tag, schema freeze or new private/pilot data is created
 by this closeout.
+
+
+The preceding `a9b1e63` source is fully qualified: 7,258 local-original cases /
+926.36s, [CI15/15](https://github.com/uibcdf/sabueso/actions/runs/40411424384) and
+[governance1/1](https://github.com/uibcdf/sabueso/actions/runs/40411424666), with
+full captures and all thirteen summaries checked (nine OS/Python lanes each
+5,705; four Ackredit lanes each 1,452). Source/input hashes904/37 match. The failed
+/tmp-quota run remains diagnostic; the same-source retry on owned checkout scratch
+passes. Current saved-comparison work requires a separate checkpoint. Release
+consolidation and the complete broad human/agent acceptance remain paused.

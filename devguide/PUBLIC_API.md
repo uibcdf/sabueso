@@ -288,8 +288,10 @@ not promise card enrichment, live availability or public-package delivery.
   `ligand_site_support_membership@1`: complete source IDs/states plus one captured
   `source_store_location`, with the original full closure at `support_location`.
   A present source is addressed by appending `Record(id)` to that store path.
-  This pane and its machine selections
-  refuse unsupported saving; bounded literal reading remains available. See
+  The pane and its machine selections now save through explicit exploration @3,
+  with original scientific/source/navigation verification and exact retained
+  machine-request lookup. Older @1/@2 meanings stay unchanged; unvisited variants
+  remain `not_saved`. See [original comparison reading](pending_proposals/card_saved_ligand_site_comparisons.md). See
   [comparison exploration](pending_proposals/card_ligand_site_comparisons.md).
   See the [nature continuation](pending_proposals/card_nature_exploration.md).
   `item.related()` now returns declared source/subject/object/entity links;

@@ -2,7 +2,8 @@
 
 This is a display policy, not a scientific rule. The initial policy deliberately
 admits only declared textual columns; numbers, booleans and nulls are not strings.
-Saved scientific verification is separate and remains unavailable for this route.
+Original saved verification has explicit format/version dispatch and is separate
+from live materialization and display delivery.
 """
 
 from copy import deepcopy
@@ -58,7 +59,7 @@ def descriptor():
             "format": SUPPORT_FORMAT,
             "record_location": "Append Record(id) to source_store_location only for a present member.",
         },
-        "save": False,
+        "save": True,
     }
 
 

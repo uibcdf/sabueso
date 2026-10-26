@@ -63,6 +63,7 @@ fixture does not establish current live availability.
 | --- | --- |
 | Individual annotation structural navigation / saved operation origin | `test_card_annotation_regions_offline.py`, human/nature/source/structure/access/agent/context/saved/quantity/argument and migration cases; exact item support, original typed indices/axes/native inputs, explicit canonical region sharing, disulfide endpoints, conflicts/unknowns, native revisions, independent inert reading, unmaterialized `not_saved`, genuine @1/@2 history and internally resealed related-operation swap rejection (#148/#161) |
 | Native UniProt feature scope and identity | `test_uniprot_feature_scope_offline.py`, `test_uniprot_feature_molecule_identity_offline.py`, domain/additional/mapping/acquisition/residue/migration/refresh/schema cases; every mapped type, full native asserted value versus normalized annotation, distinct molecule/citation/compound/unprojected contexts, exact native duplicates, stable order/retrieval IDs, original support and independent inert saved reading, unknown endpoints, malformed shapes, historical gaps without backfill and refreshed original-pin preservation. Shape coverage includes explicitly synthetic optional molecule labels in all 17 mapped fields (#160/#162) |
+| Original saved comparisons | `test_card_saved_sites_offline.py`, native scope/explanations and all Card access/human/context/agent/saved/quantity cases; frozen native conformance, explicit @3 and genuine @1/@2, mixed adapters, exact requests, independent reader with current engines/catalogs/network forbidden, source/related-operation origins, typed/coherently rehashed changes and bounded repeat saving (#148) |
 | Compact ligand-site delivery | `test_card_ligand_site_delivery_offline.py`, owning selection/comparison and shared Card access/history/quantity gates; public byte reduction, complete 8 KiB pages, exact reconstruction of every original support location, missing membership, capture/mutation isolation and no repeated science (#148) |
 | Compact ligand-site selection | `test_card_ligand_site_access_offline.py`, human comparisons, Card access/selection/context/saved-history/argument/quantity and native scope/explanation cases; one captured evaluation in either entry order, shared result/item identity, exact textual filters/membership/order, display exclusions, mandatory comparison/source closure, bounded atomic deferral, cursor isolation, native outcomes and explicit unsavable/not_saved behavior (#148) |
 | Human ligand-site comparisons | `test_card_ligand_site_comparisons_offline.py`, Card nature/source/access/structure/context/saved/quantity/argument cases and native ligand explanations; native conformance, one captured calculation, exact original support/annotation/contact links, partial/foreign/uncertain axes, source-declared component context with duplicate indices and foreign-subject refusal, preserved distance units, separate assembly context, bounded literal agent reading, unsavable scientific/origin closure and inert old saved `not_saved` behavior (#148) |
@@ -300,3 +301,18 @@ operation and saved-journey readers: proportional host/workflow serialization,
 exact owner/scope hashes and historical full contexts. This protects serialization
 scale; it does not qualify whole-workflow memory, scientific algorithm complexity,
 consumer routing or installed artifacts.
+
+
+### Local temporary-storage capacity
+
+The full local-original suite can retain substantial scratch until it exits.
+If shared `/tmp` reaches its quota, inspect capacity and remove only finished
+owned resources. A local recovery route uses an owned ignored directory on the
+checkout filesystem with `--basetemp=recovered_work/<checkpoint>/pytest-scratch`,
+using the same environment, workers and gates. This is scratch placement, not a
+new environment. Independent-reader tests that need an outside-checkout working
+directory still use their own native `TemporaryDirectory`. Preserve failed logs,
+verify source/input hashes and repeat the complete affected gate; a quota failure
+is not passing evidence. Remove the owned scratch after its final needed use.
+The observed [2026-10-26 recovery](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6428403275)
+is not a universal space requirement or permission to delete shared/caller paths.

@@ -239,7 +239,10 @@ class CardItem:
     @property
     def support(self):
         if self._view._record_panel == "ligand_site_comparisons":
-            from .card_ligand_site_exploration import support
+            if self._view._explorer.mode == "saved":
+                from .card_ligand_site_history_v1 import support
+            else:
+                from .card_ligand_site_exploration import support
 
             return support(self)
         if self._view._field_panel == "annotated_regions":
@@ -852,6 +855,13 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if (
+            self._explorer.mode == "saved"
+            and self._record_panel == "ligand_site_comparisons"
+        ):
+            from .card_exploration_sites import HUMAN_SCHEMA
+
+            return deepcopy(HUMAN_SCHEMA)
         if self._explorer.mode == "saved":
             from .card_exploration_adapter_v1 import (
                 COVERAGE_HUMAN_SCHEMA,
@@ -1047,7 +1057,10 @@ class CardView:
     def filter(self, column, *, equals, skip_digestion=False):
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
-        scientific = self._selection._scientific is not None
+        scientific = (
+            self._selection._scientific is not None
+            and self._record_panel != "ligand_site_comparisons"
+        )
         if scientific:
             if self._explorer.mode == "saved":
                 from .card_exploration_adapter_v1 import (
@@ -1070,7 +1083,15 @@ class CardView:
             self._link_panel and self._status == "ambiguous"
         ):
             return replace(self, _origin=self)
-        if scientific and self._explorer.mode == "saved":
+        if self._record_panel == "ligand_site_comparisons":
+
+            def equal_values(column, first, second):
+                return (
+                    isinstance(first, str)
+                    and isinstance(second, str)
+                    and first == second
+                )
+        elif self._explorer.mode == "saved":
             from .card_exploration_adapter_v1 import _equal_values as equal_values
         else:
             from .card_scientific_access import equal_values
@@ -1266,11 +1287,17 @@ class CardExplorer:
             topics.update(
                 view._record_panel
                 for view in views
-                if view._record_panel in ("classification", "coverage")
+                if view._record_panel
+                in ("classification", "coverage", "ligand_site_comparisons")
             )
             from .card_structure_selection_v1 import original
 
-            if any(original(view._selection) for view in views):
+            if any(
+                original(view._selection)
+                and view._selection._scientific.wire["context"]["adapter"]
+                == "structure_exploration@1"
+                for view in views
+            ):
                 topics.add("structures")
             questions = {
                 view.request["question"] for view in views if view.request is not None

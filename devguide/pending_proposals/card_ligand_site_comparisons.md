@@ -111,3 +111,10 @@ Nine public OS/Python lanes each pass 5,673 cases; four installed Ackredit lanes
 each pass 1,452. Full receptor captures, member hashes and thirteen actual test
 summaries are verified. This receipt supersedes the intermediate cancelled run;
 it does not qualify later selector source or establish researcher acceptance.
+
+
+**Saved-reading continuation, 2026-10-26:** the
+[original comparison reader](card_saved_ligand_site_comparisons.md) supersedes this
+initial delivery's unsavable limitation. It adds explicit @3 scientific/source/
+request/navigation verification and preserves @1/@2. Missing/unvisited requests
+remain `not_saved`; broader profile/workload/researcher acceptance stays open.
