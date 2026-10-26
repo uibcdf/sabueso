@@ -367,6 +367,18 @@ def _parts(view):
             + view.explorer._coverage_result.native["rule"]["rule"]
             + "; source/request states remain distinct. Unknown counts are not zero; no global completeness score is inferred."
         )
+    if view._record_panel == "ligand_site_comparisons":
+        from .card_ligand_site_exploration import SCOPE
+
+        opening.append(SCOPE)
+        opening.append(
+            "This comparison view cannot be saved yet. Original source records and complete values remain inspectable."
+        )
+        if view.presentation == "detail" and view._selected:
+            native = view._selected[0].value["item"]
+            opening.append(
+                f"Recorded contact positions: {preview(native['recorded_residues'], 200)}. Full original values: native_payload."
+            )
     if view._field_panel:
         opening.append(
             "Retained fields with original support; source coverage is not evaluated. Open explain() to review source records and stored alternatives."
@@ -487,6 +499,19 @@ def _parts(view):
                     for key in RECORD_COLUMNS[view._record_panel]
                 ),
             )
+            if view._record_panel == "ligand_site_comparisons":
+                state = {
+                    "computed": "Compared",
+                    "partial": "Partly compared",
+                    "not_computed": "Not compared",
+                }.get(value["comparison_status"], "Unknown comparison state")
+                record_row = (
+                    record_row[0],
+                    preview(item.label),
+                    record_row[1],
+                    state,
+                    *record_row[3:],
+                )
             if view._record_panel == "classification":
                 basis, rule = relationship_basis(item)
                 record_row += (
@@ -671,6 +696,10 @@ def _parts(view):
 
 
 def _headers(view):
+    if view._record_panel == "ligand_site_comparisons":
+        from .card_ligand_site_exploration import HEADERS
+
+        return list(HEADERS)
     if view._record_panel:
         return (
             ["Index", "Area", "Source", "State", "Count", "Release"]

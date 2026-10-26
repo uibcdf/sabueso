@@ -299,6 +299,48 @@ cross-topic integration remain under development. These source views support the
 same `save()`, original independent reading and exact bounded payload access as
 other field views.
 
+## Compare ligand contacts with annotated sites
+
+```python
+site_comparisons = explorer.answer("ligand_site_comparisons")
+site_comparisons.table()
+if len(site_comparisons.items()):
+    comparison = site_comparisons.items()[0]
+    comparison.open()  # complete original native comparison
+    comparison_sources = comparison.explain()
+    assert comparison_sources.back() is site_comparisons
+    comparison_context = comparison.related()
+    annotation_context = comparison_context.filter("role", equals="annotation")
+    if len(annotation_context.items()):
+        annotation_context.items()[0].open()  # exact retained annotation
+    comparison_page = explorer.access.read(comparison.payload_location).page(
+        limit=2, max_bytes=4096
+    )
+    assert comparison_page["page"]["max_bytes"] == 4096
+```
+
+This route reuses `card.ligand_sites()` and its native explanations over the same
+captured protein. One row is a retained protein–ligand contact declaration, not
+an individual ligand molecule. **Unknown comparison is not a negative overlap.**
+A positive can be partial when other annotations cannot be compared; a negative
+requires comparable retained inputs. Missing source scope and sequence revisions
+stay explicit. Sequence-number overlap does not establish atomic proximity.
+
+`related()` offers exact original source, annotation and contact records. Where
+retained on the focal protein, `structure`, `instance_context` and
+`assembly_context` links open original structural context. Instance links use the
+same source-declared PDB component and original list indices; repeated labels stay
+separate. These links do not identify an aggregated contact with a physical
+instance, map it into an assembly or infer stoichiometry. Source/request coverage
+has its own `coverage` view.
+
+The complete native view remains in `site_comparisons.native_payload`; each item
+has its original payload location and explicit support/explanation locations for
+bounded literal `access.read()`. This first comparison pane **does not support
+saving or specialized machine `select()` yet**. Its capabilities state that
+limit; original source/instance panes and historical saved readers retain their
+existing behavior. Both extensions remain required before 0.15.0.
+
 ## Inspect individual ligand instances
 
 ```python

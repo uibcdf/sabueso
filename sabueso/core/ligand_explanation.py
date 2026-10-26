@@ -15,8 +15,12 @@ from .relationship_store import make_derivation
 
 
 def explain_ligand_site(card, ligand_site_ref):
+    return _explain_ligand_site(card, ligand_site_ref, ligand_sites_view(card))
+
+
+def _explain_ligand_site(card, ligand_site_ref, view):
+    """Explain an already evaluated view over the same private captured Card."""
     support = _Support(card)
-    view = ligand_sites_view(card)
     item = next(
         (i for i in view["items"] if i["relationship_id"] == ligand_site_ref), None
     )

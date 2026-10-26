@@ -4240,3 +4240,16 @@ is performed. Packet mapping @11 freezes @10's exact original native reader;
 older readers and oligomer agreement keep their own interpretation. No stored
 Card schema change occurs. See the
 [scope and qualification](pending_bugs/ligand_overlap_coordinate_scope.md).
+
+
+## 2026-10-26 — Present native ligand-site comparisons before extending saved science (#148)
+
+Add a protein-specific comparison question over one captured native result, using
+its existing scope/classification/explanation rules and exact original inputs.
+Expose source, annotation, contact and explicitly separate source-declared
+component/instance/assembly contexts under `ligand_site_context_links@1`; no
+aggregate/physical-instance correspondence is inferred. Keep unsupported comparison
+persistence and specialized machine selection explicit until their historical
+binding and shared adapter are implemented. Existing saved readers stay original;
+all these remaining capabilities still precede 0.15.0. See the
+[bounded route](pending_proposals/card_ligand_site_comparisons.md).

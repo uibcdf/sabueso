@@ -27,6 +27,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "ligand_site_comparisons": (
+        "Ligand contacts and annotated-site comparisons",
+        "Source-bound comparisons, partial findings and uncomputed coordinate context with original inputs.",
+    ),
     "annotated_regions": (
         "Annotated regions and structural context",
         "Individual source annotations with their axes, original support and explicit structural questions.",
@@ -140,7 +144,9 @@ class CardItem:
             return "link"
         if self._view._record_panel:
             return (
-                "knowledge_state"
+                "ligand_contact_comparison"
+                if self._view._record_panel == "ligand_site_comparisons"
+                else "knowledge_state"
                 if self._view._record_panel == "coverage"
                 else "relationship"
             )
@@ -232,6 +238,10 @@ class CardItem:
 
     @property
     def support(self):
+        if self._view._record_panel == "ligand_site_comparisons":
+            from .card_ligand_site_exploration import support
+
+            return support(self)
         if self._view._field_panel == "annotated_regions":
             from .card_annotation_regions_v1 import support
 
@@ -462,6 +472,16 @@ class CardItem:
             if self._view._question_catalog:
                 return self._view._explorer._answer(self._entry.key, {}, self._view)
             return self._view._explorer._topic(self._entry.key, self._view)
+        if self._view._record_panel == "ligand_site_comparisons":
+            return replace(
+                self._view,
+                _selected=(self._entry,),
+                _origin=self._view,
+                _display_request=None,
+                _native_override=deepcopy(self._entry.value["item"]),
+                title=f"Ligand contact comparison · {self.label}",
+                presentation="detail",
+            )
         if self._view._selection._scientific is not None:
             return replace(
                 self._view,
@@ -509,6 +529,10 @@ class CardItem:
         return result
 
     def _live_explain(self):
+        if self._view._record_panel == "ligand_site_comparisons":
+            from .card_ligand_site_exploration import explain
+
+            return explain(self)
         if self._view._link_panel:
             return self._view._explorer._metadata(
                 {"rule": self._entry.value["rule"], "link": self._entry.value},
@@ -798,7 +822,10 @@ class CardView:
             capabilities.update(
                 filter=self.schema["columns"], sort=self.schema["columns"]
             )
-            capabilities["scientific_adapter"] = self._record_panel == "coverage"
+            capabilities["scientific_adapter"] = self._record_panel in (
+                "coverage",
+                "ligand_site_comparisons",
+            )
         if self._selection._scientific is not None:
             capabilities.update(
                 scientific_adapter=True,
@@ -872,10 +899,14 @@ class CardView:
             from .card_exploration_profiles import RECORD_COLUMNS
 
             return {
-                "kind": "knowledge_state"
+                "kind": "ligand_contact_comparison"
+                if self._record_panel == "ligand_site_comparisons"
+                else "knowledge_state"
                 if self._record_panel == "coverage"
                 else "relationship",
-                "grain": "one original source/area classification row"
+                "grain": "one retained protein–ligand contact declaration, not a physical ligand occurrence"
+                if self._record_panel == "ligand_site_comparisons"
+                else "one original source/area classification row"
                 if self._record_panel == "coverage"
                 else "one retained parent relationship",
                 "columns": ["label", "kind", *RECORD_COLUMNS[self._record_panel]],
@@ -1384,6 +1415,14 @@ class CardExplorer:
             raise ArgumentError("Scientific options require a mapping or None.")
         from .card_exploration_profiles import PANELS
 
+        if topic == "ligand_site_comparisons":
+            if options not in (None, {}):
+                raise ArgumentError(
+                    "ligand_site_comparisons has no scientific options."
+                )
+            from .card_ligand_site_exploration import view
+
+            return view(self, origin)
         if topic in PANELS:
             if options not in (None, {}):
                 raise ArgumentError(f"{topic} has no scientific options.")

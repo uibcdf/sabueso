@@ -41,7 +41,7 @@ Location contract:
   - Tools are standalone functions grouped in modules.
 
 ## Repository Layout
-See `CHECKPOINT.md` ("Package layout"). The rules that stay:
+See [ARCHITECTURE.md](ARCHITECTURE.md#layers) for the maintained component layout. The rules that stay:
 - `sabueso/mappings` holds source-to-canonical translation;
 - `sabueso/tools/db` holds source access;
 - `sabueso/_private` and `sabueso/utils` hold no public API.

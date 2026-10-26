@@ -278,7 +278,13 @@ not promise card enrichment, live availability or public-package delivery.
   `view("coverage")` shares the existing knowledge-state result and lazy exact scoped
   explanations; `view("quality")` retains raw quality records. All new item payloads
   are readable through the same bounded literal access. The specialized machine
-  selector still supports structures only. See the [nature continuation](pending_proposals/card_nature_exploration.md).
+  selector still supports structures only. `view("ligand_site_comparisons")` and
+  its question alias add native comparisons with original input links and separate
+  structural instance/assembly contexts. Unknown comparisons are not negative
+  overlaps. This pane refuses unsupported saving and specialized selection;
+  bounded literal reading remains available. See
+  [comparison exploration](pending_proposals/card_ligand_site_comparisons.md).
+  See the [nature continuation](pending_proposals/card_nature_exploration.md).
   `item.related()` now returns declared source/subject/object/entity links;
   `link.open()` or `links.follow(item_ref)` opens an exact retained destination.
   Supplied Cards switch to their own profile; missing context has `explorer=None`,

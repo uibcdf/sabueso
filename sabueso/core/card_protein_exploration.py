@@ -13,6 +13,12 @@ FUNCTION_FIELDS = {
     "sequence.length": "Sequence length",
 }
 _SOURCE_QUESTIONS = {
+    "ligand_site_comparisons": {
+        "label": "Which retained ligand contacts overlap annotated sites?",
+        "topic": "ligand_site_comparisons",
+        "required_options": [],
+        "scope": "Source-bound canonical comparisons with explicit unknowns; no atomic proximity, revision agreement or aggregate/instance merge.",
+    },
     "annotated_regions": {
         "label": "Which individual annotations can I explore in structures?",
         "topic": "annotated_regions",

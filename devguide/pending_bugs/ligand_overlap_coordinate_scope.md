@@ -1,8 +1,9 @@
 ---
 summary: Admit source-bound canonical coordinates before ligand-site overlap.
 issue: uibcdf/sabueso#163
-status: open
+status: resolved
 opened: 2026-10-24
+closed: 2026-10-26
 verification: source_ci_verified
 area: [knowledge-integrity, scientific-views, packets]
 ---
@@ -17,9 +18,10 @@ Pause preparation independently verifies every full-capture member hash and
 thirteen test summaries: nine public lanes pass 5,626 cases each and four
 public-Ackredit lanes pass 1,431 each. See the
 [pause receipt](../evidence/pause_checkpoint_20261025.json). The failed/incomplete
-SDK97 results below are historical diagnostics. Current local originals are
-unavailable, so no new local-original count is claimed. Owner issue #163 retains
-closure; this source qualification does not complete broader #148 exploration.
+SDK97 results below are historical diagnostics. The pause receipt records
+unavailable local originals in its Diego checkout; on 2026-10-26 this Liliana
+checkout has all 37 originals with matching hashes. Availability is not a new
+pytest result. [Issue #163 is closed](https://github.com/uibcdf/sabueso/issues/163#issuecomment-6425149264); this source qualification does not complete broader #148 exploration.
 
 An explicitly synthetic native UniProt feature on an unidentified foreign molecule
 was compared with canonical PDBe-KB contact positions solely because their numbers
@@ -84,41 +86,20 @@ region/structure navigation and human/agent acceptance remain separate work unde
 
 ## Verification and retained work
 
-The initial corrected selection passes 224 cases / 66.49 seconds with twelve
-pytest-receptor workers and fatal runtime/SQLite/unraisable guards. Broader local,
-full-source and exact-SHA remote qualification are recorded when complete; this
-initial result is not a release claim. The subsequent local-original integration
-passes **393 cases / 116.20 seconds** with the same guards. Ruff, unchanged
-schema/shape, fixture delivery, registry, dependency/governance, Markdown/Python
-3.11 syntax, 37 offline public guide blocks and warning-fatal Sphinx pass. Final
-full and remote qualification remain pending.
+The original SDK98 checkpoint at `680c6a1` passes all **7,179 local-original cases /
+624.17 seconds**, twelve receptor workers, fatal SQLite/unraisable guards and
+thirteen expected fixture warnings. Its exact-source CI15/15 and governance1/1
+qualification is recorded above and was independently verified again on
+2026-10-26 from complete capture member hashes, all job steps and thirteen test
+summaries. This source qualification closes #163, not broad #148 exploration.
 
-Reproductions, exact frozen-body proof and gate logs are retained in
-`recovered_work/ligand_overlap_scope_163_20261024/`, owned by #163/#148 and reviewed
-at the next exploration checkpoint or release. Previous #162 originals remain
-unchanged. Scientific services queried: zero. Private pilot reads: zero.
+Sixty-four regression cases cover scope and packet support. Earlier selections
+pass 224/66.49s, integration393/116.20s, support185/76.41s and literal naming89/13.95s.
+Earlier interrupted/failed full runs and cancelled CI are diagnostic only: the
+canonical-support omission and literal naming-test boundary were corrected before
+the qualified checkpoint. Historical receipts and inputs remain unchanged.
 
-
-Final review of intermediate `03abe2d` exposed missing canonical sources in packet
-terms (the per-field grouped references alone were not traversed). Two full/index
-regressions reproduce the omission; the flat declared `inputs` list corrects it
-without changing historical readers. The intermediate full gate was deliberately
-stopped at 1,131 passed / incomplete 7,177 and its CI was cancelled; neither is a
-qualification receipt. Final validation uses the corrected source.
-
-The final corrected receiving gate passes **185 cases / 76.41 seconds**, including
-both new full/index support regressions and persisted packet reading, with twelve
-receptor workers, local originals and fatal runtime/SQLite/unraisable guards.
-
-The SDK97 full local-original gate completes with **7,178 passed / one failure**:
-the naming-convention detector traversed original `recorded_residues` and treated
-the retained Card key `observed_in[].structure` as a derived view key. The test
-boundary now excludes only the two explicitly literal `recorded_annotation` and
-`recorded_residues` subtrees. Derived view references still require `_ref`; raw
-original inputs are not renamed. No runtime/source data change is made by this
-follow-up. Final full qualification is repeated after this correction; the SDK97
-full result and cancelled CI remain diagnostic, not passing receipts.
-
-The corrected convention/literal-retention gate passes **89 cases / 13.95 seconds**
-with twelve receptor workers, local originals and fatal runtime/SQLite/unraisable
-guards. No runtime implementation changes occur in this final test-boundary fix.
+Reproductions, frozen-body proof, original Cards/saved readings, source/input hashes
+and logs remain under `recovered_work/ligand_overlap_scope_163_20261024/`, owner
+#163/#148, review at the next exploration checkpoint or release. Previous #162
+originals stay fixed. Scientific service queries and private pilot reads: zero.

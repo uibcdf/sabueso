@@ -395,6 +395,11 @@ unknown/foreign/fuzzy/conflicting inputs as uncomputed and partial positives as
 explicit. Packet @11 freezes @10's exact previous reader. Qualify this bounded
 scientific prerequisite before broader aggregate/assembly integration; equal
 residue numbers alone do not establish a shared axis.
+The [readable comparison pane](pending_proposals/card_ligand_site_comparisons.md)
+now presents these native findings with original input links and separate retained
+instance/assembly contexts. Complete its specialized agent selector and historical
+saved verifier before claiming that route complete. Assembly-specific reconciliation
+and broader region/model transitions remain open.
 Historical missing native scope remains unverified. Finish derived/cross-topic/
 assembly integration, then activity/clinical/literature, comparative and
 association routes, shared saved/agent qualification and combined researcher

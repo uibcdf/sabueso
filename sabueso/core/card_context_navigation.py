@@ -262,6 +262,10 @@ def _link_view(
 
 
 def related(item):
+    if item._view._record_panel == "ligand_site_comparisons":
+        from .card_ligand_site_exploration import links
+
+        return links(item)
     explorer = item._view._explorer
     # A catalog item's open() executes its explicit topic/question operation;
     # asking for links must not implicitly execute that scientific reader.

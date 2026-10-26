@@ -59,6 +59,7 @@ NATURE_TOPICS = {
         "annotated_regions",
         "predicted_structures",
         "sites",
+        "ligand_site_comparisons",
         "ligand_instances",
     ),
     "small_molecule": ("chemistry", "properties"),
@@ -199,12 +200,21 @@ def field_entries(explorer, topic):
 
 
 RECORD_COLUMNS = {
+    "ligand_site_comparisons": (
+        "ligand_ref",
+        "comparison_status",
+        "outcome",
+        "matched_sites",
+        "reason",
+    ),
     "classification": ("subject_ref", "predicate", "object_ref"),
     "coverage": ("area", "source", "state", "count", "release"),
 }
 
 
 def record_label(panel, row):
+    if panel == "ligand_site_comparisons":
+        return row["label"]
     return (
         f"{row['area']} · {row['source']}" if panel == "coverage" else row["object_ref"]
     )

@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-25**, maintainer-requested pause and upstream reconciliation
+Last updated: **2026-10-26**, ligand-site comparison exploration following pause reconciliation
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -87,18 +87,29 @@ Current integrated local gates and code/input fingerprints are recorded in the
 [pause receipt](evidence/pause_checkpoint_20261025.json): **211 selected integration
 cases pass in 329.76 seconds**, with twelve receptor workers and fatal runtime/
 SQLite/unraisable guards. Ruff, fixture/dependency/governance checks, 402 local
-Markdown links/anchors and warning-fatal Sphinx pass. All 37 local-only originals
-are absent; no new local-original suite result is claimed. The unskipped closeout
+Markdown links/anchors and warning-fatal Sphinx pass. That Diego receipt has all 37 local-only originals absent; it claims no new
+local-original suite. This Liliana checkout has all 37 originals with matching
+hashes on 2026-10-26; current gate results are recorded separately. The unskipped closeout
 push receives its own exact-SHA CI and governance checks; the post-push result
 belongs to that SHA in Actions and #112. Installed release-artifact qualification
 and human usefulness remain separate from source CI.
+
+The [first human ligand-site comparison pane](pending_proposals/card_ligand_site_comparisons.md)
+now adds explicit readable comparisons and original annotation/contact/source,
+structure-local component context and assembly-context links. It reuses native
+science once per captured protein and keeps partial/uncomputed scope visible.
+Specialized agent selection and historical saved comparison reading remain open;
+the pane and its originating navigation explicitly refuse saving. No stored
+schema or scientific rule changes. Selected qualification passes 732 integration cases, 208 presentation/quantity
+cases and 100 final scope/context cases with twelve receptor workers. Full final
+and remote qualification are recorded separately in the owning report and #148; broader completion and release remain paused.
 
 ## Open work and boundaries
 
 | Owner | Remaining work |
 | --- | --- |
 | #148 | Broad scientific/nature panels, region/model-fragment/instance/aggregate/assembly transitions, shared saved navigation and compact agent parity; actual researcher walkthroughs and agreed workload budgets |
-| #163 | Preserve canonical coordinate admission and original input/support semantics; finish its owner-local qualification/closure using its exact source, without conflating it with broader exploration completion |
+| #163 (closed) | Exact-source qualification/closure is complete at `680c6a1`; preserve canonical admission and original support while broader #148 work continues |
 | #108 / #112 | Broader source/operation/bibliography coverage and coordination; both clinical examples are bounded demonstrations |
 | #132 / #92 | Human dossier usefulness, located-statement review, authorized assay originals and source-specific protocol interpretation |
 | MOLI / Nextia / MolSysSuite | Shared recording/consumer decisions, Evidence and modeling/correspondence remain with their owners; no shared contract or private pilot content is changed here |
