@@ -399,7 +399,9 @@ The [readable comparison pane](pending_proposals/card_ligand_site_comparisons.md
 now presents these native findings with original input links and separate retained
 instance/assembly contexts. Its [specialized agent selector](pending_proposals/card_ligand_site_agent_selection.md)
 now shares original result/item identities, typed textual selection and mandatory
-scope/support. Complete its historical saved verifier before claiming that route complete. Assembly-specific reconciliation
+scope/support. Versioned source membership shares exact store paths, retaining all
+original source IDs/states and complete interpretation with measured public byte
+savings. Complete its historical saved verifier before claiming that route complete. Assembly-specific reconciliation
 and broader region/model transitions remain open.
 Historical missing native scope remains unverified. Finish derived/cross-topic/
 assembly integration, then activity/clinical/literature, comparative and

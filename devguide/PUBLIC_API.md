@@ -284,7 +284,11 @@ not promise card enrichment, live availability or public-package delivery.
   overlaps. The comparison selector shares result/item IDs with the human pane, with exact
   textual equality, membership, ordering and bounded projected pages. Its default
   columns are `ligand_ref`, `comparison_status` and native `site_class`; comparison
-  scope and original support remain mandatory. This pane and its machine selections
+  scope and original support remain mandatory. Comparison item support uses
+  `ligand_site_support_membership@1`: complete source IDs/states plus one captured
+  `source_store_location`, with the original full closure at `support_location`.
+  A present source is addressed by appending `Record(id)` to that store path.
+  This pane and its machine selections
   refuse unsupported saving; bounded literal reading remains available. See
   [comparison exploration](pending_proposals/card_ligand_site_comparisons.md).
   See the [nature continuation](pending_proposals/card_nature_exploration.md).

@@ -51,7 +51,12 @@ physical sites. Partial positives, uncomputed scope and unstated revision agreem
 remain explicit; projection never makes unknown results negative.
 
 Inline items carry actual declared relationship subjects, source membership and
-exact support/explanation/value locations. Source-request coverage is referenced
+exact support/explanation/value locations. The delivery continuation uses
+`ligand_site_support_membership@1`: every original member ID/state stays inline,
+with one exact captured `source_store_location`. A present member appends a
+`Record(id)` segment to that container; missing members have no destination.
+The complete original per-source locations remain at `support_location`. This
+transport format introduces no source assertion or new scientific classification. Source-request coverage is referenced
 and explicitly not evaluated by this adapter. Atomic deferral removes values and
 their interpretation/support closure together, preserving states and inspectable
 locations. The complete canonical UTF-8 JSON envelope, including cursors and
@@ -102,3 +107,35 @@ snippets/7 Python 3.11 source parses and warning-fatal Sphinx pass. The precedin
 7,226 full-suite and exact-source remote receipt belongs to `b6bdb7f`, not to this
 later selector source. A broader full/remote checkpoint is still due for the
 accumulated implementation block; no researcher or release acceptance is claimed.
+
+
+## Measured source-path delivery continuation
+
+The initial selector's public six-row pages repeated full captured Card paths for
+every support member. [The reported observation](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6428058678)
+found default pages of 61,187/56,653 bytes; 8 KiB pages deferred values. An initial
+lookup-per-source prototype reduced repetition but left a historical row deferred.
+The versioned common-store membership above now keeps all original IDs/states,
+complete interpretation, units and direct source access while removing duplicate
+source paths. New tests reconstruct every original location and check exact bytes,
+all rows across small pages, original uncertainty, absent members, capture isolation
+and the absence of repeated scientific execution. Original scientific results,
+selection policy and saved @1/@2 readers are unchanged.
+
+In one local observation on each same public input, complete default pages fall to
+**32,354/31,705 bytes** (47.12%/44.04% less). At 8 KiB each first page delivers one
+complete record, about 6.5 KiB, rather than two deferred records. These are scoped
+byte observations, not tokenizer counts, universal workload budgets or scientist
+acceptance. Preserve record/byte limits and atomic deferral for larger inputs.
+The next required implementation remains immutable original saved comparison
+reading; broader populated/topic costs and the complete 0.15.0 inventory stay open.
+
+
+The delivery integration gate passes **835 local-original cases /84.78 seconds**
+with twelve receptor workers and fatal runtime/SQLite/unraisable guards. Its final
+owning gate passes **58 cases /4.39 seconds**, including a later focal/related
+revision isolation guard; the new delivery file adds six regressions. These
+selected results do not substitute for the accumulated source's full/remote
+checkpoint. Its owner remains #148/#112; evidence is retained at
+`recovered_work/site_delivery_148_20261026/`, reviewed at the next exploration
+checkpoint or release acceptance. No scientific queries or private pilot reads.

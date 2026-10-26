@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-26**, compact ligand-site comparison access following pause reconciliation
+Last updated: **2026-10-26**, economical ligand-site source membership following pause reconciliation
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -121,6 +121,16 @@ The compact selector passes its own **830 local-original integration cases /
 guide blocks execute offline; Ruff, schema/shape, fixture policy, registry,
 dependency/governance and warning-fatal Sphinx pass. These selected checks do not
 replace a later full/remote checkpoint on the accumulated source.
+The delivery continuation factors comparison source paths under
+`ligand_site_support_membership@1`, keeping every original source ID/state and
+complete interpretation. Present sources append `Record(id)` to one exact captured
+`source_store_location`; the full original closure remains at `support_location`.
+The same two public six-row pages shrink from 61,187/56,653 to 32,354/31,705 bytes
+(47.12%/44.04% less), and 8 KiB pages deliver complete values rather than deferred
+records. These are scoped byte observations, not general token/workload budgets.
+Its integration gate passes **835 cases /84.78s**, followed by **58 owning cases /
+4.39s** including a later focal-capture/revision isolation guard. Broader full and
+remote receipts remain separate; saved comparison verification stays next.
 Native coordinate admission remains unchanged; broader completion and release remain paused.
 
 ## Open work and boundaries

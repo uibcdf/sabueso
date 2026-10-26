@@ -176,7 +176,9 @@ now exposes native ligand-site findings, original input links and separate retai
 instance/assembly contexts. It preserves unknown/partial scope and deliberately
 refuses unsupported scientific persistence. The [compact agent selector](pending_proposals/card_ligand_site_agent_selection.md)
 now shares that exact result and item identity, with mandatory scope/support and
-atomic bounded delivery. Saved comparison verification and broad human acceptance
+atomic bounded delivery. Its versioned source membership now shares one captured
+store path instead of repeating it per source, preserving all IDs/states and
+original locations with measured public-page savings. Saved comparison verification and broad human acceptance
 remain open before 0.15.0.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule

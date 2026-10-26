@@ -14,6 +14,28 @@ from .card_ligand_site_selection_v1 import COLUMNS, DEFAULT_FIELDS, item_ref
 from .card_ligand_site_selection_v1 import FORMAT as POLICY
 from .errors import ArgumentError
 
+SUPPORT_FORMAT = "ligand_site_support_membership@1"
+
+
+def _source_membership(access, original):
+    """One exact source-store path, with complete original member IDs/states.
+
+    All comparison inputs are retained on this focal capture. A present member's
+    full location appends Record(id) to this container; absent members have no
+    destination. The original per-statement locations remain in support_location.
+    """
+    return {
+        "format": SUPPORT_FORMAT,
+        "basis": original["basis"],
+        "source_store_location": access._card_location(
+            segments=[{"type": "Key", "value": "source_assertion_store"}]
+        ),
+        "source_assertions": [
+            {"id": statement["id"], "state": statement["state"]}
+            for statement in original["source_assertions"]
+        ],
+    }
+
 
 def descriptor():
     return {
@@ -32,6 +54,10 @@ def descriptor():
         "machine_membership": True,
         "selection_policy": POLICY,
         "mandatory_interpretation": ["scope", "comparison", "classification_rule"],
+        "source_support": {
+            "format": SUPPORT_FORMAT,
+            "record_location": "Append Record(id) to source_store_location only for a present member.",
+        },
         "save": False,
     }
 
@@ -87,8 +113,7 @@ class _SiteResult:
             "support_location": access._location(self.location("support", key)),
             "support": {
                 "ref": key,
-                "basis": original_support["basis"],
-                "source_assertions": deepcopy(original_support["source_assertions"]),
+                **_source_membership(access, original_support),
             },
             "interpretation": deepcopy(row["interpretation"]),
             "interpretation_location": interpretation_location,

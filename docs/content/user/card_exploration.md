@@ -358,6 +358,36 @@ comparison scope, partial/uncomputed annotation indices or source membership.
 Large values and mandatory context are deferred together, with explicit locations
 and `inspection_required`; byte limits cover the whole canonical JSON page.
 
+Comparison support uses `ligand_site_support_membership@1`: `source_assertions`
+retains every original `id` and `state`, with a common `source_store_location`
+bound to the exact captured Card. A present member's location appends its
+`Record(id)` segment to that store path. Missing members have no destination.
+The original complete support, including per-statement locations, is also
+available through `support_location`. For example:
+
+```python
+if compact_page["items"] and compact_page["items"][0]["value_included"]:
+    site_record = compact_page["items"][0]
+    site_support = site_record["support"]
+    present_sources = [
+        s for s in site_support["source_assertions"] if s["state"] == "present"
+    ]
+    if present_sources:
+        source_store = site_support["source_store_location"]
+        source_location = {
+            **source_store,
+            "segments": [
+                *source_store["segments"],
+                {"type": "Record", "value": present_sources[0]["id"]},
+            ],
+        }
+        original_source_page = explorer.access.read(source_location).page(limit=4)
+```
+
+Check `value_included`/`inspection_required` before using deferred item values or
+support. A small byte budget may defer a larger atomic record; its complete
+support remains reachable through `support_location`.
+
 **Saving this comparison is still unsupported.** Its capabilities state that
 limit; original source/instance panes and historical saved readers retain their
 existing behavior. Saved sessions report this unretained selection as `not_saved`

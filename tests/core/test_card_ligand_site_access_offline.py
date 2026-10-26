@@ -160,7 +160,21 @@ def test_zero_projection_cannot_erase_comparison_scope_or_original_support(
     )
     support = explorer.access._resolve(item["support_location"])[0]
     assert support == explorer.view(TOPIC).items()[0].support[0]
-    assert item["support"]["source_assertions"] == support["source_assertions"]
+    expanded = deepcopy(item["support"]["source_assertions"])
+    store = item["support"]["source_store_location"]
+    for statement in expanded:
+        statement["location"] = (
+            {
+                **store,
+                "segments": [
+                    *store["segments"],
+                    {"type": "Record", "value": statement["id"]},
+                ],
+            }
+            if statement["state"] == "present"
+            else None
+        )
+    assert expanded == support["source_assertions"]
     assert item["subject_ref"] == "uniprot:P52270"
     assert (
         explorer.access._resolve(item["interpretation_location"])[0]

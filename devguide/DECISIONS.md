@@ -4268,3 +4268,17 @@ oversized values and interpretation/support closure are deferred atomically.
 Do not extend the frozen saved @1/@2 formats or admit unverified comparison saves.
 The next historical verifier must have explicit format/capability dispatch and
 preserve genuine older bundles. See the [selector continuation](pending_proposals/card_ligand_site_agent_selection.md).
+
+
+## 2026-10-26 — Factor repeated comparison source paths in agent pages (#148)
+
+Public measurements show duplicate per-source Card paths dominate the initial
+comparison pages. Deliver `ligand_site_support_membership@1` with every original
+source ID/state and one full `source_store_location` for the exact focal capture.
+Present members append `Record(id)`; missing membership never acquires a destination.
+Keep original per-statement locations at `support_location`, preserve complete
+mandatory interpretation and atomic value/support deferral, and change neither
+native science, scientific result/item identity, display policy nor saved @1/@2.
+Qualify both default and small-page journeys before freezing saved comparison
+reading. The observed byte improvement is scoped to public examples, not a token
+or whole-workflow performance guarantee. See the [delivery continuation](pending_proposals/card_ligand_site_agent_selection.md#measured-source-path-delivery-continuation).
