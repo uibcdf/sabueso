@@ -79,7 +79,7 @@ reads: zero.
 
 Current selected qualification: 732 Card/native/history integration cases pass /
 79.73 seconds, followed by 208 presentation/unit/quantity receiving cases /
-16.67 seconds and 100 final scope/context cases /13.19 seconds. Twenty-five new
+16.67 seconds and 100 final scope/context cases /13.19 seconds. Twenty-six new
 public/synthetic cases cover this pane. All use twelve receptor workers and fatal
 runtime/SQLite/unraisable guards; the integration includes verified local originals.
 Ruff/schema/shape1,938/fixture51+37/registry/dependency/governance pass. Thirty-eight
@@ -87,3 +87,17 @@ public guide blocks execute offline and Sphinx builds with warnings fatal. Actua
 public old/current-mapping and synthetic panels receive technical text/HTML review;
 these are not researcher acceptance. Full final and exact-SHA remote qualification
 are recorded separately after completion.
+
+
+Final review of intermediate `c4ec602` confirms a synthetic context-typing edge:
+a structure containing both component string `"1"` and numeric `1` offered two
+context links although the native view admits only the string. The loop now
+requires the declared component to be a string before exact reference comparison;
+malformed original records stay inspectable, without assigning them to another
+component. The regression first fails and protects this guard. Native scientific
+rules are unchanged. The intermediate full passes 7,225/917.37s with its original
+900 recorded hashes; the later test was added after completion. Final corrected
+full/remote qualification remains separate, and the intermediate CI is cancelled.
+
+The corrected strict-component receiving gate passes **101 cases /17.24 seconds**
+with twelve receptor workers and fatal runtime/SQLite/unraisable guards.

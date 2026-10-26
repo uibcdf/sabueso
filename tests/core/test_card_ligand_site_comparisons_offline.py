@@ -34,7 +34,9 @@ def offline(monkeypatch):
     monkeypatch.setattr(socket, "create_connection", forbidden)
 
 
-def protein(*, position=2, molecule=None, modifier="EXACT", annotation=True):
+def protein(
+    *, position=2, molecule=None, modifier="EXACT", annotation=True, ligand_code="ATP"
+):
     native = {
         "primaryAccession": "P52270",
         "sequence": {"value": "M" * 20, "length": 20},
@@ -62,7 +64,7 @@ def protein(*, position=2, molecule=None, modifier="EXACT", annotation=True):
             "record": {
                 "data": [
                     {
-                        "accession": "ATP",
+                        "accession": ligand_code,
                         "name": "Explicit synthetic ligand",
                         "residues": [
                             {
@@ -407,3 +409,43 @@ def test_current_public_fixture_mapping_has_positive_and_negative_supported_comp
     assert "Partly compared" not in repr(view)
     assert "Family-model site" in repr(view)
     assert view.native_payload == card.ligand_sites()
+
+
+def test_numeric_component_is_not_identified_with_an_equal_textual_identifier():
+    from sabueso.core.relationship_store import make_relationship
+    from sabueso.core.source_assertion_store import make_source_assertion
+
+    card = protein(ligand_code="1")
+    q = {
+        "ligands": [
+            {
+                "comp_id": "1",
+                "instances": [
+                    {"asym_id": "EXACT_STRING", "chains": [], "contacts": []}
+                ],
+            },
+            {
+                "comp_id": 1,
+                "instances": [{"asym_id": "WRONG_TYPE", "chains": [], "contacts": []}],
+            },
+        ]
+    }
+    source = make_source_assertion(
+        "relationships.has_structure",
+        {"explicit_synthetic": deepcopy(q)},
+        "RCSB PDB",
+        "1ABC",
+        "synthetic",
+        subject_ref="uniprot:P52270",
+    )
+    card.source_assertion_store.add(source)
+    card.relationship_store.add(
+        make_relationship(
+            "uniprot:P52270", "has_structure", "pdb:1ABC", q, [source["id"]]
+        )
+    )
+    view = card.explore().view(TOPIC)
+    assert len(view.native_payload["items"][0]["instances"]) == 1
+    contexts = view.items()[0].related().filter("role", equals="instance_context")
+    assert len(contexts.items()) == 1
+    assert contexts.items()[0].open().native_payload["asym_id"] == "EXACT_STRING"

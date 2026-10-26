@@ -102,7 +102,11 @@ Specialized agent selection and historical saved comparison reading remain open;
 the pane and its originating navigation explicitly refuse saving. No stored
 schema or scientific rule changes. Selected qualification passes 732 integration cases, 208 presentation/quantity
 cases and 100 final scope/context cases with twelve receptor workers. Full final
-and remote qualification are recorded separately in the owning report and #148; broader completion and release remain paused.
+and remote qualification are recorded separately in the owning report and #148.
+The intermediate `c4ec602` full passes 7,225/917.37s; a final synthetic regression
+then exposes component string/numeric coercion in context links. The corrected
+loop uses strict string identity; its own final qualification supersedes that
+intermediate CI. Native coordinate admission remains unchanged; broader completion and release remain paused.
 
 ## Open work and boundaries
 

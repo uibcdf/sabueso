@@ -400,7 +400,8 @@ def links(item):
         ):
             if (
                 not isinstance(ligand, dict)
-                or "pdb.ligand:" + str(ligand.get("comp_id")) != native["ligand_ref"]
+                or not isinstance(ligand.get("comp_id"), str)
+                or "pdb.ligand:" + ligand["comp_id"] != native["ligand_ref"]
             ):
                 continue
             instances = ligand.get("instances")
