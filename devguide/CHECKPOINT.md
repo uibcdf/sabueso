@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-26**, ligand-site comparison exploration following pause reconciliation
+Last updated: **2026-10-26**, compact ligand-site comparison access following pause reconciliation
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -98,15 +98,30 @@ The [first human ligand-site comparison pane](pending_proposals/card_ligand_site
 now adds explicit readable comparisons and original annotation/contact/source,
 structure-local component context and assembly-context links. It reuses native
 science once per captured protein and keeps partial/uncomputed scope visible.
-Specialized agent selection and historical saved comparison reading remain open;
-the pane and its originating navigation explicitly refuse saving. No stored
+The [compact agent continuation](pending_proposals/card_ligand_site_agent_selection.md)
+now shares its captured scientific result and original item IDs, with exact textual
+selection and mandatory scope/support. Historical saved comparison reading remains
+open; the pane, its machine selections and originating navigation explicitly
+refuse saving. No stored
 schema or scientific rule changes. Selected qualification passes 732 integration cases, 208 presentation/quantity
 cases and 100 final scope/context cases with twelve receptor workers. Full final
 and remote qualification are recorded separately in the owning report and #148.
 The intermediate `c4ec602` full passes 7,225/917.37s; a final synthetic regression
 then exposes component string/numeric coercion in context links. The corrected
 loop uses strict string identity; its own final qualification supersedes that
-intermediate CI. Native coordinate admission remains unchanged; broader completion and release remain paused.
+intermediate CI. Final initial-pane `b6bdb7f` passes all 7,226 local-original cases /867.63s,
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40394000872) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40394000894).
+Nine OS/Python lanes each pass 5,673 cases and four Ackredit lanes each 1,452;
+full captures and all thirteen summaries are verified. The later selector source
+has its own selected qualification, not automatic reuse of that full/remote receipt.
+The compact selector passes its own **830 local-original integration cases /
+88.85s**, including 26 new agent cases and genuine old saved producers, with
+12 receptor workers and fatal runtime/SQLite/unraisable guards. All 39 public
+guide blocks execute offline; Ruff, schema/shape, fixture policy, registry,
+dependency/governance and warning-fatal Sphinx pass. These selected checks do not
+replace a later full/remote checkpoint on the accumulated source.
+Native coordinate admission remains unchanged; broader completion and release remain paused.
 
 ## Open work and boundaries
 

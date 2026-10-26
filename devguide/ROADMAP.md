@@ -397,8 +397,9 @@ scientific prerequisite before broader aggregate/assembly integration; equal
 residue numbers alone do not establish a shared axis.
 The [readable comparison pane](pending_proposals/card_ligand_site_comparisons.md)
 now presents these native findings with original input links and separate retained
-instance/assembly contexts. Complete its specialized agent selector and historical
-saved verifier before claiming that route complete. Assembly-specific reconciliation
+instance/assembly contexts. Its [specialized agent selector](pending_proposals/card_ligand_site_agent_selection.md)
+now shares original result/item identities, typed textual selection and mandatory
+scope/support. Complete its historical saved verifier before claiming that route complete. Assembly-specific reconciliation
 and broader region/model transitions remain open.
 Historical missing native scope remains unverified. Finish derived/cross-topic/
 assembly integration, then activity/clinical/literature, comparative and

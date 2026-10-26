@@ -336,10 +336,33 @@ has its own `coverage` view.
 
 The complete native view remains in `site_comparisons.native_payload`; each item
 has its original payload location and explicit support/explanation locations for
-bounded literal `access.read()`. This first comparison pane **does not support
-saving or specialized machine `select()` yet**. Its capabilities state that
+bounded literal `access.read()`. Agents can select this same result directly:
+
+```python
+compact_sites = explorer.access.select(
+    "ligand_site_comparisons",
+    fields=["ligand_ref", "comparison_status", "site_class"],
+    where={"comparison_status": "computed"},
+    order_by={"column": "ligand_ref"},
+)
+compact_page = compact_sites.page(limit=4, max_bytes=8192)
+assert compact_sites.result_ref == site_comparisons.result_ref
+```
+
+`site_class` is the original native classification code; the human `outcome`
+column contains its readable finding. Filters are exact textual equalities;
+`item_refs` can restrict exact original membership. Display exclusions and counts
+are inspectable through the page's `context.context_location`. An empty display
+selection does not change the scientific outcome. Fewer columns do not remove
+comparison scope, partial/uncomputed annotation indices or source membership.
+Large values and mandatory context are deferred together, with explicit locations
+and `inspection_required`; byte limits cover the whole canonical JSON page.
+
+**Saving this comparison is still unsupported.** Its capabilities state that
 limit; original source/instance panes and historical saved readers retain their
-existing behavior. Both extensions remain required before 0.15.0.
+existing behavior. Saved sessions report this unretained selection as `not_saved`
+and do not execute current science. Historical comparison verification remains
+required before 0.15.0.
 
 ## Inspect individual ligand instances
 
@@ -720,8 +743,8 @@ Card identity returns `missing_prerequisite`; original quality remains inspectab
 
 The same capture exposes each new panel item's exact retained payload through
 `explorer.access.read(item.payload_location)`, including cached coverage rows.
-Specialized machine `select()` still supports structures only; broader machine
-selection/conformance remains pending. No unsupported selector silently falls back.
+Specialized machine `select()` supports structures and the ligand-site comparisons
+described above; broader topic selection/conformance remains pending. No unsupported selector silently falls back.
 
 ## Save a supported exploration and reopen it
 

@@ -53,13 +53,14 @@ quantities retain their negotiated value/unit representation.
 
 This first pane has complete native reading, string display filters/sorts,
 source/back navigation, text/HTML presentation and bounded literal `access.read()`.
-Specialized machine `select()` remains structural only. Saved comparison
+The [compact agent continuation](card_ligand_site_agent_selection.md) adds
+specialized `select()` over the same result and original item IDs. Saved comparison
 verification is not yet implemented: the new nonliteral result, explanations,
 links and originating navigation refuse saving, while unrelated original literal
 and existing saved routes remain usable. Old saved sessions report this topic
 and question as `not_saved` and never execute current scientific readers.
 
-These agent/saved extensions, assembly-specific reconciliation, region/model
+Historical saved verification, assembly-specific reconciliation, region/model
 transitions, workload budgets and actual researcher acceptance remain required
 under the [complete 0.15.0 inventory](card_exploration_completion_0150.md). This
 bounded pane does not close #148 or resume candidate selection/publication.
@@ -101,3 +102,12 @@ full/remote qualification remains separate, and the intermediate CI is cancelled
 
 The corrected strict-component receiving gate passes **101 cases /17.24 seconds**
 with twelve receptor workers and fatal runtime/SQLite/unraisable guards.
+
+
+The final initial-pane source `b6bdb7f` passes **7,226 local-original cases /
+867.63 seconds**, [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40394000872)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40394000894).
+Nine public OS/Python lanes each pass 5,673 cases; four installed Ackredit lanes
+each pass 1,452. Full receptor captures, member hashes and thirteen actual test
+summaries are verified. This receipt supersedes the intermediate cancelled run;
+it does not qualify later selector source or establish researcher acceptance.

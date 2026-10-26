@@ -174,8 +174,10 @@ topic parity and human acceptance remain open for 0.15.0.
 The [first readable comparison pane](pending_proposals/card_ligand_site_comparisons.md)
 now exposes native ligand-site findings, original input links and separate retained
 instance/assembly contexts. It preserves unknown/partial scope and deliberately
-refuses unsupported scientific persistence. Compact selectors and saved comparison
-verification remain open alongside broad human acceptance before 0.15.0.
+refuses unsupported scientific persistence. The [compact agent selector](pending_proposals/card_ligand_site_agent_selection.md)
+now shares that exact result and item identity, with mandatory scope/support and
+atomic bounded delivery. Saved comparison verification and broad human acceptance
+remain open before 0.15.0.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

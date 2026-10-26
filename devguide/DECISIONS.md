@@ -4253,3 +4253,18 @@ persistence and specialized machine selection explicit until their historical
 binding and shared adapter are implemented. Existing saved readers stay original;
 all these remaining capabilities still precede 0.15.0. See the
 [bounded route](pending_proposals/card_ligand_site_comparisons.md).
+
+
+## 2026-10-26 — Share ligand-site comparison selection between humans and agents (#148)
+
+Move the comparison cache to the captured access context, preserving one native
+calculation, original explanations, source bindings and exact result/item identity
+in either human-first or agent-first use. Add `ligand_site_access_selection@1` as
+an explicit display policy with declared textual columns, strict equality, exact
+membership, deterministic ordering and inspectable exclusions. Default compact
+columns retain the native classification code. Mandatory comparison scope and
+source membership accompany every inline value, even with zero projected fields;
+oversized values and interpretation/support closure are deferred atomically.
+Do not extend the frozen saved @1/@2 formats or admit unverified comparison saves.
+The next historical verifier must have explicit format/capability dispatch and
+preserve genuine older bundles. See the [selector continuation](pending_proposals/card_ligand_site_agent_selection.md).

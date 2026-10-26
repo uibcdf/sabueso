@@ -225,8 +225,7 @@ def test_bounded_literal_agent_read_can_reach_original_explanation_and_support()
     )
     assert support["page"]["total"] > 0
     assert not explorer.access.catalog().capabilities["scientific_adapter"]
-    with pytest.raises(ArgumentError):
-        explorer.access.select(TOPIC)
+    assert explorer.access.select(TOPIC).count == 1
 
 
 def test_missing_source_is_a_visible_input_gap_instead_of_a_false_negative():

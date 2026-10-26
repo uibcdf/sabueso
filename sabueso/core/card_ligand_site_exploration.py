@@ -97,9 +97,9 @@ def _row(item, native):
     }
 
 
-def _location(explorer, store, ref):
+def _location(access, store, ref):
     return {
-        **explorer._location(store),
+        **access._card_location(),
         "segments": [
             {"type": "Key", "value": store},
             {"type": "Record", "value": ref},
@@ -107,7 +107,18 @@ def _location(explorer, store, ref):
     }
 
 
-def _support(explorer, item, native):
+def _statement(access, ref):
+    location = _location(access, "source_assertion_store", ref)
+    from .errors import ArgumentError
+
+    try:
+        access._resolve(location)
+    except ArgumentError:
+        return {"id": ref, "state": "not_retained", "location": None}
+    return {"id": ref, "state": "present", "location": location}
+
+
+def _support(access, item, native):
     def references(value):
         return (
             [ref for ref in value if isinstance(ref, str)]
@@ -123,9 +134,7 @@ def _support(explorer, item, native):
         refs = annotation["scope"].get("field_source_assertion_ids")
         if isinstance(refs, list):
             ids.update(ref for ref in refs if isinstance(ref, str))
-    relationships = {
-        r["id"]: r for r in explorer.access._focal.data["relationship_store"]
-    }
+    relationships = {r["id"]: r for r in access._focal.data["relationship_store"]}
     for ref in item["structure_support"]["relationship_ids"]:
         ids.update(references(relationships[ref].get("source_assertion_ids")))
     return {
@@ -133,34 +142,34 @@ def _support(explorer, item, native):
         "rule": deepcopy(native["classification"]),
         "coordinate_scope_rule": "ligand_site_coordinate_scope@1",
         "relationship_location": _location(
-            explorer, "relationship_store", item["relationship_id"]
+            access, "relationship_store", item["relationship_id"]
         ),
-        "source_assertions": [explorer._statement(ref) for ref in sorted(ids)],
+        "source_assertions": [_statement(access, ref) for ref in sorted(ids)],
         "scope": "Original classification inputs; source context is not independent support for a project conclusion.",
     }
 
 
-def _materialize(explorer):
+def _materialize(access):
     from .card_scientific_access import _CapturedCard, _rule_identity
 
     native, rows, explanations, support = {}, {}, {}, {}
     status, reason = "not_applicable", "Ligand-site comparisons require a protein Card."
-    if explorer.profile == "protein" and not explorer.access._focal.pin:
+    if access.profile == "protein" and not access._focal.pin:
         status, reason = (
             "missing_prerequisite",
             "A captured protein identity is required; inspect the original content.",
         )
-    elif explorer.profile == "protein":
+    elif access.profile == "protein":
         from .ligand_explanation import _explain_ligand_site
         from .ligand_sites import ligand_sites_view
 
-        card = _CapturedCard(explorer.access._focal)
+        card = _CapturedCard(access._focal)
         native = ligand_sites_view(card)
         for item in native["items"]:
             key = item["relationship_id"]
             rows[key] = _row(item, native)
             explanations[key] = _explain_ligand_site(card, key, native)
-            support[key] = _support(explorer, item, native)
+            support[key] = _support(access, item, native)
         status = "ok" if rows else "empty"
         reason = (
             None
@@ -172,7 +181,7 @@ def _materialize(explorer):
         identity["classification"] = _rule_identity(identity["classification"])
     ref = _handle(
         "XR_",
-        {"adapter": ADAPTER, "focal": explorer.access._focal_key, "native": identity},
+        {"adapter": ADAPTER, "focal": access._focal_key, "native": identity},
     )
     for key, row in rows.items():
 
@@ -192,10 +201,10 @@ def _materialize(explorer):
         }
     payload = {
         "context": {
-            **explorer.context,
+            **access.context,
             "adapter": ADAPTER,
             "options": {},
-            "used_captures": [explorer.access._focal_key],
+            "used_captures": [access._focal_key],
         },
         "native_payload": native,
         "rows": rows,
@@ -204,15 +213,15 @@ def _materialize(explorer):
         "scope": SCOPE,
         "outcome": {"status": status, "reason": reason},
     }
-    explorer.access._objects[ref] = payload
+    access._objects[ref] = payload
     return ref
 
 
 def view(explorer, origin):
-    key = (ADAPTER, explorer.access._focal_key)
-    if key not in explorer._navigation_cache:
-        explorer._navigation_cache[key] = _materialize(explorer)
-    ref = explorer._navigation_cache[key]
+    from .card_ligand_site_access import materialize
+
+    scientific = materialize(explorer.access)
+    ref = scientific.result_ref
     location = {
         "format": "card_access_location@1",
         "kind": "result",
@@ -223,25 +232,17 @@ def view(explorer, origin):
     result = explorer._inspect(
         location, origin, title="Ligand contacts and annotated-site comparisons"
     )
-    entries = tuple(
-        _Entry(
-            {
-                **location,
-                "segments": [
-                    {"type": "Key", "value": "rows"},
-                    {"type": "Key", "value": key},
-                ],
-            },
-            key,
-            row,
-        )
-        for key, row in sorted(
-            payload["rows"].items(), key=lambda pair: (pair[1]["ligand_ref"], pair[0])
-        )
-    )
+    entries = scientific.entries
     return replace(
         result,
-        _selection=replace(result._selection, _entries=entries),
+        _selection=replace(
+            result._selection,
+            _result_ref=ref,
+            _selection_ref=_handle(
+                "XA_", {"format": "ligand_site_human_selection@1", "result_ref": ref}
+            ),
+            _entries=entries,
+        ),
         _selected=entries,
         _record_panel=TOPIC,
         _native_override=payload["native_payload"],
@@ -350,12 +351,12 @@ def links(item):
             "contact",
             rel_id,
             basis,
-            location=_location(explorer, "relationship_store", rel_id),
+            location=_location(explorer.access, "relationship_store", rel_id),
         )
     )
     rows.append(_link(explorer, "object", native["ligand_ref"], basis))
     for ref in native["structure_support"]["relationship_ids"]:
-        location = _location(explorer, "relationship_store", ref)
+        location = _location(explorer.access, "relationship_store", ref)
         link = _link(
             explorer,
             "structure",
