@@ -54,6 +54,7 @@ def admitted_selection(selection):
         return selection._scientific.wire.get("context", {}).get("adapter") in (
             "structure_exploration@1",
             "ligand_site_exploration@1",
+            "quaternary_exploration@1",
         )
     try:
         node, location = selection._access._resolve(selection._target["location"])
@@ -64,6 +65,7 @@ def admitted_selection(selection):
                 ).get("adapter") in (
                     "structure_exploration@1",
                     "ligand_site_exploration@1",
+                    "quaternary_exploration@1",
                 )
             node = selection._access._objects[location["result_ref"]]
             if isinstance(node, dict):
@@ -335,6 +337,7 @@ def _objects_for(access, records):
                                 in (
                                     "structure_exploration@1",
                                     "ligand_site_exploration@1",
+                                    "quaternary_exploration@1",
                                 )
                             ),
                             "This view needs a scientific result whose historical verifier is not yet supported.",
@@ -483,6 +486,31 @@ def _prepare(root):
             bundle["producer"]["verifier"] = SITE_VERIFIER
             bundle["capabilities"]["scientific_saved_adapters"] = list(SITE_ADAPTERS)
             for ref, obj in sites.items():
+                context = obj["context"]
+                focal = next(
+                    key
+                    for key, capture in access._captures.items()
+                    if capture.pin == context["card_ref"]
+                    and capture.snapshot == context["snapshot_id"]
+                )
+                bundle["scientific_results"][ref] = {"focal": focal}
+        from .card_exploration_quaternary import ADAPTER as QUAT_ADAPTER
+        from .card_exploration_quaternary import ADAPTERS as QUAT_ADAPTERS
+        from .card_exploration_quaternary import FORMAT as QUAT_FORMAT
+        from .card_exploration_quaternary import VERIFIER as QUAT_VERIFIER
+
+        quaternary = {
+            ref: obj
+            for ref, obj in objects.items()
+            if ref not in access._metadata_refs
+            and isinstance(obj, dict)
+            and obj.get("context", {}).get("adapter") == QUAT_ADAPTER
+        }
+        if quaternary:
+            bundle["format"] = QUAT_FORMAT
+            bundle["producer"]["verifier"] = QUAT_VERIFIER
+            bundle["capabilities"]["scientific_saved_adapters"] = list(QUAT_ADAPTERS)
+            for ref, obj in quaternary.items():
                 context = obj["context"]
                 focal = next(
                     key
@@ -685,10 +713,27 @@ def _restore_checked(bundle, expected_digest):
         from .card_exploration_sites import FORMAT as SITE_FORMAT
         from .card_exploration_sites import verify_objects
 
-        if bundle["format"] == SITE_FORMAT:
+        if bundle["format"] == "sabueso.card_exploration@4":
+            from .card_exploration_quaternary import (
+                verify_objects as verify_quaternary_objects,
+            )
+
+            verify_quaternary_objects(bundle, accesses)
+        elif bundle["format"] == SITE_FORMAT:
             verify_objects(bundle, accesses)
         else:
             _verify_objects(bundle, accesses)
+
+    # Register original verified quaternary members even for human-only bundles.
+    # The object exposed here is the retained wire, never verifier-created values.
+    for ref, result in scientific_results.items():
+        if result.wire["context"]["adapter"] == "quaternary_exploration@1":
+            access = accesses[bundle["scientific_results"][ref]["focal"]]
+            for entry in result.entries:
+                item_ref = _handle(
+                    "XI_", {"result_ref": ref, "location": entry.location}
+                )
+                access._scientific_items[item_ref] = (result, entry.key)
 
     def node(key, visiting=None):
         if key in nodes:
@@ -808,7 +853,7 @@ def _restore_checked(bundle, expected_digest):
             _native_override=None
             if scientific_ref is not None
             and scientific_results[scientific_ref].wire["context"]["adapter"]
-            != "ligand_site_exploration@1"
+            not in ("ligand_site_exploration@1", "quaternary_exploration@1")
             else _decode(
                 record["native_payload"], record.get("native_encoding", "json")
             ),
@@ -823,7 +868,7 @@ def _restore_checked(bundle, expected_digest):
             registry_entries = (
                 selection._scientific.entries
                 if selection._scientific.wire["context"]["adapter"]
-                == "ligand_site_exploration@1"
+                in ("ligand_site_exploration@1", "quaternary_exploration@1")
                 else selection._entries
             )
             for entry in registry_entries:
@@ -873,6 +918,10 @@ def _restore_checked(bundle, expected_digest):
                 "scientific_classifications"
             ],
         )
+    if bundle["format"] == "sabueso.card_exploration@4":
+        from .card_exploration_quaternary import VERIFIER as QUAT_VERIFIER
+
+        session["validation"]["verifier"] = QUAT_VERIFIER
     root = nodes[bundle["root_navigation_ref"]]
     _require(
         root.view_ref == bundle["root_view_ref"], "Saved root view binding differs."
@@ -889,7 +938,9 @@ def saved_item_operation(item, kind):
         view,
         _explorer=explorer,
         _origin=item.open()
-        if kind == "links" and item._view._record_panel != "ligand_site_comparisons"
+        if kind == "links"
+        and item._view._record_panel
+        not in ("ligand_site_comparisons", "quaternary_interpretation")
         else item._view,
         _display_request=None,
     )
@@ -911,6 +962,7 @@ def not_saved(explorer, reason, origin=None):
 
 
 def saved_topic(explorer, topic, origin, options):
+    from .card_exploration_quaternary import unrestricted as quaternary_unrestricted
     from .card_exploration_sites import unrestricted
     from .card_structure_selection_v1 import original
 
@@ -946,11 +998,22 @@ def saved_topic(explorer, topic, origin, options):
             and (
                 view._field_panel == topic
                 or (
-                    topic in ("classification", "coverage", "ligand_site_comparisons")
+                    topic
+                    in (
+                        "classification",
+                        "coverage",
+                        "ligand_site_comparisons",
+                        "quaternary_interpretation",
+                    )
                     and view._record_panel == topic
                     and (
-                        topic != "ligand_site_comparisons"
-                        or unrestricted(view._selection)
+                        topic
+                        not in ("ligand_site_comparisons", "quaternary_interpretation")
+                        or (
+                            unrestricted(view._selection)
+                            if topic == "ligand_site_comparisons"
+                            else quaternary_unrestricted(view._selection)
+                        )
                     )
                 )
                 or (
@@ -1014,21 +1077,29 @@ def saved_answer(explorer, question, options, origin):
                 view._field_panel
                 == (
                     question
-                    if question == "ligand_site_comparisons"
+                    if question
+                    in ("ligand_site_comparisons", "quaternary_interpretation")
                     else explorer._questions[question]["topic"]
                 )
                 or (
                     view._selection._scientific is not None
-                    and question != "ligand_site_comparisons"
+                    and question
+                    not in ("ligand_site_comparisons", "quaternary_interpretation")
                     and explorer._questions[question]["topic"] == "structures"
                     and view._focus is None
                 )
                 or (
-                    view._record_panel in ("classification", "ligand_site_comparisons")
+                    view._record_panel
+                    in (
+                        "classification",
+                        "ligand_site_comparisons",
+                        "quaternary_interpretation",
+                    )
                     and view._record_panel
                     == (
                         question
-                        if question == "ligand_site_comparisons"
+                        if question
+                        in ("ligand_site_comparisons", "quaternary_interpretation")
                         else explorer._questions[question]["topic"]
                     )
                 )
@@ -1093,7 +1164,17 @@ def save_selection(selection, path, overwrite):
     from .card_exploration_sites import TOPIC, is_result
 
     flags = {}
-    if is_result(selection._scientific):
+    if (
+        selection._scientific is not None
+        and selection._scientific.wire["context"]["adapter"]
+        == "quaternary_exploration@1"
+    ):
+        flags = {
+            "_record_panel": "quaternary_interpretation",
+            "_native_override": selection._scientific.wire["native_payload"],
+            "_context_override": selection._scientific.wire["context"],
+        }
+    elif is_result(selection._scientific):
         flags = {
             "_record_panel": TOPIC,
             "_native_override": selection._scientific.wire["native_payload"],

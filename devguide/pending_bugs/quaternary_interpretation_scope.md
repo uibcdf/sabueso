@@ -111,8 +111,9 @@ twelve-worker receptor suite, with the temporary-resource/memory controls.
 This correction is prerequisite science for the broad exploration work. The
 subsequent [live #148 adapter](../pending_proposals/card_quaternary_interpretation.md)
 now delivers readable computed findings and compact agent selection over these
-inputs/rules. Its original saved scientific adapter remains pending; the existing
-original source pane stays independently readable.
+inputs/rules. Its [original scientific saved reader](../pending_proposals/card_saved_quaternary.md)
+now preserves supported original requests and findings; the source pane remains
+independently readable.
 Human acceptance and agreed populated workload/storage budgets remain required;
 0.15.0 consolidation, schema freezing, staging and release remain paused. No
 private pilot reads or new scientific source queries are involved.

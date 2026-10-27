@@ -253,7 +253,10 @@ class CardItem:
     @property
     def support(self):
         if self._view._record_panel == "quaternary_interpretation":
-            from .card_quaternary_exploration import support
+            if self._view._explorer.mode == "saved":
+                from .card_quaternary_history_v1 import support
+            else:
+                from .card_quaternary_exploration import support
 
             return support(self)
         if self._view._record_panel == "ligand_site_comparisons":
@@ -1359,7 +1362,12 @@ class CardExplorer:
                 view._record_panel
                 for view in views
                 if view._record_panel
-                in ("classification", "coverage", "ligand_site_comparisons")
+                in (
+                    "classification",
+                    "coverage",
+                    "ligand_site_comparisons",
+                    "quaternary_interpretation",
+                )
             )
             from .card_structure_selection_v1 import original
 

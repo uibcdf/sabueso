@@ -85,12 +85,15 @@ versions source/declaration/coordinate admission and keeps every relevant pair.
 Frozen original readers and packet projections remain available. The
 [live quaternary interpretation](pending_proposals/card_quaternary_interpretation.md)
 now shares those findings between a readable question and compact agent selection
-with exact original support. Its original saved scientific reader remains pending.
+with exact original support. The
+[original scientific saved reader](pending_proposals/card_saved_quaternary.md)
+now retains those findings and exact requests independently of current science.
 
 The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
 adds readable original subunit, assembly and interface declarations, exact local
 source/structure navigation and independent saved reading. The separate computed
-topic does not complete original scientific saved reading or researcher acceptance. The maintainer-requested [Swiss-Prot utilization audit #164](https://github.com/uibcdf/sabueso/issues/164)
+topic now supports original scientific saved reading; researcher and workload
+acceptance remain open. The maintainer-requested [Swiss-Prot utilization audit #164](https://github.com/uibcdf/sabueso/issues/164)
 is a separate coverage review, without replacing the approved exploration order.
 
 Current design work: [human exploration of Card](pending_proposals/card_human_exploration_api.md)

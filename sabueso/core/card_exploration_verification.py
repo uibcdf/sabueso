@@ -22,6 +22,9 @@ def equal(a, b):
 
 
 def verify_bundle(bundle, expected_digest):
+    from .card_exploration_quaternary import ADAPTERS as QUAT_ADAPTERS
+    from .card_exploration_quaternary import FORMAT as QUAT_FORMAT
+    from .card_exploration_quaternary import VERIFIER as QUAT_VERIFIER
     from .card_exploration_science import ADAPTERS
     from .card_exploration_science import FORMAT as SCIENCE_FORMAT
     from .card_exploration_science import VERIFIER as SCIENCE_VERIFIER
@@ -32,7 +35,7 @@ def verify_bundle(bundle, expected_digest):
 
     require(
         isinstance(bundle, dict)
-        and bundle.get("format") in (FORMAT, SCIENCE_FORMAT, SITE_FORMAT),
+        and bundle.get("format") in (FORMAT, SCIENCE_FORMAT, SITE_FORMAT, QUAT_FORMAT),
         "Unsupported exploration format.",
     )
     names = {
@@ -51,14 +54,23 @@ def verify_bundle(bundle, expected_digest):
         "digests",
         "bundle_digest",
     }
-    sites = bundle["format"] == SITE_FORMAT
-    scientific = bundle["format"] in (SCIENCE_FORMAT, SITE_FORMAT)
+    quaternary = bundle["format"] == QUAT_FORMAT
+    sites = bundle["format"] in (SITE_FORMAT, QUAT_FORMAT)
+    scientific = bundle["format"] in (SCIENCE_FORMAT, SITE_FORMAT, QUAT_FORMAT)
     if scientific:
         names.add("scientific_results")
     require(set(bundle) == names, "Missing or unsupported required bundle member.")
     require(
         bundle["producer"]["verifier"]
-        == (SITE_VERIFIER if sites else SCIENCE_VERIFIER if scientific else VERIFIER),
+        == (
+            QUAT_VERIFIER
+            if quaternary
+            else SITE_VERIFIER
+            if sites
+            else SCIENCE_VERIFIER
+            if scientific
+            else VERIFIER
+        ),
         "The required historical verifier is unavailable.",
     )
     actual = digest(
@@ -79,12 +91,21 @@ def verify_bundle(bundle, expected_digest):
     require(members == bundle["digests"], "Exploration member digest differs.")
     require(
         bundle["capabilities"]["scientific_saved_adapters"]
-        == list(SITE_ADAPTERS if sites else ADAPTERS)
+        == list(QUAT_ADAPTERS if quaternary else SITE_ADAPTERS if sites else ADAPTERS)
         if scientific
         else not bundle["capabilities"]["scientific_saved_adapters"],
         "Unsupported saved scientific adapter.",
     )
     for key, value in bundle["objects"].items():
+        if (
+            isinstance(value, dict)
+            and "native_payload" in value
+            and value.get("context", {}).get("adapter") == "quaternary_exploration@1"
+        ):
+            require(
+                quaternary and key in bundle["scientific_results"],
+                "A quaternary result needs its explicit original manifest.",
+            )
         if (
             isinstance(value, dict)
             and "native_payload" in value
@@ -264,6 +285,10 @@ def _historical_resolution(access, target):
 
 
 def _verify_links(view):
+    if view.native_payload.get("rule") == "quaternary_interpretation_links@1":
+        from .card_exploration_quaternary import verify_links
+
+        return verify_links(view)
     if view.native_payload.get("rule") == "quaternary_context_links@1":
         from .card_quaternary_source_v1 import verify_links
 
@@ -294,6 +319,7 @@ def _verify_links(view):
                     "retained_context_links@3",
                     "ligand_site_context_links@1",
                     "quaternary_context_links@1",
+                    "quaternary_interpretation_links@1",
                 ),
                 "Missing retained link-detail origin.",
             )
@@ -474,9 +500,15 @@ def _verify_links(view):
 
 
 def _verify_request(view, access):
+    from .card_exploration_quaternary import is_explanation as is_quaternary_explanation
+    from .card_exploration_quaternary import (
+        verify_explanation as verify_quaternary_explanation,
+    )
     from .card_exploration_science import _encode, _encoding, _verify_selection
     from .card_exploration_sites import is_explanation, verify_explanation
 
+    if is_quaternary_explanation(view):
+        return verify_quaternary_explanation(view)
     if is_explanation(view):
         return verify_explanation(view)
     if view._selection._scientific is not None:
@@ -699,7 +731,12 @@ def _verify_request(view, access):
 
 def _verify_state(view, record, native, access):
     from .card_exploration import CardItem
-    from .card_exploration_sites import is_explanation
+    from .card_exploration_quaternary import is_explanation as is_quaternary_explanation
+    from .card_exploration_sites import is_explanation as is_site_explanation
+
+    def is_explanation(value):
+        return is_site_explanation(value) or is_quaternary_explanation(value)
+
     from .card_exploration_storage import _cell_record
 
     state = record["state"]
@@ -1248,7 +1285,10 @@ def _verify_support(bundle, nodes):
                     "Original related links belong to a different originating item.",
                 )
             if operation == "explanations":
-                if source._view._record_panel == "ligand_site_comparisons":
+                if source._view._record_panel in (
+                    "ligand_site_comparisons",
+                    "quaternary_interpretation",
+                ):
                     wire = source._view._explorer.access._objects[
                         source._view.result_ref
                     ]
@@ -1328,12 +1368,27 @@ def verify_views(bundle, nodes):
 
     for key, view in nodes.items():
         record, access = bundle["views"][key], view._explorer.access
+        from .card_exploration_quaternary import is_view as is_quaternary_view
+        from .card_exploration_quaternary import verify_view as verify_quaternary_view
         from .card_exploration_sites import FORMAT as SITE_FORMAT
         from .card_exploration_sites import is_view, verify_view
 
+        if is_quaternary_view(view):
+            require(
+                bundle["format"] == "sabueso.card_exploration@4",
+                "Quaternary interpretation requires its original saved format.",
+            )
+            require(
+                view.result_ref in bundle["scientific_results"]
+                and bundle["scientific_results"][view.result_ref]["focal"]
+                == record["focal"],
+                "Quaternary result has no manifest or has a foreign capture.",
+            )
+            verify_quaternary_view(view, record)
+            continue
         if is_view(view):
             require(
-                bundle["format"] == SITE_FORMAT,
+                bundle["format"] in (SITE_FORMAT, "sabueso.card_exploration@4"),
                 "Site comparison requires its explicit saved format.",
             )
             require(

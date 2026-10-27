@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-26**, live quaternary human/agent interpretation and isolated receiving scope
+Last updated: **2026-10-26**, original quaternary human/agent scientific reading and qualified receiving scope
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -28,20 +28,27 @@ source and release receipts remain unchanged.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed
-   quaternary interpretation and a named compact selector remain separate work.
-   The [native #165 correction](pending_bugs/quaternary_interpretation_scope.md)
-   now versions declaration/coordinate admission and preserves all comparisons;
-   The [live human/agent adapter](pending_proposals/card_quaternary_interpretation.md)
-   now shares those findings with exact original support, selection and bounded
-   delivery. Finish its versioned original scientific saved reader next; current
-   live save capabilities are false and old saved requests return `not_saved`.
+   quaternary interpretation and its compact selector now share one captured native
+   result, original support and bounded delivery. The
+   [native #165 correction](pending_bugs/quaternary_interpretation_scope.md)
+   versions declaration/coordinate admission and preserves all comparisons.
+   The [human/agent adapter](pending_proposals/card_quaternary_interpretation.md)
+   and [original scientific reader](pending_proposals/card_saved_quaternary.md)
+   preserve those findings, exact saved requests and source/structure navigation.
+   New scientific bundles use explicit format @4 with frozen independent
+   verification; older readers stay unchanged and unretained requests remain
+   `not_saved`. Continue the remaining structural transitions and combined
+   researcher/workload acceptance, then the inventory's next scientific panels.
 
-   The preceding `8f5eaca` checkpoint passes 7,370 full local cases and governance,
-   but installed public-Ackredit CI finds a missing staged test-helper module.
-   The receiving case is now self-contained in its already-declared module,
-   with an isolated regression and no workflow changes;
-   replacement exact-source CI must qualify that public receiving scope. Source
-   CI, local code checks and installed-artifact qualification remain separate.
+   The public live checkpoint `0830de57dd1d027268c98066b130fe42b36a3c39`
+   is independently qualified: [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40446248497)
+   and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40446248513),
+   with complete receptor captures, member hashes and all thirteen summaries
+   checked. Nine source lanes pass 5,843 cases each and four installed public-
+   Ackredit lanes pass 1,452 each. The self-contained receiving repair closes
+   #165 without workflow changes. The new saved reader has separate local/full/
+   remote receipts in #148/#112; the preceding run does not qualify it automatically.
+
 5. Keep scientific review separate: the [public worksheet](pending_proposals/scientific_review_packet_20261020.md)
    and [source drafts](pending_proposals/located_source_review.md) await actual
    scientist decisions. Authorized primary methods for the three identified
@@ -211,8 +218,8 @@ by this closeout.
 
 
 The preceding `a9b1e63` source is fully qualified: 7,258 local-original cases /
-926.36s, [CI15/15](https://github.com/uibcdf/sabueso/actions/runs/40411424384) and
-[governance1/1](https://github.com/uibcdf/sabueso/actions/runs/40411424666), with
+926.36s, [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40411424384) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40411424666), with
 full captures and all thirteen summaries checked (nine OS/Python lanes each
 5,705; four Ackredit lanes each 1,452). Source/input hashes904/37 match. The failed
 /tmp-quota run remains diagnostic; the same-source retry on owned checkout scratch

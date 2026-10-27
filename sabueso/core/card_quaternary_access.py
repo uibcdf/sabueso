@@ -39,8 +39,7 @@ def descriptor():
             "format": SUPPORT_FORMAT,
             "record_location": "Append Record(id) to source_store_location only for a present member.",
         },
-        "save": False,
-        "saved_reading": "not_supported_by_this_live_adapter",
+        "save": True,
     }
 
 
@@ -140,15 +139,9 @@ def materialize(access):
 
 
 def saved_selection(access, fields, options, where, item_refs, order_by):
-    """An original reader never materializes an unretained interpretation."""
-    from .card_exploration_storage import missing_selection
-    from .card_quaternary_selection_v1 import active, normalize, projection
+    from .card_exploration_quaternary import saved_selection as original_selection
 
-    fields, options = projection(fields), options_for_quaternary(options)
-    query = normalize(where, item_refs, order_by)
-    return missing_selection(
-        access, TOPIC, options, fields, query if active(query) else None
-    )
+    return original_selection(access, fields, options, where, item_refs, order_by)
 
 
 def defer_frame(frame):

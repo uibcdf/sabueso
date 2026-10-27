@@ -647,6 +647,21 @@ class CardAccess:
                     )
 
                     data["quaternary_interpretation"] = quaternary_descriptor()
+                else:
+                    from .card_quaternary_history_v1 import (
+                        descriptor as quaternary_descriptor,
+                    )
+
+                    data["quaternary_interpretation"] = quaternary_descriptor()
+                    data["quaternary_interpretation"]["availability"] = (
+                        "retained"
+                        if "quaternary_interpretation"
+                        in self.capabilities["scientific_topics"]
+                        else "not_saved"
+                    )
+                    data["quaternary_interpretation"]["selection_availability"] = (
+                        "retained_requests_only"
+                    )
                 if self.mode == "saved":
                     data[TOPIC]["availability"] = (
                         "retained"
@@ -941,7 +956,10 @@ class CardAccess:
             "interface_classification",
             "interface_family_comparison",
         ):
-            from .card_quaternary_access import defer_frame
+            if self.mode == "saved":
+                from .card_quaternary_history_v1 import defer_frame
+            else:
+                from .card_quaternary_access import defer_frame
 
             return defer_frame(item)
         if item.get("kind") == "ligand_contact_comparison":

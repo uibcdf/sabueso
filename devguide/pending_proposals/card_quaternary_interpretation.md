@@ -57,12 +57,12 @@ destinations. Cursor ownership and quantity/unit contracts remain in force.
 
 ## Live scope and remaining acceptance
 
-This block delivers **live** human and agent access. Its save capability is false,
-and saves fail before writing. Existing source-pane saved reading still works
-after visiting this live topic; new science is not smuggled into an older format.
-Old saved requests for the new topic return `not_saved`, without current scientific
-execution. A versioned original scientific verifier, exact saved requests,
-independent inert reading and resealed-tampering tests remain the next block.
+The initial block delivered live human and agent access with save explicitly
+unavailable. The [original scientific reader](card_saved_quaternary.md) now
+adds format @4, frozen independent verification, exact saved requests and inert
+navigation over those original findings. Older files lacking this topic and
+unretained request variants remain `not_saved`; no current scientific execution
+is used to fill them. The older source-pane reader remains independent.
 
 Researcher walkthroughs and agreed workload/memory/storage budgets remain separate
 acceptance. The [complete inventory](card_exploration_completion_0150.md) governs
@@ -115,3 +115,11 @@ Owned evidence: `recovered_work/quaternary_exploration_148_20261027/`, owner
 #148/#165/#112; review at next exploration checkpoint, replacement remote
 qualification or release acceptance. Preserve original inputs, useful receipts
 and active CI; remove only finished owned disposable scratch.
+
+The final public live source `0830de57dd1d027268c98066b130fe42b36a3c39`
+passes [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40446248497)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40446248513).
+Complete captures, member hashes and all thirteen actual test summaries are
+verified: nine source lanes each pass 5,843 and four installed public-Ackredit
+lanes each pass 1,452. This closes #165. It does not qualify later saved-reader
+changes or establish researcher/workload acceptance.

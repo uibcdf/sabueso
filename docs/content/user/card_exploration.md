@@ -606,11 +606,38 @@ typed read destinations make that explicit. Source members marked `not_retained`
 have no invented record destination. This describes what the Card retains, not
 what an external source does not know.
 
-This new scientific topic currently supports live captures. Its save capability
-is `False`; original saved scientific reading is still pending. The original
-`quaternary_structure` source pane above remains saveable. Asking an old saved
-exploration for this new interpretation returns `not_saved`, without running a
-current scientific reader. Use `start_new()` explicitly for a new interpretation.
+Save the original question, findings, input statements and navigation to review
+them later. Reopening retains the original interpretation; it does not run a
+current scientific reader or refresh a source:
+
+```python
+interface_receipt = interface_findings.save("interface-review.json")
+original_interfaces = sabueso.read_exploration(
+    "interface-review.json", expected_digest=interface_receipt["bundle_digest"]
+)
+original_interfaces.table()
+```
+
+To retain an exact agent request, save that selection explicitly. Original reading
+returns the same projection, equality filters, members and order; an unretained
+request returns `not_saved`:
+
+```python
+compact_interface_receipt = compact_interfaces.save("compact-interface-review.json")
+original_compact = sabueso.read_exploration(
+    "compact-interface-review.json",
+    expected_digest=compact_interface_receipt["bundle_digest"],
+)
+original_compact.explorer.access.select(
+    "quaternary_interpretation",
+    fields=["kind", "partner_ref", "status", "finding"],
+    where={"kind": "interface_family_comparison"},
+).page(max_bytes=8192)
+```
+
+The original `quaternary_structure` source pane remains saveable. Older files
+without this interpretation return `not_saved` for it, without a new calculation.
+Use `start_new()` explicitly for a new local interpretation of the captured Card.
 
 ## Explore experimental structures
 

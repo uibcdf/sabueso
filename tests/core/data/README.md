@@ -61,6 +61,10 @@ reads and sockets. Preserve these original bytes; never regenerate them to make
 a future reader pass. Gzip packages the fixture, not the public reader format.
 This exploration fixture does not freeze a Card schema version.
 
+Compressed SHA-256: `4acb555503c9f1d1e1b26635c11ead3a1423dc5f183cd720e343f96b748d2719`.
+
+Uncompressed SHA-256: `6fc3cfdef13b8bbd1fe1b53dc489dc3cd83fee96dc9bb6a471bc53f436f97c9e`.
+
 ## Original quaternary interpretations
 
 `quaternary_legacy_v2.json.gz` was produced at
@@ -80,6 +84,20 @@ Compressed SHA-256: `df21b5a94494b6d9d3ea87c0c5abc3dac5a4f714b038ac597afddc83af3
 
 Uncompressed SHA-256: `f8fa5fc70bb601124d43ebc40757303bffd764722ecfddc3d3689c9f8377f9e3`.
 
-Compressed SHA-256: `4acb555503c9f1d1e1b26635c11ead3a1423dc5f183cd720e343f96b748d2719`.
+## Original live quaternary adapter
 
-Uncompressed SHA-256: `6fc3cfdef13b8bbd1fe1b53dc489dc3cd83fee96dc9bb6a471bc53f436f97c9e`.
+`quaternary_live_v1.json.gz` was produced before saved-reader implementation at
+`0830de57dd1d027268c98066b130fe42b36a3c39`, actual editable SDK
+`0.14.0+109.g0830de5`. It preserves original complete scientific wires, identities
+and human schemas for clearly synthetic positive, uncertain and incomplete-
+structure-context Cards. The accession labels are test context only. No source
+query, private pilot or actual scientific claim about that accession is included.
+
+Frozen verifier predicates must match these original outputs and source versions.
+Only generated rule runtime-version labels allow a different consumer SDK; the
+retained producer and source metadata are not rewritten. Preserve these bytes;
+this capsule does not freeze a Card schema or represent a historical @4 writer.
+
+Compressed SHA-256: `af8e80552aa1509a3c36800bd585204a57e1aec1477fe730a5c650113c2ce3f5`.
+
+Uncompressed SHA-256: `4e5564a842550108de808becce428539599509e8263ea365e6eae2b1a03611ca`.

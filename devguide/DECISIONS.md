@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Original quaternary scientific reading (2026-10-26, #148)
+
+Register `sabueso.card_exploration@4` and `quaternary_exploration_binding@1`
+only when a retained bundle includes `quaternary_exploration@1`. Preserve every
+original native classification/pair, source membership, quantity, request,
+selection and navigation origin. Frozen original predicates verify retained
+inputs independently of current Card construction, scientific readers, catalogs,
+fixtures or network; expected values never replace original outputs. Recover
+entry order from native arrays and field ordinals, not canonical JSON key order.
+Keep older formats/readers unchanged, exact unretained requests `not_saved`, and
+researcher/workload acceptance separate. See the
+[scope and qualification](pending_proposals/card_saved_quaternary.md).
+
 ## Shared live quaternary exploration (2026-10-26, #148/#165)
 
 Keep original declarations in `quaternary_structure`; expose computed interface

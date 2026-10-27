@@ -316,12 +316,14 @@ source identity and exact coordinate admission, explicit uncertainty, preserved
 historical rules and versioned full/index support. The
 [live human/agent adapter](pending_proposals/card_quaternary_interpretation.md)
 now shares that science with exact support and bounded selection. Complete its
-versioned original scientific saved reader and researcher/workload acceptance.
+researcher/workload acceptance and remaining structural transitions; its
+[original scientific saved reader](pending_proposals/card_saved_quaternary.md)
+now preserves supported human/agent requests and original findings.
 
 The [quaternary source continuation](pending_proposals/card_quaternary_source_exploration.md)
 delivers original subunit, assembly and interface detail, local structure/source
-navigation and independent saved reading. Complete original saved computed
-interpretation and broader region/model/assembly transitions
+navigation and independent saved reading. Complete broader
+region/model/assembly transitions
 within the sequence below; source presentation alone does not close that work.
 
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all

@@ -17,7 +17,8 @@ This source pane did not change `Card.oligomer()` / `explain_oligomer()`.
 The subsequent [native #165 correction](../pending_bugs/quaternary_interpretation_scope.md)
 introduces independently versioned interpretation. A separate
 [live human/agent adapter](card_quaternary_interpretation.md) now shares those
-findings; original saved scientific interpretation remains pending.
+findings; its separate [original scientific reader](card_saved_quaternary.md)
+now preserves supported saved interpretations and requests.
 
 The frozen `card_quaternary_source_v1.py` predicates bind full typed source
 locations, original indices and field/relationship support. Equal assembly IDs in
@@ -51,8 +52,8 @@ Agents can use `rows()` and the existing bounded literal `CardAccess.read` over
 exact original locations, including nested `value_location` reads. Page-member
 completeness is separate from nested-value inclusion. This does not implement a
 named compact scientific quaternary selector by itself. The separate live
-computed topic supplies that selector. Original scientific saved reading,
-broader region/model/assembly transitions, agreed workloads and actual researcher
+computed topic supplies that selector and original scientific saved reading.
+Broader region/model/assembly transitions, agreed workloads and actual researcher
 acceptance remain in the [completion inventory](card_exploration_completion_0150.md).
 
 The initial integration passes **324 cases**, then the broad integration passes

@@ -368,11 +368,14 @@ def _parts(view):
             + "; source/request states remain distinct. Unknown counts are not zero; no global completeness score is inferred."
         )
     if view._record_panel == "quaternary_interpretation":
-        from .card_quaternary_exploration import SCOPE
+        if view._explorer.mode == "saved":
+            from .card_quaternary_history_v1 import SCOPE
+        else:
+            from .card_quaternary_exploration import SCOPE
 
         opening.append(SCOPE)
         opening.append(
-            "This live interpretation is not yet supported by the original saved scientific reader; save capabilities are explicit."
+            "Saving retains the original interpretation, input statements and supported navigation for independent reading."
         )
         if view.presentation == "detail" and view._selected:
             opening.append(
@@ -756,7 +759,10 @@ def _parts(view):
 
 def _headers(view):
     if view._record_panel == "quaternary_interpretation":
-        from .card_quaternary_exploration import HEADERS
+        if view._explorer.mode == "saved":
+            from .card_quaternary_history_v1 import HEADERS
+        else:
+            from .card_quaternary_exploration import HEADERS
 
         return list(HEADERS)
     if view._record_panel == "ligand_site_comparisons":

@@ -9,7 +9,7 @@ import pytest
 
 import sabueso
 from sabueso.core.card import Card
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.snapshot import canonical_json
 from sabueso.core.source_assertion_store import make_source_assertion
@@ -469,24 +469,15 @@ def test_empty_other_natures_and_live_history_capabilities_are_explicit(
     source = explorer.view("quaternary_structure")
     new = explorer.answer(TOPIC)
     selection = explorer.access.select(TOPIC)
-    assert not new.capabilities["save"] and not selection.capabilities["save"]
-    with pytest.raises(StorageError):
-        new.save(tmp_path / "unsupported-human.json")
-    with pytest.raises(StorageError):
-        selection.save(tmp_path / "unsupported-agent.json")
-    assert not (tmp_path / "unsupported-human.json").exists()
+    assert new.capabilities["save"] and selection.capabilities["save"]
+    new.save(tmp_path / "human.json")
+    selection.save(tmp_path / "agent.json")
     source.save(tmp_path / "source.json")
     retained = json.loads((tmp_path / "source.json").read_text(encoding="utf-8"))
-    assert not any(
-        isinstance(value, dict)
-        and value.get("context", {}).get("adapter") == "quaternary_exploration@1"
-        for value in retained["objects"].values()
-    )
+    assert retained["format"] == "sabueso.card_exploration@4"
     monkeypatch.setattr(
         importlib.import_module("sabueso.core.oligomer"), "oligomer_view", forbidden
     )
     saved = sabueso.read_exploration(tmp_path / "source.json")
-    assert saved.explorer.answer(TOPIC).outcome["status"] == "not_saved"
-    assert (
-        saved.explorer.access.select(TOPIC).page()["outcome"]["status"] == "not_saved"
-    )
+    assert saved.explorer.answer(TOPIC).native_payload == new.native_payload
+    assert saved.explorer.access.select(TOPIC).page()["outcome"]["status"] == "ok"

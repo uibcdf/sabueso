@@ -40,7 +40,8 @@ preserves all source-bound declarations and exact interface/family pairs under n
 rules. The separate [live adapter](card_quaternary_interpretation.md) now shares
 interface classifications and every family comparison between readable human
 views and compact agent selections, with original support and explicit unknowns.
-Its original scientific saved reader and researcher acceptance remain pending.
+Its [original scientific saved reader](card_saved_quaternary.md) now preserves
+human/agent requests, input scope and navigation. Researcher acceptance remains pending.
 
 | Nature / topic | Current exploration position | Completion requirement |
 | --- | --- | --- |
@@ -64,7 +65,7 @@ Its original scientific saved reader and researcher acceptance remain pending.
 | Shared: identity, sources, coverage and full content | Initial discovery/inspection/support/coverage delivered | Consistent integration across all panels; generic/unknown natures retain complete literal access |
 | Shared: literature | Existing literature readers/explanations; no rich explorer panel | Publication roles, exact cited identities and original locators; no implication that every paper supports every displayed claim |
 | Shared: contextual navigation and saved reading | Initial capture/navigation and structural/field/coverage history delivered | Support every newly delivered panel's exact options, source closure, independent inert reading and explicit new interpretation |
-| Shared: compact agent access | Literal, structural, ligand-site comparison and live quaternary interpretation exact selection delivered; shared source-path membership reduces comparison delivery overhead | Complete original scientific saved reading for quaternary interpretation and bring parity to subsequent adapters; equivalent requests share science, scope, units and support |
+| Shared: compact agent access | Literal, structural, ligand-site comparison and live quaternary interpretation exact selection delivered; shared source-path membership reduces comparison delivery overhead | Original quaternary scientific saved reading is now delivered; bring parity to subsequent adapters; equivalent requests share science, scope, units and support |
 
 An unsupported/unqueried state is a legitimate answer for a particular captured
 Card. It is not proof that a missing rich adapter is implemented. Each panel

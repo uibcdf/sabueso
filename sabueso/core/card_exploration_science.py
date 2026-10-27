@@ -36,11 +36,9 @@ def _scientific_metadata(value):
 
 
 def _encoding(view):
-    if (
-        view._selection._scientific is not None
-        and view._selection._scientific.wire["context"]["adapter"]
-        == "ligand_site_exploration@1"
-    ):
+    if view._selection._scientific is not None and view._selection._scientific.wire[
+        "context"
+    ]["adapter"] in ("ligand_site_exploration@1", "quaternary_exploration@1"):
         return "json"
     if view._selection._scientific is not None:
         return "structure_row" if view._focus is not None else "structure_inventory"
@@ -100,6 +98,10 @@ def _decode(value, encoding):
 
 
 def _restore_result(ref, wire):
+    if wire.get("context", {}).get("adapter") == "quaternary_exploration@1":
+        from .card_quaternary_history_v1 import restore_result
+
+        return restore_result(ref, wire)
     if wire.get("context", {}).get("adapter") == "ligand_site_exploration@1":
         from .card_ligand_site_history_v1 import restore_result
 
@@ -499,8 +501,14 @@ def _verification_report(bundle):
             for item in wire["native_payload"].get("items", []):
                 if isinstance(item.get("instance_rule"), str):
                     rules.add(item["instance_rule"])
-        for explanation in wire["explanations"].values():
-            declared(explanation["rule"])
+        if wire["context"].get("adapter") == "quaternary_exploration@1":
+            for rule in wire["native_payload"].get("rules", []):
+                declared(rule)
+            declared(wire["native_payload"].get("canonical_reference"))
+            declared(wire["explanation"].get("rule"))
+        else:
+            for explanation in wire["explanations"].values():
+                declared(explanation["rule"])
     for value in bundle["objects"].values():
         if _scientific_metadata(value):
             declared(value.get("rule"))
