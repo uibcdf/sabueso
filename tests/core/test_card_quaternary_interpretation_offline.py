@@ -54,7 +54,7 @@ def relation(card, predicate, obj, q, *, subject=SUBJECT, suffix=""):
     ref = assertion(
         card,
         "relationships." + predicate,
-        {"object_ref": obj, "qualifiers": q},
+        {"subject_ref": subject, "object_ref": obj, "qualifiers": q},
         subject=subject,
     )
     row = make_relationship(subject, predicate, obj, deepcopy(q), [ref])

@@ -502,12 +502,12 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
     record_id = primary or ""
 
     def assert_value(
-        fp: str, value: Any, metadata: Dict[str, Any] | None = None
+        fp: str, value: Any, metadata: Dict[str, Any] | None = None, native_value=None
     ) -> None:
         native = (
             metadata.get("uniprot_feature")
             if fp.startswith("features_positional.") and metadata
-            else None
+            else native_value
         )
         assertion = make_source_assertion(
             fp,
@@ -535,7 +535,9 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         for value, eco, *extra in items:
             metadata = {"eco": eco} if eco else {}
             metadata.update(extra[0] if extra else {})
-            assert_value(fp, value, metadata or None)
+            assert_value(
+                fp, value, metadata or None, extra[1] if len(extra) > 1 else None
+            )
 
     # identifiers and names
     if primary:
@@ -568,12 +570,20 @@ def map_protein(uniprot_json: Dict[str, Any], retrieved_at: str) -> Dict[str, An
         ctype = c.get("commentType")
         if ctype in _TEXT_COMMENTS:
             # A comment restricted to one isoform or chain keeps that restriction on
-            # its SourceAssertion (#80); the value stays the stated text.
+            # its SourceAssertion (#80). Scoped statements also retain their
+            # native context in semantic identity; equal text is not equal scope.
             molecule = {"molecule": c["molecule"]} if c.get("molecule") else {}
-            for t in c.get("texts", []) or []:
+            for index, t in enumerate(c.get("texts", []) or []):
                 if t.get("value"):
                     text_items[_TEXT_COMMENTS[ctype]].append(
-                        (t["value"], _eco(t.get("evidences")), molecule)
+                        (
+                            t["value"],
+                            _eco(t.get("evidences")),
+                            molecule,
+                            {"comment": deepcopy(c), "text_index": index}
+                            if molecule
+                            else None,
+                        )
                     )
         elif ctype == "ALTERNATIVE PRODUCTS":
             for isoform in c.get("isoforms") or []:

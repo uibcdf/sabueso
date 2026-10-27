@@ -205,7 +205,17 @@ class SourceAssertionStore:
             self.add(assertion)
 
     def add(self, assertion: SourceAssertion) -> str:
-        """Add a SourceAssertion and return its id (generated if missing)."""
+        """Add a detached record without replacing conflicting observations.
+
+        An assertion ID names a semantic statement, not its acquisition/version
+        observation. Different records under that ID need separate snapshots;
+        selecting the last one here would discard its original source context.
+        """
+        from copy import deepcopy
+
+        from .errors import SchemaError
+        from .snapshot import canonical_json
+
         if assertion.get("id"):
             assertion_id = assertion["id"]
         else:
@@ -218,7 +228,47 @@ class SourceAssertionStore:
             )
             assertion["id"] = assertion_id
 
-        self.store[assertion_id] = assertion
+        existing = self.store.get(assertion_id)
+        if existing is not None:
+            conflict = (
+                f"SourceAssertion {assertion_id} has different retained observations. "
+                "Keep them in separate Card snapshots; refresh a Card to obtain a new observation."
+            )
+
+            def completed(left, right):
+                if isinstance(left, dict) and isinstance(right, dict):
+                    merged = deepcopy(left)
+                    for key, value in right.items():
+                        merged[key] = (
+                            completed(left[key], value)
+                            if key in left
+                            else deepcopy(value)
+                        )
+                    return merged
+                if canonical_json(left) != canonical_json(right):
+                    raise SchemaError(conflict)
+                return deepcopy(left)
+
+            try:
+                identical = canonical_json(
+                    {k: v for k, v in existing.items() if k != "source_metadata"}
+                ) == canonical_json(
+                    {k: v for k, v in assertion.items() if k != "source_metadata"}
+                )
+                merged = completed(
+                    existing.get("source_metadata", {}),
+                    assertion.get("source_metadata", {}),
+                )
+            except (TypeError, ValueError) as exc:
+                raise SchemaError(
+                    "Repeated SourceAssertion observations require comparable retained records."
+                ) from exc
+            if not identical:
+                raise SchemaError(conflict)
+            if "source_metadata" in existing or "source_metadata" in assertion:
+                self.store[assertion_id] = {**existing, "source_metadata": merged}
+            return assertion_id
+        self.store[assertion_id] = deepcopy(assertion)
         return assertion_id
 
     def get(self, source_assertion_id: str) -> Optional[SourceAssertion]:

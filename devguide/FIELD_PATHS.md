@@ -1,5 +1,15 @@
 # Sabueso — Canonical Field Paths
 
+Development schema 0.3.14 retains Europe PMC located-annotation acquisition pairs
+in `source_metadata.annotation_requests[]` (`requested_article`, `retrieved_at`),
+with `source_metadata.annotation_request_rule` naming
+`located_annotation_observations@1` (#166). Identical native statements keep every
+alias/date receipt; different subjects, content, releases or other source context
+never coalesce. The representative root pair is deterministic, not a latest-source
+selection. Molecule-scoped UniProt comments retain their original comment and text
+index in opaque `asserted_value`, with the text in `normalized_value`. No biological
+field is added; migration leaves missing historical contexts unchanged.
+
 Development schema 0.3.14 adds optional
 `relationship_store[].qualifiers.sequence_context` on `has_predicted_structure`
 (#148), with named `alphafold_sequence_context@1` and original input assertions.

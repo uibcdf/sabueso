@@ -2,8 +2,22 @@ schema:
   name: sabueso-card
   version: 0.3.14
   created_at: 2026-02-10
-  updated_at: 2026-10-24
+  updated_at: 2026-10-27
   note: |
+    0.3.14 preserves every Europe PMC located-annotation request/date pair in
+    source_metadata.annotation_requests[] (requested_article, retrieved_at), under
+    annotation_request_rule located_annotation_observations@1 (#166). The scientific
+    annotation mapping stays located_accession_mapping@2. Identical native observations may combine
+    these receipts only when subject, content, source release and other metadata
+    match exactly. The representative requested_article/retrieved_at pair is the
+    first canonical-JSON-sorted receipt, not a latest/earliest scientific judgment.
+    Different native statements remain separate; conflicts cannot overwrite them.
+    Freshly mapped molecule-scoped UniProt text comments retain the complete native
+    comment and text_index in asserted_value, with their text in normalized_value;
+    equal text about different products therefore has distinct semantic IDs.
+    The ID algorithm, historical assertions, published schemas and pins stay fixed.
+    Migration never invents missing request observations or lost comment contexts;
+    refresh obtains new source inputs. These additions are not new biological fields.
     0.3.14 retains the complete original native UniProt positional feature in
     asserted_value, with the Card annotation in normalized_value (#162). Native
     molecule, citation, compound-location and unprojected contexts therefore stay

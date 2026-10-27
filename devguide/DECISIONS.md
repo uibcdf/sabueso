@@ -1,5 +1,21 @@
 # Sabueso — Decision Log
 
+## Preserve source observations under stable assertion identity (2026-10-27, #166)
+
+Keep semantic SourceAssertion IDs independent of source release/retrieval date.
+Deduplicate identical records and complete only conflict-free source metadata;
+reject incompatible duplicate observations
+under one ID before insertion/aggregation, with separate Card snapshots as the
+recovery route. Detach stored records from caller input. Refresh rebuilds a new
+Card and preserves prior pins. Original saved reading binds the captured records;
+semantic input IDs/value replay do not independently identify an earlier mapping
+invocation's observation. Europe PMC observation rule @1 explicitly preserves every
+identical annotation's alias/date receipt in optional metadata on unpublished
+schema 0.3.14. Scoped UniProt text identity includes its original native comment;
+literal extraction refresh explicitly restores prevalidated original support.
+No historical observation or lost context is inferred.
+See the [audit](pending_bugs/source_observation_identity.md).
+
 ## Source-bound model reference navigation (2026-10-27, #148)
 
 Add `model_structure_request@1` under `retained_context_links@4` for the existing

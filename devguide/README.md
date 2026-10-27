@@ -80,6 +80,11 @@ runtime floors and installed-package qualification remain separate.
 
 ## Design
 
+The [source-observation audit and guard](pending_bugs/source_observation_identity.md) separates semantic assertion identity from
+retained observation records: refresh preserves separate pins, and conflicting
+duplicates during aggregation now fail before source metadata can be overwritten.
+Original reading means the records in the captured snapshot.
+
 The [model-to-reference navigation](pending_proposals/card_model_structural_navigation.md) adds a source-bound question from a verified
 whole-reference predicted model to the existing experimental region inventory,
 with original input links and inert saved reading. Fragment/isoform mappings and

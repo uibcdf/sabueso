@@ -23,6 +23,11 @@ def merge_mapping_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
             field_source_assertions.setdefault(fp, []).extend(sa_ids)
         relationships.extend(res.get("relationships", []))
 
+    # The located-annotation mapping explicitly retains every alias request/date
+    # for identical native content; it never selects away an observation receipt.
+    from sabueso.mappings.europepmc import coalesce_annotation_observations
+
+    source_assertions = coalesce_annotation_observations(source_assertions)
     return {
         "fields": fields,
         "features": features,

@@ -30,6 +30,88 @@ from sabueso.core.source_assertion_store import make_source_assertion
 SOURCE = "Europe PMC"
 MENTION = "uniprot_accession"
 ANNOTATION_MAPPING = "located_accession_mapping@2"
+ANNOTATION_OBSERVATIONS = "located_annotation_observations@1"
+
+
+def coalesce_annotation_observations(assertions):
+    """Retain alias-request receipts for identical native annotation observations.
+
+    Only this source mapping's explicit request envelope can be combined. Native
+    content, subject, source release and other metadata must match exactly. The
+    representative request/date is deterministic; every original pair survives.
+    Ordinary source/version/context conflicts remain for the store to reject.
+    """
+    from sabueso.core.snapshot import canonical_json
+
+    records = []
+    indices = {}
+
+    def signature(row):
+        metadata = row.get("source_metadata") or {}
+        if (
+            (row.get("source") or {}).get("name") != SOURCE
+            or metadata.get("content_kind") != "located_accession_annotation"
+            or metadata.get("annotation_request_rule") != ANNOTATION_OBSERVATIONS
+            or not isinstance(metadata.get("annotation_requests"), list)
+        ):
+            return None
+        requests = metadata["annotation_requests"]
+        if (
+            not requests
+            or any(
+                not isinstance(item, dict)
+                or set(item) != {"requested_article", "retrieved_at"}
+                or any(not isinstance(value, str) for value in item.values())
+                for item in requests
+            )
+            or {
+                "requested_article": metadata.get("requested_article"),
+                "retrieved_at": row.get("retrieved_at"),
+            }
+            not in requests
+        ):
+            return None
+        return canonical_json(
+            {
+                **{
+                    k: v
+                    for k, v in row.items()
+                    if k not in {"retrieved_at", "source_metadata"}
+                },
+                "source_metadata": {
+                    k: v
+                    for k, v in metadata.items()
+                    if k not in {"requested_article", "annotation_requests"}
+                },
+            }
+        )
+
+    for original in assertions:
+        key = signature(original)
+        if key is None:
+            records.append(original)
+            continue
+        row = deepcopy(original)
+        if key not in indices:
+            indices[key] = len(records)
+            records.append(row)
+            continue
+        previous = records[indices[key]]
+        metadata = previous["source_metadata"]
+        requests = {
+            canonical_json(item): item
+            for item in [
+                *metadata["annotation_requests"],
+                *row["source_metadata"]["annotation_requests"],
+            ]
+        }
+        metadata["annotation_requests"] = [requests[k] for k in sorted(requests)]
+        representative = metadata["annotation_requests"][0]
+        metadata["requested_article"] = representative["requested_article"]
+        previous["retrieved_at"] = representative["retrieved_at"]
+    return records
+
+
 STRUCTURE_MENTION_RULE = "structure_mention_context@1"
 PDB_ID = re.compile(r"[0-9][A-Za-z0-9]{3}\Z")
 
@@ -250,6 +332,10 @@ def map_annotations(
                 made["source_metadata"] = {
                     "content_kind": "located_accession_annotation",
                     "requested_article": requested,
+                    "annotation_request_rule": ANNOTATION_OBSERVATIONS,
+                    "annotation_requests": [
+                        {"requested_article": requested, "retrieved_at": retrieved_at}
+                    ],
                     "article": identities,
                     "identity_basis": {
                         "kind": "stated_pdb_accession",
@@ -299,6 +385,10 @@ def map_annotations(
             made["source_metadata"] = {
                 "content_kind": "located_accession_annotation",
                 "requested_article": requested,
+                "annotation_request_rule": ANNOTATION_OBSERVATIONS,
+                "annotation_requests": [
+                    {"requested_article": requested, "retrieved_at": retrieved_at}
+                ],
                 "article": identities,
                 "identity_basis": {
                     "kind": "stated_uniprot_accession",

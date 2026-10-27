@@ -32,8 +32,13 @@ remain unchanged. See [scope](pending_proposals/comparative_operations.md).
     Optional normalized annotation `molecule` retains a stated literal label without
     inferring isoform identity or sequence mapping. Migration reports missing native/
     normalized feature context, without constructing it from the last surviving
-    record. Refresh is a new basis. The shape has 1,938 paths, including explicitly
-    synthetic optional molecule coverage for all 17 mapped feature fields.
+    record. Refresh is a new basis. #166 adds optional Europe PMC
+    `source_metadata.annotation_requests[]` with every retained selector/date pair
+    under observation rule @1. Scoped UniProt text comments also retain the complete native
+    comment/text index as asserted value and text as normalized value, keeping
+    distinct native products separate. Historical missing contexts are never
+    backfilled. The shape has 1,942 paths, including explicitly synthetic optional
+    molecule coverage for all 17 mapped feature fields.
     #160 extends optional `source_metadata.uniprot_feature` and stated sequence
     revision to every mapped UniProt positional type. Modifiers and unknown
     endpoints survive normalization; noncanonical molecule scope stays unplaced.
@@ -189,6 +194,18 @@ MOLI Platform Architecture 1.0 (`uibcdf/moli`) distinguishes `SourceAssertion â‰
   names; Sabueso defines no generic `evidence` field.
 
 ## SourceAssertion Contract (Approved)
+
+Semantic assertion identity is independent of release/retrieval observation.
+Within one mutable store, identical records deduplicate. Recursive conflict-free
+completion of `source_metadata` retains all supplied keys; existing scalar/list
+values cannot be replaced. All other record fields must match exactly. Conflicts
+under one ID raise `SchemaError` before insertion or aggregation can discard
+metadata; keep distinct observations in separate pinned Card snapshots. The
+Europe PMC mapping explicitly preserves identical annotation request/date pairs
+in optional `source_metadata.annotation_requests[]` under observation rule @1. Literal
+extraction refresh explicitly restores validated original intake support, rather
+than merging source observations. See the
+[source-observation audit](pending_bugs/source_observation_identity.md).
 Field names follow the conceptual contract of MOLI Platform Architecture 1.0
 (`uibcdf/moli`, `schemas/sabueso_source_assertion_conceptual_schema.md`).
 Every SourceAssertion stored in `source_assertion_store` must include:

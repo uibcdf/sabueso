@@ -158,15 +158,18 @@ def _merge(
     # may have been extracted again; its first recorded retrieval time stays intact.
     for assertion in [*assertions, *metadata_assertions]:
         existing = card.source_assertion_store.get(assertion["id"])
-        if existing and {k: v for k, v in existing.items() if k != "retrieved_at"} != {
-            k: v for k, v in assertion.items() if k != "retrieved_at"
-        }:
+        if existing and canonical_json(
+            {k: v for k, v in existing.items() if k != "retrieved_at"}
+        ) != canonical_json(
+            {k: v for k, v in assertion.items() if k != "retrieved_at"}
+        ):
             raise SchemaError(f"Conflicting extraction support id {assertion['id']}")
     for assertion in [*assertions, *metadata_assertions]:
-        if (
-            preserve_original
-            or card.source_assertion_store.get(assertion["id"]) is None
-        ):
+        if preserve_original:
+            # Explicit restoration of validated original intake support, after
+            # checking the entire batch above. This is not observation merging.
+            card.source_assertion_store.store[assertion["id"]] = deepcopy(assertion)
+        elif card.source_assertion_store.get(assertion["id"]) is None:
             card.source_assertion_store.add(deepcopy(assertion))
     for relationship in relationships:
         card.relationship_store.add(deepcopy(relationship))

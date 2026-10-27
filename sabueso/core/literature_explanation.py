@@ -87,6 +87,12 @@ def explain_literature(card: Any, publication_ref: str) -> dict:
             article = (sa.get("source_metadata") or {}).get("requested_article")
             if article:
                 requested.add(article)
+            requested.update(
+                item["requested_article"]
+                for item in (sa.get("source_metadata") or {}).get(
+                    "annotation_requests", []
+                )
+            )
         contexts = []
         q = rel.get("qualifiers") or {}
         candidates = [q["structure_context"]] if q.get("structure_context") else []

@@ -46,6 +46,12 @@ MIGRATION_RULE = "card_migration@1"
 SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
     "0.3.14": [
         {
+            "path": "source_assertion_store[].source_metadata.annotation_requests",
+            "filled_by": "refresh",
+            "explicit_only": True,
+            "entity_types": ("protein",),
+        },
+        {
             "path": "source_assertion_store[].normalized_value",
             "filled_by": "refresh",
             "entity_types": ("protein",),

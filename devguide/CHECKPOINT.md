@@ -63,7 +63,15 @@ source and release receipts remain unchanged.
    broader structural integration next; the new navigation has separate receipts.
    Its selected Card/native/history/argument/quantity integration passes 1,103
    cases /155.40s; original observations versus semantic assertion references
-   now have a separate [audit #166](https://github.com/uibcdf/sabueso/issues/166).
+   are now distinguished by the [source-observation audit and guard](pending_bugs/source_observation_identity.md).
+   Refresh preserves separate pinned observations; incompatible duplicate records
+   in a build now fail before overwrite. Complete qualification of this core
+   guard separately, then resume the remaining structural/broad-profile work.
+   Its refined selected gate passes 207 cases: compatible metadata completion,
+   explicit annotation alias/date receipts and scoped original comment identity
+   preserve context without changing frozen scientific coverage or prior pins.
+   The initial unpublished strict candidate failed compatibility and is not
+   qualification; final full/remote receipts belong to #166.
 
 5. Keep scientific review separate: the [public worksheet](pending_proposals/scientific_review_packet_20261020.md)
    and [source drafts](pending_proposals/located_source_review.md) await actual
@@ -84,7 +92,7 @@ does not replace the maintainer's newer exploration priority.
 | --- | --- |
 | Published package | **0.14.0**, source/tag `78623d0`; its installed OS/Python matrix, public install and Zenodo archive retain their own [immutable receipt](../devtools/conda-build/receipts/sabueso_0.14.0_public_2026-10-09.json) |
 | Published schema | **0.3.13** and earlier schemas/cards/shapes remain immutable |
-| Development schema | **0.3.14**, unpublished, 1,938 recorded paths; coordinate/request scope, contact/model inputs, derivation applications and native feature identity follow [SCHEMA](SCHEMA.md) and migrations |
+| Development schema | **0.3.14**, unpublished, 1,942 recorded paths; coordinate/request scope, contact/model inputs, derivation applications, native feature/comment identity and explicit annotation-request receipts follow [SCHEMA](SCHEMA.md) and migrations |
 | Packet history | Default `packet_aspects@12` adds source-bound quaternary interpretation and exact reference/structure dependencies; inherited canonical ligand overlap and original `@11`/earlier projections retain their own semantics |
 | Shared contracts | Sabueso records Knowledge/SourceAssertions; MOLI owns shared contracts, Nextia owns Evidence. Similarity is never identity; unknown/unqueried/failed scope remains explicit |
 | Release target | 0.15.0, with the full exploration and human-acceptance gate in the [scope](pending_proposals/release_consolidation_0150.md). The [notes draft](../devtools/conda-build/release_notes_0.15.0.md) is incomplete preparation, not a candidate or release |

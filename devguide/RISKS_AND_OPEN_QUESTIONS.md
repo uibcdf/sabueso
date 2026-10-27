@@ -1,15 +1,17 @@
 # Sabueso — Risks and Open Questions
 
-The [source-observation audit #166](https://github.com/uibcdf/sabueso/issues/166)
-distinguishes intentional stable semantic SourceAssertion IDs from the metadata
-of a particular input observation. A synthetic store-level add replaces version/
-retrieval metadata under the same ID while native original model-value replay
-remains admitted. Ordinary refresh/merge impact is still an audit question;
-this does not establish mutation of stored pins or old saved artifacts. Preserve
-accepted IDs and original captured files, and do not claim an original invocation's
-observation metadata from semantic input IDs alone. Resolve the source/provenance
-scope before making that stronger attribution or accepting release consolidation.
-
+The [source-observation audit #166](pending_bugs/source_observation_identity.md)
+confirms that refresh preserves separate pinned observations, while the former
+store insertion silently selected the last duplicate metadata record during
+aggregation. Conflicting records now fail before overwrite; compatible metadata
+completion and explicit Europe PMC alias/date receipts preserve supplied context.
+The semantic ID algorithm and original snapshots stay unchanged. New scoped
+UniProt comments have distinct IDs for their distinct original native contexts.
+Original source metadata means the
+records retained by the capture, not an independently recovered mapping-invocation
+observation. Raw Card edits remain mutable; an explicitly retained original pin
+is needed to review an earlier state. Source/external truth and original runtime
+sidecars remain separate qualification scopes.
 
 Development tissue rules now require explicit coordinate scope and report
 per-tissue resolved/missing/conflicting coverage (#138). Explicit legacy rules

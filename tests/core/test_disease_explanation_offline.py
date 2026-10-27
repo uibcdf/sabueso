@@ -323,7 +323,7 @@ def test_missing_group_unqueried_identity_and_argument_validation(public_card):
 def add_identity(card, subject, target, source="MedGen", version="synthetic"):
     assertion = make_source_assertion(
         "relationships.same_as",
-        {"target": target, "version": version},
+        {"subject_ref": subject, "target": target, "version": version},
         source,
         target,
         "2026-01-01",

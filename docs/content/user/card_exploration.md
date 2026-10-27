@@ -91,6 +91,14 @@ support remains relationship-level support; it is not invented individual lineag
 for every qualifier. All original fields remain reachable with `open()` or
 `native_payload`, including information absent from the concise columns.
 
+“Original” refers to the values and source records in this captured Card or saved
+reading. A source's version and retrieval date describe that retained record;
+a statement ID alone does not identify the observation used by an earlier mapping
+invocation. Keep the original Card pin when comparing states. Refresh builds a
+new Card; combining incompatible records under the same statement ID raises an
+error rather than discarding their metadata. Review those observations in separate
+Card snapshots.
+
 A conflicting value stays visible alongside its original conflict details.
 Stored zero, false, empty text and null remain distinct. A null value by itself
 does not mean a source stated that information was absent. The coverage topic
