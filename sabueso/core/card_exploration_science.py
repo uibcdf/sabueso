@@ -72,6 +72,13 @@ def _encode(value, encoding):
     )
 
 
+def _encode_view_payload(view):
+    """Encode one already detached public payload without copying JSON twice."""
+    encoding = _encoding(view)
+    value = view.native_payload
+    return value if encoding == "json" else _encode(value, encoding)
+
+
 def _decode(value, encoding):
     value = deepcopy(value)
     if encoding == "json":

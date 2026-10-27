@@ -148,7 +148,8 @@ def can_save(view):
 
 
 def _cell_record(item, column, cell):
-    value = cell.value
+    detached = cell.to_dict()
+    value = detached["value"]
     location = item.payload_location
     context = (
         item._view._explorer.access._quantity_context(
@@ -191,13 +192,13 @@ def _cell_record(item, column, cell):
                 unit=context["record"]["manifest"]["unit"],
             ).to_dict()
             return {
-                **cell.to_dict(),
+                **detached,
                 "value": record,
                 "encoding": "quantity_record",
                 "field": context["field"],
                 "unit": context["record"]["manifest"]["unit"],
             }
-    return {**cell.to_dict(), "value": value, "encoding": "json"}
+    return {**detached, "encoding": "json"}
 
 
 def _cell(record):
@@ -238,7 +239,7 @@ class _SavedItem(CardItem):
 
 
 def _freeze_view(view, ids):
-    from .card_exploration_science import _encode, _encoding
+    from .card_exploration_science import _encode_view_payload, _encoding
 
     items = {}
     for entry in view._selection._entries:
@@ -299,7 +300,7 @@ def _freeze_view(view, ids):
             "schema": view.schema,
             "coverage": view.coverage,
         },
-        "native_payload": _encode(view.native_payload, _encoding(view)),
+        "native_payload": _encode_view_payload(view),
     }
     if view._selection._scientific is not None:
         record["selection"]["scientific_result_ref"] = (

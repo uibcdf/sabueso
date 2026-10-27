@@ -65,9 +65,11 @@ source and release receipts remain unchanged.
    cases /155.40s; original observations versus semantic assertion references
    are now distinguished by the [source-observation audit and guard](pending_bugs/source_observation_identity.md).
    Refresh preserves separate pinned observations; incompatible duplicate records
-   in a build now fail before overwrite. Complete qualification of this core
-   guard separately, then resume the remaining structural/broad-profile work.
-   Its refined selected gate passes 207 cases: compatible metadata completion,
+   in a build now fail before overwrite. #166 is closed at qualified source
+   `75579df`: CI 15/15 and governance 1/1, complete captures and thirteen summaries
+   verified (nine source lanes 5,944 each; four installed public-Ackredit lanes
+   1,452 each). All 53 guide blocks and positive source-support branches pass.
+   The #166 refined selected gate passes 207 cases: compatible metadata completion,
    explicit annotation alias/date receipts and scoped original comment identity
    preserve context without changing frozen scientific coverage or prior pins.
    The initial unpublished strict candidate failed compatibility and is not
@@ -76,6 +78,24 @@ source and release receipts remain unchanged.
    expectations; both are corrected in a test-only follow-up whose 323-case
    owning gate passes. Production/schema/input bytes remain unchanged. This is
    not a claimed all-green local full rerun. Exact-head CI remains separate.
+
+   The maintainer next authorized the bounded
+   [#167 persistence review](pending_proposals/card_persistence_cost.md).
+   Exact accounting puts 91.9% of the accumulated artifact's bytes in its 4,031
+   views; 44.6 MiB are repeated physical view parts before index overhead. This
+   is an optimization opportunity, never permission to remove history/support.
+   The first private-copy change preserves formats and verification; same-session
+   public protein and molecule-quantity wire comparisons are byte-identical.
+   Four final control/candidate reads observe means of 31.48/31.64 s, with no
+   reliable speedup; the earlier exploratory 4.4% difference did not reproduce.
+   Original artifacts, scientific
+   predicates and Card schema stay unchanged. The final selected
+   Card/history/scientific/quantity gate passes 1,159 cases /568.32s serial through
+   the receptor: 822 MiB peak owned RSS and at least 5.9 GiB genuinely free RAM.
+   An earlier four-worker rerun stopped on host headroom and is not qualification.
+   Exact-source remote qualification remains separate. Resume the remaining
+   structural/broad-profile order. #167 stays open for physical-layout design,
+   additional Card workloads and researcher acceptance.
 
 5. Keep scientific review separate: the [public worksheet](pending_proposals/scientific_review_packet_20261020.md)
    and [source drafts](pending_proposals/located_source_review.md) await actual

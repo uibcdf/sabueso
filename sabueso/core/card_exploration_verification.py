@@ -972,7 +972,13 @@ def _verify_state(view, record, native, access):
         require(set(cells) == set(frozen["cells"]), "Saved cell membership differs.")
         for column, cell in cells.items():
             expected = _cell_record(item, column, cell)
-            actual = deepcopy(frozen["cells"][column])
+            # JSON comparison only reads nested values. Keep the independent
+            # conversion copy for quantities and detach the top-level edits.
+            actual = frozen["cells"][column]
+            require(isinstance(actual, dict), "Saved cell must be an object.")
+            actual = dict(actual)
+            if expected["encoding"] == actual.get("encoding") == "quantity_record":
+                actual = deepcopy(actual)
             if column == "label":
                 expected["value"] = frozen["label"]
             # Wording is recorded presentation metadata; value, type, state,
@@ -1411,13 +1417,11 @@ def verify_views(bundle, nodes):
             )
             verify_view(view, record)
             continue
-        from .card_exploration_science import _encode, _encoding
+        from .card_exploration_science import _encode_view_payload, _encoding
 
         require(
             record.get("native_encoding", "json") == _encoding(view)
-            and equal(
-                record["native_payload"], _encode(view.native_payload, _encoding(view))
-            ),
+            and equal(record["native_payload"], _encode_view_payload(view)),
             "Saved native payload/quantity encoding differs.",
         )
         require(

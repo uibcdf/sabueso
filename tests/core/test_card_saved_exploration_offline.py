@@ -2,6 +2,7 @@
 
 import json
 import socket
+from copy import deepcopy
 from pathlib import Path
 
 import pytest
@@ -81,6 +82,29 @@ def test_literal_root_complete_values_mutation_and_saved_mode(tmp_path):
     )
     assert json.loads((tmp_path / "card.json").read_text(encoding="utf-8")) == original
     assert path.exists() and receipt["bundle_digest"].startswith("sha256:")
+
+
+@pytest.mark.parametrize("quantity", [False, True])
+def test_original_verification_preserves_the_supplied_wire_records(
+    tmp_path, molecule, quantity
+):
+    from sabueso.core.card_exploration_storage import _restore
+
+    view = (
+        molecule.explore().view("properties")
+        if quantity
+        else custom().explore().inspect()
+    )
+    _, path, receipt = reopen(view, tmp_path)
+    bundle = json.loads(path.read_text(encoding="utf-8"))
+    before = deepcopy(bundle)
+    restored = _restore(bundle, receipt["bundle_digest"])
+    assert restored.view_ref == view.view_ref
+    assert restored.validation["integrity"] == "verified"
+    assert bundle == before
+    # Reusing the exact same supplied records must remain a verified reading.
+    assert _restore(bundle, receipt["bundle_digest"]).view_ref == view.view_ref
+    assert bundle == before
 
 
 def test_filtered_ordered_view_preserves_full_result_hidden_items_and_trail(tmp_path):
@@ -269,6 +293,31 @@ def mutate(path, function):
     data = json.loads(path.read_text(encoding="utf-8"))
     function(data)
     path.write_text(json.dumps(_seal(data)), encoding="utf-8")
+
+
+@pytest.mark.parametrize("quantity", [False, True])
+def test_resealed_cell_pairs_cannot_replace_the_original_object(
+    tmp_path, molecule, quantity
+):
+    view = (
+        molecule.explore().view("properties")
+        if quantity
+        else custom().explore().inspect()
+    )
+    _, path, _ = reopen(view, tmp_path)
+
+    def change(data):
+        root = data["views"][data["root_navigation_ref"]]
+        for row in root["state"]["items"].values():
+            for key, cell in row["cells"].items():
+                if (cell["encoding"] == "quantity_record") == quantity:
+                    row["cells"][key] = list(cell.items())
+                    return
+        pytest.fail("The test must replace an original cell of the intended kind")
+
+    mutate(path, change)
+    with pytest.raises(StorageError):
+        sabueso.read_exploration(path)
 
 
 @pytest.mark.parametrize(

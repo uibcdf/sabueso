@@ -31,6 +31,15 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Risks
 
+- **Accumulated exploration cost (#167/#148):** the same retained Card/root view
+  has a 3.35 MiB fresh source-only artifact and a 119.64 MiB accumulated guide
+  artifact. Their formats/history differ; the latter retains 4,031 views and
+  scientific results. A bounded read profile points to private copying and
+  verification cost. The [first optimization](pending_proposals/card_persistence_cost.md)
+  keeps the wire and all checks intact; file-growth and accepted workload budgets
+  remain open. Physical serialized repetition never establishes molecular identity
+  or licenses dropping original inputs, units, support, uncertainty or history.
+
 - **Ligand overlap coordinate scope ([#163](https://github.com/uibcdf/sabueso/issues/163)):**
   the [correction](pending_bugs/ligand_overlap_coordinate_scope.md) admits original
   canonical inputs under `ligand_site_coordinate_scope@1` before overlap @3.

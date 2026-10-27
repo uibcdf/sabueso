@@ -1,5 +1,15 @@
 # Sabueso — Decision Log
 
+## Reuse detached persistence values without changing original reading (2026-10-27, #167)
+
+Keep every stored field, canonical byte, source/unit/request binding, navigation
+occurrence and original verification predicate. Reuse the defensive copy already
+returned by public Cell/view properties at private encoding boundaries; JSON
+comparison detaches its top-level edits while quantity conversion retains an
+independent copy. Measure storage growth separately; no source identity, history
+pruning, format change or accepted speed budget follows from equal serialized
+values. See the [bounded review](pending_proposals/card_persistence_cost.md).
+
 ## Preserve source observations under stable assertion identity (2026-10-27, #166)
 
 Keep semantic SourceAssertion IDs independent of source release/retrieval date.

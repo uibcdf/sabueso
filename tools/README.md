@@ -25,3 +25,12 @@ Usage:
 ```
 python tools/validate_schema.py
 ```
+
+The [storage diagnostic](../devtools/inspect_exploration_storage.py) accounts for
+canonical saved-exploration bytes and exact repeated view parts (#167). Run
+`python devtools/inspect_exploration_storage.py INPUT OUTPUT_DIRECTORY` from the
+checkout root. It reads
+local JSON, preserves the input and creates a new output directory. This is a
+structural diagnostic; original scientific verification remains the saved reader's
+job. Large cases need an owned memory-limited process because parsing holds the
+complete JSON tree. See [the cost review](../devguide/pending_proposals/card_persistence_cost.md).

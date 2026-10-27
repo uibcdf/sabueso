@@ -80,6 +80,11 @@ runtime floors and installed-package qualification remain separate.
 
 ## Design
 
+The bounded [persistence-cost review](pending_proposals/card_persistence_cost.md)
+(#167) separates accumulated history/storage from fresh question cost. Its first
+change removes redundant private copies, preserving every original binding and
+existing format; file-size, scaling and researcher budgets remain open.
+
 The [source-observation audit and guard](pending_bugs/source_observation_identity.md) separates semantic assertion identity from
 retained observation records: refresh preserves separate pins, and conflicting
 duplicates during aggregation now fail before source metadata can be overwritten.

@@ -1,9 +1,10 @@
 ---
 summary: Stable statement identity is not observation identity; conflicting duplicate records must not overwrite source metadata.
 issue: uibcdf/sabueso#166
-status: open
+status: resolved
 opened: 2026-10-27
-verification: source_specific_receipts_in_owning_issues
+closed: 2026-10-27
+verification: qualified_source_checkpoint
 area: [knowledge-integrity, provenance, aggregation, refresh]
 ---
 
@@ -141,3 +142,19 @@ workers and built-in `tmp_path_retention_policy=failed`. The full code run peaks
 at **2.09 GiB owned RSS**, **zero owned swap**, and at least **6.97 GiB genuinely
 free host RAM**. Finished owned scratch is removed after preserving useful proof;
 active outputs, original inputs/capsules and other owners' resources stay protected.
+
+## Qualified closure
+
+The final public source `75579dfb6a8751a2a49f8dabf6dbef153f8d94ee`, actual SDK
+`0.14.0+114.g75579df`, passes [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40586050410)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40586050356).
+Full capture member hashes, archives, exact source/job steps and thirteen actual
+summaries are independently verified: nine source lanes 5,944 each and four
+installed public-Ackredit lanes 1,452 each. Final affected/native qualification
+passes 323 cases /37.69s; all 53 public guide blocks and positive source-support
+branches pass at actual SDK114. The full-local exit-1/test-correction scope above
+remains unchanged; no all-green local full rerun is claimed. #166 is closed.
+
+Accumulated exploration storage/latency belongs to separate #167/#148 work.
+Original invocation-observation lineage is explicitly outside a bare semantic
+assertion ID's guarantee; missing history remains unknown.

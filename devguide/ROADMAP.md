@@ -310,6 +310,13 @@ directions until a bounded use and acceptance criteria are agreed.
 
 ### Immediate resumption sequence
 
+On 2026-10-27 the maintainer authorized a short
+[persistence-cost block #167](pending_proposals/card_persistence_cost.md) before
+resuming structural expansion: account for accumulated content and verification
+cost, preserve original history/support and remove proven redundant work. Keep
+this bounded; continue the approved fragment/region and broader structural order
+after it. The full workload/human-acceptance gate remains required before 0.15.0.
+
 The [native quaternary correction #165](pending_bugs/quaternary_interpretation_scope.md)
 precedes exposing computed findings through #148: all declarations/pairs, original
 source identity and exact coordinate admission, explicit uncertainty, preserved

@@ -78,27 +78,16 @@ def question(card):
 
 
 def inert(monkeypatch):
+    # Import consumers before patching their provider: a first import must not
+    # capture a forbidden alias that outlives monkeypatch restoration.
+    context = importlib.import_module("sabueso.mappings.alphafold_context_v1")
+    predicted = importlib.import_module("sabueso.core.predicted_structures")
+    protein = importlib.import_module("sabueso.core.card_protein_exploration")
     monkeypatch.setattr(Card, "from_dict", forbidden)
-    monkeypatch.setattr(
-        importlib.import_module("sabueso.mappings.alphafold_context_v1"),
-        "interpret",
-        forbidden,
-    )
-    monkeypatch.setattr(
-        importlib.import_module("sabueso.core.predicted_structures"),
-        "bound_context",
-        forbidden,
-    )
-    monkeypatch.setattr(
-        importlib.import_module("sabueso.core.predicted_structures"),
-        "predicted_structures_view",
-        forbidden,
-    )
-    monkeypatch.setattr(
-        importlib.import_module("sabueso.core.card_protein_exploration"),
-        "region_request",
-        forbidden,
-    )
+    monkeypatch.setattr(context, "interpret", forbidden)
+    monkeypatch.setattr(predicted, "bound_context", forbidden)
+    monkeypatch.setattr(predicted, "predicted_structures_view", forbidden)
+    monkeypatch.setattr(protein, "region_request", forbidden)
 
 
 def test_whole_model_opens_the_shared_reference_question_without_mutation():
