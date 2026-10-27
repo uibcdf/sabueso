@@ -96,7 +96,10 @@ reading. A source's version and retrieval date describe that retained record;
 a statement ID alone does not identify the observation used by an earlier mapping
 invocation. Keep the original Card pin when comparing states. Refresh builds a
 new Card; combining incompatible records under the same statement ID raises an
-error rather than discarding their metadata. Review those observations in separate
+error rather than discarding their metadata. Identical Europe PMC annotations
+can retain several actual request/date pairs in their complete source record;
+the root request/date is a representative pair. Read that complete record when
+reviewing individual acquisition dates. Review those observations in separate
 Card snapshots.
 
 A conflicting value stays visible alongside its original conflict details.

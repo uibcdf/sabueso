@@ -204,6 +204,14 @@ repository-input scope; retain local-original receipts separately. Do not pipe a
 gate through `tail`/`grep` or chain a commit after a command whose exit code does not
 reflect the gate.
 
+When host memory headroom is limited, reduce local worker count and serialize
+heavy checks. `-n 4 -o tmp_path_retention_policy=failed` removes successful
+function-scoped pytest temporary outputs as their fixtures finish while preserving
+failed-call outputs. Keep logs, useful diagnostics and original inputs separately.
+Measure genuinely free RAM, available RAM, swap activity and the owned process
+tree; use explicit resource stop limits rather than relying on worker count alone.
+Record the actual options and stopped runs; an interrupted run is not qualification.
+
 Linux Python 3.14 CI promotes unclosed-database ResourceWarnings and pytest
 unraisable-exception warnings to errors (#133). The connection context manages
 transactions, not lifetime: SQLite readers/writers use `closing` around it, and

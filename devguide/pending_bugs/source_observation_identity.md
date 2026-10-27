@@ -125,3 +125,19 @@ row parity and atomic typed original-extraction restoration. Four warnings are
 explicit unavailable-Europe-PMC regressions. The scientific annotation mapping
 remains `located_accession_mapping@2`; only its independent observation-receipt
 policy is new. Final full-suite and exact-source remote receipts remain separate.
+
+The complete code checkpoint at `c649a06` runs **7,497 cases**, with **7,495 passed
+and two prior scoped-comment assertions failing** /989.09s. Both expected raw
+text where the documented new contract retains native comment context plus
+normalized text. Their tests now verify both original native context and textual
+Card values. The expanded owning/native gate passes **323 /38.91s**. Production,
+schema and input bytes are unchanged from the full run; only those two test files
+changed. The exit-1 full receipt is retained honestly: no all-green local full
+rerun is claimed. Final-source targeted checks and exact-head CI have separate
+receipts. Release and researcher acceptance remain separate.
+
+After the maintainer's memory caution, heavy local gates run serially with four
+workers and built-in `tmp_path_retention_policy=failed`. The full code run peaks
+at **2.09 GiB owned RSS**, **zero owned swap**, and at least **6.97 GiB genuinely
+free host RAM**. Finished owned scratch is removed after preserving useful proof;
+active outputs, original inputs/capsules and other owners' resources stay protected.

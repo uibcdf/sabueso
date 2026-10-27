@@ -71,7 +71,11 @@ source and release receipts remain unchanged.
    explicit annotation alias/date receipts and scoped original comment identity
    preserve context without changing frozen scientific coverage or prior pins.
    The initial unpublished strict candidate failed compatibility and is not
-   qualification; final full/remote receipts belong to #166.
+   qualification; final full/remote receipts belong to #166. The complete code
+   checkpoint at `c649a06` has 7,495 passed and two stale scoped-comment test
+   expectations; both are corrected in a test-only follow-up whose 323-case
+   owning gate passes. Production/schema/input bytes remain unchanged. This is
+   not a claimed all-green local full rerun. Exact-head CI remains separate.
 
 5. Keep scientific review separate: the [public worksheet](pending_proposals/scientific_review_packet_20261020.md)
    and [source drafts](pending_proposals/located_source_review.md) await actual

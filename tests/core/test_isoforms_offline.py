@@ -13,6 +13,7 @@ import pytest
 
 import sabueso
 from sabueso.core.curation import ITEM_IDENTITY
+from sabueso.core.source_assertion_store import assertion_value
 from sabueso.mappings.uniprot import map_protein
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 
@@ -137,8 +138,15 @@ def test_a_comment_restricted_to_an_isoform_keeps_the_restriction():
         if "molecule" in (a.get("source_metadata") or {})
     }
     assert restricted == {"Isoform 12", "Isoform 16", "Isoform 17"}
-    # The value stays the stated text; the restriction is on its SourceAssertion.
-    assert all(isinstance(a["asserted_value"], str) for a in function)
+    # Card values stay textual; scoped statements retain complete native context.
+    assert all(isinstance(assertion_value(a), str) for a in function)
+    for a in function:
+        if (a.get("source_metadata") or {}).get("molecule"):
+            native = a["asserted_value"]
+            assert native["comment"]["molecule"] == a["source_metadata"]["molecule"]
+            assert native["comment"]["texts"][native["text_index"]][
+                "value"
+            ] == assertion_value(a)
     assert any("molecule" not in (a.get("source_metadata") or {}) for a in function)
 
 

@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 from sabueso.core.aggregator import build_card_from_mapping
+from sabueso.core.source_assertion_store import assertion_value
 from sabueso.mappings.uniprot import map_protein
 
 COMMENTS = {
@@ -39,25 +40,31 @@ def test_all_native_extra_text_occurrences_keep_original_support(kind, path):
     for accession, record in ORIGINALS.items():
         mapping = map_protein(record, "fixture")
         native = [
-            (text, comment.get("molecule"))
+            (text, comment, index)
             for comment in record.get("comments", [])
             if comment["commentType"] == kind
-            for text in comment.get("texts", [])
+            for index, text in enumerate(comment.get("texts", []))
             if text.get("value")
         ]
-        assert mapping["fields"].get(path, []) == [t["value"] for t, _ in native]
+        assert mapping["fields"].get(path, []) == [t["value"] for t, _, _ in native]
         assertions = [
             a for a in mapping["source_assertions"] if a["field_path"] == path
         ]
         assert len(assertions) == len(native)
-        for assertion, (text, molecule) in zip(assertions, native):
+        for assertion, (text, comment, index) in zip(assertions, native):
             assert assertion["subject_ref"] == "uniprot:" + accession
-            assert assertion["asserted_value"] == text["value"]
+            assert assertion_value(assertion) == text["value"]
             assert assertion["source"]["version"] == str(
                 record["entryAudit"]["entryVersion"]
             )
-            if molecule:
-                assert assertion["source_metadata"]["molecule"] == molecule
+            if comment.get("molecule"):
+                assert assertion["source_metadata"]["molecule"] == comment["molecule"]
+                assert assertion["asserted_value"] == {
+                    "comment": comment,
+                    "text_index": index,
+                }
+            else:
+                assert assertion["asserted_value"] == text["value"]
             assert (
                 "knowledge_class" not in assertion and "evidence_class" not in assertion
             )
