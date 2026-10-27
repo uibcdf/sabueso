@@ -313,14 +313,15 @@ directions until a bounded use and acceptance criteria are agreed.
 The [native quaternary correction #165](pending_bugs/quaternary_interpretation_scope.md)
 precedes exposing computed findings through #148: all declarations/pairs, original
 source identity and exact coordinate admission, explicit uncertainty, preserved
-historical rules and versioned full/index support. Continue the computed human
-adapter and compact selector over that qualified science; the correction alone
-does not complete those interfaces or researcher/workload acceptance.
+historical rules and versioned full/index support. The
+[live human/agent adapter](pending_proposals/card_quaternary_interpretation.md)
+now shares that science with exact support and bounded selection. Complete its
+versioned original scientific saved reader and researcher/workload acceptance.
 
 The [quaternary source continuation](pending_proposals/card_quaternary_source_exploration.md)
 delivers original subunit, assembly and interface detail, local structure/source
-navigation and independent saved reading. Finish its computed interpretation,
-named compact agent selection and broader region/model/assembly transitions
+navigation and independent saved reading. Complete original saved computed
+interpretation and broader region/model/assembly transitions
 within the sequence below; source presentation alone does not close that work.
 
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all

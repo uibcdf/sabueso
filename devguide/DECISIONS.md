@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Shared live quaternary exploration (2026-10-26, #148/#165)
+
+Keep original declarations in `quaternary_structure`; expose computed interface
+classifications and individual family comparisons through the separate
+`quaternary_interpretation` question and compact selector. Both share one captured
+native @3 result and its explanation. Preserve original relationship IDs, family
+ordinals, actual admission rules, source membership and uncomputed reasons under
+all display choices. Do not infer biological assemblies from source aggregates.
+Deliver live access with explicit `save=False` until a versioned original
+scientific verifier and independent inert reading are qualified; existing source
+reading remains usable and unretained saved requests return `not_saved`.
+
 ## Source-bound quaternary interpretation (2026-10-26, #165)
 
 Default to `interface_partner_class@2`, `interface_site_agreement@3` and

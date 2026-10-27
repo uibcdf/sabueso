@@ -13,6 +13,12 @@ FUNCTION_FIELDS = {
     "sequence.length": "Sequence length",
 }
 _SOURCE_QUESTIONS = {
+    "quaternary_interpretation": {
+        "label": "Which interface classifications and family-site comparisons are supported?",
+        "topic": "quaternary_interpretation",
+        "required_options": [],
+        "scope": "All source-bound interface findings and individual family comparisons, including explicit uncertainty; no assembly geometry or biological relevance inferred.",
+    },
     "quaternary_structure": {
         "label": "What do sources state about subunits, assemblies and interfaces?",
         "topic": "quaternary_structure",

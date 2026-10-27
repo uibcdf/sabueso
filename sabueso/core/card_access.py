@@ -329,7 +329,7 @@ class CardAccess:
     @property
     def capabilities(self):
         scientific_topics = (
-            ["structures", "ligand_site_comparisons"]
+            ["structures", "ligand_site_comparisons", "quaternary_interpretation"]
             if self.profile == "protein"
             else []
         )
@@ -641,6 +641,12 @@ class CardAccess:
                 data[TOPIC]["selection_availability"] = (
                     "retained_requests_only" if self.mode == "saved" else "live"
                 )
+                if self.mode == "live":
+                    from .card_quaternary_access import (
+                        descriptor as quaternary_descriptor,
+                    )
+
+                    data["quaternary_interpretation"] = quaternary_descriptor()
                 if self.mode == "saved":
                     data[TOPIC]["availability"] = (
                         "retained"
@@ -706,11 +712,31 @@ class CardAccess:
         if not isinstance(topic, str) or topic not in (
             "structures",
             "ligand_site_comparisons",
+            "quaternary_interpretation",
         ):
             raise ArgumentError(
-                "Scientific selection supports structures and ligand_site_comparisons."
+                "Scientific selection supports structures, ligand_site_comparisons and quaternary_interpretation."
             )
-        if topic == "ligand_site_comparisons":
+        if topic == "quaternary_interpretation":
+            if self.mode == "saved":
+                from .card_quaternary_access import saved_selection
+
+                return saved_selection(
+                    self, fields, options, where, item_refs, order_by
+                )
+            from .card_quaternary_access import materialize, options_for_quaternary
+            from .card_quaternary_selection_v1 import (
+                active,
+                evaluate,
+                normalize,
+                projection,
+                selection_ref,
+            )
+
+            options, fields = options_for_quaternary(options), projection(fields)
+            query = normalize(where, item_refs, order_by)
+            result = materialize(self)
+        elif topic == "ligand_site_comparisons":
             if self.mode == "saved":
                 from .card_exploration_sites import saved_selection
 
@@ -864,9 +890,9 @@ class CardAccess:
     def _entry_frame(self, selection, index):
         entry = selection._entries[index]
         if selection._scientific is not None:
-            if (
-                selection._scientific.wire["context"]["adapter"]
-                == "ligand_site_exploration@1"
+            if selection._scientific.wire["context"]["adapter"] in (
+                "ligand_site_exploration@1",
+                "quaternary_exploration@1",
             ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
@@ -911,6 +937,13 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("kind") in (
+            "interface_classification",
+            "interface_family_comparison",
+        ):
+            from .card_quaternary_access import defer_frame
+
+            return defer_frame(item)
         if item.get("kind") == "ligand_contact_comparison":
             if self.mode == "saved":
                 from .card_ligand_site_history_v1 import defer_frame

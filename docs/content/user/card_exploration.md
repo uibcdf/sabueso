@@ -518,8 +518,8 @@ interface_rows.table()
 For machine processing, `rows()` exposes typed cells, support and exact locations.
 The existing literal reader gives bounded pages over an individual original
 record. Nested values carry `value_location` for further reads; a complete page of
-members need not include every nested value. A named compact scientific selector
-for quaternary interpretation remains pending.
+members need not include every nested value. The scientific interpretation below
+has a separate compact selector over its own original inputs and rules.
 
 ```python
 if assembly_rows.items():
@@ -549,6 +549,68 @@ original_quaternary
 This is a presentation of source declarations. Computed oligomer/interface
 classification, assembly reconciliation and geometry remain separate scientific
 questions with their own rules, inputs and explanations.
+
+## Interpret interfaces and compare family sites
+
+For a protein Card, ask which retained interface interpretations are supported:
+
+```python
+interface_findings = explorer.answer("quaternary_interpretation")
+interface_findings.table()
+family_comparisons = interface_findings.filter(
+    "kind", equals="interface_family_comparison"
+)
+family_comparisons.table()
+```
+
+Each interface classification and each interface/family-annotation pair remains
+separate. The table distinguishes computed, partial and uncomputed interpretations
+from coordinate comparability. A self-interface means that the source names this
+protein on both sides; it does not validate a biological assembly. Shared sequence
+positions are a comparison of source declarations, not a local contact or geometry
+calculation. Missing mappings or uncertain coordinates remain explicit. Agreement
+of sequence revisions is established only when the original inputs state it.
+
+Open a finding for its complete native result. `explain()` presents its original
+statements and destinations for the complete reference inputs and request context.
+`related()` navigates to exact interface/structure declarations, the original
+family annotation and source records. No browsing operation acquires data:
+
+```python
+if interface_findings.items():
+    finding = interface_findings.items()[0]
+    finding.open()
+    finding.explain()
+    finding.related()
+```
+
+The agent selector shares the same captured scientific result and item identities.
+Textual filters, projection, exact item membership and ordering change only the
+displayed selection. Scope, actual rule names, reason codes and complete original
+source membership remain available with every included result, even when columns
+are omitted:
+
+```python
+compact_interfaces = explorer.access.select(
+    "quaternary_interpretation",
+    fields=["kind", "partner_ref", "status", "finding"],
+    where={"kind": "interface_family_comparison"},
+)
+interface_page = compact_interfaces.page(max_bytes=8192)
+interface_page["page"]
+```
+
+Continue with `page.next_cursor` until `page.complete`. A bounded page may defer
+values together with their interpretation/support; `inspection_required` and
+typed read destinations make that explicit. Source members marked `not_retained`
+have no invented record destination. This describes what the Card retains, not
+what an external source does not know.
+
+This new scientific topic currently supports live captures. Its save capability
+is `False`; original saved scientific reading is still pending. The original
+`quaternary_structure` source pane above remains saveable. Asking an old saved
+exploration for this new interpretation returns `not_saved`, without running a
+current scientific reader. Use `start_new()` explicitly for a new interpretation.
 
 ## Explore experimental structures
 

@@ -37,8 +37,10 @@ accepted as the complete broad profile.
 
 The [#165 native quaternary correction](../pending_bugs/quaternary_interpretation_scope.md)
 preserves all source-bound declarations and exact interface/family pairs under new
-rules. It prepares the computed interpretation shared by humans/agents; it does
-not itself deliver or accept that rich panel/selector.
+rules. The separate [live adapter](card_quaternary_interpretation.md) now shares
+interface classifications and every family comparison between readable human
+views and compact agent selections, with original support and explicit unknowns.
+Its original scientific saved reader and researcher acceptance remain pending.
 
 | Nature / topic | Current exploration position | Completion requirement |
 | --- | --- | --- |
@@ -62,7 +64,7 @@ not itself deliver or accept that rich panel/selector.
 | Shared: identity, sources, coverage and full content | Initial discovery/inspection/support/coverage delivered | Consistent integration across all panels; generic/unknown natures retain complete literal access |
 | Shared: literature | Existing literature readers/explanations; no rich explorer panel | Publication roles, exact cited identities and original locators; no implication that every paper supports every displayed claim |
 | Shared: contextual navigation and saved reading | Initial capture/navigation and structural/field/coverage history delivered | Support every newly delivered panel's exact options, source closure, independent inert reading and explicit new interpretation |
-| Shared: compact agent access | Literal, structural and ligand-site comparison exact selection delivered; shared source-path membership reduces measured comparison delivery overhead | Bring the agreed agent contract to new scientific adapters; equivalent requests share science, scope, units and support |
+| Shared: compact agent access | Literal, structural, ligand-site comparison and live quaternary interpretation exact selection delivered; shared source-path membership reduces comparison delivery overhead | Complete original scientific saved reading for quaternary interpretation and bring parity to subsequent adapters; equivalent requests share science, scope, units and support |
 
 An unsupported/unqueried state is a legitimate answer for a particular captured
 Card. It is not proof that a missing rich adapter is implemented. Each panel

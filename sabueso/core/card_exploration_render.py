@@ -367,6 +367,17 @@ def _parts(view):
             + view.explorer._coverage_result.native["rule"]["rule"]
             + "; source/request states remain distinct. Unknown counts are not zero; no global completeness score is inferred."
         )
+    if view._record_panel == "quaternary_interpretation":
+        from .card_quaternary_exploration import SCOPE
+
+        opening.append(SCOPE)
+        opening.append(
+            "This live interpretation is not yet supported by the original saved scientific reader; save capabilities are explicit."
+        )
+        if view.presentation == "detail" and view._selected:
+            opening.append(
+                f"Finding kind: {view._selected[0].value['kind']}. Full original scientific result: native_payload; original statements: explain()."
+            )
     if view._record_panel == "ligand_site_comparisons":
         if view._explorer.mode == "saved":
             from .card_ligand_site_history_v1 import SCOPE
@@ -515,6 +526,27 @@ def _parts(view):
                     for key in RECORD_COLUMNS[view._record_panel]
                 ),
             )
+            if view._record_panel == "quaternary_interpretation":
+                kinds = {
+                    "interface_classification": "Interface classification",
+                    "interface_family_comparison": "Interface/family comparison",
+                }
+                states = {
+                    "computed": "Computed",
+                    "partial": "Partly determined",
+                    "not_computed": "Not computed",
+                    "comparable": "Comparable",
+                }
+                record_row = (
+                    str(index),
+                    preview(item.label),
+                    kinds[value["kind"]],
+                    preview(value["partner_ref"]),
+                    states[value["status"]],
+                    states[value["coordinate_status"]],
+                    preview(value["finding"]),
+                    preview(value["reason"]),
+                )
             if view._record_panel == "ligand_site_comparisons":
                 state = {
                     "computed": "Compared",
@@ -723,6 +755,10 @@ def _parts(view):
 
 
 def _headers(view):
+    if view._record_panel == "quaternary_interpretation":
+        from .card_quaternary_exploration import HEADERS
+
+        return list(HEADERS)
     if view._record_panel == "ligand_site_comparisons":
         if view._explorer.mode == "saved":
             from .card_ligand_site_history_v1 import HEADERS

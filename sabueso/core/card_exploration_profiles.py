@@ -63,6 +63,7 @@ NATURE_TOPICS = {
         "ligand_site_comparisons",
         "ligand_instances",
         "quaternary_structure",
+        "quaternary_interpretation",
     ),
     "small_molecule": ("chemistry", "properties"),
     "disease": ("definition", "classification", "identity"),
@@ -210,6 +211,13 @@ def field_entries(explorer, topic):
 
 
 RECORD_COLUMNS = {
+    "quaternary_interpretation": (
+        "partner_ref",
+        "status",
+        "coordinate_status",
+        "finding",
+        "reason",
+    ),
     "ligand_site_comparisons": (
         "ligand_ref",
         "comparison_status",
@@ -223,7 +231,7 @@ RECORD_COLUMNS = {
 
 
 def record_label(panel, row):
-    if panel == "ligand_site_comparisons":
+    if panel in ("ligand_site_comparisons", "quaternary_interpretation"):
         return row["label"]
     return (
         f"{row['area']} · {row['source']}" if panel == "coverage" else row["object_ref"]

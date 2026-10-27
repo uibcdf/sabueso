@@ -86,7 +86,9 @@ def test_complete_literal_reconstruction(nature):
     )
     assert access.context["card_ref"] is None
     assert access.capabilities["scientific_topics"] == (
-        ["structures", "ligand_site_comparisons"] if nature == "protein" else []
+        ["structures", "ligand_site_comparisons", "quaternary_interpretation"]
+        if nature == "protein"
+        else []
     )
 
 

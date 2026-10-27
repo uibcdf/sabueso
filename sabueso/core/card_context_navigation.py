@@ -264,6 +264,10 @@ def _link_view(
 
 
 def related(item):
+    if item._view._record_panel == "quaternary_interpretation":
+        from .card_quaternary_exploration import links
+
+        return links(item)
     if item._view._field_panel == "quaternary_structure":
         from .card_quaternary_source_v1 import related as quaternary_related
 

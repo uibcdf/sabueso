@@ -982,7 +982,7 @@ def saved_answer(explorer, question, options, origin):
     if (
         not isinstance(question, str)
         or (
-            question != "ligand_site_comparisons"
+            question not in ("ligand_site_comparisons", "quaternary_interpretation")
             and question not in explorer._questions
         )
         or not isinstance(options, dict)

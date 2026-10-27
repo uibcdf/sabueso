@@ -621,9 +621,54 @@ def test_both_rules_preserve_historical_card_pins_and_source_support(rule, tmp_p
 def test_full_and_index_packets_declare_current_rule_and_preserve_saved_results(
     tmp_path,
 ):
-    from test_quaternary_interpretation_scope_offline import relation, sample
+    # This case also runs from an isolated installed-consumer receiving directory.
+    # Keep its explicitly synthetic, source-bound inputs in this declared module.
+    subject = "uniprot:P52270"
+    card = Card(
+        meta={"entity_type": "protein", "card_id": "sabueso:protein:" + subject}
+    )
 
-    card = sample(numbering="mixed")
+    def stated(path, value, provider="synthetic"):
+        row = make_source_assertion(
+            path, deepcopy(value), provider, "P52270", "synthetic", subject_ref=subject
+        )
+        if provider == "UniProt":
+            row["source_metadata"] = {"sequence_version": 7}
+        card.source_assertion_store.add(row)
+        return row["id"]
+
+    def relation(target, predicate, obj, qualifiers):
+        ref = stated(
+            "relationships." + predicate, {"object_ref": obj, "qualifiers": qualifiers}
+        )
+        row = make_relationship(subject, predicate, obj, deepcopy(qualifiers), [ref])
+        target.relationship_store.add(row)
+
+    for path, value in [
+        ("identifiers.uniprot", "P52270"),
+        ("sequence.primary", "M" * 100),
+        ("sequence.length", 100),
+    ]:
+        card.set(path, value, [stated(path, value, "UniProt")])
+    site = deepcopy(synthetic().get(FAMILY)["value"][0])
+    site["location"]["kind"] = "sequence"
+    card.set(FAMILY, [site], [stated(FAMILY, site, "InterPro")])
+    relation(
+        card,
+        "has_structure",
+        "pdb:1SUX",
+        {"coverage": 1.0, "chimeric_with": [], "assemblies": []},
+    )
+    relation(
+        card,
+        "has_interface_with",
+        subject,
+        {
+            "numbering": "mixed",
+            "structures": ["pdb:1SUX"],
+            "residues": [{"start": 13, "end": 15}],
+        },
+    )
     current_rule = "interface_site_agreement@3"
     full = sabueso.compose_packet(
         sabueso.KnowledgeQuery("P52270", aspects=["oligomer"]), card

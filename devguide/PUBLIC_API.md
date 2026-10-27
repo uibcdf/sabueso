@@ -1,5 +1,16 @@
 # Sabueso — Public API
 
+Development live quaternary interpretation (#148):
+`card.explore().answer("quaternary_interpretation")` and `view(...)` expose
+interface classifications and individual interface/family comparisons with
+readable reasons, full native results and original input navigation.
+`explorer.access.select("quaternary_interpretation", fields=..., where=...,
+item_refs=..., order_by=...)` shares the result and supports bounded pages with
+mandatory scientific scope and complete source membership. Its `save=False`;
+original saved scientific reading remains pending and old saved requests return
+`not_saved`. See the [scope](pending_proposals/card_quaternary_interpretation.md)
+and [examples](../docs/content/user/card_exploration.md#interpret-interfaces-and-compare-family-sites).
+
 Development quaternary source exploration (#148):
 `card.explore().view("quaternary_structure")` and
 `answer("quaternary_structure")` present original subunit fields, individual

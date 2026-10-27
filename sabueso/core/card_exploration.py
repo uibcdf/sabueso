@@ -27,6 +27,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "quaternary_interpretation": (
+        "Interface classifications and family-site comparisons",
+        "Source-bound interface findings and all family-site pairs, with original inputs and explicit uncomputed context.",
+    ),
     "quaternary_structure": (
         "Subunits, assemblies and interfaces",
         "Original source declarations with structure-local assembly context, interface numbering and complete support.",
@@ -142,6 +146,8 @@ class CardItem:
 
     @property
     def kind(self):
+        if self._view._record_panel == "quaternary_interpretation":
+            return self._entry.value["kind"]
         if self._view._field_panel == "quaternary_structure":
             from .card_quaternary_source_v1 import context
 
@@ -246,6 +252,10 @@ class CardItem:
 
     @property
     def support(self):
+        if self._view._record_panel == "quaternary_interpretation":
+            from .card_quaternary_exploration import support
+
+            return support(self)
         if self._view._record_panel == "ligand_site_comparisons":
             if self._view._explorer.mode == "saved":
                 from .card_ligand_site_history_v1 import support
@@ -502,14 +512,19 @@ class CardItem:
             if self._view._question_catalog:
                 return self._view._explorer._answer(self._entry.key, {}, self._view)
             return self._view._explorer._topic(self._entry.key, self._view)
-        if self._view._record_panel == "ligand_site_comparisons":
+        if self._view._record_panel in (
+            "ligand_site_comparisons",
+            "quaternary_interpretation",
+        ):
             return replace(
                 self._view,
                 _selected=(self._entry,),
                 _origin=self._view,
                 _display_request=None,
                 _native_override=deepcopy(self._entry.value["item"]),
-                title=f"Ligand contact comparison · {self.label}",
+                title=f"Quaternary finding · {self.label}"
+                if self._view._record_panel == "quaternary_interpretation"
+                else f"Ligand contact comparison · {self.label}",
                 presentation="detail",
             )
         if self._view._selection._scientific is not None:
@@ -559,6 +574,10 @@ class CardItem:
         return result
 
     def _live_explain(self):
+        if self._view._record_panel == "quaternary_interpretation":
+            from .card_quaternary_exploration import explain
+
+            return explain(self)
         if self._view._record_panel == "ligand_site_comparisons":
             from .card_ligand_site_exploration import explain
 
@@ -855,6 +874,7 @@ class CardView:
             capabilities["scientific_adapter"] = self._record_panel in (
                 "coverage",
                 "ligand_site_comparisons",
+                "quaternary_interpretation",
             )
         if self._selection._scientific is not None:
             capabilities.update(
@@ -882,6 +902,15 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if self._record_panel == "quaternary_interpretation":
+            from .card_quaternary_exploration import COLUMNS
+
+            return {
+                "kind": "quaternary_interpretation",
+                "grain": "one retained interface classification or one interface/family-annotation pair",
+                "columns": ["label", "kind", *COLUMNS],
+                "presentations": ["summary", "table", "detail"],
+            }
         if self._field_panel == "quaternary_structure":
             from .card_quaternary_source_v1 import COLUMNS, SELECT
 
@@ -1096,7 +1125,8 @@ class CardView:
         self._check_column(column)
         scientific = (
             self._selection._scientific is not None
-            and self._record_panel != "ligand_site_comparisons"
+            and self._record_panel
+            not in ("ligand_site_comparisons", "quaternary_interpretation")
         )
         if scientific:
             if self._explorer.mode == "saved":
@@ -1121,7 +1151,8 @@ class CardView:
         ):
             return replace(self, _origin=self)
         if (
-            self._record_panel == "ligand_site_comparisons"
+            self._record_panel
+            in ("ligand_site_comparisons", "quaternary_interpretation")
             or self._field_panel == "quaternary_structure"
         ):
 
@@ -1482,6 +1513,12 @@ class CardExplorer:
             raise ArgumentError("Scientific options require a mapping or None.")
         from .card_exploration_profiles import PANELS
 
+        if topic == "quaternary_interpretation":
+            from .card_quaternary_access import options_for_quaternary
+            from .card_quaternary_exploration import view
+
+            options_for_quaternary(options)
+            return view(self, origin)
         if topic == "ligand_site_comparisons":
             if options not in (None, {}):
                 raise ArgumentError(

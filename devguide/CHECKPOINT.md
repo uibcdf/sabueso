@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-26**, source-bound quaternary interpretation following pause reconciliation
+Last updated: **2026-10-26**, live quaternary human/agent interpretation and isolated receiving scope
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -31,7 +31,17 @@ source and release receipts remain unchanged.
    quaternary interpretation and a named compact selector remain separate work.
    The [native #165 correction](pending_bugs/quaternary_interpretation_scope.md)
    now versions declaration/coordinate admission and preserves all comparisons;
-   integrate those qualified findings into the computed human/agent adapter next.
+   The [live human/agent adapter](pending_proposals/card_quaternary_interpretation.md)
+   now shares those findings with exact original support, selection and bounded
+   delivery. Finish its versioned original scientific saved reader next; current
+   live save capabilities are false and old saved requests return `not_saved`.
+
+   The preceding `8f5eaca` checkpoint passes 7,370 full local cases and governance,
+   but installed public-Ackredit CI finds a missing staged test-helper module.
+   The receiving case is now self-contained in its already-declared module,
+   with an isolated regression and no workflow changes;
+   replacement exact-source CI must qualify that public receiving scope. Source
+   CI, local code checks and installed-artifact qualification remain separate.
 5. Keep scientific review separate: the [public worksheet](pending_proposals/scientific_review_packet_20261020.md)
    and [source drafts](pending_proposals/located_source_review.md) await actual
    scientist decisions. Authorized primary methods for the three identified
