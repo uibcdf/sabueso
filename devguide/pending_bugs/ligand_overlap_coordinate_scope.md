@@ -67,7 +67,7 @@ be scientifically incomparable. Derived scope/results are never SourceAssertions
 
 ## History and boundary
 
-Default `packet_aspects@11` declares both new scientific rules alongside unchanged
+The original correction's default `packet_aspects@11` declares both new scientific rules alongside unchanged
 `annotated_site_source_support@1` and `ligand_instance_scope@1`. The exact native
 site reader from `b991384` is frozen for `@10`; `@8`/`@9` and `@6`/`@7` keep their
 previous readers. Canonical input IDs use the existing flat `inputs` reference shape as well as
@@ -75,6 +75,10 @@ the per-field grouping, so full/index terms retain the actual identity, sequence
 and length sources even when admission is uncomputed. Generic historical terms
 readers are unchanged. Full and index terms validate using the actual saved mapping,
 without reinterpreting historical results as current classifications.
+
+The subsequent [quaternary correction](quaternary_interpretation_scope.md) advances
+the development default to `packet_aspects@12`. It retains this ligand-site
+admission and changes the quaternary interpretation/dependency scope separately.
 
 Oligomer family-site reading retains that original projection and its independent
 scoped agreement rule. No stored Card field, schema version, migration, identifier,

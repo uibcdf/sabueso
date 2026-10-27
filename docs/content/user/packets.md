@@ -34,7 +34,12 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping. Development uses `packet_aspects@11`: ligand-site overlap now requires
+by a named, versioned mapping. Development uses `packet_aspects@12`: quaternary interpretation preserves all
+subject-bound structure declarations and self-interface/family pairs, with
+`interface_partner_class@2`, `interface_site_agreement@3` and their original scope
+inputs. Indexes and terms include the exact canonical reference and structure
+dependencies. Original `@11` quaternary interpretation remains frozen.
+The inherited ligand-site overlap requires
 source-bound canonical coordinate scope (`annotated_site_overlap@3` and
 `ligand_site_coordinate_scope@1`). Unknown scope stays uncomputed, never a negative
 result. Original UniProt site statements retain their separate native contexts

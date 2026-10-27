@@ -35,6 +35,11 @@ rules and scope are reused; missing adapter work is distinguished from missing
 source knowledge. Current initial routes are implemented in development, not
 accepted as the complete broad profile.
 
+The [#165 native quaternary correction](../pending_bugs/quaternary_interpretation_scope.md)
+preserves all source-bound declarations and exact interface/family pairs under new
+rules. It prepares the computed interpretation shared by humans/agents; it does
+not itself deliver or accept that rich panel/selector.
+
 | Nature / topic | Current exploration position | Completion requirement |
 | --- | --- | --- |
 | Protein: function | Initial fields/question delivered | Finish broad-profile integration and researcher review of original function/organism/sequence scope |

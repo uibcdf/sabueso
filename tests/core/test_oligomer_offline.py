@@ -1,3 +1,4 @@
+# Explicit @1/@2 historical regression coverage; current defaults are covered separately.
 """What sources state about a protein's quaternary structure (uibcdf/sabueso#40).
 
 Frozen public responses retrieved 2026-09-24:
@@ -11,7 +12,7 @@ import pytest
 
 from sabueso import resolve_protein_card
 from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
-from sabueso.core.oligomer import AGREEMENT_RULE, PARTNER_RULE
+from sabueso.core._oligomer_legacy_v2 import AGREEMENT_RULE, PARTNER_RULE
 from sabueso.mappings.pdbe_kb import map_interfaces
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 from sabueso.tools.db.interpro import FixtureInterProClient
@@ -43,12 +44,12 @@ def _card(resolver, accession, structures="all", **kwargs):
 
 @pytest.fixture(scope="module")
 def tctim(resolver):
-    return _card(resolver, TCTIM).oligomer()
+    return _card(resolver, TCTIM).oligomer(agreement_rule=AGREEMENT_RULE)
 
 
 @pytest.fixture(scope="module")
 def hstim(resolver):
-    return _card(resolver, HSTIM).oligomer()
+    return _card(resolver, HSTIM).oligomer(agreement_rule=AGREEMENT_RULE)
 
 
 def _partners(view):
@@ -133,7 +134,7 @@ def test_structures_without_assembly_data_are_reported_not_dropped(tctim):
 
 def test_undetermined_when_the_structures_are_not_on_the_card(resolver):
     # Without RCSB data, 3Q37's chimeric entity cannot be told from a real complex.
-    view = _card(resolver, TCTIM, structures=()).oligomer()
+    view = _card(resolver, TCTIM, structures=()).oligomer(agreement_rule=AGREEMENT_RULE)
     tbtim = _partners(view)["uniprot:P04789"]
     assert tbtim["class"] == "undetermined"
     assert tbtim["basis"] == {"pdb:3Q37": "entity_mapping_not_retrieved"}
@@ -161,4 +162,4 @@ def test_interface_outcomes_are_recorded_and_never_block_the_card(resolver):
         e for e in card.quality["enrichments"] if e.get("data") == "interface_residues"
     ]
     assert outcome["status"] == "error"
-    assert card.oligomer()["interfaces"] == []
+    assert card.oligomer(agreement_rule=AGREEMENT_RULE)["interfaces"] == []

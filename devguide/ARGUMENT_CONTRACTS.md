@@ -512,7 +512,9 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   positional arguments, including `skip_digestion`, retain their positions.
   Since 0.13.0, `oligomer` and `explain_oligomer` digest keyword-only
   `agreement_rule`: exactly `interface_site_agreement@1` (legacy integer-only)
-  or `interface_site_agreement@2` (default, confirmed UniProt/1-based comparison).
+  `interface_site_agreement@2` (original confirmed-numbering comparison), or
+  `interface_site_agreement@3` (development default, source-bound exact coordinates
+  and every focal self-interface/family pair).
   Aliases, unsupported versions and non-string values are refused. No identifier
   resolution occurs; `explain_oligomer` retains its positional `skip_digestion`.
 - **Deck operations:** `summarize`, `structure_inventory`, `unique_names`,

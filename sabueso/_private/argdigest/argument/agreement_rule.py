@@ -6,11 +6,12 @@ def digest_agreement_rule(agreement_rule, caller=None):
     if isinstance(agreement_rule, str) and agreement_rule in {
         "interface_site_agreement@1",
         "interface_site_agreement@2",
+        "interface_site_agreement@3",
     }:
         return agreement_rule
     raise refuse(
         "agreement_rule",
         agreement_rule,
         caller,
-        'expected "interface_site_agreement@1" or "interface_site_agreement@2"',
+        'expected "interface_site_agreement@1", "interface_site_agreement@2" or "interface_site_agreement@3"',
     )

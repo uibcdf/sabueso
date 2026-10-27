@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-26**, original quaternary source exploration following pause reconciliation
+Last updated: **2026-10-26**, source-bound quaternary interpretation following pause reconciliation
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -29,6 +29,9 @@ source and release receipts remain unchanged.
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed
    quaternary interpretation and a named compact selector remain separate work.
+   The [native #165 correction](pending_bugs/quaternary_interpretation_scope.md)
+   now versions declaration/coordinate admission and preserves all comparisons;
+   integrate those qualified findings into the computed human/agent adapter next.
 5. Keep scientific review separate: the [public worksheet](pending_proposals/scientific_review_packet_20261020.md)
    and [source drafts](pending_proposals/located_source_review.md) await actual
    scientist decisions. Authorized primary methods for the three identified
@@ -49,7 +52,7 @@ does not replace the maintainer's newer exploration priority.
 | Published package | **0.14.0**, source/tag `78623d0`; its installed OS/Python matrix, public install and Zenodo archive retain their own [immutable receipt](../devtools/conda-build/receipts/sabueso_0.14.0_public_2026-10-09.json) |
 | Published schema | **0.3.13** and earlier schemas/cards/shapes remain immutable |
 | Development schema | **0.3.14**, unpublished, 1,938 recorded paths; coordinate/request scope, contact/model inputs, derivation applications and native feature identity follow [SCHEMA](SCHEMA.md) and migrations |
-| Packet history | Default `packet_aspects@11` applies source-bound canonical ligand overlap; historical mappings keep their frozen projections, original support and semantics |
+| Packet history | Default `packet_aspects@12` adds source-bound quaternary interpretation and exact reference/structure dependencies; inherited canonical ligand overlap and original `@11`/earlier projections retain their own semantics |
 | Shared contracts | Sabueso records Knowledge/SourceAssertions; MOLI owns shared contracts, Nextia owns Evidence. Similarity is never identity; unknown/unqueried/failed scope remains explicit |
 | Release target | 0.15.0, with the full exploration and human-acceptance gate in the [scope](pending_proposals/release_consolidation_0150.md). The [notes draft](../devtools/conda-build/release_notes_0.15.0.md) is incomplete preparation, not a candidate or release |
 
@@ -139,6 +142,15 @@ selected/full/remote qualification; these older counts do not qualify it.
 Native coordinate admission remains unchanged; broader completion and release remain paused.
 
 ## Open work and boundaries
+
+The quaternary source pane at `b4f7d31` passes all 7,321 local-original cases,
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40429429449) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40429429395).
+Full receptor captures/hashes and all thirteen actual summaries are verified:
+nine OS/Python lanes pass 5,768 each, and four public-Ackredit lanes 1,452 each.
+All four Windows lanes pass, confirming the explicit-UTF8 fixture correction.
+The subsequent native #165 work has its own qualification; this receipt does not
+automatically qualify its changed rules or packet mapping.
 
 The saved-comparison checkpoint `56f2c7b` passes 7,298 local-original tests but its
 [CI](https://github.com/uibcdf/sabueso/actions/runs/40423760310) fails the fresh

@@ -310,6 +310,13 @@ directions until a bounded use and acceptance criteria are agreed.
 
 ### Immediate resumption sequence
 
+The [native quaternary correction #165](pending_bugs/quaternary_interpretation_scope.md)
+precedes exposing computed findings through #148: all declarations/pairs, original
+source identity and exact coordinate admission, explicit uncertainty, preserved
+historical rules and versioned full/index support. Continue the computed human
+adapter and compact selector over that qualified science; the correction alone
+does not complete those interfaces or researcher/workload acceptance.
+
 The [quaternary source continuation](pending_proposals/card_quaternary_source_exploration.md)
 delivers original subunit, assembly and interface detail, local structure/source
 navigation and independent saved reading. Finish its computed interpretation,

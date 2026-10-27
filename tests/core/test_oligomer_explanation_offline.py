@@ -1,3 +1,4 @@
+# Explicit @1/@2 historical regression coverage; current defaults are covered separately.
 """Original oligomer support, public systems and clearly synthetic edge cases (#91)."""
 
 from copy import deepcopy
@@ -7,9 +8,9 @@ import pytest
 
 import sabueso
 from sabueso._private.smonitor.warnings import EnrichmentFailedWarning
+from sabueso.core._oligomer_legacy_v2 import AGREEMENT_RULE, LEGACY_AGREEMENT_RULE
 from sabueso.core.card import Card
 from sabueso.core.errors import ArgumentError
-from sabueso.core.oligomer import AGREEMENT_RULE, LEGACY_AGREEMENT_RULE
 from sabueso.core.relationship_store import make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
@@ -98,8 +99,8 @@ def public_card(request):
 
 def test_public_view_rule_parity_and_exact_native_support(public_card):
     before = deepcopy(public_card.to_dict())
-    answer = public_card.explain_oligomer()
-    assert answer["view"] == public_card.oligomer()
+    answer = public_card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
+    assert answer["view"] == public_card.oligomer(agreement_rule=AGREEMENT_RULE)
     assert answer["rule"]["rule"] == "oligomer_explanation@2"
     assert answer["card_ref"] == public_card.pinned_ref()
     assert answer["status"] == "on_card" and not answer["gaps"]
@@ -114,7 +115,7 @@ def test_public_view_rule_parity_and_exact_native_support(public_card):
 
 
 def test_source_assemblies_methods_and_original_versions_survive(public_card):
-    answer = public_card.explain_oligomer()
+    answer = public_card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     if public_card.id.endswith("P52270"):
         row = next(
             s
@@ -136,7 +137,7 @@ def test_source_assemblies_methods_and_original_versions_survive(public_card):
 
 
 def test_family_members_and_agreement_locate_actual_stored_inputs(public_card):
-    answer = public_card.explain_oligomer()
+    answer = public_card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     for site, agreement in zip(answer["family_interface_sites"], answer["agreement"]):
         assert agreement["family_site_locator"] == site["locator"]
         value = public_card.get(FAMILY)["value"][site["locator"]["index"]]
@@ -165,10 +166,10 @@ def test_family_members_and_agreement_locate_actual_stored_inputs(public_card):
 def test_partner_classification_uses_exact_structural_context(q, expected):
     card = synthetic(partner="uniprot:OTHER")
     card.relationships("has_structure")[0]["qualifiers"] = q
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert answer["interfaces"][0]["item"]["class"] == expected
     assert answer["structures"][0]["relationship"]["qualifiers"] == q
-    assert answer["view"] == card.oligomer()
+    assert answer["view"] == card.oligomer(agreement_rule=AGREEMENT_RULE)
 
 
 def test_mixed_chimera_and_fragment_are_not_a_silent_heteromer():
@@ -180,14 +181,14 @@ def test_mixed_chimera_and_fragment_are_not_a_silent_heteromer():
     card.relationships("has_interface_with")[0]["qualifiers"]["structures"].append(
         "pdb:1TCD"
     )
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert answer["interfaces"][0]["item"]["class"] == "chimera_or_fragment"
     assert len(answer["interfaces"][0]["classification_inputs"]["structures"]) == 2
 
 
 def test_missing_structure_support_stays_partial_without_fabricating_a_relationship():
     card = synthetic(partner="uniprot:OTHER", structure=False)
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert (
         answer["status"] == "partial"
         and answer["interfaces"][0]["item"]["class"] == "undetermined"
@@ -212,7 +213,7 @@ def test_missing_empty_and_source_stated_assembly_states_stay_distinct(
 ):
     card = synthetic()
     card.relationships("has_structure")[0]["qualifiers"]["assemblies"] = assemblies
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert answer["structures"][0]["assembly_state"] == expected
     assert answer["view"]["without_assembly_data"] == (
         ["pdb:1SUX"] if assemblies is None else []
@@ -228,8 +229,10 @@ def test_missing_relationship_assertions_or_unrecorded_support_are_explicit(
     card.relationships(predicate)[0]["source_assertion_ids"] = (
         ["SA_missing"] if missing else []
     )
-    answer = card.explain_oligomer()
-    assert answer["status"] == "partial" and answer["view"] == card.oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
+    assert answer["status"] == "partial" and answer["view"] == card.oligomer(
+        agreement_rule=AGREEMENT_RULE
+    )
     assert any(
         g["reason"]
         == ("missing_source_assertion" if missing else "no_relationship_support")
@@ -245,14 +248,14 @@ def test_all_matching_annotation_support_is_retained_alongside_alternatives(path
     extra = assertion(card, path, value, "second source")
     other = assertion(card, path, "Synthetic competing value", "competing source")
     node["source_assertion_ids"].append(extra)
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     members = answer["subunit" if path == SUBUNIT else "family_interface_sites"]
     assert {r["id"] for r in members[0]["source_assertions"]} == set(
         node["source_assertion_ids"]
     )
     field = next(f for f in answer["fields"] if f["field_path"] == path)
     assert field["alternatives"][0]["id"] == other
-    assert answer["view"] == card.oligomer()
+    assert answer["view"] == card.oligomer(agreement_rule=AGREEMENT_RULE)
 
 
 @pytest.mark.parametrize("path", [SUBUNIT, FAMILY])
@@ -262,7 +265,7 @@ def test_selected_annotation_without_matching_original_is_partial(path):
     card.source_assertion_store.get(identifier)["asserted_value"] = {
         "synthetic": "different"
     }
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert answer["status"] == "partial"
     assert any(
         g["reason"] == "no_matching_annotation_assertion" and g["field_path"] == path
@@ -281,7 +284,7 @@ def test_field_conflicts_and_qualifier_alternatives_are_not_resolved():
     card.relationships("has_structure")[0]["qualifier_conflicts"] = {
         "assemblies": [[{"assembly_id": "2"}]]
     }
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert answer["status"] == "partial"
     assert (
         answer["structures"][0]["relationship"]["qualifier_conflicts"]
@@ -315,7 +318,7 @@ def test_empty_failed_unavailable_and_unqueried_report_context_is_original(statu
         "count": 0,
     }
     card.quality["enrichments"] = [{"source": "unrelated"}, report]
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert answer["status"] == "not_on_card" and answer["interfaces"] == []
     assert answer["context"]["reports"][0]["record"] == report
     assert answer["context"]["reports"][0]["locator"]["index"] == 1
@@ -327,7 +330,7 @@ def test_unrelated_missing_support_does_not_pollute_oligomer_explanation():
     relationship(card, "has_bioactivity", "chembl:SYNTHETIC", {})[
         "source_assertion_ids"
     ] = ["SA_missing"]
-    assert card.explain_oligomer()["status"] == "on_card"
+    assert card.explain_oligomer(agreement_rule=AGREEMENT_RULE)["status"] == "on_card"
 
 
 def test_actual_failed_interface_query_is_not_an_empty_success():
@@ -340,7 +343,7 @@ def test_actual_failed_interface_query_is_not_an_empty_success():
             interfaces=True,
             pdbe_kb_client=FixturePDBeKBClient("temp_data", failing={"P52270"}),
         )
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     reports = [
         row
         for row in answer["context"]["reports"]
@@ -362,7 +365,7 @@ def test_shared_partner_name_does_not_imply_homomer_identity(partner):
     card.relationships("has_interface_with")[0]["qualifiers"]["partner_name"] = (
         "Synthetic homodimer"
     )
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert answer["interfaces"][0]["item"]["class"] == "heteromeric"
     assert (
         answer["interfaces"][0]["classification_inputs"]["identity_basis"]
@@ -378,24 +381,27 @@ def test_family_sequence_context_never_proves_identity_or_numbering_by_equal_pos
 ):
     card = synthetic()
     card.get(FAMILY)["value"][0]["location"]["sequence"].update(change)
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert not answer["agreement"][0]["numbering_confirmed"]
-    assert answer["view"] == card.oligomer() and answer["status"] == "partial"
+    assert (
+        answer["view"] == card.oligomer(agreement_rule=AGREEMENT_RULE)
+        and answer["status"] == "partial"
+    )
 
 
 def test_zero_source_version_and_unknown_version_are_retained():
     card = synthetic()
     for row in card.source_assertion_store.to_list():
         card.source_assertion_store.get(row["id"])["source"]["version"] = 0
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert answer["interfaces"][0]["interface"]["source_assertions"][0]["version"] == 0
     card.source_assertion_store.get(
         card.relationships("has_interface_with")[0]["source_assertion_ids"][0]
     )["source"].pop("version")
     assert (
-        card.explain_oligomer()["interfaces"][0]["interface"]["source_assertions"][0][
-            "version"
-        ]
+        card.explain_oligomer(agreement_rule=AGREEMENT_RULE)["interfaces"][0][
+            "interface"
+        ]["source_assertions"][0]["version"]
         is None
     )
 
@@ -406,11 +412,11 @@ def test_saved_historical_pins_and_item_support_survive_reacquisition(
     card = Card.from_dict(public_card.to_dict())
     store = sabueso.KnowledgeStore(tmp_path / "oligomer.db")
     pin = store.save(card)
-    expected = card.explain_oligomer()
+    expected = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     new_sa = assertion(card, SUBUNIT, "Synthetic later acquisition", "UniProt", "later")
     card.set(SUBUNIT, ["Synthetic later acquisition"], [new_sa])
     assert store.save(card) != pin
-    restored = store.load(pin).explain_oligomer()
+    restored = store.load(pin).explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert restored == expected
     for row in restored["structures"] + [
         i["interface"] for i in restored["interfaces"]
@@ -441,7 +447,7 @@ def test_reader_acquires_nothing_adds_no_credit_and_returns_detached_records(
     )
     with ackredit.session("inert oligomer explanation"):
         credit = ackredit.get_attribution().to_dict()
-        answer = card.explain_oligomer()
+        answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
         assert ackredit.get_attribution().to_dict() == credit
     answer["structures"][0]["relationship"]["qualifiers"].clear()
     answer["fields"][0]["node"].clear()
@@ -462,13 +468,13 @@ def test_current_rule_refuses_equal_integers_without_confirmed_numbering(
 ):
     card = synthetic(numbering=numbering)
     before = deepcopy(card.to_dict())
-    view = card.oligomer()
+    view = card.oligomer(agreement_rule=AGREEMENT_RULE)
     row = view["agreement"][0]
     assert row["comparison"]["status"] == status
     assert row["comparison"]["reasons"] == [reason]
     assert all(row[k] is None for k in ("both", "family_only", "observed_only"))
     assert view["agreement_state"]["status"] == "not_computed"
-    explanation = card.explain_oligomer()
+    explanation = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert explanation["view"] == view and explanation["status"] == "partial"
     assert explanation["agreement"][0]["comparison"] == row["comparison"]
     assert card.to_dict() == before
@@ -495,7 +501,7 @@ def test_current_rule_refuses_equal_integers_without_confirmed_numbering(
 def test_family_context_is_not_inferred_from_same_positions(change, status, reason):
     card = synthetic()
     card.get(FAMILY)["value"][0]["location"]["sequence"].update(change)
-    row = card.oligomer()["agreement"][0]
+    row = card.oligomer(agreement_rule=AGREEMENT_RULE)["agreement"][0]
     assert row["comparison"]["status"] == status
     assert row["comparison"]["reasons"] == [reason]
     assert row["both"] is None
@@ -508,7 +514,7 @@ def test_family_context_is_not_inferred_from_same_positions(change, status, reas
 def test_missing_observed_residues_and_explicit_empty_contacts_stay_distinct(residues):
     card = synthetic()
     card.relationships("has_interface_with")[0]["qualifiers"]["residues"] = residues
-    row = card.oligomer()["agreement"][0]
+    row = card.oligomer(agreement_rule=AGREEMENT_RULE)["agreement"][0]
     if residues is None:
         assert row["both"] is None and row["comparison"]["status"] == "undetermined"
         assert row["comparison"]["reasons"] == ["interface_residues_not_stated"]
@@ -527,13 +533,13 @@ def test_conflicting_numbering_or_positions_are_not_silently_chosen(key, alterna
     q = deepcopy(original["qualifiers"])
     q[key] = alternative
     relationship(card, "has_interface_with", original["object_ref"], q)
-    row = card.oligomer()["agreement"][0]
+    row = card.oligomer(agreement_rule=AGREEMENT_RULE)["agreement"][0]
     assert row["comparison"]["reasons"] == [f"interface_{key}_conflicted"]
     assert row["comparison"]["status"] == "undetermined" and row["both"] is None
     assert card.oligomer(agreement_rule=LEGACY_AGREEMENT_RULE)["agreement"][0][
         "both"
     ] == [13, 14]
-    answer = card.explain_oligomer()
+    answer = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert answer["interfaces"][0]["interface"]["relationship"]["qualifier_conflicts"][
         key
     ] == [original["qualifiers"][key], alternative]
@@ -548,7 +554,7 @@ def test_no_comparison_inputs_is_not_a_negative_agreement(missing):
     )
     if missing in {"family", "both"}:
         card.sections.pop("features_positional")
-    view = card.oligomer()
+    view = card.oligomer(agreement_rule=AGREEMENT_RULE)
     assert (
         view["agreement"] == [] and view["agreement_state"]["status"] == "not_computed"
     )
@@ -569,11 +575,11 @@ def test_comparable_family_members_are_not_hidden_by_an_unconfirmed_member():
     other["location"]["sequence"]["sequence_id"] = "UniProt:OTHER"
     card.get(FAMILY)["value"].append(other)
     card.get(FAMILY)["source_assertion_ids"].append(assertion(card, FAMILY, other))
-    view = card.oligomer()
+    view = card.oligomer(agreement_rule=AGREEMENT_RULE)
     assert view["agreement_state"]["status"] == "partial"
     assert view["agreement"][0]["both"] == [13, 14]
     assert view["agreement"][1]["both"] is None
-    explanation = card.explain_oligomer()
+    explanation = card.explain_oligomer(agreement_rule=AGREEMENT_RULE)
     assert [
         row["family_site_locator"]["index"] for row in explanation["agreement"]
     ] == [0, 1]
@@ -582,7 +588,7 @@ def test_comparable_family_members_are_not_hidden_by_an_unconfirmed_member():
 
 @pytest.mark.parametrize(
     "value",
-    [None, "@1", "interface_site_agreement@3", "interface_site_agreement@2 ", 2, []],
+    [None, "@1", "interface_site_agreement@4", "interface_site_agreement@2 ", 2, []],
 )
 @pytest.mark.parametrize("method", ["oligomer", "explain_oligomer"])
 def test_agreement_selector_is_digested_without_alias_or_version_guessing(
@@ -615,12 +621,10 @@ def test_both_rules_preserve_historical_card_pins_and_source_support(rule, tmp_p
 def test_full_and_index_packets_declare_current_rule_and_preserve_saved_results(
     tmp_path,
 ):
-    card = synthetic(numbering="mixed")
-    card.set(
-        "identifiers.uniprot",
-        "P52270",
-        [assertion(card, "identifiers.uniprot", "P52270")],
-    )
+    from test_quaternary_interpretation_scope_offline import relation, sample
+
+    card = sample(numbering="mixed")
+    current_rule = "interface_site_agreement@3"
     full = sabueso.compose_packet(
         sabueso.KnowledgeQuery("P52270", aspects=["oligomer"]), card
     )
@@ -629,15 +633,19 @@ def test_full_and_index_packets_declare_current_rule_and_preserve_saved_results(
     )
     facts = full.facts["oligomer"]["subject"]
     assert facts["agreement"][0]["both"] is None
-    assert facts["agreement"][0]["comparison"]["status"] == "not_comparable"
-    assert AGREEMENT_RULE in {rule["rule"] for rule in facts["rules"]}
-    assert AGREEMENT_RULE in index.facts["oligomer"]["subject"]["full_rules"]
+    assert facts["agreement"][0]["comparison"]["status"] == "not_computed"
+    assert current_rule in {rule["rule"] for rule in facts["rules"]}
+    assert current_rule in index.facts["oligomer"]["subject"]["full_rules"]
     assert LEGACY_AGREEMENT_RULE not in index.facts["oligomer"]["subject"]["full_rules"]
     store = sabueso.KnowledgeStore(tmp_path / "packets.db")
     store.save(card)
     store.save_packet(full, "original")
     pin = full.ref
-    card.relationships("has_interface_with")[0]["qualifiers"]["numbering"] = "uniprot"
+    previous = card.relationships("has_interface_with")[0]
+    q = deepcopy(previous["qualifiers"])
+    q["numbering"] = "uniprot"
+    card.relationship_store.store.pop(previous["id"])
+    relation(card, "has_interface_with", previous["object_ref"], q)
     store.save(card)
     current = sabueso.compose_packet(
         sabueso.KnowledgeQuery("P52270", aspects=["oligomer"]), card
@@ -673,7 +681,7 @@ def test_declared_numbering_requires_native_subject_and_actual_located_positive_
         interface["subject_ref"] = (
             "uniprot:OTHER" if area == "different_subject" else None
         )
-    row = card.oligomer()["agreement"][0]
+    row = card.oligomer(agreement_rule=AGREEMENT_RULE)["agreement"][0]
     assert row["both"] is None and row["comparison"]["reasons"] == [reason]
     assert card.oligomer(agreement_rule=LEGACY_AGREEMENT_RULE)["agreement"][0][
         "both"

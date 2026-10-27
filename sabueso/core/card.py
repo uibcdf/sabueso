@@ -921,13 +921,13 @@ class Card:
         self,
         skip_digestion: bool = False,
         *,
-        agreement_rule: str = "interface_site_agreement@2",
+        agreement_rule: str = "interface_site_agreement@3",
     ) -> Dict[str, Any]:
         """Source-stated assemblies/interfaces and a versioned position comparison.
 
-        Default agreement ``@2`` requires the card's UniProt subject, confirmed
-        numbering and located 1-based positions. Explicit ``@1`` reproduces the
-        historical integer-only comparison at the same stored card pin.
+        Default ``@3`` preserves all subject-bound declarations and compares every
+        self-interface/family pair only after exact canonical coordinate admission.
+        Explicit ``@1`` and ``@2`` reproduce their historical interpretations.
         """
         from .oligomer import oligomer_view
 
@@ -938,11 +938,11 @@ class Card:
         self,
         skip_digestion: bool = False,
         *,
-        agreement_rule: str = "interface_site_agreement@2",
+        agreement_rule: str = "interface_site_agreement@3",
     ) -> Dict[str, Any]:
         """Explain the complete oligomer view at this exact card pin.
 
-        ``oligomer_explanation@2`` retains the actual partner and agreement rules,
+        ``oligomer_explanation@3`` retains all actual partner and agreement inputs,
         source assemblies, selected/competing support and missing inputs. Readers
         fetch nothing, change no stored knowledge and add no acquisition credit.
         """

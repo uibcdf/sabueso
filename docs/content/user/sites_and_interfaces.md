@@ -57,6 +57,10 @@ PDBe-KB data is CC BY 4.0; cite the PDBe-KB consortium paper.
 
 ## Oligomer and interfaces
 
+The examples below describe development behavior planned for 0.15.0: default
+`interface_site_agreement@3` and `oligomer_explanation@3`. Published 0.14.0 uses
+`@2`; explicit historical readers remain available as described below.
+
 `card.oligomer()` puts together what sources state about a protein's quaternary
 structure:
 
@@ -66,13 +70,24 @@ card, _ = sabueso.resolve_protein_card(
 )
 view = card.oligomer()
 
-print(view["subunit"])  # UniProt SUBUNIT text, with its evidence
+print(view["subunit"])  # Original subunit text and complete supporting source IDs
 for entry in view["assemblies"]:  # RCSB biological assemblies, per structure
-    print(entry["structure_ref"], [a["oligomeric_state"] for a in entry["assemblies"]])
-print(view["without_assembly_data"])  # structures the card has not fetched from RCSB
+    print(entry["structure_ref"], entry["relationship_id"], entry["declaration_state"])
+    if isinstance(entry["assemblies"], list):
+        print(
+            [
+                a.get("oligomeric_state")
+                for a in entry["assemblies"]
+                if isinstance(a, dict)
+            ]
+        )
+print(
+    view["without_assembly_data"]
+)  # structures without a retained assembly declaration
 
 for interface in view["interfaces"]:  # PDBe-KB interface residues, per partner
-    print(interface["partner_ref"], interface["class"], len(interface["positions"]))
+    print(interface["partner_ref"], interface["class"], interface["positions"])
+    print(interface["coordinate_scope"])
     print(interface["basis"])  # why, structure by structure
 
 for row in view["agreement"]:  # family dimer interface vs observed interface
@@ -80,16 +95,16 @@ for row in view["agreement"]:  # family dimer interface vs observed interface
 ```
 
 - `interfaces=True` adds `has_interface_with` relationships from PDBe-KB.
-- Each partner's `class` is derived by Sabueso (`interface_partner_class@1`):
-  - `homomeric`: another copy of the protein;
+- Each partner's `class` is derived by Sabueso (`interface_partner_class@2` in development):
+  - `homomeric`: an admitted source interface whose two references name the same entry;
   - `heteromeric`: seen in a structure where the protein is neither a fragment nor a
     chimera with that partner;
   - `chimera`: the entity maps to both proteins, so the "partner" is the protein itself.
     For example, 3Q37 is a TcTIM/TbTIM chimera;
   - `fragment_complex`: the protein appears only as a peptide, for example a TIM peptide
     presented by HLA-DR;
-  - `undetermined`: the structures are not on the card. Pass `structures="all"` to fetch
-    them.
+  - `undetermined`: identity, source or structural context is missing, invalid or conflicting.
+    Inspect its original classification inputs and reasons.
 - Interfaces are not computed from coordinates; that is modelling (uibcdf/sabueso#30).
 
 ### Explain the stored oligomer view (since 0.13.0)
@@ -104,47 +119,50 @@ for row in explanation["interfaces"]:
         print(support["source_assertion_ref"], support["source"], support["version"])
 ```
 
-`oligomer_explanation@2` exposes the selected partner and agreement rules with
-their actual pinned inputs. `structures` retains complete relationships, source
-assembly methods and alternatives, original primary citations and assertion
-support. `fields`, `subunit` and `family_interface_sites` retain selected and
-competing annotations, exact member locators and source versions. Relationship
-support does not reconstruct which assertion contributed each qualifier.
-Family signatures and assembly methods describe what a source reports; they do
-not mean Sabueso ran InterProScan, PISA or a contact calculation.
+Development behavior (planned 0.15.0) uses `oligomer_explanation@3`,
+`interface_partner_class@2` and default `interface_site_agreement@3`. Each
+structure declaration and original family index is preserved. Distinct declarations
+with the same PDB label stay distinct; conflicting structure context does not
+silently select the last one. Missing coverage does not establish a non-fragment
+complex. An interface for another subject cannot become a focal self-interface.
 
-`not_stated_on_card`, `stated_empty` and `stated` distinguish assembly states.
-`context.reports` retains original query outcomes and locators; missing queries,
-failed queries and zero returned records never imply external absence. Missing
-stored support yields `partial`.
+The explanation keeps complete original relationships, source assertions,
+selected and alternative field support, assembly methods, qualifiers, locators
+and stored quality/request records. RCSB statements whose subject is the structure
+are admitted only with their explicit native structure-to-focal-protein binding.
+Relationship support does not reconstruct unrecorded per-qualifier mapping lineage.
+Family signatures and assembly methods describe retained source information;
+they are not locally executed analyses.
 
-The default `interface_site_agreement@2` compares only declared UniProt interface
-positions with family sites on the exact same UniProt entry in 1-based indexing.
-The interface must refer to that entry, and its contacts must have located positive
-positions. Conflicting interface numbering or positions also block comparison. Each agreement
-row retains `comparison.status`, `reasons` and the native numbering/sequence context:
-`comparable`, `undetermined` for missing/conflicting data, or `not_comparable` for
-incompatible declarations. Uncomputed residue sets are None, while computed empty
-sets are empty lists. `agreement_state` distinguishes missing inputs, no comparable
-site, partially computed and fully computed views. It does not infer correspondence
-from equal numbers, names or sequences.
+Every focal self-interface/family-annotation pair is compared separately after
+source-bound canonical coordinate admission. Missing/foreign support, uncertain
+endpoints, invalid/out-of-range positions, conflicting coordinates or incompatible
+stated sequence revisions remain `not_computed`. Unstated revision agreement is
+explicit. A partial result preserves qualified positives and uncomputed pairs.
+`None` denotes an uncomputed residue set; an empty list is a computed empty set.
+Neither means that an external source has no information. Source aggregates are
+not projected into physical assembly occurrences or used to infer biological
+relevance, affinity or geometry.
 
-Explicit legacy selection reproduces the historical integer-only result and its
-`oligomer_explanation@1`, even on a saved card whose numbering is unconfirmed:
+Published 0.14.0 used default `@2`. Both original interpretations remain available
+explicitly for historical reproduction, including their original limitations:
 
 ```python
-legacy = card.oligomer(agreement_rule="interface_site_agreement@1")
-why_legacy = card.explain_oligomer(agreement_rule="interface_site_agreement@1")
+legacy = card.oligomer(agreement_rule="interface_site_agreement@2")
+why_legacy = card.explain_oligomer(agreement_rule="interface_site_agreement@2")
 assert why_legacy["view"] == legacy
 ```
+
+Use explicit `@1` for the earlier integer-only interpretation. Original versions
+are preserved; choosing them does not apply the corrected admission rules.
 
 The same method works on `store.load(pin)`: later acquisition cannot rewrite
 historical assertion/relationship references. Readers change no card, make no
 source call and add no Ackredit credit. Keep original operation/attribution
 sidecars separately when a workflow needs execution history and citation credit.
-New full/index packets name agreement `@2`; existing saved packets retain their
-original rule, facts and hashes. Packet aspect/source scope and stored card schema
-are unchanged.
+New full/index packets use `packet_aspects@12`, name agreement `@3` and include
+its canonical reference and structure dependencies. Existing saved packets retain
+their original rule, facts and hashes. The stored Card schema is unchanged.
 
 ## Interface mutations (SKEMPI 2.0)
 

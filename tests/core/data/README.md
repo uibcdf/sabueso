@@ -61,6 +61,25 @@ reads and sockets. Preserve these original bytes; never regenerate them to make
 a future reader pass. Gzip packages the fixture, not the public reader format.
 This exploration fixture does not freeze a Card schema version.
 
+## Original quaternary interpretations
+
+`quaternary_legacy_v2.json.gz` was produced at
+`b4f7d31ade10c87693a05ccb4dc61ba500837857`, actual editable SDK
+`0.14.0+106.gb4f7d31`. It contains an explicitly synthetic Card and the original
+native views/explanations for `interface_site_agreement@1` and `@2`. Synthetic
+sequence/site/interface/subunit labels are test context, not claims about the
+public accession used to name the test. No source query or pilot data is included.
+
+The fixture preserves original semantics independently of current classifiers.
+Across SDKs, tests ignore only generated derivation runtime-version labels;
+original SourceAssertion versions/values stay exact. Preserve these bytes; never
+regenerate them to make a new reader pass. This is a native interpretation capsule,
+not a frozen Card schema or a scientific human-exploration bundle.
+
+Compressed SHA-256: `df21b5a94494b6d9d3ea87c0c5abc3dac5a4f714b038ac597afddc83af3b6765`.
+
+Uncompressed SHA-256: `f8fa5fc70bb601124d43ebc40757303bffd764722ecfddc3d3689c9f8377f9e3`.
+
 Compressed SHA-256: `4acb555503c9f1d1e1b26635c11ead3a1423dc5f183cd720e343f96b748d2719`.
 
 Uncompressed SHA-256: `6fc3cfdef13b8bbd1fe1b53dc489dc3cd83fee96dc9bb6a471bc53f436f97c9e`.

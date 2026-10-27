@@ -673,8 +673,10 @@ A Relationship is first-class, traceable knowledge:
       interface is observed.
     - What kind of partner it is (homomeric, heteromeric, a chimera of the protein with
       itself, a peptide in a complex) is derived by `Card.oligomer()`
-      (`interface_partner_class@1`), and only there. So is the agreement with family
-      interface sites (`interface_site_agreement@1`).
+      (current development `interface_partner_class@2`), and only there. So is the
+      agreement with family interface sites (current `interface_site_agreement@3`).
+      Explicit original rules remain reproducible. The [#165 correction](pending_bugs/quaternary_interpretation_scope.md)
+      changes derived interpretation, not this stored relationship shape.
 
   Any other predicate is rejected, and the vocabulary is extended deliberately. If
   components outside Sabueso (Nextia, MOLI Agent Context Assembly) come to depend on it,

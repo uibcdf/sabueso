@@ -325,7 +325,7 @@ not promise card enrichment, live availability or public-package delivery.
   `relationships(predicate=None, object_ref=None)`.
 - **Views.** Each derives knowledge with a named rule:
   - `structures(include_fragments=False, region=None)` and `predicted_structures()`;
-  - `oligomer(*, agreement_rule="interface_site_agreement@2")` and `ligand_sites()`;
+  - `oligomer(*, agreement_rule="interface_site_agreement@3")` (development; published 0.14.0 used `@2`) and `ligand_sites()`;
   - `interface_mutations()` (SKEMPI, with ΔΔG under `binding_ddg@1`, #83);
   - `variant_tissue_usage(threshold=0.1, *, usage_rule="pext_at_variant@2")`
     and `isoform_tissue_usage(threshold=0.1, *, usage_rule="isoform_exon_usage@3")`
@@ -442,30 +442,20 @@ not promise card enrichment, live availability or public-package delivery.
   conflicts, original support, numbering and stored structural-instance context.
   No stored annotation/overlap is not external absence; absent instance data keeps
   `spans_chains=None`, and source relevance statements remain separate.
-  Since 0.13.0, `explain_oligomer(*, agreement_rule="interface_site_agreement@2")`
-  explains the complete matching `oligomer()` view under `oligomer_explanation@2`:
-  actual partner-class and agreement rules, the card
-  anchor, source assembly alternatives/methods, interfaces and exact family-site
-  members. Relationships/assertions and field/index locators retain the original
-  pin, versions and bibliography; selected, competing and conflicting support
-  stay separate. Structural support is relationship-level, not invented mapping
-  lineage for individual qualifiers. Source aggregate residues are not allocated
-  to individual assemblies. Missing/empty assembly data and original source
-  request outcomes remain distinct. Missing support is partial; no stored input
-  is `not_on_card`, never external absence. Default agreement `@2` requires
-  declared UniProt numbering, the exact family sequence reference and 1-based
-  indexing, with no conflicting interface numbering/positions (#120).
-  The interface must state the card's exact subject; missing positions and
-  nonpositive indices prevent comparison even with a numbering declaration.
-  A row is `comparable`, `undetermined` or `not_comparable`, with original context
-  and reasons. Uncomputed `both`/`family_only`/`observed_only` are None; a computed
-  empty set is an empty list. `agreement_state` distinguishes missing inputs,
-  no comparable site, partial and fully computed views. Unconfirmed comparisons
-  keep the explanation partial. Explicit `agreement_rule="interface_site_agreement@1"`
-  in either reader reproduces the legacy integer-only view and
-  `oligomer_explanation@1`, including at historical pins. No
-  acquisition, credit, alias resolution, schema change or local method execution
-  occurs; saved scientific payloads cannot recreate original runtime attribution.
+  Development `explain_oligomer(*, agreement_rule="interface_site_agreement@3")`
+  returns `oligomer_explanation@3`, the complete matching current `oligomer()` view:
+  all source-bound structure declarations, exact original family indices, every
+  focal self-interface/family pair and their actual source/coordinate inputs.
+  Foreign subjects, uncertain endpoints, missing/invalid/conflicting coverage and
+  source/coordinate gaps remain explicit. No structure is silently selected by PDB
+  label and no first homomeric interface replaces other declared comparisons.
+  Source aggregates are not assigned to physical assemblies; biological relevance,
+  geometry and sequence revision agreement are not inferred. RCSB record subjects
+  retain their native structure-to-protein basis. Original field alternatives,
+  source records, pinned locators and stored request/quality context remain available.
+  Existing `@1`/`@2` and their explanations are frozen for explicit historical
+  reproduction; published 0.14.0 used default `@2`. Card schema and stored source
+  knowledge are unchanged. See [the correction](pending_bugs/quaternary_interpretation_scope.md).
   Since 0.13.0, `explain_ligand(molecule_ref, deck, include_indirect=False, thresholds=None, *, counting_rule="ligand_measurement_count@2")`
   selects the exact SmallMoleculeCard id from `ligands(deck)`
   (`ligand_deck_explanation@2`). Protein and molecule inputs keep distinct pins.

@@ -13,8 +13,10 @@ area: [human-exploration, protein, storage, navigation]
 present three distinct grains: the original subunit annotation field, individual
 assembly records inside exact-subject structure relationships, and exact-subject
 interface relationships. This is source presentation, not a new oligomer reader.
-Existing `Card.oligomer()` / `explain_oligomer()` calculations and versions remain
-unchanged; their richer scientific integration remains pending.
+This source pane did not change `Card.oligomer()` / `explain_oligomer()`.
+The subsequent [native #165 correction](../pending_bugs/quaternary_interpretation_scope.md)
+introduces independently versioned interpretation; its richer scientific
+human/agent integration remains pending.
 
 The frozen `card_quaternary_source_v1.py` predicates bind full typed source
 locations, original indices and field/relationship support. Equal assembly IDs in

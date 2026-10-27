@@ -25,7 +25,7 @@ the Sabueso version that built the cards, so two assemblies of unchanged knowled
 the same ``content_id`` even when the sources were read again (``same_knowledge``).
 
 What each aspect asks the sources for, and which knowledge areas it covers, is fixed by
-the mapping (``packet_aspects@11`` now). It never changes once published: a change is a new
+the mapping (``packet_aspects@12`` now). It never changes once published: a change is a new
 version, and a test pins what each version asks. ``@1`` was published in 0.6.0; ``@2``
 (0.7.0) adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83), and MONDO's
 disease identity and the grouped diseases to ``disease_association`` (#90). ``@3``
@@ -86,7 +86,7 @@ FULL_VIEWS = {
     "biological_context": (),
     "orthology": (),
 }
-ASPECT_MAPPING = "packet_aspects@11"
+ASPECT_MAPPING = "packet_aspects@12"
 #: Aspect mappings a packet can carry; packets of different mappings are not compared.
 #: ``@3`` adds KLIFS and GPCRdb (identity, structures, ligand sites, sequence features),
 #: SAbDab (structures) and the ``orthology`` aspect (OMA), which a query asks for by
@@ -100,6 +100,7 @@ ASPECT_MAPPING = "packet_aspects@11"
 #: ``@9`` binds original AlphaFold sequence context; @10 retains all normalized/native
 #: annotation source contexts (#162), with frozen @8/@9 ligand-site projections.
 #: ``@11`` admits canonical coordinates before ligand-site overlap (#163), freezing @10.
+#: ``@12`` preserves all quaternary declarations and admits interface coordinates (#165).
 PACKET_PREFIX = "sabueso:packet:"
 
 #: Keys left out of a content-equivalence id: when the sources were read, and which
@@ -391,9 +392,26 @@ def card_content_id(card: Any) -> str:
     return digest(canonical_json(content))
 
 
-def _in_areas(area: str, aspects: Iterable[str]) -> bool:
+def _areas(aspect, mapping=ASPECT_MAPPING):
+    original = ASPECTS[aspect]["areas"]
+    if aspect == "oligomer" and mapping == "packet_aspects@12":
+        return (
+            *original,
+            "relationships.has_structure",
+            "identifiers.uniprot",
+            "sequence.primary",
+            "sequence.length",
+        )
+    return original
+
+
+def _in_areas(area: str, aspects: Iterable[str], *, mapping=ASPECT_MAPPING) -> bool:
     return any(
-        area.startswith(prefix) for a in aspects for prefix in ASPECTS[a]["areas"]
+        (area == prefix or area.startswith(prefix + "."))
+        if mapping == "packet_aspects@12" and a == "oligomer"
+        else area.startswith(prefix)
+        for a in aspects
+        for prefix in _areas(a, mapping)
     )
 
 
@@ -464,7 +482,15 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
             **_fields(card, STRUCTURE_FIELDS),
         }
     if aspect == "oligomer":
-        return {**card.oligomer(), "interface_mutations": card.interface_mutations()}
+        rule = (
+            "interface_site_agreement@3"
+            if mapping == "packet_aspects@12"
+            else "interface_site_agreement@2"
+        )
+        return {
+            **card.oligomer(agreement_rule=rule),
+            "interface_mutations": card.interface_mutations(),
+        }
     if aspect == "ligand_sites":
         if mapping in ("packet_aspects@6", "packet_aspects@7"):
             from ._ligand_sites_legacy_v1 import ligand_sites_view
@@ -535,7 +561,7 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
     raise KeyError(aspect)
 
 
-def _index(aspect: str, card: Any) -> Dict[str, Any]:
+def _index(aspect: str, card: Any, *, mapping=ASPECT_MAPPING) -> Dict[str, Any]:
     """What a card holds in an aspect's areas, without values (``packet_index@1``).
 
     Per field: how many items it holds, from which sources, and the SourceAssertions
@@ -544,7 +570,7 @@ def _index(aspect: str, card: Any) -> Dict[str, Any]:
     (``packet.cite(role, id)``) and read from the store; nothing is ranked, selected
     or summarized beyond counting.
     """
-    areas = ASPECTS[aspect]["areas"]
+    areas = _areas(aspect, mapping)
     store = card.source_assertion_store
 
     def sources(ids: Iterable[str]) -> Dict[str, int]:
@@ -557,7 +583,12 @@ def _index(aspect: str, card: Any) -> Dict[str, Any]:
     out: Dict[str, Any] = {}
     field_areas = [a for a in areas if not a.startswith("relationships.")]
     for path in card.list_fields():
-        if path.count(".") != 1 or not path.startswith(tuple(field_areas)):
+        matches = (
+            path in field_areas
+            if aspect == "oligomer" and mapping == "packet_aspects@12"
+            else path.startswith(tuple(field_areas))
+        )
+        if path.count(".") != 1 or not matches:
             continue
         node = card.get(path)
         if not isinstance(node, dict) or "value" not in node:
@@ -624,8 +655,12 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
             structures.INVENTORY_RULE,
         ],
         "oligomer": [
-            oligomer.PARTNER_RULE,
-            oligomer.AGREEMENT_RULE,
+            oligomer.PARTNER_RULE
+            if mapping == "packet_aspects@12"
+            else "interface_partner_class@1",
+            oligomer.AGREEMENT_RULE
+            if mapping == "packet_aspects@12"
+            else "interface_site_agreement@2",
             interface_mutations.RULE,
         ],
         "ligand_sites": [LEGACY_SITE_RULE]
@@ -649,6 +684,14 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
         else [diseases.RULE, "disease_identity_coverage@1"],
         "literature": [STRUCTURE_MENTION_RULE],
     }
+    if mapping == "packet_aspects@12":
+        rules["oligomer"].extend(
+            [
+                oligomer.SCOPE_RULE,
+                oligomer.DECLARATION_RULE,
+                "ligand_site_coordinate_scope@1",
+            ]
+        )
     if mapping not in ("packet_aspects@6", "packet_aspects@7"):
         rules["ligand_sites"].append(ligand_sites.INSTANCE_RULE)
     if mapping not in (

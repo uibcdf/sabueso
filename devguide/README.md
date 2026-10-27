@@ -80,6 +80,11 @@ runtime floors and installed-package qualification remain separate.
 
 ## Design
 
+The [#165 native quaternary correction](pending_bugs/quaternary_interpretation_scope.md)
+versions source/declaration/coordinate admission and keeps every relevant pair.
+Frozen original readers and packet projections remain available. This prerequisite
+science is separate from the still-pending computed human/agent exploration adapter.
+
 The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
 adds readable original subunit, assembly and interface declarations, exact local
 source/structure navigation and independent saved reading. Computed quaternary

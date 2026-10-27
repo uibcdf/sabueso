@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Source-bound quaternary interpretation (2026-10-26, #165)
+
+Default to `interface_partner_class@2`, `interface_site_agreement@3` and
+`oligomer_explanation@3`, preserving explicit original @1/@2 readers and a genuine
+producer capsule. Retain all declarations and every focal self-interface/family
+pair; source/identity/coordinate uncertainty cannot become an exact or negative
+comparison. Preserve original structure-subject RCSB statements through their
+explicit native structure/focal-protein binding, without merging entities.
+Version packet composition as `packet_aspects@12`; exact new input/term scope
+does not rewrite older packet projections. This scientific correction precedes
+the richer human/agent interpretation adapter; it does not change Card schema or
+resume release consolidation.
+
 ## Original quaternary source context (2026-10-26, #148)
 
 Present the subunit annotation field, structure-local assembly records and
