@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Original quaternary source context (2026-10-26, #148)
+
+Present the subunit annotation field, structure-local assembly records and
+interface relationships as distinct original statement types under
+`quaternary_structure_fields@1`. Keep typed parent/ordinal identity and original
+field/relationship support; equal assembly IDs never identify physical entities.
+Use frozen `quaternary_context_links@1` for exact local source and original
+structure destinations, without external resolution or assembly projection.
+Verify original saved membership/scope and complete link origins independently
+of current field/native producers. Computed oligomer interpretation and named
+compact scientific selection remain separate from this source pane. Existing
+Card schema, native rules and original saved producers remain unchanged.
+
 ## Native feature identity precedes normalization (2026-10-24, #162)
 
 Keep the complete original UniProt positional feature in `asserted_value` and the

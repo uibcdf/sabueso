@@ -461,6 +461,95 @@ than choosing one silently. Older Cards retain their original missing mapping
 basis. Migration reports that gap; an explicit source refresh can create a new
 revision with new inputs. Reading a saved exploration never performs that refresh.
 
+## Explore subunits, assemblies and interfaces
+
+Ask what the retained sources state about quaternary organization:
+
+```python
+quaternary = explorer.answer("quaternary_structure")
+quaternary.table()
+```
+
+The view distinguishes a subunit annotation field, individual biological assembly
+records and interface relationships. It shows source stoichiometry, methods and
+recorded interface numbering. The opening reports missing, explicitly empty and
+unrecognized declarations; these do not establish external source absence. Source
+coverage remains available through `explorer.view("coverage")`.
+
+An assembly identifier is local to its structure. Select the structure before
+comparing assembly records with that identifier:
+
+```python
+assembly_rows = quaternary.filter("kind", equals="assembly")
+if assembly_rows.items():
+    first_assembly = assembly_rows.items()[0]
+    same_structure = assembly_rows.filter(
+        "structure_ref", equals=first_assembly.cells["structure_ref"].value
+    )
+    same_structure.table()
+```
+
+Open a record, its sources or its original containing structure directly. `back()`
+preserves the return trail. Qualifier conflicts remain visible, including competing
+assembly declarations; this pane does not choose one silently.
+
+```python
+if assembly_rows.items():
+    first_assembly.open()
+    first_assembly.explain()
+    structure_links = first_assembly.related().filter(
+        "role", equals="structure_context"
+    )
+    original_structure = structure_links.items()[0].open()
+    original_structure.native_payload
+```
+
+Interfaces can be selected by their source-declared partner. Each interface keeps
+its complete original relationship, residue records and numbering. Its
+`structure_context` links open the exact retained structure declarations cited by
+that interface, when available. A shared structure reference does not project an
+interface or a ligand occurrence into a particular biological assembly.
+
+```python
+interface_rows = quaternary.filter("kind", equals="interface")
+interface_rows.table()
+```
+
+For machine processing, `rows()` exposes typed cells, support and exact locations.
+The existing literal reader gives bounded pages over an individual original
+record. Nested values carry `value_location` for further reads; a complete page of
+members need not include every nested value. A named compact scientific selector
+for quaternary interpretation remains pending.
+
+```python
+if assembly_rows.items():
+    assembly_page = explorer.access.read(first_assembly.payload_location).page(
+        max_bytes=8192
+    )
+    for cell in assembly_page["items"]:
+        if not cell["value_included"]:
+            original_child_page = explorer.access.read(cell["value_location"]).page(
+                max_bytes=8192
+            )
+            break
+```
+
+Save and reopen the original question, selection, sources and local destinations:
+
+```python
+import sabueso
+
+quaternary_receipt = quaternary.save("quaternary-review.json")
+original_quaternary = sabueso.read_exploration(
+    "quaternary-review.json", expected_digest=quaternary_receipt["bundle_digest"]
+)
+original_quaternary
+```
+
+This is a presentation of source declarations. Computed oligomer/interface
+classification, assembly reconciliation and geometry remain separate scientific
+questions with their own rules, inputs and explanations.
+
 ## Explore experimental structures
 
 For a protein Card, open the retained inventory:

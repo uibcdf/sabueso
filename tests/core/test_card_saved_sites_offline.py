@@ -37,7 +37,9 @@ def test_frozen_original_recipe_matches_actual_native_result_and_context(
     card = (
         Card.from_dict(
             json.loads(
-                Path("temp_data/frozen_cards/schema_0.3.9__P52270.json").read_text()
+                Path("temp_data/frozen_cards/schema_0.3.9__P52270.json").read_text(
+                    encoding="utf-8"
+                )
             )
         )
         if kind == "public"
@@ -95,7 +97,7 @@ def test_save_original_comparisons_sources_back_and_exact_agent_request(
         root = human.items()[0].open() if root_kind == "detail" else human
     path = tmp_path / "sites.json"
     root.save(path)
-    bundle = json.loads(path.read_text())
+    bundle = json.loads(path.read_text(encoding="utf-8"))
     assert bundle["format"] == "sabueso.card_exploration@3"
     monkeypatch.setattr(Card, "from_dict", forbidden)
     for module, names in {
@@ -150,7 +152,7 @@ def test_rehashed_saved_comparison_change_is_refused(tmp_path):
     root = protein().explore().view(TOPIC)
     path = tmp_path / "sites.json"
     root.save(path)
-    data = json.loads(path.read_text())
+    data = json.loads(path.read_text(encoding="utf-8"))
     wire = data["objects"][root.result_ref]
     wire["native_payload"]["items"][0]["comparison"]["status"] = (
         "computed_synthetic_tamper"
@@ -175,7 +177,20 @@ def synthetic_bundle(tmp_path_factory):
     ).save(tmp_path_factory.mktemp("synthetic-sites") / "machine.json")
     path = tmp_path_factory.mktemp("site-bundle") / "human.json"
     view.save(path)
-    return json.loads(path.read_text())
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def test_sealed_fixture_remains_utf8_under_a_non_utf8_default(
+    tmp_path_factory, monkeypatch
+):
+    original_read_text = Path.read_text
+
+    def locale_read(path, encoding=None, **kwargs):
+        return original_read_text(path, encoding=encoding or "cp1252", **kwargs)
+
+    monkeypatch.setattr(Path, "read_text", locale_read)
+    original = synthetic_bundle.__wrapped__(tmp_path_factory)
+    assert _seal(deepcopy(original))["bundle_digest"] == original["bundle_digest"]
 
 
 @pytest.mark.parametrize(
@@ -351,7 +366,7 @@ for name, methods in {
  module=importlib.import_module('sabueso.core.'+name)
  for method in methods: setattr(module,method,forbidden)
 def audit(event,args):
- if event=='open' and isinstance(args[0],str) and '/temp_data/' in args[0]: forbidden()
+ if event=='open' and isinstance(args[0],str) and 'temp_data' in args[0].replace(chr(92), '/').split('/'): forbidden()
 sys.addaudithook(audit)
 saved=sabueso.read_exploration(sys.argv[1])
 assert saved.validation['verifier']=='site_exploration_binding@1'
@@ -519,7 +534,7 @@ def test_repeated_save_does_not_expand_an_automatic_support_tree(topic, tmp_path
     assert first.read_bytes() == second.read_bytes()
     assert view.native_payload == before
     if topic == TOPIC:
-        assert len(json.loads(first.read_text())["views"]) < 20
+        assert len(json.loads(first.read_text(encoding="utf-8"))["views"]) < 20
 
 
 def test_saved_comparison_supplied_molecule_transition_preserves_focal_owner(tmp_path):
@@ -543,7 +558,7 @@ def test_saved_comparison_supplied_molecule_transition_preserves_focal_owner(tmp
     assert opened.back().view_ref == chosen.view_ref
     assert chosen.back().view_ref == links.view_ref
     assert links.back().view_ref == saved.view_ref
-    data = json.loads(path.read_text())
+    data = json.loads(path.read_text(encoding="utf-8"))
     root = data["views"][data["root_navigation_ref"]]
     root["focal"] = next(key for key in data["cards"] if key != root["focal"])
     path.write_text(json.dumps(_seal(data)))

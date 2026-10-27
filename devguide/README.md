@@ -80,6 +80,13 @@ runtime floors and installed-package qualification remain separate.
 
 ## Design
 
+The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
+adds readable original subunit, assembly and interface declarations, exact local
+source/structure navigation and independent saved reading. Computed quaternary
+interpretation, compact scientific selection and researcher acceptance remain
+open. The maintainer-requested [Swiss-Prot utilization audit #164](https://github.com/uibcdf/sabueso/issues/164)
+is a separate coverage review, without replacing the approved exploration order.
+
 Current design work: [human exploration of Card](pending_proposals/card_human_exploration_api.md)
 (#148) defines intuitive progressive navigation, complete access to retained content
 and source-grounded decision assistance. Existing scientific engines and public

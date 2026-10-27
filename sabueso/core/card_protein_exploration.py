@@ -13,6 +13,12 @@ FUNCTION_FIELDS = {
     "sequence.length": "Sequence length",
 }
 _SOURCE_QUESTIONS = {
+    "quaternary_structure": {
+        "label": "What do sources state about subunits, assemblies and interfaces?",
+        "topic": "quaternary_structure",
+        "required_options": [],
+        "scope": "Original subunit field, structure-local assembly records and interface statements with exact support; source-declared contexts remain distinct.",
+    },
     "ligand_site_comparisons": {
         "label": "Which retained ligand contacts overlap annotated sites?",
         "topic": "ligand_site_comparisons",

@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-26**, original saved ligand-site comparisons following pause reconciliation
+Last updated: **2026-10-26**, original quaternary source exploration following pause reconciliation
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -25,6 +25,10 @@ source and release receipts remain unchanged.
    support, explicit axes/revisions and saved-reading contracts. Then follow
    the inventory's activity/assay/document/literature, clinical/classification,
    variant/comparison/association and combined human/agent acceptance order.
+   The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
+   now presents original subunit, individual assembly and interface declarations
+   with exact local source/structure links and independent saved reading. Computed
+   quaternary interpretation and a named compact selector remain separate work.
 5. Keep scientific review separate: the [public worksheet](pending_proposals/scientific_review_packet_20261020.md)
    and [source drafts](pending_proposals/located_source_review.md) await actual
    scientist decisions. Authorized primary methods for the three identified
@@ -135,6 +139,16 @@ selected/full/remote qualification; these older counts do not qualify it.
 Native coordinate admission remains unchanged; broader completion and release remain paused.
 
 ## Open work and boundaries
+
+The saved-comparison checkpoint `56f2c7b` passes 7,298 local-original tests but its
+[CI](https://github.com/uibcdf/sabueso/actions/runs/40423760310) fails the fresh
+independent-reader fixture on all four Windows Python lanes (3.11–3.14).
+The fixture reloaded sealed UTF-8 output with a locale-default text read; explicit
+UTF-8 reads and a reproducing CP1252-default regression correct that preparation.
+The public writer/reader and original producer capsule are unchanged. Replacement
+exact-source Windows qualification remains required; that failed CI does not
+qualify the quaternary continuation or a release. Full receptor captures and
+member hashes were checked; governance retains its separate passing receipt.
 
 | Owner | Remaining work |
 | --- | --- |

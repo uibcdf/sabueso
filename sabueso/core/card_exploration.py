@@ -27,6 +27,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "quaternary_structure": (
+        "Subunits, assemblies and interfaces",
+        "Original source declarations with structure-local assembly context, interface numbering and complete support.",
+    ),
     "ligand_site_comparisons": (
         "Ligand contacts and annotated-site comparisons",
         "Source-bound comparisons, partial findings and uncomputed coordinate context with original inputs.",
@@ -138,6 +142,10 @@ class CardItem:
 
     @property
     def kind(self):
+        if self._view._field_panel == "quaternary_structure":
+            from .card_quaternary_source_v1 import context
+
+            return context(self._view.explorer, self._entry)[0]
         if self._view._field_panel == "annotated_regions":
             return "annotation"
         if self._view._link_panel:
@@ -272,6 +280,25 @@ class CardItem:
 
     @property
     def cells(self):
+        if self._view._field_panel == "quaternary_structure":
+            from .card_quaternary_source_v1 import values
+
+            fields = {
+                "label": self.label,
+                **values(self._view.explorer, self._entry),
+                "type": "object",
+            }
+            fields["type"] = _type(fields["value"])
+            return MappingProxyType(
+                {
+                    key: Cell(
+                        value,
+                        state="unknown" if value is None else "present",
+                        _support=tuple(self.support),
+                    )
+                    for key, value in fields.items()
+                }
+            )
         if self._view._field_panel == "annotated_regions":
             from .card_annotation_regions_v1 import annotation_path, context
 
@@ -855,6 +882,16 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if self._field_panel == "quaternary_structure":
+            from .card_quaternary_source_v1 import COLUMNS, SELECT
+
+            return {
+                "kind": "quaternary_source_statement",
+                "grain": "one original subunit field, structure-local assembly record or interface relationship",
+                "columns": list(COLUMNS),
+                "selection_columns": list(SELECT),
+                "presentations": ["summary", "table"],
+            }
         if (
             self._explorer.mode == "saved"
             and self._record_panel == "ligand_site_comparisons"
@@ -1083,7 +1120,10 @@ class CardView:
             self._link_panel and self._status == "ambiguous"
         ):
             return replace(self, _origin=self)
-        if self._record_panel == "ligand_site_comparisons":
+        if (
+            self._record_panel == "ligand_site_comparisons"
+            or self._field_panel == "quaternary_structure"
+        ):
 
             def equal_values(column, first, second):
                 return (
@@ -1495,6 +1535,7 @@ class CardExplorer:
         from .card_annotation_regions_v1 import SCOPE as ANNOTATION_SCOPE
         from .card_ligand_instances_v1 import SCOPE as INSTANCE_SCOPE
         from .card_protein_source_v1 import SCOPES
+        from .card_quaternary_source_v1 import SCOPE as QUATERNARY_SCOPE
 
         applicable = self.profile == nature
         entries, gaps = field_entries(self, topic) if applicable else ((), [])
@@ -1510,6 +1551,8 @@ class CardExplorer:
                 if topic == "annotated_regions"
                 else INSTANCE_SCOPE
                 if topic == "ligand_instances"
+                else QUATERNARY_SCOPE
+                if topic == "quaternary_structure"
                 else SCOPES[topic]
                 if topic in SCOPES
                 else "Retained fields only; no function is inferred from a name. Source coverage is not evaluated."
@@ -1527,7 +1570,8 @@ class CardExplorer:
             _status="not_applicable"
             if not applicable
             else "missing_prerequisite"
-            if topic in ("predicted_structures", "ligand_instances")
+            if topic
+            in ("predicted_structures", "ligand_instances", "quaternary_structure")
             and any(row["state"] == "missing_prerequisite" for row in gaps)
             else "ok"
             if entries
@@ -1535,11 +1579,14 @@ class CardExplorer:
             _reason=f"The {topic} route requires a {nature} Card."
             if not applicable
             else "A consistent captured protein identity is required to select structure/model relationships; inspect original identity and quality records."
-            if topic in ("predicted_structures", "ligand_instances")
+            if topic
+            in ("predicted_structures", "ligand_instances", "quaternary_structure")
             and any(row["state"] == "missing_prerequisite" for row in gaps)
             else "Function description has no supported retained field value; inspect field_gaps and the original content."
             if topic == "function"
             and any(row["field"] == "annotations.function" for row in gaps)
+            else "Some source declarations are missing, empty or unrecognized; original records and source coverage remain available."
+            if topic == "quaternary_structure" and gaps
             else "Only retained values are shown; inspect field_gaps for missing or unsupported fields."
             if gaps
             else None,

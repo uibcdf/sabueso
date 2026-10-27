@@ -50,6 +50,7 @@ PANELS = {
     "sites": ("protein", {}),
     "ligand_instances": ("protein", {}),
     "annotated_regions": ("protein", {}),
+    "quaternary_structure": ("protein", {}),
 }
 NATURE_TOPICS = {
     "protein": (
@@ -61,6 +62,7 @@ NATURE_TOPICS = {
         "sites",
         "ligand_site_comparisons",
         "ligand_instances",
+        "quaternary_structure",
     ),
     "small_molecule": ("chemistry", "properties"),
     "disease": ("definition", "classification", "identity"),
@@ -103,6 +105,10 @@ QUESTIONS = {
 def field_label(topic, entry, explorer=None):
     from .card_protein_source_v1 import TOPICS, label
 
+    if topic == "quaternary_structure":
+        from .card_quaternary_source_v1 import label as quaternary_label
+
+        return quaternary_label(explorer, entry)
     if topic == "annotated_regions":
         from .card_annotation_regions_v1 import label as annotation_label
 
@@ -134,6 +140,10 @@ def field_entries(explorer, topic):
     from .card_protein_source_v1 import TOPICS, entries
     from .errors import ArgumentError
 
+    if topic == "quaternary_structure":
+        from .card_quaternary_source_v1 import entries as quaternary_entries
+
+        return quaternary_entries(explorer)
     if topic == "annotated_regions":
         from .card_annotation_regions_v1 import entries as annotation_entries
 

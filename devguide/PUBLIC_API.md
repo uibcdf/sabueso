@@ -1,5 +1,17 @@
 # Sabueso — Public API
 
+Development quaternary source exploration (#148):
+`card.explore().view("quaternary_structure")` and
+`answer("quaternary_structure")` present original subunit fields, individual
+structure-local assemblies and interface relationships. Select by `kind`,
+`structure_ref`, `assembly_id` or `partner_ref`; inspect sources and
+`structure_context` destinations through `item.related()`. Full raw values,
+field/relationship support and original saved reading are retained. Agent
+processing uses `rows()` / bounded literal reads over typed locations; a named
+compact scientific selector is not implemented by this source pane. See the
+[scope](pending_proposals/card_quaternary_source_exploration.md) and
+[public examples](../docs/content/user/card_exploration.md#explore-subunits-assemblies-and-interfaces).
+
 This document records the public surface of release 0.14.0 and explicitly labelled
 future development additions. Anything not listed here, or not exported by `sabueso`, is internal.
 Tools, views, stores and source access check their arguments through ArgDigest.

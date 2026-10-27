@@ -373,6 +373,7 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "ligand_site_comparisons",
                 "ligand_instances",
                 "annotated_regions",
+                "quaternary_structure",
             },
             {
                 "function",
@@ -383,6 +384,7 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "ligand_site_comparisons",
                 "structure_ligands",
                 "annotated_regions",
+                "quaternary_structure",
             },
         ),
         (

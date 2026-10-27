@@ -248,7 +248,7 @@ def _link_view(
         )
         for i, link in enumerate(links)
     )
-    if rule == "ligand_site_context_links@1":
+    if rule in ("ligand_site_context_links@1", "quaternary_context_links@1"):
         explorer._session["views"].pop(id(view), None)
     return replace(
         view,
@@ -264,6 +264,10 @@ def _link_view(
 
 
 def related(item):
+    if item._view._field_panel == "quaternary_structure":
+        from .card_quaternary_source_v1 import related as quaternary_related
+
+        return quaternary_related(item)
     if item._view._record_panel == "ligand_site_comparisons":
         from .card_ligand_site_exploration import links
 

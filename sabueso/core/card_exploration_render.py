@@ -391,6 +391,19 @@ def _parts(view):
 
         if view._field_panel == "ligand_instances":
             opening.append(INSTANCE_SUMMARY)
+        elif view._field_panel == "quaternary_structure":
+            from .card_quaternary_source_v1 import SCOPE
+
+            opening.append(SCOPE)
+            gaps = view.native_payload.get("field_gaps", [])
+            counts = {
+                state: sum(gap.get("state") == state for gap in gaps)
+                for state in ("not_retained", "retained_empty", "unrecognized_shape")
+            }
+            if any(counts.values()):
+                opening.append(
+                    f"Declaration gaps: {counts['not_retained']} not retained, {counts['retained_empty']} explicitly empty, {counts['unrecognized_shape']} unrecognized. These describe captured content, not external source absence."
+                )
         elif view._field_panel == "annotated_regions":
             opening.append(
                 "Choose an annotation, then related() to inspect its structural question and original inputs. Unknown scope remains visible; no source query is made."
@@ -572,6 +585,17 @@ def _parts(view):
             )
             continue
         elif view._field_panel:
+            if view._field_panel == "quaternary_structure":
+                from .card_quaternary_source_v1 import preview as quaternary_preview
+
+                rows.append(
+                    (
+                        str(index),
+                        preview(item.label),
+                        quaternary_preview(view.explorer, item._entry),
+                    )
+                )
+                continue
             if view._field_panel == "annotated_regions":
                 from .card_annotation_regions_v1 import context
                 from .card_protein_source_render import feature

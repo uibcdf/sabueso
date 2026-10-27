@@ -264,6 +264,10 @@ def _historical_resolution(access, target):
 
 
 def _verify_links(view):
+    if view.native_payload.get("rule") == "quaternary_context_links@1":
+        from .card_quaternary_source_v1 import verify_links
+
+        return verify_links(view)
     if view.native_payload.get("rule") == "ligand_site_context_links@1":
         from .card_exploration_sites import verify_links
 
@@ -289,6 +293,7 @@ def _verify_links(view):
                     "retained_context_links@2",
                     "retained_context_links@3",
                     "ligand_site_context_links@1",
+                    "quaternary_context_links@1",
                 ),
                 "Missing retained link-detail origin.",
             )
@@ -836,6 +841,24 @@ def _verify_state(view, record, native, access):
                 ),
                 None,
             )
+        elif view._field_panel == "quaternary_structure":
+            if len(segments) == 2 and segments[1]["type"] == "Record":
+                expected_key, expected_ordinal = segments[1]["value"], None
+            else:
+                require(
+                    owned["kind"] == "card"
+                    and len(segments) == 5
+                    and [s["type"] for s in segments]
+                    == ["Key", "Record", "Key", "Key", "Index"]
+                    and [segments[i]["value"] for i in (0, 2, 3)]
+                    == ["relationship_store", "qualifiers", "assemblies"]
+                    and type(segments[4]["value"]) is int,
+                    "Saved assembly is not an original typed assembly record.",
+                )
+                expected_key, expected_ordinal = (
+                    f"{segments[1]['value']}:assembly:{segments[4]['value']}",
+                    segments[4]["value"],
+                )
         elif view._field_panel == "ligand_instances":
             require(
                 owned["kind"] == "card"
@@ -1114,10 +1137,22 @@ def _verify_profile(view, native, access):
         from .card_exploration_profiles import PANELS, field_entries
         from .card_ligand_instances_v1 import entries as instance_entries
         from .card_protein_source_v1 import TOPICS, entries
+        from .card_quaternary_source_v1 import entries as quaternary_entries
+
+        if view._field_panel == "quaternary_structure":
+            from .card_quaternary_source_v1 import SCOPE
+
+            require(
+                native.get("adapter") == "quaternary_structure_fields@1"
+                and native.get("scope") == SCOPE,
+                "Original quaternary adapter/scope differs.",
+            )
 
         expected_entries, gaps = (
             (
-                annotation_entries(view._explorer)
+                quaternary_entries(view._explorer)
+                if view._field_panel == "quaternary_structure"
+                else annotation_entries(view._explorer)
                 if view._field_panel == "annotated_regions"
                 else instance_entries(view._explorer)
                 if view._field_panel == "ligand_instances"
@@ -1336,6 +1371,7 @@ def verify_views(bundle, nodes):
                 "sites",
                 "ligand_instances",
                 "annotated_regions",
+                "quaternary_structure",
             )
             and view._record_panel in (None, "classification", "coverage"),
             "Unsupported saved profile adapter.",

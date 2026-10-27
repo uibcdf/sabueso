@@ -310,6 +310,12 @@ directions until a bounded use and acceptance criteria are agreed.
 
 ### Immediate resumption sequence
 
+The [quaternary source continuation](pending_proposals/card_quaternary_source_exploration.md)
+delivers original subunit, assembly and interface detail, local structure/source
+navigation and independent saved reading. Finish its computed interpretation,
+named compact agent selection and broader region/model/assembly transitions
+within the sequence below; source presentation alone does not close that work.
+
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all
 ongoing implementations and corrections for **0.15.0**. The earlier proposal to
 evaluate an AlphaFold-only 0.14.1 patch/backport is superseded. Complete the full
