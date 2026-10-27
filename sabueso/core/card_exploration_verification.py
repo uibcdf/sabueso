@@ -304,6 +304,7 @@ def _verify_links(view):
             "retained_context_links@1",
             "retained_context_links@2",
             "retained_context_links@3",
+            "retained_context_links@4",
         ),
         "Unsupported navigation rule.",
     )
@@ -317,6 +318,7 @@ def _verify_links(view):
                     "retained_context_links@1",
                     "retained_context_links@2",
                     "retained_context_links@3",
+                    "retained_context_links@4",
                     "ligand_site_context_links@1",
                     "quaternary_context_links@1",
                     "quaternary_interpretation_links@1",
@@ -363,6 +365,14 @@ def _verify_links(view):
             "Annotation navigation has no original annotation location.",
         )
         support = question["support"]
+    elif payload["rule"] == "retained_context_links@4":
+        from .card_model_regions_v1 import link as original_model_link
+
+        question = original_model_link(view._explorer, source)
+        require(
+            question is not None, "Model navigation has no original model location."
+        )
+        support = question["support"]
     relationship, statement = None, None
     segments = source["segments"]
     if (
@@ -401,7 +411,11 @@ def _verify_links(view):
             *(
                 basis.get("derivation_input_statements", [])
                 if payload["rule"]
-                in ("retained_context_links@2", "retained_context_links@3")
+                in (
+                    "retained_context_links@2",
+                    "retained_context_links@3",
+                    "retained_context_links@4",
+                )
                 else []
             ),
         ]
@@ -436,7 +450,7 @@ def _verify_links(view):
         if role == "question":
             require(
                 question is not None and equal(link, question),
-                "Annotation structural request differs from its original source/axis basis.",
+                "Structural request differs from its original source/axis basis.",
             )
             continue
         if role == "source":
@@ -1051,8 +1065,14 @@ def _verify_profile(view, native, access):
     if (
         view._origin is not None
         and view._origin._link_panel
-        and view._origin.native_payload.get("rule") == "retained_context_links@3"
+        and view._origin.native_payload.get("rule")
+        in ("retained_context_links@3", "retained_context_links@4")
     ):
+        key = (
+            "model_context"
+            if view._origin.native_payload["rule"] == "retained_context_links@4"
+            else "annotation_context"
+        )
         questions = [
             item._entry.value
             for item in view._origin.items()
@@ -1060,11 +1080,10 @@ def _verify_profile(view, native, access):
         ]
         if view._selection._scientific is not None:
             require(
-                len(questions) == 1
-                and questions[0]["annotation_context"]["state"] == "ready",
+                len(questions) == 1 and questions[0][key]["state"] == "ready",
                 "Structural annotation destination lost its original question.",
             )
-            request = questions[0]["annotation_context"]["request"]
+            request = questions[0][key]["request"]
             effective, status, _ = _v1_region_request(
                 view._explorer, request["options"]
             )
@@ -1091,19 +1110,12 @@ def _verify_profile(view, native, access):
                 ),
                 "Structural destination differs from its originating annotation question.",
             )
-        elif (
-            isinstance(native, dict)
-            and "annotation_context" in native
-            and "link" in native
-        ):
+        elif isinstance(native, dict) and key in native and "link" in native:
             require(
-                native["link"] in questions
-                and equal(
-                    native["annotation_context"], native["link"]["annotation_context"]
-                ),
+                native["link"] in questions and equal(native[key], native["link"][key]),
                 "Unavailable annotation context lost its original question.",
             )
-            basis = native["annotation_context"]
+            basis = native[key]
             require(
                 basis["state"] != "ready"
                 and view._status == basis["state"]

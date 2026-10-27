@@ -319,6 +319,9 @@ now shares that science with exact support and bounded selection. Complete its
 researcher/workload acceptance and remaining structural transitions; its
 [original scientific saved reader](pending_proposals/card_saved_quaternary.md)
 now preserves supported human/agent requests and original findings.
+The [model-to-reference navigation](pending_proposals/card_model_structural_navigation.md) adds a whole-reference model question
+over the existing captured experimental inventory. Fragment correspondence,
+broader transitions and researcher/workload acceptance remain separate work.
 
 The [quaternary source continuation](pending_proposals/card_quaternary_source_exploration.md)
 delivers original subunit, assembly and interface detail, local structure/source

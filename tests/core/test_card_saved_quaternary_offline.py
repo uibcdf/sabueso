@@ -577,3 +577,41 @@ def test_visited_link_details_remain_saveable_with_original_origin(
     restored = sabueso.read_exploration(path, expected_digest=receipt["bundle_digest"])
     assert restored.result_ref == view.result_ref
     assert restored.items()
+
+
+def test_genuine_original_saved_producer_keeps_original_requests_and_navigation(
+    tmp_path, monkeypatch
+):
+    zipped = (
+        Path(__file__).parent / "data/card_exploration_quaternary_v1.json.gz"
+    ).read_bytes()
+    assert (
+        hashlib.sha256(zipped).hexdigest()
+        == "7bdb7910491127e3bee3ffa88c2fd97e770f18628f0f5235382d5a76cbdcf34a"
+    )
+    raw = gzip.decompress(zipped)
+    assert (
+        hashlib.sha256(raw).hexdigest()
+        == "9082e508f2ac025a085ab972a1375ae06a46f4115fa9c57361d95e9a91351b25"
+    )
+    original = json.loads(raw)
+    path = tmp_path / "original-producer.json"
+    path.write_bytes(raw)
+    inert(monkeypatch)
+    saved = sabueso.read_exploration(
+        path,
+        expected_digest="sha256:369d6c6ea30594930b0b8d3629869781cff6568b7f886b44c5c40296bf0cb8b6",
+    )
+    assert saved.validation["verifier"] == "quaternary_exploration_binding@1"
+    request = saved.explorer.access.select(
+        TOPIC, fields=["kind", "finding"], where={"kind": "interface_family_comparison"}
+    )
+    assert request.count == 1 and request.page()["items"][0]["support"]
+    view = saved.explorer.answer(TOPIC)
+    assert view.native_payload["agreement"][0]["both"] == [13, 14]
+    assert view.native_payload == original["objects"][view.result_ref]["native_payload"]
+    for item in view.items():
+        assert item.explain().native_payload["original_interpretation"]
+        for link in item.related().items():
+            link.open()
+    assert path.read_bytes() == raw

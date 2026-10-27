@@ -300,6 +300,12 @@ def related(item):
     if annotation is not None:
         question = annotation_link(explorer, item.payload_location)
         support = question["support"]
+    else:
+        from .card_model_regions_v1 import link as model_link
+
+        question = model_link(explorer, item.payload_location)
+        if question is not None:
+            support = question["support"]
     seen = set()
     for basis in support:
         for statement in [
@@ -376,7 +382,7 @@ def related(item):
         if isinstance(record.get("subject_ref"), str):
             links.append(_link(explorer, "subject", record["subject_ref"], support))
     rule = RULE
-    if annotation is not None:
+    if question is not None:
         rule = question["rule"]
         links = [{**row, "rule": rule} for row in links]
         links.append(question)
@@ -409,26 +415,31 @@ def _destination(explorer, candidate, origin):
 
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
-    if (
-        link.get("role") == "question"
-        and link.get("rule") == "retained_context_links@3"
+    if link.get("role") == "question" and link.get("rule") in (
+        "retained_context_links@3",
+        "retained_context_links@4",
     ):
-        basis = link["annotation_context"]
+        key = (
+            "model_context"
+            if link["rule"] == "retained_context_links@4"
+            else "annotation_context"
+        )
+        basis = link[key]
         if basis["state"] == "ready":
             request = basis["request"]
             return explorer._answer(request["question"], request["options"], item._view)
         from .card_exploration import CardView
 
         selection = explorer.access.read(
-            explorer.access._object_location(
-                {"annotation_context": basis, "link": link}
-            )
+            explorer.access._object_location({key: basis, "link": link})
         )
         return CardView(
             explorer,
             selection,
             selection._entries,
-            "Annotation structural context unavailable",
+            "Model structural context unavailable"
+            if key == "model_context"
+            else "Annotation structural context unavailable",
             item._view,
             _status=basis["state"],
             _reason=basis["reason"],

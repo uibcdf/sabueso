@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Source-bound model reference navigation (2026-10-27, #148)
+
+Add `model_structure_request@1` under `retained_context_links@4` for the existing
+whole-reference structural question. Require original focal model identity,
+verified whole checksum/range, exact selected original reference inputs and
+matching source-supported canonical sequence. Keep fragments, isoforms,
+alternatives and historical gaps explicitly unavailable. Freeze input/navigation
+admission for inert saved verification and bind each destination to its actual
+question. Preserve older link rules, source values and units; no new Card schema,
+source query, SourceAssertion or native scientific reader. See the
+[scope](pending_proposals/card_model_structural_navigation.md).
+
 ## Original quaternary scientific reading (2026-10-26, #148)
 
 Register `sabueso.card_exploration@4` and `quaternary_exploration_binding@1`

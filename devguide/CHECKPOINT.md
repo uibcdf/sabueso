@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-26**, original quaternary human/agent scientific reading and qualified receiving scope
+Last updated: **2026-10-27**, original quaternary human/agent scientific reading and qualified receiving scope
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -52,6 +52,18 @@ source and release receipts remain unchanged.
    public TcTIM blocks pass on the final writer bytes. Source-specific final
    and remote receipts remain in #148/#112; the preceding remote run does not
    qualify the saved reader automatically.
+
+   Its final public `1bfc9e9` source now passes [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40452755257)
+   and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40452755212),
+   with all full-capture members and thirteen summaries verified: nine source
+   lanes 5,883 each, four installed public-Ackredit lanes 1,452 each. Its genuine
+   original @4 file is now a tracked frozen regression capsule. The
+   [model-to-reference navigation](pending_proposals/card_model_structural_navigation.md) now prepares the same structural region
+   question for verified whole-reference models. Complete fragment/isoform and
+   broader structural integration next; the new navigation has separate receipts.
+   Its selected Card/native/history/argument/quantity integration passes 1,103
+   cases /155.40s; original observations versus semantic assertion references
+   now have a separate [audit #166](https://github.com/uibcdf/sabueso/issues/166).
 
 5. Keep scientific review separate: the [public worksheet](pending_proposals/scientific_review_packet_20261020.md)
    and [source drafts](pending_proposals/located_source_review.md) await actual

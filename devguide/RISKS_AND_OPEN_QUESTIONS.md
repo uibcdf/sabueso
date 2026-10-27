@@ -1,5 +1,16 @@
 # Sabueso — Risks and Open Questions
 
+The [source-observation audit #166](https://github.com/uibcdf/sabueso/issues/166)
+distinguishes intentional stable semantic SourceAssertion IDs from the metadata
+of a particular input observation. A synthetic store-level add replaces version/
+retrieval metadata under the same ID while native original model-value replay
+remains admitted. Ordinary refresh/merge impact is still an audit question;
+this does not establish mutation of stored pins or old saved artifacts. Preserve
+accepted IDs and original captured files, and do not claim an original invocation's
+observation metadata from semantic input IDs alone. Resolve the source/provenance
+scope before making that stronger attribution or accepting release consolidation.
+
+
 Development tissue rules now require explicit coordinate scope and report
 per-tissue resolved/missing/conflicting coverage (#138). Explicit legacy rules
 retain their known assembly/chromosome and duplicate-count limitations. Old cards

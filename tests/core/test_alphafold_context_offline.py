@@ -391,9 +391,16 @@ def test_human_saved_source_context_reads_without_live_rule_or_card(tmp_path):
     assert any(
         "reference sequence length" in item.label for item in source_links.items()
     )
-    assert {item.open().native_payload["id"] for item in source_links.items()} == set(
-        relationship["derivation"]["inputs"]
+    model_question = (
+        view.items()[0].related().filter("role", equals="question").items()[0]
     )
+    reference_inputs = model_question._entry.value["model_context"][
+        "canonical_reference"
+    ]["inputs"]
+    assert {item.open().native_payload["id"] for item in source_links.items()} == {
+        *relationship["derivation"]["inputs"],
+        *reference_inputs,
+    }
     target = tmp_path / "model.json"
     receipt = view.save(target)
     script = """

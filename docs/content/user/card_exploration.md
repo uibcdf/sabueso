@@ -277,6 +277,27 @@ resolution or an inferred ranking. This pane does not calculate current sequence
 coverage or align an isoform. A missing consistent canonical UniProt identity is
 a prerequisite gap; a model list alone does not establish source completeness.
 
+Use the model's contextual question to inspect experimental structures on its
+original reference. A ready question requires a source-supported whole-reference
+model, confirmed checksum and the same retained reference inputs:
+
+```python
+if len(models.items()):
+    model_links = models.items()[0].related()
+    reference_questions = model_links.filter("role", equals="question").items()
+    if len(reference_questions):
+        model_reference_structures = reference_questions[0].open()
+        model_reference_structures
+```
+
+This opens the existing region-coverage inventory over the same capture. It does
+not establish observed atoms in the predicted model, experimental equivalence or
+assembly relevance. A fragment, isoform, changed reference or historical model
+without its original inputs instead explains the missing prerequisite. Inspect
+its original sources before preparing another interpretation. Saved navigation
+preserves the original question and result; it never fills a gap by running a
+current model reader.
+
 ## Inspect source sites and contact statements
 
 ```python

@@ -101,3 +101,26 @@ this capsule does not freeze a Card schema or represent a historical @4 writer.
 Compressed SHA-256: `af8e80552aa1509a3c36800bd585204a57e1aec1477fe730a5c650113c2ce3f5`.
 
 Uncompressed SHA-256: `4e5564a842550108de808becce428539599509e8263ea365e6eae2b1a03611ca`.
+
+
+## Original saved quaternary exploration
+
+`card_exploration_quaternary_v1.json.gz` is the unchanged original format @4
+bundle written by clean source `1bfc9e9aa5380c2fa2b4dd56579802034b9fb731`,
+actual editable SDK `0.14.0+111.g1bfc9e9`. Its producer passes exact-head CI 15/15
+and governance 1/1 with full captures and all thirteen summaries verified.
+
+It retains a human question, original explanation/navigation and exact projected
+agent request over the clearly synthetic helper in
+`test_card_quaternary_interpretation_offline.py`. Public identifier labels are
+context only; these assertions are not scientific claims about that protein.
+No source query, private/pilot data or Card schema freeze is involved.
+
+The frozen reader regression blocks current scientific engines, Card construction,
+source calls and live adapter descriptors. Preserve these original bytes; never
+regenerate them from a later writer. Gzip packages this fixture, not the public
+reader format. Original raw size: 2,922,273 bytes; gzip size: 122,051 bytes.
+
+Compressed SHA-256: `7bdb7910491127e3bee3ffa88c2fd97e770f18628f0f5235382d5a76cbdcf34a`.
+
+Uncompressed SHA-256: `9082e508f2ac025a085ab972a1375ae06a46f4115fa9c57361d95e9a91351b25`.

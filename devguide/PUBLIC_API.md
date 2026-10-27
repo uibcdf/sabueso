@@ -33,6 +33,11 @@ Plain accessors (`get`, `set`, `sort`…) do not, and fail loudly on wrong types
 to use them. Development entries do not establish public delivery, automatic card
 enrichment or live-service qualification.
 
+Predicted-model items now offer `related()` navigation to experimental structures
+on their source-bound original whole reference, with checksum/input admission,
+explicit unavailable scope and inert original saved reading. See the
+[model-to-reference navigation](pending_proposals/card_model_structural_navigation.md).
+
 ## Development recovery after 0.13.0
 
 This historical section records the recovery delivered in 0.14.0 (#134).

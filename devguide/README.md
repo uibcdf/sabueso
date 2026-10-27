@@ -80,6 +80,11 @@ runtime floors and installed-package qualification remain separate.
 
 ## Design
 
+The [model-to-reference navigation](pending_proposals/card_model_structural_navigation.md) adds a source-bound question from a verified
+whole-reference predicted model to the existing experimental region inventory,
+with original input links and inert saved reading. Fragment/isoform mappings and
+human/workload acceptance remain open.
+
 The [#165 native quaternary correction](pending_bugs/quaternary_interpretation_scope.md)
 versions source/declaration/coordinate admission and keeps every relevant pair.
 Frozen original readers and packet projections remain available. The
