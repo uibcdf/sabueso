@@ -46,8 +46,12 @@ source and release receipts remain unchanged.
    with complete receptor captures, member hashes and all thirteen summaries
    checked. Nine source lanes pass 5,843 cases each and four installed public-
    Ackredit lanes pass 1,452 each. The self-contained receiving repair closes
-   #165 without workflow changes. The new saved reader has separate local/full/
-   remote receipts in #148/#112; the preceding run does not qualify it automatically.
+   #165 without workflow changes. The new saved-reader implementation at `4407e46`
+   passes 7,436 full local-original cases /782.27s at actual SDK110;
+   all code/input hashes remain unchanged. All 52 guide blocks and five fresh
+   public TcTIM blocks pass on the final writer bytes. Source-specific final
+   and remote receipts remain in #148/#112; the preceding remote run does not
+   qualify the saved reader automatically.
 
 5. Keep scientific review separate: the [public worksheet](pending_proposals/scientific_review_packet_20261020.md)
    and [source drafts](pending_proposals/located_source_review.md) await actual

@@ -97,3 +97,23 @@ Owned evidence: `recovered_work/quaternary_saved_148_20261027/`, owner #148/#112
 review at the next exploration checkpoint, replacement exact-source CI or release
 acceptance. Keep original capsules, useful proof and active sessions; remove only
 finished owned disposable scratch.
+
+## Complete local code checkpoint
+
+The implementation source `4407e46fc3c466a4459e26fb3b9af292b4c2539a`, actual
+editable SDK `0.14.0+110.g4407e46`, passes **7,436** full offline cases
+in **782.27 seconds**, with twelve receptor workers, fatal SQLite/
+unraisable guards and owned-process memory supervision. All **976**
+code/test/tool/CI inputs and **37** protected originals remain unchanged.
+All **52** guide blocks and **5** fresh public TcTIM interpretation blocks pass
+without source requests. These walkthroughs ran the final writer bytes before
+commit/installation, at actual loaded SDK109; their receipts preserve that SDK.
+The full checkpoint uses SDK110. Later documentation-only closeout and remote
+source qualification retain their own identities in #148/#112.
+
+The positive TcTIM example's retained human/agent files are **10,065,634** and
+**10,140,042** bytes (**187/188** retained views), while its first agent page is
+**6,876** bytes. These are scoped observations, not agreed storage or latency
+budgets. Automatic support/history retention may dominate persistence cost;
+that is a workload hypothesis requiring measurement, not a scientific defect
+established by page size. Keep workload/storage and human acceptance open.

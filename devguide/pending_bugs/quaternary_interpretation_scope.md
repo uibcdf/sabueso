@@ -1,9 +1,10 @@
 ---
 summary: Versioned quaternary interpretation preserves subjects, uncertainty, all declarations and all interface/family pairs.
 issue: uibcdf/sabueso#165
-status: open
+status: resolved
 opened: 2026-10-26
-verification: source_specific_receipts_in_owning_issues
+closed: 2026-10-26
+verification: qualified_source_checkpoint
 area: [scientific-integrity, quaternary-structure, support, packets]
 ---
 
@@ -117,3 +118,16 @@ independently readable.
 Human acceptance and agreed populated workload/storage budgets remain required;
 0.15.0 consolidation, schema freezing, staging and release remain paused. No
 private pilot reads or new scientific source queries are involved.
+
+## Verified closure
+
+#165 is closed at public source `0830de57dd1d027268c98066b130fe42b36a3c39`:
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40446248497),
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40446248513),
+complete receptor manifests/member hashes/archives and all thirteen actual test
+summaries verified. Nine source lanes each pass 5,843 cases; four installed
+public-Ackredit lanes each pass 1,452. The receiving test is self-contained;
+no workflow change or extra credential scope is needed. The
+[owning closeout](https://github.com/uibcdf/sabueso/issues/165#issuecomment-6433752621)
+records the verified consumer state. Subsequent #148 saved-reading and broader
+human/agent acceptance remain separate work.
