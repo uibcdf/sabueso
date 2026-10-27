@@ -464,6 +464,15 @@ def oligomer_view(card, agreement_rule=AGREEMENT_RULE):
                 "structures": deepcopy(q.get("structures")),
                 "relationship_id": row["id"],
                 "source_assertion_ids": _refs(row),
+                "sources": sorted(
+                    {
+                        source["source"]["name"]
+                        for ref in _refs(row)
+                        if (source := card.source_assertion_store.get(ref))
+                        and isinstance(source.get("source"), dict)
+                        and isinstance(source["source"].get("name"), str)
+                    }
+                ),
                 "qualifier_conflicts": deepcopy(row.get("qualifier_conflicts")),
             }
         )

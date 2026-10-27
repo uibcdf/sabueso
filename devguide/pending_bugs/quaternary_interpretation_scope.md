@@ -80,6 +80,22 @@ human exploration guide blocks and **five** native sites/interfaces guide blocks
 execute offline; warning-fatal Sphinx and the static/schema/input gates pass.
 Full-suite and exact-source remote receipts are recorded separately in
 #165/#148/#112; counts for an earlier SHA never qualify a later checkpoint.
+The first full checkpoint at `e2518b2` ran all **7,367** cases and found four
+failures (three causes): a missing original source-name projection in the public
+interface table, two stale current-packet mapping assertions and a baseline that
+expected a fragment classification despite other unqualified structure mappings.
+That run is diagnostic, not passing qualification. The follow-up preserves the
+original `sources` display alongside complete assertion IDs, retains unknown
+position/structure counts as `None` in flat tables and exposes coordinate and
+classification status/reasons. The shared ligand-site table also preserves
+uncomputed positions instead of calling `len(None)` or presenting zero contacts.
+Historical explicit `@2` table reading remains supported. The baseline checks
+the actual uncomputed reasons, retained qualified fragment witnesses and the
+unchanged original `@2` result; no source support requirement is weakened.
+The follow-up native/table/baseline/disease-packet/history gate passes **272**
+cases in **99.73 seconds**. Ruff, 298 local Markdown targets, 12 Python snippets,
+Python 3.11 parsing of 20 changed source/test files and warning-fatal Sphinx pass.
+The replacement full suite and exact-source remote runs require their own receipt.
 Public current-source TcTIM/HsTIM and clearly synthetic foreign/missing/conflicting/
 uncertain/duplicate/partial cases are tested. The original Card is unchanged;
 saved original packet pins and matching full/index term scope are checked.

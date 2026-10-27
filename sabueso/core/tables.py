@@ -143,8 +143,12 @@ def _ligand_sites(view: Dict[str, Any]) -> List[Dict[str, Any]]:
         {
             "ligand_ref": item["ligand_ref"],
             "name": item["name"],
-            "positions": _join(item["positions"]),
-            "n_positions": len(item["positions"]),
+            "positions": _join(item["positions"])
+            if isinstance(item["positions"], list)
+            else None,
+            "n_positions": len(item["positions"])
+            if isinstance(item["positions"], list)
+            else None,
             "site_class": item["site_class"],
             "spans_chains": None
             if item["spans_chains"] is None
@@ -162,9 +166,17 @@ def _interfaces(view: Dict[str, Any]) -> List[Dict[str, Any]]:
             "partner_name": i["partner_name"],
             "partner_type": i["partner_type"],
             "class": i["class"],
-            "n_positions": len(i["positions"]),
-            "structures": len(i["structures"]),
+            "n_positions": len(i["positions"])
+            if isinstance(i["positions"], list)
+            else None,
+            "structures": len(i["structures"])
+            if isinstance(i["structures"], list)
+            else None,
             "sources": _join(i["sources"]),
+            "coordinate_status": i.get("coordinate_scope", {}).get("status"),
+            "coordinate_reason": i.get("coordinate_scope", {}).get("reason"),
+            "classification_status": i.get("classification", {}).get("status"),
+            "classification_reason": i.get("classification", {}).get("reason"),
         }
         for i in view["interfaces"]
     ]

@@ -143,6 +143,55 @@ def test_positive_canonical_scope_explanation_and_complete_inputs_are_shared():
     assert card.to_dict() == before
 
 
+@pytest.mark.parametrize("structures", [None, []])
+def test_interface_table_keeps_unknown_counts_source_names_and_historical_reading(
+    structures,
+):
+    card = sample(numbering="author")
+    original = card.relationships("has_interface_with")[0]
+    q = deepcopy(original["qualifiers"])
+    q["structures"] = structures
+    card.relationship_store.store.pop(original["id"])
+    relation(card, "has_interface_with", SUBJECT, q)
+    before = deepcopy(card.to_dict())
+    native = card.oligomer()["interfaces"][0]
+    row = card.table("interfaces")[0]
+    assert native["sources"] == ["synthetic"]
+    assert row["sources"] == "synthetic"
+    assert row["n_positions"] is None
+    assert row["structures"] == (None if structures is None else 0)
+    assert row["coordinate_status"] == "not_computed"
+    assert row["coordinate_reason"] == "interface_numbering_not_comparable"
+    assert row["classification_status"] == "computed"
+    assert row["classification_reason"] is None
+    original = card.table("interfaces", agreement_rule="interface_site_agreement@2")[0]
+    assert original["n_positions"] == 3
+    assert original["sources"] == "synthetic"
+    assert original["coordinate_status"] is None
+    assert card.to_dict() == before
+
+
+def test_ligand_table_keeps_uncomputed_positions_as_unknown_instead_of_zero():
+    card = sample()
+    relation(
+        card,
+        "has_ligand_site",
+        "pdb.ligand:SYNTHETIC",
+        {
+            "numbering": "author",
+            "residues": [{"start": 13, "end": 15}],
+            "structures": [],
+        },
+    )
+    before = deepcopy(card.to_dict())
+    native = card.ligand_sites()["items"][0]
+    assert native["positions"] is None
+    row = card.table("ligand_sites")[0]
+    assert row["positions"] is None and row["n_positions"] is None
+    assert row["site_class"] == "numbering_not_comparable"
+    assert card.to_dict() == before
+
+
 @pytest.mark.parametrize("accession", ["P52270", "P60174"])
 def test_current_public_sources_have_qualified_self_interfaces_and_original_support(
     accession,

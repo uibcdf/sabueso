@@ -175,6 +175,11 @@ for example a resolved identity or UniChem's links. Otherwise they stay apart.
 
 ## Tables
 
+Development interface tables retain unknown coordinate/structure counts as `None`
+and expose classification and coordinate status/reasons. Ligand-site tables also
+retain uncomputed positions/counts as `None`; zero is reserved for a computed
+empty collection. Use the native view for full source and interpretation inputs.
+
 Every view also comes as flat rows, one per structure, measurement, molecule, ligand,
 interface partner, publication or entity. `sabueso.to_dataframe` turns them into a
 pandas DataFrame. pandas is optional; install it with

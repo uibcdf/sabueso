@@ -130,7 +130,28 @@ def test_5_oligomer_and_interface(baseline):
         "uniprot:P04789": "chimera",
     }
     assert classes["HsTIM"]["uniprot:P60174"] == "homomeric"
-    assert set(classes["HsTIM"].values()) == {"homomeric", "fragment_complex"}
+    assert set(classes["HsTIM"].values()) == {"homomeric", "undetermined"}
+    hs = cards["HsTIM"].oligomer()
+    unknown = [i for i in hs["interfaces"] if i["class"] == "undetermined"]
+    assert all(i["classification"]["status"] == "not_computed" for i in unknown)
+    assert {i["classification"]["reason"] for i in unknown} == {
+        "interface_native_partner_binding_unavailable",
+        "structure_context_unavailable_or_conflicting",
+    }
+    # Qualified fragment declarations remain visible beside missing mappings;
+    # they do not establish the nature of every other retained structure.
+    assert any(
+        basis["basis"] == "protein_as_fragment"
+        and basis["scope"]["status"] == "comparable"
+        for item in unknown
+        for records in item["basis"].values()
+        for basis in records
+    )
+    original = cards["HsTIM"].oligomer(agreement_rule="interface_site_agreement@2")
+    assert {i["class"] for i in original["interfaces"]} == {
+        "homomeric",
+        "fragment_complex",
+    }
 
 
 def test_6_bioactivities_and_shared_ligands(baseline):

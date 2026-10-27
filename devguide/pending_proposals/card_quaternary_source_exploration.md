@@ -3,7 +3,7 @@ summary: Original subunit, assembly and interface declarations with source/struc
 issue: uibcdf/sabueso#148
 status: open
 opened: 2026-10-26
-verification: selected_qualified_broader_pending
+verification: qualified_source_checkpoint
 area: [human-exploration, protein, storage, navigation]
 ---
 
@@ -68,7 +68,12 @@ corruption before the fix; explicit UTF-8 reads preserve the original seals.
 Independent fixture-access audit hooks also recognize both path separators.
 The public writer/reader already use UTF-8; no hash verification is relaxed and
 the original producer capsule is unchanged. Replacement exact-source Windows
-qualification remains required; that preceding failed CI is not passing evidence.
+qualification subsequently passes at `b4f7d31`: CI **15/15**, governance **1/1**,
+including every Windows 3.11–3.14 lane, with full receptor captures and all
+thirteen pytest summaries verified. Its local full suite passes **7,321** cases.
+The [source-specific closeout](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6431548974)
+does not qualify the later native #165 correction automatically; the preceding
+failed CI remains diagnostic history.
 
 Owned local evidence: `recovered_work/quaternary_148_20261027/`; owner #148/#112,
 review at the next exploration checkpoint or release acceptance. Retain useful
