@@ -243,9 +243,10 @@ supported OS/minors or the installed public dependency route.
 
 Record every deferred code block's actual head SHA, changed/tested scope, missing
 remote gates, owning issue and recovery route in its issue and checkpoint record.
-The [current deferred block](pending_proposals/deferred_ci.md) is locally verified,
-with remote qualification pending. A skipped or older run is never current passing
-evidence. Required PR checks and immediate security, dependency, packaging,
+The [recovery ledger](pending_proposals/deferred_ci.md) distinguishes qualified
+code checkpoints from later intermediate heads and their missing checks. A skipped
+or older run is never a newer head's exact-source passing evidence. Required PR
+checks and immediate security, dependency, packaging,
 migration or integration gates cannot be deferred with this marker. Published
 release candidates and installed-artifact admission retain every mandatory gate.
 

@@ -7,7 +7,19 @@ commands live in [TESTS.md](../TESTS.md#recovering-deferred-ci). This changes
 Sabueso's local practice within the existing MOLI policy; it changes no shared
 contract or release gate.
 
-## Current intermediate block: literal human/machine Card exploration (#148)
+## Exploration route and recovered code checkpoints (#148)
+
+**Latest recovered code checkpoint, 2026-10-27:** `50ce8e7f228096040babbb0a05d2c69b7315c59c`,
+actual tested SDK `0.14.0+115.g50ce8e7`, passes
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40603174636) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40603174661).
+All full-capture members, job steps and thirteen actual summaries are checked:
+nine repository-input lanes pass 5,951 cases each and four installed public-
+Ackredit lanes pass 1,452 each. This recovers the accumulated code through that
+SHA; it does not complete #148's broad implementation or researcher acceptance.
+See the [bounded persistence review](card_persistence_cost.md) and #112/#148/#167
+for source-bound receipts. The route below records the preceding implementation
+history; it is not an assertion that those earlier runtime bytes still lack CI.
 
 The first partial exploration slice A adds detached capture, literal field/topic
 discovery and read, typed locations, record/byte-bounded pages, retained cursors,
@@ -73,16 +85,23 @@ Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published
 head and exact source fingerprint/receipt are recorded in the owning #148 update.
-This is an intermediate development push under the existing `[skip ci]`
-authorization, not remote-qualified code or release evidence. No dependency,
-packaging, schema/migration or shared-component contract changes are included.
+The original intermediate pushes used the existing `[skip ci]` authorization;
+their historical local receipts alone did not establish remote qualification.
+Subsequent unskipped checkpoints recover only their exact recorded code/input
+scope. The qualified checkpoint above includes OS/Python, installed-provider,
+coverage-publication and hosted-governance checks. Coverage processing percentages
+are not inferred from a successful queued upload.
 
-Remote OS/Python/installed lanes, coverage publication and hosted governance remain
-pending for this new block. Finish shared exploration implementation with an
-unskipped final push, or use the already authorized manual CI/governance recovery
-route above through gh-run-receptor on its exact final SHA. Preserve previous
-qualified-source receipts; do not label a skipped run as passing CI. The next
-substantial release still requires its independent installed-artifact route.
+The documentation-only closure following `50ce8e7` uses `[skip ci]` after local
+Markdown/snippet/syntax and governance checks. Tracked runtime source, scientific inputs,
+schemas and installed dependency requirements are unchanged. Owner #112; the next
+unskipped runtime checkpoint or authorized exact-head manual CI/governance route
+recovers hosted administrative checks. No new runtime CI backlog is introduced,
+and the documentation SHA is not claimed to have the code checkpoint's exact-head
+remote result. Record any later intermediate code head, changed/tested scope and
+missing gates separately. Preserve previous qualified-source receipts; never
+label a skipped run as passing CI. Release admission retains its independent
+installed-artifact route.
 
 ## Recovered block: comparative execution observation
 

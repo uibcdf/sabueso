@@ -156,6 +156,18 @@ parsing of seven changed source/test files pass. Fixture delivery preserves
 51 reviewed public inputs and 37 protected local originals. Exact-source remote
 CI/governance and installed-package qualification retain their separate receipts.
 
+The final code checkpoint `50ce8e7f228096040babbb0a05d2c69b7315c59c`, actual tested
+SDK `0.14.0+115.g50ce8e7`, passes [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40603174636)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40603174661).
+Both six-member full captures, archive integrity, exact source/job steps and all
+thirteen actual summaries are independently checked: nine repository-input lanes
+5,951 each, four installed public-Ackredit lanes 1,452 each. Coverage upload
+succeeds with processing queued; no percentage is inferred. After the final
+editable reinstall, 52 owning cases pass /66.92s, with 364 MiB sampled owned RSS.
+The documentation-only closure retains that exact code qualification and records
+its own [administrative recovery scope](deferred_ci.md); it changes no tracked runtime,
+scientific-input, schema or dependency requirement bytes.
+
 Baseline artifacts/proof remain under
 `recovered_work/source_observations_166_20261027/final-75579df/`; current profiles,
 accounting and qualification receipts live under

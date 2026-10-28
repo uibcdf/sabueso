@@ -93,7 +93,15 @@ source and release receipts remain unchanged.
    Card/history/scientific/quantity gate passes 1,159 cases /568.32s serial through
    the receptor: 822 MiB peak owned RSS and at least 5.9 GiB genuinely free RAM.
    An earlier four-worker rerun stopped on host headroom and is not qualification.
-   Exact-source remote qualification remains separate. Resume the remaining
+   Code checkpoint `50ce8e7`, actual tested SDK115, now passes
+   [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40603174636) and
+   [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40603174661), with
+   all full-capture hashes, steps and thirteen summaries verified: nine source
+   lanes 5,951 each; four installed public-Ackredit lanes 1,452 each. Its exact
+   editable-label owning gate passes another 52 cases /66.92s. The following
+   documentation-only closure uses the [recorded administrative recovery route](pending_proposals/deferred_ci.md);
+   it changes no tracked runtime/input bytes and is not claimed remotely qualified at its
+   own SHA. Resume the remaining
    structural/broad-profile order. #167 stays open for physical-layout design,
    additional Card workloads and researcher acceptance.
 
