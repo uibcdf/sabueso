@@ -180,7 +180,9 @@ admitted set does not mean the protein has no structures.
 Compact pages include `declaration_admission`: counts refer to the whole captured
 inventory before display filtering, with a bounded inspection link for excluded
 and unplaced originals. Those counts do not describe independent experiments or
-external absence. Reading the link makes no source query:
+external absence. An inapplicable or identity-less request instead reports
+`status="not_evaluated"` with null counts and link, retaining the original reason.
+Reading an available link makes no source query:
 
 ```python
 reader = focus.access()

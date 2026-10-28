@@ -65,6 +65,49 @@ def test_exact_subject_is_declaration_scope_without_creating_source_support(card
 
 
 @pytest.mark.parametrize(
+    "nature, status",
+    [
+        (None, "not_applicable"),
+        ("small_molecule", "not_applicable"),
+        ("disease", "not_applicable"),
+        ("protein", "missing_prerequisite"),
+    ],
+)
+def test_uncomputed_admission_has_unknown_counts_live_and_saved(
+    nature, status, tmp_path, monkeypatch
+):
+    card = Card(meta={"entity_type": nature} if nature else {})
+    selection = card.access().select("structures", fields=[])
+    page = selection.page(max_bytes=8192)
+    assert page["outcome"]["status"] == status
+    admission = page["declaration_admission"]
+    assert admission["status"] == "not_evaluated"
+    assert admission["reason"] == page["outcome"]["reason"]
+    for key in (
+        "rule",
+        "inventory_rows",
+        "unplaced_declarations",
+        "excluded_fragments",
+        "exclusions_location",
+    ):
+        assert admission[key] is None
+    path = tmp_path / "uncomputed.json"
+    selection.save(path)
+    monkeypatch.setattr(Card, "from_dict", forbidden)
+    monkeypatch.setattr(
+        importlib.import_module("sabueso.core.card_scientific_access"),
+        "materialize",
+        forbidden,
+    )
+    saved = sabueso.read_exploration(path)
+    restored = saved.explorer.access.select("structures", fields=[]).page(
+        max_bytes=8192
+    )
+    assert restored["outcome"] == page["outcome"]
+    assert restored["declaration_admission"] == admission
+
+
+@pytest.mark.parametrize(
     "subject", [None, "", "uniprot:P60174", "P52270", "alias:TcTIM"]
 )
 def test_missing_foreign_or_alias_subject_never_enters_focal_state(card, subject):

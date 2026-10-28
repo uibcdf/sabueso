@@ -63,7 +63,10 @@ receive a positive regional projection. Declaration admission does not fix it.
   inventory/unplaced/fragment counts and a bounded `exclusions_location`, independently
   of display filters; human `exclusions` retains unplaced
   reasons and original explanations. The preview identifies unplaced declarations
-  explicitly. Regional requests inherit the same admitted set, while sequence
+  explicitly. An inapplicable or identity-less request has `not_evaluated` admission,
+  null counts/rule/inspection link and its original prerequisite reason; unknown
+  scope is not zero declarations. Live and inert saved pages share that behavior.
+  Regional requests inherit the same admitted set, while sequence
   coverage remains distinct from observed-coordinate completeness.
 - `packet_aspects@13` uses the corrected direct and comparative inventories and
   names the admission rule. Full/index terms include the original declarations,

@@ -210,19 +210,32 @@ class AccessSelection:
                 == "structure_inventory_explanation@3"
             ):
                 original = result.wire["exclusions"]
+                evaluated = "admission_rule" in result.native
                 frame["declaration_admission"] = {
-                    "rule": result.native["admission_rule"]["rule"],
+                    "status": "evaluated" if evaluated else "not_evaluated",
+                    "rule": result.native["admission_rule"]["rule"]
+                    if evaluated
+                    else None,
+                    "reason": None if evaluated else result.wire["outcome"]["reason"],
                     "scope": "whole_captured_inventory_before_display_filtering",
-                    "inventory_rows": len(result.native["items"]),
+                    "inventory_rows": len(result.native["items"])
+                    if evaluated
+                    else None,
                     "unplaced_declarations": sum(
                         row.get("status") == "unplaced" for row in original
-                    ),
+                    )
+                    if evaluated
+                    else None,
                     "excluded_fragments": sum(
                         row.get("reason") == "fragment_or_peptide" for row in original
-                    ),
+                    )
+                    if evaluated
+                    else None,
                     "exclusions_location": self._access._location(
                         result.location("exclusions")
-                    ),
+                    )
+                    if evaluated
+                    else None,
                 }
         return frame
 
