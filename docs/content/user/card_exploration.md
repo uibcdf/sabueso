@@ -481,6 +481,54 @@ Card; without that Card it reports `context_not_supplied`. Opening the local
 parent does not require it or fetch new data. Saved readings preserve their original
 navigation: older files without the new link are not backfilled.
 
+## Open a structure's original context
+
+From an experimental structure, open its original ligand, assembly, chain or
+author-numbering declarations without supplying a separate structure Card:
+
+```python
+structures = explorer.view("structures")
+structure = structures.filter("structure_ref", equals="pdb:1SUX").items()[0]
+context_links = structure.related()
+context_links.table()
+ligand_declarations = (
+    context_links.filter("role", equals="ligand_context").items()[0].open()
+)
+assembly_declarations = (
+    context_links.filter("role", equals="assembly_context").items()[0].open()
+)
+chain_declarations = (
+    context_links.filter("role", equals="chain_context").items()[0].open()
+)
+author_numbering = (
+    context_links.filter("role", equals="numbering_context").items()[0].open()
+)
+```
+
+These links address fields of that exact captured `has_structure` relationship.
+Its literal record item and its `qualifiers` item offer the same links, including
+when reached through an instance's **Original structure declaration**. The
+**Object** link remains a separate supplied-Card destination. Neither matching
+PDB labels nor matching chain labels establish a join between declarations.
+
+Each link records `declaration_state`: `retained`, `retained_empty`,
+`retained_null`, `unrecognized_shape`, `not_retained` or
+`unrecognized_parent_shape`. Existing nodes, including empty, null and malformed
+values, remain inspectable. Missing fields report `missing_prerequisite`; another
+Card does not repair a field missing from this snapshot. A missing field is not
+an assertion of absence. Source support remains at relationship level, with its
+original records, alternatives and units. The complete typed destination is also
+readable through `explorer.access.read(location)` with bounded pages.
+
+This route does not assign a ligand to an assembly, project residues or establish
+observed atoms or biological relevance. Current experimental inventory explanations
+have a known limitation with multiple retained relationships for one PDB reference
+([#168](https://github.com/uibcdf/sabueso/issues/168)); exact literal declaration
+navigation keeps them separate. Saved readings retain their original link policy;
+older files never gain these links automatically.
+
+## Interpret original instance contacts
+
 Contacts keep `position`, structure `seq_id`, chain, UniProt identifier and distance
 with its unit separately. For example, the public TcTIM `pdb:2OMA`/PEG instance H
 has a recorded contact with `position=118` and `seq_id=117`. Those coordinates must

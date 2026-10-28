@@ -9,8 +9,9 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
-The next intermediate runtime block is
-[original ligand-parent navigation](card_ligand_parent_navigation.md), after the
+The current intermediate runtime block includes
+[original ligand-parent navigation](card_ligand_parent_navigation.md) and
+[original structure context](card_structure_context_navigation.md), after the
 qualified code checkpoint below. It changes only local exploration/navigation
 and its historical verification, with no new source acquisition, dependency,
 packaging, Card-schema/migration or shared-component admission. Its exact checked
@@ -19,10 +20,17 @@ coverage and governance qualification is deferred under the existing intermediat
 `[skip ci]` route, owner #148/#112, until the next unskipped structural checkpoint
 or authorized exact-head manual recovery. Do not apply the earlier exact-head
 green result to this new runtime source. This backlog remains open until recovered.
-Its selected local gate passes 1,178 cases /577.68s serially with local-source
+The parent-navigation selected local gate passes 1,178 cases /577.68s serially with local-source
 inputs; the changed public example, warning-fatal Sphinx and applicable static,
 fixture and local governance checks pass. This is not a new full-local-suite or
 hosted result.
+The subsequent original structure-context gate passes **1,198 cases /590.53s**
+across 40 files, including 20 new owning cases, with the same serial receptor,
+local-original and fatal-warning scope. Sampled owned RSS is 773 MiB with at least
+7.2 GiB genuinely free host RAM. Its new public example executes without source
+queries or input mutation; applicable documentation/static/fixture/governance
+checks pass. Exact-head hosted qualification remains deferred for the accumulated
+parent/context runtime block, including the final editable-label source checkpoint.
 
 **Latest recovered code checkpoint, 2026-10-27:** `50ce8e7f228096040babbb0a05d2c69b7315c59c`,
 actual tested SDK `0.14.0+115.g50ce8e7`, passes

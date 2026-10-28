@@ -330,6 +330,12 @@ not promise card enrichment, live availability or public-package delivery.
   and multiple supported captures require explicit candidate selection. Every
   transition retains its originating detail and selected view. See the
   [contextual navigation scope](pending_proposals/card_context_navigation.md).
+  Experimental structure items and literal `has_structure` declaration/qualifier
+  items also offer original `structure_context`, `ligand_context`,
+  `assembly_context`, `chain_context` and `numbering_context` destinations. Field
+  links preserve exact relationship scope and explicit missing/null/empty/malformed
+  states; they do not establish ligand/assembly correspondence. See
+  [original structure context](pending_proposals/card_structure_context_navigation.md).
   Supported literal/field and initial scientific views and `AccessSelection`s offer
   `save(path, overwrite=False)`, reopened as a saved `CardView` through
   `sabueso.read_exploration(path, expected_digest=None)`. Captured values, units,

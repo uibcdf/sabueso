@@ -36,6 +36,17 @@ source and release receipts remain unchanged.
    free host RAM. The changed public guide block executes offline; warning-fatal
    Sphinx and applicable static/fixture/governance checks pass. This is a selected
    local receipt, not a new full-local or exact-head hosted result.
+   The following [structure-context continuation](pending_proposals/card_structure_context_navigation.md)
+   adds original ligand/assembly/chain/author-numbering field destinations from
+   experimental inventory items, literal structure declarations and their qualifiers.
+   Existing empty/null/malformed nodes stay inspectable; missing fields remain
+   explicit gaps. Its selected integration passes 1,198 cases /590.53s across
+   40 files, serial through the receptor with 773 MiB sampled owned RSS and at
+   least 7.2 GiB genuinely free RAM. The new public example executes without source
+   queries or Card mutation. Its source-bound qualification belongs to #148/#112,
+   separate from the preceding receipt; hosted qualification remains deferred. The observed duplicate-PDB explanation crash is
+   [#168](https://github.com/uibcdf/sabueso/issues/168), the next structural integrity
+   correction; literal exact-declaration navigation already keeps those records separate.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed

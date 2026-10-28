@@ -285,6 +285,10 @@ def _historical_resolution(access, target):
 
 
 def _verify_links(view):
+    if view.native_payload.get("rule") == "structure_declaration_context_links@1":
+        from .card_structure_context_v1 import verify_links
+
+        return verify_links(view)
     if view.native_payload.get("rule") == "ligand_instance_context_links@1":
         from .card_ligand_instance_navigation_v1 import verify_links
 
@@ -327,6 +331,7 @@ def _verify_links(view):
                     "quaternary_context_links@1",
                     "quaternary_interpretation_links@1",
                     "ligand_instance_context_links@1",
+                    "structure_declaration_context_links@1",
                 ),
                 "Missing retained link-detail origin.",
             )

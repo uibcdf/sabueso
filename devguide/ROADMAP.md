@@ -336,6 +336,13 @@ navigation and independent saved reading. Complete broader
 region/model/assembly transitions
 within the sequence below; source presentation alone does not close that work.
 
+The [structure-context continuation](pending_proposals/card_structure_context_navigation.md)
+now opens exact original ligand, assembly, chain and numbering declarations from
+experimental items or literal parent context. Correct the observed duplicate-PDB
+inventory explanation crash [#168](https://github.com/uibcdf/sabueso/issues/168)
+next, preserving explicit relationship scope and historical scientific readers;
+then resume the remaining scientific region/site/model/assembly transitions.
+
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all
 ongoing implementations and corrections for **0.15.0**. The earlier proposal to
 evaluate an AlphaFold-only 0.14.1 patch/backport is superseded. Complete the full

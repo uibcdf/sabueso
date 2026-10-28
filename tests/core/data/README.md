@@ -147,3 +147,25 @@ Original raw size: 987,768 bytes; gzip size: 60,380 bytes.
 Compressed SHA-256: `918c61b5ee776c111dfad8a37b2b6232336d92d5b65c90534fb93f9c446269d1`.
 
 Uncompressed SHA-256: `f57aced52ec5e9b0ddd38dbe70284284f569992238e74dd5812013a01ee78df4`.
+
+## Original structure navigation before field links
+
+`card_structure_context_legacy_v1.json.gz` retains a literal format @1 reading
+from exact source `9d5bd098567d7154637859451b793a0af511273f`, actual editable SDK
+`0.14.0+117.g9d5bd09`. The three changed codec modules execute their original
+bytes in a disposable producer in the existing shared environment; all other
+exercised runtime modules remain unchanged. The #148 producer receipt records
+module hashes. A newer writer does not generate this old navigation policy.
+
+The Card and structure/ligand/assembly/chain/numbering fields are entirely synthetic;
+the public accession is only a test label. No scientific SourceAssertion, query or
+private/pilot material is included. Original `retained_context_links@2` contains
+no new field links; new readers must preserve their absence. Gzip packages the
+fixture, not the public reader format. This does not freeze a Card schema.
+Preserve these original bytes instead of regenerating them to pass a later reader.
+
+Original raw size: 905,362 bytes; gzip size: 51,897 bytes.
+
+Compressed SHA-256: `6e521aab00fa923c3a25377b70616119bde78fb6c509aa4e861eec443f6ebe3a`.
+
+Uncompressed SHA-256: `04d4655a628744dd44d745f978064c0be76d0f266e3fd5caceee75ead2e52a1d`.

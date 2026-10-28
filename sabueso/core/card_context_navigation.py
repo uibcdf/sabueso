@@ -219,7 +219,15 @@ def _link(explorer, role, target, support, *, location=None):
 
 
 def _link_view(
-    explorer, links, origin, title, *, source_location=None, status=None, rule=RULE
+    explorer,
+    links,
+    origin,
+    title,
+    *,
+    source_location=None,
+    status=None,
+    rule=RULE,
+    reason=None,
 ):
     view = explorer._metadata(
         {
@@ -252,6 +260,7 @@ def _link_view(
         "ligand_site_context_links@1",
         "quaternary_context_links@1",
         "ligand_instance_context_links@1",
+        "structure_declaration_context_links@1",
     ):
         explorer._session["views"].pop(id(view), None)
     return replace(
@@ -261,9 +270,12 @@ def _link_view(
         _link_panel=True,
         _status=status or ("ok" if links else "empty"),
         _request=origin.request,
-        _reason="Retained sources and an explicit local structural question; no source queries or identity merge."
-        if rule == "retained_context_links@3"
-        else "Retained sources and explicit destinations only; no source queries or identity merge.",
+        _reason=reason
+        or (
+            "Retained sources and an explicit local structural question; no source queries or identity merge."
+            if rule == "retained_context_links@3"
+            else "Retained sources and explicit destinations only; no source queries or identity merge."
+        ),
     )
 
 
@@ -285,6 +297,13 @@ def related(item):
 
         return links(item)
     explorer = item._view._explorer
+    if not item._view._route_catalog and not item._view._link_panel:
+        from .card_structure_context_v1 import context as structure_context
+        from .card_structure_context_v1 import related as structure_related
+
+        structure = structure_context(explorer, item.payload_location)
+        if structure is not None:
+            return structure_related(item, structure)
     # A catalog item's open() executes its explicit topic/question operation;
     # asking for links must not implicitly execute that scientific reader.
     origin = (
@@ -404,7 +423,7 @@ def related(item):
     )
 
 
-def _destination(explorer, candidate, origin):
+def _destination(explorer, candidate, origin, title="Referenced source record"):
     from .card_exploration import CardExplorer
 
     destination = object.__new__(CardExplorer)
@@ -415,7 +434,7 @@ def _destination(explorer, candidate, origin):
     destination._session = explorer._session
     location = candidate["location"]
     return (
-        destination._inspect(location, origin, title="Referenced source record")
+        destination._inspect(location, origin, title=title)
         if location["segments"]
         else destination.overview()
     )
@@ -454,7 +473,14 @@ def follow(item):
         )
     candidates = link["candidates"]
     if len(candidates) == 1:
-        return _destination(explorer, candidates[0], item._view)
+        return _destination(
+            explorer,
+            candidates[0],
+            item._view,
+            title=link["label"]
+            if link.get("rule") == "structure_declaration_context_links@1"
+            else "Referenced source record",
+        )
     if len(candidates) > 1:
         choices = []
         for candidate in candidates:
@@ -479,6 +505,11 @@ def follow(item):
     # Preserve useful local glossary/relationship support without synthesizing a
     # destination Card. Its public explorer and focal identity are explicitly null.
     entity = explorer.access._focal.data.get("entities", {}).get(link["target_ref"])
+    reason = None
+    if link.get("rule") == "structure_declaration_context_links@1":
+        from .card_structure_context_v1 import missing_reason
+
+        reason = missing_reason(link)
     view = explorer._metadata(
         {"subject_ref": link["target_ref"], "entity": entity, "link": link},
         "Retained destination context",
@@ -491,7 +522,8 @@ def follow(item):
     return replace(
         view,
         _status=link["availability"],
-        _reason="Destination Card not supplied or its identity support is unavailable. Pass it explicitly through related_cards to explore its fields.",
+        _reason=reason
+        or "Destination Card not supplied or its identity support is unavailable. Pass it explicitly through related_cards to explore its fields.",
         _context_only=True,
         _context_override={
             "card_ref": None,
