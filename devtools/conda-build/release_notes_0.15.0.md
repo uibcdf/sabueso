@@ -12,6 +12,11 @@ is established by this draft.
 
 ## Intended changes since 0.14.0
 
+- Preserve exact structural relationships in inventory explanations, source/group
+  support and fragment exclusions. Report PDB-only ambiguity with every original
+  candidate; offer an exact `relationship_id` selector and retain frozen @1 saved
+  reading under the new named explanation @2 (#168/#148). Repeated machine saves
+  reuse their original transport root without deleting scientific history (#167).
 - Close SQLite connections owned by card/deck readers and writers; retain fatal
   Python 3.14 database/unraisable warning guards (#133).
 - Keep absent dependent-source prerequisites unqueried before client construction,

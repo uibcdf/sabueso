@@ -83,8 +83,10 @@ runtime floors and installed-package qualification remain separate.
 The [original structure context](pending_proposals/card_structure_context_navigation.md)
 links experimental inventory items and literal declarations to their exact retained
 ligand, assembly, chain and author-numbering fields, with explicit field gaps and
-independent original saved reading. The duplicate-reference inventory explanation
-defect is tracked separately in [#168](https://github.com/uibcdf/sabueso/issues/168).
+independent original saved reading. The subsequent [relationship-scope correction](pending_bugs/structure_relationship_scope.md)
+(#168) binds experimental explanations/exclusions/group support to exact original
+rows, reports PDB-only ambiguity and retains frozen historical reading. Native
+focal-subject admission remains separately tracked in [#169](https://github.com/uibcdf/sabueso/issues/169).
 
 The [original ligand-parent navigation](pending_proposals/card_ligand_parent_navigation.md)
 adds a direct route from an instance to its exact retained structure declaration,

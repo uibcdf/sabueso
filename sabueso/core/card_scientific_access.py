@@ -240,7 +240,12 @@ def materialize(access, options):
     """Evaluate once per normalized scientific request; all later reads use the result."""
     from .knowledge_state import knowledge_state
     from .structure_explanation import EXPLANATION_RULE, explain_structure_inventory
-    from .structures import coverage_derivation, state_derivation, structure_inventory
+    from .structures import (
+        coverage_derivation,
+        state_derivation,
+        structure_inventory,
+        structures_view,
+    )
 
     native, explanations, excluded, rows = {}, {}, [], {}
     rules = []
@@ -288,21 +293,33 @@ def materialize(access, options):
                 card.id,
                 row["structure_ref"],
                 native,
+                relationship_id=key,
                 regions=options["region"],
                 include_fragments=options["include_fragments"],
             )
-        for ref in native["excluded"].get(card.id, []):
+        excluded_rows = (
+            structures_view(card, include_fragments=True, region=options["region"])[
+                "items"
+            ]
+            if native["excluded"].get(card.id)
+            else []
+        )
+        for excluded_row in excluded_rows:
+            if excluded_row["coverage_class"] != "fragment_or_peptide":
+                continue
             original = explain_structure_inventory(
                 [card],
                 card.id,
-                ref,
+                excluded_row["structure_ref"],
                 native,
+                relationship_id=excluded_row["relationship_id"],
                 regions=options["region"],
                 include_fragments=options["include_fragments"],
             )
             excluded.append(
                 {
-                    "structure_ref": ref,
+                    "structure_ref": excluded_row["structure_ref"],
+                    "relationship_id": excluded_row["relationship_id"],
                     "reason": original["reason"],
                     "explanation": _wire_explanation(original),
                 }
@@ -402,6 +419,7 @@ def materialize(access, options):
         "context": {
             **access.context,
             "adapter": ADAPTER,
+            "explanation_rule": EXPLANATION_RULE,
             "options": deepcopy(options),
             "rules": deepcopy(rules),
             "used_captures": [access._focal_key],

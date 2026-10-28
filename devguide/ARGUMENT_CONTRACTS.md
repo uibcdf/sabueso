@@ -1,5 +1,11 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+`Deck.explain(..., relationship_id=None)` (#168) adds one exact record-id digester.
+None or a nonempty string is admitted without coercion/stripping. Backend guards
+refuse malformed selectors before inventory work even with digestion skipped;
+a selector requires `structure_ref`. A valid but unretained/wrong-structure id is
+an explicit `not_on_card` result, never fallback to a matching PDB label.
+
 Structural machine selection (#148) adds one digester each for `where`,
 `item_refs` and `order_by`. Backend guards validate declared typed equalities,
 finite physical operands, exact membership without duplicates and scalar sorting

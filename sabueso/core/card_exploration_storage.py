@@ -79,6 +79,7 @@ def admitted_selection(selection):
                     "knowledge_state@5",
                     "knowledge_state_explanation@2",
                     "structure_inventory_explanation@1",
+                    "structure_inventory_explanation@2",
                 ):
                     return True
                 if isinstance(rule, str) and rule.startswith(
@@ -1161,6 +1162,15 @@ def save_selection(selection, path, overwrite):
     session = selection._access._exploration_session
     if session is None:
         session = {"views": {}, "explanations": {}, "links": {}}
+    for original in session["views"].values():
+        if (
+            original._selection is selection
+            and original._machine_ref == selection.selection_ref
+            and original._origin is None
+            and original.presentation == "summary"
+            and original._display_request is None
+        ):
+            return save_exploration(original, path, overwrite=overwrite)
     explorer = _explorer(selection._access, session)
     from .card_exploration_sites import TOPIC, is_result
 

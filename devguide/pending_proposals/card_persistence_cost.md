@@ -177,3 +177,16 @@ inputs/capsules and useful receipts, clean completed owned scratch and protect
 active captures. Heavy gates never overlap. Four receptor workers are reduced to
 serial execution as host headroom changes; successful-function temporary cleanup
 continues under the current host-memory constraint.
+
+
+## Repeat machine-save root correction (#168 checkpoint)
+
+Qualification of #168 observed that repeated `AccessSelection.save()` calls made
+another synthetic root despite unchanged exploration. The synthetic case grew from
+10 to 11 view records and changed the digest. The correction reuses only the same
+selection object's original root with matching machine reference, summary
+presentation, no origin and no display request. It does not deduplicate source or
+scientific records/history. Literal/scientific live and original saved selections
+now have byte-stable repeat-save regression cases. No general size or speedup is
+claimed; physical layout, scaling and researcher budgets remain open. Source-bound
+full/remote qualification belongs to the #168/#148/#112 checkpoint.

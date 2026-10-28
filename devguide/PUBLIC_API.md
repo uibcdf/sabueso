@@ -514,7 +514,13 @@ not promise card enrichment, live availability or public-package delivery.
   With `structure_ref="pdb:1SUX"` and the keyword options of `structure_inventory`,
   explains that protein's inventory item, its group or exclusion, named rules and
   relationship-level SourceAssertion support for all group members. Card and item
-  references are pinned; no source is asked (`structure_inventory_explanation@1`).
+  references are pinned; no source is asked (`structure_inventory_explanation@2`).
+  `relationship_id=None` reports ambiguity and every original candidate when a PDB
+  names multiple retained relationships. Pass the exact id to inspect one declaration;
+  foreign/missing ids never fall back to another record. Group support follows exact
+  original row/state membership, with each relationship retained once. Frozen @1
+  saved explanations keep their original rule; see the
+  [scope correction](pending_bugs/structure_relationship_scope.md).
 - **Derive.** Each derived deck records the operation that produced it:
   - `filter(predicate)`, `sort(key, reverse=False)`;
   - `intersect(other)`, `difference(other)`;

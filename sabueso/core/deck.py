@@ -90,6 +90,7 @@ class Deck:
         skip_digestion: bool = False,
         *,
         structure_ref: str | None = None,
+        relationship_id: str | None = None,
         regions: Any = None,
         include_fragments: bool = False,
         group_by: Any = None,
@@ -106,8 +107,16 @@ class Deck:
         stored relationship inputs and supporting SourceAssertions, all pinned to the
         cards read. The remaining keyword options are those of
         ``structure_inventory`` and must match the inventory being explained.
-        Nothing is fetched or selected; a historical explanation uses a deck loaded
-        by its pinned reference."""
+        ``relationship_id`` selects an exact retained declaration when a PDB
+        reference has multiple relationships. Without it, ambiguity and every
+        original candidate are reported. Nothing is fetched or silently selected;
+        a historical explanation uses a deck loaded by its pinned reference."""
+        if relationship_id is not None and (
+            not isinstance(relationship_id, str) or not relationship_id.strip()
+        ):
+            from .errors import ArgumentError
+
+            raise ArgumentError("relationship_id requires a nonempty exact record id.")
         if structure_ref is not None:
             from .structure_explanation import explain_structure_inventory
 
@@ -124,13 +133,15 @@ class Deck:
                 card_id,
                 structure_ref,
                 inventory,
+                relationship_id=relationship_id,
                 regions=regions,
                 include_fragments=include_fragments,
                 residue_maps=residue_maps,
                 reference=reference,
             )
         if (
-            regions is not None
+            relationship_id is not None
+            or regions is not None
             or include_fragments
             or group_by is not None
             or residue_maps is not None

@@ -115,6 +115,9 @@ The inventory states facts and groups them; it never chooses a structure.
 
 ### Explain an inventory item
 
+The relationship-scoped behavior below is development work for 0.15.0.
+Published 0.14.0 uses explanation @1 and has no `relationship_id` selector.
+
 Pass the same inventory options to `deck.explain`, with the protein's card id and a
 `structure_ref`:
 
@@ -127,14 +130,48 @@ for member in why["members"]:
         print(assertion["source_assertion_ref"], assertion["asserted_value"])
 ```
 
-`structure_inventory_explanation@1` records every protein card's exact pin and the
+`structure_inventory_explanation@2` records every protein card's exact pin and the
 normalized options, including residue maps. `rules` names the coverage, state and
 inventory rules. For a grouped item, `members` holds the stored relationship and
 supporting SourceAssertions of **every member of its group**. Each reference is pinned
 to the card state read. The statements retain their own subject, source, version,
 retrieval and acquisition, together with retrieval-archive links when recorded.
 
-`status` is `grouped`, `excluded`, `not_inventoried` or `not_on_card`. Excluded fragments
+When several retained relationships name the same PDB, a reference-only request
+returns `status="ambiguous"`, every original candidate and its relationship-level
+support. It does not choose a declaration. Pass the exact original id to select one:
+
+```python
+if why["status"] == "ambiguous":
+    for candidate in why["candidates"]:
+        print(candidate["relationship_id"], candidate["relationship_ref"])
+    # Choose the original declaration you want to inspect.
+    selected_id = input("Exact relationship id to inspect: ")
+    one_declaration = deck.explain(
+        focus.id,
+        structure_ref="pdb:1SUX",
+        relationship_id=selected_id,
+        regions=regions,
+    )
+    assert one_declaration["relationship_id"] == selected_id
+```
+
+The id is scoped to that Card and structure. A different/missing id returns
+`not_on_card`; it never falls back to another declaration. Human explorer items
+already know their exact relationship id, so `item.explain()` selects that row
+directly. Exact original row/state membership binds group support, even when
+several groups share a PDB label. An excluded fragment does not exclude an admitted
+sibling. Existing saved @1 readings retain their original policy without backfill.
+Rows and support members count retained declarations. Repeated PDB labels do not
+establish distinct physical structures, independent observations or experiments.
+
+The current native inventory has a separate focal-subject admission gap
+([#169](https://github.com/uibcdf/sabueso/issues/169)): an externally supplied Card
+can retain a foreign-subject relationship that still appears as a focal row.
+Exact explanation selection does not repair that admission; inspect the original
+relationship subject when auditing such Cards. Its native correction is pending.
+
+Other `status` values are `grouped`, `excluded`, `not_inventoried` or `not_on_card`. Excluded fragments
 keep their classification; unknown states keep the inventory's reason. `not_on_card`
 means no such relationship is recorded, never that the structure does not exist.
 Conflicts, unknown values and assembly disagreements remain inspectable.

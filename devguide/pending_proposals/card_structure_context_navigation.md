@@ -54,11 +54,13 @@ reading, semantic substitutions, repeat-save stability and genuine historical
 compatibility. Source-bound gate results belong to #148/#112. Local success does
 not qualify a remote OS/Python/installed matrix.
 
-A new observed defect is recorded in [#168](https://github.com/uibcdf/sabueso/issues/168):
-reference-only native inventory explanations crash when two retained relationships
-share one PDB label. This block tests their exact **literal** navigation separately;
-it does not claim experimental duplicate-reference support. Correct that ambiguity
-without rewriting historical explanations before broad structural acceptance.
+This block originally observed [#168](https://github.com/uibcdf/sabueso/issues/168):
+reference-only inventory explanations failed when two relationships shared a PDB.
+Its original qualification covers exact **literal** navigation only. The subsequent
+[relationship-scope correction](../pending_bugs/structure_relationship_scope.md)
+adds exact experimental explanation/group/exclusion scope and explicit PDB-only
+ambiguity under named @2, retaining original @1 reading. Its scientific/remote
+qualification has separate source-bound receipts; do not backdate it to this slice.
 Then continue the [completion inventory](card_exploration_completion_0150.md),
 including scientific region/site/model/assembly integration and actual researcher/
 workload acceptance. This source-field navigation is not an assembly-aware

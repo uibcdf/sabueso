@@ -521,11 +521,12 @@ original records, alternatives and units. The complete typed destination is also
 readable through `explorer.access.read(location)` with bounded pages.
 
 This route does not assign a ligand to an assembly, project residues or establish
-observed atoms or biological relevance. Current experimental inventory explanations
-have a known limitation with multiple retained relationships for one PDB reference
-([#168](https://github.com/uibcdf/sabueso/issues/168)); exact literal declaration
-navigation keeps them separate. Saved readings retain their original link policy;
-older files never gain these links automatically.
+observed atoms or biological relevance. Multiple declarations sharing one PDB keep
+separate inventory items, exact relationship explanations and source support.
+Fragments and unknown rows retain their own outcomes. Equal labels do not multiply
+or merge group support. Original saved @1 explanations keep their original policy;
+new explanations use named @2. Saved navigation also retains its original link
+policy; older files never gain new links automatically.
 
 ## Interpret original instance contacts
 

@@ -7,14 +7,12 @@ creating a SourceAssertion (uibcdf/sabueso#91).
 
 from __future__ import annotations
 
-from copy import deepcopy
 from typing import Any, Dict, Sequence
 
-from .errors import ArgumentError
 from .relationship_store import make_derivation
 from .structures import coverage_derivation, state_derivation, structures_view
 
-EXPLANATION_RULE = "structure_inventory_explanation@1"
+EXPLANATION_RULE = "structure_inventory_explanation@2"
 
 
 def _support(card: Any, relationship: Dict[str, Any], pin: str) -> Dict[str, Any]:
@@ -71,106 +69,32 @@ def explain_structure_inventory(
     structure_ref: str,
     inventory: Dict[str, Any],
     *,
+    relationship_id: str | None = None,
     regions: Any = None,
     include_fragments: bool = False,
     residue_maps: Any = None,
     reference: str | None = None,
 ) -> Dict[str, Any]:
-    """Explain one item and the support of every member of its group.
+    """Explain an exact retained declaration; report ambiguous PDB-only requests.
 
-    The complete options and every protein card's pin identify what was read, including
-    cards lacking a member of the group. A missing relationship means ``not_on_card``,
-    never that the structure does not exist. Unknown or excluded states keep the
-    inventory's reasons. Returned records are detached from the cards.
+    Group support follows original inventory row identifiers and state keys.
+    Equal PDB labels never select or multiply another declaration's support.
     """
-    proteins = [c for c in cards if c.meta.get("entity_type") == "protein"]
-    by_id = {c.id: c for c in proteins}
-    if len(by_id) != len(proteins):
-        raise ArgumentError(
-            argument="card_id",
-            value=card_id,
-            caller="Deck.explain",
-            reason="an inventory explanation requires distinct protein card ids",
-        )
-    pins = {c.id: c.pinned_ref() for c in proteins}
-    out = {
-        "rule": make_derivation(
-            EXPLANATION_RULE,
-            inputs=list(pins.values()),
-            parameters={
-                "card_id": card_id,
-                "structure_ref": structure_ref,
-                "regions": regions,
-                "include_fragments": include_fragments,
-                "group_by": inventory["rule"]["parameters"]["state"],
-                "residue_maps": residue_maps,
-                "reference": reference,
-            },
-        ),
-        "card_id": card_id,
-        "card_ref": pins.get(card_id),
-        "structure_ref": structure_ref,
-        "status": "not_on_card",
-        "reason": "no_has_structure_relationship",
-        "item": None,
-        "group": None,
-        "rules": [coverage_derivation(), state_derivation(), inventory["rule"]],
-        "members": [],
-    }
-    card = by_id.get(card_id)
-    if card is None:
-        out["status"] = "not_inventoried"
-        out["reason"] = (
-            "not_protein" if any(c.id == card_id for c in cards) else "card_not_in_deck"
-        )
-        return deepcopy(out)
-    relationships = card.relationships("has_structure", object_ref=structure_ref)
-    if not relationships:
-        return deepcopy(out)
-    (relationship,) = relationships
-    out["members"] = [_support(card, relationship, pins[card_id])]
-    out["item"] = next(
-        (
-            row
-            for row in inventory["items"]
-            if row["card_id"] == card_id and row["structure_ref"] == structure_ref
-        ),
-        None,
+    from .structure_explanation_scope_v2 import evaluate
+
+    return evaluate(
+        cards,
+        card_id,
+        structure_ref,
+        inventory,
+        relationship_id=relationship_id,
+        regions=regions,
+        include_fragments=include_fragments,
+        residue_maps=residue_maps,
+        reference=reference,
+        rule=make_derivation,
+        support=_support,
+        structures_view=structures_view,
+        coverage_derivation=coverage_derivation,
+        state_derivation=state_derivation,
     )
-    if structure_ref in inventory["excluded"].get(card_id, []):
-        out["status"], out["reason"] = "excluded", "fragment_or_peptide"
-        region = regions.get(card_id) if isinstance(regions, dict) else regions
-        out["item"] = next(
-            item
-            for item in structures_view(card, include_fragments=True, region=region)[
-                "items"
-            ]
-            if item["structure_ref"] == structure_ref
-        )
-    else:
-        group = next(
-            (
-                group
-                for group in inventory["states"]
-                if structure_ref in group["structures"].get(card_id, [])
-            ),
-            None,
-        )
-        if group is None:
-            out["status"] = "not_inventoried"
-            out["reason"] = next(
-                row["reason"]
-                for row in inventory["not_inventoried"].get(card_id, [])
-                if row["structure_ref"] == structure_ref
-            )
-        else:
-            out["status"], out["reason"], out["group"] = "grouped", None, group
-            out["members"] = [
-                _support(by_id[member_id], rel, pins[member_id])
-                for member_id, refs in group["structures"].items()
-                for ref in refs
-                for rel in by_id[member_id].relationships(
-                    "has_structure", object_ref=ref
-                )
-            ]
-    return deepcopy(out)

@@ -52,7 +52,7 @@ def test_a_shared_group_has_pinned_support_for_every_member(
         "structure_state@2",
         "structure_inventory@1",
     }
-    assert why["rule"]["rule"] == "structure_inventory_explanation@1"
+    assert why["rule"]["rule"] == "structure_inventory_explanation@2"
     assert why["rule"]["inputs"] == [card.pinned_ref() for card in deck.cards]
     assert why["item"]["complete_chains"] == ["A", "B"]
     assert {member["structure_ref"] for member in why["members"]} == {

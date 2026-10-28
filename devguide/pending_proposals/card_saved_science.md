@@ -48,7 +48,10 @@ The historical verifier checks original decision consistency with frozen expecte
 record predicates for:
 
 - `structure_inventory@1`, `structure_state@2` and `structure_coverage_class@1`;
-- `structure_inventory_explanation@1`, including excluded and uninventoried items;
+- original `structure_inventory_explanation@1`, including excluded and uninventoried items;
+- new `structure_inventory_explanation@2` through its explicit captured context
+  selector and frozen relationship-scoped verifier (#168), preserving ambiguous
+  reference-only requests and exact row/group/exclusion decisions without backfill;
 - `knowledge_state@5` and `knowledge_state_explanation@2`, including original
   selected/alternative support, reported versus unknown counts, request failures,
   missing subsets, source context and actual classification inputs;

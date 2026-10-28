@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-27**, source-bound structural navigation and original human/agent saved reading
+Last updated: **2026-10-28**, source-bound structural navigation and original human/agent saved reading
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -44,9 +44,23 @@ source and release receipts remain unchanged.
    40 files, serial through the receptor with 773 MiB sampled owned RSS and at
    least 7.2 GiB genuinely free RAM. The new public example executes without source
    queries or Card mutation. Its source-bound qualification belongs to #148/#112,
-   separate from the preceding receipt; hosted qualification remains deferred. The observed duplicate-PDB explanation crash is
-   [#168](https://github.com/uibcdf/sabueso/issues/168), the next structural integrity
-   correction; literal exact-declaration navigation already keeps those records separate.
+   separate from the preceding receipt. The following [relationship-scope correction](pending_bugs/structure_relationship_scope.md)
+   (#168) now preserves exact rows in experimental explanations, explicit PDB-only
+   ambiguity, independent fragment exclusions and original group support without
+   multiplying matching labels. Named explanation @2 and frozen original @1 reading
+   have separate source-bound qualification. Repeated machine saves also reuse their
+   original root (#167). Full local and exact-head CI/governance receipts belong to
+   #168/#148/#112; continue broader scientific structural integration after them.
+   Its full offline local-original checkpoint passes 7,577 cases /2,857.56s,
+   serial through the receptor with fatal warning guards, 869 MiB peak owned RSS,
+   at least 2.4 GiB free /16.7 GiB available RAM and zero owned swap. Two earlier
+   attempts stopped on stricter global free-RAM floors and are not qualification.
+   The 34 owning cases and changed public/synthetic guide steps pass. Final exact
+   source/SDK and unskipped CI/governance receipts are recorded in the owning issues;
+   no hosted result is inferred from this local checkpoint.
+   First correct the newly observed native focal-subject admission gap
+   [#169](https://github.com/uibcdf/sabueso/issues/169), preserving rejected/unplaced
+   source declarations and historical native/saved interpretations.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed

@@ -15,6 +15,7 @@ RULES = (
     "knowledge_state@5",
     "knowledge_state_explanation@2",
     "structure_inventory_explanation@1",
+    "structure_inventory_explanation@2",
 )
 
 
@@ -48,7 +49,7 @@ def _encoding(view):
     if (
         isinstance(native, dict)
         and isinstance(native.get("rule"), dict)
-        and native["rule"].get("rule") == RULES[2]
+        and native["rule"].get("rule") in RULES[2:]
     ):
         return "structure_explanation"
     return "json"
@@ -148,6 +149,9 @@ def _restore_result(ref, wire):
 def _result_ref(access, wire):
     from .card_exploration_adapter_v1 import ADAPTER, EXPLANATION_RULE, _rule_identity
 
+    explanation_rule = wire["context"].get("explanation_rule", EXPLANATION_RULE)
+    _require(explanation_rule in RULES[2:], "Unsupported structural explanation rule.")
+
     native = deepcopy(wire["native_payload"])
     if "rule" in native:
         native["rule"] = _rule_identity(native["rule"])
@@ -165,7 +169,7 @@ def _result_ref(access, wire):
             "native": native,
             "coverage": coverage,
             "rules": [_rule_identity(rule) for rule in wire["context"]["rules"]],
-            "explanation_rule": EXPLANATION_RULE,
+            "explanation_rule": explanation_rule,
             "outcome": wire["outcome"],
         },
     )
@@ -203,7 +207,12 @@ def _verify_objects(bundle, accesses):
             "Saved scientific result identity differs.",
         )
         options = _options(wire["context"]["options"])
-        expected = _v1_expected_structures(_OriginalContext(access), options)
+        if wire["context"].get("explanation_rule") == RULES[3]:
+            from .card_structure_history_v2 import expected_structures
+
+            expected = expected_structures(_OriginalContext(access), options)
+        else:
+            expected = _v1_expected_structures(_OriginalContext(access), options)
         _require_matches(
             wire,
             expected.wire,
@@ -238,7 +247,7 @@ def _verify_objects(bundle, accesses):
                 ),
                 "scoped knowledge-state explanation",
             )
-        elif rule == RULES[2]:
+        elif rule in RULES[2:]:
             from .card_exploration_structure_v1 import (
                 _v1_explain_structure_inventory,
                 _v1_structure_inventory,
@@ -249,14 +258,37 @@ def _verify_objects(bundle, accesses):
                 [card],
                 regions=params["regions"],
                 include_fragments=params["include_fragments"],
+                **(
+                    {
+                        "group_by": params["group_by"],
+                        "residue_maps": params["residue_maps"],
+                        "reference": params["reference"],
+                    }
+                    if rule == RULES[3]
+                    else {}
+                ),
             )
-            expected = _v1_explain_structure_inventory(
+            explain = _v1_explain_structure_inventory
+            if rule == RULES[3]:
+                from .card_structure_history_v2 import explain_original
+
+                explain = explain_original
+            expected = explain(
                 [card],
                 card.id,
                 value["structure_ref"],
                 inventory,
                 regions=params["regions"],
                 include_fragments=params["include_fragments"],
+                **(
+                    {
+                        "relationship_id": params["relationship_id"],
+                        "residue_maps": params["residue_maps"],
+                        "reference": params["reference"],
+                    }
+                    if rule == RULES[3]
+                    else {}
+                ),
             )
             _require_matches(
                 value,

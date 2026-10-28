@@ -9,17 +9,26 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
-The current intermediate runtime block includes
+The [relationship-scope correction #168](../pending_bugs/structure_relationship_scope.md)
+uses an **unskipped** code checkpoint because it changes named scientific
+explanation admission. Its full local-original test and exact-source CI/governance
+receipts are recorded in #168/#148/#112 and the owned source evidence. Once every
+applicable remote gate is verified through full gh-run-receptor captures, that
+exact head recovers the accumulated parent/context runtime described below.
+A pending, skipped or failed run does not recover it; read the actual source/run
+receipts rather than attributing an earlier green result to new runtime bytes.
+
+At `f89df0a`, the preceding intermediate runtime block included
 [original ligand-parent navigation](card_ligand_parent_navigation.md) and
 [original structure context](card_structure_context_navigation.md), after the
 qualified code checkpoint below. It changes only local exploration/navigation
 and its historical verification, with no new source acquisition, dependency,
 packaging, Card-schema/migration or shared-component admission. Its exact checked
 head and local gates are recorded in #148/#112. Hosted OS/Python/installed,
-coverage and governance qualification is deferred under the existing intermediate
+coverage and governance qualification was deferred under the existing intermediate
 `[skip ci]` route, owner #148/#112, until the next unskipped structural checkpoint
 or authorized exact-head manual recovery. Do not apply the earlier exact-head
-green result to this new runtime source. This backlog remains open until recovered.
+green result to this new runtime source. Only the verified unskipped #168 source recovers this preceding backlog.
 The parent-navigation selected local gate passes 1,178 cases /577.68s serially with local-source
 inputs; the changed public example, warning-fatal Sphinx and applicable static,
 fixture and local governance checks pass. This is not a new full-local-suite or
@@ -32,7 +41,7 @@ queries or input mutation; applicable documentation/static/fixture/governance
 checks pass. Exact-head hosted qualification remains deferred for the accumulated
 parent/context runtime block, including the final editable-label source checkpoint.
 
-**Latest recovered code checkpoint, 2026-10-27:** `50ce8e7f228096040babbb0a05d2c69b7315c59c`,
+**Preceding recovered code checkpoint, 2026-10-27:** `50ce8e7f228096040babbb0a05d2c69b7315c59c`,
 actual tested SDK `0.14.0+115.g50ce8e7`, passes
 [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40603174636) and
 [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/40603174661).

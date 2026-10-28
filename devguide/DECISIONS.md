@@ -4389,3 +4389,23 @@ become new implicit exploration on the next save; explicit subsequent exploratio
 remains recorded. Keep internal comparison-construction views out of that trail.
 A missing comparison destination carries its actual link rule rather than a
 generic rule. See [original comparison reading](pending_proposals/card_saved_ligand_site_comparisons.md).
+
+
+## 2026-10-28 — Exact structural explanation scope (#168)
+
+- New `structure_inventory_explanation@2` records one exact effective relationship
+  id, or reports a PDB-only request as ambiguous with every original candidate.
+  Group support follows exact original row/state membership, never a reference-only
+  cross product. Fragment exclusions are individually bound to their relationships.
+- Preserve inventory @1 classifications and the structural transport adapter @1:
+  columns, quantities and typed relationship support are unchanged. The new
+  captured `context.explanation_rule` explicitly selects @2 and participates in
+  result identity. Existing exploration formats carry that named policy; unknown
+  versions fail. A context without this selector retains frozen original @1 checks.
+  Current science/Card constructors/source clients are never used to reinterpret a
+  saved result. No Card schema, migration or shared contract changes.
+- `Deck.explain` adds an exact `relationship_id` selector with ArgDigest and early
+  backend guards. Unretained/wrong-scope ids never select another record.
+- Repeated machine saves reuse the exact selection object's original transport
+  root (#167), without deleting scientific history/support. Local and hosted
+  qualification remain source-bound and separate from researcher/release acceptance.

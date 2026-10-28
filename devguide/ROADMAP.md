@@ -338,10 +338,15 @@ within the sequence below; source presentation alone does not close that work.
 
 The [structure-context continuation](pending_proposals/card_structure_context_navigation.md)
 now opens exact original ligand, assembly, chain and numbering declarations from
-experimental items or literal parent context. Correct the observed duplicate-PDB
-inventory explanation crash [#168](https://github.com/uibcdf/sabueso/issues/168)
-next, preserving explicit relationship scope and historical scientific readers;
-then resume the remaining scientific region/site/model/assembly transitions.
+experimental items or literal parent context. The [relationship-scope correction](pending_bugs/structure_relationship_scope.md)
+(#168) now gives exact experimental explanations, explicit reference-only ambiguity
+and individually scoped exclusions/group support under named @2, retaining frozen
+@1 reading. Read its source-bound code/remote receipts in the owning issues, then resume scientific
+region/site/model/assembly transitions and combined researcher acceptance.
+The intervening native admission audit observes a foreign-subject row attributed
+to the focal protein ([#169](https://github.com/uibcdf/sabueso/issues/169)). Correct
+that under a versioned native contract before expanding those scientific routes;
+do not weaken historical rules or silently discard unplaced declarations.
 
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all
 ongoing implementations and corrections for **0.15.0**. The earlier proposal to
