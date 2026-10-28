@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-27**, original quaternary human/agent scientific reading and qualified receiving scope
+Last updated: **2026-10-27**, source-bound structural navigation and original human/agent saved reading
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -25,6 +25,17 @@ source and release receipts remain unchanged.
    support, explicit axes/revisions and saved-reading contracts. Then follow
    the inventory's activity/assay/document/literature, clinical/classification,
    variant/comparison/association and combined human/agent acceptance order.
+   The current [ligand-parent continuation](pending_proposals/card_ligand_parent_navigation.md)
+   now opens an instance's exact retained structure declaration while preserving
+   separate object Cards and historical navigation. Its checked intermediate head,
+   local gates and outstanding hosted qualification belong to #148/#112 and the
+   [recovery ledger](pending_proposals/deferred_ci.md); earlier green source
+   checkpoints do not qualify newer runtime bytes automatically.
+   Its selected integration gate passes 1,178 cases /577.68s serial through the
+   receptor, with about 810 MiB sampled owned RSS and at least 5.6 GiB genuinely
+   free host RAM. The changed public guide block executes offline; warning-fatal
+   Sphinx and applicable static/fixture/governance checks pass. This is a selected
+   local receipt, not a new full-local or exact-head hosted result.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed

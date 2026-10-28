@@ -9,6 +9,21 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+The next intermediate runtime block is
+[original ligand-parent navigation](card_ligand_parent_navigation.md), after the
+qualified code checkpoint below. It changes only local exploration/navigation
+and its historical verification, with no new source acquisition, dependency,
+packaging, Card-schema/migration or shared-component admission. Its exact checked
+head and local gates are recorded in #148/#112. Hosted OS/Python/installed,
+coverage and governance qualification is deferred under the existing intermediate
+`[skip ci]` route, owner #148/#112, until the next unskipped structural checkpoint
+or authorized exact-head manual recovery. Do not apply the earlier exact-head
+green result to this new runtime source. This backlog remains open until recovered.
+Its selected local gate passes 1,178 cases /577.68s serially with local-source
+inputs; the changed public example, warning-fatal Sphinx and applicable static,
+fixture and local governance checks pass. This is not a new full-local-suite or
+hosted result.
+
 **Latest recovered code checkpoint, 2026-10-27:** `50ce8e7f228096040babbb0a05d2c69b7315c59c`,
 actual tested SDK `0.14.0+115.g50ce8e7`, passes
 [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/40603174636) and

@@ -248,7 +248,11 @@ def _link_view(
         )
         for i, link in enumerate(links)
     )
-    if rule in ("ligand_site_context_links@1", "quaternary_context_links@1"):
+    if rule in (
+        "ligand_site_context_links@1",
+        "quaternary_context_links@1",
+        "ligand_instance_context_links@1",
+    ):
         explorer._session["views"].pop(id(view), None)
     return replace(
         view,
@@ -264,6 +268,10 @@ def _link_view(
 
 
 def related(item):
+    if item._view._field_panel == "ligand_instances":
+        from .card_ligand_instance_navigation_v1 import related as instance_related
+
+        return instance_related(item)
     if item._view._record_panel == "quaternary_interpretation":
         from .card_quaternary_exploration import links
 

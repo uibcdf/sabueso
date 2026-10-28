@@ -459,6 +459,9 @@ if len(instances.items()):
     instance = instances.items()[0]
     original_instance = instance.open()
     instance_support = instance.explain()
+    parent_links = instance.related().filter("role", equals="structure_context")
+    original_structure = parent_links.items()[0].open()
+    assert original_structure.native_payload["predicate"] == "has_structure"
     assert original_instance.back() is instances
     assert instance_support.back() is instances
 ```
@@ -469,6 +472,14 @@ number. Equal component or instance labels do not merge records. The preview sho
 recorded chains, `is_bound`, `subject_of_investigation` and up to three contact
 records; `open().native_payload` contains the complete original instance. Original
 parent declarations and sources remain accessible through `explain()` and `related()`.
+
+The **Original structure declaration** link opens the exact retained relationship
+containing that instance. It preserves the original source support, quantities,
+conflicts and instance indices, even when another declaration has the same PDB or
+component label. The separate **Object** link still addresses a supplied structure
+Card; without that Card it reports `context_not_supplied`. Opening the local
+parent does not require it or fetch new data. Saved readings preserve their original
+navigation: older files without the new link are not backfilled.
 
 Contacts keep `position`, structure `seq_id`, chain, UniProt identifier and distance
 with its unit separately. For example, the public TcTIM `pdb:2OMA`/PEG instance H

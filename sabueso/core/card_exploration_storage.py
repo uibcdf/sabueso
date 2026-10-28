@@ -900,7 +900,7 @@ def _restore_checked(bundle, expected_digest):
         "integrity": "verified",
         "independent_expected_digest": expected_digest is not None,
         "bindings": "captured snapshots, literal values/units/support, request and display membership",
-        "recorded_navigation_decisions": "original retained_context_links@1/@2/@3/@4 verified against captured source basis",
+        "recorded_navigation_decisions": "original retained_context_links@1/@2/@3/@4 and ligand_instance_context_links@1 verified against captured source basis",
         "scientific_classifications": "not_supported_by_this_saved_slice",
         "presentation_wording": "recorded",
         "source_authenticity_and_truth": "not_established_by_hashes",

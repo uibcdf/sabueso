@@ -124,3 +124,26 @@ reader format. Original raw size: 2,922,273 bytes; gzip size: 122,051 bytes.
 Compressed SHA-256: `7bdb7910491127e3bee3ffa88c2fd97e770f18628f0f5235382d5a76cbdcf34a`.
 
 Uncompressed SHA-256: `9082e508f2ac025a085ab972a1375ae06a46f4115fa9c57361d95e9a91351b25`.
+
+## Original ligand-instance navigation before parent links
+
+`card_ligand_instance_legacy_v1.json.gz` preserves a format @1 reading from the
+exact codec source at `9696fbc7cd6c44c1132a7a2412793664e15ed45a`, actual editable
+SDK `0.14.0+116.g9696fbc`. The producer executes the original bytes of the three
+changed codec modules in a disposable process in the existing shared environment;
+all other exercised runtime modules remain unchanged. Their SHA-256 records live
+in the owning #148 producer receipt. A new writer does not generate the old rule.
+
+The Card, structure declaration, ligand and instance are entirely synthetic.
+The public accession is a test label, with no source assertion or scientific claim;
+no source query or private/pilot material is included. Its original
+`retained_context_links@2` contains the original endpoint links and no new parent
+link. New readers preserve that absence and never backfill navigation. Gzip is
+fixture packaging, not a public reader feature. This does not freeze a Card schema.
+Preserve these original bytes; do not regenerate them to make a new reader pass.
+
+Original raw size: 987,768 bytes; gzip size: 60,380 bytes.
+
+Compressed SHA-256: `918c61b5ee776c111dfad8a37b2b6232336d92d5b65c90534fb93f9c446269d1`.
+
+Uncompressed SHA-256: `f57aced52ec5e9b0ddd38dbe70284284f569992238e74dd5812013a01ee78df4`.

@@ -80,6 +80,10 @@ runtime floors and installed-package qualification remain separate.
 
 ## Design
 
+The [original ligand-parent navigation](pending_proposals/card_ligand_parent_navigation.md)
+adds a direct route from an instance to its exact retained structure declaration,
+keeping separate object Cards, source support and original saved navigation.
+
 The bounded [persistence-cost review](pending_proposals/card_persistence_cost.md)
 (#167) separates accumulated history/storage from fresh question cost. Its first
 change removes redundant private copies, preserving every original binding and
