@@ -130,3 +130,21 @@ reader mutation. This is scripted technical verification, not uncoached usabilit
 Applicable static/link/snippet/Python 3.11, fixture, dependency and governance checks
 pass; warning-fatal Sphinx and final editable-label/source/hosted checks have their
 own receipts in #168/#148/#112. A local passing suite is not a remote result.
+
+## Windows qualification correction
+
+The first unskipped source `8eceb17` passes Linux/macOS and the four installed
+provider lanes, but its Windows/Python 3.14 run reports four failed semantic-forgery
+assertions (6,020 other cases pass). The test reads a UTF-8 artifact with the Windows
+default encoding and then reseals altered Unicode metadata; production correctly
+rejects metadata identity before the intended semantic check. A local cp1252
+round-trip of the exact producer's synthetic original reproduces that diagnosis;
+the UTF-8 round-trip verifies.
+
+The follow-up changes only explicit UTF-8 reads/writes in the owning test and this
+receipt. Its 34-case owning gate passes /20.13s before the final source label.
+It does not broaden the expected rejection regex or change production verification.
+The full 7,577-case local checkpoint remains evidence for identical runtime bytes;
+it is not a claimed full rerun of this test-only follow-up. The failed hosted head
+never recovers the deferred CI backlog. The corrected source needs fresh exact-head
+CI/governance, with actual final source/SDK/receipts recorded in the owning issues.

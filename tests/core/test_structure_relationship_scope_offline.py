@@ -32,7 +32,11 @@ def offline(monkeypatch):
 @pytest.fixture
 def card():
     c = Card.from_dict(
-        json.loads(Path("temp_data/frozen_cards/schema_0.3.9__P52270.json").read_text())
+        json.loads(
+            Path("temp_data/frozen_cards/schema_0.3.9__P52270.json").read_text(
+                encoding="utf-8"
+            )
+        )
     )
     c.relationship_store.store = {
         k: r
@@ -250,7 +254,7 @@ def test_resealed_duplicate_semantic_substitution_is_refused(card, tmp_path, par
     view = card.explore().view("structures")
     path = tmp_path / "altered.json"
     view.save(path)
-    bundle = json.loads(path.read_text())
+    bundle = json.loads(path.read_text(encoding="utf-8"))
     wire = next(
         v
         for v in bundle["objects"].values()
@@ -270,7 +274,7 @@ def test_resealed_duplicate_semantic_substitution_is_refused(card, tmp_path, par
         wire["exclusions"][0]["relationship_id"] = keys[0]
     else:
         wire["context"]["explanation_rule"] = "structure_inventory_explanation@999"
-    path.write_text(json.dumps(_seal(bundle)))
+    path.write_text(json.dumps(_seal(bundle)), encoding="utf-8")
     with pytest.raises(
         StorageError,
         match="historical input binding|Unsupported structural explanation rule",
