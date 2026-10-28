@@ -58,9 +58,16 @@ source and release receipts remain unchanged.
    The 34 owning cases and changed public/synthetic guide steps pass. Final exact
    source/SDK and unskipped CI/governance receipts are recorded in the owning issues;
    no hosted result is inferred from this local checkpoint.
-   First correct the newly observed native focal-subject admission gap
-   [#169](https://github.com/uibcdf/sabueso/issues/169), preserving rejected/unplaced
-   source declarations and historical native/saved interpretations.
+   The [native admission correction](pending_bugs/experimental_structure_admission.md)
+   (#169) uses inventory @2 / explanation @3 to scope
+   declarations, retain unplaced originals and preserve @1/@2 saved reading.
+   Packet @13 names the correction and keeps original @12 projection semantics.
+   Inspect its broader local and exact-head hosted qualification in the owning
+   issue before claiming closure or advancing scientific routes. Admission alone does
+   not establish an original coordinate/sequence mapping.
+   Next address the observed [original coordinate/reference gap](pending_bugs/experimental_structure_coordinates.md)
+   (#170): a selected sequence contradicting original support can still receive
+   positive regional coverage. Keep this separate from declaration admission.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed
@@ -161,7 +168,7 @@ does not replace the maintainer's newer exploration priority.
 | Published package | **0.14.0**, source/tag `78623d0`; its installed OS/Python matrix, public install and Zenodo archive retain their own [immutable receipt](../devtools/conda-build/receipts/sabueso_0.14.0_public_2026-10-09.json) |
 | Published schema | **0.3.13** and earlier schemas/cards/shapes remain immutable |
 | Development schema | **0.3.14**, unpublished, 1,942 recorded paths; coordinate/request scope, contact/model inputs, derivation applications, native feature/comment identity and explicit annotation-request receipts follow [SCHEMA](SCHEMA.md) and migrations |
-| Packet history | Default `packet_aspects@12` adds source-bound quaternary interpretation and exact reference/structure dependencies; inherited canonical ligand overlap and original `@11`/earlier projections retain their own semantics |
+| Packet history | Development default `packet_aspects@13` scopes experimental declarations and retains unplaced originals; inherited source-bound quaternary interpretation and canonical ligand overlap remain, with original `@12`/earlier projections preserved. New qualification belongs to #169 |
 | Shared contracts | Sabueso records Knowledge/SourceAssertions; MOLI owns shared contracts, Nextia owns Evidence. Similarity is never identity; unknown/unqueried/failed scope remains explicit |
 | Release target | 0.15.0, with the full exploration and human-acceptance gate in the [scope](pending_proposals/release_consolidation_0150.md). The [notes draft](../devtools/conda-build/release_notes_0.15.0.md) is incomplete preparation, not a candidate or release |
 

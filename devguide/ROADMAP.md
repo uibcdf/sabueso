@@ -343,10 +343,14 @@ experimental items or literal parent context. The [relationship-scope correction
 and individually scoped exclusions/group support under named @2, retaining frozen
 @1 reading. Read its source-bound code/remote receipts in the owning issues, then resume scientific
 region/site/model/assembly transitions and combined researcher acceptance.
-The intervening native admission audit observes a foreign-subject row attributed
-to the focal protein ([#169](https://github.com/uibcdf/sabueso/issues/169)). Correct
-that under a versioned native contract before expanding those scientific routes;
-do not weaken historical rules or silently discard unplaced declarations.
+The intervening [native admission correction](pending_bugs/experimental_structure_admission.md)
+(#169) uses declaration admission @1, inventory @2 and
+explanation @3, with unplaced originals, packet @13 and unchanged original saved
+reading. Verify the exact source qualification recorded in its owning issue
+before expanding those scientific routes. Referential declaration admission does not
+replace original coordinate/sequence-axis prerequisites or researcher acceptance.
+The next concrete integrity step is [#170's original coordinate/reference scope](pending_bugs/experimental_structure_coordinates.md),
+before the broader transitions above.
 
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all
 ongoing implementations and corrections for **0.15.0**. The earlier proposal to

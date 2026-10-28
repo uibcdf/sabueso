@@ -608,7 +608,7 @@ def test_packet_12_names_actual_rules_and_all_canonical_support(detail, tmp_path
         card,
     )
     data = packet.to_dict()
-    assert data["aspect_mapping"] == "packet_aspects@12"
+    assert data["aspect_mapping"] == "packet_aspects@13"
     assert (
         PARTNER_RULE in full_rules()["oligomer"]
         and AGREEMENT_RULE in full_rules()["oligomer"]

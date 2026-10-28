@@ -169,3 +169,21 @@ Original raw size: 905,362 bytes; gzip size: 51,897 bytes.
 Compressed SHA-256: `6e521aab00fa923c3a25377b70616119bde78fb6c509aa4e861eec443f6ebe3a`.
 
 Uncompressed SHA-256: `04d4655a628744dd44d745f978064c0be76d0f266e3fd5caceee75ead2e52a1d`.
+
+## Original exact-relationship explanation @2
+
+`card_structure_explanation_v2.json.gz` preserves the unmodified original writer
+output from exact source `e712acfb227f8864e751f28d8f900ea394384954`, SDK
+`0.14.0+120.ge712acf` (qualified source CI/governance in #168). It is entirely
+synthetic: sequence `AAAA`, three retained declarations with one shared PDB label,
+two admitted states and one excluded fragment. Public accession/PDB labels identify
+test contexts only; there is no SourceAssertion, biological claim, query, private
+pilot input or frozen Card schema. No newer writer may regenerate these bytes.
+
+Compressed SHA-256: `570642999ab8dead73983418fe2545fae5b941e2049012b48227fdca219e3591`.
+
+Uncompressed SHA-256: `ca9ca15bca50daff28ae479175a33adf3997c777cfb28adc27d55a5564c529d3`.
+
+Gzip is fixture packaging, not a public reader capability. The original inventory
+@1 / explanation @2 must remain independently readable when newer declaration
+admission and explanation policies are forbidden (#169).

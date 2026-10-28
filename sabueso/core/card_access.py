@@ -205,6 +205,25 @@ class AccessSelection:
             frame["coverage"]["location"] = self._access._location(
                 result.location("coverage")
             )
+            if (
+                result.wire["context"].get("explanation_rule")
+                == "structure_inventory_explanation@3"
+            ):
+                original = result.wire["exclusions"]
+                frame["declaration_admission"] = {
+                    "rule": result.native["admission_rule"]["rule"],
+                    "scope": "whole_captured_inventory_before_display_filtering",
+                    "inventory_rows": len(result.native["items"]),
+                    "unplaced_declarations": sum(
+                        row.get("status") == "unplaced" for row in original
+                    ),
+                    "excluded_fragments": sum(
+                        row.get("reason") == "fragment_or_peptide" for row in original
+                    ),
+                    "exclusions_location": self._access._location(
+                        result.location("exclusions")
+                    ),
+                }
         return frame
 
     def __repr__(self):

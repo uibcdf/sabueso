@@ -1067,7 +1067,7 @@ class CardView:
 
     @property
     def exclusions(self):
-        """Original scientific exclusions, separate from display filtering."""
+        """Original excluded/unplaced declarations, separate from display filtering."""
         return (
             deepcopy(self._selection._scientific.wire["exclusions"])
             if self._selection._scientific is not None

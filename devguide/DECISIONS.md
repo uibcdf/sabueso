@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Scope experimental declarations before structural classification (2026-10-28, #169)
+
+Use `experimental_structure_admission@1` for exact declared Card/relationship
+subject scope. Retain foreign, missing and conflicting identities as unplaced
+original declarations with reasons and source locations. This referential basis
+never merges entities or certifies a coordinate/sequence mapping. Inventory @2,
+explanation @3 and packet @13 bind the admitted set while preserving existing
+classification thresholds, explicit maps and exact declaration selection. Refuse
+ambiguous duplicate Card ids. Human and agent results share the native decision;
+unchanged original inventory @1/explanation @1/@2 and packet @12 remain readable
+under their own policies. See the [admission contract](pending_bugs/experimental_structure_admission.md)
+for scope and source-bound qualification.
+
 ## Reuse detached persistence values without changing original reading (2026-10-27, #167)
 
 Keep every stored field, canonical byte, source/unit/request binding, navigation

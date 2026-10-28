@@ -90,7 +90,7 @@ def test_public_native_result_and_original_explanation_match_existing_reader(car
     assert explanation == explain_structure_inventory(
         [card], card.id, "pdb:1SUX", baseline
     )
-    assert explanation["rule"]["rule"] == "structure_inventory_explanation@2"
+    assert explanation["rule"]["rule"] == "structure_inventory_explanation@3"
     assert item.open().back() is item.back()
     assert PUBLIC.read_bytes() == original
 
@@ -176,7 +176,7 @@ def test_machine_projection_and_human_item_ids_share_result(card):
     explanation = e.access.explain(first.item_ref)
     encoded = _walk(e.access, explanation._target["location"])
     assert encoded["structure_ref"] == "pdb:1SUX"
-    assert encoded["rule"]["rule"] == "structure_inventory_explanation@2"
+    assert encoded["rule"]["rule"] == "structure_inventory_explanation@3"
     assert _walk(e.access, first.payload_location)["structure_ref"] == "pdb:1SUX"
 
 
@@ -425,6 +425,9 @@ def test_original_failed_source_scope_and_unknown_state_survive_projection():
 
     c = Card(
         meta={"entity_type": "protein", "card_id": "sabueso:protein:uniprot:P52270"},
+        sections={
+            "identifiers": {"uniprot": {"value": "P52270", "source_assertion_ids": []}}
+        },
         relationship_store=[
             make_relationship(
                 "uniprot:P52270",

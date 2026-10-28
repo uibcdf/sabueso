@@ -33,7 +33,7 @@ def test_current_and_historical_instance_scopes_never_silently_change(
     store.save(card)
     query = sabueso.KnowledgeQuery("P52270", aspects=["ligand_sites"], detail=detail)
     current = sabueso.compose_packet(query, card)
-    assert current.to_dict()["aspect_mapping"] == "packet_aspects@12"
+    assert current.to_dict()["aspect_mapping"] == "packet_aspects@13"
     current_terms = current.terms("commercial_product", store=store)
     assert any(
         item.get("predicate") == "has_structure"

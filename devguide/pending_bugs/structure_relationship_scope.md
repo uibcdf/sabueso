@@ -148,3 +148,7 @@ The full 7,577-case local checkpoint remains evidence for identical runtime byte
 it is not a claimed full rerun of this test-only follow-up. The failed hosted head
 never recovers the deferred CI backlog. The corrected source needs fresh exact-head
 CI/governance, with actual final source/SDK/receipts recorded in the owning issues.
+
+The separate [declaration admission correction](experimental_structure_admission.md)
+now implements inventory @2 / explanation @3 locally under #169, retaining this
+qualified original @2 explanation policy unchanged. Its qualification is separate.

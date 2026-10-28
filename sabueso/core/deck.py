@@ -383,7 +383,7 @@ class Deck:
         skip_digestion: bool = False,
     ) -> Dict[str, Any]:
         """The experimental structures of the deck's protein cards, side by side and
-        grouped by state (rule ``structure_inventory@1``); see
+        grouped by state (rule ``structure_inventory@2``); see
         ``sabueso.core.structures.structure_inventory``.
 
         - ``regions``: one region (UniProt positions and ``[begin, end]`` ranges) for
@@ -391,7 +391,11 @@ class Deck:
         - ``group_by``: the keys of a group (default: every state key), e.g.
           ``("method", "coverage", "sequence", "ligands:interest", "substitutions")``.
         - ``residue_maps`` and ``reference``: ``{card_id: {position: reference
-          position}}``, placing substitutions in the reference card's numbering."""
+          position}}``, placing substitutions in the reference card's numbering.
+
+        Unplaced declarations retain their original records and admission reasons.
+        Protein card ids must be distinct; equal ids cannot identify separate rows.
+        """
         from .structures import structure_inventory
 
         proteins = [c for c in self.cards if c.meta.get("entity_type") == "protein"]

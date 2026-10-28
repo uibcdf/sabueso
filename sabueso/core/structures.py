@@ -264,10 +264,13 @@ def _secondary_in_region(
     return out
 
 
-def structures_view(
+def _declared_structures_view(
     card: Any, include_fragments: bool = False, region: Sequence[int] | None = None
 ) -> Dict[str, Any]:
-    """Protein-centric summary of the card's ``has_structure`` relationships.
+    """Original declaration summary before admission (legacy inventory @1).
+
+    Current views supply admitted-only inputs; explicitly older packet projections
+    retain this unfiltered declaration meaning. Keep its classification semantics.
 
     Returns ``{"items", "excluded", "classification", "state_rule"}``. Fragments and
     peptides are excluded by default, and the exclusion is reported, never silent.
@@ -363,7 +366,7 @@ def structures_view(
     }
 
 
-INVENTORY_RULE = "structure_inventory@1"
+INVENTORY_RULE = "structure_inventory@2"
 STATE_KEYS = ("method", "coverage", "sequence", "ligands", "oligomer", "in_complex")
 #: Keys ``group_by`` accepts, beyond the state keys: ``ligands:interest`` reads the
 #: ligand state coarsely (a ligand of interest, none, or unstated: ``no_ligands`` and
@@ -405,7 +408,7 @@ def _in_reference(
     return out
 
 
-def structure_inventory(
+def _declared_structure_inventory(
     cards: Sequence[Any],
     regions: Any = None,
     include_fragments: bool = False,
@@ -464,7 +467,9 @@ def structure_inventory(
         else:
             mapping = maps.get(card.id)
             in_frame = mapping is not None
-        view = structures_view(card, include_fragments=include_fragments, region=region)
+        view = _declared_structures_view(
+            card, include_fragments=include_fragments, region=region
+        )
         if view["excluded"]:
             excluded[card.id] = view["excluded"]
         for item in view["items"]:
@@ -536,7 +541,7 @@ def structure_inventory(
         parameters["mapped"] = sorted(c for c in maps if c != reference)
     return {
         "rule": make_derivation(
-            INVENTORY_RULE, inputs=["has_structure"], parameters=parameters
+            "structure_inventory@1", inputs=["has_structure"], parameters=parameters
         ),
         "items": items,
         "states": grouped,
@@ -544,6 +549,56 @@ def structure_inventory(
         "not_inventoried": not_inventoried,
         "excluded": excluded,
     }
+
+
+def structures_view(
+    card: Any, include_fragments: bool = False, region: Sequence[int] | None = None
+) -> Dict[str, Any]:
+    """Summarize admitted declarations and retain unplaced originals separately.
+
+    Exact Card/relationship subject scope does not establish coordinate coverage.
+    ``unplaced`` keeps original declarations, reasons and typed source locations;
+    ``excluded`` retains the separate optional fragment filter.
+    """
+    from .experimental_structure_admission_v1 import view
+    from .relationship_store import make_derivation
+
+    return view(
+        card,
+        include_fragments=include_fragments,
+        region=region,
+        summary=_declared_structures_view,
+        rule=make_derivation,
+    )
+
+
+def structure_inventory(
+    cards: Sequence[Any],
+    regions: Any = None,
+    include_fragments: bool = False,
+    group_by: Sequence[str] | None = None,
+    residue_maps: Dict[str, Dict[int, int]] | None = None,
+    reference: str | None = None,
+) -> Dict[str, Any]:
+    """Inventory @2: group only admitted declarations; keep all unplaced originals.
+
+    Classification, explicit residue maps, state grouping and fragment options keep
+    their existing meanings. Admission scopes declarations, never entity identity
+    merging or the biological validity of retained coordinates.
+    """
+    from .experimental_structure_admission_v1 import inventory
+    from .relationship_store import make_derivation
+
+    return inventory(
+        cards,
+        regions=regions,
+        include_fragments=include_fragments,
+        group_by=group_by,
+        residue_maps=residue_maps,
+        reference=reference,
+        summarize=_declared_structure_inventory,
+        rule=make_derivation,
+    )
 
 
 def predicted_structures_view(card: Any) -> Dict[str, Any]:

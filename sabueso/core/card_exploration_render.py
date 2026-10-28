@@ -487,6 +487,17 @@ def _parts(view):
         opening.append(
             f"{len(scientific.wire['exclusions'])} scientific exclusions; inspect exclusions for original reasons."
         )
+        if (
+            scientific.wire["context"].get("explanation_rule")
+            == "structure_inventory_explanation@3"
+        ):
+            unplaced = sum(
+                row.get("status") == "unplaced" for row in scientific.wire["exclusions"]
+            )
+            if unplaced:
+                opening.append(
+                    f"{unplaced} retained declarations cannot be assigned to this protein; inspect exclusions for their reasons and original source support."
+                )
         for row in scientific.wire["coverage"].get("rows", [])[:4]:
             opening.append(
                 f"{preview(row['source'])}: {preview(row['state'])} (retained source/request scope)"

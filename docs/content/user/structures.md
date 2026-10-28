@@ -75,7 +75,7 @@ A structure fetched before card schema 0.3.4 has no construct data, and its stat
 ## Several proteins side by side
 
 `deck.structure_inventory(regions=...)` puts the structures of several proteins side by
-side, grouped by state (rule `structure_inventory@1`). A state that every protein has is
+side, grouped by state (rule `structure_inventory@2`). A state that every protein has is
 marked `shared`: it is where like can be compared with like, e.g. the apo wild-type
 dimers of two orthologs.
 
@@ -130,7 +130,7 @@ for member in why["members"]:
         print(assertion["source_assertion_ref"], assertion["asserted_value"])
 ```
 
-`structure_inventory_explanation@2` records every protein card's exact pin and the
+`structure_inventory_explanation@3` records every protein card's exact pin and the
 normalized options, including residue maps. `rules` names the coverage, state and
 inventory rules. For a grouped item, `members` holds the stored relationship and
 supporting SourceAssertions of **every member of its group**. Each reference is pinned
@@ -165,11 +165,41 @@ sibling. Existing saved @1 readings retain their original policy without backfil
 Rows and support members count retained declarations. Repeated PDB labels do not
 establish distinct physical structures, independent observations or experiments.
 
-The current native inventory has a separate focal-subject admission gap
-([#169](https://github.com/uibcdf/sabueso/issues/169)): an externally supplied Card
-can retain a foreign-subject relationship that still appears as a focal row.
-Exact explanation selection does not repair that admission; inspect the original
-relationship subject when auditing such Cards. Its native correction is pending.
+Experimental declarations now use `experimental_structure_admission@1`. Their
+subject must match the protein explicitly named by the Card id; its retained
+UniProt identifier must agree and have no identity conflict. Missing or foreign
+subjects and uncertain Card identities remain in `card.structures()["unplaced"]`
+(or `deck.structure_inventory()["unplaced"][card.id]`), with the original
+relationship, reason and source locations. They never enter focal groups. This
+scopes a declaration; it does not validate a sequence/coordinate mapping or merge
+entities. An exact explanation of such a declaration has `status="unplaced"` and
+keeps its original source support. In the human explorer, `view.exclusions` also
+lists these records with their explanations, apart from display filters. An empty
+admitted set does not mean the protein has no structures.
+
+Compact pages include `declaration_admission`: counts refer to the whole captured
+inventory before display filtering, with a bounded inspection link for excluded
+and unplaced originals. Those counts do not describe independent experiments or
+external absence. Reading the link makes no source query:
+
+```python
+reader = focus.access()
+page = reader.select("structures", fields=["structure_ref"]).page(max_bytes=8192)
+admission = page["declaration_admission"]
+print(admission["unplaced_declarations"])
+originals = reader.read(admission["exclusions_location"]).page(max_bytes=8192)
+```
+
+Fragment exclusion remains a separate option. `include_fragments=True` does not
+admit a foreign subject. Inventory Card ids must be distinct: separate snapshots
+with equal ids cannot be addressed independently by that result. Original saved
+inventory @1 and explanation @1/@2 readings retain their original decisions.
+
+The experimental regional reader still has a separate original-reference gap
+([#170](https://github.com/uibcdf/sabueso/issues/170)): a selected sequence changed
+against its retained source support can receive an old coordinate projection.
+Regional outputs currently describe retained mapping qualifiers; they do not
+certify that those coordinates belong to the current selected sequence.
 
 Other `status` values are `grouped`, `excluded`, `not_inventoried` or `not_on_card`. Excluded fragments
 keep their classification; unknown states keep the inventory's reason. `not_on_card`

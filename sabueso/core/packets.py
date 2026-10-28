@@ -25,7 +25,7 @@ the Sabueso version that built the cards, so two assemblies of unchanged knowled
 the same ``content_id`` even when the sources were read again (``same_knowledge``).
 
 What each aspect asks the sources for, and which knowledge areas it covers, is fixed by
-the mapping (``packet_aspects@12`` now). It never changes once published: a change is a new
+the mapping (``packet_aspects@13`` now). It never changes once published: a change is a new
 version, and a test pins what each version asks. ``@1`` was published in 0.6.0; ``@2``
 (0.7.0) adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83), and MONDO's
 disease identity and the grouped diseases to ``disease_association`` (#90). ``@3``
@@ -86,7 +86,7 @@ FULL_VIEWS = {
     "biological_context": (),
     "orthology": (),
 }
-ASPECT_MAPPING = "packet_aspects@12"
+ASPECT_MAPPING = "packet_aspects@13"
 #: Aspect mappings a packet can carry; packets of different mappings are not compared.
 #: ``@3`` adds KLIFS and GPCRdb (identity, structures, ligand sites, sequence features),
 #: SAbDab (structures) and the ``orthology`` aspect (OMA), which a query asks for by
@@ -101,6 +101,7 @@ ASPECT_MAPPING = "packet_aspects@12"
 #: annotation source contexts (#162), with frozen @8/@9 ligand-site projections.
 #: ``@11`` admits canonical coordinates before ligand-site overlap (#163), freezing @10.
 #: ``@12`` preserves all quaternary declarations and admits interface coordinates (#165).
+#: ``@13`` scopes experimental declarations and retains unplaced originals (#169).
 PACKET_PREFIX = "sabueso:packet:"
 
 #: Keys left out of a content-equivalence id: when the sources were read, and which
@@ -394,7 +395,9 @@ def card_content_id(card: Any) -> str:
 
 def _areas(aspect, mapping=ASPECT_MAPPING):
     original = ASPECTS[aspect]["areas"]
-    if aspect == "oligomer" and mapping == "packet_aspects@12":
+    if aspect == "structures" and mapping == "packet_aspects@13":
+        return (*original, "identifiers.uniprot")
+    if aspect == "oligomer" and mapping in ("packet_aspects@12", "packet_aspects@13"):
         return (
             *original,
             "relationships.has_structure",
@@ -408,7 +411,7 @@ def _areas(aspect, mapping=ASPECT_MAPPING):
 def _in_areas(area: str, aspects: Iterable[str], *, mapping=ASPECT_MAPPING) -> bool:
     return any(
         (area == prefix or area.startswith(prefix + "."))
-        if mapping == "packet_aspects@12" and a == "oligomer"
+        if mapping in ("packet_aspects@12", "packet_aspects@13") and a == "oligomer"
         else area.startswith(prefix)
         for a in aspects
         for prefix in _areas(a, mapping)
@@ -476,15 +479,28 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
             predicted = predicted_structures_view(card)
         else:
             predicted = card.predicted_structures()
+        if mapping == "packet_aspects@13":
+            experimental = card.structures()
+        else:
+            # Original @1 declaration semantics; do not apply current admission
+            # when reconstructing the support of an explicitly older packet.
+            from .structures import _declared_structures_view
+
+            experimental = _declared_structures_view(card)
         return {
-            "experimental": card.structures(),
+            "experimental": experimental,
             "predicted": predicted,
             **_fields(card, STRUCTURE_FIELDS),
+            **(
+                _fields(card, ["identifiers.uniprot"])
+                if mapping == "packet_aspects@13"
+                else {}
+            ),
         }
     if aspect == "oligomer":
         rule = (
             "interface_site_agreement@3"
-            if mapping == "packet_aspects@12"
+            if mapping in ("packet_aspects@12", "packet_aspects@13")
             else "interface_site_agreement@2"
         )
         return {
@@ -585,7 +601,8 @@ def _index(aspect: str, card: Any, *, mapping=ASPECT_MAPPING) -> Dict[str, Any]:
     for path in card.list_fields():
         matches = (
             path in field_areas
-            if aspect == "oligomer" and mapping == "packet_aspects@12"
+            if aspect == "oligomer"
+            and mapping in ("packet_aspects@12", "packet_aspects@13")
             else path.startswith(tuple(field_areas))
         )
         if path.count(".") != 1 or not matches:
@@ -624,7 +641,7 @@ def _index(aspect: str, card: Any, *, mapping=ASPECT_MAPPING) -> Dict[str, Any]:
     return {
         "areas": dict(sorted(out.items())),
         "full_views": list(FULL_VIEWS[aspect]),
-        "full_rules": full_rules()[aspect],
+        "full_rules": full_rules(mapping)[aspect],
         "rule": INDEX_RULE,
     }
 
@@ -652,14 +669,16 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
         "structures": [
             structures.COVERAGE_CLASS_RULE,
             structures.STATE_RULE,
-            structures.INVENTORY_RULE,
+            structures.INVENTORY_RULE
+            if mapping == "packet_aspects@13"
+            else "structure_inventory@1",
         ],
         "oligomer": [
             oligomer.PARTNER_RULE
-            if mapping == "packet_aspects@12"
+            if mapping in ("packet_aspects@12", "packet_aspects@13")
             else "interface_partner_class@1",
             oligomer.AGREEMENT_RULE
-            if mapping == "packet_aspects@12"
+            if mapping in ("packet_aspects@12", "packet_aspects@13")
             else "interface_site_agreement@2",
             interface_mutations.RULE,
         ],
@@ -684,7 +703,11 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
         else [diseases.RULE, "disease_identity_coverage@1"],
         "literature": [STRUCTURE_MENTION_RULE],
     }
-    if mapping == "packet_aspects@12":
+    if mapping == "packet_aspects@13":
+        from .experimental_structure_admission_v1 import RULE as ADMISSION_RULE
+
+        rules["structures"].append(ADMISSION_RULE)
+    if mapping in ("packet_aspects@12", "packet_aspects@13"):
         rules["oligomer"].extend(
             [
                 oligomer.SCOPE_RULE,

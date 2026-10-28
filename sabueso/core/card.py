@@ -231,7 +231,9 @@ class Card:
         """Protein-centric view of this card's experimental structures.
 
         ``region`` (UniProt positions and ``[begin, end]`` ranges) adds, per chain, the
-        region's residues without coordinates.
+        region's residues without coordinates. Declaration admission requires an
+        exact focal subject; ``unplaced`` retains the original records and reasons.
+        Admission alone does not validate their sequence or coordinate mapping.
         """
         from .structures import structures_view
 

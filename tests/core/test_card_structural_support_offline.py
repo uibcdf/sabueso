@@ -58,7 +58,7 @@ def test_public_structural_support_opens_real_sources_and_retains_exact_science(
     for content in (
         "Why this structure is shown: pdb:1SUX",
         "grouped by retained structural state",
-        "structure_inventory_explanation@2",
+        "structure_inventory_explanation@3",
         "Sequence state: reference",
         "Complex state: False",
         "not individual qualifiers or the derived grouping",

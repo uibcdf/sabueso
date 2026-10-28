@@ -81,7 +81,7 @@ def test_default_ambiguity_and_exact_public_deck_selection_keep_original_candida
         == second["id"]
     )
     assert selected["item"]["chains"] == ["SYNTHETIC_SECOND"]
-    assert selected["rule"]["rule"] == "structure_inventory_explanation@2"
+    assert selected["rule"]["rule"] == "structure_inventory_explanation@3"
     assert selected["rule"]["parameters"]["relationship_id"] == second["id"]
     assert (
         len(selected["members"]) == 2
@@ -224,7 +224,7 @@ def audit(event,args):
  if event=='open' and 'temp_data' in str(args[0]):forbidden()
 sys.addaudithook(audit)
 v=sabueso.read_exploration(sys.argv[1],expected_digest=sys.argv[2])
-assert 'structure_inventory_explanation@2' in v.validation['verified_scientific_rules']
+assert 'structure_inventory_explanation@3' in v.validation['verified_scientific_rules']
 assert len(v.items())==2
 for i in v.items():
  p=i.explain().native_payload
@@ -260,7 +260,7 @@ def test_resealed_duplicate_semantic_substitution_is_refused(card, tmp_path, par
         for v in bundle["objects"].values()
         if isinstance(v, dict)
         and v.get("context", {}).get("explanation_rule")
-        == "structure_inventory_explanation@2"
+        == "structure_inventory_explanation@3"
         and "explanations" in v
     )
     keys = list(wire["explanations"])

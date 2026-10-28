@@ -92,6 +92,7 @@ def descriptor():
         "machine_membership": False,
         "mandatory_interpretation": [
             "structure_kind",
+            "admission",
             "coverage_scope",
             "qualifier_conflicts",
             "rules",
@@ -270,7 +271,12 @@ def materialize(access, options):
             regions=options["region"],
             include_fragments=options["include_fragments"],
         )
-        rules = [native["rule"], coverage_derivation(), state_derivation()]
+        rules = [
+            native["rule"],
+            coverage_derivation(),
+            state_derivation(),
+            native["admission_rule"],
+        ]
         knowledge = knowledge_state(card)
         coverage = {
             "basis": "original_scoped_knowledge_state",
@@ -324,6 +330,25 @@ def materialize(access, options):
                     "explanation": _wire_explanation(original),
                 }
             )
+        for record in native["unplaced"].get(card.id, []):
+            original = explain_structure_inventory(
+                [card],
+                card.id,
+                record["structure_ref"],
+                native,
+                relationship_id=record["relationship_id"],
+                regions=options["region"],
+                include_fragments=options["include_fragments"],
+            )
+            excluded.append(
+                {
+                    "structure_ref": record["structure_ref"],
+                    "relationship_id": record["relationship_id"],
+                    "status": "unplaced",
+                    "reason": record["reason"],
+                    "explanation": _wire_explanation(original),
+                }
+            )
         outcome = {
             "status": "ok" if rows else "empty",
             "reason": None
@@ -333,6 +358,10 @@ def materialize(access, options):
     identity_native = _wire_inventory(native)
     if "rule" in identity_native:
         identity_native["rule"] = _rule_identity(identity_native["rule"])
+    if "admission_rule" in identity_native:
+        identity_native["admission_rule"] = _rule_identity(
+            identity_native["admission_rule"]
+        )
     coverage_identity = (
         {**coverage, "rule": _rule_identity(coverage["rule"])}
         if "rule" in coverage
@@ -395,6 +424,7 @@ def materialize(access, options):
         ]
         interpretations[key] = {
             "structure_kind": "experimental",
+            "admission": deepcopy(row["admission"]),
             "coverage_scope": "retained_sequence_ranges",
             "region": deepcopy(options["region"]),
             "region_axis": "captured canonical protein positions (existing UniProt-numbered reader)",
