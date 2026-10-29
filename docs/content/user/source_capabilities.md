@@ -9,7 +9,7 @@ public-package delivery. Established bespoke card routes are documented in
 the source architecture; absence of an enricher declaration alone does not
 describe those routes.
 
-The input counts below cover **reviewed recovery inputs and release compatibility cards**. They do not count
+The input counts below cover **reviewed fixture files and compatibility records**. They do not count
 older fixtures or grant reuse rights. Local-only originals are not distributed
 with the public repository. Native qualification of those scopes requires
 the explicit local test route; public tests use reviewed repository inputs.
