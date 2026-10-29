@@ -1,5 +1,29 @@
 # Synthetic historical exploration
 
+## Original explanation @3 before coordinate admission
+
+`card_structure_explanation_v3.json.gz` preserves the unchanged original
+explanation @3 / inventory @2 reading produced by qualified source
+`5b9de48537a4f9059c0b63726348acccf2fe8cf5`, editable SDK
+`0.14.0+122.g5b9de48`. The Card, four structure declarations, sequence, resolution
+and qualifiers are entirely synthetic; accession and PDB labels are test context,
+not scientific claims. There are no SourceAssertions, source queries or private
+pilot data. Original qualification: full local-original 7,606 cases, exact-source
+CI 15/15 and governance 1/1. The owning #169/#170 receipt retains producer details.
+
+It retains exact duplicate declaration membership, one fragment exclusion, one
+foreign declaration, original quantities and byte-stable machine saving. A new
+reader must preserve the old coordinate claims under their original policy;
+missing original mapping inputs are never backfilled. Preserve these bytes rather
+than regenerating this fixture with a newer writer. Gzip packages the fixture,
+not the public exploration format; no Card schema version is frozen by it.
+
+Compressed SHA-256: `644bf5ca5d48740e647b2b0230e7e3353c540fd906e2e806293b9f7babacac44`.
+
+Uncompressed SHA-256: `5a041a09d62d8ad0700db537dc5da07a29eb9dbff27f574efa5ff74912ec1802`.
+
+## Original literal exploration
+
 `card_exploration_literal_v1.json` was written by the literal codec from
 Sabueso `2c32d7fbe868eae7ac3fa69c3d5e20e5f1c9c85d`, using a deliberately synthetic
 empty Card with one generic retained value. It contains no scientific source or

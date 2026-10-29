@@ -4422,3 +4422,17 @@ generic rule. See [original comparison reading](pending_proposals/card_saved_lig
 - Repeated machine saves reuse the exact selection object's original transport
   root (#167), without deleting scientific history/support. Local and hosted
   qualification remain source-bound and separate from researcher/release acceptance.
+
+
+## 2026-10-28 — Experimental coordinate admission (#170)
+
+Declaration admission and coordinate comparability are separate. New read-time
+experimental_structure_coordinates@1 requires original canonical support and
+source-declared experimental axes, checks the retained projection and preserves
+unknown scope without inferring correspondence or equal revisions. State/inventory
+@3, explanation @4 and packet @14 name the new meaning. Original @13 packet and
+@1/@2/@3 saved-reader families remain frozen. Coverage ratios retain their recorded normalized
+basis; they do not prove current reference completeness. No stored Card schema
+changes or source assertions are introduced. See the
+[owning analysis](pending_bugs/experimental_structure_coordinates.md) for exact
+admission boundaries and current qualification status.

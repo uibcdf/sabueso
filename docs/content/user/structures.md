@@ -22,9 +22,11 @@ structure:
 - per chain, the UniProt ranges that have coordinates (`observed`);
 - per chain, the helices and strands the entry assigns, in UniProt numbering, with the
   program that assigned them (`secondary_structure`, e.g. PROMOTIF).
-- per chain, for a membrane protein, the transmembrane segments each resource RCSB
-  integrates assigns, in UniProt numbering, each resource apart (`membrane_segments`:
-  OPM, PDBTM).
+
+Retained experimental relationship qualifiers can additionally include
+`membrane_segments` from OPM or PDBTM through RCSB. Inspect these original
+source-scoped declarations with `card.relationships("has_structure")`; they are
+not columns of `card.structures()` and are not certified by its coordinate check.
 
 ```python
 import sabueso
@@ -44,6 +46,9 @@ rows = card.table("structures", region=[[12, 20]])  # the same, as flat rows
 (`missing_in_region`), the chains that have them all (`complete_chains`), and the
 region's positions in a helix or a strand (`secondary_structure_in_region`). A chain the
 entry assigns no secondary structure to is left out: not stated, never coil.
+Native Card/Deck requests outside an admitted canonical sequence raise
+`ArgumentError`; a position outside that sequence is not a residue missing
+coordinates. Per-Card requests must name protein Cards present in the Deck.
 
 Each structure has a derived `state`:
 
@@ -57,7 +62,24 @@ Each structure has a derived `state`:
   2V5B, a monomerization structure that software predicts as a dimer;
 - whether other entities are present (`in_complex`).
 
-The state follows rule `structure_state@2`.
+Development uses `structure_state@3` with
+`experimental_structure_coordinates@1`. Each row's `coordinate_scope` reports
+whether the original canonical sequence and source-declared residue mapping
+support a comparison. This is separate from declaration admission. It verifies
+retained original RCSB polymer alignments, entity sequences, instance observations
+and their recorded projection; it never aligns sequences or infers correspondence
+from equal residue numbers. A source-declared accession axis does not establish
+equal source/reference revisions; unstated revisions remain explicit.
+
+If these inputs are missing, malformed, contradictory or unsupported, regional
+completeness and sequence comparisons remain `None`, with the exact reason.
+`complete_chains=None` means unknown; an admitted comparison returning `[]` means
+no chain covers the requested region completely. Original qualifiers remain
+available through `card.relationships("has_structure")` and the explorer's source
+links. The retained coverage fraction/class still describes the recorded normalized
+ratio and fragment filter; it does not certify coverage of a changed reference.
+The check is conservative per declaration: incomplete instance scope makes that
+declaration uncomputed while other supported declarations remain comparable.
 
 **Numbering.** Positions are in UniProt numbering. Depositors and papers often use their
 own numbering, often the mature protein's. `author_substitutions` gives each substitution
@@ -75,7 +97,7 @@ A structure fetched before card schema 0.3.4 has no construct data, and its stat
 ## Several proteins side by side
 
 `deck.structure_inventory(regions=...)` puts the structures of several proteins side by
-side, grouped by state (rule `structure_inventory@2`). A state that every protein has is
+side, grouped by state (development rule `structure_inventory@3`). A state that every protein has is
 marked `shared`: it is where like can be compared with like, e.g. the apo wild-type
 dimers of two orthologs.
 
@@ -96,7 +118,8 @@ print(inventory["not_inventoried"])  # structures without a known state, with th
   (`{card.id: region}`).
 - **Unknown states.** Structures whose state is unknown are listed apart
   (`not_inventoried`), with the reason: not requested, not found, source error, or
-  fetched before schema 0.3.4.
+  unavailable original mapping inputs or incompatible reference support. Inspect
+  each item's `coordinate_scope` for its precise comparison boundary.
 - **Choosing the grouping keys.** `group_by` chooses what defines a group. For example,
   `group_by=("method", "coverage", "sequence", "ligands:interest")` reads ligands
   coarsely: a structure without ligands and one with only additives are both
@@ -110,6 +133,11 @@ print(inventory["not_inventoried"])  # structures without a known state, with th
   - The key `substitutions` groups mutants by them.
   - Without a map, equal numbers in two proteins are never taken as equivalent
     positions.
+  - Development inventory @3 requires a source-backed target `reference` Card,
+    known source Cards and one-to-one, in-bounds positive position mappings.
+    A nonidentity map for the reference itself is refused. The derivation retains
+    the exact supplied maps and target Card pin. These maps express caller-supplied
+    correspondence; they never establish molecular identity or a new alignment.
 
 The inventory states facts and groups them; it never chooses a structure.
 
@@ -130,9 +158,9 @@ for member in why["members"]:
         print(assertion["source_assertion_ref"], assertion["asserted_value"])
 ```
 
-`structure_inventory_explanation@3` records every protein card's exact pin and the
+`structure_inventory_explanation@4` records every protein card's exact pin and the
 normalized options, including residue maps. `rules` names the coverage, state and
-inventory rules. For a grouped item, `members` holds the stored relationship and
+inventory, declaration-admission and coordinate rules. For a grouped item, `members` holds the stored relationship and
 supporting SourceAssertions of **every member of its group**. Each reference is pinned
 to the card state read. The statements retain their own subject, source, version,
 retrieval and acquisition, together with retrieval-archive links when recorded.

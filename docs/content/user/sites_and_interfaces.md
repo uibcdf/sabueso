@@ -160,7 +160,7 @@ The same method works on `store.load(pin)`: later acquisition cannot rewrite
 historical assertion/relationship references. Readers change no card, make no
 source call and add no Ackredit credit. Keep original operation/attribution
 sidecars separately when a workflow needs execution history and citation credit.
-New full/index packets use `packet_aspects@13` (inheriting quaternary mapping `@12`), name agreement `@3` and include
+New full/index packets use `packet_aspects@14` (inheriting quaternary mapping `@12`), name agreement `@3` and include
 its canonical reference and structure dependencies. Existing saved packets retain
 their original rule, facts and hashes. The stored Card schema is unchanged.
 

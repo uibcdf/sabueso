@@ -93,6 +93,7 @@ def descriptor():
         "mandatory_interpretation": [
             "structure_kind",
             "admission",
+            "coordinate_scope",
             "coverage_scope",
             "qualifier_conflicts",
             "rules",
@@ -276,6 +277,7 @@ def materialize(access, options):
             coverage_derivation(),
             state_derivation(),
             native["admission_rule"],
+            native["coordinate_rule"],
         ]
         knowledge = knowledge_state(card)
         coverage = {
@@ -355,12 +357,27 @@ def materialize(access, options):
             if rows
             else "The existing inventory admits no retained entries under these options; inspect coverage and exclusions.",
         }
+    if (
+        options["region"] is not None
+        and rows
+        and all(
+            row["coordinate_scope"]["status"] != "comparable" for row in native["items"]
+        )
+    ):
+        outcome = {
+            "status": "not_computed",
+            "reason": "No retained declaration has admitted original coordinate/reference inputs; inspect each coordinate_scope and original support.",
+        }
     identity_native = _wire_inventory(native)
     if "rule" in identity_native:
         identity_native["rule"] = _rule_identity(identity_native["rule"])
     if "admission_rule" in identity_native:
         identity_native["admission_rule"] = _rule_identity(
             identity_native["admission_rule"]
+        )
+    if "coordinate_rule" in identity_native:
+        identity_native["coordinate_rule"] = _rule_identity(
+            identity_native["coordinate_rule"]
         )
     coverage_identity = (
         {**coverage, "rule": _rule_identity(coverage["rule"])}
@@ -425,7 +442,8 @@ def materialize(access, options):
         interpretations[key] = {
             "structure_kind": "experimental",
             "admission": deepcopy(row["admission"]),
-            "coverage_scope": "retained_sequence_ranges",
+            "coordinate_scope": deepcopy(row["coordinate_scope"]),
+            "coverage_scope": "retained_normalized_ratio; current reference basis requires comparable coordinate_scope",
             "region": deepcopy(options["region"]),
             "region_axis": "captured canonical protein positions (existing UniProt-numbered reader)",
             "coordinate_completeness": "not_established_by_coverage",

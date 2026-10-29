@@ -81,6 +81,7 @@ def admitted_selection(selection):
                     "structure_inventory_explanation@1",
                     "structure_inventory_explanation@2",
                     "structure_inventory_explanation@3",
+                    "structure_inventory_explanation@4",
                 ):
                     return True
                 if isinstance(rule, str) and rule.startswith(

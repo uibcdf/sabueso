@@ -57,9 +57,11 @@ def test_public_structural_support_opens_real_sources_and_retains_exact_science(
     text = repr(explanation)
     for content in (
         "Why this structure is shown: pdb:1SUX",
-        "grouped by retained structural state",
-        "structure_inventory_explanation@3",
-        "Sequence state: reference",
+        "not_inventoried",
+        "Residue comparison not computed",
+        "the original experimental mapping inputs were not retained",
+        "structure_inventory_explanation@4",
+        "Sequence state: unknown",
         "Complex state: False",
         "not individual qualifiers or the derived grouping",
         "does not establish coordinate completeness",

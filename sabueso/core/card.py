@@ -233,7 +233,8 @@ class Card:
         ``region`` (UniProt positions and ``[begin, end]`` ranges) adds, per chain, the
         region's residues without coordinates. Declaration admission requires an
         exact focal subject; ``unplaced`` retains the original records and reasons.
-        Admission alone does not validate their sequence or coordinate mapping.
+        Separate ``coordinate_scope`` checks original reference/mapping support;
+        unknown comparisons preserve their originals and have no complete chains.
         """
         from .structures import structures_view
 

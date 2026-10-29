@@ -349,8 +349,10 @@ explanation @3, with unplaced originals, packet @13 and unchanged original saved
 reading. Verify the exact source qualification recorded in its owning issue
 before expanding those scientific routes. Referential declaration admission does not
 replace original coordinate/sequence-axis prerequisites or researcher acceptance.
-The next concrete integrity step is [#170's original coordinate/reference scope](pending_bugs/experimental_structure_coordinates.md),
-before the broader transitions above.
+The current concrete integrity step is [#170's original coordinate/reference scope](pending_bugs/experimental_structure_coordinates.md),
+implemented locally under coordinate @1, state/inventory @3, explanation @4 and
+packet @14. Complete its consumer and source-bound qualification before the
+broader transitions above; #169 is independently qualified at `5b9de48`.
 
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all
 ongoing implementations and corrections for **0.15.0**. The earlier proposal to

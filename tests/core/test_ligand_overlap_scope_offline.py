@@ -497,7 +497,7 @@ def test_old_packet10_reading_keeps_original_projection_and_terms(
     current = sabueso.compose_packet(
         sabueso.KnowledgeQuery("P52270", aspects=["ligand_sites"], detail=detail), card
     )
-    assert current.to_dict()["aspect_mapping"] == "packet_aspects@13"
+    assert current.to_dict()["aspect_mapping"] == "packet_aspects@14"
     payload = current.to_dict()
     payload["aspect_mapping"] = "packet_aspects@10"
     if detail == "full":

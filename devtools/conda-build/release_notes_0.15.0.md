@@ -12,6 +12,13 @@ is established by this draft.
 
 ## Intended changes since 0.14.0
 
+- Separate exact experimental declaration admission (#169) from original
+  coordinate/reference support (#170). Preserve unplaced declarations and unknown
+  comparisons with their exact original source scope; use state/inventory @3,
+  explanation @4 and packet @14 while preserving earlier named saved readers and
+  packet projections. Read #170 for source-bound correction qualification;
+  broad researcher acceptance and release qualification remain separate gates.
+
 - Preserve exact structural relationships in inventory explanations, source/group
   support and fragment exclusions. Report PDB-only ambiguity with every original
   candidate; offer an exact `relationship_id` selector and retain frozen @1 saved

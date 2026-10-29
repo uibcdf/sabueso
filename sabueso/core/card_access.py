@@ -205,9 +205,9 @@ class AccessSelection:
             frame["coverage"]["location"] = self._access._location(
                 result.location("coverage")
             )
-            if (
-                result.wire["context"].get("explanation_rule")
-                == "structure_inventory_explanation@3"
+            if result.wire["context"].get("explanation_rule") in (
+                "structure_inventory_explanation@3",
+                "structure_inventory_explanation@4",
             ):
                 original = result.wire["exclusions"]
                 evaluated = "admission_rule" in result.native

@@ -330,7 +330,7 @@ def test_old_packets_preserve_original_projection_and_current_terms_are_complete
     packet = sabueso.compose_packet(
         sabueso.KnowledgeQuery("P52270", aspects=["structures"], detail=detail), result
     )
-    assert packet.to_dict()["aspect_mapping"] == "packet_aspects@13"
+    assert packet.to_dict()["aspect_mapping"] == "packet_aspects@14"
     assert VIEW_RULE in full_rules()["structures"]
     assert RULE in full_rules()["structures"]
     assert VIEW_RULE not in full_rules(mapping=mapping_version)["structures"]

@@ -90,7 +90,7 @@ def test_public_native_result_and_original_explanation_match_existing_reader(car
     assert explanation == explain_structure_inventory(
         [card], card.id, "pdb:1SUX", baseline
     )
-    assert explanation["rule"]["rule"] == "structure_inventory_explanation@3"
+    assert explanation["rule"]["rule"] == "structure_inventory_explanation@4"
     assert item.open().back() is item.back()
     assert PUBLIC.read_bytes() == original
 
@@ -176,7 +176,7 @@ def test_machine_projection_and_human_item_ids_share_result(card):
     explanation = e.access.explain(first.item_ref)
     encoded = _walk(e.access, explanation._target["location"])
     assert encoded["structure_ref"] == "pdb:1SUX"
-    assert encoded["rule"]["rule"] == "structure_inventory_explanation@3"
+    assert encoded["rule"]["rule"] == "structure_inventory_explanation@4"
     assert _walk(e.access, first.payload_location)["structure_ref"] == "pdb:1SUX"
 
 
@@ -296,8 +296,11 @@ def test_conflicting_qualifiers_and_unretained_support_remain_explicit(card):
     assert item.explain().native_payload["members"][0]["relationship"][
         "qualifier_conflicts"
     ] == {"method": ["X-ray", "NMR"]}
-    frame = e.access.select("structures", fields=[]).page(max_bytes=8192)
-    row = next(r for r in frame["items"] if r["label"] == "pdb:1SUX")
+    selection = e.access.select(
+        "structures", fields=[], where={"structure_ref": "pdb:1SUX"}
+    )
+    frame = selection.page(max_bytes=8192)
+    row = frame["items"][0]
     assert row["interpretation"]["qualifier_conflicts"] == {"method": ["X-ray", "NMR"]}
 
 
@@ -471,8 +474,8 @@ def test_results_and_native_explanations_are_defensive(card):
     i.explain().native_payload["members"].clear()
     assert i.cells["chains"].value == ["A", "B"]
     assert i.explain().native_payload["members"]
-    page = e.access.select("structures").page(max_bytes=8192)
+    page = e.access.select("structures", fields=[]).page(max_bytes=8192)
     page["items"][0]["interpretation"].clear()
-    assert e.access.select("structures").page(max_bytes=8192)["items"][0][
+    assert e.access.select("structures", fields=[]).page(max_bytes=8192)["items"][0][
         "interpretation"
     ]

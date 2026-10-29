@@ -25,7 +25,7 @@ the Sabueso version that built the cards, so two assemblies of unchanged knowled
 the same ``content_id`` even when the sources were read again (``same_knowledge``).
 
 What each aspect asks the sources for, and which knowledge areas it covers, is fixed by
-the mapping (``packet_aspects@13`` now). It never changes once published: a change is a new
+the mapping (``packet_aspects@14`` now). It never changes once published: a change is a new
 version, and a test pins what each version asks. ``@1`` was published in 0.6.0; ``@2``
 (0.7.0) adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83), and MONDO's
 disease identity and the grouped diseases to ``disease_association`` (#90). ``@3``
@@ -86,7 +86,7 @@ FULL_VIEWS = {
     "biological_context": (),
     "orthology": (),
 }
-ASPECT_MAPPING = "packet_aspects@13"
+ASPECT_MAPPING = "packet_aspects@14"
 #: Aspect mappings a packet can carry; packets of different mappings are not compared.
 #: ``@3`` adds KLIFS and GPCRdb (identity, structures, ligand sites, sequence features),
 #: SAbDab (structures) and the ``orthology`` aspect (OMA), which a query asks for by
@@ -395,9 +395,21 @@ def card_content_id(card: Any) -> str:
 
 def _areas(aspect, mapping=ASPECT_MAPPING):
     original = ASPECTS[aspect]["areas"]
-    if aspect == "structures" and mapping == "packet_aspects@13":
-        return (*original, "identifiers.uniprot")
-    if aspect == "oligomer" and mapping in ("packet_aspects@12", "packet_aspects@13"):
+    if aspect == "structures" and mapping in ("packet_aspects@13", "packet_aspects@14"):
+        return (
+            *original,
+            "identifiers.uniprot",
+            *(
+                ("sequence.primary", "sequence.length")
+                if mapping == "packet_aspects@14"
+                else ()
+            ),
+        )
+    if aspect == "oligomer" and mapping in (
+        "packet_aspects@12",
+        "packet_aspects@13",
+        "packet_aspects@14",
+    ):
         return (
             *original,
             "relationships.has_structure",
@@ -411,7 +423,8 @@ def _areas(aspect, mapping=ASPECT_MAPPING):
 def _in_areas(area: str, aspects: Iterable[str], *, mapping=ASPECT_MAPPING) -> bool:
     return any(
         (area == prefix or area.startswith(prefix + "."))
-        if mapping in ("packet_aspects@12", "packet_aspects@13") and a == "oligomer"
+        if mapping in ("packet_aspects@12", "packet_aspects@13", "packet_aspects@14")
+        and a == "oligomer"
         else area.startswith(prefix)
         for a in aspects
         for prefix in _areas(a, mapping)
@@ -479,8 +492,12 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
             predicted = predicted_structures_view(card)
         else:
             predicted = card.predicted_structures()
-        if mapping == "packet_aspects@13":
+        if mapping == "packet_aspects@14":
             experimental = card.structures()
+        elif mapping == "packet_aspects@13":
+            from .structures import _declaration_view
+
+            experimental = _declaration_view(card)
         else:
             # Original @1 declaration semantics; do not apply current admission
             # when reconstructing the support of an explicitly older packet.
@@ -492,15 +509,26 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
             "predicted": predicted,
             **_fields(card, STRUCTURE_FIELDS),
             **(
-                _fields(card, ["identifiers.uniprot"])
-                if mapping == "packet_aspects@13"
+                _fields(
+                    card,
+                    [
+                        "identifiers.uniprot",
+                        *(
+                            ("sequence.primary", "sequence.length")
+                            if mapping == "packet_aspects@14"
+                            else ()
+                        ),
+                    ],
+                )
+                if mapping in ("packet_aspects@13", "packet_aspects@14")
                 else {}
             ),
         }
     if aspect == "oligomer":
         rule = (
             "interface_site_agreement@3"
-            if mapping in ("packet_aspects@12", "packet_aspects@13")
+            if mapping
+            in ("packet_aspects@12", "packet_aspects@13", "packet_aspects@14")
             else "interface_site_agreement@2"
         )
         return {
@@ -602,7 +630,8 @@ def _index(aspect: str, card: Any, *, mapping=ASPECT_MAPPING) -> Dict[str, Any]:
         matches = (
             path in field_areas
             if aspect == "oligomer"
-            and mapping in ("packet_aspects@12", "packet_aspects@13")
+            and mapping
+            in ("packet_aspects@12", "packet_aspects@13", "packet_aspects@14")
             else path.startswith(tuple(field_areas))
         )
         if path.count(".") != 1 or not matches:
@@ -668,17 +697,23 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
         "identity": [identity_audit.IDENTITY_RULE],
         "structures": [
             structures.COVERAGE_CLASS_RULE,
-            structures.STATE_RULE,
+            structures.STATE_RULE
+            if mapping == "packet_aspects@14"
+            else "structure_state@2",
             structures.INVENTORY_RULE
+            if mapping == "packet_aspects@14"
+            else "structure_inventory@2"
             if mapping == "packet_aspects@13"
             else "structure_inventory@1",
         ],
         "oligomer": [
             oligomer.PARTNER_RULE
-            if mapping in ("packet_aspects@12", "packet_aspects@13")
+            if mapping
+            in ("packet_aspects@12", "packet_aspects@13", "packet_aspects@14")
             else "interface_partner_class@1",
             oligomer.AGREEMENT_RULE
-            if mapping in ("packet_aspects@12", "packet_aspects@13")
+            if mapping
+            in ("packet_aspects@12", "packet_aspects@13", "packet_aspects@14")
             else "interface_site_agreement@2",
             interface_mutations.RULE,
         ],
@@ -703,11 +738,15 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
         else [diseases.RULE, "disease_identity_coverage@1"],
         "literature": [STRUCTURE_MENTION_RULE],
     }
-    if mapping == "packet_aspects@13":
+    if mapping in ("packet_aspects@13", "packet_aspects@14"):
         from .experimental_structure_admission_v1 import RULE as ADMISSION_RULE
 
         rules["structures"].append(ADMISSION_RULE)
-    if mapping in ("packet_aspects@12", "packet_aspects@13"):
+    if mapping == "packet_aspects@14":
+        from .experimental_coordinates_v1 import RULE as COORDINATE_RULE
+
+        rules["structures"].extend([COORDINATE_RULE, "ligand_site_coordinate_scope@1"])
+    if mapping in ("packet_aspects@12", "packet_aspects@13", "packet_aspects@14"):
         rules["oligomer"].extend(
             [
                 oligomer.SCOPE_RULE,

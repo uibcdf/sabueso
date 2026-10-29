@@ -18,6 +18,7 @@ from sabueso.core.card_exploration_storage import _seal
 from sabueso.core.deck import Deck
 from sabueso.core.errors import ArgumentError, StorageError
 from sabueso.core.experimental_structure_admission_v1 import decision
+from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 
 PUBLIC = Path("temp_data/frozen_cards/schema_0.3.9__P52270.json")
 
@@ -34,7 +35,14 @@ def offline(monkeypatch):
 
 @pytest.fixture
 def card():
-    result = Card.from_dict(json.loads(PUBLIC.read_text(encoding="utf-8")))
+    result, _ = sabueso.resolve(
+        "P52270",
+        structures=["1SUX"],
+        resolver=EntityResolver(
+            FixtureUniProtClient("temp_data"),
+            rcsb_client=FixtureRCSBClient("temp_data"),
+        ),
+    )
     result.relationship_store.store = {
         key: row
         for key, row in result.relationship_store.store.items()
@@ -131,7 +139,7 @@ def test_missing_foreign_or_alias_subject_never_enters_focal_state(card, subject
     assert unplaced["relationship_location"]["snapshot_id"] == card.snapshot_id()
     assert all(s["state"] == "present" for s in unplaced["source_assertions"])
     inventory = Deck([card]).structure_inventory(regions=[96])
-    assert inventory["rule"]["rule"] == "structure_inventory@2"
+    assert inventory["rule"]["rule"] == "structure_inventory@3"
     assert len(inventory["items"]) == 1
     assert inventory["unplaced"][card.id] == view["unplaced"]
     assert sum(len(g["structures"][card.id]) for g in inventory["states"]) == 1
@@ -258,7 +266,7 @@ def test_human_agent_region_and_packet_share_admission_and_originals(card, tmp_p
             sabueso.KnowledgeQuery("P52270", aspects=["structures"], detail=detail),
             card,
         )
-        assert packet.to_dict()["aspect_mapping"] == "packet_aspects@13"
+        assert packet.to_dict()["aspect_mapping"] == "packet_aspects@14"
         if detail == "full":
             native = packet.facts["structures"]["subject"]["experimental"]
             assert len(native["items"]) == 1
@@ -345,7 +353,7 @@ view = sabueso.read_exploration(sys.argv[1])
 assert len(view.items()) == 1
 assert view.exclusions[0]['status'] == 'unplaced'
 assert view.exclusions[0]['explanation']['members'][0]['relationship']['id'] == sys.argv[2]
-assert view.items()[0].explain().native_payload['rule']['rule'] == 'structure_inventory_explanation@3'
+assert view.items()[0].explain().native_payload['rule']['rule'] == 'structure_inventory_explanation@4'
 assert 'experimental_structure_admission@1' in view.validation['verified_scientific_rules']
 s = view.explorer.access.select('structures', fields=[])
 page = s.page(max_bytes=8192)
@@ -372,7 +380,7 @@ def test_resealed_unplaced_scope_and_support_changes_are_refused(card, tmp_path,
         for v in bundle["objects"].values()
         if isinstance(v, dict)
         and v.get("context", {}).get("explanation_rule")
-        == "structure_inventory_explanation@3"
+        == "structure_inventory_explanation@4"
         and "explanations" in v
     )
     record = wire["native_payload"]["unplaced"][card.id][0]

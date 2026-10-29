@@ -100,7 +100,7 @@ def test_structural_selection_quantity_detail_sources_and_return(card, tmp_path)
     assert puw.get_value(detail.native_payload["resolution"], to_unit="angstrom") == 2.0
     source = item.explain()
     assert source.back() is saved
-    assert source.native_payload["rule"]["rule"] == "structure_inventory_explanation@3"
+    assert source.native_payload["rule"]["rule"] == "structure_inventory_explanation@4"
     assert source.native_payload["card_ref"] == saved.context["card_ref"]
     assert any(i.cells["role"].value == "source" for i in item.related().items())
     detail.save(tmp_path / "detail.json")

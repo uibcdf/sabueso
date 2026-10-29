@@ -65,9 +65,16 @@ source and release receipts remain unchanged.
    Inspect its broader local and exact-head hosted qualification in the owning
    issue before claiming closure or advancing scientific routes. Admission alone does
    not establish an original coordinate/sequence mapping.
-   Next address the observed [original coordinate/reference gap](pending_bugs/experimental_structure_coordinates.md)
-   (#170): a selected sequence contradicting original support can still receive
-   positive regional coverage. Keep this separate from declaration admission.
+   #169 is qualified at `5b9de48537a4f9059c0b63726348acccf2fe8cf5`:
+   7,606 full local-original cases /2,733.57s, unskipped CI 15/15 and governance
+   1/1, with complete receptor captures. Its SDK is `0.14.0+122.g5b9de48`.
+   The following [original coordinate/reference correction](pending_bugs/experimental_structure_coordinates.md)
+   (#170) uses coordinate @1,
+   state/inventory @3, explanation @4 and packet @14. It rejects unsupported
+   residue comparisons while preserving originals and frozen old readers. This
+   source's selected/full-local and exact-head hosted qualification is recorded
+   in #170. Verify that source-bound receipt before expanding scientific routes;
+   do not transfer an earlier green result to changed runtime bytes.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed

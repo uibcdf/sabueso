@@ -270,6 +270,38 @@ def _region_text(native):
     )
 
 
+def _coordinate_reason(reason):
+    if reason == "original_polymer_inputs_unavailable":
+        return "the original experimental mapping inputs were not retained"
+    if reason in {
+        "canonical_identity_sequence_or_length_unavailable",
+        "canonical_source_support_unavailable",
+        "native_canonical_value_differs",
+        "conflicting_canonical_source_values",
+    }:
+        return (
+            "the retained sequence or identity lacks matching original source support"
+        )
+    if reason in {
+        "conflicting_canonical_inputs",
+        "invalid_or_conflicting_canonical_revision",
+    }:
+        return "the reference sequence, identity or revision is conflicting or invalid"
+    if reason in {
+        "structure_source_support_unavailable",
+        "structure_source_scope_incompatible",
+        "native_structure_source_differs",
+    }:
+        return "original experimental support is missing or belongs to a different source scope"
+    if reason in {
+        "recorded_coordinate_projection_differs",
+        "conflicting_coordinate_qualifiers",
+        "conflicting_original_coordinate_projections",
+    }:
+        return "the retained residue projection conflicts with its original inputs"
+    return "the original experimental residue numbering is incomplete, ambiguous or invalid"
+
+
 def _structural_support(context):
     native, support = context["native"], context["support"]
     status = native.get("status")
@@ -307,6 +339,18 @@ def _structural_support(context):
         )
     )
     item = native.get("item") or {}
+    coordinate = item.get("coordinate_scope")
+    if isinstance(coordinate, dict):
+        if coordinate["status"] == "comparable":
+            lines.append(
+                "Comparison uses the source-declared accession axis and the retained source-backed sequence; the structure-reference revision is not stated."
+            )
+        else:
+            lines.append(
+                "Residue comparison not computed: "
+                + _coordinate_reason(coordinate.get("reason"))
+                + ". Open related() for the original declaration and source inputs; unknown completeness is not missing residues."
+            )
     state = item.get("state") or {}
     labels = {
         "method": "Method",
@@ -487,9 +531,9 @@ def _parts(view):
         opening.append(
             f"{len(scientific.wire['exclusions'])} scientific exclusions; inspect exclusions for original reasons."
         )
-        if (
-            scientific.wire["context"].get("explanation_rule")
-            == "structure_inventory_explanation@3"
+        if scientific.wire["context"].get("explanation_rule") in (
+            "structure_inventory_explanation@3",
+            "structure_inventory_explanation@4",
         ):
             unplaced = sum(
                 row.get("status") == "unplaced" for row in scientific.wire["exclusions"]
@@ -497,6 +541,18 @@ def _parts(view):
             if unplaced:
                 opening.append(
                     f"{unplaced} retained declarations cannot be assigned to this protein; inspect exclusions for their reasons and original source support."
+                )
+        if (
+            scientific.wire["context"].get("explanation_rule")
+            == "structure_inventory_explanation@4"
+        ):
+            unknown = sum(
+                row["coordinate_scope"]["status"] != "comparable"
+                for row in scientific.wire["native_payload"].get("items", [])
+            )
+            if unknown:
+                opening.append(
+                    f"{unknown} declarations lack verified original residue numbering; regional completeness and sequence comparisons remain unknown. Open an item and explain() for its reason and original source links."
                 )
         for row in scientific.wire["coverage"].get("rows", [])[:4]:
             opening.append(

@@ -123,8 +123,13 @@ def test_explicit_region_question_reuses_native_result_and_machine_selection(
     item = selected.items()[0]
     assert item.open().back() is selected and item.explain().back() is selected
     assert item.explain().request == answer.request
-    assert item.open().native_payload["missing_in_region"] == {"A": [], "B": []}
-    assert item.open().native_payload["complete_chains"] == ["A", "B"]
+    assert answer.outcome["status"] == "not_computed"
+    assert item.open().native_payload["missing_in_region"] is None
+    assert item.open().native_payload["complete_chains"] is None
+    assert (
+        item.open().native_payload["coordinate_scope"]["reason"]
+        == "original_polymer_inputs_unavailable"
+    )
     assert (
         explorer.answer("region_coverage", options=options).result_ref
         == answer.result_ref

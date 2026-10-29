@@ -383,7 +383,7 @@ class Deck:
         skip_digestion: bool = False,
     ) -> Dict[str, Any]:
         """The experimental structures of the deck's protein cards, side by side and
-        grouped by state (rule ``structure_inventory@2``); see
+        grouped by state (rule ``structure_inventory@3``); see
         ``sabueso.core.structures.structure_inventory``.
 
         - ``regions``: one region (UniProt positions and ``[begin, end]`` ranges) for
@@ -391,7 +391,9 @@ class Deck:
         - ``group_by``: the keys of a group (default: every state key), e.g.
           ``("method", "coverage", "sequence", "ligands:interest", "substitutions")``.
         - ``residue_maps`` and ``reference``: ``{card_id: {position: reference
-          position}}``, placing substitutions in the reference card's numbering.
+          position}}``, placing substitutions in an original source-backed reference
+          Card's numbering. Supplied mappings must be one-to-one and in bounds;
+          they do not establish molecular identity.
 
         Unplaced declarations retain their original records and admission reasons.
         Protein card ids must be distinct; equal ids cannot identify separate rows.

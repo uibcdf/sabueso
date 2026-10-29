@@ -17,6 +17,7 @@ from sabueso.core.card import Card
 from sabueso.core.card_exploration_storage import _seal
 from sabueso.core.deck import Deck
 from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 
 
 def forbidden(*a, **k):
@@ -31,12 +32,13 @@ def offline(monkeypatch):
 
 @pytest.fixture
 def card():
-    c = Card.from_dict(
-        json.loads(
-            Path("temp_data/frozen_cards/schema_0.3.9__P52270.json").read_text(
-                encoding="utf-8"
-            )
-        )
+    c, _ = sabueso.resolve(
+        "P52270",
+        structures=["1SUX"],
+        resolver=EntityResolver(
+            FixtureUniProtClient("temp_data"),
+            rcsb_client=FixtureRCSBClient("temp_data"),
+        ),
     )
     c.relationship_store.store = {
         k: r
@@ -58,10 +60,33 @@ def explanation(card, **options):
     return Deck([card]).explain(card.id, structure_ref="pdb:1SUX", **options)
 
 
+def historical_explanation(cards, card_id, **options):
+    """Exercise the frozen @3 policy with deliberately unsupported synthetic edits."""
+    from sabueso.core.card_structure_history_v3 import (
+        _v2_structure_inventory,
+        explain_original,
+    )
+
+    inventory_options = {
+        k: v
+        for k, v in options.items()
+        if k not in ("structure_ref", "relationship_id")
+    }
+    inventory = _v2_structure_inventory(cards, **inventory_options)
+    return explain_original(
+        cards,
+        card_id,
+        options["structure_ref"],
+        inventory,
+        relationship_id=options.get("relationship_id"),
+        **{k: v for k, v in inventory_options.items() if k != "group_by"},
+    )
+
+
 def test_default_ambiguity_and_exact_public_deck_selection_keep_original_candidates(
     card,
 ):
-    second = duplicate(card, chains=["SYNTHETIC_SECOND"])
+    second = duplicate(card, released="SYNTHETIC_SECOND")
     original = card.to_dict()
     ambiguous = explanation(card)
     assert ambiguous["status"] == "ambiguous"
@@ -80,8 +105,8 @@ def test_default_ambiguity_and_exact_public_deck_selection_keep_original_candida
         == selected["relationship_id"]
         == second["id"]
     )
-    assert selected["item"]["chains"] == ["SYNTHETIC_SECOND"]
-    assert selected["rule"]["rule"] == "structure_inventory_explanation@3"
+    assert selected["item"]["released"] == "SYNTHETIC_SECOND"
+    assert selected["rule"]["rule"] == "structure_inventory_explanation@4"
     assert selected["rule"]["parameters"]["relationship_id"] == second["id"]
     assert (
         len(selected["members"]) == 2
@@ -103,7 +128,19 @@ def test_different_states_never_import_same_label_sibling_support(card, keys):
         {"reference": "A", "residue": "G", "position": 1}
     ]
     for row in card.relationship_store.store.values():
-        selected = explanation(card, relationship_id=row["id"], group_by=keys)
+        # The current policy refuses unsupported synthetic coordinate qualifiers.
+        if row["id"] == second["id"]:
+            assert (
+                explanation(card, relationship_id=row["id"], group_by=keys)["status"]
+                == "not_inventoried"
+            )
+        selected = historical_explanation(
+            [card],
+            card.id,
+            structure_ref="pdb:1SUX",
+            relationship_id=row["id"],
+            group_by=keys,
+        )
         assert selected["status"] == "grouped"
         assert {m["relationship"]["id"] for m in selected["members"]} == {row["id"]}
         assert selected["item"]["state"]["in_complex"] == bool(
@@ -174,13 +211,18 @@ def test_selector_requires_structure_context_and_never_falls_back_to_another_id(
 
 
 def test_human_agent_and_original_source_navigation_share_exact_duplicate_rows(card):
-    duplicate(card, chains=["SYNTHETIC_SECOND"])
+    duplicate(card, released="SYNTHETIC_SECOND")
     explorer = card.explore()
     view = explorer.view("structures")
     selection = explorer.access.select("structures", fields=[])
     page = selection.page(max_bytes=8192)
     assert page["page"]["total"] == 2
-    assert {i["item_ref"] for i in page["items"]} == {i.item_ref for i in view.items()}
+    seen, cursor = list(page["items"]), page["page"]["next_cursor"]
+    while cursor:
+        page = selection.page(max_bytes=8192, cursor=cursor)
+        seen.extend(page["items"])
+        cursor = page["page"]["next_cursor"]
+    assert {i["item_ref"] for i in seen} == {i.item_ref for i in view.items()}
     assert selection.result_ref == view.result_ref
     for item in view.items():
         row = item.open().native_payload
@@ -224,7 +266,7 @@ def audit(event,args):
  if event=='open' and 'temp_data' in str(args[0]):forbidden()
 sys.addaudithook(audit)
 v=sabueso.read_exploration(sys.argv[1],expected_digest=sys.argv[2])
-assert 'structure_inventory_explanation@3' in v.validation['verified_scientific_rules']
+assert 'structure_inventory_explanation@4' in v.validation['verified_scientific_rules']
 assert len(v.items())==2
 for i in v.items():
  p=i.explain().native_payload
@@ -260,7 +302,7 @@ def test_resealed_duplicate_semantic_substitution_is_refused(card, tmp_path, par
         for v in bundle["objects"].values()
         if isinstance(v, dict)
         and v.get("context", {}).get("explanation_rule")
-        == "structure_inventory_explanation@3"
+        == "structure_inventory_explanation@4"
         and "explanations" in v
     )
     keys = list(wire["explanations"])
@@ -332,11 +374,16 @@ def test_cross_card_same_ids_and_explicit_maps_keep_exact_original_group_members
         "relationship_id": first["id"],
         "group_by": ["substitutions"],
     }
-    unaligned = deck.explain(card.id, **options)
+    assert deck.explain(card.id, **options)["status"] == "not_inventoried"
+    unaligned = historical_explanation(deck.cards, card.id, **options)
     assert len(unaligned["members"]) == 2
     assert {m["card_ref"] for m in unaligned["members"]} == {card.pinned_ref()}
-    aligned = deck.explain(
-        card.id, **options, residue_maps={other.id: {2: 1}}, reference=card.id
+    aligned = historical_explanation(
+        deck.cards,
+        card.id,
+        **options,
+        residue_maps={other.id: {2: 1}},
+        reference=card.id,
     )
     assert aligned["group"]["shared"]
     assert aligned["group"]["state"]["substitutions"] == ["1G"]

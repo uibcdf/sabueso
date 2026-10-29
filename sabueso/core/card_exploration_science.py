@@ -17,6 +17,7 @@ RULES = (
     "structure_inventory_explanation@1",
     "structure_inventory_explanation@2",
     "structure_inventory_explanation@3",
+    "structure_inventory_explanation@4",
 )
 
 
@@ -158,6 +159,8 @@ def _result_ref(access, wire):
         native["rule"] = _rule_identity(native["rule"])
     if "admission_rule" in native:
         native["admission_rule"] = _rule_identity(native["admission_rule"])
+    if "coordinate_rule" in native:
+        native["coordinate_rule"] = _rule_identity(native["coordinate_rule"])
     coverage = deepcopy(wire["coverage"])
     if "rule" in coverage:
         coverage["rule"] = _rule_identity(coverage["rule"])
@@ -210,7 +213,11 @@ def _verify_objects(bundle, accesses):
             "Saved scientific result identity differs.",
         )
         options = _options(wire["context"]["options"])
-        if wire["context"].get("explanation_rule") == RULES[4]:
+        if wire["context"].get("explanation_rule") == RULES[5]:
+            from .card_structure_history_v4 import expected_structures
+
+            expected = expected_structures(_OriginalContext(access), options)
+        elif wire["context"].get("explanation_rule") == RULES[4]:
             from .card_structure_history_v3 import expected_structures
 
             expected = expected_structures(_OriginalContext(access), options)
@@ -266,6 +273,10 @@ def _verify_objects(bundle, accesses):
                 from .card_structure_history_v3 import _v2_structure_inventory
 
                 inventory_reader = _v2_structure_inventory
+            if rule == RULES[5]:
+                from .card_structure_history_v4 import _v3_structure_inventory
+
+                inventory_reader = _v3_structure_inventory
             inventory = inventory_reader(
                 [card],
                 regions=params["regions"],
@@ -287,6 +298,10 @@ def _verify_objects(bundle, accesses):
                 explain = explain_original
             elif rule == RULES[4]:
                 from .card_structure_history_v3 import explain_original
+
+                explain = explain_original
+            if rule == RULES[5]:
+                from .card_structure_history_v4 import explain_original
 
                 explain = explain_original
             expected = explain(

@@ -225,7 +225,9 @@ def test_unknown_cells_are_excluded_and_sort_last_in_both_directions():
     access = card.access()
     for descending in (False, True):
         ordered = access.select(
-            "structures", order_by={"column": "resolution", "descending": descending}
+            "structures",
+            fields=[],
+            order_by={"column": "resolution", "descending": descending},
         )
         assert (
             list(pages(ordered, max_bytes=8192))[-1]["items"][-1]["label"] == "pdb:1SUX"
@@ -245,11 +247,13 @@ def test_quantity_policy_and_caller_mutation_do_not_change_captured_selection(ex
     where = {"resolution": puw.quantity(0.2, "nanometer")}
     order = {"column": "resolution", "unit": "nanometer"}
     with puw.context(standard_units=["nm", "ps", "K", "mole", "gram"]):
-        selection = explorer.access.select("structures", where=where, order_by=order)
-        before = selection.page(max_bytes=8192)
+        selection = explorer.access.select(
+            "structures", fields=["resolution"], where=where, order_by=order
+        )
+        before = selection.page(max_bytes=16384)
         where["resolution"] = puw.quantity(9, "angstrom")
         order["unit"] = "second"
-        assert selection.page(max_bytes=8192) == before
+        assert selection.page(max_bytes=16384) == before
         assert all(
             QuantityRecord.from_dict(i["cells"]["resolution"]["value"]).to_quantity(
                 field="relationships.has_structure.resolution", unit="angstrom"

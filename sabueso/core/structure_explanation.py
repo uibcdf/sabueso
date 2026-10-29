@@ -12,7 +12,7 @@ from typing import Any, Dict, Sequence
 from .relationship_store import make_derivation
 from .structures import coverage_derivation, state_derivation, structures_view
 
-EXPLANATION_RULE = "structure_inventory_explanation@3"
+EXPLANATION_RULE = "structure_inventory_explanation@4"
 
 
 def _support(card: Any, relationship: Dict[str, Any], pin: str) -> Dict[str, Any]:
@@ -80,7 +80,7 @@ def explain_structure_inventory(
     Group support follows original inventory row identifiers and state keys.
     Equal PDB labels never select or multiply another declaration's support.
     """
-    from .structure_explanation_scope_v3 import evaluate
+    from .structure_explanation_scope_v4 import evaluate
 
     return evaluate(
         cards,

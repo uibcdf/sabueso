@@ -31,6 +31,14 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Risks
 
+- **Region expansion before reference admission ([#171](https://github.com/uibcdf/sabueso/issues/171)):**
+  native argument and exploration option normalizers expand inclusive ranges before
+  checking focal sequence bounds. Code inspection establishes the missing allocation
+  guard; excessive RAM/swap from enormous endpoints is a suspected consequence,
+  not an executed exhaustion experiment. #170's native bound refusal does not bound
+  the preceding public normalization. Define bounded receiving under #148/#167
+  before workload acceptance; never silently clip a scientific request.
+
 - **Accumulated exploration cost (#167/#148):** the same retained Card/root view
   has a 3.35 MiB fresh source-only artifact and a 119.64 MiB accumulated guide
   artifact. Their formats/history differ; the latter retains 4,031 views and

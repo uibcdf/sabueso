@@ -34,10 +34,14 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping. Development uses `packet_aspects@13`: experimental structures use
-`experimental_structure_admission@1` and inventory `@2`. Unplaced declarations
+by a named, versioned mapping. Development uses `packet_aspects@14`: experimental structures use
+`experimental_structure_admission@1`, `experimental_structure_coordinates@1`
+and inventory `@3`. Original canonical sequence support and retained experimental
+mapping inputs must admit coordinate comparisons; unknown scope stays uncomputed.
+Unplaced declarations
 retain their original records, reasons and support without entering focal groups.
-Full/index support includes the retained identity dependency. Original `@12`
+Full/index support includes the retained identity and canonical sequence dependencies.
+Original `@13` declaration-only coordinate projections and original `@12`
 experimental projections keep their earlier declaration semantics. Inherited
 quaternary interpretation preserves all
 subject-bound structure declarations and self-interface/family pairs, with

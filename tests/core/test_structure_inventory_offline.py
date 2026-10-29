@@ -132,7 +132,10 @@ def test_structures_without_state_say_why(cards):
     reasons = {
         e["structure_ref"]: e["reason"] for e in inventory["not_inventoried"][TCTIM]
     }
-    assert reasons == {"pdb:1CI1": "not_found"}
+    assert reasons == {
+        "pdb:1CI1": "not_found",
+        "pdb:2V5B": "conflicting_coordinate_qualifiers",
+    }
     # Peptide complexes are excluded, and the exclusion is reported.
     assert "pdb:1KLG" in inventory["excluded"][HSTIM]
 
@@ -241,7 +244,7 @@ def test_the_oligomer_is_the_one_the_authors_defined(cards):
         "author",
     )
     assert item["oligomer_disagreement"] is False
-    assert tc.structures()["state_rule"]["rule"] == STATE_RULE == "structure_state@2"
+    assert tc.structures()["state_rule"]["rule"] == STATE_RULE == "structure_state@3"
 
 
 def test_a_partial_rcsb_entry_is_kept_and_reported(tmp_path):
@@ -296,7 +299,9 @@ def test_substitutions_are_given_in_the_authors_numbering_too(cards):
     # 2V5B renumbers the swapped loop: UniProt 69-71 are the authors' 76-78.
     from sabueso.mappings.rcsb_structures import author_position
 
-    numbering = _item(tc, "pdb:2V5B")["author_numbering"]["A"]
+    assert _item(tc, "pdb:2V5B")["author_numbering"] is None
+    # The original declaration remains inspectable despite conflicting coordinate scope.
+    numbering = _qualifiers(tc, "pdb:2V5B")["author_numbering"]["A"]
     assert [author_position(numbering, p) for p in (68, 69, 71, 80)] == [
         "68",
         "76",

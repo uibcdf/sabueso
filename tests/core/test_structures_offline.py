@@ -67,7 +67,7 @@ def test_a9_human_tim_structures_exclude_peptide_complexes_visibly():
     hti = _item(view, "pdb:1HTI")
     assert (hti["chains"], hti["ranges"], hti["coverage"]) == (
         ["A", "B"],
-        [[2, 249]],
+        None,
         0.996,
     )
     assert (hti["coverage_class"], hti["method"]) == ("full_length", "X-ray")
@@ -78,7 +78,7 @@ def test_a9_human_tim_structures_exclude_peptide_complexes_visibly():
     klg = _item(card.structures(include_fragments=True), "pdb:1KLG")
     assert (klg["chains"], klg["ranges"], klg["coverage"], klg["coverage_class"]) == (
         ["C"],
-        [[23, 37]],
+        None,
         0.06,
         "fragment_or_peptide",
     )
@@ -91,12 +91,16 @@ def test_a10_tcruzi_tim_structures_include_a_loop_deletion_construct():
 
     tcd = _item(view, "pdb:1TCD")
     assert (tcd["ranges"], tcd["coverage"], tcd["coverage_class"]) == (
-        [[3, 251]],
+        None,
         0.992,
         "full_length",
     )
     q37 = _item(view, "pdb:3Q37")
-    assert q37["ranges"] == [[3, 18], [44, 100], [123, 251]]
+    assert q37["ranges"] is None
+    assert q37["coordinate_scope"]["reason"] == "original_polymer_inputs_unavailable"
+    assert card.relationships("has_structure", object_ref="pdb:3Q37")[0]["qualifiers"][
+        "ranges"
+    ] == [[3, 18], [44, 100], [123, 251]]
     assert (q37["coverage"], q37["coverage_class"]) == (0.805, "partial")
 
 

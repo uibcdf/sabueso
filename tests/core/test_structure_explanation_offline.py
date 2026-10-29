@@ -49,11 +49,12 @@ def test_a_shared_group_has_pinned_support_for_every_member(
     )
     assert {rule["rule"] for rule in why["rules"]} == {
         "structure_coverage_class@1",
-        "structure_state@2",
-        "structure_inventory@2",
+        "structure_state@3",
+        "structure_inventory@3",
         "experimental_structure_admission@1",
+        "experimental_structure_coordinates@1",
     }
-    assert why["rule"]["rule"] == "structure_inventory_explanation@3"
+    assert why["rule"]["rule"] == "structure_inventory_explanation@4"
     assert why["rule"]["inputs"] == [card.pinned_ref() for card in deck.cards]
     assert why["item"]["complete_chains"] == ["A", "B"]
     assert {member["structure_ref"] for member in why["members"]} == {
@@ -91,7 +92,9 @@ def test_a_shared_group_has_pinned_support_for_every_member(
 
 def test_author_assemblies_and_disagreements_stay_inspectable(deck):
     why = deck.explain(TC, structure_ref="pdb:2V5B")
-    assert why["group"]["state"]["oligomer"] == "Monomer"
+    assert why["status"] == "not_inventoried"
+    assert why["coordinate_scope"]["reason"] == "conflicting_coordinate_qualifiers"
+    assert why["item"]["state"]["oligomer"] == "Monomer"
     assert why["item"]["oligomer_basis"] == "author"
     assert why["item"]["oligomer_disagreement"] is True
     support = next(m for m in why["members"] if m["structure_ref"] == "pdb:2V5B")
@@ -115,6 +118,7 @@ def test_excluded_unknown_and_unrecorded_are_distinct(deck):
     included = deck.explain(HS, structure_ref="pdb:1KLG", include_fragments=True)
     assert included["status"] == "grouped"
     assert included["group"]["state"]["coverage"] == "fragment_or_peptide"
+    assert included["coordinate_scope"]["status"] == "comparable"
     unknown = deck.explain(TC, structure_ref="pdb:1CI1")
     assert (unknown["status"], unknown["reason"]) == ("not_inventoried", "not_found")
     assert unknown["item"]["state"]["sequence"] is None

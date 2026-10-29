@@ -86,7 +86,12 @@ ligand, assembly, chain and author-numbering fields, with explicit field gaps an
 independent original saved reading. The subsequent [relationship-scope correction](pending_bugs/structure_relationship_scope.md)
 (#168) binds experimental explanations/exclusions/group support to exact original
 rows, reports PDB-only ambiguity and retains frozen historical reading. Native
-focal-subject admission remains separately tracked in [#169](https://github.com/uibcdf/sabueso/issues/169).
+focal-subject admission is qualified at `5b9de48` in [#169](https://github.com/uibcdf/sabueso/issues/169).
+The separate [original coordinate/reference correction](pending_bugs/experimental_structure_coordinates.md)
+(#170) checks original support for new comparisons under named coordinate @1,
+inventory/state @3, explanation
+@4 and packet @14; old readers and original source declarations stay unchanged.
+Read its issue for selected/full-local and exact-source hosted qualification.
 
 The [original ligand-parent navigation](pending_proposals/card_ligand_parent_navigation.md)
 adds a direct route from an instance to its exact retained structure declaration,

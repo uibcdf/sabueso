@@ -77,14 +77,15 @@ def coverage_derivation() -> Dict[str, Any]:
     )
 
 
-STATE_RULE = "structure_state@2"
+DECLARED_STATE_RULE = "structure_state@2"
+STATE_RULE = "structure_state@3"
 
 
-def state_derivation() -> Dict[str, Any]:
+def _declared_state_derivation() -> Dict[str, Any]:
     from .relationship_store import make_derivation
 
     return make_derivation(
-        STATE_RULE,
+        DECLARED_STATE_RULE,
         inputs=[
             "has_structure.mutations",
             "has_structure.sequence_differences",
@@ -362,11 +363,11 @@ def _declared_structures_view(
         "items": items,
         "excluded": sorted(excluded),
         "classification": coverage_derivation(),
-        "state_rule": state_derivation(),
+        "state_rule": _declared_state_derivation(),
     }
 
 
-INVENTORY_RULE = "structure_inventory@2"
+INVENTORY_RULE = "structure_inventory@3"
 STATE_KEYS = ("method", "coverage", "sequence", "ligands", "oligomer", "in_complex")
 #: Keys ``group_by`` accepts, beyond the state keys: ``ligands:interest`` reads the
 #: ligand state coarsely (a ligand of interest, none, or unstated: ``no_ligands`` and
@@ -535,7 +536,10 @@ def _declared_structure_inventory(
         for (position, residue), found in sorted(substituted.items())
         if len(found) > 1
     ]
-    parameters: Dict[str, Any] = {"state": list(keys), "state_rule": STATE_RULE}
+    parameters: Dict[str, Any] = {
+        "state": list(keys),
+        "state_rule": DECLARED_STATE_RULE,
+    }
     if residue_maps or reference:
         parameters["reference"] = reference
         parameters["mapped"] = sorted(c for c in maps if c != reference)
@@ -551,24 +555,45 @@ def _declared_structure_inventory(
     }
 
 
+def _declaration_view(card, **options):
+    from .experimental_structure_admission_v1 import view
+    from .relationship_store import make_derivation
+
+    return view(
+        card, summary=_declared_structures_view, rule=make_derivation, **options
+    )
+
+
+def _declaration_inventory(cards, **options):
+    from .experimental_structure_admission_v1 import inventory
+    from .relationship_store import make_derivation
+
+    return inventory(
+        cards, summarize=_declared_structure_inventory, rule=make_derivation, **options
+    )
+
+
+def state_derivation():
+    from .experimental_coordinates_v1 import state_derivation as derive
+    from .relationship_store import make_derivation
+
+    return derive(make_derivation, _declared_state_derivation)
+
+
 def structures_view(
     card: Any, include_fragments: bool = False, region: Sequence[int] | None = None
 ) -> Dict[str, Any]:
-    """Summarize admitted declarations and retain unplaced originals separately.
-
-    Exact Card/relationship subject scope does not establish coordinate coverage.
-    ``unplaced`` keeps original declarations, reasons and typed source locations;
-    ``excluded`` retains the separate optional fragment filter.
-    """
-    from .experimental_structure_admission_v1 import view
+    """Source-bound coordinate interpretation; original declarations remain inspectable."""
+    from .experimental_coordinates_v1 import view
     from .relationship_store import make_derivation
 
     return view(
         card,
         include_fragments=include_fragments,
         region=region,
-        summary=_declared_structures_view,
+        summarize=_declaration_view,
         rule=make_derivation,
+        state=state_derivation,
     )
 
 
@@ -580,13 +605,8 @@ def structure_inventory(
     residue_maps: Dict[str, Dict[int, int]] | None = None,
     reference: str | None = None,
 ) -> Dict[str, Any]:
-    """Inventory @2: group only admitted declarations; keep all unplaced originals.
-
-    Classification, explicit residue maps, state grouping and fragment options keep
-    their existing meanings. Admission scopes declarations, never entity identity
-    merging or the biological validity of retained coordinates.
-    """
-    from .experimental_structure_admission_v1 import inventory
+    """Inventory @3 admits original coordinate/reference inputs before comparisons."""
+    from .experimental_coordinates_v1 import inventory
     from .relationship_store import make_derivation
 
     return inventory(
@@ -596,8 +616,9 @@ def structure_inventory(
         group_by=group_by,
         residue_maps=residue_maps,
         reference=reference,
-        summarize=_declared_structure_inventory,
+        summarize=_declaration_inventory,
         rule=make_derivation,
+        state=state_derivation,
     )
 
 
