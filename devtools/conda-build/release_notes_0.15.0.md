@@ -18,6 +18,8 @@ is established by this draft.
   explanation @4 and packet @14 while preserving earlier named saved readers and
   packet projections. Read #170 for source-bound correction qualification;
   broad researcher acceptance and release qualification remain separate gates.
+  Scientific dossier @3 adopts the coordinate scope with frozen independent
+  verification and preserves original @1/@2 report semantics.
 
 - Preserve exact structural relationships in inventory explanations, source/group
   support and fragment exclusions. Report PDB-only ambiguity with every original

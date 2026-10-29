@@ -12,6 +12,10 @@ The [question-driven usefulness review](scientific_usefulness_review.md) adds
 example `@2` and `stored_assay_context_review@1`, exposing retained native assay/
 target/document fields and explicitly missing qualifiers in the readable dossier.
 Original `@1` remains independently readable without retrofitting new results.
+The [#170 coordinate correction](../pending_bugs/experimental_structure_coordinates.md)
+adds example @3 and `public_structure_review_criteria@2`: original coordinate scope
+is required, unplaced declarations stay separate, and frozen predicates verify
+the full original structural projection. Original @1/@2 retain their own semantics.
 
 Named example rules `public_structure_review_criteria@1` and
 `public_assay_record_review_criteria@1` retain inputs, outcomes and exact
@@ -42,15 +46,16 @@ or selection strategy. Derived rule outputs are not SourceAssertions.
 
 ## Persistence and receiving boundary
 
-`sabueso.scientific_dossier_example@1` and `@2` are example-local. Markdown is generated from
+`sabueso.scientific_dossier_example@1`, `@2` and `@3` are example-local. Markdown is generated from
 saved JSON, with quantities serialized as `{value, unit}`. Original producer SDK/
 Ackredit versions and the executable example hash accompany the results. The
 scientific store retains original and later pins. Runtime sidecars preserve
 source acquisitions and original workflow credit; dossier derivation observation
 is explicitly absent. Original CSL/BibTeX exports remain producer-owned.
 
-The independent reader performs no source acquisition, SDK scientific view,
-reclassification or new credit. It verifies closed membership, exact input pins,
+The independent reader performs no source acquisition, current SDK scientific view
+or new credit. Format @3 uses frozen original predicates only as verifier inputs,
+never replacing a saved result with newly produced knowledge. It verifies closed membership, exact input pins,
 source support, native values/context, declared scopes, recorded decision
 consistency, original workflow union and byte-consistent human output. Rehashed
 manifests do not make altered measurements, units, support or interpretation

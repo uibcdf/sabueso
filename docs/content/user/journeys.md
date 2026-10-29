@@ -136,13 +136,22 @@ selection is performed. Assay eligibility requests direct-target IC50 equality
 with a normalized concentration; experimental comparability requires human
 review. ChEMBL and BindingDB requests are capped at 25 per source.
 
-New format `@2` also displays the stored source record/target, assay identifiers,
+Development format `@3` requires original coordinate/reference support under
+`public_structure_review_criteria@2`. Unknown coordinates remain insufficient
+information; unplaced declarations and their originals stay separate. Its reader
+checks the original projection with frozen predicates, without current scientific
+readers, new acquisition or new credit. Recorded coverage ratios alone do not
+certify the current reference.
+
+Inherited from format `@2`, it also displays the stored source record/target, assay identifiers,
 organism/taxon, confidence, variant annotation, original document pointers and
 measurement notes. `stored_assay_context_review@1` distinguishes fields present
 in the saved qualifiers from fields absent there. It does not infer source absence,
 wild type from missing mutation annotations, or equivalent protocols from shared
-identifiers, descriptions or units. Historical `@1` dossiers retain their original
-rendering; `produce --legacy` exercises that format, and reacquisition keeps it.
+identifiers, descriptions or units. Historical `@1`/`@2` dossiers retain their
+original rules and rendering; `produce --legacy` exercises @1, and
+`produce --legacy 2` replays @2. Reacquisition keeps the original format without
+backfilling the current coordinate interpretation.
 
 The explicit Europe PMC annotation scope retains an actual located HsTIM
 accession mention and its returned fragment. It establishes an occurrence, not

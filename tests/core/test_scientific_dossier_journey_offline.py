@@ -19,14 +19,14 @@ def load(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def invoke(action, output, *extra):
+def invoke(action, output, *extra, forbid_coordinates=False):
     prefix = [sys.executable, str(SCRIPT)]
     if action == "read":
         prefix = [
             sys.executable,
             "-c",
             """
-import runpy,sys
+import os,runpy,sys
 import ackredit,sabueso
 from sabueso.core.card import Card
 from sabueso.core.deck import Deck
@@ -37,6 +37,9 @@ for name in ('resolve','refresh_card','ligand_deck','compose_packet','knowledge_
 for name in ('structures','bioactivities','literature','get_residues','explain_literature','explain_bioactivity','knowledge_state'):
     setattr(Card,name,forbidden)
 Deck.structure_inventory=forbidden
+if os.environ.get('SABUESO_TEST_LEGACY_DOSSIER') == '1':
+    import sabueso.core.experimental_coordinates_v1 as coordinates
+    coordinates.scope=coordinates.view=coordinates.inventory=forbidden
 sabueso.__version__='999.reader'
 script=sys.argv.pop(1)
 sys.path.insert(0,str(__import__('pathlib').Path(script).parent))
@@ -46,6 +49,8 @@ runpy.run_path(script,run_name='__main__')
         ]
     env = os.environ.copy()
     env.pop("PYTHONPATH", None)
+    if forbid_coordinates:
+        env["SABUESO_TEST_LEGACY_DOSSIER"] = "1"
     return subprocess.run(
         [
             *prefix,
@@ -92,6 +97,11 @@ def test_declared_structure_criteria_keep_reference_mutant_fragment_and_unknown_
     assert rows["pdb:2V5B"]["item"]["oligomer_disagreement"] is True
     assert rows["pdb:2V5B"]["item"]["state"]["oligomer"] == "Monomer"
     assert rows["pdb:2V5B"]["checks"]["oligomer"]["status"] == "not_met"
+    assert rows["pdb:2V5B"]["item"]["coordinate_scope"]["status"] == "not_computed"
+    assert rows["pdb:2V5B"]["checks"]["coordinate_scope"]["status"] == "unknown"
+    assert rows["pdb:2V5B"]["item"]["observed"] is None
+    assert rows["pdb:1SUX"]["checks"]["coordinate_scope"]["status"] == "met"
+    assert subject["structures"]["rule"]["rule"] == "public_structure_review_criteria@2"
     assert rows["pdb:2VOM"]["checks"]["sequence"]["status"] == "not_met"
     assert rows["pdb:1KLG"]["checks"]["coverage"]["status"] == "not_met"
     assert any(row["status"] == "insufficient_information" for row in rows.values())
@@ -145,7 +155,7 @@ def test_native_assay_and_document_context_is_visible_without_promoting_comparab
 ):
     report = load(bundle / "original.dossier.json")
     human = (bundle / "original.dossier.md").read_text(encoding="utf-8")
-    assert report["format"] == "sabueso.scientific_dossier_example@2"
+    assert report["format"] == "sabueso.scientific_dossier_example@3"
     rows = [
         row
         for protein in report["proteins"].values()
@@ -183,30 +193,44 @@ def test_native_assay_and_document_context_is_visible_without_promoting_comparab
     assert "missing variant annotation does not establish a wild-type target" in human
 
 
+@pytest.mark.parametrize("version", ["1", "2"])
 def test_historical_dossier_and_reacquisition_keep_original_format_and_eligibility(
     tmp_path,
+    version,
 ):
     output = tmp_path / "legacy"
     for action, options in (
-        ("produce", ("--legacy",)),
+        ("produce", ("--legacy",) if version == "1" else ("--legacy", version)),
         ("read", ()),
         ("reacquire", ()),
         ("read", ()),
     ):
-        result = invoke(action, output, *options)
+        result = invoke(action, output, *options, forbid_coordinates=action == "read")
         assert result.returncode == 0, result.stdout + result.stderr
     original = load(output / "original.dossier.json")
     later = load(output / "later.dossier.json")
     assert (
-        original["format"] == later["format"] == "sabueso.scientific_dossier_example@1"
+        original["format"]
+        == later["format"]
+        == f"sabueso.scientific_dossier_example@{version}"
     )
     assert load(output / "original.reader.json")["original_report"] == original
     assert (
         "Stored assay and document context"
-        not in (output / "original.dossier.md").read_text()
-    )
+        in (output / "original.dossier.md").read_text()
+    ) == (version == "2")
     for protein in original["proteins"].values():
-        assert all("context_review" not in row for row in protein["assays"]["rows"])
+        assert all(
+            ("context_review" in row) == (version == "2")
+            for row in protein["assays"]["rows"]
+        )
+        assert (
+            protein["structures"]["view_rules"]["state"]["rule"] == "structure_state@2"
+        )
+        assert (
+            protein["structures"]["view_rules"]["state"]["sabueso_version"]
+            == original["producer"]["sabueso"]
+        )
     for role in original["proteins"]:
         rows = original["proteins"][role]["assays"]["rows"]
         new_rows = later["proteins"][role]["assays"]["rows"]
@@ -267,6 +291,10 @@ def test_independent_reader_retains_original_producer_results_pins_and_credit_af
         "assay_expected",
         "assay_unknown_reason",
         "coherent_structure_checks",
+        "coordinate_scope",
+        "coordinate_rules",
+        "unknown_coordinates_as_empty",
+        "unplaced",
     ],
 )
 def test_reader_refuses_changed_science_or_overstated_scope_even_when_manifest_is_rehashed(
@@ -281,7 +309,32 @@ def test_reader_refuses_changed_science_or_overstated_scope_even_when_manifest_i
     report = load(report_path)
     subject = report["proteins"]["subject"]
     comparator = report["proteins"]["comparator"]
-    if damage == "quantity":
+    if damage == "coordinate_scope":
+        row = next(
+            row
+            for row in subject["structures"]["rows"]
+            if row["item"]["structure_ref"] == "pdb:1SUX"
+        )
+        row["item"]["coordinate_scope"]["projection_source_assertion_ids"] = []
+    elif damage == "coordinate_rules":
+        subject["structures"]["view_rules"]["coordinates"]["rule"] = (
+            "experimental_structure_coordinates@999"
+        )
+    elif damage == "unknown_coordinates_as_empty":
+        row = next(
+            row
+            for row in subject["structures"]["rows"]
+            if row["item"]["structure_ref"] == "pdb:2V5B"
+        )
+        row["item"]["complete_chains"] = []
+        row["checks"]["region_coordinates"].update(
+            value=False, status="not_met", unknown_reason=None
+        )
+    elif damage == "unplaced":
+        subject["structures"]["unplaced"].append(
+            {"relationship_id": "REL_SYNTHETIC_FOREIGN"}
+        )
+    elif damage == "quantity":
         row = next(
             row
             for row in subject["structures"]["rows"]

@@ -121,7 +121,7 @@ mention; it is not a curated mechanistic finding. An empty annotation response
 does not prove absence from an article. Full-text curation, selectivity,
 molecule prioritization and project Evidence remain outside this example.
 
-The example-local format `sabueso.scientific_dossier_example@2` uses existing SDK
+The example-local format `sabueso.scientific_dossier_example@3` uses existing SDK
 APIs; it introduces no card or shared MOLI schema. Original producer versions
 and the example source hash are recorded. Reacquisition advances stored heads
 while preserving original results, pins, rules and credit. Independent reading
@@ -133,11 +133,20 @@ The reader also verifies each complete criterion record against the pinned assay
 qualifiers or saved structural inputs under its original rule. Rehashing a report
 and regenerating its Markdown cannot turn a failed criterion into a met one, drop
 criteria or invent the reason for an unknown result. This consistency check does
-not authenticate source text or rerun the SDK's structural classifications.
+not authenticate source text. Format @3 checks its retained coordinate projection
+and named rules using frozen original predicates, without calling current SDK
+scientific readers or publishing a replacement result. Review criterion
+`public_structure_review_criteria@2` requires admitted original coordinate/reference
+support; unknown scope stays insufficient information. Unplaced declarations are
+retained separately. Recorded normalized coverage ratios alone do not certify the
+current reference.
 
-Historical `@1` dossiers remain readable in their original shape and rendering.
-`produce --legacy` creates that format; reacquisition retains the original format.
-The context review is added only to new `@2` reports.
+Historical `@1` and `@2` dossiers remain readable in their original shape, rules and
+rendering. `produce --legacy` selects @1; `produce --legacy 2` explicitly replays
+the @2 family. These are policy replays, not purported genuine older producer
+artifacts. Reacquisition retains the original format. Stored assay context remains
+present in @2/@3 and absent in @1; new coordinates are never backfilled into old
+reports.
 
 ### Comparative sequence and tissue support
 

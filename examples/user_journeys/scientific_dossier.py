@@ -17,8 +17,10 @@ from sabueso.tools.db.europepmc import FixtureEuropePMCClient
 from sabueso.tools.db.rcsb import FixtureRCSBClient
 from sabueso.tools.db.unichem import FixtureUniChemClient
 
-FORMAT = "sabueso.scientific_dossier_example@2"
+FORMAT = "sabueso.scientific_dossier_example@3"
+ASSAY_FORMAT = "sabueso.scientific_dossier_example@2"
 LEGACY_FORMAT = "sabueso.scientific_dossier_example@1"
+READABLE_FORMATS = (FORMAT, ASSAY_FORMAT, LEGACY_FORMAT)
 ROLES = {"subject": "P52270", "comparator": "P60174"}
 STRUCTURES = {
     "subject": ["1TCD", "1SUX", "2V5B", "1IIG"],
@@ -33,6 +35,11 @@ STRUCTURE_CRITERIA = {
     "oligomer": "Homo 2-mer",
     "oligomer_basis": "author",
     "region": "completely_supported_source_active_site_positions",
+}
+SCOPED_STRUCTURE_CRITERIA = {
+    **STRUCTURE_CRITERIA,
+    "rule": "public_structure_review_criteria@2",
+    "coordinate_scope": "experimental_structure_coordinates@1",
 }
 ASSAY_CRITERIA = {
     "rule": "public_assay_record_review_criteria@1",
@@ -166,7 +173,17 @@ def structure_checks_v1(item, positions):
     }
 
 
-def structure_review(card):
+def structure_checks_v2(item, positions):
+    checks = structure_checks_v1(item, positions)
+    checks["coordinate_scope"] = check(
+        True if item["coordinate_scope"]["status"] == "comparable" else None,
+        True,
+        unknown="original_reference_or_experimental_coordinate_support_not_admitted",
+    )
+    return checks
+
+
+def structure_review(card, *, report_format=FORMAT):
     pin = card.pinned_ref()
     residues = card.get_residues()
     positions = [
@@ -178,11 +195,29 @@ def structure_review(card):
             for annotation in row["annotations"]
         )
     ]
-    view = card.structures(include_fragments=True, region=positions or None)
+    if report_format == FORMAT:
+        view = card.structures(include_fragments=True, region=positions or None)
+    else:
+        # Explicit older example production retains its original structural policy.
+        from sabueso.core.card_exploration_structure_v1 import _v1_structures_view
+        from sabueso.core.relationship_store import make_derivation
+
+        view = _v1_structures_view(
+            card, include_fragments=True, region=positions or None
+        )
+        for key in ("classification", "state_rule"):
+            original = view[key]
+            view[key] = make_derivation(
+                original["rule"],
+                inputs=original["inputs"],
+                parameters=original["parameters"],
+            )
     rows = []
     for item in view["items"]:
         relationship = card.relationship_store.get(item["relationship_id"])
-        checks = structure_checks_v1(item, positions)
+        checks = (
+            structure_checks_v2 if report_format == FORMAT else structure_checks_v1
+        )(item, positions)
         rows.append(
             {
                 **binding(card, relationship, pin),
@@ -194,7 +229,9 @@ def structure_review(card):
             }
         )
     return {
-        "rule": deepcopy(STRUCTURE_CRITERIA),
+        "rule": deepcopy(
+            SCOPED_STRUCTURE_CRITERIA if report_format == FORMAT else STRUCTURE_CRITERIA
+        ),
         "card_ref": pin,
         "positions": positions,
         "active_site_input": card.get("features_positional.active_site"),
@@ -202,6 +239,19 @@ def structure_review(card):
         "position_axis": "this_card_UniProt_canonical_sequence",
         "cross_protein_correspondence": "not_supplied",
         "view_rules": {"coverage": view["classification"], "state": view["state_rule"]},
+        **(
+            {
+                "unplaced": view["unplaced"],
+                "view_rules": {
+                    "coverage": view["classification"],
+                    "state": view["state_rule"],
+                    "admission": view["admission_rule"],
+                    "coordinates": view["coordinate_rule"],
+                },
+            }
+            if report_format == FORMAT
+            else {}
+        ),
         "rows": rows,
         "source_outcomes": [
             record
@@ -257,7 +307,7 @@ def assay_review(card, *, report_format=FORMAT):
                 "experimental_comparability": "requires_human_review",
             }
         )
-        if report_format == FORMAT:
+        if report_format != LEGACY_FORMAT:
             rows[-1]["context_review"] = stored_context_review(qualifiers)
     return {
         "rule": deepcopy(ASSAY_CRITERIA),
@@ -295,7 +345,9 @@ def literature_review(card, role):
 
 def produce(output, fixtures, stage, *, legacy=False):
     require(stage in ("original", "later"), "Unknown stage")
-    report_format = LEGACY_FORMAT if legacy else FORMAT
+    report_format = (
+        ASSAY_FORMAT if legacy == "2" else LEGACY_FORMAT if legacy else FORMAT
+    )
     if stage == "original":
         require(
             not output.exists() or not any(output.iterdir()), "Output must be empty"
@@ -357,7 +409,7 @@ def produce(output, fixtures, stage, *, legacy=False):
                         "activity_limit_per_source": 25,
                     },
                     "resolution": resolution.to_dict(),
-                    "structures": structure_review(card),
+                    "structures": structure_review(card, report_format=report_format),
                     "assays": assay_review(card, report_format=report_format),
                     "literature": literature_review(card, role),
                     "knowledge_state": card.knowledge_state(),
@@ -529,6 +581,11 @@ def render(report):
                 )
                 + " |"
             )
+        if report["format"] == FORMAT:
+            lines += [
+                "",
+                "Original coordinate/reference support is required by this review. Unknown scope is insufficient information, never proof of missing residues. Recorded coverage ratios alone do not certify the current reference. The JSON retains exact coordinate reasons and unplaced declarations separately; original source qualifiers remain in the pinned store.",
+            ]
         lines += [
             "",
             "Canonical positions are local to each input. No cross-protein correspondence or geometric alignment is supplied. Author numbering, assembly disagreements, qualifier conflicts and exact source assertions remain in the JSON/store.",
@@ -567,7 +624,7 @@ def render(report):
                 )
                 + " |"
             )
-        if report["format"] == FORMAT:
+        if report["format"] != LEGACY_FORMAT:
             lines += ["", *render_assay_context(protein["assays"]["rows"])]
         lines += [
             "",
@@ -594,7 +651,11 @@ def render(report):
         "",
         "Activities are explicitly capped at 25 per requested source. Inspect the saved knowledge-state rows, conflicts, alternatives, original acquisition outcomes and terms before interpreting completeness. Unasked, failed and unavailable scopes remain distinct.",
         "",
-        "The JSON/store preserve exact pins and source support; the runtime preserves original credit. Later independent reading formats these saved results without acquisition, scientific re-derivation or fresh credit. File hashes detect inconsistent artifacts and do not authenticate a source or grant reuse permission.",
+        (
+            "The JSON/store preserve exact pins and source support; the runtime preserves original credit. Independent reading checks original coordinate decisions with frozen predicates, without current scientific readers, acquisition or fresh credit. File hashes detect inconsistent artifacts and do not authenticate a source or grant reuse permission."
+            if report["format"] == FORMAT
+            else "The JSON/store preserve exact pins and source support; the runtime preserves original credit. Later independent reading formats these saved results without acquisition, scientific re-derivation or fresh credit. File hashes detect inconsistent artifacts and do not authenticate a source or grant reuse permission."
+        ),
         "",
     ]
     return "\n".join(lines)
@@ -603,7 +664,7 @@ def render(report):
 def read_stage(output, stage):
     manifest = read_json(output / f"{stage}.manifest.json")
     require(
-        manifest["format"] in (FORMAT, LEGACY_FORMAT) and manifest["stage"] == stage,
+        manifest["format"] in READABLE_FORMATS and manifest["stage"] == stage,
         "Unsupported dossier manifest",
     )
     expected = {f"{stage}.dossier.json", f"{stage}.dossier.md", f"{stage}.runtime.json"}
@@ -647,7 +708,12 @@ def read_stage(output, stage):
             "Wrong protein identity",
         )
         require(
-            protein["structures"]["rule"] == STRUCTURE_CRITERIA,
+            protein["structures"]["rule"]
+            == (
+                SCOPED_STRUCTURE_CRITERIA
+                if report["format"] == FORMAT
+                else STRUCTURE_CRITERIA
+            ),
             "Unsupported structure criteria",
         )
         require(
@@ -677,6 +743,38 @@ def read_stage(output, stage):
             ],
             "Original structure source outcome differs",
         )
+        if report["format"] == FORMAT:
+            # Expected records are verifier inputs only, never returned as new
+            # scientific results. Do not call current Card readers here.
+            from sabueso.core.card_exploration_history import _require_matches
+            from sabueso.core.card_structure_history_v4 import _v3_structures_view
+            from sabueso.core.packets import as_stated
+
+            expected_view = _v3_structures_view(
+                card,
+                include_fragments=True,
+                region=protein["structures"]["positions"] or None,
+            )
+            _require_matches(
+                protein["structures"]["view_rules"],
+                {
+                    "coverage": expected_view["classification"],
+                    "state": expected_view["state_rule"],
+                    "admission": expected_view["admission_rule"],
+                    "coordinates": expected_view["coordinate_rule"],
+                },
+                "dossier original structural rules",
+            )
+            require(
+                protein["structures"]["unplaced"]
+                == as_stated(expected_view["unplaced"]),
+                "Original unplaced structure scope differs",
+            )
+            require(
+                [row["item"] for row in protein["structures"]["rows"]]
+                == as_stated(expected_view["items"]),
+                "Original scoped structural projection differs",
+            )
         for area, predicate in (
             ("structures", "has_structure"),
             ("assays", "has_bioactivity"),
@@ -686,6 +784,11 @@ def read_stage(output, stage):
             expected_refs = {
                 pin + "#" + rel["id"] for rel in card.relationships(predicate)
             }
+            if area == "structures" and report["format"] == FORMAT:
+                expected_refs -= {
+                    pin + "#" + row["relationship_id"]
+                    for row in protein["structures"]["unplaced"]
+                }
             require(
                 {row["relationship_ref"] for row in rows} == expected_refs
                 and len(rows) == len(expected_refs),
@@ -706,9 +809,11 @@ def read_stage(output, stage):
                 expected_checks = (
                     assay_checks_v1(relationship.get("qualifiers") or {})
                     if area == "assays"
-                    else structure_checks_v1(
-                        row["item"], protein["structures"]["positions"]
-                    )
+                    else (
+                        structure_checks_v2
+                        if report["format"] == FORMAT
+                        else structure_checks_v1
+                    )(row["item"], protein["structures"]["positions"])
                 )
                 require(
                     json.dumps(row["checks"], sort_keys=True, allow_nan=False)
@@ -737,7 +842,7 @@ def read_stage(output, stage):
                         row["experimental_comparability"] == "requires_human_review",
                         "Overstated assay comparability",
                     )
-                    if report["format"] == FORMAT:
+                    if report["format"] != LEGACY_FORMAT:
                         require(
                             row["context_review"]
                             == stored_context_review(relationship["qualifiers"]),
@@ -756,12 +861,16 @@ def read_stage(output, stage):
                         "Structure identity differs",
                     )
                     for field in (
-                        "coverage",
-                        "author_numbering",
-                        "ranges",
-                        "observed",
-                        "chains",
-                        "qualifier_conflicts",
+                        ()
+                        if report["format"] == FORMAT
+                        else (
+                            "coverage",
+                            "author_numbering",
+                            "ranges",
+                            "observed",
+                            "chains",
+                            "qualifier_conflicts",
+                        )
                     ):
                         require(
                             item.get(field)
@@ -893,8 +1002,10 @@ def main():
     parser.add_argument("--fixtures", type=Path, default=Path("temp_data"))
     parser.add_argument(
         "--legacy",
-        action="store_true",
-        help="Produce historical @1; reacquisition keeps the original format",
+        nargs="?",
+        const="1",
+        choices=("1", "2"),
+        help="Produce historical @1 (default) or @2; reacquisition keeps the original format",
     )
     args = parser.parse_args()
     require(

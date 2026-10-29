@@ -109,3 +109,32 @@ local receipt, not full-local or exact-head hosted qualification. Subsequent exa
 source qualification belongs to #170's issue. Retained
 logs live in `recovered_work/structure_coordinates_170_20261028/`, owner #170/#148/#112,
 review at the next code-validation checkpoint or pre-0.15.0 consolidation.
+
+
+## Scientific dossier receiving integration
+
+The first implementation source `e159989` is **not qualified**. All four installed
+public-Ackredit lanes exposed a downstream assumption: the dossier reader compared
+regional projection fields directly with original qualifiers even when the new
+coordinate admission deliberately left those fields uncomputed. The other hosted
+lanes were cancelled after retaining the original failure; their coverage artifact
+was consequently absent. The local full was deliberately stopped at 816.21s, with
+zero owned swap; it is not passing evidence. Completed full receptor captures keep
+this failed/cancelled source separate from its correction.
+
+New example-local dossier @3 uses review criteria
+`public_structure_review_criteria@2`, requires coordinate admission and records
+unplaced declarations separately. Independent reading checks the entire original
+native projection and named rules with frozen history @4 predicates, never current
+scientific readers or new credit. Original @1/@2 reports keep their own criteria,
+fields and rendering; explicit legacy production replays their original structural
+policy and reacquisition keeps the original format. Such a replay is not a
+purported genuine older producer artifact. Assay context remains present in @2/@3
+and absent in @1. No stored Card schema or shared MOLI contract changes.
+
+The 30 owning dossier cases pass /64.33s serially through the receptor, including
+independent producer/read/reacquire processes, @1/@2 reading with current coordinate
+predicates forbidden, original support and physical units, and freshly rehashed
+coordinate/rule/unknown-as-empty/unplaced substitutions. This selected correction
+receipt does not qualify a new full-local or hosted source. Read #170 for the final
+exact-source result.

@@ -4436,3 +4436,12 @@ basis; they do not prove current reference completeness. No stored Card schema
 changes or source assertions are introduced. See the
 [owning analysis](pending_bugs/experimental_structure_coordinates.md) for exact
 admission boundaries and current qualification status.
+
+
+The downstream scientific dossier adopts example format @3 and review criteria @2
+for coordinate admission. The former literal-qualifier equality check cannot
+validate a deliberately uncomputed projection. New reading checks the complete
+projection using frozen predicates; @1/@2 reports retain their original semantics,
+without importing the new coordinate interpretation. This consumer correction and
+its failed initial source are recorded in #170; schema and shared contracts are
+unchanged.
