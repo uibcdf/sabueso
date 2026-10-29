@@ -71,6 +71,16 @@ a full or final-source local run. Frozen reader/mapper hashes (11 files) are
 unchanged. Both added public guide blocks execute offline; warning-fatal Sphinx,
 Ruff, Python 3.11 syntax, local Markdown links and MOLI governance checks pass.
 
+The first hosted source `7a97f18` is unqualified: Ruff rejected the wrapping of
+one Python example in Markdown. Local checks had covered Python paths rather than
+the whole-repository format gate. Both the installed Ruff 0.16.10 and pinned
+0.16.5 identify the same difference; version drift was observed but was not the
+cause of this failure. The remaining CI work was cancelled after preserving that
+failure. A documentation-only follow-up formats the example with the existing
+cached Ruff 0.16.5 binary and runs both whole-repository Ruff gates; no separate
+test environment or scientific/runtime code change is needed. Exact final-source
+qualification belongs to #171 and never inherits the cancelled run as passing.
+
 Tests use small refusal budgets and a forbidden expander; enormous endpoints are
 inspected arithmetically without allocating their positions. The moderate
 100,001-position success cases verify nested override propagation rather than

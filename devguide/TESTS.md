@@ -193,6 +193,10 @@ receipt. Unknown permission never becomes permission through a successful test.
 
 Run each applicable gate separately and read its result:
 
+Use the Ruff version pinned in `pyproject.toml` and CI. Run its format gate at
+the repository root: it includes Python examples in Markdown, so a Python-only
+path selection does not replace `ruff format --check .`.
+
 ```bash
 ruff format --check .
 ruff check .

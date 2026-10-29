@@ -801,9 +801,7 @@ it is never silently shortened. Humans and agents can make the same deliberate
 choice:
 
 ```python
-region = explorer.view(
-    "structures", options={"region": [[1, 10]]}, region_budget=None
-)
+region = explorer.view("structures", options={"region": [[1, 10]]}, region_budget=None)
 print(region.workload)  # this invocation's original request and budget
 selection = explorer.access.select(
     "structures", options={"region": [[1, 10]]}, region_budget=None
