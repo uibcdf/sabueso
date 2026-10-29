@@ -349,10 +349,19 @@ explanation @3, with unplaced originals, packet @13 and unchanged original saved
 reading. Verify the exact source qualification recorded in its owning issue
 before expanding those scientific routes. Referential declaration admission does not
 replace original coordinate/sequence-axis prerequisites or researcher acceptance.
-The current concrete integrity step is [#170's original coordinate/reference scope](pending_bugs/experimental_structure_coordinates.md),
-implemented locally under coordinate @1, state/inventory @3, explanation @4 and
-packet @14. Complete its consumer and source-bound qualification before the
+The [#170 original coordinate/reference scope](pending_bugs/experimental_structure_coordinates.md)
+uses coordinate @1, state/inventory @3, explanation @4 and packet @14. Its
+source-bound qualification and the later [#172 original question binding](pending_bugs/dossier_active_site_selection.md)
+are recorded in their owning issues. Keep those meanings while expanding the
 broader transitions above; #169 is independently qualified at `5b9de48`.
+
+The subsequent [regional chain reading](pending_proposals/card_regional_reading.md)
+adds readable original per-chain coordinate gaps, complete chains and numbering
+locations to focused structural regions. Its optional presentation preserves
+scientific wires and compact machine frames. Assembly-aware membership still
+requires [#173](https://github.com/uibcdf/sabueso/issues/173)'s original generation/
+operation scope and native reconciliation contract; composition alone is insufficient.
+Source-bound qualification remains in #148/#112, separate from human acceptance.
 
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all
 ongoing implementations and corrections for **0.15.0**. The earlier proposal to

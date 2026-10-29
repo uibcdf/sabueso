@@ -749,6 +749,31 @@ class CardView:
         return deepcopy(self._workload)
 
     @property
+    def regional_reading(self):
+        """Current presentation of this focused original regional result.
+
+        Contains per-chain counts and exact original input/output locations, not
+        a new coordinate calculation. None outside a focused structural region.
+        Historical results retain their own coordinate basis and unknowns.
+        """
+        return self._regional_reading()
+
+    def _regional_reading(self, *, chain_limit=None):
+        """Prepare only the requested presentation prefix, without omitting silently."""
+        result = self._selection._scientific
+        if (
+            result is None
+            or self._focus is None
+            or result.wire["context"]["adapter"] != "structure_exploration@1"
+        ):
+            return None
+        from .card_structure_reading_v1 import reading
+
+        return reading(
+            self._explorer.access, result, self._focus, chain_limit=chain_limit
+        )
+
+    @property
     def explorer(self):
         return None if self._context_only else self._explorer
 

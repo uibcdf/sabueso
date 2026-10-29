@@ -302,6 +302,87 @@ def _coordinate_reason(reason):
     return "the original experimental residue numbering is incomplete, ambiguous or invalid"
 
 
+def _regional_reading(reading):
+    lines = [
+        f"Coordinates for this region: {len(reading['region'])} requested canonical positions.",
+        "Sequence axis: "
+        + (
+            preview(reading["sequence_ref"])
+            if reading["sequence_ref"] is not None
+            else "not retained in the original coordinate basis"
+        ),
+    ]
+    basis = reading["coordinate_basis"]
+    if basis["status"] == "comparable":
+        lines.append(
+            "Original source-declared numbering was admitted; agreement of structure/reference revisions is not established."
+        )
+    elif basis["status"] == "not_retained":
+        lines.append(
+            "Coordinate admission was not retained in this historical result. Its reported regional values remain original; no current coordinate calculation is performed."
+        )
+    else:
+        lines.append(
+            "Original regional comparison is uncomputed: "
+            + _coordinate_reason(basis["reason"])
+            + "."
+        )
+    complete = reading["complete_chains"]
+    lines.append(
+        "Chains covering every requested position in the original result: "
+        + (
+            "not computed"
+            if complete is None
+            else ", ".join(preview(chain, 30) for chain in complete[:6])
+            + (f" … ({len(complete)} total)" if len(complete) > 6 else "")
+            if complete
+            else "none among the recorded chains"
+        )
+        + "."
+    )
+    chains = reading["chains"]
+    for row in chains[:6]:
+        count = row["missing_count"]
+        lines.append(
+            f"Chain {preview(row['chain'], 40)}: "
+            + (
+                "regional gaps not computed"
+                if count is None
+                else f"{count} requested positions without coordinates in the original result"
+            )
+            + (
+                "; original author numbering is inspectable."
+                if row["numbering_location"] is not None
+                else "; original author numbering is not retained for this chain."
+            )
+        )
+    count = reading["chain_count"]
+    if count is not None and count > 6:
+        lines.append(
+            f"Showing 6 of {count} chain records; regional_reading['chains'] contains all."
+        )
+    if not chains:
+        lines.append(
+            "No per-chain regional rows are available; unknown coordinates are not missing residues or evidence of no supporting structures."
+        )
+    lines.append(
+        "Original assembly declarations: "
+        + {
+            "retained": "retained records",
+            "retained_empty": "explicitly empty list",
+            "retained_null": "retained null value",
+            "not_retained": "not retained",
+            "unrecognized_shape": "retained with an unrecognized shape",
+            "unrecognized_parent_shape": "parent qualifiers have an unrecognized shape",
+        }[reading["assembly_context"]["state"]]
+        + ". Chain/contact membership of an assembly is not computed."
+    )
+    lines.append(
+        "Use related() for original numbering, assemblies and sources; regional_reading contains exact locations for every chain's full recorded gaps."
+    )
+    return lines
+
+
 def _structural_support(context):
     native, support = context["native"], context["support"]
     status = native.get("status")
@@ -559,6 +640,9 @@ def _parts(view):
                 f"{preview(row['source'])}: {preview(row['state'])} (retained source/request scope)"
             )
     if scientific is not None and view._focus is not None:
+        reading = view._regional_reading(chain_limit=6)
+        if reading is not None:
+            opening.extend(_regional_reading(reading))
         for key, value in scientific.native_item(view._focus)["state"].items():
             opening.append(
                 f"Structural state · {preview(key)}: {'unknown' if value is None else preview(value)}"

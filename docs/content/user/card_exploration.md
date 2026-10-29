@@ -263,6 +263,68 @@ annotation-to-question-to-result path. Reading it later does not rerun science;
 a question whose result was not materialized stays `not_saved`. Use `back()` to
 return through the original question and annotation selection.
 
+## Read regional coordinate coverage by chain
+
+For the public TcTIM example, ask about its explicitly identified canonical
+positions, then open one structure:
+
+```python
+regional = explorer.answer(
+    "region_coverage",
+    options={"sequence_ref": "uniprot:P52270", "region": [96, 168]},
+)
+selected_structure = regional.filter("structure_ref", equals="pdb:1SUX")
+if len(selected_structure.items()):
+    structure = selected_structure.items()[0]
+    detail = structure.open()
+    detail  # readable coordinate scope and per-chain gaps
+    original_region = detail.regional_reading
+    for chain in original_region["chains"]:
+        print(chain["chain"], chain["missing_count"])
+    assert detail.back() is selected_structure
+```
+
+Use your Card's actual canonical accession and positions for another protein.
+`regional_reading` summarizes the **original native result**, under named
+presentation policy `structure_region_reading@1`. It is available on a focused
+regional structure detail; elsewhere it is `None`. Every chain's full recorded
+gaps, author numbering, exact structure declaration and original assembly records
+have inspectable locations. The text/notebook preview shows up to six chains,
+with an explicit omitted count; the property retains every chain.
+
+A zero gap count, an empty complete-chain list and an uncomputed result are
+different. Missing or unsupported original mapping inputs leave completeness
+unknown. Historical results retain their reported values and original coordinate
+basis; a missing old admission record is not filled by a current calculation.
+Source-declared numbering does not establish matching sequence revisions.
+Assembly composition does not assign chains or contacts to a biological assembly.
+Use the selected structure's `related()` links to inspect the original numbering,
+assemblies and sources; `back()` restores the regional selection.
+
+Compact agents use the same original values through existing bounded reads:
+
+```python
+machine_region = explorer.access.select(
+    "structures",
+    options={"region": [96, 168]},
+    where={"structure_ref": "pdb:1SUX"},
+    fields=[],
+)
+region_page = machine_region.page(limit=1, max_bytes=8192)
+if region_page["items"]:
+    original_fields = explorer.access.read(region_page["items"][0]["payload_location"])
+    original_fields.page(limit=8, max_bytes=8192)
+```
+
+The original item contains `complete_chains`, `missing_in_region` and
+`author_numbering`; continue its explicit cursor and read the desired field's
+location. Large values and mandatory interpretation are deferred atomically when
+they exceed the response budget. The optional human summary does not enlarge
+machine frames or alter their selection identity. Its lookup handles belong to
+that access session; independent readers can use different handles for the same
+original values. Saving a regional detail preserves its original request/result,
+support and navigation; reopening it computes no new science.
+
 ## Inspect predicted models separately
 
 ```python

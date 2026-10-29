@@ -127,6 +127,15 @@ Later display, selection and item explanation read that materialized result.
 They do not call the scientific view again. Support is shared by pinned reference;
 do not embed a full Card in every item.
 
+The development [regional reading extension](card_regional_reading.md) adds
+optional `CardView.regional_reading` on a focused structural region. This is
+current presentation over original native fields, outside the immutable semantic
+record: it preserves the reported gaps/complete chains and coordinate basis,
+exposes exact original locations, and performs no scientific reevaluation.
+Bounded text/Jupyter prepares only the first six chain details with an explicit
+total; the property retains every chain. Compact agents read the same original
+fields through existing bounded locations without unsolicited frame duplication.
+
 ### Identity and display state
 
 `result_ref` has the component-local form `XR_<sha256>`. Its versioned digest

@@ -85,6 +85,13 @@ source and release receipts remain unchanged.
    source-active-site selection through an independent frozen predicate. Keep each
    historical format's meaning and original output; read #172 for source-bound
    qualification before resuming broader structural/scientific expansion.
+   The following [regional chain reading](pending_proposals/card_regional_reading.md)
+   presents an exact structure's original regional gaps, complete chains and
+   numbering/source locations. Optional human presentation leaves compact machine
+   frames and scientific wires unchanged; source-bound qualification belongs to
+   #148/#112. Assembly composition does not identify physical chain/contact
+   occurrences: [#173](https://github.com/uibcdf/sabueso/issues/173) tracks the
+   missing source generation/operation and native reconciliation contract.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed

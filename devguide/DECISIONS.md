@@ -4489,3 +4489,24 @@ unobserved invocation or calls current scientific readers. Source inputs and
 producer labels stay original; missing/unsupported selection stays unknown for
 coverage. Future selector semantics need a new named version. See the
 [owning correction](pending_bugs/dossier_active_site_selection.md) and #172.
+
+## 2026-10-29 — Present original regional chains without duplicating machine output (#148)
+
+Add optional focused `CardView.regional_reading` and readable text/Jupyter detail
+under `structure_region_reading@1`. Present existing native complete-chain values,
+counts of original missing-position lists, coordinate/revision basis and exact
+numbering/parent/source locations. No new scientific predicate, SourceAssertion,
+identity join or current reconstruction of historical coordinates is introduced.
+A historical missing admission basis stays explicit alongside its original values.
+
+Keep this current delivery outside immutable scientific wires and stored formats.
+Compact agents already address the same original fields through bounded reads;
+do not enlarge their frames with an unsolicited duplicate summary. Lookup handles
+can differ across reader sessions while original result/relationship/value bindings
+stay fixed. Full values and every chain remain inspectable beyond bounded previews.
+
+Assembly composition is insufficient for chain/contact-to-assembly correspondence.
+Track the missing original generation/operation scope and named native reconciliation
+in #173 before claiming that capability. Continue the complete broad profile and
+researcher/workload acceptance; 0.15.0 consolidation remains paused. See the
+[regional reading contract](pending_proposals/card_regional_reading.md).

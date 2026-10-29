@@ -80,6 +80,12 @@ runtime floors and installed-package qualification remain separate.
 
 ## Design
 
+The [original regional chain reading](pending_proposals/card_regional_reading.md)
+adds readable complete-chain/gap context and exact original numbering locations
+when opening a regional structure. Compact machine frames and original scientific
+wires stay unchanged. Source-stated assembly generation/reconciliation remains
+the separate capability [#173](https://github.com/uibcdf/sabueso/issues/173).
+
 The [original structure context](pending_proposals/card_structure_context_navigation.md)
 links experimental inventory items and literal declarations to their exact retained
 ligand, assembly, chain and author-numbering fields, with explicit field gaps and
