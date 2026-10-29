@@ -2,7 +2,7 @@
   "format": "sabueso.fixture_delivery@1",
   "reviewed": "2026-10-09",
   "issue": "uibcdf/sabueso#112",
-  "scope": "Reviewed recovery inputs and release compatibility artifacts; earlier committed fixtures retain their notices.",
+  "scope": "Reviewed recovery inputs, release compatibility artifacts and bounded public RCSB assembly-generation capture; earlier committed fixtures retain their notices.",
   "files": [
     {
       "path": "temp_data/3did/3did_dmi_flat.gz",
@@ -1059,6 +1059,126 @@
       "statement": "https://www.ebi.ac.uk/about/terms-of-use",
       "terms_sha256": "0b8c795652ed4dbc7ea3ff2d58e2588ce74d72325b942f8c53d5cae3554c325f",
       "basis": "Original public Europe PMC fullTextXML response for PMC12400196, retrieved 2026-10-14. Article license_ref explicitly grants CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); publisher/authors and source are attributed in temp_data/NOTICE.md. The service terms do not replace the article licence. No private or pilot text."
+    },
+    {
+      "path": "temp_data/rcsb_assembly_generation/capture.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "a89f830344f1853a0a312a66ee1dbf6552e253f994c59d5e4e813eb228f3e87e",
+      "bytes": 110035,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public RCSB/wwPDB factual entry data under recorded CC0 terms; exact wire, decoded entry and authored acquisition metadata are distinguished in temp_data/NOTICE.md and capture.json (#173).",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7"
+    },
+    {
+      "path": "temp_data/rcsb_assembly_generation/rcsb/1HTI.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "d2682b680956b5339c5d561e01a3788ac94ff99af4976e41ab7267840573501b",
+      "bytes": 64123,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public RCSB/wwPDB factual entry data under recorded CC0 terms; exact wire, decoded entry and authored acquisition metadata are distinguished in temp_data/NOTICE.md and capture.json (#173).",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7"
+    },
+    {
+      "path": "temp_data/rcsb_assembly_generation/rcsb/1SUX.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "66915346e70e67867d51886dbeea8968d162f0dc8b29209723d3371f371cf624",
+      "bytes": 63845,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public RCSB/wwPDB factual entry data under recorded CC0 terms; exact wire, decoded entry and authored acquisition metadata are distinguished in temp_data/NOTICE.md and capture.json (#173).",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7"
+    },
+    {
+      "path": "temp_data/rcsb_assembly_generation/rcsb/2V5B.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "63ac09cd4792fa46e02def5139505a0cb1a9f6559596410050a3da33ec7593d1",
+      "bytes": 26493,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public RCSB/wwPDB factual entry data under recorded CC0 terms; exact wire, decoded entry and authored acquisition metadata are distinguished in temp_data/NOTICE.md and capture.json (#173).",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7"
+    },
+    {
+      "path": "temp_data/rcsb_assembly_generation/wire/1HTI.graphql.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "ad911089d0cb7a6fae7faf9181537a96891043ff3689b0466daa930fd3e9a69f",
+      "bytes": 23555,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public RCSB/wwPDB factual entry data under recorded CC0 terms; exact wire, decoded entry and authored acquisition metadata are distinguished in temp_data/NOTICE.md and capture.json (#173).",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7"
+    },
+    {
+      "path": "temp_data/rcsb_assembly_generation/wire/1HTI.request.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "b45f17ca267113066a76418d6ef7062e446e59cef993028ed61246b0377e4440",
+      "bytes": 2208,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public RCSB/wwPDB factual entry data under recorded CC0 terms; exact wire, decoded entry and authored acquisition metadata are distinguished in temp_data/NOTICE.md and capture.json (#173).",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7"
+    },
+    {
+      "path": "temp_data/rcsb_assembly_generation/wire/1SUX.graphql.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "a2ebf0f2e394df4ba4b54e7fb38e0e87dfcc380621716233717d7e4075737b75",
+      "bytes": 25033,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public RCSB/wwPDB factual entry data under recorded CC0 terms; exact wire, decoded entry and authored acquisition metadata are distinguished in temp_data/NOTICE.md and capture.json (#173).",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7"
+    },
+    {
+      "path": "temp_data/rcsb_assembly_generation/wire/1SUX.request.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "febb50c801c5055bd8936c676b83d3ef97766f51ef0af602f844addfc214bcf2",
+      "bytes": 2208,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public RCSB/wwPDB factual entry data under recorded CC0 terms; exact wire, decoded entry and authored acquisition metadata are distinguished in temp_data/NOTICE.md and capture.json (#173).",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7"
+    },
+    {
+      "path": "temp_data/rcsb_assembly_generation/wire/2V5B.graphql.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "a62c88326bcc8855803ff7b2cf19931dc17733a2cca9613ba74abdb069d67ce2",
+      "bytes": 10766,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public RCSB/wwPDB factual entry data under recorded CC0 terms; exact wire, decoded entry and authored acquisition metadata are distinguished in temp_data/NOTICE.md and capture.json (#173).",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7"
+    },
+    {
+      "path": "temp_data/rcsb_assembly_generation/wire/2V5B.request.json",
+      "source_id": "rcsb_pdb",
+      "sha256": "4bf8f8531be14bb471b0ffd0ff5de8533a22a99b34d129d77fe8e6f497a28ab4",
+      "bytes": 2208,
+      "delivery": "repository",
+      "recorded_licence": "CC0-1.0",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.rcsb.org/pages/usage-policy",
+      "basis": "Public RCSB/wwPDB factual entry data under recorded CC0 terms; exact wire, decoded entry and authored acquisition metadata are distinguished in temp_data/NOTICE.md and capture.json (#173).",
+      "terms_sha256": "13254f291a1e76f71307d348f3fce8e1ab64171cac6ce5429ab055b0eeabd4b7"
     }
   ],
   "local_qualification_tests": {

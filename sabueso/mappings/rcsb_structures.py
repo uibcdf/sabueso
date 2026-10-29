@@ -9,6 +9,7 @@ entities, the other entities present (complexes) and bound ligands.
 
 from __future__ import annotations
 
+from copy import deepcopy
 from typing import Any, Dict, Iterable, List
 
 from sabueso.core.quantities import LENGTH_UNIT, quantity_node
@@ -465,6 +466,8 @@ def _assemblies(entry: Dict[str, Any]) -> List[Dict[str, Any]] | None:
     ``defined_by`` says who defined the assembly (author, software or both) and
     ``method`` the software (e.g. PISA). ``oligomeric_state`` and ``stoichiometry`` are
     RCSB's symmetry annotation, where stoichiometry letters label polymer entities.
+    Optional ``generation`` retains native declarations verbatim, including null,
+    empty or malformed values. It does not assert generated instance membership.
     """
     if "assemblies" not in entry or entry["assemblies"] is None:
         return None
@@ -492,6 +495,13 @@ def _assemblies(entry: Dict[str, Any]) -> List[Dict[str, Any]] | None:
                 "symmetry": symmetry[0].get("type") if symmetry else None,
             }
         )
+        generation = {
+            key: deepcopy(a[key])
+            for key in ("pdbx_struct_assembly_gen", "pdbx_struct_oper_list")
+            if key in a
+        }
+        if generation:
+            out[-1]["generation"] = generation
     return sorted(out, key=lambda a: str(a["id"]).zfill(4))
 
 
@@ -614,6 +624,16 @@ def map_structure_entities(
             "assemblies": assemblies,
             "primary_citation": primary_citation,
         }
+        if any(
+            key in assembly
+            for assembly in entry.get("assemblies") or []
+            for key in ("pdbx_struct_assembly_gen", "pdbx_struct_oper_list")
+        ):
+            # Preserve native parent/order/duplicates as well as generator rows.
+            # The sorted descriptor projection is not a lossless source input.
+            stated["assembly_generation_inputs"] = {
+                "assemblies": deepcopy(entry["assemblies"])
+            }
         # Only when stated, so that the statements of entries without them keep their
         # content (#83).
         membrane_features = {

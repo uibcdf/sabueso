@@ -2,8 +2,21 @@ schema:
   name: sabueso-card
   version: 0.3.14
   created_at: 2026-02-10
-  updated_at: 2026-10-27
+  updated_at: 2026-10-29
   note: |
+    0.3.14 optionally retains original RCSB assembly-generation declarations
+    (#173). has_structure.qualifiers.assemblies[].generation contains the native
+    pdbx_struct_assembly_gen and/or pdbx_struct_oper_list fields only when present,
+    preserving their values, order, duplicates and null/empty/malformed states.
+    The supporting SourceAssertion asserted_value.assembly_generation_inputs
+    retains the complete original assemblies array, including native parents and
+    original ordering, independently of the sorted descriptor projection. Entry
+    revision and retrieval remain in the original source context. label-asym IDs
+    are not author chain labels; generator ordinals and expressions stay literal.
+    This adds no generated physical membership, transformed coordinates, contact
+    reconciliation or biological relevance. Legacy assertions and published
+    schemas remain unchanged; migration does not backfill these optional inputs.
+    A fresh structures request obtains a new source basis, not historical recovery.
     0.3.14 preserves every Europe PMC located-annotation request/date pair in
     source_metadata.annotation_requests[] (requested_article, retrieved_at), under
     annotation_request_rule located_annotation_observations@1 (#166). The scientific

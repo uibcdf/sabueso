@@ -90,8 +90,15 @@ source and release receipts remain unchanged.
    numbering/source locations. Optional human presentation leaves compact machine
    frames and scientific wires unchanged; source-bound qualification belongs to
    #148/#112. Assembly composition does not identify physical chain/contact
-   occurrences: [#173](https://github.com/uibcdf/sabueso/issues/173) tracks the
-   missing source generation/operation and native reconciliation contract.
+   occurrences. Fresh RCSB requests now preserve
+   [original generator/operator declarations](pending_proposals/rcsb_assembly_generation.md)
+   with exact native parents, raw ordering and revision context. The separate
+   public capture retains three complete original responses (59,354 bytes) and
+   decoded representations; earlier fixtures/assertion pins stay unchanged.
+   Literal human/agent inspection and inert saved reading retain the inputs.
+   [#173](https://github.com/uibcdf/sabueso/issues/173) remains open for bounded
+   symbolic occurrence parsing, native label-asym identity binding and contact
+   reconciliation. Owning local/hosted receipts qualify only their exact source.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed
@@ -191,7 +198,7 @@ does not replace the maintainer's newer exploration priority.
 | --- | --- |
 | Published package | **0.14.0**, source/tag `78623d0`; its installed OS/Python matrix, public install and Zenodo archive retain their own [immutable receipt](../devtools/conda-build/receipts/sabueso_0.14.0_public_2026-10-09.json) |
 | Published schema | **0.3.13** and earlier schemas/cards/shapes remain immutable |
-| Development schema | **0.3.14**, unpublished, 1,942 recorded paths; coordinate/request scope, contact/model inputs, derivation applications, native feature/comment identity and explicit annotation-request receipts follow [SCHEMA](SCHEMA.md) and migrations |
+| Development schema | **0.3.14**, unpublished, 1,967 recorded paths; coordinate/request scope, contact/model and assembly-generation inputs, derivation applications, native feature/comment identity and explicit annotation-request receipts follow [SCHEMA](SCHEMA.md) and migrations |
 | Packet history | Development default `packet_aspects@13` scopes experimental declarations and retains unplaced originals; inherited source-bound quaternary interpretation and canonical ligand overlap remain, with original `@12`/earlier projections preserved. New qualification belongs to #169 |
 | Shared contracts | Sabueso records Knowledge/SourceAssertions; MOLI owns shared contracts, Nextia owns Evidence. Similarity is never identity; unknown/unqueried/failed scope remains explicit |
 | Release target | 0.15.0, with the full exploration and human-acceptance gate in the [scope](pending_proposals/release_consolidation_0150.md). The [notes draft](../devtools/conda-build/release_notes_0.15.0.md) is incomplete preparation, not a candidate or release |

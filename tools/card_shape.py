@@ -449,7 +449,21 @@ def fixture_cards() -> List[dict]:
         ),
         meta={"entity_type": "protein"},
     )
-    return [c.to_dict() for c in (*cards, bounded, parameterized, native_scope)]
+    # Separate current public capture: published fixtures and their statements
+    # stay unchanged while optional native assembly-generation inputs get shape.
+    assembly_capture = str(ROOT / "temp_data" / "rcsb_assembly_generation")
+    native_assembly, _ = sabueso.resolve(
+        "P52270",
+        resolver=EntityResolver(
+            FixtureUniProtClient(data),
+            rcsb_client=FixtureRCSBClient(assembly_capture),
+        ),
+        structures=["2V5B"],
+    )
+    return [
+        c.to_dict()
+        for c in (*cards, bounded, parameterized, native_scope, native_assembly)
+    ]
 
 
 def current_shape() -> List[str]:

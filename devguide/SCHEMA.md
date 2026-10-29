@@ -7,6 +7,15 @@ remain unchanged. See [scope](pending_proposals/comparative_operations.md).
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
+  - Unpublished `0.3.14` also retains optional original RCSB assembly generation
+    (#173): `has_structure.qualifiers.assemblies[].generation` contains native
+    generator/operator fields when present, with null/empty/malformed values and
+    duplicates unchanged. Its supporting assertion stores the complete unsorted
+    parent array in `asserted_value.assembly_generation_inputs.assemblies`.
+    Migration never backfills this optional source context; fresh structures
+    acquisition records a new basis. Generated physical membership and contact
+    reconciliation remain separate pending capabilities; see
+    [the original source contract](pending_proposals/rcsb_assembly_generation.md).
   - `0.3.14` is unpublished development (#138/#139). Optional gnomAD variant assertion
     `source_metadata.coordinate_scope` records `assembly`, `basis`,
     `native_assembly_echo` and `rule`. `gnomad_query_coordinates@1` records GRCh38
@@ -37,7 +46,7 @@ remain unchanged. See [scope](pending_proposals/comparative_operations.md).
     under observation rule @1. Scoped UniProt text comments also retain the complete native
     comment/text index as asserted value and text as normalized value, keeping
     distinct native products separate. Historical missing contexts are never
-    backfilled. The shape has 1,942 paths, including explicitly synthetic optional
+    backfilled. The shape has 1,967 paths, including explicitly synthetic optional
     molecule coverage for all 17 mapped feature fields.
     #160 extends optional `source_metadata.uniprot_feature` and stated sequence
     revision to every mapped UniProt positional type. Modifiers and unknown
@@ -801,6 +810,9 @@ A Relationship is first-class, traceable knowledge:
     `oligomeric_count`, `defined_by` (author, software or both), `method` (e.g. PISA),
     `oligomeric_state`, `stoichiometry` and `symmetry` as RCSB states them, or `null`
     when the entry was not fetched with assembly data;
+    optional `generation` retains the source's generator rows and operator
+    descriptors verbatim, without expanding expressions or identifying physical
+    copies. Native label-asym identity is distinct from author numbering;
   - `ligands` (`comp_id`,
   `description`, `subject_of_investigation`, `subject_of_investigation_provenance`, and
   `instances`: per ligand instance, the residues RCSB states as its neighbours, with

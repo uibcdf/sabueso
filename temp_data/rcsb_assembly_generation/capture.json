@@ -1,0 +1,2513 @@
+{
+  "format": "sabueso.rcsb_assembly_capture@1",
+  "owner": "uibcdf/sabueso#173",
+  "review_trigger": "native assembly reconciliation or before 0.15.0",
+  "source": "RCSB PDB",
+  "licence": "CC0-1.0",
+  "credit": "RCSB Protein Data Bank and wwPDB",
+  "scope": {
+    "query": "next-capture.graphql",
+    "sha256": "cf161e8167575c85d0d7441dbf85f559307e0b5474468fe6b1b43bf9d0aa62f5",
+    "ids": [
+      "1SUX",
+      "2V5B",
+      "1HTI"
+    ],
+    "purpose": "Small public fixture controls, including alternative assembly declarations; no assumption that current records match older fixtures",
+    "initial_requests": 3,
+    "maximum_attempts": 6,
+    "seconds_per_request": 20,
+    "window_seconds": 120,
+    "bytes_per_response": 2097152,
+    "total_bytes": 8388608,
+    "secondary_queries": false,
+    "requires_before_execution": "Review the concrete scientific source scope; preserve raw request/response/time/hash and explicit failures. This artifact is a proposal, not an authorization or an executed data capture."
+  },
+  "started_source": "bbf5c843185e5de36bd73e64d9c9fc599d465d97",
+  "sdk": "0.14.0+128.gbbf5c84",
+  "attempts": 3,
+  "received_bytes": 59354,
+  "records": [
+    {
+      "pdb_id": "1SUX",
+      "receipt": {
+        "pdb_id": "1SUX",
+        "retrieved_at": "2026-10-29T22:56:42+00:00",
+        "response_finished_at": "2026-10-29T22:56:42.541254+00:00",
+        "request_sha256": "febb50c801c5055bd8936c676b83d3ef97766f51ef0af602f844addfc214bcf2",
+        "response_status": 200,
+        "response_url": "https://data.rcsb.org/graphql",
+        "response_headers": {
+          "Content-Type": "application/json",
+          "ETag": null,
+          "Last-Modified": null,
+          "Date": "Thu, 29 Oct 2026 22:56:42 GMT"
+        },
+        "bytes": 25033,
+        "sha256": "a2ebf0f2e394df4ba4b54e7fb38e0e87dfcc380621716233717d7e4075737b75",
+        "complete_within_budget": true
+      },
+      "retrieved_at": "2026-10-29T22:56:42+00:00",
+      "acquisition_trace": {
+        "format": "sabueso.acquisition_trace@1",
+        "id": "sabueso:acquisition-trace:7bfdad15-a8a2-4e72-9d58-2268b10c717d",
+        "coverage": {
+          "sources": [
+            "UniProt",
+            "Europe PMC",
+            "RCSB PDB",
+            "ChEMBL",
+            "PubChem",
+            "PubChem BioAssay",
+            "BindingDB",
+            "PDB CCD",
+            "UniChem",
+            "PDBe-KB",
+            "AlphaFold DB",
+            "InterPro",
+            "MONDO",
+            "Open Targets",
+            "Orphanet",
+            "DISEASES",
+            "ClinVar",
+            "MedGen",
+            "ClinicalTrials.gov",
+            "NCBI Taxonomy",
+            "GTEx",
+            "OMA",
+            "gnomAD",
+            "AAindex",
+            "DisProt",
+            "UniParc",
+            "AlphaMissense",
+            "MobiDB",
+            "SIFTS",
+            "PDBe Validation",
+            "EPPIC",
+            "PDB-REDO",
+            "GlyGen",
+            "AlphaFill",
+            "LIGYSIS",
+            "IntAct",
+            "AmyPro",
+            "SWISS-MODEL Repository"
+          ],
+          "boundary": "built_in_entry_search_mentions_annotations_structure_chemical_clients",
+          "other_sources_and_custom_clients": "not_observed"
+        },
+        "result_status": "returned",
+        "records": [
+          {
+            "format": "sabueso.source_acquisition@1",
+            "id": "sabueso:source-acquisition:8ebacda9-5b9e-40c9-bfb1-a94fd28412be",
+            "source": "RCSB PDB",
+            "operation": "structure",
+            "query": {
+              "pdb_id": "1SUX"
+            },
+            "producer": {
+              "name": "sabueso",
+              "version": "0.14.0+128.gbbf5c84",
+              "version_basis": "runtime_package_metadata"
+            },
+            "started_at": "2026-10-29T22:56:42+00:00",
+            "outcome": "received",
+            "count": 1,
+            "entries": [
+              {
+                "pdb_id": "1SUX",
+                "outcome": "received",
+                "retrieved_at": "2026-10-29T22:56:42+00:00",
+                "source_version": {
+                  "value": {
+                    "major_revision": 1,
+                    "minor_revision": 4,
+                    "revision_date": "2023-08-23T00:00:00Z"
+                  },
+                  "basis": "entry_revision"
+                },
+                "revision_metadata": {
+                  "major_revision": 1,
+                  "minor_revision": 4,
+                  "revision_date": "2023-08-23T00:00:00Z"
+                },
+                "primary_citation": {
+                  "pdbx_database_id_PubMed": 15321726,
+                  "pdbx_database_id_DOI": "10.1016/j.jmb.2004.06.056",
+                  "title": "Inactivation of triosephosphate isomerase from Trypanosoma cruzi by an agent that perturbs its dimer interface.",
+                  "journal_abbrev": "J.Mol.Biol.",
+                  "year": 2004,
+                  "rcsb_authors": [
+                    "Tellez-Valencia, A.",
+                    "Olivares-Illana, V.",
+                    "Hernandez-Santoyo, A.",
+                    "Perez-Montfort, R.",
+                    "Costas, M.",
+                    "Rodriguez-Romero, A.",
+                    "Lopez-Calahorra, F.",
+                    "Tuena De Gomez-Puyou, M.",
+                    "Gomez-Puyou, A."
+                  ]
+                },
+                "response_identity": {
+                  "basis": "decoded_entry",
+                  "hash": "sha256:d18209e5fd9d9739205a50d5381bc4b63a8712f53f0228f40348875a86a65107"
+                }
+              }
+            ],
+            "completed_ids": [
+              "1SUX"
+            ],
+            "source_version": {
+              "value": {
+                "major_revision": 1,
+                "minor_revision": 4,
+                "revision_date": "2023-08-23T00:00:00Z"
+              },
+              "basis": "entry_revision"
+            },
+            "retrieved_at": "2026-10-29T22:56:42+00:00",
+            "response_identity": {
+              "basis": "decoded_client_result",
+              "hash": "sha256:d18209e5fd9d9739205a50d5381bc4b63a8712f53f0228f40348875a86a65107"
+            },
+            "finished_at": "2026-10-29T22:56:42+00:00",
+            "requests": [
+              {
+                "method": "POST",
+                "url": "https://data.rcsb.org/graphql",
+                "request_sha256": "febb50c801c5055bd8936c676b83d3ef97766f51ef0af602f844addfc214bcf2",
+                "route": "network",
+                "network_attempts": 1,
+                "started_at": "2026-10-29T22:56:42+00:00",
+                "retries": [],
+                "outcome": "received",
+                "status": 200,
+                "finished_at": "2026-10-29T22:56:42+00:00",
+                "response_sha256": "a2ebf0f2e394df4ba4b54e7fb38e0e87dfcc380621716233717d7e4075737b75"
+              }
+            ],
+            "access": "network",
+            "network_attempts": 1,
+            "received_responses": 1,
+            "bibliography": [
+              {
+                "id": "software:sabueso:0.14.0+128.gbbf5c84",
+                "type": "software",
+                "title": "Sabueso",
+                "authors": [
+                  "Prada-Gracia, Diego",
+                  "Moreno-Vargas, Liliana M."
+                ],
+                "version": "0.14.0+128.gbbf5c84",
+                "doi": "10.5281/zenodo.22937375",
+                "url": "https://github.com/uibcdf/sabueso"
+              },
+              {
+                "id": "doi:10.1093/nar/gkae1091",
+                "type": "article",
+                "title": "Updated resources for exploring experimentally-determined PDB structures and Computed Structure Models at the RCSB Protein Data Bank",
+                "authors": [
+                  "Burley, Stephen K",
+                  "Bhatt, Rusham",
+                  "Bhikadiya, Charmi",
+                  "Bi, Chunxiao",
+                  "Biester, Alison",
+                  "Biswas, Pratyoy",
+                  "Bittrich, Sebastian",
+                  "Blaumann, Santiago",
+                  "Brown, Ronald",
+                  "Chao, Henry",
+                  "Chithari, Vivek Reddy",
+                  "Craig, Paul A",
+                  "Crichlow, Gregg V",
+                  "Duarte, Jose M",
+                  "Dutta, Shuchismita",
+                  "Feng, Zukang",
+                  "Flatt, Justin W",
+                  "Ghosh, Sutapa",
+                  "Goodsell, David S",
+                  "Green, Rachel Kramer",
+                  "Guranovic, Vladimir",
+                  "Henry, Jeremy",
+                  "Hudson, Brian P",
+                  "Joy, Michael",
+                  "Kaelber, Jason T",
+                  "Khokhriakov, Igor",
+                  "Lai, Jhih-Siang",
+                  "Lawson, Catherine L",
+                  "Liang, Yuhe",
+                  "Myers-Turnbull, Douglas",
+                  "Peisach, Ezra",
+                  "Persikova, Irina",
+                  "Piehl, Dennis W",
+                  "Pingale, Aditya",
+                  "Rose, Yana",
+                  "Sagendorf, Jared",
+                  "Sali, Andrej",
+                  "Segura, Joan",
+                  "Sekharan, Monica",
+                  "Shao, Chenghua",
+                  "Smith, James",
+                  "Trumbull, Michael",
+                  "Vallat, Brinda",
+                  "Voigt, Maria",
+                  "Webb, Ben",
+                  "Whetstone, Shamara",
+                  "Wu-Wu, Amy",
+                  "Xing, Tongji",
+                  "Young, Jasmine Y",
+                  "Zalevsky, Arthur",
+                  "Zardecki, Christine"
+                ],
+                "year": 2025,
+                "journal": "Nucleic Acids Research",
+                "volume": "53",
+                "number": "D1",
+                "pages": "D564-D574",
+                "doi": "10.1093/nar/gkae1091",
+                "url": "https://doi.org/10.1093/nar/gkae1091"
+              },
+              {
+                "id": "sabueso:rcsb-primary-citation:sha256:28cd9d8f62282d44c5f90ffb794545d86a7dd4f6064916b72329cb51af28b64d",
+                "type": "article",
+                "title": "Inactivation of triosephosphate isomerase from Trypanosoma cruzi by an agent that perturbs its dimer interface.",
+                "authors": [
+                  "Tellez-Valencia, A.",
+                  "Olivares-Illana, V.",
+                  "Hernandez-Santoyo, A.",
+                  "Perez-Montfort, R.",
+                  "Costas, M.",
+                  "Rodriguez-Romero, A.",
+                  "Lopez-Calahorra, F.",
+                  "Tuena De Gomez-Puyou, M.",
+                  "Gomez-Puyou, A."
+                ],
+                "year": 2004,
+                "journal": "J.Mol.Biol.",
+                "doi": "10.1016/j.jmb.2004.06.056",
+                "url": "https://doi.org/10.1016/j.jmb.2004.06.056"
+              }
+            ],
+            "bibliography_gaps": [],
+            "provider": {
+              "status": "available",
+              "version": "0.12.0+11.g74f865d",
+              "attribution": {
+                "schema": "ackredit.attribution@1",
+                "name": "sabueso.source_access",
+                "context": {
+                  "id": "sabueso:source-acquisition:8ebacda9-5b9e-40c9-bfb1-a94fd28412be",
+                  "producer": {
+                    "name": "sabueso",
+                    "version": "0.14.0+128.gbbf5c84",
+                    "version_basis": "runtime_package_metadata"
+                  },
+                  "source": "RCSB PDB",
+                  "operation": "structure",
+                  "query": {
+                    "pdb_id": "1SUX"
+                  },
+                  "outcome": "received",
+                  "access": "network",
+                  "retrieved_at": "2026-10-29T22:56:42+00:00",
+                  "source_version": {
+                    "value": {
+                      "major_revision": 1,
+                      "minor_revision": 4,
+                      "revision_date": "2023-08-23T00:00:00Z"
+                    },
+                    "basis": "entry_revision"
+                  },
+                  "network_attempts": 1,
+                  "requests": [
+                    {
+                      "method": "POST",
+                      "url": "https://data.rcsb.org/graphql",
+                      "request_sha256": "febb50c801c5055bd8936c676b83d3ef97766f51ef0af602f844addfc214bcf2",
+                      "route": "network",
+                      "network_attempts": 1,
+                      "started_at": "2026-10-29T22:56:42+00:00",
+                      "retries": [],
+                      "outcome": "received",
+                      "status": 200,
+                      "finished_at": "2026-10-29T22:56:42+00:00",
+                      "response_sha256": "a2ebf0f2e394df4ba4b54e7fb38e0e87dfcc380621716233717d7e4075737b75"
+                    }
+                  ],
+                  "entries": [
+                    {
+                      "pdb_id": "1SUX",
+                      "outcome": "received",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 4,
+                          "revision_date": "2023-08-23T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "revision_metadata": {
+                        "major_revision": 1,
+                        "minor_revision": 4,
+                        "revision_date": "2023-08-23T00:00:00Z"
+                      },
+                      "primary_citation": {
+                        "pdbx_database_id_PubMed": 15321726,
+                        "pdbx_database_id_DOI": "10.1016/j.jmb.2004.06.056",
+                        "title": "Inactivation of triosephosphate isomerase from Trypanosoma cruzi by an agent that perturbs its dimer interface.",
+                        "journal_abbrev": "J.Mol.Biol.",
+                        "year": 2004,
+                        "rcsb_authors": [
+                          "Tellez-Valencia, A.",
+                          "Olivares-Illana, V.",
+                          "Hernandez-Santoyo, A.",
+                          "Perez-Montfort, R.",
+                          "Costas, M.",
+                          "Rodriguez-Romero, A.",
+                          "Lopez-Calahorra, F.",
+                          "Tuena De Gomez-Puyou, M.",
+                          "Gomez-Puyou, A."
+                        ]
+                      },
+                      "response_identity": {
+                        "basis": "decoded_entry",
+                        "hash": "sha256:d18209e5fd9d9739205a50d5381bc4b63a8712f53f0228f40348875a86a65107"
+                      }
+                    }
+                  ],
+                  "completed_ids": [
+                    "1SUX"
+                  ]
+                },
+                "items": [
+                  {
+                    "id": "software:sabueso:0.14.0+128.gbbf5c84",
+                    "type": "software",
+                    "title": "Sabueso",
+                    "authors": [
+                      "Prada-Gracia, Diego",
+                      "Moreno-Vargas, Liliana M."
+                    ],
+                    "version": "0.14.0+128.gbbf5c84",
+                    "doi": "10.5281/zenodo.22937375",
+                    "url": "https://github.com/uibcdf/sabueso"
+                  },
+                  {
+                    "id": "sabueso:source-access:sha256:bcc8140231b8698b5fb4f56490181140cd654151f43200fb77df2ee986ec9aad",
+                    "type": "dataset",
+                    "title": "RCSB PDB structure access"
+                  },
+                  {
+                    "id": "doi:10.1093/nar/gkae1091",
+                    "type": "article",
+                    "title": "Updated resources for exploring experimentally-determined PDB structures and Computed Structure Models at the RCSB Protein Data Bank",
+                    "authors": [
+                      "Burley, Stephen K",
+                      "Bhatt, Rusham",
+                      "Bhikadiya, Charmi",
+                      "Bi, Chunxiao",
+                      "Biester, Alison",
+                      "Biswas, Pratyoy",
+                      "Bittrich, Sebastian",
+                      "Blaumann, Santiago",
+                      "Brown, Ronald",
+                      "Chao, Henry",
+                      "Chithari, Vivek Reddy",
+                      "Craig, Paul A",
+                      "Crichlow, Gregg V",
+                      "Duarte, Jose M",
+                      "Dutta, Shuchismita",
+                      "Feng, Zukang",
+                      "Flatt, Justin W",
+                      "Ghosh, Sutapa",
+                      "Goodsell, David S",
+                      "Green, Rachel Kramer",
+                      "Guranovic, Vladimir",
+                      "Henry, Jeremy",
+                      "Hudson, Brian P",
+                      "Joy, Michael",
+                      "Kaelber, Jason T",
+                      "Khokhriakov, Igor",
+                      "Lai, Jhih-Siang",
+                      "Lawson, Catherine L",
+                      "Liang, Yuhe",
+                      "Myers-Turnbull, Douglas",
+                      "Peisach, Ezra",
+                      "Persikova, Irina",
+                      "Piehl, Dennis W",
+                      "Pingale, Aditya",
+                      "Rose, Yana",
+                      "Sagendorf, Jared",
+                      "Sali, Andrej",
+                      "Segura, Joan",
+                      "Sekharan, Monica",
+                      "Shao, Chenghua",
+                      "Smith, James",
+                      "Trumbull, Michael",
+                      "Vallat, Brinda",
+                      "Voigt, Maria",
+                      "Webb, Ben",
+                      "Whetstone, Shamara",
+                      "Wu-Wu, Amy",
+                      "Xing, Tongji",
+                      "Young, Jasmine Y",
+                      "Zalevsky, Arthur",
+                      "Zardecki, Christine"
+                    ],
+                    "year": 2025,
+                    "journal": "Nucleic Acids Research",
+                    "volume": "53",
+                    "number": "D1",
+                    "pages": "D564-D574",
+                    "doi": "10.1093/nar/gkae1091",
+                    "url": "https://doi.org/10.1093/nar/gkae1091"
+                  },
+                  {
+                    "id": "sabueso:rcsb-primary-citation:sha256:28cd9d8f62282d44c5f90ffb794545d86a7dd4f6064916b72329cb51af28b64d",
+                    "type": "article",
+                    "title": "Inactivation of triosephosphate isomerase from Trypanosoma cruzi by an agent that perturbs its dimer interface.",
+                    "authors": [
+                      "Tellez-Valencia, A.",
+                      "Olivares-Illana, V.",
+                      "Hernandez-Santoyo, A.",
+                      "Perez-Montfort, R.",
+                      "Costas, M.",
+                      "Rodriguez-Romero, A.",
+                      "Lopez-Calahorra, F.",
+                      "Tuena De Gomez-Puyou, M.",
+                      "Gomez-Puyou, A."
+                    ],
+                    "year": 2004,
+                    "journal": "J.Mol.Biol.",
+                    "doi": "10.1016/j.jmb.2004.06.056",
+                    "url": "https://doi.org/10.1016/j.jmb.2004.06.056"
+                  }
+                ],
+                "uses": [
+                  {
+                    "item_id": "software:sabueso:0.14.0+128.gbbf5c84",
+                    "used_by": "sabueso.source_access",
+                    "roles": [
+                      "executed_software"
+                    ],
+                    "context": {
+                      "id": "sabueso:source-acquisition:8ebacda9-5b9e-40c9-bfb1-a94fd28412be",
+                      "producer": {
+                        "name": "sabueso",
+                        "version": "0.14.0+128.gbbf5c84",
+                        "version_basis": "runtime_package_metadata"
+                      },
+                      "source": "RCSB PDB",
+                      "operation": "structure",
+                      "query": {
+                        "pdb_id": "1SUX"
+                      },
+                      "outcome": "received",
+                      "access": "network",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 4,
+                          "revision_date": "2023-08-23T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "network_attempts": 1,
+                      "requests": [
+                        {
+                          "method": "POST",
+                          "url": "https://data.rcsb.org/graphql",
+                          "request_sha256": "febb50c801c5055bd8936c676b83d3ef97766f51ef0af602f844addfc214bcf2",
+                          "route": "network",
+                          "network_attempts": 1,
+                          "started_at": "2026-10-29T22:56:42+00:00",
+                          "retries": [],
+                          "outcome": "received",
+                          "status": 200,
+                          "finished_at": "2026-10-29T22:56:42+00:00",
+                          "response_sha256": "a2ebf0f2e394df4ba4b54e7fb38e0e87dfcc380621716233717d7e4075737b75"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "pdb_id": "1SUX",
+                          "outcome": "received",
+                          "retrieved_at": "2026-10-29T22:56:42+00:00",
+                          "source_version": {
+                            "value": {
+                              "major_revision": 1,
+                              "minor_revision": 4,
+                              "revision_date": "2023-08-23T00:00:00Z"
+                            },
+                            "basis": "entry_revision"
+                          },
+                          "revision_metadata": {
+                            "major_revision": 1,
+                            "minor_revision": 4,
+                            "revision_date": "2023-08-23T00:00:00Z"
+                          },
+                          "primary_citation": {
+                            "pdbx_database_id_PubMed": 15321726,
+                            "pdbx_database_id_DOI": "10.1016/j.jmb.2004.06.056",
+                            "title": "Inactivation of triosephosphate isomerase from Trypanosoma cruzi by an agent that perturbs its dimer interface.",
+                            "journal_abbrev": "J.Mol.Biol.",
+                            "year": 2004,
+                            "rcsb_authors": [
+                              "Tellez-Valencia, A.",
+                              "Olivares-Illana, V.",
+                              "Hernandez-Santoyo, A.",
+                              "Perez-Montfort, R.",
+                              "Costas, M.",
+                              "Rodriguez-Romero, A.",
+                              "Lopez-Calahorra, F.",
+                              "Tuena De Gomez-Puyou, M.",
+                              "Gomez-Puyou, A."
+                            ]
+                          },
+                          "response_identity": {
+                            "basis": "decoded_entry",
+                            "hash": "sha256:d18209e5fd9d9739205a50d5381bc4b63a8712f53f0228f40348875a86a65107"
+                          }
+                        }
+                      ],
+                      "completed_ids": [
+                        "1SUX"
+                      ]
+                    }
+                  },
+                  {
+                    "item_id": "sabueso:source-access:sha256:bcc8140231b8698b5fb4f56490181140cd654151f43200fb77df2ee986ec9aad",
+                    "used_by": "sabueso.source_access",
+                    "roles": [
+                      "resource_access"
+                    ],
+                    "context": {
+                      "id": "sabueso:source-acquisition:8ebacda9-5b9e-40c9-bfb1-a94fd28412be",
+                      "producer": {
+                        "name": "sabueso",
+                        "version": "0.14.0+128.gbbf5c84",
+                        "version_basis": "runtime_package_metadata"
+                      },
+                      "source": "RCSB PDB",
+                      "operation": "structure",
+                      "query": {
+                        "pdb_id": "1SUX"
+                      },
+                      "outcome": "received",
+                      "access": "network",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 4,
+                          "revision_date": "2023-08-23T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "network_attempts": 1,
+                      "requests": [
+                        {
+                          "method": "POST",
+                          "url": "https://data.rcsb.org/graphql",
+                          "request_sha256": "febb50c801c5055bd8936c676b83d3ef97766f51ef0af602f844addfc214bcf2",
+                          "route": "network",
+                          "network_attempts": 1,
+                          "started_at": "2026-10-29T22:56:42+00:00",
+                          "retries": [],
+                          "outcome": "received",
+                          "status": 200,
+                          "finished_at": "2026-10-29T22:56:42+00:00",
+                          "response_sha256": "a2ebf0f2e394df4ba4b54e7fb38e0e87dfcc380621716233717d7e4075737b75"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "pdb_id": "1SUX",
+                          "outcome": "received",
+                          "retrieved_at": "2026-10-29T22:56:42+00:00",
+                          "source_version": {
+                            "value": {
+                              "major_revision": 1,
+                              "minor_revision": 4,
+                              "revision_date": "2023-08-23T00:00:00Z"
+                            },
+                            "basis": "entry_revision"
+                          },
+                          "revision_metadata": {
+                            "major_revision": 1,
+                            "minor_revision": 4,
+                            "revision_date": "2023-08-23T00:00:00Z"
+                          },
+                          "primary_citation": {
+                            "pdbx_database_id_PubMed": 15321726,
+                            "pdbx_database_id_DOI": "10.1016/j.jmb.2004.06.056",
+                            "title": "Inactivation of triosephosphate isomerase from Trypanosoma cruzi by an agent that perturbs its dimer interface.",
+                            "journal_abbrev": "J.Mol.Biol.",
+                            "year": 2004,
+                            "rcsb_authors": [
+                              "Tellez-Valencia, A.",
+                              "Olivares-Illana, V.",
+                              "Hernandez-Santoyo, A.",
+                              "Perez-Montfort, R.",
+                              "Costas, M.",
+                              "Rodriguez-Romero, A.",
+                              "Lopez-Calahorra, F.",
+                              "Tuena De Gomez-Puyou, M.",
+                              "Gomez-Puyou, A."
+                            ]
+                          },
+                          "response_identity": {
+                            "basis": "decoded_entry",
+                            "hash": "sha256:d18209e5fd9d9739205a50d5381bc4b63a8712f53f0228f40348875a86a65107"
+                          }
+                        }
+                      ],
+                      "completed_ids": [
+                        "1SUX"
+                      ]
+                    }
+                  },
+                  {
+                    "item_id": "doi:10.1093/nar/gkae1091",
+                    "used_by": "sabueso.source_access",
+                    "roles": [
+                      "resource_description"
+                    ],
+                    "context": {
+                      "id": "sabueso:source-acquisition:8ebacda9-5b9e-40c9-bfb1-a94fd28412be",
+                      "producer": {
+                        "name": "sabueso",
+                        "version": "0.14.0+128.gbbf5c84",
+                        "version_basis": "runtime_package_metadata"
+                      },
+                      "source": "RCSB PDB",
+                      "operation": "structure",
+                      "query": {
+                        "pdb_id": "1SUX"
+                      },
+                      "outcome": "received",
+                      "access": "network",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 4,
+                          "revision_date": "2023-08-23T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "network_attempts": 1,
+                      "requests": [
+                        {
+                          "method": "POST",
+                          "url": "https://data.rcsb.org/graphql",
+                          "request_sha256": "febb50c801c5055bd8936c676b83d3ef97766f51ef0af602f844addfc214bcf2",
+                          "route": "network",
+                          "network_attempts": 1,
+                          "started_at": "2026-10-29T22:56:42+00:00",
+                          "retries": [],
+                          "outcome": "received",
+                          "status": 200,
+                          "finished_at": "2026-10-29T22:56:42+00:00",
+                          "response_sha256": "a2ebf0f2e394df4ba4b54e7fb38e0e87dfcc380621716233717d7e4075737b75"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "pdb_id": "1SUX",
+                          "outcome": "received",
+                          "retrieved_at": "2026-10-29T22:56:42+00:00",
+                          "source_version": {
+                            "value": {
+                              "major_revision": 1,
+                              "minor_revision": 4,
+                              "revision_date": "2023-08-23T00:00:00Z"
+                            },
+                            "basis": "entry_revision"
+                          },
+                          "revision_metadata": {
+                            "major_revision": 1,
+                            "minor_revision": 4,
+                            "revision_date": "2023-08-23T00:00:00Z"
+                          },
+                          "primary_citation": {
+                            "pdbx_database_id_PubMed": 15321726,
+                            "pdbx_database_id_DOI": "10.1016/j.jmb.2004.06.056",
+                            "title": "Inactivation of triosephosphate isomerase from Trypanosoma cruzi by an agent that perturbs its dimer interface.",
+                            "journal_abbrev": "J.Mol.Biol.",
+                            "year": 2004,
+                            "rcsb_authors": [
+                              "Tellez-Valencia, A.",
+                              "Olivares-Illana, V.",
+                              "Hernandez-Santoyo, A.",
+                              "Perez-Montfort, R.",
+                              "Costas, M.",
+                              "Rodriguez-Romero, A.",
+                              "Lopez-Calahorra, F.",
+                              "Tuena De Gomez-Puyou, M.",
+                              "Gomez-Puyou, A."
+                            ]
+                          },
+                          "response_identity": {
+                            "basis": "decoded_entry",
+                            "hash": "sha256:d18209e5fd9d9739205a50d5381bc4b63a8712f53f0228f40348875a86a65107"
+                          }
+                        }
+                      ],
+                      "completed_ids": [
+                        "1SUX"
+                      ]
+                    }
+                  },
+                  {
+                    "item_id": "sabueso:rcsb-primary-citation:sha256:28cd9d8f62282d44c5f90ffb794545d86a7dd4f6064916b72329cb51af28b64d",
+                    "used_by": "sabueso.source_access",
+                    "roles": [
+                      "structure_primary_citation"
+                    ],
+                    "context": {
+                      "id": "sabueso:source-acquisition:8ebacda9-5b9e-40c9-bfb1-a94fd28412be",
+                      "producer": {
+                        "name": "sabueso",
+                        "version": "0.14.0+128.gbbf5c84",
+                        "version_basis": "runtime_package_metadata"
+                      },
+                      "source": "RCSB PDB",
+                      "operation": "structure",
+                      "query": {
+                        "pdb_id": "1SUX"
+                      },
+                      "outcome": "received",
+                      "access": "network",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 4,
+                          "revision_date": "2023-08-23T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "network_attempts": 1,
+                      "requests": [
+                        {
+                          "method": "POST",
+                          "url": "https://data.rcsb.org/graphql",
+                          "request_sha256": "febb50c801c5055bd8936c676b83d3ef97766f51ef0af602f844addfc214bcf2",
+                          "route": "network",
+                          "network_attempts": 1,
+                          "started_at": "2026-10-29T22:56:42+00:00",
+                          "retries": [],
+                          "outcome": "received",
+                          "status": 200,
+                          "finished_at": "2026-10-29T22:56:42+00:00",
+                          "response_sha256": "a2ebf0f2e394df4ba4b54e7fb38e0e87dfcc380621716233717d7e4075737b75"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "pdb_id": "1SUX",
+                          "outcome": "received",
+                          "retrieved_at": "2026-10-29T22:56:42+00:00",
+                          "source_version": {
+                            "value": {
+                              "major_revision": 1,
+                              "minor_revision": 4,
+                              "revision_date": "2023-08-23T00:00:00Z"
+                            },
+                            "basis": "entry_revision"
+                          },
+                          "revision_metadata": {
+                            "major_revision": 1,
+                            "minor_revision": 4,
+                            "revision_date": "2023-08-23T00:00:00Z"
+                          },
+                          "primary_citation": {
+                            "pdbx_database_id_PubMed": 15321726,
+                            "pdbx_database_id_DOI": "10.1016/j.jmb.2004.06.056",
+                            "title": "Inactivation of triosephosphate isomerase from Trypanosoma cruzi by an agent that perturbs its dimer interface.",
+                            "journal_abbrev": "J.Mol.Biol.",
+                            "year": 2004,
+                            "rcsb_authors": [
+                              "Tellez-Valencia, A.",
+                              "Olivares-Illana, V.",
+                              "Hernandez-Santoyo, A.",
+                              "Perez-Montfort, R.",
+                              "Costas, M.",
+                              "Rodriguez-Romero, A.",
+                              "Lopez-Calahorra, F.",
+                              "Tuena De Gomez-Puyou, M.",
+                              "Gomez-Puyou, A."
+                            ]
+                          },
+                          "response_identity": {
+                            "basis": "decoded_entry",
+                            "hash": "sha256:d18209e5fd9d9739205a50d5381bc4b63a8712f53f0228f40348875a86a65107"
+                          }
+                        }
+                      ],
+                      "completed_ids": [
+                        "1SUX"
+                      ]
+                    }
+                  }
+                ],
+                "usage_tree": {
+                  "sabueso.source_access": {
+                    "items": [
+                      "doi:10.1093/nar/gkae1091",
+                      "sabueso:rcsb-primary-citation:sha256:28cd9d8f62282d44c5f90ffb794545d86a7dd4f6064916b72329cb51af28b64d",
+                      "sabueso:source-access:sha256:bcc8140231b8698b5fb4f56490181140cd654151f43200fb77df2ee986ec9aad",
+                      "software:sabueso:0.14.0+128.gbbf5c84"
+                    ],
+                    "children": []
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "decoded_sha256": "66915346e70e67867d51886dbeea8968d162f0dc8b29209723d3371f371cf624"
+    },
+    {
+      "pdb_id": "2V5B",
+      "receipt": {
+        "pdb_id": "2V5B",
+        "retrieved_at": "2026-10-29T22:56:42+00:00",
+        "response_finished_at": "2026-10-29T22:56:42.816439+00:00",
+        "request_sha256": "4bf8f8531be14bb471b0ffd0ff5de8533a22a99b34d129d77fe8e6f497a28ab4",
+        "response_status": 200,
+        "response_url": "https://data.rcsb.org/graphql",
+        "response_headers": {
+          "Content-Type": "application/json",
+          "ETag": null,
+          "Last-Modified": null,
+          "Date": "Thu, 29 Oct 2026 22:56:42 GMT"
+        },
+        "bytes": 10766,
+        "sha256": "a62c88326bcc8855803ff7b2cf19931dc17733a2cca9613ba74abdb069d67ce2",
+        "complete_within_budget": true
+      },
+      "retrieved_at": "2026-10-29T22:56:42+00:00",
+      "acquisition_trace": {
+        "format": "sabueso.acquisition_trace@1",
+        "id": "sabueso:acquisition-trace:62998cae-4bc6-4c15-8759-13cd8cef874e",
+        "coverage": {
+          "sources": [
+            "UniProt",
+            "Europe PMC",
+            "RCSB PDB",
+            "ChEMBL",
+            "PubChem",
+            "PubChem BioAssay",
+            "BindingDB",
+            "PDB CCD",
+            "UniChem",
+            "PDBe-KB",
+            "AlphaFold DB",
+            "InterPro",
+            "MONDO",
+            "Open Targets",
+            "Orphanet",
+            "DISEASES",
+            "ClinVar",
+            "MedGen",
+            "ClinicalTrials.gov",
+            "NCBI Taxonomy",
+            "GTEx",
+            "OMA",
+            "gnomAD",
+            "AAindex",
+            "DisProt",
+            "UniParc",
+            "AlphaMissense",
+            "MobiDB",
+            "SIFTS",
+            "PDBe Validation",
+            "EPPIC",
+            "PDB-REDO",
+            "GlyGen",
+            "AlphaFill",
+            "LIGYSIS",
+            "IntAct",
+            "AmyPro",
+            "SWISS-MODEL Repository"
+          ],
+          "boundary": "built_in_entry_search_mentions_annotations_structure_chemical_clients",
+          "other_sources_and_custom_clients": "not_observed"
+        },
+        "result_status": "returned",
+        "records": [
+          {
+            "format": "sabueso.source_acquisition@1",
+            "id": "sabueso:source-acquisition:2fb8cb1d-dec0-4539-b884-48feb460c24e",
+            "source": "RCSB PDB",
+            "operation": "structure",
+            "query": {
+              "pdb_id": "2V5B"
+            },
+            "producer": {
+              "name": "sabueso",
+              "version": "0.14.0+128.gbbf5c84",
+              "version_basis": "runtime_package_metadata"
+            },
+            "started_at": "2026-10-29T22:56:42+00:00",
+            "outcome": "received",
+            "count": 1,
+            "entries": [
+              {
+                "pdb_id": "2V5B",
+                "outcome": "received",
+                "retrieved_at": "2026-10-29T22:56:42+00:00",
+                "source_version": {
+                  "value": {
+                    "major_revision": 1,
+                    "minor_revision": 5,
+                    "revision_date": "2024-10-23T00:00:00Z"
+                  },
+                  "basis": "entry_revision"
+                },
+                "revision_metadata": {
+                  "major_revision": 1,
+                  "minor_revision": 5,
+                  "revision_date": "2024-10-23T00:00:00Z"
+                },
+                "primary_citation": {
+                  "pdbx_database_id_PubMed": 19121704,
+                  "pdbx_database_id_DOI": "10.1016/S0079-6603(08)00407-8",
+                  "title": "The Monomerization of Triosephosphate Isomerase from Trypanosoma Cruzi.",
+                  "journal_abbrev": "Prog.Nucleic Acid Res. Mol.Biol.",
+                  "year": 2008,
+                  "rcsb_authors": [
+                    "Zarate-Perez, F.",
+                    "Chanez-Cardenas, M.E.",
+                    "Arreola, R.",
+                    "Torres-Larios, A.",
+                    "Vazquez-Contreras, E."
+                  ]
+                },
+                "response_identity": {
+                  "basis": "decoded_entry",
+                  "hash": "sha256:04a41bc4035ed11a952678b025c3e50f6623e3fe45a3ee4d09ca2becee992759"
+                }
+              }
+            ],
+            "completed_ids": [
+              "2V5B"
+            ],
+            "source_version": {
+              "value": {
+                "major_revision": 1,
+                "minor_revision": 5,
+                "revision_date": "2024-10-23T00:00:00Z"
+              },
+              "basis": "entry_revision"
+            },
+            "retrieved_at": "2026-10-29T22:56:42+00:00",
+            "response_identity": {
+              "basis": "decoded_client_result",
+              "hash": "sha256:04a41bc4035ed11a952678b025c3e50f6623e3fe45a3ee4d09ca2becee992759"
+            },
+            "finished_at": "2026-10-29T22:56:42+00:00",
+            "requests": [
+              {
+                "method": "POST",
+                "url": "https://data.rcsb.org/graphql",
+                "request_sha256": "4bf8f8531be14bb471b0ffd0ff5de8533a22a99b34d129d77fe8e6f497a28ab4",
+                "route": "network",
+                "network_attempts": 1,
+                "started_at": "2026-10-29T22:56:42+00:00",
+                "retries": [],
+                "outcome": "received",
+                "status": 200,
+                "finished_at": "2026-10-29T22:56:42+00:00",
+                "response_sha256": "a62c88326bcc8855803ff7b2cf19931dc17733a2cca9613ba74abdb069d67ce2"
+              }
+            ],
+            "access": "network",
+            "network_attempts": 1,
+            "received_responses": 1,
+            "bibliography": [
+              {
+                "id": "software:sabueso:0.14.0+128.gbbf5c84",
+                "type": "software",
+                "title": "Sabueso",
+                "authors": [
+                  "Prada-Gracia, Diego",
+                  "Moreno-Vargas, Liliana M."
+                ],
+                "version": "0.14.0+128.gbbf5c84",
+                "doi": "10.5281/zenodo.22937375",
+                "url": "https://github.com/uibcdf/sabueso"
+              },
+              {
+                "id": "doi:10.1093/nar/gkae1091",
+                "type": "article",
+                "title": "Updated resources for exploring experimentally-determined PDB structures and Computed Structure Models at the RCSB Protein Data Bank",
+                "authors": [
+                  "Burley, Stephen K",
+                  "Bhatt, Rusham",
+                  "Bhikadiya, Charmi",
+                  "Bi, Chunxiao",
+                  "Biester, Alison",
+                  "Biswas, Pratyoy",
+                  "Bittrich, Sebastian",
+                  "Blaumann, Santiago",
+                  "Brown, Ronald",
+                  "Chao, Henry",
+                  "Chithari, Vivek Reddy",
+                  "Craig, Paul A",
+                  "Crichlow, Gregg V",
+                  "Duarte, Jose M",
+                  "Dutta, Shuchismita",
+                  "Feng, Zukang",
+                  "Flatt, Justin W",
+                  "Ghosh, Sutapa",
+                  "Goodsell, David S",
+                  "Green, Rachel Kramer",
+                  "Guranovic, Vladimir",
+                  "Henry, Jeremy",
+                  "Hudson, Brian P",
+                  "Joy, Michael",
+                  "Kaelber, Jason T",
+                  "Khokhriakov, Igor",
+                  "Lai, Jhih-Siang",
+                  "Lawson, Catherine L",
+                  "Liang, Yuhe",
+                  "Myers-Turnbull, Douglas",
+                  "Peisach, Ezra",
+                  "Persikova, Irina",
+                  "Piehl, Dennis W",
+                  "Pingale, Aditya",
+                  "Rose, Yana",
+                  "Sagendorf, Jared",
+                  "Sali, Andrej",
+                  "Segura, Joan",
+                  "Sekharan, Monica",
+                  "Shao, Chenghua",
+                  "Smith, James",
+                  "Trumbull, Michael",
+                  "Vallat, Brinda",
+                  "Voigt, Maria",
+                  "Webb, Ben",
+                  "Whetstone, Shamara",
+                  "Wu-Wu, Amy",
+                  "Xing, Tongji",
+                  "Young, Jasmine Y",
+                  "Zalevsky, Arthur",
+                  "Zardecki, Christine"
+                ],
+                "year": 2025,
+                "journal": "Nucleic Acids Research",
+                "volume": "53",
+                "number": "D1",
+                "pages": "D564-D574",
+                "doi": "10.1093/nar/gkae1091",
+                "url": "https://doi.org/10.1093/nar/gkae1091"
+              },
+              {
+                "id": "sabueso:rcsb-primary-citation:sha256:68ccd4e3d453bf3962ae55559ead4e3c8e3cefb9e471efd34c50aa63227d7d9c",
+                "type": "article",
+                "title": "The Monomerization of Triosephosphate Isomerase from Trypanosoma Cruzi.",
+                "authors": [
+                  "Zarate-Perez, F.",
+                  "Chanez-Cardenas, M.E.",
+                  "Arreola, R.",
+                  "Torres-Larios, A.",
+                  "Vazquez-Contreras, E."
+                ],
+                "year": 2008,
+                "journal": "Prog.Nucleic Acid Res. Mol.Biol.",
+                "doi": "10.1016/S0079-6603(08)00407-8",
+                "url": "https://doi.org/10.1016/S0079-6603(08)00407-8"
+              }
+            ],
+            "bibliography_gaps": [],
+            "provider": {
+              "status": "available",
+              "version": "0.12.0+11.g74f865d",
+              "attribution": {
+                "schema": "ackredit.attribution@1",
+                "name": "sabueso.source_access",
+                "context": {
+                  "id": "sabueso:source-acquisition:2fb8cb1d-dec0-4539-b884-48feb460c24e",
+                  "producer": {
+                    "name": "sabueso",
+                    "version": "0.14.0+128.gbbf5c84",
+                    "version_basis": "runtime_package_metadata"
+                  },
+                  "source": "RCSB PDB",
+                  "operation": "structure",
+                  "query": {
+                    "pdb_id": "2V5B"
+                  },
+                  "outcome": "received",
+                  "access": "network",
+                  "retrieved_at": "2026-10-29T22:56:42+00:00",
+                  "source_version": {
+                    "value": {
+                      "major_revision": 1,
+                      "minor_revision": 5,
+                      "revision_date": "2024-10-23T00:00:00Z"
+                    },
+                    "basis": "entry_revision"
+                  },
+                  "network_attempts": 1,
+                  "requests": [
+                    {
+                      "method": "POST",
+                      "url": "https://data.rcsb.org/graphql",
+                      "request_sha256": "4bf8f8531be14bb471b0ffd0ff5de8533a22a99b34d129d77fe8e6f497a28ab4",
+                      "route": "network",
+                      "network_attempts": 1,
+                      "started_at": "2026-10-29T22:56:42+00:00",
+                      "retries": [],
+                      "outcome": "received",
+                      "status": 200,
+                      "finished_at": "2026-10-29T22:56:42+00:00",
+                      "response_sha256": "a62c88326bcc8855803ff7b2cf19931dc17733a2cca9613ba74abdb069d67ce2"
+                    }
+                  ],
+                  "entries": [
+                    {
+                      "pdb_id": "2V5B",
+                      "outcome": "received",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 5,
+                          "revision_date": "2024-10-23T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "revision_metadata": {
+                        "major_revision": 1,
+                        "minor_revision": 5,
+                        "revision_date": "2024-10-23T00:00:00Z"
+                      },
+                      "primary_citation": {
+                        "pdbx_database_id_PubMed": 19121704,
+                        "pdbx_database_id_DOI": "10.1016/S0079-6603(08)00407-8",
+                        "title": "The Monomerization of Triosephosphate Isomerase from Trypanosoma Cruzi.",
+                        "journal_abbrev": "Prog.Nucleic Acid Res. Mol.Biol.",
+                        "year": 2008,
+                        "rcsb_authors": [
+                          "Zarate-Perez, F.",
+                          "Chanez-Cardenas, M.E.",
+                          "Arreola, R.",
+                          "Torres-Larios, A.",
+                          "Vazquez-Contreras, E."
+                        ]
+                      },
+                      "response_identity": {
+                        "basis": "decoded_entry",
+                        "hash": "sha256:04a41bc4035ed11a952678b025c3e50f6623e3fe45a3ee4d09ca2becee992759"
+                      }
+                    }
+                  ],
+                  "completed_ids": [
+                    "2V5B"
+                  ]
+                },
+                "items": [
+                  {
+                    "id": "software:sabueso:0.14.0+128.gbbf5c84",
+                    "type": "software",
+                    "title": "Sabueso",
+                    "authors": [
+                      "Prada-Gracia, Diego",
+                      "Moreno-Vargas, Liliana M."
+                    ],
+                    "version": "0.14.0+128.gbbf5c84",
+                    "doi": "10.5281/zenodo.22937375",
+                    "url": "https://github.com/uibcdf/sabueso"
+                  },
+                  {
+                    "id": "sabueso:source-access:sha256:cf5e466cbc42b6be40ef160fee191154fed41885731cdc49f5dd4b8a162ff38f",
+                    "type": "dataset",
+                    "title": "RCSB PDB structure access"
+                  },
+                  {
+                    "id": "doi:10.1093/nar/gkae1091",
+                    "type": "article",
+                    "title": "Updated resources for exploring experimentally-determined PDB structures and Computed Structure Models at the RCSB Protein Data Bank",
+                    "authors": [
+                      "Burley, Stephen K",
+                      "Bhatt, Rusham",
+                      "Bhikadiya, Charmi",
+                      "Bi, Chunxiao",
+                      "Biester, Alison",
+                      "Biswas, Pratyoy",
+                      "Bittrich, Sebastian",
+                      "Blaumann, Santiago",
+                      "Brown, Ronald",
+                      "Chao, Henry",
+                      "Chithari, Vivek Reddy",
+                      "Craig, Paul A",
+                      "Crichlow, Gregg V",
+                      "Duarte, Jose M",
+                      "Dutta, Shuchismita",
+                      "Feng, Zukang",
+                      "Flatt, Justin W",
+                      "Ghosh, Sutapa",
+                      "Goodsell, David S",
+                      "Green, Rachel Kramer",
+                      "Guranovic, Vladimir",
+                      "Henry, Jeremy",
+                      "Hudson, Brian P",
+                      "Joy, Michael",
+                      "Kaelber, Jason T",
+                      "Khokhriakov, Igor",
+                      "Lai, Jhih-Siang",
+                      "Lawson, Catherine L",
+                      "Liang, Yuhe",
+                      "Myers-Turnbull, Douglas",
+                      "Peisach, Ezra",
+                      "Persikova, Irina",
+                      "Piehl, Dennis W",
+                      "Pingale, Aditya",
+                      "Rose, Yana",
+                      "Sagendorf, Jared",
+                      "Sali, Andrej",
+                      "Segura, Joan",
+                      "Sekharan, Monica",
+                      "Shao, Chenghua",
+                      "Smith, James",
+                      "Trumbull, Michael",
+                      "Vallat, Brinda",
+                      "Voigt, Maria",
+                      "Webb, Ben",
+                      "Whetstone, Shamara",
+                      "Wu-Wu, Amy",
+                      "Xing, Tongji",
+                      "Young, Jasmine Y",
+                      "Zalevsky, Arthur",
+                      "Zardecki, Christine"
+                    ],
+                    "year": 2025,
+                    "journal": "Nucleic Acids Research",
+                    "volume": "53",
+                    "number": "D1",
+                    "pages": "D564-D574",
+                    "doi": "10.1093/nar/gkae1091",
+                    "url": "https://doi.org/10.1093/nar/gkae1091"
+                  },
+                  {
+                    "id": "sabueso:rcsb-primary-citation:sha256:68ccd4e3d453bf3962ae55559ead4e3c8e3cefb9e471efd34c50aa63227d7d9c",
+                    "type": "article",
+                    "title": "The Monomerization of Triosephosphate Isomerase from Trypanosoma Cruzi.",
+                    "authors": [
+                      "Zarate-Perez, F.",
+                      "Chanez-Cardenas, M.E.",
+                      "Arreola, R.",
+                      "Torres-Larios, A.",
+                      "Vazquez-Contreras, E."
+                    ],
+                    "year": 2008,
+                    "journal": "Prog.Nucleic Acid Res. Mol.Biol.",
+                    "doi": "10.1016/S0079-6603(08)00407-8",
+                    "url": "https://doi.org/10.1016/S0079-6603(08)00407-8"
+                  }
+                ],
+                "uses": [
+                  {
+                    "item_id": "software:sabueso:0.14.0+128.gbbf5c84",
+                    "used_by": "sabueso.source_access",
+                    "roles": [
+                      "executed_software"
+                    ],
+                    "context": {
+                      "id": "sabueso:source-acquisition:2fb8cb1d-dec0-4539-b884-48feb460c24e",
+                      "producer": {
+                        "name": "sabueso",
+                        "version": "0.14.0+128.gbbf5c84",
+                        "version_basis": "runtime_package_metadata"
+                      },
+                      "source": "RCSB PDB",
+                      "operation": "structure",
+                      "query": {
+                        "pdb_id": "2V5B"
+                      },
+                      "outcome": "received",
+                      "access": "network",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 5,
+                          "revision_date": "2024-10-23T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "network_attempts": 1,
+                      "requests": [
+                        {
+                          "method": "POST",
+                          "url": "https://data.rcsb.org/graphql",
+                          "request_sha256": "4bf8f8531be14bb471b0ffd0ff5de8533a22a99b34d129d77fe8e6f497a28ab4",
+                          "route": "network",
+                          "network_attempts": 1,
+                          "started_at": "2026-10-29T22:56:42+00:00",
+                          "retries": [],
+                          "outcome": "received",
+                          "status": 200,
+                          "finished_at": "2026-10-29T22:56:42+00:00",
+                          "response_sha256": "a62c88326bcc8855803ff7b2cf19931dc17733a2cca9613ba74abdb069d67ce2"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "pdb_id": "2V5B",
+                          "outcome": "received",
+                          "retrieved_at": "2026-10-29T22:56:42+00:00",
+                          "source_version": {
+                            "value": {
+                              "major_revision": 1,
+                              "minor_revision": 5,
+                              "revision_date": "2024-10-23T00:00:00Z"
+                            },
+                            "basis": "entry_revision"
+                          },
+                          "revision_metadata": {
+                            "major_revision": 1,
+                            "minor_revision": 5,
+                            "revision_date": "2024-10-23T00:00:00Z"
+                          },
+                          "primary_citation": {
+                            "pdbx_database_id_PubMed": 19121704,
+                            "pdbx_database_id_DOI": "10.1016/S0079-6603(08)00407-8",
+                            "title": "The Monomerization of Triosephosphate Isomerase from Trypanosoma Cruzi.",
+                            "journal_abbrev": "Prog.Nucleic Acid Res. Mol.Biol.",
+                            "year": 2008,
+                            "rcsb_authors": [
+                              "Zarate-Perez, F.",
+                              "Chanez-Cardenas, M.E.",
+                              "Arreola, R.",
+                              "Torres-Larios, A.",
+                              "Vazquez-Contreras, E."
+                            ]
+                          },
+                          "response_identity": {
+                            "basis": "decoded_entry",
+                            "hash": "sha256:04a41bc4035ed11a952678b025c3e50f6623e3fe45a3ee4d09ca2becee992759"
+                          }
+                        }
+                      ],
+                      "completed_ids": [
+                        "2V5B"
+                      ]
+                    }
+                  },
+                  {
+                    "item_id": "sabueso:source-access:sha256:cf5e466cbc42b6be40ef160fee191154fed41885731cdc49f5dd4b8a162ff38f",
+                    "used_by": "sabueso.source_access",
+                    "roles": [
+                      "resource_access"
+                    ],
+                    "context": {
+                      "id": "sabueso:source-acquisition:2fb8cb1d-dec0-4539-b884-48feb460c24e",
+                      "producer": {
+                        "name": "sabueso",
+                        "version": "0.14.0+128.gbbf5c84",
+                        "version_basis": "runtime_package_metadata"
+                      },
+                      "source": "RCSB PDB",
+                      "operation": "structure",
+                      "query": {
+                        "pdb_id": "2V5B"
+                      },
+                      "outcome": "received",
+                      "access": "network",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 5,
+                          "revision_date": "2024-10-23T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "network_attempts": 1,
+                      "requests": [
+                        {
+                          "method": "POST",
+                          "url": "https://data.rcsb.org/graphql",
+                          "request_sha256": "4bf8f8531be14bb471b0ffd0ff5de8533a22a99b34d129d77fe8e6f497a28ab4",
+                          "route": "network",
+                          "network_attempts": 1,
+                          "started_at": "2026-10-29T22:56:42+00:00",
+                          "retries": [],
+                          "outcome": "received",
+                          "status": 200,
+                          "finished_at": "2026-10-29T22:56:42+00:00",
+                          "response_sha256": "a62c88326bcc8855803ff7b2cf19931dc17733a2cca9613ba74abdb069d67ce2"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "pdb_id": "2V5B",
+                          "outcome": "received",
+                          "retrieved_at": "2026-10-29T22:56:42+00:00",
+                          "source_version": {
+                            "value": {
+                              "major_revision": 1,
+                              "minor_revision": 5,
+                              "revision_date": "2024-10-23T00:00:00Z"
+                            },
+                            "basis": "entry_revision"
+                          },
+                          "revision_metadata": {
+                            "major_revision": 1,
+                            "minor_revision": 5,
+                            "revision_date": "2024-10-23T00:00:00Z"
+                          },
+                          "primary_citation": {
+                            "pdbx_database_id_PubMed": 19121704,
+                            "pdbx_database_id_DOI": "10.1016/S0079-6603(08)00407-8",
+                            "title": "The Monomerization of Triosephosphate Isomerase from Trypanosoma Cruzi.",
+                            "journal_abbrev": "Prog.Nucleic Acid Res. Mol.Biol.",
+                            "year": 2008,
+                            "rcsb_authors": [
+                              "Zarate-Perez, F.",
+                              "Chanez-Cardenas, M.E.",
+                              "Arreola, R.",
+                              "Torres-Larios, A.",
+                              "Vazquez-Contreras, E."
+                            ]
+                          },
+                          "response_identity": {
+                            "basis": "decoded_entry",
+                            "hash": "sha256:04a41bc4035ed11a952678b025c3e50f6623e3fe45a3ee4d09ca2becee992759"
+                          }
+                        }
+                      ],
+                      "completed_ids": [
+                        "2V5B"
+                      ]
+                    }
+                  },
+                  {
+                    "item_id": "doi:10.1093/nar/gkae1091",
+                    "used_by": "sabueso.source_access",
+                    "roles": [
+                      "resource_description"
+                    ],
+                    "context": {
+                      "id": "sabueso:source-acquisition:2fb8cb1d-dec0-4539-b884-48feb460c24e",
+                      "producer": {
+                        "name": "sabueso",
+                        "version": "0.14.0+128.gbbf5c84",
+                        "version_basis": "runtime_package_metadata"
+                      },
+                      "source": "RCSB PDB",
+                      "operation": "structure",
+                      "query": {
+                        "pdb_id": "2V5B"
+                      },
+                      "outcome": "received",
+                      "access": "network",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 5,
+                          "revision_date": "2024-10-23T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "network_attempts": 1,
+                      "requests": [
+                        {
+                          "method": "POST",
+                          "url": "https://data.rcsb.org/graphql",
+                          "request_sha256": "4bf8f8531be14bb471b0ffd0ff5de8533a22a99b34d129d77fe8e6f497a28ab4",
+                          "route": "network",
+                          "network_attempts": 1,
+                          "started_at": "2026-10-29T22:56:42+00:00",
+                          "retries": [],
+                          "outcome": "received",
+                          "status": 200,
+                          "finished_at": "2026-10-29T22:56:42+00:00",
+                          "response_sha256": "a62c88326bcc8855803ff7b2cf19931dc17733a2cca9613ba74abdb069d67ce2"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "pdb_id": "2V5B",
+                          "outcome": "received",
+                          "retrieved_at": "2026-10-29T22:56:42+00:00",
+                          "source_version": {
+                            "value": {
+                              "major_revision": 1,
+                              "minor_revision": 5,
+                              "revision_date": "2024-10-23T00:00:00Z"
+                            },
+                            "basis": "entry_revision"
+                          },
+                          "revision_metadata": {
+                            "major_revision": 1,
+                            "minor_revision": 5,
+                            "revision_date": "2024-10-23T00:00:00Z"
+                          },
+                          "primary_citation": {
+                            "pdbx_database_id_PubMed": 19121704,
+                            "pdbx_database_id_DOI": "10.1016/S0079-6603(08)00407-8",
+                            "title": "The Monomerization of Triosephosphate Isomerase from Trypanosoma Cruzi.",
+                            "journal_abbrev": "Prog.Nucleic Acid Res. Mol.Biol.",
+                            "year": 2008,
+                            "rcsb_authors": [
+                              "Zarate-Perez, F.",
+                              "Chanez-Cardenas, M.E.",
+                              "Arreola, R.",
+                              "Torres-Larios, A.",
+                              "Vazquez-Contreras, E."
+                            ]
+                          },
+                          "response_identity": {
+                            "basis": "decoded_entry",
+                            "hash": "sha256:04a41bc4035ed11a952678b025c3e50f6623e3fe45a3ee4d09ca2becee992759"
+                          }
+                        }
+                      ],
+                      "completed_ids": [
+                        "2V5B"
+                      ]
+                    }
+                  },
+                  {
+                    "item_id": "sabueso:rcsb-primary-citation:sha256:68ccd4e3d453bf3962ae55559ead4e3c8e3cefb9e471efd34c50aa63227d7d9c",
+                    "used_by": "sabueso.source_access",
+                    "roles": [
+                      "structure_primary_citation"
+                    ],
+                    "context": {
+                      "id": "sabueso:source-acquisition:2fb8cb1d-dec0-4539-b884-48feb460c24e",
+                      "producer": {
+                        "name": "sabueso",
+                        "version": "0.14.0+128.gbbf5c84",
+                        "version_basis": "runtime_package_metadata"
+                      },
+                      "source": "RCSB PDB",
+                      "operation": "structure",
+                      "query": {
+                        "pdb_id": "2V5B"
+                      },
+                      "outcome": "received",
+                      "access": "network",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 5,
+                          "revision_date": "2024-10-23T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "network_attempts": 1,
+                      "requests": [
+                        {
+                          "method": "POST",
+                          "url": "https://data.rcsb.org/graphql",
+                          "request_sha256": "4bf8f8531be14bb471b0ffd0ff5de8533a22a99b34d129d77fe8e6f497a28ab4",
+                          "route": "network",
+                          "network_attempts": 1,
+                          "started_at": "2026-10-29T22:56:42+00:00",
+                          "retries": [],
+                          "outcome": "received",
+                          "status": 200,
+                          "finished_at": "2026-10-29T22:56:42+00:00",
+                          "response_sha256": "a62c88326bcc8855803ff7b2cf19931dc17733a2cca9613ba74abdb069d67ce2"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "pdb_id": "2V5B",
+                          "outcome": "received",
+                          "retrieved_at": "2026-10-29T22:56:42+00:00",
+                          "source_version": {
+                            "value": {
+                              "major_revision": 1,
+                              "minor_revision": 5,
+                              "revision_date": "2024-10-23T00:00:00Z"
+                            },
+                            "basis": "entry_revision"
+                          },
+                          "revision_metadata": {
+                            "major_revision": 1,
+                            "minor_revision": 5,
+                            "revision_date": "2024-10-23T00:00:00Z"
+                          },
+                          "primary_citation": {
+                            "pdbx_database_id_PubMed": 19121704,
+                            "pdbx_database_id_DOI": "10.1016/S0079-6603(08)00407-8",
+                            "title": "The Monomerization of Triosephosphate Isomerase from Trypanosoma Cruzi.",
+                            "journal_abbrev": "Prog.Nucleic Acid Res. Mol.Biol.",
+                            "year": 2008,
+                            "rcsb_authors": [
+                              "Zarate-Perez, F.",
+                              "Chanez-Cardenas, M.E.",
+                              "Arreola, R.",
+                              "Torres-Larios, A.",
+                              "Vazquez-Contreras, E."
+                            ]
+                          },
+                          "response_identity": {
+                            "basis": "decoded_entry",
+                            "hash": "sha256:04a41bc4035ed11a952678b025c3e50f6623e3fe45a3ee4d09ca2becee992759"
+                          }
+                        }
+                      ],
+                      "completed_ids": [
+                        "2V5B"
+                      ]
+                    }
+                  }
+                ],
+                "usage_tree": {
+                  "sabueso.source_access": {
+                    "items": [
+                      "doi:10.1093/nar/gkae1091",
+                      "sabueso:rcsb-primary-citation:sha256:68ccd4e3d453bf3962ae55559ead4e3c8e3cefb9e471efd34c50aa63227d7d9c",
+                      "sabueso:source-access:sha256:cf5e466cbc42b6be40ef160fee191154fed41885731cdc49f5dd4b8a162ff38f",
+                      "software:sabueso:0.14.0+128.gbbf5c84"
+                    ],
+                    "children": []
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "decoded_sha256": "63ac09cd4792fa46e02def5139505a0cb1a9f6559596410050a3da33ec7593d1"
+    },
+    {
+      "pdb_id": "1HTI",
+      "receipt": {
+        "pdb_id": "1HTI",
+        "retrieved_at": "2026-10-29T22:56:42+00:00",
+        "response_finished_at": "2026-10-29T22:56:43.022388+00:00",
+        "request_sha256": "b45f17ca267113066a76418d6ef7062e446e59cef993028ed61246b0377e4440",
+        "response_status": 200,
+        "response_url": "https://data.rcsb.org/graphql",
+        "response_headers": {
+          "Content-Type": "application/json",
+          "ETag": null,
+          "Last-Modified": null,
+          "Date": "Thu, 29 Oct 2026 22:56:42 GMT"
+        },
+        "bytes": 23555,
+        "sha256": "ad911089d0cb7a6fae7faf9181537a96891043ff3689b0466daa930fd3e9a69f",
+        "complete_within_budget": true
+      },
+      "retrieved_at": "2026-10-29T22:56:42+00:00",
+      "acquisition_trace": {
+        "format": "sabueso.acquisition_trace@1",
+        "id": "sabueso:acquisition-trace:853a71e0-598d-4efe-8187-72226702f3b7",
+        "coverage": {
+          "sources": [
+            "UniProt",
+            "Europe PMC",
+            "RCSB PDB",
+            "ChEMBL",
+            "PubChem",
+            "PubChem BioAssay",
+            "BindingDB",
+            "PDB CCD",
+            "UniChem",
+            "PDBe-KB",
+            "AlphaFold DB",
+            "InterPro",
+            "MONDO",
+            "Open Targets",
+            "Orphanet",
+            "DISEASES",
+            "ClinVar",
+            "MedGen",
+            "ClinicalTrials.gov",
+            "NCBI Taxonomy",
+            "GTEx",
+            "OMA",
+            "gnomAD",
+            "AAindex",
+            "DisProt",
+            "UniParc",
+            "AlphaMissense",
+            "MobiDB",
+            "SIFTS",
+            "PDBe Validation",
+            "EPPIC",
+            "PDB-REDO",
+            "GlyGen",
+            "AlphaFill",
+            "LIGYSIS",
+            "IntAct",
+            "AmyPro",
+            "SWISS-MODEL Repository"
+          ],
+          "boundary": "built_in_entry_search_mentions_annotations_structure_chemical_clients",
+          "other_sources_and_custom_clients": "not_observed"
+        },
+        "result_status": "returned",
+        "records": [
+          {
+            "format": "sabueso.source_acquisition@1",
+            "id": "sabueso:source-acquisition:312544d3-4c98-415c-9a2f-0d53289d9915",
+            "source": "RCSB PDB",
+            "operation": "structure",
+            "query": {
+              "pdb_id": "1HTI"
+            },
+            "producer": {
+              "name": "sabueso",
+              "version": "0.14.0+128.gbbf5c84",
+              "version_basis": "runtime_package_metadata"
+            },
+            "started_at": "2026-10-29T22:56:42+00:00",
+            "outcome": "received",
+            "count": 1,
+            "entries": [
+              {
+                "pdb_id": "1HTI",
+                "outcome": "received",
+                "retrieved_at": "2026-10-29T22:56:42+00:00",
+                "source_version": {
+                  "value": {
+                    "major_revision": 1,
+                    "minor_revision": 3,
+                    "revision_date": "2024-02-07T00:00:00Z"
+                  },
+                  "basis": "entry_revision"
+                },
+                "revision_metadata": {
+                  "major_revision": 1,
+                  "minor_revision": 3,
+                  "revision_date": "2024-02-07T00:00:00Z"
+                },
+                "primary_citation": {
+                  "pdbx_database_id_PubMed": 8061610,
+                  "pdbx_database_id_DOI": null,
+                  "title": "Crystal structure of recombinant human triosephosphate isomerase at 2.8 A resolution. Triosephosphate isomerase-related human genetic disorders and comparison with the trypanosomal enzyme.",
+                  "journal_abbrev": "Protein Sci.",
+                  "year": 1994,
+                  "rcsb_authors": [
+                    "Mande, S.C.",
+                    "Mainfroid, V.",
+                    "Kalk, K.H.",
+                    "Goraj, K.",
+                    "Martial, J.A.",
+                    "Hol, W.G."
+                  ]
+                },
+                "response_identity": {
+                  "basis": "decoded_entry",
+                  "hash": "sha256:9b6e196bdd699e4164f553de4b8fcc758a0fb59d41ec4c081cb4265ea19f285e"
+                }
+              }
+            ],
+            "completed_ids": [
+              "1HTI"
+            ],
+            "source_version": {
+              "value": {
+                "major_revision": 1,
+                "minor_revision": 3,
+                "revision_date": "2024-02-07T00:00:00Z"
+              },
+              "basis": "entry_revision"
+            },
+            "retrieved_at": "2026-10-29T22:56:42+00:00",
+            "response_identity": {
+              "basis": "decoded_client_result",
+              "hash": "sha256:9b6e196bdd699e4164f553de4b8fcc758a0fb59d41ec4c081cb4265ea19f285e"
+            },
+            "finished_at": "2026-10-29T22:56:43+00:00",
+            "requests": [
+              {
+                "method": "POST",
+                "url": "https://data.rcsb.org/graphql",
+                "request_sha256": "b45f17ca267113066a76418d6ef7062e446e59cef993028ed61246b0377e4440",
+                "route": "network",
+                "network_attempts": 1,
+                "started_at": "2026-10-29T22:56:42+00:00",
+                "retries": [],
+                "outcome": "received",
+                "status": 200,
+                "finished_at": "2026-10-29T22:56:43+00:00",
+                "response_sha256": "ad911089d0cb7a6fae7faf9181537a96891043ff3689b0466daa930fd3e9a69f"
+              }
+            ],
+            "access": "network",
+            "network_attempts": 1,
+            "received_responses": 1,
+            "bibliography": [
+              {
+                "id": "software:sabueso:0.14.0+128.gbbf5c84",
+                "type": "software",
+                "title": "Sabueso",
+                "authors": [
+                  "Prada-Gracia, Diego",
+                  "Moreno-Vargas, Liliana M."
+                ],
+                "version": "0.14.0+128.gbbf5c84",
+                "doi": "10.5281/zenodo.22937375",
+                "url": "https://github.com/uibcdf/sabueso"
+              },
+              {
+                "id": "doi:10.1093/nar/gkae1091",
+                "type": "article",
+                "title": "Updated resources for exploring experimentally-determined PDB structures and Computed Structure Models at the RCSB Protein Data Bank",
+                "authors": [
+                  "Burley, Stephen K",
+                  "Bhatt, Rusham",
+                  "Bhikadiya, Charmi",
+                  "Bi, Chunxiao",
+                  "Biester, Alison",
+                  "Biswas, Pratyoy",
+                  "Bittrich, Sebastian",
+                  "Blaumann, Santiago",
+                  "Brown, Ronald",
+                  "Chao, Henry",
+                  "Chithari, Vivek Reddy",
+                  "Craig, Paul A",
+                  "Crichlow, Gregg V",
+                  "Duarte, Jose M",
+                  "Dutta, Shuchismita",
+                  "Feng, Zukang",
+                  "Flatt, Justin W",
+                  "Ghosh, Sutapa",
+                  "Goodsell, David S",
+                  "Green, Rachel Kramer",
+                  "Guranovic, Vladimir",
+                  "Henry, Jeremy",
+                  "Hudson, Brian P",
+                  "Joy, Michael",
+                  "Kaelber, Jason T",
+                  "Khokhriakov, Igor",
+                  "Lai, Jhih-Siang",
+                  "Lawson, Catherine L",
+                  "Liang, Yuhe",
+                  "Myers-Turnbull, Douglas",
+                  "Peisach, Ezra",
+                  "Persikova, Irina",
+                  "Piehl, Dennis W",
+                  "Pingale, Aditya",
+                  "Rose, Yana",
+                  "Sagendorf, Jared",
+                  "Sali, Andrej",
+                  "Segura, Joan",
+                  "Sekharan, Monica",
+                  "Shao, Chenghua",
+                  "Smith, James",
+                  "Trumbull, Michael",
+                  "Vallat, Brinda",
+                  "Voigt, Maria",
+                  "Webb, Ben",
+                  "Whetstone, Shamara",
+                  "Wu-Wu, Amy",
+                  "Xing, Tongji",
+                  "Young, Jasmine Y",
+                  "Zalevsky, Arthur",
+                  "Zardecki, Christine"
+                ],
+                "year": 2025,
+                "journal": "Nucleic Acids Research",
+                "volume": "53",
+                "number": "D1",
+                "pages": "D564-D574",
+                "doi": "10.1093/nar/gkae1091",
+                "url": "https://doi.org/10.1093/nar/gkae1091"
+              },
+              {
+                "id": "sabueso:rcsb-primary-citation:sha256:17ba62e420d534cc229dec70cd5ec8a5434895d2d3b0324e5e19ed1b5a9c50c3",
+                "type": "article",
+                "title": "Crystal structure of recombinant human triosephosphate isomerase at 2.8 A resolution. Triosephosphate isomerase-related human genetic disorders and comparison with the trypanosomal enzyme.",
+                "authors": [
+                  "Mande, S.C.",
+                  "Mainfroid, V.",
+                  "Kalk, K.H.",
+                  "Goraj, K.",
+                  "Martial, J.A.",
+                  "Hol, W.G."
+                ],
+                "year": 1994,
+                "journal": "Protein Sci.",
+                "url": "https://pubmed.ncbi.nlm.nih.gov/8061610/"
+              }
+            ],
+            "bibliography_gaps": [],
+            "provider": {
+              "status": "available",
+              "version": "0.12.0+11.g74f865d",
+              "attribution": {
+                "schema": "ackredit.attribution@1",
+                "name": "sabueso.source_access",
+                "context": {
+                  "id": "sabueso:source-acquisition:312544d3-4c98-415c-9a2f-0d53289d9915",
+                  "producer": {
+                    "name": "sabueso",
+                    "version": "0.14.0+128.gbbf5c84",
+                    "version_basis": "runtime_package_metadata"
+                  },
+                  "source": "RCSB PDB",
+                  "operation": "structure",
+                  "query": {
+                    "pdb_id": "1HTI"
+                  },
+                  "outcome": "received",
+                  "access": "network",
+                  "retrieved_at": "2026-10-29T22:56:42+00:00",
+                  "source_version": {
+                    "value": {
+                      "major_revision": 1,
+                      "minor_revision": 3,
+                      "revision_date": "2024-02-07T00:00:00Z"
+                    },
+                    "basis": "entry_revision"
+                  },
+                  "network_attempts": 1,
+                  "requests": [
+                    {
+                      "method": "POST",
+                      "url": "https://data.rcsb.org/graphql",
+                      "request_sha256": "b45f17ca267113066a76418d6ef7062e446e59cef993028ed61246b0377e4440",
+                      "route": "network",
+                      "network_attempts": 1,
+                      "started_at": "2026-10-29T22:56:42+00:00",
+                      "retries": [],
+                      "outcome": "received",
+                      "status": 200,
+                      "finished_at": "2026-10-29T22:56:43+00:00",
+                      "response_sha256": "ad911089d0cb7a6fae7faf9181537a96891043ff3689b0466daa930fd3e9a69f"
+                    }
+                  ],
+                  "entries": [
+                    {
+                      "pdb_id": "1HTI",
+                      "outcome": "received",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 3,
+                          "revision_date": "2024-02-07T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "revision_metadata": {
+                        "major_revision": 1,
+                        "minor_revision": 3,
+                        "revision_date": "2024-02-07T00:00:00Z"
+                      },
+                      "primary_citation": {
+                        "pdbx_database_id_PubMed": 8061610,
+                        "pdbx_database_id_DOI": null,
+                        "title": "Crystal structure of recombinant human triosephosphate isomerase at 2.8 A resolution. Triosephosphate isomerase-related human genetic disorders and comparison with the trypanosomal enzyme.",
+                        "journal_abbrev": "Protein Sci.",
+                        "year": 1994,
+                        "rcsb_authors": [
+                          "Mande, S.C.",
+                          "Mainfroid, V.",
+                          "Kalk, K.H.",
+                          "Goraj, K.",
+                          "Martial, J.A.",
+                          "Hol, W.G."
+                        ]
+                      },
+                      "response_identity": {
+                        "basis": "decoded_entry",
+                        "hash": "sha256:9b6e196bdd699e4164f553de4b8fcc758a0fb59d41ec4c081cb4265ea19f285e"
+                      }
+                    }
+                  ],
+                  "completed_ids": [
+                    "1HTI"
+                  ]
+                },
+                "items": [
+                  {
+                    "id": "software:sabueso:0.14.0+128.gbbf5c84",
+                    "type": "software",
+                    "title": "Sabueso",
+                    "authors": [
+                      "Prada-Gracia, Diego",
+                      "Moreno-Vargas, Liliana M."
+                    ],
+                    "version": "0.14.0+128.gbbf5c84",
+                    "doi": "10.5281/zenodo.22937375",
+                    "url": "https://github.com/uibcdf/sabueso"
+                  },
+                  {
+                    "id": "sabueso:source-access:sha256:b8f4798ae69154af1266416b8301ffdbdaf6d4394bb752a17ee695fac498b60d",
+                    "type": "dataset",
+                    "title": "RCSB PDB structure access"
+                  },
+                  {
+                    "id": "doi:10.1093/nar/gkae1091",
+                    "type": "article",
+                    "title": "Updated resources for exploring experimentally-determined PDB structures and Computed Structure Models at the RCSB Protein Data Bank",
+                    "authors": [
+                      "Burley, Stephen K",
+                      "Bhatt, Rusham",
+                      "Bhikadiya, Charmi",
+                      "Bi, Chunxiao",
+                      "Biester, Alison",
+                      "Biswas, Pratyoy",
+                      "Bittrich, Sebastian",
+                      "Blaumann, Santiago",
+                      "Brown, Ronald",
+                      "Chao, Henry",
+                      "Chithari, Vivek Reddy",
+                      "Craig, Paul A",
+                      "Crichlow, Gregg V",
+                      "Duarte, Jose M",
+                      "Dutta, Shuchismita",
+                      "Feng, Zukang",
+                      "Flatt, Justin W",
+                      "Ghosh, Sutapa",
+                      "Goodsell, David S",
+                      "Green, Rachel Kramer",
+                      "Guranovic, Vladimir",
+                      "Henry, Jeremy",
+                      "Hudson, Brian P",
+                      "Joy, Michael",
+                      "Kaelber, Jason T",
+                      "Khokhriakov, Igor",
+                      "Lai, Jhih-Siang",
+                      "Lawson, Catherine L",
+                      "Liang, Yuhe",
+                      "Myers-Turnbull, Douglas",
+                      "Peisach, Ezra",
+                      "Persikova, Irina",
+                      "Piehl, Dennis W",
+                      "Pingale, Aditya",
+                      "Rose, Yana",
+                      "Sagendorf, Jared",
+                      "Sali, Andrej",
+                      "Segura, Joan",
+                      "Sekharan, Monica",
+                      "Shao, Chenghua",
+                      "Smith, James",
+                      "Trumbull, Michael",
+                      "Vallat, Brinda",
+                      "Voigt, Maria",
+                      "Webb, Ben",
+                      "Whetstone, Shamara",
+                      "Wu-Wu, Amy",
+                      "Xing, Tongji",
+                      "Young, Jasmine Y",
+                      "Zalevsky, Arthur",
+                      "Zardecki, Christine"
+                    ],
+                    "year": 2025,
+                    "journal": "Nucleic Acids Research",
+                    "volume": "53",
+                    "number": "D1",
+                    "pages": "D564-D574",
+                    "doi": "10.1093/nar/gkae1091",
+                    "url": "https://doi.org/10.1093/nar/gkae1091"
+                  },
+                  {
+                    "id": "sabueso:rcsb-primary-citation:sha256:17ba62e420d534cc229dec70cd5ec8a5434895d2d3b0324e5e19ed1b5a9c50c3",
+                    "type": "article",
+                    "title": "Crystal structure of recombinant human triosephosphate isomerase at 2.8 A resolution. Triosephosphate isomerase-related human genetic disorders and comparison with the trypanosomal enzyme.",
+                    "authors": [
+                      "Mande, S.C.",
+                      "Mainfroid, V.",
+                      "Kalk, K.H.",
+                      "Goraj, K.",
+                      "Martial, J.A.",
+                      "Hol, W.G."
+                    ],
+                    "year": 1994,
+                    "journal": "Protein Sci.",
+                    "url": "https://pubmed.ncbi.nlm.nih.gov/8061610/"
+                  }
+                ],
+                "uses": [
+                  {
+                    "item_id": "software:sabueso:0.14.0+128.gbbf5c84",
+                    "used_by": "sabueso.source_access",
+                    "roles": [
+                      "executed_software"
+                    ],
+                    "context": {
+                      "id": "sabueso:source-acquisition:312544d3-4c98-415c-9a2f-0d53289d9915",
+                      "producer": {
+                        "name": "sabueso",
+                        "version": "0.14.0+128.gbbf5c84",
+                        "version_basis": "runtime_package_metadata"
+                      },
+                      "source": "RCSB PDB",
+                      "operation": "structure",
+                      "query": {
+                        "pdb_id": "1HTI"
+                      },
+                      "outcome": "received",
+                      "access": "network",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 3,
+                          "revision_date": "2024-02-07T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "network_attempts": 1,
+                      "requests": [
+                        {
+                          "method": "POST",
+                          "url": "https://data.rcsb.org/graphql",
+                          "request_sha256": "b45f17ca267113066a76418d6ef7062e446e59cef993028ed61246b0377e4440",
+                          "route": "network",
+                          "network_attempts": 1,
+                          "started_at": "2026-10-29T22:56:42+00:00",
+                          "retries": [],
+                          "outcome": "received",
+                          "status": 200,
+                          "finished_at": "2026-10-29T22:56:43+00:00",
+                          "response_sha256": "ad911089d0cb7a6fae7faf9181537a96891043ff3689b0466daa930fd3e9a69f"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "pdb_id": "1HTI",
+                          "outcome": "received",
+                          "retrieved_at": "2026-10-29T22:56:42+00:00",
+                          "source_version": {
+                            "value": {
+                              "major_revision": 1,
+                              "minor_revision": 3,
+                              "revision_date": "2024-02-07T00:00:00Z"
+                            },
+                            "basis": "entry_revision"
+                          },
+                          "revision_metadata": {
+                            "major_revision": 1,
+                            "minor_revision": 3,
+                            "revision_date": "2024-02-07T00:00:00Z"
+                          },
+                          "primary_citation": {
+                            "pdbx_database_id_PubMed": 8061610,
+                            "pdbx_database_id_DOI": null,
+                            "title": "Crystal structure of recombinant human triosephosphate isomerase at 2.8 A resolution. Triosephosphate isomerase-related human genetic disorders and comparison with the trypanosomal enzyme.",
+                            "journal_abbrev": "Protein Sci.",
+                            "year": 1994,
+                            "rcsb_authors": [
+                              "Mande, S.C.",
+                              "Mainfroid, V.",
+                              "Kalk, K.H.",
+                              "Goraj, K.",
+                              "Martial, J.A.",
+                              "Hol, W.G."
+                            ]
+                          },
+                          "response_identity": {
+                            "basis": "decoded_entry",
+                            "hash": "sha256:9b6e196bdd699e4164f553de4b8fcc758a0fb59d41ec4c081cb4265ea19f285e"
+                          }
+                        }
+                      ],
+                      "completed_ids": [
+                        "1HTI"
+                      ]
+                    }
+                  },
+                  {
+                    "item_id": "sabueso:source-access:sha256:b8f4798ae69154af1266416b8301ffdbdaf6d4394bb752a17ee695fac498b60d",
+                    "used_by": "sabueso.source_access",
+                    "roles": [
+                      "resource_access"
+                    ],
+                    "context": {
+                      "id": "sabueso:source-acquisition:312544d3-4c98-415c-9a2f-0d53289d9915",
+                      "producer": {
+                        "name": "sabueso",
+                        "version": "0.14.0+128.gbbf5c84",
+                        "version_basis": "runtime_package_metadata"
+                      },
+                      "source": "RCSB PDB",
+                      "operation": "structure",
+                      "query": {
+                        "pdb_id": "1HTI"
+                      },
+                      "outcome": "received",
+                      "access": "network",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 3,
+                          "revision_date": "2024-02-07T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "network_attempts": 1,
+                      "requests": [
+                        {
+                          "method": "POST",
+                          "url": "https://data.rcsb.org/graphql",
+                          "request_sha256": "b45f17ca267113066a76418d6ef7062e446e59cef993028ed61246b0377e4440",
+                          "route": "network",
+                          "network_attempts": 1,
+                          "started_at": "2026-10-29T22:56:42+00:00",
+                          "retries": [],
+                          "outcome": "received",
+                          "status": 200,
+                          "finished_at": "2026-10-29T22:56:43+00:00",
+                          "response_sha256": "ad911089d0cb7a6fae7faf9181537a96891043ff3689b0466daa930fd3e9a69f"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "pdb_id": "1HTI",
+                          "outcome": "received",
+                          "retrieved_at": "2026-10-29T22:56:42+00:00",
+                          "source_version": {
+                            "value": {
+                              "major_revision": 1,
+                              "minor_revision": 3,
+                              "revision_date": "2024-02-07T00:00:00Z"
+                            },
+                            "basis": "entry_revision"
+                          },
+                          "revision_metadata": {
+                            "major_revision": 1,
+                            "minor_revision": 3,
+                            "revision_date": "2024-02-07T00:00:00Z"
+                          },
+                          "primary_citation": {
+                            "pdbx_database_id_PubMed": 8061610,
+                            "pdbx_database_id_DOI": null,
+                            "title": "Crystal structure of recombinant human triosephosphate isomerase at 2.8 A resolution. Triosephosphate isomerase-related human genetic disorders and comparison with the trypanosomal enzyme.",
+                            "journal_abbrev": "Protein Sci.",
+                            "year": 1994,
+                            "rcsb_authors": [
+                              "Mande, S.C.",
+                              "Mainfroid, V.",
+                              "Kalk, K.H.",
+                              "Goraj, K.",
+                              "Martial, J.A.",
+                              "Hol, W.G."
+                            ]
+                          },
+                          "response_identity": {
+                            "basis": "decoded_entry",
+                            "hash": "sha256:9b6e196bdd699e4164f553de4b8fcc758a0fb59d41ec4c081cb4265ea19f285e"
+                          }
+                        }
+                      ],
+                      "completed_ids": [
+                        "1HTI"
+                      ]
+                    }
+                  },
+                  {
+                    "item_id": "doi:10.1093/nar/gkae1091",
+                    "used_by": "sabueso.source_access",
+                    "roles": [
+                      "resource_description"
+                    ],
+                    "context": {
+                      "id": "sabueso:source-acquisition:312544d3-4c98-415c-9a2f-0d53289d9915",
+                      "producer": {
+                        "name": "sabueso",
+                        "version": "0.14.0+128.gbbf5c84",
+                        "version_basis": "runtime_package_metadata"
+                      },
+                      "source": "RCSB PDB",
+                      "operation": "structure",
+                      "query": {
+                        "pdb_id": "1HTI"
+                      },
+                      "outcome": "received",
+                      "access": "network",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 3,
+                          "revision_date": "2024-02-07T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "network_attempts": 1,
+                      "requests": [
+                        {
+                          "method": "POST",
+                          "url": "https://data.rcsb.org/graphql",
+                          "request_sha256": "b45f17ca267113066a76418d6ef7062e446e59cef993028ed61246b0377e4440",
+                          "route": "network",
+                          "network_attempts": 1,
+                          "started_at": "2026-10-29T22:56:42+00:00",
+                          "retries": [],
+                          "outcome": "received",
+                          "status": 200,
+                          "finished_at": "2026-10-29T22:56:43+00:00",
+                          "response_sha256": "ad911089d0cb7a6fae7faf9181537a96891043ff3689b0466daa930fd3e9a69f"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "pdb_id": "1HTI",
+                          "outcome": "received",
+                          "retrieved_at": "2026-10-29T22:56:42+00:00",
+                          "source_version": {
+                            "value": {
+                              "major_revision": 1,
+                              "minor_revision": 3,
+                              "revision_date": "2024-02-07T00:00:00Z"
+                            },
+                            "basis": "entry_revision"
+                          },
+                          "revision_metadata": {
+                            "major_revision": 1,
+                            "minor_revision": 3,
+                            "revision_date": "2024-02-07T00:00:00Z"
+                          },
+                          "primary_citation": {
+                            "pdbx_database_id_PubMed": 8061610,
+                            "pdbx_database_id_DOI": null,
+                            "title": "Crystal structure of recombinant human triosephosphate isomerase at 2.8 A resolution. Triosephosphate isomerase-related human genetic disorders and comparison with the trypanosomal enzyme.",
+                            "journal_abbrev": "Protein Sci.",
+                            "year": 1994,
+                            "rcsb_authors": [
+                              "Mande, S.C.",
+                              "Mainfroid, V.",
+                              "Kalk, K.H.",
+                              "Goraj, K.",
+                              "Martial, J.A.",
+                              "Hol, W.G."
+                            ]
+                          },
+                          "response_identity": {
+                            "basis": "decoded_entry",
+                            "hash": "sha256:9b6e196bdd699e4164f553de4b8fcc758a0fb59d41ec4c081cb4265ea19f285e"
+                          }
+                        }
+                      ],
+                      "completed_ids": [
+                        "1HTI"
+                      ]
+                    }
+                  },
+                  {
+                    "item_id": "sabueso:rcsb-primary-citation:sha256:17ba62e420d534cc229dec70cd5ec8a5434895d2d3b0324e5e19ed1b5a9c50c3",
+                    "used_by": "sabueso.source_access",
+                    "roles": [
+                      "structure_primary_citation"
+                    ],
+                    "context": {
+                      "id": "sabueso:source-acquisition:312544d3-4c98-415c-9a2f-0d53289d9915",
+                      "producer": {
+                        "name": "sabueso",
+                        "version": "0.14.0+128.gbbf5c84",
+                        "version_basis": "runtime_package_metadata"
+                      },
+                      "source": "RCSB PDB",
+                      "operation": "structure",
+                      "query": {
+                        "pdb_id": "1HTI"
+                      },
+                      "outcome": "received",
+                      "access": "network",
+                      "retrieved_at": "2026-10-29T22:56:42+00:00",
+                      "source_version": {
+                        "value": {
+                          "major_revision": 1,
+                          "minor_revision": 3,
+                          "revision_date": "2024-02-07T00:00:00Z"
+                        },
+                        "basis": "entry_revision"
+                      },
+                      "network_attempts": 1,
+                      "requests": [
+                        {
+                          "method": "POST",
+                          "url": "https://data.rcsb.org/graphql",
+                          "request_sha256": "b45f17ca267113066a76418d6ef7062e446e59cef993028ed61246b0377e4440",
+                          "route": "network",
+                          "network_attempts": 1,
+                          "started_at": "2026-10-29T22:56:42+00:00",
+                          "retries": [],
+                          "outcome": "received",
+                          "status": 200,
+                          "finished_at": "2026-10-29T22:56:43+00:00",
+                          "response_sha256": "ad911089d0cb7a6fae7faf9181537a96891043ff3689b0466daa930fd3e9a69f"
+                        }
+                      ],
+                      "entries": [
+                        {
+                          "pdb_id": "1HTI",
+                          "outcome": "received",
+                          "retrieved_at": "2026-10-29T22:56:42+00:00",
+                          "source_version": {
+                            "value": {
+                              "major_revision": 1,
+                              "minor_revision": 3,
+                              "revision_date": "2024-02-07T00:00:00Z"
+                            },
+                            "basis": "entry_revision"
+                          },
+                          "revision_metadata": {
+                            "major_revision": 1,
+                            "minor_revision": 3,
+                            "revision_date": "2024-02-07T00:00:00Z"
+                          },
+                          "primary_citation": {
+                            "pdbx_database_id_PubMed": 8061610,
+                            "pdbx_database_id_DOI": null,
+                            "title": "Crystal structure of recombinant human triosephosphate isomerase at 2.8 A resolution. Triosephosphate isomerase-related human genetic disorders and comparison with the trypanosomal enzyme.",
+                            "journal_abbrev": "Protein Sci.",
+                            "year": 1994,
+                            "rcsb_authors": [
+                              "Mande, S.C.",
+                              "Mainfroid, V.",
+                              "Kalk, K.H.",
+                              "Goraj, K.",
+                              "Martial, J.A.",
+                              "Hol, W.G."
+                            ]
+                          },
+                          "response_identity": {
+                            "basis": "decoded_entry",
+                            "hash": "sha256:9b6e196bdd699e4164f553de4b8fcc758a0fb59d41ec4c081cb4265ea19f285e"
+                          }
+                        }
+                      ],
+                      "completed_ids": [
+                        "1HTI"
+                      ]
+                    }
+                  }
+                ],
+                "usage_tree": {
+                  "sabueso.source_access": {
+                    "items": [
+                      "doi:10.1093/nar/gkae1091",
+                      "sabueso:rcsb-primary-citation:sha256:17ba62e420d534cc229dec70cd5ec8a5434895d2d3b0324e5e19ed1b5a9c50c3",
+                      "sabueso:source-access:sha256:b8f4798ae69154af1266416b8301ffdbdaf6d4394bb752a17ee695fac498b60d",
+                      "software:sabueso:0.14.0+128.gbbf5c84"
+                    ],
+                    "children": []
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "decoded_sha256": "d2682b680956b5339c5d561e01a3788ac94ff99af4976e41ab7267840573501b"
+    }
+  ],
+  "representations": {
+    "wire": "Unchanged complete HTTP JSON response and exact request bytes.",
+    "rcsb": "Decoded data.entry, re-encoded as JSON; not original wire bytes."
+  }
+}

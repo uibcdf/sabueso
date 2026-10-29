@@ -359,8 +359,12 @@ The subsequent [regional chain reading](pending_proposals/card_regional_reading.
 adds readable original per-chain coordinate gaps, complete chains and numbering
 locations to focused structural regions. Its optional presentation preserves
 scientific wires and compact machine frames. Assembly-aware membership still
-requires [#173](https://github.com/uibcdf/sabueso/issues/173)'s original generation/
-operation scope and native reconciliation contract; composition alone is insufficient.
+requires [#173](https://github.com/uibcdf/sabueso/issues/173)'s native reconciliation
+contract; composition alone is insufficient. Fresh RCSB acquisition now preserves
+[original generator/operator declarations](pending_proposals/rcsb_assembly_generation.md),
+including parent/order/revision context and literal human/agent saved inspection.
+Strict bounded symbolic occurrence parsing, label-asym binding and operation-aware
+contacts remain pending; no physical membership is inferred from the new inputs.
 Source-bound qualification remains in #148/#112, separate from human acceptance.
 
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all

@@ -51,6 +51,8 @@ STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
     rcsb_assembly_container_identifiers { assembly_id }
     pdbx_struct_assembly { oligomeric_details oligomeric_count details method_details }
     rcsb_struct_symmetry { kind type oligomeric_state stoichiometry }
+    pdbx_struct_assembly_gen { assembly_id ordinal asym_id_list oper_expression }
+    pdbx_struct_oper_list { id name type symmetry_operation }
   }
   polymer_entities {
     rcsb_id

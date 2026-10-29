@@ -84,7 +84,7 @@ function/class names and file scopes under `source_capability_inventory@1`.
 | [ProBiS-Database](http://probis.cmm.ki.si/?what=database) | 1 / 1 | none declared | 0 / 1 |
 | [PubChem (compounds)](https://pubchem.ncbi.nlm.nih.gov/) | 2 / 0 | none declared | 1 / 0 |
 | [PubChem BioAssay](https://pubchem.ncbi.nlm.nih.gov/) | 1 / 1 | none declared | 0 / 0 |
-| [RCSB PDB](https://www.rcsb.org/) | 1 / 0 | none declared | 0 / 0 |
+| [RCSB PDB](https://www.rcsb.org/) | 1 / 0 | none declared | 10 / 0 |
 | [Reactome](https://reactome.org/) | 1 / 1 | `reactome` | 0 / 0 |
 | [Rhea](https://www.rhea-db.org/) | 0 / 1; via `uniprot` | none declared | 0 / 0 |
 | [SAbDab / Thera-SAbDab](https://opig.stats.ox.ac.uk/webapps/sabdab/) | 1 / 1 | `sabdab` | 0 / 0 |

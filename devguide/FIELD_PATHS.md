@@ -1,5 +1,14 @@
 # Sabueso — Canonical Field Paths
 
+Unpublished schema 0.3.14 optionally retains
+`relationship_store[].qualifiers.assemblies[].generation` on RCSB
+`has_structure` declarations (#173). Its native `pdbx_struct_assembly_gen` and
+`pdbx_struct_oper_list` fields keep original values and missing/null/empty states.
+The supporting SourceAssertion retains the unsorted complete native parent array
+at `asserted_value.assembly_generation_inputs.assemblies`. These are literal
+source inputs, not generated physical members or reconciled contacts. Historical
+absence is not backfilled; see [the source contract](pending_proposals/rcsb_assembly_generation.md).
+
 Development schema 0.3.14 retains Europe PMC located-annotation acquisition pairs
 in `source_metadata.annotation_requests[]` (`requested_article`, `retrieved_at`),
 with `source_metadata.annotation_request_rule` naming

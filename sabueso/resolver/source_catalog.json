@@ -6056,7 +6056,18 @@
     ],
     "declared_enrichers": [],
     "recovery_inputs": {
-     "repository": [],
+     "repository": [
+      "temp_data/rcsb_assembly_generation/capture.json",
+      "temp_data/rcsb_assembly_generation/rcsb/1HTI.json",
+      "temp_data/rcsb_assembly_generation/rcsb/1SUX.json",
+      "temp_data/rcsb_assembly_generation/rcsb/2V5B.json",
+      "temp_data/rcsb_assembly_generation/wire/1HTI.graphql.json",
+      "temp_data/rcsb_assembly_generation/wire/1HTI.request.json",
+      "temp_data/rcsb_assembly_generation/wire/1SUX.graphql.json",
+      "temp_data/rcsb_assembly_generation/wire/1SUX.request.json",
+      "temp_data/rcsb_assembly_generation/wire/2V5B.graphql.json",
+      "temp_data/rcsb_assembly_generation/wire/2V5B.request.json"
+     ],
      "local_only": []
     },
     "live_health": "not_assessed_by_offline_inventory",

@@ -46,6 +46,18 @@ MIGRATION_RULE = "card_migration@1"
 SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
     "0.3.14": [
         {
+            "path": "relationships.has_structure.assemblies[].generation",
+            "filled_by": "structures",
+            "explicit_only": True,
+            "entity_types": ("protein",),
+        },
+        {
+            "path": "source_assertion_store[].asserted_value.assembly_generation_inputs",
+            "filled_by": "structures",
+            "explicit_only": True,
+            "entity_types": ("protein",),
+        },
+        {
             "path": "source_assertion_store[].source_metadata.annotation_requests",
             "filled_by": "refresh",
             "explicit_only": True,
@@ -679,7 +691,7 @@ def within_line_gaps(
         entity_type = (data.get("meta") or {}).get("entity_type")
         for change in changes:
             if change.get("explicit_only"):
-                continue  # Only explicit article ids ask for located annotations.
+                continue  # Optional scoped inputs require an explicit request.
             if entity_type not in change.get("entity_types", (entity_type,)):
                 continue
             if _has(data, change["path"]):
