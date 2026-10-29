@@ -1,30 +1,23 @@
-from sabueso._private.argdigest._shared import refuse
-from sabueso._private.argdigest.argument.region import _positions
-
-
 def digest_regions(regions, caller=None):
-    """None, one region for every card, or ``{card_id: region}``."""
-    if regions is None:
-        return None
+    """Validate shared or per-Card compact syntax without expanding positions."""
+    from sabueso.core.errors import ArgumentError
+    from sabueso.core.region_requests import _check, compact, current_budget
+
+    region_budget = current_budget()
     if isinstance(regions, dict):
-        out = {}
-        for key, region in regions.items():
-            positions = _positions(region)
-            if not isinstance(key, str) or positions is None:
-                raise refuse(
-                    "regions",
-                    regions,
-                    caller,
-                    "expected {card_id: region}, a region being positions and [begin, end] ranges",
-                )
-            out[key] = positions
-        return out
-    positions = _positions(regions)
-    if positions is None:
-        raise refuse(
-            "regions",
-            regions,
-            caller,
-            "expected None, a region, or {card_id: region}",
+        _check(None, len(regions), region_budget)
+        if any(
+            not isinstance(key, str) or value is None for key, value in regions.items()
+        ):
+            raise ArgumentError("regions requires {Card id: nonempty region}.")
+        _check(
+            None,
+            sum(
+                len(value)
+                for value in regions.values()
+                if isinstance(value, (list, tuple, set))
+            ),
+            region_budget,
         )
-    return positions
+        return {key: compact(value, region_budget) for key, value in regions.items()}
+    return compact(regions, region_budget)

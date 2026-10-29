@@ -114,6 +114,17 @@ of a positive reaction. Agent conformance and human usefulness are separate gate
 The workload scope includes [#171's region expansion guard](https://github.com/uibcdf/sabueso/issues/171),
 alongside #167's capture/storage costs: response byte limits alone do not bound
 request normalization or process memory.
+Default workload ceilings must be visible and explicitly overridable: a deliberate
+caller can raise or disable the applicable ceiling through a documented public
+option, with equal access for humans and agents. An over-budget request is refused
+before expansion with its requested size, budget and exact override route; it is
+never silently truncated, sampled or substituted. Preserve the complete request
+and effective workload policy in its execution record. Scientific validity and
+reference admission remain mandatory. The [receiving implementation](../pending_bugs/region_request_expansion.md)
+adds public `region_budget=100_000` / explicit `None`, with separate live receiving
+receipts and unchanged historical scientific readers. Read #171 for source-bound
+qualification. Combined researcher/workload acceptance remains open (#148); selected technical
+checks do not establish the complete experience or release readiness.
 
 Before 0.15.0, every row above must have its implemented scope, relevant public
 walkthrough and technical receipt, with human acceptance recorded for the combined

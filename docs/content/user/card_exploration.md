@@ -793,6 +793,34 @@ result. `structures.exclusions` retains original scientific exclusions and reaso
 Sorting keeps unknown resolution last in either direction and preserves original
 units. A wrong dimension is an argument error, even for an empty selection.
 
+Region requests use an explicit development workload budget, independently of
+scientific options and page byte limits. The default `region_budget=100_000` bounds
+both raw input terms and distinct requested positions. An over-budget request is
+refused before expansion with instructions for raising or disabling the ceiling;
+it is never silently shortened. Humans and agents can make the same deliberate
+choice:
+
+```python
+region = explorer.view(
+    "structures", options={"region": [[1, 10]]}, region_budget=None
+)
+print(region.workload)  # this invocation's original request and budget
+selection = explorer.access.select(
+    "structures", options={"region": [[1, 10]]}, region_budget=None
+)
+print(explorer.access.last_workload)  # copy before the next invocation if needed
+```
+
+Use a positive integer to set a larger finite budget. `answer("region_coverage",
+...)` accepts the same keyword. Removing the ceiling preserves scientific argument
+and original coordinate/reference checks. The budget is separate from result
+identity: equivalent scientific requests continue to share their cached result
+and machine selection. Receiving receipts describe the current invocation; existing
+saved formats retain scientific requests/results, without saving these new live
+receipts. An original saved result opens under its original predicates; a new
+saved lookup receives the explicit budget and returns only an exact retained
+request, or `not_saved`.
+
 ## Ask about an explicit sequence region
 
 Use the question route when region scope matters. For public TcTIM:

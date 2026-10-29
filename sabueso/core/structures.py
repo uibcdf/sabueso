@@ -12,6 +12,7 @@ import re
 from typing import Any, Dict, List, Sequence
 
 from .quantities import to_quantity
+from .region_requests import INHERIT, current_budget
 
 # Derived coverage classes. "domain" cannot be told from coverage alone (it needs domain
 # annotations), so the MVP uses "partial" for intermediate coverage.
@@ -581,12 +582,22 @@ def state_derivation():
 
 
 def structures_view(
-    card: Any, include_fragments: bool = False, region: Sequence[int] | None = None
+    card: Any,
+    include_fragments: bool = False,
+    region: Sequence[int] | None = None,
+    *,
+    region_budget=INHERIT,
 ) -> Dict[str, Any]:
     """Source-bound coordinate interpretation; original declarations remain inspectable."""
     from .experimental_coordinates_v1 import view
+    from .region_requests import normalize
     from .relationship_store import make_derivation
 
+    region, _ = normalize(
+        region,
+        [card],
+        region_budget=current_budget() if region_budget is INHERIT else region_budget,
+    )
     return view(
         card,
         include_fragments=include_fragments,
@@ -604,11 +615,20 @@ def structure_inventory(
     group_by: Sequence[str] | None = None,
     residue_maps: Dict[str, Dict[int, int]] | None = None,
     reference: str | None = None,
+    *,
+    region_budget=INHERIT,
 ) -> Dict[str, Any]:
     """Inventory @3 admits original coordinate/reference inputs before comparisons."""
     from .experimental_coordinates_v1 import inventory
+    from .region_requests import normalize
     from .relationship_store import make_derivation
 
+    regions, _ = normalize(
+        regions,
+        cards,
+        region_budget=current_budget() if region_budget is INHERIT else region_budget,
+        allow_mapping=True,
+    )
     return inventory(
         cards,
         regions=regions,

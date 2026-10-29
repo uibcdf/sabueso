@@ -1,5 +1,20 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+Region request receiving (#171) adds `region_budget` digestion: a positive
+non-boolean integer (default 100,000), or explicit `None` to remove the workload
+ceiling. `region`/`regions` digestion now preserves validated compact terms rather
+than expanding ranges before reference admission. The receiving wrapper establishes
+the per-call budget before ArgDigest; nested readers inherit it through a scoped
+ContextVar, restored on success and failure. Backend preflight remains active with
+digestion skipped. Raw term count and exact interval-union cardinality are bounded
+before allocation; shared Deck requests count positions for every recipient protein
+Card. An original admitted canonical reference checks endpoints before expansion,
+including with an unlimited workload budget. Argument/reference validity cannot be
+disabled with this option. Frozen scientific option predicates/readers stay unchanged;
+new saved lookup requests receive a guard outside them. See the
+[owning report](pending_bugs/region_request_expansion.md) for receipt and qualification
+scope. No Card schema or scientific rule changes.
+
 `Deck.explain(..., relationship_id=None)` (#168) adds one exact record-id digester.
 None or a nonempty string is admitted without coercion/stripping. Backend guards
 refuse malformed selectors before inventory work even with digestion skipped;

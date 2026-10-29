@@ -4445,3 +4445,28 @@ projection using frozen predicates; @1/@2 reports retain their original semantic
 without importing the new coordinate interpretation. This consumer correction and
 its failed initial source are recorded in #170; schema and shared contracts are
 unchanged.
+
+
+## 2026-10-29 — Visible workload ceilings with an explicit override (#171)
+
+The maintainer requires deliberate large requests to remain possible. A default
+workload ceiling must never silently truncate, sample or change a scientific
+request. Check compact request size before expansion; when the ceiling is
+exceeded, refuse with the requested size, applicable budget and documented public
+override route. Provide an explicit per-request option to raise or disable the
+applicable default ceiling, available equally to human and agent callers without
+interactive confirmation. Keep the complete request and effective workload policy
+in its execution record. Prefer compact or incremental processing where feasible;
+an override does not promise unlimited machine resources.
+
+Only resource-budget enforcement is overridden. Argument validity, supported
+scientific scope, identity and coordinate/reference admission remain mandatory;
+an out-of-reference position does not become valid by opting into more work.
+The public override must not require disabling argument digestion. Preserve frozen
+historical scientific readers and exact saved requests; a new live resource policy
+must not reinterpret an old result. The subsequent
+[receiving implementation](pending_bugs/region_request_expansion.md) chooses public
+`region_budget=100_000`, with explicit `None` to disable the ceiling; broader
+qualification is recorded in [#171](https://github.com/uibcdf/sabueso/issues/171).
+This clarification supersedes any reading of the earlier issue design notes that
+would prohibit an explicit caller-selected removal of the default ceiling.

@@ -75,6 +75,11 @@ source and release receipts remain unchanged.
    source's selected/full-local and exact-head hosted qualification is recorded
    in #170. Verify that source-bound receipt before expanding scientific routes;
    do not transfer an earlier green result to changed runtime bytes.
+   The following [region receiving work](pending_bugs/region_request_expansion.md)
+   (#171) adds compact preflight and public `region_budget`, including explicit
+   `None` for deliberate unrestricted workload. Its selected tests pass; read #171
+   for source-bound local/hosted qualification. Preserve scientific validation, cached result identity
+   and frozen original reading while qualifying this separate receiving change.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed

@@ -15,6 +15,7 @@ from sabueso._private.argdigest import arg_digest
 
 from .card_access import CardAccess, _Entry, _handle, _type
 from .errors import ArgumentError
+from .region_requests import DEFAULT_REGION_BUDGET, receiving
 
 _LABELS = {
     "meta": "Card details",
@@ -730,6 +731,7 @@ class CardView:
     _saved_state: object = field(default=None, repr=False)
     _display_request: object = field(default=None, repr=False)
     _machine_ref: str | None = field(default=None, repr=False)
+    _workload: object = field(default=None, repr=False)
 
     def __post_init__(self):
         self._explorer._session["views"][id(self)] = self
@@ -740,6 +742,11 @@ class CardView:
 
             return _SavedItem(self, entry)
         return CardItem(self, entry)
+
+    @property
+    def workload(self):
+        """Receiving policy/request for this invocation; None if not retained."""
+        return deepcopy(self._workload)
 
     @property
     def explorer(self):
@@ -1333,6 +1340,7 @@ class CardExplorer:
     @property
     def capabilities(self):
         capabilities = {
+            "region_workload": self.access.capabilities["region_workload"],
             "topics": list(self._topics),
             "inspect": True,
             "search": "literal_casefold",
@@ -1687,9 +1695,26 @@ class CardExplorer:
             else "Parent term Cards were not opened. Identity terminology: explorer.view('identity'); equivalence and related xrefs are separate from parent edges.",
         )
 
+    @receiving
     @arg_digest()
-    def view(self, topic, skip_digestion=False, *, options=None):
-        """Open a delivered topic by its catalog key."""
+    def view(
+        self,
+        topic,
+        skip_digestion=False,
+        *,
+        options=None,
+        region_budget=DEFAULT_REGION_BUDGET,
+    ):
+        """Open a delivered topic by its catalog key.
+
+        ``region_budget`` bounds raw region terms and distinct positions (default
+        100,000); a positive integer changes it, and None removes this workload
+        ceiling. Scientific/reference checks remain. The view's ``workload``
+        receipt records this invocation separately from scientific result identity.
+        """
+        from .region_requests import prepare_options
+
+        options = prepare_options(self.access, topic, options)
         return self._topic(topic, options=options)
 
     def _answer(self, question, options, origin=None):
@@ -1749,13 +1774,26 @@ class CardExplorer:
             },
         )
 
+    @receiving
     @arg_digest()
-    def answer(self, question, skip_digestion=False, *, options=None):
+    def answer(
+        self,
+        question,
+        skip_digestion=False,
+        *,
+        options=None,
+        region_budget=DEFAULT_REGION_BUDGET,
+    ):
         """Follow a registered scientific question over the same captured results.
 
         ``region_coverage`` requires an explicit canonical UniProt sequence_ref
         and region in ``options``. Missing scope never starts a source query.
+        ``region_budget`` is the same explicit workload control as for ``view``;
+        None removes its ceiling without bypassing scientific validation.
         """
+        from .region_requests import prepare_options
+
+        options = prepare_options(self.access, question, options)
         return self._answer(question, {} if options is None else options)
 
     @arg_digest()

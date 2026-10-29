@@ -16,6 +16,8 @@ from typing import Any, Callable, Dict, List
 
 from sabueso._private.argdigest import arg_digest
 
+from .region_requests import DEFAULT_REGION_BUDGET, receiving
+
 
 class Deck:
     """Collection of Cards with consistent operations."""
@@ -83,6 +85,7 @@ class Deck:
         meta.update(extra)
         return Deck(list(cards), meta=meta)
 
+    @receiving
     @arg_digest()
     def explain(
         self,
@@ -92,6 +95,7 @@ class Deck:
         structure_ref: str | None = None,
         relationship_id: str | None = None,
         regions: Any = None,
+        region_budget=DEFAULT_REGION_BUDGET,
         include_fragments: bool = False,
         group_by: Any = None,
         residue_maps: Any = None,
@@ -122,11 +126,20 @@ class Deck:
 
             inventory = self.structure_inventory(
                 regions=regions,
+                region_budget=region_budget,
                 include_fragments=include_fragments,
                 group_by=group_by,
                 residue_maps=residue_maps,
                 reference=reference,
                 skip_digestion=True,
+            )
+            from .region_requests import normalize
+
+            regions, _ = normalize(
+                regions,
+                [c for c in self.cards if c.meta.get("entity_type") == "protein"],
+                region_budget=region_budget,
+                allow_mapping=True,
             )
             return explain_structure_inventory(
                 self.cards,
@@ -372,6 +385,7 @@ class Deck:
 
         return unique_names(self.cards, return_cards=return_cards)
 
+    @receiving
     @arg_digest()
     def structure_inventory(
         self,
@@ -381,6 +395,8 @@ class Deck:
         residue_maps: Any = None,
         reference: str | None = None,
         skip_digestion: bool = False,
+        *,
+        region_budget=DEFAULT_REGION_BUDGET,
     ) -> Dict[str, Any]:
         """The experimental structures of the deck's protein cards, side by side and
         grouped by state (rule ``structure_inventory@3``); see
@@ -397,6 +413,9 @@ class Deck:
 
         Unplaced declarations retain their original records and admission reasons.
         Protein card ids must be distinct; equal ids cannot identify separate rows.
+        ``region_budget`` bounds raw terms and total distinct requested positions
+        across protein Cards (default 100,000). Raise it or explicitly pass None
+        to remove the workload ceiling; reference/scientific checks still apply.
         """
         from .structures import structure_inventory
 
@@ -413,6 +432,7 @@ class Deck:
         return structure_inventory(
             proteins,
             regions=regions,
+            region_budget=region_budget,
             include_fragments=include_fragments,
             group_by=group_by,
             residue_maps=residue_maps,

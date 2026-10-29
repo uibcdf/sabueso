@@ -27,7 +27,7 @@ DEFAULT_FIELDS = COLUMNS[:5]
 
 
 def options_for_structures(options):
-    from sabueso._private.argdigest.argument.region import digest_region
+    from .region_requests import current_budget, normalize
 
     if options is None:
         options = {}
@@ -38,7 +38,7 @@ def options_for_structures(options):
         raise ArgumentError("include_fragments must be True or False.")
     return {
         "include_fragments": include,
-        "region": digest_region(options.get("region")),
+        "region": normalize(options.get("region"), region_budget=current_budget())[0],
     }
 
 

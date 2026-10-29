@@ -15,6 +15,11 @@ def digest_options(options, caller=None):
         if isinstance(options, dict):
             from copy import deepcopy
 
+            from sabueso.core.region_requests import compact, current_budget
+
+            if "region" in options:
+                compact(options["region"], current_budget())
+
             return deepcopy(options)
         raise refuse(
             "options", options, caller, "expected scientific options as a mapping"

@@ -32,12 +32,22 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 ## Risks
 
 - **Region expansion before reference admission ([#171](https://github.com/uibcdf/sabueso/issues/171)):**
-  native argument and exploration option normalizers expand inclusive ranges before
-  checking focal sequence bounds. Code inspection establishes the missing allocation
+  the former native argument and exploration option normalizers expanded inclusive
+  ranges before checking focal sequence bounds. Code inspection established the missing allocation
   guard; excessive RAM/swap from enormous endpoints is a suspected consequence,
   not an executed exhaustion experiment. #170's native bound refusal does not bound
   the preceding public normalization. Define bounded receiving under #148/#167
-  before workload acceptance; never silently clip a scientific request.
+  before workload acceptance; never silently clip a scientific request. The
+  maintainer requires an explicit public override to raise or disable the default
+  workload ceiling for a deliberate request, for humans and agents alike. An
+  exceeded ceiling must report the requested size, applicable budget and override
+  route before expansion. Overriding a workload budget never bypasses scientific
+  validity or reference admission. See the 2026-10-29 decision in
+  [DECISIONS.md](DECISIONS.md).
+  The [receiving correction](pending_bugs/region_request_expansion.md) now adds
+  compact preflight and explicit `region_budget`; qualification is tracked there
+  and in #171. The operating ceiling does not bound scientific materialization,
+  stored history or all process memory (#167).
 
 - **Accumulated exploration cost (#167/#148):** the same retained Card/root view
   has a 3.35 MiB fresh source-only artifact and a 119.64 MiB accumulated guide

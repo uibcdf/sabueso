@@ -18,6 +18,7 @@ from sabueso._private.argdigest import arg_digest
 
 from .card_capture import _capture_cards
 from .errors import ArgumentError, StorageError
+from .region_requests import DEFAULT_REGION_BUDGET, receiving
 from .snapshot import canonical_json, digest
 
 LOCATION_FORMAT = "card_access_location@1"
@@ -266,6 +267,7 @@ class CardAccess:
         "_coverage_location",
         "_scientific_cache",
         "_scientific_items",
+        "_last_workload",
     )
 
     @arg_digest()
@@ -279,7 +281,13 @@ class CardAccess:
         self._cursors, self._tokens = {}, {}
         self._nonce = secrets.token_hex(16)
         self._scientific_cache, self._scientific_items = {}, {}
+        self._last_workload = None
         self._set_coverage_location()
+
+    @property
+    def last_workload(self):
+        """Last successful receiving request; independent of cached selections."""
+        return deepcopy(getattr(self, "_last_workload", None))
 
     def _set_coverage_location(self):
         self._coverage_location = self._object_location(
@@ -297,7 +305,9 @@ class CardAccess:
         """Switch the focal capture without serializing or changing supplied inputs."""
         other = object.__new__(CardAccess)
         for name in self.__slots__:
-            setattr(other, name, getattr(self, name))
+            setattr(
+                other, name, None if name == "_last_workload" else getattr(self, name)
+            )
         other._focal_key = key
         other._selections, other._cursors, other._tokens = {}, {}, {}
         other._scientific_items = {}
@@ -360,6 +370,8 @@ class CardAccess:
 
     @property
     def capabilities(self):
+        from .region_requests import capabilities as region_capabilities
+
         scientific_topics = (
             ["structures", "ligand_site_comparisons", "quaternary_interpretation"]
             if self.profile == "protein"
@@ -371,6 +383,7 @@ class CardAccess:
             if selection._scientific is not None
         }
         return {
+            "region_workload": region_capabilities(),
             "catalog": ["topics", "fields", "selections"],
             "read": True,
             "export_card": True,
@@ -727,6 +740,7 @@ class CardAccess:
                 )
         return self._make_selection("read", full, node, text_slice)
 
+    @receiving
     @arg_digest()
     def select(
         self,
@@ -737,12 +751,17 @@ class CardAccess:
         item_refs=None,
         order_by=None,
         options=None,
+        region_budget=DEFAULT_REGION_BUDGET,
         skip_digestion=False,
     ):
         """Select shared scientific results with typed equality, exact members and order.
 
         Display selection preserves the full underlying result and source scope.
         Saved mode looks up exact retained requests; it never executes a reader.
+        ``region_budget`` bounds raw region terms and distinct positions (default
+        100,000). A positive integer sets another budget; None removes the workload
+        ceiling. Scientific validity remains mandatory. ``last_workload`` records
+        this invocation separately from the cached scientific selection.
         """
         from .card_scientific_access import (
             materialize,
@@ -755,7 +774,9 @@ class CardAccess:
             normalize,
             selection_ref,
         )
+        from .region_requests import prepare_options
 
+        options = prepare_options(self, topic, options)
         if not isinstance(topic, str) or topic not in (
             "structures",
             "ligand_site_comparisons",

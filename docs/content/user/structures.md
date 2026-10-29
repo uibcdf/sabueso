@@ -50,6 +50,29 @@ Native Card/Deck requests outside an admitted canonical sequence raise
 `ArgumentError`; a position outside that sequence is not a residue missing
 coordinates. Per-Card requests must name protein Cards present in the Deck.
 
+**Development request budget.** Region requests have a default
+`region_budget=100_000`: at most 100,000 input terms and 100,000 distinct requested
+positions across recipient protein Cards. Overlapping ranges and duplicate
+positions count once per Card; repeated input terms still count toward parsing
+cost. The request is checked before expanding ranges. Exceeding the budget raises
+an explicit `ArgumentError` with the size, budget and recovery route; nothing is
+silently clipped or sampled. To request a larger workload deliberately:
+
+```python
+larger = card.structures(region=[[12, 20]], region_budget=200_000)
+unrestricted = card.structures(region=[[12, 20]], region_budget=None)
+print(unrestricted.workload)  # original request and effective receiving budget
+```
+
+The same keyword is available on `deck.structure_inventory`, structural
+`deck.explain` and `card.table("structures", ...)`. `None` disables the application
+workload ceiling; scientific scope and original reference bounds still validate.
+This budget bounds request normalization, not all downstream memory or response
+bytes. Native dictionary results expose a separate defensive `.workload` receipt;
+their scientific dictionary contents and JSON serialization stay unchanged.
+The receipt is for this invocation and is not added to a stored Card or its
+SourceAssertions. Flat table lists retain their existing representation.
+
 Each structure has a derived `state`:
 
 - method and coverage class;

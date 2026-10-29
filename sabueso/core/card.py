@@ -7,6 +7,7 @@ from typing import Any, Dict, List
 from sabueso._private.argdigest import arg_digest
 
 from .quantities import field_node, quantity_columns, seal, to_quantity, verify
+from .region_requests import DEFAULT_REGION_BUDGET, receiving
 from .relationship_store import Relationship, RelationshipStore
 from .source_assertion_store import SourceAssertionStore
 
@@ -221,12 +222,15 @@ class Card:
 
         return residue_composition(self, residues, sequence_ref, source_assertions)
 
+    @receiving
     @arg_digest()
     def structures(
         self,
         include_fragments: bool = False,
         region: Any = None,
         skip_digestion: bool = False,
+        *,
+        region_budget=DEFAULT_REGION_BUDGET,
     ) -> Dict[str, Any]:
         """Protein-centric view of this card's experimental structures.
 
@@ -235,10 +239,18 @@ class Card:
         exact focal subject; ``unplaced`` retains the original records and reasons.
         Separate ``coordinate_scope`` checks original reference/mapping support;
         unknown comparisons preserve their originals and have no complete chains.
+        ``region_budget`` bounds raw input terms and distinct requested positions
+        (default 100,000). A positive integer raises the budget; explicit None
+        removes this workload ceiling while preserving scientific validation.
         """
         from .structures import structures_view
 
-        return structures_view(self, include_fragments=include_fragments, region=region)
+        return structures_view(
+            self,
+            include_fragments=include_fragments,
+            region=region,
+            region_budget=region_budget,
+        )
 
     @arg_digest()
     def bioactivities(
@@ -533,6 +545,7 @@ class Card:
             curated_at=curated_at,
         )
 
+    @receiving
     @arg_digest()
     def table(
         self, view: str, skip_digestion: bool = False, **options: Any
