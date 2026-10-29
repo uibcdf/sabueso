@@ -76,6 +76,9 @@ No browsing operation may acquire new data, refresh a Card or fabricate findings
 ## Implementation order
 
 1. Finish readable structural support/source orientation and its saved compatibility.
+   Include [original source-active-site selection binding](../pending_bugs/dossier_active_site_selection.md)
+   (#172): preserved original inputs and coherent native outputs must answer the
+   fixed declared question, independently of current scientific readers.
 2. Complete protein sequence, predicted models and sites/contact/assembly routes,
    sharing existing axes, residue knowledge and original structural support.
 3. Complete activity/assay/document and shared literature journeys, then molecule

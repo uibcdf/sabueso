@@ -335,6 +335,27 @@ def read_stage(output, stage):
                 context["selection"]["rule"] == "source_active_site_selection@1",
                 "Unsupported residue selection",
             )
+            from sabueso.core._source_active_site_selection_v1 import _v1_positions
+
+            positions = context["selection"].get("positions")
+            axis = f"UniProt:{card.get('identifiers.uniprot')['value']}"
+            require(
+                isinstance(positions, list)
+                and all(type(position) is int for position in positions)
+                and positions == _v1_positions(card)
+                and context["composition"].get("sequence_ref") == axis
+                and context["composition"].get("indexing") == "1-based"
+                and all(
+                    row.get("sequence_id") == axis and row.get("indexing") == "1-based"
+                    for row in context["residues"]
+                )
+                and context.get("comparison")
+                == {
+                    "status": "not_compared",
+                    "reason": "no source-stated residue correspondence",
+                },
+                "Original active-site selection differs",
+            )
             require(
                 context["support_refs"] == manifest["residue_items"][role],
                 "Residue support pins differ",

@@ -107,6 +107,11 @@ checks compact workload and original reference bounds before expansion, exposing
 an explicit raised/unlimited budget for humans and agents. Scientific predicates
 and historical reading remain separate; source-bound qualification is recorded in #171.
 
+The [original active-site selector correction](pending_bugs/dossier_active_site_selection.md)
+(#172) checks the declared dossier/comparison question independently of reported
+regional projections or composition inputs, preserving source inputs and original
+format meanings. Its current qualification is recorded in the owning issue.
+
 The [source-observation audit and guard](pending_bugs/source_observation_identity.md) separates semantic assertion identity from
 retained observation records: refresh preserves separate pins, and conflicting
 duplicates during aggregation now fail before source metadata can be overwritten.

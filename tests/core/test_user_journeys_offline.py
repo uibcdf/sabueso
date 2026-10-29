@@ -10,6 +10,8 @@ from pathlib import Path
 
 import pytest
 
+import sabueso
+
 SCRIPT = Path("examples/user_journeys/protein_comparison.py").resolve()
 DATA = Path("temp_data").resolve()
 
@@ -134,6 +136,12 @@ def test_independent_reader_preserves_original_comparison_support_units_and_cita
         "residue_position",
         "residue_literal",
         "residue_selection",
+        "residue_coherent_subset",
+        "residue_axis",
+        "residue_numbering",
+        "residue_composition_axis",
+        "residue_composition_numbering",
+        "residue_correspondence",
     ],
 )
 def test_reader_refuses_missing_changed_or_misbound_support(bundle, tmp_path, defect):
@@ -167,6 +175,37 @@ def test_reader_refuses_missing_changed_or_misbound_support(bundle, tmp_path, de
             context["residues"][0]["annotations"][0]["annotation"]["description"] = (
                 "forged statement"
             )
+        elif defect == "residue_coherent_subset":
+            # Isolate the altered original stage: a later manifest's original
+            # fingerprint must not mask acceptance of the wrong source selector.
+            (output / "later.manifest.json").unlink()
+            card = sabueso.KnowledgeStore(output / "knowledge.db").load(
+                context["card_ref"]
+            )
+            positions = context["selection"]["positions"][:1]
+            context["selection"]["positions"] = positions
+            context["residues"] = [
+                row for row in context["residues"] if row["position"] in positions
+            ]
+            context["composition"] = card.residue_composition(positions)
+        elif defect in (
+            "residue_axis",
+            "residue_numbering",
+            "residue_composition_axis",
+            "residue_composition_numbering",
+            "residue_correspondence",
+        ):
+            (output / "later.manifest.json").unlink()
+            if defect == "residue_axis":
+                context["residues"][0]["sequence_id"] = "UniProt:FOREIGN"
+            elif defect == "residue_numbering":
+                context["residues"][0]["indexing"] = "0-based"
+            elif defect == "residue_composition_axis":
+                context["composition"]["sequence_ref"] = "UniProt:FOREIGN"
+            elif defect == "residue_composition_numbering":
+                context["composition"]["indexing"] = "0-based"
+            else:
+                context["comparison"] = {"status": "compared", "basis": "equal numbers"}
         else:
             context["selection"]["positions"] = [1]
         target.write_text(json.dumps(report), encoding="utf-8")

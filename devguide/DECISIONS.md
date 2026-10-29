@@ -4470,3 +4470,22 @@ must not reinterpret an old result. The subsequent
 qualification is recorded in [#171](https://github.com/uibcdf/sabueso/issues/171).
 This clarification supersedes any reading of the earlier issue design notes that
 would prohibit an explicit caller-selected removal of the default ceiling.
+
+
+## 2026-10-29 — Bind fixed original active-site selections (#172)
+
+Freeze `source_active_site_selection@1` over the original `residue_annotations@1`
+fields/support/axis/revision predicate for independent dossier and comparison
+receiving. The recorded positions must equal its ascending unique integer
+selection; sequence axes, numbering and no-cross-protein-correspondence
+declarations in both examples must retain their original scope. Rehashed regional outputs and internally coherent composition inputs cannot
+substitute another question for the declared complete source-active-site selector.
+
+This corrects validation of existing definitions, not their scientific meaning:
+retain dossier formats @1/@2/@3, criteria @1/@2 and comparison formats @1/@2.
+No new format/schema or changed science rule is required. Verification never
+inserts a new binding into an old artifact, replaces its outputs, reconstructs an
+unobserved invocation or calls current scientific readers. Source inputs and
+producer labels stay original; missing/unsupported selection stays unknown for
+coverage. Future selector semantics need a new named version. See the
+[owning correction](pending_bugs/dossier_active_site_selection.md) and #172.

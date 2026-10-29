@@ -96,9 +96,17 @@ historical SourceAssertions. Equal residue numbers or compositions do not establ
 a correspondence. These derived views currently lack dedicated execution sidecars;
 their rules and source support do not imply complete operation observation.
 
+The `@2` reader independently binds the ascending unique active-site positions to
+the original complete annotation support, declared sequence axis and original
+revision policy under a frozen predicate. Residue rows and composition must keep
+the original axis and 1-based numbering, without asserting cross-protein
+correspondence. A coherent subset and matching composition still have to answer
+that fixed source-selection question. Unsupported or unmapped original annotations
+retain their original scope.
+
 The reader accepts original `@1` bundles without adding or recomputing residue
-context. In either format it checks original inputs and retains the producer's
-report, rather than rerunning derived rules. See {doc}`source_annotations`.
+context. It verifies original bindings and retains the producer's report, without
+recomputing report outputs with current scientific readers. See {doc}`source_annotations`.
 
 Reacquisition reads the same fixtures at a later observation time. It advances
 current heads without changing earlier citations, reports or bibliography. No
@@ -142,6 +150,16 @@ information; unplaced declarations and their originals stay separate. Its reader
 checks the original projection with frozen predicates, without current scientific
 readers, new acquisition or new credit. Recorded coverage ratios alone do not
 certify the current reference.
+
+All dossier formats independently verify that the reviewed positions are exactly
+the original complete source-active-site selection, in ascending unique order on
+the declared local canonical axis. Original annotation/item/subject support,
+numbering and stated revision mismatches use frozen predicates. Replacing,
+omitting, duplicating or reordering the selection, or changing its axis or
+correspondence declaration, is rejected even when projections, checks, display and
+file hashes agree. This validates the already declared criterion and preserves
+original formats/results; it does not add an unrecorded selector invocation.
+An empty original selection leaves the coverage criterion unknown.
 
 Inherited from format `@2`, it also displays the stored source record/target, assay identifiers,
 organism/taxon, confidence, variant annotation, original document pointers and

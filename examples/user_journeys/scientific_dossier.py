@@ -725,6 +725,22 @@ def read_stage(output, stage):
             and protein["structures"]["sequence_input"] == card.get("sequence.primary"),
             "Original region input differs",
         )
+        # The fixed criterion already means the original complete active-site
+        # selection. Verify it independently before using reported positions in
+        # any native projection/check; never call today's scientific selector.
+        from sabueso.core._source_active_site_selection_v1 import _v1_positions
+
+        positions = protein["structures"].get("positions")
+        require(
+            isinstance(positions, list)
+            and all(type(position) is int for position in positions)
+            and positions == _v1_positions(card)
+            and protein["structures"].get("position_axis")
+            == "this_card_UniProt_canonical_sequence"
+            and protein["structures"].get("cross_protein_correspondence")
+            == "not_supplied",
+            "Original active-site selection differs",
+        )
         require(
             protein["source_scope"]
             == {

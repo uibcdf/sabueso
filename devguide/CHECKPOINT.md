@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-28**, source-bound structural navigation and original human/agent saved reading
+Last updated: **2026-10-29**, source-bound structural navigation and original human/agent saved reading
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -80,6 +80,11 @@ source and release receipts remain unchanged.
    `None` for deliberate unrestricted workload. Its selected tests pass; read #171
    for source-bound local/hosted qualification. Preserve scientific validation, cached result identity
    and frozen original reading while qualifying this separate receiving change.
+   The [original selector correction](pending_bugs/dossier_active_site_selection.md)
+   (#172) binds dossier and comparison review positions to their declared complete
+   source-active-site selection through an independent frozen predicate. Keep each
+   historical format's meaning and original output; read #172 for source-bound
+   qualification before resuming broader structural/scientific expansion.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed

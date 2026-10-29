@@ -8,8 +8,12 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from unittest.mock import patch
 
 import pytest
+
+import sabueso
+from sabueso.core.card import Card
 
 SCRIPT = Path("examples/user_journeys/scientific_dossier.py").resolve()
 DATA = Path("temp_data").resolve()
@@ -37,6 +41,9 @@ for name in ('resolve','refresh_card','ligand_deck','compose_packet','knowledge_
 for name in ('structures','bioactivities','literature','get_residues','explain_literature','explain_bioactivity','knowledge_state'):
     setattr(Card,name,forbidden)
 Deck.structure_inventory=forbidden
+import sabueso.core.residues as live_residues
+for name in ('residues_view','residue_view','_prepare','item_support','canonical_sequence'):
+    setattr(live_residues,name,forbidden)
 if os.environ.get('SABUESO_TEST_LEGACY_DOSSIER') == '1':
     import sabueso.core.experimental_coordinates_v1 as coordinates
     coordinates.scope=coordinates.view=coordinates.inventory=forbidden
@@ -237,6 +244,52 @@ def test_historical_dossier_and_reacquisition_keep_original_format_and_eligibili
         assert [(row["qualifiers"], row["checks"], row["status"]) for row in rows] == [
             (row["qualifiers"], row["checks"], row["status"]) for row in new_rows
         ]
+    # These are explicit current-producer legacy-policy replays, not purported
+    # genuine earlier producer artifacts. Their already declared selector still
+    # binds the original source positions independently of coordinate @1.
+    changed = tmp_path / "legacy-wrong-selection"
+    shutil.copytree(output, changed)
+    (changed / "later.manifest.json").unlink()
+    sys.path.insert(0, str(SCRIPT.parent))
+    try:
+        example = runpy.run_path(str(SCRIPT))
+        subject = original["proteins"]["subject"]
+        card = sabueso.KnowledgeStore(changed / "knowledge.db").load(
+            subject["card_ref"]
+        )
+        with patch.object(
+            Card,
+            "get_residues",
+            lambda self: [
+                {
+                    "position": 1,
+                    "annotations": [
+                        {
+                            "field_path": "features_positional.active_site",
+                            "support_status": "complete",
+                        }
+                    ],
+                }
+            ],
+        ):
+            subject["structures"] = example["structure_review"](
+                card, report_format=original["format"]
+            )
+        example["write_json"](changed / "original.dossier.json", original)
+        (changed / "original.dossier.md").write_text(
+            example["render"](load(changed / "original.dossier.json")), encoding="utf-8"
+        )
+        manifest = load(changed / "original.manifest.json")
+        for name in ("original.dossier.json", "original.dossier.md"):
+            manifest["files"][name] = hashlib.sha256(
+                (changed / name).read_bytes()
+            ).hexdigest()
+        example["write_json"](changed / "original.manifest.json", manifest)
+    finally:
+        sys.path.remove(str(SCRIPT.parent))
+    result = invoke("read", changed, forbid_coordinates=True)
+    assert result.returncode != 0
+    assert "Original active-site selection differs" in result.stderr
 
 
 def test_independent_reader_retains_original_producer_results_pins_and_credit_after_reacquisition(
@@ -447,3 +500,86 @@ def test_reader_refuses_changed_science_or_overstated_scope_even_when_manifest_i
         assert (
             f"Recorded {area} criterion inputs or outcomes differ" in result.stderr
         ), result.stdout + result.stderr
+
+
+@pytest.mark.parametrize(
+    "damage",
+    ["substitute", "omit", "erase", "duplicate", "reorder", "axis", "correspondence"],
+)
+def test_reader_binds_review_to_original_active_site_selection(
+    bundle, tmp_path, damage
+):
+    output = tmp_path / "changed-selection"
+    shutil.copytree(bundle, output)
+    (output / "later.manifest.json").unlink()
+    database_hash = hashlib.sha256((output / "knowledge.db").read_bytes()).hexdigest()
+    runtime_hash = hashlib.sha256(
+        (output / "original.runtime.json").read_bytes()
+    ).hexdigest()
+    sys.path.insert(0, str(SCRIPT.parent))
+    try:
+        example = runpy.run_path(str(SCRIPT))
+        report = load(output / "original.dossier.json")
+        subject = report["proteins"]["subject"]
+        original = subject["structures"]["positions"]
+        assert len(original) > 1
+        if damage == "axis":
+            subject["structures"]["position_axis"] = "a_different_sequence_axis"
+        elif damage == "correspondence":
+            subject["structures"]["cross_protein_correspondence"] = (
+                "inferred_from_equal_numbers"
+            )
+        else:
+            positions = {
+                "substitute": [1],
+                "omit": original[:1],
+                "erase": [],
+                "duplicate": original + original[:1],
+                "reorder": original[::-1],
+            }[damage]
+            card = sabueso.KnowledgeStore(output / "knowledge.db").load(
+                subject["card_ref"]
+            )
+            # Produce a coherent alternative region projection, checks and display
+            # while leaving the actual original Card/annotations/support untouched.
+            with patch.object(
+                Card,
+                "get_residues",
+                lambda self: [
+                    {
+                        "position": position,
+                        "annotations": [
+                            {
+                                "field_path": "features_positional.active_site",
+                                "support_status": "complete",
+                            }
+                        ],
+                    }
+                    for position in positions
+                ],
+            ):
+                subject["structures"] = example["structure_review"](card)
+            assert subject["structures"]["positions"] == positions
+        example["write_json"](output / "original.dossier.json", report)
+        (output / "original.dossier.md").write_text(
+            example["render"](load(output / "original.dossier.json")), encoding="utf-8"
+        )
+        manifest = load(output / "original.manifest.json")
+        for name in ("original.dossier.json", "original.dossier.md"):
+            manifest["files"][name] = hashlib.sha256(
+                (output / name).read_bytes()
+            ).hexdigest()
+        example["write_json"](output / "original.manifest.json", manifest)
+    finally:
+        sys.path.remove(str(SCRIPT.parent))
+    result = invoke("read", output)
+    assert result.returncode != 0, result.stdout + result.stderr
+    assert "Original active-site selection differs" in result.stderr
+    assert (
+        hashlib.sha256((output / "knowledge.db").read_bytes()).hexdigest()
+        == database_hash
+    )
+    assert (
+        hashlib.sha256((output / "original.runtime.json").read_bytes()).hexdigest()
+        == runtime_hash
+    )
