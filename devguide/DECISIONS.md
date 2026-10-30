@@ -1,5 +1,20 @@
 # Sabueso — Decision Log
 
+## Preserve original assembly findings and exact explanation requests (2026-10-30, #148/#173/#176)
+
+Use explicit exploration format @5 with `assembly_generation_exploration_binding@1`
+for original assembly results, exact human/agent requests and navigation. Frozen
+native/presentation predicates read sealed records independently of live Cards,
+scientific engines, catalogs, fixtures and source services; their expectations
+never replace retained findings. Preserve prior formats/verifiers byte for byte,
+original row order, source membership, factored counts and physical unknowns.
+Apply `scientific_explanation_request_binding@1` at the shared storage boundary
+to bind specialized explanations' literal operation, context, target and identities
+before the original scientific predicates. This corrects #176's request-admission
+gap without reinterpreting historical science. Recover the completed reader block
+through unskipped exact-source CI/governance; 0.15.0 consolidation remains paused.
+See [the saved contract](pending_proposals/card_saved_assembly.md).
+
 ## Share captured assembly findings between human and agent navigation (2026-10-30, #148/#173)
 
 Use `assembly_generation_exploration@1` over one named native @4 result per

@@ -67,16 +67,13 @@ stay shared with existing access. No optional dependency or source query is adde
 
 ## Persistence and remaining work
 
-This live view and its machine selections report `save=False`; scientific saving
-and derived navigation refuse before file creation until an independent original
-result reader exists. Captured Card export remains available, and unrelated
-supported literal/field saving still works in the same session. Genuine older
-scientific files return `not_saved` for this new topic without running current
-assembly readers. Original scientific/native modules and saved formats remain
-unchanged.
+The [original assembly reader](card_saved_assembly.md) now supports saving this
+view, exact machine selections and derived navigation under explicit exploration
+format @5. Captured Card export remains available. Genuine older scientific files
+return `not_saved` for this topic without current scientific execution. Original
+scientific/native modules and previous saved formats remain unchanged.
 
-Next: independent original assembly-result reading and exact saved human/agent
-requests/navigation. Full nonpolymer/physical-occurrence and assembly-contact
+Full nonpolymer/physical-occurrence and assembly-contact
 scope remains explicit in #173. Researcher acceptance and workload qualification
 remain separate in #148. The [complete inventory](card_exploration_completion_0150.md)
 governs pre-0.15.0 delivery; consolidation and release stay paused. Source-specific
@@ -85,7 +82,7 @@ the [recovery ledger](deferred_ci.md) and must be recovered before route complet
 
 ## Local qualification
 
-The live slice (2026-10-30) passes 34 new exploration cases and all 152 native
+The preceding live-only slice (2026-10-30, `77fd770`) passes 34 new exploration cases and all 152 native
 owning cases. The final 40-file integration passes **1,223 cases /565.15 seconds**
 across four serial pytest-receptor invocations, including those 186 cases, with
 fatal runtime/SQLite/unraisable guards. Peak sampled owned RSS is 890,834,944

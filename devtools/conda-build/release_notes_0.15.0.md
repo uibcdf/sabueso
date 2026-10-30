@@ -23,9 +23,11 @@ is established by this draft.
   Earlier `@1`–`@3` remain selectable and unchanged. No physical copy, geometry or
   assembly-contact inference follows. A shared live human/agent assembly view now
   adds readable declarations/detail, original input/source navigation and compact
-  typed selection with mandatory scope/support. Full component/physical-occurrence
-  closure and original scientific saved reading remain pending; this new view
-  reports saving unavailable while captured Card export stays supported.
+  typed selection with mandatory scope/support. Original scientific saved reading
+  now preserves findings, requests and navigation under explicit exploration @5,
+  with independent frozen input/presentation predicates and unchanged older readers.
+  Shared explanation request admission (#176) rejects inconsistent literal reads.
+  Full component/physical-occurrence and operation-aware contact closure stay pending.
 
 - Separate exact experimental declaration admission (#169) from original
   coordinate/reference support (#170). Preserve unplaced declarations and unknown

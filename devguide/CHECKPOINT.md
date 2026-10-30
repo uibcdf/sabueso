@@ -115,7 +115,10 @@ source and release receipts remain unchanged.
    The [live human/agent assembly view](pending_proposals/card_assembly_exploration.md)
    now shares native @4 findings, exact request options, original-source navigation
    and bounded typed selection. Unknown/factored counts remain explicit;
-   scientific saving stays unavailable until its independent original reader.
+   its [original saved reader](pending_proposals/card_saved_assembly.md) now
+   preserves findings, exact requests and navigation in format @5. The shared
+   #176 admission check binds specialized explanations to their original literal
+   read request before the unchanged historical scientific predicates run.
    The retained-component continuation is an intermediate locally tested
    `[skip ci]` block; exact SHA/SDK and outstanding hosted gates belong to
    #173/#148/#112 and the [recovery ledger](pending_proposals/deferred_ci.md).
@@ -131,7 +134,7 @@ source and release receipts remain unchanged.
    The [human/agent adapter](pending_proposals/card_quaternary_interpretation.md)
    and [original scientific reader](pending_proposals/card_saved_quaternary.md)
    preserve those findings, exact saved requests and source/structure navigation.
-   New scientific bundles use explicit format @4 with frozen independent
+   Quaternary-only scientific bundles use explicit format @4 with frozen independent
    verification; older readers stay unchanged and unretained requests remain
    `not_saved`. Continue the remaining structural transitions and combined
    researcher/workload acceptance, then the inventory's next scientific panels.

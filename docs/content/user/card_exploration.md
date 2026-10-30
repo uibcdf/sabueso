@@ -758,9 +758,35 @@ Expansion is off by default. Set a positive budget to choose a ceiling (default
 Both interfaces keep the exact effective request and share one native evaluation
 per normalized request.
 
-This scientific view cannot be saved yet; `capabilities["save"]` is false. Export
-the captured Card with `explorer.access.export_card(path)` to keep its original
-inputs. Unrelated supported views can still be saved in the same session.
+Keep this exploration and reopen its original findings later:
+
+```python
+import sabueso
+
+assembly_receipt = assembly_view.save("assembly-review.json")
+original_assembly = sabueso.read_exploration(
+    "assembly-review.json", expected_digest=assembly_receipt["bundle_digest"]
+)
+assert original_assembly.native_payload == assembly_view.native_payload
+```
+
+Save a compact agent request separately when you want to retain that exact
+projection, filter and ordering:
+
+```python
+assembly_selection_receipt = assembly_selection.save("assembly-selection.json")
+original_selection = sabueso.read_exploration(
+    "assembly-selection.json",
+    expected_digest=assembly_selection_receipt["bundle_digest"],
+)
+assert original_selection.result_ref == assembly_selection.result_ref
+```
+
+Reading verifies original inputs, counts, source support, request identities and
+navigation using the original rules. It neither runs current scientific readers
+nor queries sources. Unretained requests return `not_saved`; use `start_new()`
+for a new local interpretation. Export the captured Card with
+`explorer.access.export_card(path)` when you want its complete original inputs.
 
 ### Inspect native operation and occurrence plans
 
@@ -850,8 +876,8 @@ economically. `quality_location` opens the original acquisition context.
 These are declarations with operator/component-key references: physical copies, assembly
 contacts, geometry and biological relevance are not reconciled by this native
 analysis. The human question and agent selection above share these native
-findings. Their saved scientific-result reader is still pending; original source
-exploration retains its existing inert saved reading.
+findings. Saved exploration retains their original interpretation and supported
+navigation; original source exploration keeps its existing inert reading.
 Select `generation_rule="rcsb_assembly_generation@1"` to preserve the earlier
 syntax-only interpretation, or `generation_rule="rcsb_assembly_generation@2"`
 for the earlier operator-only binding, or `generation_rule="rcsb_assembly_generation@3"`

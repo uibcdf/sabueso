@@ -55,6 +55,7 @@ def admitted_selection(selection):
             "structure_exploration@1",
             "ligand_site_exploration@1",
             "quaternary_exploration@1",
+            "assembly_generation_exploration@1",
         )
     try:
         node, location = selection._access._resolve(selection._target["location"])
@@ -64,7 +65,7 @@ def admitted_selection(selection):
                 isinstance(original, dict)
                 and original.get("rule") == "assembly_generation_links@1"
             ):
-                return False
+                return True
             if location["result_ref"] not in selection._access._metadata_refs:
                 return selection._access._objects[location["result_ref"]].get(
                     "context", {}
@@ -72,6 +73,7 @@ def admitted_selection(selection):
                     "structure_exploration@1",
                     "ligand_site_exploration@1",
                     "quaternary_exploration@1",
+                    "assembly_generation_exploration@1",
                 )
             node = selection._access._objects[location["result_ref"]]
             if isinstance(node, dict):
@@ -348,6 +350,7 @@ def _objects_for(access, records):
                                     "structure_exploration@1",
                                     "ligand_site_exploration@1",
                                     "quaternary_exploration@1",
+                                    "assembly_generation_exploration@1",
                                 )
                             ),
                             "This view needs a scientific result whose historical verifier is not yet supported.",
@@ -529,6 +532,9 @@ def _prepare(root):
                     and capture.snapshot == context["snapshot_id"]
                 )
                 bundle["scientific_results"][ref] = {"focal": focal}
+        from .card_exploration_assembly import register_bundle
+
+        register_bundle(bundle, objects, access)
     return bundle
 
 
@@ -646,7 +652,13 @@ def _restore(bundle, expected_digest):
 
 
 def _restore_checked(bundle, expected_digest):
-    from .card_exploration_verification import verify_bundle, verify_views
+    if (
+        isinstance(bundle, dict)
+        and bundle.get("format") == "sabueso.card_exploration@5"
+    ):
+        from .card_exploration_verification_v5 import verify_bundle, verify_views
+    else:
+        from .card_exploration_verification import verify_bundle, verify_views
 
     verify_bundle(bundle, expected_digest)
     from .card import CARD_SCHEMA_VERSION
@@ -714,16 +726,33 @@ def _restore_checked(bundle, expected_digest):
             record["focal"] in accesses and ref in bundle["objects"],
             "Missing scientific capture/result.",
         )
-        scientific_results[ref] = _restore_result(
-            ref, accesses[record["focal"]]._objects[ref]
-        )
+        wire = accesses[record["focal"]]._objects[ref]
+        if (
+            wire.get("context", {}).get("adapter")
+            == "assembly_generation_exploration@1"
+        ):
+            from .card_assembly_history_v1 import restore_result
+
+            _require(
+                bundle["format"] == "sabueso.card_exploration@5",
+                "Assembly results require their original format @5.",
+            )
+            scientific_results[ref] = restore_result(ref, wire)
+        else:
+            scientific_results[ref] = _restore_result(ref, wire)
     for access in accesses.values():
         access._metadata_refs -= set(scientific_results)
     if "scientific_results" in bundle:
         from .card_exploration_sites import FORMAT as SITE_FORMAT
         from .card_exploration_sites import verify_objects
 
-        if bundle["format"] == "sabueso.card_exploration@4":
+        if bundle["format"] == "sabueso.card_exploration@5":
+            from .card_exploration_assembly import (
+                verify_objects as verify_assembly_objects,
+            )
+
+            verify_assembly_objects(bundle, accesses)
+        elif bundle["format"] == "sabueso.card_exploration@4":
             from .card_exploration_quaternary import (
                 verify_objects as verify_quaternary_objects,
             )
@@ -737,7 +766,10 @@ def _restore_checked(bundle, expected_digest):
     # Register original verified quaternary members even for human-only bundles.
     # The object exposed here is the retained wire, never verifier-created values.
     for ref, result in scientific_results.items():
-        if result.wire["context"]["adapter"] == "quaternary_exploration@1":
+        if result.wire["context"]["adapter"] in (
+            "quaternary_exploration@1",
+            "assembly_generation_exploration@1",
+        ):
             access = accesses[bundle["scientific_results"][ref]["focal"]]
             for entry in result.entries:
                 item_ref = _handle(
@@ -863,7 +895,11 @@ def _restore_checked(bundle, expected_digest):
             _native_override=None
             if scientific_ref is not None
             and scientific_results[scientific_ref].wire["context"]["adapter"]
-            not in ("ligand_site_exploration@1", "quaternary_exploration@1")
+            not in (
+                "ligand_site_exploration@1",
+                "quaternary_exploration@1",
+                "assembly_generation_exploration@1",
+            )
             else _decode(
                 record["native_payload"], record.get("native_encoding", "json")
             ),
@@ -878,7 +914,11 @@ def _restore_checked(bundle, expected_digest):
             registry_entries = (
                 selection._scientific.entries
                 if selection._scientific.wire["context"]["adapter"]
-                in ("ligand_site_exploration@1", "quaternary_exploration@1")
+                in (
+                    "ligand_site_exploration@1",
+                    "quaternary_exploration@1",
+                    "assembly_generation_exploration@1",
+                )
                 else selection._entries
             )
             for entry in registry_entries:
@@ -902,6 +942,12 @@ def _restore_checked(bundle, expected_digest):
             )
             session[kind][key] = nodes[ref]
     retained_views = dict(session["views"])
+    from .card_explanation_request_binding_v1 import (
+        verify as verify_explanation_request,
+    )
+
+    for view in nodes.values():
+        verify_explanation_request(view)
     verify_views(bundle, nodes)
     session["views"] = retained_views
     session["validation"] = {
@@ -913,9 +959,15 @@ def _restore_checked(bundle, expected_digest):
         "scientific_classifications": "not_supported_by_this_saved_slice",
         "presentation_wording": "recorded",
         "source_authenticity_and_truth": "not_established_by_hashes",
+        "scientific_explanation_requests": "scientific_explanation_request_binding@1",
     }
     if "scientific_results" in bundle:
         from .card_exploration_science import _verification_report
+
+        if bundle["format"] == "sabueso.card_exploration@5":
+            from .card_exploration_assembly import (
+                verification_report as _verification_report,
+            )
 
         session["validation"].update(_verification_report(bundle))
     from .card_exploration_sites import FORMAT as SITE_FORMAT
@@ -950,7 +1002,11 @@ def saved_item_operation(item, kind):
         _origin=item.open()
         if kind == "links"
         and item._view._record_panel
-        not in ("ligand_site_comparisons", "quaternary_interpretation")
+        not in (
+            "ligand_site_comparisons",
+            "quaternary_interpretation",
+            "assembly_generation",
+        )
         else item._view,
         _display_request=None,
     )
@@ -1184,6 +1240,18 @@ def save_selection(selection, path, overwrite):
 
     flags = {}
     if (
+        selection._scientific is not None
+        and selection._scientific.wire["context"]["adapter"]
+        == "assembly_generation_exploration@1"
+    ):
+        flags = {
+            "_record_panel": "assembly_generation",
+            "_native_override": selection._scientific.wire["native_payload"],
+            "_context_override": selection._scientific.wire["context"],
+            "_status": selection._scientific.wire["outcome"]["status"],
+            "_reason": selection._scientific.wire["outcome"]["reason"],
+        }
+    elif (
         selection._scientific is not None
         and selection._scientific.wire["context"]["adapter"]
         == "quaternary_exploration@1"

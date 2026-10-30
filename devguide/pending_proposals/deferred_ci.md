@@ -26,11 +26,15 @@ scope and all-request count/text preflight. It belongs to this same intermediate
 recovery block; original `@1`–`@3` remain unchanged. Its exact source/SDK and
 selected local gates are recorded in #173/#148/#112 and its owned checkpoint.
 That occurrence checkpoint is `a1a54360d0073f5b690da760dddc16ec98daf010`,
-SDK `0.14.0+134.ga1a5436`. The following live human/agent assembly adapter is
-another intermediate in this same block: its independent original saved-result
-reader is still pending. Close that reader/request/navigation block and recover
-the exact final source through unskipped CI/governance before declaring the
-assembly route complete. Applicable local integration is mandatory for each
+SDK `0.14.0+134.ga1a5436`. The following live human/agent adapter is intermediate
+`77fd770e4d2a8fa94eea3fbd723a84fc90875efb`, SDK `0.14.0+135.g77fd770`.
+The [independent original saved reader](card_saved_assembly.md), exact requests
+and navigation now complete that persistence block in development, including
+shared explanation-request admission (#176). Its final source must use an
+**unskipped** push and recover exact-head CI/governance through gh-run-receptor
+before this debt is closed. Source-bound results belong to #148/#173/#176/#112;
+pending or failed qualification remains open. Full physical/contact reconciliation
+and broad researcher acceptance are separate. Applicable local integration is mandatory for each
 published intermediate; exact SHA/SDK and missing hosted gates stay in the owning
 issues and checkpoint records.
 

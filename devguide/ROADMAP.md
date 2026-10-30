@@ -374,9 +374,11 @@ the whole request's count and repeated-identifier text. Explicit `@1`–`@3` ret
 the earlier interpretations.
 The [live assembly adapter](pending_proposals/card_assembly_exploration.md) now
 shares these findings between readable human navigation and compact agent
-selection, with exact requests and original source/context links. Full
-component/physical-occurrence closure, operation-aware contacts and an independent
-original scientific result reader remain pending;
+selection, with exact requests and original source/context links. Its
+[original saved reader](pending_proposals/card_saved_assembly.md) preserves those
+findings, exact options/selections and navigation under exploration @5, with
+shared #176 explanation-request admission and unchanged prior scientific verifiers.
+Full component/physical-occurrence closure and operation-aware contacts remain pending;
 no physical membership is inferred from the new inputs.
 Source-bound qualification remains in #148/#112, separate from human acceptance.
 

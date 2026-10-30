@@ -100,7 +100,9 @@ The [shared live assembly view](pending_proposals/card_assembly_exploration.md)
 now presents the same captured findings through a readable question/table,
 original support/navigation and bounded typed agent selection. Factored counts
 remain distinct from unknown scalars. Physical membership stays uncomputed;
-independent original assembly-result reading is next.
+its [original scientific saved reader](pending_proposals/card_saved_assembly.md)
+now preserves findings, exact requests and navigation in format @5. Shared
+explanation request admission (#176) preserves the prior scientific verifiers.
 
 The [original structure context](pending_proposals/card_structure_context_navigation.md)
 links experimental inventory items and literal declarations to their exact retained

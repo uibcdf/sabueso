@@ -11,7 +11,7 @@ import pytest
 
 import sabueso
 from sabueso.core.card import Card
-from sabueso.core.errors import ArgumentError, StorageError
+from sabueso.core.errors import ArgumentError
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 
 TOPIC = "assembly_generation"
@@ -95,7 +95,7 @@ def test_one_capture_and_native_result_shared_across_entry_orders(
     )
     assert view.request["options"] == view.context["options"]
     assert [i.cells["declaration_count"].value for i in view.items()] == [4, 2]
-    assert not view.capabilities["save"] and not selection.capabilities["save"]
+    assert view.capabilities["save"] and selection.capabilities["save"]
     assert view.capabilities["scientific_adapter"]
 
 
@@ -360,9 +360,7 @@ def test_foreign_item_refs_are_not_rebound_to_equal_source_labels(card):
     assert hidden.item(view.items()[0].item_ref).open().native_payload
 
 
-def test_scientific_persistence_refuses_until_its_original_verifier_exists(
-    card, tmp_path
-):
+def test_scientific_persistence_keeps_original_result_and_navigation(card, tmp_path):
     explorer = card.explore()
     view = explorer.view(TOPIC, options=OPTIONS)
     item = view.items()[0]
@@ -379,10 +377,18 @@ def test_scientific_persistence_refuses_until_its_original_verifier_exists(
     ):
         path = tmp_path / f"unsupported-{i}.json"
         paths.append(path)
-        assert not obj.capabilities["save"]
-        with pytest.raises(StorageError):
-            obj.save(path)
-    assert all(not p.exists() for p in paths)
+        assert obj.capabilities["save"]
+        receipt = obj.save(path)
+        restored = sabueso.read_exploration(
+            path, expected_digest=receipt["bundle_digest"]
+        )
+        expected = (
+            obj.native_payload
+            if hasattr(obj, "native_payload")
+            else explorer.access._resolve(obj._target["location"])[0]
+        )
+        assert restored.native_payload == expected
+    assert all(p.exists() for p in paths)
     path = tmp_path / "original-card.json"
     explorer.access.export_card(path)
     assert json.loads(path.read_text()) == explorer.access._focal.data

@@ -41,7 +41,11 @@ def _scientific_metadata(value):
 def _encoding(view):
     if view._selection._scientific is not None and view._selection._scientific.wire[
         "context"
-    ]["adapter"] in ("ligand_site_exploration@1", "quaternary_exploration@1"):
+    ]["adapter"] in (
+        "ligand_site_exploration@1",
+        "quaternary_exploration@1",
+        "assembly_generation_exploration@1",
+    ):
         return "json"
     if view._selection._scientific is not None:
         return "structure_row" if view._focus is not None else "structure_inventory"

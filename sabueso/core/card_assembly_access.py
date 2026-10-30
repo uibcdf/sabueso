@@ -60,8 +60,8 @@ def descriptor():
             "format": SUPPORT_FORMAT,
             "record_location": "Append Record(id) to source_store_location only for a present member.",
         },
-        "save": False,
-        "save_reason": "Independent original assembly-result reading is not implemented yet; export the captured Card to preserve its original inputs.",
+        "save": True,
+        "save_reason": None,
     }
 
 

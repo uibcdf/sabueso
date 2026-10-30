@@ -125,9 +125,10 @@ Under original @1, `operator_scope="not_reconciled"` is mandatory: recognized ID
 not yet been verified against native operator descriptors. `tuple_expansion_state`
 and `expanded_tuple_count` describe delivery, not molecular completeness. Duplicate
 tuples are retained declaration occurrences, not proof of separate physical copies.
-The complete Card stays unchanged. This native analysis has no new saved scientific
-format; existing source exploration still reopens inertly. A dedicated human/agent
-scientific adapter and independent original result reader remain pending.
+The complete Card stays unchanged. The native-only @1 analysis introduced no
+saved scientific format. The later [human/agent adapter](card_assembly_exploration.md)
+and [original @4-result reader](card_saved_assembly.md) now preserve findings,
+exact requests and navigation under exploration @5; original source reading stays inert.
 
 ```python
 plans = card.assembly_generation(structure_ref="pdb:2V5B")

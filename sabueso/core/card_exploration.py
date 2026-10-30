@@ -260,7 +260,10 @@ class CardItem:
     @property
     def support(self):
         if self._view._record_panel == "assembly_generation":
-            from .card_assembly_exploration import support
+            if self._view._explorer.mode == "saved":
+                from .card_assembly_history_v1 import support
+            else:
+                from .card_assembly_exploration import support
 
             return support(self)
         if self._view._record_panel == "quaternary_interpretation":
@@ -1201,7 +1204,10 @@ class CardView:
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
         if self._record_panel == "assembly_generation":
-            from .card_assembly_exploration import display_filter
+            if self._explorer.mode == "saved":
+                from .card_assembly_history_v1 import display_filter
+            else:
+                from .card_assembly_exploration import display_filter
 
             return display_filter(self, column, equals)
         scientific = (
@@ -1587,15 +1593,9 @@ class CardExplorer:
 
     def _topic(self, topic, origin=None, options=None):
         if self.mode == "saved" and topic == "assembly_generation":
-            from .card_assembly_exploration import options_for_assembly
-            from .card_exploration_storage import not_saved
+            from .card_exploration_assembly import saved_human
 
-            options_for_assembly(options)
-            return not_saved(
-                self,
-                "Assembly-generation findings are not available in this saved exploration. The original captured Card remains inspectable.",
-                origin,
-            )
+            return saved_human(self, options, origin, question=False)
         if self.mode == "saved":
             from .card_exploration_storage import saved_topic
 
@@ -1804,7 +1804,9 @@ class CardExplorer:
 
     def _answer(self, question, options, origin=None):
         if self.mode == "saved" and question == "assembly_generation":
-            return self._topic(question, origin, options)
+            from .card_exploration_assembly import saved_human
+
+            return saved_human(self, options, origin, question=True)
         if self.mode == "saved":
             from .card_exploration_storage import saved_answer
 

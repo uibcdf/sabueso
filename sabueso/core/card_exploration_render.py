@@ -493,11 +493,14 @@ def _parts(view):
             + "; source/request states remain distinct. Unknown counts are not zero; no global completeness score is inferred."
         )
     if view._record_panel == "assembly_generation":
-        from .card_assembly_exploration import SCOPE, detail_lines
+        if view._explorer.mode == "saved":
+            from .card_assembly_history_v1 import SCOPE, detail_lines
+        else:
+            from .card_assembly_exploration import SCOPE, detail_lines
 
         opening.append(SCOPE)
         opening.append(
-            "Open an item for its complete original context; explain() shows the basis and related() opens input/source destinations. This scientific view cannot be saved yet. Export the captured Card to keep its original inputs."
+            "Open an item for its complete original context; explain() shows the basis and related() opens input/source destinations. Save this exploration to preserve its original findings, requests and navigation."
         )
         opening.extend(detail_lines(view, preview))
     if view._record_panel == "quaternary_interpretation":
@@ -689,7 +692,10 @@ def _parts(view):
                 ),
             )
             if view._record_panel == "assembly_generation":
-                from .card_assembly_exploration import display_row
+                if view._explorer.mode == "saved":
+                    from .card_assembly_history_v1 import display_row
+                else:
+                    from .card_assembly_exploration import display_row
 
                 record_row = display_row(item, index, preview)
             if view._record_panel == "quaternary_interpretation":
@@ -922,7 +928,10 @@ def _parts(view):
 
 def _headers(view):
     if view._record_panel == "assembly_generation":
-        from .card_assembly_exploration import HEADERS
+        if view._explorer.mode == "saved":
+            from .card_assembly_history_v1 import HEADERS
+        else:
+            from .card_assembly_exploration import HEADERS
 
         return list(HEADERS)
     if view._record_panel == "quaternary_interpretation":

@@ -1,4 +1,25 @@
-# Synthetic historical exploration
+# Historical exploration fixtures
+
+## Original live assembly adapter
+
+`assembly_live_v1.json.gz` packages four genuine public live observations from
+`77fd770e4d2a8fa94eea3fbd723a84fc90875efb`, SDK
+`0.14.0+135.g77fd770`, captured before independent assembly saved reading was
+implemented. It keeps the original Cards, native @4/presentation wires, exact
+requests, typed rows/pages and producer manifest for 1SUX, 2V5B, 1HTI and a legacy
+Card without generation inputs. No new source query, synthetic scientific result
+or private pilot content is included. This is a live-output comparison capsule,
+not a saved exploration bundle or a frozen Card schema.
+
+The retained public fixture originals and terms are declared in
+`temp_data/NOTICE.md`; the RCSB controls are in
+`temp_data/rcsb_assembly_generation/`, with the existing UniProt/legacy fixtures.
+Gzip is fixture packaging. Preserve these original values rather than rebuilding
+them with a newer scientific writer to make a reader pass.
+
+Compressed SHA-256: `36621bd303a20f3a5f87cb5fd5b63d4e94d946cfb7fa6e95dcf0035861ebd018`.
+
+Uncompressed SHA-256: `4acfab29f54eb2f153eb4c2674d9cdf4c4580f6441c4b66885d64d8c8899e912`.
 
 ## Original explanation @3 before coordinate admission
 

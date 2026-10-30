@@ -712,14 +712,24 @@ class CardAccess:
                     data["quaternary_interpretation"]["selection_availability"] = (
                         "retained_requests_only"
                     )
-                from .card_assembly_access import descriptor as assembly_descriptor
+                if self.mode == "saved":
+                    from .card_assembly_history_v1 import (
+                        descriptor as assembly_descriptor,
+                    )
+                else:
+                    from .card_assembly_access import descriptor as assembly_descriptor
 
                 data["assembly_generation"] = assembly_descriptor()
                 data["assembly_generation"]["selection_availability"] = (
-                    "not_saved" if self.mode == "saved" else "live"
+                    "retained_requests_only" if self.mode == "saved" else "live"
                 )
                 if self.mode == "saved":
-                    data["assembly_generation"]["availability"] = "not_saved"
+                    data["assembly_generation"]["availability"] = (
+                        "retained"
+                        if "assembly_generation"
+                        in self.capabilities["scientific_topics"]
+                        else "not_saved"
+                    )
                     data[TOPIC]["availability"] = (
                         "retained"
                         if TOPIC in self.capabilities["scientific_topics"]
@@ -799,6 +809,12 @@ class CardAccess:
                 "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation and assembly_generation."
             )
         if topic == "assembly_generation":
+            if self.mode == "saved":
+                from .card_exploration_assembly import saved_selection
+
+                return saved_selection(
+                    self, fields, options, where, item_refs, order_by
+                )
             from .card_assembly_access import materialize
             from .card_assembly_exploration import options_for_assembly
             from .card_assembly_selection_v1 import (
@@ -811,12 +827,6 @@ class CardAccess:
 
             options, fields = options_for_assembly(options), projection(fields)
             query = normalize(where, item_refs, order_by)
-            if self.mode == "saved":
-                from .card_exploration_storage import missing_selection
-
-                return missing_selection(
-                    self, topic, options, fields, query if active(query) else None
-                )
             result = materialize(self, options)
         elif topic == "quaternary_interpretation":
             if self.mode == "saved":
@@ -1040,7 +1050,10 @@ class CardAccess:
 
     def _defer(self, item):
         if item.get("adapter") == "assembly_generation_exploration@1":
-            from .card_assembly_access import defer_frame
+            if self.mode == "saved":
+                from .card_assembly_history_v1 import defer_frame
+            else:
+                from .card_assembly_access import defer_frame
 
             return defer_frame(item)
         if item.get("kind") in (
