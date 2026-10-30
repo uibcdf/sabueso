@@ -5,6 +5,18 @@ from .errors import ArgumentError, _diagnostic_details_allowed
 DEFAULT_OPERATION_BUDGET = 100_000
 
 
+def generation_rule(value):
+    if isinstance(value, str) and value in {
+        "rcsb_assembly_generation@1",
+        "rcsb_assembly_generation@2",
+    }:
+        return value
+    raise ArgumentError(
+        'generation_rule requires "rcsb_assembly_generation@1" or "rcsb_assembly_generation@2".',
+        argument="generation_rule",
+    )
+
+
 def budget(value):
     if value is not None and (type(value) is not int or value < 1):
         raise ArgumentError(

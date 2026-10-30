@@ -75,8 +75,11 @@ identity or role of every listed component, much less assembly-specific contacts
 ## Native symbolic plans (#173)
 
 `Card.assembly_generation(structure_ref=None, relationship_id=None,
-expand_operations=False, operation_budget=100_000)` now reads only retained
-RCSB assertions. It returns `rcsb_assembly_generation@1`, using frozen
+expand_operations=False, operation_budget=100_000,
+generation_rule="rcsb_assembly_generation@2")` reads only retained RCSB assertions.
+The current rule adds the operator-key binding described below; explicit
+`generation_rule="rcsb_assembly_generation@1"` preserves original syntax-only
+output, using frozen
 `assembly_operation_expression@1`, without querying sources or changing the Card.
 An exact relationship selector requires its structure reference. Focal declaration
 admission reuses `experimental_structure_admission@1`; assertions must bind the
@@ -118,7 +121,7 @@ source validation or actual machine limitations. Compact mode can inspect huge
 potential products without allocating them. Whole-Card capture/transport costs
 remain distinct (#167/#174).
 
-`operator_scope="not_reconciled"` is mandatory: syntactically recognized IDs have
+Under original @1, `operator_scope="not_reconciled"` is mandatory: recognized IDs have
 not yet been verified against native operator descriptors. `tuple_expansion_state`
 and `expanded_tuple_count` describe delivery, not molecular completeness. Duplicate
 tuples are retained declaration occurrences, not proof of separate physical copies.
@@ -135,13 +138,56 @@ expanded = card.assembly_generation(
 )
 ```
 
+## Native entry-operator keys (#173)
+
+Current `rcsb_assembly_generation@2` reuses the unchanged @1 expression grammar
+and original declaration admission. It adds `native_entry_operator_key@1`:
+`_pdbx_struct_oper_list.id` identifies a record within the PDB entry, under the
+[wwPDB key definition](https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_struct_oper_list.id.html)
+and [entry-operation category](https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/pdbx_struct_oper_list.html).
+Each SourceAssertion has its own registry; no other source/revision supplies
+missing records. Source names, operator names and equal transforms never merge
+operator IDs. Canonical numeric ranges match exact unpadded numeric IDs; `01`
+remains a different singleton ID from `1`.
+
+Every original parent projection stays linked at its exact location. Repeated
+consistent projections in different parent objects refer to the same native
+entry key. Duplicate IDs within one original parent, contradictory retained
+name/type/symmetry text, or malformed descriptor fields mark that registry entry
+ambiguous. Missing/null descriptor fields retain their original state; another
+projection does not fill them. Descriptor comparison covers those retained text
+fields, not matrices, geometry or identity inferred from equal transforms.
+
+Each parsed generator gains compact `operator_bindings` grouped like its source
+expression. References list matching registry indices, resolved/identified counts
+and exact decimal unrepresented counts. Large missing ranges stay symbolic;
+they are not enumerated. `unrepresented_scope="retained_operator_records_only"`
+never asserts source-wide absence. Per-parent input states, malformed/unidentified
+record issues and partial registry input remain separately inspectable. A known
+key can resolve despite unrelated incomplete input. Source `operator_registry`
+records retain all projections and typed original locations.
+
+The operating budget also bounds operator rows/descriptor text before indexing,
+candidate checks before range lookup, and returned reference-ID text. A read-only
+forwarding adapter defers whole-Card pin capture until these preflights pass.
+Expansion still emits every admitted declaration tuple, including tuples with
+unresolved operator references; `operator_scope` expresses binding while
+`tuple_expansion_state` describes delivery. Neither means physical copies or
+contacts. Source/component/transform closure remains outside this rule.
+Defaults and positive/None overrides use the existing receiving contract.
+
+The original @1 modules remain unchanged and explicitly selectable. No Card
+schema, source fixture, source acquisition or new scientific saved format is
+introduced. Dedicated human/agent scientific adapters and original saved-result
+verification still follow native component/instance reconciliation.
+
 ## Remaining native reconciliation
 
 Issue #173 stays open. The next slice must bind exact source parent/entry/revision,
 generator occurrence and label-asym identity before reporting physical members.
 `asym_id_list` references `_struct_asym.id`, not author chain labels. The symbolic
-parser/expansion preflight is implemented; native operator lookup and exact
-polymer/ligand-neighbor/other component namespace closure remain pending. Missing
+parser/expansion preflight and native entry-operator lookup are implemented; exact
+polymer/ligand-neighbor/other component namespace closure remains pending. Missing
 polymer records are not absence of all source role references: ligand-neighbor
 records also name identifiers retained in the generation inputs. Keep each
 original reference's basis instead of inferring a physical identity from matching
@@ -155,6 +201,18 @@ establishes geometry, contact existence, biological relevance or project Evidenc
 Any later coordinate transform must qualify quantities/units independently.
 
 ## Local qualification
+
+The entry-operator binding slice (2026-10-30) passes 80 owning cases and a selected
+14-file integration of 436 cases /121.88 seconds (including those 80), serial
+through pytest-receptor with warning guards. Peak sampled integration RSS is
+558,796,800 bytes with zero owned swap. The two updated guide blocks execute on
+three public controls and one historical Card without acquisition or mutation.
+All 43 protected original modules are byte-identical to source checkpoint
+`0df1d56`. Whole-tree Ruff, warning-fatal Sphinx, local links/snippet syntax,
+Python 3.11 parsing, unchanged Card shape/schema, source registry, fixture delivery,
+dependency preflight and governance checks pass. These are selected local checks;
+exact-source hosted qualification belongs to #173/#148/#112 and researcher
+acceptance remains separate.
 
 The native symbolic slice (2026-10-30) passes 50 owning cases and a selected
 13-file integration of 406 cases /114.32 seconds (including those 50), serial

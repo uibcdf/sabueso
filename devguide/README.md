@@ -88,10 +88,12 @@ wires stay unchanged. Fresh RCSB requests now retain
 with literal human/agent and inert saved access. Native physical-membership and
 contact reconciliation remain pending in [#173](https://github.com/uibcdf/sabueso/issues/173).
 
-`Card.assembly_generation()` adds compact named symbolic plans and deliberate
-preflighted expansion over those original inputs, with exact bounded source links.
-It does not reconcile operator identities or physical members. Its source contract
-above records limits, independent original contexts and remaining adapter/reader work.
+`Card.assembly_generation()` adds compact named symbolic plans, entry-operator key
+bindings and deliberate preflighted expansion, with exact bounded source links.
+Current `rcsb_assembly_generation@2` retains every operator projection and reports
+missing or ambiguous keys; explicit `@1` preserves the original syntax-only result.
+Physical/component membership remains uncomputed. The source contract above records
+limits, independent original contexts and remaining adapter/reader work.
 
 The [original structure context](pending_proposals/card_structure_context_navigation.md)
 links experimental inventory items and literal declarations to their exact retained

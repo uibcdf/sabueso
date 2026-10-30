@@ -86,7 +86,10 @@ No browsing operation may acquire new data, refresh a Card or fabricate findings
    Fresh acquisition now retains [original source assembly generation](rcsb_assembly_generation.md)
    for literal human/agent and inert saved inspection. Native symbolic plans and
    optional preflighted tuple expansion are now available through
-   `Card.assembly_generation()`. Operator/instance reconciliation and its dedicated
+   `Card.assembly_generation()`. Current generation `@2` adds exact entry-operator
+   key binding with all original projections and explicit missing/ambiguous keys;
+   explicit `@1` preserves the syntax-only result. Component/physical-instance
+   reconciliation and its dedicated
    scientific adapter/reader remain [#173](https://github.com/uibcdf/sabueso/issues/173);
    composition and equal local labels cannot substitute for that contract.
 3. Complete activity/assay/document and shared literature journeys, then molecule

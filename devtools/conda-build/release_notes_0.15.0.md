@@ -16,8 +16,12 @@ is established by this draft.
   `Card.assembly_generation()` with named compact symbolic plans, original source
   locations and deliberate tuple expansion (#173). Preflight source work, tuple
   count and conservative identifier-text cost before allocation; explain refusal
-  and positive/None overrides. Operator/physical-instance reconciliation and a
-  dedicated human/agent scientific adapter and saved reader remain pending.
+  and positive/None overrides. Current generation `@2` binds exact entry-operator
+  keys, retains all original projections and reports missing/ambiguous references;
+  explicit `@1` preserves the syntax-only result. Operator input, candidate checks
+  and reference text are bounded before capture or expansion. Component/physical-instance
+  reconciliation and a dedicated human/agent scientific adapter and saved reader
+  remain pending.
 
 - Separate exact experimental declaration admission (#169) from original
   coordinate/reference support (#170). Preserve unplaced declarations and unknown

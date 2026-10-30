@@ -8,7 +8,9 @@ the observed unbounded read in the production HTTP JSON path; large-response
 exhaustion is a hypothesis, not a measured failure of the three small public
 controls. The bounded one-off acquisition is not a production client guarantee.
 Transport budgets need their own visible refusal/override, completeness and
-retry/archive contracts. Operator/instance namespace binding and the new native
+retry/archive contracts. Current native operator-key binding retains all entry
+projections and reports missing/ambiguous references; it does not validate matrices
+or transformed coordinates. Component/instance namespace binding and the new native
 analysis's scientific adapter/original saved reader remain open in #173; source
 declaration tuples do not establish geometry, physical uniqueness or contacts.
 

@@ -2,7 +2,9 @@
 
 `Card.assembly_generation` (#173) adds positive non-boolean `operation_budget`
 (default 100,000), or explicit None to disable its receiving ceilings, and a strict
-boolean `expand_operations`. Existing `structure_ref` and `relationship_id`
+boolean `expand_operations`. Exact `generation_rule` selects current
+`rcsb_assembly_generation@2` or original `rcsb_assembly_generation@1` without
+coercion. Existing `structure_ref` and `relationship_id`
 digesters provide exact selection; the latter requires the former. Backend guards
 remain active with digestion skipped. Selected source array/text/label work is
 bounded before numeric parsing or Card pin capture. In expanded mode the complete
@@ -11,7 +13,11 @@ before the first tuple is materialized. Raw source work, expanded tuple count an
 that text upper bound have separate ceilings with the same
 setting; it is not a total Card/snapshot/transport memory guarantee. Compact mode
 keeps products/ranges symbolic and does not impose their potential expansion size
-on callers. See [the native source contract](pending_proposals/rcsb_assembly_generation.md).
+on callers. Current operator binding separately bounds selected operator rows and
+descriptor text, candidate checks and reference text before Card pin capture or
+tuple expansion, using the same setting and explicit override. None does not
+disable argument, identity or reference validity. See
+[the native source contract](pending_proposals/rcsb_assembly_generation.md).
 
 Region request receiving (#171) adds `region_budget` digestion: a positive
 non-boolean integer (default 100,000), or explicit `None` to remove the workload

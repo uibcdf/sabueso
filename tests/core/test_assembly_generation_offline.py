@@ -62,7 +62,9 @@ def generator(card, assembly=0):
 def test_native_public_sources_and_original_context_are_separate(originals, pdb):
     card = Card.from_dict(deepcopy(originals[pdb]))
     before = card.to_dict()
-    result = card.assembly_generation(structure_ref=f"pdb:{pdb}")
+    result = card.assembly_generation(
+        structure_ref=f"pdb:{pdb}", generation_rule="rcsb_assembly_generation@1"
+    )
     assert result["rule"] == "rcsb_assembly_generation@1"
     assert result["sabueso_version"] == sabueso.__version__
     assert result["card_ref"] == card.pinned_ref()

@@ -1,5 +1,21 @@
 # Sabueso — Decision Log
 
+## Bind exact native entry-operator keys without completing projections (2026-10-30, #173)
+
+Use `rcsb_assembly_generation@2` and `native_entry_operator_key@1` for exact
+operator IDs within one original entry SourceAssertion. Preserve every original
+projection and its location. Repeated keys across parents retain their source
+entry scope; duplicate records within one parent, contradictory retained
+descriptors and malformed descriptor shapes remain ambiguous. Missing fields
+are never completed from another projection. Keep padded IDs distinct, and
+search compact numeric ranges only against retained canonical numeric IDs.
+Report unrepresented references only against retained inputs, never as source
+absence. Bound operator input, candidate checks and reference text before Card
+capture or tuple expansion. Expansion delivers declared tuples independently
+of unresolved operator references. Preserve explicit generation `@1` unchanged;
+no Card schema, physical membership, geometry, contacts or saved-format change
+follows. See [the contract](pending_proposals/rcsb_assembly_generation.md).
+
 ## Plan source operations before physical assembly reconciliation (2026-10-30, #173)
 
 Expose `Card.assembly_generation()` as a read-only native protein operation over

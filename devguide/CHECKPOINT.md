@@ -96,11 +96,14 @@ source and release receipts remain unchanged.
    public capture retains three complete original responses (59,354 bytes) and
    decoded representations; earlier fixtures/assertion pins stay unchanged.
    Literal human/agent inspection and inert saved reading retain the inputs.
-   `Card.assembly_generation()` now supplies named symbolic plans, exact original
-   locations and optional all-request-preflighted tuple expansion. Visible
+   `Card.assembly_generation()` now supplies named symbolic plans, entry-scoped
+   operator key binding under `rcsb_assembly_generation@2`, exact original
+   locations and optional all-request-preflighted tuple expansion. All original
+   operator projections remain available; missing and ambiguous keys stay explicit.
+   Explicit `@1` preserves the original syntax-only result. Visible
    `operation_budget` supports deliberate raised/None overrides; no physical
    copies or contacts are inferred. [#173](https://github.com/uibcdf/sabueso/issues/173)
-   remains open for native operator/label-asym binding, scientific adapters and
+   remains open for native component/label-asym binding, scientific adapters and
    original saved result verification. [#174](https://github.com/uibcdf/sabueso/issues/174)
    separately tracks response buffering before JSON decoding. Owning local/hosted
    receipts qualify only their exact source.
