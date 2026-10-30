@@ -64,6 +64,15 @@ message.
 
 ## Layout
 
+Assembly-operation receiving (#173) uses `ArgumentError` with
+`reason="assembly_operation_budget_exceeded"`. Detailed diagnostics include the
+phase, a true lower bound (or explicitly labelled conservative text upper bound),
+configured budget and `expanded=False`; restricted
+capture does not include those argument values. Refusal explains how to raise
+`operation_budget` or deliberately pass None. No tuple expansion or source absence
+is inferred from refusal. Unsupported source expression syntax is a retained
+native `unsupported` result, not an argument error or a silently partial parse.
+
 - `sabueso/_smonitor.py`: configuration and profiles. It must stay inside the package,
   so that it is installed with it.
 - `sabueso/_private/smonitor/`: `catalog.py` (the single source of message templates),

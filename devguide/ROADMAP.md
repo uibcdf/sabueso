@@ -363,8 +363,11 @@ requires [#173](https://github.com/uibcdf/sabueso/issues/173)'s native reconcili
 contract; composition alone is insufficient. Fresh RCSB acquisition now preserves
 [original generator/operator declarations](pending_proposals/rcsb_assembly_generation.md),
 including parent/order/revision context and literal human/agent saved inspection.
-Strict bounded symbolic occurrence parsing, label-asym binding and operation-aware
-contacts remain pending; no physical membership is inferred from the new inputs.
+`Card.assembly_generation()` now parses supported operation expressions compactly
+and expands tuples only after explicit all-request preflight, with positive/None
+budget overrides and exact source locations. Native operator/label-asym binding,
+operation-aware contacts and a dedicated scientific adapter/reader remain pending;
+no physical membership is inferred from the new inputs.
 Source-bound qualification remains in #148/#112, separate from human acceptance.
 
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all

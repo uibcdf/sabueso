@@ -1,5 +1,18 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+`Card.assembly_generation` (#173) adds positive non-boolean `operation_budget`
+(default 100,000), or explicit None to disable its receiving ceilings, and a strict
+boolean `expand_operations`. Existing `structure_ref` and `relationship_id`
+digesters provide exact selection; the latter requires the former. Backend guards
+remain active with digestion skipped. Selected source array/text/label work is
+bounded before numeric parsing or Card pin capture. In expanded mode the complete
+request's tuple cardinality and conservative identifier-text bound are preflighted
+before the first tuple is materialized. Raw source work, expanded tuple count and
+that text upper bound have separate ceilings with the same
+setting; it is not a total Card/snapshot/transport memory guarantee. Compact mode
+keeps products/ranges symbolic and does not impose their potential expansion size
+on callers. See [the native source contract](pending_proposals/rcsb_assembly_generation.md).
+
 Region request receiving (#171) adds `region_budget` digestion: a positive
 non-boolean integer (default 100,000), or explicit `None` to remove the workload
 ceiling. `region`/`regions` digestion now preserves validated compact terms rather

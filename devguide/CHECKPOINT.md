@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-29**, source-bound structural navigation and original human/agent saved reading
+Last updated: **2026-10-30**, original assembly source operations and human/agent saved reading
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -96,9 +96,14 @@ source and release receipts remain unchanged.
    public capture retains three complete original responses (59,354 bytes) and
    decoded representations; earlier fixtures/assertion pins stay unchanged.
    Literal human/agent inspection and inert saved reading retain the inputs.
-   [#173](https://github.com/uibcdf/sabueso/issues/173) remains open for bounded
-   symbolic occurrence parsing, native label-asym identity binding and contact
-   reconciliation. Owning local/hosted receipts qualify only their exact source.
+   `Card.assembly_generation()` now supplies named symbolic plans, exact original
+   locations and optional all-request-preflighted tuple expansion. Visible
+   `operation_budget` supports deliberate raised/None overrides; no physical
+   copies or contacts are inferred. [#173](https://github.com/uibcdf/sabueso/issues/173)
+   remains open for native operator/label-asym binding, scientific adapters and
+   original saved result verification. [#174](https://github.com/uibcdf/sabueso/issues/174)
+   separately tracks response buffering before JSON decoding. Owning local/hosted
+   receipts qualify only their exact source.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed

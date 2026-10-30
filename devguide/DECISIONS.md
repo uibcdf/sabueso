@@ -1,5 +1,22 @@
 # Sabueso — Decision Log
 
+## Plan source operations before physical assembly reconciliation (2026-10-30, #173)
+
+Expose `Card.assembly_generation()` as a read-only native protein operation over
+original RCSB assertions, under `rcsb_assembly_generation@1` and frozen symbolic
+grammar `assembly_operation_expression@1`. Keep sources, revisions and original
+parent/generator occurrences separate; expose exact source locations. Compact
+plans are the default. Explicit expansion preflights the whole request's tuple
+count and conservative identifier-text cost before any tuple allocation, with
+visible positive/None receiving-budget overrides. Keep operating limits outside
+the frozen grammar. Factored counts preserve exact group cardinalities beyond
+the scalar representation. Unsupported grammar, missing inputs, ambiguous parent
+IDs and unreconciled operators remain explicit. These are declaration tuples,
+not transformed molecular identities or contacts. No Card-schema or saved-format
+change follows. Native binding, dedicated human/agent scientific adapters and an
+independent original result reader are subsequent work before claiming complete
+assembly-aware exploration. See [the contract](pending_proposals/rcsb_assembly_generation.md).
+
 ## Scope experimental declarations before structural classification (2026-10-28, #169)
 
 Use `experimental_structure_admission@1` for exact declared Card/relationship

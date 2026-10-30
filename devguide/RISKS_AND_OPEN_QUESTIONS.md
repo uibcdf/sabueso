@@ -1,5 +1,17 @@
 # Sabueso — Risks and Open Questions
 
+Original assembly-generation inspection (#173) now has compact native plans and
+visible tuple-count/identifier-text preflight with deliberate raised/unlimited
+budgets. This does not bound whole-Card capture (#167), source JSON buffering or
+decoded-object memory. [#174](https://github.com/uibcdf/sabueso/issues/174) records
+the observed unbounded read in the production HTTP JSON path; large-response
+exhaustion is a hypothesis, not a measured failure of the three small public
+controls. The bounded one-off acquisition is not a production client guarantee.
+Transport budgets need their own visible refusal/override, completeness and
+retry/archive contracts. Operator/instance namespace binding and the new native
+analysis's scientific adapter/original saved reader remain open in #173; source
+declaration tuples do not establish geometry, physical uniqueness or contacts.
+
 The [source-observation audit #166](pending_bugs/source_observation_identity.md)
 confirms that refresh preserves separate pinned observations, while the former
 store insertion silently selected the last duplicate metadata record during

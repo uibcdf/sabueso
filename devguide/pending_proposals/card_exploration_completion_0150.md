@@ -84,8 +84,10 @@ No browsing operation may acquire new data, refresh a Card or fabricate findings
    The [regional chain reading](card_regional_reading.md) now presents the exact
    original regional result and numbering routes without enlarging machine frames.
    Fresh acquisition now retains [original source assembly generation](rcsb_assembly_generation.md)
-   for literal human/agent and inert saved inspection. Native occurrence parsing
-   and reconciliation remain [#173](https://github.com/uibcdf/sabueso/issues/173);
+   for literal human/agent and inert saved inspection. Native symbolic plans and
+   optional preflighted tuple expansion are now available through
+   `Card.assembly_generation()`. Operator/instance reconciliation and its dedicated
+   scientific adapter/reader remain [#173](https://github.com/uibcdf/sabueso/issues/173);
    composition and equal local labels cannot substitute for that contract.
 3. Complete activity/assay/document and shared literature journeys, then molecule
    target context and clinical/classification views with explicit identity joins.

@@ -6,6 +6,7 @@ from typing import Any, Dict, List
 
 from sabueso._private.argdigest import arg_digest
 
+from .assembly_requests import DEFAULT_OPERATION_BUDGET
 from .quantities import field_node, quantity_columns, seal, to_quantity, verify
 from .region_requests import DEFAULT_REGION_BUDGET, receiving
 from .relationship_store import Relationship, RelationshipStore
@@ -965,6 +966,35 @@ class Card:
         from .oligomer_explanation import explain_oligomer
 
         return explain_oligomer(self, agreement_rule)
+
+    @arg_digest()
+    def assembly_generation(
+        self,
+        structure_ref=None,
+        relationship_id=None,
+        *,
+        expand_operations=False,
+        operation_budget=DEFAULT_OPERATION_BUDGET,
+        skip_digestion=False,
+    ) -> Dict[str, Any]:
+        """Inspect original RCSB generator plans without fetching source data.
+
+        ``rcsb_assembly_generation@1`` keeps every original assertion, parent and
+        generator occurrence separate. By default expressions stay compact.
+        Explicit ``expand_operations=True`` materializes source-order operation
+        tuples only after the whole requested expansion and conservative ID-text
+        bound pass ``operation_budget``
+        (100,000 by default); raw source work is bounded in either mode. Raise
+        that positive integer or deliberately pass None to remove the ceiling.
+        Products apply right to left. Tuples are declarations, not proven physical
+        copies, assembly contacts or geometry. Original source inputs stay on the
+        Card; this new native analysis is not a saved scientific-reader format.
+        """
+        from .assembly_generation_v1 import generation
+
+        return generation(
+            self, structure_ref, relationship_id, expand_operations, operation_budget
+        )
 
     def ligand_sites(self) -> Dict[str, Any]:
         """Residues each ligand contacts, next to the protein's annotated sites."""

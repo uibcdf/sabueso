@@ -705,6 +705,53 @@ This is a presentation of source declarations. Computed oligomer/interface
 classification, assembly reconciliation and geometry remain separate scientific
 questions with their own rules, inputs and explanations.
 
+## Inspect symbolic assembly generation (development)
+
+For protein Cards with original RCSB generation inputs, inspect the declared
+operation plans without fetching anything or expanding their combinations:
+
+```python
+plans = card.assembly_generation()
+for source in plans["sources"]:
+    print(source["structure_ref"], source["status"])
+    for assembly in source["assemblies"]:
+        for generator in assembly["generators"]:
+            print(generator["status"], generator.get("plan"))
+```
+
+Each declaration keeps its original source, parent and generator occurrence.
+Duplicate declarations remain separate, and products apply from right to left.
+Large products keep exact group factors instead of allocating every combination.
+These counts describe operation tuples. One generator can name several components;
+operation counts are not chain or molecule counts.
+Unsupported syntax and missing historical inputs are explicit. A Card created
+before these fields were retained can report `not_retained`; this is not a claim
+that the source has no assembly. Inspection never acquires or backfills inputs.
+
+Request tuple expansion deliberately when needed:
+
+```python
+expanded = card.assembly_generation(expand_operations=True, operation_budget=100_000)
+print(expanded["tuple_expansion_state"])
+```
+
+The budget bounds selected source work and, separately, the whole requested
+tuple expansion and a conservative identifier-text upper bound before its first
+tuple. The text estimate can overstate actual output; refusal labels it explicitly.
+A refusal explains how to raise the
+positive integer or deliberately pass `operation_budget=None`. Syntax and source
+scope validation still apply. Use `structure_ref="pdb:2V5B"` to focus one
+structure; an optional exact `relationship_id` requires that reference.
+
+`source_location` and each generator's `input_location` work with
+`card.access().read(location).page(max_bytes=8192)` to inspect original support
+economically. `quality_location` opens the original acquisition context.
+These are symbolic declarations: operator lookup, physical copies, assembly
+contacts, geometry and biological relevance are not reconciled by this native
+analysis. Its dedicated human question adapter and saved scientific-result
+reader are still pending; original source exploration retains its existing inert
+saved reading.
+
 ## Interpret interfaces and compare family sites
 
 For a protein Card, ask which retained interface interpretations are supported:

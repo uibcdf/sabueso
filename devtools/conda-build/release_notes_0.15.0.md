@@ -12,6 +12,13 @@ is established by this draft.
 
 ## Intended changes since 0.14.0
 
+- Retain original RCSB assembly generators/operator descriptors and expose
+  `Card.assembly_generation()` with named compact symbolic plans, original source
+  locations and deliberate tuple expansion (#173). Preflight source work, tuple
+  count and conservative identifier-text cost before allocation; explain refusal
+  and positive/None overrides. Operator/physical-instance reconciliation and a
+  dedicated human/agent scientific adapter and saved reader remain pending.
+
 - Separate exact experimental declaration admission (#169) from original
   coordinate/reference support (#170). Preserve unplaced declarations and unknown
   comparisons with their exact original source scope; use state/inventory @3,

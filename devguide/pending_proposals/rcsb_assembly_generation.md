@@ -72,16 +72,80 @@ second with expression `1` and ordinal 2. The same source lists label-asym IDs
 `A,B` for each. Descriptive polymer counts of two and one do not establish the
 identity or role of every listed component, much less assembly-specific contacts.
 
+## Native symbolic plans (#173)
+
+`Card.assembly_generation(structure_ref=None, relationship_id=None,
+expand_operations=False, operation_budget=100_000)` now reads only retained
+RCSB assertions. It returns `rcsb_assembly_generation@1`, using frozen
+`assembly_operation_expression@1`, without querying sources or changing the Card.
+An exact relationship selector requires its structure reference. Focal declaration
+admission reuses `experimental_structure_admission@1`; assertions must bind the
+same original subject, structure and native RCSB record identifier. Different
+assertions/revisions remain separate. A selected qualifier never fills missing
+original inputs. This checks retained declaration scope, not source authenticity.
+
+Every source/parent/generator keeps its original ID/index, ordinal, entry revision
+and retrieval context. Duplicate parent IDs and repeated ordinals are flagged;
+they are not merged. Exact typed source/generator locations work with bounded
+`Card.access().read(...).page(...)`. `quality_location` exposes original acquisition
+context, preserving the distinction between unavailable input and scientific absence.
+
+The supported syntax is an ASCII ID, comma list, inclusive unpadded numeric range,
+or product of adjacent parenthesized groups. Spaces/tabs can surround tokens.
+String IDs such as `X0`, `01` and `_X` stay exact. Zero-padded ranges, descending
+ranges, nested groups and unsupported character-code syntax remain `unsupported`
+with original text and no admitted partial group prefix. Unsupported nonstring
+inputs stay available at their original location without aliasing mutable Card
+content. This conservative grammar does not claim the whole dictionary lexical
+space is interpreted. Products retain source order and apply right to left.
+
+Compact plans retain exact decimal group counts. `operation_count` is an exact
+integer when the product fits signed 64-bit representation; otherwise it is None,
+`count_state` is `factored`, and the complete exact group factors remain available.
+This representation does not clip or discard the count. Decimal conversion avoids
+Python's decimal-int text digit ceiling without changing that process-wide setting.
+
+By default no operation tuples are allocated. Explicit expansion first counts the
+entire request, then materializes every admitted tuple. A finite `operation_budget`
+bounds selected source array/text/label work before parsing, and separately the
+total requested tuple expansion before the first tuple. A separate conservative
+identifier-text upper bound uses the same ceiling: many long IDs can consume too
+much memory even when tuple cardinality alone fits. Refusal labels that estimate
+as an upper bound, not an observed size or a lower bound; callers can deliberately
+raise/disable it. Refusal is visible and
+explains raised/None overrides. None removes receiving ceilings, not syntax,
+source validation or actual machine limitations. Compact mode can inspect huge
+potential products without allocating them. Whole-Card capture/transport costs
+remain distinct (#167/#174).
+
+`operator_scope="not_reconciled"` is mandatory: syntactically recognized IDs have
+not yet been verified against native operator descriptors. `tuple_expansion_state`
+and `expanded_tuple_count` describe delivery, not molecular completeness. Duplicate
+tuples are retained declaration occurrences, not proof of separate physical copies.
+The complete Card stays unchanged. This native analysis has no new saved scientific
+format; existing source exploration still reopens inertly. A dedicated human/agent
+scientific adapter and independent original result reader remain pending.
+
+```python
+plans = card.assembly_generation(structure_ref="pdb:2V5B")
+generator = plans["sources"][0]["assemblies"][0]["generators"][0]
+original = card.access().read(generator["input_location"]).page(max_bytes=8192)
+expanded = card.assembly_generation(
+    structure_ref="pdb:2V5B", expand_operations=True, operation_budget=100_000
+)
+```
+
 ## Remaining native reconciliation
 
 Issue #173 stays open. The next slice must bind exact source parent/entry/revision,
 generator occurrence and label-asym identity before reporting physical members.
-`asym_id_list` references `_struct_asym.id`, not author chain labels. Single
-operator IDs, lists, ranges and parenthesized products need a strict symbolic
-parser; products follow the source's right-to-left convention. Preserve operator
-IDs as strings, duplicate/ambiguous occurrences and unsupported syntax. Count
-potential work compactly before expansion, with visible refusal and an explicit
-conscious override. No silent truncation is acceptable.
+`asym_id_list` references `_struct_asym.id`, not author chain labels. The symbolic
+parser/expansion preflight is implemented; native operator lookup and exact
+polymer/ligand-neighbor/other component namespace closure remain pending. Missing
+polymer records are not absence of all source role references: ligand-neighbor
+records also name identifiers retained in the generation inputs. Keep each
+original reference's basis instead of inferring a physical identity from matching
+identifier text. No silent truncation is acceptable.
 
 Version the native reconciliation rule and its independent original saved reader.
 Keep missing identity, unsupported expression, foreign parent, duplicate operator
@@ -91,6 +155,18 @@ establishes geometry, contact existence, biological relevance or project Evidenc
 Any later coordinate transform must qualify quantities/units independently.
 
 ## Local qualification
+
+The native symbolic slice (2026-10-30) passes 50 owning cases and a selected
+13-file integration of 406 cases /114.32 seconds (including those 50), serial
+within each pytest-receptor invocation, with warning guards. Peak sampled
+integration RSS is 564,940,800 bytes; owned swap stays zero. The two new public
+guide blocks execute over three native public controls and one historical Card
+without acquisition or mutation. An initial final-gate launcher typo executed
+zero tests; the corrected final invocation supplies this receipt. These checks
+are not a full local-original suite, exact-head hosted qualification or uncoached
+researcher acceptance; source-bound hosted receipts belong to #173/#148/#112.
+
+The preceding source-retention slice has its own historical qualification:
 
 The selected 17-file integration passes 383 cases /173.81 seconds, including the
 20 owning cases, through pytest-receptor with warning guards. The generated
