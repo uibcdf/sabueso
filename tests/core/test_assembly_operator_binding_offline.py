@@ -64,7 +64,9 @@ def source(card, **kwargs):
 def test_public_native_ids_bind_with_original_locations(originals, pdb):
     card = Card.from_dict(deepcopy(originals[pdb]))
     before = card.to_dict()
-    result = card.assembly_generation(structure_ref=f"pdb:{pdb}")
+    result = card.assembly_generation(
+        structure_ref=f"pdb:{pdb}", generation_rule="rcsb_assembly_generation@2"
+    )
     assert result["rule"] == "rcsb_assembly_generation@2"
     assert result["operator_binding_rule"] == "native_entry_operator_key@1"
     assert result["physical_membership"] == "not_computed"

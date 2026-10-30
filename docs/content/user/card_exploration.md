@@ -719,6 +719,7 @@ for source in plans["sources"]:
             print(
                 generator["status"],
                 generator.get("operator_scope"),
+                generator.get("component_scope"),
                 generator.get("plan"),
             )
 ```
@@ -734,6 +735,14 @@ source's `operator_registry` preserves all supporting projections and their
 locations. Conflicting descriptions and duplicate records remain explicit.
 Names and equal transforms never merge different IDs. Missing references concern
 retained input, not a claim that the source has no such operator.
+`component_bindings` follows the original component list. A `resolved` reference
+has a native polymer instance record; `referenced` has a source ligand-neighbor
+reference, and `ambiguous` or `unresolved` keeps conflicting or missing retained
+scope visible. The source's `component_registry` retains every original reference
+and its location. Author chain labels never substitute for native component IDs.
+Repeated labels do not establish distinct molecules. A generator's
+`component_scope="partial"` can include useful ligand references while complete
+instance records remain unavailable.
 Unsupported syntax and missing historical inputs are explicit. A Card created
 before these fields were retained can report `not_retained`; this is not a claim
 that the source has no assembly. Inspection never acquires or backfills inputs.
@@ -746,7 +755,8 @@ print(expanded["tuple_expansion_state"])
 ```
 
 The budget separately bounds selected source work, operator rows/descriptor text,
-operator candidate checks and reference text before Card capture. It also bounds
+operator candidate checks, reference text and component collections/identifier
+text before Card capture. It also bounds
 the whole requested tuple expansion and a conservative identifier-text upper bound
 before its first tuple. The text estimate can overstate actual output; refusal
 labels it explicitly.
@@ -758,13 +768,14 @@ structure; an optional exact `relationship_id` requires that reference.
 `source_location` and each generator's `input_location` work with
 `card.access().read(location).page(max_bytes=8192)` to inspect original support
 economically. `quality_location` opens the original acquisition context.
-These are declarations with operator-key references: physical copies, assembly
+These are declarations with operator/component-key references: physical copies, assembly
 contacts, geometry and biological relevance are not reconciled by this native
 analysis. Its dedicated human question adapter and saved scientific-result
 reader are still pending; original source exploration retains its existing inert
 saved reading.
 Select `generation_rule="rcsb_assembly_generation@1"` to preserve the earlier
-syntax-only interpretation; the default is now `rcsb_assembly_generation@2`.
+syntax-only interpretation, or `generation_rule="rcsb_assembly_generation@2"`
+for the earlier operator-only binding. The default is now `rcsb_assembly_generation@3`.
 
 ## Interpret interfaces and compare family sites
 

@@ -97,16 +97,23 @@ source and release receipts remain unchanged.
    decoded representations; earlier fixtures/assertion pins stay unchanged.
    Literal human/agent inspection and inert saved reading retain the inputs.
    `Card.assembly_generation()` now supplies named symbolic plans, entry-scoped
-   operator key binding under `rcsb_assembly_generation@2`, exact original
+   operator/component key binding under `rcsb_assembly_generation@3`, exact original
    locations and optional all-request-preflighted tuple expansion. All original
    operator projections remain available; missing and ambiguous keys stay explicit.
-   Explicit `@1` preserves the original syntax-only result. Visible
+   Native polymer instances and ligand-neighbor references retain distinct bases;
+   missing/ambiguous component labels remain explicit. Earlier `@1`/`@2` remain
+   unchanged and selectable. Visible
    `operation_budget` supports deliberate raised/None overrides; no physical
    copies or contacts are inferred. [#173](https://github.com/uibcdf/sabueso/issues/173)
-   remains open for native component/label-asym binding, scientific adapters and
+   remains open for full component/physical-occurrence closure, scientific adapters and
    original saved result verification. [#174](https://github.com/uibcdf/sabueso/issues/174)
    separately tracks response buffering before JSON decoding. Owning local/hosted
    receipts qualify only their exact source.
+   The retained-component continuation is an intermediate locally tested
+   `[skip ci]` block; exact SHA/SDK and outstanding hosted gates belong to
+   #173/#148/#112 and the [recovery ledger](pending_proposals/deferred_ci.md).
+   Recover through the next completed native/scientific-adapter checkpoint's
+   unskipped CI/governance before claiming this route complete.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed

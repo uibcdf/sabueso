@@ -9,10 +9,11 @@ def generation_rule(value):
     if isinstance(value, str) and value in {
         "rcsb_assembly_generation@1",
         "rcsb_assembly_generation@2",
+        "rcsb_assembly_generation@3",
     }:
         return value
     raise ArgumentError(
-        'generation_rule requires "rcsb_assembly_generation@1" or "rcsb_assembly_generation@2".',
+        'generation_rule requires "rcsb_assembly_generation@1", "rcsb_assembly_generation@2" or "rcsb_assembly_generation@3".',
         argument="generation_rule",
     )
 

@@ -19,7 +19,10 @@ is established by this draft.
   and positive/None overrides. Current generation `@2` binds exact entry-operator
   keys, retains all original projections and reports missing/ambiguous references;
   explicit `@1` preserves the syntax-only result. Operator input, candidate checks
-  and reference text are bounded before capture or expansion. Component/physical-instance
+  and reference text are bounded before capture or expansion. Current generation
+  `@3` also binds retained component keys, distinguishes polymer instances from
+  ligand-neighbor-only references, preserves ambiguity and preflights component
+  collections/identifier text; earlier `@1`/`@2` stay selectable. Full component/physical-instance
   reconciliation and a dedicated human/agent scientific adapter and saved reader
   remain pending.
 

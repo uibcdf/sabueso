@@ -1,5 +1,22 @@
 # Sabueso — Decision Log
 
+## Keep native component records distinct from neighbor references (2026-10-30, #173)
+
+Use `rcsb_assembly_generation@3` / `native_entry_component_key@1` for exact
+label-asym keys within one original entry SourceAssertion. Retained polymer
+instance records can resolve a key; ligand-neighbor records provide references
+with their own basis, without completing a nonpolymer instance. Preserve every
+original record/location and per-record missing/null descriptor state. Duplicate
+polymer records, conflicting roles/component codes and explicit foreign entry or
+parent entity identity remain ambiguous. Author labels and selected qualifiers
+never supply native identities. Ordered generator labels, repeated occurrences,
+unsupported operations and missing input remain separate scopes. Preflight
+component collections/identifier text before registry construction, whole-Card
+pin capture or tuple expansion, using the existing visible positive/None budget.
+Keep original generation `@1`/`@2` unchanged and selectable. No physical occurrence,
+geometry, contact, source acquisition, Card schema or scientific saved-format
+change follows. See [the contract](pending_proposals/rcsb_assembly_generation.md).
+
 ## Bind exact native entry-operator keys without completing projections (2026-10-30, #173)
 
 Use `rcsb_assembly_generation@2` and `native_entry_operator_key@1` for exact

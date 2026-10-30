@@ -9,6 +9,27 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Intermediate retained-component keys (2026-10-30, #173)
+
+The native component-key continuation after `6f94043` uses the maintainer-approved
+intermediate `[skip ci]` route after applicable local tests and contract/docs
+checks. Current generation `@3` adds source-bound polymer-instance and
+ligand-neighbor-reference lookup with explicit unknown/ambiguous scope; original
+`@1`/`@2` stay unchanged. No source acquisition, Card schema/migration, packaging,
+dependency, security or cross-component admission change is included. Local
+integration is required before publication; this defers hosted qualification,
+not its local integration gate.
+
+Owners #173/#148/#112 record the exact intermediate SHA, SDK and local gate
+receipts in their issue updates and owned checkpoint index. Missing remote gates
+are the supported OS/Python and installed-provider lanes, coverage publication
+and hosted governance. Recover them through an unskipped push at the next
+completed native assembly/scientific-adapter block, or explicitly authorized
+exact-head manual CI plus governance, with complete gh-run-receptor verification.
+Do not claim assembly-route completion or resume 0.15.0 consolidation before
+recovery. The preceding unskipped `6f94043` runs qualify only that source once
+verified; they cannot qualify this new intermediate runtime.
+
 The [relationship-scope correction #168](../pending_bugs/structure_relationship_scope.md)
 uses an **unskipped** code checkpoint because it changes named scientific
 explanation admission. Its full local-original test and exact-source CI/governance

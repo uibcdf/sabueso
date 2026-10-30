@@ -10,7 +10,10 @@ controls. The bounded one-off acquisition is not a production client guarantee.
 Transport budgets need their own visible refusal/override, completeness and
 retry/archive contracts. Current native operator-key binding retains all entry
 projections and reports missing/ambiguous references; it does not validate matrices
-or transformed coordinates. Component/instance namespace binding and the new native
+or transformed coordinates. Current component-key binding separately identifies
+polymer instance records and ligand-neighbor references; the latter do not supply
+full nonpolymer instances. Missing/ambiguous labels remain explicit, and author
+labels never substitute for native keys. Full component/physical-occurrence closure and the new native
 analysis's scientific adapter/original saved reader remain open in #173; source
 declaration tuples do not establish geometry, physical uniqueness or contacts.
 
@@ -44,6 +47,14 @@ parameters and unsupported selectors remain explicit limits; new acquisitions do
 not promise exact old requests. See [the correction](pending_proposals/comparative_tissue_scope.md).
 
 ## Risks
+
+- **Extended PDB identifiers ([#175](https://github.com/uibcdf/sabueso/issues/175)):**
+  public structure receiving and original native assembly admission currently
+  require four-character entry IDs. RCSB documents the extended-ID transition;
+  coverage for entries without legacy IDs needs a separately designed receiving
+  and identity migration. No current-control failure is claimed. Audit aliases,
+  embedded entry/entity keys and saved references before provider requirements
+  make this a coverage limit; preserve original rules and identities.
 
 - **Region expansion before reference admission ([#171](https://github.com/uibcdf/sabueso/issues/171)):**
   the former native argument and exploration option normalizers expanded inclusive

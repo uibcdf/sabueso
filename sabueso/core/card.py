@@ -975,20 +975,23 @@ class Card:
         *,
         expand_operations: bool = False,
         operation_budget: int | None = DEFAULT_OPERATION_BUDGET,
-        generation_rule: str = "rcsb_assembly_generation@2",
+        generation_rule: str = "rcsb_assembly_generation@3",
         skip_digestion: bool = False,
     ) -> Dict[str, Any]:
         """Inspect original RCSB generator plans without fetching source data.
 
-        ``rcsb_assembly_generation@2`` binds source-stated entry operator IDs,
+        ``rcsb_assembly_generation@3`` binds source-stated entry operator and
+        component IDs. Polymer instance records and ligand-neighbor references
+        retain distinct bases; author labels never substitute for label-asym IDs,
         preserving every original assertion, parent and generator occurrence.
         Missing/ambiguous references and conflicting descriptors stay explicit.
         Select ``generation_rule="rcsb_assembly_generation@1"`` for unchanged
-        syntax-only reading. By default expressions stay compact.
+        syntax-only reading, or ``@2`` for unchanged operator-only binding.
+        By default expressions stay compact.
         Explicit ``expand_operations=True`` materializes source-order operation
         tuples only after the whole requested expansion and conservative ID-text
         bound pass ``operation_budget``
-        (100,000 by default); source/operator work is bounded in either mode. Raise
+        (100,000 by default); source/operator/component work is bounded in either mode. Raise
         that positive integer or deliberately pass None to remove the ceiling.
         Products apply right to left. Tuples are declarations, not proven physical
         copies, assembly contacts or geometry. Original source inputs stay on the
@@ -999,8 +1002,10 @@ class Card:
         rule = validate_rule(generation_rule)
         if rule == "rcsb_assembly_generation@1":
             from .assembly_generation_v1 import generation
-        else:
+        elif rule == "rcsb_assembly_generation@2":
             from .assembly_generation_v2 import generation
+        else:
+            from .assembly_generation_v3 import generation
 
         return generation(
             self, structure_ref, relationship_id, expand_operations, operation_budget

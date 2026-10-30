@@ -3,7 +3,7 @@
 `Card.assembly_generation` (#173) adds positive non-boolean `operation_budget`
 (default 100,000), or explicit None to disable its receiving ceilings, and a strict
 boolean `expand_operations`. Exact `generation_rule` selects current
-`rcsb_assembly_generation@2` or original `rcsb_assembly_generation@1` without
+`rcsb_assembly_generation@3` or original `rcsb_assembly_generation@1`/`@2` without
 coercion. Existing `structure_ref` and `relationship_id`
 digesters provide exact selection; the latter requires the former. Backend guards
 remain active with digestion skipped. Selected source array/text/label work is
@@ -16,7 +16,10 @@ keeps products/ranges symbolic and does not impose their potential expansion siz
 on callers. Current operator binding separately bounds selected operator rows and
 descriptor text, candidate checks and reference text before Card pin capture or
 tuple expansion, using the same setting and explicit override. None does not
-disable argument, identity or reference validity. See
+disable argument, identity or reference validity. Current component binding also
+preflights selected entity/instance/neighbor collections and identifier text before
+registry construction, Card capture or expansion; generator label receiving and
+component-reference accounting use the same explicit budget. See
 [the native source contract](pending_proposals/rcsb_assembly_generation.md).
 
 Region request receiving (#171) adds `region_budget` digestion: a positive

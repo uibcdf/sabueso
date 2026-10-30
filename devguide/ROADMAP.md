@@ -365,10 +365,11 @@ contract; composition alone is insufficient. Fresh RCSB acquisition now preserve
 including parent/order/revision context and literal human/agent saved inspection.
 `Card.assembly_generation()` now parses supported operation expressions compactly
 and expands tuples only after explicit all-request preflight, with positive/None
-budget overrides and exact source locations. Current `rcsb_assembly_generation@2`
-binds exact entry-scoped operator keys, retains all projections and reports missing
-or ambiguous references; explicit `@1` retains the original syntax-only result.
-Native component/label-asym binding, operation-aware contacts and a dedicated
+budget overrides and exact source locations. Current `rcsb_assembly_generation@3`
+binds exact entry-scoped operator/component keys, retains all original references
+and distinguishes polymer instance records, ligand-neighbor-only references and
+unresolved/ambiguous labels. Explicit `@1`/`@2` retain the earlier interpretations.
+Full component/physical-occurrence closure, operation-aware contacts and a dedicated
 scientific adapter/reader remain pending;
 no physical membership is inferred from the new inputs.
 Source-bound qualification remains in #148/#112, separate from human acceptance.

@@ -90,9 +90,11 @@ contact reconciliation remain pending in [#173](https://github.com/uibcdf/sabues
 
 `Card.assembly_generation()` adds compact named symbolic plans, entry-operator key
 bindings and deliberate preflighted expansion, with exact bounded source links.
-Current `rcsb_assembly_generation@2` retains every operator projection and reports
-missing or ambiguous keys; explicit `@1` preserves the original syntax-only result.
-Physical/component membership remains uncomputed. The source contract above records
+Current `rcsb_assembly_generation@3` also binds retained native component keys,
+distinguishing polymer instance records from ligand-neighbor references and
+reporting unresolved/ambiguous labels. All original projections remain linked;
+explicit `@1`/`@2` preserve the earlier interpretations.
+Physical membership remains uncomputed. The source contract above records
 limits, independent original contexts and remaining adapter/reader work.
 
 The [original structure context](pending_proposals/card_structure_context_navigation.md)

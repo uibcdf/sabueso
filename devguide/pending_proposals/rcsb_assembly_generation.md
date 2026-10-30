@@ -76,8 +76,8 @@ identity or role of every listed component, much less assembly-specific contacts
 
 `Card.assembly_generation(structure_ref=None, relationship_id=None,
 expand_operations=False, operation_budget=100_000,
-generation_rule="rcsb_assembly_generation@2")` reads only retained RCSB assertions.
-The current rule adds the operator-key binding described below; explicit
+generation_rule="rcsb_assembly_generation@3")` reads only retained RCSB assertions.
+The current rule adds the component-key binding described below; explicit
 `generation_rule="rcsb_assembly_generation@1"` preserves original syntax-only
 output, using frozen
 `assembly_operation_expression@1`, without querying sources or changing the Card.
@@ -140,7 +140,7 @@ expanded = card.assembly_generation(
 
 ## Native entry-operator keys (#173)
 
-Current `rcsb_assembly_generation@2` reuses the unchanged @1 expression grammar
+Original `rcsb_assembly_generation@2` reuses the unchanged @1 expression grammar
 and original declaration admission. It adds `native_entry_operator_key@1`:
 `_pdbx_struct_oper_list.id` identifies a record within the PDB entry, under the
 [wwPDB key definition](https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_struct_oper_list.id.html)
@@ -181,13 +181,68 @@ schema, source fixture, source acquisition or new scientific saved format is
 introduced. Dedicated human/agent scientific adapters and original saved-result
 verification still follow native component/instance reconciliation.
 
+## Native component references (#173)
+
+Current `rcsb_assembly_generation@3` preserves original operator binding and adds
+`native_entry_component_key@1` over the same SourceAssertion's retained
+`ligand_contact_inputs.polymer_entities`. The
+[wwPDB generation field](https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_struct_assembly_gen.asym_id_list.html)
+points to native `_struct_asym.id`. The
+[RCSB instance schema](https://data.rcsb.org/rest/v1/schema/polymer_entity_instance)
+distinguishes instance `asym_id`, author `auth_asym_id` and ligand interaction
+`ligand_asym_id`. Only exact native label-asym keys are joined. Author labels,
+component codes, equal sequences and selected qualifiers never supply identities.
+Other assertions/revisions never fill missing input.
+
+Each source has a `component_registry`, original `references` with typed locations
+and `component_input_issues`. A unique polymer instance record is `resolved` on
+the basis `native_polymer_instance_identifier`. Consistent ligand-neighbor
+references are only `referenced`, on basis `native_ligand_neighbor_reference`:
+they do not establish a full nonpolymer instance record. Every original neighbor
+occurrence remains available. Duplicate polymer instance records, conflicting
+polymer/neighbor roles, contradictory retained ligand component codes, malformed
+descriptors and explicit foreign entry/conflicting parent entity identities
+are `ambiguous`; none selects a winner. Missing/null descriptors stay per-record,
+without completing one record from another. Original source/entity locations
+cover each retained descriptor's scope.
+The retained entity `rcsb_id` must also agree with its entry and any declared
+entity key, using the source's entry/underscore/entity convention from the
+[RCSB entity schema](https://data.rcsb.org/rest/v1/schema/polymer_entity).
+It is checked without completing an absent entity key from that string.
+
+Every parent-bound generator has `component_input_state`, `component_scope` and
+ordered `component_bindings`. Each original list position keeps its location,
+exact ID, registry index, repeated-label flag and state: `resolved`, `referenced`,
+`ambiguous`, `unresolved` or `unrecognized_label`. A generator is `resolved` only
+when every nonempty label reference resolves to a polymer instance; mixed or
+neighbor-only positive context is `partial`. Missing/null/malformed/empty lists
+retain their own states rather than becoming positive membership. Unsupported
+operation syntax can still expose independently retained component references;
+an unbound parent does not admit them. Repeated labels remain declarations, not
+distinct molecular copies. Unresolved labels concern retained input only.
+
+The existing operation budget bounds raw generator label work. New selected
+component collection/identifier-text preflight runs before registry construction,
+Card pin capture and tuple expansion; reference work is also checked/accounted.
+The same explicit positive/None override applies. Declared operation tuples stay
+available independently of component resolution. Operator binding, source/order
+scope and original generation `@1`/`@2` remain unchanged and selectable. No new
+source acquisition, Card schema or scientific saved format follows.
+
+The three public controls distinguish actual retained scope: 1SUX resolves A/B as
+polymer records, references C–J through ligand neighbors and leaves K/L unresolved;
+2V5B resolves A but leaves B unresolved; 1HTI resolves A/B and references C as a
+ligand neighbor. These are retained-key findings, not proof of complete source
+inventory, molecular occurrence counts or assembly-specific contacts.
+
 ## Remaining native reconciliation
 
-Issue #173 stays open. The next slice must bind exact source parent/entry/revision,
-generator occurrence and label-asym identity before reporting physical members.
-`asym_id_list` references `_struct_asym.id`, not author chain labels. The symbolic
-parser/expansion preflight and native entry-operator lookup are implemented; exact
-polymer/ligand-neighbor/other component namespace closure remains pending. Missing
+Issue #173 stays open. The next slice must preserve exact source parent/entry/revision,
+generator occurrence, label-asym basis and operator scope when defining
+operation-qualified occurrences. The symbolic parser/expansion preflight, native
+entry-operator lookup and retained polymer/ligand-neighbor key binding are
+implemented; full nonpolymer/other component closure and physical occurrence
+reconciliation remain pending. Missing
 polymer records are not absence of all source role references: ligand-neighbor
 records also name identifiers retained in the generation inputs. Keep each
 original reference's basis instead of inferring a physical identity from matching
@@ -201,6 +256,22 @@ establishes geometry, contact existence, biological relevance or project Evidenc
 Any later coordinate transform must qualify quantities/units independently.
 
 ## Local qualification
+
+The component-key slice (2026-10-30) passes 116 native owning cases and a final
+15-file integration of 472 cases /119.77 seconds (including those 116), serial
+through pytest-receptor with fatal warning/resource guards. Peak sampled
+integration RSS is 531,062,784 bytes, with zero owned swap. Both guide blocks
+execute over the three public controls and a historical Card without acquisition
+or mutation. All 45 protected original modules remain byte-identical to `6f94043`.
+Whole-tree pinned Ruff, warning-fatal Sphinx, local links/snippets/Python 3.11
+parsing, unchanged Card shape/schema, registry, fixture delivery, dependency and
+governance checks pass. The added synthetic entity-record identity regression
+first demonstrated the omitted check; the final owning/integration receipts
+include its correction. Earlier intermediate runs and a collection-only syntax
+failure are separate from this final qualification. Hosted gates are explicitly
+deferred under the [intermediate recovery route](deferred_ci.md), with exact
+source/SDK receipts in #173/#148/#112. Neither these checks nor earlier green
+sources establish full human acceptance or release qualification.
 
 The entry-operator binding slice (2026-10-30) passes 80 owning cases and a selected
 14-file integration of 436 cases /121.88 seconds (including those 80), serial
