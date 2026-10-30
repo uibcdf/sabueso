@@ -25,6 +25,14 @@ component/operation occurrences, with exact original contexts, separate physical
 scope and all-request count/text preflight. It belongs to this same intermediate
 recovery block; original `@1`–`@3` remain unchanged. Its exact source/SDK and
 selected local gates are recorded in #173/#148/#112 and its owned checkpoint.
+That occurrence checkpoint is `a1a54360d0073f5b690da760dddc16ec98daf010`,
+SDK `0.14.0+134.ga1a5436`. The following live human/agent assembly adapter is
+another intermediate in this same block: its independent original saved-result
+reader is still pending. Close that reader/request/navigation block and recover
+the exact final source through unskipped CI/governance before declaring the
+assembly route complete. Applicable local integration is mandatory for each
+published intermediate; exact SHA/SDK and missing hosted gates stay in the owning
+issues and checkpoint records.
 
 Owners #173/#148/#112 record the exact intermediate SHA, SDK and local gate
 receipts in their issue updates and owned checkpoint index. Missing remote gates

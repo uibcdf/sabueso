@@ -13,6 +13,12 @@ FUNCTION_FIELDS = {
     "sequence.length": "Sequence length",
 }
 _SOURCE_QUESTIONS = {
+    "assembly_generation": {
+        "label": "Which components and operations are declared for each retained assembly?",
+        "topic": "assembly_generation",
+        "required_options": [],
+        "scope": "Exact original generator contexts, key binding and declared combination counts; no physical copy, coordinate or contact inference.",
+    },
     "quaternary_interpretation": {
         "label": "Which interface classifications and family-site comparisons are supported?",
         "topic": "quaternary_interpretation",

@@ -492,6 +492,14 @@ def _parts(view):
             + view.explorer._coverage_result.native["rule"]["rule"]
             + "; source/request states remain distinct. Unknown counts are not zero; no global completeness score is inferred."
         )
+    if view._record_panel == "assembly_generation":
+        from .card_assembly_exploration import SCOPE, detail_lines
+
+        opening.append(SCOPE)
+        opening.append(
+            "Open an item for its complete original context; explain() shows the basis and related() opens input/source destinations. This scientific view cannot be saved yet. Export the captured Card to keep its original inputs."
+        )
+        opening.extend(detail_lines(view, preview))
     if view._record_panel == "quaternary_interpretation":
         if view._explorer.mode == "saved":
             from .card_quaternary_history_v1 import SCOPE
@@ -605,7 +613,7 @@ def _parts(view):
             "Synonym scopes describe terminology; they do not establish disease identity."
         )
     scientific = view._selection._scientific
-    if scientific is not None:
+    if scientific is not None and not view._record_panel:
         opening.append(
             "Inventory sequence coverage does not establish coordinate completeness."
         )
@@ -680,6 +688,10 @@ def _parts(view):
                     for key in RECORD_COLUMNS[view._record_panel]
                 ),
             )
+            if view._record_panel == "assembly_generation":
+                from .card_assembly_exploration import display_row
+
+                record_row = display_row(item, index, preview)
             if view._record_panel == "quaternary_interpretation":
                 kinds = {
                     "interface_classification": "Interface classification",
@@ -909,6 +921,10 @@ def _parts(view):
 
 
 def _headers(view):
+    if view._record_panel == "assembly_generation":
+        from .card_assembly_exploration import HEADERS
+
+        return list(HEADERS)
     if view._record_panel == "quaternary_interpretation":
         if view._explorer.mode == "saved":
             from .card_quaternary_history_v1 import HEADERS

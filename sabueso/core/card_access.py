@@ -373,7 +373,12 @@ class CardAccess:
         from .region_requests import capabilities as region_capabilities
 
         scientific_topics = (
-            ["structures", "ligand_site_comparisons", "quaternary_interpretation"]
+            [
+                "structures",
+                "ligand_site_comparisons",
+                "quaternary_interpretation",
+                "assembly_generation",
+            ]
             if self.profile == "protein"
             else []
         )
@@ -707,7 +712,14 @@ class CardAccess:
                     data["quaternary_interpretation"]["selection_availability"] = (
                         "retained_requests_only"
                     )
+                from .card_assembly_access import descriptor as assembly_descriptor
+
+                data["assembly_generation"] = assembly_descriptor()
+                data["assembly_generation"]["selection_availability"] = (
+                    "not_saved" if self.mode == "saved" else "live"
+                )
                 if self.mode == "saved":
+                    data["assembly_generation"]["availability"] = "not_saved"
                     data[TOPIC]["availability"] = (
                         "retained"
                         if TOPIC in self.capabilities["scientific_topics"]
@@ -781,11 +793,32 @@ class CardAccess:
             "structures",
             "ligand_site_comparisons",
             "quaternary_interpretation",
+            "assembly_generation",
         ):
             raise ArgumentError(
-                "Scientific selection supports structures, ligand_site_comparisons and quaternary_interpretation."
+                "Scientific selection supports structures, ligand_site_comparisons, quaternary_interpretation and assembly_generation."
             )
-        if topic == "quaternary_interpretation":
+        if topic == "assembly_generation":
+            from .card_assembly_access import materialize
+            from .card_assembly_exploration import options_for_assembly
+            from .card_assembly_selection_v1 import (
+                active,
+                evaluate,
+                normalize,
+                projection,
+                selection_ref,
+            )
+
+            options, fields = options_for_assembly(options), projection(fields)
+            query = normalize(where, item_refs, order_by)
+            if self.mode == "saved":
+                from .card_exploration_storage import missing_selection
+
+                return missing_selection(
+                    self, topic, options, fields, query if active(query) else None
+                )
+            result = materialize(self, options)
+        elif topic == "quaternary_interpretation":
             if self.mode == "saved":
                 from .card_quaternary_access import saved_selection
 
@@ -961,6 +994,7 @@ class CardAccess:
             if selection._scientific.wire["context"]["adapter"] in (
                 "ligand_site_exploration@1",
                 "quaternary_exploration@1",
+                "assembly_generation_exploration@1",
             ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
@@ -1005,6 +1039,10 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("adapter") == "assembly_generation_exploration@1":
+            from .card_assembly_access import defer_frame
+
+            return defer_frame(item)
         if item.get("kind") in (
             "interface_classification",
             "interface_family_comparison",

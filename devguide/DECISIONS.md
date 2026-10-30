@@ -1,5 +1,23 @@
 # Sabueso — Decision Log
 
+## Share captured assembly findings between human and agent navigation (2026-10-30, #148/#173)
+
+Use `assembly_generation_exploration@1` over one named native @4 result per
+normalized scientific request. Keep generator, source/parent gap and unplaced
+declaration grains separate, with original source/context locations and complete
+support membership. Present readable expressions/component-key states and exact
+or factored counts; retain explicit physical/geometry/contact limits. Typed
+`assembly_generation_access_selection@1` changes display membership only, with
+projection-independent mandatory interpretation/support and atomic deferral.
+Keep effective selectors, expansion flags and positive/None budget in both human
+question and agent request contexts. Original rule modules/readers remain
+unchanged. This first live delivery refuses scientific saving and its derived
+navigation until independent original result verification exists; captured Card
+export and unrelated supported literal saving remain available. Old files return
+`not_saved` for the new topic without current scientific execution. No source
+query, Card schema or shared MOLI contract change follows. See
+[the contract](pending_proposals/card_assembly_exploration.md).
+
 ## Count declared component/operation occurrences separately from physical copies (2026-10-30, #173)
 
 Use `rcsb_assembly_generation@4` / `source_assembly_occurrence@1` for compact

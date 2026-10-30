@@ -28,6 +28,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "assembly_generation": (
+        "Assembly components and operations",
+        "Original assembly declarations, key binding and declared combination counts; physical copies and contacts remain uncomputed.",
+    ),
     "quaternary_interpretation": (
         "Interface classifications and family-site comparisons",
         "Source-bound interface findings and all family-site pairs, with original inputs and explicit uncomputed context.",
@@ -147,6 +151,8 @@ class CardItem:
 
     @property
     def kind(self):
+        if self._view._record_panel == "assembly_generation":
+            return self._entry.value["kind"]
         if self._view._record_panel == "quaternary_interpretation":
             return self._entry.value["kind"]
         if self._view._field_panel == "quaternary_structure":
@@ -253,6 +259,10 @@ class CardItem:
 
     @property
     def support(self):
+        if self._view._record_panel == "assembly_generation":
+            from .card_assembly_exploration import support
+
+            return support(self)
         if self._view._record_panel == "quaternary_interpretation":
             if self._view._explorer.mode == "saved":
                 from .card_quaternary_history_v1 import support
@@ -294,6 +304,21 @@ class CardItem:
 
     @property
     def cells(self):
+        if self._view._record_panel == "assembly_generation":
+            from .card_assembly_selection_v1 import COLUMNS
+
+            result = self._view._selection._scientific
+            return MappingProxyType(
+                {
+                    column: Cell(
+                        self._entry.value[column],
+                        state=result.cell_state(self._entry.key, column),
+                        reason=result.cell_reason(self._entry.key, column),
+                        _support=tuple(self.support),
+                    )
+                    for column in COLUMNS
+                }
+            )
         if self._view._field_panel == "quaternary_structure":
             from .card_quaternary_source_v1 import values
 
@@ -519,6 +544,7 @@ class CardItem:
         if self._view._record_panel in (
             "ligand_site_comparisons",
             "quaternary_interpretation",
+            "assembly_generation",
         ):
             return replace(
                 self._view,
@@ -526,7 +552,9 @@ class CardItem:
                 _origin=self._view,
                 _display_request=None,
                 _native_override=deepcopy(self._entry.value["item"]),
-                title=f"Quaternary finding · {self.label}"
+                title=f"Assembly declaration · {self.label}"
+                if self._view._record_panel == "assembly_generation"
+                else f"Quaternary finding · {self.label}"
                 if self._view._record_panel == "quaternary_interpretation"
                 else f"Ligand contact comparison · {self.label}",
                 presentation="detail",
@@ -578,6 +606,10 @@ class CardItem:
         return result
 
     def _live_explain(self):
+        if self._view._record_panel == "assembly_generation":
+            from .card_assembly_exploration import explain
+
+            return explain(self)
         if self._view._record_panel == "quaternary_interpretation":
             from .card_quaternary_exploration import explain
 
@@ -910,6 +942,7 @@ class CardView:
                 "coverage",
                 "ligand_site_comparisons",
                 "quaternary_interpretation",
+                "assembly_generation",
             )
         if self._selection._scientific is not None:
             capabilities.update(
@@ -937,6 +970,15 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if self._record_panel == "assembly_generation":
+            from .card_assembly_selection_v1 import COLUMNS
+
+            return {
+                "kind": "assembly_generation_finding",
+                "grain": "one original generator, unavailable source/parent scope, acquisition gap or unplaced declaration",
+                "columns": list(COLUMNS),
+                "presentations": ["summary", "table", "detail"],
+            }
         if self._record_panel == "quaternary_interpretation":
             from .card_quaternary_exploration import COLUMNS
 
@@ -1158,6 +1200,10 @@ class CardView:
     def filter(self, column, *, equals, skip_digestion=False):
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
+        if self._record_panel == "assembly_generation":
+            from .card_assembly_exploration import display_filter
+
+            return display_filter(self, column, equals)
         scientific = (
             self._selection._scientific is not None
             and self._record_panel
@@ -1540,6 +1586,16 @@ class CardExplorer:
         )
 
     def _topic(self, topic, origin=None, options=None):
+        if self.mode == "saved" and topic == "assembly_generation":
+            from .card_assembly_exploration import options_for_assembly
+            from .card_exploration_storage import not_saved
+
+            options_for_assembly(options)
+            return not_saved(
+                self,
+                "Assembly-generation findings are not available in this saved exploration. The original captured Card remains inspectable.",
+                origin,
+            )
         if self.mode == "saved":
             from .card_exploration_storage import saved_topic
 
@@ -1554,6 +1610,10 @@ class CardExplorer:
             raise ArgumentError("Scientific options require a mapping or None.")
         from .card_exploration_profiles import PANELS
 
+        if topic == "assembly_generation":
+            from .card_assembly_exploration import options_for_assembly, view
+
+            return view(self, origin, options_for_assembly(options))
         if topic == "quaternary_interpretation":
             from .card_quaternary_access import options_for_quaternary
             from .card_quaternary_exploration import view
@@ -1743,6 +1803,8 @@ class CardExplorer:
         return self._topic(topic, options=options)
 
     def _answer(self, question, options, origin=None):
+        if self.mode == "saved" and question == "assembly_generation":
+            return self._topic(question, origin, options)
         if self.mode == "saved":
             from .card_exploration_storage import saved_answer
 
@@ -1758,7 +1820,11 @@ class CardExplorer:
             raise ArgumentError("Question options require a mapping.")
         if question != "region_coverage":
             view = self._topic(self._questions[question]["topic"], origin, options)
-            effective = {}
+            effective = (
+                deepcopy(view.context["options"])
+                if question == "assembly_generation"
+                else {}
+            )
         else:
             from .card_protein_exploration import region_request
 

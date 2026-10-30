@@ -372,8 +372,11 @@ unresolved/ambiguous labels. Compact occurrence plans keep exact factors and
 original source/parent/generator context; explicit occurrence expansion preflights
 the whole request's count and repeated-identifier text. Explicit `@1`–`@3` retain
 the earlier interpretations.
-Full component/physical-occurrence closure, operation-aware contacts and a dedicated
-scientific adapter/reader remain pending;
+The [live assembly adapter](pending_proposals/card_assembly_exploration.md) now
+shares these findings between readable human navigation and compact agent
+selection, with exact requests and original source/context links. Full
+component/physical-occurrence closure, operation-aware contacts and an independent
+original scientific result reader remain pending;
 no physical membership is inferred from the new inputs.
 Source-bound qualification remains in #148/#112, separate from human acceptance.
 

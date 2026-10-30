@@ -283,9 +283,10 @@ No source acquisition, Card schema or new scientific saved format follows.
 
 ## Remaining native reconciliation
 
-Issue #173 stays open. The next slice is the shared human/agent scientific
-adapter over these original source/parent/generator contexts, key bases and
-declared occurrences, followed by independent original saved-result reading.
+Issue #173 stays open. The [shared live human/agent adapter](card_assembly_exploration.md)
+now presents original source/parent/generator contexts, key bases and declared
+occurrences. The next slice is independent original saved-result reading with
+exact saved requests, selection and navigation.
 The symbolic parser/expansion preflight, native
 entry-operator lookup and retained polymer/ligand-neighbor key binding are
 implemented, together with declared component/operation occurrence plans and

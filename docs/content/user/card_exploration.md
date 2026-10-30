@@ -705,7 +705,64 @@ This is a presentation of source declarations. Computed oligomer/interface
 classification, assembly reconciliation and geometry remain separate scientific
 questions with their own rules, inputs and explanations.
 
-## Inspect symbolic assembly generation (development)
+## Explore assembly components and operations (development)
+
+For a protein Card, start with the scientific view:
+
+```python
+assembly_view = explorer.answer("assembly_generation")
+assembly_view.table()
+```
+
+Each row keeps an original generator or an explicit unavailable source/parent
+scope. The table distinguishes operator keys, component references and declared
+combinations. Counts include repeated declarations; they do not count distinct
+physical molecules. A missing scalar with `count_state="factored"` has complete
+exact factors, rather than an unknown or zero count.
+
+```python
+assembly_generators = assembly_view.filter("kind", equals="assembly_generator")
+if assembly_generators.items():
+    assembly_item = assembly_generators.items()[0]
+    assembly_detail = assembly_item.open()
+    assembly_basis = assembly_item.explain()
+    assembly_context = assembly_item.related()
+    assert assembly_detail.back() is assembly_generators
+```
+
+Detail shows the original expression and a labeled component-binding preview.
+Full values remain in `native_payload`. Related context opens sources, original
+generator inputs, structure declarations and acquisition/quality records. Matched,
+ligand-only, ambiguous and unresolved keys remain distinct; they do not establish
+transformed physical copies or assembly contacts.
+
+Agents select the same result through bounded pages:
+
+```python
+assembly_selection = explorer.access.select(
+    "assembly_generation",
+    fields=["structure_ref", "assembly_id", "declaration_count", "count_state"],
+    where={"kind": "assembly_generator"},
+    order_by={"column": "declaration_count", "descending": True},
+)
+assembly_page = assembly_selection.page(limit=8, max_bytes=8192)
+assert assembly_selection.result_ref == assembly_view.result_ref
+```
+
+Projection preserves mandatory interpretation/source membership or complete read
+paths when values and their context must be deferred. Human `view`/`answer` and
+machine `select` accept the same `options`: `structure_ref`, optional exact
+`relationship_id`, `expand_operations`, `expand_occurrences` and `operation_budget`.
+Expansion is off by default. Set a positive budget to choose a ceiling (default
+100,000); explicit None removes it deliberately. Reference/scientific validity still apply.
+Both interfaces keep the exact effective request and share one native evaluation
+per normalized request.
+
+This scientific view cannot be saved yet; `capabilities["save"]` is false. Export
+the captured Card with `explorer.access.export_card(path)` to keep its original
+inputs. Unrelated supported views can still be saved in the same session.
+
+### Inspect native operation and occurrence plans
 
 For protein Cards with original RCSB generation inputs, inspect the declared
 operation plans without fetching anything or expanding their combinations:
@@ -792,9 +849,9 @@ Standalone `operation_tuples` are delivered only with `expand_operations=True`.
 economically. `quality_location` opens the original acquisition context.
 These are declarations with operator/component-key references: physical copies, assembly
 contacts, geometry and biological relevance are not reconciled by this native
-analysis. Its dedicated human question adapter and saved scientific-result
-reader are still pending; original source exploration retains its existing inert
-saved reading.
+analysis. The human question and agent selection above share these native
+findings. Their saved scientific-result reader is still pending; original source
+exploration retains its existing inert saved reading.
 Select `generation_rule="rcsb_assembly_generation@1"` to preserve the earlier
 syntax-only interpretation, or `generation_rule="rcsb_assembly_generation@2"`
 for the earlier operator-only binding, or `generation_rule="rcsb_assembly_generation@3"`

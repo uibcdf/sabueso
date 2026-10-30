@@ -64,6 +64,7 @@ NATURE_TOPICS = {
         "ligand_instances",
         "quaternary_structure",
         "quaternary_interpretation",
+        "assembly_generation",
     ),
     "small_molecule": ("chemistry", "properties"),
     "disease": ("definition", "classification", "identity"),
@@ -211,6 +212,17 @@ def field_entries(explorer, topic):
 
 
 RECORD_COLUMNS = {
+    "assembly_generation": (
+        "structure_ref",
+        "assembly_id",
+        "status",
+        "operator_scope",
+        "component_scope",
+        "declaration_count",
+        "count_state",
+        "finding",
+        "reason",
+    ),
     "quaternary_interpretation": (
         "partner_ref",
         "status",
@@ -231,7 +243,11 @@ RECORD_COLUMNS = {
 
 
 def record_label(panel, row):
-    if panel in ("ligand_site_comparisons", "quaternary_interpretation"):
+    if panel in (
+        "ligand_site_comparisons",
+        "quaternary_interpretation",
+        "assembly_generation",
+    ):
         return row["label"]
     return (
         f"{row['area']} · {row['source']}" if panel == "coverage" else row["object_ref"]

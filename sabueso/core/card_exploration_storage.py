@@ -59,6 +59,12 @@ def admitted_selection(selection):
     try:
         node, location = selection._access._resolve(selection._target["location"])
         if location["kind"] == "result":
+            original = selection._access._objects[location["result_ref"]]
+            if (
+                isinstance(original, dict)
+                and original.get("rule") == "assembly_generation_links@1"
+            ):
+                return False
             if location["result_ref"] not in selection._access._metadata_refs:
                 return selection._access._objects[location["result_ref"]].get(
                     "context", {}

@@ -375,6 +375,7 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "annotated_regions",
                 "quaternary_structure",
                 "quaternary_interpretation",
+                "assembly_generation",
             },
             {
                 "function",
@@ -387,6 +388,7 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
                 "annotated_regions",
                 "quaternary_structure",
                 "quaternary_interpretation",
+                "assembly_generation",
             },
         ),
         (

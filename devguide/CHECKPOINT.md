@@ -108,10 +108,14 @@ source and release receipts remain unchanged.
    unchanged and selectable. Visible
    `operation_budget` supports deliberate raised/None overrides; no physical
    copies or contacts are inferred. [#173](https://github.com/uibcdf/sabueso/issues/173)
-   remains open for full component/physical-occurrence closure, scientific adapters and
+   remains open for full component/physical-occurrence closure and
    original saved result verification. [#174](https://github.com/uibcdf/sabueso/issues/174)
    separately tracks response buffering before JSON decoding. Owning local/hosted
    receipts qualify only their exact source.
+   The [live human/agent assembly view](pending_proposals/card_assembly_exploration.md)
+   now shares native @4 findings, exact request options, original-source navigation
+   and bounded typed selection. Unknown/factored counts remain explicit;
+   scientific saving stays unavailable until its independent original reader.
    The retained-component continuation is an intermediate locally tested
    `[skip ci]` block; exact SHA/SDK and outstanding hosted gates belong to
    #173/#148/#112 and the [recovery ledger](pending_proposals/deferred_ci.md).

@@ -96,8 +96,11 @@ reporting unresolved/ambiguous labels. All original projections remain linked;
 compact occurrence plans retain exact count factors and original contexts.
 Explicit `expand_occurrences` delivers declared component/operation combinations
 after full count/text preflight; `@1`–`@3` preserve the earlier interpretations.
-Physical membership remains uncomputed. The source contract above records
-limits, independent original contexts and remaining adapter/reader work.
+The [shared live assembly view](pending_proposals/card_assembly_exploration.md)
+now presents the same captured findings through a readable question/table,
+original support/navigation and bounded typed agent selection. Factored counts
+remain distinct from unknown scalars. Physical membership stays uncomputed;
+independent original assembly-result reading is next.
 
 The [original structure context](pending_proposals/card_structure_context_navigation.md)
 links experimental inventory items and literal declarations to their exact retained

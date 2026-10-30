@@ -1,5 +1,16 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+The live `assembly_generation` exploration topic reuses existing `options`,
+`fields`, `where`, `item_refs`, `order_by` and scalar display arguments. Its options
+call the existing exact structure/relationship digesters and native positive/None
+budget contract; both expansion flags require booleans. Unknown options and
+typed display operands fail before materialization, including empty captures.
+Display counts accept nonnegative integers or None, never booleans/floats/quantities;
+other columns require declared strings or explicitly nullable text. Ordering
+rejects quantity units and keeps unavailable scalars last. Human questions retain
+the complete normalized scientific request, matching agent selection context.
+See [the live contract](pending_proposals/card_assembly_exploration.md).
+
 `Card.assembly_generation` (#173) adds positive non-boolean `operation_budget`
 (default 100,000), or explicit None to disable its receiving ceilings, and strict
 booleans `expand_operations` and `expand_occurrences`. Exact `generation_rule` selects current
