@@ -553,7 +553,10 @@ assert view.items()[0].related().items()[0].open().native_payload
 assert str(view) and view._repr_html_()
 print("PASS: independent original assembly reading")
 """
-    with TemporaryDirectory(prefix="sabueso-assembly-reader-", dir="/tmp") as outside:
+    outside_parent = None if sys.platform == "win32" else "/tmp"
+    with TemporaryDirectory(
+        prefix="sabueso-assembly-reader-", dir=outside_parent
+    ) as outside:
         result = subprocess.run(
             [sys.executable, "-c", script, str(path), receipt["bundle_digest"]],
             cwd=outside,
