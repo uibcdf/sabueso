@@ -1,7 +1,7 @@
 # Sabueso — Risks and Open Questions
 
 Original assembly-generation inspection (#173) now has compact native plans and
-visible tuple-count/identifier-text preflight with deliberate raised/unlimited
+visible tuple/declared-occurrence count and identifier-text preflight with deliberate raised/unlimited
 budgets. This does not bound whole-Card capture (#167), source JSON buffering or
 decoded-object memory. [#174](https://github.com/uibcdf/sabueso/issues/174) records
 the observed unbounded read in the production HTTP JSON path; large-response

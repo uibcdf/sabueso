@@ -93,7 +93,9 @@ def test_original_controls_keep_polymer_neighbor_and_unknown_bases(
 ):
     card = Card.from_dict(deepcopy(originals[pdb]))
     before = card.to_dict()
-    result = card.assembly_generation(structure_ref=f"pdb:{pdb}")
+    result = card.assembly_generation(
+        structure_ref=f"pdb:{pdb}", generation_rule="rcsb_assembly_generation@3"
+    )
     assert result["rule"] == "rcsb_assembly_generation@3"
     assert result["component_binding_rule"] == "native_entry_component_key@1"
     assert result["physical_membership"] == "not_computed"

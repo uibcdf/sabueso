@@ -13,18 +13,17 @@ is established by this draft.
 ## Intended changes since 0.14.0
 
 - Retain original RCSB assembly generators/operator descriptors and expose
-  `Card.assembly_generation()` with named compact symbolic plans, original source
-  locations and deliberate tuple expansion (#173). Preflight source work, tuple
-  count and conservative identifier-text cost before allocation; explain refusal
-  and positive/None overrides. Current generation `@2` binds exact entry-operator
-  keys, retains all original projections and reports missing/ambiguous references;
-  explicit `@1` preserves the syntax-only result. Operator input, candidate checks
-  and reference text are bounded before capture or expansion. Current generation
-  `@3` also binds retained component keys, distinguishes polymer instances from
-  ligand-neighbor-only references, preserves ambiguity and preflights component
-  collections/identifier text; earlier `@1`/`@2` stay selectable. Full component/physical-instance
-  reconciliation and a dedicated human/agent scientific adapter and saved reader
-  remain pending.
+  `Card.assembly_generation()` under named generation `@4` (#173). Exact native
+  key binding distinguishes polymer instances, ligand-neighbor references and
+  missing/ambiguous inputs, retaining every original projection and source link.
+  Compact component/operation declaration plans keep exact count factors;
+  optional tuple/occurrence expansion preserves repeats and per-tuple binding.
+  Preflight source/operator/component work and all requested count/text costs
+  before expansion or capture, with visible refusal and positive/None overrides.
+  Earlier `@1`–`@3` remain selectable and unchanged. No physical copy, geometry or
+  assembly-contact inference follows. Full component/physical-occurrence closure,
+  the dedicated human/agent scientific adapter and original saved reader remain
+  pending.
 
 - Separate exact experimental declaration admission (#169) from original
   coordinate/reference support (#170). Preserve unplaced declarations and unknown

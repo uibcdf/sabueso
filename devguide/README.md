@@ -90,10 +90,12 @@ contact reconciliation remain pending in [#173](https://github.com/uibcdf/sabues
 
 `Card.assembly_generation()` adds compact named symbolic plans, entry-operator key
 bindings and deliberate preflighted expansion, with exact bounded source links.
-Current `rcsb_assembly_generation@3` also binds retained native component keys,
+Current `rcsb_assembly_generation@4` also binds retained native component keys,
 distinguishing polymer instance records from ligand-neighbor references and
 reporting unresolved/ambiguous labels. All original projections remain linked;
-explicit `@1`/`@2` preserve the earlier interpretations.
+compact occurrence plans retain exact count factors and original contexts.
+Explicit `expand_occurrences` delivers declared component/operation combinations
+after full count/text preflight; `@1`–`@3` preserve the earlier interpretations.
 Physical membership remains uncomputed. The source contract above records
 limits, independent original contexts and remaining adapter/reader work.
 

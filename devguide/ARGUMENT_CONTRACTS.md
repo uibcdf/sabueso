@@ -1,9 +1,9 @@
 # Sabueso — Argument contracts (ArgDigest)
 
 `Card.assembly_generation` (#173) adds positive non-boolean `operation_budget`
-(default 100,000), or explicit None to disable its receiving ceilings, and a strict
-boolean `expand_operations`. Exact `generation_rule` selects current
-`rcsb_assembly_generation@3` or original `rcsb_assembly_generation@1`/`@2` without
+(default 100,000), or explicit None to disable its receiving ceilings, and strict
+booleans `expand_operations` and `expand_occurrences`. Exact `generation_rule` selects current
+`rcsb_assembly_generation@4` or original `rcsb_assembly_generation@1`/`@2`/`@3` without
 coercion. Existing `structure_ref` and `relationship_id`
 digesters provide exact selection; the latter requires the former. Backend guards
 remain active with digestion skipped. Selected source array/text/label work is
@@ -19,7 +19,12 @@ tuple expansion, using the same setting and explicit override. None does not
 disable argument, identity or reference validity. Current component binding also
 preflights selected entity/instance/neighbor collections and identifier text before
 registry construction, Card capture or expansion; generator label receiving and
-component-reference accounting use the same explicit budget. See
+component-reference accounting use the same explicit budget. Declared occurrence
+expansion requires generation @4; earlier rules refuse a true `expand_occurrences`
+rather than ignore it. Backend guards validate both booleans even with digestion
+skipped. The complete requested occurrence cardinality and conservative repeated
+component/operator text bound pass before any tuple pool, row or Card capture.
+Standalone tuple delivery and occurrence delivery are independent options. See
 [the native source contract](pending_proposals/rcsb_assembly_generation.md).
 
 Region request receiving (#171) adds `region_budget` digestion: a positive

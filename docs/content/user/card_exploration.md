@@ -720,6 +720,7 @@ for source in plans["sources"]:
                 generator["status"],
                 generator.get("operator_scope"),
                 generator.get("component_scope"),
+                generator["occurrence_plan"]["declared_occurrence_count"],
                 generator.get("plan"),
             )
 ```
@@ -765,6 +766,27 @@ positive integer or deliberately pass `operation_budget=None`. Syntax and source
 scope validation still apply. Use `structure_ref="pdb:2V5B"` to focus one
 structure; an optional exact `relationship_id` requires that reference.
 
+Inspect the component/operation declarations themselves when needed:
+
+```python
+declarations = card.assembly_generation(expand_occurrences=True)
+for source in declarations["sources"]:
+    for assembly in source["assemblies"]:
+        for generator in assembly["generators"]:
+            for row in generator.get("declared_occurrences", []):
+                print(row["asym_id"], row["operator_ids"], row["binding_state"])
+```
+
+`occurrence_plan` keeps the exact original context and compact count factors.
+Its counts describe declarations, including repeated labels and operations;
+they do not count distinct physical molecules. `expand_occurrences` checks the
+whole requested count and conservative repeated-identifier text cost before
+expansion. Unknown keys remain visible in each returned row. Invalid component
+lists or unsupported operations have an unavailable plan and explicit reason,
+without delivering a valid prefix. `occurrence_expansion_state` distinguishes
+complete delivery from unavailable parts; it does not certify physical membership.
+Standalone `operation_tuples` are delivered only with `expand_operations=True`.
+
 `source_location` and each generator's `input_location` work with
 `card.access().read(location).page(max_bytes=8192)` to inspect original support
 economically. `quality_location` opens the original acquisition context.
@@ -775,7 +797,9 @@ reader are still pending; original source exploration retains its existing inert
 saved reading.
 Select `generation_rule="rcsb_assembly_generation@1"` to preserve the earlier
 syntax-only interpretation, or `generation_rule="rcsb_assembly_generation@2"`
-for the earlier operator-only binding. The default is now `rcsb_assembly_generation@3`.
+for the earlier operator-only binding, or `generation_rule="rcsb_assembly_generation@3"`
+for component-key binding without occurrence plans. The default is now
+`rcsb_assembly_generation@4`.
 
 ## Interpret interfaces and compare family sites
 

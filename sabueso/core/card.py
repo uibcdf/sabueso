@@ -974,32 +974,59 @@ class Card:
         relationship_id: str | None = None,
         *,
         expand_operations: bool = False,
+        expand_occurrences: bool = False,
         operation_budget: int | None = DEFAULT_OPERATION_BUDGET,
-        generation_rule: str = "rcsb_assembly_generation@3",
+        generation_rule: str = "rcsb_assembly_generation@4",
         skip_digestion: bool = False,
     ) -> Dict[str, Any]:
         """Inspect original RCSB generator plans without fetching source data.
 
-        ``rcsb_assembly_generation@3`` binds source-stated entry operator and
+        ``rcsb_assembly_generation@4`` plans source component/operation
+        declaration occurrences and binds source-stated entry operator and
         component IDs. Polymer instance records and ligand-neighbor references
         retain distinct bases; author labels never substitute for label-asym IDs,
         preserving every original assertion, parent and generator occurrence.
         Missing/ambiguous references and conflicting descriptors stay explicit.
         Select ``generation_rule="rcsb_assembly_generation@1"`` for unchanged
-        syntax-only reading, or ``@2`` for unchanged operator-only binding.
+        syntax-only reading, ``@2`` for unchanged operator-only binding, or ``@3``
+        for component-key binding without occurrence plans.
         By default expressions stay compact.
         Explicit ``expand_operations=True`` materializes source-order operation
         tuples only after the whole requested expansion and conservative ID-text
         bound pass ``operation_budget``
         (100,000 by default); source/operator/component work is bounded in either mode. Raise
         that positive integer or deliberately pass None to remove the ceiling.
+        Explicit ``expand_occurrences=True`` also delivers the declared component
+        positions combined with operation tuples, after whole-request count/text
+        preflight. Repeated declarations remain separate source occurrences.
         Products apply right to left. Tuples are declarations, not proven physical
         copies, assembly contacts or geometry. Original source inputs stay on the
         Card; this new native analysis is not a saved scientific-reader format.
         """
         from .assembly_requests import generation_rule as validate_rule
+        from .errors import ArgumentError
 
         rule = validate_rule(generation_rule)
+        if type(expand_occurrences) is not bool:
+            raise ArgumentError(
+                "expand_occurrences requires a boolean.", argument="expand_occurrences"
+            )
+        if rule == "rcsb_assembly_generation@4":
+            from .assembly_generation_v4 import generation
+
+            return generation(
+                self,
+                structure_ref,
+                relationship_id,
+                expand_operations,
+                operation_budget,
+                expand_occurrences,
+            )
+        if expand_occurrences:
+            raise ArgumentError(
+                'expand_occurrences requires generation_rule="rcsb_assembly_generation@4".',
+                argument="expand_occurrences",
+            )
         if rule == "rcsb_assembly_generation@1":
             from .assembly_generation_v1 import generation
         elif rule == "rcsb_assembly_generation@2":

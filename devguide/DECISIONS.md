@@ -1,5 +1,23 @@
 # Sabueso — Decision Log
 
+## Count declared component/operation occurrences separately from physical copies (2026-10-30, #173)
+
+Use `rcsb_assembly_generation@4` / `source_assembly_occurrence@1` for compact
+component-position × operation-tuple declarations within each original assertion,
+parent and generator context. Keep complete exact factors when a scalar count
+cannot represent the product. Preserve repeated labels, tuples, generators and
+ambiguous native parent IDs as source occurrences, without deduplicating or
+asserting physical uniqueness. Explicit `expand_occurrences` delivers admitted
+rows with per-tuple key bindings and original registry/context references;
+`expand_operations` independently controls standalone tuple delivery. Unavailable
+label/operation context never supplies a partial generator prefix. Preflight all
+requested cardinalities, then conservative tuple/occurrence ID-text bounds,
+before any tuple pool or whole-Card pin capture, with the existing visible
+positive/None override. Earlier rules reject new expansion rather than silently
+ignore it, and original `@1`–`@3` stay unchanged. No coordinate/contact calculation,
+Card schema, source acquisition or scientific saved-format change follows.
+See [the contract](pending_proposals/rcsb_assembly_generation.md).
+
 ## Keep native component records distinct from neighbor references (2026-10-30, #173)
 
 Use `rcsb_assembly_generation@3` / `native_entry_component_key@1` for exact

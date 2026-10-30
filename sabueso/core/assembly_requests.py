@@ -10,10 +10,11 @@ def generation_rule(value):
         "rcsb_assembly_generation@1",
         "rcsb_assembly_generation@2",
         "rcsb_assembly_generation@3",
+        "rcsb_assembly_generation@4",
     }:
         return value
     raise ArgumentError(
-        'generation_rule requires "rcsb_assembly_generation@1", "rcsb_assembly_generation@2" or "rcsb_assembly_generation@3".',
+        'generation_rule requires an implemented "rcsb_assembly_generation@1", "@2", "@3" or "@4" identifier.',
         argument="generation_rule",
     )
 

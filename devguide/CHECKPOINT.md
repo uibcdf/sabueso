@@ -97,11 +97,14 @@ source and release receipts remain unchanged.
    decoded representations; earlier fixtures/assertion pins stay unchanged.
    Literal human/agent inspection and inert saved reading retain the inputs.
    `Card.assembly_generation()` now supplies named symbolic plans, entry-scoped
-   operator/component key binding under `rcsb_assembly_generation@3`, exact original
+   operator/component key binding under `rcsb_assembly_generation@4`, exact original
    locations and optional all-request-preflighted tuple expansion. All original
    operator projections remain available; missing and ambiguous keys stay explicit.
    Native polymer instances and ligand-neighbor references retain distinct bases;
-   missing/ambiguous component labels remain explicit. Earlier `@1`/`@2` remain
+   missing/ambiguous component labels remain explicit. Compact occurrence plans
+   retain exact count factors and source/parent/generator contexts; deliberate
+   `expand_occurrences` delivers declared combinations after whole-request
+   count/text preflight. Earlier `@1`–`@3` remain
    unchanged and selectable. Visible
    `operation_budget` supports deliberate raised/None overrides; no physical
    copies or contacts are inferred. [#173](https://github.com/uibcdf/sabueso/issues/173)

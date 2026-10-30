@@ -75,9 +75,9 @@ identity or role of every listed component, much less assembly-specific contacts
 ## Native symbolic plans (#173)
 
 `Card.assembly_generation(structure_ref=None, relationship_id=None,
-expand_operations=False, operation_budget=100_000,
-generation_rule="rcsb_assembly_generation@3")` reads only retained RCSB assertions.
-The current rule adds the component-key binding described below; explicit
+expand_operations=False, expand_occurrences=False, operation_budget=100_000,
+generation_rule="rcsb_assembly_generation@4")` reads only retained RCSB assertions.
+The current rule adds declared occurrence plans described below; explicit
 `generation_rule="rcsb_assembly_generation@1"` preserves original syntax-only
 output, using frozen
 `assembly_operation_expression@1`, without querying sources or changing the Card.
@@ -183,7 +183,7 @@ verification still follow native component/instance reconciliation.
 
 ## Native component references (#173)
 
-Current `rcsb_assembly_generation@3` preserves original operator binding and adds
+Original `rcsb_assembly_generation@3` preserves original operator binding and adds
 `native_entry_component_key@1` over the same SourceAssertion's retained
 `ligand_contact_inputs.polymer_entities`. The
 [wwPDB generation field](https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_struct_assembly_gen.asym_id_list.html)
@@ -235,13 +235,61 @@ polymer records, references C–J through ligand neighbors and leaves K/L unreso
 ligand neighbor. These are retained-key findings, not proof of complete source
 inventory, molecular occurrence counts or assembly-specific contacts.
 
+## Declared component/operation occurrences (#173)
+
+Current `rcsb_assembly_generation@4` preserves original key binding and adds
+`source_assembly_occurrence@1`. The
+[wwPDB generation category](https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/pdbx_struct_assembly_gen.html)
+relates the component list to its declared transformations; the
+[operation-expression contract](https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_pdbx_struct_assembly_gen.oper_expression.html)
+defines the right-to-left product convention. This rule combines original list
+positions with supported operation tuples. It performs no coordinate calculation
+and establishes neither distinct physical copies nor assembly-specific contacts.
+
+Every generator has a compact `occurrence_plan` with its exact source assertion,
+relationship, parent/generator indexes, native parent identity and ordinal.
+Repeated labels, operators, generators and ambiguous native parent IDs retain
+their original occurrences and context. `declared_occurrence_count` is an exact
+signed-64-bit scalar when representable; otherwise `count_state="factored"` and
+the complete component-position and operation-group decimal factors remain.
+Compact inspection never expands these products. An empty component list gives
+zero declarations without materializing a potentially giant operation pool.
+Missing/null/malformed labels, an invalid label inside a list, unsupported
+operation syntax and unbound generator parents retain an unavailable plan and
+reason. No valid prefix is substituted for an unavailable generator.
+
+Explicit `expand_occurrences=True` delivers `declared_occurrences` in component
+list order, then operation tuple order. It requires generation `@4`; earlier
+rules reject this flag rather than ignore it. `expand_operations` independently
+controls delivery of standalone `operation_tuples`. Each declared row retains
+its declaration/component/operation indexes, native label, operator IDs and
+registry references. Per-row operator states are looked up for that tuple, never
+copied from an aggregate generator summary. The combined `binding_state` keeps
+resolved keys, neighbor-only references, ambiguity and unresolved keys distinct;
+its complete component/operator states remain available. Original generator,
+component, operator and entity context locations remain inspectable.
+
+All requested tuple and declared-occurrence cardinalities are checked before
+any expansion or Card pin capture. Separate conservative tuple and occurrence
+identifier-text bounds cover repeated IDs; occurrence text includes component
+labels and every operator ID in each returned row. All use the same explicit
+positive/None `operation_budget`, with visible refusal/override and no clipping.
+These ceilings are not a total process/snapshot/transport-byte guarantee.
+`occurrence_expansion_state` describes delivery (`not_requested`, `not_available`,
+`incomplete` or `expanded`), separately from key binding and physical membership.
+Other unavailable sources/generators stay visible when admitted declarations are
+delivered. All prior `@1`–`@3` modules/results remain unchanged and selectable.
+No source acquisition, Card schema or new scientific saved format follows.
+
 ## Remaining native reconciliation
 
-Issue #173 stays open. The next slice must preserve exact source parent/entry/revision,
-generator occurrence, label-asym basis and operator scope when defining
-operation-qualified occurrences. The symbolic parser/expansion preflight, native
+Issue #173 stays open. The next slice is the shared human/agent scientific
+adapter over these original source/parent/generator contexts, key bases and
+declared occurrences, followed by independent original saved-result reading.
+The symbolic parser/expansion preflight, native
 entry-operator lookup and retained polymer/ligand-neighbor key binding are
-implemented; full nonpolymer/other component closure and physical occurrence
+implemented, together with declared component/operation occurrence plans and
+deliberate expansion. Full nonpolymer/other component closure and physical occurrence
 reconciliation remain pending. Missing
 polymer records are not absence of all source role references: ligand-neighbor
 records also name identifiers retained in the generation inputs. Keep each
@@ -256,6 +304,18 @@ establishes geometry, contact existence, biological relevance or project Evidenc
 Any later coordinate transform must qualify quantities/units independently.
 
 ## Local qualification
+
+The declared-occurrence slice (2026-10-30) passes 152 native owning cases and a
+16-file integration of 508 cases /121.39 seconds (including those 152), serial
+through pytest-receptor with fatal warning/resource guards. Peak sampled
+integration RSS is 550,875,136 bytes with zero owned swap. All three guide blocks
+execute over three retained public controls and a historical Card without
+acquisition or mutation. All 47 protected original modules are byte-identical
+to `5c060ce`. Pinned whole-tree Ruff, warning-fatal Sphinx, local links/snippets,
+Python 3.11 parsing, unchanged shape/schema, registry, fixture delivery, dependency
+and governance checks pass. Exact source/SDK receipts and deliberately deferred
+hosted recovery belong to #173/#148/#112; this does not establish the scientific
+adapter, original saved result reader, researcher acceptance or release readiness.
 
 The component-key slice (2026-10-30) passes 116 native owning cases and a final
 15-file integration of 472 cases /119.77 seconds (including those 116), serial

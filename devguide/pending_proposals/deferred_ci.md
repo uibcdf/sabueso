@@ -9,16 +9,22 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
-### Intermediate retained-component keys (2026-10-30, #173)
+### Intermediate component keys and declared occurrences (2026-10-30, #173)
 
 The native component-key continuation after `6f94043` uses the maintainer-approved
 intermediate `[skip ci]` route after applicable local tests and contract/docs
-checks. Current generation `@3` adds source-bound polymer-instance and
+checks. Generation `@3` adds source-bound polymer-instance and
 ligand-neighbor-reference lookup with explicit unknown/ambiguous scope; original
 `@1`/`@2` stay unchanged. No source acquisition, Card schema/migration, packaging,
 dependency, security or cross-component admission change is included. Local
 integration is required before publication; this defers hosted qualification,
-not its local integration gate.
+not its local integration gate. Its published intermediate is
+`5c060cea3417cd0724b9f5f57316c0e7d1774560`, SDK `0.14.0+133.g5c060ce`.
+The following generation `@4` continuation plans and optionally expands declared
+component/operation occurrences, with exact original contexts, separate physical
+scope and all-request count/text preflight. It belongs to this same intermediate
+recovery block; original `@1`–`@3` remain unchanged. Its exact source/SDK and
+selected local gates are recorded in #173/#148/#112 and its owned checkpoint.
 
 Owners #173/#148/#112 record the exact intermediate SHA, SDK and local gate
 receipts in their issue updates and owned checkpoint index. Missing remote gates
@@ -29,6 +35,16 @@ exact-head manual CI plus governance, with complete gh-run-receptor verification
 Do not claim assembly-route completion or resume 0.15.0 consolidation before
 recovery. The preceding unskipped `6f94043` runs qualify only that source once
 verified; they cannot qualify this new intermediate runtime.
+
+The `6f94043` CI finished with workflow/job success 15/15; governance has verified
+1/1 evidence. Its original and fresh full captures retain nonterminal/null step
+metadata inside completed successful jobs, also reproduced through the native
+GitHub job API. Passing test-log summaries and terminal job conclusions are
+separate from complete terminal step observations; do not mark the latter
+verified. Provider diagnostic follow-up is
+[gh-run-receptor #78](https://github.com/uibcdf/gh-run-receptor/issues/78), with
+owner-local source/capture observations in #173/#112. This does not indicate a
+failed scientific test and does not recover the newer intermediate runtime.
 
 The [relationship-scope correction #168](../pending_bugs/structure_relationship_scope.md)
 uses an **unskipped** code checkpoint because it changes named scientific
