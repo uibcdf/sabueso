@@ -1,5 +1,21 @@
 # Historical exploration fixtures
 
+## Original assembly exploration @5
+
+`card_assembly_saved_v5.json.gz` packages the byte-identical public 2V5B human
+review originally saved at `3842d1acdde6f793b5a2d33bc2c57357a81bcd49`, SDK
+`0.14.0+136.g3842d1a`, before structure-to-assembly question navigation existed.
+The original exact-head successor `9aa6d68` is fully CI/governance qualified with
+identical runtime. It is copied from the retained original-output manifest,
+not regenerated with the @6 writer. It preserves the genuine @5 native/presentation
+results and source/input navigation without new question backfill. Public fixture
+terms remain in `temp_data/NOTICE.md` (RCSB/UniProt); no private data or new source
+query. Gzip is packaging, not a frozen Card schema or scientific provider fixture.
+
+Compressed SHA-256: `7141cdff76c6dc7afbc60d093b5d7ec56fff06a5ba5b07bbcb7164d446a34923`.
+
+Uncompressed SHA-256: `76530c66b9025e7ccb2a85b878c68884d5508d260fd495ed56a61cf32af7c5ff`.
+
 ## Original live assembly adapter
 
 `assembly_live_v1.json.gz` packages four genuine public live observations from

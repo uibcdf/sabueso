@@ -27,6 +27,9 @@ is established by this draft.
   now preserves findings, requests and navigation under explicit exploration @5,
   with independent frozen input/presentation predicates and unchanged older readers.
   Shared explanation request admission (#176) rejects inconsistent literal reads.
+  Exact inventory/relationship/qualifier items now offer a lazy assembly question,
+  sharing the captured result with agents. Exploration @6 preserves this question's
+  exact request and navigation; old files gain no links or unvisited answers.
   Full component/physical-occurrence and operation-aware contact closure stay pending.
 
 - Separate exact experimental declaration admission (#169) from original

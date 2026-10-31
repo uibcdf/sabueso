@@ -103,6 +103,8 @@ remain distinct from unknown scalars. Physical membership stays uncomputed;
 its [original scientific saved reader](pending_proposals/card_saved_assembly.md)
 now preserves findings, exact requests and navigation in format @5. Shared
 explanation request admission (#176) preserves the prior scientific verifiers.
+The [structure-to-assembly navigation](pending_proposals/card_structure_assembly_navigation.md) now offers a lazy, exact declaration-scoped
+question and independent @6 reading, preserving original @1–@5 policies.
 
 The [original structure context](pending_proposals/card_structure_context_navigation.md)
 links experimental inventory items and literal declarations to their exact retained

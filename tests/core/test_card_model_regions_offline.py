@@ -97,6 +97,8 @@ def test_whole_model_opens_the_shared_reference_question_without_mutation():
     model = explorer.answer("predicted_models").items()[0]
     links = model.related()
     link = links.filter("role", equals="question").items()[0]
+    assert "Experimental structures on this model" in str(links.table())
+    assert links._repr_html_()
     basis = link._entry.value["model_context"]
     assert basis["state"] == "ready" and basis["rule"] == "model_structure_request@1"
     assert basis["position_scope"] == "original_whole_reference_interval"

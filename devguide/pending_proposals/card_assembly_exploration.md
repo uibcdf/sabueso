@@ -69,7 +69,9 @@ stay shared with existing access. No optional dependency or source query is adde
 
 The [original assembly reader](card_saved_assembly.md) now supports saving this
 view, exact machine selections and derived navigation under explicit exploration
-format @5. Captured Card export remains available. Genuine older scientific files
+format @5. A session retaining the [exact structure-to-assembly question](card_structure_assembly_navigation.md)
+uses explicit @6 for that additional original navigation contract; scientific
+assembly findings keep their existing rules. Captured Card export remains available. Genuine older scientific files
 return `not_saved` for this topic without current scientific execution. Original
 scientific/native modules and previous saved formats remain unchanged.
 

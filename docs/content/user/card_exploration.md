@@ -590,6 +590,38 @@ or merge group support. Original saved @1 explanations keep their original polic
 new explanations use named @2. Saved navigation also retains its original link
 policy; older files never gain new links automatically.
 
+### Ask about this structure's assembly declarations
+
+The **Assembly components and operations for this declaration** question opens
+the exact relationship you are inspecting, even when another record has the same
+PDB label. Listing the links does not run the question. Opening it reads only the
+captured Card; missing generation input remains an explicit gap.
+
+```python
+assembly_question = context_links.filter("role", equals="question").items()[0]
+assembly_review = assembly_question.open()
+assembly_review.table()
+assembly_selection = explorer.access.select(
+    "assembly_generation",
+    options=assembly_review.request["options"],
+    fields=["structure_ref", "assembly_id", "component_scope", "declaration_count"],
+)
+assembly_review.save("structure-assembly-review.json")
+original_review = sabueso.read_exploration("structure-assembly-review.json")
+original_review.table()
+original_question = original_review.back()
+original_links = original_question.back()
+```
+
+Human and agent requests above share the same captured result and exact structure
+declaration. `back()` retraces the selected question and then the full original
+links. The saved reading keeps the
+original results, request and navigation in exploration format @6. If you save
+before opening the question, reopening its link reports `not_saved`; it does not
+compute a new answer. Earlier files keep their original links. Counts describe
+declared combinations, including repeats; physical molecules, contacts and
+biological relevance remain separate scientific questions.
+
 ## Interpret original instance contacts
 
 Contacts keep `position`, structure `seq_id`, chain, UniProt identifier and distance

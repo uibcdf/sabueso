@@ -9,6 +9,11 @@ area: [human-exploration, navigation, saved-reading]
 
 # Original structure declaration context
 
+This document describes the preserved original @1 field-link policy. Current
+live navigation adds the [@2 assembly question](card_structure_assembly_navigation.md)
+and independent exploration @6; the source/field decisions below retain their
+meaning in both versions. Original saved @1 links receive no new question.
+
 An experimental `view("structures")` item, a literal `has_structure` relationship
 item or its exact `qualifiers` item now offers original structure, ligand, assembly,
 chain and author-numbering destinations through `related()`. This also continues
@@ -90,3 +95,7 @@ checks pass. Warning-fatal Sphinx and final editable-label checks have their own
 source-bound receipts in #148/#112. Hosted OS/Python/installed and coverage checks
 remain deferred for this intermediate runtime; no previous green CI is attributed
 to it. The final exact source and recovery route are recorded in the owning issues.
+
+The subsequent [exact assembly question](card_structure_assembly_navigation.md)
+versions new live links as @2 and saved navigation as exploration @6. Original
+@1 source/field predicates and genuine saved files remain unchanged.

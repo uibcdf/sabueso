@@ -29,24 +29,32 @@ That occurrence checkpoint is `a1a54360d0073f5b690da760dddc16ec98daf010`,
 SDK `0.14.0+134.ga1a5436`. The following live human/agent adapter is intermediate
 `77fd770e4d2a8fa94eea3fbd723a84fc90875efb`, SDK `0.14.0+135.g77fd770`.
 The [independent original saved reader](card_saved_assembly.md), exact requests
-and navigation now complete that persistence block in development, including
-shared explanation-request admission (#176). Its final source must use an
-**unskipped** push and recover exact-head CI/governance through gh-run-receptor
-before this debt is closed. Source-bound results belong to #148/#173/#176/#112;
-pending or failed qualification remains open. Full physical/contact reconciliation
-and broad researcher acceptance are separate. Applicable local integration is mandatory for each
-published intermediate; exact SHA/SDK and missing hosted gates stay in the owning
-issues and checkpoint records.
+and navigation complete that persistence block, including shared explanation-request
+admission (#176). Its final `9aa6d68f20ed3a978f0fa177480051f516565266`, SDK
+`0.14.0+137.g9aa6d68`, is qualified through an unskipped
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/41142089967) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/41142089964).
+Full gh-run-receptor manifests/member hashes, every terminal job/step and thirteen
+actual pytest summaries were verified, with zero unqualified steps. Nine repository-
+input lanes each pass 6,483 cases; four installed public-Ackredit lanes each pass
+1,470. This closes the component/occurrence/live/saved runtime debt through that
+source, not the full #173 scientific scope. The
+[owning receipt](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6536161282)
+retains local scopes and original evidence. Superseded cancelled CI 41141632107 is
+not qualification; #177 tracks its missing-artifact coverage-publisher failure.
 
-Owners #173/#148/#112 record the exact intermediate SHA, SDK and local gate
-receipts in their issue updates and owned checkpoint index. Missing remote gates
-are the supported OS/Python and installed-provider lanes, coverage publication
-and hosted governance. Recover them through an unskipped push at the next
-completed native assembly/scientific-adapter block, or explicitly authorized
-exact-head manual CI plus governance, with complete gh-run-receptor verification.
-Do not claim assembly-route completion or resume 0.15.0 consolidation before
-recovery. The preceding unskipped `6f94043` runs qualify only that source once
-verified; they cannot qualify this new intermediate runtime.
+### Exact structure-to-assembly navigation (2026-10-31, #148/#173)
+
+The [new question/navigation policy](card_structure_assembly_navigation.md) changes
+live exact structure links to @2 and freezes independent saved format @6. Prior
+@1–@5 verifiers and scientific rules remain unchanged. Applicable local navigation,
+original-reader, human/agent, documentation and integration gates precede any push.
+Source-bound SHA/SDK, selected checks and hosted qualification belong to #148/#112.
+The preceding `9aa6d68` green result does not qualify these new runtime bytes.
+Finish the block with unskipped exact-head CI/governance through gh-run-receptor;
+a pending or skipped run never establishes hosted qualification. Full physical/
+contact reconciliation and researcher acceptance remain separate; 0.15.0
+consolidation remains paused.
 
 The `6f94043` CI finished with workflow/job success 15/15; governance has verified
 1/1 evidence. Its original and fresh full captures retain nonterminal/null step

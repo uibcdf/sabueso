@@ -497,7 +497,9 @@ def test_literal_scientific_projection_retains_verifiable_original_context(tmp_p
     assert literal_science.capabilities["save"] is True
     literal_science.save(tmp_path / "projection.json")
     projection = sabueso.read_exploration(tmp_path / "projection.json")
-    assert projection.validation["verifier"] == "scientific_exploration_binding@1"
+    assert (
+        projection.validation["verifier"] == "structure_assembly_navigation_binding@1"
+    )
     explorer.view("coverage").items()[0].explain()
     # Actually materialized scientific variants retain their historical checks;
     # literal projection never drops their original input/support context.

@@ -104,9 +104,14 @@ checkpoint or before 0.15.0. They distinguish completed gates from earlier
 expectation failures, the request-binding regression and a shared `/tmp` quota
 stop. Final local gates use task-owned workspace scratch, serial receptor runs,
 explicit memory/swap/disk guards and separately retained original observations.
-The reader/request/navigation checkpoint requires an **unskipped** exact-source
-CI/governance recovery through gh-run-receptor under the
-[ledger](deferred_ci.md); earlier green sources do not qualify new code.
+The reader/request/navigation checkpoint is qualified at `9aa6d68` (SDK137):
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/41142089967) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/41142089964),
+with full receptor hashes, every job/step and thirteen summaries verified. The
+[ledger](deferred_ci.md) closes the preceding runtime debt through that source;
+earlier green sources do not qualify subsequent code. The following
+[structure-to-assembly question](card_structure_assembly_navigation.md) adds its
+own @6 navigation contract without changing original @5 results or predicates.
 
 Full component/physical-occurrence and operation-aware contact reconciliation
 remain #173 work. The [complete broad inventory](card_exploration_completion_0150.md),

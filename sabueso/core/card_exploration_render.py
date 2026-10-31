@@ -665,11 +665,18 @@ def _parts(view):
         value = item._entry.value
         if view._link_panel:
             if value.get("role") == "question":
+                context_key = (
+                    "assembly_request"
+                    if value.get("rule") == "structure_declaration_context_links@2"
+                    else "model_context"
+                    if value.get("rule") == "retained_context_links@4"
+                    else "annotation_context"
+                )
                 rows.append(
                     (
                         str(index),
                         preview(item.label),
-                        f"{preview(value['availability'])} · {preview(value['annotation_context']['reason'], 240)}",
+                        f"{preview(value['availability'])} · {preview(value[context_key]['reason'], 240)}",
                     )
                 )
                 continue

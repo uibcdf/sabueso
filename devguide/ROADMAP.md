@@ -378,6 +378,9 @@ selection, with exact requests and original source/context links. Its
 [original saved reader](pending_proposals/card_saved_assembly.md) preserves those
 findings, exact options/selections and navigation under exploration @5, with
 shared #176 explanation-request admission and unchanged prior scientific verifiers.
+The [structure-to-assembly navigation](pending_proposals/card_structure_assembly_navigation.md) adds a lazy question from an exact
+inventory/relationship/qualifier item, with exact human/agent options and original
+@6 navigation. Earlier files retain their original policies.
 Full component/physical-occurrence closure and operation-aware contacts remain pending;
 no physical membership is inferred from the new inputs.
 Source-bound qualification remains in #148/#112, separate from human acceptance.

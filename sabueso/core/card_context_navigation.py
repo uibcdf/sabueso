@@ -262,6 +262,7 @@ def _link_view(
         "quaternary_context_links@1",
         "ligand_instance_context_links@1",
         "structure_declaration_context_links@1",
+        "structure_declaration_context_links@2",
     ):
         explorer._session["views"].pop(id(view), None)
     return replace(
@@ -303,8 +304,8 @@ def related(item):
         return links(item)
     explorer = item._view._explorer
     if not item._view._route_catalog and not item._view._link_panel:
-        from .card_structure_context_v1 import context as structure_context
-        from .card_structure_context_v1 import related as structure_related
+        from .card_structure_context_v2 import context as structure_context
+        from .card_structure_context_v2 import related as structure_related
 
         structure = structure_context(explorer, item.payload_location)
         if structure is not None:
@@ -447,6 +448,25 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
 
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
+    if (
+        link.get("role") == "question"
+        and link.get("rule") == "structure_declaration_context_links@2"
+    ):
+        basis = link["assembly_request"]
+        if basis["state"] == "ready":
+            request = basis["request"]
+            return explorer._answer(request["question"], request["options"], item._view)
+        unavailable = explorer._metadata(
+            {"assembly_request": basis, "link": link},
+            "Assembly question unavailable",
+            item._view,
+        )
+        explorer._session["views"].pop(id(unavailable), None)
+        return replace(
+            unavailable,
+            _status=basis["state"],
+            _reason=basis["reason"],
+        )
     if link.get("role") == "question" and link.get("rule") in (
         "retained_context_links@3",
         "retained_context_links@4",
@@ -483,7 +503,11 @@ def follow(item):
             candidates[0],
             item._view,
             title=link["label"]
-            if link.get("rule") == "structure_declaration_context_links@1"
+            if link.get("rule")
+            in (
+                "structure_declaration_context_links@1",
+                "structure_declaration_context_links@2",
+            )
             else "Referenced source record",
         )
     if len(candidates) > 1:
@@ -511,7 +535,10 @@ def follow(item):
     # destination Card. Its public explorer and focal identity are explicitly null.
     entity = explorer.access._focal.data.get("entities", {}).get(link["target_ref"])
     reason = None
-    if link.get("rule") == "structure_declaration_context_links@1":
+    if link.get("rule") in (
+        "structure_declaration_context_links@1",
+        "structure_declaration_context_links@2",
+    ):
         from .card_structure_context_v1 import missing_reason
 
         reason = missing_reason(link)

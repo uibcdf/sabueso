@@ -535,6 +535,9 @@ def _prepare(root):
         from .card_exploration_assembly import register_bundle
 
         register_bundle(bundle, objects, access)
+    from .card_structure_context_v2 import register_bundle as register_structure_links
+
+    register_structure_links(bundle)
     return bundle
 
 
@@ -654,6 +657,11 @@ def _restore(bundle, expected_digest):
 def _restore_checked(bundle, expected_digest):
     if (
         isinstance(bundle, dict)
+        and bundle.get("format") == "sabueso.card_exploration@6"
+    ):
+        from .card_exploration_verification_v6 import verify_bundle, verify_views
+    elif (
+        isinstance(bundle, dict)
         and bundle.get("format") == "sabueso.card_exploration@5"
     ):
         from .card_exploration_verification_v5 import verify_bundle, verify_views
@@ -734,8 +742,9 @@ def _restore_checked(bundle, expected_digest):
             from .card_assembly_history_v1 import restore_result
 
             _require(
-                bundle["format"] == "sabueso.card_exploration@5",
-                "Assembly results require their original format @5.",
+                bundle["format"]
+                in ("sabueso.card_exploration@5", "sabueso.card_exploration@6"),
+                "Assembly results require original format @5 or @6.",
             )
             scientific_results[ref] = restore_result(ref, wire)
         else:
@@ -746,7 +755,10 @@ def _restore_checked(bundle, expected_digest):
         from .card_exploration_sites import FORMAT as SITE_FORMAT
         from .card_exploration_sites import verify_objects
 
-        if bundle["format"] == "sabueso.card_exploration@5":
+        if bundle["format"] in (
+            "sabueso.card_exploration@5",
+            "sabueso.card_exploration@6",
+        ):
             from .card_exploration_assembly import (
                 verify_objects as verify_assembly_objects,
             )
@@ -964,12 +976,22 @@ def _restore_checked(bundle, expected_digest):
     if "scientific_results" in bundle:
         from .card_exploration_science import _verification_report
 
-        if bundle["format"] == "sabueso.card_exploration@5":
+        if bundle["format"] in (
+            "sabueso.card_exploration@5",
+            "sabueso.card_exploration@6",
+        ):
             from .card_exploration_assembly import (
                 verification_report as _verification_report,
             )
 
         session["validation"].update(_verification_report(bundle))
+    if bundle["format"] == "sabueso.card_exploration@6":
+        from .card_structure_context_v2 import VERIFIER as STRUCTURE_VERIFIER
+
+        session["validation"].update(
+            verifier=STRUCTURE_VERIFIER,
+            recorded_navigation_decisions="Original structure_declaration_context_links@2 and structure_assembly_request@1 verified against exact declaration, request and destination; earlier original link policies preserved.",
+        )
     from .card_exploration_sites import FORMAT as SITE_FORMAT
     from .card_exploration_sites import VERIFIER as SITE_VERIFIER
 

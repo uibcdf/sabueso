@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-30**, original assembly source operations and human/agent saved reading
+Last updated: **2026-10-31**, exact structure-to-assembly human/agent navigation
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -109,7 +109,7 @@ source and release receipts remain unchanged.
    `operation_budget` supports deliberate raised/None overrides; no physical
    copies or contacts are inferred. [#173](https://github.com/uibcdf/sabueso/issues/173)
    remains open for full component/physical-occurrence closure and
-   original saved result verification. [#174](https://github.com/uibcdf/sabueso/issues/174)
+   broader scientific reconciliation. [#174](https://github.com/uibcdf/sabueso/issues/174)
    separately tracks response buffering before JSON decoding. Owning local/hosted
    receipts qualify only their exact source.
    The [live human/agent assembly view](pending_proposals/card_assembly_exploration.md)
@@ -119,11 +119,16 @@ source and release receipts remain unchanged.
    preserves findings, exact requests and navigation in format @5. The shared
    #176 admission check binds specialized explanations to their original literal
    read request before the unchanged historical scientific predicates run.
-   The retained-component continuation is an intermediate locally tested
-   `[skip ci]` block; exact SHA/SDK and outstanding hosted gates belong to
-   #173/#148/#112 and the [recovery ledger](pending_proposals/deferred_ci.md).
-   Recover through the next completed native/scientific-adapter checkpoint's
-   unskipped CI/governance before claiming this route complete.
+   The original saved-reader block is qualified at `9aa6d68` (SDK137):
+   [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/41142089967) and
+   [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/41142089964),
+   full receptor captures, thirteen summaries and every job/step verified. This
+   recovers the preceding component/occurrence/live runtime through that source;
+   #176 is completed. The following
+   [structure-to-assembly navigation](pending_proposals/card_structure_assembly_navigation.md)
+   adds a lazy exact declaration-scoped question with independently verified @6
+   saved links. Its local and exact-head hosted receipts belong to #148/#173/#112;
+   the earlier source's green checks do not qualify these new runtime bytes.
    The [quaternary source pane](pending_proposals/card_quaternary_source_exploration.md)
    now presents original subunit, individual assembly and interface declarations
    with exact local source/structure links and independent saved reading. Computed

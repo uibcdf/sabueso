@@ -61,7 +61,11 @@ def read_bundle(bundle, tmp_path):
 def test_public_original_results_and_saved_topic_closure(bundles, topic, tmp_path):
     view = read_bundle(bundles[topic], tmp_path)
     assert view.explorer.mode == "saved"
-    assert view.validation["verifier"] == "scientific_exploration_binding@1"
+    assert view.validation["verifier"] == (
+        "structure_assembly_navigation_binding@1"
+        if topic == "structures"
+        else "scientific_exploration_binding@1"
+    )
     assert topic in view.explorer.capabilities["scientific_topics"]
     assert view.explorer.view(topic).result_ref == view.result_ref
     assert len(view.items()) == (7 if topic == "structures" else 93)

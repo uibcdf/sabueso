@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Bind structure assembly navigation to exact declarations (2026-10-31, #148/#173)
+
+Add lazy `structure_declaration_context_links@2` / `structure_assembly_request@1`
+from exact inventory, relationship and qualifier items. Both structure reference
+and relationship id scope the shared captured human/agent answer. Keep original
+field/source destinations and explicit gaps; never join repeated PDB labels.
+Exploration @6 freezes the new link/request/destination predicates while prior
+@1–@5 verifiers and scientific rules retain their bytes. Unvisited saved questions
+remain `not_saved`; no answer is computed merely to list or save a link. Source
+support, physical unknowns and original captured revisions stay distinct.
+See [the contract](pending_proposals/card_structure_assembly_navigation.md).
+
 ## Preserve original assembly findings and exact explanation requests (2026-10-30, #148/#173/#176)
 
 Use explicit exploration format @5 with `assembly_generation_exploration_binding@1`

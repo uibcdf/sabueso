@@ -71,7 +71,7 @@ def test_native_original_fields_support_and_separate_object_card(card, monkeypat
     )
     card.relationship_store.store.clear()
     links = item.related()
-    assert links.native_payload["rule"] == "structure_declaration_context_links@1"
+    assert links.native_payload["rule"] == "structure_declaration_context_links@2"
     assert link(links, "structure_context").open().native_payload == original
     for role, field in (
         ("ligand_context", "ligands"),
@@ -288,7 +288,7 @@ def test_coherently_identified_other_parent_field_is_refused(card, tmp_path, nat
         original._origin,
         "Synthetic substituted field",
         source_location=view.items()[0].payload_location,
-        rule="structure_declaration_context_links@1",
+        rule="structure_declaration_context_links@2",
     )
     with pytest.raises(StorageError, match="Original structure field/source/endpoint"):
         forged.save(tmp_path / "forged.json")
@@ -333,7 +333,7 @@ def test_fresh_metadata_cannot_substitute_origin_even_when_links_match(
         other._origin,
         "Synthetic wrong origin",
         source_location=view.items()[0].payload_location,
-        rule="structure_declaration_context_links@1",
+        rule="structure_declaration_context_links@2",
     )
     with pytest.raises(StorageError, match="different originating"):
         forged.save(tmp_path / "wrong-origin.json")
