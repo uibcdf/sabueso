@@ -1,5 +1,25 @@
 # Historical exploration fixtures
 
+## Original live nonpolymer assembly adapter
+
+`assembly_nonpolymer_live_v2.json.gz` retains four genuine public live observations
+from producer `7084894ed822dae8df4cb3707036522dd666f2d7`, editable SDK
+`0.14.0+152.g7084894`, captured before the independent @5 reader was implemented.
+It preserves original Cards, native @5/presentation @2 wires, exact human requests,
+typed rows, compact pages and text/detail observations for 1SUX, 2V5B, 1HTI and a
+legacy Card without assembly inputs. The manifest binds the producer code hashes
+and each original case. This is a live-output comparison capsule, not a saved
+exploration bundle or frozen Card schema. No scientific output was synthesized.
+
+The existing public RCSB and UniProt fixture terms remain in `temp_data/NOTICE.md`;
+the new controls use `temp_data/rcsb_nonpolymer_instances/`, with the existing
+legacy fixtures. No new source request or private pilot content is included.
+Gzip is fixture packaging. Never regenerate these bytes to make a reader pass.
+
+Compressed SHA-256: `b37ef7b9ebe68bbe4d46d6ff65a73522b044b0935f0a2e9128104c30e1e5e57d`.
+
+Uncompressed SHA-256: `212aa23db7081fde9945d9caf5361cf684feec896713387798b2ea1919b52f9e`.
+
 ## Original assembly exploration @5
 
 `card_assembly_saved_v5.json.gz` packages the byte-identical public 2V5B human
