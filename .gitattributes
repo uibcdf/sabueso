@@ -2,3 +2,8 @@
 temp_data/** -text -whitespace
 # The maintained notice is documentation rather than a native response.
 temp_data/NOTICE.md text eol=lf !whitespace
+# The codec producer fixture is immutable bytes, including on Windows.
+tests/tools/data/zstd_native_v1.json -text -whitespace
+tests/tools/data/zstd_backport_v1.json -text -whitespace
+# Probe reports bind the actual script bytes across producer platforms.
+devtools/probe_zstd_backend.py text eol=lf

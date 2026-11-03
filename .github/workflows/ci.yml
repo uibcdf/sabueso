@@ -172,6 +172,13 @@ jobs:
       - name: Check reviewed fixture publication scope
         shell: bash -l {0}
         run: python tools/fixture_delivery.py --check
+      - name: Install pinned older-Python Zstandard qualification backend
+        if: matrix.python-version != '3.14'
+        shell: bash -l {0}
+        run: python -m pip install --only-binary=:all: --no-deps backports.zstd==1.8.0
+      - name: Qualify and emit Zstandard cross-reader frames
+        shell: bash -l {0}
+        run: python devtools/probe_zstd_backend.py emit
       - name: Run repository-input offline tests
         shell: bash -l {0}
         env:
@@ -193,6 +200,34 @@ jobs:
           path: coverage.xml
           if-no-files-found: error
           retention-days: 14
+
+  zstd-backport-macos:
+    name: Zstandard backport (macos-26, Python ${{ matrix.python-version }})
+    runs-on: macos-26
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v6
+      - name: Verify Apple Silicon macOS runner
+        shell: bash
+        run: test "$(uname -m)" = arm64
+      - uses: mamba-org/setup-micromamba@v3.2.1
+        with:
+          environment-name: zstd-probe
+          condarc: |
+            channels:
+              - conda-forge
+            channel_priority: strict
+          create-args: >-
+            python=${{ matrix.python-version }} pip
+      - name: Install pinned standalone qualification backend
+        shell: bash -l {0}
+        run: python -m pip install --only-binary=:all: --no-deps backports.zstd==1.8.0
+      - name: Qualify and emit Zstandard cross-reader frames
+        shell: bash -l {0}
+        run: python devtools/probe_zstd_backend.py emit
 
   coverage-upload:
     name: Publish default-branch coverage

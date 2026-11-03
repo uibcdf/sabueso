@@ -70,8 +70,10 @@ def source_root(root):
         "      - run: python -m pip install --no-deps --no-build-isolation .ackredit-candidate\n"
     )
     text = workflow.read_text()
-    assert text.count(step) == 2
-    workflow.write_text(text.replace(step, checkout + step))
+    # Only the first two jobs consume Sabueso/Ackredit; the standalone codec
+    # qualification job must retain its independent dependency closure.
+    assert text.count(step) == 3
+    workflow.write_text(text.replace(step, checkout + step, 2))
     assert preflight(root) == []
     return root
 

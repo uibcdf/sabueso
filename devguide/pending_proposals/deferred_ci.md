@@ -9,6 +9,17 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Zstandard backend recovery checkpoint (2026-11-03, #178)
+
+The [backend continuation](zstd_backend_qualification.md) changes qualification
+CI and introduces a pinned test-only older-Python backend. It therefore uses an
+**unskipped** checkpoint after selected local gates. Verify exact-head expanded
+CI (18 jobs), governance and all twelve cross-read producer reports through full
+gh-run-receptor evidence before declaring recovery of `f6b6c6c` and `11bfd62`.
+Owner #178/#167/#112; source/SDK and actual receipts belong in those issues and
+the owned qualification directory. Until verified, the earlier debt remains open.
+No package runtime or public transport is changed.
+
 ### Intermediate compressor comparison (2026-11-03, #178)
 
 The [repeated codec comparison](card_compressor_comparison.md) adds a stdlib-only

@@ -8,6 +8,7 @@ Use a separate owned process/RAM/swap supervisor, especially for large inputs.
 import argparse
 import hashlib
 import importlib
+import importlib.metadata
 import json
 import platform
 import random
@@ -95,7 +96,11 @@ def _functions(codec, level):
                 "integrity": "CRC64",
             },
         )
-    module = importlib.import_module("compression.zstd")
+    name = "compression.zstd" if sys.version_info >= (3, 14) else "backports.zstd"
+    module = importlib.import_module(name)
+    distribution = None
+    if name == "backports.zstd":
+        distribution = importlib.metadata.version("backports.zstd")
     parameter = module.CompressionParameter
     lower, upper = parameter.compression_level.bounds()
     _require(lower <= level <= upper, "zstd level outside backend bounds")
@@ -108,8 +113,9 @@ def _functions(codec, level):
         (lambda raw: module.compress(raw, options=options)),
         module.decompress,
         {
-            "module": "compression.zstd",
+            "module": name,
             "version": module.zstd_version,
+            "distribution_version": distribution,
             "integrity": "frame checksum enabled",
             "nb_workers": 0,
         },

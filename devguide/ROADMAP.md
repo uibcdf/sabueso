@@ -399,6 +399,10 @@ The [compressor comparison](pending_proposals/card_compressor_comparison.md)
 (#178) now broadens gzip to Zstandard/XZ, with repeated size/time/RSS measurements
 and original receiving. Keep codec choice provisional until supported-Python
 backends are qualified; compression does not remove original verification cost.
+The [backend continuation](pending_proposals/zstd_backend_qualification.md) adds
+genuine native/backport fixtures and twelve OS/Python probe routes. Verify the
+unskipped exact-head CI/governance and cross-read all fresh reports before
+production adoption, recovering the preceding experimental-helper CI scope.
 
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all
 ongoing implementations and corrections for **0.15.0**. The earlier proposal to

@@ -114,6 +114,10 @@ argument-guard changes. The 125 MB historical case is not included.
 
 ## Qualification and next bounded work
 
+The [backend continuation](zstd_backend_qualification.md) now qualifies native
+and older-Python routes with genuine frames and an unskipped recovery checkpoint.
+The following counts describe the preceding comparison checkpoint.
+
 The owning local gate passes 65 cases across comparison, shared-layout and storage
 accounting tests: exact native round trips, unavailable backends, explicit limits,
 input/worker binding, seeded complete repeats, duplicate-setting refusal, mixed

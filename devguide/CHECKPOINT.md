@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-11-03 (UTC)**, measured compressor comparison and receiving scope
+Last updated: **2026-11-03 (UTC)**, cross-version Zstandard backend qualification
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -34,6 +34,13 @@ no causal full-read speedup. Current package runtime stays unchanged. Qualify
 optional bindings on Python 3.11–3.13 and platform routes before codec/default
 adoption. Keep public plain JSON, frozen readers, explicit budgets and the
 combined #167/#178 deferred-CI recovery route; public compression is not delivered.
+
+The [backend continuation](pending_proposals/zstd_backend_qualification.md) passes
+isolated Linux 3.11–3.13 probes without modifying their environments. It adds
+twelve hosted OS/Python producers, retaining thirteen pytest lanes (18 CI jobs).
+Its unskipped exact-head checkpoint must verify all reports and CI/governance
+before recovering the preceding experimental-helper debt. Hosted results remain
+pending; package runtime and protected originals remain unchanged.
 
 ## Resume here
 

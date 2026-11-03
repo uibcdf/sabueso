@@ -21,6 +21,9 @@ storage step without changing the public format or discarding support (#167).
 The [codec comparison](pending_proposals/card_compressor_comparison.md) records
 150 repeated codec samples and independent original receiving, with explicit
 backend/RSS scope and no demonstrated full-read speedup (#178).
+The [backend qualification](pending_proposals/zstd_backend_qualification.md) adds
+native 3.14 and pinned older-Python probes, genuine bidirectional fixtures and
+twelve hosted OS/Python routes. Public compressed saving remains pending.
 
 [Diagnostic receiving](DIAGNOSTIC_RECEIVING.md) records the retained standalone
 bootstrap, application precedence and bounded scoped argument/error fix (#150).

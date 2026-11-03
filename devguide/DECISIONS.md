@@ -1,5 +1,14 @@
 # Sabueso — Decision Log
 
+## Qualify one Zstandard API across supported Python minors (2026-11-03, #178)
+
+Use native `compression.zstd` on 3.14 and pinned `backports.zstd==1.8.0` on
+3.11–3.13 for standalone engineering qualification. Preserve genuine producer
+frames and test both reading directions on twelve OS/Python routes. The backport
+excludes 3.14; missing native support remains unavailable there. No production
+dependency or compressed-save default is adopted. Production optional integration
+requires DepDigest. See [qualification scope](pending_proposals/zstd_backend_qualification.md).
+
 ## Measure codec tradeoffs before choosing a public transport default (2026-11-03, #178)
 
 Extend the bounded #167 study to repeated gzip/Zstandard/XZ comparisons with
