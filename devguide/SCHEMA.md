@@ -7,6 +7,13 @@ remain unchanged. See [scope](pending_proposals/comparative_operations.md).
 
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
+  - Unpublished `0.3.14` optionally retains original RCSB nonpolymer identifiers
+    (#173) at `asserted_value.assembly_component_inputs.nonpolymer_entities`.
+    A dedicated GraphQL alias preserves requested null/empty/unsupported input
+    separately from old ligand summaries where the scope was not requested.
+    Native entity/instance records, order, duplicates and label versus author axes
+    remain literal; migration never fills them. Current scientific rules remain
+    unchanged. See [the source contract](pending_proposals/rcsb_nonpolymer_inputs.md).
   - Unpublished `0.3.14` also retains optional original RCSB assembly generation
     (#173): `has_structure.qualifiers.assemblies[].generation` contains native
     generator/operator fields when present, with null/empty/malformed values and

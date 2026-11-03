@@ -750,6 +750,13 @@ than choosing one silently. Older Cards retain their original missing mapping
 basis. Migration reports that gap; an explicit source refresh can create a new
 revision with new inputs. Reading a saved exploration never performs that refresh.
 
+Fresh RCSB structure captures also retain original nonpolymer entity and instance
+identifiers in their supporting source statement, when that scope was requested.
+The source link exposes these records through `assembly_component_inputs`, keeping
+native instance labels and author chain labels separate. Older Cards retain their
+missing context; an explicit refresh records a new source basis. These original
+records do not yet reconcile a ligand with a physical assembly or its contacts.
+
 ## Explore subunits, assemblies and interfaces
 
 Ask what the retained sources state about quaternary organization:

@@ -1,10 +1,21 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-11-03 (UTC)**, qualifier-parent receiving (#181), recovered
-transport qualification and measured API workloads (#178/#167/#112). This is the
+Last updated: **2026-11-03 (UTC)**, original nonpolymer input capture (#173),
+qualifier-parent receiving (#181) and recovered transport qualification (#178/#167/#112). This is the
 resumption entry point. Earlier source,
 scientific and release receipts remain linked in the technical reports and
 [preceding chronology](archive/CHECKPOINT_before_pause_20261025.md).
+
+The following [#173 source continuation](pending_proposals/rcsb_nonpolymer_inputs.md)
+retains original nonpolymer entity/instance identifiers through a dedicated RCSB
+query alias, separate from old ligand summaries. Three public-control captures
+preserve original inputs, native/author labels and explicit null scope. Native
+@1–@4 and historical saved rules remain unchanged; versioned reconciliation and
+human scientific presentation remain pending. Its selected local gates pass 617
+cases /25 files, serial, peak owned RSS 318,590,976 bytes and zero owned swap.
+Shape recording remains 1,967 paths. Its exact final-source hosted checkpoint
+must qualify this addition independently. Three interrupted storage attempts are
+not passes; the technical report records the corrected local MemAvailable guard.
 
 The current [qualifier-parent continuation](pending_bugs/entity_qualifier_parents.md)
 (#181) preserves opaque original qualifier values through serialization, pinning,

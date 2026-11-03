@@ -51,7 +51,11 @@ def test_complete_wire_originals_and_decoded_entries_are_distinguished(identifie
     wire = json.loads(raw)
     assert not wire.get("errors")
     assert wire["data"]["entry"] == json.loads(decoded)
-    assert json.loads(request)["query"].strip() == rcsb.STRUCTURE_QUERY.strip()
+    # A historical request is bound to its captured scope, not today's query.
+    assert (
+        hashlib.sha256(json.loads(request)["query"].encode()).hexdigest()
+        == capture["scope"]["sha256"]
+    )
     assert record["acquisition_trace"]["records"][0]["network_attempts"] == 1
 
 

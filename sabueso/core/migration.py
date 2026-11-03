@@ -46,6 +46,12 @@ MIGRATION_RULE = "card_migration@1"
 SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
     "0.3.14": [
         {
+            "path": "source_assertion_store[].asserted_value.assembly_component_inputs",
+            "filled_by": "structures",
+            "explicit_only": True,
+            "entity_types": ("protein",),
+        },
+        {
             "path": "relationships.has_structure.assemblies[].generation",
             "filled_by": "structures",
             "explicit_only": True,

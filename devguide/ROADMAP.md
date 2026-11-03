@@ -310,6 +310,12 @@ directions until a bounded use and acceptance criteria are agreed.
 
 ### Immediate resumption sequence
 
+The [original nonpolymer input continuation](pending_proposals/rcsb_nonpolymer_inputs.md)
+retains the source identifiers needed for the next #173 reconciliation contract,
+including separate native/author labels and null versus unrequested scope. Its
+selected source/schema/persistence gates and exact-source receiving checkpoint
+remain distinct from implementing a new native scientific rule or closing #148.
+
 On 2026-10-27 the maintainer authorized a short
 [persistence-cost block #167](pending_proposals/card_persistence_cost.md) before
 resuming structural expansion: account for accumulated content and verification

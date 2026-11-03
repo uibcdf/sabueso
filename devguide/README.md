@@ -47,6 +47,11 @@ keeps malformed original parents serializable and inspectable while refusing the
 native structural interpretation (#181). Stricter nested glossary inputs require
 separate original stored-glossary/pin acceptance (#182).
 
+Fresh RCSB capture preserves [original nonpolymer identifiers](pending_proposals/rcsb_nonpolymer_inputs.md)
+for #173, with distinct native and author labels, exact requested records and
+null/missing scope. Current assembly interpretations stay unchanged; a new native
+reconciliation and saved-reader contract must qualify use of that basis.
+
 To resume after a pause, read [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here),
 then [ROADMAP.md, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).
 These separate published behavior, accumulated local work, latest qualification

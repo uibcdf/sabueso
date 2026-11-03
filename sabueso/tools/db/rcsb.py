@@ -82,6 +82,16 @@ STRUCTURE_QUERY = """query($id: String!) { entry(entry_id: $id) {
         is_subject_of_investigation is_subject_of_investigation_provenance }
     }
   }
+  assembly_nonpolymer_entities: nonpolymer_entities {
+    rcsb_id
+    rcsb_nonpolymer_entity_container_identifiers {
+      entry_id entity_id nonpolymer_comp_id asym_ids auth_asym_ids }
+    nonpolymer_entity_instances {
+      rcsb_id
+      rcsb_nonpolymer_entity_instance_container_identifiers {
+        entry_id entity_id asym_id auth_asym_id comp_id auth_seq_id }
+    }
+  }
 } }"""
 
 #: Instance-level fields a server-side error can make unavailable for an entry

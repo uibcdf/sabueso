@@ -2,8 +2,16 @@ schema:
   name: sabueso-card
   version: 0.3.14
   created_at: 2026-02-10
-  updated_at: 2026-10-29
+  updated_at: 2026-11-03
   note: |
+    0.3.14 optionally retains original RCSB nonpolymer entity/instance identifiers
+    (#173) at SourceAssertion asserted_value.assembly_component_inputs.nonpolymer_entities.
+    The dedicated GraphQL alias assembly_nonpolymer_entities supplies this array;
+    missing alias, null, empty, malformed values, native record order/duplicates,
+    entry/entity/label identifiers and separate author labels remain distinct.
+    Legacy ligand summaries never supply these inputs. Migration does not backfill
+    them; fresh acquisition records a new source basis. No native rule is changed,
+    nor is physical assembly membership or contact correspondence computed.
     0.3.14 optionally retains original RCSB assembly-generation declarations
     (#173). has_structure.qualifiers.assemblies[].generation contains the native
     pdbx_struct_assembly_gen and/or pdbx_struct_oper_list fields only when present,

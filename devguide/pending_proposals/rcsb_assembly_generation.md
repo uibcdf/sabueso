@@ -33,6 +33,10 @@ Existing `ligand_contact_inputs.polymer_entities` preserves source label/author
 instance identifiers. Missing nonpolymer instance identity is not reconstructed
 from component names or author labels.
 
+Fresh capture additionally retains [original nonpolymer entity/instance inputs](rcsb_nonpolymer_inputs.md)
+through a separate optional source field (#173). These inputs are literal and do
+not change the original component-key or occurrence rules described below.
+
 Old fixtures, assertions, frozen Cards and original saved readers remain
 unchanged. The additions are optional and listed as explicit-only migration
 changes: migration neither invents old inputs nor schedules a new acquisition.
@@ -286,8 +290,11 @@ No source acquisition, Card schema or new scientific saved format follows.
 
 Issue #173 stays open. The [shared live human/agent adapter](card_assembly_exploration.md)
 now presents original source/parent/generator contexts, key bases and declared
-occurrences. The next slice is independent original saved-result reading with
-exact saved requests, selection and navigation.
+occurrences. [Independent original saved-result reading](card_saved_assembly.md)
+and [exact structure-to-assembly navigation](card_structure_assembly_navigation.md)
+are delivered; they do not establish physical membership. The current source
+continuation retains complete original nonpolymer identifier inputs before a
+new versioned native reconciliation and saved-reader contract is implemented.
 The symbolic parser/expansion preflight, native
 entry-operator lookup and retained polymer/ligand-neighbor key binding are
 implemented, together with declared component/operation occurrence plans and

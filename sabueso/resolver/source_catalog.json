@@ -6066,7 +6066,17 @@
       "temp_data/rcsb_assembly_generation/wire/1SUX.graphql.json",
       "temp_data/rcsb_assembly_generation/wire/1SUX.request.json",
       "temp_data/rcsb_assembly_generation/wire/2V5B.graphql.json",
-      "temp_data/rcsb_assembly_generation/wire/2V5B.request.json"
+      "temp_data/rcsb_assembly_generation/wire/2V5B.request.json",
+      "temp_data/rcsb_nonpolymer_instances/capture.json",
+      "temp_data/rcsb_nonpolymer_instances/rcsb/1HTI.json",
+      "temp_data/rcsb_nonpolymer_instances/rcsb/1SUX.json",
+      "temp_data/rcsb_nonpolymer_instances/rcsb/2V5B.json",
+      "temp_data/rcsb_nonpolymer_instances/wire/1HTI.graphql.json",
+      "temp_data/rcsb_nonpolymer_instances/wire/1HTI.request.json",
+      "temp_data/rcsb_nonpolymer_instances/wire/1SUX.graphql.json",
+      "temp_data/rcsb_nonpolymer_instances/wire/1SUX.request.json",
+      "temp_data/rcsb_nonpolymer_instances/wire/2V5B.graphql.json",
+      "temp_data/rcsb_nonpolymer_instances/wire/2V5B.request.json"
      ],
      "local_only": []
     },

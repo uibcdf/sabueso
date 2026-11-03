@@ -112,6 +112,10 @@ No browsing operation may acquire new data, refresh a Card or fabricate findings
    saved navigation and unchanged earlier policies. Full reconciliation remains
    [#173](https://github.com/uibcdf/sabueso/issues/173) work;
    composition and equal local labels cannot substitute for that contract.
+   The [nonpolymer source continuation](rcsb_nonpolymer_inputs.md) now retains
+   native entity/instance identifiers and separate author labels under a dedicated
+   original-input scope. This does not change current @1–@4 interpretation;
+   versioned native reconciliation and its original saved reader remain pending.
 3. Complete activity/assay/document and shared literature journeys, then molecule
    target context and clinical/classification views with explicit identity joins.
 4. Complete variants/isoforms/comparisons and biological/disease associations with

@@ -634,6 +634,13 @@ def map_structure_entities(
             stated["assembly_generation_inputs"] = {
                 "assemblies": deepcopy(entry["assemblies"])
             }
+        if "assembly_nonpolymer_entities" in entry:
+            # The dedicated GraphQL alias distinguishes this requested original
+            # scope (including null/empty) from legacy ligand summary fields.
+            # Preserve records/order verbatim; no instance or assembly join here.
+            stated["assembly_component_inputs"] = {
+                "nonpolymer_entities": deepcopy(entry["assembly_nonpolymer_entities"])
+            }
         # Only when stated, so that the statements of entries without them keep their
         # content (#83).
         membrane_features = {

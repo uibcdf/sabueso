@@ -1,5 +1,13 @@
 # Sabueso — Canonical Field Paths
 
+Unpublished schema 0.3.14 optionally retains RCSB nonpolymer entity and instance
+input at `source_assertion_store[].asserted_value.assembly_component_inputs.nonpolymer_entities`
+(#173). This is the original value of the dedicated GraphQL alias
+`assembly_nonpolymer_entities`, with native IDs and separate author labels, not
+a new biological field or computed membership. Missing/null/empty/unsupported
+scope remains distinct; no historical input is backfilled. See
+[the source contract](pending_proposals/rcsb_nonpolymer_inputs.md).
+
 Unpublished schema 0.3.14 optionally retains
 `relationship_store[].qualifiers.assemblies[].generation` on RCSB
 `has_structure` declarations (#173). Its native `pdbx_struct_assembly_gen` and

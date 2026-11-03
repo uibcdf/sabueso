@@ -9,6 +9,24 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Original nonpolymer source inputs (2026-11-03, #173)
+
+The [source continuation](rcsb_nonpolymer_inputs.md) adds an explicit query alias
+and an optional original assertion input in unpublished schema 0.3.14. Original
+ligand qualifiers, native generation @1–@4 and frozen saved rules are unchanged.
+Three bounded public-control captures qualify the actual provider fields; no
+private pilot material is used. This source/schema integration change uses an
+**unskipped** exact-source CI/governance checkpoint after selected local gates,
+with full gh-run-receptor manifests, actual lane summaries and backend/installed
+receiving review. No skip marker substitutes for its immediate integration gate.
+
+Owner #173/#148/#112; exact source/SDK, local resource receipts, capture hashes,
+hosted IDs and recovery scripts belong under
+`recovered_work/rcsb_nonpolymer_inputs_173_20261103/`. The preceding qualifier-parent
+checkpoint keeps its own active capture and source scope. Pending runs qualify
+neither changed runtime nor #173's future scientific reconciliation; broad
+researcher/workload acceptance and paused 0.15.0 consolidation remain separate.
+
 ### Final qualifier-parent receiving checkpoint and source batching (2026-11-03, #181)
 
 The [parent correction](../pending_bugs/entity_qualifier_parents.md) retains raw
