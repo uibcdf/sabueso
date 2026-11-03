@@ -22,9 +22,14 @@ Opt-in native `rcsb_assembly_generation@5` additionally preflights selected
 nonpolymer entity/instance rows and interpreted identifier/descriptor text before
 new key indexing, pin capture or expansion, using the same positive/None
 `operation_budget` with its own cumulative work counter. `expand_occurrences`
-accepts @4 and @5; original @1–@3 refuse it. Human/agent exploration options and
-original saved reading continue to use @4 until an independent @5 reader is
-qualified. See [the native key contract](pending_proposals/assembly_nonpolymer_binding.md).
+accepts @4 and @5; original @1–@3 refuse it. Human/agent exploration options accept
+exact `generation_rule` @4/@5 through its existing digester. Omission and explicit
+@4 share the original normalized request without an added key; explicit @5 keeps
+its selector and uses the independently versioned @2 adapter/@7 saved contract.
+Other native versions are not exploration choices. Saved receiving uses closed
+original grammars without current digesters; unretained requests stay `not_saved`.
+The default remains @4. See [the native key contract](pending_proposals/assembly_nonpolymer_binding.md)
+and [independent saved reading](pending_proposals/card_saved_assembly.md).
 
 `Card.assembly_generation` (#173) adds positive non-boolean `operation_budget`
 (default 100,000), or explicit None to disable its receiving ceilings, and strict

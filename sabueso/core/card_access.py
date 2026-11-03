@@ -728,14 +728,9 @@ class CardAccess:
                     data["quaternary_interpretation"]["selection_availability"] = (
                         "retained_requests_only"
                     )
-                if self.mode == "saved":
-                    from .card_assembly_history_v1 import (
-                        descriptor as assembly_descriptor,
-                    )
-                else:
-                    from .card_assembly_access import descriptor as assembly_descriptor
+                from .card_assembly_dispatch import descriptor as assembly_descriptor
 
-                data["assembly_generation"] = assembly_descriptor()
+                data["assembly_generation"] = assembly_descriptor(self)
                 data["assembly_generation"]["selection_availability"] = (
                     "retained_requests_only" if self.mode == "saved" else "live"
                 )

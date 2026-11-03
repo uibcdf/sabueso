@@ -996,8 +996,9 @@ class Card:
         Opt in to ``generation_rule="rcsb_assembly_generation@5"`` to also bind
         explicitly coherent original nonpolymer entity/instance records. Missing
         native context stays incomplete; author labels never supply identity.
-        The default and existing exploration/saved adapters retain ``@4`` until
-        independent saved interpretation of the new rule is qualified.
+        The default remains ``@4``. Human/agent exploration also accepts explicit
+        ``@5`` options with its independent original saved interpretation; earlier
+        adapters and saved files retain their original meanings.
         Select ``generation_rule="rcsb_assembly_generation@1"`` for unchanged
         syntax-only reading, ``@2`` for unchanged operator-only binding, or ``@3``
         for component-key binding without occurrence plans.

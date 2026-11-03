@@ -10,26 +10,68 @@ area: [human-exploration, agent-access, scientific-integrity, persistence]
 # Original assembly scientific reading
 
 `sabueso.card_exploration@5` explicitly registers
-`assembly_generation_exploration_binding@1`. A bundle containing an original
-`assembly_generation_exploration@1` result uses this format; older-only bundles
-retain their formats and scientific verifiers. The five admitted adapters are
+`assembly_generation_exploration_binding@1` for original
+`assembly_generation_exploration@1` results. Later structure navigation uses @6;
+older-only bundles retain their formats and scientific verifiers. The five admitted adapters are
 original structures, coverage, ligand-site, quaternary and assembly exploration.
 No Card schema, source acquisition or dependency change follows.
 
-## Nonpolymer producer continuation (#173)
+## Independent nonpolymer continuation (#173)
 
-The unpublished producer continuation adds explicit human/agent
+The development continuation adds explicit human/agent
 `options={"generation_rule": "rcsb_assembly_generation@5"}` through
 `assembly_generation_exploration@2` and `assembly_generation_links@2`. Default
 requests and explicit @4 normalize to the original @1 adapter and request wire.
 The two interpretations use distinct captured result identities and caches;
 human/agent entry order shares one evaluation within each interpretation.
 The new producer exposes native nonpolymer identity and uncertainty with original
-source support, rather than changing old results. Saving the new result remains
-unsupported until its independent original verifier is implemented. Capture the
-actual committed producer before that verifier; never regenerate the capture to
-match a later reader. The producer and reader will be received as one completed
-block before publication/adoption; older-only saved formats remain unchanged.
+source support. Format `sabueso.card_exploration@7` registers
+`assembly_generation_exploration_binding@2` when a new result is retained. Mixed
+sessions preserve both original @1 and new @2 results. Earlier-only sessions keep
+their formats. This changes neither stored Cards nor native @1–@5 or saved @1–@6
+predicates, source queries, physical scope or the default interpretation.
+
+The genuine public producer is `7084894ed822dae8df4cb3707036522dd666f2d7`, SDK
+`0.14.0+152.g7084894`, captured before the independent reader was written.
+`tests/core/data/assembly_nonpolymer_live_v2.json.gz` preserves 1SUX, 2V5B, 1HTI
+and a legacy Card, original wires/requests/typed rows/pages/text and source/code
+manifest. Its fixed hashes and terms are in the [fixture README](../../tests/core/data/README.md).
+Never regenerate the capsule to pass a reader. Comparison permits the generated
+root SDK label to differ and the saved-mode notice to be added; source values,
+typed rows, scientific wording and original order remain exact.
+
+`card_assembly_history_v2.py` and `_assembly_history_v2/` replay frozen original
+native @5/presentation @2 predicates over sealed captures, reusing unchanged
+earlier frozen predicates. Current Cards, science engines, public digesters,
+catalog producers and fixture/network services are not used. Retained output is
+never replaced by expected output. Original explanations use the new closed
+`scientific_explanation_request_binding@2`; older files still use @1. The initial
+new-format regression caught a missing explanation-request admission route; its
+correction preserves the original module and tests operation/projection/slice,
+capture context and target owner/size substitution after resealing.
+
+Both rules are discoverable in the live compact catalog. A new saved session
+reports its retained rule results while still admitting only exact saved
+requests. Asking an older file for the new interpretation returns `not_saved`.
+Bounded agent deferral, source support, genuine original controls, mixed old
+structure questions and repeated saving remain separately tested. Final local
+and unskipped exact-source CI/governance receipts belong to #173/#148/#112 and
+`recovered_work/assembly_nonpolymer_reading_173_20261103/`, reviewed at receiving
+completion or before 0.15.0. Pending gates do not establish qualification or close
+physical reconciliation and researcher acceptance.
+
+The selected local checkpoint passes **1,214 cases /32 files** in five serial
+pytest-receptor gates (61 new reader, 342 native/assembly/live, 482 broader
+human/agent/history/transport, 188 source/argument/quantity/receiving and 141 stored
+Card/packet cases; 703.37 pytest seconds). The new copied receiving payload is
+also rerun outside the checkout using the existing editable package; actual
+installed-artifact qualification remains the four CI lanes. Both new public guide
+blocks execute on all four original controls with unchanged Cards and no source
+queries. Original modules, native @5/key @2 behavior, all Card behavior, schemas,
+migration, original protocol/source fixtures and the genuine producer capsule
+are unchanged. These selected receipts do not establish a full local suite,
+hosted qualification or human acceptance. Final source/SDK and receiving outcomes
+are recorded in the issues and owned phase.
 
 ## Original inputs and results
 

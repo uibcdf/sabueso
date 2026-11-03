@@ -314,8 +314,11 @@ The [original nonpolymer input continuation](pending_proposals/rcsb_nonpolymer_i
 retains the source identifiers needed for the next #173 reconciliation contract,
 including separate native/author labels and null versus unrequested scope. The
 [opt-in native @5 continuation](pending_proposals/assembly_nonpolymer_binding.md)
-now uses that original basis under component-key @2. Default @4 and old adapters
-stay unchanged; an independent original @5 saved reader must precede adoption.
+now uses that original basis under component-key @2. The following
+[independent original reader](pending_proposals/card_saved_assembly.md) adds explicit
+human/agent @5 requests and @7 saving over frozen original predicates and a genuine
+pre-reader capsule. Default @4 and old adapters/readers stay unchanged. Complete
+its exact-source receiving before qualification or default adoption.
 Source-bound qualification and full physical reconciliation remain separate from
 closing #148 or resuming 0.15.0 consolidation.
 

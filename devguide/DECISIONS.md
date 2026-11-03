@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Preserve original nonpolymer assembly interpretation independently (2026-11-03, #173/#148)
+
+Expose native generation @5 through explicit human/agent options, separate
+`assembly_generation_exploration@2` results and `assembly_generation_links@2`.
+Keep omitted/explicit @4 requests identical to the original adapter. Preserve a
+genuine committed live producer capsule before writing independent original
+receiving. Format @7 uses frozen native/presentation predicates and a new closed
+explanation-request binder; mixed sessions delegate earlier results/navigation to
+their original verifiers. Do not alter native @1–@5 or saved @1–@6 predicates,
+replace stored output with expected values or infer physical copies from key
+resolution. A new format needs its own exact-source receiving before qualification;
+old-only files retain their formats. See [the contract](pending_proposals/card_saved_assembly.md).
+
 ## Keep file compression explicit and scientific formats unchanged (2026-11-03, #178)
 
 Retain plain JSON as the default and add gzip level 6 and Zstandard level 3 for

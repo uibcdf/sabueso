@@ -9,6 +9,29 @@ NEW_RULE = "rcsb_assembly_generation@5"
 NEW_ADAPTER = "assembly_generation_exploration@2"
 
 
+def descriptor(access):
+    module = (
+        "card_assembly_history_v1" if access.mode == "saved" else "card_assembly_access"
+    )
+    result = import_module("." + module, __package__).descriptor()
+    retained = {
+        item.wire.get("context", {}).get("native_rule")
+        for item in access._scientific_cache.values()
+        if hasattr(item, "wire")
+        and item.wire.get("context", {}).get("adapter")
+        in ("assembly_generation_exploration@1", NEW_ADAPTER)
+    }
+    if access.mode != "saved" or NEW_RULE in retained:
+        result["generation_rule_selection"] = {
+            "option": "generation_rule",
+            "default": OLD_RULE,
+            "supported": [OLD_RULE, NEW_RULE],
+            "retained_results": sorted(retained) if access.mode == "saved" else None,
+            "saved_request_scope": "Only exact retained requests can be reopened.",
+        }
+    return result
+
+
 def options_for_assembly(options, *, saved=False):
     options = {} if options is None else options
     if not isinstance(options, dict):

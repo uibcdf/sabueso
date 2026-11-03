@@ -60,8 +60,8 @@ def descriptor():
             "format": SUPPORT_FORMAT,
             "record_location": "Append Record(id) to source_store_location only for a present member.",
         },
-        "save": False,
-        "save_reason": "Independent original @5 saved verification is not yet available.",
+        "save": True,
+        "save_reason": None,
     }
 
 

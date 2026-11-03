@@ -51,8 +51,11 @@ Fresh RCSB capture preserves [original nonpolymer identifiers](pending_proposals
 for #173, with distinct native and author labels, exact requested records and
 null/missing scope. [Opt-in native @5](pending_proposals/assembly_nonpolymer_binding.md)
 now binds coherent original nonpolymer keys, preserving each source basis and
-ambiguity. Default @4 and existing exploration/saved adapters retain their original
-meaning until an independent @5 saved reader is qualified.
+ambiguity. The [independent @5 reading](pending_proposals/card_saved_assembly.md)
+now adds explicit human/agent exploration and original @7 saving, with a genuine
+pre-reader producer capsule and frozen receiving predicates. Default @4 and earlier
+adapters/readers retain their original meanings; final exact-source qualification
+and broader physical reconciliation remain separate.
 
 To resume after a pause, read [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here),
 then [ROADMAP.md, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).

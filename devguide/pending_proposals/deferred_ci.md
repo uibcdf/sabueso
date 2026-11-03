@@ -9,6 +9,22 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Independent nonpolymer assembly reading (2026-11-03, #173/#148)
+
+The [explicit @5 human/agent and original @7 reader](card_saved_assembly.md)
+retains producer `7084894`/SDK152 and its genuine four-case fixture before frozen
+receiving is implemented. Those short producer/fixture checkpoints stay local
+until the completed producer/reader block is ready. Existing scientific/default
+and historical bytes stay unchanged; a new closed explanation-request @2 route
+applies only to format @7. Applicable local native/reader/human/agent/history,
+argument/quantity/transport, documentation and static checks precede an unskipped
+exact-source CI/governance push. Record actual source/SDK/counts, full manifests,
+all jobs/steps/pytest summaries and codec/installed receiving in #173/#148/#112 and
+`recovered_work/assembly_nonpolymer_reading_173_20261103/`. This final checkpoint
+also receives the accumulated native/source and #183 scratch-retention correction;
+pending older runs cannot qualify its new code. Full physical reconciliation,
+researcher acceptance and 0.15.0 consolidation remain separate/open/paused.
+
 ### Passed-case scratch recovery (2026-11-03, #183)
 
 [Source-capture CI 41714274360](https://github.com/uibcdf/sabueso/actions/runs/41714274360)

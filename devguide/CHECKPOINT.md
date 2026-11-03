@@ -1,10 +1,23 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-11-03 (UTC)**, CI scratch recovery (#183), original nonpolymer input capture (#173),
+Last updated: **2026-11-03 (UTC)**, independent nonpolymer assembly reading (#173), CI scratch recovery (#183),
 qualifier-parent receiving (#181) and recovered transport qualification (#178/#167/#112). This is the
 resumption entry point. Earlier source,
 scientific and release receipts remain linked in the technical reports and
 [preceding chronology](archive/CHECKPOINT_before_pause_20261025.md).
+
+The [independent nonpolymer reading](pending_proposals/card_saved_assembly.md)
+adds explicit human/agent generation @5 through adapter @2 and original format @7.
+A genuine four-case producer capsule at `7084894`/SDK152 predates the frozen
+reader. Saved inspection uses original sealed inputs/predicates, preserves mixed
+old/new interpretations and exact support, and never calls current science or
+sources. Default @4, old-only formats and the 67 protected original modules remain
+unchanged. The new explanation-request @2 route closes a regression caught before
+publication, leaving @1 intact. Selected local receiving passes 1,214 cases over
+32 files, serial, with zero owned swap; the actual new guide blocks also pass on
+all four public controls. Final unskipped exact-source receiving is required;
+pending or earlier CI does not qualify these new bytes. Full physical
+reconciliation, researcher acceptance and paused 0.15.0 consolidation remain open.
 
 CI scratch recovery is tracked in [#183](https://github.com/uibcdf/sabueso/issues/183).
 The source-capture CI at `4e2f94b` reports quota/write failures in installed 3.11
@@ -22,8 +35,8 @@ The [opt-in native nonpolymer key continuation](pending_proposals/assembly_nonpo
 adds explicit generation @5 / component-key @2. Coherent original native instance
 records can now resolve their keys with complete source locations; missing context,
 duplicate records, role/record/code conflicts and separate revisions stay explicit.
-Default @4 and current human/compact/saved adapters are unchanged. The independent
-original @5 reader is the next prerequisite for adapter adoption. Source-bound local
+Default @4 and original human/compact/saved adapters are unchanged. The following
+explicit @2 adapter and original @7 reader have their own receiving scope above. Source-bound local
 checks pass 650 selected cases /18 files, serial, with zero owned swap. Original
 rules/readers, source fixtures, schemas and migration stay unchanged. Local
 qualification precedes intermediate publication; the native/original-reader/adapter
@@ -35,8 +48,9 @@ The following [#173 source continuation](pending_proposals/rcsb_nonpolymer_input
 retains original nonpolymer entity/instance identifiers through a dedicated RCSB
 query alias, separate from old ligand summaries. Three public-control captures
 preserve original inputs, native/author labels and explicit null scope. Native
-@1–@4 and historical saved rules remain unchanged; versioned reconciliation and
-human scientific presentation remain pending. Its selected local gates pass 617
+@1–@4 and historical saved rules remain unchanged; the following versioned native
+key/presentation/reader continuation does not complete physical reconciliation.
+Its selected local gates pass 617
 cases /25 files, serial, peak owned RSS 318,590,976 bytes and zero owned swap.
 Shape recording remains 1,967 paths. Its exact final-source hosted checkpoint
 must qualify this addition independently. Three interrupted storage attempts are

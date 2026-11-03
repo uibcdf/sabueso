@@ -116,9 +116,12 @@ No browsing operation may acquire new data, refresh a Card or fabricate findings
    native entity/instance identifiers and separate author labels under a dedicated
    original-input scope. This does not change current @1–@4 interpretation;
    [Opt-in native @5](assembly_nonpolymer_binding.md) now binds explicit coherent
-   nonpolymer keys under component-key @2. Default @4 and existing human/agent
-   interpretation remain unchanged; independent original @5 saved verification
-   precedes adapter adoption. Full physical reconciliation remains pending.
+   nonpolymer keys under component-key @2. The following
+   [independent original reader](card_saved_assembly.md) supplies explicit @5
+   human/agent exploration and @7 saving over a genuine pre-reader producer.
+   Default @4 and older interpretations stay unchanged; complete exact-source
+   receiving before qualification or default adoption. Full physical
+   reconciliation remains pending.
 3. Complete activity/assay/document and shared literature journeys, then molecule
    target context and clinical/classification views with explicit identity joins.
 4. Complete variants/isoforms/comparisons and biological/disease associations with

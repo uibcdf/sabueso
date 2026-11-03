@@ -20,6 +20,12 @@ Independent original saved verification must qualify @5 before the adapters adop
 it. Full #173 physical reconciliation, #148 researcher acceptance and paused 0.15.0
 consolidation remain separate work.
 
+The following [independent reading continuation](card_saved_assembly.md) now supplies
+explicit human/agent @5 requests through adapter @2 and original @7 saving. It
+keeps the default and all earlier interpretations unchanged; its own local and
+exact-source receiving must qualify the completed block. The scope below describes
+the native slice, not that later saved format.
+
 ## Identity and ambiguity contract
 
 All matching stays inside one admitted RCSB entry SourceAssertion and its original
@@ -121,5 +127,6 @@ Owner #173/#148/#112. Useful source/test/resource proof belongs under
 `recovered_work/assembly_nonpolymer_binding_173_20261103/` until original saved
 reader/adaptor adoption or pre-0.15.0 review. Remove completed owned test/build
 scratch after its last use. Existing original fixtures and active remote captures
-retain their owners. Next, freeze and qualify independent original @5 scientific
-reading before making the new interpretation a human/agent exploration default.
+retain their owners. The following independent original @5 reading uses its own
+retained producer and receiving phase. Qualify it before making the new
+interpretation a human/agent exploration default.

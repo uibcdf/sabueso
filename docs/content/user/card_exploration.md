@@ -893,7 +893,9 @@ assert assembly_selection.result_ref == assembly_view.result_ref
 Projection preserves mandatory interpretation/source membership or complete read
 paths when values and their context must be deferred. Human `view`/`answer` and
 machine `select` accept the same `options`: `structure_ref`, optional exact
-`relationship_id`, `expand_operations`, `expand_occurrences` and `operation_budget`.
+`relationship_id`, `expand_operations`, `expand_occurrences`, `operation_budget`
+and explicit `generation_rule`. Omission keeps the original @4 interpretation;
+the nonpolymer interpretation below is an explicit choice.
 Expansion is off by default. Set a positive budget to choose a ceiling (default
 100,000); explicit None removes it deliberately. Reference/scientific validity still apply.
 Both interfaces keep the exact effective request and share one native evaluation
@@ -1038,9 +1040,38 @@ This interpretation requires coherent source entry, entity and instance IDs.
 Missing identity context stays incomplete; duplicates and conflicting IDs or
 component codes stay ambiguous. Native and author labels remain distinct.
 Existing Cards keep unretained input unknown, without acquiring or refreshing it.
-The explorer's current question, compact selection and saved scientific reading
-continue to use @4 until independent original @5 reading is qualified. Native
-key resolution still does not establish physical copies or assembly contacts.
+The explorer also supports that explicit choice, with the same original inputs
+and source support for humans and agents:
+
+```python
+nonpolymer_options = {"generation_rule": "rcsb_assembly_generation@5"}
+component_review = explorer.answer("assembly_generation", options=nonpolymer_options)
+component_review.table()
+component_selection = explorer.access.select(
+    "assembly_generation",
+    options=nonpolymer_options,
+    fields=["structure_ref", "component_scope", "reason"],
+)
+assert component_selection.result_ref == component_review.result_ref
+component_selection.page(limit=8, max_bytes=8192)
+```
+
+Save and reopen the original interpretation without consulting sources:
+
+```python
+component_receipt = component_review.save("component-review.json")
+original_components = sabueso.read_exploration(
+    "component-review.json", expected_digest=component_receipt["bundle_digest"]
+)
+assert original_components.native_payload == component_review.native_payload
+```
+
+Default questions remain on @4. Saving preserves each interpretation separately,
+including its exact request, uncertainties and original source locations. Reading
+uses frozen original rules; an older file without this interpretation returns
+`not_saved` when asked for it. The agent catalog advertises the rule selector and,
+for saved sessions containing the new interpretation, the retained rule results.
+Native key resolution still does not establish physical copies or assembly contacts.
 
 ## Interpret interfaces and compare family sites
 
