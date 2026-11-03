@@ -1,10 +1,22 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-11-03 (UTC)**, original nonpolymer input capture (#173),
+Last updated: **2026-11-03 (UTC)**, CI scratch recovery (#183), original nonpolymer input capture (#173),
 qualifier-parent receiving (#181) and recovered transport qualification (#178/#167/#112). This is the
 resumption entry point. Earlier source,
 scientific and release receipts remain linked in the technical reports and
 [preceding chronology](archive/CHECKPOINT_before_pause_20261025.md).
+
+CI scratch recovery is tracked in [#183](https://github.com/uibcdf/sabueso/issues/183).
+The source-capture CI at `4e2f94b` reports quota/write failures in installed 3.11
+and source 3.12 lanes; it does not qualify that checkpoint. Repository pytest now
+releases passed-case `tmp_path` scratch, matching bounded local checks, and the
+copied installed lane supplies that setting explicitly. Lifecycle checks preserve
+failed-call evidence, shared-fixture lifetime and the deliberate `all` debugging
+override. Selected lifecycle and scientific bundle-copy checks pass 119 cases
+over five files, serial, with zero owned swap. Scientific fixtures/readers are
+unchanged. A new unskipped exact-source
+CI/governance checkpoint must establish recovery before calling this fixed; the
+logs alone do not establish retention as the sole cause.
 
 The [opt-in native nonpolymer key continuation](pending_proposals/assembly_nonpolymer_binding.md)
 adds explicit generation @5 / component-key @2. Coherent original native instance

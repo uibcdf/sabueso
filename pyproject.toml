@@ -55,6 +55,7 @@ sabueso = ["resolver/*.json"]
 
 [tool.pytest.ini_options]
 norecursedirs = [".*", "build", "dist", "recovered_work"]
+tmp_path_retention_policy = "failed"
 markers = [
   "online: tests that require network access",
 ]

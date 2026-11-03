@@ -9,6 +9,19 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Passed-case scratch recovery (2026-11-03, #183)
+
+[Source-capture CI 41714274360](https://github.com/uibcdf/sabueso/actions/runs/41714274360)
+reports quota/write failures in source 3.12 and installed 3.11. It is not passing
+evidence. Repository and copied installed-consumer pytest now release successful
+per-case scratch while retaining failed-call evidence. The configuration correction
+uses an unskipped exact-source CI/governance checkpoint before the original @5
+saved reader proceeds. That checkpoint also receives the accumulated opt-in native
+code at `850f4ee`; it qualifies that code only if all applicable gates actually pass.
+Owner #183/#167/#112; local lifecycle/bundle checks and hosted recovery evidence
+belong under `recovered_work/pytest_scratch_retention_183_20261103/`. This changes
+test-resource lifetime, not the scientific rules, fixture bytes or saved formats.
+
 ### Opt-in native nonpolymer key interpretation (2026-11-03, #173)
 
 The [native @5/component-key @2 continuation](assembly_nonpolymer_binding.md)

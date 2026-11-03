@@ -43,6 +43,15 @@ execution, an online test and a public fixture replay are different acceptance
 routes. Run online tests only for an authorized concrete source/use scope; a
 fixture does not establish current live availability.
 
+Pytest releases successful per-case `tmp_path` scratch after its last use through
+`tmp_path_retention_policy=failed`; failed-call scratch remains available for
+diagnosis. Shared module/session fixtures retain their declared lifetime. The
+copied installed-consumer CI lane passes the same setting explicitly because it
+runs outside the checkout. To keep successful scratch deliberately while debugging,
+add `-o tmp_path_retention_policy=all`. This does not clean caller outputs, frozen
+fixtures or independently owned development resources. The lifecycle regression
+is `tests/tools/test_pytest_scratch_retention_offline.py`.
+
 ## Test kinds
 
 Original literal structure-ligand presentation is qualified by
@@ -251,10 +260,10 @@ repository-input scope; retain local-original receipts separately. Do not pipe a
 gate through `tail`/`grep` or chain a commit after a command whose exit code does not
 reflect the gate.
 
-When host memory headroom is limited, reduce local worker count and serialize
-heavy checks. `-n 4 -o tmp_path_retention_policy=failed` removes successful
-function-scoped pytest temporary outputs as their fixtures finish while preserving
-failed-call outputs. Keep logs, useful diagnostics and original inputs separately.
+When host memory headroom is limited, reduce local worker count (for example,
+`-n 4`) and serialize heavy checks. The default scratch policy releases successful
+per-case outputs while preserving failed-call outputs. Keep logs, useful diagnostics
+and original inputs separately.
 Measure genuinely free RAM, available RAM, swap activity and the owned process
 tree; use explicit resource stop limits rather than relying on worker count alone.
 Record the actual options and stopped runs; an interrupted run is not qualification.
