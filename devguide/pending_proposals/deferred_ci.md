@@ -9,6 +9,20 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Current native ligand input validation (2026-11-03, #180)
+
+The [input contract](../pending_bugs/structure_ligand_inputs.md) adds current-only
+preflight before native Card/Deck structural interpretation. Malformed list,
+entry, component identifier or investigation flag causes a catalog SchemaError
+with safe problem context and detailed exact inspection locations. Accepted
+scientific rules/results and original saved verifiers stay unchanged. Publish
+through an unskipped exact-source CI/governance checkpoint after applicable local
+gates, with full gh-run-receptor captures and actual summaries reviewed before
+qualification. Owner #180/#148/#112; scripts and useful proof are retained in
+`recovered_work/structure_ligand_inputs_180_20261103/`. The earlier transport and
+literal delivery runs keep their independent source scope/active captures.
+This does not close #181, #173, broad researcher acceptance or the paused 0.15.0 route.
+
 ### Original literal ligand reading checkpoint (2026-11-03, #148)
 
 The [TcTIM ligand continuation](card_ligand_reading.md) changes only current

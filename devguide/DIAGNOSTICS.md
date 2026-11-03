@@ -22,6 +22,17 @@ checks do not weaken original bundle/quantity/support verification.
 
 ## Principle: outcomes are data first
 
+Current native structural queries preflight interpreted original ligand inputs
+(#180). A malformed ligand list/entry/component identifier/investigation flag
+raises the existing catalog `SchemaError` with
+`extra.reason="malformed_structure_ligand_inputs"` and a stable `problem` enum.
+Detailed capture includes exact typed `location` and `relationship_location`;
+restricted capture omits those input identities and does not expose the offending
+value. This is whole-request refusal before scientific interpretation, not source
+absence, an empty inventory or a silently partial result. Original literal/source
+inspection remains available for these field errors. The separate malformed
+qualifier-parent receiving defect remains #181.
+
 Every source outcome is recorded on the result: `card.quality["enrichments"]`,
 `deck.meta["sources"]` and `deck.meta["unanchored"]`. Diagnostics are **derived from
 those same records** (`sabueso/_private/smonitor/outcomes.py`), so what a user is told

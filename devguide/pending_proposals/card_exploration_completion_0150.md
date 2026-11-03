@@ -88,7 +88,9 @@ No browsing operation may acquire new data, refresh a Card or fabricate findings
    with complete typed destinations, retaining original literal items/filters and
    independent saved reading. It does not select ligands by regional overlap or
    resolve physical assembly membership. Native malformed-ligand robustness is
-   separately reported in #180.
+   handled by the [current native input contract](../pending_bugs/structure_ligand_inputs.md)
+   (#180), which refuses a malformed request without producing partial science;
+   broader qualifier-parent receiving remains #181.
    Fresh acquisition now retains [original source assembly generation](rcsb_assembly_generation.md)
    for literal human/agent and inert saved inspection. Native symbolic plans and
    optional preflighted tuple expansion are now available through

@@ -37,6 +37,10 @@ correction retains defaults and needs a new unskipped source checkpoint.
 bootstrap, application precedence and bounded scoped argument/error fix (#150).
 [HTTP response lifetime](SOURCE_ACCESS.md#http-response-lifetime-151) records
 explicit transport/archive/client ownership and regression evidence (#151).
+The [original ligand input contract](pending_bugs/structure_ligand_inputs.md)
+adds controlled native refusal with exact source-inspection destinations for
+malformed ligand fields, preserving accepted scientific and historical outputs
+(#180); broader qualifier-parent receiving remains #181.
 
 To resume after a pause, read [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here),
 then [ROADMAP.md, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).

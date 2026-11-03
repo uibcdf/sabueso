@@ -51,7 +51,12 @@ instance/parent/context navigation, human/nature/access/saved-history, annotatio
 argument and quantity cases. Check exact relationship/typed occurrence scope,
 unchanged literal items/filters and machine frames, detached complete context,
 partial/malformed states, bounded escaped previews and an independent inert
-saved path (#148). Native malformed-ligand calculation is separate #180 work.
+saved path (#148). Current native input refusal is qualified separately by
+`test_structure_ligand_inputs_offline.py`, native structures/inventory/explanation,
+coordinate/declaration admission, human/agent/literal/saved, diagnostic, argument
+and quantity gates (#180). Verify typed SchemaError context, no partial result,
+exact original locations, restricted diagnostics and unchanged historical readers.
+The broader malformed qualifier-parent receiving problem remains #181.
 
 - Unit/contract tests verify errors, identities, assertion support, quantities and
   transformations, including deliberately synthetic parser inputs.

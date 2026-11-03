@@ -55,6 +55,13 @@ owns that scientific-reader robustness correction. Malformed presentation tests
 use literal inspection without invoking the failing native calculation. This
 does not claim to fix #180 or #173 physical assembly reconciliation.
 
+The subsequent [current input guard](../pending_bugs/structure_ligand_inputs.md)
+addresses #180 through a catalog SchemaError and exact original inspection
+locations before scientific interpretation. It leaves this literal presentation
+and all accepted scientific results unchanged. The broader qualifier-parent
+receiving defect remains #181. Its source qualification is separate from the
+original delivery checkpoint recorded below.
+
 ## Qualification and remaining acceptance
 
 Owning tests exercise the actual public annotation-to-structure-to-ligand path,

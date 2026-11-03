@@ -377,6 +377,36 @@ Save `instance_detail` to preserve its original path and use `back()` when readi
 it later. The current literal presentation also works on independently reopened
 original readings, without querying sources or rerunning scientific readers.
 
+If an original ligand list, component identifier or investigation flag is
+malformed, a new structural query raises a `SchemaError` before scientific
+interpretation. It returns no partial scientific result. Missing/null fields
+remain unknown, and a retained empty list keeps its original meaning. Inspect
+the original in the **same** captured explorer:
+
+```python
+from sabueso.core.errors import SchemaError
+
+try:
+    structures = explorer.answer(
+        "region_coverage",
+        options={"sequence_ref": "uniprot:P52270", "region": [96, 168]},
+    )
+except SchemaError as error:
+    if error.extra.get("reason") != "malformed_structure_ligand_inputs":
+        raise
+    location = error.extra.get("location")
+    if location is not None:  # available under detailed diagnostic capture
+        original_field = explorer.inspect(locator=location)
+        original_field  # unchanged value; item explain() opens its source support
+```
+
+Agents catch the same diagnostic and can use `explorer.access.read(location)`
+with their usual page budget. Restricted diagnostics omit captured identities;
+they still identify the schema problem without disclosing the original value.
+Correct malformed data against its source basis before creating a new explorer.
+An older captured explorer continues reading its original data. No inspection
+queries a provider or changes the Card.
+
 ## Inspect predicted models separately
 
 ```python

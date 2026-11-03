@@ -598,6 +598,9 @@ def structures_view(
         [card],
         region_budget=current_budget() if region_budget is INHERIT else region_budget,
     )
+    from .structure_ligand_inputs import validate
+
+    validate([card])
     return view(
         card,
         include_fragments=include_fragments,
@@ -629,6 +632,9 @@ def structure_inventory(
         region_budget=current_budget() if region_budget is INHERIT else region_budget,
         allow_mapping=True,
     )
+    from .structure_ligand_inputs import validate
+
+    validate(cards)
     return inventory(
         cards,
         regions=regions,

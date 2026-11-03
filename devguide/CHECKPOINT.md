@@ -62,6 +62,15 @@ preceding transport CI qualifies only its own source. Separate synthetic native
 malformed-ligand failure [#180](https://github.com/uibcdf/sabueso/issues/180)
 and #173 physical reconciliation remain open. Broad human acceptance is not implied.
 
+The subsequent [native ligand input guard](pending_bugs/structure_ligand_inputs.md)
+(#180) now refuses malformed interpreted ligand fields with the existing catalog
+SchemaError before scientific work. Detailed diagnostics retain exact original
+inspection locations; restricted capture omits input identities. Accepted native
+and historical scientific rules/results remain unchanged. Its own local/hosted
+source checkpoint is required; whole-request refusal does not imply a partial
+successful inventory. The separate earlier Card/entity qualifier-parent defect
+is [#181](https://github.com/uibcdf/sabueso/issues/181).
+
 1. Read this checkpoint, [ROADMAP, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence),
    then the [complete exploration inventory](pending_proposals/card_exploration_completion_0150.md).
    The original foundational and pilot-driven routes still apply together.
