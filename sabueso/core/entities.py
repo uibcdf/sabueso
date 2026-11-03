@@ -164,7 +164,11 @@ def build_entities(card: Any) -> Dict[str, Any]:
 
     for rel in card.relationships():
         predicate, obj = rel["predicate"], rel["object_ref"]
-        q = rel.get("qualifiers") or {}
+        # Preserve unsupported original context in the RelationshipStore. Only
+        # mappings can supply qualifier-derived names, aliases or other entities;
+        # explicit relationship endpoints/predicates retain their own meaning.
+        qualifiers = rel.get("qualifiers")
+        q = qualifiers if isinstance(qualifiers, dict) else {}
         if predicate == "same_as" and (
             str(obj).startswith("mondo:") or q.get("source") == "MedGen"
         ):

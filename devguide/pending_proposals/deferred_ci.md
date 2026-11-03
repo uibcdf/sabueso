@@ -9,6 +9,38 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Final qualifier-parent receiving checkpoint and source batching (2026-11-03, #181)
+
+The [parent correction](../pending_bugs/entity_qualifier_parents.md) retains raw
+context and introduces controlled current structural refusal. The final source
+will use an **unskipped** CI/governance checkpoint after all selected local gates.
+Owner #181/#148/#180/#112, with exact head/SDK/runs, full receptor capture, actual
+pytest summaries and recovery proof under
+`recovered_work/entity_qualifier_parents_181_20261103/`.
+
+This final head includes the locally checked literal delivery `090c4ed` and native
+field guard `1052e5a`. After its replacement runs exist, pending owned intermediate
+scientific executions may be stopped to avoid redundant runner work, retaining
+complete cancellation/source evidence. Completed or coverage-only near-finished
+checkpoints may finish. Such intermediate runs are never relabeled as passing;
+their accumulated runtime is recovered only after the actual final source passes
+every applicable gate. No skipped push or reduced matrix substitutes for that
+checkpoint. Strict nested glossary reinterpretation is separately deferred to #182.
+
+The intermediate literal run `41693588616` has an observed Ubuntu 3.14 failure:
+job `126118166640` stops during environment creation on HTTP 503 from
+`conda.anaconda.org/uibcdf/noarch/repodata.json`, before pytest. Its original job
+log is retained with #148/#112. This is an observed channel availability failure,
+not evidence of a scientific test failure; it remains unqualified. Final-head
+recovery must still pass that actual lane rather than inherit other lanes' results.
+
+Transport source `5f4ab15` is already independently qualified: CI 18/18, governance
+1/1, all thirteen actual lane summaries, twelve backend producers/24 frames and
+twelve installed routes/36 codec cases, with full manifest/CRC/step review.
+[The public receipt](../evidence/transport_checkpoint_20261103.json) and #178/#179
+closeouts recover that earlier scope. #167 workload/researcher acceptance remains
+open, and this does not qualify newer runtime automatically.
+
 ### Current native ligand input validation (2026-11-03, #180)
 
 The [input contract](../pending_bugs/structure_ligand_inputs.md) adds current-only
@@ -40,6 +72,10 @@ their own source scope and active captures. Pending runs do not qualify this
 source or close #180, #173, broad researcher acceptance or the paused 0.15.0 route.
 
 ### Large-original test admission and measured API follow-up (2026-11-03, #178/#167)
+
+**Recovered at `5f4ab15`, SDK145**, as detailed in the public receipt above. The
+following records the original failed attempt and recovery route; #178 and #179
+are now closed. Later code checkpoints retain their own obligation.
 
 Transport source `92af2c6`, SDK `0.14.0+144.g92af2c6`, has verified governance
 1/1 but fails CI in two historical tests above the new default file budget.

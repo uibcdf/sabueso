@@ -592,7 +592,13 @@ class Card:
         return explain_knowledge_state(self, knowledge_area, knowledge_source)
 
     def entities(self) -> Dict[str, Any]:
-        """The glossary of molecular entities this card mentions, each once (#52)."""
+        """The glossary of molecular entities this card mentions, each once (#52).
+
+        Only mapping qualifiers supply names or additional references. Unsupported
+        original qualifier context stays in the relationships for literal inspection;
+        explicit endpoints and independently stated identities retain their meaning.
+        The glossary does not establish absence of other molecular entities.
+        """
         from .entities import build_entities
 
         return build_entities(self)

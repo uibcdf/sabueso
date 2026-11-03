@@ -113,9 +113,12 @@ parity and source/import proofs remain under
 at workload acceptance or the next saved-transport change. Keep useful originals
 and representative outputs; remove only finished owned disposable duplicates.
 
-Run the corrected large-original and applicable transport/local gates, then
-recover **a new exact-source unskipped CI/governance checkpoint** through full
-gh-run-receptor evidence. The failed `92af2c6` run is never qualification. This
+The corrected large-original and applicable local gates are followed by verified
+unskipped CI 18/18 and governance 1/1 at `5f4ab15`, SDK145. All thirteen actual
+pytest summaries, twelve backend producers and twelve installed transport routes
+are reviewed through full gh-run-receptor evidence; the
+[compact receipt](../evidence/transport_checkpoint_20261103.json) binds the source
+and original manifests. The failed `92af2c6` run is never qualification. This
 completes the bounded local API measurement, not #167's entire performance/human
 acceptance obligation. Keep complete verification and retained history/support.
 Resume #148/#173's structural/scientific exploration order after the transport

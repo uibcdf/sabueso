@@ -1,9 +1,20 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-11-03 (UTC)**, public exploration transport and measured API
-workloads (#178/#167/#112). This is the resumption entry point. Earlier source,
+Last updated: **2026-11-03 (UTC)**, qualifier-parent receiving (#181), recovered
+transport qualification and measured API workloads (#178/#167/#112). This is the
+resumption entry point. Earlier source,
 scientific and release receipts remain linked in the technical reports and
 [preceding chronology](archive/CHECKPOINT_before_pause_20261025.md).
+
+The current [qualifier-parent continuation](pending_bugs/entity_qualifier_parents.md)
+(#181) preserves opaque original qualifier values through serialization, pinning,
+store roundtrips and literal human/agent inspection. Current structural requests
+refuse uninterpretable parents with a source-addressed SchemaError. Existing direct
+identity statements and registered identities remain separate from unreadable
+qualifier-derived context. Its exact final source CI/governance must be verified;
+older pending runs are not qualification. A stricter nested glossary prototype is
+not included: #182 first needs original stored-glossary/versioning/pin acceptance.
+Broad #148 researcher acceptance and 0.15.0 consolidation remain open/paused.
 
 Development source `92af2c646c9c94686352b0ca5508009b67af46db`, SDK
 `0.14.0+144.g92af2c6`, implements [explicit file transport](pending_proposals/exploration_file_transport.md):
@@ -13,7 +24,7 @@ transport receipts and atomic output. Original @1–@6 scientific verifiers,
 source support, quantities and history remain intact. #179 corrects a reproduced
 inert-test import-alias leak, with a fresh-process regression.
 
-**Runtime CI is not qualified.** [CI 41679082751](https://github.com/uibcdf/sabueso/actions/runs/41679082751)
+**Earlier transport attempt, superseded:** [CI 41679082751](https://github.com/uibcdf/sabueso/actions/runs/41679082751)
 finds two historical tests opening the same 89,849,893-byte original without
 opting into the new 64 MiB defaults; Linux 3.12–3.14 each report 2 failed and
 6,751 passed. [Governance](https://github.com/uibcdf/sabueso/actions/runs/41679082786)
@@ -21,8 +32,20 @@ is verified 1/1. The test-only correction checks default refusal, consciously
 admits the exact original size, and streams fixture copying/hash verification.
 The corrected large-original gate passes 2/2, keeping the same source hash and
 frozen science; 203 further selected cases pass, with those two large cases run
-separately under the resource supervisor. Recover a **new unskipped exact-source** CI/governance checkpoint;
-no earlier green result qualifies a failed/newer source.
+separately under the resource supervisor.
+
+The corrected transport checkpoint is now **qualified** at
+`5f4ab156bbb7601d5012e8c8e91ecae6c2f4ab3e`, SDK `0.14.0+145.g5f4ab15`:
+[CI 41686165818](https://github.com/uibcdf/sabueso/actions/runs/41686165818) **18/18**
+and [governance 41686165984](https://github.com/uibcdf/sabueso/actions/runs/41686165984)
+**1/1**, full manifests/CRC/every step, thirteen actual pytest summaries, twelve
+backend producer routes and twelve installed transport routes verified.
+Nine source lanes each pass 6,753 cases /10 skipped /26 deselected; four installed
+provider lanes each pass 1,470. Twenty-four fresh cross-read frames and 36 installed
+public codec cases pass. [The public receipt](evidence/transport_checkpoint_20261103.json)
+binds the exact source, manifests and lane summaries. #178 and #179 are closed;
+#167's broader workload/human acceptance stays open. This historical checkpoint
+does not qualify later literal/native-input/qualifier-parent runtime changes.
 
 The [actual public API workload study](pending_proposals/public_transport_workload.md)
 passes 45 saves plus 45 fresh reads over five public originals on SDK144. Every
@@ -43,7 +66,7 @@ It recovers the earlier layout/compressor helper debt; package runtime there
 is identical to qualified navigation source `baac143`. See
 [the ledger](pending_proposals/deferred_ci.md) for precise historical scope.
 
-After transport qualification, resume **#148's broad human/agent scientific
+Continue **#148's broad human/agent scientific
 exploration**, following [the complete inventory](pending_proposals/card_exploration_completion_0150.md):
 remaining region/site/instance/assembly transitions and #173 reconciliation,
 then activity/assay/document/literature, clinical/classification, variants and

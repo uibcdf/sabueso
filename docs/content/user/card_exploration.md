@@ -392,7 +392,10 @@ try:
         options={"sequence_ref": "uniprot:P52270", "region": [96, 168]},
     )
 except SchemaError as error:
-    if error.extra.get("reason") != "malformed_structure_ligand_inputs":
+    if error.extra.get("reason") not in {
+        "malformed_structure_ligand_inputs",
+        "malformed_structure_qualifier_inputs",
+    }:
         raise
     location = error.extra.get("location")
     if location is not None:  # available under detailed diagnostic capture
@@ -406,6 +409,14 @@ they still identify the schema problem without disclosing the original value.
 Correct malformed data against its source basis before creating a new explorer.
 An older captured explorer continues reading its original data. No inspection
 queries a provider or changes the Card.
+
+An unsupported whole qualifier parent also remains inspectable: it no longer
+prevents preparing the Card's stored form or capturing a literal explorer. The
+glossary reads only mapping-shaped qualifier context; it does not interpret a
+string or list as names or extra identifiers. Explicit relationship records and
+independent source-stated identities retain their existing meaning. An omitted
+glossary entry is not evidence of molecular absence. Inspect the original
+relationship and its supporting statements when its qualifier context is unreadable.
 
 ## Inspect predicted models separately
 

@@ -27,11 +27,13 @@ native 3.14 and pinned older-Python probes, genuine bidirectional fixtures and
 twelve hosted OS/Python routes, qualified at `1fdb771`. The following
 [public file transport](pending_proposals/exploration_file_transport.md) adds
 explicit plain/gzip/Zstandard saving and strict bounded reading in development;
-its new runtime requires separate source-bound qualification. The
+its corrected runtime is now qualified at `5f4ab15` through
+[CI 18/18 and governance 1/1](evidence/transport_checkpoint_20261103.json). The
 [actual API workload study](pending_proposals/public_transport_workload.md) records
 45 saves and 45 fresh reads with complete retained-content/history parity. Its
 measured source CI exposed two unmigrated large-fixture calls; the test-only
-correction retains defaults and needs a new unskipped source checkpoint.
+correction retains defaults and has its own verified exact-source checkpoint.
+Later changed runtime bytes still need their own qualification.
 
 [Diagnostic receiving](DIAGNOSTIC_RECEIVING.md) records the retained standalone
 bootstrap, application precedence and bounded scoped argument/error fix (#150).
@@ -40,7 +42,10 @@ explicit transport/archive/client ownership and regression evidence (#151).
 The [original ligand input contract](pending_bugs/structure_ligand_inputs.md)
 adds controlled native refusal with exact source-inspection destinations for
 malformed ligand fields, preserving accepted scientific and historical outputs
-(#180); broader qualifier-parent receiving remains #181.
+(#180). The [qualifier-parent continuation](pending_bugs/entity_qualifier_parents.md)
+keeps malformed original parents serializable and inspectable while refusing their
+native structural interpretation (#181). Stricter nested glossary inputs require
+separate original stored-glossary/pin acceptance (#182).
 
 To resume after a pause, read [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here),
 then [ROADMAP.md, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).

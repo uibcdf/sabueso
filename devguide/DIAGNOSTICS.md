@@ -31,7 +31,12 @@ restricted capture omits those input identities and does not expose the offendin
 value. This is whole-request refusal before scientific interpretation, not source
 absence, an empty inventory or a silently partial result. Original literal/source
 inspection remains available for these field errors. The separate malformed
-qualifier-parent receiving defect remains #181.
+qualifier-parent correction (#181) preserves raw serialization/capture and adds
+`extra.reason="malformed_structure_qualifier_inputs"`,
+`problem="qualifiers_not_mapping"`, `field="has_structure.qualifiers"` for current
+structural requests. Detailed exact source locations and restricted-capture privacy
+follow the same contract. Literal interpretation gaps stay visible; a native
+diagnostic never becomes a negative molecular assertion.
 
 Every source outcome is recorded on the result: `card.quality["enrichments"]`,
 `deck.meta["sources"]` and `deck.meta["unanchored"]`. Diagnostics are **derived from

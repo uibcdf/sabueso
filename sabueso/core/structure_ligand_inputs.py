@@ -12,9 +12,7 @@ def _problem(relationship):
     qualifiers = relationship.get("qualifiers", {})
     root = [{"type": "Key", "value": "qualifiers"}]
     if not isinstance(qualifiers, dict):
-        # A malformed qualifier parent belongs to Card/schema receiving. This
-        # contract only validates the ligand field of an actual mapping.
-        return None
+        return root, "qualifiers_not_mapping"
     ligands = qualifiers.get("ligands")
     root = [*root, {"type": "Key", "value": "ligands"}]
     if ligands is None:
@@ -50,10 +48,15 @@ def validate(cards):
             if problem is None:
                 continue
             segments, reason = problem
+            parent = reason == "qualifiers_not_mapping"
             extra = {
-                "reason": "malformed_structure_ligand_inputs",
+                "reason": "malformed_structure_qualifier_inputs"
+                if parent
+                else "malformed_structure_ligand_inputs",
                 "problem": reason,
-                "field": "has_structure.qualifiers.ligands",
+                "field": "has_structure.qualifiers"
+                if parent
+                else "has_structure.qualifiers.ligands",
             }
             if _diagnostic_details_allowed():
                 pin = card.pinned_ref()
@@ -75,7 +78,7 @@ def validate(cards):
                     },
                 )
             raise SchemaError(
-                "Malformed retained structure ligand inputs prevent scientific "
+                f"Malformed retained structure {'qualifier' if parent else 'ligand'} inputs prevent scientific "
                 "interpretation. Inspect the original declaration and its source "
                 "support through literal Card exploration; detailed diagnostics "
                 "include the exact location. Missing or malformed input does not "

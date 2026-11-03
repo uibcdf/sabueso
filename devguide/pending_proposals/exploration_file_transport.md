@@ -74,7 +74,11 @@ five public retained readings, 45 saves and 45 fresh reads. `92af2c6` CI exposed
 two historical calls above the default file ceiling; the test-only migration
 asserts refusal then explicitly admits the verified original size with streamed
 fixture preparation. This does not relax defaults, frozen bytes or science. The
-failed source is not qualification; recover a new unskipped exact-source checkpoint.
+failed source is not qualification. The corrected source `5f4ab15`, SDK145,
+now has verified CI 18/18 and governance 1/1, all thirteen actual pytest summaries,
+twelve backend cross-read routes/24 fresh frames and twelve installed transport
+routes/36 codec cases. [The compact receipt](../evidence/transport_checkpoint_20261103.json)
+retains full manifest member hashes and exact source/lane scope.
 
 
 Run the transport owning cases plus saved literal/science/sites/quaternary/assembly,
@@ -103,9 +107,11 @@ protected original verifiers/rules remain byte-identical. These are selected loc
 checks, not a full-local-suite or new hosted result. Exact-SDK reinstallation and
 receiving gates are recorded with the actual committed source in the owning issues.
 
-This production runtime needs a new unskipped exact-head CI/governance checkpoint
-with full gh-run-receptor evidence. The earlier `1fdb771` result qualifies only the
-engineering helper. Source-bound local and remote receipts belong in #178/#167/#112
+The production development runtime is qualified at `5f4ab15` through full
+gh-run-receptor evidence. The earlier `1fdb771` result qualifies only the engineering
+helper, and the failed `92af2c6` attempt remains diagnostic history. Later changed
+runtime bytes need their own final-source checkpoint. Source-bound local and remote
+receipts belong in #178/#167/#112
 and `recovered_work/card_transport_178_20261103/`. Retain original/qualification
 proof with those owners, review at next transport/workload acceptance, and remove
 only finished owned build/test/cache scratch. Public codec admission does not

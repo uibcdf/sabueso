@@ -55,6 +55,12 @@ stored form, before native validation is reached. This guard covers ligand field
 inside actual qualifier mappings and does not claim to fix that earlier Card/schema
 receiving defect or #173 physical assembly reconciliation.
 
+The subsequent [#181 parent continuation](entity_qualifier_parents.md) now keeps
+those opaque originals serializable/capturable and supplies a separate controlled
+current structural parent diagnostic. #180's original field-level checkpoint and
+metrics below retain their own source scope. The later stricter nested glossary
+interpretation/pin problem is #182; no prototype is silently adopted here.
+
 ## Qualification
 
 Owning cases cover malformed containers/elements/identifiers/flags, exact original

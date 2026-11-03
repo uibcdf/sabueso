@@ -56,7 +56,12 @@ saved path (#148). Current native input refusal is qualified separately by
 coordinate/declaration admission, human/agent/literal/saved, diagnostic, argument
 and quantity gates (#180). Verify typed SchemaError context, no partial result,
 exact original locations, restricted diagnostics and unchanged historical readers.
-The broader malformed qualifier-parent receiving problem remains #181.
+The qualifier-parent correction is qualified by
+`test_entity_qualifier_parents_offline.py` together with entity/identity,
+serialization/store/schema, human/agent/context/source and structural/argument/
+quantity cases (#181). Preserve exact raw parent/support values, typed source
+inspection, explicit identity bases, atomic native refusal and inert saved reading.
+Stricter nested glossary interpretation and original-pin acceptance remain #182.
 
 - Unit/contract tests verify errors, identities, assertion support, quantities and
   transformations, including deliberately synthetic parser inputs.
