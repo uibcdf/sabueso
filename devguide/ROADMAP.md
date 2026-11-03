@@ -408,6 +408,13 @@ That helper debt is recovered at `1fdb771`; the next
 JSON defaults, adds explicit gzip/Zstandard and visible strict receiving budgets.
 Its new runtime/optional integration requires separate installed and exact-source
 qualification before admission, then return to the broader exploration route.
+The [actual public API measurements](pending_proposals/public_transport_workload.md)
+now complete the bounded five-reading local study: 45 saves/45 fresh reads retain
+all original content/history and substantially reduce files; full-read latency
+remains similar. Fix the two historical large-fixture calls exposed by CI through
+explicit exact-size budgets and streamed preparation, then qualify a new unskipped
+source. Keep the defaults/scientific readers intact and resume the broader route;
+large-workload and human acceptance remain separate.
 
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all
 ongoing implementations and corrections for **0.15.0**. The earlier proposal to

@@ -9,6 +9,24 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Large-original test admission and measured API follow-up (2026-11-03, #178/#167)
+
+Transport source `92af2c6`, SDK `0.14.0+144.g92af2c6`, has verified governance
+1/1 but fails CI in two historical tests above the new default file budget.
+Linux 3.12–3.14 each report 6,751 passed /2 failed. Original failed job logs and
+full-receptor observation are retained; this is not a qualified code checkpoint.
+The correction streams the original fixture and its hash and passes exact-size
+positive budgets after asserting default refusal. All 653 package files and
+frozen scientific rules stay unchanged. The [public workload study](public_transport_workload.md)
+adds 45 actual saves/45 fresh reads with original content/history parity.
+
+Publish the tested correction through a **new unskipped** exact-source checkpoint;
+verify CI 18/18, governance, thirteen actual pytest summaries, twelve backend
+cross-readers and twelve installed transport smokes. Once replacement is prepared,
+retain the failed source's evidence and stop only its owned superseded execution
+if needed. No skipped/pending/failed run closes this obligation. Owners #178/#167/
+#179/#112; broader workload/researcher acceptance and 0.15.0 remain separate.
+
 ### Production exploration transport checkpoint (2026-11-03, #178/#167)
 
 The [transport implementation](exploration_file_transport.md) changes package

@@ -1,0 +1,1255 @@
+{
+  "measured_source": "92af2c646c9c94686352b0ca5508009b67af46db",
+  "measured_sdk": "0.14.0+144.g92af2c6",
+  "date_utc": "2026-11-03",
+  "owner": "#167/#178/#112",
+  "review_trigger": "workload/researcher acceptance or next saved transport change",
+  "scope": "Reopen-and-save retained original public readings via actual APIs; source imports/inert guard setup and original read excluded from timed save. Fresh read workers time the actual read_exploration call after imports/guards. Caller capture/initial live exploration construction, cold-cache behavior, process startup and scientific usefulness acceptance are separate. Save HWM includes required original setup; read HWM includes imports; post-check HWM separately recorded. No causal speedup or accepted total-RSS budget inferred.",
+  "method_scripts_sha256": {
+    "worker.py": "7a55a08fa19a02fedd6b217fc838db8113886a5b8a2f0c7a4275cd4e64dd41cf",
+    "run_matrix.py": "a9d0f2f32cfa5c81e7e35fa2267b2dd7f06ab98faf5a9e9da19af7dc88ccd8cc",
+    "run_guarded.py": "c3a6fdb0a920f99ad823ee3ffbcafe20f9887d486b1f674d0639ffc6a74efc64",
+    "summarize.py": "de93717a50bad800c8852020016e1e15d5f65d89cd700d0abe8e7d8e3cf592e2"
+  },
+  "public_inputs": [
+    {
+      "name": "protein-function",
+      "original_bytes": 1403696,
+      "original_sha256": "c4100df23080a72d98e8ef73e5501c937264d6e893b4f7321826010b7065c6d3",
+      "original_format": "sabueso.card_exploration@1",
+      "counts": {
+        "cards": 1,
+        "views": 75,
+        "objects": 57,
+        "locations": 68
+      }
+    },
+    {
+      "name": "molecule-properties",
+      "original_bytes": 1483207,
+      "original_sha256": "1181b870b0b9afc67e1ca7cc9499b3d263aea74fb5d0d923337e840283394d54",
+      "original_format": "sabueso.card_exploration@1",
+      "counts": {
+        "cards": 1,
+        "views": 96,
+        "objects": 72,
+        "locations": 86
+      }
+    },
+    {
+      "name": "disease-meaning",
+      "original_bytes": 952668,
+      "original_sha256": "e0ff6c2852f633ec644318cd6d6eb49749b1750d70a64ae1c8e9e156a23ecb76",
+      "original_format": "sabueso.card_exploration@1",
+      "counts": {
+        "cards": 1,
+        "views": 68,
+        "objects": 52,
+        "locations": 62
+      }
+    },
+    {
+      "name": "structure-context",
+      "original_bytes": 10472177,
+      "original_sha256": "a9ff5d0cf8ab9836bcce8967dd75d3b0c3c8ea66157d13dbcd4be193b6edc40d",
+      "original_format": "sabueso.card_exploration@6",
+      "counts": {
+        "cards": 1,
+        "views": 267,
+        "objects": 210,
+        "locations": 260
+      }
+    },
+    {
+      "name": "accumulated-2V5B",
+      "original_bytes": 11009687,
+      "original_sha256": "e5d8c9592d354367cafeaf1527d60105f3551f852875c74f7ebc9e85b932fc11",
+      "original_format": "sabueso.card_exploration@6",
+      "counts": {
+        "cards": 1,
+        "views": 111,
+        "objects": 81,
+        "locations": 108
+      }
+    }
+  ],
+  "public_save_calls": 45,
+  "fresh_public_read_calls": 45,
+  "seed": 167178,
+  "repeats_per_case_codec": 3,
+  "originals_unchanged": true,
+  "original_content_history_parity": true,
+  "history_mode_normalization": "Only the known operational view state.context.mode live/saved transition; every graph node occurrence, edge, request, selection, support, original captured table and presentation policy otherwise exact.",
+  "resource_supervisor": {
+    "exit_code": 0,
+    "elapsed_s": 345.94,
+    "stop_reason": null,
+    "peak_owned_rss_bytes": 330665984,
+    "minimum_host_available_bytes": 16930975744,
+    "minimum_host_free_bytes": 3116564480,
+    "peak_owned_swap_bytes": 0,
+    "limits": {
+      "owned_rss_bytes": 1073741824,
+      "host_available_bytes": 4294967296,
+      "host_free_bytes": 268435456,
+      "owned_swap_bytes": 0,
+      "owned_scratch_bytes": 2147483648
+    },
+    "test_files": 0,
+    "peak_owned_scratch_bytes": 81905007
+  },
+  "measurements": [
+    {
+      "case": "accumulated-2V5B",
+      "compression": "gzip",
+      "samples": 3,
+      "encoded_bytes": 378716,
+      "decoded_bytes": 11009800,
+      "decoded_sha256": "sha256:bcbba7ca468a58537daddfb29f0c46db9541669901bf85e7bf35297360d5d700",
+      "bundle_digest": "sha256:f93653e24127beb131831396b11f959e3c6d10890d593c9bb3c7b4ca03f69ba1",
+      "backend": {
+        "level": 6,
+        "module": "zlib",
+        "version": "1.3.2"
+      },
+      "public_save_wall_seconds": {
+        "median": 3.544623350026086,
+        "minimum": 3.5145332599058747,
+        "maximum": 3.69637418189086,
+        "samples": [
+          3.5145332599058747,
+          3.544623350026086,
+          3.69637418189086
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 3.4864261329999997,
+        "minimum": 3.468195218,
+        "maximum": 3.624770624,
+        "samples": [
+          3.468195218,
+          3.4864261329999997,
+          3.624770624
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 2.983140528900549,
+        "minimum": 2.951343377819285,
+        "maximum": 3.1322131941560656,
+        "samples": [
+          2.951343377819285,
+          2.983140528900549,
+          3.1322131941560656
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 2.982500791,
+        "minimum": 2.9508217130000003,
+        "maximum": 3.131622771,
+        "samples": [
+          2.9508217130000003,
+          2.982500791,
+          3.131622771
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 228732928,
+      "read_worker_after_api_peak_rss_bytes": 150355968,
+      "post_checks_peak_rss_bytes": 269807616,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 108,
+          "before": 108
+        },
+        "objects": {
+          "after": 81,
+          "before": 81
+        },
+        "views": {
+          "after": 111,
+          "before": 111
+        }
+      }
+    },
+    {
+      "case": "accumulated-2V5B",
+      "compression": "none",
+      "samples": 3,
+      "encoded_bytes": 11009800,
+      "decoded_bytes": 11009800,
+      "decoded_sha256": "sha256:bcbba7ca468a58537daddfb29f0c46db9541669901bf85e7bf35297360d5d700",
+      "bundle_digest": "sha256:f93653e24127beb131831396b11f959e3c6d10890d593c9bb3c7b4ca03f69ba1",
+      "backend": {
+        "level": null,
+        "module": null,
+        "version": null
+      },
+      "public_save_wall_seconds": {
+        "median": 3.6289322460070252,
+        "minimum": 3.557351325172931,
+        "maximum": 3.641802268102765,
+        "samples": [
+          3.6289322460070252,
+          3.557351325172931,
+          3.641802268102765
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 3.494092471,
+        "minimum": 3.406220776,
+        "maximum": 3.4996991029999998,
+        "samples": [
+          3.4996991029999998,
+          3.406220776,
+          3.494092471
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 3.0384013189468533,
+        "minimum": 2.966381801990792,
+        "maximum": 3.065285427030176,
+        "samples": [
+          3.065285427030176,
+          2.966381801990792,
+          3.0384013189468533
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 3.037797649,
+        "minimum": 2.965855658,
+        "maximum": 3.064752445,
+        "samples": [
+          3.064752445,
+          2.965855658,
+          3.037797649
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 228540416,
+      "read_worker_after_api_peak_rss_bytes": 150421504,
+      "post_checks_peak_rss_bytes": 268812288,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 108,
+          "before": 108
+        },
+        "objects": {
+          "after": 81,
+          "before": 81
+        },
+        "views": {
+          "after": 111,
+          "before": 111
+        }
+      }
+    },
+    {
+      "case": "accumulated-2V5B",
+      "compression": "zstd",
+      "samples": 3,
+      "encoded_bytes": 99232,
+      "decoded_bytes": 11009800,
+      "decoded_sha256": "sha256:bcbba7ca468a58537daddfb29f0c46db9541669901bf85e7bf35297360d5d700",
+      "bundle_digest": "sha256:f93653e24127beb131831396b11f959e3c6d10890d593c9bb3c7b4ca03f69ba1",
+      "backend": {
+        "distribution_version": null,
+        "level": 3,
+        "module": "compression.zstd",
+        "version": "1.5.7"
+      },
+      "public_save_wall_seconds": {
+        "median": 3.4495601118542254,
+        "minimum": 3.4431742979213595,
+        "maximum": 3.505778952036053,
+        "samples": [
+          3.4495601118542254,
+          3.4431742979213595,
+          3.505778952036053
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 3.38400534,
+        "minimum": 3.377135988,
+        "maximum": 3.409319656,
+        "samples": [
+          3.38400534,
+          3.377135988,
+          3.409319656
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 3.03095596912317,
+        "minimum": 3.005524961045012,
+        "maximum": 3.050441003870219,
+        "samples": [
+          3.03095596912317,
+          3.050441003870219,
+          3.005524961045012
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 3.0304789309999998,
+        "minimum": 3.004984876,
+        "maximum": 3.049847402,
+        "samples": [
+          3.0304789309999998,
+          3.049847402,
+          3.004984876
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 228724736,
+      "read_worker_after_api_peak_rss_bytes": 150507520,
+      "post_checks_peak_rss_bytes": 278036480,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 108,
+          "before": 108
+        },
+        "objects": {
+          "after": 81,
+          "before": 81
+        },
+        "views": {
+          "after": 111,
+          "before": 111
+        }
+      }
+    },
+    {
+      "case": "disease-meaning",
+      "compression": "gzip",
+      "samples": 3,
+      "encoded_bytes": 54969,
+      "decoded_bytes": 952736,
+      "decoded_sha256": "sha256:ba9a75640b45c04734b9636567db2681bd08d318e6198076e97c3ec942b65141",
+      "bundle_digest": "sha256:2adc64b81a2b1ec760f0b274932435f012a094f4f1f424dd7987db7348fdaec1",
+      "backend": {
+        "level": 6,
+        "module": "zlib",
+        "version": "1.3.2"
+      },
+      "public_save_wall_seconds": {
+        "median": 0.41571469395421445,
+        "minimum": 0.3904529910068959,
+        "maximum": 0.44042289908975363,
+        "samples": [
+          0.3904529910068959,
+          0.41571469395421445,
+          0.44042289908975363
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 0.341617206,
+        "minimum": 0.33771413100000003,
+        "maximum": 0.3917894209999999,
+        "samples": [
+          0.341617206,
+          0.33771413100000003,
+          0.3917894209999999
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 0.35712081799283624,
+        "minimum": 0.35693589178845286,
+        "maximum": 0.3832948780618608,
+        "samples": [
+          0.35712081799283624,
+          0.35693589178845286,
+          0.3832948780618608
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 0.35705944999999994,
+        "minimum": 0.35686862300000005,
+        "maximum": 0.383251287,
+        "samples": [
+          0.35705944999999994,
+          0.35686862300000005,
+          0.383251287
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 82006016,
+      "read_worker_after_api_peak_rss_bytes": 72544256,
+      "post_checks_peak_rss_bytes": 85901312,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 62,
+          "before": 62
+        },
+        "objects": {
+          "after": 52,
+          "before": 52
+        },
+        "views": {
+          "after": 68,
+          "before": 68
+        }
+      }
+    },
+    {
+      "case": "disease-meaning",
+      "compression": "none",
+      "samples": 3,
+      "encoded_bytes": 952736,
+      "decoded_bytes": 952736,
+      "decoded_sha256": "sha256:ba9a75640b45c04734b9636567db2681bd08d318e6198076e97c3ec942b65141",
+      "bundle_digest": "sha256:2adc64b81a2b1ec760f0b274932435f012a094f4f1f424dd7987db7348fdaec1",
+      "backend": {
+        "level": null,
+        "module": null,
+        "version": null
+      },
+      "public_save_wall_seconds": {
+        "median": 0.41567665291950107,
+        "minimum": 0.394876022124663,
+        "maximum": 0.4540392830967903,
+        "samples": [
+          0.41567665291950107,
+          0.394876022124663,
+          0.4540392830967903
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 0.3637823459999999,
+        "minimum": 0.33754150699999996,
+        "maximum": 0.3791980440000001,
+        "samples": [
+          0.3637823459999999,
+          0.33754150699999996,
+          0.3791980440000001
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 0.3622511050198227,
+        "minimum": 0.3594741029664874,
+        "maximum": 0.3642406340222806,
+        "samples": [
+          0.3594741029664874,
+          0.3622511050198227,
+          0.3642406340222806
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 0.362172913,
+        "minimum": 0.359444881,
+        "maximum": 0.36424076,
+        "samples": [
+          0.359444881,
+          0.362172913,
+          0.36424076
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 81715200,
+      "read_worker_after_api_peak_rss_bytes": 72355840,
+      "post_checks_peak_rss_bytes": 85639168,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 62,
+          "before": 62
+        },
+        "objects": {
+          "after": 52,
+          "before": 52
+        },
+        "views": {
+          "after": 68,
+          "before": 68
+        }
+      }
+    },
+    {
+      "case": "disease-meaning",
+      "compression": "zstd",
+      "samples": 3,
+      "encoded_bytes": 32322,
+      "decoded_bytes": 952736,
+      "decoded_sha256": "sha256:ba9a75640b45c04734b9636567db2681bd08d318e6198076e97c3ec942b65141",
+      "bundle_digest": "sha256:2adc64b81a2b1ec760f0b274932435f012a094f4f1f424dd7987db7348fdaec1",
+      "backend": {
+        "distribution_version": null,
+        "level": 3,
+        "module": "compression.zstd",
+        "version": "1.5.7"
+      },
+      "public_save_wall_seconds": {
+        "median": 0.37773636216297746,
+        "minimum": 0.37155297212302685,
+        "maximum": 0.4216571729630232,
+        "samples": [
+          0.37155297212302685,
+          0.4216571729630232,
+          0.37773636216297746
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 0.33952801599999993,
+        "minimum": 0.32950271900000005,
+        "maximum": 0.34750551499999993,
+        "samples": [
+          0.32950271900000005,
+          0.34750551499999993,
+          0.33952801599999993
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 0.3562630719970912,
+        "minimum": 0.35321656707674265,
+        "maximum": 0.3606962801422924,
+        "samples": [
+          0.35321656707674265,
+          0.3562630719970912,
+          0.3606962801422924
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 0.35624916200000006,
+        "minimum": 0.353175627,
+        "maximum": 0.36064965299999996,
+        "samples": [
+          0.353175627,
+          0.35624916200000006,
+          0.36064965299999996
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 83787776,
+      "read_worker_after_api_peak_rss_bytes": 72589312,
+      "post_checks_peak_rss_bytes": 87367680,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 62,
+          "before": 62
+        },
+        "objects": {
+          "after": 52,
+          "before": 52
+        },
+        "views": {
+          "after": 68,
+          "before": 68
+        }
+      }
+    },
+    {
+      "case": "molecule-properties",
+      "compression": "gzip",
+      "samples": 3,
+      "encoded_bytes": 80819,
+      "decoded_bytes": 1483303,
+      "decoded_sha256": "sha256:8532cc291eff9322e78032be180ddcdb9560c0cacc6d145664fa1cf326e2d61d",
+      "bundle_digest": "sha256:87ac1e1f5d9566503830da4c8bf6467235ffd2b559a4773d9791578c353945c9",
+      "backend": {
+        "level": 6,
+        "module": "zlib",
+        "version": "1.3.2"
+      },
+      "public_save_wall_seconds": {
+        "median": 0.6352745140902698,
+        "minimum": 0.5961961068678647,
+        "maximum": 0.9854729620274156,
+        "samples": [
+          0.5961961068678647,
+          0.6352745140902698,
+          0.9854729620274156
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 0.567258614,
+        "minimum": 0.5490611830000001,
+        "maximum": 0.580014847,
+        "samples": [
+          0.5490611830000001,
+          0.580014847,
+          0.567258614
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 1.0121639620047063,
+        "minimum": 0.9985254921484739,
+        "maximum": 1.0285167661495507,
+        "samples": [
+          0.9985254921484739,
+          1.0285167661495507,
+          1.0121639620047063
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 1.012017437,
+        "minimum": 0.9983422690000001,
+        "maximum": 1.0283522440000001,
+        "samples": [
+          0.9983422690000001,
+          1.0283522440000001,
+          1.012017437
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 106160128,
+      "read_worker_after_api_peak_rss_bytes": 91746304,
+      "post_checks_peak_rss_bytes": 112021504,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 86,
+          "before": 86
+        },
+        "objects": {
+          "after": 72,
+          "before": 72
+        },
+        "views": {
+          "after": 96,
+          "before": 96
+        }
+      }
+    },
+    {
+      "case": "molecule-properties",
+      "compression": "none",
+      "samples": 3,
+      "encoded_bytes": 1483303,
+      "decoded_bytes": 1483303,
+      "decoded_sha256": "sha256:8532cc291eff9322e78032be180ddcdb9560c0cacc6d145664fa1cf326e2d61d",
+      "bundle_digest": "sha256:87ac1e1f5d9566503830da4c8bf6467235ffd2b559a4773d9791578c353945c9",
+      "backend": {
+        "level": null,
+        "module": null,
+        "version": null
+      },
+      "public_save_wall_seconds": {
+        "median": 0.6133484421297908,
+        "minimum": 0.6131268311291933,
+        "maximum": 0.6414023470133543,
+        "samples": [
+          0.6133484421297908,
+          0.6131268311291933,
+          0.6414023470133543
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 0.5570896949999999,
+        "minimum": 0.546192719,
+        "maximum": 0.5688817740000001,
+        "samples": [
+          0.546192719,
+          0.5570896949999999,
+          0.5688817740000001
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 1.0006738079246134,
+        "minimum": 0.9989893068559468,
+        "maximum": 1.0209184270352125,
+        "samples": [
+          1.0006738079246134,
+          0.9989893068559468,
+          1.0209184270352125
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 1.0005147380000001,
+        "minimum": 0.998842019,
+        "maximum": 1.020728538,
+        "samples": [
+          1.0005147380000001,
+          0.998842019,
+          1.020728538
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 105967616,
+      "read_worker_after_api_peak_rss_bytes": 91774976,
+      "post_checks_peak_rss_bytes": 111833088,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 86,
+          "before": 86
+        },
+        "objects": {
+          "after": 72,
+          "before": 72
+        },
+        "views": {
+          "after": 96,
+          "before": 96
+        }
+      }
+    },
+    {
+      "case": "molecule-properties",
+      "compression": "zstd",
+      "samples": 3,
+      "encoded_bytes": 45198,
+      "decoded_bytes": 1483303,
+      "decoded_sha256": "sha256:8532cc291eff9322e78032be180ddcdb9560c0cacc6d145664fa1cf326e2d61d",
+      "bundle_digest": "sha256:87ac1e1f5d9566503830da4c8bf6467235ffd2b559a4773d9791578c353945c9",
+      "backend": {
+        "distribution_version": null,
+        "level": 3,
+        "module": "compression.zstd",
+        "version": "1.5.7"
+      },
+      "public_save_wall_seconds": {
+        "median": 0.6030254559591413,
+        "minimum": 0.5806525589432567,
+        "maximum": 0.6305812110658735,
+        "samples": [
+          0.6305812110658735,
+          0.5806525589432567,
+          0.6030254559591413
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 0.543380121,
+        "minimum": 0.5376282210000001,
+        "maximum": 0.5774242949999999,
+        "samples": [
+          0.5774242949999999,
+          0.5376282210000001,
+          0.543380121
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 1.0380292378831655,
+        "minimum": 0.9951893049292266,
+        "maximum": 1.038322265027091,
+        "samples": [
+          1.0380292378831655,
+          0.9951893049292266,
+          1.038322265027091
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 1.0378462970000002,
+        "minimum": 0.9950929989999999,
+        "maximum": 1.038193563,
+        "samples": [
+          1.0378462970000002,
+          0.9950929989999999,
+          1.038193563
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 108716032,
+      "read_worker_after_api_peak_rss_bytes": 91856896,
+      "post_checks_peak_rss_bytes": 114159616,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 86,
+          "before": 86
+        },
+        "objects": {
+          "after": 72,
+          "before": 72
+        },
+        "views": {
+          "after": 96,
+          "before": 96
+        }
+      }
+    },
+    {
+      "case": "protein-function",
+      "compression": "gzip",
+      "samples": 3,
+      "encoded_bytes": 93779,
+      "decoded_bytes": 1403771,
+      "decoded_sha256": "sha256:4eef3b06b9d85f47ae8967f8170ea189c56303a0a871fa20bf1b77cbd24d5e30",
+      "bundle_digest": "sha256:b977cd14f5bff0a66f8fcb5d61b3b4309538ec2886bcb3cbfe23a6ac39c1f8f1",
+      "backend": {
+        "level": 6,
+        "module": "zlib",
+        "version": "1.3.2"
+      },
+      "public_save_wall_seconds": {
+        "median": 0.5045678769238293,
+        "minimum": 0.4852917979005724,
+        "maximum": 0.5142045400571078,
+        "samples": [
+          0.5142045400571078,
+          0.4852917979005724,
+          0.5045678769238293
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 0.4536143589999999,
+        "minimum": 0.452705331,
+        "maximum": 0.460538157,
+        "samples": [
+          0.452705331,
+          0.4536143589999999,
+          0.460538157
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 0.9640684258192778,
+        "minimum": 0.9426416661590338,
+        "maximum": 1.0537023379001766,
+        "samples": [
+          0.9426416661590338,
+          1.0537023379001766,
+          0.9640684258192778
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 0.963909661,
+        "minimum": 0.9425737470000002,
+        "maximum": 1.053644812,
+        "samples": [
+          0.9425737470000002,
+          1.053644812,
+          0.963909661
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 106491904,
+      "read_worker_after_api_peak_rss_bytes": 92495872,
+      "post_checks_peak_rss_bytes": 112144384,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 68,
+          "before": 68
+        },
+        "objects": {
+          "after": 57,
+          "before": 57
+        },
+        "views": {
+          "after": 75,
+          "before": 75
+        }
+      }
+    },
+    {
+      "case": "protein-function",
+      "compression": "none",
+      "samples": 3,
+      "encoded_bytes": 1403771,
+      "decoded_bytes": 1403771,
+      "decoded_sha256": "sha256:4eef3b06b9d85f47ae8967f8170ea189c56303a0a871fa20bf1b77cbd24d5e30",
+      "bundle_digest": "sha256:b977cd14f5bff0a66f8fcb5d61b3b4309538ec2886bcb3cbfe23a6ac39c1f8f1",
+      "backend": {
+        "level": null,
+        "module": null,
+        "version": null
+      },
+      "public_save_wall_seconds": {
+        "median": 0.5274647460319102,
+        "minimum": 0.5016719189006835,
+        "maximum": 0.8134423128794879,
+        "samples": [
+          0.5016719189006835,
+          0.5274647460319102,
+          0.8134423128794879
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 0.4483447479999998,
+        "minimum": 0.44080722299999997,
+        "maximum": 0.449743408,
+        "samples": [
+          0.44080722299999997,
+          0.449743408,
+          0.4483447479999998
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 0.9581822641193867,
+        "minimum": 0.9514813448768109,
+        "maximum": 1.0197583849076182,
+        "samples": [
+          0.9514813448768109,
+          0.9581822641193867,
+          1.0197583849076182
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 0.9579792280000001,
+        "minimum": 0.951356609,
+        "maximum": 1.0195584649999998,
+        "samples": [
+          0.951356609,
+          0.9579792280000001,
+          1.0195584649999998
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 106242048,
+      "read_worker_after_api_peak_rss_bytes": 92680192,
+      "post_checks_peak_rss_bytes": 112123904,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 68,
+          "before": 68
+        },
+        "objects": {
+          "after": 57,
+          "before": 57
+        },
+        "views": {
+          "after": 75,
+          "before": 75
+        }
+      }
+    },
+    {
+      "case": "protein-function",
+      "compression": "zstd",
+      "samples": 3,
+      "encoded_bytes": 61025,
+      "decoded_bytes": 1403771,
+      "decoded_sha256": "sha256:4eef3b06b9d85f47ae8967f8170ea189c56303a0a871fa20bf1b77cbd24d5e30",
+      "bundle_digest": "sha256:b977cd14f5bff0a66f8fcb5d61b3b4309538ec2886bcb3cbfe23a6ac39c1f8f1",
+      "backend": {
+        "distribution_version": null,
+        "level": 3,
+        "module": "compression.zstd",
+        "version": "1.5.7"
+      },
+      "public_save_wall_seconds": {
+        "median": 0.5081685590557754,
+        "minimum": 0.47481791488826275,
+        "maximum": 0.5097827590070665,
+        "samples": [
+          0.47481791488826275,
+          0.5081685590557754,
+          0.5097827590070665
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 0.459100324,
+        "minimum": 0.44128383299999996,
+        "maximum": 0.46324089,
+        "samples": [
+          0.44128383299999996,
+          0.46324089,
+          0.459100324
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 0.9614269719459116,
+        "minimum": 0.9530986770987511,
+        "maximum": 0.9849222349002957,
+        "samples": [
+          0.9530986770987511,
+          0.9614269719459116,
+          0.9849222349002957
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 0.9611781989999999,
+        "minimum": 0.9529337210000001,
+        "maximum": 0.9847847540000001,
+        "samples": [
+          0.9529337210000001,
+          0.9611781989999999,
+          0.9847847540000001
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 108613632,
+      "read_worker_after_api_peak_rss_bytes": 92688384,
+      "post_checks_peak_rss_bytes": 113680384,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 68,
+          "before": 68
+        },
+        "objects": {
+          "after": 57,
+          "before": 57
+        },
+        "views": {
+          "after": 75,
+          "before": 75
+        }
+      }
+    },
+    {
+      "case": "structure-context",
+      "compression": "gzip",
+      "samples": 3,
+      "encoded_bytes": 406029,
+      "decoded_bytes": 10472487,
+      "decoded_sha256": "sha256:a18c3111719b6cbef4f74797acbe08840fc7a2855d6beafd956960f625784fbc",
+      "bundle_digest": "sha256:f55bd7c14e3f5c02b607e1a05bd433bfa3bd6a6fa23438a9317ad14467d9f71e",
+      "backend": {
+        "level": 6,
+        "module": "zlib",
+        "version": "1.3.2"
+      },
+      "public_save_wall_seconds": {
+        "median": 4.46571327210404,
+        "minimum": 4.41048165387474,
+        "maximum": 4.579603449907154,
+        "samples": [
+          4.579603449907154,
+          4.41048165387474,
+          4.46571327210404
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 4.410262458,
+        "minimum": 4.361355357999999,
+        "maximum": 4.535128705,
+        "samples": [
+          4.535128705,
+          4.361355357999999,
+          4.410262458
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 3.622426538961008,
+        "minimum": 3.604686802951619,
+        "maximum": 3.6224795470479876,
+        "samples": [
+          3.604686802951619,
+          3.622426538961008,
+          3.6224795470479876
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 3.6217214650000003,
+        "minimum": 3.604196676,
+        "maximum": 3.621844667,
+        "samples": [
+          3.604196676,
+          3.6217214650000003,
+          3.621844667
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 257429504,
+      "read_worker_after_api_peak_rss_bytes": 168165376,
+      "post_checks_peak_rss_bytes": 307257344,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 260,
+          "before": 260
+        },
+        "objects": {
+          "after": 210,
+          "before": 210
+        },
+        "views": {
+          "after": 267,
+          "before": 267
+        }
+      }
+    },
+    {
+      "case": "structure-context",
+      "compression": "none",
+      "samples": 3,
+      "encoded_bytes": 10472487,
+      "decoded_bytes": 10472487,
+      "decoded_sha256": "sha256:a18c3111719b6cbef4f74797acbe08840fc7a2855d6beafd956960f625784fbc",
+      "bundle_digest": "sha256:f55bd7c14e3f5c02b607e1a05bd433bfa3bd6a6fa23438a9317ad14467d9f71e",
+      "backend": {
+        "level": null,
+        "module": null,
+        "version": null
+      },
+      "public_save_wall_seconds": {
+        "median": 4.5086173040326685,
+        "minimum": 4.4681540669407696,
+        "maximum": 4.518583100987598,
+        "samples": [
+          4.4681540669407696,
+          4.5086173040326685,
+          4.518583100987598
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 4.326499173999999,
+        "minimum": 4.293886118,
+        "maximum": 4.370511596,
+        "samples": [
+          4.293886118,
+          4.370511596,
+          4.326499173999999
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 3.657467498909682,
+        "minimum": 3.6478344418574125,
+        "maximum": 3.658880186965689,
+        "samples": [
+          3.657467498909682,
+          3.658880186965689,
+          3.6478344418574125
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 3.655906889,
+        "minimum": 3.647338177,
+        "maximum": 3.658367533,
+        "samples": [
+          3.655906889,
+          3.658367533,
+          3.647338177
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 257003520,
+      "read_worker_after_api_peak_rss_bytes": 168194048,
+      "post_checks_peak_rss_bytes": 306823168,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 260,
+          "before": 260
+        },
+        "objects": {
+          "after": 210,
+          "before": 210
+        },
+        "views": {
+          "after": 267,
+          "before": 267
+        }
+      }
+    },
+    {
+      "case": "structure-context",
+      "compression": "zstd",
+      "samples": 3,
+      "encoded_bytes": 158309,
+      "decoded_bytes": 10472487,
+      "decoded_sha256": "sha256:a18c3111719b6cbef4f74797acbe08840fc7a2855d6beafd956960f625784fbc",
+      "bundle_digest": "sha256:f55bd7c14e3f5c02b607e1a05bd433bfa3bd6a6fa23438a9317ad14467d9f71e",
+      "backend": {
+        "distribution_version": null,
+        "level": 3,
+        "module": "compression.zstd",
+        "version": "1.5.7"
+      },
+      "public_save_wall_seconds": {
+        "median": 4.416139540961012,
+        "minimum": 4.37665690202266,
+        "maximum": 4.5070483991876245,
+        "samples": [
+          4.416139540961012,
+          4.37665690202266,
+          4.5070483991876245
+        ]
+      },
+      "public_save_cpu_seconds": {
+        "median": 4.351905708,
+        "minimum": 4.287415072,
+        "maximum": 4.459094649,
+        "samples": [
+          4.351905708,
+          4.287415072,
+          4.459094649
+        ]
+      },
+      "public_read_wall_seconds": {
+        "median": 3.60596508695744,
+        "minimum": 3.5257959191221744,
+        "maximum": 3.695966131053865,
+        "samples": [
+          3.5257959191221744,
+          3.60596508695744,
+          3.695966131053865
+        ]
+      },
+      "public_read_cpu_seconds": {
+        "median": 3.6053382480000002,
+        "minimum": 3.525430116,
+        "maximum": 3.695264039,
+        "samples": [
+          3.525430116,
+          3.6053382480000002,
+          3.695264039
+        ]
+      },
+      "save_worker_after_api_peak_rss_bytes": 257388544,
+      "read_worker_after_api_peak_rss_bytes": 168230912,
+      "post_checks_peak_rss_bytes": 309669888,
+      "counts": {
+        "cards": {
+          "after": 1,
+          "before": 1
+        },
+        "locations": {
+          "after": 260,
+          "before": 260
+        },
+        "objects": {
+          "after": 210,
+          "before": 210
+        },
+        "views": {
+          "after": 267,
+          "before": 267
+        }
+      }
+    }
+  ],
+  "qualification": "The measured 92af2c6 CI has failed large-fixture admission tests; these local measurements do not establish hosted admission. The test-only correction uses conscious exact-size opt-in while retaining production defaults and original scientific checks.",
+  "environment_versions": {
+    "sabueso": "0.14.0+144.g92af2c6",
+    "argdigest": "0.17.0+5.gcd9c4f3",
+    "smonitor": "0.22.0+3.gebdd054",
+    "pyunitwizard": "0.29.0+4.g9d74f0e",
+    "depdigest": "0.15.1+8.g0884f0c",
+    "ackredit": "0.12.0+11.g74f865d",
+    "pytest-receptor": "1.2.2+2.gb9676f8",
+    "gh-run-receptor": "1.3.0+5.g319c52c"
+  },
+  "large_original_correction": {
+    "fixture_decoded_bytes": 89849893,
+    "fixture_sha256": "4f88069416426c4b32cab97d8029dd061d167bac7769831da7aad0b4dd89a81d",
+    "streamed_test_gate": {
+      "passed": 2,
+      "seconds": 48.85,
+      "sampled_whole_test_peak_rss_bytes": 1066610688,
+      "owned_swap_bytes": 0
+    },
+    "stopped_unstreamed_attempt": "Owned RSS guard terminated the first attempt; no pass or workload acceptance inferred."
+  }
+}

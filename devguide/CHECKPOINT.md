@@ -1,58 +1,54 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-11-03 (UTC)**, cross-version Zstandard backend qualification
-(#112). This is the resumption entry point. The complete preceding chronology is
-[archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
-source and release receipts remain unchanged.
+Last updated: **2026-11-03 (UTC)**, public exploration transport and measured API
+workloads (#178/#167/#112). This is the resumption entry point. Earlier source,
+scientific and release receipts remain linked in the technical reports and
+[preceding chronology](archive/CHECKPOINT_before_pause_20261025.md).
 
-The latest [presentation continuation](pending_proposals/card_navigation_preview.md)
-prioritizes questions/destinations within bounded link previews, keeps actual item
-indices and discloses omitted categories. New saved files retain their named
-presentation policy; genuine older files retain the original prefix. The prior
-`f2732011c027be0ed65e7c17fb353e0c925bd50a` checkpoint has verified CI 15/15 and
-governance 1/1 receipts in #148/#112; newer source requires its own qualification.
-Current [persistence observations](pending_proposals/card_persistence_cost.md#current-format-6-public-observation-2026-11-02)
-define a bounded physical-layout investigation, not an achieved speedup.
-Broad exploration, #173 reconciliation, human acceptance and release work remain open.
+Development source `92af2c646c9c94686352b0ca5508009b67af46db`, SDK
+`0.14.0+144.g92af2c6`, implements [explicit file transport](pending_proposals/exploration_file_transport.md):
+plain JSON by default, gzip/Zstandard for human and agent saves, content-detected
+single-frame reading, visible positive/None byte/window budgets, separate
+transport receipts and atomic output. Original @1–@6 scientific verifiers,
+source support, quantities and history remain intact. #179 corrects a reproduced
+inert-test import-alias leak, with a fresh-process regression.
 
-The navigation runtime is now qualified at
-`baac1438810eb3ef4af8a98f14116a2d0c8e547b`, SDK `0.14.0+139.gbaac143`:
-[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/41569549014),
-[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/41569549234), all
-full-capture hashes/steps and thirteen actual summaries checked. The following
-[storage experiment](pending_proposals/card_persistence_layout_experiment.md) is
-an intermediate engineering tool with its own local tests and deferred remote
-scope in #167/#112. Package runtime and all protected original rules remain
-unchanged. Continue optional bounded compression design before public storage
-adoption; do not attribute baac143's hosted result to newer helper/test bytes.
+**Runtime CI is not qualified.** [CI 41679082751](https://github.com/uibcdf/sabueso/actions/runs/41679082751)
+finds two historical tests opening the same 89,849,893-byte original without
+opting into the new 64 MiB defaults; Linux 3.12–3.14 each report 2 failed and
+6,751 passed. [Governance](https://github.com/uibcdf/sabueso/actions/runs/41679082786)
+is verified 1/1. The test-only correction checks default refusal, consciously
+admits the exact original size, and streams fixture copying/hash verification.
+The corrected large-original gate passes 2/2, keeping the same source hash and
+frozen science; 203 further selected cases pass, with those two large cases run
+separately under the resource supervisor. Recover a **new unskipped exact-source** CI/governance checkpoint;
+no earlier green result qualifies a failed/newer source.
 
-The [#178 comparison](pending_proposals/card_compressor_comparison.md) extends
-the engineering block: 150 fresh repeated codec samples favor Zstandard as a
-balanced candidate; XZ gives smaller files with greater write CPU/RSS. Nineteen
-experimental original-receiving workers demonstrate exact original output but
-no causal full-read speedup. Current package runtime stays unchanged. Qualify
-optional bindings on Python 3.11–3.13 and platform routes before codec/default
-adoption. Keep public plain JSON, frozen readers, explicit budgets and the
-combined #167/#178 deferred-CI recovery route; public compression is not delivered.
+The [actual public API workload study](pending_proposals/public_transport_workload.md)
+passes 45 saves plus 45 fresh reads over five public originals on SDK144. Every
+captured table, history occurrence/edge, selection/support and original presentation
+is preserved, with the known operational live-to-saved mode transition. Variants
+reconstruct identical canonical JSON; original input hashes remain unchanged.
+The accumulated reading becomes 99,232 bytes with Zstandard versus 11,009,800
+plain, while its complete reads remain around three seconds. This establishes
+storage savings, not a causal full-read speedup or agreed workload/RSS budget.
+The bounded local measurement is complete; #167's broader workload/human acceptance
+remains open. All 653 tracked package files are unchanged by the test/doc follow-up.
 
-The [backend continuation](pending_proposals/zstd_backend_qualification.md) passes
-isolated Linux 3.11–3.13 probes without modifying their environments. It adds
-twelve hosted OS/Python producers, retaining thirteen pytest lanes (18 CI jobs).
-Its unskipped checkpoint is qualified at `1fdb771`, SDK `0.14.0+143.g1fdb771`:
-[CI 18/18](https://github.com/uibcdf/sabueso/actions/runs/41585285748) and
-[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/41585285886).
-Full captures/steps, thirteen actual pytest summaries and 24 fresh frames across
-twelve producers are verified. This recovers both preceding helper commits;
-package runtime and protected originals remain unchanged at that checkpoint.
-The following [production transport](pending_proposals/exploration_file_transport.md)
-adds explicit plain/gzip/Zstandard saving, content-detected strict single-frame
-reading, visible positive/None byte/window ceilings, atomic output and separate
-transport receipts. Its package runtime, optional binding and installed receiving
-need their own unskipped exact-source qualification; older green results do not
-qualify these new bytes. Selected local integration passes 755 cases, with nine
-additional current @5/@6 compressed human/agent cases; #179 fixes a reproduced
-inert-test import-alias leak with a fresh-process regression. Original protected
-rules remain unchanged. Exact-source CI/installed admission is still pending.
+Preceding helper checkpoint `1fdb771ce4f0c572a0cb5957c9eb40178f7876c6`, SDK
+`0.14.0+143.g1fdb771`, has verified [CI 18/18](https://github.com/uibcdf/sabueso/actions/runs/41585285748)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/41585285886),
+all thirteen actual pytest summaries and twelve backend cross-read producers.
+It recovers the earlier layout/compressor helper debt; package runtime there
+is identical to qualified navigation source `baac143`. See
+[the ledger](pending_proposals/deferred_ci.md) for precise historical scope.
+
+After transport qualification, resume **#148's broad human/agent scientific
+exploration**, following [the complete inventory](pending_proposals/card_exploration_completion_0150.md):
+remaining region/site/instance/assembly transitions and #173 reconciliation,
+then activity/assay/document/literature, clinical/classification, variants and
+comparisons/associations. Original foundational and pilot-driven routes apply
+together. Broad researcher acceptance remains open; **0.15.0 consolidation remains paused**.
 
 ## Resume here
 

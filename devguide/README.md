@@ -26,7 +26,11 @@ native 3.14 and pinned older-Python probes, genuine bidirectional fixtures and
 twelve hosted OS/Python routes, qualified at `1fdb771`. The following
 [public file transport](pending_proposals/exploration_file_transport.md) adds
 explicit plain/gzip/Zstandard saving and strict bounded reading in development;
-its new runtime requires separate source-bound qualification.
+its new runtime requires separate source-bound qualification. The
+[actual API workload study](pending_proposals/public_transport_workload.md) records
+45 saves and 45 fresh reads with complete retained-content/history parity. Its
+measured source CI exposed two unmigrated large-fixture calls; the test-only
+correction retains defaults and needs a new unskipped source checkpoint.
 
 [Diagnostic receiving](DIAGNOSTIC_RECEIVING.md) records the retained standalone
 bootstrap, application precedence and bounded scoped argument/error fix (#150).

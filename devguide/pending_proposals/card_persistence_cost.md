@@ -242,3 +242,17 @@ adopting a new reference-based public format. The
 measures gzip/Zstandard/XZ before a production codec/default is selected.
 Verification CPU/RSS, representative
 workload budgets and original-reader compatibility remain separate requirements.
+
+
+## Actual public transport API measurements (2026-11-03)
+
+The [five-reading API study](public_transport_workload.md) runs the implemented
+plain/gzip/Zstandard `save` and public original reader in 45 fresh producer/reader
+pairs. It verifies all captured content/history and original hashes, records
+complete call times separately from import/setup and post-check memory, and
+confirms large storage savings with similar full-read latency. This completes the
+bounded local transport measurement, not accepted large-workload or researcher
+budgets. The measured source CI also exposed two older large-fixture calls that
+need explicit admission; preserve the production ceilings and qualify the
+test-only correction on a new exact-source unskipped checkpoint before admission.
+Then resume the agreed broader scientific exploration route.

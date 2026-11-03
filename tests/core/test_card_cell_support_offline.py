@@ -4,6 +4,7 @@ import gzip
 import hashlib
 import importlib
 import json
+import shutil
 import socket
 from pathlib import Path
 
@@ -11,6 +12,7 @@ import pytest
 
 import sabueso
 from sabueso.core.card import Card
+from sabueso.core.errors import ArgumentError
 from sabueso.core.snapshot import canonical_json
 
 PUBLIC = Path("temp_data/frozen_cards/schema_0.3.9__P52270.json")
@@ -198,13 +200,13 @@ def test_fitting_items_continue_on_next_page_without_unnecessary_deferral(card):
 def test_frozen_original_selection_gets_current_delivery_without_new_science(
     tmp_path, monkeypatch
 ):
-    payload = gzip.decompress(FROZEN.read_bytes())
-    assert (
-        hashlib.sha256(payload).hexdigest()
-        == "4f88069416426c4b32cab97d8029dd061d167bac7769831da7aad0b4dd89a81d"
-    )
     path = tmp_path / "original.json"
-    path.write_bytes(payload)
+    with gzip.open(FROZEN, "rb") as source, path.open("wb") as output:
+        shutil.copyfileobj(source, output, length=65536)
+    original_digest = "4f88069416426c4b32cab97d8029dd061d167bac7769831da7aad0b4dd89a81d"
+    with path.open("rb") as source:
+        assert hashlib.file_digest(source, "sha256").hexdigest() == original_digest
+    original_size = path.stat().st_size
     for module, function in [
         ("sabueso.core.card_scientific_access", "materialize"),
         ("sabueso.core.structures", "structure_inventory"),
@@ -212,7 +214,14 @@ def test_frozen_original_selection_gets_current_delivery_without_new_science(
         ("sabueso.core.structure_explanation", "explain_structure_inventory"),
     ]:
         monkeypatch.setattr(importlib.import_module(module), function, forbidden)
-    saved = sabueso.read_exploration(path)
+    # This genuine large original deliberately exceeds the default file budget.
+    # Exercise the visible refusal and the conscious, exact-size opt-in.
+    assert original_size > 64 * 1024**2
+    with pytest.raises(ArgumentError, match="max_encoded_bytes"):
+        sabueso.read_exploration(path)
+    saved = sabueso.read_exploration(
+        path, max_encoded_bytes=original_size, max_decoded_bytes=original_size
+    )
     access = saved.explorer.access
     selection = access.selection(
         "XA_cb2ba0b7cbc9cf8e7008ff30467617852445d1bb80d571bc8917da8f9d4b439b"
@@ -228,7 +237,8 @@ def test_frozen_original_selection_gets_current_delivery_without_new_science(
         == item["support"]["source_assertions"]
     )
     assert canonical_json(selection._scientific.wire) == before
-    assert path.read_bytes() == payload
+    with path.open("rb") as source:
+        assert hashlib.file_digest(source, "sha256").hexdigest() == original_digest
     assert saved.validation["verified_selection_policies"] == [
         "structure_access_selection@1"
     ]

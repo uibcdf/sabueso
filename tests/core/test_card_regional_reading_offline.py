@@ -4,6 +4,7 @@ import gzip
 import hashlib
 import importlib
 import json
+import shutil
 import socket
 import subprocess
 import sys
@@ -18,6 +19,7 @@ import sabueso
 from sabueso.core.card import Card
 from sabueso.core.card_access import CardAccess
 from sabueso.core.card_structure_reading_v1 import RULE, reading
+from sabueso.core.errors import ArgumentError
 from sabueso.core.snapshot import canonical_json
 from sabueso.resolver import EntityResolver, FixtureRCSBClient, FixtureUniProtClient
 
@@ -291,22 +293,30 @@ assert v.back().items()[0].open().regional_reading==context
 def test_genuine_old_regional_result_keeps_its_original_reported_values(
     tmp_path, monkeypatch
 ):
-    raw = gzip.decompress(
-        Path("tests/core/data/card_agent_selection_v1.json.gz").read_bytes()
-    )
-    assert (
-        hashlib.sha256(raw).hexdigest()
-        == "4f88069416426c4b32cab97d8029dd061d167bac7769831da7aad0b4dd89a81d"
-    )
     path = tmp_path / "original.json"
-    path.write_bytes(raw)
+    with (
+        gzip.open("tests/core/data/card_agent_selection_v1.json.gz", "rb") as source,
+        path.open("wb") as output,
+    ):
+        shutil.copyfileobj(source, output, length=65536)
+    original_digest = "4f88069416426c4b32cab97d8029dd061d167bac7769831da7aad0b4dd89a81d"
+    with path.open("rb") as source:
+        assert hashlib.file_digest(source, "sha256").hexdigest() == original_digest
+    original_size = path.stat().st_size
     monkeypatch.setattr(Card, "from_dict", forbidden)
     monkeypatch.setattr(
         importlib.import_module("sabueso.core.card_scientific_access"),
         "materialize",
         forbidden,
     )
-    saved = sabueso.read_exploration(path)
+    # Historical scientific compatibility is independent of default admission.
+    # Keep the genuine bytes and explicitly admit this larger known workload.
+    assert original_size > 64 * 1024**2
+    with pytest.raises(ArgumentError, match="max_encoded_bytes"):
+        sabueso.read_exploration(path)
+    saved = sabueso.read_exploration(
+        path, max_encoded_bytes=original_size, max_decoded_bytes=original_size
+    )
     access = saved.explorer.access
     # Exercise current presentation over a genuinely retained old regional result,
     # without claiming an unrecorded human request or changing the original file.
@@ -322,7 +332,9 @@ def test_genuine_old_regional_result_keeps_its_original_reported_values(
     assert context["coordinate_basis"]["status"] == "not_retained"
     assert context["complete_chains"] == result.wire["items"][key]["complete_chains"]
     assert context["region"] == result.options["region"]
-    assert canonical_json(result.wire) == original and path.read_bytes() == raw
+    assert canonical_json(result.wire) == original
+    with path.open("rb") as source:
+        assert hashlib.file_digest(source, "sha256").hexdigest() == original_digest
 
 
 def test_preview_is_explicitly_bounded_and_html_escaped(card, monkeypatch):

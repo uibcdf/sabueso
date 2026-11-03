@@ -69,6 +69,14 @@ codec/library versions is not promised; original decoded bytes are exact.
 
 ## Qualification and scope
 
+The [actual public API workload study](public_transport_workload.md) now records
+five public retained readings, 45 saves and 45 fresh reads. `92af2c6` CI exposed
+two historical calls above the default file ceiling; the test-only migration
+asserts refusal then explicitly admits the verified original size with streamed
+fixture preparation. This does not relax defaults, frozen bytes or science. The
+failed source is not qualification; recover a new unskipped exact-source checkpoint.
+
+
 Run the transport owning cases plus saved literal/science/sites/quaternary/assembly,
 human/access/agent/navigation, argument, diagnostic, quantity and dependency gates.
 Test real original quantities under a different unit policy, genuine historical
