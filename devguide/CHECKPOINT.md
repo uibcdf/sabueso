@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-11-02**, discoverable navigation previews and persistence observations
+Last updated: **2026-11-03 (UTC)**, physical storage experiment and compression baseline
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -14,6 +14,17 @@ governance 1/1 receipts in #148/#112; newer source requires its own qualificatio
 Current [persistence observations](pending_proposals/card_persistence_cost.md#current-format-6-public-observation-2026-11-02)
 define a bounded physical-layout investigation, not an achieved speedup.
 Broad exploration, #173 reconciliation, human acceptance and release work remain open.
+
+The navigation runtime is now qualified at
+`baac1438810eb3ef4af8a98f14116a2d0c8e547b`, SDK `0.14.0+139.gbaac143`:
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/41569549014),
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/41569549234), all
+full-capture hashes/steps and thirteen actual summaries checked. The following
+[storage experiment](pending_proposals/card_persistence_layout_experiment.md) is
+an intermediate engineering tool with its own local tests and deferred remote
+scope in #167/#112. Package runtime and all protected original rules remain
+unchanged. Continue optional bounded compression design before public storage
+adoption; do not attribute baac143's hosted result to newer helper/test bytes.
 
 ## Resume here
 

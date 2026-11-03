@@ -15,6 +15,9 @@ prioritize retained questions and destinations while disclosing omissions and
 preserving original item indices, complete agent access and old saved previews
 (#148). [Persistence observations](pending_proposals/card_persistence_cost.md)
 separately record current accumulated-read costs; no latency improvement is claimed.
+The [physical-layout experiment](pending_proposals/card_persistence_layout_experiment.md)
+compares byte-exact sharing with gzip baselines and directs the next bounded
+storage step without changing the public format or discarding support (#167).
 
 [Diagnostic receiving](DIAGNOSTIC_RECEIVING.md) records the retained standalone
 bootstrap, application precedence and bounded scoped argument/error fix (#150).

@@ -1,5 +1,16 @@
 # Sabueso — Decision Log
 
+## Compare compression before adopting shared physical storage (2026-11-03, #167)
+
+Retain exact shared-part encoding as a reproducible engineering experiment outside
+the package runtime. Five original public readings reconstruct byte-identically
+and pass inert original receiving. Gzip of unchanged originals gives a stronger
+size baseline; sharing first makes four of five compressed files larger. Evaluate
+optional bounded gzip transport before a public reference-based format. Preserve
+all history/support, canonical producer bytes, trusted bundle digests and frozen
+readers. No production storage, schema, science or default behavior changes here.
+See [the experiment and next contract](pending_proposals/card_persistence_layout_experiment.md).
+
 ## Version navigation presentation separately from scientific decisions (2026-11-02, #148)
 
 New live navigation records `question_destination_preview@1` in the existing

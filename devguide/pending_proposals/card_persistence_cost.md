@@ -231,3 +231,11 @@ Inputs, profile, unprofiled samples, accounting and resource receipts live under
 `recovered_work/navigation_preview_148_20261102/`, owned by #167/#148. Review at
 the next persistence change or before workload acceptance. Keep useful originals
 and receipts; clean only finished owned temporary resources.
+
+The [follow-up physical-layout experiment](card_persistence_layout_experiment.md)
+now separates automatic support preparation from exact physical repetition and
+compares shared parts with gzip of unchanged originals across five public files.
+Gzip alone removes 93.36–96.58% of stored bytes here; sharing first makes four
+gzip files larger. Prioritize optional bounded original-byte compression before
+adopting a new reference-based public format. Verification CPU/RSS, representative
+workload budgets and original-reader compatibility remain separate requirements.

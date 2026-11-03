@@ -9,6 +9,26 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Intermediate physical-storage experiment (2026-11-03, #167)
+
+The [engineering experiment](card_persistence_layout_experiment.md) adds only a
+stdlib helper, its regression tests and technical documentation. It changes no
+package runtime, Card schema, source, dependency, migration, security fix or
+production integration. This is an intermediate step of the authorized #167
+persistence block: after its owning local gates, use the approved `[skip ci]`
+route, recording its actual source/SDK and local receipts in #167/#112. No hosted
+qualification of newer helper/test bytes is claimed. The last package-runtime
+checkpoint remains qualified `baac1438810eb3ef4af8a98f14116a2d0c8e547b`.
+
+Owner #167/#112; recovery trigger is the bounded compression implementation's
+final checkpoint, or earlier adoption/release consideration. Recover all
+accumulated helper/receiving/runtime work with an unskipped exact-head CI and
+governance run, full gh-run-receptor captures, all applicable jobs/steps and actual
+summaries before closing the persistence code block or claiming release admission.
+If the proposed transport is deferred, an unskipped helper checkpoint must recover
+this scope before its completed-code qualification is claimed. Experimental
+measurements do not close broad #148 delivery or researcher/workload acceptance.
+
 ### Intermediate component keys and declared occurrences (2026-10-30, #173)
 
 The native component-key continuation after `6f94043` uses the maintainer-approved
