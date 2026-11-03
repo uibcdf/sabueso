@@ -4675,3 +4675,27 @@ Track the missing original generation/operation scope and named native reconcili
 in #173 before claiming that capability. Continue the complete broad profile and
 researcher/workload acceptance; 0.15.0 consolidation remains paused. See the
 [regional reading contract](pending_proposals/card_regional_reading.md).
+
+
+## 2026-11-03 — Opt in to original nonpolymer keys before adapter adoption (#173)
+
+Use explicit `rcsb_assembly_generation@5` / `native_entry_component_key@2` for
+source-bound native nonpolymer instance keys. Require coherent stated entry,
+entity and record identity; retain incomplete context and every conflicting or
+duplicate original without selecting a winner. Native keys, author labels,
+chemical codes and physical copies have distinct meanings. No Card schema or
+source acquisition change is needed for this native slice.
+
+Keep default @4 and the existing human/compact/saved adapters on their original
+interpretation until independent original @5 verification is implemented and
+qualified. This makes the new basis inspectable through an explicit native call
+without changing what existing saved science means. Source-bound tests/CI and
+researcher acceptance remain separate. See [the contract](pending_proposals/assembly_nonpolymer_binding.md).
+
+This native step uses the existing maintainer-approved tested-code batching route
+for an intermediate `[skip ci]` push. Record exact head/scope and recover the
+accumulated native/original-reader/adapter block through unskipped exact-source
+CI/governance before adoption or completed-code qualification, or recover the
+native checkpoint earlier if the reader is deferred. No source/schema/dependency/
+packaging/migration or shared integration gate is waived; prior source-capture
+CI retains its own active receiving. See [the ledger](pending_proposals/deferred_ci.md).

@@ -18,10 +18,19 @@ rejects quantity units and keeps unavailable scalars last. Human questions retai
 the complete normalized scientific request, matching agent selection context.
 See [the live contract](pending_proposals/card_assembly_exploration.md).
 
+Opt-in native `rcsb_assembly_generation@5` additionally preflights selected
+nonpolymer entity/instance rows and interpreted identifier/descriptor text before
+new key indexing, pin capture or expansion, using the same positive/None
+`operation_budget` with its own cumulative work counter. `expand_occurrences`
+accepts @4 and @5; original @1–@3 refuse it. Human/agent exploration options and
+original saved reading continue to use @4 until an independent @5 reader is
+qualified. See [the native key contract](pending_proposals/assembly_nonpolymer_binding.md).
+
 `Card.assembly_generation` (#173) adds positive non-boolean `operation_budget`
 (default 100,000), or explicit None to disable its receiving ceilings, and strict
 booleans `expand_operations` and `expand_occurrences`. Exact `generation_rule` selects current
-`rcsb_assembly_generation@4` or original `rcsb_assembly_generation@1`/`@2`/`@3` without
+default `rcsb_assembly_generation@4`, explicit opt-in `rcsb_assembly_generation@5`,
+or original `rcsb_assembly_generation@1`/`@2`/`@3` without
 coercion. Existing `structure_ref` and `relationship_id`
 digesters provide exact selection; the latter requires the former. Backend guards
 remain active with digestion skipped. Selected source array/text/label work is

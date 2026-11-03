@@ -6,6 +6,19 @@ resumption entry point. Earlier source,
 scientific and release receipts remain linked in the technical reports and
 [preceding chronology](archive/CHECKPOINT_before_pause_20261025.md).
 
+The [opt-in native nonpolymer key continuation](pending_proposals/assembly_nonpolymer_binding.md)
+adds explicit generation @5 / component-key @2. Coherent original native instance
+records can now resolve their keys with complete source locations; missing context,
+duplicate records, role/record/code conflicts and separate revisions stay explicit.
+Default @4 and current human/compact/saved adapters are unchanged. The independent
+original @5 reader is the next prerequisite for adapter adoption. Source-bound local
+checks pass 650 selected cases /18 files, serial, with zero owned swap. Original
+rules/readers, source fixtures, schemas and migration stay unchanged. Local
+qualification precedes intermediate publication; the native/original-reader/adapter
+block requires final unskipped exact-source CI/governance recovery under the
+[approved ledger](pending_proposals/deferred_ci.md). Skipped CI is not qualification; full physical
+reconciliation and broad researcher acceptance remain open.
+
 The following [#173 source continuation](pending_proposals/rcsb_nonpolymer_inputs.md)
 retains original nonpolymer entity/instance identifiers through a dedicated RCSB
 query alias, separate from old ligand summaries. Three public-control captures

@@ -54,9 +54,10 @@ remap or calculate a new correspondence. Unsupported input remains inspectable.
 
 This is input delivery, not a completed scientific panel. Native generation
 @1–@4, component/operator and occurrence rules remain unchanged: even with the
-new field, original neighbor references stay `referenced` under @4. A later
-named/versioned native rule and independent saved reader must qualify the new
-instance basis. Other component roles remain unknown. Neither source membership
+new field, original neighbor references stay `referenced` under @4. The following
+[opt-in generation @5 / component-key @2](assembly_nonpolymer_binding.md) now reads
+that native instance basis. Its independent saved verification must qualify
+adapter adoption; default @4 and existing saved readers remain unchanged. Other component roles remain unknown. Neither source membership
 nor declared occurrences establish physical uniqueness, contacts or biological
 relevance. Full #173 reconciliation and broad #148 acceptance remain open.
 

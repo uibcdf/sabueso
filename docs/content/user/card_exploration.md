@@ -1025,6 +1025,23 @@ for the earlier operator-only binding, or `generation_rule="rcsb_assembly_genera
 for component-key binding without occurrence plans. The default is now
 `rcsb_assembly_generation@4`.
 
+For explicit native inspection of newly retained nonpolymer instance records,
+select `generation_rule="rcsb_assembly_generation@5"`:
+
+```python
+native_keys = card.assembly_generation(
+    structure_ref="pdb:1SUX", generation_rule="rcsb_assembly_generation@5"
+)
+```
+
+This interpretation requires coherent source entry, entity and instance IDs.
+Missing identity context stays incomplete; duplicates and conflicting IDs or
+component codes stay ambiguous. Native and author labels remain distinct.
+Existing Cards keep unretained input unknown, without acquiring or refreshing it.
+The explorer's current question, compact selection and saved scientific reading
+continue to use @4 until independent original @5 reading is qualified. Native
+key resolution still does not establish physical copies or assembly contacts.
+
 ## Interpret interfaces and compare family sites
 
 For a protein Card, ask which retained interface interpretations are supported:

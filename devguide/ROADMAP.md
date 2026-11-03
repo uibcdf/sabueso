@@ -312,9 +312,12 @@ directions until a bounded use and acceptance criteria are agreed.
 
 The [original nonpolymer input continuation](pending_proposals/rcsb_nonpolymer_inputs.md)
 retains the source identifiers needed for the next #173 reconciliation contract,
-including separate native/author labels and null versus unrequested scope. Its
-selected source/schema/persistence gates and exact-source receiving checkpoint
-remain distinct from implementing a new native scientific rule or closing #148.
+including separate native/author labels and null versus unrequested scope. The
+[opt-in native @5 continuation](pending_proposals/assembly_nonpolymer_binding.md)
+now uses that original basis under component-key @2. Default @4 and old adapters
+stay unchanged; an independent original @5 saved reader must precede adoption.
+Source-bound qualification and full physical reconciliation remain separate from
+closing #148 or resuming 0.15.0 consolidation.
 
 On 2026-10-27 the maintainer authorized a short
 [persistence-cost block #167](pending_proposals/card_persistence_cost.md) before

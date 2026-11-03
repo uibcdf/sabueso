@@ -9,6 +9,33 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Opt-in native nonpolymer key interpretation (2026-11-03, #173)
+
+The [native @5/component-key @2 continuation](assembly_nonpolymer_binding.md)
+uses already committed source inputs, keeping original @1–@4, the default and
+existing human/compact/saved adapters unchanged. It is an intermediate step of
+#173's native/original-reader/adapter block. After owning and broader local
+native/receiving/original-reader checks, the maintainer-approved tested-code
+batching route permits an intermediate `[skip ci]` push. This adds no source,
+Card schema, dependency, packaging, migration or cross-component integration
+boundary; those immediate gates are not deferred. Existing source-capture CI
+continues independently and cannot qualify the new scientific rule.
+
+Owner #173/#148/#112. Record the actual deferred head/SDK, tested scope and
+missing matrix/governance in the issues and owned phase
+`recovered_work/assembly_nonpolymer_binding_173_20261103/`. Recover the accumulated
+block with an **unskipped exact-source CI/governance checkpoint** when original
+saved interpretation and adapter adoption are ready, or earlier if the new native
+rule is considered for adoption or the reader is deferred. Inspect full receptor
+manifests, all jobs/steps, actual pytest summaries and backend/installed receiving
+before claiming completed-code qualification. No skipped/older/pending run is
+passing evidence for the new head.
+
+Independent original @5 saved interpretation precedes adapter/default adoption;
+full physical reconciliation, broad acceptance and paused 0.15.0 consolidation
+remain separate. Earlier #181 and nonpolymer source captures retain their
+independent source scope and active receiving.
+
 ### Original nonpolymer source inputs (2026-11-03, #173)
 
 The [source continuation](rcsb_nonpolymer_inputs.md) adds an explicit query alias

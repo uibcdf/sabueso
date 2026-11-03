@@ -115,7 +115,10 @@ No browsing operation may acquire new data, refresh a Card or fabricate findings
    The [nonpolymer source continuation](rcsb_nonpolymer_inputs.md) now retains
    native entity/instance identifiers and separate author labels under a dedicated
    original-input scope. This does not change current @1–@4 interpretation;
-   versioned native reconciliation and its original saved reader remain pending.
+   [Opt-in native @5](assembly_nonpolymer_binding.md) now binds explicit coherent
+   nonpolymer keys under component-key @2. Default @4 and existing human/agent
+   interpretation remain unchanged; independent original @5 saved verification
+   precedes adapter adoption. Full physical reconciliation remains pending.
 3. Complete activity/assay/document and shared literature journeys, then molecule
    target context and clinical/classification views with explicit identity joins.
 4. Complete variants/isoforms/comparisons and biological/disease associations with

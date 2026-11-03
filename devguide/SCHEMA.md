@@ -13,7 +13,8 @@ remain unchanged. See [scope](pending_proposals/comparative_operations.md).
     separately from old ligand summaries where the scope was not requested.
     Native entity/instance records, order, duplicates and label versus author axes
     remain literal; migration never fills them. Current scientific rules remain
-    unchanged. See [the source contract](pending_proposals/rcsb_nonpolymer_inputs.md).
+    unchanged by this source addition. The [opt-in native key rule](pending_proposals/assembly_nonpolymer_binding.md)
+    is versioned separately; see [the source contract](pending_proposals/rcsb_nonpolymer_inputs.md).
   - Unpublished `0.3.14` also retains optional original RCSB assembly generation
     (#173): `has_structure.qualifiers.assemblies[].generation` contains native
     generator/operator fields when present, with null/empty/malformed values and

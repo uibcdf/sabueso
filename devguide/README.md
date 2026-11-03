@@ -49,8 +49,10 @@ separate original stored-glossary/pin acceptance (#182).
 
 Fresh RCSB capture preserves [original nonpolymer identifiers](pending_proposals/rcsb_nonpolymer_inputs.md)
 for #173, with distinct native and author labels, exact requested records and
-null/missing scope. Current assembly interpretations stay unchanged; a new native
-reconciliation and saved-reader contract must qualify use of that basis.
+null/missing scope. [Opt-in native @5](pending_proposals/assembly_nonpolymer_binding.md)
+now binds coherent original nonpolymer keys, preserving each source basis and
+ambiguity. Default @4 and existing exploration/saved adapters retain their original
+meaning until an independent @5 saved reader is qualified.
 
 To resume after a pause, read [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here),
 then [ROADMAP.md, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).

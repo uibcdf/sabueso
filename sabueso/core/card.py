@@ -993,6 +993,11 @@ class Card:
         retain distinct bases; author labels never substitute for label-asym IDs,
         preserving every original assertion, parent and generator occurrence.
         Missing/ambiguous references and conflicting descriptors stay explicit.
+        Opt in to ``generation_rule="rcsb_assembly_generation@5"`` to also bind
+        explicitly coherent original nonpolymer entity/instance records. Missing
+        native context stays incomplete; author labels never supply identity.
+        The default and existing exploration/saved adapters retain ``@4`` until
+        independent saved interpretation of the new rule is qualified.
         Select ``generation_rule="rcsb_assembly_generation@1"`` for unchanged
         syntax-only reading, ``@2`` for unchanged operator-only binding, or ``@3``
         for component-key binding without occurrence plans.
@@ -1017,8 +1022,11 @@ class Card:
             raise ArgumentError(
                 "expand_occurrences requires a boolean.", argument="expand_occurrences"
             )
-        if rule == "rcsb_assembly_generation@4":
-            from .assembly_generation_v4 import generation
+        if rule in ("rcsb_assembly_generation@4", "rcsb_assembly_generation@5"):
+            if rule == "rcsb_assembly_generation@5":
+                from .assembly_generation_v5 import generation
+            else:
+                from .assembly_generation_v4 import generation
 
             return generation(
                 self,
@@ -1030,7 +1038,7 @@ class Card:
             )
         if expand_occurrences:
             raise ArgumentError(
-                'expand_occurrences requires generation_rule="rcsb_assembly_generation@4".',
+                'expand_occurrences requires generation_rule="rcsb_assembly_generation@4" or "rcsb_assembly_generation@5".',
                 argument="expand_occurrences",
             )
         if rule == "rcsb_assembly_generation@1":
