@@ -1,5 +1,16 @@
 # Sabueso — Decision Log
 
+## Measure codec tradeoffs before choosing a public transport default (2026-11-03, #178)
+
+Extend the bounded #167 study to repeated gzip/Zstandard/XZ comparisons with
+whole-worker RSS and original receiving. Keep gzip as a compatibility baseline
+and Zstandard as a promising balanced candidate, pending supported-Python optional
+backend qualification. No production codec/default is adopted here. Preserve
+plain JSON, canonical original bytes, history/support and frozen predicates.
+Correct Linux peak-RSS measurement to VmHWM since exec after observing inherited
+pre-exec `ru_maxrss` state; keep unavailable and mixed measurement bases explicit.
+See [the comparison](pending_proposals/card_compressor_comparison.md).
+
 ## Compare compression before adopting shared physical storage (2026-11-03, #167)
 
 Retain exact shared-part encoding as a reproducible engineering experiment outside

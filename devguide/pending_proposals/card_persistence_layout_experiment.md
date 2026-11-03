@@ -96,7 +96,10 @@ is outside this bounded experiment.
 
 ## Next bounded implementation
 
-1. Design optional gzip transport around unchanged canonical original bytes.
+1. Select optional transport through [the compressor comparison](card_compressor_comparison.md)
+   (#178) before fixing a public codec/default. Gzip remains the measured
+   compatibility baseline; Zstandard/XZ and supported-Python backend qualification
+   now have their own comparison. Preserve unchanged canonical original bytes.
    Preserve default plain JSON and original @1–@6 readers. Save encoding must be
    explicit; detect checked input content rather than trusting a filename suffix.
    Preserve trusted `bundle_digest`, distinguishing compressed-file checksum and

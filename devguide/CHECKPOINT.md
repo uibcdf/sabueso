@@ -1,6 +1,6 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-11-03 (UTC)**, physical storage experiment and compression baseline
+Last updated: **2026-11-03 (UTC)**, measured compressor comparison and receiving scope
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
@@ -25,6 +25,15 @@ an intermediate engineering tool with its own local tests and deferred remote
 scope in #167/#112. Package runtime and all protected original rules remain
 unchanged. Continue optional bounded compression design before public storage
 adoption; do not attribute baac143's hosted result to newer helper/test bytes.
+
+The [#178 comparison](pending_proposals/card_compressor_comparison.md) extends
+the engineering block: 150 fresh repeated codec samples favor Zstandard as a
+balanced candidate; XZ gives smaller files with greater write CPU/RSS. Nineteen
+experimental original-receiving workers demonstrate exact original output but
+no causal full-read speedup. Current package runtime stays unchanged. Qualify
+optional bindings on Python 3.11–3.13 and platform routes before codec/default
+adoption. Keep public plain JSON, frozen readers, explicit budgets and the
+combined #167/#178 deferred-CI recovery route; public compression is not delivered.
 
 ## Resume here
 

@@ -237,5 +237,8 @@ now separates automatic support preparation from exact physical repetition and
 compares shared parts with gzip of unchanged originals across five public files.
 Gzip alone removes 93.36–96.58% of stored bytes here; sharing first makes four
 gzip files larger. Prioritize optional bounded original-byte compression before
-adopting a new reference-based public format. Verification CPU/RSS, representative
+adopting a new reference-based public format. The
+[follow-up compressor comparison](card_compressor_comparison.md) (#178) now
+measures gzip/Zstandard/XZ before a production codec/default is selected.
+Verification CPU/RSS, representative
 workload budgets and original-reader compatibility remain separate requirements.

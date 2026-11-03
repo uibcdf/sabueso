@@ -9,6 +9,26 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Intermediate compressor comparison (2026-11-03, #178)
+
+The [repeated codec comparison](card_compressor_comparison.md) adds a stdlib-only
+engineering helper/tests and technical documentation, with no package/runtime,
+source, schema, dependency, migration, security-fix or production integration
+change. It extends #167's locally tested intermediate batching block after
+`f6b6c6c701c5b30f2b01afe1991c9167e738d424`, SDK `0.14.0+140.gf6b6c6c`.
+After applicable local gates, publish through the approved `[skip ci]` route and
+record the actual comparison source/SDK and receipts in #178/#167/#112. No hosted
+qualification of new helper/test bytes is claimed; all 648 tracked package files
+and 52 protected originals remain equal to qualified `baac143`.
+
+Owner #178/#167/#112; recover the accumulated layout/comparison/transport scope
+with final unskipped exact-SHA CI/governance through full gh-run-receptor evidence
+before adoption, release or declaring the code block complete. If production
+transport is deferred, recover an unskipped helper checkpoint instead. Native
+3.14 measurements and mocked unavailable-backend cases are not qualification of
+3.11–3.13 optional bindings or all supported platforms. Release consolidation
+and broad human/workload acceptance remain paused/open as previously recorded.
+
 ### Intermediate physical-storage experiment (2026-11-03, #167)
 
 The [engineering experiment](card_persistence_layout_experiment.md) adds only a

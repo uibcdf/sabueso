@@ -395,6 +395,10 @@ now compares exact shared parts with gzip originals across five public readings.
 It directs optional bounded original-byte compression before any new shared public
 format; verification cost and workload acceptance remain open. Keep this bounded
 before returning to the approved broader exploration routes.
+The [compressor comparison](pending_proposals/card_compressor_comparison.md)
+(#178) now broadens gzip to Zstandard/XZ, with repeated size/time/RSS measurements
+and original receiving. Keep codec choice provisional until supported-Python
+backends are qualified; compression does not remove original verification cost.
 
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all
 ongoing implementations and corrections for **0.15.0**. The earlier proposal to

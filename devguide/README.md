@@ -18,6 +18,9 @@ separately record current accumulated-read costs; no latency improvement is clai
 The [physical-layout experiment](pending_proposals/card_persistence_layout_experiment.md)
 compares byte-exact sharing with gzip baselines and directs the next bounded
 storage step without changing the public format or discarding support (#167).
+The [codec comparison](pending_proposals/card_compressor_comparison.md) records
+150 repeated codec samples and independent original receiving, with explicit
+backend/RSS scope and no demonstrated full-read speedup (#178).
 
 [Diagnostic receiving](DIAGNOSTIC_RECEIVING.md) records the retained standalone
 bootstrap, application precedence and bounded scoped argument/error fix (#150).
