@@ -56,6 +56,21 @@ a pending or skipped run never establishes hosted qualification. Full physical/
 contact reconciliation and researcher acceptance remain separate; 0.15.0
 consolidation remains paused.
 
+That navigation checkpoint is now qualified at
+`f2732011c027be0ed65e7c17fb353e0c925bd50a`, SDK `0.14.0+138.gf273201`:
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/41151846182) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/41151846186).
+Full receptor captures, all member hashes, archive CRC, exact source/job/step
+states and thirteen actual test summaries were checked, with zero unqualified
+steps. Nine repository-input lanes each pass 6,504 cases; four installed public
+Ackredit lanes each pass 1,470. The
+[delivered closeout](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6593649612)
+retains the precise scope. The following
+[preview continuation](card_navigation_preview.md) requires its own selected local
+and final unskipped exact-source CI/governance qualification; f273's receipts
+cannot qualify newer presentation runtime. Its source/SDK and run receipts belong
+to #148/#112. No new deferred runtime debt is claimed recovered before those checks.
+
 The `6f94043` CI finished with workflow/job success 15/15; governance has verified
 1/1 evidence. Its original and fresh full captures retain nonterminal/null step
 metadata inside completed successful jobs, also reproduced through the native

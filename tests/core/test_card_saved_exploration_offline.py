@@ -559,6 +559,10 @@ def test_optional_presentation_metadata_and_machine_resave(tmp_path):
     selection = access.read(access.root_location)
     path = tmp_path / "first.json"
     selection.save(path)
+    original_metadata = json.loads(path.read_text(encoding="utf-8"))[
+        "presentation_metadata"
+    ]
+    assert original_metadata == {"navigation_preview": "question_destination_preview@1"}
     mutate(
         path,
         lambda data: data["presentation_metadata"].update(
@@ -572,7 +576,8 @@ def test_optional_presentation_metadata_and_machine_resave(tmp_path):
     loaded = sabueso.read_exploration(second, expected_digest=receipt["bundle_digest"])
     assert loaded._machine_ref == selection.selection_ref
     assert json.loads(second.read_text(encoding="utf-8"))["presentation_metadata"] == {
-        "future_optional": {"label": "kept"}
+        **original_metadata,
+        "future_optional": {"label": "kept"},
     }
 
 

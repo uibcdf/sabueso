@@ -10,6 +10,12 @@ is historical. Resume the maintainer's broad Card exploration work (#148), with
 0.15.0 consolidation still paused. The [pause receipt](evidence/pause_checkpoint_20261025.json)
 records reconciled source, inputs, checks and retained resources.
 
+[Discoverable navigation previews](pending_proposals/card_navigation_preview.md)
+prioritize retained questions and destinations while disclosing omissions and
+preserving original item indices, complete agent access and old saved previews
+(#148). [Persistence observations](pending_proposals/card_persistence_cost.md)
+separately record current accumulated-read costs; no latency improvement is claimed.
+
 [Diagnostic receiving](DIAGNOSTIC_RECEIVING.md) records the retained standalone
 bootstrap, application precedence and bounded scoped argument/error fix (#150).
 [HTTP response lifetime](SOURCE_ACCESS.md#http-response-lifetime-151) records

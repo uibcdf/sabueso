@@ -1391,10 +1391,13 @@ class CardExplorer:
         self._coverage_result = None
         self._origin = None
         self._navigation_cache = {}
+        from .card_navigation_preview_v1 import metadata
+
         self._session = {
             "views": {},
             "explanations": {},
             "links": {},
+            "presentation_metadata": metadata(),
         }
         self._access._exploration_session = self._session
 

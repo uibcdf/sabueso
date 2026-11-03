@@ -12,6 +12,12 @@ is established by this draft.
 
 ## Intended changes since 0.14.0
 
+- Prioritize questions and destinations in bounded navigation previews, with
+  original item indices, explicit shown/total counts and complete public filters
+  (#148). New saved explorations retain their named presentation policy; older
+  files preserve their original preview. Scientific rules and complete retained
+  membership remain unchanged.
+
 - Retain original RCSB assembly generators/operator descriptors and expose
   `Card.assembly_generation()` under named generation `@4` (#173). Exact native
   key binding distinguishes polymer instances, ligand-neighbor references and

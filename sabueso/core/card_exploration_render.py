@@ -658,8 +658,12 @@ def _parts(view):
             opening.append(
                 f"Structural state · {preview(key)}: {'unknown' if value is None else preview(value)}"
             )
+    from .card_navigation_preview_v1 import guidance, plan
+
+    indices, navigation_counts = plan(view)
     rows = []
-    for index, item in enumerate(view.items()[:10]):
+    for index in indices:
+        item = view.items()[index]
         # Literal previews preserve null/zero/false; units remain paired with
         # native values without invoking a scientific adapter.
         value = item._entry.value
@@ -919,6 +923,7 @@ def _parts(view):
     footer = [
         f"{count} items" + (f" · showing 10, {count - 10} more" if count > 10 else "")
     ]
+    footer.extend(guidance(navigation_counts))
     footer.append(
         "items()[i].open() · items()[i].explain() · items()[i].related() · back()"
     )

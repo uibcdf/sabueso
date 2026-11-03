@@ -385,6 +385,12 @@ Full component/physical-occurrence closure and operation-aware contacts remain p
 no physical membership is inferred from the new inputs.
 Source-bound qualification remains in #148/#112, separate from human acceptance.
 
+The shared [navigation preview policy](pending_proposals/card_navigation_preview.md)
+now prioritizes questions/destinations in bounded link displays, reports all
+category omissions and preserves original full-list indices and saved policies.
+This addresses technical discoverability; uncoached broad-profile acceptance and
+the [measured persistence work](pending_proposals/card_persistence_cost.md) remain open.
+
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all
 ongoing implementations and corrections for **0.15.0**. The earlier proposal to
 evaluate an AlphaFold-only 0.14.1 patch/backport is superseded. Complete the full

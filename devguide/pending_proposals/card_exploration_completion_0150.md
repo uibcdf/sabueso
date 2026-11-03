@@ -111,6 +111,9 @@ No browsing operation may acquire new data, refresh a Card or fabricate findings
 5. Qualify broad-profile navigation, saved reading and compact agent parity for
    all delivered routes. Review opening menus, defaults, errors, empty recovery
    and support wording as one coherent experience.
+   [Question-first navigation previews](card_navigation_preview.md) now improve
+   retained-question discovery with explicit category counts, original indices
+   and unchanged complete access/history. Researcher acceptance remains pending.
 6. Complete human walkthroughs, workload qualification and final technical gates
    before considering release consolidation. Do not declare the experience
    exceptional solely from tests, generated panels or implementation checkmarks.

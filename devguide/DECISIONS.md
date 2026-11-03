@@ -1,5 +1,15 @@
 # Sabueso — Decision Log
 
+## Version navigation presentation separately from scientific decisions (2026-11-02, #148)
+
+New live navigation records `question_destination_preview@1` in the existing
+optional presentation metadata. Bounded previews prioritize questions and
+destinations, retain original item indices and disclose category omissions.
+Complete membership/order and scientific inputs, rules and original verification
+remain unchanged. Old files without the namespace keep their original prefix;
+unknown named policies fail receiving. No Card schema or scientific format change
+is needed. See [the presentation contract](pending_proposals/card_navigation_preview.md).
+
 ## Bind structure assembly navigation to exact declarations (2026-10-31, #148/#173)
 
 Add lazy `structure_declaration_context_links@2` / `structure_assembly_request@1`

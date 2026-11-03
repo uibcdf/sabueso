@@ -209,6 +209,27 @@ Compressed SHA-256: `918c61b5ee776c111dfad8a37b2b6232336d92d5b65c90534fb93f9c446
 
 Uncompressed SHA-256: `f57aced52ec5e9b0ddd38dbe70284284f569992238e74dd5812013a01ee78df4`.
 
+## Original navigation prefix before question prioritization
+
+`card_navigation_prefix_v6.json.gz` preserves genuine format @6 output produced
+before the preview change at source
+`f2732011c027be0ed65e7c17fb353e0c925bd50a`, actual SDK
+`0.14.0+138.gf273201`. Its 20 retained links include a question beyond the old
+ten-member prefix. The original presentation metadata has no navigation preview
+policy. New readers and repeat saves preserve that absence.
+
+The Card, relationship, chain and twelve missing source references are entirely
+synthetic. Public accession/PDB identifiers are test labels, with no scientific
+SourceAssertions, provider queries or private/pilot content. Gzip is fixture
+packaging, not a public reader feature or Card schema freeze. Preserve these
+original bytes; do not regenerate them to pass a newer reader.
+
+Original raw size: 3,807,428 bytes; gzip size: 145,424 bytes.
+
+Compressed SHA-256: `27626edb623e9a7c3bb63ffb95db21f943f4e47d75504e43a36350720380d1a1`.
+
+Uncompressed SHA-256: `5f7f31068654ac8900a0b34a8020079a6938dafb516e1b3501c140bb0f344611`.
+
 ## Original structure navigation before field links
 
 `card_structure_context_legacy_v1.json.gz` retains a literal format @1 reading

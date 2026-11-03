@@ -1,9 +1,19 @@
 # Sabueso — Checkpoint
 
-Last updated: **2026-10-31**, exact structure-to-assembly human/agent navigation
+Last updated: **2026-11-02**, discoverable navigation previews and persistence observations
 (#112). This is the resumption entry point. The complete preceding chronology is
 [archived](archive/CHECKPOINT_before_pause_20261025.md); original scientific,
 source and release receipts remain unchanged.
+
+The latest [presentation continuation](pending_proposals/card_navigation_preview.md)
+prioritizes questions/destinations within bounded link previews, keeps actual item
+indices and discloses omitted categories. New saved files retain their named
+presentation policy; genuine older files retain the original prefix. The prior
+`f2732011c027be0ed65e7c17fb353e0c925bd50a` checkpoint has verified CI 15/15 and
+governance 1/1 receipts in #148/#112; newer source requires its own qualification.
+Current [persistence observations](pending_proposals/card_persistence_cost.md#current-format-6-public-observation-2026-11-02)
+define a bounded physical-layout investigation, not an achieved speedup.
+Broad exploration, #173 reconciliation, human acceptance and release work remain open.
 
 ## Resume here
 

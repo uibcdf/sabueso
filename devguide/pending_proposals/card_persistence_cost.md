@@ -190,3 +190,44 @@ scientific records/history. Literal/scientific live and original saved selection
 now have byte-stable repeat-save regression cases. No general size or speedup is
 claimed; physical layout, scaling and researcher budgets remain open. Source-bound
 full/remote qualification belongs to the #168/#148/#112 checkpoint.
+
+## Current format @6 public observation (2026-11-02)
+
+The original public 2V5B structure/assembly guide reading from source
+`f2732011c027be0ed65e7c17fb353e0c925bd50a`, actual SDK
+`0.14.0+138.gf273201`, contains 11,009,687 canonical bytes. Its SHA-256 is
+`e5d8c9592d354367cafeaf1527d60105f3551f852875c74f7ebc9e85b932fc11`.
+Current working-tree presentation changes do not backfill this old file's policy.
+Three serial fresh-process reads observe 2.490, 2.456 and 2.472 wall seconds
+(CPU 2.490, 2.456 and 2.472 seconds), excluding setup/imports before the timed
+call. OS cache and background load are uncontrolled; these are diagnostics, not
+a cold-cache benchmark, accepted budget, scaling curve or achieved improvement.
+
+Separate instrumented reading takes 5.939 seconds: 2,316,461 `deepcopy` calls
+account for 3.082 cumulative seconds and `verify_views` for 3.014 cumulative
+seconds. These costs overlap. The fresh profiled process also includes imports;
+timings are not interchangeable with the unprofiled read samples. Source queries
+are forbidden, current Card/native assembly generation is forbidden, original
+frozen scientific verification remains active and the input hash stays unchanged.
+Sampled owned RSS is below 177 MB, with zero owned swap and no resource stop.
+
+Canonical accounting identifies 111 views, 81 objects and 108 locations. Views
+occupy 10,150,995 bytes (92.2%). Exact repeated occurrences within the four
+disjoint selection/state/native-payload/flags parts total 5,202,520 bytes before
+reference/index overhead. This is potential physical reuse, not an achieved
+reduction or permission to drop navigation/support. Inspection takes 2.01 seconds
+including worker startup, with about 64 MB sampled owned RSS.
+
+The next bounded #167 design should compare explicit retained-session scope with
+a versioned shared view-part layout, measuring necessary support preparation
+separately from duplicate physical representation. Preserve every occurrence,
+request, original location, selection, unit and independent old verifier; refuse
+implicit pruning and do not weaken defensive public copies. Prove original-wire
+and inert-reader parity before adopting a representation. Then measure fresh and
+accumulated public protein/molecule/disease workloads and agree researcher budgets.
+This observation does not close #167 or the 0.15.0 workload gate.
+
+Inputs, profile, unprofiled samples, accounting and resource receipts live under
+`recovered_work/navigation_preview_148_20261102/`, owned by #167/#148. Review at
+the next persistence change or before workload acceptance. Keep useful originals
+and receipts; clean only finished owned temporary resources.

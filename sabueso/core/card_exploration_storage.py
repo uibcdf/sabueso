@@ -634,6 +634,10 @@ def _access(captures, inputs, objects, locations, focal):
 
 
 def _explorer(access, session):
+    if access.mode == "live" and "presentation_metadata" not in session:
+        from .card_navigation_preview_v1 import metadata
+
+        session["presentation_metadata"] = metadata()
     explorer = object.__new__(CardExplorer)
     explorer._access, explorer._session = access, session
     access._exploration_session = session
@@ -655,6 +659,10 @@ def _restore(bundle, expected_digest):
 
 
 def _restore_checked(bundle, expected_digest):
+    from .card_navigation_preview_v1 import rule as preview_rule
+
+    if isinstance(bundle, dict):
+        preview_rule(bundle.get("presentation_metadata"))
     if (
         isinstance(bundle, dict)
         and bundle.get("format") == "sabueso.card_exploration@6"

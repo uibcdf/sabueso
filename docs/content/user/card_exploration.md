@@ -543,6 +543,15 @@ Card; without that Card it reports `context_not_supplied`. Opening the local
 parent does not require it or fetch new data. Saved readings preserve their original
 navigation: older files without the new link are not backfilled.
 
+Navigation previews show up to ten members, with **questions first**, then other
+destinations and source links. The displayed indices refer to the original
+`items()[i]`; the complete list keeps its original order. Shown/total counts make
+omissions explicit. Use a link view's `filter("role", equals="question")` for all
+questions or `filter("role", equals="source")` for all source links.
+This preview policy also applies when reopening a newly saved exploration.
+Older saved files preserve their original prefix preview; `start_new()` begins
+a new live exploration with current presentation.
+
 ## Open a structure's original context
 
 From an experimental structure, open its original ligand, assembly, chain or
