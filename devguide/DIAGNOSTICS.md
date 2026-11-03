@@ -13,6 +13,13 @@ the underlying scientific outcome and reports zero selected rows in the request.
 Saved variants not retained are `not_saved`; unavailable policy versions or invalid
 saved decision/support bindings are `StorageError`.
 
+Exploration file transport uses the existing argument/storage/library diagnostics.
+Byte-ceiling refusal names `max_encoded_bytes` or `max_decoded_bytes` and explains
+an explicit larger value/None; window failures name the possible Zstandard window
+override. No partial reading or automatic codec substitution is returned. Missing
+older-Python Zstandard is checked by DepDigest only when requested. Transport
+checks do not weaken original bundle/quantity/support verification.
+
 ## Principle: outcomes are data first
 
 Every source outcome is recorded on the result: `card.quality["enrichments"]`,

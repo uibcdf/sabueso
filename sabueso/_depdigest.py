@@ -11,6 +11,12 @@ from sabueso.core.errors import LibraryNotFoundError
 LIBRARIES = {
     # Views as DataFrames: sabueso.to_dataframe (#46).
     "pandas": {"type": "soft", "pypi": "pandas", "conda": "pandas"},
+    # Only requested for Zstandard on Python 3.11–3.13, never on import/3.14.
+    "backports.zstd": {
+        "type": "soft",
+        "pypi": "backports.zstd",
+        "conda": "backports.zstd",
+    },
 }
 
 MAPPING = {}

@@ -1,5 +1,12 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+Exploration file transport adds exact `compression` values `none`/`gzip`/`zstd`,
+positive non-boolean `max_encoded_bytes` and `max_decoded_bytes` (64 MiB each),
+and read-only `max_window_bytes` (8 MiB; powers of two at least 1024). None
+disables the corresponding host ceiling; a None window selects the backend
+maximum. Digestion-skipped calls retain the same guards before file/codec work.
+See [the transport contract](pending_proposals/exploration_file_transport.md).
+
 The live `assembly_generation` exploration topic reuses existing `options`,
 `fields`, `where`, `item_refs`, `order_by` and scalar display arguments. Its options
 call the existing exact structure/relationship digesters and native positive/None

@@ -8,6 +8,11 @@ area: [persistence, performance, human-exploration, historical-reading]
 
 # Physical storage experiment and compression baseline
 
+This is the original experiment, not the production transport contract. The
+following [file transport](exploration_file_transport.md) adds explicit compression
+in development with separate runtime/installed qualification. The experiment
+and its original measurements/readers remain unchanged.
+
 ## Result and scope
 
 The experiment reconstructs every original byte of five public saved readings.

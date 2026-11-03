@@ -1,5 +1,16 @@
 # Sabueso — Decision Log
 
+## Keep file compression explicit and scientific formats unchanged (2026-11-03, #178)
+
+Retain plain JSON as the default and add gzip level 6 and Zstandard level 3 for
+original exploration JSON, shared by human views and agent selections. The first
+public surface excludes XZ pending a concrete archival need. Detect read content,
+require a complete single frame/member and retain every original scientific
+verifier. Expose encoded/decoded byte ceilings and a separate Zstandard window
+ceiling, with strict arguments and explicit positive/None overrides; receipts
+separate transport hashes from trusted bundle identity. See the
+[implementation contract](pending_proposals/exploration_file_transport.md).
+
 ## Qualify one Zstandard API across supported Python minors (2026-11-03, #178)
 
 Use native `compression.zstd` on 3.14 and pinned `backports.zstd==1.8.0` on

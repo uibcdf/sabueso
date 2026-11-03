@@ -12,6 +12,13 @@ is established by this draft.
 
 ## Intended changes since 0.14.0
 
+- Add explicit gzip/Zstandard transport for saved human/agent exploration, keeping
+  plain JSON defaults and original scientific formats/readers. Strict content-based
+  single-frame reading, visible encoded/decoded/window ceilings and positive/None
+  overrides preserve complete history/support/quantities and atomic output. Separate
+  transport sizes/hashes remain distinct from the trusted scientific bundle digest.
+  Source-bound runtime/installed and workload qualification remain required (#178/#167).
+
 - Prioritize questions and destinations in bounded navigation previews, with
   original item indices, explicit shown/total counts and complete public filters
   (#148). New saved explorations retain their named presentation policy; older

@@ -41,7 +41,7 @@ kind = "pins"
 
 [routes.".github/workflows/ci.yml"]
 kind = "excluded"
-reason = "installs public runtime dependencies from test_env.yaml (checked above), Sabueso with pip --no-deps, and ruff; dedicated receiving lanes pin published Ackredit 0.9.0/py_0; standalone/older-Python codec qualification pins backports.zstd 1.8.0 without changing the package runtime closure"
+reason = "installs public runtime dependencies from test_env.yaml (checked above), Sabueso with pip --no-deps, and ruff; dedicated receiving lanes pin published Ackredit 0.9.0/py_0; optional older-Python transport qualification pins Conda backports.zstd 1.8.0 without changing the required package runtime closure"
 
 [routes.".github/workflows/build_and_upload_conda_packages.yaml"]
 kind = "excluded"

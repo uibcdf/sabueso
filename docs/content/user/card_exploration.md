@@ -1395,6 +1395,33 @@ saved = sabueso.read_exploration(review_path, expected_digest=receipt["bundle_di
 saved
 ```
 
+To store the same complete reading in a smaller file, choose compression explicitly:
+
+```python
+compressed_receipt = mass_selection.save("molecule-review.json.gz", compression="gzip")
+compressed_saved = sabueso.read_exploration(
+    "molecule-review.json.gz", expected_digest=compressed_receipt["bundle_digest"]
+)
+compressed_saved.validation["transport"]
+```
+
+Plain JSON remains the default. `compression="zstd"` selects Zstandard where its
+optional backend is available. Reading detects content, including files whose
+name has no compression suffix; a requested codec is never replaced silently.
+The same options work for supported machine selections. The receipt separately
+reports encoded/decoded sizes and hashes; your original `bundle_digest` retains
+its meaning. Compression preserves all retained content and still performs the
+original scientific verification.
+
+Save and read default to 64 MiB each for `max_encoded_bytes` and
+`max_decoded_bytes`, including plain JSON. If a reading exceeds a ceiling, the
+error names the limit: pass a larger positive integer or deliberately use None.
+A rejected read returns no partial result and a failed save preserves an old file.
+Zstandard reading additionally accepts `max_window_bytes` (default 8 MiB): raise
+it to a supported power of two, or use None for the backend maximum when you
+consciously need a larger codec window. Byte/window limits do not bound total
+Python-object memory or the cost of original scientific verification.
+
 The default refuses an existing destination. To replace one deliberately, use
 `overwrite=True`; a failed write preserves the previous file. Keep the receipt's
 digest independently when you want to verify this exact original bundle later.

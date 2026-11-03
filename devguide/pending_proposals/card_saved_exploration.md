@@ -1,5 +1,9 @@
 # First portable exploration reading (#148)
 
+Current [file transport](exploration_file_transport.md) additionally offers explicit
+gzip/Zstandard and visible strict receiving budgets without changing these original
+scientific formats. The first-slice scope and receipts below remain historical.
+
 The [scientific continuation](card_saved_science.md) now adds format @2 and
 historical checks for the initial structural/region/coverage routes. This document
 retains the original literal @1 contract, first-slice limits and original receipts;

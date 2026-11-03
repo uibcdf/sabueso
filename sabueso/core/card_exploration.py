@@ -1333,11 +1333,27 @@ class CardView:
         return can_save(self)
 
     @arg_digest()
-    def save(self, path, *, overwrite=False, skip_digestion=False):
+    def save(
+        self,
+        path,
+        *,
+        overwrite=False,
+        compression="none",
+        max_encoded_bytes=67108864,
+        max_decoded_bytes=67108864,
+        skip_digestion=False,
+    ):
         """Save supported retained views and their original captured context atomically."""
         from .card_exploration_storage import save_exploration
 
-        return save_exploration(self, path, overwrite=overwrite)
+        return save_exploration(
+            self,
+            path,
+            overwrite=overwrite,
+            compression=compression,
+            max_encoded_bytes=max_encoded_bytes,
+            max_decoded_bytes=max_decoded_bytes,
+        )
 
     def summary(self):
         return replace(

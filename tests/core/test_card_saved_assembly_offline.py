@@ -46,6 +46,9 @@ def card(originals):
 
 
 def inert(monkeypatch):
+    # Import consumers before patching producers: a first import during the
+    # patch would retain forbidden aliases after teardown (#179).
+    importlib.import_module("sabueso.core.card_assembly_access")
     monkeypatch.setattr(Card, "__init__", forbidden)
     monkeypatch.setattr(Card, "from_dict", forbidden)
     for name, methods in {
@@ -730,3 +733,27 @@ def test_nested_original_context_navigation_can_be_saved(
     assert (
         restored.validation["verifier"] == "assembly_generation_exploration_binding@1"
     )
+
+
+def test_inert_setup_restores_first_imported_catalog_in_a_fresh_process():
+    script = """
+import importlib, runpy, sys, pytest
+helpers = runpy.run_path(sys.argv[1])
+assert 'sabueso.core.card_assembly_access' not in sys.modules
+with pytest.MonkeyPatch.context() as patch:
+    helpers['inert'](patch)
+access = importlib.import_module('sabueso.core.card_assembly_access')
+original = importlib.import_module('sabueso.core.card_assembly_exploration')
+assert access.options_for_assembly is original.options_for_assembly
+assert access.descriptor()['native_rule']=='rcsb_assembly_generation@4'
+print('PASS: inert assembly setup leaves the catalog usable')
+"""
+    with TemporaryDirectory() as directory:
+        result = subprocess.run(
+            [sys.executable, "-c", script, str(Path(__file__).resolve())],
+            cwd=directory,
+            text=True,
+            capture_output=True,
+        )
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "PASS: inert assembly setup leaves the catalog usable" in result.stdout

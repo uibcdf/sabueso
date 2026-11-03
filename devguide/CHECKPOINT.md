@@ -38,9 +38,21 @@ combined #167/#178 deferred-CI recovery route; public compression is not deliver
 The [backend continuation](pending_proposals/zstd_backend_qualification.md) passes
 isolated Linux 3.11–3.13 probes without modifying their environments. It adds
 twelve hosted OS/Python producers, retaining thirteen pytest lanes (18 CI jobs).
-Its unskipped exact-head checkpoint must verify all reports and CI/governance
-before recovering the preceding experimental-helper debt. Hosted results remain
-pending; package runtime and protected originals remain unchanged.
+Its unskipped checkpoint is qualified at `1fdb771`, SDK `0.14.0+143.g1fdb771`:
+[CI 18/18](https://github.com/uibcdf/sabueso/actions/runs/41585285748) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/41585285886).
+Full captures/steps, thirteen actual pytest summaries and 24 fresh frames across
+twelve producers are verified. This recovers both preceding helper commits;
+package runtime and protected originals remain unchanged at that checkpoint.
+The following [production transport](pending_proposals/exploration_file_transport.md)
+adds explicit plain/gzip/Zstandard saving, content-detected strict single-frame
+reading, visible positive/None byte/window ceilings, atomic output and separate
+transport receipts. Its package runtime, optional binding and installed receiving
+need their own unskipped exact-source qualification; older green results do not
+qualify these new bytes. Selected local integration passes 755 cases, with nine
+additional current @5/@6 compressed human/agent cases; #179 fixes a reproduced
+inert-test import-alias leak with a fresh-process regression. Original protected
+rules remain unchanged. Exact-source CI/installed admission is still pending.
 
 ## Resume here
 

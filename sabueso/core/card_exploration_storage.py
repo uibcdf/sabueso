@@ -13,6 +13,7 @@ from types import MappingProxyType
 
 from sabueso._private.argdigest import arg_digest
 
+from . import exploration_transport as transport
 from .card_access import AccessSelection, CardAccess, _Entry, _handle
 from .card_capture import _Capture
 from .card_exploration import CardExplorer, CardItem, CardView, Cell
@@ -551,22 +552,38 @@ def _seal(bundle):
     return bundle
 
 
-def save_exploration(view, path, *, overwrite=False):
+def save_exploration(
+    view,
+    path,
+    *,
+    overwrite=False,
+    compression="none",
+    max_encoded_bytes=transport.BYTE_LIMIT,
+    max_decoded_bytes=transport.BYTE_LIMIT,
+):
     if (
         not isinstance(path, (str, os.PathLike))
         or not str(path)
         or type(overwrite) is not bool
     ):
         raise ArgumentError("save requires a nonempty file path and boolean overwrite.")
+    transport.compression_option(compression)
+    transport.byte_budget("max_encoded_bytes", max_encoded_bytes)
+    transport.byte_budget("max_decoded_bytes", max_decoded_bytes)
+    codec, backend = transport.encoder(compression)
     bundle = _seal(_prepare(view))
     _restore(bundle, bundle["bundle_digest"])
+    raw = canonical_json(bundle).encode("utf-8")
+    transport._check("max_decoded_bytes", len(raw), max_decoded_bytes)
     destination, temporary = Path(path), None
     try:
         fd, temporary = tempfile.mkstemp(
             dir=destination.parent, prefix=".sabueso-exploration-"
         )
-        with os.fdopen(fd, "w", encoding="utf-8") as stream:
-            stream.write(canonical_json(bundle))
+        with os.fdopen(fd, "wb") as stream:
+            receipt = transport.write(
+                stream, raw, compression, codec, backend, max_encoded_bytes
+            )
             stream.flush()
             os.fsync(stream.fileno())
         if overwrite:
@@ -582,6 +599,7 @@ def save_exploration(view, path, *, overwrite=False):
         "path": str(destination),
         "bundle_digest": bundle["bundle_digest"],
         "root_view_ref": view.view_ref,
+        "transport": receipt,
     }
 
 
@@ -594,7 +612,15 @@ def _unique(pairs):
 
 
 @arg_digest()
-def read_exploration(path, expected_digest=None, skip_digestion=False):
+def read_exploration(
+    path,
+    expected_digest=None,
+    skip_digestion=False,
+    *,
+    max_encoded_bytes=transport.BYTE_LIMIT,
+    max_decoded_bytes=transport.BYTE_LIMIT,
+    max_window_bytes=transport.WINDOW_LIMIT,
+):
     """Validate original saved views without rerunning current scientific readers."""
     if not isinstance(path, (str, os.PathLike)) or not str(path):
         raise ArgumentError("path requires a nonempty file path.")
@@ -603,11 +629,31 @@ def read_exploration(path, expected_digest=None, skip_digestion=False):
         or not SNAPSHOT_ID.fullmatch(expected_digest)
     ):
         raise ArgumentError("expected_digest requires sha256:<64 hex> or None.")
+    for name, value in (
+        ("max_encoded_bytes", max_encoded_bytes),
+        ("max_decoded_bytes", max_decoded_bytes),
+        ("max_window_bytes", max_window_bytes),
+    ):
+        transport.byte_budget(name, value)
     try:
-        with Path(path).open(encoding="utf-8") as stream:
-            bundle = json.load(stream, object_pairs_hook=_unique)
-        return _restore(bundle, expected_digest)
-    except StorageError:
+        with Path(path).open("rb") as stream:
+            transport._check(
+                "max_encoded_bytes",
+                os.fstat(stream.fileno()).st_size,
+                max_encoded_bytes,
+            )
+            raw, receipt = transport.read(
+                stream,
+                encoded_limit=max_encoded_bytes,
+                decoded_limit=max_decoded_bytes,
+                window_limit=max_window_bytes,
+            )
+        bundle = json.loads(raw.decode("utf-8"), object_pairs_hook=_unique)
+        del raw  # Original JSON bytes need not survive scientific materialization.
+        view = _restore(bundle, expected_digest)
+        view._explorer._session["validation"]["transport"] = receipt
+        return view
+    except (StorageError, ArgumentError):
         raise
     except (
         OSError,
@@ -1248,7 +1294,11 @@ def start_new(explorer):
     return _explorer(access, {"views": {}, "explanations": {}, "links": {}})
 
 
-def save_selection(selection, path, overwrite):
+def save_selection(selection, path, overwrite, **transport_options):
+    # Validate even with ArgDigest skipped, before any session preparation.
+    transport.compression_option(transport_options.get("compression", "none"))
+    for name in ("max_encoded_bytes", "max_decoded_bytes"):
+        transport.byte_budget(name, transport_options.get(name, transport.BYTE_LIMIT))
     _require(
         can_save_selection(selection),
         "Scientific selection persistence requires an unsupported historical verifier.",
@@ -1264,7 +1314,9 @@ def save_selection(selection, path, overwrite):
             and original.presentation == "summary"
             and original._display_request is None
         ):
-            return save_exploration(original, path, overwrite=overwrite)
+            return save_exploration(
+                original, path, overwrite=overwrite, **transport_options
+            )
     explorer = _explorer(selection._access, session)
     from .card_exploration_sites import TOPIC, is_result
 
@@ -1305,7 +1357,7 @@ def save_selection(selection, path, overwrite):
         _machine_ref=selection.selection_ref,
         **flags,
     )
-    return save_exploration(view, path, overwrite=overwrite)
+    return save_exploration(view, path, overwrite=overwrite, **transport_options)
 
 
 def missing_selection(access, topic, options, projection, selection_query=None):

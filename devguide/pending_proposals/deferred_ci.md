@@ -9,6 +9,18 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Production exploration transport checkpoint (2026-11-03, #178/#167)
+
+The [transport implementation](exploration_file_transport.md) changes package
+runtime, public arguments, optional dependency metadata and installed receiving.
+It uses an **unskipped** exact-source CI/governance checkpoint after applicable
+local gates. No new intermediate runtime debt is authorized or claimed recovered
+by the earlier helper checkpoint. Verify eighteen CI jobs, thirteen actual pytest
+summaries, twelve installed smokes and twelve cross-read backend producers through
+full gh-run-receptor evidence. Include the separately reported #179 test-isolation
+correction and its fresh-process/order regressions. Owner #178/#167/#179/#112;
+source/SDK, actual gates and receipts belong in those issues and the owned phase.
+
 ### Zstandard backend recovery checkpoint (2026-11-03, #178)
 
 The [backend continuation](zstd_backend_qualification.md) changes qualification
@@ -19,6 +31,15 @@ gh-run-receptor evidence before declaring recovery of `f6b6c6c` and `11bfd62`.
 Owner #178/#167/#112; source/SDK and actual receipts belong in those issues and
 the owned qualification directory. Until verified, the earlier debt remains open.
 No package runtime or public transport is changed.
+
+Recovered at `1fdb771ce4f0c572a0cb5957c9eb40178f7876c6`, SDK
+`0.14.0+143.g1fdb771`: [CI 18/18](https://github.com/uibcdf/sabueso/actions/runs/41585285748)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/41585285886).
+Every full-capture member/step, thirteen actual summaries (nine × 6,599 public
+source cases; four × 1,470 installed-provider cases) and all 24 fresh frames from
+twelve platform/minor producers are verified, with zero unqualified steps.
+The [closeout](https://github.com/uibcdf/sabueso/issues/178#issuecomment-6609265892)
+closes the earlier helper debt, not production transport or broad acceptance.
 
 ### Intermediate compressor comparison (2026-11-03, #178)
 

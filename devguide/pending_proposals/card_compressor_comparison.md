@@ -8,6 +8,11 @@ area: [persistence, performance, historical-reading]
 
 # Compressor selection: first measured comparison
 
+This report retains the original engineering comparison scope. The following
+[public transport implementation](exploration_file_transport.md) selects explicit
+plain/gzip/Zstandard in development, with its own runtime/installed qualification.
+Statements below about missing production transport describe this earlier study.
+
 The maintainer requested a dedicated compressor discussion and experiment in
 [#178](https://github.com/uibcdf/sabueso/issues/178), under persistence #167 and
 coordination #112. Gzip remains the portable measured baseline, rather than a

@@ -403,6 +403,11 @@ The [backend continuation](pending_proposals/zstd_backend_qualification.md) adds
 genuine native/backport fixtures and twelve OS/Python probe routes. Verify the
 unskipped exact-head CI/governance and cross-read all fresh reports before
 production adoption, recovering the preceding experimental-helper CI scope.
+That helper debt is recovered at `1fdb771`; the next
+[public transport](pending_proposals/exploration_file_transport.md) preserves plain
+JSON defaults, adds explicit gzip/Zstandard and visible strict receiving budgets.
+Its new runtime/optional integration requires separate installed and exact-source
+qualification before admission, then return to the broader exploration route.
 
 Development target, confirmed by the maintainer on 2026-10-24: accumulate all
 ongoing implementations and corrections for **0.15.0**. The earlier proposal to

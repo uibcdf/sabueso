@@ -29,11 +29,16 @@ Actual Linux 3.11.11/3.12.12/3.13.15 probes pass with verified PyPI wheels,
 backports.zstd 1.8.0 and libzstd 1.5.7. Existing interpreters ran with `-I -S -B`,
 loading only the extracted owned wheel and helper; no environment was modified.
 This establishes isolated backend behavior, not installed-Sabueso or platform
-qualification. CI runs probes in all nine source lanes and three standalone
-older-Python macOS ARM64 lanes. Its twelve fresh producer reports must be read
+qualification. At the helper checkpoint, CI runs probes in all nine source lanes
+and three standalone older-Python macOS ARM64 lanes. Its twelve fresh producer reports must be read
 through the native consumer after full exact-head receptor verification. The
-expanded CI has 18 jobs, retaining all thirteen pytest lanes. Hosted results
-remain pending until their actual receipts are verified.
+expanded CI has 18 jobs, retaining all thirteen pytest lanes. At `1fdb771`,
+[CI 18/18](https://github.com/uibcdf/sabueso/actions/runs/41585285748) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/41585285886) pass.
+All full-capture hashes/steps and thirteen actual summaries are verified; native
+reading of all 24 fresh frames succeeds. Nine source lanes each pass 6,599 cases;
+four installed public-provider lanes each pass 1,470. See the
+[verified closeout](https://github.com/uibcdf/sabueso/issues/178#issuecomment-6609265892).
 
 The unskipped checkpoint recovers both preceding experimental-helper commits
 through [the deferred-CI ledger](deferred_ci.md), after all applicable gates pass.
@@ -42,7 +47,9 @@ live in `recovered_work/zstd_backend_178_20261103/`; owner #178/#167/#112, revie
 production codec adoption. Remove only owned extracted wheels/build scratch after
 use, retaining provenance and results. No provider queries or private data occur.
 
-Public compression remains unimplemented. Keep plain JSON, original @1–@6 bytes,
+At this helper checkpoint public compression remained unimplemented. The following
+[production transport](exploration_file_transport.md) needs separate qualification.
+Keep plain JSON, original @1–@6 bytes,
 trusted digests, complete history/support and frozen readers. Production work
 still needs an explicit codec surface, DepDigest, bounded complete-frame decoding
 with deliberate overrides, atomic saving and receiving/quantity/source regression

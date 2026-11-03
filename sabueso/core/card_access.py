@@ -117,11 +117,27 @@ class AccessSelection:
         return can_save_selection(self)
 
     @arg_digest()
-    def save(self, path, *, overwrite=False, skip_digestion=False):
+    def save(
+        self,
+        path,
+        *,
+        overwrite=False,
+        compression="none",
+        max_encoded_bytes=67108864,
+        max_decoded_bytes=67108864,
+        skip_digestion=False,
+    ):
         """Persist a supported machine selection through the shared exploration bundle."""
         from .card_exploration_storage import save_selection
 
-        return save_selection(self, path, overwrite)
+        return save_selection(
+            self,
+            path,
+            overwrite,
+            compression=compression,
+            max_encoded_bytes=max_encoded_bytes,
+            max_decoded_bytes=max_decoded_bytes,
+        )
 
     @arg_digest()
     def page(self, *, limit=32, max_bytes=65536, cursor=None, skip_digestion=False):
