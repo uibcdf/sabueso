@@ -809,6 +809,21 @@ class CardView:
         )
 
     @property
+    def ligand_reading(self):
+        """Current presentation of an exact original structure ligand node.
+
+        Component/instance fields retain their original states, counts and typed
+        locations. None elsewhere. No region, contact or assembly join is made;
+        historical source values and scientific results remain unchanged.
+        """
+        return self._ligand_reading()
+
+    def _ligand_reading(self, *, entry_limit=None):
+        from .card_ligand_reading_v1 import reading
+
+        return reading(self, entry_limit=entry_limit)
+
+    @property
     def explorer(self):
         return None if self._context_only else self._explorer
 

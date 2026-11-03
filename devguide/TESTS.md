@@ -45,6 +45,14 @@ fixture does not establish current live availability.
 
 ## Test kinds
 
+Original literal structure-ligand presentation is qualified by
+`tests/core/test_card_ligand_reading_offline.py`, together with original
+instance/parent/context navigation, human/nature/access/saved-history, annotation,
+argument and quantity cases. Check exact relationship/typed occurrence scope,
+unchanged literal items/filters and machine frames, detached complete context,
+partial/malformed states, bounded escaped previews and an independent inert
+saved path (#148). Native malformed-ligand calculation is separate #180 work.
+
 - Unit/contract tests verify errors, identities, assertion support, quantities and
   transformations, including deliberately synthetic parser inputs.
 - Native response tests preserve qualified original wire/file content and scopes.

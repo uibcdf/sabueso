@@ -52,6 +52,16 @@ together. Broad researcher acceptance remains open; **0.15.0 consolidation remai
 
 ## Resume here
 
+The subsequent [TcTIM literal ligand continuation](pending_proposals/card_ligand_reading.md)
+closes the first observed presentation gap in the annotation → regional structure
+→ exact declaration journey: original BTS/SO4 components, instances and contacts
+now have contextual reading and full typed destinations. Current optional
+`ligand_reading` leaves original items, filters, source support, scientific wires
+and @1–@6 verifiers unchanged. Its source-bound qualification belongs to #148/#112;
+preceding transport CI qualifies only its own source. Separate synthetic native
+malformed-ligand failure [#180](https://github.com/uibcdf/sabueso/issues/180)
+and #173 physical reconciliation remain open. Broad human acceptance is not implied.
+
 1. Read this checkpoint, [ROADMAP, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence),
    then the [complete exploration inventory](pending_proposals/card_exploration_completion_0150.md).
    The original foundational and pilot-driven routes still apply together.

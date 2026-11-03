@@ -83,6 +83,12 @@ No browsing operation may acquire new data, refresh a Card or fabricate findings
    sharing existing axes, residue knowledge and original structural support.
    The [regional chain reading](card_regional_reading.md) now presents the exact
    original regional result and numbering routes without enlarging machine frames.
+   The [original ligand reading](card_ligand_reading.md) follows that exact
+   structure declaration into readable components, instances and recorded contacts
+   with complete typed destinations, retaining original literal items/filters and
+   independent saved reading. It does not select ligands by regional overlap or
+   resolve physical assembly membership. Native malformed-ligand robustness is
+   separately reported in #180.
    Fresh acquisition now retains [original source assembly generation](rcsb_assembly_generation.md)
    for literal human/agent and inert saved inspection. Native symbolic plans and
    optional preflighted tuple expansion are now available through

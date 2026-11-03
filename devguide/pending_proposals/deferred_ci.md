@@ -9,6 +9,22 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Original literal ligand reading checkpoint (2026-11-03, #148)
+
+The [TcTIM ligand continuation](card_ligand_reading.md) changes only current
+literal delivery: readable exact component/instance nodes and complete typed
+destinations, display selection/order, original support and inert saved reading.
+Original science, navigation rules and @1–@6 verifiers remain unchanged. The
+final thirteen-file local gate passes 381 cases /209.44 s, serial and guarded;
+public guide execution, warning-fatal Sphinx and applicable static gates pass.
+Publish through an **unskipped** exact-source checkpoint, then verify all eighteen
+CI jobs, governance, thirteen actual pytest summaries, twelve backend producers
+and twelve installed transport routes through full gh-run-receptor captures.
+Owner #148/#112, with head/SDK/runs and recovery scripts retained in
+`recovered_work/tctim_journey_148_20261103/`. Preceding transport receipts retain
+their own source scope and active captures. Pending runs do not qualify this
+source or close #180, #173, broad researcher acceptance or the paused 0.15.0 route.
+
 ### Large-original test admission and measured API follow-up (2026-11-03, #178/#167)
 
 Transport source `92af2c6`, SDK `0.14.0+144.g92af2c6`, has verified governance

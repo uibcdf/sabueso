@@ -325,6 +325,58 @@ that access session; independent readers can use different handles for the same
 original values. Saving a regional detail preserves its original request/result,
 support and navigation; reopening it computes no new science.
 
+## Follow a structure's original ligands
+
+From the selected public TcTIM/1SUX structure above, open its original ligand
+declarations. The preview names components and counts their retained instances:
+
+```python
+ligands = structure.related().filter("role", equals="ligand_context").items()[0].open()
+ligands  # BTS and SO4 in this exact original declaration
+component = ligands.items()[0].open()
+instances = component.filter("label", equals="instances").items()[0].open()
+instance = instances.items()[0]
+instance_detail = instance.open()
+instance_detail  # recorded chains, contacts and distance units
+instance.explain()  # original relationship-level support
+assert instance_detail.back() is instances
+```
+
+`CardView.ligand_reading` provides the same current presentation as detached
+structured data, with complete component/instance membership, original list
+indices, field states and exact locations. It is available on an original ligand
+list, component, instance list or instance detail; elsewhere it is `None`.
+Original item labels and filters remain unchanged. The preview prepares up to six
+entries and reports omissions; the property includes every selected entry in the
+same order. `node_entry_count` retains the original node's total, and its
+`location` opens that whole original node. An empty filter is distinct from an
+empty original list. Component/instance details describe their whole original
+node. Other Cards
+may retain no instances, or an empty/null/malformed field: inspect those states
+before following a location.
+
+Compact agents can use these same original locations with bounded reads:
+
+```python
+original_instance = instance_detail.ligand_reading["entries"][0]
+contacts = original_instance["contacts"]
+if contacts["location"] is not None:
+    contact_page = explorer.access.read(contacts["location"]).page(
+        limit=1, max_bytes=8192
+    )
+    # Containers stay compact; follow an item's value_location for its fields.
+```
+
+These are all original ligands in this structure declaration, **not ligands
+selected by overlap with the regional question**. Component/chain/instance labels
+do not establish molecular identity, valid residue mapping or physical assembly
+membership. Recorded contact distances retain their original units and mapping
+basis; the presentation performs no new scientific calculation. Use the original
+source support to assess them. Missing retained data do not establish absence.
+Save `instance_detail` to preserve its original path and use `back()` when reading
+it later. The current literal presentation also works on independently reopened
+original readings, without querying sources or rerunning scientific readers.
+
 ## Inspect predicted models separately
 
 ```python

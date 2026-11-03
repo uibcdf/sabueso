@@ -20,6 +20,73 @@ def preview(value, limit=120):
     return str(value)[:limit]
 
 
+def _ligand_reading(view, reading):
+    """Readable literal destinations; original item labels/indices stay intact."""
+
+    def scalar(field):
+        return (
+            preview(field["value"])
+            if field["state"] in ("retained", "retained_empty", "retained_null")
+            else field["state"].replace("_", " ")
+        )
+
+    lines = [
+        f"Original ligand context · {preview(reading['structure_ref'])}",
+        reading["scope"],
+        f"{reading['level'].capitalize()}: {reading['state'].replace('_', ' ')}.",
+    ]
+    if (
+        reading["level"] in ("components", "instances")
+        and reading["entry_count"] is not None
+    ):
+        lines.append(
+            f"Selected original entries: {reading['entry_count']} of {reading['node_entry_count']}. "
+            "Display selection/order is preserved; entry numbers are original list indices."
+        )
+    for entry in reading["entries"]:
+        if reading["level"] in ("components", "component"):
+            instances = entry["instances"]
+            lines.append(
+                f"Original component entry {entry['index']}: "
+                f"{scalar(entry['component_id'])} · {scalar(entry['description'])} · "
+                f"instances: {instances['count'] if instances['count'] is not None else instances['state'].replace('_', ' ')} · "
+                f"investigation flag: {scalar(entry['investigation_flag'])}"
+            )
+        else:
+            from .card_access import _Entry
+            from .card_ligand_instances_v1 import preview as instance_preview
+
+            value, _ = view.explorer.access._resolve(entry["location"])
+            text = (
+                instance_preview(
+                    view.explorer, _Entry(entry["location"], str(entry["index"]), value)
+                )
+                if isinstance(value, dict)
+                else preview(value)
+            )
+            component = reading["component"]
+            lines.append(
+                f"Original instance entry {entry['index']}: component "
+                f"{scalar(component['component_id'])} · instance "
+                f"{scalar(entry['instance_id'])} · {text}"
+            )
+    if not reading["entries_complete"]:
+        total = reading["entry_count"]
+        lines.append(
+            f"Showing {len(reading['entries'])} of {total} original entries; "
+            "ligand_reading['entries'] contains all."
+            if total is not None
+            else "Original entry count is unknown; inspect native_payload."
+        )
+    lines.append(
+        "Open a component, then its 'instances' field to inspect each occurrence. "
+        "Original item labels and indices are unchanged. ligand_reading gives "
+        "exact locations for explorer.inspect(locator=...) and bounded access.read(...); "
+        "items()[i].explain() retains original support and back() returns to the original path."
+    )
+    return lines
+
+
 def _opening(view):
     data = view.explorer.access._focal.data
     names = data.get("sections", {}).get("names", {})
@@ -658,6 +725,9 @@ def _parts(view):
             opening.append(
                 f"Structural state · {preview(key)}: {'unknown' if value is None else preview(value)}"
             )
+    ligand_reading = view._ligand_reading(entry_limit=6)
+    if ligand_reading is not None:
+        opening.extend(_ligand_reading(view, ligand_reading))
     from .card_navigation_preview_v1 import guidance, plan
 
     indices, navigation_counts = plan(view)

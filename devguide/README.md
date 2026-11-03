@@ -11,6 +11,7 @@ is historical. Resume the maintainer's broad Card exploration work (#148), with
 records reconciled source, inputs, checks and retained resources.
 
 [Discoverable navigation previews](pending_proposals/card_navigation_preview.md)
+and [exact original ligand reading](pending_proposals/card_ligand_reading.md)
 prioritize retained questions and destinations while disclosing omissions and
 preserving original item indices, complete agent access and old saved previews
 (#148). [Persistence observations](pending_proposals/card_persistence_cost.md)
