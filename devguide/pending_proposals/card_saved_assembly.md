@@ -16,6 +16,21 @@ retain their formats and scientific verifiers. The five admitted adapters are
 original structures, coverage, ligand-site, quaternary and assembly exploration.
 No Card schema, source acquisition or dependency change follows.
 
+## Nonpolymer producer continuation (#173)
+
+The unpublished producer continuation adds explicit human/agent
+`options={"generation_rule": "rcsb_assembly_generation@5"}` through
+`assembly_generation_exploration@2` and `assembly_generation_links@2`. Default
+requests and explicit @4 normalize to the original @1 adapter and request wire.
+The two interpretations use distinct captured result identities and caches;
+human/agent entry order shares one evaluation within each interpretation.
+The new producer exposes native nonpolymer identity and uncertainty with original
+source support, rather than changing old results. Saving the new result remains
+unsupported until its independent original verifier is implemented. Capture the
+actual committed producer before that verifier; never regenerate the capture to
+match a later reader. The producer and reader will be received as one completed
+block before publication/adoption; older-only saved formats remain unchanged.
+
 ## Original inputs and results
 
 Saving a human topic/question/detail, filtered or ordered display, exact agent

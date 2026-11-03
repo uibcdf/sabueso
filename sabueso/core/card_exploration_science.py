@@ -45,6 +45,7 @@ def _encoding(view):
         "ligand_site_exploration@1",
         "quaternary_exploration@1",
         "assembly_generation_exploration@1",
+        "assembly_generation_exploration@2",
     ):
         return "json"
     if view._selection._scientific is not None:

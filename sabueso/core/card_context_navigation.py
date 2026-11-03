@@ -258,6 +258,7 @@ def _link_view(
     )
     if rule in (
         "assembly_generation_links@1",
+        "assembly_generation_links@2",
         "ligand_site_context_links@1",
         "quaternary_context_links@1",
         "ligand_instance_context_links@1",
@@ -283,9 +284,9 @@ def _link_view(
 
 def related(item):
     if item._view._record_panel == "assembly_generation":
-        from .card_assembly_exploration import links
+        from .card_assembly_dispatch import presentation
 
-        return links(item)
+        return presentation(item._view).links(item)
     if item._view._field_panel == "ligand_instances":
         from .card_ligand_instance_navigation_v1 import related as instance_related
 

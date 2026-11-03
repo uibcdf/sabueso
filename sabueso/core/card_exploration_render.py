@@ -560,10 +560,10 @@ def _parts(view):
             + "; source/request states remain distinct. Unknown counts are not zero; no global completeness score is inferred."
         )
     if view._record_panel == "assembly_generation":
-        if view._explorer.mode == "saved":
-            from .card_assembly_history_v1 import SCOPE, detail_lines
-        else:
-            from .card_assembly_exploration import SCOPE, detail_lines
+        from .card_assembly_dispatch import presentation
+
+        assembly = presentation(view)
+        SCOPE, detail_lines = assembly.SCOPE, assembly.detail_lines
 
         opening.append(SCOPE)
         opening.append(
@@ -773,10 +773,9 @@ def _parts(view):
                 ),
             )
             if view._record_panel == "assembly_generation":
-                if view._explorer.mode == "saved":
-                    from .card_assembly_history_v1 import display_row
-                else:
-                    from .card_assembly_exploration import display_row
+                from .card_assembly_dispatch import presentation
+
+                display_row = presentation(view).display_row
 
                 record_row = display_row(item, index, preview)
             if view._record_panel == "quaternary_interpretation":
@@ -1010,12 +1009,9 @@ def _parts(view):
 
 def _headers(view):
     if view._record_panel == "assembly_generation":
-        if view._explorer.mode == "saved":
-            from .card_assembly_history_v1 import HEADERS
-        else:
-            from .card_assembly_exploration import HEADERS
+        from .card_assembly_dispatch import presentation
 
-        return list(HEADERS)
+        return list(presentation(view).HEADERS)
     if view._record_panel == "quaternary_interpretation":
         if view._explorer.mode == "saved":
             from .card_quaternary_history_v1 import HEADERS

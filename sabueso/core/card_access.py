@@ -826,13 +826,12 @@ class CardAccess:
             )
         if topic == "assembly_generation":
             if self.mode == "saved":
-                from .card_exploration_assembly import saved_selection
+                from .card_assembly_dispatch import saved_selection
 
                 return saved_selection(
                     self, fields, options, where, item_refs, order_by
                 )
-            from .card_assembly_access import materialize
-            from .card_assembly_exploration import options_for_assembly
+            from .card_assembly_dispatch import materialize, options_for_assembly
             from .card_assembly_selection_v1 import (
                 active,
                 evaluate,
@@ -1021,6 +1020,7 @@ class CardAccess:
                 "ligand_site_exploration@1",
                 "quaternary_exploration@1",
                 "assembly_generation_exploration@1",
+                "assembly_generation_exploration@2",
             ):
                 return selection._scientific.frame(self, selection, entry)
             from .card_structure_page import complete_frame
@@ -1065,13 +1065,13 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
-        if item.get("adapter") == "assembly_generation_exploration@1":
-            if self.mode == "saved":
-                from .card_assembly_history_v1 import defer_frame
-            else:
-                from .card_assembly_access import defer_frame
+        if item.get("adapter") in (
+            "assembly_generation_exploration@1",
+            "assembly_generation_exploration@2",
+        ):
+            from .card_assembly_dispatch import defer_frame
 
-            return defer_frame(item)
+            return defer_frame(self, item)
         if item.get("kind") in (
             "interface_classification",
             "interface_family_comparison",

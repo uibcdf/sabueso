@@ -260,12 +260,9 @@ class CardItem:
     @property
     def support(self):
         if self._view._record_panel == "assembly_generation":
-            if self._view._explorer.mode == "saved":
-                from .card_assembly_history_v1 import support
-            else:
-                from .card_assembly_exploration import support
+            from .card_assembly_dispatch import presentation
 
-            return support(self)
+            return presentation(self._view).support(self)
         if self._view._record_panel == "quaternary_interpretation":
             if self._view._explorer.mode == "saved":
                 from .card_quaternary_history_v1 import support
@@ -610,9 +607,9 @@ class CardItem:
 
     def _live_explain(self):
         if self._view._record_panel == "assembly_generation":
-            from .card_assembly_exploration import explain
+            from .card_assembly_dispatch import presentation
 
-            return explain(self)
+            return presentation(self._view).explain(self)
         if self._view._record_panel == "quaternary_interpretation":
             from .card_quaternary_exploration import explain
 
@@ -1219,12 +1216,9 @@ class CardView:
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
         if self._record_panel == "assembly_generation":
-            if self._explorer.mode == "saved":
-                from .card_assembly_history_v1 import display_filter
-            else:
-                from .card_assembly_exploration import display_filter
+            from .card_assembly_dispatch import presentation
 
-            return display_filter(self, column, equals)
+            return presentation(self).display_filter(self, column, equals)
         scientific = (
             self._selection._scientific is not None
             and self._record_panel
@@ -1627,7 +1621,7 @@ class CardExplorer:
 
     def _topic(self, topic, origin=None, options=None):
         if self.mode == "saved" and topic == "assembly_generation":
-            from .card_exploration_assembly import saved_human
+            from .card_assembly_dispatch import saved_human
 
             return saved_human(self, options, origin, question=False)
         if self.mode == "saved":
@@ -1645,7 +1639,7 @@ class CardExplorer:
         from .card_exploration_profiles import PANELS
 
         if topic == "assembly_generation":
-            from .card_assembly_exploration import options_for_assembly, view
+            from .card_assembly_dispatch import options_for_assembly, view
 
             return view(self, origin, options_for_assembly(options))
         if topic == "quaternary_interpretation":
@@ -1838,7 +1832,7 @@ class CardExplorer:
 
     def _answer(self, question, options, origin=None):
         if self.mode == "saved" and question == "assembly_generation":
-            from .card_exploration_assembly import saved_human
+            from .card_assembly_dispatch import saved_human
 
             return saved_human(self, options, origin, question=True)
         if self.mode == "saved":
