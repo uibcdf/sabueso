@@ -175,7 +175,8 @@ jobs:
       - name: Install pinned older-Python Zstandard qualification backend
         if: matrix.python-version != '3.14'
         shell: bash -l {0}
-        run: python -m pip install --only-binary=:all: --no-deps backports.zstd==1.8.0
+        run: |
+          python -m pip install --only-binary=:all: --no-deps backports.zstd==1.8.0
       - name: Qualify and emit Zstandard cross-reader frames
         shell: bash -l {0}
         run: python devtools/probe_zstd_backend.py emit
@@ -224,7 +225,8 @@ jobs:
             python=${{ matrix.python-version }} pip
       - name: Install pinned standalone qualification backend
         shell: bash -l {0}
-        run: python -m pip install --only-binary=:all: --no-deps backports.zstd==1.8.0
+        run: |
+          python -m pip install --only-binary=:all: --no-deps backports.zstd==1.8.0
       - name: Qualify and emit Zstandard cross-reader frames
         shell: bash -l {0}
         run: python devtools/probe_zstd_backend.py emit
