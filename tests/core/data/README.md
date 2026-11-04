@@ -1,5 +1,20 @@
 # Historical exploration fixtures
 
+## Original live declared-component navigation
+
+`assembly_component_navigation_live_v1.json.gz` retains genuine public 1SUX,
+2V5B and 1HTI live navigation from `63f3200f9e58fe1d4a190326b6e23fd10efa584c`,
+SDK `0.14.0+156.g63f3200`, before the independent @8 verifier existed. It preserves
+exact structure questions, original @2 assembly wires, component-list/detail links,
+source locations, original order, text/HTML and producer source hashes. This is a
+live comparison capsule, not a saved exploration or a frozen Card schema. Existing
+public source terms remain in `temp_data/NOTICE.md`; no new queries/private data.
+Never regenerate these bytes to pass a newer reader.
+
+Compressed SHA-256: `aae0293af668af4a2f0f71773d5e68567394fcfff81b354717e70a77f2b04b42`.
+
+Uncompressed SHA-256: `f061b73014446c61eb14c71f28ba52eacdcfabb34ab134f612019c3427a7d5b2`.
+
 ## Original structure question @6 and mixed nonpolymer navigation @7
 
 `card_structure_assembly_saved_v6.json.gz` and
