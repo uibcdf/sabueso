@@ -259,11 +259,15 @@ def _link_view(
     if rule in (
         "assembly_generation_links@1",
         "assembly_generation_links@2",
+        "assembly_generation_links@3",
+        "assembly_component_list_links@1",
+        "assembly_component_detail_links@1",
         "ligand_site_context_links@1",
         "quaternary_context_links@1",
         "ligand_instance_context_links@1",
         "structure_declaration_context_links@1",
         "structure_declaration_context_links@2",
+        "structure_declaration_context_links@3",
     ):
         explorer._session["views"].pop(id(view), None)
     return replace(
@@ -286,6 +290,13 @@ def related(item):
     if item._view._record_panel == "assembly_generation":
         from .card_assembly_dispatch import presentation
 
+        if (
+            item._view._selection._scientific.wire["context"]["adapter"]
+            == "assembly_generation_exploration@2"
+        ):
+            from .card_assembly_component_context_v1 import assembly_related
+
+            return assembly_related(item)
         return presentation(item._view).links(item)
     if item._view._field_panel == "ligand_instances":
         from .card_ligand_instance_navigation_v1 import related as instance_related
@@ -305,8 +316,8 @@ def related(item):
         return links(item)
     explorer = item._view._explorer
     if not item._view._route_catalog and not item._view._link_panel:
-        from .card_structure_context_v2 import context as structure_context
-        from .card_structure_context_v2 import related as structure_related
+        from .card_structure_context_v3 import context as structure_context
+        from .card_structure_context_v3 import related as structure_related
 
         structure = structure_context(explorer, item.payload_location)
         if structure is not None:
@@ -449,9 +460,16 @@ def _destination(explorer, candidate, origin, title="Referenced source record"):
 
 def follow(item):
     explorer, link = item._view._explorer, item._entry.value
-    if (
-        link.get("role") == "question"
-        and link.get("rule") == "structure_declaration_context_links@2"
+    if link.get("rule") in (
+        "assembly_generation_links@3",
+        "assembly_component_list_links@1",
+    ) and link.get("role") in ("components", "component"):
+        from .card_assembly_component_context_v1 import follow as follow_component
+
+        return follow_component(item)
+    if link.get("role") == "question" and link.get("rule") in (
+        "structure_declaration_context_links@2",
+        "structure_declaration_context_links@3",
     ):
         basis = link["assembly_request"]
         if basis["state"] == "ready":
@@ -508,6 +526,7 @@ def follow(item):
             in (
                 "structure_declaration_context_links@1",
                 "structure_declaration_context_links@2",
+                "structure_declaration_context_links@3",
             )
             else "Referenced source record",
         )
@@ -539,6 +558,7 @@ def follow(item):
     if link.get("rule") in (
         "structure_declaration_context_links@1",
         "structure_declaration_context_links@2",
+        "structure_declaration_context_links@3",
     ):
         from .card_structure_context_v1 import missing_reason
 

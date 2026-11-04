@@ -741,7 +741,11 @@ def _parts(view):
             if value.get("role") == "question":
                 context_key = (
                     "assembly_request"
-                    if value.get("rule") == "structure_declaration_context_links@2"
+                    if value.get("rule")
+                    in (
+                        "structure_declaration_context_links@2",
+                        "structure_declaration_context_links@3",
+                    )
                     else "model_context"
                     if value.get("rule") == "retained_context_links@4"
                     else "annotation_context"
@@ -751,6 +755,15 @@ def _parts(view):
                         str(index),
                         preview(item.label),
                         f"{preview(value['availability'])} · {preview(value[context_key]['reason'], 240)}",
+                    )
+                )
+                continue
+            if "component_request" in value:
+                rows.append(
+                    (
+                        str(index),
+                        preview(item.label),
+                        f"{preview(value['availability'])} · {preview(value['component_request']['reason'], 240)}",
                     )
                 )
                 continue
