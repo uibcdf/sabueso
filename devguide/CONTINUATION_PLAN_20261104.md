@@ -147,6 +147,14 @@ owned receipts before acting. Preserve existing work and original fixtures; do
 not require a clean tree by discarding changes or reapplying the removed stash.
 Reconcile any later contributor changes before committing or pushing.
 
+B2 continuation: the [six-case dossier](pending_proposals/measurement_correspondence_review_20261104.md)
+is ready. The maintainer will review it, explicitly deferred for now. The
+[new #188 prerequisite](pending_bugs/bioactivity_target_scope.md) implements opt-in
+target-scope @2 without changing @1/defaults or source data: declared copies cannot
+supply direct-only scope over an indirect or unresolved original. Scientific,
+default and consumer adoption remain pending. Do not block independent B3 work
+on reviewer availability, and do not build B4 summaries as accepted science yet.
+
 ## Execution order
 
 The block table is the current scheduling entry point. The

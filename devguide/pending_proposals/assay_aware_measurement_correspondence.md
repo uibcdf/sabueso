@@ -9,6 +9,15 @@ area: [bioactivities, scientific-correctness, public-api]
 
 # Assay-aware measurement correspondence
 
+The [six-case review dossier](measurement_correspondence_review_20261104.md)
+is prepared. The maintainer will perform the scientific review and explicitly
+deferred it on 2026-11-04. The review reproduced an additional selection defect,
+[#188](../pending_bugs/bioactivity_target_scope.md): copies can bypass their
+retained original's indirect-target exclusion. A separate opt-in target-scope @2
+addresses this without changing measurement @1 or target-scope @1/defaults.
+Neither technical continuation nor the candidate establishes scientific/default
+acceptance; unrelated B3 work may continue while review is pending.
+
 Owner [#186](https://github.com/uibcdf/sabueso/issues/186); coordination #112/#148.
 This is B2 of the [continuation plan](../CONTINUATION_PLAN_20261104.md).
 The [original @1 design](../archive/measurement_identity.md) remains historical

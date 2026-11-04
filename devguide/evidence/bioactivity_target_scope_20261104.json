@@ -1,0 +1,426 @@
+{
+  "owner": "#188/#186/#148/#112",
+  "review_trigger": "exact-source receiving / maintainer scientific review / B4 / before 0.15.0",
+  "state": "selected_local_validation_passed_exact_source_receiving_pending",
+  "base_source": "ca9e0f376f4f2f62ac817de82a8da3886efae16a",
+  "sdk_at_local_precommit_execution": "0.14.0+166.gca9e0f3",
+  "default_target_scope_rule": "bioactivity_target_scope@1",
+  "opt_in_target_scope_rule": "bioactivity_target_scope@2",
+  "default_measurement_rule": "measurement_identity@1",
+  "candidate_measurement_rule": "measurement_identity@2",
+  "classification_default": "bioactivity_class@4",
+  "scientific_review": "Maintainer-owned; explicitly deferred on 2026-11-04. No scientific/default adoption or consumer/researcher acceptance.",
+  "gates": {
+    "specific_policy_copy_original_cases": 136,
+    "integration_cases": 361,
+    "overlap": "Scopes overlap; copied receiving repeats standalone tests. These counts are not summed as unique cases.",
+    "repository_ruff_lint_and_format": true,
+    "warning_fatal_sphinx": true,
+    "workflow_yaml": true,
+    "fixture_delivery": "71 reviewed inputs, 37 protected originals",
+    "shape": "0.3.14 unchanged",
+    "schema_field_paths": true,
+    "moli_governance": true,
+    "original_integrity": {
+      "owner": "#188/#186/#148/#112",
+      "review_trigger": "final source qualification and scientific/default review",
+      "original_functions": {
+        "sabueso/core/measurements.py": {
+          "original_revision": "0.14.0",
+          "unchanged_function_ASTs": [
+            "measurement_groups",
+            "half_unit",
+            "_agree",
+            "_relations_match"
+          ]
+        },
+        "sabueso/core/bioactivities.py": {
+          "original_revision": "0.14.0",
+          "unchanged_function_ASTs": [
+            "_band",
+            "_bounded",
+            "classify_measurement",
+            "single_point_concentration",
+            "bioactivity_derivation"
+          ]
+        },
+        "sabueso/core/bioactivity_class_v4.py": {
+          "original_revision": "1290201",
+          "unchanged_function_ASTs": [
+            "classification_rule",
+            "thresholds_in_force",
+            "derivation",
+            "classify"
+          ]
+        }
+      },
+      "original_measurements_and_correspondence_modules_byte_unchanged_from": "ca9e0f3",
+      "original_fixture_sha256": "f816d19d582dc0da113627995ffede51ce84b420a8331b1b71543f1e019fbeec",
+      "schema_and_existing_source_fixtures_changed": false,
+      "checks": {
+        "repository_ruff_check": true,
+        "repository_ruff_format": true,
+        "fixture_delivery": "71 reviewed; 37 protected originals",
+        "moli_governance": true
+      }
+    }
+  },
+  "public_same_input_comparison": {
+    "owner": "#188/#186/#112/#148",
+    "review_trigger": "scientific/default review and B4; before 0.15.0",
+    "sdk": "0.14.0+166.gca9e0f3",
+    "original_producer": {
+      "module_sha256": {
+        "sabueso/core/bioactivities.py": "afef2f1c745b1c09c8d2b54e6a9df589e3af93b6bf66269167b079916b1b96f0",
+        "sabueso/core/bioactivity_explanation.py": "fcd814e98e3b59e06bf53df9be4d0b4858a328e028a074b68ca75df8d8014284",
+        "sabueso/core/card.py": "2422b7ab168510a1eac8492919045abd409af2921d7903f86b5c0f81ab40beaf",
+        "sabueso/core/ligand_explanation.py": "35e4d2009fb236dc7126da7ef85c092e11cccf3f7da13837cbf429283224bd83",
+        "sabueso/core/ligands.py": "345e3c7fcfa7b2f26e0b0c83ebc15c95ce5332bf84febe5d8883f1a299d38172"
+      },
+      "sdk": "0.14.0+166.gca9e0f3",
+      "source": "ca9e0f376f4f2f62ac817de82a8da3886efae16a"
+    },
+    "original_control_sha256": "72094cb001d39d2cb079f4c7ce8d332cf08b8738cef1b8f305d0faf56c0cbf49",
+    "original_views_verified": 8,
+    "exact_original_json_when_same_sdk": true,
+    "producer_stamp_contract": "Fresh recomputation uses the current SDK. Only formal derivation producer stamps may differ; original stored reading is not recomputed or normalized.",
+    "candidate_rule": "bioactivity_target_scope@2",
+    "default_rule": "bioactivity_target_scope@1",
+    "online_requests": 0,
+    "rows": [
+      {
+        "input": "retained-subject",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:cd9fbf8f75db54a05537f5fbc131cf1bf3d84875d1703b94aa3d08fc4caf0ddc",
+        "measurement_rule": "measurement_identity@1",
+        "retained_records": 510,
+        "original_included_records": 510,
+        "candidate_included_records": 510,
+        "candidate_excluded_records": 0,
+        "excluded_reasons": {},
+        "strict_included_groups": 494,
+        "original_scientific_view_preserved": true,
+        "source_card_unchanged": true
+      },
+      {
+        "input": "retained-subject",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:cd9fbf8f75db54a05537f5fbc131cf1bf3d84875d1703b94aa3d08fc4caf0ddc",
+        "measurement_rule": "measurement_identity@2",
+        "retained_records": 510,
+        "original_included_records": 510,
+        "candidate_included_records": 510,
+        "candidate_excluded_records": 0,
+        "excluded_reasons": {},
+        "strict_included_groups": 510,
+        "original_scientific_view_preserved": true,
+        "source_card_unchanged": true
+      },
+      {
+        "input": "retained-comparator",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:da4988d08ebc5516333072dca48481046f2d0220160eda0eb579136894577461",
+        "measurement_rule": "measurement_identity@1",
+        "retained_records": 59,
+        "original_included_records": 51,
+        "candidate_included_records": 51,
+        "candidate_excluded_records": 8,
+        "excluded_reasons": {
+          "mapped_assignment_not_direct": 8
+        },
+        "strict_included_groups": 44,
+        "original_scientific_view_preserved": true,
+        "source_card_unchanged": true
+      },
+      {
+        "input": "retained-comparator",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:da4988d08ebc5516333072dca48481046f2d0220160eda0eb579136894577461",
+        "measurement_rule": "measurement_identity@2",
+        "retained_records": 59,
+        "original_included_records": 51,
+        "candidate_included_records": 51,
+        "candidate_excluded_records": 8,
+        "excluded_reasons": {
+          "mapped_assignment_not_direct": 8
+        },
+        "strict_included_groups": 51,
+        "original_scientific_view_preserved": true,
+        "source_card_unchanged": true
+      },
+      {
+        "input": "three-source-P52270",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:2f563e45bfe1cff763e465ce23994ff2c8b8a158c9ea82ebccc219cd367afbd4",
+        "measurement_rule": "measurement_identity@1",
+        "retained_records": 1002,
+        "original_included_records": 1002,
+        "candidate_included_records": 995,
+        "candidate_excluded_records": 7,
+        "excluded_reasons": {
+          "original_not_resolved": 7
+        },
+        "strict_included_groups": 494,
+        "original_scientific_view_preserved": true,
+        "source_card_unchanged": true
+      },
+      {
+        "input": "three-source-P52270",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:2f563e45bfe1cff763e465ce23994ff2c8b8a158c9ea82ebccc219cd367afbd4",
+        "measurement_rule": "measurement_identity@2",
+        "retained_records": 1002,
+        "original_included_records": 1002,
+        "candidate_included_records": 995,
+        "candidate_excluded_records": 7,
+        "excluded_reasons": {
+          "original_not_resolved": 7
+        },
+        "strict_included_groups": 510,
+        "original_scientific_view_preserved": true,
+        "source_card_unchanged": true
+      },
+      {
+        "input": "three-source-P60174",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d",
+        "measurement_rule": "measurement_identity@1",
+        "retained_records": 96,
+        "original_included_records": 88,
+        "candidate_included_records": 77,
+        "candidate_excluded_records": 19,
+        "excluded_reasons": {
+          "mapped_assignment_not_direct": 8,
+          "original_not_resolved": 3,
+          "copy_and_original_assignments_differ": 8
+        },
+        "strict_included_groups": 44,
+        "original_scientific_view_preserved": true,
+        "source_card_unchanged": true
+      },
+      {
+        "input": "three-source-P60174",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d",
+        "measurement_rule": "measurement_identity@2",
+        "retained_records": 96,
+        "original_included_records": 88,
+        "candidate_included_records": 77,
+        "candidate_excluded_records": 19,
+        "excluded_reasons": {
+          "mapped_assignment_not_direct": 8,
+          "original_not_resolved": 3,
+          "copy_and_original_assignments_differ": 8
+        },
+        "strict_included_groups": 51,
+        "original_scientific_view_preserved": true,
+        "source_card_unchanged": true
+      }
+    ],
+    "interpretation_limit": "Retained source/mapping selection, not primary-method review or scientific/default acceptance."
+  },
+  "actual_user_guide": {
+    "owner": "#188/#186/#148/#112",
+    "review_trigger": "scientific and human acceptance before 0.15.0",
+    "online_requests": 0,
+    "block_sha256": [
+      "963234d5af44bc66cd8bbfe6c7862fa4bac6eeaef9e6895a30a48315a462ccc1",
+      "686ad1c7d2beb634d3c44f8f03ef677534e377a8706db24cd2be52c284ce6f88"
+    ],
+    "rows": [
+      {
+        "input": "retained-comparator.json",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:da4988d08ebc5516333072dca48481046f2d0220160eda0eb579136894577461",
+        "input_sha256": "6f599a4bae5bdc24b71e85128957cdd5bba5e7891a296b78899e3f904dbe35f1",
+        "actual_blocks": 2,
+        "card_unchanged": true
+      },
+      {
+        "input": "retained-subject.json",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:cd9fbf8f75db54a05537f5fbc131cf1bf3d84875d1703b94aa3d08fc4caf0ddc",
+        "input_sha256": "328373a95efff582a3c6f34aa8a17b3caf9c33b42308fb53e8fd4398702cc2ff",
+        "actual_blocks": 2,
+        "card_unchanged": true
+      },
+      {
+        "input": "three-source-P52270.json",
+        "card_ref": "sabueso:protein:uniprot:P52270@sha256:2f563e45bfe1cff763e465ce23994ff2c8b8a158c9ea82ebccc219cd367afbd4",
+        "input_sha256": "7c910acf730af832c7901a078690cde78abc62b4036402b36618cec2f498dcc1",
+        "actual_blocks": 2,
+        "card_unchanged": true
+      },
+      {
+        "input": "three-source-P60174.json",
+        "card_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d",
+        "input_sha256": "2dc776cb64540449c7affae663bfa3834009f56ffaf72d0dc64c62b083017dcb",
+        "actual_blocks": 2,
+        "card_unchanged": true
+      }
+    ]
+  },
+  "resources": {
+    "copies": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 11.54,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 143908864,
+      "minimum_host_available_bytes": 14787883008,
+      "minimum_host_free_bytes": 1615319040,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 3,
+      "peak_owned_scratch_bytes": 265905,
+      "tmpdir": "/home/liliana/repos@uibcdf/sabueso/recovered_work/target_scope_188_20261104/tmp-copies"
+    },
+    "integration": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 348.65,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 602230784,
+      "minimum_host_available_bytes": 13671329792,
+      "minimum_host_free_bytes": 389640192,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 14,
+      "peak_owned_scratch_bytes": 413208933,
+      "tmpdir": "/home/liliana/repos@uibcdf/sabueso/recovered_work/target_scope_188_20261104/tmp-integration"
+    },
+    "public-impact": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 9.03,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 135000064,
+      "minimum_host_available_bytes": 14438502400,
+      "minimum_host_free_bytes": 1262493696,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 0,
+      "peak_owned_scratch_bytes": 276823,
+      "tmpdir": "/home/liliana/repos@uibcdf/sabueso/recovered_work/target_scope_188_20261104/tmp-public-impact"
+    },
+    "guide": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 11.5,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 126189568,
+      "minimum_host_available_bytes": 14784282624,
+      "minimum_host_free_bytes": 1280798720,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 0,
+      "peak_owned_scratch_bytes": 269971241,
+      "tmpdir": "/home/liliana/repos@uibcdf/sabueso/recovered_work/target_scope_188_20261104/tmp-guide"
+    },
+    "integration-sphinx": {
+      "resource_guard": "owned_rss_available_swap@2",
+      "host_free_mode": "observed_only_not_a_reclaimability_estimate",
+      "exit_code": 0,
+      "elapsed_s": 29.28,
+      "stop_reason": null,
+      "peak_owned_rss_bytes": 273780736,
+      "minimum_host_available_bytes": 14602498048,
+      "minimum_host_free_bytes": 1063051264,
+      "peak_owned_swap_bytes": 0,
+      "limits": {
+        "owned_rss_bytes": 1073741824,
+        "host_available_bytes": 4294967296,
+        "owned_swap_bytes": 0,
+        "owned_scratch_bytes": 2147483648
+      },
+      "test_files": 0,
+      "peak_owned_scratch_bytes": 308507291,
+      "tmpdir": "/home/liliana/repos@uibcdf/sabueso/recovered_work/target_scope_188_20261104/tmp-integration-sphinx"
+    }
+  },
+  "implementation_sha256": {
+    "sabueso/core/bioactivities.py": "176e01735b5930a58af4e676d1ca957a018569242261a2a91123de7ae5c01f1f",
+    "sabueso/core/bioactivity_explanation.py": "d1ffc514cc8621dd7d5c5277d9ce8eed6c10ef6d4f1f62a47faf2a3a0d35ac40",
+    "sabueso/core/card.py": "928c0bb27cb25bc8a6b5766883bcb1d8be78caf9300a7f2d2dcd6e505eb54e7f",
+    "sabueso/core/ligand_explanation.py": "155e4749fc05966ac3dc1d2116b076e33db350bc106b8c3d5ef86598b06c1393",
+    "sabueso/core/ligands.py": "188d9f7e1a984ab4b6605036d0e04ff568787aa29bc92f8ec2f339b0e00e5543",
+    "sabueso/core/packets.py": "1b47de9b6aabb02c3d07e7005ca428d3a07eb4b5a03b0d768f6f2f88cc213fce",
+    "sabueso/core/tables.py": "e28d916289440977636f5ede19557e9357538889d798edc077d7c16b9092e6c4",
+    "tests/core/test_pubchem_bioassay_offline.py": "076e2a54b3b95bae81ef72190f1223026ab1f8b8e327fef3fed43f3b32cb1cb1",
+    "tests/tools/test_installed_receiving_scope_offline.py": "8e74a1602bd5d2ec116cd0530ceda55b0d8252ad1e03dcb2791d17ccd47ce738",
+    "sabueso/_private/argdigest/argument/target_scope_rule.py": "5fb36e645f2577fb48446935c1473ccfbce5a47ceefdb1d3d5b004533cad6599",
+    "sabueso/core/bioactivity_target_scope.py": "9b9977ddd33079776a249147f12ccf42ba2ee3c4a0411646e780556df9dd793d",
+    "tests/core/test_bioactivity_target_scope_offline.py": "be54a2c97e617ea9e51dad9ed010896b1c59bd6e8008ad5f22afca2ac3f00372"
+  },
+  "cleanup": {
+    "owner": "#188/#186/#148/#112",
+    "review_trigger": "next source/scientific checkpoint or before 0.15.0",
+    "removed": [
+      {
+        "path": "pytest-integration",
+        "bytes": 269587301
+      },
+      {
+        "path": "tmp-copies",
+        "bytes": 0
+      },
+      {
+        "path": "tmp-focused",
+        "bytes": 0
+      },
+      {
+        "path": "tmp-integration",
+        "bytes": 0
+      },
+      {
+        "path": "tmp-original",
+        "bytes": 0
+      },
+      {
+        "path": "tmp-public-impact",
+        "bytes": 0
+      },
+      {
+        "path": "tmp-guide",
+        "bytes": 0
+      },
+      {
+        "path": "tmp-integration-sphinx",
+        "bytes": 0
+      },
+      {
+        "path": "sphinx-html",
+        "bytes": 43259710
+      }
+    ],
+    "removed_bytes": 312847011,
+    "retained": "Eight genuine ca9e0f3 original views/control, source/fixture hashes, exact four public input Cards in the #186 parent phase, casebooks, scripts, logs, receipts and active ancestor remote captures. No environments created or removed."
+  },
+  "online_requests": 0,
+  "card_schema_source_assertions_quantities_and_original_packets": "unchanged; original packet mappings explicitly retain target scope @1",
+  "remote": {
+    "qualified": false,
+    "recovery": "unskipped exact-source CI/governance and full gh-run-receptor captures, expected source 7254 / installed 1792 cases each; phase INDEX records exact final head and subsequent post-editable results"
+  },
+  "experience": {
+    "observed": "Known excluded activity receives outside_scope with original support and readable selection reasons; explicit wider inclusion is complete on four public Cards; dictionary guide calls execute.",
+    "awkward": "Policy names and dictionary keys are still needed. Rich readable activity exploration, compact saved agent delivery and cross-topic navigation remain B4.",
+    "researcher_tasks": "Not performed; no wow acceptance.",
+    "next": "Maintainer scientific review when ready; independent B3 technical work may continue."
+  },
+  "release_consolidation": "paused"
+}

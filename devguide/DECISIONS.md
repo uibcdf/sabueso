@@ -1,5 +1,19 @@
 # Sabueso — Decision Log
 
+## 2026-11-04 — Defer scientific review; preserve opt-in target scope (#186/#188)
+
+The maintainer will conduct the six-case scientific review and explicitly leaves
+it pending. Technical continuation does not constitute that review or authorize
+default adoption. Implement the reproduced copied-record target-scope bypass as
+separate `bioactivity_target_scope@2`, requiring a uniquely resolved original's
+retained direct scope, exact focal subject and no differing copy assignment.
+Keep @1/defaults, raw source assignments, original Card pins and packet meanings
+unchanged. Known excluded activities remain inspectable as `outside_scope` with
+original support; deliberate `include_indirect=True` returns all retained rows
+with diagnostics. This interprets retained source/mapping context, without
+asserting experimentally proven direct binding. See
+[the contract](pending_bugs/bioactivity_target_scope.md).
+
 ## Qualify a copy-aware measurement candidate before default adoption (2026-11-04, #186)
 
 Introduce opt-in `measurement_identity@2` across current activity/ligand answers,

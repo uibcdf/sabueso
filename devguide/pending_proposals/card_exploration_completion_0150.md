@@ -29,6 +29,11 @@ remain pending. These are
 scientific prerequisites, not delivery of a rich activity panel or researcher
 acceptance.
 
+The [#188 target-scope prerequisite](../pending_bugs/bioactivity_target_scope.md)
+now provides opt-in copy-aware selection and explicit excluded-known explanations,
+preserving defaults and original records. The maintainer's scientific review is
+explicitly deferred; activity panel completion and wow acceptance remain open.
+
 ## Maintainer decision and release gate
 
 On 2026-10-22 the maintainer explicitly required **the entire broad exploration

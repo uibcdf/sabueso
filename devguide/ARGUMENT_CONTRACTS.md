@@ -1,5 +1,14 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+`target_scope_rule` is a keyword-only exact string selector on `Card.bioactivities`,
+`explain_bioactivity`, `ligands`, `explain_ligand` and `compare_ligands`, also
+forwarded by their tables. Default/original `bioactivity_target_scope@1` preserves
+existing behavior; opt-in `bioactivity_target_scope@2` requires retained original
+scope for declared copies. Other values fail through ArgDigest or the native
+validator before interpretation/pinning, including `skip_digestion=True`.
+`explain_measurement` inspects original identity without a target filter and has
+no such selector. See [#188's contract](pending_bugs/bioactivity_target_scope.md).
+
 The opt-in measurement candidate adds `measurement_rule` to `Card.bioactivities`,
 `explain_measurement`, `explain_bioactivity`, `ligands`, `explain_ligand` and
 `compare_ligands` and their applicable table options. It accepts exactly

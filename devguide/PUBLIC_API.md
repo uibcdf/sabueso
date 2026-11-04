@@ -1,5 +1,13 @@
 # Sabueso — Public API
 
+Development opt-in `target_scope_rule="bioactivity_target_scope@2"` is shared by
+activity/ligand views, explanations, comparisons and their tables. It prevents a
+declared copy from bypassing its retained original's target scope, preserving raw
+assignments and exact source support. A known excluded activity explains itself
+as `outside_scope`. Default/explicit @1 and packet mappings stay original;
+`include_indirect=True` deliberately includes all retained rows with diagnostics.
+Scientific/default adoption is pending. See [the contract](pending_bugs/bioactivity_target_scope.md).
+
 Development: `Card.bioactivities()` and `Card.explain_bioactivity(molecule_ref)`
 default to conservative `bioactivity_class@4` and readable explanation @2.
 `Card.ligands`, `explain_ligand` and `compare_ligands` share this default and exact

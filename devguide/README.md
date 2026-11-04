@@ -1,5 +1,12 @@
 # Sabueso — Developer Guide
 
+The [source-bound target-scope candidate](pending_bugs/bioactivity_target_scope.md) addresses #188's copied-record selection
+bypass with an opt-in, source-supported policy and explicit `outside_scope`
+explanations. The maintainer-owned scientific review is deferred; defaults and
+historical meanings stay unchanged. The
+[six-case dossier](pending_proposals/measurement_correspondence_review_20261104.md)
+is ready for that review, not accepted science.
+
 The developer guide is the repository's memory: what Sabueso is, how it is built, what
 was decided and why, and what comes next. Start with `CHECKPOINT.md` and `ROADMAP.md`.
 Contributors and agents also read `../AGENTS.md`.

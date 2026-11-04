@@ -481,6 +481,7 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
             return card.bioactivities(
                 classification_rule="bioactivity_class@4",
                 measurement_rule="measurement_identity@1",
+                target_scope_rule="bioactivity_target_scope@1",
             )
         return _facts(aspect, card, mapping="packet_aspects@14")
     if aspect == "identity":
@@ -568,6 +569,7 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
         return card.bioactivities(
             classification_rule="bioactivity_class@3",
             measurement_rule="measurement_identity@1",
+            target_scope_rule="bioactivity_target_scope@1",
         )
     if aspect == "sequence_features":
         return _positional(card)

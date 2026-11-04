@@ -1,5 +1,17 @@
 # Sabueso — Checkpoint
 
+B2 review reproduced [#188](https://github.com/uibcdf/sabueso/issues/188): two
+retained PubChem copies bypass their original ChEMBL indirect-target exclusions.
+The [source-bound target-scope candidate](pending_bugs/bioactivity_target_scope.md) adds opt-in @2 across direct activity/ligand
+answers, explanations and tables; @1/defaults, raw assignments, original Cards
+and packet meanings remain unchanged. Eight genuine pre-change controls and four
+same-input public comparisons distinguish original behavior from the candidate.
+The maintainer will conduct the scientific review and explicitly leaves it
+pending; neither default adoption nor researcher acceptance is authorized by
+further technical continuation. See the
+[six-case dossier](pending_proposals/measurement_correspondence_review_20261104.md).
+This correctness prerequisite precedes B4; independent B3 work may continue.
+
 Last updated: **2026-11-04 (UTC)**, exact structure/component navigation (#173/#148), independent
 nonpolymer assembly reading and CI scratch recovery (#183),
 qualifier-parent receiving (#181) and recovered transport qualification (#178/#167/#112). This is the

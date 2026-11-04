@@ -262,6 +262,7 @@ class Card:
         *,
         classification_rule: str = "bioactivity_class@4",
         measurement_rule: str = "measurement_identity@1",
+        target_scope_rule: str = "bioactivity_target_scope@1",
     ) -> Dict[str, Any]:
         """Molecule-centric measured activities with an explicit interpretation.
 
@@ -271,6 +272,9 @@ class Card:
         Original measurement grouping @1 remains the default. Opt-in
         ``measurement_rule="measurement_identity@2"`` separates declared copies
         from possible correspondence and states unknown experimental independence.
+        Opt-in ``target_scope_rule="bioactivity_target_scope@2"`` requires a
+        declared copy's resolved original scope for direct-only inclusion, with
+        explicit uncertainty/disagreement. Default @1 retains the original filter.
         """
         from .bioactivities import bioactivities_view
 
@@ -280,6 +284,7 @@ class Card:
             thresholds=thresholds,
             classification_rule=classification_rule,
             measurement_rule=measurement_rule,
+            target_scope_rule=target_scope_rule,
         )
 
     @arg_digest()
@@ -313,9 +318,12 @@ class Card:
         *,
         classification_rule: str = "bioactivity_class@4",
         measurement_rule: str = "measurement_identity@1",
+        target_scope_rule: str = "bioactivity_target_scope@1",
     ) -> Dict[str, Any]:
         """Explain an exact molecule item from ``bioactivities()`` at this card pin.
-        Pass the same classification and measurement policies as the explained view.
+        Pass the same classification, measurement and target-scope policies as the view.
+        Opt-in target scope @2 reports a known excluded item as ``outside_scope``
+        with original support, rather than ``not_on_card``.
 
         ``bioactivity_explanation@1`` retains units, thresholds, group voters and
         stored source support. Use the same options as the view being explained.
@@ -332,6 +340,7 @@ class Card:
             thresholds,
             classification_rule=classification_rule,
             measurement_rule=measurement_rule,
+            target_scope_rule=target_scope_rule,
         )
 
     @arg_digest()
@@ -1119,6 +1128,7 @@ class Card:
         counting_rule: str = "ligand_measurement_count@2",
         classification_rule: str = "bioactivity_class@4",
         measurement_rule: str = "measurement_identity@1",
+        target_scope_rule: str = "bioactivity_target_scope@1",
     ) -> Dict[str, Any]:
         """This protein crossed with a deck of SmallMoleculeCards (``ligand_deck``).
 
@@ -1127,6 +1137,8 @@ class Card:
         reproduces the legacy measurement counter; the stored cards stay unchanged.
         Pass the same ``measurement_rule`` as the activity view; group counts do
         not establish independent experiments under the opt-in @2 policy.
+        Pass the same ``target_scope_rule`` for coherent copied-record selection;
+        its opt-in @2 retains exclusions and original source/mapping diagnostics.
         """
         from .ligands import ligands_view
 
@@ -1138,6 +1150,7 @@ class Card:
             counting_rule=counting_rule,
             classification_rule=classification_rule,
             measurement_rule=measurement_rule,
+            target_scope_rule=target_scope_rule,
         )
 
     @arg_digest()
@@ -1152,6 +1165,7 @@ class Card:
         counting_rule: str = "ligand_measurement_count@2",
         classification_rule: str = "bioactivity_class@4",
         measurement_rule: str = "measurement_identity@1",
+        target_scope_rule: str = "bioactivity_target_scope@1",
     ) -> Dict[str, Any]:
         """Explain this protein's crossing with an exact molecule card id in a deck.
 
@@ -1159,6 +1173,8 @@ class Card:
         identities, measured classes, structural/site support and deck membership.
         It records exact counted group/record ids and the selected counting rule.
         Explicit classification @3 retains original ligand explanation @2.
+        Opt-in target scope @2 uses explanation @5 and retains the same original
+        target-selection diagnostics as the activity/ligand view.
         Duplicate members remain explicit; no identifier resolution or acquisition occurs.
         """
         from .ligand_explanation import explain_ligand
@@ -1172,6 +1188,7 @@ class Card:
             counting_rule=counting_rule,
             classification_rule=classification_rule,
             measurement_rule=measurement_rule,
+            target_scope_rule=target_scope_rule,
         )
 
     @arg_digest()
@@ -1187,8 +1204,13 @@ class Card:
         counting_rule: str = "ligand_measurement_count@2",
         classification_rule: str = "bioactivity_class@4",
         measurement_rule: str = "measurement_identity@1",
+        target_scope_rule: str = "bioactivity_target_scope@1",
     ) -> Dict[str, Any]:
-        """Molecules related to this protein and to ``other``, side by side."""
+        """Molecules related to this protein and to ``other``, side by side.
+
+        The selected classification, measurement and target-scope policies apply
+        to both sides; opt-in target scope @2 keeps each side's source diagnostics.
+        """
         from .ligands import compare_ligands
 
         return compare_ligands(
@@ -1201,6 +1223,7 @@ class Card:
             counting_rule=counting_rule,
             classification_rule=classification_rule,
             measurement_rule=measurement_rule,
+            target_scope_rule=target_scope_rule,
         )
 
     @arg_digest()

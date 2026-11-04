@@ -104,11 +104,14 @@ def explain_ligand(
     counting_rule=COUNTING_RULE,
     classification_rule="bioactivity_class@4",
     measurement_rule="measurement_identity@1",
+    target_scope_rule="bioactivity_target_scope@1",
 ):
     from .bioactivity_class_v4 import RULE, thresholds_in_force
     from .bioactivity_class_v4 import classification_rule as validate_rule
+    from .bioactivity_target_scope import validate_target_scope_rule
     from .measurement_correspondence import validate_measurement_rule
 
+    target_scope_rule = validate_target_scope_rule(target_scope_rule)
     measurement_rule = validate_measurement_rule(measurement_rule)
     classification_rule = validate_rule(classification_rule)
     if classification_rule == RULE:
@@ -123,6 +126,7 @@ def explain_ligand(
         counting_rule=counting_rule,
         classification_rule=classification_rule,
         measurement_rule=measurement_rule,
+        target_scope_rule=target_scope_rule,
         _support=trace,
     )
     members = [c for c in deck.cards if c.id == molecule_ref]
@@ -149,6 +153,7 @@ def explain_ligand(
                 thresholds=thresholds,
                 classification_rule=classification_rule,
                 measurement_rule=measurement_rule,
+                target_scope_rule=target_scope_rule,
             )
             for ref in decision["measured_refs"]
         ]
@@ -186,13 +191,20 @@ def explain_ligand(
     return deepcopy(
         {
             "rule": make_derivation(
-                "ligand_deck_explanation@4"
+                "ligand_deck_explanation@5"
+                if target_scope_rule == "bioactivity_target_scope@2"
+                else "ligand_deck_explanation@4"
                 if measurement_rule == "measurement_identity@2"
                 else "ligand_deck_explanation@2"
                 if classification_rule == "bioactivity_class@3"
                 else "ligand_deck_explanation@3",
                 inputs=[support.pin, *[c.pinned_ref() for c in members]],
                 parameters={
+                    **(
+                        {"target_scope_rule": target_scope_rule}
+                        if target_scope_rule == "bioactivity_target_scope@2"
+                        else {}
+                    ),
                     **(
                         {"measurement_rule": measurement_rule}
                         if measurement_rule == "measurement_identity@2"
@@ -236,6 +248,11 @@ def explain_ligand(
             "items": explanations,
             "classification": view["classification"],
             "measurement_counting": view["measurement_counting"],
+            **(
+                {"target_selection": view["target_selection"]}
+                if target_scope_rule == "bioactivity_target_scope@2"
+                else {}
+            ),
             "scope": view["scope"],
             "deck": {
                 "snapshot_id": snapshot,

@@ -165,3 +165,36 @@ def test_opt_in_copy_policy_retains_public_depositor_links_and_original_records(
         if diagnostic["selector"]["basis"].startswith("named_assay"):
             assert copied["copy_of"]["assay"] == source["assay"]["id"]
     assert card.bioactivities() == original and card.to_dict() == before
+
+
+@pytest.mark.parametrize("accession", ["P52270", "P60174"])
+def test_copy_target_scope_requires_resolved_original_direct_assignment(
+    resolver, accession
+):
+    card = _card(resolver, accession)
+    before = card.to_dict()
+    old = card.bioactivities()
+    current = card.bioactivities(target_scope_rule="bioactivity_target_scope@2")
+    ids = {m["activity_id"] for item in current["items"] for m in item["measurements"]}
+    if accession == "P60174":
+        assert "pubchem:214625:242581948" not in ids
+        assert "pubchem:292822:103762083" not in ids
+        old_ids = {
+            m["activity_id"] for item in old["items"] for m in item["measurements"]
+        }
+        assert {"pubchem:214625:242581948", "pubchem:292822:103762083"} <= old_ids
+    for item in current["items"]:
+        for measurement in item["measurements"]:
+            scope = measurement["target_scope"]
+            assert scope["direct_supported"]
+            if measurement["copy"]:
+                assert len(scope["originals"]) == 1
+                assert scope["originals"][0]["mapped_assignment"] == "D"
+                assert scope["originals"][0]["subject_ref"] == "uniprot:" + accession
+    wider = card.bioactivities(
+        include_indirect=True, target_scope_rule="bioactivity_target_scope@2"
+    )
+    assert sum(i["record_count"] for i in wider["items"]) == len(
+        card.relationships("has_bioactivity")
+    )
+    assert card.to_dict() == before and card.bioactivities() == old

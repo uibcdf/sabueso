@@ -73,6 +73,11 @@ Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain open.
 
 ## Current consolidation after recovery (#112)
 
+B2 now includes the [opt-in target-scope correction](pending_bugs/bioactivity_target_scope.md)
+for #188, preserving defaults/history. The maintainer owns and explicitly defers
+review of the [six measurement cases](pending_proposals/measurement_correspondence_review_20261104.md).
+Independent B3 work may proceed; no scientific/default or wow acceptance is implied.
+
 **Maintainer clarification, 2026-10-22:** finish the entire broad Card exploration
 design and validated human experience before 0.15.0. The
 [completion inventory](pending_proposals/card_exploration_completion_0150.md)

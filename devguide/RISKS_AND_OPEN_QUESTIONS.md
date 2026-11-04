@@ -52,6 +52,15 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Risks
 
+- **Copied target-scope bypass (#188, reproduced):** declared copies can be mapped
+  direct while their retained originals are excluded as indirect. The
+  [opt-in target-scope @2](pending_bugs/bioactivity_target_scope.md) requires a
+  resolved original's scope and discloses missing/disagreeing context. Original
+  @1/default and packet behavior remain reproducible, including this limitation.
+  The maintainer-owned scientific/default review is explicitly deferred. These
+  checks establish retained selection consistency, not experimentally validated
+  target identity or a prevalence estimate.
+
 - **Bioactivity interpretation and assay correspondence (2026-11-04 audit):**
   [A1/A2](GLOBAL_AUDIT_20261104.md#scientific-findings) reproduce unsupported
   censoring/boundary classes and selection of a substrate concentration as the

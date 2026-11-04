@@ -284,10 +284,14 @@ def explain_bioactivity(
     *,
     classification_rule="bioactivity_class@4",
     measurement_rule="measurement_identity@1",
+    target_scope_rule="bioactivity_target_scope@1",
 ):
     from .bioactivity_class_v4 import RULE, thresholds_in_force
     from .bioactivity_class_v4 import classification_rule as validate_rule
+    from .bioactivity_target_scope import RULE as TARGET_SCOPE_V2
+    from .bioactivity_target_scope import validate_target_scope_rule
 
+    target_scope_rule = validate_target_scope_rule(target_scope_rule)
     measurement_rule = validate_measurement_rule(measurement_rule)
     classification_rule = validate_rule(classification_rule)
     if classification_rule == RULE:
@@ -301,9 +305,24 @@ def explain_bioactivity(
         _support=trace,
         classification_rule=classification_rule,
         measurement_rule=measurement_rule,
+        target_scope_rule=target_scope_rule,
     )
     item = next((i for i in view["items"] if i["molecule_ref"] == molecule_ref), None)
     selected = {m["relationship_id"] for m in item["measurements"]} if item else set()
+    outside_scope = (
+        target_scope_rule == TARGET_SCOPE_V2
+        and item is None
+        and any(
+            row.get("molecule_ref") == molecule_ref and not row["included"]
+            for row in trace["records"]
+        )
+    )
+    if outside_scope:
+        selected = {
+            row["relationship_id"]
+            for row in trace["records"]
+            if row.get("molecule_ref") == molecule_ref
+        }
     groups = []
     for decision in trace["groups"]:
         if decision["molecule_ref"] != molecule_ref:
@@ -331,7 +350,9 @@ def explain_bioactivity(
     return deepcopy(
         {
             "rule": make_derivation(
-                "bioactivity_explanation@3"
+                "bioactivity_explanation@4"
+                if target_scope_rule == TARGET_SCOPE_V2
+                else "bioactivity_explanation@3"
                 if measurement_rule == MEASUREMENT_V2
                 else BIOACTIVITY_RULE
                 if classification_rule == "bioactivity_class@3"
@@ -339,8 +360,14 @@ def explain_bioactivity(
                 inputs=[support.pin],
                 parameters={
                     **(
+                        {"target_scope_rule": target_scope_rule}
+                        if target_scope_rule == TARGET_SCOPE_V2
+                        else {}
+                    ),
+                    **(
                         {"measurement_rule": measurement_rule}
                         if measurement_rule == MEASUREMENT_V2
+                        or target_scope_rule == TARGET_SCOPE_V2
                         else {}
                     ),
                     **(
@@ -362,7 +389,9 @@ def explain_bioactivity(
             ),
             "card_ref": support.pin,
             "molecule_ref": molecule_ref,
-            "status": "not_on_card"
+            "status": "outside_scope"
+            if outside_scope
+            else "not_on_card"
             if item is None
             else "partial"
             if support.gaps
@@ -371,6 +400,11 @@ def explain_bioactivity(
             "classification": view["classification"],
             "checks": view["checks"],
             "scope": view["scope"],
+            **(
+                {"target_selection": view["target_selection"]}
+                if target_scope_rule == TARGET_SCOPE_V2
+                else {}
+            ),
             "groups": groups,
             "records": [support.links[rid] for rid in sorted(selected)],
             "record_decisions": trace["records"],

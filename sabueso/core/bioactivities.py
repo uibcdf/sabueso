@@ -407,6 +407,20 @@ def _stated_smiles(card: Any, rel: Dict[str, Any]) -> str | None:
     return None
 
 
+def _summary_molecule_ref(rel, q, entity_of, preferred):
+    """Original molecule-item key selection, also used to explain excluded rows."""
+    from .measurements import record_source
+
+    key = q.get("parent_molecule") or rel["object_ref"]
+    if record_source(q) != "ChEMBL":
+        for ref in (q.get("molecule_ref"), rel["object_ref"]):
+            entity = entity_of.get(ref) if ref else None
+            if entity in preferred:
+                key = preferred[entity]
+                break
+    return key
+
+
 def bioactivities_view(
     card: Any,
     include_indirect: bool = False,
@@ -415,6 +429,7 @@ def bioactivities_view(
     _support=None,
     classification_rule="bioactivity_class@4",
     measurement_rule="measurement_identity@1",
+    target_scope_rule="bioactivity_target_scope@1",
 ) -> Dict[str, Any]:
     """Molecule-centric summary of the card's ``has_bioactivity`` relationships.
 
@@ -427,13 +442,17 @@ def bioactivities_view(
     """
     from .bioactivity_class_v4 import RULE
     from .bioactivity_class_v4 import classification_rule as validate_rule
-    from .measurement_correspondence import RULE as MEASUREMENT_V2
+    from .bioactivity_target_scope import RULE as TARGET_SCOPE_V2
+    from .bioactivity_target_scope import target_scope, validate_target_scope_rule
     from .measurement_correspondence import (
+        COUNT_SCOPE,
         measurement_groups,
         validate_measurement_rule,
     )
+    from .measurement_correspondence import RULE as MEASUREMENT_V2
     from .measurements import _molecules, record_source
 
+    target_scope_rule = validate_target_scope_rule(target_scope_rule)
     measurement_rule = validate_measurement_rule(measurement_rule)
     selected_rule = validate_rule(classification_rule)
     classifier = classify_measurement
@@ -451,8 +470,24 @@ def bioactivities_view(
     # One measurement stated by several sources is one group (#66): classes and counts
     # are per measurement, never per record.
     identity_support = {} if _support is not None else None
-    identity = measurement_groups(
-        card, measurement_rule=measurement_rule, _support=identity_support
+    copy_identity = None
+    if target_scope_rule == TARGET_SCOPE_V2:
+        copy_identity = measurement_groups(
+            card,
+            measurement_rule=MEASUREMENT_V2,
+            _support=identity_support if measurement_rule == MEASUREMENT_V2 else None,
+        )
+    identity = (
+        copy_identity
+        if measurement_rule == MEASUREMENT_V2 and copy_identity is not None
+        else measurement_groups(
+            card, measurement_rule=measurement_rule, _support=identity_support
+        )
+    )
+    target_context = (
+        target_scope(card, copy_identity)
+        if target_scope_rule == TARGET_SCOPE_V2
+        else None
     )
     record_decisions, group_decisions = [], []
     group_of = identity["group_of"]
@@ -474,21 +509,54 @@ def bioactivities_view(
             q.get("document", {}),
         )
         assignment = assay.get("relationship_type")
-        if not include_indirect and assignment != DIRECT_ASSIGNMENT:
+        target_decision = (
+            target_context["records"][rel["id"]] if target_context else None
+        )
+        admitted = (
+            target_decision["direct_supported"]
+            if target_decision
+            else assignment == DIRECT_ASSIGNMENT
+        )
+        if not include_indirect and not admitted:
+            reason = (
+                "target_scope:" + target_decision["reason"]
+                if target_decision
+                else f"target_assignment:{assignment}"
+            )
+            excluded_scope = (
+                {
+                    "relationship_id": rel["id"],
+                    "summary_molecule_ref": _summary_molecule_ref(
+                        rel, q, entity_of, preferred
+                    ),
+                    "target_scope": target_decision,
+                }
+                if target_decision
+                else {}
+            )
             excluded.append(
                 {
                     "activity_id": q.get("activity_id"),
                     "molecule_ref": rel["object_ref"],
                     "assay": assay.get("id"),
-                    "reason": f"target_assignment:{assignment}",
+                    "reason": reason,
                     "assay_organism": assay.get("organism"),
+                    **excluded_scope,
                 }
             )
             record_decisions.append(
                 {
                     "relationship_id": rel["id"],
                     "included": False,
-                    "reason": f"target_assignment:{assignment}",
+                    "reason": reason,
+                    **(
+                        {
+                            "molecule_ref": excluded_scope["summary_molecule_ref"],
+                            "target_scope": target_decision,
+                        }
+                        if target_decision
+                        else {}
+                    ),
                 }
             )
             continue
@@ -519,6 +587,7 @@ def bioactivities_view(
             "assay": assay.get("id"),
             "assay_organism": assay.get("organism"),
             "target_assignment": assignment,
+            **({"target_scope": target_decision} if target_decision else {}),
             "document": doc.get("id")
             or (f"pubmed:{doc['pubmed']}" if doc.get("pubmed") else None)
             or (f"doi:{doc['doi']}" if doc.get("doi") else None),
@@ -558,7 +627,12 @@ def bioactivities_view(
             entry["smiles"] = _stated_smiles(card, rel) or entry["smiles"]
         entry["measurements"].append(measurement)
         record_decisions.append(
-            {"relationship_id": rel["id"], "included": True, "molecule_ref": key}
+            {
+                "relationship_id": rel["id"],
+                "included": True,
+                "molecule_ref": key,
+                **({"target_scope": target_decision} if target_decision else {}),
+            }
         )
         entry["potencies"].append(
             node["value"]
@@ -622,13 +696,13 @@ def bioactivities_view(
                 "measurement_count": len(by_group),
                 **(
                     {
-                        "measurement_count_scope": identity["counting"][
-                            "interpretation"
-                        ]
+                        "measurement_count_scope": identity.get("counting", {}).get(
+                            "interpretation", COUNT_SCOPE
+                        )
                         + " Counted per molecule item; a copy family may appear in multiple items.",
                         "independence_status": "not_established",
                     }
-                    if measurement_rule == MEASUREMENT_V2
+                    if measurement_rule == MEASUREMENT_V2 or target_context is not None
                     else {}
                 ),
                 "record_count": len(measurements),
@@ -653,13 +727,21 @@ def bioactivities_view(
             records=record_decisions,
             groups=group_decisions,
         )
+        if target_context is not None:
+            _support["target_selection"] = target_context
     return {
         "items": items,
         "excluded": sorted(excluded, key=_activity_order),
         "documents": dict(sorted(documents.items(), key=lambda kv: (-kv[1], kv[0]))),
         "scope": {
-            "target_assignment": "any" if include_indirect else DIRECT_ASSIGNMENT
+            "target_assignment": "any" if include_indirect else DIRECT_ASSIGNMENT,
+            **(
+                {"target_scope": target_context["rule"]}
+                if target_context is not None
+                else {}
+            ),
         },
+        **({"target_selection": target_context} if target_context is not None else {}),
         "classification": classification_derivation(thresholds),
         "checks": consistency_checks(),
         "measurement_identity": {

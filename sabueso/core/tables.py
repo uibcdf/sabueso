@@ -129,6 +129,15 @@ def _bioactivities(view: Dict[str, Any]) -> List[Dict[str, Any]]:
                         else {}
                     ),
                     "target_assignment": m["target_assignment"],
+                    **(
+                        {
+                            "target_scope_rule": view["scope"]["target_scope"]["rule"],
+                            "target_scope_state": m["target_scope"]["state"],
+                            "target_scope_reason": m["target_scope"]["reason"],
+                        }
+                        if "target_scope" in m
+                        else {}
+                    ),
                     "assay": m["assay"],
                     "document": m["document"],
                     "year": m["year"],
@@ -180,6 +189,11 @@ def _ligands(view: Dict[str, Any]) -> List[Dict[str, Any]]:
                     else {}
                 ),
                 "excluded_measurements": item["excluded_measurements"],
+                **(
+                    {"target_scope_rule": view["scope"]["target_scope"]["rule"]}
+                    if "target_scope" in view["scope"]
+                    else {}
+                ),
                 "structures": len(item["structures"]),
                 "structures_of_interest": _join(item["structures_of_interest"]),
                 "observed_in": _join(item["observed_in"]),

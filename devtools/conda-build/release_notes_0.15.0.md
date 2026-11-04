@@ -1,5 +1,12 @@
 # Sabueso 0.15.0 — Draft: knowledge integrity and inspectable scientific results
 
+Development candidate: opt-in `bioactivity_target_scope@2` prevents declared copies
+from bypassing their retained original's target assignment in activity/ligand
+answers, explanations and tables. It keeps excluded records and support visible,
+with `outside_scope` for a retained excluded activity. Original @1/defaults and
+packet meanings stay unchanged. Scientific/default review is explicitly pending;
+this is not a released or scientifically accepted correction yet.
+
 **Partial unpublished draft**, initially prepared 2026-10-20 under #112 and
 reviewed for the 2026-10-25 pause. The target is 0.15.0, confirmed on 2026-10-24;
 full Card exploration and actual human acceptance are prerequisites. Release

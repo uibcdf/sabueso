@@ -129,6 +129,48 @@ meaning or scientific saved explorer is provided by this opt-in selector; existi
 stored answers retain their own exact interpretations. Activity exploration panels
 remain separate work.
 
+## Does a copied result belong in the direct-target answer?
+
+A copy's mapped target assignment can differ from its retained original. The
+opt-in development policy below checks this before admitting the copy into the
+direct-only answer. It also excludes copies whose original cannot be uniquely
+resolved on this Card, and explains that uncertainty. Default target scope stays
+`bioactivity_target_scope@1`; selecting measurement @2 alone does not enable this
+additional check.
+
+```python
+target_policy = "bioactivity_target_scope@2"
+direct = card.bioactivities(target_scope_rule=target_policy)
+for excluded in direct["excluded"][:5]:
+    decision = excluded["target_scope"]
+    print(decision["interpretation"])
+    print(decision["originals"])  # exact original records, assignments and support
+    why = card.explain_bioactivity(
+        excluded["summary_molecule_ref"], target_scope_rule=target_policy
+    )
+    print(why["status"], why["records"])
+
+# A deliberate broader answer includes all retained rows, with the same diagnostics.
+all_retained = card.bioactivities(
+    include_indirect=True, target_scope_rule=target_policy
+)
+```
+
+A known item with no admitted records has explanation status `outside_scope`;
+it is still on the Card. If that molecule also has admitted records, the explanation
+describes the included summary and retains the excluded decisions. Neither answer
+changes the raw mapped assignment or source measurement. Direct scope here means
+retained source/mapping context, not independently validated experimental binding.
+Different subjects or assignments remain explicit disagreements; missing original
+context remains unknown. Equal numbers or publication references supply no target
+identity.
+
+Pass the same `target_scope_rule` to `ligands`, `explain_ligand`, `compare_ligands`
+and activity/ligand tables. It can be combined with either `measurement_rule`.
+`explain_measurement` inspects retained identity independently of this filter.
+Scientific/default adoption and rich activity exploration remain pending; original
+packets, including mapping @15, keep target scope @1.
+
 ## Explain a stored measurement or class (since 0.13.0)
 
 Use an item key or measurement group from the view being explained:

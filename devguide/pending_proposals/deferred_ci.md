@@ -9,6 +9,17 @@ contract or release gate.
 
 ## Exploration route and recovered code checkpoints (#148)
 
+### Copy target-scope prerequisite (2026-11-04, #188/#186)
+
+The [opt-in correction](../pending_bugs/bioactivity_target_scope.md) changes new
+explicit @2 activity/ligand selection, explanations and tables while preserving
+@1/defaults and original packet mappings. Qualify its accumulated code through an
+unskipped exact-source CI/governance push with source/installed/codec receiving.
+The prior ca9e0f3 checkpoint cannot qualify these later bytes. Local gates,
+original controls and public same-input comparisons are retained in
+`recovered_work/target_scope_188_20261104/` under #188/#186/#148/#112. Scientific
+review is maintainer-owned and explicitly deferred; release consolidation paused.
+
 ### Opt-in measurement correspondence and pinned explanation context (2026-11-04, #186/#182)
 
 The [candidate](assay_aware_measurement_correspondence.md) adds explicit measurement

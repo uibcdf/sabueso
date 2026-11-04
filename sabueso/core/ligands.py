@@ -69,6 +69,7 @@ def ligands_view(
     counting_rule: str = COUNTING_RULE,
     classification_rule: str = "bioactivity_class@4",
     measurement_rule: str = "measurement_identity@1",
+    target_scope_rule: str = "bioactivity_target_scope@1",
     _support=None,
 ) -> Dict[str, Any]:
     """Per molecule of ``deck``: its bioactivity on ``card`` and its structures.
@@ -89,6 +90,7 @@ def ligands_view(
         thresholds=thresholds,
         classification_rule=classification_rule,
         measurement_rule=measurement_rule,
+        target_scope_rule=target_scope_rule,
     )
     by_molecule = {item["molecule_ref"]: item for item in bio["items"]}
     excluded: Dict[str, int] = {}
@@ -164,6 +166,7 @@ def ligands_view(
                             "independence_status": "not_established",
                         }
                         if measurement_rule == "measurement_identity@2"
+                        or target_scope_rule == "bioactivity_target_scope@2"
                         else {}
                     ),
                 }
@@ -225,12 +228,22 @@ def ligands_view(
         "items": items,
         "unmatched": sorted(referenced - covered),
         "scope": bio["scope"],
+        **(
+            {"target_selection": bio["target_selection"]}
+            if target_scope_rule == "bioactivity_target_scope@2"
+            else {}
+        ),
         "classification": bio["classification"],
         "measurement_counting": make_derivation(
             counting_rule,
             inputs=[card.pinned_ref(), *[c.pinned_ref() for c in deck.cards]],
             parameters={
                 "measurement_identity": bio["measurement_identity"]["rule"],
+                **(
+                    {"target_scope": bio["scope"]["target_scope"]}
+                    if target_scope_rule == "bioactivity_target_scope@2"
+                    else {}
+                ),
                 "measurements": "distinct included measurement group ids across matched molecule items"
                 if counting_rule == COUNTING_RULE
                 else "included source records summed across matched molecule items (legacy)",
@@ -241,6 +254,7 @@ def ligands_view(
                         "independence_status": "not_established",
                     }
                     if measurement_rule == "measurement_identity@2"
+                    or target_scope_rule == "bioactivity_target_scope@2"
                     else {}
                 ),
             },
@@ -259,6 +273,7 @@ def compare_ligands(
     counting_rule: str = COUNTING_RULE,
     classification_rule: str = "bioactivity_class@4",
     measurement_rule: str = "measurement_identity@1",
+    target_scope_rule: str = "bioactivity_target_scope@1",
 ) -> Dict[str, Any]:
     """Molecules related to both proteins, side by side, and those related to only one.
 
@@ -274,6 +289,7 @@ def compare_ligands(
         counting_rule=counting_rule,
         classification_rule=classification_rule,
         measurement_rule=measurement_rule,
+        target_scope_rule=target_scope_rule,
     )
     mine = {i["molecule_ref"]: i for i in mine_view["items"]}
     view = ligands_view(
@@ -284,6 +300,7 @@ def compare_ligands(
         counting_rule=counting_rule,
         classification_rule=classification_rule,
         measurement_rule=measurement_rule,
+        target_scope_rule=target_scope_rule,
     )
     theirs = {i["molecule_ref"]: i for i in view["items"]}
 
@@ -319,4 +336,14 @@ def compare_ligands(
             "self": mine_view["measurement_counting"],
             "other": view["measurement_counting"],
         },
+        **(
+            {
+                "target_selection": {
+                    "self": mine_view["target_selection"],
+                    "other": view["target_selection"],
+                }
+            }
+            if target_scope_rule == "bioactivity_target_scope@2"
+            else {}
+        ),
     }

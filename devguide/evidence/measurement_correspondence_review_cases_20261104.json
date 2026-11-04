@@ -1,0 +1,1803 @@
+{
+  "owner": "#186/#112/#148",
+  "review_trigger": "independent scientific interpretation/default decision and B4; before 0.15.0",
+  "implementation_source": "ca9e0f376f4f2f62ac817de82a8da3886efae16a",
+  "sdk": "0.14.0+166.gca9e0f3",
+  "online_requests": 0,
+  "input_comparison_sha256": "0dfa8b8159aad5c5e153cb1633a053646fc21e6efbfb1ffe53538c4ba8ed938b",
+  "interpretation_scope": "Actual summary branch, declared copy pointer and retained source support. No primary-protocol review or independent scientific/default acceptance is inferred.",
+  "cases": [
+    {
+      "case": 1,
+      "input": "three-source-P52270",
+      "card_ref": "sabueso:protein:uniprot:P52270@sha256:2f563e45bfe1cff763e465ce23994ff2c8b8a158c9ea82ebccc219cd367afbd4",
+      "molecule_ref": "pubchem:168270788",
+      "original_summary_class": "weak",
+      "candidate_summary_class": "inconclusive",
+      "original_item": {
+        "molecule_ref": "pubchem:168270788",
+        "label": "168270788",
+        "label_source": "inchikey",
+        "tested_forms": [
+          "pubchem:168270788"
+        ],
+        "name": null,
+        "smiles": null,
+        "class": "weak",
+        "classes": {
+          "weak": 1
+        },
+        "discordant": false,
+        "best_pchembl": null,
+        "measurement_count": 1,
+        "record_count": 1,
+        "sources": [
+          "PubChem BioAssay"
+        ],
+        "documents": [
+          "pubmed:35189560"
+        ],
+        "measurements": [
+          {
+            "relationship_id": "REL_853e6920dcba480c",
+            "activity_id": "pubchem:1882558:482049346",
+            "molecule_ref": "pubchem:168270788",
+            "type": "IC50",
+            "relation": null,
+            "value": 11.0,
+            "units": "uM",
+            "normalized": {
+              "value": 11000.0,
+              "unit": "nanomolar"
+            },
+            "normalized_upper": null,
+            "uncertainty": null,
+            "pchembl": null,
+            "class": "weak",
+            "basis": "potency",
+            "interpretation": "The entire interval permitted by the relation must occupy the configured band.",
+            "assay": "AID1882558",
+            "assay_organism": null,
+            "target_assignment": "D",
+            "document": "pubmed:35189560",
+            "year": null,
+            "flags": [],
+            "curated": false,
+            "source": "PubChem BioAssay",
+            "group": "REL_853e6920dcba480c",
+            "copy": true
+          }
+        ]
+      },
+      "candidate_item": {
+        "molecule_ref": "pubchem:168270788",
+        "label": "168270788",
+        "label_source": "inchikey",
+        "tested_forms": [
+          "pubchem:168270788"
+        ],
+        "name": null,
+        "smiles": null,
+        "class": "inconclusive",
+        "classes": {
+          "inconclusive": 1
+        },
+        "discordant": false,
+        "best_pchembl": null,
+        "measurement_count": 1,
+        "measurement_count_scope": "Retained groups under the selected policy; not a count of independent experiments. Possible correspondence and unresolved copies remain explicit. Counted per molecule item; a copy family may appear in multiple items.",
+        "independence_status": "not_established",
+        "record_count": 1,
+        "sources": [
+          "PubChem BioAssay"
+        ],
+        "documents": [
+          "pubmed:35189560"
+        ],
+        "measurements": [
+          {
+            "relationship_id": "REL_853e6920dcba480c",
+            "activity_id": "pubchem:1882558:482049346",
+            "molecule_ref": "pubchem:168270788",
+            "type": "IC50",
+            "relation": null,
+            "value": 11.0,
+            "units": "uM",
+            "normalized": {
+              "value": 11000.0,
+              "unit": "nanomolar"
+            },
+            "normalized_upper": null,
+            "uncertainty": null,
+            "pchembl": null,
+            "class": "weak",
+            "basis": "potency",
+            "interpretation": "The entire interval permitted by the relation must occupy the configured band.",
+            "assay": "AID1882558",
+            "assay_organism": null,
+            "target_assignment": "D",
+            "document": "pubmed:35189560",
+            "year": null,
+            "flags": [],
+            "curated": false,
+            "source": "PubChem BioAssay",
+            "group": "REL_853e6920dcba480c",
+            "copy": true
+          }
+        ]
+      },
+      "groups": [
+        {
+          "decision": {
+            "molecule_ref": "pubchem:168270788",
+            "group": "REL_853e6920dcba480c",
+            "records": [
+              "REL_853e6920dcba480c"
+            ],
+            "voters": [],
+            "voter_classes": [],
+            "class": "inconclusive",
+            "basis": "copies_without_original_vote"
+          },
+          "whole_card_family_records": [
+            {
+              "relationship_id": "REL_853e6920dcba480c",
+              "subject_ref": "uniprot:P52270",
+              "object_ref": "pubchem:168270788",
+              "qualifiers": {
+                "activity_id": "pubchem:1882558:482049346",
+                "assay": {
+                  "depositor": "ChEMBL",
+                  "depositor_id": "CHEMBL5138433",
+                  "description": "Inhibition of Trypanosoma cruzi TIM expressed in Escherichia coli using glyceraldehyde 3-phosphate as substrate in presence of NADH/alphaGDPH measured after 2 hrs by spectrophotometry",
+                  "id": "AID1882558",
+                  "organism": null,
+                  "relationship_type": "D",
+                  "source": "PubChem BioAssay"
+                },
+                "copy_of": {
+                  "assay": "CHEMBL5138433",
+                  "source": "ChEMBL"
+                },
+                "document": {
+                  "doi": null,
+                  "id": null,
+                  "journal": null,
+                  "pubmed": "35189560",
+                  "title": null,
+                  "year": null
+                },
+                "measurement": {
+                  "normalized": {
+                    "unit": "nanomolar",
+                    "value": 11000.0
+                  },
+                  "outcome": "Unspecified",
+                  "pchembl": null,
+                  "relation": null,
+                  "stated_value": "11",
+                  "type": "IC50",
+                  "units": "uM",
+                  "value": 11.0
+                },
+                "molecule_ref": "inchikey:NCKUHKUWOSMSDA-UHFFFAOYSA-M",
+                "source": "PubChem BioAssay"
+              },
+              "source_assertion_refs": [
+                "sabueso:protein:uniprot:P52270@sha256:2f563e45bfe1cff763e465ce23994ff2c8b8a158c9ea82ebccc219cd367afbd4#SA_PubChem BioAssay_AID1882558_f5a44eaa5ce4ec6e"
+              ],
+              "included_molecule_item": "pubchem:168270788",
+              "included_in_this_item": true,
+              "declared_copy": true
+            }
+          ],
+          "original_scope": [
+            {
+              "copy_record": "REL_853e6920dcba480c",
+              "same_item_originals": [],
+              "other_item_originals": [],
+              "excluded_originals": [],
+              "state": "not_resolved_on_card"
+            }
+          ],
+          "copy_diagnostics": [],
+          "unresolved_copies": [
+            {
+              "record": "REL_853e6920dcba480c",
+              "copy_of": {
+                "assay": "CHEMBL5138433",
+                "source": "ChEMBL"
+              },
+              "reason": "molecule_not_resolved_in_named_assay"
+            }
+          ]
+        }
+      ],
+      "source_assertions": [
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": {
+            "aid": 1882558,
+            "assay": "Inhibition of Trypanosoma cruzi TIM expressed in Escherichia coli using glyceraldehyde 3-phosphate as substrate in presence of NADH/alphaGDPH measured after 2 hrs by spectrophotometry",
+            "object_ref": "pubchem:168270788",
+            "row": {
+              "AID": "1882558",
+              "Activity Name": "IC50",
+              "Activity Outcome": "Unspecified",
+              "Activity Value [uM]": "11",
+              "Assay Name": "Inhibition of Trypanosoma cruzi TIM expressed in Escherichia coli using glyceraldehyde 3-phosphate as substrate in presence of NADH/alphaGDPH measured after 2 hrs by spectrophotometry",
+              "Assay Type": "Confirmatory",
+              "CID": "168270788",
+              "PubMed ID": "35189560",
+              "RNAi": "",
+              "SID": "482049346",
+              "Target Accession": "P52270",
+              "Target GeneID": ""
+            }
+          },
+          "field_path": "relationships.has_bioactivity",
+          "id": "SA_PubChem BioAssay_AID1882558_f5a44eaa5ce4ec6e",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "PubChem BioAssay",
+            "record_id": "AID1882558",
+            "type": "database"
+          },
+          "subject_ref": "uniprot:P52270",
+          "source_assertion_ref": "sabueso:protein:uniprot:P52270@sha256:2f563e45bfe1cff763e465ce23994ff2c8b8a158c9ea82ebccc219cd367afbd4#SA_PubChem BioAssay_AID1882558_f5a44eaa5ce4ec6e"
+        }
+      ]
+    },
+    {
+      "case": 2,
+      "input": "three-source-P60174",
+      "card_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d",
+      "molecule_ref": "chembl:CHEMBL3142429",
+      "original_summary_class": "weak",
+      "candidate_summary_class": "inconclusive",
+      "original_item": {
+        "molecule_ref": "chembl:CHEMBL3142429",
+        "label": "CHEMBL3142429",
+        "label_source": "chembl",
+        "tested_forms": [
+          "pubchem:6323453"
+        ],
+        "name": null,
+        "smiles": null,
+        "class": "weak",
+        "classes": {
+          "weak": 1
+        },
+        "discordant": false,
+        "best_pchembl": null,
+        "measurement_count": 1,
+        "record_count": 1,
+        "sources": [
+          "PubChem BioAssay"
+        ],
+        "documents": [
+          "pubmed:12036355"
+        ],
+        "measurements": [
+          {
+            "relationship_id": "REL_b4bc6f34d228b6e4",
+            "activity_id": "pubchem:214625:242581948",
+            "molecule_ref": "pubchem:6323453",
+            "type": "Ki",
+            "relation": null,
+            "value": 15.0,
+            "units": "uM",
+            "normalized": {
+              "value": 15000.0,
+              "unit": "nanomolar"
+            },
+            "normalized_upper": null,
+            "uncertainty": null,
+            "pchembl": null,
+            "class": "weak",
+            "basis": "potency",
+            "interpretation": "The entire interval permitted by the relation must occupy the configured band.",
+            "assay": "AID214625",
+            "assay_organism": null,
+            "target_assignment": "D",
+            "document": "pubmed:12036355",
+            "year": null,
+            "flags": [],
+            "curated": false,
+            "source": "PubChem BioAssay",
+            "group": "MG_03a070e1b2744c0b",
+            "copy": true
+          }
+        ]
+      },
+      "candidate_item": {
+        "molecule_ref": "chembl:CHEMBL3142429",
+        "label": "CHEMBL3142429",
+        "label_source": "chembl",
+        "tested_forms": [
+          "pubchem:6323453"
+        ],
+        "name": null,
+        "smiles": null,
+        "class": "inconclusive",
+        "classes": {
+          "inconclusive": 1
+        },
+        "discordant": false,
+        "best_pchembl": null,
+        "measurement_count": 1,
+        "measurement_count_scope": "Retained groups under the selected policy; not a count of independent experiments. Possible correspondence and unresolved copies remain explicit. Counted per molecule item; a copy family may appear in multiple items.",
+        "independence_status": "not_established",
+        "record_count": 1,
+        "sources": [
+          "PubChem BioAssay"
+        ],
+        "documents": [
+          "pubmed:12036355"
+        ],
+        "measurements": [
+          {
+            "relationship_id": "REL_b4bc6f34d228b6e4",
+            "activity_id": "pubchem:214625:242581948",
+            "molecule_ref": "pubchem:6323453",
+            "type": "Ki",
+            "relation": null,
+            "value": 15.0,
+            "units": "uM",
+            "normalized": {
+              "value": 15000.0,
+              "unit": "nanomolar"
+            },
+            "normalized_upper": null,
+            "uncertainty": null,
+            "pchembl": null,
+            "class": "weak",
+            "basis": "potency",
+            "interpretation": "The entire interval permitted by the relation must occupy the configured band.",
+            "assay": "AID214625",
+            "assay_organism": null,
+            "target_assignment": "D",
+            "document": "pubmed:12036355",
+            "year": null,
+            "flags": [],
+            "curated": false,
+            "source": "PubChem BioAssay",
+            "group": "MG_03a070e1b2744c0b",
+            "copy": true
+          }
+        ]
+      },
+      "groups": [
+        {
+          "decision": {
+            "molecule_ref": "chembl:CHEMBL3142429",
+            "group": "MG_03a070e1b2744c0b",
+            "records": [
+              "REL_b4bc6f34d228b6e4"
+            ],
+            "voters": [],
+            "voter_classes": [],
+            "class": "inconclusive",
+            "basis": "copies_without_original_vote"
+          },
+          "whole_card_family_records": [
+            {
+              "relationship_id": "REL_b4bc6f34d228b6e4",
+              "subject_ref": "uniprot:P60174",
+              "object_ref": "pubchem:6323453",
+              "qualifiers": {
+                "activity_id": "pubchem:214625:242581948",
+                "assay": {
+                  "depositor": "ChEMBL",
+                  "depositor_id": "CHEMBL816360",
+                  "description": "Binding affinity against Triosephosphate isomerase",
+                  "id": "AID214625",
+                  "organism": null,
+                  "relationship_type": "D",
+                  "source": "PubChem BioAssay"
+                },
+                "copy_of": {
+                  "assay": "CHEMBL816360",
+                  "source": "ChEMBL"
+                },
+                "document": {
+                  "doi": null,
+                  "id": null,
+                  "journal": null,
+                  "pubmed": "12036355",
+                  "title": null,
+                  "year": null
+                },
+                "measurement": {
+                  "normalized": {
+                    "unit": "nanomolar",
+                    "value": 15000.0
+                  },
+                  "outcome": "Unspecified",
+                  "pchembl": null,
+                  "relation": null,
+                  "stated_value": "15",
+                  "type": "Ki",
+                  "units": "uM",
+                  "value": 15.0
+                },
+                "molecule_ref": "inchikey:REDPJRNIRCVACW-UGMRNKNYSA-N",
+                "source": "PubChem BioAssay"
+              },
+              "source_assertion_refs": [
+                "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_PubChem BioAssay_AID214625_013258937b94ddd1"
+              ],
+              "included_molecule_item": "chembl:CHEMBL3142429",
+              "included_in_this_item": true,
+              "declared_copy": true
+            },
+            {
+              "relationship_id": "REL_cd205d33d42b1538",
+              "subject_ref": "uniprot:P60174",
+              "object_ref": "chembl:CHEMBL3142429",
+              "qualifiers": {
+                "activity_id": 906612,
+                "assay": {
+                  "confidence_score": 8,
+                  "description": "Binding affinity against Triosephosphate isomerase",
+                  "id": "CHEMBL816360",
+                  "organism": null,
+                  "relationship_type": "H",
+                  "tax_id": null,
+                  "type": "B",
+                  "variant_mutation": null
+                },
+                "document": {
+                  "doi": "10.1021/jm0200299",
+                  "id": "CHEMBL1135460",
+                  "journal": "J Med Chem",
+                  "pubmed": "12036355",
+                  "title": "Simple, intuitive calculations of free energy of binding for protein-ligand complexes. 1. Models without explicit constrained water.",
+                  "year": 2002
+                },
+                "measurement": {
+                  "action_type": null,
+                  "activity_comment": null,
+                  "data_validity_comment": null,
+                  "normalized": {
+                    "unit": "nanomolar",
+                    "value": 15000.0
+                  },
+                  "pchembl": 4.82,
+                  "potential_duplicate": false,
+                  "relation": "=",
+                  "text_value": null,
+                  "type": "Ki",
+                  "units": "nM",
+                  "upper_value": null,
+                  "value": 15000.0
+                },
+                "molecule_name": null,
+                "parent_molecule": "chembl:CHEMBL3142429",
+                "target": "CHEMBL4880"
+              },
+              "source_assertion_refs": [
+                "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_ChEMBL_CHEMBL4880_e7a70cc24714edf7",
+                "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_ChEMBL_CHEMBL816360_2fcfab6401231c53"
+              ],
+              "included_molecule_item": null,
+              "included_in_this_item": false,
+              "declared_copy": false
+            }
+          ],
+          "original_scope": [
+            {
+              "copy_record": "REL_b4bc6f34d228b6e4",
+              "same_item_originals": [],
+              "other_item_originals": [],
+              "excluded_originals": [
+                "REL_cd205d33d42b1538"
+              ],
+              "state": "excluded_by_view_scope"
+            }
+          ],
+          "copy_diagnostics": [
+            {
+              "records": [
+                "REL_b4bc6f34d228b6e4",
+                "REL_cd205d33d42b1538"
+              ],
+              "selector": {
+                "basis": "named_assay_molecule",
+                "precision_used": false
+              },
+              "reported_measurement_differences": [
+                "relation",
+                "value",
+                "units",
+                "stated_value"
+              ],
+              "context": [
+                {
+                  "field": "assay.description",
+                  "left": "Binding affinity against Triosephosphate isomerase",
+                  "right": "Binding affinity against Triosephosphate isomerase",
+                  "state": "literal_equal"
+                },
+                {
+                  "field": "assay.organism",
+                  "left": null,
+                  "right": null,
+                  "state": "missing_on_both"
+                },
+                {
+                  "field": "assay.tax_id",
+                  "left": null,
+                  "right": null,
+                  "state": "missing_on_both"
+                },
+                {
+                  "field": "assay.variant_mutation",
+                  "left": null,
+                  "right": null,
+                  "state": "missing_on_both"
+                }
+              ],
+              "subject_refs": [
+                "uniprot:P60174",
+                "uniprot:P60174"
+              ],
+              "interpretation": "Source-declared copy; all reported differences are retained. Literal differences need not be experimental contradictions."
+            }
+          ],
+          "unresolved_copies": []
+        }
+      ],
+      "source_assertions": [
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": {
+            "activity": {
+              "action_type": null,
+              "activity_comment": null,
+              "activity_id": 906612,
+              "assay_chembl_id": "CHEMBL816360",
+              "assay_description": "Binding affinity against Triosephosphate isomerase",
+              "assay_type": "B",
+              "assay_variant_mutation": null,
+              "canonical_smiles": "CNC(=O)[C@H](CC(C)C)C[C@H](O)[C@H](CC1CCCCC1)NC(=O)[C@H](Cc1c[nH]cn1)NC(=O)[C@H](Cc1ccccc1)NC(=O)OC(C)(C)C",
+              "data_validity_comment": null,
+              "document_chembl_id": "CHEMBL1135460",
+              "document_journal": "J Med Chem",
+              "document_year": 2002,
+              "molecule_chembl_id": "CHEMBL3142429",
+              "molecule_pref_name": null,
+              "parent_molecule_chembl_id": "CHEMBL3142429",
+              "pchembl_value": "4.82",
+              "potential_duplicate": 0,
+              "standard_relation": "=",
+              "standard_text_value": null,
+              "standard_type": "Ki",
+              "standard_units": "nM",
+              "standard_upper_value": null,
+              "standard_value": "15000.0",
+              "target_chembl_id": "CHEMBL4880"
+            },
+            "object_ref": "chembl:CHEMBL3142429"
+          },
+          "field_path": "relationships.has_bioactivity",
+          "id": "SA_ChEMBL_CHEMBL4880_e7a70cc24714edf7",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "ChEMBL",
+            "record_id": "CHEMBL4880",
+            "type": "database",
+            "version": "ChEMBL_37"
+          },
+          "subject_ref": "chembl:CHEMBL4880",
+          "source_assertion_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_ChEMBL_CHEMBL4880_e7a70cc24714edf7"
+        },
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": {
+            "assay_chembl_id": "CHEMBL816360",
+            "assay_organism": null,
+            "assay_parameters": [],
+            "assay_tax_id": null,
+            "confidence_description": "Homologous single protein target assigned",
+            "confidence_score": 8,
+            "relationship_description": "Homologous protein target assigned",
+            "relationship_type": "H",
+            "variant_sequence": null
+          },
+          "field_path": "relationships.has_bioactivity.assay",
+          "id": "SA_ChEMBL_CHEMBL816360_2fcfab6401231c53",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "ChEMBL",
+            "record_id": "CHEMBL816360",
+            "type": "database",
+            "version": "ChEMBL_37"
+          },
+          "subject_ref": "chembl:CHEMBL816360",
+          "source_assertion_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_ChEMBL_CHEMBL816360_2fcfab6401231c53"
+        },
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": {
+            "aid": 214625,
+            "assay": "Binding affinity against Triosephosphate isomerase",
+            "object_ref": "pubchem:6323453",
+            "row": {
+              "AID": "214625",
+              "Activity Name": "Ki",
+              "Activity Outcome": "Unspecified",
+              "Activity Value [uM]": "15",
+              "Assay Name": "Binding affinity against Triosephosphate isomerase",
+              "Assay Type": "Confirmatory",
+              "CID": "6323453",
+              "PubMed ID": "12036355",
+              "RNAi": "",
+              "SID": "242581948",
+              "Target Accession": "P60174",
+              "Target GeneID": "7167"
+            }
+          },
+          "field_path": "relationships.has_bioactivity",
+          "id": "SA_PubChem BioAssay_AID214625_013258937b94ddd1",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "PubChem BioAssay",
+            "record_id": "AID214625",
+            "type": "database"
+          },
+          "subject_ref": "uniprot:P60174",
+          "source_assertion_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_PubChem BioAssay_AID214625_013258937b94ddd1"
+        }
+      ]
+    },
+    {
+      "case": 3,
+      "input": "three-source-P60174",
+      "card_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d",
+      "molecule_ref": "pubchem:129627013",
+      "original_summary_class": "weak",
+      "candidate_summary_class": "inconclusive",
+      "original_item": {
+        "molecule_ref": "pubchem:129627013",
+        "label": "129627013",
+        "label_source": "inchikey",
+        "tested_forms": [
+          "pubchem:129627013"
+        ],
+        "name": null,
+        "smiles": null,
+        "class": "weak",
+        "classes": {
+          "weak": 1
+        },
+        "discordant": false,
+        "best_pchembl": null,
+        "measurement_count": 1,
+        "record_count": 1,
+        "sources": [
+          "PubChem BioAssay"
+        ],
+        "documents": [
+          "pubmed:23406473"
+        ],
+        "measurements": [
+          {
+            "relationship_id": "REL_52c3a259dce10a8a",
+            "activity_id": "pubchem:1803397:341104385",
+            "molecule_ref": "pubchem:129627013",
+            "type": "IC50",
+            "relation": null,
+            "value": 100.0,
+            "units": "uM",
+            "normalized": {
+              "value": 100000.0,
+              "unit": "nanomolar"
+            },
+            "normalized_upper": null,
+            "uncertainty": null,
+            "pchembl": null,
+            "class": "weak",
+            "basis": "potency",
+            "interpretation": "The entire interval permitted by the relation must occupy the configured band.",
+            "assay": "AID1803397",
+            "assay_organism": null,
+            "target_assignment": "D",
+            "document": "pubmed:23406473",
+            "year": null,
+            "flags": [],
+            "curated": false,
+            "source": "PubChem BioAssay",
+            "group": "MG_fa4caa055f34c8eb",
+            "copy": true
+          }
+        ]
+      },
+      "candidate_item": {
+        "molecule_ref": "pubchem:129627013",
+        "label": "129627013",
+        "label_source": "inchikey",
+        "tested_forms": [
+          "pubchem:129627013"
+        ],
+        "name": null,
+        "smiles": null,
+        "class": "inconclusive",
+        "classes": {
+          "inconclusive": 1
+        },
+        "discordant": false,
+        "best_pchembl": null,
+        "measurement_count": 1,
+        "measurement_count_scope": "Retained groups under the selected policy; not a count of independent experiments. Possible correspondence and unresolved copies remain explicit. Counted per molecule item; a copy family may appear in multiple items.",
+        "independence_status": "not_established",
+        "record_count": 1,
+        "sources": [
+          "PubChem BioAssay"
+        ],
+        "documents": [
+          "pubmed:23406473"
+        ],
+        "measurements": [
+          {
+            "relationship_id": "REL_52c3a259dce10a8a",
+            "activity_id": "pubchem:1803397:341104385",
+            "molecule_ref": "pubchem:129627013",
+            "type": "IC50",
+            "relation": null,
+            "value": 100.0,
+            "units": "uM",
+            "normalized": {
+              "value": 100000.0,
+              "unit": "nanomolar"
+            },
+            "normalized_upper": null,
+            "uncertainty": null,
+            "pchembl": null,
+            "class": "weak",
+            "basis": "potency",
+            "interpretation": "The entire interval permitted by the relation must occupy the configured band.",
+            "assay": "AID1803397",
+            "assay_organism": null,
+            "target_assignment": "D",
+            "document": "pubmed:23406473",
+            "year": null,
+            "flags": [],
+            "curated": false,
+            "source": "PubChem BioAssay",
+            "group": "REL_52c3a259dce10a8a",
+            "copy": true
+          }
+        ]
+      },
+      "groups": [
+        {
+          "decision": {
+            "molecule_ref": "pubchem:129627013",
+            "group": "REL_52c3a259dce10a8a",
+            "records": [
+              "REL_52c3a259dce10a8a"
+            ],
+            "voters": [],
+            "voter_classes": [],
+            "class": "inconclusive",
+            "basis": "copies_without_original_vote"
+          },
+          "whole_card_family_records": [
+            {
+              "relationship_id": "REL_52c3a259dce10a8a",
+              "subject_ref": "uniprot:P60174",
+              "object_ref": "pubchem:129627013",
+              "qualifiers": {
+                "activity_id": "pubchem:1803397:341104385",
+                "assay": {
+                  "depositor": "BindingDB",
+                  "depositor_id": "BindingDB_8411_1",
+                  "description": "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+                  "id": "AID1803397",
+                  "organism": null,
+                  "relationship_type": "D",
+                  "source": "PubChem BioAssay"
+                },
+                "copy_of": {
+                  "assay": "BindingDB_8411_1",
+                  "source": "BindingDB"
+                },
+                "document": {
+                  "doi": null,
+                  "id": null,
+                  "journal": null,
+                  "pubmed": "23406473",
+                  "title": null,
+                  "year": null
+                },
+                "measurement": {
+                  "normalized": {
+                    "unit": "nanomolar",
+                    "value": 100000.0
+                  },
+                  "outcome": "Inactive",
+                  "pchembl": null,
+                  "relation": null,
+                  "stated_value": "100",
+                  "type": "IC50",
+                  "units": "uM",
+                  "value": 100.0
+                },
+                "molecule_ref": "inchikey:ZLBSXQXHCUJVJO-UHFFFAOYSA-N",
+                "source": "PubChem BioAssay"
+              },
+              "source_assertion_refs": [
+                "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_PubChem BioAssay_AID1803397_ffb924b47727f619"
+              ],
+              "included_molecule_item": "pubchem:129627013",
+              "included_in_this_item": true,
+              "declared_copy": true
+            }
+          ],
+          "original_scope": [
+            {
+              "copy_record": "REL_52c3a259dce10a8a",
+              "same_item_originals": [],
+              "other_item_originals": [],
+              "excluded_originals": [],
+              "state": "not_resolved_on_card"
+            }
+          ],
+          "copy_diagnostics": [],
+          "unresolved_copies": [
+            {
+              "record": "REL_52c3a259dce10a8a",
+              "copy_of": {
+                "assay": "BindingDB_8411_1",
+                "source": "BindingDB"
+              },
+              "reason": "named_original_assay_not_on_card"
+            }
+          ]
+        }
+      ],
+      "source_assertions": [
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": {
+            "aid": 1803397,
+            "assay": "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+            "object_ref": "pubchem:129627013",
+            "row": {
+              "AID": "1803397",
+              "Activity Name": "IC50",
+              "Activity Outcome": "Inactive",
+              "Activity Value [uM]": "100",
+              "Assay Name": "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+              "Assay Type": "Confirmatory",
+              "CID": "129627013",
+              "PubMed ID": "23406473",
+              "RNAi": "",
+              "SID": "341104385",
+              "Target Accession": "P60174",
+              "Target GeneID": "7167"
+            }
+          },
+          "field_path": "relationships.has_bioactivity",
+          "id": "SA_PubChem BioAssay_AID1803397_ffb924b47727f619",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "PubChem BioAssay",
+            "record_id": "AID1803397",
+            "type": "database"
+          },
+          "subject_ref": "uniprot:P60174",
+          "source_assertion_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_PubChem BioAssay_AID1803397_ffb924b47727f619"
+        }
+      ]
+    },
+    {
+      "case": 4,
+      "input": "three-source-P60174",
+      "card_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d",
+      "molecule_ref": "pubchem:137241593",
+      "original_summary_class": "weak",
+      "candidate_summary_class": "inconclusive",
+      "original_item": {
+        "molecule_ref": "pubchem:137241593",
+        "label": "137241593",
+        "label_source": "inchikey",
+        "tested_forms": [
+          "pubchem:137241593"
+        ],
+        "name": null,
+        "smiles": null,
+        "class": "weak",
+        "classes": {
+          "weak": 1
+        },
+        "discordant": false,
+        "best_pchembl": null,
+        "measurement_count": 1,
+        "record_count": 1,
+        "sources": [
+          "PubChem BioAssay"
+        ],
+        "documents": [
+          "pubmed:23406473"
+        ],
+        "measurements": [
+          {
+            "relationship_id": "REL_8dd31a62b342f0f5",
+            "activity_id": "pubchem:1803397:341104384",
+            "molecule_ref": "pubchem:137241593",
+            "type": "IC50",
+            "relation": null,
+            "value": 100.0,
+            "units": "uM",
+            "normalized": {
+              "value": 100000.0,
+              "unit": "nanomolar"
+            },
+            "normalized_upper": null,
+            "uncertainty": null,
+            "pchembl": null,
+            "class": "weak",
+            "basis": "potency",
+            "interpretation": "The entire interval permitted by the relation must occupy the configured band.",
+            "assay": "AID1803397",
+            "assay_organism": null,
+            "target_assignment": "D",
+            "document": "pubmed:23406473",
+            "year": null,
+            "flags": [],
+            "curated": false,
+            "source": "PubChem BioAssay",
+            "group": "MG_4cc5713829845191",
+            "copy": true
+          }
+        ]
+      },
+      "candidate_item": {
+        "molecule_ref": "pubchem:137241593",
+        "label": "137241593",
+        "label_source": "inchikey",
+        "tested_forms": [
+          "pubchem:137241593"
+        ],
+        "name": null,
+        "smiles": null,
+        "class": "inconclusive",
+        "classes": {
+          "inconclusive": 1
+        },
+        "discordant": false,
+        "best_pchembl": null,
+        "measurement_count": 1,
+        "measurement_count_scope": "Retained groups under the selected policy; not a count of independent experiments. Possible correspondence and unresolved copies remain explicit. Counted per molecule item; a copy family may appear in multiple items.",
+        "independence_status": "not_established",
+        "record_count": 1,
+        "sources": [
+          "PubChem BioAssay"
+        ],
+        "documents": [
+          "pubmed:23406473"
+        ],
+        "measurements": [
+          {
+            "relationship_id": "REL_8dd31a62b342f0f5",
+            "activity_id": "pubchem:1803397:341104384",
+            "molecule_ref": "pubchem:137241593",
+            "type": "IC50",
+            "relation": null,
+            "value": 100.0,
+            "units": "uM",
+            "normalized": {
+              "value": 100000.0,
+              "unit": "nanomolar"
+            },
+            "normalized_upper": null,
+            "uncertainty": null,
+            "pchembl": null,
+            "class": "weak",
+            "basis": "potency",
+            "interpretation": "The entire interval permitted by the relation must occupy the configured band.",
+            "assay": "AID1803397",
+            "assay_organism": null,
+            "target_assignment": "D",
+            "document": "pubmed:23406473",
+            "year": null,
+            "flags": [],
+            "curated": false,
+            "source": "PubChem BioAssay",
+            "group": "REL_8dd31a62b342f0f5",
+            "copy": true
+          }
+        ]
+      },
+      "groups": [
+        {
+          "decision": {
+            "molecule_ref": "pubchem:137241593",
+            "group": "REL_8dd31a62b342f0f5",
+            "records": [
+              "REL_8dd31a62b342f0f5"
+            ],
+            "voters": [],
+            "voter_classes": [],
+            "class": "inconclusive",
+            "basis": "copies_without_original_vote"
+          },
+          "whole_card_family_records": [
+            {
+              "relationship_id": "REL_8dd31a62b342f0f5",
+              "subject_ref": "uniprot:P60174",
+              "object_ref": "pubchem:137241593",
+              "qualifiers": {
+                "activity_id": "pubchem:1803397:341104384",
+                "assay": {
+                  "depositor": "BindingDB",
+                  "depositor_id": "BindingDB_8411_1",
+                  "description": "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+                  "id": "AID1803397",
+                  "organism": null,
+                  "relationship_type": "D",
+                  "source": "PubChem BioAssay"
+                },
+                "copy_of": {
+                  "assay": "BindingDB_8411_1",
+                  "source": "BindingDB"
+                },
+                "document": {
+                  "doi": null,
+                  "id": null,
+                  "journal": null,
+                  "pubmed": "23406473",
+                  "title": null,
+                  "year": null
+                },
+                "measurement": {
+                  "normalized": {
+                    "unit": "nanomolar",
+                    "value": 100000.0
+                  },
+                  "outcome": "Inactive",
+                  "pchembl": null,
+                  "relation": null,
+                  "stated_value": "100",
+                  "type": "IC50",
+                  "units": "uM",
+                  "value": 100.0
+                },
+                "molecule_ref": "inchikey:NXZKDNVKTNBSHL-UHFFFAOYSA-N",
+                "source": "PubChem BioAssay"
+              },
+              "source_assertion_refs": [
+                "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_PubChem BioAssay_AID1803397_9119391bf2879dea"
+              ],
+              "included_molecule_item": "pubchem:137241593",
+              "included_in_this_item": true,
+              "declared_copy": true
+            }
+          ],
+          "original_scope": [
+            {
+              "copy_record": "REL_8dd31a62b342f0f5",
+              "same_item_originals": [],
+              "other_item_originals": [],
+              "excluded_originals": [],
+              "state": "not_resolved_on_card"
+            }
+          ],
+          "copy_diagnostics": [],
+          "unresolved_copies": [
+            {
+              "record": "REL_8dd31a62b342f0f5",
+              "copy_of": {
+                "assay": "BindingDB_8411_1",
+                "source": "BindingDB"
+              },
+              "reason": "named_original_assay_not_on_card"
+            }
+          ]
+        }
+      ],
+      "source_assertions": [
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": {
+            "aid": 1803397,
+            "assay": "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+            "object_ref": "pubchem:137241593",
+            "row": {
+              "AID": "1803397",
+              "Activity Name": "IC50",
+              "Activity Outcome": "Inactive",
+              "Activity Value [uM]": "100",
+              "Assay Name": "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+              "Assay Type": "Confirmatory",
+              "CID": "137241593",
+              "PubMed ID": "23406473",
+              "RNAi": "",
+              "SID": "341104384",
+              "Target Accession": "P60174",
+              "Target GeneID": "7167"
+            }
+          },
+          "field_path": "relationships.has_bioactivity",
+          "id": "SA_PubChem BioAssay_AID1803397_9119391bf2879dea",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "PubChem BioAssay",
+            "record_id": "AID1803397",
+            "type": "database"
+          },
+          "subject_ref": "uniprot:P60174",
+          "source_assertion_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_PubChem BioAssay_AID1803397_9119391bf2879dea"
+        }
+      ]
+    },
+    {
+      "case": 5,
+      "input": "three-source-P60174",
+      "card_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d",
+      "molecule_ref": "pubchem:73187903",
+      "original_summary_class": "weak",
+      "candidate_summary_class": "inconclusive",
+      "original_item": {
+        "molecule_ref": "pubchem:73187903",
+        "label": "73187903",
+        "label_source": "inchikey",
+        "tested_forms": [
+          "pubchem:73187903"
+        ],
+        "name": null,
+        "smiles": null,
+        "class": "weak",
+        "classes": {
+          "weak": 1
+        },
+        "discordant": false,
+        "best_pchembl": null,
+        "measurement_count": 1,
+        "record_count": 1,
+        "sources": [
+          "PubChem BioAssay"
+        ],
+        "documents": [
+          "pubmed:23406473"
+        ],
+        "measurements": [
+          {
+            "relationship_id": "REL_154d5fb3593f7791",
+            "activity_id": "pubchem:1803397:341104383",
+            "molecule_ref": "pubchem:73187903",
+            "type": "IC50",
+            "relation": null,
+            "value": 100.0,
+            "units": "uM",
+            "normalized": {
+              "value": 100000.0,
+              "unit": "nanomolar"
+            },
+            "normalized_upper": null,
+            "uncertainty": null,
+            "pchembl": null,
+            "class": "weak",
+            "basis": "potency",
+            "interpretation": "The entire interval permitted by the relation must occupy the configured band.",
+            "assay": "AID1803397",
+            "assay_organism": null,
+            "target_assignment": "D",
+            "document": "pubmed:23406473",
+            "year": null,
+            "flags": [],
+            "curated": false,
+            "source": "PubChem BioAssay",
+            "group": "REL_154d5fb3593f7791",
+            "copy": true
+          }
+        ]
+      },
+      "candidate_item": {
+        "molecule_ref": "pubchem:73187903",
+        "label": "73187903",
+        "label_source": "inchikey",
+        "tested_forms": [
+          "pubchem:73187903"
+        ],
+        "name": null,
+        "smiles": null,
+        "class": "inconclusive",
+        "classes": {
+          "inconclusive": 1
+        },
+        "discordant": false,
+        "best_pchembl": null,
+        "measurement_count": 1,
+        "measurement_count_scope": "Retained groups under the selected policy; not a count of independent experiments. Possible correspondence and unresolved copies remain explicit. Counted per molecule item; a copy family may appear in multiple items.",
+        "independence_status": "not_established",
+        "record_count": 1,
+        "sources": [
+          "PubChem BioAssay"
+        ],
+        "documents": [
+          "pubmed:23406473"
+        ],
+        "measurements": [
+          {
+            "relationship_id": "REL_154d5fb3593f7791",
+            "activity_id": "pubchem:1803397:341104383",
+            "molecule_ref": "pubchem:73187903",
+            "type": "IC50",
+            "relation": null,
+            "value": 100.0,
+            "units": "uM",
+            "normalized": {
+              "value": 100000.0,
+              "unit": "nanomolar"
+            },
+            "normalized_upper": null,
+            "uncertainty": null,
+            "pchembl": null,
+            "class": "weak",
+            "basis": "potency",
+            "interpretation": "The entire interval permitted by the relation must occupy the configured band.",
+            "assay": "AID1803397",
+            "assay_organism": null,
+            "target_assignment": "D",
+            "document": "pubmed:23406473",
+            "year": null,
+            "flags": [],
+            "curated": false,
+            "source": "PubChem BioAssay",
+            "group": "REL_154d5fb3593f7791",
+            "copy": true
+          }
+        ]
+      },
+      "groups": [
+        {
+          "decision": {
+            "molecule_ref": "pubchem:73187903",
+            "group": "REL_154d5fb3593f7791",
+            "records": [
+              "REL_154d5fb3593f7791"
+            ],
+            "voters": [],
+            "voter_classes": [],
+            "class": "inconclusive",
+            "basis": "copies_without_original_vote"
+          },
+          "whole_card_family_records": [
+            {
+              "relationship_id": "REL_154d5fb3593f7791",
+              "subject_ref": "uniprot:P60174",
+              "object_ref": "pubchem:73187903",
+              "qualifiers": {
+                "activity_id": "pubchem:1803397:341104383",
+                "assay": {
+                  "depositor": "BindingDB",
+                  "depositor_id": "BindingDB_8411_1",
+                  "description": "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+                  "id": "AID1803397",
+                  "organism": null,
+                  "relationship_type": "D",
+                  "source": "PubChem BioAssay"
+                },
+                "copy_of": {
+                  "assay": "BindingDB_8411_1",
+                  "source": "BindingDB"
+                },
+                "document": {
+                  "doi": null,
+                  "id": null,
+                  "journal": null,
+                  "pubmed": "23406473",
+                  "title": null,
+                  "year": null
+                },
+                "measurement": {
+                  "normalized": {
+                    "unit": "nanomolar",
+                    "value": 100000.0
+                  },
+                  "outcome": "Inactive",
+                  "pchembl": null,
+                  "relation": null,
+                  "stated_value": "100",
+                  "type": "IC50",
+                  "units": "uM",
+                  "value": 100.0
+                },
+                "molecule_ref": "inchikey:NGOHMJVVYSXVAS-UHFFFAOYSA-N",
+                "source": "PubChem BioAssay"
+              },
+              "source_assertion_refs": [
+                "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_PubChem BioAssay_AID1803397_94bfa0a7c76a16ef"
+              ],
+              "included_molecule_item": "pubchem:73187903",
+              "included_in_this_item": true,
+              "declared_copy": true
+            }
+          ],
+          "original_scope": [
+            {
+              "copy_record": "REL_154d5fb3593f7791",
+              "same_item_originals": [],
+              "other_item_originals": [],
+              "excluded_originals": [],
+              "state": "not_resolved_on_card"
+            }
+          ],
+          "copy_diagnostics": [],
+          "unresolved_copies": [
+            {
+              "record": "REL_154d5fb3593f7791",
+              "copy_of": {
+                "assay": "BindingDB_8411_1",
+                "source": "BindingDB"
+              },
+              "reason": "named_original_assay_not_on_card"
+            }
+          ]
+        }
+      ],
+      "source_assertions": [
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": {
+            "aid": 1803397,
+            "assay": "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+            "object_ref": "pubchem:73187903",
+            "row": {
+              "AID": "1803397",
+              "Activity Name": "IC50",
+              "Activity Outcome": "Inactive",
+              "Activity Value [uM]": "100",
+              "Assay Name": "Inhibition Assay from Article 10.3109/14756366.2013.765415: \"New chemotypes as Trypanosoma cruzi triosephosphate isomerase inhibitors: a deeper insight into the mechanism of inhibition.\"",
+              "Assay Type": "Confirmatory",
+              "CID": "73187903",
+              "PubMed ID": "23406473",
+              "RNAi": "",
+              "SID": "341104383",
+              "Target Accession": "P60174",
+              "Target GeneID": "7167"
+            }
+          },
+          "field_path": "relationships.has_bioactivity",
+          "id": "SA_PubChem BioAssay_AID1803397_94bfa0a7c76a16ef",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "PubChem BioAssay",
+            "record_id": "AID1803397",
+            "type": "database"
+          },
+          "subject_ref": "uniprot:P60174",
+          "source_assertion_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_PubChem BioAssay_AID1803397_94bfa0a7c76a16ef"
+        }
+      ]
+    },
+    {
+      "case": 6,
+      "input": "three-source-P60174",
+      "card_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d",
+      "molecule_ref": "chembl:CHEMBL1161997",
+      "original_summary_class": "inactive",
+      "candidate_summary_class": "inconclusive",
+      "original_item": {
+        "molecule_ref": "chembl:CHEMBL1161997",
+        "label": "CHEMBL1161997",
+        "label_source": "chembl",
+        "tested_forms": [
+          "pubchem:44431131"
+        ],
+        "name": null,
+        "smiles": null,
+        "class": "inactive",
+        "classes": {
+          "inactive": 1
+        },
+        "discordant": false,
+        "best_pchembl": null,
+        "measurement_count": 1,
+        "record_count": 1,
+        "sources": [
+          "PubChem BioAssay"
+        ],
+        "documents": [
+          "pubmed:17088060"
+        ],
+        "measurements": [
+          {
+            "relationship_id": "REL_075617d40a60534e",
+            "activity_id": "pubchem:292822:103762083",
+            "molecule_ref": "pubchem:44431131",
+            "type": "Ki",
+            "relation": null,
+            "value": 1000.0,
+            "units": "uM",
+            "normalized": {
+              "value": 1000000.0,
+              "unit": "nanomolar"
+            },
+            "normalized_upper": null,
+            "uncertainty": null,
+            "pchembl": null,
+            "class": "inactive",
+            "basis": "potency",
+            "interpretation": "The entire interval permitted by the relation must occupy the configured band.",
+            "assay": "AID292822",
+            "assay_organism": null,
+            "target_assignment": "D",
+            "document": "pubmed:17088060",
+            "year": null,
+            "flags": [],
+            "curated": false,
+            "source": "PubChem BioAssay",
+            "group": "MG_933359c28d96027a",
+            "copy": true
+          }
+        ]
+      },
+      "candidate_item": {
+        "molecule_ref": "chembl:CHEMBL1161997",
+        "label": "CHEMBL1161997",
+        "label_source": "chembl",
+        "tested_forms": [
+          "pubchem:44431131"
+        ],
+        "name": null,
+        "smiles": null,
+        "class": "inconclusive",
+        "classes": {
+          "inconclusive": 1
+        },
+        "discordant": false,
+        "best_pchembl": null,
+        "measurement_count": 1,
+        "measurement_count_scope": "Retained groups under the selected policy; not a count of independent experiments. Possible correspondence and unresolved copies remain explicit. Counted per molecule item; a copy family may appear in multiple items.",
+        "independence_status": "not_established",
+        "record_count": 1,
+        "sources": [
+          "PubChem BioAssay"
+        ],
+        "documents": [
+          "pubmed:17088060"
+        ],
+        "measurements": [
+          {
+            "relationship_id": "REL_075617d40a60534e",
+            "activity_id": "pubchem:292822:103762083",
+            "molecule_ref": "pubchem:44431131",
+            "type": "Ki",
+            "relation": null,
+            "value": 1000.0,
+            "units": "uM",
+            "normalized": {
+              "value": 1000000.0,
+              "unit": "nanomolar"
+            },
+            "normalized_upper": null,
+            "uncertainty": null,
+            "pchembl": null,
+            "class": "inactive",
+            "basis": "potency",
+            "interpretation": "The entire interval permitted by the relation must occupy the configured band.",
+            "assay": "AID292822",
+            "assay_organism": null,
+            "target_assignment": "D",
+            "document": "pubmed:17088060",
+            "year": null,
+            "flags": [],
+            "curated": false,
+            "source": "PubChem BioAssay",
+            "group": "MG_933359c28d96027a",
+            "copy": true
+          }
+        ]
+      },
+      "groups": [
+        {
+          "decision": {
+            "molecule_ref": "chembl:CHEMBL1161997",
+            "group": "MG_933359c28d96027a",
+            "records": [
+              "REL_075617d40a60534e"
+            ],
+            "voters": [],
+            "voter_classes": [],
+            "class": "inconclusive",
+            "basis": "copies_without_original_vote"
+          },
+          "whole_card_family_records": [
+            {
+              "relationship_id": "REL_075617d40a60534e",
+              "subject_ref": "uniprot:P60174",
+              "object_ref": "pubchem:44431131",
+              "qualifiers": {
+                "activity_id": "pubchem:292822:103762083",
+                "assay": {
+                  "depositor": "ChEMBL",
+                  "depositor_id": "CHEMBL889943",
+                  "description": "Inhibition of triosephosphate isomerase",
+                  "id": "AID292822",
+                  "organism": null,
+                  "relationship_type": "D",
+                  "source": "PubChem BioAssay"
+                },
+                "copy_of": {
+                  "assay": "CHEMBL889943",
+                  "source": "ChEMBL"
+                },
+                "document": {
+                  "doi": null,
+                  "id": null,
+                  "journal": null,
+                  "pubmed": "17088060",
+                  "title": null,
+                  "year": null
+                },
+                "measurement": {
+                  "normalized": {
+                    "unit": "nanomolar",
+                    "value": 1000000.0
+                  },
+                  "outcome": "Unspecified",
+                  "pchembl": null,
+                  "relation": null,
+                  "stated_value": "1000",
+                  "type": "Ki",
+                  "units": "uM",
+                  "value": 1000.0
+                },
+                "molecule_ref": "inchikey:IXTLPXIJEWXYCB-UHFFFAOYSA-N",
+                "source": "PubChem BioAssay"
+              },
+              "source_assertion_refs": [
+                "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_PubChem BioAssay_AID292822_be9e9103af193f1e"
+              ],
+              "included_molecule_item": "chembl:CHEMBL1161997",
+              "included_in_this_item": true,
+              "declared_copy": true
+            },
+            {
+              "relationship_id": "REL_e70e1234d021d25d",
+              "subject_ref": "uniprot:P60174",
+              "object_ref": "chembl:CHEMBL1161997",
+              "qualifiers": {
+                "activity_id": 1958603,
+                "assay": {
+                  "confidence_score": 8,
+                  "description": "Inhibition of triosephosphate isomerase",
+                  "id": "CHEMBL889943",
+                  "organism": "Oryctolagus cuniculus",
+                  "relationship_type": "H",
+                  "tax_id": 9986,
+                  "type": "B",
+                  "variant_mutation": null
+                },
+                "document": {
+                  "doi": "10.1016/j.bmcl.2006.10.030",
+                  "id": "CHEMBL1146280",
+                  "journal": "Bioorg Med Chem Lett",
+                  "pubmed": "17088060",
+                  "title": "New competitive inhibitors of cytosolic (NADH-dependent) rabbit muscle glycerophosphate dehydrogenase.",
+                  "year": 2007
+                },
+                "measurement": {
+                  "action_type": null,
+                  "activity_comment": null,
+                  "data_validity_comment": "Outside typical range",
+                  "normalized": {
+                    "unit": "nanomolar",
+                    "value": 1000000.0
+                  },
+                  "pchembl": null,
+                  "potential_duplicate": false,
+                  "relation": ">",
+                  "text_value": null,
+                  "type": "Ki",
+                  "units": "nM",
+                  "upper_value": null,
+                  "value": 1000000.0
+                },
+                "molecule_name": null,
+                "parent_molecule": "chembl:CHEMBL1161997",
+                "target": "CHEMBL4880"
+              },
+              "source_assertion_refs": [
+                "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_ChEMBL_CHEMBL4880_cc147ff861903f9a",
+                "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_ChEMBL_CHEMBL889943_292fafebffee843f"
+              ],
+              "included_molecule_item": null,
+              "included_in_this_item": false,
+              "declared_copy": false
+            }
+          ],
+          "original_scope": [
+            {
+              "copy_record": "REL_075617d40a60534e",
+              "same_item_originals": [],
+              "other_item_originals": [],
+              "excluded_originals": [
+                "REL_e70e1234d021d25d"
+              ],
+              "state": "excluded_by_view_scope"
+            }
+          ],
+          "copy_diagnostics": [
+            {
+              "records": [
+                "REL_075617d40a60534e",
+                "REL_e70e1234d021d25d"
+              ],
+              "selector": {
+                "basis": "named_assay_molecule",
+                "precision_used": false
+              },
+              "reported_measurement_differences": [
+                "relation",
+                "value",
+                "units",
+                "stated_value"
+              ],
+              "context": [
+                {
+                  "field": "assay.description",
+                  "left": "Inhibition of triosephosphate isomerase",
+                  "right": "Inhibition of triosephosphate isomerase",
+                  "state": "literal_equal"
+                },
+                {
+                  "field": "assay.organism",
+                  "left": null,
+                  "right": "Oryctolagus cuniculus",
+                  "state": "missing_on_one"
+                },
+                {
+                  "field": "assay.tax_id",
+                  "left": null,
+                  "right": 9986,
+                  "state": "missing_on_one"
+                },
+                {
+                  "field": "assay.variant_mutation",
+                  "left": null,
+                  "right": null,
+                  "state": "missing_on_both"
+                }
+              ],
+              "subject_refs": [
+                "uniprot:P60174",
+                "uniprot:P60174"
+              ],
+              "interpretation": "Source-declared copy; all reported differences are retained. Literal differences need not be experimental contradictions."
+            }
+          ],
+          "unresolved_copies": []
+        }
+      ],
+      "source_assertions": [
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": {
+            "activity": {
+              "action_type": null,
+              "activity_comment": null,
+              "activity_id": 1958603,
+              "assay_chembl_id": "CHEMBL889943",
+              "assay_description": "Inhibition of triosephosphate isomerase",
+              "assay_type": "B",
+              "assay_variant_mutation": null,
+              "canonical_smiles": "O=C(CC(O)P(=O)(O)O)NO",
+              "data_validity_comment": "Outside typical range",
+              "document_chembl_id": "CHEMBL1146280",
+              "document_journal": "Bioorg Med Chem Lett",
+              "document_year": 2007,
+              "molecule_chembl_id": "CHEMBL1161997",
+              "molecule_pref_name": null,
+              "parent_molecule_chembl_id": "CHEMBL1161997",
+              "pchembl_value": null,
+              "potential_duplicate": 0,
+              "standard_relation": ">",
+              "standard_text_value": null,
+              "standard_type": "Ki",
+              "standard_units": "nM",
+              "standard_upper_value": null,
+              "standard_value": "1000000.0",
+              "target_chembl_id": "CHEMBL4880"
+            },
+            "object_ref": "chembl:CHEMBL1161997"
+          },
+          "field_path": "relationships.has_bioactivity",
+          "id": "SA_ChEMBL_CHEMBL4880_cc147ff861903f9a",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "ChEMBL",
+            "record_id": "CHEMBL4880",
+            "type": "database",
+            "version": "ChEMBL_37"
+          },
+          "subject_ref": "chembl:CHEMBL4880",
+          "source_assertion_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_ChEMBL_CHEMBL4880_cc147ff861903f9a"
+        },
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": {
+            "assay_chembl_id": "CHEMBL889943",
+            "assay_organism": "Oryctolagus cuniculus",
+            "assay_parameters": [],
+            "assay_tax_id": 9986,
+            "confidence_description": "Homologous single protein target assigned",
+            "confidence_score": 8,
+            "relationship_description": "Homologous protein target assigned",
+            "relationship_type": "H",
+            "variant_sequence": null
+          },
+          "field_path": "relationships.has_bioactivity.assay",
+          "id": "SA_ChEMBL_CHEMBL889943_292fafebffee843f",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "ChEMBL",
+            "record_id": "CHEMBL889943",
+            "type": "database",
+            "version": "ChEMBL_37"
+          },
+          "subject_ref": "chembl:CHEMBL889943",
+          "source_assertion_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_ChEMBL_CHEMBL889943_292fafebffee843f"
+        },
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": {
+            "aid": 292822,
+            "assay": "Inhibition of triosephosphate isomerase",
+            "object_ref": "pubchem:44431131",
+            "row": {
+              "AID": "292822",
+              "Activity Name": "Ki",
+              "Activity Outcome": "Unspecified",
+              "Activity Value [uM]": "1000",
+              "Assay Name": "Inhibition of triosephosphate isomerase",
+              "Assay Type": "Confirmatory",
+              "CID": "44431131",
+              "PubMed ID": "17088060",
+              "RNAi": "",
+              "SID": "103762083",
+              "Target Accession": "P60174",
+              "Target GeneID": "7167"
+            }
+          },
+          "field_path": "relationships.has_bioactivity",
+          "id": "SA_PubChem BioAssay_AID292822_be9e9103af193f1e",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "PubChem BioAssay",
+            "record_id": "AID292822",
+            "type": "database"
+          },
+          "subject_ref": "uniprot:P60174",
+          "source_assertion_ref": "sabueso:protein:uniprot:P60174@sha256:5d7140a66a5863881b62fd9f9bc74b9774103445fadf7b3352a76a15d9337c2d#SA_PubChem BioAssay_AID292822_be9e9103af193f1e"
+        }
+      ]
+    }
+  ],
+  "reviewer_state": "Maintainer will conduct the scientific review; explicitly deferred on 2026-11-04. No scientific/default acceptance.",
+  "new_finding": "Two resolved originals are excluded as indirect while their declared copies enter direct-only output; owning issue #188."
+}

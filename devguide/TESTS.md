@@ -1,5 +1,16 @@
 # Sabueso — Tests and Quality Gates
 
+For opt-in target scope @2 (#188), run
+`test_bioactivity_target_scope_offline.py`, public PubChem copy and measurement
+cases, affected activity/ligand/explanation/table/argument/quantity/packet/public
+journey gates, and its isolated installed-receiving selector. Both CI and staged
+installed scopes copy/select the standalone module. Compare all eight genuine
+pre-change controls, both measurement policies, wider complete inclusion and exact
+Card/source pins. Test excluded-known `outside_scope` and source support, foreign
+subjects, missing/ambiguous/cyclic originals and assignment disagreements. Defaults,
+original grouping and historical packet reading must retain their own meanings;
+technical passing is not scientific/default or researcher acceptance.
+
 For opt-in measurement correspondence @2 (#186), run
 `tests/core/test_measurement_correspondence_offline.py`, public PubChem copy and
 original measurement tests, affected activity/ligand/explanation/table/argument/
