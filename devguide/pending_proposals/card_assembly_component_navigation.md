@@ -3,7 +3,7 @@ summary: Exact structure-to-assembly and declared-component source navigation.
 issue: uibcdf/sabueso#173
 status: open
 opened: 2026-11-04
-verification: selected_offline_qualification
+verification: exact_source_qualified
 area: [human-exploration, agent-access, navigation, persistence]
 ---
 
@@ -84,3 +84,14 @@ unskipped exact-source CI/governance checkpoint. Record its SHA/SDK, all actual
 source/installed lane summaries, full manifests/jobs/steps and codec receiving
 in the owning issues and phase index. Earlier green/pending runs do not qualify
 new navigation bytes. Broad physical/researcher/workload closure remains open.
+
+## Hosted checkpoint
+
+Exact source `7882f66ff6f334c95d584b9164283f9791b547b4`, SDK
+`0.14.0+158.g7882f66`, passes [CI 18/18 and governance 1/1](../evidence/assembly_component_checkpoint_20261104.json).
+All manifest members/hashes, log CRC and every applicable job/step are checked.
+Nine source lanes each pass 7,038 cases /10 skipped /26 deselected; four installed
+lanes each pass 1,583. Twelve codec producer routes, 24 fresh cross-read frames and
+36 installed codec cases qualify the exact source. The final editable also passes
+41 focused cases. #183 scratch recovery is closed; large-workload and researcher
+acceptance, physical reconciliation and paused 0.15.0 remain separate.

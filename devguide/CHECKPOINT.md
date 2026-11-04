@@ -7,6 +7,25 @@ resumption entry point. Earlier source,
 scientific and release receipts remain linked in the technical reports and
 [preceding chronology](archive/CHECKPOINT_before_pause_20261025.md).
 
+The exact development source `7882f66ff6f334c95d584b9164283f9791b547b4`, SDK
+`0.14.0+158.g7882f66`, is now **qualified**: [CI 18/18 and governance 1/1](evidence/assembly_component_checkpoint_20261104.json),
+full manifests/hashes/CRC/all steps, thirteen actual pytest summaries, twelve
+codec producer routes /24 fresh frames and 36 installed codec cases verified.
+Nine source lanes each pass 7,038 cases; four installed lanes each pass 1,583.
+This receives the accumulated source/native/original-reader and scratch correction;
+#183 is closed with verified recovery. Earlier failing runs remain failures.
+Physical reconciliation, broad panels, researcher/workload acceptance and 0.15.0
+consolidation remain open/paused. Later changed bytes require their own scope.
+
+The following [component workload study](pending_proposals/component_navigation_workload.md)
+now records six synthetic producers and twelve independent original readers for
+3/12/48 repeated declaration positions. All preserve original bindings, with no
+swap or resource stop. Complete session save/read costs remain much larger than
+interactive navigation or a two-field bounded agent page. Byte accounting finds
+most storage in retained views; this is an optimization target, not an achieved
+saving, scaling guarantee or accepted researcher budget. Production runtime and
+default limits remain unchanged; full workload acceptance stays #167/#148 work.
+
 The [structure/component navigation](pending_proposals/card_assembly_component_navigation.md)
 connects an exact structure declaration to its assembly question, every original
 component position and original records/sources. Structure-context @3 chooses
@@ -17,7 +36,8 @@ keep their original routes; saved unvisited destinations report `not_saved`.
 Selected local receiving passes 1,250 unique offline cases over 35 files, serial,
 with zero test-group swap and peak owned RSS 629.4 MiB. Three actual guide blocks
 pass on four public controls. Original @6/@7 controls run separately. This is not
-a full local-suite claim; pending earlier CI does not qualify new bytes.
+a full local-suite claim. The exact-source hosted checkpoint above qualifies
+this block; older or later runs keep their separate scopes.
 Physical reconciliation, broad researcher/workload acceptance and paused 0.15.0
 consolidation remain separate. Receipts: #173/#148/#112 and
 `recovered_work/assembly_component_navigation_173_20261104/`.
@@ -31,8 +51,8 @@ sources. Default @4, old-only formats and the 67 protected original modules rema
 unchanged. The new explanation-request @2 route closes a regression caught before
 publication, leaving @1 intact. Selected local receiving passes 1,214 cases over
 32 files, serial, with zero owned swap; the actual new guide blocks also pass on
-all four public controls. Final unskipped exact-source receiving is required;
-pending or earlier CI does not qualify these new bytes. Full physical
+all four public controls. The exact-source `7882f66` checkpoint above now receives this implementation;
+earlier pending/failing runs retain their own status. Full physical
 reconciliation, researcher acceptance and paused 0.15.0 consolidation remain open.
 
 CI scratch recovery is tracked in [#183](https://github.com/uibcdf/sabueso/issues/183).
@@ -43,8 +63,8 @@ copied installed lane supplies that setting explicitly. Lifecycle checks preserv
 failed-call evidence, shared-fixture lifetime and the deliberate `all` debugging
 override. Selected lifecycle and scientific bundle-copy checks pass 119 cases
 over five files, serial, with zero owned swap. Scientific fixtures/readers are
-unchanged. A new unskipped exact-source
-CI/governance checkpoint must establish recovery before calling this fixed; the
+unchanged. The unskipped exact-source `7882f66` checkpoint above verifies recovery,
+including source Python 3.12 and installed Python 3.11; #183 is closed. The
 logs alone do not establish retention as the sole cause.
 
 The [opt-in native nonpolymer key continuation](pending_proposals/assembly_nonpolymer_binding.md)
@@ -56,7 +76,7 @@ explicit @2 adapter and original @7 reader have their own receiving scope above.
 checks pass 650 selected cases /18 files, serial, with zero owned swap. Original
 rules/readers, source fixtures, schemas and migration stay unchanged. Local
 qualification precedes intermediate publication; the native/original-reader/adapter
-block requires final unskipped exact-source CI/governance recovery under the
+block is received by qualified source `7882f66`, recorded under the
 [approved ledger](pending_proposals/deferred_ci.md). Skipped CI is not qualification; full physical
 reconciliation and broad researcher acceptance remain open.
 
@@ -68,8 +88,8 @@ preserve original inputs, native/author labels and explicit null scope. Native
 key/presentation/reader continuation does not complete physical reconciliation.
 Its selected local gates pass 617
 cases /25 files, serial, peak owned RSS 318,590,976 bytes and zero owned swap.
-Shape recording remains 1,967 paths. Its exact final-source hosted checkpoint
-must qualify this addition independently. Three interrupted storage attempts are
+Shape recording remains 1,967 paths. The qualified `7882f66` hosted checkpoint receives this addition; live
+availability remains distinct from frozen-response qualification. Three interrupted storage attempts are
 not passes; the technical report records the corrected local MemAvailable guard.
 
 The current [qualifier-parent continuation](pending_bugs/entity_qualifier_parents.md)
@@ -77,8 +97,8 @@ The current [qualifier-parent continuation](pending_bugs/entity_qualifier_parent
 store roundtrips and literal human/agent inspection. Current structural requests
 refuse uninterpretable parents with a source-addressed SchemaError. Existing direct
 identity statements and registered identities remain separate from unreadable
-qualifier-derived context. Its exact final source CI/governance must be verified;
-older pending runs are not qualification. A stricter nested glossary prototype is
+qualifier-derived context. Its code is received by the exact-source `7882f66` checkpoint above;
+older pending/failing runs retain their own status. A stricter nested glossary prototype is
 not included: #182 first needs original stored-glossary/versioning/pin acceptance.
 Broad #148 researcher acceptance and 0.15.0 consolidation remain open/paused.
 

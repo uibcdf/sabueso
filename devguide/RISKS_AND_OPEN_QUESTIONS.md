@@ -91,6 +91,10 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   own workload receiving; large-list memory exhaustion is a hypothesis, not an
   observed control failure. The [navigation report](pending_proposals/card_assembly_component_navigation.md)
   records the measured small cases and the separate #148 preview-readability review.
+  A separate [same-label stress study](pending_proposals/component_navigation_workload.md)
+  completes 3/12/48 synthetic positions with original parity and zero worker swap;
+  full saves/reads remain expensive. This is not large-scale or researcher
+  acceptance, a new physical-membership claim or a measured optimization.
 
 - **Ligand overlap coordinate scope ([#163](https://github.com/uibcdf/sabueso/issues/163)):**
   the [correction](pending_bugs/ligand_overlap_coordinate_scope.md) admits original

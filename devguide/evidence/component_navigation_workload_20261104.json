@@ -1,0 +1,560 @@
+{
+  "format": "component_navigation_workload_summary@1",
+  "owner": "#167/#148/#173",
+  "review_trigger": "next persistence change or pre-0.15.0 workload acceptance",
+  "runtime_source": "7882f66ff6f334c95d584b9164283f9791b547b4",
+  "sdk": "0.14.0+158.g7882f66",
+  "runtime_tree": "89e0c5633ee30a873d60f7e71622064cfa454dbb",
+  "tool_sha256": "68490b9d072c0a3347710958429687e13bcf8459e0331330056d05c107a91243",
+  "capsule_sha256": "b37ef7b9ebe68bbe4d46d6ff65a73522b044b0935f0a2e9128104c30e1e5e57d",
+  "input_basis": "Synthetic repeated native C labels in one generator of the public 1HTI control. Not source observations, distinct physical molecules or production knowledge. Original seed/capsule immutable.",
+  "measurement_scope": "Six fresh producers; twelve independent inert readers; separate fresh human save versus accumulated explicit agent save. Serial, warm/uncontrolled filesystem and host load; no timing thresholds, tracemalloc or researcher acceptance. No product limits raised/disabled.",
+  "order": [
+    [
+      3,
+      "a"
+    ],
+    [
+      12,
+      "a"
+    ],
+    [
+      48,
+      "a"
+    ],
+    [
+      48,
+      "b"
+    ],
+    [
+      12,
+      "b"
+    ],
+    [
+      3,
+      "b"
+    ]
+  ],
+  "source_queries": 0,
+  "producer_workers": 6,
+  "reader_workers": 12,
+  "all_originals_preserved": true,
+  "all_worker_swap_bytes": 0,
+  "peak_worker_rss_bytes": 328024064,
+  "conditions": {
+    "python": "3.14.7",
+    "os": "Linux"
+  },
+  "rows": [
+    {
+      "positions": 3,
+      "repeats": 2,
+      "median_wall_s": {
+        "capture": 0.03382220154162496,
+        "navigate": 0.20659119763877243,
+        "preview": 0.0013007050147280097,
+        "agent_page": 0.001402754453010857,
+        "save": 12.439043542486615,
+        "save_agent_accumulated": 12.417957466910593,
+        "human_read": 8.68033770204056,
+        "agent_read": 8.649976696935482
+      },
+      "sizes": {
+        "saved_bytes": 42434469,
+        "accumulated_agent_saved_bytes": 42514006,
+        "complete_agent_page_bytes": 5560,
+        "full_component_list_bytes": 9700
+      },
+      "peak_worker_rss_bytes": 305979392
+    },
+    {
+      "positions": 12,
+      "repeats": 2,
+      "median_wall_s": {
+        "capture": 0.03408103284891695,
+        "navigate": 0.22201472846791148,
+        "preview": 0.0013581770472228527,
+        "agent_page": 0.0016082609072327614,
+        "save": 13.226932569989003,
+        "save_agent_accumulated": 13.550113678560592,
+        "human_read": 9.497786662075669,
+        "agent_read": 9.523720936966129
+      },
+      "sizes": {
+        "saved_bytes": 43274444,
+        "accumulated_agent_saved_bytes": 43370186,
+        "complete_agent_page_bytes": 5561,
+        "full_component_list_bytes": 30081
+      },
+      "peak_worker_rss_bytes": 310448128
+    },
+    {
+      "positions": 48,
+      "repeats": 2,
+      "median_wall_s": {
+        "capture": 0.03387961408589035,
+        "navigate": 0.254702438483946,
+        "preview": 0.001955175423063338,
+        "agent_page": 0.001968301017768681,
+        "save": 14.828211245127022,
+        "save_agent_accumulated": 14.874969208496623,
+        "human_read": 10.851387949544005,
+        "agent_read": 10.864710057503544
+      },
+      "sizes": {
+        "saved_bytes": 46636376,
+        "accumulated_agent_saved_bytes": 46797062,
+        "complete_agent_page_bytes": 5561,
+        "full_component_list_bytes": 111657
+      },
+      "peak_worker_rss_bytes": 328024064
+    }
+  ],
+  "samples": [
+    {
+      "positions": 3,
+      "repeat": "a",
+      "synthetic_card_sha256": "e681a4d7c1b50ea32057d11ed03d7b911ff260b15603e5f184ca4e43d99a49e5",
+      "operations": {
+        "capture": {
+          "wall_s": 0.036733060143888,
+          "cpu_s": 0.03673426099999999
+        },
+        "navigate": {
+          "wall_s": 0.22570428112521768,
+          "cpu_s": 0.22568953999999997
+        },
+        "preview": {
+          "wall_s": 0.001361411064863205,
+          "cpu_s": 0.0013617870000000032
+        },
+        "agent_page": {
+          "wall_s": 0.0014743239153176546,
+          "cpu_s": 0.0014746740000000091
+        },
+        "save": {
+          "wall_s": 13.653461043024436,
+          "cpu_s": 12.836016364
+        },
+        "save_agent_accumulated": {
+          "wall_s": 13.169540114002302,
+          "cpu_s": 12.680794425
+        }
+      },
+      "human_read": {
+        "wall_s": 9.152964412001893,
+        "cpu_s": 9.152641679
+      },
+      "agent_read": {
+        "wall_s": 8.91744159301743,
+        "cpu_s": 8.912001826
+      },
+      "sizes": {
+        "saved_bytes": 42434469,
+        "accumulated_agent_saved_bytes": 42514006,
+        "complete_agent_page_bytes": 5560,
+        "full_component_list_bytes": 9700
+      },
+      "resources": {
+        "produce": {
+          "peak_owned_rss_bytes": 298815488,
+          "elapsed_s": 29.09,
+          "owned_swap_bytes": 0
+        },
+        "read": {
+          "peak_owned_rss_bytes": 305639424,
+          "elapsed_s": 11.03,
+          "owned_swap_bytes": 0
+        },
+        "read-agent": {
+          "peak_owned_rss_bytes": 305958912,
+          "elapsed_s": 10.53,
+          "owned_swap_bytes": 0
+        }
+      },
+      "complete_original_binding_parity": true
+    },
+    {
+      "positions": 12,
+      "repeat": "a",
+      "synthetic_card_sha256": "d0ed3e46656335c6b73817c959080acbac8dcdb7337e7090999564dd42752b21",
+      "operations": {
+        "capture": {
+          "wall_s": 0.03425874188542366,
+          "cpu_s": 0.03425996499999995
+        },
+        "navigate": {
+          "wall_s": 0.22343407501466572,
+          "cpu_s": 0.223446354
+        },
+        "preview": {
+          "wall_s": 0.001289332052692771,
+          "cpu_s": 0.0012898700000001373
+        },
+        "agent_page": {
+          "wall_s": 0.001465843990445137,
+          "cpu_s": 0.0014662780000000986
+        },
+        "save": {
+          "wall_s": 13.329403647920117,
+          "cpu_s": 12.502350318
+        },
+        "save_agent_accumulated": {
+          "wall_s": 13.698315982008353,
+          "cpu_s": 13.190639494
+        }
+      },
+      "human_read": {
+        "wall_s": 9.596419434063137,
+        "cpu_s": 9.592914617000002
+      },
+      "agent_read": {
+        "wall_s": 9.740308624925092,
+        "cpu_s": 9.734911226
+      },
+      "sizes": {
+        "saved_bytes": 43274444,
+        "accumulated_agent_saved_bytes": 43370186,
+        "complete_agent_page_bytes": 5561,
+        "full_component_list_bytes": 30081
+      },
+      "resources": {
+        "produce": {
+          "peak_owned_rss_bytes": 297041920,
+          "elapsed_s": 29.1,
+          "owned_swap_bytes": 0
+        },
+        "read": {
+          "peak_owned_rss_bytes": 309866496,
+          "elapsed_s": 11.04,
+          "owned_swap_bytes": 0
+        },
+        "read-agent": {
+          "peak_owned_rss_bytes": 310448128,
+          "elapsed_s": 11.04,
+          "owned_swap_bytes": 0
+        }
+      },
+      "complete_original_binding_parity": true
+    },
+    {
+      "positions": 48,
+      "repeat": "a",
+      "synthetic_card_sha256": "a330696236d6e31d54f41dbc0ce3e82dada963497a37ff4097facab7cebcbcda",
+      "operations": {
+        "capture": {
+          "wall_s": 0.033195485128089786,
+          "cpu_s": 0.03319610000000006
+        },
+        "navigate": {
+          "wall_s": 0.22738925693556666,
+          "cpu_s": 0.22739679699999993
+        },
+        "preview": {
+          "wall_s": 0.001619857968762517,
+          "cpu_s": 0.001619904999999866
+        },
+        "agent_page": {
+          "wall_s": 0.0013948299456387758,
+          "cpu_s": 0.001395166999999864
+        },
+        "save": {
+          "wall_s": 14.67536314111203,
+          "cpu_s": 14.030857737
+        },
+        "save_agent_accumulated": {
+          "wall_s": 14.734610449988395,
+          "cpu_s": 14.265952332000001
+        }
+      },
+      "human_read": {
+        "wall_s": 10.720881767105311,
+        "cpu_s": 10.720398308
+      },
+      "agent_read": {
+        "wall_s": 10.599836942972615,
+        "cpu_s": 10.592102629
+      },
+      "sizes": {
+        "saved_bytes": 46636376,
+        "accumulated_agent_saved_bytes": 46797062,
+        "complete_agent_page_bytes": 5561,
+        "full_component_list_bytes": 111657
+      },
+      "resources": {
+        "produce": {
+          "peak_owned_rss_bytes": 304152576,
+          "elapsed_s": 31.61,
+          "owned_swap_bytes": 0
+        },
+        "read": {
+          "peak_owned_rss_bytes": 327208960,
+          "elapsed_s": 12.04,
+          "owned_swap_bytes": 0
+        },
+        "read-agent": {
+          "peak_owned_rss_bytes": 327909376,
+          "elapsed_s": 12.05,
+          "owned_swap_bytes": 0
+        }
+      },
+      "complete_original_binding_parity": true
+    },
+    {
+      "positions": 48,
+      "repeat": "b",
+      "synthetic_card_sha256": "a330696236d6e31d54f41dbc0ce3e82dada963497a37ff4097facab7cebcbcda",
+      "operations": {
+        "capture": {
+          "wall_s": 0.03456374304369092,
+          "cpu_s": 0.034564984000000076
+        },
+        "navigate": {
+          "wall_s": 0.2820156200323254,
+          "cpu_s": 0.28200342999999994
+        },
+        "preview": {
+          "wall_s": 0.0022904928773641586,
+          "cpu_s": 0.0022908680000000015
+        },
+        "agent_page": {
+          "wall_s": 0.0025417720898985863,
+          "cpu_s": 0.002542555000000002
+        },
+        "save": {
+          "wall_s": 14.981059349142015,
+          "cpu_s": 14.478720899
+        },
+        "save_agent_accumulated": {
+          "wall_s": 15.01532796700485,
+          "cpu_s": 14.534092042
+        }
+      },
+      "human_read": {
+        "wall_s": 10.981894131982699,
+        "cpu_s": 10.980855856
+      },
+      "agent_read": {
+        "wall_s": 11.129583172034472,
+        "cpu_s": 11.129366185
+      },
+      "sizes": {
+        "saved_bytes": 46636376,
+        "accumulated_agent_saved_bytes": 46797062,
+        "complete_agent_page_bytes": 5561,
+        "full_component_list_bytes": 111657
+      },
+      "resources": {
+        "produce": {
+          "peak_owned_rss_bytes": 304259072,
+          "elapsed_s": 32.61,
+          "owned_swap_bytes": 0
+        },
+        "read": {
+          "peak_owned_rss_bytes": 327061504,
+          "elapsed_s": 12.55,
+          "owned_swap_bytes": 0
+        },
+        "read-agent": {
+          "peak_owned_rss_bytes": 328024064,
+          "elapsed_s": 12.55,
+          "owned_swap_bytes": 0
+        }
+      },
+      "complete_original_binding_parity": true
+    },
+    {
+      "positions": 12,
+      "repeat": "b",
+      "synthetic_card_sha256": "d0ed3e46656335c6b73817c959080acbac8dcdb7337e7090999564dd42752b21",
+      "operations": {
+        "capture": {
+          "wall_s": 0.033903323812410235,
+          "cpu_s": 0.033904485999999956
+        },
+        "navigate": {
+          "wall_s": 0.22059538192115724,
+          "cpu_s": 0.22060341399999994
+        },
+        "preview": {
+          "wall_s": 0.0014270220417529345,
+          "cpu_s": 0.0014272079999999576
+        },
+        "agent_page": {
+          "wall_s": 0.0017506778240203857,
+          "cpu_s": 0.0017510339999999847
+        },
+        "save": {
+          "wall_s": 13.12446149205789,
+          "cpu_s": 12.527145893
+        },
+        "save_agent_accumulated": {
+          "wall_s": 13.401911375112832,
+          "cpu_s": 12.915823498000002
+        }
+      },
+      "human_read": {
+        "wall_s": 9.3991538900882,
+        "cpu_s": 9.397936838000001
+      },
+      "agent_read": {
+        "wall_s": 9.307133249007165,
+        "cpu_s": 9.307139328
+      },
+      "sizes": {
+        "saved_bytes": 43274444,
+        "accumulated_agent_saved_bytes": 43370186,
+        "complete_agent_page_bytes": 5561,
+        "full_component_list_bytes": 30081
+      },
+      "resources": {
+        "produce": {
+          "peak_owned_rss_bytes": 295063552,
+          "elapsed_s": 28.61,
+          "owned_swap_bytes": 0
+        },
+        "read": {
+          "peak_owned_rss_bytes": 309809152,
+          "elapsed_s": 11.04,
+          "owned_swap_bytes": 0
+        },
+        "read-agent": {
+          "peak_owned_rss_bytes": 310415360,
+          "elapsed_s": 10.54,
+          "owned_swap_bytes": 0
+        }
+      },
+      "complete_original_binding_parity": true
+    },
+    {
+      "positions": 3,
+      "repeat": "b",
+      "synthetic_card_sha256": "e681a4d7c1b50ea32057d11ed03d7b911ff260b15603e5f184ca4e43d99a49e5",
+      "operations": {
+        "capture": {
+          "wall_s": 0.03091134293936193,
+          "cpu_s": 0.030911562999999975
+        },
+        "navigate": {
+          "wall_s": 0.18747811415232718,
+          "cpu_s": 0.1874528499999999
+        },
+        "preview": {
+          "wall_s": 0.0012399989645928144,
+          "cpu_s": 0.0012405919999998183
+        },
+        "agent_page": {
+          "wall_s": 0.0013311849907040596,
+          "cpu_s": 0.0013315839999998857
+        },
+        "save": {
+          "wall_s": 11.224626041948795,
+          "cpu_s": 10.854927294
+        },
+        "save_agent_accumulated": {
+          "wall_s": 11.666374819818884,
+          "cpu_s": 11.243874608
+        }
+      },
+      "human_read": {
+        "wall_s": 8.207710992079228,
+        "cpu_s": 8.206421516999999
+      },
+      "agent_read": {
+        "wall_s": 8.382511800853536,
+        "cpu_s": 8.381266867999999
+      },
+      "sizes": {
+        "saved_bytes": 42434469,
+        "accumulated_agent_saved_bytes": 42514006,
+        "complete_agent_page_bytes": 5560,
+        "full_component_list_bytes": 9700
+      },
+      "resources": {
+        "produce": {
+          "peak_owned_rss_bytes": 283783168,
+          "elapsed_s": 25.1,
+          "owned_swap_bytes": 0
+        },
+        "read": {
+          "peak_owned_rss_bytes": 305512448,
+          "elapsed_s": 10.04,
+          "owned_swap_bytes": 0
+        },
+        "read-agent": {
+          "peak_owned_rss_bytes": 305979392,
+          "elapsed_s": 10.04,
+          "owned_swap_bytes": 0
+        }
+      },
+      "complete_original_binding_parity": true
+    }
+  ],
+  "limits": "1 GiB worker RSS;zero owned swap;4 GiB host MemAvailable;2 GiB owned scratch;300 s worker wall. Resource stops are not product budgets.",
+  "no_full_suite_or_release_claim": true,
+  "storage_accounting": {
+    "counts": {
+      "cards": 1,
+      "inputs": 1,
+      "objects": 443,
+      "views": 610,
+      "locations": 588
+    },
+    "section_canonical_bytes": {
+      "bundle_digest": 73,
+      "capabilities": 304,
+      "cards": 285240,
+      "digests": 1141,
+      "format": 28,
+      "inputs": 106,
+      "locations": 143025,
+      "navigation": 54323,
+      "objects": 2417408,
+      "presentation_metadata": 55,
+      "producer": 216,
+      "root_navigation_ref": 5,
+      "root_view_ref": 69,
+      "scientific_results": 371,
+      "views": 43733792
+    },
+    "view_parts": {
+      "selection": {
+        "occurrences": 610,
+        "distinct_canonical_values": 332,
+        "canonical_bytes": 5734847,
+        "distinct_canonical_bytes": 3019327,
+        "repeated_occurrence_bytes": 2715520
+      },
+      "state": {
+        "occurrences": 610,
+        "distinct_canonical_values": 332,
+        "canonical_bytes": 34056820,
+        "distinct_canonical_bytes": 9682232,
+        "repeated_occurrence_bytes": 24374588
+      },
+      "native_payload": {
+        "occurrences": 610,
+        "distinct_canonical_values": 318,
+        "canonical_bytes": 3313406,
+        "distinct_canonical_bytes": 2258116,
+        "repeated_occurrence_bytes": 1055290
+      },
+      "flags": {
+        "occurrences": 610,
+        "distinct_canonical_values": 371,
+        "canonical_bytes": 241937,
+        "distinct_canonical_bytes": 156201,
+        "repeated_occurrence_bytes": 85736
+      }
+    },
+    "canonical_total_bytes": 46636376,
+    "verification": "parsed structure only; original scientific verification is separate",
+    "limits": "Exact repeated serialized values are physical storage candidates, not molecular identity or permission to discard history/support. Repeated-byte counts exclude reference/index overhead and are not an achieved reduction. Noncanonical input whitespace may change size.",
+    "input_sha256": "7dc9b71dc28f84981e77ecf60e91500a5caf31ba7fccfa30e2afd63d9357d315",
+    "input_unchanged": true,
+    "tool_sha256": "bc09d838dafa3842fc2752d55f01933cdfdd01c2d00e95a8ccbbfe22f76b8897",
+    "sample": "48-a human original",
+    "resource_peak_rss_bytes": 217432064,
+    "direct_component_link_support_bytes": 78000
+  }
+}

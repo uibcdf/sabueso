@@ -317,8 +317,8 @@ including separate native/author labels and null versus unrequested scope. The
 now uses that original basis under component-key @2. The following
 [independent original reader](pending_proposals/card_saved_assembly.md) adds explicit
 human/agent @5 requests and @7 saving over frozen original predicates and a genuine
-pre-reader capsule. Default @4 and old adapters/readers stay unchanged. Complete
-its exact-source receiving before qualification or default adoption.
+pre-reader capsule. Default @4 and old adapters/readers stay unchanged. Exact source `7882f66`
+receives this implementation; further default adoption is a separate decision.
 Source-bound qualification and full physical reconciliation remain separate from
 closing #148 or resuming 0.15.0 consolidation.
 
@@ -327,8 +327,13 @@ now exposes exact native, literal and qualifier declaration routes through ordin
 questions and component links. Its internal explicit @5 choice leaves direct
 defaults on @4; positions, duplicates, uncertainty and original source records stay
 separate. Original format @8 checks the actual clicked position and original
-navigation without running current producers. Qualify the completed block on its
-own source; this does not finish physical reconciliation or broad acceptance.
+navigation without running current producers. Exact source `7882f66` is
+[qualified](evidence/assembly_component_checkpoint_20261104.json); physical
+reconciliation and broad acceptance stay open. The bounded #167/#148
+[component workload](pending_proposals/component_navigation_workload.md) now measures
+3/12/48 synthetic repeated positions, original parity and full-session versus
+interactive costs. Profile retained view preparation/verification before changing
+physical storage; no general-scale or researcher acceptance is implied.
 
 On 2026-10-27 the maintainer authorized a short
 [persistence-cost block #167](pending_proposals/card_persistence_cost.md) before

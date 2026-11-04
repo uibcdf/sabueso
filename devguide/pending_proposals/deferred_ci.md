@@ -41,6 +41,14 @@ also receives the accumulated native/source and #183 scratch-retention correctio
 pending older runs cannot qualify its new code. Full physical reconciliation,
 researcher acceptance and 0.15.0 consolidation remain separate/open/paused.
 
+The completed source `7882f66` /SDK `0.14.0+158.g7882f66` is now
+[fully qualified](../evidence/assembly_component_checkpoint_20261104.json): CI 18/18,
+governance 1/1, all manifests/jobs/steps and thirteen source/installed pytest
+summaries, twelve producer routes/24 fresh frames and 36 installed codec cases.
+This receives the accumulated source/native/original-reader/scratch block at its
+own source. #183 is closed; no older failing run is relabeled. Later changed
+runtime bytes need a new checkpoint; broader acceptance and 0.15.0 remain open/paused.
+
 ### Passed-case scratch recovery (2026-11-03, #183)
 
 [Source-capture CI 41714274360](https://github.com/uibcdf/sabueso/actions/runs/41714274360)

@@ -63,6 +63,12 @@ positions and their native records/sources. New structure questions choose @5
 internally; direct defaults remain @4. Independent format @8 binds each saved
 destination to the exact clicked link and original position. Genuine @6/@7 files
 retain their old navigation; wider physical/researcher acceptance stays open.
+The source `7882f66` is qualified by [CI 18/18 and governance 1/1](evidence/assembly_component_checkpoint_20261104.json),
+including accumulated source/reader/scratch recovery. Later changed runtime bytes
+need their own qualification.
+The [component workload study](pending_proposals/component_navigation_workload.md)
+separates complete original-session costs from interactive human/agent delivery;
+its synthetic small-list observations do not close broad workload acceptance.
 
 To resume after a pause, read [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here),
 then [ROADMAP.md, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).

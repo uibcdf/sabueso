@@ -598,6 +598,12 @@ that was not visited stays `not_saved`. Use `start_new()` for a new interpretati
 Repeated saving without further exploration preserves the same live content;
 saving does not recursively explore the support it prepared previously.
 
+Calling `page()` alone does not retain a machine projection in a human-view export.
+Call the selection's `save()` explicitly when that exact agent request needs to be
+reopened. A human export can preserve the underlying scientific findings while
+returning `not_saved` for a machine projection that was only paged; the captured
+originals remain inspectable through their typed locations.
+
 The comparison uses saved exploration format `@3`; genuine `@1`/`@2` readers and
 source/instance panes retain their original meanings. Integrity checks establish
 consistency with the captured inputs, not the authenticity or truth of a source.

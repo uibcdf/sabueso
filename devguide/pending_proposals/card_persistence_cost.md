@@ -118,6 +118,14 @@ support and avoidable duplication. Agree workload-specific budgets with research
 and measure fresh/accumulated source and scientific routes across Card natures.
 Keep independent inert receiving and original genuine capsules as constraints.
 
+## Component navigation continuation
+
+The [bounded component-list study](component_navigation_workload.md) measures the
+following qualified native @5 / saved @8 route on synthetic repeated declarations.
+It separates interactive navigation, a complete bounded agent page, human-first
+saving, accumulated explicit agent saving and independent inert reading. It does
+not change the existing cost observations, original contracts or accepted budgets.
+
 ## Qualification and resource ownership
 
 Owning gates cover complete original-wire immutability for literal and quantity
